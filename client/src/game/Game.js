@@ -16,7 +16,7 @@ class Game extends Component {
       hasEnded: false,
       seconds: 60,
       score: 0,
-      roundNumber: 1,
+      roundNumber: 0,
       correctBoxNumber: -1,
       currentHint: "",
       soundEnabled: true
@@ -27,7 +27,7 @@ class Game extends Component {
     this.setState({
       hasStarted: true
     });
-    this.randomizeBox();
+    this.startNewRound();
 
     this.timer = setInterval(() => {
       const seconds = this.state.seconds - 1;
@@ -42,15 +42,26 @@ class Game extends Component {
     }, 1000);
   }
 
+  startNewRound() {
+    this.setState({
+      roundNumber: this.state.roundNumber + 1
+    });
+    this.randomizeBox();
+  }
+
   randomizeBox() {
     this.setState({
       correctBoxNumber: Math.floor(Math.random() * 4) + 1
-    })
+    });
   }
 
   validateAnswer(number) {
     let correct = number === this.state.correctBoxNumber;
     let score = this.state.score;
+
+    if (correct) {
+      this.startNewRound();
+    }
 
     this.setState({
       score: correct ? score + 5 : score - 1
