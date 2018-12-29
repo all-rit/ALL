@@ -21,6 +21,7 @@
             - [x] Show "No hint" if hint is not available
             - [x] Show hint if hint is available
             - [x] Collapse itself after 3 seconds of being open
+            - [x] Collapse itself after every round
       - [ ] Sound
          - [ ] Enable/disable functionality
          - [ ] Cannot enable/disable after any action in the beginning of a round
