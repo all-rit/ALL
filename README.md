@@ -1,11 +1,38 @@
 # Accessibility Lab #1: Use of Audio Cues for Deaf/HoH Users
 ## To-Do
 - [x] Database Schema Design (Dec 14)
-- [ ] System Design (Dec 21)
-   - [ ] Class Diagram
-   - [ ] Architecture Diagram
 - [ ] Implementation (Feb 1)
    - [ ] Game (Jan 4)
+      - [x] Countdown Timer
+         - [x] Start timer if game is started
+      - [x] Score
+         - [x] Increment by 5 if correct answer
+         - [x] Decrement by 1 if incorrect answer
+         - [x] Decrement by 1 if hint box is opened
+      - [x] Box
+         - [x] Randomize correct number
+         - [x] Compare user's answer with correct number
+      - [x] Hints
+         - [x] Randomize hint
+            - [x] Every 3 seconds
+            - [x] 50% chance of appearing
+            - [x] Close hint box if hint is randomized
+         - [x] Opening hint box
+            - [x] Show "No hint" if hint is not available
+            - [x] Show hint if hint is available
+            - [x] Collapse itself after 3 seconds of being open
+      - [ ] Sound
+         - [ ] Enable/disable functionality
+         - [ ] Cannot enable/disable after any action in the beginning of a round
+         - [ ] Play a buzz sound if hint is available
+      - [ ] Results
+         - [ ] Display # of rounds played, # of correct picks, # of incorrect picks, and score.
+         - [ ] Display "Play Again?" button
+      - [ ] Code Editor
+         - [ ] Figure out which code blocks to "mock"
+         - [ ] Check if the code is "correct"
+         - [ ] Add "smoke and mirrors" after any code change
+         - [ ] Code can only be changed after the end of a game
    - [ ] Integration with database schema (Jan 11)
    - [ ] Google oAuth user login (Jan 11)
    - [ ] Database reporting (Jan 25)
