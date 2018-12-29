@@ -2,4 +2,16 @@
   border: 3px solid black;
   height: 3rem;
   line-height: 3rem;
+  margin-top: 2rem;
+}
+
+.hint_box:not(.hint_box--open):hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+.hint_box--open {
+  height: 5rem;
+  line-height: 5rem;
+  margin-top: 0;
 }
