@@ -132,6 +132,20 @@ class Game extends Component {
   }
 
   /**
+   * Enables sound.
+   */
+  enableSound() {
+
+  }
+
+  /**
+   * Disables sound.
+   */
+  disableSound() {
+    
+  }
+
+  /**
    * Compares the correct box number with user's answer.
    * - If correct, start a new round using startNewRound().
    *   Increment score by 5.
