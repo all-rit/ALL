@@ -3,25 +3,20 @@ import classNames from 'classnames/bind';
 import './HintBox.css';
 
 class HintBox extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isExtended: false
-    };
+  handleClick() {
+    this.props.onClickHandler();
   }
 
   render() {
-    const { isExtended } = this.state;
-    const { hint } = this.props;
+    const { hint, isExtended } = this.props;
     const classes = classNames({
       hint_box: true,
-      open: isExtended
+      'hint_box--open': isExtended
     });
 
     return (
-      <div className={classes}>
-        {isExtended ? hint : "?"}
+      <div className={classes} onClick={this.handleClick.bind(this)}>
+        {isExtended ? (hint ? hint : "No hint") : "?"}
       </div>
     );
   }

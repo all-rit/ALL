@@ -19,10 +19,25 @@ class Game extends Component {
       roundNumber: 0,
       correctBoxNumber: -1,
       currentHint: "",
-      soundEnabled: true
+      isHintBoxOpen: false,
+      soundEnabled: true,
+      possibleHints: ["The box is an odd number.", "The box is an even number.", "The box is one of the two on the left/right.",
+                      "The box is not at both ends.", "The box is white.", "The box is black."],
+      boxHintCombinations: {
+        1: [0, 2, 4],
+        2: [1, 3, 5],
+        3: [0, 3, 5],
+        4: [1, 2, 4]
+      }
     };
   }
 
+  /**
+   * Starts the game.
+   * - Update hasStarted to true.
+   * - Start a new round using startNewRound().
+   * - Starts countdown timer.
+   */
   startGame() {
     this.setState({
       hasStarted: true
@@ -42,19 +57,86 @@ class Game extends Component {
     }, 1000);
   }
 
+  /**
+   * Starts a new round.
+   * - Increments round number.
+   * - Randomizes correct box number using randomizeBox().
+   * - Starts hint timer that randomizes a hint using randomizeHint()
+   *   with 50% chance of appearing every 3 seconds.
+   */
   startNewRound() {
     this.setState({
-      roundNumber: this.state.roundNumber + 1
+      roundNumber: this.state.roundNumber + 1,
+      currentHint: "",
     });
+    this.closeHintBox();
     this.randomizeBox();
+
+    this.hintTimer = setInterval(() => {
+      const chance = Math.floor(Math.random() * 2) + 1;
+
+      if (chance > 1) {
+        this.randomizeHint();
+        clearInterval(this.hintTimer);
+      }
+    }, 3000)
   }
 
+  /**
+   * Randomizes correct box number.
+   */
   randomizeBox() {
     this.setState({
       correctBoxNumber: Math.floor(Math.random() * 4) + 1
     });
   }
 
+  /**
+   * Randomizes hint.
+   * - Collapse hint box if hint is available.
+   */
+  randomizeHint() {
+    const hintNumber = Math.floor(Math.random() * 3);
+    const { boxHintCombinations, correctBoxNumber, possibleHints } = this.state;
+    const hint = possibleHints[boxHintCombinations[correctBoxNumber][hintNumber]];
+
+    this.closeHintBox();
+    this.setState({
+      currentHint: hint,
+    });
+  }
+
+  /**
+   * Opens hint box.
+   * - Show hint if available.
+   * - Decrement score by 1.
+   * - Collapse itself after 3 seconds.
+   */
+  openHintBox() {
+    this.setState({
+      isHintBoxOpen: true,
+      score: this.state.score - 1
+    });
+
+    this.hintBoxTimer = setTimeout(this.closeHintBox.bind(this), 3000);
+  }
+
+  /**
+   * Closes hint box.
+   */
+  closeHintBox() {
+    clearTimeout(this.hintBoxTimer);
+    this.setState({
+      isHintBoxOpen: false
+    });
+  }
+
+  /**
+   * Compares the correct box number with user's answer.
+   * - If correct, start a new round using startNewRound().
+   *   Increment score by 5.
+   * - If incorrect, decrement score by 1.
+   */
   validateAnswer(number) {
     let correct = number === this.state.correctBoxNumber;
     let score = this.state.score;
@@ -68,8 +150,11 @@ class Game extends Component {
     });
   }
 
+  /**
+   * Render view.
+   */
   render() {
-    const { hasStarted, hasEnded, seconds, score, currentHint, soundEnabled } = this.state;
+    const { hasStarted, hasEnded, seconds, score, currentHint, soundEnabled, isHintBoxOpen } = this.state;
 
     return (
       <div className="game">
@@ -85,7 +170,10 @@ class Game extends Component {
           {!hasStarted && <button onClick={this.startGame.bind(this)} className="game__start_button">Start</button>}
         </div>
 
-        {hasStarted && !hasEnded && <HintBox hint={currentHint}></HintBox>}
+        {hasStarted && !hasEnded &&
+        <HintBox hint={currentHint}
+                  isExtended={isHintBoxOpen}
+                  onClickHandler={this.openHintBox.bind(this)}></HintBox>}
 
         {hasStarted && !hasEnded &&
         <div className="game__boxes">
