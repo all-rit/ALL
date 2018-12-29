@@ -37,3 +37,12 @@
    - [ ] Google oAuth user login (Jan 11)
    - [ ] Database reporting (Jan 25)
    - [ ] Push to production servers (TBD)
+
+## Setup
+
+### Client
+1. Clone the repository.
+2. Navigate to the `client` folder in Terminal.
+3. `npm init`
+4. `npm start`
+5. Navigate to `http://localhost:3000` in a web browser.
