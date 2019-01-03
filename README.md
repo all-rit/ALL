@@ -26,9 +26,9 @@
          - [x] Enable/disable functionality
          - [x] Cannot enable/disable after the game is started
          - [x] Play a buzz sound if hint is available
-      - [ ] Results
-         - [ ] Display # of rounds played, # of correct picks, # of incorrect picks, and score.
-         - [ ] Display "Play Again?" button
+      - [x] Results
+         - [x] Display # of rounds played, # of correct picks, # of incorrect picks, and score.
+         - [x] Display "Play Again?" button
       - [ ] Code Editor
          - [ ] Figure out which code blocks to "mock"
          - [ ] Check if the code is "correct"
