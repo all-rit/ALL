@@ -18,7 +18,7 @@ export const STARTED = 'STARTED';
 export const ENDED = 'ENDED';
 
 // Default Values
-export const TIMER_SECONDS = 2;
+export const TIMER_SECONDS = 60;
 export const HINT_TIMER_MILLISECONDS = 3 * 1000; // hint is attempted to be randomized every x seconds
 export const HINT_BOX_TIMER_MILLISECONDS = 3 * 1000; // hint box collapses after x seconds
 export const POSSIBLE_HINTS = [
