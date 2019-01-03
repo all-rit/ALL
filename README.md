@@ -22,10 +22,10 @@
             - [x] Show hint if hint is available
             - [x] Collapse itself after 3 seconds of being open
             - [x] Collapse itself after every round
-      - [ ] Sound
-         - [ ] Enable/disable functionality
-         - [ ] Cannot enable/disable after any action in the beginning of a round
-         - [ ] Play a buzz sound if hint is available
+      - [x] Sound
+         - [x] Enable/disable functionality
+         - [x] Cannot enable/disable after the game is started
+         - [x] Play a buzz sound if hint is available
       - [ ] Results
          - [ ] Display # of rounds played, # of correct picks, # of incorrect picks, and score.
          - [ ] Display "Play Again?" button
