@@ -34,10 +34,6 @@
   text-align: center;
 }
 
-.game__start_button {
-  font-size: 1.5rem;
-}
-
 .game__boxes {
   margin-top: 1rem;
   display: grid;

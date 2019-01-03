@@ -1,8 +1,13 @@
 .sound_icon {
   width: 35px;
   height: 35px;
+  cursor: pointer;
+}
+
+.sound_icon--off {
+  opacity: .5;
 }
 
 .sound_icon--disabled {
-  opacity: .5;
+  cursor: not-allowed;
 }

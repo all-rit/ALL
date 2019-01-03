@@ -1,74 +1,116 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Game.css';
+
+import BuzzSound from './buzz.wav';
+
+import {
+  STARTED,
+  ENDED,
+  IDLE,
+  HINT_TIMER_MILLISECONDS,
+  HINT_BOX_TIMER_MILLISECONDS,
+  POSSIBLE_HINTS,
+  BOX_HINT_COMBINATIONS
+} from './GameConstants';
+import {
+  startGame,
+  endGame,
+  resetGame,
+  timerTick,
+  increaseScore,
+  decreaseScore,
+  incrementCorrectAnswers,
+  incrementIncorrectAnswers,
+  startNewRound,
+  updateHintBoxStatus,
+  updateHint,
+  updateBox,
+  updateSoundStatus
+} from './GameActions';
+
+import Conditional from '../helpers/Conditional';
 
 import Box from './box/Box';
 import HintBox from './hintbox/HintBox';
+import Results from './results/Results';
 import Score from './score/Score';
 import SoundOption from './soundoption/SoundOption';
 import Timer from './timer/Timer';
+
+const mapStateToProps = (state) => {
+  return {
+    gameState: state.gameState,
+    startedAt: state.startedAt,
+    endedAt: state.endedAt,
+    seconds: state.seconds,
+    score: state.score,
+    roundNumber: state.roundNumber,
+    correctAnswers: state.correctAnswers,
+    incorrectAnswers: state.incorrectAnswers,
+    correctBoxNumber: state.correctBoxNumber,
+    currentHint: state.currentHint,
+    isHintBoxOpen: state.isHintBoxOpen,
+    soundEnabled: state.soundEnabled
+  };
+};
+
+const mapDispatchToProps = {
+  startGame,
+  endGame,
+  resetGame,
+  timerTick,
+  increaseScore,
+  decreaseScore,
+  incrementCorrectAnswers,
+  incrementIncorrectAnswers,
+  startNewRound,
+  updateHintBoxStatus,
+  updateHint,
+  updateBox,
+  updateSoundStatus
+};
 
 class Game extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      hasStarted: false,
-      hasEnded: false,
-      seconds: 60,
-      score: 0,
-      roundNumber: 0,
-      correctBoxNumber: -1,
-      currentHint: "",
-      isHintBoxOpen: false,
-      soundEnabled: true,
-      possibleHints: ["The box is an odd number.", "The box is an even number.", "The box is one of the two on the left/right.",
-                      "The box is not at both ends.", "The box is white.", "The box is black."],
-      boxHintCombinations: {
-        1: [0, 2, 4],
-        2: [1, 3, 5],
-        3: [0, 3, 5],
-        4: [1, 2, 4]
-      }
-    };
+    this.audio = new Audio(BuzzSound);
   }
 
-  /**
-   * Starts the game.
-   * - Update hasStarted to true.
-   * - Start a new round using startNewRound().
-   * - Starts countdown timer.
-   */
   startGame() {
-    this.setState({
-      hasStarted: true
-    });
+    const { startGame, endGame, timerTick } = this.props;
+
+    startGame();
     this.startNewRound();
-
+    
     this.timer = setInterval(() => {
-      const seconds = this.state.seconds - 1;
+      timerTick();
 
-      if (seconds < 0) {
+      if (this.props.seconds === 0) {
+        endGame();
         clearInterval(this.timer);
+        clearInterval(this.hintTimer);
       }
-
-      this.setState({
-        seconds: seconds > 0 ? seconds : 0
-      });
     }, 1000);
   }
 
-  /**
-   * Starts a new round.
-   * - Increments round number.
-   * - Randomizes correct box number using randomizeBox().
-   * - Starts hint timer that randomizes a hint using randomizeHint()
-   *   with 50% chance of appearing every 3 seconds.
-   */
+  resetGame() {
+    const { resetGame } = this.props;
+
+    resetGame();
+  }
+
   startNewRound() {
-    this.setState({
-      roundNumber: this.state.roundNumber + 1,
-      currentHint: "",
-    });
+    const { startNewRound, soundEnabled, updateHint } = this.props;
+
+    if (soundEnabled) {
+      this.audio.pause();
+    }
+
+    startNewRound();
+    updateHint();
+
     this.closeHintBox();
     this.randomizeBox();
 
@@ -79,127 +121,121 @@ class Game extends Component {
         this.randomizeHint();
         clearInterval(this.hintTimer);
       }
-    }, 3000)
+    }, HINT_TIMER_MILLISECONDS)
   }
 
-  /**
-   * Randomizes correct box number.
-   */
   randomizeBox() {
-    this.setState({
-      correctBoxNumber: Math.floor(Math.random() * 4) + 1
-    });
+    const { updateBox } = this.props;
+
+    updateBox(Math.floor(Math.random() * 4) + 1);
   }
 
-  /**
-   * Randomizes hint.
-   * - Collapse hint box if hint is available.
-   */
   randomizeHint() {
+    const { correctBoxNumber, updateHint, soundEnabled } = this.props;
     const hintNumber = Math.floor(Math.random() * 3);
-    const { boxHintCombinations, correctBoxNumber, possibleHints } = this.state;
-    const hint = possibleHints[boxHintCombinations[correctBoxNumber][hintNumber]];
+    const hint = POSSIBLE_HINTS[BOX_HINT_COMBINATIONS[correctBoxNumber][hintNumber]];
 
     this.closeHintBox();
-    this.setState({
-      currentHint: hint,
-    });
+    updateHint(hint);
+
+    if (soundEnabled) {
+      this.audio.play();
+    }
   }
 
-  /**
-   * Opens hint box.
-   * - Show hint if available.
-   * - Decrement score by 1.
-   * - Collapse itself after 3 seconds.
-   */
   openHintBox() {
-    this.setState({
-      isHintBoxOpen: true,
-      score: this.state.score - 1
-    });
+    const { updateHintBoxStatus, decreaseScore } = this.props;
 
-    this.hintBoxTimer = setTimeout(this.closeHintBox.bind(this), 3000);
+    updateHintBoxStatus(true);
+    decreaseScore();
+
+    this.hintBoxTimer = setTimeout(this.closeHintBox.bind(this), HINT_BOX_TIMER_MILLISECONDS);
   }
 
-  /**
-   * Closes hint box.
-   */
   closeHintBox() {
+    const { updateHintBoxStatus } = this.props;
+
     clearTimeout(this.hintBoxTimer);
-    this.setState({
-      isHintBoxOpen: false
-    });
+    updateHintBoxStatus(false);
   }
 
-  /**
-   * Enables sound.
-   */
-  enableSound() {
+  toggleSound() {
+    const { updateSoundStatus, soundEnabled } = this.props;
 
+    updateSoundStatus(!soundEnabled);
   }
 
-  /**
-   * Disables sound.
-   */
-  disableSound() {
-    
-  }
-
-  /**
-   * Compares the correct box number with user's answer.
-   * - If correct, start a new round using startNewRound().
-   *   Increment score by 5.
-   * - If incorrect, decrement score by 1.
-   */
   validateAnswer(number) {
-    let correct = number === this.state.correctBoxNumber;
-    let score = this.state.score;
+    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers } = this.props;
+
+    const correct = number === correctBoxNumber;
 
     if (correct) {
       this.startNewRound();
+      increaseScore();
+      incrementCorrectAnswers();
+    } else {
+      decreaseScore();
+      incrementIncorrectAnswers();
     }
-
-    this.setState({
-      score: correct ? score + 5 : score - 1
-    });
   }
 
-  /**
-   * Render view.
-   */
   render() {
-    const { hasStarted, hasEnded, seconds, score, currentHint, soundEnabled, isHintBoxOpen } = this.state;
+    const { 
+      gameState,
+      seconds,
+      score,
+      roundNumber,
+      correctAnswers,
+      incorrectAnswers,
+      currentHint,
+      isHintBoxOpen,
+      soundEnabled
+    } = this.props;
 
     return (
       <div className="game">
-        <div className="game__header">
-          <Score score={score}></Score>
-          <Timer seconds={seconds}></Timer>
-          <SoundOption enabled={soundEnabled}></SoundOption>
-        </div>
+        <Conditional if={gameState !== ENDED}>
+          <div className="game__header">
+            <Score score={score} />
+            <Timer seconds={seconds} />
+            <SoundOption enabled={soundEnabled}
+                          onClickHandler={this.toggleSound.bind(this)}
+                          blocked={gameState === STARTED} />
+          </div>
 
-        <div className="game__instructions">
-          <p>Instructions: Find the box with the hidden item</p>
+          <div className="game__instructions">
+            <p>Instructions: Find the box with the hidden item</p>
 
-          {!hasStarted && <button onClick={this.startGame.bind(this)} className="game__start_button">Start</button>}
-        </div>
+            <Conditional if={gameState === IDLE}>
+              <button onClick={this.startGame.bind(this)} className="game__start_button">Start</button>
+            </Conditional>
+          </div>
 
-        {hasStarted && !hasEnded &&
-        <HintBox hint={currentHint}
-                  isExtended={isHintBoxOpen}
-                  onClickHandler={this.openHintBox.bind(this)}></HintBox>}
+          <Conditional if={gameState === STARTED}>
+            <HintBox hint={currentHint}
+                      isExtended={isHintBoxOpen}
+                      onClickHandler={this.openHintBox.bind(this)} />
+              
+              <div className="game__boxes">
+                <Box number={1} onClickHandler={this.validateAnswer.bind(this)} />
+                <Box number={2} onClickHandler={this.validateAnswer.bind(this)} />
+                <Box number={3} onClickHandler={this.validateAnswer.bind(this)} />
+                <Box number={4} onClickHandler={this.validateAnswer.bind(this)} />
+              </div>
+          </Conditional>
+        </Conditional>
 
-        {hasStarted && !hasEnded &&
-        <div className="game__boxes">
-          <Box number={1} onClickHandler={this.validateAnswer.bind(this)}></Box>
-          <Box number={2} onClickHandler={this.validateAnswer.bind(this)}></Box>
-          <Box number={3} onClickHandler={this.validateAnswer.bind(this)}></Box>
-          <Box number={4} onClickHandler={this.validateAnswer.bind(this)}></Box>
-        </div>
-        }
+        <Conditional if={gameState === ENDED}>
+          <Results correctAnswers={correctAnswers}
+                    incorrectAnswers={incorrectAnswers}
+                    score={score}
+                    roundNumber={roundNumber}
+                    resetGameHandler={this.resetGame.bind(this)} />
+        </Conditional>
       </div>
     );
   }
 }
 
-export default Game;
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
