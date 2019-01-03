@@ -172,6 +172,7 @@ class Game extends Component {
 
     if (correct) {
       this.startNewRound();
+      clearInterval(this.hintTimer);
       increaseScore();
       incrementCorrectAnswers();
     } else {
