@@ -30,10 +30,10 @@
          - [x] Display # of rounds played, # of correct picks, # of incorrect picks, and score.
          - [x] Display "Play Again?" button
       - [ ] Code Editor
-         - [ ] Figure out which code blocks to "mock"
+         - [x] Figure out which code blocks to "mock"
          - [ ] Check if the code is "correct"
          - [ ] Add "smoke and mirrors" after any code change
-         - [ ] Code can only be changed after the end of a game
+         - [x] Code can only be changed after the end of a game
    - [ ] Integration with database schema (Jan 11)
    - [ ] Google oAuth user login (Jan 11)
    - [ ] Database reporting (Jan 25)
