@@ -76,6 +76,7 @@ class Game extends Component {
     super(props);
 
     this.audio = new Audio(BuzzSound);
+    this.audio.loop = false;
   }
 
   startGame() {
@@ -105,7 +106,7 @@ class Game extends Component {
     const { startNewRound, soundEnabled, updateHint } = this.props;
 
     if (soundEnabled) {
-      this.audio.pause();
+      this.audio.load();
     }
 
     startNewRound();
@@ -171,8 +172,9 @@ class Game extends Component {
     const correct = number === correctBoxNumber;
 
     if (correct) {
-      this.startNewRound();
       clearInterval(this.hintTimer);
+      this.audio.pause();
+      this.startNewRound();
       increaseScore();
       incrementCorrectAnswers();
     } else {
