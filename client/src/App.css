@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
+button {
+  font-size: 1.5rem;
+}
+
 .App {
   text-align: center;
 }
 
-button {
-  font-size: 1.5rem;
+.code_editor__link {
+  color: blue;
+  cursor: pointer;
+}
+
+.code_editor__link:hover {
+  text-decoration: underline;
 }

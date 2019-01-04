@@ -1,0 +1,38 @@
+.code_editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.code_editor__content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  text-align: left;
+}
+
+.code_editor__file {
+  background-color: #ddd;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.code_editor__buttons {
+  text-align: right;
+}
+
+.code_editor__update {
+  background-color: green;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}

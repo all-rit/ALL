@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-//import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { GameReducer } from './game/GameReducer';
-//import { CodeEditorReducer } from './codeeditor/CodeEditorReducer';
+import { CodeEditorReducer } from './codeeditor/CodeEditorReducer';
 
-const reducers = GameReducer;
+const reducers = combineReducers({ game: GameReducer, code: CodeEditorReducer });
 const store = createStore(reducers);
 
 ReactDOM.render(

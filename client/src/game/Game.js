@@ -40,18 +40,18 @@ import Timer from './timer/Timer';
 
 const mapStateToProps = (state) => {
   return {
-    gameState: state.gameState,
-    startedAt: state.startedAt,
-    endedAt: state.endedAt,
-    seconds: state.seconds,
-    score: state.score,
-    roundNumber: state.roundNumber,
-    correctAnswers: state.correctAnswers,
-    incorrectAnswers: state.incorrectAnswers,
-    correctBoxNumber: state.correctBoxNumber,
-    currentHint: state.currentHint,
-    isHintBoxOpen: state.isHintBoxOpen,
-    soundEnabled: state.soundEnabled
+    gameState: state.game.gameState,
+    startedAt: state.game.startedAt,
+    endedAt: state.game.endedAt,
+    seconds: state.game.seconds,
+    score: state.game.score,
+    roundNumber: state.game.roundNumber,
+    correctAnswers: state.game.correctAnswers,
+    incorrectAnswers: state.game.incorrectAnswers,
+    correctBoxNumber: state.game.correctBoxNumber,
+    currentHint: state.game.currentHint,
+    isHintBoxOpen: state.game.isHintBoxOpen,
+    soundEnabled: state.game.soundEnabled
   };
 };
 

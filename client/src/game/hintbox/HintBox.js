@@ -13,10 +13,11 @@ class HintBox extends Component {
       hint_box: true,
       'hint_box--open': isExtended
     });
+    const content = "?";
 
     return (
       <div className={classes} onClick={this.handleClick.bind(this)}>
-        {isExtended ? (hint ? hint : "No hint") : "?"}
+        {isExtended ? (hint ? hint : "No hint") : content}
       </div>
     );
   }
