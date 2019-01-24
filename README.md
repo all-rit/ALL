@@ -5,6 +5,7 @@
    - [ ] Game (Jan 4)
       - [x] Countdown Timer
          - [x] Start timer if game is started
+         - [x] Ends in 30 seconds
       - [x] Score
          - [x] Increment by 5 if correct answer
          - [x] Decrement by 1 if incorrect answer
@@ -22,6 +23,7 @@
             - [x] Show hint if hint is available
             - [x] Collapse itself after 3 seconds of being open
             - [x] Collapse itself after every round
+         - [ ] Add a thinking indicator lasting a second, then displaying a hint or nothing.
       - [x] Sound
          - [x] Enable/disable functionality
          - [x] Cannot enable/disable after the game is started
@@ -34,9 +36,9 @@
          - [ ] Check if the code is "correct"
          - [ ] Add "smoke and mirrors" after any code change
          - [x] Code can only be changed after the end of a game
-   - [ ] Integration with database schema (Jan 11)
-   - [ ] Google oAuth user login (Jan 11)
-   - [ ] Database reporting (Jan 25)
+   - [x] Integration with database schema (Jan 11)
+   - [x] Google oAuth user login (Jan 11)
+   - [x] Database reporting (Jan 25)
    - [ ] Push to production servers (TBD)
 
 ## Setup
