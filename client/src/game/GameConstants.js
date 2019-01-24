@@ -7,8 +7,10 @@ export const DECREASE_SCORE = 'DECREASE_SCORE';
 export const INCREMENT_CORRECT_ANSWERS = 'INCREMENT_CORRECT_ANSWERS';
 export const INCREMENT_INCORRECT_ANSWERS = 'INCREMENT_INCORRECT_ANSWERS';
 export const START_NEW_ROUND = 'START_NEW_ROUND';
+export const UPDATE_ROUND_LENGTH = 'UPDATE_ROUND_LENGTH';
 export const UPDATE_HINT_BOX_STATUS = 'UPDATE_HINT_BOX_STATUS';
 export const UPDATE_HINT = 'RANDOMIZE_HINT';
+export const UPDATE_HINT_USED = 'UPDATE_HINT_USED';
 export const UPDATE_BOX = 'RANDOMIZE_BOX';
 export const UPDATE_SOUND_STATUS = 'UPDATE_SOUND_STATUS';
 
@@ -18,7 +20,7 @@ export const STARTED = 'STARTED';
 export const ENDED = 'ENDED';
 
 // Default Values
-export const TIMER_SECONDS = 60;
+export const TIMER_SECONDS = 30;
 export const HINT_TIMER_MILLISECONDS = 3 * 1000; // hint is attempted to be randomized every x seconds
 export const HINT_BOX_TIMER_MILLISECONDS = 3 * 1000; // hint box collapses after x seconds
 export const POSSIBLE_HINTS = [

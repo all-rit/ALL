@@ -1,5 +1,6 @@
 export const UPDATE_CODE = 'UPDATE_CODE';
 export const RESET_CODE = 'RESET_CODE';
+export const UPDATE_CODE_EDITOR_STATUS = 'UPDATE_CODE_EDITOR_STATUS';
 
 // Default Values
 export const CODE_BLOCK =

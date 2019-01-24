@@ -1,5 +1,5 @@
 .game {
-  width: 800px;
+  width: 1000px;
   margin: auto;
 }
 
@@ -28,16 +28,14 @@
   grid-template-rows: 3fr 1fr;
 }
 
-.game__instructions {
-  font-size: 1.25rem;
-  padding: 3rem 0;
-  text-align: center;
-}
-
 .game__boxes {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . .";
   grid-gap: 1rem;
+}
+
+.game__start_button {
+  background-color: #6BFF89;
 }

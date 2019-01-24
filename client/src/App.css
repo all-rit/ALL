@@ -1,11 +1,45 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
-
 button {
-  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem;
+  padding: 10px 25px;
+  border: 1px solid #707070;
+  margin: 5px 15px;
 }
 
-.App {
+button:hover {
+  cursor: pointer;
+}
+
+.app {
   text-align: center;
+}
+
+.app__name {
+  font-size: 3.125rem;
+}
+
+.app__header {
+  display: flex;
+  margin-bottom: 10rem;
+}
+
+.app_column {
+  flex: 50%;
+  padding: 1rem;
+}
+
+.app__instructions {
+  font-size: 1.25rem;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .code_editor__link {
@@ -15,4 +49,28 @@ button {
 
 .code_editor__link:hover {
   text-decoration: underline;
+}
+
+.google__button {
+  width: 191px;
+  height: 46px;
+  display: block;
+  background-image: url('./assets/google/btn_google_signin_dark_normal_web.png');
+}
+
+.google__button:hover {
+  background-image: url('./assets/google/btn_google_signin_dark_focus_web.png');
+}
+
+.google__button:active {
+  background-image: url('./assets/google/btn_google_signin_dark_pressed_web.png');
+}
+
+.google__button--disabled {
+  width: 191px;
+  height: 46px;
+  display: block;
+  background-image: url('./assets/google/btn_google_signin_dark_disabled_web.png');
+  pointer-events: not-allowed;
+  text-decoration: none;
 }

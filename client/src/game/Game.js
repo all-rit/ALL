@@ -23,20 +23,21 @@ import {
   incrementCorrectAnswers,
   incrementIncorrectAnswers,
   startNewRound,
+  updateRoundLength,
   updateHintBoxStatus,
   updateHint,
+  updateHintUsed,
   updateBox,
   updateSoundStatus
 } from './GameActions';
+import { updateCodeEditorStatus } from '../codeeditor/CodeEditorActions';
 
 import Conditional from '../helpers/Conditional';
 
 import Box from './box/Box';
 import HintBox from './hintbox/HintBox';
 import Results from './results/Results';
-import Score from './score/Score';
-import SoundOption from './soundoption/SoundOption';
-import Timer from './timer/Timer';
+import Stats from './stats/Stats';
 
 const mapStateToProps = (state) => {
   return {
@@ -46,11 +47,13 @@ const mapStateToProps = (state) => {
     seconds: state.game.seconds,
     score: state.game.score,
     roundNumber: state.game.roundNumber,
+    roundLength: state.game.roundLength,
     correctAnswers: state.game.correctAnswers,
     incorrectAnswers: state.game.incorrectAnswers,
     correctBoxNumber: state.game.correctBoxNumber,
     currentHint: state.game.currentHint,
     isHintBoxOpen: state.game.isHintBoxOpen,
+    hintUsed: state.game.hintUsed,
     soundEnabled: state.game.soundEnabled
   };
 };
@@ -65,10 +68,13 @@ const mapDispatchToProps = {
   incrementCorrectAnswers,
   incrementIncorrectAnswers,
   startNewRound,
+  updateRoundLength,
   updateHintBoxStatus,
   updateHint,
+  updateHintUsed,
   updateBox,
-  updateSoundStatus
+  updateSoundStatus,
+  updateCodeEditorStatus
 };
 
 class Game extends Component {
@@ -82,18 +88,27 @@ class Game extends Component {
   startGame() {
     const { startGame, endGame, timerTick } = this.props;
 
-    startGame();
-    this.startNewRound();
-    
-    this.timer = setInterval(() => {
-      timerTick();
+    // Log data to database
+    fetch('/game/start', {
+      method: 'POST'
+    }).then((res) => {
+      console.log(res);
 
-      if (this.props.seconds === 0) {
-        endGame();
-        clearInterval(this.timer);
-        clearInterval(this.hintTimer);
-      }
-    }, 1000);
+      startGame();
+      this.startNewRound();
+      
+      this.timer = setInterval(() => {
+        timerTick();
+  
+        if (this.props.seconds === 0) {
+          endGame();
+          clearInterval(this.timer);
+          clearInterval(this.hintTimer);
+        }
+      }, 1000);
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   resetGame() {
@@ -103,7 +118,7 @@ class Game extends Component {
   }
 
   startNewRound() {
-    const { startNewRound, soundEnabled, updateHint } = this.props;
+    const { startNewRound, soundEnabled, updateHint, updateRoundLength, roundLength } = this.props;
 
     if (soundEnabled) {
       this.audio.load();
@@ -111,6 +126,7 @@ class Game extends Component {
 
     startNewRound();
     updateHint();
+    updateRoundLength(0);
 
     this.closeHintBox();
     this.randomizeBox();
@@ -123,6 +139,23 @@ class Game extends Component {
         clearInterval(this.hintTimer);
       }
     }, HINT_TIMER_MILLISECONDS)
+
+    this.roundTimer = setInterval(() => {
+      updateRoundLength(roundLength + 1);
+    }, 1);
+
+    // Log data to database
+    fetch('/game/round', {
+      method: 'POST',
+      headers: new Headers({'content-type': 'application/json'}),
+      body: JSON.stringify({
+        soundOption: soundEnabled
+      })
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   randomizeBox() {
@@ -145,9 +178,10 @@ class Game extends Component {
   }
 
   openHintBox() {
-    const { updateHintBoxStatus, decreaseScore } = this.props;
+    const { updateHintBoxStatus, decreaseScore, updateHintUsed } = this.props;
 
     updateHintBoxStatus(true);
+    updateHintUsed(true);
     decreaseScore();
 
     this.hintBoxTimer = setTimeout(this.closeHintBox.bind(this), HINT_BOX_TIMER_MILLISECONDS);
@@ -167,12 +201,13 @@ class Game extends Component {
   }
 
   validateAnswer(number) {
-    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers } = this.props;
+    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength } = this.props;
 
     const correct = number === correctBoxNumber;
 
     if (correct) {
       clearInterval(this.hintTimer);
+      clearInterval(this.roundTimer);
       this.audio.pause();
       this.startNewRound();
       increaseScore();
@@ -181,6 +216,29 @@ class Game extends Component {
       decreaseScore();
       incrementIncorrectAnswers();
     }
+
+    // Log data to database
+    fetch('/game/choice', {
+      method: 'POST',
+      headers: new Headers({'content-type': 'application/json'}),
+      body: JSON.stringify({
+        score: score,
+        time: roundLength,
+        hintUsed: hintUsed,
+        boxNumber: number,
+        correct: correct
+      })
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+  openCodeEditor() {
+    const { updateCodeEditorStatus } = this.props;
+
+    updateCodeEditorStatus(true);
   }
 
   render() {
@@ -192,28 +250,18 @@ class Game extends Component {
       correctAnswers,
       incorrectAnswers,
       currentHint,
-      isHintBoxOpen,
-      soundEnabled
+      isHintBoxOpen
     } = this.props;
 
     return (
       <div className="game">
         <Conditional if={gameState !== ENDED}>
-          <div className="game__header">
-            <Score score={score} />
-            <Timer seconds={seconds} />
-            <SoundOption enabled={soundEnabled}
-                          onClickHandler={this.toggleSound.bind(this)}
-                          blocked={gameState === STARTED} />
-          </div>
-
-          <div className="game__instructions">
-            <p>Instructions: Find the box with the hidden item</p>
-
-            <Conditional if={gameState === IDLE}>
-              <button onClick={this.startGame.bind(this)} className="game__start_button">Start</button>
-            </Conditional>
-          </div>
+  
+          <Conditional if={gameState === IDLE}>
+            <button onClick={this.openCodeEditor.bind(this)}>Repair</button>
+            <button>How to Play?</button>
+            <button onClick={this.startGame.bind(this)} className="game__start_button">Start</button>
+          </Conditional>
 
           <Conditional if={gameState === STARTED}>
             <HintBox hint={currentHint}
@@ -226,7 +274,14 @@ class Game extends Component {
                 <Box number={3} onClickHandler={this.validateAnswer.bind(this)} />
                 <Box number={4} onClickHandler={this.validateAnswer.bind(this)} />
               </div>
+
+            <Stats score={score}
+                    correctAnswers={correctAnswers}
+                    incorrectAnswers={incorrectAnswers}
+                    roundNumber={roundNumber}
+                    seconds={seconds} />
           </Conditional>
+  
         </Conditional>
 
         <Conditional if={gameState === ENDED}>

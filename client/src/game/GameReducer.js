@@ -8,8 +8,10 @@ import {
   INCREMENT_CORRECT_ANSWERS,
   INCREMENT_INCORRECT_ANSWERS,
   START_NEW_ROUND,
+  UPDATE_ROUND_LENGTH,
   UPDATE_HINT_BOX_STATUS,
   UPDATE_HINT,
+  UPDATE_HINT_USED,
   UPDATE_BOX,
   UPDATE_SOUND_STATUS,
 
@@ -27,11 +29,13 @@ const initialState = {
   seconds: TIMER_SECONDS,
   score: 0,
   roundNumber: 0,
+  roundLength: 0,
   correctAnswers: 0,
   incorrectAnswers: 0,
   correctBoxNumber: undefined,
   currentHint: undefined,
   isHintBoxOpen: false,
+  hintUsed: false,
   soundEnabled: true
 };
 
@@ -59,7 +63,7 @@ export const GameReducer = (state = initialState, action = {}) => {
         ...state,
         seconds: state.seconds - 1
       };
-    
+
     case INCREASE_SCORE:
       return {
         ...state,
@@ -69,15 +73,15 @@ export const GameReducer = (state = initialState, action = {}) => {
     case DECREASE_SCORE:
       return {
         ...state,
-        score: state.score -1
+        score: state.score - 1
       };
-    
+
     case INCREMENT_CORRECT_ANSWERS:
       return {
         ...state,
         correctAnswers: state.correctAnswers + 1
       };
-    
+
     case INCREMENT_INCORRECT_ANSWERS:
       return {
         ...state,
@@ -88,6 +92,12 @@ export const GameReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         roundNumber: state.roundNumber + 1
+      };
+
+    case UPDATE_ROUND_LENGTH:
+      return {
+        ...state,
+        roundLength: action.seconds
       };
 
     case UPDATE_HINT_BOX_STATUS:
@@ -101,13 +111,19 @@ export const GameReducer = (state = initialState, action = {}) => {
         ...state,
         currentHint: action.hint
       };
-    
+
+    case UPDATE_HINT_USED:
+      return {
+        ...state,
+        hintUsed: action.status
+      };
+
     case UPDATE_BOX:
       return {
         ...state,
         correctBoxNumber: action.box
       };
-    
+
     case UPDATE_SOUND_STATUS:
       return {
         ...state,

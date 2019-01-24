@@ -8,8 +8,10 @@ import {
   INCREMENT_CORRECT_ANSWERS,
   INCREMENT_INCORRECT_ANSWERS,
   START_NEW_ROUND,
+  UPDATE_ROUND_LENGTH,
   UPDATE_HINT_BOX_STATUS,
   UPDATE_HINT,
+  UPDATE_HINT_USED,
   UPDATE_BOX,
   UPDATE_SOUND_STATUS
 } from './GameConstants';
@@ -68,6 +70,13 @@ export const startNewRound = () => {
   };
 };
 
+export const updateRoundLength = (seconds) => {
+  return {
+    type: UPDATE_ROUND_LENGTH,
+    seconds
+  };
+};
+
 export const updateHintBoxStatus = (status) => {
   return {
     type: UPDATE_HINT_BOX_STATUS,
@@ -79,6 +88,13 @@ export const updateHint = (hint) => {
   return {
     type: UPDATE_HINT,
     hint
+  };
+};
+
+export const updateHintUsed = (status) => {
+  return {
+    type: UPDATE_HINT_USED,
+    status
   };
 };
 

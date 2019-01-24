@@ -1,6 +1,7 @@
 import {
   UPDATE_CODE,
-  RESET_CODE
+  RESET_CODE,
+  UPDATE_CODE_EDITOR_STATUS
 } from './CodeEditorConstants';
 
 const initialState = {
@@ -8,7 +9,8 @@ const initialState = {
   secondRow: '',
   thirdRow: '',
   fourthRow: '',
-  fifthRow: ''
+  fifthRow: '',
+  codeEditorOpen: false
 };
 
 export const CodeEditorReducer = (state = initialState, action = {}) => {
@@ -25,6 +27,12 @@ export const CodeEditorReducer = (state = initialState, action = {}) => {
     
     case RESET_CODE:
       return initialState;
+    
+    case UPDATE_CODE_EDITOR_STATUS:
+      return {
+        ...state,
+        codeEditorOpen: action.status
+      };
 
     default:
       return state;
