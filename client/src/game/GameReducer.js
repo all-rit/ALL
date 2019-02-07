@@ -19,6 +19,8 @@ import {
   ENDED,
   IDLE,
 
+  MILLISECONDS_IN_A_SECOND,
+  MILLISECONDS_MIN_VALUE,
   TIMER_SECONDS
 } from './GameConstants';
 
@@ -26,7 +28,7 @@ const initialState = {
   gameState: IDLE,
   startedAt: undefined,
   endedAt: undefined,
-  seconds: TIMER_SECONDS,
+  time: TIMER_SECONDS * MILLISECONDS_IN_A_SECOND / MILLISECONDS_MIN_VALUE,
   score: 0,
   roundNumber: 0,
   roundLength: 0,
@@ -61,7 +63,7 @@ export const GameReducer = (state = initialState, action = {}) => {
     case TIMER_TICK:
       return {
         ...state,
-        seconds: state.seconds - 1
+        time: state.time - 1
       };
 
     case INCREASE_SCORE:
@@ -97,7 +99,7 @@ export const GameReducer = (state = initialState, action = {}) => {
     case UPDATE_ROUND_LENGTH:
       return {
         ...state,
-        roundLength: action.seconds
+        roundLength: action.time
       };
 
     case UPDATE_HINT_BOX_STATUS:

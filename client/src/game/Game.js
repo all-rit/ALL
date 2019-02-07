@@ -8,6 +8,7 @@ import {
   STARTED,
   ENDED,
   IDLE,
+  MILLISECONDS_MIN_VALUE,
   HINT_TIMER_MILLISECONDS,
   HINT_BOX_TIMER_MILLISECONDS,
   POSSIBLE_HINTS,
@@ -44,7 +45,7 @@ const mapStateToProps = (state) => {
     gameState: state.game.gameState,
     startedAt: state.game.startedAt,
     endedAt: state.game.endedAt,
-    seconds: state.game.seconds,
+    time: state.game.time,
     score: state.game.score,
     roundNumber: state.game.roundNumber,
     roundLength: state.game.roundLength,
@@ -100,12 +101,12 @@ class Game extends Component {
       this.timer = setInterval(() => {
         timerTick();
   
-        if (this.props.seconds === 0) {
+        if (this.props.time === 0) {
           endGame();
           clearInterval(this.timer);
           clearInterval(this.hintTimer);
         }
-      }, 1000);
+      }, MILLISECONDS_MIN_VALUE);
     }).catch((err) => {
       console.log(err);
     })
@@ -244,7 +245,7 @@ class Game extends Component {
   render() {
     const { 
       gameState,
-      seconds,
+      time,
       score,
       roundNumber,
       correctAnswers,
@@ -279,7 +280,7 @@ class Game extends Component {
                     correctAnswers={correctAnswers}
                     incorrectAnswers={incorrectAnswers}
                     roundNumber={roundNumber}
-                    seconds={seconds} />
+                    time={time} />
           </Conditional>
   
         </Conditional>

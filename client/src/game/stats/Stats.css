@@ -31,5 +31,5 @@
   background-color: #6BFF89;
   width: 100%;
   height: 1rem;
-  transition: width 1s;
+  transition: width ease-in;
 }

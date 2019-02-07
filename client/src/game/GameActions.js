@@ -70,10 +70,10 @@ export const startNewRound = () => {
   };
 };
 
-export const updateRoundLength = (seconds) => {
+export const updateRoundLength = (time) => {
   return {
     type: UPDATE_ROUND_LENGTH,
-    seconds
+    time
   };
 };
 
