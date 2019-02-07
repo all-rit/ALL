@@ -2,6 +2,10 @@ import {
   START_GAME,
   END_GAME,
   RESET_GAME,
+  UPDATE_GAME_STATE,
+  START_COUNTDOWN,
+  RESET_COUNTDOWN_TIMER,
+  COUNTDOWN_TIMER_TICK,
   TIMER_TICK,
   INCREASE_SCORE,
   DECREASE_SCORE,
@@ -15,13 +19,15 @@ import {
   UPDATE_BOX,
   UPDATE_SOUND_STATUS,
 
-  STARTED,
+  PLAYING,
   ENDED,
   IDLE,
+  COUNTDOWN,
 
   MILLISECONDS_IN_A_SECOND,
   MILLISECONDS_MIN_VALUE,
-  TIMER_SECONDS
+  TIMER_SECONDS,
+  COUNTDOWN_SECONDS
 } from './GameConstants';
 
 const initialState = {
@@ -29,6 +35,7 @@ const initialState = {
   startedAt: undefined,
   endedAt: undefined,
   time: TIMER_SECONDS * MILLISECONDS_IN_A_SECOND / MILLISECONDS_MIN_VALUE,
+  countdownTime: COUNTDOWN_SECONDS,
   score: 0,
   roundNumber: 0,
   roundLength: 0,
@@ -46,7 +53,7 @@ export const GameReducer = (state = initialState, action = {}) => {
     case START_GAME:
       return {
         ...state,
-        gameState: STARTED,
+        gameState: PLAYING,
         startedAt: new Date().getTime()
       };
 
@@ -59,6 +66,30 @@ export const GameReducer = (state = initialState, action = {}) => {
 
     case RESET_GAME:
       return initialState;
+
+    case UPDATE_GAME_STATE:
+      return {
+        ...state,
+        gameState: action.gameState
+      };
+
+    case START_COUNTDOWN:
+      return {
+        ...state,
+        gameState: COUNTDOWN
+      };
+
+    case RESET_COUNTDOWN_TIMER:
+      return {
+        ...state,
+        countdownTime: COUNTDOWN_SECONDS
+      };
+
+    case COUNTDOWN_TIMER_TICK:
+      return {
+        ...state,
+        countdownTime: state.countdownTime - 1
+      };
 
     case TIMER_TICK:
       return {

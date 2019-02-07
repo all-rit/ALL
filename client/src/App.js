@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import { login } from './AppActions';
-import { STARTED, ENDED } from './game/GameConstants';
+import { PLAYING, ENDED } from './game/GameConstants';
 import { startGame, updateSoundStatus } from './game/GameActions';
 import { updateCodeEditorStatus } from './codeeditor/CodeEditorActions';
 
@@ -74,11 +74,11 @@ class App extends Component {
         <div className="app__header">
           <div className="app_column text-left">
             <Conditional if={!user.FirstName}>
-              <Conditional if={gameState === STARTED}>
+              <Conditional if={gameState === PLAYING}>
                 <div className="google__button--disabled"></div>
               </Conditional>
               
-              <Conditional if={gameState !== STARTED}>
+              <Conditional if={gameState !== PLAYING}>
                 <a href="http://localhost:5000/auth/google"><div className="google__button"></div></a>
               </Conditional>
             </Conditional>
@@ -86,7 +86,7 @@ class App extends Component {
           <div className="app_column text-right">
             <SoundOption enabled={soundEnabled}
                           onClickHandler={this.toggleSound.bind(this)}
-                          blocked={gameState === STARTED} />
+                          blocked={gameState === PLAYING} />
           </div>
         </div>
 
@@ -98,7 +98,7 @@ class App extends Component {
 
         <Game></Game>
 
-        <Conditional if={codeEditorOpen && gameState !== STARTED}>
+        <Conditional if={codeEditorOpen && gameState !== PLAYING}>
           <CodeEditor closeHandler={this.closeCodeEditor.bind(this)}></CodeEditor>
         </Conditional>
       </div>

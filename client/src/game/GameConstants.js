@@ -1,6 +1,10 @@
 export const START_GAME = 'START_GAME';
 export const END_GAME = 'END_GAME';
 export const RESET_GAME = 'RESET_GAME';
+export const UPDATE_GAME_STATE = 'UPDATE_GAME_STATE';
+export const START_COUNTDOWN = 'START_COUNTDOWN';
+export const RESET_COUNTDOWN_TIMER = 'RESET_COUNTDOWN_TIMER';
+export const COUNTDOWN_TIMER_TICK = 'COUNTDOWN_TIMER_TICK';
 export const TIMER_TICK = 'TIMER_TICK';
 export const INCREASE_SCORE = 'INCREASE_SCORE';
 export const DECREASE_SCORE = 'DECREASE_SCORE';
@@ -16,13 +20,15 @@ export const UPDATE_SOUND_STATUS = 'UPDATE_SOUND_STATUS';
 
 // Game States
 export const IDLE = 'IDLE';
-export const STARTED = 'STARTED';
+export const PLAYING = 'PLAYING';
+export const COUNTDOWN = 'COUNTDOWN';
 export const ENDED = 'ENDED';
 
 // Default Values
 export const MILLISECONDS_IN_A_SECOND = 1000;
 export const MILLISECONDS_MIN_VALUE = 10;
 
+export const COUNTDOWN_SECONDS = 3;
 export const TIMER_SECONDS = 30;
 export const HINT_TIMER_MILLISECONDS = 3 * 1000; // hint is attempted to be randomized every x seconds
 export const HINT_BOX_TIMER_MILLISECONDS = 3 * 1000; // hint box collapses after x seconds

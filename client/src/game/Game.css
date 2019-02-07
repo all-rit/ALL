@@ -39,3 +39,7 @@
 .game__start_button {
   background-color: #6BFF89;
 }
+
+.game__countdown {
+  font-size: 5rem;
+}

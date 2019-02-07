@@ -5,9 +5,12 @@ import './Game.css';
 import BuzzSound from './buzz.wav';
 
 import {
-  STARTED,
+  PLAYING,
   ENDED,
   IDLE,
+  COUNTDOWN,
+
+  MILLISECONDS_IN_A_SECOND,
   MILLISECONDS_MIN_VALUE,
   HINT_TIMER_MILLISECONDS,
   HINT_BOX_TIMER_MILLISECONDS,
@@ -18,6 +21,10 @@ import {
   startGame,
   endGame,
   resetGame,
+  updateGameState,
+  startCountdown,
+  resetCountdownTimer,
+  countdownTimerTick,
   timerTick,
   increaseScore,
   decreaseScore,
@@ -46,6 +53,7 @@ const mapStateToProps = (state) => {
     startedAt: state.game.startedAt,
     endedAt: state.game.endedAt,
     time: state.game.time,
+    countdownTime: state.game.countdownTime,
     score: state.game.score,
     roundNumber: state.game.roundNumber,
     roundLength: state.game.roundLength,
@@ -63,6 +71,10 @@ const mapDispatchToProps = {
   startGame,
   endGame,
   resetGame,
+  updateGameState,
+  startCountdown,
+  resetCountdownTimer,
+  countdownTimerTick,
   timerTick,
   increaseScore,
   decreaseScore,
@@ -87,7 +99,7 @@ class Game extends Component {
   }
 
   startGame() {
-    const { startGame, endGame, timerTick } = this.props;
+    const { startGame, endGame, timerTick, COUNTDOWN } = this.props;
 
     // Log data to database
     fetch('/game/start', {
@@ -99,7 +111,9 @@ class Game extends Component {
       this.startNewRound();
       
       this.timer = setInterval(() => {
-        timerTick();
+        if (this.props.gameState !== COUNTDOWN) {
+          timerTick();
+        }
   
         if (this.props.time === 0) {
           endGame();
@@ -116,6 +130,38 @@ class Game extends Component {
     const { resetGame } = this.props;
 
     resetGame();
+  }
+
+  startCountdown() {
+    const { startCountdown, countdownTimerTick } = this.props;
+
+    startCountdown();
+
+    this.countdownTimer = setInterval(() => {
+      countdownTimerTick();
+
+      if (this.props.countdownTime === 0) {
+        this.startGame();
+        clearInterval(this.countdownTimer);
+      }
+    }, MILLISECONDS_IN_A_SECOND);
+  }
+
+  roundCountdown() {
+    const { startCountdown, countdownTimerTick, resetCountdownTimer } = this.props;
+
+    resetCountdownTimer();
+    startCountdown();
+
+    this.countdownTimer = setInterval(() => {
+      countdownTimerTick();
+
+      if (this.props.countdownTime === 0) {
+        this.startNewRound();
+        clearInterval(this.countdownTimer);
+        this.props.updateGameState(PLAYING);
+      }
+    }, MILLISECONDS_IN_A_SECOND);
   }
 
   startNewRound() {
@@ -210,7 +256,7 @@ class Game extends Component {
       clearInterval(this.hintTimer);
       clearInterval(this.roundTimer);
       this.audio.pause();
-      this.startNewRound();
+      this.roundCountdown();
       increaseScore();
       incrementCorrectAnswers();
     } else {
@@ -246,6 +292,7 @@ class Game extends Component {
     const { 
       gameState,
       time,
+      countdownTime,
       score,
       roundNumber,
       correctAnswers,
@@ -261,10 +308,16 @@ class Game extends Component {
           <Conditional if={gameState === IDLE}>
             <button onClick={this.openCodeEditor.bind(this)}>Repair</button>
             <button>How to Play?</button>
-            <button onClick={this.startGame.bind(this)} className="game__start_button">Start</button>
+            <button onClick={this.startCountdown.bind(this)} className="game__start_button">Start</button>
           </Conditional>
 
-          <Conditional if={gameState === STARTED}>
+          <Conditional if={gameState === COUNTDOWN}>
+            <div className="game__countdown">
+              { countdownTime }
+            </div>
+          </Conditional>
+
+          <Conditional if={gameState === PLAYING}>
             <HintBox hint={currentHint}
                       isExtended={isHintBoxOpen}
                       onClickHandler={this.openHintBox.bind(this)} />
@@ -275,7 +328,9 @@ class Game extends Component {
                 <Box number={3} onClickHandler={this.validateAnswer.bind(this)} />
                 <Box number={4} onClickHandler={this.validateAnswer.bind(this)} />
               </div>
+          </Conditional>
 
+          <Conditional if={gameState !== IDLE}>
             <Stats score={score}
                     correctAnswers={correctAnswers}
                     incorrectAnswers={incorrectAnswers}

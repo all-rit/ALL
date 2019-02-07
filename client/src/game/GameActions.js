@@ -2,6 +2,10 @@ import {
   START_GAME,
   END_GAME,
   RESET_GAME,
+  UPDATE_GAME_STATE,
+  START_COUNTDOWN,
+  RESET_COUNTDOWN_TIMER,
+  COUNTDOWN_TIMER_TICK,
   TIMER_TICK,
   INCREASE_SCORE,
   DECREASE_SCORE,
@@ -31,6 +35,31 @@ export const endGame = () => {
 export const resetGame = () => {
   return {
     type: RESET_GAME
+  };
+};
+
+export const updateGameState = (gameState) => {
+  return {
+    type: UPDATE_GAME_STATE,
+    gameState
+  };
+};
+
+export const startCountdown = () => {
+  return {
+    type: START_COUNTDOWN
+  };
+};
+
+export const resetCountdownTimer = () => {
+  return {
+    type: RESET_COUNTDOWN_TIMER
+  };
+};
+
+export const countdownTimerTick = () => {
+  return {
+    type: COUNTDOWN_TIMER_TICK
   };
 };
 
