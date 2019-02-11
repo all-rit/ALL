@@ -3,7 +3,7 @@ export const RESET_CODE = 'RESET_CODE';
 export const UPDATE_CODE_EDITOR_STATUS = 'UPDATE_CODE_EDITOR_STATUS';
 
 // Default Values
-export const CODE_BLOCK =
+export const CODE_BLOCK1 =
 `import React, { Component } from 'react';
 
 class HintBox extends Component {
@@ -11,14 +11,14 @@ class HintBox extends Component {
     let { hint, isExtended } = this.props;
     let content = "?";
 
-    // Check if hint is empty
-    
-    // Update the variable 'content' to "Available Hint here!"
-    
-    // Otherwise, update the variable 'content' to "No Available Hint yet..."
-    
-    
-    
+    // Check if hint is empty`;
+export const CODE_BLOCK2 =
+`    // Update the variable 'content' to "Available Hint here!"`;
+export const CODE_BLOCK3 =
+`    // Otherwise, update the variable 'content' to "No Available Hint yet..."
+    } else {`;
+export const CODE_BLOCK4 =
+`    }
     
     return (
       <div>
@@ -29,3 +29,7 @@ class HintBox extends Component {
 }
 
 export default HintBox;`;
+
+export const CODE_BLOCK_ANSWER1 = `    if () {`;
+export const CODE_BLOCK_ANSWER2 = `        content = '';`;
+export const CODE_BLOCK_ANSWER3 = `        content = '';`;

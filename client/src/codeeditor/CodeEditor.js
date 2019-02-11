@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
+import TextareaAutosize from 'react-autosize-textarea';
 import { connect } from 'react-redux';
 import './CodeEditor.css';
 
-import CodeMirror from '@uiw/react-codemirror';
-import 'codemirror/keymap/sublime';
-import 'codemirror/theme/monokai.css';
-
-import { CODE_BLOCK } from './CodeEditorConstants';
+import { CODE_BLOCK1, CODE_BLOCK2, CODE_BLOCK3, CODE_BLOCK4 } from './CodeEditorConstants';
 import {
   updateCode,
   resetCode
@@ -16,9 +13,7 @@ const mapStateToProps = (state) => {
   return {
     firstRow: state.code.firstRow,
     secondRow: state.code.secondRow,
-    thirdRow: state.code.thirdRow,
-    fourthRow: state.code.fourthRow,
-    fifthRow: state.code.fifthRow,
+    thirdRow: state.code.thirdRow
   };
 };
 
@@ -28,54 +23,53 @@ const mapDispatchToProps = {
 };
 
 class CodeEditor extends Component {
-  componentDidMount() {
-    this.editor.markText({line: 0, ch: 0}, {line: 8, ch: 0}, {readOnly: true});
-    this.editor.markText({line: 9, ch: 0}, {line: 10, ch: 0}, {readOnly: true});
-    this.editor.markText({line: 11, ch: 0}, {line: 12, ch: 0}, {readOnly: true});
-    this.editor.markText({line: 15, ch: 0}, {line: 25, ch: 0}, {readOnly: true});
-    this.editor.focus();
-    this.editor.setCursor({line: 8, ch: 4});
+  constructor(props) {
+    super(props);
 
-    this.editor.on('update', () => {
-      this.props.updateCode(
-        this.editor.getLine(8),
-        this.editor.getLine(10),
-        this.editor.getLine(12),
-        this.editor.getLine(13),
-        this.editor.getLine(14));
-    });
+    this.firstRow = React.createRef();
+    this.secondRow = React.createRef();
+    this.thirdRow = React.createRef();
   }
 
   handleClick() {
     this.props.closeHandler();
   }
 
-  getInstance = (instance) => {
-    if (instance) {
-      this.codemirror = instance.codemirror;
-      this.editor = instance.editor;
-    }
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const { updateCode } = this.props;
+
+    updateCode(this.firstRow.current.value, this.secondRow.current.value, this.thirdRow.current.value);
+    this.props.closeHandler();
   }
 
   render() {
+    const { firstRow, secondRow, thirdRow } = this.props;
+
     return (
       <div className="code_editor">
         <div className="code_editor__content">
-          <div className="code_editor__file">HintBox.js</div>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <div className="code_editor__file">HintBox.js</div>
 
-          <CodeMirror value={CODE_BLOCK}
-                      ref={this.getInstance}
-                      options={{
-                        theme: 'monokai',
-                        keyMap: 'sublime',
-                        mode: 'jsx',
-                      }} />
+            <div className="code_editor__code">
+              <TextareaAutosize className="code_editor__code_block" value={CODE_BLOCK1} readOnly></TextareaAutosize>
+              <input type="text" defaultValue={firstRow} ref={this.firstRow} />
+              <TextareaAutosize className="code_editor__code_block" value={CODE_BLOCK2} readOnly></TextareaAutosize>
+              <input type="text" defaultValue={secondRow} ref={this.secondRow} />
+              <TextareaAutosize className="code_editor__code_block" value={CODE_BLOCK3} readOnly></TextareaAutosize>
+              <input type="text" defaultValue={thirdRow} ref={this.thirdRow} />
+              <TextareaAutosize className="code_editor__code_block" value={CODE_BLOCK4} readOnly></TextareaAutosize>
+            </div>
 
-          <div className="code_editor__buttons">
-            <button onClick={this.handleClick.bind(this)}>Cancel</button>
-            <button className="code_editor__update">Update</button>
-          </div>
+            <div className="code_editor__buttons">
+              <button type="submit" className="code_editor__update">Update</button>
+            </div>
+          </form>
         </div>
+
+        <div className="code_editor__background" onClick={this.handleClick.bind(this)}></div>
       </div>
     );
   }

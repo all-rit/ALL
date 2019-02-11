@@ -4,14 +4,12 @@ import {
   UPDATE_CODE_EDITOR_STATUS
 } from './CodeEditorConstants';
 
-export const updateCode = (firstRow, secondRow, thirdRow, fourthRow, fifthRow) => {
+export const updateCode = (firstRow, secondRow, thirdRow) => {
   return {
     type: UPDATE_CODE,
     firstRow,
     secondRow,
-    thirdRow,
-    fourthRow,
-    fifthRow
+    thirdRow
   };
 };
 

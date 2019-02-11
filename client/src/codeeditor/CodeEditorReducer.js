@@ -1,15 +1,17 @@
 import {
   UPDATE_CODE,
   RESET_CODE,
-  UPDATE_CODE_EDITOR_STATUS
+  UPDATE_CODE_EDITOR_STATUS,
+
+  CODE_BLOCK_ANSWER1,
+  CODE_BLOCK_ANSWER2,
+  CODE_BLOCK_ANSWER3
 } from './CodeEditorConstants';
 
 const initialState = {
-  firstRow: '',
-  secondRow: '',
-  thirdRow: '',
-  fourthRow: '',
-  fifthRow: '',
+  firstRow: CODE_BLOCK_ANSWER1,
+  secondRow: CODE_BLOCK_ANSWER2,
+  thirdRow: CODE_BLOCK_ANSWER3,
   codeEditorOpen: false
 };
 
@@ -20,9 +22,7 @@ export const CodeEditorReducer = (state = initialState, action = {}) => {
         ...state,
         firstRow: action.firstRow,
         secondRow: action.secondRow,
-        thirdRow: action.thirdRow,
-        fourthRow: action.fourthRow,
-        fifthRow: action.fifthRow
+        thirdRow: action.thirdRow
       };
     
     case RESET_CODE:
