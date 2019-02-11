@@ -126,10 +126,11 @@ class Game extends Component {
           timerTick();
         }
   
-        if (this.props.time === 0) {
+        if (this.props.time <= 0) {
           endGame();
           clearInterval(this.timer);
           clearInterval(this.hintTimer);
+          clearInterval(this.countdownTimer);
         }
       }, MILLISECONDS_MIN_VALUE);
     }).catch((err) => {
@@ -263,7 +264,7 @@ class Game extends Component {
   }
 
   validateAnswer(number) {
-    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength, updateBoxStatus } = this.props;
+    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength, updateBoxStatus, gameState } = this.props;
 
     const correct = number === correctBoxNumber;
 
@@ -276,8 +277,8 @@ class Game extends Component {
       incrementCorrectAnswers();
 
       setTimeout(() => {
-        this.roundCountdown();
-      }, MILLISECONDS_IN_A_SECOND * 2);
+          this.roundCountdown();
+      }, 200);
     } else {
       updateBoxStatus(number, BOX_INCORRECT);
       decreaseScore();
