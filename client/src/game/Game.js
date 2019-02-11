@@ -308,6 +308,10 @@ class Game extends Component {
     updateCodeEditorStatus(true);
   }
 
+  openInstructions() {
+    console.log('open!')
+  }
+
   render() {
     const { 
       gameState,
@@ -322,7 +326,7 @@ class Game extends Component {
       boxes
     } = this.props;
     const boxesList = Object.keys(boxes).map(key => {
-      return <Box number={parseInt(key)} onClickHandler={this.validateAnswer.bind(this)} state={boxes[key]}></Box>
+      return <Box key={key} number={parseInt(key)} onClickHandler={this.validateAnswer.bind(this)} state={boxes[key]}></Box>
     });
 
     return (
@@ -331,7 +335,7 @@ class Game extends Component {
   
           <Conditional if={gameState === IDLE}>
             <button onClick={this.openCodeEditor.bind(this)}>Repair</button>
-            <button>How to Play?</button>
+            <button onClick={this.openInstructions.bind(this)}>How to Play?</button>
             <button onClick={this.startCountdown.bind(this)} className="game__start_button">Start</button>
           </Conditional>
 
