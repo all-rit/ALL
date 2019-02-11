@@ -14,6 +14,9 @@ import {
   HINT_BOX_THINKING,
   HINT_BOX_OPEN,
 
+  BOX_CORRECT,
+  BOX_INCORRECT,
+
   MILLISECONDS_IN_A_SECOND,
   MILLISECONDS_MIN_VALUE,
   HINT_TIMER_MILLISECONDS,
@@ -41,6 +44,7 @@ import {
   updateHint,
   updateHintUsed,
   updateBox,
+  updateBoxStatus,
   updateSoundStatus
 } from './GameActions';
 import { updateCodeEditorStatus } from '../codeeditor/CodeEditorActions';
@@ -68,7 +72,8 @@ const mapStateToProps = (state) => {
     currentHint: state.game.currentHint,
     hintBoxState: state.game.hintBoxState,
     hintUsed: state.game.hintUsed,
-    soundEnabled: state.game.soundEnabled
+    soundEnabled: state.game.soundEnabled,
+    boxes: state.game.boxes
   };
 };
 
@@ -91,6 +96,7 @@ const mapDispatchToProps = {
   updateHint,
   updateHintUsed,
   updateBox,
+  updateBoxStatus,
   updateSoundStatus,
   updateCodeEditorStatus
 };
@@ -257,18 +263,23 @@ class Game extends Component {
   }
 
   validateAnswer(number) {
-    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength } = this.props;
+    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength, updateBoxStatus } = this.props;
 
     const correct = number === correctBoxNumber;
 
     if (correct) {
+      updateBoxStatus(number, BOX_CORRECT);
       clearInterval(this.hintTimer);
       clearInterval(this.roundTimer);
       this.audio.pause();
-      this.roundCountdown();
       increaseScore();
       incrementCorrectAnswers();
+
+      setTimeout(() => {
+        this.roundCountdown();
+      }, MILLISECONDS_IN_A_SECOND * 2);
     } else {
+      updateBoxStatus(number, BOX_INCORRECT);
       decreaseScore();
       incrementIncorrectAnswers();
     }
@@ -307,8 +318,12 @@ class Game extends Component {
       correctAnswers,
       incorrectAnswers,
       currentHint,
-      hintBoxState
+      hintBoxState,
+      boxes
     } = this.props;
+    const boxesList = Object.keys(boxes).map(key => {
+      return <Box number={parseInt(key)} onClickHandler={this.validateAnswer.bind(this)} state={boxes[key]}></Box>
+    });
 
     return (
       <div className="game">
@@ -332,10 +347,7 @@ class Game extends Component {
                       onClickHandler={this.openHintBox.bind(this)} />
               
               <div className="game__boxes">
-                <Box number={1} onClickHandler={this.validateAnswer.bind(this)} />
-                <Box number={2} onClickHandler={this.validateAnswer.bind(this)} />
-                <Box number={3} onClickHandler={this.validateAnswer.bind(this)} />
-                <Box number={4} onClickHandler={this.validateAnswer.bind(this)} />
+                { boxesList }
               </div>
           </Conditional>
 

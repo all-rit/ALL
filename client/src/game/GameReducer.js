@@ -1,3 +1,5 @@
+import update from 'immutability-helper';
+
 import {
   START_GAME,
   END_GAME,
@@ -17,6 +19,7 @@ import {
   UPDATE_HINT,
   UPDATE_HINT_USED,
   UPDATE_BOX,
+  UPDATE_BOX_STATUS,
   UPDATE_SOUND_STATUS,
 
   PLAYING,
@@ -29,7 +32,8 @@ import {
   MILLISECONDS_IN_A_SECOND,
   MILLISECONDS_MIN_VALUE,
   TIMER_SECONDS,
-  COUNTDOWN_SECONDS
+  COUNTDOWN_SECONDS,
+  BOX_DEFAULT_VALUES
 } from './GameConstants';
 
 const initialState = {
@@ -47,7 +51,8 @@ const initialState = {
   currentHint: undefined,
   hintBoxState: HINT_BOX_CLOSED,
   hintUsed: false,
-  soundEnabled: true
+  soundEnabled: true,
+  boxes: BOX_DEFAULT_VALUES
 };
 
 export const GameReducer = (state = initialState, action = {}) => {
@@ -126,7 +131,8 @@ export const GameReducer = (state = initialState, action = {}) => {
     case START_NEW_ROUND:
       return {
         ...state,
-        roundNumber: state.roundNumber + 1
+        roundNumber: state.roundNumber + 1,
+        boxes: BOX_DEFAULT_VALUES
       };
 
     case UPDATE_ROUND_LENGTH:
@@ -158,6 +164,15 @@ export const GameReducer = (state = initialState, action = {}) => {
         ...state,
         correctBoxNumber: action.box
       };
+
+    case UPDATE_BOX_STATUS:
+      return update(state, {
+        boxes: {
+          [action.box]: {
+            $set: action.status
+          }
+        }
+      });
 
     case UPDATE_SOUND_STATUS:
       return {
