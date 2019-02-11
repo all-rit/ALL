@@ -4,11 +4,12 @@ import './App.css';
 
 import { login } from './AppActions';
 import { PLAYING, ENDED } from './game/GameConstants';
-import { startGame, updateSoundStatus } from './game/GameActions';
+import { startGame, updateSoundStatus, updateInstructionsStatus } from './game/GameActions';
 import { updateCodeEditorStatus } from './codeeditor/CodeEditorActions';
 
 import Game from './game/Game';
 import SoundOption from './game/soundoption/SoundOption';
+import Instructions from './game/instructions/Instructions';
 import CodeEditor from './codeeditor/CodeEditor';
 
 import Conditional from './helpers/Conditional';
@@ -18,7 +19,8 @@ const mapStateToProps = (state) => {
     gameState: state.game.gameState,
     user: state.app.user,
     soundEnabled: state.game.soundEnabled,
-    codeEditorOpen: state.code.codeEditorOpen
+    codeEditorOpen: state.code.codeEditorOpen,
+    instructionsOpen: state.game.instructionsOpen
   };
 };
 
@@ -26,7 +28,8 @@ const mapDispatchToProps = {
   login,
   startGame, 
   updateSoundStatus,
-  updateCodeEditorStatus
+  updateCodeEditorStatus,
+  updateInstructionsStatus
 };
 
 class App extends Component {
@@ -67,8 +70,14 @@ class App extends Component {
     updateCodeEditorStatus(false);
   }
 
+  closeInstructions() {
+    const { updateInstructionsStatus } = this.props;
+
+    updateInstructionsStatus(false);
+  }
+
   render() {
-    const { gameState, soundEnabled, codeEditorOpen, user } = this.props;
+    const { gameState, soundEnabled, codeEditorOpen, user, instructionsOpen } = this.props;
     return (
       <div className="app">
         <div className="app__header">
@@ -100,6 +109,10 @@ class App extends Component {
 
         <Conditional if={codeEditorOpen && gameState !== PLAYING}>
           <CodeEditor closeHandler={this.closeCodeEditor.bind(this)}></CodeEditor>
+        </Conditional>
+
+        <Conditional if={instructionsOpen && gameState !== PLAYING}>
+          <Instructions closeHandler={this.closeInstructions.bind(this)}></Instructions>
         </Conditional>
       </div>
     );

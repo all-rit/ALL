@@ -45,7 +45,8 @@ import {
   updateHintUsed,
   updateBox,
   updateBoxStatus,
-  updateSoundStatus
+  updateSoundStatus,
+  updateInstructionsStatus
 } from './GameActions';
 import { updateCodeEditorStatus } from '../codeeditor/CodeEditorActions';
 
@@ -98,7 +99,8 @@ const mapDispatchToProps = {
   updateBox,
   updateBoxStatus,
   updateSoundStatus,
-  updateCodeEditorStatus
+  updateCodeEditorStatus,
+  updateInstructionsStatus
 };
 
 class Game extends Component {
@@ -264,7 +266,7 @@ class Game extends Component {
   }
 
   validateAnswer(number) {
-    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength, updateBoxStatus, gameState } = this.props;
+    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength, updateBoxStatus } = this.props;
 
     const correct = number === correctBoxNumber;
 
@@ -310,7 +312,9 @@ class Game extends Component {
   }
 
   openInstructions() {
-    console.log('open!')
+    const { updateInstructionsStatus } = this.props;
+
+    updateInstructionsStatus(true);
   }
 
   render() {

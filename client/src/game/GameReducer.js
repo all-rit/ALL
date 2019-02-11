@@ -21,6 +21,7 @@ import {
   UPDATE_BOX,
   UPDATE_BOX_STATUS,
   UPDATE_SOUND_STATUS,
+  UPDATE_INSTRUCTIONS_STATUS,
 
   PLAYING,
   ENDED,
@@ -52,7 +53,8 @@ const initialState = {
   hintBoxState: HINT_BOX_CLOSED,
   hintUsed: false,
   soundEnabled: true,
-  boxes: BOX_DEFAULT_VALUES
+  boxes: BOX_DEFAULT_VALUES,
+  instructionsOpen: false
 };
 
 export const GameReducer = (state = initialState, action = {}) => {
@@ -178,6 +180,12 @@ export const GameReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         soundEnabled: action.status
+      };
+
+    case UPDATE_INSTRUCTIONS_STATUS:
+      return {
+        ...state,
+        instructionsOpen: action.status
       };
 
     default:

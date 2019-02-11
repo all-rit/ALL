@@ -18,7 +18,8 @@ import {
   UPDATE_HINT_USED,
   UPDATE_BOX,
   UPDATE_BOX_STATUS,
-  UPDATE_SOUND_STATUS
+  UPDATE_SOUND_STATUS,
+  UPDATE_INSTRUCTIONS_STATUS
 } from './GameConstants';
 
 export const startGame = () => {
@@ -146,6 +147,13 @@ export const updateBoxStatus = (box, status) => {
 export const updateSoundStatus = (status) => {
   return {
     type: UPDATE_SOUND_STATUS,
+    status
+  };
+};
+
+export const updateInstructionsStatus = (status) => {
+  return {
+    type: UPDATE_INSTRUCTIONS_STATUS,
     status
   };
 };
