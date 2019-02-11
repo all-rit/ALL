@@ -9,6 +9,7 @@
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.2",
+    "react-spinners": "^0.5.1",
     "redux": "^4.0.1"
   },
   "scripts": {

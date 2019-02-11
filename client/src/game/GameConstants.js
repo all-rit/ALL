@@ -24,14 +24,20 @@ export const PLAYING = 'PLAYING';
 export const COUNTDOWN = 'COUNTDOWN';
 export const ENDED = 'ENDED';
 
+// Hint Box States
+export const HINT_BOX_OPEN = 'HINT_BOX_OPEN';
+export const HINT_BOX_CLOSED = 'HINT_BOX_CLOSED';
+export const HINT_BOX_THINKING = 'HINT_BOX_THINKING';
+
 // Default Values
 export const MILLISECONDS_IN_A_SECOND = 1000;
 export const MILLISECONDS_MIN_VALUE = 10;
 
 export const COUNTDOWN_SECONDS = 3;
-export const TIMER_SECONDS = 30;
+export const TIMER_SECONDS = 300;
 export const HINT_TIMER_MILLISECONDS = 3 * 1000; // hint is attempted to be randomized every x seconds
 export const HINT_BOX_TIMER_MILLISECONDS = 3 * 1000; // hint box collapses after x seconds
+export const HINT_BOX_THINKING_TIMER_MILLISECONDS = 3 * 1000; // hint box thinks before displaying hint
 export const POSSIBLE_HINTS = [
   'The box is an odd number.',
   'The box is an even number.',

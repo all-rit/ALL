@@ -10,10 +10,15 @@ import {
   IDLE,
   COUNTDOWN,
 
+  HINT_BOX_CLOSED,
+  HINT_BOX_THINKING,
+  HINT_BOX_OPEN,
+
   MILLISECONDS_IN_A_SECOND,
   MILLISECONDS_MIN_VALUE,
   HINT_TIMER_MILLISECONDS,
   HINT_BOX_TIMER_MILLISECONDS,
+  HINT_BOX_THINKING_TIMER_MILLISECONDS,
   POSSIBLE_HINTS,
   BOX_HINT_COMBINATIONS
 } from './GameConstants';
@@ -61,7 +66,7 @@ const mapStateToProps = (state) => {
     incorrectAnswers: state.game.incorrectAnswers,
     correctBoxNumber: state.game.correctBoxNumber,
     currentHint: state.game.currentHint,
-    isHintBoxOpen: state.game.isHintBoxOpen,
+    hintBoxState: state.game.hintBoxState,
     hintUsed: state.game.hintUsed,
     soundEnabled: state.game.soundEnabled
   };
@@ -99,7 +104,7 @@ class Game extends Component {
   }
 
   startGame() {
-    const { startGame, endGame, timerTick, COUNTDOWN } = this.props;
+    const { startGame, endGame, timerTick } = this.props;
 
     // Log data to database
     fetch('/game/start', {
@@ -227,18 +232,22 @@ class Game extends Component {
   openHintBox() {
     const { updateHintBoxStatus, decreaseScore, updateHintUsed } = this.props;
 
-    updateHintBoxStatus(true);
+    updateHintBoxStatus(HINT_BOX_THINKING);
     updateHintUsed(true);
     decreaseScore();
 
-    this.hintBoxTimer = setTimeout(this.closeHintBox.bind(this), HINT_BOX_TIMER_MILLISECONDS);
+    this.hintBoxThinkingTimer = setTimeout(() => {
+      updateHintBoxStatus(HINT_BOX_OPEN);
+
+      this.hintBoxTimer = setTimeout(this.closeHintBox.bind(this), HINT_BOX_TIMER_MILLISECONDS);
+    }, HINT_BOX_THINKING_TIMER_MILLISECONDS);
   }
 
   closeHintBox() {
     const { updateHintBoxStatus } = this.props;
 
     clearTimeout(this.hintBoxTimer);
-    updateHintBoxStatus(false);
+    updateHintBoxStatus(HINT_BOX_CLOSED);
   }
 
   toggleSound() {
@@ -298,7 +307,7 @@ class Game extends Component {
       correctAnswers,
       incorrectAnswers,
       currentHint,
-      isHintBoxOpen
+      hintBoxState
     } = this.props;
 
     return (
@@ -319,7 +328,7 @@ class Game extends Component {
 
           <Conditional if={gameState === PLAYING}>
             <HintBox hint={currentHint}
-                      isExtended={isHintBoxOpen}
+                      state={hintBoxState}
                       onClickHandler={this.openHintBox.bind(this)} />
               
               <div className="game__boxes">

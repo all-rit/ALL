@@ -24,6 +24,8 @@ import {
   IDLE,
   COUNTDOWN,
 
+  HINT_BOX_CLOSED,
+
   MILLISECONDS_IN_A_SECOND,
   MILLISECONDS_MIN_VALUE,
   TIMER_SECONDS,
@@ -43,7 +45,7 @@ const initialState = {
   incorrectAnswers: 0,
   correctBoxNumber: undefined,
   currentHint: undefined,
-  isHintBoxOpen: false,
+  hintBoxState: HINT_BOX_CLOSED,
   hintUsed: false,
   soundEnabled: true
 };
@@ -136,7 +138,7 @@ export const GameReducer = (state = initialState, action = {}) => {
     case UPDATE_HINT_BOX_STATUS:
       return {
         ...state,
-        isHintBoxOpen: action.status
+        hintBoxState: action.status
       };
 
     case UPDATE_HINT:
