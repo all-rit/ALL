@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './Instructions.css';
 
-import Image1 from './images/1.jpg';
-import Image2 from './images/2.jpg';
-import Image3 from './images/3.jpg';
-import Image4 from './images/4.jpg';
-import Image5 from './images/5.jpg';
-import Image6 from './images/6.jpg';
-import Image7 from './images/7.jpg';
-import Image8 from './images/8.jpg';
-import Image9 from './images/9.jpg';
-import Image10 from './images/10.jpg';
+import Image1 from '../../assets/images/1.jpg';
+import Image2 from '../../assets/images/2.jpg';
+import Image3 from '../../assets/images/3.jpg';
+import Image4 from '../../assets/images/4.jpg';
+import Image5 from '../../assets/images/5.jpg';
+import Image6 from '../../assets/images/6.jpg';
+import Image7 from '../../assets/images/7.jpg';
+import Image8 from '../../assets/images/8.jpg';
+import Image9 from '../../assets/images/9.jpg';
+import Image10 from '../../assets/images/10.jpg';
 
 class Instructions extends Component {
   constructor(props) {

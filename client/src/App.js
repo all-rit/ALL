@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import { login } from './AppActions';
-import { PLAYING, ENDED } from './game/GameConstants';
-import { startGame, updateSoundStatus, updateInstructionsStatus } from './game/GameActions';
+import { IDLE, PLAYING, ENDED, COUNTDOWN } from './game/GameConstants';
+import { updateSoundStatus, updateInstructionsStatus } from './game/GameActions';
 import { updateCodeEditorStatus } from './codeeditor/CodeEditorActions';
 
 import Game from './game/Game';
@@ -26,7 +26,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   login,
-  startGame, 
   updateSoundStatus,
   updateCodeEditorStatus,
   updateInstructionsStatus
@@ -83,11 +82,11 @@ class App extends Component {
         <div className="app__header">
           <div className="app_column text-left">
             <Conditional if={!user.FirstName}>
-              <Conditional if={gameState === PLAYING}>
+              <Conditional if={gameState === PLAYING || gameState === COUNTDOWN}>
                 <div className="google__button--disabled"></div>
               </Conditional>
               
-              <Conditional if={gameState !== PLAYING}>
+              <Conditional if={gameState === IDLE || gameState === ENDED}>
                 <a href="http://localhost:5000/auth/google"><div className="google__button"></div></a>
               </Conditional>
             </Conditional>

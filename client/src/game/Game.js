@@ -26,16 +26,14 @@ import {
   BOX_HINT_COMBINATIONS
 } from './GameConstants';
 import {
-  startGame,
-  endGame,
-  resetGame,
+  updateStartAt,
+  updateEndAt,
+  reset,
   updateGameState,
-  startCountdown,
   resetCountdownTimer,
   countdownTimerTick,
   timerTick,
-  increaseScore,
-  decreaseScore,
+  updateScore,
   incrementCorrectAnswers,
   incrementIncorrectAnswers,
   startNewRound,
@@ -79,16 +77,14 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  startGame,
-  endGame,
-  resetGame,
+  updateStartAt,
+  updateEndAt,
+  reset,
   updateGameState,
-  startCountdown,
   resetCountdownTimer,
   countdownTimerTick,
   timerTick,
-  increaseScore,
-  decreaseScore,
+  updateScore,
   incrementCorrectAnswers,
   incrementIncorrectAnswers,
   startNewRound,
@@ -111,86 +107,80 @@ class Game extends Component {
     this.audio.loop = false;
   }
 
+  /**
+   * Starts the game.
+   * 
+   * Flow:
+   * 1. Call the '/game/start' endpoint to store the game data.
+   * 2. Update the variable 'startedAt' using the 'updateStartAt()' method.
+   * 3. Start a new round.
+   * 4. Create a timer for decreasing the game's timer.
+   *   a. Only decrement the time if the game state is PLAYING.
+   *   b. If the time runs out, end the game.
+   */
   startGame() {
-    const { startGame, endGame, timerTick } = this.props;
+    const { updateStartAt, updateEndAt, timerTick } = this.props;
 
-    // Log data to database
     fetch('/game/start', {
       method: 'POST'
     }).then((res) => {
       console.log(res);
 
-      startGame();
-      this.startNewRound();
-      
+      updateStartAt();
+      this.startRound();
+
       this.timer = setInterval(() => {
-        if (this.props.gameState !== COUNTDOWN) {
+        const { gameState, time, updateGameState } = this.props;
+
+        if (gameState === PLAYING) {
           timerTick();
         }
-  
-        if (this.props.time <= 0) {
-          endGame();
+
+        if (time <= 0) {
+          updateEndAt();
+          updateGameState(ENDED);
+
+          // Clear all timers
           clearInterval(this.timer);
           clearInterval(this.hintTimer);
           clearInterval(this.countdownTimer);
+          clearInterval(this.roundTimer);
         }
       }, MILLISECONDS_MIN_VALUE);
     }).catch((err) => {
       console.log(err);
-    })
+    });
   }
 
-  resetGame() {
-    const { resetGame } = this.props;
+  /**
+   * Starts a new round.
+   * 
+   * Flow:
+   * 1. Load the sound, if the sound option is enabled.
+   * 2. Set the hint to an empty string.
+   * 3. Update the round's time length to zero.
+   * 4. Close the hint box.
+   * 5. Randomize the chosen box.
+   * 6. Increment round number + initialize boxes using 'startNewRound()' method.
+   * 7. Create a hint timer
+   *   a. The hint is randomized with a 50% chance.
+   *   b. If chance is above 1, end the timer.
+   * 8. Create a round timer
+   *   a. Increment the round length by 1 every 1 ms.
+   * 9. Log the info to the database.
+   */
+  startRound() {
+    const { startNewRound, soundEnabled, updateHint, updateRoundLength } = this.props;
 
-    resetGame();
-  }
-
-  startCountdown() {
-    const { startCountdown, countdownTimerTick } = this.props;
-
-    startCountdown();
-
-    this.countdownTimer = setInterval(() => {
-      countdownTimerTick();
-
-      if (this.props.countdownTime === 0) {
-        this.startGame();
-        clearInterval(this.countdownTimer);
-      }
-    }, MILLISECONDS_IN_A_SECOND);
-  }
-
-  roundCountdown() {
-    const { startCountdown, countdownTimerTick, resetCountdownTimer } = this.props;
-
-    resetCountdownTimer();
-    startCountdown();
-
-    this.countdownTimer = setInterval(() => {
-      countdownTimerTick();
-
-      if (this.props.countdownTime === 0) {
-        this.startNewRound();
-        clearInterval(this.countdownTimer);
-        this.props.updateGameState(PLAYING);
-      }
-    }, MILLISECONDS_IN_A_SECOND);
-  }
-
-  startNewRound() {
-    const { startNewRound, soundEnabled, updateHint, updateRoundLength, roundLength } = this.props;
-
-    if (soundEnabled) {
+    if (soundEnabled)
       this.audio.load();
-    }
 
-    startNewRound();
     updateHint();
     updateRoundLength(0);
-
     this.closeHintBox();
     this.randomizeBox();
+
+    startNewRound();
 
     this.hintTimer = setInterval(() => {
       const chance = Math.floor(Math.random() * 2) + 1;
@@ -202,10 +192,11 @@ class Game extends Component {
     }, HINT_TIMER_MILLISECONDS)
 
     this.roundTimer = setInterval(() => {
-      updateRoundLength(roundLength + 1);
-    }, 1);
+      const { roundLength } = this.props;
 
-    // Log data to database
+      updateRoundLength(roundLength + MILLISECONDS_MIN_VALUE);
+    }, MILLISECONDS_MIN_VALUE);
+
     fetch('/game/round', {
       method: 'POST',
       headers: new Headers({'content-type': 'application/json'}),
@@ -219,18 +210,75 @@ class Game extends Component {
     })
   }
 
-  randomizeBox() {
-    const { updateBox } = this.props;
+  /**
+   * Used for playing again.
+   */
+  resetGame() {
+    const { reset } = this.props;
 
-    updateBox(Math.floor(Math.random() * 4) + 1);
+    reset();
   }
 
+  /**
+   * Starts a countdown.
+   * 
+   * Flow:
+   * 1. Reset the countdown timer.
+   * 2. Update the game state to 'COUNTDOWN'.
+   * 3. Create a new timer for countdown timer tick.
+   */
+  startCountdown() {
+    const { updateGameState, countdownTimerTick, resetCountdownTimer } = this.props;
+
+    resetCountdownTimer();
+    updateGameState(COUNTDOWN);
+
+    this.countdownTimer = setInterval(() => {
+      const { roundNumber, countdownTime, updateGameState } = this.props;
+
+      if (countdownTime <= 0) {
+        updateGameState(PLAYING);
+
+        if (roundNumber === 0) {
+          this.startGame();
+        } else {
+          this.startRound();
+        }
+
+        clearInterval(this.countdownTimer);
+      }
+
+      countdownTimerTick();
+    }, MILLISECONDS_IN_A_SECOND);
+  }
+
+  /**
+   * Used for randomizing the chosen box with treasure.
+   */
+  randomizeBox() {
+    const { updateBox } = this.props;
+    const number = Math.floor(Math.random() * 4) + 1;
+
+    updateBox(number);
+  }
+
+  /**
+   * Randomizes the hint.
+   * 
+   * Flow:
+   * 1. Randomize a number from 0 to 3.
+   * 2. Close the hint box.
+   * 3. Delete the hint box timer.
+   * 4. Update the hint.
+   * 5. Play the audio cue, if enabled.
+   */
   randomizeHint() {
     const { correctBoxNumber, updateHint, soundEnabled } = this.props;
     const hintNumber = Math.floor(Math.random() * 3);
     const hint = POSSIBLE_HINTS[BOX_HINT_COMBINATIONS[correctBoxNumber][hintNumber]];
 
     this.closeHintBox();
+    clearTimeout(this.hintBoxTimer);
     updateHint(hint);
 
     if (soundEnabled) {
@@ -238,6 +286,18 @@ class Game extends Component {
     }
   }
 
+  /**
+   * Opens the hint box.
+   * 
+   * Flow:
+   * 1. Update the hint box status to 'HINT_BOX_THINKING'.
+   * 2. Update the variable 'hintUsed' to true.
+   * 3. Decrease score.
+   * 4. Create a hint box thinking timer.
+   *   a. Open the hint box in a specified amount of milliseconds.
+   *   b. Update the hint box status to 'HINT_BOX_OPEN'.
+   *   b. Create a new timer for closing the hint box.
+   */
   openHintBox() {
     const { updateHintBoxStatus, decreaseScore, updateHintUsed } = this.props;
 
@@ -252,38 +312,55 @@ class Game extends Component {
     }, HINT_BOX_THINKING_TIMER_MILLISECONDS);
   }
 
+  /**
+   * Closes the hint box.
+   * 
+   * Flow:
+   * 1. Update the hint box status to 'HINT_BOX_CLOSED'.
+   */
   closeHintBox() {
     const { updateHintBoxStatus } = this.props;
 
-    clearTimeout(this.hintBoxTimer);
     updateHintBoxStatus(HINT_BOX_CLOSED);
   }
 
-  toggleSound() {
-    const { updateSoundStatus, soundEnabled } = this.props;
-
-    updateSoundStatus(!soundEnabled);
-  }
-
+  /**
+   * Validates the user's answer.
+   * 
+   * Flow:
+   * 1. If correct:
+   *   a. Update the box status to 'BOX_CORRECT' based on the number.
+   *   b. Clear intervals on Hint & Round timers
+   *   c. Pause the audio.
+   *   d. Increase the score using the 'updateScore()' method.
+   *   e. Increase the number of correct answers.
+   *   f. Proceed to the countdown.
+   * 2. If wrong:
+   *   a. Update the box status to 'BOX_INCORRECT' based on the number.
+   *   b. Decrease the score using the 'updateScore()' method.
+   *   c. Increase the number of incorrect answers.
+   * 3. Log the choice to the database.
+   */
   validateAnswer(number) {
-    const { correctBoxNumber, increaseScore, decreaseScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength, updateBoxStatus } = this.props;
+    const { correctBoxNumber, updateScore, incrementCorrectAnswers, incrementIncorrectAnswers, score, hintUsed, roundLength, updateBoxStatus } = this.props;
 
-    const correct = number === correctBoxNumber;
+    const correct = (number === correctBoxNumber);
 
     if (correct) {
       updateBoxStatus(number, BOX_CORRECT);
+
       clearInterval(this.hintTimer);
       clearInterval(this.roundTimer);
+
       this.audio.pause();
-      increaseScore();
+
+      updateScore(score + 5);
       incrementCorrectAnswers();
 
-      setTimeout(() => {
-          this.roundCountdown();
-      }, 200);
+      this.startCountdown();
     } else {
       updateBoxStatus(number, BOX_INCORRECT);
-      decreaseScore();
+      updateScore(score - 1);
       incrementIncorrectAnswers();
     }
 
@@ -302,15 +379,21 @@ class Game extends Component {
       console.log(res);
     }).catch((err) => {
       console.log(err);
-    })
+    });
   }
 
+  /**
+   * Open the code editor.
+   */
   openCodeEditor() {
     const { updateCodeEditorStatus } = this.props;
 
     updateCodeEditorStatus(true);
   }
 
+  /**
+   * Open the instructions.
+   */
   openInstructions() {
     const { updateInstructionsStatus } = this.props;
 

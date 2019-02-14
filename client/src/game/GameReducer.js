@@ -1,16 +1,14 @@
 import update from 'immutability-helper';
 
 import {
-  START_GAME,
-  END_GAME,
-  RESET_GAME,
+  UPDATE_START_AT,
+  UPDATE_END_AT,
+  RESET,
   UPDATE_GAME_STATE,
-  START_COUNTDOWN,
   RESET_COUNTDOWN_TIMER,
   COUNTDOWN_TIMER_TICK,
   TIMER_TICK,
-  INCREASE_SCORE,
-  DECREASE_SCORE,
+  UPDATE_SCORE,
   INCREMENT_CORRECT_ANSWERS,
   INCREMENT_INCORRECT_ANSWERS,
   START_NEW_ROUND,
@@ -23,10 +21,7 @@ import {
   UPDATE_SOUND_STATUS,
   UPDATE_INSTRUCTIONS_STATUS,
 
-  PLAYING,
-  ENDED,
   IDLE,
-  COUNTDOWN,
 
   HINT_BOX_CLOSED,
 
@@ -59,33 +54,25 @@ const initialState = {
 
 export const GameReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case START_GAME:
+    case UPDATE_START_AT:
       return {
         ...state,
-        gameState: PLAYING,
         startedAt: new Date().getTime()
       };
 
-    case END_GAME:
+    case UPDATE_END_AT:
       return {
         ...state,
-        gameState: ENDED,
         endedAt: new Date().getTime()
       };
 
-    case RESET_GAME:
+    case RESET:
       return initialState;
 
     case UPDATE_GAME_STATE:
       return {
         ...state,
         gameState: action.gameState
-      };
-
-    case START_COUNTDOWN:
-      return {
-        ...state,
-        gameState: COUNTDOWN
       };
 
     case RESET_COUNTDOWN_TIMER:
@@ -106,16 +93,10 @@ export const GameReducer = (state = initialState, action = {}) => {
         time: state.time - 1
       };
 
-    case INCREASE_SCORE:
+    case UPDATE_SCORE:
       return {
         ...state,
-        score: state.score + 5
-      };
-
-    case DECREASE_SCORE:
-      return {
-        ...state,
-        score: state.score - 1
+        score: action.score
       };
 
     case INCREMENT_CORRECT_ANSWERS:

@@ -1,14 +1,12 @@
 import {
-  START_GAME,
-  END_GAME,
-  RESET_GAME,
+  UPDATE_START_AT,
+  UPDATE_END_AT,
+  RESET,
   UPDATE_GAME_STATE,
-  START_COUNTDOWN,
   RESET_COUNTDOWN_TIMER,
   COUNTDOWN_TIMER_TICK,
   TIMER_TICK,
-  INCREASE_SCORE,
-  DECREASE_SCORE,
+  UPDATE_SCORE,
   INCREMENT_CORRECT_ANSWERS,
   INCREMENT_INCORRECT_ANSWERS,
   START_NEW_ROUND,
@@ -22,21 +20,21 @@ import {
   UPDATE_INSTRUCTIONS_STATUS
 } from './GameConstants';
 
-export const startGame = () => {
+export const updateStartAt = () => {
   return {
-    type: START_GAME
+    type: UPDATE_START_AT
   };
 };
 
-export const endGame = () => {
+export const updateEndAt = () => {
   return {
-    type: END_GAME
+    type: UPDATE_END_AT
   };
 };
 
-export const resetGame = () => {
+export const reset = () => {
   return {
-    type: RESET_GAME
+    type: RESET
   };
 };
 
@@ -44,12 +42,6 @@ export const updateGameState = (gameState) => {
   return {
     type: UPDATE_GAME_STATE,
     gameState
-  };
-};
-
-export const startCountdown = () => {
-  return {
-    type: START_COUNTDOWN
   };
 };
 
@@ -71,15 +63,10 @@ export const timerTick = () => {
   };
 };
 
-export const increaseScore = () => {
+export const updateScore = (score) => {
   return {
-    type: INCREASE_SCORE
-  };
-};
-
-export const decreaseScore = () => {
-  return {
-    type: DECREASE_SCORE
+    type: UPDATE_SCORE,
+    score
   };
 };
 

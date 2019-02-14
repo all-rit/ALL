@@ -54,7 +54,7 @@ class HintBox extends Component {
         <Conditional if={state === HINT_BOX_THINKING}>
           <BeatLoader
             sizeUnit={"px"}
-            size={12}
+            size={10}
           />
         </Conditional>
 
