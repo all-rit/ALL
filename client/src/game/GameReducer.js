@@ -49,7 +49,8 @@ const initialState = {
   hintUsed: false,
   soundEnabled: true,
   boxes: BOX_DEFAULT_VALUES,
-  instructionsOpen: false
+  instructionsOpen: false,
+  numberOfPlays: 0
 };
 
 export const GameReducer = (state = initialState, action = {}) => {
@@ -63,11 +64,15 @@ export const GameReducer = (state = initialState, action = {}) => {
     case UPDATE_END_AT:
       return {
         ...state,
-        endedAt: new Date().getTime()
+        endedAt: new Date().getTime(),
+        numberOfPlays: state.numberOfPlays + 1
       };
 
     case RESET:
-      return initialState;
+      return {
+        ...initialState,
+        numberOfPlays: state.numberOfPlays
+      };
 
     case UPDATE_GAME_STATE:
       return {

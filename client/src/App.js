@@ -12,6 +12,11 @@ import SoundOption from './game/soundoption/SoundOption';
 import Instructions from './game/instructions/Instructions';
 import CodeEditor from './codeeditor/CodeEditor';
 
+import FirstPlaythrough from './game/playthroughs/FirstPlaythrough';
+import SecondPlaythrough from './game/playthroughs/SecondPlaythrough';
+import ThirdPlaythrough from './game/playthroughs/ThirdPlaythrough';
+import FourthPlaythrough from './game/playthroughs/FourthPlaythrough';
+
 import Conditional from './helpers/Conditional';
 
 const mapStateToProps = (state) => {
@@ -20,7 +25,8 @@ const mapStateToProps = (state) => {
     user: state.app.user,
     soundEnabled: state.game.soundEnabled,
     codeEditorOpen: state.code.codeEditorOpen,
-    instructionsOpen: state.game.instructionsOpen
+    instructionsOpen: state.game.instructionsOpen,
+    numberOfPlays: state.game.numberOfPlays
   };
 };
 
@@ -76,7 +82,8 @@ class App extends Component {
   }
 
   render() {
-    const { gameState, soundEnabled, codeEditorOpen, user, instructionsOpen } = this.props;
+    const { gameState, soundEnabled, codeEditorOpen, user, instructionsOpen, numberOfPlays } = this.props;
+
     return (
       <div className="app">
         <div className="app__header">
@@ -92,15 +99,24 @@ class App extends Component {
             </Conditional>
           </div>
           <div className="app_column text-right">
-            <SoundOption enabled={soundEnabled}
-                          onClickHandler={this.toggleSound.bind(this)}
-                          blocked={gameState === PLAYING} />
+            <Conditional if={numberOfPlays > 2}>
+              <SoundOption enabled={soundEnabled}
+                            onClickHandler={this.toggleSound.bind(this)}
+                            blocked={gameState === PLAYING} />
+            </Conditional>
           </div>
         </div>
 
         <span className="app__name">Audio Cues</span>
 
-        <Conditional if={gameState !== ENDED}>
+        <Conditional if={gameState === IDLE}>
+          <Conditional if={numberOfPlays === 0}><FirstPlaythrough /></Conditional>
+          <Conditional if={numberOfPlays === 1}><SecondPlaythrough /></Conditional>
+          <Conditional if={numberOfPlays === 2}><ThirdPlaythrough /></Conditional>
+          <Conditional if={numberOfPlays > 2}><FourthPlaythrough /></Conditional>
+        </Conditional>
+
+        <Conditional if={gameState !== ENDED && gameState !== IDLE}>
           <p className="app__instructions">Goal: Find the box with the hidden item.</p>
         </Conditional>
 

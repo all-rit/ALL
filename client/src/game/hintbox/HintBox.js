@@ -59,7 +59,13 @@ class HintBox extends Component {
         </Conditional>
 
         <Conditional if={state === HINT_BOX_OPEN}>
-          { hint }
+          <Conditional if={hint}>
+            { hint }
+          </Conditional>
+
+          <Conditional if={!hint}>
+            No Hint.
+          </Conditional>
         </Conditional>
       </div>
     );

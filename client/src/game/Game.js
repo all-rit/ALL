@@ -72,7 +72,8 @@ const mapStateToProps = (state) => {
     hintBoxState: state.game.hintBoxState,
     hintUsed: state.game.hintUsed,
     soundEnabled: state.game.soundEnabled,
-    boxes: state.game.boxes
+    boxes: state.game.boxes,
+    numberOfPlays: state.game.numberOfPlays
   };
 };
 
@@ -299,11 +300,11 @@ class Game extends Component {
    *   b. Create a new timer for closing the hint box.
    */
   openHintBox() {
-    const { updateHintBoxStatus, decreaseScore, updateHintUsed } = this.props;
+    const { updateHintBoxStatus, updateHintUsed, updateScore, score } = this.props;
 
     updateHintBoxStatus(HINT_BOX_THINKING);
     updateHintUsed(true);
-    decreaseScore();
+    updateScore(score - 25);
 
     this.hintBoxThinkingTimer = setTimeout(() => {
       updateHintBoxStatus(HINT_BOX_OPEN);
@@ -322,6 +323,31 @@ class Game extends Component {
     const { updateHintBoxStatus } = this.props;
 
     updateHintBoxStatus(HINT_BOX_CLOSED);
+  }
+
+  /**
+   * Calculates score if answer is correct
+   */
+  calculateScore() {
+    const { roundLength } = this.props;
+    const seconds = roundLength / MILLISECONDS_IN_A_SECOND;
+    let score = 0;
+
+    if (seconds < 1) {
+      score = 150;
+    } else if (seconds < 2) {
+      score = 125;
+    } else if (seconds < 3) {
+      score = 100;
+    } else if (seconds < 4) {
+      score = 75;
+    } else if (seconds < 5) {
+      score = 50;
+    } else {
+      score = 25;
+    }
+
+    return score;
   }
 
   /**
@@ -354,13 +380,13 @@ class Game extends Component {
 
       this.audio.pause();
 
-      updateScore(score + 5);
+      updateScore(score + this.calculateScore());
       incrementCorrectAnswers();
 
       this.startCountdown();
     } else {
       updateBoxStatus(number, BOX_INCORRECT);
-      updateScore(score - 1);
+      updateScore(score - 50);
       incrementIncorrectAnswers();
     }
 
@@ -411,7 +437,8 @@ class Game extends Component {
       incorrectAnswers,
       currentHint,
       hintBoxState,
-      boxes
+      boxes,
+      numberOfPlays
     } = this.props;
     const boxesList = Object.keys(boxes).map(key => {
       return <Box key={key} number={parseInt(key)} onClickHandler={this.validateAnswer.bind(this)} state={boxes[key]}></Box>
@@ -422,7 +449,9 @@ class Game extends Component {
         <Conditional if={gameState !== ENDED}>
   
           <Conditional if={gameState === IDLE}>
-            <button onClick={this.openCodeEditor.bind(this)}>Repair</button>
+            <Conditional if={numberOfPlays >= 2}>
+              <button onClick={this.openCodeEditor.bind(this)}>Repair</button>
+            </Conditional>
             <button onClick={this.openInstructions.bind(this)}>How to Play?</button>
             <button onClick={this.startCountdown.bind(this)} className="game__start_button">Start</button>
           </Conditional>

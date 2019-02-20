@@ -40,8 +40,8 @@ export const MILLISECONDS_IN_A_SECOND = 1000;
 export const MILLISECONDS_MIN_VALUE = 10;
 
 export const COUNTDOWN_SECONDS = 3;
-export const TIMER_SECONDS = 10;
-export const HINT_TIMER_MILLISECONDS = 3 * 1000; // hint is attempted to be randomized every x seconds
+export const TIMER_SECONDS = 5;
+export const HINT_TIMER_MILLISECONDS = 2.5 * 1000; // hint is attempted to be randomized every x seconds
 export const HINT_BOX_TIMER_MILLISECONDS = 3 * 1000; // hint box collapses after x seconds
 export const HINT_BOX_THINKING_TIMER_MILLISECONDS = 3 * 1000; // hint box thinks before displaying hint
 export const POSSIBLE_HINTS = [

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Instructions.css';
 
 import Image1 from '../../assets/images/1.jpg';
-import Image2 from '../../assets/images/2.jpg';
 import Image3 from '../../assets/images/3.jpg';
 import Image4 from '../../assets/images/4.jpg';
 import Image5 from '../../assets/images/5.jpg';
@@ -19,8 +18,10 @@ class Instructions extends Component {
     this.state = {
       currentSlide: 1,
       MIN_VALUE: 1,
-      MAX_VALUE: 10
+      MAX_VALUE: 9
     };
+
+    this.controls = this.controls.bind(this);
   }
 
   navigatePrevSlide() {
@@ -39,6 +40,26 @@ class Instructions extends Component {
     }
   }
 
+  controls(event) {
+    const { closeHandler } = this.props;
+
+    if (event.keyCode === 37) {
+      this.navigatePrevSlide();
+    } else if (event.keyCode === 39) {
+      this.navigateNextSlide();
+    } else if (event.keyCode === 27) {
+      closeHandler();
+    }
+  }
+
+  componentWillMount() {
+    window.addEventListener("keydown", this.controls, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.controls, false);
+  }
+
   render() {
     const { closeHandler } = this.props;
     let image = '';
@@ -49,38 +70,34 @@ class Instructions extends Component {
         break;
 
       case 2:
-        image = Image2;
-        break;
-
-      case 3:
         image = Image3;
         break;
 
-      case 4:
+      case 3:
         image = Image4;
         break;
 
-      case 5:
+      case 4:
         image = Image5;
         break;
 
-      case 6:
+      case 5:
         image = Image6;
         break;
 
-      case 7:
+      case 6:
         image = Image7;
         break;
 
-      case 8:
+      case 7:
         image = Image8;
         break;
 
-      case 9:
+      case 8:
         image = Image9;
         break;
 
-      case 10:
+      case 9:
         image = Image10;
         break;
 
