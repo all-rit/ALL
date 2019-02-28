@@ -115,7 +115,7 @@ exports.authenticateCallback = (req, res) => {
   });
 
   req.session.token = id;
-  res.redirect('/');
+  res.redirect('http://localhost:3000/');
 };
 
 // Logging out will clear sessions

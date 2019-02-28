@@ -1,10 +1,12 @@
-.code_editor {
+.code_editor__background {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+  cursor: pointer;
 }
 
 .code_editor__content {
@@ -17,6 +19,7 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
   padding: 1rem;
   text-align: left;
+  z-index: 1;
 }
 
 .code_editor__file {
@@ -35,4 +38,27 @@
 .code_editor__update {
   background-color: green;
   border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.code_editor__code {
+  background-color: #333;
+}
+
+.code_editor__code textarea, .code_editor__code input {
+  background-color: transparent;
+  width: 100%;
+  display: block;
+  color: white;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  overflow: hidden;
+  resize: none;
+  border: 0;
+  font-size: 1rem;
+}
+
+.code_editor__code input {
+  background-color: #222;
+  color: orange;
+  padding: 0;
 }

@@ -9,12 +9,22 @@
   color: white;
 }
 
-.box:hover {
+.box--red {
+  background-color: red;
+  cursor: default !important;
+}
+
+.box--green {
+  background-color: green;
+  cursor: default !important;
+}
+
+.box:not(.box--red):not(.box--green):hover {
   background-color: grey;
   color: white;
   cursor: pointer;
 }
 
-.box:active {
+.box:not(.box--red):not(.box--green):active {
   background-color: #333;
 }

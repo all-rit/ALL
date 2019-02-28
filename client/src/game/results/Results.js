@@ -14,7 +14,7 @@ class Results extends Component {
         <p className="results__score">Your final score was {score}!</p>
         <p className="results__answers">You had {correctAnswers} correct answers and {incorrectAnswers} incorrect answers in {roundNumber} rounds.</p>
 
-        <button onClick={this.handleClick.bind(this)}>Play Again?</button>
+        <button onClick={this.handleClick.bind(this)}>Continue</button>
       </div>
     );
   }

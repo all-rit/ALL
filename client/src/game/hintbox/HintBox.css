@@ -5,7 +5,7 @@
   margin-top: 2rem;
 }
 
-.hint_box:not(.hint_box--open):hover {
+.hint_box:not(.hint_box--open):not(.hint-box--hasHint):hover {
   cursor: pointer;
   background-color: #ddd;
 }
@@ -14,4 +14,13 @@
   height: 5rem;
   line-height: 5rem;
   margin-top: 0;
+}
+
+.hint-box--hasHint {
+  background-color: lightgreen;
+}
+
+.hint-box--hasHint:hover {
+  background-color: green;
+  cursor: pointer;
 }

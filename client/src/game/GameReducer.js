@@ -1,10 +1,14 @@
+import update from 'immutability-helper';
+
 import {
-  START_GAME,
-  END_GAME,
-  RESET_GAME,
+  UPDATE_START_AT,
+  UPDATE_END_AT,
+  RESET,
+  UPDATE_GAME_STATE,
+  RESET_COUNTDOWN_TIMER,
+  COUNTDOWN_TIMER_TICK,
   TIMER_TICK,
-  INCREASE_SCORE,
-  DECREASE_SCORE,
+  UPDATE_SCORE,
   INCREMENT_CORRECT_ANSWERS,
   INCREMENT_INCORRECT_ANSWERS,
   START_NEW_ROUND,
@@ -13,20 +17,27 @@ import {
   UPDATE_HINT,
   UPDATE_HINT_USED,
   UPDATE_BOX,
+  UPDATE_BOX_STATUS,
   UPDATE_SOUND_STATUS,
+  UPDATE_INSTRUCTIONS_STATUS,
 
-  STARTED,
-  ENDED,
   IDLE,
 
-  TIMER_SECONDS
+  HINT_BOX_CLOSED,
+
+  MILLISECONDS_IN_A_SECOND,
+  MILLISECONDS_MIN_VALUE,
+  TIMER_SECONDS,
+  COUNTDOWN_SECONDS,
+  BOX_DEFAULT_VALUES
 } from './GameConstants';
 
 const initialState = {
   gameState: IDLE,
   startedAt: undefined,
   endedAt: undefined,
-  seconds: TIMER_SECONDS,
+  time: TIMER_SECONDS * MILLISECONDS_IN_A_SECOND / MILLISECONDS_MIN_VALUE,
+  countdownTime: COUNTDOWN_SECONDS,
   score: 0,
   roundNumber: 0,
   roundLength: 0,
@@ -34,46 +45,63 @@ const initialState = {
   incorrectAnswers: 0,
   correctBoxNumber: undefined,
   currentHint: undefined,
-  isHintBoxOpen: false,
+  hintBoxState: HINT_BOX_CLOSED,
   hintUsed: false,
-  soundEnabled: true
+  soundEnabled: true,
+  boxes: BOX_DEFAULT_VALUES,
+  instructionsOpen: false,
+  numberOfPlays: 0
 };
 
 export const GameReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case START_GAME:
+    case UPDATE_START_AT:
       return {
         ...state,
-        gameState: STARTED,
         startedAt: new Date().getTime()
       };
 
-    case END_GAME:
+    case UPDATE_END_AT:
       return {
         ...state,
-        gameState: ENDED,
-        endedAt: new Date().getTime()
+        endedAt: new Date().getTime(),
+        numberOfPlays: state.numberOfPlays + 1
       };
 
-    case RESET_GAME:
-      return initialState;
+    case RESET:
+      return {
+        ...initialState,
+        numberOfPlays: state.numberOfPlays
+      };
+
+    case UPDATE_GAME_STATE:
+      return {
+        ...state,
+        gameState: action.gameState
+      };
+
+    case RESET_COUNTDOWN_TIMER:
+      return {
+        ...state,
+        countdownTime: COUNTDOWN_SECONDS
+      };
+
+    case COUNTDOWN_TIMER_TICK:
+      return {
+        ...state,
+        countdownTime: state.countdownTime - 1
+      };
 
     case TIMER_TICK:
       return {
         ...state,
-        seconds: state.seconds - 1
+        time: state.time - 1
       };
 
-    case INCREASE_SCORE:
+    case UPDATE_SCORE:
       return {
         ...state,
-        score: state.score + 5
-      };
-
-    case DECREASE_SCORE:
-      return {
-        ...state,
-        score: state.score - 1
+        score: action.score
       };
 
     case INCREMENT_CORRECT_ANSWERS:
@@ -91,19 +119,20 @@ export const GameReducer = (state = initialState, action = {}) => {
     case START_NEW_ROUND:
       return {
         ...state,
-        roundNumber: state.roundNumber + 1
+        roundNumber: state.roundNumber + 1,
+        boxes: BOX_DEFAULT_VALUES
       };
 
     case UPDATE_ROUND_LENGTH:
       return {
         ...state,
-        roundLength: action.seconds
+        roundLength: action.time
       };
 
     case UPDATE_HINT_BOX_STATUS:
       return {
         ...state,
-        isHintBoxOpen: action.status
+        hintBoxState: action.status
       };
 
     case UPDATE_HINT:
@@ -124,10 +153,25 @@ export const GameReducer = (state = initialState, action = {}) => {
         correctBoxNumber: action.box
       };
 
+    case UPDATE_BOX_STATUS:
+      return update(state, {
+        boxes: {
+          [action.box]: {
+            $set: action.status
+          }
+        }
+      });
+
     case UPDATE_SOUND_STATUS:
       return {
         ...state,
         soundEnabled: action.status
+      };
+
+    case UPDATE_INSTRUCTIONS_STATUS:
+      return {
+        ...state,
+        instructionsOpen: action.status
       };
 
     default:

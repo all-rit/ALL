@@ -1,10 +1,12 @@
 import {
-  START_GAME,
-  END_GAME,
-  RESET_GAME,
+  UPDATE_START_AT,
+  UPDATE_END_AT,
+  RESET,
+  UPDATE_GAME_STATE,
+  RESET_COUNTDOWN_TIMER,
+  COUNTDOWN_TIMER_TICK,
   TIMER_TICK,
-  INCREASE_SCORE,
-  DECREASE_SCORE,
+  UPDATE_SCORE,
   INCREMENT_CORRECT_ANSWERS,
   INCREMENT_INCORRECT_ANSWERS,
   START_NEW_ROUND,
@@ -13,24 +15,45 @@ import {
   UPDATE_HINT,
   UPDATE_HINT_USED,
   UPDATE_BOX,
-  UPDATE_SOUND_STATUS
+  UPDATE_BOX_STATUS,
+  UPDATE_SOUND_STATUS,
+  UPDATE_INSTRUCTIONS_STATUS
 } from './GameConstants';
 
-export const startGame = () => {
+export const updateStartAt = () => {
   return {
-    type: START_GAME
+    type: UPDATE_START_AT
   };
 };
 
-export const endGame = () => {
+export const updateEndAt = () => {
   return {
-    type: END_GAME
+    type: UPDATE_END_AT
   };
 };
 
-export const resetGame = () => {
+export const reset = () => {
   return {
-    type: RESET_GAME
+    type: RESET
+  };
+};
+
+export const updateGameState = (gameState) => {
+  return {
+    type: UPDATE_GAME_STATE,
+    gameState
+  };
+};
+
+export const resetCountdownTimer = () => {
+  return {
+    type: RESET_COUNTDOWN_TIMER
+  };
+};
+
+export const countdownTimerTick = () => {
+  return {
+    type: COUNTDOWN_TIMER_TICK
   };
 };
 
@@ -40,15 +63,10 @@ export const timerTick = () => {
   };
 };
 
-export const increaseScore = () => {
+export const updateScore = (score) => {
   return {
-    type: INCREASE_SCORE
-  };
-};
-
-export const decreaseScore = () => {
-  return {
-    type: DECREASE_SCORE
+    type: UPDATE_SCORE,
+    score
   };
 };
 
@@ -70,10 +88,10 @@ export const startNewRound = () => {
   };
 };
 
-export const updateRoundLength = (seconds) => {
+export const updateRoundLength = (time) => {
   return {
     type: UPDATE_ROUND_LENGTH,
-    seconds
+    time
   };
 };
 
@@ -105,9 +123,24 @@ export const updateBox = (box) => {
   };
 };
 
+export const updateBoxStatus = (box, status) => {
+  return {
+    type: UPDATE_BOX_STATUS,
+    box,
+    status
+  };
+};
+
 export const updateSoundStatus = (status) => {
   return {
     type: UPDATE_SOUND_STATUS,
+    status
+  };
+};
+
+export const updateInstructionsStatus = (status) => {
+  return {
+    type: UPDATE_INSTRUCTIONS_STATUS,
     status
   };
 };

@@ -5,10 +5,13 @@
   "dependencies": {
     "@uiw/react-codemirror": "^1.0.19",
     "classnames": "^2.2.6",
+    "immutability-helper": "^3.0.0",
     "react": "^16.7.0",
+    "react-autosize-textarea": "^6.0.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.2",
+    "react-spinners": "^0.5.1",
     "redux": "^4.0.1"
   },
   "scripts": {

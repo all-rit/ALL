@@ -20,7 +20,7 @@ button:hover {
 
 .app__header {
   display: flex;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 
 .app_column {
@@ -30,7 +30,7 @@ button:hover {
 
 .app__instructions {
   font-size: 1.25rem;
-  padding: 6rem 0;
+  padding: 4rem 0;
   text-align: center;
 }
 

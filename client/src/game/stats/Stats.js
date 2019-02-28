@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import './Stats.css';
 
-import { TIMER_SECONDS } from '../GameConstants';
+import { MILLISECONDS_IN_A_SECOND, MILLISECONDS_MIN_VALUE, TIMER_SECONDS } from '../GameConstants';
 
 class Stats extends Component {
-  calculatePercentage(seconds) {
-    return (seconds / TIMER_SECONDS) * 100;
+  calculatePercentage(time) {
+    const percentage = (time / (TIMER_SECONDS * MILLISECONDS_IN_A_SECOND / MILLISECONDS_MIN_VALUE)) * 100;
+
+    return percentage;
   }
 
   render() {
-    const { score, correctAnswers, incorrectAnswers, roundNumber, seconds } = this.props;
+    const { score, correctAnswers, incorrectAnswers, roundNumber, time } = this.props;
 
     const countdown_style = {
-      width: this.calculatePercentage(seconds).toString() + '%'
+      width: this.calculatePercentage(time).toString() + '%'
     };
 
     return (
