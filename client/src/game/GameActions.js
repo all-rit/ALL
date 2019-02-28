@@ -17,7 +17,8 @@ import {
   UPDATE_BOX,
   UPDATE_BOX_STATUS,
   UPDATE_SOUND_STATUS,
-  UPDATE_INSTRUCTIONS_STATUS
+  UPDATE_INSTRUCTIONS_STATUS,
+  UPDATE_CONGRATULATION_MESSAGE
 } from './GameConstants';
 
 export const updateStartAt = () => {
@@ -142,5 +143,12 @@ export const updateInstructionsStatus = (status) => {
   return {
     type: UPDATE_INSTRUCTIONS_STATUS,
     status
+  };
+};
+
+export const updateCongratulationMessage = (message) => {
+  return {
+    type: UPDATE_CONGRATULATION_MESSAGE,
+    message
   };
 };
