@@ -43,3 +43,7 @@
 .game__countdown {
   font-size: 5rem;
 }
+
+.game__congratulation {
+  margin-bottom: 2rem;
+}

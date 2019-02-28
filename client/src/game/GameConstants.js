@@ -17,6 +17,7 @@ export const UPDATE_BOX = 'RANDOMIZE_BOX';
 export const UPDATE_BOX_STATUS = 'UPDATE_BOX_STATUS';
 export const UPDATE_SOUND_STATUS = 'UPDATE_SOUND_STATUS';
 export const UPDATE_INSTRUCTIONS_STATUS = 'UPDATE_INSTRUCTIONS_STATUS';
+export const UPDATE_CONGRATULATION_MESSAGE = 'UPDATE_CONGRATULATION_MESSAGE';
 
 // Game States
 export const IDLE = 'IDLE';
@@ -40,7 +41,7 @@ export const MILLISECONDS_IN_A_SECOND = 1000;
 export const MILLISECONDS_MIN_VALUE = 10;
 
 export const COUNTDOWN_SECONDS = 3;
-export const TIMER_SECONDS = 5;
+export const TIMER_SECONDS = 30;
 export const HINT_TIMER_MILLISECONDS = 2.5 * 1000; // hint is attempted to be randomized every x seconds
 export const HINT_BOX_TIMER_MILLISECONDS = 3 * 1000; // hint box collapses after x seconds
 export const HINT_BOX_THINKING_TIMER_MILLISECONDS = 3 * 1000; // hint box thinks before displaying hint
@@ -58,3 +59,9 @@ export const BOX_HINT_COMBINATIONS = {
   4: [1, 2, 4]
 };
 export const BOX_DEFAULT_VALUES = {1: BOX_UNOPENED, 2: BOX_UNOPENED, 3: BOX_UNOPENED, 4: BOX_UNOPENED};
+export const CONGRATULATION_MESSAGES = [
+  "Nice one!",
+  "You found that treasure!",
+  "Wow, you're probably an expert treasure hunter!",
+  "Right on!"
+];

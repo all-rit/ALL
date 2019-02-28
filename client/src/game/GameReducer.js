@@ -20,6 +20,7 @@ import {
   UPDATE_BOX_STATUS,
   UPDATE_SOUND_STATUS,
   UPDATE_INSTRUCTIONS_STATUS,
+  UPDATE_CONGRATULATION_MESSAGE,
 
   IDLE,
 
@@ -50,7 +51,8 @@ const initialState = {
   soundEnabled: true,
   boxes: BOX_DEFAULT_VALUES,
   instructionsOpen: false,
-  numberOfPlays: 0
+  numberOfPlays: 0,
+  congratulationMessage: ""
 };
 
 export const GameReducer = (state = initialState, action = {}) => {
@@ -172,6 +174,12 @@ export const GameReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         instructionsOpen: action.status
+      };
+
+    case UPDATE_CONGRATULATION_MESSAGE:
+      return {
+        ...state,
+        congratulationMessage: action.message
       };
 
     default:

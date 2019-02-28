@@ -23,7 +23,8 @@ import {
   HINT_BOX_TIMER_MILLISECONDS,
   HINT_BOX_THINKING_TIMER_MILLISECONDS,
   POSSIBLE_HINTS,
-  BOX_HINT_COMBINATIONS
+  BOX_HINT_COMBINATIONS,
+  CONGRATULATION_MESSAGES
 } from './GameConstants';
 import {
   updateStartAt,
@@ -44,7 +45,8 @@ import {
   updateBox,
   updateBoxStatus,
   updateSoundStatus,
-  updateInstructionsStatus
+  updateInstructionsStatus,
+  updateCongratulationMessage
 } from './GameActions';
 import { updateCodeEditorStatus } from '../codeeditor/CodeEditorActions';
 
@@ -73,7 +75,8 @@ const mapStateToProps = (state) => {
     hintUsed: state.game.hintUsed,
     soundEnabled: state.game.soundEnabled,
     boxes: state.game.boxes,
-    numberOfPlays: state.game.numberOfPlays
+    numberOfPlays: state.game.numberOfPlays,
+    congratulationMessage: state.game.congratulationMessage
   };
 };
 
@@ -97,7 +100,8 @@ const mapDispatchToProps = {
   updateBoxStatus,
   updateSoundStatus,
   updateCodeEditorStatus,
-  updateInstructionsStatus
+  updateInstructionsStatus,
+  updateCongratulationMessage
 };
 
 class Game extends Component {
@@ -351,6 +355,16 @@ class Game extends Component {
   }
 
   /**
+   * Update the congratulation message.
+   */
+  changeCongratulationMessage() {
+    const { updateCongratulationMessage } = this.props;
+    let message = CONGRATULATION_MESSAGES[Math.floor(Math.random() * CONGRATULATION_MESSAGES.length)];
+
+    updateCongratulationMessage(message);
+  }
+
+  /**
    * Validates the user's answer.
    * 
    * Flow:
@@ -383,6 +397,7 @@ class Game extends Component {
       updateScore(score + this.calculateScore());
       incrementCorrectAnswers();
 
+      this.changeCongratulationMessage();
       this.startCountdown();
     } else {
       updateBoxStatus(number, BOX_INCORRECT);
@@ -438,7 +453,8 @@ class Game extends Component {
       currentHint,
       hintBoxState,
       boxes,
-      numberOfPlays
+      numberOfPlays,
+      congratulationMessage
     } = this.props;
     const boxesList = Object.keys(boxes).map(key => {
       return <Box key={key} number={parseInt(key)} onClickHandler={this.validateAnswer.bind(this)} state={boxes[key]}></Box>
@@ -457,6 +473,11 @@ class Game extends Component {
           </Conditional>
 
           <Conditional if={gameState === COUNTDOWN}>
+            <Conditional if={congratulationMessage !== ""}>
+              <div className="game__congratulation">
+                { congratulationMessage }
+              </div>
+            </Conditional>
             <div className="game__countdown">
               { countdownTime }
             </div>
