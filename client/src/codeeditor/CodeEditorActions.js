@@ -7,12 +7,11 @@ import {
   UPDATE_TAB
 } from './CodeEditorConstants';
 
-export const updateCode = (firstRow, secondRow, thirdRow) => {
+export const updateCode = (correctMessage, incorrectMessage) => {
   return {
     type: UPDATE_CODE,
-    firstRow,
-    secondRow,
-    thirdRow
+    correctMessage,
+    incorrectMessage
   };
 };
 
