@@ -8,6 +8,7 @@
     "immutability-helper": "^3.0.0",
     "react": "^16.7.0",
     "react-autosize-textarea": "^6.0.0",
+    "react-color": "^2.17.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-scripts": "^2.1.8",

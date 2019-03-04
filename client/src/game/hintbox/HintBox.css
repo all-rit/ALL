@@ -3,6 +3,7 @@
   height: 3rem;
   line-height: 3rem;
   margin-top: 2rem;
+  position: relative;
 }
 
 .hint_box:not(.hint_box--open):not(.hint-box--hasHint):hover {
@@ -16,11 +17,12 @@
   margin-top: 0;
 }
 
-.hint-box--hasHint {
-  background-color: lightgreen;
-}
-
-.hint-box--hasHint:hover {
-  background-color: green;
-  cursor: pointer;
+.hint_box__background {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
 }

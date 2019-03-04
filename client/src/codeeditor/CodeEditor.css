@@ -29,6 +29,24 @@
   display: inline-block;
   padding: 8px;
   margin-bottom: 5px;
+  margin-right: 5px;
+  cursor: default;
+}
+
+.code_editor__file:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.code_editor__file_active {
+  background-color: #bbb;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  padding: 8px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  cursor: default;
 }
 
 .code_editor__buttons {
@@ -42,6 +60,55 @@
 
 .code_editor__code {
   background-color: #333;
+  padding: .5rem;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.code_editor__class {
+  color: #f0dba3;
+  margin: .5rem 0;
+}
+
+.code_editor__class b {
+  color: #d7a82b;
+}
+
+.code_editor__form {
+  position: relative;
+}
+
+.code_editor__property {
+  color: white;
+  margin-left: 2rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.code_editor__input {
+  display: inline-block;
+  position: relative;
+}
+
+.code_editor__input button {
+  margin: 0 0.5rem;
+  border: 1px solid white;
+  position: relative;
+  top: -5px;
+}
+
+.code_editor__color_selector {
+  position: absolute;
+  z-index: 2;
+}
+
+.code_editor__color_selector_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 .code_editor__code textarea, .code_editor__code input {
