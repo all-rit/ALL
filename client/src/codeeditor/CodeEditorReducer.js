@@ -4,19 +4,12 @@ import {
   UPDATE_INCORRECT_BACKGROUND,
   RESET_CODE,
   UPDATE_CODE_EDITOR_STATUS,
-  UPDATE_TAB,
-
-  CODE_BLOCK_ANSWER1,
-  CODE_BLOCK_ANSWER2,
-  CODE_BLOCK_ANSWER3
+  UPDATE_TAB
 } from './CodeEditorConstants';
 
 const initialState = {
-  firstRow: CODE_BLOCK_ANSWER1,
-  secondRow: CODE_BLOCK_ANSWER2,
-  thirdRow: CODE_BLOCK_ANSWER3,
-  correctMessage: "",
-  incorrectMessage: "",
+  correctMessage: "?",
+  incorrectMessage: "?",
   correctBackgroundColor: "#FFFFFF",
   incorrectBackgroundColor: "#FFFFFF",
   currentTab: 1,
@@ -28,9 +21,8 @@ export const CodeEditorReducer = (state = initialState, action = {}) => {
     case UPDATE_CODE:
       return {
         ...state,
-        firstRow: action.firstRow,
-        secondRow: action.secondRow,
-        thirdRow: action.thirdRow
+        correctMessage: action.correctMessage,
+        incorrectMessage: action.incorrectMessage
       };
 
     case UPDATE_CORRECT_BACKGROUND:
