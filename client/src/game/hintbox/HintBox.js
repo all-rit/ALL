@@ -12,7 +12,9 @@ const mapStateToProps = (state) => {
   return {
     firstRow: state.code.firstRow,
     secondRow: state.code.secondRow,
-    thirdRow: state.code.thirdRow
+    thirdRow: state.code.thirdRow,
+    correctBackgroundColor: state.code.correctBackgroundColor,
+    incorrectBackgroundColor: state.code.incorrectBackgroundColor
   };
 };
 
@@ -22,11 +24,10 @@ class HintBox extends Component {
   }
 
   render() {
-    const { hint, state, secondRow, thirdRow } = this.props;
+    const { hint, state, secondRow, thirdRow, correctBackgroundColor, incorrectBackgroundColor } = this.props;
     const classes = classNames({
       hint_box: true,
-      'hint_box--open': (state === HINT_BOX_OPEN),
-      'hint-box--hasHint': (hint && (secondRow !== CODE_BLOCK_ANSWER2 || thirdRow !== CODE_BLOCK_ANSWER3))
+      'hint_box--open': (state === HINT_BOX_OPEN)
     });
     let hintMessage = "?";
     let noHintMessage = "?";
@@ -43,11 +44,15 @@ class HintBox extends Component {
       <div className={classes} onClick={this.handleClick.bind(this)}>
         <Conditional if={state === HINT_BOX_CLOSED}>
           <Conditional if={hint}>
+            <div className="hint_box__background" style={{backgroundColor: correctBackgroundColor}}>
             { hintMessage }
+            </div>
           </Conditional>
 
           <Conditional if={!hint}>
-            { noHintMessage }
+            <div className="hint_box__background" style={{backgroundColor: incorrectBackgroundColor}}>
+              { noHintMessage }
+            </div>
           </Conditional>
         </Conditional>
 

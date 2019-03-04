@@ -465,7 +465,7 @@ class Game extends Component {
         <Conditional if={gameState !== ENDED}>
   
           <Conditional if={gameState === IDLE}>
-            <Conditional if={numberOfPlays >= 2}>
+            <Conditional if={numberOfPlays >= 0}>
               <button onClick={this.openCodeEditor.bind(this)}>Repair</button>
             </Conditional>
             <button onClick={this.openInstructions.bind(this)}>How to Play?</button>
