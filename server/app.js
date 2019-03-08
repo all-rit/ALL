@@ -9,9 +9,9 @@ let passport = require('passport');
 let auth = require('./auth');
 
 let app = express();
-let port = process.env.PORT || 5000;
+let port = process.env.PORT || 5050;
 
-let allowedOrigins = ['http://localhost:5000'];
+let allowedOrigins = ['http://localhost:5000', 'http://all.rit.edu', 'http://krutziscool.com'];
 
 app.use(passport.initialize());
 app.use(passport.session());
