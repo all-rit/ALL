@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Game.css';
 
-import BuzzSound from './buzz.wav';
+import BuzzSound from './ding 2.mp3';
 
 import {
   PLAYING,
