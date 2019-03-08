@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   async getUserDetails() {
-    const response = await fetch('/user');
+    const response = await fetch(window.lab1.hostname + '/user');
     const body = await response.json();
 
     if (response.status !== 200) {
