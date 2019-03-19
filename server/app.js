@@ -26,11 +26,7 @@ app.use(session({
   name: 'session',
   secret: process.env.KEY,
   resave: false,
-  saveUninitialized: true,
-  cookie: {
-    httpOnly: false,
-    secure: false
-  }
+  saveUninitialized: true
 }));
 app.use(cors({
   origin: function (origin, callback) {

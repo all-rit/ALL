@@ -50,10 +50,26 @@ class CodeEditor extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const { updateCode } = this.props;
+    const { updateCode, correctBackgroundColor, incorrectBackgroundColor } = this.props;
 
     updateCode(this.correctMessage.current.value, this.incorrectMessage.current.value);
     this.props.closeHandler();
+
+    fetch(process.env.REACT_APP_SERVER_URL + '/codeeditor/submit', {
+      method: 'POST',
+      headers: new Headers({'content-type': 'application/json'}),
+      body: JSON.stringify({
+        'correctMessage': this.correctMessage.current.value,
+        'incorrectMessage': this.incorrectMessage.current.value,
+        'correctBackgroundColor': correctBackgroundColor,
+        'incorrectBackgroundColor': incorrectBackgroundColor
+      }),
+      credentials: 'include'
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   toggleCorrectBackgroundColorPopup() {

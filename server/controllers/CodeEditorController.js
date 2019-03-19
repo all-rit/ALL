@@ -21,7 +21,7 @@ exports.submitChanges = (req, res) => {
 				CorrectMessage: correctMessage,
 				IncorrectMessage: incorrectMessage,
 				CorrectBackgroundColor: correctBackgroundColor,
-				CncorrectBackgroundColor: incorrectBackgroundColor
+				IncorrectBackgroundColor: incorrectBackgroundColor
 			})
 				.save()
 				.then(() => {
