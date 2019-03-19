@@ -13,10 +13,6 @@ import { CodeEditorReducer } from './codeeditor/CodeEditorReducer';
 const reducers = combineReducers({ app: AppReducer, game: GameReducer, code: CodeEditorReducer });
 const store = createStore(reducers);
 
-window.lab1 = {
-  hostname: "http://all.rit.edu:5050"
-};
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

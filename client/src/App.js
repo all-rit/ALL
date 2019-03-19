@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   async getUserDetails() {
-    const response = await fetch(window.lab1.hostname + '/user');
+    const response = await fetch(process.env.REACT_APP_SERVER_URL + '/user');
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -94,7 +94,7 @@ class App extends Component {
               </Conditional>
               
               <Conditional if={gameState === IDLE || gameState === ENDED}>
-                <a href={window.lab1.hostname + '/auth/google'}><div className="google__button"></div></a>
+                <a href={process.env.REACT_APP_SERVER_URL + '/auth/google'}><div className="google__button"></div></a>
               </Conditional>
             </Conditional>
           </div>

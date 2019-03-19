@@ -126,7 +126,7 @@ class Game extends Component {
   startGame() {
     const { updateStartAt, updateEndAt, timerTick } = this.props;
 
-    fetch(window.lab1.hostname + '/game/start', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/game/start', {
       method: 'POST'
     }).then((res) => {
       console.log(res);
@@ -202,7 +202,7 @@ class Game extends Component {
       updateRoundLength(roundLength + MILLISECONDS_MIN_VALUE);
     }, MILLISECONDS_MIN_VALUE);
 
-    fetch(window.lab1.hostname + '/game/round', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/game/round', {
       method: 'POST',
       headers: new Headers({'content-type': 'application/json'}),
       body: JSON.stringify({
@@ -406,7 +406,7 @@ class Game extends Component {
     }
 
     // Log data to database
-    fetch(window.lab1.hostname + '/game/choice', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/game/choice', {
       method: 'POST',
       headers: new Headers({'content-type': 'application/json'}),
       body: JSON.stringify({
