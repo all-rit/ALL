@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Game.css';
 
-import BuzzSound from './female 4.mp3';
+import Sound from '../assets/sounds/female.mp3';
 
 import {
   PLAYING,
@@ -108,7 +108,7 @@ class Game extends Component {
   constructor(props) {
     super(props);
 
-    this.audio = new Audio(BuzzSound);
+    this.audio = new Audio(Sound);
     this.audio.loop = false;
   }
 

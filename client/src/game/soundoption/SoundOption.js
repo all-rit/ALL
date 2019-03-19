@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import './SoundOption.css';
 
-import VolumeOnIcon from './images/volume_on.svg';
-import VolumeOffIcon from './images/volume_off.svg';
+import VolumeOnIcon from '../../assets/images/volume_on.svg';
+import VolumeOffIcon from '../../assets/images/volume_off.svg';
 
 class SoundOption extends Component {
   handleClick() {
