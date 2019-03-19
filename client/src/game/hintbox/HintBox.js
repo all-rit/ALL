@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 import './HintBox.css';
 
 import { HINT_BOX_CLOSED, HINT_BOX_OPEN, HINT_BOX_THINKING } from '../GameConstants';
-import { CODE_BLOCK_ANSWER2, CODE_BLOCK_ANSWER3 } from '../../codeeditor/CodeEditorConstants';
 import Conditional from '../../helpers/Conditional';
 
 const mapStateToProps = (state) => {
   return {
-    firstRow: state.code.firstRow,
-    secondRow: state.code.secondRow,
-    thirdRow: state.code.thirdRow
+    correctMessage: state.code.correctMessage,
+    incorrectMessage: state.code.incorrectMessage,
+    correctBackgroundColor: state.code.correctBackgroundColor,
+    incorrectBackgroundColor: state.code.incorrectBackgroundColor
   };
 };
 
@@ -22,32 +22,25 @@ class HintBox extends Component {
   }
 
   render() {
-    const { hint, state, secondRow, thirdRow } = this.props;
+    const { hint, state, correctMessage, incorrectMessage, correctBackgroundColor, incorrectBackgroundColor } = this.props;
     const classes = classNames({
       hint_box: true,
-      'hint_box--open': (state === HINT_BOX_OPEN),
-      'hint-box--hasHint': (hint && (secondRow !== CODE_BLOCK_ANSWER2 || thirdRow !== CODE_BLOCK_ANSWER3))
+      'hint_box--open': (state === HINT_BOX_OPEN)
     });
-    let hintMessage = "?";
-    let noHintMessage = "?";
-
-    if (secondRow !== CODE_BLOCK_ANSWER2) {
-      hintMessage = secondRow.match(/'([^']+)'/)[1];
-    }
-
-    if (thirdRow !== CODE_BLOCK_ANSWER3) {
-      noHintMessage = thirdRow.match(/'([^']+)'/)[1];
-    }
 
     return (
       <div className={classes} onClick={this.handleClick.bind(this)}>
         <Conditional if={state === HINT_BOX_CLOSED}>
           <Conditional if={hint}>
-            { hintMessage }
+            <div className="hint_box__background" style={{backgroundColor: correctBackgroundColor}}>
+            { correctMessage }
+            </div>
           </Conditional>
 
           <Conditional if={!hint}>
-            { noHintMessage }
+            <div className="hint_box__background" style={{backgroundColor: incorrectBackgroundColor}}>
+              { incorrectMessage }
+            </div>
           </Conditional>
         </Conditional>
 

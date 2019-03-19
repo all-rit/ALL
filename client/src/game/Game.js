@@ -127,7 +127,8 @@ class Game extends Component {
     const { updateStartAt, updateEndAt, timerTick } = this.props;
 
     fetch(process.env.REACT_APP_SERVER_URL + '/game/start', {
-      method: 'POST'
+      method: 'POST',
+      credentials: 'include'
     }).then((res) => {
       console.log(res);
 
@@ -207,7 +208,8 @@ class Game extends Component {
       headers: new Headers({'content-type': 'application/json'}),
       body: JSON.stringify({
         soundOption: soundEnabled
-      })
+      }),
+      credentials: 'include'
     }).then((res) => {
       console.log(res);
     }).catch((err) => {
@@ -415,7 +417,8 @@ class Game extends Component {
         hintUsed: hintUsed,
         boxNumber: number,
         correct: correct
-      })
+      }),
+      credentials: 'include'
     }).then((res) => {
       console.log(res);
     }).catch((err) => {
@@ -465,7 +468,7 @@ class Game extends Component {
         <Conditional if={gameState !== ENDED}>
   
           <Conditional if={gameState === IDLE}>
-            <Conditional if={numberOfPlays >= 2}>
+            <Conditional if={numberOfPlays >= 0}>
               <button onClick={this.openCodeEditor.bind(this)}>Repair</button>
             </Conditional>
             <button onClick={this.openInstructions.bind(this)}>How to Play?</button>
