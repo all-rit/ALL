@@ -11,24 +11,12 @@ let auth = require('./auth');
 let app = express();
 let port = process.env.PORT || 5050;
 
-let allowedOrigins = ['http://localhost:5050', 'http://all.rit.edu', 'http://krutziscool.com'];
+let allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:5050', 'http://all.rit.edu', 'http://krutziscool.com'];
 
 app.use(passport.initialize());
 app.use(passport.session());
 auth(passport);
 
-app.use(cors({
-  origins: function (origin, callback) {
-    if (!origin)
-      return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) === -1) {
-      return callback(null, false);
-    }
-
-    return callback(null, true);
-  }
-}));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -43,6 +31,16 @@ app.use(session({
     httpOnly: false,
     secure: false
   }
+}));
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);
+    }
+
+    return callback(null, false);
+  },
+  credentials: true
 }));
 
 app.use(require('./routes'));
