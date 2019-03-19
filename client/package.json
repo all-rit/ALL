@@ -31,7 +31,5 @@
   ],
   "devDependencies": {
     "redux-devtools": "^3.5.0"
-  },
-  "proxy": "http://localhost:5050",
-  "homepage": "/Lab1"
+  }
 }
