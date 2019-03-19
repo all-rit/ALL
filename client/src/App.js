@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   async getUserDetails() {
-    const response = await fetch(process.env.REACT_APP_SERVER_URL + '/user');
+    const response = await fetch(process.env.REACT_APP_SERVER_URL + '/user', { credentials: 'include' });
     const body = await response.json();
 
     if (response.status !== 200) {
