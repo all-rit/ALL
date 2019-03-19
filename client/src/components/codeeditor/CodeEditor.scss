@@ -1,0 +1,158 @@
+.code_editor {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	display: flex;
+	align-items: center;
+
+	.code_editor__content {
+		min-width: 750px;
+		min-height: 700px;
+		margin: 2rem auto;
+		background-color: white;
+		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+		padding: 1rem;
+		text-align: left;
+    z-index: 1;
+    display: grid;
+    grid-template-rows: 39px auto 100px;
+  }
+
+	.code_editor__file {
+		display: inline-block;
+		padding: 8px;
+		cursor: default;
+		transition: background-color 300ms ease-in-out;
+
+		&:hover {
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		&--active {
+			background-color: #eee;
+			border-width: 1px 1px 0px 1px;
+			border-color: rgba(0, 0, 0, 0.4);
+			border-style: solid;
+		}
+	}
+
+	.code_editor__update {
+		background-color: green;
+		border: 1px solid rgba(0, 0, 0, 0.4);
+	}
+
+	.code_editor__code {
+		background-color: #333;
+		padding: 1rem;
+		font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    height: 100%;
+	}
+
+	.code_editor__class {
+		color: #d7a82b;
+		margin: .5rem 0;
+	}
+
+	.code_editor__form {
+		position: relative;
+	}
+
+	.code_editor__property {
+		color: white;
+		margin: .1rem 0;
+		display: inline-block;
+	}
+
+	.code_editor__input {
+		display: inline-block;
+		position: relative;
+	}
+
+	.code_editor__input button {
+		margin: 0 0.5rem;
+		border: 1px solid white;
+    position: relative;
+    height: 15px;
+    top: -5px;
+    cursor: pointer;
+	}
+
+	.code_editor__color_selector {
+		position: absolute;
+		z-index: 2;
+	}
+
+	.code_editor__color_selector_background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1;
+	}
+
+	.code_editor__hide {
+		display: none;
+	}
+
+	.code_editor__line {
+		margin: .1rem 0;
+		color: white;
+
+		&--purple {
+			color: #b97ae8;
+		}
+
+		&--blue {
+			color: #7ad2e8;
+		}
+
+		&--gold {
+			color: #e3e87a;
+		}
+
+		&--orange {
+			color: #d7a82b;
+		}
+
+		&--green {
+			color: #7ae87d;
+		}
+
+		&--yellow {
+			color: #f5f9b5;
+		}
+
+		&--darkgreen {
+			color: #1d9321;
+		}
+
+		&--darkblue {
+			color: #5b6ce0;
+		}
+	}
+
+	.code_editor__code input {
+		background-color: #222;
+		color: orange;
+		padding: 0;
+		font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+		border: 0;
+		resize: none;
+		font-size: 1rem;
+	}
+
+	.code_editor__background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0.3);
+		z-index: 0;
+		cursor: pointer;
+	}
+}
