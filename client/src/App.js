@@ -94,7 +94,7 @@ class App extends Component {
               </Conditional>
               
               <Conditional if={gameState === IDLE || gameState === ENDED}>
-                <a href="http://all.rit.edu:5050/auth/google"><div className="google__button"></div></a>
+                <a href={window.lab1.hostname + '/auth/google'}><div className="google__button"></div></a>
               </Conditional>
             </Conditional>
           </div>
