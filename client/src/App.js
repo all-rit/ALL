@@ -59,7 +59,7 @@ class App extends Component {
 					</Conditional>
 
 					<Conditional if={state !== GAME_ENDED && state !== GAME_IDLE}>
-						<p className="app__instructions">Goal: Find the box with the hidden item.</p>
+						<p className="app__instructions">Goal: Find the box with the treasure.</p>
 					</Conditional>
 
 					<Game />
