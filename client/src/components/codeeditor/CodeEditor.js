@@ -12,6 +12,7 @@ import {
 	resetCode,
 	updateTab
 } from '../../reducers/codeeditor/Actions';
+import { updatePopup } from '../../reducers/app/Actions';
 import Conditional from '../../helpers/Conditional';
 
 const mapStateToProps = (state) => {
@@ -30,7 +31,8 @@ const mapDispatchToProps = {
 	updateIncorrectBackground,
 	updateCodeEditorStatus,
 	resetCode,
-	updateTab
+	updateTab,
+	updatePopup
 };
 
 class CodeEditor extends Component {
@@ -48,10 +50,11 @@ class CodeEditor extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
-		const { updateCode, correctBackgroundColor, incorrectBackgroundColor } = this.props;
+		const { updateCode, correctBackgroundColor, incorrectBackgroundColor, updatePopup } = this.props;
 
 		updateCode(this.correctMessage.current.value, this.incorrectMessage.current.value);
 		this.closeCodeEditor();
+		updatePopup('The adjustments for the game has been made.')
 
 		fetch(process.env.REACT_APP_SERVER_URL + '/codeeditor/submit', {
 			method: 'POST',

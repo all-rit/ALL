@@ -5,6 +5,7 @@ import './App.scss';
 import { login } from './reducers/app/Actions';
 import { GAME_PLAYING, GAME_IDLE, GAME_ENDED } from './reducers/game/Constants';
 
+import Popup from './components/popup/Popup';
 import Game from './components/game/Game';
 import Header from './components/header/Header';
 import CodeEditor from './components/codeeditor/CodeEditor';
@@ -38,6 +39,7 @@ class App extends Component {
 
 		return (
 			<div className="app">
+				<Popup />
 				<Header />
 
 				<div className="app__name">Treasure Hunter</div>

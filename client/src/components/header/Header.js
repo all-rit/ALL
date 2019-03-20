@@ -21,7 +21,11 @@ class Header extends Component {
 
 		return (
 			<header className="header">
-				<div className="header__column text-left">
+			<div className="header__column text-left">
+				<SoundOption blocked={state === GAME_PLAYING || numberOfPlays <= 2} />
+			</div>
+
+				<div className="header__column text-right">
 					<Conditional if={!user.FirstName}>
 						<Conditional if={state === GAME_PLAYING || state === GAME_COUNTDOWN}>
 							<div className="google__button--disabled" />
@@ -36,12 +40,6 @@ class Header extends Component {
 
 					<Conditional if={user.FirstName}>
 						<span>Welcome, {user.FirstName}!</span>
-					</Conditional>
-				</div>
-
-				<div className="header__column text-right">
-					<Conditional if={numberOfPlays > 2}>
-						<SoundOption blocked={state === GAME_PLAYING} />
 					</Conditional>
 				</div>
 			</header>
