@@ -30,7 +30,7 @@ import {
 
 const initialState = {
 	state: GAME_IDLE,
-	numberOfPlays: 2,
+	numberOfPlays: 0,
 	time: TIMER_SECONDS * MILLISECONDS_IN_A_SECOND / TIMEOUT_MIN_MS,
 	countdownTime: COUNTDOWN_SECONDS,
 	score: 0,
