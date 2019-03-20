@@ -1,4 +1,4 @@
-import { UPDATE_USER } from './Constants';
+import { UPDATE_USER, UPDATE_POPUP } from './Constants';
 
 const initialState = {
 	user: {
@@ -6,7 +6,9 @@ const initialState = {
 		FirstName: '',
 		Nickname: '',
 		Admin: false
-	}
+	},
+	popup: '',
+	popupType: 'success'
 };
 
 export const AppReducer = (state = initialState, action = {}) => {
@@ -15,6 +17,12 @@ export const AppReducer = (state = initialState, action = {}) => {
 			return {
 				...state,
 				user: action.user
+			};
+
+		case UPDATE_POPUP:
+			return {
+				...state,
+				popup: action.message
 			};
 
 		default:
