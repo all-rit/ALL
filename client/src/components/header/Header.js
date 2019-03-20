@@ -16,14 +16,22 @@ const mapStateToProps = (state) => {
 };
 
 class Header extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			menuOpen: false
+		};
+	}
+
 	render() {
 		const { state, user, numberOfPlays } = this.props;
 
 		return (
 			<header className="header">
-			<div className="header__column text-left">
-				<SoundOption blocked={state === GAME_PLAYING || numberOfPlays <= 2} />
-			</div>
+				<div className="header__column text-left">
+					<SoundOption blocked={state === GAME_PLAYING || numberOfPlays <= 2} />
+				</div>
 
 				<div className="header__column text-right">
 					<Conditional if={!user.FirstName}>
@@ -40,6 +48,7 @@ class Header extends Component {
 
 					<Conditional if={user.FirstName}>
 						<span>Welcome, {user.FirstName}!</span>
+						<a className="header__logout" href={process.env.REACT_APP_SERVER_URL + '/logout'}>Logout</a>
 					</Conditional>
 				</div>
 			</header>
