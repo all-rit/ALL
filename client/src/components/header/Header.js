@@ -22,9 +22,7 @@ class Header extends Component {
 		return (
 			<header className="header">
 			<div className="header__column text-left">
-				<Conditional if={numberOfPlays > 2}>
-					<SoundOption blocked={state === GAME_PLAYING} />
-				</Conditional>
+				<SoundOption blocked={state === GAME_PLAYING || numberOfPlays <= 2} />
 			</div>
 
 				<div className="header__column text-right">

@@ -3,7 +3,11 @@
 	height: 35px;
 	cursor: pointer;
 
-	&--off, &--disabled {
+	&--off {
+		opacity: .8;
+	}
+
+	&--disabled {
 		opacity: .5;
 	}
 	
