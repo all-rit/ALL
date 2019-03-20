@@ -12,3 +12,12 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+a {
+	color: #f76902;
+	text-decoration: none;
+
+	&:hover {
+		color: rgb(255, 143, 40);
+	}
+}
