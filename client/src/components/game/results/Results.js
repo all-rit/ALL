@@ -11,13 +11,33 @@ class Results extends Component {
 
 		return (
 			<div className="results">
-				<p className="results__score">Your final score was {score}!</p>
-				<p className="results__answers">
-					You had {correctAnswers} correct answers and {incorrectAnswers} incorrect answers in {roundNumber}{' '}
-					rounds.
-				</p>
+				<div className="results__title">Play is over.</div>
 
-				<button onClick={this.handleClick.bind(this)}>Continue</button>
+				<div className="results__content">
+					<p className="results__sentence">Betta luck next time! Here's your statistics:</p>
+
+					<div className="result">
+						<span className="result__category">Final Score:</span>
+						<span className="result__value">{score}</span>
+					</div>
+
+					<div className="result">
+						<span className="result__category">Correct Answers:</span>
+						<span className="result__value">{correctAnswers}</span>
+					</div>
+
+					<div className="result">
+						<span className="result__category">Incorrect Answers:</span>
+						<span className="result__value">{incorrectAnswers}</span>
+					</div>
+
+					<div className="result">
+						<span className="result__category">Rounds:</span>
+						<span className="result__value">{roundNumber}</span>
+					</div>
+				</div>
+
+				<button className="button" onClick={this.handleClick.bind(this)}>Continue</button>
 			</div>
 		);
 	}
