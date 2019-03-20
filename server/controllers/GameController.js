@@ -83,7 +83,6 @@ exports.insertChoice = (req, res) => {
   let gameID = req.session.game;
   let roundID = req.session.round;
   let score = req.body.score;
-  let time = req.body.time;
   let hintUsed = req.body.hintUsed;
   let boxNumber = req.body.boxNumber;
   let correct = req.body.correct;
@@ -110,7 +109,6 @@ exports.insertChoice = (req, res) => {
       });
 
     round.then((round) => {
-        round.set('TimeToComplete', time);
         round.set('HintUsed', hintUsed);
 
         round.save();

@@ -1,137 +1,80 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './App.css';
+import './App.scss';
 
-import { login } from './AppActions';
-import { IDLE, PLAYING, ENDED, COUNTDOWN } from './game/GameConstants';
-import { updateSoundStatus, updateInstructionsStatus } from './game/GameActions';
-import { updateCodeEditorStatus } from './codeeditor/CodeEditorActions';
+import { login } from './reducers/app/Actions';
+import { GAME_PLAYING, GAME_IDLE, GAME_ENDED } from './reducers/game/Constants';
 
-import Game from './game/Game';
-import SoundOption from './game/soundoption/SoundOption';
-import Instructions from './game/instructions/Instructions';
-import CodeEditor from './codeeditor/CodeEditor';
-
-import FirstPlaythrough from './game/playthroughs/FirstPlaythrough';
-import SecondPlaythrough from './game/playthroughs/SecondPlaythrough';
-import ThirdPlaythrough from './game/playthroughs/ThirdPlaythrough';
-import FourthPlaythrough from './game/playthroughs/FourthPlaythrough';
-
+import Game from './components/game/Game';
+import Header from './components/header/Header';
+import CodeEditor from './components/codeeditor/CodeEditor';
+import Instructions from './components/instructions/Instructions';
+import FirstPlaythrough from './components/playthroughs/FirstPlaythrough';
+import SecondPlaythrough from './components/playthroughs/SecondPlaythrough';
+import ThirdPlaythrough from './components/playthroughs/ThirdPlaythrough';
+import FourthPlaythrough from './components/playthroughs/FourthPlaythrough';
 import Conditional from './helpers/Conditional';
 
 const mapStateToProps = (state) => {
-  return {
-    gameState: state.game.gameState,
-    user: state.app.user,
-    soundEnabled: state.game.soundEnabled,
-    codeEditorOpen: state.code.codeEditorOpen,
-    instructionsOpen: state.game.instructionsOpen,
-    numberOfPlays: state.game.numberOfPlays
-  };
+	return {
+		state: state.game.state,
+		numberOfPlays: state.game.numberOfPlays,
+		codeEditorOpen: state.code.codeEditorOpen,
+		instructionsOpen: state.instructions.open
+	};
 };
 
 const mapDispatchToProps = {
-  login,
-  updateSoundStatus,
-  updateCodeEditorStatus,
-  updateInstructionsStatus
+	login
 };
 
 class App extends Component {
-  componentDidMount() {
-    const { login } = this.props;
+	componentDidMount() {
+		this.props.login();
+	}
 
-    this.getUserDetails()
-      .then((res) => {
-        login(res);
+	render() {
+		const { state, numberOfPlays, codeEditorOpen, instructionsOpen } = this.props;
 
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+		return (
+			<div className="app">
+				<Header />
 
-  async getUserDetails() {
-    const response = await fetch(process.env.REACT_APP_SERVER_URL + '/user', { credentials: 'include' });
-    const body = await response.json();
+				<div className="app__name">Treasure Hunter</div>
 
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
+				<main className="content">
+					<Conditional if={state === GAME_IDLE}>
+						<Conditional if={numberOfPlays === 0}>
+							<FirstPlaythrough />
+						</Conditional>
+						<Conditional if={numberOfPlays === 1}>
+							<SecondPlaythrough />
+						</Conditional>
+						<Conditional if={numberOfPlays === 2}>
+							<ThirdPlaythrough />
+						</Conditional>
+						<Conditional if={numberOfPlays > 2}>
+							<FourthPlaythrough />
+						</Conditional>
+					</Conditional>
 
-    return body;
-  }
+					<Conditional if={state !== GAME_ENDED && state !== GAME_IDLE}>
+						<p className="app__instructions">Goal: Find the box with the hidden item.</p>
+					</Conditional>
 
-  toggleSound() {
-    const { updateSoundStatus, soundEnabled } = this.props;
+					<Game />
+				</main>
 
-    updateSoundStatus(!soundEnabled);
-  }
+				<Conditional if={codeEditorOpen && state !== GAME_PLAYING}>
+					<CodeEditor />
+				</Conditional>
 
-  closeCodeEditor() {
-    const { updateCodeEditorStatus } = this.props;
-
-    updateCodeEditorStatus(false);
-  }
-
-  closeInstructions() {
-    const { updateInstructionsStatus } = this.props;
-
-    updateInstructionsStatus(false);
-  }
-
-  render() {
-    const { gameState, soundEnabled, codeEditorOpen, user, instructionsOpen, numberOfPlays } = this.props;
-
-    return (
-      <div className="app">
-        <div className="app__header">
-          <div className="app_column text-left">
-            <Conditional if={!user.FirstName}>
-              <Conditional if={gameState === PLAYING || gameState === COUNTDOWN}>
-                <div className="google__button--disabled"></div>
-              </Conditional>
-              
-              <Conditional if={gameState === IDLE || gameState === ENDED}>
-                <a href={process.env.REACT_APP_SERVER_URL + '/auth/google'}><div className="google__button"></div></a>
-              </Conditional>
-            </Conditional>
-          </div>
-          <div className="app_column text-right">
-            <Conditional if={numberOfPlays > 2}>
-              <SoundOption enabled={soundEnabled}
-                            onClickHandler={this.toggleSound.bind(this)}
-                            blocked={gameState === PLAYING} />
-            </Conditional>
-          </div>
-        </div>
-
-        <span className="app__name">Audio Cues</span>
-
-        <Conditional if={gameState === IDLE}>
-          <Conditional if={numberOfPlays === 0}><FirstPlaythrough /></Conditional>
-          <Conditional if={numberOfPlays === 1}><SecondPlaythrough /></Conditional>
-          <Conditional if={numberOfPlays === 2}><ThirdPlaythrough /></Conditional>
-          <Conditional if={numberOfPlays > 2}><FourthPlaythrough /></Conditional>
-        </Conditional>
-
-        <Conditional if={gameState !== ENDED && gameState !== IDLE}>
-          <p className="app__instructions">Goal: Find the box with the hidden item.</p>
-        </Conditional>
-
-        <Game></Game>
-
-        <Conditional if={codeEditorOpen && gameState !== PLAYING}>
-          <CodeEditor closeHandler={this.closeCodeEditor.bind(this)}></CodeEditor>
-        </Conditional>
-
-        <Conditional if={instructionsOpen && gameState !== PLAYING}>
-          <Instructions closeHandler={this.closeInstructions.bind(this)}></Instructions>
-        </Conditional>
-      </div>
-    );
-  }
+				<Conditional if={instructionsOpen && state !== GAME_PLAYING}>
+					<Instructions />
+				</Conditional>
+			</div>
+		);
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
