@@ -58,7 +58,8 @@ export const GameReducer = (state = initialState, action = {}) => {
 		case RESET_GAME:
 			return {
 				...initialState,
-				numberOfPlays: state.numberOfPlays + 1
+				numberOfPlays: state.numberOfPlays + 1,
+				soundEnabled: state.soundEnabled
 			};
 
 		case TIMER_TICK:
