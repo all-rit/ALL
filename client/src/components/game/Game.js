@@ -14,7 +14,7 @@ import {
 	HINT_BOX_THINKING,
 	BOX_CORRECT,
 	BOX_INCORRECT,
-	BOX_DISABLED,
+	BOX_REVEALED,
 	MILLISECONDS_IN_A_SECOND,
 	TIMEOUT_MIN_MS,
 	RANDOMIZE_HINT_TIMER_SECONDS,
@@ -213,14 +213,14 @@ class Game extends Component {
 	}
 
 	randomizeHint() {
-		const { correctBoxNumber, updateHint, soundEnabled } = this.props;
-		const hintNumber = Math.floor(Math.random() * 3);
-		const hint = POSSIBLE_HINTS[BOX_HINT_COMBINATIONS[correctBoxNumber][hintNumber]];
+		const { updateHint, soundEnabled } = this.props;
+		//const hintNumber = Math.floor(Math.random() * 3);
+		//const hint = POSSIBLE_HINTS[BOX_HINT_COMBINATIONS[correctBoxNumber][hintNumber]];
 
 		this.closeHintBox();
 		clearTimeout(this.closeHintBoxTimer);
 		clearTimeout(this.hintBoxThinkingTimer);
-		updateHint(hint);
+		updateHint("I've already given you a hint on which the box contains the treasure!");
 
 		if (soundEnabled) {
 			this.audio.play();
@@ -235,7 +235,12 @@ class Game extends Component {
 		updateScore(score - 25);
 
 		this.hintBoxThinkingTimer = setTimeout(() => {
+			const { correctBoxNumber, updateBoxStatus, currentHint } = this.props;
+
 			updateHintBoxStatus(HINT_BOX_OPEN);
+
+			if (currentHint)
+				updateBoxStatus(correctBoxNumber, BOX_REVEALED);
 
 			setTimeout(() => {
 				if (!this.props.currentHint) {

@@ -33,6 +33,7 @@ export const BOX_UNOPENED = 'BOX_UNOPENED';
 export const BOX_CORRECT = 'BOX_CORRECT';
 export const BOX_INCORRECT = 'BOX_INCORRECT';
 export const BOX_DISABLED = 'BOX_DISABLED';
+export const BOX_REVEALED = 'BOX_REVEALED';
 
 // Default Values
 export const MILLISECONDS_IN_A_SECOND = 1000;
