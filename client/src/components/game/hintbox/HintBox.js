@@ -45,12 +45,16 @@ class HintBox extends Component {
 					<Conditional if={hint}>
 						<div className="hint_box__background" style={{ backgroundColor: correctBackgroundColor }}>
 							{correctMessage}
+
+							<span className="hint_box__warning">(Opening this will cost you 25 points)</span>
 						</div>
 					</Conditional>
 
 					<Conditional if={!hint}>
 						<div className="hint_box__background" style={{ backgroundColor: incorrectBackgroundColor }}>
 							{incorrectMessage}
+
+							<span className="hint_box__warning">(Opening this will cost you 25 points)</span>
 						</div>
 					</Conditional>
 				</Conditional>
