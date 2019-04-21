@@ -40,9 +40,7 @@ class Header extends Component {
 				</div>
 
 				<div className="header__column text-right">
-					<Conditional if={numberOfPlays > 2}>
-						<SoundOption blocked={state === GAME_PLAYING} />
-					</Conditional>
+					<SoundOption blocked={state === GAME_PLAYING || numberOfPlays <= 2} />
 				</div>
 			</header>
 		);
