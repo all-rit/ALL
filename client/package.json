@@ -2,6 +2,7 @@
   "name": "accessibilitylab1",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/Lab1",
   "dependencies": {
     "@uiw/react-codemirror": "^1.0.19",
     "classnames": "^2.2.6",
