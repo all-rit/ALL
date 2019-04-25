@@ -15,12 +15,14 @@ import {
 	BOX_CORRECT,
 	BOX_INCORRECT,
 	BOX_REVEALED,
+	BOX_LOCKED,
 	MILLISECONDS_IN_A_SECOND,
 	TIMEOUT_MIN_MS,
 	RANDOMIZE_HINT_TIMER_SECONDS,
 	HINT_BOX_TIMER_SECONDS,
 	HINT_BOX_THINKING_TIMER_SECONDS,
-	CONGRATULATION_MESSAGES
+	CONGRATULATION_MESSAGES,
+	BOX_UNOPENED
 } from '../../reducers/game/Constants';
 import {
 	updateGameState,
@@ -213,6 +215,7 @@ class Game extends Component {
 	randomizeHint() {
 		const { updateHint, soundEnabled } = this.props;
 
+		this.unlockBoxes();
 		this.closeHintBox();
 		clearTimeout(this.closeHintBoxTimer);
 		clearTimeout(this.hintBoxThinkingTimer);
@@ -223,6 +226,26 @@ class Game extends Component {
 		}
 	}
 
+	lockBoxes() {
+		const { boxes, updateBoxStatus } = this.props;
+
+		Object.keys(boxes).forEach((box) => {
+			if (boxes[box] === BOX_UNOPENED) {
+				updateBoxStatus(box, BOX_LOCKED);
+			}
+		});
+	}
+
+	unlockBoxes() {
+		const { boxes, updateBoxStatus } = this.props;
+
+		Object.keys(boxes).forEach((box) => {
+			if (boxes[box] === BOX_LOCKED) {
+				updateBoxStatus(box, BOX_UNOPENED);
+			}
+		});
+	}
+
 	openHintBox() {
 		const { updateHintBoxStatus, updateHintUsed, updateScore, score } = this.props;
 
@@ -230,10 +253,14 @@ class Game extends Component {
 		updateHintUsed(true);
 		updateScore(score - 25);
 
+		this.lockBoxes();
+
 		this.hintBoxThinkingTimer = setTimeout(() => {
 			const { correctBoxNumber, updateBoxStatus, currentHint } = this.props;
 
 			updateHintBoxStatus(HINT_BOX_OPEN);
+
+			this.unlockBoxes();
 
 			if (currentHint)
 				updateBoxStatus(correctBoxNumber, BOX_REVEALED);
