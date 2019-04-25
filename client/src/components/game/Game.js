@@ -42,7 +42,8 @@ import {
 	updateBox,
 	updateBoxStatus,
 	updateSoundStatus,
-	updateCongratulationMessage
+	updateCongratulationMessage,
+	addResults
 } from '../../reducers/game/Actions';
 import { updateInstructionsStatus } from '../../reducers/instructions/Actions';
 import { updateCodeEditorStatus } from '../../reducers/codeeditor/Actions';
@@ -94,7 +95,8 @@ const mapDispatchToProps = {
 	updateSoundStatus,
 	updateCongratulationMessage,
 	updateInstructionsStatus,
-	updateCodeEditorStatus
+	updateCodeEditorStatus,
+	addResults
 };
 
 class Game extends Component {
@@ -202,7 +204,18 @@ class Game extends Component {
 	}
 
 	resetGame() {
-		this.props.resetGame();
+		const { resetGame, addResults, score, correctAnswers, incorrectAnswers, roundNumber, soundEnabled } = this.props;
+
+		clearInterval(this.roundTimer);
+
+		addResults({
+			score: score,
+			correctAnswers: correctAnswers,
+			incorrectAnswers: incorrectAnswers,
+			roundNumber: roundNumber,
+			soundEnabled: soundEnabled
+		});
+		resetGame();
 	}
 
 	randomizeBox() {

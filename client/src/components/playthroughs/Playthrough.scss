@@ -26,6 +26,34 @@
     }
   }
 
+  .playthrough__results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .playthrough__game {
+    font-size: .9rem;
+
+    .playthrough__description {
+      text-align: center;
+      margin-bottom: .5rem;
+    }
+
+    .playthrough__result {
+      display: grid;
+      margin-bottom: .75rem;
+      grid-template-columns: 2fr 1fr;
+    }
+
+    .playthrough__category {
+      font-weight: bold;
+    }
+
+    .playthrough__value {
+      text-align: center;
+    }
+  }
+
   hr {
     border: 0;
     height: 1px;

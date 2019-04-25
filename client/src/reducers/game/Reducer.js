@@ -19,6 +19,7 @@ import {
 	UPDATE_BOX_STATUS,
 	UPDATE_SOUND_STATUS,
 	UPDATE_CONGRATULATION_MESSAGE,
+	ADD_RESULTS,
 	GAME_IDLE,
 	HINT_BOX_CLOSED,
 	MILLISECONDS_IN_A_SECOND,
@@ -44,7 +45,8 @@ const initialState = {
 	hintUsed: false,
 	boxes: BOX_DEFAULT_VALUES,
 	soundEnabled: true,
-	congratulationMessage: undefined
+	congratulationMessage: undefined,
+	results: []
 };
 
 export const GameReducer = (state = initialState, action = {}) => {
@@ -58,7 +60,8 @@ export const GameReducer = (state = initialState, action = {}) => {
 		case RESET_GAME:
 			return {
 				...initialState,
-				numberOfPlays: state.numberOfPlays + 1
+				numberOfPlays: state.numberOfPlays + 1,
+				results: state.results
 			};
 
 		case TIMER_TICK:
@@ -159,6 +162,12 @@ export const GameReducer = (state = initialState, action = {}) => {
 			return {
 				...state,
 				congratulationMessage: action.message
+			};
+
+		case ADD_RESULTS:
+			return {
+				...state,
+				results: state.results.concat(action.results)
 			};
 
 		default:
