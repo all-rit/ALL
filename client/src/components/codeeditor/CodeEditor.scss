@@ -102,6 +102,10 @@
 		margin: .1rem 0;
 		color: white;
 
+		&-background--light {
+			background-color: #444;
+		}
+
 		&--purple {
 			color: #b97ae8;
 		}
