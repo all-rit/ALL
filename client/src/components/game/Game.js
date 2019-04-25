@@ -20,8 +20,6 @@ import {
 	RANDOMIZE_HINT_TIMER_SECONDS,
 	HINT_BOX_TIMER_SECONDS,
 	HINT_BOX_THINKING_TIMER_SECONDS,
-	POSSIBLE_HINTS,
-	BOX_HINT_COMBINATIONS,
 	CONGRATULATION_MESSAGES
 } from '../../reducers/game/Constants';
 import {
@@ -214,13 +212,11 @@ class Game extends Component {
 
 	randomizeHint() {
 		const { updateHint, soundEnabled } = this.props;
-		//const hintNumber = Math.floor(Math.random() * 3);
-		//const hint = POSSIBLE_HINTS[BOX_HINT_COMBINATIONS[correctBoxNumber][hintNumber]];
 
 		this.closeHintBox();
 		clearTimeout(this.closeHintBoxTimer);
 		clearTimeout(this.hintBoxThinkingTimer);
-		updateHint("I've already given you a hint on which the box contains the treasure!");
+		updateHint("The location of the treasure has been revealed!");
 
 		if (soundEnabled) {
 			this.audio.play();
