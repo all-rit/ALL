@@ -33,10 +33,17 @@
 
   .playthrough__game {
     font-size: .9rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 0 .5rem;
+
+    &:last-child {
+      border-right: 0;
+    }
 
     .playthrough__description {
       text-align: center;
       margin-bottom: .5rem;
+      text-decoration: underline;
     }
 
     .playthrough__result {
