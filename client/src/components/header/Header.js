@@ -16,12 +16,24 @@ const mapStateToProps = (state) => {
 };
 
 class Header extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			menuOpen: false
+		};
+	}
+
 	render() {
 		const { state, user, numberOfPlays } = this.props;
 
 		return (
 			<header className="header">
 				<div className="header__column text-left">
+					<SoundOption blocked={state === GAME_PLAYING || numberOfPlays <= 2} />
+				</div>
+
+				<div className="header__column text-right">
 					<Conditional if={!user.FirstName}>
 						<Conditional if={numberOfPlays > 0 || (numberOfPlays === 0 && state !== GAME_IDLE)}>
 							<div className="google__button--disabled" />
