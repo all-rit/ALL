@@ -54,7 +54,11 @@ class CodeEditor extends Component {
 
 		updateCode(this.correctMessage.current.value, this.incorrectMessage.current.value);
 		this.closeCodeEditor();
-		updatePopup('The adjustments for the game has been made.')
+		updatePopup('The adjustments for the game has been made.');
+
+		setTimeout(() => {
+			this.props.updatePopup('');
+		}, 5000)
 
 		fetch(process.env.REACT_APP_SERVER_URL + '/codeeditor/submit', {
 			method: 'POST',
