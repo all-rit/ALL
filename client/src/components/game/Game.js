@@ -18,7 +18,6 @@ import {
 	BOX_LOCKED,
 	MILLISECONDS_IN_A_SECOND,
 	TIMEOUT_MIN_MS,
-	RANDOMIZE_HINT_TIMER_SECONDS,
 	HINT_BOX_TIMER_SECONDS,
 	HINT_BOX_THINKING_TIMER_SECONDS,
 	CONGRATULATION_MESSAGES,
@@ -151,14 +150,11 @@ class Game extends Component {
 
 		startNewRound();
 
-		this.hintTimer = setInterval(() => {
-			const chance = Math.floor(Math.random() * 2) + 1;
+		const chance = Math.floor(Math.random() * 2) + 1;
 
-			if (chance > 1) {
-				this.randomizeHint();
-				clearInterval(this.hintTimer);
-			}
-		}, RANDOMIZE_HINT_TIMER_SECONDS * MILLISECONDS_IN_A_SECOND);
+		if (chance > 1) {
+			this.randomizeHint();
+		}
 
 		this.roundTimer = setInterval(() => {
 			this.props.roundTick();
