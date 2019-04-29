@@ -16,7 +16,8 @@ import {
 	UPDATE_BOX,
 	UPDATE_BOX_STATUS,
 	UPDATE_SOUND_STATUS,
-	UPDATE_CONGRATULATION_MESSAGE
+	UPDATE_CONGRATULATION_MESSAGE,
+	ADD_RESULTS
 } from './Constants';
 
 export const updateGameState = (state) => {
@@ -134,5 +135,12 @@ export const updateCongratulationMessage = (message) => {
 	return {
 		type: UPDATE_CONGRATULATION_MESSAGE,
 		message
+	};
+};
+
+export const addResults = (results) => {
+	return {
+		type: ADD_RESULTS,
+		results
 	};
 };

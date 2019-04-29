@@ -18,18 +18,37 @@
 		cursor: default !important;
 	}
 
-	&--blocked {
-		color: #eee;
+	&--locked {
+		background-color: #EE8383;
+		color: #EE8383;
 		cursor: not-allowed;
+		position: relative;
+
+		&:after {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			content: "\274c";
+			font-size: 80px; 
+			color: #FFF;
+			line-height: 100px;
+			text-align: center;
+		}
 	}
 
-	&:not(.box--red):not(.box--green):hover {
+	&--glow {
+		box-shadow: 0px 0px 15px 1px rgba(255, 0, 0, 1);
+	}
+
+	&:not(.box--red):not(.box--green):not(.box--locked):hover {
 		background-color: grey;
 		color: white;
 		cursor: pointer;
 	}
 	
-	&:not(.box--red):not(.box--green):active {
+	&:not(.box--red):not(.box--green):not(.box--locked):active {
 		background-color: #333;
 	}
 }

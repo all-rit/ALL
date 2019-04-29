@@ -16,6 +16,7 @@ export const UPDATE_BOX = 'UPDATE_BOX';
 export const UPDATE_BOX_STATUS = 'UPDATE_BOX_STATUS';
 export const UPDATE_SOUND_STATUS = 'UPDATE_SOUND_STATUS';
 export const UPDATE_CONGRATULATION_MESSAGE = 'UPDATE_CONGRATULATION_MESSAGE';
+export const ADD_RESULTS = 'ADD_RESULTS';
 
 // Game States
 export const GAME_IDLE = 'GAME_IDLE';
@@ -33,6 +34,8 @@ export const BOX_UNOPENED = 'BOX_UNOPENED';
 export const BOX_CORRECT = 'BOX_CORRECT';
 export const BOX_INCORRECT = 'BOX_INCORRECT';
 export const BOX_DISABLED = 'BOX_DISABLED';
+export const BOX_REVEALED = 'BOX_REVEALED';
+export const BOX_LOCKED = 'BOX_LOCKED';
 
 // Default Values
 export const MILLISECONDS_IN_A_SECOND = 1000;

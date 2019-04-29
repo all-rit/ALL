@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Header.scss';
 
-import { GAME_IDLE, GAME_PLAYING, GAME_ENDED, GAME_COUNTDOWN } from '../../reducers/game/Constants';
+import { GAME_IDLE, GAME_PLAYING } from '../../reducers/game/Constants';
 
 import SoundOption from '../soundoption/SoundOption';
 import Conditional from '../../helpers/Conditional';
@@ -35,11 +35,11 @@ class Header extends Component {
 
 				<div className="header__column text-right">
 					<Conditional if={!user.FirstName}>
-						<Conditional if={state === GAME_PLAYING || state === GAME_COUNTDOWN}>
+						<Conditional if={numberOfPlays > 0 || (numberOfPlays === 0 && state !== GAME_IDLE)}>
 							<div className="google__button--disabled" />
 						</Conditional>
 
-						<Conditional if={state === GAME_IDLE || state === GAME_ENDED}>
+						<Conditional if={numberOfPlays === 0 && state === GAME_IDLE}>
 							<a href={process.env.REACT_APP_SERVER_URL + '/auth/google'}>
 								<div className="google__button" />
 							</a>
@@ -48,8 +48,11 @@ class Header extends Component {
 
 					<Conditional if={user.FirstName}>
 						<span>Welcome, {user.FirstName}!</span>
-						<a className="header__logout" href={process.env.REACT_APP_SERVER_URL + '/logout'}>Logout</a>
 					</Conditional>
+				</div>
+
+				<div className="header__column text-right">
+					<SoundOption blocked={state === GAME_PLAYING || numberOfPlays <= 2} />
 				</div>
 			</header>
 		);

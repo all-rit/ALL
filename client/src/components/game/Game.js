@@ -14,15 +14,15 @@ import {
 	HINT_BOX_THINKING,
 	BOX_CORRECT,
 	BOX_INCORRECT,
-	BOX_DISABLED,
+	BOX_REVEALED,
+	BOX_LOCKED,
 	MILLISECONDS_IN_A_SECOND,
 	TIMEOUT_MIN_MS,
 	RANDOMIZE_HINT_TIMER_SECONDS,
 	HINT_BOX_TIMER_SECONDS,
 	HINT_BOX_THINKING_TIMER_SECONDS,
-	POSSIBLE_HINTS,
-	BOX_HINT_COMBINATIONS,
-	CONGRATULATION_MESSAGES
+	CONGRATULATION_MESSAGES,
+	BOX_UNOPENED
 } from '../../reducers/game/Constants';
 import {
 	updateGameState,
@@ -42,7 +42,8 @@ import {
 	updateBox,
 	updateBoxStatus,
 	updateSoundStatus,
-	updateCongratulationMessage
+	updateCongratulationMessage,
+	addResults
 } from '../../reducers/game/Actions';
 import { updateInstructionsStatus } from '../../reducers/instructions/Actions';
 import { updateCodeEditorStatus } from '../../reducers/codeeditor/Actions';
@@ -94,7 +95,8 @@ const mapDispatchToProps = {
 	updateSoundStatus,
 	updateCongratulationMessage,
 	updateInstructionsStatus,
-	updateCodeEditorStatus
+	updateCodeEditorStatus,
+	addResults
 };
 
 class Game extends Component {
@@ -202,7 +204,18 @@ class Game extends Component {
 	}
 
 	resetGame() {
-		this.props.resetGame();
+		const { resetGame, addResults, score, correctAnswers, incorrectAnswers, roundNumber, soundEnabled } = this.props;
+
+		clearInterval(this.roundTimer);
+
+		addResults({
+			score: score,
+			correctAnswers: correctAnswers,
+			incorrectAnswers: incorrectAnswers,
+			roundNumber: roundNumber,
+			soundEnabled: soundEnabled
+		});
+		resetGame();
 	}
 
 	randomizeBox() {
@@ -213,18 +226,37 @@ class Game extends Component {
 	}
 
 	randomizeHint() {
-		const { correctBoxNumber, updateHint, soundEnabled } = this.props;
-		const hintNumber = Math.floor(Math.random() * 3);
-		const hint = POSSIBLE_HINTS[BOX_HINT_COMBINATIONS[correctBoxNumber][hintNumber]];
+		const { updateHint, soundEnabled } = this.props;
 
+		this.unlockBoxes();
 		this.closeHintBox();
 		clearTimeout(this.closeHintBoxTimer);
 		clearTimeout(this.hintBoxThinkingTimer);
-		updateHint(hint);
+		updateHint("The location of the treasure has been revealed!");
 
 		if (soundEnabled) {
 			this.audio.play();
 		}
+	}
+
+	lockBoxes() {
+		const { boxes, updateBoxStatus } = this.props;
+
+		Object.keys(boxes).forEach((box) => {
+			if (boxes[box] === BOX_UNOPENED) {
+				updateBoxStatus(box, BOX_LOCKED);
+			}
+		});
+	}
+
+	unlockBoxes() {
+		const { boxes, updateBoxStatus } = this.props;
+
+		Object.keys(boxes).forEach((box) => {
+			if (boxes[box] === BOX_LOCKED) {
+				updateBoxStatus(box, BOX_UNOPENED);
+			}
+		});
 	}
 
 	openHintBox() {
@@ -234,8 +266,17 @@ class Game extends Component {
 		updateHintUsed(true);
 		updateScore(score - 25);
 
+		this.lockBoxes();
+
 		this.hintBoxThinkingTimer = setTimeout(() => {
+			const { correctBoxNumber, updateBoxStatus, currentHint } = this.props;
+
 			updateHintBoxStatus(HINT_BOX_OPEN);
+
+			this.unlockBoxes();
+
+			if (currentHint)
+				updateBoxStatus(correctBoxNumber, BOX_REVEALED);
 
 			setTimeout(() => {
 				if (!this.props.currentHint) {

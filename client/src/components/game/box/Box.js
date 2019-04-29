@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import './Box.scss';
-import { BOX_UNOPENED, BOX_INCORRECT, BOX_CORRECT } from '../../../reducers/game/Constants';
+import { BOX_UNOPENED, BOX_INCORRECT, BOX_CORRECT, BOX_REVEALED, BOX_LOCKED } from '../../../reducers/game/Constants';
 
 class Box extends Component {
 	handleClick() {
 		const { state } = this.props;
 
-		if (state === BOX_UNOPENED) this.props.onClickHandler(this.props.number);
+		if (state === BOX_UNOPENED || state === BOX_REVEALED) this.props.onClickHandler(this.props.number);
 	}
 
 	render() {
@@ -16,7 +16,9 @@ class Box extends Component {
 			box: true,
 			'box--black': (number === 2 || number === 3) && state === BOX_UNOPENED,
 			'box--green': state === BOX_CORRECT,
-			'box--red': state === BOX_INCORRECT
+			'box--red': state === BOX_INCORRECT,
+			'box--glow': state === BOX_REVEALED,
+			'box--locked': state === BOX_LOCKED
 		});
 
 		return (

@@ -219,7 +219,7 @@ class CodeEditor extends Component {
 							</span>
 						</div>
 
-						<div className="code_editor__line">
+						<div className="code_editor__line code_editor__line-background--light">
 							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span className="code_editor__line--blue">content</span>
 							<span>&nbsp;=&nbsp;</span>
@@ -245,7 +245,7 @@ class CodeEditor extends Component {
 							</span>
 						</div>
 
-						<div className="code_editor__line">
+						<div className="code_editor__line code_editor__line-background--light">
 							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span className="code_editor__line--blue">content</span>
 							<span>&nbsp;=&nbsp;</span>
@@ -342,7 +342,7 @@ class CodeEditor extends Component {
 									&#47;&#47; Changes the background of the box with an available hint.
 								</span>
 							</div>
-							<div className="code_editor__property">
+							<div className="code_editor__property code_editor__line-background--light">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span>background-color:&nbsp;</span>
 							</div>
@@ -371,7 +371,7 @@ class CodeEditor extends Component {
 									&#47;&#47; Changes the background of the box with an unavailable hint.
 								</span>
 							</div>
-							<div className="code_editor__property">
+							<div className="code_editor__property code_editor__line-background--light">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span>background-color:&nbsp;</span>
 							</div>
