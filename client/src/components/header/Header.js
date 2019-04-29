@@ -50,10 +50,6 @@ class Header extends Component {
 						<span>Welcome, {user.FirstName}!</span>
 					</Conditional>
 				</div>
-
-				<div className="header__column text-right">
-					<SoundOption blocked={state === GAME_PLAYING || numberOfPlays <= 2} />
-				</div>
 			</header>
 		);
 	}
