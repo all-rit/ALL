@@ -17,7 +17,6 @@ import {
 	BOX_LOCKED,
 	MILLISECONDS_IN_A_SECOND,
 	TIMEOUT_MIN_MS,
-	HINT_BOX_TIMER_SECONDS,
 	HINT_BOX_THINKING_TIMER_SECONDS,
 	CONGRATULATION_MESSAGES,
 	BOX_UNOPENED
@@ -272,12 +271,6 @@ class Game extends Component {
 
 			if (currentHint)
 				updateBoxStatus(correctBoxNumber, BOX_REVEALED);
-
-			setTimeout(() => {
-				if (!this.props.currentHint) {
-					this.closeHintBox();
-				}
-			}, HINT_BOX_TIMER_SECONDS * MILLISECONDS_IN_A_SECOND);
 		}, HINT_BOX_THINKING_TIMER_SECONDS * MILLISECONDS_IN_A_SECOND);
 	}
 
@@ -407,9 +400,12 @@ class Game extends Component {
 							</button>
 						</Conditional>
 
-						<button className="button" onClick={this.openInstructions.bind(this)}>
-							How to Play?
-						</button>
+						<Conditional if={numberOfPlays === 0}>
+							<button className="button" onClick={this.openInstructions.bind(this)}>
+								How to Play?
+							</button>
+						</Conditional>
+
 						<button className="button button--green" onClick={this.startCountdown.bind(this)}>
 							Start
 						</button>

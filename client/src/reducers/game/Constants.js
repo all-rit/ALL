@@ -43,9 +43,7 @@ export const TIMEOUT_MIN_MS = 10;
 
 export const COUNTDOWN_SECONDS = 3;
 export const TIMER_SECONDS = 20;
-export const RANDOMIZE_HINT_TIMER_SECONDS = 3; // hint is attempted to be randomized every x seconds
-export const HINT_BOX_TIMER_SECONDS = 3; // hint box collapses after x seconds if no hint
-export const HINT_BOX_THINKING_TIMER_SECONDS = 2; // hint box thinks before displaying hint
+export const HINT_BOX_THINKING_TIMER_SECONDS = .5; // hint box thinks before displaying hint
 export const POSSIBLE_HINTS = [
 	'The box is an odd number.',
 	'The box is an even number.',
