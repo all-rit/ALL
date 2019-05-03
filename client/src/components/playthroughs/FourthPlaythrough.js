@@ -73,7 +73,7 @@ class FourthPlaythrough extends Component {
 
 					<div className="playthrough__chart">
 					<VictoryChart domainPadding={50}>
-  						<VictoryLabel text="Scores in First Three Games" x={225} y={30} textAnchor="middle" />
+							<VictoryLabel text="Scores in First Three Games" x={225} y={30} textAnchor="middle" />
 
 							<VictoryAxis tickFormat={() => ''} />
 							<VictoryAxis tickValues={[1, 2, 3]} tickFormat={["Game 1", "Game 2", "Game 3"]} style={{ tickLabels: { fill: "#f76902" } }} offsetY={50} />
