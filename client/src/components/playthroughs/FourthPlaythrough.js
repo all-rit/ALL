@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
 
 const mapStateToProps = (state) => {
 	return {
@@ -12,8 +13,13 @@ class FourthPlaythrough extends Component {
 		const { results } = this.props;
 		let resultContainer = [];
 		let i = 0;
+		let data = [
+			{ game: 1, score: results[0].score },
+			{ game: 2, score: results[1].score },
+			{ game: 3, score: results[2].score }
+		];
 
-		results.slice(0, 3).forEach((result) => {
+		results.slice(0, 3).forEach((result, i) => {
 			let title = '';
 
 			if (i === 0) {
@@ -25,7 +31,7 @@ class FourthPlaythrough extends Component {
 			}
 
 			resultContainer.push(
-				<div className="playthrough__game">
+				<div className="playthrough__game" key={i}>
 					<div className="playthrough__description">{title}</div>
 
 					<div className="playthrough__result">
@@ -65,6 +71,20 @@ class FourthPlaythrough extends Component {
 						{resultContainer}
 					</div>
 
+					<div className="playthrough__chart">
+					<VictoryChart domainPadding={50}>
+  						<VictoryLabel text="Scores in First Three Games" x={225} y={30} textAnchor="middle" />
+
+							<VictoryAxis tickFormat={() => ''} />
+							<VictoryAxis tickValues={[1, 2, 3]} tickFormat={["Game 1", "Game 2", "Game 3"]} style={{ tickLabels: { fill: "#f76902" } }} offsetY={50} />
+              <VictoryAxis dependentAxis tickFormat={(x) => (x)} />
+
+              <VictoryBar data={data}
+                          x="game"
+                          y="score" />
+            </VictoryChart>
+					</div>
+
 					<p className="playthrough__sentence">
             After playing the game with audio on and off and making adjustments within the game, we hope this provided a good learning experience for you.
           </p>
@@ -76,7 +96,7 @@ class FourthPlaythrough extends Component {
           <hr />
 
 					<p className="playthrough__sentence">
-						Wait, you're actually <i>still here</i>? Well, you can decide to make more adjustments, play more games, or take a walk outside. Up to ya!
+						Wait, you're actually <i>still here</i>? Well, you can decide to make more adjustments, play more games, or take a walk outside. If you're interested in learning more, there is a button left of the repair button that will take you to a page providing more information on this lab. Up to you!
 					</p>
 				</div>
 			</div>
