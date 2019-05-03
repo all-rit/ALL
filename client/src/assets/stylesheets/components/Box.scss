@@ -3,19 +3,14 @@
   font-size: 3.5rem;
   padding: 1rem 2rem;
 
-  &--black {
-    background-color: black;
-    color: white;
-  }
-
   &--red {
     background-color: red;
-    cursor: default !important;
+    cursor: default;
   }
 
   &--green {
     background-color: green;
-    cursor: default !important;
+    cursor: default;
   }
 
   &--locked {

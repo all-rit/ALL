@@ -1,19 +1,11 @@
 .header {
-  display: flex;
+  display: grid;
   min-height: 78px;
+  grid-template-columns: 1fr 1fr;
 
-  .header__column {
-    flex: 50%;
+  &__column {
     padding: 1rem;
-
-    span {
-      font-size: 1.5rem;
-    }
-  }
-
-  .header__logout {
-    font-size: 0.8rem;
-    display: block;
+    font-size: 1.5rem;
   }
 }
 
@@ -22,21 +14,17 @@
   height: 46px;
   display: inline-block;
   background-image: image("btn_google_signin_dark_normal_web.png");
-}
 
-.google__button:hover {
-  background-image: image("btn_google_signin_dark_focus_web.png");
-}
+  &:not(&--disabled):hover {
+    background-image: image("btn_google_signin_dark_focus_web.png");
+  }
 
-.google__button:active {
-  background-image: image("btn_google_signin_dark_pressed_web.png");
-}
+  &:not(&--disabled):active {
+    background-image: image("btn_google_signin_dark_pressed_web.png");
+  }
 
-.google__button--disabled {
-  width: 191px;
-  height: 46px;
-  display: inline-block;
-  background-image: image("btn_google_signin_dark_disabled_web.png");
-  pointer-events: not-allowed;
-  text-decoration: none;
+  &--disabled {
+    background-image: image("btn_google_signin_dark_disabled_web.png");
+    cursor: not-allowed;
+  }
 }

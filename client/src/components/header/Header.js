@@ -35,7 +35,7 @@ class Header extends Component {
 				<div className="header__column text-right">
 					<Conditional if={!user.FirstName}>
 						<Conditional if={numberOfPlays > 0 || (numberOfPlays === 0 && state !== GAME_IDLE)}>
-							<div className="google__button--disabled" />
+							<div className="google__button google__button--disabled" />
 						</Conditional>
 
 						<Conditional if={numberOfPlays === 0 && state === GAME_IDLE}>

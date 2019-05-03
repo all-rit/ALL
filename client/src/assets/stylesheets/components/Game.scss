@@ -1,5 +1,5 @@
 .game {
-  .game__boxes {
+  &__boxes {
     margin-top: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -7,11 +7,11 @@
     grid-gap: 1rem;
   }
 
-  .game__countdown {
+  &__countdown {
     font-size: 8rem;
   }
 
-  .game__congratulation {
+  &__congratulation {
     margin-bottom: 5rem;
   }
 }

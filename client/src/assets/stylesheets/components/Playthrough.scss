@@ -4,34 +4,36 @@
   margin: 0 auto;
   text-align: left;
 
-  .playthrough__title {
+  &__title {
     font-size: 2.2rem;
     margin-bottom: 2rem;
     text-align: center;
   }
 
-  .playthrough__content {
+  &__content {
     font-size: 1.15rem;
   }
 
-  .playthrough__sentence:not(:last-child) {
+  &__sentence:not(:last-child) {
     margin-bottom: 1.5rem;
   }
 
-  .playthrough__list {
+  &__list {
     margin-bottom: 2rem;
+    margin-left: 2.5rem;
+    list-style-type: disc;
 
-    li {
+    > li {
       margin-bottom: 0.5rem;
     }
   }
 
-  .playthrough__results {
+  &__results {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .playthrough__game {
+  &__game {
     font-size: 0.9rem;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
     margin: 0 0.5rem;
@@ -39,26 +41,26 @@
     &:last-child {
       border-right: 0;
     }
+  }
 
-    .playthrough__description {
-      text-align: center;
-      margin-bottom: 0.5rem;
-      text-decoration: underline;
-    }
+  &__description {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-decoration: underline;
+  }
 
-    .playthrough__result {
-      display: grid;
-      margin-bottom: 0.75rem;
-      grid-template-columns: 2fr 1fr;
-    }
+  &__result {
+    display: grid;
+    margin-bottom: 0.75rem;
+    grid-template-columns: 2fr 1fr;
+  }
 
-    .playthrough__category {
-      font-weight: bold;
-    }
+  &__category {
+    font-weight: bold;
+  }
 
-    .playthrough__value {
-      text-align: center;
-    }
+  &__value {
+    text-align: center;
   }
 
   hr {

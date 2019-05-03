@@ -39,7 +39,6 @@ class App extends Component {
 
 		return (
 			<div className="app">
-				<Popup />
 				<Header />
 
 				<div className="app__name">Treasure Hunter</div>
@@ -74,6 +73,8 @@ class App extends Component {
 				<Conditional if={instructionsOpen && state !== GAME_PLAYING}>
 					<Instructions />
 				</Conditional>
+
+				<Popup />
 			</div>
 		);
 	}

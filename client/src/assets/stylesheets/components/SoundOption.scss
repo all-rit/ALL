@@ -2,6 +2,12 @@
   width: 35px;
   height: 35px;
   cursor: pointer;
+  background-image: image("volume_on.svg");
+  background-size: contain;
+
+  &--off {
+    background-image: image("volume_off.svg");
+  }
 
   &--disabled {
     cursor: not-allowed;

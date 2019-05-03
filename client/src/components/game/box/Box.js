@@ -13,7 +13,6 @@ class Box extends Component {
 		const { number, state } = this.props;
 		const classes = classNames({
 			box: true,
-			'box--black': (number === 2 || number === 3) && state === BOX_UNOPENED,
 			'box--green': state === BOX_CORRECT,
 			'box--red': state === BOX_INCORRECT,
 			'box--glow': state === BOX_REVEALED,

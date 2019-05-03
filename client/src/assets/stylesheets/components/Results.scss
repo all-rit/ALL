@@ -1,12 +1,12 @@
 .results {
   padding: 2rem 0;
 
-  .results__title {
+  &__title {
     font-size: 2.2rem;
     margin-bottom: 2rem;
   }
 
-  .results__sentence {
+  &__sentence {
     font-size: 1.5rem;
   }
 }
@@ -19,7 +19,7 @@
   max-width: 300px;
   font-size: 1.25rem;
 
-  .result__category {
+  &__category {
     font-weight: bold;
   }
 }

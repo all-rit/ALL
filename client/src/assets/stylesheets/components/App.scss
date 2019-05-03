@@ -1,11 +1,11 @@
 .app {
   text-align: center;
 
-  .app__name {
+  &__name {
     font-size: 3.125rem;
   }
 
-  .app__instructions {
+  &__instructions {
     font-size: 1.25rem;
     margin-top: 3rem;
     margin-bottom: 5rem;

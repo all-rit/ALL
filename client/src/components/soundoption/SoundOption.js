@@ -4,9 +4,6 @@ import classNames from 'classnames/bind';
 
 import { updateSoundStatus } from '../../reducers/game/Actions';
 
-import VolumeOnIcon from '../../assets/images/volume_on.svg';
-import VolumeOffIcon from '../../assets/images/volume_off.svg';
-
 const mapStateToProps = (state) => {
 	return {
 		soundEnabled: state.game.soundEnabled
@@ -34,11 +31,7 @@ class SoundOption extends Component {
 			'sound_icon--disabled': blocked
 		});
 
-		return (
-			<div onClick={this.toggleSound.bind(this)}>
-				<img className={classes} src={soundEnabled ? VolumeOnIcon : VolumeOffIcon} alt="Sound Option" />
-			</div>
-		);
+		return <svg onClick={this.toggleSound.bind(this)} className={classes} />;
 	}
 }
 

@@ -6,29 +6,29 @@
   left: 0;
   bottom: 0;
 
-  .stats__container {
+  &__container {
     max-width: 1000px;
     display: flex;
     justify-content: space-around;
     margin: 1.5rem auto;
   }
 
-  .stats__category,
-  .stats__result {
+  &__category,
+  &__result {
     margin: 0 0 0.5rem 0;
     font-size: 1.875rem;
   }
 
-  .stats__result {
+  &__result {
     font-weight: 300;
     font-size: 1.7rem;
   }
 
-  .stats__timer {
+  &__timer {
     background-color: white;
   }
 
-  .stats__countdown {
+  &__countdown {
     background-color: #6bff89;
     width: 100%;
     height: 0.8rem;
