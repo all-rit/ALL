@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import './Popup.scss';
 
 import { updatePopup } from '../../reducers/app/Actions';
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Results.scss';
 
 class Results extends Component {
 	handleClick() {

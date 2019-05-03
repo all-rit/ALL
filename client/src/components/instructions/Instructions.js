@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Instructions.scss';
 
 import Image1 from '../../assets/images/instructions/1.jpg';
 import Image3 from '../../assets/images/instructions/3.jpg';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Game.scss';
 
 import Sound from '../../assets/sounds/female.mp3';
 

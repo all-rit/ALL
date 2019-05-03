@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Playthrough.scss';
 
 const mapStateToProps = (state) => {
 	return {

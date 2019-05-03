@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Playthrough.scss';
 
 import { updateSoundStatus } from '../../reducers/game/Actions';
 

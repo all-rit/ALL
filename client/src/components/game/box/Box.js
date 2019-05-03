@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
-import './Box.scss';
 import { BOX_UNOPENED, BOX_INCORRECT, BOX_CORRECT, BOX_REVEALED, BOX_LOCKED } from '../../../reducers/game/Constants';
 
 class Box extends Component {

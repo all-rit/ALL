@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Stats.scss';
 
 import { MILLISECONDS_IN_A_SECOND, TIMEOUT_MIN_MS, TIMER_SECONDS } from '../../../reducers/game/Constants';
 

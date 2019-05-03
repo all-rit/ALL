@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BeatLoader } from 'react-spinners';
 import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
-import './HintBox.scss';
 
 import { HINT_BOX_CLOSED, HINT_BOX_OPEN, HINT_BOX_THINKING } from '../../../reducers/game/Constants';
 import Conditional from '../../../helpers/Conditional';

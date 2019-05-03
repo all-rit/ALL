@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Playthrough.scss';
 
 class ThirdPlaythrough extends Component {
 	render() {

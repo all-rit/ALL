@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import { SketchPicker } from 'react-color';
-import './CodeEditor.scss';
 
 import {
 	updateCode,

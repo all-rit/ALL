@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './App.scss';
+import './assets/stylesheets/main.scss';
 
 import { login } from './reducers/app/Actions';
 import { GAME_PLAYING, GAME_IDLE, GAME_ENDED } from './reducers/game/Constants';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Header.scss';
 
 import { GAME_IDLE, GAME_PLAYING } from '../../reducers/game/Constants';
 
