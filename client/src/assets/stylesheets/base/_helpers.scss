@@ -49,3 +49,13 @@
 		margin: 1rem 0 0 0;
 	}
 }
+
+@keyframes MoveUpDown {
+	0%, 100% {
+		bottom: -60px;
+	}
+
+	50% {
+		bottom: -65px;
+	}
+}
