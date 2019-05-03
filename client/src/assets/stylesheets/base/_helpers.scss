@@ -52,10 +52,10 @@
 
 @keyframes MoveUpDown {
 	0%, 100% {
-		bottom: -60px;
+		transform: translateY(0);
 	}
 
 	50% {
-		bottom: -65px;
+		transform: translateY(-5px);
 	}
 }
