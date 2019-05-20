@@ -1,17 +1,17 @@
 require('dotenv').config()
 
-let express = require('express');
-let cors = require('cors');
-let bodyParser = require('body-parser');
-let cookieParser = require('cookie-parser');
-let session = require('express-session')
-let passport = require('passport');
-let auth = require('./auth');
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session')
+const passport = require('passport');
+const auth = require('./auth');
 
-let app = express();
-let port = process.env.PORT || 5050;
+const app = express();
+const port = process.env.PORT || 5050;
 
-let allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:5050', 'http://all.rit.edu', 'http://krutziscool.com'];
+const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:5050', 'http://all.rit.edu', 'http://krutziscool.com'];
 
 app.use(passport.initialize());
 app.use(passport.session());
