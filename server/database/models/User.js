@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 			NickName: { type: DataTypes.STRING },
 			Admin: { type: DataTypes.BOOLEAN, defaultValue: false }
 		},
-		{ tableName: 'User' }
+		{ tableName: 'Users' }
 	);
 
 	User.associate = (models) => {

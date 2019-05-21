@@ -1,14 +1,15 @@
 const db = require('../database');
 
-exports.createGame = (token) => {
+exports.createGame = (data) => {
 	return db.Login
-		.findAll({ limit: 1, where: { UserSessionID: token }, order: [ [ 'LoginID', 'DESC' ] ] })
+		.findAll({ limit: 1, where: { UserSessionID: data.token }, order: [ [ 'LoginID', 'DESC' ] ] })
 		.then((logins) => {
 			return logins[0];
 		})
 		.then((login) => {
 			return db.Game.create({
-				LoginID: login.LoginID
+				LoginID: login.LoginID,
+				Playthrough: data.playthrough
 			});
 		})
 		.then((game) => {
