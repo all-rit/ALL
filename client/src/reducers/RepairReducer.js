@@ -9,7 +9,7 @@ export const initialState = {
 	availableMessage: '?',
 	unavailableMessage: '?',
 	availableBackgroundColor: '#FFFFFF',
-	unavailableBackgroundColor: '#000000',
+	unavailableBackgroundColor: '#FFFFFF',
 	currentTab: 1,
 	repairVisible: false,
 	changesApplied: false

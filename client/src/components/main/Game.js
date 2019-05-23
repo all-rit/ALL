@@ -82,7 +82,8 @@ class Game extends Component {
 		// Play the audio cue based on chance
 		if (chance > 1) {
 			handlers.revealBox();
-			this.audio.play();
+
+			if (data.soundEnabled) this.audio.play();
 		}
 	}
 
@@ -262,7 +263,7 @@ class Game extends Component {
 					availableMessage={data.availableMessage}
 					unavailableMessage={data.unavailableMessage}
 					availableBackgroundColor={data.availableBackgroundColor}
-					unavailableBackground={data.unavailableBackgroundColor}
+					unavailableBackgroundColor={data.unavailableBackgroundColor}
 					clickHandler={this.openHintBox.bind(this)}
 				/>
 				<Boxes
