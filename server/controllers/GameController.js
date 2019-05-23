@@ -1,7 +1,10 @@
 const GameService = require('../services/GameService');
 
 exports.createGame = (req, res) => {
-	GameService.createGame(req.session.token).then((id) => {
+	GameService.createGame({
+		token: req.session.token,
+		playthrough: req.body.playthrough
+	}).then((id) => {
 		req.session.game = id;
 
 		res.send(200);

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "/Lab1",
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "@uiw/react-codemirror": "^1.0.19",
     "classnames": "^2.2.6",
     "immutability-helper": "^3.0.0",
@@ -16,7 +17,7 @@
     "react-scripts": "^2.1.8",
     "react-spinners": "^0.5.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
+    "redux-saga": "^1.0.2",
     "victory": "^32.2.1"
   },
   "scripts": {
