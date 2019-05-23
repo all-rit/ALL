@@ -1,1 +1,0 @@
-export const UPDATE_OPEN_STATUS = 'UPDATE_OPEN_STATUS';
