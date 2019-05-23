@@ -11,7 +11,8 @@ export const initialState = {
 	availableBackgroundColor: '#FFFFFF',
 	unavailableBackgroundColor: '#000000',
 	currentTab: 1,
-	repairVisible: false
+	repairVisible: false,
+	changesApplied: false
 };
 
 export default (state = initialState, action) => {
@@ -22,7 +23,8 @@ export default (state = initialState, action) => {
 				availableMessage: action.availableMessage,
 				unavailableMessage: action.unavailableMessage,
 				availableBackgroundColor: action.availableBackgroundColor,
-				unavailableBackgroundColor: action.unavailableBackgroundColor
+				unavailableBackgroundColor: action.unavailableBackgroundColor,
+				changesApplied: true
 			};
 
 		case types.UPDATE_TAB:

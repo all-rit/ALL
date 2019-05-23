@@ -45,7 +45,8 @@ const mapStateToProps = (state) => {
 		availableBackgroundColor: state.repair.availableBackgroundColor,
 		unavailableBackgroundColor: state.repair.unavailableBackgroundColor,
 		currentTab: state.repair.currentTab,
-		repairVisible: state.repair.repairVisible
+		repairVisible: state.repair.repairVisible,
+		changesApplied: state.repair.changesApplied
 	};
 };
 
@@ -86,6 +87,7 @@ class Main extends Component {
 			unavailableBackgroundColor,
 			currentTab,
 			repairVisible,
+			changesApplied,
 
 			actions
 		} = this.props;
@@ -127,7 +129,8 @@ class Main extends Component {
 						availableBackgroundColor,
 						unavailableBackgroundColor,
 						currentTab,
-						repairVisible
+						repairVisible,
+						changesApplied
 					}}
 					handlers={actions}
 				/>

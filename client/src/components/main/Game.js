@@ -245,6 +245,7 @@ class Game extends Component {
 				<GameButtons
 					visible={data.state === GAME_IDLE}
 					plays={data.plays}
+					repairApplied={data.changesApplied}
 					openRepairHandler={handlers.openRepair}
 					openInstructionsHandler={handlers.openInstructions}
 					startGameHandler={this.startCountdown.bind(this)}

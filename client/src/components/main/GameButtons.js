@@ -2,7 +2,15 @@ import React, { Component, Fragment } from 'react';
 
 class GameButtons extends Component {
 	render() {
-		const { plays, visible, openRepairHandler, openInstructionsHandler, startGameHandler } = this.props;
+		const {
+			plays,
+			visible,
+			repairApplied,
+			openRepairHandler,
+			openInstructionsHandler,
+			startGameHandler
+		} = this.props;
+		const startMessage = repairApplied ? 'Start with Repair Applied' : 'Start';
 		const repairButton = (
 			<button className="button" onClick={openRepairHandler} key="repair">
 				Repair
@@ -15,7 +23,7 @@ class GameButtons extends Component {
 		);
 		const startButton = (
 			<button className="button button--green" onClick={startGameHandler} key="start">
-				Start
+				{startMessage}
 			</button>
 		);
 		const buttons = [];
