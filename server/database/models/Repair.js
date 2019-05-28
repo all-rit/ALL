@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING
 			}
 		},
-		{ tableName: 'AudioCue_Repair' }
+		{ tableName: 'audiocue_repair' }
 	);
 
 	Repair.associate = (models) => {

@@ -8,6 +8,6 @@ exports.submitChange = (req, res) => {
 		availableBackgroundColor: req.body.availableBackgroundColor,
 		unavailableBackgroundColor: req.body.unavailableBackgroundColor
 	}).then(() => {
-		res.send(200);
+		res.sendStatus(200);
 	});
 };

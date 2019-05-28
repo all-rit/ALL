@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
-			FirstName: { type: DataTypes.STRING },
-			NickName: { type: DataTypes.STRING },
+			FirstName: { type: DataTypes.TEXT },
+			NickName: { type: DataTypes.TEXT },
 			Admin: { type: DataTypes.BOOLEAN, defaultValue: false }
 		},
-		{ tableName: 'Users' }
+		{ tableName: 'users' }
 	);
 
 	User.associate = (models) => {

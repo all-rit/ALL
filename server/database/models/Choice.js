@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 			BoxNumber: { type: DataTypes.INTEGER },
 			Correct: { type: DataTypes.BOOLEAN }
 		},
-		{ tableName: 'AudioCue_Choice' }
+		{ tableName: 'audiocue_choice' }
 	);
 
 	Choice.associate = (models) => {

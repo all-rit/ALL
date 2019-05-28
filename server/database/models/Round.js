@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 			HintUsed: { type: DataTypes.BOOLEAN },
 			SoundOption: { type: DataTypes.BOOLEAN }
 		},
-		{ tableName: 'AudioCue_Round' }
+		{ tableName: 'audiocue_round' }
 	);
 
 	Round.associate = (models) => {

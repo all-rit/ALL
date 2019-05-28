@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 			Playthrough: { type: DataTypes.INTEGER },
 			TimePlayed: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
 		},
-		{ tableName: 'AudioCue_Game' }
+		{ tableName: 'audiocue_game' }
 	);
 
 	Game.associate = (models) => {

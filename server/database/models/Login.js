@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
-			Location: { type: DataTypes.BOOLEAN },
+			Location: { type: DataTypes.INET },
 			Login: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
 		},
-		{ tableName: 'Login' }
+		{ tableName: 'login' }
 	);
 
 	Login.associate = (models) => {

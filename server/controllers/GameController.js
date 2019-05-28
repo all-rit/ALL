@@ -7,7 +7,7 @@ exports.createGame = (req, res) => {
 	}).then((id) => {
 		req.session.game = id;
 
-		res.send(200);
+		res.sendStatus(200);
 	});
 };
 
@@ -18,7 +18,7 @@ exports.createRound = (req, res) => {
 	}).then((id) => {
 		req.session.round = id;
 
-		res.send(200);
+		res.sendStatus(200);
 	});
 };
 
@@ -31,6 +31,6 @@ exports.createChoice = (req, res) => {
 		boxNumber: req.body.boxNumber,
 		correct: req.body.correct
 	}).then(() => {
-		res.send(200);
+		res.sendStatus(200);
 	});
 };

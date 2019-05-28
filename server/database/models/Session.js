@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
 				autoIncrement: true
 			}
 		},
-		{ tableName: 'Session' }
+		{ tableName: 'session' }
 	);
 
 	Session.associate = (models) => {

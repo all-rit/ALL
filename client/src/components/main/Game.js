@@ -39,11 +39,6 @@ class Game extends Component {
 	}
 
 	startGame() {
-		const { data } = this.props;
-
-		// Create a new game entry in the database
-		GameService.createGame(data.plays);
-
 		// Proceed with starting the game
 		this.startRound();
 
@@ -66,9 +61,6 @@ class Game extends Component {
 		const { data, handlers } = this.props;
 		const chance = Math.floor(Math.random() * 2) + 1;
 
-		// Create a new round entry in the database
-		GameService.createRound(data.soundEnabled);
-
 		// Proceed with starting a new round
 		handlers.updateHintBoxStatus(HINT_BOX_CLOSED);
 		handlers.resetRoundTimer();
@@ -88,11 +80,19 @@ class Game extends Component {
 	}
 
 	startCountdown() {
-		const { handlers } = this.props;
+		const { data, handlers } = this.props;
 
 		// Reset countdown timer back to three and change the game state
 		handlers.resetCountdownTimer();
 		handlers.updateState(GAME_COUNTDOWN);
+
+		if (data.roundNumber === 0) {
+			// Create a new game entry in the database
+			GameService.createGame(data.plays);
+		} else {
+			// Create a new round entry in the database
+			GameService.createRound(data.soundEnabled);
+		}
 
 		// We still have to create a new timer, don't we?
 		this.countdownTimer = setInterval(() => {
