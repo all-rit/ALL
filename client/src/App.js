@@ -19,7 +19,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router className="app">
+			<Router basepath={process.env.PUBLIC_URL} className="app">
 				<Main path="/" />
 				<SupplementaryMaterials path="/supplementary" />
 			</Router>
