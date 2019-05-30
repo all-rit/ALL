@@ -14,7 +14,7 @@ exports.createGame = (req, res) => {
 exports.createRound = (req, res) => {
 	GameService.createRound({
 		id: req.session.game,
-		soundOption: req.body.sound
+		soundOption: req.body.soundOption
 	}).then((id) => {
 		req.session.round = id;
 
