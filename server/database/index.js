@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const pathname = path.join(__dirname, 'models');
+const withPassword = process.env.DB_PASS ? `:${process.env.DB_PASS}` : '';
+const URI = `postgres://${process.env.DB_USER}${withPassword}@${process.env.DB_HOST}:5432/${process.env.DB_SCHEMA}`;
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.DB_SCHEMA, process.env.DB_USER, process.env.DB_PASS, {
-	host: process.env.DB_HOST,
+const sequelize = new Sequelize(URI, {
 	dialect: 'postgres',
 	pool: {
 		max: 5,
