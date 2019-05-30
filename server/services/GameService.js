@@ -24,7 +24,7 @@ exports.createRound = (data) => {
 	return db.Game
 		.findByPk(data.id)
 		.then((game) => {
-			return db.Round.create({ gameid: game.gameid, SoundOption: data.soundOption });
+			return db.Round.create({ gameid: game.gameid, soundoption: data.soundOption });
 		})
 		.then((round) => {
 			console.log(round.roundid)
