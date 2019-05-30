@@ -10,10 +10,6 @@
 
 Clone the repository and open the command line for the upcoming instructions.
 
-### Environment Files
-1. Duplicate `example.env` and rename it as `.env`.
-2. Fill out all variables.
-
 ### Server
 1. Navigate to the server folder.
 2. `npm install`
