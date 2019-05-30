@@ -9,18 +9,19 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
+			userid: {
+				type: DataTypes.INTEGER,
+				allowNull: false
+			},
+			usersessionid: {
+				type: DataTypes.INTEGER,
+				allowNull: false
+			},
 			location: { type: DataTypes.INET },
 			login: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
 		},
 		{ tableName: 'login' }
 	);
-
-	Login.associate = (models) => {
-		Login.belongsTo(models.User, { as: 'user', foreignKey: 'userid' });
-		Login.belongsTo(models.Session, { as: 'session', foreignKey: 'usersessionid' });
-		Login.hasMany(models.Game, { as: 'games', foreignKey: 'loginid' });
-		Login.hasMany(models.Repair, { as: 'repairs', foreignKey: 'loginid' });
-	};
 
 	return Login;
 };

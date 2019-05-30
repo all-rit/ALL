@@ -9,17 +9,16 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
+			loginid: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+			},
 			score: { type: DataTypes.INTEGER, defaultValue: 0 },
 			playthrough: { type: DataTypes.INTEGER },
 			timeplayed: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
 		},
 		{ tableName: 'audiocue_game' }
 	);
-
-	Game.associate = (models) => {
-		Game.belongsTo(models.Login, { as: 'login', foreignKey: 'loginid' });
-		Game.hasMany(models.Round, { as: 'rounds', foreignKey: 'gameid' });
-	};
 
 	return Game;
 };

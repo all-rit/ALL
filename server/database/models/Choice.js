@@ -9,15 +9,15 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
+			roundid: {
+				type: DataTypes.INTEGER,
+				allowNull: false
+			},
 			boxnumber: { type: DataTypes.INTEGER },
 			correct: { type: DataTypes.BOOLEAN }
 		},
 		{ tableName: 'audiocue_choice' }
 	);
-
-	Choice.associate = (models) => {
-		Choice.belongsTo(models.Round, { as: 'round', foreignKey: 'roundid' });
-	};
 
 	return Choice;
 };
