@@ -141,8 +141,6 @@ class Game extends Component {
 		// Create a new choice entry in the database
 		GameService.createChoice(data.score, data.hintUsed, number, correct);
 
-		console.log(data.hintUsed)
-
 		if (correct) {
 			handlers.updateBoxStatus(number, BOX_CORRECT);
 

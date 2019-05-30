@@ -130,7 +130,8 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				roundNumber: state.roundNumber + 1,
-				boxes: BOX_DEFAULT_VALUES
+				boxes: BOX_DEFAULT_VALUES,
+				hintUsed: false
 			};
 
 		case types.UPDATE_HINT_BOX_STATUS:
