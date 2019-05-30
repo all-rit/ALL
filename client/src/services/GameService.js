@@ -13,12 +13,12 @@ export default {
 		});
 	},
 	createRound: (soundOption) => {
-		return API.post(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_ROUND, {
+		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_ROUND, {
 			soundOption
 		});
 	},
 	createChoice: (score, hintUsed, boxNumber, correct) => {
-		return API.post(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_CHOICE, {
+		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_CHOICE, {
 			score,
 			hintUsed,
 			boxNumber,

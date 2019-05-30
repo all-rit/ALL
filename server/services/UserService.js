@@ -2,8 +2,8 @@ const db = require('../database');
 
 const createLogin = (UserID, UserSessionID) => {
 	return db.Login.create({
-		UserID: UserID,
-		UserSessionID: UserSessionID
+		userid: UserID,
+		usersessionid: UserSessionID
 	});
 };
 
@@ -25,20 +25,20 @@ exports.authenticate = (data) => {
 			// Create a new account
 			return db.User
 				.create({
-					FirstName: firstName
+					firstname: firstName
 				})
 				.then((user) => {
 					// Create a new session
 					return db.Session.create({
-						UserSessionID: userSessionID,
-						UserID: user.UserID
+						usersessionid: userSessionID,
+						userid: user.userid
 					});
 				});
 		})
 		.then((session) => {
 			// Create a new login
-			return createLogin(session.UserID, userSessionID).then((login) => {
-				return login.UserSessionID;
+			return createLogin(session.userid, userSessionID).then((login) => {
+				return login.usersessionid;
 			});
 		})
 		.catch((err) => {
@@ -54,15 +54,15 @@ exports.getSession = (token) => {
 			.then((user) => {
 				return db.Session
 					.create({
-						UserID: user.UserID
+						userid: user.userid
 					})
 					.then((session) => {
 						return { user, session };
 					});
 			})
 			.then((data) => {
-				return createLogin(data.session.UserID, data.session.UserSessionID).then((login) => {
-					return { user: data.user, token: login.UserSessionID };
+				return createLogin(data.session.userid, data.session.usersessionid).then((login) => {
+					return { user: data.user, token: login.usersessionid };
 				});
 			});
 	}
@@ -71,7 +71,7 @@ exports.getSession = (token) => {
 	return db.Session
 		.findByPk(token)
 		.then((session) => {
-			return db.User.findByPk(session.UserID).then((user) => {
+			return db.User.findByPk(session.userid).then((user) => {
 				return { user, token };
 			});
 		})

@@ -6,11 +6,11 @@ class WelcomeMessage extends Component {
 	render() {
 		const { user, loginEnabled } = this.props;
 
-		if (user === null || user.FirstName === null) {
+		if (user === null || user.firstname === null) {
 			return <LoginButton enabled={loginEnabled} />;
 		}
 
-		return <span>Welcome, {user.FirstName}!</span>;
+		return <span>Welcome, {user.firstname}!</span>;
 	}
 }
 

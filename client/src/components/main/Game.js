@@ -89,9 +89,6 @@ class Game extends Component {
 		if (data.roundNumber === 0) {
 			// Create a new game entry in the database
 			GameService.createGame(data.plays);
-		} else {
-			// Create a new round entry in the database
-			GameService.createRound(data.soundEnabled);
 		}
 
 		// We still have to create a new timer, don't we?
@@ -102,6 +99,9 @@ class Game extends Component {
 
 			if (data.countdownTime <= 0) {
 				handlers.updateState(GAME_PLAYING);
+
+				// Create a new round entry in the database
+				GameService.createRound(data.soundEnabled);
 
 				if (data.roundNumber === 0) {
 					this.startGame();
@@ -140,6 +140,8 @@ class Game extends Component {
 
 		// Create a new choice entry in the database
 		GameService.createChoice(data.score, data.hintUsed, number, correct);
+
+		console.log(data.hintUsed)
 
 		if (correct) {
 			handlers.updateBoxStatus(number, BOX_CORRECT);

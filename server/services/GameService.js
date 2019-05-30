@@ -2,18 +2,18 @@ const db = require('../database');
 
 exports.createGame = (data) => {
 	return db.Login
-		.findAll({ limit: 1, where: { UserSessionID: data.token }, order: [ [ 'LoginID', 'DESC' ] ] })
+		.findAll({ limit: 1, where: { usersessionid: data.token }, order: [ [ 'loginid', 'DESC' ] ] })
 		.then((logins) => {
 			return logins[0];
 		})
 		.then((login) => {
 			return db.Game.create({
-				LoginID: login.LoginID,
-				Playthrough: data.playthrough
+				loginid: login.loginid,
+				playthrough: data.playthrough
 			});
 		})
 		.then((game) => {
-			return game.GameID;
+			return game.gameid;
 		})
 		.catch((err) => {
 			console.log(err);
@@ -24,10 +24,11 @@ exports.createRound = (data) => {
 	return db.Game
 		.findByPk(data.id)
 		.then((game) => {
-			return db.Round.create({ GameID: game.GameID, SoundOption: data.soundOption });
+			return db.Round.create({ gameid: game.gameid, SoundOption: data.soundOption });
 		})
 		.then((round) => {
-			return round.RoundID;
+			console.log(round.roundid)
+			return round.roundid;
 		})
 		.catch((err) => {
 			console.log(err);
@@ -37,9 +38,9 @@ exports.createRound = (data) => {
 exports.createChoice = (data) => {
 	return db.Choice
 		.create({
-			RoundID: data.round,
-			BoxNumber: data.boxNumber,
-			Correct: data.correct
+			roundid: data.round,
+			boxnumber: data.boxNumber,
+			correct: data.correct
 		})
 		.then(() => {
 			if (correct) {
@@ -50,10 +51,10 @@ exports.createChoice = (data) => {
 		})
 		.catch(() => {
 			db.Game.findByPk(data.id).then((game) => {
-				game.update({ Score: data.score });
+				game.update({ score: data.score });
 			});
 			db.Round.findByPk(data.round).then((round) => {
-				round.update({ HintUsed: data.hintUsed });
+				round.update({ hintused: data.hintUsed });
 			});
 
 			return true;
