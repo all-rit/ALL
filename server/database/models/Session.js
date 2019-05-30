@@ -8,15 +8,14 @@ module.exports = (sequelize, DataTypes) => {
 				unique: true,
 				primaryKey: true,
 				autoIncrement: true
+			},
+			userid: {
+				type: DataTypes.INTEGER,
+				allowNull: false
 			}
 		},
 		{ tableName: 'session' }
 	);
-
-	Session.associate = (models) => {
-		Session.belongsTo(models.User, { as: 'user', foreignKey: 'userid' });
-		Session.hasMany(models.Login, { as: 'logins', foreignKey: 'usersessionid' });
-	};
 
 	return Session;
 };

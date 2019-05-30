@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
+			loginid: {
+				type: DataTypes.INTEGER,
+				allowNull: false
+			},
 			availablemessage: {
 				type: DataTypes.STRING
 			},
@@ -24,10 +28,6 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{ tableName: 'audiocue_repair' }
 	);
-
-	Repair.associate = (models) => {
-		Repair.belongsTo(models.Login, { as: 'login', foreignKey: 'loginid' });
-	};
 
 	return Repair;
 };

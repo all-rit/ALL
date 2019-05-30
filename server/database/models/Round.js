@@ -9,16 +9,15 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
+			gameid: {
+				type: DataTypes.INTEGER,
+				allowNull: false
+			},
 			hintused: { type: DataTypes.BOOLEAN },
 			soundoption: { type: DataTypes.BOOLEAN }
 		},
 		{ tableName: 'audiocue_round' }
 	);
-
-	Round.associate = (models) => {
-		Round.belongsTo(models.Game, { as: 'game', foreignKey: 'gameid' });
-		Round.hasMany(models.Choice, { as: 'choices', foreignKey: 'roundid' });
-	};
 
 	return Round;
 };
