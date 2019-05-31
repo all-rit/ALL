@@ -19,7 +19,7 @@ class First extends Component {
 							You will have to <b>guess which</b>.
 						</li>
 						<li>
-							Stuck? Use the hint box! The hint box <b>is not guaranteed</b> to have a hint inside.
+							Stuck? Click on the hint box! The hint box <b>is not guaranteed</b> to have a hint inside.
 						</li>
 						<li>
 							You will get <b>an audio cue</b> indiciating a hint has popped up.
@@ -35,7 +35,7 @@ class First extends Component {
 					<hr />
 
 					<p className="playthrough__sentence">
-						If you're feeling lucky, feel free to click the "Start" button to proceed!
+						If you feel ready, please click the "Start" button to proceed.
 					</p>
 				</div>
 			</div>
