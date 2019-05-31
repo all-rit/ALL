@@ -4,18 +4,15 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			loginid: {
 				type: DataTypes.INTEGER,
-				allowNull: false,
 				unique: true,
 				primaryKey: true,
 				autoIncrement: true
 			},
 			userid: {
-				type: DataTypes.INTEGER,
-				allowNull: false
+				type: DataTypes.INTEGER
 			},
 			usersessionid: {
-				type: DataTypes.INTEGER,
-				allowNull: false
+				type: DataTypes.NUMBER(21)
 			},
 			location: { type: DataTypes.INET },
 			login: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }

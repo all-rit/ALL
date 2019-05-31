@@ -4,14 +4,12 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			usersessionid : {
 				type: DataTypes.NUMBER(21),
-				allowNull: false,
 				unique: true,
 				primaryKey: true,
 				autoIncrement: true
 			},
 			userid: {
-				type: DataTypes.INTEGER,
-				allowNull: false
+				type: DataTypes.INTEGER
 			}
 		},
 		{ tableName: 'session' }

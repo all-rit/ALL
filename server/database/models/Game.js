@@ -4,14 +4,12 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			gameid: {
 				type: DataTypes.INTEGER,
-				allowNull: false,
 				unique: true,
 				primaryKey: true,
 				autoIncrement: true
 			},
 			loginid: {
-				type: DataTypes.INTEGER,
-				allowNull: false,
+				type: DataTypes.INTEGER
 			},
 			score: { type: DataTypes.INTEGER, defaultValue: 0 },
 			playthrough: { type: DataTypes.INTEGER },

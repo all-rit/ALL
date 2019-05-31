@@ -4,14 +4,12 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			choiceid: {
 				type: DataTypes.INTEGER,
-				allowNull: false,
 				unique: true,
 				primaryKey: true,
 				autoIncrement: true
 			},
 			roundid: {
-				type: DataTypes.INTEGER,
-				allowNull: false
+				type: DataTypes.INTEGER
 			},
 			boxnumber: { type: DataTypes.INTEGER },
 			correct: { type: DataTypes.BOOLEAN }
