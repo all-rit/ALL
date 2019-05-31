@@ -10,7 +10,14 @@ class WelcomeMessage extends Component {
 			return <LoginButton enabled={loginEnabled} />;
 		}
 
-		return <span>Welcome, {user.firstname}!</span>;
+		return (
+			<span className="welcome">
+				Welcome, {user.firstname}!{' '}
+				<a className="welcome__logout" href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
+					Logout
+				</a>
+			</span>
+		);
 	}
 }
 

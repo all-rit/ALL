@@ -28,3 +28,14 @@
     cursor: not-allowed;
   }
 }
+
+.welcome {
+  position: relative;
+
+  &__logout {
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -1.15rem;
+    right: 0.05rem;
+  }
+}
