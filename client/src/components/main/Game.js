@@ -154,7 +154,7 @@ class Game extends Component {
 			this.startCountdown();
 		} else {
 			handlers.updateBoxStatus(number, BOX_INCORRECT);
-			handlers.updateScore(data.score - 50);
+			handlers.updateScore(data.score - 75);
 			handlers.incrementIncorrectAnswers();
 		}
 	}
