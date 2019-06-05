@@ -6,7 +6,7 @@ import './assets/stylesheets/main.scss';
 import { actions } from './reducers/AppReducer';
 
 import Main from './pages/Main';
-import SupplementaryMaterials from './pages/SupplementaryMaterials';
+import Supplementary from './pages/Supplementary';
 
 const mapDispatchToProps = {
 	login: actions.login
@@ -21,7 +21,7 @@ class App extends Component {
 		return (
 			<Router basepath={process.env.PUBLIC_URL} className="app">
 				<Main path="/" />
-				<SupplementaryMaterials path="/supplementary" />
+				<Supplementary path="/supplementary" />
 			</Router>
 		);
 	}
