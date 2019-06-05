@@ -27,7 +27,8 @@ import {
 	CONGRATULATION_MESSAGES,
 	HINT_BOX_THINKING,
 	HINT_BOX_OPEN,
-	HINT_BOX_CLOSED
+	HINT_BOX_CLOSED,
+	OPEN_HINT_BOX_DELAY
 } from '../../constants';
 
 class Game extends Component {
@@ -225,7 +226,14 @@ class Game extends Component {
 
 			// Update hint box status and unlock boxes
 			handlers.updateHintBoxStatus(HINT_BOX_OPEN);
-			this.unlockBoxes();
+
+			if (data.boxRevealed) {
+				this.unlockBoxes();
+			} else {
+				setTimeout(() => {
+					this.unlockBoxes();
+				}, OPEN_HINT_BOX_DELAY * MILLISECONDS_IN_A_SECOND);
+			}
 
 			if (data.boxRevealed) handlers.updateBoxStatus(data.correctBoxNumber, BOX_REVEALED);
 		}, HINT_BOX_THINKING_TIMER_SECONDS * MILLISECONDS_IN_A_SECOND);

@@ -24,6 +24,7 @@ export const TIMEOUT_MIN_MS = 10;
 export const BOXES_NUM_VALUE = 4;
 export const COUNTDOWN_SECONDS = 3;
 export const TIMER_SECONDS = 20;
+export const OPEN_HINT_BOX_DELAY = 1.5;
 export const HINT_BOX_THINKING_TIMER_SECONDS = 0.5;
 export const BOX_DEFAULT_VALUES = { 1: BOX_UNOPENED, 2: BOX_UNOPENED, 3: BOX_UNOPENED, 4: BOX_UNOPENED };
 export const CONGRATULATION_MESSAGES = [
