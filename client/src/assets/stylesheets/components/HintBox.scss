@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
 
   &--open {
     height: 5rem;
