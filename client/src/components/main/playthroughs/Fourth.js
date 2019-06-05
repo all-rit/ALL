@@ -67,7 +67,7 @@ class Fourth extends Component {
 							<VictoryAxis tickFormat={() => ''} />
 							<VictoryAxis
 								tickValues={[ 1, 2, 3 ]}
-								tickFormat={[ 'Game 1', 'Game 2', 'Game 3' ]}
+								tickFormat={[ 'w/ Sound', 'w/o Sound', 'w/o Sound + Repair' ]}
 								style={{ tickLabels: { fill: '#f76902' } }}
 								offsetY={50}
 							/>
@@ -90,9 +90,7 @@ class Fourth extends Component {
 
 					<p className="playthrough__sentence">
 						Wait, you're actually <i>still here</i>? Well, you can decide to make more adjustments, play
-						more games, or take a walk outside. If you're interested in learning more, there is a button
-						left of the repair button that will take you to a page providing more information on this lab.
-						Up to you!
+						more games, or take a walk outside. Up to you!
 					</p>
 				</div>
 			</div>
