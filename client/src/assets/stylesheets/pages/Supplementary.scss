@@ -1,0 +1,18 @@
+.supplementary {
+  width: 960px;
+  margin: 2rem auto;
+  font-size: 1.5rem;
+
+  > h1 {
+    margin-bottom: 3rem;
+  }
+
+  &__list {
+    text-align: left;
+    list-style-type: disc;
+
+    > li {
+      margin-bottom: 1rem;
+    }
+  }
+}

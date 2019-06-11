@@ -7,6 +7,7 @@ import { actions } from './reducers/AppReducer';
 
 import Main from './pages/Main';
 import Supplementary from './pages/Supplementary';
+import CaseStudy from './pages/CaseStudy';
 
 const mapDispatchToProps = {
 	login: actions.login
@@ -22,6 +23,7 @@ class App extends Component {
 			<Router basepath={process.env.PUBLIC_URL} className="app">
 				<Main path="/" />
 				<Supplementary path="/supplementary" />
+				<CaseStudy path="/casestudy" />
 			</Router>
 		);
 	}
