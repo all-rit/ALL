@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 
+import Slides from '../assets/pdfs/slides.pdf';
+
 class Supplementary extends Component {
 	render() {
 		return (
@@ -9,9 +11,10 @@ class Supplementary extends Component {
 
 				<ul className="supplementary__list">
 					<li>
-						Slide show is available to view via Google Slides{' '}
+						Slide show is available to view{' '}
 						<a
-							href="https://docs.google.com/presentation/d/1emAyaoYjXLtpO_FntTufGn0Vy-lWEFMnS3LrX_TOT4Q/edit?usp=sharing"
+							href={Slides}
+							download="slides.pdf"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -22,10 +25,12 @@ class Supplementary extends Component {
 					<li>Video coming soon!</li>
 
 					<li>
-						Case study is available <Link to="/casestudy">here</Link>.
+						Case study is available <Link to={process.env.PUBLIC_URL + "/casestudy"}>here</Link>.
 					</li>
 
-					<li>You can also go back to the main application <Link to="/">here</Link>.</li>
+					<li>
+						You can also go back to the main application <Link to={process.env.PUBLIC_URL + "/"}>here</Link>.
+					</li>
 				</ul>
 			</div>
 		);
