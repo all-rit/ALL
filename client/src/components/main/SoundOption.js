@@ -9,7 +9,7 @@ class SoundOption extends Component {
 			'sound_icon--off': !enabled,
 			'sound_icon--disabled': blocked
 		});
-		const message = enabled ? 'Sound is enabled.' : 'Sound is disabled.';
+		const message = enabled ? 'Sound is enabled.' : 'Sound is disabled (to emulate experience for Deaf/HoH users).';
 
 		return (
 			<div className="sound_icon-container">
