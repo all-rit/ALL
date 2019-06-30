@@ -64,42 +64,48 @@ class GameInstructions extends Component {
 		if (!visible) return null;
 
 		let image = '';
+		let alt = '';
 
 		switch (this.state.currentSlide) {
-			case 1:
-				image = Image1;
-				break;
-
 			case 2:
 				image = Image2;
+				alt = 'One of the four boxes will contain a treasure and you need to guess which.';
 				break;
 
 			case 3:
 				image = Image3;
+				alt = 'The time is limited in the game, play fast to get a lot of points.';
 				break;
 
 			case 4:
 				image = Image4;
+				alt = 'There is a hint box in the game and you can click on it to get a possible hint.';
 				break;
 
 			case 5:
 				image = Image5;
+				alt = 'After the hint box is used, it will "think" and the boxes are locked.';
 				break;
 
 			case 6:
 				image = Image6;
+				alt = 'Either it will show no hint';
 				break;
 
 			case 7:
 				image = Image7;
+				alt = 'Or reveal the location of the treasure!';
 				break;
 
 			case 8:
 				image = Image8;
+				alt = 'Good luck!';
 				break;
 
 			default:
 				image = Image1;
+				alt =
+					'Image of the game showing a hint box, four boxes, statistics (score/correct answers/incorrect answers/round number), and a message indicating the goal to find the box with the treasure.';
 		}
 
 		return (
@@ -109,7 +115,7 @@ class GameInstructions extends Component {
 						<span>&#10096;</span>
 					</div>
 
-					<img src={image} alt="Instructions" className="instructions__image" />
+					<img src={image} alt={alt} className="instructions__image" />
 
 					<div className="instructions__next" onClick={this.navigateNextSlide.bind(this)}>
 						<span>&#10097;</span>
