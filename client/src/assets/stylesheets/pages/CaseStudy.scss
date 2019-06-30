@@ -7,6 +7,11 @@
     margin-bottom: 3rem;
   }
 
+  > h3 {
+    margin-bottom: 1rem;
+    text-decoration: underline;
+  }
+
   &__list {
     text-align: left;
     list-style-type: disc;

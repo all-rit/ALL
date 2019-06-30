@@ -9,6 +9,8 @@ class CaseStudy extends Component {
 			<div className="study">
 				<h1>Case Study</h1>
 
+				<h3>Accessibility Standards</h3>
+
 				<p>
 					In order to establish accessibility standards throughout government-run technology applications,
 					allowing for anyone with or without a disability to interact with fundamental government websites,
@@ -38,6 +40,8 @@ class CaseStudy extends Component {
 					identify prominent information in student’s web applications moving forward.
 				</p>
 
+				<h3>Validators</h3>
+
 				<p>
 					Existing validators, such as{' '}
 					<a href="https://achecker.ca/checker/index.php" target="_blank" rel="noopener noreferrer">
@@ -59,8 +63,13 @@ class CaseStudy extends Component {
 					<a href="https://www.ada.gov/ada_intro.htm" target="_blank" rel="noopener noreferrer">
 						American with Disabilities Act (ADA)
 					</a>{' '}
-					and the individual could sue the company for their inaccessible software. In 2011, the National
-					Association of the Deaf (NAD) filed a{' '}
+					and the individual could sue the company for their inaccessible software.
+				</p>
+
+				<h3>NAD vs Netflix Lawsuit</h3>
+
+				<p>
+					In 2011, the National Association of the Deaf (NAD) filed a{' '}
 					<a
 						href="https://www.3playmedia.com/2015/07/23/nad-v-netflix-ada-lawsuit-requires-closed-captioning-on-streaming-video/"
 						target="_blank"
@@ -68,17 +77,26 @@ class CaseStudy extends Component {
 					>
 						lawsuit
 					</a>{' '}
-					against Netflix due to the lack of closed captioning in their streaming videos and won. Netflix had
-					to add subtitles for their streaming videos (shown in Figure 1) to make their website accessible for Deaf and Hard of
-					Hearing users.
+					against Netflix due to the lack of closed captioning in their streaming videos, which is considered
+					as a violation of the ADA. More than half of all Americans use Netflix. Thus it must be made
+					accessible to Deaf and Hard of Hearing viewers. Netflix argues that the ADA only specified that
+					"places of public accommodation" must be accessible to people with disabilities and its business
+					cannot be considered a "place of public accommodation" since it is not a physical place. Hence,
+					Netflix is not subject to the ADA. NAD argued that the Internet is not exempt from the ADA, and
+					Netflix is considered a shared or public activity, which makes the ADA applicable. The judge ruled
+					in favor of the NAD's argument. Thus, Netflix had to add subtitles for their streaming videos (shown
+					in Figure 1) to make their website accessible for Deaf and Hard of Hearing users.
 				</p>
 
 				<img src={Image1} alt="Netflix's implemented subtitles settings" />
 
 				<div>
-					Figure 1 <br />
+					<b>Figure 1</b>
+					<br />
 					Netflix's Implemented Captions
 				</div>
+
+				<h3>Professional Responsibility</h3>
 
 				<p>
 					As software developers, we have a professional responsibility to uphold the{' '}
