@@ -9,18 +9,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "bookshelf": "^0.14.2",
-    "cookie-parser": "^1.4.3",
-    "cookie-session": "^2.0.0-beta.3",
-    "cors": "^2.8.5",
-    "dotenv": "^6.2.0",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "knex": "^0.13.0",
-    "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0",
-    "pg": "^7.11.0",
-    "sequelize": "^5.8.6"
+    "body-parser": "latest",
+    "bookshelf": "latest",
+    "cookie-parser": "latest",
+    "cookie-session": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "express-session": "latest",
+    "knex": "latest",
+    "passport": "latest",
+    "passport-google-oauth20": "latest",
+    "pg": "latest",
+    "sequelize": "latest"
   }
 }
