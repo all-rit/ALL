@@ -212,31 +212,33 @@ class Game extends Component {
 	openHintBox() {
 		const { data, handlers } = this.props;
 
-		// Update hint box status & used status and update the score
-		handlers.updateHintBoxStatus(HINT_BOX_THINKING);
-		handlers.updateHintUsed(true);
-		handlers.updateScore(data.score - 25);
-
-		// Lock the unopened boxes
-		this.lockBoxes();
-
-		// Create a timer for the hint box to "think"
-		setTimeout(() => {
-			const { data, handlers } = this.props;
-
-			// Update hint box status and unlock boxes
+		// If there is an available hint, just show it instantly
+		if (data.boxRevealed) {
 			handlers.updateHintBoxStatus(HINT_BOX_OPEN);
+			handlers.updateHintUsed(true);
+			handlers.updateBoxStatus(data.correctBoxNumber, BOX_REVEALED);
+		} else {
+			// Otherwise, have the hint box "think"
+			// Update hint box status & used status and update the score
+			handlers.updateHintBoxStatus(HINT_BOX_THINKING);
+			handlers.updateHintUsed(true);
+			handlers.updateScore(data.score - 25);
 
-			if (data.boxRevealed) {
-				this.unlockBoxes();
-			} else {
+			// Lock the unopened boxes
+			this.lockBoxes();
+
+			// Create a timer for the hint box to "think"
+			setTimeout(() => {
+				const { handlers } = this.props;
+
+				// Update hint box status and unlock boxes
+				handlers.updateHintBoxStatus(HINT_BOX_OPEN);
+
 				setTimeout(() => {
 					this.unlockBoxes();
 				}, OPEN_HINT_BOX_DELAY * MILLISECONDS_IN_A_SECOND);
-			}
-
-			if (data.boxRevealed) handlers.updateBoxStatus(data.correctBoxNumber, BOX_REVEALED);
-		}, HINT_BOX_THINKING_TIMER_SECONDS * MILLISECONDS_IN_A_SECOND);
+			}, HINT_BOX_THINKING_TIMER_SECONDS * MILLISECONDS_IN_A_SECOND);
+		}
 	}
 
 	updateCongratulationMessage() {

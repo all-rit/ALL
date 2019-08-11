@@ -8,12 +8,12 @@ class Second extends Component {
 				<div className="playthrough__content">
 					<p className="playthrough__sentence">
 						Nice, your first game was probably a breeze for you if you depended on your hearing for the
-						audio cues. However, users with a hearing impairment will face <b>difficulties</b> playing this
+						audio cues. However, users with hearing loss will face <b>difficulties</b> playing this
 						game.
 					</p>
 
 					<p className="playthrough__sentence">
-						A <b>hearing impairment</b> is a partial or total inability to hear. About{' '}
+						A <b>hearing loss</b> is a partial or total inability to hear. About{' '}
 						<b>2 to 3 out of every 1,000 children</b> in the United States are born with a hearing loss in
 						one or both ears. There are <b>at least 48 million people</b> with a hearing loss in the United
 						States.

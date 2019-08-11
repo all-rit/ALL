@@ -12,7 +12,7 @@ class Third extends Component {
 					</p>
 
 					<p className="playthrough__sentence">
-						This is typically how users with a hearing impairment experience when applications use{' '}
+						This is typically how users with a hearing loss experience when applications use{' '}
 						<b>sound</b> to cue something.
 					</p>
 

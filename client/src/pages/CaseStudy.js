@@ -36,7 +36,7 @@ class CaseStudy extends Component {
 					>
 						WCAG AAA standards
 					</a>. This relates directly to this web application, as its main focus is to outline and teach the
-					necessity of creating accessible software to ensure individuals with hearing impairment can properly
+					necessity of creating accessible software to ensure individuals with hearing loss can properly
 					identify prominent information in student’s web applications moving forward.
 				</p>
 
@@ -58,7 +58,7 @@ class CaseStudy extends Component {
 						rel="noopener noreferrer"
 					>
 						AChecker's validator (1.1 - 1.4)
-					</a>. If software is not accessible to people with hearing impairment, this can be in violation of
+					</a>. If software is not accessible to people with hearing loss, this can be in violation of
 					the{' '}
 					<a href="https://www.ada.gov/ada_intro.htm" target="_blank" rel="noopener noreferrer">
 						American with Disabilities Act (ADA)
@@ -136,7 +136,7 @@ class CaseStudy extends Component {
 					</a>. In order to ensure we are compliant with all of these professional responsibilities, as well
 					as ensure we as individuals are upholding our own morals, alternative approaches to audio cues must
 					be considered in everything we create for the web, as without it, we are not treating individuals
-					with a hearing impairment as a stakeholder in computing, we are discriminating against their use of
+					with a hearing loss as a stakeholder in computing, we are discriminating against their use of
 					our applications, and we are not protecting the rights of these individuals to be able to access the
 					internet the same as everyone else. {' '}
 					<a
