@@ -6,6 +6,8 @@ import './assets/stylesheets/main.scss';
 import { actions } from './reducers/AppReducer';
 
 import Main from './pages/Main';
+import Quiz from './quiz/App';
+
 import Supplementary from './pages/Supplementary';
 import CaseStudy from './pages/CaseStudy';
 
@@ -22,6 +24,7 @@ class App extends Component {
 		return (
 			<Router basepath={process.env.PUBLIC_URL} className="app">
 				<Main path="/" />
+				<Quiz path="/Quiz"/>
 				<Supplementary path="/supplementary" />
 				<CaseStudy path="/casestudy" />
 			</Router>
