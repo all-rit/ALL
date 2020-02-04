@@ -1,0 +1,15 @@
+.center {
+  text-align: left;
+}
+
+.margin {
+  margin-left: 200px;
+  margin-right: 200px;
+  font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.padding {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+}

@@ -1,24 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import LoginButton from './LoginButton';
-
+import LoginButton from "./LoginButton";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { actions as appActions } from "../../reducers/AppReducer";
+const mapStateToProps = state => ({
+  state: state
+});
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(appActions, dispatch)
+});
 class WelcomeMessage extends Component {
-	render() {
-		const { user, loginEnabled } = this.props;
-
-		if (user === null || user.firstname === null) {
-			return <LoginButton enabled={loginEnabled} />;
-		}
-
-		return (
-			<span className="welcome">
-				Welcome, {user.firstname}!{' '}
-				<a className="welcome__logout" href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
-					Logout
-				</a>
-			</span>
-		);
-	}
+  render() {
+    return <LoginButton enabled={true} />;
+  }
 }
 
-export default WelcomeMessage;
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeMessage);
