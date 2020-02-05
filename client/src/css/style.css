@@ -1,0 +1,113 @@
+a {
+  color: #0144d5;
+}
+
+a:hover {
+  color: #015f6f;
+}
+
+a.icon:hover {
+  background-color: #fed136 !important;
+}
+
+.text-primary {
+  color: #fed136 !important;
+}
+
+.btn-primary {
+  background-color: #fed136 !important;
+  border-color: #fed136 !important;
+  color: #404040 !important;
+  margin-left: 15%;
+}
+
+.btn-second {
+  background-color: #484848 !important;
+  border-color: #484848 !important;
+  color: white !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background-color: #e9b301 !important;
+  border-color: white !important;
+  color: #262626 !important;
+}
+
+#mainNav.navbar-shrink {
+  background-color: #3d3d3d !important;
+}
+.portfolio-modal .close-modal .lr {
+  background-color: #3d3d3d !important;
+}
+.portfolio-modal .close-modal .lr .rl {
+  background-color: #3d3d3d !important;
+}
+section#contact {
+  background-color: #3d3d3d !important;
+}
+ul.social-buttons li a {
+  background-color: #3d3d3d !important;
+}
+hr.horiz {
+  border-top: 1px solid #868e96;
+  width: 50%;
+}
+.text-muted {
+  color: #868e96;
+}
+
+.btn-change {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  padding: 10px;
+  border: none;
+  float: right;
+}
+
+.btn-text {
+  background-color: white;
+}
+
+.next {
+  background-color: #fed136;
+  border-color: #fed136;
+  color: #404040;
+  float: right;
+  margin: 20px;
+  padding: 8px !important;
+}
+.back {
+  background-color: #404040;
+  border-color: #404040;
+  color: white;
+  float: left;
+  margin: 20px;
+  padding: 8px !important;
+}
+.hidden {
+  display: none;
+}
+body {
+  background-color: white;
+}
+.footer {
+  margin-top: 5%;
+  margin-right: 2%;
+}
+.row {
+  display: flex !important;
+  justify-content: space-around !important;
+  margin-top: 50px !important;
+  margin-bottom: 25px !important;
+  text-align: left !important;
+}
+.study a {
+  color: #0144d5 !important;
+}
+
+.study a:hover {
+  color: #015f6f !important;
+}
