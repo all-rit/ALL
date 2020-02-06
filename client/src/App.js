@@ -123,15 +123,15 @@ class App extends Component {
         >
           <div class="container navcon">
             <img
-              src={logo}
-              style={{
-                paddingRight: "20px",
-                paddingBottom: "10px",
-                paddingTop: "10px",
-                marginTop: "-10px"
-              }}
-              alt="Computing Accessibility"
-            ></img>
+    src={logo}
+    style={{
+      paddingRight: "20px",
+      paddingBottom: "10px",
+      paddingTop: "10px",
+      marginTop: "-10px"
+    }}
+    alt="Computing Accessibility"
+    />
             <a class="navbar-brand js-scroll-trigger" href="#home">
               Accessibility Learning Labs
             </a>

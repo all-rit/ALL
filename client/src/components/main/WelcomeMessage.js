@@ -13,7 +13,7 @@ class WelcomeMessage extends Component {
 		if (user === null || user.firstname === null) {
 			return <LoginButton enabled={loginEnabled} />;
 		}
-		else{
+
 			return (
 				<span className="welcome">
 					Welcome, {user.firstname}!{' '}
@@ -21,7 +21,7 @@ class WelcomeMessage extends Component {
 						Logout
 					</a>
 				</span>
-		);}
+		);
 	}
 }
 
