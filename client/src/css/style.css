@@ -111,3 +111,19 @@ body {
 .study a:hover {
   color: #015f6f !important;
 }
+.quiz{
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+.btn-disabled{
+  background-color: lightgrey !important;
+  border-color: lightgrey !important;
+  margin-left: 5px !important;
+  opacity: .5;
+}
+.sound-place{
+  display: block;
+  top: 0;
+  left: 0;
+}

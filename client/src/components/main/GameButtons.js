@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import {navigate} from "@reach/router";
 
 class GameButtons extends Component {
   render() {
@@ -35,18 +34,12 @@ class GameButtons extends Component {
         {startMessage}
       </button>
     );
-      const quizButton = (
-          <button className="button button--blue" onClick={()=>navigate(process.env.PUBLIC_URL+'/Quiz')} key="Quiz">
-              Quiz
-          </button>
-      );
     const buttons = [];
 
 		if (!visible) return null;
 
 		if (plays >= 2) buttons.push(repairButton);
 		if (plays === 0) buttons.push(instructionsButton);
-		if (plays === 0) buttons.push(quizButton);
 		buttons.push(startButton);
 
     return <Fragment>{buttons}</Fragment>;

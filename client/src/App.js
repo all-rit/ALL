@@ -9,7 +9,8 @@ import Change from "./components/footer/change";
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import "./css/agency.min.css";
 import "./css/style.css";
-import { Google } from "./components/header/buttons/google";
+import Header from "./components/main/Header";
+import {connect} from "react-redux";
 
 const section = {
   0: <About />,
@@ -17,6 +18,14 @@ const section = {
   2: <Game />,
   3: <Video />,
   4: <Quiz />
+};
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.app.user,
+    state: state.game.state,
+    plays: state.game.plays
+  };
 };
 
 class App extends Component {
@@ -100,6 +109,11 @@ class App extends Component {
   };
 
   render() {
+    const {
+      user,
+      state,
+      plays
+    } = this.props;
     return (
       <div>
         <nav
@@ -176,7 +190,7 @@ class App extends Component {
                   <a
                     class="nav-link js-scroll-trigger"
                     onClick={this.handleQuiz}
-                    href="http://all.rit.edu/Lab1/Quiz"
+                    href="#quiz"
                     alt="Quiz"
                   >
                     Quiz
@@ -185,7 +199,11 @@ class App extends Component {
               </ul>
             </div>
           </div>
-          <Google />
+          <Header
+              state={state}
+              user={user}
+              plays={plays}
+          />
         </nav>
 
         <div>{section[this.state.count]}</div>
@@ -211,6 +229,8 @@ class App extends Component {
               <Change />
               <br />
               <br />
+              <br />
+
               These buttons are disabled so as to not interfere with the
               accessibility-related portions of the lab.
             </p>
@@ -221,4 +241,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);

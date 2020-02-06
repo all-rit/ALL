@@ -11,7 +11,7 @@ const Change = ({ title, description, links }) => {
   return (
     <div class="btn-change">
       <button
-        class="btn-text"
+        class="btn-text btn btn-disabled text-uppercase"
         alt="Increase text size"
         title="Larger text"
         disabled="true"
@@ -19,15 +19,15 @@ const Change = ({ title, description, links }) => {
         Text+
       </button>
       <button
-        class="btn-text"
+        class="btn-text btn btn-disabled text-uppercase"
         alt="Decrease text size"
         title="Smaller text"
         disabled="true"
       >
         Text-
       </button>
-      <button disabled="true">Change Color</button>
-      <button disabled="true">Change Color</button>
+      <button class="btn btn-disabled text-uppercase" disabled="true">Change Color</button>
+      <button class="btn btn-disabled text-uppercase" disabled="true">Change Color</button>
     </div>
   );
 };

@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Header from '../components/main/Header';
 import Content from '../components/main/Content';
 import GameInstructions from '../components/main/GameInstructions';
 import Repair from '../components/main/Repair';
@@ -11,7 +10,8 @@ import Popup from '../components/main/Popup';
 import { actions as appActions } from '../reducers/AppReducer';
 import { actions as gameActions } from '../reducers/GameReducer';
 import { actions as repairActions } from '../reducers/RepairReducer';
-import { GAME_IDLE } from '../constants';
+import {GAME_IDLE} from '../constants';
+import SoundHeader from "../components/main/SoundHeader";
 
 const mapStateToProps = (state) => {
 	return {
@@ -94,15 +94,13 @@ class Main extends Component {
 
 		return (
 			<Fragment>
-				<Header
+				<SoundHeader
 					state={state}
 					user={user}
 					plays={plays}
 					soundEnabled={soundEnabled}
 					toggleSoundHandler={actions.toggleSound}
 				/>
-
-				<div className="app__name">Treasure Hunter</div>
 
 				<Content
 					data={{

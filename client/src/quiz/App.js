@@ -35,9 +35,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const shuffledAnswerOptions = quizQuestions.map(question =>
-        this.shuffleArray(question.answers)
-    );
     for (var i = 0; i < quizQuestions.length; i++ ){
       quizQuestions[i]['answers'].sort(function(a, b) {
         return parseInt(a.type) - parseInt(b.type);
@@ -76,8 +73,6 @@ class App extends Component {
       correctAnswer = 1;
     }
     this.setUserAnswer(event.currentTarget.value, correctAnswer);
-    var x = this.state.questionId;
-    var z = quizQuestions.length;
     if (this.state.questionId < quizQuestions.length) {
       setTimeout(() => this.setNextQuestion(), 300);
     } else {

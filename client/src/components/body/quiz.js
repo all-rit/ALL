@@ -1,4 +1,5 @@
 import React from "react";
+import Quiz from "./../../quiz/App"
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
@@ -23,8 +24,8 @@ const Reading = ({ title, description, links }) => {
           </div>
         </div>
       </section>
-      <div class="row">
-        Quiz questions that come from concepts throughout each part of the lab.
+      <div class="row quiz">
+        <Quiz />
       </div>
     </div>
   );
