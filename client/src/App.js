@@ -118,7 +118,7 @@ class App extends Component {
                   }}
                   alt="Computing Accessibility"
               ></img>
-              <a class="navbar-brand js-scroll-trigger" href="#home">
+              <a class="navbar-brand js-scroll-trigger" href="http://all.rit.edu">
                 Accessibility Learning Labs
               </a>
               <div class="collapse navbar-collapse" id="navbarResponsive">
