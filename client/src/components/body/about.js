@@ -24,12 +24,12 @@ const About = ({ title, description, links }) => {
         </div>
       </section>
       <div class="row">
-        In this lab, you will learn about why it is important to create software
+        In this lab, you will learn why it is important to create software
         that is accessible to users with hearing impairments.
         You will learn how organizations like the National Association of the Deaf (NAD)
         fought for easier access for hearing impaired individuals,
-        utilize your knowledge in a game about hearing impairments,
-        watch several related videos, and take a quiz. Click "Next" to start!
+        increase your understanding through an interactive module about hearing impairments,
+        watch related videos, and take a quiz to test your knowledge. Click "Next" to start!
       </div>
     </div>
   );
