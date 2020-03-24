@@ -77,11 +77,6 @@ class App extends Component {
     setUserAnswer(answer, correctanswer) {
         this.setState((state, props) => ({
             disableNextQuestion: false,
-            // answersCount: {
-            //     ...state.answersCount,
-            //     [answer]: (state.answersCount[answer] || 0) + 1
-            //
-            // },
             myCount: {
                 ...state.myCount,
                 [this.state.counter]: correctanswer
@@ -121,7 +116,6 @@ class App extends Component {
             }
 
         }
-        console.log(currentAnswers);
         return currentAnswers;
     }
 
@@ -132,6 +126,8 @@ class App extends Component {
 
         //Calculate correct answers and set accordingly
         this.checkMultipleAnswers(currentAnswers);
+
+        //Set next question
         if (this.state.questionId < quizQuestions.length) {
             const counter = this.state.counter + 1;
             const questionId = this.state.questionId + 1;
