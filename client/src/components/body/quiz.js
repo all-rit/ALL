@@ -27,6 +27,7 @@ const Reading = ({ title, description, links }) => {
       <div class="row quiz">
         <Quiz />
       </div>
+
     </div>
   );
 };
