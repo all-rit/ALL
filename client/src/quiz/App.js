@@ -188,9 +188,8 @@ class App extends Component {
     render() {
         return (
             <div className="quiz">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h2>Accessibility Lab1 Quiz</h2>
+                <div className="quizHeader">
+                    <h2 class="section-heading text-uppercase">Accessibility Lab1 Quiz</h2>
                 </div>
                 {this.state.result ? this.renderResult() : this.renderQuiz()}
             </div>
