@@ -49,7 +49,7 @@
 }
 
 .header {
-  display: grid;
+  display: inline-block;
   min-height: 78px;
   grid-template-columns: 1fr 1fr;
 }

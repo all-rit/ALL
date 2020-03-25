@@ -15,10 +15,14 @@
 }
 
 .sound_icon-container {
+  width: 200px;
   font-size: 1rem;
-  display: flex;
   align-items: center;
+  position: absolute;
+  right: 200px;
+  top: 140px;
 }
+
 
 .sound_icon__message {
   margin-left: 0.5rem;
