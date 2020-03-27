@@ -118,7 +118,7 @@
 
   .checkboxCustomButton:checked ~ .checkboxCustomLabel:before {
     content: '';
-    background: #8bc53f no-repeat; //url(../svg/icon-check.svg)
+    background: #8bc53f no-repeat; 
     background-size: 27px;
     border-color: #8bc53f;
   }
