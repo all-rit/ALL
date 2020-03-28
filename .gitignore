@@ -1,3 +1,8 @@
 client\package-lock.json
 server\package-lock.json
 \.DS_Store
+encodings.xml
+vsc.xml
+modules.xml
+misc.xml
+workspace.xml

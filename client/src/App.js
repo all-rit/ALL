@@ -206,7 +206,7 @@ class App extends Component {
             >
               next
             </button>
-            <footer class="footer">
+            <footer >
               <div class="btn-change">
                 <Change />
               </div>

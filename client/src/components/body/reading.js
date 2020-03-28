@@ -24,7 +24,7 @@ const Reading = ({ title, description, links }) => {
           </div>
         </div>
       </section>
-      <div class="row">
+      <div>
         <CaseStudy />
       </div>
     </div>
