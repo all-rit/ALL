@@ -100,6 +100,7 @@
     padding: 1.5rem 2.5rem 1.5rem 5rem;
     font-size: 16px;
     line-height: 1.5;
+    text-align: left;
   }
 
   .checkboxCustomButton ~ .checkboxCustomLabel:before {
@@ -118,7 +119,7 @@
 
   .checkboxCustomButton:checked ~ .checkboxCustomLabel:before {
     content: '';
-    background: #8bc53f no-repeat; //url(../svg/icon-check.svg)
+    background: #8bc53f no-repeat; 
     background-size: 27px;
     border-color: #8bc53f;
   }

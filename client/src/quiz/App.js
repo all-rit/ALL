@@ -188,9 +188,6 @@ class App extends Component {
     render() {
         return (
             <div className="quiz">
-                <div className="quizHeader">
-                    <h2 class="section-heading text-uppercase">Treasure Hunter: Quiz</h2>
-                </div>
                 {this.state.result ? this.renderResult() : this.renderQuiz()}
             </div>
         );
