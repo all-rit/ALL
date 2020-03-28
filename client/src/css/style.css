@@ -85,6 +85,7 @@ hr.horiz {
   background-color: lightgrey !important;
   border-color: lightgrey !important;
   margin-left: 5px !important;
+  margin-top: 10px;
   opacity: .5;
 }
 
@@ -93,7 +94,7 @@ hr.horiz {
   border-color: #fed136;
   color: #404040;
   float: right;
-  margin: 20px;
+  margin: 0px;
   padding: 8px !important;
 }
 .back {
@@ -101,7 +102,7 @@ hr.horiz {
   border-color: #404040;
   color: white;
   float: left;
-  margin: 20px;
+  margin: 0px;
   padding: 8px !important;
 }
 .hidden {
