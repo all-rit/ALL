@@ -15,12 +15,13 @@
 }
 
 .sound_icon-container {
-  width: 200px;
   font-size: 1rem;
-  align-items: center;
-  position: absolute;
-  right: 200px;
-  top: 100px;
+  width:300px;
+  text-align: right;
+  position: relative;
+  float:right;
+  margin-top:-110px;
+  padding-right:22px;
 }
 
 
