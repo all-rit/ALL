@@ -16,8 +16,8 @@
 
 .sound_icon-container {
   font-size: 1rem;
-  width:300px;
-  text-align: right;
+  /*width:300px;*/
+  /*text-align: right;*/
   position: relative;
   float:right;
   margin-top:-110px;
@@ -27,4 +27,10 @@
 
 .sound_icon__message {
   margin-left: 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .sound_icon-container {
+    margin-top:-165px;
+  }
 }
