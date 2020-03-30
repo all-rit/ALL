@@ -114,7 +114,6 @@ class App extends Component {
              <button
                 className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
                 onClick={this.handleDecrement}
-                style={{'visibility': this.state.count === 2? 'hidden':'block'}}
                 disabled={this.disappearBack() ? "disabled" : false}
             >
               back
@@ -122,7 +121,6 @@ class App extends Component {
             <button
                 className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
                 onClick={this.handleIncrement}
-                style={{'visibility': this.state.count === 2? 'hidden':'block'}}
                 disabled={this.disappearNext() ? "disabled" : false}
             >
               next
