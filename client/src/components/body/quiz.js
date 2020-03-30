@@ -11,22 +11,10 @@ const Reading = ({ title, description, links }) => {
 
   return (
     <div class="container">
-      <section class="page-section" style={{ paddingBottom: "25px" }}>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <br />
-              <br />
-              <h2 class="section-heading text-uppercase">
-                Treasure Hunter: Quiz
-              </h2>
-            </div>
-          </div>
-        </div>
-      </section>
       <div class="row quiz">
         <Quiz />
       </div>
+
     </div>
   );
 };

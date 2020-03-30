@@ -12,9 +12,9 @@ class Game extends Component {
   render() {
     return (
       <div class="container">
-        <section class="page-section" style={{ paddingBottom: "25px" }}>
+        <section class="page-section" style={{ paddingBottom: "0" }}>
           <div class="container">
-            <div class="row">
+            <div class="row no-margin">
               <div class="col-lg-12 text-center">
                 <br />
                 <br />
@@ -22,7 +22,7 @@ class Game extends Component {
                   Treasure Hunter: Game
                 </h2>
               </div>
-            </div>
+            </div>  
           </div>
         </section>
         <div class="row">

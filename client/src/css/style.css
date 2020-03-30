@@ -93,7 +93,6 @@ hr.horiz {
   border-color: #fed136;
   color: #404040;
   float: right;
-  margin: 20px;
   padding: 8px !important;
 }
 .back {
@@ -101,8 +100,11 @@ hr.horiz {
   border-color: #404040;
   color: white;
   float: left;
-  margin: 20px;
   padding: 8px !important;
+}
+
+.back, .next{
+  margin-bottom:10px;
 }
 .hidden {
   display: none;
@@ -115,11 +117,11 @@ body {
   margin-right: 2%;
 }
 .row {
-  display: flex !important;
+  display: block !important;
   justify-content: space-around !important;
-  margin-top: 50px !important;
+  /*margin-top: 50px !important;*/
   margin-bottom: 25px !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
@@ -128,5 +130,9 @@ body {
 }
 #mainNav .navbar-brand {
   font-size: 1.94em;
+}
+
+.no-margin {
+  margin: 0 !important;
 }
 

@@ -18,14 +18,20 @@ function Quiz(props) {
         );
     }
 
+
     return (
-            <div className="quiz container shadow" key={props.questionId}>
-                <QuestionCount counter={props.questionId} total={props.questionTotal} />
-                <Question content={props.question} />
-                <ul className="answerOptions">
-                    {props.answerOptions.map(renderAnswerOptions)}
-                </ul>
+        <div className="quiz container shadow" key={props.questionId}>
+            <QuestionCount counter={props.questionId} total={props.questionTotal}/>
+            <Question content={props.question}/>
+            <ul className="answerOptions">
+                {props.answerOptions.map(renderAnswerOptions)}
+            </ul>
+            <div className="align-right">
+                <button class="btn btn-second text-uppercase js-scroll-trigger nextButton" onClick={props.nextQuestion}
+                        disabled={props.disable}>Next Question
+                </button>
             </div>
+        </div>
     );
 }
 

@@ -10,8 +10,8 @@ class Header extends Component {
         const soundBlocked = state === GAME_PLAYING || plays <= 2;
 
         return (
-            <header className="header">
-                <div className="header__column text-left">
+            <header>
+                <div>
                     <SoundOption
                         blocked={soundBlocked}
                         enabled={soundEnabled}

@@ -3,15 +3,15 @@ var quizQuestions = [
         question: "What is an audio cue?",
         answers: [
             {
-                val: 0,
+                val: 1,
                 content: "A vibration that conveys key information"
             },
             {
                 val: 1,
-                content: "A playing sound that conveys key information"
+                content: "A playing sound that conveys key information - correct"
             },
             {
-                val: 0,
+                val: 1,
                 content: "A visual indicator that conveys key information"
             },
             {
@@ -30,14 +30,14 @@ var quizQuestions = [
             },
             {
                 val: 1,
-                content: "30-40 million people"
+                content: "30-40 million people - correct"
             },
             {
                 val: 0,
                 content: "40-50 million people"
             },
             {
-                val: 0,
+                val: 1,
                 content: "50-60 million people"
             }
         ]
@@ -51,10 +51,10 @@ var quizQuestions = [
             },
             {
                 val: 1,
-                content: "From the beginning"
+                content: "From the beginning - correct"
             },
             {
-                val: 0,
+                val: 1,
                 content: "Whenever the developer feels it's necessary"
             },
             {
@@ -67,19 +67,19 @@ var quizQuestions = [
         question: "What does the 'Perceivable' accessibility principle mean?",
         answers: [
             {
-                val: 0,
+                val: 1,
                 content: "User interface components and navigation must be operable."
             },
             {
                 val: 1,
-                content: "Information and user interface components must be presentable to users in ways they can perceive."
+                content: "Information and user interface components must be presentable to users in ways they can perceive. - correct"
             },
             {
                 val: 0,
                 content: "Information and the operation of user interface must be understandable."
             },
             {
-                val: 0,
+                val: 1,
                 content: "None of the above"
             }
         ]
