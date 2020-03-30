@@ -85,7 +85,7 @@ class App extends Component {
   };
 
   disappearNext = () => {
-    if (this.state.count >= 4) {
+    if (this.state.count >= 3) { //TODO remember to change once quiz is added back
       return true;
     } else {
       return false;
@@ -114,6 +114,7 @@ class App extends Component {
              <button
                 className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
                 onClick={this.handleDecrement}
+                style={{'visibility': this.state.count === 2? 'hidden':'block'}}
                 disabled={this.disappearBack() ? "disabled" : false}
             >
               back
@@ -121,6 +122,7 @@ class App extends Component {
             <button
                 className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
                 onClick={this.handleIncrement}
+                style={{'visibility': this.state.count === 2? 'hidden':'block'}}
                 disabled={this.disappearNext() ? "disabled" : false}
             >
               next

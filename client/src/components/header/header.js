@@ -65,6 +65,7 @@ const Header = (props) => {
                                  class="nav-link js-scroll-trigger active collapse navbar-collapse"
                                  id="navbarResponsive">
                             <NavLink onClick={props.handleAbout}
+                                     href="#"
                                      style={props.count===0? activeStyle: null}>
                                 <ul className="navbar-nav text-uppercase ml-auto" >
                                     <li className="nav-item" >
@@ -77,6 +78,7 @@ const Header = (props) => {
                                  class="nav-link js-scroll-trigger active collapse navbar-collapse"
                                  id="navbarResponsive">
                             <NavLink onClick={props.handleReading}
+                                     href="#"
                                      style={props.count===1? activeStyle: null}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
@@ -89,6 +91,7 @@ const Header = (props) => {
                                  class="nav-link js-scroll-trigger active collapse navbar-collapse"
                                  id="navbarResponsive">
                             <NavLink onClick={props.handleGame}
+                                     href="#"
                                      style={props.count===2? activeStyle: null}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
@@ -101,6 +104,7 @@ const Header = (props) => {
                                  class="nav-link js-scroll-trigger active collapse navbar-collapse"
                                  id="navbarResponsive">
                             <NavLink onClick={props.handleVideo}
+                                     href="#"
                                      style={props.count===3? activeStyle: null}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
