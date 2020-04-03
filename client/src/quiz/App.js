@@ -166,7 +166,7 @@ class App extends Component {
 
     renderQuiz() {
         return (
-            <div>
+            <div className={"top-margin"}>
                 <Quiz
                     answer={this.state.answer}
                     answerOptions={this.state.answerOptions}
@@ -182,7 +182,12 @@ class App extends Component {
     }
 
     renderResult() {
-        return <Result quizResult={this.state.result}/>;
+        return (<Result
+                quizResult={this.state.result}
+                quizScore = {this.state.myCount}
+                selectedAnswers = {this.state.selectedAnswers}
+            />
+        );
     }
 
     render() {
