@@ -172,19 +172,19 @@ class App extends Component {
                       Video
                     </a>
                   </li>
-                  {/*<li class="nav-item">*/}
-                  {/*  <a*/}
-                  {/*      class="nav-link js-scroll-trigger"*/}
-                  {/*      onClick={this.handleQuiz}*/}
-                  {/*      href="#quiz"*/}
-                  {/*      alt="Quiz"*/}
-                  {/*  >*/}
-                  {/*    Quiz*/}
-                  {/*  </a>*/}
-                  {/*</li>*/}
+                  <li class="nav-item">
+                    <a
+                        class="nav-link js-scroll-trigger"
+                        onClick={this.handleQuiz}
+                        href="#quiz"
+                        alt="Quiz"
+                    >
+                      Quiz
+                    </a>
+                  </li>
                 </ul>
               </div>
-              {/*<Google />*/}
+              <Google />
             </div>
           </nav>
 
