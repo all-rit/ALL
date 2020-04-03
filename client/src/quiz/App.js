@@ -18,7 +18,13 @@ class App extends Component {
             result: '',
             myCount: {},
             disableNextQuestion: true,
-            selectedAnswers: {}
+            selectedAnswers: {},
+            students: [
+                {id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com'},
+                {id: 2, name: 'Ali', age: 19, email: 'ali@email.com'},
+                {id: 3, name: 'Saad', age: 16, email: 'saad@email.com'},
+                {id: 4, name: 'Asad', age: 25, email: 'asad@email.com'}
+            ]
         };
 
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -166,7 +172,7 @@ class App extends Component {
 
     renderQuiz() {
         return (
-            <div>
+            <div className={"top-margin"}>
                 <Quiz
                     answer={this.state.answer}
                     answerOptions={this.state.answerOptions}
@@ -182,7 +188,12 @@ class App extends Component {
     }
 
     renderResult() {
-        return <Result quizResult={this.state.result}/>;
+        return (<Result
+                quizResult={this.state.result}
+                quizScore = {this.state.myCount}
+                selectedAnswers = {this.state.selectedAnswers}
+            />
+        );
     }
 
     render() {
