@@ -84,7 +84,7 @@ class App extends Component {
   };
 
   disappearNext = () => {
-    if (this.state.count >= 3) {
+    if (this.state.count >= 4) {
       return true;
     } else {
       return false;

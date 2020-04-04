@@ -1,22 +1,23 @@
 import React from "react";
-import Quiz from "./../../quiz/App"
+import QuizComp from "./../../quiz/App"
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
 
-const Reading = ({ title, description, links }) => {
+const Quiz = ({ title, description, links }) => {
   if (links === undefined) {
     links = [null, null, null];
   }
 
   return (
     <div class="container">
+        //TODO add the title
       <div class="row quiz">
-        <Quiz />
+        <QuizComp />
       </div>
 
     </div>
   );
 };
 
-export default Reading;
+export default Quiz;
