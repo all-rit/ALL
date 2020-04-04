@@ -19,7 +19,8 @@ var quizQuestions = [
                 content: "None of the above"
             }
 
-        ]
+        ],
+        multiChoice: true
     },
     {
         question: "How many people (aged 18 and over) with hearing loss are there in the United States?",
@@ -37,10 +38,11 @@ var quizQuestions = [
                 content: "40-50 million people"
             },
             {
-                val: 1,
+                val: 0,
                 content: "50-60 million people"
             }
-        ]
+        ],
+        multiChoice: false
     },
     {
         question: "When should accessibility be considered in the development process?",
@@ -61,7 +63,8 @@ var quizQuestions = [
                 val: 0,
                 content: "Only if it's needed for the project"
             }
-        ]
+        ],
+        multiChoice: true
     },
     {
         question: "What does the 'Perceivable' accessibility principle mean?",
@@ -82,7 +85,8 @@ var quizQuestions = [
                 val: 1,
                 content: "None of the above"
             }
-        ]
+        ],
+        multiChoice: true
     },
     {
         question: "Do users with hearing loss have a disadvantage when they use applications that utilize audio cues?",
@@ -95,7 +99,8 @@ var quizQuestions = [
                 val: 0,
                 content: "No"
             }
-        ]
+        ],
+        multiChoice: false
     }
 ];
 

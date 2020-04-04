@@ -95,7 +95,9 @@ function Result(props) {
                     <table id='quizResults'>
                         <tbody>
                         <tr>
-                            {renderTableHeader()}
+                            {/*{renderTableHeader()}*/}
+                            <th>QUESTION</th>
+                            <th>ANSWERS</th>
                             <th>SELECTED ANSWERS</th>
                         </tr>
                         {renderTableData()}
