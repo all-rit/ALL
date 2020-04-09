@@ -169,7 +169,7 @@ class App extends Component {
 
     renderQuiz() {
         return (
-            <div className={"top-margin"}>
+            <div>
                 <Quiz
                     answer={this.state.answer}
                     answerOptions={this.state.answerOptions}
