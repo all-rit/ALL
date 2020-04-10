@@ -18,7 +18,8 @@ class App extends Component {
             result: '',
             myCount: {},
             disableNextQuestion: true,
-            selectedAnswers: {}
+            selectedAnswers: {},
+            multiChoice: false
         };
 
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -44,7 +45,8 @@ class App extends Component {
         }
         this.setState({
             question: quizQuestions[0].question,
-            answerOptions: quizQuestions[0]['answers']
+            answerOptions: quizQuestions[0]['answers'],
+            multiChoice: quizQuestions[0]['multiChoice']
         });
     }
 
@@ -138,7 +140,8 @@ class App extends Component {
                 question: quizQuestions[counter].question,
                 answerOptions: quizQuestions[counter].answers,
                 answer: '',
-                disableNextQuestion: true
+                disableNextQuestion: true,
+                multiChoice: quizQuestions[counter].multiChoice
             });
         } else {
             setTimeout(() => this.setResults(this.getResults()), 300);
@@ -166,7 +169,7 @@ class App extends Component {
 
     renderQuiz() {
         return (
-            <div className={"top-margin"}>
+            <div>
                 <Quiz
                     answer={this.state.answer}
                     answerOptions={this.state.answerOptions}
@@ -176,6 +179,7 @@ class App extends Component {
                     onAnswerSelected={this.handleAnswerSelected}
                     nextQuestion={this.setNextQuestion}
                     disable={this.state.disableNextQuestion}
+                    multiChoice = {this.state.multiChoice}
                 />
             </div>
         );

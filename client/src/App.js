@@ -84,7 +84,7 @@ class App extends Component {
   };
 
   disappearNext = () => {
-    if (this.state.count >= 3) {
+    if (this.state.count >= 4) {
       return true;
     } else {
       return false;
@@ -134,7 +134,7 @@ class App extends Component {
                   </li>
                   <li class="nav-item">
                     <a
-                        class="nav-link js-scroll-trigger"
+                        class= {this.state.count === 0 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
                         onClick={this.handleAbout}
                         href="#about"
                         alt="About Section"
@@ -144,7 +144,7 @@ class App extends Component {
                   </li>
                   <li class="nav-item">
                     <a
-                        class="nav-link js-scroll-trigger"
+                        class={this.state.count === 1 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
                         onClick={this.handleReading}
                         href="#reading"
                         alt="Reading"
@@ -154,7 +154,7 @@ class App extends Component {
                   </li>
                   <li class="nav-item">
                     <a
-                        class="nav-link js-scroll-trigger"
+                        class={this.state.count === 2 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
                         onClick={this.handleGame}
                         href="#game"
                         alt="Game"
@@ -164,7 +164,7 @@ class App extends Component {
                   </li>
                   <li class="nav-item">
                     <a
-                        class="nav-link js-scroll-trigger"
+                        class={this.state.count === 3 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
                         onClick={this.handleVideo}
                         href="#video"
                         alt="Videos"
@@ -174,7 +174,7 @@ class App extends Component {
                   </li>
                   <li class="nav-item">
                     <a
-                        class="nav-link js-scroll-trigger"
+                        class={this.state.count === 4 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
                         onClick={this.handleQuiz}
                         href="#quiz"
                         alt="Quiz"
@@ -184,7 +184,7 @@ class App extends Component {
                   </li>
                 </ul>
               </div>
-              <Google />
+              {/*<Google />*/}
             </div>
           </nav>
 
