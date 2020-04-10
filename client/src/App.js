@@ -184,7 +184,7 @@ class App extends Component {
                   </li>
                 </ul>
               </div>
-              <Google />
+              {/*<Google />*/}
             </div>
           </nav>
 
