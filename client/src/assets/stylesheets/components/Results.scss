@@ -20,6 +20,7 @@
   //margin-bottom: 0.75rem;
   //max-width: 300px;
   font-size: 1.25rem;
+  text-align: center;
 
   &__category {
     font-weight: bold;
@@ -50,10 +51,6 @@
     font-size: 16px;
     padding: 10px;
   }
-
-
-
-  #quizResults tr:hover {background-color: #ddd;}
 
   #quizResults th {
     text-align: center;
