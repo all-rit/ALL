@@ -26,12 +26,12 @@ const Header = (props) => {
     return (
         <div
               id="mainNav"
-              style={{backgroundColor: "#484848", height: "12%", fontSize: "90%"}}>
+              style={{backgroundColor: "#3d3d3d"}}>
             <Navbar dark expand="md" class="navbar navbar-expand-lg navbar-dark fixed-top" >
                 <NavbarBrand href="http://all.rit.edu" style={{marginLeft: "60px"}}>
                     <img
                         src={logo}
-                        height="120" width="120"
+                        height="420" width="420"
                         style={{
                             paddingRight: "20px",
                             paddingBottom: "10px",
@@ -41,7 +41,7 @@ const Header = (props) => {
                         alt="Computing Accessibility"
                     ></img>
 
-                    Accessibility Learning Labs
+                    {/*Accessibility Learning Labs*/}
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
@@ -49,7 +49,8 @@ const Header = (props) => {
                         <NavItem style={{paddingLeft:"400px"}}> </NavItem>
                         <NavItem class="nav-link js-scroll-trigger collapse navbar-collapse"
                                  id="navbarResponsive"
-                                 style={{fontSize: "120%"}}>
+                                 align = "left"
+                        >
                             <NavLink
                                 onClick={props.handleHome}
                                 href="http://all.rit.edu">
@@ -61,7 +62,7 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
-                        <NavItem style={{fontSize: "120%"}}
+                        <NavItem
                                  class="nav-link js-scroll-trigger active collapse navbar-collapse"
                                  id="navbarResponsive">
                             <NavLink onClick={props.handleAbout}
@@ -74,7 +75,7 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
-                        <NavItem style={{fontSize: "120%"}}
+                        <NavItem
                                  class="nav-link js-scroll-trigger active collapse navbar-collapse"
                                  id="navbarResponsive">
                             <NavLink onClick={props.handleReading}
@@ -87,7 +88,7 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
-                        <NavItem style={{fontSize: "120%"}}
+                        <NavItem
                                  class="nav-link js-scroll-trigger active collapse navbar-collapse"
                                  id="navbarResponsive">
                             <NavLink onClick={props.handleGame}
@@ -100,7 +101,7 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
-                        <NavItem style={{fontSize: "120%"}}
+                        <NavItem
                                  class="nav-link js-scroll-trigger active collapse navbar-collapse"
                                  id="navbarResponsive">
                             <NavLink onClick={props.handleVideo}

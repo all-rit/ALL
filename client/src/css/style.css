@@ -124,12 +124,16 @@ body {
   text-align: center !important;
 }
 
+
+
 #mainNav .navbar-nav .nav-item .nav-link {
   font-size: 100%;
+
 
 }
 #mainNav .navbar-brand {
   font-size: 1.94em;
+
 }
 
 .no-margin {
