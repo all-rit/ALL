@@ -87,7 +87,7 @@ function Result(props) {
 
     return (
 
-        <div className="quiz container top-margin shadow">
+        <div className="quiz container shadow">
             <div className="result">
                 Results <strong>Score: {props.quizResult}</strong>
                 <br/>
