@@ -125,7 +125,12 @@ body {
 }
 
 
+#mainNav{
+  padding-top: 0px;
+  padding-bottom: 0px;
 
+
+}
 #mainNav .navbar-nav .nav-item .nav-link {
   font-size: 100%;
 
@@ -138,11 +143,12 @@ body {
 }
 
 .logo-container{
-  width:420px;
+  width:340px;
 }
 .logo{
   width:100%;
   height:auto;
+
 }
 
 .no-margin {

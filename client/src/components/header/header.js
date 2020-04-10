@@ -29,7 +29,7 @@ const Header = (props) => {
               style={{backgroundColor: "#3d3d3d" }}>
             <Navbar dark expand="md" class="navbar navbar-expand-lg navbar-dark navbar-dark" >
 
-                <NavbarBrand href="http://all.rit.edu" style={{marginLeft: "60px"}}>
+                <NavbarBrand href="http://all.rit.edu" style={{marginLeft: "70px"}}>
                     <div class = "logo-container justify-content-center">
                     <img class="logo img-fluid"
                         src={logo}
@@ -49,7 +49,7 @@ const Header = (props) => {
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        <NavItem style={{paddingLeft:"200px"}}> </NavItem>
+                        <NavItem style={{marginLeft:"200px"}}> </NavItem>
                         <NavItem class="nav-link js-scroll-trigger collapse navbar-collapse"
                                  id="navbarResponsive"
                                  align = "left"
