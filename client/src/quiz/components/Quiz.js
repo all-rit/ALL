@@ -14,6 +14,7 @@ function Quiz(props) {
                 answer={props.answer}
                 questionId={props.questionId}
                 onAnswerSelected={props.onAnswerSelected}
+                multiChoice={props.multiChoice}
             />
         );
     }
@@ -42,7 +43,8 @@ Quiz.propTypes = {
     question: PropTypes.string.isRequired,
     questionId: PropTypes.number.isRequired,
     questionTotal: PropTypes.number.isRequired,
-    onAnswerSelected: PropTypes.func.isRequired
+    onAnswerSelected: PropTypes.func.isRequired,
+    multiChoice: PropTypes.func.isRequired
 };
 
 export default Quiz;

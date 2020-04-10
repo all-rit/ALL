@@ -1,9 +1,10 @@
 .quiz {
 
-  .quizHeader{
+  .quizHeader {
     text-align: center;
-    margin-top:110px;
+    margin-top: 110px;
   }
+
   .body {
     margin: 0;
     padding: 0;
@@ -119,7 +120,7 @@
 
   .checkboxCustomButton:checked ~ .checkboxCustomLabel:before {
     content: '';
-    background: #8bc53f no-repeat; 
+    background: #8bc53f no-repeat;
     background-size: 27px;
     border-color: #8bc53f;
   }
@@ -130,12 +131,68 @@
     transform: rotate(45deg);
   }
 
+  .radioCustomButton {
+    position: absolute;
+    width: auto;
+    opacity: 0;
+  }
+
+  .radioCustomButton,
+  .radioCustomLabel {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .radioCustomLabel {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 1.5rem 2.5rem 1.5rem 5rem;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .radioCustomButton ~ .radioCustomLabel:before {
+    position: absolute;
+    top: 20px;
+    left: 38px;
+    width: 28px;
+    height: 28px;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 50%;
+    transition: all 0.3s;
+  }
+
+  .radioCustomButton:checked ~ .radioCustomLabel:before {
+    content: '';
+    background: #8bc53f no-repeat;
+    background-size: 27px;
+    border-color: #8bc53f;
+  }
+
+  .radioCustomButton:checked ~ .radioCustomButton:after {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
   .nextButton {
     margin: 20px;
     padding: 8px !important;
   }
-  .align-right{
+
+  .align-right {
     text-align: right;
+  }
+
+  .top-margin {
+    margin-top: 150px !important;
   }
 
   /* Animation */
@@ -169,5 +226,6 @@
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
   }
+
 
 }

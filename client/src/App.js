@@ -10,7 +10,6 @@ import { Google } from "./components/header/buttons/google";
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import "./css/agency.min.css";
 import "./css/style.css";
-import Header from "./components/header/header"
 
 const section = {
   0: <About />,
@@ -85,7 +84,7 @@ class App extends Component {
   };
 
   disappearNext = () => {
-    if (this.state.count >= 3) { //TODO remember to change once quiz is added back
+    if (this.state.count >= 4) {
       return true;
     } else {
       return false;
@@ -101,30 +100,112 @@ class App extends Component {
   };
 
   render() {
-
-    const activeStyle = {color: "#fed136"};
-
-
     return (
         <div>
-          <Header count={this.state.count} handleQuiz={this.handleQuiz} handleAbout={this.handleAbout} handleHome={this.handleHome} handleReading={this.handleReading} handleGame={this.handleGame} handleVideo={this.handleVideo}  />
+          <nav
+              class="navbar navbar-expand-lg navbar-dark fixed-top"
+              id="mainNav"
+              style={{ backgroundColor: "#484848", height: "12%", fontSize: "90%" }}
+          >
+            <div class="container">
+              <img
+                  src={logo}
+                  style={{
+                    paddingRight: "20px",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                    marginTop: "-10px"
+                  }}
+                  alt="Computing Accessibility"
+              ></img>
+              <a class="navbar-brand js-scroll-trigger" href="http://all.rit.edu">
+                Accessibility Learning Labs
+              </a>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                  <li class="nav-item">
+                    <a
+                        class="nav-link js-scroll-trigger"
+                        href="http://all.rit.edu"
+                        alt="Home page"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                        class= {this.state.count === 0 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+                        onClick={this.handleAbout}
+                        href="#about"
+                        alt="About Section"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                        class={this.state.count === 1 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+                        onClick={this.handleReading}
+                        href="#reading"
+                        alt="Reading"
+                    >
+                      Reading
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                        class={this.state.count === 2 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+                        onClick={this.handleGame}
+                        href="#game"
+                        alt="Game"
+                    >
+                      Game
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                        class={this.state.count === 3 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+                        onClick={this.handleVideo}
+                        href="#video"
+                        alt="Videos"
+                    >
+                      Video
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                        class={this.state.count === 4 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+                        onClick={this.handleQuiz}
+                        href="#quiz"
+                        alt="Quiz"
+                    >
+                      Quiz
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              {/*<Google />*/}
+            </div>
+          </nav>
+
           <div>{section[this.state.count]}</div>
 
-           <div class="container">
-             <button
-                className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                onClick={this.handleDecrement}
-                disabled={this.disappearBack() ? "disabled" : false}
-            >
-              back
-            </button>
-            <button
-                className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                onClick={this.handleIncrement}
-                disabled={this.disappearNext() ? "disabled" : false}
-            >
-              next
-            </button>
+
+            <div className="container">
+              <button
+                  className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
+                  onClick={this.handleDecrement}
+                  disabled={this.disappearBack() ? "disabled" : false}
+              >
+                back
+              </button>
+              <button
+                  className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
+                  onClick={this.handleIncrement}
+                  disabled={this.disappearNext() ? "disabled" : false}
+              >
+                next
+              </button>
             <footer >
               <div class="btn-change">
                 <Change />
