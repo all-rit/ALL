@@ -107,8 +107,9 @@ class App extends Component {
               id="mainNav"
               style={{ backgroundColor: "#3d3d3d", height: "12%", fontSize: "90%", overflow:"hidden", minHeight:"93px"}}
           >
-            <div class="container">
-              <div class="logo-container justify-content-center">
+            <div class="container"  >
+              <a href="http://all.rit.edu">
+              <div class="logo-container justify-content-center" >
               <img class="logo img-fluid"
                   src={logo}
                   style={{
@@ -116,10 +117,10 @@ class App extends Component {
                     paddingTop: "6px",
                     marginTop: "-10px",
                   }}
-                  href="http://all.rit.edu"
                   alt="Computing Accessibility"
               ></img>
             </div>
+            </a>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                   <li class="nav-item">
@@ -182,7 +183,7 @@ class App extends Component {
                     </a>
                   </li>
                 </ul>
-                
+
               </div>
               {/*<Google />*/}
             </div>
