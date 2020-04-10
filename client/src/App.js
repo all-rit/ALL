@@ -105,11 +105,12 @@ class App extends Component {
           <nav
               class="navbar navbar-expand-lg navbar-dark fixed-top"
               id="mainNav"
-              style={{ backgroundColor: "#484848", height: "12%", fontSize: "90%" }}
+              style={{ backgroundColor: "#3d3d3d", height: "12%", fontSize: "90%" }}
           >
             <div class="container">
               <img
                   src={logo}
+                  height="380" width="380"
                   style={{
                     paddingRight: "20px",
                     paddingBottom: "10px",
@@ -119,7 +120,7 @@ class App extends Component {
                   alt="Computing Accessibility"
               ></img>
               <a class="navbar-brand js-scroll-trigger" href="http://all.rit.edu">
-                Accessibility Learning Labs
+                {/*Accessibility Learning Labs*/}
               </a>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
