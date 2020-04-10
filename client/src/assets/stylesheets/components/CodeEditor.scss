@@ -3,7 +3,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  top: 0;
+  top: 300px;
   display: flex;
   align-items: center;
 
@@ -151,11 +151,12 @@
 
   .code_editor__background {
     position: absolute;
-    top: 0;
+    top: -150px;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    height:100vh;
+   // background-color: rgba(0, 0, 0, 0.3);
     z-index: 0;
     cursor: pointer;
   }
