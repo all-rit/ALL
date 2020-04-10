@@ -3,7 +3,7 @@ var quizQuestions = [
         question: "What is an audio cue?",
         answers: [
             {
-                val: 1,
+                val: 0,
                 content: "A vibration that conveys key information"
             },
             {
@@ -11,7 +11,7 @@ var quizQuestions = [
                 content: "A playing sound that conveys key information"
             },
             {
-                val: 1,
+                val: 0,
                 content: "A visual indicator that conveys key information"
             },
             {
@@ -20,7 +20,7 @@ var quizQuestions = [
             }
 
         ],
-        multiChoice: true
+        multiChoice: false
     },
     {
         question: "How many people (aged 18 and over) with hearing loss are there in the United States?",
@@ -56,7 +56,7 @@ var quizQuestions = [
                 content: "From the beginning"
             },
             {
-                val: 1,
+                val: 0,
                 content: "Whenever the developer feels it's necessary"
             },
             {
@@ -64,13 +64,13 @@ var quizQuestions = [
                 content: "Only if it's needed for the project"
             }
         ],
-        multiChoice: true
+        multiChoice: false
     },
     {
         question: "What does the 'Perceivable' accessibility principle mean?",
         answers: [
             {
-                val: 1,
+                val: 0,
                 content: "User interface components and navigation must be operable."
             },
             {
@@ -82,11 +82,11 @@ var quizQuestions = [
                 content: "Information and the operation of user interface must be understandable."
             },
             {
-                val: 1,
+                val: 0,
                 content: "None of the above"
             }
         ],
-        multiChoice: true
+        multiChoice: false
     },
     {
         question: "Do users with hearing loss have a disadvantage when they use applications that utilize audio cues?",
