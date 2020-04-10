@@ -134,3 +134,12 @@ body {
   margin: 0 !important;
 }
 
+.logo-container{
+  width:350px;
+}
+.logo{
+  width:100%;
+  height:auto;
+}
+
+
