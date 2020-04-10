@@ -30,7 +30,8 @@ const Header = (props) => {
             <Navbar dark expand="md" class="navbar navbar-expand-lg navbar-dark navbar-dark" >
 
                 <NavbarBrand href="http://all.rit.edu" style={{marginLeft: "60px"}}>
-                    <img
+                    <div class = "logo-container justify-content-center">
+                    <img class="logo img-fluid"
                         src={logo}
                         height="420" width="420"
                         style={{
@@ -41,6 +42,7 @@ const Header = (props) => {
                         }}
                         alt="Computing Accessibility"
                     ></img>
+                    </div>
 
                     {/*Accessibility Learning Labs*/}
                 </NavbarBrand>

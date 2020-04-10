@@ -133,7 +133,16 @@ body {
 }
 #mainNav .navbar-brand {
   font-size: 1.94em;
+  justify-content: space-around;
 
+}
+
+.logo-container{
+  width:420px;
+}
+.logo{
+  width:100%;
+  height:auto;
 }
 
 .no-margin {
