@@ -8,7 +8,7 @@ var quizQuestions = [
             },
             {
                 val: 1,
-                content: "A playing sound that conveys key information - correct"
+                content: "A playing sound that conveys key information"
             },
             {
                 val: 1,
@@ -30,7 +30,7 @@ var quizQuestions = [
             },
             {
                 val: 1,
-                content: "30-40 million people - correct"
+                content: "30-40 million people"
             },
             {
                 val: 0,
@@ -51,7 +51,7 @@ var quizQuestions = [
             },
             {
                 val: 1,
-                content: "From the beginning - correct"
+                content: "From the beginning"
             },
             {
                 val: 1,
@@ -72,7 +72,7 @@ var quizQuestions = [
             },
             {
                 val: 1,
-                content: "Information and user interface components must be presentable to users in ways they can perceive. - correct"
+                content: "Information and user interface components must be presentable to users in ways they can perceive."
             },
             {
                 val: 0,

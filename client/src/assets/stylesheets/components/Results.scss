@@ -14,14 +14,59 @@
 }
 
 .result {
-  margin: 0 auto;
+  //margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  margin-bottom: 0.75rem;
-  max-width: 300px;
+  //grid-template-columns: 2fr 1fr;
+  //margin-bottom: 0.75rem;
+  //max-width: 300px;
   font-size: 1.25rem;
 
   &__category {
     font-weight: bold;
+  }
+
+  .column-width{
+    width: 33%;
+  }
+
+  /* Result Table */
+  #title {
+    text-align: left;
+    font-family: arial, sans-serif;
+  }
+
+  #quizResults {
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #6c757d;
+    width: 100%;
+  }
+
+  #quizResults td, #quizResults th {
+    border: 1px solid #6c757d;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+
+
+  #quizResults tr:hover {background-color: #ddd;}
+
+  #quizResults th {
+    text-align: center;
+    color: #fed136;
+    background-color: rgb(72, 72, 72);
+  }
+
+  .answer-wrong{
+    color: #721c24;
+    background-color: #f8d7da;
+  }
+  .answer-correct{
+    color: #155724;
+    background-color: #d4edda;
   }
 }
