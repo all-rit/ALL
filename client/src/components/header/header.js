@@ -25,23 +25,23 @@ const Header = (props) => {
 
     return (
         <div
-              id="mainNav"
-              style={{backgroundColor: "#3d3d3d" }}>
-            <Navbar dark expand="md" class="navbar navbar-expand-lg navbar-dark navbar-dark" >
+            id="mainNav"
+            style={{backgroundColor: "#3d3d3d", height: "12%", fontSize: "90%", overflow: "hidden", minHeight: "93px"}}>
+            <Navbar dark expand="md" class="navbar navbar-expand-lg navbar-dark navbar-dark">
 
-                <NavbarBrand href="http://all.rit.edu" style={{marginLeft: "70px"}}>
-                    <div class = "logo-container justify-content-center">
-                    <img class="logo img-fluid"
-                        src={logo}
-                        height="420" width="420"
-                        style={{
-                            paddingRight: "20px",
-                            paddingBottom: "10px",
-                            paddingTop: "10px",
-                            marginTop: "-10px"
-                        }}
-                        alt="Computing Accessibility"
-                    ></img>
+                <NavbarBrand href="http://all.rit.edu" style={{marginLeft: "50px"}}>
+                    <div className="logo-container justify-content-center">
+                        <img className="logo img-fluid"
+                             src={logo}
+
+                             style={{
+                                 paddingRight: "20px",
+                                 paddingBottom: "10px",
+                                 paddingTop: "10px",
+                                 marginTop: "-10px"
+                             }}
+                             alt="Computing Accessibility"
+                        ></img>
                     </div>
 
                     {/*Accessibility Learning Labs*/}
@@ -49,41 +49,47 @@ const Header = (props) => {
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        <NavItem style={{marginLeft:"200px"}}> </NavItem>
-                        <NavItem class="nav-link js-scroll-trigger collapse navbar-collapse"
+                        <NavItem class="collapse navbar-collapse"
                                  id="navbarResponsive"
-                                 align = "left"
+                                 style={{marginLeft: "280px"}}> </NavItem>
+                        <NavItem class="collapse navbar-collapse"
+                                 id="navbarResponsive"
                         >
                             <NavLink
+                                class="nav-link js-scroll-trigger"
                                 onClick={props.handleHome}
                                 href="http://all.rit.edu">
 
                                 <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
+                                    <li className="nav-item" style={{align: "right"}}>
                                         Home
                                     </li>
                                 </ul>
                             </NavLink>
                         </NavItem>
                         <NavItem
-                                 class="nav-link js-scroll-trigger active collapse navbar-collapse"
-                                 id="navbarResponsive">
-                            <NavLink onClick={props.handleAbout}
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive">
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                onClick={props.handleAbout}
                                      href="#"
-                                     style={props.count===0? activeStyle: null}>
-                                <ul className="navbar-nav text-uppercase ml-auto" >
-                                    <li className="nav-item" >
+                                     style={props.count === 0 ? activeStyle : null}>
+                                <ul className="navbar-nav text-uppercase ml-auto">
+                                    <li className="nav-item">
                                         About
                                     </li>
                                 </ul>
                             </NavLink>
                         </NavItem>
                         <NavItem
-                                 class="nav-link js-scroll-trigger active collapse navbar-collapse"
-                                 id="navbarResponsive">
-                            <NavLink onClick={props.handleReading}
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive">
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                onClick={props.handleReading}
                                      href="#"
-                                     style={props.count===1? activeStyle: null}>
+                                     style={props.count === 1 ? activeStyle : null}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
                                         Reading
@@ -92,11 +98,13 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
                         <NavItem
-                                 class="nav-link js-scroll-trigger active collapse navbar-collapse"
-                                 id="navbarResponsive">
-                            <NavLink onClick={props.handleGame}
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive">
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                onClick={props.handleGame}
                                      href="#"
-                                     style={props.count===2? activeStyle: null}>
+                                     style={props.count === 2 ? activeStyle : null}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
                                         Game
@@ -105,11 +113,13 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
                         <NavItem
-                                 class="nav-link js-scroll-trigger active collapse navbar-collapse"
-                                 id="navbarResponsive">
-                            <NavLink onClick={props.handleVideo}
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive">
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                onClick={props.handleVideo}
                                      href="#"
-                                     style={props.count===3? activeStyle: null}>
+                                     style={props.count === 3 ? activeStyle : null}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
                                         Video
@@ -118,11 +128,13 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
                         <NavItem
-                            class="nav-link js-scroll-trigger active collapse navbar-collapse"
-                            id="navbarResponsive" style={{marginRight: "70px"}} >
-                            <NavLink onClick={props.handleQuiz}
+                            class=" collapse navbar-collapse"
+                            id="navbarResponsive" style={{marginRight: "70px"}}>
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                onClick={props.handleQuiz}
                                      href="#"
-                                     style={props.count===4? activeStyle: null}>
+                                     style={props.count === 4 ? activeStyle : null}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
                                         Quiz
@@ -134,10 +146,9 @@ const Header = (props) => {
                 </Collapse>
             </Navbar>
 
-        </div>
+            </div>
 
     );
-}
-
+   }
 
 export default Header;

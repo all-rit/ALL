@@ -6,6 +6,7 @@ import Reading from "./components/body/reading";
 import Video from "./components/body/video";
 import Quiz from "./components/body/quiz";
 import Change from "./components/footer/change";
+import Header from "./components/header/header"
 import { Google } from "./components/header/buttons/google";
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import "./css/agency.min.css";
@@ -100,113 +101,152 @@ class App extends Component {
   };
 
   render() {
+//     return (
+//         <div>
+//           <nav
+//               class="navbar navbar-expand-lg navbar-dark fixed-top"
+//               id="mainNav"
+//               style={{ backgroundColor: "#3d3d3d", height: "12%", fontSize: "90%", overflow:"hidden", minHeight:"93px"}}
+//           >
+//             <div class="container"  >
+//               <a href="http://all.rit.edu">
+//               <div class="logo-container justify-content-center" >
+//               <img class="logo img-fluid"
+//                   src={logo}
+//                   style={{
+//                     paddingRight: "20px",
+//                     paddingTop: "6px",
+//                     marginTop: "-10px",
+//                   }}
+//                   alt="Computing Accessibility"
+//               ></img>
+//             </div>
+//             </a>
+//               <div class="collapse navbar-collapse" id="navbarResponsive">
+//                 <ul class="navbar-nav text-uppercase ml-auto">
+//                   <li class="nav-item">
+//                     <a
+//                         class="nav-link js-scroll-trigger"
+//                         href="http://all.rit.edu"
+//                         alt="Home page"
+//                     >
+//                       Home
+//                     </a>
+//                   </li>
+//                   <li class="nav-item">
+//                     <a
+//                         class= {this.state.count === 0 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+//                         onClick={this.handleAbout}
+//                         href="#about"
+//                         alt="About Section"
+//                     >
+//                       About
+//                     </a>
+//                   </li>
+//                   <li class="nav-item">
+//                     <a
+//                         class={this.state.count === 1 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+//                         onClick={this.handleReading}
+//                         href="#reading"
+//                         alt="Reading"
+//                     >
+//                       Reading
+//                     </a>
+//                   </li>
+//                   <li class="nav-item">
+//                     <a
+//                         class={this.state.count === 2 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+//                         onClick={this.handleGame}
+//                         href="#game"
+//                         alt="Game"
+//                     >
+//                       Game
+//                     </a>
+//                   </li>
+//                   <li class="nav-item">
+//                     <a
+//                         class={this.state.count === 3 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+//                         onClick={this.handleVideo}
+//                         href="#video"
+//                         alt="Videos"
+//                     >
+//                       Video
+//                     </a>
+//                   </li>
+//                   <li class="nav-item">
+//                     <a
+//                         class={this.state.count === 4 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
+//                         onClick={this.handleQuiz}
+//                         href="#quiz"
+//                         alt="Quiz"
+//                     >
+//                       Quiz
+//                     </a>
+//                   </li>
+//                 </ul>
+//
+//               </div>
+//               {/*<Google />*/}
+//             </div>
+//           </nav>
+//
+//           <div>{section[this.state.count]}</div>
+//
+//
+//             <div className="container">
+//               <button
+//                   className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
+//                   onClick={this.handleDecrement}
+//                   disabled={this.disappearBack() ? "disabled" : false}
+//               >
+//                 back
+//               </button>
+//               <button
+//                   className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
+//                   onClick={this.handleIncrement}
+//                   disabled={this.disappearNext() ? "disabled" : false}
+//               >
+//                 next
+//               </button>
+//             <footer >
+//               <div class="btn-change">
+//                 <Change />
+//               </div>
+//               <div class="btn-information">
+//                 These buttons are disabled so as to not interfere with the
+//                 accessibility-related portions of the lab.
+//               </div>
+//             </footer>
+//           </div>
+//         </div>
+//     );
+//   }
+// }
+//
+// export default App;
+
     return (
-        <div>
-          <nav
-              class="navbar navbar-expand-lg navbar-dark fixed-top"
-              id="mainNav"
-              style={{ backgroundColor: "#3d3d3d", height: "12%", fontSize: "90%", overflow:"hidden", minHeight:"93px"}}
-          >
-            <div class="container"  >
-              <a href="http://all.rit.edu">
-              <div class="logo-container justify-content-center" >
-              <img class="logo img-fluid"
-                  src={logo}
-                  style={{
-                    paddingRight: "20px",
-                    paddingTop: "6px",
-                    marginTop: "-10px",
-                  }}
-                  alt="Computing Accessibility"
-              ></img>
-            </div>
-            </a>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                  <li class="nav-item">
-                    <a
-                        class="nav-link js-scroll-trigger"
-                        href="http://all.rit.edu"
-                        alt="Home page"
-                    >
-                      Home
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                        class= {this.state.count === 0 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-                        onClick={this.handleAbout}
-                        href="#about"
-                        alt="About Section"
-                    >
-                      About
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                        class={this.state.count === 1 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-                        onClick={this.handleReading}
-                        href="#reading"
-                        alt="Reading"
-                    >
-                      Reading
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                        class={this.state.count === 2 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-                        onClick={this.handleGame}
-                        href="#game"
-                        alt="Game"
-                    >
-                      Game
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                        class={this.state.count === 3 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-                        onClick={this.handleVideo}
-                        href="#video"
-                        alt="Videos"
-                    >
-                      Video
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                        class={this.state.count === 4 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-                        onClick={this.handleQuiz}
-                        href="#quiz"
-                        alt="Quiz"
-                    >
-                      Quiz
-                    </a>
-                  </li>
-                </ul>
 
-              </div>
-              {/*<Google />*/}
-            </div>
-          </nav>
+         <div>
+           <Header count={this.state.count} handleQuiz={this.handleQuiz} handleAbout={this.handleAbout} handleHome={this.handleHome} handleReading={this.handleReading} handleGame={this.handleGame} handleVideo={this.handleVideo}  />
 
-          <div>{section[this.state.count]}</div>
+         <div>{section[this.state.count]}</div>
 
-
-            <div className="container">
-              <button
-                  className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                  onClick={this.handleDecrement}
-                  disabled={this.disappearBack() ? "disabled" : false}
-              >
-                back
-              </button>
-              <button
-                  className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                  onClick={this.handleIncrement}
-                  disabled={this.disappearNext() ? "disabled" : false}
-              >
-                next
-              </button>
+          <div class="container">
+            <button
+                className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
+                onClick={this.handleDecrement}
+                disabled={this.disappearBack() ? "disabled" : false}
+            >
+              back
+            </button>
+            <button
+                className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
+                onClick={this.handleIncrement}
+                disabled={this.disappearNext() ? "disabled" : false}
+            >
+              next
+            </button>
             <footer >
               <div class="btn-change">
                 <Change />
@@ -217,7 +257,7 @@ class App extends Component {
               </div>
             </footer>
           </div>
-        </div>
+           </div>
     );
   }
 }
