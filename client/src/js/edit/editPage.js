@@ -1,5 +1,6 @@
-function changeTSize(num) {
+export function changeTSize(num) {
   var el = document.getElementsByTagName("body")[0];
+  console.log("hello ");
   // only one body in document
   var fontSizeString = window
     .getComputedStyle(el, null)
@@ -38,12 +39,12 @@ function changeTSize(num) {
   }
 }
 
-function setTextColor(picker) {
+export function setTextColor(picker) {
   document.getElementsByTagName("body")[0].style.color =
     "#" + picker.toString();
 }
 
-function setBackgroundColor(picker) {
+export function setBackgroundColor(picker) {
   document.getElementsByTagName("body")[0].style.backgroundColor =
     "#" + picker.toString();
 }
