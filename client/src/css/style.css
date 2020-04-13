@@ -154,7 +154,7 @@ body {
   padding:0;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 765px) {
   .labcontainer {
     height: auto !important;
   }
