@@ -17,6 +17,7 @@
     "react-router": "^5.1.2",
     "react-scripts": "latest",
     "react-spinners": "latest",
+    "reactstrap": "^8.4.1",
     "redux": "latest",
     "redux-saga": "latest",
     "typescript": "latest",
