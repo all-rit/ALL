@@ -26,10 +26,11 @@ const Header = (props) => {
     return (
         <div
             id="mainNav"
-            style={{backgroundColor: "#3d3d3d", height: "12%", fontSize: "90%", overflow: "hidden", minHeight: "93px"}}>
-            <Navbar dark expand="md" class="navbar navbar-expand-lg navbar-dark navbar-dark">
+            style={{backgroundColor: "#3d3d3d", zIndex: "1", position: "fixed", width:"100%", fontSize: "90%", overflow: "hidden"}}>
+            <div className="container labcontainer">
+            <Navbar dark expand="md" className="navbar navbar-expand-lg navbar-dark navbar-dark labnav">
 
-                <NavbarBrand href="http://all.rit.edu" style={{marginLeft: "50px"}}>
+                <NavbarBrand href="http://all.rit.edu" >
                     <div className="logo-container justify-content-center">
                         <img className="logo img-fluid"
                              src={logo}
@@ -48,7 +49,7 @@ const Header = (props) => {
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
+                    <Nav className="mr-auto labul" navbar>
                         <NavItem class="collapse navbar-collapse"
                                  id="navbarResponsive"
                                  style={{marginLeft: "280px"}}> </NavItem>
@@ -145,6 +146,7 @@ const Header = (props) => {
                     </Nav>
                 </Collapse>
             </Navbar>
+            </div>
 
             </div>
 
