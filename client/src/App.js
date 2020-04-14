@@ -128,7 +128,7 @@ class App extends Component {
                 <Change />
               </div>
               <div class="btn-information">
-                The navigation and accessibility buttons are disabled so as to not interfere with the
+                These buttons are disabled so as to not interfere with the
                 accessibility-related portions of the lab.
               </div>
             </footer>
