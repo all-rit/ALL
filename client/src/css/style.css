@@ -150,6 +150,23 @@ body {
   height:auto;
 
 }
+.labnav{
+  padding:0;
+}
+
+@media (max-width: 765px) {
+  .labcontainer {
+    height: auto !important;
+  }
+}
+
+.labul{
+  padding-bottom:15px;
+
+}
+.labcontainer {
+  height: 95px;
+}
 
 .no-margin {
   margin: 0 !important;
@@ -162,5 +179,3 @@ body {
   width:100%;
   height:auto;
 }
-
-

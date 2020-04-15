@@ -23,6 +23,30 @@ const section = {
 class App extends Component {
   state = { count: 0 };
 
+  componentWillMount() {
+    console.log(window.location.href);
+    let x = window.location.href;
+    x = x.split('/').pop();
+    switch (x) {
+      case "about":
+        this.setState({count: 0});
+        break;
+      case "reading":
+        this.setState({count: 1});
+        break;
+      case "game":
+        this.setState({count: 2});
+        break;
+      case "video":
+        this.setState({count: 3});
+        break;
+      case "quiz":
+        this.setState({count: 4});
+        break;
+    }
+  }
+
+
   handleIncrement = () => {
     if (this.state.count < 4) {
       this.setState({
@@ -63,6 +87,7 @@ class App extends Component {
     });
   };
 
+
   handleGame = () => {
     this.setState({
       count: 2,
@@ -101,130 +126,6 @@ class App extends Component {
   };
 
   render() {
-//     return (
-//         <div>
-//           <nav
-//               class="navbar navbar-expand-lg navbar-dark fixed-top"
-//               id="mainNav"
-//               style={{ backgroundColor: "#3d3d3d", height: "12%", fontSize: "90%", overflow:"hidden", minHeight:"93px"}}
-//           >
-//             <div class="container"  >
-//               <a href="http://all.rit.edu">
-//               <div class="logo-container justify-content-center" >
-//               <img class="logo img-fluid"
-//                   src={logo}
-//                   style={{
-//                     paddingRight: "20px",
-//                     paddingTop: "6px",
-//                     marginTop: "-10px",
-//                   }}
-//                   alt="Computing Accessibility"
-//               ></img>
-//             </div>
-//             </a>
-//               <div class="collapse navbar-collapse" id="navbarResponsive">
-//                 <ul class="navbar-nav text-uppercase ml-auto">
-//                   <li class="nav-item">
-//                     <a
-//                         class="nav-link js-scroll-trigger"
-//                         href="http://all.rit.edu"
-//                         alt="Home page"
-//                     >
-//                       Home
-//                     </a>
-//                   </li>
-//                   <li class="nav-item">
-//                     <a
-//                         class= {this.state.count === 0 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-//                         onClick={this.handleAbout}
-//                         href="#about"
-//                         alt="About Section"
-//                     >
-//                       About
-//                     </a>
-//                   </li>
-//                   <li class="nav-item">
-//                     <a
-//                         class={this.state.count === 1 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-//                         onClick={this.handleReading}
-//                         href="#reading"
-//                         alt="Reading"
-//                     >
-//                       Reading
-//                     </a>
-//                   </li>
-//                   <li class="nav-item">
-//                     <a
-//                         class={this.state.count === 2 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-//                         onClick={this.handleGame}
-//                         href="#game"
-//                         alt="Game"
-//                     >
-//                       Game
-//                     </a>
-//                   </li>
-//                   <li class="nav-item">
-//                     <a
-//                         class={this.state.count === 3 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-//                         onClick={this.handleVideo}
-//                         href="#video"
-//                         alt="Videos"
-//                     >
-//                       Video
-//                     </a>
-//                   </li>
-//                   <li class="nav-item">
-//                     <a
-//                         class={this.state.count === 4 ? "nav-link active js-scroll-trigger": "nav-link js-scroll-trigger"}
-//                         onClick={this.handleQuiz}
-//                         href="#quiz"
-//                         alt="Quiz"
-//                     >
-//                       Quiz
-//                     </a>
-//                   </li>
-//                 </ul>
-//
-//               </div>
-//               {/*<Google />*/}
-//             </div>
-//           </nav>
-//
-//           <div>{section[this.state.count]}</div>
-//
-//
-//             <div className="container">
-//               <button
-//                   className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-//                   onClick={this.handleDecrement}
-//                   disabled={this.disappearBack() ? "disabled" : false}
-//               >
-//                 back
-//               </button>
-//               <button
-//                   className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-//                   onClick={this.handleIncrement}
-//                   disabled={this.disappearNext() ? "disabled" : false}
-//               >
-//                 next
-//               </button>
-//             <footer >
-//               <div class="btn-change">
-//                 <Change />
-//               </div>
-//               <div class="btn-information">
-//                 These buttons are disabled so as to not interfere with the
-//                 accessibility-related portions of the lab.
-//               </div>
-//             </footer>
-//           </div>
-//         </div>
-//     );
-//   }
-// }
-//
-// export default App;
-
     return (
 
          <div>
