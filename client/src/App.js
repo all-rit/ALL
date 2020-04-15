@@ -6,7 +6,6 @@ import Reading from "./components/body/reading";
 import Video from "./components/body/video";
 import Quiz from "./components/body/quiz";
 import Change from "./components/footer/change";
-import gamefooter from "./components/footer/gameFooter"
 import Header from "./components/header/header"
 import { Google } from "./components/header/buttons/google";
 import "./vendor/bootstrap/css/bootstrap.min.css";
@@ -23,6 +22,30 @@ const section = {
 
 class App extends Component {
   state = { count: 0 };
+
+  componentWillMount() {
+    console.log(window.location.href);
+    let x = window.location.href;
+    x = x.split('/').pop();
+    switch (x) {
+      case "about":
+        this.setState({count: 0});
+        break;
+      case "reading":
+        this.setState({count: 1});
+        break;
+      case "game":
+        this.setState({count: 2});
+        break;
+      case "video":
+        this.setState({count: 3});
+        break;
+      case "quiz":
+        this.setState({count: 4});
+        break;
+    }
+  }
+
 
   handleIncrement = () => {
     if (this.state.count < 4) {
@@ -64,6 +87,7 @@ class App extends Component {
     });
   };
 
+
   handleGame = () => {
     this.setState({
       count: 2,
@@ -102,44 +126,36 @@ class App extends Component {
   };
 
   render() {
-    const isState = this.state.count;
     return (
 
          <div>
            <Header count={this.state.count} handleQuiz={this.handleQuiz} handleAbout={this.handleAbout} handleHome={this.handleHome} handleReading={this.handleReading} handleGame={this.handleGame} handleVideo={this.handleVideo}  />
-           <Change handleDecrement={this.handleDecrement} disappearBack={this.disappearBack} handleIncrement={this.handleIncrement} disappearNext = {this.disappearNext} />
+
          <div>{section[this.state.count]}</div>
 
           <div class="container">
-            {/*<button*/}
-            {/*    className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "*/}
-            {/*    onClick={this.handleDecrement}*/}
-            {/*    disabled={this.disappearBack() ? "disabled" : false}*/}
-            {/*>*/}
-            {/*  back*/}
-            {/*</button>*/}
-            {/*<button*/}
-            {/*    className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"*/}
-            {/*    onClick={this.handleIncrement}*/}
-            {/*    disabled={this.disappearNext() ? "disabled" : false}*/}
-            {/*>*/}
-            {/*  next*/}
-            {/*</button>*/}
-
+            <button
+                className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
+                onClick={this.handleDecrement}
+                disabled={this.disappearBack() ? "disabled" : false}
+            >
+              back
+            </button>
+            <button
+                className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
+                onClick={this.handleIncrement}
+                disabled={this.disappearNext() ? "disabled" : false}
+            >
+              next
+            </button>
+            <footer >
               <div class="btn-change">
-                {isState !== 2
-
-                    ? <Change />
-                    : <gamefooter />
-
-                }
+                <Change />
               </div>
-              <footer >
-
-              {/*<div class="btn-information">*/}
-              {/*  These buttons are disabled so as to not interfere with the*/}
-              {/*  accessibility-related portions of the lab.*/}
-              {/*</div>*/}
+              <div class="btn-information">
+                These buttons are disabled so as to not interfere with the
+                accessibility-related portions of the lab.
+              </div>
             </footer>
           </div>
            </div>
