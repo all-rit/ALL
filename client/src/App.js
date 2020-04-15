@@ -11,6 +11,10 @@ import { Google } from "./components/header/buttons/google";
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import "./css/agency.min.css";
 import "./css/style.css";
+import {actions as appActions} from './reducers/AppReducer';
+import {bindActionCreators} from 'redux';
+import {connect} from "react-redux";
+
 
 const section = {
   0: <About />,
@@ -20,151 +24,56 @@ const section = {
   4: <Quiz />
 };
 
+
+const mapStateToProps = (state) => {
+  return {
+    // General
+    state: state
+  };
+};
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(appActions, dispatch)
+});
+
 class App extends Component {
-  state = { count: 0 };
 
   componentWillMount() {
-    console.log(window.location.href);
+    const {state, actions} = this.props;
     let x = window.location.href;
     x = x.split('/').pop();
     switch (x) {
       case "about":
-        this.setState({count: 0});
+        actions.setBody(0);
         break;
       case "reading":
-        this.setState({count: 1});
+        actions.setBody(1);
         break;
       case "game":
-        this.setState({count: 2});
+        actions.setBody(2);
         break;
       case "video":
-        this.setState({count: 3});
+        actions.setBody(3);
         break;
       case "quiz":
-        this.setState({count: 4});
+        actions.setBody(4);
         break;
     }
   }
 
 
-  handleIncrement = () => {
-    if (this.state.count < 4) {
-      this.setState({
-        count: this.state.count + 1,
-        message: null
-      });
-    } else {
-      this.setState({
-        message: "This is the final page"
-      });
-    }
-  };
-
-  handleDecrement = () => {
-    if (this.state.count) {
-      this.setState({
-        count: this.state.count - 1,
-        message: null
-      });
-    } else {
-      this.setState({
-        message: "This is the first page"
-      });
-    }
-  };
-
-  handleAbout = () => {
-    this.setState({
-      count: 0,
-      message: null
-    });
-  };
-
-  handleReading = () => {
-    this.setState({
-      count: 1,
-      message: null
-    });
-  };
-
-
-  handleGame = () => {
-    this.setState({
-      count: 2,
-      message: null
-    });
-  };
-
-  handleVideo = () => {
-    this.setState({
-      count: 3,
-      message: null
-    });
-  };
-
-  handleQuiz = () => {
-    this.setState({
-      count: 4,
-      message: null
-    });
-  };
-
-  disappearNext = () => {
-    if (this.state.count >= 4) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  disappearBack = () => {
-    if (this.state.count <= 0) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   render() {
-    const isState = this.state.count;
+    const {state, actions} = this.props;
     return (
 
          <div>
-           <Header count={this.state.count} handleQuiz={this.handleQuiz} handleAbout={this.handleAbout} handleHome={this.handleHome} handleReading={this.handleReading} handleGame={this.handleGame} handleVideo={this.handleVideo}  />
-           <Change count={this.state.count} handleDecrement={this.handleDecrement} disappearBack={this.disappearBack} handleIncrement = {this.handleIncrement} disappearNext = {this.disappearNext} />
-         <div>{section[this.state.count]}</div>
-
-          <div class="container">
-            {/*<button*/}
-            {/*    className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "*/}
-            {/*    onClick={this.handleDecrement}*/}
-            {/*    disabled={this.disappearBack() ? "disabled" : false}*/}
-            {/*>*/}
-            {/*  back*/}
-            {/*</button>*/}
-            {/*<button*/}
-            {/*    className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"*/}
-            {/*    onClick={this.handleIncrement}*/}
-            {/*    disabled={this.disappearNext() ? "disabled" : false}*/}
-            {/*>*/}
-            {/*  next*/}
-            {/*</button>*/}
-            <footer >
-              <div class="btn-change">
-                {isState !== 2
-                    ? < Change />
-                    : <gamefooter />
-                }
-              </div>
-              {/*<div class="btn-information">*/}
-              {/*  These buttons are disabled so as to not interfere with the*/}
-              {/*  accessibility-related portions of the lab.*/}
-              {/*</div>*/}
-            </footer>
+           <Header />
+         <div>{section[state.app.body]}</div>
+          <div>
+            <Change />
           </div>
            </div>
     );
   }
 }
-
-export default App;
+export default connect(
+    mapStateToProps, mapDispatchToProps)(App);

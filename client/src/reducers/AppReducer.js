@@ -3,13 +3,15 @@ export const types = {
 	UPDATE_USER: '@accessibility-lab/audio-cue/app/update_user',
 	UPDATE_POPUP: '@accessibility-lab/audio-cue/app/update_popup',
 	OPEN_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/open_instructions',
-	CLOSE_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/close_instructions'
+	CLOSE_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/close_instructions',
+	SET_BODY: '@accessibility-lab/app/set_body'
 };
 
 export const initialState = {
 	user: null,
 	popupMessage: '',
-	instructionsVisible: false
+	instructionsVisible: false,
+	body: 0
 };
 
 export default (state = initialState, action) => {
@@ -19,7 +21,11 @@ export default (state = initialState, action) => {
 				...state,
 				user: action.user
 			};
-
+		case types.SET_BODY:
+			return {
+				...state,
+				body: action.body
+			};
 		case types.UPDATE_POPUP:
 			return {
 				...state,
@@ -45,6 +51,7 @@ export default (state = initialState, action) => {
 
 export const actions = {
 	login: () => ({ type: types.LOGIN }),
+	setBody: (body) => ({type: types.SET_BODY, body}),
 	updateUser: (user) => ({ type: types.UPDATE_USER, user }),
 	updatePopup: (message) => ({ type: types.UPDATE_POPUP, message }),
 	openInstructions: () => ({ type: types.OPEN_INSTRUCTIONS }),
