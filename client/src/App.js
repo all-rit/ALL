@@ -126,36 +126,40 @@ class App extends Component {
   };
 
   render() {
+    const isState = this.state.count;
     return (
 
          <div>
            <Header count={this.state.count} handleQuiz={this.handleQuiz} handleAbout={this.handleAbout} handleHome={this.handleHome} handleReading={this.handleReading} handleGame={this.handleGame} handleVideo={this.handleVideo}  />
-
+           <Change count={this.state.count} handleDecrement={this.handleDecrement} disappearBack={this.disappearBack} handleIncrement = {this.handleIncrement} disappearNext = {this.disappearNext} />
          <div>{section[this.state.count]}</div>
 
           <div class="container">
-            <button
-                className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                onClick={this.handleDecrement}
-                disabled={this.disappearBack() ? "disabled" : false}
-            >
-              back
-            </button>
-            <button
-                className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                onClick={this.handleIncrement}
-                disabled={this.disappearNext() ? "disabled" : false}
-            >
-              next
-            </button>
+            {/*<button*/}
+            {/*    className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "*/}
+            {/*    onClick={this.handleDecrement}*/}
+            {/*    disabled={this.disappearBack() ? "disabled" : false}*/}
+            {/*>*/}
+            {/*  back*/}
+            {/*</button>*/}
+            {/*<button*/}
+            {/*    className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"*/}
+            {/*    onClick={this.handleIncrement}*/}
+            {/*    disabled={this.disappearNext() ? "disabled" : false}*/}
+            {/*>*/}
+            {/*  next*/}
+            {/*</button>*/}
             <footer >
               <div class="btn-change">
-                <Change />
+                {isState !== 2
+                    ? < Change />
+                    : <gamefooter />
+                }
               </div>
-              <div class="btn-information">
-                These buttons are disabled so as to not interfere with the
-                accessibility-related portions of the lab.
-              </div>
+              {/*<div class="btn-information">*/}
+              {/*  These buttons are disabled so as to not interfere with the*/}
+              {/*  accessibility-related portions of the lab.*/}
+              {/*</div>*/}
             </footer>
           </div>
            </div>
