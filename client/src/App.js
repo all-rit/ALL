@@ -23,6 +23,30 @@ const section = {
 class App extends Component {
   state = { count: 0 };
 
+  componentWillMount() {
+    console.log(window.location.href);
+    let x = window.location.href;
+    x = x.split('/').pop();
+    switch (x) {
+      case "about":
+        this.setState({count: 0});
+        break;
+      case "reading":
+        this.setState({count: 1});
+        break;
+      case "game":
+        this.setState({count: 2});
+        break;
+      case "video":
+        this.setState({count: 3});
+        break;
+      case "quiz":
+        this.setState({count: 4});
+        break;
+    }
+  }
+
+
   handleIncrement = () => {
     if (this.state.count < 4) {
       this.setState({
@@ -62,6 +86,7 @@ class App extends Component {
       message: null
     });
   };
+
 
   handleGame = () => {
     this.setState({
