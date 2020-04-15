@@ -12,7 +12,7 @@ class GameButtons extends Component {
     } = this.props;
     const startMessage = repairApplied ? "Start with Repair Applied" : "Start";
     const repairButton = (
-      <button className="button" onClick={openRepairHandler} key="repair">
+      <button className="btn btn-second btn-xl text-uppercase js-scroll-trigger" onClick={openRepairHandler} key="repair">
         Repair
       </button>
     );

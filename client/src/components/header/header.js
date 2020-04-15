@@ -3,6 +3,10 @@ import logo from "./../../img/accessCycle.png";
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
+
+import { connect } from "react-redux";
+import {actions as appActions} from '../../reducers/AppReducer';
+import {bindActionCreators} from 'redux';
 import {
     Collapse,
     Navbar,
@@ -18,11 +22,43 @@ import {
     NavbarText
 } from 'reactstrap';
 
+const mapStateToProps = (state) => {
+    return {
+        // General
+        state: state
+    };
+};
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(appActions, dispatch)
+});
+
+const handleAbout = (actions) => {
+    actions.setBody(0);
+};
+
+const handleReading = (actions) => {
+    actions.setBody(1);
+};
+
+
+const handleGame = (actions) => {
+    actions.setBody(2);
+};
+
+const handleVideo = (actions) => {
+    actions.setBody(3);
+};
+
+const handleQuiz = (actions) => {
+    actions.setBody(4);
+};
+
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const activeStyle = {color: "#fed136"};
     const toggle = () => setIsOpen(!isOpen);
-
+    const {state, actions} = props;
+    let count = state.app.body;
     return (
         <div
             id="mainNav"
@@ -58,7 +94,6 @@ const Header = (props) => {
                             >
                                 <NavLink
                                     class="nav-link js-scroll-trigger"
-                                    onClick={props.handleHome}
                                     href="http://all.rit.edu">
 
                                     <ul className="navbar-nav text-uppercase ml-auto">
@@ -73,9 +108,9 @@ const Header = (props) => {
                                 id="navbarResponsive">
                                 <NavLink
                                     class="nav-link js-scroll-trigger"
-                                    onClick={props.handleAbout}
+                                    onClick={()=>handleAbout(actions)}
                                     href="#"
-                                    style={props.count === 0 ? activeStyle : null}>
+                                    style={count === 0 ? activeStyle : null}>
                                     <ul className="navbar-nav text-uppercase ml-auto">
                                         <li className="nav-item">
                                             About
@@ -88,9 +123,9 @@ const Header = (props) => {
                                 id="navbarResponsive">
                                 <NavLink
                                     class="nav-link js-scroll-trigger"
-                                    onClick={props.handleReading}
+                                    onClick={()=>handleReading(actions)}
                                     href="#"
-                                    style={props.count === 1 ? activeStyle : null}>
+                                    style={count === 1 ? activeStyle : null}>
                                     <ul className="navbar-nav text-uppercase ml-auto">
                                         <li className="nav-item">
                                             Reading
@@ -103,9 +138,9 @@ const Header = (props) => {
                                 id="navbarResponsive">
                                 <NavLink
                                     class="nav-link js-scroll-trigger"
-                                    onClick={props.handleGame}
+                                    onClick={()=>handleGame(actions)}
                                     href="#"
-                                    style={props.count === 2 ? activeStyle : null}>
+                                    style={count === 2 ? activeStyle : null}>
                                     <ul className="navbar-nav text-uppercase ml-auto">
                                         <li className="nav-item">
                                             Game
@@ -118,9 +153,9 @@ const Header = (props) => {
                                 id="navbarResponsive">
                                 <NavLink
                                     class="nav-link js-scroll-trigger"
-                                    onClick={props.handleVideo}
+                                    onClick={()=>handleVideo(actions)}
                                     href="#"
-                                    style={props.count === 3 ? activeStyle : null}>
+                                    style={count === 3 ? activeStyle : null}>
                                     <ul className="navbar-nav text-uppercase ml-auto">
                                         <li className="nav-item">
                                             Video
@@ -133,9 +168,9 @@ const Header = (props) => {
                                 id="navbarResponsive" style={{marginRight: "70px"}}>
                                 <NavLink
                                     class="nav-link js-scroll-trigger"
-                                    onClick={props.handleQuiz}
+                                    onClick={()=>handleQuiz(actions)}
                                     href="#"
-                                    style={props.count === 4 ? activeStyle : null}>
+                                    style={count === 4 ? activeStyle : null}>
                                     <ul className="navbar-nav text-uppercase ml-auto">
                                         <li className="nav-item">
                                             Quiz
@@ -153,4 +188,6 @@ const Header = (props) => {
     );
 }
 
-export default Header;
+export default connect(
+    mapStateToProps, mapDispatchToProps
+)(Header);
