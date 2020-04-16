@@ -93,6 +93,12 @@ hr.horiz {
   float: right;
   padding: 8px !important;
 }
+.next:disabled{
+  background-color: lightgrey !important;
+  border-color: lightgrey !important;
+  margin-left: 5px !important;
+  opacity: .5;
+}
 .back {
   background-color: #404040;
   border-color: #404040;
