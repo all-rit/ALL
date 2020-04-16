@@ -15,10 +15,8 @@ a.icon:hover {
 }
 
 .btn-primary {
-  background-color: #fed136 !important;
   border-color: #fed136 !important;
   color: #404040 !important;
-  margin-left: 15%;
 }
 
 .btn-second {
