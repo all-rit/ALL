@@ -32,26 +32,45 @@ const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(appActions, dispatch)
 });
 
-const handleAbout = (actions) => {
-    actions.setBody(0);
+const handleAbout = (actions, state) => {
+    if(!alert_check(state)) {
+        actions.setBody(0);
+    }
 };
 
-const handleReading = (actions) => {
-    actions.setBody(1);
+const handleReading = (actions,state) => {
+    if(!alert_check(state)) {
+        actions.setBody(1);
+    }
 };
 
 
-const handleGame = (actions) => {
-    actions.setBody(2);
+const handleGame = (actions,state) => {
+    if(!alert_check(state)) {
+        actions.setBody(2);
+    }
 };
 
-const handleVideo = (actions) => {
-    actions.setBody(3);
+const handleVideo = (actions,state) => {
+    if(!alert_check(state)) {
+        actions.setBody(3);
+    }
 };
 
-const handleQuiz = (actions) => {
-    actions.setBody(4);
+const handleQuiz = (actions,state) => {
+    if(!alert_check(state)) {
+        actions.setBody(4);
+    }
 };
+
+const alert_check = (state)=> {
+    if (state.game.state !== "GAME_IDLE" && state.app.body === 2){
+        alert("The game is still in progress! Please complete the game");
+        return true
+    }
+    return false;
+};
+
 
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +78,6 @@ const Header = (props) => {
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
     let count = state.app.body;
-    let display = state.game.state !== "GAME_IDLE" && state.app.body === 2;
     return (
 
         <div
@@ -115,10 +133,9 @@ const Header = (props) => {
                             <NavItem
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive">
-                                {!display
-                                    ? <NavLink
+                                 <NavLink
                                         class="nav-link js-scroll-trigger"
-                                        onClick={() => handleAbout(actions)}
+                                        onClick={() => handleAbout(actions, state)}
                                         href="#"
                                         style={count === 0 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
@@ -127,25 +144,13 @@ const Header = (props) => {
                                             </li>
                                         </ul>
                                     </NavLink>
-                                    : <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => alert("The game is still in progress! Please complete the game")}
-                                        href="#"
-                                        style={count === 0 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                About
-                                            </li>
-                                        </ul>
-                                    </NavLink>}
                             </NavItem>
                             <NavItem
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive">
-                                {!display
-                                    ? <NavLink
+                                 <NavLink
                                         class="nav-link js-scroll-trigger"
-                                        onClick={() => handleReading(actions)}
+                                        onClick={() => handleReading(actions, state)}
                                         href="#"
                                         style={count === 1 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
@@ -154,25 +159,14 @@ const Header = (props) => {
                                             </li>
                                         </ul>
                                     </NavLink>
-                                    : <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => alert("The game is still in progress! Please complete the game")}
-                                        href="#"
-                                        style={count === 1 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                Reading
-                                            </li>
-                                        </ul>
-                                    </NavLink>}
+
                             </NavItem>
                             <NavItem
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive">
-                                {!display
-                                    ? <NavLink
+                                <NavLink
                                         class="nav-link js-scroll-trigger"
-                                        onClick={() => handleGame(actions)}
+                                        onClick={() => handleGame(actions, state)}
                                         href="#"
                                         style={count === 2 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
@@ -181,25 +175,14 @@ const Header = (props) => {
                                             </li>
                                         </ul>
                                     </NavLink>
-                                    : <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => alert("The game is still in progress! Please complete the game")}
-                                        href="#"
-                                        style={count === 2 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                Game
-                                            </li>
-                                        </ul>
-                                    </NavLink>}
+
                             </NavItem>
                             <NavItem
                                 class="collapse navbar-collapse"
                                 id="navbarResponsive">
-                                {!display
-                                    ? <NavLink
+                               <NavLink
                                         class="nav-link js-scroll-trigger"
-                                        onClick={() => handleVideo(actions)}
+                                        onClick={() => handleVideo(actions, state)}
                                         href="#"
                                         style={count === 3 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
@@ -208,25 +191,14 @@ const Header = (props) => {
                                             </li>
                                         </ul>
                                     </NavLink>
-                                    : <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => alert("The game is still in progress! Please complete the game")}
-                                        href="#"
-                                        style={count === 3 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                Video
-                                            </li>
-                                        </ul>
-                                    </NavLink>}
+
                             </NavItem>
                             <NavItem
                                 class=" collapse navbar-collapse"
                                 id="navbarResponsive" style={{marginRight: "70px"}}>
-                                {!display
-                                    ? <NavLink
+                                <NavLink
                                         class="nav-link js-scroll-trigger"
-                                        onClick={() => handleQuiz(actions)}
+                                        onClick={() => handleQuiz(actions, state)}
                                         href="#"
                                         style={count === 4 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
@@ -235,17 +207,6 @@ const Header = (props) => {
                                             </li>
                                         </ul>
                                     </NavLink>
-                                    : <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => alert("The game is still in progress! Please complete the game")}
-                                        href="#"
-                                        style={count === 4 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                Quiz
-                                            </li>
-                                        </ul>
-                                    </NavLink>}
                             </NavItem>
                         </Nav>
                     </Collapse>
