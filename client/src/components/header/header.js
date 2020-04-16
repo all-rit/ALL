@@ -199,12 +199,12 @@ const Header = (props) => {
                                 {!display
                                     ? <NavLink
                                         class="nav-link js-scroll-trigger"
-                                        onClick={() => handleQuiz(actions)}
+                                        onClick={() => handleVideo(actions)}
                                         href="#"
                                         style={count === 3 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
                                             <li className="nav-item">
-                                                About
+                                                Video
                                             </li>
                                         </ul>
                                     </NavLink>
@@ -215,7 +215,7 @@ const Header = (props) => {
                                         style={count === 3 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
                                             <li className="nav-item">
-                                                About
+                                                Video
                                             </li>
                                         </ul>
                                     </NavLink>}
@@ -226,12 +226,12 @@ const Header = (props) => {
                                 {!display
                                     ? <NavLink
                                         class="nav-link js-scroll-trigger"
-                                        onClick={() => handleVideo(actions)}
+                                        onClick={() => handleQuiz(actions)}
                                         href="#"
                                         style={count === 4 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
                                             <li className="nav-item">
-                                                About
+                                                Quiz
                                             </li>
                                         </ul>
                                     </NavLink>
@@ -242,7 +242,7 @@ const Header = (props) => {
                                         style={count === 4 ? activeStyle : null}>
                                         <ul className="navbar-nav text-uppercase ml-auto">
                                             <li className="nav-item">
-                                                About
+                                                Quiz
                                             </li>
                                         </ul>
                                     </NavLink>}
