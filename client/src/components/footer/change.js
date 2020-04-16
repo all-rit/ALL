@@ -5,6 +5,7 @@ import "./../../css/style.css";
 import { connect } from "react-redux";
 import {actions as appActions} from '../../reducers/AppReducer';
 import {bindActionCreators} from 'redux';
+import {changeTSize} from "../../js/edit/editPage";
 
 const mapStateToProps = (state) => {
     return {
@@ -34,9 +35,9 @@ const disappearBack = (count) => {
 
 const handleIncrement = (count, actions) => {
     if (count < 4) {
-         actions.setBody(count+1)
-        }
-    };
+        actions.setBody(count+1)
+    }
+};
 
 const handleDecrement = (count, actions) => {
     if (count>0) {
@@ -48,8 +49,8 @@ const Change = (props) => {
     const {state, actions} = props;
     let display = state.game.state === "GAME_IDLE" || state.app.body !== 2;
     return (
-            <div>
-                <div className="container" style={{display: display ? "block": "none"}}>
+        <div>
+            <div className="container" style={{display: display ? "block": "none"}}>
                 <button
                     className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
                     onClick={() => handleDecrement(state.app.body, actions)}
@@ -61,40 +62,40 @@ const Change = (props) => {
                     className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
                     onClick={() => handleIncrement(state.app.body, actions)}
                     disabled={disappearNext(state.app.body) ? "disabled" : false}
-                    >
+                >
                     next
-                    </button>
-                    <div className="btn-change">
+                </button>
+                <div className="btn-change">
                     <button
-                    class="btn-text btn btn-disabled text-uppercase"
-                    alt="Increase text size"
-                    title="Larger text"
-                    disabled="true"
+                        class="btn-text btn btn-disabled text-uppercase"
+                        alt="Increase text size"
+                        title="Larger text"
+                        onClick={() => changeTSize(1)}
                     >
-                    Text+
+                        Text+
                     </button>
                     <button
-                    className="btn-text btn btn-disabled text-uppercase"
-                    alt="Decrease text size"
-                    title="Smaller text"
-                    disabled="true"
+                        className="btn-text btn btn-disabled text-uppercase"
+                        alt="Decrease text size"
+                        title="Smaller text"
+                        onClick={() => changeTSize(-1)}
                     >
-                    Text-
+                        Text-
                     </button>
-                    <button className="btn btn-disabled text-uppercase" disabled="true">Change Color</button>
-                    <button className="btn btn-disabled text-uppercase" disabled="true">Change Color</button>
+                    <button className="btn btn-disabled text-uppercase" >Change Color</button>
+                    <button className="btn btn-disabled text-uppercase" >Change Color</button>
 
-                    </div>
-               </div>
-                <div className="container" style={{display: display ? "none": "block"}}>
-                    <div className="btn-information">
-                        The navigation and accessibility buttons are disabled so as to not interfere with the
-                        accessibility-related portions of the lab.
-                    </div>
                 </div>
-
             </div>
-     );
+            <div className="container" style={{display: display ? "none": "block"}}>
+                <div className="btn-information">
+                    The navigation and accessibility buttons are disabled so as to not interfere with the
+                    accessibility-related portions of the lab.
+                </div>
+            </div>
+
+        </div>
+    );
 
 };
 
