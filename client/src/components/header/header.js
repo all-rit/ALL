@@ -59,7 +59,7 @@ const Header = (props) => {
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
     let count = state.app.body;
-    let display = state.game.state === "GAME_PLAYING" || state.app.body === 2;
+    let display = state.game.state !== "GAME_IDLE" && state.app.body === 2;
     return (
 
         <div
