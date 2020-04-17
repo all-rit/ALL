@@ -67,7 +67,7 @@ const Change = (props) => {
                 </button>
                 <div className="btn-change">
                     <button
-                        class="btn-text btn btn-primary text-uppercase"
+                        class="btn-text btn btn-bottom-buttons text-uppercase"
                         alt="Increase text size"
                         title="Larger text"
                         onClick={() => changeTSize(1)}
@@ -75,15 +75,15 @@ const Change = (props) => {
                         Text+
                     </button>
                     <button
-                        className="btn-text btn btn-primary text-uppercase"
+                        className="btn-text btn btn-bottom-buttons text-uppercase"
                         alt="Decrease text size"
                         title="Smaller text"
                         onClick={() => changeTSize(-1)}
                     >
                         Text-
                     </button>
-                    <button className="btn btn-disabled text-uppercase" >Change Color</button>
-                    <button className="btn btn-disabled text-uppercase" >Change Color</button>
+                    <button className="btn btn-bottom-buttons text-uppercase" >Change Color</button>
+                    <button className="btn btn-bottom-buttons text-uppercase" >Change Color</button>
 
                 </div>
             </div>
