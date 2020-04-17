@@ -190,9 +190,9 @@ body {
   color: #404040 !important;
   margin-left: 5px;
 }
-.btn-primary:active,
-.btn-primary:focus,
-.btn-primary:hover {
+.btn-bottom-buttons:active,
+.btn-bottom-buttons:focus,
+.btn-bottom-buttons:hover {
   background-color: #e9b301 !important;
   border-color: white !important;
   color: #262626 !important;

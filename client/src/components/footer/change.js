@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import {actions as appActions} from '../../reducers/AppReducer';
 import {bindActionCreators} from 'redux';
 import {changeTSize} from "../../js/edit/editPage";
+import "../../js/edit/jscolor"
 
 const mapStateToProps = (state) => {
     return {
@@ -82,8 +83,9 @@ const Change = (props) => {
                     >
                         Text-
                     </button>
-                    <button className="btn btn-bottom-buttons text-uppercase" >Change Color</button>
-                    <button className="btn btn-bottom-buttons text-uppercase" >Change Color</button>
+                    <button className="btn btn-disabled text-uppercase `jscolor ${ chosen-value,  setTextColor(this)}`" >Change Text Color</button>
+                    {/*jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)*/}
+                    <button className="btn btn-disabled text-uppercase" >Change Background Color</button>
 
                 </div>
             </div>
