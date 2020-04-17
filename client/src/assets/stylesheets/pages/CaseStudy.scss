@@ -1,8 +1,7 @@
 .study {
-  width: 960px;
   margin: 2rem auto;
   font-size: 1.5rem;
-
+  text-align: center;
   > h1 {
     margin-bottom: 3rem;
   }
@@ -24,6 +23,8 @@
   &__actions {
     margin-top: 1rem;
     text-align: left;
+    /* To hide the supplementary materials link*/
+    display: none !important;
   }
 
   p {
@@ -38,7 +39,7 @@
 
   > div {
     font-size: 0.9rem;
-    display: flex;
+    display: flex;  
     flex-direction: column;
     text-align: center;
     margin-bottom: 2rem;

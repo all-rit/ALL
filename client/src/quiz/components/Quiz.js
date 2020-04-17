@@ -14,18 +14,25 @@ function Quiz(props) {
                 answer={props.answer}
                 questionId={props.questionId}
                 onAnswerSelected={props.onAnswerSelected}
+                multiChoice={props.multiChoice}
             />
         );
     }
 
+
     return (
-            <div className="quiz container shadow" key={props.questionId}>
-                <QuestionCount counter={props.questionId} total={props.questionTotal} />
-                <Question content={props.question} />
-                <ul className="answerOptions">
-                    {props.answerOptions.map(renderAnswerOptions)}
-                </ul>
+        <div className="quiz container shadow" key={props.questionId}>
+            <QuestionCount counter={props.questionId} total={props.questionTotal}/>
+            <Question content={props.question}/>
+            <ul className="answerOptions">
+                {props.answerOptions.map(renderAnswerOptions)}
+            </ul>
+            <div className="align-right">
+                <button class="btn btn-second text-uppercase js-scroll-trigger nextButton" onClick={props.nextQuestion}
+                        disabled={props.disable}>Next Question
+                </button>
             </div>
+        </div>
     );
 }
 
@@ -36,7 +43,8 @@ Quiz.propTypes = {
     question: PropTypes.string.isRequired,
     questionId: PropTypes.number.isRequired,
     questionTotal: PropTypes.number.isRequired,
-    onAnswerSelected: PropTypes.func.isRequired
+    onAnswerSelected: PropTypes.func.isRequired,
+    multiChoice: PropTypes.func.isRequired
 };
 
 export default Quiz;
