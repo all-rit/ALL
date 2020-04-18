@@ -103,12 +103,37 @@ export function changeTSize(num, className=null) {
     }
 }
 
+export function onNextPageChangeTSize(size) {
+    var elems = document.querySelectorAll("body, p, h1, h2, h3, h4, li, ul, label, button");
+    var index = 0, length = elems.length;
+    for (; index < length; index++) {
+        if (elems[index] !== undefined) {
+            var fontSizeString = window
+                .getComputedStyle(elems[index], null)
+                .getPropertyValue("font-size", "important");
+            var fontSize = parseFloat(fontSizeString);
+            elems[index].style.fontSize = fontSize + size + "px";
+        }
+
+    }
+}
+
 export function setTextColor(picker) {
-    document.getElementsByTagName("body")[0].style.color =
-        "#" + picker.toString();
+    // document.getElementsByTagName("body")[0].style.color =
+    //     "#" + picker.toString();
+    var bodyElements = document.getElementsByTagName('body');
+
+    for (var i = 0; i < bodyElements.length; i++) {
+        bodyElements[i].style.color = picker.toString();
+    }
 }
 
 export function setBackgroundColor(picker) {
-    document.getElementsByTagName("body")[0].style.backgroundColor =
-        "#" + picker.toString();
+    // document.getElementsByTagName("body")[0].style.backgroundColor =
+    //     "#" + picker.toString();
+    var bodyElements = document.getElementsByTagName('body');
+
+    for (var i = 0; i < bodyElements.length; i++) {
+        bodyElements[i].style.backgroundColor = picker.toString();
+    }
 }

@@ -6,10 +6,9 @@ import "./../../css/colorPicker.css"
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/AppReducer';
 import {bindActionCreators} from 'redux';
-import {changeTSize, setTextColor} from "../../js/edit/editPage";
+import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "../../js/edit/editPage";
 import "../../js/edit/jscolor";
-import { SketchPicker } from 'react-color';
-import ColorPicker from 'rc-color-picker';
+import {Panel as ColorPickerPanel} from 'rc-color-picker';
 
 const mapStateToProps = (state) => {
     return {
@@ -20,31 +19,32 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(appActions, dispatch)
 });
-const presetColors = [
-    "rgb(0,0,0)",
-    "rgb(0,0,255)",
-    "rgb(0,255,0)",
-    "rgb(255,0,0)",
-    "rgb(255,255,255)"
-];
+
 
 class Change extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            fontSize: 0
+            fontSize: 0,
+            textColor: false,
+            bgColor: false,
+            displayColorPalette: false
         };
+        this.handleClick = this.handleClick.bind(this);
+        this.handleOutsideClick = this.handleOutsideClick.bind(this);
+
     }
+
 
     changeSize = (size) => {
         let state_size = this.state.fontSize;
         changeTSize(size);
         this.setState({fontSize: state_size + size});
     };
-    adjustSize = (size, className) => {
-        console.log(this.state.fontSize)
-        changeTSize(size, className);
+    adjustSize = (size) => {
+        console.log(this.state.fontSize);
+        onNextPageChangeTSize(size);
     };
 
     disappearNext = (count) => {
@@ -67,6 +67,7 @@ class Change extends Component {
         if (count < 4) {
             actions.setBody(count + 1);
         }
+        this.adjustSize(this.state.fontSize)
     };
 
     handleDecrement = (count, actions) => {
@@ -74,14 +75,50 @@ class Change extends Component {
             actions.setBody(count - 1);
         }
     };
-    renderColorPalette(){
-        alert("hekjksjf");
-        document.getElementById("myForm").style.display = "block";
 
+    renderTextColorPalette = () => {
+        this.setState({
+            // displayColorPalette: !this.state.displayColorPalette,
+            textColor: !this.state.textColor,
+            bgColor: false
+        });
+        console.log(this.state)
     };
-    renderColorPalette(obj) {
+    renderBgColorPalette = () => {
+        this.setState({
+            // displayColorPalette: !this.state.displayColorPalette,
+            bgColor: !this.state.bgColor,
+            textColor: false
+        });
+        console.log(this.state)
+    };
+
+    OnTextColorChange(obj) {
         console.log(obj);
         setTextColor(obj.color)
+    };
+
+    OnBgColorChange(obj) {
+        console.log(obj);
+        setBackgroundColor(obj.color)
+    };
+
+
+    handleClick() {
+        if (!this.state.displayColorPalette) {
+            // attach/remove event handler
+            document.addEventListener('click', this.handleOutsideClick, false);
+        } else {
+            document.removeEventListener('click', this.handleOutsideClick, false);
+        }
+
+        this.setState(prevState => ({
+            displayColorPalette: !prevState.displayColorPalette,
+        }));
+    }
+
+    handleOutsideClick(e) {
+        this.handleClick();
     }
 
 
@@ -93,26 +130,6 @@ class Change extends Component {
         return (
 
             <div>
-                <SketchPicker presetColors={presetColors} />
-                <div style={{ margin: '20px 20px 20px', textAlign: 'center' }}>
-                    {/*<ColorPicker*/}
-                    {/*    color={'#36c'}*/}
-                    {/*    alpha={30}*/}
-                    {/*    onChange={this.changeHandler}*/}
-                    {/*    onClose={this.closeHandler}*/}
-                    {/*    placement="topLeft"*/}
-                    {/*    className="some-class"*/}
-                    {/*>*/}
-                    {/*    <span className="rc-color-picker-trigger" />*/}
-                    {/*</ColorPicker>*/}
-                    {/*<h4>topRight</h4>*/}
-                    {/*<ColorPicker color={'#F10'} onChange={this.changeHandler} placement="topRight" />*/}
-
-                    {/*<h4>bottomLeft</h4>*/}
-                    {/*<ColorPicker color={'#0ad'} alpha={50} onChange={this.changeHandler} placement="bottomLeft" />*/}
-                    {/*<h4>bottomRight</h4>*/}
-                    <ColorPicker color={'#0F0'} onChange={this.renderColorPalette} placement="bottomRight" />
-                </div>
                 <div className="container" style={{display: display ? "block" : "none"}}>
 
                     <button
@@ -147,18 +164,28 @@ class Change extends Component {
                         >
                             Text-
                         </button>
-                        {/*<button className="btn btn-disabled text-uppercase `jscolor ${ chosen-value,  setTextColor(this)}`" >Change Text Color</button>*/}
-                        {/*/!*jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)*!/*/}
-                        {/*<button className="btn btn-disabled text-uppercase" >Change Background Color</button>*/}
-                        {/*<button*/}
-                        {/*    className="btn btn-bottom-buttons text-uppercase"*/}
-                        {/*    onClick={this.renderColorPalette}*/}
-                        {/*>*/}
-                        {/*    Change Text Color*/}
-                        {/*</button>*/}
+                        <button
+                            className="btn btn-text btn-bottom-buttons text-uppercase"
+                            onClick={this.renderTextColorPalette}
+                        >
 
+                            Change Text Color
+                        </button>
 
-
+                        <button
+                            className="btn btn-text btn-bottom-buttons text-uppercase"
+                            onClick={this.renderBgColorPalette}
+                        >
+                            Change Background Color
+                        </button>
+                        {this.state.textColor && <div style={{padding: 10}}>
+                            <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnTextColorChange}
+                                              mode="RGB"/>
+                        </div>}
+                        {this.state.bgColor && <div style={{padding: 20}}>
+                            <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnBgColorChange}
+                                              mode="RGB"/>
+                        </div>}
                     </div>
                 </div>
                 <div className="container" style={{display: display ? "none" : "block"}}>
