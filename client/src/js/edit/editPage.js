@@ -70,9 +70,9 @@ export function changeTSize(num, className = null) {
     //
     // }
     // else{
-    elems = document.querySelectorAll("body, p, h1, h2, h3, h4, li, ul, label, button");
+    elems = document.querySelectorAll("body, div, label, button, td, th, h1, h2, h3, h4, p");
 
-    // }
+    //  }
     var index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {
@@ -84,6 +84,7 @@ export function changeTSize(num, className = null) {
         }
 
     }
+
     //Image
     var elems = document.querySelectorAll("img");
     var index = 0, length = elems.length;
