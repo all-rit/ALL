@@ -28,7 +28,7 @@ class Second extends Component {
 
 					<p className="playthrough__sentence">
 						Now in your next play, you will play with audio turned off to get a simulation as the one with a
-						hearing loss would play. When you're ready, feel free to start the game!
+						hearing loss would play. When you're ready, feel free to continue the game!
 					</p>
 				</div>
 			</div>

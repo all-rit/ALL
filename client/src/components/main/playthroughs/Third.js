@@ -29,7 +29,7 @@ class Third extends Component {
 					<hr />
 
 					<p className="playthrough__sentence">
-						After making changes to the game, go ahead and click the "Start" button! If you did it correct,
+						After making changes to the game, go ahead and click the "Continue" button! If you did it correct,
 						your score should improve compared to the recent game!
 					</p>
 				</div>

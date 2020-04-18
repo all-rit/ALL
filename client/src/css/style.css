@@ -146,7 +146,12 @@ body {
   justify-content: space-around;
 
 }
-
+.leftButton{
+  margin-right:15%
+}
+.rightButton{
+  margin-left: 0%
+}
 .logo-container{
   width:340px;
 }
