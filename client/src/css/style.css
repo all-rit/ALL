@@ -197,3 +197,11 @@ body {
   border-color: white !important;
   color: #262626 !important;
 }
+.div-style-text{
+   padding: 10px;
+   margin-left: 150px;
+ }
+.div-style-bgColor{
+  padding: 10px;
+  margin-left: 345px;
+}
