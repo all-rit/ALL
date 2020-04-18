@@ -2,12 +2,14 @@ import React, {Component} from "react";
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
-import { connect } from "react-redux";
+import "./../../css/colorPicker.css"
+import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/AppReducer';
 import {bindActionCreators} from 'redux';
-import {changeTSize} from "../../js/edit/editPage";
-import "../../js/edit/jscolor"
-
+import {changeTSize, setTextColor} from "../../js/edit/editPage";
+import "../../js/edit/jscolor";
+import { SketchPicker } from 'react-color';
+import ColorPicker from 'rc-color-picker';
 
 const mapStateToProps = (state) => {
     return {
@@ -18,6 +20,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(appActions, dispatch)
 });
+const presetColors = [
+    "rgb(0,0,0)",
+    "rgb(0,0,255)",
+    "rgb(0,255,0)",
+    "rgb(255,0,0)",
+    "rgb(255,255,255)"
+];
+
 class Change extends Component {
     constructor(props) {
         super(props);
@@ -27,12 +37,12 @@ class Change extends Component {
         };
     }
 
-    changeSize = (size)=>{
+    changeSize = (size) => {
         let state_size = this.state.fontSize;
         changeTSize(size);
-        this.setState({fontSize: state_size+ size});
+        this.setState({fontSize: state_size + size});
     };
-    adjustSize = (size, className)=>{
+    adjustSize = (size, className) => {
         console.log(this.state.fontSize)
         changeTSize(size, className);
     };
@@ -64,13 +74,47 @@ class Change extends Component {
             actions.setBody(count - 1);
         }
     };
+    renderColorPalette(){
+        alert("hekjksjf");
+        document.getElementById("myForm").style.display = "block";
+
+    };
+    renderColorPalette(obj) {
+        console.log(obj);
+        setTextColor(obj.color)
+    }
+
+
     render() {
         console.log(this.props);
+        var ColorPicker = require('rc-color-picker');
         const {state, actions} = this.props;
         let display = state.game.state === "GAME_IDLE" || state.app.body !== 2;
         return (
+
             <div>
+                <SketchPicker presetColors={presetColors} />
+                <div style={{ margin: '20px 20px 20px', textAlign: 'center' }}>
+                    {/*<ColorPicker*/}
+                    {/*    color={'#36c'}*/}
+                    {/*    alpha={30}*/}
+                    {/*    onChange={this.changeHandler}*/}
+                    {/*    onClose={this.closeHandler}*/}
+                    {/*    placement="topLeft"*/}
+                    {/*    className="some-class"*/}
+                    {/*>*/}
+                    {/*    <span className="rc-color-picker-trigger" />*/}
+                    {/*</ColorPicker>*/}
+                    {/*<h4>topRight</h4>*/}
+                    {/*<ColorPicker color={'#F10'} onChange={this.changeHandler} placement="topRight" />*/}
+
+                    {/*<h4>bottomLeft</h4>*/}
+                    {/*<ColorPicker color={'#0ad'} alpha={50} onChange={this.changeHandler} placement="bottomLeft" />*/}
+                    {/*<h4>bottomRight</h4>*/}
+                    <ColorPicker color={'#0F0'} onChange={this.renderColorPalette} placement="bottomRight" />
+                </div>
                 <div className="container" style={{display: display ? "block" : "none"}}>
+
                     <button
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
                         onClick={() => this.handleDecrement(state.app.body, actions)
@@ -106,6 +150,14 @@ class Change extends Component {
                         {/*<button className="btn btn-disabled text-uppercase `jscolor ${ chosen-value,  setTextColor(this)}`" >Change Text Color</button>*/}
                         {/*/!*jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)*!/*/}
                         {/*<button className="btn btn-disabled text-uppercase" >Change Background Color</button>*/}
+                        {/*<button*/}
+                        {/*    className="btn btn-bottom-buttons text-uppercase"*/}
+                        {/*    onClick={this.renderColorPalette}*/}
+                        {/*>*/}
+                        {/*    Change Text Color*/}
+                        {/*</button>*/}
+
+
 
                     </div>
                 </div>
@@ -121,6 +173,7 @@ class Change extends Component {
 
     };
 }
+
 export default connect(
     mapStateToProps, mapDispatchToProps
 )(Change);
