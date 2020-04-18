@@ -59,19 +59,20 @@ export function changeTSize1(num) {
 
     }
 }
+
 //New Implementation to increment and decrement size of UI.
-export function changeTSize(num, className=null) {
+export function changeTSize(num, className = null) {
     //Works for <tags> specified in the document.querySelectorAll()
-    var elems;
-    if (className){
-        console.log(className)
-        elems = document.querySelectorAll(className + " body, p, h1, h2, h3, h4, li, ul, label, button");
+    // var elems;
+    // if (className){
+    //     console.log(className)
+    //     elems = document.querySelectorAll(className + " body, p, h1, h2, h3, h4, li, ul, label, button");
+    //
+    // }
+    // else{
+    elems = document.querySelectorAll("body, p, h1, h2, h3, h4, li, ul, label, button");
 
-    }
-    else{
-        elems = document.querySelectorAll("body, p, h1, h2, h3, h4, li, ul, label, button");
-
-    }
+    // }
     var index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {
@@ -92,19 +93,19 @@ export function changeTSize(num, className=null) {
                 .getComputedStyle(elems[index], null)
                 .getPropertyValue("height", "important");
             var height = parseFloat(fontSizeString);
-            elems[index].style.height = height + num +"px";
+            elems[index].style.height = height + num + "px";
             var fontSizeString = window
                 .getComputedStyle(elems[index], null)
                 .getPropertyValue("width", "important");
             var width = parseFloat(fontSizeString);
-            elems[index].style.width = width + num +"px";
+            elems[index].style.width = width + num + "px";
         }
 
     }
 }
 
 export function onNextPageChangeTSize(size) {
-    var elems = document.querySelectorAll("body, p, h1, h2, h3, h4, li, ul, label, button");
+    var elems = document.querySelectorAll("body *");
     var index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {

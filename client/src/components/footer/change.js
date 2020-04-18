@@ -180,11 +180,11 @@ class Change extends Component {
                         >
                             Change Background Color
                         </button>
-                        {this.state.textColor && <div style={{padding: 10}}>
+                        {this.state.textColor && <div className="div-style-text">
                             <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnTextColorChange}
                                               mode="RGB"/>
                         </div>}
-                        {this.state.bgColor && <div style={{padding: 20}}>
+                        {this.state.bgColor && <div className="div-style-bgColor">
                             <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnBgColorChange}
                                               mode="RGB"/>
                         </div>}
