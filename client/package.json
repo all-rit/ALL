@@ -9,6 +9,7 @@
     "classnames": "latest",
     "immutability-helper": "latest",
     "node-sass": "latest",
+    "rc-color-picker": "^1.2.6",
     "react": "latest",
     "react-autosize-textarea": "latest",
     "react-color": "latest",

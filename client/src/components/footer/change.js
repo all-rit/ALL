@@ -74,6 +74,8 @@ class Change extends Component {
         if (count > 0) {
             actions.setBody(count - 1);
         }
+        this.adjustSize(this.state.fontSize)
+
     };
 
     renderTextColorPalette = () => {
