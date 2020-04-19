@@ -42,9 +42,9 @@ class Change extends Component {
         changeTSize(size);
         this.setState({fontSize: state_size + size});
     };
-    adjustSize = (size) => {
+    adjustSize = () => {
         console.log(this.state.fontSize);
-        onNextPageChangeTSize(size);
+        onNextPageChangeTSize(this.state.fontSize);
     };
 
     disappearNext = (count) => {
@@ -67,7 +67,6 @@ class Change extends Component {
         if (count < 4) {
             actions.setBody(count + 1);
         }
-        this.adjustSize(this.state.fontSize)
     };
 
     handleDecrement = (count, actions) => {
@@ -144,7 +143,8 @@ class Change extends Component {
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                        onClick={() => this.handleIncrement(state.app.body, actions)}
+                        onClick={() => {this.handleIncrement(state.app.body, actions)}}
+                        // onClick={() => {this.handleIncrement(state.app.body, actions); this.adjustSize();}}
                         disabled={this.disappearNext(state.app.body) ? "disabled" : false}
                     >
                         next
