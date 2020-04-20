@@ -21,7 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
+
 class Change extends Component {
+
     constructor(props) {
         super(props);
 
@@ -36,15 +38,19 @@ class Change extends Component {
 
     }
 
+    componentDidUpdate(prevprops){
+       if (prevprops.state.app.body !== this.props.state.app.body) {
+           this.adjustSize(this.state.fontSize);
+       }
+    }
 
     changeSize = (size) => {
         let state_size = this.state.fontSize;
         changeTSize(size);
         this.setState({fontSize: state_size + size});
     };
-    adjustSize = () => {
-        console.log(this.state.fontSize);
-        onNextPageChangeTSize(this.state.fontSize);
+    adjustSize = (fontSize) => {
+        onNextPageChangeTSize(fontSize);
     };
 
     disappearNext = (count) => {
@@ -73,7 +79,6 @@ class Change extends Component {
         if (count > 0) {
             actions.setBody(count - 1);
         }
-        this.adjustSize(this.state.fontSize)
 
     };
 
@@ -83,7 +88,6 @@ class Change extends Component {
             textColor: !this.state.textColor,
             bgColor: false
         });
-        console.log(this.state)
     };
     renderBgColorPalette = () => {
         this.setState({
@@ -91,16 +95,13 @@ class Change extends Component {
             bgColor: !this.state.bgColor,
             textColor: false
         });
-        console.log(this.state)
     };
 
     OnTextColorChange(obj) {
-        console.log(obj);
         setTextColor(obj.color)
     };
 
     OnBgColorChange(obj) {
-        console.log(obj);
         setBackgroundColor(obj.color)
     };
 
