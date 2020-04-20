@@ -115,6 +115,7 @@ export function onNextPageChangeTSize(size) {
                 .getPropertyValue("font-size", "important");
             var fontSize = parseFloat(fontSizeString);
             elems[index].style.fontSize = fontSize + size + "px";
+
         }
 
     }
@@ -152,6 +153,7 @@ export function setBackgroundColor(picker) {
         if (elems[index] !== undefined) {
             elems[index].style.backgroundColor = picker.toString();
         }
+    //    background-color
 
     }
 
