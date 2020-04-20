@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerOption from "./AnswerOption";
 import quizQuestions from "../api/quizQuestions";
+import Certificate from "./Certificate";
 
 function Result(props) {
 
@@ -85,6 +86,7 @@ function Result(props) {
     }
 
 
+
     return (
 
         <div className="quiz container shadow">
@@ -103,9 +105,12 @@ function Result(props) {
                         {renderTableData()}
                         </tbody>
                     </table>
+                    <div style={{marginTop:"50px"}}>
+                        <Certificate  quizResult = {props.quizResult}/>
+                    </div>
+                </div>
                 </div>
             </div>
-        </div>
     );
 }
 
