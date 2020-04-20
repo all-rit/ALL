@@ -35,6 +35,8 @@ class Certificate extends Component {
     render() {
         console.log(this.props);
         const {state, actions} = this.props;
+        var today = new Date();
+        var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+ today.getFullYear();
 
         return (
             <div style={{width:"100%", height:"auto", padding:"20px", textAlign:"center", border: "10px solid #787878"}}>
@@ -48,7 +50,7 @@ class Certificate extends Component {
                             <span style={{fontSize:"30px"}}>Accessibility Learning Lab 1</span> <br/><br/>
                             <span style={{fontSize:"20px"}}>with score of <b>{this.props.quizResult}</b></span> <br/><br/>
                             <span style={{fontSize:"25px"}}><i>dated</i></span><br />
-                            <span style={{fontSize:"30px"}}>04/20/2020</span><br/><br/>
+                            <span style={{fontSize:"30px"}}>{date}</span><br/><br/>
                             <img src={logo} height="100" width="100">
                             </img> &nbsp; &nbsp; &nbsp; &nbsp;
                             <img src={logo1} height="100" width="150" ></img>
