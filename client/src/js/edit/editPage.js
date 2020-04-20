@@ -106,7 +106,7 @@ export function changeTSize(num, className = null) {
 }
 
 export function onNextPageChangeTSize(size) {
-    var elems = document.querySelectorAll("body, div, label, button, td, th, h1, h2, h3, h4, p");
+    var elems = document.querySelectorAll(".appBody *");
     var index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {
