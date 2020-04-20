@@ -106,7 +106,7 @@ export function changeTSize(num, className = null) {
 }
 
 export function onNextPageChangeTSize(size) {
-    var elems = document.querySelectorAll("body *");
+    var elems = document.querySelectorAll("body, div, label, button, td, th, h1, h2, h3, h4, p");
     var index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {
@@ -128,6 +128,14 @@ export function setTextColor(picker) {
     for (var i = 0; i < bodyElements.length; i++) {
         bodyElements[i].style.color = picker.toString();
     }
+    var elems = document.querySelectorAll("quiz");
+    var index = 0, length = elems.length;
+    for (; index < length; index++) {
+        if (elems[index] !== undefined) {
+            elems[index].style.backgroundColor = picker.toString();
+        }
+
+    }
 }
 
 export function setBackgroundColor(picker) {
@@ -138,4 +146,13 @@ export function setBackgroundColor(picker) {
     for (var i = 0; i < bodyElements.length; i++) {
         bodyElements[i].style.backgroundColor = picker.toString();
     }
+    var elems = document.querySelectorAll(".quiz, .result");
+    var index = 0, length = elems.length;
+    for (; index < length; index++) {
+        if (elems[index] !== undefined) {
+            elems[index].style.backgroundColor = picker.toString();
+        }
+
+    }
+
 }

@@ -143,8 +143,8 @@ class Change extends Component {
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                        onClick={() => {this.handleIncrement(state.app.body, actions)}}
-                        // onClick={() => {this.handleIncrement(state.app.body, actions); this.adjustSize();}}
+                        // onClick={() => {this.handleIncrement(state.app.body, actions)}}
+                        onClick={() => {this.handleIncrement(state.app.body, actions); this.adjustSize();}}
                         disabled={this.disappearNext(state.app.body) ? "disabled" : false}
                     >
                         next
