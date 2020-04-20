@@ -10,15 +10,21 @@ class GameButtons extends Component {
       openInstructionsHandler,
       startGameHandler
     } = this.props;
-    const startMessage = repairApplied ? "Start with Repair Applied" : "Start";
+    let startMessage = "Start";
+    if (repairApplied) {
+      startMessage = 'Start with Repair Applied'
+    }
+    else if (plays>0){
+      startMessage = 'Next Play'
+    }
     const repairButton = (
-      <button className="btn btn-second btn-xl text-uppercase js-scroll-trigger" onClick={openRepairHandler} key="repair">
+      <button className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton" onClick={openRepairHandler} key="repair">
         Repair
       </button>
     );
     const instructionsButton = (
       <button
-        className="btn btn-second btn-xl text-uppercase js-scroll-trigger"
+        className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
         onClick={openInstructionsHandler}
         key="instructions"
       >
@@ -27,7 +33,7 @@ class GameButtons extends Component {
     );
     const startButton = (
       <button
-        className="btn btn-primary btn-xl text-uppercase js-scroll-triggergreen"
+        className="btn btn-primary btn-xl text-uppercase js-scroll-triggergreen rightButton"
         onClick={startGameHandler}
         key="start"
       >
