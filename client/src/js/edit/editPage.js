@@ -62,20 +62,15 @@ export function changeTSize1(num) {
 
 //New Implementation to increment and decrement size of UI.
 export function changeTSize(num, className = null) {
-    //Works for <tags> specified in the document.querySelectorAll()
-    // var elems;
-    // if (className){
-    //     console.log(className)
-    //     elems = document.querySelectorAll(className + " body, p, h1, h2, h3, h4, li, ul, label, button");
-    //
-    // }
-    // else{
-    elems = document.querySelectorAll("body, div, label, button, td, th, h1, h2, h3, h4, p");
+    elems = document.querySelectorAll(".appBody *, .nav-link, button");
+        // ":not(.navbar-nav), :not(.navbar), :not(.navbar-toggler), :not(.collapse), :not(.navbar-collapse)");
+    // :not(.selected) .labcontainer navbar navbar-toggler collapse navbar-collapse navbar-nav
 
     //  }
     var index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {
+            console.log(elems[index]);
             var fontSizeString = window
                 .getComputedStyle(elems[index], null)
                 .getPropertyValue("font-size", "important");
@@ -115,6 +110,7 @@ export function onNextPageChangeTSize(size) {
                 .getPropertyValue("font-size", "important");
             var fontSize = parseFloat(fontSizeString);
             elems[index].style.fontSize = fontSize + size + "px";
+
         }
 
     }
@@ -128,6 +124,14 @@ export function setTextColor(picker) {
     for (var i = 0; i < bodyElements.length; i++) {
         bodyElements[i].style.color = picker.toString();
     }
+    var elems = document.querySelectorAll("quiz");
+    var index = 0, length = elems.length;
+    for (; index < length; index++) {
+        if (elems[index] !== undefined) {
+            elems[index].style.backgroundColor = picker.toString();
+        }
+
+    }
 }
 
 export function setBackgroundColor(picker) {
@@ -138,4 +142,14 @@ export function setBackgroundColor(picker) {
     for (var i = 0; i < bodyElements.length; i++) {
         bodyElements[i].style.backgroundColor = picker.toString();
     }
+    var elems = document.querySelectorAll(".quiz, .result");
+    var index = 0, length = elems.length;
+    for (; index < length; index++) {
+        if (elems[index] !== undefined) {
+            elems[index].style.backgroundColor = picker.toString();
+        }
+    //    background-color
+
+    }
+
 }
