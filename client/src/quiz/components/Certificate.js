@@ -49,7 +49,7 @@ class Certificate extends Component {
                             {/*<span style={{fontSize:"30px"}}><b>Sakshi</b></span><br/><br/>*/}
                             {/*<span style={{fontSize:"25px"}}><i>have completed the course</i></span> <br/><br/>*/}
                             <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>Accessibility Learning Lab 1: Deaf and Hard of Hearing</span> <br/><br/>
-                            <span style={{fontSize:"20px",textAlign:"center",padding:"20px"}}>with score of <b>{this.props.quizResult}</b></span> <br/><br/>
+                            <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>with score of <b>{this.props.quizResult}</b></span> <br/><br/>
                             <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}><i>dated</i></span><br />
                             <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>{date}</span><br/><br/>
                             {/*<img src={logo} height="100" width="100">*/}
