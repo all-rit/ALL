@@ -2,6 +2,7 @@
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 1rem;
+	min-width:100%;
 }
 
 .text-left {
@@ -22,11 +23,11 @@
   background-color: #f5f5f5;
   transition: background-color 200ms ease-in-out;
 	cursor: pointer;
-  
+
   &:hover {
     background-color: #ebebeb;
 	}
-	
+
 	&:active {
 		background-color: #ddd;
 	}

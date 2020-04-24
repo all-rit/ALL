@@ -15,7 +15,6 @@ a.icon:hover {
 }
 
 .btn-primary {
-  background-color: #fed136 !important;
   border-color: #fed136 !important;
   color: #404040 !important;
   margin-left: 15%;
@@ -95,6 +94,12 @@ hr.horiz {
   float: right;
   padding: 8px !important;
 }
+.next:disabled{
+  background-color: lightgrey !important;
+  border-color: lightgrey !important;
+  margin-left: 5px !important;
+  opacity: .5;
+}
 .back {
   background-color: #404040;
   border-color: #404040;
@@ -123,14 +128,85 @@ body {
   margin-bottom: 25px !important;
   text-align: center !important;
 }
+
+
+#mainNav{
+  padding-top: 0px;
+  padding-bottom: 0px;
+
+
+}
 #mainNav .navbar-nav .nav-item .nav-link {
   font-size: 100%;
+
+
 }
 #mainNav .navbar-brand {
   font-size: 1.94em;
+  justify-content: space-around;
+
+}
+.leftButton{
+  margin-right:15%
+}
+.rightButton{
+  margin-left: 0%
+}
+.logo-container{
+  width:340px;
+}
+.logo{
+  width:100%;
+  height:auto;
+
+}
+.labnav{
+  padding:0;
+}
+
+@media (max-width: 765px) {
+  .labcontainer {
+    height: auto !important;
+  }
+}
+
+.labul{
+  padding-bottom:15px;
+
+}
+.labcontainer {
+  height: 95px;
 }
 
 .no-margin {
   margin: 0 !important;
 }
 
+.logo-container{
+  width:350px;
+}
+.logo{
+  width:100%;
+  height:auto;
+}
+
+.btn-bottom-buttons {
+  border-color: #fed136 !important;
+  color: #404040 !important;
+  margin-left: 5px;
+}
+.btn-bottom-buttons:active,
+.btn-bottom-buttons:focus,
+.btn-bottom-buttons:hover {
+  background-color: #e9b301 !important;
+  border-color: white !important;
+  color: #262626 !important;
+}
+.div-style-text{
+   padding: 10px;
+   margin-left: 23%;
+ }
+.div-style-bgColor{
+  padding: 10px;
+  margin-left: 60%;
+}
