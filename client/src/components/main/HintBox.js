@@ -51,6 +51,7 @@ class HintBox extends Component {
 			unavailableMessage,
 			availableBackgroundColor,
 			unavailableBackgroundColor,
+			shake, // change made
 			clickHandler
 		} = this.props;
 		const classes = classNames({

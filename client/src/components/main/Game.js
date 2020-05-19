@@ -77,6 +77,10 @@ class Game extends Component {
 			handlers.revealBox();
 
 			if (data.soundEnabled) this.audio.play();
+
+			if (data.shake === true) {
+
+			}
 		}
 	}
 
@@ -274,6 +278,7 @@ class Game extends Component {
 					unavailableMessage={data.unavailableMessage}
 					availableBackgroundColor={data.availableBackgroundColor}
 					unavailableBackgroundColor={data.unavailableBackgroundColor}
+					shake={data.shake} // change made
 					clickHandler={this.openHintBox.bind(this)}
 				/>
 				<Boxes
