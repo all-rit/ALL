@@ -193,8 +193,7 @@ class Change extends Component {
                 </div>
                 <div className="container" style={{display: display ? "none" : "block"}}>
                     <div className="btn-information">
-                        The navigation and accessibility buttons are disabled so as to not interfere with the
-                        accessibility-related portions of the lab.
+                        The previously available navigation and accessibility buttons are disabled until the game is complete.
                     </div>
                 </div>
 
