@@ -22,7 +22,7 @@ class First extends Component {
 							Stuck? Click on the hint box! The hint box <b>is not guaranteed</b> to have a hint inside.
 						</li>
 						<li>
-							You will get <b>an audio cue</b> indiciating a hint has popped up.
+							You will get <b>an audio cue</b> indicating a hint has popped up.
 						</li>
 						<li>
 							You will have <b>a limited amount of time</b>. You will need to find the treasure each round
@@ -30,9 +30,7 @@ class First extends Component {
 						</li>
 					</ul>
 
-					<p className="playthrough__sentence">For more information, click on the "How to Play?" button.</p>
 
-					<hr />
 
 					<p className="playthrough__sentence">
 						If you feel ready, please click the "Start" button to proceed.
