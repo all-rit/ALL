@@ -7,30 +7,25 @@ class Third extends Component {
 				<div className="playthrough__title">Interesting...</div>
 				<div className="playthrough__content">
 					<p className="playthrough__sentence">
-						You probably have noticed that your recent game is harder with audio turned off. Your score
-						should be <b>lower</b> compared to your score in your first game.
+						You may have noticed that this game was harder without the audio cue, compared to the first game.
+						Your score from this game may be lower than your score from the first game.
 					</p>
 
 					<p className="playthrough__sentence">
-						This is typically how users with a hearing loss experience when applications use{' '}
-						<b>sound</b> to cue something.
+						This is what users with hearing loss typically experience when applications use audio cues.
 					</p>
 
 					<p className="playthrough__sentence">
-						To help improve the game, there is now a <b>"Repair"</b> button next to the "How to Play?"
-						button.
-					</p>
-
-					<p className="playthrough__sentence">
-						A developer could repair the game to make it accessible to Deaf and Hard of Hearing users by{' '}
-						<b>adding more information such as additional messages or/and visual changes</b>.
+						Developers can add certain features for better accessibility. For example, developers can
+						add visual cues for deaf or hard-of-hearing users.
+						To make these changes and improve the game, click the “Repair” button next to the “Next Play” button.
 					</p>
 
 					<hr />
 
 					<p className="playthrough__sentence">
-						After making changes to the game, go ahead and click the "Continue" button! If you did it correct,
-						your score should improve compared to the recent game!
+						After making repairs to the game, click the “Next Play” button.
+						Your score in the next game should increase from this game.
 					</p>
 				</div>
 			</div>

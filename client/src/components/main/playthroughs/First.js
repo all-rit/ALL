@@ -8,7 +8,7 @@ class First extends Component {
 
 				<div className="playthrough__content">
 					<p className="playthrough__sentence">
-						Be prepared! You are about to play a game involving <b>four boxes</b>.
+						Well done! You’ve finished the reading section. Now, we’re going to apply what you’ve learned in a fun game.
 					</p>
 
 					<ul className="playthrough__list">
@@ -33,7 +33,7 @@ class First extends Component {
 
 
 					<p className="playthrough__sentence">
-						If you feel ready, please click the "Start" button to proceed.
+						When you are ready, click the “Start” button to proceed.
 					</p>
 				</div>
 			</div>

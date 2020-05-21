@@ -62,7 +62,7 @@ class Repair extends Component {
 			shake // change made
 		);
 		handlers.closeRepair();
-		handlers.updatePopup('The adjustments for the game has been made.');
+		handlers.updatePopup('The repairs have been made.');
 
 		setTimeout(() => {
 			handlers.updatePopup('');

@@ -10,4 +10,14 @@
     margin-top: 3rem;
     margin-bottom: 3rem;
   }
+
+  &__list {
+    margin-bottom: 2rem;
+    margin-left: 2.5rem;
+    list-style-type: disc;
+
+    > li {
+      margin-bottom: 0.5rem;
+    }
+  }
 }
