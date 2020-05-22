@@ -78,7 +78,7 @@ class Fourth extends Component {
 					</div>
 
 					<p className="playthrough__sentence">
-						After playing the game with audio, without audio, and without audio with repairs,
+						After playing the game with audio, without audio, and without audio but with repairs,
 						we hope you have a better understanding of deaf and hard-of-hearing users' experience.
 					</p>
 
