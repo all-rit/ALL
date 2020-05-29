@@ -54,7 +54,6 @@ class Fourth extends Component {
 
 		return (
 			<div className="playthrough">
-				<div className="playthrough__title">Godspeed</div>
 				<div className="playthrough__content">
 					<p className="playthrough__sentence">Here are your results from all three games:</p>
 
@@ -79,7 +78,7 @@ class Fourth extends Component {
 
 					<p className="playthrough__sentence">
 						After playing the game with audio, without audio, and without audio but with repairs,
-						we hope you have a better understanding of deaf and hard-of-hearing users' experience.
+						we hope you have a better understanding of deaf and hard-of-hearing users' experiences.
 					</p>
 
 					<p className="playthrough__sentence">
@@ -89,8 +88,9 @@ class Fourth extends Component {
 					<hr />
 
 					<p className="playthrough__sentence">
-						If you wish to make further repairs, click the “Repair” button.
-						You may play the game again by clicking the “Next Play” button.
+						If you wish to make further repairs, click the 'Repair' button.
+						You may play the game again by clicking the 'Next'/'Start with Repair Applied' button, or
+						exit the game by clicking the 'Next' button.
 					</p>
 				</div>
 			</div>

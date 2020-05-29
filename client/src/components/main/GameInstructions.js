@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Image1 from '../../assets/images/instructions/1.jpg';
-import Image2 from '../../assets/images/instructions/2.jpg';
-import Image3 from '../../assets/images/instructions/3.jpg';
-import Image4 from '../../assets/images/instructions/4.jpg';
+import Image1 from '../../assets/images/instructions/First.jpg';
+import Image2 from '../../assets/images/instructions/Second.jpg';
+import Image3 from '../../assets/images/instructions/Third.jpg';
+import Image4 from '../../assets/images/instructions/Fourth.jpg';
 import Image5 from '../../assets/images/instructions/5.jpg';
 import Image6 from '../../assets/images/instructions/6.jpg';
 import Image7 from '../../assets/images/instructions/7.jpg';

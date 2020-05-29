@@ -7,8 +7,9 @@ class Third extends Component {
 				<div className="playthrough__title">Interesting...</div>
 				<div className="playthrough__content">
 					<p className="playthrough__sentence">
-						You may have noticed that this game was harder without the audio cue, compared to the first game.
-						Your score from this game may be lower than your score from the first game.
+						You may have noticed that this round was harder without the audio cue,
+						compared to the first round with the audio cue.
+						Your score from this round may be lower than your score from the first round.
 					</p>
 
 					<p className="playthrough__sentence">
@@ -16,16 +17,16 @@ class Third extends Component {
 					</p>
 
 					<p className="playthrough__sentence">
-						Developers can add certain features for better accessibility. For example, developers can
-						add visual cues for deaf or hard-of-hearing users.
-						To make these changes and improve the game, click the “Repair” button next to the “Next Play” button.
+						Developers can add certain features for better accessibility,
+						such as visual cues for deaf or hard-of-hearing users.
+						To add visual cues and improve the game, click the 'Repair' button next to the 'Next Play' button.
 					</p>
 
 					<hr />
 
 					<p className="playthrough__sentence">
-						After making repairs to the game, click the “Next Play” button.
-						Your score in the next game should increase from this game.
+						After making repairs to the game, click the 'Start with Repair Applied' button.
+						Your score in the next round should increase from this round.
 					</p>
 				</div>
 			</div>

@@ -4,36 +4,61 @@ class First extends Component {
 	render() {
 		return (
 			<div className="playthrough">
-				<div className="playthrough__title">Welcome!</div>
 
 				<div className="playthrough__content">
 					<p className="playthrough__sentence">
-						Well done! You’ve finished the reading section. Now, we’re going to apply what you’ve learned in a fun game.
+						Well done! You’ve completed the reading section. Now, we’re going to apply what you’ve learned in a fun game.
+						Here are the rules:
 					</p>
 
 					<ul className="playthrough__list">
 						<li>
-							One of the boxes will contain <b>a treasure</b>.
+							Four small boxes will be presented on your screen. One of the four boxes contains a treasure,
+							and it's your job to guess which box.
 						</li>
 						<li>
-							You will have to <b>guess which</b>.
+							A large hint box will also be presented on your screen. <b>Sometimes</b> a hint will be available that will reveal
+							which of the four boxes has the treasure. Hints will <b>only</b> be available when you hear an audio cue.
+							Click on the hint box to reveal where the treasure is. If there is a hint, it will
+							reveal which box has the treasure. However, if there is no hint, the boxes will be 'locked'
+							for a short period of time before you can select again. Beware, opening the hint box costs 25 points!
 						</li>
 						<li>
-							Stuck? Click on the hint box! The hint box <b>is not guaranteed</b> to have a hint inside.
+							Time is limited for each round. The quicker you find the box with the treasure, the more points you
+							will get.
 						</li>
+							<ul className="playthrough__list">
+								<li>
+									Less than 1 second = 150 points
+								</li>
+								<li>
+									Less than 2 seconds = 125 points
+								</li>
+								<li>
+									Less than 3 seconds = 100 points
+								</li>
+								<li>
+									Less than 4 seconds = 75 points
+								</li>
+								<li>
+									Less than 5 seconds = 50 points
+								</li>
+								<li>
+									More than 5 seconds = 25 points
+								</li>
+							</ul>
 						<li>
-							You will get <b>an audio cue</b> indicating a hint has popped up.
-						</li>
-						<li>
-							You will have <b>a limited amount of time</b>. You will need to find the treasure each round
-							as fast as you can.
+							Every time you find the box with the treasure, a countdown will be displayed and a new round will ensue,
+							until the timer runs out.
 						</li>
 					</ul>
 
+					<p className="playthrough__sentence">Please click the 'How to Play?' button before beginning.</p>
 
+					<hr />
 
 					<p className="playthrough__sentence">
-						When you are ready, click the “Start” button to proceed.
+						When you are ready, click the 'Start' button to begin the game.
 					</p>
 				</div>
 			</div>
