@@ -61,7 +61,7 @@ class Fourth extends Component {
 
 					<div className="playthrough__chart">
 						<VictoryChart domainPadding={50}>
-							<VictoryLabel text="Scores in First Three Games" x={225} y={30} textAnchor="middle" />
+							<VictoryLabel text="Scores in All Three Games" x={225} y={30} textAnchor="middle" />
 
 							<VictoryAxis tickFormat={() => ''} />
 							<VictoryAxis

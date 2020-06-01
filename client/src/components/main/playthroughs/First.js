@@ -53,7 +53,7 @@ class First extends Component {
 						</li>
 					</ul>
 
-					<p className="playthrough__sentence">Please click the 'How to Play?' button before beginning.</p>
+					<p className="playthrough__sentence">Click the 'How to Play?' button before beginning.</p>
 
 					<hr />
 
