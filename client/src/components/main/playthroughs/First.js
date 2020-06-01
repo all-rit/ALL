@@ -18,9 +18,9 @@ class First extends Component {
 						</li>
 						<li>
 							A large hint box will also be presented on your screen. <b>Sometimes</b> a hint will be available that will reveal
-							which of the four boxes has the treasure. Hints will <b>only</b> be available when you hear an audio cue.
-							Click on the hint box to reveal where the treasure is. If there is a hint, it will
-							reveal which box has the treasure. However, if there is no hint, the boxes will be 'locked'
+							which of the four boxes has the treasure. Hints are <b>only</b> available when you hear an audio cue.
+							If you click on the hint box and there is a hint, it will reveal which box has the treasure.
+							However, if you click on the hint box and there is no hint, the boxes will be 'locked'
 							for a short period of time before you can select again. Beware, opening the hint box costs 25 points!
 						</li>
 						<li>

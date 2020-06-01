@@ -17,7 +17,7 @@ class Third extends Component {
 					</p>
 
 					<p className="playthrough__sentence">
-						Developers can add certain features for better accessibility,
+						Software developers can add features for better accessibility,
 						such as visual cues for deaf or hard-of-hearing users.
 						To add visual cues and improve the game, click the 'Repair' button next to the 'Next Play' button.
 					</p>
