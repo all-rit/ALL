@@ -30,6 +30,6 @@ export const BOX_DEFAULT_VALUES = { 1: BOX_UNOPENED, 2: BOX_UNOPENED, 3: BOX_UNO
 export const CONGRATULATION_MESSAGES = [
 	'Nice one!',
 	'You found that treasure!',
-	"Wow, you're probably an expert treasure hunter!",
+	"Wow, you're an expert treasure hunter!",
 	'Right on!'
 ];
