@@ -77,19 +77,20 @@ class Fourth extends Component {
 					</div>
 
 					<p className="playthrough__sentence">
-						After playing the game with audio, without audio, and without audio but with repairs,
-						we hope you have a better understanding of deaf and hard-of-hearing users' experiences.
+						After playing the game with audio, without audio,
+						and without audio but with repairs, <b>we hope you have a better
+						understanding of deaf and hard-of-hearing users' experiences.</b>
 					</p>
 
 					<p className="playthrough__sentence">
-						When developing software, remember to consider deaf and hard-of-hearing users.
+						When developing software, <b>remember to consider deaf and hard-of-hearing users.</b>
 					</p>
 
 					<hr />
 
 					<p className="playthrough__sentence">
 						If you wish to make further repairs, click the 'Repair' button.
-						You may play the game again by clicking the 'Next'/'Start with Repair Applied' button, or
+						You may play the game again by clicking the 'Next Play'/'Start with Repair Applied' button, or
 						exit the game by clicking the 'Next' button.
 					</p>
 				</div>

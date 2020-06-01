@@ -7,19 +7,21 @@ class Third extends Component {
 				<div className="playthrough__title">Interesting...</div>
 				<div className="playthrough__content">
 					<p className="playthrough__sentence">
-						You may have noticed that this round was harder without the audio cue,
+						You may have noticed that this round was <b>harder</b> without the audio cue,
 						compared to the first round with the audio cue.
-						Your score from this round may be lower than your score from the first round.
+						Your score from this round may be <b>lower</b> than your score from the first round.
 					</p>
 
 					<p className="playthrough__sentence">
-						This is what users with hearing loss typically experience when applications use audio cues.
+						<b>This is what users with hearing loss typically
+							experience when applications use audio cues.</b>
 					</p>
 
 					<p className="playthrough__sentence">
 						Software developers can add features for better accessibility,
-						such as visual cues for deaf or hard-of-hearing users.
-						To add visual cues and improve the game, click the 'Repair' button next to the 'Next Play' button.
+						such as <b>visual cues</b> for deaf or hard-of-hearing users.
+						To add visual cues and improve the game,
+						click the 'Repair' button next to the 'Next Play' button.
 					</p>
 
 					<hr />

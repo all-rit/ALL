@@ -7,25 +7,30 @@ class First extends Component {
 
 				<div className="playthrough__content">
 					<p className="playthrough__sentence">
-						Well done! You’ve completed the reading section. Now, we’re going to apply what you’ve learned in a fun game.
+						Well done! You’ve completed the reading section.
+						Now, we’re going to apply what you’ve learned in a fun game.
 						Here are the rules:
 					</p>
 
 					<ul className="playthrough__list">
 						<li>
-							Four small boxes will be presented on your screen. One of the four boxes contains a treasure,
-							and it's your job to guess which box.
+							<b>Four small boxes</b> will be presented on your screen.
+							One of the four boxes contains a treasure,
+							and it's your job to <b>guess which box.</b>
 						</li>
 						<li>
-							A large hint box will also be presented on your screen. <b>Sometimes</b> a hint will be available that will reveal
-							which of the four boxes has the treasure. Hints are <b>only</b> available when you hear an audio cue.
-							If you click on the hint box and there is a hint, it will reveal which box has the treasure.
+							A <b>large hint box</b> will also be presented on your screen.
+							Sometimes a hint will be available that will reveal
+							which of the four boxes has the treasure. <b>Hints are only available when
+							you hear an audio cue.</b> If you click on the hint box and there is a hint,
+							it will reveal which box has the treasure.
 							However, if you click on the hint box and there is no hint, the boxes will be 'locked'
-							for a short period of time before you can select again. Beware, opening the hint box costs 25 points!
+							for 1.5 seconds before you can select again.
+							Beware, <b>opening the hint box costs 25 points!</b>
 						</li>
 						<li>
-							Time is limited for each round. The quicker you find the box with the treasure, the more points you
-							will get.
+							<b>Time is limited</b> for each round. The quicker you find the box with the treasure,
+							the more points you will get.
 						</li>
 							<ul className="playthrough__list">
 								<li>
@@ -48,8 +53,8 @@ class First extends Component {
 								</li>
 							</ul>
 						<li>
-							Every time you find the box with the treasure, a countdown will be displayed and a new round will ensue,
-							until the timer runs out.
+							Every time you find the box with the treasure, a countdown will be displayed
+							and a new round will ensue, <b>until the timer runs out.</b>
 						</li>
 					</ul>
 
