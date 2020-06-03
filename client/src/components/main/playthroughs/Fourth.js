@@ -61,18 +61,22 @@ class Fourth extends Component {
 
 					<div className="playthrough__chart">
 						<VictoryChart domainPadding={50}>
-							<VictoryLabel text="Scores in All Three Games" x={225} y={30} textAnchor="middle" />
+							<VictoryLabel text="Scores from All Three Games" x={225} y={30} textAnchor="middle" />
 
 							<VictoryAxis tickFormat={() => ''} />
 							<VictoryAxis
 								tickValues={[ 1, 2, 3 ]}
-								tickFormat={[ 'w/ Sound', 'w/o Sound', 'w/o Sound + Repair' ]}
+								tickFormat={[ 'Sound On', 'Sound Off', 'Code Fixed + \nSound Off' ]}
 								style={{ tickLabels: { fill: '#f76902' } }}
 								offsetY={50}
 							/>
 							<VictoryAxis dependentAxis tickFormat={(x) => x} />
 
-							<VictoryBar data={data} x="game" y="score" />
+							<VictoryBar data={data} x="game" y="score"
+										labels={({ datum }) => datum.y}
+										style={{ labels: { fill: "white" } }}
+										labelComponent={<VictoryLabel dy={30} />}
+							/>
 						</VictoryChart>
 					</div>
 
