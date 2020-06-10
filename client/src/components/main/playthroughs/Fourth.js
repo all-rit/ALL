@@ -59,6 +59,8 @@ class Fourth extends Component {
 
 					<div className="playthrough__results">{resultContainer}</div>
 
+					<div class="playthrough__title">Games vs. Score</div>
+
 					<div className="playthrough__chart">
 						<VictoryChart domainPadding={50}>
 							<VictoryLabel text="Scores from All Three Games" x={225} y={30} textAnchor="middle" />
@@ -67,7 +69,7 @@ class Fourth extends Component {
 							<VictoryAxis
 								tickValues={[ 1, 2, 3 ]}
 								tickFormat={[ 'Sound On', 'Sound Off', 'Code Fixed + \nSound Off' ]}
-								style={{ tickLabels: { fill: '#f76902' } }}
+								style={{ tickLabels: { fill: '#A11212' } }}
 								offsetY={50}
 							/>
 							<VictoryAxis dependentAxis tickFormat={(x) => x} />
