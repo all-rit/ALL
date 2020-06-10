@@ -59,10 +59,8 @@ class Fourth extends Component {
 
 					<div className="playthrough__results">{resultContainer}</div>
 
-					<div class="playthrough__title">Games vs. Score</div>
-
 					<div className="playthrough__chart">
-						<VictoryChart domainPadding={50}>
+						<VictoryChart domainPadding={100}>
 							<VictoryLabel text="Scores from All Three Games" x={225} y={30} textAnchor="middle" />
 
 							<VictoryAxis tickFormat={() => ''} />
@@ -74,7 +72,7 @@ class Fourth extends Component {
 							/>
 							<VictoryAxis dependentAxis tickFormat={(x) => x} />
 
-							<VictoryBar data={data} x="game" y="score"
+							<VictoryBar horizontal data={data} x="game" y="score"
 										labels={({ datum }) => datum.y}
 										style={{ labels: { fill: "white" } }}
 										labelComponent={<VictoryLabel dy={30} />}
