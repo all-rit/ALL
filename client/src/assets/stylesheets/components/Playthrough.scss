@@ -1,6 +1,6 @@
 .playthrough {
   padding: 2rem 0;
-   // this keeps the width of the game from being the same as the rest of the lab
+  max-width: 700px; // this keeps the width of the game from being the same as the rest of the lab
   margin: 0 auto;
   text-align: left;
   padding-top: 0;
@@ -65,8 +65,6 @@
   &__value {
     text-align: center;
   }
-
-
 
   hr {
     border: 0;

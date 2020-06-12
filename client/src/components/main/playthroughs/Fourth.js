@@ -6,10 +6,16 @@ class Fourth extends Component {
 		const { results } = this.props;
 		let resultContainer = [];
 		let i = 0;
+		// let data = [
+		// 	{ game: 1, score: results[0].score },
+		// 	{ game: 2, score: results[1].score },
+		// 	{ game: 3, score: results[2].score }
+		// ];
+
+		let firstGame = results[0].score;
 		let data = [
-			{ game: 1, score: results[0].score },
-			{ game: 2, score: results[1].score },
-			{ game: 3, score: results[2].score }
+			{ game: 2, score: (results[1].score / firstGame) * 100},
+			{ game: 3, score: (results[2].score / firstGame) * 100}
 		];
 
 		results.slice(0, 3).forEach((result, i) => {
@@ -60,13 +66,13 @@ class Fourth extends Component {
 					<div className="playthrough__results">{resultContainer}</div>
 
 					<div className="playthrough__chart">
-						<VictoryChart domainPadding={100}>
-							<VictoryLabel text="Scores from All Three Games" x={225} y={30} textAnchor="middle" />
+						<VictoryChart domainPadding={50}>
+							<VictoryLabel text="Game Round vs. Percentage of Points Achieved from Round 1" x={225} y={30} textAnchor="middle" />
 
 							<VictoryAxis tickFormat={() => ''} />
 							<VictoryAxis
-								tickValues={[ 1, 2, 3 ]}
-								tickFormat={[ 'Sound On', 'Sound Off', 'Code Fixed + \nSound Off' ]}
+								tickValues={[ 2, 3 ]}
+								tickFormat={[ 'Sound\nOff', 'Code\nFixed+\nSound\nOff' ]}
 								style={{ tickLabels: { fill: '#A11212' } }}
 								offsetY={50}
 							/>
@@ -75,7 +81,7 @@ class Fourth extends Component {
 							<VictoryBar horizontal data={data} x="game" y="score"
 										labels={({ datum }) => datum.y}
 										style={{ labels: { fill: "white" } }}
-										labelComponent={<VictoryLabel dy={30} />}
+										labelComponent={<VictoryLabel dy={30}/>}
 							/>
 						</VictoryChart>
 					</div>
