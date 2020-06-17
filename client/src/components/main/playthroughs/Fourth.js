@@ -6,16 +6,40 @@ class Fourth extends Component {
 		const { results } = this.props;
 		let resultContainer = [];
 		let i = 0;
-		// let data = [
-		// 	{ game: 1, score: results[0].score },
-		// 	{ game: 2, score: results[1].score },
-		// 	{ game: 3, score: results[2].score }
-		// ];
 
+		// score of the first game, used to calculate percentages below
 		let firstGame = results[0].score;
+
+		// a variable to hold the adjusted percentage for the second round
+		let adjScore1;
+		// a variable to hold the adjusted percentage for the third round
+		let adjScore2;
+
+		// checks to see if the percentage for the second round
+		// is negative; if so, set percentage to 0
+		if ((results[1].score / firstGame) * 100 < 0) {
+			adjScore1 = 0;
+		}
+		// otherwise, set percentage as normal (will be 0 or positive)
+		else {
+			adjScore1 = (results[1].score / firstGame) * 100;
+		}
+
+		// checks to see if the percentage for the third round
+		// is negative; if so, set percentage to 0
+		if ((results[2].score / firstGame) * 100 < 0) {
+			adjScore2 = 0;
+		}
+		// otherwise, set percentage as normal (will be 0 or positive)
+		else {
+			adjScore2 = (results[2].score / firstGame) * 100;
+		}
+
+		// a variable to store the previously calculated data
+		// to be displayed in the graph
 		let data = [
-			{ game: 2, score: (results[1].score / firstGame) * 100},
-			{ game: 3, score: (results[2].score / firstGame) * 100}
+			{ game: 2, score: adjScore1},
+			{ game: 3, score: adjScore2}
 		];
 
 		results.slice(0, 3).forEach((result, i) => {
