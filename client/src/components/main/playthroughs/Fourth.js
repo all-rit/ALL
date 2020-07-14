@@ -19,7 +19,7 @@ class Fourth extends Component {
 		if (firstGame === 0) {
 			adjScore1 = 0;
 		}
-		// checks to see if the percentage for the second round
+		// checks if the percentage for the second round
 		// is negative; if so, set percentage to 0
 		else {
 			if ((results[1].score / firstGame) * 100 < 0) {
@@ -36,7 +36,7 @@ class Fourth extends Component {
 			adjScore2 = 0;
 		}
 		else {
-			// checks to see if the percentage for the third round
+			// checks if the percentage for the third round
 			// is negative; if so, set percentage to 0
 			if ((results[2].score / firstGame) * 100 < 0) {
 				adjScore2 = 0;
