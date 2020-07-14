@@ -15,26 +15,37 @@ class Fourth extends Component {
 		// a variable to hold the adjusted percentage for the third round
 		let adjScore2;
 
-		// checks to see if the percentage for the second round
-		// is negative; if so, set percentage to 0
-		if ((results[1].score / firstGame) * 100 < 0) {
+		// checks if the first game score is 0 to avoid dividing by 0 (NaN)
+		if (firstGame === 0) {
 			adjScore1 = 0;
 		}
-		// otherwise, set percentage as normal (will be 0 or positive)
+		// checks to see if the percentage for the second round
+		// is negative; if so, set percentage to 0
 		else {
-			adjScore1 = (results[1].score / firstGame) * 100;
+			if ((results[1].score / firstGame) * 100 < 0) {
+				adjScore1 = 0;
+			}
+			// otherwise, set percentage as normal (will be 0 or positive)
+			else {
+				adjScore1 = (results[1].score / firstGame) * 100;
+			}
 		}
 
-		// checks to see if the percentage for the third round
-		// is negative; if so, set percentage to 0
-		if ((results[2].score / firstGame) * 100 < 0) {
+		// checks if the first game score is 0 to avoid dividing by 0 (NaN)
+		if (firstGame === 0) {
 			adjScore2 = 0;
 		}
-		// otherwise, set percentage as normal (will be 0 or positive)
 		else {
-			adjScore2 = (results[2].score / firstGame) * 100;
+			// checks to see if the percentage for the third round
+			// is negative; if so, set percentage to 0
+			if ((results[2].score / firstGame) * 100 < 0) {
+				adjScore2 = 0;
+			}
+			// otherwise, set percentage as normal (will be 0 or positive)
+			else {
+				adjScore2 = (results[2].score / firstGame) * 100;
+			}
 		}
-
 		// a variable to store the previously calculated data
 		// to be displayed in the graph
 		let data = [
