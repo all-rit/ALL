@@ -12,9 +12,9 @@ class ClosedHintBox extends Component {
 
 		return (
 			<div className="hint_box__background" style={{ backgroundColor: backgroundColor }}>
-				{message}
+				<span className="hint_box__warning">Hint Box</span>
 
-				<span className="hint_box__warning">(Opening this will cost you 25 points)</span>
+				{message}
 			</div>
 		);
 	}
