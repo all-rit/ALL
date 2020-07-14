@@ -57,7 +57,7 @@ class Repair extends Component {
 			unavailableBackgroundColor
 		);
 		handlers.closeRepair();
-		handlers.updatePopup('The adjustments for the game has been made.');
+		handlers.updatePopup('The repairs have been made.');
 
 		setTimeout(() => {
 			handlers.updatePopup('');
@@ -185,7 +185,7 @@ class Repair extends Component {
 							<span className="code_editor__line--darkblue">let&nbsp;</span>
 							<span className="code_editor__line--blue">content</span>
 							<span>&nbsp;=&nbsp;</span>
-							<span className="code_editor__line--orange">"?"</span>
+							<span className="code_editor__line--orange">""</span>
 							<span>;</span>
 						</div>
 
@@ -209,7 +209,7 @@ class Repair extends Component {
 						<div className="code_editor__line">
 							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span className="code_editor__line--darkgreen">
-								&#47;&#47; Update the variable 'content' to "Available Hint here!"
+								&#47;&#47; Update the variable 'content' to "Available hint here!"
 							</span>
 						</div>
 
@@ -240,7 +240,7 @@ class Repair extends Component {
 						<div className="code_editor__line">
 							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<span className="code_editor__line--darkgreen">
-								&#47;&#47; Otherwise, update the variable 'content' to "No Available Hint yet..."
+								&#47;&#47; Otherwise, update the variable 'content' to "No available hint yet..."
 							</span>
 						</div>
 
