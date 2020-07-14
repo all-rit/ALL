@@ -6,8 +6,8 @@ export const types = {
 };
 
 export const initialState = {
-	availableMessage: '?',
-	unavailableMessage: '?',
+	availableMessage: '',
+	unavailableMessage: '',
 	availableBackgroundColor: '#FFFFFF',
 	unavailableBackgroundColor: '#FFFFFF',
 	currentTab: 1,
