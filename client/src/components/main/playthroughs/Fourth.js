@@ -22,7 +22,7 @@ class Fourth extends Component {
 		// checks if the percentage for the second round
 		// is negative; if so, set percentage to 0
 		else {
-			if ((results[1].score / firstGame) * 100 < 0) {
+			if ((results[1].score / firstGame) * 100 <= 0) {
 				adjScore1 = 0;
 			}
 			// otherwise, set percentage as normal (will be 0 or positive)
@@ -38,7 +38,7 @@ class Fourth extends Component {
 		else {
 			// checks if the percentage for the third round
 			// is negative; if so, set percentage to 0
-			if ((results[2].score / firstGame) * 100 < 0) {
+			if ((results[2].score / firstGame) * 100 <= 0) {
 				adjScore2 = 0;
 			}
 			// otherwise, set percentage as normal (will be 0 or positive)
@@ -115,6 +115,7 @@ class Fourth extends Component {
 
 							<VictoryBar horizontal data={data} x="game" y="score"
 										labels={({ datum }) => datum.y}
+										domain={{y: [0, 100]}}
 										style={{ labels: { fill: "white" } }}
 										labelComponent={<VictoryLabel dy={30}/>}
 							/>
