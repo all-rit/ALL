@@ -115,7 +115,7 @@ class Fourth extends Component {
 
 							<VictoryBar horizontal data={data} x="game" y="score"
 										labels={({ datum }) => datum.y}
-										domain={{y: [0, 100]}}
+										domain={{y: [0, 100]}} // setting domain avoids infinitesimally small numbers on axis
 										style={{ labels: { fill: "white" } }}
 										labelComponent={<VictoryLabel dy={30}/>}
 							/>
