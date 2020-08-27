@@ -1,6 +1,5 @@
 .playthrough {
   padding: 2rem 0;
-  max-width: 700px;
   margin: 0 auto;
   text-align: left;
   padding-top: 0;
@@ -15,12 +14,12 @@
     font-size: 1.15rem;
   }
 
-  &__sentence:not(:last-child) {
+  &__sentence {
+    margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
   &__list {
-    margin-bottom: 2rem;
     margin-left: 2.5rem;
     list-style-type: disc;
 
@@ -63,6 +62,13 @@
 
   &__value {
     text-align: center;
+  }
+
+  &__chart {
+    max-width: 700px; // keeps chart from being too big
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   hr {

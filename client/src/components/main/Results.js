@@ -8,10 +8,10 @@ class Results extends Component {
 
 		return (
 			<div className="results">
-				<div className="results__title">Game over.</div>
+				<div className="results__title">Game Over</div>
 
 				<div className="results__content">
-					<p className="results__sentence">Better luck next time! Here's your statistics:</p>
+					<p className="results__sentence">Great job! Here are your statistics:</p>
 
 					<div className="result">
 						<span className="result__category">Final Score:</span>
