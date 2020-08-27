@@ -19,9 +19,9 @@ class Header extends Component {
                         toggleSoundHandler={toggleSoundHandler}
                     />
                 </div>
-                <div className="header__column text-right">
-                    <WelcomeMessage user={user} loginEnabled={loginEnabled} />
-                </div>
+                {/*<div className="header__column text-right">*/}
+                    {/*<WelcomeMessage user={user} loginEnabled={loginEnabled} />*/}
+                {/*/!*</div>*!/ //TODO Add login*/}
             </header>
         );
     }

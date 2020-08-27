@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function AnswerOption(props) {
-    if(props.multiChoice == true){
+    if(props.multiChoice === true){
         return (
             <li className="answerOption">
                 <input
@@ -43,7 +43,7 @@ AnswerOption.propTypes = {
     answerType: PropTypes.string.isRequired,
     answerContent: PropTypes.string.isRequired,
     onAnswerSelected: PropTypes.func.isRequired,
-    multiChoice: PropTypes.func.isRequired
+    multiChoice: PropTypes.bool.isRequired
 };
 
 export default AnswerOption;

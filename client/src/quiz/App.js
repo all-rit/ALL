@@ -19,7 +19,7 @@ class App extends Component {
             myCount: {},
             disableNextQuestion: true,
             selectedAnswers: {},
-            multiChoice: false
+            multiChoice: false,
         };
 
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -33,7 +33,7 @@ class App extends Component {
             }
         }
 
-        console.log(quizQuestions);
+        // console.log(quizQuestions);
 
     }
 
@@ -73,7 +73,7 @@ class App extends Component {
     handleAnswerSelected(event) {
         this.setState((state, props) => ({
             disableNextQuestion: false
-        }), () => console.log(this.state));
+        }));
     }
 
     setUserAnswer(answer, correctanswer) {
@@ -88,7 +88,7 @@ class App extends Component {
                 [this.state.counter]: answer
             },
             answer: answer
-        }), () => console.log(this.state));
+        }));
     }
 
     checkMultipleAnswers(currentAnswers) {
@@ -123,8 +123,8 @@ class App extends Component {
 
     setNextQuestion() {
         var currentAnswers = this.getCheckedAnswers();
-        console.log("get selected answers:");
-        console.log(currentAnswers);
+        // console.log("get selected answers:");
+        // console.log(currentAnswers);
 
         //Calculate correct answers and set accordingly
         this.checkMultipleAnswers(currentAnswers);
@@ -141,7 +141,7 @@ class App extends Component {
                 answerOptions: quizQuestions[counter].answers,
                 answer: '',
                 disableNextQuestion: true,
-                multiChoice: quizQuestions[counter].multiChoice
+                multiChoice: quizQuestions[counter].multiChoice,
             });
         } else {
             setTimeout(() => this.setResults(this.getResults()), 300);

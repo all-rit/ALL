@@ -44,16 +44,18 @@ class Certificate extends Component {
     };
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         const {state, actions} = this.props;
         var today = new Date();
         var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+ today.getFullYear();
         return (
             <div style={{width:"100%", height:"auto", padding:"20px", border: "10px solid #787878"}}>
                 <div style={{width:"100%", height:"auto", border: "5px solid #787878"}}>
-                    <span style={{fontSize:"50px", fontWeight:"bold",textAlign:"center",padding:"20px",paddingTop:"20px"}}>
+                    <div style={{width:"50%", margin: "auto"}}>
+                    <span style={{fontSize:"50px", fontWeight:"bold",textAlign:"center"}}>
                             Certificate of Completion
                     </span>
+                    </div>
                     <br /><br />
                         <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}><i>This is to certify that you have completed the course:</i></span>
                         <br /><br />
