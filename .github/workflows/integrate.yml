@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
+      - run: npm ci --prefix client
+      - run: npm test --prefix client
+      - run: npm run build --prefix client
 
