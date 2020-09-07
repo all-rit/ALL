@@ -40,6 +40,7 @@ const mapStateToProps = (state) => {
 		soundEnabled: state.game.soundEnabled,
 		congratulationMessage: state.game.congratulationMessage,
 
+		
 		// Repair specific
 		availableMessage: state.repair.availableMessage,
 		unavailableMessage: state.repair.unavailableMessage,
