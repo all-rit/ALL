@@ -13,6 +13,7 @@ import { actions as repairActions } from '../reducers/RepairReducer';
 import {GAME_IDLE} from '../constants';
 import SoundHeader from "../components/main/SoundHeader";
 
+
 const mapStateToProps = (state) => {
 	return {
 		// General
