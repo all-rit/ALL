@@ -16,6 +16,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
 
+
 const section = {
     0: <About/>,
     1: <Reading/>,
