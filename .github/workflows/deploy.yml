@@ -1,0 +1,34 @@
+name: Firebase Continuous Deployment
+
+on:
+  push:
+    branches: ['master']
+jobs:
+  deploy_job:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: connect server
+        uses: appleboy/scp-action@master
+        env:
+          HOST: all.rit.edu
+          USERNAME: sk6786
+          PORT: 22
+          KEY: ${{ secrets.SSH_SECRET }}
+        with:
+          source: "."
+          target: "../all/research/AccessibilityLab1"
+      -name: Executing remote command
+        uses: appleboy/ssh-action@master
+        with:
+          host: all.rit.edu
+          USERNAME: sk6786
+          KEY: ${{ secrets.SSH_SECRET }}
+          PORT: 22
+          script:
+            - |
+              sudo -iu all
+              cd research/AccessibilityLab1
+              npm install
+              npm run-script build
+
