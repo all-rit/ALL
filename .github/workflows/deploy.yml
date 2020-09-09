@@ -13,7 +13,6 @@ jobs:
         env:
           HOST: all.rit.edu
           USERNAME: sk6786
-          PASSWORD: ${{ secrets.SSH_PASS }}
           PORT: 22
           KEY: ${{ secrets.SSH_SECRET }}
         with:
@@ -24,7 +23,6 @@ jobs:
         with:
           host: all.rit.edu
           USERNAME: sk6786
-          PASSWORD: ${{ secrets.SSH_PASS }}
           KEY: ${{ secrets.SSH_SECRET }}
           PORT: 22
           script: |
