@@ -26,7 +26,6 @@ jobs:
           KEY: ${{ secrets.SSH_SECRET }}
           PORT: 22
           script: |
-            sudo -iu all
             cd research/AccessibilityLab1
             npm install
             npm run-script build
