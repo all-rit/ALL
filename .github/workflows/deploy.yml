@@ -12,7 +12,7 @@ jobs:
         uses: appleboy/scp-action@master
         env:
           HOST: all.rit.edu
-          USERNAME: sk6786
+          USERNAME: all
           PORT: 22
           KEY: ${{ secrets.SSH_SECRET }}
         with:
@@ -22,7 +22,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: all.rit.edu
-          USERNAME: sk6786
+          USERNAME: all
           KEY: ${{ secrets.SSH_SECRET }}
           PORT: 22
           script: |
