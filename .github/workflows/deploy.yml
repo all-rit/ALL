@@ -12,7 +12,7 @@ jobs:
     - name: Copy folder content recursively to remote
       uses: garygrossgarten/github-action-scp@release
       with:
-        local: client/test
+        local: /client/test.txt
         remote: research/AccessibilityLab1/test
         host: all.rit.edu
         username: all
