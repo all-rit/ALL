@@ -29,7 +29,7 @@ function Quiz(props) {
             </ul>
             <div className="align-right">
                 <button class="btn btn-second text-uppercase js-scroll-trigger nextButton" onClick={props.nextQuestion}
-                        disabled={props.disable}>{props.questionId === props.questionTotal ? 'Complete!!' : 'Next Question'}
+                        disabled={props.disable}>{props.questionId === props.questionTotal ? 'Complete!' : 'Next Question'}
                 </button>
             </div>
         </div>
