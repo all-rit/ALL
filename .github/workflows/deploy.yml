@@ -18,7 +18,6 @@ jobs:
         KEY: ${{ secrets.SSH_SECRET }}
         source: "."
         target: "/home/all/research/AccessibilityLab1/"
-        overwrite: tar --overwrite 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
       with:
