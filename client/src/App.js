@@ -68,10 +68,10 @@ class App extends Component {
     return (
 
          <div>
-           <Header />
+           <Header/>
          <div className = "appBody">{section[state.app.body]}</div>
           <div>
-            <Change />
+            <Change/>
           </div>
            </div>
     );
