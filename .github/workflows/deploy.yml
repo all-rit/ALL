@@ -26,6 +26,8 @@ jobs:
         KEY: ${{ secrets.SSH_SECRET }}
         PORT: 22
         script: |
-          cd research/AccessibilityLab1/client
+          cd research
+          chmod -R g+w AccessibilityLab1
+          cd AccessibilityLab1/client
           npm install
           npm run-script build
