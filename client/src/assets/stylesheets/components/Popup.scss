@@ -1,8 +1,6 @@
 .popup {
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-  right: 0;
+  position: relative;
+  margin-bottom: 10px;
   z-index: 1;
 
   &__content {

@@ -7,7 +7,6 @@ import Video from "./components/body/video";
 import Quiz from "./components/body/quiz";
 import Change from "./components/footer/change";
 import Header from "./components/header/header"
-import {Google} from "./components/header/buttons/google";
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import "./css/agency.min.css";
 import "./css/style.css";
@@ -36,9 +35,16 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(appActions, dispatch)
 });
 
+
 class App extends Component {
     state = {count: 0};
-
+   componentDidMount() {
+        const {user, actions} = this.props;
+        if (user !== undefined) {
+            console.log(user);
+        }
+        actions.login();
+    }
   componentWillMount() {
     const {state, actions} = this.props;
     let x = window.location.href;

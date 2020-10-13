@@ -3,7 +3,7 @@ import logo from "./../../img/accessCycle.png";
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
-
+import WelcomeMessage from '../main/WelcomeMessage';
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/AppReducer';
 import {bindActionCreators} from 'redux';
@@ -21,6 +21,7 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
+import {GAME_IDLE} from "../../constants";
 
 const mapStateToProps = (state) => {
     return {
@@ -78,6 +79,7 @@ const Header = (props) => {
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
     let count = state.app.body;
+    const loginEnabled = !(state.game.plays > 0 || (state.game.plays === 0 && state.game.state !== GAME_IDLE));
     return (
 
         <div
@@ -208,6 +210,7 @@ const Header = (props) => {
                                         </ul>
                                     </NavLink>
                             </NavItem>
+                            <WelcomeMessage user={state.app.user} loginEnabled={loginEnabled} />
                         </Nav>
                     </Collapse>
                 </Navbar>
