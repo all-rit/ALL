@@ -114,10 +114,10 @@ const Header = (props) => {
                     </NavbarBrand>
                     <NavbarToggler onClick={toggle}/>
                     <Collapse isOpen={isOpen} navbar>
-                        <Nav className="mr-auto labul" navbar>
+                        <Nav className="ml-auto labul" navbar>
                             <NavItem class="collapse navbar-collapse"
                                      id="navbarResponsive"
-                                     style={{marginLeft: "280px"}}> </NavItem>
+                                     > </NavItem>
                             <NavItem class="collapse navbar-collapse"
                                      id="navbarResponsive"
                             >
@@ -197,7 +197,7 @@ const Header = (props) => {
                             </NavItem>
                             <NavItem
                                 class=" collapse navbar-collapse"
-                                id="navbarResponsive" style={{marginRight: "70px"}}>
+                                id="navbarResponsive">
                                 <NavLink
                                         class="nav-link js-scroll-trigger"
                                         onClick={() => handleQuiz(actions, state)}
@@ -211,6 +211,7 @@ const Header = (props) => {
                                     </NavLink>
                             </NavItem>
                             <WelcomeMessage user={state.app.user} loginEnabled={loginEnabled} />
+
                         </Nav>
                     </Collapse>
                 </Navbar>
@@ -219,7 +220,7 @@ const Header = (props) => {
         </div>
 
     );
-}
+};
 
 export default connect(
     mapStateToProps, mapDispatchToProps

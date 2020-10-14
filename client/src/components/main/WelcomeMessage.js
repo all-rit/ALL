@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import {
+	Button
+} from 'reactstrap';
 import LoginButton from './LoginButton';
 
 
@@ -15,12 +17,14 @@ class WelcomeMessage extends Component {
 		}
 
 			return (
-				<span className="welcome">
-					Welcome, {user.firstname}!{' '}
-					<a className="welcome__logout" href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
+				<div className="welcome">
+					<div className="welcome__name">
+					{user.firstname}!{' '}
+					</div>
+					<Button className="welcome__logout" href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
 						Logout
-					</a>
-				</span>
+					</Button>
+				</div>
 		);
 	}
 }
