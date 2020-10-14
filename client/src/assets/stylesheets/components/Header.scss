@@ -32,10 +32,10 @@
 .welcome {
   color: #fed136;
   display: inline-flex;
+  align-items: center;
   &__name{
     margin-right: 10px;
     color:#fed136;
-    margin-top: 15px;
   }
   &__logout {
     display:inline-block;
