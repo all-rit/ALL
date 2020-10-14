@@ -30,12 +30,14 @@
 }
 
 .welcome {
-  position: relative;
-
+  color: #fed136;
+  display: inline-flex;
+  &__name{
+    margin-right: 10px;
+    color:#fed136;
+    margin-top: 15px;
+  }
   &__logout {
-    font-size: 0.8rem;
-    position: absolute;
-    bottom: -1.15rem;
-    right: 0.05rem;
+    display:inline-block;
   }
 }
