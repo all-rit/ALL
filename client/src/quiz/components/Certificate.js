@@ -58,7 +58,7 @@ class Certificate extends Component {
                     </div>
                     <br /><br />
                         <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>
-                            {state.app.user === null
+                            {state.app.user !== null
                                 ? <i>This is to certify that <b>{state.app.user}</b> has completed the course:</i>
                                 : <i>This is to certify that you have completed the course:</i>
                             }
