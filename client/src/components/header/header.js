@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import logo from "./../../img/accessCycle.png";
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
@@ -14,12 +14,7 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
+    NavLink
 } from 'reactstrap';
 import {GAME_IDLE} from "../../constants";
 
@@ -90,7 +85,6 @@ const Header = (props) => {
                 position: "fixed",
                 width: "100%",
                 fontSize: "90%",
-                overflow: "hidden"
             }}>
             <div className="container labcontainer">
                 <Navbar dark expand="md" className="navbar navbar-expand-lg navbar-dark navbar-dark labnav">
@@ -99,7 +93,6 @@ const Header = (props) => {
                         <div className="logo-container justify-content-center">
                             <img className="logo img-fluid"
                                  src={logo}
-
                                  style={{
                                      paddingRight: "20px",
                                      paddingBottom: "10px",
@@ -107,7 +100,7 @@ const Header = (props) => {
                                      marginTop: "-10px"
                                  }}
                                  alt="Computing Accessibility"
-                            ></img>
+                            />
                         </div>
 
                         {/*Accessibility Learning Labs*/}
