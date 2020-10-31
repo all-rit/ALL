@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-
+import React, { useState } from 'react';
+import {
+	Button
+} from 'reactstrap';
 import LoginButton from './LoginButton';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-
-
-class WelcomeMessage extends Component {
-	render() {
-
-		const { user, loginEnabled } = this.props;
-
-
-		if (user === null || user.firstname === null) {
+const WelcomeMessage = (props) => {
+	const [dropdownOpen, setDropdownOpen] = useState(false);
+	const { user, loginEnabled } = props;
+	const toggle = () => setDropdownOpen(prevState => !prevState);
+	if (user === null || user.firstname === null) {
 			return <LoginButton enabled={loginEnabled} />;
-		}
-
-			return (
-				<span className="welcome">
-					Welcome, {user.firstname}!{' '}
-					<a className="welcome__logout" href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
-						Logout
-					</a>
-				</span>
-		);
 	}
-}
+	const initial = user.firstname.charAt(0).toUpperCase();
+	return (
+		<Dropdown isOpen={dropdownOpen} toggle={toggle} className="welcome">
+			<DropdownToggle
+				className="welcome__toggle"
+			>
+				<Button className="welcome__name">
+				{initial}
+				</Button>
+			</DropdownToggle>
+			<DropdownMenu className= "welcome__menu"  >
+				<DropdownItem href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
+					Logout
+				</DropdownItem>
+			</DropdownMenu>
+		</Dropdown>
+	);
+};
 
 export default WelcomeMessage;

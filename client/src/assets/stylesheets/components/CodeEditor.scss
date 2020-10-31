@@ -1,23 +1,11 @@
 .code_editor {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 300px;
-  display: flex;
-  align-items: center;
 
   .code_editor__content {
-    min-width: 750px;
-    min-height: 700px;
     margin: 2rem auto;
     background-color: white;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
     padding: 1rem;
     text-align: left;
-    z-index: 1;
-    display: grid;
-    grid-template-rows: 39px auto 100px;
   }
 
   .code_editor__file {
@@ -139,6 +127,10 @@
     }
   }
 
+  .code_editor_button{
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
   .code_editor__code input {
     background-color: #222;
     color: orange;
@@ -150,7 +142,6 @@
   }
 
   .code_editor__background {
-    position: absolute;
     top: -150px;
     left: 0;
     right: 0;

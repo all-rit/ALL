@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { GAME_PLAYING } from '../../constants';
-// import WelcomeMessage from './WelcomeMessage';
-
 import SoundOption from "./SoundOption";
 
-class Header extends Component {
+class SoundHeader extends Component {
     render() {
         const { state, plays, soundEnabled, toggleSoundHandler } = this.props;
         const soundBlocked = state === GAME_PLAYING || plays <= 2;
@@ -19,12 +17,10 @@ class Header extends Component {
                         toggleSoundHandler={toggleSoundHandler}
                     />
                 </div>
-                {/*<div className="header__column text-right">*/}
-                    {/*<WelcomeMessage user={user} loginEnabled={loginEnabled} />*/}
-                {/*/!*</div>*!/ //TODO Add login*/}
+
             </header>
         );
     }
 }
 
-export default Header;
+export default SoundHeader;

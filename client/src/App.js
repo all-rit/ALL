@@ -34,9 +34,16 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(appActions, dispatch)
 });
 
+
 class App extends Component {
     state = {count: 0};
-
+   componentDidMount() {
+        const {user, actions} = this.props;
+        if (user !== undefined) {
+            console.log(user);
+        }
+        actions.login();
+    }
   componentWillMount() {
     const {actions} = this.props;
     let x = window.location.href;

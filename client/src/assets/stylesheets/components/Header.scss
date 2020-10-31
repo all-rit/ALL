@@ -30,12 +30,31 @@
 }
 
 .welcome {
-  position: relative;
-
+  display: inline-flex;
+  align-items: center;
+  @media (min-width: 992px) {
+    padding-left: 1rem;
+  }
+  &__toggle{
+    padding:0;
+    background-color: transparent;
+    border:none;
+    border-radius: 50%;
+  }
+  &__name{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    color: #fed136;
+    background-color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
   &__logout {
-    font-size: 0.8rem;
-    position: absolute;
-    bottom: -1.15rem;
-    right: 0.05rem;
+    display:inline-block;
+  }
+  &__menu{
+    margin-top: 20px;
   }
 }
