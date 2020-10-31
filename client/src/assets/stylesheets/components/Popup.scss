@@ -1,9 +1,7 @@
 .popup {
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-  right: 0;
-  z-index: 1;
+  position: relative;
+  margin-bottom: 10px;
+  z-index: 0;
 
   &__content {
     max-width: 600px;

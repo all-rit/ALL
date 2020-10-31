@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 
 import Content from '../components/main/Content';
 import GameInstructions from '../components/main/GameInstructions';
-import Repair from '../components/main/Repair';
 import Popup from '../components/main/Popup';
 
 import { actions as appActions } from '../reducers/AppReducer';
@@ -103,7 +102,6 @@ class Main extends Component {
 					soundEnabled={soundEnabled}
 					toggleSoundHandler={actions.toggleSound}
 				/>
-
 				<Content
 					data={{
 						state,
@@ -123,7 +121,6 @@ class Main extends Component {
 						hintUsed,
 						soundEnabled,
 						congratulationMessage,
-
 						availableMessage,
 						unavailableMessage,
 						availableBackgroundColor,
@@ -138,17 +135,6 @@ class Main extends Component {
 				<GameInstructions
 					visible={instructionsVisible && state === GAME_IDLE}
 					closeHandler={actions.closeInstructions}
-				/>
-				<Repair
-					visible={repairVisible && state === GAME_IDLE}
-					data={{
-						availableMessage,
-						unavailableMessage,
-						availableBackgroundColor,
-						unavailableBackgroundColor,
-						currentTab
-					}}
-					handlers={actions}
 				/>
 
 				<Popup message={popupMessage} handler={actions.updatePopup} />

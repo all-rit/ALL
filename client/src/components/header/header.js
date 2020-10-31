@@ -3,7 +3,7 @@ import logo from "./../../img/accessCycle.png";
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
-
+import WelcomeMessage from '../main/WelcomeMessage';
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/AppReducer';
 import {bindActionCreators} from 'redux';
@@ -14,8 +14,9 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
+    NavLink
 } from 'reactstrap';
+import {GAME_IDLE} from "../../constants";
 
 const mapStateToProps = (state) => {
     return {
@@ -73,6 +74,7 @@ const Header = (props) => {
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
     let count = state.app.body;
+    const loginEnabled = !(state.game.plays > 0 || (state.game.plays === 0 && state.game.state !== GAME_IDLE));
     return (
 
         <div
@@ -83,7 +85,6 @@ const Header = (props) => {
                 position: "fixed",
                 width: "100%",
                 fontSize: "90%",
-                overflow: "hidden"
             }}>
             <div className="container labcontainer">
                 <Navbar dark expand="md" className="navbar navbar-expand-lg navbar-dark navbar-dark labnav">
@@ -92,7 +93,6 @@ const Header = (props) => {
                         <div className="logo-container justify-content-center">
                             <img className="logo img-fluid"
                                  src={logo}
-
                                  style={{
                                      paddingRight: "20px",
                                      paddingBottom: "10px",
@@ -100,17 +100,17 @@ const Header = (props) => {
                                      marginTop: "-10px"
                                  }}
                                  alt="Computing Accessibility"
-                            ></img>
+                            />
                         </div>
 
                         {/*Accessibility Learning Labs*/}
                     </NavbarBrand>
                     <NavbarToggler onClick={toggle}/>
                     <Collapse isOpen={isOpen} navbar>
-                        <Nav className="mr-auto labul" navbar>
+                        <Nav className="ml-auto labul" navbar>
                             <NavItem class="collapse navbar-collapse"
                                      id="navbarResponsive"
-                                     style={{marginLeft: "280px"}}> </NavItem>
+                                     > </NavItem>
                             <NavItem class="collapse navbar-collapse"
                                      id="navbarResponsive"
                             >
@@ -190,7 +190,7 @@ const Header = (props) => {
                             </NavItem>
                             <NavItem
                                 class=" collapse navbar-collapse"
-                                id="navbarResponsive" style={{marginRight: "70px"}}>
+                                id="navbarResponsive">
                                 <NavLink
                                         class="nav-link js-scroll-trigger"
                                         onClick={() => handleQuiz(actions, state)}
@@ -203,6 +203,8 @@ const Header = (props) => {
                                         </ul>
                                     </NavLink>
                             </NavItem>
+                            <WelcomeMessage user={state.app.user} loginEnabled={loginEnabled} />
+
                         </Nav>
                     </Collapse>
                 </Navbar>
@@ -211,7 +213,7 @@ const Header = (props) => {
         </div>
 
     );
-}
+};
 
 export default connect(
     mapStateToProps, mapDispatchToProps

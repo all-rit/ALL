@@ -4,7 +4,7 @@
 
 - NodeJS ~= 12.16.2
 - NPM ~= 6.14.4
-May work for other versions, but not guaranteed
+May work for other versions but not guaranteed
 
 ## Setup
 Clone the repository and open the command line for the upcoming instructions.

@@ -103,19 +103,19 @@ class Repair extends Component {
 		} = this.state;
 		const jsFileClasses = classNames({
 			code_editor__file: true,
-			'code_editor__file--active': data.currentTab === 1
+			'code_editor__file--active': true
 		});
 		const cssFileClasses = classNames({
 			code_editor__file: true,
-			'code_editor__file--active': data.currentTab === 2
+			'code_editor__file--active': true
 		});
 		const jsFileCodeClasses = classNames({
 			code_editor__code: true,
-			code_editor__hide: data.currentTab === 2
+			code_editor__hide: false
 		});
 		const cssFileCodeClasses = classNames({
 			code_editor__code: true,
-			code_editor__hide: data.currentTab === 1
+			code_editor__hide: false
 		});
 
 		if (!visible) return null;
@@ -123,12 +123,9 @@ class Repair extends Component {
 		return (
 			<div className="code_editor">
 				<div className="code_editor__content">
-					<div className="code_editor__files">
-						<div onClick={handlers.updateTab.bind(this, 1)} className={jsFileClasses}>
+					<div className={jsFileClasses}>
+						<div onClick={handlers.updateTab.bind(this, 1)} className='code_editor__file--active'>
 							HintBox.js
-						</div>
-						<div onClick={handlers.updateTab.bind(this, 2)} className={cssFileClasses}>
-							HintBox.css
 						</div>
 					</div>
 
@@ -331,7 +328,14 @@ class Repair extends Component {
 							<span>;</span>
 						</div>
 					</div>
+				</div>
 
+				<div className="code_editor__content">
+					<div className={cssFileClasses}>
+						<div onClick={handlers.updateTab.bind(this, 2)} className='code_editor__file--active'>
+							HintBox.css
+						</div>
+					</div>
 					<div className={cssFileCodeClasses}>
 						<div className="code_editor__line">
 							<span className="code_editor__line--darkgreen">
@@ -398,11 +402,12 @@ class Repair extends Component {
 						</div>
 						<p className="code_editor__class">&#125;</p>
 					</div>
+				</div>
 
 					<button
 						onClick={this.handleSubmit.bind(this)}
 						type="submit"
-						className="button button--green button--block"
+						className="button button--green button--block code_editor_button"
 					>
 						Update
 					</button>
@@ -420,9 +425,8 @@ class Repair extends Component {
 							onClick={this.toggleAvailableBackgroundColorPopup.bind(this)}
 						/>
 					</Conditional>
-				</div>
 
-				<div className="code_editor__background" onClick={handlers.closeRepair} />
+
 			</div>
 		);
 	}

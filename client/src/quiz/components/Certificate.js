@@ -46,10 +46,13 @@ class Certificate extends Component {
                     </span>
                     </div>
                     <br /><br />
-                        <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}><i>This is to certify that you have completed the course:</i></span>
+                        <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>
+                            {state.app.user !== null
+                                ? <i>This is to certify that <b>{state.app.user.firstname}</b> has completed the course:</i>
+                                : <i>This is to certify that you have completed the course:</i>
+                            }
+                            </span>
                         <br /><br />
-                            {/*<span style={{fontSize:"30px"}}><b>Sakshi</b></span><br/><br/>*/}
-                            {/*<span style={{fontSize:"25px"}}><i>have completed the course</i></span> <br/><br/>*/}
                             <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>Accessibility Learning Lab 1: Accessibility to Sound and Speech</span> <br/><br/>
                             <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>with score of <b style={{color:this.getColor()}}>{this.props.quizResult}</b></span> <br/><br/>
                             <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}><i>dated</i></span><br />
