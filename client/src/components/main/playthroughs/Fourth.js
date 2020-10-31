@@ -5,7 +5,6 @@ class Fourth extends Component {
 	render() {
 		const { results } = this.props;
 		let resultContainer = [];
-		let i = 0;
 
 		// score of the first game, used to calculate percentages below
 		let firstGame = results[0].score;

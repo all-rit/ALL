@@ -44,8 +44,6 @@ class Certificate extends Component {
     };
 
     render() {
-        // console.log(this.props);
-        const {state, actions} = this.props;
         var today = new Date();
         var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+ today.getFullYear();
         return (
@@ -68,9 +66,7 @@ class Certificate extends Component {
                             {/*<img src={logo} height="100" width="100">*/}
                             {/*</img> &nbsp; &nbsp; &nbsp; &nbsp;*/}
                             <div style={{backgroundColor: "rgb(61, 61, 61)"}} >
-                            <img src={logo}
-                                 style={{height:"120px",
-                                     width:"500px"}}></img>
+                            <img src={logo} alt="logo" style={{height:"120px", width:"500px"}}></img>
                             </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import logo from "./../../img/accessCycle.png";
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
@@ -15,11 +15,6 @@ import {
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
 } from 'reactstrap';
 
 const mapStateToProps = (state) => {
