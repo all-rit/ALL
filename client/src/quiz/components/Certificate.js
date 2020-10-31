@@ -20,16 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 class Certificate extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        };
-
-
-    }
+    
     getColor=()=>{
         let score = this.props.quizResult;
         score = parseFloat(score);
