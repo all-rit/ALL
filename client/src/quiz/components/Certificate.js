@@ -20,16 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 class Certificate extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        };
-
-
-    }
     getColor=()=>{
         let score = this.props.quizResult;
         score = parseFloat(score);
@@ -45,7 +35,7 @@ class Certificate extends Component {
 
     render() {
         // console.log(this.props);
-        const {state, actions} = this.props;
+        const {state} = this.props;
         var today = new Date();
         var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+ today.getFullYear();
         return (
@@ -68,10 +58,9 @@ class Certificate extends Component {
                             <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>with score of <b style={{color:this.getColor()}}>{this.props.quizResult}</b></span> <br/><br/>
                             <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}><i>dated</i></span><br />
                             <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>{date}</span><br/><br/>
-                            {/*<img src={logo} height="100" width="100">*/}
-                            {/*</img> &nbsp; &nbsp; &nbsp; &nbsp;*/}
                             <div style={{backgroundColor: "rgb(61, 61, 61)"}} >
                             <img src={logo}
+                                alt="logo"
                                  style={{height:"120px",
                                      width:"500px"}}></img>
                             </div>

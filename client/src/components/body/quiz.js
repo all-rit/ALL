@@ -3,7 +3,6 @@ import Quiz from "./../../quiz/App"
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
-import CaseStudy from "../../pages/CaseStudy";
 
 const Reading = ({title, description, links}) => {
     if (links === undefined) {

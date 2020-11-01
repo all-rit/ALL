@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AnswerOption from "./AnswerOption";
 import quizQuestions from "../api/quizQuestions";
 import Certificate from "./Certificate";
 
 function Result(props) {
 
-    function renderTableHeader() {
-        let header = Object.keys(quizQuestions[0])
-        return header.map((key, index) => {
-            return <th key={index}>{key.toUpperCase()}</th>
-        })
-    }
+    // function renderTableHeader() {
+    //     let header = Object.keys(quizQuestions[0])
+    //     return header.map((key, index) => {
+    //         return <th key={index}>{key.toUpperCase()}</th>
+    //     })
+    // }
 
     function isAnswerIncorrect(score) {
-        if (score == 1) {
+        if (score === 1) {
             return true;
         } else {
             return false;
@@ -48,12 +47,14 @@ function Result(props) {
             <ul>
                 {answers.map(function (answer, index) {
                     counter += 1;
-                    if (answer['val'] == 1) {
+                    if (answer['val'] === 1) {
                         return (
                             <li key={index}>{counter}. {answer['content']}
                                 <hr/>
                             </li>
                         );
+                    } else {
+                        return <div></div>
                     }
 
                 })}
@@ -69,13 +70,15 @@ function Result(props) {
             <ul>
                 {choices.map(function (selectedAnswer, index) {
                     counter += 1;
-                    if (selectedAnswer == 1) {
+                    if (selectedAnswer === 1) {
                         return (
                             <li key={index}>{counter}. {answers[counter - 1]['content']}
                                 <hr/>
                             </li>
 
                         );
+                    } else {
+                        return <div></div>
                     }
 
 

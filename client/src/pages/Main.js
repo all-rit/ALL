@@ -12,6 +12,7 @@ import { actions as repairActions } from '../reducers/RepairReducer';
 import {GAME_IDLE} from '../constants';
 import SoundHeader from "../components/main/SoundHeader";
 
+
 const mapStateToProps = (state) => {
 	return {
 		// General
@@ -38,6 +39,7 @@ const mapStateToProps = (state) => {
 		soundEnabled: state.game.soundEnabled,
 		congratulationMessage: state.game.congratulationMessage,
 
+		
 		// Repair specific
 		availableMessage: state.repair.availableMessage,
 		unavailableMessage: state.repair.unavailableMessage,

@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import logo from "./img/accessCycle.png";
 import About from "./components/body/about";
 import Game from "./components/body/game";
 import Reading from "./components/body/reading";
@@ -46,7 +45,7 @@ class App extends Component {
         actions.login();
     }
   componentWillMount() {
-    const {state, actions} = this.props;
+    const {actions} = this.props;
     let x = window.location.href;
     x = x.split('/').pop();
     switch (x) {
@@ -65,12 +64,13 @@ class App extends Component {
       case "quiz":
         actions.setBody(4);
         break;
+      default:
     }
   }
 
 
   render() {
-    const {state, actions} = this.props;
+    const {state} = this.props;
     return (
 
          <div>

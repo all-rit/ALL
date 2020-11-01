@@ -11,7 +11,6 @@
  */
 
 
-"use strict";
 
 
 if (!window.jscolor) { window.jscolor = (function () {
@@ -39,7 +38,7 @@ var jsc = {
 		var matchClass = new RegExp('(^|\\s)(' + className + ')(\\s*(\\{[^}]*\\})|\\s|$)', 'i');
 
 		for (var i = 0; i < elms.length; i += 1) {
-			if (elms[i].type !== undefined && elms[i].type.toLowerCase() == 'color') {
+			if (elms[i].type !== undefined && elms[i].type.toLowerCase() === 'color') {
 				if (jsc.isColorAttrSupported) {
 					// skip inputs of type 'color' if supported by the browser
 					continue;
@@ -60,6 +59,7 @@ var jsc = {
 				var opts = {};
 				if (optsStr) {
 					try {
+						// eslint-disable-next-line
 						opts = (new Function ('return (' + optsStr + ')'))();
 					} catch(eParseError) {
 						jsc.warn('Error parsing jscolor options: ' + eParseError + ':\n' + optsStr);
@@ -75,7 +75,7 @@ var jsc = {
 		var elm = document.createElement('input');
 		if (elm.setAttribute) {
 			elm.setAttribute('type', 'color');
-			if (elm.type.toLowerCase() == 'color') {
+			if (elm.type.toLowerCase() === 'color') {
 				return true;
 			}
 		}
@@ -174,6 +174,7 @@ var jsc = {
 			// IE
 			document.attachEvent('onreadystatechange', function () {
 				if (document.readyState === 'complete') {
+					// eslint-disable-next-line
 					document.detachEvent('onreadystatechange', arguments.callee);
 					fireOnce();
 				}
@@ -183,7 +184,7 @@ var jsc = {
 			window.attachEvent('onload', fireOnce);
 
 			// IE7/8
-			if (document.documentElement.doScroll && window == window.top) {
+			if (document.documentElement.doScroll && window === window.top) {
 				var tryScroll = function () {
 					if (!document.body) { return; }
 					try {
@@ -234,12 +235,13 @@ var jsc = {
 		if (!el) {
 			return;
 		}
+		var ev;
 		if (document.createEvent) {
-			var ev = document.createEvent('HTMLEvents');
+			ev = document.createEvent('HTMLEvents');
 			ev.initEvent(evnt, true, true);
 			el.dispatchEvent(ev);
 		} else if (document.createEventObject) {
-			var ev = document.createEventObject();
+			ev = document.createEventObject();
 			el.fireEvent('on' + evnt, ev);
 		} else if (el['on' + evnt]) { // alternatively use the traditional event model
 			el['on' + evnt]();
@@ -257,7 +259,7 @@ var jsc = {
 		if (!className) {
 			return false;
 		}
-		return -1 != (' ' + elm.className.replace(/\s+/g, ' ') + ' ').indexOf(' ' + className + ' ');
+		return -1 !== (' ' + elm.className.replace(/\s+/g, ' ') + ' ').indexOf(' ' + className + ' ');
 	},
 
 
@@ -437,13 +439,14 @@ var jsc = {
 			var l = (ts[b]+ps[b])/2;
 
 			// compute picker position
+			var pp;
 			if (!thisObj.smartPosition) {
-				var pp = [
+				  pp = [
 					tp[a],
 					tp[b]+ts[b]-l+l*c
 				];
 			} else {
-				var pp = [
+					pp = [
 					-vp[a]+tp[a]+ps[a] > vs[a] ?
 						(-vp[a]+tp[a]+ts[a]/2 > vs[a]/2 && tp[a]+ts[a]-ps[a] >= 0 ? tp[a]+ts[a]-ps[a] : tp[a]) :
 						tp[a],
@@ -508,7 +511,8 @@ var jsc = {
 
 	getPadYComponent : function (thisObj) {
 		switch (thisObj.mode.charAt(1).toLowerCase()) {
-			case 'v': return 'v'; break;
+			case 'v': return 'v';
+			default:
 		}
 		return 's';
 	},
@@ -517,8 +521,9 @@ var jsc = {
 	getSliderComponent : function (thisObj) {
 		if (thisObj.mode.length > 2) {
 			switch (thisObj.mode.charAt(2).toLowerCase()) {
-				case 's': return 's'; break;
-				case 'v': return 'v'; break;
+				case 's': return 's';
+				case 'v': return 'v';
+				default:
 			}
 		}
 		return null;
@@ -623,6 +628,7 @@ var jsc = {
 			switch (jsc.getSliderComponent(thisObj)) {
 			case 's': if (thisObj.hsv[1] === 0) { thisObj.fromHSV(null, 100, null); }; break;
 			case 'v': if (thisObj.hsv[2] === 0) { thisObj.fromHSV(null, null, 100); }; break;
+			default:
 			}
 			jsc.setPad(thisObj, e, 0, 0);
 			break;
@@ -630,6 +636,7 @@ var jsc = {
 		case 'sld':
 			jsc.setSld(thisObj, e, 0);
 			break;
+		default:
 		}
 
 		jsc.dispatchFineChange(thisObj);
@@ -651,6 +658,7 @@ var jsc = {
 				jsc.setSld(thisObj, e, offset[1]);
 				jsc.dispatchFineChange(thisObj);
 				break;
+			default:
 			}
 		}
 	},
@@ -682,6 +690,7 @@ var jsc = {
 		if (thisObj.onFineChange) {
 			var callback;
 			if (typeof thisObj.onFineChange === 'string') {
+				// eslint-disable-next-line
 				callback = new Function (thisObj.onFineChange);
 			} else {
 				callback = thisObj.onFineChange;
@@ -702,6 +711,7 @@ var jsc = {
 		switch (jsc.getPadYComponent(thisObj)) {
 		case 's': thisObj.fromHSV(xVal, yVal, null, jsc.leaveSld); break;
 		case 'v': thisObj.fromHSV(xVal, null, yVal, jsc.leaveSld); break;
+		default:
 		}
 	},
 
@@ -715,6 +725,7 @@ var jsc = {
 		switch (jsc.getSliderComponent(thisObj)) {
 		case 's': thisObj.fromHSV(null, yVal, null, jsc.leavePad); break;
 		case 'v': thisObj.fromHSV(null, null, yVal, jsc.leavePad); break;
+		default:
 		}
 	},
 
@@ -785,6 +796,7 @@ var jsc = {
 					vGrad.addColorStop(0, 'rgba(0,0,0,0)');
 					vGrad.addColorStop(1, 'rgba(0,0,0,1)');
 					break;
+				default:
 				}
 				ctx.fillStyle = vGrad;
 				ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -830,7 +842,7 @@ var jsc = {
 			vRect.appendChild(vGrad);
 			vmlContainer.appendChild(vRect);
 
-			var drawFunc = function (width, height, type) {
+			drawFunc = function (width, height, type) {
 				vmlContainer.style.width = width + 'px';
 				vmlContainer.style.height = height + 'px';
 
@@ -853,6 +865,7 @@ var jsc = {
 				case 'v':
 					vGrad.color = vGrad.color2 = '#000';
 					break;
+				default:
 				}
 			};
 			
@@ -916,7 +929,7 @@ var jsc = {
 			rect.appendChild(grad);
 			vmlContainer.appendChild(rect);
 
-			var drawFunc = function (width, height, color1, color2) {
+			drawFunc = function (width, height, color1, color2) {
 				vmlContainer.style.width = width + 'px';
 				vmlContainer.style.height = height + 'px';
 
@@ -1190,6 +1203,7 @@ var jsc = {
 
 		this.fromString = function (str, flags) {
 			var m;
+			// eslint-disable-next-line
 			if (m = str.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i)) {
 				// HEX notation
 				//
@@ -1212,7 +1226,8 @@ var jsc = {
 					);
 				}
 				return true;
-
+				
+			// eslint-disable-next-line
 			} else if (m = str.match(/^\W*rgba?\(([^)]*)\)\W*$/i)) {
 				var params = m[1].split(',');
 				var re = /^\s*(\d*)(\.\d+)?\s*$/;
@@ -1349,6 +1364,7 @@ var jsc = {
 				case 3: return [m,n,u];
 				case 4: return [n,m,u];
 				case 5: return [u,m,n];
+				default:
 			}
 		}
 
@@ -1634,7 +1650,7 @@ var jsc = {
 				jsc._drawPosition(THIS, 0, 0, 'relative', false);
 			}
 
-			if (p.wrap.parentNode != container) {
+			if (p.wrap.parentNode !== container) {
 				container.appendChild(p.wrap);
 			}
 
@@ -1644,9 +1660,11 @@ var jsc = {
 
 		function redrawPad () {
 			// redraw the pad pointer
+			var yComponent;
 			switch (jsc.getPadYComponent(THIS)) {
-			case 's': var yComponent = 1; break;
-			case 'v': var yComponent = 2; break;
+				case 's': yComponent = 1; break;
+				case 'v': yComponent = 2; break;
+				default:
 			}
 			var x = Math.round((THIS.hsv[0] / 360) * (THIS.width - 1));
 			var y = Math.round((1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1));
@@ -1656,15 +1674,17 @@ var jsc = {
 			jsc.picker.cross.style.top = (y + ofs) + 'px';
 
 			// redraw the slider
+			var color1;
+			var color2;
 			switch (jsc.getSliderComponent(THIS)) {
 			case 's':
 				var rgb1 = HSV_RGB(THIS.hsv[0], 100, THIS.hsv[2]);
 				var rgb2 = HSV_RGB(THIS.hsv[0], 0, THIS.hsv[2]);
-				var color1 = 'rgb(' +
+				color1 = 'rgb(' +
 					Math.round(rgb1[0]) + ',' +
 					Math.round(rgb1[1]) + ',' +
 					Math.round(rgb1[2]) + ')';
-				var color2 = 'rgb(' +
+				color2 = 'rgb(' +
 					Math.round(rgb2[0]) + ',' +
 					Math.round(rgb2[1]) + ',' +
 					Math.round(rgb2[2]) + ')';
@@ -1672,13 +1692,14 @@ var jsc = {
 				break;
 			case 'v':
 				var rgb = HSV_RGB(THIS.hsv[0], THIS.hsv[1], 100);
-				var color1 = 'rgb(' +
+				color1 = 'rgb(' +
 					Math.round(rgb[0]) + ',' +
 					Math.round(rgb[1]) + ',' +
 					Math.round(rgb[2]) + ')';
-				var color2 = '#000';
+				color2 = '#000';
 				jsc.picker.sldGrad.draw(THIS.sliderSize, THIS.height, color1, color2);
 				break;
+			default:
 			}
 		}
 
@@ -1687,9 +1708,11 @@ var jsc = {
 			var sldComponent = jsc.getSliderComponent(THIS);
 			if (sldComponent) {
 				// redraw the slider pointer
+				var yComponent;
 				switch (sldComponent) {
-				case 's': var yComponent = 1; break;
-				case 'v': var yComponent = 2; break;
+				case 's': yComponent = 1; break;
+				case 'v': yComponent = 2; break;
+				default:
 				}
 				var y = Math.round((1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1));
 				jsc.picker.sldPtrOB.style.top = (y - (2 * THIS.pointerBorderWidth + THIS.pointerThickness) - Math.floor(sliderPtrSpace / 2)) + 'px';
