@@ -129,23 +129,6 @@ body {
   text-align: center !important;
 }
 
-
-#mainNav{
-  padding-top: 0px;
-  padding-bottom: 0px;
-
-
-}
-#mainNav .navbar-nav .nav-item .nav-link {
-  font-size: 100%;
-
-
-}
-#mainNav .navbar-brand {
-  font-size: 1.94em;
-  justify-content: space-around;
-
-}
 .leftButton{
   margin-right:15%
 }
@@ -162,20 +145,6 @@ body {
 }
 .labnav{
   padding:0;
-}
-
-@media (max-width: 765px) {
-  .labcontainer {
-    height: auto !important;
-  }
-}
-
-.labul{
-  padding-bottom:15px;
-
-}
-.labcontainer {
-  height: 95px;
 }
 
 .no-margin {
