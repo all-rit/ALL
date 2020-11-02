@@ -5,7 +5,7 @@ let router = express.Router();
 let UserController = require('../controllers/UserController');
 let GameController = require('../controllers/GameController');
 let RepairController = require('../controllers/RepairController');
-
+let UserLabController = require ('../controllers/UserLabController');
 // User Routes
 router.get('/auth/google', UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
@@ -21,5 +21,12 @@ router.post('/repair/submit', RepairController.submitChange);
 
 // Default
 router.get('/user', UserController.main);
+
+//user Lab Routes for lab progress and quiz
+router.post('/startlab', RepairController.submitChange);
+
+START_LAB: '/startlab',
+    COMPLETE_LAB: '/completelab',
+    QUIZ_SCORE: '/quizscore',
 
 module.exports = router;

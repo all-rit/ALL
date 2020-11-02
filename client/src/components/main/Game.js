@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GameService from '../../services/GameService';
-
+import UserLabService from '../../services/UserLabService';
 import GameButtons from './GameButtons';
 import Countdown from './Countdown';
 import HintBox from './HintBox';
@@ -28,7 +28,8 @@ import {
 	HINT_BOX_THINKING,
 	HINT_BOX_OPEN,
 	HINT_BOX_CLOSED,
-	OPEN_HINT_BOX_DELAY
+	OPEN_HINT_BOX_DELAY,
+	LAB_ID
 } from '../../constants';
 
 class Game extends Component {
@@ -42,7 +43,7 @@ class Game extends Component {
 	startGame() {
 		// Proceed with starting the game
 		this.startRound();
-
+		UserLabService.start_lab(LAB_ID);
 		this.timer = setInterval(() => {
 			const { data, handlers } = this.props;
 
@@ -50,7 +51,7 @@ class Game extends Component {
 
 			if (data.time <= 0) {
 				handlers.updateState(GAME_ENDED);
-
+				UserLabService.complete_lab(LAB_ID);
 				// Clear all timers
 				clearInterval(this.timer);
 				clearInterval(this.countdownTimer);

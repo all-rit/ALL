@@ -4,6 +4,8 @@ import Quiz from './components/Quiz';
 import Result from './components/Result';
 import logo from './svg/logo.svg';
 import './App.css';
+import {LAB_ID} from '../constants';
+import UserLabService from '../services/UserLabService';
 
 class App extends Component {
     constructor(props) {
@@ -165,6 +167,7 @@ class App extends Component {
 
     setResults(result) {
         this.setState({result: result});
+        UserLabService.quiz_score(LAB_ID, result);
     }
 
     renderQuiz() {
