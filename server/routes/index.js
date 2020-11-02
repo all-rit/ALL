@@ -23,10 +23,8 @@ router.post('/repair/submit', RepairController.submitChange);
 router.get('/user', UserController.main);
 
 //user Lab Routes for lab progress and quiz
-router.post('/startlab', RepairController.submitChange);
-
-START_LAB: '/startlab',
-    COMPLETE_LAB: '/completelab',
-    QUIZ_SCORE: '/quizscore',
+router.post('/startlab', UserLabController.startLab);
+router.post('/completelab', UserLabController.completeLab);
+router.post('/quizscore', UserLabController.quizScore);
 
 module.exports = router;
