@@ -76,142 +76,129 @@ const Header = (props) => {
     let count = state.app.body;
     const loginEnabled = !(state.game.plays > 0 || (state.game.plays === 0 && state.game.state !== GAME_IDLE));
     return (
+        <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
+            <div className="container">
+                <NavbarBrand href="http://all.rit.edu">
+                    <div className="logo-container justify-content-center">
+                        <img className="logo img-fluid"
+                            src={logo}
+                            style={{
+                                paddingRight: "20px",
+                                paddingBottom: "10px",
+                                paddingTop: "10px",
+                                marginTop: "-10px"
+                            }}
+                            alt="Computing Accessibility"
+                        />
+                    </div>
 
-        <div
-            id="mainNav"
-            style={{
-                backgroundColor: "#3d3d3d",
-                zIndex: "1",
-                position: "fixed",
-                width: "100%",
-                fontSize: "90%",
-            }}>
-            <div className="container labcontainer">
-                <Navbar dark expand="md" className="navbar navbar-expand-lg navbar-dark navbar-dark labnav">
-
-                    <NavbarBrand href="http://all.rit.edu">
-                        <div className="logo-container justify-content-center">
-                            <img className="logo img-fluid"
-                                 src={logo}
-                                 style={{
-                                     paddingRight: "20px",
-                                     paddingBottom: "10px",
-                                     paddingTop: "10px",
-                                     marginTop: "-10px"
-                                 }}
-                                 alt="Computing Accessibility"
-                            />
-                        </div>
-
-                        {/*Accessibility Learning Labs*/}
-                    </NavbarBrand>
-                    <NavbarToggler onClick={toggle}/>
-                    <Collapse isOpen={isOpen} navbar>
-                        <Nav className="ml-auto labul" navbar>
-                            <NavItem class="collapse navbar-collapse"
-                                     id="navbarResponsive"
-                                     > </NavItem>
-                            <NavItem class="collapse navbar-collapse"
-                                     id="navbarResponsive"
-                            >
-                                <NavLink
+                    {/*Accessibility Learning Labs*/}
+                </NavbarBrand>
+                <NavbarToggler onClick={toggle}/>
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem class="collapse navbar-collapse"
+                                id="navbarResponsive"
+                                > </NavItem>
+                        <NavItem class="collapse navbar-collapse"
+                                id="navbarResponsive"
+                        >
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                href="http://all.rit.edu"
+                                style={{color: "#fff"}}>
+                                <ul className="navbar-nav text-uppercase ml-auto">
+                                    <li className="nav-item" style={{align: "right"}}>
+                                        Home
+                                    </li>
+                                </ul>
+                            </NavLink>
+                        </NavItem>
+                        <NavItem
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive">
+                            <NavLink
                                     class="nav-link js-scroll-trigger"
-                                    href="http://all.rit.edu">
-
+                                    onClick={() => handleAbout(actions, state)}
+                                    href="#"
+                                    style={count === 0 ? activeStyle : {color: "#fff"}}>
                                     <ul className="navbar-nav text-uppercase ml-auto">
-                                        <li className="nav-item" style={{align: "right"}}>
-                                            Home
+                                        <li className="nav-item">
+                                            About
                                         </li>
                                     </ul>
                                 </NavLink>
-                            </NavItem>
-                            <NavItem
-                                class="collapse navbar-collapse"
-                                id="navbarResponsive">
-                                 <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => handleAbout(actions, state)}
-                                        href="#"
-                                        style={count === 0 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                About
-                                            </li>
-                                        </ul>
-                                    </NavLink>
-                            </NavItem>
-                            <NavItem
-                                class="collapse navbar-collapse"
-                                id="navbarResponsive">
-                                 <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => handleReading(actions, state)}
-                                        href="#"
-                                        style={count === 1 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                Reading
-                                            </li>
-                                        </ul>
-                                    </NavLink>
+                        </NavItem>
+                        <NavItem
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive">
+                            <NavLink
+                                    class="nav-link js-scroll-trigger"
+                                    onClick={() => handleReading(actions, state)}
+                                    href="#"
+                                    style={count === 1 ? activeStyle : {color: "#fff"}}>
+                                    <ul className="navbar-nav text-uppercase ml-auto">
+                                        <li className="nav-item">
+                                            Reading
+                                        </li>
+                                    </ul>
+                                </NavLink>
 
-                            </NavItem>
-                            <NavItem
-                                class="collapse navbar-collapse"
-                                id="navbarResponsive">
-                                <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => handleGame(actions, state)}
-                                        href="#"
-                                        style={count === 2 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                Game
-                                            </li>
-                                        </ul>
-                                    </NavLink>
+                        </NavItem>
+                        <NavItem
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive">
+                            <NavLink
+                                    class="nav-link js-scroll-trigger"
+                                    onClick={() => handleGame(actions, state)}
+                                    href="#"
+                                    style={count === 2 ? activeStyle : {color: "#fff"}}>
+                                    <ul className="navbar-nav text-uppercase ml-auto">
+                                        <li className="nav-item">
+                                            Game
+                                        </li>
+                                    </ul>
+                                </NavLink>
 
-                            </NavItem>
-                            <NavItem
-                                class="collapse navbar-collapse"
-                                id="navbarResponsive">
-                               <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => handleVideo(actions, state)}
-                                        href="#"
-                                        style={count === 3 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                Video
-                                            </li>
-                                        </ul>
-                                    </NavLink>
+                        </NavItem>
+                        <NavItem
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive">
+                        <NavLink
+                                    class="nav-link js-scroll-trigger"
+                                    onClick={() => handleVideo(actions, state)}
+                                    href="#"
+                                    style={count === 3 ? activeStyle : {color: "#fff"}}>
+                                    <ul className="navbar-nav text-uppercase ml-auto">
+                                        <li className="nav-item">
+                                            Video
+                                        </li>
+                                    </ul>
+                                </NavLink>
 
-                            </NavItem>
-                            <NavItem
-                                class=" collapse navbar-collapse"
-                                id="navbarResponsive">
-                                <NavLink
-                                        class="nav-link js-scroll-trigger"
-                                        onClick={() => handleQuiz(actions, state)}
-                                        href="#"
-                                        style={count === 4 ? activeStyle : null}>
-                                        <ul className="navbar-nav text-uppercase ml-auto">
-                                            <li className="nav-item">
-                                                Quiz
-                                            </li>
-                                        </ul>
-                                    </NavLink>
-                            </NavItem>
-                            <WelcomeMessage user={state.app.user} loginEnabled={loginEnabled} />
+                        </NavItem>
+                        <NavItem
+                            class="collapse navbar-collapse"
+                            id="navbarResponsive"
+                            style={{paddingRight: ".5rem"}}>
+                            <NavLink
+                                    class="nav-link js-scroll-trigger"
+                                    onClick={() => handleQuiz(actions, state)}
+                                    href="#"
+                                    style={count === 4 ? activeStyle : {color: "#fff"}}>
+                                    <ul className="navbar-nav text-uppercase ml-auto">
+                                        <li className="nav-item">
+                                            Quiz
+                                        </li>
+                                    </ul>
+                                </NavLink>
+                        </NavItem>
+                        <WelcomeMessage user={state.app.user} loginEnabled={loginEnabled} />
 
-                        </Nav>
-                    </Collapse>
-                </Navbar>
+                    </Nav>
+                </Collapse>
             </div>
-
-        </div>
-
+        </Navbar>
     );
 };
 

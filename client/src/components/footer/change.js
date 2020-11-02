@@ -125,8 +125,6 @@ class Change extends Component {
 
 
     render() {
-        // console.log(this.props);
-        var ColorPicker = require('rc-color-picker');
         const {state, actions} = this.props;
         let display = state.game.state === "GAME_IDLE" || state.app.body !== 2;
         return (
