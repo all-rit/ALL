@@ -33,3 +33,13 @@ export const CONGRATULATION_MESSAGES = [
 	"Wow, you're an expert treasure hunter!",
 	'Right on!'
 ];
+
+export const LAB_ID = 1;
+
+export const Pages = {
+	0: "About",
+	1: "Reading",
+	2: "Game",
+	3: "Video",
+	4: "Quiz"
+};
