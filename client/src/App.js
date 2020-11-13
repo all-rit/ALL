@@ -14,14 +14,28 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
 
-
-const section = {
-    0: <About/>,
-    1: <Reading/>,
-    2: <Game/>,
-    3: <Video/>,
-    4: <Quiz/>
-};
+export const Sections = [
+  {
+    name: "About",
+    value: <About />
+  },
+  {
+    name: "Reading",
+    value: <Reading />
+  },
+  {
+    name: "Game",
+    value: <Game />
+  },
+  {
+    name: "Video",
+    value: <Video />
+  },
+  {
+    name: "Quiz",
+    value: <Quiz />
+  },
+]
 
 
 const mapStateToProps = (state) => {
@@ -75,7 +89,7 @@ class App extends Component {
 
          <div>
            <Header />
-         <div className = "appBody">{section[state.app.body]}</div>
+         <div className = "appBody">{Sections[state.app.body].value}</div>
           <div>
             <Change />
           </div>

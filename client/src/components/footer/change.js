@@ -9,7 +9,7 @@ import {bindActionCreators} from 'redux';
 import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "../../js/edit/editPage";
 import "../../js/edit/jscolor";
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
-import {Pages} from "../../constants";
+import { Sections } from "../../App";
 const mapStateToProps = (state) => {
     return {
         // General
@@ -31,23 +31,10 @@ class Change extends Component {
             fontSize: 0,
             textColor: false,
             bgColor: false,
-            displayColorPalette: false,
-            nextPage: "",
-            backPage: ""
+            displayColorPalette: false
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
-
-    }
-
-    componentWillMount() {
-        let current_idx = this.props.body;
-        if (current_idx < 4) {
-            this.setState({nextPage: Pages[current_idx + 1]});
-        }
-        if (current_idx > 0){
-            this.setState({backPage: Pages[current_idx - 1]});
-        }
 
     }
 
@@ -92,7 +79,6 @@ class Change extends Component {
         if (count > 0) {
             actions.setBody(count - 1);
         }
-
     };
 
     renderTextColorPalette = () => {
@@ -151,7 +137,7 @@ class Change extends Component {
                         }
                         style={{display: this.disappearBack(state.app.body) ? "none" : "block"}}
                     >
-                        {this.state.backPage}
+                        {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
@@ -159,7 +145,7 @@ class Change extends Component {
                         onClick={() => {this.handleIncrement(state.app.body, actions)}}
                         style={{display: this.disappearNext(state.app.body) ? "none" : "block"}}
                     >
-                        {this.state.nextPage}
+                        {state.app.body < 4 ? Sections[state.app.body + 1].name : ""}
                     </button>
                     <div className="btn-change">
                         <button
