@@ -137,7 +137,7 @@ class Change extends Component {
                         }
                         style={{display: this.disappearBack(state.app.body) ? "none" : "block"}}
                     >
-                        {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
+                        Previous — {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
@@ -145,7 +145,7 @@ class Change extends Component {
                         onClick={() => {this.handleIncrement(state.app.body, actions)}}
                         style={{display: this.disappearNext(state.app.body) ? "none" : "block"}}
                     >
-                        {state.app.body < 4 ? Sections[state.app.body + 1].name : ""}
+                        Next — {state.app.body < 4 ? Sections[state.app.body + 1].name : ""}
                     </button>
                     <div className="btn-change">
                         <button
