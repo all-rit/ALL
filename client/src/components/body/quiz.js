@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import Quiz from "./../../quiz/App"
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
