@@ -182,7 +182,6 @@ class App extends Component {
         return quizQuestions.map((quizQuestion, index) => {
             const {question, answers} = quizQuestion //destructuring
             counter += 1;
-            isIncorrect = isAnswerIncorrect(props.quizScore[counter - 1]);
             return (
                 jsonresults.push({question: question, answers: "", selectedAnswers: ""})
             );
