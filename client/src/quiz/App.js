@@ -150,7 +150,7 @@ class App extends Component {
 
     }
 
-    getResults() {
+    getResults(numerical = false) {
         const myCount = this.state.myCount;
         var correct = 0;
         var total = 0;
@@ -161,12 +161,32 @@ class App extends Component {
             }
         }
         var percent = Math.floor(correct / total * 100);
-        return "" + percent + "%"
+        if (!numerical) {
+            return "" + percent + "%"
+        }
     }
 
     setResults(result) {
-        this.setState({result: result});
-        UserLabService.quiz_score(LAB_ID, result);
+        const results = [{question: "", answers: [], selectedAnswers: []}, {}]
+
+        this.setState({result: result}, ()=>{}
+            // UserLabService.complete_quiz(LAB_ID, this.getResults(true), Result.getJsonResults())
+        )
+    }
+
+
+    getJsonResults() {
+        const jsonresults = []
+        var counter = 0;
+        var isIncorrect = false;
+        return quizQuestions.map((quizQuestion, index) => {
+            const {question, answers} = quizQuestion //destructuring
+            counter += 1;
+            isIncorrect = isAnswerIncorrect(props.quizScore[counter - 1]);
+            return (
+                jsonresults.push({question: question, answers: "", selectedAnswers: ""})
+            );
+        })
     }
 
     renderQuiz() {

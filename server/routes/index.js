@@ -23,8 +23,12 @@ router.post('/repair/submit', RepairController.submitChange);
 router.get('/user', UserController.main);
 
 //user Lab Routes for lab progress and quiz
-router.post('/startlab', UserLabController.startLab);
-router.post('/completelab', UserLabController.completeLab);
-router.post('/quizscore', UserLabController.quizScore);
+router.post('/completeAbout', UserLabController.completeAbout);
+router.post('/completeReading', UserLabController.completeReading);
+router.post('/completeGame', UserLabController.completeGame);
+router.post('/completeVideo', UserLabController.completeVideo);
+
+router.post('/completeQuiz', UserLabController.completeQuiz);
+
 
 module.exports = router;

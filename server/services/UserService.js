@@ -7,6 +7,19 @@ const createLogin = (UserID, UserSessionID) => {
 	});
 };
 
+exports.updateGuestUserId = (userid, usersessionid) =>{
+	return db.Session
+		.findByPk(usersessionid)
+		.then((session) => {
+			session.userid = userid;
+			session.save();
+			return true;
+	}).catch(()=> {
+		console.log('unable to update guest userid')
+		return true;
+	})
+}
+
 exports.authenticate = (data) => {
 	const userSessionID = data.id;
 	const firstName = data.name.givenName;
@@ -38,7 +51,7 @@ exports.authenticate = (data) => {
 		.then((session) => {
 			// Create a new login
 			return createLogin(session.userid, userSessionID).then((login) => {
-				return login.usersessionid;
+				return {usersessionid: login.usersessionid, userid: session.userid};
 			});
 		})
 		.catch((err) => {

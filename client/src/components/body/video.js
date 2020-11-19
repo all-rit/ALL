@@ -1,6 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 
+import {LAB_ID} from '../../constants';
+import UserLabService from '../../services/UserLabService';
 const Video = ({ link, title }) => {
+    useEffect(() => {
+        return () => {
+            UserLabService.complete_video(LAB_ID);
+        }
+    });
   return (
     <div class="container">
       <section class="page-section" style={{ paddingBottom: "25px" }}>
