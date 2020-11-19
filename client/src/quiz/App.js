@@ -167,26 +167,43 @@ class App extends Component {
     }
 
     setResults(result) {
-        const results = [{question: "", answers: [], selectedAnswers: []}, {}]
-
-        this.setState({result: result}, ()=>{}
-            // UserLabService.complete_quiz(LAB_ID, this.getResults(true), Result.getJsonResults())
-        )
+        UserLabService.complete_quiz(LAB_ID, this.getResults(true), this.getJsonResults())
+        this.setState({result: result})
     }
 
 
     getJsonResults() {
         const jsonresults = []
-        var counter = 0;
-        var isIncorrect = false;
-        return quizQuestions.map((quizQuestion, index) => {
+        let counter = 0
+        const selectedAnswers = Object.values(this.state.selectedAnswers);
+        for (const quizQuestion of quizQuestions){
+            //get right answers
             const {question, answers} = quizQuestion //destructuring
-            counter += 1;
-            return (
-                jsonresults.push({question: question, answers: "", selectedAnswers: ""})
-            );
-        })
+            let quizQuestionObject = {Question: question, Answers: [], SelectedAnswers: [], IsCorrect: this.state.myCount[counter] === 1}
+            for (const answer of answers){
+                if (answer['val'] === 1){
+                    quizQuestionObject['Answers'].push(answer['content'])
+                }
+            }
+            //get user selected answers
+            const selectedAnswserQuestion = selectedAnswers[counter];
+            const choices = Object.values(selectedAnswserQuestion);
+            let optionCounter = 0;
+            for (const choice of choices) {
+                //is the choice the one that is selected by user
+                if (choice === 1) {
+                    quizQuestionObject["SelectedAnswers"].push(answers[optionCounter]['content']);
+                }
+                optionCounter += 1;
+            }
+            jsonresults.push(quizQuestionObject);
+            counter +=1;
+        }
+        return JSON.stringify(jsonresults);
     }
+
+
+
 
     renderQuiz() {
         return (
