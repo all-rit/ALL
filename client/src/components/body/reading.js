@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
 import CaseStudy from "../../pages/CaseStudy";
+import {LAB_ID} from '../../constants';
+import UserLabService from '../../services/UserLabService';
 
 const Reading = ({ title, description, links }) => {
   if (links === undefined) {
     links = [null, null, null];
   }
-
+  useEffect(() => {
+    return () => {
+      UserLabService.complete_reading(LAB_ID);
+    }
+  });
   return (
     <div class="container">
       <section class="page-section" style={{ paddingBottom: "25px" }}>
