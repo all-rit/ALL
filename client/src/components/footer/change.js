@@ -9,7 +9,7 @@ import {bindActionCreators} from 'redux';
 import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "../../js/edit/editPage";
 import "../../js/edit/jscolor";
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
-
+import { Sections } from "../../App";
 const mapStateToProps = (state) => {
     return {
         // General
@@ -79,7 +79,6 @@ class Change extends Component {
         if (count > 0) {
             actions.setBody(count - 1);
         }
-
     };
 
     renderTextColorPalette = () => {
@@ -136,17 +135,17 @@ class Change extends Component {
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
                         onClick={() => this.handleDecrement(state.app.body, actions)
                         }
-                        disabled={this.disappearBack(state.app.body) ? "disabled" : false}
+                        style={{display: this.disappearBack(state.app.body) ? "none" : "block"}}
                     >
-                        back
+                        Previous — {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
                         // onClick={() => {this.handleIncrement(state.app.body, actions)}}
                         onClick={() => {this.handleIncrement(state.app.body, actions)}}
-                        disabled={this.disappearNext(state.app.body) ? "disabled" : false}
+                        style={{display: this.disappearNext(state.app.body) ? "none" : "block"}}
                     >
-                        next
+                        Next — {state.app.body < 4 ? Sections[state.app.body + 1].name : ""}
                     </button>
                     <div className="btn-change">
                         <button
