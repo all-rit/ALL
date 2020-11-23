@@ -15,5 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 		{ tableName: 'session' }
 	);
 
+	//Session.sync();
+	//commented out throws error due to usersessionidtype
 	return Session;
 };

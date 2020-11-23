@@ -19,6 +19,6 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{ tableName: 'login' }
 	);
-
+	Login.sync();
 	return Login;
 };

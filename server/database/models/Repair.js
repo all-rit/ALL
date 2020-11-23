@@ -26,6 +26,6 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{ tableName: 'audiocue_repair' }
 	);
-
+	Repair.sync();
 	return Repair;
 };

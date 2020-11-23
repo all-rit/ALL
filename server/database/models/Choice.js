@@ -16,6 +16,6 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{ tableName: 'audiocue_choice' }
 	);
-
+	Choice.sync();
 	return Choice;
 };

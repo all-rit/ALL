@@ -164,9 +164,12 @@ class App extends Component {
         if (!numerical) {
             return "" + percent + "%"
         }
+        return percent;
     }
 
     setResults(result) {
+        console.log(this.getResults(true));
+        console.log(this.getJsonResults());
         UserLabService.complete_quiz(LAB_ID, this.getResults(true), this.getJsonResults())
         this.setState({result: result})
     }
