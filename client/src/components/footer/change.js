@@ -119,7 +119,18 @@ class Change extends Component {
     }
 
     handleOutsideClick(e) {
-        this.handleClick();
+        if (this.state.textColor === true) {
+            this.setState({
+                textColor: false,
+            });
+            document.getElementById("text-panel").style.display = "none";
+        }
+        if (this.state.bgColor === true) {
+            this.setState({
+                bgColor: false,
+            });
+            document.getElementById("bg-panel").style.display = "none";
+        }
     }
 
 
@@ -178,11 +189,11 @@ class Change extends Component {
                         >
                             Change Background Color
                         </button>
-                        {this.state.textColor && <div className="div-style-text">
+                        {this.state.textColor && <div id="text-panel" className="div-style-text" onClick={(e) => this.handleOutsideClick(e)}>
                             <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnTextColorChange}
                                               mode="RGB"/>
                         </div>}
-                        {this.state.bgColor && <div className="div-style-bgColor">
+                        {this.state.bgColor && <div id="bg-panel" className="div-style-bgColor" onClick={(e) => this.handleOutsideClick(e)}>
                             <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnBgColorChange}
                                               mode="RGB"/>
                         </div>}

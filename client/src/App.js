@@ -86,14 +86,13 @@ class App extends Component {
   render() {
     const {state} = this.props;
     return (
-
-         <div>
-           <Header />
-         <div className = "appBody">{Sections[state.app.body].value}</div>
-          <div>
-            <Change />
-          </div>
-           </div>
+      <div>
+        <Header />
+        <div className = "appBody">
+          {Sections[state.app.body].value}
+          <Change />  
+        </div>
+      </div>
     );
   }
 }
