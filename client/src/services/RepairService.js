@@ -1,4 +1,4 @@
-import API from './API';
+import {API} from './API';
 
 const endpoints = {
 	SUBMIT_REPAIR: '/repair/submit'
