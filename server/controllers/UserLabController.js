@@ -46,7 +46,7 @@ exports.completeQuiz = (req, res) => {
         usersessionid: req.session.token,
         date: Date.now(),
         quizscore: req.body.quizscore,
-        quizresults: req.body.quizresults
+        quizresult: req.body.quizresult
     }).then(() => {
         res.sendStatus(200);
     })
