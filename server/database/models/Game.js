@@ -17,6 +17,6 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{ tableName: 'audiocue_game' }
 	);
-
+	Game.sync();
 	return Game;
 };

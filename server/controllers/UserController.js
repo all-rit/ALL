@@ -20,9 +20,13 @@ exports.authenticateRedirect = passport.authenticate('google', {
 });
 
 exports.authenticateCallback = (req, res) => {
-	UserService.authenticate(req.user.profile).then((id) => {
-		req.session.token = id;
-		res.redirect(process.env.CLIENT_URL);
+	UserService.authenticate(req.user.profile).then((data) => {
+		UserService.updateGuestUserId(data.userid, req.session.token).then(()=>{
+			req.session.token = data.usersessionid;
+			res.redirect(process.env.CLIENT_URL);
+			}
+		)
+
 	});
 };
 

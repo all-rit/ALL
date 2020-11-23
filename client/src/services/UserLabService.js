@@ -1,26 +1,39 @@
 import API from './API';
 
 const endpoints = {
-    START_LAB: '/startlab',
-    COMPLETE_LAB: '/completelab',
-    QUIZ_SCORE: '/quizscore',
+    COMPLETE_ABOUT: '/completeAbout',
+    COMPLETE_READING: '/completeReading',
+    COMPLETE_GAME: '/completeGame',
+    COMPLETE_VIDEO: '/completeVideo',
+    COMPLETE_QUIZ: '/completeQuiz'
 };
 
 export default {
-    start_lab: (labid) => {
-        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.START_LAB, {
+    complete_about: (labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_ABOUT, {
             labid
         });
     },
-    complete_lab: (labid) => {
-        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_LAB, {
+    complete_reading: (labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_READING, {
             labid
         });
     },
-    quiz_score: (labid, quizscore) => {
-        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.QUIZ_SCORE, {
+    complete_game: (labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_GAME, {
+            labid
+        });
+    },
+    complete_video: (labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_VIDEO, {
+            labid
+        });
+    },
+    complete_quiz: (labid, quizscore, quizresult) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_QUIZ, {
             labid,
-            quizscore
+            quizscore,
+            quizresult
         });
     }
 }

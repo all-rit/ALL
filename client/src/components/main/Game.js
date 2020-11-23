@@ -43,7 +43,6 @@ class Game extends Component {
 	startGame() {
 		// Proceed with starting the game
 		this.startRound();
-		UserLabService.start_lab(LAB_ID);
 		this.timer = setInterval(() => {
 			const { data, handlers } = this.props;
 
@@ -51,7 +50,7 @@ class Game extends Component {
 
 			if (data.time <= 0) {
 				handlers.updateState(GAME_ENDED);
-				UserLabService.complete_lab(LAB_ID);
+				UserLabService.complete_game(LAB_ID);
 				// Clear all timers
 				clearInterval(this.timer);
 				clearInterval(this.countdownTimer);

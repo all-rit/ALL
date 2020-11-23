@@ -1,42 +1,55 @@
 const UserLabService = require('../services/UserLabService');
-const UserService = require('../services/UserService');
 
-exports.startLab = (req, res) => {
-    UserService.getSession(req.session.token).then((data) => {
-        return data.user.userid;
-    }).then((userid) =>
-        UserLabService.startLab({
+exports.completeAbout = (req, res) => {
+    UserLabService.completeAbout({
             labid: req.body.labid,
-            userid: userid
+            usersessionid: req.session.token,
+            date: Date.now()
         }).then(() => {
             res.sendStatus(200);
         })
-    )
 };
 
-exports.completeLab = (req, res) => {
-    UserService.getSession(req.session.token).then((data) => {
-        return data.user.userid;
-    }).then((userid) =>
-        UserLabService.completeLab({
-            labid: req.body.labid,
-            userid: userid
-        }).then(() => {
-            res.sendStatus(200);
-        })
-    )
+exports.completeReading = (req, res) => {
+    UserLabService.completeReading({
+        labid: req.body.labid,
+        usersessionid: req.session.token,
+        date: Date.now()
+    }).then(() => {
+        res.sendStatus(200);
+    })
 };
 
-exports.quizScore = (req, res) => {
-    UserService.getSession(req.session.token).then((data) => {
-        return data.user.userid;
-    }).then((userid) =>
-        UserLabService.quizScore({
-            labid: req.body.labid,
-            userid: userid,
-            quizscore: req.body.quizscore
-        }).then(() => {
-            res.sendStatus(200);
-        })
-    )
+exports.completeGame = (req, res) => {
+    UserLabService.completeGame({
+        labid: req.body.labid,
+        usersessionid: req.session.token,
+        date: Date.now()
+    }).then(() => {
+        res.sendStatus(200);
+    })
 };
+
+exports.completeVideo = (req, res) => {
+    UserLabService.completeVideo({
+        labid: req.body.labid,
+        usersessionid: req.session.token,
+        date: Date.now()
+    }).then(() => {
+        res.sendStatus(200);
+    })
+};
+
+exports.completeQuiz = (req, res) => {
+    UserLabService.completeQuiz({
+        labid: req.body.labid,
+        usersessionid: req.session.token,
+        date: Date.now(),
+        quizscore: req.body.quizscore,
+        quizresult: req.body.quizresult
+    }).then(() => {
+        res.sendStatus(200);
+    })
+};
+
+
