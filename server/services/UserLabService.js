@@ -1,103 +1,160 @@
 const db = require('../database');
 
-
 exports.completeAbout= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
     return db.UserLab
-        .findOrCreate({
-            where:
-                {
-                    usersessionid:usersessionid,
-                    labid:labid
-                }
+        .findOne({
+                where:
+                    {
+                        usersessionid:usersessionid,
+                        labid:labid
+                    }
             }
-        ).then(([userlab, bool])=> {
+        ).then((userlab)=> {
+            if(userlab !== null) {
                 userlab.aboutcompletedtime = datetime;
                 userlab.save();
-                return true;
-
-        })
+            }
+            else{
+                db.UserLab.create({
+                    usersessionid:usersessionid,
+                    labid:labid,
+                    aboutcompletedtime: datetime,
+                });
+            }
+            return true;
+        }).catch((err) => {
+            console.log(err);
+            return true;
+        });
 };
 exports.completeReading= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
     return db.UserLab
-        .findOrCreate({
+        .findOne({
                 where:
                     {
                         usersessionid:usersessionid,
                         labid:labid
                     }
             }
-        ).then(([userlab, bool])=> {
-            userlab.completeReading = datetime;
-            userlab.save();
+        ).then((userlab)=> {
+            if(userlab !== null) {
+                userlab.readingcompletedtime = datetime;
+                userlab.save();
+            }
+            else{
+                db.UserLab.create({
+                    usersessionid:usersessionid,
+                    labid:labid,
+                    readingcompletedtime: datetime,
+                });
+            }
             return true;
-
-        })
+        }).catch((err) => {
+            console.log(err);
+            return true;
+        });
 };
 exports.completeGame= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
     return db.UserLab
-        .findOrCreate({
+        .findOne({
                 where:
                     {
                         usersessionid:usersessionid,
                         labid:labid
                     }
             }
-        ).then(([userlab, bool])=> {
-            userlab.completeGame = datetime;
-            userlab.save();
+        ).then((userlab)=> {
+            if(userlab !== null) {
+                userlab.gamecompletedtime = datetime;
+                userlab.save();
+            }
+            else{
+                db.UserLab.create({
+                    usersessionid:usersessionid,
+                    labid:labid,
+                    gamecompletedtime: datetime,
+                });
+            }
             return true;
-
-        })
+        }).catch((err) => {
+            console.log(err);
+            return true;
+        });
 };
 exports.completeVideo= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
     return db.UserLab
-        .findOrCreate({
+        .findOne({
                 where:
                     {
                         usersessionid:usersessionid,
                         labid:labid
                     }
             }
-        ).then(([userlab, bool])=> {
-            userlab.completeVideo = datetime;
-            userlab.save();
+        ).then((userlab)=> {
+            if(userlab !== null) {
+                userlab.videocompletedtime = datetime;
+                userlab.save();
+            }
+            else{
+                db.UserLab.create({
+                    usersessionid:usersessionid,
+                    labid:labid,
+                    videocompletedtime: datetime,
+                });
+            }
             return true;
-
-        })
+        }).catch((err) => {
+            console.log(err);
+            return true;
+        });
 };
 exports.completeQuiz= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date;
     const quizscore = data.quizscore;
-    const quizresults = data.quizresults;
+    const quizresult = data.quizresult;
     return db.UserLab
-        .findOrCreate({
+        .findOne({
                 where:
                     {
                         usersessionid:usersessionid,
                         labid:labid
                     }
             }
-        ).then(([userlab, bool])=> {
-            if (userlab.quizscore <= quizscore){
-                userlab.quizcompletedtime = datetime;
-                userlab.quizresults = quizresults;
-                userlab.quizscore = quizscore;
-                userlab.save();
-                return true;
+        ).then((userlab)=> {
+            if(userlab !== null){
+                if (userlab.quizscore <= quizscore){
+                    userlab.quizcompletedtime = datetime;
+                    userlab.quizresult = quizresult;
+                    userlab.quizscore = quizscore;
+                    userlab.save();
+                }
             }
-        })
+            else{
+                db.UserLab.create({
+                    usersessionid:usersessionid,
+                    labid:labid,
+                    quizcompletedtime: datetime,
+                    quizresult: quizresult,
+                    quizscore: quizscore,
+                });
+            }
+            return true;
+        }).catch((err) => {
+            console.log(err);
+            return true;
+        });
 };

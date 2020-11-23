@@ -1,5 +1,4 @@
 const UserLabService = require('../services/UserLabService');
-const UserService = require('../services/UserService');
 
 exports.completeAbout = (req, res) => {
     UserLabService.completeAbout({

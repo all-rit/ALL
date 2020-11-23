@@ -164,6 +164,7 @@ class App extends Component {
         if (!numerical) {
             return "" + percent + "%"
         }
+        return percent;
     }
 
     setResults(result) {

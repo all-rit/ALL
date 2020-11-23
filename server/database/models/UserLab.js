@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const UserLab = sequelize.define(
-        'userlab',
+        'UserLab',
         {
             userlabid: {
                 type: DataTypes.INTEGER,
@@ -9,23 +9,24 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             usersessionid: {
-                type: DataTypes.INTEGER
+                type: DataTypes.TEXT
             },
             labid: {
                 type: DataTypes.INTEGER
             },
-            quizscore: { type: DataTypes.INTEGER, default: 0},
+            quizscore: { type: DataTypes.INTEGER, defaultValue: 0},
             aboutcompletedtime: { type: DataTypes.DATE },
             readingcompletedtime: { type: DataTypes.DATE },
             gamecompletedtime: { type: DataTypes.DATE },
+            videocompletedtime: { type: DataTypes.DATE },
             quizcompletedtime: { type: DataTypes.DATE },
-            quizresults: {type: DataTypes.TEXT}
+            quizresult: {type: DataTypes.TEXT}
 
 
 
         },
         { tableName: 'userlab' }
     );
-
+    UserLab.sync();
     return UserLab;
 };
