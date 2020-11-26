@@ -109,38 +109,34 @@ class Change extends Component {
     };
 
     handleClick(e) {
-        let textPanel = document.getElementById('text-panel');
-        let bgPanel = document.getElementById('bg-panel');
-        
-        // if (e.target.id !== "text-panel" && this.state.textColor) {
-        //     textPanel.style.display = "none";
-        //     console.log("Here")
-        //     console.log(textPanel)
-        // }
-        
-        // if (e.target.id !== "bg-panel" && bgPanel !== null) {
-        //     bgPanel.style.display = "none";
-        // }
-        console.log("Parent: ", e.target.parentNode)
-        console.log(e.target.className)
-        
-        if (e.target.className) {
-            if (e.target.parentNode.className.includes("rc-color-picker")) {
-                
-                if (!e.target.className.includes("rc-color-picker") && e.target.id !== "changeTextColor" &&  this.state.textColor === true) {
-                    console.log(this.state.textColor)
+        if (this.state.textColor) {
+            if (e.target.tagName === "HTML") {
+                this.setState({
+                    textColor: false
+                })
+            } else if (e.target.parentNode.className) {
+                if (!e.target.parentNode.className.includes("rc-color-picker") && e.target.id !== "changeTextColor") {
                     this.setState({
                         textColor: false
                     })
-                    console.log(this.state.textColor)
                 }
             }
-            if (!e.target.parentNode.className.includes("rc-color-picker") && e.target.id !== "changeTextColor" &&  this.state.textColor === true) {
+        }
+        if (this.state.bgColor) {
+            if (e.target.tagName === "HTML") {
                 this.setState({
                     bgColor: false
                 })
+            } else if (e.target.parentNode.className) {
+                if (!e.target.parentNode.className.includes("rc-color-picker") && e.target.id !== "changeBackgroundColor") {
+                    this.setState({
+                        bgColor: false
+                    })
+                }
             }
         }
+
+
     }
 
 
@@ -195,6 +191,7 @@ class Change extends Component {
                         </button>
 
                         <button
+                            id="changeBackgroundColor"
                             className="btn btn-text btn-bottom-buttons text-uppercase"
                             onClick={this.renderBgColorPalette}
                         >
