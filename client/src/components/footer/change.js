@@ -31,11 +31,11 @@ class Change extends Component {
             bgColor: false,
             displayColorPalette: false
         };
-        this.handleMouseDown = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
     
     componentDidMount() {
-        document.addEventListener("click", this.handleMouseDown)
+        document.addEventListener("click", this.handleClick)
     }
 
     componentDidUpdate(prevprops){
@@ -45,7 +45,7 @@ class Change extends Component {
     }
     
     componentWillUnmount() {
-        document.removeEventListener("click")
+        document.removeEventListener("click", this.handleClick)
     }
 
     changeSize = (size) => {
@@ -166,7 +166,7 @@ class Change extends Component {
                     </button>
                     <div className="btn-change">
                         <button
-                            class="btn-text btn btn-bottom-buttons text-uppercase"
+                            className="btn-text btn btn-bottom-buttons text-uppercase"
                             alt="Increase text size"
                             title="Larger text"
                             onClick={() => this.changeSize(1)}
