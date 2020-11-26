@@ -5,6 +5,7 @@ import "./../../css/agency.min.css";
 import "./../../css/style.css";
 import {LAB_ID} from '../../constants';
 import UserLabService from '../../services/UserLabService';
+import Change from '../../components/footer/change';
 
 const About = ({ title, description, links }) => {
   if (links === undefined) {
@@ -41,6 +42,7 @@ const About = ({ title, description, links }) => {
         watch related videos, and take a quiz to test your knowledge. Click "Next" to start!
       </p>
       </div>
+      <Change />
     </div>
   );
 };

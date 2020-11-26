@@ -4,7 +4,7 @@ import Game from "./components/body/game";
 import Reading from "./components/body/reading";
 import Video from "./components/body/video";
 import Quiz from "./components/body/quiz";
-import Change from "./components/footer/change";
+// import Change from "./components/footer/change";
 import Header from "./components/header/header"
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import "./css/agency.min.css";
@@ -90,7 +90,7 @@ class App extends Component {
         <Header />
         <div className = "appBody">
           {Sections[state.app.body].value}
-          <Change />  
+          {/* <Change />   */}
         </div>
       </div>
     );
