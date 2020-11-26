@@ -27,7 +27,7 @@ class App extends Component {
         this.setNextQuestion = this.setNextQuestion.bind(this)
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         for (var i = 0; i < quizQuestions.length; i++) {
             for (var x = 0; x < quizQuestions[i]['answers'].length; x++) {
                 quizQuestions[i]['answers'][x]['type'] = "" + x;
