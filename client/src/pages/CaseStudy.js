@@ -88,7 +88,7 @@ class CaseStudy extends Component {
 					in Figure 1) to make their website accessible for Deaf and Hard of Hearing users.
 				</p>
 
-				<img class="center" src={Image1} alt="Netflix's implemented subtitles settings" />
+				<img className="center" src={Image1} alt="Netflix's implemented subtitles settings" />
 
 				<div>
 					<b>Figure 1</b>

@@ -9,24 +9,24 @@ const Video = ({ link, title }) => {
         }
     });
   return (
-    <div class="container">
-      <section class="page-section" style={{ paddingBottom: "25px" }}>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-center">
+    <div className="container">
+      <section className="page-section" style={{ paddingBottom: "25px" }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
               <br />
               <br />
-              <h2 class="section-heading text-uppercase">
+              <h2 className="section-heading text-uppercase">
                 Treasure Hunter: Video
               </h2>
             </div>
           </div>
         </div>
       </section>
-      <div class="row">
+      <div className="row">
         <h4>Here are some videos to aid in understanding the material.</h4>
       </div>
-      <div class="row">
+      <div className="row">
         <iframe
           title="Audio Cues"
           width="560"
@@ -37,10 +37,10 @@ const Video = ({ link, title }) => {
           allowfullscreen
         ></iframe>
       </div>
-      <div class="row">
+      <div className="row">
         <p>Audio Cues</p>
       </div>
-      <div class="row">
+      <div className="row">
         <iframe
           title="Audio Cues Lecture"
           width="560"
@@ -51,7 +51,7 @@ const Video = ({ link, title }) => {
           allowfullscreen
         ></iframe>
       </div>
-      <div class="row">
+      <div className="row">
         <p>Audio Cues Lecture</p>
       </div>
     </div>

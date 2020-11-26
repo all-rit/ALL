@@ -11,21 +11,21 @@ import Main from "./../../pages/Main";
 class Game extends Component {
   render() {
     return (
-      <div class="container">
-        <section class="page-section" style={{ paddingBottom: "0" }}>
-          <div class="container">
-            <div class="row no-margin">
-              <div class="col-lg-12 text-center">
+      <div className="container">
+        <section className="page-section" style={{ paddingBottom: "0" }}>
+          <div className="container">
+            <div className="row no-margin">
+              <div className="col-lg-12 text-center">
                 <br />
                 <br />
-                <h2 class="section-heading text-uppercase">
+                <h2 className="section-heading text-uppercase">
                   Treasure Hunter: Game
                 </h2>
               </div>
             </div>  
           </div>
         </section>
-        <div class="row">
+        <div className="row">
           <Main path="/" />
         </div>
       </div>

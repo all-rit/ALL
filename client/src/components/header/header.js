@@ -97,14 +97,14 @@ const Header = (props) => {
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <NavItem class="collapse navbar-collapse"
+                        <NavItem className="collapse navbar-collapse"
                                 id="navbarResponsive"
                                 > </NavItem>
-                        <NavItem class="collapse navbar-collapse"
+                        <NavItem className="collapse navbar-collapse"
                                 id="navbarResponsive"
                         >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                className="nav-link js-scroll-trigger"
                                 href="http://all.rit.edu"
                                 style={{color: "#fff"}}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
@@ -115,10 +115,10 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
                         <NavItem
-                            class="collapse navbar-collapse"
+                            className="collapse navbar-collapse"
                             id="navbarResponsive">
                             <NavLink
-                                    class="nav-link js-scroll-trigger"
+                                    className="nav-link js-scroll-trigger"
                                     onClick={() => handleAbout(actions, state)}
                                     href="#"
                                     style={count === 0 ? activeStyle : {color: "#fff"}}>
@@ -130,10 +130,10 @@ const Header = (props) => {
                                 </NavLink>
                         </NavItem>
                         <NavItem
-                            class="collapse navbar-collapse"
+                            className="collapse navbar-collapse"
                             id="navbarResponsive">
                             <NavLink
-                                    class="nav-link js-scroll-trigger"
+                                    className="nav-link js-scroll-trigger"
                                     onClick={() => handleReading(actions, state)}
                                     href="#"
                                     style={count === 1 ? activeStyle : {color: "#fff"}}>
@@ -146,10 +146,10 @@ const Header = (props) => {
 
                         </NavItem>
                         <NavItem
-                            class="collapse navbar-collapse"
+                            className="collapse navbar-collapse"
                             id="navbarResponsive">
                             <NavLink
-                                    class="nav-link js-scroll-trigger"
+                                    className="nav-link js-scroll-trigger"
                                     onClick={() => handleGame(actions, state)}
                                     href="#"
                                     style={count === 2 ? activeStyle : {color: "#fff"}}>
@@ -162,10 +162,10 @@ const Header = (props) => {
 
                         </NavItem>
                         <NavItem
-                            class="collapse navbar-collapse"
+                            className="collapse navbar-collapse"
                             id="navbarResponsive">
                         <NavLink
-                                    class="nav-link js-scroll-trigger"
+                                    className="nav-link js-scroll-trigger"
                                     onClick={() => handleVideo(actions, state)}
                                     href="#"
                                     style={count === 3 ? activeStyle : {color: "#fff"}}>
@@ -178,11 +178,11 @@ const Header = (props) => {
 
                         </NavItem>
                         <NavItem
-                            class="collapse navbar-collapse"
+                            className="collapse navbar-collapse"
                             id="navbarResponsive"
                             style={{paddingRight: ".5rem"}}>
                             <NavLink
-                                    class="nav-link js-scroll-trigger"
+                                    className="nav-link js-scroll-trigger"
                                     onClick={() => handleQuiz(actions, state)}
                                     href="#"
                                     style={count === 4 ? activeStyle : {color: "#fff"}}>
