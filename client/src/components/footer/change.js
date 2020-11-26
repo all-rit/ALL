@@ -10,23 +10,21 @@ import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} fr
 import "../../js/edit/jscolor";
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
 import { Sections } from "../../App";
+
 const mapStateToProps = (state) => {
     return {
         // General
         state: state
     };
 };
+
 const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(appActions, dispatch)
 });
 
-
-
 class Change extends Component {
-
     constructor(props) {
         super(props);
-
         this.state = {
             fontSize: 0,
             textColor: false,
@@ -34,14 +32,20 @@ class Change extends Component {
             displayColorPalette: false
         };
         this.handleClick = this.handleClick.bind(this);
-        this.handleOutsideClick = this.handleOutsideClick.bind(this);
-
+    }
+    
+    componentDidMount() {
+        document.addEventListener("click", this.handleClick)
     }
 
     componentDidUpdate(prevprops){
        if (prevprops.state.app.body !== this.props.state.app.body) {
            this.adjustSize(this.state.fontSize);
        }
+    }
+    
+    componentWillUnmount() {
+        document.removeEventListener("click", this.handleClick)
     }
 
     changeSize = (size) => {
@@ -104,22 +108,35 @@ class Change extends Component {
         setBackgroundColor(obj.color)
     };
 
-
-    handleClick() {
-        if (!this.state.displayColorPalette) {
-            // attach/remove event handler
-            document.addEventListener('click', this.handleOutsideClick, false);
-        } else {
-            document.removeEventListener('click', this.handleOutsideClick, false);
+    handleClick(e) {
+        if (this.state.textColor) {
+            if (e.target.tagName === "HTML") {
+                this.setState({
+                    textColor: false
+                })
+            } else if (e.target.parentNode.className) {
+                if (!e.target.parentNode.className.includes("rc-color-picker") && e.target.id !== "changeTextColor") {
+                    this.setState({
+                        textColor: false
+                    })
+                }
+            }
+        }
+        if (this.state.bgColor) {
+            if (e.target.tagName === "HTML") {
+                this.setState({
+                    bgColor: false
+                })
+            } else if (e.target.parentNode.className) {
+                if (!e.target.parentNode.className.includes("rc-color-picker") && e.target.id !== "changeBackgroundColor") {
+                    this.setState({
+                        bgColor: false
+                    })
+                }
+            }
         }
 
-        this.setState(prevState => ({
-            displayColorPalette: !prevState.displayColorPalette,
-        }));
-    }
 
-    handleOutsideClick(e) {
-        this.handleClick();
     }
 
 
@@ -149,7 +166,7 @@ class Change extends Component {
                     </button>
                     <div className="btn-change">
                         <button
-                            class="btn-text btn btn-bottom-buttons text-uppercase"
+                            className="btn-text btn btn-bottom-buttons text-uppercase"
                             alt="Increase text size"
                             title="Larger text"
                             onClick={() => this.changeSize(1)}
@@ -165,6 +182,7 @@ class Change extends Component {
                             Text-
                         </button>
                         <button
+                            id="changeTextColor"
                             className="btn btn-text btn-bottom-buttons text-uppercase"
                             onClick={this.renderTextColorPalette}
                         >
@@ -173,18 +191,17 @@ class Change extends Component {
                         </button>
 
                         <button
+                            id="changeBackgroundColor"
                             className="btn btn-text btn-bottom-buttons text-uppercase"
                             onClick={this.renderBgColorPalette}
                         >
                             Change Background Color
                         </button>
-                        {this.state.textColor && <div className="div-style-text">
-                            <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnTextColorChange}
-                                              mode="RGB"/>
+                        {this.state.textColor && <div id="text-panel" className="div-style-text" style={{display: this.state.textColor === true ? "block" : "none"}}>
+                            <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnTextColorChange} />
                         </div>}
-                        {this.state.bgColor && <div className="div-style-bgColor">
-                            <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnBgColorChange}
-                                              mode="RGB"/>
+                        {this.state.bgColor && <div id="bg-panel" className="div-style-bgColor">
+                            <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnBgColorChange} />
                         </div>}
                     </div>
                 </div>

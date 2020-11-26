@@ -22,7 +22,7 @@ class GameInstructions extends Component {
 		this.controls = this.controls.bind(this);
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		window.addEventListener('keydown', this.controls, false);
 	}
 

@@ -17,21 +17,21 @@ const About = ({ title, description, links }) => {
   });
 
   return (
-    <div class="container">
-      <section class="page-section" style={{ paddingBottom: "25px" }}>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-center">
+    <div className="container">
+      <section className="page-section" style={{ paddingBottom: "25px" }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
               <br />
               <br />
-              <h2 class="section-heading text-uppercase">
+              <h2 className="section-heading text-uppercase">
                 Treasure Hunter: About
               </h2>
             </div>
           </div>
         </div>
       </section>
-      <div class="study">
+      <div className="study">
       <p>
         In this lab, you will learn why it is important to create software
         that is accessible to users with hearing impairments.
