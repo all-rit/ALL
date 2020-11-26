@@ -19,7 +19,7 @@ class Repair extends Component {
 		};
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const { data } = this.props;
 
 		this.setState({

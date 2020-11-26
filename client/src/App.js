@@ -58,7 +58,7 @@ class App extends Component {
         }
         actions.login();
     }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {actions} = this.props;
     let x = window.location.href;
     x = x.split('/').pop();
