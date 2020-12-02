@@ -90,8 +90,8 @@ class App extends Component {
         <Header />
         <div className = "appBody">
           {Sections[state.app.body].value}
-           <Change />
         </div>
+        <Change />
       </div>
     );
   }
