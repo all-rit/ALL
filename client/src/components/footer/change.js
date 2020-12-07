@@ -54,7 +54,14 @@ class Change extends Component {
         this.setState({fontSize: state_size + size});
     };
     adjustSize = (fontSize) => {
-        onNextPageChangeTSize(fontSize);
+        for (let x=0; x<Math.abs(fontSize);x++){
+            if(fontSize<0 ) {
+                onNextPageChangeTSize(-1);
+            }
+            else{
+                onNextPageChangeTSize(1);
+            }
+        }
     };
 
     disappearNext = (count) => {
