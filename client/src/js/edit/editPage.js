@@ -118,39 +118,17 @@ export function onNextPageChangeTSize(size) {
 }
 
 export function setTextColor(picker) {
-    // document.getElementsByTagName("body")[0].style.color =
-    //     "#" + picker.toString();
     var bodyElements = document.getElementsByTagName('body');
-
     for (var i = 0; i < bodyElements.length; i++) {
         bodyElements[i].style.color = picker.toString();
-    }
-    var elems = document.querySelectorAll("quiz");
-    var index = 0, length = elems.length;
-    for (; index < length; index++) {
-        if (elems[index] !== undefined) {
-            elems[index].style.backgroundColor = picker.toString();
-        }
-
     }
 }
 
 export function setBackgroundColor(picker) {
-    // document.getElementsByTagName("body")[0].style.backgroundColor =
-    //     "#" + picker.toString();
-    var bodyElements = document.getElementsByTagName('body');
-
+    var bodyElements = document.querySelectorAll('body, .quiz, .result');
     for (var i = 0; i < bodyElements.length; i++) {
         bodyElements[i].style.backgroundColor = picker.toString();
     }
-    var elems = document.querySelectorAll(".quiz, .result");
-    var index = 0, length = elems.length;
-    for (; index < length; index++) {
-        if (elems[index] !== undefined) {
-            elems[index].style.backgroundColor = picker.toString();
-        }
-    //    background-color
 
-    }
 
 }
