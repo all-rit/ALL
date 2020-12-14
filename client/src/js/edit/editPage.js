@@ -11,7 +11,6 @@ export function changeTSize(num, className = null) {
             var fontSize = parseFloat(fontSizeString);
             elems[index].style.fontSize = fontSize + num + "px";
         }
-
     }
 
     //Image
@@ -30,7 +29,6 @@ export function changeTSize(num, className = null) {
             var width = parseFloat(fontSizeString);
             elems[index].style.width = width + num + "px";
         }
-
     }
 }
 
@@ -45,7 +43,6 @@ export function onNextPageChangeTSize(size) {
             var fontSize = parseFloat(fontSizeString);
             elems[index].style.fontSize = fontSize + size + "px";
         }
-
     }
 }
 
@@ -61,6 +58,4 @@ export function setBackgroundColor(picker) {
     for (var i = 0; i < bodyElements.length; i++) {
         bodyElements[i].style.backgroundColor = picker.toString();
     }
-
-
 }
