@@ -11,7 +11,6 @@ const Video = ({ link, title }) => {
   return (
     <div className="container">
       <section className="page-section" style={{ paddingBottom: "25px" }}>
-        <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
               <br />
@@ -21,7 +20,6 @@ const Video = ({ link, title }) => {
               </h2>
             </div>
           </div>
-        </div>
       </section>
       <div className="row">
         <h4>Here are some videos to aid in understanding the material.</h4>
