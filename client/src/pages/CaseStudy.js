@@ -1,7 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-
+import { Pie } from "react-chartjs-2";
 import Image1 from '../assets/images/casestudy/1.jpg';
+
+
+const data = {
+    labels: [
+      "Deaf (ASL is primary language)",
+      "Oral Deaf",
+      "Profound hearing loss",
+	  "Severe hearing loss",
+	  "Moderate hearing loss",
+	  "Mild hearing loss"
+    ],
+    datasets: [
+      {
+		//http://www.nchearingloss.org/article_demographics.htm
+        label: "Approxiate Deaf and Hard of Hearing Population in the United States",
+        borderColor: "black",
+        backgroundColor: ["crimson", "orange", "pink", "chartreuse","blue","yellow"],
+        data: [1080000, 1080000, 3600000, 8640000,10800000,10800000],
+        borderWidth: "2"
+      }
+	]
+  };
 
 class CaseStudy extends Component {
 	render() {
@@ -9,6 +31,8 @@ class CaseStudy extends Component {
 			<div className="study">
 				<h1>Case Study</h1>
 
+				<h3>Approxiate Deaf and Hard of Hearing Population in the United States</h3>
+				<Pie data={data} height={100} />
 				<h3>Accessibility Standards</h3>
 
 				<p>
