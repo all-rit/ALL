@@ -28,11 +28,14 @@ function Result(props) {
             const {question, answers} = quizQuestion //destructuring
             counter += 1;
             isIncorrect = isAnswerIncorrect(props.quizScore[counter - 1]);
+
             return (
+                
                 <tr key={index} className={isIncorrect ? 'answer-correct' : 'answer-wrong'}>
                     <td className={'column-width'}>{question}</td>
                     <td className={'column-width'}>{renderTableAnswersData(answers)}</td>
                     <td className={'column-width'}>{renderTableSelectedAnswersData(props.selectedAnswers[counter - 1], answers)}</td>
+                    <td className={'column-width'}>{isIncorrect ? 'Correct' : 'Not Correct'}</td>
                 </tr>
 
             );
@@ -102,8 +105,9 @@ function Result(props) {
                         <tr>
                             {/*{renderTableHeader()}*/}
                             <th>QUESTION</th>
-                            <th>ANSWERS</th>
+                            <th>CORRECT ANSWERS</th>
                             <th>SELECTED ANSWERS</th>
+                            <th>RESULTS</th>
                         </tr>
                         {renderTableData()}
                         </tbody>
