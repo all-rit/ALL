@@ -18,9 +18,9 @@ const data = {
 		//http://www.nchearingloss.org/article_demographics.htm
         label: "Approxiate Deaf and Hard of Hearing Population in the United States",
         borderColor: "black",
-        backgroundColor: ["crimson", "orange", "pink", "chartreuse","blue","yellow"],
-        data: [1080000, 1080000, 3600000, 8640000,10800000,10800000],
-        borderWidth: "2"
+        backgroundColor: ["#d73027", "#fc8d59", "#fee090", "#e0f3f8","#91bfdb","#4575b4"],
+		  data: [1080000, 1080000, 3600000, 8640000,10800000,10800000],
+        borderWidth: "1"
       }
 	]
   };
