@@ -19,7 +19,6 @@ const data = {
         label: "Approxiate Deaf and Hard of Hearing Population in the United States",
         borderColor: "black",
         backgroundColor: ["#d73027", "#fc8d59", "#fee090", "#e0f3f8","#91bfdb","#4575b4"],
-		  //data: [1080000, 1080000, 3600000, 8640000,10800000,10800000],
 		  data: [1.08, 1.08, 3.6, 8.64,10.8,10.8],
         borderWidth: "1"
       }
