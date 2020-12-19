@@ -159,7 +159,6 @@ const Header = (props) => {
                                         </li>
                                     </ul>
                                 </NavLink>
-
                         </NavItem>
                         <NavItem
                             className="collapse navbar-collapse"
