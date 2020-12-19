@@ -25,11 +25,11 @@ class Certificate extends Component {
         score = parseFloat(score);
         switch (true) {
             case score<=40:
-                return "red";
+                return "crimson";
             case score<=70:
                 return "orange";
             default:
-                return "green";
+                return "chartreuse";
         }
     };
 
