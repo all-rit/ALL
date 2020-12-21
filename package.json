@@ -1,0 +1,19 @@
+{
+  "name": "accessibilitylab1",
+  "version": "1.0.0",
+  "description": "- NodeJS ~= 12.16.2\r - NPM ~= 6.14.4\r May work for other versions but not guaranteed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/all-rit/AccessibilityLab1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/all-rit/AccessibilityLab1/issues"
+  },
+  "homepage": "https://github.com/all-rit/AccessibilityLab1#readme"
+}
