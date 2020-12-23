@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./../../assets/stylesheets/main.scss";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
 import "./../../css/style.css";
+import "./../../css/agency.min.css";
 
 import { connect } from "react-redux";
 

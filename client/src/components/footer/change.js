@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
 import "./../../css/colorPicker.css"

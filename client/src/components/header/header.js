@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import logo from "./../../img/accessCycle.png";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
 import WelcomeMessage from '../main/WelcomeMessage';

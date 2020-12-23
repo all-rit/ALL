@@ -6,7 +6,6 @@ import Video from "./components/body/video";
 import Quiz from "./components/body/quiz";
 import Change from "./components/footer/change";
 import Header from "./components/header/header"
-import "./vendor/bootstrap/css/bootstrap.min.css";
 import "./css/agency.min.css";
 import "./css/style.css";
 import {actions as appActions} from './reducers/AppReducer';

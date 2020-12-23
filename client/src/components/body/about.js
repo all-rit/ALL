@@ -1,6 +1,4 @@
 import React, {useEffect} from "react";
-
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
 import "./../../css/agency.min.css";
 import "./../../css/style.css";
 import {LAB_ID} from '../../constants';
