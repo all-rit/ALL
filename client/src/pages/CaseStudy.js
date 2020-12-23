@@ -172,6 +172,7 @@ class CaseStudy extends Component {
 					</a>{' '}
 					is vital to the continued success of web applications on the internet.
 				</p>
+				<p>Some information for this page was gathered from <a href="http://www.nchearingloss.org" target="_blank" rel="noopener noreferrer">www.nchearingloss.org</a></p>
 
 				<div className="study__actions">
 					<Link to="/supplementary">&laquo; Back to Supplementary Materials</Link>
