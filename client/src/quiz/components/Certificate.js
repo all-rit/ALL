@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
+import "../../assets/stylesheets/components/css/agency.min.css";
+import "../../assets/stylesheets/components/css/style.css";
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/AppReducer';
 import {bindActionCreators} from 'redux';
-import logo from "./../../img/accessCycle.png";
+import logo from "../../assets/images/accessCycle.png";
 
 const mapStateToProps = (state) => {
     return {

@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
-import "./../../css/colorPicker.css"
+import "../../assets/stylesheets/components/css/agency.min.css";
+import "../../assets/stylesheets/components/css/style.css";
+import "../../assets/stylesheets/components/css/colorPicker.css"
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/AppReducer';
 import {bindActionCreators} from 'redux';
-import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "../../js/edit/editPage";
-import "../../js/edit/jscolor";
+import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "./edit/editPage";
+import "./edit/jscolor";
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
 import { Sections } from "../../App";
 
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(appActions, dispatch)
 });
 
-class Change extends Component {
+class Footer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -225,4 +225,4 @@ class Change extends Component {
 
 export default connect(
     mapStateToProps, mapDispatchToProps
-)(Change);
+)(Footer);

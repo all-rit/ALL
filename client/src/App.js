@@ -4,10 +4,10 @@ import Game from "./components/body/game";
 import Reading from "./components/body/reading";
 import Video from "./components/body/video";
 import Quiz from "./components/body/quiz";
-import Change from "./components/footer/change";
+import Change from "./components/footer/footer";
 import Header from "./components/header/header"
-import "./css/agency.min.css";
-import "./css/style.css";
+import "./assets/stylesheets/components/css/agency.min.css";
+import "./assets/stylesheets/components/css/style.css";
 import {actions as appActions} from './reducers/AppReducer';
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";

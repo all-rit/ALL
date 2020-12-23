@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
+import "../../assets/stylesheets/components/css/agency.min.css";
+import "../../assets/stylesheets/components/css/style.css";
 import CaseStudy from "../../pages/CaseStudy";
 import {LAB_ID} from '../../constants';
 import UserLabService from '../../services/UserLabService';
