@@ -9,6 +9,7 @@ import Header from "./components/header/header"
 import "./vendor/bootstrap/css/bootstrap.min.css";
 import "./css/agency.min.css";
 import "./css/style.css";
+
 import {actions as appActions} from './reducers/AppReducer';
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
