@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import logo from "../../assets/images/accessCycle.png";
 import "../../assets/stylesheets/components/css/agency.min.css";
 import "../../assets/stylesheets/components/css/style.css";
-import WelcomeMessage from '../main/WelcomeMessage';
+import WelcomeMessage from './helpers/WelcomeMessage';
 import {connect} from "react-redux";
-import {actions as appActions} from '../../reducers/AppReducer';
+import {actions as appActions} from '../../reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
 import {
     Collapse,
@@ -15,7 +15,7 @@ import {
     NavItem,
     NavLink
 } from 'reactstrap';
-import {GAME_IDLE} from "../../constants";
+import {GAME_IDLE} from "../../constants/lab1";
 
 const mapStateToProps = (state) => {
     return {
@@ -192,7 +192,7 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
-                        <WelcomeMessage user={state.app.user} loginEnabled={loginEnabled} />
+                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
 
                     </Nav>
                 </Collapse>

@@ -1,16 +1,17 @@
 import React, {Component} from "react";
-import About from "./components/body/about";
-import Game from "./components/body/game";
-import Reading from "./components/body/reading";
-import Video from "./components/body/video";
-import Quiz from "./components/body/quiz";
+import About from "./components/body/lab1/about";
+import Game from "./components/body/lab1/game";
+import Reading from "./components/body/lab1/reading";
+import Video from "./components/body/lab1/video";
+import Quiz from "./components/body/lab1/quiz";
 import Change from "./components/footer/footer";
 import Header from "./components/header/header"
 import "./assets/stylesheets/components/css/agency.min.css";
 import "./assets/stylesheets/components/css/style.css";
-import {actions as appActions} from './reducers/AppReducer';
+import {actions as appActions} from './reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
+import {actions as mainActions} from "./reducers/MainReducer";
 
 
 export const Sections = [
@@ -43,18 +44,18 @@ const mapStateToProps = (state) => {
     state: state
   };
 };
-const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(appActions, dispatch)
-});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...appActions, ...mainActions}, dispatch)
+  };
+};
 
 
 class App extends Component {
     state = {count: 0};
    componentDidMount() {
-        const {user, actions} = this.props;
-        if (user !== undefined) {
-            console.log(user);
-        }
+        const {actions} = this.props;
         actions.login();
     }
   UNSAFE_componentWillMount() {

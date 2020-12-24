@@ -3,7 +3,7 @@ import "../../assets/stylesheets/components/css/agency.min.css";
 import "../../assets/stylesheets/components/css/style.css";
 import "../../assets/stylesheets/components/css/colorPicker.css"
 import {connect} from "react-redux";
-import {actions as appActions} from '../../reducers/AppReducer';
+import {actions as appActions} from '../../reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
 import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "./edit/editPage";
 import "./edit/jscolor";
