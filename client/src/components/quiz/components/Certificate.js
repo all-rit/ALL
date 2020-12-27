@@ -36,6 +36,7 @@ class Certificate extends Component {
         // console.log(this.props);
         const {state} = this.props;
         var today = new Date();
+        // console.log(state.game.results);
         var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+ today.getFullYear();
         return (
             <div style={{width:"100%", height:"auto", padding:"20px", border: "10px solid #787878"}}>
@@ -47,8 +48,8 @@ class Certificate extends Component {
                     </div>
                     <br /><br />
                         <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>
-                            {state.app.user !== null
-                                ? <i>This is to certify that <b>{state.app.user.firstname}</b> has completed the course:</i>
+                            {state.main.user !== null
+                                ? <i>This is to certify that <b>{state.main.user.firstname}</b> has completed the course:</i>
                                 : <i>This is to certify that you have completed the course:</i>
                             }
                             </span>
