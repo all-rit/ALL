@@ -16,7 +16,6 @@ import SoundHeader from "./components/SoundHeader";
 const mapStateToProps = (state) => {
 	return {
 		// General
-		user: state.app.user,
 		popupMessage: state.app.popupMessage,
 		instructionsVisible: state.app.instructionsVisible,
 
@@ -60,7 +59,6 @@ const mapDispatchToProps = (dispatch) => {
 class Main extends Component {
 	render() {
 		const {
-			user,
 			popupMessage,
 			instructionsVisible,
 
@@ -97,7 +95,6 @@ class Main extends Component {
 			<Fragment>
 				<SoundHeader
 					state={state}
-					user={user}
 					plays={plays}
 					soundEnabled={soundEnabled}
 					toggleSoundHandler={actions.toggleSound}
