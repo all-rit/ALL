@@ -3,8 +3,6 @@ import classNames from 'classnames/bind';
 import { SketchPicker } from 'react-color';
 import RepairService from '../../../../services/lab1/RepairService';
 
-import Conditional from '../../../helpers/Conditional';
-
 class Repair extends Component {
 	constructor(props) {
 		super(props);
@@ -359,15 +357,17 @@ class Repair extends Component {
 									onClick={this.toggleAvailableBackgroundColorPopup.bind(this)}
 									style={{ backgroundColor: availableBackgroundColor }}
 								/>
-								<Conditional if={availableBackgroundColorPopup}>
-									<div className="code_editor__color_selector">
-										<SketchPicker
-											name="availableBackgroundColor"
-											color={availableBackgroundColor}
-											onChangeComplete={this.changeAvailableBackgroundColorHandler.bind(this)}
-										/>
-									</div>
-								</Conditional>
+								{!!availableBackgroundColorPopup 
+									? (
+										<div className="code_editor__color_selector">
+											<SketchPicker
+												name="availableBackgroundColor"
+												color={availableBackgroundColor}
+												onChangeComplete={this.changeAvailableBackgroundColorHandler.bind(this)}
+											/>
+										</div>
+									) : <div></div>
+								}
 							</div>
 						</div>
 						<p className="code_editor__class">&#125;</p>
@@ -389,21 +389,22 @@ class Repair extends Component {
 									onClick={this.toggleUnavailableBackgroundColorPopup.bind(this)}
 									style={{ backgroundColor: unavailableBackgroundColor }}
 								/>
-								<Conditional if={unavailableBackgroundColorPopup}>
-									<div className="code_editor__color_selector">
-										<SketchPicker
-											name="unavailableBackgroundColor"
-											color={unavailableBackgroundColor}
-											onChangeComplete={this.changeUnavailableBackgroundColorHandler.bind(this)}
-										/>
-									</div>
-								</Conditional>
+								{!!unavailableBackgroundColorPopup 
+									? (
+										<div className="code_editor__color_selector">
+											<SketchPicker
+												name="unavailableBackgroundColor"
+												color={unavailableBackgroundColor}
+												onChangeComplete={this.changeUnavailableBackgroundColorHandler.bind(this)}
+											/>
+										</div>
+									) : <div></div>
+								}
 							</div>
 						</div>
 						<p className="code_editor__class">&#125;</p>
 					</div>
 				</div>
-
 					<button
 						onClick={this.handleSubmit.bind(this)}
 						type="submit"
@@ -411,22 +412,6 @@ class Repair extends Component {
 					>
 						Update
 					</button>
-
-					<Conditional if={unavailableBackgroundColorPopup}>
-						<div
-							className="code_editor__color_selector_background"
-							onClick={this.toggleUnavailableBackgroundColorPopup.bind(this)}
-						/>
-					</Conditional>
-
-					<Conditional if={availableBackgroundColorPopup}>
-						<div
-							className="code_editor__color_selector_background"
-							onClick={this.toggleAvailableBackgroundColorPopup.bind(this)}
-						/>
-					</Conditional>
-
-
 			</div>
 		);
 	}
