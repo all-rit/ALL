@@ -1,8 +1,8 @@
-const RepairService = require('../services/RepairService');
+const RepairService = require('../../services/lab1/RepairService');
 
 exports.submitChange = (req, res) => {
 	RepairService.submitChange({
-		token: req.session.token,
+		usersessionid: req.session.token,
 		availableMessage: req.body.availableMessage,
 		unavailableMessage: req.body.unavailableMessage,
 		availableBackgroundColor: req.body.availableBackgroundColor,
