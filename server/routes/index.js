@@ -3,8 +3,8 @@ let router = express.Router();
 
 // Controller modules
 let UserController = require('../controllers/UserController');
-let GameController = require('../controllers/GameController');
-let RepairController = require('../controllers/RepairController');
+let GameController = require('../controllers/lab1/GameController');
+let RepairController = require('../controllers/lab1/RepairController');
 let UserLabController = require ('../controllers/UserLabController');
 // User Routes
 router.get('/auth/google', UserController.authenticate);
