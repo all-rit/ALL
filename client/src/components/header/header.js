@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import logo from "../../assets/images/accessCycle.png";
-import "../../assets/stylesheets/components/css/agency.min.css";
-import "../../assets/stylesheets/components/css/style.css";
 import WelcomeMessage from './helpers/WelcomeMessage';
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/lab1/AppReducer';

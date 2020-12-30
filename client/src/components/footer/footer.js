@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import "../../assets/stylesheets/components/App.scss"
 import "../../assets/stylesheets/components/css/colorPicker.css"
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/lab1/AppReducer';

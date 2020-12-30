@@ -1,6 +1,5 @@
 import React from "react";
 import Quiz from "../../quiz/App"
-import "../../../assets/stylesheets/components/App.scss"
 const Reading = ({title, description, links}) => {
     if (links === undefined) {
         links = [null, null, null];

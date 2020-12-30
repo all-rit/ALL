@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import "../../../assets/stylesheets/components/App.scss"
 import CaseStudy from "./CaseStudy";
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
