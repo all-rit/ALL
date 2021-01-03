@@ -11,7 +11,7 @@ class Game extends Component {
   render() {
     return (
       <div className="container">
-        <section className="page-section" style={{ paddingBottom: "0" }}>
+        <section className="page-section">
           <div className="container">
             <div className="row no-margin">
               <div className="col-lg-12 text-center">

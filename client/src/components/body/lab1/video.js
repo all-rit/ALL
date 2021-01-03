@@ -10,7 +10,7 @@ const Video = ({ link, title }) => {
     });
   return (
     <div className="container">
-      <section className="page-section" style={{ paddingBottom: "25px" }}>
+      <section className="page-section">
           <div className="row">
             <div className="col-lg-12 text-center">
               <br />
@@ -21,8 +21,9 @@ const Video = ({ link, title }) => {
             </div>
           </div>
       </section>
+        <br/>
       <div className="row">
-        <h4>Here are some videos to aid in understanding the material.</h4>
+        <h5>Here are some videos to aid in understanding the material.</h5>
       </div>
       <div className="row">
         <iframe
@@ -30,10 +31,10 @@ const Video = ({ link, title }) => {
           width="560"
           height="315"
           src="https://www.youtube.com/embed/vU_Di8EtF3M"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+          allowFullScreen
+        />
       </div>
       <div className="row">
         <p>Audio Cues</p>
@@ -44,10 +45,10 @@ const Video = ({ link, title }) => {
           width="560"
           height="315"
           src="https://www.youtube.com/embed/Wlf8A0w66o0"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+          allowFullScreen
+        />
       </div>
       <div className="row">
         <p>Audio Cues Lecture</p>

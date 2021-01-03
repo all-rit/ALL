@@ -37,8 +37,8 @@ class Footer extends Component {
         document.addEventListener("click", this.handleClick)
     }
 
-    componentDidUpdate(prevprops){
-       if (prevprops.state.app.body !== this.props.state.app.body) {
+    componentDidUpdate(prevProps){
+       if (prevProps.state.app.body !== this.props.state.app.body) {
            this.adjustSize(this.state.fontSize);
        }
     }
@@ -64,19 +64,11 @@ class Footer extends Component {
     };
 
     disappearNext = (count) => {
-        if (count >= 4) {
-            return true;
-        } else {
-            return false;
-        }
+        return count >= 4;
     };
 
     disappearBack = (count) => {
-        if (count <= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return count <= 0;
     };
 
     handleIncrement = (count, actions) => {
@@ -141,30 +133,23 @@ class Footer extends Component {
                 }
             }
         }
-
-
     }
-
 
     render() {
         const {state, actions} = this.props;
         let display = state.game.state === "GAME_IDLE" || state.app.body !== 2;
         return (
-
             <div>
                 <div className="container" style={{display: display ? "block" : "none"}}>
-
                     <button
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                        onClick={() => this.handleDecrement(state.app.body, actions)
-                        }
+                        onClick={() => this.handleDecrement(state.app.body, actions)}
                         style={{display: this.disappearBack(state.app.body) ? "none" : "block"}}
                     >
                         Previous — {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                        // onClick={() => {this.handleIncrement(state.app.body, actions)}}
                         onClick={() => {this.handleIncrement(state.app.body, actions)}}
                         style={{display: this.disappearNext(state.app.body) ? "none" : "block"}}
                     >
@@ -192,7 +177,6 @@ class Footer extends Component {
                             className="btn btn-text btn-bottom-buttons text-uppercase"
                             onClick={this.renderTextColorPalette}
                         >
-
                             Change Text Color
                         </button>
 
@@ -216,10 +200,8 @@ class Footer extends Component {
                         The previously available navigation and accessibility buttons are disabled until the game is complete.
                     </div>
                 </div>
-
             </div>
         );
-
     };
 }
 

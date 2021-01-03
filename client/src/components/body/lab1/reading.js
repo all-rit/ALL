@@ -16,7 +16,7 @@ const Reading = ({ title, description, links }) => {
   });
   return (
     <div class="container">
-      <section class="page-section" style={{ paddingBottom: "25px" }}>
+      <section class="page-section">
         <div class="container">
           <div class="row">
             <div class="col-lg-12 text-center">
@@ -29,6 +29,7 @@ const Reading = ({ title, description, links }) => {
           </div>
         </div>
       </section>
+      <br/>
       <div>
         <CaseStudy />
       </div>
