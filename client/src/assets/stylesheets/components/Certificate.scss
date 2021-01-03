@@ -1,0 +1,44 @@
+.outer-border {
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border: 10px solid #787878;
+}
+
+.inner-border{
+	width: 100%;
+	height: auto;
+	border: 5px solid #787878;
+}
+
+.title-div{
+	width: 50%;
+	margin: auto;
+}
+
+.title{
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.normal-text{
+	font-size: 25px;
+	text-align: center;
+	padding: 20px;
+}
+
+.bigger-text{
+	font-size: 30px;
+	text-align: center;
+	padding: 20px;
+}
+
+.logo-div{
+	background-color: rgb(61, 61, 61);
+}
+
+.logo{
+	height: 120px;
+	width: 500px;
+}
