@@ -29,6 +29,26 @@
   }
 }
 
+.navbar{
+  background-color: rgb(60,61,60);
+  padding-top: 1rem;
+}
+
+.active{
+  color: #fed136 !important;
+}
+
+.inactive{
+  color: rgb(255, 255, 255) !important;
+}
+
+.logo{
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: -10px;
+}
+
 .welcome {
   display: inline-flex;
   align-items: center;
