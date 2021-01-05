@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import "../../assets/stylesheets/components/css/agency.min.css";
 import "../../assets/stylesheets/components/css/style.css";
-import "../../assets/stylesheets/components/css/colorPicker.css"
+import "../../assets/stylesheets/components/css/colorPicker.css";
+import "../../assets/stylesheets/components/Footer.scss";
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
@@ -140,19 +141,17 @@ class Footer extends Component {
         let display = state.game.state === "GAME_IDLE" || state.app.body !== 2;
         return (
             <div>
-                <div className="container" style={{display: display ? "block" : "none"}}>
+                <div className={"container " + (display ? "block" : "no-block")}>
                     <button
-                        className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                        onClick={() => this.handleDecrement(state.app.body, actions)}
-                        style={{display: this.disappearBack(state.app.body) ? "none" : "block"}}
-                    >
+                        className={"btn btn-second btn-xl text-uppercase js-scroll-trigger back " +
+                                    (this.disappearBack(state.app.body) ? "no-block" : "block")}
+                        onClick={() => this.handleDecrement(state.app.body, actions)}>
                         Previous — {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
                     </button>
                     <button
-                        className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                        onClick={() => {this.handleIncrement(state.app.body, actions)}}
-                        style={{display: this.disappearNext(state.app.body) ? "none" : "block"}}
-                    >
+                        className={"btn btn-primary btn-xl text-uppercase js-scroll-trigger next " +
+                                    (this.disappearNext(state.app.body) ? "no-block" : "block")}
+                        onClick={() => {this.handleIncrement(state.app.body, actions)}}>
                         Next — {state.app.body < 4 ? Sections[state.app.body + 1].name : ""}
                     </button>
                     <div className="btn-change">
@@ -187,7 +186,9 @@ class Footer extends Component {
                         >
                             Change Background Color
                         </button>
-                        {this.state.textColor && <div id="text-panel" className="div-style-text" style={{display: this.state.textColor === true ? "block" : "none"}}>
+                        {this.state.textColor &&
+                        <div id="text-panel" className={"div-style-text " +
+                            this.state.textColor === true ? "no-block" : "block"}>
                             <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnTextColorChange} />
                         </div>}
                         {this.state.bgColor && <div id="bg-panel" className="div-style-bgColor">
@@ -195,7 +196,7 @@ class Footer extends Component {
                         </div>}
                     </div>
                 </div>
-                <div className="container" style={{display: display ? "none" : "block"}}>
+                <div className={"container " + (display ? "no-block" : "block")}>
                     <div className="btn-information">
                         The previously available navigation and accessibility buttons are disabled until the game is complete.
                     </div>
