@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import quizQuestions from "../api/Lab1/quizQuestions";
+import "../../../assets/stylesheets/components/Result.scss";
 import Certificate from "./Certificate";
 
 function Result(props) {
@@ -13,39 +14,29 @@ function Result(props) {
     // }
 
     function isAnswerIncorrect(score) {
-        if (score === 1) {
-            return true;
-        } else {
-            return false;
-        }
-
+        return score === 1;
     }
 
     function renderTableData() {
-        var counter = 0;
-        var isIncorrect = false;
+        let counter = 0;
+        let isIncorrect = false;
         return quizQuestions.map((quizQuestion, index) => {
             const {question, answers} = quizQuestion //destructuring
             counter += 1;
             isIncorrect = isAnswerIncorrect(props.quizScore[counter - 1]);
-
             return (
-                
                 <tr key={index} className={isIncorrect ? 'answer-correct' : 'answer-wrong'}>
                     <td className={'column-width'}>{question}</td>
                     <td className={'column-width'}>{renderTableAnswersData(answers)}</td>
                     <td className={'column-width'}>{renderTableSelectedAnswersData(props.selectedAnswers[counter - 1], answers)}</td>
                     <td className={'column-width'}>{isIncorrect ? 'Correct' : 'Not Correct'}</td>
                 </tr>
-
             );
-
         })
-
     }
 
     function renderTableAnswersData(answers) {
-        var counter = 0;
+        let counter = 0;
         return (
             <ul>
                 {answers.map(function (answer, index) {
@@ -57,18 +48,16 @@ function Result(props) {
                             </li>
                         );
                     } else {
-                        return <div></div>
+                        return <div/>
                     }
-
                 })}
             </ul>
         )
     }
 
-
     function renderTableSelectedAnswersData(selectedAnswers, answers) {
         const choices = Object.values(selectedAnswers);
-        var counter = 0;
+        let counter = 0;
         return (
             <ul>
                 {choices.map(function (selectedAnswer, index) {
@@ -78,23 +67,16 @@ function Result(props) {
                             <li key={index}>{counter}. {answers[counter - 1]['content']}
                                 <hr/>
                             </li>
-
                         );
                     } else {
-                        return <div></div>
+                        return <div/>
                     }
-
-
                 })}
             </ul>
         )
-
     }
 
-
-
     return (
-
         <div className="quiz container shadow">
             <div className="result">
                 Results <strong>Score: {props.quizResult}</strong>
@@ -112,7 +94,7 @@ function Result(props) {
                         {renderTableData()}
                         </tbody>
                     </table>
-                    <div style={{marginTop:"50px"}}>
+                    <div className={"quiz-result"}>
                         <Certificate  quizResult = {props.quizResult}/>
                     </div>
                 </div>
@@ -120,7 +102,6 @@ function Result(props) {
             </div>
     );
 }
-
 
 Result.propTypes = {
     quizResult: PropTypes.string.isRequired,

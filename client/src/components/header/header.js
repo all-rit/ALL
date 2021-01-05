@@ -172,9 +172,8 @@ const Header = (props) => {
 
                         </NavItem>
                         <NavItem
-                            className="collapse navbar-collapse"
-                            id="navbarResponsive"
-                            style={{paddingRight: ".5rem"}}>
+                            className="collapse navbar-collapse quiz-btn"
+                            id="navbarResponsive">
                             <NavLink
                                 className={"nav-link js-scroll-trigger " + (count === 4 ? "active" : "inactive")}
                                 onClick={() => handleQuiz(actions, state)}

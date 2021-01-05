@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import { SketchPicker } from 'react-color';
 import RepairService from '../../../../services/RepairService';
-
 import Conditional from '../../../helpers/Conditional';
 
 class Repair extends Component {

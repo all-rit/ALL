@@ -56,8 +56,9 @@ class Certificate extends Component {
                     <br/><br/>
                     <span className="bigger-text">Accessibility Learning Lab 1: Accessibility to Sound and Speech</span>
                     <br/><br/>
-                    <span className="normal-text">with a score of <b
-                        style={{color: this.getColor()}}>{this.props.quizResult}</b></span> <br/><br/>
+                    <span className="normal-text">with a score of <b className={this.getColor()}>
+                        {this.props.quizResult}</b></span>
+                    <br/><br/>
                     <span className="normal-text"><i>dated</i></span><br/>
                     <span className="bigger-text">{date}</span><br/><br/>
                     <div className="logo-div">
