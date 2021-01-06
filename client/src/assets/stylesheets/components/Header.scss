@@ -2,7 +2,9 @@
   display: grid;
   min-height: 78px;
   grid-template-columns: 1fr 1fr;
-
+  position:fixed;
+  top:0;
+  
   &__column {
     padding: 1rem;
     font-size: 1.5rem;

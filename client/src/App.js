@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Home from "./components/body/landingpage";
 import About from "./components/body/lab1/about";
 import Game from "./components/body/lab1/game";
 import Reading from "./components/body/lab1/reading";
@@ -18,7 +19,7 @@ import {actions as mainActions} from "./reducers/MainReducer";
 export const Sections = [
   {
     name: "About",
-    value: <About />
+    value: <Home />
   },
   {
     name: "Reading",

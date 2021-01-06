@@ -102,10 +102,9 @@ const Header = (props) => {
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                        {state.main.lab === 0 ?
-                        <NavItem className="collapse navbar-collapse" >
-                        <NavItem className="collapse navbar-collapse" >
+                {state.main.lab === 0 ?
+                    <Nav className="ml-auto" navbar>     
+                        <NavItem class="collapse navbar-collapse" >
                             <NavLink
                                 class="nav-link js-scroll-trigger"
                                 href="#goals"
@@ -117,7 +116,7 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
-                            <NavItem className="collapse navbar-collapse" >
+                            <NavItem class="collapse navbar-collapse" >
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             href="#labs"
@@ -129,7 +128,7 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
-                            <NavItem className="collapse navbar-collapse" >
+                            <NavItem class="collapse navbar-collapse" >
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             href="#contact"
@@ -142,9 +141,9 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
-                        </NavItem>
-                            :
-                            <NavItem className="collapse navbar-collapse">
+                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
+                        </Nav>
+                            :<Nav className="ml-auto" navbar>
                             <NavItem class="collapse navbar-collapse"
                             >
                                 <NavLink
@@ -233,11 +232,9 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
-                            </NavItem>
-                        }
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
-
                     </Nav>
+                }
                 </Collapse>
             </div>
         </Navbar>

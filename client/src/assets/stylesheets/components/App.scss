@@ -21,7 +21,9 @@
     }
   }
 }
-
+.appBody{
+  padding-top: 120px;
+}
 p {
 	line-height: 1.75;
 }
@@ -783,7 +785,12 @@ body {
 	height: auto;
 }
 .labnav {
-	padding: 0;
+  padding: 0;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index: 1;
+
 }
 .no-margin {
 	margin: 0 !important;

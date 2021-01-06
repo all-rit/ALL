@@ -1,0 +1,118 @@
+header.masthead {
+  text-align: center;
+  color: white;
+  height:auto;
+  background-image: url("../../images/div_head.jpg") !important;
+  /**Image=  https://unsplash.com/photos/2FPjlAyMQTA*/
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  box-shadow:inset 0 0 0 2000px rgba(61, 61, 61, 0.4);
+}
+a {
+  color: #0144d5;
+}
+
+a:hover {
+  color: #015f6f;
+}
+
+a.icon:hover {
+  background-color: #fed136 !important;
+}
+
+.text-primary {
+  color: #fed136 !important;
+}
+
+.btn-primary {
+  background-color: #fed136;
+  border-color: #fed135;
+  color: #404040 !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background-color: #e9b301 !important;
+  border-color: white !important;
+  color: #262626 !important;
+}
+
+#mainNav.navbar-shrink {
+  background-color: #3d3d3d !important;
+}
+
+.portfolio-modal .close-modal .lr {
+  background-color: #3d3d3d !important;
+}
+.portfolio-modal .close-modal .lr .rl {
+  background-color: #3d3d3d !important;
+}
+section#contact {
+  background-color: #3d3d3d !important;
+  color: white !important;
+}
+ul.social-buttons li a {
+  background-color: #3d3d3d !important;
+}
+hr.horiz {
+  border-top: 1px solid #868e96;
+  width: 50%;
+}
+.text-muted {
+  color: #868e96;
+}
+
+.btn-change {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  padding: 20px 40px;
+  border: none;
+  float: right;
+}
+
+.btn-text {
+  background-color: white;
+}
+header.masthead {
+  background-color: black;
+}
+.navbar-toggler {
+  background-color: #fed135;
+  border-color: #fed136;
+  color: #404040 !important;
+}
+.col-md-4 {
+  text-align: left;
+  padding: 20px 40px;
+  float: right;
+}
+.vertical-line{
+  border-left: 1px solid #868e96;
+  height: 150px;
+  left: .5%;
+}
+.lab-section-subheading{
+  padding-bottom: 5px;
+  margin-bottom: 40px !important;
+}
+.thumbnail{
+  height: 250px;
+}
+.service-heading{
+  font-weight: 700;
+  font-size: 20px;
+}
+
+#mainNav{
+  height: 93px;
+}
+
+@media (max-width: 1000px){
+    #mainNav{
+    height: auto;
+  }
+}
