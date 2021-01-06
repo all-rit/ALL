@@ -148,8 +148,6 @@ const Header = (props) => {
                             :
                             <NavItem className="collapse navbar-collapse">
                             <NavItem class="collapse navbar-collapse"
-                            > </NavItem>
-                            <NavItem class="collapse navbar-collapse"
                             >
                                 <NavLink
                                     class="nav-link js-scroll-trigger"
