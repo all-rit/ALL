@@ -26,7 +26,8 @@ export default (state = initialState, action) => {
         case types.SET_LAB:
             return {
                 ...state,
-                lab: action.lab
+                lab: action.lab,
+                body: 0
             };
         default:
             return state;
