@@ -16,6 +16,7 @@ import {
     NavLink
 } from 'reactstrap';
 import {GAME_IDLE} from "../../constants/lab1";
+import {actions as mainActions} from "../../reducers/MainReducer";
 
 const mapStateToProps = (state) => {
     return {
@@ -23,9 +24,11 @@ const mapStateToProps = (state) => {
         state: state
     };
 };
-const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(appActions, dispatch)
-});
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators({ ...appActions, ...mainActions}, dispatch)
+    };
+};
 
 const handleAbout = (actions, state) => {
     if(!alert_check(state)) {
@@ -59,7 +62,7 @@ const handleQuiz = (actions,state) => {
 };
 
 const alert_check = (state)=> {
-    if (state.game.state !== "GAME_IDLE" && state.app.body === 2){
+    if (state.game.state !== "GAME_IDLE" && state.main.body === 2){
         alert("The game is still in progress! Please complete the game");
         return true
     }
@@ -72,8 +75,8 @@ const Header = (props) => {
     const activeStyle = {color: "#fed136"};
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
-    let count = state.app.body;
-    const loginEnabled = state.game.state === GAME_IDLE || state.app.body !== 2;
+    let count = state.main.body;
+    const loginEnabled = state.game.state === GAME_IDLE || state.main.body !== 2;
     return (
         <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
             <div className="container">

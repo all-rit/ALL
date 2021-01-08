@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import About from "./components/body/lab1/about";
-import Game from "./components/body/lab1/game";
-import Reading from "./components/body/lab1/reading";
-import Video from "./components/body/lab1/video";
-import Quiz from "./components/body/lab1/quiz";
+import {default as ReadingLab1} from "./components/body/lab1/reading";
+import {default as AboutLab1} from "./components/body/lab1/about";
+import {default as GameLab1} from "./components/body/lab1/game";
+import {default as VideoLab1} from "./components/body/lab1/video";
+import {default as QuizLab1} from "./components/body/lab1/quiz";
+
 import Change from "./components/footer/footer";
 import Header from "./components/header/header"
 import "./assets/stylesheets/components/css/agency.min.css";
@@ -14,28 +15,39 @@ import {connect} from "react-redux";
 import {actions as mainActions} from "./reducers/MainReducer";
 
 
-export const Sections = [
-  {
-    name: "About",
-    value: <About />
+export const Sections = {
+  0: {
+    name: "LandingPage",
+    0: {
+      name: "Main",
+      value: ""
+    }
   },
-  {
-    name: "Reading",
-    value: <Reading />
-  },
-  {
-    name: "Game",
-    value: <Game />
-  },
-  {
-    name: "Video",
-    value: <Video />
-  },
-  {
-    name: "Quiz",
-    value: <Quiz />
-  },
-]
+  1:{
+      name: "Lab1",
+    0:{
+      name: "About",
+      value: <AboutLab1/>
+    },
+    1:{
+      name: "Reading",
+      value: <ReadingLab1/>
+    },
+    2:{
+      name: "Game",
+      value: <GameLab1/>
+    },
+    3:{
+      name: "Video",
+      value: <VideoLab1/>
+    },
+    4:{
+      name: "Quiz",
+      value: <QuizLab1/>
+    }
+  }
+
+}
 
 
 const mapStateToProps = (state) => {
@@ -61,7 +73,7 @@ class App extends Component {
   UNSAFE_componentWillMount() {
     const {actions} = this.props;
     let x = window.location.href;
-    x = x.split('/').pop();
+    x = x.split('/').pop().toLowerCase();
     switch (x) {
       case "about":
         actions.setBody(0);
@@ -79,6 +91,27 @@ class App extends Component {
         actions.setBody(4);
         break;
       default:
+        break;
+    }
+    x = x.split('/').pop().toLowerCase();
+    switch (x) {
+      case "lab1":
+        actions.setLab(1);
+        break;
+      case "lab2":
+        actions.setLab(2);
+        break;
+      case "lab3":
+        actions.setLab(3);
+        break;
+      case "lab4":
+        actions.setLab(4);
+        break;
+      case "":
+        actions.setLab(0);
+        break;
+      default:
+        break;
     }
   }
 
@@ -89,7 +122,7 @@ class App extends Component {
       <div>
         <Header />
         <div className = "appBody">
-          {Sections[state.app.body].value}
+          {Sections[state.main.lab][state.main.body].value}
         </div>
         <Change />
       </div>

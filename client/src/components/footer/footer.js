@@ -4,6 +4,7 @@ import "../../assets/stylesheets/components/css/style.css";
 import "../../assets/stylesheets/components/css/colorPicker.css"
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/lab1/AppReducer';
+import {actions as mainActions} from '../../reducers/MainReducer';
 import {bindActionCreators} from 'redux';
 import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "./edit/editPage";
 import "./edit/jscolor";
@@ -17,10 +18,11 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(appActions, dispatch)
-});
-
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators({ ...appActions, ...mainActions}, dispatch)
+    };
+};
 class Footer extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +40,7 @@ class Footer extends Component {
     }
 
     componentDidUpdate(prevprops){
-       if (prevprops.state.app.body !== this.props.state.app.body) {
+       if (prevprops.state.main.body !== this.props.state.main.body) {
            this.adjustSize(this.state.fontSize);
        }
     }
@@ -148,7 +150,7 @@ class Footer extends Component {
 
     render() {
         const {state, actions} = this.props;
-        let display = state.game.state === "GAME_IDLE" || state.app.body !== 2;
+        let display = state.game.state === "GAME_IDLE" || state.main.body !== 2;
         return (
 
             <div>
@@ -156,19 +158,19 @@ class Footer extends Component {
 
                     <button
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                        onClick={() => this.handleDecrement(state.app.body, actions)
+                        onClick={() => this.handleDecrement(state.main.body, actions)
                         }
-                        style={{display: this.disappearBack(state.app.body) ? "none" : "block"}}
+                        style={{display: this.disappearBack(state.main.body) ? "none" : "block"}}
                     >
-                        Previous — {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
+                        Previous — {state.main.body > 0 ? Sections[state.main.lab][state.main.body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                        // onClick={() => {this.handleIncrement(state.app.body, actions)}}
-                        onClick={() => {this.handleIncrement(state.app.body, actions)}}
-                        style={{display: this.disappearNext(state.app.body) ? "none" : "block"}}
+                        // onClick={() => {this.handleIncrement(state.main.body, actions)}}
+                        onClick={() => {this.handleIncrement(state.main.body, actions)}}
+                        style={{display: this.disappearNext(state.main.body) ? "none" : "block"}}
                     >
-                        Next — {state.app.body < 4 ? Sections[state.app.body + 1].name : ""}
+                        Next — {state.main.body < 4 ? Sections[state.main.lab][state.main.body + 1].name : ""}
                     </button>
                     <div className="btn-change">
                         <button
