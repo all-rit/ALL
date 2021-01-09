@@ -1,7 +1,5 @@
 import React from "react";
 import Quiz from "../../quiz/App"
-import "../../../assets/stylesheets/components/css/agency.min.css";
-import "../../../assets/stylesheets/components/css/style.css";
 const Reading = ({title, description, links}) => {
     if (links === undefined) {
         links = [null, null, null];

@@ -1,0 +1,23 @@
+.landingpage{
+    &__leftalign{
+        text-align: left;
+    }
+    &__contact{
+        color: #bed2fe
+    }
+    &__contact:hover{
+        color:#48e3fe
+    }
+    &__ritlogo{
+        margin-top: 10px; 
+        margin-left: 20px;
+    }
+    &__image{
+        border:2px solid black
+    }
+    &__logos{
+        position: relative;
+        margin-left: 25%;
+    }
+
+}
