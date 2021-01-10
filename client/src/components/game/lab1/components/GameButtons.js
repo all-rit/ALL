@@ -33,7 +33,7 @@ class GameButtons extends Component {
     );
     const startButton = (
       <button
-        className="btn btn-primary btn-xl text-uppercase js-scroll-triggergreen rightButton"
+        className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen rightButton"
         onClick={startGameHandler}
         key="start"
       >
