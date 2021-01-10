@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
 
-const About = () => {
+const About = (lab) => {
   useEffect(() => {
       return () => {
           UserLabService.complete_about(LAB_ID);

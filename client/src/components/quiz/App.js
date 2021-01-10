@@ -1,15 +1,26 @@
 import React, {Component} from 'react';
-import quizQuestions from './api/Lab1/quizQuestions';
+import quizQuestionsLab1 from './api/Lab1/quizQuestions';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import './App.css';
-import {LAB_ID} from '../../constants/lab1';
 import UserLabService from '../../services/UserLabService';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {actions as mainActions} from "../../reducers/MainReducer";
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(mainActions, dispatch)
+    };
+};
+const mapStateToProps = (state) => {
+    return {
+        state: state
+    };
+};
 class App extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             counter: 0,
             questionId: 1,
@@ -21,38 +32,59 @@ class App extends Component {
             disableNextQuestion: true,
             selectedAnswers: {},
             multiChoice: false,
-        };
+            lab:props.state.main.lab,
+            quizQuestions: {}
+        }
+
+        ;
 
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
+        this.assignQuizQuestions = this.assignQuizQuestions.bind(this);
         this.setNextQuestion = this.setNextQuestion.bind(this)
     }
 
-    UNSAFE_componentWillMount() {
-        for (var i = 0; i < quizQuestions.length; i++) {
-            for (var x = 0; x < quizQuestions[i]['answers'].length; x++) {
-                quizQuestions[i]['answers'][x]['type'] = "" + x;
-            }
+    assignQuizQuestions(){
+        const lab = this.props.state.main.lab;
+        switch (lab) {
+            case 1:
+                return quizQuestionsLab1
+                break;
+            // case 2:
+            //
+            // case 3:
+            //
+            // case 4:
+            default:
+                break;
         }
-
-        // console.log(quizQuestions);
-
     }
 
+    UNSAFE_componentWillMount() {
+        this.setState({quizQuestions: this.assignQuizQuestions()}, ()=>{
+            for (let i = 0; i < this.state.quizQuestions.length; i++) {
+                for (let x = 0; x < this.state.quizQuestions[i]['answers'].length; x++) {
+                    this.state.quizQuestions[i]['answers'][x]['type'] = "" + x;
+                }
+            }
+        })
+    }
+
+
     componentDidMount() {
-        for (var i = 0; i < quizQuestions.length; i++) {
-            quizQuestions[i]['answers'].sort(function (a, b) {
+        for (let i = 0; i < this.state.quizQuestions.length; i++) {
+            this.state.quizQuestions[i]['answers'].sort(function (a, b) {
                 return parseInt(a.type) - parseInt(b.type);
             });
         }
         this.setState({
-            question: quizQuestions[0].question,
-            answerOptions: quizQuestions[0]['answers'],
-            multiChoice: quizQuestions[0]['multiChoice']
+            question: this.state.quizQuestions[0].question,
+            answerOptions: this.state.quizQuestions[0]['answers'],
+            multiChoice: this.state.quizQuestions[0]['multiChoice']
         });
     }
 
     shuffleArray(array) {
-        var currentIndex = array.length,
+        let currentIndex = array.length,
             temporaryValue,
             randomIndex;
 
@@ -93,10 +125,10 @@ class App extends Component {
     }
 
     checkMultipleAnswers(currentAnswers) {
-        var correctAnswer = 0;
-        var options = quizQuestions[this.state.counter]['answers'].length;
+        let correctAnswer = 0;
+        let options = this.state.quizQuestions[this.state.counter]['answers'].length;
         for (var index = 0; index < options; index++) {
-            if (quizQuestions[this.state.counter]['answers'][index]['val'] === currentAnswers[index]) {
+            if (this.state.quizQuestions[this.state.counter]['answers'][index]['val'] === currentAnswers[index]) {
                 correctAnswer = 1;
             } else {
                 correctAnswer = 0;
@@ -108,9 +140,9 @@ class App extends Component {
     }
 
     getCheckedAnswers() {
-        var checked = document.getElementsByName('checkboxGroup');
-        var currentAnswers = {};
-        for (var index = 0; index < checked.length; index++) {
+        let checked = document.getElementsByName('checkboxGroup');
+        let currentAnswers = {};
+        for (let index = 0; index < checked.length; index++) {
             if (checked[index].checked === true) {
                 currentAnswers[index] = 1
 
@@ -123,7 +155,7 @@ class App extends Component {
     }
 
     setNextQuestion() {
-        var currentAnswers = this.getCheckedAnswers();
+        let currentAnswers = this.getCheckedAnswers();
         // console.log("get selected answers:");
         // console.log(currentAnswers);
 
@@ -131,18 +163,18 @@ class App extends Component {
         this.checkMultipleAnswers(currentAnswers);
 
         //Set next question
-        if (this.state.questionId < quizQuestions.length) {
+        if (this.state.questionId < this.state.quizQuestions.length) {
             const counter = this.state.counter + 1;
             const questionId = this.state.questionId + 1;
 
             this.setState({
                 counter: counter,
                 questionId: questionId,
-                question: quizQuestions[counter].question,
-                answerOptions: quizQuestions[counter].answers,
+                question: this.state.quizQuestions[counter].question,
+                answerOptions: this.state.quizQuestions[counter].answers,
                 answer: '',
                 disableNextQuestion: true,
-                multiChoice: quizQuestions[counter].multiChoice,
+                multiChoice: this.state.quizQuestions[counter].multiChoice,
             });
         } else {
             setTimeout(() => this.setResults(this.getResults()), 300);
@@ -152,15 +184,15 @@ class App extends Component {
 
     getResults(numerical = false) {
         const myCount = this.state.myCount;
-        var correct = 0;
-        var total = 0;
+        let correct = 0;
+        let total = 0;
         for (var item in myCount) {
             total++;
             if (myCount.hasOwnProperty(item)) {
                 if (myCount[item] === 1) correct++;
             }
         }
-        var percent = Math.floor(correct / total * 100);
+        let percent = Math.floor(correct / total * 100);
         if (!numerical) {
             return "" + percent + "%"
         }
@@ -168,7 +200,7 @@ class App extends Component {
     }
 
     setResults(result) {
-        UserLabService.complete_quiz(LAB_ID, this.getResults(true), this.getJsonResults())
+        UserLabService.complete_quiz(this.state.lab, this.getResults(true), this.getJsonResults())
         this.setState({result: result})
     }
 
@@ -177,7 +209,7 @@ class App extends Component {
         const jsonresults = []
         let counter = 0
         const selectedAnswers = Object.values(this.state.selectedAnswers);
-        for (const quizQuestion of quizQuestions){
+        for (const quizQuestion of this.state.quizQuestions){
             //get right answers
             const {question, answers} = quizQuestion //destructuring
             let quizQuestionObject = {Question: question, Answers: [], SelectedAnswers: [], IsCorrect: this.state.myCount[counter] === 1}
@@ -214,7 +246,7 @@ class App extends Component {
                     answerOptions={this.state.answerOptions}
                     questionId={this.state.questionId}
                     question={this.state.question}
-                    questionTotal={quizQuestions.length}
+                    questionTotal={this.state.quizQuestions.length}
                     onAnswerSelected={this.handleAnswerSelected}
                     nextQuestion={this.setNextQuestion}
                     disable={this.state.disableNextQuestion}
@@ -242,4 +274,5 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(
+    mapStateToProps, mapDispatchToProps)(App);

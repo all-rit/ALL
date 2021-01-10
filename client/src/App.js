@@ -33,7 +33,7 @@ export const Sections = {
     },
     2:{
       name: "Game",
-      value: <GameLab1 path="/"/>
+      value: <GameLab1/>
     },
     3:{
       name: "Video",
@@ -62,7 +62,6 @@ const mapDispatchToProps = (dispatch) => {
 
 
 class App extends Component {
-    state = {count: 0};
    componentDidMount() {
         const {actions} = this.props;
         actions.login();
