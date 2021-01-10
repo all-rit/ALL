@@ -1,6 +1,6 @@
 import React from "react";
-import "../../../assets/stylesheets/pages/style.css"
-import "../../../assets/stylesheets/pages/agency.min.css"
+import "../../../assets/stylesheets/components/App.scss"
+import "../../../assets/stylesheets/pages/LandingPage.scss"
 import eye from "../../../assets/images/labs/eye.jpg";
 import ear from "../../../assets/images/labs/ear.jpg";
 import braille from "../../../assets/images/labs/braille.jpg";
@@ -23,24 +23,25 @@ const Home = (props) => {
 const {actions} = props;
   return (
   <div class="landingpage">
+    {/* Header */}
       <header class="masthead">
-
-    <div class="container">
-    <div class="intro-text">
-        <div class="intro-lead-in">
-        Welcome To The Accessibility Learning Labs (ALL) project!
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">
+            Welcome To The Accessibility Learning Labs (ALL) project!
+          </div>
+          <div class="intro-heading text-uppercase">
+            Learn about Accessibility
+          </div>
+          <a
+            class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+            href="#goals"
+          >Tell Me More</a
+          >
         </div>
-        <div class="intro-heading text-uppercase">
-        Learn about Accessibility
-        </div>
-        <a
-        class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-        href="#goals"
-        >Tell Me More</a
-        >
-    </div>
-    </div>
+      </div>
     </header>
+    {/* Services */}
     <section class="page-section" id="goals">
       <div class="container">
         <div class="row">
@@ -54,19 +55,19 @@ const {actions} = props;
         </div>
         <div class="row text-center">
           <div class="col-md-4">
-            <p class="service-heading">
+            <p class="service-heading landingpage__leftalign" >
               Create easily adoptable labs (only a browser is need)
             </p>
           </div>
 
-          <div class="vertical-line col-md-4">
-            <p class="service-heading" >
+          <div class="vertical-line col-md-4 ">
+            <p class="service-heading landingpage__leftalign" >
               Inform students how to create accessible software
             </p>
           </div>
 
-          <div class="vertical-line col-md-4">
-            <p class="service-heading">
+          <div class="vertical-line col-md-4 ">
+            <p class="service-heading landingpage__leftalign">
               Demonstrate the importance of creating accessible software
             </p>
           </div>
@@ -74,6 +75,7 @@ const {actions} = props;
       </div>
     </section>
     <hr class="horiz" />
+    {/* Portfolio Grid */}
     <section class="page-section" id="labs">
       <div class="container">
         <div class="row">
@@ -129,8 +131,8 @@ const {actions} = props;
             <div class="portfolio-caption">
               <h4>
                 <a onClick={() => handleLab(actions, 2)} href="#"
-                >Accessibility to Color Blindness</a
-                >
+                >Accessibility to Color Blindness
+                </a>
               </h4>
               <p class="">
                 Learn more about designing the web for color blind individuals.
@@ -192,6 +194,7 @@ const {actions} = props;
       </div>
     </section>
     <hr class="horiz" />
+    {/* Clients */}
     <section class="py-5">
       <div class="container">
         <div
@@ -220,7 +223,7 @@ const {actions} = props;
         </div>
       </div>
     </section>
-
+    {/* Contact */}
     <section class="page-section" id="contact">
       <div class="container">
         <div class="row">
@@ -228,12 +231,28 @@ const {actions} = props;
             <h2 class="section-heading text-uppercase">Contact Us</h2>
             <h3 class="section-subheading text-primary">
               Connect with us if you have questions. Contact Dr. Daniel Krutz at
-              <a class="landingpage__contact" href="mailto:aware@mail.rit.edu ">aware@mail.rit.edu</a>
+              <a class="landingpage__contact" href="mailto:aware@mail.rit.edu "> aware@mail.rit.edu</a>
             </h3>
           </div>
         </div>
       </div>
     </section>
+    {/* Footer */}
+    <footer class="footer">
+      <ul class="list-inline quicklinks">
+        <li class="list-inline-item">
+          <a
+            href="https://www.nsf.gov/pubs/2016/nsf16009/nsf16009.jsp#q37" target="_blank"
+            >Available under the Federal Government License</a
+          >
+        </li>
+        <li>
+          <a href="sitemap.js" >
+            Site Map
+          </a>
+        </li>
+      </ul>
+    </footer>
     </div>
   );
 };
