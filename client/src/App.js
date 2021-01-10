@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import "./assets/stylesheets/components/App.scss"
 import {default as ReadingLab1} from "./components/body/lab1/reading";
 import {default as AboutLab1} from "./components/body/lab1/about";
 import {default as GameLab1} from "./components/game/lab1/Main";
@@ -12,6 +11,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 import {actions as mainActions} from "./reducers/MainReducer";
 import BodyHeader from "./components/header/BodyHeader";
+import "./assets/stylesheets/main.scss";
 
 export const Sections = {
   0: {
@@ -33,7 +33,7 @@ export const Sections = {
     },
     2:{
       name: "Game",
-      value: <GameLab1/>
+      value: <GameLab1 path="/"/>
     },
     3:{
       name: "Video",
