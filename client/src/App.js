@@ -1,20 +1,17 @@
 import React, {Component} from "react";
+import "./assets/stylesheets/components/App.scss"
 import {default as ReadingLab1} from "./components/body/lab1/reading";
 import {default as AboutLab1} from "./components/body/lab1/about";
-import {default as GameLab1} from "./components/body/lab1/game";
+import {default as GameLab1} from "./components/game/lab1/Main";
 import {default as VideoLab1} from "./components/body/lab1/video";
-import {default as QuizLab1} from "./components/body/lab1/quiz";
-
+import {default as Quiz} from "./components/quiz/App";
 import Change from "./components/footer/footer";
 import Header from "./components/header/header"
-//import "./assets/stylesheets/components/css/agency.min.css";
-//import "./assets/stylesheets/components/css/style.css";
-import "./assets/stylesheets/components/App.scss"
 import {actions as appActions} from './reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 import {actions as mainActions} from "./reducers/MainReducer";
-
+import BodyHeader from "./components/header/BodyHeader";
 
 export const Sections = {
   0: {
@@ -44,7 +41,7 @@ export const Sections = {
     },
     4:{
       name: "Quiz",
-      value: <QuizLab1/>
+      value: <Quiz/> //this is named Quiz because every lab uses the same component
     }
   }
 
@@ -53,7 +50,6 @@ export const Sections = {
 
 const mapStateToProps = (state) => {
   return {
-    // General
     state: state
   };
 };
@@ -119,13 +115,20 @@ class App extends Component {
 
   render() {
     const {state} = this.props;
+    const lab = state.main.lab;
+    const body = state.main.body;
     return (
       <div>
         <Header />
-        <div className = "appBody">
-          {Sections[state.main.lab][state.main.body].value}
+        <div className = "mainBody container">
+          {lab !== 0 &&
+          <BodyHeader body={Sections[lab][body].name} lab={Sections[lab].name}/>
+          }
+          <div className = "appBody">
+          {Sections[lab][body].value}
+          </div>
         </div>
-        <Change />
+        <Change/>
       </div>
     );
   }
