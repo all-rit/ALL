@@ -90,15 +90,15 @@ const Header = (props) => {
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                        <NavItem className="collapse navbar-collapse"
+                    <Nav class="ml-auto" navbar>
+                        <NavItem class="collapse navbar-collapse"
                                  id="navbarResponsive"
                         > </NavItem>
-                        <NavItem className="collapse navbar-collapse"
+                        <NavItem class="collapse navbar-collapse"
                                  id="navbarResponsive"
                         >
                             <NavLink
-                                className="nav-link js-scroll-trigger text-white"
+                                class="nav-link js-scroll-trigger text-white"
                                 href="http://all.rit.edu"
                             >
                                 <ul className="navbar-nav text-uppercase ml-auto">
@@ -109,10 +109,10 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
                         <NavItem
-                            className="collapse navbar-collapse"
+                            class="collapse navbar-collapse"
                             id="navbarResponsive">
                             <NavLink
-                                className={"nav-link js-scroll-trigger " + (count === 0 ? "active" : "inactive")}
+                                class={"nav-link js-scroll-trigger " + (count === 0 ? "active" : "inactive")}
                                 onClick={() => handleAbout(actions, state)}
                                 href="#"
                             >
@@ -124,7 +124,7 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
                         <NavItem
-                            className="collapse navbar-collapse"
+                            class="collapse navbar-collapse"
                             id="navbarResponsive">
                             <NavLink
                                 className={"nav-link js-scroll-trigger " + (count === 1 ? "active" : "inactive")}
@@ -140,10 +140,10 @@ const Header = (props) => {
 
                         </NavItem>
                         <NavItem
-                            className="collapse navbar-collapse"
+                            class="collapse navbar-collapse"
                             id="navbarResponsive">
                             <NavLink
-                                className={"nav-link js-scroll-trigger " + (count === 2 ? "active" : "inactive")}
+                                class={"nav-link js-scroll-trigger " + (count === 2 ? "active" : "inactive")}
                                 onClick={() => handleGame(actions, state)}
                                 href="#"
                             >
@@ -156,7 +156,7 @@ const Header = (props) => {
 
                         </NavItem>
                         <NavItem
-                            className="collapse navbar-collapse"
+                            class="collapse navbar-collapse"
                             id="navbarResponsive">
                             <NavLink
                                 className={"nav-link js-scroll-trigger " + (count === 3 ? "active" : "inactive")}
