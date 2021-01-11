@@ -1,6 +1,7 @@
 import React from "react";
-import "../../../assets/stylesheets/components/App.scss"
+//import "../../../assets/stylesheets/components/App.scss"
 import "../../../assets/stylesheets/pages/LandingPage.scss"
+import SiteMap from "../../../components/body/landingpage/sitemap"
 import eye from "../../../assets/images/labs/eye.jpg";
 import ear from "../../../assets/images/labs/ear.jpg";
 import braille from "../../../assets/images/labs/braille.jpg";
@@ -201,7 +202,7 @@ const {actions} = props;
           class="row landingpage__logos"
         >
           <div class="col-sm-4">
-            <a href="https://www.nsf.gov" target="_blank">
+            <a href="https://www.nsf.gov" target="_blank" rel="noopener noreferrer">
               <img
                 class="d-block mx-auto"
                 src={nsf}
@@ -211,7 +212,7 @@ const {actions} = props;
             </a>
           </div>
           <div class="col-sm-4 landingpage__ritlogo">
-            <a href="https://www.rit.edu" target="_blank">
+            <a href="https://www.rit.edu" target="_blank" rel="noopener noreferrer">
               <img
                 class=" d-block mx-auto"
                 src={rit}
@@ -242,13 +243,13 @@ const {actions} = props;
       <ul class="list-inline quicklinks">
         <li class="list-inline-item">
           <a
-            href="https://www.nsf.gov/pubs/2016/nsf16009/nsf16009.jsp#q37" target="_blank"
+            href="https://www.nsf.gov/pubs/2016/nsf16009/nsf16009.jsp#q37" target="_blank" rel="noopener noreferrer"
             >Available under the Federal Government License</a
           >
         </li>
         <li>
-          <a href="sitemap.js" >
-            Site Map
+          <a >
+            <SiteMap/>
           </a>
         </li>
       </ul>

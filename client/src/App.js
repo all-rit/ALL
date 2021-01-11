@@ -7,8 +7,6 @@ import Video from "./components/body/lab1/video";
 import Quiz from "./components/body/lab1/quiz";
 import Change from "./components/footer/footer";
 import Header from "./components/header/header"
-//import "./assets/stylesheets/components/css/agency.min.css";
-//import "./assets/stylesheets/components/css/style.css";
 import "./assets/stylesheets/components/App.scss"
 import {actions as appActions} from './reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
