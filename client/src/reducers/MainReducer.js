@@ -6,7 +6,7 @@ export const types = {
 
 export const initialState = {
     user: null,
-    lab: 0
+    lab: 1  //todo: change this back to 0 when the setLab is being updated correctly
 };
 
 export default (state = initialState, action) => {
@@ -17,6 +17,7 @@ export default (state = initialState, action) => {
                 user: action.user
             };
         case types.SET_LAB:
+            console.log("lab: ", action.lab);
             return {
                 ...state,
                 lab: action.lab
