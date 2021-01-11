@@ -6,7 +6,7 @@ export const types = {
 
 export const initialState = {
     user: null,
-    lab: 1
+    lab: 0
 };
 
 export default (state = initialState, action) => {

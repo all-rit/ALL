@@ -10,15 +10,24 @@
     }
     &__ritlogo{
         margin-top: 10px; 
-        margin-left: 20px;
+        //margin-left: 20px;
     }
     &__image{
         border:2px solid black
     }
     &__logos{
         position: relative;
-        margin-left: 25%;
-    }
+		margin: auto;
+	}
+	&__logo{
+		height:100px;
+	}
+	&__pagesection{
+		padding: 100px 0;
+	}
+	a{
+		color: #0144d5;
+	}
 }
 
 header.masthead {
@@ -54,7 +63,7 @@ header.masthead {
 .col-md-4 {
  	text-align: left;
 	padding: 20px 40px;
- 	//float: right;
+ 	float: right;
 }
 .vertical-line {
 	border-left: 1px solid #868e96;

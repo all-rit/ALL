@@ -43,7 +43,7 @@ const {actions} = props;
       </div>
     </header>
     {/* Services */}
-    <section class="page-section" id="goals">
+    <section class="page-section landingpage__pagesection" id="goals">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -77,7 +77,7 @@ const {actions} = props;
     </section>
     <hr class="horiz" />
     {/* Portfolio Grid */}
-    <section class="page-section" id="labs">
+    <section class="page-section landingpage__pagesection" id="labs">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -204,20 +204,18 @@ const {actions} = props;
           <div class="col-sm-4">
             <a href="https://www.nsf.gov" target="_blank" rel="noopener noreferrer">
               <img
-                class="d-block mx-auto"
+                class="d-block mx-auto landingpage__logo"
                 src={nsf}
                 alt="National Science Foundation"
-                height="100"
               />
             </a>
           </div>
           <div class="col-sm-4 landingpage__ritlogo">
             <a href="https://www.rit.edu" target="_blank" rel="noopener noreferrer">
               <img
-                class=" d-block mx-auto"
+                class=" d-block mx-auto landingpage__logo"
                 src={rit}
                 alt="Rochester Institute Of Technology"
-                height="100"
               />
             </a>
           </div>
@@ -225,7 +223,7 @@ const {actions} = props;
       </div>
     </section>
     {/* Contact */}
-    <section class="page-section" id="contact">
+    <section class="page-section landingpage__pagesection" id="contact">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
