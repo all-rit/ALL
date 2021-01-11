@@ -145,9 +145,6 @@ class Footer extends Component {
     render() {
         const {state, actions} = this.props;
         let display = (state.game.state === "GAME_IDLE" || state.app.body !== 2) && state.main.lab !== 0;
-        console.log(state.app.body);
-        console.log(state.main.lab);
-        console.log(display);
         return (
             <div>
                 <div className="container" style={{display: display ? "block" : "none"}}>

@@ -17,7 +17,6 @@ export default (state = initialState, action) => {
                 user: action.user
             };
         case types.SET_LAB:
-            console.log("lab: ", action.lab);
             return {
                 ...state,
                 lab: action.lab
