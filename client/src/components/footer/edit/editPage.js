@@ -7,7 +7,7 @@ export function changeTSize(num, className = null) {
         if (elems[index] !== undefined) {
             fontSizeString = window
                 .getComputedStyle(elems[index], null)
-                .getPropertyValue("font-size", "important");
+                .getPropertyValue("font-size");
             const fontSize = parseFloat(fontSizeString);
             elems[index].style.fontSize = fontSize + num + "px";
         }
@@ -20,12 +20,12 @@ export function changeTSize(num, className = null) {
         if (elems[index] !== undefined) {
             fontSizeString = window
                 .getComputedStyle(elems[index], null)
-                .getPropertyValue("height", "important");
+                .getPropertyValue("height");
             const height = parseFloat(fontSizeString);
             elems[index].style.height = height + num + "px";
             fontSizeString = window
                 .getComputedStyle(elems[index], null)
-                .getPropertyValue("width", "important");
+                .getPropertyValue("width");
             const width = parseFloat(fontSizeString);
             elems[index].style.width = width + num + "px";
         }
@@ -39,7 +39,7 @@ export function onNextPageChangeTSize(size) {
         if (elems[index] !== undefined) {
             const fontSizeString = window
                 .getComputedStyle(elems[index], null)
-                .getPropertyValue("font-size", "important");
+                .getPropertyValue("font-size");
             const fontSize = parseFloat(fontSizeString);
             elems[index].style.fontSize = fontSize + size + "px";
         }
