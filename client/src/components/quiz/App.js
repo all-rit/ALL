@@ -48,7 +48,6 @@ class App extends Component {
         switch (lab) {
             case 1:
                 return quizQuestionsLab1
-                break;
             // case 2:
             //
             // case 3:
@@ -63,7 +62,14 @@ class App extends Component {
         this.setState({quizQuestions: this.assignQuizQuestions()}, ()=>{
             for (let i = 0; i < this.state.quizQuestions.length; i++) {
                 for (let x = 0; x < this.state.quizQuestions[i]['answers'].length; x++) {
-                    this.state.quizQuestions[i]['answers'][x]['type'] = "" + x;
+                    let questions = this.state.quizQuestions;
+                    questions[i]['answers'][x]['type'] = "" + x;
+                    this.setState({
+                        quizQuestions: questions
+                    })
+
+
+                    // this.state.quizQuestions[i]['answers'][x]['type'] = "" + x;
                 }
             }
         })
