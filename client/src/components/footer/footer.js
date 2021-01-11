@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import "../../assets/stylesheets/components/css/colorPicker.css"
 import {connect} from "react-redux";
 import {actions as appActions} from '../../reducers/lab1/AppReducer';
+import {actions as mainActions} from '../../reducers/MainReducer';
 import {bindActionCreators} from 'redux';
 import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "./edit/editPage";
 import "./edit/jscolor";
@@ -16,7 +17,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(appActions, dispatch)
+    actions: bindActionCreators({...appActions, ...mainActions}, dispatch)
 });
 
 class Footer extends Component {
@@ -35,8 +36,8 @@ class Footer extends Component {
         document.addEventListener("click", this.handleClick)
     }
 
-    componentDidUpdate(prevprops){
-       if (prevprops.state.app.body !== this.props.state.app.body) {
+    componentDidUpdate(prevProps){
+       if (prevProps.state.app.body !== this.props.state.app.body) {
            this.adjustSize(this.state.fontSize);
        }
     }
@@ -139,30 +140,23 @@ class Footer extends Component {
                 }
             }
         }
-
-
     }
-
 
     render() {
         const {state, actions} = this.props;
-        let display = state.game.state === "GAME_IDLE" || state.app.body !== 2;
+        let display = state.main.lab === 0 || state.game.state === "GAME_IDLE" || state.app.body !== 2;
         return (
-
             <div>
                 <div className="container" style={{display: display ? "block" : "none"}}>
-
                     <button
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                        onClick={() => this.handleDecrement(state.app.body, actions)
-                        }
+                        onClick={() => this.handleDecrement(state.app.body, actions)}
                         style={{display: this.disappearBack(state.app.body) ? "none" : "block"}}
                     >
                         Previous — {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                        // onClick={() => {this.handleIncrement(state.app.body, actions)}}
                         onClick={() => {this.handleIncrement(state.app.body, actions)}}
                         style={{display: this.disappearNext(state.app.body) ? "none" : "block"}}
                     >
@@ -214,10 +208,8 @@ class Footer extends Component {
                         The previously available navigation and accessibility buttons are disabled until the game is complete.
                     </div>
                 </div>
-
             </div>
         );
-
     };
 }
 
