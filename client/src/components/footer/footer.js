@@ -168,7 +168,7 @@ class Footer extends Component {
                         onClick={() => {this.handleIncrement(state.main.body, actions)}}
                         style={{display: this.disappearNext(state.main.body) ? "none" : "block"}}
                     >
-                        Next — {state.main.body < 4 && Sections[state.main.lab][state.main.body + 1].name ? Sections[state.main.lab][state.main.body + 1].name : ""}
+                        Next — {state.main.body < 4 && Sections[state.main.lab][state.main.body + 1] !== null ? Sections[state.main.lab][state.main.body + 1].name : ""}
                     </button>
                     <div className="btn-change">
                         <button
