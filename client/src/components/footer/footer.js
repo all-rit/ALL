@@ -35,8 +35,8 @@ class Footer extends Component {
         document.addEventListener("click", this.handleClick)
     }
 
-    componentDidUpdate(prevprops){
-       if (prevprops.state.app.body !== this.props.state.app.body) {
+    componentDidUpdate(prevProps){
+       if (prevProps.state.app.body !== this.props.state.app.body) {
            this.adjustSize(this.state.fontSize);
        }
     }

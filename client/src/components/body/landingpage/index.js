@@ -29,7 +29,7 @@ const {actions} = props;
       <div class="container">
         <div class="intro-text">
           <div class="intro-lead-in">
-            Welcome To The Accessibility Learning Labs (ALL) project!
+            Welcome to the Accessibility Learning Labs (ALL) Project!
           </div>
           <div class="intro-heading text-uppercase">
             Learn about Accessibility
@@ -49,15 +49,14 @@ const {actions} = props;
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Lab Goals</h2>
             <h3 class="section-subheading lab-section-subheading">
-              Activities that incorporate accessibility education and improve
-              understanding of accessible design are available.
+              To provide activities that incorporate accessibility education and accessible design.
             </h3>
           </div>
         </div>
         <div class="row text-center">
           <div class="col-md-4">
             <p class="service-heading landingpage__leftalign" >
-              Create easily adoptable labs (only a browser is need)
+              Create easily adoptable labs (only a browser is needed)
             </p>
           </div>
 
@@ -84,7 +83,7 @@ const {actions} = props;
             <h2 class="section-heading text-uppercase">Labs</h2>
 
             <h3 class="section-subheading " >
-              Check out the labs below that are available to explore.
+              Explore the available labs below.
             </h3>
           </div>
         </div>
@@ -109,8 +108,7 @@ const {actions} = props;
                   >Accessibility to Sound and Speech</a>
               </h4>
               <p class="">
-                Learn about designing the web for the Deaf and Hard Of
-                Hearing community.
+                Learn about designing the web for the Deaf and Hard-of-Hearing community.
               </p>
             </div>
           </div>

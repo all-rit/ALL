@@ -1,14 +1,14 @@
 //New Implementation to increment and decrement size of UI.
 export function changeTSize(num, className = null) {
-    var elems = document.querySelectorAll(".appBody *, .nav-link, button");
-    var fontSizeString;
-    var index = 0, length = elems.length;
+    let elems = document.querySelectorAll(".appBody *, .nav-link, button, h2, h3, h4");
+    let fontSizeString;
+    let index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {
             fontSizeString = window
                 .getComputedStyle(elems[index], null)
                 .getPropertyValue("font-size", "important");
-            var fontSize = parseFloat(fontSizeString);
+            const fontSize = parseFloat(fontSizeString);
             elems[index].style.fontSize = fontSize + num + "px";
         }
     }
@@ -21,41 +21,41 @@ export function changeTSize(num, className = null) {
             fontSizeString = window
                 .getComputedStyle(elems[index], null)
                 .getPropertyValue("height", "important");
-            var height = parseFloat(fontSizeString);
+            const height = parseFloat(fontSizeString);
             elems[index].style.height = height + num + "px";
             fontSizeString = window
                 .getComputedStyle(elems[index], null)
                 .getPropertyValue("width", "important");
-            var width = parseFloat(fontSizeString);
+            const width = parseFloat(fontSizeString);
             elems[index].style.width = width + num + "px";
         }
     }
 }
 
 export function onNextPageChangeTSize(size) {
-    var elems = document.querySelectorAll(".appBody *");
-    var index = 0, length = elems.length;
+    const elems = document.querySelectorAll(".appBody *");
+    let index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {
-            var fontSizeString = window
+            const fontSizeString = window
                 .getComputedStyle(elems[index], null)
                 .getPropertyValue("font-size", "important");
-            var fontSize = parseFloat(fontSizeString);
+            const fontSize = parseFloat(fontSizeString);
             elems[index].style.fontSize = fontSize + size + "px";
         }
     }
 }
 
 export function setTextColor(picker) {
-    var bodyElements = document.getElementsByTagName('body');
-    for (var i = 0; i < bodyElements.length; i++) {
-        bodyElements[i].style.color = picker.toString();
+    let bodyElements = document.querySelectorAll("body *, a");
+    for (let i = 0; i < bodyElements.length; i++) {
+        bodyElements[i].style.color = "#" + picker.toString();
     }
 }
 
 export function setBackgroundColor(picker) {
-    var bodyElements = document.querySelectorAll('body, .quiz, .result');
-    for (var i = 0; i < bodyElements.length; i++) {
+    const bodyElements = document.querySelectorAll('body, .quiz, .result');
+    for (let i = 0; i < bodyElements.length; i++) {
         bodyElements[i].style.backgroundColor = picker.toString();
     }
 }
