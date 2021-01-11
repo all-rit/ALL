@@ -66,7 +66,7 @@ const handleQuiz = (actions,state) => {
 };
 
 const alert_check = (state)=> {
-    if (state.game.state !== "GAME_IDLE" && state.app.body === 2){
+    if (state.game.state !== "GAME_IDLE" && state.main.body === 2){
         alert("The game is still in progress! Please complete the game");
         return true
     }
@@ -79,8 +79,8 @@ const Header = (props) => {
     const activeStyle = {color: "#fed136"};
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
-    let count = state.app.body;
-    const loginEnabled = (state.main.lab === 0) || !(state.game.plays > 0 || (state.game.plays === 0 && state.game.state !== GAME_IDLE));
+    let count = state.main.body;
+    const loginEnabled = (state.main.lab === 0) || state.game.state === GAME_IDLE || state.main.body !== 2;
     return (
         <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
             <div className="container">
@@ -103,7 +103,7 @@ const Header = (props) => {
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                 {state.main.lab === 0 ?
-                    <Nav className="ml-auto" navbar>     
+                    <Nav className="ml-auto" navbar>
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
                                 class="nav-link js-scroll-trigger"

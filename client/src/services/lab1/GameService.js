@@ -1,4 +1,4 @@
-import API from './API';
+import API from '../API';
 
 const endpoints = {
 	CREATE_GAME: '/game/start',

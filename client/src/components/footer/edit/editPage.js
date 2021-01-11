@@ -1,6 +1,6 @@
 //New Implementation to increment and decrement size of UI.
 export function changeTSize(num, className = null) {
-    var elems = document.querySelectorAll(".appBody *, .nav-link, button");
+    var elems = document.querySelectorAll(".mainBody *, .nav-link, button"); //here mainBody includes the bodyHeader
     var fontSizeString;
     var index = 0, length = elems.length;
     for (; index < length; index++) {
@@ -33,7 +33,7 @@ export function changeTSize(num, className = null) {
 }
 
 export function onNextPageChangeTSize(size) {
-    var elems = document.querySelectorAll(".appBody *");
+    var elems = document.querySelectorAll(".appBody *"); //dont use mainBody here because header doesn't need font size change
     var index = 0, length = elems.length;
     for (; index < length; index++) {
         if (elems[index] !== undefined) {

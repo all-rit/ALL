@@ -1,12 +1,5 @@
 const db = require('../database');
 
-const createLogin = (UserID, UserSessionID) => {
-	return db.Login.create({
-		userid: UserID,
-		usersessionid: UserSessionID
-	});
-};
-
 exports.updateGuestUserId = (userid, usersessionid) =>{
 	return db.Session
 		.findByPk(usersessionid)
@@ -21,7 +14,7 @@ exports.updateGuestUserId = (userid, usersessionid) =>{
 }
 
 exports.authenticate = (data) => {
-	const userSessionID = data.id;
+	const userSessionID = data.id.slice(0,19);
 	const firstName = data.name.givenName;
 
 	return db.Session
@@ -46,13 +39,8 @@ exports.authenticate = (data) => {
 						usersessionid: userSessionID,
 						userid: user.userid
 					});
-				});
-		})
-		.then((session) => {
-			// Create a new login
-			return createLogin(session.userid, userSessionID).then((login) => {
-				return {usersessionid: login.usersessionid, userid: session.userid};
-			});
+				})
+				.catch(()=> "error inputting session id from google");
 		})
 		.catch((err) => {
 			console.log(err);
@@ -70,14 +58,9 @@ exports.getSession = (token) => {
 						userid: user.userid
 					})
 					.then((session) => {
-						return { user, session };
+						return { user, token: session.usersessionid };
 					});
 			})
-			.then((data) => {
-				return createLogin(data.session.userid, data.session.usersessionid).then((login) => {
-					return { user: data.user, token: login.usersessionid };
-				});
-			});
 	}
 
 	// Find the user's details

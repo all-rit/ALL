@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
-			loginid: {
-				type: DataTypes.INTEGER
+			usersessionid: {
+				type: DataTypes.BIGINT
 			},
 			availablemessage: {
 				type: DataTypes.STRING
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING
 			}
 		},
-		{ tableName: 'audiocue_repair' }
+		{ tableName: 'lab1_repair' }
 	);
 	Repair.sync();
 	return Repair;

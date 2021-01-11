@@ -4,7 +4,7 @@ import { GAME_IDLE, GAME_ENDED } from '../../../../constants/lab1';
 import Playthrough from './Playthrough';
 import AppInstructions from './AppInstructions';
 import Game from './Game';
-import Repair from './/Repair';
+import Repair from './Repair';
 
 class Content extends Component {
 	render() {

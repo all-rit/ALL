@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
 		'Session',
 		{
 			usersessionid : {
-				type: DataTypes.NUMBER(21),
+				type: DataTypes.BIGINT,
 				unique: true,
 				primaryKey: true,
 				autoIncrement: true
@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
 		{ tableName: 'session' }
 	);
 
-	//Session.sync();
-	//commented out throws error due to usersessionidtype
+	Session.sync();
 	return Session;
 };
