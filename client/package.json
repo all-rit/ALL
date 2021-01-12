@@ -25,6 +25,7 @@
     "redux": "latest",
     "redux-saga": "latest",
     "typescript": "^4.0.2",
+    "url-parse": "^1.4.7",
     "victory": "latest"
   },
   "scripts": {

@@ -44,9 +44,9 @@ return (
                         <ul>
                             <li><a href={process.env.PUBLIC_URL + "/Lab1/about"}>About</a></li>
                             <li><a href={process.env.PUBLIC_URL + "/Lab1/reading"}>Reading</a></li>
-                            <li><a href="http://all.rit.edu/Lab1/game" >Game</a></li>
-                            <li><a href="http://all.rit.edu/Lab1/video" >Video</a></li>
-                            <li><a href="http://all.rit.edu/Lab1/quiz" >Quiz</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab1/game"} >Game</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab1/video"}>Video</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab1/quiz"} >Quiz</a></li>
                         </ul>
                         </div>
                         <div class="col-md-4">
@@ -54,11 +54,11 @@ return (
                             <a href="http://all.rit.edu/Lab2" >Lab 2</a>
                         </h4>
                         <ul>
-                            <li><a href="http://all.rit.edu/Lab2/about" >About</a></li>
-                            <li><a href="http://all.rit.edu/Lab2/reading" >Reading</a></li>
-                            <li><a href="http://all.rit.edu/Lab2/game" >Game</a></li>
-                            <li><a href="http://all.rit.edu/Lab2/video" >Video</a></li>
-                            <li><a href="http://all.rit.edu/Lab2/quiz" >Quiz</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab2/about"} >About</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab2/reading"}  >Reading</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab2/game"}  >Game</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab2/video"} >Video</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab2/quiz"} >Quiz</a></li>
                         </ul>
                         </div>
 
@@ -67,11 +67,11 @@ return (
                             <a href="http://all.rit.edu/Lab3" >Lab 3</a>
                         </h4>
                         <ul>
-                            <li><a href="http://all.rit.edu/Lab3/about" >About</a></li>
-                            <li><a href="http://all.rit.edu/Lab3/reading" >Reading</a></li>
-                            <li><a href="http://all.rit.edu/Lab3/game" >Game</a></li>
-                            <li><a href="http://all.rit.edu/Lab3/video" >Video</a></li>
-                            <li><a href="http://all.rit.edu/Lab3/quiz" >Quiz</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab3/about"} >About</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab3/reading"}  >Reading</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab3/game"}  >Game</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab3/video"} >Video</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab3/quiz"} >Quiz</a></li>
                         </ul>
                         </div>
                     </div>

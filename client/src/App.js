@@ -15,6 +15,8 @@ import {actions as mainActions} from "./reducers/MainReducer";
 import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
 
+var parse = require('url-parse');
+
 export const Sections = {
   0: {
     name: "LandingPage",
@@ -74,15 +76,29 @@ class App extends Component {
     }
   UNSAFE_componentWillMount() {
     const {actions} = this.props;
-    let x = window.location.href;
-    let split_url = x.split('/');
-    let body = split_url.pop().toLowerCase();
-    let lab = split_url.pop().toLowerCase();
-    //check for lab*
+    let parsed = parse(window.location.href);
+    console.log(parsed)
+    parsed = parsed.pathname.split('/');
+
     const bodies = ["about", "reading", "game", "video", "quiz"]
     const labs = ["lab1", "lab2", "lab3", "lab4"]
-    // bodies.some(v=> split_url.indexOf(v))
-    //find if the array contains any of the items
+
+    var realBody = parsed.filter(string => {
+      let lab="";
+      let body="";
+      bodies.forEach(word => {
+          if (string.toLowerCase().includes(word))
+              body = word;
+      })
+      labs.forEach(word => {
+          if (string.toLowerCase().includes(word))
+              lab = word;
+      })
+      return [lab,body]
+    });
+
+    let body = realBody.pop().toLowerCase();
+    let lab = realBody.pop().toLowerCase();
     switch (lab) {
       case "lab1":
         actions.setLab(1);
