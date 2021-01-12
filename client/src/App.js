@@ -3,6 +3,8 @@ import {default as ReadingLab1} from "./components/body/lab1/reading";
 import {default as AboutLab1} from "./components/body/lab1/about";
 import {default as GameLab1} from "./components/game/lab1/Main";
 import {default as VideoLab1} from "./components/body/lab1/video";
+import {default as LandingPageBody} from "./components/body/landingpage/index";
+import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Quiz} from "./components/quiz/App";
 import Change from "./components/footer/footer";
 import Header from "./components/header/header"
@@ -18,7 +20,11 @@ export const Sections = {
     name: "LandingPage",
     0: {
       name: "Main",
-      value: ""
+      value: <LandingPageBody/>
+    },
+    1: {
+      name: "SiteMap",
+      value: <SiteMap/>
     }
   },
   1:{
@@ -69,8 +75,34 @@ class App extends Component {
   UNSAFE_componentWillMount() {
     const {actions} = this.props;
     let x = window.location.href;
-    x = x.split('/').pop().toLowerCase();
-    switch (x) {
+    let split_url = x.split('/');
+    let body = split_url.pop().toLowerCase();
+    let lab = split_url.pop().toLowerCase();
+    //check for lab*
+    const bodies = ["about", "reading", "game", "video", "quiz"]
+    const labs = ["lab1", "lab2", "lab3", "lab4"]
+    // bodies.some(v=> split_url.indexOf(v))
+    //find if the array contains any of the items
+    switch (lab) {
+      case "lab1":
+        actions.setLab(1);
+        break;
+      case "lab2":
+        actions.setLab(2);
+        break;
+      case "lab3":
+        actions.setLab(3);
+        break;
+      case "lab4":
+        actions.setLab(4);
+        break;
+      case "landingpage":
+        actions.setLab(0);
+        break;
+      default:
+        break;
+    }
+    switch (body) {
       case "about":
         actions.setBody(0);
         break;
@@ -86,29 +118,13 @@ class App extends Component {
       case "quiz":
         actions.setBody(4);
         break;
-      default:
-        break;
-    }
-    x = x.split('/').pop().toLowerCase();
-    switch (x) {
-      case "lab1":
-        actions.setLab(1);
-        break;
-      case "lab2":
-        actions.setLab(2);
-        break;
-      case "lab3":
-        actions.setLab(3);
-        break;
-      case "lab4":
-        actions.setLab(4);
-        break;
-      case "":
-        actions.setLab(0);
+      case "sitemap":
+        actions.setBody(1);
         break;
       default:
         break;
     }
+
   }
 
 
@@ -119,7 +135,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <div className = "mainBody container">
+        <div className = {"mainBody" + (lab!== 0? " container":"")}>
           {lab !== 0 &&
           <BodyHeader body={Sections[lab][body].name} lab={Sections[lab].name}/>
           }

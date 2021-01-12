@@ -1,8 +1,20 @@
 import React from "react";
 import "../../../assets/stylesheets/components/App.scss"
 import "../../../assets/stylesheets/pages/LandingPage.scss"
+import {bindActionCreators} from "redux";
+import {actions as mainActions} from "../../../reducers/MainReducer";
+import {connect} from "react-redux";
+import handleRedirect from "../../../helpers/Redirect";
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(mainActions, dispatch)
+    };
+};
 
 const SiteMap = (props) => {
+const {actions} = props;
 return (
     <div>
     <div class="container">
@@ -20,9 +32,9 @@ return (
                             <a href="http://all.rit.edu" >Home</a>
                         </h4>
                         <ul>
-                            <li> <a href="http://all.rit.edu/goals">Goals</a></li>
-                            <li> <a href="http://all.rit.edu/labs" >Labs</a></li>
-                            <li> <a href="http://all.rit.edu/contact" >Contact</a></li>
+                            <li> <a href={process.env.PUBLIC_URL + "/LandingPage/#goals"}>Goals</a></li>
+                            <li> <a href={process.env.PUBLIC_URL + "/LandingPage/#labs"}>Labs</a></li>
+                            <li> <a href={process.env.PUBLIC_URL + "/LandingPage/#contact"} >Contact</a></li>
                         </ul>
                         </div>
                         <div class="col-md-4">
@@ -30,8 +42,8 @@ return (
                             <a href="http://all.rit.edu/Lab1" >Lab 1</a>
                         </h4>
                         <ul>
-                            <li><a href="http://all.rit.edu/Lab1/about" >About</a></li>
-                            <li><a href="http://all.rit.edu/Lab1/reading" >Reading</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab1/about"}>About</a></li>
+                            <li><a href={process.env.PUBLIC_URL + "/Lab1/reading"}>Reading</a></li>
                             <li><a href="http://all.rit.edu/Lab1/game" >Game</a></li>
                             <li><a href="http://all.rit.edu/Lab1/video" >Video</a></li>
                             <li><a href="http://all.rit.edu/Lab1/quiz" >Quiz</a></li>
@@ -86,4 +98,7 @@ return (
         );
 };
 
-export default (SiteMap);
+
+export default connect(
+    null, mapDispatchToProps
+)(SiteMap);

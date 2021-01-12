@@ -1,27 +1,25 @@
 import React from "react";
-//import "../../../assets/stylesheets/components/App.scss"
 import "../../../assets/stylesheets/pages/LandingPage.scss"
-import SiteMap from "../../../components/body/landingpage/sitemap"
 import eye from "../../../assets/images/labs/eye.jpg";
 import ear from "../../../assets/images/labs/ear.jpg";
 import braille from "../../../assets/images/labs/braille.jpg";
 import hand from "../../../assets/images/labs/hand_in_dev.jpg";
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
-import {connect} from "react-redux";
-import {bindActionCreators} from 'redux';
+import handleRedirect from "../../../helpers/Redirect";
 import {actions as mainActions} from "../../../reducers/MainReducer";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 
-const mapDispatchToProps = (dispatch) => ({
-        actions: bindActionCreators(mainActions, dispatch)
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(mainActions, dispatch)
+  };
+};
 
-const handleLab = (actions, lab) => {
-        actions.setLab(lab);
-    }
 
 const Home = (props) => {
-const {actions} = props;
+  const {actions} = props;
   return (
   <div class="landingpage">
     {/* Header */}
@@ -92,7 +90,7 @@ const {actions} = props;
           <div class="col-md-4 portfolio-item">
             <a
               class="portfolio-link"
-              onClick={() => handleLab(actions, 1)}
+              onClick={() => handleRedirect(actions,1)}
               href="#"
 
             >
@@ -105,7 +103,7 @@ const {actions} = props;
             </a>
             <div class="portfolio-caption">
               <h4>
-                <a onClick={() => handleLab(actions, 1)} href="#"
+                <a onClick={() => handleRedirect(actions,1)} href="#"
                   >Accessibility to Sound and Speech</a>
               </h4>
               <p class="">
@@ -118,7 +116,7 @@ const {actions} = props;
            class="col-md-4 offset-md-4 portfolio-item">
             <a
               class="portfolio-link"
-              onClick={() => handleLab(actions, 2)}
+              onClick={() => handleRedirect(actions,2)}
               href="#"
             >
 
@@ -131,7 +129,7 @@ const {actions} = props;
             </a>
             <div class="portfolio-caption">
               <h4>
-                <a onClick={() => handleLab(actions, 2)} href="#"
+                <a onClick={() => handleRedirect(actions,2)} href="#"
                 >Accessibility to Color Blindness
                 </a>
               </h4>
@@ -146,7 +144,7 @@ const {actions} = props;
             <div class="col-md-4 portfolio-item">
               <a
                 class="portfolio-link"
-                onClick={() => handleLab(actions, 3)} 
+                onClick={() => handleRedirect(actions,3)}
                 href="#"
               >
                 <img
@@ -158,7 +156,7 @@ const {actions} = props;
               </a>
               <div class="portfolio-caption">
                 <h4>
-                  <a onClick={() => handleLab(actions, 3)} href="#"
+                  <a onClick={() => handleRedirect(actions,3)} href="#"
                   >Accessibility with Screen Readers</a
                   >
                 </h4>
@@ -171,7 +169,8 @@ const {actions} = props;
              class="col-md-4 offset-md-4 portfolio-item">
               <a
                 class="portfolio-link"
-
+                onClick={() => handleRedirect(actions,4)}
+                href="#"
               >
                 <img
                   class="img-fluid landingpage__image"
@@ -183,6 +182,7 @@ const {actions} = props;
               <div class="portfolio-caption">
                 <h4>
                   <a
+                    onClick={() => handleRedirect(actions,4)} href="#"
                     >Accessibility to Dexterity</a
                   >
                 </h4>
@@ -246,8 +246,8 @@ const {actions} = props;
           >
         </li>
         <li>
-          <a >
-            <SiteMap/>
+          <a onClick={() => handleRedirect(actions,0,1)} href="#">
+            SiteMap
           </a>
         </li>
       </ul>
@@ -256,5 +256,6 @@ const {actions} = props;
   );
 };
 
-export default connect(null,mapDispatchToProps
+export default connect(
+    null, mapDispatchToProps
 )(Home);

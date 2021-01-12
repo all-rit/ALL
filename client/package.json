@@ -2,7 +2,7 @@
   "name": "accessibilitylab1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/Lab1",
+  "homepage": "/",
   "dependencies": {
     "@reach/router": "^1.3.4",
     "@uiw/react-codemirror": "^2.3.2",
