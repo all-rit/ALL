@@ -16,9 +16,11 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators({...appActions, ...mainActions}, dispatch)
-});
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators({ ...appActions, ...mainActions}, dispatch)
+    };
+};
 
 class Footer extends Component {
     constructor(props) {
@@ -31,7 +33,7 @@ class Footer extends Component {
         };
         this.handleClick = this.handleClick.bind(this);
     }
-    
+
     componentDidMount() {
         document.addEventListener("click", this.handleClick)
     }
@@ -41,7 +43,7 @@ class Footer extends Component {
            this.adjustSize(this.state.fontSize);
        }
     }
-    
+
     componentWillUnmount() {
         document.removeEventListener("click", this.handleClick)
     }
@@ -144,7 +146,7 @@ class Footer extends Component {
 
     render() {
         const {state, actions} = this.props;
-        let display = (state.game.state === "GAME_IDLE" || state.app.body !== 2) && state.main.lab !== 0;
+        let display = state.game.state === "GAME_IDLE" || state.main.body !== 2;
         return (
             <div>
                 <div className="container" style={{display: display ? "block" : "none"}}>
@@ -153,14 +155,15 @@ class Footer extends Component {
                         onClick={() => this.handleDecrement(state.app.body, actions)}
                         style={{display: this.disappearBack(state.app.body) ? "none" : "block"}}
                     >
-                        Previous — {state.app.body > 0 ? Sections[state.app.body - 1].name : ""}
+                        Previous — {state.main.body > 0 ? Sections[state.main.lab][state.main.body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                        onClick={() => {this.handleIncrement(state.app.body, actions)}}
-                        style={{display: this.disappearNext(state.app.body) ? "none" : "block"}}
+                        // onClick={() => {this.handleIncrement(state.main.body, actions)}}
+                        onClick={() => {this.handleIncrement(state.main.body, actions)}}
+                        style={{display: this.disappearNext(state.main.body) ? "none" : "block"}}
                     >
-                        Next — {state.app.body < 4 ? Sections[state.app.body + 1].name : ""}
+                        Next — {state.main.body < 4 && typeof Sections[state.main.lab][state.main.body + 1] !== "undefined" ? Sections[state.main.lab][state.main.body + 1].name : ""}
                     </button>
                     <div className="btn-change">
                         <button

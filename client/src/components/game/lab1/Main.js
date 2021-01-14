@@ -92,6 +92,7 @@ class Main extends Component {
 		} = this.props;
 
 		return (
+			<div className = "row">
 			<Fragment>
 				<SoundHeader
 					state={state}
@@ -136,6 +137,7 @@ class Main extends Component {
 
 				<Popup message={popupMessage} handler={actions.updatePopup} />
 			</Fragment>
+			</div>
 		);
 	}
 }

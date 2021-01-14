@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 			hintused: { type: DataTypes.BOOLEAN },
 			soundoption: { type: DataTypes.BOOLEAN }
 		},
-		{ tableName: 'audiocue_round' }
+		{ tableName: 'lab1_round' }
 	);
 	Round.sync();
 	return Round;

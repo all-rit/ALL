@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             usersessionid: {
-                type: DataTypes.TEXT
+                type: DataTypes.BIGINT
             },
             labid: {
                 type: DataTypes.INTEGER

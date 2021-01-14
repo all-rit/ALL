@@ -2,10 +2,7 @@ import React, {useEffect} from "react";
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
 
-const About = ({ title, description, links }) => {
-  if (links === undefined) {
-    links = [null, null, null];
-  }
+const About = (lab) => {
   useEffect(() => {
       return () => {
           UserLabService.complete_about(LAB_ID);
@@ -13,20 +10,6 @@ const About = ({ title, description, links }) => {
   });
 
   return (
-    <div className="container">
-      <section className="page-section" style={{ paddingBottom: "25px" }}>
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <br />
-              <br />
-              <h2 className="section-heading text-uppercase">
-                Treasure Hunter: About
-              </h2>
-            </div>
-          </div>
-        </div>
-      </section>
       <div className="study">
       <p>
         In this lab, you will learn why it is important to create software
@@ -37,7 +20,6 @@ const About = ({ title, description, links }) => {
         watch related videos, and take a quiz to test your knowledge. Click "Next" to start!
       </p>
       </div>
-    </div>
   );
 };
 
