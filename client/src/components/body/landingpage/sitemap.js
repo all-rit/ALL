@@ -1,20 +1,8 @@
 import React from "react";
 import "../../../assets/stylesheets/components/App.scss"
 import "../../../assets/stylesheets/pages/LandingPage.scss"
-import {bindActionCreators} from "redux";
-import {actions as mainActions} from "../../../reducers/MainReducer";
-import {connect} from "react-redux";
-import handleRedirect from "../../../helpers/Redirect";
 
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        actions: bindActionCreators(mainActions, dispatch)
-    };
-};
-
-const SiteMap = (props) => {
-const {actions} = props;
+const SiteMap = () => {
 return (
     <div>
     <div class="container">
@@ -99,6 +87,4 @@ return (
 };
 
 
-export default connect(
-    null, mapDispatchToProps
-)(SiteMap);
+export default SiteMap;
