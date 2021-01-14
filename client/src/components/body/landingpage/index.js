@@ -226,7 +226,7 @@ const Home = (props) => {
         <div class="row">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-primary">
+            <h3 class="section-subheading text-primary" id={"connect-text"}>
               Connect with us if you have questions. Contact Dr. Daniel Krutz at
               <a class="landingpage__contact" href="mailto:aware@mail.rit.edu "> aware@mail.rit.edu</a>
             </h3>

@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
         actions: bindActionCreators({ ...appActions, ...mainActions}, dispatch)
     };
 };
+
 class Footer extends Component {
     constructor(props) {
         super(props);
