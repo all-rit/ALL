@@ -12,18 +12,11 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(sagas);
-
-const AppWithStore = () => {
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  )
-};
-
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<AppWithStore />, div);
+  ReactDOM.render(<Provider store={store}>
+    <App />
+  </Provider>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
 
