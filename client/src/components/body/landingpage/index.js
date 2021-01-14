@@ -89,7 +89,6 @@ const Home = (props) => {
               class="portfolio-link"
               onClick={() => handleRedirect(actions,1)}
               href="#"
-
             >
               <img
                 class="img-fluid landingpage__image"
@@ -100,8 +99,9 @@ const Home = (props) => {
             </a>
             <div class="portfolio-caption">
               <h4>
-                <a onClick={() => handleRedirect(actions,1)} href="#"
-                  >Accessibility to Sound and Speech</a>
+                <a onClick={() => handleRedirect(actions,1)} href="#">
+                  Accessibility to Sound and Speech
+                </a>
               </h4>
               <p class="">
                 Learn about designing the web for the Deaf and Hard-of-Hearing community.
@@ -115,7 +115,6 @@ const Home = (props) => {
               onClick={() => handleRedirect(actions,2)}
               href="#"
             >
-
               <img
                 class="img-fluid landingpage__image"
                 src={eye}
@@ -125,8 +124,8 @@ const Home = (props) => {
             </a>
             <div class="portfolio-caption">
               <h4>
-                <a onClick={() => handleRedirect(actions,2)} href="#"
-                >Accessibility to Color Blindness
+                <a onClick={() => handleRedirect(actions,2)} href="#">
+                  Accessibility to Color Blindness
                 </a>
               </h4>
               <p class="">
@@ -152,9 +151,9 @@ const Home = (props) => {
               </a>
               <div class="portfolio-caption">
                 <h4>
-                  <a onClick={() => handleRedirect(actions,3)} href="#"
-                  >Accessibility with Screen Readers</a
-                  >
+                  <a onClick={() => handleRedirect(actions,3)} href="#">
+                    Accessibility with Screen Readers
+                  </a>
                 </h4>
                 <p class="">
                   Learn more about Screen Readers.
@@ -177,10 +176,9 @@ const Home = (props) => {
               </a>
               <div class="portfolio-caption">
                 <h4>
-                  <a
-                    onClick={() => handleRedirect(actions,4)} href="#"
-                    >Accessibility to Dexterity</a
-                  >
+                  <a onClick={() => handleRedirect(actions,4)} href="#">
+                    Accessibility to Dexterity
+                  </a>
                 </h4>
                 <p class="">
                   Learn more about designing the web for individuals with motor and dexterity impairments.
