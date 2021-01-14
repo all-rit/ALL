@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GameService from '../../../../services/GameService';
+import GameService from '../../../../services/lab1/GameService';
 import UserLabService from '../../../../services/UserLabService';
 import GameButtons from './GameButtons';
 import Countdown from './Countdown';

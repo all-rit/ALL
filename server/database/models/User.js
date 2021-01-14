@@ -9,8 +9,6 @@ module.exports = (sequelize, DataTypes) => {
 				autoIncrement: true
 			},
 			firstname: { type: DataTypes.TEXT },
-			nickname: { type: DataTypes.TEXT },
-			admin: { type: DataTypes.BOOLEAN, defaultValue: false }
 		},
 		{ tableName: 'users' }
 	);

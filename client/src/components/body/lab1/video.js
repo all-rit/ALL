@@ -2,25 +2,14 @@ import React, {useEffect} from "react";
 
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
-const Video = ({ link, title }) => {
+const Video = () => {
     useEffect(() => {
         return () => {
             UserLabService.complete_video(LAB_ID);
         }
     });
   return (
-    <div className="container">
-      <section className="page-section" style={{ paddingBottom: "25px" }}>
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <br />
-              <br />
-              <h2 className="section-heading text-uppercase">
-                Treasure Hunter: Video
-              </h2>
-            </div>
-          </div>
-      </section>
+      <div>
       <div className="row">
         <h4>Here are some videos to aid in understanding the material.</h4>
       </div>

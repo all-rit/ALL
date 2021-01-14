@@ -21,7 +21,9 @@
     }
   }
 }
-
+.mainBody{
+  padding-top: 120px;
+}
 p {
 	line-height: 1.75;
 }
@@ -94,6 +96,10 @@ a.icon {
 	background-color: #484848 !important;
 	border-color: #484848 !important;
 	color: white !important;
+}
+
+.text-black {
+	color: #404040;
 }
 
 #mainNav {
@@ -783,7 +789,12 @@ body {
 	height: auto;
 }
 .labnav {
-	padding: 0;
+  padding: 0;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index: 1;
+
 }
 .no-margin {
 	margin: 0 !important;
