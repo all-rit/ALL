@@ -47,14 +47,9 @@ export function onNextPageChangeTSize(size) {
 }
 
 export function setTextColor(picker) {
-    console.log("here");
     let elems = document.querySelectorAll('body *, a');
-    console.log(elems);
-
     for (let i = 0; i < elems.length; i++) {
-
         elems[i].style.color = picker.toString();
-        console.log(picker.toString() + " !important");
     }
 }
 
