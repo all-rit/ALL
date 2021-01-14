@@ -72,6 +72,7 @@ a.icon {
 .btn-primary {
 	background-color: #fed136;
 	border-color: #fed136;
+	color: #404040 !important;
 	&:active {
 		background-color: #fec810 !important;
 		border-color: #fec810 !important;
@@ -153,8 +154,6 @@ a.icon {
 	background-color: #3d3d3d !important;
 }
 
-
-	
 
 
 #portfolio {
@@ -767,7 +766,7 @@ body {
 	margin-right: 2%;
 }
 .row {
-	display: block !important;
+	display: flex !important;
 	justify-content: space-around !important;
 	margin-bottom: 25px !important;
 	text-align: center !important;
@@ -783,8 +782,6 @@ body {
 	width: 350px;
 }
 .logo {
-	width: 100%;
-	height: auto;
 	width: 100%;
 	height: auto;
 }

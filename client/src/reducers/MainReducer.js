@@ -7,7 +7,7 @@ export const types = {
 
 export const initialState = {
     user: null,
-    lab: 1,
+    lab: 0,
     body: 0
 };
 

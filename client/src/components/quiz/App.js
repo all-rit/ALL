@@ -33,7 +33,7 @@ class App extends Component {
             selectedAnswers: {},
             multiChoice: false,
             lab:props.state.main.lab,
-            quizQuestions: {}
+            quizQuestions: []
         }
 
         ;
@@ -54,7 +54,16 @@ class App extends Component {
             //
             // case 4:
             default:
-                break;
+                return [{
+                    question: "Default",
+                    answers: [
+                        {
+                            val: 0,
+                            content: "Default"
+                        }
+                    ],
+                    multiChoice: false
+                }]
         }
     }
 
