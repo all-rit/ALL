@@ -246,7 +246,7 @@ const Home = (props) => {
           >
         </li>
         <li>
-          <a onClick={() => handleRedirect(actions,0,1)} href="/#">
+          <a onClick={() => handleRedirect(actions,0,1)} href="#">
             SiteMap
           </a>
         </li>
