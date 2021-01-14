@@ -77,28 +77,25 @@ class App extends Component {
   UNSAFE_componentWillMount() {
     const {actions} = this.props;
     let parsed = parse(window.location.href);
-    console.log(parsed)
     parsed = parsed.pathname.split('/');
-
-    const bodies = ["about", "reading", "game", "video", "quiz"]
-    const labs = ["lab1", "lab2", "lab3", "lab4"]
-
-    var realBody = parsed.filter(string => {
-      let lab="";
-      let body="";
+    const bodies = ["about", "reading", "game", "video", "quiz", "sitemap"]
+    const labs = ["lab1", "lab2", "lab3", "lab4", "homepage"]
+    let lab="";
+    let body="";
+    parsed.filter(string => {
       bodies.forEach(word => {
-          if (string.toLowerCase().includes(word))
-              body = word;
+          if (string.toLowerCase().includes(word) && body===""){
+            body = word;
+          }
+
       })
       labs.forEach(word => {
-          if (string.toLowerCase().includes(word))
-              lab = word;
-      })
-      return [lab,body]
-    });
+          if (string.toLowerCase().includes(word) && lab===""){
+            lab = word;
+          }
 
-    let body = realBody.pop().toLowerCase();
-    let lab = realBody.pop().toLowerCase();
+      })
+    });
     switch (lab) {
       case "lab1":
         actions.setLab(1);
