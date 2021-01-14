@@ -54,7 +54,7 @@ class App extends Component {
             //
             // case 4:
             default:
-                break;
+                return {};
         }
     }
 
