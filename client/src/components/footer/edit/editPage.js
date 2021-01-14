@@ -54,8 +54,7 @@ export function setTextColor(picker) {
     for (let i = 0; i < elems.length; i++) {
 
         elems[i].style.color = picker.toString();
-        // console.log("#" + picker.toString())
-        // console.log(elems[i].style.color)
+        console.log(picker.toString() + " !important");
     }
 }
 
@@ -63,5 +62,6 @@ export function setBackgroundColor(picker) {
     const elems = document.querySelectorAll('body, .quiz, .result');
     for (let i = 0; i < elems.length; i++) {
         elems[i].style.backgroundColor = picker.toString();
+
     }
 }
