@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 			boxnumber: { type: DataTypes.INTEGER },
 			correct: { type: DataTypes.BOOLEAN }
 		},
-		{ tableName: 'audiocue_choice' }
+		{ tableName: 'lab1_choice' }
 	);
 	Choice.sync();
 	return Choice;

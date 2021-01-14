@@ -21,7 +21,7 @@
     }
   }
 }
-.appBody{
+.mainBody{
   padding-top: 120px;
 }
 p {
@@ -72,6 +72,7 @@ a.icon {
 .btn-primary {
 	background-color: #fed136;
 	border-color: #fed136;
+	color: #404040 !important;
 	&:active {
 		background-color: #fec810 !important;
 		border-color: #fec810 !important;
@@ -96,6 +97,10 @@ a.icon {
 	background-color: #484848 !important;
 	border-color: #484848 !important;
 	color: white !important;
+}
+
+.text-black {
+	color: #404040;
 }
 
 #mainNav {
@@ -741,7 +746,7 @@ body {
 	font-family: 'Roboto Slab',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
 }
 .page-section {
-	padding: 100px 0;
+	padding: 0px 0;
 	h2.section-heading {
 		font-size: 40px;
 		margin-top: 0;
@@ -761,7 +766,7 @@ body {
 	margin-right: 2%;
 }
 .row {
-	display: block !important;
+	display: flex !important;
 	justify-content: space-around !important;
 	margin-bottom: 25px !important;
 	text-align: center !important;
@@ -777,8 +782,6 @@ body {
 	width: 350px;
 }
 .logo {
-	width: 100%;
-	height: auto;
 	width: 100%;
 	height: auto;
 }

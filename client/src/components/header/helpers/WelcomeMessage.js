@@ -14,11 +14,11 @@ const WelcomeMessage = (props) => {
 	}
 	const initial = user.firstname.charAt(0).toUpperCase();
 	return (
-		<Dropdown isOpen={dropdownOpen} toggle={toggle} className="welcome">
+		<Dropdown isOpen={dropdownOpen} toggle={toggle} className="welcome" disabled={!loginEnabled}>
 			<DropdownToggle
 				className="welcome__toggle"
 			>
-				<Button className="welcome__name">
+				<Button className="welcome__name" disabled={!loginEnabled}>
 				{initial}
 				</Button>
 			</DropdownToggle>
