@@ -7,22 +7,22 @@ import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Quiz} from "./components/quiz/App";
 import Change from "./components/footer/footer";
+import { globalHistory } from '@reach/router';
 import Header from "./components/header/header"
 import {actions as appActions} from './reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
-import {connect} from "react-redux";
 import {actions as mainActions} from "./reducers/MainReducer";
 import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
-import { Router } from "@reach/router";
-
+import { Router , Redirect} from "@reach/router";
+import {connect} from "react-redux";
 var parse = require('url-parse');
 
 export const Sections = {
   0: {
     name: "LandingPage",
     0: {
-      name: "Main",
+      name: "",
       value: <LandingPageBody/>
     },
     1: {
@@ -53,7 +53,6 @@ export const Sections = {
       value: <Quiz/> //this is named Quiz because every lab uses the same component
     }
   }
-
 }
 
 
@@ -69,77 +68,86 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.setLabBody = this.setLabBody.bind(this);
+  }
    componentDidMount() {
         const {actions} = this.props;
         actions.login();
+        this.setLabBody();
+        globalHistory.listen((location) => {
+          this.setLabBody(location.pathname);
+        });
     }
-  // UNSAFE_componentWillMount() {
-  //   const {actions} = this.props;
-  //   let parsed = parse(window.location.href);
-  //   parsed = parsed.pathname.split('/');
-  //   const bodies = ["about", "reading", "game", "video", "quiz", "sitemap"]
-  //   const labs = ["lab1", "lab2", "lab3", "lab4", "homepage"]
-  //   let lab="";
-  //   let body="";
-  //   parsed.filter(string => {
-  //     bodies.forEach(word => {
-  //         if (string.toLowerCase().includes(word) && body===""){
-  //           body = word;
-  //         }
-  //
-  //     })
-  //     labs.forEach(word => {
-  //         if (string.toLowerCase().includes(word) && lab===""){
-  //           lab = word;
-  //         }
-  //
-  //     })
-  //     return [];
-  //   });
-  //   switch (lab) {
-  //     case "lab1":
-  //       actions.setLab(1);
-  //       break;
-  //     case "lab2":
-  //       actions.setLab(2);
-  //       break;
-  //     case "lab3":
-  //       actions.setLab(3);
-  //       break;
-  //     case "lab4":
-  //       actions.setLab(4);
-  //       break;
-  //     case "landingpage":
-  //       actions.setLab(0);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  //   switch (body) {
-  //     case "about":
-  //       actions.setBody(0);
-  //       break;
-  //     case "reading":
-  //       actions.setBody(1);
-  //       break;
-  //     case "game":
-  //       actions.setBody(2);
-  //       break;
-  //     case "video":
-  //       actions.setBody(3);
-  //       break;
-  //     case "quiz":
-  //       actions.setBody(4);
-  //       break;
-  //     case "sitemap":
-  //       actions.setBody(1);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
+   setLabBody(location = null) {
+    const {actions} = this.props;
+    let parsed = location ? location: parse(window.location.href);
+    parsed = parsed.pathname.split('/');
+    const bodies = ["about", "reading", "game", "video", "quiz", "sitemap"]
+    const labs = ["lab1", "lab2", "lab3", "lab4", "homepage"]
+    let lab="";
+    let body="";
+    parsed.filter(string => {
+      bodies.forEach(word => {
+          if (string.toLowerCase() === word && body===""){
+            body = word;
+          }
+
+      })
+      labs.forEach(word => {
+          if (string.toLowerCase() === word && lab===""){
+            lab = word;
+          }
+
+      })
+      return [];
+    });
+    switch (lab) {
+      case "lab1":
+        actions.setLab(1);
+        break;
+      case "lab2":
+        actions.setLab(2);
+        break;
+      case "lab3":
+        actions.setLab(3);
+        break;
+      case "lab4":
+        actions.setLab(4);
+        break;
+      case "":
+        actions.setLab(0);
+        break;
+      default:
+        actions.setLab(0);
+        break;
+    }
+    switch (body) {
+      case "about":
+        actions.setBody(0);
+        break;
+      case "reading":
+        actions.setBody(1);
+        break;
+      case "game":
+        actions.setBody(2);
+        break;
+      case "video":
+        actions.setBody(3);
+        break;
+      case "quiz":
+        actions.setBody(4);
+        break;
+      case "sitemap":
+        actions.setBody(1);
+        break;
+      default:
+        actions.setBody(0);
+        break;
+    }
+  }
 
 
   render() {
@@ -154,15 +162,13 @@ class App extends Component {
           <BodyHeader body={Sections[lab][body].name} lab={Sections[lab].name}/>
           }
           <div className="appBody">
-            <Router basepath={process.env.PUBLIC_URL} className="app">
+            <Router basepath={process.env.PUBLIC_URL} className="app" >
               <LandingPageBody path="/"/>
-              <SiteMap path="/Sitemap" />
-              <AboutLab1 path="/Lab1/about"/>
+              <SiteMap path="/SiteMap" />
+              <AboutLab1 path="/Lab1/About"/>
+              {/*<Redirect from="*" to="/"/>*/}
             </Router>
           </div>
-          {/*<div className = "appBody">*/}
-          {/*{Sections[lab][body].value}*/}
-          {/*</div>*/}
         </div>
         <Change/>
       </div>

@@ -1,8 +1,20 @@
 import React from "react";
 import "../../../assets/stylesheets/components/App.scss"
 import "../../../assets/stylesheets/pages/LandingPage.scss"
+import {connect} from "react-redux";
+import {bindActionCreators} from 'redux';
+import {actions as mainActions} from "../../../reducers/MainReducer";
+import handleRedirect from "../../../helpers/Redirect";
 
-const SiteMap = () => {
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(mainActions, dispatch)
+    };
+};
+
+
+const SiteMap = (props) => {
+const {actions} = props;
 return (
     <div>
     <div class="container">
@@ -17,50 +29,62 @@ return (
                     <div class="row text-center">
                         <div class="col-md-4">
                         <h4 class="service-heading">
-                            <a href="http://all.rit.edu" >Home</a>
+                            <a href="#" onClick={() => handleRedirect(actions, 0, 0)} >Home</a>
                         </h4>
                         <ul>
-                            <li> <a href={process.env.PUBLIC_URL + "/LandingPage/#goals"}>Goals</a></li>
-                            <li> <a href={process.env.PUBLIC_URL + "/LandingPage/#labs"}>Labs</a></li>
-                            <li> <a href={process.env.PUBLIC_URL + "/LandingPage/#contact"} >Contact</a></li>
+                            <li> <a href="#" onClick={() => handleRedirect(actions,0)}>Goals</a></li>
+                            <li> <a href="#" onClick={() => handleRedirect(actions,0)}>Labs</a></li>
+                            <li> <a href="#" onClick={() => handleRedirect(actions,0)} >Contact</a></li>
                         </ul>
                         </div>
                         <div class="col-md-4">
                         <h4 class="service-heading" >
-                            <a href="http://all.rit.edu/Lab1" >Lab 1</a>
+                            <a href="#" onClick={() => handleRedirect(actions, 1, 0)}>Lab 1</a>
                         </h4>
                         <ul>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab1/about"}>About</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab1/reading"}>Reading</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab1/game"} >Game</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab1/video"}>Video</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab1/quiz"} >Quiz</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,1,0)}>About</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,1,1)}>Reading</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,1,2)} >Game</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,1,3)}>Video</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,1,4)} >Quiz</a></li>
                         </ul>
                         </div>
                         <div class="col-md-4">
                         <h4 class="service-heading">
-                            <a href="http://all.rit.edu/Lab2" >Lab 2</a>
+                            <a href="#" onClick={() => handleRedirect(actions, 2, 0)} >Lab 2</a>
                         </h4>
                         <ul>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab2/about"} >About</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab2/reading"}  >Reading</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab2/game"}  >Game</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab2/video"} >Video</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab2/quiz"} >Quiz</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,2,0)} >About</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,2,1)}  >Reading</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,2,2)} >Game</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,2,3)}>Video</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,2,4)} >Quiz</a></li>
                         </ul>
                         </div>
 
                         <div class="col-md-4">
                         <h4 class="service-heading">
-                            <a href="http://all.rit.edu/Lab3" >Lab 3</a>
+                            <a href="#" onClick={() => handleRedirect(actions, 3, 0)} >Lab 3</a>
                         </h4>
                         <ul>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab3/about"} >About</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab3/reading"}  >Reading</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab3/game"}  >Game</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab3/video"} >Video</a></li>
-                            <li><a href={process.env.PUBLIC_URL + "/Lab3/quiz"} >Quiz</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,3,0)} >About</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,3,1)}  >Reading</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,3,2)} >Game</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,3,3)}>Video</a></li>
+                            <li><a href="#" onClick={() => handleRedirect(actions,3,4)} >Quiz</a></li>
                         </ul>
+                        </div>
+                        <div className="col-md-4">
+                            <h4 className="service-heading">
+                                <a href="#" onClick={() => handleRedirect(actions, 4, 0)}>Lab 4</a>
+                            </h4>
+                            <ul>
+                                <li><a href="#" onClick={() => handleRedirect(actions, 4, 0)}>About</a></li>
+                                <li><a href="#" onClick={() => handleRedirect(actions, 4, 1)}>Reading</a></li>
+                                <li><a href="#" onClick={() => handleRedirect(actions, 4, 2)}>Game</a></li>
+                                <li><a href="#" onClick={() => handleRedirect(actions, 4, 3)}>Video</a></li>
+                                <li><a href="#" onClick={() => handleRedirect(actions, 4, 4)}>Quiz</a></li>
+                            </ul>
                         </div>
                     </div>
             </div>
@@ -87,4 +111,5 @@ return (
 };
 
 
-export default SiteMap;
+export default connect(
+    null, mapDispatchToProps)(SiteMap);
