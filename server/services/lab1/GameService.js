@@ -1,7 +1,7 @@
 const db = require('../../database');
 
 exports.createGame = (data) => {
-	return db.Game.create({
+	return db.GameLab1.create({
 				usersessionid: data.usersessionid,
 				playthrough: data.playthrough
 			})
@@ -14,7 +14,7 @@ exports.createGame = (data) => {
 };
 
 exports.createRound = (data) => {
-	return db.Game
+	return db.GameLab1
 		.findByPk(data.id)
 		.then((game) => {
 			return db.Round.create({ gameid: game.gameid, soundoption: data.soundOption });
@@ -43,7 +43,7 @@ exports.createChoice = (data) => {
 			return true;
 		})
 		.catch(() => {
-			db.Game.findByPk(data.id).then((game) => {
+			db.GameLab1.findByPk(data.id).then((game) => {
 				game.update({ score: data.score });
 			});
 			db.Round.findByPk(data.round).then((round) => {
