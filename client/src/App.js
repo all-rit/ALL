@@ -7,7 +7,6 @@ import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Quiz} from "./components/quiz/App";
 import Change from "./components/footer/footer";
-import { globalHistory } from '@reach/router';
 import Header from "./components/header/header"
 import {actions as appActions} from './reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
@@ -77,9 +76,6 @@ class App extends Component {
         const {actions} = this.props;
         actions.login();
         this.setLabBody();
-        globalHistory.listen((location) => {
-          this.setLabBody(location.pathname);
-        });
     }
    setLabBody(location = null) {
     const {actions} = this.props;
@@ -166,7 +162,7 @@ class App extends Component {
               <LandingPageBody path="/"/>
               <SiteMap path="/SiteMap" />
               <AboutLab1 path="/Lab1/About"/>
-              {/*<Redirect from="*" to="/"/>*/}
+              {/*<Redirect to="/"/>*/}
             </Router>
           </div>
         </div>
