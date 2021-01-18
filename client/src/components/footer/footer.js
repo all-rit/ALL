@@ -39,7 +39,7 @@ class Footer extends Component {
     }
 
     componentDidUpdate(prevProps){
-       if (prevProps.state.app.body !== this.props.state.app.body) {
+       if (prevProps.state.main.body !== this.props.state.main.body) {
            this.adjustSize(this.state.fontSize);
        }
     }
@@ -142,24 +142,19 @@ class Footer extends Component {
                 }
             }
         }
-
-
     }
-
 
     render() {
         const {state, actions} = this.props;
         let display = state.game.state === "GAME_IDLE" || state.main.body !== 2;
+        let hideOnLanding = state.main.lab === 0; // for buttons that should not be displayed on the landing page
         return (
-
             <div>
                 <div className="container" style={{display: display ? "block" : "none"}}>
-
                     <button
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                        onClick={() => this.handleDecrement(state.main.body, actions)
-                        }
-                        style={{display: this.disappearBack(state.main.body) ? "none" : "block"}}
+                        onClick={() => this.handleDecrement(state.main.body, actions)}
+                        style={{display: this.disappearBack(state.main.body) || hideOnLanding ? "none" : "block"}}
                     >
                         Previous — {state.main.body > 0 ? Sections[state.main.lab][state.main.body - 1].name : ""}
                     </button>
@@ -167,7 +162,7 @@ class Footer extends Component {
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
                         // onClick={() => {this.handleIncrement(state.main.body, actions)}}
                         onClick={() => {this.handleIncrement(state.main.body, actions)}}
-                        style={{display: this.disappearNext(state.main.body) ? "none" : "block"}}
+                        style={{display: this.disappearNext(state.main.body) || hideOnLanding ? "none" : "block"}}
                     >
                         Next — {state.main.body < 4 && typeof Sections[state.main.lab][state.main.body + 1] !== "undefined" ? Sections[state.main.lab][state.main.body + 1].name : ""}
                     </button>
@@ -212,15 +207,13 @@ class Footer extends Component {
                         </div>}
                     </div>
                 </div>
-                <div className="container" style={{display: display ? "none" : "block"}}>
+                <div className="container" style={{display: display || hideOnLanding ? "none" : "block"}}>
                     <div className="btn-information">
                         The previously available navigation and accessibility buttons are disabled until the game is complete.
                     </div>
                 </div>
-
             </div>
         );
-
     };
 }
 
