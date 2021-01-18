@@ -220,7 +220,7 @@ const Home = (props) => {
     {/* Contact */}
     <section class="page-section landingpage__pagesection" id="contact">
       <div class="container">
-        <div class="row">
+        <div class="row contact">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
             <h3 class="section-subheading" id={"connect-text"}>
