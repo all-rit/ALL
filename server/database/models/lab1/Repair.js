@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 	const Repair = sequelize.define(
-		'Repair',
+		'RepairLab1',
 		{
 			repairid: {
 				type: DataTypes.INTEGER,

@@ -1,7 +1,7 @@
 const db = require('../../database');
 
 exports.submitChange = (data) => {
-	return db.Repair.create({
+	return db.RepairLab1.create({
 			usersessionid: data.usersessionid,
 			availablemessage: data.availableMessage,
 			unavailablemessage: data.unavailableMessage,

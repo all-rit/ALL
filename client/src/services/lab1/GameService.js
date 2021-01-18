@@ -1,9 +1,9 @@
 import API from '../API';
 
 const endpoints = {
-	CREATE_GAME: '/game/start',
-	CREATE_ROUND: '/game/round',
-	CREATE_CHOICE: '/game/choice'
+	CREATE_GAME: '/lab1/game/start',
+	CREATE_ROUND: '/lab1/game/round',
+	CREATE_CHOICE: '/lab1/game/choice'
 };
 
 export default {
