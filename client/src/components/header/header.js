@@ -8,7 +8,6 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    // NavbarBrand,
     Nav,
     NavItem,
     NavLink
@@ -57,7 +56,6 @@ const Header = (props) => {
     return (
         <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
             <div className="container">
-                {/*<NavbarBrand href="http://all.rit.edu">*/}
                     <img className="logo img-fluid"
                          src={logo}
                          alt="Computing Accessibility"
@@ -67,7 +65,6 @@ const Header = (props) => {
                        href="http://all.rit.edu">
                         Accessibility Learning Labs
                     </a>
-                {/*</NavbarBrand>*/}
 
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
