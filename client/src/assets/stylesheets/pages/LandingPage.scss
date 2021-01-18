@@ -95,16 +95,10 @@ a:hover {
 a.icon:hover {
 	background-color: #fed136 !important;
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.landingpage h1, .landingpage h2, .landingpage h3, .landingpage h4, .landingpage h5, .landingpage h6 {
 	font-weight: 700;
 	font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-}
+	}
 
 .text-primary {
 	color: #fed136;
