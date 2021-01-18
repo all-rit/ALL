@@ -39,7 +39,7 @@ class Footer extends Component {
     }
 
     componentDidUpdate(prevProps){
-       if (prevProps.state.app.body !== this.props.state.app.body) {
+       if (prevProps.state.main.body !== this.props.state.main.body) {
            this.adjustSize(this.state.fontSize);
        }
     }
@@ -153,8 +153,8 @@ class Footer extends Component {
                 <div className="container" style={{display: display ? "block" : "none"}}>
                     <button
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
-                        onClick={() => this.handleDecrement(state.app.body, actions)}
-                        style={{display: this.disappearBack(state.app.body) || hideOnLanding ? "none" : "block"}}
+                        onClick={() => this.handleDecrement(state.main.body, actions)}
+                        style={{display: this.disappearBack(state.main.body) || hideOnLanding ? "none" : "block"}}
                     >
                         Previous — {state.main.body > 0 ? Sections[state.main.lab][state.main.body - 1].name : ""}
                     </button>
