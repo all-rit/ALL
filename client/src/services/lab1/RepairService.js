@@ -1,7 +1,7 @@
 import API from '../API';
 
 const endpoints = {
-	SUBMIT_REPAIR: '/repair/submit'
+	SUBMIT_REPAIR: '/lab1/repair/submit'
 };
 
 export default {
