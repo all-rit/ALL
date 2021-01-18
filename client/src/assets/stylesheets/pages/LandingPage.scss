@@ -33,7 +33,7 @@
 header.masthead {
 	text-align: center;
 	color: white;
-	height: auto;
+	//height: auto;
 	background-image: url("../../images/div_head.jpg") !important;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
@@ -86,5 +86,38 @@ header.masthead {
 }
 #mainNav {
 	height: 93px;
+}
+a {
+	color: white;
+}
+
+a:hover {
+	color: #015f6f;
+}
+
+a.icon:hover {
+	background-color: #fed136 !important;
+}
+
+.text-primary {
+	color: #fed136;
+}
+
+#connect-text {
+	color: #fed136
+}
+
+#tell-me-more-btn {
+	background-color: #fed136;
+	border-color: #fed135;
+	color: #404040;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+	background-color: #e9b301 !important;
+	border-color: white !important;
+	color: #262626;
 }
 
