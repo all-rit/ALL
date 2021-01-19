@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import logo from "../../assets/images/accessCycle.png";
+// import logo from "../../assets/images/accessCycle.png";
+import logo from "../../assets/images/accessCycleHeader.png";
+import "../../assets/stylesheets/components/Header.scss"
 import WelcomeMessage from './helpers/WelcomeMessage';
 import {connect} from "react-redux";
 import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink
@@ -55,22 +56,16 @@ const Header = (props) => {
     return (
         <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
             <div className="container">
-                <NavbarBrand href="http://all.rit.edu">
-                    <div className="logo-container justify-content-center">
-                        <img className="logo img-fluid"
-                             src={logo}
-                             style={{
-                                 paddingRight: "20px",
-                                 paddingBottom: "10px",
-                                 paddingTop: "10px",
-                                 marginTop: "-10px"
-                             }}
-                             alt="Computing Accessibility"
-                        />
-                    </div>
+                    <img className="logo img-fluid"
+                         src={logo}
+                         alt="Computing Accessibility"
+                    />
 
-                    {/*Accessibility Learning Labs*/}
-                </NavbarBrand>
+                    <a className="navbar-brand js-scroll-trigger" id={"all-header-text"}
+                       href="http://all.rit.edu">
+                        Accessibility Learning Labs
+                    </a>
+
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                 {state.main.lab === 0 ?

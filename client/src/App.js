@@ -98,7 +98,7 @@ class App extends Component {
           }
 
       })
-      return [];
+      return "";
     });
     switch (lab) {
       case "lab1":

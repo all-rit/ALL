@@ -27,16 +27,14 @@ const Home = (props) => {
       <div class="container">
         <div class="intro-text">
           <div class="intro-lead-in">
-            Welcome To The Accessibility Learning Labs (ALL) project!
+            Welcome to the Accessibility Learning Labs (ALL) Project!
           </div>
           <div class="intro-heading text-uppercase">
             Learn about Accessibility
           </div>
-          <a
-            class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-            href="#goals"
-          >Tell Me More</a
-          >
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id={"tell-me-more-btn"} href="#goals">
+            Tell Me More
+          </a>
         </div>
       </div>
     </header>
@@ -47,15 +45,14 @@ const Home = (props) => {
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Lab Goals</h2>
             <h3 class="section-subheading lab-section-subheading">
-              Activities that incorporate accessibility education and improve
-              understanding of accessible design are available.
+              To provide activities that incorporate accessibility education and accessible design.
             </h3>
           </div>
         </div>
         <div class="row text-center">
           <div class="col-md-4">
             <p class="service-heading landingpage__leftalign" >
-              Create easily adoptable labs (only a browser is need)
+              Create easily adoptable labs (only a browser is needed)
             </p>
           </div>
 
@@ -82,7 +79,7 @@ const Home = (props) => {
             <h2 class="section-heading text-uppercase">Labs</h2>
 
             <h3 class="section-subheading " >
-              Check out the labs below that are available to explore.
+              Explore the available labs below.
             </h3>
           </div>
         </div>
@@ -107,8 +104,7 @@ const Home = (props) => {
                   >Accessibility to Sound and Speech</a>
               </h4>
               <p class="">
-                Learn about designing the web for the Deaf and Hard Of
-                Hearing community.
+                Learn about designing the web for the Deaf and Hard-of-Hearing community.
               </p>
             </div>
           </div>
@@ -119,7 +115,6 @@ const Home = (props) => {
               onClick={() => handleRedirect(actions,2)}
               href="#"
             >
-
               <img
                 class="img-fluid landingpage__image"
                 src={eye}
@@ -225,10 +220,10 @@ const Home = (props) => {
     {/* Contact */}
     <section class="page-section landingpage__pagesection" id="contact">
       <div class="container">
-        <div class="row">
+        <div class="row contact">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-primary">
+            <h3 class="section-subheading" id={"connect-text"}>
               Connect with us if you have questions. Contact Dr. Daniel Krutz at
               <a class="landingpage__contact" href="mailto:aware@mail.rit.edu "> aware@mail.rit.edu</a>
             </h3>

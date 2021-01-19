@@ -23,7 +23,7 @@
 		height:100px;
 	}
 	&__pagesection{
-		padding: 100px 0;
+		padding: 50px 0;
 	}
 	a{
 		color: #0144d5;
@@ -33,7 +33,7 @@
 header.masthead {
 	text-align: center;
 	color: white;
-	height: auto;
+	//height: auto;
 	background-image: url("../../images/div_head.jpg") !important;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
@@ -86,5 +86,42 @@ header.masthead {
 }
 #mainNav {
 	height: 93px;
+}
+
+a:hover {
+	color: #015f6f;
+}
+
+a.icon:hover {
+	background-color: #fed136 !important;
+}
+.landingpage h1, .landingpage h2, .landingpage h3, .landingpage h4, .landingpage h5, .landingpage h6 {
+	font-weight: 700;
+	font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	}
+
+.text-primary {
+	color: #fed136;
+}
+
+.contact {
+	margin: 100px 0px 100px ;
+}
+#connect-text {
+	color: #fed136
+}
+
+#tell-me-more-btn {
+	background-color: #fed136;
+	border-color: #fed135;
+	color: #404040;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+	background-color: #e9b301 !important;
+	border-color: white !important;
+	color: #262626;
 }
 
