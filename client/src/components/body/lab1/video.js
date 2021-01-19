@@ -19,9 +19,9 @@ const Video = () => {
           width="560"
           height="315"
           src="https://www.youtube.com/embed/vU_Di8EtF3M"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
       <div className="row">
@@ -33,9 +33,9 @@ const Video = () => {
           width="560"
           height="315"
           src="https://www.youtube.com/embed/Wlf8A0w66o0"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
       <div className="row">
