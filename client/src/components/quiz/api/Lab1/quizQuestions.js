@@ -1,4 +1,4 @@
-var quizQuestions = [
+var quizQuestionsLab1 = [
     {
         question: "What is an audio cue?",
         answers: [
@@ -104,4 +104,4 @@ var quizQuestions = [
     }
 ];
 
-export default quizQuestions;
+export default quizQuestionsLab1;

@@ -199,7 +199,7 @@ class App extends Component {
               <VideoLab3 path="/Lab3/Video" />
               <VideoLab4 path="/Lab4/Video" /> */}
               
-              <Quiz path={`/${lab}/quiz`}/>
+              <Quiz path={`/Lab${lab}/Quiz`}/>
               
               {/*<Redirect to="/"/>*/}
               

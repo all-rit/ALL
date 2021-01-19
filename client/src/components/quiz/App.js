@@ -281,6 +281,7 @@ class App extends Component {
     }
 
     render() {
+        console.log(quizQuestionsLab1)
         return (
             <div className="quiz">
                 {this.state.result ? this.renderResult() : this.renderQuiz()}
