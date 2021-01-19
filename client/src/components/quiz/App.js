@@ -171,8 +171,6 @@ class App extends Component {
 
     setNextQuestion() {
         let currentAnswers = this.getCheckedAnswers();
-        // console.log("get selected answers:");
-        // console.log(currentAnswers);
 
         //Calculate correct answers and set accordingly
         this.checkMultipleAnswers(currentAnswers);
@@ -281,7 +279,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(quizQuestionsLab1)
         return (
             <div className="quiz">
                 {this.state.result ? this.renderResult() : this.renderQuiz()}

@@ -1,5 +1,3 @@
-// import { LOCATION_CHANGE } from 'connected-react-router';
-
 export const types = {
     LOGIN: '@accessibility-lab/login',
     UPDATE_USER: '@accessibility-lab/update_user',

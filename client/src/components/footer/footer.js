@@ -75,18 +75,6 @@ class Footer extends Component {
         return count <= 0;
     };
 
-    handleIncrement = (lab, count, actions) => {
-        if (count < 4) {
-            actions.setBody(count + 1);
-        }
-    };
-
-    handleDecrement = (lab, count, actions) => {
-        if (count > 0) {
-            actions.setBody(count - 1);
-        }
-    };
-
     renderTextColorPalette = () => {
         this.setState({
             // displayColorPalette: !this.state.displayColorPalette,
