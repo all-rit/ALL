@@ -62,7 +62,8 @@ const Header = (props) => {
                     />
 
                     <a className="navbar-brand js-scroll-trigger" id={"all-header-text"}
-                       href="http://all.rit.edu">
+                       href="#"
+                       onClick={() => navigate(state,actions, 0, 0)}>
                         Accessibility Learning Labs
                     </a>
 

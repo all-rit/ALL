@@ -29,7 +29,9 @@ class Footer extends Component {
             fontSize: 0,
             textColor: false,
             bgColor: false,
-            displayColorPalette: false
+            displayColorPalette: false,
+            backgroundColor: null,
+            color: null
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -39,8 +41,8 @@ class Footer extends Component {
     }
 
     componentDidUpdate(prevProps){
-       if (prevProps.state.main.body !== this.props.state.main.body) {
-           this.adjustSize(this.state.fontSize);
+       if (prevProps.state.main.lab !== this.props.state.main.lab) {
+           this.adjustSizeColor(this.state.fontSize);
        }
     }
 
@@ -53,7 +55,7 @@ class Footer extends Component {
         changeTSize(size);
         this.setState({fontSize: state_size + size});
     };
-    adjustSize = (fontSize) => {
+    adjustSizeColor = (fontSize) => {
         for (let x=0; x<Math.abs(fontSize);x++){
             if(fontSize<0 ) {
                 onNextPageChangeTSize(-1);
@@ -62,6 +64,8 @@ class Footer extends Component {
                 onNextPageChangeTSize(1);
             }
         }
+        if (this.state.color){setTextColor(this.state.color)}
+        if (this.state.backgroundColor){setBackgroundColor(this.state.backgroundColor)}
     };
 
     disappearNext = (count) => {
@@ -71,7 +75,6 @@ class Footer extends Component {
             return false;
         }
     };
-
     disappearBack = (count) => {
         if (count <= 0) {
             return true;
@@ -101,18 +104,19 @@ class Footer extends Component {
     };
     renderBgColorPalette = () => {
         this.setState({
-            // displayColorPalette: !this.state.displayColorPalette,
             bgColor: !this.state.bgColor,
             textColor: false
         });
     };
 
     OnTextColorChange(obj) {
-        setTextColor(obj.color)
+        setTextColor(obj.color);
+        this.setState({color: obj.color})
     };
 
     OnBgColorChange(obj) {
-        setBackgroundColor(obj.color)
+        setBackgroundColor(obj.color);
+        this.setState({backgroundColor: obj.color})
     };
 
     handleClick(e) {
@@ -200,10 +204,10 @@ class Footer extends Component {
                             Change Background Color
                         </button>
                         {this.state.textColor && <div id="text-panel" className="div-style-text" style={{display: this.state.textColor === true ? "block" : "none"}}>
-                            <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnTextColorChange} />
+                            <ColorPickerPanel enableAlpha={false} defaultColor={'#345679'} color={ this.state.color} onChange={this.OnTextColorChange.bind(this)}/>
                         </div>}
                         {this.state.bgColor && <div id="bg-panel" className="div-style-bgColor">
-                            <ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.OnBgColorChange} />
+                            <ColorPickerPanel enableAlpha={false} defaultColor={'#345679'} color={ this.state.backgroundColor}  onChange={this.OnBgColorChange.bind(this)} />
                         </div>}
                     </div>
                 </div>
