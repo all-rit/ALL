@@ -69,18 +69,10 @@ class Footer extends Component {
     };
 
     disappearNext = (count) => {
-        if (count >= 4) {
-            return true;
-        } else {
-            return false;
-        }
+        return count >= 4;
     };
     disappearBack = (count) => {
-        if (count <= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return count <= 0;
     };
 
     handleIncrement = (lab, count, actions) => {
