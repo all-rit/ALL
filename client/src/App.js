@@ -29,7 +29,7 @@ import {bindActionCreators} from 'redux';
 import {actions as mainActions} from "./reducers/MainReducer";
 import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
-import { Router, Redirect} from "@reach/router";
+import { Router} from "@reach/router";
 import {connect} from "react-redux";
 
 var parse = require('url-parse');
@@ -38,35 +38,28 @@ export const Sections = {
   0: {
     name: "LandingPage",
     0: {
-      name: "",
-      value: <LandingPageBody/>
+      name: ""
     },
     1: {
-      name: "SiteMap",
-      value: <SiteMap/>
+      name: "SiteMap"
     }
   },
   1:{
       name: "Lab1",
     0:{
-      name: "About",
-      value: <AboutLab1/>
+      name: "About"
     },
     1:{
-      name: "Reading",
-      value: <ReadingLab1/>
+      name: "Reading"
     },
     2:{
-      name: "Game",
-      value: <GameLab1/>
+      name: "Game"
     },
     3:{
-      name: "Video",
-      value: <VideoLab1/>
+      name: "Video"
     },
     4:{
-      name: "Quiz",
-      value: <Quiz/> //this is named Quiz because every lab uses the same component
+      name: "Quiz"
     }
   }
 }

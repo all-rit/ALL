@@ -88,7 +88,7 @@ const Home = (props) => {
             <a
               class="portfolio-link"
               onClick={() => handleRedirect(actions,1)}
-              href="#"
+              href="# "
 
             >
               <img
@@ -100,7 +100,7 @@ const Home = (props) => {
             </a>
             <div class="portfolio-caption">
               <h4>
-                <a onClick={() => handleRedirect(actions,1)} href="#"
+                <a onClick={() => handleRedirect(actions,1)} href="# "
                   >Accessibility to Sound and Speech</a>
               </h4>
               <p class="">
@@ -113,7 +113,7 @@ const Home = (props) => {
             <a
               class="portfolio-link"
               onClick={() => handleRedirect(actions,2)}
-              href="#"
+              href="# "
             >
               <img
                 class="img-fluid landingpage__image"
@@ -124,7 +124,7 @@ const Home = (props) => {
             </a>
             <div class="portfolio-caption">
               <h4>
-                <a onClick={() => handleRedirect(actions,2)} href="#"
+                <a onClick={() => handleRedirect(actions,2)} href="# "
                 >Accessibility to Color Blindness
                 </a>
               </h4>
@@ -140,7 +140,7 @@ const Home = (props) => {
               <a
                 class="portfolio-link"
                 onClick={() => handleRedirect(actions,3)}
-                href="#"
+                href="# "
               >
                 <img
                   class="img-fluid landingpage__image"
@@ -151,7 +151,7 @@ const Home = (props) => {
               </a>
               <div class="portfolio-caption">
                 <h4>
-                  <a onClick={() => handleRedirect(actions,3)} href="#"
+                  <a onClick={() => handleRedirect(actions,3)} href="# "
                   >Accessibility with Screen Readers</a
                   >
                 </h4>
@@ -165,7 +165,7 @@ const Home = (props) => {
               <a
                 class="portfolio-link"
                 onClick={() => handleRedirect(actions,4)}
-                href="#"
+                href="# "
               >
                 <img
                   class="img-fluid landingpage__image"
@@ -177,7 +177,7 @@ const Home = (props) => {
               <div class="portfolio-caption">
                 <h4>
                   <a
-                    onClick={() => handleRedirect(actions,4)} href="#"
+                    onClick={() => handleRedirect(actions,4)} href="# "
                     >Accessibility to Dexterity</a
                   >
                 </h4>
@@ -241,7 +241,7 @@ const Home = (props) => {
           >
         </li>
         <li>
-          <a onClick={() => handleRedirect(actions,0,1)} href="#">
+          <a onClick={() => handleRedirect(actions,0,1)} href="# ">
             SiteMap
           </a>
         </li>
