@@ -6,9 +6,7 @@ export const handleRedirect = (actions, lab, body = 0) => {
     const bodyname = Sections[lab][body].name;
     navigate(process.env.PUBLIC_URL + "/" + (lab !== 0 ?  labname + "/" : "") + bodyname).then( ()=>{
         actions.setLab(lab);
-        if (body){
-            actions.setBody(body);
-        }
+        actions.setBody(body);
     })
 }
 

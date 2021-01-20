@@ -27,7 +27,6 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 lab: action.lab,
-                body: 0
             };
         default:
             return state;

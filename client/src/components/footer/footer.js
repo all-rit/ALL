@@ -41,7 +41,7 @@ class Footer extends Component {
     }
 
     componentDidUpdate(prevProps){
-       if (prevProps.state.main.lab !== this.props.state.main.lab) {
+       if (prevProps.state.main.body !== this.props.state.main.body || prevProps.state.main.lab !== this.props.state.main.lab) {
            this.adjustSizeColor(this.state.fontSize);
        }
     }
@@ -142,7 +142,7 @@ class Footer extends Component {
                         onClick={() => handleRedirect(actions, lab, body - 1)}
                         style={{display: this.disappearBack(body) || hideOnLanding ? "none" : "block"}}
                     >
-                        Previous — {body > 0 ? Sections[lab][body - 1].name : ""}
+                        Previous — {body > 0 && typeof Sections[lab][body + 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
