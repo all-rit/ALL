@@ -1,14 +1,13 @@
 import { Sections } from "../App";
+import { navigate } from "@reach/router";
 
-export const handleRedirect = (actions, lab, body =0) => {
-    console.log(lab);
+export const handleRedirect = (actions, lab, body = 0) => {
     const labname = Sections[lab].name;
     const bodyname = Sections[lab][body].name;
-    window.location.href = process.env.PUBLIC_URL + "/" +labname + "/" + bodyname
-    //     actions.setLab(lab);
-    // if (body){
-    //     actions.setBody(body);
-    // }
+    navigate(process.env.PUBLIC_URL + "/" + (lab !== 0 ?  labname + "/" : "") + bodyname).then( ()=>{
+        actions.setLab(lab);
+        actions.setBody(body);
+    })
 }
 
 export default handleRedirect;

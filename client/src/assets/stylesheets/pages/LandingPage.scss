@@ -1,6 +1,7 @@
 .landingpage{
     &__leftalign{
         text-align: left;
+		font-size:20px;
     }
     &__contact{
         color: #bed2fe
@@ -25,9 +26,14 @@
 	&__pagesection{
 		padding: 50px 0;
 	}
-	a{
+	a{	
+		font-size:20px;
 		color: #0144d5;
 	}
+	p{
+		font-size: 16px;
+	}
+
 }
 
 header.masthead {

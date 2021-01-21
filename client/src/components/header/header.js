@@ -62,7 +62,8 @@ const Header = (props) => {
                     />
 
                     <a className="navbar-brand js-scroll-trigger" id={"all-header-text"}
-                       href="http://all.rit.edu">
+                       href="# "
+                       onClick={() => navigate(state,actions, 0, 0)}>
                         Accessibility Learning Labs
                     </a>
 
@@ -107,6 +108,43 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
+                            <NavItem class="collapse navbar-collapse" >
+                            <NavLink
+                            class="nav-link js-scroll-trigger"
+                            href="# "
+                            style={{color: "#fff"}}
+                                >
+                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <li className="nav-item">
+                            
+                            </li>
+                            </ul>
+                            </NavLink>
+                            </NavItem>
+                            <NavItem class="collapse navbar-collapse" >
+                            <NavLink
+                            class="nav-link js-scroll-trigger"
+                            href="# "
+                            style={{color: "#fff"}}
+                                >
+                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <li className="nav-item">
+                            </li>
+                            </ul>
+                            </NavLink>
+                            </NavItem>
+                            <NavItem class="collapse navbar-collapse" >
+                            <NavLink
+                            class="nav-link js-scroll-trigger"
+                            href="# "
+                            style={{color: "#fff"}}
+                                >
+                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <li className="nav-item">
+                            </li>
+                            </ul>
+                            </NavLink>
+                            </NavItem>
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                         </Nav>
                             :<Nav className="ml-auto" navbar>
@@ -115,7 +153,7 @@ const Header = (props) => {
                                 <NavLink
                                     class="nav-link js-scroll-trigger"
                                     onClick={() => navigate(state,actions, 0, 0)}
-                                    href="#"
+                                    href="# "
                                     style={{color: "#fff"}}>
                                     <ul className="navbar-nav text-uppercase ml-auto">
                                         <li className="nav-item">
@@ -129,7 +167,7 @@ const Header = (props) => {
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             onClick={() => navigate(state, actions,0)}
-                            href="#"
+                            href="# "
                             style={count === 0 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">
@@ -143,7 +181,7 @@ const Header = (props) => {
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             onClick={() => navigate(state, actions,1)}
-                            href="#"
+                            href="# "
                             style={count === 1 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">
@@ -158,7 +196,7 @@ const Header = (props) => {
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             onClick={() => navigate(state, actions,2)}
-                            href="#"
+                            href="# "
                             style={count === 2 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">
@@ -173,7 +211,7 @@ const Header = (props) => {
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             onClick={() => navigate(state, actions,3)}
-                            href="#"
+                            href="# "
                             style={count === 3 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">
@@ -189,7 +227,7 @@ const Header = (props) => {
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             onClick={() => navigate(state, actions,4)}
-                            href="#"
+                            href="# "
                             style={count === 4 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">

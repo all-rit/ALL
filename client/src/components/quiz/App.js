@@ -171,8 +171,6 @@ class App extends Component {
 
     setNextQuestion() {
         let currentAnswers = this.getCheckedAnswers();
-        // console.log("get selected answers:");
-        // console.log(currentAnswers);
 
         //Calculate correct answers and set accordingly
         this.checkMultipleAnswers(currentAnswers);
