@@ -51,21 +51,21 @@ const Home = (props) => {
         </div>
         <div class="row text-center">
           <div class="col-md-4">
-            <p class="service-heading landingpage__leftalign" >
+            <h5 class="service-heading landingpage__leftalign" >
               Create easily adoptable labs (only a browser is needed)
-            </p>
+            </h5>
           </div>
 
           <div class="vertical-line col-md-4 ">
-            <p class="service-heading landingpage__leftalign" >
+            <h5 class="service-heading landingpage__leftalign" >
               Inform students how to create accessible software
-            </p>
+            </h5>
           </div>
 
           <div class="vertical-line col-md-4 ">
-            <p class="service-heading landingpage__leftalign">
+            <h5 class="service-heading landingpage__leftalign">
               Demonstrate the importance of creating accessible software
-            </p>
+            </h5>
           </div>
         </div>
       </div>
