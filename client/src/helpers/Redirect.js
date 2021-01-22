@@ -1,4 +1,4 @@
-import { Sections } from "../App";
+import {Sections} from "../constants/index";
 import { navigate } from "@reach/router";
 var parse = require('url-parse');
 

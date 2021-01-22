@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "./edit/editPage";
 import "./edit/jscolor";
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
-import { Sections } from "../../App";
+import { Sections } from "../../constants/index";
 import handleRedirect from '../../helpers/Redirect';
 
 const mapStateToProps = (state) => {
