@@ -4,7 +4,6 @@ import {Panel as ColorPickerPanel} from 'rc-color-picker';
 import "../../../../assets/stylesheets/components/css/colorPicker.css";
 import "../../../footer/edit/jscolor";
 import RepairService from '../../../../services/lab1/RepairService';
-// import "../../../../assets/stylesheets/components/Popup.scss";
 
 class Repair extends Component {
 	constructor(props) {
