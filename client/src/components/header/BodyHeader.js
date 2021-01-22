@@ -11,7 +11,7 @@ const Header = (props) => {
                         <br />
                         <br />
                         <h2 className="section-heading text-uppercase">
-                            {lab}: {body}
+                                {lab}: {body}
                         </h2>
                     </div>
                 </div>
