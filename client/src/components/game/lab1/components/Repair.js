@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
-import { SketchPicker } from 'react-color';
+import {Panel as ColorPickerPanel} from 'rc-color-picker';
+import "../../../../assets/stylesheets/components/css/colorPicker.css";
+import "../../../footer/edit/jscolor";
 import RepairService from '../../../../services/lab1/RepairService';
+// import "../../../../assets/stylesheets/components/Popup.scss";
 
 class Repair extends Component {
 	constructor(props) {
@@ -15,6 +18,7 @@ class Repair extends Component {
 			availableBackgroundColorPopup: false,
 			unavailableBackgroundColorPopup: false
 		};
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	UNSAFE_componentWillMount() {
@@ -26,6 +30,43 @@ class Repair extends Component {
 			availableBackgroundColor: data.availableBackgroundColor,
 			unavailableBackgroundColor: data.unavailableBackgroundColor
 		});
+	}
+
+	componentDidMount() {
+		document.addEventListener("click", this.handleClick)
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener("click", this.handleClick)
+	}
+
+	handleClick(e) {
+		if (this.state.availableBackgroundColorPopup) {
+			if (e.target.tagName === "HTML") {
+				this.setState({
+					availableBackgroundColorPopup: false
+				})
+			} else if (e.target.parentNode.className) {
+				if (!e.target.parentNode.className.includes("rc-color-picker") && e.target.id !== "changeAvailableColor") {
+					this.setState({
+						availableBackgroundColorPopup: false
+					})
+				}
+			}
+		}
+		if (this.state.unavailableBackgroundColorPopup) {
+			if (e.target.tagName === "HTML") {
+				this.setState({
+					unavailableBackgroundColorPopup: false
+				})
+			} else if (e.target.parentNode.className) {
+				if (!e.target.parentNode.className.includes("rc-color-picker") && e.target.id !== "changeUnavailableColor") {
+					this.setState({
+						unavailableBackgroundColorPopup: false
+					})
+				}
+			}
+		}
 	}
 
 	handleSubmit(event) {
@@ -71,15 +112,15 @@ class Repair extends Component {
 		});
 	}
 
-	changeAvailableBackgroundColorHandler(color) {
+	changeAvailableBackgroundColorHandler(obj) {
 		this.setState({
-			availableBackgroundColor: color.hex
+			availableBackgroundColor: obj.color
 		});
 	}
 
-	changeUnavailableBackgroundColorHandler(color) {
+	changeUnavailableBackgroundColorHandler(obj) {
 		this.setState({
-			unavailableBackgroundColor: color.hex
+			unavailableBackgroundColor: obj.color
 		});
 	}
 
@@ -354,19 +395,21 @@ class Repair extends Component {
 							</div>
 							<div className="code_editor__input">
 								<button
+									id={"changeAvailableColor"}
 									onClick={this.toggleAvailableBackgroundColorPopup.bind(this)}
 									style={{ backgroundColor: availableBackgroundColor }}
 								/>
-								{!!availableBackgroundColorPopup 
+								{availableBackgroundColorPopup
 									? (
 										<div className="code_editor__color_selector">
-											<SketchPicker
-												name="availableBackgroundColor"
-												color={availableBackgroundColor}
-												onChangeComplete={this.changeAvailableBackgroundColorHandler.bind(this)}
-											/>
+											<ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.changeAvailableBackgroundColorHandler.bind(this)}/>
+											{/*<SketchPicker*/}
+											{/*	name="availableBackgroundColor"*/}
+											{/*	color={availableBackgroundColor}*/}
+											{/*	onChangeComplete={this.changeAvailableBackgroundColorHandler.bind(this)}*/}
+											{/*/>*/}
 										</div>
-									) : <div></div>
+									) : <div/>
 								}
 							</div>
 						</div>
@@ -386,19 +429,21 @@ class Repair extends Component {
 							</div>
 							<div className="code_editor__input">
 								<button
+									id={"changeUnavailableColor"}
 									onClick={this.toggleUnavailableBackgroundColorPopup.bind(this)}
 									style={{ backgroundColor: unavailableBackgroundColor }}
 								/>
-								{!!unavailableBackgroundColorPopup 
+								{unavailableBackgroundColorPopup
 									? (
 										<div className="code_editor__color_selector">
-											<SketchPicker
-												name="unavailableBackgroundColor"
-												color={unavailableBackgroundColor}
-												onChangeComplete={this.changeUnavailableBackgroundColorHandler.bind(this)}
-											/>
+											<ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.changeUnavailableBackgroundColorHandler.bind(this)}/>
+											{/*<SketchPicker*/}
+											{/*	name="unavailableBackgroundColor"*/}
+											{/*	color={unavailableBackgroundColor}*/}
+											{/*	onChangeComplete={this.changeUnavailableBackgroundColorHandler.bind(this)}*/}
+											{/*/>*/}
 										</div>
-									) : <div></div>
+									) : <div/>
 								}
 							</div>
 						</div>

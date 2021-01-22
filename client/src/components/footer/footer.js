@@ -160,7 +160,6 @@ class Footer extends Component {
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
-                        // onClick={() => {this.handleIncrement(state.main.body, actions)}}
                         onClick={() => {this.handleIncrement(state.main.body, actions)}}
                         style={{display: this.disappearNext(state.main.body) || hideOnLanding ? "none" : "block"}}
                     >
@@ -188,7 +187,6 @@ class Footer extends Component {
                             className="btn btn-text btn-bottom-buttons text-uppercase"
                             onClick={this.renderTextColorPalette}
                         >
-
                             Change Text Color
                         </button>
 
