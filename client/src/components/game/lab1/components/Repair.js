@@ -402,12 +402,11 @@ class Repair extends Component {
 								{availableBackgroundColorPopup
 									? (
 										<div className="code_editor__color_selector">
-											<ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.changeAvailableBackgroundColorHandler.bind(this)}/>
-											{/*<SketchPicker*/}
-											{/*	name="availableBackgroundColor"*/}
-											{/*	color={availableBackgroundColor}*/}
-											{/*	onChangeComplete={this.changeAvailableBackgroundColorHandler.bind(this)}*/}
-											{/*/>*/}
+											<ColorPickerPanel
+												enableAlpha={false}
+												color={this.state.availableBackgroundColor}
+												onChange={this.changeAvailableBackgroundColorHandler.bind(this)}
+											/>
 										</div>
 									) : <div/>
 								}
@@ -436,12 +435,11 @@ class Repair extends Component {
 								{unavailableBackgroundColorPopup
 									? (
 										<div className="code_editor__color_selector">
-											<ColorPickerPanel enableAlpha={false} color={'#345679'} onChange={this.changeUnavailableBackgroundColorHandler.bind(this)}/>
-											{/*<SketchPicker*/}
-											{/*	name="unavailableBackgroundColor"*/}
-											{/*	color={unavailableBackgroundColor}*/}
-											{/*	onChangeComplete={this.changeUnavailableBackgroundColorHandler.bind(this)}*/}
-											{/*/>*/}
+											<ColorPickerPanel
+												enableAlpha={false}
+												color={this.state.unavailableBackgroundColor}
+												onChange={this.changeUnavailableBackgroundColorHandler.bind(this)}
+											/>
 										</div>
 									) : <div/>
 								}
