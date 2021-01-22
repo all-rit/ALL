@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
-import "../../../../assets/stylesheets/components/css/colorPicker.css";
-import "../../../footer/edit/jscolor";
 import RepairService from '../../../../services/lab1/RepairService';
 
 class Repair extends Component {
