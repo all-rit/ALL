@@ -16,6 +16,7 @@ exports.updateGuestUserId = (userid, usersessionid) =>{
 exports.authenticate = (data) => {
 	const userSessionID = data.id.slice(0,19);
 	const firstName = data.name.givenName;
+	const image = data.profile;
 
 	return db.Session
 		.findByPk(userSessionID)
@@ -31,7 +32,8 @@ exports.authenticate = (data) => {
 			// Create a new account
 			return db.User
 				.create({
-					firstname: firstName
+					firstname: firstName,
+					image: image
 				})
 				.then((user) => {
 					// Create a new session
