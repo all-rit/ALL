@@ -53,7 +53,7 @@
     border:none;
     border-radius: 50%;
   }
-  &__name{
+  &__name {
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -61,7 +61,7 @@
     background-color: white;
     text-align: center;
     font-size: 20px;
-    font-weight: bold;
+    border: 1px;
   }
   &__logout {
     display:inline-block;
