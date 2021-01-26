@@ -5,7 +5,6 @@ import {actions as appActions} from '../../reducers/lab1/AppReducer';
 import {actions as mainActions} from '../../reducers/MainReducer';
 import {bindActionCreators} from 'redux';
 import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "./edit/editPage";
-import "./edit/jscolor";
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
 import { Sections } from "../../App";
 import handleRedirect from '../../helpers/Redirect';
@@ -173,7 +172,6 @@ class Footer extends Component {
                             className="btn btn-text btn-bottom-buttons text-uppercase"
                             onClick={this.renderTextColorPalette}
                         >
-
                             Change Text Color
                         </button>
 
