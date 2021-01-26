@@ -13,14 +13,21 @@ const WelcomeMessage = (props) => {
 			return <LoginButton enabled={loginEnabled} />;
 	}
 	const initial = user.firstname.charAt(0).toUpperCase();
+	const imageUrl = user.image; 
 	return (
 		<Dropdown isOpen={dropdownOpen} toggle={toggle} className="welcome" disabled={!loginEnabled}>
 			<DropdownToggle
 				className="welcome__toggle"
 			>
-				<Button className="welcome__name" disabled={!loginEnabled}>
-				{initial}
-				</Button>
+				{imageUrl === "" || imageUrl === null ? (
+					<Button className="welcome__name" disabled={!loginEnabled}>
+						{initial}
+					</Button>
+				) : (
+					<Button className="welcome__name" style={{"padding": "0", "overflow": "hidden"}} disabled={!loginEnabled}>
+						<img src={ imageUrl } alt="Profile" />
+					</Button>
+				)}
 			</DropdownToggle>
 			<DropdownMenu className= "welcome__menu"  >
 				<DropdownItem href={`${process.env.REACT_APP_SERVER_URL}/logout`}>

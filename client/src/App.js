@@ -31,7 +31,6 @@ import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
 import { Router} from "@reach/router";
 import {connect} from "react-redux";
-
 var parse = require('url-parse');
 
 export const Sections = {
