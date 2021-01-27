@@ -12,8 +12,8 @@ let RepairControllerLab1 = require('../controllers/lab1/RepairController');
 
 //LAB2 Controller
 
-
 // User Routes
+router.post('/url', UserController.storeURL)
 router.get('/auth/google', UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
 router.get('/logout', UserController.logout);
