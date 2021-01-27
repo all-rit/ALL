@@ -11,8 +11,8 @@ exports.main = (req, res) => {
 
 // Authenticates User through Google OAuth
 exports.authenticate = passport.authenticate('google', {
-	scope: [ 'profile' ]
-});
+		scope: ['profile']
+	});
 
 // Callback used for Google OAuth
 exports.authenticateRedirect = passport.authenticate('google', {
@@ -39,5 +39,5 @@ exports.storeURL = (req,res) => {
 exports.logout = (req, res) => {
 	req.logout();
 	req.session.token = null;
-	res.redirect(process.env.CLIENT_URL);
+	res.redirect(req.session.url);
 };
