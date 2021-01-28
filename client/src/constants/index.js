@@ -25,5 +25,23 @@ export const Sections = {
         4:{
             name: "Quiz"
         }
+    },
+    3:{
+        name: "Lab3",
+        0:{
+            name: "About"
+        },
+        1:{
+            name: "Reading"
+        },
+        2:{
+            name: "Game"
+        },
+        3:{
+            name: "Video"
+        },
+        4:{
+            name: "Quiz"
+        }
     }
 }

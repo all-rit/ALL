@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import quizQuestions from "../api/Lab1/quizQuestions";
+import quizQuestions3 from "../api/Lab3/quizQuestions";
 import Certificate from "./Certificate";
 
 function Result(props) {
