@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import quizQuestions from "../api/Lab1/quizQuestions";
-import quizQuestions3 from "../api/Lab3/quizQuestions";
 import Certificate from "./Certificate";
 
 function Result(props) {
@@ -25,7 +23,7 @@ function Result(props) {
     function renderTableData() {
         var counter = 0;
         var isIncorrect = false;
-        return quizQuestions.map((quizQuestion, index) => {
+        return props.quizQuestions.map((quizQuestion, index) => {
             const {question, answers} = quizQuestion //destructuring
             counter += 1;
             isIncorrect = isAnswerIncorrect(props.quizScore[counter - 1]);
@@ -92,10 +90,10 @@ function Result(props) {
 
     }
 
-
+    
 
     return (
-
+        
         <div className="quiz container shadow">
             <div className="result">
                 Results <strong>Score: {props.quizResult}</strong>
@@ -114,7 +112,7 @@ function Result(props) {
                         </tbody>
                     </table>
                     <div style={{marginTop:"50px"}}>
-                        <Certificate  quizResult = {props.quizResult}/>
+                        <Certificate  quizResult = {props.quizResult} lab={props.lab}/>
                     </div>
                 </div>
                 </div>

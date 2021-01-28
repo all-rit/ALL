@@ -9,6 +9,7 @@ export const Sections = {
         }
     },
     1:{
+        fullname:"Accessibility Learning Lab 1: Accessibility to Sound and Speech",
         name: "Lab1",
         0:{
             name: "About"
@@ -27,6 +28,7 @@ export const Sections = {
         }
     },
     3:{
+        fullname:"Accessibility Learning Lab 3: Accessibility with Screen Readers",
         name: "Lab3",
         0:{
             name: "About"

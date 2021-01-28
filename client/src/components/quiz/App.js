@@ -36,9 +36,8 @@ class App extends Component {
             lab:props.state.main.lab,
             quizQuestions: []
         }
-
         ;
-
+        
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
         this.assignQuizQuestions = this.assignQuizQuestions.bind(this);
         this.setNextQuestion = this.setNextQuestion.bind(this)
@@ -64,10 +63,10 @@ class App extends Component {
                         }
                     ],
                     multiChoice: false
-                }]
+                }]             
         }
     }
-
+    
     UNSAFE_componentWillMount() {
         this.setState({quizQuestions: this.assignQuizQuestions()}, ()=>{
             for (let i = 0; i < this.state.quizQuestions.length; i++) {
@@ -248,12 +247,8 @@ class App extends Component {
         }
         return JSON.stringify(jsonresults);
     }
-
-
-
-
     renderQuiz() {
-        return (
+        return ( 
             <div>
                 <Quiz
                     answer={this.state.answer}
@@ -275,6 +270,8 @@ class App extends Component {
                 quizResult={this.state.result}
                 quizScore = {this.state.myCount}
                 selectedAnswers = {this.state.selectedAnswers}
+                quizQuestions= {this.state.quizQuestions}
+                lab={this.state.lab}
             />
         );
     }

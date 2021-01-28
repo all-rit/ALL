@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
-import { Link } from '@reach/router';
+// import { Link } from '@reach/router';
 import { Pie } from "react-chartjs-2";
 import Image1 from '../../../assets/images/casestudy/1.jpg';
 
