@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import quizQuestionsLab1 from './api/Lab1/quizQuestions';
+import quizQuestionsLab3 from './api/Lab3/quizQuestions';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import './App.css';
@@ -50,8 +51,8 @@ class App extends Component {
                 return quizQuestionsLab1
             // case 2:
             //
-            // case 3:
-            //
+            case 3:
+                return quizQuestionsLab3
             // case 4:
             default:
                 return [{
