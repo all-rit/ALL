@@ -33,3 +33,12 @@ exports.createChoice = (req, res) => {
 		res.sendStatus(200);
 	});
 };
+
+exports.updateEndGameScore = (req, res) => {
+	GameService.updateEndGameScore({
+		id: req.session.game,
+		score: req.body.score,
+	}).then(() => {
+		res.sendStatus(200);
+	})
+}
