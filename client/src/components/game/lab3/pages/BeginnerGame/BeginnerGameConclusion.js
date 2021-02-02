@@ -5,10 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
-import {GAME_IDLE} from "../../constants";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
+import {GAME_IDLE} from "../../../../../constants/lab3/index";
 class BeginnerGameConclusion extends Component {
   handleSubmit() {
     navigate(process.env.PUBLIC_URL + "/");

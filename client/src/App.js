@@ -13,8 +13,6 @@ import {Sections} from './constants/index';
 import {default as AboutLab3} from "./components/body/lab3/about";
 import {default as ReadingLab3} from "./components/body/lab3/reading";
 import {default as GameLab3} from "./components/game/lab3/Main";
-import {default as GameLab3Beg} from "./components/game/lab3/pages/BeginnerGame/Game";
-import {default as GameLab3Adv} from "./components/game/lab3/pages/AdvancedGame/AdvancedGame";
 import {default as VideoLab3} from "./components/body/lab3/video";
 
 // import {default as AboutLab4} from "./components/body/lab4/about";
@@ -86,7 +84,6 @@ class App extends Component {
               
               <GameLab1 path="/Lab1/Game" />
               <GameLab3 path="/Lab3/Game" />
-              <GameLab3Beg path="/Lab3/Game/BeginnerGame"/>
               {/* <GameLab2 path="/Lab2/Game" />
               
               <GameLab4 path="/Lab4/Game" /> */}

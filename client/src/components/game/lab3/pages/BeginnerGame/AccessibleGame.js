@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import catImage from "../../assets/images/c1.svg";
-import carImage from "../../assets/images/c2.svg";
-import burgerImage from "../../assets/images/b.png";
-import cowImage from "../../assets/images/cow.jpg";
-import CatClickNavigate from "../../components/helpers/CatClickNavigate.js";
+import catImage from "../../../../../assets/images/c1.svg";
+import carImage from "../../../../../assets/images/c2.svg";
+import burgerImage from "../../../../../assets/images/b.png";
+import cowImage from "../../../../../assets/images/cow.jpg";
+import CatClickNavigate from "../../../lab3/helpers/CatClickNavigate.js";
 import Toolbar from "@material-ui/core/Toolbar";
 import { Typography } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar/AppBar";
-import {PageService} from "../../services/PageService";
+import {PageService} from "../../../../../services/PageService";
 
 class AccessibleGame extends Component {
   constructor(props) {

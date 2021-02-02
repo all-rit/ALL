@@ -5,10 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { navigate } from "@reach/router";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
-import {GAME_PLAYING} from "../../constants";
+import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 
 class AdvancedInstructions extends Component {
   handleSubmit() {

@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import carImage from "../../assets/images/c2.svg";
-import helloWorldImage from "../../assets/images/hello_world.png";
+import carImage from "../../../../../assets/images/c2.svg";
+import helloWorldImage from "../../../../../assets/images/hello_world.png";
 import { Link } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import { navigate } from "@reach/router";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
 
 class HelloWorld extends Component {
   handleSubmit() {

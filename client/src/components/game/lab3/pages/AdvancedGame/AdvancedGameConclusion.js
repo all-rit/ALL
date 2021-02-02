@@ -5,10 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import { navigate } from "@reach/router";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
-import {GAME_IDLE} from "../../constants";
+import {GAME_IDLE} from "../../../../../constants/lab3/index";
 class AdvancedGameConclusion extends Component {
   handleSubmit() {
     navigate(process.env.PUBLIC_URL + "/");

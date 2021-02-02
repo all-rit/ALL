@@ -5,10 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { navigate } from "@reach/router";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
-import {GAME_PLAYING} from "../../constants";
+import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 
 class AccessibleInstructions extends Component {
   constructor(props) {

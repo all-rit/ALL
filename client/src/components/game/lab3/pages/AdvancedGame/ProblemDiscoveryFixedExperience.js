@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import { AppBar, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import catImage from "../../assets/images/c1.svg";
-import carImage from "../../assets/images/c2.svg";
-import burgerImage from "../../assets/images/b.png";
+import catImage from "../../../../../assets/images/c1.svg";
+import carImage from "../../../../../assets/images/c2.svg";
+import burgerImage from "../../../../../assets/images/b.png";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
-import {GAME_PLAYING} from "../../constants";
+import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 
 class ProblemDiscoveryFixedExperience extends Component {
   handleSubmit() {

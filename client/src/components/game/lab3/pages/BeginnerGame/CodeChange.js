@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CodeUpdateHeader from "../../components/main/CodeUpdateHeader";
-import "../../assets/stylesheets/prism.css";
+import CodeUpdateHeader from "../../components/CodeUpdateHeader";
+import "../../../../../assets/stylesheets/prism.scss";
 import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import { amber, green, red, yellow } from "@material-ui/core/colors";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
@@ -12,13 +12,10 @@ import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
-import {GAME_PLAYING} from "../../constants";
-import Repair from "../../components/main/Repair";
-import GameButtons from "../../components/main/GameButtons";
-import Popup from "../../components/main/Popup";
+import {GAME_PLAYING} from "../../../../../constants/lab3/index";
+import Repair from "../../components/Repair";
+import GameButtons from "../../components/GameButtons";
+import Popup from "../../components/Popup";
 
 const variantIcon = {
   success: CheckCircleIcon,

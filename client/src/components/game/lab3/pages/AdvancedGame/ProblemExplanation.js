@@ -15,10 +15,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import Link from "@material-ui/core/Link";
 import { navigate } from "@reach/router";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
-import {GAME_PLAYING} from "../../constants";
+import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 const variantIcon = {
   success: CheckCircleIcon,
   warning: WarningIcon,

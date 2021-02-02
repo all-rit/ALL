@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import "../../assets/stylesheets/prism.css";
+import "../../../../../assets/stylesheets/prism.scss";
 import Prism from "prismjs";
 import { navigate } from "@reach/router";
 import WarningIcon from "@material-ui/icons/Warning";
@@ -15,12 +15,9 @@ import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import clsx from "clsx";
 import Snackbar from "@material-ui/core/Snackbar";
 import { amber, green, red, yellow } from "@material-ui/core/colors";
-import CodeUpdateHeader from "../../components/main/CodeUpdateHeader";
+import CodeUpdateHeader from "../../components/CodeUpdateHeader";
 import Paper from "@material-ui/core/Paper";
-import "./../../vendor/bootstrap/css/bootstrap.min.css";
-import "./../../css/agency.min.css";
-import "./../../css/style.css";
-import {GAME_PLAYING} from "../../constants";
+import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 
 const variantIcon = {
   success: CheckCircleIcon,

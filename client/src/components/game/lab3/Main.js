@@ -1,72 +1,95 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Link } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import { actions as appActions } from "../../../reducers/lab3/AppReducer";
-import { actions as gameActions } from "../../../reducers/lab3/GameReducer";
-import AppInstructions from "./components/AppInstructions";
-import { navigate } from "@reach/router";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Router} from '@reach/router';
+import '../../../assets/stylesheets/main.scss';
 
-const mapStateToProps = state => {
-  return {
-    // General
-    user: state.app.user
-  };
-};
+import {actions as appActions} from '../../../reducers/lab3/AppReducer';
+import { actions as gameActions } from "../../../reducers/lab3/GameReducer";
+import { actions as repairActions } from '../../../reducers/lab3/RepairReducer';
+import GameStart from './GameStart';
+import FullGame from '../../game/lab3/pages/BeginnerGame/Game';
+import UserUpdatedGame from '../../game/lab3/pages/BeginnerGame/UserUpdatedGame';
+import GameInstructions from '../../game/lab3/pages/BeginnerGame/GameInstructions';
+import AccessibleInstructions from '../../game/lab3/pages/BeginnerGame/AccessibleInstructions';
+import AccessibleGame from '../../game/lab3/pages/BeginnerGame//AccessibleGame';
+import CodeChange from '../../game/lab3/pages/BeginnerGame/CodeChange';
+import HelloWorld from '../../game/lab3/pages/BeginnerGame/HelloWorld';
+import AdvancedGame from '../../game/lab3/pages/AdvancedGame/AdvancedGame';
+import AdvancedInstructions from '../../game/lab3/pages/AdvancedGame//AdvancedInstructions';
+import ProblemDiscovery from '../../game/lab3/pages/AdvancedGame/ProblemDiscovery';
+import ProblemExplanation from '../../game/lab3/pages/AdvancedGame/ProblemExplanation';
+import ProblemFix from '../../game/lab3/pages/AdvancedGame/ProblemFix';
+import BeginnerGameConclusion from '../../game/lab3/pages/BeginnerGame/BeginnerGameConclusion';
+import AdvancedGameConclusion from '../../game/lab3/pages/AdvancedGame/AdvancedGameConclusion';
+import ViewFix from '../../game/lab3/pages/AdvancedGame/ViewFix';
+import ProblemDiscoveryFixedExperience from '../../game/lab3/pages/AdvancedGame/ProblemDiscoveryFixedExperience';
+import {bindActionCreators} from "redux";
+
+const mapStateToProps = (state) => ({
+  state: state
+});
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({ ...appActions, ...gameActions }, dispatch)
+    actions: bindActionCreators({ ...appActions, ...gameActions, ...repairActions }, dispatch),
+    login: appActions.login
   };
 };
 
-class Main extends Component {
-  handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/Lab3/BeginnerGame");
-  }
-  handleSubmitAdv() {
-    navigate(process.env.PUBLIC_URL + "/Lab3/AdvancedGame");
-  }
-  render() {
-    // const { user, state, plays } = this.props;
-    const buttonStyleLeft = {
-      marginTop:10,
-      marginRight:2
-    };
-    const buttonStyleRight = {
-      marginTop:10,
-      marginLeft:2
-    };
-    return (
-      <Fragment>
 
-        <div class="center-div">
-          <AppInstructions />
-          <Button
-            href="#"
-            onClick={this.handleSubmit}
-            component={Link}
-            variant={"contained"}
-            color={"primary"}
-            style={buttonStyleLeft}
-          >
-            Beginner Game
-          </Button>
-          <Button
-            href="#"
-            onClick={this.handleSubmitAdv}
-            component={Link}
-            variant={"contained"}
-            color={"secondary"}
-            style={buttonStyleRight}
-          >
-            Advanced Game
-          </Button>
-        </div>
-      </Fragment>
+class Game extends Component {
+  // eslint-disable-next-line require-jsdoc
+  componentDidMount() {
+    const {user} = this.props;
+    if (user !== undefined) {
+      console.log(user);
+    }
+    this.props.login();
+  }
+
+  // eslint-disable-next-line require-jsdoc
+  render() {
+    const {actions, state} = this.props;
+    return (
+      <div class="container bottomSpace" >
+        <section class="page-section" style={{paddingBottom:0}}>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <br />
+                <br />
+                <h2 class="section-heading text-uppercase">
+                  Screenreader Lab: Game
+                </h2>
+              </div>
+            </div>
+          </div>
+        </section>
+        <Router basepath={process.env.PUBLIC_URL} className="app">
+          <GameStart path="/" />
+          <FullGame path="/BeginnerGame" actions={actions}/>
+          <GameInstructions path={'/GameInstructions'} actions={actions}/>
+          <UserUpdatedGame path={'/UserUpdatedGame'} actions={actions} data={state}/>
+          <AccessibleInstructions path={'/AccessibleInstructions'} actions={actions}/>
+          <AccessibleGame path={'/AccessibleGame'} actions={actions}/>
+          <CodeChange path={'/CodeChange'} actions={actions} data={state} />
+          <HelloWorld path={'/HelloWorld'} actions={actions}/>
+          <AdvancedGame path={'/AdvancedGame'} actions={actions}/>
+          <AdvancedInstructions path={'/AdvancedInstructions'} actions={actions}/>
+          <ProblemDiscovery path={'/ProblemDiscovery'} actions={actions}/>
+          <ProblemExplanation path={'/ProblemExplanation'} actions={actions}/>
+          <ProblemDiscoveryFixedExperience
+            path={'/ProblemDiscoveryFixedExperience'}
+            actions={actions}
+          />
+          <ProblemFix path={'/ProblemFix'} actions={actions}/>
+          <BeginnerGameConclusion path={'/BeginnerGameConclusion'} actions={actions}/>
+          <AdvancedGameConclusion path={'/AdvancedGameConclusion'} actions={actions}/>
+          <ViewFix path={'/ViewFix'} actions={actions}/>
+        </Router>
+      </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
