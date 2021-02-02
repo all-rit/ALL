@@ -14,7 +14,6 @@ const mapStateToProps = state => {
     user: state.app.user
   };
 };
-
 const mapDispatchToProps = dispatch => {
   return {
     actions: bindActionCreators({ ...appActions, ...gameActions }, dispatch)
@@ -23,7 +22,7 @@ const mapDispatchToProps = dispatch => {
 
 class GameStart extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/game");
+    navigate(process.env.PUBLIC_URL + "/BeginnerGame");
   }
   handleSubmitAdv() {
     navigate(process.env.PUBLIC_URL + "/AdvancedGame");
@@ -39,10 +38,12 @@ class GameStart extends Component {
       marginLeft:2
     };
     return (
+      
       <Fragment>
 
         <div class="center-div">
           <AppInstructions />
+          
           <Button
             href="#"
             onClick={this.handleSubmit}

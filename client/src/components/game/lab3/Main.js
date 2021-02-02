@@ -4,8 +4,8 @@ import {Router} from '@reach/router';
 import '../../../assets/stylesheets/main.scss';
 
 import {actions as appActions} from '../../../reducers/lab3/AppReducer';
-import { actions as gameActions } from "../../../reducers/lab3/GameReducer";
-import { actions as repairActions } from '../../../reducers/lab3/RepairReducer';
+import {actions as gameActions } from "../../../reducers/lab3/GameReducer";
+import {actions as repairActions } from '../../../reducers/lab3/RepairReducer';
 import GameStart from './GameStart';
 import FullGame from '../../game/lab3/pages/BeginnerGame/Game';
 import UserUpdatedGame from '../../game/lab3/pages/BeginnerGame/UserUpdatedGame';
@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-class Game extends Component {
+class Main extends Component {
   // eslint-disable-next-line require-jsdoc
   componentDidMount() {
     const {user} = this.props;
@@ -52,19 +52,19 @@ class Game extends Component {
     const {actions, state} = this.props;
     return (
       <div class="container bottomSpace" >
-        <section class="page-section" style={{paddingBottom:0}}>
+        {/* <section class="page-section" style={{paddingBottom:0}}>
           <div class="container">
             <div class="row">
               <div class="col-lg-12 text-center">
                 <br />
                 <br />
                 <h2 class="section-heading text-uppercase">
-                  Screenreader Lab: Game
+                  <GameStart/>
                 </h2>
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         <Router basepath={process.env.PUBLIC_URL} className="app">
           <GameStart path="/" />
           <FullGame path="/BeginnerGame" actions={actions}/>
@@ -92,4 +92,4 @@ class Game extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
