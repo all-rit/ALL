@@ -82,9 +82,9 @@ class App extends Component {
               {/* <ReadingLab2 path="/Lab2/Reading"/>
               
               <ReadingLab4 path="/Lab4/Reading"/> */}
-              <FullGame path="/Lab3/Game/BeginnerGame"/>
+
               <GameLab1 path="/Lab1/Game" />
-              <GameLab3 path="/Lab3/Game" />
+              <GameLab3 path="/Lab3/Game/*" />
               {/* <GameLab2 path="/Lab2/Game" />
               
               <GameLab4 path="/Lab4/Game" /> */}

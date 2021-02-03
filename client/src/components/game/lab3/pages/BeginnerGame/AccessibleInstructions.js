@@ -14,7 +14,7 @@ class AccessibleInstructions extends Component {
   }
 
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/CodeChange");
+    navigate("/Lab3/Game/CodeChange");
   }
   componentDidMount() {
     const { actions } = this.props;

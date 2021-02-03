@@ -95,7 +95,7 @@ MySnackbarContentWrapper.propTypes = {
 
 class ProblemFix extends Component {
   handleEnd() {
-    navigate(process.env.PUBLIC_URL + "/AdvancedGameConclusion");
+    navigate("/Lab3/Game/AdvancedGameConclusion");
   }
 
   constructor(props) {
@@ -176,7 +176,7 @@ class ProblemFix extends Component {
         aria1: this.state.textValue,
         aria2: this.state.textValue1
       };
-      navigate(process.env.PUBLIC_URL +"/ViewFix");
+      navigate("/Lab3/Game/ViewFix");
     } else if (this.state.textValue === "" || this.state.textValue1 === "") {
       this.setState({ open: true });
     } else {
@@ -184,7 +184,7 @@ class ProblemFix extends Component {
         aria1: this.state.textValue,
         aria2: this.state.textValue1
       };
-      navigate(process.env.PUBLIC_URL +"/ViewFix");
+      navigate("/Lab3/Game/ViewFix");
     }
     Prism.highlightAll();
   }

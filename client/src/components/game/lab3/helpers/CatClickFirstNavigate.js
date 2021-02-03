@@ -14,7 +14,8 @@ class CatClickFirstNavigate extends Component {
   }
 
   static handleOnclick(path) {
-    navigate(process.env.PUBLIC_URL + path);
+    console.log(path)
+    navigate(path);
   }
 
   render() {

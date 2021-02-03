@@ -18,7 +18,7 @@ class AccessibleGame extends Component {
 
   _renderSubComp() {
     if (this.state.render === "CatClickNavigate") {
-      return <CatClickNavigate path={"/CodeChange"} />;
+      return <CatClickNavigate path={"/Lab3/Game/CodeChange"} />;
     }
   }
 

@@ -27,12 +27,12 @@ const Reading = () => {
     });
     return (
         <div className="study">
-            <h1>What is a Screen Reader?</h1>
+            <h3>What is a Screen Reader?</h3>
             <p>
                 A screen reader is an essential software program that aids the visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both.
             </p>
 
-            <h1>How many people are affected?</h1>
+            <h3>How many people are affected?</h3>
             <div className="flex">
                 <Pie data={data} height={100} />
             </div>
@@ -49,7 +49,7 @@ const Reading = () => {
                 Understanding the degree of visual impairment and its causes is important in adequately allocating resources to various health areas of work.
             </p>
 
-            <h1>What are some examples of visual impairment?</h1>
+            <h3>What are some examples of visual impairment?</h3>
             <ul className="study__list">
                 <li>Diabetic retinopathy</li>
                 <li>Childhood blindness</li>
@@ -61,12 +61,12 @@ const Reading = () => {
                 <li>Uncorrected refractive errors</li>
             </ul>
 
-            <h1>Affect that impaired vision has on the computing world</h1>
+            <h3>Affect that impaired vision has on the computing world</h3>
             <p>
                 By acknowledging that visual impairment is a major global health issue, the computing world made necessary advances in screen readers. Screen readers have increased in both availability and popularity. One example of such screen readers is JAWS (Job Access With Speech) which is the world’s most popular screen reader. Screen readers now include many more features that allow the visually impaired to get through life much more easily.
             </p>
 
-            <h1>Some usability tips for screen reader friendly interfaces:</h1>
+            <h3>Some usability tips for screen reader friendly interfaces:</h3>
             <ul className="study__list">
                 <li>Use many headings and subheadings</li>
                 <li>Code headings correctly with proper size</li>

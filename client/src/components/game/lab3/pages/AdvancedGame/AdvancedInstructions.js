@@ -9,7 +9,7 @@ import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 
 class AdvancedInstructions extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/ProblemDiscovery");
+    navigate( "/Lab3/Game/ProblemDiscovery");
   }
   componentDidMount() {
     const { actions } = this.props;

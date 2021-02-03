@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CatClickNavigate from "../../../lab3/helpers/CatClickFirstNavigate";
+import CatClickNavigate from "../../../lab3/helpers/CatClickNavigate";
 import { navigate } from "@reach/router";
 import { AppBar } from "@material-ui/core";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -43,7 +43,7 @@ class UserUpdatedGame extends Component {
     console.log("detected key code is: " + event.keyCode);
     if (event.keyCode === 27) {
       console.log("Enter key pressed!");
-      navigate(process.env.PUBLIC_URL + "/AccessibleInstructions");
+      navigate("/Lab3/Game/AccessibleInstructions");
     }
   }
 
@@ -110,13 +110,13 @@ class UserUpdatedGame extends Component {
       const { data } = this.props;
       buttons = [
         <button style={imgStyle} onClick={() => catClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, data.repair.catAltValue)}/>,
+                onFocus={(e) => this.textToSpeech(e, data.repair3.catAltValue)}/>,
         <button style={imgStyle} onClick={() => burgerClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, data.repair.burgerAltValue)}/>,
+                onFocus={(e) => this.textToSpeech(e, data.repair3.burgerAltValue)}/>,
         <button style={imgStyle} onClick={() => carClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, data.repair.carAltValue)}/>,
+                onFocus={(e) => this.textToSpeech(e, data.repair3.carAltValue)}/>,
         <button style={imgStyle} onClick={() => cowClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, data.repair.cowAltValue)}/>
+                onFocus={(e) => this.textToSpeech(e, data.repair3.cowAltValue)}/>
       ]
     }
     else {
@@ -199,7 +199,7 @@ class UserUpdatedGame extends Component {
             </tr>
           </tbody>
         </table>
-        {this._renderSubComp(this.props.location.state.updated ? "/CodeChange": "/AccessibleInstructions")}
+        {this._renderSubComp(this.props.location.state.updated ? "/Lab3/Game/CodeChange": "/Lab3/Game/AccessibleInstructions")}
       </div>
     );
   }

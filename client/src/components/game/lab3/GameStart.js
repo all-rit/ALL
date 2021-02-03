@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Link } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { actions as mainActions } from "../../../reducers/MainReducer";
 import { actions as gameActions } from "../../../reducers/lab3/GameReducer";
@@ -22,10 +21,10 @@ const mapDispatchToProps = dispatch => {
 
 class GameStart extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/Lab3/Game/BeginnerGame");
+    navigate("/Lab3/Game/BeginnerGame");
   }
   handleSubmitAdv() {
-    navigate(process.env.PUBLIC_URL + "/Lab3/Game/AdvancedGame");
+    navigate("/Lab3/Game/AdvancedGame");
   }
   render() {
     // const { user, state, plays } = this.props;
@@ -47,7 +46,6 @@ class GameStart extends Component {
           <Button
             href="#"
             onClick={this.handleSubmit}
-            component={Link}
             variant={"contained"}
             color={"primary"}
             style={buttonStyleLeft}
@@ -57,7 +55,6 @@ class GameStart extends Component {
           <Button
             href="#"
             onClick={this.handleSubmitAdv}
-            component={Link}
             variant={"contained"}
             color={"secondary"}
             style={buttonStyleRight}

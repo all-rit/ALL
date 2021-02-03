@@ -91,7 +91,7 @@ MySnackbarContentWrapper.propTypes = {
 };
 class ProblemExplanation extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/ProblemFix");
+    navigate("/Lab3/Game/ProblemFix");
   }
     componentDidMount() {
         const { actions } = this.props;

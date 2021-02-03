@@ -16,7 +16,7 @@ class GameButtons extends Component {
     const startButton = (
       <button
         className="btn btn-primary btn-xl text-uppercase js-scroll-triggergreen rightButton"
-        onClick={()=>navigate(process.env.PUBLIC_URL +"/UserUpdatedGame", {state:{updated: true}})}
+        onClick={()=>navigate("/Lab3/Game/UserUpdatedGame", {state:{updated: true}})}
         key="start"
       >
         {startMessage}
@@ -26,7 +26,7 @@ class GameButtons extends Component {
         <button
             className="btn btn-success btn-xl text-uppercase js-scroll-triggergreen float-right"
             style={{marginRight:'15%'}}
-            onClick={()=>navigate(process.env.PUBLIC_URL +"/BeginnerGameConclusion")}
+            onClick={()=>navigate("/Lab3/Game/BeginnerGameConclusion")}
             key="start"
         >
           End Activity

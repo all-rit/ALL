@@ -3,7 +3,7 @@ import catImage from "../../../../../assets/images/c1.svg";
 import carImage from "../../../../../assets/images/c2.svg";
 import burgerImage from "../../../../../assets/images/b.png";
 import cowImage from "../../../../../assets/images/cow.jpg";
-import CatClickNavigate from "../../../lab3/helpers/CatClickFirstNavigate";
+import CatClickFirstNavigate from "../../../lab3/helpers/CatClickFirstNavigate";
 import { Typography } from "@material-ui/core";
 import {PageService} from "../../../../../services/PageService";
 import { navigate } from "@reach/router";
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class Game extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/Lab3/GameInstructions");
+    navigate("/Lab3/Game/GameInstructions");
   }
   constructor(props) {
     super(props);
@@ -37,7 +37,7 @@ class Game extends Component {
 
   _renderSubComp(path) {
     if (this.state.render === "CatClickNavigate") {
-      return <CatClickNavigate path={path} />;
+      return <CatClickFirstNavigate path={path} />;
     }
   }
   componentDidMount() {
@@ -118,7 +118,7 @@ class Game extends Component {
             </tr>
           </tbody>
         </table>
-        {this._renderSubComp("/Lab3/GameInstructions")}
+        {this._renderSubComp("/Lab3/Game/GameInstructions")}
       </div>
     );
   }

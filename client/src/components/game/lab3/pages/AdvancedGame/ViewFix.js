@@ -16,7 +16,7 @@ class ViewFix extends Component {
   }
 
   static navOnClick() {
-    navigate(process.env.PUBLIC_URL +"/ProblemFix");
+    navigate("/Lab3/Game/ProblemFix");
   }
   
   componentDidMount() {

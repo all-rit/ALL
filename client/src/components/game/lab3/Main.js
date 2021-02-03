@@ -4,16 +4,17 @@ import {Router} from '@reach/router';
 import '../../../assets/stylesheets/main.scss';
 import {actions as gameActions } from "../../../reducers/lab3/GameReducer";
 import {actions as repairActions } from '../../../reducers/lab3/RepairReducer';
+import {actions as appActions } from '../../../reducers/lab3/AppReducer';
 import GameStart from './GameStart';
 import FullGame from '../../game/lab3/pages/BeginnerGame/Game';
 import UserUpdatedGame from '../../game/lab3/pages/BeginnerGame/UserUpdatedGame';
 import GameInstructions from '../../game/lab3/pages/BeginnerGame/GameInstructions';
 import AccessibleInstructions from '../../game/lab3/pages/BeginnerGame/AccessibleInstructions';
-import AccessibleGame from '../../game/lab3/pages/BeginnerGame//AccessibleGame';
+import AccessibleGame from '../../game/lab3/pages/BeginnerGame/AccessibleGame';
 import CodeChange from '../../game/lab3/pages/BeginnerGame/CodeChange';
 import HelloWorld from '../../game/lab3/pages/BeginnerGame/HelloWorld';
 import AdvancedGame from '../../game/lab3/pages/AdvancedGame/AdvancedGame';
-import AdvancedInstructions from '../../game/lab3/pages/AdvancedGame//AdvancedInstructions';
+import AdvancedInstructions from '../../game/lab3/pages/AdvancedGame/AdvancedInstructions';
 import ProblemDiscovery from '../../game/lab3/pages/AdvancedGame/ProblemDiscovery';
 import ProblemExplanation from '../../game/lab3/pages/AdvancedGame/ProblemExplanation';
 import ProblemFix from '../../game/lab3/pages/AdvancedGame/ProblemFix';
@@ -29,7 +30,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({ ...gameActions, ...repairActions }, dispatch),
+    actions: bindActionCreators({ ...gameActions, ...repairActions, ...appActions }, dispatch),
   };
 };
 
@@ -42,7 +43,7 @@ class Main extends Component {
     const {actions, state} = this.props;
     return (
       <div class="container bottomSpace" >
-        <Router basepath={process.env.PUBLIC_URL + "/Lab3/Game"} className="app">
+        <Router className="app">
           <GameStart path="/"/>
           <FullGame path="/BeginnerGame" actions={actions}/>
           <GameInstructions path={'/GameInstructions'} actions={actions}/>

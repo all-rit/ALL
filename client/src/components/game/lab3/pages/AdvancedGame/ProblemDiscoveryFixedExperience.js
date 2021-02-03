@@ -11,7 +11,7 @@ import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 
 class ProblemDiscoveryFixedExperience extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/ProblemExplanation");
+    navigate( "/Lab3/Game/ProblemExplanation");
   }
     componentDidMount() {
         const { actions } = this.props;

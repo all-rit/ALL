@@ -10,7 +10,7 @@ import { navigate } from "@reach/router";
 
 class HelloWorld extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/");
+    navigate("/Lab3/Game");
   }
   render() {
     const tableStyle = {

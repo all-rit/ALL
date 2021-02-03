@@ -8,7 +8,7 @@ import { navigate } from "@reach/router";
 import {GAME_IDLE} from "../../../../../constants/lab3/index";
 class BeginnerGameConclusion extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/");
+    navigate("/Lab3/Game");
   }
     componentDidMount() {
         const { actions } = this.props;

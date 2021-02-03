@@ -110,12 +110,6 @@ class CodeChange extends Component {
     const {
       data, actions
     } = this.props;
-
-    // const paperStyle = {
-    //   marginLeft: "10px",
-    //   marginRight: "10px",
-    //   marginTop: "20px"
-    // };
     return (
       <div>
         <CodeUpdateHeader
@@ -139,16 +133,16 @@ class CodeChange extends Component {
           </Typography>
         </div>
         <div style={{textAlign:'center'}}>
-          <Popup message={data.app.popupMessage} handler={actions.updatePopup} />
+          <Popup message={data.app3.popupMessage} handler={actions.updatePopup} />
           <Repair
-            visible={data.repair.repairVisible}
-            data={data.repair}
+            visible={data.repair3.repairVisible}
+            data={data.repair3}
             handlers={actions}
         />
         <GameButtons
-            repairApplied={data.repair.changesApplied}
+            repairApplied={data.repair3.changesApplied}
             openRepairHandler={actions.openRepair}
-            endEnabled={data.game.end}
+            endEnabled={data.game3.end}
         />
         </div>
       </div>

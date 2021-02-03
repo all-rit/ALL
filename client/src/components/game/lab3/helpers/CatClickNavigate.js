@@ -15,7 +15,7 @@ class CatClickNavigate extends Component {
   }
 
   static handleOnclick(path) {
-    navigate(process.env.PUBLIC_URL + path);
+    navigate(path);
   }
   
   
