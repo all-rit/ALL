@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import { actions as appActions } from "../../../reducers/lab3/AppReducer";
+import { actions as mainActions } from "../../../reducers/MainReducer";
 import { actions as gameActions } from "../../../reducers/lab3/GameReducer";
 import AppInstructions from "./components/AppInstructions";
 import { navigate } from "@reach/router";
@@ -11,21 +11,21 @@ import { navigate } from "@reach/router";
 const mapStateToProps = state => {
   return {
     // General
-    user: state.app.user
+    user: state.main.user
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({ ...appActions, ...gameActions }, dispatch)
+    actions: bindActionCreators({ ...mainActions, ...gameActions }, dispatch)
   };
 };
 
 class GameStart extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/BeginnerGame");
+    navigate(process.env.PUBLIC_URL + "/Lab3/Game/BeginnerGame");
   }
   handleSubmitAdv() {
-    navigate(process.env.PUBLIC_URL + "/AdvancedGame");
+    navigate(process.env.PUBLIC_URL + "/Lab3/Game/AdvancedGame");
   }
   render() {
     // const { user, state, plays } = this.props;

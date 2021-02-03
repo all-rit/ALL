@@ -13,7 +13,7 @@ export const initialState = {
 	end: false
 };
 
-export const GameReducer =  (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case types.UPDATE_STATE:
 			return {

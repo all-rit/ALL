@@ -38,7 +38,7 @@ const navigate = (state, actions,body, lab=state.main.lab) =>{
 };
 
 const alert_check = (state)=> {
-    if (state.game.state !== "GAME_IDLE" && state.main.body === 2){
+    if (state.game1.state !== "GAME_IDLE" && state.main.body === 2){
         alert("The game is still in progress! Please complete the game");
         return true
     }
@@ -52,7 +52,7 @@ const Header = (props) => {
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
     let count = state.main.body;
-    const loginEnabled = (state.main.lab === 0) || state.game.state === GAME_IDLE || state.main.body !== 2;
+    const loginEnabled = (state.main.lab === 0) || state.game1.state === GAME_IDLE || state.main.body !== 2;
     return (
         <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
             <div className="container">

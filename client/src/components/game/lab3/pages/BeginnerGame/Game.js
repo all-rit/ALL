@@ -8,12 +8,27 @@ import { Typography } from "@material-ui/core";
 import {PageService} from "../../../../../services/PageService";
 import { navigate } from "@reach/router";
 import {GAME_PLAYING} from "../../../../../constants/lab3/index";
+import {actions as gameActions} from '../../../../../reducers/lab3/GameReducer';
+import {bindActionCreators} from 'redux';
+import {actions as mainActions} from "../../../../../reducers/MainReducer";
+import {actions as repairActions} from '../../../../../reducers/lab3/RepairReducer';
+import {connect} from "react-redux";
 
+const mapStateToProps = (state) => {
+  return {
+    state: state
+  };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...gameActions, ...mainActions, ...repairActions}, dispatch)
+  };
+};
 
 class Game extends Component {
   handleSubmit() {
-    navigate(process.env.PUBLIC_URL + "/GameInstructions");
+    navigate(process.env.PUBLIC_URL + "/Lab3/GameInstructions");
   }
   constructor(props) {
     super(props);
@@ -103,10 +118,11 @@ class Game extends Component {
             </tr>
           </tbody>
         </table>
-        {this._renderSubComp("/GameInstructions")}
+        {this._renderSubComp("/Lab3/GameInstructions")}
       </div>
     );
   }
 }
 
-export default Game;
+export default connect(
+  mapStateToProps, mapDispatchToProps)(Game);

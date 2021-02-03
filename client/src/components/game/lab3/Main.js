@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Router} from '@reach/router';
 import '../../../assets/stylesheets/main.scss';
-
-import {actions as appActions} from '../../../reducers/lab3/AppReducer';
 import {actions as gameActions } from "../../../reducers/lab3/GameReducer";
 import {actions as repairActions } from '../../../reducers/lab3/RepairReducer';
 import GameStart from './GameStart';
@@ -31,42 +29,21 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({ ...appActions, ...gameActions, ...repairActions }, dispatch),
-    login: appActions.login
+    actions: bindActionCreators({ ...gameActions, ...repairActions }, dispatch),
   };
 };
 
 
 class Main extends Component {
   // eslint-disable-next-line require-jsdoc
-  componentDidMount() {
-    const {user} = this.props;
-    if (user !== undefined) {
-      console.log(user);
-    }
-    this.props.login();
-  }
 
   // eslint-disable-next-line require-jsdoc
   render() {
     const {actions, state} = this.props;
     return (
       <div class="container bottomSpace" >
-        {/* <section class="page-section" style={{paddingBottom:0}}>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12 text-center">
-                <br />
-                <br />
-                <h2 class="section-heading text-uppercase">
-                  <GameStart/>
-                </h2>
-              </div>
-            </div>
-          </div>
-        </section> */}
-        <Router basepath={process.env.PUBLIC_URL} className="app">
-          <GameStart path="/" />
+        <Router basepath={process.env.PUBLIC_URL + "/Lab3/Game"} className="app">
+          <GameStart path="/"/>
           <FullGame path="/BeginnerGame" actions={actions}/>
           <GameInstructions path={'/GameInstructions'} actions={actions}/>
           <UserUpdatedGame path={'/UserUpdatedGame'} actions={actions} data={state}/>
