@@ -18,9 +18,26 @@ class Playthrough extends Component {
 				return <Second />;
 			case 2:
 				return <Third />;
-
-			default:
+			case 3:
+				console.log(results);
 				return <Fourth results={results} />;
+			default:
+				// if there were multiple "repair rounds", we will loop through those scores
+				// and pass in the repair round with the maximum score
+				let max_score_idx = 2;
+				if (results.length > 3){
+					for (let i=3; i<results.length; i++){
+						if (results[i].score > results[max_score_idx].score){
+							max_score_idx = i;
+						}
+					}
+				}
+				let final_results = [];
+				final_results.push(results[0]);
+				final_results.push(results[1]);
+				//for the third score, pass in the round with the max score
+				final_results.push(results[max_score_idx]);
+				return <Fourth results={final_results} />;
 		}
 	}
 }
