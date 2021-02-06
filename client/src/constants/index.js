@@ -46,4 +46,24 @@ export const Sections = {
             name: "Quiz"
         }
     }
+    ,
+    5:{
+        fullname:"Accessibility Learning Lab 5: Accessibility with Cognitive Impairments",
+        name: "Lab5",
+        0:{
+            name: "About"
+        },
+        1:{
+            name: "Reading"
+        },
+        2:{
+            name: "Game"
+        },
+        3:{
+            name: "Video"
+        },
+        4:{
+            name: "Quiz"
+        }
+    }
 }

@@ -55,6 +55,9 @@ export const handleRedirect = (actions, lab, body = 0, loadURL = false) => {
             // case "Lab4":
             //     actions.setLab(4);
             //     break;
+            case "Lab5":
+                actions.setLab(5);
+                break;
             case "":
                 actions.setLab(0);
                 break;
