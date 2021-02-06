@@ -27,17 +27,17 @@ const Reading = () => {
     });
     return (
         <div className="study">
-            <h3>What is a Screen Reader?</h3>
+            <h1>What is a Screen Reader?</h1>
             <p>
-                A screen reader is an essential software program that aids the visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both.
+                A screen reader is an essential software program that aids visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both.
             </p>
 
-            <h3>How many people are affected?</h3>
+            <h3>Approximate Visually Impaired Population in the World</h3>
             <div className="flex">
                 <Pie data={data} height={100} />
             </div>
             <p className="center">
-                Currently, as high as 80% of all visual impairment is preventable or curable
+                Currently, as high as 80% of all visual impairments are preventable or curable.
             </p>
             <p className="center">
                 Globally the number of people of all ages visually impaired is estimated to be 285 million, of whom 39 million are blind.
@@ -46,7 +46,7 @@ const Reading = () => {
                 People of age 50 and over account for 82% of the blind.
             </p>
             <p>
-                Understanding the degree of visual impairment and its causes is important in adequately allocating resources to various health areas of work.
+                Understanding the degree of visual impairment and its causes are important in adequately allocating resources to various health areas of work.
             </p>
 
             <h3>What are some examples of visual impairment?</h3>
@@ -61,12 +61,13 @@ const Reading = () => {
                 <li>Uncorrected refractive errors</li>
             </ul>
 
-            <h3>Affect that impaired vision has on the computing world</h3>
+
+            <h3>Effect that impaired vision has on the computing world</h3>
             <p>
                 By acknowledging that visual impairment is a major global health issue, the computing world made necessary advances in screen readers. Screen readers have increased in both availability and popularity. One example of such screen readers is JAWS (Job Access With Speech) which is the world’s most popular screen reader. Screen readers now include many more features that allow the visually impaired to get through life much more easily.
             </p>
 
-            <h3>Some usability tips for screen reader friendly interfaces:</h3>
+            <h3>Usability tips for screen reader friendly interfaces:</h3>
             <ul className="study__list">
                 <li>Use many headings and subheadings</li>
                 <li>Code headings correctly with proper size</li>
