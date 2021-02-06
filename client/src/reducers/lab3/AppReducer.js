@@ -1,5 +1,5 @@
 export const types = {
-    UPDATE_POPUP: '@accessibility-lab/audio-cue/app/update_popup',
+    UPDATE_POPUP: '@accessibility-lab/lab3/app/update_popup',
   
   };
   

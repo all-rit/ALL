@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
+import RepairService from '../../../../services/lab3/RepairService';
 
 class Repair extends Component {
 	constructor(props) {
@@ -35,12 +36,12 @@ class Repair extends Component {
 		event.preventDefault();
 
 		// Submit a repair entry in the database.
-		// RepairService.submitRepair(
-		// 	availableMessage,
-		// 	unavailableMessage,
-		// 	availableBackgroundColor,
-		// 	unavailableBackgroundColor
-		// );
+		RepairService.submitRepair(
+			cowAltValue,
+			carAltValue,
+			burgerAltValue,
+			catAltValue
+		);
 
 		// Update the state and close the repair.
 		handlers.updateRepair(

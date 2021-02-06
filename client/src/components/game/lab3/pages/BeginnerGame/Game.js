@@ -7,7 +7,7 @@ import CatClickFirstNavigate from "../../../lab3/helpers/CatClickFirstNavigate";
 import { Typography } from "@material-ui/core";
 import {PageService} from "../../../../../services/PageService";
 import { navigate } from "@reach/router";
-import {GAME_PLAYING} from "../../../../../constants/lab3/index";
+import {GAME_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
 import {actions as gameActions} from '../../../../../reducers/lab3/GameReducer';
 import {bindActionCreators} from 'redux';
 import {actions as mainActions} from "../../../../../reducers/MainReducer";
@@ -56,9 +56,9 @@ class Game extends Component {
   render() {
     const catClick = () => {
       console.log("Cat image clicked!");
-      const name = "Game";
-      PageService.createPage(name, this.state.secondsElapsed);
-      this.setState({ render: "CatClickNavigate" });
+      const name = "NonSimulatedGame";
+      PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
+      this.setState( { render: "CatClickNavigate" });
     };
     const burgerClick = () => {
       console.log("Burger image clicked!");

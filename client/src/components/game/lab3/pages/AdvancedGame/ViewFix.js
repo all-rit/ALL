@@ -4,18 +4,27 @@ import Button from "@material-ui/core/Button";
 import { navigate } from "@reach/router";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import {GAME_PLAYING} from "../../../../../constants/lab3/index";
+import {GAME_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
+import {PageService} from "../../../../../services/PageService";
 class ViewFix extends Component {
+
   constructor(props) {
     super(props);
     ViewFix.navOnClick = ViewFix.navOnClick.bind(this);
     this.state = {
       aria1: "Ok button",
-      aria2: "Cancel button"
+      aria2: "Cancel button",
+      render: "",
+      secondsElapsed: 0
     }
   }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
   static navOnClick() {
+    const name = "ViewFix";
+    PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
     navigate("/Lab3/Game/ProblemFix");
   }
   
@@ -28,6 +37,10 @@ class ViewFix extends Component {
           aria2: window.location.state.aria2.replace(/<[^>]*>?/gm, "")
         });
       }
+      this.interval = setInterval(
+          () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
+          1000
+      );
   }
 
   render() {

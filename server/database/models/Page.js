@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             pagename: { type: DataTypes.TEXT },
             completiontime: { type: DataTypes.INTEGER },
-            labname: {type: DataTypes.TEXT}
+            labid: {type: DataTypes.INTEGER}
         },
         { tableName: 'page' }
     );

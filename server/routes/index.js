@@ -12,6 +12,10 @@ let RepairControllerLab1 = require('../controllers/lab1/RepairController');
 
 //LAB2 Controller
 
+//LAB3 Controller
+let RepairControllerLab3 = require('../controllers/lab3/RepairController');
+
+
 // User Routes
 router.post('/url', UserController.storeURL)
 router.get('/auth/google', UserController.authenticate);
@@ -33,6 +37,7 @@ router.post('/lab1/game/choice', GameControllerLab1.createChoice);
 
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
+router.post('/lab3/repair/submit', RepairControllerLab3.submitChange);
 
 //Create a Page Entry
 router.post('/page/complete', PageController.createPage);
