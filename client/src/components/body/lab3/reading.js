@@ -78,7 +78,6 @@ const Reading = () => {
                 <li>Limit the use of popups</li>
             </ul>
 
-
             <h3>For more information, please visit the following websites:</h3>
             <div className="flex">
                 <a href="https://www.afb.org/">https://www.afb.org/</a>
