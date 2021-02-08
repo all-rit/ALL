@@ -16,37 +16,37 @@ import SoundHeader from "./components/SoundHeader";
 const mapStateToProps = (state) => {
 	return {
 		// General
-		popupMessage: state.app.popupMessage,
-		instructionsVisible: state.app.instructionsVisible,
+		popupMessage: state.app1.popupMessage,
+		instructionsVisible: state.app1.instructionsVisible,
 
 		// Game specific
-		state: state.game.state,
-		plays: state.game.plays,
-		results: state.game.results,
-		time: state.game.time,
-		roundTime: state.game.roundTime,
-		countdownTime: state.game.countdownTime,
-		score: state.game.score,
-		roundNumber: state.game.roundNumber,
-		correctAnswers: state.game.correctAnswers,
-		incorrectAnswers: state.game.incorrectAnswers,
-		boxes: state.game.boxes,
-		correctBoxNumber: state.game.correctBoxNumber,
-		boxRevealed: state.game.boxRevealed,
-		hintBoxStatus: state.game.hintBoxStatus,
-		hintUsed: state.game.hintUsed,
-		soundEnabled: state.game.soundEnabled,
-		congratulationMessage: state.game.congratulationMessage,
+		state: state.game1.state,
+		plays: state.game1.plays,
+		results: state.game1.results,
+		time: state.game1.time,
+		roundTime: state.game1.roundTime,
+		countdownTime: state.game1.countdownTime,
+		score: state.game1.score,
+		roundNumber: state.game1.roundNumber,
+		correctAnswers: state.game1.correctAnswers,
+		incorrectAnswers: state.game1.incorrectAnswers,
+		boxes: state.game1.boxes,
+		correctBoxNumber: state.game1.correctBoxNumber,
+		boxRevealed: state.game1.boxRevealed,
+		hintBoxStatus: state.game1.hintBoxStatus,
+		hintUsed: state.game1.hintUsed,
+		soundEnabled: state.game1.soundEnabled,
+		congratulationMessage: state.game1.congratulationMessage,
 
 		
 		// Repair specific
-		availableMessage: state.repair.availableMessage,
-		unavailableMessage: state.repair.unavailableMessage,
-		availableBackgroundColor: state.repair.availableBackgroundColor,
-		unavailableBackgroundColor: state.repair.unavailableBackgroundColor,
-		currentTab: state.repair.currentTab,
-		repairVisible: state.repair.repairVisible,
-		changesApplied: state.repair.changesApplied
+		availableMessage: state.repair1.availableMessage,
+		unavailableMessage: state.repair1.unavailableMessage,
+		availableBackgroundColor: state.repair1.availableBackgroundColor,
+		unavailableBackgroundColor: state.repair1.unavailableBackgroundColor,
+		currentTab: state.repair1.currentTab,
+		repairVisible: state.repair1.repairVisible,
+		changesApplied: state.repair1.changesApplied
 	};
 };
 

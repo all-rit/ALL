@@ -6,8 +6,9 @@ import {actions as mainActions} from '../../reducers/MainReducer';
 import {bindActionCreators} from 'redux';
 import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} from "./edit/editPage";
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
-import { Sections } from "../../App";
+import { Sections } from "../../constants/index";
 import handleRedirect from '../../helpers/Redirect';
+import getGameState from '../../helpers/GetReducer';
 
 const mapStateToProps = (state) => {
     return {
@@ -131,7 +132,7 @@ class Footer extends Component {
         const {state, actions} = this.props;
         const lab = state.main.lab;
         const body = state.main.body;
-        let display = state.game.state === "GAME_IDLE" || body !== 2;
+        let display = getGameState(state) === "GAME_IDLE" || body !== 2;
         let hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
         return (
             <div>
@@ -141,7 +142,7 @@ class Footer extends Component {
                         onClick={() => handleRedirect(actions, lab, body - 1)}
                         style={{display: this.disappearBack(body) || hideOnLanding ? "none" : "block"}}
                     >
-                        Previous — {body > 0 && typeof Sections[lab][body + 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
+                        Previous — {body > 0 && typeof Sections[lab][body - 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"

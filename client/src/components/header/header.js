@@ -16,6 +16,7 @@ import {GAME_IDLE} from "../../constants/lab1";
 import handleRedirect from "../../helpers/Redirect";
 import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
+import getGameState from '../../helpers/GetReducer';
 
 
 const mapStateToProps = (state) => {
@@ -38,9 +39,9 @@ const navigate = (state, actions,body, lab=state.main.lab) =>{
 };
 
 const alert_check = (state)=> {
-    if (state.game.state !== "GAME_IDLE" && state.main.body === 2){
+    if (getGameState(state) !== "GAME_IDLE" && state.main.body === 2){
         alert("The game is still in progress! Please complete the game");
-        return true
+        return true;
     }
     return false;
 };
@@ -52,7 +53,7 @@ const Header = (props) => {
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
     let count = state.main.body;
-    const loginEnabled = (state.main.lab === 0) || state.game.state === GAME_IDLE || state.main.body !== 2;
+    const loginEnabled = (state.main.lab === 0) || getGameState(state) === GAME_IDLE || state.main.body !== 2;
     return (
         <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
             <div className="container">

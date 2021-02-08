@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
-import { Link } from '@reach/router';
+// import { Link } from '@reach/router';
 import { Pie } from "react-chartjs-2";
 import Image1 from '../../../assets/images/casestudy/1.jpg';
 
@@ -36,7 +36,7 @@ const Reading = () => {
         <div className="study">
           <h1>Case Study</h1>
 
-          <h3>Approxiate Deaf and Hard of Hearing Population in the United States</h3>
+          <h3>Approximate Deaf and Hard of Hearing Population in the United States</h3>
           <Pie data={data} height={100} />
           <h3>Accessibility Standards</h3>
 
@@ -178,10 +178,6 @@ const Reading = () => {
             is vital to the continued success of web applications on the internet.
           </p>
           <p>Some information for this page was gathered from <a href="http://www.nchearingloss.org" target="_blank" rel="noopener noreferrer">www.nchearingloss.org</a></p>
-
-          <div className="study__actions">
-            <Link to="/supplementary">&laquo; Back to Supplementary Materials</Link>
-          </div>
       </div>
   );
 }
