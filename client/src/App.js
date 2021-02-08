@@ -10,7 +10,6 @@ import {Sections} from './constants/index';
 // import {default as GameLab2} from "./components/game/lab2/Main";
 // import {default as VideoLab2} from "./components/body/lab2/video";
 
-import FullGame from './components/game/lab3/pages/BeginnerGame/Game';
 import {default as AboutLab3} from "./components/body/lab3/about";
 import {default as ReadingLab3} from "./components/body/lab3/reading";
 import {default as GameLab3} from "./components/game/lab3/Main";
@@ -55,7 +54,7 @@ class App extends Component {
     }
 
   render() {
-    const {state,actions} = this.props;
+    const {state} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
     return (

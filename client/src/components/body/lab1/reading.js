@@ -36,7 +36,7 @@ const Reading = () => {
         <div className="study">
           <h1>Case Study</h1>
 
-          <h3>Approxiate Deaf and Hard of Hearing Population in the United States</h3>
+          <h3>Approximate Deaf and Hard of Hearing Population in the United States</h3>
           <Pie data={data} height={100} />
           <h3>Accessibility Standards</h3>
 

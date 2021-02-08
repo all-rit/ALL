@@ -6,7 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import {PageService} from "../../../../../services/PageService";
-import {GAME_PLAYING} from "../../../../../constants/lab3/index";
+import {GAME_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
 
 class UserUpdatedGame extends Component {
   constructor(props) {
@@ -22,13 +22,14 @@ class UserUpdatedGame extends Component {
     }
   }
   componentDidMount() {
-    const { actions } = this.props;
+    const { actions, data } = this.props;
     actions.updateState(GAME_PLAYING);
     this.interval = setInterval(
        () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
        1000
      );
-    if(this.props.location.state.updated) {
+
+    if(data.repair3.changesApplied) {
       actions.enableEnd(true);
     }
     this.setState({renderedButtons: this.setupButtons() })
@@ -83,11 +84,12 @@ class UserUpdatedGame extends Component {
     return array;
   }
   setupButtons(){
+    const { data } = this.props;
     console.log('calling setup')
     const catClick = () => {
       console.log("Cat image clicked!");
-      const name = "UserUpdatedGame";
-      PageService.createPage(name, this.state.secondsElapsed);
+      const name = data.repair3.changesApplied ? "UserUpdatedGame": "InaccessibleGame";
+      PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
       this.setState({ render: "CatClickNavigate" });
     };
     const burgerClick = () => {
@@ -106,8 +108,7 @@ class UserUpdatedGame extends Component {
       backgroundColor: "black"
     };
     let buttons = []
-    if(this.props.location.state.updated){
-      const { data } = this.props;
+    if(data.repair3.changesApplied){
       buttons = [
         <button style={imgStyle} onClick={() => catClick()} tabIndex={"0"}
                 onFocus={(e) => this.textToSpeech(e, data.repair3.catAltValue)}/>,
@@ -145,13 +146,14 @@ class UserUpdatedGame extends Component {
     synth.speak(utterThis);
   };
   render() {
-
+    const { data } = this.props;
     const tableStyle = {
       border: "1px solid black",
       marginLeft: "auto",
       marginRight: "auto",
       textAlign: "center",
     };
+
     const textStyle = { color: "white", tabIndex: "0" };
     return (
       <div>      
@@ -171,7 +173,7 @@ class UserUpdatedGame extends Component {
                   tabIndex={"0"}
                   onFocus={(e) => this.textToSpeech(e,"Inaccessible Game")}
                 >
-                  {this.props.location.state.updated ? "Accessible Game": "Inaccessible Game"}
+                  {data.repair3.changesApplied ? "Accessible Game": "Inaccessible Game"}
                 </Typography>
               </Grid>
             </Grid>
@@ -199,7 +201,7 @@ class UserUpdatedGame extends Component {
             </tr>
           </tbody>
         </table>
-        {this._renderSubComp(this.props.location.state.updated ? "/Lab3/Game/CodeChange": "/Lab3/Game/AccessibleInstructions")}
+        {this._renderSubComp(data.repair3.changesApplied ? "/Lab3/Game/CodeChange": "/Lab3/Game/AccessibleInstructions")}
       </div>
     );
   }

@@ -8,8 +8,9 @@ import { navigate } from "@reach/router";
 import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 
 class GameInstructions extends Component {
+
   handleSubmit() {
-    navigate("/Lab3/Game/UserUpdatedGame", {state:{updated:false}});
+    navigate("/Lab3/Game/UserUpdatedGame");
   }
     componentDidMount() {
         const { actions } = this.props;

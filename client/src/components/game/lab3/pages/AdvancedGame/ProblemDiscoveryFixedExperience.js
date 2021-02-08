@@ -7,15 +7,30 @@ import burgerImage from "../../../../../assets/images/b.png";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
-import {GAME_PLAYING} from "../../../../../constants/lab3/index";
+import {GAME_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
+import {PageService} from "../../../../../services/PageService";
 
 class ProblemDiscoveryFixedExperience extends Component {
   handleSubmit() {
+    const name = "ProblemDiscoveryFixed";
+    PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
     navigate( "/Lab3/Game/ProblemExplanation");
   }
     componentDidMount() {
         const { actions } = this.props;
         actions.updateState(GAME_PLAYING);
+        this.interval = setInterval(
+            () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
+            1000
+        );
+    }
+    constructor(props) {
+        super(props);
+        this.state = { render: "", secondsElapsed: 0 };
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
   render() {
     const textToSpeech = (e, text) => {
@@ -101,7 +116,7 @@ class ProblemDiscoveryFixedExperience extends Component {
         <br />
         <Button
           href="#"
-          onClick={this.handleSubmit}
+          onClick={this.handleSubmit.bind(this)}
           variant={"contained"}
           className = "btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
           onFocus={(e) => textToSpeech(e, "Next")}

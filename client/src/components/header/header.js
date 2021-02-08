@@ -41,7 +41,7 @@ const navigate = (state, actions,body, lab=state.main.lab) =>{
 const alert_check = (state)=> {
     if (getGameState(state) !== "GAME_IDLE" && state.main.body === 2){
         alert("The game is still in progress! Please complete the game");
-        return true
+        return true;
     }
     return false;
 };

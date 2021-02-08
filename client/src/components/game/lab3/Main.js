@@ -10,9 +10,7 @@ import FullGame from '../../game/lab3/pages/BeginnerGame/Game';
 import UserUpdatedGame from '../../game/lab3/pages/BeginnerGame/UserUpdatedGame';
 import GameInstructions from '../../game/lab3/pages/BeginnerGame/GameInstructions';
 import AccessibleInstructions from '../../game/lab3/pages/BeginnerGame/AccessibleInstructions';
-import AccessibleGame from '../../game/lab3/pages/BeginnerGame/AccessibleGame';
 import CodeChange from '../../game/lab3/pages/BeginnerGame/CodeChange';
-import HelloWorld from '../../game/lab3/pages/BeginnerGame/HelloWorld';
 import AdvancedGame from '../../game/lab3/pages/AdvancedGame/AdvancedGame';
 import AdvancedInstructions from '../../game/lab3/pages/AdvancedGame/AdvancedInstructions';
 import ProblemDiscovery from '../../game/lab3/pages/AdvancedGame/ProblemDiscovery';
@@ -36,6 +34,7 @@ const mapDispatchToProps = dispatch => {
 
 
 class Main extends Component {
+
   // eslint-disable-next-line require-jsdoc
 
   // eslint-disable-next-line require-jsdoc
@@ -44,14 +43,12 @@ class Main extends Component {
     return (
       <div class="container bottomSpace" >
         <Router className="app">
-          <GameStart path="/"/>
+          <GameStart default path="/"/>
           <FullGame path="/BeginnerGame" actions={actions}/>
           <GameInstructions path={'/GameInstructions'} actions={actions}/>
           <UserUpdatedGame path={'/UserUpdatedGame'} actions={actions} data={state}/>
           <AccessibleInstructions path={'/AccessibleInstructions'} actions={actions}/>
-          <AccessibleGame path={'/AccessibleGame'} actions={actions}/>
           <CodeChange path={'/CodeChange'} actions={actions} data={state} />
-          <HelloWorld path={'/HelloWorld'} actions={actions}/>
           <AdvancedGame path={'/AdvancedGame'} actions={actions}/>
           <AdvancedInstructions path={'/AdvancedInstructions'} actions={actions}/>
           <ProblemDiscovery path={'/ProblemDiscovery'} actions={actions}/>
