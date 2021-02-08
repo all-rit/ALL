@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Router, navigate} from '@reach/router';
+import {Router} from '@reach/router';
 import '../../../assets/stylesheets/main.scss';
 import {actions as gameActions } from "../../../reducers/lab3/GameReducer";
 import {actions as repairActions } from '../../../reducers/lab3/RepairReducer';
