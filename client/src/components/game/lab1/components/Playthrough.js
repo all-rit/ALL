@@ -19,7 +19,6 @@ class Playthrough extends Component {
 			case 2:
 				return <Third />;
 			case 3:
-				console.log(results);
 				return <Fourth results={results} />;
 			default:
 				// if there were multiple "repair rounds", we will loop through those scores
