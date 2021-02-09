@@ -27,7 +27,7 @@ const Reading = () => {
     });
     return (
         <div className="study">
-            <h1>What is a Screen Reader?</h1>
+            <h3>What is a Screen Reader?</h3>
             <p>
                 A screen reader is an essential software program that aids visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both.
             </p>
@@ -60,8 +60,8 @@ const Reading = () => {
                 <li>Cataracts</li>
                 <li>Uncorrected refractive errors</li>
             </ul>
-
-
+            <br></br>
+            
             <h3>Effect that impaired vision has on the computing world</h3>
             <p>
                 By acknowledging that visual impairment is a major global health issue, the computing world made necessary advances in screen readers. Screen readers have increased in both availability and popularity. One example of such screen readers is JAWS (Job Access With Speech) which is the world’s most popular screen reader. Screen readers now include many more features that allow the visually impaired to get through life much more easily.
@@ -77,7 +77,7 @@ const Reading = () => {
                 <li>Decrease the number of links</li>
                 <li>Limit the use of popups</li>
             </ul>
-
+            <br></br>
 
             <h3>For more information, please visit the following websites:</h3>
             <div className="flex">

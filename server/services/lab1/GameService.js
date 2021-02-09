@@ -36,20 +36,20 @@ exports.createChoice = (data) => {
 			correct: data.correct
 		})
 		.then(() => {
-			if (correct) {
-				throw new Error('Gotta update the game and round.');
+			if (data.correct) {
+				db.GameLab1.findByPk(data.id).then((game) => {
+					game.update({ score: data.score });
+				});
+				db.Round.findByPk(data.round).then((round) => {
+					round.update({ hintused: data.hintUsed });
+				});
 			}
-
 			return true;
 		})
-		.catch(() => {
-			db.GameLab1.findByPk(data.id).then((game) => {
-				game.update({ score: data.score });
-			});
-			db.Round.findByPk(data.round).then((round) => {
-				round.update({ hintused: data.hintUsed });
-			});
+};
 
-			return true;
-		});
+exports.updateEndGameScore = (data) => {
+	return db.GameLab1.findByPk(data.id).then((game) => {
+		game.update({score: data.score});
+	})
 };
