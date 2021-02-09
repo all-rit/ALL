@@ -14,5 +14,8 @@ export default combineReducers({
 	app3: AppReducer3,
 	game3: GameReducer3,
 	repair3: RepairReducer3,
+	// app4: AppReducer4,
+	// game4: GameReducer4,
+	// repair4: RepairReducer4,
 	main: MainReducer
 });
