@@ -86,6 +86,18 @@ return (
                         {/*        <li><a href="# " onClick={() => handleRedirect(actions, 4, 4)}>Quiz</a></li>*/}
                         {/*    </ul>*/}
                         {/*</div>*/}
+                        <div className="col-md-4">
+                            <h4 className="service-heading">
+                                <a href="# " onClick={() => handleRedirect(actions, 5, 0)}>Lab 5</a>
+                            </h4>
+                            <ul>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 0)}>About</a></li>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 1)}>Reading</a></li>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 2)}>Game</a></li>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 3)}>Video</a></li>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 4)}>Quiz</a></li>
+                            </ul>
+                        </div>
                     </div>
             </div>
             </div>

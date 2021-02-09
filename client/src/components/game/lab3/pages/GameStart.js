@@ -2,9 +2,9 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Button from "@material-ui/core/Button";
-import { actions as mainActions } from "../../../reducers/MainReducer";
-import { actions as gameActions } from "../../../reducers/lab3/GameReducer";
-import AppInstructions from "./components/AppInstructions";
+import { actions as mainActions } from "../../../../reducers/MainReducer";
+import { actions as gameActions } from "../../../../reducers/lab5/GameReducer";
+import AppInstructions from "../components/AppInstructions";
 import { navigate } from "@reach/router";
 
 const mapStateToProps = state => {

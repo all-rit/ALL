@@ -1,8 +1,8 @@
 export const types = {
-	UPDATE_REPAIR: '@accessibility-lab/audio-cue/repair/update_repair',
-	UPDATE_TAB: '@accessibility-lab/audio-cue/repair/update_tab',
-	OPEN_REPAIR: '@accessibility-lab/audio-cue/repair/open_repair',
-	CLOSE_REPAIR: '@accessibility-lab/audio-cue/repair/close_repair'
+	UPDATE_REPAIR: '@accessibility-lab/cognitive/repair/update_repair',
+	UPDATE_TAB: '@accessibility-lab/cognitive/repair/update_tab',
+	OPEN_REPAIR: '@accessibility-lab/cognitive/repair/open_repair',
+	CLOSE_REPAIR: '@accessibility-lab/cognitive/repair/close_repair'
 };
 
 export const initialState = {

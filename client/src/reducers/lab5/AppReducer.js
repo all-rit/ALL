@@ -1,7 +1,7 @@
 export const types = {
-	UPDATE_POPUP: '@accessibility-lab/audio-cue/app/update_popup',
-	OPEN_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/open_instructions',
-	CLOSE_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/close_instructions'
+	UPDATE_POPUP: '@accessibility-lab/cognitive/app/update_popup',
+	OPEN_INSTRUCTIONS: '@accessibility-lab/cognitive/app/open_instructions',
+	CLOSE_INSTRUCTIONS: '@accessibility-lab/cognitive/app/close_instructions'
 };
 
 export const initialState = {

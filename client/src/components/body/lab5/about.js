@@ -13,10 +13,9 @@ const About = (lab) => {
         <div className="study">
             <p>
                 In this lab, you will learn about why it is important to create software
-                that is accessible to users who utilize screenreaders.
-                You will learn about using alt tags,
-                increase your understanding through an interactive module about
-                screenreaders and alt tags, watch related videos, and take a quiz
+                that is accessible to users who face cognitive impairments.
+                You will learn about using clear descriptive headings, handling time driven notifications, and
+                creating informative form responses. Afterwards, you will watch related videos and take a quiz
                 to test your knowledge. Click "Next" to start!
             </p>
         </div>

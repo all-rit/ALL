@@ -4,8 +4,8 @@ import {
 } from '../../constants/lab5/index';
 
 export const types = {
-	UPDATE_STATE: '@accessibility-lab/audio-cue/game/update_state',
-	ENABLE_END: '@accessibility-lab/audio-cue/game/enable_end'
+	UPDATE_STATE: '@accessibility-lab/cognitive/game/update_state',
+	ENABLE_END: '@accessibility-lab/cognitive/game/enable_end'
 };
 
 export const initialState = {
