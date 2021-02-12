@@ -6,6 +6,7 @@ import {actions as gameActions } from "../../../reducers/lab5/GameReducer";
 import {actions as repairActions } from '../../../reducers/lab5/RepairReducer';
 import {actions as appActions } from '../../../reducers/lab5/AppReducer';
 import GameStart from './pages/GameStart';
+import DyslexiaAccessible from './pages/DyslexiaAccessible';
 
 import {bindActionCreators} from "redux";
 
@@ -25,9 +26,10 @@ class Main extends Component {
   render() {
     const {actions, state} = this.props;
     return (
-      <div class="container bottomSpace" >
+      <div class="bottomSpace" >
         <Router className="app">
           <GameStart default path="/"/>
+          <DyslexiaAccessible path="/DyslexiaAccessible" actions={actions} state={state}/>
         </Router>
       </div>
     );

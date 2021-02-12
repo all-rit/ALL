@@ -1,0 +1,49 @@
+.cognitive_information {
+  background-color: #d3d6d9;
+  padding: 20px;
+  text-align:left;
+  margin-bottom: 20px;
+  .heading{
+    font-size: 30px;
+    color: #1a6fb1;
+    margin-bottom: 1rem;
+    margin-bottom: 1rem;
+
+  }
+  .subheading{
+    font-size: 25px;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+  }
+  .information{
+    font-size: 1.25rem;
+  }
+  ul li {
+    display: list-item;
+    list-style: circle;
+    font-size:1.25rem
+  }
+  ul {
+    padding-left:30px;
+  }
+
+
+}
+.cognitive_instructions{
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.timer{
+  display: flex;
+  font-size: 1.25rem;
+  align-items: center;
+  &__window{
+    background-color: #d3d6d9;
+    width:100px;
+    margin:1rem;
+    padding:1rem;
+
+
+  }
+
+}
