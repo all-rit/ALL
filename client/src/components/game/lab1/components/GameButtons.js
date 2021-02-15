@@ -12,7 +12,7 @@ class GameButtons extends Component {
     } = this.props;
     let startMessage = "Start";
     if (repairApplied) {
-      startMessage = 'Start with Repair Applied'
+      startMessage = 'Start with PageLayoutRepair Applied'
     }
     else if (plays>0){
       startMessage = 'Next Play'

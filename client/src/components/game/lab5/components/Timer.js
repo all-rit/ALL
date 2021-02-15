@@ -25,7 +25,7 @@ class Timer extends Component {
     }
 
     render() {
-
+        const {link} = this.props;
         return (
             <div>
                 <div className="timer">
@@ -35,7 +35,7 @@ class Timer extends Component {
                     </div>
                 </div>
                 {this.state.showModal &&
-                    <Modal buttonLabel={"Continue"} message={"Time Has Expired! Click Continue to Proceed"} title={"Timer"} link={"/Lab5/Game/"}/>
+                    <Modal buttonLabel={"Continue"} message={"Time Has Expired! Click Continue to Proceed"} title={"Timer"} link={link}/>
                 }
             </div>
     );

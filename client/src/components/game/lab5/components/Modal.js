@@ -10,9 +10,7 @@ const ModalExample = (props) => {
         link
     } = props;
 
-    const [modal, setModal] = useState(true);
-
-    const toggle = () => setModal(!modal);
+    const [modal] = useState(true);
 
     return (
         <div>

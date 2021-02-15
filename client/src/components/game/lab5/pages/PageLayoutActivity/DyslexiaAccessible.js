@@ -1,31 +1,31 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import Timer from "../components/Timer";
-
+import Timer from "../../components/Timer";
+import PageServiceTimer from "../../components/PageServiceTimer";
+import {time} from '../../../../../constants/lab5'
 class DyslexiaAccessible extends Component {
-    handleStart() {
-        navigate("/Lab5/Game/DyslexiaAccessible");
+    handleNav() {
+        navigate("/Lab5/Game/DyslexiaAccessibleKnowledgeCheck");
     }
-
     render() {
-        // const {actions, state} = this.props;
+        const {actions} = this.props;
         return (
 
                 <div>
-                    <div class= "cognitive_instructions">
+                    <div className= "cognitive_instructions">
                     Read the following information about Dyslexia from w3.org
                     </div>
-                    <div class= "cognitive_information">
-                        <div class ="heading">
+                    <div className= "cognitive_information">
+                        <div className ="heading">
                             1.0 Dyslexia
                         </div>
-                    <div class="information">
+                    <div >
                     Dyslexia is a syndrome best known for its effect on the development of literacy and language-related skills. It does not imply low intelligence or poor educational potential.
                     </div>
-                        <div class="subheading">
+                        <div className="subheading">
                             1.0.1 Symptoms
                         </div>
-                        <div className="information">Common symptoms are:</div>
+                        <div >Common symptoms are:</div>
                         <ul>
                             <li>
                                 Slow and laborious reading
@@ -43,7 +43,7 @@ class DyslexiaAccessible extends Component {
                         <div className="subheading">
                             1.0.2 Content optimized for this group
                         </div>
-                        <div class="information">Content made for people with dyslexia tends to have: </div>
+                        <div >Content made for people with dyslexia tends to have: </div>
                         <ul >
                             <li>
                                 Icons to visually reinforce structure and what each section is
@@ -59,7 +59,17 @@ class DyslexiaAccessible extends Component {
                             </li>
                         </ul>
                     </div>
-                    <Timer seconds={25}/>
+                    <div className='flex'>
+                        <Timer seconds={time} link="/Lab5/Game/DyslexiaAccessibleKnowledgeCheck"/>
+                        <button
+                            className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+                            onClick = {this.handleNav}
+                            key="next"
+                        >
+                            Next
+                        </button>
+                    </div>
+                    <PageServiceTimer actions={actions} name={this.constructor.name}/>
                 </div>
         );
     }

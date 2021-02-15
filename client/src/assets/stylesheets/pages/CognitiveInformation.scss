@@ -3,25 +3,24 @@
   padding: 20px;
   text-align:left;
   margin-bottom: 20px;
+  font-size: 1.25rem;
+
   .heading{
     font-size: 30px;
     color: #1a6fb1;
     margin-bottom: 1rem;
-    margin-bottom: 1rem;
-
   }
   .subheading{
     font-size: 25px;
     margin-bottom: .5rem;
     margin-top: .5rem;
   }
-  .information{
-    font-size: 1.25rem;
+  .inaccessible{
+    font-family: Brush Script MT, cursive
   }
   ul li {
     display: list-item;
     list-style: circle;
-    font-size:1.25rem
   }
   ul {
     padding-left:30px;
@@ -46,4 +45,18 @@
 
   }
 
+}
+.flex{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom:1rem;
+  align-items: center;
+}
+.float-right{
+  float:right;
+}
+.btn-primary:disabled{
+  background-color: #fed136;
+  border-color: #fed136;
+  opacity: 65%;
 }

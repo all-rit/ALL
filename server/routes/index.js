@@ -17,6 +17,8 @@ let RepairControllerLab3 = require('../controllers/lab3/RepairController');
 
 //LAB5 Controller
 let RepairControllerLab5 = require('../controllers/lab5/RepairController');
+let GameControllerLab5 = require('../controllers/lab5/GameController');
+
 
 // User Routes
 router.post('/url', UserController.storeURL)
@@ -36,7 +38,7 @@ router.post('/completeQuiz', UserLabController.completeQuiz);
 router.post('/lab1/game/start', GameControllerLab1.createGame);
 router.post('/lab1/game/round', GameControllerLab1.createRound);
 router.post('/lab1/game/choice', GameControllerLab1.createChoice);
-
+router.post('/lab5/game/choice', GameControllerLab5.submitChoice)
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
 router.post('/lab3/repair/submit', RepairControllerLab3.submitChange);
