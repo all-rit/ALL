@@ -18,7 +18,7 @@ import {default as VideoLab3} from "./components/body/lab3/video";
 import {default as AboutLab4} from "./components/body/lab4/about";
 import {default as ReadingLab4} from "./components/body/lab4/reading";
 // import {default as GameLab4} from "./components/game/lab4/Main";
-// import {default as VideoLab4} from "./components/body/lab4/video";
+import {default as VideoLab4} from "./components/body/lab4/video";
 
 import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
@@ -88,8 +88,8 @@ class App extends Component {
               
               <VideoLab1 path="/Lab1/Video" />
               <VideoLab3 path="/Lab3/Video" />
-              {/* <VideoLab2 path="/Lab2/Video" />
-              <VideoLab4 path="/Lab4/Video" /> */}
+              {/* <VideoLab2 path="/Lab2/Video" />*/}
+              <VideoLab4 path="/Lab4/Video" />
               
               <Quiz path={`/Lab${lab}/Quiz`}/>
             </Router>
