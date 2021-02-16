@@ -16,7 +16,7 @@ import {default as GameLab3} from "./components/game/lab3/Main";
 import {default as VideoLab3} from "./components/body/lab3/video";
 
 import {default as AboutLab4} from "./components/body/lab4/about";
-// import {default as ReadingLab4} from "./components/body/lab4/reading";
+import {default as ReadingLab4} from "./components/body/lab4/reading";
 // import {default as GameLab4} from "./components/game/lab4/Main";
 // import {default as VideoLab4} from "./components/body/lab4/video";
 
@@ -78,14 +78,12 @@ class App extends Component {
               
               <ReadingLab1 path="/Lab1/Reading"/>
               <ReadingLab3 path="/Lab3/Reading"/>
-              {/* <ReadingLab2 path="/Lab2/Reading"/>
-              
-              <ReadingLab4 path="/Lab4/Reading"/> */}
+              {/* <ReadingLab2 path="/Lab2/Reading"/> */}
+              <ReadingLab4 path="/Lab4/Reading"/>
 
               <GameLab1 path="/Lab1/Game" />
               <GameLab3 path="/Lab3/Game/*" />
               {/* <GameLab2 path="/Lab2/Game" />
-              
               <GameLab4 path="/Lab4/Game" /> */}
               
               <VideoLab1 path="/Lab1/Video" />

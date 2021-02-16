@@ -10,8 +10,10 @@ const Reading = () => {
     });
     return (
         <div className="study">
-            Reading that discusses the topic, how it affects people, how often it
-            occurs, etc.
+            <p>
+                Reading that discusses the topic, how it affects people, how often it
+                occurs, etc.
+            </p>
         </div>
     );
 };
