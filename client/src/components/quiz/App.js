@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import quizQuestionsLab1 from './api/Lab1/quizQuestions';
+import quizQuestionsLab2 from './api/Lab2/quizQuestions';
 import quizQuestionsLab3 from './api/Lab3/quizQuestions';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
@@ -48,8 +49,8 @@ class App extends Component {
         switch (lab) {
             case 1:
                 return quizQuestionsLab1
-            // case 2:
-            //
+            case 2:
+                return quizQuestionsLab2
             case 3:
                 return quizQuestionsLab3
             // case 4:

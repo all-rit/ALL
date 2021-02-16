@@ -1,0 +1,174 @@
+.center{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.inline{
+  flex-direction: nowrap;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.start{
+  margin-top: 40px;
+  font-size: 30px;
+  color: light-grey;
+  padding: 10px 10px;
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.start:hover{
+  cursor:pointer
+}
+
+.thirdTitle{
+  font-size: 35px;
+}
+
+@media (max-width: 800px) {
+  .thirdTitle{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.fourthTitle{
+  font-size: 25px;
+}
+
+.instruction{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+.Left{
+  width: 400px;
+  margin-left: 200px;
+  text-align: center;
+}
+
+.Right{
+  width: 500px;
+  margin-right: 200px;
+  text-align: center;
+}
+
+.selection{
+  width: 300px;
+  height: 60px;
+  margin-top:10px;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.textSelection{
+  font-size: 20px;
+}
+
+.circles{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.popupArrow{
+  color: grey;
+  background: #1a1a1a;
+  margin-top: 0px;
+  padding-top: 11px;
+}
+
+@media (min-width: 600px) and (max-width:1200px){
+  .correctCircle{
+    margin-right: 300px;
+  }
+  .popupArrow{
+    height:15px;
+    padding-top: 13px;
+  }
+  .fourthTitle {
+    font-size: 18px;
+  }
+  .thirdTitle {
+    font-size: 20px;
+  }
+  .allLink {
+    cursor: pointer;
+    margin-left: 3px;
+  }
+}
+
+@media (max-width: 600px){
+  .correctCircle{
+    margin-right: 100px;
+  }
+  .fourthTitle {
+    font-size: 12px;
+  }
+  .thirdTitle {
+    font-size: 12px;
+  }
+  .allLink {
+    cursor: pointer;
+    margin-left: 1px;
+  }
+  .start{
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .Right {
+    margin-right: 100px;
+    margin-left: 50px;
+  }
+  .Left {
+    margin-right: 50px;
+    margin-left: 100px;
+  }
+  .selection {
+    width: 200px;
+    height: 20px;
+    font-size: 16px;
+  }
+  .textSelection {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1200px){
+  .correctCircle{
+    margin-right: 450px;
+  }
+  .allLink {
+    cursor: pointer;
+    margin-left: 5px;
+  }
+}
+
+.incorrectCircle{
+  margin-left: 50px;
+}
+
+.submitColorPopup:hover{
+  cursor: pointer;
+}
+
+.success {
+  text-align: center;
+  font-size: 20px;
+}
+
+.noBottomMargin {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.lowMargin {
+  margin-bottom: 5px;
+}
