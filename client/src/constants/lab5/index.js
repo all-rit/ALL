@@ -23,16 +23,37 @@ export const DementiaInaccessibleKnowledgeCheck={
 }
 
 export const DementiaAccessibleKnowledgeCheck={
-    Question: "What is one way to optimize content for those with Dimentia?",
+    Question: "What is one way to optimize content for those with Dementia?",
     Options:{
         "Use small and clear icons": 0,
         "Use acronyms": 0,
         "Use 38 size font": 0,
         "Rapid and direct feedback": 1,
     }
-
 }
+export const NotificationAccessibleKnowledgeCheck={
+    Question: "Which words were jumbled?",
+    Options:{
+        "Meeting": 0,
+        "At": 0,
+        "12pm": 0,
+        "None": 1,
+    }
+}
+export const NotificationInaccessibleKnowledgeCheck={
+    Question: "Which words were jumbled?",
+    Options:{
+        "Started, Should": 0,
+        "Their, Order": 1,
+        "Started, Order": 0,
+        "None": 0,
+    }
+}
+export const AccessibleMessage="Meeting at 12pm!";
+export const InaccessibleMessage="There older should be started";
+
 export const minFont = 16;
 export const maxFont = 24;
 export const defaultFont = 20;
 export const time = 25;
+export const notificationTimeShort = 1000;

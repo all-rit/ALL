@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
 import PageServiceTimer from "../../components/PageServiceTimer";
-import {DementiaAccessibleKnowledgeCheck as KnowledgeCheck} from '../../../../../constants/lab5'
-class DementiaAccessibleKnowledgeCheck extends Component {
+import {NotificationAccessibleKnowledgeCheck as KnowledgeCheck} from '../../../../../constants/lab5'
+class NotificationAccessibleKnowledgeCheck extends Component {
 
     constructor(props) {
         super(props);
@@ -13,11 +13,11 @@ class DementiaAccessibleKnowledgeCheck extends Component {
         const {actions} = this.props;
         return (
             <div>
-                <KnowledgeTest handler={this.handler} question = {KnowledgeCheck} link={"/Lab5/Game/NotificationAccessible"}/>
+                <KnowledgeTest handler={this.handler} question = {KnowledgeCheck} link={"/Lab5/Game/NotificationInaccessible"}/>
                 <PageServiceTimer actions={actions} name={this.constructor.name}/>
             </div>
         );
     }
 }
 
-export default DementiaAccessibleKnowledgeCheck;
+export default NotificationAccessibleKnowledgeCheck;

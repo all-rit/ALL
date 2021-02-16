@@ -14,6 +14,11 @@ import PageLayoutGuidance from "./pages/PageLayoutActivity/PageLayoutGuidance";
 import PageLayoutRepair from "./pages/PageLayoutActivity/PageLayoutRepair";
 import DementiaAccessible from './pages/PageLayoutActivity/DementiaAccessible';
 import DementiaAccessibleKnowledgeCheck from './pages/PageLayoutActivity/DementiaAccessibleKnowledgeCheck';
+import NotificationAccessible from './pages/NotificationActivity/NotificationAccessible';
+import NotificationAccessibleKnowledgeCheck from './pages/NotificationActivity/NotificationAccessibleKnowledgeCheck';
+import NotificationInaccessible from './pages/NotificationActivity/NotificationInaccessible';
+import NotificationInaccessibleKnowledgeCheck from './pages/NotificationActivity/NotificationInaccessibleKnowledgeCheck';
+import NotificationGuidance from "./pages/NotificationActivity/NotificationGuidance";
 
 import {bindActionCreators} from "redux";
 
@@ -45,6 +50,11 @@ class Main extends Component {
                             handlers={actions} state ={state} actions={actions}/>
           <DementiaAccessible path="/DementiaAccessible" actions={actions} state={state}/>
           <DementiaAccessibleKnowledgeCheck path="/DementiaAccessibleKnowledgeCheck" actions={actions} state={state} />
+          <NotificationAccessible path="/NotificationAccessible" actions={actions} state={state} />
+          <NotificationAccessibleKnowledgeCheck path="/NotificationAccessibleKnowledgeCheck" actions={actions} state={state} />
+          <NotificationInaccessible path="/NotificationInaccessible" actions={actions} state={state} />
+          <NotificationInaccessibleKnowledgeCheck path="/NotificationInaccessibleKnowledgeCheck" actions={actions} state={state} />
+          <NotificationGuidance  path="/NotificationGuidance" actions={actions}/>
         </Router>
       </div>
     );
