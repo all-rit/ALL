@@ -5,6 +5,7 @@ import RepairReducer1 from './lab1/RepairReducer';
 import AppReducer3 from './lab3/AppReducer';
 import GameReducer3 from './lab3/GameReducer';
 import RepairReducer3 from './lab3/RepairReducer';
+import GameReducer4 from './lab4/GameReducer';
 import MainReducer from './MainReducer';
 
 export default combineReducers({
@@ -15,7 +16,7 @@ export default combineReducers({
 	game3: GameReducer3,
 	repair3: RepairReducer3,
 	// app4: AppReducer4,
-	// game4: GameReducer4,
+	game4: GameReducer4,
 	// repair4: RepairReducer4,
 	main: MainReducer
 });
