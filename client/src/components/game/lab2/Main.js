@@ -10,6 +10,7 @@ import Header from "../lab2/components/header/headerMain";
 import SuccessMessage from "./home/successMessage";
 import Countdown from "react-countdown-now";
 import Form from "./forms/form";
+import LandingPage from "./LandingPage/landingPage";
 import UserStats from "./userStatistics/userStats";
 import SecondInstructions from "./Instructions/secondInstructions";
 import ThirdInstructions from "./Instructions/thirdInstructions";
@@ -89,47 +90,47 @@ const mapStateToProps = state => {
 };
 
 //Mapping dispatches for redux
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({...changeDefaultColors,...resetBackground,...startGame}, dispatch)
-  };
-};
-// const mapDispatchToProps = dispatch => {
+// const mapDispatchToProps = (dispatch) => {
 //   return {
-//     onChangeDefaultColors: event => dispatch(changeDefaultColors(event)),
-//     onChangeGameColors: event => dispatch(changeGameColors(event)),
-//     onSelectOption: event => dispatch(selectGameOption(event)),
-//     popupController: event => dispatch(activatePopup(event)),
-//     onStartGame: () => dispatch(startGame()),
-//     onEndGame: () => dispatch(endGame()),
-//     onResetOption: () => dispatch(resetOption()),
-//     onResetColors: () => dispatch(resetColors()),
-//     onLogin: event => dispatch(login(event)),
-//     onResetChange: () => dispatch(resetChange()),
-//     onCloseInfoPopup: () => dispatch(closeInfoPopup()),
-//     onOpenAboutPage: () => dispatch(openAboutPage()),
-//     onCloseAboutPage: () => dispatch(closeAboutPage()),
-//     onOpenStatPage: () => dispatch(openStatPage()),
-//     onCloseStatPage: () => dispatch(closeStatPage()),
-//     onEndFirstGame: () => dispatch(endFirstGame()),
-//     onEnterInfoState: () => dispatch(enterInfoState()),
-//     onCloseInfoState: () => dispatch(closeInfoState()),
-//     onEnterSecondInfoState: () => dispatch(enterSecondInfoState()),
-//     onCloseSecondInfoState: () => dispatch(closeSecondInfoState()),
-//     onOpenLeaderboard: () => dispatch(openLeaderboard()),
-//     onCloseLeaderboard: () => dispatch(closeLeaderboard()),
-//     onOpenThirdInfoState: () => dispatch(openThirdInfoState()),
-//     onCloseThirdInfoState: () => dispatch(closeThirdInfoState()),
-//     onOpenConclusion: () => dispatch(openConclusion()),
-//     onToWhiteBackground: () => dispatch(toWhiteBackground()),
-//     onResetBackground: event => dispatch(resetBackground(event)),
-//     onOpenColorChange: () => dispatch(openColorChange()),
-//     onCloseColorChange: () => dispatch(closeColorChange()),
-//     onToGreyBackground: () => dispatch(toGreyBackground()),
-//     onResetSystem: () => dispatch(resetSystem()),
-//     onGoBackFromGame: () => dispatch(goBackFromGame())
+//     actions: bindActionCreators({...changeDefaultColors,...resetBackground,...startGame}, dispatch)
 //   };
 // };
+const mapDispatchToProps = dispatch => {
+  return {
+    onChangeDefaultColors: event => dispatch(changeDefaultColors(event)),
+    onChangeGameColors: event => dispatch(changeGameColors(event)),
+    onSelectOption: event => dispatch(selectGameOption(event)),
+    popupController: event => dispatch(activatePopup(event)),
+    onStartGame: () => dispatch(startGame()),
+    onEndGame: () => dispatch(endGame()),
+    onResetOption: () => dispatch(resetOption()),
+    onResetColors: () => dispatch(resetColors()),
+    onLogin: event => dispatch(login(event)),
+    onResetChange: () => dispatch(resetChange()),
+    onCloseInfoPopup: () => dispatch(closeInfoPopup()),
+    onOpenAboutPage: () => dispatch(openAboutPage()),
+    onCloseAboutPage: () => dispatch(closeAboutPage()),
+    onOpenStatPage: () => dispatch(openStatPage()),
+    onCloseStatPage: () => dispatch(closeStatPage()),
+    onEndFirstGame: () => dispatch(endFirstGame()),
+    onEnterInfoState: () => dispatch(enterInfoState()),
+    onCloseInfoState: () => dispatch(closeInfoState()),
+    onEnterSecondInfoState: () => dispatch(enterSecondInfoState()),
+    onCloseSecondInfoState: () => dispatch(closeSecondInfoState()),
+    onOpenLeaderboard: () => dispatch(openLeaderboard()),
+    onCloseLeaderboard: () => dispatch(closeLeaderboard()),
+    onOpenThirdInfoState: () => dispatch(openThirdInfoState()),
+    onCloseThirdInfoState: () => dispatch(closeThirdInfoState()),
+    onOpenConclusion: () => dispatch(openConclusion()),
+    onToWhiteBackground: () => dispatch(toWhiteBackground()),
+    onResetBackground: event => dispatch(resetBackground(event)),
+    onOpenColorChange: () => dispatch(openColorChange()),
+    onCloseColorChange: () => dispatch(closeColorChange()),
+    onToGreyBackground: () => dispatch(toGreyBackground()),
+    onResetSystem: () => dispatch(resetSystem()),
+    onGoBackFromGame: () => dispatch(goBackFromGame())
+  };
+};
 
 class Main extends Component {
   //Mounting control for backend check
@@ -364,6 +365,16 @@ class Main extends Component {
                                       <Conclusion resetSystem={onResetSystem} />
                                     ) : (
                                       <div>
+                                        {firstGame ? (
+                                          <LandingPage
+                                            endFirstGame={onEndFirstGame}
+                                            toWhiteBackground={
+                                              onToWhiteBackground
+                                            }
+                                            background={baseBackground}
+                                            loggedIn={loggedIn}
+                                          />
+                                        ) : (
                                           <div>
                                             {colorChange ? (
                                               <ColorChangePopup
@@ -401,7 +412,7 @@ class Main extends Component {
                                                   incorrectColorTwo={
                                                     gameWrongCircleTwo
                                                   }
-                                                  startGame={startGame}
+                                                  startGame={onStartGame}
                                                   selectOption={onSelectOption}
                                                   gamesPlayed={gamesPlayed}
                                                   resetBackground={
@@ -414,6 +425,7 @@ class Main extends Component {
                                               </div>
                                             )}
                                           </div>
+                                        )}
                                       </div>
                                     )}
                                   </div>

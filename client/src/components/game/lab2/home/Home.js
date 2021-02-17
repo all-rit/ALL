@@ -14,13 +14,13 @@ const Home = ({correctColor, incorrectColorOne, incorrectColorTwo,
   const colors = [background, correctColor, incorrectColorOne, incorrectColorTwo];
 
   //Handles switching the colors to a simulation for a selected game option
-  // if(gameOption !== 'default') {
-  //   onChangeGameColors(colors);
-  // }
+  if(gameOption !== 'default') {
+    onChangeGameColors(colors);
+  }
 
-  // if (background === 'white') {
-  //   resetBackground(baseBackground);
-  // }
+  if (background === 'white') {
+    resetBackground(baseBackground);
+  }
 
   return (
     <div>
