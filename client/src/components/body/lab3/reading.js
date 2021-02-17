@@ -81,9 +81,9 @@ const Reading = () => {
 
             <h3>For more information, please visit the following websites:</h3>
             <div className="flex">
-                <a href="https://www.afb.org/">https://www.afb.org/</a>
-                <a href="https://www.who.int/">https://www.who.int/</a>
-                <a href="https://www.brailleinstitute.org/">https://www.brailleinstitute.org/</a>
+                <a href="https://www.afb.org/" target="_blank">https://www.afb.org/</a>
+                <a href="https://www.who.int/" target="_blank">https://www.who.int/</a>
+                <a href="https://www.brailleinstitute.org/" target="_blank">https://www.brailleinstitute.org/</a>
             </div>
         </div>
     );

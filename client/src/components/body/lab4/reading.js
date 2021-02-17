@@ -39,7 +39,7 @@ const Reading = () => {
 
             <h3>For more information, please visit the following websites:</h3>
             <div className="flex">
-                <a href="https://www.cdc.gov/nchs/fastats/disability.htm">https://www.cdc.gov/nchs/fastats/disability.htm</a>
+                <a href="https://www.cdc.gov/nchs/fastats/disability.htm" target="_blank">https://www.cdc.gov/nchs/fastats/disability.htm</a>
 
             </div>
         </div>
