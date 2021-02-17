@@ -4,7 +4,6 @@ import {default as ReadingLab1} from "./components/body/lab1/reading";
 import {default as GameLab1} from "./components/game/lab1/Main";
 import {default as VideoLab1} from "./components/body/lab1/video";
 import {Sections} from './constants/index';
-
 // import {default as AboutLab2} from "./components/body/lab2/about";
 // import {default as ReadingLab2} from "./components/body/lab2/reading";
 // import {default as GameLab2} from "./components/game/lab2/Main";
@@ -22,6 +21,8 @@ import {default as VideoLab3} from "./components/body/lab3/video";
 
 import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
+import {default as Error} from "./components/body/landingpage/error";
+
 import {default as Quiz} from "./components/quiz/App";
 import handleRedirect from "./helpers/Redirect";
 import Change from "./components/footer/footer";
@@ -66,9 +67,9 @@ class App extends Component {
           }
           <div className="appBody">
             <Router basepath={process.env.PUBLIC_URL} className="app" >
-              <LandingPageBody path="/" default/>
+              <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
-
+              <Error default />
               <AboutLab1 path="/Lab1/"/>
               <AboutLab3 path="/Lab3/"/>
               <AboutLab1 path="/Lab1/About"/>
