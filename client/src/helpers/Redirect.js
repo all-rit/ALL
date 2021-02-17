@@ -30,7 +30,7 @@ export const handleRedirect = (actions, lab, body = 0, loadURL = false) => {
         }
         let [labs, bodies] = getLabsBodies();
         if(parsed.length ===1){ //if url is all.rit.edu/{Lab} or all.rit.edu/{homebody}
-            let [labs0,bodies] = getLabsBodies(true);//check for home body like sitemap first
+            let bodies = getLabsBodies(true);//check for home body like sitemap first
             redirect_body= bodies.includes(parsed[0]) ? parsed[0] : null;
             redirect_lab = "";
             if(!redirect_body){ //means it wasn't a valid home page body, so check lab
@@ -121,6 +121,9 @@ const getLabsBodies =(home = false)=>{
             }
 
         }
+    }
+    if(home){
+        return bodies;
     }
     return [labs, bodies];
 }
