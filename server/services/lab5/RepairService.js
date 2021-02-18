@@ -3,10 +3,8 @@ const db = require('../../database');
 exports.submitChange = (data) => {
 	return db.RepairLab5.create({
 			usersessionid: data.usersessionid,
-			cowAltValue: data.cowAltValue,
-			carAltValue: data.carAltValue,
-			burgerAltValue: data.burgerAltValue,
-			catAltValue: data.catAltValue
+			activity: data.activity,
+			repair: data.repair
 		})
 		.then(() => {
 			return true;

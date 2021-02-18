@@ -11,18 +11,12 @@ module.exports = (sequelize, DataTypes) => {
 			usersessionid: {
 				type: DataTypes.BIGINT
 			},
-			cowAltValue: {
+			activity: {
 				type: DataTypes.STRING
 			},
-			carAltValue: {
+			repair: {
 				type: DataTypes.STRING
 			},
-			burgerAltValue: {
-				type: DataTypes.STRING
-			},
-			catAltValue: {
-				type: DataTypes.STRING
-			}
 		},
 		{ tableName: 'lab5_repair' }
 	);

@@ -3,60 +3,47 @@ import RepairService from '../../../../../services/lab5/RepairService';
 import PageServiceTimer from "../../components/PageServiceTimer";
 import Popup from "../../components/Popup";
 import {navigate} from "@reach/router";
-import {minFont, maxFont} from '../../../../../constants/lab5'
+import {minFontNotif, maxFontNotif} from '../../../../../constants/lab5'
 
-class PageLayoutRepair extends Component {
+class NotificationRepair extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			h1value: null,
-			ulvalue: null,
-			classvalue: null,
-			fontvalue: null,
-			fontfamilyvalue: null,
+			fontsizevalue: null,
+			timeout: null
 		};
 	}
 
 	componentWillMount() {
 		const { data } = this.props;
 		this.setState({
-			h1value: data.h1value,
-			ulvalue: data.ulvalue,
-			classvalue: data.classvalue,
-			fontvalue: data.fontvalue,
-			fontfamilyvalue: data.fontfamilyvalue,
+			fontsizevalue: data.fontsizevalue,
+			timeout: data.timeout
 		});
 	}
 
 	handleSubmit(event) {
 		const { handlers } = this.props;
 		const {
-			h1value,
-			ulvalue,
-			classvalue,
-			fontvalue,
-			fontfamilyvalue
+			fontsizevalue,
+			timeout
 		} = this.state;
 
 		event.preventDefault();
-		const repair = JSON.stringify({h1value,
-			ulvalue,
-			classvalue,
-			fontvalue,
-			fontfamilyvalue});
+		const repair = JSON.stringify({
+			fontsizevalue,
+			timeout
+		});
 		// Submit a repair entry in the database.
 		RepairService.submitRepair(
 			this.constructor.name, repair
 		);
 
 		// Update the state and close the repair.
-		handlers.updateRepairPageLayout(
-			h1value,
-			ulvalue,
-			classvalue,
-			fontvalue,
-			fontfamilyvalue
+		handlers.updateRepairNotification(
+			fontsizevalue,
+			timeout
 		);
 		handlers.closeRepair();
 		handlers.updatePopup('The repairs have been made.');
@@ -76,7 +63,7 @@ class PageLayoutRepair extends Component {
 	}
 
 	handleNav() {
-		navigate("/Lab5/Game/DementiaAccessible");
+		navigate("/Lab5/Game/NotificationAccessibleRepair");
 	}
 
 
@@ -104,7 +91,7 @@ class PageLayoutRepair extends Component {
 					<div className="code_editor__content">
 						<div className="code_editor__files">
 							<div className="code_editor__file code_editor__file--active">
-								DementiaAccessible.js
+								NotificationAccessible.js
 							</div>
 						</div>
 
@@ -125,12 +112,28 @@ class PageLayoutRepair extends Component {
 								<span className="code_editor__line--orange">'react'</span>
 								<span className="code_editor__line--gold">;</span>
 							</div>
+							<div className="code_editor__line">
+								<span className="code_editor__line--purple">import&nbsp;</span>
+								<span className="code_editor__line--gold">&#123;&nbsp;</span>
+								<span className="code_editor__line--purple">AccessibleMessage</span>
+								<span className="code_editor__line--gold">&nbsp;&#125;&nbsp;</span>
+								<span className="code_editor__line--purple">from&nbsp;</span>
+								<span className="code_editor__line--orange">'../constants/lab5'</span>
+								<span className="code_editor__line--gold">;</span>
+							</div>
+							<div className="code_editor__line">
+								<span className="code_editor__line--purple">import&nbsp;</span>
+								<span className="code_editor__line--gold">Notification</span>
+								<span className="code_editor__line--purple">&nbsp;from&nbsp;</span>
+								<span className="code_editor__line--orange">'../components/Notification'</span>
+								<span className="code_editor__line--gold">;</span>
+							</div>
 
 							<div className="code_editor__line">&nbsp;</div>
 
 							<div className="code_editor__line">
 								<span className="code_editor__line--blue">class&nbsp;</span>
-								<span className="code_editor__line--green">DementiaAccessible&nbsp;</span>
+								<span className="code_editor__line--green">NotificationAccessible&nbsp;</span>
 								<span className="code_editor__line--blue">extends&nbsp;</span>
 								<span className="code_editor__line--green">Component&nbsp;</span>
 								<span className="code_editor__line--gold">&#123;</span>
@@ -156,116 +159,64 @@ class PageLayoutRepair extends Component {
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkgreen">&#47;&#47;Enter 'h1' into the input below</span>
-							</div>
-
-							<div className="code_editor__line code_editor__line-background--light">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;</span>
-								<span>
-								<input
-									name="h1value"
-									type="text"
-									className="htmlinput"
-									defaultValue={data.h1value}
-									onChange={this.changeHandler.bind(this)}
-									required
-									title="must enter h1"
-								/>
-							</span>
-								<span className="code_editor__line--darkblue">&#62;</span>
-								<span className="code_editor__line--white"> 3.0 Dementia </span>
-								<span className="code_editor__line--darkblue">&#60;</span>
-								<span className="code_editor__line--darkblue">/{this.state.h1value}</span>
-								<span className="code_editor__line--darkblue">&#62;</span>
-							</div>
-							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;</span>
-								<span className="code_editor__line--darkblue">p</span>
-								<span className="code_editor__line--darkblue">&#62;</span>
-								<span className="code_editor__line--white"> Some of the symptoms of dementia include: </span>
-								<span className="code_editor__line--darkblue">&#60;</span>
-								<span className="code_editor__line--darkblue">/p</span>
-								<span className="code_editor__line--darkblue">&#62;</span>
-							</div>
-							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;</span>
-								<span className="code_editor__line--darkblue">h2</span>
-								<span className="code_editor__line--darkblue">&#62;</span>
-								<span className="code_editor__line--white"> 3.0.1 Symptoms </span>
-								<span className="code_editor__line--darkblue">&#60;</span>
-								<span className="code_editor__line--darkblue">/h2</span>
-								<span className="code_editor__line--darkblue">&#62;</span>
-							</div>
-							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkgreen">&#47;&#47;Enter 'body' into the input below</span>
-							</div>
-							<div className="code_editor__line code_editor__line-background--light">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--darkblue">&#60;</span>
 								<span className="code_editor__line--darkblue">div</span>
-								<span className="code_editor__line--blue"> className</span>
-								<span className="code_editor__line--white"> = </span>
-								<span>
-									<input
-										name="classvalue"
-										type="text"
-										defaultValue={data.classvalue}
-										onChange={this.changeHandler.bind(this)}
-										title="must enter body"
-									/>
-								</span>
-								<span className="code_editor__line--darkblue">/&#62;</span>
+								<span className="code_editor__line--blue">&nbsp;className</span>
+								<span className="code_editor__line--white">&nbsp;=&nbsp;</span>
+								<span className="code_editor__line--orange">"cognitive_instructions"</span>
+								<span className="code_editor__line--darkblue">&nbsp;&#62;</span>
+
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkgreen">&#47;&#47;Enter 'ul' into the input below</span>
-							</div>
-							<div className="code_editor__line code_editor__line-background--light">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;</span>
-								<span>
-									<input
-										name="ulvalue"
-										type="text"
-										className="htmlinput"
-										defaultValue={data.ulvalue}
-										onChange={this.changeHandler.bind(this)}
-										title="must enter ul"
-									/>
-								</span>
-								<span className="code_editor__line--darkblue">/&#62;</span>
-							</div>
-							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;li&#62;</span>
-								<span className="code_editor__line--white"> Difficulty remembering </span>
-								<span className="code_editor__line--darkblue">&#60;/li&#62;</span>
-							</div>
-							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;li&#62;</span>
-								<span className="code_editor__line--white"> Difficulty organizing thoughts </span>
-								<span className="code_editor__line--darkblue">&#60;/li&#62;</span>
-							</div>
-							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;li&#62;</span>
-								<span className="code_editor__line--white"> Difficulty working within time limits </span>
-								<span className="code_editor__line--darkblue">&#60;/li&#62;</span>
-							</div>
-							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;li&#62;</span>
-								<span className="code_editor__line--white"> Visual processing difficulty </span>
-								<span className="code_editor__line--darkblue">&#60;/li&#62;</span>
+								<span className="code_editor__line--white">There is a notification that has appeared. Click on it to view it! Note it can only be viewed once</span>
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkblue">&#60;/{this.state.ulvalue}&#62;</span>
+								<span className="code_editor__line--darkblue">&#60;</span>
+								<span className="code_editor__line--darkblue">/div</span>
+								<span className="code_editor__line--darkblue">&#62;</span>
+							</div>
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--darkgreen">&#47;&#47;Enter a value greater than 4000 (ms) in the input below</span>
+							</div>
+							<div className="code_editor__line code_editor__line-background--light">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--darkblue">&#60;</span>
+								<span className="code_editor__line--gold">&nbsp;Notification</span>
+								<span className="code_editor__line--blue">&nbsp;timeout</span>
+								<span className="code_editor__line--white">&nbsp;=&nbsp;</span>
+								<span className="code_editor__line--white">&#123;&nbsp;</span>
+								<span>
+								<input
+									name="timeout"
+									type="text"
+									defaultValue={data.timeout}
+									onChange={this.changeHandler.bind(this)}
+									required
+									title="must be greater than 4000"
+								/>
+								</span>
+								<span className="code_editor__line--white">&nbsp;&#125;&nbsp;</span>
+								<span className="code_editor__line--blue">message</span>
+								<span className="code_editor__line--white">&nbsp;=&nbsp;</span>
+								<span className="code_editor__line--white">&#123;&nbsp;</span>
+								<span className="code_editor__line--purple">AccessibleMessage</span>
+								<span className="code_editor__line--white">&nbsp;&#125;&nbsp;</span>
+								<span className="code_editor__line--darkblue">/&#62;</span>
+							</div>
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--darkblue">&#60;button&#62;</span>
+							</div>
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--white">&nbsp;Next</span>
+							</div>
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--darkblue">&#60;/button&#62;</span>
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -286,7 +237,7 @@ class PageLayoutRepair extends Component {
 							</div>
 
 							<div className="code_editor__line">
-								<span className="code_editor__line--purple">&#125;</span>
+								<span className="code_editor__line--gold">&#125;</span>
 							</div>
 
 							<div className="code_editor__line">&nbsp;</div>
@@ -294,7 +245,7 @@ class PageLayoutRepair extends Component {
 							<div className="code_editor__line">
 								<span className="code_editor__line--purple">export&nbsp;</span>
 								<span className="code_editor__line--purple">default&nbsp;</span>
-								<span className="code_editor__line--blue">DementiaAccessible</span>
+								<span className="code_editor__line--blue">NotificationAccessible</span>
 								<span>;</span>
 							</div>
 						</div>
@@ -303,7 +254,7 @@ class PageLayoutRepair extends Component {
 					<div className="code_editor__content">
 						<div className="code_editor__files">
 							<div className='code_editor__file code_editor__file--active'>
-								DementiaAccessible.css
+								Notification.css
 							</div>
 						</div>
 						<div className="code_editor__code">
@@ -312,12 +263,12 @@ class PageLayoutRepair extends Component {
 								&#47;&#47; This is where you can change the page format styling.
 							</span>
 							</div>
-							<p className="code_editor__class">.body &#123;</p>
+							<p className="code_editor__class">.notification &#123;</p>
 							<div className="code_editor__form">
 								<div className="code_editor__line">
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 									<span className="code_editor__line--darkgreen">
-									&#47;&#47; Change font-size to value between {minFont}px and {maxFont}px.
+									&#47;&#47; Change font-size to value between {minFontNotif}px and {maxFontNotif}px.
 								</span>
 								</div>
 								<div className="code_editor__property code_editor__line-background--light">
@@ -325,33 +276,11 @@ class PageLayoutRepair extends Component {
 									<span>font-size:&nbsp;</span>
 									<span>
 									<input
-										name="fontvalue"
+										name="fontsizevalue"
 										type="text"
-										defaultValue={data.fontvalue}
+										defaultValue={data.fontsizevalue}
 										onChange={this.changeHandler.bind(this)}
-										title={`must enter between ${minFont}px and ${maxFont}px`}
-									/>
-								</span>
-								</div>
-								<div className="code_editor__input">
-
-								</div>
-								<div className="code_editor__line">
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									<span className="code_editor__line--darkgreen">
-									&#47;&#47; Change font-family to roboto or arial.
-								</span>
-								</div>
-								<div className="code_editor__property code_editor__line-background--light">
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									<span>font-family:&nbsp;</span>
-									<span>
-									<input
-										name="fontfamilyvalue"
-										type="text"
-										defaultValue={data.fontfamilyvalue}
-										onChange={this.changeHandler.bind(this)}
-										title="must enter arial or roboto"
+										title={`must enter between ${minFontNotif}px and ${maxFontNotif}px`}
 									/>
 								</span>
 								</div>
@@ -376,4 +305,4 @@ class PageLayoutRepair extends Component {
 	}
 }
 
-export default PageLayoutRepair;
+export default NotificationRepair;

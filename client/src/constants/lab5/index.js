@@ -49,11 +49,14 @@ export const NotificationInaccessibleKnowledgeCheck={
         "None": 0,
     }
 }
+
 export const AccessibleMessage="Meeting at 12pm!";
 export const InaccessibleMessage="There older should be started";
 
 export const minFont = 16;
 export const maxFont = 24;
+export const minFontNotif = 20;
+export const maxFontNotif = 24;
 export const defaultFont = 20;
 export const time = 25;
-export const notificationTimeShort = 1000;
+export const timePerWord = 400;

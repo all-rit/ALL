@@ -4,7 +4,7 @@ import PageServiceTimer from "../../components/PageServiceTimer";
 
 class PageLayoutGuidance extends Component {
   handleNav() {
-    navigate("/Lab5/Game/PageLayoutRepair");
+    navigate("/Lab5/Game/NotificationRepair");
   }
 
   render() {

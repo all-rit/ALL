@@ -5,17 +5,9 @@ const endpoints = {
 };
 
 export default {
-    submitRepair: (h1value,
-                   ulvalue,
-                   classvalue,
-                   fontvalue,
-                   fontfamilyvalue) => {
+    submitRepair: (activity, repair) => {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR, {
-            h1value,
-            ulvalue,
-            classvalue,
-            fontvalue,
-            fontfamilyvalue
+            activity, repair
         })
     }
 };

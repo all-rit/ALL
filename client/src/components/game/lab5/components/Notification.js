@@ -1,12 +1,24 @@
 import React, {useEffect, useState} from 'react';
-import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import { Button, Popover, PopoverBody } from 'reactstrap';
+import { timePerWord, minFontNotif, maxFontNotif} from '../../../../constants/lab5'
 
 const Notification = (props) => {
     const [popoverOpen, setPopoverOpen] = useState(false);
     const [opened, setOpened] = useState(false);
 
-    const {message, time} = props;
-    let interval = null;
+    let {message, fontSize, timeout} = props;
+    fontSize = parseInt(fontSize);
+    timeout = parseInt(timeout);
+    let time = timeout ? timeout : message.split(" ").length * timePerWord;
+    let actualFontSize;
+    if(fontSize){
+        if (fontSize >=minFontNotif && fontSize <= maxFontNotif){
+            actualFontSize = fontSize;
+        }
+        else{
+            actualFontSize = minFontNotif;
+        }
+    }
     const toggle = () => {
         if(!opened){
             setPopoverOpen(!popoverOpen);
@@ -15,6 +27,7 @@ const Notification = (props) => {
 
     }
     useEffect(() => {
+        let interval = null;
         if(popoverOpen){
             interval = setInterval(
                 () => setPopoverOpen(false),
@@ -24,16 +37,16 @@ const Notification = (props) => {
         return () => {
             clearInterval(interval);
         }
-    }, [popoverOpen]);
+    }, [popoverOpen, time]);
 
     return (
-        <div>
+        <div >
             <Button id="Popover1" type="button" className="btn btn-second text-black btn-xl text-uppercase js-scroll-triggergreen">
                 Notification
             </Button>
-            <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
+            <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle} >
                 {/*<PopoverHeader>Notification</PopoverHeader>*/}
-                <PopoverBody>{message}</PopoverBody>
+                <PopoverBody style={{fontSize: actualFontSize}}>{message}</PopoverBody>
             </Popover>
         </div>
     );

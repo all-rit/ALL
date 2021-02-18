@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import PageServiceTimer from "../../components/PageServiceTimer";
 import Notification from "../../components/Notification"
-import { InaccessibleMessage} from '../../../../../constants/lab5'
+import {InaccessibleMessage} from '../../../../../constants/lab5'
 
-class NotificationInaccessible extends Component {
+class NotificationAccessibleRepair extends Component {
     handleNav() {
-        navigate("/Lab5/Game/NotificationInaccessibleKnowledgeCheck");
+        navigate("/Lab5/Game/NotificationAccessibleRepairKnowledgeCheck");
     }
     render() {
-        const {actions} = this.props;
+        const {actions, state} = this.props;
         return (
 
                 <div>
                     <div className= "cognitive_instructions">
                     There is a notification that has appeared. Click on it to view it! Note it can only be viewed once
                     </div>
-                    <Notification  message={InaccessibleMessage}/>
+                    <Notification message={InaccessibleMessage} fontSize={state.repair5.fontsizevalue} timeout={state.repair5.timeout}/>
                     <div className='flex float-right'>
                         <button
                             className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
@@ -32,4 +32,4 @@ class NotificationInaccessible extends Component {
     }
 }
 
-export default NotificationInaccessible;
+export default NotificationAccessibleRepair;

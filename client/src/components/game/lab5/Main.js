@@ -19,8 +19,12 @@ import NotificationAccessibleKnowledgeCheck from './pages/NotificationActivity/N
 import NotificationInaccessible from './pages/NotificationActivity/NotificationInaccessible';
 import NotificationInaccessibleKnowledgeCheck from './pages/NotificationActivity/NotificationInaccessibleKnowledgeCheck';
 import NotificationGuidance from "./pages/NotificationActivity/NotificationGuidance";
+import NotificationRepair from "./pages/NotificationActivity/NotificationRepair";
 
 import {bindActionCreators} from "redux";
+import NotificationAccessibleRepairKnowledgeCheck
+  from "./pages/NotificationActivity/NotificationAccessibleRepairKnowledgeCheck";
+import NotificationAccessibleRepair from "./pages/NotificationActivity/NotificationAccessibleRepair";
 
 const mapStateToProps = (state) => ({
   state: state
@@ -55,6 +59,11 @@ class Main extends Component {
           <NotificationInaccessible path="/NotificationInaccessible" actions={actions} state={state} />
           <NotificationInaccessibleKnowledgeCheck path="/NotificationInaccessibleKnowledgeCheck" actions={actions} state={state} />
           <NotificationGuidance  path="/NotificationGuidance" actions={actions}/>
+          <NotificationRepair path ="/NotificationRepair" visible={state.repair5.repairVisible} data={state.repair5}
+                            handlers={actions} state ={state} actions={actions}/>
+          <NotificationAccessibleRepair path="/NotificationAccessibleRepair" actions={actions} state={state} />
+          <NotificationAccessibleRepairKnowledgeCheck path="/NotificationAccessibleRepairKnowledgeCheck" actions={actions} state={state} />
+
         </Router>
       </div>
     );
