@@ -1,14 +1,12 @@
 export const types = {
-	UPDATE_POPUP: '@accessibility-lab/audio-cue/app/update_popup',
-	OPEN_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/open_instructions',
-	CLOSE_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/close_instructions',
+	UPDATE_POPUP: '@accessibility-lab/Lab2/app/update_popup',
+	OPEN_INSTRUCTIONS: '@accessibility-lab/Lab2/app/open_instructions',
+	CLOSE_INSTRUCTIONS: '@accessibility-lab/Lab2/app/close_instructions',
 };
 
 export const initialState = {
-	user: null,
 	popupMessage: '',
 	instructionsVisible: false,
-	body: 0
 };
 
 export default (state = initialState, action) => {
