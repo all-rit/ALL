@@ -55,7 +55,7 @@ class App extends Component {
     }
 
   render() {
-    const {state} = this.props;
+    const {state,actions} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
     return (
@@ -69,7 +69,7 @@ class App extends Component {
             <Router basepath={process.env.PUBLIC_URL} className="app" >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
-              <Error default />
+              <Error actions={actions} default />
               <AboutLab1 path="/Lab1/"/>
               <AboutLab3 path="/Lab3/"/>
               <AboutLab1 path="/Lab1/About"/>
