@@ -1,15 +1,21 @@
 import React from "react";
-import { navigate } from "@reach/router";
+import Redirect from "../../../helpers/Redirect";
 
 
-const Error = () => {
+
+const Error = (props) => {
+    const {actions}=props;
     return (
-        <div>
-            <h1>Invalid Page</h1>
-            <div>Please click the button to navigate home</div>
-            <button className="btn btn-second btn-xl text-uppercase js-scroll-trigger" onClick={()=>navigate("/")} >
-                Go Home
-            </button>
+        <div className="errorpage">
+            <div>
+                <h1>Invalid Page</h1>
+                <hr class="horiz" />
+                <p>Please click the button to navigate home</p>
+                <hr class="horiz" />
+                <button className="btn btn-second btn-xl text-uppercase" onClick={()=>Redirect(actions,0,0)} >
+                    Return Home
+                </button>
+            </div>
         </div>
     );
 };
