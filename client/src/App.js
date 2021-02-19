@@ -24,7 +24,7 @@ import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Error} from "./components/body/landingpage/error";
 
 import {default as Quiz} from "./components/quiz/App";
-import handleRedirect from "./helpers/Redirect";
+import {stateChange} from "./helpers/Redirect";
 import Change from "./components/footer/footer";
 import Header from "./components/header/header"
 import {actions as appActions} from './reducers/lab1/AppReducer';
@@ -34,6 +34,8 @@ import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
 import { Router} from "@reach/router";
 import {connect} from "react-redux";
+import { globalHistory } from '@reach/router';
+var parse = require('url-parse');
 
 const mapStateToProps = (state) => {
   return {
@@ -51,7 +53,11 @@ class App extends Component {
    componentDidMount() {
         const {actions} = this.props;
         actions.login();
-        handleRedirect(actions,0,0,true);
+        const location= parse(window.location.href);
+        stateChange(actions,location.pathname);
+        globalHistory.listen((location) => {
+            stateChange(actions, location.location.pathname);
+        });
     }
 
   render() {
