@@ -4,12 +4,16 @@ import { navigate } from "@reach/router";
 
 const Error = () => {
     return (
-        <div>
-            <h1>Invalid Page</h1>
-            <div>Please click the button to navigate home</div>
-            <button className="btn btn-second btn-xl text-uppercase js-scroll-trigger" onClick={()=>navigate("/")} >
-                Go Home
-            </button>
+        <div className="errorpage">
+            <div>
+                <h1>Invalid Page</h1>
+                <hr class="horiz" />
+                <p>Please click the button to navigate home</p>
+                <hr class="horiz" />
+                <button className="btn btn-second btn-xl text-uppercase" onClick={()=>navigate("/")} >
+                    Return Home
+                </button>
+            </div>
         </div>
     );
 };
