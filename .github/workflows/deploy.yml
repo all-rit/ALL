@@ -27,6 +27,6 @@ jobs:
         PORT: 22
         script: |
           chmod -R g+w research
-          cd client
+          cd research/client
           npm install
           npm run-script build
