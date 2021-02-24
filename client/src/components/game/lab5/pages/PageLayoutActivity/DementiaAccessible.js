@@ -4,9 +4,16 @@ import Timer from "../../components/Timer";
 import PageServiceTimer from "../../components/PageServiceTimer";
 import {time, minFont, maxFont, defaultFont} from '../../../../../constants/lab5'
 class DementiaAccessible extends Component {
+    constructor(props){
+        super(props);
+        this.state={timerDone:false}
+    }
     handleNav() {
         navigate("/Lab5/Game/DementiaAccessibleKnowledgeCheck");
 
+    }
+    timerDone(){
+        this.setState({timerDone:true});
     }
     render() {
         const {actions, state} = this.props;
@@ -21,11 +28,14 @@ class DementiaAccessible extends Component {
                     Read the following information about Dementia from w3.org
                     </div>
                     <div className= "cognitive_information" style={style}>
+                    {!this.state.timerDone ?
+                        <div>
                         <div className = "heading">
                             1.0 Dementia
                         </div>
                     <div>
-                        Dementia is defined as a severe loss of cognitive abilities that disrupts daily life                    </div>
+                        Dementia is defined as a severe loss of cognitive abilities that disrupts daily life
+                    </div>
                         <div className="subheading">
                             1.0.1 Symptoms
                         </div>
@@ -66,8 +76,14 @@ class DementiaAccessible extends Component {
                             </li>
                         </ul>
                         </div>
+                        :
+                        <div className="center">
+                            Time Has Expired! Click Next to Proceed
+                        </div>
+                    }
+                    </div>
                     <div className='flex'>
-                        <Timer seconds={time} link="/Lab5/Game/DementiaAccessibleKnowledgeCheck"/>
+                        <Timer seconds={time} timerDone={this.timerDone.bind(this)}/>
                         <button
                             className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
                             onClick = {this.handleNav}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
 import PageServiceTimer from "../../components/PageServiceTimer";
-import {NotificationInaccessibleKnowledgeCheck as KnowledgeCheck} from '../../../../../constants/lab5'
+import {NotificationAccessibleRepairKnowledgeCheck as KnowledgeCheck} from '../../../../../constants/lab5'
 class NotificationAccessibleRepairKnowledgeCheck extends Component {
 
     constructor(props) {
@@ -13,7 +13,8 @@ class NotificationAccessibleRepairKnowledgeCheck extends Component {
         const {actions} = this.props;
         return (
             <div>
-                <KnowledgeTest handler={this.handler} question = {KnowledgeCheck} link={"/Lab5/Game/NotificationInaccessible"}/>
+                <KnowledgeTest handler={this.handler} question = {KnowledgeCheck} link={"/Lab5/Game/FormInaccessible" +
+                ""}/>
                 <PageServiceTimer actions={actions} name={this.constructor.name}/>
             </div>
         );

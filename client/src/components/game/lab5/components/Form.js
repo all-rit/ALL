@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Alert } from "reactstrap";
-import { navigate } from "@reach/router";
 
 class FormComp extends Component {
     constructor(props) {
@@ -8,10 +7,13 @@ class FormComp extends Component {
         this.state = {
             secondsElapsed: 0,
             animal: "",
-            color: "",
             candy: "",
             city: "",
+            bool: "",
             show: false,
+            answered: false,
+            error: false,
+            success:false,
             alert: "Fill Out Form Completely"
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,56 +23,54 @@ class FormComp extends Component {
         this.setState({
             [e.target.name]: e.target.value.toLowerCase()
         });
+        if (e.target.name === "bool"){
+            const val = parseInt(e.target.value);
+            if(val !== 0 && val!==1){
+                this.setState({error:true});
+            }
+            else{
+                this.setState({error:false});
+            }
+        }
+
     };
 
     handleSubmit(e) {
-        navigate(this.props.url);
+        e.preventDefault();
+        this.props.showNext();
     }
 
     form_sub = e => {
         e.preventDefault();
-        if (this.props.rule) {
-            if (
-                this.state.animal === "" ||
-                this.state.city === "" ||
-                this.state.candy === "" ||
-                this.state.color === ""
-            ) {
-                this.setState({ show: true, alert: "Fill Out Form Completely" });
-            } else if (
-                this.state.animal === "" ||
-                this.state.city === "" ||
-                this.state.color !== "violet" ||
-                this.state.candy === "" ||
-                this.state.color === ""
-            ) {
-                this.setState({
-                    show: true,
-                    alert: "Color doesn't meet 'hint' criteria"
-                });
-            } else {
-                this.handleSubmit(e);
-            }
+        const val = parseInt(this.state.bool);
+        if (
+            this.state.animal === "" ||
+            this.state.city === "" ||
+            this.state.candy === "" ||
+            this.state.bool === ""
+        ) {
+            this.setState({ show: true, alert: "Fill Out Form Completely", success:false, answered: false});
+        } else if (
+            ((val !== 0 && val !== 1) || this.state.bool.length>1 )
+        ) {
+            this.setState({
+                show: true,
+                alert: "Error in form",
+                answered: true,
+                success:false
+            });
         } else {
-            if (
-                this.state.animal === "" ||
-                this.state.city === "" ||
-                this.state.candy === "" ||
-                this.state.color === ""
-            ) {
-                this.setState({ show: true });
-            } else {
-                this.handleSubmit(e);
-            }
+            this.setState({show: false,answered: true,success:true})
+            this.handleSubmit(e);
         }
     };
     render() {
+        const {successNotification, errorNotification, borderColor} = this.props;
         return (
             <main>
-                <div className="overlap" onClick={e => this.focusElem(e)}></div>
                 <Form className="formComp">
                     <FormGroup>
-                        <Label for="animal">Favorite Animal e.g. Tiger</Label>
+                        <Label for="animal">Favorite Animal</Label>
                         <Input
                             type="text"
                             name="animal"
@@ -80,20 +80,25 @@ class FormComp extends Component {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="color">
-                            Favorite Color e.g. Blue{" "}
-                            {this.props.rule && <Toolitip tab={this.props.tab} />}
+                        <Label for="bool">
+                            Do you Like Spice?{" "}
                         </Label>
                         <Input
+                            className={this.state.error? "":""}
+                            style={{borderColor: borderColor && this.state.error ?  borderColor: null}}
                             type="text"
-                            name="color"
-                            id="color"
+                            name="bool"
+                            id="bool"
                             onChange={e => this.change(e)}
-                            value={this.state.color}
+                            value={this.state.bool}
                         />
+                        {errorNotification && this.state.error &&
+                        <span className='form-error'>{errorNotification}</span>
+                        }
+
                     </FormGroup>
                     <FormGroup>
-                        <Label for="candy">Favorite Candy e.g. Skittles</Label>
+                        <Label for="candy">Favorite Candy</Label>
                         <Input
                             type="text"
                             name="candy"
@@ -103,7 +108,7 @@ class FormComp extends Component {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="city">Favorite City e.g. NYC</Label>
+                        <Label for="city">Favorite City</Label>
                         <Input
                             type="text"
                             name="city"
@@ -115,16 +120,21 @@ class FormComp extends Component {
                     {this.state.show ? (
                         <Alert color="danger">{this.state.alert}</Alert>
                     ) : null}
+                    {successNotification && this.state.success &&
+                    <Alert color='success'>{successNotification}</Alert>
+                    }
+                    {/*{this.state.success && this. ? (*/}
+                    {/*    <Alert color="danger">{this.state.alert}</Alert>*/}
+                    {/*) : null}*/}
                     <Input type="submit" onClick={e =>this.form_sub(e)} className="formButtonSubmit"/>
-                    {this.props.rule && (
-                        <Input
-                            type="submit"
-                            value="Give Up"
-                            className="formButtonHelp"
-                            style={{ marginLeft: "20px" }}
-                            onClick={e=> this.handleSubmit(e)}
-                        />
-                    )}
+                    <Input
+                        type="button"
+                        disabled={!this.state.answered}
+                        value="Give Up"
+                        className={`formButtonHelp ${this.state.answered? "": " disabled"}`}
+                        style={{ marginLeft: "20px" }}
+                        onClick={e=> this.handleSubmit(e)}
+                    />
                 </Form>
             </main>
         );

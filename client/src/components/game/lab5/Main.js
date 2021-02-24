@@ -20,12 +20,15 @@ import NotificationInaccessible from './pages/NotificationActivity/NotificationI
 import NotificationInaccessibleKnowledgeCheck from './pages/NotificationActivity/NotificationInaccessibleKnowledgeCheck';
 import NotificationGuidance from "./pages/NotificationActivity/NotificationGuidance";
 import NotificationRepair from "./pages/NotificationActivity/NotificationRepair";
-
 import {bindActionCreators} from "redux";
 import NotificationAccessibleRepairKnowledgeCheck
   from "./pages/NotificationActivity/NotificationAccessibleRepairKnowledgeCheck";
 import NotificationAccessibleRepair from "./pages/NotificationActivity/NotificationAccessibleRepair";
-
+import FormInaccessible from "./pages/FormResponseActivity/FormInaccessible";
+import FormGuidance from "./pages/FormResponseActivity/FormGuidance";
+import FormAccessible from "./pages/FormResponseActivity/FormAccessible";
+import FormRepair from "./pages/FormResponseActivity/FormRepair";
+import GameEnd from "./pages/GameEnd";
 const mapStateToProps = (state) => ({
   state: state
 });
@@ -63,7 +66,11 @@ class Main extends Component {
                             handlers={actions} state ={state} actions={actions}/>
           <NotificationAccessibleRepair path="/NotificationAccessibleRepair" actions={actions} state={state} />
           <NotificationAccessibleRepairKnowledgeCheck path="/NotificationAccessibleRepairKnowledgeCheck" actions={actions} state={state} />
-
+          <FormInaccessible path="/FormInaccessible" actions={actions} state={state} />
+          <FormGuidance path="/FormGuidance" actions={actions} state={state} />
+          <FormRepair path="/FormRepair" actions={actions} state={state} handlers={actions} visible={state.repair5.repairVisible} data={state.repair5}/>
+          <FormAccessible path="/FormAccessible" actions={actions} state={state} />
+          <GameEnd path="/GameEnd" actions={actions} state={state} />
         </Router>
       </div>
     );

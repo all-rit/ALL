@@ -32,7 +32,7 @@ export const DementiaAccessibleKnowledgeCheck={
     }
 }
 export const NotificationAccessibleKnowledgeCheck={
-    Question: "Which words were jumbled?",
+    Question: "Which words were incorrect in that notification?",
     Options:{
         "Meeting": 0,
         "At": 0,
@@ -41,7 +41,7 @@ export const NotificationAccessibleKnowledgeCheck={
     }
 }
 export const NotificationInaccessibleKnowledgeCheck={
-    Question: "Which words were jumbled?",
+    Question: "Which words were incorrect in that notification?",
     Options:{
         "Started, Should": 0,
         "Their, Order": 1,
@@ -50,8 +50,19 @@ export const NotificationInaccessibleKnowledgeCheck={
     }
 }
 
+export const NotificationAccessibleRepairKnowledgeCheck={
+    Question: "Which words were incorrect in that notification?",
+    Options:{
+        "Protein": 0,
+        "Available": 0,
+        "Extra, Protein": 1,
+        "None": 0,
+    }
+}
+
 export const AccessibleMessage="Meeting at 12pm!";
 export const InaccessibleMessage="There older should be started";
+export const AccessibleRepairMessage="Extre portein is available";
 
 export const minFont = 16;
 export const maxFont = 24;

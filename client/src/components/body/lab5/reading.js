@@ -5,15 +5,15 @@ import { Pie } from "react-chartjs-2";
 
 const data = {
     labels: [
-        "World Population (Millions)",
-        "Visually Impaired (Millions)"
+        "US Population (Millions)",
+        "Cognitively Impaired (Millions)"
     ],
     datasets: [
         {
-            label: "Visually Impaired in a Population of 6,697 People",
+            label: "Cognitively Impaired in a Population of 328 People",
             borderColor: "black",
             backgroundColor: ["blue", "red"],
-            data: [6697, 285],
+            data: [328, 16],
             borderWidth: "1"
         }
     ]
@@ -27,61 +27,84 @@ const Reading = () => {
     });
     return (
         <div className="study">
-            <h3>What is a Screen Reader?</h3>
+            <h3>What is Cognitive Impairment?</h3>
             <p>
-                A screen reader is an essential software program that aids the visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both.
+                Cognitive impairment refers to a broad range of disabilities, from people with intellectual disabilities who may have the most-limited capabilities, to age-related issues with thinking and remembering. The range includes people with learning disabilities, such as dyslexia and attention deficit hyperactivity disorder (ADHD)
             </p>
-
             <h3>How many people are affected?</h3>
             <div className="flex">
                 <Pie data={data} height={100} />
             </div>
             <p className="center">
-                Currently, as high as 80% of all visual impairment is preventable or curable
+                Currently, as high as 5% of all Americans face cognitive impairments
             </p>
             <p className="center">
-                Globally the number of people of all ages visually impaired is estimated to be 285 million, of whom 39 million are blind.
-            </p>
-            <p className="center">
-                People of age 50 and over account for 82% of the blind.
+                An estimated 5.1 million
+                Americans aged 65 years or older may currently
+                have Alzheimer’s disease, the most well-known form
+                of cognitive impairment
             </p>
             <p>
-                Understanding the degree of visual impairment and its causes is important in adequately allocating resources to various health areas of work.
+                Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources to various health areas of work.
             </p>
-
-            <h3>What are some examples of visual impairment?</h3>
+            <h3>Common Challenges</h3>
             <ul className="study__list">
-                <li>Diabetic retinopathy</li>
-                <li>Childhood blindness</li>
-                <li>Age-related macular degeneration (AMD)</li>
-                <li>Corneal opacities</li>
-                <li>Glaucoma</li>
-                <li>Trachoma</li>
-                <li>Cataracts</li>
-                <li>Uncorrected refractive errors</li>
+                <li>Understanding content</li>
+                <li>Remembering how to complete tasks</li>
+                <li>Confusion caused by inconsistent or non-traditional web page layouts</li>
+                <li>Keeping focus while completing a task</li>
+                <li>Different processing speed, requiring additional time</li>
+            </ul>
+            <h3>How to address these problems?</h3>
+            <p>WCAG, Web Content Accessibility Guidelines, includes several guidelines to improve cognitive accessibility. They define 17 specific guidelines, of which six are especially relevant for cognitive accessibility
+            </p>
+            <ul className="study__list">
+                <h5><b>Adaptability</b></h5>
+                <p>All information should be available in a form that can be perceived by all users. For example, the information could be spoken aloud via a narration tool. Thus you should ensure the content can be understood by the software.
+                </p>
+                <h5><b>Time</b></h5>
+                <p>It is important to allow users the time they require to complete tasks. Guideline 2.2 states "provide users enough time to read and use content."
+                    People with cognitive disabilities may require more time to read content, or to perform functions such as filling out forms
+                </p>
+                <h5><b>Navigation</b></h5>
+                <p>Guideline 2.4 states to include clear and descriptive headings so users can easily find information and understand relationships between different content sections</p>
+                <h5><b>Readability</b></h5>
+                <p>Guideline 3.1  states "make text content readable and understandable." Keep the writing style simple and easy to understand
+                </p>
+                <h5><b>Predictability</b></h5>
+                <p>Predictability: Guideline 3.2 states to "make web pages appear and operate in predictable ways. Use consistency with the page layout
+                </p>
+                <h5><b>Input Assistance</b></h5>
+                <p>Guideline 3.3 states to "help users avoid and correct mistakes." If they do make a mistake, ensure the message allows them to easily fix the error
+                </p>
             </ul>
 
-            <h3>Affect that impaired vision has on the computing world</h3>
+            <h3>Practical application of cognitive accessibility</h3>
             <p>
-                By acknowledging that visual impairment is a major global health issue, the computing world made necessary advances in screen readers. Screen readers have increased in both availability and popularity. One example of such screen readers is JAWS (Job Access With Speech) which is the world’s most popular screen reader. Screen readers now include many more features that allow the visually impaired to get through life much more easily.
+                We all enjoy online shopping. However, a person’s ability to use websites effectively declines by 0.8% every year over the age of 25, according to Nielsen Norman Group. Optimally designing for memory limitations will be especially important as the population ages. These techniques include:
+                <ul>
+                    <li>
+                        <b>User Authentication</b>: offer at least one alternative method that does not rely on a user to memorize character strings
+                    </li>
+                    <li>
+                        <b>Don’t hide important/frequent controls</b>: show both the text and icon labels for controls making it easier for users to remember their purpose
+                    </li>
+                    <li>
+                        <b>Grouping Content</b>: group similar items semantically and visually with a suggested maximum group size of five. This makes decision the process easier when choosing between similar items
+                    </li>
+                    <li>
+                        <b>Path Markers</b>: remind site visitors where they are in a process
+                    </li>
+                </ul>
             </p>
 
-            <h3>Some usability tips for screen reader friendly interfaces:</h3>
-            <ul className="study__list">
-                <li>Use many headings and subheadings</li>
-                <li>Code headings correctly with proper size</li>
-                <li>Keep big blocks of text short</li>
-                <li>Increase button size</li>
-                <li>Include “Skip” links</li>
-                <li>Decrease the number of links</li>
-                <li>Limit the use of popups</li>
-            </ul>
+
 
             <h3>For more information, please visit the following websites:</h3>
             <div className="flex">
-                <a href="https://www.afb.org/">https://www.afb.org/</a>
-                <a href="https://www.who.int/">https://www.who.int/</a>
-                <a href="https://www.brailleinstitute.org/">https://www.brailleinstitute.org/</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Cognitive_accessibility">Mozilla Cognitive Accessibility</a>
+                <a href="https://www.w3.org/WAI/cognitive/">W3 Cognitive Accessibility</a>
+                <a href="https://www.w3.org/TR/coga-usable/">Making Content Accessible</a>
             </div>
         </div>
     );

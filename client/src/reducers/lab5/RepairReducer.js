@@ -1,6 +1,7 @@
 export const types = {
 	UPDATE_REPAIR_PAGELAYOUT: '@accessibility-lab/cognitive/repair/update_repair_pagelayout',
 	UPDATE_REPAIR_NOTIFICATION: '@accessibility-lab/cognitive/repair/update_repair_notification',
+	UPDATE_REPAIR_FORM: '@accessibility-lab/cognitive/repair/update_repair_form',
 	UPDATE_TAB: '@accessibility-lab/cognitive/repair/update_tab',
 	OPEN_REPAIR: '@accessibility-lab/cognitive/repair/open_repair',
 	CLOSE_REPAIR: '@accessibility-lab/cognitive/repair/close_repair'
@@ -15,6 +16,9 @@ export const initialState = {
 	repairVisible: false,
 	timeout: null,
 	fontsizevalue: null,
+	successNotification: null,
+	errorNotification: null,
+	borderColor:null,
 	changesApplied: false
 };
 
@@ -35,6 +39,14 @@ export default (state = initialState, action) => {
 				...state,
 				timeout: action.timeout,
 				fontsizevalue: action.fontsizevalue,
+				changesApplied: true
+			};
+		case types.UPDATE_REPAIR_FORM:
+			return {
+				...state,
+				errorNotification: action.errorNotification,
+				successNotification: action.successNotification,
+				borderColor: action.borderColor,
 				changesApplied: true
 			};
 		case types.UPDATE_TAB:
@@ -68,6 +80,14 @@ export const actions = {
 		classvalue,
 		fontvalue,
 		fontfamilyvalue,
+	}),
+	updateRepairForm: (errorNotification,
+					   successNotification,
+					   borderColor) => ({
+		type: types.UPDATE_REPAIR_FORM,
+		errorNotification,
+		successNotification,
+		borderColor
 	}),
 	updateRepairNotification: (fontsizevalue, timeout) => ({
 		type: types.UPDATE_REPAIR_NOTIFICATION,

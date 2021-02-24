@@ -1,4 +1,4 @@
-const db = require('../database');
+const db = require('../../database');
 exports.submitChoice = (data) => {
 	if (data.usersessionid){
 		return db.GameLab5.create({

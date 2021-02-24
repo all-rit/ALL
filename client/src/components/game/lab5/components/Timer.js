@@ -4,7 +4,7 @@ class Timer extends Component {
     constructor(props) {
         super(props);
         const {seconds} = this.props;
-        this.state = {secondsLeft: seconds, showModal: false};
+        this.state = {secondsLeft: seconds};
     }
 
     componentDidMount() {
@@ -15,7 +15,7 @@ class Timer extends Component {
     }
     checkExpired(){
         if( this.state.secondsLeft === 0){
-            this.setState({showModal: true})
+            this.props.timerDone();
             clearInterval(this.interval);
 
         }
@@ -25,18 +25,14 @@ class Timer extends Component {
     }
 
     render() {
-        const {link} = this.props;
         return (
             <div>
                 <div className="timer">
-                    <div><b>Seconds Left:</b> </div>
+                    <div><b>Seconds Left to Read:</b> </div>
                     <div className="timer__window">
                         0 : {this.state.secondsLeft <10 ? "0": ""}{this.state.secondsLeft}
                     </div>
                 </div>
-                {this.state.showModal &&
-                    <Modal buttonLabel={"Continue"} message={"Time Has Expired! Click Continue to Proceed"} title={"Timer"} link={link}/>
-                }
             </div>
     );
     }

@@ -3,7 +3,7 @@ import PageServiceTimer from "../../components/PageServiceTimer";
 import Form from "../../components/Form"
 import {navigate} from "@reach/router";
 
-class FormInaccessible extends Component {
+class FormAccessible extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -14,17 +14,17 @@ class FormInaccessible extends Component {
         this.setState({ showNext: true});
     };
     handleNav(){
-        navigate("/Lab5/Game/FormGuidance");
+        navigate("/Lab5/Game/GameEnd");
     }
     render() {
-        const {actions} = this.props;
+        const {actions, state} = this.props;
         return (
 
                 <div>
                     <div className= "cognitive_instructions">
                         Complete the form below
                     </div>
-                    <Form url={'/FormGuidance'} showNext={this.showNext}/>
+                    <Form url={'/FormGuidance'} showNext={this.showNext} errorNotification={state.repair5.errorNotification} successNotification={state.repair5.successNotification} borderColor={state.repair5.borderColor}/>
                     {this.state.showNext &&
                         <div className='flex float-right'>
                             <button
@@ -42,4 +42,4 @@ class FormInaccessible extends Component {
     }
 }
 
-export default FormInaccessible;
+export default FormAccessible;

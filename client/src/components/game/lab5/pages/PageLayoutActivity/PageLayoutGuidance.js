@@ -40,7 +40,7 @@ class PageLayoutGuidance extends Component {
           </div>
 
         </div>
-          <PageServiceTimer actions={actions} name={this.constructor.name}/>
+          <PageServiceTimer actions={actions} name={this.constructor.name} />
       </Fragment>
     );
   }
