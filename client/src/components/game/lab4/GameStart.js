@@ -1,25 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import { navigate } from "@reach/router";
-import {actions as mainActions} from "../../../reducers/MainReducer";
-import {actions as gameActions} from "../../../reducers/lab4/GameReducer";
 import AppInstructions from "./components/AppInstructions";
-// import { Link } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-
-const mapStateToProps = state => {
-    return {
-        // General
-        user: state.main.user
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        actions: bindActionCreators({ ...mainActions, ...gameActions }, dispatch)
-    };
-};
+ import Button from "@material-ui/core/Button";
 
 class GameStart extends Component {
     handleSubmit() {
@@ -35,8 +17,7 @@ class GameStart extends Component {
                     <AppInstructions instructions={instructions} />
                     <Button
                         href="#"
-                        onClick={this.handleSubmit}
-                        // component={Link}
+                        onClick={this.handleSubmit.bind(this)}
                         variant={"contained"}
                         color={"primary"}
                         style={buttonStyle}
@@ -49,4 +30,4 @@ class GameStart extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameStart);
+export default GameStart;

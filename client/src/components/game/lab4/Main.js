@@ -33,11 +33,11 @@ class Main extends Component {
 
     // eslint-disable-next-line require-jsdoc
     render() {
-        const {actions, state} = this.props;
+        const {actions} = this.props;
         return (
             <div class="container bottomSpace" >
                 <Router className="app">
-                    <GameStart path="/" actions={actions}/>
+                    <GameStart default path="/" actions={actions}/>
                     <SmallTarget path="/SmallTarget" actions={actions}/>
                     <TargetGuideline path="/TargetGuideline" actions={actions}/>
                     <SubmitUpdated path="/SubmitUpdated" actions={actions}/>

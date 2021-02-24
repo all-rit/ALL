@@ -83,7 +83,7 @@ class App extends Component {
 
               <GameLab1 path="/Lab1/Game" />
               <GameLab3 path="/Lab3/Game/*" />
-              <GameLab4 path="/Lab4/Game" />
+              <GameLab4 path="/Lab4/Game/*" />
               
               <VideoLab1 path="/Lab1/Video" />
               <VideoLab3 path="/Lab3/Video" />
