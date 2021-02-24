@@ -229,10 +229,10 @@ class CodeChangeTarget extends Component {
                 <CodeUpdateHeader
                     heading={"Make Code Changes"}
                     justifyAlignment={"space-between"}
-                    helpMessage={"#Placeholder"}
+                    helpMessage={"Set the min-width and min-height values to at least 44px."}
                 />
 
-                <div className="app__instructions__small2">
+                <div className="playthrough__sentence">
                     <h2>Intent</h2>
                     The intent of this code change is to ensure that target sizes are
                     large enough for users to easily activate them, especially those with

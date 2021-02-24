@@ -179,7 +179,7 @@ class CodeChangeBlocks extends Component {
                 <CodeUpdateHeader
                     heading={"Make Code Changes"}
                     justifyAlignment={"space-between"}
-                    helpMessage={"#Placeholder"}
+                    helpMessage={"Copy the code from the comment at the top of the code editor, and paste it into the input field in the code editor."}
                 />
                 <div className="app__instructions__small2">
                     <h2>Intent</h2>

@@ -18,8 +18,8 @@ class AccessibleGuideline extends Component {
         return (
             <Fragment>
                 <div>
-                    <h1 className="app__name">Was That Difficult?</h1>
-                    <h2 className="app__instructions__small">
+                    <h1 className="playthrough__title">Was That Difficult?</h1>
+                    <p className="playthrough__sentence">
                         People with mobile dexterity disabilities sometimes use a keyboard
                         to navigate the page. It is imperative that elements that are
                         accessible through mouse are also navigable by keyboard. Software
@@ -34,7 +34,7 @@ class AccessibleGuideline extends Component {
                         </a>
                         : Make all functionality available from a keyboard. Go ahead and
                         make the changes to the code by clicking “continue”.
-                    </h2>
+                    </p>
 
                     <Button
                         href="#"

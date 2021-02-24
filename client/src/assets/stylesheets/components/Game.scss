@@ -14,4 +14,18 @@
   &__congratulation {
     font-size: 1.5rem;
   }
+
+  &__nav {
+    max-width: 8rem;
+  }
+
+  &__input {
+    max-width: 25rem;
+    margin: 0 auto;
+  }
+
+  &__submit {
+    margin: 0 auto;
+    max-width: 8rem;
+  }
 }

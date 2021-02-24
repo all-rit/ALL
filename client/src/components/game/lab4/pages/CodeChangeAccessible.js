@@ -189,7 +189,7 @@ class CodeChangeAccessible extends Component {
                 <CodeUpdateHeader
                     heading={"Make Code Changes"}
                     justifyAlignment={"space-between"}
-                    helpMessage={"#Placeholder"}
+                    helpMessage={"Set the tabindex to 0 in the code editor."}
                 />
                 <div className="app__instructions__small2">
                     <h2>Intent</h2>

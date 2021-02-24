@@ -96,6 +96,7 @@ class FormComp extends Component {
               id="main"
               onChange={e => this.change(e)}
               value={this.state.animal}
+              className={"game__input"}
             />
           </FormGroup>
           <FormGroup>
@@ -109,6 +110,7 @@ class FormComp extends Component {
               id="color"
               onChange={e => this.change(e)}
               value={this.state.color}
+              className={"game__input"}
             />
           </FormGroup>
           <FormGroup>
@@ -119,6 +121,7 @@ class FormComp extends Component {
               id="candy"
               onChange={e => this.change(e)}
               value={this.state.candy}
+              className={"game__input"}
             />
           </FormGroup>
           <FormGroup>
@@ -129,17 +132,18 @@ class FormComp extends Component {
               id="city"
               onChange={e => this.change(e)}
               value={this.state.city}
+              className={"game__input"}
             />
           </FormGroup>
           {this.state.show ? (
             <Alert color="danger">{this.state.alert}</Alert>
           ) : null}
-          <Input type="submit" onClick={e =>this.form_sub(e)} className="formButtonSubmit"/>
+          <Input type="submit" onClick={e =>this.form_sub(e)} className="formButtonSubmit game__submit btn-primary"/>
           {this.props.rule && (
             <Input
               type="submit"
               value="Give Up"
-              className="formButtonHelp"
+              className="formButtonHelp game__submit"
               style={{ marginLeft: "20px" }}
               onClick={e=> this.handleSubmit(e)}
             />

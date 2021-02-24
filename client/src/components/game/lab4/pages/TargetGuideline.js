@@ -19,8 +19,8 @@ class TargetGuideline extends Component {
         return (
             <Fragment>
                 <div>
-                    <h1 className="app__name">Was That Difficult?</h1>
-                    <h2 className="app__instructions__small">
+                    <h1 className="playthrough__title">Was That Difficult?</h1>
+                    <p className="playthrough__sentence">
                         People with mobile dexterity disabilities have a hard time clicking
                         small buttons. To make sure your software is accessible by everyone,
                         ensure that buttons follow the{" "}
@@ -33,7 +33,7 @@ class TargetGuideline extends Component {
                         </a>
                         . Buttons must be a minimum of 44 x 44 px. Go ahead and make the
                         changes to the code by clicking “continue”.
-                    </h2>
+                    </p>
 
                     <Button
                         component={Link}

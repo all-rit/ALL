@@ -52,7 +52,7 @@ const Reading = () => {
                 16.3% of the US adult population is affected by a mobility impairment
             </div>
 
-            <h3>Effects of Dexterity iImpairments on Software Usage</h3>
+            <h3>Effects of Dexterity Impairments on Software Usage</h3>
             <p></p>
 
             <h3>Accessibility Standards for Dexterity Impairment</h3>

@@ -22,25 +22,25 @@ const ExtraNav = props => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <input placeholder="Menu 1" className="inputHover" readOnly/>
+              <input placeholder="Menu 1" className="inputHover game__nav" readOnly/>
             </NavItem>
             <NavItem>
-              <input placeholder="Menu 2" className="inputHover" readOnly/>
+              <input placeholder="Menu 2" className="inputHover game__nav" readOnly/>
             </NavItem>
             <NavItem>
-              <input placeholder="Menu 3" className="inputHover" readOnly/>
+              <input placeholder="Menu 3" className="inputHover game__nav" readOnly/>
             </NavItem>
             <NavItem>
-              <input placeholder="Menu 4" className="inputHover" readOnly/>
+              <input placeholder="Menu 4" className="inputHover game__nav" readOnly/>
             </NavItem>
             <NavItem>
-              <input placeholder="Menu 5" className="inputHover" readOnly/>
+              <input placeholder="Menu 5" className="inputHover game__nav" readOnly/>
             </NavItem>
             <NavItem>
-              <input placeholder="Menu 6" className="inputHover" readOnly/>
+              <input placeholder="Menu 6" className="inputHover game__nav" readOnly/>
             </NavItem>
             <NavItem>
-              <input placeholder="Menu 7" className="inputHover" readOnly/>
+              <input placeholder="Menu 7" className="inputHover game__nav" readOnly/>
             </NavItem>
           </Nav>
         </Collapse>

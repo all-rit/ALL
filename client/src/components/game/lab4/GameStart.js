@@ -9,7 +9,7 @@ class GameStart extends Component {
     }
 
     render() {
-        const instructions = "The next page will begin the lab";
+        const instructions = "The next page will begin the lab.";
         const buttonStyle = { marginRight: "10px", marginLeft: "10px" };
         return (
             <Fragment>
