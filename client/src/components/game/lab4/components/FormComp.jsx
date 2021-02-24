@@ -143,8 +143,7 @@ class FormComp extends Component {
             <Input
               type="submit"
               value="Give Up"
-              className="formButtonHelp game__submit"
-              style={{ marginLeft: "20px" }}
+              className="formButtonHelp game__giveup"
               onClick={e=> this.handleSubmit(e)}
             />
           )}
