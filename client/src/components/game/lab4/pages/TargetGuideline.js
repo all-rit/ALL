@@ -2,10 +2,16 @@ import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import { Link } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import {GAME_IDLE} from "../../../../constants/lab4";
 
 class TargetGuideline extends Component {
     handleSubmit() {
-        navigate("Lab4/Game/CodeChangeTarget");
+        navigate("/Lab4/Game/CodeChangeTarget");
+    }
+
+    componentDidMount() {
+        const { actions } = this.props;
+        actions.updateState(GAME_IDLE);
     }
 
     render() {

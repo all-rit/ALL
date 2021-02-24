@@ -37,11 +37,11 @@ class Main extends Component {
         return (
             <div class="container bottomSpace" >
                 <Router className="app">
-                    <GameStart default path="/" actions={actions}/>
+                    <GameStart path="/" actions={actions}/>
                     <SmallTarget path="/SmallTarget" actions={actions}/>
                     <TargetGuideline path="/TargetGuideline" actions={actions}/>
-                    <SubmitUpdated path="/SubmitUpdated" actions={actions}/>
                     <CodeChangeTarget path={"/CodeChangeTarget"} actions={actions}/>
+                    <SubmitUpdated path="/SubmitUpdated" actions={actions}/>
                     <CodeChangeBlocks path={"/CodeChangeBlocks"} actions={actions}/>
                     <BypassBlocksGuideline path={"/BypassBlocksGuideline"} actions={actions}/>
                     <FormSkipToMainBroken path={"/FormSkipToMainBroken"} actions={actions}/>

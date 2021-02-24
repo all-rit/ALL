@@ -5,6 +5,7 @@ import { navigate } from "@reach/router";
 import {PageService} from "../../../../services/PageService";
 import {LAB_ID} from "../../../../constants/lab4";
 import AppInstructions from "../components/AppInstructions";
+import {GAME_PLAYING} from "../../../../constants/lab4";
 
 class SmallTarget extends Component {
 
@@ -24,6 +25,8 @@ class SmallTarget extends Component {
     }
 
     handleSubmit() {
+        const { actions } = this.props;
+        actions.updateState(GAME_PLAYING);
         const name = "SmallTarget";
         PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
         navigate("/Lab4/Game/TargetGuideline");
