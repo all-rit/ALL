@@ -75,7 +75,7 @@ class FormRepair extends Component {
 			<div>
 				<div className= "cognitive_instructions">
 					Let's make the changes to make the code accessible.
-					We will be adding an error notification under the 'Do you like spice' question along with a success message.
+					We will be adding an error notification under the 'Today's Date' question along with a success message.
 					Click 'Repair' to make the appropriate changes.
 				</div>
 				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} />
@@ -187,13 +187,13 @@ class FormRepair extends Component {
 								<span className="code_editor__line--blue">&nbsp;for</span>
 								<span className="code_editor__line--white">&nbsp;=&nbsp;</span>
 								<span className="code_editor__line--white">"</span>
-								<span className="code_editor__line--orange">spice</span>
+								<span className="code_editor__line--orange">date</span>
 								<span className="code_editor__line--white">"&nbsp;</span>
 								<span className="code_editor__line--darkblue">&#62;</span>
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--white">Do you Like Spice?</span>
+								<span className="code_editor__line--white">Today's Date?</span>
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -229,7 +229,7 @@ class FormRepair extends Component {
 								<span className="code_editor__line--blue">name</span>
 								<span className="code_editor__line--white">&nbsp;=&nbsp;</span>
 								<span className="code_editor__line--white">"</span>
-								<span className="code_editor__line--orange">spice</span>
+								<span className="code_editor__line--orange">date</span>
 								<span className="code_editor__line--white">"&nbsp;</span>
 							</div>
 							<div className="code_editor__line">
@@ -237,7 +237,7 @@ class FormRepair extends Component {
 								<span className="code_editor__line--blue">id</span>
 								<span className="code_editor__line--white">&nbsp;=&nbsp;</span>
 								<span className="code_editor__line--white">"</span>
-								<span className="code_editor__line--orange">spice</span>
+								<span className="code_editor__line--orange">date</span>
 								<span className="code_editor__line--white">"&nbsp;</span>
 							</div>
 							<div className="code_editor__line">
@@ -251,7 +251,7 @@ class FormRepair extends Component {
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--blue">value</span>
 								<span className="code_editor__line--white">&nbsp;=&nbsp;&#123;&nbsp;</span>
-								<span className="code_editor__line--orange">this.state.spice</span>
+								<span className="code_editor__line--orange">this.state.date</span>
 								<span className="code_editor__line--white">&#125;&nbsp;</span>
 							</div>
 							<div className="code_editor__line">
@@ -263,7 +263,7 @@ class FormRepair extends Component {
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--white">&#123;</span>
-								<span className="code_editor__line--orange">&nbsp;this.state.spiceError&nbsp;</span>
+								<span className="code_editor__line--orange">&nbsp;this.state.dateError&nbsp;</span>
 								<span className="code_editor__line--white">&&&nbsp;</span>
 							</div>
 							<span className="code_editor__line--darkgreen">
