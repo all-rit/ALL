@@ -3,16 +3,16 @@ var quizQuestionsLab5 = [
         question: "How many people in the US have cognitive impairments?",
         answers: [
             {
+                val: 0,
+                content: "1.3 million"
+            },
+            {
                 val: 1,
                 content: "16 million"
             },
             {
                 val: 0,
                 content: "285 million"
-            },
-            {
-                val: 0,
-                content: "1.3 million"
             },
             {
                 val: 0,
@@ -46,7 +46,7 @@ var quizQuestionsLab5 = [
         multiChoice: false
     },
     {
-        question: "How can you improve accessibility for cognitively impaired users",
+        question: "How can you improve accessibility for cognitively impaired users?",
         answers: [
             {
                 val: 1,
@@ -93,7 +93,7 @@ var quizQuestionsLab5 = [
         multiChoice: true
     },
     {
-        question: "What is a common challenge of dyslexic users",
+        question: "What is a common challenge of dyslexic users?",
         answers: [
             {
                 val: 1,

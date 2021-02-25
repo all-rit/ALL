@@ -47,7 +47,7 @@ class Main extends Component {
     return (
       <div className="bottomSpace" >
         <Router className="app">
-          <GameStart default path="/"/>
+          <GameStart default path="/" actions={actions}/>
           <DyslexiaAccessible path="/DyslexiaAccessible" actions={actions} state={state}/>
           <DyslexiaAccessibleKnowledgeCheck path="/DyslexiaAccessibleKnowledgeCheck" actions={actions} state={state} />
           <DementiaInaccessible path="/DementiaInaccessible" actions={actions} state={state}/>

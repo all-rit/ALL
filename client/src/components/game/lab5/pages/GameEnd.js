@@ -17,25 +17,22 @@ class GameEnd extends Component {
       
       <Fragment>
         <div className="center-div">
-          <div className="playthrough">
-            <h4>
+          <div className="cognitive_instructions">
+            <h4 className="margin-bottom">
               Congratulations! You've finished the Cognitive Learning Module
             </h4>
-            <div className="guidance">
-
-            <div className="lowercontent">Here are some key takeaways</div>
-            <ul>
-              <li>
-                Use proper headings/subheadings to reduce cognitive load
-              </li>
-              <li>
+            <h4 className="margin-bottom">Here are some key takeaways</h4>
+            <div className="flex-boxes">
+            <div>
+                Use proper headings and subheadings to reduce cognitive load
+            </div>
+            <div >
                 Allow users to have enough time to read
-              </li>
-              <li>
+            </div>
+            <div>
                 Provide clear descriptive feedback on forms
-              </li>
-            </ul>
-          </div>
+            </div>
+            </div>
           </div>
           <button
               className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"

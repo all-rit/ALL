@@ -9,23 +9,31 @@ class FormComp extends Component {
             animal: "",
             candy: "",
             city: "",
-            bool: "",
+            date: "",
             show: false,
             answered: false,
             error: false,
             success:false,
+            currentDate: this.getDate(),
             alert: "Fill Out Form Completely"
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    getDate(){
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        let yyyy = today.getFullYear();
+        today = yyyy + "-" + mm + '-' + dd ;
+        return today;
+    }
     change = e => {
         this.setState({
             [e.target.name]: e.target.value.toLowerCase()
         });
-        if (e.target.name === "bool"){
-            const val = parseInt(e.target.value);
-            if(val !== 0 && val!==1){
+        if (e.target.name === "date"){
+            if(e.target.value !== this.state.currentDate){
                 this.setState({error:true});
             }
             else{
@@ -42,16 +50,15 @@ class FormComp extends Component {
 
     form_sub = e => {
         e.preventDefault();
-        const val = parseInt(this.state.bool);
         if (
             this.state.animal === "" ||
             this.state.city === "" ||
             this.state.candy === "" ||
-            this.state.bool === ""
+            this.state.date === ""
         ) {
             this.setState({ show: true, alert: "Fill Out Form Completely", success:false, answered: false});
         } else if (
-            ((val !== 0 && val !== 1) || this.state.bool.length>1 )
+            (this.state.date !== this.state.currentDate)
         ) {
             this.setState({
                 show: true,
@@ -80,17 +87,17 @@ class FormComp extends Component {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="bool">
-                            Do you Like Spice?{" "}
+                        <Label for="date">
+                            Today's Date
                         </Label>
                         <Input
                             className={this.state.error? "":""}
                             style={{borderColor: borderColor && this.state.error ?  borderColor: null}}
                             type="text"
-                            name="bool"
-                            id="bool"
+                            name="date"
+                            id="date"
                             onChange={e => this.change(e)}
-                            value={this.state.bool}
+                            value={this.state.date}
                         />
                         {errorNotification && this.state.error &&
                         <span className='form-error'>{errorNotification}</span>
@@ -117,15 +124,12 @@ class FormComp extends Component {
                             value={this.state.city}
                         />
                     </FormGroup>
-                    {this.state.show ? (
+                    {this.state.show &&
                         <Alert color="danger">{this.state.alert}</Alert>
-                    ) : null}
+                    }
                     {successNotification && this.state.success &&
                     <Alert color='success'>{successNotification}</Alert>
                     }
-                    {/*{this.state.success && this. ? (*/}
-                    {/*    <Alert color="danger">{this.state.alert}</Alert>*/}
-                    {/*) : null}*/}
                     <Input type="submit" onClick={e =>this.form_sub(e)} className="formButtonSubmit"/>
                     <Input
                         type="button"

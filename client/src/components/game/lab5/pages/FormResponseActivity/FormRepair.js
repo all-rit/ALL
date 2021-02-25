@@ -268,7 +268,7 @@ class FormRepair extends Component {
 							</div>
 							<span className="code_editor__line--darkgreen">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								&#47;&#47; Add the following error message below: "Please enter 1 for Yes and 0 for No"
+								&#47;&#47; Add the following error message below: "Please enter in format: YYYY-MM-DD"
 							</span>
 							<div className="code_editor__line code_editor__line-background--light">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

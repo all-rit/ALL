@@ -1,7 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
+import {GAME_IDLE} from "../../../../constants/lab5";
 
 class GameStart extends Component {
+  componentDidMount() {
+    const {actions} = this.props;
+    actions.updateState(GAME_IDLE);
+  }
+
   handleStart() {
     navigate("/Lab5/Game/DyslexiaAccessible");
   }
@@ -12,7 +18,7 @@ class GameStart extends Component {
       
       <Fragment>
         <div className="center-div">
-          <div className="playthrough">
+          <div className="game_start">
             <h4>
               We will explore a series of cognitive antipatterns that especially challenge cognitively impaired individuals.
               After each antipattern we will learn and correct our code to make it more accessible. Finally, we will view the updated experience. Click "Start" to begin!

@@ -31,9 +31,33 @@
 
 
 }
+.margin-bottom{
+  margin-bottom:1rem;
+}
+
+.flex-boxes{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: left;
+  div{
+    background-color: rgb(60, 61, 60);
+    border-radius:5px;
+    color:white;
+    width:30%;
+    padding:2rem;
+    margin:1rem;
+    word-break: break-word;
+  }
+}
 .cognitive_instructions{
   font-size: 1.25rem;
   margin-bottom: 1rem;
+}
+.game_start{
+  font-size:1.25rem;
+  margin-bottom: 2.5rem;
+  text-align:left;
 }
 .timer{
   display: flex;

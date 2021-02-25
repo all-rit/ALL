@@ -32,7 +32,7 @@ export const DementiaAccessibleKnowledgeCheck={
     }
 }
 export const NotificationAccessibleKnowledgeCheck={
-    Question: "Which words were incorrect in that notification?",
+    Question: "Which words were incorrect/missing in that notification?",
     Options:{
         "Meeting": 0,
         "At": 0,
@@ -41,7 +41,7 @@ export const NotificationAccessibleKnowledgeCheck={
     }
 }
 export const NotificationInaccessibleKnowledgeCheck={
-    Question: "Which words were incorrect in that notification?",
+    Question: "Which words were incorrect/missing in that notification?",
     Options:{
         "Know": 1,
         "Why": 0,
@@ -51,7 +51,7 @@ export const NotificationInaccessibleKnowledgeCheck={
 }
 
 export const NotificationAccessibleRepairKnowledgeCheck={
-    Question: "Which words were missing in that notification?",
+    Question: "Which words were incorrect/missing in that notification?",
     Options:{
         "is": 1,
         "a": 0,
