@@ -1,18 +1,18 @@
-var quizQuestionsLab3 = [
+var quizQuestionsLab5 = [
     {
-        question: "How many people around the world have visual impairments?",
+        question: "How many people in the US have cognitive impairments?",
         answers: [
             {
-                val: 0,
-                content: "12 million"
+                val: 1,
+                content: "16 million"
             },
             {
-                val: 1,
+                val: 0,
                 content: "285 million"
             },
             {
                 val: 0,
-                content: "39 million"
+                content: "1.3 million"
             },
             {
                 val: 0,
@@ -23,42 +23,42 @@ var quizQuestionsLab3 = [
         multiChoice: false
     },
     {
-        question: "What is the most popular screen reader currently available?",
+        question: "What is common challenge for cognitively impaired users?",
         answers: [
             {
                 val: 0,
-                content: "COBRA"
+                content: "Hearing audio cues"
             },
             {
                 val: 0,
-                content: "BRLTTY"
+                content: "Clicking large buttons"
+            },
+            {
+                val: 0,
+                content: "Distinguishing colors apart"
             },
             {
                 val: 1,
-                content: "JAWS"
-            },
-            {
-                val: 0,
-                content: "iMax for Mac"
+                content: "Working under time constraints"
             }
 
         ],
         multiChoice: false
     },
     {
-        question: "Which of the following is one way to make a screen reader interface more user-friendly?",
+        question: "How can you improve accessibility for cognitively impaired users",
         answers: [
             {
                 val: 1,
-                content: "Use many headings and subheadings"
+                content: "Use proper headings and subheadings"
             },
             {
-                val: 0,
-                content: "Increase the number of paragraphs"
+                val: 1,
+                content: "Clearly define any errors and suggestions to fix them"
             },
             {
-                val: 0,
-                content: "Decrease text size"
+                val: 1,
+                content: "Provide them enough time to read the content"
             },
             {
                 val: 0,
@@ -66,49 +66,51 @@ var quizQuestionsLab3 = [
             }
 
         ],
-        multiChoice: false
+        multiChoice: true
     },
     {
-        question: "About what percentage of all blind people are aged 50 years or older?",
+        question: "What are various types of cognitive disabilities?",
         answers: [
             {
-                val: 0,
-                content: "55%"
+                val: 1,
+                content: "Alzheimer's"
             },
             {
                 val: 0,
-                content: "70%"
+                content: "Dueteranope"
+
             },
             {
                 val: 1,
-                content: "82%"
+                content: "Dementia"
             },
             {
-                val: 0,
-                content: "92%"
+                val: 1,
+                content: "Dyslexia"
             }
 
         ],
-        multiChoice: false
+        multiChoice: true
     },
     {
-        question: "Which of the following should you do to ensure that an image is not purely decorative? Select all that apply.",
+        question: "What is a common challenge of dyslexic users",
         answers: [
             {
+                val: 1,
+                content: "Trouble matching letters with the sounds of those letters"
+            },
+
+            {
                 val: 0,
-                content: "Make the image smaller"
+                content: "Writing with their non dominant hand"
             },
             {
                 val: 1,
-                content: "Use an alt attribute to communicate the function of the image"
-            },
-            {
-                val: 1,
-                content: "Provide a brief description of the image"
+                content: "Spelling"
             },
             {
                 val: 0,
-                content: "Use it to add ambiance or visual interest to the page"
+                content: "Memorizing pronouns"
             }
 
         ],
@@ -116,4 +118,4 @@ var quizQuestionsLab3 = [
     }
 ];
 
-export default quizQuestionsLab3;
+export default quizQuestionsLab5;

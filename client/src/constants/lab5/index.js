@@ -43,26 +43,26 @@ export const NotificationAccessibleKnowledgeCheck={
 export const NotificationInaccessibleKnowledgeCheck={
     Question: "Which words were incorrect in that notification?",
     Options:{
-        "Started, Should": 0,
-        "Their, Order": 1,
-        "Started, Order": 0,
+        "Know": 1,
+        "Why": 0,
+        "Passed": 0,
         "None": 0,
     }
 }
 
 export const NotificationAccessibleRepairKnowledgeCheck={
-    Question: "Which words were incorrect in that notification?",
+    Question: "Which words were missing in that notification?",
     Options:{
-        "Protein": 0,
-        "Available": 0,
-        "Extra, Protein": 1,
+        "is": 1,
+        "a": 0,
+        "it": 0,
         "None": 0,
     }
 }
 
 export const AccessibleMessage="Meeting at 12pm!";
-export const InaccessibleMessage="There older should be started";
-export const AccessibleRepairMessage="Extre portein is available";
+export const InaccessibleMessage="Now I now why I passed";
+export const AccessibleRepairMessage="There a message available";
 
 export const minFont = 16;
 export const maxFont = 24;
