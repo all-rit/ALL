@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import ReactGA from "react-ga";
 import Title from "../lab2/components/header/title";
 import Home from "./home/Home";
 import GameCenter from "../lab2/components/GameCenter";
@@ -71,12 +70,9 @@ const mapStateToProps = state => {
     gameOption: state.game2.selectGameOption.option,
     popup: state.game2.changeColors.popup,
     gameState: state.game2.changeGameState.gameState,
-    user: state.game2.changeUser.user,
-    loggedIn: state.game2.changeUser.loggedIn,
     changed: state.game2.changeColors.changed,
     infoPopup: state.game2.changeUser.infoPopup,
     aboutState: state.game2.changeGameState.aboutState,
-    admin: state.game2.changeUser.admin,
     statState: state.game2.changeGameState.statState,
     firstGame: state.game2.changeGameState.firstGame,
     secondInfoState: state.game2.changeGameState.secondInfoState,
@@ -92,7 +88,7 @@ const mapStateToProps = state => {
 //Mapping dispatches for redux
 // const mapDispatchToProps = (dispatch) => {
 //   return {
-//     actions: bindActionCreators({...changeDefaultColors,...resetBackground,...startGame}, dispatch)
+//     actions: bindActionCreators({...toWhiteBackground,...changeDefaultColors,...resetBackground,...startGame}, dispatch)
 //   };
 // };
 const mapDispatchToProps = dispatch => {
@@ -133,41 +129,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Main extends Component {
-  //Mounting control for backend check
-  componentDidMount() {
-    this.callBackendAPI()
-      .then(res => {
-        if (res.status === "new user logged into system") {
-          this.props.onLogin([res.user, false, res.admin]);
-        } else if (res.status === "existing user logged into system") {
-          this.props.onLogin([res.user, false, res.admin]);
-        } else {
-          console.log(res.status);
-        }
-      })
-      .catch(err => console.log(err));
-  }
-
-  //function call for backend
-  callBackendAPI = async () => {
-    console.log("sending request to backend");
-    const response = await fetch(process.env.API_URL + "/main", {
-      method: "get",
-      credentials: "include"
-    });
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
-    return body;
-  };
-
-  //Used to establish React GA (google information)
-  initializeReactGA() {
-    ReactGA.initialize("UA-129523795-1");
-    ReactGA.pageView(window.location.pathname);
-  }
 
   render() {
     //Props from redux used in the application
@@ -188,8 +149,6 @@ class Main extends Component {
       gameWrongCircleTwo,
       gameOption,
       popupController,
-      loggedIn,
-      user,
       onResetOption,
       onResetColors,
       changed,
@@ -199,7 +158,6 @@ class Main extends Component {
       aboutState,
       onOpenAboutPage,
       onCloseAboutPage,
-      admin,
       onOpenStatPage,
       onCloseStatPage,
       statState,
@@ -272,8 +230,6 @@ class Main extends Component {
               gameState={gameState}
               firstGame={firstGame}
               popupController={popupController}
-              loggedIn={loggedIn}
-              user={user}
               gameMode={gameOption}
               colors={colors}
               goBackFromGame={onGoBackFromGame}
@@ -281,7 +237,6 @@ class Main extends Component {
               openAboutPage={onOpenAboutPage}
               closeAboutPage={onCloseAboutPage}
               aboutState={aboutState}
-              admin={admin}
               openStatPage={onOpenStatPage}
               closeStatPage={onCloseStatPage}
               statState={statState}
@@ -372,7 +327,6 @@ class Main extends Component {
                                               onToWhiteBackground
                                             }
                                             background={baseBackground}
-                                            loggedIn={loggedIn}
                                           />
                                         ) : (
                                           <div>

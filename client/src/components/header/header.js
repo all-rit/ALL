@@ -53,14 +53,12 @@ const Header = (props) => {
     const {state, actions} = props;
     const [link, setLink] = useState(0)
     const listenScrollEvent = (event) => {
-        console.log(window.scrollY)
         if (window.scrollY < 800) {
             return setLink(0)
         } else if ( window.scrollY < 2100) {
             return setLink(1)
         }
         else {
-            console.log('here');
             return setLink(2)
         }
     }
