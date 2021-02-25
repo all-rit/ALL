@@ -38,6 +38,7 @@ router.post('/completeQuiz', UserLabController.completeQuiz);
 router.post('/lab1/game/start', GameControllerLab1.createGame);
 router.post('/lab1/game/round', GameControllerLab1.createRound);
 router.post('/lab1/game/choice', GameControllerLab1.createChoice);
+router.post('/lab1/game/end', GameControllerLab1.updateEndGameScore);
 router.post('/lab5/game/choice', GameControllerLab5.submitChoice)
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);

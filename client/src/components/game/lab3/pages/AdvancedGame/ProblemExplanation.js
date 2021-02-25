@@ -124,6 +124,7 @@ class ProblemExplanation extends Component {
             </Grid>
           </Toolbar>
         </AppBar>
+        <br></br>
         <Typography
           variant={"subtitle1"}
           aria-label={"Subtitle Instructions"}
