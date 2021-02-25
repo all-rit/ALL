@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Modal from './Modal';
 class Timer extends Component {
     constructor(props) {
         super(props);
