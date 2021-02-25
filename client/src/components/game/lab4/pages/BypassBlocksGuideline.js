@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { navigate } from "@reach/router";
-import {GAME_IDLE} from "../../../../constants/lab4";
+import {GAME_PLAYING} from "../../../../constants/lab4";
 
 class BypassBlocksGuideline extends Component {
     handleSubmit() {
@@ -11,7 +11,7 @@ class BypassBlocksGuideline extends Component {
 
     componentDidMount() {
         const { actions } = this.props;
-        actions.updateState(GAME_IDLE);
+        actions.updateState(GAME_PLAYING);
     }
 
     render() {

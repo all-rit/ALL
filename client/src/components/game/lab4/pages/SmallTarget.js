@@ -25,14 +25,14 @@ class SmallTarget extends Component {
     }
 
     handleSubmit() {
-        const { actions } = this.props;
-        actions.updateState(GAME_PLAYING);
         const name = "SmallTarget";
         PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
         navigate("/Lab4/Game/TargetGuideline");
     }
 
     componentDidMount() {
+        const { actions } = this.props;
+        actions.updateState(GAME_PLAYING);
         this.interval = setInterval(
             () => this.setState({secondsElapsed: this.state.secondsElapsed + 1 }),
             1000
