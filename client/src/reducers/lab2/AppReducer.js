@@ -5,10 +5,8 @@ export const types = {
 };
 
 export const initialState = {
-	user: null,
 	popupMessage: '',
 	instructionsVisible: false,
-	body: 0
 };
 
 export default (state = initialState, action) => {

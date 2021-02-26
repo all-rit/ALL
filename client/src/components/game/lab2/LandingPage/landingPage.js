@@ -6,7 +6,6 @@ const LandingPage = ({
   endFirstGame,
   toWhiteBackground,
   background,
-  loggedIn,
   startGame
 }) => {
   const closePage = () => {
@@ -24,7 +23,6 @@ const LandingPage = ({
       </div>
       <div id="Body">
         <MainInstructions />
-        {!loggedIn ? (
           <div className="mainInstructionsContainer">
             <p
               className="mainInstructionList"
@@ -39,7 +37,6 @@ const LandingPage = ({
               sign in with google.
             </p>
           </div>
-        ) : null}
         <p
           className="mainInstructionList"
           style={{ marginTop: "40px", marginBottom: "10px" }}

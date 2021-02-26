@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import ReactGA from "react-ga";
 import Title from "../lab2/components/header/title";
 import Home from "./home/Home";
 import GameCenter from "../lab2/components/GameCenter";
@@ -30,7 +28,6 @@ import {
   endGame,
   resetOption,
   resetColors,
-  login,
   resetChange,
   closeInfoPopup,
   openAboutPage,
@@ -71,12 +68,9 @@ const mapStateToProps = state => {
     gameOption: state.game2.selectGameOption.option,
     popup: state.game2.changeColors.popup,
     gameState: state.game2.changeGameState.gameState,
-    user: state.game2.changeUser.user,
-    loggedIn: state.game2.changeUser.loggedIn,
     changed: state.game2.changeColors.changed,
     infoPopup: state.game2.changeUser.infoPopup,
     aboutState: state.game2.changeGameState.aboutState,
-    admin: state.game2.changeUser.admin,
     statState: state.game2.changeGameState.statState,
     firstGame: state.game2.changeGameState.firstGame,
     secondInfoState: state.game2.changeGameState.secondInfoState,
@@ -89,12 +83,6 @@ const mapStateToProps = state => {
   };
 };
 
-//Mapping dispatches for redux
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     actions: bindActionCreators({...changeDefaultColors,...resetBackground,...startGame}, dispatch)
-//   };
-// };
 const mapDispatchToProps = dispatch => {
   return {
     onChangeDefaultColors: event => dispatch(changeDefaultColors(event)),
@@ -105,7 +93,6 @@ const mapDispatchToProps = dispatch => {
     onEndGame: () => dispatch(endGame()),
     onResetOption: () => dispatch(resetOption()),
     onResetColors: () => dispatch(resetColors()),
-    onLogin: event => dispatch(login(event)),
     onResetChange: () => dispatch(resetChange()),
     onCloseInfoPopup: () => dispatch(closeInfoPopup()),
     onOpenAboutPage: () => dispatch(openAboutPage()),
@@ -133,40 +120,77 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Main extends Component {
-  //Mounting control for backend check
-  componentDidMount() {
-    this.callBackendAPI()
-      .then(res => {
-        if (res.status === "new user logged into system") {
-          this.props.onLogin([res.user, false, res.admin]);
-        } else if (res.status === "existing user logged into system") {
-          this.props.onLogin([res.user, false, res.admin]);
-        } else {
-          console.log(res.status);
-        }
-      })
-      .catch(err => console.log(err));
-  }
-
-  //function call for backend
-  callBackendAPI = async () => {
-    console.log("sending request to backend");
-    const response = await fetch(process.env.API_URL + "/main", {
-      method: "get",
-      credentials: "include"
-    });
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message);
+  shouldComponentUpdate(nextprops) {
+    if (nextprops.gameState !== this.props.gameState){
+      return true;
     }
-    return body;
-  };
-
-  //Used to establish React GA (google information)
-  initializeReactGA() {
-    ReactGA.initialize("UA-129523795-1");
-    ReactGA.pageView(window.location.pathname);
+    if (nextprops.baseBackground !== this.props.baseBackground){
+      return true;
+    }
+    if (nextprops.baseRightCircle !== this.props.baseRightCircle){
+      return true;
+    }
+    if (nextprops.baseWrongCircleOne !== this.props.baseWrongCircleOne){
+      return true;
+    }
+    if (nextprops.baseWrongCircleTwo !== this.props.baseWrongCircleTwo){
+      return true;
+    }
+    if (nextprops.gameBackground !== this.props.gameBackground){
+      return true;
+    }
+    if (nextprops.gameRightCircle !== this.props.gameRightCircle){
+      return true;
+    }
+    if (nextprops.gameWrongCircleOne !== this.props.gameWrongCircleOne){
+      return true;
+    }
+    if (nextprops.gameWrongCircleTwo !== this.props.gameWrongCircleTwo){
+      return true;
+    }
+    if (nextprops.gameOption !== this.props.gameOption){
+      return true;
+    }
+    if (nextprops.gameWrongCircleTwo !== this.props.gameWrongCircleTwo){
+      return true;
+    }
+    if (nextprops.changed !== this.props.changed){
+      return true;
+    }
+    if (nextprops.infoPopup !== this.props.infoPopup){
+      return true;
+    }
+    if (nextprops.aboutState !== this.props.aboutState){
+      return true;
+    }
+    if (nextprops.statState !== this.props.statState){
+      return true;
+    }
+    if (nextprops.firstGame !== this.props.firstGame){
+      return true;
+    }
+    if (nextprops.secondInfoState !== this.props.secondInfoState){
+      return true;
+    }
+    if (nextprops.thirdInfoState !== this.props.thirdInfoState){
+      return true;
+    }
+    if (nextprops.gamesPlayed !== this.props.gamesPlayed){
+      return true;
+    }
+    if (nextprops.leaderboardState !== this.props.leaderboardState){
+      return true;
+    }
+    if (nextprops.fourthInfoState !== this.props.fourthInfoState){
+      return true;
+    }
+    if (nextprops.endSystem !== this.props.endSystem){
+      return true;
+    }
+    if (nextprops.colorChange !== this.props.colorChange){
+      return true;
+    }
+    return false;
   }
 
   render() {
@@ -188,8 +212,6 @@ class Main extends Component {
       gameWrongCircleTwo,
       gameOption,
       popupController,
-      loggedIn,
-      user,
       onResetOption,
       onResetColors,
       changed,
@@ -199,7 +221,6 @@ class Main extends Component {
       aboutState,
       onOpenAboutPage,
       onCloseAboutPage,
-      admin,
       onOpenStatPage,
       onCloseStatPage,
       statState,
@@ -272,8 +293,6 @@ class Main extends Component {
               gameState={gameState}
               firstGame={firstGame}
               popupController={popupController}
-              loggedIn={loggedIn}
-              user={user}
               gameMode={gameOption}
               colors={colors}
               goBackFromGame={onGoBackFromGame}
@@ -281,7 +300,6 @@ class Main extends Component {
               openAboutPage={onOpenAboutPage}
               closeAboutPage={onCloseAboutPage}
               aboutState={aboutState}
-              admin={admin}
               openStatPage={onOpenStatPage}
               closeStatPage={onCloseStatPage}
               statState={statState}
@@ -372,7 +390,6 @@ class Main extends Component {
                                               onToWhiteBackground
                                             }
                                             background={baseBackground}
-                                            loggedIn={loggedIn}
                                           />
                                         ) : (
                                           <div>

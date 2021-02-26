@@ -11,6 +11,7 @@ let GameControllerLab1 = require('../controllers/lab1/GameController');
 let RepairControllerLab1 = require('../controllers/lab1/RepairController');
 
 //LAB2 Controller
+let RepairControllerLab2 = require('../controllers/lab2/RepairController');
 
 //LAB3 Controller
 let RepairControllerLab3 = require('../controllers/lab3/RepairController');
@@ -37,6 +38,7 @@ router.post('/lab1/game/choice', GameControllerLab1.createChoice);
 router.post('/lab1/game/end', GameControllerLab1.updateEndGameScore);
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
+router.post('/lab2/repair/submit', RepairControllerLab2.submitChange);
 router.post('/lab3/repair/submit', RepairControllerLab3.submitChange);
 
 //Create a Page Entry
