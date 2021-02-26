@@ -59,7 +59,6 @@ const Header = (props) => {
             return setLink(1)
         }
         else {
-            console.log('here');
             return setLink(2)
         }
     }

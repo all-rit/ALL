@@ -1,18 +1,18 @@
-var quizQuestions = [
+var quizQuestionsLab2 = [
     {
-        question: "What is an audio cue?",
+        question: "Which of the following best describes 'color contrast'?",
         answers: [
             {
                 val: 0,
-                content: "A vibration that conveys key information"
-            },
-            {
-                val: 1,
-                content: "A playing sound that conveys key information"
+                content: "A measurement of a color’s brightness"
             },
             {
                 val: 0,
-                content: "A visual indicator that conveys key information"
+                content: "A condition resulting in reduced sensitivity to green light"
+            },
+            {
+                val: 1,
+                content: "A measurement of the difference between two colors when they are layered on top of each other"
             },
             {
                 val: 0,
@@ -23,63 +23,63 @@ var quizQuestions = [
         multiChoice: false
     },
     {
-        question: "How many people (aged 18 and over) with hearing loss are there in the United States?",
+        question: "Which of the following is NOT a form of color vision deficiency?",
         answers: [
             {
                 val: 0,
-                content: "20-30 million people"
+                content: "Protanopia"
+            },
+            {
+                val: 0,
+                content: "Deuteranopia"
+            },
+            {
+                val: 0,
+                content: "Tritanopia"
             },
             {
                 val: 1,
-                content: "30-40 million people"
-            },
-            {
-                val: 0,
-                content: "40-50 million people"
-            },
-            {
-                val: 0,
-                content: "50-60 million people"
+                content: "Dichrompia"
             }
         ],
         multiChoice: false
     },
     {
-        question: "When should accessibility be considered in the development process?",
+        question: "What is the minimum contrast allowed by the WCAG AAA Color Standards?",
         answers: [
             {
                 val: 0,
-                content: "At the end"
+                content: "4"
             },
             {
                 val: 1,
-                content: "From the beginning"
+                content: "7"
             },
             {
                 val: 0,
-                content: "Whenever the developer feels it's necessary"
+                content: "9"
             },
             {
                 val: 0,
-                content: "Only if it's needed for the project"
+                content: "11"
             }
         ],
         multiChoice: false
     },
     {
-        question: "What does the 'Perceivable' accessibility principle mean?",
+        question: "Which of the following is the best way to correct an improper ratio in color contrast?",
         answers: [
             {
                 val: 0,
-                content: "User interface components and navigation must be operable."
-            },
-            {
-                val: 1,
-                content: "Information and user interface components must be presentable to users in ways they can perceive."
+                content: "Do nothing, it’s impossible to fix"
             },
             {
                 val: 0,
-                content: "Information and the operation of user interface must be understandable."
+                content: "Make everything black and white"
+            },
+            {
+                val: 1,
+                content: "Use a color contrast calculator"
             },
             {
                 val: 0,
@@ -89,19 +89,27 @@ var quizQuestions = [
         multiChoice: false
     },
     {
-        question: "Do users with hearing loss have a disadvantage when they use applications that utilize audio cues?",
+        question: "If placed in a color contrast calculator, which of the following would result in a proper color contrast ratio?",
         answers: [
             {
-                val: 1,
-                content: "Yes"
+                val: 0,
+                content: "Dark red placed on another shade of dark red"
             },
             {
                 val: 0,
-                content: "No"
+                content: "White placed on light pink"
+            },
+            {
+                val: 1,
+                content: "Light pink placed on black"
+            },
+            {
+                val: 0,
+                content: "Black placed on black"
             }
         ],
         multiChoice: false
     }
 ];
 
-export default quizQuestions;
+export default quizQuestionsLab2;
