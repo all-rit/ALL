@@ -1,6 +1,6 @@
 describe("Testing homepage", () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    cy.visit(Cypress.env("CLIENT_URL"));
   });
   
   it("tests Lab 1 link", () => {

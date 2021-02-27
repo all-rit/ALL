@@ -2,5 +2,6 @@
   "name": "Using fixtures to represent data",
   "email": "hello@cypress.io",
   "body": "Fixtures are a great way to mock data for responses to routes",
-  "url": "http://localhost:3000/"
+  "url": "http://localhost:3000/",
+  "server_url": "http://localhost:5005/"
 }

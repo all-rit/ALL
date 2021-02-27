@@ -1,1 +1,6 @@
-{}
+{
+  "env": {
+    "SERVER_URL": "http://localhost:5005",
+    "CLIENT_URL": "http://localhost:3000"
+  }
+}

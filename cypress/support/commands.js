@@ -24,11 +24,22 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-// -- Clicks the Google sign-in button and ensures authentication  --
+// -- Clicks the Google sign-in button and/ ensures authentication  --
 Cypress.Commands.add('testLogin', () => {
-  cy.get('div[class*="google__button').should('be.visible')
+  cy.intercept(
+      {
+        method: 'GET',      // Route all GET requests
+        url: Cypress.env("SERVER_URL") +'/user',    // that have a URL that matches '/users/*'
+      },
+      {"userid":4,"firstname":"Saad","image":"https://lh3.googleusercontent.com/a-/AOh14GimRBBc7n7wyE7eCKGSj6pDCqEnjqcYvxFtSXOYxdU=s96-c"} // and force the response to be: []
+  ).as("getUser");
+  cy.visit(Cypress.env("CLIENT_URL"));
+  // cy.get('div[class*="google__button').should('be.visible')
   // after clicking, test authentication using our own endpoints
-  cy.get('div[class*="google__button').click();
+  // cy.get('div[class*="google__button').click();
+  cy.wait("@getUser").then((interception) => {
+    assert.isNotNull(interception.response.body, '1st API call has data')
+  })
 });
 
 // -- Tests the navigation bar visibility and functionality -- 

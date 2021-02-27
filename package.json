@@ -1,21 +1,21 @@
 {
-  "name": "accessibilitylab1",
+  "name": "ALL",
   "version": "1.0.0",
   "description": "- NodeJS ~= 12.16.2\r - NPM ~= 6.14.4\r May work for other versions but not guaranteed",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/all-rit/AccessibilityLab1.git"
+    "url": "git+https://github.com/all-rit/ALL.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/all-rit/AccessibilityLab1/issues"
+    "url": "https://github.com/all-rit/ALL/issues"
   },
-  "homepage": "https://github.com/all-rit/AccessibilityLab1#readme",
+  "homepage": "https://github.com/all-rit/ALL#readme",
   "devDependencies": {
     "cypress": "^6.5.0"
   }
