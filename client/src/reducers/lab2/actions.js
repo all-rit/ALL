@@ -19,8 +19,6 @@ import {
   END_INFO_STATE,
   INFO_STATE_TWO,
   END_INFO_STATE_TWO,
-  OPEN_LEADERBOARD,
-  CLOSE_LEADERBOARD,
   INFO_STATE_THREE,
   END_INFO_STATE_THREE,
   END_SYSTEM,
@@ -181,19 +179,6 @@ export const closeSecondInfoState = () => ({
 })
 
 /*
-Used to open the leaderboard for any player to see
-*/
-export const openLeaderboard = () => ({
-  type: OPEN_LEADERBOARD
-})
-
-/*
-Used to close the leaderboard for any player to see
-*/
-export const closeLeaderboard = () => ({
-  type: CLOSE_LEADERBOARD
-})
-
 /*
 Used to open the third info page
 */

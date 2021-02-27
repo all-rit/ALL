@@ -19,8 +19,6 @@ import{
   END_INFO_STATE,
   INFO_STATE_TWO,
   END_INFO_STATE_TWO,
-  OPEN_LEADERBOARD,
-  CLOSE_LEADERBOARD,
   INFO_STATE_THREE,
   END_INFO_STATE_THREE,
   END_SYSTEM,
@@ -121,7 +119,6 @@ const initialGameState = {
   firstGame: true,
   secondGame: false,
   gamesPlayed: 0,
-  leaderboardState: false,
   fourthInfoState: false,
   endSystem: false,
   colorChangeState: false,
@@ -144,7 +141,7 @@ export const changeGameState = (state = initialGameState, action = {}) => {
     case END_ABOUT_STATE:
       return {...state, aboutState: false}
     case STAT_STATE:
-      return {...state, statState: true, aboutState: false, gameState: false, leaderboardState: false}
+      return {...state, statState: true, aboutState: false, gameState: false}
     case END_STAT_STATE:
       return {...state, statState: false}
     case INFO_STATE:
@@ -157,10 +154,6 @@ export const changeGameState = (state = initialGameState, action = {}) => {
         gamesPlayed: initialGameState.gamesPlayed = 2}
     case END_INFO_STATE_TWO:
       return {...state, thirdInfoState: false}
-    case OPEN_LEADERBOARD:
-      return {...state, leaderboardState: true}
-    case CLOSE_LEADERBOARD:
-      return {...state, leaderboardState: false}
     case INFO_STATE_THREE:
       return {...state, fourthInfoState: true, gameState: false,
         gamesPlayed: initialGameState.gamesPlayed = 3}
@@ -182,7 +175,6 @@ export const changeGameState = (state = initialGameState, action = {}) => {
         firstGame: true,
         secondGame: false,
         gamesPlayed: 0,
-        leaderboardState: false,
         fourthInfoState: false,
         endSystem: false,
         infoStateFourPrevOpen: false,

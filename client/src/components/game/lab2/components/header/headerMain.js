@@ -30,9 +30,6 @@ class Header extends Component {
       statState,
       firstGame,
       gamesPlayed,
-      openLeaderboard,
-      closeLeaderboard,
-      leaderboardState,
       openColorChange,
       colorChange,
       closeColorChange,
@@ -143,15 +140,6 @@ class Header extends Component {
                   fontSizing={"25px"}
                 />
               ) : (
-                <div>
-                  {leaderboardState ? (
-                    <Button
-                      clickMethod={closeLeaderboard}
-                      message={"Back"}
-                      class="backButton btn btn-second btn-xl text-uppercase js-scroll-trigger"
-                      fontSizing={"25px"}
-                    />
-                  ) : (
                     <div>
                       {firstGame ? null : (
                         <div>
@@ -192,23 +180,12 @@ class Header extends Component {
                                   />
                                 ) : null}
                               </div>
-                              <div>
-                                {gamesPlayed > 2 && !endSystem ? (
-                                  <Button
-                                    clickMethod={openLeaderboard}
-                                    message={"Leader Board"}
-                                    fontSizing={"17px"}
-                                  />
-                                ) : null}
-                              </div>
                               <div></div>
                             </div>
                           )}
                         </div>
                       )}
                     </div>
-                  )}
-                </div>
               )}
             </div>
           )}

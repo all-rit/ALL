@@ -3,6 +3,9 @@ import { PhotoshopPicker } from "react-color";
 import { Dialog } from "@reach/dialog";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./popup.css";
+import { DialogActions } from "@material-ui/core";
+import DialogTitle from '@material-ui/core/DialogTitle';
+import RepairService from '../../../../services/lab2/RepairService';
 
 /*
 Class for the adjustment of the colors for the system
@@ -189,6 +192,40 @@ class ColorChangePopup extends React.Component {
     }
   };
 
+	handleSubmit(event) {
+		const { handlers } = this.props;
+		const {
+      background,
+      correctColor,
+      incorrectColorOne,
+      incorrectColorTwo
+		} = this.state;
+
+		event.preventDefault();
+
+		// Submit a repair entry in the database.
+		RepairService.submitRepair(
+      background,
+      correctColor,
+      incorrectColorOne,
+      incorrectColorTwo
+		);
+
+		// Update the state and close the repair.
+		handlers.updateRepair(
+      background,
+      correctColor,
+      incorrectColorOne,
+      incorrectColorTwo
+		);
+		handlers.closeRepair();
+		handlers.updatePopup('The repairs have been made.');
+
+		setTimeout(() => {
+			handlers.updatePopup('');
+		}, 5000);
+	}
+
   onFinalSubmit = () => {
     let colors = [
       this.state.background,
@@ -199,6 +236,7 @@ class ColorChangePopup extends React.Component {
     this.props.changeDefaultColors(colors);
     this.props.changeGameColors(colors);
     this.props.closeColorChange();
+    this.handleSubmit.bind(this)
   };
 
   //Submits the colors for the system
@@ -314,57 +352,51 @@ class ColorChangePopup extends React.Component {
       <div>
         <div>
           {this.state.confirmPopup ? (
-            <Dialog>
-              <p className="center fourthTitle">
-                You've changed {this.state.numberChanged} out of the 4 colors.
-                Are you sure you would like to submit?
-              </p>
-              <div className="center">
-                <button
-                  onClick={() => this.onFinalSubmit()}
-                  className="buttonPopup"
-                >
-                  Yes
-                </button>
-                <button
-                  onClick={() => this.setState({ confirmPopup: false })}
-                  className="buttonPopup"
-                >
-                  No
-                </button>
-              </div>
+             <Dialog aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+              <DialogTitle id="alert-dialog-title">You've changed {this.state.numberChanged} out of the 4 colors.
+                Are you sure you would like to submit?</DialogTitle>
+              <DialogActions>
+                  <button
+                    onClick={() => this.onFinalSubmit()}
+                    className="buttonPopup"
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => this.setState({ confirmPopup: false })}
+                    className="buttonPopup"
+                  >
+                    No
+                  </button>
+                </DialogActions>
             </Dialog>
           ) : null}
           {this.state.errorEqual ? (
-            <Dialog>
-              <p className="fourthTitle center">
-                Two of your entered colors are equal to one another. Please make
-                adjustments and submit again.
-              </p>
-              <div className="center">
-                <button
-                  onClick={() => this.setState({ errorEqual: false })}
-                  className="buttonPopup"
-                >
-                  Make changes
-                </button>
-              </div>
+            <Dialog aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+              <DialogTitle id="alert-dialog-title"> Two of your entered colors are equal to one another. Please make
+                adjustments and submit again.</DialogTitle>
+              <DialogActions>
+                  <button
+                    onClick={() => this.setState({ errorEqual: false })}
+                    className="buttonPopup"
+                  >
+                    Make changes
+                  </button>
+                </DialogActions>
             </Dialog>
           ) : null}
           {this.state.errorDarkBackground ? (
-            <Dialog>
-              <p className="fourthTitle center">
-                One or more of the colors you entered are too dark. Please make
-                adjustments and submit again.
-              </p>
-              <div className="center">
-                <button
-                  onClick={() => this.setState({ errorDarkBackground: false })}
-                  className="buttonPopup"
-                >
-                  Make changes
-                </button>
-              </div>
+             <Dialog aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+              <DialogTitle id="alert-dialog-title">  One or more of the colors you entered are too dark. Please make
+                adjustments and submit again.</DialogTitle>
+              <DialogActions>
+                  <button
+                    onClick={() => this.setState({ errorDarkBackground: false })}
+                    className="buttonPopup"
+                  >
+                    Make changes
+                  </button>
+                </DialogActions>
             </Dialog>
           ) : null}
           {this.state.backgroundHelp ? (

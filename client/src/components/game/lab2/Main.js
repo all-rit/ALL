@@ -13,7 +13,6 @@ import UserStats from "./userStatistics/userStats";
 import SecondInstructions from "./Instructions/secondInstructions";
 import ThirdInstructions from "./Instructions/thirdInstructions";
 import FourthInstructions from "./Instructions/fourthInstructions";
-import Leaderboard from "./userStatistics/leaderboard";
 import Conclusion from "./Instructions/conclusion";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
@@ -39,8 +38,6 @@ import {
   closeInfoState,
   enterSecondInfoState,
   closeSecondInfoState,
-  openLeaderboard,
-  closeLeaderboard,
   openThirdInfoState,
   closeThirdInfoState,
   openConclusion,
@@ -76,7 +73,6 @@ const mapStateToProps = state => {
     secondInfoState: state.game2.changeGameState.secondInfoState,
     thirdInfoState: state.game2.changeGameState.thirdInfoState,
     gamesPlayed: state.game2.changeGameState.gamesPlayed,
-    leaderboardState: state.game2.changeGameState.leaderboardState,
     fourthInfoState: state.game2.changeGameState.fourthInfoState,
     endSystem: state.game2.changeGameState.endSystem,
     colorChange: state.game2.changeGameState.colorChangeState
@@ -104,8 +100,6 @@ const mapDispatchToProps = dispatch => {
     onCloseInfoState: () => dispatch(closeInfoState()),
     onEnterSecondInfoState: () => dispatch(enterSecondInfoState()),
     onCloseSecondInfoState: () => dispatch(closeSecondInfoState()),
-    onOpenLeaderboard: () => dispatch(openLeaderboard()),
-    onCloseLeaderboard: () => dispatch(closeLeaderboard()),
     onOpenThirdInfoState: () => dispatch(openThirdInfoState()),
     onCloseThirdInfoState: () => dispatch(closeThirdInfoState()),
     onOpenConclusion: () => dispatch(openConclusion()),
@@ -178,9 +172,6 @@ class Main extends Component {
     if (nextprops.gamesPlayed !== this.props.gamesPlayed){
       return true;
     }
-    if (nextprops.leaderboardState !== this.props.leaderboardState){
-      return true;
-    }
     if (nextprops.fourthInfoState !== this.props.fourthInfoState){
       return true;
     }
@@ -233,9 +224,6 @@ class Main extends Component {
       onEnterSecondInfoState,
       onCloseSecondInfoState,
       gamesPlayed,
-      leaderboardState,
-      onOpenLeaderboard,
-      onCloseLeaderboard,
       fourthInfoState,
       onOpenThirdInfoState,
       onCloseThirdInfoState,
@@ -304,9 +292,6 @@ class Main extends Component {
               closeStatPage={onCloseStatPage}
               statState={statState}
               gamesPlayed={gamesPlayed}
-              openLeaderboard={onOpenLeaderboard}
-              closeLeaderboard={onCloseLeaderboard}
-              leaderboardState={leaderboardState}
               openColorChange={onOpenColorChange}
               thirdInfoState={thirdInfoState}
               colorChange={colorChange}
@@ -360,15 +345,7 @@ class Main extends Component {
                             background={baseBackground}
                           />
                         ) : (
-                          <div>
-                            {leaderboardState ? (
-                              <Leaderboard
-                                closeLeaderboard={onCloseLeaderboard}
-                                toWhiteBackground={onToWhiteBackground}
-                                background={baseBackground}
-                              />
-                            ) : (
-                              <div>
+                               <div>
                                 {fourthInfoState ? (
                                   <FourthInstructions
                                     closePage={onCloseThirdInfoState}
@@ -448,8 +425,6 @@ class Main extends Component {
                                   </div>
                                 )}
                               </div>
-                            )}
-                          </div>
                         )}
                       </div>
                     )}
