@@ -23,4 +23,8 @@ describe("Testing homepage", () => {
     cy.get('h4').eq(3).children().should('have.attr', 'href', '# ')
   })
   
+  // homepage navbar here
+  
+  // sitemap
+  
 })

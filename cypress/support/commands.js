@@ -70,6 +70,9 @@ Cypress.Commands.add('testNavigationBar', (labId) => {
 Cypress.Commands.add('testNextPage', () => {
   cy.get('button').contains('Next').should('have.class', 'next').then(() => {
     // cy.location('pathname').should('include', '/About'); // going to lab does not change URL
+    
+    // check Header for page name (i.e. "LAB1: ABOUT")
+    
     cy.get('button').contains('Next').click();
     
     cy.location('pathname').should('include', '/Reading');
@@ -87,6 +90,9 @@ Cypress.Commands.add('testNextPage', () => {
 
 Cypress.Commands.add('testPreviousPage', () => {
   cy.get('button').contains('Previous').should('have.class', 'back').then(() => {
+    
+    // check Header for page name (i.e. "LAB1: ABOUT")
+    
     cy.location('pathname').should('include', '/Quiz');
     cy.get('button').contains('Previous').click();
     
@@ -113,5 +119,14 @@ Cypress.Commands.add('testChangeTextColor', () => {
 });
 
 Cypress.Commands.add('testFontSizeDecrease', () => {
+  cy.get();
+});
+
+Cypress.Commands.add('testFontSizeIncrease', () => {
+  // get initial fontsize
+  // click increase
+  // get elements that are changed
+  // get element fontsize and compare to initial fontsize
+  // check for consistency across pages
   cy.get();
 });
