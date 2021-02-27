@@ -46,6 +46,8 @@ Cypress.Commands.add('testNavigationBar', (labId) => {
   cy.location('pathname').should('include', '/Video');
   cy.get('nav').contains('Quiz').click();
   cy.location('pathname').should('include', '/Quiz');
+  // google sign in button
+
   
   // Tablet
   cy.viewport('ipad-2');
@@ -61,6 +63,7 @@ Cypress.Commands.add('testNavigationBar', (labId) => {
   cy.location('pathname').should('include', '/Video');
   cy.get('nav').contains('Quiz').click();
   cy.location('pathname').should('include', '/Quiz');
+  // google sign in button
   
 });
 
