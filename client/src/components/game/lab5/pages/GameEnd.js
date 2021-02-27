@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import UserLabService from "../../../../services/UserLabService";
 import {LAB_ID} from "../../../../constants/lab5";
+import {Forum, EmojiObjects, Timer} from "@material-ui/icons";
 
 class GameEnd extends Component {
   handleHome() {
@@ -24,12 +25,21 @@ class GameEnd extends Component {
             <h4 className="margin-bottom">Here are some key takeaways</h4>
             <div className="flex-boxes">
             <div>
+              <div className="icon">
+                <EmojiObjects fontSize="large"/>
+              </div>
                 Use proper headings and subheadings to reduce cognitive load
             </div>
-            <div >
+            <div>
+              <div className="icon">
+                <Timer fontSize="large"/>
+              </div>
                 Allow users to have enough time to read
             </div>
             <div>
+              <div className="icon">
+                <Forum fontSize="large"/>
+              </div>
                 Provide clear descriptive feedback on forms
             </div>
             </div>

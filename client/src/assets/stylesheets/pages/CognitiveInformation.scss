@@ -39,15 +39,24 @@
   display:flex;
   flex-direction: row;
   justify-content: center;
-  text-align: left;
+  text-align: center;
   div{
-    background-color: rgb(60, 61, 60);
     border-radius:5px;
-    color:white;
-    width:30%;
+    //min-height:150px;
+    color:black;
+    width:66%;
+    //width:30%;
     padding:2rem;
     margin:1rem;
     word-break: break-word;
+  }
+  .icon{
+    border-radius:50%;
+    background-color: rgb(214, 210, 210);
+    width:100px;
+    margin:auto;
+    margin-bottom:25px;
+    color:#212529;
   }
 }
 .cognitive_instructions{
