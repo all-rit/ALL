@@ -242,7 +242,7 @@ const Home = (props) => {
         </li>
         <li>
           <a onClick={() => handleRedirect(actions,0,1)} href="# ">
-            SiteMap
+            Site Map
           </a>
         </li>
       </ul>
