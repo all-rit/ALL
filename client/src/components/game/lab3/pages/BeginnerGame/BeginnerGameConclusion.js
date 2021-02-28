@@ -5,7 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
-import {GAME_IDLE} from "../../../../../constants/lab3/index";
+import {GAME_IDLE, LAB_ID} from "../../../../../constants/lab3";
+import UserLabService from "../../../../../services/UserLabService";
 class BeginnerGameConclusion extends Component {
   handleSubmit() {
     navigate("/Lab3/Game");
@@ -13,6 +14,7 @@ class BeginnerGameConclusion extends Component {
     componentDidMount() {
         const { actions } = this.props;
         actions.updateState(GAME_IDLE);
+        UserLabService.complete_game(LAB_ID);
     }
   render() {
     const conclusionTypographyStyle = { marginTop: "20px" };
