@@ -96,7 +96,7 @@ const Header = (props) => {
                                 href="#goals"
                                 style={link === 0 ? activeStyle : {color: "#fff"}}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
+                                    <li id="goals-button" className="nav-item">
                                         Goals
                                     </li>
                                 </ul>
@@ -108,7 +108,7 @@ const Header = (props) => {
                             href="#labs"
                             style={link === 1 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
+                            <li id="labs-button" className="nav-item">
                             Labs
                             </li>
                             </ul>
@@ -121,7 +121,7 @@ const Header = (props) => {
                             style={link === 2 ? activeStyle : {color: "#fff"}}
                                 >
                             <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
+                            <li id="contact-button" className="nav-item">
                             Contact
                             </li>
                             </ul>

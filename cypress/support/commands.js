@@ -43,10 +43,10 @@ Cypress.Commands.add('testLogin', () => {
 });
 
 // -- Tests the navigation bar visibility and functionality -- 
-Cypress.Commands.add('testNavigationBar', (labId) => {
+Cypress.Commands.add('testLabNavigationBar', (labId) => {
   // Desktop
-  cy.viewport('macbook-15')
-  cy.wait(200)
+  cy.viewport('macbook-15');
+  cy.wait(200);
   cy.get('nav').contains('About').click();
   cy.location('pathname').should('include', '/About');
   cy.get('nav').contains('Reading').click();

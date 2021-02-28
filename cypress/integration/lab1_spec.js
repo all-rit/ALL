@@ -4,7 +4,7 @@ describe('Testing Lab 1', () => {
   // });
   //
   // it('tests navigation bar', () => {
-  //   cy.testNavigationBar();
+  //   cy.testLabNavigationBar();
   // });
   //
   // it('tests footer navigation', () => {
