@@ -1,6 +1,6 @@
 .cognitive_information {
   background-color: #d3d6d9;
-  padding: 20px;
+  padding: 50px;
   text-align:left;
   margin-bottom: 2rem;
   font-size: 1.25rem;
@@ -10,7 +10,7 @@
   }
   .heading{
     font-size: 30px;
-    color: #1a6fb1;
+    //color: #1a6fb1;
     margin-bottom: 1rem;
   }
   .subheading{
@@ -34,7 +34,9 @@
 .margin-bottom{
   margin-bottom:1rem;
 }
-
+.margin-bottom-2{
+  margin-bottom:2rem !important;
+}
 .flex-boxes{
   display:flex;
   flex-direction: row;

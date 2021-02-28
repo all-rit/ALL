@@ -71,7 +71,7 @@ class NotificationRepair extends Component {
 		const { visible, handlers, state, data, actions } = this.props;
 		return (
 			<div>
-				<div className= "cognitive_instructions">
+				<div className= "cognitive_instructions margin-bottom-2">
 					Let's make the changes to make the code accessible. Click 'Repair' to make the appropriate changes.
 				</div>
 				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} />

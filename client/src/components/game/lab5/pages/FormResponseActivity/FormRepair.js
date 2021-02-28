@@ -73,7 +73,7 @@ class FormRepair extends Component {
 		const { visible, handlers, state, data, actions } = this.props;
 		return (
 			<div>
-				<div className= "cognitive_instructions">
+				<div className= "cognitive_instructions margin-bottom-2">
 					Let's make the changes to make the code accessible.
 					We will be adding an error notification under the 'Today's Date' question along with a success message.
 					Click 'Repair' to make the appropriate changes.

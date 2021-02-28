@@ -27,7 +27,7 @@ class FormGuidance extends Component {
                       Provide feedback when there is a successful form submission
                   </li>
               </ul>
-              <div className="lowercontent">Let’s continue on and make the changes. Click 'Next'</div>
+              <div className="lowercontent">Let’s continue on and make the changes. Click 'Next'.</div>
               <div className = "flex">
                   <button
                       className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
