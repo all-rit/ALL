@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { navigate } from "@reach/router";
 import {GAME_PLAYING} from "../../../../constants/lab4";
