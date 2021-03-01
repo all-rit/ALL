@@ -6,7 +6,7 @@ The general process to contribute code to this repository is as follows:
 - Commit (with a descriptive message) and push to your branch
 - Create a pull request into the appropriate branch. This is probably the `master` branch
 - Ensure that your code passes the CI/CD requirements
-- Your pull request will be reviewed and merged into master, where it will be pushed to our development server to validate everything works as expected
+- Your pull request will be reviewed and merged into master, where it will be deployed to our production server
 
 ### Branch naming
 
@@ -18,6 +18,6 @@ Commit messages are important to get an overall idea of what's been changed. In 
 
 ### Opening a PR
 
-Before you open a pull request, please ensure all code you've committed works as you expect. Also ensure that commands like `npm build` for the client don't error out - this is a very good sign of broken code.
+Before you open a pull request, please ensure all code you've committed works as you expect. Also ensure that commands like `npm build` for the client don't error out - this is a strong indication of broken code.
 
 Pull requests should be named the same way as commits - A short name that describes the overall changes, with a description as needed. Fill out the pull request checklist as well.
