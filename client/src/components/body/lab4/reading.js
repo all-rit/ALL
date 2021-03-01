@@ -75,9 +75,9 @@ const Reading = () => {
 
             <h3>For more information, please visit the following websites:</h3>
             <div className="flex">
-                <a href="https://webaim.org/articles/motor/assistive" target="_blank" rel="noopener noreferrer">https://webaim.org/articles/motor/assistive</a>
-                <a href="https://www.w3.org/TR/mobile-accessibility-mapping/" target="_blank" rel="noopener noreferrer">https://www.w3.org/TR/mobile-accessibility-mapping/</a>
-                <a href="https://www.w3.org/WAI/people-use-web/abilities-barriers/#physical" target="_blank" rel="noopener noreferrer">https://www.w3.org/WAI/people-use-web/abilities-barriers/#physical</a>
+                <a href="https://webaim.org/articles/motor/assistive" target="_blank" rel="noopener noreferrer">Assistive Technologies</a>
+                <a href="https://www.w3.org/TR/mobile-accessibility-mapping/" target="_blank" rel="noopener noreferrer">W3 Mobile Accessibility</a>
+                <a href="https://www.w3.org/WAI/people-use-web/abilities-barriers/#physical" target="_blank" rel="noopener noreferrer">W3 Physical Disabilities</a>
             </div>
         </div>
     );
