@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 // import logo from "../../assets/images/accessCycle.png";
 import logo from "../../assets/images/accessCycleHeader.png";
 import "../../assets/stylesheets/components/Header.scss"
@@ -16,7 +16,7 @@ import {GAME_IDLE} from "../../constants/lab1";
 import handleRedirect from "../../helpers/Redirect";
 import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
-
+import getGameState from '../../helpers/GetReducer';
 
 const mapStateToProps = (state) => {
     return {
@@ -38,9 +38,9 @@ const navigate = (state, actions,body, lab=state.main.lab) =>{
 };
 
 const alert_check = (state)=> {
-    if (state.game.state !== "GAME_IDLE" && state.main.body === 2){
+    if (getGameState(state) !== "GAME_IDLE" && state.main.body === 2){
         alert("The game is still in progress! Please complete the game");
-        return true
+        return true;
     }
     return false;
 };
@@ -51,8 +51,27 @@ const Header = (props) => {
     const activeStyle = {color: "#fed136"};
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
+    const [link, setLink] = useState(0)
+    const listenScrollEvent = (event) => {
+        if (window.scrollY < 800) {
+            return setLink(0)
+        } else if ( window.scrollY < 2100) {
+            return setLink(1)
+        }
+        else {
+            return setLink(2)
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('scroll', listenScrollEvent);
+
+        return () =>
+            window.removeEventListener('scroll', listenScrollEvent);
+    }, []);
     let count = state.main.body;
-    const loginEnabled = (state.main.lab === 0) || state.game.state === GAME_IDLE || state.main.body !== 2;
+    const loginEnabled = (state.main.lab === 0) || getGameState(state) === GAME_IDLE || state.main.body !== 2;
+
+
     return (
         <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
             <div className="container">
@@ -75,7 +94,7 @@ const Header = (props) => {
                             <NavLink
                                 class="nav-link js-scroll-trigger"
                                 href="#goals"
-                                style={{color: "#fff"}}>
+                                style={link === 0 ? activeStyle : {color: "#fff"}}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
                                         Goals
@@ -87,7 +106,7 @@ const Header = (props) => {
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             href="#labs"
-                            style={{color: "#fff"}}>
+                            style={link === 1 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">
                             Labs
@@ -99,7 +118,7 @@ const Header = (props) => {
                             <NavLink
                             class="nav-link js-scroll-trigger"
                             href="#contact"
-                            style={{color: "#fff"}}
+                            style={link === 2 ? activeStyle : {color: "#fff"}}
                                 >
                             <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">

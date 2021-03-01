@@ -51,6 +51,7 @@ class Game extends Component {
 			if (data.time <= 0) {
 				handlers.updateState(GAME_ENDED);
 				UserLabService.complete_game(LAB_ID);
+				GameService.updateEndGameScore(data.score);
 				// Clear all timers
 				clearInterval(this.timer);
 				clearInterval(this.countdownTimer);
@@ -139,25 +140,25 @@ class Game extends Component {
 		const { data, handlers } = this.props;
 		const correct = number === data.correctBoxNumber;
 
-		// Create a new choice entry in the database
-		GameService.createChoice(data.score, data.hintUsed, number, correct);
-
+		let score = data.score;
 		if (correct) {
+			score = score + this.calculateScore();
 			handlers.updateBoxStatus(number, BOX_CORRECT);
-
 			clearInterval(this.roundTimer);
 			this.audio.pause();
-
-			handlers.updateScore(data.score + this.calculateScore());
+			handlers.updateScore(score);
 			handlers.incrementCorrectAnswers();
 
 			this.updateCongratulationMessage();
 			this.startCountdown();
 		} else {
+			score = score - 75;
 			handlers.updateBoxStatus(number, BOX_INCORRECT);
-			handlers.updateScore(data.score - 75);
+			handlers.updateScore(score);
 			handlers.incrementIncorrectAnswers();
 		}
+		// Create a new choice entry in the database
+		GameService.createChoice(score, data.hintUsed, number, correct);
 	}
 
 	calculateScore() {

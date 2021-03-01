@@ -24,7 +24,7 @@
 		height:100px;
 	}
 	&__pagesection{
-		padding: 50px 0;
+		padding: 50px 0 !important;
 	}
 	a{	
 		font-size:20px;
@@ -34,6 +34,30 @@
 		font-size: 16px;
 	}
 
+}
+
+.errorpage{
+	h1{
+		font-style: Bold;
+		font-size: 50px;
+		font-weight: 700;
+		line-height: 50px;
+		margin-bottom: 25px;
+		//padding-top: 40px;
+		font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';	
+	}
+	p{
+		font-style: italic;
+		font-size: 25px;
+		line-height: 50px;
+		margin-bottom: 25px;
+		padding:75px;
+		// padding-top: 75px;
+		// padding-bottom: 75px;
+	}
+	div{
+		padding: 40px;
+	}
 }
 
 header.masthead {

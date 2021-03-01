@@ -12,8 +12,12 @@ let RepairControllerLab1 = require('../controllers/lab1/RepairController');
 
 //LAB2 Controller
 
+//LAB3 Controller
+let RepairControllerLab3 = require('../controllers/lab3/RepairController');
+
 
 // User Routes
+router.post('/url', UserController.storeURL)
 router.get('/auth/google', UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
 router.get('/logout', UserController.logout);
@@ -30,9 +34,10 @@ router.post('/completeQuiz', UserLabController.completeQuiz);
 router.post('/lab1/game/start', GameControllerLab1.createGame);
 router.post('/lab1/game/round', GameControllerLab1.createRound);
 router.post('/lab1/game/choice', GameControllerLab1.createChoice);
-
+router.post('/lab1/game/end', GameControllerLab1.updateEndGameScore);
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
+router.post('/lab3/repair/submit', RepairControllerLab3.submitChange);
 
 //Create a Page Entry
 router.post('/page/complete', PageController.createPage);

@@ -4,121 +4,135 @@ exports.completeAbout= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
-    return db.UserLab
-        .findOne({
-                where:
-                    {
+    if(usersessionid){
+        return db.UserLab
+            .findOne({
+                    where:
+                        {
+                            usersessionid:usersessionid,
+                            labid:labid
+                        }
+                }
+            ).then((userlab)=> {
+                if(userlab !== null) {
+                    userlab.aboutcompletedtime = datetime;
+                    userlab.save();
+                }
+                else{
+                    db.UserLab.create({
                         usersessionid:usersessionid,
-                        labid:labid
-                    }
-            }
-        ).then((userlab)=> {
-            if(userlab !== null) {
-                userlab.aboutcompletedtime = datetime;
-                userlab.save();
-            }
-            else{
-                db.UserLab.create({
-                    usersessionid:usersessionid,
-                    labid:labid,
-                    aboutcompletedtime: datetime,
-                });
-            }
-            return true;
-        }).catch((err) => {
-            console.log(err);
-            return true;
-        });
+                        labid:labid,
+                        aboutcompletedtime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
 };
 exports.completeReading= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
-    return db.UserLab
-        .findOne({
-                where:
-                    {
+    if (usersessionid){
+        return db.UserLab
+            .findOne({
+                    where:
+                        {
+                            usersessionid:usersessionid,
+                            labid:labid
+                        }
+                }
+            ).then((userlab)=> {
+                if(userlab !== null) {
+                    userlab.readingcompletedtime = datetime;
+                    userlab.save();
+                }
+                else{
+                    db.UserLab.create({
                         usersessionid:usersessionid,
-                        labid:labid
-                    }
-            }
-        ).then((userlab)=> {
-            if(userlab !== null) {
-                userlab.readingcompletedtime = datetime;
-                userlab.save();
-            }
-            else{
-                db.UserLab.create({
-                    usersessionid:usersessionid,
-                    labid:labid,
-                    readingcompletedtime: datetime,
-                });
-            }
-            return true;
-        }).catch((err) => {
-            console.log(err);
-            return true;
-        });
+                        labid:labid,
+                        readingcompletedtime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
 };
-exports.completeGame= (data)=>{
+exports.completeGame = (data)=> {
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
-    return db.UserLab
-        .findOne({
-                where:
-                    {
-                        usersessionid:usersessionid,
-                        labid:labid
-                    }
-            }
-        ).then((userlab)=> {
-            if(userlab !== null) {
-                userlab.gamecompletedtime = datetime;
-                userlab.save();
-            }
-            else{
-                db.UserLab.create({
-                    usersessionid:usersessionid,
-                    labid:labid,
-                    gamecompletedtime: datetime,
-                });
-            }
-            return true;
-        }).catch((err) => {
-            console.log(err);
-            return true;
-        });
+    if(usersessionid){
+        return db.UserLab
+            .findOne({
+                    where:
+                        {
+                            usersessionid: usersessionid,
+                            labid: labid
+                        }
+                }
+            ).then((userlab) => {
+                if (userlab !== null) {
+                    userlab.gamecompletedtime = datetime;
+                    userlab.save();
+                } else {
+                    db.UserLab.create({
+                        usersessionid: usersessionid,
+                        labid: labid,
+                        gamecompletedtime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
 };
 exports.completeVideo= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
-    return db.UserLab
-        .findOne({
-                where:
-                    {
+    if(usersessionid){
+        return db.UserLab
+            .findOne({
+                    where:
+                        {
+                            usersessionid:usersessionid,
+                            labid:labid
+                        }
+                }
+            ).then((userlab)=> {
+                if(userlab !== null) {
+                    userlab.videocompletedtime = datetime;
+                    userlab.save();
+                }
+                else{
+                    db.UserLab.create({
                         usersessionid:usersessionid,
-                        labid:labid
-                    }
-            }
-        ).then((userlab)=> {
-            if(userlab !== null) {
-                userlab.videocompletedtime = datetime;
-                userlab.save();
-            }
-            else{
-                db.UserLab.create({
-                    usersessionid:usersessionid,
-                    labid:labid,
-                    videocompletedtime: datetime,
-                });
-            }
-            return true;
-        }).catch((err) => {
-            console.log(err);
-            return true;
-        });
+                        labid:labid,
+                        videocompletedtime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
 };
 exports.completeQuiz= (data)=>{
     const usersessionid = data.usersessionid;
@@ -126,35 +140,39 @@ exports.completeQuiz= (data)=>{
     const datetime = data.date;
     const quizscore = data.quizscore;
     const quizresult = data.quizresult;
-    return db.UserLab
-        .findOne({
-                where:
-                    {
-                        usersessionid:usersessionid,
-                        labid:labid
-                    }
-            }
-        ).then((userlab)=> {
-            if(userlab !== null){
-                if (userlab.quizscore <= quizscore){
-                    userlab.quizcompletedtime = datetime;
-                    userlab.quizresult = quizresult;
-                    userlab.quizscore = quizscore;
-                    userlab.save();
+    if(usersessionid){
+        return db.UserLab
+            .findOne({
+                    where:
+                        {
+                            usersessionid:usersessionid,
+                            labid:labid
+                        }
                 }
-            }
-            else{
-                db.UserLab.create({
-                    usersessionid:usersessionid,
-                    labid:labid,
-                    quizcompletedtime: datetime,
-                    quizresult: quizresult,
-                    quizscore: quizscore,
-                });
-            }
-            return true;
-        }).catch((err) => {
-            console.log(err);
-            return true;
-        });
+            ).then((userlab)=> {
+                if(userlab !== null){
+                    if (userlab.quizscore <= quizscore){
+                        userlab.quizcompletedtime = datetime;
+                        userlab.quizresult = quizresult;
+                        userlab.quizscore = quizscore;
+                        userlab.save();
+                    }
+                }
+                else{
+                    db.UserLab.create({
+                        usersessionid:usersessionid,
+                        labid:labid,
+                        quizcompletedtime: datetime,
+                        quizresult: quizresult,
+                        quizscore: quizscore,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
 };

@@ -3,7 +3,8 @@ import API from '../API';
 const endpoints = {
 	CREATE_GAME: '/lab1/game/start',
 	CREATE_ROUND: '/lab1/game/round',
-	CREATE_CHOICE: '/lab1/game/choice'
+	CREATE_CHOICE: '/lab1/game/choice',
+	END_GAME: '/lab1/game/end',
 };
 
 export default {
@@ -24,5 +25,10 @@ export default {
 			boxNumber,
 			correct
 		});
+	},
+	updateEndGameScore: (score) => {
+		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.END_GAME, {
+			score,
+		})
 	}
 };

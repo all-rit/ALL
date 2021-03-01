@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {actions as appActions} from '../../../reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
 import logo from "../../../assets/images/accessCycle.png";
+import {Sections} from "../../../constants/index";
 
 const mapStateToProps = (state) => {
     return {
@@ -52,7 +53,7 @@ class Certificate extends Component {
                             }
                             </span>
                         <br /><br />
-                            <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>Accessibility Learning Lab 1: Accessibility to Sound and Speech</span> <br/><br/>
+                            <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>{Sections[this.props.lab].fullname}{console.log(Sections)}</span> <br/><br/>
                             <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>with score of <b style={{color:this.getColor()}}>{this.props.quizResult}</b></span> <br/><br/>
                             <span style={{fontSize:"25px",textAlign:"center",padding:"20px"}}><i>dated</i></span><br />
                             <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>{date}</span><br/><br/>
