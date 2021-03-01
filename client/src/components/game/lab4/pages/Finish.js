@@ -28,7 +28,6 @@ class Finish extends Component {
                     <Button
                         href="#"
                         onClick={this.handleSubmit}
-                        component={Link}
                         variant={"contained"}
                         color={"primary"}
                         style={buttonStyle}

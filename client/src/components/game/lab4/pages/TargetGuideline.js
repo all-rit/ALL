@@ -36,7 +36,7 @@ class TargetGuideline extends Component {
                     </p>
 
                     <Button
-                        component={Link}
+                        // component={Link}
                         href="#"
                         onClick={this.handleSubmit}
                         variant={"contained"}
