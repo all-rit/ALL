@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
-import AppInstructions from "./components/AppInstructions";
+import AppInstructions from "../components/AppInstructions";
  import Button from "@material-ui/core/Button";
 
 class GameStart extends Component {

@@ -55,7 +55,7 @@ class SmallTarget extends Component {
         let distX = this.calculateDistanceX(this.myDiv, e.screenX);
         let distY = this.calculateDistanceY(this.myDiv, e.screenY);
         let right = -distX / 2 > -300 ? -(distX / 2) : -(distX / 2) / 25;
-        let top = distY / 2 < 300 ? distY / 2 : 300;
+        let top = distY / 2 < 300 ? (distY / 5) : 300;
         this.setState({ right: right + "px", top: top + "px" });
     };
 
@@ -77,7 +77,8 @@ class SmallTarget extends Component {
                             width: "300px",
                             height: "300px",
                             margin: "auto",
-                            paddingTop: "50px"
+                            paddingTop: "50px",
+                            position: "relative",
                         }}
                         onMouseMove={e => this.wiggle(e)}
                     >

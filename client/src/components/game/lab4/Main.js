@@ -17,7 +17,7 @@ import AccessibleGuideline from "./pages/AccessibleGuideline";
 import CodeChangeAccessible from "./pages/CodeChangeAccessible";
 import FormHintAccessible from "./pages/FormHintAccessible";
 import Finish from "./pages/Finish";
-import GameStart from "./GameStart";
+import GameStart from "./pages/GameStart";
 
 const mapStateToProps = (state) => ({
     state: state

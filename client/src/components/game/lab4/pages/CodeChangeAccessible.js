@@ -186,14 +186,14 @@ class CodeChangeAccessible extends Component {
         };
         return (
             <div>
-                <CodeUpdateHeader
+                {/* <CodeUpdateHeader
                     heading={"Make Code Changes"}
                     justifyAlignment={"space-between"}
                     helpMessage={"Set the tabindex to 0 in the code editor."}
-                />
+                /> */}
                 <div className="app__instructions__small2">
-                    <h2>Intent</h2>
-                    The intent of this code change is to ensure that, wherever possible,
+                    <h2>Repair</h2><br/>
+                    The intent of this code repair is to ensure that, wherever possible,
                     content can be operated through a keyboard or keyboard interface.
                     Tabindex="-1" prevents access through keyboard navigation.
                     Tabindex="2" (positive non-zero) means focusable in sequential

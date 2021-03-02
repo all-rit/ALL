@@ -23,7 +23,8 @@ class FormHintInaccessible extends Component {
 
     render() {
         const instructions =
-            "Complete the form below. Use tab to go next, and shift+tab to go back.";
+            `Complete the form again, and try to access the hint.
+            Use tab to go next, and shift+tab to go back.`;
         const instructions2 = "Do not use the mouse!";
         const url = "/Lab4/Game/AccessibleGuideline";
         const tab = null;

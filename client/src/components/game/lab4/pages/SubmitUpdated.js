@@ -47,7 +47,7 @@ class SubmitUpdated extends Component {
         let distX = this.calculateDistanceX(this.myDiv, e.screenX);
         let distY = this.calculateDistanceY(this.myDiv, e.screenY);
         let right = -distX / 2 > -300 ? -(distX / 2) : -(distX / 2) / 25;
-        let top = distY / 2 < 300 ? distY / 2 : 300;
+        let top = distY / 2 < 300 ? (distY / 5) : 300;
         this.setState({ right: right + "px", top: top + "px" });
     };
 
@@ -79,7 +79,8 @@ class SubmitUpdated extends Component {
                             width: "200px",
                             height: "200px",
                             margin: "auto",
-                            paddingTop: "30px"
+                            paddingTop: "30px",
+                            position: "relative",
                         }}
                         onMouseMove={e => this.wiggle(e)}
                     >

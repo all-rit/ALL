@@ -176,24 +176,24 @@ class CodeChangeBlocks extends Component {
         };
         return (
             <div>
-                <CodeUpdateHeader
+                {/* <CodeUpdateHeader
                     heading={"Make Code Changes"}
                     justifyAlignment={"space-between"}
                     helpMessage={"Copy the code from the comment at the top of the code editor, and paste it into the input field in the code editor."}
-                />
+                /> */}
                 <div className="app__instructions__small2">
-                    <h2>Intent</h2>
-                    The intent of this code change is to allow people who navigate
+                    <h2>Repair</h2><br/>
+                    The intent of this code repair is to allow people who navigate
                     sequentially through content more direct access to the primary content
                     of the Web page and skip over repeated blocks. These include but are
                     not limited to navigation links, heading graphics, and advertising
-                    frames
+                    frames.
                 </div>
                 <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
                     <Paper style={paperStyle}>
             <pre>
               <code className="language-html">
-                {`/* add the following in the input: <a class="skip-main" href="#main">Skip to main content</a>*/
+                {`/* add the following in the input: <a class="skip-main" href="#main">Skip to main content</a> */
 `}
               </code>
               <input

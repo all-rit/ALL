@@ -226,15 +226,15 @@ class CodeChangeTarget extends Component {
         console.log("in codechangetarget");
         return (
             <div>
-                <CodeUpdateHeader
+                {/* <CodeUpdateHeader
                     heading={"Make Code Changes"}
                     justifyAlignment={"space-between"}
                     helpMessage={"Set the min-width and min-height values to at least 44px."}
-                />
+                /> */}
 
                 <div className="playthrough__sentence">
-                    <h2>Intent</h2>
-                    The intent of this code change is to ensure that target sizes are
+                    <h2>Repair</h2><br/>
+                    The intent of this code repair is to ensure that target sizes are
                     large enough for users to easily activate them, especially those with
                     limited dexterity. Mice and similar pointing devices can be hard to
                     use for these users, and a larger target will help them activate the
