@@ -43,7 +43,7 @@ const Reading = () => {
                     <li>Muscular dystrophy</li>
                     <li>Multiple sclerosis</li>
                     <li>Spina bifida</li>
-                    <li>Amyotrophic lateral sclerosis (ALS)</li>
+                    <li>Amyotrophic Lateral Sclerosis (ALS)</li>
                     <li>Arthritis</li>
                     <li>Parkinson’s disease</li>
                     <li>Essential tremor</li>

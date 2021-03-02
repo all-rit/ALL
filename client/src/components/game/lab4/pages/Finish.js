@@ -24,6 +24,7 @@ class Finish extends Component {
                     <h2 className="app__instructions__small">
                         Congratulations on finishing the module!
                     </h2>
+                    <br/>
                     <Button
                         href="#"
                         onClick={this.handleSubmit}

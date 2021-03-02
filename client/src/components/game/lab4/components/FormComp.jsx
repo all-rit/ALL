@@ -87,7 +87,7 @@ class FormComp extends Component {
     return (
       <main>
         <div className="overlap" onClick={e => this.focusElem(e)}/>
-        <Form className="formComp">
+        <Form className="formCompDexterity">
           <FormGroup>
             <Label for="animal">Favorite Animal e.g. Tiger</Label>
             <Input

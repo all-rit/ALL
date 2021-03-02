@@ -1,0 +1,66 @@
+.overlap {
+    width: 50%;
+    height: 370px;
+    z-index: 1;
+    position: absolute;
+    left: 25%;
+  }
+  .inputHover:focus{
+    outline: 2px solid #97bfff;
+  }
+  .inputHover{
+    width: 80px;
+    background-color: #f8f9fa;
+    border: none;
+    margin-right: 5px;
+  }
+  .formButtonSubmit{
+    background-color: #5a6268 !important;
+    width: 100px !important;
+    color: white !important;
+    font-weight: bold !important;
+    display:inline-block !important;
+  }
+  .formButtonHelp{
+    background-color: #dc3545 !important;
+    width: 100px !important;
+    color: white !important;
+    font-weight: bold !important;
+    display:inline-block !important;
+  }
+  .disabled{
+    opacity:50% !important;
+  }
+  a.skip-main {
+    position:absolute;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    z-index:-999;
+  }
+  .formComp{
+    text-align: left;
+    margin:auto;
+    width:50%;
+  }
+  .formCompDexterity{
+      text-align:left;
+      padding-top: 3%;
+      padding-left: 30%;
+      padding-right: 30%;
+  }
+  .form-error{
+    color:red;
+  }
+  .form-error-input{
+    border:red;
+  }
+  a.skip-main:focus, a.skip-main:active {
+    color: black;
+    font-weight: bold;
+    background-color:yellow;
+    left:0px;
+    width: 30%;
+    height: auto;
+  }  
