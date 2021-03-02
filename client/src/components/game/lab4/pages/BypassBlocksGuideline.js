@@ -18,8 +18,8 @@ class BypassBlocksGuideline extends Component {
         return (
             <Fragment>
                 <div>
-                    <h1 className="playthrough__title">Was That Difficult?</h1>
-                    <p className="playthrough__sentence">
+                    <h2 >Was That Difficult?</h2>
+                    <h2 className="app__instructions__small2">
                         People with mobile dexterity disabilities sometimes use a keyboard
                         to navigate the page. This can be cumbersome if there is no way to
                         skip to the main section. Software should follow the{" "}
@@ -31,7 +31,7 @@ class BypassBlocksGuideline extends Component {
                             WGAC 2.4.1: Bypass Blocks Guideline
                         </a>
                         . Go ahead and make the changes to the code by clicking “continue”.
-                    </p>
+                    </h2>
 
                     <Button
                         href="#"
