@@ -3,7 +3,7 @@ import RepairService from '../../../../../services/lab5/RepairService';
 import PageServiceTimer from "../../components/PageServiceTimer";
 import Popup from "../../components/Popup";
 import {navigate} from "@reach/router";
-import {minFont, maxFont} from '../../../../../constants/lab5'
+import {minFont, maxFont, defaultFont} from '../../../../../constants/lab5'
 
 class PageLayoutRepair extends Component {
 	constructor(props) {
@@ -15,7 +15,14 @@ class PageLayoutRepair extends Component {
 			classvalue: null,
 			fontvalue: null,
 			fontfamilyvalue: null,
+			h1error:null,
+			ulerror:null,
+			classerror:null,
+			fonterror:null,
+			fontfamilyerror:null,
+			repairerror:true
 		};
+		// this.validateRepair = this.validateRepair.bind(this)
 	}
 
 	componentWillMount() {
@@ -27,6 +34,58 @@ class PageLayoutRepair extends Component {
 			fontvalue: data.fontvalue,
 			fontfamilyvalue: data.fontfamilyvalue,
 		});
+	}
+	validateRepair(e){
+		let error=false;
+		Object.keys(this.state).map( name => {
+			switch (name) {
+				case "h1value":
+					if (this.state.name !== "h1") {
+						error = true;
+						this.setState({h1error: "Must be 'h1'"})
+					} else {
+						this.setState({h1error: null})
+					}
+					break;
+				case "ulvalue":
+					if (this.state.name !== "ul") {
+						error = true;
+						this.setState({ulerror: "Must be 'ul'"})
+					} else {
+						this.setState({ulerror: null})
+					}
+					break;
+				case "classvalue":
+					if (this.state.name !== "body") {
+						error = true;
+						this.setState({classerror: "Must enter 'body'"})
+					} else {
+						this.setState({classerror: null})
+					}
+					break;
+				case "fontvalue":
+					let fontsize = parseInt(this.state.name);
+					fontsize = fontsize <= maxFont && fontsize >= minFont ;
+					if (fontsize > maxFont || fontsize < minFont ) {
+						error = true;
+						this.setState({fonterror: `Must enter between ${minFont}px and ${maxFont}px`})
+					} else {
+						this.setState({fonterror: null})
+					}
+					break;
+				case "fontfamilyvalue":
+					if (this.state.name !== "roboto" || this.state.name !== "arial") {
+						error = true;
+						this.setState({fontfamilyerror: "Must be 'arial' or 'roboto'"})
+					} else {
+						this.setState({fontfamilyerror: null})
+					}
+					break;
+				default:
+					break
+			}
+		})
+		this.setState({repairerror: error}, ()=>this.handleSubmit(e))
 	}
 
 	handleSubmit(event) {
@@ -40,36 +99,46 @@ class PageLayoutRepair extends Component {
 		} = this.state;
 
 		event.preventDefault();
-		const repair = JSON.stringify({h1value,
-			ulvalue,
-			classvalue,
-			fontvalue,
-			fontfamilyvalue});
-		// Submit a repair entry in the database.
-		RepairService.submitRepair(
-			this.constructor.name, repair
-		);
+		if (!this.state.repairerror) {
+			const repair = JSON.stringify({
+				h1value,
+				ulvalue,
+				classvalue,
+				fontvalue,
+				fontfamilyvalue
+			});
+			// Submit a repair entry in the database.
+			RepairService.submitRepair(
+				this.constructor.name, repair
+			);
 
-		// Update the state and close the repair.
-		handlers.updateRepairPageLayout(
-			h1value,
-			ulvalue,
-			classvalue,
-			fontvalue,
-			fontfamilyvalue
-		);
-		handlers.closeRepair();
-		handlers.updatePopup('The repairs have been made.');
+			// Update the state and close the repair.
+			handlers.updateRepairPageLayout(
+				h1value,
+				ulvalue,
+				classvalue,
+				fontvalue,
+				fontfamilyvalue
+			);
+			handlers.closeRepair();
+			handlers.updatePopup('The repairs have been made.');
 
-		setTimeout(() => {
-			handlers.updatePopup('');
-		}, 5000);
+			setTimeout(() => {
+				handlers.updatePopup('');
+			}, 5000);
+		}
+		else{
+			handlers.closeRepair();
+			handlers.updatePopup('Errors in Repair. Please fix');
+			setTimeout(() => {
+				handlers.updatePopup('');
+			}, 6000);
+		}
 	}
 
 	changeHandler(event) {
 		const name = event.target.name;
 		const value = event.target.value;
-
 		this.setState({
 			[name]: value
 		});
@@ -87,7 +156,7 @@ class PageLayoutRepair extends Component {
 				<div className= "cognitive_instructions margin-bottom-2">
 					Let's make the changes to make the code accessible. Click 'Repair' to make the appropriate changes.
 				</div>
-				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} />
+				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} error={this.state.repairerror}/>
 
 				<button className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton" onClick={handlers.openRepair} key="repair">
 					Repair
@@ -96,6 +165,7 @@ class PageLayoutRepair extends Component {
 					className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
 					onClick = {this.handleNav}
 					key="Next"
+					disabled={this.state.repairerror}
 				>
 					Next
 				</button>
@@ -166,7 +236,7 @@ class PageLayoutRepair extends Component {
 								<input
 									name="h1value"
 									type="text"
-									className="htmlinput"
+									className={`htmlinput ${this.state.h1error? "form-error-input": ""}`}
 									defaultValue={data.h1value}
 									onChange={this.changeHandler.bind(this)}
 									required
@@ -179,6 +249,12 @@ class PageLayoutRepair extends Component {
 								<span className="code_editor__line--darkblue">/{this.state.h1value}</span>
 								<span className="code_editor__line--darkblue">&#62;</span>
 							</div>
+							{ this.state.h1error &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className='form-error'>{this.state.h1error}</span>
+							</div>
+							}
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--darkblue">&#60;</span>
@@ -216,12 +292,20 @@ class PageLayoutRepair extends Component {
 										defaultValue={data.classvalue}
 										onChange={this.changeHandler.bind(this)}
 										title="must enter body"
+										className={this.state.classerror? "form-error-input": ""}
+
 									/>
 								</span>
 								<span className="code_editor__line--darkblue">/&#62;</span>
 							</div>
+							{ this.state.classerror &&
 							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className='form-error'>{this.state.classerror}</span>
+							</div>
+							}
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--darkgreen">&#47;&#47;Enter 'ul' into the input below</span>
 							</div>
 							<div className="code_editor__line code_editor__line-background--light">
@@ -231,7 +315,7 @@ class PageLayoutRepair extends Component {
 									<input
 										name="ulvalue"
 										type="text"
-										className="htmlinput"
+										className={`htmlinput ${this.state.ulerror? "form-error-input": ""}`}
 										defaultValue={data.ulvalue}
 										onChange={this.changeHandler.bind(this)}
 										title="must enter ul"
@@ -239,6 +323,12 @@ class PageLayoutRepair extends Component {
 								</span>
 								<span className="code_editor__line--darkblue">/&#62;</span>
 							</div>
+							{ this.state.ulerror &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className='form-error'>{this.state.ulerror}</span>
+							</div>
+							}
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--darkblue">&#60;li&#62;</span>
@@ -330,9 +420,17 @@ class PageLayoutRepair extends Component {
 										defaultValue={data.fontvalue}
 										onChange={this.changeHandler.bind(this)}
 										title={`must enter between ${minFont}px and ${maxFont}px`}
+										className={this.state.fonterror? "form-error-input": ""}
+
 									/>
 								</span>
 								</div>
+								{ this.state.fonterror &&
+								<div className="code_editor__line">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span className='form-error'>{this.state.fonterror}</span>
+								</div>
+								}
 								<div className="code_editor__input">
 
 								</div>
@@ -352,16 +450,23 @@ class PageLayoutRepair extends Component {
 										defaultValue={data.fontfamilyvalue}
 										onChange={this.changeHandler.bind(this)}
 										title="must enter arial or roboto"
+										className={this.state.fontfamilyerror? "form-error-input": ""}
 									/>
 								</span>
 								</div>
+								{ this.state.fontfamilyerror &&
+								<div className="code_editor__line">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span className='form-error'>{this.state.fontfamilyerror}</span>
+								</div>
+								}
 							</div>
 							<p className="code_editor__class">&#125;</p>
 						</div>
 
 					</div>
 					<button
-						onClick={this.handleSubmit.bind(this)}
+						onClick={this.validateRepair.bind(this)}
 						type="submit"
 						className="button button--green button--block"
 					>

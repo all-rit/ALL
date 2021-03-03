@@ -8,13 +8,13 @@ class Popup extends Component {
 	}
 
 	render() {
-		const { message } = this.props;
+		const { message, error } = this.props;
 
 		if (message === '') return null;
 
 		return (
 			<div className="popup">
-				<div className="popup__content">
+				<div className={`popup__content ${error? "popup__error": ""}`}>
 					<span className="popup__message">{message}</span>
 					<span className="popup__close" onClick={this.close.bind(this)}>
 						&times;
