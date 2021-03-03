@@ -48,7 +48,6 @@ code {
     font-size: 18px;
   }
 }
-
 .popup{
   position: fixed;
   width: 100%;
@@ -69,8 +68,7 @@ code {
   right: 10%;
   margin: auto;
   background: rgba(38,38,38,1);
-}
-
+} 
 .colorSelector{
   position: absolute;
   top: 10%;
@@ -124,10 +122,10 @@ code {
   }
 }
 
-.center{
+/* .center{
   display: flex;
   justify-content: center;
-}
+} */
 
 .tab{
   padding-left: 30px;

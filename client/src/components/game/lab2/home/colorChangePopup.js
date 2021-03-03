@@ -194,6 +194,7 @@ class ColorChangePopup extends React.Component {
 
 	handleSubmit(event) {
 		const { handlers } = this.props;
+    console.log(handlers);
 		const {
       background,
       correctColor,

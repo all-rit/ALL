@@ -16,7 +16,7 @@ import FourthInstructions from "./Instructions/fourthInstructions";
 import Conclusion from "./Instructions/conclusion";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-
+import { actions as repairActions } from '../../../reducers/lab2/RepairReducer';
 //Imports from redux actions
 import {
   changeDefaultColors,
@@ -49,6 +49,7 @@ import {
   resetSystem,
   goBackFromGame
 } from "../../../reducers/lab2/actions";
+import { bindActionCreators } from "redux";
 
 library.add(faQuestionCircle);
 
@@ -109,7 +110,8 @@ const mapDispatchToProps = dispatch => {
     onCloseColorChange: () => dispatch(closeColorChange()),
     onToGreyBackground: () => dispatch(toGreyBackground()),
     onResetSystem: () => dispatch(resetSystem()),
-    onGoBackFromGame: () => dispatch(goBackFromGame())
+    onGoBackFromGame: () => dispatch(goBackFromGame()),
+    actions:bindActionCreators({...repairActions})
   };
 };
 

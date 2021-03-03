@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
 				background: action.background,
 				correctColor: action.correctColor,
 				incorrectColorOne: action.incorrectColorOne,
-				incorrectColorTwo: action.catAltValue,
+				incorrectColorTwo: action.incorrectColorTwo,
 			};
 		default:
 			return state;
@@ -24,9 +24,9 @@ export default (state = initialState, action) => {
 };
 
 export const actions = {
-	updateRepair: (cowAltValue, carAltValue, burgerAltValue, catAltValue) => ({
+	updateRepair: (background, correctColor, incorrectColorOne, incorrectColorTwo) => ({
 		type: types.UPDATE_REPAIR,
-		cowAltValue, carAltValue, burgerAltValue, catAltValue
+		background, correctColor, incorrectColorOne, incorrectColorTwo
 	}),
 
 };

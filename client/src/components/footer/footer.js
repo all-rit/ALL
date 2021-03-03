@@ -132,7 +132,7 @@ class Footer extends Component {
         const {state, actions} = this.props;
         const lab = state.main.lab;
         const body = state.main.body;
-        let display = getGameState(state) === "GAME_IDLE" || body !== 2 || state.game2.changeGameState.endSystem || state.game2.changeGameState.firstGame;
+        let display = getGameState(state) === "GAME_IDLE" || body !== 2;
         let hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
         return (
             <div>
