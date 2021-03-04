@@ -1,0 +1,51 @@
+.knowledgeTest{
+  font-size:1.25rem;
+  .question{
+    font-size: 1.5rem;
+    margin-bottom:1rem;
+  }
+  .options{
+    margin-top:.5rem;
+  }
+
+  .option{
+    border-radius: .25rem;
+    border: 1px solid;
+    padding:.25rem;
+    width:60%;
+    margin:auto;
+    margin-top:.5rem;
+    background-color:white;
+  }
+  .option:hover{
+    background-color: #e1e2e5;
+  }
+  .correct{
+    background-color: #489907 !important;
+    color:white;
+  }
+  .incorrect{
+    color: white;
+    background-color: #943939 !important;
+  }
+  .text{
+    margin-bottom: 20px;
+  }
+  .result{
+    background-color: #484848 !important;
+    padding:20px;
+    color: white;
+    width:60%;
+    margin:auto;
+    margin-top: 10px;
+
+  }
+  .next{
+    margin:auto;
+  }
+  .cover{
+    position:absolute;
+    z-index: 1;
+    height:400px;
+  }
+}

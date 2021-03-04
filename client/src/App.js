@@ -18,7 +18,10 @@ import {default as VideoLab3} from "./components/body/lab3/video";
 // import {default as ReadingLab4} from "./components/body/lab4/reading";
 // import {default as GameLab4} from "./components/game/lab4/Main";
 // import {default as VideoLab4} from "./components/body/lab4/video";
-
+import {default as AboutLab5} from "./components/body/lab5/about";
+import {default as ReadingLab5} from "./components/body/lab5/reading";
+import {default as GameLab5} from "./components/game/lab5/Main";
+import {default as VideoLab5} from "./components/body/lab5/video";
 import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Error} from "./components/body/landingpage/error";
@@ -78,19 +81,23 @@ class App extends Component {
               <Error actions={actions} default />
               <AboutLab1 path="/Lab1/"/>
               <AboutLab3 path="/Lab3/"/>
+              <AboutLab5 path="/Lab5/"/>
               <AboutLab1 path="/Lab1/About"/>
               <AboutLab3 path="/Lab3/About"/>
               {/* <AboutLab2 path="/Lab2/About"/>
               <AboutLab4 path="/Lab4/About"/> */}
-              
+              <AboutLab5 path="/Lab5/About"/>
+
+
               <ReadingLab1 path="/Lab1/Reading"/>
               <ReadingLab3 path="/Lab3/Reading"/>
               {/* <ReadingLab2 path="/Lab2/Reading"/>
-              
               <ReadingLab4 path="/Lab4/Reading"/> */}
+              <ReadingLab5 path="/Lab5/Reading"/>
 
               <GameLab1 path="/Lab1/Game" />
               <GameLab3 path="/Lab3/Game/*" />
+              <GameLab5 path="/Lab5/Game/*" />
               {/* <GameLab2 path="/Lab2/Game" />
               
               <GameLab4 path="/Lab4/Game" /> */}
@@ -99,7 +106,8 @@ class App extends Component {
               <VideoLab3 path="/Lab3/Video" />
               {/* <VideoLab2 path="/Lab2/Video" />
               <VideoLab4 path="/Lab4/Video" /> */}
-              
+              <VideoLab5 path="/Lab5/Video" />
+
               <Quiz path={`/Lab${lab}/Quiz`}/>
             </Router>
           </div>
