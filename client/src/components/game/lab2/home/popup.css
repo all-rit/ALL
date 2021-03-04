@@ -74,6 +74,7 @@ code {
   top: 10%;
   left: 5%;
   margin: auto;
+  z-index:1;
 }
 
 .inlineForm{

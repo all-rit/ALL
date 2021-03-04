@@ -519,44 +519,42 @@ class Repair extends Component {
 
           {/*Other Styling*/}
             <div className="code_editor__line">
-							<span className="code_editor__line--pink">.center</span>
-							<span className="code_editor__line--white">&#123;</span>
+              <p className="code_editor__class">.center &#123;</p>
 						</div>
                         <div className="code_editor__line">
 							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">display: </span>
-                            <span className="code_editor__line--white">felx;</span>
+                            <span className="code_editor__property code_editor__line-background--light">display: </span>
+                            <span className="code_editor__line--white">&nbsp;&nbsp; felx;</span>
                         </div>
                         <div className="code_editor__line">
 							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">justify-content: </span>
-                            <span className="code_editor__line--white">center;</span>
+                            <span className="code_editor__property code_editor__line-background--light">justify-content: </span>
+                            <span className="code_editor__line--white">&nbsp;&nbsp; center;</span>
                         </div>
                         <div className="code_editor__line">
-							<span className="code_editor__line--white">&#125;</span>
+                <p className="code_editor__class">&#125;</p>
 						</div>
 
-                        <div className="code_editor__line">
-							<span className="code_editor__line--pink">.header</span>
-							<span className="code_editor__line--white">&#123;</span>
+            <div className="code_editor__line">
+                <p className="code_editor__class">.header &#123;</p>
 						</div>
                         <div className="code_editor__line">
 							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">font-size: </span>
-                            <span className="code_editor__line--white">30px;</span>
+                            <span className="code_editor__property code_editor__line-background--light">font-size: </span>
+                            <span className="code_editor__line--white">&nbsp;&nbsp; 30px;</span>
                         </div>
                         <div className="code_editor__line">
 							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">display: </span>
-                            <span className="code_editor__line--white">flex;</span>
+                            <span className="code_editor__property code_editor__line-background--light">display: </span>
+                            <span className="code_editor__line--white">&nbsp;&nbsp; flex;</span>
                         </div>
                         <div className="code_editor__line">
 							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">justify-content: </span>
-                            <span className="code_editor__line--white">center;</span>
+                            <span className="code_editor__property code_editor__line-background--light">justify-content: </span>
+                            <span className="code_editor__line--white">&nbsp;&nbsp; center;</span>
                         </div>
                         <div className="code_editor__line">
-							<span className="code_editor__line--white">&#125;</span>
+                  <p className="code_editor__class">&#125;</p>
 						</div>
 				</div>
 					<button
