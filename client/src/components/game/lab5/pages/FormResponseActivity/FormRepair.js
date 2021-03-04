@@ -12,6 +12,11 @@ class FormRepair extends Component {
 			errorNotification: null,
 			successNotification: null,
 			borderColor: null,
+			errorNotificationerror: null,
+			successNotificationerror: null,
+			borderColorerror:null,
+			repairerror:true
+
 
 		};
 	}
@@ -21,6 +26,44 @@ class FormRepair extends Component {
 		this.setState({errorNotification: data.errorNotification,
 			successNotification: data.successNotification,
 			borderColor: data.borderColor,});
+	}
+	validateRepair(e){
+		let error=false;
+		Object.keys(this.state).map( name => {
+			switch (name) {
+				case "errorNotification":
+					if (this.state[name] !=="Please enter in format: YYYY-MM-DD") {
+						error = true;
+						this.setState({errorNotificationerror: "Must enter 'Please enter in format: YYYY-MM-DD'"})
+					} else {
+						this.setState({errorNotificationerror: null})
+					}
+					break;
+				case "successNotification":
+					if (this.state[name] === null) {
+						error = true;
+						this.setState({successNotificationerror: "Must not be empty"})
+					} else if(this.state[name].trim() === ""){
+						error = true;
+						this.setState({successNotificationerror: "Must not be empty"})
+					} else{
+						this.setState({successNotificationerror: null})
+					}
+					break;
+				case "borderColor":
+					if (this.state[name] !== "red") {
+						error = true;
+						this.setState({borderColorerror: "Must enter 'red'"})
+					} else {
+						this.setState({borderColorerror: null})
+					}
+					break;
+				default:
+					break;
+			}
+			return [];
+		})
+		this.setState({repairerror: error}, ()=>this.handleSubmit(e))
 	}
 
 	handleSubmit(event) {
@@ -32,15 +75,21 @@ class FormRepair extends Component {
 		} = this.state;
 
 		event.preventDefault();
-		const repair = JSON.stringify({
-			errorNotification,
-			successNotification,
-			borderColor
-		});
-		// Submit a repair entry in the database.
-		RepairService.submitRepair(
-			this.constructor.name, repair
-		);
+		if (!this.state.repairerror) {
+			const repair = JSON.stringify({
+				errorNotification,
+				successNotification,
+				borderColor
+			});
+			// Submit a repair entry in the database.
+			RepairService.submitRepair(
+				this.constructor.name, repair
+			);
+			handlers.updatePopup('The repairs have been made.');
+		}
+		else{
+			handlers.updatePopup('Errors in Repair. Please fix');
+		}
 
 		// Update the state and close the repair.
 		handlers.updateRepairForm(
@@ -48,11 +97,10 @@ class FormRepair extends Component {
 			successNotification,
 			borderColor);
 		handlers.closeRepair();
-		handlers.updatePopup('The repairs have been made.');
 
 		setTimeout(() => {
 			handlers.updatePopup('');
-		}, 5000);
+		}, 6000);
 	}
 
 	changeHandler(event) {
@@ -78,7 +126,7 @@ class FormRepair extends Component {
 					We will be adding an error notification under the 'Today's Date' question along with a success message.
 					Click 'Repair' to make the appropriate changes.
 				</div>
-				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} />
+				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} error={this.state.repairerror}/>
 
 				<button className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton" onClick={handlers.openRepair} key="repair">
 					Repair
@@ -87,6 +135,7 @@ class FormRepair extends Component {
 					className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
 					onClick = {this.handleNav}
 					key="Next"
+					disabled={this.state.repairerror}
 				>
 					Next
 				</button>
@@ -289,11 +338,18 @@ class FormRepair extends Component {
 									onChange={this.changeHandler.bind(this)}
 									required
 									title="Enter: 1 for Yes and 0 for No"
+									className={this.state.errorNotificationerror? "form-error-input": ""}
 								/>
 								</span>
 								<span className="code_editor__line--white">&nbsp;&#125;&nbsp;</span>
 								<span className="code_editor__line--darkblue">&#60;/span&#62;</span>
 							</div>
+							{ this.state.errorNotificationerror &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className='form-error'>{this.state.errorNotificationerror}</span>
+							</div>
+							}
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--white">&#125;</span>
@@ -345,6 +401,8 @@ class FormRepair extends Component {
 									onChange={this.changeHandler.bind(this)}
 									required
 									title="Enter: Successful Submission"
+									className={this.state.successNotificationerror? "form-error-input": ""}
+
 								/>
 								</span>
 								<span className="code_editor__line--white">&nbsp;&#125;&nbsp;</span>
@@ -353,6 +411,12 @@ class FormRepair extends Component {
 								<span className="code_editor__line--darkblue">&#62;</span>
 
 							</div>
+							{ this.state.successNotificationerror &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className='form-error'>{this.state.successNotificationerror}</span>
+							</div>
+							}
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--white">&#125;</span>
@@ -443,16 +507,24 @@ class FormRepair extends Component {
 										defaultValue={data.borderColor}
 										onChange={this.changeHandler.bind(this)}
 										title={`must enter red`}
+										className={this.state.borderColorerror? "form-error-input": ""}
+
 									/>
 								</span>
 								</div>
+								{ this.state.borderColorerror &&
+								<div className="code_editor__line">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span className='form-error'>{this.state.borderColorerror}</span>
+								</div>
+								}
 							</div>
 							<p className="code_editor__class">&#125;</p>
 						</div>
 
 					</div>
 					<button
-						onClick={this.handleSubmit.bind(this)}
+						onClick={this.validateRepair.bind(this)}
 						type="submit"
 						className="button button--green button--block"
 					>

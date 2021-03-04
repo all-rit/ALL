@@ -27,22 +27,22 @@ const Reading = () => {
     });
     return (
         <div className="study">
-            <h3>What is Cognitive Impairment?</h3>
+            <h3>What is a Cognitive Impairment?</h3>
             <p>
-                Cognitive impairment refers to a broad range of disabilities, from people with intellectual disabilities who may have the most-limited capabilities, to age-related issues with thinking and remembering. The range includes people with learning disabilities, such as dyslexia and attention deficit hyperactivity disorder (ADHD)
+                Cognitive impairment refers to a broad range of disabilities, from people with intellectual disabilities, who may have the most-limited capabilities, to age-related issues regarding thinking and remembering. This range includes people with learning disabilities, such as dyslexia and attention deficit hyperactivity disorder (ADHD).
             </p>
-            <h3>How many people are affected?</h3>
+            <h3>How Many People are Affected?</h3>
             <div className="flex">
                 <Pie data={data} height={100} />
             </div>
             <p className="center">
-                Currently, as high as 5% of all Americans face cognitive impairments
+                Currently, as high as 5% of all Americans face cognitive impairments.
             </p>
             <p className="center">
                 An estimated 5.1 million
                 Americans aged 65 years or older may currently
                 have Alzheimer’s disease, the most well-known form
-                of cognitive impairment
+                of cognitive impairment.
             </p>
             <p>
                 Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources to various health areas of work.
@@ -56,8 +56,8 @@ const Reading = () => {
                 <li>Different processing speed, requiring additional time</li>
             </ul>
 
-            <h3>How to address these problems?</h3>
-            <p>WCAG, Web Content Accessibility Guidelines, includes several guidelines to improve cognitive accessibility. They define 17 specific guidelines, of which six are especially relevant for cognitive accessibility
+            <h3>How to Address These Problems?</h3>
+            <p>WCAG, Web Content Accessibility Guidelines, includes several guidelines to improve cognitive accessibility. They define 17 specific guidelines, of which six are especially relevant for cognitive accessibility.
 
             <div className="non-bullet-list">
                 <h5>
@@ -69,51 +69,51 @@ const Reading = () => {
                     Time
                 </h5>
                 <div>It is important to allow users the time they require to complete tasks. Guideline 2.2 states "provide users enough time to read and use content."
-                    People with cognitive disabilities may require more time to read content, or to perform functions such as filling out forms
+                    People with cognitive disabilities may require more time to read content, or to perform functions such as filling out forms.
                 </div>
                 <h5>
                     Navigation
                 </h5>
-                <div>Guideline 2.4 states to include clear and descriptive headings so users can easily find information and understand relationships between different content sections</div>
+                <div>Guideline 2.4 states to include clear and descriptive headings so users can easily find information and understand relationships between different content sections.</div>
                 <h5>
                     Readability
                 </h5>
-                <div>Guideline 3.1  states "make text content readable and understandable." Keep the writing style simple and easy to understand
+                <div>Guideline 3.1  states "make text content readable and understandable." Keep the writing style simple and easy to understand.
                 </div>
                 <h5>
                     Predictability
                 </h5>
-                <div>Guideline 3.2 states to "make web pages appear and operate in predictable ways. Use consistency with the page layout
+                <div>Guideline 3.2 states to "make web pages appear and operate in predictable ways. Use consistency with the page layout.
                 </div>
                 <h5>
                     Input Assistance
                 </h5>
-                <div>Guideline 3.3 states to "help users avoid and correct mistakes." If they do make a mistake, ensure the message allows them to easily fix the error
+                <div>Guideline 3.3 states to "help users avoid and correct mistakes." If they do make a mistake, ensure the message allows them to easily fix the error.
                 </div>
             </div>
             </p>
 
-            <h3>Practical application of cognitive accessibility</h3>
+            <h3>Practical Application of Cognitive Accessibility</h3>
             <p>
                 We all enjoy online shopping. However, a person’s ability to use websites effectively declines by 0.8% every year over the age of 25, according to Nielsen Norman Group. Optimally designing for memory limitations will be especially important as the population ages. These techniques include:
                 <div className="non-bullet-list">
                 <h5>
                     User Authentication
                 </h5>
-                <div>Offer at least one alternative method that does not rely on a user to memorize character strings</div>
+                <div>Offer at least one alternative method that does not rely on a user to memorize character strings.</div>
                 <h5>
                     Don’t hide important/frequent controls
                 </h5>
-                <div>Show both the text and icon labels for controls making it easier for users to remember their purpose</div>
+                <div>Show both the text and icon labels for controls making it easier for users to remember their purpose.</div>
                 <h5>
                     Grouping Content
                 </h5>
-                <div>Group similar items semantically and visually with a suggested maximum group size of five. This makes decision the process easier when choosing between similar items
+                <div>Group similar items semantically and visually with a suggested maximum group size of five. This makes decision the process easier when choosing between similar items.
                 </div>
                 <h5>
                     Path Markers
                 </h5>
-                <div>Remind site visitors where they are in a process</div>
+                <div>Remind site visitors where they are in a process.</div>
                 </div>
             </p>
 

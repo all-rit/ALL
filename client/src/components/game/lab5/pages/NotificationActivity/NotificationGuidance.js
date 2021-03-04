@@ -24,6 +24,9 @@ class PageLayoutGuidance extends Component {
                       Reading quickly
                   </li>
                   <li>
+                      Confusing the order of letters in words
+                  </li>
+                  <li>
                       Spelling highly phonetic words
                   </li>
               </ul>

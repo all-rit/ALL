@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			correct: { type: DataTypes.BOOLEAN },
 			question: { type: DataTypes.STRING },
+			selectedoption: { type: DataTypes.STRING },
+			options: { type: DataTypes.STRING }
 		},
 		{ tableName: 'lab5_game' }
 	);

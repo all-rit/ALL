@@ -5,10 +5,13 @@ const endpoints = {
 };
 
 export default {
-	submitChoice: (correct, question) => {
+	submitChoice: (correct, question,selectedoption,
+				   options) => {
 		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_CHOICE, {
 			correct,
-			question
+			question,
+			selectedoption,
+			options
 		});
 	}
 };

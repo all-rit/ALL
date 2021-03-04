@@ -5,6 +5,8 @@ exports.submitChoice = (req, res) => {
         usersessionid: req.session.token,
         question: req.body.question,
         correct: req.body.correct,
+        options: req.body.options,
+        selectedoption: req.body.selectedoption,
     }).then((id) => {
         req.session.game = id;
         res.sendStatus(200);

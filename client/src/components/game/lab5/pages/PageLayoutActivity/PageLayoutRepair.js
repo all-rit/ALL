@@ -3,7 +3,7 @@ import RepairService from '../../../../../services/lab5/RepairService';
 import PageServiceTimer from "../../components/PageServiceTimer";
 import Popup from "../../components/Popup";
 import {navigate} from "@reach/router";
-import {minFont, maxFont, defaultFont} from '../../../../../constants/lab5'
+import {minFont, maxFont} from '../../../../../constants/lab5'
 
 class PageLayoutRepair extends Component {
 	constructor(props) {
@@ -40,7 +40,7 @@ class PageLayoutRepair extends Component {
 		Object.keys(this.state).map( name => {
 			switch (name) {
 				case "h1value":
-					if (this.state.name !== "h1") {
+					if (this.state[name] !== "h1") {
 						error = true;
 						this.setState({h1error: "Must be 'h1'"})
 					} else {
@@ -48,7 +48,7 @@ class PageLayoutRepair extends Component {
 					}
 					break;
 				case "ulvalue":
-					if (this.state.name !== "ul") {
+					if (this.state[name] !== "ul") {
 						error = true;
 						this.setState({ulerror: "Must be 'ul'"})
 					} else {
@@ -56,7 +56,7 @@ class PageLayoutRepair extends Component {
 					}
 					break;
 				case "classvalue":
-					if (this.state.name !== "body") {
+					if (this.state[name] !== "body") {
 						error = true;
 						this.setState({classerror: "Must enter 'body'"})
 					} else {
@@ -64,9 +64,8 @@ class PageLayoutRepair extends Component {
 					}
 					break;
 				case "fontvalue":
-					let fontsize = parseInt(this.state.name);
-					fontsize = fontsize <= maxFont && fontsize >= minFont ;
-					if (fontsize > maxFont || fontsize < minFont ) {
+					let fontsize = parseInt(this.state[name]);
+					if (fontsize > maxFont || fontsize < minFont || isNaN(fontsize)) {
 						error = true;
 						this.setState({fonterror: `Must enter between ${minFont}px and ${maxFont}px`})
 					} else {
@@ -74,7 +73,7 @@ class PageLayoutRepair extends Component {
 					}
 					break;
 				case "fontfamilyvalue":
-					if (this.state.name !== "roboto" || this.state.name !== "arial") {
+					if (this.state[name] !== "roboto" && this.state[name] !== "arial") {
 						error = true;
 						this.setState({fontfamilyerror: "Must be 'arial' or 'roboto'"})
 					} else {
@@ -84,6 +83,7 @@ class PageLayoutRepair extends Component {
 				default:
 					break
 			}
+			return [];
 		})
 		this.setState({repairerror: error}, ()=>this.handleSubmit(e))
 	}
@@ -111,30 +111,24 @@ class PageLayoutRepair extends Component {
 			RepairService.submitRepair(
 				this.constructor.name, repair
 			);
-
-			// Update the state and close the repair.
-			handlers.updateRepairPageLayout(
-				h1value,
-				ulvalue,
-				classvalue,
-				fontvalue,
-				fontfamilyvalue
-			);
-			handlers.closeRepair();
 			handlers.updatePopup('The repairs have been made.');
-
-			setTimeout(() => {
-				handlers.updatePopup('');
-			}, 5000);
-		}
-		else{
-			handlers.closeRepair();
+		}else
+		{
 			handlers.updatePopup('Errors in Repair. Please fix');
-			setTimeout(() => {
-				handlers.updatePopup('');
-			}, 6000);
 		}
-	}
+		// Update the state and close the repair.
+		handlers.updateRepairPageLayout(
+			h1value,
+			ulvalue,
+			classvalue,
+			fontvalue,
+			fontfamilyvalue
+		);
+		handlers.closeRepair();
+		setTimeout(() => {
+			handlers.updatePopup('');
+		}, 6000);
+		}
 
 	changeHandler(event) {
 		const name = event.target.name;
@@ -325,7 +319,7 @@ class PageLayoutRepair extends Component {
 							</div>
 							{ this.state.ulerror &&
 							<div className="code_editor__line">
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className='form-error'>{this.state.ulerror}</span>
 							</div>
 							}
@@ -427,7 +421,7 @@ class PageLayoutRepair extends Component {
 								</div>
 								{ this.state.fonterror &&
 								<div className="code_editor__line">
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 									<span className='form-error'>{this.state.fonterror}</span>
 								</div>
 								}
@@ -456,7 +450,7 @@ class PageLayoutRepair extends Component {
 								</div>
 								{ this.state.fontfamilyerror &&
 								<div className="code_editor__line">
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 									<span className='form-error'>{this.state.fontfamilyerror}</span>
 								</div>
 								}

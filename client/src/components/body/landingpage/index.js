@@ -2,7 +2,7 @@ import React from "react";
 import "../../../assets/stylesheets/pages/LandingPage.scss"
 import eye from "../../../assets/images/labs/eye_in_dev.jpg";
 import ear from "../../../assets/images/labs/ear.jpg";
-import cognitive from "../../../assets/images/labs/cognitiveimpairment.jpg";
+// import cognitive from "../../../assets/images/labs/cognitiveimpairment.jpg";
 import braille from "../../../assets/images/labs/braille.jpg";
 import hand from "../../../assets/images/labs/hand_in_dev.jpg";
 import nsf from "../../../assets/images/logos/nsf.png";
@@ -188,37 +188,37 @@ const Home = (props) => {
               </div>
             </div>
             </div>
-            <div class="row">
-              <div
-                  className="col-md-4 portfolio-item">
-                <a
-                    className="portfolio-link"
-                    onClick={() => handleRedirect(actions, 5)}
-                    href="# "
-                >
-                  <img
-                      className="img-fluid landingpage__image"
-                      src={cognitive}
-                      alt="Cognitive Accessibility Thumbnail"
-                  />
-                  {/* <!--Image= https://compote.slate.com/images/fb3403a0-6ffc-471a-8568-b0f01fa3bd6b.jpg?width=960--> */}
-                </a>
-                <div className="portfolio-caption">
-                  <h4>
-                    <a onClick={() => handleRedirect(actions, 5)} href="# "
-                    >Accessibility to Cognitive Impairments
-                    </a>
-                  </h4>
-                  <p className="">
-                    Learn more about designing the web for cognitively impaired users.
-                  </p>
-                </div>
-              </div>
-              <div
-                  className="col-md-4 offset-md-4 portfolio-item">
-              {/*  Placeholder*/}
-              </div>
-            </div>
+            {/*<div class="row">*/}
+              {/*<div*/}
+              {/*    className="col-md-4 portfolio-item">*/}
+              {/*  <a*/}
+              {/*      className="portfolio-link"*/}
+              {/*      onClick={() => handleRedirect(actions, 5)}*/}
+              {/*      href="# "*/}
+              {/*  >*/}
+              {/*    <img*/}
+              {/*        className="img-fluid landingpage__image"*/}
+              {/*        src={cognitive}*/}
+              {/*        alt="Cognitive Accessibility Thumbnail"*/}
+              {/*    />*/}
+              {/*    /!* <!--Image= https://compote.slate.com/images/fb3403a0-6ffc-471a-8568-b0f01fa3bd6b.jpg?width=960--> *!/*/}
+              {/*  </a>*/}
+              {/*  <div className="portfolio-caption">*/}
+              {/*    <h4>*/}
+              {/*      <a onClick={() => handleRedirect(actions, 5)} href="# "*/}
+              {/*      >Accessibility to Cognitive Impairments*/}
+              {/*      </a>*/}
+              {/*    </h4>*/}
+              {/*    <p className="">*/}
+              {/*      Learn more about designing the web for cognitively impaired users.*/}
+              {/*    </p>*/}
+              {/*  </div>*/}
+              {/*</div>*/}
+              {/*<div*/}
+              {/*    className="col-md-4 offset-md-4 portfolio-item">*/}
+              {/*/!*  Placeholder*!/*/}
+              {/*</div>*/}
+            {/*</div>*/}
       </div>
     </section>
     <hr class="horiz" />

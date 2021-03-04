@@ -9,18 +9,17 @@ class KnowledgeTest extends Component {
         this.getCorrectChoice = this.getCorrectChoice.bind(this);
     }
 
-    getQuestionJson(){
-        return JSON.stringify({selected:this.state.currentSelection, options: this.state.options, question: this.state.question});
-    }
     isCorrectChoice(selected){
         return this.state.options[selected] === 1;
     }
     handleSelection(event) {
         const value = event.target.getAttribute('value');
         if(this.state.currentSelection === null){
-            this.setState({currentSelection: value, correct: this.isCorrectChoice(value) });
-            const question = this.getQuestionJson();
-            GameService.submitChoice(this.state.correct, question);
+            this.setState({currentSelection: value, correct: this.isCorrectChoice(value) }, ()=>
+            {
+                GameService.submitChoice(this.state.correct, this.state.question, this.state.currentSelection, JSON.stringify(this.state.options));
+            });
+
         }
     }
     getCorrectChoice(){

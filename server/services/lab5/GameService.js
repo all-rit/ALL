@@ -5,6 +5,8 @@ exports.submitChoice = (data) => {
 			usersessionid: data.usersessionid,
 			question: data.question,
 			correct: data.correct,
+			selectedoption:data.selectedoption,
+			options: data.options
 		}).then((game) => {
 			return game.gameid;
 		}).catch((err) => {

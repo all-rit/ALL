@@ -11,7 +11,10 @@ class NotificationRepair extends Component {
 
 		this.state = {
 			fontsizevalue: null,
-			timeout: null
+			timeout: null,
+			timeouterror:null,
+			fontsizeerror:null,
+			repairerror:true
 		};
 	}
 
@@ -22,6 +25,35 @@ class NotificationRepair extends Component {
 			timeout: data.timeout
 		});
 	}
+	validateRepair(e){
+		let error=false;
+		Object.keys(this.state).map( name => {
+			switch (name) {
+				case "fontsizevalue":
+					let fontsize = parseInt(this.state[name]);
+					if (fontsize > maxFontNotif || fontsize < minFontNotif || isNaN(fontsize)) {
+						error = true;
+						this.setState({fontsizeerror: `Must enter between ${minFontNotif}px and ${maxFontNotif}px`})
+					} else {
+						this.setState({fontsizeerror: null})
+					}
+					break;
+				case "timeout":
+					let timeout = parseInt(this.state[name]);
+					if (timeout < 4000 || isNaN(timeout)) {
+						error = true;
+						this.setState({timeouterror: "Must be 4000 or greater"})
+					} else {
+						this.setState({timeouterror: null})
+					}
+					break;
+				default:
+					break;
+			}
+			return [];
+		})
+		this.setState({repairerror: error}, ()=>this.handleSubmit(e))
+	}
 
 	handleSubmit(event) {
 		const { handlers } = this.props;
@@ -31,26 +63,30 @@ class NotificationRepair extends Component {
 		} = this.state;
 
 		event.preventDefault();
-		const repair = JSON.stringify({
-			fontsizevalue,
-			timeout
-		});
-		// Submit a repair entry in the database.
-		RepairService.submitRepair(
-			this.constructor.name, repair
-		);
+		if (!this.state.repairerror) {
+			const repair = JSON.stringify({
+				fontsizevalue,
+				timeout
+			});
+			// Submit a repair entry in the database.
+			RepairService.submitRepair(
+				this.constructor.name, repair
+			);
+			handlers.updatePopup('The repairs have been made.');
 
+		}else {
+			handlers.updatePopup('Errors in Repair. Please fix');
+		}
 		// Update the state and close the repair.
 		handlers.updateRepairNotification(
 			fontsizevalue,
 			timeout
 		);
 		handlers.closeRepair();
-		handlers.updatePopup('The repairs have been made.');
 
 		setTimeout(() => {
 			handlers.updatePopup('');
-		}, 5000);
+		}, 6000);
 	}
 
 	changeHandler(event) {
@@ -74,7 +110,7 @@ class NotificationRepair extends Component {
 				<div className= "cognitive_instructions margin-bottom-2">
 					Let's make the changes to make the code accessible. Click 'Repair' to make the appropriate changes.
 				</div>
-				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} />
+				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} error={this.state.repairerror}/>
 
 				<button className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton" onClick={handlers.openRepair} key="repair">
 					Repair
@@ -83,6 +119,7 @@ class NotificationRepair extends Component {
 					className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
 					onClick = {this.handleNav}
 					key="Next"
+					disabled={this.state.repairerror}
 				>
 					Next
 				</button>
@@ -179,12 +216,12 @@ class NotificationRepair extends Component {
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--darkgreen">&#47;&#47;Enter a value greater than 4000 (ms) in the input below</span>
+								<span className="code_editor__line--darkgreen">&#47;&#47;Enter a value of 4000(ms) or greater in the input below</span>
 							</div>
 							<div className="code_editor__line code_editor__line-background--light">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--darkblue">&#60;</span>
-								<span className="code_editor__line--gold">&nbsp;Notification</span>
+								<span className="code_editor__line--gold">Notification</span>
 								<span className="code_editor__line--blue">&nbsp;timeout</span>
 								<span className="code_editor__line--white">&nbsp;=&nbsp;</span>
 								<span className="code_editor__line--white">&#123;&nbsp;</span>
@@ -195,7 +232,9 @@ class NotificationRepair extends Component {
 									defaultValue={data.timeout}
 									onChange={this.changeHandler.bind(this)}
 									required
-									title="must be greater than 4000"
+									title="must be atleast 4000"
+									className={this.state.timeouterror? "form-error-input": ""}
+
 								/>
 								</span>
 								<span className="code_editor__line--white">&nbsp;&#125;&nbsp;</span>
@@ -206,6 +245,13 @@ class NotificationRepair extends Component {
 								<span className="code_editor__line--white">&nbsp;&#125;&nbsp;</span>
 								<span className="code_editor__line--darkblue">/&#62;</span>
 							</div>
+							{ this.state.timeouterror &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className='form-error'>{this.state.timeouterror}</span>
+							</div>
+							}
+
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span className="code_editor__line--darkblue">&#60;button&#62;</span>
@@ -281,16 +327,24 @@ class NotificationRepair extends Component {
 										defaultValue={data.fontsizevalue}
 										onChange={this.changeHandler.bind(this)}
 										title={`must enter between ${minFontNotif}px and ${maxFontNotif}px`}
+										className={this.state.fontsizeerror? "form-error-input": ""}
+
 									/>
 								</span>
 								</div>
+								{ this.state.fontsizeerror &&
+								<div className="code_editor__line">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span className='form-error'>{this.state.fontsizeerror}</span>
+								</div>
+								}
 							</div>
 							<p className="code_editor__class">&#125;</p>
 						</div>
 
 					</div>
 					<button
-						onClick={this.handleSubmit.bind(this)}
+						onClick={this.validateRepair.bind(this)}
 						type="submit"
 						className="button button--green button--block"
 					>
