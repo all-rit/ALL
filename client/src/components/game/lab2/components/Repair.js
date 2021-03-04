@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames/bind';
-//import RepairService from '../../../../services/lab2/RepairService';
+import RepairService from '../../../../services/lab2/RepairService';
 import { PhotoshopPicker } from "react-color";
+import "../../lab2/home/popup.css";
 
 class Repair extends Component {
 	constructor(props) {
@@ -32,6 +33,7 @@ class Repair extends Component {
       //Handles changes to the background color (updates state)
       onBackgroundChange = (color, event) => {
         this.setState({ background: color.hex });
+        //this.onControlBackgroundPopup(false);
       };
     
       //Handles the popup for changning the background color (updates state)
@@ -42,6 +44,7 @@ class Repair extends Component {
       //Handles changes to the correct circle color (updates state)
       onCorrectColorChange = (color, event) => {
         this.setState({ correctColor: color.hex });
+        //this.onControlCorrectPopup(false);
       };
     
       //Handles the popup for changning the correct circle color (updates state)
@@ -52,6 +55,7 @@ class Repair extends Component {
       //Handles changes to the first incorrect circle color (updates state)
       onIncorrectColorOne = (color, event) => {
         this.setState({ incorrectColorOne: color.hex });
+        //this.onControlIncorrectPopupOne(false);
       };
     
       //Handles the popup for changning the first incorrect circle color (updates state)
@@ -62,6 +66,7 @@ class Repair extends Component {
       //Handles changes to the second incorrect circle color (updates state)
       onIncorrectColorTwo = (color, event) => {
         this.setState({ incorrectColorTwo: color.hex });
+        //this.onControlIncorrectPopupTwo(false);
       };
     
       //Handles the popup for changning second incorrect circle color (updates state)
@@ -191,6 +196,12 @@ class Repair extends Component {
           this.state.incorrectColorOne,
           this.state.incorrectColorTwo
         ];
+        RepairService.submitRepair(
+          this.state.background,
+          this.state.correctColor,
+          this.state.incorrectColorOne,
+          this.state.incorrectColorTwo
+        );
         this.props.changeDefaultColors(colors);
         this.props.changeGameColors(colors);
         this.props.closeColorChange();
@@ -211,15 +222,10 @@ class Repair extends Component {
           this.props.toGreyBackground();
         }
     
-        // const whiteColor = {
-        //   color: "white",
-        //   paddingLeft: "5px"
-        // };
-    
         //Opens the background color change popup
-        // const changeBackground = () => {
-        //   this.onControlBackgroundPopup(true);
-        // };
+        const changeBackground = () => {
+          this.onControlBackgroundPopup(true);
+        };
     
         //Closes the background color change popup
         const closeBackground = () => {
@@ -233,9 +239,9 @@ class Repair extends Component {
         };
     
         //Opens the correct circle color change popup
-        // const changeCorrectColor = () => {
-        //   this.onControlCorrectPopup(true);
-        // };
+        const changeCorrectColor = () => {
+          this.onControlCorrectPopup(true);
+        };
     
         //Closes the correct circle color change popup
         const closeCorrectColor = () => {
@@ -249,9 +255,9 @@ class Repair extends Component {
         };
     
         //Opens the first incorrect circle color change popup
-        // const changeIncorrectColorOne = () => {
-        //   this.onControlIncorrectPopupOne(true);
-        // };
+        const changeIncorrectColorOne = () => {
+          this.onControlIncorrectPopupOne(true);
+        };
     
         //Closes the first incorrect color change popup
         const closeIncorrectColorOne = () => {
@@ -265,9 +271,9 @@ class Repair extends Component {
         };
     
         //Opens the second incorrect circle color change popup
-        // const changeIncorrectColorTwo = () => {
-        //   this.onControlIncorrectPopupTwo(true);
-        // };
+        const changeIncorrectColorTwo = () => {
+          this.onControlIncorrectPopupTwo(true);
+        };
     
         //Closes the second incorrect color change popup
         const closeIncorrectColorTwo = () => {
@@ -290,141 +296,229 @@ class Repair extends Component {
         }
     
 		const { visible, data, handlers } = this.props;
-		const jsFileClasses = classNames({
+    const cssFileClasses = classNames({
 			code_editor__file: true,
-			'code_editor__file--active': data.currentTab === 1
-		});
-		const jsFileCodeClasses = classNames({
-			code_editor__code: true,
-			code_editor__hide: data.currentTab === 2
+			'code_editor__file--active': true
 		});
 
-		if (!visible) return null;
+		const cssFileCodeClasses = classNames({
+			code_editor__code: true,
+			code_editor__hide: false
+		});
+
+		//if (!visible) return null;
 
 		return (
 			<div className="code_editor">
 				<div className="code_editor__content">
-					<div className="code_editor__files">
-						<div onClick={handlers.updateTab.bind(this, 1)} className={jsFileClasses}>
+					<div className={cssFileClasses}>
+						<div className='code_editor__file--active'>
 							Circles.css
 						</div>
 					</div>
 
-					<div className={jsFileCodeClasses}>
-                        {/*Background*/}
+					<div className={cssFileCodeClasses}>
+            {/*Background*/}
 						<div className="code_editor__line">
-							<span className="code_editor__line--pink">.home</span>
-							<span className="code_editor__line--white">&#123;</span>
+              <p className="code_editor__class">.home &#123;</p>
+              <div className="code_editor__form">
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--darkgreen">
+									&#47;&#47; Adjust this to change the background of the page
+								</span>
+							</div>
+              <div className="code_editor__property code_editor__line-background--light">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span>background:&nbsp;</span>
+							</div>
+              <div className="code_editor__input">
+              {this.state.backgroundPopup ? (
+                      <div className="colorSelector">
+                        <PhotoshopPicker
+                          onChangeComplete={this.onBackgroundChange}
+                          onAccept={closeBackground}
+                          onCancel={revertBackground}
+                          color={this.state.background}
+                        />
+                      </div>
+                    ) : (
+                      <button
+                        onClick={changeBackground}
+                        style={{ backgroundColor: this.state.background }}
+                        className="form"
+                      ></button>
+                    )}
+								{/* <button
+									onClick={changeBackground}
+									style={{ backgroundColor: this.state.background }}
+								/>
+								{this.state.backgroundPopup
+									? (
+										<div className="code_editor__color_selector">
+                        <ColorPickerPanel
+                          enableAlpha={false}
+                          color={this.state.background}
+                          onChange={this.onBackgroundChange}
+											    />
+										</div>
+                    ) : <div/>
+                  }  */}
+              </div>
+            </div>
+            {/*Correct Circle One*/}
+            <p className="code_editor__class">&#125;</p>
+						<p className="code_editor__class">.correctCircle&#123;</p>
+						<div className="code_editor__form">
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--darkgreen">
+									&#47;&#47; Adjust this to change the correct color option
+								</span>
+							</div>
+							<div className="code_editor__property code_editor__line-background--light">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span>color:&nbsp;</span>
+							</div>
+							<div className="code_editor__input">
+              {this.state.correctColorPopup ? (
+                      <div className="colorSelector">
+                        <PhotoshopPicker
+                          onChangeComplete={this.onCorrectColorChange}
+                          onAccept={closeCorrectColor}
+                          onCancel={revertCorrectColor}
+                          color={this.state.correctColor}
+                        />
+                      </div>
+                    ) : (
+                      <button
+                        onClick={changeCorrectColor}
+                        style={{ backgroundColor: this.state.correctColor }}
+                        className="form"
+                      ></button>
+                    )}
+								{/* <button
+									onClick={changeCorrectColor}
+									style={{ backgroundColor: this.state.correctColor }}
+								/>
+								{this.state.correctColorPopup
+									? (
+										<div className="code_editor__color_selector">
+											 <ColorPickerPanel
+                          enableAlpha={false}
+                          color={this.state.correctColor}
+                          onChange={this.onCorrectColorChange}
+											  />
+										</div>
+									) : <div/>
+								} */}
+							</div>
 						</div>
-                        <div className="code_editor__line">
-							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--darkgreen">
-							&#47;&#47; Adjust this to change the background of the page
-							</span>
+            {/*Incorrect Circle One*/}
+            <p className="code_editor__class">&#125;</p>
+						<p className="code_editor__class">.incorrectCircleOne&#123;</p>
+						<div className="code_editor__form">
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--darkgreen">
+									&#47;&#47; Adjust this to change the correct color option
+								</span>
+							</div>
+							<div className="code_editor__property code_editor__line-background--light">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span>color:&nbsp;</span>
+							</div>
+							<div className="code_editor__input">
+              {this.state.incorrectColorOnePopup ? (
+                      <div className="colorSelector">
+                        <PhotoshopPicker
+                          onChangeComplete={this.onIncorrectColorOne}
+                          onAccept={closeIncorrectColorOne}
+                          onCancel={revertIncorrectColorOne}
+                          color={this.state.incorrectColorOne}
+                        />
+                      </div>
+                    ) : (
+                      <button
+                        onClick={changeIncorrectColorOne}
+                        style={{
+                          backgroundColor: this.state.incorrectColorOne
+                        }}
+                        className="form"
+                      ></button>
+                    )}
+								{/* <button
+									onClick={changeIncorrectColorOne}
+									style={{ backgroundColor: this.state.incorrectColorOne }}
+								/>
+								{this.state.incorrectColorOnePopup
+									? (
+										<div className="code_editor__color_selector">
+                      <ColorPickerPanel
+                        enableAlpha={false}
+                        color={this.state.incorrectColorOne}
+                        onChange={this.onIncorrectColorOne}
+											/>
+										</div>
+									) : <div/>
+								} */}
+							</div>
 						</div>
-						<div className="code_editor__line">
-							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">
-							&#47;&#47; background:
-							</span>
-                            <span>
-                                <PhotoshopPicker
-                                    onChangeComplete={this.onBackgroundChange}
-                                    onAccept={closeBackground}
-                                    onCancel={revertBackground}
-                                    color={this.state.background}
-                                />
-                            </span>
+            {/*Incorrect Circle Two*/}
+            <p className="code_editor__class">&#125;</p>
+						<p className="code_editor__class">.incorrectCircleTwo&#123;</p>
+						<div className="code_editor__form">
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="code_editor__line--darkgreen">
+									&#47;&#47; Adjust this to change the correct color option
+								</span>
+							</div>
+							<div className="code_editor__property code_editor__line-background--light">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span>color:&nbsp;</span>
+							</div>
+							<div className="code_editor__input">
+              {this.state.incorrectColorTwoPopup ? (
+                      <div className="colorSelector">
+                        <PhotoshopPicker
+                          onChangeComplete={this.onIncorrectColorTwo}
+                          onAccept={closeIncorrectColorTwo}
+                          onCancel={revertIncorrectColorTwo}
+                          color={this.state.incorrectColorTwo}
+                        />
+                      </div>
+                    ) : (
+                      <button
+                        onClick={changeIncorrectColorTwo}
+                        style={{
+                          backgroundColor: this.state.incorrectColorTwo
+                        }}
+                        className="form"
+                      ></button>
+                    )}
+								{/* <button
+									onClick={changeIncorrectColorTwo}
+									style={{ backgroundColor: this.state.incorrectColorTwo}}
+								/>
+								{this.state.incorrectColorTwoPopup
+									? (
+										<div className="code_editor__color_selector">
+                      <ColorPickerPanel
+                        enableAlpha={false}
+                        color={this.state.incorrectColorTwo}
+                        onChange={this.onIncorrectColorTwo}
+											/>
+										</div>
+									) : <div/>
+								} */}
+							</div>
 						</div>
-						<div className="code_editor__line">
-							<span className="code_editor__line--white">&#125;</span>
-						</div>
-                        {/*Correct Circle One*/}
-						<div className="code_editor__line">
-							<span className="code_editor__line--pink">.correctCircle</span>
-							<span className="code_editor__line--white">&#123;</span>
-						</div>
-                        <div className="code_editor__line">
-							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--darkgreen">
-							&#47;&#47; Adjust this to change the correct color option
-							</span>
-						</div>
-						<div className="code_editor__line">
-							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">
-							        color:
-							</span>
-                            <span>
-                                <PhotoshopPicker
-                                    onChangeComplete={this.onCorrectColorChange}
-                                    onAccept={closeCorrectColor}
-                                    onCancel={revertCorrectColor}
-                                    color={this.state.correctColor}
-                                />
-                            </span>
-						</div>
-						<div className="code_editor__line">
-							<span className="code_editor__line--white">&#125;</span>
-						</div>
-                        {/*Incorrect Circle One*/}
-                        <div className="code_editor__line">
-							<span className="code_editor__line--pink">.incorrectCircleOne</span>
-							<span className="code_editor__line--white">&#123;</span>
-						</div>
-                        <div className="code_editor__line">
-							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--darkgreen">
-							&#47;&#47; Adjust this to change the correct color option
-							</span>
-						</div>
-						<div className="code_editor__line">
-							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">
-							        color:
-							</span>
-                            <span>
-                                <PhotoshopPicker
-                                    onChangeComplete={this.onIncorrectColorOne}
-                                    onAccept={closeIncorrectColorOne}
-                                    onCancel={revertIncorrectColorOne}
-                                    color={this.state.incorrectColorOne}
-                                />
-                            </span>
-						</div>
-						<div className="code_editor__line">
-							<span className="code_editor__line--white">&#125;</span>
-						</div>
-                        {/*Incorrect Circle Two*/}
-                        <div className="code_editor__line">
-							<span className="code_editor__line--pink">.incorrectCircleTwo</span>
-							<span className="code_editor__line--white">&#123;</span>
-						</div>
-                        <div className="code_editor__line">
-							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--darkgreen">
-							&#47;&#47; Adjust this to change the correct color option
-							</span>
-						</div>
-						<div className="code_editor__line">
-							<span>&nbsp;&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--green">
-							    color:
-							</span>
-                            <span>
-                                <PhotoshopPicker
-                                    onChangeComplete={this.onIncorrectColorTwo}
-                                    onAccept={closeIncorrectColorTwo}
-                                    onCancel={revertIncorrectColorTwo}
-                                    color={this.state.incorrectColorTwo} 
-                                />
-                            </span>
-						</div>
-						<div className="code_editor__line">
-							<span className="code_editor__line--white">&#125;</span>
-						</div>
-                        
-                        <div className="code_editor__line">
+            <p className="code_editor__class">&#125;</p>
+					</div>
+
+          {/*Other Styling*/}
+            <div className="code_editor__line">
 							<span className="code_editor__line--pink">.center</span>
 							<span className="code_editor__line--white">&#123;</span>
 						</div>
@@ -464,17 +558,16 @@ class Repair extends Component {
                         <div className="code_editor__line">
 							<span className="code_editor__line--white">&#125;</span>
 						</div>
-
+				</div>
 					<button
-						onClick={this.handleSubmit.bind(this)}
+						onClick={this.onButtonSubmit}
 						type="submit"
 						className="button button--green button--block"
 					>
 						Update
 					</button>
 				</div>
-            </div>
-		</div>
+      </div>
 		);
 	}
 }

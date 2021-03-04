@@ -122,10 +122,10 @@ code {
   }
 }
 
-/* .center{
+.center{
   display: flex;
   justify-content: center;
-} */
+}
 
 .tab{
   padding-left: 30px;

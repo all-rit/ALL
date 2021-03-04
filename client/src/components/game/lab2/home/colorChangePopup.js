@@ -192,41 +192,6 @@ class ColorChangePopup extends React.Component {
     }
   };
 
-	handleSubmit(event) {
-		const { handlers } = this.props;
-    console.log(handlers);
-		const {
-      background,
-      correctColor,
-      incorrectColorOne,
-      incorrectColorTwo
-		} = this.state;
-
-		event.preventDefault();
-
-		// Submit a repair entry in the database.
-		RepairService.submitRepair(
-      background,
-      correctColor,
-      incorrectColorOne,
-      incorrectColorTwo
-		);
-
-		// Update the state and close the repair.
-		handlers.updateRepair(
-      background,
-      correctColor,
-      incorrectColorOne,
-      incorrectColorTwo
-		);
-		handlers.closeRepair();
-		handlers.updatePopup('The repairs have been made.');
-
-		setTimeout(() => {
-			handlers.updatePopup('');
-		}, 5000);
-	}
-
   onFinalSubmit = () => {
     let colors = [
       this.state.background,
@@ -234,10 +199,15 @@ class ColorChangePopup extends React.Component {
       this.state.incorrectColorOne,
       this.state.incorrectColorTwo
     ];
+    RepairService.submitRepair(
+      this.state.background,
+      this.state.correctColor,
+      this.state.incorrectColorOne,
+      this.state.incorrectColorTwo
+		);
     this.props.changeDefaultColors(colors);
     this.props.changeGameColors(colors);
     this.props.closeColorChange();
-    this.handleSubmit.bind(this)
   };
 
   //Submits the colors for the system

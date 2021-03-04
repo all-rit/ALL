@@ -4,6 +4,7 @@ import Title from "../lab2/components/header/title";
 import Home from "./home/Home";
 import GameCenter from "../lab2/components/GameCenter";
 import ColorChangePopup from "./home/colorChangePopup";
+import Repair from "../lab2/components/Repair.js"
 import Header from "../lab2/components/header/headerMain";
 import SuccessMessage from "./home/successMessage";
 import Countdown from "react-countdown-now";
@@ -16,7 +17,6 @@ import FourthInstructions from "./Instructions/fourthInstructions";
 import Conclusion from "./Instructions/conclusion";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-import { actions as repairActions } from '../../../reducers/lab2/RepairReducer';
 //Imports from redux actions
 import {
   changeDefaultColors,
@@ -49,7 +49,6 @@ import {
   resetSystem,
   goBackFromGame
 } from "../../../reducers/lab2/actions";
-import { bindActionCreators } from "redux";
 
 library.add(faQuestionCircle);
 
@@ -111,7 +110,7 @@ const mapDispatchToProps = dispatch => {
     onToGreyBackground: () => dispatch(toGreyBackground()),
     onResetSystem: () => dispatch(resetSystem()),
     onGoBackFromGame: () => dispatch(goBackFromGame()),
-    actions:bindActionCreators({...repairActions})
+
   };
 };
 
@@ -373,7 +372,7 @@ class Main extends Component {
                                         ) : (
                                           <div>
                                             {colorChange ? (
-                                              <ColorChangePopup
+                                              <Repair
                                                 changeDefaultColors={
                                                   onChangeDefaultColors
                                                 }

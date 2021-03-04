@@ -3,10 +3,10 @@ const RepairService = require('../../services/lab2/RepairService');
 exports.submitChange = (req, res) => {
 	RepairService.submitChange({
 		usersessionid: req.session.token,
-		availableMessage: req.body.availableMessage,
-		unavailableMessage: req.body.unavailableMessage,
-		availableBackgroundColor: req.body.availableBackgroundColor,
-		unavailableBackgroundColor: req.body.unavailableBackgroundColor
+		background: req.body.background,
+		correctColor: req.body.correctColor,
+		incorrectColorOne: req.body.incorrectColorOne,
+		incorrectColorTwo: req.body.incorrectColorTwo
 	}).then(() => {
 		res.sendStatus(200);
 	});

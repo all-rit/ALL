@@ -11,16 +11,16 @@ module.exports = (sequelize, DataTypes) => {
 			usersessionid: {
 				type: DataTypes.BIGINT
 			},
-			availablemessage: {
+			background: {
 				type: DataTypes.STRING
 			},
-			unavailablemessage: {
+			correctColor: {
 				type: DataTypes.STRING
 			},
-			availablebackgroundcolor: {
+			incorrectColorOne: {
 				type: DataTypes.STRING
 			},
-			unavailablebackgroundcolor: {
+			incorrectColorTwo: {
 				type: DataTypes.STRING
 			}
 		},
