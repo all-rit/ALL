@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import CodeUpdateHeader from "../components/CodeUpdateHeader";
 import Prism from "prismjs";
 import Button from "@material-ui/core/Button";
 import { Paper } from "@material-ui/core";

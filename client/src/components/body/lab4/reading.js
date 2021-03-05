@@ -73,7 +73,7 @@ const Reading = () => {
                 In addition, another guideline is to make all touch targets (for example, a button) at least 9mm high by 9mm wide.
             </p>
 
-            <h3>For more information, please visit the following websites:</h3>
+            <h4>For more information, please visit the following websites:</h4>
             <div className="flex">
                 <a href="https://webaim.org/articles/motor/assistive" target="_blank" rel="noopener noreferrer">Assistive Technologies</a>
                 <a href="https://www.w3.org/TR/mobile-accessibility-mapping/" target="_blank" rel="noopener noreferrer">W3 Mobile Accessibility</a>
