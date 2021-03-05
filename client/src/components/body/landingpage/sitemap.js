@@ -16,10 +16,10 @@ const mapDispatchToProps = (dispatch) => {
 const SiteMap = (props) => {
 const {actions} = props;
 return (
-    <div>
+    <div class="landingpage">
     <div class="container">
             <section class="page-section">
-            <div class="container">
+            <div class="container margin-top">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                     <h2 class="section-heading text-uppercase">
@@ -74,7 +74,6 @@ return (
                             <li><a href="# " onClick={() => handleRedirect(actions,3,4)} >Quiz</a></li>
                         </ul>
                         </div>
-
                         <div className="col-md-4">
                             <h4 className="service-heading">
                                 <a href="# " onClick={() => handleRedirect(actions, 4, 0)}>Lab 4</a>
@@ -87,6 +86,18 @@ return (
                                 <li><a href="# " onClick={() => handleRedirect(actions, 4, 4)}>Quiz</a></li>
                             </ul>
                         </div>
+                        {/*<div className="col-md-4">*/}
+                        {/*    <h4 className="service-heading">*/}
+                        {/*        <a href="# " onClick={() => handleRedirect(actions, 5, 0)}>Lab 5</a>*/}
+                        {/*    </h4>*/}
+                        {/*    <ul>*/}
+                        {/*        <li><a href="# " onClick={() => handleRedirect(actions, 5, 0)}>About</a></li>*/}
+                        {/*        <li><a href="# " onClick={() => handleRedirect(actions, 5, 1)}>Reading</a></li>*/}
+                        {/*        <li><a href="# " onClick={() => handleRedirect(actions, 5, 2)}>Game</a></li>*/}
+                        {/*        <li><a href="# " onClick={() => handleRedirect(actions, 5, 3)}>Video</a></li>*/}
+                        {/*        <li><a href="# " onClick={() => handleRedirect(actions, 5, 4)}>Quiz</a></li>*/}
+                        {/*    </ul>*/}
+                        {/*</div>*/}
                     </div>
             </div>
             </div>

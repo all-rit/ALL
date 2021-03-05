@@ -5,7 +5,7 @@ import '../../../assets/stylesheets/main.scss';
 import {actions as gameActions } from "../../../reducers/lab3/GameReducer";
 import {actions as repairActions } from '../../../reducers/lab3/RepairReducer';
 import {actions as appActions } from '../../../reducers/lab3/AppReducer';
-import GameStart from './GameStart';
+import GameStart from './pages/GameStart';
 import FullGame from '../../game/lab3/pages/BeginnerGame/Game';
 import UserUpdatedGame from '../../game/lab3/pages/BeginnerGame/UserUpdatedGame';
 import GameInstructions from '../../game/lab3/pages/BeginnerGame/GameInstructions';
