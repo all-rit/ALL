@@ -81,7 +81,8 @@ class App extends Component {
               <Error actions={actions} default />
               <AboutLab1 path="/Lab1/"/>
               <AboutLab3 path="/Lab3/"/>
-              <AboutLab5 path="/Lab5/"/>
+                <AboutLab4 path="/Lab4/"/>
+                <AboutLab5 path="/Lab5/"/>
               <AboutLab1 path="/Lab1/About"/>
               <AboutLab3 path="/Lab3/About"/>
               {/* <AboutLab2 path="/Lab2/About"/>*/}

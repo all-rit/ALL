@@ -16,6 +16,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import {GAME_PLAYING} from "../../../../constants/lab4";
+import RepairService from "../../../../services/lab4/RepairService";
 
 const variantIcon = {
     success: CheckCircleIcon,
@@ -206,6 +207,9 @@ class CodeChangeTarget extends Component {
                 width: this.state.textValue,
                 height: this.state.textValue1
             };
+            RepairService.submitRepairButton(
+                this.state.textValue1, this.state.textValue
+            );
             navigate("/Lab4/Game/SubmitUpdated");
         }
         Prism.highlightAll();
