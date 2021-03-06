@@ -31,7 +31,7 @@ jobs:
           npm install
           npm run-script build
           cd ../server
-          tmux kill session -t all
+          tmux kill-session -t all
           tmux new-session -s all
           npm install
           node app.js
