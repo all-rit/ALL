@@ -30,3 +30,9 @@ jobs:
           cd research/client
           npm install
           npm run-script build
+          killall node
+          tmux attach -t all
+          npm install
+          node app.js
+          tmux detach -P
+          
