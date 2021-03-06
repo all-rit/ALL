@@ -365,6 +365,20 @@ class Repair extends Component {
                     ) : <div/>
                   }  */}
               </div>
+              { this.state.errorEqual &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;</span>
+								<span className='error'>Two of your entered colors are equal to one another. Please make
+                adjustments and submit again.</span>
+							</div>
+							}
+              { this.state.errorDarkBackground &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;</span>
+								<span className='error'>One or more of the colors you entered are too dark. Please make
+                adjustments and submit again.</span>
+							</div>
+							}
             </div>
             {/*Correct Circle One*/}
             <p className="code_editor__class">&#125;</p>
@@ -413,6 +427,20 @@ class Repair extends Component {
 									) : <div/>
 								} */}
 							</div>
+              { this.state.errorEqual &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;</span>
+								<span className='error'>Two of your entered colors are equal to one another. Please make
+                adjustments and submit again.</span>
+							</div>
+							}
+              { this.state.errorDarkBackground &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;</span>
+								<span className='error'>One or more of the colors you entered are too dark. Please make
+                adjustments and submit again.</span>
+							</div>
+							}
 						</div>
             {/*Incorrect Circle One*/}
             <p className="code_editor__class">&#125;</p>
@@ -463,6 +491,20 @@ class Repair extends Component {
 									) : <div/>
 								} */}
 							</div>
+              { this.state.errorEqual &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;</span>
+								<span className='error'>Two of your entered colors are equal to one another. Please make
+                adjustments and submit again.</span>
+							</div>
+							}
+              { this.state.errorDarkBackground &&
+							<div className="code_editor__line\">
+								<span>&nbsp;&nbsp;</span>
+								<span className='error'>One or more of the colors you entered are too dark. Please make
+                adjustments and submit again.</span>
+							</div>
+							}
 						</div>
             {/*Incorrect Circle Two*/}
             <p className="code_editor__class">&#125;</p>
@@ -513,6 +555,20 @@ class Repair extends Component {
 									) : <div/>
 								} */}
 							</div>
+              { this.state.errorEqual &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;</span>
+								<span className='error'>Two of your entered colors are equal to one another. Please make
+                adjustments and submit again.</span>
+							</div>
+							}
+              { this.state.errorDarkBackground &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;</span>
+								<span className='error'>One or more of the colors you entered are too dark. Please make
+                adjustments and submit again.</span>
+							</div>
+							}
 						</div>
             <p className="code_editor__class">&#125;</p>
 					</div>
@@ -556,14 +612,27 @@ class Repair extends Component {
                         <div className="code_editor__line">
                   <p className="code_editor__class">&#125;</p>
 						</div>
+            { this.state.confirmPopup &&
+							<div className="code_editor__line">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className='error'>You've changed {this.state.numberChanged} out of the 4 colors.
+                Press Update to continue or make your changes.</span>
+							</div>
+							}
 				</div>
-					<button
+        {this.state.confirmPopup ? (<button
+						onClick={() => this.onFinalSubmit()}
+						type="submit"
+						className="button button--green button--block"
+					>
+						Update
+					</button>):(<button
 						onClick={this.onButtonSubmit}
 						type="submit"
 						className="button button--green button--block"
 					>
 						Update
-					</button>
+					</button>)}
 				</div>
       </div>
 		);
