@@ -28,10 +28,5 @@ jobs:
         script: |
           chmod -R g+w research
           cd research/client
-          npm install
-          npm run-script build
-          cd ../server
-          tmux kill-session -t all
-          tmux new-session -s all
-          npm install
-          node app.js
+          cd ..
+          ./update_server.sh
