@@ -29,4 +29,4 @@ jobs:
           chmod -R g+w research
           cd research/client
           cd ../server
-          node app.js
+          exec tmux new-session -s all
