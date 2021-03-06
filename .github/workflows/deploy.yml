@@ -32,5 +32,6 @@ jobs:
           npm run-script build
           killall node
           tmux attach -t all
+          cd ../server
           npm install
           node app.js
