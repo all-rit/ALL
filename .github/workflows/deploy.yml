@@ -29,4 +29,5 @@ jobs:
           chmod -R g+w research
           cd research/client
           cd ..
-          ./update_server.sh
+          -t "tmux new-session -s all || tmux attach-session -t all"
+          
