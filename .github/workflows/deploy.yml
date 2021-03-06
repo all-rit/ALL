@@ -34,4 +34,3 @@ jobs:
           tmux attach -t all
           npm install
           node app.js
-          tmux detach -P
