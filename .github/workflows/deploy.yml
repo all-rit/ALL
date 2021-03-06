@@ -35,4 +35,3 @@ jobs:
           npm install
           node app.js
           tmux detach -P
-          
