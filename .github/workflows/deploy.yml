@@ -25,6 +25,7 @@ jobs:
           chmod -R g+w research
           cd research/client
           cd ../server
+          tmux kill-server 
           tmux new-session -s all
         args: "-tt"
         host: all.rit.edu
