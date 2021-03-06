@@ -28,6 +28,5 @@ jobs:
         script: |
           chmod -R g+w research
           cd research/client
-          cd ..
-          tmux ls
-          tmux attach -t "$(all)"
+          cd ../server
+          node app.js
