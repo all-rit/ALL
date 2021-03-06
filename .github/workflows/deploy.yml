@@ -25,8 +25,8 @@ jobs:
           chmod -R g+w research
           cd research/client
           cd ../server
-          tmux new-session -s -d all
-        args: "-t"
+          tmux new-session -s all
+        args: "-tt"
         host: all.rit.edu
         user: all
         key: ${{ secrets.SSH_SECRET }}
