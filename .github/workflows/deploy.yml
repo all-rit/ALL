@@ -18,15 +18,16 @@ jobs:
         KEY: ${{ secrets.SSH_SECRET }}
         source: "."
         target: "/home/all/research/"
-    - name: Executing remote command
-      uses: appleboy/ssh-action@master
+    - name: remote ssh commands
+      uses: fifsky/ssh-action@master
       with:
-        host: all.rit.edu
-        USERNAME: all
-        KEY: ${{ secrets.SSH_SECRET }}
-        PORT: 22
-        script: |
+        command: |
           chmod -R g+w research
           cd research/client
           cd ../server
-          exec tmux new-session -s all
+          tmux new-session -s all
+          node app.js
+        args: -tt
+        host: all.rit.edu
+        user: all
+        key: ${{ secrets.SSH_SECRET }}
