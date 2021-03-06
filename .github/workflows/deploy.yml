@@ -30,3 +30,4 @@ jobs:
           cd research/client
           cd ..
           tmux ls
+          tmux attach -t all
