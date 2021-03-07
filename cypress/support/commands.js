@@ -34,9 +34,6 @@ Cypress.Commands.add('testLogin', () => {
       {"userid":4,"firstname":"Saad","image":"https://lh3.googleusercontent.com/a-/AOh14GimRBBc7n7wyE7eCKGSj6pDCqEnjqcYvxFtSXOYxdU=s96-c"} // and force the response to be: []
   ).as("getUser");
   cy.visit(Cypress.env("CLIENT_URL"));
-  // cy.get('div[class*="google__button').should('be.visible')
-  // after clicking, test authentication using our own endpoints
-  // cy.get('div[class*="google__button').click();
   cy.wait("@getUser").then((interception) => {
     assert.isNotNull(interception.response.body, '1st API call has data')
   })
@@ -57,6 +54,7 @@ Cypress.Commands.add('testLabNavigationBar', (labId) => {
   cy.location('pathname').should('include', '/Video');
   cy.get('nav').contains('Quiz').click();
   cy.location('pathname').should('include', '/Quiz');
+  cy.get('div[class*="google__button').should('be.visible')
   // google sign in button
 
   
@@ -74,6 +72,7 @@ Cypress.Commands.add('testLabNavigationBar', (labId) => {
   cy.location('pathname').should('include', '/Video');
   cy.get('nav').contains('Quiz').click();
   cy.location('pathname').should('include', '/Quiz');
+  cy.get('div[class*="google__button').should('be.visible')
   // google sign in button
   
 });
