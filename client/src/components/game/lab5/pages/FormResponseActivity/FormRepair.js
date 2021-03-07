@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import RepairService from '../../../../../services/lab5/RepairService';
 import PageServiceTimer from "../../components/PageServiceTimer";
-import Popup from "../../components/Popup";
+import Popup from "../../../shared/Popup";
 import {navigate} from "@reach/router";
 
 class FormRepair extends Component {
