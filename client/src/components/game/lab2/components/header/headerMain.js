@@ -162,12 +162,6 @@ class Header extends Component {
                                 Adjust the colors below to be in better color
                                 contrast
                               </p>
-                              <FontAwesomeIcon
-                                icon="question-circle"
-                                size={"2x"}
-                                style={{ marginTop: "15px" }}
-                                onClick={() => openHelpDialog()}
-                              />
                             </div>
                           ) : (
                             <div className="oneline">
