@@ -66,7 +66,7 @@ class FormComp extends Component {
         console.log(this.state.color);
         this.setState({
           show: true,
-          alert: "Color doesn't meet 'hint' criteria"
+          alert: "Color doesn't meet 'hint' criteria."
         });
       } else {
         this.handleSubmit(e);

@@ -190,8 +190,8 @@ class CodeChangeAccessible extends Component {
                     justifyAlignment={"space-between"}
                     helpMessage={"Set the tabindex to 0 in the code editor."}
                 /> */}
-                <div className="app__instructions__small2">
-                    <h2>Repair</h2><br/>
+                <h2 className="playthrough__title">Repair</h2>
+                <p className="app__instructions">
                     The intent of this code repair is to ensure that, wherever possible,
                     content can be operated through a keyboard or keyboard interface.
                     Tabindex="-1" prevents access through keyboard navigation.
@@ -199,7 +199,7 @@ class CodeChangeAccessible extends Component {
                     keyboard navigation, with its order defined by the value of the
                     number. Tabindex="0" means that the element should be focusable in
                     sequential keyboard navigation.
-                </div>
+                </p>
                 <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
                     <Paper style={paperStyle}>
             <pre>

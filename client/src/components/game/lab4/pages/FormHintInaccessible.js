@@ -48,7 +48,7 @@ class FormHintInaccessible extends Component {
                     name={name}
                 />
             </Fragment>
-        );
+        );  
     }
 }
 

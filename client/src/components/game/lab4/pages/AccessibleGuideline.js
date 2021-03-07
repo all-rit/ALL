@@ -17,7 +17,7 @@ class AccessibleGuideline extends Component {
         return (
             <Fragment>
                 <div>
-                    <h1 className="playthrough__title">Was That Difficult?</h1>
+                    <h2 className="playthrough__title">Was That Difficult?</h2>
                     <p className="playthrough__sentence">
                         People with mobile dexterity disabilities sometimes use a keyboard
                         to navigate the page. It is imperative that elements that are

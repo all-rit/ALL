@@ -67,7 +67,7 @@ class SmallTarget extends Component {
     }
 
     render() {
-        const instructions = "Click the start button";
+        const instructions = "Click the start button.";
         return (
             <Fragment>
                 <div>

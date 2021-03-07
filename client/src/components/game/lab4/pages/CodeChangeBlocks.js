@@ -180,14 +180,14 @@ class CodeChangeBlocks extends Component {
                     justifyAlignment={"space-between"}
                     helpMessage={"Copy the code from the comment at the top of the code editor, and paste it into the input field in the code editor."}
                 /> */}
-                <div className="app__instructions__small2">
-                    <h2>Repair</h2><br/>
+                <h2 className="playthrough__title">Repair</h2>
+                <p className="app__instructions">
                     The intent of this code repair is to allow people who navigate
                     sequentially through content more direct access to the primary content
                     of the Web page and skip over repeated blocks. These include but are
                     not limited to navigation links, heading graphics, and advertising
                     frames.
-                </div>
+                </p>
                 <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
                     <Paper style={paperStyle}>
             <pre>

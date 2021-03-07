@@ -18,7 +18,7 @@ class TargetGuideline extends Component {
         return (
             <Fragment>
                 <div>
-                    <h1 className="playthrough__title">Was That Difficult?</h1>
+                    <h2 className="playthrough__title">Was That Difficult?</h2>
                     <p className="playthrough__sentence">
                         People with mobile dexterity disabilities have a hard time clicking
                         small buttons. To make sure your software is accessible by everyone,

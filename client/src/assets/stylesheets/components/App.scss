@@ -8,7 +8,7 @@
   &__instructions {
     font-size: 1.25rem;
     margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 	  &__black {
 		  color:#f8f8f2;
 		  background-color: #272822;
@@ -31,14 +31,14 @@
   }
 	&__instructions2 {
 		font-size: 2rem;
-		margin-bottom: 1rem;
+		margin-bottom: 2rem;
 	}
 
 	&__instructions3 {
 		font-size: 2rem;
 		font-weight: bold;
 		color:red;
-		margin-bottom: 1rem;
+		margin-bottom: 2rem;
 	}
 
 
@@ -696,7 +696,7 @@ hr.horiz {
 	clear: both;
 	float: right;
 	margin-bottom: 20px;
-	margin-top: 20px; //temp fix
+	margin-top: 2rem; 
 }
 .btn-change {
 	font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

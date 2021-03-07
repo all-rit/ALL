@@ -21,9 +21,9 @@ class Finish extends Component {
         return (
             <Fragment>
                 <div>
-                    <h2 className="app__instructions__small">
+                    <p className="app__instructions">
                         Congratulations on finishing the module!
-                    </h2>
+                    </p>
                     <br/>
                     <Button
                         href="#"

@@ -234,15 +234,14 @@ class CodeChangeTarget extends Component {
                     justifyAlignment={"space-between"}
                     helpMessage={"Set the min-width and min-height values to at least 44px."}
                 /> */}
-
-                <div className="playthrough__sentence">
-                    <h2>Repair</h2><br/>
+                <h2 className="playthrough__title">Repair</h2>
+                <p className="app__instructions">
                     The intent of this code repair is to ensure that target sizes are
                     large enough for users to easily activate them, especially those with
                     limited dexterity. Mice and similar pointing devices can be hard to
                     use for these users, and a larger target will help them activate the
                     target.
-                </div>
+                </p>
                 <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
                     <Paper style={paperStyle}>
             <pre>
