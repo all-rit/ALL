@@ -10,9 +10,11 @@ const Video = () => {
     });
     return (
         <div>
-            <div className="row">
-                <h4>Here are some videos to aid in understanding the material.</h4>
-            </div>
+            {/* <div className="row">
+                <h2 className="playthrough__title">Here are some videos to aid in understanding the material.</h2>
+            </div> */}
+            <p className="playthrough__sentence">Here are some videos to aid in understanding the material.</p>
+            <br/>
             <div className="row">
                 <iframe
                     title="Motor Impaired User Review"
