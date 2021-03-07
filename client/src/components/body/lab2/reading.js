@@ -43,46 +43,43 @@ const Reading = () => {
         <h3 className="center">
           There are four main types of color vision deficiencies.
         </h3>
-        <div>
-          <h3 className="center">Protanomaly (proht-n-om-uh-lee):</h3>
-          <p className="center">
-            There is a reduced sensitivity to red light. Most people with this
-            have issues distinguishing between reds, greens, browns, and oranges.
-            There can also be confusion when comparing blues and purples to one
-            another. This is one of the most common forms of a CDV.
-          </p>
-        </div>
-        <div>
-          <h3 className="center">
-            Deuteranomaly (deu-ter-​anom-a-ly):
-          </h3>
-          <p className="center">
-            There is a reduced sensitivity to green light. Most people with this
-            also have issues distinguishing between reds, greens, browns and
-            oranges along with can confuse blues and purples when copmpared to one
-            another. This is the other most common form of a CVD.
-          </p>
-        </div>
-        <div>
-          <h3 className="center">Tritanomaly (trī′tə-nŏm′ə-lē):</h3>
-          <p className="center">
-            There is a reduced sensitivity to blue right. Most people with this
-            have issues distinguishing between blue and yellow, violet and red,
-            and blue and green. Most of the colors someone with this would see are
-            pink, red, black, white, grey, and turquoise. This CVD is extremely
-            rare.
-          </p>
-        </div>
-        <div>
-          <h3 className="center">Monochromacy (mon-o-chro-ma-cy):</h3>
-          <p className="center">
-            Individuals with this deficiency can see no colors at all. Everything
-            is a shade of grey that ranges between white and black. This is
-            incredibly rare (approximately 1 in 33,000 people are diagnosed With
-            this condition). Due to the range of colors these individuals can see,
-            it can make some tasks in life difficult to preform.
-          </p>
-        </div>
+        <ul className="study__list">
+          <li><h3>Protanomaly (proht-n-om-uh-lee)</h3>
+                  <p className="center">
+                    There is a reduced sensitivity to red light. Most people with this
+                    have issues distinguishing between reds, greens, browns, and oranges.
+                    There can also be confusion when comparing blues and purples to one
+                    another. This is one of the most common forms of a CDV.
+                  </p>
+          </li>
+          <li><h3>Deuteranomaly (deu-ter-​anom-a-ly):</h3>
+                  <p className="center">
+                      There is a reduced sensitivity to green light. Most people with this
+                      also have issues distinguishing between reds, greens, browns and
+                      oranges along with can confuse blues and purples when copmpared to one
+                      another. This is the other most common form of a CVD.
+                  </p>
+          </li>
+          <li><h3>Tritanomaly (trī′tə-nŏm′ə-lē):</h3>
+                  <p className="center">
+                  There is a reduced sensitivity to blue right. Most people with this
+                  have issues distinguishing between blue and yellow, violet and red,
+                  and blue and green. Most of the colors someone with this would see are
+                  pink, red, black, white, grey, and turquoise. This CVD is extremely
+                  rare.
+                  </p>
+          </li>
+          <li><h3>Monochromacy (mon-o-chro-ma-cy):</h3>
+                  <p className="center">
+                  Individuals with this deficiency can see no colors at all. Everything
+                  is a shade of grey that ranges between white and black. This is
+                  incredibly rare (approximately 1 in 33,000 people are diagnosed With
+                  this condition). Due to the range of colors these individuals can see,
+                  it can make some tasks in life difficult to preform.
+                  </p>
+          </li>
+        </ul>
+        
         <h3 className="center">
           Each form of CVD has varying levels of severity.
         </h3>

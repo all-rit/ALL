@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Title from "../lab2/components/header/title";
 import Home from "./home/Home";
 import GameCenter from "../lab2/components/GameCenter";
-import ColorChangePopup from "./home/colorChangePopup";
 import Repair from "../lab2/components/Repair.js"
 import Header from "../lab2/components/header/headerMain";
 import SuccessMessage from "./home/successMessage";

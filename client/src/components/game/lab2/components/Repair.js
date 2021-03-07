@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import RepairService from '../../../../services/lab2/RepairService';
 import { PhotoshopPicker } from "react-color";
-import Popup from "./Popup";
-import actions from '../../../../reducers/lab2/AppReducer';
 //import "../../lab2/home/popup.css";
 
 class Repair extends Component {
@@ -29,8 +27,6 @@ class Repair extends Component {
           correctHelp: false,
           incorrectOneHelp: false,
           incorrectTwoHelp: false,
-          visible:true,
-          repairerror:true
         };
       }
     
@@ -209,8 +205,6 @@ class Repair extends Component {
         this.props.changeDefaultColors(colors);
         this.props.changeGameColors(colors)
         this.props.closeColorChange();
-        this.setState({ visible: false })
-        this.setState({ repairerror: false })
       };
     
       //Submits the colors for the system
@@ -311,27 +305,6 @@ class Repair extends Component {
 		});
 
 		return (
-      // <div>
-      //   <div className="code_editor">
-      //     <div className= "center">
-      //       Adjust the colors below to be in better color contrast
-      //       Click 'Repair' to make the appropriate changes.
-      //     </div>
-      //     <Popup message="The repairs have been made." handler={actions.updatePopup} error={this.state.repairerror}/>
-
-      //     <button className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton" onClick={this.setState({ visible: true })} key="repair">
-      //       Repair
-      //     </button>
-      //     <button
-      //       className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
-      //       onClick = {this.props.closeColorChange()}
-      //       key="Next"
-      //       disabled={this.state.repairerror}
-      //     >
-      //       Next
-      //     </button>
-      // </div>
-      //{this.state.visible &&
         <div className="code_editor">
           
           <div className="code_editor__content">
@@ -370,7 +343,7 @@ class Repair extends Component {
                         <button
                           onClick={changeBackground}
                           style={{ backgroundColor: this.state.background }}
-                          className="form"
+                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input": ""}`}
                         ></button>
                       )}
                 </div>
@@ -417,7 +390,7 @@ class Repair extends Component {
                         <button
                           onClick={changeCorrectColor}
                           style={{ backgroundColor: this.state.correctColor }}
-                          className="form"
+                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input": ""}`}
                         ></button>
                       )}
                 </div>
@@ -466,7 +439,7 @@ class Repair extends Component {
                           style={{
                             backgroundColor: this.state.incorrectColorOne
                           }}
-                          className="form"
+                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input": ""}`}
                         ></button>
                       )}
                 </div>
@@ -515,7 +488,7 @@ class Repair extends Component {
                           style={{
                             backgroundColor: this.state.incorrectColorTwo
                           }}
-                          className="form"
+                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input": ""}`}
                         ></button>
                       )}
                 </div>
@@ -599,8 +572,6 @@ class Repair extends Component {
             </button>)}
           </div>
         </div>
-    //     }
-    // </div>
 		);
 	}
 }
