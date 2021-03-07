@@ -17,7 +17,7 @@ jobs:
         PORT: 22
         KEY: ${{ secrets.SSH_SECRET }}
         source: "."
-        target: "/home/all/research/ALL/"
+        target: "/home/all/research/"
     - name: Executing remote command
       uses: appleboy/ssh-action@master
       with:
@@ -26,8 +26,7 @@ jobs:
         KEY: ${{ secrets.SSH_SECRET }}
         PORT: 22
         script: |
-          cd research
-          chmod -R g+w ALL
-          cd ALL/client
+          chmod -R g+w research
+          cd research/client
           npm install
           npm run-script build

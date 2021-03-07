@@ -142,14 +142,14 @@ class Footer extends Component {
                         onClick={() => handleRedirect(actions, lab, body - 1)}
                         style={{display: this.disappearBack(body) || hideOnLanding ? "none" : "block"}}
                     >
-                        Previous — {body > 0 && typeof Sections[lab][body - 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
+                        Previous - {body > 0 && typeof Sections[lab][body - 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
                         onClick={() => handleRedirect(actions, lab, body + 1)}
                         style={{display: this.disappearNext(body) || hideOnLanding ? "none" : "block"}}
                     >
-                        Next — {body < 4 && typeof Sections[lab][body + 1] !== "undefined" ? Sections[lab][body + 1].name : ""}
+                        Next - {body < 4 && typeof Sections[lab][body + 1] !== "undefined" ? Sections[lab][body + 1].name : ""}
                     </button>
                     <div className="btn-change">
                         <button
