@@ -194,10 +194,12 @@ class CodeChangeAccessible extends Component {
                 <p className="app__instructions">
                     The intent of this code repair is to ensure that, wherever possible,
                     content can be operated through a keyboard or keyboard interface.
+                    <br/>
                     Tabindex="-1" prevents access through keyboard navigation.
                     Tabindex="2" (positive non-zero) means focusable in sequential
                     keyboard navigation, with its order defined by the value of the
-                    number. Tabindex="0" means that the element should be focusable in
+                    number. 
+                    Tabindex="0" means that the element should be focusable in
                     sequential keyboard navigation.
                 </p>
                 <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
