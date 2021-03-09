@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Toolitip from "../helpers/tooltip";
 import {PageService} from "../../../../services/PageService";
 import { navigate } from "@reach/router";
+import {LAB_ID} from "../../../../constants/lab4";
 
 class FormComp extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class FormComp extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    PageService.createPage(this.props.name, this.state.secondsElapsed);
+    PageService.createPage(this.props.name, this.state.secondsElapsed, LAB_ID);
     navigate(this.props.url);
   }
 

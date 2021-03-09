@@ -5,6 +5,7 @@ import AppInstructions from "../components/AppInstructions";
 import { navigate } from "@reach/router";
 import {PageService} from "../../../../services/PageService";
 import {GAME_PLAYING} from "../../../../constants/lab4";
+import {LAB_ID} from "../../../../constants/lab4";
 
 class SubmitUpdated extends Component {
     constructor(props) {
@@ -60,7 +61,7 @@ class SubmitUpdated extends Component {
 
     handleSubmit() {
         const name = "SubmitUpdated";
-        PageService.createPage(name, this.state.secondsElapsed);
+        PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
         navigate("/Lab4/Game/FormSkipToMainBroken");
     }
 

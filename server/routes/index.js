@@ -47,7 +47,8 @@ router.post('/lab5/game/choice', GameControllerLab5.submitChoice)
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
 router.post('/lab3/repair/submit', RepairControllerLab3.submitChange);
 router.post('/lab4/repair/submit/button', RepairControllerLab4.submitChangeButton);
-
+router.post('/lab4/repair/submit/skip', RepairControllerLab4.submitChangeSkip);
+router.post('/lab4/repair/submit/hint', RepairControllerLab4.submitChangeHint);
 router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
 //Create a Page Entry
 router.post('/page/complete', PageController.createPage);

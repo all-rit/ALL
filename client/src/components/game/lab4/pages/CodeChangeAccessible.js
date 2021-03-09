@@ -16,6 +16,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import {GAME_PLAYING} from "../../../../constants/lab4";
+import RepairService from "../../../../services/lab4/RepairService";
 
 const variantIcon = {
     success: CheckCircleIcon,
@@ -167,6 +168,7 @@ class CodeChangeAccessible extends Component {
             window.location.state = {
                 hint: this.state.textValue
             };
+            RepairService.submitRepairHint(this.state.textValue);
             navigate("/Lab4/Game/FormHintAccessible");
         }
         Prism.highlightAll();
