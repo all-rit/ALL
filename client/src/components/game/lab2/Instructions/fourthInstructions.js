@@ -29,20 +29,29 @@ const FourthInstructions = ({closePage, activatePopup, endSystem,
           Now that you've made some adjustments and played the game again,
           it's time to make one last decision:
         </p>
-        <p className='instructionInfo'>
-          Option #1: You can click the "Continue Playing!" button to try and
-          get a higher score with your current color configuration.
-        </p>
-        <p className='instructionInfo'>
-          Option #2: You can click the "I'm Finished!" button to finalize the
-          application and see the conclusion (you can play more but all of your
-          work will be reset to the beginning).
-        </p>
-        <p className='instructionInfo'>
-          Option #3: You can click the "Make Adjustments!" button to change the
-          colors you are using in the system to attempt to get a higher score
-          or to improve the contrast in the colors you are using.
-        </p>
+        <ul>
+          <li>
+              <p className='instructionInfo'>
+              Option #1: You can click the "Continue Playing!" button to try and
+              get a higher score with your current color configuration. You will also be
+              able to try out other color vision deficiencies with your color configuration.
+            </p>
+          </li>
+          <li>
+            <p className='instructionInfo'>
+              Option #2: You can click the "I'm Finished!" button to finalize the
+              application and see the conclusion (you can play more but all of your
+              work will be reset to the beginning).
+            </p>
+          </li>
+          <li>
+          <p className='instructionInfo'>
+            Option #3: You can click the "Make Adjustments!" button to change the
+            colors you are using in the system to attempt to get a higher score
+            or to improve the contrast in the colors you are using.
+            </p>
+          </li>
+      </ul>
       </div>
       <div className='center'>
         <Button

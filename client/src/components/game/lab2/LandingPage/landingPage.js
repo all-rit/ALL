@@ -34,15 +34,14 @@ const LandingPage = ({
             >
               To help track your game history and to help ensure we are
               providing you with the best possible learning experience, please
-              sign in with google.
+              sign in with Google.
             </p>
           </div>
         <p
           className="mainInstructionList"
           style={{ marginTop: "40px", marginBottom: "10px" }}
         >
-          Now that you've been familiarized with the instructions, click the
-          button to continue onto the game!
+            When you are ready, click the 'Let's Get Started' button to begin the game
         </p>
         <div className="center">
           <Button

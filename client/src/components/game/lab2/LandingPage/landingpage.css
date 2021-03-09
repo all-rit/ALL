@@ -33,3 +33,21 @@
     font-size: 12px;
   }
 }
+.centerGame{
+  display: flex;
+  justify-content: center;
+}
+
+.inlineForm{
+  color: rgba(0, 204, 255, 1);
+  display: flex;
+  justify-content: left;
+  width: 100%;
+}
+
+.mainColor{
+  color: #ff66ff;
+  margin-left: 25px;
+  margin-right: 25px;
+  background-color: #2B2B2B;
+}

@@ -309,7 +309,7 @@ class Repair extends Component {
           
           <div className="code_editor__content">
             <div className={cssFileClasses}>
-              <div className='code_editor__file--active'>
+              <div className='code_editor__file code_editor__file--active'>
                 Circles.css
               </div>
             </div>
@@ -515,12 +515,12 @@ class Repair extends Component {
                 <p className="code_editor__class">.center &#123;</p>
               </div>
                           <div className="code_editor__line">
-                <span>&nbsp;&nbsp;&nbsp;</span>
+                <span className="code_editor__property code_editor__line-background--light">&nbsp;&nbsp;&nbsp;</span>
                               <span className="code_editor__property code_editor__line-background--light">display: </span>
-                              <span className="code_editor__line--white">&nbsp;&nbsp; felx;</span>
+                              <span className="code_editor__line--white">&nbsp;&nbsp; flex;</span>
                           </div>
                           <div className="code_editor__line">
-                <span>&nbsp;&nbsp;&nbsp;</span>
+                <span className="code_editor__property code_editor__line-background--light">&nbsp;&nbsp;&nbsp;</span>
                               <span className="code_editor__property code_editor__line-background--light">justify-content: </span>
                               <span className="code_editor__line--white">&nbsp;&nbsp; center;</span>
                           </div>
@@ -532,17 +532,17 @@ class Repair extends Component {
                   <p className="code_editor__class">.header &#123;</p>
               </div>
                           <div className="code_editor__line">
-                <span>&nbsp;&nbsp;&nbsp;</span>
+                <span className="code_editor__property code_editor__line-background--light">&nbsp;&nbsp;&nbsp;</span>
                               <span className="code_editor__property code_editor__line-background--light">font-size: </span>
                               <span className="code_editor__line--white">&nbsp;&nbsp; 30px;</span>
                           </div>
                           <div className="code_editor__line">
-                <span>&nbsp;&nbsp;&nbsp;</span>
+                <span className="code_editor__property code_editor__line-background--light">&nbsp;&nbsp;&nbsp;</span>
                               <span className="code_editor__property code_editor__line-background--light">display: </span>
                               <span className="code_editor__line--white">&nbsp;&nbsp; flex;</span>
                           </div>
                           <div className="code_editor__line">
-                <span>&nbsp;&nbsp;&nbsp;</span>
+                <span className="code_editor__property code_editor__line-background--light">&nbsp;&nbsp;&nbsp;</span>
                               <span className="code_editor__property code_editor__line-background--light">justify-content: </span>
                               <span className="code_editor__line--white">&nbsp;&nbsp; center;</span>
                           </div>
@@ -551,7 +551,7 @@ class Repair extends Component {
               </div>
               { this.state.confirmPopup &&
                 <div className="code_editor__line--pink">
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className='form-error'>You've changed {this.state.numberChanged} out of the 4 colors.
                   Press Update to continue or make your changes.</span>
                 </div>

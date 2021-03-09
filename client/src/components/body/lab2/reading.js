@@ -62,7 +62,7 @@ const Reading = () => {
           </li>
           <li><h3>Tritanomaly (trī′tə-nŏm′ə-lē):</h3>
                   <p className="center">
-                  There is a reduced sensitivity to blue right. Most people with this
+                  There is a reduced sensitivity to blue light. Most people with this
                   have issues distinguishing between blue and yellow, violet and red,
                   and blue and green. Most of the colors someone with this would see are
                   pink, red, black, white, grey, and turquoise. This CVD is extremely
@@ -73,7 +73,7 @@ const Reading = () => {
                   <p className="center">
                   Individuals with this deficiency can see no colors at all. Everything
                   is a shade of grey that ranges between white and black. This is
-                  incredibly rare (approximately 1 in 33,000 people are diagnosed With
+                  incredibly rare (approximately 1 in 33,000 people are diagnosed with
                   this condition). Due to the range of colors these individuals can see,
                   it can make some tasks in life difficult to preform.
                   </p>
@@ -120,30 +120,32 @@ const Reading = () => {
         <h3 className="center">
           For more information, please visit the following websites:
         </h3>
-        <p className="center">
-  
-            <a href="http://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding">
+        <ul>
+          <li>
+          <a href="http://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding center">
             colourblindawareness.org
           </a>
-  
-          <a
-            href="https://www.aoa.org/patients-and-public/eye-and-vision-problems/glossary-of-eye-and-vision-conditions/color-deficiency"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="padding"
-          >
+          </li>
+          <li>
+          <a href="https://www.aoa.org/patients-and-public/eye-and-vision-problems/glossary-of-eye-and-vision-conditions/color-deficiency" target="_blank" rel="noopener noreferrer" className="padding center">
             aoa.org
           </a>
-          <a href="https://www.color-blindness.com/" target="_blank" rel="noopener noreferrer" className="padding">
-            color-blindness.com/
+          </li>
+          <li>
+          <a href="https://www.color-blindness.com/" target="_blank" rel="noopener noreferrer" className="padding center">
+          color-blindness.com
           </a>
-        </p>
-        <p className="center">
-          The information for this page was gathered from
-          <a href="http://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding">
-            colourblindawareness.org
-          </a>
-        </p>
+          </li>
+          <li>
+              <br></br>
+              <br></br>
+              <p className="padding center">
+                  The information for this page was gathered from            
+                  <a href="http://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding">   colourblindawareness.org</a>
+              </p>
+          </li>
+        </ul>
+
       </div>
     );
 };

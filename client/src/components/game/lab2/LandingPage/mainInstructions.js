@@ -17,7 +17,7 @@ const MainInstructions = () => {
       <div className='center'>
         <Circle color={'blue'} clickable={false}/>
       </div>
-      <ul>
+      <ul className="study__list">
         <li className='mainInstructionsItem'>
           You will need to <strong>click the circle</strong> in the center of the screen.
         </li>
@@ -33,7 +33,7 @@ const MainInstructions = () => {
           in the <strong>bottom right</strong> of the screen.
         </li>
         <li className='mainInstructionsItem'>
-          You will gain points based on if you clicked the <strong>correct or incorrect</strong> circle 
+          You will gain or lose points based on if you clicked the <strong>correct or incorrect</strong> circle 
           and based on <strong>how fast you clicked</strong> the correct colored circle.
           So click as fast as you possibly can!
         </li>

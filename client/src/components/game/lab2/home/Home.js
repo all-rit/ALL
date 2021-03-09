@@ -42,12 +42,11 @@ const Home = ({correctColor, incorrectColorOne, incorrectColorTwo,
         incorrectColorOne={incorrectColorOne}
         incorrectColorTwo={incorrectColorTwo}
       />
-      <br></br>
-      <p className='center noBottomMargin fourthTitle'>
+      <br/>
+      <p className='fourthTitle'>
         For educational purposes, we record all scores and actions taken in the
-        game, along with any information you choose to give us from our forum.
-      </p>
-      <p className='center noBottomMargin fourthTitle'>
+        game, along with any information you choose to give us from our forum.<br/>
+
         For further information and to see the other labs
         currently in development for this project, visit
         <a href="http://all.rit.edu" className='allLink'>

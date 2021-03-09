@@ -87,7 +87,7 @@ class Header extends Component {
                               <Button
                                 clickMethod={backButton}
                                 message={"Back"}
-                                class="backButton btn btn-second btn-xl text-uppercase js-scroll-trigger"
+                                className="backButton btn btn-second btn-xl text-uppercase"
                                 fontSizing={"25px"}
                               />
                               <p

@@ -24,7 +24,7 @@ const ThirdInstructions  = ({closePage, activatePopup, toWhiteBackground,
 
   return (
     <div className="instructionsContainer">
-      <p className='secondInstructionTitle'>Instructions -- Part Three</p>
+      <p className='secondInstructionTitle'>Wow that was tough!</p>
       <ul>
         <li className='instructionsItem'>
           As you can see, this game can be very difficult for users who are
@@ -35,11 +35,11 @@ const ThirdInstructions  = ({closePage, activatePopup, toWhiteBackground,
           <br /><br />
 
         <li className='instructionsItem'>
-          You can change the colors with the
-          <strong style={{marginLeft: '3px'}}>
-            Update Colors
-          </strong>
-          button in the upper left corner of the next screen.
+          You can change the colors with the 
+          <strong style={{marginLeft: '3px', marginRight: '3px'}}> 
+              Update Colors 
+          </strong>           
+           button in the upper left corner of the next screen.
         </li>
           <br />
         <li className='instructionsItem'>
@@ -58,6 +58,7 @@ const ThirdInstructions  = ({closePage, activatePopup, toWhiteBackground,
           vision deficiencies.
         </li>
       </ul>
+      <br></br>
       <div className='center'>
         <Button
           clickMethod={changeColors}

@@ -94,8 +94,8 @@ class game extends Component {
           <div className='center prescreen'>
             <Circle color={correctColor} />
             <div className='arrow'>
-              <div className='point'></div>
-              <div className='line'></div>
+              <div className='point'/>
+              <div className='line'/>
             </div>
             <div>
               <p className='prescreenText'>Click this color whenever it appears here!</p>

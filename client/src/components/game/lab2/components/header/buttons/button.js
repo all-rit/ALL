@@ -13,7 +13,7 @@ const Button = ({ clickMethod, message, fontSizing }) => {
   return (
     <button
       onClick={onClick}
-      className="Button btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+      className="Button button btn btn-primary btn-xl text-uppercase js-scroll-trigger"
     >
       {message}
     </button>

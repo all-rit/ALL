@@ -53,14 +53,14 @@ class Replay extends Component {
         <div style={{ marginTop: "75px" }}>
           <div>
             {this.props.score > 0 ? (
-              <p className="timeEnd">Good job! Your score information is:</p>
+              <p className="timeEnd">Good job! Here are your results:</p>
             ) : (
               <p className="timeEnd">
-                Better luck next time! Your score information is:
+                Better luck next time! Here are your results:
               </p>
             )}
             <div>
-              <table style={{ backgroud: "white" }} className="center">
+              <table className="center centerGame">
                 <tbody style={{ border: "2px solid black" }}>
                   <tr>
                     <td className="replayBreakdown">Final Score</td>
