@@ -224,7 +224,7 @@ class ProblemFix extends Component {
     return (
       <div>
         <CodeUpdateHeader
-          heading={"Problem PageLayoutRepair"}
+          heading={"Problem Repair"}
           justifyAlignment={"space-between"}
           helpMessage={"#Placeholder"}
         />

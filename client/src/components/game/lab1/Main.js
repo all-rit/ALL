@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 		congratulationMessage: state.game1.congratulationMessage,
 
 		
-		// PageLayoutRepair specific
+		// Repair specific
 		availableMessage: state.repair1.availableMessage,
 		unavailableMessage: state.repair1.unavailableMessage,
 		availableBackgroundColor: state.repair1.availableBackgroundColor,
