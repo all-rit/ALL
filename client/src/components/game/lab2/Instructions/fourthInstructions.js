@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '../components/header/buttons/button';
+import UserLabService from '../../../../services/UserLabService';
 import './secondaryInstructions.css';
+import { LAB_ID } from '../../../../constants/lab2';
 
 /*
 Responible for displaying the fourth and final page of instructions to the users
@@ -11,6 +13,7 @@ const FourthInstructions = ({closePage, activatePopup, endSystem,
   const endGame = () => {
     endSystem();
     closePage();
+    UserLabService.complete_game(LAB_ID);
   }
 
   if (background !== 'white') {
@@ -31,6 +34,7 @@ const FourthInstructions = ({closePage, activatePopup, endSystem,
         </p>
         <ul>
           <li>
+            <br/>
               <p className='instructionInfo'>
               Option #1: You can click the "Continue Playing!" button to try and
               get a higher score with your current color configuration. You will also be
@@ -38,11 +42,13 @@ const FourthInstructions = ({closePage, activatePopup, endSystem,
             </p>
           </li>
           <li>
+          <br/>
             <p className='instructionInfo'>
               Option #2: You can click the "I'm Finished!" button to finalize the
               application and see the conclusion (you can play more but all of your
               work will be reset to the beginning).
             </p>
+            <br/>
           </li>
           <li>
           <p className='instructionInfo'>
@@ -50,8 +56,10 @@ const FourthInstructions = ({closePage, activatePopup, endSystem,
             colors you are using in the system to attempt to get a higher score
             or to improve the contrast in the colors you are using.
             </p>
+            <br/>
           </li>
       </ul>
+      
       </div>
       <div className='center'>
         <Button

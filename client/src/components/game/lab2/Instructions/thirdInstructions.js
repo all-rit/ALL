@@ -50,8 +50,9 @@ const ThirdInstructions  = ({closePage, activatePopup, toWhiteBackground,
           for text coloring (giving you zero contrast between the background
           and text).</em>
         </li>
-          <br /><br />
+          <br />
         <h2>Did you know?</h2>
+        <br />
         <li className='instructionsItem'>
           Color contrast is a measurement of how much two colors differ from
           one another. This measurement makes a huge difference to people color

@@ -14,7 +14,7 @@ const data = {
       {
         label: "Color Visions Deficiencies in a Population of 10,000 People",
         borderColor: "black",
-        backgroundColor: ["red", "orange", "blue", "purple"],
+        backgroundColor: ["orange","darkred", "lightblue", "purple"],
         data: [416.67, 25, 4583.33, 4975],
         borderWidth: "2"
       }
@@ -44,7 +44,7 @@ const Reading = () => {
           There are four main types of color vision deficiencies.
         </h3>
         <ul className="study__list">
-          <li><h3>Protanomaly (proht-n-om-uh-lee)</h3>
+          <li><h3>Protanomaly (proht-n-om-uh-lee):</h3>
                   <p className="center">
                     There is a reduced sensitivity to red light. Most people with this
                     have issues distinguishing between reds, greens, browns, and oranges.
@@ -55,8 +55,8 @@ const Reading = () => {
           <li><h3>Deuteranomaly (deu-ter-​anom-a-ly):</h3>
                   <p className="center">
                       There is a reduced sensitivity to green light. Most people with this
-                      also have issues distinguishing between reds, greens, browns and
-                      oranges along with can confuse blues and purples when copmpared to one
+                      also have issues distinguishing between reds, greens, browns, and
+                      oranges. They can also confuse blues and purples when copmpared to one
                       another. This is the other most common form of a CVD.
                   </p>
           </li>
@@ -75,7 +75,7 @@ const Reading = () => {
                   is a shade of grey that ranges between white and black. This is
                   incredibly rare (approximately 1 in 33,000 people are diagnosed with
                   this condition). Due to the range of colors these individuals can see,
-                  it can make some tasks in life difficult to preform.
+                  it can make it difficult to perform even everyday tasks.
                   </p>
           </li>
         </ul>
@@ -103,10 +103,10 @@ const Reading = () => {
         </div>
         <div>
           <h3 className="center">
-            Causes of Color Vision Deficiencies:
+            Causes of color vision deficiencies:
           </h3>
           <p className="center">
-            Color Vision Deficiencies are normally caused by genetic conditions
+            Color vision deficiencies are normally caused by genetic conditions
             and are usually inheritied from an individual's parents. Men are more
             often impacted than women because the gene is carried in the X
             chromosome. There can be some other cases that cause color vision
@@ -114,12 +114,12 @@ const Reading = () => {
             determine the exact cause.
           </p>
         </div>
-        <h3 className="center">
+        <h4 className="center">
           At this moment in time, there is no cure to these deficiencies.
-        </h3>
-        <h3 className="center">
+        </h4>
+        <h4 className="center">
           For more information, please visit the following websites:
-        </h3>
+        </h4>
         <ul>
           <li>
           <a href="http://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding center">

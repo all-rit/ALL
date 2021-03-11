@@ -41,8 +41,9 @@ const SecondInstructions = ({closePage, selectOption, toWhiteBackground,
           the ability to simulate what an individual with this deficiency would
           see.
         </li>
-          <br /><br />
+          <br />
         <h2>Did you know?</h2>
+        <br />
         <li className='instructionsItem' style={{"listStyleType": "none"}}>
           There are three main color vision deficiencies: Protanopia (Red blindness),
           Deuteranopia (Green blindness), and Tritanopia (Blue blindness).

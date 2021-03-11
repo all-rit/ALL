@@ -43,7 +43,7 @@ class game extends Component {
         milliseconds = milliseconds / 100;
         return (
           <div>
-            <div className='timer right'>{props.seconds}.{milliseconds}</div>
+            <div className='gameTimer'>{props.seconds}.{milliseconds}</div>
             <Title gameState={true} replay={false}/>
           </div>
         );
@@ -88,7 +88,7 @@ class game extends Component {
       return (
         <div>
           <Title gameState={true} replay={false} />
-          <div className='timer startTimer'>
+          <div className='startGameTimer'>
             {props.seconds}
           </div>
           <div className='center prescreen'>

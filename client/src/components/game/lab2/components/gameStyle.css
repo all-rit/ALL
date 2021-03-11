@@ -18,6 +18,12 @@
   font-size: 40px;
   padding-top: 10px;
 }
+.gameTimer{
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  padding-top: 10px;
+}
 
 .chart {
   width: 500px;
@@ -26,6 +32,13 @@
 }
 
 .startTimer{
+  font-style: bold;
+  font-size: 60px;
+}
+
+.startGameTimer{
+  display: flex;
+  justify-content: center;
   font-style: bold;
   font-size: 60px;
 }
