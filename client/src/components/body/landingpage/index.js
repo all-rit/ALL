@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../assets/stylesheets/pages/LandingPage.scss"
-import eye from "../../../assets/images/labs/eye_in_dev.jpg";
+import eye from "../../../assets/images/labs/eye.jpg";
 import ear from "../../../assets/images/labs/ear.jpg";
 // import cognitive from "../../../assets/images/labs/cognitiveimpairment.jpg";
 import braille from "../../../assets/images/labs/braille.jpg";

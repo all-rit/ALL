@@ -6,7 +6,7 @@ const getGameState = (state) =>{
         case 1:
             return state.game1.state
         case 2:
-            return state.game2.state
+            return state.game2.changeGameState.gameState ? "GAME_PLAYING":"GAME_IDLE"
         case 3:
             return state.game3.state
         case 4:

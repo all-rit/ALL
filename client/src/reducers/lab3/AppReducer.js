@@ -18,6 +18,8 @@ export const types = {
         return state;
     }
   };
+
+  
   
   export const actions = {
     updatePopup: (message) => ({ type: types.UPDATE_POPUP, message })

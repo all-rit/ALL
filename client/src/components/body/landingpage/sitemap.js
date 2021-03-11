@@ -49,18 +49,18 @@ return (
                             <li><a href="# " onClick={() => handleRedirect(actions,1,4)} >Quiz</a></li>
                         </ul>
                         </div>
-                        {/*<div class="col-md-4">*/}
-                        {/*<h4 class="service-heading">*/}
-                        {/*    <a href="# " onClick={() => handleRedirect(actions, 2, 0)} >Lab 2</a>*/}
-                        {/*</h4>*/}
-                        {/*<ul>*/}
-                        {/*    <li><a href="# " onClick={() => handleRedirect(actions,2,0)} >About</a></li>*/}
-                        {/*    <li><a href="# " onClick={() => handleRedirect(actions,2,1)}  >Reading</a></li>*/}
-                        {/*    <li><a href="# " onClick={() => handleRedirect(actions,2,2)} >Game</a></li>*/}
-                        {/*    <li><a href="# " onClick={() => handleRedirect(actions,2,3)}>Video</a></li>*/}
-                        {/*    <li><a href="# " onClick={() => handleRedirect(actions,2,4)} >Quiz</a></li>*/}
-                        {/*</ul>*/}
-                        {/*</div>*/}
+                        <div class="col-md-4">
+`                        <h4 class="service-heading">
+                           <a href="# " onClick={() => handleRedirect(actions, 2, 0)} >Lab 2</a>
+                        </h4>
+                        <ul>
+                           <li><a href="# " onClick={() => handleRedirect(actions,2,0)} >About</a></li>
+                           <li><a href="# " onClick={() => handleRedirect(actions,2,1)}  >Reading</a></li>
+                           <li><a href="# " onClick={() => handleRedirect(actions,2,2)} >Game</a></li>
+                           <li><a href="# " onClick={() => handleRedirect(actions,2,3)}>Video</a></li>
+                           <li><a href="# " onClick={() => handleRedirect(actions,2,4)} >Quiz</a></li>
+                        </ul>`
+                        </div>
 
                         <div class="col-md-4">
                         <h4 class="service-heading">
