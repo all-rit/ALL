@@ -41,7 +41,7 @@ const Reading = () => {
           The pie chart above shows this data in a population of 10,000 people.
         </p>
         <h3 className="center">
-          There are four main types of color vision deficiencies.
+        Four Main Types of Color Vision Deficiencies
         </h3>
         <ul className="study__list">
           <li><h3>Protanomaly (proht-n-om-uh-lee):</h3>
