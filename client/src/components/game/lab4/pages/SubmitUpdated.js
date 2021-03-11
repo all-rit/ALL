@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import AppInstructions from "../components/AppInstructions";
 import { navigate } from "@reach/router";
@@ -89,7 +88,6 @@ class SubmitUpdated extends Component {
                             ref={c => (this.myDiv = c)}
                             href="#"
                             onClick={this.handleSubmit}
-                            component={Link}
                             variant={"contained"}
                             color={"primary"}
                             style={this.state}

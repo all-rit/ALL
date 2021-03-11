@@ -21,7 +21,7 @@ class Finish extends Component {
         return (
             <Fragment>
                 <div>
-                    <p className="app__instructions">
+                    <p className="playthrough__title">
                         Congratulations on finishing the module!
                     </p>
                     <br/>
