@@ -15,10 +15,10 @@ import {default as ReadingLab3} from "./components/body/lab3/reading";
 import {default as GameLab3} from "./components/game/lab3/Main";
 import {default as VideoLab3} from "./components/body/lab3/video";
 
-// import {default as AboutLab4} from "./components/body/lab4/about";
-// import {default as ReadingLab4} from "./components/body/lab4/reading";
-// import {default as GameLab4} from "./components/game/lab4/Main";
-// import {default as VideoLab4} from "./components/body/lab4/video";
+import {default as AboutLab4} from "./components/body/lab4/about";
+import {default as GameLab4} from "./components/game/lab4/Main";
+import {default as ReadingLab4} from "./components/body/lab4/reading";
+import {default as VideoLab4} from "./components/body/lab4/video";
 import {default as AboutLab5} from "./components/body/lab5/about";
 import {default as ReadingLab5} from "./components/body/lab5/reading";
 import {default as GameLab5} from "./components/game/lab5/Main";
@@ -83,34 +83,30 @@ class App extends Component {
               <AboutLab1 path="/Lab1/"/>
               <AboutLab2 path="/Lab2/"/>
               <AboutLab3 path="/Lab3/"/>
+              <AboutLab4 path="/Lab4/"/>
               <AboutLab5 path="/Lab5/"/>
               <AboutLab1 path="/Lab1/About"/>
               <AboutLab2 path="/Lab2/About"/>
               <AboutLab3 path="/Lab3/About"/>
-              {/*<AboutLab4 path="/Lab4/About"/> *!/*/}
+              <AboutLab4 path="/Lab4/About"/>
               <AboutLab5 path="/Lab5/About"/>
-
-
 
               <ReadingLab1 path="/Lab1/Reading"/>
               <ReadingLab2 path="/Lab2/Reading"/>
               <ReadingLab3 path="/Lab3/Reading"/>
-              {/*<ReadingLab4 path="/Lab4/Reading"/> *!/*/}
+              <ReadingLab4 path="/Lab4/Reading"/>
               <ReadingLab5 path="/Lab5/Reading"/>
 
               <GameLab1 path="/Lab1/Game" />
               <GameLab2 path="/Lab2/Game" />
               <GameLab3 path="/Lab3/Game/*" />
+              <GameLab4 path="/Lab4/Game/*" />
               <GameLab5 path="/Lab5/Game/*" />
-              {/* <GameLab2 path="/Lab2/Game" />
-              
-              <GameLab4 path="/Lab4/Game" /> */}
-              {/* <GameLab4 path="/Lab4/Game" /> */}
 
               <VideoLab1 path="/Lab1/Video" />
               <VideoLab2 path="/Lab2/Video" />
               <VideoLab3 path="/Lab3/Video" />
-              {/*<VideoLab4 path="/Lab4/Video" /> *!/*/}
+              <VideoLab4 path="/Lab4/Video" />
               <VideoLab5 path="/Lab5/Video" />
 
 

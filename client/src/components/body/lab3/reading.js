@@ -79,9 +79,9 @@ const Reading = () => {
 
             <h4>For more information, please visit the following websites:</h4>
             <div className="flex">
-                <a href="https://www.afb.org/">https://www.afb.org/</a>
-                <a href="https://www.who.int/">https://www.who.int/</a>
-                <a href="https://www.brailleinstitute.org/">https://www.brailleinstitute.org/</a>
+                <a href="https://www.afb.org/" target="_blank" rel="noopener noreferrer">https://www.afb.org/</a>
+                <a href="https://www.who.int/" target="_blank" rel="noopener noreferrer">https://www.who.int/</a>
+                <a href="https://www.brailleinstitute.org/" target="_blank" rel="noopener noreferrer">https://www.brailleinstitute.org/</a>
             </div>
         </div>
     );

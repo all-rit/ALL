@@ -36,8 +36,6 @@ const mapDispatchToProps = dispatch => {
 class Main extends Component {
 
   // eslint-disable-next-line require-jsdoc
-
-  // eslint-disable-next-line require-jsdoc
   render() {
     const {actions, state} = this.props;
     return (

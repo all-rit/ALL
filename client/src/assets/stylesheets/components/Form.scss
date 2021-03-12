@@ -39,6 +39,12 @@ a.skip-main {
   overflow:hidden;
   z-index:-999;
 }
+.formCompDexterity{
+  text-align:left;
+  padding-top: 3%;
+  padding-left: 30%;
+  padding-right: 30%;
+}
 .formComp{
   text-align: left;
   margin:auto;
@@ -54,7 +60,7 @@ a.skip-main:focus, a.skip-main:active {
   color: black;
   font-weight: bold;
   background-color:yellow;
-  left:0px;
+  left:0;
   width: 30%;
   height: auto;
   overflow:auto;

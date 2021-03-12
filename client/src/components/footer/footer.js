@@ -135,7 +135,7 @@ class Footer extends Component {
         let display = getGameState(state) === "GAME_IDLE" || body !== 2;
         let hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
         return (
-            <div className="changeFooter">
+            <div className="footer">
                 <div className="container" style={{display: display ? "block" : "none"}}>
                     <button
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
