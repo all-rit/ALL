@@ -15,7 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import {GAME_PLAYING} from "../../../../../constants/lab3/index";
 import Repair from "../../components/Repair";
 import GameButtons from "../../components/GameButtons";
-import Popup from "../../components/Popup";
+import Popup from "../../../shared/Popup";
 
 const variantIcon = {
   success: CheckCircleIcon,
