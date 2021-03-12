@@ -16,7 +16,8 @@ class FormComp extends Component {
       candy: "",
       city: "",
       show: false,
-      alert: "Fill Out Form Completely"
+      alert: "Fill Out Form Completely",
+      submitted: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -49,6 +50,7 @@ class FormComp extends Component {
 
   form_sub = e => {
     e.preventDefault();
+    this.setState({submitted: true});
     if (this.props.rule) {
       if (
           this.state.animal === "" ||
@@ -64,7 +66,6 @@ class FormComp extends Component {
           this.state.candy === "" ||
           this.state.color === ""
       ) {
-        console.log(this.state.color);
         this.setState({
           show: true,
           alert: "Color doesn't meet 'hint' criteria."
@@ -137,7 +138,7 @@ class FormComp extends Component {
                 <Alert color="danger">{this.state.alert}</Alert>
             ) : null}
             <Input type="submit" onClick={e =>this.form_sub(e)} className="formButtonSubmit"/>
-            {this.props.rule && (
+            {this.props.rule && this.state.submitted && (
                 <Input
                     type="submit"
                     value="Give Up"
