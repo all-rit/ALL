@@ -5,15 +5,15 @@ import { Pie } from "react-chartjs-2";
 
 const data = {
     labels: [
-        "US Population (Millions)",
-        "Cognitively Impaired (Millions)"
+        "US Population Without Cognitive Impairment (Millions)",
+        "US Population With Cognitive Impairment (Millions)"
     ],
     datasets: [
         {
             label: "Cognitively Impaired in a Population of 328 People",
             borderColor: "black",
             backgroundColor: ["blue", "red"],
-            data: [328, 16],
+            data: [312, 16],
             borderWidth: "1"
         }
     ]
@@ -45,7 +45,7 @@ const Reading = () => {
                 of cognitive impairment.
             </p>
             <p>
-                Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources to various health areas of work.
+                Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources for research in accessibility improvements.
             </p>
             <h3>Common Challenges</h3>
             <ul className="study__list">
@@ -83,7 +83,7 @@ const Reading = () => {
                 <h5>
                     Predictability
                 </h5>
-                <div>Guideline 3.2 states to "make web pages appear and operate in predictable ways. Use consistency with the page layout.
+                <div>Guideline 3.2 states to "make web pages appear and operate in predictable ways." Use consistency with the page layout.
                 </div>
                 <h5>
                     Input Assistance
@@ -93,7 +93,7 @@ const Reading = () => {
             </div>
             </p>
 
-            <h3>Practical Application of Cognitive Accessibility</h3>
+            <h3>Practical Applications of Cognitive Accessibility</h3>
             <p>
                 We all enjoy online shopping. However, a person’s ability to use websites effectively declines by 0.8% every year over the age of 25, according to Nielsen Norman Group. Optimally designing for memory limitations will be especially important as the population ages. These techniques include:
                 <div className="non-bullet-list">

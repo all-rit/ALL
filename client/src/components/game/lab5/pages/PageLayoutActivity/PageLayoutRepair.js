@@ -148,7 +148,7 @@ class PageLayoutRepair extends Component {
 		return (
 			<div>
 				<div className= "cognitive_instructions margin-bottom-2">
-					Let's make the changes to make the code accessible. Click 'Repair' to make the appropriate changes.
+					Let's optimize the page layout and font to allow for easier reading. Click 'Repair' to make the appropriate changes.
 				</div>
 				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} error={this.state.repairerror}/>
 

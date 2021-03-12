@@ -122,7 +122,7 @@ class FormRepair extends Component {
 		return (
 			<div>
 				<div className= "cognitive_instructions margin-bottom-2">
-					Let's make the changes to make the code accessible.
+					Let's improve the form feedback.
 					We will be adding an error notification under the 'Today's Date' question along with a success message.
 					Click 'Repair' to make the appropriate changes.
 				</div>
