@@ -50,7 +50,7 @@ return (
                         </ul>
                         </div>
                         <div class="col-md-4">
-`                        <h4 class="service-heading">
+                        <h4 class="service-heading">
                            <a href="# " onClick={() => handleRedirect(actions, 2, 0)} >Lab 2</a>
                         </h4>
                         <ul>
@@ -59,7 +59,7 @@ return (
                            <li><a href="# " onClick={() => handleRedirect(actions,2,2)} >Game</a></li>
                            <li><a href="# " onClick={() => handleRedirect(actions,2,3)}>Video</a></li>
                            <li><a href="# " onClick={() => handleRedirect(actions,2,4)} >Quiz</a></li>
-                        </ul>`
+                        </ul>
                         </div>
 
                         <div class="col-md-4">
