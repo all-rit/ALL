@@ -16,6 +16,6 @@ describe('Testing font size', () => {
     
   });
   
-  // into homepage?
+  // persistency into homepage?
   
 })

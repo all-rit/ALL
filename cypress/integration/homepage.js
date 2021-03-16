@@ -78,6 +78,18 @@ describe("Testing homepage", () => {
     cy.get('h4').eq(5).should('have.text', 'Lab 5').and('be.visible')
     
     // Check page links under headers
-    // cy.get('h4 > ul li').each(($ul))
-  });
+    cy.get('div[class*="col-md-4').each(($el, index, $list) => {
+      if(index === 0) {
+        cy.get($el).children('ul').should('contain', 'Goals')
+          .and('contain', 'Labs')
+          .and('contain', 'Contact')
+      } else {
+        cy.get($el).children('ul').should('contain', 'About')
+          .and('contain', 'Reading')
+          .and('contain', 'Game')
+          .and('contain', 'Video')
+          .and('contain', 'Quiz')
+      }
+    })
+  })
 })
