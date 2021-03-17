@@ -12,6 +12,10 @@ import sagas from './sagas';
 
 import * as serviceWorker from './serviceWorker';
 
+import ReactGA from 'react-ga';
+const TRACKING_ID = "UA-129523795-1";
+ReactGA.initialize(TRACKING_ID);
+
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 
