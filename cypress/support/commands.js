@@ -140,3 +140,22 @@ Cypress.Commands.add('testFontSizeIncrease', () => {
   // check for consistency across pages
   cy.get();
 });
+
+// Completes quiz in current lab
+Cypress.Commands.add('testCompleteQuiz', () => {
+  cy.get('nav').contains('Quiz').click();
+  cy.fixture("data.json").then((data) => {
+    
+    // Complete quiz with correct answers
+    for (let i in data.quiz1) {
+      cy.get('.answerOption').contains(data.quiz1[i]).click({force: true});
+      
+      // Proceed to next question or complete quiz
+      if (i < data.quiz1.length-1) {
+        cy.get('button').contains('Next Question').click();
+      } else {
+        cy.get('button').contains("Complete").click();
+      }
+    }
+  });
+});

@@ -3,5 +3,16 @@
   "email": "hello@cypress.io",
   "body": "Fixtures are a great way to mock data for responses to routes",
   "url": "http://localhost:3000/",
-  "server_url": "http://localhost:5005/"
+  "server_url": "http://localhost:5005/",
+  "quiz1": [
+    "A playing sound that conveys key information",
+    "30-40 million people",
+    "From the beginning",
+    "Information and user interface components must be presentable to users in ways they can perceive.",
+    "No"
+  ],
+  "quiz2": [],
+  "quiz3": [],
+  "quiz4": [],
+  "quiz5": []
 }
