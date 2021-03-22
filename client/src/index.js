@@ -13,7 +13,7 @@ import sagas from './sagas';
 import * as serviceWorker from './serviceWorker';
 
 import ReactGA from 'react-ga';
-const TRACKING_ID = "UA-129523795-1";
+const TRACKING_ID = process.env.GA_TRACKING_ID;
 ReactGA.initialize(TRACKING_ID);
 
 const sagaMiddleware = createSagaMiddleware();
