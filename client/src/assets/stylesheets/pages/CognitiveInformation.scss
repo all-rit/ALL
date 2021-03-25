@@ -1,0 +1,97 @@
+.cognitive_information {
+  background-color: #d3d6d9;
+  padding: 50px;
+  text-align:left;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+
+  .center{
+    text-align:center;
+  }
+  .heading{
+    font-size: 30px;
+    //color: #1a6fb1;
+    margin-bottom: 1rem;
+  }
+  .subheading{
+    font-size: 25px;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+  }
+  .inaccessible{
+    font-family: Brush Script MT, cursive
+  }
+  ul li {
+    display: list-item;
+    list-style: circle;
+  }
+  ul {
+    padding-left:30px;
+  }
+
+
+}
+.margin-bottom{
+  margin-bottom:1rem;
+}
+.margin-bottom-2{
+  margin-bottom:2rem !important;
+}
+.flex-boxes{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  div{
+    border-radius:5px;
+    //min-height:150px;
+    color:black;
+    width:66%;
+    //width:30%;
+    padding:2rem;
+    margin:1rem;
+    word-break: break-word;
+  }
+  .icon{
+    border-radius:50%;
+    background-color: rgb(214, 210, 210);
+    width:100px;
+    margin:auto;
+    margin-bottom:25px;
+    color:#212529;
+  }
+}
+.cognitive_instructions{
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.game_start{
+  font-size:1.25rem;
+  margin-bottom: 2.5rem;
+  text-align:left;
+}
+.timer{
+  display: flex;
+  font-size: 1.25rem;
+  align-items: center;
+  &__window{
+    background-color: #d3d6d9;
+    width:100px;
+    margin:1rem;
+    padding:1rem;
+  }
+}
+.flex{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom:1rem;
+  align-items: center;
+}
+.float-right{
+  float:right;
+}
+.btn-primary:disabled{
+  background-color: #fed136;
+  border-color: #fed136;
+  opacity: .65;
+}

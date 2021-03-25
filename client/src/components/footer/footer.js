@@ -135,21 +135,21 @@ class Footer extends Component {
         let display = getGameState(state) === "GAME_IDLE" || body !== 2;
         let hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
         return (
-            <div>
+            <div className="footer">
                 <div className="container" style={{display: display ? "block" : "none"}}>
                     <button
                         className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
                         onClick={() => handleRedirect(actions, lab, body - 1)}
                         style={{display: this.disappearBack(body) || hideOnLanding ? "none" : "block"}}
                     >
-                        Previous — {body > 0 && typeof Sections[lab][body - 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
+                        Previous - {body > 0 && typeof Sections[lab][body - 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
                     </button>
                     <button
                         className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
                         onClick={() => handleRedirect(actions, lab, body + 1)}
                         style={{display: this.disappearNext(body) || hideOnLanding ? "none" : "block"}}
                     >
-                        Next — {body < 4 && typeof Sections[lab][body + 1] !== "undefined" ? Sections[lab][body + 1].name : ""}
+                        Next - {body < 4 && typeof Sections[lab][body + 1] !== "undefined" ? Sections[lab][body + 1].name : ""}
                     </button>
                     <div className="btn-change">
                         <button

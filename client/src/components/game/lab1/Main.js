@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Content from './components/Content';
 import GameInstructions from './components/GameInstructions';
-import Popup from './components/Popup';
+import Popup from '../shared/Popup';
 
 import { actions as appActions } from '../../../reducers/lab1/AppReducer';
 import { actions as gameActions } from '../../../reducers/lab1/GameReducer';

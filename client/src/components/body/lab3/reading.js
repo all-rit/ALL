@@ -60,7 +60,6 @@ const Reading = () => {
                 <li>Cataracts</li>
                 <li>Uncorrected refractive errors</li>
             </ul>
-            <br></br>
             
             <h3>Effect that impaired vision has on the computing world</h3>
             <p>
@@ -77,13 +76,12 @@ const Reading = () => {
                 <li>Decrease the number of links</li>
                 <li>Limit the use of popups</li>
             </ul>
-            <br></br>
 
-            <h3>For more information, please visit the following websites:</h3>
+            <h4>For more information, please visit the following websites:</h4>
             <div className="flex">
-                <a href="https://www.afb.org/">https://www.afb.org/</a>
-                <a href="https://www.who.int/">https://www.who.int/</a>
-                <a href="https://www.brailleinstitute.org/">https://www.brailleinstitute.org/</a>
+                <a href="https://www.afb.org/" target="_blank" rel="noopener noreferrer">https://www.afb.org/</a>
+                <a href="https://www.who.int/" target="_blank" rel="noopener noreferrer">https://www.who.int/</a>
+                <a href="https://www.brailleinstitute.org/" target="_blank" rel="noopener noreferrer">https://www.brailleinstitute.org/</a>
             </div>
         </div>
     );

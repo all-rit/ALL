@@ -11,10 +11,10 @@ class AdvancedGame extends Component {
   handleSubmit() {
     navigate("/Lab3/Game/AdvancedInstructions");
   }
-    componentDidMount() {
-        const { actions } = this.props;
-        actions.updateState(GAME_PLAYING);
-    }
+  componentDidMount() {
+      const { actions } = this.props;
+      actions.updateState(GAME_PLAYING);
+  }
   render() {
     return (
       <div>
