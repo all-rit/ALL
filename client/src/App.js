@@ -41,6 +41,10 @@ import {connect} from "react-redux";
 import { globalHistory } from '@reach/router';
 var parse = require('url-parse');
 
+import ReactGA from 'react-ga';
+const TRACKING_ID = process.env.GA_TRACKING_ID;
+ReactGA.initialize(TRACKING_ID);
+
 const mapStateToProps = (state) => {
   return {
     state: state
