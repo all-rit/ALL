@@ -22,21 +22,26 @@ describe("Testing homepage", () => {
     cy.get('h4').eq(3).should('be.visible');
     cy.get('h4').eq(3).children().should('have.attr', 'href', '# ')
   })
+
+  it("tests Lab 5 link", () => {
+    cy.get('h4').eq(4).should('be.visible');
+    cy.get('h4').eq(4).children().should('have.attr', 'href', '# ')
+  })
   
   it("tests the homepage navigation bar", () => {
     cy.viewport('macbook-15');
     cy.wait(200);
     
     cy.get('nav').contains('Goals').click();
-    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#goals");
+    cy.url().should('eq', Cypress.env("CLIENT_URL") + Cypress.env("GOALS_URL"));
     cy.get('#goals-button').should('have.css', 'color', 'rgb(254, 209, 54)');
     
     cy.get('nav').find('.nav-link:contains("Labs")').click()
-    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#labs");
+    cy.url().should('eq', Cypress.env("CLIENT_URL") + Cypress.env("LABS_URL"));
     cy.get('#labs-button').should('have.css', 'color', 'rgb(254, 209, 54)');
     
     cy.get('nav').contains('Contact').click();
-    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#contact");
+    cy.url().should('eq', Cypress.env("CLIENT_URL") + Cypress.env("CONTACT_URL"));
     cy.get('#contact-button').should('have.css', 'color', 'rgb(254, 209, 54)');
     
   })
@@ -48,15 +53,15 @@ describe("Testing homepage", () => {
     cy.get('button[class*="navbar-toggler').click();
     
     cy.get('nav').contains('Goals').click();
-    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#goals");
+    cy.url().should('eq', Cypress.env("CLIENT_URL") + Cypress.env("GOALS_URL"));
     cy.get('#goals-button').should('have.css', 'color', 'rgb(254, 209, 54)');
     
     cy.get('nav').find('.nav-link:contains("Labs")').click()
-    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#labs");
+    cy.url().should('eq', Cypress.env("CLIENT_URL") + Cypress.env("LABS_URL"));
     cy.get('#labs-button').should('have.css', 'color', 'rgb(254, 209, 54)');
     
     cy.get('nav').contains('Contact').click();
-    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#contact");
+    cy.url().should('eq', Cypress.env("CLIENT_URL") + Cypress.env("CONTACT_URL"));
     cy.get('#contact-button').should('have.css', 'color', 'rgb(254, 209, 54)');
   })
   

@@ -1,6 +1,6 @@
 describe('Testing quiz and quiz results', () => {
   beforeEach(() => {
-    cy.visit(Cypress.env("CLIENT_URL") + '/Lab1');
+    cy.visit(Cypress.env("CLIENT_URL") + Cypress.env("LAB1_URL"));
     cy.testCompleteQuiz();
   });
   

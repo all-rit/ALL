@@ -2,7 +2,15 @@
   "env": {
     "SERVER_URL": "http://localhost:5005",
     "CLIENT_URL": "http://localhost:3000",
-    "SITEMAP_URL": "/SiteMap#"
-
+    "SITEMAP_URL": "/SiteMap#",
+    "CONTACT_URL": "/#contact",
+    "LABS_URL": "/#labs",
+    "GOALS_URL": "/#goals",
+    "LAB1_URL": "/Lab1",
+    "LAB2_URL": "/Lab2",
+    "LAB3_URL": "/Lab3",
+    "LAB4_URL": "/Lab4",
+    "LAB5_URL": "/Lab5",
+    "QUIZ_URL": "/Quiz"
   }
 }
