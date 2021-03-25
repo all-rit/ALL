@@ -63,12 +63,12 @@ describe("Testing homepage", () => {
   it('tests sitemap visibility on the homepage', () => {
     cy.get('footer').contains('SiteMap').should('be.visible');
     cy.get('footer').contains('SiteMap').click();
-    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#sitemap");
+    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#SiteMap");
   });
   
   it('tests sitemap page', () => {
     // cy.visit(Cypress.env("CLIENT_URL") + "/#sitemap"); // what it should be in production
-    cy.visit(Cypress.env("CLIENT_URL") + "/SiteMap#");
+    cy.visit(Cypress.env("CLIENT_URL") + Cypress.env("SITEMAP_URL"));
     cy.get('h2').should('be.visible').and('have.text', 'Site Map');
     cy.get('h4').eq(0).should('have.text', 'Home').and('be.visible')
     cy.get('h4').eq(1).should('have.text', 'Lab 1').and('be.visible')
