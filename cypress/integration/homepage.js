@@ -61,9 +61,9 @@ describe("Testing homepage", () => {
   })
   
   it('tests sitemap visibility on the homepage', () => {
-    cy.get('footer').contains('SiteMap').should('be.visible');
-    cy.get('footer').contains('SiteMap').click();
-    cy.url().should('eq', Cypress.env("CLIENT_URL") + "/#SiteMap");
+    cy.get('footer').contains('Site Map').should('be.visible');
+    cy.get('footer').contains('Site Map').click();
+    cy.url().should('eq', Cypress.env("CLIENT_URL") + Cypress.env("SITEMAP_URL"));
   });
   
   it('tests sitemap page', () => {
