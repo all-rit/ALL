@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
 import PageServiceTimer from "../../components/PageServiceTimer";
 import {DyslexiaAccessibleKnowledgeCheck as KnowledgeCheck} from '../../../../../constants/lab5'
-class DyslexiaAccessible extends Component {
+class DyslexiaAccessibleKnowledgeCheck extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selected: false, componentName:"DyslexiaAccessible" };
+        this.state = {selected: false, componentName:"DyslexiaAccessibleKnowledgeCheck" };
     }
 
     render() {
@@ -20,4 +20,4 @@ class DyslexiaAccessible extends Component {
     }
 }
 
-export default DyslexiaAccessible;
+export default DyslexiaAccessibleKnowledgeCheck;
