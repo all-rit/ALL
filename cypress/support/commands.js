@@ -25,18 +25,45 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 // -- Clicks the Google sign-in button and/ ensures authentication  --
+
 Cypress.Commands.add('testLogin', () => {
   cy.intercept(
-      {
-        method: 'GET',      // Route all GET requests
-        url: Cypress.env("SERVER_URL") +'/user',    // that have a URL that matches '/users/*'
-      },
-      {"userid":4,"firstname":"Saad","image":"https://lh3.googleusercontent.com/a-/AOh14GimRBBc7n7wyE7eCKGSj6pDCqEnjqcYvxFtSXOYxdU=s96-c"} // and force the response to be: []
+    {
+      method: 'GET',      // Route all GET requests
+      url: Cypress.env("SERVER_URL") +'/user',    // that have a URL that matches '/users/*'
+    },
+    {"userid":4,"firstname":"Saad","image":"https://lh3.googleusercontent.com/a-/AOh14GimRBBc7n7wyE7eCKGSj6pDCqEnjqcYvxFtSXOYxdU=s96-c"} // and force the response to be: []
   ).as("getUser");
-  cy.visit(Cypress.env("CLIENT_URL"));
+  cy.visit(Cypress.env("CLIENT_URL") + Cypress.env("LAB1_URL"));
   cy.wait("@getUser").then((interception) => {
-    assert.isNotNull(interception.response.body, '1st API call has data')
+    // Checks for a response
+    console.log(interception.response.body)
+    assert.isNotNull(interception.response.body, '1st API call has data');
+    
+    // Checks if response contains image
+    assert.isString(interception.response.body.image, '1st API call has profile image URL');
+    
+    // Checks if profile image element contains the same image url as the response
+    cy.get('.welcome__name').within(() => {
+      cy.get('img:first').should('have.attr', 'src', `${interception.response.body.image}`);
+    })
+    
+    // Checks if quiz certificate contains the same name as the response
+    cy.testCompleteQuiz();
+    cy.get('i').contains(interception.response.body.firstname);
   })
+});
+
+Cypress.Commands.add('testLogout', () => {
+  // cy.intercept(
+  //   {
+  //     method: 'GET',
+  //     url: Cypress.env("SERVER_URL") + '/logout',
+  //   },
+  // ).as("logout")
+  // cy.wait("@logout").then((interception) => {
+  //   console.log(interception);
+  // })
 });
 
 // -- Tests the navigation bar visibility and functionality -- 
