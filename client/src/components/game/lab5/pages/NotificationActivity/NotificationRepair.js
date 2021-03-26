@@ -14,7 +14,8 @@ class NotificationRepair extends Component {
 			timeout: null,
 			timeouterror:null,
 			fontsizeerror:null,
-			repairerror:true
+			repairerror:true,
+			componentName:"NotificationRepair"
 		};
 	}
 
@@ -70,7 +71,7 @@ class NotificationRepair extends Component {
 			});
 			// Submit a repair entry in the database.
 			RepairService.submitRepair(
-				this.constructor.name, repair
+				this.state.componentName, repair
 			);
 			handlers.updatePopup('The repairs have been made.');
 
@@ -352,7 +353,7 @@ class NotificationRepair extends Component {
 					</button>
 				</div>
 				}
-				<PageServiceTimer actions={handlers} name={this.constructor.name}/>
+				<PageServiceTimer actions={handlers} name={this.state.componentName}/>
 
 			</div>
 		);

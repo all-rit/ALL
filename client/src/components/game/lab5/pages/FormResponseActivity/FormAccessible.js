@@ -7,7 +7,8 @@ class FormAccessible extends Component {
     constructor(props) {
         super(props);
         this.state={
-            showNext: false
+            showNext: false,
+            componentName:"FormAccessible"
         }
     }
     showNext = () => {
@@ -36,7 +37,7 @@ class FormAccessible extends Component {
                             </button>
                         </div>
                     }
-                    <PageServiceTimer actions={actions} name={this.constructor.name}/>
+                    <PageServiceTimer actions={actions} name={this.state.componentName}/>
                 </div>
         );
     }
