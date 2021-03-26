@@ -3,6 +3,10 @@ import { navigate } from "@reach/router";
 import PageServiceTimer from "../../components/PageServiceTimer";
 
 class FormGuidance extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {componentName: "FormGuidance"};
+    }
   handleNav() {
     navigate("/Lab5/Game/FormRepair");
   }
@@ -40,7 +44,7 @@ class FormGuidance extends Component {
           </div>
 
         </div>
-          <PageServiceTimer actions={actions} name={this.constructor.name}/>
+          <PageServiceTimer actions={actions} name={this.state.componentName}/>
       </Fragment>
     );
   }
