@@ -11,6 +11,7 @@ import handleRedirect from "../../../helpers/Redirect";
 import {actions as mainActions} from "../../../reducers/MainReducer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import Profile from "./citation/Profile";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -69,6 +70,30 @@ const Home = (props) => {
             </h5>
           </div>
         </div>
+      </div>
+    </section>
+    <hr class="horiz" />
+    <section class="page-section landingpage__pagesection" id="citation">
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <h2 class="section-heading text-uppercase">Team Members</h2>
+
+              <h3 class="section-subheading " >
+                Meet Our Team of Developers
+              </h3>
+            </div>
+          </div>
+          <div class="row">
+                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
+                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
+                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
+          </div>
+          <div class="row">
+                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
+                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
+                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
+          </div>
       </div>
     </section>
     <hr class="horiz" />

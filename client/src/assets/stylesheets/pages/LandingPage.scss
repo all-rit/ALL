@@ -36,6 +36,15 @@
 
 }
 
+.citation{
+	&__profile_image{
+		border-radius: 50%;
+		border:2px solid black;
+		height: 250px;
+	
+	}
+}
+
 .errorpage{
 	h1{
 		font-style: Bold;
