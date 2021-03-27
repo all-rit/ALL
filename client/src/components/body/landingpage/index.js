@@ -72,6 +72,7 @@ const Home = (props) => {
         </div>
       </div>
     </section>
+    {/* Team Citation */}
     <hr class="horiz" />
     <section class="page-section landingpage__pagesection" id="citation">
       <div class="container">
@@ -84,15 +85,16 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          <div class="row">
-                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
-                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
-                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
+          <div class="citation__row">
+                <Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <div class="citation__vertical_line"><Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></div>
+                <div class="citation__vertical_line"><Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></div>
           </div>
-          <div class="row">
-                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
-                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
-                <Profile profile_image={ear} name="Mark" title="Developer" bio="He Develops"/>
+          <hr class="citation__horiz" />
+          <div class="citation__row">
+                <Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
+                <div class="citation__vertical_line"><Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></div>
+                <div class="citation__vertical_line"><Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></div>
           </div>
       </div>
     </section>

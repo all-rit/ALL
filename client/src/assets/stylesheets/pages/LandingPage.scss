@@ -37,12 +37,49 @@
 }
 
 .citation{
+	// outline: 1px dotted gray;
 	&__profile_image{
 		border-radius: 50%;
-		border:2px solid black;
+		border:2px solid white;
 		height: 250px;
-	
+		margin-bottom: 15px;
 	}
+	&__vertical_line{
+		border-left: 1px solid #868e96;
+		height: 500px;
+		left: .5%;
+	}
+	&__vertical_line{
+		border-left: 1px solid #868e96;
+		height: 500px;
+		left: .5%;
+	}
+	&__row{
+		display: flex ;
+		justify-content: center;
+		text-align: center;
+	}
+	&__profile_collumn{
+		text-align: center;
+		padding-left: 40px;
+		padding-right: 40px;
+		padding-top: 15px;
+		// padding: 20px 40px;
+		float:inherit;
+	}
+	&__social_media{
+		padding: 10px;
+	}
+	&__horiz {
+		border-top: 1px solid #868e96;
+		width: 90%;
+	}
+	p{
+		word-wrap: break-word;
+		font-size: 18px;
+		width: 300px;
+	}
+
 }
 
 .errorpage{

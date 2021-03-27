@@ -30,6 +30,7 @@
     "react-redux": "^7.2.1",
     "react-router": "^5.2.0",
     "react-scripts": "^3.4.3",
+    "react-social-icons": "^5.0.0",
     "react-spinners": "^0.10.4",
     "reactstrap": "^8.7.1",
     "redux": "latest",
