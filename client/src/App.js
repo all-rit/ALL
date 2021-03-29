@@ -57,7 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function initializeReactGA() {
     const TRACKING_ID = process.env.GA_TRACKING_ID;
-    ReactGA.initialize(TRACKING_ID);
+    ReactGA.initialize(TRACKING_ID, { testMode: process.env.NODE_ENV === 'test' });
 }
 
 class App extends Component {
