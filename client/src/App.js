@@ -42,8 +42,6 @@ import { globalHistory } from '@reach/router';
 var parse = require('url-parse');
 
 import ReactGA from 'react-ga';
-const TRACKING_ID = process.env.GA_TRACKING_ID;
-ReactGA.initialize(TRACKING_ID);
 
 const mapStateToProps = (state) => {
   return {
@@ -56,6 +54,11 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({ ...appActions, ...mainActions}, dispatch)
   };
 };
+
+function initializeReactGA() {
+    const TRACKING_ID = process.env.GA_TRACKING_ID;
+    ReactGA.initialize(TRACKING_ID);
+}
 
 class App extends Component {
    componentDidMount() {
@@ -72,6 +75,7 @@ class App extends Component {
     const {state,actions} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
+    initializeReactGA();
     return (
       <div>
         <Header />
