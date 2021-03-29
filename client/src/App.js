@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import ReactGA from 'react-ga';
+
 import {default as AboutLab1} from "./components/body/lab1/about";
 import {default as ReadingLab1} from "./components/body/lab1/reading";
 import {default as GameLab1} from "./components/game/lab1/Main";
@@ -40,8 +42,6 @@ import { Router} from "@reach/router";
 import {connect} from "react-redux";
 import { globalHistory } from '@reach/router';
 var parse = require('url-parse');
-
-import ReactGA from 'react-ga';
 
 const mapStateToProps = (state) => {
   return {
