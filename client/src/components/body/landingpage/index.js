@@ -12,6 +12,7 @@ import {actions as mainActions} from "../../../reducers/MainReducer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import Profile from "./citation/Profile";
+import profileInformation from "./citation/profileInfomation";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -19,6 +20,34 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+// function renderProfileComponent(key) {
+//   return (
+//       <Profile 
+//           profile_image= {ear} 
+//           name= {key.name} 
+//           title= {key.title} 
+//           bio={key.bio}
+//       />
+//   );
+// }
+
+function renderProfileData() {
+  return profileInformation.map((profileInfomation, index) => {
+      const {profile_image, name,title,bio, linkedin, github} = profileInfomation //destructuring
+      return (
+          <div class={index===0 ? '' : 'citation__vertical_line'}>
+              <Profile 
+                  profile_image= {ear} 
+                  name= {name} 
+                  title= {title} 
+                  bio={bio}
+                  linkedin={linkedin} 
+                  github={github}
+              />
+          </div>
+      );
+  })
+}
 
 const Home = (props) => {
   const {actions} = props;
@@ -86,15 +115,11 @@ const Home = (props) => {
             </div>
           </div>
           <div class="citation__row">
-                <Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
-                <div class="citation__vertical_line"><Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></div>
-                <div class="citation__vertical_line"><Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></div>
+                {renderProfileData()}
           </div>
           <hr class="citation__horiz" />
           <div class="citation__row">
-                <Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
-                <div class="citation__vertical_line"><Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></div>
-                <div class="citation__vertical_line"><Profile profile_image={ear} name="Mark Sternefeld" title="Developer" bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/></div>
+                {renderProfileData()}
           </div>
       </div>
     </section>
