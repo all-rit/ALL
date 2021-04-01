@@ -21,30 +21,45 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 // function renderProfileComponent(key) {
+//
 //   return (
-//       <Profile 
-//           profile_image= {ear} 
-//           name= {key.name} 
-//           title= {key.title} 
+//       <Profile
+//           profile_image= {ear}
+//           name= {key.name}
+//           title= {key.title}
 //           bio={key.bio}
 //       />
 //   );
 // }
 
 function renderProfileData() {
-  return profileInformation.map((profileInfomation, index) => {
-      const {profile_image, name,title,bio, linkedin, github} = profileInfomation //destructuring
-      return (
-              <Profile 
-                  profile_image= {profile_image} 
-                  name= {name} 
-                  title= {title} 
-                  bio={bio}
-                  linkedin={linkedin} 
-                  github={github}
-              />
-      );
-  })
+  let profiles = profileInformation;
+  let new_profiles = [];
+  let subprofile = [];
+  for (let i in profiles){
+    subprofile.push(profiles[i]);
+    if(subprofile.length ===3){
+      new_profiles.push(subprofile);
+      subprofile = [];
+    }
+  }
+  return new_profiles.map((profiles, index) => {
+
+      return profiles.map((profileInfo, index) =>{
+        const {profile_image, name,title,bio, linkedin, github} = profileInfo //destructuring
+        return (
+            <Profile
+                key={index}
+                profile_image= {profile_image}
+                name= {name}
+                title= {title}
+                bio={bio}
+                linkedin={linkedin}
+                github={github}
+            />)
+    })
+  }
+  );
 }
 
 const Home = (props) => {
