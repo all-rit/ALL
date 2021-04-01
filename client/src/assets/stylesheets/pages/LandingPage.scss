@@ -46,6 +46,7 @@
 	}
 	&__row{
 		display: flex ;
+		//flex-direction: row;
 		justify-content: center;
 		text-align: center;
 	}
@@ -74,7 +75,17 @@
 	&__bio{
 		word-wrap: break-word;
 		font-size: 18px;
-		width: 300px;
+		//width: 300px;
+	}
+	@media (max-width:940px) {
+	// 	// #portfolio {
+	// 	// 	.portfolio-item {
+	// 	// 		margin: 0 0 30px;
+	// 	// 	}
+	// 	// }
+		&__row{
+			flex-direction: column;
+		}
 	}
 
 }
