@@ -35,16 +35,14 @@ function renderProfileData() {
   return profileInformation.map((profileInfomation, index) => {
       const {profile_image, name,title,bio, linkedin, github} = profileInfomation //destructuring
       return (
-          <div class={index===0 ? '' : 'citation__vertical_line'}>
               <Profile 
-                  profile_image= {ear} 
+                  profile_image= {profile_image} 
                   name= {name} 
                   title= {title} 
                   bio={bio}
                   linkedin={linkedin} 
                   github={github}
               />
-          </div>
       );
   })
 }
@@ -99,28 +97,6 @@ const Home = (props) => {
             </h5>
           </div>
         </div>
-      </div>
-    </section>
-    {/* Team Citation */}
-    <hr class="horiz" />
-    <section class="page-section landingpage__pagesection" id="citation">
-      <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">Team Members</h2>
-
-              <h3 class="section-subheading " >
-                Meet Our Team of Developers
-              </h3>
-            </div>
-          </div>
-          <div class="citation__row">
-                {renderProfileData()}
-          </div>
-          <hr class="citation__horiz" />
-          <div class="citation__row">
-                {renderProfileData()}
-          </div>
       </div>
     </section>
     <hr class="horiz" />
@@ -271,6 +247,27 @@ const Home = (props) => {
               {/*  Placeholder*/}
               </div>
             </div>
+      </div>
+    </section>
+     {/* Team Citation */}
+     <hr class="horiz" />
+    <section class="page-section landingpage__pagesection" id="citation">
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <h2 class="section-heading text-uppercase">Team Members</h2>
+
+              <h3 class="section-subheading " >
+                Meet Our Team of Developers
+              </h3>
+            </div>
+          </div>
+          <div class="citation__row">
+                  {renderProfileData()}
+          </div>
+          <div class="citation__row">
+                {renderProfileData()}
+          </div>
       </div>
     </section>
     <hr class="horiz" />

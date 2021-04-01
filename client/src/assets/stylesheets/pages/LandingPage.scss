@@ -44,16 +44,6 @@
 		height: 250px;
 		margin-bottom: 15px;
 	}
-	&__vertical_line{
-		border-left: 1px solid #868e96;
-		height: 500px;
-		left: .5%;
-	}
-	&__vertical_line{
-		border-left: 1px solid #868e96;
-		height: 500px;
-		left: .5%;
-	}
 	&__row{
 		display: flex ;
 		justify-content: center;
@@ -61,20 +51,27 @@
 	}
 	&__profile_collumn{
 		text-align: center;
-		padding-left: 40px;
-		padding-right: 40px;
-		padding-top: 15px;
-		// padding: 20px 40px;
-		float:inherit;
+		// padding-left: 40px;
+		// padding-right: 40px;
+		// padding-top: 15px;
+		padding: 20px 40px;
+		float:right;
+	}
+	&__name{
+		font-weight: 700;
+		font-size: 28px;
+		font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	}
+	&__title{
+		font-weight: 700;
+		font-size: 24px;
+		color: #fed136;
+		font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 	}
 	&__social_media{
 		padding: 10px;
 	}
-	&__horiz {
-		border-top: 1px solid #868e96;
-		width: 90%;
-	}
-	p{
+	&__bio{
 		word-wrap: break-word;
 		font-size: 18px;
 		width: 300px;
