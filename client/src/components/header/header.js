@@ -17,6 +17,7 @@ import handleRedirect from "../../helpers/Redirect";
 import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
 import getGameState from '../../helpers/GetReducer';
+import SitemapHeader from "./SitemapHeader";
 
 const mapStateToProps = (state) => {
     return {
@@ -166,7 +167,10 @@ const Header = (props) => {
                             </NavItem>
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                         </Nav>
-                            :<Nav className="ml-auto" navbar>
+                            : (
+                        (state.main.lab === 0 && state.main.body === 1) ?
+                    <SitemapHeader/> :
+                    <Nav className="ml-auto" navbar>
                             <NavItem class="collapse navbar-collapse"
                             >
                                 <NavLink
@@ -256,7 +260,7 @@ const Header = (props) => {
                             </NavLink>
                             </NavItem>
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
-                    </Nav>
+                    </Nav> )
                 }
                 </Collapse>
             </div>
