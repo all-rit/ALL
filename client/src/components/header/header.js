@@ -94,7 +94,7 @@ const Header = (props) => {
                             <NavLink
                                 class="nav-link js-scroll-trigger"
                                 href="# "
-                                style={link === 0 ? activeStyle : {color: "#fff"}}
+                                style={{color: "#fff"}}
                                 onClick={() => navigate(state,actions, 0, 0)}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
@@ -156,43 +156,44 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
+
+                            {/*<NavItem class="collapse navbar-collapse" >*/}
+                            {/*<NavLink*/}
+                            {/*class="nav-link js-scroll-trigger"*/}
+                            {/*href="# "*/}
+                            {/*style={{color: "#fff"}}*/}
+                            {/*    >*/}
+                            {/*<ul className="navbar-nav text-uppercase ml-auto">*/}
+                            {/*<li className="nav-item">*/}
                             
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
+                            {/*</li>*/}
+                            {/*</ul>*/}
+                            {/*</NavLink>*/}
+                            {/*</NavItem>*/}
+                            {/*<NavItem class="collapse navbar-collapse" >*/}
+                            {/*<NavLink*/}
+                            {/*class="nav-link js-scroll-trigger"*/}
+                            {/*href="# "*/}
+                            {/*style={{color: "#fff"}}*/}
+                            {/*    >*/}
+                            {/*<ul className="navbar-nav text-uppercase ml-auto">*/}
+                            {/*<li className="nav-item">*/}
+                            {/*</li>*/}
+                            {/*</ul>*/}
+                            {/*</NavLink>*/}
+                            {/*</NavItem>*/}
+                            {/*<NavItem class="collapse navbar-collapse" >*/}
+                            {/*<NavLink*/}
+                            {/*class="nav-link js-scroll-trigger"*/}
+                            {/*href="# "*/}
+                            {/*style={{color: "#fff"}}*/}
+                            {/*    >*/}
+                            {/*<ul className="navbar-nav text-uppercase ml-auto">*/}
+                            {/*<li className="nav-item">*/}
+                            {/*</li>*/}
+                            {/*</ul>*/}
+                            {/*</NavLink>*/}
+                            {/*</NavItem>*/}
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                         </Nav>
                             :
