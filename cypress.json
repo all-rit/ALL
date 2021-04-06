@@ -11,6 +11,10 @@
     "LAB3_URL": "/Lab3",
     "LAB4_URL": "/Lab4",
     "LAB5_URL": "/Lab5",
+    "ABOUT_URL": "/About",
+    "READING_URL": "/Reading",
+    "GAME_URL": "/Game",
+    "VIDEO_URL": "/Video",
     "QUIZ_URL": "/Quiz"
   }
 }

@@ -148,7 +148,13 @@ Cypress.Commands.add('testPreviousPage', () => {
 
 // For each color and font size test, check consistency into another page
 Cypress.Commands.add('testChangeBgColor', () => {
-  cy.get();
+  // click on change background color
+  // change the color
+  // get elements that are changed
+  // ensure bgcolor is changed
+  // check for consistency across pages
+
+
 });
 
 Cypress.Commands.add('testChangeTextColor', () => {
