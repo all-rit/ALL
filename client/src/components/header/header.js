@@ -89,7 +89,10 @@ const Header = (props) => {
 
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
-                {state.main.lab === 0 ?
+                {state.main.lab === 0 && state.main.body === 1 ?
+                    <SitemapHeader/>
+                    :
+                    (state.main.lab === 0 ?
                     <Nav className="ml-auto" navbar>
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
@@ -167,9 +170,7 @@ const Header = (props) => {
                             </NavItem>
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                         </Nav>
-                            : (
-                        (state.main.lab === 0 && state.main.body === 1) ?
-                    <SitemapHeader/> :
+                            :
                     <Nav className="ml-auto" navbar>
                             <NavItem class="collapse navbar-collapse"
                             >
