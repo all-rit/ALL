@@ -21,45 +21,55 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 // function renderProfileComponent(key) {
-//
 //   return (
-//       <Profile
-//           profile_image= {ear}
-//           name= {key.name}
-//           title= {key.title}
+//       <Profile 
+//           profile_image= {ear} 
+//           name= {key.name} 
+//           title= {key.title} 
 //           bio={key.bio}
 //       />
 //   );
 // }
 
 function renderProfileData() {
-  let profiles = profileInformation;
-  let new_profiles = [];
-  let subprofile = [];
-  for (let i in profiles){
-    subprofile.push(profiles[i]);
-    if(subprofile.length ===3){
-      new_profiles.push(subprofile);
-      subprofile = [];
-    }
-  }
-  return new_profiles.map((profiles, index) => {
+  return profileInformation.map((profileInfo, index) => {
+      const {profile_image, name,title,bio, linkedin, github} = profileInfo //destructuring
+      return (
+              
+              <Profile 
+                  key={index}
+                  profile_image= {profile_image} 
+                  name= {name} 
+                  title= {title} 
+                  bio={bio}
+                  linkedin={linkedin} 
+                  github={github}
+              />
+      );
+  })
+}
 
-      return profiles.map((profileInfo, index) =>{
-        const {profile_image, name,title,bio, linkedin, github} = profileInfo //destructuring
-        return (
-            <Profile
-                key={index}
-                profile_image= {profile_image}
-                name= {name}
-                title= {title}
-                bio={bio}
-                linkedin={linkedin}
-                github={github}
-            />)
-    })
+function renderProfiles(){
+  let profiles = renderProfileData();
+  let rows =[];
+  let profile_row=[];
+  for(let i in profiles){
+    profile_row.push(profiles[i]);
+    if(profile_row.length ===3){
+      rows.push(profile_row);
+      let temp=[];
+      profile_row=temp;
+    } 
   }
-  );
+  if(profile_row.length!==0){
+    rows.push(profile_row);
+  }
+  return rows.map((rows,index)=>{
+    return(
+    <div key={index} class="citation__row">
+        {rows}
+    </div>
+    )})
 }
 
 const Home = (props) => {
@@ -277,12 +287,7 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          <div class="citation__row">
-                  {renderProfileData()}
-          </div>
-          <div class="citation__row">
-                {renderProfileData()}
-          </div>
+          {renderProfiles()}
       </div>
     </section>
     <hr class="horiz" />

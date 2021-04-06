@@ -38,6 +38,8 @@
 
 .citation{
 	// outline: 1px dotted gray;
+	background-color: whitesmoke;
+    background-clip: content-box;
 	&__profile_image{
 		border-radius: 50%;
 		border:2px solid white;
