@@ -17,7 +17,6 @@ import handleRedirect from "../../helpers/Redirect";
 import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
 import getGameState from '../../helpers/GetReducer';
-import SitemapHeader from "./SitemapHeader";
 
 const mapStateToProps = (state) => {
     return {
@@ -90,7 +89,33 @@ const Header = (props) => {
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                 {state.main.lab === 0 && state.main.body === 1 ?
-                    <SitemapHeader/>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem class="collapse navbar-collapse" >
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                href="# "
+                                style={link === 0 ? activeStyle : {color: "#fff"}}
+                                onClick={() => navigate(state,actions, 0, 0)}>
+                                <ul className="navbar-nav text-uppercase ml-auto">
+                                    <li className="nav-item">
+                                        Home
+                                    </li>
+                                </ul>
+                            </NavLink>
+                        </NavItem>
+                        <NavItem class="collapse navbar-collapse" >
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                href="# "
+                                style={{color: "#fff"}}>
+                                <ul className="navbar-nav text-uppercase ml-auto">
+                                    <li className="nav-item">
+                                    </li>
+                                </ul>
+                            </NavLink>
+                        </NavItem>
+                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
+                    </Nav>
                     :
                     (state.main.lab === 0 ?
                     <Nav className="ml-auto" navbar>
