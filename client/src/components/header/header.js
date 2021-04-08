@@ -95,7 +95,7 @@ const Header = (props) => {
                                 class="nav-link js-scroll-trigger"
                                 href="# "
                                 style={link === 0 ? activeStyle : {color: "#fff"}}
-                                onClick={() => navigate(state,actions, 0, 1)}>
+                                onClick={() => navigate(state,actions, 1, 0)}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                     <li className="nav-item">
                                         Site Map
