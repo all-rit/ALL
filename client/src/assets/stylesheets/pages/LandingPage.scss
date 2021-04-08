@@ -4,9 +4,12 @@
 		position:inherit;
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		border: 5px solid cornflowerblue;
-		border-style: ridge;
+		justify-content: left;
+		//border: 5px solid cornflowerblue;
+		//border-style: ridge;
+		border-radius: 20px;
+		background-color: #fffffe;
+		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 	}
     &__leftalign{
         text-align: left;
@@ -23,8 +26,7 @@
         //margin-left: 20px;
     }
     &__image{
-        border:2px solid black;
-		border-radius: 35%;
+		border-radius: 20px 0 0 20px;
 		height:auto;
 		max-width: 175px;
     }
@@ -82,6 +84,8 @@
 		text-align: center;
 		padding: 20px 40px;
 		float:right;
+		margin:20px;
+		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 	}
 	&__name{
 		font-weight: 700;

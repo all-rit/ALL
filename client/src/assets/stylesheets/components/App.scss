@@ -189,7 +189,14 @@ a.icon {
 	background-color: #3d3d3d !important;
 }
 
-
+.portfolio-caption {
+	max-width: 400px;
+	margin:auto;
+	padding-left: 25px;
+	padding-right:25px;
+	text-align: center;
+	background-color: #fff;
+}
 
 #portfolio {
 	.portfolio-item {
@@ -233,13 +240,7 @@ a.icon {
 				}
 			}
 		}
-		.portfolio-caption {
-			max-width: 400px;
-			margin: 0 auto;
-			padding: 25px;
-			text-align: center;
-			background-color: #fff;
-		}
+
 	}
 	* {
 		z-index: 2;
