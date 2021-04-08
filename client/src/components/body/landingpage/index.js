@@ -1,18 +1,15 @@
 import React from "react";
 import "../../../assets/stylesheets/pages/LandingPage.scss"
-import eye from "../../../assets/images/labs/eye.jpg";
-import ear from "../../../assets/images/labs/ear.jpg";
-import cognitive from "../../../assets/images/labs/cognitiveimpairment.jpg";
-import braille from "../../../assets/images/labs/braille.jpg";
-import hand from "../../../assets/images/labs/hand.jpg";
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
 import handleRedirect from "../../../helpers/Redirect";
-import {actions as mainActions} from "../../../reducers/MainReducer";
+import {actions, actions as mainActions} from "../../../reducers/MainReducer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import Profile from "./citation/Profile";
 import profileInformation from "./citation/profileInfomation";
+import labInformation from "./lab/labInformation";
+import Lab from "./lab/lab";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -49,8 +46,25 @@ function renderProfileData() {
   })
 }
 
-function renderProfiles(){
-  let profiles = renderProfileData();
+function renderLabData() {
+  return labInformation.map((labInfo, index) => {
+    const { alt, name, bio , image} = labInfo //destructuring
+      return (
+              
+              <Lab 
+                  key={index}
+                  alt= {alt} 
+                  name= {name} 
+                  bio={bio}
+                  image= {image} 
+                  actions={actions}
+              />
+      );
+  })
+}
+
+function renderDataRows(type){
+  let profiles = type();
   let rows =[];
   let profile_row=[];
   for(let i in profiles){
@@ -137,141 +151,7 @@ const Home = (props) => {
             </h3>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-4 portfolio-item">
-            <a
-              class="portfolio-link"
-              onClick={() => handleRedirect(actions,1)}
-              href="# "
-
-            >
-              <img
-                class="img-fluid landingpage__image"
-                src={ear}
-                alt="Deaf and Hard of Hearing Activity Thumbnail"
-              />
-              {/* <!--Image= https://www.pikrepo.com/fiyzt/left-human-ear--> */}
-            </a>
-            <div class="portfolio-caption">
-              <h4>
-                <a onClick={() => handleRedirect(actions,1)} href="# "
-                  >Accessibility to Sound and Speech</a>
-              </h4>
-              <p class="">
-                Learn about designing the web for the Deaf and Hard-of-Hearing community.
-              </p>
-            </div>
-          </div>
-          <div
-           class="col-md-4 offset-md-4 portfolio-item">
-            <a
-              class="portfolio-link"
-              onClick={() => handleRedirect(actions,2)}
-              href="# "
-            >
-              <img
-                class="img-fluid landingpage__image"
-                src={eye}
-                alt="Color Blindness Activity Thumbnail"
-              />
-              {/* <!--Image= https://commons.wikimedia.org/wiki/File:Human_eye_iris_5.jpg--> */}
-            </a>
-            <div class="portfolio-caption">
-              <h4>
-                <a onClick={() => handleRedirect(actions,2)} href="# "
-                >Accessibility to Color Blindness
-                </a>
-              </h4>
-              <p class="">
-                Learn more about designing the web for color blind individuals.
-              </p>
-            </div>
-          </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-4 portfolio-item">
-              <a
-                class="portfolio-link"
-                onClick={() => handleRedirect(actions,3)}
-                href="# "
-              >
-                <img
-                  class="img-fluid landingpage__image"
-                  src={braille}
-                  alt="Screen Reader Activity Thumbnail"
-                />
-                {/* <!--Image= https://www.flickr.com/photos/quinnanya/4698378320/sizes/l/--> */}
-              </a>
-              <div class="portfolio-caption">
-                <h4>
-                  <a onClick={() => handleRedirect(actions,3)} href="# "
-                  >Accessibility with Screen Readers</a
-                  >
-                </h4>
-                <p class="">
-                  Learn more about Screen Readers.
-                </p>
-              </div>
-            </div>
-            <div
-             class="col-md-4 offset-md-4 portfolio-item">
-              <a
-                class="portfolio-link"
-                onClick={() => handleRedirect(actions,4)}
-                href="# "
-              >
-                <img
-                  class="img-fluid landingpage__image"
-                  src={hand}
-                  alt="Dexterity activity Thumbnail"
-                />
-                {/* --Image= https://www.needpix.com/photo/1179306/hand-finger-symbol-gesture-characters-note-show-exhort-suggest-- */}
-              </a>
-              <div class="portfolio-caption">
-                <h4>
-                  <a
-                    onClick={() => handleRedirect(actions,4)} href="# "
-                    >Accessibility to Dexterity</a
-                  >
-                </h4>
-                <p class="">
-                  Learn more about designing the web for individuals with motor and dexterity impairments.
-                </p>
-              </div>
-            </div>
-            </div>
-            <div class="row">
-              <div
-                  className="col-md-4 portfolio-item">
-                <a
-                    className="portfolio-link"
-                    onClick={() => handleRedirect(actions, 5)}
-                    href="# "
-                >
-                  <img
-                      className="img-fluid landingpage__image"
-                      src={cognitive}
-                      alt="Cognitive Accessibility Thumbnail"
-                  />
-                  {/* <!--Image= https://compote.slate.com/images/fb3403a0-6ffc-471a-8568-b0f01fa3bd6b.jpg?width=960--> */}
-                </a>
-                <div className="portfolio-caption">
-                  <h4>
-                    <a onClick={() => handleRedirect(actions, 5)} href="# "
-                    >Accessibility to Cognitive Impairments
-                    </a>
-                  </h4>
-                  <p className="">
-                    Learn more about designing the web for cognitively impaired users.
-                  </p>
-                </div>
-              </div>
-              <div
-                  className="col-md-4 offset-md-4 portfolio-item">
-              {/*  Placeholder*/}
-              </div>
-            </div>
+        {renderDataRows(renderLabData)}
       </div>
     </section>
      {/* Team Citation */}
@@ -287,7 +167,7 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          {renderProfiles()}
+          {renderDataRows(renderProfileData)}
       </div>
     </section>
     <hr class="horiz" />

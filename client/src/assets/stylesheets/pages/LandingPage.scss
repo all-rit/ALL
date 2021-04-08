@@ -14,7 +14,8 @@
         //margin-left: 20px;
     }
     &__image{
-        border:2px solid black
+        border:2px solid black;
+		border-radius: 35%;
     }
     &__logos{
         position: relative;
@@ -38,7 +39,7 @@
 
 .citation{
 	// outline: 1px dotted gray;
-	background-color: whitesmoke;
+	//background-color: whitesmoke;
     background-clip: content-box;
 	&__profile_image{
 		border-radius: 50%;
