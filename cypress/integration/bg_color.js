@@ -9,6 +9,8 @@ describe('Testing background color change', () => {
         // change the color
         // get elements that are changed
         // ensure bgcolor is changed
+        cy.visit(Cypress.env("CLIENT_URL"));
+
         cy.get('body').should('have.css', 'background-color', 'rgb(255, 255, 255)');
         cy.get('button').contains('Change Background Color').click();
         cy.get('.rc-color-picker-panel-board span').invoke('attr', 'style', '{left: 0%, top: 0%}');
@@ -16,8 +18,13 @@ describe('Testing background color change', () => {
         cy.get('.rc-color-picker-panel');
         cy.get('input[type=text]').type('345679{enter}');
         cy.get('body').should('have.css', 'background-color', 'rgb(52, 86, 121)');
-        // check for consistency across pages
 
+        // check for consistency across pages
+        // cy.visit(Cypress.env("CLIENT_URL") + Cypress.env("LAB1_URL"));
+        cy.get('a').contains('Accessibility to Sound and Speech').click();
+        cy.get('body').should('have.css', 'background-color', 'rgb(52, 86, 121)');
+        // cy.get('button').contains('Next').click();
     })
-  
+
+
 })
