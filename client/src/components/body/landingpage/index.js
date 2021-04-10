@@ -63,28 +63,28 @@ function renderLabData() {
   })
 }
 
-function renderDataRows(type){
-  let profiles = type();
-  let rows =[];
-  let profile_row=[];
-  for(let i in profiles){
-    profile_row.push(profiles[i]);
-    if(profile_row.length ===3){
-      rows.push(profile_row);
-      let temp=[];
-      profile_row=temp;
-    } 
-  }
-  if(profile_row.length!==0){
-    rows.push(profile_row);
-  }
-  return rows.map((rows,index)=>{
-    return(
-    <div key={index} class="citation__row">
-        {rows}
-    </div>
-    )})
-}
+// function renderDataRows(type){
+//   let profiles = type();
+//   let rows =[];
+//   let profile_row=[];
+//   for(let i in profiles){
+//     profile_row.push(profiles[i]);
+//     if(profile_row.length ===3){
+//       rows.push(profile_row);
+//       let temp=[];
+//       profile_row=temp;
+//     } 
+//   }
+//   if(profile_row.length!==0){
+//     rows.push(profile_row);
+//   }
+//   return rows.map((rows,index)=>{
+//     return(
+//     <div key={index} class="landingpage__row">
+//         {rows}
+//     </div>
+//     )})
+// }
 
 const Home = (props) => {
   const {actions} = props;
@@ -151,7 +151,9 @@ const Home = (props) => {
             </h3>
           </div>
         </div>
-        {renderDataRows(renderLabData)}
+        <div class="landingpage__row">
+            {renderLabData()}
+        </div>
       </div>
     </section>
      {/* Team Citation */}
@@ -167,7 +169,9 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          {renderDataRows(renderProfileData)}
+          <div class="landingpage__row">
+            {renderProfileData()}
+        </div>
       </div>
     </section>
     <hr class="horiz" />
