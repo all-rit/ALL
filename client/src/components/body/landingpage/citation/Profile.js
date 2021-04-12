@@ -3,10 +3,8 @@ import { SocialIcon } from 'react-social-icons';
 
 class Profile extends Component{
     render(){
-        const { profile_image, name, title, bio , linkedin, github} = this.props;
-        const linkLinkedin = 'https://www.linkedin.com/in/'+linkedin;
-        const linkGithub = 'https://github.com/'+github;
-        //style={{background:getBackgroundShade()}}
+        const { profile_image, name, title, bio ,socials} = this.props;
+        
         return(
             
             <ul id={name} class="citation citation__profile_collumn portfolio-item ">
@@ -22,8 +20,9 @@ class Profile extends Component{
                 <li id="bio" class="citation__bio">{bio}</li>
                 <li id="social_media" >
                     <ul class="row">
-                        <li id="linkedin" class="citation__social_media"><SocialIcon url={linkLinkedin} /></li>
-                        <li class="citation__social_media"><SocialIcon url={linkGithub} /></li>
+                        {socials.map((social,index)=>{
+                            return <li class="citation__social_media" key={index}><SocialIcon url={social} target="__blank"/></li>
+                        })}
                     </ul>
                 </li>
             </ul>

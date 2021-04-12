@@ -5,8 +5,9 @@ var profileInformation = [
         name: "Mark Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        linkedin:"mark-ferenc-sternefeld/", 
-        github: "Mster115"
+        linkedin:"mark-ferenc-sternefeld/",
+        github: "Mster115",
+        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115"]
     },
     {
         profile_image: mark_sternefeld_image,
@@ -14,7 +15,8 @@ var profileInformation = [
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         linkedin:"mark-ferenc-sternefeld/", 
-        github: "Mster115"
+        github: "Mster115",
+        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115"]
     },
     {
         profile_image: mark_sternefeld_image,
@@ -22,7 +24,8 @@ var profileInformation = [
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         linkedin:"mark-ferenc-sternefeld/", 
-        github: "Mster115"
+        github: "Mster115",
+        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115"]
     },
     {
         profile_image: mark_sternefeld_image,
@@ -30,7 +33,8 @@ var profileInformation = [
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         linkedin:"mark-ferenc-sternefeld/", 
-        github: "Mster115"
+        github: "Mster115",
+        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115"]
     },
     {
         profile_image: mark_sternefeld_image,
@@ -38,7 +42,8 @@ var profileInformation = [
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         linkedin:"mark-ferenc-sternefeld/", 
-        github: "Mster115"
+        github: "Mster115",
+        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115"]
     },
     {
         profile_image: mark_sternefeld_image,
@@ -46,7 +51,8 @@ var profileInformation = [
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         linkedin:"mark-ferenc-sternefeld/", 
-        github: "Mster115"
+        github: "Mster115",
+        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115"]
     }
     
 ]

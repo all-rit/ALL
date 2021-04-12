@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function renderProfileData() {
   return profileInformation.map((profileInfo, index) => {
-      const {profile_image, name,title,bio, linkedin, github} = profileInfo //destructuring
+      const {profile_image, name,title,bio,socials} = profileInfo //destructuring
       return (
               
               <Profile 
@@ -39,12 +39,12 @@ function renderProfileData() {
                   name= {name} 
                   title= {title} 
                   bio={bio}
-                  linkedin={linkedin} 
-                  github={github}
+                  socials={socials}
               />
       );
   })
 }
+
 
 function renderLabData() {
   return labInformation.map((labInfo, index) => {
