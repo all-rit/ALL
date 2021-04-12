@@ -11,6 +11,11 @@
     "LAB3_URL": "/Lab3",
     "LAB4_URL": "/Lab4",
     "LAB5_URL": "/Lab5",
-    "QUIZ_URL": "/Quiz"
+    "QUIZ_URL": "/Quiz",
+    "DB_HOST": "localhost",
+    "DB_USER": "all_user",
+    "DB_PASS": "all_password@2018",
+    "DB_SCHEMA": "all_new",
+    "ENVIRONMENT": "dev"
   }
 }

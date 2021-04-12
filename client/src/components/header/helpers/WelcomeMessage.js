@@ -4,6 +4,8 @@ import {
 } from 'reactstrap';
 import LoginButton from './LoginButton';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import API from '../../../services/API';
+
 
 const WelcomeMessage = (props) => {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -30,7 +32,10 @@ const WelcomeMessage = (props) => {
 				)}
 			</DropdownToggle>
 			<DropdownMenu className= "welcome__menu"  >
-				<DropdownItem href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
+				<DropdownItem 
+					href="# "
+					onClick={() => API.postWithBody(process.env.REACT_APP_SERVER_URL + "/url", {url:window.location}).then(()=>{window.location.href= process.env.REACT_APP_SERVER_URL +'/logout'})}
+				>
 					Logout
 				</DropdownItem>
 			</DropdownMenu>

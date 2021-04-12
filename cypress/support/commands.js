@@ -54,12 +54,14 @@ Cypress.Commands.add('testLogin', () => {
   })
 });
 
+// mock backend call for logout => null vals
 Cypress.Commands.add('testLogout', () => {
   // cy.intercept(
   //   {
   //     method: 'GET',
-  //     url: Cypress.env("SERVER_URL") + '/logout',
+  //     url: Cypress.env("SERVER_URL") + '/user',
   //   },
+  //   null
   // ).as("logout")
   // cy.wait("@logout").then((interception) => {
   //   console.log(interception);
