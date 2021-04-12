@@ -149,25 +149,36 @@ Cypress.Commands.add('testPreviousPage', () => {
 })
 
 // For each color and font size test, check consistency into another page
-Cypress.Commands.add('testChangeBgColor', () => {
-  cy.get();
+Cypress.Commands.add('testChangeBgColor', (expected_rgb_value) => {
+  cy.get('body').should('have.css', 'background-color', expected_rgb_value);
+  cy.get('button').contains('Next - Reading').click();
+  cy.get('body').should('have.css', 'background-color', expected_rgb_value);
+  cy.get('button').contains('Next - Game').click();
+  cy.get('body').should('have.css', 'background-color', expected_rgb_value);
+  cy.get('button').contains('Next - Video').click();
+  cy.get('body').should('have.css', 'background-color', expected_rgb_value);
+  cy.get('button').contains('Next - Quiz').click();
+  cy.get('body').should('have.css', 'background-color', expected_rgb_value);
+  cy.get('nav').contains('Home').click(); //go back to the home page
 });
 
 Cypress.Commands.add('testChangeTextColor', () => {
   cy.get();
 });
 
-Cypress.Commands.add('testFontSizeDecrease', () => {
-  cy.get();
+
+Cypress.Commands.add('testLabFontSizeIncrease', () => {
+  // cy.get('body').find('p').should('exist', 'be.visible').should('have.css', 'font-size', '21px'); //todo uncomment this after issue is fixed
+  cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '17px');
+  cy.get('.navbar-brand').should('exist', 'be.visible').should('have.css', 'font-size', '29px');
+  cy.get('button').should('exist', 'be.visible').should('have.css', 'font-size', '21px');
 });
 
-Cypress.Commands.add('testFontSizeIncrease', () => {
-  // get initial fontsize
-  // click increase
-  // get elements that are changed
-  // get element fontsize and compare to initial fontsize
-  // check for consistency across pages
-  cy.get();
+Cypress.Commands.add('testLabFontSizeDecrease', () => {
+  // cy.get('body').find('p').should('exist', 'be.visible').should('have.css', 'font-size', '19px'); //todo uncomment this after issue is fixed
+  cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '15px');
+  cy.get('.navbar-brand').should('exist', 'be.visible').should('have.css', 'font-size', '27px');
+  cy.get('button').should('exist', 'be.visible').should('have.css', 'font-size', '19px');
 });
 
 // Completes quiz in current lab
