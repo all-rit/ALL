@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
 import PageServiceTimer from "../../components/PageServiceTimer";
 import {DyslexiaAccessibleKnowledgeCheck as KnowledgeCheck} from '../../../../../constants/lab5'
-class DyslexiaAccessible extends Component {
+class DyslexiaAccessibleKnowledgeCheck extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selected: false };
+        this.state = {selected: false, componentName:"DyslexiaAccessibleKnowledgeCheck" };
     }
 
     render() {
@@ -14,10 +14,10 @@ class DyslexiaAccessible extends Component {
         return (
             <div>
                 <KnowledgeTest handler={this.handler} question = {KnowledgeCheck} link={"/Lab5/Game/DementiaInaccessible"}/>
-                <PageServiceTimer actions={actions} name={this.constructor.name}/>
+                <PageServiceTimer actions={actions} name={this.state.componentName}/>
             </div>
         );
     }
 }
 
-export default DyslexiaAccessible;
+export default DyslexiaAccessibleKnowledgeCheck;

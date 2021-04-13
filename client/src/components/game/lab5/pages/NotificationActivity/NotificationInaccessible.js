@@ -5,6 +5,11 @@ import Notification from "../../components/Notification"
 import { InaccessibleMessage} from '../../../../../constants/lab5'
 
 class NotificationInaccessible extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {componentName:"NotificationInaccessible"};
+    }
+
     handleNav() {
         navigate("/Lab5/Game/NotificationInaccessibleKnowledgeCheck");
     }
@@ -26,7 +31,7 @@ class NotificationInaccessible extends Component {
                             Next
                         </button>
                     </div>
-                    <PageServiceTimer actions={actions} name={this.constructor.name}/>
+                    <PageServiceTimer actions={actions} name={this.state.componentName}/>
                 </div>
         );
     }
