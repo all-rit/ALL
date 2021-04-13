@@ -18,5 +18,9 @@
   "homepage": "https://github.com/all-rit/ALL#readme",
   "devDependencies": {
     "cypress": "^6.5.0"
+  },
+  "dependencies": {
+    "pg": "^8.5.1",
+    "sequelize": "^6.6.2"
   }
 }
