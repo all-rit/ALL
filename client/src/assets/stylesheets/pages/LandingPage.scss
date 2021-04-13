@@ -3,13 +3,9 @@
 	&__col{
 		margin: 20px;
 		position:inherit;
-		//display: flex;
 		align-items: center;
 		justify-content: left;
-		//border: 5px solid cornflowerblue;
-		//border-style: ridge;
 		border-radius: 20px;
-		background-color: #fffffe;
 		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 	}
 	@media (max-width:940px) {
@@ -28,7 +24,9 @@
 			border-radius: 20px 20px 0 0;
 			max-width: 300px;
 			max-height: 300px;
+			
 		}
+
 	}
     &__leftalign{
         text-align: left;
@@ -95,25 +93,12 @@
 }
 
 .citation{
-	// outline: 1px dotted gray;
-	//background-color: whitesmoke;
     background-clip: content-box;
-	&__profile_image{
-		border-radius: 50%;
-		border:2px solid white;
-		height: 250px;
-		margin-bottom: 15px;
-		
-	}
-	&__profile_collumn{
-		text-align: center;
-		padding: 20px;
-		float:right;
-		margin:20px;
-		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-	}
+	min-width:200px;
 	&__name{
+		line-height: 115%;
 		font-weight: 700;
+		margin:10px 10px 0 10px;
 		font-size: 28px;
 		font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 	}
@@ -127,23 +112,20 @@
 		padding: 10px;
 	}
 	&__social_row{
-		max-width: 290px;
+		display:flex;
+		//max-width:175px;
 	}
-	&__bio{
-		word-wrap: break-word;
-		font-size: 18px;
-		max-width: 290px;
-		//width: 300px;
-	}
-	@media (max-width:940px) {
-		&__row{
-			flex-direction: column;
-		}
-		&__profile_image{
-			height: 200px;
+	@media(max-width:940px){
+		&__social_row{
+			display:list-item;
 		}
 	}
 
+	&__bio{
+		word-wrap: break-word;
+		font-size: 18px;
+		padding: 5px 0 10px 0;
+	}
 }
 
 .errorpage{

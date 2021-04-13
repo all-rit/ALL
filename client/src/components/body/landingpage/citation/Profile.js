@@ -7,17 +7,22 @@ class Profile extends Component{
 
         return(
             
-            <ul id={name} class="citation citation__profile_collumn portfolio-item ">
+            <ul id={name} class="citation landingpage__col">
                 <li id="profile_image">
                     <img 
-                    class="img-fluid citation__profile_image"
+                    class="img-fluid landingpage__image"
                     src={profile_image}
                     alt="Team Member Profile"
                     />
                 </li>
-                <li id={name} class="citation__name">{name}</li>
-                <li id={title} class="citation__title">{title}</li>
-                <li id="bio" class="citation__bio">{bio}</li>
+                <li class="portfolio-caption ">
+                    <ul>
+                        <li id={name} class="citation__name">{name}</li>
+                        <li id={title} class="citation__title">{title}</li>
+                        <li id="bio" class="citation__bio">{bio}</li>
+                    </ul>
+                </li>
+                
                 <li id="social_media" >
                     <ul class="landingpage__row citation__social_row">
                         {socials.map((social,index)=>{

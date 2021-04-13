@@ -40,7 +40,7 @@ var profileInformation = [
         name: "Mark Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115","https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://google.com","https://trello.com/b/JfaewHEi/accessibility-labs","https://github.com/Mster115"]
+        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/"]
     }
     
 ]
