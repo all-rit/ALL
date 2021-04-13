@@ -56,6 +56,7 @@
 		padding: 50px 0 !important;
 	}
 	&__lab_title{
+		padding-top:10px;
 		margin: 0px auto;
 		max-width: 250px;
 		min-width: 200px;
@@ -117,6 +118,9 @@
 	}
 	&__social_media{
 		padding: 10px;
+	}
+	&__social_row{
+		max-width: 290px;
 	}
 	&__bio{
 		word-wrap: break-word;
