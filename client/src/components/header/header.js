@@ -116,54 +116,6 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                            >
-                                <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                            >
-                                <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                            >
-                                <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                            >
-                                <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                     </Nav>
                     :
@@ -202,44 +154,6 @@ const Header = (props) => {
                             <ul className="navbar-nav text-uppercase ml-auto">
                             <li className="nav-item">
                             Contact
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
-                            
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
                             </li>
                             </ul>
                             </NavLink>
