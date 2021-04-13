@@ -18,12 +18,11 @@ class GameStart extends Component {
       
       <Fragment>
         <div className="center-div">
-          <div className="guidance margin-bottom-2">
-
-              We will explore a series of cognitive antipatterns that especially challenge cognitively impaired individuals.
-              After each antipattern we will learn and correct our code to make it more accessible. Finally, we will view the updated experience. Click "Start" to begin!
-
-          </div>
+          <p className="guidance margin-bottom-2">
+              We will explore a series of cognitive anti-patterns that especially challenge cognitively impaired individuals.
+              After each anti-pattern we will learn and correct our code to make it more accessible. Finally, we will view the updated experience.
+              Click "Start" to begin!
+          </p>
           <button
               className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
               onClick = {this.handleStart}

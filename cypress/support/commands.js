@@ -161,7 +161,24 @@ Cypress.Commands.add('testChangeBgColor', (expected_rgb_value) => {
 });
 
 Cypress.Commands.add('testChangeTextColor', () => {
-  cy.get();
+  const targetColor = 'rgb(52, 86, 121)';
+  const pages = ['About', 'Reading', 'Game', 'Video', 'Quiz'];
+  for (let i = 0; i < pages.length; i++){
+    cy.get('#all-header-text').should('have.css', 'color', targetColor);
+    cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'color', targetColor);
+    cy.get('body').find('h2').should('have.css', 'color', targetColor);
+    cy.get('button').should('exist', 'be.visible').should('have.css', 'color', targetColor);
+    if (i > 0){ // if we're not on the about page, there should be a previous button
+      cy.get('button').contains('Previous - ' + pages[i-1]).should('exist', 'be.visible')  //the previous button's text should remain black
+          .should('have.css', 'color', 'rgb(255, 255, 255)');
+    }
+    if (i < 4){  // if we're not on the quiz page, there should be a next button
+      cy.get('body').find('p').should('have.css', 'color', targetColor);
+      cy.get('button').contains('Next - ' + pages[i+1]).should('exist', 'be.visible')
+          .should('have.css', 'color', 'rgb(64, 64, 64)');
+      cy.get('button').contains('Next - ' + pages[i+1]).click();
+    }
+  }
 });
 
 
