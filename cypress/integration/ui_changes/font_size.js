@@ -15,7 +15,7 @@ describe('Testing font size increase', () => {
     cy.get('button').should('exist', 'be.visible').should('have.css', 'font-size', '21px');
   });
   
-  it('tests font size increase persistency into Lab 1 pages', () => {
+  it('tests font size increase persistence into Lab 1 pages', () => {
     cy.get('a').contains('Accessibility to Sound and Speech').click();
     const buttons = ['Next - Reading', 'Next - Game', 'Next - Video', 'Next - Quiz'];
     for (let btnText of buttons){
@@ -26,7 +26,7 @@ describe('Testing font size increase', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size increase persistency into Lab 2 pages', () => {
+  it('tests font size increase persistence into Lab 2 pages', () => {
     cy.get('a').contains('Accessibility to Color Blindness').click();
     const buttons = ['Next - Reading', 'Next - Game', 'Next - Video', 'Next - Quiz'];
     for (let btnText of buttons){
@@ -37,7 +37,7 @@ describe('Testing font size increase', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size increase persistency into Lab 3 pages', () => {
+  it('tests font size increase persistence into Lab 3 pages', () => {
     cy.get('a').contains('Accessibility with Screen Readers').click();
     const buttons = ['Next - Reading', 'Next - Game', 'Next - Video', 'Next - Quiz'];
     for (let btnText of buttons){
@@ -48,7 +48,7 @@ describe('Testing font size increase', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size increase persistency into Lab 4 pages', () => {
+  it('tests font size increase persistence into Lab 4 pages', () => {
     cy.get('a').contains('Accessibility to Dexterity').click();
     const buttons = ['Next - Reading', 'Next - Game', 'Next - Video', 'Next - Quiz'];
     for (let btnText of buttons){
@@ -59,7 +59,7 @@ describe('Testing font size increase', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size increase persistency into Lab 5 pages', () => {
+  it('tests font size increase persistence into Lab 5 pages', () => {
     cy.get('a').contains('Accessibility to Cognitive Impairments').click();
     const buttons = ['Next - Reading', 'Next - Game', 'Next - Video', 'Next - Quiz'];
     for (let btnText of buttons){
@@ -70,7 +70,7 @@ describe('Testing font size increase', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size increase persistency into the site map page', () => {
+  it('tests font size increase persistence into the site map page', () => {
     cy.get('a').contains('Site Map').click();
     cy.testLabFontSizeIncrease();
   })
@@ -80,7 +80,7 @@ describe('Testing font size decrease', () => {
   it('tests font size decrease on the home page', () => {
     cy.visit(Cypress.env("CLIENT_URL"));
 
-    //initial fontsizes
+    //initial fontsize
     cy.get('body').find('p').should('exist', 'be.visible').should('have.css', 'font-size', '16px');
     cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '16px');
     cy.get('.navbar-brand').should('exist', 'be.visible').should('have.css', 'font-size', '28px');
@@ -106,7 +106,7 @@ describe('Testing font size decrease', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size decrease persistency into Lab 2 pages', () => {
+  it('tests font size decrease persistence into Lab 2 pages', () => {
     cy.get('a').contains('Accessibility to Color Blindness').click();
     const buttons = ['Next - Reading', 'Next - Game', 'Next - Video', 'Next - Quiz'];
     for (let btnText of buttons){
@@ -117,7 +117,7 @@ describe('Testing font size decrease', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size decrease persistency into Lab 3 pages', () => {
+  it('tests font size decrease persistence into Lab 3 pages', () => {
     cy.get('a').contains('Accessibility with Screen Readers').click();
     const buttons = ['Next - Reading', 'Next - Game', 'Next - Video', 'Next - Quiz'];
     for (let btnText of buttons){
@@ -139,7 +139,7 @@ describe('Testing font size decrease', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size decrease persistency into Lab 5 pages', () => {
+  it('tests font size decrease persistence into Lab 5 pages', () => {
     cy.get('a').contains('Accessibility to Cognitive Impairments').click();
     const buttons = ['Next - Reading', 'Next - Game', 'Next - Video', 'Next - Quiz'];
     for (let btnText of buttons){
@@ -150,7 +150,7 @@ describe('Testing font size decrease', () => {
     cy.get('nav').contains('Home').click(); //go back to the home page
   });
 
-  it('tests font size decrease persistency into the site map page', () => {
+  it('tests font size decrease persistence into the site map page', () => {
     cy.get('a').contains('Site Map').click();
     cy.testLabFontSizeDecrease();
   })
