@@ -9,35 +9,42 @@ var studentInformation = [
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Mark Sternefeld",
+        name: "Merf Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/"]
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Mark Sternefeld",
+        name: "Radwin Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://trello.com/b/JfaewHEi/accessibility-labs"]
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Mark Sternefeld",
+        name: "Adam Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://google.com","https://trello.com/b/JfaewHEi/accessibility-labs","https://github.com/Mster115"]
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Mark Sternefeld",
+        name: "Eggsy Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115"]
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Mark Sternefeld",
+        name: "Porkchop Sternefeld",
+        title: "Developer",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/"]
+    },
+    {
+        profile_image: mark_sternefeld_image,
+        name: "Gregory Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/"]

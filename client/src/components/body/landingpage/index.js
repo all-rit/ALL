@@ -66,37 +66,115 @@ function renderLabData() {
   })
 }
 
+// function shuffleArray(array) {
+//   let currentIndex = array.length,
+//       temporaryValue,
+//       randomIndex;
+
+//   // While there remain elements to shuffle...
+//   while (0 !== currentIndex) {
+//       // Pick a remaining element...
+//       randomIndex = Math.floor(Math.random() * currentIndex);
+//       currentIndex -= 1;
+
+//       // And swap it with the current element.
+//       temporaryValue = array[currentIndex];
+//       array[currentIndex] = array[randomIndex];
+//       array[randomIndex] = temporaryValue;
+//   }
+
+//   return array;
+// }
+
+
+function renderSlideset(){
+  let profiles = renderProfileData(studentInformation);
+  let rows =[];
+  let profile_row=[];
+  for(let i in profiles){
+    profile_row.push(profiles[i]);
+    if(profile_row.length ===3){
+      rows.push(profile_row);
+      let temp=[];
+      profile_row=temp;
+    } 
+  }
+  if(profile_row.length!==0){
+    rows.push(profile_row);
+  }
+  return rows.map((rows,index)=>{
+    return(
+      <div key={index} alt="students" class="slide">
+          <div key={index} alt="students" class="landingpage__row">
+            {rows}
+          </div>
+      </div>
+    )})
+}
+
+
 
 const Home = (props) => {
   const {actions} = props;
-  const [isFlipped,setIsFlipped] = useState(false);
-  function renderStudentCards(){
-    let profiles = renderProfileData(studentInformation);
-    let rows =[];
-    let profile_cards=[];
-    for(let i in profiles){
-      profile_cards.push(profiles[i]);
-      if(profile_cards.length ===2){
-        rows.push(profile_cards);
-        let temp=[];
-        profile_cards=temp;
-      } 
-    }
-    if(profile_cards.length!==0){
-      rows.push(profile_cards);
-    }
-    return rows.map((rows,index)=>{
-      return (
-        <ReactCardFlip key = {index} flipSpeedBackToFront={4} flipSpeedFrontToBack={4} isFlipped={isFlipped} flipDirection="horizontal">
-          {rows[0]}
-          {rows[1]}
-        </ReactCardFlip>
-      )})
+
+  // const [isFlipped,setIsFlipped] = useState(false);
+
+  // function renderStudentCards(){
+  //   let profiles = shuffleArray(renderProfileData(studentInformation));
+  //   let profile_cards =[];
+  //   let profile_faces=[];
+  //   for(let i in profiles){
+  //     profile_faces.push(profiles[i]);
+  //     if(profile_faces.length ===2){
+  //       profile_cards.push(profile_faces);
+  //       let temp=[];
+  //       profile_faces=temp;
+  //     } 
+  //   }
+  //   if(profile_faces.length!==0){
+  //     profile_cards.push(profile_faces);
+  //   }
+  //   return profile_cards.map((profile_cards,index)=>{
+  //     if(profile_cards.length===1){
+  //       return(
+  //         null
+  //     )}
+  //     else{
+  //       return (
+  //         <ReactCardFlip key = {index} infinite={true} flipSpeedBackToFront={.5} flipSpeedFrontToBack={.5} isFlipped={isFlipped} flipDirection="horizontal">
+  //           {profile_cards[0]}
+  //           {profile_cards[1]}
+  //         </ReactCardFlip>
+  //       )}
+  //   })
+  // }
+  // const handleFlip=()=>{
+  //   setIsFlipped(!isFlipped);
+  // }
+
+  //setInterval(handleFlip, 7500);
+  
+  var slideshows = document.querySelectorAll('[data-component="slideshow"]');
+  slideshows.forEach(initSlideShow);
+  
+  function initSlideShow(slideshow) {
+  
+    var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
+  
+    var index = 0, time = 5000;
+    slides[index].classList.add('active');
+  
+    setInterval( () => {
+      slides[index].classList.remove('active');
+      
+      index++;
+      if (index === slides.length) index = 0;
+  
+      slides[index].classList.add('active');
+  
+    }, time);
   }
-  const handleFlip=()=>{
-    setIsFlipped(!isFlipped);
-  }
-  setInterval(handleFlip, 7500);
+
   return (
   <div class="landingpage">
     {/* Header */}
@@ -178,12 +256,23 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          <div alt="professors"class="landingpage__row">
-            {renderProfileData(professorInformation)}
+          <div alt="professors" class="landingpage__row">
+            <div alt="professors" class="landingpage__row">
+              {renderProfileData(professorInformation)}
+            </div>
           </div>
-          <div alt="students" class="landingpage__row">
-            {renderStudentCards()}
-        </div>
+
+          <div id="slideshow" data-component="slideshow">
+              <div role="list">
+                {renderSlideset()}
+              </div>
+	        </div>
+
+            {/* <div alt="students" id="slideset"class="landingpage__row">
+              {renderSlideset()}
+            </div> */}
+
+        {/* <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onClick={handleFlip}>View Our Team</button> */}
       </div>
     </section>
     <hr class="horiz" />

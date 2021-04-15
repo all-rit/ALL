@@ -91,6 +91,51 @@
 	}
 
 }
+@keyframes autoplay {
+	0% {
+		opacity: 0.0;
+	}
+	4% {
+		opacity: 1.0;
+	}
+	33.33% {
+		opacity: 1.0;
+	}
+	37.33% {
+		opacity: 0.0;
+	}
+	100% {
+		opacity: 0.0;
+	}
+}
+
+[data-component="slideshow"] {
+	.slide {
+		display: none;
+		text-align: center;
+	}
+	.slide.active {
+		display: block;
+	}
+}
+
+#slideset {
+	height: 560px;
+	position: relative;
+	>* {
+		animation: 12s autoplay infinite linear;
+		//position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0.0;
+		&:nth-child(1) {
+			animation-delay: 0s;
+		}
+		&:nth-child(2) {
+			animation-delay: 4s;
+		}
+	}
+}
 
 .citation{
     background-clip: content-box;
