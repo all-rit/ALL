@@ -3,12 +3,12 @@ import handleRedirect from "../../../../helpers/Redirect";
 
 class Lab extends Component{
     render(){
-        const { alt, name, bio , image,actions} = this.props;
+        const { alt,lab, name, bio , image,actions} = this.props;
         return(
                 <ul class="landingpage__col">
                     <li >
                         <a class="portfolio-link"
-                            onClick={() => handleRedirect(actions,1)}
+                            onClick={() => handleRedirect(actions,lab)}
                             href="# ">
                                 <img
                                     class="img-fluid landingpage__image"
@@ -20,7 +20,7 @@ class Lab extends Component{
                     <li class="portfolio-caption ">
                         <ul>
                             <li class="landingpage__lab_title">
-                                <a onClick={() => handleRedirect(actions,1)} href="# ">
+                                <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
                             </li>

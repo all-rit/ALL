@@ -1,5 +1,5 @@
 import mark_sternefeld_image from "./profileImages/Mark_Sternefeld.jpg"
-var profileInformation = [
+var studentInformation = [
     {
         profile_image: mark_sternefeld_image,
         name: "Mark Sternefeld",
@@ -45,4 +45,4 @@ var profileInformation = [
     
 ]
 
-export default profileInformation;
+export default studentInformation;

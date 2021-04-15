@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "../../../assets/stylesheets/pages/LandingPage.scss"
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
@@ -7,9 +7,11 @@ import {actions, actions as mainActions} from "../../../reducers/MainReducer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import Profile from "./citation/Profile";
-import profileInformation from "./citation/profileInfomation";
+import studentInformation from "./citation/studentInfomation";
+import professorInformation from "./citation/professorInformation";
 import labInformation from "./lab/labInformation";
 import Lab from "./lab/lab";
+import ReactCardFlip from 'react-card-flip';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -28,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
 //   );
 // }
 
-function renderProfileData() {
+function renderProfileData(profileInformation) {
   return profileInformation.map((profileInfo, index) => {
       const {profile_image, name,title,bio,socials} = profileInfo //destructuring
       return (
@@ -48,12 +50,13 @@ function renderProfileData() {
 
 function renderLabData() {
   return labInformation.map((labInfo, index) => {
-    const { alt, name, bio , image} = labInfo //destructuring
+    const { alt,lab, name, bio , image} = labInfo //destructuring
       return (
               
               <Lab 
                   key={index}
                   alt= {alt} 
+                  lab={lab}
                   name= {name} 
                   bio={bio}
                   image= {image} 
@@ -63,31 +66,37 @@ function renderLabData() {
   })
 }
 
-// function renderDataRows(type){
-//   let profiles = type();
-//   let rows =[];
-//   let profile_row=[];
-//   for(let i in profiles){
-//     profile_row.push(profiles[i]);
-//     if(profile_row.length ===3){
-//       rows.push(profile_row);
-//       let temp=[];
-//       profile_row=temp;
-//     } 
-//   }
-//   if(profile_row.length!==0){
-//     rows.push(profile_row);
-//   }
-//   return rows.map((rows,index)=>{
-//     return(
-//     <div key={index} class="landingpage__row">
-//         {rows}
-//     </div>
-//     )})
-// }
 
 const Home = (props) => {
   const {actions} = props;
+  const [isFlipped,setIsFlipped] = useState(false);
+  function renderStudentCards(){
+    let profiles = renderProfileData(studentInformation);
+    let rows =[];
+    let profile_cards=[];
+    for(let i in profiles){
+      profile_cards.push(profiles[i]);
+      if(profile_cards.length ===2){
+        rows.push(profile_cards);
+        let temp=[];
+        profile_cards=temp;
+      } 
+    }
+    if(profile_cards.length!==0){
+      rows.push(profile_cards);
+    }
+    return rows.map((rows,index)=>{
+      return (
+        <ReactCardFlip key = {index} flipSpeedBackToFront={4} flipSpeedFrontToBack={4} isFlipped={isFlipped} flipDirection="horizontal">
+          {rows[0]}
+          {rows[1]}
+        </ReactCardFlip>
+      )})
+  }
+  const handleFlip=()=>{
+    setIsFlipped(!isFlipped);
+  }
+  setInterval(handleFlip, 7500);
   return (
   <div class="landingpage">
     {/* Header */}
@@ -169,8 +178,11 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          <div class="landingpage__row">
-            {renderProfileData()}
+          <div alt="professors"class="landingpage__row">
+            {renderProfileData(professorInformation)}
+          </div>
+          <div alt="students" class="landingpage__row">
+            {renderStudentCards()}
         </div>
       </div>
     </section>
