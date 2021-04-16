@@ -9,14 +9,14 @@ var studentInformation = [
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Merf Sternefeld",
+        name: "Leroy Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/"]
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Radwin Sternefeld",
+        name: "Alan Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://trello.com/b/JfaewHEi/accessibility-labs"]
@@ -30,14 +30,14 @@ var studentInformation = [
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Eggsy Sternefeld",
+        name: "Roger Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://github.com/Mster115"]
     },
     {
         profile_image: mark_sternefeld_image,
-        name: "Porkchop Sternefeld",
+        name: "Seth Sternefeld",
         title: "Developer",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/"]

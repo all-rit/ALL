@@ -153,7 +153,9 @@ const Home = (props) => {
   // }
 
   //setInterval(handleFlip, 7500);
-  
+
+
+
   var slideshows = document.querySelectorAll('[data-component="slideshow"]');
   slideshows.forEach(initSlideShow);
   
@@ -175,6 +177,8 @@ const Home = (props) => {
     }, time);
   }
 
+
+
   return (
   <div class="landingpage">
     {/* Header */}
@@ -187,9 +191,9 @@ const Home = (props) => {
           <div class="intro-heading text-uppercase">
             Learn about Accessibility
           </div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id={"tell-me-more-btn"} href="#goals">
+          {/* <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id={"tell-me-more-btn"} href="#goals">
             Tell Me More
-          </a>
+          </a> */}
         </div>
       </div>
     </header>
@@ -256,13 +260,13 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          <div alt="professors" class="landingpage__row">
+          <div class="landingpage__row">
             <div alt="professors" class="landingpage__row">
               {renderProfileData(professorInformation)}
             </div>
           </div>
 
-          <div id="slideshow" data-component="slideshow">
+          <div id="slideshow" alt="students" data-component="slideshow">
               <div role="list">
                 {renderSlideset()}
               </div>
