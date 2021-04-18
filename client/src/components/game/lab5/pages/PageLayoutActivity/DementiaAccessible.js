@@ -6,7 +6,7 @@ import {time, minFont, maxFont, defaultFont} from '../../../../../constants/lab5
 class DementiaAccessible extends Component {
     constructor(props){
         super(props);
-        this.state={timerDone:false}
+        this.state={timerDone:false, componentName:"DementiaAccessible"}
     }
     handleNav() {
         navigate("/Lab5/Game/DementiaAccessibleKnowledgeCheck");
@@ -92,7 +92,7 @@ class DementiaAccessible extends Component {
                             Next
                         </button>
                     </div>
-                    <PageServiceTimer actions={actions} name={this.constructor.name}/>
+                    <PageServiceTimer actions={actions} name={this.state.componentName}/>
                 </div>
         );
     }

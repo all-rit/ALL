@@ -15,7 +15,8 @@ class FormRepair extends Component {
 			errorNotificationerror: null,
 			successNotificationerror: null,
 			borderColorerror:null,
-			repairerror:true
+			repairerror:true,
+			componentName:"FormRepair"
 
 
 		};
@@ -83,7 +84,7 @@ class FormRepair extends Component {
 			});
 			// Submit a repair entry in the database.
 			RepairService.submitRepair(
-				this.constructor.name, repair
+				this.state.componentName, repair
 			);
 			handlers.updatePopup('The repairs have been made.');
 		}
@@ -532,7 +533,7 @@ class FormRepair extends Component {
 					</button>
 				</div>
 				}
-				<PageServiceTimer actions={handlers} name={this.constructor.name}/>
+				<PageServiceTimer actions={handlers} name={this.state.componentName}/>
 
 			</div>
 		);

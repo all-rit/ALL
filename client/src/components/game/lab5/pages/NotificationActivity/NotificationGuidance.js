@@ -2,7 +2,11 @@ import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import PageServiceTimer from "../../components/PageServiceTimer";
 
-class PageLayoutGuidance extends Component {
+class NotificationGuidance extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {componentName:"NotificationGuidance"};
+    }
   handleNav() {
     navigate("/Lab5/Game/NotificationRepair");
   }
@@ -52,10 +56,10 @@ class PageLayoutGuidance extends Component {
           </div>
 
         </div>
-          <PageServiceTimer actions={actions} name={this.constructor.name} />
+          <PageServiceTimer actions={actions} name={this.state.componentName} />
       </Fragment>
     );
   }
 }
 
-export default PageLayoutGuidance;
+export default NotificationGuidance;

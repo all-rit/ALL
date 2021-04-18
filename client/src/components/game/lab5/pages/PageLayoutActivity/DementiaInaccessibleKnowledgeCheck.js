@@ -6,7 +6,7 @@ class DementiaInaccessibleKnowledgeCheck extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selected: false };
+        this.state = {selected: false, componentName: "DementiaInaccessibleKnowledgeCheck"};
     }
 
     render() {
@@ -14,7 +14,7 @@ class DementiaInaccessibleKnowledgeCheck extends Component {
         return (
             <div>
                 <KnowledgeTest handler={this.handler} question = {KnowledgeCheck} link={"/Lab5/Game/PageLayoutGuidance"}/>
-                <PageServiceTimer actions={actions} name={this.constructor.name}/>
+                <PageServiceTimer actions={actions} name={this.state.componentName}/>
             </div>
         );
     }

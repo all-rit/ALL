@@ -6,7 +6,7 @@ class NotificationAccessibleRepairKnowledgeCheck extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selected: false };
+        this.state = {selected: false , componentName:"NotificationAccessibleRepairKnowledgeCheck"};
     }
 
     render() {
@@ -15,7 +15,7 @@ class NotificationAccessibleRepairKnowledgeCheck extends Component {
             <div>
                 <KnowledgeTest handler={this.handler} question = {KnowledgeCheck} link={"/Lab5/Game/FormInaccessible" +
                 ""}/>
-                <PageServiceTimer actions={actions} name={this.constructor.name}/>
+                <PageServiceTimer actions={actions} name={this.state.componentName}/>
             </div>
         );
     }

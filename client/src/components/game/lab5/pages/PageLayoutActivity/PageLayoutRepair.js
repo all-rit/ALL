@@ -20,7 +20,8 @@ class PageLayoutRepair extends Component {
 			classerror:null,
 			fonterror:null,
 			fontfamilyerror:null,
-			repairerror:true
+			repairerror:true,
+			componentName:"PageLayoutRepair"
 		};
 		// this.validateRepair = this.validateRepair.bind(this)
 	}
@@ -109,7 +110,7 @@ class PageLayoutRepair extends Component {
 			});
 			// Submit a repair entry in the database.
 			RepairService.submitRepair(
-				this.constructor.name, repair
+				this.state.componentName, repair
 			);
 			handlers.updatePopup('The repairs have been made.');
 		}else
@@ -468,7 +469,7 @@ class PageLayoutRepair extends Component {
 					</button>
 				</div>
 				}
-				<PageServiceTimer actions={handlers} name={this.constructor.name}/>
+				<PageServiceTimer actions={handlers} name={this.state.componentName}/>
 
 			</div>
 		);

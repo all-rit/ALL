@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactGA from 'react-ga';
 import quizQuestionsLab1 from './api/Lab1/quizQuestions';
 import quizQuestionsLab2 from './api/Lab2/quizQuestions';
 import quizQuestionsLab3 from './api/Lab3/quizQuestions';
@@ -11,6 +12,11 @@ import UserLabService from '../../services/UserLabService';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
+
+function initializeReactGA() {
+    const TRACKING_ID = process.env.GA_TRACKING_ID;
+    ReactGA.initialize(TRACKING_ID, { testMode: process.env.NODE_ENV === 'test' });
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -285,6 +291,7 @@ class App extends Component {
     }
 
     render() {
+        initializeReactGA();
         return (
             <div className="quiz">
                 {this.state.result ? this.renderResult() : this.renderQuiz()}

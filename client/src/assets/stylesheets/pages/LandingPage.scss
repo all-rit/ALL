@@ -139,12 +139,13 @@ a.icon:hover {
 }
 #connect-text {
 	color: #fed136;
-	background-color: #000000;
 	max-width: 62%;
 	margin-left: auto;
 	margin-right: auto;
 }
-
+#connect-text > a{
+	color:#bed2fe
+}
 #tell-me-more-btn {
 	background-color: #fed136;
 	border-color: #fed135;
