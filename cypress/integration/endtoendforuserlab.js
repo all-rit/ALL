@@ -7,11 +7,32 @@ describe('User lab', () => {
   
   it('About complete', () => {
     cy.get('button').contains('Next').click();
-    cy.task('userLabComplete', 'about')
-    let cookie = cy.getCookie('session')
-    console.log("Cookie: ", cookie)
-    console.log("Usersessionid: ", cookie.token)
-    
+    cy.wait(200);
+    cy.window().its('store').invoke('getState').then(state => {
+      cy.task('userLabComplete', {section: 'about', userid: state.main.user.userid})
+        .then((userlab) => {
+          console.log("Connection successful: ", userlab);
+        }) 
+    })
+    // need to get usersessionid from task result
+    // check db for column value 
     
   })
+  
+  // it('Reading complete', () => {
+    
+  // });
+  
+  // it('Game complete', () => {
+    
+  // });
+  
+  // it('Video complete', () => {
+    
+  // });
+  
+  // it('Quiz complete', () => {
+  //   // run command here
+  // });
+  
 })

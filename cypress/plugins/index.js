@@ -99,26 +99,27 @@ module.exports = (on, config) => {
   };
   
   on('task', {
-    userLabComplete(section) {
+    userLabComplete({section, userid}) {
       const db = database();
-      switch (section) {
-        case 'about':
-          let userlab = db.UserLab
-            .findOne({
-              where:
-                {
-                    usersessionid:168,
-                    labid:1
-                }
-            })
-          userlab.then(console.log);
-          
-          return true;
+      // switch (section) {
+      //   case 'about':
+      let userlab = db.Session.findOne({
+          where: { userid: userid }
+        }).then(res => {
+          console.log("res: ", res.usersessionid);
+          db.UserLab.findOne({
+            where: {
+              usersessionid: res.usersessionid,
+              labid: 1
+            }
+          })
+        })
+      return userlab;
       
-        default:
-          return true;
-      }
-      return true;
+      //   default:
+      //     return true;
+      // }
+      // return true;
     }
   })
 }
