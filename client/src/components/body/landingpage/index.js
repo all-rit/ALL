@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "../../../assets/stylesheets/pages/LandingPage.scss"
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
@@ -11,24 +11,12 @@ import studentInformation from "./citation/studentInfomation";
 import professorInformation from "./citation/professorInformation";
 import labInformation from "./lab/labInformation";
 import Lab from "./lab/lab";
-import ReactCardFlip from 'react-card-flip';
 
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(mainActions, dispatch)
   };
 };
-
-// function renderProfileComponent(key) {
-//   return (
-//       <Profile 
-//           profile_image= {ear} 
-//           name= {key.name} 
-//           title= {key.title} 
-//           bio={key.bio}
-//       />
-//   );
-// }
 
 function renderProfileData(profileInformation) {
   return profileInformation.map((profileInfo, index) => {
@@ -66,27 +54,6 @@ function renderLabData() {
   })
 }
 
-// function shuffleArray(array) {
-//   let currentIndex = array.length,
-//       temporaryValue,
-//       randomIndex;
-
-//   // While there remain elements to shuffle...
-//   while (0 !== currentIndex) {
-//       // Pick a remaining element...
-//       randomIndex = Math.floor(Math.random() * currentIndex);
-//       currentIndex -= 1;
-
-//       // And swap it with the current element.
-//       temporaryValue = array[currentIndex];
-//       array[currentIndex] = array[randomIndex];
-//       array[randomIndex] = temporaryValue;
-//   }
-
-//   return array;
-// }
-
-
 function renderSlideset(){
   let profiles = renderProfileData(studentInformation);
   let rows =[];
@@ -116,45 +83,6 @@ function renderSlideset(){
 
 const Home = (props) => {
   const {actions} = props;
-
-  // const [isFlipped,setIsFlipped] = useState(false);
-
-  // function renderStudentCards(){
-  //   let profiles = shuffleArray(renderProfileData(studentInformation));
-  //   let profile_cards =[];
-  //   let profile_faces=[];
-  //   for(let i in profiles){
-  //     profile_faces.push(profiles[i]);
-  //     if(profile_faces.length ===2){
-  //       profile_cards.push(profile_faces);
-  //       let temp=[];
-  //       profile_faces=temp;
-  //     } 
-  //   }
-  //   if(profile_faces.length!==0){
-  //     profile_cards.push(profile_faces);
-  //   }
-  //   return profile_cards.map((profile_cards,index)=>{
-  //     if(profile_cards.length===1){
-  //       return(
-  //         null
-  //     )}
-  //     else{
-  //       return (
-  //         <ReactCardFlip key = {index} infinite={true} flipSpeedBackToFront={.5} flipSpeedFrontToBack={.5} isFlipped={isFlipped} flipDirection="horizontal">
-  //           {profile_cards[0]}
-  //           {profile_cards[1]}
-  //         </ReactCardFlip>
-  //       )}
-  //   })
-  // }
-  // const handleFlip=()=>{
-  //   setIsFlipped(!isFlipped);
-  // }
-
-  //setInterval(handleFlip, 7500);
-
-
 
   var slideshows = document.querySelectorAll('[data-component="slideshow"]');
   slideshows.forEach(initSlideShow);

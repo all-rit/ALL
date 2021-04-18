@@ -19,12 +19,12 @@ class Lab extends Component{
                     </li>
                     <li class="portfolio-caption ">
                         <ul>
-                            <li class="landingpage__lab_title">
+                            <li class="landingpage__title">
                                 <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
                             </li>
-                            <li class="landingpage__lab_desc">
+                            <li class="landingpage__bio">
                                 {bio}
                             </li>
                         </ul>

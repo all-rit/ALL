@@ -18,8 +18,8 @@ class Profile extends Component{
                 <li class="portfolio-caption ">
                     <ul>
                         <li id={name} class="citation__name">{name}</li>
-                        <li id={title} class="citation__title">{title}</li>
-                        <li id="bio" class="citation__bio">{bio}</li>
+                        <li id={title} class="landingpage__title">{title}</li>
+                        <li id="bio" class="landingpage__bio">{bio}</li>
                     </ul>
                 </li>
                 
