@@ -110,56 +110,8 @@ const Header = (props) => {
                                 style={{color: "#fff"}}
                                 onClick={() => navigate(state,actions, 0, 0)}>
                                 <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
+                                    <li className="nav-item nav-last">
                                         Home
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                            >
-                                <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                            >
-                                <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                            >
-                                <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                            >
-                                <ul className="navbar-nav text-uppercase ml-auto">
-                                    <li className="nav-item">
                                     </li>
                                 </ul>
                             </NavLink>
@@ -200,46 +152,8 @@ const Header = (props) => {
                             style={link === 2 ? activeStyle : {color: "#fff"}}
                                 >
                             <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
+                            <li className="nav-item nav-last">
                             Contact
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
-                            
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="# "
-                            style={{color: "#fff"}}
-                                >
-                            <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
                             </li>
                             </ul>
                             </NavLink>
@@ -330,7 +244,7 @@ const Header = (props) => {
                             href="# "
                             style={count === 4 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item">
+                            <li className="nav-item nav-last">
                             Quiz
                             </li>
                             </ul>
