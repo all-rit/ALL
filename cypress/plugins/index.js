@@ -115,6 +115,10 @@ module.exports = async(on, config) => {
               })
             })
           })
+        case "reading":
+        case "game":
+        case "video":
+        case "quiz":
         default:
           return true
       }
