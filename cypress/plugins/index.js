@@ -18,17 +18,16 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = (on, config) => {
+module.exports = async(on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   const fs = require('fs');
   const path = require('path');
-  const pathname = path.join('/Users/christophersavan/Sites/ALL/server/database', 'models');
+  const pathname = path.join(__dirname, '/../../server/database/models');
   const Sequelize = require('../../server/node_modules/sequelize');
   const withPassword = config.env.DB_PASS ? `:${config.env.DB_PASS}` : '';
   const URI = `postgres://${config.env.DB_USER}${withPassword}@${config.env.DB_HOST}:${config.env.ENVIRONMENT === "dev" ? 5433:5432}/${config.env.DB_SCHEMA}`;
-  console.log(URI);
-  const database = () => {
+  const database = async() => {
     try {
       const sequelize = new Sequelize(URI, {
         dialect: 'postgres',
@@ -42,7 +41,7 @@ module.exports = (on, config) => {
         }
       })
       const db = {};
-      sequelize
+      await sequelize
       .authenticate()
       .then(() => {
         console.log('Connection has been established successfully.');
@@ -97,29 +96,31 @@ module.exports = (on, config) => {
       console.log('error: ', err)
     }
   };
-  
+  const db = await database();
   on('task', {
-    userLabComplete({section, userid}) {
-      const db = database();
-      // switch (section) {
-      //   case 'about':
-      let userlab = db.Session.findOne({
-          where: { userid: userid }
-        }).then(res => {
-          console.log("res: ", res.usersessionid);
-          db.UserLab.findOne({
-            where: {
-              usersessionid: res.usersessionid,
-              labid: 1
-            }
+    async userLabComplete({section, userid}) {
+      switch (section){
+        case "about":
+          return new Promise((resolve, reject) => {
+            db.Session.findOne({
+              where: {userid: userid}
+            }).then(res => {
+              db.UserLab.findOne({
+                where: {
+                  usersessionid: res.usersessionid,
+                  labid: 1
+                }
+              }).then(userlab => {
+                return resolve(userlab)
+              })
+            })
           })
-        })
-      return userlab;
-      
-      //   default:
-      //     return true;
-      // }
-      // return true;
+        default:
+          return true
+      }
+
     }
-  })
+  }
+  );
+
 }

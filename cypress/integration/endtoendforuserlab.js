@@ -1,7 +1,6 @@
 describe('User lab', () => {
   beforeEach(() => {
     cy.visit(Cypress.env("CLIENT_URL") + Cypress.env("LAB1_URL") + "/About");
-    
   });
   
   
@@ -9,10 +8,11 @@ describe('User lab', () => {
     cy.get('button').contains('Next').click();
     cy.wait(200);
     cy.window().its('store').invoke('getState').then(state => {
+      console.log(state)
       cy.task('userLabComplete', {section: 'about', userid: state.main.user.userid})
         .then((userlab) => {
-          console.log("Connection successful: ", userlab);
-        }) 
+          console.log(userlab);
+        })
     })
     // need to get usersessionid from task result
     // check db for column value 
