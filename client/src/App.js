@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import ReactGA from 'react-ga';
+
 import {default as AboutLab1} from "./components/body/lab1/about";
 import {default as ReadingLab1} from "./components/body/lab1/reading";
 import {default as GameLab1} from "./components/game/lab1/Main";
@@ -53,6 +55,11 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+function initializeReactGA() {
+    const TRACKING_ID = process.env.GA_TRACKING_ID;
+    ReactGA.initialize(TRACKING_ID, { testMode: process.env.NODE_ENV === 'test' });
+}
+
 class App extends Component {
    componentDidMount() {
         const {actions} = this.props;
@@ -68,6 +75,7 @@ class App extends Component {
     const {state,actions} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
+    initializeReactGA();
     return (
       <div>
         <Header />
