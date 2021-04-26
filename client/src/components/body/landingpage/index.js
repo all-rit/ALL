@@ -194,7 +194,7 @@ const Home = (props) => {
             </div>
           </div>
 
-          <div id="slideshow" alt="students" data-component="slideshow">
+          <div id="slideshow" alt="students" class="landingpage__row" data-component="slideshow">
               <div role="list">
                 {renderSlideset()}
               </div>
