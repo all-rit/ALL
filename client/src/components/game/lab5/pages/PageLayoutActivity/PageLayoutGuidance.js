@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
-import PageServiceTimer from "../../components/PageServiceTimer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
 
 class PageLayoutGuidance extends Component {
     constructor(props) {

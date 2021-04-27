@@ -1,12 +1,18 @@
 import { Component } from "react";
-import {PageService} from "../../../../services/PageService";
-import {LAB_ID, GAME_PLAYING} from "../../../../constants/lab5/index";
+import {PageService} from "../../../services/PageService";
+import {GAME_PLAYING} from "../../../constants/index";
+import {connect} from "react-redux";
+
+const mapStateToProps = (state) => ({
+    labid: state.main.lab
+});
 
 class PageServiceTimer extends Component {
     constructor(props) {
         super(props);
         this.state = {secondsElapsed: 0, name: this.props.name, gameState:this.props.gameState};
     }
+
 
     componentDidMount() {
         const { actions } = this.props;
@@ -19,7 +25,7 @@ class PageServiceTimer extends Component {
     }
 
     componentWillUnmount() {
-        PageService.createPage(this.state.name, this.state.secondsElapsed, LAB_ID);
+        PageService.createPage(this.state.name, this.state.secondsElapsed, this.props.labid);
         clearInterval(this.interval);
     }
     render() {
@@ -27,4 +33,5 @@ class PageServiceTimer extends Component {
     }
 }
 
-export default PageServiceTimer;
+export default connect(mapStateToProps)(PageServiceTimer);
+
