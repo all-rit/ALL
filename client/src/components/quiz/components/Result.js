@@ -12,39 +12,30 @@ function Result(props) {
     // }
 
     function isAnswerIncorrect(score) {
-        if (score === 1) {
-            return true;
-        } else {
-            return false;
-        }
-
+        return score === 1;
     }
 
     function renderTableData() {
-        var counter = 0;
-        var isIncorrect = false;
+        let counter = 0;
+        let isIncorrect = false;
         return props.quizQuestions.map((quizQuestion, index) => {
             const {question, answers} = quizQuestion //destructuring
             counter += 1;
             isIncorrect = isAnswerIncorrect(props.quizScore[counter - 1]);
 
             return (
-                
                 <tr key={index} className={isIncorrect ? 'answer-correct' : 'answer-wrong'}>
                     <td className={'column-width'}>{question}</td>
                     <td className={'column-width'}>{renderTableAnswersData(answers)}</td>
                     <td className={'column-width'}>{renderTableSelectedAnswersData(props.selectedAnswers[counter - 1], answers)}</td>
                     <td className={'column-width'}>{isIncorrect ? 'Correct' : 'Not Correct'}</td>
                 </tr>
-
             );
-
         })
-
     }
 
     function renderTableAnswersData(answers) {
-        var counter = 0;
+        let counter = 0;
         return (
             <ul>
                 {answers.map(function (answer, index) {
@@ -56,7 +47,7 @@ function Result(props) {
                             </li>
                         );
                     } else {
-                        return <div></div>
+                        return <div/>
                     }
 
                 })}
@@ -67,7 +58,7 @@ function Result(props) {
 
     function renderTableSelectedAnswersData(selectedAnswers, answers) {
         const choices = Object.values(selectedAnswers);
-        var counter = 0;
+        let counter = 0;
         return (
             <ul>
                 {choices.map(function (selectedAnswer, index) {
@@ -80,20 +71,14 @@ function Result(props) {
 
                         );
                     } else {
-                        return <div></div>
+                        return <div/>
                     }
-
-
                 })}
             </ul>
         )
-
     }
 
-    
-
     return (
-        
         <div className="quiz container shadow">
             <div className="result">
                 Results <strong>Score: {props.quizResult}</strong>

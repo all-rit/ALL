@@ -90,14 +90,10 @@ class App extends Component {
                     this.setState({
                         quizQuestions: questions
                     })
-
-
-                    // this.state.quizQuestions[i]['answers'][x]['type'] = "" + x;
                 }
             }
         })
     }
-
 
     componentDidMount() {
         for (let i = 0; i < this.state.quizQuestions.length; i++) {
@@ -156,7 +152,7 @@ class App extends Component {
     checkMultipleAnswers(currentAnswers) {
         let correctAnswer = 0;
         let options = this.state.quizQuestions[this.state.counter]['answers'].length;
-        for (var index = 0; index < options; index++) {
+        for (let index = 0; index < options; index++) {
             if (this.state.quizQuestions[this.state.counter]['answers'][index]['val'] === currentAnswers[index]) {
                 correctAnswer = 1;
             } else {
@@ -174,11 +170,9 @@ class App extends Component {
         for (let index = 0; index < checked.length; index++) {
             if (checked[index].checked === true) {
                 currentAnswers[index] = 1
-
             } else {
                 currentAnswers[index] = 0
             }
-
         }
         return currentAnswers;
     }
@@ -206,14 +200,13 @@ class App extends Component {
         } else {
             setTimeout(() => this.setResults(this.getResults()), 300);
         }
-
     }
 
     getResults(numerical = false) {
         const myCount = this.state.myCount;
         let correct = 0;
         let total = 0;
-        for (var item in myCount) {
+        for (const item in myCount) {
             total++;
             if (myCount.hasOwnProperty(item)) {
                 if (myCount[item] === 1) correct++;
@@ -246,8 +239,8 @@ class App extends Component {
                 }
             }
             //get user selected answers
-            const selectedAnswserQuestion = selectedAnswers[counter];
-            const choices = Object.values(selectedAnswserQuestion);
+            const selectedAnswerQuestion = selectedAnswers[counter];
+            const choices = Object.values(selectedAnswerQuestion);
             let optionCounter = 0;
             for (const choice of choices) {
                 //is the choice the one that is selected by user

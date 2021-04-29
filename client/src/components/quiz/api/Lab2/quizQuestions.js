@@ -1,4 +1,4 @@
-var quizQuestionsLab2 = [
+const quizQuestionsLab2 = [
     {
         question: "Which of the following best describes 'color contrast'?",
         answers: [
