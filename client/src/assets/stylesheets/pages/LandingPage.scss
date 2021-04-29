@@ -28,7 +28,7 @@
 	}
 	a{	
 		font-size:20px;
-		color: var(--blue-text);
+		color: #0144d5;
 	}
 	p{
 		font-size: 16px;
@@ -38,7 +38,7 @@
 
 .errorpage{
 	h1{
-		//font-style: Bold;
+		font-style: Bold;
 		font-size: 50px;
 		font-weight: 700;
 		line-height: 50px;
@@ -138,13 +138,13 @@ a.icon:hover {
 	margin: 100px 0px 100px ;
 }
 #connect-text {
-	color: var(--yellow-text);
+	color: #fed136;
 	max-width: 62%;
 	margin-left: auto;
 	margin-right: auto;
 }
 #connect-text > a{
-	color: var(--light-blue-text);
+	color:#bed2fe
 }
 #tell-me-more-btn {
 	background-color: #fed136;
