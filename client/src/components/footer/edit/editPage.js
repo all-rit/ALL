@@ -51,6 +51,10 @@ export function setTextColor(picker) {
     for (let i = 0; i < elems.length; i++) {
         elems[i].style.color = picker.toString();
     }
+    document.documentElement.style.setProperty('--yellow-text', picker.toString());
+    document.documentElement.style.setProperty('--blue-text', picker.toString());
+    document.documentElement.style.setProperty('--white-text', picker.toString());
+    document.documentElement.style.setProperty('--light-blue-text', picker.toString());
 }
 
 export function setBackgroundColor(picker) {

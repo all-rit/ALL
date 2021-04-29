@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/all-rit/AccessibilityLab1/issues"
   },
-  "homepage": "https://github.com/all-rit/AccessibilityLab1#readme"
+  "homepage": "https://github.com/all-rit/AccessibilityLab1#readme",
+  "dependencies": {
+    "passport-google-oauth": "^2.0.0"
+  }
 }
