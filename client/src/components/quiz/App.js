@@ -14,7 +14,7 @@ import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
 
 function initializeReactGA() {
-    const TRACKING_ID = process.env.GA_TRACKING_ID;
+    const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
     ReactGA.initialize(TRACKING_ID, { testMode: process.env.NODE_ENV === 'test' });
 }
 
