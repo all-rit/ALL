@@ -14,14 +14,15 @@
     "cookie-parser": "latest",
     "cookie-session": "latest",
     "cors": "latest",
-    "dotenv": "latest",
+    "dotenv": "^9.0.0",
     "express": "latest",
     "express-session": "latest",
     "knex": "latest",
     "passport": "latest",
     "passport-google-oauth20": "latest",
-    "pg": "latest",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
     "react-ga": "^3.3.0",
-    "sequelize": "latest"
+    "sequelize": "^6.6.2"
   }
 }
