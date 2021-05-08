@@ -115,16 +115,18 @@ module.exports = async(on, config) => {
               })
             })
           })
-        case "reading":
-        case "game":
-        case "video":
-        case "quiz":
         default:
           return true
       }
-
+    },
+    async userToSession(userid) {
+      return new Promise((resolve, reject) => {
+        db.Session.findOne({
+          where: {userid: userid}
+        }).then(session => {
+          return resolve(session.usersessionid)
+        })
+      });
     }
-  }
-  );
-
+  })
 }
