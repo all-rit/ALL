@@ -8,10 +8,7 @@ describe('User lab', () => {
     // before each test, we can automatically preserve the
     // 'session'. this means they will not be cleared 
     // before the NEXT test starts.
-    //
-    // the name of your cookies will likely be different
-    // this is an example
-    Cypress.Cookies.preserveOnce('session');
+    Cypress.Cookies.preserveOnce('session'); // session is name of browser cookie
   })
   
   
@@ -55,45 +52,59 @@ describe('User lab', () => {
     })
   })
   
-  // it('Game complete', () => {
-  //   cy.get('button').contains('Next').click();
-  //   cy.get('h2').contains('Video').should('be.visible');
-  //   cy.window().its('store').invoke('getState').then(state => {
-  //     cy.task('userLabComplete', {section: 'about', userid: state.main.user.userid})
-  //       .then((userlab) => {
-  //         // should not be null
-  //         expect(userlab.gamecompletedtime).to.not.be.null;
-          
-  //         // should be of type string 
-  //         expect(userlab.gamecompletedtime).to.be.a('string');
-          
-  //         // should be before today
-  //         let date = new Date();
-  //         expect(new Date(userlab.gamecompletedtime).getTime()).to.be.lessThan(date.getTime());
-  //       })
-  //   })
-  // })
-  
-  it('Video complete', () => {
+  it('Game complete', () => {
     cy.window().its('store').invoke('getState').then(state => {
-      cy.get('button').contains('Next').click();
-      cy.get('button').contains('Next').click();
-      cy.get('h2').contains('Quiz').should('be.visible');
-      let userid = state.main.user.userid;
-      cy.task('userLabComplete', {section: 'about', userid: userid})
+      cy.completeGame(state.main.lab);
+    })
+    
+    cy.get('.btn-change').should('be.visible');
+    
+    cy.window().its('store').invoke('getState').then(state => {
+      // Check redux state for game complete
+      expect(state.game1.plays).to.be.greaterThan(0);
+      expect(state.game1.state).to.deep.equal('GAME_IDLE');
+    });
+    
+    cy.get('button').contains('Next - Video').click();
+    cy.get('h2').contains('Video').should('be.visible');
+    cy.window().its('store').invoke('getState').then(state => {
+      // Checks user lab for game complete
+      cy.task('userLabComplete', {section: 'about', userid: state.main.user.userid})
         .then((userlab) => {
           // should not be null
-          expect(userlab.videocompletedtime).to.not.be.null;
+          expect(userlab.gamecompletedtime).to.not.be.null;
           
           // should be of type string 
-          expect(userlab.videocompletedtime).to.be.a('string');
+          expect(userlab.gamecompletedtime).to.be.a('string');
           
           // should be before today
           let date = new Date();
-          expect(new Date(userlab.videocompletedtime).getTime()).to.be.lessThan(date.getTime());
-        })
+          expect(new Date(userlab.gamecompletedtime).getTime()).to.be.lessThan(date.getTime());
+        }
+      )
     })
   })
+  
+  // it('Video complete', () => {
+  //   cy.window().its('store').invoke('getState').then(state => {
+  //     cy.get('button').contains('Next').click();
+  //     cy.get('button').contains('Next').click();
+  //     cy.get('h2').contains('Quiz').should('be.visible');
+  //     let userid = state.main.user.userid;
+  //     cy.task('userLabComplete', {section: 'about', userid: userid})
+  //       .then((userlab) => {
+  //         // should not be null
+  //         expect(userlab.videocompletedtime).to.not.be.null;
+          
+  //         // should be of type string 
+  //         expect(userlab.videocompletedtime).to.be.a('string');
+          
+  //         // should be before today
+  //         let date = new Date();
+  //         expect(new Date(userlab.videocompletedtime).getTime()).to.be.lessThan(date.getTime());
+  //       })
+  //   })
+  // })
   
   // it('Quiz complete', () => {
   //   // run command here

@@ -216,3 +216,37 @@ Cypress.Commands.add('testCompleteQuiz', () => {
     }
   });
 });
+
+// Completes Game in current lab
+// Assumes that browser is on a lab page
+Cypress.Commands.add('completeGame', (labid) => {
+  cy.visit(Cypress.env("CLIENT_URL") + Cypress.env(`LAB${labid}_URL`) + "/Game");
+  cy.wait(500);
+  
+  switch(labid) {
+    case 1:
+      cy.get('button').contains('Start').click();
+      cy.get('.btn-information').should('be.visible');
+      cy.get('.btn-change').should('not.be.visible');
+      
+      // We are currently letting the game run without any interaction
+      cy.contains('Continue', {timeout: 60000}).click();
+      return 
+    
+    case 2:
+      return 
+    
+    case 3:
+      return 
+    
+    case 4:
+      return 
+    
+    case 5:
+      return 
+      
+    default:
+      return
+  }
+  
+});
