@@ -226,12 +226,13 @@ Cypress.Commands.add('completeGame', (labid) => {
   switch(labid) {
     case 1:
       cy.get('button').contains('Start').click();
+      
+      // Check footer for accessibility feature visibility
       cy.get('.btn-information').should('be.visible');
       cy.get('.btn-change').should('not.be.visible');
       
-      // We are currently letting the game run without any interaction
+      // Let the game run without user interactions
       cy.contains('Continue', {timeout: 60000}).click();
-      return 
     
     case 2:
       return 
@@ -243,7 +244,117 @@ Cypress.Commands.add('completeGame', (labid) => {
       return 
     
     case 5:
-      return 
+      cy.get('button').contains('Start').click();
+      cy.get('.btn-information').should('be.visible');
+      cy.get('.btn-change').should('not.be.visible');
+      
+      // Run through game and perform necessary user interactions
+      cy.get('button').contains('Next').click();
+      cy.contains('Increased concentration').click();
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Next').click();
+      cy.contains('Stuttering while speaking').click();
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Next').click();
+      
+      cy.get('button').contains('Repair').click();
+      cy.get('.code_editor__line-background--light').find('[type=text]').each(($el, index, $list) => {
+        if (index === 0) {
+          cy.wrap($list[0]).type('h1');
+        } else if (index === 1) {
+          cy.wrap($list[1]).type('body');
+        } else if (index === 2) {
+          cy.wrap($list[2]).type('ul');
+        } else if (index === 3) {
+          cy.wrap($list[3]).type('16');
+        } else {
+          cy.wrap($list[4]).type('roboto');
+        }
+      });
+      cy.get('button').contains('Update').click();
+      
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Next').click();
+      cy.contains('Use acronyms').click();
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Notification').click();
+      cy.get('button').contains('Next').click();
+      cy.contains('None').click();
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Notification').click();
+      cy.get('button').contains('Next').click();
+      cy.contains('Know').click();
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Next').click();
+      
+      cy.get('button').contains('Repair').click();
+      cy.get('.code_editor__line-background--light').find('[type=text]').each(($el, index, $list) => {
+        if (index === 0) {
+          cy.wrap($list[0]).type('4000');
+        } 
+        if (index === 1) {
+          cy.wrap($list[1]).type('20');
+        }
+      });
+      cy.get('button').contains('Update').click();
+      
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Notification').click();
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('is').click();
+      cy.get('button').contains('Next').click();
+      
+      cy.get('.form-group').find('[type=text]').each(($el, index, $list) => {
+        if (index === 0) {
+          cy.wrap($list[0]).type('rabbit');
+        } else if (index === 1) {
+          cy.wrap($list[1]).type('february 26');
+        } else if (index === 2) {
+          cy.wrap($list[2]).type('skittles');
+        } else {
+          cy.wrap($list[3]).type('new york');
+        }
+      });
+      cy.get('input.formButtonSubmit.form-control').click();
+      cy.get('input.formButtonHelp.form-control').click();
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Next').click();
+      
+      cy.get('button').contains('Repair').click();
+      cy.get('.code_editor__line-background--light').find('[type=text]').each(($el, index, $list) => {
+        if (index === 0) {
+          cy.wrap($list[0]).type('Please enter in format: YYYY-MM-DD');
+        } else if (index === 1) {
+          cy.wrap($list[1]).type('Successful Submission');
+        } else {
+          cy.wrap($list[2]).type('red');
+        }
+      });
+      cy.get('button').contains('Update').click();
+      
+      cy.get('button').contains('Next').click();
+      cy.get('.form-group').find('[type=text]').each(($el, index, $list) => {
+        
+        if (index === 0) {
+          cy.wrap($list[0]).type('rabbit');
+        } else if (index === 1) {
+          let today = new Date();
+          let dd = String(today.getDate()).padStart(2, '0');
+          let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+          let yyyy = today.getFullYear();
+          today = yyyy + '-' + mm + '-' + dd;
+          cy.wrap($list[1]).type(today);
+        } else if (index === 2) {
+          cy.wrap($list[2]).type('skittles');
+        } else {
+          cy.wrap($list[3]).type('new york');
+        }
+      });
+      cy.get('input.formButtonSubmit.form-control').click();
+      cy.get('button').contains('Next').click();
+      cy.get('button').contains('Home').click();
+      
+      
       
     default:
       return
