@@ -1,6 +1,6 @@
 describe('User lab', () => {
   before(() => {
-    // LABX_URL -- X is the lab number you are testing
+    // LABX_URL - manually replace 'X' with the lab number you are testing
     cy.visit(Cypress.env("CLIENT_URL") + Cypress.env("LAB5_URL") + "/About");
     cy.wait(500);
   });
@@ -137,11 +137,7 @@ describe('User lab', () => {
           // should be before today
           let date = new Date();
           expect(new Date(userlab.quizcompletedtime).getTime()).to.be.lessThan(date.getTime());
-          
-          // TODO: Check quiz table for values
-          
         })
     })
   });
-  
 })

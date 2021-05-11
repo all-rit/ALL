@@ -11,9 +11,33 @@
     "Information and user interface components must be presentable to users in ways they can perceive.",
     "No"
   ],
-  "quiz2": [],
-  "quiz3": [],
-  "quiz4": [],
+  "quiz2": [
+    "A measurement of the difference between two colors when they are layered on top of each other",
+    "Dichrompia",
+    "7",
+    "Use a color contrast calculator",
+    "Light pink placed on black"
+  ],
+  "quiz3": [
+    "285 million",
+    "JAWS",
+    "Use many headings and subheadings",
+    "82%",
+    [
+      "Use an alt attribute to communicate the function of the image",
+      "Provide a brief description of the image"
+    ]
+  ],
+  "quiz4": [
+    "Loss of fine control of movement",
+    "All of the above",
+    "Ensure all functions can be accessed with the keyboard",
+    "True",
+    [
+      "Users may not be able to use the mouse or peripherals",
+      "Users may become fatigued when using the assistive technologies"
+    ]
+  ],
   "quiz5": [
     "16 million",
     "Working under time constraints",
