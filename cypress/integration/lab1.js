@@ -38,7 +38,7 @@ describe('Testing Lab 1', () => {
         cy.get('a:first').click();
         cy.wait(200);
       })
-      cy.testCompleteQuiz();
+      cy.testCompleteQuiz(1);
       
        // cross origin error here
       cy.get('i').contains('This is to certify that you have completed the course:');

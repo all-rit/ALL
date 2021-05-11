@@ -116,8 +116,32 @@ describe('User lab', () => {
     })
   })
   
-  // it('Quiz complete', () => {
+  it('Quiz complete', () => {
+    cy.window().its('store').invoke('getState').then(state => {
+      cy.testCompleteQuiz(state.main.lab);
+    });
     
-  // });
+    cy.window().its('store').invoke('getState').then(state => {
+      cy.get('button').contains('Next').should('not.be.visible')
+      cy.get('h2').contains('Quiz').should('be.visible');
+      let userid = state.main.user.userid;
+      let labid = state.main.lab;
+      cy.task('userLabComplete', {labid: labid, userid: userid})
+        .then((userlab) => {
+          // should not be null
+          expect(userlab.quizcompletedtime).to.not.be.null;
+          
+          // should be of type string 
+          expect(userlab.quizcompletedtime).to.be.a('string');
+          
+          // should be before today
+          let date = new Date();
+          expect(new Date(userlab.quizcompletedtime).getTime()).to.be.lessThan(date.getTime());
+          
+          // TODO: Check quiz table for values
+          
+        })
+    })
+  });
   
 })

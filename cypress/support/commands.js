@@ -49,7 +49,7 @@ Cypress.Commands.add('testLogin', () => {
     })
     
     // Checks if quiz certificate contains the same name as the response
-    cy.testCompleteQuiz();
+    cy.testCompleteQuiz(1);
     cy.get('i').contains(interception.response.body.firstname);
   })
 });
@@ -198,22 +198,31 @@ Cypress.Commands.add('testLabFontSizeDecrease', () => {
   cy.get('button').should('exist', 'be.visible').should('have.css', 'font-size', '19px');
 });
 
-// Completes quiz in current lab
-Cypress.Commands.add('testCompleteQuiz', () => {
+// Completes quiz in current lab with
+// 4 correct answers, 1 wrong answer to test both UI changes
+Cypress.Commands.add('testCompleteQuiz', (labid) => {
   cy.get('nav').contains('Quiz').click();
   cy.fixture("data.json").then((data) => {
-    
-    // Complete quiz with correct answers
-    for (let i in data.quiz1) {
-      cy.get('.answerOption').contains(data.quiz1[i]).click({force: true});
+    for (let i in data[`quiz${labid}`]) {
+      if (Array.isArray(data[`quiz${labid}`][i])) {
+        for (let j in data[`quiz${labid}`]) {
+          // Loops over fixture values for multiple selections
+          if (typeof data[`quiz${labid}`][i][j] === 'string') {
+            cy.get('.answerOption').contains(data[`quiz${labid}`][i][j]).click({force: true});
+          }
+        }
+      } else {
+        cy.get('.answerOption').contains(data[`quiz${labid}`][i]).click({force: true});
+      }
       
       // Proceed to next question or complete quiz
-      if (i < data.quiz1.length-1) {
+      if (i < data[`quiz${labid}`].length-1) {
         cy.get('button').contains('Next Question').click();
       } else {
         cy.get('button').contains("Complete").click();
       }
     }
+    cy.wait(500);
   });
 });
 
@@ -353,9 +362,6 @@ Cypress.Commands.add('completeGame', (labid) => {
       cy.get('input.formButtonSubmit.form-control').click();
       cy.get('button').contains('Next').click();
       cy.get('button').contains('Home').click();
-      
-      
-      
     default:
       return
   }
