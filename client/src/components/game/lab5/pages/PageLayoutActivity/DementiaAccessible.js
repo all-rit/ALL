@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import Timer from "../../components/Timer";
-import PageServiceTimer from "../../components/PageServiceTimer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
 import {time, minFont, maxFont, defaultFont} from '../../../../../constants/lab5'
 class DementiaAccessible extends Component {
     constructor(props){

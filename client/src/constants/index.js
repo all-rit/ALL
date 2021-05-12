@@ -105,3 +105,6 @@ export const Sections = {
         }
     }
 }
+//for shared component
+export const GAME_IDLE = 'GAME_IDLE';
+export const GAME_PLAYING = 'GAME_PLAYING';

@@ -1,6 +1,6 @@
 //New Implementation to increment and decrement size of UI.
 export function changeTSize(num, className = null) {
-    let elems = document.querySelectorAll(".mainBody *, .nav-link, button, .navbar-brand");
+    let elems = document.querySelectorAll(".mainBody *, .nav-link, button, .navbar-brand, .labnav");
     let fontSizeString;
     let index = 0, length = elems.length;
     for (; index < length; index++) {
@@ -51,6 +51,10 @@ export function setTextColor(picker) {
     for (let i = 0; i < elems.length; i++) {
         elems[i].style.color = picker.toString();
     }
+    document.documentElement.style.setProperty('--yellow-text', picker.toString());
+    document.documentElement.style.setProperty('--blue-text', picker.toString());
+    document.documentElement.style.setProperty('--white-text', picker.toString());
+    document.documentElement.style.setProperty('--light-blue-text', picker.toString());
 }
 
 export function setBackgroundColor(picker) {
