@@ -19,7 +19,7 @@
  * @type {Cypress.PluginConfig}
  */
 module.exports = async(on, config) => {
-  console.log(config.env.RUN_E2E);
+  console.log(config.env);
   if (config.env.RUN_E2E) {
     // `on` is used to hook into various events Cypress emits
     // `config` is the resolved Cypress config
