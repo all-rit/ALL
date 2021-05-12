@@ -1,6 +1,7 @@
 const UserLabService = require('../services/UserLabService');
 
 exports.completeAbout = (req, res) => {
+    console.log("About: ", req.session.token);
     UserLabService.completeAbout({
             labid: req.body.labid,
             usersessionid: req.session.token,
@@ -11,6 +12,7 @@ exports.completeAbout = (req, res) => {
 };
 
 exports.completeReading = (req, res) => {
+    console.log("Reading: ", req.body.token);
     UserLabService.completeReading({
         labid: req.body.labid,
         usersessionid: req.session.token,

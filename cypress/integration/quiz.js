@@ -1,7 +1,7 @@
 describe('Testing quiz and quiz results', () => {
   beforeEach(() => {
     cy.visit(Cypress.env("CLIENT_URL") + Cypress.env("LAB1_URL"));
-    cy.testCompleteQuiz();
+    cy.testCompleteQuiz(1);
   });
   
   it("tests correct quiz answers, styling, and result percentage", () => {
