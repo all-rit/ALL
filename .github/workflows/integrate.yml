@@ -26,5 +26,6 @@ jobs:
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          start: npm start --prefix client
           env: true
           spec: cypress/integration/frontendtests/*.js
