@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PageServiceTimer from "../../components/PageServiceTimer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
 import Form from "../../components/Form"
 import {navigate} from "@reach/router";
 

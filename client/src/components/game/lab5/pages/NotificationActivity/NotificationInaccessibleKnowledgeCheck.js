@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
-import PageServiceTimer from "../../components/PageServiceTimer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
 import {NotificationInaccessibleKnowledgeCheck as KnowledgeCheck} from '../../../../../constants/lab5'
 class NotificationInaccessibleKnowledgeCheck extends Component {
 

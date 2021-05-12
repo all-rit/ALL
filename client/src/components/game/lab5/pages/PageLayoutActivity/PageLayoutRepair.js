@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import RepairService from '../../../../../services/lab5/RepairService';
-import PageServiceTimer from "../../components/PageServiceTimer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
 import Popup from "../../../shared/Popup";
 import {navigate} from "@reach/router";
 import {minFont, maxFont} from '../../../../../constants/lab5'

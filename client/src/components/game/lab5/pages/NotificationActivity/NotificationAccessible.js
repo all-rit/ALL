@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import PageServiceTimer from "../../components/PageServiceTimer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
 import Notification from "../../components/Notification"
 import {AccessibleMessage} from '../../../../../constants/lab5'
 
