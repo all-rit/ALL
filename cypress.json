@@ -20,6 +20,7 @@
     "READING_URL": "/Reading",
     "GAME_URL": "/Game",
     "VIDEO_URL": "/Video",
-    "QUIZ_URL": "/Quiz"
+    "QUIZ_URL": "/Quiz",
+    "RUN_E2E": false
   }
 }
