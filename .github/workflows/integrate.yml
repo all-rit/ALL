@@ -27,4 +27,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SKIP_E2E: true
         with:
+          env: true
           spec: cypress/integration/frontendtests
