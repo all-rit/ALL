@@ -98,29 +98,33 @@ module.exports = async(on, config) => {
   };
   const db = await database();
   on('task', {
-    async userLabComplete({section, userid}) {
-      switch (section){
-        case "about":
-          return new Promise((resolve, reject) => {
-            db.Session.findOne({
-              where: {userid: userid}
-            }).then(res => {
-              db.UserLab.findOne({
-                where: {
-                  usersessionid: res.usersessionid,
-                  labid: 1
-                }
-              }).then(userlab => {
-                return resolve(userlab)
-              })
-            })
+    
+    async userLabComplete({labid, userid}) {
+      return new Promise((resolve, reject) => {
+        db.Session.findOne({
+          where: {userid: userid}
+        }).then(res => {
+          db.UserLab.findOne({
+            where: {
+              usersessionid: res.usersessionid,
+              labid: labid
+            }
+          }).then(userlab => {
+            return resolve(userlab)
           })
-        default:
-          return true
-      }
-
+        })
+      })
+    },
+    
+    async userToSession(userid) {
+      return new Promise((resolve, reject) => {
+        db.Session.findOne({
+          where: {userid: userid}
+        }).then(session => {
+          return resolve(session.usersessionid)
+        })
+      });
     }
-  }
-  );
-
+    
+  })
 }
