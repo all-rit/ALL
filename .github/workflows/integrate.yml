@@ -15,6 +15,7 @@ jobs:
       - run: npm run build --prefix client
   cypress-run:
     name: Cypress run
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
