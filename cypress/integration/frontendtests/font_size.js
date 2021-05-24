@@ -10,7 +10,7 @@ describe('Testing font size increase', () => {
 
     cy.get('button').contains('Text+').click();
     cy.get('body').find('p').should('exist', 'be.visible').should('have.css', 'font-size', '17px');
-    cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '17px');
+    cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '18px');
     cy.get('.navbar-brand').should('exist', 'be.visible').should('have.css', 'font-size', '29px');
     cy.get('button').should('exist', 'be.visible').should('have.css', 'font-size', '21px');
   });
@@ -89,7 +89,7 @@ describe('Testing font size decrease', () => {
     cy.get('button').contains('Text-').click();
     //test the home page
     cy.get('body').find('p').should('exist', 'be.visible').should('have.css', 'font-size', '15px');
-    cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '15px');
+    cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '14px');
     cy.get('.navbar-brand').should('exist', 'be.visible').should('have.css', 'font-size', '27px');
     cy.get('button').should('exist', 'be.visible').should('have.css', 'font-size', '19px');
     cy.testLabFontSizeDecrease();

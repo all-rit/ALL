@@ -186,14 +186,14 @@ Cypress.Commands.add('testChangeTextColor', () => {
 
 Cypress.Commands.add('testLabFontSizeIncrease', () => {
   // cy.get('body').find('p').should('exist', 'be.visible').should('have.css', 'font-size', '21px'); //todo uncomment this after issue is fixed
-  cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '17px');
+  cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '18px');
   cy.get('.navbar-brand').should('exist', 'be.visible').should('have.css', 'font-size', '29px');
   cy.get('button').should('exist', 'be.visible').should('have.css', 'font-size', '21px');
 });
 
 Cypress.Commands.add('testLabFontSizeDecrease', () => {
   // cy.get('body').find('p').should('exist', 'be.visible').should('have.css', 'font-size', '19px'); //todo uncomment this after issue is fixed
-  cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '15px');
+  cy.get('.nav-link').should('exist', 'be.visible').should('have.css', 'font-size', '14px');
   cy.get('.navbar-brand').should('exist', 'be.visible').should('have.css', 'font-size', '27px');
   cy.get('button').should('exist', 'be.visible').should('have.css', 'font-size', '19px');
 });
