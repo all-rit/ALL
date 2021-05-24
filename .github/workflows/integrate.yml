@@ -11,10 +11,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: npm ci --prefix client
-      - run: npm run build --prefix client
       - run: npm test --prefix client
+      - run: npm run build --prefix client
+
   cypress-run:
-    name: Cypress run
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,6 +26,7 @@ jobs:
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          build: npm run build
           start: npm start --prefix client
           env: true
           spec: cypress/integration/frontendtests/*.js
