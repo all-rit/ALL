@@ -18,7 +18,7 @@ jobs:
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          start: npm start --prefix client
+          start: npm start HOST=localhost PORT=3000 --prefix client
           runTests: npm test
           wait-on: 'http://localhost:3000'
           env: true
