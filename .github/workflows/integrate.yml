@@ -13,14 +13,14 @@ jobs:
       - run: npm ci --prefix client
       - run: npm run build --prefix client
       - name: Cypress run
-          uses: cypress-io/github-action@v2
-          env:
-            # pass GitHub token to allow accurately detecting a build vs a re-run build
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            start: npm test --prefix client
-            env: true
-            spec: cypress/integration/frontendtests/*.js
+        uses: cypress-io/github-action@v2
+        env:
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          start: npm test --prefix client
+          env: true
+          spec: cypress/integration/frontendtests/*.js
 
 #  cypress-run:
 #    runs-on: ubuntu-latest
