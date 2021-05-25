@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 // import logo from "../../assets/images/accessCycle.png";
-import logo from "../../assets/images/accessCycleHeader.png";
+//import logo from "../../assets/images/accessCycleHeader4.png";
+//import Logo from "../../assets/images/accessCycleHeader6.svg";
+import Logo from "../../assets/images/rectangleLogo.svg";
 import "../../assets/stylesheets/components/Header.scss"
 import WelcomeMessage from './helpers/WelcomeMessage';
 import {connect} from "react-redux";
@@ -53,7 +55,18 @@ const Header = (props) => {
     const {state, actions} = props;
     const [link, setLink] = useState(0)
     const listenScrollEvent = (event) => {
+        console.log(state);
         if (window.scrollY < 800) {
+            if(window.scrollY < 600){
+                // if(state.main.lab === 0){
+                    document.getElementById("navHeader").style.boxShadow = "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)";
+                    document.getElementById("navHeader").style.backgroundColor = "";
+                //}
+            } else if(window.scrollY > 600){
+               // if(state.main.lab === 0){
+                    document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
+               // }
+            }
             return setLink(0)
         } else if ( window.scrollY < 2100) {
             return setLink(1)
@@ -62,29 +75,37 @@ const Header = (props) => {
             return setLink(2)
         }
     }
-    useEffect(() => {
-        window.addEventListener('scroll', listenScrollEvent);
+    console.log(state.main);
+    useEffect((state) => {
+        console.log(state);
+        window.addEventListener('scroll', listenScrollEvent(state));
 
         return () =>
-            window.removeEventListener('scroll', listenScrollEvent);
-    }, []);
+            window.removeEventListener('scroll', listenScrollEvent(state));
+    }, [state.main]);
     let count = state.main.body;
     const loginEnabled = (state.main.lab === 0) || getGameState(state) === GAME_IDLE || state.main.body !== 2;
 
 
-    return (
-        <Navbar dark expand="lg" className="navbar labnav" style={{backgroundColor: "rgb(60,61,60)", paddingTop: "1rem"}}>
-            <div className="container">
-                    <img className="logo img-fluid"
-                         src={logo}
-                         alt="Computing Accessibility"
-                    />
 
-                    <a className="navbar-brand js-scroll-trigger" id={"all-header-text"}
-                       href="# "
-                       onClick={() => navigate(state,actions, 0, 0)}>
-                        Accessibility Learning Labs
+    return (
+        <Navbar id="navHeader"
+        dark expand="lg" className="navbar labnav" style={{boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)", paddingTop: "1rem"}}>
+            <div className="container">
+                    <a href="# " onClick={() => navigate(state,actions, 0, 0)}>
+                        <img className="logo img-fluid"
+                            src={Logo}
+                            alt="Computing Accessibility"
+                            
+                        />
+                        {/* <Logo/> */}
                     </a>
+                    {/* <a className="navbar-brand js-scroll-trigger" id={"all-header-text"}
+                       href="# "
+                       
+                       onClick={() => navigate(state,actions, 0, 0)}>
+                        ccessible Learning Labs
+                    </a> */}
 
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
@@ -96,7 +117,7 @@ const Header = (props) => {
                                 href="# "
                                 style={link === 0 ? activeStyle : {color: "#fff"}}
                                 onClick={() => navigate(state,actions, 1, 0)}>
-                                <ul className="navbar-nav text-uppercase ml-auto">
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                     <li className="nav-item">
                                         Site Map
                                     </li>
@@ -109,7 +130,7 @@ const Header = (props) => {
                                 href="# "
                                 style={{color: "#fff"}}
                                 onClick={() => navigate(state,actions, 0, 0)}>
-                                <ul className="navbar-nav text-uppercase ml-auto">
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                     <li className="nav-item nav-last">
                                         Home
                                     </li>
@@ -126,7 +147,7 @@ const Header = (props) => {
                                 class="nav-link js-scroll-trigger"
                                 href="#goals"
                                 style={link === 0 ? activeStyle : {color: "#fff"}}>
-                                <ul className="navbar-nav text-uppercase ml-auto">
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                     <li className="nav-item">
                                         Goals
                                     </li>
@@ -138,7 +159,7 @@ const Header = (props) => {
                             class="nav-link js-scroll-trigger"
                             href="#labs"
                             style={link === 1 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">
                             Labs
                             </li>
@@ -151,7 +172,7 @@ const Header = (props) => {
                             href="#contact"
                             style={link === 2 ? activeStyle : {color: "#fff"}}
                                 >
-                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item nav-last">
                             Contact
                             </li>
@@ -169,7 +190,7 @@ const Header = (props) => {
                                     onClick={() => navigate(state,actions, 0, 0)}
                                     href="# "
                                     style={{color: "#fff"}}>
-                                    <ul className="navbar-nav text-uppercase ml-auto">
+                                    <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                         <li className="nav-item">
                                             Home
                                         </li>
@@ -183,7 +204,7 @@ const Header = (props) => {
                             onClick={() => navigate(state, actions,0)}
                             href="# "
                             style={count === 0 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">
                             About
                             </li>
@@ -197,7 +218,7 @@ const Header = (props) => {
                             onClick={() => navigate(state, actions,1)}
                             href="# "
                             style={count === 1 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">
                             Reading
                             </li>
@@ -212,7 +233,7 @@ const Header = (props) => {
                             onClick={() => navigate(state, actions,2)}
                             href="# "
                             style={count === 2 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">
                             Game
                             </li>
@@ -227,7 +248,7 @@ const Header = (props) => {
                             onClick={() => navigate(state, actions,3)}
                             href="# "
                             style={count === 3 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">
                             Video
                             </li>
@@ -243,7 +264,7 @@ const Header = (props) => {
                             onClick={() => navigate(state, actions,4)}
                             href="# "
                             style={count === 4 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav text-uppercase ml-auto">
+                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item nav-last">
                             Quiz
                             </li>

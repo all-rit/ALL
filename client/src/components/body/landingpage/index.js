@@ -114,7 +114,7 @@ const Home = (props) => {
       <div class="container">
         <div class="intro-text">
           <div class="intro-lead-in">
-            Welcome to the Accessibility Learning Labs (ALL) Project!
+            Welcome to the Accessible Learning Labs (ALL) Project!
           </div>
           <div class="intro-heading text-uppercase">
             Learn about Accessibility

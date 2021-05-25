@@ -11,6 +11,8 @@
 	@media (max-width:940px) {
 		&__col{
 			display:flex;
+			min-width: 450px;
+			max-width: 480px;
 		}
 		&__image{
 			border-radius: 20px 0 0 20px;
@@ -125,12 +127,18 @@
 	.slide {
 		display: none;
 		text-align: center;
+		
+	}
+	.slide:not(:only-child){
+		animation: 12.5s autoplay linear;
 	}
 	.slide.active {
-		animation: 12.5s autoplay infinite linear;
+		//animation: 12.5s autoplay infinite linear;
+		//animation: 4s autoplay infinite linear;
 		display: block;
 	}
 }
+
 
 
 .citation{
@@ -184,6 +192,7 @@
 }
 
 header.masthead {
+	margin-top: -120px;
 	text-align: center;
 	color: white;
 	//height: auto;
@@ -250,7 +259,9 @@ header.masthead {
 a:hover {
 	color: #015f6f;
 }
-
+.nav-font{
+	font-size: 20px;
+}
 a.icon:hover {
 	background-color: #fed136 !important;
 }

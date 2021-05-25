@@ -151,7 +151,7 @@ a.icon {
 	}
 	.navbar-brand {
 		color: #fed136;
-		font-family: 'Kaushan Script',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+		font-family: 'Calibri',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
 		&:active {
 			color: #fec503;
 		}
@@ -162,12 +162,12 @@ a.icon {
 			color: #fec503;
 		}
   }
+  
   .navbar-brand.active {
 		color: #fec503;
 	}
 	.navbar-nav {
 		.nav-item {
-			font-size: 20px;
 			.nav-link {
 				font-size: 90%;
 				font-weight: 400;
@@ -696,10 +696,10 @@ header.masthead {
 	background-position: center center;
 	background-size: cover;
 	.intro-text {
-		padding-top: 150px;
-		padding-bottom: 100px;
+		// padding-top: 150px;
+		// padding-bottom: 100px;
 		.intro-lead-in {
-			font-size: 22px;
+			font-size: 25px;
 			font-style: italic;
 			line-height: 22px;
 			margin-bottom: 25px;
