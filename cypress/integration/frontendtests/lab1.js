@@ -44,5 +44,4 @@ describe('Testing Lab 1', () => {
       cy.get('i').contains('This is to certify that you have completed the course:');
     })
   })
-  
 })
