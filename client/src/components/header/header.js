@@ -152,7 +152,7 @@ const Header = (props) => {
                             style={link === 2 ? activeStyle : {color: "#fff"}}
                                 >
                             <ul className="navbar-nav text-uppercase ml-auto">
-                            <li className="nav-item nav-last">
+                            <li id="contact-button" className="nav-item nav-last">
                             Contact
                             </li>
                             </ul>
