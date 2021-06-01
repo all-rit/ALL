@@ -9,8 +9,10 @@ module.exports = (sequelize, DataTypes) => {
 				autoIncrement: true
 			},
 			firstname: { type: DataTypes.TEXT },
-			//todo add last initial
-			lastinitial: { type: DataTypes.TEXT },
+			lastinitial: { type: DataTypes.CHAR(1) },
+			isInstructor: { type: DataTypes.BOOLEAN },
+			email1: { type: DataTypes.TEXT },
+			email2: { type: DataTypes.TEXT },
 			image: { type: DataTypes.TEXT },  //todo get rid of this potentially
 		},
 		{ tableName: 'users' }

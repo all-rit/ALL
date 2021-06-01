@@ -1,28 +1,23 @@
 module.exports = (sequelize, DataTypes) => {
-    const teamMember = sequelize.define(
-        'lab',
+    const TeamMember = sequelize.define(
+        'TeamMember',
         {
-            labID: {
+            teamMemberID: {
                 type: DataTypes.INTEGER,
                 unique: true,
                 primaryKey: true,
                 autoIncrement: true
             },
-            labName: { type: DataTypes.TEXT },
-            category: { type: DataTypes.TEXT },
-            learningObjectives: { types: DataTypes.TEXT },
-            instructorOnlyInfo: { types: DataTypes.TEXT },
-            smallImageURL: { type: DataTypes.TEXT },
-            mediumImageURL: { type: DataTypes.TEXT },
-            largeImageURL: { type: DataTypes.TEXT },
-            thumbnailImageURL: { type: DataTypes.TEXT },
-            shortDescription: { type: DataTypes.TEXT },
-            fullDescription: { type: DataTypes.TEXT },
-            labURL: { type: DataTypes.TEXT },
-            labAuthors: { type: DataTypes.ARRAY(DataTypes.TEXT) }
+            firstName: { type: DataTypes.TEXT },
+            lastName: { type: DataTypes.TEXT },
+            title: { type: DataTypes.TEXT },
+            imageURL: { type: DataTypes.TEXT },
+            websiteURL: { type: DataTypes.TEXT },
+            work: { type: DataTypes.TEXT },
+            datesActive: { type: DataTypes.TEXT }
         },
-        { tableName: 'lab' }
+        { tableName: 'teamMember' }
     );
-    Lab.sync();
-    return Lab;
+    TeamMember.sync();
+    return TeamMember;
 };
