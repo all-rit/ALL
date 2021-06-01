@@ -104,6 +104,7 @@ export const stateChange = (actions, pathname) =>{
         actions.setBody(0);
         actions.setLab(0);
     }
+    
 }
 const getLabsBodies =(home = false)=>{
     let labs=[];

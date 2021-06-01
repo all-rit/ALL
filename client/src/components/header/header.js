@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 // import logo from "../../assets/images/accessCycle.png";
 //import logo from "../../assets/images/accessCycleHeader4.png";
 //import Logo from "../../assets/images/accessCycleHeader6.svg";
-import Logo from "../../assets/images/rectangleLogo.svg";
+import Logo from "../../assets/images/ALL_Logo.svg";
 import "../../assets/stylesheets/components/Header.scss"
 import WelcomeMessage from './helpers/WelcomeMessage';
 import {connect} from "react-redux";
@@ -55,38 +55,35 @@ const Header = (props) => {
     const {state, actions} = props;
     const [link, setLink] = useState(0)
     const listenScrollEvent = (event) => {
-        console.log(state);
-        if (window.scrollY < 800) {
-            if(window.scrollY < 600){
-                // if(state.main.lab === 0){
+        if(state.main.lab === 0 && state.main.body === 0){
+            if (window.scrollY < 800) {
+                console.log(window.scrollY);
+                if(window.scrollY < 640){
                     document.getElementById("navHeader").style.boxShadow = "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)";
                     document.getElementById("navHeader").style.backgroundColor = "";
-                //}
-            } else if(window.scrollY > 600){
-               // if(state.main.lab === 0){
+                } else if(window.scrollY >= 640){
                     document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
-               // }
+                }
+                return setLink(0)
+            } else if ( window.scrollY < 2100) {
+                document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
+                return setLink(1)
             }
-            return setLink(0)
-        } else if ( window.scrollY < 2100) {
-            return setLink(1)
-        }
-        else {
-            return setLink(2)
+            else {
+                document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
+                return setLink(2)
+            }
+        } else{
+            document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
         }
     }
-    console.log(state.main);
-    useEffect((state) => {
-        console.log(state);
-        window.addEventListener('scroll', listenScrollEvent(state));
-
+    useEffect(() => {
+        window.addEventListener('scroll', listenScrollEvent);
         return () =>
-            window.removeEventListener('scroll', listenScrollEvent(state));
-    }, [state.main]);
+            window.removeEventListener('scroll', listenScrollEvent);
+    }, [state]);
     let count = state.main.body;
     const loginEnabled = (state.main.lab === 0) || getGameState(state) === GAME_IDLE || state.main.body !== 2;
-
-
 
     return (
         <Navbar id="navHeader"
