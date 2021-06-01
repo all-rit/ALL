@@ -11,7 +11,7 @@ exports.main = (req, res) => {
 
 // Authenticates User through Google OAuth
 exports.authenticate = passport.authenticate('google', {
-		scope: ['profile']
+		scope: ['email', 'profile']
 	});
 
 // Callback used for Google OAuth
