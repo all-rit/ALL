@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             requestDate: { type: DataTypes.DATE },
             acceptedDate: { type: DataTypes.DATE },
         },
-        { tableName: 'studentRegistration' }
+        { tableName: 'student_registration' }
     );
     StudentRegistration.sync();
     return StudentRegistration;

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
             work: { type: DataTypes.TEXT },
             datesActive: { type: DataTypes.TEXT }
         },
-        { tableName: 'teamMember' }
+        { tableName: 'team_member' }
     );
     TeamMember.sync();
     return TeamMember;
