@@ -18,5 +18,21 @@ module.exports = (sequelize, DataTypes) => {
 		{ tableName: 'users' }
 	);
 	User.sync();
+	// User.sync({
+	// 	force: true
+	// }).then(function() {
+	// 	User.create({
+	// 		firstname: 'Samuel',
+	// 		lastinitial: 'M',
+	// 		isInstructor: true,
+	// 		email1: 'sam@yahoo.com',
+	// 	});
+	// 	User.create({
+	// 		firstname: 'Su Thit',
+	// 		lastinitial: 'T',
+	// 		isInstructor: false,
+	// 		email1: 'stthazi@yahoo.com'
+	// 	})
+	// })
 	return User;
 };

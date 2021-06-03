@@ -24,5 +24,12 @@ module.exports = (sequelize, DataTypes) => {
         { tableName: 'lab' }
     );
     Lab.sync();
+    // Lab.sync({
+    //     force: true
+    // }).then(function() {
+    //     Lab.create({
+    //
+    //     })
+    // })
     return Lab;
 };
