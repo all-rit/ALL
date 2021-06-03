@@ -16,6 +16,8 @@ exports.updateGuestUserId = (userid, usersessionid) =>{
 exports.authenticate = (data) => {
 	const userSessionID = data.id.slice(0,19);
 	const firstName = data.name.givenName;
+	const lastInitial = data.name.familyName.slice(0,1);
+	const email = data.emails[0].value;
 	let image;
 	try{
 		image = data.photos[0].value;
@@ -38,6 +40,9 @@ exports.authenticate = (data) => {
 			return db.User
 				.create({
 					firstname: firstName,
+					lastinitial: lastInitial,
+					email1: email,
+					isInstructor: false,
 					image: image
 				})
 				.then((user) => {
