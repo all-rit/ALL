@@ -26,7 +26,6 @@ exports.authenticateCallback = (req, res) => {
 			res.redirect(req.session.url);
 			}
 		)
-
 	});
 };
 

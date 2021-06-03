@@ -34,9 +34,9 @@ class Certificate extends Component {
     render() {
         // console.log(this.props);
         const {state} = this.props;
-        var today = new Date();
+        const today = new Date();
         // console.log(state.game.results);
-        var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+ today.getFullYear();
+        const date = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
         return (
             <div style={{width:"100%", height:"auto", padding:"20px", border: "10px solid #787878"}}>
                 <div style={{width:"100%", height:"auto", border: "5px solid #787878"}}>
@@ -59,9 +59,11 @@ class Certificate extends Component {
                             <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>{date}</span><br/><br/>
                             <div style={{backgroundColor: "rgb(61, 61, 61)"}} >
                             <img src={logo}
-                                alt="logo"
-                                 style={{height:"120px",
-                                     width:"500px"}}></img>
+    alt="logo"
+    style={{
+        height: "120px",
+        width: "500px"
+    }}/>
                             </div>
                 </div>
             </div>
