@@ -81,6 +81,7 @@ const Header = (props) => {
         window.addEventListener('scroll', listenScrollEvent);
         return () =>
             window.removeEventListener('scroll', listenScrollEvent);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state]);
     let count = state.main.body;
     const loginEnabled = (state.main.lab === 0) || getGameState(state) === GAME_IDLE || state.main.body !== 2;
