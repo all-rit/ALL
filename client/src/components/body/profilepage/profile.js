@@ -1,11 +1,18 @@
 import React from "react";
 
-const Profile = () => {
+const Profile = (props) => {
+    const{user} = props;
+    console.log(user);
+
     return (
         <div className="profile">
-            <p>
-                This is the profile page!
-            </p>
+            {user &&
+                <p>
+                    <br/>
+                    This is the profile page! <br/>
+                    User: {user.firstname} {user.lastinitial}.
+                </p>
+            }
         </div>
     );
 };

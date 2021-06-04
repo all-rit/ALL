@@ -76,6 +76,7 @@ class App extends Component {
     const {state,actions} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
+    console.log(state);
     initializeReactGA();
     return (
       <div>
@@ -88,7 +89,7 @@ class App extends Component {
             <Router basepath={process.env.PUBLIC_URL} className="app" >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
-              <Profile path="/Profile"/>
+              <Profile path="/Profile" user={state.main.user}/>
               <Error actions={actions} default />
               <AboutLab1 path="/Lab1/"/>
               <AboutLab2 path="/Lab2/"/>
