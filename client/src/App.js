@@ -28,6 +28,7 @@ import {default as VideoLab5} from "./components/body/lab5/video";
 import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Error} from "./components/body/landingpage/error";
+import {default as Profile} from "./components/body/profilepage/profile";
 
 import {default as Quiz} from "./components/quiz/App";
 import {stateChange} from "./helpers/Redirect";
@@ -41,7 +42,7 @@ import "./assets/stylesheets/main.scss";
 import { Router} from "@reach/router";
 import {connect} from "react-redux";
 import { globalHistory } from '@reach/router';
-var parse = require('url-parse');
+const parse = require('url-parse');
 
 const mapStateToProps = (state) => {
   return {
@@ -87,6 +88,7 @@ class App extends Component {
             <Router basepath={process.env.PUBLIC_URL} className="app" >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
+              <Profile path="/Profile"/>
               <Error actions={actions} default />
               <AboutLab1 path="/Lab1/"/>
               <AboutLab2 path="/Lab2/"/>

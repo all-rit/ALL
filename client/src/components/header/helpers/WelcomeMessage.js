@@ -30,6 +30,9 @@ const WelcomeMessage = (props) => {
 				)}
 			</DropdownToggle>
 			<DropdownMenu className= "welcome__menu"  >
+				<DropdownItem href={'/Profile'}>
+					My Profile
+				</DropdownItem>
 				<DropdownItem href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
 					Logout
 				</DropdownItem>
