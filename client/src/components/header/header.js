@@ -57,7 +57,6 @@ const Header = (props) => {
     const listenScrollEvent = (event) => {
         if(state.main.lab === 0 && state.main.body === 0){
             if (window.scrollY < 800) {
-                console.log(window.scrollY);
                 if(window.scrollY < 640){
                     document.getElementById("navHeader").style.boxShadow = "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)";
                     document.getElementById("navHeader").style.backgroundColor = "";

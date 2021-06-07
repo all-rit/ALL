@@ -184,7 +184,7 @@ const Home = (props) => {
               <h2 class="section-heading text-uppercase">Team Members</h2>
 
               <h3 class="section-subheading " >
-                Meet Our Team of Developers
+                Meet Our Team
               </h3>
             </div>
           </div>

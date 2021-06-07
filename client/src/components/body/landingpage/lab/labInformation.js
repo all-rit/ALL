@@ -22,7 +22,7 @@ var labInformation = [
         alt:"Screen Reader Activity Thumbnail",
         lab:3,
         name:"Accessibility with Screen Readers",
-        bio:"Learn more about Screen Readers.",
+        bio:"Learn more about screen readers.",
         image: braille
     },
     {
