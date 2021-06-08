@@ -82,6 +82,7 @@ function renderSlideset(){
 
 
 const Home = (props) => {
+  
   const {actions} = props;
 
   var slideshows = document.querySelectorAll('[data-component="slideshow"]');
