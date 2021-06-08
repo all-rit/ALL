@@ -1,4 +1,4 @@
-# Accessibility Lab #1: Use of Audio Cues for Deaf/HoH Users
+# Accessibility Learning Labs
 
 ## Requirements
 
@@ -12,7 +12,7 @@ Clone the repository and open the command line for the upcoming instructions.
 ### Server
 1. Navigate to the server folder.
 2. `npm install`
-3. `npm app.js`
+3. `node app.js`
 4. The server should be accessible via `http://localhost:5000`
 
 ### Client
