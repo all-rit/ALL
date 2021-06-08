@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react';
-// import logo from "../../assets/images/accessCycle.png";
-//import logo from "../../assets/images/accessCycleHeader4.png";
-//import Logo from "../../assets/images/accessCycleHeader6.svg";
-import Logo from "../../assets/images/ALL_Logo.svg";
+import Logo from "../../assets/images/ALL_Logo_Header.svg";
 import "../../assets/stylesheets/components/Header.scss"
 import WelcomeMessage from './helpers/WelcomeMessage';
 import {connect} from "react-redux";
@@ -95,7 +92,6 @@ const Header = (props) => {
                             alt="Computing Accessibility"
                             
                         />
-                        {/* <Logo/> */}
                     </a>
                     {/* <a className="navbar-brand js-scroll-trigger" id={"all-header-text"}
                        href="# "
