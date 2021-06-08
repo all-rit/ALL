@@ -41,7 +41,7 @@ class KnowledgeTest extends Component {
                 </div>
                 <div className={"options"}>
                 {Object.keys(this.state.options).map((option, index) => (
-                    <button  onClick={this.handleSelection.bind(this)}  value={option} className = {`option + ${option === this.state.currentSelection && !this.state.correct ? "incorrect": "" + option === this.state.currentSelection && this.state.correct ? "correct": ""}`} >
+                    <button  key={index} onClick={this.handleSelection.bind(this)}  value={option} className = {`option + ${option === this.state.currentSelection && !this.state.correct ? "incorrect": "" + option === this.state.currentSelection && this.state.correct ? "correct": ""}`} >
                         {option}
                     </button>
                 ))}

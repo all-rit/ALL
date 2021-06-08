@@ -1,3 +1,10 @@
+:root {
+	--yellow-text: #fed136; // this is the color that changes yellow text based on the color picker
+	--blue-text: #0144d5; // this is the color that changes blue text based on the color picker
+	--white-text: #fff; // this is the color that changes white text based on the color picker
+	--light-blue-text: #bed2fe // this is the color that changes white text based on the color picker
+}
+
 .app {
   text-align: center;
 
@@ -64,7 +71,7 @@ p {
 }
 
 a {
-	color: #fed136;
+	color: var(--yellow-text);
 	&:hover {
 		color: #fec503;
 	}
@@ -388,7 +395,7 @@ section#contact {
 	background-repeat: no-repeat;
 	background-position: center;
 	.section-heading {
-		color: #fff;
+		color: var(--white-text);
 	}
 	.form-group {
 		margin-bottom: 25px;
@@ -689,7 +696,7 @@ hr.horiz {
 }
 header.masthead {
 	text-align: center;
-	color: #fff;
+	color: var(--white-text);
 	background-image: url(../../images/header-bg.jpg);
 	background-repeat: no-repeat;
 	background-attachment: scroll;

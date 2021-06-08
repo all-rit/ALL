@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
-import PageServiceTimer from "../../components/PageServiceTimer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
 import {DementiaAccessibleKnowledgeCheck as KnowledgeCheck} from '../../../../../constants/lab5'
 class DementiaAccessibleKnowledgeCheck extends Component {
 
