@@ -120,9 +120,6 @@ const Home = (props) => {
           <div class="intro-heading text-uppercase">
             Learn about Accessibility
           </div>
-          {/* <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id={"tell-me-more-btn"} href="#goals">
-            Tell Me More
-          </a> */}
         </div>
       </div>
     </header>
