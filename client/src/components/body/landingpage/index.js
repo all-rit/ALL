@@ -198,11 +198,7 @@ const Home = (props) => {
               </div>
 	        </div>
 
-            {/* <div alt="students" id="slideset"class="landingpage__row">
-              {renderSlideset()}
-            </div> */}
 
-        {/* <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" onClick={handleFlip}>View Our Team</button> */}
       </div>
     </section>
     <hr class="horiz" />
@@ -240,7 +236,7 @@ const Home = (props) => {
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
             <h3 class="section-subheading" id={"connect-text"}>
-              Connect with us if you have questions. <br/>
+              Connect with us if you have questions. <br/><br/>
               Contact Dr. Daniel Krutz at
               <a class="landingpage__contact" href="mailto:aware@mail.rit.edu "> aware@mail.rit.edu</a>
             </h3>
