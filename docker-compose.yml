@@ -1,13 +1,31 @@
 version: "3"
 services:
-  server:
-    container_name: server
+  database:
+    container_name: database
+    image: "postgres"
     env_file:
       - ./server/.env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U all_user -d all_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  server:
+    container_name: server
+    depends_on:
+      database:
+        condition: "service_healthy"
+    env_file:
+      - ./server/.env
+    links:
+      - "database:database"
     build: ./server
     ports:
       - "8080:8080"
-      - "5432:5432"
     restart: unless-stopped
 
   client:
@@ -22,3 +40,6 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+
+volumes:
+  db-data:
