@@ -14,7 +14,7 @@ import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
 
 function initializeReactGA() {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'development') {
         const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
         ReactGA.initialize(TRACKING_ID);
         ReactGA.pageview(window.location.pathname + window.location.search);
