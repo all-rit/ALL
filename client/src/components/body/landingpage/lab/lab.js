@@ -5,26 +5,26 @@ class Lab extends Component{
     render(){
         const { alt,lab, name, bio , image,actions} = this.props;
         return(
-                <ul class="landingpage__col">
+                <ul class="module__col module__lab_col">
                     <li >
-                        <a class="portfolio-link"
+                        <a class="portfolio-link "
                             onClick={() => handleRedirect(actions,lab)}
                             href="# ">
                                 <img
-                                    class="img-fluid landingpage__image"
+                                    class="img-fluid module__image"
                                     src={image}
                                     alt={alt}
                                 />
                         </a>
                     </li>
-                    <li class="portfolio-caption ">
+                    <li class="portfolio-caption module__caption">
                         <ul>
-                            <li class="landingpage__title">
+                            <li class="module__title">
                                 <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
                             </li>
-                            <li class="landingpage__bio">
+                            <li class="module__bio">
                                 {bio}
                             </li>
                         </ul>

@@ -7,19 +7,19 @@ class Profile extends Component{
 
         return(
             
-            <ul id={name} class="citation landingpage__col">
+            <ul id={name} class="citation module__col">
                 <li id="profile_image">
                     <img 
-                    class="img-fluid landingpage__image"
+                    class="img-fluid module__image"
                     src={profile_image}
                     alt="Team Member Profile"
                     />
                 </li>
-                <li class="portfolio-caption ">
+                <li class="portfolio-caption module__caption">
                     <ul>
                         <li id={name} class="citation__name">{name}</li>
-                        <li id={title} class="landingpage__title">{title}</li>
-                        <li id="bio" class="landingpage__bio">{bio}</li>
+                        <li id={title} class="module__title">{title}</li>
+                        <li id="bio" class="module__bio">{bio}</li>
                     </ul>
                 </li>
                 
