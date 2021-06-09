@@ -65,9 +65,13 @@ const Header = (props) => {
                 document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
                 return setLink(1)
             }
-            else {
+            else if ( window.scrollY < 3500) {
                 document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
                 return setLink(2)
+            }
+            else {
+                document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
+                return setLink(3)
             }
         } else{
             document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
@@ -93,12 +97,6 @@ const Header = (props) => {
                             
                         />
                     </a>
-                    {/* <a className="navbar-brand js-scroll-trigger" id={"all-header-text"}
-                       href="# "
-                       
-                       onClick={() => navigate(state,actions, 0, 0)}>
-                        ccessible Learning Labs
-                    </a> */}
 
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
@@ -161,9 +159,21 @@ const Header = (props) => {
                             </NavItem>
                             <NavItem class="collapse navbar-collapse" >
                             <NavLink
+                                class="nav-link js-scroll-trigger"
+                                href="#citation"
+                                style={link === 2 ? activeStyle : {color: "#fff"}}>
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                    <li className="nav-item">
+                                        Team
+                                    </li>
+                                </ul>
+                            </NavLink>
+                        </NavItem>
+                            <NavItem class="collapse navbar-collapse" >
+                            <NavLink
                             class="nav-link js-scroll-trigger"
                             href="#contact"
-                            style={link === 2 ? activeStyle : {color: "#fff"}}
+                            style={link === 3 ? activeStyle : {color: "#fff"}}
                                 >
                             <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item nav-last">
