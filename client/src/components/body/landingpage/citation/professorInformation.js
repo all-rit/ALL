@@ -6,7 +6,7 @@ var professorInformation = [
         name: "Daniel Krutz",
         title: "PI",
         bio: "",
-        socials: ["http://www.se.rit.edu/~dxkvse/"]
+        socials: ["https://danielkrutz.github.io/"]
     },
     {
         profile_image: samuel_malachowsky_image,
@@ -15,13 +15,6 @@ var professorInformation = [
         bio: "",
         socials: ["http://www.se.rit.edu/~samvse/"]
     },
-    // {
-    //     profile_image: mark_sternefeld_image,
-    //     name: "Mark Sternefeld",
-    //     title: "Professor",
-    //     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    //     socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/","https://trello.com/b/JfaewHEi/accessibility-labs"]
-    // }
 ]
 
 export default professorInformation;
