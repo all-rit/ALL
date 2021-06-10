@@ -51,7 +51,13 @@ const Header = (props) => {
     const toggle = () => setIsOpen(!isOpen);
     const {state, actions} = props;
     const [link, setLink] = useState(0)
+    if(state.main.lab > 0 || !(state.main.lab === 0 && state.main.body === 0)){
+        document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
+    } 
     const listenScrollEvent = (event) => {
+        if(state.main.lab > 0 && !(state.main.lab === 0 && state.main.body === 0)){
+            document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
+        }
         if(state.main.lab === 0 && state.main.body === 0){
             if (window.scrollY < 800) {
                 if(window.scrollY < 640){
@@ -73,9 +79,7 @@ const Header = (props) => {
                 document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
                 return setLink(3)
             }
-        } else{
-            document.getElementById("navHeader").style.backgroundColor = "rgb(61 61 61)";
-        }
+        } 
     }
     useEffect(() => {
         window.addEventListener('scroll', listenScrollEvent);

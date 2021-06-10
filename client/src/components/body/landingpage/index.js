@@ -78,32 +78,40 @@ function renderSlideset(){
     )})
 }
 
+
 const Home = (props) => {
   const {actions} = props;
 
-  let slideshows = document.querySelectorAll('[data-component="slideshow"]');
-  slideshows.forEach(initSlideShow);
-  
+  let slideInterval="";
+
   function initSlideShow(slideshow) {
     let slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
-  
     let index = 0, time = 5000;
     slides[index].classList.add('active');
-  
-    setInterval( () => {
+    
+    slideInterval=setInterval( () => {
       slides[index].classList.remove('active');
-      
       index++;
       if (index === slides.length) index = 0;
   
       slides[index].classList.add('active');
   
     }, time);
-  }
+  } 
+
+  clearInterval(slideInterval);
+
+  const slideshows = document.querySelectorAll('[data-component="slideshow"]');
+  console.log(slideshows)
+  slideshows.forEach(initSlideShow);
+
+
+
 
   return (
   <div class="landingpage">
     {/* Header */}
+    {console.log("rendered")}
       <header class="masthead">
       <div class="container">
         <div class="intro-text">
