@@ -35,7 +35,6 @@ function renderProfileData(profileInformation) {
   })
 }
 
-
 function renderLabData() {
   return labInformation.map((labInfo, index) => {
     const { alt,lab, name, bio , image} = labInfo //destructuring
@@ -79,20 +78,16 @@ function renderSlideset(){
     )})
 }
 
-
-
 const Home = (props) => {
-  
   const {actions} = props;
 
-  var slideshows = document.querySelectorAll('[data-component="slideshow"]');
+  let slideshows = document.querySelectorAll('[data-component="slideshow"]');
   slideshows.forEach(initSlideShow);
   
   function initSlideShow(slideshow) {
+    let slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
   
-    var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
-  
-    var index = 0, time = 5000;
+    let index = 0, time = 5000;
     slides[index].classList.add('active');
   
     setInterval( () => {
@@ -106,8 +101,6 @@ const Home = (props) => {
     }, time);
   }
 
-
-
   return (
   <div class="landingpage">
     {/* Header */}
@@ -117,14 +110,15 @@ const Home = (props) => {
           <div class="intro-lead-in">
             Welcome to the Accessible Learning Labs (ALL) Project!
           </div>
-          <div class="intro-heading text-uppercase">
+          <div class="intro-heading text-uppercase" >
             Learn about Accessibility
           </div>
-        </div>
+          <div id="goals"/>
+        </div >
       </div>
     </header>
-    {/* Services */}
-    <section class="page-section landingpage__pagesection" id="goals">
+    {/* Goals */}
+    <section class="page-section landingpage__pagesection" >
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -155,9 +149,10 @@ const Home = (props) => {
         </div>
       </div>
     </section>
+    {/* Labs */}
+    <div id="labs"/>
     <hr class="horiz" />
-    {/* Portfolio Grid */}
-    <section class="page-section landingpage__pagesection" id="labs">
+    <section class="page-section landingpage__pagesection">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -173,10 +168,11 @@ const Home = (props) => {
         </div>
       </div>
     </section>
-     {/* Team Citation */}
+    {/* Team Citation */}
+    <div id="citation"/>
      <hr class="horiz" />
-    <section class="page-section landingpage__pagesection" id="citation">
-      <div class="container">
+    <section class="page-section landingpage__pagesection" >
+      <div class="container" >
           <div class="row">
             <div class="col-lg-12 text-center">
               <h2 class="section-heading text-uppercase">Team Members</h2>
