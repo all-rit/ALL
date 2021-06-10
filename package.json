@@ -16,5 +16,7 @@
     "url": "https://github.com/all-rit/AccessibilityLab1/issues"
   },
   "homepage": "https://github.com/all-rit/AccessibilityLab1#readme",
-  "dependencies": {}
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
 }

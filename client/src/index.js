@@ -13,8 +13,11 @@ import sagas from './sagas';
 import * as serviceWorker from './serviceWorker';
 
 import ReactGA from 'react-ga';
-const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
-ReactGA.initialize(TRACKING_ID);
+if (process.env.NODE_ENV === 'development') {
+	const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
+	ReactGA.initialize(TRACKING_ID);
+	ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
