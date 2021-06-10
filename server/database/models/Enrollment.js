@@ -15,5 +15,14 @@ module.exports = (sequelize, DataTypes) => {
         { tableName: 'enrollment' }
     );
     Enrollment.sync();
+    // Enrollment.sync({
+    //     force: true
+    // }).then(function() {
+    //     Enrollment.create({
+    //         userID: 2,
+    //         courseID: 1,
+    //         enrolledDate: Date.now()
+    //     })
+    // })
     return Enrollment;
 };

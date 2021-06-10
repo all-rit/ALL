@@ -24,5 +24,15 @@ module.exports = (sequelize, DataTypes) => {
         { tableName: 'labs' }
     );
     Labs.sync();
+    // Labs.sync({
+    //     force: true
+    // }).then(function(){
+    //     Labs.create({
+    //         labName: "Accessibility to Sound and Speech",
+    //         category: "Accessibility",
+    //         shortDescription: "Learn about designing the web for the Deaf and Hard-of-Hearing community.",
+    //         labURL: "https://all.rit.edu/Lab1/"
+    //     })
+    // })
     return Labs;
 };
