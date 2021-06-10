@@ -35,6 +35,7 @@ function renderProfileData(profileInformation) {
   })
 }
 
+
 function renderLabData() {
   return labInformation.map((labInfo, index) => {
     const { alt,lab, name, bio , image} = labInfo //destructuring
@@ -79,14 +80,30 @@ function renderSlideset(){
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 88f2137... nav link changes
 const Home = (props) => {
+  
   const {actions} = props;
 
+<<<<<<< HEAD
   let slideInterval="";
 
   function initSlideShow(slideshow) {
     let slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
     let index = 0, time = 5000;
+=======
+  var slideshows = document.querySelectorAll('[data-component="slideshow"]');
+  slideshows.forEach(initSlideShow);
+  
+  function initSlideShow(slideshow) {
+  
+    var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
+  
+    var index = 0, time = 5000;
+>>>>>>> parent of 88f2137... nav link changes
     slides[index].classList.add('active');
     
     slideInterval=setInterval( () => {
@@ -108,6 +125,8 @@ const Home = (props) => {
 
 
 
+
+
   return (
   <div class="landingpage">
     {/* Header */}
@@ -118,15 +137,14 @@ const Home = (props) => {
           <div class="intro-lead-in">
             Welcome to the Accessible Learning Labs (ALL) Project!
           </div>
-          <div class="intro-heading text-uppercase" >
+          <div class="intro-heading text-uppercase">
             Learn about Accessibility
           </div>
-          <div id="goals"/>
-        </div >
+        </div>
       </div>
     </header>
-    {/* Goals */}
-    <section class="page-section landingpage__pagesection" >
+    {/* Services */}
+    <section class="page-section landingpage__pagesection" id="goals">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -157,10 +175,9 @@ const Home = (props) => {
         </div>
       </div>
     </section>
-    {/* Labs */}
-    <div id="labs"/>
     <hr class="horiz" />
-    <section class="page-section landingpage__pagesection">
+    {/* Portfolio Grid */}
+    <section class="page-section landingpage__pagesection" id="labs">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -176,11 +193,10 @@ const Home = (props) => {
         </div>
       </div>
     </section>
-    {/* Team Citation */}
-    <div id="citation"/>
+     {/* Team Citation */}
      <hr class="horiz" />
-    <section class="page-section landingpage__pagesection" >
-      <div class="container" >
+    <section class="page-section landingpage__pagesection" id="citation">
+      <div class="container">
           <div class="row">
             <div class="col-lg-12 text-center">
               <h2 class="section-heading text-uppercase">Team Members</h2>
