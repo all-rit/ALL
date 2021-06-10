@@ -80,33 +80,18 @@ function renderSlideset(){
 }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 88f2137... nav link changes
 const Home = (props) => {
   
   const {actions} = props;
 
-<<<<<<< HEAD
-  let slideInterval="";
-
-  function initSlideShow(slideshow) {
-    let slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
-    let index = 0, time = 5000;
-=======
-  var slideshows = document.querySelectorAll('[data-component="slideshow"]');
-  slideshows.forEach(initSlideShow);
-  
   function initSlideShow(slideshow) {
   
     var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
   
     var index = 0, time = 5000;
->>>>>>> parent of 88f2137... nav link changes
     slides[index].classList.add('active');
     
-    slideInterval=setInterval( () => {
+    setInterval( () => {
       slides[index].classList.remove('active');
       index++;
       if (index === slides.length) index = 0;
@@ -116,21 +101,13 @@ const Home = (props) => {
     }, time);
   } 
 
-  clearInterval(slideInterval);
-
   const slideshows = document.querySelectorAll('[data-component="slideshow"]');
-  console.log(slideshows)
   slideshows.forEach(initSlideShow);
-
-
-
-
 
 
   return (
   <div class="landingpage">
     {/* Header */}
-    {console.log("rendered")}
       <header class="masthead">
       <div class="container">
         <div class="intro-text">
