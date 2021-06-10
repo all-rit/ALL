@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-    const Course = sequelize.define(
-        'Course',
+    const Courses = sequelize.define(
+        'Courses',
         {
-            courseID: {
+            id: {
                 type: DataTypes.INTEGER,
                 unique: true,
                 primaryKey: true,
@@ -11,22 +11,22 @@ module.exports = (sequelize, DataTypes) => {
             instructorUserID: { type: DataTypes.INTEGER },
             courseName: { type: DataTypes.TEXT },
             createdDate: { type: DataTypes.DATE },
-            assignedLabs: {type: DataTypes.ARRAY(DataTypes.INTEGER) },
-            isActive: { type: DataTypes.BOOLEAN }
+            isActive: { type: DataTypes.BOOLEAN },
+            code: { type: DataTypes.TEXT }
         },
-        { tableName: 'course' }
+        { tableName: 'courses' }
     );
-    Course.sync();
-    // Course.sync({
+    Courses.sync();
+    // Courses.sync({
     //     force: true
     // }).then(function() {
-    //     Course.create({
+    //     Courses.create({
     //         instructorUserID: 1,
     //         courseName: 'SWEN 256 Fall 2021',
-    //         createDate: Date.now(),
-    //         assignedLabs: [1],
-    //         isActive: true
+    //         createdDate: Date.now(),
+    //         isActive: true,
+    //         code: "123456"
     //     })
     // })
-    return Course;
+    return Courses;
 };

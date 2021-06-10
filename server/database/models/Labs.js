@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-    const Lab = sequelize.define(
-        'Lab',
+    const Labs = sequelize.define(
+        'Labs',
         {
-            labID: {
+            id: {
                 type: DataTypes.INTEGER,
                 unique: true,
                 primaryKey: true,
@@ -19,17 +19,10 @@ module.exports = (sequelize, DataTypes) => {
             shortDescription: { type: DataTypes.TEXT },
             fullDescription: { type: DataTypes.TEXT },
             labURL: { type: DataTypes.TEXT },
-            labAuthors: { type: DataTypes.ARRAY(DataTypes.TEXT) }
+            copyrightAttributes: { type: DataTypes.TEXT }
         },
-        { tableName: 'lab' }
+        { tableName: 'labs' }
     );
-    Lab.sync();
-    // Lab.sync({
-    //     force: true
-    // }).then(function() {
-    //     Lab.create({
-    //
-    //     })
-    // })
-    return Lab;
+    Labs.sync();
+    return Labs;
 };

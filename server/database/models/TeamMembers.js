@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-    const TeamMember = sequelize.define(
-        'TeamMember',
+    const TeamMembers = sequelize.define(
+        'TeamMembers',
         {
-            teamMemberID: {
+            id: {
                 type: DataTypes.INTEGER,
                 unique: true,
                 primaryKey: true,
@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
             work: { type: DataTypes.TEXT },
             datesActive: { type: DataTypes.TEXT }
         },
-        { tableName: 'team_member' }
+        { tableName: 'team_members' }
     );
-    TeamMember.sync();
-    return TeamMember;
+    TeamMembers.sync();
+    return TeamMembers;
 };

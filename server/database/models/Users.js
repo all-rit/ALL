@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-	const User = sequelize.define(
-		'User',
+	const Users = sequelize.define(
+		'Users',
 		{
 			userid: {
 				type: DataTypes.INTEGER,
@@ -16,20 +16,20 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{ tableName: 'users' }
 	);
-	User.sync();
-	// User.sync({
+	Users.sync();
+	// Users.sync({
 	// 	force: true
 	// }).then(function() {
-	// 	User.create({
+	// 	Users.create({
 	// 		firstname: 'Samuel',
 	// 		lastinitial: 'M',
 	// 		email1: 'sam@yahoo.com',
 	// 	});
-	// 	User.create({
+	// 	Users.create({
 	// 		firstname: 'Su Thit',
 	// 		lastinitial: 'T',
 	// 		email1: 'stthazi@yahoo.com'
 	// 	})
 	// })
-	return User;
+	return Users;
 };
