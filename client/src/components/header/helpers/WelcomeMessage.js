@@ -13,21 +13,12 @@ const WelcomeMessage = (props) => {
 			return <LoginButton enabled={loginEnabled} />;
 	}
 	const initial = user.firstname.charAt(0).toUpperCase();
-	const imageUrl = user.image; 
 	return (
 		<Dropdown isOpen={dropdownOpen} toggle={toggle} className="welcome" disabled={!loginEnabled}>
-			<DropdownToggle
-				className="welcome__toggle"
-			>
-				{imageUrl === "" || imageUrl === null ? (
-					<Button className="welcome__name" disabled={!loginEnabled}>
-						{initial}
-					</Button>
-				) : (
-					<Button className="welcome__name" style={{"padding": "0", "overflow": "hidden"}} disabled={!loginEnabled}>
-						<img src={ imageUrl } alt="Profile" />
-					</Button>
-				)}
+			<DropdownToggle className="welcome__toggle">
+				<Button className="welcome__name" disabled={!loginEnabled}>
+					{initial}
+				</Button>
 			</DropdownToggle>
 			<DropdownMenu className= "welcome__menu"  >
 				<DropdownItem href={'/Profile'}>

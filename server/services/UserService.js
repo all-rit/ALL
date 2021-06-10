@@ -18,13 +18,6 @@ exports.authenticate = (data) => {
 	const firstName = data.name.givenName;
 	const lastInitial = data.name.familyName.slice(0,1);
 	const email = data.emails[0].value;
-	let image;
-	try{
-		image = data.photos[0].value;
-	}
-	catch{
-		image= "";
-	}
 	return db.Session
 		.findByPk(userSessionID)
 		.then((session) => {
@@ -32,18 +25,15 @@ exports.authenticate = (data) => {
 			if (session === null) {
 				throw new Error('Session do not exist in the database');
 			}
-
 			return session;
 		})
 		.catch(() => {
 			// Create a new account
-			return db.User
+			return db.Users
 				.create({
 					firstname: firstName,
 					lastinitial: lastInitial,
 					email1: email,
-					isInstructor: false,
-					image: image
 				})
 				.then((user) => {
 					// Create a new session
@@ -62,7 +52,7 @@ exports.authenticate = (data) => {
 exports.getSession = (token) => {
 	// If the token doesn't exist, it's a guest, so create a new account!
 	if (!token) {
-		return db.User
+		return db.Users
 			.create({})
 			.then((user) => {
 				return db.Session
@@ -79,7 +69,7 @@ exports.getSession = (token) => {
 	return db.Session
 		.findByPk(token)
 		.then((session) => {
-			return db.User.findByPk(session.userid).then((user) => {
+			return db.Users.findByPk(session.userid).then((user) => {
 				return { user, token };
 			});
 		})

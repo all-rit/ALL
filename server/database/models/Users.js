@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
 			lastinitial: { type: DataTypes.CHAR(1) },
 			email1: { type: DataTypes.TEXT },
 			email2: { type: DataTypes.TEXT },
-			image: { type: DataTypes.TEXT },  //todo get rid of this potentially
 		},
 		{ tableName: 'users' }
 	);
@@ -23,12 +22,13 @@ module.exports = (sequelize, DataTypes) => {
 	// 	Users.create({
 	// 		firstname: 'Samuel',
 	// 		lastinitial: 'M',
-	// 		email1: 'sam@yahoo.com',
+	// 		email1: 'sam@test.com',
 	// 	});
 	// 	Users.create({
 	// 		firstname: 'Su Thit',
 	// 		lastinitial: 'T',
-	// 		email1: 'stthazi@yahoo.com'
+	// 		email1: 'stthazi@mock.com',
+	// 		email2: 'stthazi2@test.com'
 	// 	})
 	// })
 	return Users;
