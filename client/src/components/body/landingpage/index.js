@@ -40,7 +40,6 @@ function renderLabData() {
   return labInformation.map((labInfo, index) => {
     const { alt,lab, name, bio , image} = labInfo //destructuring
       return (
-              
               <Lab 
                   key={index}
                   alt= {alt} 
@@ -62,8 +61,7 @@ function renderSlideset(){
     profile_row.push(profiles[i]);
     if(profile_row.length ===3){
       rows.push(profile_row);
-      let temp=[];
-      profile_row=temp;
+      profile_row=[];
     } 
   }
   if(profile_row.length!==0){
@@ -82,9 +80,9 @@ function renderSlideset(){
 let slideshowInterval='';
 
 function initSlideShow(slideshow) {
-  var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
-  var index = 0, time = 5000;
-  if(slideshowInterval===''){
+    const slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
+    let index = 0, time = 5000;
+    if(slideshowInterval===''){
       slides[index].classList.add('active');
       slideshowInterval=setInterval( () => {
       slides[index].classList.remove('active');
@@ -178,7 +176,7 @@ const Home = (props) => {
                 <h2 class="section-heading text-uppercase">Team Members</h2>
   
                 <h3 class="section-subheading " >
-                  Meet our team
+                  Meet our team.
                 </h3>
               </div>
             </div>
@@ -193,8 +191,6 @@ const Home = (props) => {
                   {renderSlideset()}
                 </div>
             </div>
-  
-  
         </div>
       </section>
       <hr class="horiz" />

@@ -36,7 +36,7 @@ var labInformation = [
         alt:"Cognitive Accessibility Thumbnail",
         lab:5,
         name:"Accessibility to Cognitive Impairments",
-        bio:"Learn more about designing the web for cognitively impaired users.",
+        bio:"Learn more about designing the web for users with cognitive impairments.",
         image: cognitive
     },
 ]
