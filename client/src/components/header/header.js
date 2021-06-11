@@ -106,7 +106,7 @@ const Header = (props) => {
                 <Collapse isOpen={isOpen} navbar>
                 {state.main.lab === 0 && state.main.body === 1 ?
                     <Nav className="ml-auto" navbar>
-                        <NavItem class="collapse navbar-collapse" >
+                        <NavItem class="collapse navbar-collapse" >       
                             <NavLink
                                 class="nav-link js-scroll-trigger"
                                 href="# "
