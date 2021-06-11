@@ -32,7 +32,31 @@ module.exports = (sequelize, DataTypes) => {
     //         category: "Accessibility",
     //         shortDescription: "Learn about designing the web for the Deaf and Hard-of-Hearing community.",
     //         labURL: "https://all.rit.edu/Lab1/"
-    //     })
+    //     });
+    //     Labs.create({
+    //         labName: "Accessibility to Color Blindness",
+    //         category: "Accessibility",
+    //         shortDescription: "Learn more about designing the web for color blind individuals.",
+    //         labURL: "https://all.rit.edu/Lab2/"
+    //     });
+    //     Labs.create({
+    //         labName: "Accessibility with Screen Readers",
+    //         category: "Accessibility",
+    //         shortDescription: "Learn more about screen readers.",
+    //         labURL: "https://all.rit.edu/Lab3/"
+    //     });
+    //     Labs.create({
+    //         labName: "Accessibility to Dexterity",
+    //         category: "Accessibility",
+    //         shortDescription: "Learn more about designing the web for individuals with motor and dexterity impairments.",
+    //         labURL: "https://all.rit.edu/Lab4/"
+    //     });
+    //     Labs.create({
+    //         labName: "Accessibility to Cognitive Impairments",
+    //         category: "Accessibility",
+    //         shortDescription: "Learn more about designing the web for users with cognitive impairments.",
+    //         labURL: "https://all.rit.edu/Lab5/"
+    //     });
     // })
     return Labs;
 };

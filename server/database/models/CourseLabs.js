@@ -13,14 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         { tableName: 'course_labs' }
     );
-    // CourseLabs.sync();
-    CourseLabs.sync({
-        force: true
-    }).then(function() {
-        CourseLabs.create({
-            courseID: 1,
-            labID: 1
-        })
-    })
+    CourseLabs.sync();
+    // CourseLabs.sync({
+    //     force: true
+    // }).then(function() {
+    //     CourseLabs.create({
+    //         courseID: 1,
+    //         labID: 1
+    //     })
+    // })
     return CourseLabs;
 };
