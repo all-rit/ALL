@@ -62,7 +62,7 @@ function initializeReactGA() {
         ReactGA.pageview(window.location.pathname + window.location.search);
     }
     else if (process.env.NODE_ENV === 'development') {
-        console.log("Environment is in development, do nothing")
+        console.log("Google Analytics cannot be implemented in development mode")
     }
 }
 
