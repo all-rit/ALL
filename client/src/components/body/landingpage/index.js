@@ -69,7 +69,7 @@ function renderSlideset(){
   }
   return rows.map((rows,index)=>{
     return(
-      <div key={index} alt="students" class="slide">
+      <div key={index} alt="students" class="slide active">
           <div key={index} alt="students" class="landingpage__row">
             {rows}
           </div>
@@ -83,12 +83,15 @@ function initSlideShow(slideshow) {
     const slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
     let index = 0, time = 5000;
     if(slideshowInterval===''){
+      slides.forEach((slide)=>{
+        slide.classList.remove('active');
+      })
       slides[index].classList.add('active');
       slideshowInterval=setInterval( () => {
-      slides[index].classList.remove('active');
-      index++;
-      if (index === slides.length) index = 0;
-      slides[index].classList.add('active');
+        slides[index].classList.remove('active');
+        index++;
+        if (index === slides.length) index = 0;
+        slides[index].classList.add('active');
     }, time);
   }
 } 
