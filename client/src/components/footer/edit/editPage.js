@@ -61,6 +61,5 @@ export function setBackgroundColor(picker) {
     const elems = document.querySelectorAll('body, .quiz, .result');
     for (let i = 0; i < elems.length; i++) {
         elems[i].style.backgroundColor = picker.toString();
-
     }
 }
