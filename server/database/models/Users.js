@@ -10,8 +10,20 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			firstname: { type: DataTypes.TEXT },
 			lastinitial: { type: DataTypes.CHAR(1) },
-			email1: { type: DataTypes.TEXT },
-			email2: { type: DataTypes.TEXT },
+			email1: {
+				type: DataTypes.TEXT,
+				unique: {
+					args: true,
+					msg: "Email is not unique!"
+				}
+			},
+			email2: {
+				type: DataTypes.TEXT,
+				unique: {
+					args: true,
+					msg: "Email is not unique!"
+				}
+			},
 		},
 		{ tableName: 'users' }
 	);
