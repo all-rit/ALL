@@ -23,17 +23,17 @@ module.exports = (sequelize, DataTypes) => {
         },
         { tableName: 'courses' }
     );
-    Courses.sync();
-    // Courses.sync({
-    //     force: false
-    // }).then(function() {
-    //     Courses.create({
-    //         instructorUserID: 1,
-    //         courseName: 'SWEN 256 Fall 2021',
-    //         createdDate: Date.now(),
-    //         isActive: true,
-    //         code: nanoid(6)
-    //     })
-    // })
-    // return Courses;
+    // Courses.sync();
+    Courses.sync({
+        force: false
+    }).then(function() {
+        Courses.create({
+            instructorUserID: 1,
+            courseName: 'SWEN 256 Fall 2021',
+            createdDate: Date.now(),
+            isActive: true,
+            code: nanoid(6).toUpperCase()
+        })
+    })
+    return Courses;
 };
