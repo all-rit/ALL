@@ -1,4 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
+    const {nanoid} = require("nanoid");
     const Courses = sequelize.define(
         'Courses',
         {
@@ -12,21 +13,27 @@ module.exports = (sequelize, DataTypes) => {
             courseName: { type: DataTypes.TEXT },
             createdDate: { type: DataTypes.DATE },
             isActive: { type: DataTypes.BOOLEAN },
-            code: { type: DataTypes.TEXT }
+            code: {
+                type: DataTypes.TEXT,
+                unique: {
+                    args: true,
+                    msg: "Class code is not unique!"
+                }
+            }
         },
         { tableName: 'courses' }
     );
     Courses.sync();
     // Courses.sync({
-    //     force: true
+    //     force: false
     // }).then(function() {
     //     Courses.create({
     //         instructorUserID: 1,
     //         courseName: 'SWEN 256 Fall 2021',
     //         createdDate: Date.now(),
     //         isActive: true,
-    //         code: "123456"
+    //         code: nanoid(6)
     //     })
     // })
-    return Courses;
+    // return Courses;
 };

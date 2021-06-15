@@ -18,6 +18,7 @@
     "express": "latest",
     "express-session": "latest",
     "knex": "latest",
+    "nanoid": "^3.1.23",
     "passport": "latest",
     "passport-google-oauth20": "latest",
     "pg": "latest",
