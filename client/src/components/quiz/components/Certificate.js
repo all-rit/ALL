@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {actions as appActions} from '../../../reducers/lab1/AppReducer';
 import {bindActionCreators} from 'redux';
-import logo from "../../../assets/images/accessCycle.png";
+import logo from "../../../assets/images/ALL_Logo_Header.svg";
 import {Sections} from "../../../constants/index";
 
 const mapStateToProps = (state) => {
