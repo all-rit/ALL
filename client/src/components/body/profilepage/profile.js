@@ -1,18 +1,12 @@
 import React from "react";
+import ProfileHeader from "./profileHeader";
 
 const Profile = (props) => {
-    const{user} = props;
-    console.log(user);
 
     return (
         <div className="profile">
-            {user &&
-                <p>
-                    <br/>
-                    This is the profile page! <br/>
-                    User: {user.firstname} {user.lastinitial}.
-                </p>
-            }
+            <h3>This is the profile page!</h3>
+            <ProfileHeader user={props}/>
         </div>
     );
 };
