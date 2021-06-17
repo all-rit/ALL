@@ -82,7 +82,7 @@ class App extends Component {
     const {state,actions} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
-    console.log(state);
+    console.log(state); //todo delete
     initializeReactGA();
     return (
       <div>

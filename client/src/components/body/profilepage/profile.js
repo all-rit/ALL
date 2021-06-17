@@ -5,8 +5,12 @@ const Profile = (props) => {
 
     return (
         <div className="profile container">
-            <h3>This is the profile page!</h3>
-            <ProfileHeader user={props}/>
+            {props.user?.firstname !== null
+                ? <ProfileHeader user={props}/>
+                : <p>You are currently not logged in.</p>
+
+            }
+
         </div>
     );
 };

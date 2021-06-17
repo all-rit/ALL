@@ -12,12 +12,10 @@ const ProfileHeader = (props) => {
                     <div className="profileHeader__logo">
                         {user.firstname.charAt(0).toUpperCase()}
                     </div>
-                    <div>
-                        User: {user.firstname} {user.lastinitial}.<br/>
-                        Email: {user.email1}
-                    </div>
+                    <h3>
+                        {user.firstname} {user.lastinitial}.<br/>
+                    </h3>
                 </div>
-
             }
         </div>
     );
