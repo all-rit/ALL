@@ -6,9 +6,9 @@ const ProfileHeader = (props) => {
     console.log(user);
 
     return (
-        <div className="profileHeader">
+        <div >
             {user &&
-                <div>
+                <div className="profileHeader">
                     <div className="profileHeader__logo">
                         {user.firstname.charAt(0).toUpperCase()}
                     </div>
