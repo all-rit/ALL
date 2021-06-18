@@ -1,6 +1,6 @@
 # Accessibility Learning Labs
 
-The website for all of the accessibility labs can be found [here](http://all.rit.edu)
+The website for all of the accessibility labs can be found [here](http://all.rit.edu).
 
 ## Requirements
 
