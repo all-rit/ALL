@@ -1,20 +1,21 @@
 # Accessibility Learning Labs
 
+The website for all of the accessibility labs can be found [here](http://all.rit.edu)}
+
 ## Requirements
 
 - [Docker ~= 20.10.7](https://docs.docker.com/engine/install/)
-NOTE - If you install Docker Desktop on MacOS or on Windows, docker-compose comes packaged with it! There is no need to install separately
 - [Docker-Compose ~= 1.29.2](https://docs.docker.com/compose/install/)
-
+NOTE - If you install Docker Desktop on MacOS or on Windows, docker-compose comes packaged with it! There is no need to install separately.
 
 ## Setup
 
-0. Ensure you've installed Docker and Docker Compose
+0. Ensure you've installed [Docker and Docker Compose](#requirements)
 1. Clone the repository and open the folder
 2. Docker Compose as well as the server, is expecting a file located in the `/server` folder called `.env`. It should contain the following information:
 ```
 # Database stuff:
-DB_HOST=database # Docker Compose automatically handles DNS between containers
+DB_HOST=database
 POSTGRES_USER=(Your Postgres user's name)
 POSTGRES_PASSWORD=(Your postgres user's password)
 POSTGRES_DB=all_db
@@ -25,7 +26,7 @@ GOOGLE_SECRET=(Your Google Secret)
 GOOGLE_CALLBACK_URL=(Your Google Callback URI)
 
 # Client stuff
-CLIENT_URL=http://client # Docker compose at it again with the automatic DNS handling
+CLIENT_URL=http://client
 KEY=(Your client session secret)
 ```
 3. The client is also expecting a .env file. Create a file called `.env` in the `/client` folder containing the following information:
@@ -44,9 +45,8 @@ REACT_APP_GA_TRACKING_ID=(Your Google Analytics tracking ID)
 4. The client will open by itself.
 
 ## Part of The National Science Foundation's Grant for Developing Experiential Laboratories for Computing Accessibility Education. Grant #1825023
-Information for this grant can be found [here](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023&HistoricalAwards=false)
 
-## The website for all of the accessibility labs can be found [here](http://all.rit.edu)
+Information for this grant can be found [here](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023&HistoricalAwards=false).
 
 ## Contributing
 Please make a fork of the repository and submit a pull request to make changes to our system. Pull requests will need to be approved before the changes can be accepted by a member of the organization.
