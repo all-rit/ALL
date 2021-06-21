@@ -2,9 +2,17 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   margin: 20px;
   padding: 15px;
+  
+  &__userInfo{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
   &__logo{
     align-self: flex-start;
     border-radius: 50%;
@@ -21,5 +29,27 @@
     font-weight: bold;
     border: 1px solid #0144d5;
   }
+}
 
+.progressBar{
+  max-width: 450px;
+  min-width: 450px;
+  li {
+    display: inline;
+    float: left;
+  }
+  &__completed{
+    background-color: lightgreen;
+  }
+  &__notCompleted{
+    background-color: lightslategrey;
+  }
+  &__bar {
+    display:block;
+    padding: 10px;
+    max-width: 20%;
+    min-width: 20%;
+    border: 1px solid darkgreen;
+    margin-right: 5px;
+  }
 }

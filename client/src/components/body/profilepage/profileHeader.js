@@ -1,5 +1,5 @@
 import React from "react";
-
+import ProgressBar from "./progressBar";
 const ProfileHeader = (props) => {
     const{user} = props.user;
     // const initial = user.firstname.charAt(0).toUpperCase();
@@ -8,14 +8,23 @@ const ProfileHeader = (props) => {
     return (
         <div >
             {user &&
-                <div className="profileHeader">
-                    <div className="profileHeader__logo">
-                        {user.firstname.charAt(0).toUpperCase()}
-                    </div>
-                    <h3>
-                        {user.firstname} {user.lastinitial}.<br/>
-                    </h3>
-                </div>
+                <ul className="profileHeader">
+                        <ul className="profileHeader__userInfo">
+                            <li className="profileHeader__logo">
+                                {user.firstname.charAt(0).toUpperCase()}
+                            </li>
+                            <li>
+                                <h3>
+                                    {user.firstname} {user.lastinitial}.<br/>
+                                </h3>
+                            </li>
+                        </ul>
+                        <li>
+                            <ProgressBar
+                                barData={[true,true,false,true]}
+                            />
+                        </li>
+                </ul>
             }
         </div>
     );
