@@ -1,8 +1,8 @@
 import React from "react";
 import ProgressBar from "./progressBar";
+
 const ProfileHeader = (props) => {
     const{user} = props.user;
-    // const initial = user.firstname.charAt(0).toUpperCase();
     console.log(user);
 
     return (

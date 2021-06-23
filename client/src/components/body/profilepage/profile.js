@@ -1,6 +1,26 @@
 import React from "react";
 import ProfileHeader from "./profileHeader";
 import ProgressBar from "./progressBar";
+import labInformation from "../landingpage/lab/labInformation";
+import Lab from "../landingpage/lab/lab";
+import {actions} from "../../../reducers/MainReducer";
+
+function renderLabData() {
+    return labInformation.map((labInfo, index) => {
+        const { alt,lab, name, bio , image} = labInfo //destructuring
+        return (
+            <Lab
+                key={index}
+                alt= {alt}
+                lab={lab}
+                name= {name}
+                bio={bio}
+                image= {image}
+                actions={actions}
+            />
+        );
+    })
+}
 const Profile = (props) => {
 
     return (
@@ -10,10 +30,33 @@ const Profile = (props) => {
                 : <p>You are currently not logged in.</p>
 
             }
-            <h1>TEST</h1>
             <ProgressBar
                 barData={[true,true,false,true]}
             />
+            <br/>
+            <h4>My Enrolled Classes</h4>
+            <div className="enrolled-classes">
+                <p>Classes the user is enrolled in</p>
+            </div>
+
+            <h4>In Progress Modules</h4>
+            <br/>
+            <div className="landingpage__row">
+                {renderLabData()}
+            </div>
+
+            <h4>To-do Modules</h4>
+            <br/>
+            <div className="landingpage__row">
+                {renderLabData()}
+            </div>
+
+            <h4>Completed Modules</h4>
+            <br/>
+            <div className="landingpage__row">
+                {renderLabData()}
+            </div>
+
         </div>
         
     );
