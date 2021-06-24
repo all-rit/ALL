@@ -1,4 +1,4 @@
-var quizQuestionsLab5 = [
+const quizQuestionsLab5 = [
     {
         question: "How many people in the US have cognitive impairments?",
         answers: [
