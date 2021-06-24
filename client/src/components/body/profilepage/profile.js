@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileHeader from "./profileHeader";
-import ProgressBar from "./progressBar";
+//import ProgressBar from "./progressBar";
 const Profile = (props) => {
 
     return (
@@ -10,10 +10,6 @@ const Profile = (props) => {
                 : <p>You are currently not logged in.</p>
 
             }
-            <h1>TEST</h1>
-            <ProgressBar
-                barData={[true,true,false,true]}
-            />
         </div>
         
     );

@@ -21,7 +21,10 @@ const ProfileHeader = (props) => {
                         </ul>
                         <li>
                             <ProgressBar
-                                barData={[true,true,false,true]}
+                                barData={[true,true,false,true,false]}
+                                total={5}
+                                completed={3}
+                                percentage={true}
                             />
                         </li>
                 </ul>
