@@ -18,7 +18,7 @@ class NotificationAccessibleRepair extends Component {
 
                 <div>
                     <div className= "cognitive_instructions">
-                    There is a notification that has appeared. Click on it to view it! Note it can only be viewed once
+                    There is a notification that has appeared. Click on it to view it! Note: it can only be viewed once.
                     </div>
                     <Notification message={AccessibleRepairMessage} fontSize={state.repair5.fontsizevalue} timeout={state.repair5.timeout}/>
                     <div className='flex float-right'>

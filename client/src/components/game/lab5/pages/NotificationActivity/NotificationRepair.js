@@ -207,7 +207,7 @@ class NotificationRepair extends Component {
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="code_editor__line--white">There is a notification that has appeared. Click on it to view it! Note it can only be viewed once</span>
+								<span className="code_editor__line--white">There is a notification that has appeared. Click on it to view it! Note: it can only be viewed once.</span>
 							</div>
 							<div className="code_editor__line">
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
