@@ -4,7 +4,7 @@ export const LAB_ID = 5;
 export const DyslexiaAccessibleKnowledgeCheck={
     Question: "What is one of the symptoms of dyslexia?",
     Options:{
-        "Text becoming blury" : 0,
+        "Text becoming blurry" : 0,
         "Increased concentration" : 0,
         "Difficulty remembering information" : 1,
         "Heightened awareness of surroundings" : 0
@@ -15,7 +15,7 @@ export const DementiaInaccessibleKnowledgeCheck={
     Question: "What is a symptom of a person with Dementia?",
     Options:{
         "Having trouble breathing": 0,
-        "Having an enlarged vescular membrane": 0,
+        "Having an enlarged vascular membrane": 0,
         "Stuttering while speaking": 0,
         "Having trouble working within time limit": 1,
     }
