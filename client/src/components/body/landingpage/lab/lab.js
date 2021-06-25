@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import handleRedirect from "../../../../helpers/Redirect";
-
+import ProgressBar from '../../profilepage/progressBar';
 class Lab extends Component{
     render(){
         const { alt,lab, name, bio , image,actions} = this.props;
@@ -26,6 +26,14 @@ class Lab extends Component{
                             </li>
                             <li class="module__bio">
                                 {bio}
+                            </li>
+                            <li>
+                                <ProgressBar
+                                    barData={[true,true,false,true,true]}
+                                    total={5}
+                                    completed={4}
+                                    percentage={true}
+                                />
                             </li>
                         </ul>
                     </li>
