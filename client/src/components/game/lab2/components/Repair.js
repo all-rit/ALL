@@ -138,18 +138,18 @@ class Repair extends Component {
           incorrectColorOne,
           incorrectColorTwo
         } = this.state;
-        var check = [
+        const check = [
           background,
           correctColor,
           incorrectColorOne,
           incorrectColorTwo
         ];
-        for (var i = 0; i < check.length; i++) {
-          var color = check[i];
+        for (let i = 0; i < check.length; i++) {
+          let color = check[i];
           color = color.slice(1, 8).toLowerCase();
-          var total = 0;
-          var conversion = [];
-          for (var j = 0; j < color.length; j++) {
+          let total = 0;
+          const conversion = [];
+          for (let j = 0; j < color.length; j++) {
             if (48 <= color.charCodeAt(j) && color.charCodeAt(j) <= 57) {
               conversion.push(Number(color[j]));
             } else if (color.charCodeAt(j) === 97) {
@@ -166,7 +166,7 @@ class Repair extends Component {
               conversion.push(15);
             }
           }
-          var values = [];
+          const values = [];
           values.push((conversion[0] + conversion[1] / 16) * 16);
           values.push((conversion[2] + conversion[3] / 16) * 16);
           values.push((conversion[4] + conversion[5] / 16) * 16);
@@ -322,7 +322,7 @@ class Repair extends Component {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Adjust this to change the background of the page
+                    &#47;&#47; Adjust this to change the background color of the page
                   </span>
                 </div>
                 <div className="code_editor__property code_editor__line-background--light">
@@ -342,9 +342,9 @@ class Repair extends Component {
                       ) : (
                         <button
                           onClick={changeBackground}
-                          style={{ backgroundColor: this.state.background }}
-                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input": ""}`}
-                        ></button>
+                          style={{backgroundColor: this.state.background}}
+                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input" : ""}`}
+                        />
                       )}
                 </div>
                 { this.state.errorEqual &&
@@ -369,7 +369,7 @@ class Repair extends Component {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Adjust this to change the correct color option
+                    &#47;&#47; Adjust this to change the color for the correct option
                   </span>
                 </div>
                 <div className="code_editor__property code_editor__line-background--light">
@@ -389,9 +389,9 @@ class Repair extends Component {
                       ) : (
                         <button
                           onClick={changeCorrectColor}
-                          style={{ backgroundColor: this.state.correctColor }}
-                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input": ""}`}
-                        ></button>
+                          style={{backgroundColor: this.state.correctColor}}
+                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input" : ""}`}
+                        />
                       )}
                 </div>
                 { this.state.errorEqual &&
@@ -416,7 +416,7 @@ class Repair extends Component {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Adjust this to change the correct color option
+                    &#47;&#47; Adjust this to change the color for the incorrect option
                   </span>
                 </div>
                 <div className="code_editor__property code_editor__line-background--light">
@@ -439,8 +439,8 @@ class Repair extends Component {
                           style={{
                             backgroundColor: this.state.incorrectColorOne
                           }}
-                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input": ""}`}
-                        ></button>
+                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input" : ""}`}
+                        />
                       )}
                 </div>
                 { this.state.errorEqual &&
@@ -465,7 +465,7 @@ class Repair extends Component {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Adjust this to change the correct color option
+                    &#47;&#47; Adjust this to change the color for the other incorrect option
                   </span>
                 </div>
                 <div className="code_editor__property code_editor__line-background--light">
@@ -488,8 +488,8 @@ class Repair extends Component {
                           style={{
                             backgroundColor: this.state.incorrectColorTwo
                           }}
-                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input": ""}`}
-                        ></button>
+                          className={`form ${this.state.errorEqual || this.state.errorDarkBackground ? "form-error-input" : ""}`}
+                        />
                       )}
                 </div>
                 { this.state.errorEqual &&
