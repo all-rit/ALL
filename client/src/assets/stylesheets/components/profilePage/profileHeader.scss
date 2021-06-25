@@ -31,14 +31,20 @@
   }
 }
 .progressBarContainer{
-  
+  min-width: 450px;
+  width: 100%;
 }
+
 .progressBar{
-  max-width: 450px;
+  //max-width: 450px;
   //min-width: 450px;
+  display: table;
+  width:100%;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
   li {
-    display: inline;
-    float: left;
+    display:table-cell;
   }
   &__completed{
     background-color: lightgreen;
@@ -47,10 +53,8 @@
     background-color: lightslategrey;
   }
   &__bar {
-    display:block;
     padding: 10px;
-    max-width: 20%;
-    min-width: 20%;
+    width:96%;
     border: 1px solid darkgreen;
     margin-right: 5px;
   }

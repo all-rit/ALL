@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
-
+import React,{Component} from 'react';
+import ProgressBarBar from "./progressBarBar";
 class ProgressBar extends Component{
+    
     render(){
         const {barData,completed,total,percentage} = this.props;
         function renderBars(){
             return barData.map((data,index)=>{
-                if(data===true){
-                    return(
-                        <li key={index} class="progressBar__bar progressBar__completed">
-                        </li> 
-                    )
-                } else{
-                    return(
-                        <li key={index} class="progressBar__bar progressBar__notCompleted">
-                        </li>
-                    )
-                }})
-          }
+                return(
+                    <ProgressBarBar
+                        data={data}
+                        index={index}
+                    />
+                )
+            })
+        }
         return(
-                <ul>
+                <ul class="progressBarContainer">
                     <ul class="progressBar">
                         {renderBars()}
                     </ul>

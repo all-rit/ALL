@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileHeader from "./profileHeader";
-import ProgressBar from "./progressBar";
+//import ProgressBar from "./progressBar";
 import labInformation from "../landingpage/lab/labInformation";
 import Lab from "../landingpage/lab/lab";
 import {actions} from "../../../reducers/MainReducer";
