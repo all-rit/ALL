@@ -1,26 +1,8 @@
 import React from "react";
 import ProfileHeader from "./profileHeader";
-//import ProgressBar from "./progressBar";
-import labInformation from "../landingpage/lab/labInformation";
-import Lab from "../landingpage/lab/lab";
 import {actions} from "../../../reducers/MainReducer";
+import renderLabData from "../landingpage/lab/LabGeneration";
 
-function renderLabData() {
-    return labInformation.map((labInfo, index) => {
-        const { alt,lab, name, bio , image} = labInfo //destructuring
-        return (
-            <Lab
-                key={index}
-                alt= {alt}
-                lab={lab}
-                name= {name}
-                bio={bio}
-                image= {image}
-                actions={actions}
-            />
-        );
-    })
-}
 const Profile = (props) => {
 
     return (
@@ -38,19 +20,19 @@ const Profile = (props) => {
             <h4>In Progress Modules</h4>
             <br/>
             <div className="landingpage__row">
-                {renderLabData()}
+                {renderLabData(actions,"IN_PROGRESS")}
             </div>
 
             <h4>To-do Modules</h4>
             <br/>
             <div className="landingpage__row">
-                {renderLabData()}
+                {renderLabData(actions,"NOT_STARTED")}
             </div>
 
             <h4>Completed Modules</h4>
             <br/>
             <div className="landingpage__row">
-                {renderLabData()}
+                {renderLabData(actions,"COMPLETED")}
             </div>
 
         </div>

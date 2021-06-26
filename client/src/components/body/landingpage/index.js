@@ -3,14 +3,14 @@ import "../../../assets/stylesheets/pages/LandingPage.scss"
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
 import handleRedirect from "../../../helpers/Redirect";
-import {actions, actions as mainActions} from "../../../reducers/MainReducer";
+import {actions as mainActions} from "../../../reducers/MainReducer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import Profile from "./citation/Profile";
 import studentInformation from "./citation/studentInfomation";
 import professorInformation from "./citation/professorInformation";
-import labInformation from "./lab/labInformation";
-import Lab from "./lab/lab";
+
+import renderLabData from "./lab/LabGeneration";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -30,24 +30,6 @@ function renderProfileData(profileInformation) {
                   title= {title} 
                   bio={bio}
                   socials={socials}
-              />
-      );
-  })
-}
-
-
-function renderLabData() {
-  return labInformation.map((labInfo, index) => {
-    const { alt,lab, name, bio , image} = labInfo //destructuring
-      return (
-              <Lab 
-                  key={index}
-                  alt= {alt} 
-                  lab={lab}
-                  name= {name} 
-                  bio={bio}
-                  image= {image} 
-                  actions={actions}
               />
       );
   })
@@ -165,7 +147,7 @@ const Home = (props) => {
             </div>
           </div>
           <div class="landingpage__row">
-              {renderLabData()}
+              {renderLabData(actions)}
           </div>
         </div>
       </section>
