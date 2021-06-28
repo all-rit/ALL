@@ -19,7 +19,7 @@ class NotificationInaccessible extends Component {
 
                 <div>
                     <div className= "cognitive_instructions">
-                    There is a notification that has appeared. Click on it to view it! Note it can only be viewed once
+                    There is a notification that has appeared. Click on it to view it! Note: it can only be viewed once.
                     </div>
                     <Notification  message={InaccessibleMessage}/>
                     <div className='flex float-right'>
