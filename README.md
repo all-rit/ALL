@@ -21,8 +21,11 @@ NOTE - If you install Docker Desktop on MacOS or on Windows, docker-compose come
 ## Setup
 
 0. Ensure you've installed [Docker and Docker Compose](#requirements)
+
 1. Clone the repository and open the folder
-2. Docker Compose as well as the server, is expecting a file located in the `/server` folder called `.env`. It should contain the following information:
+
+2. Docker Compose as well as the server, is expecting a file called `.env` located in the `/server` folder. It should contain the following information:
+
 ```
 # Database stuff:
 DB_HOST=database
@@ -31,22 +34,33 @@ POSTGRES_PASSWORD=(Your postgres user's password)
 POSTGRES_DB=all_db
 
 # OAuth Authentication information
+# This is optional. Google Login won't work without it,
+# But the rest of the web app will.
 GOOGLE_CLIENT_ID=(Your Google Client ID)
 GOOGLE_SECRET=(Your Google Secret)
 GOOGLE_CALLBACK_URL=(Your Google Callback URI)
 
 # Client stuff
-CLIENT_URL=http://client
+CLIENT_URL=https://client
 KEY=(Your client session secret)
 ```
+
 3. The client is also expecting a .env file. Create a file called `.env` in the `/client` folder containing the following information:
+
 ```
 REACT_APP_SERVER_URL=http://server:5005
 REACT_APP_GA_TRACKING_ID=(Your Google Analytics tracking ID)
 ```
-4. You're not quite done with configuration yet! The server will try and run on HTTPS by default, and will look for a `localhost.crt` and `localhost.key` file in the `client/nginx/` directory. If you have a certificate to use, put your certificate and key in the `client/nginx/` folder, each under the name `localhost`. Should you wish to sign your own SSL certificate, a tool like OpenSSL will work just as well here. Alternatively, you can edit the `ssl_certificate` and `ssl_certificate_key` lines in the nginx configuration in `client/nginx/default.conf` to point to the appropriate certificate files. Should you wish not to bother with SSL certification at all, an alternative, `default_http.conf` is provided in the `client/nginx/` folder. Change `default_https.conf` to `default_http.conf` in `client/Dockerfile` to copy that file instead.
+
+4. The website in default configuration will want an SSL certificate. Here's a couple of options:
+    - Create a self-signed SSL certificate using something like OpenSSL in the `client/nginx` server, called `localhost.key` and `localhost.crt`.
+    - Edit the `ssl_certificate` and `ssl_certificate_key` lines in `client/nginx/default.conf` to point to an existing certificate that you would like to use.
+    - If you don't want to bother with SSL at all and just serve the site over HTTP, change `default_https.conf` to `default_http.conf` in `client/Dockerfile` to serve the app over HTTP instead.
+
 5. Once you have all your top secret information set, you can finally start the system. Do so by running `docker-compose up --build -d` in the top level of the repo.
+
 6. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:8080` to access the API.
+
 7. When you're done, you can stop both the client and the server by running `docker-compose down`.
 
 # Contributing
@@ -69,6 +83,6 @@ Commit messages are important to get an overall idea of what's been changed. In 
 
 ## Opening a PR
 
-Before you open a pull request, please ensure all code you've committed works as you expect. Also ensure that commands like `npm build` for the client don't error out - this is a strong indication of broken code.
+Before you open a pull request, please ensure all code you've committed works as you expect. Also ensure that commands like `npm run build` for the client don't error out - this is a strong indication of broken code.
 
 Pull requests should be named the same way as commits - A short name that describes the overall changes, with a description as needed. Fill out the pull request checklist as well.
