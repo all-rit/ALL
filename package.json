@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/all-rit/AccessibilityLab1#readme",
   "dependencies": {
-    "dotenv": "^10.0.0",
-    "react-responsive-modal": "^6.1.0"
+    "dotenv": "^10.0.0"
   }
 }

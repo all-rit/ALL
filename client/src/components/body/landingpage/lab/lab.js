@@ -1,11 +1,21 @@
-import React, { Component } from 'react';
-import {Button} from 'reactstrap';
+import React, { Component} from 'react';
 import handleRedirect from "../../../../helpers/Redirect";
 import ProgressBar from '../../profilepage/progressBar';
+import InfoModal from './Modal';
 class Lab extends Component{
+    state = { show: false };
+
+    showModal = () => {
+      this.setState({ show: true });
+    };
+  
+    hideModal = () => {
+      this.setState({ show: false });
+    };
+
     render(){
-        const {state,alt,lab, name, bio , image,actions} = this.props;
-        switch(state){
+        const {progressState,alt,lab, name, bio , image,actions} = this.props;
+        switch(progressState){
             case "IN_PROGRESS":
                 return(
                     <ul class="module__col module__lab_col">
@@ -63,15 +73,11 @@ class Lab extends Component{
                                         {name}
                                     </a>
                                 </li>
-                                <li class="module__bio">
-                                    <p>[-Insert Quiz Score-]</p>
-                                </li>
-                                <li>
-                                    <p>[-Insert Time Completed-]</p>
-                                </li>
-                                <li>
-                                    <Button>View Certificate</Button>
-                                </li>
+                                <ul class="module__bio">
+                                    <li>[-Insert Quiz Score-]</li>
+                                    <li>[-Insert Time Completed-]</li>
+                                    <li><InfoModal buttonLabel={"View Certificate"} labName={name}/></li>
+                                </ul>
                             </ul>
                         </li>
                     </ul>
@@ -127,6 +133,9 @@ class Lab extends Component{
                                 </li>
                                 <li class="module__bio">
                                     {bio}
+                                </li>
+                                <li class="module__bio">
+                                    <InfoModal buttonLabel={"More Info"} labName={name}/>
                                 </li>
                             </ul>
                         </li>
