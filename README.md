@@ -2,13 +2,14 @@
 
 ## About Our Project:
 
+### This project is part of The National Science Foundation's Grant for Developing Experiential Laboratories for Computing Accessibility Education. Grant #1825023. Information for this grant can be found [here](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023&HistoricalAwards=false).
+
 According to World Bank’s Disability Inclusion statistics,  15% of the world has a disability in some form. In order to ensure the ability of these people to use your websites, it’s important to follow guidelines written with the usability for disabled users in mind. Such a definition can be found in WCAG, the Web Content Accessibility Guidelines, defined by the Web Accessibility Initiative of the World Wide Web Consortium, the main international standards organisation for the internet. In a study of a million sites, 98% of them had a detectable WCAG violation. This can partially be blamed on the lack of materials regarding web accessibility that are easily adoptable.
 
 The objectives of Accessible Learning Labs include but are not limited to addressing that lack of materials, by providing self-encapsulated, browser based, educational accessibility-related material to convey the importance of accessible interfaces.
 
 The website for all of the accessibility labs can be found [here](http://all.rit.edu).
 
-This project is part of The National Science Foundation's Grant for Developing Experiential Laboratories for Computing Accessibility Education. Grant #1825023. Information for this grant can be found [here](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023&HistoricalAwards=false).
 
 # Development
 
