@@ -34,9 +34,10 @@ KEY=(Your client session secret)
 REACT_APP_SERVER_URL=http://server:5005
 REACT_APP_GA_TRACKING_ID=(Your Google Analytics tracking ID)
 ```
-4. Once you have all your top secret information set, you can finally start the system. Do so by running `docker-compose up --build -d` in the top level of the repo.
-5. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:8080` to access the API.
-6. When you're done, you can stop both the client and the server by running `docker-compose down`
+4. You're not quite done with configuration yet! The server will try and run on HTTPS by default, and will look for a `localhost.crt` and `localhost.key` file in the `client/nginx/` directory. If you'd like to self sign a certificate to use, put your CRT and key in the `client/nginx/` folder under the name `localhost`. Alternatively, you can edit the `ssl_certificate` and `ssl_certificate_key` lines in the nginx configuration in `client/nginx/default.conf` to point to the appropriate certificate files. Should you wish not to bother with SSL certification at all, an alternative, `default_http.conf` is provided in the `client/nginx/` folder. Change `default_https.conf` to `default_http.conf` in `client/Dockerfile` to copy that file instead.
+5. Once you have all your top secret information set, you can finally start the system. Do so by running `docker-compose up --build -d` in the top level of the repo.
+6. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:8080` to access the API.
+7. When you're done, you can stop both the client and the server by running `docker-compose down`
 
 ## Development
 1. Clone the repo 
