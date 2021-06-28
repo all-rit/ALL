@@ -186,7 +186,7 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
-                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
+                        {/*<WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />*/}
                         </Nav>
                             :
                     <Nav className="ml-auto" navbar>
