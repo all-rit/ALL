@@ -22,5 +22,5 @@ WORKDIR /var/www/html
 
 COPY --from=builder /app/build /var/www/html/
 
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/default_https.conf /etc/nginx/conf.d/default_https.conf
 COPY ./nginx/localhost.* /etc/nginx/
