@@ -18,9 +18,6 @@ if (process.env.NODE_ENV === 'production') {
 	ReactGA.initialize(TRACKING_ID);
 	ReactGA.pageview(window.location.pathname + window.location.search);
 }
-else if (process.env.NODE_ENV === 'development') {
-	console.log("Google Analytics cannot be implemented in development mode")
-}
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
