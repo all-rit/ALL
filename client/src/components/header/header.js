@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Logo from "../../assets/images/ALL_Logo_Header.svg";
 import "../../assets/stylesheets/components/Header.scss"
-import WelcomeMessage from './helpers/WelcomeMessage';
+// import WelcomeMessage from './helpers/WelcomeMessage';
 import {connect} from "react-redux";
 import {
     Collapse,
@@ -11,7 +11,7 @@ import {
     NavItem,
     NavLink
 } from 'reactstrap';
-import {GAME_IDLE} from "../../constants/lab1";
+// import {GAME_IDLE} from "../../constants/lab1";
 import handleRedirect from "../../helpers/Redirect";
 import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
@@ -88,7 +88,7 @@ const Header = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state]);
     let count = state.main.body;
-    const loginEnabled = (state.main.lab === 0) || getGameState(state) === GAME_IDLE || state.main.body !== 2;
+    // const loginEnabled = (state.main.lab === 0) || getGameState(state) === GAME_IDLE || state.main.body !== 2;
 
     return (
         <Navbar id="navHeader"
@@ -132,7 +132,7 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
-                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
+                        {/*<WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />*/}
                     </Nav>
                     :
                     (state.main.lab === 0 ?
@@ -186,7 +186,7 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
-                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
+                        {/*<WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />*/}
                         </Nav>
                             :
                     <Nav className="ml-auto" navbar>
@@ -278,7 +278,7 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
-                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
+                        {/*<WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />*/}
                     </Nav> )
                 }
                 </Collapse>

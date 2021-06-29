@@ -1,6 +1,7 @@
 import samuel_malachowsky_image from "./profileImages/Professor_Malachowsky.jpg"
 import dan_krutz_image from "./profileImages/Professor_Krutz.jpg"
-var professorInformation = [
+
+const professorInformation = [
     {
         profile_image: dan_krutz_image,
         name: "Daniel Krutz",
@@ -13,8 +14,8 @@ var professorInformation = [
         name: "Samuel Malachowsky",
         title: "Co-PI",
         bio: "",
-        socials: ["http://www.se.rit.edu/~samvse/"]
+        socials: ["https://www.se.rit.edu/~samvse/"]
     },
-]
+];
 
 export default professorInformation;
