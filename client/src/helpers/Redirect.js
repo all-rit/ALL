@@ -93,6 +93,7 @@ export const stateChange = (actions, pathname) =>{
         case "SiteMap":
             actions.setBody(1);
             break;
+            // maybe add profile page case here?
         default:
             actions.setBody(0);
             if(redirect_body !== ""){

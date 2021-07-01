@@ -132,6 +132,19 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
+                        <NavItem class="collapse navbar-collapse" >
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                href="# "
+                                style={{color: "#fff"}}
+                                onClick={() => navigate(state,actions, 0, 0)}> // need to change
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                    <li className="nav-item nav-last">
+                                        My Profile
+                                    </li>
+                                </ul>
+                            </NavLink>
+                        </NavItem>
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                     </Nav>
                     :
