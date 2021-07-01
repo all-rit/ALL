@@ -77,3 +77,15 @@ exports.getSession = (token) => {
 			console.log(err);
 		});
 };
+
+exports.getUserEnrolledCourses = (userid) => {
+	console.log(userid);
+	return db.Enrollment
+		.findAll({
+			where: {
+				userID: userid,
+			},
+			raw: true
+		})
+		// .map(el => el.get('courseID'))
+}

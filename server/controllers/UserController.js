@@ -9,6 +9,12 @@ exports.main = (req, res) => {
 	});
 };
 
+exports.getUserEnrolledCourses = (req, res) => {
+	UserService.getUserEnrolledCourses(req.params.userId).then((records) => {
+		res.json(records);
+	})
+};
+
 // Authenticates User through Google OAuth
 exports.authenticate = passport.authenticate('google', {
 		scope: ['email', 'profile']

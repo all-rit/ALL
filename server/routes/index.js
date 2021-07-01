@@ -30,6 +30,7 @@ router.get('/auth/google', UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
 router.get('/logout', UserController.logout);
 router.get('/user', UserController.main);
+router.get('/user/:userId/enrolled', UserController.getUserEnrolledCourses);
 
 //user Lab Routes for lab progress and quiz
 router.post('/completeAbout', UserLabController.completeAbout);
