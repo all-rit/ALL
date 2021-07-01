@@ -76,7 +76,7 @@ class Lab extends Component{
                                 <ul class="module__bio">
                                     <li>[-Insert Quiz Score-]</li>
                                     <li>[-Insert Time Completed-]</li>
-                                    <li><InfoModal buttonLabel={"View Certificate"} labName={name}/></li>
+                                    <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab}/></li>
                                 </ul>
                             </ul>
                         </li>

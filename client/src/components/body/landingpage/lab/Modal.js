@@ -1,32 +1,76 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Certificate from '../../../quiz/components/Certificate';
 
 const InfoModal = (props) => {
-  const {buttonLabel,labName,className} = props;
+    const {buttonLabel,labName,labNum,className} = props;
 
-  const [modal, setModal] = useState(false);
+    const [modal, setModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
-
-  return (
-    <ul>
-      <button color="secondary" class="button" onClick={toggle}>{buttonLabel}</button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>{labName}</ModalHeader>
-            <ModalBody>
+    const toggle = () => setModal(!modal);
+    switch(buttonLabel){
+        case "More Info":
+            return (
                 <ul>
-                    <li><h1>title</h1></li>
-                    <li><h2>long description</h2></li>
-                    <li><h2>learning objectives</h2></li>
-                    <li><h3>authors</h3></li>
+                    <button color="secondary" class="button" onClick={toggle}>{buttonLabel}</button>
+                    <Modal isOpen={modal} toggle={toggle} className={className}>
+                        <ModalHeader toggle={toggle}>{labName}</ModalHeader>
+                            <ModalBody>
+                                <ul>
+                                    <li><h1>title</h1></li>
+                                    <li><h2>long description</h2></li>
+                                    <li><h2>learning objectives</h2></li>
+                                    <li><h3>authors</h3></li>
+                                </ul>
+                            </ModalBody>
+                        <ModalFooter>
+                        <Button color="secondary" onClick={toggle}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
                 </ul>
-            </ModalBody>
-        <ModalFooter>
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
-        </ModalFooter>
-      </Modal>
-    </ul>
-  );
+                );
+        case "View Certificate":
+            return (
+                <ul>
+                    <button color="secondary" class="button" onClick={toggle}>{buttonLabel}</button>
+                    <Modal isOpen={modal} toggle={toggle} className={className}>
+                        <ModalHeader toggle={toggle}>{labName}</ModalHeader>
+                            <ModalBody>
+                                <ul>
+                                    <li>
+                                        <Certificate quizResult="[-Insert Grade-]" lab={labNum}/>
+                                    </li>
+                                </ul>
+                            </ModalBody>
+                        <ModalFooter>
+                        <Button color="secondary" onClick={toggle}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+                </ul>
+            ); 
+        default:
+            return (
+                <ul>
+                    <button color="secondary" class="button" onClick={toggle}>{buttonLabel}</button>
+                    <Modal isOpen={modal} toggle={toggle} className={className}>
+                        <ModalHeader toggle={toggle}>{labName}</ModalHeader>
+                            <ModalBody>
+                                <ul>
+                                    <li><h1>title</h1></li>
+                                    <li><h2>long description</h2></li>
+                                    <li><h2>learning objectives</h2></li>
+                                    <li><h3>authors</h3></li>
+                                </ul>
+                            </ModalBody>
+                        <ModalFooter>
+                        <Button color="secondary" onClick={toggle}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+                </ul>
+            );
+
+    }
+
 }
 
 export default InfoModal;
