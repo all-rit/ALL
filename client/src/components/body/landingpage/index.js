@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../assets/stylesheets/pages/LandingPage.scss"
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
 import handleRedirect from "../../../helpers/Redirect";
@@ -20,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function renderProfileData(profileInformation) {
   return profileInformation.map((profileInfo, index) => {
-      const {profile_image, name,title,bio,socials} = profileInfo //destructuring
+      const {profile_image, name,title,bio,socials,network} = profileInfo //destructuring
       return (
               
               <Profile 
@@ -30,6 +29,7 @@ function renderProfileData(profileInformation) {
                   title= {title} 
                   bio={bio}
                   socials={socials}
+                  network={network}
               />
       );
   })

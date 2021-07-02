@@ -1,6 +1,5 @@
 import React from "react";
 import "../../../assets/stylesheets/components/App.scss"
-import "../../../assets/stylesheets/pages/LandingPage.scss"
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import {actions as mainActions} from "../../../reducers/MainReducer";
