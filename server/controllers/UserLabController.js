@@ -30,8 +30,8 @@ exports.completeGame = (req, res) => {
     })
 };
 
-exports.completeVideo = (req, res) => {
-    UserLabService.completeVideo({
+exports.completeReinforcement = (req, res) => {
+    UserLabService.completeReinforcement({
         labid: req.body.labid,
         usersessionid: req.session.token,
         date: Date.now()

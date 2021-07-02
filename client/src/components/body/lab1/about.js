@@ -17,7 +17,7 @@ const About = (lab) => {
         You will learn how organizations like the National Association of the Deaf (NAD)
         fought for easier access for hearing impaired individuals,
         increase your understanding through an interactive module about hearing impairments,
-        watch related videos, and take a quiz to test your knowledge. Click "Next" to start!
+        view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!
       </p>
       </div>
   );

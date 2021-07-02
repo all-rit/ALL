@@ -16,7 +16,7 @@ const About = (lab) => {
                 that is accessible to users with dexterity impairments.
                 You will learn about issues related to dexterity,
                 increase your understanding through an interactive module about
-                dexterity impairments, watch related videos,
+                dexterity impairments, view related media to reinforce the topic,
                 and take a quiz to test your knowledge. Click "Next" to start!
             </p>
         </div>

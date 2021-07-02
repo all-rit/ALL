@@ -21,7 +21,7 @@ export const Sections = {
             name: "Game"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -40,7 +40,7 @@ export const Sections = {
             name: "Game"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -59,7 +59,7 @@ export const Sections = {
             name: "Game"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -78,7 +78,7 @@ export const Sections = {
             name: "Game"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -98,7 +98,7 @@ export const Sections = {
             name: "Game"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"

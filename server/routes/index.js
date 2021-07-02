@@ -35,7 +35,7 @@ router.get('/user', UserController.main);
 router.post('/completeAbout', UserLabController.completeAbout);
 router.post('/completeReading', UserLabController.completeReading);
 router.post('/completeGame', UserLabController.completeGame);
-router.post('/completeVideo', UserLabController.completeVideo);
+router.post('/completeReinforcement', UserLabController.completeReinforcement);
 router.post('/completeQuiz', UserLabController.completeQuiz);
 
 // Game Routes

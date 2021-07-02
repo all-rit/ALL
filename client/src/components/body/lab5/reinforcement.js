@@ -2,16 +2,16 @@ import React, {useEffect} from "react";
 
 import {LAB_ID} from '../../../constants/lab5';
 import UserLabService from '../../../services/UserLabService';
-const Video = () => {
+const Reinforcement = () => {
     useEffect(() => {
         return () => {
-            UserLabService.complete_video(LAB_ID);
+            UserLabService.complete_Reinforcement(LAB_ID);
         }
     });
   return (
       <div>
       <div className="row">
-        <h4>Here are some videos to aid in understanding the material.</h4>
+        <h4>Here is some supplemental material to reinforce the topic.</h4>
       </div>
       <div className="row">
           <iframe
@@ -37,4 +37,4 @@ const Video = () => {
   );
 };
 
-export default Video;
+export default Reinforcement;

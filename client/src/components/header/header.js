@@ -257,7 +257,7 @@ const Header = (props) => {
                             style={count === 3 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">
-                            Video
+                            Reinforcement
                             </li>
                             </ul>
                             </NavLink>

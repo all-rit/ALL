@@ -100,7 +100,7 @@ exports.completeGame = (data)=> {
     return Promise.resolve();
 
 };
-exports.completeVideo= (data)=>{
+exports.completeReinforcement= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
@@ -115,14 +115,14 @@ exports.completeVideo= (data)=>{
                 }
             ).then((userlab)=> {
                 if(userlab !== null) {
-                    userlab.videocompletedtime = datetime;
+                    userlab.reinforcementcompletedtime = datetime;
                     userlab.save();
                 }
                 else{
                     db.UserLab.create({
                         usersessionid:usersessionid,
                         labid:labid,
-                        videocompletedtime: datetime,
+                        reinforcementcompletedtime: datetime,
                     });
                 }
                 return true;

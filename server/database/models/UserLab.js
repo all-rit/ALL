@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             aboutcompletedtime: { type: DataTypes.DATE },
             readingcompletedtime: { type: DataTypes.DATE },
             gamecompletedtime: { type: DataTypes.DATE },
-            videocompletedtime: { type: DataTypes.DATE },
+            reinforcementcompletedtime: { type: DataTypes.DATE },
             quizcompletedtime: { type: DataTypes.DATE },
             quizresult: {type: DataTypes.TEXT}
 

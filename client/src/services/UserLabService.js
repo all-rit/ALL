@@ -4,7 +4,7 @@ const endpoints = {
     COMPLETE_ABOUT: '/completeAbout',
     COMPLETE_READING: '/completeReading',
     COMPLETE_GAME: '/completeGame',
-    COMPLETE_VIDEO: '/completeVideo',
+    COMPLETE_REINFORCEMENT: '/completeReinforcement',
     COMPLETE_QUIZ: '/completeQuiz'
 };
 
@@ -24,8 +24,8 @@ export default {
             labid
         });
     },
-    complete_video: (labid) => {
-        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_VIDEO, {
+    complete_reinforcement: (labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_Reinforcement, {
             labid
         });
     },
