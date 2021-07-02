@@ -5,7 +5,7 @@ import UserLabService from '../../../services/UserLabService';
 const Reinforcement = () => {
     useEffect(() => {
         return () => {
-            UserLabService.complete_Reinforcement(LAB_ID);
+            UserLabService.complete_reinforcement(LAB_ID);
         }
     });
   return (
@@ -15,28 +15,28 @@ const Reinforcement = () => {
       </div>
       <div className="row">
         <iframe
-          title="Audio Cues"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/vU_Di8EtF3M"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+    title="Audio Cues"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/vU_Di8EtF3M"
+    frameBorder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    />
       </div>
       <div className="row">
         <p>Audio Cues</p>
       </div>
       <div className="row">
         <iframe
-          title="Audio Cues Lecture"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/Wlf8A0w66o0"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+    title="Audio Cues Lecture"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/Wlf8A0w66o0"
+    frameBorder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    />
       </div>
       <div className="row">
         <p>Audio Cues Lecture</p>

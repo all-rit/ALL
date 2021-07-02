@@ -25,7 +25,7 @@ export default {
         });
     },
     complete_reinforcement: (labid) => {
-        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_Reinforcement, {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_REINFORCEMENT, {
             labid
         });
     },

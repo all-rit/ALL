@@ -5,7 +5,7 @@ import UserLabService from '../../../services/UserLabService';
 const Reinforcement = () => {
     useEffect(() => {
         return () => {
-            UserLabService.complete_Reinforcement(LAB_ID);
+            UserLabService.complete_reinforcement(LAB_ID);
         }
     });
   return (
@@ -15,28 +15,28 @@ const Reinforcement = () => {
       </div>
       <div className="row">
         <iframe
-          title="Color Blindness Testimony"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/d6KKsmmOKEI"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+    title="Color Blindness Testimony"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/d6KKsmmOKEI"
+    frameBorder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    />
       </div>
       <div className="row">
         <p>Color Blindness Testimony</p>
       </div>
       <div className="row">
         <iframe
-          title="Audio Cues Lecture"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/zrl0CW8m-Qk"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+    title="Audio Cues Lecture"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/zrl0CW8m-Qk"
+    frameBorder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    />
       </div>
       <div className="row">
         <p>Color Contrast Lecture</p>

@@ -5,7 +5,7 @@ import UserLabService from '../../../services/UserLabService';
 const Reinforcement = () => {
     useEffect(() => {
         return () => {
-            UserLabService.complete_Reinforcement(LAB_ID);
+            UserLabService.complete_reinforcement(LAB_ID);
         }
     });
     return (
@@ -14,42 +14,42 @@ const Reinforcement = () => {
             <br/>
             <div className="row">
                 <iframe
-                    title="Motor Impaired User Review"
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/yE1S0Biuxcc"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                ></iframe>
+    title="Motor Impaired User Review"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/yE1S0Biuxcc"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    />
             </div>
             <div className="row">
                 <p>Motor Impaired User Review</p>
             </div>
             <div className="row">
                 <iframe
-                    title="Digital Accessibility User Impact: Motor Disabilities"
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/nnDw7JPJBAE"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                ></iframe>
+    title="Digital Accessibility User Impact: Motor Disabilities"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/nnDw7JPJBAE"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    />
             </div>
             <div className="row">
                 <p>Digital Accessibility User Impact: Motor Disabilities</p>
             </div>
             <div className="row">
                 <iframe
-                    title="Large Links, Buttons, and Controls"
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/CzfKB3PuuIY"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                ></iframe>
+    title="Large Links, Buttons, and Controls"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/CzfKB3PuuIY"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    />
             </div>
             <div className="row">
                 <p>Large Links, Buttons, and Controls</p>
