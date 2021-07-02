@@ -98,7 +98,6 @@ const Header = (props) => {
                         <img className="logo img-fluid"
                             src={Logo}
                             alt="Computing Accessibility"
-                            
                         />
                     </a>
 
@@ -137,7 +136,7 @@ const Header = (props) => {
                                 class="nav-link js-scroll-trigger"
                                 href="# "
                                 style={{color: "#fff"}}
-                                onClick={() => navigate(state,actions, 0, 0)}> // need to change
+                                onClick={() => navigate(state,actions, 0, 0)}> 
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                     <li className="nav-item nav-last">
                                         My Profile
