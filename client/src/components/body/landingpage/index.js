@@ -10,7 +10,7 @@ import Profile from "./citation/Profile";
 import studentInformation from "./citation/studentInfomation";
 import professorInformation from "./citation/professorInformation";
 
-import renderLabData from "./lab/LabGeneration";
+import LabGeneration from "./lab/LabGeneration";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -147,7 +147,7 @@ const Home = (props) => {
             </div>
           </div>
           <div class="landingpage__row">
-              {renderLabData(actions)}
+              <LabGeneration actions={actions}/>
           </div>
         </div>
       </section>

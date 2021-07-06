@@ -23,6 +23,9 @@ let RepairControllerLab4 = require('../controllers/lab4/RepairController');
 let RepairControllerLab5 = require('../controllers/lab5/RepairController');
 let GameControllerLab5 = require('../controllers/lab5/GameController');
 
+//Lab Controller
+let LabController = require("../controllers/LabController");
+
 
 // User Routes
 router.post('/url', UserController.storeURL)
@@ -55,5 +58,6 @@ router.post('/lab4/repair/submit/hint', RepairControllerLab4.submitChangeHint);
 router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
 //Create a Page Entry
 router.post('/page/complete', PageController.createPage);
-
+//Labs
+router.get('/lab', LabController.getAllLabs);
 module.exports = router;

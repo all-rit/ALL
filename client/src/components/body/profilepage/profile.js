@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileHeader from "./profileHeader";
 import {actions} from "../../../reducers/MainReducer";
-import renderLabData from "../landingpage/lab/LabGeneration";
+import LabGeneration from "../landingpage/lab/LabGeneration";
 import EnrolledCourses from "./enrolledCourses";
 
 const Profile = (props) => {
@@ -19,17 +19,17 @@ const Profile = (props) => {
                 <h4>In Progress Modules</h4>
                 <br/>
                 <div className="landingpage__row">
-                    {renderLabData(actions,"IN_PROGRESS")}
+                    <LabGeneration actions={actions} progressState="IN_PROGRESS"/>
                 </div>
                 <h4>To-do Modules</h4>
                 <br/>
                 <div className="landingpage__row">
-                    {renderLabData(actions,"NOT_STARTED")}
+                    <LabGeneration actions={actions} progressState="NOT_STARTED"/>
                 </div>
                 <h4>Completed Modules</h4>
                 <br/>
                 <div className="landingpage__row">
-                    {renderLabData(actions,"COMPLETED")}
+                    <LabGeneration actions={actions} progressState="COMPLETED"/>
                 </div>
 
             </div>
