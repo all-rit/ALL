@@ -95,7 +95,7 @@ class Fourth extends Component {
 		return (
 			<div className="playthrough">
 				<div className="playthrough__content">
-					<p className="playthrough__sentence">Here are your results from all three Exercises:</p>
+					<p className="playthrough__sentence">Here are your results from all three exercises:</p>
 
 					<div className="playthrough__results">{resultContainer}</div>
 
