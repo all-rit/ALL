@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import {
     changeColors,
-    selectGameOption,
-    changeGameState,
+    selectExerciseOption,
+    changeExerciseState,
     changeUser
-  } from "./GameReducer";
+  } from "./ExerciseReducer";
 
 export default combineReducers({
     changeColors,
-    selectGameOption,
-    changeGameState,
+    selectExerciseOption,
+    changeExerciseState,
     changeUser,
   });

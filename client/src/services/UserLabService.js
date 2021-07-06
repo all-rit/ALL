@@ -3,7 +3,7 @@ import API from './API';
 const endpoints = {
     COMPLETE_ABOUT: '/completeAbout',
     COMPLETE_READING: '/completeReading',
-    COMPLETE_GAME: '/completeGame',
+    COMPLETE_EXERCISE: '/completeExercise',
     COMPLETE_REINFORCEMENT: '/completeReinforcement',
     COMPLETE_QUIZ: '/completeQuiz'
 };
@@ -19,8 +19,8 @@ export default {
             labid
         });
     },
-    complete_game: (labid) => {
-        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_GAME, {
+    complete_exercise: (labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_EXERCISE, {
             labid
         });
     },

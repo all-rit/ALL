@@ -35,7 +35,7 @@ class Certificate extends Component {
         // console.log(this.props);
         const {state} = this.props;
         var today = new Date();
-        // console.log(state.game.results);
+        // console.log(state.exercise.results);
         var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+ today.getFullYear();
         return (
             <div style={{width:"100%", height:"auto", padding:"20px", border: "10px solid #787878"}}>

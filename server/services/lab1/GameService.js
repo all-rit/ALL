@@ -1,12 +1,12 @@
 const db = require('../../database');
 
-exports.createGame = (data) => {
-	return db.GameLab1.create({
+exports.createExercise = (data) => {
+	return db.ExerciseLab1.create({
 				usersessionid: data.usersessionid,
 				playthrough: data.playthrough
 			})
-		.then((game) => {
-			return game.gameid;
+		.then((exercise) => {
+			return exercise.exerciseid;
 		})
 		.catch((err) => {
 			console.log(err);
@@ -14,10 +14,10 @@ exports.createGame = (data) => {
 };
 
 exports.createRound = (data) => {
-	return db.GameLab1
+	return db.ExerciseLab1
 		.findByPk(data.id)
-		.then((game) => {
-			return db.Round.create({ gameid: game.gameid, soundoption: data.soundOption });
+		.then((exercise) => {
+			return db.Round.create({ exerciseid: exercise.exerciseid, soundoption: data.soundOption });
 		})
 		.then((round) => {
 			console.log(round.roundid)
@@ -37,8 +37,8 @@ exports.createChoice = (data) => {
 		})
 		.then(() => {
 			if (data.correct) {
-				db.GameLab1.findByPk(data.id).then((game) => {
-					game.update({ score: data.score });
+				db.ExerciseLab1.findByPk(data.id).then((exercise) => {
+					exercise.update({ score: data.score });
 				});
 				db.Round.findByPk(data.round).then((round) => {
 					round.update({ hintused: data.hintUsed });
@@ -48,8 +48,8 @@ exports.createChoice = (data) => {
 		})
 };
 
-exports.updateEndGameScore = (data) => {
-	return db.GameLab1.findByPk(data.id).then((game) => {
-		game.update({score: data.score});
+exports.updateEndExerciseScore = (data) => {
+	return db.ExerciseLab1.findByPk(data.id).then((exercise) => {
+		exercise.update({score: data.score});
 	})
 };

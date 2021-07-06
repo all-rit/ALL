@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-	const Game = sequelize.define(
-		'GameLab1',
+	const Exercise = sequelize.define(
+		'ExerciseLab1',
 		{
-			gameid: {
+			exerciseid: {
 				type: DataTypes.INTEGER,
 				unique: true,
 				primaryKey: true,
@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
 			playthrough: { type: DataTypes.INTEGER },
 			timeplayed: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
 		},
-		{ tableName: 'lab1_game' }
+		{ tableName: 'lab1_exercise' }
 	);
-	Game.sync();
-	return Game;
+	Exercise.sync();
+	return Exercise;
 };

@@ -81,7 +81,7 @@ export const stateChange = (actions, pathname) =>{
         case "Reading":
             actions.setBody(1);
             break;
-        case "Game":
+        case "Exercise":
             actions.setBody(2);
             break;
         case "Reinforcement":
