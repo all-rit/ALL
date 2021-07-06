@@ -11,11 +11,11 @@ import {
     NavItem,
     NavLink
 } from 'reactstrap';
-// import {GAME_IDLE} from "../../constants/lab1";
+// import {EXERCISE_IDLE} from "../../constants/lab1";
 import handleRedirect from "../../helpers/Redirect";
 import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
-import getGameState from '../../helpers/GetReducer';
+import getExerciseState from '../../helpers/GetReducer';
 
 const mapStateToProps = (state) => {
     return {
@@ -37,8 +37,8 @@ const navigate = (state, actions,body, lab=state.main.lab) =>{
 };
 
 const alert_check = (state)=> {
-    if (getGameState(state) !== "GAME_IDLE" && state.main.body === 2){
-        alert("The game is still in progress! Please complete the game");
+    if (getExerciseState(state) !== "EXERCISE_IDLE" && state.main.body === 2){
+        alert("The exercise is still in progress! Please complete the exercise");
         return true;
     }
     return false;
@@ -88,7 +88,7 @@ const Header = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state]);
     let count = state.main.body;
-    // const loginEnabled = (state.main.lab === 0) || getGameState(state) === GAME_IDLE || state.main.body !== 2;
+    // const loginEnabled = (state.main.lab === 0) || getExerciseState(state) === EXERCISE_IDLE || state.main.body !== 2;
 
     return (
         <Navbar id="navHeader"
@@ -242,7 +242,7 @@ const Header = (props) => {
                             style={count === 2 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">
-                            Game
+                            Exercise
                             </li>
                             </ul>
                             </NavLink>
@@ -257,7 +257,7 @@ const Header = (props) => {
                             style={count === 3 ? activeStyle : {color: "#fff"}}>
                             <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">
-                            Video
+                            Reinforcement
                             </li>
                             </ul>
                             </NavLink>

@@ -15,7 +15,7 @@ const About = (lab) => {
                 In this lab, you will learn about why it is important to create software
                 that is accessible to users who face cognitive impairments.
                 You will learn about using clear descriptive headings, handling time driven notifications, and
-                creating informative form responses. Afterwards, you will watch related videos and take a quiz
+                creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz
                 to test your knowledge. Click "Next" to start!
             </p>
         </div>

@@ -1,14 +1,14 @@
-const GameService = require('../../services/lab5/GameService');
+const ExerciseService = require('../../services/lab5/ExerciseService');
 
 exports.submitChoice = (req, res) => {
-    GameService.submitChoice({
+    ExerciseService.submitChoice({
         usersessionid: req.session.token,
         question: req.body.question,
         correct: req.body.correct,
         options: req.body.options,
         selectedoption: req.body.selectedoption,
     }).then((id) => {
-        req.session.game = id;
+        req.session.exercise = id;
         res.sendStatus(200);
     });
 };

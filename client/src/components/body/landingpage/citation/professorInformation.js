@@ -7,7 +7,8 @@ const professorInformation = [
         name: "Daniel Krutz",
         title: "PI",
         bio: "",
-        socials: ["https://danielkrutz.github.io/"]
+        socials: ["https://danielkrutz.github.io/"],
+        network: "sharethis"
     },
     {
         profile_image: samuel_malachowsky_image,
@@ -15,6 +16,7 @@ const professorInformation = [
         title: "Co-PI",
         bio: "",
         socials: ["https://www.se.rit.edu/~samvse/"]
+        
     },
 ];
 

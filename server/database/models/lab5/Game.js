@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-	const Game = sequelize.define(
-		'GameLab5',
+	const Exercise = sequelize.define(
+		'ExerciseLab5',
 		{
-			gameid: {
+			exerciseid: {
 				type: DataTypes.INTEGER,
 				unique: true,
 				primaryKey: true,
@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
 			selectedoption: { type: DataTypes.STRING },
 			options: { type: DataTypes.STRING }
 		},
-		{ tableName: 'lab5_game' }
+		{ tableName: 'lab5_exercise' }
 	);
-	Game.sync();
-	return Game;
+	Exercise.sync();
+	return Exercise;
 };

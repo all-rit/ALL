@@ -8,7 +8,7 @@ import {changeTSize, setTextColor, setBackgroundColor, onNextPageChangeTSize} fr
 import {Panel as ColorPickerPanel} from 'rc-color-picker';
 import { Sections } from "../../constants/index";
 import handleRedirect from '../../helpers/Redirect';
-import getGameState from '../../helpers/GetReducer';
+import getExerciseState from '../../helpers/GetReducer';
 
 const mapStateToProps = (state) => {
     return {
@@ -132,7 +132,7 @@ class Footer extends Component {
         const {state, actions} = this.props;
         const lab = state.main.lab;
         const body = state.main.body;
-        let display = getGameState(state) === "GAME_IDLE" || body !== 2;
+        let display = getExerciseState(state) === "EXERCISE_IDLE" || body !== 2;
         let hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
         return (
             <div className="footer">
@@ -193,7 +193,7 @@ class Footer extends Component {
                 </div>
                 <div className="container" style={{display: display || hideOnLanding ? "none" : "block"}}>
                     <div className="btn-information">
-                        The previously available navigation and accessibility buttons are disabled until the game is complete.
+                        The previously available navigation and accessibility buttons are disabled until the exercise is complete.
                     </div>
                 </div>
             </div>

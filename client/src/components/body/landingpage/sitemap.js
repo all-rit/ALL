@@ -1,6 +1,5 @@
 import React from "react";
 import "../../../assets/stylesheets/components/App.scss"
-import "../../../assets/stylesheets/pages/LandingPage.scss"
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import {actions as mainActions} from "../../../reducers/MainReducer";
@@ -44,8 +43,8 @@ return (
                         <ul>
                             <li><a href="# " onClick={() => handleRedirect(actions,1,0)}>About</a></li>
                             <li><a href="# " onClick={() => handleRedirect(actions,1,1)}>Reading</a></li>
-                            <li><a href="# " onClick={() => handleRedirect(actions,1,2)} >Game</a></li>
-                            <li><a href="# " onClick={() => handleRedirect(actions,1,3)}>Video</a></li>
+                            <li><a href="# " onClick={() => handleRedirect(actions,1,2)} >Exercise</a></li>
+                            <li><a href="# " onClick={() => handleRedirect(actions,1,3)}>Reinforcement</a></li>
                             <li><a href="# " onClick={() => handleRedirect(actions,1,4)} >Quiz</a></li>
                         </ul>
                         </div>
@@ -56,8 +55,8 @@ return (
                         <ul>
                            <li><a href="# " onClick={() => handleRedirect(actions,2,0)} >About</a></li>
                            <li><a href="# " onClick={() => handleRedirect(actions,2,1)}  >Reading</a></li>
-                           <li><a href="# " onClick={() => handleRedirect(actions,2,2)} >Game</a></li>
-                           <li><a href="# " onClick={() => handleRedirect(actions,2,3)}>Video</a></li>
+                           <li><a href="# " onClick={() => handleRedirect(actions,2,2)} >Exercise</a></li>
+                           <li><a href="# " onClick={() => handleRedirect(actions,2,3)}>Reinforcement</a></li>
                            <li><a href="# " onClick={() => handleRedirect(actions,2,4)} >Quiz</a></li>
                         </ul>
                         </div>
@@ -69,8 +68,8 @@ return (
                         <ul>
                             <li><a href="# " onClick={() => handleRedirect(actions,3,0)} >About</a></li>
                             <li><a href="# " onClick={() => handleRedirect(actions,3,1)}  >Reading</a></li>
-                            <li><a href="# " onClick={() => handleRedirect(actions,3,2)} >Game</a></li>
-                            <li><a href="# " onClick={() => handleRedirect(actions,3,3)}>Video</a></li>
+                            <li><a href="# " onClick={() => handleRedirect(actions,3,2)} >Exercise</a></li>
+                            <li><a href="# " onClick={() => handleRedirect(actions,3,3)}>Reinforcement</a></li>
                             <li><a href="# " onClick={() => handleRedirect(actions,3,4)} >Quiz</a></li>
                         </ul>
                         </div>
@@ -81,8 +80,8 @@ return (
                             <ul>
                                 <li><a href="# " onClick={() => handleRedirect(actions, 4, 0)}>About</a></li>
                                 <li><a href="# " onClick={() => handleRedirect(actions, 4, 1)}>Reading</a></li>
-                                <li><a href="# " onClick={() => handleRedirect(actions, 4, 2)}>Game</a></li>
-                                <li><a href="# " onClick={() => handleRedirect(actions, 4, 3)}>Video</a></li>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 4, 2)}>Exercise</a></li>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 4, 3)}>Reinforcement</a></li>
                                 <li><a href="# " onClick={() => handleRedirect(actions, 4, 4)}>Quiz</a></li>
                             </ul>
                         </div>
@@ -93,8 +92,8 @@ return (
                             <ul>
                                 <li><a href="# " onClick={() => handleRedirect(actions, 5, 0)}>About</a></li>
                                 <li><a href="# " onClick={() => handleRedirect(actions, 5, 1)}>Reading</a></li>
-                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 2)}>Game</a></li>
-                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 3)}>Video</a></li>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 2)}>Exercise</a></li>
+                                <li><a href="# " onClick={() => handleRedirect(actions, 5, 3)}>Reinforcement</a></li>
                                 <li><a href="# " onClick={() => handleRedirect(actions, 5, 4)}>Quiz</a></li>
                             </ul>
                         </div>
