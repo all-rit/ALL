@@ -12,7 +12,7 @@ class Countdown extends Component {
 			<Fragment>
 				<CongratulationMessage message={message} />
 
-				<div className="Exercise__countdown">{time}</div>
+				<div className="exercise__countdown">{time}</div>
 			</Fragment>
 		);
 	}
