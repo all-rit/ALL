@@ -21,9 +21,6 @@ module.exports = (sequelize, DataTypes) => {
             reinforcementcompletedtime: { type: DataTypes.DATE },
             quizcompletedtime: { type: DataTypes.DATE },
             quizresult: {type: DataTypes.TEXT}
-
-
-
         },
         { tableName: 'userlab' }
     );
