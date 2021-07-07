@@ -13,6 +13,7 @@ COPY . .
 # VSCode and how it runs Docker. This warrants further testing on my part.
 # TODO
 ENV GENERATE_SOURCEMAP false
+ENV NODE_OPTIONS "--max-old-space-size=8192"
 
 RUN npm install
 RUN npm run build
