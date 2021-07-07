@@ -1,8 +1,8 @@
 name: Continuous Deployment
-
 on:
   push:
     branches: ['master']
+
 jobs:
   deploy_job:
     name: Deploy
@@ -26,7 +26,4 @@ jobs:
         KEY: ${{ secrets.SSH_SECRET }}
         PORT: 22
         script: |
-          chmod -R g+w research
-          cd research/client
-          npm install
-          npm run-script build
+          docker-compose up --build -d
