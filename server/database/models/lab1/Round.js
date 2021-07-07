@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
 				primaryKey: true,
 				autoIncrement: true
 			},
-			gameid: {
+			exerciseid: {
 				type: DataTypes.INTEGER
 				
 			},

@@ -3,7 +3,8 @@ import heather_moses_image from "./profileImages/Heather_Moses.jpg"
 import saad_kahn_image from "./profileImages/Saad_Kahn.jpg"
 import christopher_savan_image from "./profileImages/Christopher_Savan.jpg"
 import su_thit_thazin_image from "./profileImages/Su_Thit_Thazin.jpg"
-import default_image from "./profileImages/default_profile_image.jpg"
+import shantanav_sauarav from "./profileImages/Shantanav_Saurav.jpg"
+//import default_image from "./profileImages/default_profile_image.jpg"
 var studentInformation = [
     {
         profile_image: saad_kahn_image,
@@ -41,7 +42,7 @@ var studentInformation = [
         socials: ["https://www.linkedin.com/in/mark-ferenc-sternefeld/"]
     },
     {
-        profile_image: default_image,
+        profile_image: shantanav_sauarav,
         name: "Shantanav Saurav",
         title: "Software Engineer",
         bio: "",

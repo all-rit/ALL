@@ -18,10 +18,10 @@ export const Sections = {
             name: "Reading"
         },
         2:{
-            name: "Game"
+            name: "Exercise"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -37,10 +37,10 @@ export const Sections = {
             name: "Reading"
         },
         2:{
-            name: "Game"
+            name: "Exercise"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -56,10 +56,10 @@ export const Sections = {
             name: "Reading"
         },
         2:{
-            name: "Game"
+            name: "Exercise"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -75,10 +75,10 @@ export const Sections = {
             name: "Reading"
         },
         2:{
-            name: "Game"
+            name: "Exercise"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -95,10 +95,10 @@ export const Sections = {
             name: "Reading"
         },
         2:{
-            name: "Game"
+            name: "Exercise"
         },
         3:{
-            name: "Video"
+            name: "Reinforcement"
         },
         4:{
             name: "Quiz"
@@ -106,5 +106,5 @@ export const Sections = {
     }
 }
 //for shared component
-export const GAME_IDLE = 'GAME_IDLE';
-export const GAME_PLAYING = 'GAME_PLAYING';
+export const EXERCISE_IDLE = 'EXERCISE_IDLE';
+export const EXERCISE_PLAYING = 'EXERCISE_PLAYING';

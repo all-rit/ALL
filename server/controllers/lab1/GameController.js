@@ -1,18 +1,18 @@
-const GameService = require('../../services/lab1/GameService');
+const ExerciseService = require('../../services/lab1/ExerciseService');
 
-exports.createGame = (req, res) => {
-	GameService.createGame({
+exports.createExercise = (req, res) => {
+	ExerciseService.createExercise({
 		usersessionid: req.session.token,
 		playthrough: req.body.playthrough
 	}).then((id) => {
-		req.session.game = id;
+		req.session.exercise = id;
 		res.sendStatus(200);
 	});
 };
 
 exports.createRound = (req, res) => {
-	GameService.createRound({
-		id: req.session.game,
+	ExerciseService.createRound({
+		id: req.session.exercise,
 		soundOption: req.body.soundOption
 	}).then((id) => {
 		req.session.round = id;
@@ -22,8 +22,8 @@ exports.createRound = (req, res) => {
 };
 
 exports.createChoice = (req, res) => {
-	GameService.createChoice({
-		id: req.session.game,
+	ExerciseService.createChoice({
+		id: req.session.exercise,
 		round: req.session.round,
 		score: req.body.score,
 		hintUsed: req.body.hintUsed,
@@ -34,9 +34,9 @@ exports.createChoice = (req, res) => {
 	});
 };
 
-exports.updateEndGameScore = (req, res) => {
-	GameService.updateEndGameScore({
-		id: req.session.game,
+exports.updateEndExerciseScore = (req, res) => {
+	ExerciseService.updateEndExerciseScore({
+		id: req.session.exercise,
 		score: req.body.score,
 	}).then(() => {
 		res.sendStatus(200);

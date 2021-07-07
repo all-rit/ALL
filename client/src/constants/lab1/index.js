@@ -1,8 +1,8 @@
-// Game States
-export const GAME_IDLE = 'GAME_IDLE';
-export const GAME_ENDED = 'GAME_ENDED';
-export const GAME_PLAYING = 'GAME_PLAYING';
-export const GAME_COUNTDOWN = 'GAME_COUNTDOWN';
+// Exercise States
+export const EXERCISE_IDLE = 'EXERCISE_IDLE';
+export const EXERCISE_ENDED = 'EXERCISE_ENDED';
+export const EXERCISE_PLAYING = 'EXERCISE_PLAYING';
+export const EXERCISE_COUNTDOWN = 'EXERCISE_COUNTDOWN';
 
 // Hint Box States
 export const HINT_BOX_OPEN = 'HINT_BOX_OPEN';

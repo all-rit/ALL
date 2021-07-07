@@ -16,7 +16,7 @@ const About = (lab) => {
             software that is accessible to users with visual impairments.
             You will learn about different color vision deficiencies,
             increase your understanding through an interactive module about
-            visual impairments, watch related videos, and take a
+            visual impairments, view related media to reinforce the topic, and take a
             quiz to test your knowledge. Click "Next" to start!
             </p>
         </div>

@@ -20,8 +20,8 @@ exports.completeReading = (req, res) => {
     })
 };
 
-exports.completeGame = (req, res) => {
-    UserLabService.completeGame({
+exports.completeExercise = (req, res) => {
+    UserLabService.completeExercise({
         labid: req.body.labid,
         usersessionid: req.session.token,
         date: Date.now()
@@ -30,8 +30,8 @@ exports.completeGame = (req, res) => {
     })
 };
 
-exports.completeVideo = (req, res) => {
-    UserLabService.completeVideo({
+exports.completeReinforcement = (req, res) => {
+    UserLabService.completeReinforcement({
         labid: req.body.labid,
         usersessionid: req.session.token,
         date: Date.now()
