@@ -1,7 +1,7 @@
 name: Continuous Deployment
 on:
   push:
-    branches: ['master']
+    branches: ['docker-deploy']
 
 jobs:
   deploy_job:
@@ -12,18 +12,19 @@ jobs:
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
       with:
-        HOST: all.rit.edu
-        USERNAME: all
+        HOST: ec2-3-239-214-117.compute-1.amazonaws.com
+        USERNAME: ubuntu
         PORT: 22
-        KEY: ${{ secrets.SSH_SECRET }}
+        KEY: ${{ secrets.TEST_ENV_KEY }}
         source: "."
-        target: "/home/all/research/"
-    - name: Executing remote command
+        target: "/home/ubuntu/ALL/"
+    - name: Restarting Docker Stack
       uses: appleboy/ssh-action@master
       with:
-        host: all.rit.edu
-        USERNAME: all
-        KEY: ${{ secrets.SSH_SECRET }}
+        HOST: ec2-3-239-214-117.compute-1.amazonaws.com
+        USERNAME: ubuntu
         PORT: 22
+        KEY: ${{ secrets.TEST_ENV_KEY }}
         script: |
+          docker-compose down
           docker-compose up --build -d
