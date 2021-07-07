@@ -76,7 +76,7 @@ class Lab extends Component{
                                 <ul class="module__bio">
                                     <li>[-Insert Quiz Score-]</li>
                                     <li>[-Insert Time Completed-]</li>
-                                    <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab}/></li>
+                                    <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} /></li>
                                 </ul>
                             </ul>
                         </li>
@@ -135,7 +135,7 @@ class Lab extends Component{
                                     {bio}
                                 </li>
                                 <li class="module__bio">
-                                    <InfoModal buttonLabel={"More Info"} labName={name}/>
+                                    <InfoModal buttonLabel={"More Info"} labName={name} redirect={() => handleRedirect(actions,lab)}/>
                                 </li>
                             </ul>
                         </li>
