@@ -4,7 +4,7 @@ services:
     container_name: database
     image: "postgres"
     env_file:
-      - ./server/.env
+      - ./.env
     volumes:
       - db-data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -20,7 +20,7 @@ services:
       database:
         condition: "service_healthy"
     env_file:
-      - ./server/.env
+      - ./.env
     links:
       - "database:database"
     build: ./server
@@ -31,7 +31,7 @@ services:
   client:
     container_name: client
     env_file:
-      - ./client/.env
+      - ./.env
     depends_on:
       - server
     links:

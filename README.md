@@ -25,7 +25,7 @@ NOTE - If you install Docker Desktop on MacOS or on Windows, docker-compose come
 
 1. Clone the repository and open the folder
 
-2. Docker Compose as well as the server, is expecting a file called `.env` located in the `/server` folder. It should contain the following information:
+2. Docker Compose as well as the server, is expecting a file called `.env` located in the root of the repository. It should contain the following information:
 
 ```
 # Database stuff:
@@ -44,25 +44,22 @@ GOOGLE_CALLBACK_URL=(Your Google Callback URI)
 # Client stuff
 CLIENT_URL=https://client
 KEY=(Your client session secret)
-```
 
-3. The client is also expecting a .env file. Create a file called `.env` in the `/client` folder containing the following information:
-
-```
+# React App stuff for Client
 REACT_APP_SERVER_URL=http://server:5005
 REACT_APP_GA_TRACKING_ID=(Your Google Analytics tracking ID)
 ```
 
-4. The website in default configuration will want an SSL certificate. Here's a couple of options:
+3. The website in default configuration will want an SSL certificate. Here's a couple of options:
     - Create a self-signed SSL certificate using something like OpenSSL in the `client/nginx` server, called `localhost.key` and `localhost.crt`.
     - Edit the `ssl_certificate` and `ssl_certificate_key` lines in `client/nginx/default.conf` to point to an existing certificate that you would like to use.
     - If you don't want to bother with SSL at all and just serve the site over HTTP, change `default_https.conf` to `default_http.conf` in `client/Dockerfile` to serve the app over HTTP instead.
 
-5. Once you have all your top secret information set, you can finally start the system. Do so by running `docker-compose up --build -d` in the top level of the repo.
+4. Once you have all your top secret information set, you can finally start the system. Do so by running `docker-compose up --build -d` in the top level of the repo.
 
-6. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:8080` to access the API.
+5. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:8080` to access the API.
 
-7. When you're done, you can stop both the client and the server by running `docker-compose down`.
+6. When you're done, you can stop both the client and the server by running `docker-compose down`.
 
 # Contributing
 
