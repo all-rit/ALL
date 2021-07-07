@@ -8,7 +8,7 @@ According to World Bank’s Disability Inclusion statistics,  15% of the world h
 
 The objectives of Accessible Learning Labs include but are not limited to addressing that lack of materials, by providing self-encapsulated, browser based, educational accessibility-related material to convey the importance of accessible interfaces.
 
-The website for all of the accessibility labs can be found [here](http://all.rit.edu).
+The website for all of the accessibility labs can be found [here](https://all.rit.edu).
 
 
 # Development
@@ -47,17 +47,19 @@ KEY=(Your client session secret)
 
 # React App stuff for Client
 REACT_APP_SERVER_URL=http://server:5005
+# This is also optional. If you have a Google Analytics tracking ID
+# that you'd like to use for analytics on your page, define it here. 
 REACT_APP_GA_TRACKING_ID=(Your Google Analytics tracking ID)
 ```
 
 3. The website in default configuration will want an SSL certificate. Here's a couple of options:
-    - Create a self-signed SSL certificate using something like OpenSSL in the `client/nginx` server, called `localhost.key` and `localhost.crt`.
-    - Edit the `ssl_certificate` and `ssl_certificate_key` lines in `client/nginx/default.conf` to point to an existing certificate that you would like to use.
+    - Create a self-signed SSL certificate using something like OpenSSL in `/etc/letsencrypt/live/all.rit.edu/` (create the directory if it does not exist), naming the certificate file `fullchain.pem` and the private key file `privkey.pem`. These are the values hardcoded into the current configuration.
+    - Edit the `ssl_certificate` and `ssl_certificate_key` lines in `client/nginx/default.conf` to point to an existing certificate that you would like to use. If necessary, be sure to edit the volume in `docker-compose.yml` to ensure the correct files are available to the container.
     - If you don't want to bother with SSL at all and just serve the site over HTTP, change `default_https.conf` to `default_http.conf` in `client/Dockerfile` to serve the app over HTTP instead.
 
 4. Once you have all your top secret information set, you can finally start the system. Do so by running `docker-compose up --build -d` in the top level of the repo.
 
-5. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:8080` to access the API.
+5. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:5005` to access the API.
 
 6. When you're done, you can stop both the client and the server by running `docker-compose down`.
 

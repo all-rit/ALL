@@ -23,6 +23,8 @@ services:
       - ./.env
     links:
       - "database:database"
+    volumes:
+      - "/etc/letsencrypt/live/all.rit.edu:/etc/letsencrypt/live/all.rit.edu"
     build: ./server
     ports:
       - "5005:5005"
@@ -36,6 +38,8 @@ services:
       - server
     links:
       - "server:server"
+    volumes:
+      - "/etc/letsencrypt/live/all.rit.edu:/etc/letsencrypt/live/all.rit.edu"
     build: ./client
     restart: unless-stopped
     ports:
