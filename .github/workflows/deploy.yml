@@ -26,6 +26,6 @@ jobs:
         PORT: 22
         KEY: ${{ secrets.TEST_ENV_KEY }}
         script: |
-          pwd
+          cd ALL
           docker-compose down
           docker-compose up --build -d
