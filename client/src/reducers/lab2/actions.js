@@ -1,12 +1,12 @@
 import {
   UPDATE_DEFAULT_COLORS,
-  UPDATE_GAME_COLORS,
+  UPDATE_EXERCISE_COLORS,
   SELECT_OPTION,
   ACTIVATE_POPUP,
   RESET_COLORS,
   RESET_OPTION,
-  START_GAME,
-  END_GAME,
+  START_EXERCISE,
+  END_EXERCISE,
   LOGIN,
   CHANGED_RESET,
   CLOSE_INFO_POPUP,
@@ -14,7 +14,7 @@ import {
   END_ABOUT_STATE,
   STAT_STATE,
   END_STAT_STATE,
-  FIRST_GAME,
+  FIRST_EXERCISE,
   INFO_STATE,
   END_INFO_STATE,
   INFO_STATE_TWO,
@@ -28,7 +28,7 @@ import {
   COLOR_CHANGE,
   END_COLOR_CHANGE,
   RESET,
-  BACK_GAME
+  BACK_EXERCISE
 } from '../../constants/lab2/index';
 
 /*
@@ -40,19 +40,19 @@ export const changeDefaultColors = (colors) => ({
 })
 
 /*
-Used to update the colors for the game screen only (from simulation calculation)
+Used to update the colors for the exercise screen only (from simulation calculation)
 */
-export const changeGameColors = (colors) => ({
-  type: UPDATE_GAME_COLORS,
+export const changeExerciseColors = (colors) => ({
+  type: UPDATE_EXERCISE_COLORS,
   payload: colors
 })
 
 /*
-Used to specifiy the game option outlined by the individual on the system
+Used to specifiy the exercise option outlined by the individual on the system
 */
-export const selectGameOption = (gameType) => ({
+export const selectExerciseOption = (exerciseType) => ({
   type: SELECT_OPTION,
-  payload: gameType
+  payload: exerciseType
 })
 
 /*
@@ -65,17 +65,17 @@ export const activatePopup = (popup) => ({
 })
 
 /*
-Used to declare the game state has started
+Used to declare the exercise state has started
 */
-export const startGame = () => ({
-  type: START_GAME
+export const startExercise = () => ({
+  type: START_EXERCISE
 })
 
 /*
-Used to declare the game state has ended
+Used to declare the exercise state has ended
 */
-export const endGame = () => ({
-  type: END_GAME
+export const endExercise = () => ({
+  type: END_EXERCISE
 })
 
 /*
@@ -87,7 +87,7 @@ export const resetOption = () => ({
 })
 
 /*
-Resets all of the game colors to the current colors for the system
+Resets all of the exercise colors to the current colors for the system
 */
 export const resetColors = () => ({
   type: RESET_COLORS
@@ -144,10 +144,10 @@ export const closeStatPage = () => ({
 })
 
 /*
-Used to declare a game as not the first game
+Used to declare a exercise as not the first exercise
 */
-export const endFirstGame = () => ({
-  type: FIRST_GAME
+export const endFirstExercise = () => ({
+  type: FIRST_EXERCISE
 })
 
 /*
@@ -243,6 +243,6 @@ export const resetSystem = () => ({
   type: RESET
 })
 
-export const goBackFromGame = () => ({
-  type: BACK_GAME
+export const goBackFromExercise = () => ({
+  type: BACK_EXERCISE
 })

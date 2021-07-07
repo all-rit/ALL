@@ -16,7 +16,7 @@ const About = (lab) => {
                 that is accessible to users who utilize screenreaders.
                 You will learn about using alt tags,
                 increase your understanding through an interactive module about
-                screenreaders and alt tags, watch related videos, and take a quiz
+                screenreaders and alt tags, view related media to reinforce the topic, and take a quiz
                 to test your knowledge. Click "Next" to start!
             </p>
         </div>

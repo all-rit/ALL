@@ -3,28 +3,28 @@ import ReactGA from 'react-ga';
 
 import {default as AboutLab1} from "./components/body/lab1/about";
 import {default as ReadingLab1} from "./components/body/lab1/reading";
-import {default as GameLab1} from "./components/game/lab1/Main";
-import {default as VideoLab1} from "./components/body/lab1/video";
+import {default as ExerciseLab1} from "./components/exercise/lab1/Main";
+import {default as ReinforcementLab1} from "./components/body/lab1/reinforcement";
 import {Sections} from './constants/index';
 
 import {default as AboutLab2} from "./components/body/lab2/about";
 import {default as ReadingLab2} from "./components/body/lab2/reading";
-import {default as GameLab2} from "./components/game/lab2/Main";
-import {default as VideoLab2} from "./components/body/lab2/video";
+import {default as ExerciseLab2} from "./components/exercise/lab2/Main";
+import {default as ReinforcementLab2} from "./components/body/lab2/reinforcement";
 
 import {default as AboutLab3} from "./components/body/lab3/about";
 import {default as ReadingLab3} from "./components/body/lab3/reading";
-import {default as GameLab3} from "./components/game/lab3/Main";
-import {default as VideoLab3} from "./components/body/lab3/video";
+import {default as ExerciseLab3} from "./components/exercise/lab3/Main";
+import {default as ReinforcementLab3} from "./components/body/lab3/reinforcement";
 
 import {default as AboutLab4} from "./components/body/lab4/about";
-import {default as GameLab4} from "./components/game/lab4/Main";
+import {default as ExerciseLab4} from "./components/exercise/lab4/Main";
 import {default as ReadingLab4} from "./components/body/lab4/reading";
-import {default as VideoLab4} from "./components/body/lab4/video";
+import {default as ReinforcementLab4} from "./components/body/lab4/reinforcement";
 import {default as AboutLab5} from "./components/body/lab5/about";
 import {default as ReadingLab5} from "./components/body/lab5/reading";
-import {default as GameLab5} from "./components/game/lab5/Main";
-import {default as VideoLab5} from "./components/body/lab5/video";
+import {default as ExerciseLab5} from "./components/exercise/lab5/Main";
+import {default as ReinforcementLab5} from "./components/body/lab5/reinforcement";
 import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Error} from "./components/body/landingpage/error";
@@ -61,9 +61,6 @@ function initializeReactGA() {
         const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
         ReactGA.initialize(TRACKING_ID);
         ReactGA.pageview(window.location.pathname + window.location.search);
-    }
-    else if (process.env.NODE_ENV === 'development') {
-        console.log("Google Analytics cannot be implemented in development mode")
     }
 }
 
@@ -114,17 +111,17 @@ class App extends Component {
               <ReadingLab4 path="/Lab4/Reading"/>
               <ReadingLab5 path="/Lab5/Reading"/>
 
-              <GameLab1 path="/Lab1/Game" />
-              <GameLab2 path="/Lab2/Game" />
-              <GameLab3 path="/Lab3/Game/*" />
-              <GameLab4 path="/Lab4/Game/*" />
-              <GameLab5 path="/Lab5/Game/*" />
+              <ExerciseLab1 path="/Lab1/Exercise" />
+              <ExerciseLab2 path="/Lab2/Exercise" />
+              <ExerciseLab3 path="/Lab3/Exercise/*" />
+              <ExerciseLab4 path="/Lab4/Exercise/*" />
+              <ExerciseLab5 path="/Lab5/Exercise/*" />
 
-              <VideoLab1 path="/Lab1/Video" />
-              <VideoLab2 path="/Lab2/Video" />
-              <VideoLab3 path="/Lab3/Video" />
-              <VideoLab4 path="/Lab4/Video" />
-              <VideoLab5 path="/Lab5/Video" />
+              <ReinforcementLab1 path="/Lab1/Reinforcement" />
+              <ReinforcementLab2 path="/Lab2/Reinforcement" />
+              <ReinforcementLab3 path="/Lab3/Reinforcement" />
+              <ReinforcementLab4 path="/Lab4/Reinforcement" />
+              <ReinforcementLab5 path="/Lab5/Reinforcement" />
 
 
               <Quiz path={`/Lab${lab}/Quiz`}/>
