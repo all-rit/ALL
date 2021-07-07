@@ -24,4 +24,5 @@ WORKDIR /var/www/html
 COPY --from=builder /app/build /var/www/html/
 
 COPY ./nginx/default_https.conf /etc/nginx/conf.d/default_https.conf
-COPY /etc/letsencrypt/live/all.rit.edu/*.pem /etc/nginx/
+COPY /etc/letsencrypt/live/all.rit.edu/fullchain.pem /etc/nginx/
+COPY /etc/letsencrypt/live/all.rit.edu/privkey.pem /etc/nginx/
