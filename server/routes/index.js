@@ -26,6 +26,8 @@ let ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 //Lab Controller
 let LabController = require("../controllers/LabController");
 
+//Team Members Controller
+let TeamMemberController = require("../controllers/TeamMemberController");
 
 // User Routes
 router.post('/url', UserController.storeURL)
@@ -60,4 +62,8 @@ router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
 router.post('/page/complete', PageController.createPage);
 //Labs
 router.get('/lab', LabController.getAllLabs);
+//Team
+router.get('/teammember', TeamMemberController.getAllTeamMembers)
+router.get('/professors', TeamMemberController.getAllProfessors)
+
 module.exports = router;

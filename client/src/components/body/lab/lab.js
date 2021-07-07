@@ -1,18 +1,8 @@
 import React, { Component} from 'react';
-import handleRedirect from "../../../../helpers/Redirect";
-import ProgressBar from '../../profilepage/progressBar';
+import handleRedirect from "../../../helpers/Redirect";
+import ProgressBar from '../profilepage/progressBar';
 import InfoModal from './Modal';
 class Lab extends Component{
-    state = { show: false };
-
-    showModal = () => {
-      this.setState({ show: true });
-    };
-  
-    hideModal = () => {
-      this.setState({ show: false });
-    };
-
     render(){
         const {progressState,alt,lab, name, bio , image,actions} = this.props;
         switch(progressState){

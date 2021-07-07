@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import Certificate from '../../../quiz/components/Certificate';
+import Certificate from '../../quiz/components/Certificate';
 
 const InfoModal = (props) => {
     const {buttonLabel,labName,labNum,redirect,className} = props;

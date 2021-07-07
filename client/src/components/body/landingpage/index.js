@@ -5,7 +5,7 @@ import handleRedirect from "../../../helpers/Redirect";
 import {actions as mainActions} from "../../../reducers/MainReducer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import LabGeneration from "./lab/LabGeneration";
+import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
 
 const mapDispatchToProps = (dispatch) => {

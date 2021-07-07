@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileHeader from "./profileHeader";
 import {actions} from "../../../reducers/MainReducer";
-import LabGeneration from "../landingpage/lab/LabGeneration";
+import LabGeneration from "../lab/LabGeneration";
 import EnrolledCourses from "./enrolledCourses";
 
 const Profile = (props) => {
