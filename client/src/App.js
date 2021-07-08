@@ -61,6 +61,9 @@ function initializeReactGA() {
         ReactGA.initialize(TRACKING_ID);
         ReactGA.pageview(window.location.pathname + window.location.search);
     }
+    else {
+        console.log("Development mode - GA will not initialize")
+    }
 }
 
 class App extends Component {
