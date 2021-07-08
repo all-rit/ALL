@@ -13,15 +13,10 @@ class Lab extends Component{
                             <a class="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <img
-                                        class="img-fluid module__image"
-                                        src={image}
-                                        alt={alt}
-                                    />
+                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")"}}/>
                             </a>
                         </li>
-                        <li class="portfolio-caption module__caption">
-                            <ul>
+                        <ul class="module__caption">
                                 <li class="module__title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
@@ -38,8 +33,7 @@ class Lab extends Component{
                                 <li class="module__bio">
                                     <p>[-Insert Time Started-]</p>
                                 </li>
-                            </ul>
-                        </li>
+                        </ul>
                     </ul>
             );
             case "COMPLETED":
@@ -49,27 +43,21 @@ class Lab extends Component{
                             <a class="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <img
-                                        class="img-fluid module__image"
-                                        src={image}
-                                        alt={alt}
-                                    />
+                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")"}}/>
                             </a>
                         </li>
-                        <li class="portfolio-caption module__caption">
-                            <ul>
-                                <li class="module__title">
-                                    <a onClick={() => handleRedirect(actions,lab)} href="# ">
-                                        {name}
-                                    </a>
-                                </li>
-                                <ul class="module__bio">
-                                    <li>[-Insert Quiz Score-]</li>
-                                    <li>[-Insert Time Completed-]</li>
-                                    <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} /></li>
-                                </ul>
+                        <ul class="module__caption">
+                            <li class="module__title">
+                                <a onClick={() => handleRedirect(actions,lab)} href="# ">
+                                    {name}
+                                </a>
+                            </li>
+                            <ul class="module__bio">
+                                <li>[-Insert Quiz Score-]</li>
+                                <li>[-Insert Time Completed-]</li>
+                                <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} /></li>
                             </ul>
-                        </li>
+                        </ul>
                     </ul>
             );
             case "NOT_STARTED":
@@ -79,25 +67,20 @@ class Lab extends Component{
                             <a class="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <img
-                                        class="img-fluid module__image"
-                                        src={image}
-                                        alt={alt}
-                                    />
+                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")" }}/>
                             </a>
                         </li>
-                        <li class="portfolio-caption module__caption">
-                            <ul>
-                                <li class="module__title">
-                                    <a onClick={() => handleRedirect(actions,lab)} href="# ">
-                                        {name}
-                                    </a>
-                                </li>
-                                <li class="module__bio">
-                                    {bio}
-                                </li>
-                            </ul>
-                        </li>
+                        <ul class="module__caption">
+                            <li class="module__title">
+                                <a onClick={() => handleRedirect(actions,lab)} href="# ">
+                                    {name}
+                                </a>
+                            </li>
+                            <li class="module__bio">
+                                {bio}
+                            </li>
+                            {/* <li class="module__bio module__lab_buttons"><button class="module__launchLab module__lab_button" onClick={() => handleRedirect(actions,lab)}>Begin Lab</button></li> */}
+                        </ul>
                     </ul>
             );
             default:
@@ -107,15 +90,10 @@ class Lab extends Component{
                             <a class="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <img
-                                        class="img-fluid module__image"
-                                        src={image}
-                                        alt={alt}
-                                    />
+                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")"}}/>
                             </a>
                         </li>
-                        <li class="portfolio-caption module__caption">
-                            <ul>
+                        <li class="module__caption module__caption">
                                 <li class="module__title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
@@ -124,10 +102,10 @@ class Lab extends Component{
                                 <li class="module__bio">
                                     {bio}
                                 </li>
-                                <li class="module__bio">
+                                <ul class="module__bio module__lab_buttons">
+                                    <li><button class="module__launchLab module__lab_button" onClick={() => handleRedirect(actions,lab)}>Launch Lab</button></li>
                                     <InfoModal buttonLabel={"More Info"} labName={name} redirect={() => handleRedirect(actions,lab)}/>
-                                </li>
-                            </ul>
+                                </ul>
                         </li>
                     </ul>
             );

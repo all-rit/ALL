@@ -9,13 +9,14 @@ class Profile extends Component{
             
             <ul id={name} class="citation module__col">
                 <li id="profile_image">
-                    <img 
-                    class="img-fluid module__image"
+                    {/* <img 
+                    class="img-fluid module__image module__profile_image"
                     src={profile_image}
                     alt="Team Member Profile"
-                    />
+                    /> */}
+                    <div alt={name+"Profile Image"} class="img-fluid module__image module__profile_image" style={{backgroundImage: "url("+profile_image+")" }}/>
                 </li>
-                <li class="portfolio-caption module__caption">
+                <li class="module__caption citation__caption">
                     <ul>
                         <li id={name} class="citation__name">{name}</li>
                         <li id={title} class="module__title">{title}</li>
