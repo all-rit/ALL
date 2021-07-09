@@ -54,7 +54,7 @@ REACT_APP_GA_TRACKING_ID=(Your Google Analytics tracking ID)
 
 3. The website in default configuration will want an SSL certificate. Here's a couple of options:
     - Create a self-signed SSL certificate using something like OpenSSL in `/etc/letsencrypt/live/all.rit.edu/` (create the directory if it does not exist), naming the certificate file `fullchain.pem` and the private key file `privkey.pem`. These are the values hardcoded into the current configuration.
-    - Edit the `ssl_certificate` and `ssl_certificate_key` lines in `client/nginx/default.conf` to point to an existing certificate that you would like to use. If necessary, be sure to edit the volume in `docker-compose.yml` to ensure the correct files are available to the container.
+    - Edit the `ssl_certificate` and `ssl_certificate_key` lines in `client/nginx/default.conf`, and the `const private_key` and `const certificate` lines in `server/app.js` to point to an existing certificate that you would like to use. Be sure to edit the volume in `docker-compose.yml` to ensure the correct files are available to the container.
     - If you don't want to bother with SSL at all and just serve the site over HTTP, change `default_https.conf` to `default_http.conf` in `client/Dockerfile` to serve the app over HTTP instead.
 
 4. In whichever nginx configuration file you're using, ensure that the `server_name` fields in both servers, as well as the 301 redirect to HTTPS reflect the domain that you're hosting the app at. If you're running it on your own system and intend on using it locally only, set this value to `localhost`.
