@@ -44,10 +44,6 @@ app.use(cors({
 
 app.use(require('./routes'));
 
-app.get('/', (req, res) => {
-  res.send('Test endpoint over https')
-})
-
 let server;
 
 // Only serve the API over HTTPS if the SSL files are defined.
