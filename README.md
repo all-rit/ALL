@@ -57,11 +57,13 @@ REACT_APP_GA_TRACKING_ID=(Your Google Analytics tracking ID)
     - Edit the `ssl_certificate` and `ssl_certificate_key` lines in `client/nginx/default.conf` to point to an existing certificate that you would like to use. If necessary, be sure to edit the volume in `docker-compose.yml` to ensure the correct files are available to the container.
     - If you don't want to bother with SSL at all and just serve the site over HTTP, change `default_https.conf` to `default_http.conf` in `client/Dockerfile` to serve the app over HTTP instead.
 
-4. Once you have all your top secret information set, you can finally start the system. Do so by running `docker-compose up --build -d` in the top level of the repo.
+4. In whichever nginx configuration file you're using, ensure that the `server_name` fields in both servers, as well as the 301 redirect to HTTPS reflect the domain that you're hosting the app at. If you're running it on your own system and intend on using it locally only, set this value to `localhost`.
 
-5. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:5005` to access the API.
+5. Once you have all your top secret information set, you can finally start the system. Do so by running `docker-compose up --build -d` in the top level of the repo.
 
-6. When you're done, you can stop both the client and the server by running `docker-compose down`.
+6. Navigate to `localhost` in your favorite browser for the frontend, or to `localhost:5005` to access the API.
+
+7. When you're done, you can stop both the client and the server by running `docker-compose down`.
 
 # Contributing
 
