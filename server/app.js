@@ -46,6 +46,7 @@ app.use(require('./routes'));
 
 let server;
 
+// Only serve the API over HTTPS if the SSL files are defined.
 const private_key = '/etc/letsencrypt/live/all.rit.edu/privkey.pem';
 const certificate = '/etc/letsencrypt/live/all.rit.edu/fullchain.pem';
 
