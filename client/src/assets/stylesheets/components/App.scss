@@ -340,8 +340,8 @@ a.icon:hover {
 	}
 	&__lab_button{
 		font-family: "Open Sans", sans-serif;
-		font-size: 1;
-		padding: 15px 15px;
+		font-size: 1.2rem;
+		padding: 10px 10px;
 		border: 1px solid rgba(0, 0, 0, 0.2);
 		border-radius: 1rem;
 		margin: .5rem;
@@ -357,6 +357,7 @@ a.icon:hover {
 	&__bio{
 		word-wrap: break-word;
 		font-size: 18px;
+		min-height: 96px;
 		padding: 5px 0 10px 0;
 	}
 	&__title{
@@ -369,7 +370,16 @@ a.icon:hover {
 		&:hover{
 			background-color: #FFDC5E;
 		}
-		background-color: var(--yellow-text);
+		// background-color: var(--yellow-text);
+		//3D3D3D
+	}
+	&__moreInfo{
+		background-color: #3D3D3D;
+		color:white;
+		&:hover{
+			color:whitesmoke;
+			background-color: #4b4b4b;
+		}
 	}
 
 }
