@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Profile from "./Profile";
 import TeamMemberService from "../../../../services/TeamMemberService";
 
+
 function renderProfileData(profileInformation) {
     return profileInformation.map((profileInfo, index) => {
-        const {imageURL, firstName,lastName,title,work,datesActive,websiteURL,network} = profileInfo //destructuring
+        const {imageURL, firstName,lastName,title,work,datesActive,websiteURL,network,socials} = profileInfo //destructuring
         return (
-                
                 <Profile 
                     key={index}
                     profile_image= {imageURL} 
@@ -14,6 +14,7 @@ function renderProfileData(profileInformation) {
                     title= {title} 
                     work={work}
                     datesActive={datesActive}
+                    socials={socials}
                     website={websiteURL}
                     network={network}
                 />

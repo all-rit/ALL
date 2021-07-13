@@ -93,7 +93,7 @@ class Lab extends Component{
                                     <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")"}}/>
                             </a>
                         </li>
-                        <li class="module__caption module__caption">
+                        <ul class="module__caption module__caption">
                                 <li class="module__title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
@@ -106,7 +106,7 @@ class Lab extends Component{
                                     <li><button class="module__lab_button btn-primary Button btn" onClick={() => handleRedirect(actions,lab)}>Launch Lab</button></li>
                                     <InfoModal buttonLabel={"More Info"} labName={name} redirect={() => handleRedirect(actions,lab)}/>
                                 </ul>
-                        </li>
+                        </ul>
                     </ul>
             );
         }

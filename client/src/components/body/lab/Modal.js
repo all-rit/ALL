@@ -13,7 +13,7 @@ const InfoModal = (props) => {
         case "More Info":
             return (
                 <ul>
-                    <button color="secondary" class="module__lab_button button module__lab_button Button btn module__moreInfo" onClick={toggle}>{buttonLabel}</button>
+                    <button class="module__lab_button button module__lab_button Button btn btn-second" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalBody>
                                 <ul>
@@ -24,8 +24,8 @@ const InfoModal = (props) => {
                                 </ul>
                             </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={redirect}>Launch Lab</Button>{' '}
-                            <Button color="secondary" onClick={toggle}>Cancel</Button>
+                            <Button className="btn-primary" onClick={redirect}>Launch Lab</Button>{' '}
+                            <Button className="btn-second" onClick={toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
                 </ul>
@@ -33,7 +33,7 @@ const InfoModal = (props) => {
         case "View Certificate":
             return (
                 <ul>
-                    <button color="secondary" class="module__lab_button btn-primary Button btn" onClick={toggle}>{buttonLabel}</button>
+                    <button class="module__lab_button btn-primary Button btn" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalBody>
                                 <ul>
@@ -43,7 +43,7 @@ const InfoModal = (props) => {
                                 </ul>
                             </ModalBody>
                         <ModalFooter>
-                        <Button color="secondary" onClick={toggle}>Cancel</Button>
+                        <Button color="secondary" className="btn-second" onClick={toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
                 </ul>
