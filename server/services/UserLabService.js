@@ -67,7 +67,7 @@ exports.completeReading= (data)=>{
     return Promise.resolve();
 
 };
-exports.completeGame = (data)=> {
+exports.completeExercise = (data)=> {
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
@@ -82,13 +82,13 @@ exports.completeGame = (data)=> {
                 }
             ).then((userlab) => {
                 if (userlab !== null) {
-                    userlab.gamecompletedtime = datetime;
+                    userlab.exercisecompletedtime = datetime;
                     userlab.save();
                 } else {
                     db.UserLab.create({
                         usersessionid: usersessionid,
                         labid: labid,
-                        gamecompletedtime: datetime,
+                        exercisecompletedtime: datetime,
                     });
                 }
                 return true;
@@ -100,7 +100,7 @@ exports.completeGame = (data)=> {
     return Promise.resolve();
 
 };
-exports.completeVideo= (data)=>{
+exports.completeReinforcement= (data)=>{
     const usersessionid = data.usersessionid;
     const labid = data.labid;
     const datetime = data.date
@@ -115,14 +115,14 @@ exports.completeVideo= (data)=>{
                 }
             ).then((userlab)=> {
                 if(userlab !== null) {
-                    userlab.videocompletedtime = datetime;
+                    userlab.reinforcementcompletedtime = datetime;
                     userlab.save();
                 }
                 else{
                     db.UserLab.create({
                         usersessionid:usersessionid,
                         labid:labid,
-                        videocompletedtime: datetime,
+                        reinforcementcompletedtime: datetime,
                     });
                 }
                 return true;
