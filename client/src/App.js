@@ -56,6 +56,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 function initializeReactGA() {
+    console.log("env file: ", process.env)
+    console.log("tracking id: ", process.env.REACT_APP_GA_TRACKING_ID)
     if (process.env.NODE_ENV === 'production') {
         const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
         ReactGA.initialize(TRACKING_ID);
