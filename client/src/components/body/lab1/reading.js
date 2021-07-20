@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
-// import { Link } from '@reach/router';
 import { Pie } from "react-chartjs-2";
 import Image1 from '../../../assets/images/casestudy/1.jpg';
 
@@ -50,7 +49,7 @@ const Reading = () => {
             was established in 1998. This section outlines all of the necessary components of web infrastructure
             to keep its promise to ensure applications are accessible to all.{' '}
             <a
-                href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/final-rule/iii-major-issues"
+                href="https://www.access-board.gov/ict/app-d.html#subpart_c"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -73,21 +72,14 @@ const Reading = () => {
 
           <p>
             Existing validators, such as{' '}
-            <a href="https://achecker.ca/checker/index.php" target="_blank" rel="noopener noreferrer">
+            <a href="https://achecker.achecks.ca/checker/index.php" target="_blank" rel="noopener noreferrer">
               AChecker
-            </a>, can help to ensure this standard is met. Validators analyze a webpage by inputting an URL and
+            </a>, can help to ensure this standard is met. Validators analyze a webpage by inputting a URL and
             ensure that the page follows the{' '}
             <a href="https://www.w3.org/TR/WCAG21/#perceivable" target="_blank" rel="noopener noreferrer">
               WCAG's Perceivable accessibility principle
-            </a>{' '}
-            and satisfies each criteria as shown in{' '}
-            <a
-                href="https://achecker.ca/guideline/view_guideline.php?id=8"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-              AChecker's validator (1.1 - 1.4)
-            </a>. If software is not accessible to people with hearing loss, this can be in violation of
+            </a>.{' '}
+            If software is not accessible to people with hearing loss, this can be in violation of
             the{' '}
             <a href="https://www.ada.gov/ada_intro.htm" target="_blank" rel="noopener noreferrer">
               American with Disabilities Act (ADA)
@@ -169,7 +161,7 @@ const Reading = () => {
             our applications, and we are not protecting the rights of these individuals to be able to access the
             internet the same as everyone else. {' '}
             <a
-                href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/final-rule/iii-major-issues"
+                href="https://www.access-board.gov/ict/app-d.html#subpart_c"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -177,7 +169,7 @@ const Reading = () => {
             </a>{' '}
             is vital to the continued success of web applications on the internet.
           </p>
-          <p>Some information for this page was gathered from <a href="http://www.nchearingloss.org" target="_blank" rel="noopener noreferrer">www.nchearingloss.org</a></p>
+          <p>Some information for this page was gathered from <a href="https://www.nchearingloss.org" target="_blank" rel="noopener noreferrer">www.nchearingloss.org</a></p>
       </div>
   );
 }
