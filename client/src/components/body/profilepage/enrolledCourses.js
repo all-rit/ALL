@@ -28,14 +28,13 @@ const EnrolledCourses = (user_props) => {
             {
                 enrolledCourses.length === 0 ?
                     <p> You are currently not enrolled in any courses</p> :
-                        <div>
-                            {/*todo change this to map every course*/}
-                            {enrolledCourses.map((course, index) => (
-                                <p>
-                                courseID: {course.courseID} Date enrolled: {course.enrolledDate.split("T")[0]}
-                                </p>
-                            ))}
-                        </div>
+                    <div>
+                        {/*todo change this to map every course*/}
+                        {enrolledCourses.map((course, index) => (
+                            <p>groupID: {course.courseID} Date enrolled: {course.enrolledDate.split("T")[0]}
+                            </p>
+                        ))}
+                    </div>
             }
         </div>
     )
