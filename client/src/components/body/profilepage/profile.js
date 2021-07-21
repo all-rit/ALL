@@ -3,6 +3,7 @@ import ProfileHeader from "./profileHeader";
 import {actions} from "../../../reducers/MainReducer";
 import LabGeneration from "../lab/LabGeneration";
 import EnrolledCourses from "./enrolledCourses";
+import InstructingGroups from "./instructingGroups";
 
 const Profile = (props) => {
     return (
@@ -13,23 +14,32 @@ const Profile = (props) => {
             :
             <div className="profile container">
                 <ProfileHeader user={props}/>
+
                 <h4>My Enrolled Groups</h4>
                 <EnrolledCourses user={props.user}/>
+
                 <h4>In Progress Labs</h4>
                 <br/>
                 <div className="landingpage__row">
                     <LabGeneration actions={actions} progressState="IN_PROGRESS"/>
                 </div>
+
                 <h4>To-do Labs</h4>
                 <br/>
                 <div className="landingpage__row">
                     <LabGeneration actions={actions} progressState="NOT_STARTED"/>
                 </div>
+
                 <h4>Completed Labs</h4>
                 <br/>
                 <div className="landingpage__row">
                     <LabGeneration actions={actions} progressState="COMPLETED"/>
                 </div>
+
+                <h4>My Instructing Groups</h4>
+                <br/>
+                <InstructingGroups/>
+
             </div>
         }
         </div>
