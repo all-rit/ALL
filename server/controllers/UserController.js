@@ -9,8 +9,8 @@ exports.main = (req, res) => {
 	});
 };
 
-exports.getUserEnrolledCourses = (req, res) => {
-	UserService.getUserEnrolledCourses(req.params.userId).then((records) => {
+exports.getUserEnrolledGroups = (req, res) => {
+	UserService.getUserEnrolledGroups(req.params.userId).then((records) => {
 		res.json(records);
 	})
 };

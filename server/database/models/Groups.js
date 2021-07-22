@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     const {nanoid} = require("nanoid");
-    const Courses = sequelize.define(
-        'Courses',
+    const Groups = sequelize.define(
+        'Groups',
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             instructorUserID: { type: DataTypes.INTEGER },
-            courseName: { type: DataTypes.TEXT },
+            groupName: { type: DataTypes.TEXT },
             createdDate: { type: DataTypes.DATE },
             isActive: { type: DataTypes.BOOLEAN },
             code: {
@@ -21,19 +21,19 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         },
-        { tableName: 'courses' }
+        { tableName: 'groups' }
     );
-    Courses.sync();
-    // Courses.sync({
+    Groups.sync();
+    // Groups.sync({
     //     force: false
     // }).then(function() {
-    //     Courses.create({
+    //     Groups.create({
     //         instructorUserID: 1,
-    //         courseName: 'SWEN 256 Fall 2021',
+    //         groupName: 'SWEN 256 Fall 2021',
     //         createdDate: Date.now(),
     //         isActive: true,
     //         code: nanoid(6).toUpperCase()
     //     })
     // })
-    return Courses;
+    return Groups;
 };

@@ -27,10 +27,10 @@ const LabGeneration = (props)=>{
 
   useEffect(() => {
       if(labInformation.length===0){
-        async function fetchCourses() {
+        async function fetchGroups() {
             return LabService.getAllLabs();
         }
-        fetchCourses().then((data) => {
+        fetchGroups().then((data) => {
           setLabInformation(data);
         });
         
@@ -41,7 +41,5 @@ const LabGeneration = (props)=>{
       renderLabData(actions,labInformation,progressState)
   );
 }
-
-
 
 export default LabGeneration;

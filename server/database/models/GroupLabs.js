@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const CourseLabs = sequelize.define(
-        'CourseLabs',
+    const GroupLabs = sequelize.define(
+        'GroupLabs',
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -8,19 +8,19 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 autoIncrement: true
             },
-            courseID: DataTypes.INTEGER,
+            groupID: DataTypes.INTEGER,
             labID: DataTypes.INTEGER
         },
-        { tableName: 'course_labs' }
+        { tableName: 'group_labs' }
     );
-    CourseLabs.sync();
-    // CourseLabs.sync({
+    GroupLabs.sync();
+    // GroupLabs.sync({
     //     force: true
     // }).then(function() {
-    //     CourseLabs.create({
-    //         courseID: 1,
+    //     GroupLabs.create({
+    //         groupID: 1,
     //         labID: 1
     //     })
     // })
-    return CourseLabs;
+    return GroupLabs;
 };

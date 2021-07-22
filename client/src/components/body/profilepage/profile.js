@@ -2,7 +2,7 @@ import React from "react";
 import ProfileHeader from "./profileHeader";
 import {actions} from "../../../reducers/MainReducer";
 import LabGeneration from "../lab/LabGeneration";
-import EnrolledCourses from "./enrolledCourses";
+import EnrolledGroups from "./enrolledGroups";
 import InstructingGroups from "./instructingGroups";
 
 const Profile = (props) => {
@@ -17,7 +17,7 @@ const Profile = (props) => {
                 <br/>
 
                 <h4>My Enrolled Groups</h4>
-                <EnrolledCourses user={props.user}/>
+                <EnrolledGroups user={props.user}/>
                 <br/>
                 <h4>In Progress Labs</h4>
                 <div className="landingpage__row">

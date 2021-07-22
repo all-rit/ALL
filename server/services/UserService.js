@@ -78,7 +78,7 @@ exports.getSession = (token) => {
 		});
 };
 
-exports.getUserEnrolledCourses = (userid) => {
+exports.getUserEnrolledGroups = (userid) => {
 	console.log(userid);
 	return db.Enrollment
 		.findAll({
@@ -87,5 +87,5 @@ exports.getUserEnrolledCourses = (userid) => {
 			},
 			raw: true
 		})
-		// .map(el => el.get('courseID'))
+		// .map(el => el.get('groupID'))
 }

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             userID: { type: DataTypes.INTEGER },
-            courseID: { type: DataTypes.INTEGER },
+            groupID: { type: DataTypes.INTEGER },
             enrolledDate: { type: DataTypes.DATE },
         },
         { tableName: 'enrollment' }
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     // }).then(function() {
     //     Enrollment.create({
     //         userID: 2,
-    //         courseID: 1,
+    //         groupID: 1,
     //         enrolledDate: Date.now()
     //     })
     // })

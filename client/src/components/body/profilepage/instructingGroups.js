@@ -6,7 +6,7 @@ const InstructingGroups = () => {
         <div className="instructing-groups">
             <Table>
                 <thead>
-                    <th>Courses</th>
+                    <th>Groups</th>
                     <th>Invite Code</th>
                     <th>Assigned Labs</th>
                 </thead>
