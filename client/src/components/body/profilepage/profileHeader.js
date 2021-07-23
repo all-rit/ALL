@@ -22,7 +22,6 @@ const ProfileHeader = (props) => {
                         <li>
                             <ProgressBar
                                 barData={[true,true,false,true,true]}
-                                total={5}
                                 completed={4}
                                 percentage={false}
                             />
