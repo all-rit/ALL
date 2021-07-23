@@ -337,6 +337,9 @@ a.icon:hover {
 		display: flex;
 		justify-content: space-evenly;
 	}
+	&__lab_title{
+		min-height: 63px;
+	}
 	&__lab_button{
 		font-family: "Open Sans", sans-serif;
 		font-size: 1.2rem;

@@ -9,20 +9,40 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             userID: { type: DataTypes.INTEGER },
-            courseID: { type: DataTypes.INTEGER },
+            groupID: { type: DataTypes.INTEGER },
             enrolledDate: { type: DataTypes.DATE },
         },
         { tableName: 'enrollment' }
     );
     Enrollment.sync();
     // Enrollment.sync({
-    //     force: true
+    //     force: false
     // }).then(function() {
     //     Enrollment.create({
-    //         userID: 2,
-    //         courseID: 1,
+    //         userID: 4,
+    //         groupID: 1,
     //         enrolledDate: Date.now()
-    //     })
+    //     });
+    //     Enrollment.create({
+    //         userID: 1,
+    //         groupID: 1,
+    //         enrolledDate: Date.now()
+    //     });
+    //     Enrollment.create({
+    //         userID: 2,
+    //         groupID: 1,
+    //         enrolledDate: Date.now()
+    //     });
+    //     Enrollment.create({
+    //         userID: 13,
+    //         groupID: 3,
+    //         enrolledDate: Date.now()
+    //     });
+    //     Enrollment.create({
+    //         userID: 14,
+    //         groupID: 2,
+    //         enrolledDate: Date.now()
+    //     });
     // })
     return Enrollment;
 };

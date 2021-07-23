@@ -17,7 +17,7 @@ class Lab extends Component{
                             </a>
                         </li>
                         <ul class="module__caption">
-                                <li class="module__title">
+                                <li class="module__title module__lab_title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
                                     </a>
@@ -47,7 +47,7 @@ class Lab extends Component{
                             </a>
                         </li>
                         <ul class="module__caption">
-                            <li class="module__title">
+                            <li class="module__title module__lab_title">
                                 <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
@@ -71,7 +71,7 @@ class Lab extends Component{
                             </a>
                         </li>
                         <ul class="module__caption">
-                            <li class="module__title">
+                            <li class="module__title module__lab_title">
                                 <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
@@ -94,7 +94,7 @@ class Lab extends Component{
                             </a>
                         </li>
                         <ul class="module__caption module__caption">
-                                <li class="module__title">
+                                <li class="module__title module__lab_title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
                                     </a>

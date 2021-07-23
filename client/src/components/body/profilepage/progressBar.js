@@ -8,7 +8,7 @@ class ProgressBar extends Component{
         function renderBars(){
             return barData.map((data,index)=>{
                 return(
-                    <ProgressBarBar
+                    <ProgressBarBar key={index}
                         data={data}
                         index={index}
                     />

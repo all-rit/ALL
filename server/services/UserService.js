@@ -78,8 +78,7 @@ exports.getSession = (token) => {
 		});
 };
 
-exports.getUserEnrolledCourses = (userid) => {
-	console.log(userid);
+exports.getUserEnrolledGroups = (userid) => {
 	return db.Enrollment
 		.findAll({
 			where: {
@@ -87,5 +86,15 @@ exports.getUserEnrolledCourses = (userid) => {
 			},
 			raw: true
 		})
-		// .map(el => el.get('courseID'))
+		// .map(el => el.get('groupID'))
+}
+
+exports.getUserInstructingGroups = (userid) => {
+	return db.Groups
+		.findAll({
+			where: {
+				instructorUserID: userid,
+			},
+			raw: true
+		})
 }

@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
 	);
 	Users.sync();
 	// Users.sync({
-	// 	force: true
+	// 	force: false
 	// }).then(function() {
 	// 	Users.create({
 	// 		firstname: 'Samuel',
@@ -42,6 +42,16 @@ module.exports = (sequelize, DataTypes) => {
 	// 		email1: 'stthazi@mock.com',
 	// 		email2: 'stthazi2@test.com'
 	// 	})
+	// 	Users.create({
+	// 		firstname: 'John',
+	// 		lastinitial: 'D',
+	// 		email1: 'johndoe@test.com',
+	// 	});
+	// 	Users.create({
+	// 		firstname: 'Jane',
+	// 		lastinitial: 'D',
+	// 		email1: 'janedoe@test.com',
+	// 	});
 	// })
 	return Users;
 };
