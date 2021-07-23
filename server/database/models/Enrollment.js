@@ -16,13 +16,33 @@ module.exports = (sequelize, DataTypes) => {
     );
     Enrollment.sync();
     // Enrollment.sync({
-    //     force: true
+    //     force: false
     // }).then(function() {
+    //     Enrollment.create({
+    //         userID: 4,
+    //         groupID: 1,
+    //         enrolledDate: Date.now()
+    //     });
+    //     Enrollment.create({
+    //         userID: 1,
+    //         groupID: 1,
+    //         enrolledDate: Date.now()
+    //     });
     //     Enrollment.create({
     //         userID: 2,
     //         groupID: 1,
     //         enrolledDate: Date.now()
-    //     })
+    //     });
+    //     Enrollment.create({
+    //         userID: 13,
+    //         groupID: 3,
+    //         enrolledDate: Date.now()
+    //     });
+    //     Enrollment.create({
+    //         userID: 14,
+    //         groupID: 2,
+    //         enrolledDate: Date.now()
+    //     });
     // })
     return Enrollment;
 };

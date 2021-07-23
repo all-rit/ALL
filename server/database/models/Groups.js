@@ -28,12 +28,26 @@ module.exports = (sequelize, DataTypes) => {
     //     force: false
     // }).then(function() {
     //     Groups.create({
-    //         instructorUserID: 1,
+    //         instructorUserID: 4,
     //         groupName: 'SWEN 256 Fall 2021',
     //         createdDate: Date.now(),
     //         isActive: true,
     //         code: nanoid(6).toUpperCase()
-    //     })
+    //     });
+    //     Groups.create({
+    //         instructorUserID: 4,
+    //         groupName: 'SWEN 444 Spring 2021',
+    //         createdDate: Date.now(),
+    //         isActive: true,
+    //         code: nanoid(6).toUpperCase()
+    //     });
+    //     Groups.create({
+    //         instructorUserID: 4,
+    //         groupName: 'SWEN 123 Fall 2021',
+    //         createdDate: Date.now(),
+    //         isActive: true,
+    //         code: nanoid(6).toUpperCase()
+    //     });
     // })
     return Groups;
 };

@@ -13,7 +13,7 @@ const EnrolledGroups = (user_props) => {
 
         if (user) {
             async function fetchGroups() {
-                return UserService.getUserEnrolledGroups(2);  //change this to user.userid
+                return UserService.getUserEnrolledGroups(user.userid);
             }
             fetchGroups().then((data) => {
                 setEnrolledGroups(data);
