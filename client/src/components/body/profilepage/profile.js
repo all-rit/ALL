@@ -13,7 +13,7 @@ const Profile = (props) => {
             <h3>You are currently not logged in.</h3>
             :
             <div className="profile container">
-                <ProfileHeader user={props}/>
+                <ProfileHeader user={props.user}/>
                 <br/>
 
                 <h4>My Enrolled Groups</h4>
@@ -36,7 +36,7 @@ const Profile = (props) => {
 
                 <h4>My Instructing Groups</h4>
                 <br/>
-                <InstructingGroups/>
+                <InstructingGroups user={props.user}/>
 
             </div>
         }

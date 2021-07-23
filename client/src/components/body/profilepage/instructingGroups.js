@@ -1,33 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from 'reactstrap';
+import UserService from "../../../services/UserService";
 
-const InstructingGroups = () => {
+const InstructingGroups = (props) => {
+
+    const {user} = props;
+    const [ instructingGroups, setInstructingGroups] = useState([]);
+
+    useEffect(() => {
+        if (user){
+            async function fetchInstructingGroups() {
+                return UserService.getUserInstructingGroups(user.userid);
+            }
+            fetchInstructingGroups().then((data) => {
+                setInstructingGroups(data);
+            });
+        }
+    }, [user]);
+
     return (
         <div className="instructing-groups">
-            <Table>
-                <thead>
-                    <th>Groups</th>
-                    <th>Invite Code</th>
-                    <th>Assigned Labs</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>SWEN 256 Fall 2021</td>
-                        <td>4EQPHY</td>
-                        <td>Icons of assigned labs</td>
-                    </tr>
-                    <tr>
-                        <td>SWEN 444 Fall 2021</td>
-                        <td>BYE7UD</td>
-                        <td>Icons of assigned labs</td>
-                    </tr>
-                    <tr>
-                        <td>SWEN 101 Fall 2021</td>
-                        <td>ADFKJ8</td>
-                        <td>Icons of assigned labs</td>
-                    </tr>
-                </tbody>
-            </Table>
+            {
+                instructingGroups.length === 0 ?
+                    <p> You currently do not have any groups you are instructing.</p> :
+                    <>
+                        <Table>
+                            <thead>
+                            <tr>
+                                <th>Groups</th>
+                                <th>Invite Code</th>
+                                <th>Assigned Labs</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {instructingGroups.map((group, index) => (
+                                <tr key={index}>
+                                    <td>{group.groupName}</td>
+                                    <td>{group.code}</td>
+                                    <td>List of assigned labs</td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </Table>
+                    </>
+            }
         </div>
     )
 };

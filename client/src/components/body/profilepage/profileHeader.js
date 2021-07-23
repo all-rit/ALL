@@ -2,11 +2,10 @@ import React from "react";
 import ProgressBar from "./progressBar";
 
 const ProfileHeader = (props) => {
-    const{user} = props.user;
-    console.log(user);
+    const {user} = props;
 
     return (
-        <div >
+        <>
             {user &&
                 <ul className="profileHeader">
                         <ul className="profileHeader__userInfo">
@@ -29,7 +28,7 @@ const ProfileHeader = (props) => {
                         </li>
                 </ul>
             }
-        </div>
+        </>
     );
 }
 

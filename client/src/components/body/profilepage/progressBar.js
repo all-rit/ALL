@@ -7,7 +7,7 @@ class ProgressBar extends Component{
         function renderBars(){
             return barData.map((data,index)=>{
                 return(
-                    <ProgressBarBar
+                    <ProgressBarBar key={index}
                         data={data}
                         index={index}
                     />
@@ -24,7 +24,6 @@ class ProgressBar extends Component{
                             : <li class="progressBar__info"> {completed} out of {total} modules completed.</li>
                         }
                 </ul>
-
         );
     }
 
