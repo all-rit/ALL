@@ -274,6 +274,57 @@ a.icon:hover {
 	display: none;
   }
 
+  .progressBarContainer{
+	//min-width: 450px;
+	width: 100%;
+  }
+  
+.progressBar{
+	//max-width: 450px;
+	//min-width: 450px;
+	display: table;
+	width:100%;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	li {
+	  	display:table-cell;
+	}
+	&__completed{
+		&:hover{
+			background-color: #85e085;
+		}
+		&:focus{
+			background-color: #85e085;
+		}
+		&:active{
+			background-color: #85e085;
+		}
+	  	background-color: #33cc33;
+	}
+	&__notCompleted{
+		&:hover{
+			background-color: #d9d9d9;
+		}
+		&:focus{
+			background-color: #d9d9d9;
+		}
+		&:active{
+			background-color: #d9d9d9;
+		}
+	  	background-color:#b3b3b3;
+	}
+	&__bar {
+	  	padding: 10px;
+	  	width:96%;
+	  	border: 1px solid darkgreen;
+	  	margin-right: 5px;
+	}
+	&__info{
+		display: table;
+	}
+}
+
 .module{
 
 	&__lab_col{
