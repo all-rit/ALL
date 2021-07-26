@@ -5,7 +5,7 @@ let router = express.Router();
 let UserController = require('../controllers/UserController');
 let UserLabController = require ('../controllers/UserLabController');
 let PageController = require('../controllers/PageController');
-
+let GroupController = require('../controllers/GroupController');
 //LAB1 Controllers
 let ExerciseControllerLab1 = require('../controllers/lab1/ExerciseController');
 let RepairControllerLab1 = require('../controllers/lab1/RepairController');
@@ -37,6 +37,9 @@ router.get('/logout', UserController.logout);
 router.get('/user', UserController.main);
 router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
 router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
+
+// Lab Routes
+router.get('/group/:groupID/labs', GroupController.getGroupLabs);
 
 //user Lab Routes for lab progress and quiz
 router.post('/completeAbout', UserLabController.completeAbout);

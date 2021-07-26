@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from 'reactstrap';
 import UserService from "../../../services/UserService";
+import GroupAssignedLabs from "./groupAssignedLabs";
 
 const InstructingGroups = (props) => {
 
@@ -37,7 +38,7 @@ const InstructingGroups = (props) => {
                                 <tr key={index}>
                                     <td>{group.groupName}</td>
                                     <td>{group.code}</td>
-                                    <td>List of assigned labs</td>
+                                    <GroupAssignedLabs group={group} />
                                 </tr>
                             ))}
                             </tbody>
