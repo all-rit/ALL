@@ -35,7 +35,6 @@ const Profile = (props) => {
                 </div>
 
                 <h4>My Instructing Groups</h4>
-                <br/>
                 <InstructingGroups user={props.user}/>
 
             </div>
