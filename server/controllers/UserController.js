@@ -9,6 +9,12 @@ exports.main = (req, res) => {
 	});
 };
 
+exports.getUser = (req, res) => {
+	UserService.getUser(req.params.userID).then((records) => {
+		res.json(records);
+	})
+};
+
 exports.getUserEnrolledGroups = (req, res) => {
 	UserService.getUserEnrolledGroups(req.params.userID).then((records) => {
 		res.json(records);

@@ -5,6 +5,11 @@ import API from './API';
 // };
 
 export default {
+    getUser: (userID) => {
+        return API.get(process.env.REACT_APP_SERVER_URL + `/user/${userID}`)
+            .then((response) => response.json())
+            .then((json) => json);
+    },
     getUserEnrolledGroups: (userID) => {
         return API.get(process.env.REACT_APP_SERVER_URL + `/user/${userID}/enrolled`)
             .then((response) => response.json())

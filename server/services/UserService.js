@@ -79,22 +79,36 @@ exports.getSession = (token) => {
 };
 
 exports.getUserEnrolledGroups = (userid) => {
-	return db.Enrollment
-		.findAll({
-			where: {
-				userID: userid,
-			},
-			raw: true
-		})
-		// .map(el => el.get('groupID'))
+	return db.sequelize.query('SELECT * FROM "enrollment" JOIN "groups" ON  "enrollment"."groupID"="groups"."id" WHERE "enrollment"."userID"=(:userID) ', {
+        replacements: {userID: userid},
+        type: db.sequelize.QueryTypes.SELECT,
+        raw: true
+    });
 }
 
 exports.getUserInstructingGroups = (userid) => {
 	return db.Groups
+	
 		.findAll({
 			where: {
 				instructorUserID: userid,
 			},
 			raw: true
 		})
+}
+
+
+exports.getUser = (userid) => {
+	return db.Users
+		.findOne({
+			where:
+				{
+					userid:userid
+				}
+		}).then((user) => {
+			return user;
+		})
+		.catch((err) => {
+			console.log(err);
+	})
 }

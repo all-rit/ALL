@@ -35,6 +35,7 @@ router.get('/auth/google', UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
 router.get('/logout', UserController.logout);
 router.get('/user', UserController.main);
+router.get('/user/:userID', UserController.getUser);
 router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
 router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
 
