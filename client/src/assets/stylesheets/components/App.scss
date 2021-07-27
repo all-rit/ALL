@@ -285,6 +285,10 @@ a.icon:hover {
 	&__group{
 		padding: 10px 20px;
 	}
+	&__horiz{
+		border-top: 1px solid #dee2e6;
+		width: 95%;
+	}
 	&__button{
 		font-family: "Open Sans", sans-serif;
 		font-size: 1.2rem;
@@ -298,7 +302,7 @@ a.icon:hover {
 	}
 	&__groupName{
 		padding: 5px;
-		font-size: 20px;
+		font-size: 22px;
 		font-weight: 600;
 	}
 	&__date{
@@ -307,7 +311,7 @@ a.icon:hover {
 	}
 	&__instructorName{
 		font-weight: 700;
-		font-size: 22px;
+		font-size: 20px;
 		color: var(--blue-text);
 		font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 	}

@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
     // Enrollment.sync({
     //     force: false
     // }).then(function() {
-    //     Enrollment.create({
-    //         userID: 4,
-    //         groupID: 1,
-    //         enrolledDate: Date.now()
-    //     });
+        // Enrollment.create({
+        //     userID: 4,
+        //     groupID: 3,
+        //     enrolledDate: Date.now()
+        // });
     //     Enrollment.create({
     //         userID: 1,
     //         groupID: 1,
