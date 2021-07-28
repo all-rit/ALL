@@ -19,8 +19,6 @@ const EnrolledStudentsTable = (props) => {
         }
     }, [groupID]);
 
-    console.log(enrolledStudents);
-
     return (
         <div className="enrolled_students_table">
             {
