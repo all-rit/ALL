@@ -15,11 +15,11 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER
             },
             labstarttime: { type: DataTypes.DATE },
-            completedabout: { type: DataTypes.BOOLEAN, defaultValue: false},
-            completedreading: { type: DataTypes.BOOLEAN, defaultValue: false},
-            completedexercise: { type: DataTypes.BOOLEAN, defaultValue: false},
-            completedreinforcement: { type: DataTypes.BOOLEAN, defaultValue: false},
-            completedquiz: { type: DataTypes.BOOLEAN, defaultValue: false},
+            aboutcompletedtime: { type: DataTypes.DATE },
+            readingcompletedtime: { type: DataTypes.DATE },
+            exercisecompletedtime: { type: DataTypes.DATE },
+            reinforcementcompletedtime: { type: DataTypes.DATE },
+            quizcompletedtime: { type: DataTypes.DATE },
             quizscore: { type: DataTypes.INTEGER},
             labcompletiontime: { type: DataTypes.DATE }
         },
