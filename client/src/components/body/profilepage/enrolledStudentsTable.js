@@ -19,6 +19,8 @@ const EnrolledStudentsTable = (props) => {
         }
     }, [groupID]);
 
+    console.log(enrolledStudents);
+
     return (
         <div className="enrolled_students_table">
             {
@@ -35,7 +37,11 @@ const EnrolledStudentsTable = (props) => {
                         <tbody>
                         {enrolledStudents.map((student, index) => (
                             <tr key={index}>
-                                <td>{student.firstname}</td>
+                                <td>
+                                    {student.firstname} {student.lastinitial}.<br/>
+                                    {student.email1}<br/>
+                                    Enrolled on {student.enrolledDate.split("T")[0]}
+                                </td>
                                 <td className="assigned-labs">
                                     {assignedLabs.map((lab, index) => (
                                         <div className="assigned-labs__lab-bubble" key={index}>
