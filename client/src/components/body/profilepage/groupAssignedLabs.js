@@ -1,20 +1,7 @@
-import React, { useState, useEffect } from "react";
-import GroupService from "../../../services/GroupService";
+import React from "react";
 
 const GroupAssignedLabs = (props) => {
-    const {group} = props;
-    const [ assignedLabs, setAssignedLabs ] = useState([]);
-
-    useEffect(() => {
-        if (group){
-            async function fetchAssignedLabs(){
-                return GroupService.getGroupAssignedLabs(group.id);
-            }
-            fetchAssignedLabs().then((data) => {
-                setAssignedLabs(data);
-            })
-        }
-    }, [group]);
+    const { assignedLabs } = props.labs;
 
     return (
         <>

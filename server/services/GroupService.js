@@ -7,3 +7,11 @@ exports.getGroupLabs = (groupid) => {
         raw: true
     });
 }
+
+exports.getGroupEnrolledStudents = (groupid) => {
+    return db.sequelize.query('SELECT * FROM "enrollment" JOIN "users" ON  "enrollment"."userID"="users"."userid" WHERE "enrollment"."groupID"=(:groupID)', {
+        replacements: {groupID: groupid},
+        type: db.sequelize.QueryTypes.SELECT,
+        raw: true
+    });
+}

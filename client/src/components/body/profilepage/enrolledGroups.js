@@ -36,7 +36,6 @@ const EnrolledGroups = (props) => {
         }
     }, [user]);
 
-    console.log(enrolledGroups);
     return (
         <div className="enrolled-classes">
             {
@@ -44,7 +43,7 @@ const EnrolledGroups = (props) => {
                     <p> You are currently not enrolled in any groups</p> :
                     <>
                         {enrolledGroups.map((group, index) => (
-                            <ul>
+                            <ul key={index}>
                                 {index > 0 ? <hr class="groups__horiz"/> : <></> }
                                 <ul class="groups" key={index}>
                                     <ul class="groups__group">

@@ -39,8 +39,9 @@ router.get('/user/:userID', UserController.getUser);
 router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
 router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
 
-// Lab Routes
+// Group Routes
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
+router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
 
 //user Lab Routes for lab progress and quiz
 router.post('/completeAbout', UserLabController.completeAbout);
