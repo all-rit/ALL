@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             userid: {
-                type: DataTypes.BIGINT
+                type: DataTypes.INTEGER
             },
             labid: {
                 type: DataTypes.INTEGER
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             completedexercise: { type: DataTypes.BOOLEAN, defaultValue: false},
             completedreinforcement: { type: DataTypes.BOOLEAN, defaultValue: false},
             completedquiz: { type: DataTypes.BOOLEAN, defaultValue: false},
-            quizscore: { type: DataTypes.INTEGER, defaultValue: 0},
+            quizscore: { type: DataTypes.INTEGER},
             labcompletiontime: { type: DataTypes.DATE }
         },
         { tableName: 'userlabcompletion' }
