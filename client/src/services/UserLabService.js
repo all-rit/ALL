@@ -35,5 +35,37 @@ export default {
             quizscore,
             quizresult
         });
+    },
+
+    user_complete_about: (userid,labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL +`/${userid}`+ endpoints.COMPLETE_ABOUT, {
+            userid,
+            labid
+        });
+    },
+    user_complete_reading: (userid,labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL +`/${userid}` + endpoints.COMPLETE_READING, {
+            userid,
+            labid
+        });
+    },
+    user_complete_exercise: (userid,labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL +`/${userid}` + endpoints.COMPLETE_EXERCISE, {
+            userid,
+            labid
+        });
+    },
+    user_complete_reinforcement: (userid,labid) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL +`/${userid}` +endpoints.COMPLETE_REINFORCEMENT, {
+            userid,
+            labid
+        });
+    },
+    user_complete_quiz: (userid,labid, quizscore) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL+ `/${userid}` + endpoints.COMPLETE_QUIZ, {
+            userid,
+            labid,
+            quizscore
+        });
     }
 }

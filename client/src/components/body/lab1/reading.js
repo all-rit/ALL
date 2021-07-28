@@ -30,6 +30,7 @@ const Reading = () => {
   useEffect(() => {
     return () => {
       UserLabService.complete_reading(LAB_ID);
+      UserLabService.user_complete_reading(4,LAB_ID);
     }
   });
   return (

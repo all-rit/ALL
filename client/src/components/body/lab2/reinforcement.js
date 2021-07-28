@@ -6,6 +6,7 @@ const Reinforcement = () => {
     useEffect(() => {
         return () => {
             UserLabService.complete_reinforcement(LAB_ID);
+            UserLabService.user_complete_reinforcement(4,LAB_ID);
         }
     });
   return (

@@ -6,6 +6,7 @@ const About = (lab) => {
     useEffect(() => {
         return () => {
             UserLabService.complete_about(LAB_ID);
+            UserLabService.user_complete_about(4,LAB_ID);
         }
     });
 

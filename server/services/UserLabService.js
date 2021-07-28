@@ -176,3 +176,177 @@ exports.completeQuiz= (data)=>{
     return Promise.resolve();
 
 };
+
+exports.userCompleteAbout= (data)=>{
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date
+    if(userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid:userid,
+                            labid:labid
+                        }
+                }
+            ).then((userlabcompletion)=> {
+                if(userlabcompletion !== null) {
+                    userlabcompletion.aboutcompletedtime = datetime;
+                    userlabcompletion.save();
+                }
+                else{
+                    db.UserLabCompletion.create({
+                        userid:userid,
+                        labid:labid,
+                        aboutcompletedtime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+};
+exports.userCompleteReading= (data)=>{
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date
+    if (userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid:userid,
+                            labid:labid
+                        }
+                }
+            ).then((userlabcompletion)=> {
+                if(userlabcompletion !== null) {
+                    userlabcompletion.readingcompletedtime = datetime;
+                    userlabcompletion.save();
+                }
+                else{
+                    db.UserLabCompletion.create({
+                        userid:userid,
+                        labid:labid,
+                        readingcompletedtime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
+};
+exports.userCompleteExercise = (data)=> {
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date
+    if(userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid: userid,
+                            labid: labid
+                        }
+                }
+            ).then((userlabcompletion) => {
+                if (userlabcompletion !== null) {
+                    userlabcompletion.exercisecompletedtime = datetime;
+                    userlabcompletion.save();
+                } else {
+                    db.UserLabCompletion.create({
+                        userid: userid,
+                        labid: labid,
+                        exercisecompletedtime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
+};
+exports.userCompleteReinforcement= (data)=>{
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date
+    if(userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid:userid,
+                            labid:labid
+                        }
+                }
+            ).then((userlabcompletion)=> {
+                if(userlabcompletion !== null) {
+                    userlabcompletion.reinforcementcompletedtime = datetime;
+                    userlabcompletion.save();
+                }
+                else{
+                    db.UserLabCompletion.create({
+                        userid:userid,
+                        labid:labid,
+                        reinforcementcompletedtime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
+};
+exports.userCompleteQuiz= (data)=>{
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date;
+    const quizscore = data.quizscore;
+    if(usersessionid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid:userid,
+                            labid:labid
+                        }
+                }
+            ).then((userlabcompletion)=> {
+                if(userlabcompletion !== null){
+                    if (userlabcompletion.quizscore <= quizscore){
+                        userlabcompletion.quizcompletedtime = datetime;
+                        userlabcompletion.quizscore = quizscore;
+                        userlabcompletion.save();
+                    }
+                }
+                else{
+                    db.UserLabCompletion.create({
+                        userid:userid,
+                        labid:labid,
+                        quizcompletedtime: datetime,
+                        quizscore: quizscore,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
+};
