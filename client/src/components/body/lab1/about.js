@@ -5,6 +5,7 @@ import UserLabService from '../../../services/UserLabService';
 const About = (lab) => {
   useEffect(() => {
       return () => {
+          UserLabService.user_complete_about(4,LAB_ID);
           UserLabService.complete_about(LAB_ID);
       }
   });

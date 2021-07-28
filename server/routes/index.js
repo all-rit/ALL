@@ -50,6 +50,12 @@ router.post('/completeExercise', UserLabController.completeExercise);
 router.post('/completeReinforcement', UserLabController.completeReinforcement);
 router.post('/completeQuiz', UserLabController.completeQuiz);
 
+router.post('/:userID/completeAbout', UserLabController.userCompleteAbout);
+router.post('/:userID/completeReading', UserLabController.userCompleteReading);
+router.post('/:userID/completeExercise', UserLabController.userCompleteExercise);
+router.post('/:userID/completeReinforcement', UserLabController.userCompleteReinforcement);
+router.post('/:userID/completeQuiz', UserLabController.userCompleteQuiz);
+
 // Exercise Routes
 router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);
 router.post('/lab1/exercise/round', ExerciseControllerLab1.createRound);
