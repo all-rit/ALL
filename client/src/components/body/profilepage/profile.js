@@ -4,6 +4,7 @@ import {actions} from "../../../reducers/MainReducer";
 import LabGeneration from "../lab/LabGeneration";
 import EnrolledGroups from "./enrolledGroups";
 import InstructingGroups from "./instructingGroups";
+import AddButton from "./components/addButton";
 
 const Profile = (props) => {
     return (
@@ -34,7 +35,10 @@ const Profile = (props) => {
                     <LabGeneration actions={actions} progressState="COMPLETED"/>
                 </div>
 
-                <h4>My Instructing Groups</h4>
+                <div className="header_with_button">
+                    <h4>My Instructing Groups</h4>
+                    <AddButton/>
+                </div>
                 <InstructingGroups user={props.user}/>
 
             </div>

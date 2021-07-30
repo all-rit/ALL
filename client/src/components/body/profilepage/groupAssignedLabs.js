@@ -1,4 +1,5 @@
 import React from "react";
+import AddButton from "./components/addButton";
 
 const GroupAssignedLabs = (props) => {
     const { assignedLabs } = props.labs;
@@ -15,6 +16,7 @@ const GroupAssignedLabs = (props) => {
                             </div>
                         ))
                         }
+                        <AddButton/>
                     </td>
             }
         </>

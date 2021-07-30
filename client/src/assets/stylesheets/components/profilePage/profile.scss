@@ -8,3 +8,18 @@ h4{
   padding: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }
+
+.header_with_button{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.MuiFab-root.add-btn{
+  background-color: #ffffff;
+}
