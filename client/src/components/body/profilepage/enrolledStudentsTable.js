@@ -36,9 +36,11 @@ const EnrolledStudentsTable = (props) => {
                         {enrolledStudents.map((student, index) => (
                             <tr key={index}>
                                 <td>
-                                    {student.firstname} {student.lastinitial}.<br/>
-                                    {student.email1}<br/>
-                                    Enrolled on {student.enrolledDate.split("T")[0]}
+                                    <>
+                                        <p className="bold">{student.firstname} {student.lastinitial}.<br/></p>
+                                        <p className="grey-text">{student.email1}<br/></p>
+                                        <p className="grey-text">Enrolled on {student.enrolledDate.split("T")[0]}</p>
+                                    </>
                                 </td>
                                 <td className="assigned-labs">
                                     {assignedLabs.map((lab, index) => (

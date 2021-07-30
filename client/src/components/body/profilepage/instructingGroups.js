@@ -36,8 +36,8 @@ const InstructingGroups = (props) => {
                             <tbody>
                             {instructingGroups.map((group, index) => (
                                 <tr key={index}>
-                                    <td>{group.groupName}</td>
-                                    <td>{group.code}</td>
+                                    <td className="bold">{group.groupName}</td>
+                                    <td className="bold">{group.code}</td>
                                     <GroupDetails group={group} />
                                     <></>
                                 </tr>
