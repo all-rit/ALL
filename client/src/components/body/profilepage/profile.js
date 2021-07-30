@@ -4,7 +4,7 @@ import {actions} from "../../../reducers/MainReducer";
 import LabGeneration from "../lab/LabGeneration";
 import EnrolledGroups from "./enrolledGroups";
 import InstructingGroups from "./instructingGroups";
-import AddButton from "./components/addButton";
+import AddModal from "./components/addModal";
 
 const Profile = (props) => {
     return (
@@ -37,7 +37,7 @@ const Profile = (props) => {
 
                 <div className="header_with_button">
                     <h4>My Instructing Groups</h4>
-                    <AddButton/>
+                    <AddModal addMode={"add_instr_grp"}/>
                 </div>
                 <InstructingGroups user={props.user}/>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import AddButton from "./components/addButton";
+import AddModal from "./components/addModal";
 
 const GroupAssignedLabs = (props) => {
     const { assignedLabs } = props.labs;
@@ -16,7 +16,7 @@ const GroupAssignedLabs = (props) => {
                             </div>
                         ))
                         }
-                        <AddButton/>
+                        <AddModal addMode={"assign_grp_lab"}/>
                     </td>
             }
         </>
