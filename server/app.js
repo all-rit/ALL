@@ -7,6 +7,9 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const passport = require('passport');
 const auth = require('./auth');
+const fs = require('fs');
+const https = require('https')
+const http = require('http')
 
 const app = express();
 const port = process.env.PORT || 5005;
@@ -41,4 +44,25 @@ app.use(cors({
 
 app.use(require('./routes'));
 
-app.listen(port, () => console.log(`Listening on port ${port}!`));
+let server;
+
+const private_key = '/etc/letsencrypt/live/all.rit.edu/privkey.pem';
+const certificate = '/etc/letsencrypt/live/all.rit.edu/fullchain.pem';
+
+// Only serve the API over HTTPS if the SSL files exist.
+if (fs.existsSync(private_key, fs.R_OK) && fs.existsSync(certificate, fs.R_OK)) {
+  const key = fs.readFileSync(private_key);
+  const cert = fs.readFileSync(certificate);
+
+  const options = {
+    key: key,
+    cert: cert
+  }
+
+  server = https.createServer(options, app);
+} else { // If no SSL certs, create an HTTP server.
+  server = http.createServer(app);
+}
+
+
+server.listen(port, () => console.log(`Listening on port ${port}!`));
