@@ -26,11 +26,12 @@ const Reading = (props) => {
     useEffect(() => {
         return () => {
             UserLabService.complete_reading(LAB_ID);
-            if(user!==null){
+            if(user.firstname !== null){
               UserLabService.user_complete_reading(user.userid,LAB_ID);
             }
         }
-    });
+    }, [user]);
+
     return (
         <div className="study">
         <h3 >Color Vision Deficiencies</h3>

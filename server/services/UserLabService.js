@@ -191,6 +191,7 @@ exports.userCompleteAbout= (data)=>{
                         }
                 }
             ).then((userlabcompletion)=> {
+                console.log(userlabcompletion + ".......")
                 if(userlabcompletion !== null) {
                     userlabcompletion.aboutcompletedtime = datetime;
                     userlabcompletion.save();
@@ -200,6 +201,7 @@ exports.userCompleteAbout= (data)=>{
                         userid:userid,
                         labid:labid,
                         aboutcompletedtime: datetime,
+                        labstarttime: datetime,
                     });
                 }
                 return true;
@@ -233,6 +235,7 @@ exports.userCompleteReading= (data)=>{
                         userid:userid,
                         labid:labid,
                         readingcompletedtime: datetime,
+                        labstarttime: datetime,
                     });
                 }
                 return true;
@@ -266,6 +269,7 @@ exports.userCompleteExercise = (data)=> {
                         userid: userid,
                         labid: labid,
                         exercisecompletedtime: datetime,
+                        labstarttime: datetime,
                     });
                 }
                 return true;
@@ -300,6 +304,7 @@ exports.userCompleteReinforcement= (data)=>{
                         userid:userid,
                         labid:labid,
                         reinforcementcompletedtime: datetime,
+                        labstarttime: datetime,
                     });
                 }
                 return true;
@@ -339,6 +344,7 @@ exports.userCompleteQuiz= (data)=>{
                         labid:labid,
                         quizcompletedtime: datetime,
                         quizscore: quizscore,
+                        labstarttime: datetime,
                     });
                 }
                 return true;

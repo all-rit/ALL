@@ -13,7 +13,7 @@ class Finish extends Component {
     componentDidMount() {
         const {actions,user} = this.props;
         UserLabService.complete_exercise(LAB_ID);
-        if(user!==null){
+        if(user.firstname !== null){
             UserLabService.user_complete_exercise(user.userid,LAB_ID)
         }
         actions.updateState(EXERCISE_IDLE);

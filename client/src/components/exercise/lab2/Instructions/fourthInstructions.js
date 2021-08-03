@@ -14,7 +14,7 @@ const FourthInstructions = ({closePage, activatePopup, endSystem,
     endSystem();
     closePage();
     UserLabService.complete_exercise(LAB_ID);
-    if(user!==null){
+    if(user.firstname !== null){
       UserLabService.user_complete_exercise(user.userid,LAB_ID)
     }
   }

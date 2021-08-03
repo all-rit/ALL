@@ -7,11 +7,11 @@ const Reinforcement = (props) => {
     useEffect(() => {
         return () => {
             UserLabService.complete_reinforcement(LAB_ID);
-            if(user!==null){
+            if(user.firstname !== null){
                 UserLabService.user_complete_reinforcement(user.userid,LAB_ID);
             }   
         }
-    });
+    }, [user]);
     return (
         <div>
             <p className="playthrough__sentence">Here is some supplemental material to reinforce the topic.</p>
