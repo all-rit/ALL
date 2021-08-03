@@ -315,6 +315,22 @@ a.icon:hover {
 		color: var(--blue-text);
 		font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 	}
+	&__labs{
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		&__bubble{
+			border-radius: 1rem;
+			color: whitesmoke;
+			background-color: #0144d5;
+			text-align: center;
+			//font-weight: bold;
+			border: 1px solid #0144d5;
+			height: auto;
+			margin: .5rem;
+			padding: 10px 10px;
+		}
+	}
 }
 
 

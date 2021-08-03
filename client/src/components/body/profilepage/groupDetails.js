@@ -4,7 +4,8 @@ import GroupAssignedLabs from "./groupAssignedLabs";
 import EnrolledStudentsTable from "./enrolledStudentsTable";
 
 const GroupDetails = (props) => {
-    const {group} = props;
+    const {group} = props.group;
+    const instructing = props.instructing;
     const [ assignedLabs, setAssignedLabs ] = useState([]);
 
     useEffect(() => {
@@ -22,10 +23,15 @@ const GroupDetails = (props) => {
         <>
             {
                 assignedLabs.length === 0 ?
-                    <></> :
+                    <td>There are currently no assigned labs.</td> :
                     <>
-                        <GroupAssignedLabs labs={{assignedLabs}}/>
-                        <EnrolledStudentsTable groupid={group.id} labs={{assignedLabs}}/>
+                        <GroupAssignedLabs labs={{assignedLabs}} instructing={instructing}/>
+                        {
+                            instructing ?
+                                <EnrolledStudentsTable groupid={group.id} labs={{assignedLabs}}/>
+                                : <></>
+                        }
+
                     </>
 
             }

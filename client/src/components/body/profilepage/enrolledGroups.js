@@ -1,5 +1,6 @@
 import React, { useEffect, useState }from "react";
 import UserService from "../../../services/UserService";
+import GroupDetails from "./groupDetails";
 
 const InstructorName = (props) => {
     const {instructorID} = props;
@@ -15,7 +16,7 @@ const InstructorName = (props) => {
         }
     });
 
-    return instructorName===undefined ? "Retrieving Instructor Name...": instructorName;
+    return instructorName===undefined ? "Retrieving Instructor Name...": instructorName + ".";
 
 }
 
@@ -37,7 +38,7 @@ const EnrolledGroups = (props) => {
     }, [user]);
 
     return (
-        <div className="enrolled-classes">
+        <div className="enrolled-groups">
             {
                 enrolledGroups.length === 0 ?
                     <p> You are currently not enrolled in any groups</p> :
@@ -51,6 +52,9 @@ const EnrolledGroups = (props) => {
                                         <InstructorName instructorID={group.instructorUserID}/>
                                     </li>
                                     <li class="groups__groupName">{group.groupName}</li>
+                                    </ul>
+                                    <ul class="groups__group">
+                                        <GroupDetails group={{group}} instructing={false} />
                                     </ul>
                                     <ul class="groups__group">
                                         <li class="groups__date">Enrolled on {(group.enrolledDate).split("T")[0]}</li>
