@@ -193,8 +193,10 @@ exports.userCompleteAbout= (data)=>{
             ).then((userlabcompletion)=> {
                 console.log(userlabcompletion + ".......")
                 if(userlabcompletion !== null) {
-                    userlabcompletion.aboutcompletedtime = datetime;
-                    userlabcompletion.save();
+                    if (userlabcompletion.aboutcompletedtime === null){
+                        userlabcompletion.aboutcompletedtime = datetime;
+                        userlabcompletion.save();
+                    }
                 }
                 else{
                     db.UserLabCompletion.create({
@@ -227,8 +229,10 @@ exports.userCompleteReading= (data)=>{
                 }
             ).then((userlabcompletion)=> {
                 if(userlabcompletion !== null) {
-                    userlabcompletion.readingcompletedtime = datetime;
-                    userlabcompletion.save();
+                    if (userlabcompletion.readingcompletedtime === null){
+                        userlabcompletion.readingcompletedtime = datetime;
+                        userlabcompletion.save();
+                    }
                 }
                 else{
                     db.UserLabCompletion.create({
@@ -262,8 +266,10 @@ exports.userCompleteExercise = (data)=> {
                 }
             ).then((userlabcompletion) => {
                 if (userlabcompletion !== null) {
-                    userlabcompletion.exercisecompletedtime = datetime;
-                    userlabcompletion.save();
+                    if (userlabcompletion.exercisecompletedtime === null){
+                        userlabcompletion.exercisecompletedtime = datetime;
+                        userlabcompletion.save();
+                    }
                 } else {
                     db.UserLabCompletion.create({
                         userid: userid,
@@ -296,8 +302,10 @@ exports.userCompleteReinforcement= (data)=>{
                 }
             ).then((userlabcompletion)=> {
                 if(userlabcompletion !== null) {
-                    userlabcompletion.reinforcementcompletedtime = datetime;
-                    userlabcompletion.save();
+                    if (userlabcompletion.reinforcementcompletedtime === null){
+                        userlabcompletion.reinforcementcompletedtime = datetime;
+                        userlabcompletion.save();
+                    }
                 }
                 else{
                     db.UserLabCompletion.create({
