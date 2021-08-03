@@ -1,56 +1,26 @@
-import React, { Component,useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import handleRedirect from "../../../helpers/Redirect";
 import UserLabService from '../../../services/UserLabService';
 import ProgressBar from '../profilepage/progressBar';
 import InfoModal from './InfoModal';
 
+const Lab = (props)=>{
+        const {progressState,alt,lab, name, bio , image,actions,user} = props;
+        const [labProgress, setLabProgress] = useState();
 
-const UserLabProgress = (props) => {
-    const {user,labID} = props;
-    const [labProgress, setLabProgress] = useState();
-
-    useEffect(() => {
-        if(labProgress===null || labProgress===undefined){
-            if (user){
-                async function fetchLabCompletion() {
-                    return UserLabService.getUserLabCompletion(user.userid,labID);
+        useEffect(() => {
+            if(labProgress===null || labProgress===undefined){
+                if (user){
+                    async function fetchLabCompletion() {
+                        return UserLabService.getUserLabCompletion(user.userid,lab);
+                    }
+                    fetchLabCompletion().then((data) => {
+                        setLabProgress(data);
+                    });
                 }
-                fetchLabCompletion().then((data) => {
-                    setLabProgress(data);
-                });
             }
-        }
-    });
+        });
 
-    if(labProgress===null || labProgress===undefined){
-        return(
-            <p>No Lab Data Available..!</p>
-        );
-    } else{
-        return (
-            <ul>
-                <li>
-                    <ProgressBar
-                        labID={labID}
-                        barData={[["About",labProgress.aboutcompletedtime],
-                                ["Reading",labProgress.readingcompletedtime],
-                                ["Exercise",labProgress.exercisecompletedtime],
-                                ["Reinforcement",labProgress.reinforcementcompletedtime],
-                                ["Quiz",labProgress.quizcompletedtime]]}
-                        percentage={true}
-                    />
-                    </li>
-                    <li class="module__bio">
-                        <p>[-Insert Time Started-]</p>
-                    </li>
-            </ul>
-        );
-    }
-}
-
-class Lab extends Component{
-    render(){
-        const {progressState,alt,lab, name, bio , image,actions,user} = this.props;
         switch(progressState){
             case "IN_PROGRESS":
                 return(
@@ -68,7 +38,24 @@ class Lab extends Component{
                                         {name}
                                     </a>
                                 </li>
-                                <UserLabProgress user={user} labID={lab}/>
+                                {labProgress===null || labProgress===undefined ? <p>No Lab Data Available..!</p>:
+                                <ul>
+                                    <li>
+                                        <ProgressBar
+                                            labID={lab}
+                                            barData={[["About",labProgress.aboutcompletedtime],
+                                                    ["Reading",labProgress.readingcompletedtime],
+                                                    ["Exercise",labProgress.exercisecompletedtime],
+                                                    ["Reinforcement",labProgress.reinforcementcompletedtime],
+                                                    ["Quiz",labProgress.quizcompletedtime]]}
+                                            percentage={true}
+                                        />
+                                    </li>
+                                    <li class="module__bio">
+                                        {labProgress.labstarttime}
+                                    </li>
+                                </ul>
+                                }
                                 {/* <li>
                                     <ProgressBar
                                         barData={[true,true,false,true,true]}
@@ -100,9 +87,9 @@ class Lab extends Component{
                                 </a>
                             </li>
                             <ul class="module__bio">
-                                <li>[-Insert Quiz Score-]</li>
+                                <li>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</li>
                                 <li>[-Insert Time Completed-]</li>
-                                <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} /></li>
+                                <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
                             </ul>
                         </ul>
                     </ul>
@@ -157,8 +144,6 @@ class Lab extends Component{
                     </ul>
             );
         }
-    }
-
 }
 
 export default Lab;
