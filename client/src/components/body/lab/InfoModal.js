@@ -3,10 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Certificate from '../../quiz/components/Certificate';
 
 const InfoModal = (props) => {
-    const {buttonLabel,labName,labNum,redirect,className,quizscore} = props;
-    console.log(quizscore);
+    const {buttonLabel,labName,labNum,redirect,className,labProgress} = props;
     const [modal, setModal] = useState(false);
-
     const toggle = () => setModal(!modal);
     
     switch(buttonLabel){
@@ -36,11 +34,14 @@ const InfoModal = (props) => {
                     <button class="module__lab_button btn-primary Button btn" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalBody>
+                                {labProgress ===null || labProgress===undefined ?
                                 <ul>
-                                    <li>
-                                        <Certificate quizResult="[-Insert Grade-]" lab={labNum}/>
-                                    </li>
+                                    <Certificate quizResult="0" lab={labNum}/>
                                 </ul>
+                                :<ul>
+                                    <Certificate quizResult={labProgress.quizscore} lab={labNum}/>
+                                </ul>  
+                                }
                             </ModalBody>
                         <ModalFooter>
                         <Button color="secondary" className="btn-second" onClick={toggle}>Cancel</Button>
