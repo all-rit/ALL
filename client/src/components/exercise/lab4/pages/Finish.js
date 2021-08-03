@@ -5,14 +5,17 @@ import {EXERCISE_IDLE, LAB_ID} from "../../../../constants/lab4";
 import UserLabService from "../../../../services/UserLabService";
 
 class Finish extends Component {
-
+    
     handleSubmit() {
-        UserLabService.complete_exercise(LAB_ID);
         navigate("/Lab4/Exercise");
     }
 
     componentDidMount() {
-        const {actions} = this.props;
+        const {actions,user} = this.props;
+        UserLabService.complete_exercise(LAB_ID);
+        if(user!==null){
+            UserLabService.user_complete_exercise(user.userid,LAB_ID)
+        }
         actions.updateState(EXERCISE_IDLE);
     }
 

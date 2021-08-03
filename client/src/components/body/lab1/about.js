@@ -2,10 +2,13 @@ import React, {useEffect} from "react";
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
 
-const About = (lab) => {
+const About = (props) => {
+  const {user} = props;
   useEffect(() => {
       return () => {
-          UserLabService.user_complete_about(4,LAB_ID);
+          if(user!==null){
+            UserLabService.user_complete_about(user.userid,LAB_ID);
+          }
           UserLabService.complete_about(LAB_ID);
       }
   });

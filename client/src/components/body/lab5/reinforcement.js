@@ -2,11 +2,14 @@ import React, {useEffect} from "react";
 
 import {LAB_ID} from '../../../constants/lab5';
 import UserLabService from '../../../services/UserLabService';
-const Reinforcement = () => {
+const Reinforcement = (props) => {
+    const {user}=props;
     useEffect(() => {
         return () => {
             UserLabService.complete_reinforcement(LAB_ID);
-            UserLabService.user_complete_reinforcement(4,LAB_ID);
+            if(user!==null){
+              UserLabService.user_complete_reinforcement(user.userid,LAB_ID);
+            }
         }
     });
   return (

@@ -26,11 +26,14 @@ const data = {
   ]
 };
 
-const Reading = () => {
+const Reading = (props) => {
+  const {user}=props;
   useEffect(() => {
     return () => {
       UserLabService.complete_reading(LAB_ID);
-      UserLabService.user_complete_reading(4,LAB_ID);
+      if(user!==null){
+        UserLabService.user_complete_reading(user.userid,LAB_ID);
+      }
     }
   });
   return (

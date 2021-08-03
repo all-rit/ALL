@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             exercisecompletedtime: { type: DataTypes.DATE },
             reinforcementcompletedtime: { type: DataTypes.DATE },
             quizcompletedtime: { type: DataTypes.DATE },
-            quizscore: { type: DataTypes.INTEGER},
+            quizscore: { type: DataTypes.INTEGER, defaultValue: 0},
             labcompletiontime: { type: DataTypes.DATE }
         },
         { tableName: 'userlabcompletion' }

@@ -316,7 +316,7 @@ exports.userCompleteQuiz= (data)=>{
     const labid = data.labid;
     const datetime = data.date;
     const quizscore = data.quizscore;
-    if(usersessionid){
+    if(userid){
         return db.UserLabCompletion
             .findOne({
                     where:
@@ -348,5 +348,24 @@ exports.userCompleteQuiz= (data)=>{
             });
     }
     return Promise.resolve();
-
 };
+
+
+exports.getUserLabCompletion = (userid,labid) => {
+	if(userid){
+		return db.UserLabCompletion
+			.findOne({
+				where:
+					{
+						userid:userid,
+						labid:labid
+					}
+			}).then((userlabcompletion) => {
+				return userlabcompletion;
+			})
+			.catch((err) => {
+				console.log(err);
+		})
+	}
+};
+

@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     //         category: "Accessibility",
     //         shortDescription: "Learn more about designing the web for color blind individuals.",
     //         labURL: "https://all.rit.edu/Lab2/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/braille.45ad9103.jpg"
+    //         thumbnailImageURL: "https://all.rit.edu/static/media/eye.96e74818.jpg"
     //     });
     //     Labs.create({
     //         labName: "Accessibility with Screen Readers",
@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
     //         category: "Accessibility",
     //         shortDescription: "Learn more about screen readers.",
     //         labURL: "https://all.rit.edu/Lab3/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/eye.96e74818.jpg"
+    //         thumbnailImageURL: "https://all.rit.edu/static/media/braille.45ad9103.jpg"
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Dexterity",

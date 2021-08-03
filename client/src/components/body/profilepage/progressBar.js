@@ -3,18 +3,31 @@ import ProgressBarBar from "./progressBarBar";
 class ProgressBar extends Component{
     
     render(){
-        const {barData,completed,percentage} = this.props;
+        const {barData,percentage,labID} = this.props;
         const total = barData.length;
+        function totalCompleted(barData){
+            let totalCompleted=0
+            barData.forEach((data)=>{
+                if(data[1]!==null){
+                    totalCompleted++;
+                }
+            })
+            return totalCompleted;
+        }
+        const completed = totalCompleted(barData);
+
         function renderBars(){
             return barData.map((data,index)=>{
                 return(
                     <ProgressBarBar key={index}
                         data={data}
                         index={index}
+                        labID={labID}
                     />
                 )
             })
         }
+        
         if(total===0){
             return(
                 <ul class="progressBarContainer">

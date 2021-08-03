@@ -22,17 +22,17 @@ const Profile = (props) => {
                 <br/>
                 <h4>In Progress Labs</h4>
                 <div className="landingpage__row">
-                    <LabGeneration actions={actions} progressState="IN_PROGRESS"/>
+                    <LabGeneration actions={actions} progressState="IN_PROGRESS" user={props.user}/>
                 </div>
 
                 <h4>To-do Labs</h4>
                 <div className="landingpage__row">
-                    <LabGeneration actions={actions} progressState="NOT_STARTED"/>
+                    <LabGeneration actions={actions} progressState="NOT_STARTED" user={props.user}/>
                 </div>
 
                 <h4>Completed Labs</h4>
                 <div className="landingpage__row">
-                    <LabGeneration actions={actions} progressState="COMPLETED"/>
+                    <LabGeneration actions={actions} progressState="COMPLETED" user={props.user}/>
                 </div>
 
                 <div className="header_with_button">

@@ -44,13 +44,16 @@ class Exercise extends Component {
 		// Proceed with starting the Exercise
 		this.startRound();
 		this.timer = setInterval(() => {
-			const { data, handlers } = this.props;
+			const { data, handlers,user } = this.props;
 
 			if (data.state === EXERCISE_PLAYING) handlers.tick();
 
 			if (data.time <= 0) {
 				handlers.updateState(EXERCISE_ENDED);
 				UserLabService.complete_exercise(LAB_ID);
+				if(user!==null){
+					UserLabService.user_complete_exercise(user.userid,LAB_ID)
+				}
 				ExerciseService.updateEndExerciseScore(data.score);
 				// Clear all timers
 				clearInterval(this.timer);

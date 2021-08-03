@@ -3,7 +3,6 @@ import ProgressBar from "./progressBar";
 
 const ProfileHeader = (props) => {
     const {user} = props;
-
     return (
         <>
             {user &&
@@ -20,8 +19,11 @@ const ProfileHeader = (props) => {
                         </ul>
                         <li>
                             <ProgressBar
-                                barData={[true,true,false,true,true]}
-                                completed={4}
+                                barData={[["Lab 1",true],
+                                        ["Lab 2",true],
+                                        ["Lab 3",true],
+                                        ["Lab 4",true],
+                                        ["Lab 5",null]]}
                                 percentage={false}
                             />
                         </li>

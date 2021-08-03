@@ -67,5 +67,10 @@ export default {
             labid,
             quizscore
         });
-    }
+    },
+    getUserLabCompletion: (userID,labID) => {
+        return API.get(process.env.REACT_APP_SERVER_URL + `/user/${userID}/${labID}`)
+            .then((response) => response.json())
+            .then((json) => json);
+    },
 }

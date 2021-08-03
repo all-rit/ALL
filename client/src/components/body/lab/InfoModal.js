@@ -3,8 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Certificate from '../../quiz/components/Certificate';
 
 const InfoModal = (props) => {
-    const {buttonLabel,labName,labNum,redirect,className} = props;
-
+    const {buttonLabel,labName,labNum,redirect,className,quizscore} = props;
+    console.log(quizscore);
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal);
