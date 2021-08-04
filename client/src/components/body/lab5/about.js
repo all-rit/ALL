@@ -2,12 +2,16 @@ import React, {useEffect} from "react";
 import {LAB_ID} from '../../../constants/lab5';
 import UserLabService from '../../../services/UserLabService';
 
-const About = (lab) => {
+const About = (props) => {
+    const {user}=props;
     useEffect(() => {
         return () => {
             UserLabService.complete_about(LAB_ID);
+            if(user.firstname !== null){
+                UserLabService.user_complete_about(user.userid,LAB_ID);
+            }
         }
-    });
+    }, [user]);
 
     return (
         <div className="study">

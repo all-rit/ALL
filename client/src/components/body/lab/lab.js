@@ -1,10 +1,26 @@
-import React, { Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import handleRedirect from "../../../helpers/Redirect";
+import UserLabService from '../../../services/UserLabService';
 import ProgressBar from '../profilepage/progressBar';
-import InfoModal from './Modal';
-class Lab extends Component{
-    render(){
-        const {progressState,alt,lab, name, bio , image,actions} = this.props;
+import InfoModal from './InfoModal';
+
+const Lab = (props)=>{
+        const {progressState,alt,lab, name, bio , image,actions,user} = props;
+        const [labProgress, setLabProgress] = useState();
+
+        useEffect(() => {
+            if(labProgress===null || labProgress===undefined){
+                if (user){
+                    async function fetchLabCompletion() {
+                        return UserLabService.getUserLabCompletion(user.userid,lab);
+                    }
+                    fetchLabCompletion().then((data) => {
+                        setLabProgress(data);
+                    });
+                }
+            }
+        });
+
         switch(progressState){
             case "IN_PROGRESS":
                 return(
@@ -17,12 +33,30 @@ class Lab extends Component{
                             </a>
                         </li>
                         <ul class="module__caption">
-                                <li class="module__title">
+                                <li class="module__title module__lab_title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
                                     </a>
                                 </li>
-                                <li>
+                                {labProgress===null || labProgress===undefined ? <p>No Lab Data Available..!</p>:
+                                <ul>
+                                    <li>
+                                        <ProgressBar
+                                            labID={lab}
+                                            barData={[["About",labProgress.aboutcompletedtime],
+                                                    ["Reading",labProgress.readingcompletedtime],
+                                                    ["Exercise",labProgress.exercisecompletedtime],
+                                                    ["Reinforcement",labProgress.reinforcementcompletedtime],
+                                                    ["Quiz",labProgress.quizcompletedtime]]}
+                                            percentage={true}
+                                        />
+                                    </li>
+                                    <li class="module__bio">
+                                        {labProgress.labstarttime}
+                                    </li>
+                                </ul>
+                                }
+                                {/* <li>
                                     <ProgressBar
                                         barData={[true,true,false,true,true]}
                                         total={5}
@@ -32,7 +66,7 @@ class Lab extends Component{
                                 </li>
                                 <li class="module__bio">
                                     <p>[-Insert Time Started-]</p>
-                                </li>
+                                </li> */}
                         </ul>
                     </ul>
             );
@@ -47,15 +81,15 @@ class Lab extends Component{
                             </a>
                         </li>
                         <ul class="module__caption">
-                            <li class="module__title">
+                            <li class="module__title module__lab_title">
                                 <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
                             </li>
                             <ul class="module__bio">
-                                <li>[-Insert Quiz Score-]</li>
+                                <li>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</li>
                                 <li>[-Insert Time Completed-]</li>
-                                <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} /></li>
+                                <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
                             </ul>
                         </ul>
                     </ul>
@@ -71,7 +105,7 @@ class Lab extends Component{
                             </a>
                         </li>
                         <ul class="module__caption">
-                            <li class="module__title">
+                            <li class="module__title module__lab_title">
                                 <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
@@ -94,7 +128,7 @@ class Lab extends Component{
                             </a>
                         </li>
                         <ul class="module__caption module__caption">
-                                <li class="module__title">
+                                <li class="module__title module__lab_title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
                                     </a>
@@ -110,8 +144,6 @@ class Lab extends Component{
                     </ul>
             );
         }
-    }
-
 }
 
 export default Lab;

@@ -2,11 +2,9 @@ import React from "react";
 import ProgressBar from "./progressBar";
 
 const ProfileHeader = (props) => {
-    const{user} = props.user;
-    console.log(user);
-
+    const {user} = props;
     return (
-        <div >
+        <>
             {user &&
                 <ul className="profileHeader">
                         <ul className="profileHeader__userInfo">
@@ -21,15 +19,17 @@ const ProfileHeader = (props) => {
                         </ul>
                         <li>
                             <ProgressBar
-                                barData={[true,true,false,true,true]}
-                                total={5}
-                                completed={4}
+                                barData={[["Lab 1",true],
+                                        ["Lab 2",true],
+                                        ["Lab 3",true],
+                                        ["Lab 4",true],
+                                        ["Lab 5",null]]}
                                 percentage={false}
                             />
                         </li>
                 </ul>
             }
-        </div>
+        </>
     );
 }
 

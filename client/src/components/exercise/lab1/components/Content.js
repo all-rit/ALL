@@ -8,7 +8,7 @@ import Repair from './Repair';
 
 class Content extends Component {
 	render() {
-		const { data, handlers } = this.props;
+		const { data, handlers, user} = this.props;
 		const {availableMessage, unavailableMessage, availableBackgroundColor, unavailableBackgroundColor, currentTab, repairVisible} = data;
 		return (
 			<main className="content">
@@ -26,7 +26,7 @@ class Content extends Component {
 					}}
 					handlers={handlers}
 				/>
-				<Exercise data={data} handlers={handlers} />
+				<Exercise data={data} handlers={handlers} user={user}/>
 			</main>
 		);
 	}

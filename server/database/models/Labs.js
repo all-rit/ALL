@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             labName: { type: DataTypes.TEXT },
+            labShortName: { type: DataTypes.TEXT },
             category: { type: DataTypes.TEXT },
             learningObjectives: { type: DataTypes.TEXT },
             instructorOnlyInfo: { type: DataTypes.TEXT },
@@ -29,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     // }).then(function(){
     //     Labs.create({
     //         labName: "Accessibility to Sound and Speech",
+    //         labShortName: "Sound & Speech",
     //         category: "Accessibility",
     //         shortDescription: "Learn about designing the web for the Deaf and Hard-of-Hearing community.",
     //         labURL: "https://all.rit.edu/Lab1/",
@@ -36,20 +38,23 @@ module.exports = (sequelize, DataTypes) => {
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Color Blindness",
+    //         labShortName: "Color Blindness",
     //         category: "Accessibility",
     //         shortDescription: "Learn more about designing the web for color blind individuals.",
     //         labURL: "https://all.rit.edu/Lab2/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/braille.45ad9103.jpg"
-    //     });
-    //     Labs.create({
-    //         labName: "Accessibility with Screen Readers",
-    //         category: "Accessibility",
-    //         shortDescription: "Learn more about screen readers.",
-    //         labURL: "https://all.rit.edu/Lab3/",
     //         thumbnailImageURL: "https://all.rit.edu/static/media/eye.96e74818.jpg"
     //     });
     //     Labs.create({
+    //         labName: "Accessibility with Screen Readers",
+    //         labShortName: "Screen Readers",
+    //         category: "Accessibility",
+    //         shortDescription: "Learn more about screen readers.",
+    //         labURL: "https://all.rit.edu/Lab3/",
+    //         thumbnailImageURL: "https://all.rit.edu/static/media/braille.45ad9103.jpg"
+    //     });
+    //     Labs.create({
     //         labName: "Accessibility to Dexterity",
+    //         labShortName: "Dexterity",
     //         category: "Accessibility",
     //         shortDescription: "Learn more about designing the web for individuals with motor and dexterity impairments.",
     //         labURL: "https://all.rit.edu/Lab4/",
@@ -57,6 +62,7 @@ module.exports = (sequelize, DataTypes) => {
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Cognitive Impairments",
+    //         labShortName: "Cognitive Impairments",
     //         category: "Accessibility",
     //         shortDescription: "Learn more about designing the web for users with cognitive impairments.",
     //         labURL: "https://all.rit.edu/Lab5/",

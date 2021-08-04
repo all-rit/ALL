@@ -12,9 +12,12 @@ class AdvancedExerciseConclusion extends Component {
     navigate("/Lab3/Exercise");
   }
     componentDidMount() {
-        const { actions } = this.props;
+        const { actions,user} = this.props;
         actions.updateState(EXERCISE_IDLE);
         UserLabService.complete_exercise(LAB_ID);
+        if(user.firstname !== null){
+					UserLabService.user_complete_exercise(user.userid,LAB_ID)
+				}
     }
   render() {
     return (

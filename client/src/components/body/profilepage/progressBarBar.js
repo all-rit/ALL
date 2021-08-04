@@ -4,24 +4,23 @@ import {Button,Popover, PopoverBody, PopoverHeader } from 'reactstrap';
 const ProgressBarBar = (props)=>{
         const [popoverOpen, setPopoverOpen] = useState(false);
         const toggle = () => setPopoverOpen(!popoverOpen);
-        const {data,index} = props;
-       
-        if(data===true){
+        const {data,index,labID} = props;
+        if(data[1]!==null){
             return(
                 <li key={index}>
-                    <Button tabIndex="0" id={"PopoverCompleted"+index} type="button" className="progressBar__bar progressBar__completed"/>
-                    <Popover trigger="legacy" placement="top" isOpen={popoverOpen} target={"PopoverCompleted"+index} toggle={toggle}>
-                        <PopoverHeader>Lab</PopoverHeader>
-                        <PopoverBody>Completed</PopoverBody>
+                    <Button tabIndex="0" id={"PopoverCompleted"+index+labID} type="button" className="progressBar__bar progressBar__completed"/>
+                    <Popover trigger="legacy" placement="top" isOpen={popoverOpen} target={"PopoverCompleted"+index+labID} toggle={toggle}>
+                        <PopoverHeader>{data[0]}</PopoverHeader>
+                        <PopoverBody>Completed on {data[1]}</PopoverBody>
                     </Popover>
                 </li>
             );
         } else{
             return(
                 <li>
-                    <Button tabIndex="0" id={"PopoverNotCompleted"+index} type="button" className="progressBar__bar progressBar__notCompleted"/>
-                    <Popover trigger="legacy" placement="top" isOpen={popoverOpen} target={"PopoverNotCompleted"+index} toggle={toggle}>
-                        <PopoverHeader>Lab</PopoverHeader>
+                    <Button tabIndex="0" id={"PopoverNotCompleted"+index+labID} type="button" className="progressBar__bar progressBar__notCompleted"/>
+                    <Popover trigger="legacy" placement="top" isOpen={popoverOpen} target={"PopoverNotCompleted"+index+labID} toggle={toggle}>
+                        <PopoverHeader>{data[0]}</PopoverHeader>
                         <PopoverBody>Not Completed</PopoverBody>
                     </Popover>
                 </li>

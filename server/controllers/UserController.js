@@ -9,8 +9,20 @@ exports.main = (req, res) => {
 	});
 };
 
-exports.getUserEnrolledCourses = (req, res) => {
-	UserService.getUserEnrolledCourses(req.params.userId).then((records) => {
+exports.getUser = (req, res) => {
+	UserService.getUser(req.params.userID).then((records) => {
+		res.json(records);
+	})
+};
+
+exports.getUserEnrolledGroups = (req, res) => {
+	UserService.getUserEnrolledGroups(req.params.userID).then((records) => {
+		res.json(records);
+	})
+};
+
+exports.getUserInstructingGroups = (req, res) => {
+	UserService.getUserInstructingGroups(req.params.userID).then((records) => {
 		res.json(records);
 	})
 };

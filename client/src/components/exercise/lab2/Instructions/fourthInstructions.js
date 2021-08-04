@@ -8,12 +8,15 @@ import { LAB_ID } from '../../../../constants/lab2';
 Responible for displaying the fourth and final page of instructions to the users
 */
 const FourthInstructions = ({closePage, activatePopup, endSystem,
-  toWhiteBackground, background}) => {
+  toWhiteBackground, background,user}) => {
 
   const endExercise = () => {
     endSystem();
     closePage();
     UserLabService.complete_exercise(LAB_ID);
+    if(user.firstname !== null){
+      UserLabService.user_complete_exercise(user.userid,LAB_ID)
+    }
   }
 
   if (background !== 'white') {

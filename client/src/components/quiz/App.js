@@ -234,6 +234,9 @@ class App extends Component {
 
     setResults(result) {
         UserLabService.complete_quiz(this.state.lab, this.getResults(true), this.getJsonResults())
+        if(this.props.user.firstname !== null){
+            UserLabService.user_complete_quiz(this.props.user.userid,this.state.lab, this.getResults(true))
+        }
         this.setState({result: result})
     }
 

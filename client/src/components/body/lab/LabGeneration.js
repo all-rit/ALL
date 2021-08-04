@@ -4,11 +4,12 @@ import Lab from "./lab";
 import LabService from '../../../services/LabService';
 
 
-function renderLabData(actions,labInformation,progressState) {
+function renderLabData(actions,labInformation,progressState,user) {
   return labInformation.map((labInfo, index) => {
     const {id,labName,shortDescription,thumbnailImageURL}= labInfo //destructuring
       return (
               <Lab 
+                  user={user}
                   progressState={progressState}
                   key={index}
                   alt= {labName+" Thumbnail"} 
@@ -22,15 +23,15 @@ function renderLabData(actions,labInformation,progressState) {
   })
 }
 const LabGeneration = (props)=>{
-  const {actions,progressState}=props;
+  const {actions,progressState,user}=props;
   const [ labInformation, setLabInformation] = useState([]);
 
   useEffect(() => {
       if(labInformation.length===0){
-        async function fetchCourses() {
+        async function fetchGroups() {
             return LabService.getAllLabs();
         }
-        fetchCourses().then((data) => {
+        fetchGroups().then((data) => {
           setLabInformation(data);
         });
         
@@ -38,10 +39,8 @@ const LabGeneration = (props)=>{
   });
   //console.log(labInformation)
   return(
-      renderLabData(actions,labInformation,progressState)
+      renderLabData(actions,labInformation,progressState,user)
   );
 }
-
-
 
 export default LabGeneration;

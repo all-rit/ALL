@@ -5,7 +5,7 @@ let router = express.Router();
 let UserController = require('../controllers/UserController');
 let UserLabController = require ('../controllers/UserLabController');
 let PageController = require('../controllers/PageController');
-
+let GroupController = require('../controllers/GroupController');
 //LAB1 Controllers
 let ExerciseControllerLab1 = require('../controllers/lab1/ExerciseController');
 let RepairControllerLab1 = require('../controllers/lab1/RepairController');
@@ -35,7 +35,14 @@ router.get('/auth/google', UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
 router.get('/logout', UserController.logout);
 router.get('/user', UserController.main);
-router.get('/user/:userId/enrolled', UserController.getUserEnrolledCourses);
+router.get('/user/:userID', UserController.getUser);
+router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
+router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
+router.get('/user/:userID/:labID', UserLabController.getUserLabCompletion);
+
+// Group Routes
+router.get('/group/:groupID/labs', GroupController.getGroupLabs);
+router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
 
 //user Lab Routes for lab progress and quiz
 router.post('/completeAbout', UserLabController.completeAbout);
@@ -43,6 +50,12 @@ router.post('/completeReading', UserLabController.completeReading);
 router.post('/completeExercise', UserLabController.completeExercise);
 router.post('/completeReinforcement', UserLabController.completeReinforcement);
 router.post('/completeQuiz', UserLabController.completeQuiz);
+
+router.post('/:userID/completeAbout', UserLabController.userCompleteAbout);
+router.post('/:userID/completeReading', UserLabController.userCompleteReading);
+router.post('/:userID/completeExercise', UserLabController.userCompleteExercise);
+router.post('/:userID/completeReinforcement', UserLabController.userCompleteReinforcement);
+router.post('/:userID/completeQuiz', UserLabController.userCompleteQuiz);
 
 // Exercise Routes
 router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);

@@ -33,7 +33,7 @@ class Main extends Component {
 
     // eslint-disable-next-line require-jsdoc
     render() {
-        const {actions} = this.props;
+        const {actions,user} = this.props;
         return (
             <div class="container bottomSpace" >
                 <Router className="app">
@@ -50,7 +50,7 @@ class Main extends Component {
                     <AccessibleGuideline path={"/AccessibleGuideline"} actions={actions}/>
                     <CodeChangeAccessible path={"/CodeChangeAccessible"} actions={actions}/>
                     <FormHintAccessible path={"/FormHintAccessible"} actions={actions}/>
-                    <Finish path={"/Finish"} actions={actions}/>
+                    <Finish path={"/Finish"} actions={actions} user={user}/>
                 </Router>
             </div>
         );
