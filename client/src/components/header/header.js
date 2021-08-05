@@ -100,7 +100,7 @@ const Header = (props) => {
                             alt="Computing Accessibility"
                         />
                     </a>
-
+                {/* TODO figure out a way to consolidate repeated code*/}
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                 {state.main.lab === 0 && state.main.body === 1 ?
@@ -131,12 +131,13 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
+                        {state.main.user !== null &&
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
                                 class="nav-link js-scroll-trigger"
                                 href="# "
                                 style={{color: "#fff"}}
-                                onClick={() => navigate(state,actions, 0, 0)}> 
+                                onClick={() => navigate(state,actions, 2, 0)}>
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                     <li className="nav-item nav-last">
                                         My Profile
@@ -144,6 +145,7 @@ const Header = (props) => {
                                 </ul>
                             </NavLink>
                         </NavItem>
+                        }
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                     </Nav>
                     :
@@ -198,6 +200,21 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
+                        {state.main.user !== null &&
+                        <NavItem class="collapse navbar-collapse" >
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                href="# "
+                                style={{color: "#fff"}}
+                                onClick={() => navigate(state,actions, 2, 0)}>
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                    <li className="nav-item nav-last">
+                                        My Profile
+                                    </li>
+                                </ul>
+                            </NavLink>
+                        </NavItem>
+                        }
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                         </Nav>
                             :
@@ -290,6 +307,21 @@ const Header = (props) => {
                             </ul>
                             </NavLink>
                             </NavItem>
+                        {state.main.user !== null &&
+                        <NavItem class="collapse navbar-collapse" >
+                            <NavLink
+                                class="nav-link js-scroll-trigger"
+                                href="# "
+                                style={{color: "#fff"}}
+                                onClick={() => navigate(state,actions, 2, 0)}>
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                    <li className="nav-item nav-last">
+                                        My Profile
+                                    </li>
+                                </ul>
+                            </NavLink>
+                        </NavItem>
+                        }
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                     </Nav> )
                 }
