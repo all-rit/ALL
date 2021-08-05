@@ -11,7 +11,7 @@ const ProgressBarBar = (props)=>{
                     <Button tabIndex="0" id={"PopoverCompleted"+index+labID} type="button" className="progressBar__bar progressBar__completed"/>
                     <Popover trigger="legacy" placement="top" isOpen={popoverOpen} target={"PopoverCompleted"+index+labID} toggle={toggle}>
                         <PopoverHeader>{data[0]}</PopoverHeader>
-                        <PopoverBody>Completed on {data[1]}</PopoverBody>
+                        <PopoverBody>Completed on {String(data[1]).split("T")[0]}</PopoverBody>
                     </Popover>
                 </li>
             );

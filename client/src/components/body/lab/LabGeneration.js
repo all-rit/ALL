@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from 'react';
 import Lab from "./lab";
-//import labInformation from './labInformation';
 import LabService from '../../../services/LabService';
 
 

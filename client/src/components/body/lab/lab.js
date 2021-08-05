@@ -8,6 +8,21 @@ const Lab = (props)=>{
         const {progressState,alt,lab, name, bio , image,actions,user} = props;
         const [labProgress, setLabProgress] = useState();
 
+        function getColor(labProgress){
+            if(labProgress !==null && labProgress!==undefined){
+                let score = labProgress.quizscore;
+                score = parseFloat(score);
+                switch (true) {
+                    case score<=40:
+                        return "crimson";
+                    case score<=70:
+                        return "orange";
+                    default:
+                        return "chartreuse";
+                }
+            }
+        };
+
         useEffect(() => {
             if(labProgress===null || labProgress===undefined){
                 if (user){
@@ -52,7 +67,7 @@ const Lab = (props)=>{
                                         />
                                     </li>
                                     <li class="module__bio">
-                                        {labProgress.labstarttime}
+                                        Started on {labProgress.labstarttime.split("T")[0]}
                                     </li>
                                 </ul>
                                 }
@@ -87,7 +102,7 @@ const Lab = (props)=>{
                                 </a>
                             </li>
                             <ul class="module__bio">
-                                <li>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</li>
+                                <li><b style={{color:getColor(labProgress)}}>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</b></li>
                                 <li>[-Insert Time Completed-]</li>
                                 <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
                             </ul>
