@@ -29,14 +29,12 @@ const Labs = (props) => {
             fetchLabRecords().then((data) => {
                 setLabRecords(data);
             })
-            if(labInformation.length===0){
-                async function fetchLabs() {
-                    return LabService.getAllLabs();
-                }
-                fetchLabs().then((data) => {
-                    setLabInformation(data);
-                });
+            async function fetchLabs() {
+                return LabService.getAllLabs();
             }
+            fetchLabs().then((data) => {
+                setLabInformation(data);
+            });
         }
     }, [props.user])
 
@@ -60,17 +58,17 @@ const Labs = (props) => {
                         <br/>
                         <h4>In Progress Labs</h4>
                         <div className="landingpage__row">
-                            <LabGeneration actions={actions} progressState="IN_PROGRESS" user={props.user} labInformation={labInformation} labRecords={inProgressLabs}/>
+                            <LabGeneration actions={actions} progressState="IN_PROGRESS" labInformation={labInformation} labRecords={inProgressLabs}/>
                         </div>
 
                         <h4>To-do Labs</h4>
                         <div className="landingpage__row">
-                            <LabGeneration actions={actions} progressState="NOT_STARTED" user={props.user} labInformation={labInformation} labids={toDoLabs}/>
+                            <LabGeneration actions={actions} progressState="NOT_STARTED" labInformation={labInformation} labids={toDoLabs}/>
                         </div>
 
                         <h4>Completed Labs</h4>
                         <div className="landingpage__row">
-                            <LabGeneration actions={actions} progressState="COMPLETED" user={props.user} labInformation={labInformation} labRecords={completedLabs}/>
+                            <LabGeneration actions={actions} progressState="COMPLETED" labInformation={labInformation} labRecords={completedLabs}/>
                         </div>
                     </>
             }

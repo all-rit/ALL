@@ -1,11 +1,10 @@
 import React from 'react';
 import Lab from "./lab";
 
-function renderLabData(actions,labInfo,progressState,user, index, labRecord) {
+function renderLabData(actions,labInfo,progressState, index, labRecord) {
     const {id,labName,shortDescription,thumbnailImageURL}= labInfo //destructuring
     return (
         <Lab
-            user={user}
             progressState={progressState}
             key={index}
             alt= {labName+" Thumbnail"}
@@ -19,7 +18,7 @@ function renderLabData(actions,labInfo,progressState,user, index, labRecord) {
     );
 }
 const LabGeneration = (props)=>{
-  const { actions,progressState,user, labInformation, labids, labRecords }=props;
+  const { actions,progressState, labInformation, labids, labRecords }=props;
 
   if (progressState){
       if (progressState === "NOT_STARTED"){
@@ -27,7 +26,7 @@ const LabGeneration = (props)=>{
               return (
                   labInformation.map((labInfo, index) => {
                       if (labids.includes(labInfo.id)){
-                          return renderLabData(actions, labInfo, progressState, user, index, null)
+                          return renderLabData(actions, labInfo, progressState, index, null)
                       } else {
                           return null;
                       }
@@ -43,7 +42,7 @@ const LabGeneration = (props)=>{
               return (
                   labRecords.map((rec, index) => {
                       let idx = rec.labid - 1;
-                      return renderLabData(actions, labInformation[idx], progressState, user, index, rec)
+                      return renderLabData(actions, labInformation[idx], progressState, index, rec)
                   }
               ))
           } else {
@@ -59,7 +58,7 @@ const LabGeneration = (props)=>{
   else {
       return(
           labInformation.map((labInfo, index) => {
-              return renderLabData(actions, labInfo, progressState, user, index)
+              return renderLabData(actions, labInfo, progressState, index)
           })
       );
   }
