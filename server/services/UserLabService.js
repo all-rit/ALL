@@ -383,3 +383,16 @@ exports.getUserLabCompletion = (userid,labid) => {
 	}
 };
 
+exports.getUserLabRecords = (userid) => {
+    if (userid){
+        return db.sequelize.query(
+            `SELECT * FROM "userlabcompletion" 
+			JOIN "labs" ON  "userlabcompletion"."labid"="labs"."id" 
+			WHERE "userlabcompletion"."userid"=(:userID)
+		    `, {
+                replacements: {userID: userid},
+                type: db.sequelize.QueryTypes.SELECT,
+                raw: true
+            });
+    }
+}

@@ -38,8 +38,10 @@ router.get('/user', UserController.main);
 router.get('/user/:userID', UserController.getUser);
 router.get('/user/:userID/enrolled', UserController.getUserEnrolledGroups);
 router.get('/user/:userID/groups', UserController.getUserInstructingGroups);
+router.get('/user/:userID/assigned', UserController.getUserAssignedLabs);
+router.get('/user/:userID/todo', UserController.getUserToDoLabs);
+router.get('/user/:userID/labrecords', UserLabController.getUserLabRecords);
 router.get('/user/:userID/:labID', UserLabController.getUserLabCompletion);
-
 // Group Routes
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
 router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);

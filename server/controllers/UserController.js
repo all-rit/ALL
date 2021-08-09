@@ -15,6 +15,17 @@ exports.getUser = (req, res) => {
 	})
 };
 
+exports.getUserToDoLabs = (req, res) => {
+	UserService.getUserToDoLabs(req.params.userID).then((records) => {
+		res.json(records);
+	})
+}
+exports.getUserAssignedLabs = (req, res) => {
+	UserService.getUserAssignedLabs(req.params.userID).then((records) => {
+		res.json(records);
+	})
+}
+
 exports.getUserEnrolledGroups = (req, res) => {
 	UserService.getUserEnrolledGroups(req.params.userID).then((records) => {
 		res.json(records);

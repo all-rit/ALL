@@ -1,46 +1,67 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 import Lab from "./lab";
-//import labInformation from './labInformation';
-import LabService from '../../../services/LabService';
 
-
-function renderLabData(actions,labInformation,progressState,user) {
-  return labInformation.map((labInfo, index) => {
+function renderLabData(actions,labInfo,progressState,user, index, labRecord) {
     const {id,labName,shortDescription,thumbnailImageURL}= labInfo //destructuring
-      return (
-              <Lab 
-                  user={user}
-                  progressState={progressState}
-                  key={index}
-                  alt= {labName+" Thumbnail"} 
-                  lab={id}
-                  name= {labName} 
-                  bio={shortDescription}
-                  image= {thumbnailImageURL} 
-                  actions={actions}
-              />
-      );
-  })
+    return (
+        <Lab
+            user={user}
+            progressState={progressState}
+            key={index}
+            alt= {labName+" Thumbnail"}
+            lab={id}
+            name= {labName}
+            bio={shortDescription}
+            image= {thumbnailImageURL}
+            actions={actions}
+            labProgress={labRecord}
+        />
+    );
 }
 const LabGeneration = (props)=>{
-  const {actions,progressState,user}=props;
-  const [ labInformation, setLabInformation] = useState([]);
+  const { actions,progressState,user, labInformation, labids, labRecords }=props;
 
-  useEffect(() => {
-      if(labInformation.length===0){
-        async function fetchGroups() {
-            return LabService.getAllLabs();
-        }
-        fetchGroups().then((data) => {
-          setLabInformation(data);
-        });
-        
+  if (progressState){
+      if (progressState === "NOT_STARTED"){
+          if (labids !== null && labids.length > 0){
+              return (
+                  labInformation.map((labInfo, index) => {
+                      if (labids.includes(labInfo.id)){
+                          return renderLabData(actions, labInfo, progressState, user, index, null)
+                      }
+                  })
+              )
+          } else {
+              return (
+                  <p>There are currently no more assigned labs.</p>
+              )
+          }
+      } else {
+          if (labRecords !== null && labRecords.length > 0 && labInformation !== null && labInformation.length > 0){
+              return (
+                  labRecords.map((rec, index) => {
+                      let idx = rec.labid - 1;
+                      return renderLabData(actions, labInformation[idx], progressState, user, index, rec)
+                  }
+              ))
+          } else {
+              return (
+                  <p>
+                      There are currently no data for this section.
+                      Get started with the labs to see your progress.
+                  </p>
+              )
+          }
       }
-  });
-  //console.log(labInformation)
-  return(
-      renderLabData(actions,labInformation,progressState,user)
-  );
+  }
+  else {
+      return(
+          labInformation.map((labInfo, index) => {
+              return renderLabData(actions, labInfo, progressState, user, index)
+          })
+      );
+  }
+
 }
 
 export default LabGeneration;

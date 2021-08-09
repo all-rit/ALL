@@ -24,8 +24,6 @@ const EnrolledGroups = (props) => {
     const {user} = props;
     const [ enrolledGroups, setEnrolledGroups] = useState([]);
 
-
-
     useEffect(() => {
         if (user) {
             async function fetchGroups() {
@@ -54,7 +52,7 @@ const EnrolledGroups = (props) => {
                                     <li class="groups__groupName">{group.groupName}</li>
                                     </ul>
                                     <ul class="groups__group">
-                                        <GroupDetails group={{group}} instructing={false} />
+                                        <GroupDetails group={{group}} instructing={false}/>
                                     </ul>
                                     <ul class="groups__group">
                                         <li class="groups__date">Enrolled on {(group.enrolledDate).split("T")[0]}</li>

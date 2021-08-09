@@ -73,4 +73,9 @@ export default {
             .then((response) => response.json())
             .then((json) => json);
     },
+    getUserLabRecords: (userID) => {
+        return API.get(process.env.REACT_APP_SERVER_URL + `/user/${userID}/labrecords`)
+            .then((response) => response.json())
+            .then((json) => json);
+    },
 }

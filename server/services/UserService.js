@@ -79,7 +79,11 @@ exports.getSession = (token) => {
 };
 
 exports.getUserEnrolledGroups = (userid) => {
-	return db.sequelize.query('SELECT * FROM "enrollment" JOIN "groups" ON  "enrollment"."groupID"="groups"."id" WHERE "enrollment"."userID"=(:userID) ', {
+	return db.sequelize.query(
+		`SELECT * FROM "enrollment" 
+			JOIN "groups" ON  "enrollment"."groupID"="groups"."id" 
+			WHERE "enrollment"."userID"=(:userID)
+		`, {
         replacements: {userID: userid},
         type: db.sequelize.QueryTypes.SELECT,
         raw: true
@@ -97,6 +101,32 @@ exports.getUserInstructingGroups = (userid) => {
 		})
 }
 
+exports.getUserToDoLabs = (userid) => {
+	return db.sequelize.query(
+		`
+		SELECT DISTINCT "labID" FROM "group_labs"
+		JOIN "enrollment" on "group_labs"."groupID" = "enrollment"."groupID"
+		WHERE "enrollment"."userID"=(:userID) AND "labID" NOT IN
+      		(SELECT "labid" FROM "userlabcompletion"
+          		WHERE "userid"=(:userID))
+        ORDER BY "labID" ASC
+		`, {
+			replacements: {userID: userid},
+			type: db.sequelize.QueryTypes.SELECT,
+		});
+}
+
+exports.getUserAssignedLabs = (userid) => {
+	return db.sequelize.query(
+		`SELECT DISTINCT "labID" FROM "group_labs" 
+			JOIN "enrollment" ON  "group_labs"."groupID"="enrollment"."groupID" 
+			WHERE "enrollment"."userID"=(:userID) 
+			ORDER BY "labID" ASC
+		`, {
+		replacements: {userID: userid},
+		type: db.sequelize.QueryTypes.SELECT,
+	});
+}
 
 exports.getUser = (userid) => {
 	return db.Users

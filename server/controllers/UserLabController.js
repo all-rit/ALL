@@ -117,3 +117,9 @@ exports.getUserLabCompletion = (req, res) => {
 		res.json(records);
 	})
 };
+
+exports.getUserLabRecords = (req, res) => {
+    UserLabService.getUserLabRecords(req.params.userID).then((records) => {
+        res.json(records);
+    })
+};

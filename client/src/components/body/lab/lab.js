@@ -5,22 +5,21 @@ import ProgressBar from '../profilepage/progressBar';
 import InfoModal from './InfoModal';
 
 const Lab = (props)=>{
-        const {progressState,alt,lab, name, bio , image,actions,user} = props;
-        const [labProgress, setLabProgress] = useState();
+        const {progressState, alt, lab, name, bio, image, actions, user, labProgress} = props;
+        // const [labProgress, setLabProgress] = useState();
 
-        useEffect(() => {
-            if(labProgress===null || labProgress===undefined){
-                if (user){
-                    async function fetchLabCompletion() {
-                        return UserLabService.getUserLabCompletion(user.userid,lab);
-                    }
-                    fetchLabCompletion().then((data) => {
-                        setLabProgress(data);
-                    });
-                }
-            }
-        });
-
+        // useEffect(() => {
+        //     if(labProgress===null || labProgress===undefined){
+        //         if (user){
+        //             async function fetchLabCompletion() {
+        //                 return UserLabService.getUserLabCompletion(user.userid,lab);
+        //             }
+        //             fetchLabCompletion().then((data) => {
+        //                 setLabProgress(data);
+        //             });
+        //         }
+        //     }
+        // });
         switch(progressState){
             case "IN_PROGRESS":
                 return(
@@ -52,7 +51,7 @@ const Lab = (props)=>{
                                         />
                                     </li>
                                     <li class="module__bio">
-                                        {labProgress.labstarttime}
+                                        Started on {labProgress.labstarttime.split("T")[0]}
                                     </li>
                                 </ul>
                                 }
