@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import Certificate from '../../quiz/components/Certificate';
+import UserCertificate from '../profilepage/UserCertificate';
 
 const InfoModal = (props) => {
     const {buttonLabel,labName,labNum,redirect,className,labProgress} = props;
@@ -23,7 +23,7 @@ const InfoModal = (props) => {
                             </ModalBody>
                         <ModalFooter>
                             <Button className="btn-primary" onClick={redirect}>Launch Lab</Button>{' '}
-                            <Button className="btn-second" onClick={toggle}>Cancel</Button>
+                            <Button className="btn-second" onClick={toggle}>Close</Button>
                         </ModalFooter>
                     </Modal>
                 </ul>
@@ -36,15 +36,16 @@ const InfoModal = (props) => {
                             <ModalBody>
                                 {labProgress ===null || labProgress===undefined ?
                                 <ul>
-                                    <Certificate quizResult="0" lab={labNum}/>
+                                    <UserCertificate quizScore="0" lab={labNum}/>
                                 </ul>
-                                :<ul>
-                                    <Certificate quizResult={labProgress.quizscore} lab={labNum}/>
+                                :
+                                <ul>
+                                    <UserCertificate labName={labName} quizScore={labProgress.quizscore} labCompletionTime={labProgress.labcompletiontime} lab={labNum} />
                                 </ul>  
                                 }
                             </ModalBody>
                         <ModalFooter>
-                        <Button color="secondary" className="btn-second" onClick={toggle}>Cancel</Button>
+                        <Button color="secondary" className="btn-second" onClick={toggle}>Close</Button>
                         </ModalFooter>
                     </Modal>
                 </ul>
@@ -64,7 +65,7 @@ const InfoModal = (props) => {
                                 </ul>
                             </ModalBody>
                         <ModalFooter>
-                        <Button color="secondary" onClick={toggle}>Cancel</Button>
+                        <Button color="secondary" onClick={toggle}>Close</Button>
                         </ModalFooter>
                     </Modal>
                 </ul>

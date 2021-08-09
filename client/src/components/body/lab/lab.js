@@ -1,25 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import handleRedirect from "../../../helpers/Redirect";
-import UserLabService from '../../../services/UserLabService';
 import ProgressBar from '../profilepage/progressBar';
 import InfoModal from './InfoModal';
 
 const Lab = (props)=>{
-        const {progressState, alt, lab, name, bio, image, actions, user, labProgress} = props;
-        // const [labProgress, setLabProgress] = useState();
+        const {progressState, alt, lab, name, bio, image, actions, labProgress} = props;
 
-        // useEffect(() => {
-        //     if(labProgress===null || labProgress===undefined){
-        //         if (user){
-        //             async function fetchLabCompletion() {
-        //                 return UserLabService.getUserLabCompletion(user.userid,lab);
-        //             }
-        //             fetchLabCompletion().then((data) => {
-        //                 setLabProgress(data);
-        //             });
-        //         }
-        //     }
-        // });
+        function getColor(labProgress){
+            if(labProgress !==null && labProgress!==undefined){
+                let score = labProgress.quizscore;
+                score = parseFloat(score);
+                switch (true) {
+                    case score<=40:
+                        return "crimson";
+                    case score<=70:
+                        return "orange";
+                    default:
+                        return "chartreuse";
+                }
+            }
+        }
+
         switch(progressState){
             case "IN_PROGRESS":
                 return(
@@ -86,7 +87,7 @@ const Lab = (props)=>{
                                 </a>
                             </li>
                             <ul class="module__bio">
-                                <li>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</li>
+                                <li><b style={{color:getColor(labProgress)}}>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</b></li>
                                 <li>[-Insert Time Completed-]</li>
                                 <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
                             </ul>

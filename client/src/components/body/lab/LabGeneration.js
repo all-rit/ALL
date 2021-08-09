@@ -28,6 +28,8 @@ const LabGeneration = (props)=>{
                   labInformation.map((labInfo, index) => {
                       if (labids.includes(labInfo.id)){
                           return renderLabData(actions, labInfo, progressState, user, index, null)
+                      } else {
+                          return null;
                       }
                   })
               )
