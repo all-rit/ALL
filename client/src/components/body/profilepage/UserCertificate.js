@@ -46,7 +46,7 @@ class UserCertificate extends Component {
                         {this.props.labName}
                     </li>
                     <li style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>
-                        with score of <b style={{color:this.getColor()}}>{this.props.quizScore}%</b>
+                        with a score of <b style={{color:this.getColor()}}>{this.props.quizScore}%</b>
                     </li>
                     <li style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>
                         <i>dated</i>

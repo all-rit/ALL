@@ -88,7 +88,7 @@ const Lab = (props)=>{
                             </li>
                             <ul class="module__bio">
                                 <li><b style={{color:getColor(labProgress)}}>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</b></li>
-                                <li>[-Insert Time Completed-]</li>
+                                <li>Completed on {labProgress.labcompletiontime.split("T")[0]}</li>
                                 <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
                             </ul>
                         </ul>

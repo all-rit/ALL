@@ -53,7 +53,7 @@ const Labs = (props) => {
                             <LabGeneration actions={actions} progressState="IN_PROGRESS" labRecords={inProgressLabs}/>
                         </div>
 
-                        <h4>To-do Labs</h4>
+                        <h4>Assigned Labs</h4>
                         <div className="landingpage__row">
                             <LabGeneration actions={actions} progressState="NOT_STARTED" labids={toDoLabs}/>
                         </div>
