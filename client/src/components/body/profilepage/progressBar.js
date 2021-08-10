@@ -5,6 +5,7 @@ class ProgressBar extends Component{
     render(){
         const {barData,percentage,labID} = this.props;
         const total = barData.length;
+        
         function totalCompleted(barData){
             let totalCompleted=0
             barData.forEach((data)=>{

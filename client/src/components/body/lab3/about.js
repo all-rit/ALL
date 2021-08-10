@@ -7,7 +7,7 @@ const About = (props) => {
     useEffect(() => {
         return () => {
             UserLabService.complete_about(LAB_ID);
-            if(user.firstname !== null){
+            if(user?.firstname !== null && user!==null){
                 UserLabService.user_complete_about(user.userid,LAB_ID);
             }
         }
