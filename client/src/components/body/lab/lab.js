@@ -56,17 +56,6 @@ const Lab = (props)=>{
                                     </li>
                                 </ul>
                                 }
-                                {/* <li>
-                                    <ProgressBar
-                                        barData={[true,true,false,true,true]}
-                                        total={5}
-                                        completed={4}
-                                        percentage={true}
-                                    />
-                                </li>
-                                <li class="module__bio">
-                                    <p>[-Insert Time Started-]</p>
-                                </li> */}
                         </ul>
                     </ul>
             );
@@ -88,10 +77,11 @@ const Lab = (props)=>{
                             </li>
                             <ul class="module__bio">
                                 <li><b style={{color:getColor(labProgress)}}>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</b></li>
-                                <li>[-Insert Time Completed-]</li>
-                                <li><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
+                                <li> Completed on {labProgress.labcompletiontime.split("T")[0]}</li>
+                                <li class="module__bio"><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
                             </ul>
                         </ul>
+                        
                     </ul>
             );
             case "NOT_STARTED":
@@ -127,7 +117,7 @@ const Lab = (props)=>{
                                     <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")"}}/>
                             </a>
                         </li>
-                        <ul class="module__caption module__caption">
+                        <ul class="module__caption">
                                 <li class="module__title module__lab_title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
@@ -140,7 +130,7 @@ const Lab = (props)=>{
                                     <li><button class="module__lab_button btn-primary Button btn" onClick={() => handleRedirect(actions,lab)}>Launch Lab</button></li>
                                     <InfoModal buttonLabel={"More Info"} labName={name} redirect={() => handleRedirect(actions,lab)}/>
                                 </ul>
-                        </ul>
+                        </ul> 
                     </ul>
             );
         }
