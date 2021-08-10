@@ -15,7 +15,7 @@ class BeginnerExerciseConclusion extends Component {
         const { actions,user } = this.props;
         actions.updateState(EXERCISE_IDLE);
         UserLabService.complete_exercise(LAB_ID);
-        if(user.firstname !== null){
+        if(user?.firstname !== null && user!==null){
 					UserLabService.user_complete_exercise(user.userid,LAB_ID)
 				}
     }

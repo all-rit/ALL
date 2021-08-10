@@ -51,7 +51,7 @@ class Exercise extends Component {
 			if (data.time <= 0) {
 				handlers.updateState(EXERCISE_ENDED);
 				UserLabService.complete_exercise(LAB_ID);
-				if(user.firstname !== null){
+				if(user?.firstname !== null && user!==null){
 					UserLabService.user_complete_exercise(user.userid,LAB_ID)
 				}
 				ExerciseService.updateEndExerciseScore(data.score);

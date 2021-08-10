@@ -2,33 +2,48 @@ import React from "react";
 import ProgressBar from "./progressBar";
 
 const ProfileHeader = (props) => {
-    const {user} = props;
+    const {user,labRecords} = props;
+    console.log(labRecords)
+
+    let parsedRecords=[];
+
+    if(labRecords){
+        labRecords.forEach((lab)=>{
+            parsedRecords.push([lab.labName,lab.labcompletiontime])
+        })
+    }
+
     return (
         <>
-            {user &&
-                <ul className="profileHeader">
-                        <ul className="profileHeader__userInfo">
-                            <li className="profileHeader__logo">
-                                {user.firstname.charAt(0).toUpperCase()}
-                            </li>
-                            <li>
-                                <h3>
-                                    {user.firstname} {user.lastinitial}.<br/>
-                                </h3>
-                            </li>
-                        </ul>
-                        <li>
-                            <ProgressBar
-                                barData={[["Lab 1",true],
-                                        ["Lab 2",true],
-                                        ["Lab 3",true],
-                                        ["Lab 4",true],
-                                        ["Lab 5",null]]}
-                                percentage={false}
-                            />
-                        </li>
-                </ul>
-            }
+            <ul className="profileHeader">
+                {user &&
+
+                            <ul className="profileHeader__userInfo">
+                                <li className="profileHeader__logo">
+                                    {user.firstname.charAt(0).toUpperCase()}
+                                </li>
+                                <li>
+                                    <h3>
+                                        {user.firstname} {user.lastinitial}.<br/>
+                                    </h3>
+                                </li>
+                            </ul>
+                }
+                {(user && labRecords) ?  
+                    <li>
+                        <ProgressBar
+                            barData={parsedRecords}
+                            percentage={false}
+                        />
+                    </li> 
+                    : 
+                    <li>
+                        Currently, there are no labs assigned to you.
+                    </li>
+
+                }
+                           
+            </ul>
         </>
     );
 }
