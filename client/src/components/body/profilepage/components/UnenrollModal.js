@@ -1,49 +1,50 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import {
+    Button,
+    Modal,
+    ModalBody,
+    ModalFooter, ModalHeader,
+} from 'reactstrap';
+import GroupService from "../../../../services/GroupService";
 
 const UnenrollModal = (props) => {
-    const {buttonLabel,className} = props;
+    const { buttonLabel,className, userid, groupid, groupsUpdated } = props;
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
-    
-    switch(buttonLabel){
-        case "Unenroll":
-            return (
-                <ul>
-                    <button class="groups__button button Button btn btn-second" onClick={toggle}>{buttonLabel}</button>
-                    <Modal isOpen={modal} toggle={toggle} className={className}>
-                            <ModalBody>
-                                <ul>
-                                    <li><h1>Unenroll Prompt</h1></li>
-                                    <li><h2>Are you sure you want to unenroll?</h2></li>
-                                </ul>
-                            </ModalBody>
-                        <ModalFooter>
-                            <Button className="btn-primary" onClick={toggle}>Unenroll</Button>{' '}
-                            <Button className="btn-second" onClick={toggle}>Close</Button>
-                        </ModalFooter>
-                    </Modal>
-                </ul>
-                );
-        default:
-            return (
-                <ul>
-                    <button class="module__lab_button button module__lab_button Button btn btn-second" onClick={toggle}>{buttonLabel}</button>
-                    <Modal isOpen={modal} toggle={toggle} className={className}>
-                            <ModalBody>
-                                <ul>
-                                    <li><h1>Unenroll Prompt</h1></li>
-                                    <li><h2>Are you sure you want to unenroll?</h2></li>
-                                </ul>
-                            </ModalBody>
-                        <ModalFooter>
-                            <Button className="btn-primary" onClick={toggle}>Unenroll</Button>{' '}
-                            <Button className="btn-second" onClick={toggle}>Close</Button>
-                        </ModalFooter>
-                    </Modal>
-                </ul>
-            );
-    }
+
+    const unenroll = (userid, groupid) => {
+        GroupService.unenrollUserFromGroup(userid, groupid).then((response) => {
+            if (response.status === 200){
+                console.log("Successfully unenrolled from group.")
+                groupsUpdated(true);
+            } else {
+                console.log("Failed to unenroll from group.")
+            }
+        });
+        toggle();
+    };
+
+    return (
+        <ul>
+            <button class="groups__button button Button btn btn-second" onClick={toggle}>{buttonLabel}</button>
+            <Modal isOpen={modal} toggle={toggle} className={className}>
+                <ModalHeader>
+                    Unenroll from group
+                </ModalHeader>
+                <ModalBody>
+                    <ul>
+                        <li><p>Are you sure you want to unenroll?</p></li>
+                    </ul>
+                </ModalBody>
+                <ModalFooter>
+                    <Button className="btn-primary" onClick={() => unenroll(userid, groupid)}>
+                        Unenroll
+                    </Button>{' '}
+                    <Button className="btn-second" onClick={toggle}>Close</Button>
+                </ModalFooter>
+            </Modal>
+        </ul>
+    );
 
 }
 

@@ -12,4 +12,11 @@ export default {
             .then((response) => response.json())
             .then((json) => json);
     },
+    unenrollUserFromGroup: (userID, groupID) => {
+        console.log("2");
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/unenroll`, {
+            userID,
+            groupID,
+        });
+    },
 }

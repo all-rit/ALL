@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
             userID: { type: DataTypes.INTEGER },
             groupID: { type: DataTypes.INTEGER },
             enrolledDate: { type: DataTypes.DATE },
+            isActive: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: true,
+            },
         },
         { tableName: 'enrollment' }
     );

@@ -48,7 +48,7 @@ const LabGeneration = (props)=>{
               )
           } else {
               return (
-                  <p>There are currently no more assigned labs.</p>
+                  <p>You have no labs for this section.</p>
               )
           }
       } else {
@@ -61,10 +61,7 @@ const LabGeneration = (props)=>{
               ))
           } else {
               return (
-                  <p>
-                      There are currently no data for this section.
-                      Get started with the labs to see your progress.
-                  </p>
+                  <p>You have no labs for this section.</p>
               )
           }
       }

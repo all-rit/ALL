@@ -18,7 +18,7 @@ const Labs = (props) => {
                             <LabGeneration actions={actions} progressState="IN_PROGRESS" labRecords={props.inProgressLabs}/>
                         </div>
 
-                        <h4>To-do Labs</h4>
+                        <h4>Assigned Labs</h4>
                         <div className="landingpage__row">
                             <LabGeneration actions={actions} progressState="NOT_STARTED" labids={props.toDoLabs}/>
                         </div>

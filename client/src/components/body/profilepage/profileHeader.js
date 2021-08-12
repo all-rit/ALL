@@ -3,8 +3,6 @@ import ProgressBar from "./progressBar";
 
 const ProfileHeader = (props) => {
     const {user,labRecords} = props;
-    console.log(labRecords)
-
     let parsedRecords=[];
 
     if(labRecords){
