@@ -33,7 +33,7 @@ export default {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_QUIZ, {
             labid,
             quizscore,
-            quizresult
+            quizresult,
         });
     },
 

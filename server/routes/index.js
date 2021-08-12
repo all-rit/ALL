@@ -42,7 +42,9 @@ router.get('/user/:userID/assigned', UserController.getUserAssignedLabs);
 router.get('/user/:userID/todo', UserController.getUserToDoLabs);
 router.get('/user/:userID/labrecords', UserLabController.getUserLabRecords);
 router.get('/user/:userID/:labID', UserLabController.getUserLabCompletion);
+
 // Group Routes
+router.post('/group/unenroll', GroupController.unenrollUserFromGroup);
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
 router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
 

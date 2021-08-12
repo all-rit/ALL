@@ -15,3 +15,26 @@ exports.getGroupEnrolledStudents = (groupid) => {
         raw: true
     });
 }
+
+exports.unenrollUserFromGroup = (data) => {
+    console.log("4");
+    const userid = data.userID;
+    const groupid = data.groupID;
+    if (userid && groupid){
+        return db.Enrollment
+            .findOne({
+                where:
+                    {
+                        userID: userid,
+                        groupID: groupid,
+                    }
+            }).then((enrollment) => {
+                enrollment.isActive = false;
+                enrollment.save();
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            })
+    }
+    return Promise.resolve();
+}

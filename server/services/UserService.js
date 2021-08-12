@@ -82,7 +82,7 @@ exports.getUserEnrolledGroups = (userid) => {
 	return db.sequelize.query(
 		`SELECT * FROM "enrollment" 
 			JOIN "groups" ON  "enrollment"."groupID"="groups"."id" 
-			WHERE "enrollment"."userID"=(:userID)
+			WHERE "enrollment"."userID"=(:userID) AND "enrollment"."isActive"=true
 		`, {
         replacements: {userID: userid},
         type: db.sequelize.QueryTypes.SELECT,
@@ -92,7 +92,6 @@ exports.getUserEnrolledGroups = (userid) => {
 
 exports.getUserInstructingGroups = (userid) => {
 	return db.Groups
-	
 		.findAll({
 			where: {
 				instructorUserID: userid,

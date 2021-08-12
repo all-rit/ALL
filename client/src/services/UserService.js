@@ -15,7 +15,6 @@ export default {
             .then((response) => response.json())
             .then((json) => json);
     },
-
     getUserInstructingGroups: (userID) => {
         return API.get(process.env.REACT_APP_SERVER_URL + `/user/${userID}/groups`)
             .then((response) => response.json())

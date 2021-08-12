@@ -1,6 +1,6 @@
 import React, { useEffect, useState }from "react";
 import UserService from "../../../services/UserService";
-import DisenrollModal from "./components/DisenrollModal";
+import UnenrollModal from "./components/UnenrollModal";
 import GroupDetails from "./groupDetails";
 
 const InstructorName = (props) => {
@@ -24,7 +24,7 @@ const InstructorName = (props) => {
 const EnrolledGroups = (props) => {
     const {user} = props;
     const [ enrolledGroups, setEnrolledGroups] = useState([]);
-
+    const [ groupsUpdated, setGroupsUpdated ] = useState(false);
     useEffect(() => {
         if (user) {
             async function fetchGroups() {
@@ -32,9 +32,10 @@ const EnrolledGroups = (props) => {
             }
             fetchGroups().then((data) => {
                 setEnrolledGroups(data);
+                setGroupsUpdated(false);
             });
         }
-    }, [user]);
+    }, [user, groupsUpdated]);
 
     return (
         <div className="enrolled-groups">
@@ -43,6 +44,7 @@ const EnrolledGroups = (props) => {
                     <p> You are currently not enrolled in any groups</p> :
                     <>
                         {enrolledGroups.map((group, index) => (
+
                             <ul key={index}>
                                 {index > 0 ? <hr class="groups__horiz"/> : <></> }
                                 <ul class="groups" key={index}>
@@ -57,7 +59,14 @@ const EnrolledGroups = (props) => {
                                     </ul>
                                     <ul class="groups__group">
                                         <li class="groups__date">Enrolled on {(group.enrolledDate).split("T")[0]}</li>
-                                        <li><DisenrollModal buttonLabel={"Disenroll"}/></li>
+                                        <li>
+                                            <UnenrollModal
+                                                userid={user.userid}
+                                                groupid={group.groupID}
+                                                buttonLabel={"Unenroll"}
+                                                groupsUpdated={setGroupsUpdated}
+                                            />
+                                        </li>
                                     </ul>
                                 </ul>
                             </ul>
