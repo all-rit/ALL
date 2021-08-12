@@ -28,7 +28,7 @@ function Quiz(props) {
                 {props.answerOptions.map(renderAnswerOptions)}
             </ul>
             <div className="align-right">
-                <button className="btn btn-second text-uppercase js-scroll-trigger nextButton" onClick={props.nextQuestion}
+                <button className="btn btn-second text-uppercase  nextButton" onClick={props.nextQuestion}
                         disabled={props.disable}>{props.questionId === props.questionTotal ? 'Complete' : 'Next Question'}
                 </button>
             </div>

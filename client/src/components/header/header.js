@@ -107,7 +107,7 @@ const Header = (props) => {
                     <Nav className="ml-auto" navbar>
                         <NavItem class="collapse navbar-collapse" >       
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="# "
                                 style={link === 0 ? activeStyle : {color: "#fff"}}
                                 onClick={() => navigate(state,actions, 1, 0)}>
@@ -121,7 +121,7 @@ const Header = (props) => {
 
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="# "
                                 style={{color: "#fff"}}
                                 onClick={() => navigate(state,actions, 0, 0)}>
@@ -136,7 +136,7 @@ const Header = (props) => {
                         {state.main.user !== null &&
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="# "
                                 style={{color: "#fff"}}
                                 onClick={() => navigate(state,actions, 2, 0)}>
@@ -156,7 +156,7 @@ const Header = (props) => {
                     <Nav className="ml-auto" navbar>
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="#goals"
                                 style={link === 0 ? activeStyle : {color: "#fff"}}>
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -169,7 +169,7 @@ const Header = (props) => {
 
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="#labs"
                                 style={link === 1 ? activeStyle : {color: "#fff"}}>
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -182,7 +182,7 @@ const Header = (props) => {
 
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="#citation"
                                 style={link === 2 ? activeStyle : {color: "#fff"}}>
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -195,7 +195,7 @@ const Header = (props) => {
 
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="#contact"
                                 style={link === 3 ? activeStyle : {color: "#fff"}}>
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -209,7 +209,7 @@ const Header = (props) => {
                         {state.main.user !== null &&
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="# "
                                 style={{color: "#fff"}}
                                 onClick={() => navigate(state,actions, 2, 0)}>
@@ -228,7 +228,7 @@ const Header = (props) => {
                     <Nav className="ml-auto" navbar>
                         <NavItem class="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 onClick={() => navigate(state,actions, 0, 0)}
                                 href="# "
                                 style={{color: "#fff"}}>
@@ -242,7 +242,7 @@ const Header = (props) => {
 
                         <NavItem class="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 onClick={() => navigate(state, actions,0)}
                                 href="# "
                                 style={count === 0 ? activeStyle : {color: "#fff"}}>
@@ -256,7 +256,7 @@ const Header = (props) => {
 
                         <NavItem class="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 onClick={() => navigate(state, actions,1)}
                                 href="# "
                                 style={count === 1 ? activeStyle : {color: "#fff"}}>
@@ -270,7 +270,7 @@ const Header = (props) => {
 
                         <NavItem class="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 onClick={() => navigate(state, actions,2)}
                                 href="# "
                                 style={count === 2 ? activeStyle : {color: "#fff"}}>
@@ -284,7 +284,7 @@ const Header = (props) => {
 
                         <NavItem class="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 onClick={() => navigate(state, actions,3)}
                                 href="# "
                                 style={count === 3 ? activeStyle : {color: "#fff"}}>
@@ -297,7 +297,7 @@ const Header = (props) => {
                         </NavItem>
 
                         <NavItem class="collapse navbar-collapse">
-                            <NavLink class="nav-link js-scroll-trigger"
+                            <NavLink class="nav-link "
                                 onClick={() => navigate(state, actions,4)}
                                 href="# "
                                 style={count === 4 ? activeStyle : {color: "#fff"}}>
@@ -312,7 +312,7 @@ const Header = (props) => {
                         {state.main.user !== null &&
                         <NavItem class="collapse navbar-collapse" >
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
                                 href="# "
                                 style={{color: "#fff"}}
                                 onClick={() => navigate(state,actions, 2, 0)}>

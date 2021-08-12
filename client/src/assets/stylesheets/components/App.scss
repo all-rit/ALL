@@ -236,15 +236,6 @@ a.icon:hover {
 	color: #404040;
 }
 
-.btn-primary:active,
-.btn-primary:focus,
-.btn-primary:hover {
-	background-color: #e9b301 !important;
-	border-color: white !important;
-	color: #262626;
-}
-
-
 .modal {
 	position: fixed;
 	top: 0;
@@ -600,23 +591,32 @@ a.icon {
 	font-size: 18px;
 	padding: 20px 40px;
 }
+.btn-md{
+	font-size: 18px;
+	padding: 10px 20px;
+	@media(max-width:990px){
+		font-size: 16px;
+		padding: 5px 15px;
+	}
+}
 .btn-primary {
 	background-color: #fed136;
 	border-color: #fed136;
 	color: #404040 !important;
+	box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 	&:active {
 		background-color: #fec810 !important;
 		border-color: #fec810 !important;
 		color: #fff;
-		-webkit-box-shadow: 0 0 0 .2rem rgba(254,209,55,.5) !important;
-		box-shadow: 0 0 0 .2rem rgba(254,209,55,.5) !important;
+		-webkit-box-shadow:  0 3px 8px rgba(254,209,55,.5) !important;
+		box-shadow:  0 3px 8px rgba(254,209,55,.5) !important;
 	}
 	&:focus {
 		background-color: #fec810 !important;
 		border-color: #fec810 !important;
 		color: #fff;
-		-webkit-box-shadow: 0 0 0 .2rem rgba(254,209,55,.5) !important;
-		box-shadow: 0 0 0 .2rem rgba(254,209,55,.5) !important;
+		-webkit-box-shadow: 0 3px 8px rgba(254,209,55,.5) !important;
+		box-shadow: 0 3px 8px rgba(254,209,55,.5) !important;
 	}
 	&:hover {
 		background-color: #fec810 !important;
@@ -628,6 +628,26 @@ a.icon {
 	background-color: #484848 !important;
 	border-color: #484848 !important;
 	color: white !important;
+	box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+	&:active {
+		background-color: #483F22 !important;
+		border-color: #483F22 !important;
+		color: #fff;
+		-webkit-box-shadow:  0 3px 8px rgba(72, 63, 34, 1) !important;
+		box-shadow:  0 3px 8px rgba(72, 63, 34, 1) !important;
+	}
+	&:focus {
+		background-color: #483F22 !important;
+		border-color: #483F22 !important;
+		color: #fff;
+		-webkit-box-shadow: 0 3px 8px rgba(72, 63, 34, 1) !important;
+		box-shadow: 0 3px 8px rgba(72, 63, 34, 1) !important;
+	}
+	&:hover {
+		background-color: #483F22 !important;
+		border-color: #483F22 !important;
+		color: #fff;
+	}
 }
 
 .text-black {

@@ -46,7 +46,7 @@ class BeginnerExerciseConclusion extends Component {
               href="#"
               onClick={this.handleSubmit}
               variant={"contained"}
-              className = "btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
+              className = "btn btn-second btn-xl text-uppercase  leftButton"
             >
               Home
             </Button>

@@ -41,7 +41,7 @@ const Notification = (props) => {
 
     return (
         <div >
-            <Button id="Popover1" type="button" className="btn btn-second text-black btn-xl text-uppercase js-scroll-triggergreen">
+            <Button id="Popover1" type="button" className="btn btn-second text-black btn-xl text-uppercase ">
                 Notification
             </Button>
             <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle} >

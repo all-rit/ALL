@@ -49,7 +49,7 @@ class ExerciseEnd extends Component {
             </div>
           </div>
           <button
-              className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+              className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {this.handleHome}
               key="start"
           >

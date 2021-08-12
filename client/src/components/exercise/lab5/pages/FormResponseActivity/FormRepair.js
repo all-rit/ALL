@@ -129,11 +129,11 @@ class FormRepair extends Component {
 				</div>
 				<Popup message={state.app5.popupMessage} handler={actions.updatePopup} error={this.state.repairerror}/>
 
-				<button className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton" onClick={handlers.openRepair} key="repair">
+				<button className="btn btn-second btn-xl text-uppercase  leftButton" onClick={handlers.openRepair} key="repair">
 					Repair
 				</button>
 				<button
-					className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+					className="btn btn-primary text-black btn-xl text-uppercase "
 					onClick = {this.handleNav}
 					key="Next"
 					disabled={this.state.repairerror}

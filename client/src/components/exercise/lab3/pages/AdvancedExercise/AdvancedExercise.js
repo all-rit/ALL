@@ -50,7 +50,7 @@ class AdvancedExercise extends Component {
           onClick={this.handleSubmit}
           variant={"contained"}
           aria-label={"Start Exercise"}
-          className = "btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
+          className = "btn btn-second btn-xl text-uppercase  leftButton"
         >
           Start Exercise
         </Button>

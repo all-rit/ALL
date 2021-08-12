@@ -11,7 +11,7 @@ const InfoModal = (props) => {
         case "More Info":
             return (
                 <ul>
-                    <button class="module__lab_button button module__lab_button Button btn btn-second" onClick={toggle}>{buttonLabel}</button>
+                    <button class="btn-second btn btn-md" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalBody>
                                 <ul>
@@ -31,7 +31,7 @@ const InfoModal = (props) => {
         case "View Certificate":
             return (
                 <ul>
-                    <button class="module__lab_button btn-primary Button btn" onClick={toggle}>{buttonLabel}</button>
+                    <button class="btn-primary btn btn-md" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalBody>
                                 {labProgress ===null || labProgress===undefined ?
@@ -53,7 +53,7 @@ const InfoModal = (props) => {
         default:
             return (
                 <ul>
-                    <button color="secondary" class="button" onClick={toggle}>{buttonLabel}</button>
+                    <button color="secondary" class="btn-secondary btn btn-md" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                         <ModalHeader toggle={toggle}>{labName}</ModalHeader>
                             <ModalBody>

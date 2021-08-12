@@ -23,7 +23,7 @@ class NotificationAccessibleRepair extends Component {
                     <Notification message={AccessibleRepairMessage} fontSize={state.repair5.fontsizevalue} timeout={state.repair5.timeout}/>
                     <div className='flex float-right'>
                         <button
-                            className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+                            className="btn btn-primary text-black btn-xl text-uppercase "
                             onClick = {this.handleNav}
                             key="next"
                         >

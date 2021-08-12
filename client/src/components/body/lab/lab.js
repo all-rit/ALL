@@ -127,7 +127,7 @@ const Lab = (props)=>{
                                     {bio}
                                 </li>
                                 <ul class="module__bio module__lab_buttons">
-                                    <li><button class="module__lab_button btn-primary Button btn" onClick={() => handleRedirect(actions,lab)}>Launch Lab</button></li>
+                                    <li><button class="btn-primary btn btn-md" onClick={() => handleRedirect(actions,lab)}>Launch Lab</button></li>
                                     <InfoModal buttonLabel={"More Info"} labName={name} redirect={() => handleRedirect(actions,lab)}/>
                                 </ul>
                         </ul> 
