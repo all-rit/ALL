@@ -62,9 +62,6 @@ function initializeReactGA() {
         ReactGA.initialize(TRACKING_ID);
         ReactGA.pageview(window.location.pathname + window.location.search);
     }
-    else if (process.env.NODE_ENV === 'development') {
-      console.log("Google Analytics cannot be implemented in development mode")
-    }
 }
 
 class App extends Component {
@@ -82,7 +79,6 @@ class App extends Component {
     const {state,actions} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
-    console.log(state); //todo delete
     initializeReactGA();
     return (
       <div>
