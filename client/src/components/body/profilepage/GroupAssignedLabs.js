@@ -1,5 +1,5 @@
 import React from "react";
-import AddModal from "./components/addModal";
+import AddModal from "./components/AddModal";
 import ProgressModal from "./components/ProgressModal";
 
 const GroupAssignedLabs = (props) => {

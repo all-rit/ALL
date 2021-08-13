@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GroupService from "../../../services/GroupService";
-import GroupAssignedLabs from "./groupAssignedLabs";
-import EnrolledStudentsTable from "./enrolledStudentsTable";
+import GroupAssignedLabs from "./GroupAssignedLabs";
+import EnrolledStudentsTable from "./EnrolledStudentsTable";
 
 const GroupDetails = (props) => {
     const { group, instructing } = props;

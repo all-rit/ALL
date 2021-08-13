@@ -1,5 +1,5 @@
 import React from "react";
-import ProgressBar from "./components/progressBar";
+import ProgressBar from "./components/ProgressBar";
 
 const ProfileHeader = (props) => {
     const {user,labRecords} = props;

@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import ProgressBarBar from "./progressBarBar";
+import ProgressBarBar from "./ProgressBarBar";
 class ProgressBar extends Component{
     
     render(){

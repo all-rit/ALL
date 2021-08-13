@@ -1,7 +1,7 @@
 import React, { useEffect, useState }from "react";
 import UserService from "../../../services/UserService";
 import UnenrollModal from "./components/UnenrollModal";
-import GroupDetails from "./groupDetails";
+import GroupDetails from "./GroupDetails";
 
 const InstructorName = (props) => {
     const {instructorID} = props;

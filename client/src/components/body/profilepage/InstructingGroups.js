@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from 'reactstrap';
 import UserService from "../../../services/UserService";
-import GroupDetails from "./groupDetails";
+import GroupDetails from "./GroupDetails";
 
 const InstructingGroups = (props) => {
 

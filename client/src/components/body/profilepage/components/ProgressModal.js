@@ -8,7 +8,7 @@ import {
     Table
 } from 'reactstrap';
 import UserLabService from "../../../../services/UserLabService";
-import ProgressBar from "./progressBar";
+import ProgressBar from "./ProgressBar";
 
 const StudentProgress = (props) => {
 
