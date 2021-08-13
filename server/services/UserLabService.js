@@ -191,7 +191,6 @@ exports.userCompleteAbout= (data)=>{
                         }
                 }
             ).then((userlabcompletion)=> {
-                console.log(userlabcompletion + ".......")
                 if(userlabcompletion !== null) {
                     if (userlabcompletion.aboutcompletedtime === null){
                         userlabcompletion.aboutcompletedtime = datetime;
@@ -381,6 +380,7 @@ exports.getUserLabCompletion = (userid,labid) => {
 				console.log(err);
 		})
 	}
+	return Promise.resolve;
 };
 
 exports.getUserLabRecords = (userid) => {

@@ -105,8 +105,8 @@ exports.userCompleteQuiz = (req, res) => {
 
 exports.getUserLabCompletion = (req, res) => {
 	UserLabService.getUserLabCompletion({
-        userID: req.params.userid,
-        labID: req.params.labid,
+        userID: req.params.userID,
+        labID: req.params.labID,
     }).then((records) => {
 		res.json(records);
 	})

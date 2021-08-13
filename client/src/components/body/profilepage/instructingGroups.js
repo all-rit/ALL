@@ -38,7 +38,7 @@ const InstructingGroups = (props) => {
                                 <tr key={index}>
                                     <td className="bold">{group.groupName}</td>
                                     <td className="bold">{group.code}</td>
-                                    <GroupDetails group={{group}} instructing={true}/>
+                                    <GroupDetails group={group} instructing={true}/>
                                     <></>
                                 </tr>
                             ))}

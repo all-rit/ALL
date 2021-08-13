@@ -4,9 +4,9 @@ import GroupAssignedLabs from "./groupAssignedLabs";
 import EnrolledStudentsTable from "./enrolledStudentsTable";
 
 const GroupDetails = (props) => {
-    const {group} = props.group;
-    const instructing = props.instructing;
+    const { group, instructing } = props;
     const [ assignedLabs, setAssignedLabs ] = useState([]);
+    const [ enrolledStudents, setEnrolledStudents ] = useState([]);
 
     useEffect(() => {
         if (group){
@@ -15,9 +15,17 @@ const GroupDetails = (props) => {
             }
             fetchAssignedLabs().then((data) => {
                 setAssignedLabs(data);
-            })
+            });
+            if (instructing){
+                async function fetchEnrolledStudents() {
+                    return GroupService.getGroupEnrolledStudents(group.id);
+                }
+                fetchEnrolledStudents().then((data) => {
+                    setEnrolledStudents(data);
+                });
+            }
         }
-    }, [group]);
+    }, [group, instructing]);
 
     return (
         <>
@@ -25,11 +33,10 @@ const GroupDetails = (props) => {
                 assignedLabs.length === 0 ?
                     <td>There are currently no assigned labs.</td> :
                     <>
-                        <GroupAssignedLabs labs={{assignedLabs}} instructing={instructing}/>
-                        {
-                            instructing ?
-                                <EnrolledStudentsTable groupid={group.id} labs={{assignedLabs}}/>
-                                : <></>
+                        <GroupAssignedLabs enrolledStudents={enrolledStudents} assignedLabs={assignedLabs} instructing={instructing}/>
+                        {instructing ?
+                            <EnrolledStudentsTable groupid={group.id} enrolledStudents={enrolledStudents} assignedLabs={assignedLabs}/>
+                            : <></>
                         }
 
                     </>

@@ -322,6 +322,18 @@ a.icon:hover {
 			margin: .5rem;
 			padding: 10px 10px;
 		}
+		&__btn{
+			border-radius: 1rem;
+			color: black;
+			background-color: white;
+			text-align: center;
+			//font-weight: bold;
+			border: 1px solid #0144d5;
+			height: auto;
+			margin: .5rem;
+			padding: 10px 10px;
+			box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+		}
 	}
 }
 
