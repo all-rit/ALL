@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ProfileHeader from "./profileHeader";
-import InstructingGroups from "./instructingGroups";
-import AddModal from "./components/addModal";
-import Labs from "./labs";
+import ProfileHeader from "./ProfileHeader";
+import InstructingGroups from "./InstructingGroups";
+import AddModal from "./components/AddModal";
+import Labs from "./Labs";
 import UserService from "../../../services/UserService";
 import UserLabService from "../../../services/UserLabService";
 

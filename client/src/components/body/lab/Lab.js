@@ -1,6 +1,6 @@
 import React from 'react';
 import handleRedirect from "../../../helpers/Redirect";
-import ProgressBar from '../profilepage/progressBar';
+import ProgressBar from '../profilepage/components/ProgressBar';
 import InfoModal from './InfoModal';
 
 const Lab = (props)=>{

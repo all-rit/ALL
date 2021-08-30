@@ -28,7 +28,7 @@ import {default as ReinforcementLab5} from "./components/body/lab5/reinforcement
 import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Error} from "./components/body/landingpage/error";
-import {default as Profile} from "./components/body/profilepage/profile";
+import {default as Profile} from "./components/body/profilepage/Profile";
 
 import {default as Quiz} from "./components/quiz/App";
 import {stateChange} from "./helpers/Redirect";

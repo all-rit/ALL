@@ -1,7 +1,7 @@
 import React, { useEffect, useState }from "react";
 import UserService from "../../../services/UserService";
 import UnenrollModal from "./components/UnenrollModal";
-import GroupDetails from "./groupDetails";
+import GroupDetails from "./GroupDetails";
 
 const InstructorName = (props) => {
     const {instructorID} = props;
@@ -55,7 +55,7 @@ const EnrolledGroups = (props) => {
                                     <li class="groups__groupName">{group.groupName}</li>
                                     </ul>
                                     <ul class="groups__group">
-                                        <GroupDetails group={{group}} instructing={false}/>
+                                        <GroupDetails group={group} instructing={false}/>
                                     </ul>
                                     <ul class="groups__group">
                                         <li class="groups__date">Enrolled on {(group.enrolledDate).split("T")[0]}</li>

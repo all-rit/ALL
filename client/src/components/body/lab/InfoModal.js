@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import UserCertificate from '../profilepage/UserCertificate';
+import UserCertificate from '../profilepage/components/UserCertificate';
 
 const InfoModal = (props) => {
     const {buttonLabel,labName,labNum,redirect,className,labProgress} = props;

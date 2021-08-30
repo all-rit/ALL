@@ -1,9 +1,10 @@
 import React from "react";
-import AddModal from "./components/addModal";
+import AddModal from "./components/AddModal";
+import ProgressModal from "./components/ProgressModal";
 
 const GroupAssignedLabs = (props) => {
-    const { assignedLabs } = props.labs;
-    const instructing = props.instructing;
+    const { assignedLabs, instructing, enrolledStudents } = props;
+
     return (
         <>
             {
@@ -11,11 +12,8 @@ const GroupAssignedLabs = (props) => {
                     <td>No labs have been assigned for this group.</td> :
                     <td className="groups__labs">
                         {assignedLabs.map((lab, index) => (
-                            <div className="groups__labs__bubble" key={index}>
-                                {lab.labShortName}
-                            </div>
-                        ))
-                        }
+                            <ProgressModal lab={lab} key={index} enrolledStudents={enrolledStudents} instructing={instructing}/>
+                        ))}
                         {
                             instructing ?
                                 <AddModal addMode={"assign_grp_lab"}/>

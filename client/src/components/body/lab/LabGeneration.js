@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Lab from "./lab";
+import Lab from "./Lab";
 import LabService from "../../../services/LabService";
 
 function renderLabData(actions,labInfo,progressState, index, labRecord) {

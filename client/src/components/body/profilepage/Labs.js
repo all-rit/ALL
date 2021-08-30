@@ -1,5 +1,5 @@
 import React from "react";
-import EnrolledGroups from "./enrolledGroups";
+import EnrolledGroups from "./EnrolledGroups";
 import LabGeneration from "../lab/LabGeneration";
 import {actions} from "../../../reducers/MainReducer";
 

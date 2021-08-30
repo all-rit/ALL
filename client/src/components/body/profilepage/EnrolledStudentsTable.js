@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Table } from 'reactstrap';
-import GroupService from "../../../services/GroupService";
 
 const EnrolledStudentsTable = (props) => {
 
-    const groupID = props.groupid;
-    const { assignedLabs } = props.labs;
-    const [ enrolledStudents, setEnrolledStudents ] = useState([]);
-
-    useEffect(() => {
-        if (groupID){
-            async function fetchEnrolledStudents() {
-                return GroupService.getGroupEnrolledStudents(groupID);
-            }
-            fetchEnrolledStudents().then((data) => {
-                setEnrolledStudents(data);
-            });
-        }
-    }, [groupID]);
+    const { assignedLabs, enrolledStudents } = props;
 
     return (
         <div className="enrolled_students_table">

@@ -15,10 +15,10 @@ const UnenrollModal = (props) => {
     const unenroll = (userid, groupid) => {
         GroupService.unenrollUserFromGroup(userid, groupid).then((response) => {
             if (response.status === 200){
-                console.log("Successfully unenrolled from group.")
+                alert("Successfully unenrolled from group.")
                 groupsUpdated(true);
             } else {
-                console.log("Failed to unenroll from group.")
+                alert("Failed to unenroll from group.")
             }
         });
         toggle();
