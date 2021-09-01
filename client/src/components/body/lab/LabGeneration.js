@@ -22,28 +22,24 @@ const LabGeneration = (props)=>{
   const { actions,progressState, labids, labRecords }=props;
   const [ labInformation, setLabInformation] = useState([]);
 
-    useEffect(() => {
-        if(labInformation.length===0){
-            async function fetchGroups() {
-                return LabService.getAllLabs();
-            }
-            fetchGroups().then((data) => {
-                setLabInformation(data);
-            });
+  useEffect(() => {
+      if(labInformation.length===0){
+          async function fetchGroups() {
+              return LabService.getAllLabs();
+          }
+          fetchGroups().then((data) => {
+              setLabInformation(data);
+          });
+      }
+  });
 
-        }
-    });
-
-  if (progressState){
+  if (labInformation !== null && labInformation.length > 0 && progressState){
       if (progressState === "NOT_STARTED"){
           if (labids !== null && labids.length > 0){
-              return (
-                  labInformation.map((labInfo, index) => {
-                      if (labids.includes(labInfo.id)){
-                          return renderLabData(actions, labInfo, progressState, index, null)
-                      } else {
-                          return null;
-                      }
+              return(
+                  labids.map((lab, index) => {
+                      let idx = lab.labID - 1;
+                      return renderLabData(actions, labInformation[idx], progressState, index, null)
                   })
               )
           } else {
@@ -52,7 +48,7 @@ const LabGeneration = (props)=>{
               )
           }
       } else {
-          if (labRecords !== null && labRecords.length > 0 && labInformation !== null && labInformation.length > 0){
+          if (labRecords !== null && labRecords.length > 0){
               return (
                   labRecords.map((rec, index) => {
                       let idx = rec.labid - 1;
@@ -73,7 +69,6 @@ const LabGeneration = (props)=>{
           })
       );
   }
-
 }
 
 export default LabGeneration;

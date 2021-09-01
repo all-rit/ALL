@@ -8,7 +8,9 @@ import UserLabService from "../../../services/UserLabService";
 
 const Profile = (props) => {
 
+    // toDoLabs is only the assigned labs that the user hasn't made any progress in
     const [ toDoLabs, setToDoLabs ] = useState(null);
+    // labRecords is fetching all the records for the labs that the user has made progress in
     const [ labRecords, setLabRecords ] = useState(null);
 
     let inProgressLabs = [];
@@ -31,6 +33,8 @@ const Profile = (props) => {
         }
     }, [props.user])
 
+    // go through the lab records fetched from the database and categorize if
+    // the lab has been completed by the user or still in progress
     if (labRecords){
         labRecords.forEach((rec) => {
             if (rec.labcompletiontime){

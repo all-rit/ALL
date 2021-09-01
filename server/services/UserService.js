@@ -100,6 +100,8 @@ exports.getUserInstructingGroups = (userid) => {
 		})
 }
 
+// fetches only the labs that the user has been assigned (across all groups)
+// but hasn't made any progress in
 exports.getUserToDoLabs = (userid) => {
 	return db.sequelize.query(
 		`
