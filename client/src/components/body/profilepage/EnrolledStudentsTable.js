@@ -21,7 +21,7 @@ const EnrolledStudentsTable = (props) => {
                         <tbody>
                         {enrolledStudents.map((student, index) => (
                             <tr key={index}>
-                                <td>
+                                <td onClick={() => console.log("clicked on name")}>
                                     <>
                                         <p className="bold">{student.firstname} {student.lastinitial}.<br/></p>
                                         <p className="grey-text">{student.email1}<br/></p>
