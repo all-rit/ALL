@@ -16,6 +16,9 @@ const InstructingGroups = (props) => {
             fetchInstructingGroups().then((data) => {
                 setInstructingGroups(data);
             });
+            // UserService.getUserInstructingGroups(user.userid).then((data) => {
+            //     setInstructingGroups(data);
+            // })
         }
     }, [user]);
 
@@ -29,15 +32,16 @@ const InstructingGroups = (props) => {
                             <thead>
                             <tr>
                                 <th>Groups</th>
-                                <th>Invite Code</th>
                                 <th>Assigned Labs</th>
                             </tr>
                             </thead>
                             <tbody>
                             {instructingGroups.map((group, index) => (
                                 <tr key={index}>
-                                    <td className="bold">{group.groupName}</td>
-                                    <td className="bold">{group.code}</td>
+                                    <td className="bold">
+                                        <p className="bold">{group.groupName}</p>
+                                        <p className="bold">Invite Code: {group.code}</p>
+                                    </td>
                                     <GroupDetails group={group} instructing={true}/>
                                     <></>
                                 </tr>
