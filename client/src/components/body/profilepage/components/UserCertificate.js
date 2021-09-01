@@ -45,9 +45,6 @@ class UserCertificate extends Component {
                     <li style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>
                         with a score of <b style={{color:this.getColor()}}>{this.props.quizScore}%</b>
                     </li>
-                    <li style={{fontSize:"25px",textAlign:"center",padding:"20px"}}>
-                        <i>dated</i>
-                    </li>
                     <li style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>
                         {String(this.props.labCompletionTime).split("T")[0]}
                     </li>
@@ -57,7 +54,8 @@ class UserCertificate extends Component {
                                     alt="logo"
                                     style={{
                                         height: "120px",
-                                        width: "500px"
+                                        width: "500px",
+                                        padding: "15px"
                                     }}
                                 />
                             </li>
