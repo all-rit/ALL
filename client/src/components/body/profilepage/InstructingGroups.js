@@ -10,15 +10,9 @@ const InstructingGroups = (props) => {
 
     useEffect(() => {
         if (user){
-            async function fetchInstructingGroups() {
-                return UserService.getUserInstructingGroups(user.userid);
-            }
-            fetchInstructingGroups().then((data) => {
+            UserService.getUserInstructingGroups(user.userid).then((data) => {
                 setInstructingGroups(data);
-            });
-            // UserService.getUserInstructingGroups(user.userid).then((data) => {
-            //     setInstructingGroups(data);
-            // })
+            })
         }
     }, [user]);
 

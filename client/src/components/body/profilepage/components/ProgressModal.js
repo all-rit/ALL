@@ -17,10 +17,7 @@ const StudentProgress = (props) => {
 
     useEffect(() => {
         if (student && lab){
-            async function fetchProgress(){
-                return UserLabService.getUserLabCompletion(student.userID, lab.labID);
-            }
-            fetchProgress().then((data) => {
+            UserLabService.getUserLabCompletion(student.userID, lab.labID).then((data) => {
                 setProgress(data);
             })
         }
@@ -77,7 +74,7 @@ const ProgressModal = (props) => {
     if (instructing){
         return (
             <>
-                <button className="btn-text text-uppercase groups__labs__btn" onClick={toggle}>
+                <button className="btn groups__labs__btn" onClick={toggle}>
                     {lab.labShortName}
                 </button>
                 <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">

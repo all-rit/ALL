@@ -10,19 +10,13 @@ const GroupDetails = (props) => {
 
     useEffect(() => {
         if (group){
-            async function fetchAssignedLabs(){
-                return GroupService.getGroupAssignedLabs(group.id);
-            }
-            fetchAssignedLabs().then((data) => {
+            GroupService.getGroupAssignedLabs(group.id).then((data) => {
                 setAssignedLabs(data);
-            });
+            })
             if (instructing){
-                async function fetchEnrolledStudents() {
-                    return GroupService.getGroupEnrolledStudents(group.id);
-                }
-                fetchEnrolledStudents().then((data) => {
+                GroupService.getGroupEnrolledStudents(group.id).then((data) => {
                     setEnrolledStudents(data);
-                });
+                })
             }
         }
     }, [group, instructing]);

@@ -18,16 +18,10 @@ const Profile = (props) => {
 
     useEffect(() => {
         if (props.user){
-            async function fetchToDoLabs() {
-                return UserService.getUserToDoLabs(props.user.userid);
-            }
-            fetchToDoLabs().then((data) => {
+            UserService.getUserToDoLabs(props.user.userid).then((data) => {
                 setToDoLabs(data);
             })
-            async function fetchLabRecords() {
-                return UserLabService.getUserLabRecords(props.user.userid);
-            }
-            fetchLabRecords().then((data) => {
+            UserLabService.getUserLabRecords(props.user.userid).then((data) => {
                 setLabRecords(data);
             })
         }

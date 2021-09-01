@@ -8,17 +8,13 @@ const InstructorName = (props) => {
     const [ instructorName, setInstructorName] = useState();
     useEffect(() => {
         if (instructorID){
-            async function fetchUser() {
-                return UserService.getUser(instructorID);
-            }
-            fetchUser().then((data) => {
-                setInstructorName(data.firstname+" "+data.lastinitial);
-            });
+            UserService.getUser(instructorID).then((data) => {
+                setInstructorName(data.firstname + " " + data.lastinitial);
+            })
         }
     });
 
     return instructorName===undefined ? "Retrieving Instructor Name...": instructorName + ".";
-
 }
 
 const EnrolledGroups = (props) => {
@@ -27,13 +23,10 @@ const EnrolledGroups = (props) => {
     const [ groupsUpdated, setGroupsUpdated ] = useState(false);
     useEffect(() => {
         if (user) {
-            async function fetchGroups() {
-                return UserService.getUserEnrolledGroups(user.userid);
-            }
-            fetchGroups().then((data) => {
+            UserService.getUserEnrolledGroups(user.userid).then((data) => {
                 setEnrolledGroups(data);
                 setGroupsUpdated(false);
-            });
+            })
         }
     }, [user, groupsUpdated]);
 
