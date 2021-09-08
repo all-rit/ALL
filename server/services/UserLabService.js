@@ -194,6 +194,13 @@ exports.userCompleteAbout= (data)=>{
                 if(userlabcompletion !== null) {
                     if (userlabcompletion.aboutcompletedtime === null){
                         userlabcompletion.aboutcompletedtime = datetime;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
                         userlabcompletion.save();
                     }
                 }
@@ -230,6 +237,13 @@ exports.userCompleteReading= (data)=>{
                 if(userlabcompletion !== null) {
                     if (userlabcompletion.readingcompletedtime === null){
                         userlabcompletion.readingcompletedtime = datetime;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
                         userlabcompletion.save();
                     }
                 }
@@ -267,6 +281,13 @@ exports.userCompleteExercise = (data)=> {
                 if (userlabcompletion !== null) {
                     if (userlabcompletion.exercisecompletedtime === null){
                         userlabcompletion.exercisecompletedtime = datetime;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
                         userlabcompletion.save();
                     }
                 } else {
@@ -303,6 +324,13 @@ exports.userCompleteReinforcement= (data)=>{
                 if(userlabcompletion !== null) {
                     if (userlabcompletion.reinforcementcompletedtime === null){
                         userlabcompletion.reinforcementcompletedtime = datetime;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
                         userlabcompletion.save();
                     }
                 }
@@ -342,6 +370,13 @@ exports.userCompleteQuiz= (data)=>{
                     if (userlabcompletion.quizscore <= quizscore){
                         userlabcompletion.quizcompletedtime = datetime;
                         userlabcompletion.quizscore = quizscore;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
                         userlabcompletion.save();
                     }
                 }
