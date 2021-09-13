@@ -1,4 +1,4 @@
-import eye from "../../../../assets/images/labs/eye.jpg";
+import eye from "../../../../assets/images/labs/colorblindness.jpg";
 import ear from "../../../../assets/images/labs/ear.jpg";
 import cognitive from "../../../../assets/images/labs/cognitiveimpairment.jpg";
 import braille from "../../../../assets/images/labs//braille.jpg";
