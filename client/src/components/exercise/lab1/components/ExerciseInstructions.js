@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import Image1 from '../../../../assets/images/instructions/First.jpg';
-import Image2 from '../../../../assets/images/instructions/Second.jpg';
-import Image3 from '../../../../assets/images/instructions/Third.jpg';
-import Image4 from '../../../../assets/images/instructions/Fourth.jpg';
-import Image5 from '../../../../assets/images/instructions/Fifth.jpg';
-import Image6 from '../../../../assets/images/instructions/Sixth.jpg';
-import Image7 from '../../../../assets/images/instructions/Seventh.jpg';
-import Image8 from '../../../../assets/images/instructions/Eigth.jpg';
+import Image1 from '../../../../assets/images/lab1/exercise/1.jpg';
+import Image2 from '../../../../assets/images/lab1/exercise/2.jpg';
+import Image3 from '../../../../assets/images/lab1/exercise/3.jpg';
+import Image4 from '../../../../assets/images/lab1/exercise/4.jpg';
+import Image5 from '../../../../assets/images/lab1/exercise/5.jpg';
+import Image6 from '../../../../assets/images/lab1/exercise/6.jpg';
+import Image7 from '../../../../assets/images/lab1/exercise/7.jpg';
+import Image8 from '../../../../assets/images/lab1/exercise/8.jpg';
 
 class ExerciseInstructions extends Component {
 	constructor(props) {

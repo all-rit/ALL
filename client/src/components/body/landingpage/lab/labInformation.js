@@ -1,8 +1,8 @@
-import eye from "../../../../assets/images/labs/colorblindness.jpg";
-import ear from "../../../../assets/images/labs/ear.jpg";
-import cognitive from "../../../../assets/images/labs/cognitiveimpairment.jpg";
-import braille from "../../../../assets/images/labs//braille.jpg";
-import hand from "../../../../assets/images/labs//hand.jpg";
+import eye from "../../../../assets/images/landingpage/lab_thumbnails/colorblindness.jpg";
+import ear from "../../../../assets/images/landingpage/lab_thumbnails/ear.jpg";
+import cognitive from "../../../../assets/images/landingpage/lab_thumbnails/cognitiveimpairment.jpg";
+import braille from "../../../../assets/images/landingpage/lab_thumbnails/screen_reader.jpg";
+import hand from "../../../../assets/images/landingpage/lab_thumbnails//hand.jpg";
 var labInformation = [
     {
         alt:"Deaf and Hard of Hearing Activity Thumbnail",

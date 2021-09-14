@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { AppBar, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import catImage from "../../../../../assets/images/c1.svg";
-import carImage from "../../../../../assets/images/c2.svg";
-import burgerImage from "../../../../../assets/images/b.png";
+import catImage from "../../../../../assets/images/lab3/exercise/cat.svg";
+import carImage from "../../../../../assets/images/lab3/exercise/car.svg";
+import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.svg";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
@@ -39,12 +39,22 @@ class ProblemDiscoveryFixedExperience extends Component {
       let utterThis = new SpeechSynthesisUtterance(text);
       synth.speak(utterThis);
     };
-    
+
     const imgStyle = {
       width: "128px",
       height: "128px",
       border: "1px solid black",
-      tabIndex: "0"
+      tabIndex: "0",
+      backgroundColor: "#EFEFEF",
+      verticalAlign: "middle"
+    };
+
+    const tableStyle = {
+        border: "1px solid black",
+        marginLeft: "auto",
+        marginRight: "auto",
+        textAlign: "center",
+        marginBottom: "1rem"
     };
     
     return (
@@ -80,33 +90,46 @@ class ProblemDiscoveryFixedExperience extends Component {
           your screenreader now.
         </Typography>
         <br />
-        <input
-          style={imgStyle}
-          type={"image"}
-          src={catImage}
-          alt={"cat"}
-          tabIndex={"0"}
-          onFocus={(e) => textToSpeech(e, "cat")}
-        />
-        <br />
-        <input
-          style={imgStyle}
-          type={"image"}
-          src={carImage}
-          alt={"car"}
-          tabIndex={"0"}
-          onFocus={(e) => textToSpeech(e, "car")}
-        />
-        <br />
-        <input
-          style={imgStyle}
-          type={"image"}
-          src={burgerImage}
-          alt={"burger"}
-          tabIndex={"0"}
-          onFocus={(e) => textToSpeech(e, "burger")}
-        />
-        <br />
+        <table style={tableStyle} className={"center"}>
+            <tbody>
+                <tr>
+                    <td>
+                        <input
+                            style={imgStyle}
+                            type={"image"}
+                            src={catImage}
+                            alt={"cat"}
+                            tabIndex={"0"}
+                            onFocus={(e) => textToSpeech(e, "cat")}
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input
+                            style={imgStyle}
+                            type={"image"}
+                            src={carImage}
+                            alt={"car"}
+                            tabIndex={"0"}
+                            onFocus={(e) => textToSpeech(e, "car")}
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input
+                            style={imgStyle}
+                            type={"image"}
+                            src={burgerImage}
+                            alt={"burger"}
+                            tabIndex={"0"}
+                            onFocus={(e) => textToSpeech(e, "burger")}
+                        />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <Button variant={"text"} aria-label={"Ok"} onFocus={(e) => textToSpeech(e, "ok")}>
           Ok
         </Button>
