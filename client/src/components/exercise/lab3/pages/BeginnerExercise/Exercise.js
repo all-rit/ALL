@@ -95,7 +95,7 @@ class Exercise extends Component {
             <tr>
               <td>
                 <button style={imgStyle} onClick={() => catClick()}>
-                  <img style={{ transform: "scale(1.25)"}} src={catImage} alt={"image1"} />
+                  <img src={catImage} alt={"image1"} />
                 </button>
               </td>
               <td>

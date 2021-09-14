@@ -46,7 +46,8 @@ class ProblemDiscoveryFixedExperience extends Component {
       border: "1px solid black",
       tabIndex: "0",
       backgroundColor: "#EFEFEF",
-      verticalAlign: "middle"
+      verticalAlign: "middle",
+      padding: "5px"
     };
 
     const tableStyle = {
