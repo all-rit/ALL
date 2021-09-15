@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { AppBar, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+// link to image: https://pixabay.com/vectors/cat-pet-animal-kitty-kitten-cute-6484941/
+// license: https://pixabay.com/service/license/
 import catImage from "../../../../../assets/images/lab3/exercise/cat.svg";
+// link to image: https://pixabay.com/vectors/taxi-cab-car-vehicle-47204/
+// license: https://pixabay.com/service/license/
 import carImage from "../../../../../assets/images/lab3/exercise/car.svg";
+// link to image: https://pixabay.com/vectors/hamburger-cheeseburger-fast-food-31775/
+// license: https://pixabay.com/service/license/
 import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.svg";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";

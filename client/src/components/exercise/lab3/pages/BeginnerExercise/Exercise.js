@@ -1,7 +1,15 @@
 import React, { Component } from "react";
+// link to image: https://pixabay.com/vectors/cat-pet-animal-kitty-kitten-cute-6484941/
+// license: https://pixabay.com/service/license/
 import catImage from "../../../../../assets/images/lab3/exercise/cat.svg";
+// link to image: https://pixabay.com/vectors/taxi-cab-car-vehicle-47204/
+// license: https://pixabay.com/service/license/
 import carImage from "../../../../../assets/images/lab3/exercise/car.svg";
+// link to image: https://pixabay.com/vectors/hamburger-cheeseburger-fast-food-31775/
+// license: https://pixabay.com/service/license/
 import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.svg";
+// link to image: https://pixabay.com/vectors/cow-animal-mammal-horns-white-159731/
+// license: https://pixabay.com/service/license/
 import cowImage from "../../../../../assets/images/lab3/exercise/cow.svg";
 import CatClickFirstNavigate from "../../helpers/CatClickFirstNavigate";
 import { Typography } from "@material-ui/core";
