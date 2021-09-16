@@ -26,16 +26,24 @@
   width: 191px;
   height: 46px;
   display: inline-block;
+  // link to image: https://developers.google.com/identity/branding-guidelines
+  // license: https://www.google.com/intl/en/permissions/
   background-image: image("../../images/google_buttons/btn_google_signin_dark_normal_web.png");
 
+  // link to image: https://developers.google.com/identity/branding-guidelines
+  // license: https://www.google.com/intl/en/permissions/
   &:not(&--disabled):hover {
     background-image: image("../../images/google_buttons/btn_google_signin_dark_focus_web.png");
   }
 
+  // link to image: https://developers.google.com/identity/branding-guidelines
+  // license: https://www.google.com/intl/en/permissions/
   &:not(&--disabled):active {
     background-image: image("../../images/google_buttons/btn_google_signin_dark_pressed_web.png");
   }
 
+  // link to image: https://developers.google.com/identity/branding-guidelines
+  // license: https://www.google.com/intl/en/permissions/
   &--disabled {
     background-image: image("../../images/google_buttons/btn_google_signin_dark_disabled_web.png");
     cursor: not-allowed;
