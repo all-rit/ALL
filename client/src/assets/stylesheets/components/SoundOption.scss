@@ -2,11 +2,15 @@
   width: 35px;
   height: 35px;
   cursor: pointer;
-  background-image: image("./../../images/volume_on.svg");
+  // link to image: https://pixabay.com/vectors/icon-loudspeaker-speaker-horn-1628258/
+  // license: https://pixabay.com/service/license/
+  background-image: image("./../../images/lab1/exercise/volume_on.svg");
   background-size: contain;
 
   &--off {
-    background-image: image("./../../images/volume_off.svg");
+    // link to image: https://pixabay.com/vectors/mute-icon-speaker-loudspeaker-1628277/
+    // license: https://pixabay.com/service/license/
+    background-image: image("./../../images/lab1/exercise/volume_off.svg");
   }
 
   &--disabled {
