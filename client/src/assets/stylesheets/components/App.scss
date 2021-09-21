@@ -270,6 +270,8 @@ a.icon:hover {
 	width: 100%;
   }
 
+
+
 .groups{
 	display: flex;
 	justify-content: space-between;
@@ -306,6 +308,9 @@ a.icon:hover {
 		font-size: 16px;
 		color: var(--blue-text);
 		font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	}
+	&__create_btn{
+		margin-top: 5px;
 	}
 	&__labs{
 		display: flex;
@@ -370,7 +375,7 @@ a.icon:hover {
 		&:active{
 			background-color: #d9d9d9;
 		}
-	  	background-color:#b3b3b3;
+	  	background-color:#dee2e6;
 	}
 	&__bar {
 	  	padding: 10px;

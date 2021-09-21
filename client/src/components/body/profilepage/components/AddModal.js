@@ -10,8 +10,6 @@ import {
     Label,
     Input,
 } from 'reactstrap';
-import AddIcon from "@material-ui/icons/Add";
-import Fab from "@material-ui/core/Fab";
 
 const AddModal = (props) => {
 
@@ -24,9 +22,7 @@ const AddModal = (props) => {
         case "add_instr_grp":
             return(
                 <>
-                    <Fab className="add-btn" aria-label="add" onClick={toggle}>
-                        <AddIcon />
-                    </Fab>
+                    <button class="btn btn-second groups__create_btn" aria-label="add" onClick={toggle}>Create Group +</button>
                     <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
                         <ModalHeader>Create an instructing group</ModalHeader>
                         <ModalBody>
@@ -66,9 +62,7 @@ const AddModal = (props) => {
         case "assign_grp_lab":
             return(
                 <>
-                    <Fab className="add-btn" aria-label="add" onClick={toggle}>
-                        <AddIcon />
-                    </Fab>
+                    <button class="btn btn-second groups__labs__btn" aria-label="add" onClick={toggle}>Update Group +</button>
                     <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
                         <ModalHeader>Create an instructing group</ModalHeader>
                         <ModalBody>
