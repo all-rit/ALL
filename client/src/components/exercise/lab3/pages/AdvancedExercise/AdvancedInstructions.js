@@ -26,7 +26,8 @@ class AdvancedInstructions extends Component {
     const paperStyle = {
       marginLeft: "10px",
       marginRight: "10px",
-      marginTop: "20px"
+      marginTop: "20px",
+      marginBottom: "20px"
     };
     
     return (
