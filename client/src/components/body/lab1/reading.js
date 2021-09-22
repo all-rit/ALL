@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {LAB_ID} from '../../../constants/lab1';
 import UserLabService from '../../../services/UserLabService';
 import { Pie } from "react-chartjs-2";
-import Image1 from '../../../assets/images/casestudy/1.jpg';
+import Image1 from '../../../assets/images/lab1/reading/netflix_subtitles.jpg';
 
 const data = {
   labels: [
