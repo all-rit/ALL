@@ -137,7 +137,9 @@ header.masthead {
 	text-align: center;
 	color: white;
 	//height: auto;
-	background-image: url("../../images/div_head.jpg") !important;
+	// link to image: https://unsplash.com/photos/GXEcTqlZHno
+	// license: https://unsplash.com/license
+	background-image: url("../../images/landingpage/landingpage_hero.jpg") !important;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position: center center;
@@ -690,7 +692,9 @@ a.icon {
 }
 section#contact {
 	background-color: #212529;
-	background-image: url(../../images/map-image.png);
+	// link to image: https://pixelmap.amcharts.com/
+	// license: https://www.amcharts.com/javascript-maps/
+	background-image: url(../../images/landingpage/map.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	.section-heading {
