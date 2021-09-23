@@ -31,7 +31,7 @@ const InfoModal = (props) => {
         case "View Certificate":
             return (
                 <ul>
-                    <button class="btn-primary btn btn-md" onClick={toggle}>{buttonLabel}</button>
+                    <button class="btn-primary btn btn-md module__certificate" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalBody>
                                 {labProgress ===null || labProgress===undefined ?

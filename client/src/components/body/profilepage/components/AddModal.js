@@ -22,7 +22,7 @@ const AddModal = (props) => {
         case "add_instr_grp":
             return(
                 <>
-                    <button class="btn btn-second groups__create_btn" aria-label="add" onClick={toggle}>Create Group +</button>
+                    <button class="btn btn-second groups__create_btn" aria-label="add" onClick={toggle}>Create Group</button>
                     <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
                         <ModalHeader>Create an instructing group</ModalHeader>
                         <ModalBody>
@@ -62,7 +62,7 @@ const AddModal = (props) => {
         case "assign_grp_lab":
             return(
                 <>
-                    <button class="btn btn-second groups__labs__btn" aria-label="add" onClick={toggle}>Update Group +</button>
+                    <button class="btn btn-second groups__labs__btn" aria-label="add" onClick={toggle}>Update Group</button>
                     <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
                         <ModalHeader>Create an instructing group</ModalHeader>
                         <ModalBody>

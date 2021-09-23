@@ -389,10 +389,19 @@ a.icon:hover {
 }
 
 .module{
-
 	&__lab_col{
 		min-width: 20.6rem;
 		max-width:20.6rem;
+	}
+	&__row{
+		display: flex ;
+		//flex-direction: row;
+		justify-content: left;
+		text-align: center;
+		flex-wrap: wrap;
+	}
+	&__certificate{
+		margin-top:18px;
 	}
 	a{	
 		font-size:20px;
@@ -468,10 +477,12 @@ a.icon:hover {
 	&__caption{
 		// max-width: fit-content;
 		margin:auto;
+		min-height:230px;
 		padding-left: 20px;
 		padding-right:20px;
 		text-align: center;
 	}
+
 	&__bio{
 		word-wrap: break-word;
 		font-size: 18px;
