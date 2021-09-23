@@ -456,6 +456,12 @@ a.icon:hover {
 		background-position: center;
 
 	}
+	&__profile_caption{
+		margin:auto;
+		padding-left: 20px;
+		padding-right:20px;
+		text-align: center;
+	}
 	&__lab_buttons{
 		display: flex;
 		justify-content: space-evenly;

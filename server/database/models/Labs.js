@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
     //         category: "Accessibility",
     //         shortDescription: "Learn more about screen readers.",
     //         labURL: "https://all.rit.edu/Lab3/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/braille.45ad9103.jpg"
+    //         thumbnailImageURL: "https://all.rit.edu/static/media/screen_reader.ccd45f6b.jpg"
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Dexterity",
