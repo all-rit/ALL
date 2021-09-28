@@ -16,7 +16,21 @@ const ProfileHeader = (props) => {
         })
     }
 
-   
+   parsedRecords.sort((labRecord1,labRecord2)=>{
+       if(labRecord1[0]<labRecord2[0]){
+            if(labRecord1[1]!==null){
+                return -1
+            } else{
+                return 1
+            }
+       } else{
+            if(labRecord1[1]!==null){
+                return -1
+            } else{
+                return 1
+            }
+       }
+   })
 
     return (
         <>
