@@ -105,8 +105,9 @@ exports.getUserInstructingGroups = (userid) => {
 exports.getUserToDoLabs = (userid) => {
 	return db.sequelize.query(
 		`
-		SELECT DISTINCT "labID" FROM "group_labs"
+		SELECT DISTINCT "labID", "labName" FROM "group_labs"
 		JOIN "enrollment" on "group_labs"."groupID" = "enrollment"."groupID"
+		JOIN "labs" on "labs"."id" = "group_labs" . "labID"
 		WHERE "enrollment"."userID"=(:userID) AND "labID" NOT IN
       		(SELECT "labid" FROM "userlabcompletion"
           		WHERE "userid"=(:userID))

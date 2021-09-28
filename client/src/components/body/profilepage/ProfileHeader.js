@@ -2,7 +2,7 @@ import React from "react";
 import ProgressBar from "./components/ProgressBar";
 
 const ProfileHeader = (props) => {
-    const {user,labRecords} = props;
+    const {user,labRecords,toDoLabs} = props;
     let parsedRecords=[];
 
     if(labRecords){
@@ -10,6 +10,13 @@ const ProfileHeader = (props) => {
             parsedRecords.push([lab.labName,lab.labcompletiontime])
         })
     }
+    if(toDoLabs){
+        toDoLabs.forEach((lab)=>{
+            parsedRecords.push([lab.labName,null])
+        })
+    }
+
+   
 
     return (
         <>
@@ -35,8 +42,7 @@ const ProfileHeader = (props) => {
                         />
                     </li> 
                     : 
-                    <li>
-                        Currently, there are no labs assigned to you.
+                    <li>  
                     </li>
 
                 }

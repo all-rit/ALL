@@ -32,7 +32,7 @@ class ProgressBar extends Component{
         if(total===0){
             return(
                 <ul class="progressBarContainer">
-                    <li><h3> No Labs Assigned </h3></li>
+                    {/* <li><h3> No Labs Assigned </h3></li> */}
                 </ul>
             )
         } else{

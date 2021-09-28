@@ -462,6 +462,11 @@ a.icon:hover {
 		padding-right:20px;
 		text-align: center;
 	}
+	&__no_labs{
+		width: 330px;
+		margin: 20px;
+		text-align: left;
+	}
 	&__lab_buttons{
 		display: flex;
 		justify-content: space-evenly;

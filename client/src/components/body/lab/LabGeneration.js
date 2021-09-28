@@ -44,7 +44,7 @@ const LabGeneration = (props)=>{
               )
           } else {
               return (
-                  <p>You have no labs for this section.</p>
+                  <p class="module__no_labs">You have no labs for this section.</p>
               )
           }
       } else {
@@ -57,7 +57,7 @@ const LabGeneration = (props)=>{
               ))
           } else {
               return (
-                  <p>You have no labs for this section.</p>
+                  <p class="module__no_labs">You have no labs for this section.</p>
               )
           }
       }

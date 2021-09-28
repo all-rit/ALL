@@ -46,7 +46,7 @@ const Profile = (props) => {
             <h3>You are currently not logged in.</h3>
             :
             <div className="profile container">
-                <ProfileHeader user={props.user} labRecords={labRecords}/>
+                <ProfileHeader user={props.user} labRecords={labRecords} toDoLabs={toDoLabs}/>
                 <br/>
 
                 <Labs user={props.user} labRecords={labRecords} inProgressLabs={inProgressLabs} toDoLabs={toDoLabs} completedLabs={completedLabs}/>
