@@ -15,10 +15,6 @@
     &__contact:hover{
         color:#48e3fe
     }
-    &__ritlogo{
-        margin-top: 10px; 
-        //margin-left: 20px;
-    }
     &__logos{
         position: relative;
 		margin: auto;
@@ -695,7 +691,7 @@ section#contact {
 	// link to image: https://pixelmap.amcharts.com/
 	// license: https://www.amcharts.com/javascript-maps/
 	background-image: url(../../images/landingpage/map.png);
-	background-repeat: no-repeat;
+	background-size: cover;
 	background-position: center;
 	.section-heading {
 		color: var(--white-text);
