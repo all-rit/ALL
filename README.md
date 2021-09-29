@@ -1,4 +1,4 @@
-# Accessibility Learning Labs
+# Accessible Learning Labs
 
 ## Requirements
 
@@ -30,7 +30,7 @@ Clone the repository and open the command line for the upcoming instructions.
 
 ## Part of The National Science Foundation's Grant for Developing Experiential Laboratories for Computing Accessibility Education. Grant #1825023
 Information for this grant can be found at https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023
-## The website for all the accessibility labs can be found at https://all.rit.edu 
+## The website for all the Accessible Labs can be found at https://all.rit.edu 
 
 ## Contributing
 Please make a fork of the repository and submit a pull request to make changes to our system. Pull requests will need to be approved before the changes can be accepted by a member of the organization.
