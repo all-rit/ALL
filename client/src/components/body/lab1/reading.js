@@ -35,7 +35,10 @@ const data = {
 };
 
 const Reading = () => {
-  useScroll();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     return () => {
       UserLabService.complete_reading(LAB_ID);

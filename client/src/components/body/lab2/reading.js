@@ -24,6 +24,7 @@ const data = {
 
 const Reading = () => {
   useScroll();
+
   useEffect(() => {
     return () => {
       UserLabService.complete_reading(LAB_ID);
