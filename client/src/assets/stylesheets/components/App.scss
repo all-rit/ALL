@@ -4,6 +4,36 @@
 	--white-text: #fff; // this is the color that changes white text based on the color picker
 	--light-blue-text: #bed2fe // this is the color that changes white text based on the color picker
 }
+
+@mixin breakpoint($size) {
+	@if $size == small-phone-only {
+	  @media (max-width: 330px) {
+		@content;
+	  }
+	}
+	@if $size == phone-only {
+	  @media (max-width: 599px) {
+		@content;
+	  }
+	} @else if $size == tablet-portrait-up {
+	  @media (min-width: 600px) and (max-width: 768px) {
+		@content;
+	  }
+	} @else if $size == tablet-landscape-up {
+	  @media (min-width: 769px) and (max-width: 1024px) {
+		@content;
+	  }
+	} @else if $size == desktop-up {
+	  @media (min-width: 1200px) {
+		@content;
+	  }
+	} @else if $size == big-desktop-up {
+	  @media (min-width: 1800px) {
+		@content;
+	  }
+	}
+  }
+
 .landingpage{
     &__leftalign{
         text-align: left;
@@ -98,12 +128,16 @@
 		display:flex;
 		margin-bottom: 10px;
 		//max-width:175px;
-	}
-	@media(max-width:940px){
-		&__social_row{
-			display:list-item;
+		@include breakpoint(phone-only){
+			display: list-item;
 		}
 	}
+
+	// @media(max-width:940px){
+	// 	&__social_row{
+	// 		display:list-item;
+	// 	}
+	// }
 
 }
 
