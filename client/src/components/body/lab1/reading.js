@@ -3,7 +3,6 @@ import { LAB_ID } from "../../../constants/lab1";
 import UserLabService from "../../../services/UserLabService";
 import { Pie } from "react-chartjs-2";
 import Image1 from "../../../assets/images/lab1/reading/netflix_subtitles.jpg";
-import useScroll from "../../../use-hooks/useScroll";
 
 const data = {
   labels: [
