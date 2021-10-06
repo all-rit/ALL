@@ -1,4 +1,5 @@
 const db = require('../database');
+const { nanoid } = require("nanoid");
 
 exports.getGroupLabs = (groupid) => {
     return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID)', {
@@ -38,3 +39,16 @@ exports.unenrollUserFromGroup = (data) => {
     }
     return Promise.resolve();
 }
+
+exports.createGroup = (userID, courseName, courses) => {
+    return db.Groups.create({
+        instructorUserID: userID,
+        groupName: courseName,
+        createdDate: Date.now(),
+        isActive: true,
+        code: nanoid(6).toUpperCase()
+    }).then((data) => {
+        console.log(data)
+    }).catch(() => console.log("Error encountered"))
+}
+

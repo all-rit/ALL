@@ -16,4 +16,11 @@ export default {
             groupID,
         });
     },
+    createGroup: (userID, groupName, courses) => {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + '/group/create', {
+            userID, 
+            groupName, 
+            courses
+        });
+    }
 }

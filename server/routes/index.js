@@ -6,6 +6,7 @@ let UserController = require('../controllers/UserController');
 let UserLabController = require ('../controllers/UserLabController');
 let PageController = require('../controllers/PageController');
 let GroupController = require('../controllers/GroupController');
+
 //LAB1 Controllers
 let ExerciseControllerLab1 = require('../controllers/lab1/ExerciseController');
 let RepairControllerLab1 = require('../controllers/lab1/RepairController');
@@ -18,8 +19,7 @@ let RepairControllerLab3 = require('../controllers/lab3/RepairController');
 
 //LAB4 Controller
 let RepairControllerLab4 = require('../controllers/lab4/RepairController');
-
-//LAB5 Controller
+//LAB5 Controller 
 let RepairControllerLab5 = require('../controllers/lab5/RepairController');
 let ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
@@ -47,6 +47,7 @@ router.get('/user/:userID/:labID', UserLabController.getUserLabCompletion);
 router.post('/group/unenroll', GroupController.unenrollUserFromGroup);
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
 router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
+router.post('/group/create', GroupController.createGroup)
 
 //user Lab Routes for lab progress and quiz
 router.post('/completeAbout', UserLabController.completeAbout);

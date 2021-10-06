@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GroupService from '../../../../services/GroupService.js'
 import {
     Button,
     Modal,
@@ -15,8 +16,25 @@ const AddModal = (props) => {
 
     const addMode = props.addMode;
     const [modal, setModal] = useState(false);
+    const [courseName, setCourseName] = useState('');
 
-    const toggle = () => setModal(!modal);
+    const onFormSubmit = e => {
+        e.preventDefault()
+        // This cursed line of code will:
+        //  1. Grab the form with e.target
+        //  2. Create an instance of a FormData object from ReactStrap using the form data
+        //  3. Get the fields in that FormData object
+        //  4. Create a new object from those entries, our new object will be an Object and not FormData
+        // Essentially, this is just a really long winded way of casting FormData to Object, since
+        // apparently that's necessary despite this not being an object-oriented or strongly typed language
+        // Please refactor this eventually, for the love of all that is holy
+        const formData = Object.fromEntries((new FormData(e.target)).entries())
+        GroupService.createGroup(props.user.id, formData.groupName, [])
+        // Always toggle the modal
+        toggle()
+    }
+
+    const toggle = () => setModal(!modal)
 
     switch(addMode){
         case "add_instr_grp":
@@ -25,8 +43,8 @@ const AddModal = (props) => {
                     <button class="btn btn-second groups__create_btn" aria-label="add" onClick={toggle}>Create Group</button>
                     <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
                         <ModalHeader>Create an instructing group</ModalHeader>
-                        <ModalBody>
-                            <Form>
+                        <Form onSubmit={onFormSubmit}>
+                            <ModalBody>
                                 <FormGroup>
                                     <Label for="groupName">Group name</Label>
                                     <Input
@@ -47,15 +65,12 @@ const AddModal = (props) => {
                                     <Input type="checkbox" name="lab5" id="lab5"/>
                                     <Label for="lab5" check>Cognitive Impairments</Label>
                                 </FormGroup>
-                            </Form>
-                            <Form>
-
-                            </Form>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button color="primary" onClick={toggle}>Create Group</Button>
-                            <Button color="secondary" onClick={toggle}>Cancel</Button>
-                        </ModalFooter>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" type="submit">Create Group</Button>
+                                <Button color="secondary" onClick={toggle}>Cancel</Button>
+                            </ModalFooter>
+                        </Form>
                     </Modal>
                 </>
             )
@@ -76,10 +91,7 @@ const AddModal = (props) => {
                 </>
             )
         default:
-            return(
-                <p>This is the default case.
-                </p>
-            )
+            return( <p>This is the default case.</p> )
     }
 
 }

@@ -53,7 +53,7 @@ const Profile = (props) => {
 
                 <div className="header_with_button">
                     <h4>My Instructing Groups</h4>
-                    <AddModal addMode={"add_instr_grp"}/>
+                    <AddModal addMode={"add_instr_grp"} user={props.user}/>
                 </div>
                 <InstructingGroups user={props.user}/>
 

@@ -20,3 +20,14 @@ exports.unenrollUserFromGroup = (req, res) => {
         res.sendStatus(200);
     })
 };
+
+exports.createGroup = (req, res) => {
+    GroupService.createGroup(
+        req.params.userID,
+        req.params.courseName,
+        req.params.courses
+    ).then((data) => {
+        res.sendStatus(200);
+    })
+}
+
