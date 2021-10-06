@@ -4,7 +4,7 @@ const endpoints = {
 	SUBMIT_CHOICE: '/lab5/exercise/choice',
 };
 
-export default {
+const ExerciseService = {
 	submitChoice: (correct, question,selectedoption,
 				   options) => {
 		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_CHOICE, {
@@ -15,3 +15,5 @@ export default {
 		});
 	}
 };
+
+export default ExerciseService;

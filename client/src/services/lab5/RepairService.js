@@ -4,10 +4,13 @@ const endpoints = {
     SUBMIT_REPAIR: '/lab5/repair/submit'
 };
 
-export default {
+const RepairService = {
     submitRepair: (activity, repair) => {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR, {
             activity, repair
         })
     }
 };
+
+export default RepairService;
+
