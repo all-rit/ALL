@@ -8,7 +8,7 @@ const endpoints = {
     COMPLETE_QUIZ: '/completeQuiz'
 };
 
-export default {
+const UserLabService = {
     complete_about: (labid) => {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_ABOUT, {
             labid
@@ -37,3 +37,6 @@ export default {
         });
     }
 }
+
+export default UserLabService;
+

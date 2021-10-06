@@ -9,7 +9,7 @@ export const initialState = {
 	instructionsVisible: false,
 };
 
-export default (state = initialState, action) => {
+const AppReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.UPDATE_POPUP:
 			return {
@@ -39,3 +39,6 @@ export const actions = {
 	openInstructions: () => ({ type: types.OPEN_INSTRUCTIONS }),
 	closeInstructions: () => ({ type: types.CLOSE_INSTRUCTIONS })
 };
+
+export default AppReducer;
+
