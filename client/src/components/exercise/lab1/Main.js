@@ -58,16 +58,22 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.scrollFn = this.handleScroll.bind(this);
+  }
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.scrollFn);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
+  // componentWillUnmount() {
+  //   return window.removeEventListener("scroll", this.scrollFn);
+  // }
 
   handleScroll() {
     window.scrollTo(0, 0);
+    console.log("called once");
+    return window.removeEventListener("scroll", this.scrollFn);
   }
   render() {
     const {
