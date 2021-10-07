@@ -4,7 +4,7 @@ const endpoints = {
     SUBMIT_REPAIR: '/lab3/repair/submit'
 };
 
-const RepairService = {
+export default {
     submitRepair: (cowAltValue,
                    carAltValue,
                    burgerAltValue,
@@ -17,6 +17,3 @@ const RepairService = {
         });
     }
 };
-
-export default RepairService;
-

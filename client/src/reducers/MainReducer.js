@@ -11,7 +11,7 @@ export const initialState = {
     body: 0
 };
 
-const MainReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type){
         case types.SET_BODY:
             return {
@@ -39,6 +39,3 @@ export const actions = {
     setLab: (lab) => ({type: types.SET_LAB, lab}),
     updateUser: (user) => ({ type: types.UPDATE_USER, user })
 };
-
-export default MainReducer;
-

@@ -4,7 +4,7 @@ const endpoints = {
 	SUBMIT_REPAIR: '/lab1/repair/submit'
 };
 
-const RepairService = {
+export default {
 	submitRepair: (availableMessage, unavailableMessage, availableBackgroundColor, unavailableBackgroundColor) => {
 		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR, {
 			availableMessage,
@@ -14,5 +14,3 @@ const RepairService = {
 		});
 	}
 };
-
-export default RepairService.js

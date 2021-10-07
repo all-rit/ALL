@@ -1,13 +1,13 @@
 export const types = {
     UPDATE_POPUP: '@accessibility-lab/lab3/app/update_popup',
-
-};
-
-export const initialState = {
+  
+  };
+  
+  export const initialState = {
     popupMessage: ''
-};
-
-const AppReducer = (state = initialState, action) => {
+  };
+  
+  export default (state = initialState, action) => {
     switch (action.type) {
       case types.UPDATE_POPUP:
         return {
@@ -17,12 +17,11 @@ const AppReducer = (state = initialState, action) => {
       default:
         return state;
     }
-};
+  };
 
-
-
-export const actions = {
+  
+  
+  export const actions = {
     updatePopup: (message) => ({ type: types.UPDATE_POPUP, message })
-};
-export default AppReducer;
-
+  };
+  
