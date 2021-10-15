@@ -10,13 +10,13 @@ import {
     FormGroup,
     Label,
     Input,
+    CustomInput,
 } from 'reactstrap';
 
 const AddModal = (props) => {
 
-    const addMode = props.addMode;
+    const {addMode,user} = props;
     const [modal, setModal] = useState(false);
-    const [courseName, setCourseName] = useState('');
 
     const onFormSubmit = e => {
         e.preventDefault()
@@ -29,7 +29,18 @@ const AddModal = (props) => {
         // apparently that's necessary despite this not being an object-oriented or strongly typed language
         // Please refactor this eventually, for the love of all that is holy
         const formData = Object.fromEntries((new FormData(e.target)).entries())
-        GroupService.createGroup(props.user.id, formData.groupName, [])
+        let labs=[]
+        for (const [key,value] of Object.entries(formData)){
+            console.log(value)
+            if(value==="on"){
+                labs.push(key)
+            }
+        }
+        GroupService.createGroup(user.userid, formData.groupName, labs).then((data) => {
+            labs.forEach((labID)=>{
+                GroupService.addGroupLab(data.groupID,labID)
+            })
+        })
         // Always toggle the modal
         toggle()
     }
@@ -52,18 +63,13 @@ const AddModal = (props) => {
                                         placeholder={"SWEN 344 Web Engineering Fall 2021"}
                                     />
                                 </FormGroup>
-                                <Label for="assign-lab">Choose labs to assign</Label>
                                 <FormGroup check>
-                                    <Input type="checkbox" name="lab1" id="lab1"/>
-                                    <Label for="lab1" check>Sound and Speech</Label><br/>
-                                    <Input type="checkbox" name="lab2" id="lab2"/>
-                                    <Label for="lab2" check>Color Blindness</Label><br/>
-                                    <Input type="checkbox" name="lab3" id="lab3"/>
-                                    <Label for="lab3" check>Screen Readers</Label><br/>
-                                    <Input type="checkbox" name="lab4" id="lab4"/>
-                                    <Label for="lab4" check>Dexterity</Label><br/>
-                                    <Input type="checkbox" name="lab5" id="lab5"/>
-                                    <Label for="lab5" check>Cognitive Impairments</Label>
+                                    <Label for="assign-lab">Choose labs to assign</Label>
+                                    <CustomInput for="lab1" type="checkbox" name="1" id="lab1" label="Sound and Speech"/>
+                                    <CustomInput for="lab2" type="checkbox" name="2"id="lab2" label="Color Blindness"/>
+                                    <CustomInput for="lab3" type="checkbox" name="3" id="lab3" label="Screen Readers"/>
+                                    <CustomInput for="lab4" type="checkbox" name="4" id="lab4" label="Dexterity"/>
+                                    <CustomInput for="lab5" type="checkbox" name="5" id="lab5" label="Cognitive Impairments"/>
                                 </FormGroup>
                             </ModalBody>
                             <ModalFooter>

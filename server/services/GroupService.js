@@ -18,7 +18,6 @@ exports.getGroupEnrolledStudents = (groupid) => {
 }
 
 exports.unenrollUserFromGroup = (data) => {
-    console.log("4");
     const userid = data.userID;
     const groupid = data.groupID;
     if (userid && groupid){
@@ -40,15 +39,24 @@ exports.unenrollUserFromGroup = (data) => {
     return Promise.resolve();
 }
 
-exports.createGroup = (userID, courseName, courses) => {
+exports.createGroup = (userID, groupName) => {
     return db.Groups.create({
         instructorUserID: userID,
-        groupName: courseName,
+        groupName: groupName,
         createdDate: Date.now(),
         isActive: true,
         code: nanoid(6).toUpperCase()
     }).then((data) => {
         console.log(data)
+        return {"groupID":data.id};
     }).catch(() => console.log("Error encountered"))
 }
 
+exports.addGroupLab = (groupID,labID) => {
+    return db.GroupLabs.create({
+        groupID: groupID,
+        labID: labID,
+    }).then((data) => {
+        console.log(data)
+    }).catch(() => console.log("Error encountered"))
+}

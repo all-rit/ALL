@@ -4,7 +4,7 @@ import GroupAssignedLabs from "./GroupAssignedLabs";
 import EnrolledStudentsTable from "./EnrolledStudentsTable";
 
 const GroupDetails = (props) => {
-    const { group, instructing } = props;
+    const { group, instructing, user } = props;
     const [ assignedLabs, setAssignedLabs ] = useState([]);
     const [ enrolledStudents, setEnrolledStudents ] = useState([]);
 
@@ -27,7 +27,7 @@ const GroupDetails = (props) => {
                 assignedLabs.length === 0 ?
                     <td>There are currently no assigned labs.</td> :
                     <>
-                        <GroupAssignedLabs enrolledStudents={enrolledStudents} assignedLabs={assignedLabs} instructing={instructing}/>
+                        <GroupAssignedLabs enrolledStudents={enrolledStudents} assignedLabs={assignedLabs} instructing={instructing} user={user}/>
                         {instructing ?
                             <EnrolledStudentsTable groupid={group.id} enrolledStudents={enrolledStudents} assignedLabs={assignedLabs}/>
                             : <></>

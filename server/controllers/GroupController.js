@@ -23,11 +23,20 @@ exports.unenrollUserFromGroup = (req, res) => {
 
 exports.createGroup = (req, res) => {
     GroupService.createGroup(
-        req.params.userID,
-        req.params.courseName,
-        req.params.courses
+        req.body.userID,
+        req.body.groupName,
+        req.body.courses
+    ).then((data) => {
+        //console.log(data)
+        res.json(data);
+    })
+}
+
+exports.addGroupLab = (req, res) => {
+    GroupService.addGroupLab(
+        req.body.groupID,
+        req.body.labID
     ).then((data) => {
         res.sendStatus(200);
     })
 }
-

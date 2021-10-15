@@ -36,7 +36,7 @@ const InstructingGroups = (props) => {
                                         <p className="bold">{group.groupName}</p>
                                         <p className="bold">Invite Code: {group.code}</p>
                                     </td>
-                                    <GroupDetails group={group} instructing={true}/>
+                                    <GroupDetails group={group} instructing={true} user={user}/>
                                     <></>
                                 </tr>
                             ))}

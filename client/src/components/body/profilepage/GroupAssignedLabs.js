@@ -3,7 +3,7 @@ import AddModal from "./components/AddModal";
 import ProgressModal from "./components/ProgressModal";
 
 const GroupAssignedLabs = (props) => {
-    const { assignedLabs, instructing, enrolledStudents } = props;
+    const { assignedLabs, instructing, enrolledStudents, user } = props;
 
     return (
         <>
@@ -16,7 +16,7 @@ const GroupAssignedLabs = (props) => {
                         ))}
                         {
                             instructing ?
-                                <AddModal addMode={"assign_grp_lab"}/>
+                                <AddModal addMode={"assign_grp_lab"} user={user}/>
                                 :
                                 <></>
                         }

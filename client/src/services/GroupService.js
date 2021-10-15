@@ -17,10 +17,16 @@ export default {
         });
     },
     createGroup: (userID, groupName, courses) => {
-        return API.postWithBody(process.env.REACT_APP_SERVER_URL + '/group/create', {
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/create`, {
             userID, 
             groupName, 
             courses
+        }).then((response) => response.json());
+    },
+    addGroupLab: (groupID,labID)=>{
+        return API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/add`, {
+            groupID,
+            labID,
         });
     }
 }
