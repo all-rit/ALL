@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from 'reactstrap';
 import UserService from "../../../services/UserService";
 import GroupDetails from "./GroupDetails";
+import AddModal from "./components/AddModal";
 
 const InstructingGroups = (props) => {
 
@@ -17,6 +18,11 @@ const InstructingGroups = (props) => {
     }, [user]);
 
     return (
+        <div>
+        <div className="header_with_button">
+                    <h4>My Instructing Groups</h4>
+                    <AddModal addMode={"add_instr_grp"} user={props.user} setInstructingGroups={setInstructingGroups}/>
+        </div>
         <div className="instructing-groups">
             {
                 instructingGroups.length === 0 ?
@@ -65,6 +71,7 @@ const InstructingGroups = (props) => {
                         </ul> */}
                     </>
             }
+        </div>
         </div>
     )
 };

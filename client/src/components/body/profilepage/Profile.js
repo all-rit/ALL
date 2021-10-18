@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProfileHeader from "./ProfileHeader";
 import InstructingGroups from "./InstructingGroups";
-import AddModal from "./components/AddModal";
 import Labs from "./Labs";
 import UserService from "../../../services/UserService";
 import UserLabService from "../../../services/UserLabService";
@@ -51,10 +50,10 @@ const Profile = (props) => {
 
                 <Labs user={props.user} labRecords={labRecords} inProgressLabs={inProgressLabs} toDoLabs={toDoLabs} completedLabs={completedLabs}/>
 
-                <div className="header_with_button">
+                {/* <div className="header_with_button">
                     <h4>My Instructing Groups</h4>
                     <AddModal addMode={"add_instr_grp"} user={props.user}/>
-                </div>
+                </div> */}
                 <InstructingGroups user={props.user}/>
 
             </div>

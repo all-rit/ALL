@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import GroupService from '../../../../services/GroupService.js'
+import UserService from '../../../../services/UserService.js';
 import {
     Button,
     Modal,
@@ -15,8 +16,9 @@ import {
 
 const AddModal = (props) => {
 
-    const {addMode,user} = props;
+    const {addMode,user, setInstructingGroups} = props;
     const [modal, setModal] = useState(false);
+
 
     const onFormSubmit = e => {
         e.preventDefault()
@@ -31,7 +33,6 @@ const AddModal = (props) => {
         const formData = Object.fromEntries((new FormData(e.target)).entries())
         let labs=[]
         for (const [key,value] of Object.entries(formData)){
-            console.log(value)
             if(value==="on"){
                 labs.push(key)
             }
@@ -40,7 +41,11 @@ const AddModal = (props) => {
             labs.forEach((labID)=>{
                 GroupService.addGroupLab(data.groupID,labID)
             })
+            UserService.getUserInstructingGroups(user.userid).then((data) => {
+                setInstructingGroups(data)
+            })
         })
+
         // Always toggle the modal
         toggle()
     }
