@@ -10,7 +10,11 @@ class ExerciseEnd extends Component {
   }
 
   componentDidMount(){
+    const {user}=this.props;
     UserLabService.complete_exercise(LAB_ID);
+    if(user?.firstname !== null && user!==null){
+      UserLabService.user_complete_exercise(user.userid,LAB_ID)
+    }
   }
   render() {
     // const { user, state, plays } = this.props;
@@ -45,7 +49,7 @@ class ExerciseEnd extends Component {
             </div>
           </div>
           <button
-              className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+              className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {this.handleHome}
               key="start"
           >

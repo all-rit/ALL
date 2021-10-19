@@ -9,13 +9,13 @@ class ExerciseButtons extends Component {
     } = this.props;
     let startMessage = "Play";
     const repairButton = (
-      <button className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton" onClick={openRepairHandler} key="repair">
+      <button className="btn btn-second btn-xl text-uppercase  leftButton" onClick={openRepairHandler} key="repair">
         Repair
       </button>
     );
     const startButton = (
       <button
-        className="btn btn-primary btn-xl text-uppercase js-scroll-triggergreen rightButton"
+        className="btn btn-primary btn-xl text-uppercase  rightButton"
         onClick={()=>navigate("/Lab3/Exercise/UserUpdatedExercise")}
         key="start"
       >
@@ -24,7 +24,7 @@ class ExerciseButtons extends Component {
     );
     const endButton = (
         <button
-            className="btn btn-success btn-xl text-uppercase js-scroll-triggergreen float-right"
+            className="btn btn-success btn-xl text-uppercase  float-right"
             style={{marginRight:'15%'}}
             onClick={()=>navigate("/Lab3/Exercise/BeginnerExerciseConclusion")}
             key="start"

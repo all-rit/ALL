@@ -18,7 +18,7 @@ const Start = ({startExercise, exerciseOption, onChangeExerciseColors, colors}) 
 
   return (
       <button
-        className='start center inline Button button btn btn-xl text-uppercase '
+        className='start center inline btn-second btn btn-xl text-uppercase '
         type='submit'
         onClick={startClick}
         aria-label="move your mouse slightly over to the left."

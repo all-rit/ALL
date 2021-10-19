@@ -292,7 +292,7 @@ class ProblemFix extends Component {
             type={"submit"}
             aria-label={"Update Code"}
             variant={"contained"}
-            className = "btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
+            className = "btn btn-second btn-xl text-uppercase  leftButton"
           >
             Update Code
           </Button>

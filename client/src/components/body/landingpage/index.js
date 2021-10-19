@@ -2,11 +2,10 @@ import React from "react";
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
 import handleRedirect from "../../../helpers/Redirect";
-import {actions, actions as mainActions} from "../../../reducers/MainReducer";
+import {actions as mainActions} from "../../../reducers/MainReducer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import labInformation from "./lab/labInformation";
-import Lab from "./lab/lab";
+import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
 
 const mapDispatchToProps = (dispatch) => {
@@ -14,23 +13,6 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators(mainActions, dispatch)
   };
 };
-
-function renderLabData() {
-  return labInformation.map((labInfo, index) => {
-    const { alt,lab, name, bio , image} = labInfo //destructuring
-      return (
-              <Lab 
-                  key={index}
-                  alt= {alt} 
-                  lab={lab}
-                  name= {name} 
-                  bio={bio}
-                  image= {image} 
-                  actions={actions}
-              />
-      );
-  })
-}
 
 const Home = (props) => {
   
@@ -98,7 +80,7 @@ const Home = (props) => {
             </div>
           </div>
           <div class="landingpage__row">
-              {renderLabData()}
+              <LabGeneration actions={actions}/>
           </div>
         </div>
       </section>

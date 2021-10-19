@@ -138,14 +138,14 @@ class Footer extends Component {
             <div className="footer">
                 <div className="container" style={{display: display ? "block" : "none"}}>
                     <button
-                        className="btn btn-second btn-xl text-uppercase js-scroll-trigger back "
+                        className="btn btn-second btn-xl text-uppercase  back "
                         onClick={() => handleRedirect(actions, lab, body - 1)}
                         style={{display: this.disappearBack(body) || hideOnLanding ? "none" : "block"}}
                     >
                         Previous - {body > 0 && typeof Sections[lab][body - 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
                     </button>
                     <button
-                        className="btn btn-primary btn-xl text-uppercase js-scroll-trigger next"
+                        className="btn btn-primary btn-xl text-uppercase  next"
                         onClick={() => handleRedirect(actions, lab, body + 1)}
                         style={{display: this.disappearNext(body) || hideOnLanding ? "none" : "block"}}
                     >

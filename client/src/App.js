@@ -28,6 +28,7 @@ import {default as ReinforcementLab5} from "./components/body/lab5/reinforcement
 import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Error} from "./components/body/landingpage/error";
+import {default as Profile} from "./components/body/profilepage/Profile";
 
 import {default as Quiz} from "./components/quiz/App";
 import {stateChange} from "./helpers/Redirect";
@@ -41,7 +42,7 @@ import "./assets/stylesheets/main.scss";
 import { Router} from "@reach/router";
 import {connect} from "react-redux";
 import { globalHistory } from '@reach/router';
-var parse = require('url-parse');
+const parse = require('url-parse');
 
 const mapStateToProps = (state) => {
   return {
@@ -90,38 +91,39 @@ class App extends Component {
             <Router basepath={process.env.PUBLIC_URL} className="app" >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
+              <Profile path="/Profile" user={state.main.user}/>
               <Error actions={actions} default />
-              <AboutLab1 path="/Lab1/"/>
-              <AboutLab2 path="/Lab2/"/>
-              <AboutLab3 path="/Lab3/"/>
-              <AboutLab4 path="/Lab4/"/>
-              <AboutLab5 path="/Lab5/"/>
-              <AboutLab1 path="/Lab1/About"/>
-              <AboutLab2 path="/Lab2/About"/>
-              <AboutLab3 path="/Lab3/About"/>
-              <AboutLab4 path="/Lab4/About"/>
-              <AboutLab5 path="/Lab5/About"/>
+              <AboutLab1 path="/Lab1/" user={state.main.user}/>
+              <AboutLab2 path="/Lab2/" user={state.main.user}/>
+              <AboutLab3 path="/Lab3/" user={state.main.user}/>
+              <AboutLab4 path="/Lab4/" user={state.main.user}/>
+              <AboutLab5 path="/Lab5/" user={state.main.user}/>
+              <AboutLab1 path="/Lab1/About" user={state.main.user}/>
+              <AboutLab2 path="/Lab2/About" user={state.main.user}/>
+              <AboutLab3 path="/Lab3/About" user={state.main.user}/>
+              <AboutLab4 path="/Lab4/About" user={state.main.user}/>
+              <AboutLab5 path="/Lab5/About" user={state.main.user}/>
 
-              <ReadingLab1 path="/Lab1/Reading"/>
-              <ReadingLab2 path="/Lab2/Reading"/>
-              <ReadingLab3 path="/Lab3/Reading"/>
-              <ReadingLab4 path="/Lab4/Reading"/>
-              <ReadingLab5 path="/Lab5/Reading"/>
+              <ReadingLab1 path="/Lab1/Reading" user={state.main.user}/>
+              <ReadingLab2 path="/Lab2/Reading" user={state.main.user}/>
+              <ReadingLab3 path="/Lab3/Reading" user={state.main.user}/>
+              <ReadingLab4 path="/Lab4/Reading" user={state.main.user}/>
+              <ReadingLab5 path="/Lab5/Reading" user={state.main.user}/>
 
-              <ExerciseLab1 path="/Lab1/Exercise" />
-              <ExerciseLab2 path="/Lab2/Exercise" />
-              <ExerciseLab3 path="/Lab3/Exercise/*" />
-              <ExerciseLab4 path="/Lab4/Exercise/*" />
-              <ExerciseLab5 path="/Lab5/Exercise/*" />
+              <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user}/>
+              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user}/>
+              <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user}/>
+              <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user}/>
+              <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user}/>
 
-              <ReinforcementLab1 path="/Lab1/Reinforcement" />
-              <ReinforcementLab2 path="/Lab2/Reinforcement" />
-              <ReinforcementLab3 path="/Lab3/Reinforcement" />
-              <ReinforcementLab4 path="/Lab4/Reinforcement" />
-              <ReinforcementLab5 path="/Lab5/Reinforcement" />
+              <ReinforcementLab1 path="/Lab1/Reinforcement" user={state.main.user}/>
+              <ReinforcementLab2 path="/Lab2/Reinforcement" user={state.main.user}/>
+              <ReinforcementLab3 path="/Lab3/Reinforcement" user={state.main.user}/>
+              <ReinforcementLab4 path="/Lab4/Reinforcement" user={state.main.user}/>
+              <ReinforcementLab5 path="/Lab5/Reinforcement" user={state.main.user}/>
 
 
-              <Quiz path={`/Lab${lab}/Quiz`}/>
+              <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user}/>
             </Router>
           </div>
         </div>

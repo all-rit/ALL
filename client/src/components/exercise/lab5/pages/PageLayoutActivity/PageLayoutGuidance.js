@@ -34,7 +34,7 @@ class PageLayoutGuidance extends Component {
               <div className="lowercontent">Let’s continue on and make the changes. Click 'Next'</div>
               <div className = "flex">
                   <button
-                      className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+                      className="btn btn-primary text-black btn-xl text-uppercase "
                       onClick = {this.handleNav}
                       key="Next"
                   >

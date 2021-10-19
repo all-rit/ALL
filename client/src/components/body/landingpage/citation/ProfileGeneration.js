@@ -1,28 +1,29 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
-import studentInformation from "./studentInfomation";
-import professorInformation from "./professorInformation";
+import TeamMemberService from "../../../../services/TeamMemberService";
+
 
 function renderProfileData(profileInformation) {
     return profileInformation.map((profileInfo, index) => {
-        const {profile_image, name,title,bio,socials,network} = profileInfo //destructuring
+        const {imageURL, firstName,lastName,title,work,datesActive,websiteURL,network,socials} = profileInfo //destructuring
         return (
-                
                 <Profile 
                     key={index}
-                    profile_image= {profile_image} 
-                    name= {name} 
+                    profile_image= {imageURL} 
+                    name= {firstName +" "+lastName} 
                     title= {title} 
-                    bio={bio}
+                    work={work}
+                    datesActive={datesActive}
                     socials={socials}
+                    website={websiteURL}
                     network={network}
                 />
         );
     })
   }
 
-function renderSlideset(){
-    let profiles = renderProfileData(studentInformation);
+function renderSlideset(information){
+    let profiles = renderProfileData(information);
     let rows =[];
     let profile_row=[];
     for(let i in profiles){
@@ -66,11 +67,39 @@ function initSlideShow(slideshow) {
 } 
 
 class ProfileGeneration extends Component{
+    constructor(props) {
+      super(props);
+      this.state = {teamInformation: [],professorInformation:[]};
+    }
+
+    setTeamInformation=(data)=>{
+      this.setState({teamInformation: data})
+    }
+    setProfessorInformation=(data)=>{
+      this.setState({professorInformation: data})
+    }
+
     componentDidMount() {
+        if(this.state.professorInformation.length===0){
+          async function fetchProfessors() {
+              return TeamMemberService.getAllProfessors();
+          }
+          fetchProfessors().then((data) => {
+            this.setProfessorInformation(data);
+          });
+        }
+        if(this.state.teamInformation.length===0){
+          async function fetchTeam() {
+              return TeamMemberService.getAllTeamMembers();
+          }
+          fetchTeam().then((data) => {
+            this.setTeamInformation(data);
+            slideshows = document.querySelectorAll('[data-component="slideshow"]');
+            slideshows.forEach(initSlideShow);
+          });
+        }
         clearInterval(slideshowInterval);
         slideshowInterval='';
-        slideshows = document.querySelectorAll('[data-component="slideshow"]');
-        slideshows.forEach(initSlideShow);
     }
 
     componentWillUnmount() {
@@ -93,13 +122,13 @@ class ProfileGeneration extends Component{
                  </div>
                  <div class="landingpage__row">
                    <div alt="professors" class="landingpage__row">
-                     {renderProfileData(professorInformation)}
+                     {renderProfileData(this.state.professorInformation)}
                    </div>
                  </div>
        
                  <div id="slideshow" alt="students" class="landingpage__row" data-component="slideshow">
                      <div role="list">
-                       {renderSlideset()}
+                       {renderSlideset(this.state.teamInformation)}
                      </div>
                  </div>
              </div>

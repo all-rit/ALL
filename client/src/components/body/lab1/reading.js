@@ -25,12 +25,17 @@ const data = {
   ]
 };
 
-const Reading = () => {
+const Reading = (props) => {
+  const {user}=props;
   useEffect(() => {
     return () => {
       UserLabService.complete_reading(LAB_ID);
+      if(user?.firstname !== null && user!==null){
+        UserLabService.user_complete_reading(user.userid,LAB_ID);
+      }
     }
-  });
+  }, [user]);
+
   return (
         <div className="study">
           <h1>Case Study</h1>

@@ -9,9 +9,38 @@ exports.main = (req, res) => {
 	});
 };
 
+exports.getUser = (req, res) => {
+	UserService.getUser(req.params.userID).then((records) => {
+		res.json(records);
+	})
+};
+
+exports.getUserToDoLabs = (req, res) => {
+	UserService.getUserToDoLabs(req.params.userID).then((records) => {
+		res.json(records);
+	})
+}
+exports.getUserAssignedLabs = (req, res) => {
+	UserService.getUserAssignedLabs(req.params.userID).then((records) => {
+		res.json(records);
+	})
+}
+
+exports.getUserEnrolledGroups = (req, res) => {
+	UserService.getUserEnrolledGroups(req.params.userID).then((records) => {
+		res.json(records);
+	})
+};
+
+exports.getUserInstructingGroups = (req, res) => {
+	UserService.getUserInstructingGroups(req.params.userID).then((records) => {
+		res.json(records);
+	})
+};
+
 // Authenticates User through Google OAuth
 exports.authenticate = passport.authenticate('google', {
-		scope: ['profile']
+		scope: ['email', 'profile']
 	});
 
 // Callback used for Google OAuth
@@ -26,7 +55,6 @@ exports.authenticateCallback = (req, res) => {
 			res.redirect(req.session.url);
 			}
 		)
-
 	});
 };
 

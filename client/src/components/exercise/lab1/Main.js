@@ -59,6 +59,7 @@ const mapDispatchToProps = (dispatch) => {
 class Main extends Component {
 	render() {
 		const {
+			user,
 			popupMessage,
 			instructionsVisible,
 
@@ -127,6 +128,7 @@ class Main extends Component {
 						changesApplied
 					}}
 					handlers={actions}
+					user={user}
 				/>
 
 				<ExerciseInstructions

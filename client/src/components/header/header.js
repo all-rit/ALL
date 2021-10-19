@@ -98,81 +98,183 @@ const Header = (props) => {
                         <img className="logo img-fluid"
                             src={Logo}
                             alt="Computing Accessibility"
-                            
                         />
                     </a>
-
+                {/* TODO figure out a way to consolidate repeated code*/}
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
-                {state.main.lab === 0 && state.main.body === 1 ?
+                {state.main.lab === 0 ?
                     <Nav className="ml-auto" navbar>
-                        <NavItem class="collapse navbar-collapse" >       
+                        {state.main.body===0 ?
+                            <Nav className="ml-auto" navbar>
+                                <NavItem class="collapse navbar-collapse" >
+                                    <NavLink
+                                        class="nav-link "
+                                        href="#goals"
+                                        style={link === 0 ? activeStyle : {color: "#fff"}}>
+                                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                            <li className="nav-item">
+                                                Goals
+                                            </li>
+                                        </ul>
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem class="collapse navbar-collapse" >
+                                    <NavLink
+                                        class="nav-link "
+                                        href="#labs"
+                                        style={link === 1 ? activeStyle : {color: "#fff"}}>
+                                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                            <li className="nav-item">
+                                                Labs
+                                            </li>
+                                        </ul>
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem class="collapse navbar-collapse" >
+                                    <NavLink
+                                        class="nav-link "
+                                        href="#citation"
+                                        style={link === 2 ? activeStyle : {color: "#fff"}}>
+                                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                            <li className="nav-item">
+                                                Team
+                                            </li>
+                                        </ul>
+                                    </NavLink>
+                                    </NavItem>
+                                <NavItem class="collapse navbar-collapse" >
+                                    <NavLink
+                                        class="nav-link "
+                                        href="#contact"
+                                        style={link === 3 ? activeStyle : {color: "#fff"}}>
+                                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                            <li className="nav-item">
+                                                Contact
+                                            </li>
+                                        </ul>
+                                    </NavLink>
+                                </NavItem>
+                            </Nav> 
+                            : 
+                            <Nav className="ml-auto" navbar>
+                                { state.main.body===1 &&
+                                    <NavItem class="collapse navbar-collapse" >       
+                                        <NavLink
+                                            class="nav-link "
+                                            href="# "
+                                            style={state.main.body===1 ? activeStyle : {color: "#fff"}}
+                                            onClick={() => navigate(state,actions, 1, 0)}>
+                                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                                <li className="nav-item">
+                                                    Site Map
+                                                </li>
+                                            </ul>
+                                        </NavLink>
+                                    </NavItem>
+                                }
+                                <NavItem class="collapse navbar-collapse" >
+                                    <NavLink
+                                        class="nav-link "
+                                        href="# "
+                                        style={{color: "#fff"}}
+                                        onClick={() => navigate(state,actions, 0, 0)}>
+                                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                            <li className="nav-item">
+                                                Home
+                                            </li>
+                                        </ul>
+                                    </NavLink>
+                                </NavItem>
+                            </Nav>
+                        } 
+                        {state.main.user !== null &&
+                            (state.main.user.firstname !== null &&
+                                <NavItem class="collapse navbar-collapse" >
+                                    <NavLink
+                                        class="nav-link "
+                                        href="# "
+                                        style={state.main.body===2 ? activeStyle : {color: "#fff"}}
+                                        onClick={() => navigate(state,actions, 2, 0)}>
+                                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                            <li className="nav-item nav-last">
+                                                Profile
+                                            </li>
+                                        </ul>
+                                    </NavLink>
+                                </NavItem>
+                            )
+                        }
+
+                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
+                    </Nav>
+                    :
+                    <Nav className="ml-auto" navbar>
+                        <NavItem class="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link js-scroll-trigger"
+                                class="nav-link "
+                                onClick={() => navigate(state,actions, 0, 0)}
                                 href="# "
-                                style={link === 0 ? activeStyle : {color: "#fff"}}
-                                onClick={() => navigate(state,actions, 1, 0)}>
+                                style={{color: "#fff"}}>
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                     <li className="nav-item">
-                                        Site Map
-                                    </li>
-                                </ul>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="# "
-                                style={{color: "#fff"}}
-                                onClick={() => navigate(state,actions, 0, 0)}>
-                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                                    <li className="nav-item nav-last">
                                         Home
                                     </li>
                                 </ul>
                             </NavLink>
                         </NavItem>
+
+                        <NavItem class="collapse navbar-collapse">
+                            <NavLink
+                                class="nav-link "
+                                onClick={() => navigate(state, actions,0)}
+                                href="# "
+                                style={count === 0 ? activeStyle : {color: "#fff"}}>
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                    <li className="nav-item">
+                                        About
+                                    </li>
+                                </ul>
+                            </NavLink>
+                        </NavItem>
+<<<<<<< HEAD
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                     </Nav>
                     :
                     (state.main.lab === 0 ?
                     <Nav className="ml-auto" navbar>
                         <NavItem class="collapse navbar-collapse" >
+=======
+
+                        <NavItem class="collapse navbar-collapse">
+>>>>>>> profile_page
                             <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="#goals"
-                                style={link === 0 ? activeStyle : {color: "#fff"}}>
+                                class="nav-link "
+                                onClick={() => navigate(state, actions,1)}
+                                href="# "
+                                style={count === 1 ? activeStyle : {color: "#fff"}}>
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                     <li className="nav-item">
-                                        Goals
+                                        Reading
                                     </li>
                                 </ul>
                             </NavLink>
                         </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
+
+                        <NavItem class="collapse navbar-collapse">
                             <NavLink
-                            class="nav-link js-scroll-trigger"
-                            href="#labs"
-                            style={link === 1 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                            <li className="nav-item">
-                            Labs
-                            </li>
-                            </ul>
-                            </NavLink>
-                            </NavItem>
-                            <NavItem class="collapse navbar-collapse" >
-                            <NavLink
-                                class="nav-link js-scroll-trigger"
-                                href="#citation"
-                                style={link === 2 ? activeStyle : {color: "#fff"}}>
+                                class="nav-link "
+                                onClick={() => navigate(state, actions,2)}
+                                href="# "
+                                style={count === 2 ? activeStyle : {color: "#fff"}}>
                                 <ul className="navbar-nav nav-font text-uppercase ml-auto">
                                     <li className="nav-item">
-                                        Team
+                                        Exercise
                                     </li>
                                 </ul>
                             </NavLink>
                         </NavItem>
+<<<<<<< HEAD
                             <NavItem class="collapse navbar-collapse" >
                             <NavLink
                             class="nav-link js-scroll-trigger"
@@ -231,37 +333,37 @@ const Header = (props) => {
                             </li>
                             </ul>
                             </NavLink>
+=======
+>>>>>>> profile_page
 
-                            </NavItem>
-                            <NavItem
-                            class="collapse navbar-collapse">
+                        <NavItem class="collapse navbar-collapse">
                             <NavLink
-                            class="nav-link js-scroll-trigger"
-                            onClick={() => navigate(state, actions,2)}
-                            href="# "
-                            style={count === 2 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                            <li className="nav-item">
-                            Exercise
-                            </li>
-                            </ul>
+                                class="nav-link "
+                                onClick={() => navigate(state, actions,3)}
+                                href="# "
+                                style={count === 3 ? activeStyle : {color: "#fff"}}>
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                    <li className="nav-item">
+                                        Reinforcement
+                                    </li>
+                                </ul>
                             </NavLink>
+                        </NavItem>
 
-                            </NavItem>
-                            <NavItem
-                            class="collapse navbar-collapse">
-                            <NavLink
-                            class="nav-link js-scroll-trigger"
-                            onClick={() => navigate(state, actions,3)}
-                            href="# "
-                            style={count === 3 ? activeStyle : {color: "#fff"}}>
-                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                            <li className="nav-item">
-                            Reinforcement
-                            </li>
-                            </ul>
+                        <NavItem class="collapse navbar-collapse">
+                            <NavLink class="nav-link "
+                                onClick={() => navigate(state, actions,4)}
+                                href="# "
+                                style={count === 4 ? activeStyle : {color: "#fff"}}>
+                                <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                    <li className="nav-item">
+                                        Quiz
+                                    </li>
+                                </ul>
                             </NavLink>
+                        </NavItem>
 
+<<<<<<< HEAD
                             </NavItem>
                             <NavItem
                             class="collapse navbar-collapse"
@@ -280,6 +382,28 @@ const Header = (props) => {
                             </NavItem>
                         <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
                     </Nav> )
+=======
+                        {state.main.user !== null &&
+                            (state.main.user.firstname !== null &&
+                                <NavItem class="collapse navbar-collapse" >
+                                    <NavLink
+                                        class="nav-link "
+                                        href="# "
+                                        style={{color: "#fff"}}
+                                        onClick={() => navigate(state,actions, 2, 0)}>
+                                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                                            <li className="nav-item nav-last">
+                                                Profile
+                                            </li>
+                                        </ul>
+                                    </NavLink>
+                                </NavItem>
+                            )
+                        }
+
+                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} />
+                    </Nav> 
+>>>>>>> profile_page
                 }
                 </Collapse>
             </div>

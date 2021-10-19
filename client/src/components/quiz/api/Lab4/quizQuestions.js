@@ -1,4 +1,4 @@
-var quizQuestionsLab4 = [
+const quizQuestionsLab4 = [
     {
         question: "What is a dexterity/mobility impairment?",
         answers: [

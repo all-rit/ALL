@@ -23,7 +23,7 @@ class NotificationAccessible extends Component {
                     <Notification message={AccessibleMessage}/>
                     <div className='flex float-right'>
                         <button
-                            className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+                            className="btn btn-primary text-black btn-xl text-uppercase "
                             onClick = {this.handleNav}
                             key="next"
                         >
