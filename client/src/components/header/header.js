@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Logo from "../../assets/images/logos/ALL_Logo_Header.svg";
+import Logo from "../../assets/images/ALL_Logo_Header.svg";
 import "../../assets/stylesheets/components/Header.scss"
 import WelcomeMessage from './helpers/WelcomeMessage';
 import {connect} from "react-redux";
@@ -20,7 +20,8 @@ import getExerciseState from '../../helpers/GetReducer';
 const mapStateToProps = (state) => {
     return {
         // General
-        state: state };
+        state: state
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {

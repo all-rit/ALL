@@ -62,7 +62,7 @@ export const initialState = {
 	congratulationMessage: null
 };
 
-const ExerciseReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case types.UPDATE_STATE:
 			return {
@@ -218,6 +218,3 @@ export const actions = {
 	addResult: (result) => ({ type: types.ADD_RESULT, result }),
 	updateCongratulationMessage: (message) => ({ type: types.UPDATE_CONGRATULATION_MESSAGE, message })
 };
-
-export default ExerciseReducer;
-

@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import { AppBar, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-// link to image: https://pixabay.com/vectors/cat-pet-animal-kitty-kitten-cute-6484941/
-// license: https://pixabay.com/service/license/
-import catImage from "../../../../../assets/images/lab3/exercise/cat.svg";
-// link to image: https://pixabay.com/vectors/taxi-cab-car-vehicle-47204/
-// license: https://pixabay.com/service/license/
-import carImage from "../../../../../assets/images/lab3/exercise/car.svg";
-// link to image: https://pixabay.com/vectors/hamburger-cheeseburger-fast-food-31775/
-// license: https://pixabay.com/service/license/
-import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.svg";
+import catImage from "../../../../../assets/images/c1.svg";
+import carImage from "../../../../../assets/images/c2.svg";
+import burgerImage from "../../../../../assets/images/b.png";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
@@ -51,18 +45,7 @@ class ProblemDiscovery extends Component {
       width: "128px",
       height: "128px",
       border: "1px solid black",
-      tabIndex: "0",
-      backgroundColor: "#EFEFEF",
-      verticalAlign: "middle",
-      padding: "5px"
-    };
-
-    const tableStyle = {
-        border: "1px solid black",
-        marginLeft: "auto",
-        marginRight: "auto",
-        textAlign: "center",
-        marginBottom: "1rem"
+      tabIndex: "0"
     };
     
     return (
@@ -108,46 +91,33 @@ class ProblemDiscovery extends Component {
           They are there for the example.
         </Typography>
         <br />
-        <table style={tableStyle} className={"center"}>
-            <tbody>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={catImage}
-                            alt={"cat"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "cat")}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={carImage}
-                            alt={"image of car"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "image of car")}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={burgerImage}
-                            alt={"image of burger"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "image of burger")}
-                        />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <input
+          style={imgStyle}
+          type={"image"}
+          src={catImage}
+          alt={"cat"}
+          tabIndex={"0"}
+          onFocus={(e) => textToSpeech(e, "cat")}
+        />
+        <br />
+        <input
+          style={imgStyle}
+          type={"image"}
+          src={carImage}
+          alt={"image of car"}
+          tabIndex={"0"}
+          onFocus={(e) => textToSpeech(e, "image of car")}
+        />
+        <br />
+        <input
+          style={imgStyle}
+          type={"image"}
+          src={burgerImage}
+          alt={"image of burger"}
+          tabIndex={"0"}
+          onFocus={(e) => textToSpeech(e, "image of burger")}
+        />
+        <br />
         <Button variant={"text"} onFocus={(e) => textToSpeech(e, "ok button")}>Ok</Button>
         <Button variant={"text"} onFocus={(e) => textToSpeech(e, "cancel button")}>Cancel</Button>
         <br />

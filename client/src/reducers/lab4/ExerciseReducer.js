@@ -12,7 +12,7 @@ export const initialState = {
     end: false
 };
 
-const ExerciseReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
         case types.UPDATE_STATE:
             return {
@@ -34,6 +34,3 @@ export const actions = {
     updateState: (state) => ({ type: types.UPDATE_STATE, state }),
     enableEnd: (state) => ({ type: types.ENABLE_END, state })
 };
-
-export default ExerciseReducer;
-

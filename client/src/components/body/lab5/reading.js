@@ -126,9 +126,9 @@ const Reading = (props) => {
 
             <h4>For more information, please visit the following websites:</h4>
             <div className="flex">
-                <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Cognitive_accessibility" target="_blank" rel="noopener noreferrer">Mozilla Cognitive Accessibility</a>
-                <a href="https://www.w3.org/WAI/cognitive/" target="_blank" rel="noopener noreferrer">W3 Cognitive Accessibility</a>
-                <a href="https://www.w3.org/TR/coga-usable/" target="_blank" rel="noopener noreferrer">Making Content Accessible</a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Cognitive_accessibility">Mozilla Cognitive Accessibility</a>
+                <a href="https://www.w3.org/WAI/cognitive/">W3 Cognitive Accessibility</a>
+                <a href="https://www.w3.org/TR/coga-usable/">Making Content Accessible</a>
             </div>
         </div>
     );

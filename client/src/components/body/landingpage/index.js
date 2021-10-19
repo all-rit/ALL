@@ -92,7 +92,9 @@ const Home = (props) => {
       {/* Clients */}
       <section class="py-5">
         <div class="container">
-          <div class="row landingpage__logos">
+          <div
+            class="row landingpage__logos"
+          >
             <div class="col-sm-4">
               <a href="https://www.nsf.gov" target="_blank" rel="noopener noreferrer">
                 <img
@@ -102,7 +104,7 @@ const Home = (props) => {
                 />
               </a>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 landingpage__ritlogo">
               <a href="https://www.rit.edu" target="_blank" rel="noopener noreferrer">
                 <img
                   class=" d-block mx-auto landingpage__logo"

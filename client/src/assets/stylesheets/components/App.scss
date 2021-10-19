@@ -45,6 +45,10 @@
     &__contact:hover{
         color:#48e3fe
     }
+    &__ritlogo{
+        margin-top: 10px; 
+        //margin-left: 20px;
+    }
     &__logos{
         position: relative;
 		margin: auto;
@@ -166,9 +170,7 @@ header.masthead {
 	text-align: center;
 	color: white;
 	//height: auto;
-	// link to image: https://unsplash.com/photos/GXEcTqlZHno
-	// license: https://unsplash.com/license
-	background-image: url("../../images/landingpage/landingpage_hero.jpg") !important;
+	background-image: url("../../images/div_head.jpg") !important;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position: center center;
@@ -963,10 +965,8 @@ a.icon {
 }
 section#contact {
 	background-color: #212529;
-	// link to image: https://pixelmap.amcharts.com/
-	// license: https://www.amcharts.com/javascript-maps/
-	background-image: url(../../images/landingpage/map.png);
-	background-size: cover;
+	background-image: url(../../images/map-image.png);
+	background-repeat: no-repeat;
 	background-position: center;
 	.section-heading {
 		color: var(--white-text);

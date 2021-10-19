@@ -15,7 +15,7 @@ export const initialState = {
 	changesApplied: false
 };
 
-const RepairReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case types.UPDATE_REPAIR:
 			return {
@@ -62,6 +62,3 @@ export const actions = {
 	openRepair: () => ({ type: types.OPEN_REPAIR }),
 	closeRepair: () => ({ type: types.CLOSE_REPAIR })
 };
-
-export default RepairReducer;
-

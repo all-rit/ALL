@@ -6,7 +6,7 @@ const endpoints = {
     SUBMIT_REPAIR_HINT: '/lab4/repair/submit/hint',
 };
 
-const RepairService = {
+export default {
     submitRepairButton: (height, width) => {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR_BUTTON, {
             height, width
@@ -23,6 +23,3 @@ const RepairService = {
         });
     },
 };
-
-export default RepairService;
-
