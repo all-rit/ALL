@@ -7,7 +7,7 @@ const endpoints = {
 	END_EXERCISE: '/lab1/exercise/end',
 };
 
-export default {
+const ExerciseService = {
 	createExercise: (playthrough) => {
 		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_EXERCISE, {
 			playthrough
@@ -32,3 +32,6 @@ export default {
 		})
 	}
 };
+
+export default ExerciseService;
+

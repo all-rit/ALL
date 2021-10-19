@@ -1,6 +1,6 @@
 import API from "./API";
 
-export default {
+const TeamMemberService = {
     getAllTeamMembers: () => {
         return API.get(process.env.REACT_APP_SERVER_URL + `/teammember`)
             .then((response) => response.json())
@@ -12,3 +12,6 @@ export default {
             .then((json) => json);
     }
 }
+
+export default TeamMemberService;
+
