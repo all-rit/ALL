@@ -14,16 +14,16 @@ const http = require('http')
 const app = express();
 const port = process.env.PORT || 5005;
 
-const allowedOrigins = [process.env.CLIENT_URL, 'https://localhost:5005','https://localhost:3000', 'https://all.rit.edu'];
+const allowedOrigins = [process.env.CLIENT_URL, 'https://localhost:5005', 'https://localhost:3000', 'https://all.rit.edu'];
 
 app.use(passport.initialize());
 app.use(passport.session());
 auth(passport);
 
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
   extended: false
 }));
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cookieParser());
 app.use(session({
   name: 'session',
