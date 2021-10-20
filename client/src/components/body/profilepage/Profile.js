@@ -4,6 +4,7 @@ import InstructingGroups from "./InstructingGroups";
 import Labs from "./Labs";
 import UserService from "../../../services/UserService";
 import UserLabService from "../../../services/UserLabService";
+import EnrolledGroups from "./EnrolledGroups";
 
 const Profile = (props) => {
 
@@ -47,7 +48,8 @@ const Profile = (props) => {
             <div className="profile container">
                 <ProfileHeader user={props.user} labRecords={labRecords} toDoLabs={toDoLabs}/>
                 <br/>
-
+                <EnrolledGroups user={props.user}/>
+                <br/>
                 <Labs user={props.user} labRecords={labRecords} inProgressLabs={inProgressLabs} toDoLabs={toDoLabs} completedLabs={completedLabs}/>
 
                 {/* <div className="header_with_button">

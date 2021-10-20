@@ -1,5 +1,4 @@
 import React from "react";
-import EnrolledGroups from "./EnrolledGroups";
 import LabGeneration from "../lab/LabGeneration";
 import {actions} from "../../../reducers/MainReducer";
 
@@ -10,9 +9,6 @@ const Labs = (props) => {
             {
                 (props.user && props.labRecords) &&
                     <>
-                        <h4>My Enrolled Groups</h4>
-                        <EnrolledGroups user={props.user}/>
-                        <br/>
                         <div className="module__row">
                             <div>
                                 <h4>In Progress Labs</h4>
