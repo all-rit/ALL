@@ -6,12 +6,12 @@ class Profile extends Component{
     render(){
         const { profile_image, name, title, work ,datesActive,socials} = this.props;
         //Parses stringified xml file
-        var parsedSocials=[];
+        const parsedSocials = [];
         if(socials!== undefined && socials.length!==0){
-            var xml = new XMLParser().parseFromString(socials); 
+            const xml = new XMLParser().parseFromString(socials);
             xml.children.forEach((social)=>{
-                var link = social.getElementsByTagName('Link')[0].value;
-                var network = social.getElementsByTagName('Network')[0].value;
+                const link = social.getElementsByTagName('Link')[0].value;
+                const network = social.getElementsByTagName('Network')[0].value;
                 parsedSocials.push([link,network])
             })
         }
