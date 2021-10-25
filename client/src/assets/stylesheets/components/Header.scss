@@ -4,19 +4,20 @@
   display: grid;
   min-height: 78px;
   grid-template-columns: 1fr 1fr;
-  position:fixed;
-  top:0;
-  
+  position: fixed;
+  top: 0;
+
   &__column {
     padding: 0.5rem;
     font-size: 1.5rem;
   }
 }
 
-#all-header-text{
+#all-header-text {
   color: #fed136;
-  font-family: "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 30px;
   margin-left: -15px;
   margin-top: -10px;
@@ -28,24 +29,32 @@
   display: inline-block;
   // link to image: https://developers.google.com/identity/branding-guidelines
   // license: https://www.google.com/intl/en/permissions/
-  background-image: image("../../images/google_buttons/btn_google_signin_dark_normal_web.png");
+  background-image: image(
+    "../../images/google_buttons/btn_google_signin_dark_normal_web.png"
+  );
 
   // link to image: https://developers.google.com/identity/branding-guidelines
   // license: https://www.google.com/intl/en/permissions/
   &:not(&--disabled):hover {
-    background-image: image("../../images/google_buttons/btn_google_signin_dark_focus_web.png");
+    background-image: image(
+      "../../images/google_buttons/btn_google_signin_dark_focus_web.png"
+    );
   }
 
   // link to image: https://developers.google.com/identity/branding-guidelines
   // license: https://www.google.com/intl/en/permissions/
   &:not(&--disabled):active {
-    background-image: image("../../images/google_buttons/btn_google_signin_dark_pressed_web.png");
+    background-image: image(
+      "../../images/google_buttons/btn_google_signin_dark_pressed_web.png"
+    );
   }
 
   // link to image: https://developers.google.com/identity/branding-guidelines
   // license: https://www.google.com/intl/en/permissions/
   &--disabled {
-    background-image: image("../../images/google_buttons/btn_google_signin_dark_disabled_web.png");
+    background-image: image(
+      "../../images/google_buttons/btn_google_signin_dark_disabled_web.png"
+    );
     cursor: not-allowed;
   }
 }
@@ -56,10 +65,10 @@
   @media (min-width: 992px) {
     padding-left: 1rem;
   }
-  &__toggle{
-    padding:0;
+  &__toggle {
+    padding: 0;
     background-color: transparent;
-    border:none;
+    border: none;
     border-radius: 50%;
   }
   &__name {
@@ -74,23 +83,23 @@
     border: 1px;
   }
   &__logout {
-    display:inline-block;
+    display: inline-block;
   }
-  &__menu{
+  &__menu {
     margin-top: 20px;
   }
 }
 
-.labnav{
+.labnav {
   // padding-top: 0.8rem;
   padding-bottom: 0.8rem;
 }
 
 .nav-last {
-  padding-right: .8rem;
+  padding-right: 0.8rem;
 }
 
-.logo{
+.logo {
   padding-right: 20px;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -98,4 +107,7 @@
   margin-top: -5px;
   height: 4rem;
   width: 15rem;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
 }

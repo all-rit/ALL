@@ -2,81 +2,81 @@ import React from "react";
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
 import handleRedirect from "../../../helpers/Redirect";
-import {actions, actions as mainActions} from "../../../reducers/MainReducer";
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
+import { actions, actions as mainActions } from "../../../reducers/MainReducer";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import labInformation from "./lab/labInformation";
 import Lab from "./lab/lab";
 import ProfileGeneration from "./citation/ProfileGeneration";
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(mainActions, dispatch)
+    actions: bindActionCreators(mainActions, dispatch),
   };
 };
 
 function renderLabData() {
   return labInformation.map((labInfo, index) => {
-    const { alt,lab, name, bio , image} = labInfo //destructuring
-      return (
-              <Lab 
-                  key={index}
-                  alt= {alt} 
-                  lab={lab}
-                  name= {name} 
-                  bio={bio}
-                  image= {image} 
-                  actions={actions}
-              />
-      );
-  })
+    const { alt, lab, name, bio, image } = labInfo; //destructuring
+    return (
+      <Lab
+        key={index}
+        alt={alt}
+        lab={lab}
+        name={name}
+        bio={bio}
+        image={image}
+        actions={actions}
+      />
+    );
+  });
 }
 
 const Home = (props) => {
-  
-  const {actions} = props;
+  const { actions } = props;
   return (
-    <div class="landingpage">
+    <div className="landingpage">
       {/* Header */}
-        <header class="masthead">
-        <div class="container">
-          <div class="intro-text">
-            <div class="intro-lead-in">
+      <header className="masthead">
+        <div className="container">
+          <div className="intro-text">
+            <div className="intro-lead-in">
               Welcome to the Accessible Learning Labs (ALL) Project!
             </div>
-            <div class="intro-heading text-uppercase" >
+            <div className="intro-heading text-uppercase">
               Learn about Accessibility
             </div>
-            <div id="goals"/>
-          </div >
+            <div id="goals" />
+          </div>
         </div>
       </header>
       {/* Goals */}
-      <section class="page-section landingpage__pagesection" >
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">Lab Goals</h2>
-              <h3 class="section-subheading lab-section-subheading">
-                To provide activities that incorporate accessibility education and accessible design.
+      <section className="page-section landingpage__pagesection">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
+              <h2 className="section-heading text-uppercase">Lab Goals</h2>
+              <h3 className="section-subheading lab-section-subheading">
+                To provide activities that incorporate accessibility education
+                and accessible design.
               </h3>
             </div>
           </div>
-          <div class="row text-center">
-            <div class="col-md-4">
-              <h5 class="service-heading landingpage__leftalign" >
+          <div className="row text-center">
+            <div className="col-md-4">
+              <h5 className="service-heading landingpage__leftalign">
                 Create easily adoptable labs (only a browser is needed)
               </h5>
             </div>
-  
-            <div class="vertical-line col-md-4 ">
-              <h5 class="service-heading landingpage__leftalign" >
+
+            <div className="vertical-line col-md-4 ">
+              <h5 className="service-heading landingpage__leftalign">
                 Inform students how to create accessible software
               </h5>
             </div>
-  
-            <div class="vertical-line col-md-4 ">
-              <h5 class="service-heading landingpage__leftalign">
+
+            <div className="vertical-line col-md-4 ">
+              <h5 className="service-heading landingpage__leftalign">
                 Demonstrate the importance of creating accessible software
               </h5>
             </div>
@@ -84,46 +84,52 @@ const Home = (props) => {
         </div>
       </section>
       {/* Labs */}
-      <div id="labs"/>
-      <hr class="horiz" />
-      <section class="page-section landingpage__pagesection">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">Labs</h2>
-  
-              <h3 class="section-subheading " >
+      <div id="labs" />
+      <hr className="horiz" />
+      <section className="page-section landingpage__pagesection">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center">
+              <h2 className="section-heading text-uppercase">Labs</h2>
+
+              <h3 className="section-subheading ">
                 Explore the available labs below.
               </h3>
             </div>
           </div>
-          <div class="landingpage__row">
-              {renderLabData()}
-          </div>
+          <div className="landingpage__row">{renderLabData()}</div>
         </div>
       </section>
       {/* Team Citation */}
-      <div id="citation"/>
-      <hr class="horiz" />
-        <ProfileGeneration />
-      <hr class="horiz" />
+      <div id="citation" />
+      <hr className="horiz" />
+      <ProfileGeneration />
+      <hr className="horiz" />
       {/* Clients */}
-      <section class="py-5">
-        <div class="container">
-          <div class="row landingpage__logos">
-            <div class="col-sm-4">
-              <a href="https://www.nsf.gov" target="_blank" rel="noopener noreferrer">
+      <section className="py-5">
+        <div className="container">
+          <div className="row landingpage__logos">
+            <div className="col-sm-4">
+              <a
+                href="https://www.nsf.gov"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
-                  class="d-block mx-auto landingpage__logo"
+                  className="d-block mx-auto landingpage__logo"
                   src={nsf}
                   alt="National Science Foundation"
                 />
               </a>
             </div>
-            <div class="col-sm-4">
-              <a href="https://www.rit.edu" target="_blank" rel="noopener noreferrer">
+            <div className="col-sm-4">
+              <a
+                href="https://www.rit.edu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
-                  class=" d-block mx-auto landingpage__logo"
+                  className=" d-block mx-auto landingpage__logo"
                   src={rit}
                   alt="Rochester Institute Of Technology"
                 />
@@ -133,40 +139,48 @@ const Home = (props) => {
         </div>
       </section>
       {/* Contact */}
-      <section class="page-section landingpage__pagesection" id="contact">
-        <div class="container">
-          <div class="row contact">
-            <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">Contact Us</h2>
-              <h3 class="section-subheading" id={"connect-text"}>
-                Connect with us if you have questions. <br/><br/>
+      <section className="page-section landingpage__pagesection" id="contact">
+        <div className="container">
+          <div className="row contact">
+            <div className="col-lg-12 text-center">
+              <h2 className="section-heading text-uppercase">Contact Us</h2>
+              <h3 className="section-subheading" id={"connect-text"}>
+                Connect with us if you have questions. <br />
+                <br />
                 Contact Dr. Daniel Krutz at
-                <a class="landingpage__contact" href="mailto:aware@mail.rit.edu "> aware@mail.rit.edu</a>
+                <a
+                  className="landingpage__contact"
+                  href="mailto:aware@mail.rit.edu "
+                >
+                  {" "}
+                  aware@mail.rit.edu
+                </a>
               </h3>
             </div>
           </div>
         </div>
       </section>
       {/* Footer */}
-      <footer class="footer">
-        <ul class="list-inline quicklinks">
-          <li class="list-inline-item">
+      <footer className="footer">
+        <ul className="list-inline quicklinks">
+          <li className="list-inline-item">
             <a
-              href="https://www.nsf.gov/pubs/2016/nsf16009/nsf16009.jsp#q37" target="_blank" rel="noopener noreferrer"
-              >Available under the Federal Government License</a
+              href="https://www.nsf.gov/pubs/2016/nsf16009/nsf16009.jsp#q37"
+              target="_blank"
+              rel="noopener noreferrer"
             >
+              Available under the Federal Government License
+            </a>
           </li>
           <li>
-            <a onClick={() => handleRedirect(actions,0,1)} href="# ">
+            <a onClick={() => handleRedirect(actions, 0, 1)} href="# ">
               Site Map
             </a>
           </li>
         </ul>
       </footer>
-      </div>
-    );
-  };
-  
-  export default connect(
-      null, mapDispatchToProps
-  )(Home);
+    </div>
+  );
+};
+
+export default connect(null, mapDispatchToProps)(Home);
