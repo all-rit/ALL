@@ -28,7 +28,7 @@ const GroupDetails = (props) => {
                     <td>There are currently no assigned labs.
                         {
                             instructing ?
-                                <AddModal addMode={"update_grp_lab"} user={user} groupID={group.groupID} groupName={group.groupName} setInstructingGroups={setInstructingGroups}/>
+                                <AddModal addMode={"update_grp_lab"} user={user} groupID={group.id} groupName={group.groupName} setInstructingGroups={setInstructingGroups}/>
                                 :
                                 <></>
                         }

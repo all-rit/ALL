@@ -38,28 +38,33 @@ const GroupForm = (props) => {
                 }
             }
         }
-        if(!groupID){
-            GroupService.createGroup(user.userid, formData.groupName).then((data) => {
-                labs.forEach((labID)=>{
-                    GroupService.addGroupLab(data.groupID,labID)
+        switch(addMode){
+            case "add_inst_grp":
+                GroupService.createGroup(user.userid, formData.groupName).then((data) => {
+                    labs.forEach((labID)=>{
+                        GroupService.addGroupLab(data.groupID,labID)
+                    })
+                    UserService.getUserInstructingGroups(user.userid).then((data) => {
+                        setInstructingGroups(data)
+                    })
                 })
-                UserService.getUserInstructingGroups(user.userid).then((data) => {
-                    setInstructingGroups(data)
-                })
-            })
-        }
-        else {
-            if(formData.groupName!==''){
-                GroupService.updateGroup(groupID,formData.groupName)
-                groupLabs.forEach((lab)=>{
-                    if(!labs.includes(lab)){
-                        GroupService.deleteGroupLab(groupID,lab.id)
-                    }
-                })
-                UserService.getUserInstructingGroups(user.userid).then((data) => {
-                     setInstructingGroups(data)
-                })
-            }
+                break
+            case "update_grp_lab":
+                console.log(props)
+                if(formData.groupName!=='' && groupID){
+                    GroupService.updateGroup(groupID,formData.groupName)
+                    // groupLabs.forEach((lab)=>{
+                    //     if(!labs.includes(lab)){
+                    //         GroupService.deleteGroupLab(groupID,lab.id)
+                    //     }
+                    // })
+                    // UserService.getUserInstructingGroups(user.userid).then((data) => {
+                    //      setInstructingGroups(data)
+                    // })
+                }
+                break
+            default:
+                console.log("Group Form Default Case")
         }
 
         // Always toggle the modal
