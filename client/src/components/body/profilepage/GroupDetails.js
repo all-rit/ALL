@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import GroupService from "../../../services/GroupService";
 import GroupAssignedLabs from "./GroupAssignedLabs";
 import EnrolledStudentsTable from "./EnrolledStudentsTable";
+import AddModal from "./components/AddModal";
 
 const GroupDetails = (props) => {
     const { group, instructing, user } = props;
@@ -20,14 +21,20 @@ const GroupDetails = (props) => {
             }
         }
     }, [group, instructing]);
-
     return (
         <>
             {
                 assignedLabs.length === 0 ?
-                    <td>There are currently no assigned labs.</td> :
+                    <td>There are currently no assigned labs.
+                        {
+                            instructing ?
+                                <AddModal addMode={"update_grp_lab"} user={user} groupID={group.groupID} groupName={group.groupName}/>
+                                :
+                                <></>
+                        }
+                    </td> :
                     <>
-                        <GroupAssignedLabs enrolledStudents={enrolledStudents} assignedLabs={assignedLabs} instructing={instructing} user={user}/>
+                        <GroupAssignedLabs enrolledStudents={enrolledStudents} assignedLabs={assignedLabs} instructing={instructing} user={user} groupID={group.id} groupName={group.groupName}/>
                         {instructing ?
                             <EnrolledStudentsTable groupid={group.id} enrolledStudents={enrolledStudents} assignedLabs={assignedLabs}/>
                             : <></>
