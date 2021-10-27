@@ -47,6 +47,8 @@ router.get('/user/:userID/:labID', UserLabController.getUserLabCompletion);
 router.post('/group/unenroll', GroupController.unenrollUserFromGroup);
 router.post('/group/create', GroupController.createGroup)
 router.post('/group/:groupID/add', GroupController.addGroupLab)
+router.put('/group/:groupID/update', GroupController.updateGroup)
+router.delete('/group/:groupID/delete', GroupController.deleteGroupLab)
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
 router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
 

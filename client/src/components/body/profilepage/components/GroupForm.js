@@ -33,11 +33,13 @@ const GroupForm = (props) => {
         let labs=[]
         for (const [key,value] of Object.entries(formData)){
             if(value==="on"){
-                labs.push(key)
+                if(!groupLabs.includes(key)){
+                    labs.push(key)
+                }
             }
         }
         if(!groupID){
-            GroupService.createGroup(user.userid, formData.groupName, labs).then((data) => {
+            GroupService.createGroup(user.userid, formData.groupName).then((data) => {
                 labs.forEach((labID)=>{
                     GroupService.addGroupLab(data.groupID,labID)
                 })
@@ -45,6 +47,19 @@ const GroupForm = (props) => {
                     setInstructingGroups(data)
                 })
             })
+        }
+        else {
+            if(formData.groupName!==''){
+                GroupService.updateGroup(groupID,formData.groupName)
+                groupLabs.forEach((lab)=>{
+                    if(!labs.includes(lab)){
+                        GroupService.deleteGroupLab(groupID,lab.id)
+                    }
+                })
+                UserService.getUserInstructingGroups(user.userid).then((data) => {
+                     setInstructingGroups(data)
+                })
+            }
         }
 
         // Always toggle the modal

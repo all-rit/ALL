@@ -5,7 +5,7 @@ import EnrolledStudentsTable from "./EnrolledStudentsTable";
 import AddModal from "./components/AddModal";
 
 const GroupDetails = (props) => {
-    const { group, instructing, user } = props;
+    const { group, instructing, user, setInstructingGroups } = props;
     const [ assignedLabs, setAssignedLabs ] = useState([]);
     const [ enrolledStudents, setEnrolledStudents ] = useState([]);
 
@@ -28,7 +28,7 @@ const GroupDetails = (props) => {
                     <td>There are currently no assigned labs.
                         {
                             instructing ?
-                                <AddModal addMode={"update_grp_lab"} user={user} groupID={group.groupID} groupName={group.groupName}/>
+                                <AddModal addMode={"update_grp_lab"} user={user} groupID={group.groupID} groupName={group.groupName} setInstructingGroups={setInstructingGroups}/>
                                 :
                                 <></>
                         }

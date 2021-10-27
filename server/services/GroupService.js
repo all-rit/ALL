@@ -60,3 +60,19 @@ exports.addGroupLab = (groupID,labID) => {
         console.log(data)
     }).catch(() => console.log("Error encountered"))
 }
+
+exports.deleteGroupLab = (groupID,labID) => {
+    return db.sequelize.query('DELETE FROM "group_labs" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."labID"=(:labID)', {
+        replacements: {groupID: groupID, labID: labID},
+        type: db.sequelize.QueryTypes.DELETE,
+        raw: true
+    });
+}
+
+exports.updateGroup = (groupID,groupName) =>{
+    return db.sequelize.query('UPDATE "groups" SET "groupName" = (:groupName) WHERE "id" = (:groupID)', {
+        replacements: {groupID: groupID, groupName: groupName},
+        type: db.sequelize.QueryTypes.UPDATE,
+        raw: true
+    });
+}

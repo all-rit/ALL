@@ -40,3 +40,21 @@ exports.addGroupLab = (req, res) => {
         res.sendStatus(200);
     })
 }
+
+exports.deleteGroupLab = (req, res) => {
+    GroupService.deleteGroupLab(
+        req.body.groupID,
+        req.body.labID
+    ).then((data) => {
+        res.sendStatus(200);
+    })
+}
+
+exports.updateGroup = (req,res)=>{
+    GroupService.updateGroup(
+        req.body.groupID,
+        req.body.groupName
+    ).then((data) =>{
+        res.sendStatus(200);
+    })
+}

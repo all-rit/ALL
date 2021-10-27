@@ -16,17 +16,28 @@ export default {
             groupID,
         });
     },
-    createGroup: (userID, groupName, courses) => {
+    createGroup: (userID, groupName) => {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/create`, {
             userID, 
-            groupName, 
-            courses
+            groupName
         }).then((response) => response.json());
     },
     addGroupLab: (groupID,labID)=>{
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/add`, {
             groupID,
             labID,
+        });
+    },
+    deleteGroupLab: (groupID,labID)=>{
+        return API.deleteWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/delete`, {
+            groupID,
+            labID,
+        });
+    },
+    updateGroup: (groupID, groupName)=>{
+        return API.putWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/update`, {
+            groupID,
+            groupName
         });
     }
 }
