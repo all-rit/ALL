@@ -7,7 +7,7 @@ import GroupForm from './GroupForm.js';
 
 const AddModal = (props) => {
 
-    const {addMode,user, setInstructingGroups, groupID, groupName} = props;
+    const {addMode,user, setInstructingGroups, groupID, groupName,assignedLabs} = props;
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal)
@@ -29,7 +29,7 @@ const AddModal = (props) => {
                     <button class="btn btn-second groups__labs__btn" aria-label="add" onClick={toggle}>Update Group</button>
                     <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
                         <ModalHeader>Update an instructing group</ModalHeader>
-                        <GroupForm toggle={toggle} setInstructingGroups={setInstructingGroups} user={user} groupID={groupID} groupName={groupName} addMode={addMode}/>
+                        <GroupForm toggle={toggle} setInstructingGroups={setInstructingGroups} user={user} groupID={groupID} groupName={groupName} addMode={addMode} assignedLabs={assignedLabs}/>
                     </Modal>
                 </>
             )

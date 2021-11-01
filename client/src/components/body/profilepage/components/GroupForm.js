@@ -10,15 +10,20 @@ import {
     FormGroup,
     Label,
     Input,
-    CustomInput,
 } from 'reactstrap';
+import FormCheckbox from './FormCheckbox';
 
 const GroupForm = (props) => {
-    const {setInstructingGroups,toggle, user,addMode, groupID, groupName} = props
+    const {setInstructingGroups,toggle, user,addMode, groupID, groupName,assignedLabs} = props
     const [ labs, setLabs ] = useState([]);
-    const [ groupLabs, setGroupLabs ] = useState([]);
     // eslint-disable-next-line
     const [setState, setSetState] = useState(0)
+    let labsAssigned=[]
+    if(assignedLabs !== undefined){
+        assignedLabs.forEach((data)=>{
+            labsAssigned.push(data.labID)
+        })
+    }
     const onFormSubmit = e => {
         e.preventDefault()
         // This cursed line of code will:
@@ -33,13 +38,11 @@ const GroupForm = (props) => {
         let labs=[]
         for (const [key,value] of Object.entries(formData)){
             if(value==="on"){
-                if(!groupLabs.includes(key)){
-                    labs.push(key)
-                }
+                labs.push(parseInt(key))
             }
         }
         switch(addMode){
-            case "add_inst_grp":
+            case "add_instr_grp":
                 GroupService.createGroup(user.userid, formData.groupName).then((data) => {
                     labs.forEach((labID)=>{
                         GroupService.addGroupLab(data.groupID,labID)
@@ -50,17 +53,23 @@ const GroupForm = (props) => {
                 })
                 break
             case "update_grp_lab":
-                console.log(props)
-                if(formData.groupName!=='' && groupID){
-                    GroupService.updateGroup(groupID,formData.groupName)
-                    // groupLabs.forEach((lab)=>{
-                    //     if(!labs.includes(lab)){
-                    //         GroupService.deleteGroupLab(groupID,lab.id)
-                    //     }
-                    // })
-                    // UserService.getUserInstructingGroups(user.userid).then((data) => {
-                    //      setInstructingGroups(data)
-                    // })
+                if(groupID){
+                    if(formData.groupName!==''){
+                        GroupService.updateGroup(groupID,formData.groupName)
+                    }
+                    labsAssigned.forEach((labID)=>{
+                        if(!labs.includes(labID)){
+                            GroupService.deleteGroupLab(groupID,labID)
+                        }
+                    })
+                    labs.forEach((labID)=>{
+                        if(!labsAssigned.includes(labID)){
+                            GroupService.addGroupLab(groupID,labID)
+                        }
+                    })
+                    UserService.getUserInstructingGroups(user.userid).then((data) => {
+                        setInstructingGroups(data)
+                    })
                 }
                 break
             default:
@@ -74,17 +83,8 @@ const GroupForm = (props) => {
         LabService.getAllLabs().then((data) => {
             setLabs(data);
         })
-        if(groupID){
-            GroupService.getGroupAssignedLabs(groupID).then((data)=>{
-                let grplabs=[]
-                data.forEach((data)=>{
-                    grplabs.push(data.labID)
-                })
-                setGroupLabs(grplabs)
-            })
-        }
-        
-    }, [groupID,setState]);
+    }, [setState]);
+
     switch(addMode){
         case "add_instr_grp":
             return(
@@ -100,7 +100,7 @@ const GroupForm = (props) => {
                             <FormGroup check>
                                 <Label for="assign-lab">Choose labs to assign</Label>
                                 {labs.map((lab) => (
-                                    <CustomInput for={"lab"+lab.id} type="checkbox" name={lab.id} id={"lab"+lab.id} label={lab.labShortName}/>
+                                    <FormCheckbox isChecked={false} lab={lab}/>
                                 ))}
                             </FormGroup>
                     </ModalBody>
@@ -122,8 +122,8 @@ const GroupForm = (props) => {
                         </FormGroup>
                         <FormGroup check>
                             <Label for="assign-lab">Choose labs to assign</Label>
-                            {labs.map((lab) => (
-                                <CustomInput for={"lab"+lab.id} type="checkbox" name={lab.id} id={"lab"+lab.id} checked={groupLabs.includes(lab.id)?true:false} label={lab.labShortName}/>
+                            {labs.map((lab) =>(
+                                <FormCheckbox isChecked={labsAssigned.includes(lab.id)} lab={lab}/>
                             ))}
                         </FormGroup>
                 </ModalBody>

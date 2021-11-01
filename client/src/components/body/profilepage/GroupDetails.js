@@ -34,7 +34,7 @@ const GroupDetails = (props) => {
                         }
                     </td> :
                     <>
-                        <GroupAssignedLabs enrolledStudents={enrolledStudents} assignedLabs={assignedLabs} instructing={instructing} user={user} groupID={group.id} groupName={group.groupName}/>
+                        <GroupAssignedLabs enrolledStudents={enrolledStudents} assignedLabs={assignedLabs} instructing={instructing} setInstructingGroups={setInstructingGroups} user={user} groupID={group.id} groupName={group.groupName}/>
                         {instructing ?
                             <EnrolledStudentsTable groupid={group.id} enrolledStudents={enrolledStudents} assignedLabs={assignedLabs}/>
                             : <></>
