@@ -45,7 +45,8 @@ const GroupForm = (props) => {
 
         switch(addMode){
             case "add_instr_grp":
-                GroupService.createGroup(user.userid, formData.groupName).then((data) => {
+                let groupName = formData.groupName !== '' ? formData.groupName : 'Default Group Name'
+                GroupService.createGroup(user.userid, groupName).then((data) => {
                     labs.forEach((labID)=>{
                         GroupService.addGroupLab(data.groupID,labID)
                     })
