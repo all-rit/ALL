@@ -24,6 +24,7 @@ const GroupForm = (props) => {
             labsAssigned.push(data.labID)
         })
     }
+
     const onFormSubmit = e => {
         e.preventDefault()
         // This cursed line of code will:
@@ -41,6 +42,7 @@ const GroupForm = (props) => {
                 labs.push(parseInt(key))
             }
         }
+
         switch(addMode){
             case "add_instr_grp":
                 GroupService.createGroup(user.userid, formData.groupName).then((data) => {
@@ -72,13 +74,14 @@ const GroupForm = (props) => {
                     })
                 }
                 break
-            default:
+            default: //this is the case for enrolling in a group
                 console.log("Group Form Default Case")
         }
 
         // Always toggle the modal
         toggle()
     }
+
     useEffect(() => {
         LabService.getAllLabs().then((data) => {
             setLabs(data);
@@ -111,8 +114,9 @@ const GroupForm = (props) => {
                 </Form>
         )
         case "update_grp_lab":
-            return(<Form onSubmit={onFormSubmit}>
-                <ModalBody>
+            return(
+                <Form onSubmit={onFormSubmit}>
+                    <ModalBody>
                         <FormGroup>
                             <Label for="groupName">Group name</Label>
                                 <Input
@@ -126,14 +130,17 @@ const GroupForm = (props) => {
                                 <FormCheckbox isChecked={labsAssigned.includes(lab.id)} lab={lab}/>
                             ))}
                         </FormGroup>
-                </ModalBody>
-                <ModalFooter>
-                    <Button color="primary" type="submit">Update Group</Button>
-                    <Button color="secondary" onClick={toggle}>Cancel</Button>
-                </ModalFooter>
-            </Form>)
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary" type="submit">Update Group</Button>
+                        <Button color="secondary" onClick={toggle}>Cancel</Button>
+                    </ModalFooter>
+                </Form>
+            )
         default:
-            return( <p>This is the default case.</p> )
+            return(
+                <></>
+            )
     
     }
 }
