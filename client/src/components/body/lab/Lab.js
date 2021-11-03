@@ -4,8 +4,7 @@ import ProgressBar from '../profilepage/components/ProgressBar';
 import InfoModal from './InfoModal';
 
 const Lab = (props)=>{
-        const {progressState, alt, lab, name, bio, image, actions, labProgress} = props;
-
+        const {progressState, alt, lab, name, bio, image, fullDescription,learningObjectives,authors, actions, labProgress} = props;
         function getColor(labProgress){
             if(labProgress !==null && labProgress!==undefined){
                 let score = labProgress.quizscore;
@@ -128,7 +127,7 @@ const Lab = (props)=>{
                                 </li>
                                 <ul class="module__bio module__lab_buttons">
                                     <li><button class="btn-primary btn btn-md" onClick={() => handleRedirect(actions,lab)}>Launch Lab</button></li>
-                                    <InfoModal buttonLabel={"More Info"} labName={name} redirect={() => handleRedirect(actions,lab)}/>
+                                    <InfoModal buttonLabel={"More Info"} labName={name} fullDescription={fullDescription} learningObjectives={learningObjectives} authors={authors} redirect={() => handleRedirect(actions,lab)} />
                                 </ul>
                         </ul> 
                     </ul>

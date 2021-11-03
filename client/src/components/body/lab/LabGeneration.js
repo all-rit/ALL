@@ -3,7 +3,7 @@ import Lab from "./Lab";
 import LabService from "../../../services/LabService";
 
 function renderLabData(actions,labInfo,progressState, index, labRecord) {
-    const {id,labName,shortDescription,thumbnailImageURL}= labInfo //destructuring
+    const {id,labName,shortDescription,thumbnailImageURL,fullDescription,learningObjectives,authors}= labInfo //destructuring
     return (
         <Lab
             progressState={progressState}
@@ -13,6 +13,9 @@ function renderLabData(actions,labInfo,progressState, index, labRecord) {
             name= {labName}
             bio={shortDescription}
             image= {thumbnailImageURL}
+            fullDescription={fullDescription}
+            learningObjectives={learningObjectives}
+            authors={authors}
             actions={actions}
             labProgress={labRecord}
         />

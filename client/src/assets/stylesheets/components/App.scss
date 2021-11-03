@@ -423,6 +423,10 @@ a.icon:hover {
 }
 
 .module{
+	&__more_info{
+		max-width: 750px;
+		text-align: center;
+	}
 	&__lab_col{
 		min-width: 20.6rem;
 		max-width:20.6rem;
