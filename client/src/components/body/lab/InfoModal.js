@@ -31,8 +31,8 @@ const InfoModal = (props) => {
                                             <li>{learningObjective}</li>
                                         ))}
                                     </ul>
-                                    <li><h3>Authors:</h3></li>
-                                    <li><h3>{authors}</h3></li>
+                                    <li>Authors:</li>
+                                    <li>{authors}</li>
                                 </ul>
                             </ModalBody>
                         <ModalFooter>
