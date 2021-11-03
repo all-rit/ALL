@@ -31,7 +31,7 @@ const InfoModal = (props) => {
                                     <li className="p-text-modal">Upon completion of the lab, participants will have achieved the following learning objectives:</li>
                                     <ul>
                                         {parsedLearningObj.map((learningObjective)=>(
-                                            <li className="p-text-modal">{learningObjective}</li>
+                                            <li className="ml-8 list-style-disc">{learningObjective}</li>
                                         ))}
                                     </ul>
                                     <li className="p-text-modal">Authors:</li>
