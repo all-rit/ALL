@@ -117,7 +117,7 @@ typings/
 
 # Serverless directories
 .serverless/
-
+.prettierignore
 # FuseBox cache
 .fusebox/
 

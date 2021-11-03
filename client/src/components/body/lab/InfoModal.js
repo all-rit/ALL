@@ -21,18 +21,21 @@ const InfoModal = (props) => {
                 <ul>
                     <button class="btn-second btn btn-md" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
+                    <div className="modal-content__header">
+
+<h1>{labName}</h1>
+                    </div>
                             <ModalBody>
                                 <ul class="module__more_info">
-                                    <li><h1>{labName}</h1></li>
-                                    <li>{fullDescription}</li>
-                                    <li>Upon completion of the lab, participants will have achieved the following learning objectives:</li>
+                                    <li className="p-text-modal">{fullDescription}</li>
+                                    <li className="p-text-modal">Upon completion of the lab, participants will have achieved the following learning objectives:</li>
                                     <ul>
                                         {parsedLearningObj.map((learningObjective)=>(
-                                            <li>{learningObjective}</li>
+                                            <li className="p-text-modal">{learningObjective}</li>
                                         ))}
                                     </ul>
-                                    <li>Authors:</li>
-                                    <li>{authors}</li>
+                                    <li className="p-text-modal">Authors:</li>
+                                    <li className="p-text-modal">{authors}</li>
                                 </ul>
                             </ModalBody>
                         <ModalFooter>

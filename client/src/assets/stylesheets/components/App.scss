@@ -427,6 +427,7 @@ a.icon:hover {
 		max-width: 750px;
 		text-align: left;
 	}
+	
 	&__lab_col{
 		min-width: 20.6rem;
 		max-width:20.6rem;
@@ -782,6 +783,20 @@ a.icon {
 	background-color: #3d3d3d !important;
 }
 
+.p-text-modal{
+	padding: 0.5rem;
+}
+.modal-content__header{
+	padding: 0.5rem;
+	background-color: #fed136;
+	text-align: center;
+	list-style: none;
+	border-top-right-radius: 0.3rem;
+	border-top-left-radius: 0.3rem;
+	color: #404040 !important;
+
+	}
+
 .portfolio-modal {
 	padding-right: 0 !important;
 	.modal-dialog {
@@ -791,6 +806,7 @@ a.icon {
 	.modal-content {
 		padding: 100px 0;
 		text-align: center;
+		
 		h2 {
 			font-size: 3em;
 			margin-bottom: 15px;
