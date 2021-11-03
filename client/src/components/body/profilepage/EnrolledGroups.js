@@ -2,6 +2,7 @@ import React, { useEffect, useState }from "react";
 import UserService from "../../../services/UserService";
 import UnenrollModal from "./components/UnenrollModal";
 import GroupDetails from "./GroupDetails";
+import AddModal from "./components/AddModal";
 
 const InstructorName = (props) => {
     const {instructorID} = props;
@@ -36,7 +37,10 @@ const EnrolledGroups = (props) => {
                 enrolledGroups.length === 0 ?
                     <p> You are currently not enrolled in any groups</p> :
                     <>
-                        <h4>My Enrolled Groups</h4>
+                        <div className="header_with_button">
+                            <h4>My Enrolled Groups</h4>
+                            <AddModal addMode={"enroll_grp"} user={props.user} groupsUpdated={setGroupsUpdated}/>
+                        </div>
                         <div className="enrolled-groups">
                             {enrolledGroups.map((group, index) => (
 
