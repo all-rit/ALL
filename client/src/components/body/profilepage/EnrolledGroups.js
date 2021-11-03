@@ -35,7 +35,15 @@ const EnrolledGroups = (props) => {
         <>
             {
                 enrolledGroups.length === 0 ?
-                    <p> You are currently not enrolled in any groups</p> :
+                    <>
+                        <div className="header_with_button">
+                            <h4>My Enrolled Groups</h4>
+                            <AddModal addMode={"enroll_grp"} user={props.user} groupsUpdated={setGroupsUpdated}/>
+                        </div>
+                        <div className="enrolled-groups">
+                            <p> You are currently not enrolled in any groups</p>
+                        </div>
+                    </> :
                     <>
                         <div className="header_with_button">
                             <h4>My Enrolled Groups</h4>

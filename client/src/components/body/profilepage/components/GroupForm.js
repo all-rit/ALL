@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LabService from '../../../../services/LabService';
 import GroupService from '../../../../services/GroupService';
-import UserService from '../../../../services/UserService';
+
 import {
     Button,
     ModalBody,
@@ -14,7 +14,7 @@ import {
 import FormCheckbox from './FormCheckbox';
 
 const GroupForm = (props) => {
-    const {setInstructingGroups,toggle, user,addMode, groupID, groupName,assignedLabs} = props
+    const {setInstrGroupsUpdated,toggle, user,addMode, groupID, groupName,assignedLabs} = props
     const [ labs, setLabs ] = useState([]);
     // eslint-disable-next-line
     const [setState, setSetState] = useState(0)
@@ -49,9 +49,7 @@ const GroupForm = (props) => {
                     labs.forEach((labID)=>{
                         GroupService.addGroupLab(data.groupID,labID)
                     })
-                    UserService.getUserInstructingGroups(user.userid).then((data) => {
-                        setInstructingGroups(data)
-                    })
+                    setInstrGroupsUpdated(true)
                 })
                 break
             case "update_grp_lab":
@@ -69,9 +67,7 @@ const GroupForm = (props) => {
                             GroupService.addGroupLab(groupID,labID)
                         }
                     })
-                    UserService.getUserInstructingGroups(user.userid).then((data) => {
-                        setInstructingGroups(data)
-                    })
+                    setInstrGroupsUpdated(true)
                 }
                 break
             default: //this is the case for enrolling in a group

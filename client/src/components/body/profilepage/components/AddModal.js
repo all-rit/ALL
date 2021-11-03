@@ -14,7 +14,7 @@ import GroupService from "../../../../services/GroupService";
 
 const AddModal = (props) => {
 
-    const {addMode,user, setInstructingGroups, groupID, groupName,assignedLabs, groupsUpdated} = props;
+    const {addMode,user, setInstrGroupsUpdated, groupID, groupName,assignedLabs, groupsUpdated} = props;
     const [modal, setModal] = useState(false);
     const [inviteCode, setInviteCode] = useState("");
 
@@ -46,7 +46,7 @@ const AddModal = (props) => {
                     <button class="btn btn-second groups__create_btn" aria-label="add" onClick={toggle}>Create Group</button>
                     <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
                         <ModalHeader>Create an instructing group</ModalHeader>
-                        <GroupForm toggle={toggle} setInstructingGroups={setInstructingGroups}
+                        <GroupForm toggle={toggle} setInstrGroupsUpdated={setInstrGroupsUpdated}
                                    user={user} groupID={groupID} addMode={addMode}
                         />
                     </Modal>
@@ -58,7 +58,7 @@ const AddModal = (props) => {
                     <button class="btn btn-second groups__labs__btn" aria-label="add" onClick={toggle}>Update Group</button>
                     <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
                         <ModalHeader>Update an instructing group</ModalHeader>
-                        <GroupForm toggle={toggle} setInstructingGroups={setInstructingGroups} user={user}
+                        <GroupForm toggle={toggle} setInstrGroupsUpdated={setInstrGroupsUpdated} user={user}
                                    groupID={groupID} groupName={groupName} addMode={addMode} assignedLabs={assignedLabs}
                         />
                     </Modal>
