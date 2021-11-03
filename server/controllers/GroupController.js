@@ -12,6 +12,19 @@ exports.getGroupEnrolledStudents = (req, res) => {
     })
 };
 
+exports.enrollUserInGroup = (req, res) => {
+    GroupService.enrollUserInGroup(
+        req.body.userID,
+        req.body.inviteCode,
+    ).then((response) => {
+        if (response.status === "success"){
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(400);
+        }
+    })
+}
+
 exports.unenrollUserFromGroup = (req, res) => {
     GroupService.unenrollUserFromGroup({
         userID: req.body.userID,
@@ -27,7 +40,6 @@ exports.createGroup = (req, res) => {
         req.body.groupName,
         req.body.courses
     ).then((data) => {
-        //console.log(data)
         res.json(data);
     })
 }

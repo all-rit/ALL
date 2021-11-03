@@ -17,6 +17,33 @@ exports.getGroupEnrolledStudents = (groupid) => {
     });
 }
 
+exports.enrollUserInGroup = (userid, code) => {
+    return db.Groups
+        .findOne({
+            where: {
+                code: code,
+            }
+        }).then((group) => {
+                if (group){
+                    return db.Enrollment.create({
+                        userID: userid,
+                        groupID: group.id,
+                        enrolledDate: Date.now(),
+                        isActive: true
+                    }).then(() => {
+                        return {
+                            "status": "success"
+                        }
+                    })
+                } else {
+                    return {
+                        "status": "failure"
+                    }
+                }
+            }
+        )
+}
+
 exports.unenrollUserFromGroup = (data) => {
     const userid = data.userID;
     const groupid = data.groupID;
