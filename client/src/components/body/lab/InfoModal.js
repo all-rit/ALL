@@ -8,7 +8,7 @@ const InfoModal = (props) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
     const parsedLearningObj = [];
-    if(learningObjectives!== null){
+    if(learningObjectives!== null && learningObjectives !==undefined){
         const xml = new XMLParser().parseFromString(learningObjectives);
         xml.children.forEach((objective)=>{
             const obj = objective.getElementsByTagName('LearningObjective')[0].value;
