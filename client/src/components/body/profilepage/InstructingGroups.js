@@ -8,20 +8,21 @@ const InstructingGroups = (props) => {
 
     const {user} = props;
     const [ instructingGroups, setInstructingGroups] = useState([]);
-
+    const [ instrGroupsUpdated, setInstrGroupsUpdated ] = useState(false);
     useEffect(() => {
         if (user){
             UserService.getUserInstructingGroups(user.userid).then((data) => {
                 setInstructingGroups(data);
+                setInstrGroupsUpdated(false);
             })
         }
-    }, [user]);
+    }, [user,instrGroupsUpdated]);
 
     return (
         <>
             <div className="header_with_button">
                 <h4>My Instructing Groups</h4>
-                <AddModal addMode={"add_instr_grp"} user={props.user} setInstructingGroups={setInstructingGroups}/>
+                <AddModal addMode={"add_instr_grp"} user={props.user} setInstrGroupsUpdated={setInstrGroupsUpdated}/>
             </div>
             <div className="instructing-groups">
                 {
@@ -42,7 +43,7 @@ const InstructingGroups = (props) => {
                                             <p className="bold">{group.groupName}</p>
                                             <p className="bold">Invite Code: {group.code}</p>
                                         </td>
-                                        <GroupDetails group={group} instructing={true} user={user}  setInstructingGroups={setInstructingGroups}/>
+                                        <GroupDetails group={group} instructing={true} user={user}  setInstrGroupsUpdated={setInstrGroupsUpdated}/>
                                         <></>
                                     </tr>
                                 ))}
