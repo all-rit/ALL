@@ -4,6 +4,8 @@ import saad_kahn_image from "./profileImages/Saad_Kahn.jpg"
 import christopher_savan_image from "./profileImages/Christopher_Savan.jpg"
 import su_thit_thazin_image from "./profileImages/Su_Thit_Thazin.jpg"
 import shantanav_sauarav from "./profileImages/Shantanav_Saurav.jpg"
+import bashir_jaji from "./profileImages/Bashir_Jaji.jpg"
+import andreas_calcano from "./profileImages/Andreas_Leonard_Calcano.jpg"
 //import default_image from "./profileImages/default_profile_image.jpg"
 var studentInformation = [
     {
@@ -48,6 +50,20 @@ var studentInformation = [
         bio: "",
         socials: ["https://www.linkedin.com/in/shantanav/"]
     },
+    {
+        profile_image: bashir_jaji,
+        name: "Bashir Jaji",
+        title: "Software Engineer",
+        bio: "",
+        socials: ["https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/"]
+    },
+    {
+        profile_image: andreas_calcano,
+        name: "Andreas Leonard-Calcano",
+        title: "Software Engineer",
+        bio: "",
+        socials: ["https://www.linkedin.com/in/andres-leonard-calcano/"]
+    }
     
 ]
 
