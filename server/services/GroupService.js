@@ -25,19 +25,38 @@ exports.enrollUserInGroup = (userid, code) => {
             }
         }).then((group) => {
                 if (group){
-                    return db.Enrollment.create({
-                        userID: userid,
-                        groupID: group.id,
-                        enrolledDate: Date.now(),
-                        isActive: true
-                    }).then(() => {
-                        return {
-                            "status": "success"
+                    // check if user is already enrolled in the group
+                    return db.Enrollment.findOne({
+                        where: {
+                            userID: userid,
+                            groupID: group.id,
+                            isActive: true
+                        }
+                    }).then((record) => {
+                        if (record !== null){
+                            // an active enrollment record already exists, do not duplicate record
+                            return {
+                                "status": "failure",
+                                "message": "User is already enrolled in the group."
+                            }
+                        } else {
+                            return db.Enrollment.create({
+                                userID: userid,
+                                groupID: group.id,
+                                enrolledDate: Date.now(),
+                                isActive: true
+                            }).then(() => {
+                                return {
+                                    "status": "success",
+                                    "message": "User has been successfully enrolled in the group."
+                                }
+                            })
                         }
                     })
                 } else {
                     return {
-                        "status": "failure"
+                        "status": "failure",
+                        "message": "Invite code is not valid."
                     }
                 }
             }
@@ -54,6 +73,7 @@ exports.unenrollUserFromGroup = (data) => {
                     {
                         userID: userid,
                         groupID: groupid,
+                        isActive: true
                     }
             }).then((enrollment) => {
                 enrollment.isActive = false;

@@ -31,7 +31,7 @@ const AddModal = (props) => {
                     groupsUpdated(true)
                     toggle()
                 } else {
-                    alert("Invite code is not valid. Please try again.")
+                    alert(response.error)
                 }
             })
         }
