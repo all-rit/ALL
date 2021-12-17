@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from 'reactstrap';
+import ResultLimiter from "./components/ResultLimiter";
 
 const EnrolledStudentsTable = (props) => {
 
@@ -18,27 +19,7 @@ const EnrolledStudentsTable = (props) => {
                             <th>Completion</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        {enrolledStudents.map((student, index) => (
-                            <tr key={index}>
-                                <td onClick={() => console.log("clicked on name")}>
-                                    <>
-                                        <p className="bold">{student.firstname} {student.lastinitial}.<br/></p>
-                                        <p className="grey-text">{student.email1}<br/></p>
-                                        <p className="grey-text">Enrolled on {student.enrolledDate.split("T")[0]}</p>
-                                    </>
-                                </td>
-                                <td className="assigned-labs">
-                                    {assignedLabs.map((lab, index) => (
-                                        <div className="assigned-labs__lab-bubble" key={index}>
-                                            {lab.labShortName}
-                                        </div>
-                                    ))
-                                    }
-                                </td>
-                            </tr>
-                        ))}
-                        </tbody>
+                        <ResultLimiter assignedLabs={assignedLabs} data={enrolledStudents} resultType={'studentLabs'}/>
                     </Table>
             }
         </div>
