@@ -14,7 +14,7 @@ export default {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/enroll`, {
             userID,
             inviteCode
-        });
+        }).then((response) => response.json());
     },
     unenrollUserFromGroup: (userID, groupID) => {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/unenroll`, {

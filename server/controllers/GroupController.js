@@ -17,10 +17,18 @@ exports.enrollUserInGroup = (req, res) => {
         req.body.userID,
         req.body.inviteCode,
     ).then((response) => {
+        // todo: figure out how to send status code along with message,
+        // right now, the status is repeated and code doesn't look clean
         if (response.status === "success"){
-            res.sendStatus(200);
+            res.status(200).json({
+                status: 200,
+                message: response.message
+            });
         } else {
-            res.sendStatus(400);
+            res.status(400).json({
+                status: 400,
+                error: response.message
+            })
         }
     })
 }
