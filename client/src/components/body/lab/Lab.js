@@ -102,7 +102,6 @@ const Lab = (props)=>{
                             <li class="module__bio">
                                 {bio}
                             </li>
-                            {/* <li class="module__bio module__lab_buttons"><button class="module__launchLab module__lab_button" onClick={() => handleRedirect(actions,lab)}>Begin Lab</button></li> */}
                         </ul>
                     </ul>
             );

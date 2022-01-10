@@ -49,27 +49,6 @@ const InstructingGroups = (props) => {
                                 ))}
                                 </tbody>
                             </Table>
-                            {/* Mock of converting from using table to unordered list */}
-                            {/* <ul class="table">
-                                <ul class="table_header">
-                                    <ul class="table_row">
-                                        <li>Groups</li>
-                                        <li>Assigned Labs</li>
-                                    </ul>
-                                </ul>
-                                <ul class="table_body ">
-                                    {instructingGroups.map((group, index) => (
-                                        <ul class="table_row" key={index}>
-                                            <ul className="bold">
-                                                <li className="bold">{group.groupName}</li>
-                                                <li className="bold">Invite Code: {group.code}</li>
-                                            </ul>
-                                            <GroupDetails group={group} instructing={true}/>
-                                            <></>
-                                        </ul>
-                                    ))}
-                                </ul>
-                            </ul> */}
                         </>
                 }
             </div>

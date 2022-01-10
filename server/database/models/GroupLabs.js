@@ -14,30 +14,6 @@ module.exports = (sequelize, DataTypes) => {
         { tableName: 'group_labs' }
     );
     GroupLabs.sync();
-    // GroupLabs.sync({
-    //     force: false
-    // }).then(function() {
-    //     GroupLabs.create({
-    //         groupID: 1,
-    //         labID: 1
-    //     });
-    //     GroupLabs.create({
-    //         groupID: 1,
-    //         labID: 2
-    //     });
-    //     GroupLabs.create({
-    //         groupID: 2,
-    //         labID: 3
-    //     });
-    //     GroupLabs.create({
-    //         groupID: 3,
-    //         labID: 4
-    //     });
-    //     GroupLabs.create({
-    //         groupID: 2,
-    //         labID: 5
-    //     });
-    // });
 
     return GroupLabs;
 };

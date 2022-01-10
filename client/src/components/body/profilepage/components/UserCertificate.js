@@ -25,8 +25,7 @@ class UserCertificate extends Component {
 
     render() {
         const {state} = this.props;
-        // var today = new Date();
-        // var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+ today.getFullYear();
+
         return (
             <div style={{width:"100%", height:"auto", padding:"20px", border: "10px solid #787878"}}>
                 <ul style={{width:"100%", height:"auto", border: "5px solid #787878"}}>
