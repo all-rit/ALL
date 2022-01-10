@@ -16,13 +16,8 @@ exports.updateGuestUserId = (userid, usersessionid) =>{
 exports.authenticate = (data) => {
 	const userSessionID = data.id.slice(0,19);
 	const firstName = data.name.givenName;
-	let image;
-	try{
-		image = data.photos[0].value;
-	}
-	catch{
-		image= "";
-	}
+	const lastInitial = data.name.familyName.slice(0,1);
+	const email = data.emails[0].value;
 	return db.Session
 		.findByPk(userSessionID)
 		.then((session) => {
@@ -30,15 +25,15 @@ exports.authenticate = (data) => {
 			if (session === null) {
 				throw new Error('Session do not exist in the database');
 			}
-
 			return session;
 		})
 		.catch(() => {
 			// Create a new account
-			return db.User
+			return db.Users
 				.create({
 					firstname: firstName,
-					image: image
+					lastinitial: lastInitial,
+					email1: email,
 				})
 				.then((user) => {
 					// Create a new session
@@ -57,7 +52,7 @@ exports.authenticate = (data) => {
 exports.getSession = (token) => {
 	// If the token doesn't exist, it's a guest, so create a new account!
 	if (!token) {
-		return db.User
+		return db.Users
 			.create({})
 			.then((user) => {
 				return db.Session
@@ -74,7 +69,7 @@ exports.getSession = (token) => {
 	return db.Session
 		.findByPk(token)
 		.then((session) => {
-			return db.User.findByPk(session.userid).then((user) => {
+			return db.Users.findByPk(session.userid).then((user) => {
 				return { user, token };
 			});
 		})
@@ -82,3 +77,71 @@ exports.getSession = (token) => {
 			console.log(err);
 		});
 };
+
+exports.getUserEnrolledGroups = (userid) => {
+	return db.sequelize.query(
+		`SELECT * FROM "enrollment" 
+			JOIN "groups" ON  "enrollment"."groupID"="groups"."id" 
+			WHERE "enrollment"."userID"=(:userID) AND "enrollment"."isActive"=true
+		`, {
+        replacements: {userID: userid},
+        type: db.sequelize.QueryTypes.SELECT,
+        raw: true
+    });
+}
+
+exports.getUserInstructingGroups = (userid) => {
+	return db.Groups
+		.findAll({
+			where: {
+				instructorUserID: userid,
+			},
+			raw: true
+		})
+}
+
+// fetches only the labs that the user has been assigned (across all groups)
+// but hasn't made any progress in
+exports.getUserToDoLabs = (userid) => {
+	return db.sequelize.query(
+		`
+		SELECT DISTINCT "labID", "labName" FROM "group_labs"
+		JOIN "enrollment" on "group_labs"."groupID" = "enrollment"."groupID"
+		JOIN "labs" on "labs"."id" = "group_labs" . "labID"
+		WHERE "enrollment"."userID"=(:userID) AND "labID" NOT IN
+      		(SELECT "labid" FROM "userlabcompletion"
+          		WHERE "userid"=(:userID))
+        ORDER BY "labID" ASC
+		`, {
+			replacements: {userID: userid},
+			type: db.sequelize.QueryTypes.SELECT,
+		});
+}
+
+exports.getUserAssignedLabs = (userid) => {
+	return db.sequelize.query(
+		`SELECT DISTINCT "labID" FROM "group_labs" 
+			JOIN "enrollment" ON  "group_labs"."groupID"="enrollment"."groupID" 
+			WHERE "enrollment"."userID"=(:userID) 
+			ORDER BY "labID" ASC
+		`, {
+		replacements: {userID: userid},
+		type: db.sequelize.QueryTypes.SELECT,
+	});
+}
+
+exports.getUser = (userid) => {
+	return db.Users
+		.findOne({
+			where:
+				{
+					userid:userid
+				}
+		}).then((user) => {
+			return user;
+		})
+		.catch((err) => {
+			console.log(err);
+	})
+}
+

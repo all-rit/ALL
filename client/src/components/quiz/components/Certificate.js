@@ -59,9 +59,11 @@ class Certificate extends Component {
                             <span style={{fontSize:"30px",textAlign:"center",padding:"20px"}}>{date}</span><br/><br/>
                             <div style={{backgroundColor: "rgb(61, 61, 61)"}} >
                             <img src={logo}
-                                alt="logo"
-                                 style={{height:"120px",
-                                     width:"500px"}}></img>
+    alt="logo"
+    style={{
+        height: "120px",
+        width: "500px"
+    }}/>
                             </div>
                 </div>
             </div>

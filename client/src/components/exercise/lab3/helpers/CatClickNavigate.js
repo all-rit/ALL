@@ -47,7 +47,7 @@ class CatClickNavigate extends Component {
           component={Link}
           onClick={CatClickNavigate.handleOnclick}
           variant="contained"
-          className = "btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
+          className = "btn btn-second btn-xl text-uppercase  leftButton"
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next

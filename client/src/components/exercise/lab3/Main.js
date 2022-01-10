@@ -37,7 +37,7 @@ class Main extends Component {
 
   // eslint-disable-next-line require-jsdoc
   render() {
-    const {actions, state} = this.props;
+    const {actions, state,user} = this.props;
     return (
       <div class="container bottomSpace" >
         <Router className="app">
@@ -56,8 +56,8 @@ class Main extends Component {
             actions={actions}
           />
           <ProblemFix path={'/ProblemFix'} actions={actions}/>
-          <BeginnerExerciseConclusion path={'/BeginnerExerciseConclusion'} actions={actions}/>
-          <AdvancedExerciseConclusion path={'/AdvancedExerciseConclusion'} actions={actions}/>
+          <BeginnerExerciseConclusion path={'/BeginnerExerciseConclusion'} actions={actions} user={user}/>
+          <AdvancedExerciseConclusion path={'/AdvancedExerciseConclusion'} actions={actions} user={user}/>
           <ViewFix path={'/ViewFix'} actions={actions}/>
         </Router>
       </div>

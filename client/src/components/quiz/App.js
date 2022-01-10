@@ -19,6 +19,9 @@ function initializeReactGA() {
         ReactGA.initialize(TRACKING_ID);
         ReactGA.pageview(window.location.pathname + window.location.search);
     }
+    else if (process.env.NODE_ENV === 'development') {
+        console.log("Google Analytics cannot be implemented in development mode")
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -231,6 +234,9 @@ class App extends Component {
 
     setResults(result) {
         UserLabService.complete_quiz(this.state.lab, this.getResults(true), this.getJsonResults())
+        if(this.props.user.firstname !== null){
+            UserLabService.user_complete_quiz(this.props.user.userid,this.state.lab, this.getResults(true))
+        }
         this.setState({result: result})
     }
 

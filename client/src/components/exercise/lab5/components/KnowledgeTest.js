@@ -52,7 +52,7 @@ class KnowledgeTest extends Component {
                         {this.state.correct ? "Good Job! ": "Incorrect! Correct Response was: '" + this.getCorrectChoice() + "'. " } Select 'Next'
                     </div>
                     <button
-                        className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen next"
+                        className="btn btn-primary text-black btn-xl text-uppercase  next"
                         onClick = {this.handleNav.bind(this)}
                         key="next"
                     >

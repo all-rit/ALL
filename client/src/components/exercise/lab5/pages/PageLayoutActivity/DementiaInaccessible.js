@@ -41,7 +41,7 @@ class DementiaInaccessible extends Component {
                     <div className='flex'>
                         <Timer seconds={time} timerDone={this.timerDone.bind(this)}/>
                         <button
-                            className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+                            className="btn btn-primary text-black btn-xl text-uppercase "
                             onClick = {this.handleNav}
                             key="next"
                         >

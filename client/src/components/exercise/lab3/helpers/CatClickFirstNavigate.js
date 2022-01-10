@@ -36,7 +36,7 @@ class CatClickFirstNavigate extends Component {
         <Button
           onClick={CatClickFirstNavigate.handleOnclick}
           variant="contained"
-          className = "btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
+          className = "btn btn-second btn-xl text-uppercase  leftButton"
         >
           Next
         </Button>

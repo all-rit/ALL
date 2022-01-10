@@ -176,3 +176,258 @@ exports.completeQuiz= (data)=>{
     return Promise.resolve();
 
 };
+
+exports.userCompleteAbout= (data)=>{
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date
+    if(userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid:userid,
+                            labid:labid
+                        }
+                }
+            ).then((userlabcompletion)=> {
+                if(userlabcompletion !== null) {
+                    if (userlabcompletion.aboutcompletedtime === null){
+                        userlabcompletion.aboutcompletedtime = datetime;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
+                        userlabcompletion.save();
+                    }
+                }
+                else{
+                    db.UserLabCompletion.create({
+                        userid:userid,
+                        labid:labid,
+                        aboutcompletedtime: datetime,
+                        labstarttime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+};
+exports.userCompleteReading= (data)=>{
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date
+    if (userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid:userid,
+                            labid:labid
+                        }
+                }
+            ).then((userlabcompletion)=> {
+                if(userlabcompletion !== null) {
+                    if (userlabcompletion.readingcompletedtime === null){
+                        userlabcompletion.readingcompletedtime = datetime;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
+                        userlabcompletion.save();
+                    }
+                }
+                else{
+                    db.UserLabCompletion.create({
+                        userid:userid,
+                        labid:labid,
+                        readingcompletedtime: datetime,
+                        labstarttime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
+};
+exports.userCompleteExercise = (data)=> {
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date
+    if(userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid: userid,
+                            labid: labid
+                        }
+                }
+            ).then((userlabcompletion) => {
+                if (userlabcompletion !== null) {
+                    if (userlabcompletion.exercisecompletedtime === null){
+                        userlabcompletion.exercisecompletedtime = datetime;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
+                        userlabcompletion.save();
+                    }
+                } else {
+                    db.UserLabCompletion.create({
+                        userid: userid,
+                        labid: labid,
+                        exercisecompletedtime: datetime,
+                        labstarttime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
+};
+exports.userCompleteReinforcement= (data)=>{
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date
+    if(userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid:userid,
+                            labid:labid
+                        }
+                }
+            ).then((userlabcompletion)=> {
+                if(userlabcompletion !== null) {
+                    if (userlabcompletion.reinforcementcompletedtime === null){
+                        userlabcompletion.reinforcementcompletedtime = datetime;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
+                        userlabcompletion.save();
+                    }
+                }
+                else{
+                    db.UserLabCompletion.create({
+                        userid:userid,
+                        labid:labid,
+                        reinforcementcompletedtime: datetime,
+                        labstarttime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+
+};
+exports.userCompleteQuiz= (data)=>{
+    const userid = data.userid;
+    const labid = data.labid;
+    const datetime = data.date;
+    const quizscore = data.quizscore;
+    if(userid){
+        return db.UserLabCompletion
+            .findOne({
+                    where:
+                        {
+                            userid:userid,
+                            labid:labid
+                        }
+                }
+            ).then((userlabcompletion)=> {
+                if(userlabcompletion !== null){
+                    if (userlabcompletion.quizscore <= quizscore){
+                        userlabcompletion.quizcompletedtime = datetime;
+                        userlabcompletion.quizscore = quizscore;
+                        if (userlabcompletion.aboutcompletedtime!==null
+                            && userlabcompletion.readingcompletedtime!==null
+                            && userlabcompletion.exercisecompletedtime!==null
+                            && userlabcompletion.reinforcementcompletedtime!==null
+                            && userlabcompletion.quizcompletedtime!==null){
+                                userlabcompletion.labcompletiontime=datetime;
+                        }
+                        userlabcompletion.save();
+                    }
+                }
+                else{
+                    db.UserLabCompletion.create({
+                        userid:userid,
+                        labid:labid,
+                        quizcompletedtime: datetime,
+                        quizscore: quizscore,
+                        labstarttime: datetime,
+                    });
+                }
+                return true;
+            }).catch((err) => {
+                console.log(err);
+                return true;
+            });
+    }
+    return Promise.resolve();
+};
+
+
+exports.getUserLabCompletion = (userid,labid) => {
+	if(userid){
+		return db.UserLabCompletion
+			.findOne({
+				where:
+					{
+						userid:userid,
+						labid:labid
+					}
+			}).then((userlabcompletion) => {
+				return userlabcompletion;
+			})
+			.catch((err) => {
+				console.log(err);
+		})
+	}
+	return Promise.resolve;
+};
+
+exports.getUserLabRecords = (userid) => {
+    if (userid){
+        return db.sequelize.query(
+            `SELECT * FROM "userlabcompletion" 
+			JOIN "labs" ON  "userlabcompletion"."labid"="labs"."id" 
+			WHERE "userlabcompletion"."userid"=(:userID)
+		    `, {
+                replacements: {userID: userid},
+                type: db.sequelize.QueryTypes.SELECT,
+                raw: true
+            });
+    }
+}

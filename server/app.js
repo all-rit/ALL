@@ -17,6 +17,12 @@ const port = process.env.PORT || 5005;
 const allowedOrigins = [process.env.CLIENT_URL, 'https://localhost:5005','https://localhost:3000', 'https://all.rit.edu'];
 
 app.use(passport.initialize());
+app.use(session({
+  name: 'session',
+  secret: process.env.KEY,
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(passport.session());
 auth(passport);
 
@@ -25,12 +31,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(session({
-  name: 'session',
-  secret: process.env.KEY,
-  resave: false,
-  saveUninitialized: true
-}));
+
 app.use(cors({
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1) {
