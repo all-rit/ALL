@@ -1,6 +1,6 @@
 import API from './API';
 
-export default {
+const userService = {
     getUser: (userID) => {
         return API.get(process.env.REACT_APP_SERVER_URL + `/user/${userID}`)
             .then((response) => response.json());
@@ -22,3 +22,5 @@ export default {
             .then((response) => response.json());
     },
 }
+
+export default userService;
