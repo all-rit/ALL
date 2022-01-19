@@ -18,7 +18,7 @@ class Profile extends Component{
         return(
             <ul id={name} class="citation module__col">
                 <li id="profile_image">
-                    <div alt={name+"Profile Image"} class="img-fluid module__image module__profile_image" style={{backgroundImage: "url("+profile_image+")" }}/>
+                    <div alt={name+"Profile Image"} class="img-fluid module__image module__profile_image" style={{backgroundImage: "url(/img/profileImages"+profile_image+")" }}/>
                 </li>
                 <li class="module__profile_caption">
                     <ul>

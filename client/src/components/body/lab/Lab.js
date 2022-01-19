@@ -28,7 +28,7 @@ const Lab = (props)=>{
                             <a class="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")"}}/>
+                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")"}}/>
                             </a>
                         </li>
                         <ul class="module__caption">
@@ -65,7 +65,7 @@ const Lab = (props)=>{
                             <a class="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")"}}/>
+                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage:"url(/img/lab_thumbnails/"+image+")"}}/>
                             </a>
                         </li>
                         <ul class="module__caption">
@@ -90,7 +90,7 @@ const Lab = (props)=>{
                             <a class="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")" }}/>
+                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")" }}/>
                             </a>
                         </li>
                         <ul class="module__caption">
@@ -112,7 +112,7 @@ const Lab = (props)=>{
                             <a class="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url("+image+")"}}/>
+                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")"}}/>
                             </a>
                         </li>
                         <ul class="module__caption">
