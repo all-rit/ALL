@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech(Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)</LearningObjective></LearningObjectives>",
     //         authors: "Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat",
     //         labURL: "https://all.rit.edu/Lab1/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/ear.35160742.jpg"
+    //         thumbnailImageURL: "/ear.jpg"
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Color Blindness",
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is colorblind, the types of colorblindness that they have, and their needs for accessible use of software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for those who are colorblind(Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to colorblindness (Comprehension)</LearningObjective></LearningObjectives>",
     //         authors: "Scott Frauenknecht",
     //         labURL: "https://all.rit.edu/Lab2/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/colorblindness.41fe47d6.jpg"
+    //         thumbnailImageURL: "/colorblindness.jpg"
     //     });
     //     Labs.create({
     //         labName: "Accessibility with Screen Readers",
@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)</LearningObjective></LearningObjectives>", 
     //         authors: "Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan",
     //         labURL: "https://all.rit.edu/Lab3/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/screen_reader.709680df.jpg"
+    //         thumbnailImageURL: "/screen_reader.jpg"
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Dexterity",
@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)</LearningObjective></LearningObjectives>", 
     //         authors: "Saad Khan, Heather Moses",
     //         labURL: "https://all.rit.edu/Lab4/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/hand.736e9a7f.jpg"
+    //         thumbnailImageURL: "/hand.jpg"
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Cognitive Impairments",
@@ -80,7 +80,7 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)</LearningObjective></LearningObjectives>", 
     //         authors: "Saad Kahn",
     //         labURL: "https://all.rit.edu/Lab5/",
-    //         thumbnailImageURL: "https://all.rit.edu/static/media/cognitiveimpairment.1fd4b4a5.jpg"
+    //         thumbnailImageURL: "/cognitiveimpairment.jpg"
     //     });
     // })
     return Labs;
