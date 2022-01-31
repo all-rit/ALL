@@ -106,7 +106,12 @@
 	display: flex;
 	justify-content: flex-start;
 }
-
+.limiter__page{
+	font-size: 14px;
+	width: max-content;
+	margin-left: 5px;
+	margin-right: 5px;
+}
 .limiter__group__button{
 	margin-left: 15px;
 	margin-right: 15px;

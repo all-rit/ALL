@@ -65,7 +65,8 @@ const ResultLimiter = (props) =>{
                         {index!==0 ? 
                             <Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={decreaseIndex}>Previous</Button>:<Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Previous</Button>
                         }
-                        {index!==(groupedData.length-1) ? 
+                        <td className="limiter__page">Page {index+1} of {groupedData.length}</td>
+                        {index!==(groupedData.length - 1) ? 
                             <Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={increaseIndex}>Next</Button>:<Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Next</Button>
                         } 
                     </tfoot>
