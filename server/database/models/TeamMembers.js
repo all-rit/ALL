@@ -26,9 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     // }).then(function(){
     //     TeamMembers.create({
     //         firstName: "Saad",
-    //         lastName: "Kahn",
+    //         lastName: "Khan",
     //         title: "Project Manager",
-    //         imageURL: "/Saad_Kahn.jpg",
+    //         imageURL: "/Saad_Khan.jpg",
     //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/saad-khan23/</Link><Network>linkedin</Network></Social></Socials>",
     //         //websiteURL: "https://www.linkedin.com/in/saad-khan23/",
     //         //network: "linkedin",
