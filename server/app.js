@@ -2,7 +2,6 @@ require('dotenv').config()
 
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const passport = require('passport');
@@ -16,6 +15,12 @@ const port = process.env.PORT || 5005;
 
 const allowedOrigins = [process.env.CLIENT_URL, 'https://localhost:5005','https://localhost:3000', 'https://all.rit.edu'];
 
+app.use(express.urlencoded({
+  extended: false
+}));
+
+app.use(express.json());
+
 app.use(passport.initialize());
 app.use(session({
   name: 'session',
@@ -26,10 +31,7 @@ app.use(session({
 app.use(passport.session());
 auth(passport);
 
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-app.use(bodyParser.json());
+
 app.use(cookieParser());
 
 app.use(cors({
