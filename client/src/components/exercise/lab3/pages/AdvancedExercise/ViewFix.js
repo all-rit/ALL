@@ -112,7 +112,7 @@ class ViewFix extends Component {
         <br />
         <Button
           variant={"contained"}
-          className = "btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
+          className = "btn btn-second btn-xl text-uppercase  leftButton"
           onClick={ViewFix.navOnClick}
           onFocus={(e) => textToSpeech(e, "Next")}
         >

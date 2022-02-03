@@ -75,7 +75,7 @@ class AdvancedInstructions extends Component {
           <br />
           <div className="container text-center">
             <button 
-              className="btn btn-second btn-xl text-uppercase js-scroll-trigger mx-auto"
+              className="btn btn-second btn-xl text-uppercase  mx-auto"
               key="repair"
               aria-label={"Test"}
               onClick={(e) => textToSpeech(e, "Test")}
@@ -90,7 +90,7 @@ class AdvancedInstructions extends Component {
           href="#"
           onClick={this.handleSubmit}
           variant={"contained"}
-          className = "btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
+          className = "btn btn-second btn-xl text-uppercase  leftButton"
         >
           Next
         </Button>

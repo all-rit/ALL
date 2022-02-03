@@ -34,7 +34,7 @@ class Results extends Component {
 					</div>
 				</div>
 
-				<button className="btn btn-second btn-xl text-uppercase js-scroll-trigger" onClick={clickHandler}>
+				<button className="btn btn-second btn-xl text-uppercase " onClick={clickHandler}>
 					Continue
 				</button>
 			</div>

@@ -3,7 +3,6 @@ import { LAB_ID } from "../../../constants/lab4";
 import UserLabService from "../../../services/UserLabService";
 import { Pie } from "react-chartjs-2";
 import useScroll from "../../../use-hooks/useScroll";
-
 const data = {
   labels: [
     "US Population (Millions)",
@@ -20,23 +19,25 @@ const data = {
   ],
 };
 
-const Reading = () => {
-  useScroll();
-  useEffect(() => {
-    return () => {
-      UserLabService.complete_reading(LAB_ID);
-    };
-  });
-  return (
-    <div className="study">
-      <h3>What Is a Dexterity Impairment?</h3>
-      <p>
-        Many types of dexterity impairments exist, but all limit the
-        functionality of one or more limbs and cause the loss of fine control of
-        movement. They can be caused by an injury, a genetic disorder, or a
-        disease. For example, Muscular dystrophy is a genetic disorder that
-        causes progressive weakness in the muscles.
-      </p>
+const Reading = (props) => {
+    const {user}=props;
+    useScroll();
+    useEffect(() => {
+        return () => {
+            UserLabService.complete_reading(LAB_ID);
+            if(user?.firstname !== null && user!==null){
+                UserLabService.user_complete_reading(user.userid,LAB_ID);
+            }   
+        }
+    }, [user]);
+    return (
+        <div className="study">
+            <h3>What Is a Dexterity Impairment?</h3>
+            <p>
+                Many types of dexterity impairments exist, but all limit the functionality of one or more limbs and cause the loss of fine control of movement.
+                They can be caused by an injury, a genetic disorder, or a disease.
+                For example, Muscular dystrophy is a genetic disorder that causes progressive weakness in the muscles.
+            </p>
 
       <h3>Examples of Dexterity Impairments</h3>
       <p>

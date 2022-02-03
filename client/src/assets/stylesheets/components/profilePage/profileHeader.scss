@@ -1,0 +1,32 @@
+.profileHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  margin: 20px;
+  padding: 15px;
+  
+  &__userInfo{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__logo{
+    align-self: flex-start;
+    border-radius: 50%;
+    margin-left: 3rem;
+    margin-right: 2rem;
+    padding: 1rem;
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+    color: whitesmoke;
+    background-color: #0144d5;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    border: 1px solid #0144d5;
+  }
+}

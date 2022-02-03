@@ -25,7 +25,7 @@ class ExerciseStart extends Component {
 
           </div>
           <button
-              className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen"
+              className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {this.handleStart}
               key="start"
           >

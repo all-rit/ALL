@@ -58,104 +58,89 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.scrollFn = this.handleScroll.bind(this);
-  }
-  componentDidMount() {
-    window.addEventListener("scroll", this.scrollFn);
-  }
+	render() {
+		const {
+			user,
+			popupMessage,
+			instructionsVisible,
 
-  // componentWillUnmount() {
-  //   return window.removeEventListener("scroll", this.scrollFn);
-  // }
+			state,
+			plays,
+			results,
+			time,
+			roundTime,
+			countdownTime,
+			score,
+			roundNumber,
+			correctAnswers,
+			incorrectAnswers,
+			boxes,
+			correctBoxNumber,
+			boxRevealed,
+			hintBoxStatus,
+			hintUsed,
+			soundEnabled,
+			congratulationMessage,
 
-  handleScroll() {
-    window.scrollTo(0, 0);
-    console.log("called once");
-    return window.removeEventListener("scroll", this.scrollFn);
-  }
-  render() {
-    const {
-      popupMessage,
-      instructionsVisible,
+			availableMessage,
+			unavailableMessage,
+			availableBackgroundColor,
+			unavailableBackgroundColor,
+			currentTab,
+			repairVisible,
+			changesApplied,
 
-      state,
-      plays,
-      results,
-      time,
-      roundTime,
-      countdownTime,
-      score,
-      roundNumber,
-      correctAnswers,
-      incorrectAnswers,
-      boxes,
-      correctBoxNumber,
-      boxRevealed,
-      hintBoxStatus,
-      hintUsed,
-      soundEnabled,
-      congratulationMessage,
+			actions
+		} = this.props;
 
-      availableMessage,
-      unavailableMessage,
-      availableBackgroundColor,
-      unavailableBackgroundColor,
-      currentTab,
-      repairVisible,
-      changesApplied,
+		return (
+			<Fragment>
+				<SoundHeader
+					state={state}
+					plays={plays}
+					soundEnabled={soundEnabled}
+					toggleSoundHandler={actions.toggleSound}
+				/>
+				<Content
+					data={{
+						state,
+						plays,
+						results,
+						time,
+						roundTime,
+						countdownTime,
+						score,
+						roundNumber,
+						correctAnswers,
+						incorrectAnswers,
+						boxes,
+						correctBoxNumber,
+						boxRevealed,
+						hintBoxStatus,
+						hintUsed,
+						soundEnabled,
+						congratulationMessage,
+						availableMessage,
+						unavailableMessage,
+						availableBackgroundColor,
+						unavailableBackgroundColor,
+						currentTab,
+						repairVisible,
+						changesApplied
+					}}
+					handlers={actions}
+					user={user}
+				/>
 
-      actions,
-    } = this.props;
+				<ExerciseInstructions
+					visible={instructionsVisible && state === EXERCISE_IDLE}
+					closeHandler={actions.closeInstructions}
+				/>
 
-    return (
-      <Fragment>
-        <SoundHeader
-          state={state}
-          plays={plays}
-          soundEnabled={soundEnabled}
-          toggleSoundHandler={actions.toggleSound}
-        />
-        <Content
-          data={{
-            state,
-            plays,
-            results,
-            time,
-            roundTime,
-            countdownTime,
-            score,
-            roundNumber,
-            correctAnswers,
-            incorrectAnswers,
-            boxes,
-            correctBoxNumber,
-            boxRevealed,
-            hintBoxStatus,
-            hintUsed,
-            soundEnabled,
-            congratulationMessage,
-            availableMessage,
-            unavailableMessage,
-            availableBackgroundColor,
-            unavailableBackgroundColor,
-            currentTab,
-            repairVisible,
-            changesApplied,
-          }}
-          handlers={actions}
-        />
-
-        <ExerciseInstructions
-          visible={instructionsVisible && state === EXERCISE_IDLE}
-          closeHandler={actions.closeInstructions}
-        />
-
-        <Popup message={popupMessage} handler={actions.updatePopup} />
-      </Fragment>
-    );
-  }
+				<Popup message={popupMessage} handler={actions.updatePopup} />
+			</Fragment>
+		);
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

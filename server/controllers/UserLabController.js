@@ -52,4 +52,74 @@ exports.completeQuiz = (req, res) => {
     })
 };
 
+exports.userCompleteAbout = (req, res) => {
+    UserLabService.userCompleteAbout({
+            labid: req.body.labid,
+            userid: req.body.userid,
+            date: Date.now()
+        }).then(() => {
+            res.sendStatus(200);
+        })
+};
 
+exports.userCompleteReading = (req, res) => {
+    UserLabService.userCompleteReading({
+        labid: req.body.labid,
+        userid: req.body.userid,
+        date: Date.now()
+    }).then(() => {
+        res.sendStatus(200);
+    })
+};
+
+exports.userCompleteExercise = (req, res) => {
+    UserLabService.userCompleteExercise({
+        labid: req.body.labid,
+        userid: req.body.userid,
+        date: Date.now()
+    }).then(() => {
+        res.sendStatus(200);
+    })
+};
+
+exports.userCompleteReinforcement = (req, res) => {
+    UserLabService.userCompleteReinforcement({
+        labid: req.body.labid,
+        userid: req.body.userid,
+        date: Date.now()
+    }).then(() => {
+        res.sendStatus(200);
+    })
+};
+
+exports.userCompleteQuiz = (req, res) => {
+    UserLabService.userCompleteQuiz({
+        labid: req.body.labid,
+        userid: req.body.userid,
+        date: Date.now(),
+        quizscore: req.body.quizscore
+    }).then(() => {
+        res.sendStatus(200);
+    })
+};
+
+exports.getUserLabCompletion = (req, res) => {
+	UserLabService.getUserLabCompletion({
+        userID: req.params.userID,
+        labID: req.params.labID,
+    }).then((records) => {
+		res.json(records);
+	})
+};
+
+exports.getUserLabCompletion = (req, res) => {
+	UserLabService.getUserLabCompletion(req.params.userID,req.params.labID).then((records) => {
+		res.json(records);
+	})
+};
+
+exports.getUserLabRecords = (req, res) => {
+    UserLabService.getUserLabRecords(req.params.userID).then((records) => {
+        res.json(records);
+    })
+};

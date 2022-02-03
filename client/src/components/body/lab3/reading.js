@@ -3,7 +3,6 @@ import { LAB_ID } from "../../../constants/lab3";
 import UserLabService from "../../../services/UserLabService";
 import { Pie } from "react-chartjs-2";
 import useScroll from "../../../use-hooks/useScroll";
-
 const data = {
   labels: ["World Population (Millions)", "Visually Impaired (Millions)"],
   datasets: [
@@ -17,23 +16,23 @@ const data = {
   ],
 };
 
-const Reading = () => {
-  useScroll();
-  useEffect(() => {
-    return () => {
-      UserLabService.complete_reading(LAB_ID);
-    };
-  });
-  return (
-    <div className="study">
-      <h3>What is a Screen Reader?</h3>
-      <p>
-        A screen reader is an essential software program that aids visually
-        impaired or blind users in reading text displayed on a computer screen.
-        This is achieved through the use of a speech synthesizer or braille
-        display. In simple terms, screen readers turn text that is displayed on
-        a screen into a tactile or auditory form, or both.
-      </p>
+const Reading = (props) => {
+    const {user}=props;
+    useScroll();
+    useEffect(() => {
+        return () => {
+            UserLabService.complete_reading(LAB_ID);
+            if(user?.firstname !== null && user!==null){
+                UserLabService.user_complete_reading(user.userid,LAB_ID);
+            }
+        }
+    }, [user]);
+    return (
+        <div className="study">
+            <h3>What is a Screen Reader?</h3>
+            <p>
+                A screen reader is an essential software program that aids visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both.
+            </p>
 
       <h3>Approximate Visually Impaired Population in the World</h3>
       <div className="flex">

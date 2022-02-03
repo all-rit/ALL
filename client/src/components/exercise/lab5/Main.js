@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => {
 class Main extends Component {
 
   render() {
-    const {actions, state} = this.props;
+    const {actions, state,user} = this.props;
     return (
       <div className="bottomSpace" >
         <Router className="app">
@@ -70,7 +70,7 @@ class Main extends Component {
           <FormGuidance path="/FormGuidance" actions={actions} state={state} />
           <FormRepair path="/FormRepair" actions={actions} state={state} handlers={actions} visible={state.repair5.repairVisible} data={state.repair5}/>
           <FormAccessible path="/FormAccessible" actions={actions} state={state} />
-          <ExerciseEnd path="/ExerciseEnd" actions={actions} state={state} />
+          <ExerciseEnd path="/ExerciseEnd" actions={actions} state={state} user={user} />
         </Router>
       </div>
     );

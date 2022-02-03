@@ -18,13 +18,13 @@ class ExerciseButtons extends Component {
       startMessage = 'Next Play'
     }
     const repairButton = (
-      <button className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton" onClick={openRepairHandler} key="repair">
+      <button className="btn btn-second btn-xl text-uppercase  leftButton" onClick={openRepairHandler} key="repair">
         Repair
       </button>
     );
     const instructionsButton = (
       <button
-        className="btn btn-second btn-xl text-uppercase js-scroll-trigger leftButton"
+        className="btn btn-second btn-xl text-uppercase  leftButton"
         onClick={openInstructionsHandler}
         key="instructions"
       >
@@ -33,7 +33,7 @@ class ExerciseButtons extends Component {
     );
     const startButton = (
       <button
-        className="btn btn-primary text-black btn-xl text-uppercase js-scroll-triggergreen rightButton"
+        className="btn btn-primary text-black btn-xl text-uppercase  rightButton"
         onClick={startExerciseHandler}
         key="start"
       >

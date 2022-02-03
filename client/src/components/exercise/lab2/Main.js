@@ -187,6 +187,7 @@ class Main extends Component {
   render() {
     //Props from redux used in the application
     const {
+      user,
       onChangeDefaultColors,
       onChangeExerciseColors,
       exerciseState,
@@ -353,6 +354,7 @@ class Main extends Component {
                                     endSystem={onOpenConclusion}
                                     toWhiteBackground={onToWhiteBackground}
                                     background={baseBackground}
+                                    user={user}
                                   />
                                 ) : (
                                   <div>

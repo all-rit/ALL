@@ -1,0 +1,18 @@
+.assigned-labs{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  &__lab-bubble{
+    border-radius: .25rem;
+    color: whitesmoke;
+    background-color: #0144d5;
+    text-align: center;
+    //font-weight: bold;
+    border: 1px solid #0144d5;
+    height: auto;
+    margin: .5rem;
+    padding: 10px 10px;
+
+  }
+}

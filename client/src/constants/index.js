@@ -6,6 +6,9 @@ export const Sections = {
         },
         1: {
             name: "SiteMap"
+        }, 
+        2: {
+            name: "Profile"
         }
     },
     1:{

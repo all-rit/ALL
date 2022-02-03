@@ -14,7 +14,7 @@ const HomeReset = ({ exerciseEnded, changeExerciseColors, colors }) => {
     <div>
       <button
         type="submit"
-        className="backButton btn btn-second btn-xl text-uppercase js-scroll-trigger"
+        className="backButton btn btn-second btn-xl text-uppercase "
         onClick={handleClick}
       >
         Back

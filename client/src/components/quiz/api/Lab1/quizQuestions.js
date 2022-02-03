@@ -1,4 +1,4 @@
-var quizQuestionsLab1 = [
+const quizQuestionsLab1 = [
     {
         question: "What is an audio cue?",
         answers: [

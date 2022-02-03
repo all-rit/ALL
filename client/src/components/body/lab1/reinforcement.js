@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
-
-import { LAB_ID } from "../../../constants/lab1";
-import UserLabService from "../../../services/UserLabService";
 import useScroll from "../../../use-hooks/useScroll";
-const Reinforcement = () => {
-  useScroll();
-  useEffect(() => {
-    return () => {
-      UserLabService.complete_reinforcement(LAB_ID);
-    };
-  });
+import {LAB_ID} from '../../../constants/lab1';
+import UserLabService from '../../../services/UserLabService';
+const Reinforcement = (props) => {
+  const {user}=props;
+    useScroll();
+    useEffect(() => {
+        return () => {
+            UserLabService.complete_reinforcement(LAB_ID);
+            if(user?.firstname !== null && user!==null){
+              UserLabService.user_complete_reinforcement(user.userid,LAB_ID);
+            }
+        }
+    }, [user]);
+
   return (
     <div>
       <div className="row">
