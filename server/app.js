@@ -28,7 +28,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-app.use(passport.session());
+app.use(passport.authenticate('session'));
 auth(passport);
 
 
