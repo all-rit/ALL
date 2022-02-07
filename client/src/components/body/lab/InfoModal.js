@@ -19,14 +19,14 @@ const InfoModal = (props) => {
         case "More Info":
             return (
                 <ul>
-                    <button class="btn-second btn btn-md" onClick={toggle}>{buttonLabel}</button>
+                    <button className="btn-second btn btn-md" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                     <div className="modal-content__header">
 
 <h1>{labName}</h1>
                     </div>
                             <ModalBody>
-                                <ul class="module__more_info">
+                                <ul className="module__more_info">
                                     <li className="p-text-modal">{fullDescription}</li>
                                     <li className="p-text-modal">Participants will take part in an exercise that emulates this environment, and they will learn how to implement code in order that information is also presented visually.</li>
                                     <li className="p-text-modal">Upon completion of the lab, participants will have achieved the following learning objectives:</li>
@@ -49,7 +49,7 @@ const InfoModal = (props) => {
         case "View Certificate":
             return (
                 <ul>
-                    <button class="btn-primary btn btn-md module__certificate" onClick={toggle}>{buttonLabel}</button>
+                    <button className="btn-primary btn btn-md module__certificate" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                             <ModalBody>
                                 {labProgress ===null || labProgress===undefined ?
@@ -71,7 +71,7 @@ const InfoModal = (props) => {
         default:
             return (
                 <ul>
-                    <button color="secondary" class="btn-secondary btn btn-md" onClick={toggle}>{buttonLabel}</button>
+                    <button color="secondary" className="btn-secondary btn btn-md" onClick={toggle}>{buttonLabel}</button>
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                         <ModalHeader toggle={toggle}>{labName}</ModalHeader>
                             <ModalBody>

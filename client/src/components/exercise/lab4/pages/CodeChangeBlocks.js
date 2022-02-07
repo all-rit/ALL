@@ -194,7 +194,7 @@ class CodeChangeBlocks extends Component {
                     <Paper style={paperStyle}>
             <pre>
               <code className="language-html">
-                {`/* add the following in the input: <a class="skip-main" href="#main">Skip to main content</a> */
+                {`/* add the following in the input: <a className="skip-main" href="#main">Skip to main content</a> */
 `}
               </code>
               <input
@@ -205,7 +205,7 @@ class CodeChangeBlocks extends Component {
                   placeholder=""
                   onChange={this.handleChange}
                   aria-label={
-                      'add the following: <a class="skip-main" href="#main">Skip to main content</a>'
+                      'add the following: <a className="skip-main" href="#main">Skip to main content</a>'
                   }
               />
 

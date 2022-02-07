@@ -25,7 +25,7 @@ export class Google extends Component {
         };
 
         return (
-            <div class="googleButton">
+            <div className="googleButton">
                 <GoogleButton className="signinButton" onClick={clickMethod} />
             </div>
         );

@@ -38,8 +38,8 @@ function renderSlideset(information){
     }
     return rows.map((rows,index)=>{
       return(
-        <div key={index} alt="students" class="slide active">
-            <div key={index} alt="students" class="landingpage__row">
+        <div key={index} alt="students" className="slide active">
+            <div key={index} alt="students" className="landingpage__row">
               {rows}
             </div>
         </div>
@@ -109,24 +109,24 @@ class ProfileGeneration extends Component{
     
     render(){
         return(
-           <section class="page-section landingpage__pagesection" >
-             <div class="container" >
-                 <div class="row">
-                   <div class="col-lg-12 text-center">
-                     <h2 class="section-heading text-uppercase">Team Members</h2>
+           <section className="page-section landingpage__pagesection" >
+             <div className="container" >
+                 <div className="row">
+                   <div className="col-lg-12 text-center">
+                     <h2 className="section-heading text-uppercase">Team Members</h2>
        
-                     <h3 class="section-subheading " >
+                     <h3 className="section-subheading " >
                        Meet our team.
                      </h3>
                    </div>
                  </div>
-                 <div class="landingpage__row">
-                   <div alt="professors" class="landingpage__row">
+                 <div className="landingpage__row">
+                   <div alt="professors" className="landingpage__row">
                      {renderProfileData(this.state.professorInformation)}
                    </div>
                  </div>
        
-                 <div id="slideshow" alt="students" class="landingpage__row" data-component="slideshow">
+                 <div id="slideshow" alt="students" className="landingpage__row" data-component="slideshow">
                      <div role="list">
                        {renderSlideset(this.state.teamInformation)}
                      </div>

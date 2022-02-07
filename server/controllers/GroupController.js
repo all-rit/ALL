@@ -12,6 +12,12 @@ exports.getGroupEnrolledStudents = (req, res) => {
     })
 };
 
+exports.getCompletedGroupLabs = (req, res) => {
+    GroupService.getCompletedGroupLabs(req.params.userID,req.params.groupID).then((records) => {
+        res.json(records);
+    })
+};
+
 exports.enrollUserInGroup = (req, res) => {
     GroupService.enrollUserInGroup(
         req.body.userID,

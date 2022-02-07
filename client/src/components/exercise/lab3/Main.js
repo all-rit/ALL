@@ -39,7 +39,7 @@ class Main extends Component {
   render() {
     const {actions, state,user} = this.props;
     return (
-      <div class="container bottomSpace" >
+      <div className="container bottomSpace" >
         <Router className="app">
           <ExerciseStart default path="/"/>
           <FullExercise path="/BeginnerExercise" actions={actions}/>

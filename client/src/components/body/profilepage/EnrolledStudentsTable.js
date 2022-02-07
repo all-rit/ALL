@@ -4,7 +4,7 @@ import ResultLimiter from "./components/ResultLimiter";
 
 const EnrolledStudentsTable = (props) => {
 
-    const { assignedLabs, enrolledStudents } = props;
+    const { assignedLabs, enrolledStudents,groupid } = props;
 
     return (
         <div className="enrolled_students_table">
@@ -19,7 +19,7 @@ const EnrolledStudentsTable = (props) => {
                             <th>Completion</th>
                         </tr>
                         </thead>
-                        <ResultLimiter assignedLabs={assignedLabs} data={enrolledStudents} resultType={'studentLabs'}/>
+                        <ResultLimiter assignedLabs={assignedLabs} data={enrolledStudents} resultType={'studentLabs'} groupid={groupid}/>
                     </Table>
             }
         </div>

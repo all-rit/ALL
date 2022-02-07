@@ -51,6 +51,7 @@ router.post('/group/:groupID/add', GroupController.addGroupLab)
 router.put('/group/:groupID/update', GroupController.updateGroup)
 router.delete('/group/:groupID/delete', GroupController.deleteGroupLab)
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
+router.get('/group/:groupID/labs/:userID/completed',GroupController.getCompletedGroupLabs)
 router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
 
 //user Lab Routes for lab progress and quiz

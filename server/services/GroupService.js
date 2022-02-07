@@ -17,6 +17,14 @@ exports.getGroupEnrolledStudents = (groupid) => {
     });
 }
 
+exports.getCompletedGroupLabs = (userid,groupid) =>{
+    return db.sequelize.query('SELECT labs."labShortName" FROM userlabcompletion INNER JOIN labs ON labs.id = userlabcompletion.labid INNER JOIN group_labs ON group_labs."labID" = userlabcompletion.labid INNER JOIN enrollment ON enrollment."groupID" = group_labs."groupID" WHERE userlabcompletion.labcompletiontime IS NOT NULL AND userlabcompletion.userid=(:userID) AND group_labs."groupID"= (:groupID) AND enrollment."userID" = (:userID)', {
+        replacements: {groupID: groupid, userID: userid},
+        type: db.sequelize.QueryTypes.SELECT,
+        raw: true
+    });
+}
+
 exports.enrollUserInGroup = (userid, code) => {
     return db.Groups
         .findOne({

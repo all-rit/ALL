@@ -19,6 +19,7 @@ const GroupDetails = (props) => {
                     setEnrolledStudents(data);
                 })
             }
+            
         }
     }, [group, instructing]);
     return (
