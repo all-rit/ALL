@@ -12,6 +12,7 @@ import {
     Input,
 } from 'reactstrap';
 import FormCheckbox from './FormCheckbox';
+import DeleteModal from './DeleteModal';
 
 const GroupForm = (props) => {
     const {setInstrGroupsUpdated,toggle, user,addMode, groupID, groupName,assignedLabs} = props
@@ -130,6 +131,7 @@ const GroupForm = (props) => {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" type="submit">Update Group</Button>
+                        <DeleteModal/>
                         <Button color="secondary" onClick={toggle}>Cancel</Button>
                     </ModalFooter>
                 </Form>
