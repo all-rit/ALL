@@ -61,12 +61,16 @@ const GroupForm = (props) => {
                     }
                     labsAssigned.forEach((labID)=>{
                         if(!labs.includes(labID)){
-                            GroupService.deleteGroupLab(groupID,labID)
+                            GroupService.deleteGroupLab(groupID,labID).then(()=>
+                                setInstrGroupsUpdated(true)
+                            )
                         }
                     })
                     labs.forEach((labID)=>{
                         if(!labsAssigned.includes(labID)){
-                            GroupService.addGroupLab(groupID,labID)
+                            GroupService.addGroupLab(groupID,labID).then(()=>
+                            setInstrGroupsUpdated(true)
+                        )
                         }
                     })
                     setInstrGroupsUpdated(true)
@@ -131,7 +135,7 @@ const GroupForm = (props) => {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" type="submit">Update Group</Button>
-                        <DeleteModal/>
+                        <DeleteModal mainToggle={toggle} groupID={groupID} setInstrGroupsUpdated={setInstrGroupsUpdated}/>
                         <Button color="secondary" onClick={toggle}>Cancel</Button>
                     </ModalFooter>
                 </Form>

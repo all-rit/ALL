@@ -75,6 +75,13 @@ exports.deleteGroupLab = (req, res) => {
         res.sendStatus(200);
     })
 }
+exports.deleteGroup = (req, res) => {
+    GroupService.deleteGroup(
+        req.body.groupID
+    ).then((data) => {
+        res.sendStatus(200);
+    })
+}
 
 exports.updateGroup = (req,res)=>{
     GroupService.updateGroup(

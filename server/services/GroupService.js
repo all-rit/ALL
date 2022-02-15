@@ -123,6 +123,14 @@ exports.deleteGroupLab = (groupID,labID) => {
         raw: true
     });
 }
+exports.deleteGroup = (groupID) => {
+    return db.sequelize.query('DELETE FROM "group_labs" WHERE "group_labs"."groupID"=(:groupID); DELETE FROM "groups" WHERE "groups"."id"=(:groupID); DELETE FROM "enrollment" WHERE "enrollment"."groupID" =(:groupID);  ', {
+        replacements: {groupID: groupID},
+        type: db.sequelize.QueryTypes.DELETE,
+        raw: true
+    });
+}
+
 
 exports.updateGroup = (groupID,groupName) =>{
     return db.sequelize.query('UPDATE "groups" SET "groupName" = (:groupName) WHERE "id" = (:groupID)', {
