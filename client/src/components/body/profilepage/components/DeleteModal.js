@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import GroupService from '../../../../services/GroupService';
 
 import { Button,Modal,ModalHeader,ModalBody,ModalFooter } from 'reactstrap';
