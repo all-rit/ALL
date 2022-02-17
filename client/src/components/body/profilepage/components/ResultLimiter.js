@@ -52,12 +52,6 @@ const ResultLimiter = (props) =>{
                                     </>
                                 </td>
                                     <LabCompletionBubbles studentid={student.userID} groupid={groupid}/>
-                                    {/* {assignedLabs.map((lab, index) => (
-                                        <div className="assigned-labs__lab-bubble" key={index}>
-                                            {lab.labShortName}
-                                        </div>
-                                    ))
-                                    } */}
                             </tr>
                         ))}
                     </tbody>
