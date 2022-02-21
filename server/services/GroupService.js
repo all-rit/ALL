@@ -2,7 +2,7 @@ const db = require('../database');
 const { nanoid } = require("nanoid");
 
 exports.getGroupLabs = (groupid) => {
-    return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID)', {
+    return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."isActive"=true', {
         replacements: {groupID: groupid},
         type: db.sequelize.QueryTypes.SELECT,
         raw: true
@@ -108,25 +108,37 @@ exports.createGroup = (userID, groupName) => {
 }
 
 exports.addGroupLab = (groupID,labID) => {
-    return db.GroupLabs.create({
-        groupID: groupID,
-        labID: labID,
-    }).then((data) => {
-        console.log(data)
-    }).catch(() => console.log("Error encountered"))
+    return db.GroupLabs.findOne({
+        where:
+            {
+                groupID: groupID,
+                labID: labID
+            }}
+        ).then((groupLab) => {
+                if (groupLab !== null){
+                    groupLab.isActive = true;
+                    groupLab.save();
+                } else{
+                    return db.GroupLabs.create({
+                        groupID: groupID,
+                        labID: labID,
+                    }).then((data) => {
+                        console.log(data)
+                    }).catch(() => console.log("Error encountered"))
+        }})
 }
 
 exports.deleteGroupLab = (groupID,labID) => {
-    return db.sequelize.query('DELETE FROM "group_labs" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."labID"=(:labID)', {
+    return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."labID"=(:labID)', {
         replacements: {groupID: groupID, labID: labID},
-        type: db.sequelize.QueryTypes.DELETE,
+        type: db.sequelize.QueryTypes.UPDATE,
         raw: true
     });
 }
 exports.deleteGroup = (groupID) => {
-    return db.sequelize.query('DELETE FROM "group_labs" WHERE "group_labs"."groupID"=(:groupID); DELETE FROM "groups" WHERE "groups"."id"=(:groupID); DELETE FROM "enrollment" WHERE "enrollment"."groupID" =(:groupID);  ', {
+    return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID); UPDATE "groups" SET "isActive"=false WHERE "groups"."id"=(:groupID); UPDATE "enrollment" SET "isActive"=false WHERE "enrollment"."groupID" =(:groupID);  ', {
         replacements: {groupID: groupID},
-        type: db.sequelize.QueryTypes.DELETE,
+        type: db.sequelize.QueryTypes.UPDATE,
         raw: true
     });
 }

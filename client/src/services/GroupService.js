@@ -40,13 +40,13 @@ const groupService = {
         });
     },
     deleteGroupLab: (groupID,labID)=>{
-        return API.deleteWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/${labID}/delete`, {
+        return API.putWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/${labID}/delete`, {
             groupID,
             labID,
         });
     },
     deleteGroup: (groupID)=>{
-        return API.deleteWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/delete`, {
+        return API.putWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/delete`, {
             groupID,
         });
     },
