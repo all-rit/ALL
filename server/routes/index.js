@@ -86,6 +86,7 @@ router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
 router.post('/page/complete', PageController.createPage);
 //Labs
 router.get('/lab', LabController.getAllLabs);
+router.get('/lab:labID/about', LabController.getLabAbout);
 //Team
 router.get('/teammember', TeamMemberController.getAllTeamMembers)
 router.get('/professors', TeamMemberController.getAllProfessors)
