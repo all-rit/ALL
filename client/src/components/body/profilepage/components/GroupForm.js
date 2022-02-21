@@ -50,6 +50,7 @@ const GroupForm = (props) => {
                 GroupService.createGroup(user.userid, groupName).then((data) => {
                     labs.forEach((labID)=>{
                         GroupService.addGroupLab(data.groupID,labID)
+                        setInstrGroupsUpdated(true)
                     })
                     setInstrGroupsUpdated(true)
                 })
