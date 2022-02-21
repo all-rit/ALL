@@ -87,6 +87,8 @@ router.post('/page/complete', PageController.createPage);
 //Labs
 router.get('/lab', LabController.getAllLabs);
 router.get('/lab:labID/about', LabController.getLabAbout);
+router.get('/lab:labID/reinforcement', LabController.getLabReinforcement);
+
 //Team
 router.get('/teammember', TeamMemberController.getAllTeamMembers)
 router.get('/professors', TeamMemberController.getAllProfessors)

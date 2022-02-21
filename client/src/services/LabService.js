@@ -10,6 +10,11 @@ const labService = {
         return API.get(process.env.REACT_APP_SERVER_URL+`/lab${labID}/about`)
         .then((response) => response.json())
         .then((json) => json);
+    },
+    getLabReinforcement: (labID) =>{
+        return API.get(process.env.REACT_APP_SERVER_URL+`/lab${labID}/reinforcement`)
+        .then((response) => response.json())
+        .then((json) => json);
     }
 }
 

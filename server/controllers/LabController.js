@@ -10,3 +10,8 @@ exports.getLabAbout = (req, res) => {
 		res.json(records);
 	})
 };
+exports.getLabReinforcement = (req, res) => {
+	LabService.getLabReinforcement(req.params.labID).then((records) => {
+		res.json(records);
+	})
+};

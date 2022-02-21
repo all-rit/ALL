@@ -17,3 +17,11 @@ exports.getLabAbout = (labID) => {
         raw: true
     });
 }
+
+exports.getLabReinforcement = (labID) => {
+    return db.sequelize.query('SELECT "reinforcement" FROM "labs" WHERE "labs"."id"=(:labID)', {
+        replacements: {labID: labID},
+        type: db.sequelize.QueryTypes.SELECT,
+        raw: true
+    });
+}

@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
             authors: { type: DataTypes.TEXT },
             labURL: { type: DataTypes.TEXT },
             copyrightAttributes: { type: DataTypes.TEXT },
-            aboutPage: { type: DataTypes.TEXT }
+            aboutPage: { type: DataTypes.TEXT },
+            reading: { type: DataTypes.TEXT },
+            reinforcement: {type: DataTypes.JSON},
         }, { tableName: 'labs' }
     );
     Labs.sync();
@@ -37,7 +39,10 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech(Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)</LearningObjective></LearningObjectives>",
     //         authors: "Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat",
     //         labURL: "https://all.rit.edu/Lab1/",
-    //         thumbnailImageURL: "/ear.jpg"
+    //         thumbnailImageURL: "/ear.jpg",
+    //         aboutPage:"In this lab, you will learn why it is important to create software that is accessible to users with hearing impairments. You will learn how organizations like the National Association of the Deaf (NAD) fought for easier access for hearing impaired individuals, increase your understanding through an interactive module about hearing impairments, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!",
+    //         reading: "",
+    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Color Blindness",
@@ -48,7 +53,10 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is colorblind, the types of colorblindness that they have, and their needs for accessible use of software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for those who are colorblind(Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to colorblindness (Comprehension)</LearningObjective></LearningObjectives>",
     //         authors: "Scott Frauenknecht",
     //         labURL: "https://all.rit.edu/Lab2/",
-    //         thumbnailImageURL: "/colorblindness.jpg"
+    //         thumbnailImageURL: "/colorblindness.jpg",
+    //         aboutPage:"In this lab, you will learn about why it is important to createsoftware that is accessible to users with visual impairments. You will learn about different color vision deficiencies, increase your understanding through an interactive module about visual impairments, view related media to reinforce the topic, and take aquiz to test your knowledge. Click "Next" to start!",
+    //         reading: "",
+    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
     //     });
     //     Labs.create({
     //         labName: "Accessibility with Screen Readers",
@@ -59,7 +67,10 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)</LearningObjective></LearningObjectives>", 
     //         authors: "Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan",
     //         labURL: "https://all.rit.edu/Lab3/",
-    //         thumbnailImageURL: "/screen_reader.jpg"
+    //         thumbnailImageURL: "/screen_reader.jpg",
+    //         aboutPage:"In this lab, you will learn about why it is important to create software that is accessible to users who utilize screenreaders. You will learn about using alt tags, increase your understanding through an interactive module about screenreaders and alt tags, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to s ",
+    //         reading: "",
+    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Dexterity",
@@ -70,7 +81,10 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)</LearningObjective></LearningObjectives>", 
     //         authors: "Saad Khan, Heather Moses",
     //         labURL: "https://all.rit.edu/Lab4/",
-    //         thumbnailImageURL: "/hand.jpg"
+    //         thumbnailImageURL: "/hand.jpg",
+    //         aboutPage:"In this lab, you will learn about why it is important to create software that is accessible to users with dexterity impairments. You will learn about issues related to dexterity, increase your understanding through an interactive module about dexterity impairments, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!",
+    //         reading: "",
+    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Cognitive Impairments",
@@ -81,7 +95,10 @@ module.exports = (sequelize, DataTypes) => {
     //         learningObjectives: "<?xml version='1.0' encoding='UTF-8'?><LearningObjectives><LearningObjective>LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)</LearningObjective><LearningObjective>LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)</LearningObjective><LearningObjective>LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)</LearningObjective><LearningObjective>LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)</LearningObjective></LearningObjectives>", 
     //         authors: "Saad Kahn",
     //         labURL: "https://all.rit.edu/Lab5/",
-    //         thumbnailImageURL: "/cognitiveimpairment.jpg"
+    //         thumbnailImageURL: "/cognitiveimpairment.jpg",
+    //         aboutPage:"In this lab, you will learn about why it is important to create software that is accessible to users who face cognitive impairments. You will learn about using clear descriptive headings, handling time driven notifications, and creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz to test your knowledge. Click "Next" to start!",
+    //         reading: "",
+    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
     //     });
     // })
     return Labs;

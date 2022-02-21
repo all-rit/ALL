@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactGA from "react-ga";
 
 import {default as About} from "./components/body/About";
+import {default as Reinforcement} from "./components/body/Reinforcement";
 
 import { default as ReadingLab1 } from "./components/body/lab1/reading";
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
@@ -109,11 +110,13 @@ class App extends Component {
               <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user}/>
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user}/>
 
-              <ReinforcementLab1 path="/Lab1/Reinforcement" user={state.main.user}/>
+              <Reinforcement path = {`/Lab${lab}/Reinforcement`} user={state.main.user} labID={lab}/>
+
+              {/* <ReinforcementLab1 path="/Lab1/Reinforcement" user={state.main.user}/>
               <ReinforcementLab2 path="/Lab2/Reinforcement" user={state.main.user}/>
               <ReinforcementLab3 path="/Lab3/Reinforcement" user={state.main.user}/>
               <ReinforcementLab4 path="/Lab4/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab5 path="/Lab5/Reinforcement" user={state.main.user}/>
+              <ReinforcementLab5 path="/Lab5/Reinforcement" user={state.main.user}/> */}
 
 
               <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user}/>
