@@ -1,27 +1,24 @@
 import React, { Component } from "react";
 import ReactGA from "react-ga";
 
-import { default as AboutLab1 } from "./components/body/lab1/about";
+import {default as About} from "./components/body/About";
+
 import { default as ReadingLab1 } from "./components/body/lab1/reading";
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ReinforcementLab1 } from "./components/body/lab1/reinforcement";
 import { Sections } from "./constants/index";
 
-import { default as AboutLab2 } from "./components/body/lab2/about";
 import { default as ReadingLab2 } from "./components/body/lab2/reading";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ReinforcementLab2 } from "./components/body/lab2/reinforcement";
 
-import { default as AboutLab3 } from "./components/body/lab3/about";
 import { default as ReadingLab3 } from "./components/body/lab3/reading";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
 import { default as ReinforcementLab3 } from "./components/body/lab3/reinforcement";
 
-import {default as AboutLab4} from "./components/body/lab4/about";
 import {default as ExerciseLab4} from "./components/exercise/lab4/Main";
 import {default as ReadingLab4} from "./components/body/lab4/reading";
 import {default as ReinforcementLab4} from "./components/body/lab4/reinforcement";
-import {default as AboutLab5} from "./components/body/lab5/about";
 import {default as ReadingLab5} from "./components/body/lab5/reading";
 import {default as ExerciseLab5} from "./components/exercise/lab5/Main";
 import {default as ReinforcementLab5} from "./components/body/lab5/reinforcement";
@@ -96,16 +93,9 @@ class App extends Component {
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user}/>
               <Error actions={actions} default />
-              <AboutLab1 path="/Lab1/" user={state.main.user}/>
-              <AboutLab2 path="/Lab2/" user={state.main.user}/>
-              <AboutLab3 path="/Lab3/" user={state.main.user}/>
-              <AboutLab4 path="/Lab4/" user={state.main.user}/>
-              <AboutLab5 path="/Lab5/" user={state.main.user}/>
-              <AboutLab1 path="/Lab1/About" user={state.main.user}/>
-              <AboutLab2 path="/Lab2/About" user={state.main.user}/>
-              <AboutLab3 path="/Lab3/About" user={state.main.user}/>
-              <AboutLab4 path="/Lab4/About" user={state.main.user}/>
-              <AboutLab5 path="/Lab5/About" user={state.main.user}/>
+
+              <About path = {`/Lab${lab}/`} user={state.main.user} labID={lab}/>
+              <About path = {`/Lab${lab}/About`} user={state.main.user} labID={lab}/>
 
               <ReadingLab1 path="/Lab1/Reading" user={state.main.user}/>
               <ReadingLab2 path="/Lab2/Reading" user={state.main.user}/>

@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
             learningObjectives: { type: DataTypes.TEXT },
             authors: { type: DataTypes.TEXT },
             labURL: { type: DataTypes.TEXT },
-            copyrightAttributes: { type: DataTypes.TEXT }
+            copyrightAttributes: { type: DataTypes.TEXT },
+            aboutPage: { type: DataTypes.TEXT }
         }, { tableName: 'labs' }
     );
     Labs.sync();
