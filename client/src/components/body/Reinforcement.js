@@ -7,16 +7,13 @@ const Reinforcement = (props) => {
   const [reinforcement,setReinforcement] = useState('');
     useScroll();
     useEffect(() => {
-        return () => {
-            UserLabService.complete_reinforcement(labID);
-            if(user?.firstname !== null && user!==null){
-              UserLabService.user_complete_reinforcement(user.userid,labID);
-            }
-            LabService.getLabReinforcement(labID).then((data)=>{
-                setReinforcement(data[0].reinforcement)
-                //console.log(JSON.parse(data[0].reinforcement))
-            })
-        }
+      UserLabService.complete_reinforcement(labID);
+        if(user?.firstname !== null && user!==null){
+          UserLabService.user_complete_reinforcement(user.userid,labID);
+      }
+      LabService.getLabReinforcement(labID).then((data)=>{
+          setReinforcement(data[0].reinforcement)
+      })
     }, [user,labID]);
 
   return (
