@@ -30,9 +30,13 @@ const Reading = (props) => {
                         <Pie data={readingData?.piechart.data} height={100} />
                     </div>
                     {readingData?.piechart.caption !== "" ?
-                        <div id={"caption"}>
-                            {readingData?.piechart.caption}
-                        </div> :<></>               
+                        readingData?.piechart.caption.map((data)=>{
+                            return(
+                            <div id={"caption"}>
+                                {data}
+                            </div> 
+                            )
+                        }) :<></>               
                     }
                 </> 
             }
