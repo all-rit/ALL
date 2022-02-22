@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             aboutPage: { type: DataTypes.TEXT },
             reading: { type: DataTypes.TEXT },
             reinforcement: {type: DataTypes.JSON},
+            quiz: {type: DataTypes.JSON},
         }, { tableName: 'labs' }
     );
     Labs.sync();
@@ -42,7 +43,8 @@ module.exports = (sequelize, DataTypes) => {
     //         thumbnailImageURL: "/ear.jpg",
     //         aboutPage:"In this lab, you will learn why it is important to create software that is accessible to users with hearing impairments. You will learn how organizations like the National Association of the Deaf (NAD) fought for easier access for hearing impaired individuals, increase your understanding through an interactive module about hearing impairments, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!",
     //         reading: "",
-    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
+    //         reinforcement:"[{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]"
+    //         quiz:"",
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Color Blindness",
@@ -56,7 +58,8 @@ module.exports = (sequelize, DataTypes) => {
     //         thumbnailImageURL: "/colorblindness.jpg",
     //         aboutPage:"In this lab, you will learn about why it is important to createsoftware that is accessible to users with visual impairments. You will learn about different color vision deficiencies, increase your understanding through an interactive module about visual impairments, view related media to reinforce the topic, and take aquiz to test your knowledge. Click "Next" to start!",
     //         reading: "",
-    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
+    //         reinforcement:"[{"title":"Color Blindness Testimony","link":"https://www.youtube.com/embed/d6KKsmmOKEI"},{"title":"Color Contrast Lecture","link":"https://www.youtube.com/embed/zrl0CW8m-Qk"}]"
+    //         quiz:"",
     //     });
     //     Labs.create({
     //         labName: "Accessibility with Screen Readers",
@@ -70,7 +73,8 @@ module.exports = (sequelize, DataTypes) => {
     //         thumbnailImageURL: "/screen_reader.jpg",
     //         aboutPage:"In this lab, you will learn about why it is important to create software that is accessible to users who utilize screenreaders. You will learn about using alt tags, increase your understanding through an interactive module about screenreaders and alt tags, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to s ",
     //         reading: "",
-    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
+    //         reinforcement:"[{"title":"Accessibility for Blind/Visually-Impaired Users","link":"https://www.youtube.com/embed/1by5J7c5Vz4"},{"title":"How a blind developer uses accessibility features in Visual Studio","link":"https://www.youtube.com/embed/94swlF55tVc?"}]"
+    //         quiz:"",
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Dexterity",
@@ -84,7 +88,8 @@ module.exports = (sequelize, DataTypes) => {
     //         thumbnailImageURL: "/hand.jpg",
     //         aboutPage:"In this lab, you will learn about why it is important to create software that is accessible to users with dexterity impairments. You will learn about issues related to dexterity, increase your understanding through an interactive module about dexterity impairments, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!",
     //         reading: "",
-    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
+    //         reinforcement:"[{"title":"Motor Impaired User Review","link":"https://www.youtube.com/embed/yE1S0Biuxcc"},{"title":"Digital Accessibility User Impact: Motor Disabilities","link":"https://www.youtube.com/embed/nnDw7JPJBAE"}]"
+    //         quiz:"",
     //     });
     //     Labs.create({
     //         labName: "Accessibility to Cognitive Impairments",
@@ -98,7 +103,8 @@ module.exports = (sequelize, DataTypes) => {
     //         thumbnailImageURL: "/cognitiveimpairment.jpg",
     //         aboutPage:"In this lab, you will learn about why it is important to create software that is accessible to users who face cognitive impairments. You will learn about using clear descriptive headings, handling time driven notifications, and creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz to test your knowledge. Click "Next" to start!",
     //         reading: "",
-    //         reinforcement:"{videos:[{title:"Audio Cues",link:"https://www.youtube.com/embed/vU_Di8EtF3M"},{title:"Audio Cues Lecture",link:"https://www.youtube.com/embed/Wlf8A0w66o0"}]}"
+    //         reinforcement:"[{"title":"Dyslexia & Web Accessibility","link":"https://www.youtube.com/embed/9XiHhQikNrY"},{"title":"Cognitive Disabilities - An Introduction to Accessibility and Inclusive Design","link":"https://www.youtube.com/embed/OknYVKtn-Cc"}]"
+    //         quiz:"",
     //     });
     // })
     return Labs;

@@ -6,23 +6,18 @@ import {default as Reinforcement} from "./components/body/Reinforcement";
 
 import { default as ReadingLab1 } from "./components/body/lab1/reading";
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
-import { default as ReinforcementLab1 } from "./components/body/lab1/reinforcement";
 import { Sections } from "./constants/index";
 
 import { default as ReadingLab2 } from "./components/body/lab2/reading";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
-import { default as ReinforcementLab2 } from "./components/body/lab2/reinforcement";
 
 import { default as ReadingLab3 } from "./components/body/lab3/reading";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
-import { default as ReinforcementLab3 } from "./components/body/lab3/reinforcement";
 
 import {default as ExerciseLab4} from "./components/exercise/lab4/Main";
 import {default as ReadingLab4} from "./components/body/lab4/reading";
-import {default as ReinforcementLab4} from "./components/body/lab4/reinforcement";
 import {default as ReadingLab5} from "./components/body/lab5/reading";
 import {default as ExerciseLab5} from "./components/exercise/lab5/Main";
-import {default as ReinforcementLab5} from "./components/body/lab5/reinforcement";
 import {default as LandingPageBody} from "./components/body/landingpage/index";
 import {default as SiteMap} from "./components/body/landingpage/sitemap";
 import {default as Error} from "./components/body/landingpage/error";
@@ -111,13 +106,6 @@ class App extends Component {
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user}/>
 
               <Reinforcement path = {`/Lab${lab}/Reinforcement`} user={state.main.user} labID={lab}/>
-
-              {/* <ReinforcementLab1 path="/Lab1/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab2 path="/Lab2/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab3 path="/Lab3/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab4 path="/Lab4/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab5 path="/Lab5/Reinforcement" user={state.main.user}/> */}
-
 
               <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user}/>
             </Router>
