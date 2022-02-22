@@ -20,7 +20,7 @@ const About = (props) => {
   return (
       <div className="study">
         <p>
-          {aboutText?.aboutPage}
+          {aboutText ? aboutText?.about : "Loading..."}
         </p>
       </div>
   );

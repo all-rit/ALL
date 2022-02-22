@@ -11,7 +11,7 @@ exports.getAllLabs = () => {
 }
 
 exports.getLabAbout = (labID) => {
-    return db.sequelize.query('SELECT "aboutPage" FROM "labs" WHERE "labs"."id"=(:labID)', {
+    return db.sequelize.query('SELECT "about" FROM "labs" WHERE "labs"."id"=(:labID)', {
         replacements: {labID: labID},
         type: db.sequelize.QueryTypes.SELECT,
         raw: true
