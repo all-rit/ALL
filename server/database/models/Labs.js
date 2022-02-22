@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             labURL: { type: DataTypes.TEXT },
             copyrightAttributes: { type: DataTypes.TEXT },
             about: { type: DataTypes.TEXT },
-            reading: { type: DataTypes.TEXT },
+            reading: { type: DataTypes.JSON },
             reinforcement: {type: DataTypes.JSON},
             quiz: {type: DataTypes.JSON},
         }, { tableName: 'labs' }
