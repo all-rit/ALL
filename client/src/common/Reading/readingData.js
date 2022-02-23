@@ -1,27 +1,27 @@
 export const readingData = {
-	data: {
-		labels: [
-			"US Population Without Cognitive Impairment (Millions)",
-			"US Population With Cognitive Impairment (Millions)",
-		],
-
-		datasets: [
-			{
-				label: "Cognitively Impaired in a Population of 328 People",
-				borderColor: "black",
-				backgroundColor: ["blue", "red"],
-				data: [312, 16],
-				borderWidth: "1",
-			},
-		],
-	},
 	div1: {
 		title: 'Reading',
 		p1: 'Cognitive impairment refers to a broad range of disabilities, from people with intellectual disabilities, who may have the most-limited capabilities, to age-related issues regarding thinking and remembering. This range includes people with learning disabilities, such as dyslexia and attention deficit hyperactivity disorder (ADHD).',
-		h3: 'How Many People are Affected?',
+		main: 'How Many People are Affected?',
 		p2: 'Currently, as high as 5% of all Americans face cognitive impairments.',
 		p3: 'An estimated 5.1 million Americans aged 65 years or older may currently have Alzheimer’s disease, the most well-known form of cognitive impairment.',
-		p4: '	Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources for research in accessibility improvements.'
+		p4: '	Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources for research in accessibility improvements.',
+		data: {
+			labels: [
+				"US Population Without Cognitive Impairment (Millions)",
+				"US Population With Cognitive Impairment (Millions)",
+			],
+
+			datasets: [
+				{
+					label: "Cognitively Impaired in a Population of 328 People",
+					borderColor: "black",
+					backgroundColor: ["blue", "red"],
+					data: [312, 16],
+					borderWidth: "1",
+				},
+			],
+		},
 	},
 	div2: {
 		title: "Common Challenges",
