@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
 import TeamMemberService from "../../../../services/TeamMemberService";
+import Spinner from "../../../../common/Spinner/Spinner";
 
 
 function renderProfileData(profileInformation) {
@@ -108,6 +109,7 @@ class ProfileGeneration extends Component{
     }
     
     render(){
+      
         return(
            <section className="page-section landingpage__pagesection" >
              <div className="container" >
@@ -120,17 +122,24 @@ class ProfileGeneration extends Component{
                      </h3>
                    </div>
                  </div>
-                 <div className="landingpage__row">
-                   <div alt="professors" className="landingpage__row">
-                     {renderProfileData(this.state.professorInformation)}
-                   </div>
-                 </div>
-       
-                 <div id="slideshow" alt="students" className="landingpage__row" data-component="slideshow">
-                     <div role="list">
-                       {renderSlideset(this.state.teamInformation)}
-                     </div>
-                 </div>
+                 {this.state.professorInformation.length===0 && this.state.teamInformation.length===0 ? 
+                    <div className="landingpage__row">
+                        <Spinner />
+                    </div>:
+                    <>
+                      <div className="landingpage__row">
+                        <div alt="professors" className="landingpage__row">
+                          {renderProfileData(this.state.professorInformation)}
+                        </div>
+                      </div>
+
+                      <div id="slideshow" alt="students" className="landingpage__row" data-component="slideshow">
+                        <div role="list">
+                          {renderSlideset(this.state.teamInformation)}
+                        </div>
+                      </div>
+                    </>
+                  }
              </div>
            </section>
         );
