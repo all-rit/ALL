@@ -24,6 +24,13 @@ const Reading = (props) => {
         <div className="study">
             {!readingData ? <div>Loading....</div>:
                 <>
+                    {readingData?.description !==''? 
+                        <>
+                        <h3>{readingData?.description.header}</h3>
+                        <p>{readingData?.description.content}</p>
+                        </>
+                    :<></>    
+                    }
                     <h3>{readingData?.piechart.header}</h3>
                     <div className="flex">
                         <Pie data={readingData?.piechart.data} height={100} />
@@ -31,12 +38,76 @@ const Reading = (props) => {
                     {readingData?.piechart.caption !== "" ?
                         readingData?.piechart.caption.map((data)=>{
                             return(
-                            <div id={"caption"}>
-                                {data}
-                            </div> 
+                                <div id={"caption"}>
+                                    {data}
+                                </div> 
                             )
-                        }) :<></>               
+                        }) 
+                        :<></>               
                     }
+
+                    {readingData?.body !== "" ? 
+                        readingData?.body.map((data)=>{
+                            return(
+                                <>
+                                    {data.header !==""? <h3>{data.header}</h3>: <></>}
+                                    {data.type ===""? 
+                                        <>
+                                            {data.content.map((content)=>{
+                                                return(
+                                                    <p>{content}</p>
+                                                )
+                                            })
+                                            }
+                                        </>
+                                    :<></>
+                                    }
+                                    {data.type ==="study__list"?
+                                        <ul className={data.type}>
+                                            {data.content.map((content,index)=>{
+                                                return(
+                                                    <li key={index}>
+                                                        {content}
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    :<></>
+                                    }
+                                    {data.type ==="non-bullet-list"?
+                                        <ul className={data.type}>
+                                            {data.content.map((content,index)=>{
+                                                return(
+                                                    <li key={index}>
+                                                        <h5>{content.header}</h5>
+                                                        <p>{content.content}</p>
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    :<></>
+                                    }
+                                </>
+                            )
+                        })    
+                    :<></>
+                    }
+                    <h4>For more information, please visit the following websites:</h4>
+                    <div className="flex">
+                        {readingData?.footer !==''?
+                            readingData?.footer.links.map((data)=>{
+                                return(
+                                    <a
+                                        href={data.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {data.name}
+                                    </a>
+                                )
+                            }):<></>
+                        }
+                    </div>
                 </> 
             }
         </div>
