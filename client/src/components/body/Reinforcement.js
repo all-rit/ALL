@@ -2,6 +2,8 @@ import React, { useEffect,useState } from "react";
 import useScroll from "../../use-hooks/useScroll";
 import LabService from "../../services/LabService";
 import UserLabService from "../../services/UserLabService";
+import Spinner from "../../common/Spinner/Spinner";
+
 const Reinforcement = (props) => {
   const {user,labID}=props;
   const [reinforcement,setReinforcement] = useState('');
@@ -15,14 +17,22 @@ const Reinforcement = (props) => {
           setReinforcement(data[0].reinforcement)
       })
     }, [user,labID]);
+  
+  
+  if (!reinforcement) {
+      return (
+        <div className="landingpage__row">
+          <Spinner />
+        </div>
+      )
+  }
 
   return (
-      // [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
     <div>
       <div className="row">
         <h4>Here is some supplemental material to reinforce the topic.</h4>
       </div>
-      {reinforcement ? reinforcement.map((data)=>{
+      {reinforcement.map((data)=>{
           return(
             <>
                 <div className="row">
@@ -41,7 +51,7 @@ const Reinforcement = (props) => {
                 </div>
             </>
           )
-      }) : <div>Loading...</div>}
+      })}
     </div>
   );
 };

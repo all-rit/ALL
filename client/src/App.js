@@ -6,14 +6,11 @@ import { default as About } from "./components/body/About";
 
 import { default as Reinforcement } from "./components/body/Reinforcement";
 
-import { default as ReadingLab1 } from "./components/body/lab1/reading";
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { Sections } from "./constants/index";
 
-import { default as ReadingLab2 } from "./components/body/lab2/reading";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 
-import { default as ReadingLab3 } from "./components/body/lab3/reading";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
 
 import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";

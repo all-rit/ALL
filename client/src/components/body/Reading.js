@@ -4,7 +4,6 @@ import LabService from "../../services/LabService";
 import { Pie } from "react-chartjs-2";
 import useScroll from "../../use-hooks/useScroll";
 
-
 const Reading = (props) => {
     const {user,labID}=props;
     const [readingData,setReadingData] = useState('');
