@@ -3,6 +3,7 @@ import UserLabService from "../../services/UserLabService";
 import LabService from "../../services/LabService";
 import { Pie } from "react-chartjs-2";
 import useScroll from "../../use-hooks/useScroll";
+import Spinner from "../../common/Spinner/Spinner";
 
 const Reading = (props) => {
     const {user,labID}=props;
@@ -16,14 +17,19 @@ const Reading = (props) => {
         }   
         LabService.getLabReading(labID).then((data)=>{
             setReadingData(data[0].reading)
-            console.log(data[0].reading)
         })
     }, [user,labID]);
 
+    if (!readingData) {
+        return (
+          <div className="landingpage__row">
+            <Spinner />
+          </div>
+        )
+    }
+
     return (
         <div className="study">
-            {!readingData ? <div>Loading....</div>:
-                <>
                     {readingData?.description !==''? 
                         <>
                         <h3>{readingData?.description.header}</h3>
@@ -75,6 +81,19 @@ const Reading = (props) => {
                                     :<></>
                                     }
                                     {data.type ==="non-bullet-list"?
+                                        // <div className="non-bullet-list">
+                                        //     {data.content.map((content,index)=>{
+                                        //         return(
+                                        //             // <li key={index}>
+                                        //             <>
+                                        //                 <h5>{content.header}</h5>
+                                        //                 <p>{content.content}</p>
+                                        //             </>
+
+                                        //             // </li>
+                                        //         )
+                                        //     })}
+                                        // </div>
                                         <ul className={data.type}>
                                             {data.content.map((content,index)=>{
                                                 return(
@@ -108,8 +127,6 @@ const Reading = (props) => {
                             }):<></>
                         }
                     </div>
-                </> 
-            }
         </div>
   );
 };
