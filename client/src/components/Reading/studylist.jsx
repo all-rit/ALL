@@ -10,7 +10,7 @@ const StudyList =({data})=> {
         <ul className="study__list">
             {
                 data.map((text , index) => {
-                    <lim key={index}>
+                    <li key={index}>
                         {text}
                     </li>
                 })
