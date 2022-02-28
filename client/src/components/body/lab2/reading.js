@@ -128,7 +128,7 @@ const Reading = (props) => {
         </h4>
         <ul>
           <li>
-          <a href="http://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding center">
+          <a href="https://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding center">
             colourblindawareness.org
           </a>
           </li>
@@ -147,7 +147,7 @@ const Reading = (props) => {
               <br></br>
               <p className="padding center">
                   The information for this page was gathered from            
-                  <a href="http://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding">   colourblindawareness.org</a>
+                  <a href="https://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" className="padding">   colourblindawareness.org</a>
               </p>
           </li>
         </ul>
