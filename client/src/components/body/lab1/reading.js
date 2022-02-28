@@ -88,10 +88,10 @@ const Reading = (props) => {
         >
           WCAG AAA standards
         </a>
-        . This relates directly to this web application, as its main focus is to
+        . This relates directly to this lab, as its main focus is to
         outline and teach the necessity of creating accessible software to
         ensure individuals with hearing loss can properly identify prominent
-        information in student’s web applications moving forward.
+        information in web applications.
       </p>
 
       <h3>Validators</h3>
@@ -106,7 +106,7 @@ const Reading = (props) => {
           AChecker
         </a>
         , can help to ensure this standard is met. Validators analyze a webpage
-        by inputting a URL and ensure that the page follows the{" "}
+        by following a URL and ensuring that the page follows the{" "}
         <a
           href="https://www.w3.org/TR/WCAG21/#perceivable"
           target="_blank"
@@ -123,7 +123,7 @@ const Reading = (props) => {
         >
           American with Disabilities Act (ADA)
         </a>{" "}
-        and the individual could sue the company for their inaccessible
+        and an individual could sue the owner for their inaccessible
         software.
       </p>
 
@@ -139,16 +139,16 @@ const Reading = (props) => {
           lawsuit
         </a>{" "}
         against Netflix due to the lack of closed captioning in their streaming
-        videos, which is considered as a violation of the ADA. More than half of
-        all Americans use Netflix. Thus it must be made accessible to Deaf and
-        Hard of Hearing viewers. Netflix argues that the ADA only specified that
+        videos, which is considered a violation of the ADA. More than half of
+        all Americans use Netflix. Thus, it must be made accessible to Deaf and
+        Hard of Hearing viewers. Netflix argued that the ADA only specified that
         "places of public accommodation" must be accessible to people with
         disabilities and its business cannot be considered a "place of public
-        accommodation" since it is not a physical place. Hence, Netflix is not
-        subject to the ADA. NAD argued that the Internet is not exempt from the
+        accommodation" since it is not a physical place. Hence, Netflix believed it was not
+        subject to the ADA. The NAD argued that the Internet is not exempt from the
         ADA, and Netflix is considered a shared or public activity, which makes
         the ADA applicable. The judge ruled in favor of the NAD's argument.
-        Thus, Netflix had to add subtitles for their streaming videos (shown in
+        Thus, Netflix had to add subtitles to their streaming videos (shown in
         Figure 1) to make their website accessible for Deaf and Hard of Hearing
         users.
       </p>
@@ -205,7 +205,7 @@ const Reading = (props) => {
         </a>
         . On top of this, we must take into account the protection and promotion
         of the human rights of persons with disabilities in all policies and
-        programmes, including our web development{" "}
+        programs, including our web development{" "}
         <a
           href="https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities/article-4-general-obligations.html"
           target="_blank"
@@ -217,7 +217,7 @@ const Reading = (props) => {
         responsibilities, as well as ensure we as individuals are upholding our
         own morals, alternative approaches to audio cues must be considered in
         everything we create for the web, as without it, we are not treating
-        individuals with a hearing loss as a stakeholder in computing, we are
+        individuals with hearing loss as a stakeholder in computing; rather, we are
         discriminating against their use of our applications, and we are not
         protecting the rights of these individuals to be able to access the
         internet the same as everyone else.{" "}
