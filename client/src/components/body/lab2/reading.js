@@ -40,7 +40,7 @@ const Reading = (props) => {
           <Pie data={data} height={100} />
         </div>
         <p className="center">
-          Color Vision Deficiencies (or CVDs) affects 1 in 12 men (8%) and 1 in
+          Color Vision Deficiencies (or CVDs) affect 1 in 12 men (8%) and 1 in
           200 Women across the world.
         </p>
         <p className="center">
@@ -55,14 +55,14 @@ const Reading = (props) => {
                     There is a reduced sensitivity to red light. Most people with this
                     have issues distinguishing between reds, greens, browns, and oranges.
                     There can also be confusion when comparing blues and purples to one
-                    another. This is one of the most common forms of a CDV.
+                    another. This is one of the most common forms of a CVD.
                   </p>
           </li>
           <li><h3>Deuteranomaly (deu-ter-​anom-a-ly):</h3>
                   <p className="center">
                       There is a reduced sensitivity to green light. Most people with this
                       also have issues distinguishing between reds, greens, browns, and
-                      oranges. They can also confuse blues and purples when copmpared to one
+                      oranges. They can also confuse blues and purples when compared to one
                       another. This is the other most common form of a CVD.
                   </p>
           </li>
@@ -113,10 +113,10 @@ const Reading = (props) => {
           </h3>
           <p className="center">
             Color vision deficiencies are normally caused by genetic conditions
-            and are usually inheritied from an individual's parents. Men are more
+            and are usually inherited from an individual's parents. Men are more
             often impacted than women because the gene is carried in the X
             chromosome. There can be some other cases that cause color vision
-            deficiencies however their causes are still being researched to
+            deficiencies, however, their causes are still being researched to
             determine the exact cause.
           </p>
         </div>
