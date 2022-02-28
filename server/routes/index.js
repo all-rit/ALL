@@ -86,6 +86,7 @@ router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
 router.post('/page/complete', PageController.createPage);
 //Labs
 router.get('/lab', LabController.getAllLabs);
+router.get('/lab:labID/shortname', LabController.getLabShortName);
 router.get('/lab:labID/about', LabController.getLabAbout);
 router.get('/lab:labID/reading', LabController.getLabReading);
 router.get('/lab:labID/reinforcement', LabController.getLabReinforcement);

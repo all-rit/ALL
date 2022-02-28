@@ -10,9 +10,11 @@ const StudyList =({data})=> {
         <ul className="study__list">
             {
                 data.map((text , index) => {
-                    <li key={index}>
-                        {text}
-                    </li>
+                    return(
+                        <li key={index}>
+                            {text}
+                        </li>
+                    )
                 })
             }   
         </ul>

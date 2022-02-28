@@ -5,6 +5,11 @@ exports.getAllLabs = (req, res) => {
 		res.json(records);
 	})
 };
+exports.getLabShortName = (req, res) => {
+	LabService.getLabShortName(req.params.labID).then((records) => {
+		res.json(records);
+	})
+};
 exports.getLabAbout = (req, res) => {
 	LabService.getLabAbout(req.params.labID).then((records) => {
 		res.json(records);

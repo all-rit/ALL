@@ -9,13 +9,15 @@ const NonBulletList = ({data}) => {
         <>
         <ul className="non-bullet-list">
             {data.map((text , index) =>{
-              <li key={index}>
-                  
-                    <h5>{text.header}</h5>
+                return(
+                    <li key={index}>
+                        
+                            <h5>{text.header}</h5>
 
-                    <p>{text.context}</p>
-                
-              </li>  
+                            <p>{text.content}</p>
+                        
+                    </li>  
+                )
             })}
         </ul>
         </>

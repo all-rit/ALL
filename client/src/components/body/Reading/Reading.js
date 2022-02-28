@@ -1,9 +1,11 @@
 import React, { useEffect,useState } from "react";
-import UserLabService from "../../services/UserLabService";
-import LabService from "../../services/LabService";
+import UserLabService from "../../../services/UserLabService";
+import LabService from "../../../services/LabService";
 import { Pie } from "react-chartjs-2";
-import useScroll from "../../use-hooks/useScroll";
+import useScroll from "../../../use-hooks/useScroll";
 import StudyList from "./studylist";
+import NonBulletList from "./NonBulletList"
+import Image  from "./Image"
 
 const Reading = (props) => {
     const {user,labID}=props;
@@ -64,11 +66,15 @@ const Reading = (props) => {
                                     :<></>
                                     }
                                     {data.type ==="study__list"?
-                                        <StudyList data={...data.content}/>
+                                        <StudyList data={data.content}/>
                                     :<></>
                                     }
                                     {data.type ==="non-bullet-list"?
-                                        <NonBulletList data={...data.content}/>
+                                        <NonBulletList data={data.content}/>
+                                    :<></>
+                                    }
+                                    {data.type ==="image"?
+                                        <Image data={data.content}/>
                                     :<></>
                                     }
                                 </>

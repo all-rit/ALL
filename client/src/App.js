@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import ReactGA from "react-ga";
 
 import { default as About } from "./components/body/About";
-import {default as Reading} from "./components/body/Reading";
+// import {default as Reading} from "./components/body/Reading";
+import {default as Reading} from "./components/body/Reading/Reading"
 
 import { default as Reinforcement } from "./components/body/Reinforcement";
 
@@ -33,7 +34,6 @@ import "./assets/stylesheets/main.scss";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from '@reach/router';
-// import Reading from "./common/Reading/Reading";
 const parse = require('url-parse');
 
 
@@ -72,6 +72,7 @@ class App extends Component {
     const { state, actions } = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
+    //look into index.js in constants
     initializeReactGA();
     return (
       <div className="overflow-x-hidden">
@@ -80,7 +81,7 @@ class App extends Component {
           {lab !== 0 && (
             <BodyHeader
               body={Sections[lab][body].name}
-              lab={Sections[lab].name}
+              labID={lab}
             />
           )}
           <div className="appBody">
