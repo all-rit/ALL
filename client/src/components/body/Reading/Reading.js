@@ -6,6 +6,7 @@ import useScroll from "../../../use-hooks/useScroll";
 import StudyList from "./studylist";
 import NonBulletList from "./NonBulletList"
 import Image  from "./Image"
+import Spinner from "../../../common/Spinner/Spinner";
 
 const Reading = (props) => {
     const {user,labID}=props;
@@ -19,14 +20,20 @@ const Reading = (props) => {
         }   
         LabService.getLabReading(labID).then((data)=>{
             setReadingData(data[0].reading)
-            console.log(data[0].reading)
         })
     }, [user,labID]);
 
+    if (!readingData) {
+        return (
+          <div className="landingpage__row">
+            <Spinner />
+          </div>
+        )
+    }
+
     return (
         <div className="study">
-            {!readingData ? <div>Loading....</div>:
-                <>
+
                     {readingData?.description !==''? 
                         <>
                         <h3>{readingData?.description.header}</h3>
@@ -98,8 +105,6 @@ const Reading = (props) => {
                             }):<></>
                         }
                     </div>
-                </> 
-            }
         </div>
   );
 };
