@@ -60,7 +60,7 @@ function renderProfileData(profileInformation) {
                     <>
               <div className="landingpage__row">
                 <div alt="professors" className="landingpage__row">
-                  {professorInformation ? renderProfileData(professorInformation):<div>Loading...</div>}
+                  {renderProfileData(professorInformation)}
                 </div>
               </div>
               <div className="landingpage__row">
