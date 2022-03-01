@@ -16,7 +16,11 @@ module.exports = (sequelize, DataTypes) => {
             // websiteURL: { type: DataTypes.TEXT },
             // network: { type: DataTypes.TEXT },
             work: { type: DataTypes.TEXT },
-            datesActive: { type: DataTypes.TEXT }
+            datesActive: { type: DataTypes.TEXT },
+            isActive: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: true,
+            },
         },
         { tableName: 'team_members' }
     );
@@ -34,7 +38,8 @@ module.exports = (sequelize, DataTypes) => {
     //         //websiteURL: "https://www.linkedin.com/in/saad-khan23/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
-    //         datesActive: "2019-2021"
+    //         datesActive: "2019-2021",
+    //          isActive: false
     //     });
     //     TeamMembers.create({
     //         firstName: "Heather",
@@ -56,7 +61,8 @@ module.exports = (sequelize, DataTypes) => {
     //         //websiteURL: "https://www.linkedin.com/in/christophersavan/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
-    //         datesActive: "2020-2021"
+    //         datesActive: "2020-2021",
+    //          isActive: false
     //     });
     //     TeamMembers.create({
     //         firstName:  "Su Thit",

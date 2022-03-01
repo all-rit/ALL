@@ -25,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
             reading: { type: DataTypes.JSON },
             reinforcement: {type: DataTypes.JSON},
             quiz: {type: DataTypes.JSON},
+            isActive: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: true,
+            },
         }, { tableName: 'labs' }
     );
     
@@ -57,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
     //         authors: "Scott Frauenknecht",
     //         labURL: "https://all.rit.edu/Lab2/",
     //         thumbnailImageURL: "/colorblindness.jpg",
-    //         about:"In this lab, you will learn about why it is important to createsoftware that is accessible to users with visual impairments. You will learn about different color vision deficiencies, increase your understanding through an interactive module about visual impairments, view related media to reinforce the topic, and take aquiz to test your knowledge. Click "Next" to start!",
+    //         about:"In this lab, you will learn about why it is important to create software that is accessible to users with visual impairments. You will learn about different color vision deficiencies, increase your understanding through an interactive module about visual impairments, view related media to reinforce the topic, and take aquiz to test your knowledge. Click "Next" to start!",
     //         reading: "",
     //         reinforcement:"[{"title":"Color Blindness Testimony","link":"https://www.youtube.com/embed/d6KKsmmOKEI"},{"title":"Color Contrast Lecture","link":"https://www.youtube.com/embed/zrl0CW8m-Qk"}]"
     //         quiz:"",

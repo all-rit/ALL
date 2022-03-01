@@ -29,6 +29,8 @@ function renderProfileData(profileInformation) {
     //const {}=props;
     const [professorInformation,setProfessorInformation] = useState(null);
     const [teamInformation,setTeamInformation] = useState(null);
+    const [alumniInformation,setAlumniInformation] = useState(null);
+
 
     useEffect(()=>{
         if(!professorInformation){
@@ -40,6 +42,11 @@ function renderProfileData(profileInformation) {
             TeamMemberService.getAllTeamMembers().then((data)=>{
                 setTeamInformation(data)
             })
+        }
+        if(!alumniInformation){
+          TeamMemberService.getAllAlumni().then((data)=>{
+                setAlumniInformation(data)
+          })
         }
         // eslint-disable-next-line
     },[])
