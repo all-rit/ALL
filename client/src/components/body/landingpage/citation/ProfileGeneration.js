@@ -41,6 +41,7 @@ function renderProfileData(profileInformation) {
                 setTeamInformation(data)
             })
         }
+        // eslint-disable-next-line
     },[])
     return(
         <section className="page-section landingpage__pagesection" >
