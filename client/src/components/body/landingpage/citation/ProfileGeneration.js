@@ -59,14 +59,14 @@ function renderProfileData(profileInformation) {
                         <Spinner />
                     </div>:
                     <>
-              <div className="landingpage__row">
-                <div alt="professors" className="landingpage__row">
-                  {renderProfileData(professorInformation)}
-                </div>
-              </div>
-              <div className="landingpage__row">
-                <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData}/>
-              </div>
+                  <div className="landingpage__row">
+                    <div alt="professors" className="landingpage__row">
+                      {renderProfileData(professorInformation)}
+                    </div>
+                  </div>
+                  <div className="landingpage__row">
+                    {teamInformation ? <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData} /> : <></>}
+                  </div>
               </>}
           </div>
         </section>
