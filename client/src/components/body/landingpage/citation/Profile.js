@@ -20,7 +20,7 @@ const Profile = (props)=>{
 
                 <li id="social_media" >
                     <ul className="landingpage__row citation__social_row">
-                        {socials.socials.map((social,index)=>{
+                        {socials.map((social,index)=>{
                             return <li key={index} className="citation__social_media" ><SocialIcon url={social.link} network={social.network} target="__blank"/></li>
                         })}
                     </ul>
