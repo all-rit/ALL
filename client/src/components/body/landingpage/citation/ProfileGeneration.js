@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, {useEffect,useState } from "react";
 import Profile from "./Profile";
 import TeamMemberService from "../../../../services/TeamMemberService";
 import Spinner from "../../../../common/Spinner/Spinner";
+import SlideSet from "./SlideSet";
+
 
 
 function renderProfileData(profileInformation) {
@@ -22,128 +24,52 @@ function renderProfileData(profileInformation) {
         );
     })
   }
+  
+  const ProfileGeneration = (props) =>{
+    //const {}=props;
+    const [professorInformation,setProfessorInformation] = useState(null);
+    const [teamInformation,setTeamInformation] = useState(null);
 
-function renderSlideset(information){
-    let profiles = renderProfileData(information);
-    let rows =[];
-    let profile_row=[];
-    for(let i in profiles){
-      profile_row.push(profiles[i]);
-      if(profile_row.length ===3){
-        rows.push(profile_row);
-        profile_row=[];
-      } 
-    }
-    if(profile_row.length!==0){
-      rows.push(profile_row);
-    }
-    return rows.map((rows,index)=>{
-      return(
-        <div key={index} alt="students" className="slide active">
-            <div key={index} alt="students" className="landingpage__row">
-              {rows}
-            </div>
-        </div>
-      )})
-}
-
-let slideshowInterval='';
-let slideshows='';
-
-function initSlideShow(slideshow) {
-    const slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`);
-    let index = 0, time = 5000;
-    if(slideshowInterval===''){
-      slides.forEach((slide)=>{
-        slide.classList.remove('active');
-      })
-      slides[index].classList.add('active');
-        slideshowInterval= setInterval( () => {
-                slides[index].classList.remove('active');
-                index++;
-                if (index === slides.length) index = 0;
-                slides[index].classList.add('active');
-        }, time)
-  }
-} 
-
-class ProfileGeneration extends Component{
-    constructor(props) {
-      super(props);
-      this.state = {teamInformation: [],professorInformation:[]};
-    }
-
-    setTeamInformation=(data)=>{
-      this.setState({teamInformation: data})
-    }
-    setProfessorInformation=(data)=>{
-      this.setState({professorInformation: data})
-    }
-
-    componentDidMount() {
-        if(this.state.professorInformation.length===0){
-          async function fetchProfessors() {
-              return TeamMemberService.getAllProfessors();
-          }
-          fetchProfessors().then((data) => {
-            this.setProfessorInformation(data);
-          });
+    useEffect(()=>{
+        if(!professorInformation){
+            TeamMemberService.getAllProfessors().then((data)=>{
+                setProfessorInformation(data)
+            })
         }
-        if(this.state.teamInformation.length===0){
-          async function fetchTeam() {
-              return TeamMemberService.getAllTeamMembers();
-          }
-          fetchTeam().then((data) => {
-            this.setTeamInformation(data);
-            slideshows = document.querySelectorAll('[data-component="slideshow"]');
-            slideshows.forEach(initSlideShow);
-          });
+        if(!teamInformation){
+            TeamMemberService.getAllTeamMembers().then((data)=>{
+                setTeamInformation(data)
+            })
         }
-        clearInterval(slideshowInterval);
-        slideshowInterval='';
-    }
-
-    componentWillUnmount() {
-        clearInterval(slideshowInterval);
-        slideshowInterval='';
-    }
-    
-    render(){
-      
-        return(
-           <section className="page-section landingpage__pagesection" >
-             <div className="container" >
-                 <div className="row">
-                   <div className="col-lg-12 text-center">
-                     <h2 className="section-heading text-uppercase">Team Members</h2>
-       
-                     <h3 className="section-subheading " >
-                       Meet our team.
-                     </h3>
-                   </div>
-                 </div>
-                 {this.state.professorInformation.length===0 && this.state.teamInformation.length===0 ? 
+    },[])
+    return(
+        <section className="page-section landingpage__pagesection" >
+          <div className="container" >
+              <div className="row">
+                <div className="col-lg-12 text-center">
+                  <h2 className="section-heading text-uppercase">Team Members</h2>
+                  <h3 className="section-subheading " >
+                    Meet our team.
+                  </h3>
+                </div>
+              </div>
+              {!professorInformation && !teamInformation ? 
                     <div className="landingpage__row">
                         <Spinner />
                     </div>:
                     <>
-                      <div className="landingpage__row">
-                        <div alt="professors" className="landingpage__row">
-                          {renderProfileData(this.state.professorInformation)}
-                        </div>
-                      </div>
-
-                      <div id="slideshow" alt="students" className="landingpage__row" data-component="slideshow">
-                        <div role="list">
-                          {renderSlideset(this.state.teamInformation)}
-                        </div>
-                      </div>
-                    </>
-                  }
-             </div>
-           </section>
-        );
-    }
-}
+              <div className="landingpage__row">
+                <div alt="professors" className="landingpage__row">
+                  {professorInformation ? renderProfileData(professorInformation):<div>Loading...</div>}
+                </div>
+              </div>
+              <div className="landingpage__row">
+                <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData}/>
+              </div>
+              </>}
+          </div>
+        </section>
+     );
+  }
 
 export default ProfileGeneration;
