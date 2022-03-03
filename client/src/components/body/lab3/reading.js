@@ -31,7 +31,9 @@ const Reading = (props) => {
         <div className="study">
             <h3>What is a Screen Reader?</h3>
             <p>
-                A screen reader is an essential software program that aids visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both.
+              A screen reader is an essential software program that aids visually impaired or blind users in reading text displayed on a computer screen.
+              This is achieved through the use of a speech synthesizer or braille display.
+              In simple terms, screen readers transform text that is displayed on a screen into a tactile or auditory form, or both.
             </p>
 
       <h3>Approximate Visually Impaired Population in the World</h3>
@@ -43,7 +45,7 @@ const Reading = (props) => {
         curable.
       </p>
       <p className="center">
-        Globally the number of people of all ages visually impaired is estimated
+        Globally, the number of people of all ages that are visually impaired is estimated
         to be 285 million, of whom 39 million are blind.
       </p>
       <p className="center">
@@ -78,7 +80,7 @@ const Reading = (props) => {
         easily.
       </p>
 
-      <h3>Usability tips for screen reader friendly interfaces:</h3>
+      <h3>Usability tips for screen reader friendly interfaces</h3>
       <ul className="study__list">
         <li>Use many headings and subheadings</li>
         <li>Code headings correctly with proper size</li>
