@@ -2,11 +2,13 @@ import React from "react";
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
 import handleRedirect from "../../../helpers/Redirect";
-import {actions as mainActions} from "../../../reducers/MainReducer";
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
+import { actions as mainActions } from "../../../reducers/MainReducer";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
+import HorizontalLine from "../../../common/Spinner/HorizontalLine/HorizontalLine";
+
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(mainActions, dispatch),
@@ -79,12 +81,13 @@ const Home = (props) => {
             </div>
           </div>
           <div className="landingpage__row">
-              <LabGeneration actions={actions}/>
+            <LabGeneration actions={actions} />
           </div>
         </div>
       </section>
       {/* Team Citation */}
       <div id="citation" />
+      <HorizontalLine />
       <hr className="horiz" />
       <ProfileGeneration />
       <hr className="horiz" />
