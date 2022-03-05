@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
-import HorizontalLine from "../../../common/Spinner/HorizontalLine/HorizontalLine";
+import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -87,7 +87,7 @@ const Home = (props) => {
       </section>
       {/* Team Citation */}
       <div id="citation" />
-      <HorizontalLine />
+      {/* <HorizontalLine /> */}
       <hr className="horiz" />
       <ProfileGeneration />
       <hr className="horiz" />
