@@ -1,8 +1,10 @@
 import React from 'react'
 
-const LabLayout = () => {
+const LabLayout = ({ children }) => {
 	return (
-		<div className='playthrough'>LabLayout</div>
+		<div className='playthrough'>
+			{children}
+		</div>
 	)
 }
 
