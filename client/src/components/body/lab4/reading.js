@@ -68,10 +68,10 @@ const Reading = (props) => {
         technologies such as a keyboard or mouse. To combat these challenges,
         people with dexterity impairments can use various assistive
         technologies. For example, voice-activated technologies can be used to
-        browse the web with only voice commands. Other technologies include
+        browse the web with voice-only commands. Other technologies include
         keyboard-only navigation, alternative keyboards, switch devices, and
         on-screen keyboard programs. It is important to be aware that some users
-        may become fatigued from using assistive technologies.
+        may become fatigued from using assistive technologies over time.
       </p>
 
       <h3>Accessibility Standards for Dexterity Impairment</h3>
