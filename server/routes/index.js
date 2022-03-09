@@ -23,10 +23,6 @@ let RepairControllerLab4 = require('../controllers/lab4/RepairController');
 let RepairControllerLab5 = require('../controllers/lab5/RepairController');
 let ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
-//LAB7 Controller
-let RepairControllerLab7 = require('../controllers/lab7/RepairController');
-let ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
-
 //Lab Controller
 let LabController = require("../controllers/LabController");
 
