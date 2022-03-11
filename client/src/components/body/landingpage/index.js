@@ -68,7 +68,8 @@ const Home = (props) => {
       </section>
       {/* Labs */}
       <div id="labs" />
-      <hr className="horiz" />
+      <HorizontalLine />
+
       <section className="page-section landingpage__pagesection">
         <div className="container">
           <div className="row">
@@ -87,10 +88,11 @@ const Home = (props) => {
       </section>
       {/* Team Citation */}
       <div id="citation" />
-      {/* <HorizontalLine /> */}
-      <hr className="horiz" />
+      <HorizontalLine />
+
       <ProfileGeneration />
-      <hr className="horiz" />
+      <HorizontalLine />
+
       {/* Clients */}
       <section className="py-5">
         <div className="container">

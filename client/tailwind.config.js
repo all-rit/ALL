@@ -1,9 +1,8 @@
 module.exports = {
-  purge: {
-    //   // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
-    //   enabled: process.env.NODE_ENV === "production",
-    content: [".client/**/*.{js,jsx}"],
-  },
+  prefix: 'tw-',
+  content: [
+    "../client/src/**/*.{js,jsx}",
+  ],
 
   theme: {
     screens: {
@@ -43,7 +42,7 @@ module.exports = {
       white: "#FFFFFF",
       bgwhite: "#F3F3F3",
       bgdark: "#23022E",
-      // odd numbers for dark mode and even numbers for light mode
+      darkLine: '#868e96',
       "labYellow": "#10002B",
       "labGreen": "#7B7B7B",
       "labBlue": "#A39CB0",
