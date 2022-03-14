@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             groupID: DataTypes.INTEGER,
-            labID: DataTypes.INTEGER
+            labID: DataTypes.INTEGER,
+            isActive: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: true,
+            }, 
         },
         { tableName: 'group_labs' }
     );

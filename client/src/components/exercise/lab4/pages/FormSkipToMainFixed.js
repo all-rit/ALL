@@ -34,7 +34,7 @@ class FormSkipToMainFixed extends Component {
 
                 <ExtraNav />
                 <AppInstructions
-                    class={this.state.class}
+                    className={this.state.class}
                     instructions2={instructions2}
                     instructions={instructions}
                 />

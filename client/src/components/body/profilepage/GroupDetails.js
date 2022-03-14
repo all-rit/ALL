@@ -41,7 +41,6 @@ const GroupDetails = (props) => {
                         }
 
                     </>
-
             }
         </>
     )

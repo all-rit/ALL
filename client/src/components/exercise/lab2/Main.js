@@ -264,7 +264,7 @@ class Main extends Component {
     };
 
     return (
-      <div class="container">
+      <div className="container">
         {infoPopup ? (
           <Form closeInfoPopup={onCloseInfoPopup} />
         ) : (

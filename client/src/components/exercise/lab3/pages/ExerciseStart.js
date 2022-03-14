@@ -40,7 +40,7 @@ class ExerciseStart extends Component {
       
       <Fragment>
 
-        <div class="center-div">
+        <div className="center-div">
           <AppInstructions />
           
           <Button

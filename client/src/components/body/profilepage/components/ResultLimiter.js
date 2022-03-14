@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from "react";
 import { Button } from "reactstrap";
+import LabCompletionBubbles from "./LabCompletionBubbles";
 import StudentProgress from "./StudentProgress";
 
 const ResultLimiter = (props) =>{
-    const {resultType,data,assignedLabs,lab} = props;
+    const {resultType,data,lab,groupid} = props;
     const [index,setIndex] = useState(0);
     const [groupedData,setGroupedData] = useState([]);
 
@@ -50,25 +51,20 @@ const ResultLimiter = (props) =>{
                                         <p className="grey-text">Enrolled on {student.enrolledDate.split("T")[0]}</p>
                                     </>
                                 </td>
-                                <td className="assigned-labs">
-                                    {assignedLabs.map((lab, index) => (
-                                        <div className="assigned-labs__lab-bubble" key={index}>
-                                            {lab.labShortName}
-                                        </div>
-                                    ))
-                                    }
-                                </td>
+                                    <LabCompletionBubbles studentid={student.userID} groupid={groupid}/>
                             </tr>
                         ))}
                     </tbody>
                     <tfoot className="limiter__group">
+                        <tr>
                         {index!==0 ? 
-                            <Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={decreaseIndex}>Previous</Button>:<Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Previous</Button>
+                            <td><Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={decreaseIndex}>Previous</Button></td>:<td><Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Previous</Button></td>
                         }
                         <td className="limiter__page">Page {index+1} of {groupedData.length}</td>
                         {index!==(groupedData.length - 1) ? 
-                            <Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={increaseIndex}>Next</Button>:<Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Next</Button>
+                            <td><Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={increaseIndex}>Next</Button></td>:<td><Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Next</Button></td>
                         } 
+                        </tr>
                     </tfoot>
                     </>
                 )
@@ -89,13 +85,15 @@ const ResultLimiter = (props) =>{
                             }
                     </tbody>
                     <tfoot className="limiter__group">
+                        <tr>
                         {index!==0 ? 
-                            <Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={decreaseIndex}>Previous</Button>:<Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Previous</Button>
+                            <td><Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={decreaseIndex}>Previous</Button></td>:<td><Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Previous</Button></td>
                         }
                         <td className="limiter__page">Page {index+1} of {groupedData.length}</td>
-                        {index!==(groupedData.length-1) ? 
-                            <Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={increaseIndex}>Next</Button>:<Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Next</Button>
+                        {index!==(groupedData.length - 1) ? 
+                            <td><Button tabIndex="0" className="btn btn-second limiter__group__button" onClick={increaseIndex}>Next</Button></td>:<td><Button tabIndex="0" className="btn btn-second limiter__group__button" disabled={true} >Next</Button></td>
                         } 
+                        </tr>
                     </tfoot>
                     </>
                 )

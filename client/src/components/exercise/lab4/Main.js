@@ -35,7 +35,7 @@ class Main extends Component {
     render() {
         const {actions,user} = this.props;
         return (
-            <div class="container bottomSpace" >
+            <div className="container bottomSpace" >
                 <Router className="app">
                     <ExerciseStart path="/" actions={actions}/>
                     <SmallTarget path="/SmallTarget" actions={actions}/>

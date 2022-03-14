@@ -67,7 +67,7 @@ class Header extends Component {
             <Button
               clickMethod={closeAboutPage}
               message={"Back"}
-              class="backButton btn btn-second btn-xl text-uppercase "
+              className="backButton btn btn-second btn-xl text-uppercase "
               fontSizing={"25px"}
             />
           ) : (

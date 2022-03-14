@@ -95,6 +95,7 @@ exports.getUserInstructingGroups = (userid) => {
 		.findAll({
 			where: {
 				instructorUserID: userid,
+				isActive: true,
 			},
 			raw: true
 		})

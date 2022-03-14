@@ -16,23 +16,23 @@ class Profile extends Component{
             })
         }
         return(
-            <ul id={name} class="citation module__col">
+            <ul id={name} className="citation module__col">
                 <li id="profile_image">
-                    <div alt={name+"Profile Image"} class="img-fluid module__image module__profile_image" style={{backgroundImage: "url(/img/profileImages"+profile_image+")" }}/>
+                    <div alt={name+"Profile Image"} className="img-fluid module__image module__profile_image" style={{backgroundImage: "url(/img/profileImages"+profile_image+")" }}/>
                 </li>
-                <li class="module__profile_caption">
+                <li className="module__profile_caption">
                     <ul>
-                        <li id={name} class="citation__name">{name}</li>
-                        <li id={title} class="module__title">{title}</li>
-                        <li id="work" class="module__work">{datesActive}</li>
-                        <li id="work" class="module__work">{work}</li>
+                        <li id={name} className="citation__name">{name}</li>
+                        <li id={title} className="module__title">{title}</li>
+                        <li id="work" className="module__work">{datesActive}</li>
+                        <li id="work" className="module__work">{work}</li>
                     </ul>
                 </li>
                 
                 <li id="social_media" >
-                    <ul class="landingpage__row citation__social_row">
+                    <ul className="landingpage__row citation__social_row">
                         {parsedSocials.map((social,index)=>{
-                            return <li key={index} class="citation__social_media" ><SocialIcon url={social[0]} network={social[1]} target="__blank"/></li>
+                            return <li key={index} className="citation__social_media" ><SocialIcon url={social[0]} network={social[1]} target="__blank"/></li>
                         })}
                     </ul>
                 </li>

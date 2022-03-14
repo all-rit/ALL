@@ -23,16 +23,16 @@ const Lab = (props)=>{
         switch(progressState){
             case "IN_PROGRESS":
                 return(
-                    <ul class="module__col module__lab_col">
+                    <ul className="module__col module__lab_col">
                         <li >
-                            <a class="portfolio-link "
+                            <a className="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")"}}/>
+                                    <div alt={alt} className="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")"}}/>
                             </a>
                         </li>
-                        <ul class="module__caption">
-                                <li class="module__title module__lab_title">
+                        <ul className="module__caption">
+                                <li className="module__title module__lab_title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
                                     </a>
@@ -50,7 +50,7 @@ const Lab = (props)=>{
                                             percentage={true}
                                         />
                                     </li>
-                                    <li class="module__bio">
+                                    <li className="module__bio">
                                         Started on {labProgress.labstarttime.split("T")[0]}
                                     </li>
                                 </ul>
@@ -60,24 +60,24 @@ const Lab = (props)=>{
             );
             case "COMPLETED":
                 return(
-                    <ul class="module__col module__lab_col">
+                    <ul className="module__col module__lab_col">
                         <li >
-                            <a class="portfolio-link "
+                            <a className="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage:"url(/img/lab_thumbnails/"+image+")"}}/>
+                                    <div alt={alt} className="img-fluid module__image module__lab_image" style={{backgroundImage:"url(/img/lab_thumbnails/"+image+")"}}/>
                             </a>
                         </li>
-                        <ul class="module__caption">
-                            <li class="module__title module__lab_title">
+                        <ul className="module__caption">
+                            <li className="module__title module__lab_title">
                                 <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
                             </li>
-                            <ul class="module__bio">
+                            <ul className="module__bio">
                                 <li><b style={{color:getColor(labProgress)}}>{labProgress ===null || labProgress===undefined ? 0 : labProgress.quizscore }% Quiz Score</b></li>
                                 <li> Completed on {labProgress.labcompletiontime.split("T")[0]}</li>
-                                <li class="module__bio"><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
+                                <li className="module__bio"><InfoModal buttonLabel={"View Certificate"} labName={name} labNum={lab} labProgress={labProgress}/></li>
                             </ul>
                         </ul>
                         
@@ -85,21 +85,21 @@ const Lab = (props)=>{
             );
             case "NOT_STARTED":
                 return(
-                    <ul class="module__col module__lab_col">
+                    <ul className="module__col module__lab_col">
                         <li >
-                            <a class="portfolio-link "
+                            <a className="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")" }}/>
+                                    <div alt={alt} className="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")" }}/>
                             </a>
                         </li>
-                        <ul class="module__caption">
-                            <li class="module__title module__lab_title">
+                        <ul className="module__caption">
+                            <li className="module__title module__lab_title">
                                 <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                     {name}
                                 </a>
                             </li>
-                            <li class="module__bio">
+                            <li className="module__bio">
                                 {bio}
                             </li>
                         </ul>
@@ -107,25 +107,25 @@ const Lab = (props)=>{
             );
             default:
                 return(
-                    <ul class="module__col module__lab_col">
+                    <ul className="module__col module__lab_col">
                         <li >
-                            <a class="portfolio-link "
+                            <a className="portfolio-link "
                                 onClick={() => handleRedirect(actions,lab)}
                                 href="# ">
-                                    <div alt={alt} class="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")"}}/>
+                                    <div alt={alt} className="img-fluid module__image module__lab_image" style={{backgroundImage: "url(/img/lab_thumbnails/"+image+")"}}/>
                             </a>
                         </li>
-                        <ul class="module__caption">
-                                <li class="module__title module__lab_title">
+                        <ul className="module__caption">
+                                <li className="module__title module__lab_title">
                                     <a onClick={() => handleRedirect(actions,lab)} href="# ">
                                         {name}
                                     </a>
                                 </li>
-                                <li class="module__bio">
+                                <li className="module__bio">
                                     {bio}
                                 </li>
-                                <ul class="module__bio module__lab_buttons">
-                                    <li><button class="btn-primary btn btn-md" onClick={() => handleRedirect(actions,lab)}>Launch Lab</button></li>
+                                <ul className="module__bio module__lab_buttons">
+                                    <li><button className="btn-primary btn btn-md" onClick={() => handleRedirect(actions,lab)}>Launch Lab</button></li>
                                     <InfoModal buttonLabel={"More Info"} labName={name} fullDescription={fullDescription} learningObjectives={learningObjectives} authors={authors} redirect={() => handleRedirect(actions,lab)} />
                                 </ul>
                         </ul> 

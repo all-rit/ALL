@@ -26,7 +26,7 @@ const UnenrollModal = (props) => {
 
     return (
         <ul>
-            <button class="btn btn-second" onClick={toggle}>{buttonLabel}</button>
+            <button className="btn btn-second" onClick={toggle}>{buttonLabel}</button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader>
                     Unenroll from group
