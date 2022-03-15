@@ -18,7 +18,7 @@ import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
 
 import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
 
-import { default as ExerciseLab7 } from "./components/exercise/lab7/Main"
+import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
 
 import { default as LandingPageBody } from "./components/body/landingpage/index";
 import { default as SiteMap } from "./components/body/landingpage/sitemap";

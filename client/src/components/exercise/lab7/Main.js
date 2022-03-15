@@ -6,8 +6,8 @@ import {actions as exerciseActions } from "../../../reducers/lab7/ExerciseReduce
 import {actions as repairActions } from '../../../reducers/lab7/RepairReducer';
 import {actions as appActions } from '../../../reducers/lab7/AppReducer';
 import ExerciseStart from './pages/ExerciseStart';
-import ExerciseEnd from './pages/ExerciseEnd';
 import {bindActionCreators} from "redux";
+import ExerciseEnd from './pages/ExerciseEnd';
 
 const mapStateToProps = (state) => ({
     state: state

@@ -13,15 +13,12 @@ class ExerciseStart extends Component {
   }
 
   render() {
-    // const { user, state, plays } = this.props;
     return (
-      
       <Fragment>
         <div className="center-div">
           <div className="guidance margin-bottom-2">
 
-              We will explore a series of cognitive antipatterns that especially challenge cognitively impaired individuals.
-              After each antipattern we will learn and correct our code to make it more accessible. Finally, we will view the updated experience. Click "Start" to begin!
+              Lab 7
 
           </div>
           <button
