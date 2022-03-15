@@ -17,7 +17,7 @@ const About = (props) => {
         <div className="study">
             <p>
                 In this lab, you will learn about why it is important to create machine learning software that is secure, ethical, and accurate.
-                You will learn about using clear descriptive headings, handling time driven notifications, and creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quizto test your knowledge. Click "Next" to start!
+                You will learn about using clear descriptive headings, handling time driven notifications, and creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz to test your knowledge. Click "Next" to start!
             </p>
         </div>
     );

@@ -108,28 +108,8 @@ export const Sections = {
         }
     }
     ,
-    6:{
-        fullname:"Accessibility Learning Lab 5: Accessibility with Cognitive Impairments",
-        name: "Lab6",
-        0:{
-            name: "About"
-        },
-        1:{
-            name: "Reading"
-        },
-        2:{
-            name: "Exercise"
-        },
-        3:{
-            name: "Reinforcement"
-        },
-        4:{
-            name: "Quiz"
-        }
-    }
-    ,
     7:{
-        fullname:"Accessibility Learning Lab 5: Hello World AI Cybersecurity",
+        fullname:"'Hello World' AI Cybersecurity",
         name: "Lab7",
         0:{
             name: "About"

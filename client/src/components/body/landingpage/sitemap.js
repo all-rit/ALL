@@ -299,6 +299,55 @@ const SiteMap = (props) => {
                     </li>
                   </ul>
                 </div>
+                <div className="col-md-4">
+                  <h4 className="service-heading">
+                    <a href="# " onClick={() => handleRedirect(actions, 7, 0)}>
+                      Lab 7
+                    </a>
+                  </h4>
+                  <ul>
+                    <li>
+                      <a
+                        href="# "
+                        onClick={() => handleRedirect(actions, 7, 0)}
+                      >
+                        About
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="# "
+                        onClick={() => handleRedirect(actions, 7, 1)}
+                      >
+                        Reading
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="# "
+                        onClick={() => handleRedirect(actions, 7, 2)}
+                      >
+                        Exercise
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="# "
+                        onClick={() => handleRedirect(actions, 7, 3)}
+                      >
+                        Reinforcement
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="# "
+                        onClick={() => handleRedirect(actions, 7, 4)}
+                      >
+                        Quiz
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
