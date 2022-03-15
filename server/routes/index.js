@@ -23,6 +23,10 @@ let RepairControllerLab4 = require('../controllers/lab4/RepairController');
 let RepairControllerLab5 = require('../controllers/lab5/RepairController');
 let ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
+//LAB7 Controller
+let RepairControllerLab7 = require('../controllers/lab7/RepairController');
+let ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
+
 //Lab Controller
 let LabController = require("../controllers/LabController");
 
@@ -73,7 +77,9 @@ router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);
 router.post('/lab1/exercise/round', ExerciseControllerLab1.createRound);
 router.post('/lab1/exercise/choice', ExerciseControllerLab1.createChoice);
 router.post('/lab1/exercise/end', ExerciseControllerLab1.updateEndExerciseScore);
-router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice)
+router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice);
+router.post('/lab7/exercise/choice', ExerciseControllerLab7.submitChoice);
+
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
 router.post('/lab2/repair/submit', RepairControllerLab2.submitChange);
@@ -82,8 +88,11 @@ router.post('/lab4/repair/submit/button', RepairControllerLab4.submitChangeButto
 router.post('/lab4/repair/submit/skip', RepairControllerLab4.submitChangeSkip);
 router.post('/lab4/repair/submit/hint', RepairControllerLab4.submitChangeHint);
 router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
+router.post('/lab7/repair/submit', RepairControllerLab7.submitChange);
+
 //Create a Page Entry
 router.post('/page/complete', PageController.createPage);
+
 //Labs
 router.get('/lab', LabController.getAllLabs);
 router.get('/lab:labID/shortname', LabController.getLabShortName);
