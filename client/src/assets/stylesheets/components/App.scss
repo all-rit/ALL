@@ -58,6 +58,51 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
   }
+
+
+.candidate{
+	//    margin-top: 10.35rem;
+	&__form__group{
+		padding-left: 0;
+	}
+	&__key__container{
+		margin-top: 10.05rem;
+		display: flex;
+		padding: 2px;
+		background-color: #3d3d3d;
+		color: white;
+	}
+	&__key__col{
+		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+		width: 10rem;
+	}
+	&__image{
+		height:10rem;
+		border-radius:20px 20px 0 0;
+		width: 10rem;
+		background-size: 200px;
+		background-position: center;
+	}
+	&__row{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding-top: 10px;
+		padding-bottom: 25px;
+	}
+	&__container{
+		display: flex;
+		padding: 3px;
+	}
+	&__col{
+		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+		border-radius: 20px 20px 0 0;
+		width: 10rem;
+	}
+	&__data{
+		padding:10px;
+	}
+}
   
 
 .analysis{
