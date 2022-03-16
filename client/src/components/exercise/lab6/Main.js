@@ -5,7 +5,12 @@ import '../../../assets/stylesheets/main.scss';
 import {bindActionCreators} from "redux";
 import {actions as exerciseActions} from "../../../reducers/lab6/ExerciseReducer";
 
-import ExerciseStart from "./pages/ExerciseStart";
+import ExerciseStart from "./pages/Applicant/ExerciseStart";
+import AvatarSelection from "./pages/Applicant/AvatarSelection";
+import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
+import AnalyzeData from "./pages/Applicant/AnalyzeData";
+import NegativeReasoning from "./pages/Applicant/NegativeReasoning";
+import AIAnalysisQuestions from "./pages/Applicant/AIAnalysisQuestions";
 
 const mapStateToProps = (state) => ({
     state: state
@@ -26,6 +31,11 @@ class Main extends Component {
             <div className="container bottomSpace" >
                 <Router className="app">
                     <ExerciseStart path="/" actions={actions}/>
+                    <AvatarSelection path="/AvatarSelection" actions={actions}/>
+                    <QualificationQuestions path="/QualificationQuestions" actions={actions}/>
+                    <AnalyzeData path="/AnalyzeData" actions={actions}/>
+                    <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions}/>
+                    <NegativeReasoning path="/NegativeReasoning" actions={actions}/>
                 </Router>
             </div>
         );

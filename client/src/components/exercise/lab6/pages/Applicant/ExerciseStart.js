@@ -1,8 +1,6 @@
 import React, {useEffect } from "react";
 import { navigate } from "@reach/router";
-import {EXERCISE_IDLE} from "../../../../constants/lab6";
-
-
+import {EXERCISE_IDLE,EXERCISE_PLAYING} from "../../../../../constants/lab6";
 
 const ExerciseStart = (props) =>{
     const {actions} = props;
@@ -12,7 +10,8 @@ const ExerciseStart = (props) =>{
     },[actions]);
 
     const handleStart = () =>{
-        navigate("/Lab6/Exercise/");
+        actions.updateState(EXERCISE_PLAYING)
+        navigate("/Lab6/Exercise/AvatarSelection");
     }
 
     return(
