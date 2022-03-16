@@ -8,6 +8,9 @@ const AnalyzeData = (props) =>{
 
     useEffect(()=>{
         actions.updateState(EXERCISE_PLAYING);
+        setTimeout(function(){
+            handleContinue();
+        }, 5000);
     },[actions]);
 
     const handleContinue = () =>{
@@ -16,17 +19,10 @@ const AnalyzeData = (props) =>{
 
     return(
         <div className="center-div">
-            <h2 class="playthrough__title">Analyzing your data, please be patient...</h2>
+            <h2 class="playthrough__title">Reviewing your application, please be patient...</h2>
             <div className="landingpage__row">
                 <Spinner />
             </div>
-            <button
-                className="btn btn-primary text-black btn-xl text-uppercase "
-                onClick = {handleContinue}
-                key="confirm"
-            >
-                Finished
-            </button>
       </div>
     );
 }

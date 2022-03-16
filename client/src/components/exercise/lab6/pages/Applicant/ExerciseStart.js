@@ -16,12 +16,12 @@ const ExerciseStart = (props) =>{
 
     return(
         <div className="center-div">
-            <div id="Header">
-                <p class="mainTitle">Part 1: Applicant</p>
-            </div>
-            <div className="guidance margin-bottom-2">
+            <h2 class="playthrough__title">Part 1: Applicant</h2>
+            <div className="playthrough__sentence">
                 In this exercise you will be applying to the company “MegaCorp.” 
                 During the process you will experience AI-based bias, and be asked to make changes to the AI. 
+            </div>
+            <div className="playthrough__sentence">
                 Click the “Start” button to begin this exercise!
             </div>
             <button

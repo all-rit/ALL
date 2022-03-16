@@ -3,7 +3,8 @@ import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
 
 
-const NegativeReasoning = (props) =>{
+
+const HiringCandidate = (props) =>{
     const {actions} = props;
 
     useEffect(()=>{
@@ -11,17 +12,15 @@ const NegativeReasoning = (props) =>{
     },[actions]);
 
     const handleContinue = () =>{
-        navigate("/Lab6/Exercise/EmployerStart");
+        navigate("/Lab6/Exercise/AIReasoningQuestions");
     }
 
     return(
         <div className="center-div">
-            <h2 class="playthrough__title">Why you were not chosen:</h2>
-            <div className="playthrough__sentence">
-            The reason you were not selected was because there were an overwhelming amount of applicant and an AI was used to help pare down the number of applications. 
-            Under normal circumstances a human would have made the decisions.
-            </div>
-            
+            <h2 class="playthrough__title">Choose A Candidate</h2>
+            <h2 class="cognitive_instructions">Click on a candidates picture to select</h2>
+            <h2 class="cognitive_instructions">Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”</h2>
+
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase "
                 onClick = {handleContinue}
@@ -33,4 +32,4 @@ const NegativeReasoning = (props) =>{
     );
 }
 
-export default NegativeReasoning;
+export default HiringCandidate;

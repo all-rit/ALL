@@ -4,7 +4,7 @@ import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 
 
-const AIAnalysisQuestions = (props) =>{
+const AIReasoningQuestions = (props) =>{
     const {actions} = props;
 
     useEffect(()=>{
@@ -12,7 +12,7 @@ const AIAnalysisQuestions = (props) =>{
     },[actions]);
 
     const handleContinue = () =>{
-        navigate("/Lab6/Exercise/NegativeReasoning");
+        navigate("/Lab6/Exercise/AIReasoning");
     }
 
     const onFormSubmit = e => {
@@ -42,23 +42,22 @@ const AIAnalysisQuestions = (props) =>{
     return(
         <Form onSubmit={onFormSubmit}>
         <div className="center-div">
-            <h2 class="playthrough__title analysis__rejection">After carefully reviewing your application, we regret to inform you that you were not selected for further consideration.</h2>
             <h2 class="cognitive_instructions">Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?</h2>
             
             <div className="analysis__questions">
                 <FormGroup check >
-                    <Label for="years" check>
-                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox"/>
+                    <Label for="gender" check>
+                        <Input id="gender" name="gender" type="checkbox" className="analysis__checkbox"/>
                         <div className="analysis__question">
-                            Years of Experience
+                            Gender
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check >
-                    <Label for="gender" check>
-                        <Input id="gender" name="gender" type="checkbox" className="analysis__checkbox" /> 
+                    <Label for="availability" check>
+                        <Input id="availability" name="availability" type="checkbox" className="analysis__checkbox" /> 
                         <div className="analysis__question">
-                            Gender
+                            Availability
                         </div>
                     </Label>
                 </FormGroup>
@@ -66,23 +65,23 @@ const AIAnalysisQuestions = (props) =>{
                     <Label for="facialhair" check>
                         <Input id="facialhair" name="facialhair" type="checkbox" className="analysis__checkbox"/>
                         <div className="analysis__question">
-                            Facial hair
-                        </div>
-                    </Label>
-                </FormGroup>
-                <FormGroup check >
-                    <Label for="age" check>
-                        <Input id="age" name="age" type="checkbox" className="analysis__checkbox"/>
-                        <div className="analysis__question">
                             Age
                         </div>
                     </Label>
                 </FormGroup>
                 <FormGroup check >
-                    <Label for="gpa" check>
-                        <Input id="gpa" name="gpa" type="checkbox" className="analysis__checkbox"/>
+                    <Label for="pay" check>
+                        <Input id="pay" name="pay" type="checkbox" className="analysis__checkbox"/>
                         <div className="analysis__question">
-                            GPA
+                            Expected Pay
+                        </div>
+                    </Label>
+                </FormGroup>
+                <FormGroup check >
+                    <Label for="years" check>
+                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox"/>
+                        <div className="analysis__question">
+                            Years of Experience
                         </div>
                     </Label>
                 </FormGroup>
@@ -100,4 +99,4 @@ const AIAnalysisQuestions = (props) =>{
     );
 }
 
-export default AIAnalysisQuestions;
+export default AIReasoningQuestions;
