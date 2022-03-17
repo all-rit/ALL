@@ -61,7 +61,7 @@ function renderProfileData(profileInformation) {
                   </h3>
                 </div>
               </div>
-              {!professorInformation && !teamInformation ? 
+              {!professorInformation && !teamInformation && !alumniInformation ? 
                     <div className="landingpage__row">
                         <Spinner />
                     </div>:
@@ -73,6 +73,17 @@ function renderProfileData(profileInformation) {
                   </div>
                   <div className="landingpage__row">
                     {teamInformation ? <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData} /> : <></>}
+                  </div>
+                  <div className="alumni-row">
+                    <div className="col-lg-12 text-center">
+                      <h2 className="section-heading text-uppercase">Alumni</h2>
+                      <h3 className="section-subheading " >
+                        Meet our Alumni.
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="landingpage__row">
+                    {alumniInformation ? <SlideSet teamInformation={alumniInformation} renderProfileData={renderProfileData} /> : <></>}
                   </div>
               </>}
           </div>
