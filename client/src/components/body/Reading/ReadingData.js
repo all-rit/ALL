@@ -1,107 +1,68 @@
 export const readingData = {
-	"piechart":
-		{"header":"How Many People are Affected?",
-		"caption":["Currently, as high as 5% of all Americans face cognitive impairments.","An estimated 5.1 million Americans aged 65 years or older may currently have Alzheimer’s disease, the most well-known form of cognitive impairment.","Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources for research in accessibility improvements."],
-		"data":{
-			"labels": [
-					"US Population Without Cognitive Impairment (Millions)",
-					"US Population With Cognitive Impairment (Millions)"
-				],
-			"datasets": [
-						{
-						"label": "Cognitively Impaired in a Population of 328 People",
-						"borderColor": "black",
-						"backgroundColor": ["blue", "red"],
-						"data": [312, 16],
-						"borderWidth": "1"
-						}
-				]
-			}
-	},
+    "piechart":
+       {"header":"Approximate Deaf and Hard of Hearing Population in the United States",
+       "caption":[""],
+       "data":{
+          "labels": [
+                "Deaf (ASL is primary language) [millions]",
+                "Oral Deaf [millions]",
+                "Profound hearing loss [millions]",
+                "Severe hearing loss [millions]",
+                "Moderate hearing loss [millions]",
+                "Mild hearing loss [millions]"
+             ],
+          "datasets": [
+                   {
+                   "label": "Approxiate Deaf and Hard of Hearing Population in the United States",
+                   "borderColor": "black",
+                   "backgroundColor": ["#d73027", "#fc8d59", "#fee090", "#e0f3f8", "#91bfdb", "#4575b4"],
+                   "data": [1.08, 1.08, 3.6, 8.64, 10.8, 10.8],
+                   "borderWidth": "1"
+                   }
+             ]
+          }
+    },
 	"description":{
-		"header":"What is a Cognitive Impairment?",
-		"content":"Cognitive impairment refers to a broad range of disabilities, from people with intellectual disabilities, who may have the most-limited capabilities, to age-related issues regarding thinking and remembering. This range includes people with learning disabilities, such as dyslexia and attention deficit hyperactivity disorder (ADHD)."
+		"header":"Case Study",
+		"content":""
 	},
 	"body":[
 		{
-			"header":"Common Challenges",
-			"type":"study__list",
-			"content":["Understanding content","Remembering how to complete tasks","Confusion caused by inconsistent or non-traditional web page layouts","Keeping focus while completing a task","Different processing speed, requiring additional time"]
+			"header":"Accessibility Standards",
+			"type":"",
+			"content":["In order to establish accessibility standards throughout government-run technology applications, allowing for anyone with or without a disability to interact with fundamental government websites, kiosks, and mobile applications, Section 508 of the Rehabilitation Act was established in 1998. This section outlines all of the necessary components of web infrastructure to keep its promise to ensure applications are accessible to all. Section 508.C & D is fundamental to this project, as it outlines the necessity for applications to use alternative approaches to make audio cues more accessible to meet the WCAG AAA standards. This relates directly to this web application, as its main focus is to outline and teach the necessity of creating accessible software to ensure individuals with hearing loss can properly identify prominent information in student’s web applications moving forward."]
 		},
 		{
-			"header":"How to Address These Problems?",
-			"type":"non-bullet-list",
-			"content":[
-				{
-					"header":"",
-					"content":"WCAG, Web Content Accessibility Guidelines, includes several guidelines to improve cognitive accessibility. They define 17 specific guidelines, of which six are especially relevant for cognitive accessibility."
-				},
-				{
-					"header":"Adaptability",
-					"content":"All information should be available in a form that can be perceived by all users. For example, the information could be spoken aloud via a narration tool. Thus you should ensure the content can be understood by the software."
-				},
-				{
-					"header":"Time",
-					"content":"It is important to allow users the time they require to complete tasks. Guideline 2.2 states 'provide users enough time to read and use content.' People with cognitive disabilities may require more time to read content, or to perform functions such as filling out forms."
-				},
-				{
-					"header":"Navigation",
-					"content":"Guideline 2.4 states to include clear and descriptive headings so users can easily find information and understand relationships between different content sections."
-				},
-				{
-					"header":"Readability",
-					"content":"Guideline 3.1 states 'make text content readable and understandable.' Keep the writing style simple and easy to understand."
-				},
-				{
-					"header":"Predictability",
-					"content":"Guideline 3.2 states to 'make web pages appear and operate in predictable ways.' Use consistency with the page layout."
-				},
-				{
-					"header":"Input Assistance",
-					"content":"Guideline 3.3 states to 'help users avoid and correct mistakes.' If they do make a mistake, ensure the message allows them to easily fix the error."
-				}
-			]
+			"header":"Validators",
+			"type":"",
+			"content":["Existing validators, such as AChecker, can help to ensure this standard is met. Validators analyze a webpage by inputting a URL and ensure that the page follows the WCAG's Perceivable accessibility principle. If software is not accessible to people with hearing loss, this can be in violation of the American with Disabilities Act (ADA) and the individual could sue the company for their inaccessible software."]
 		},
 		{
-			"header":"Practical Applications of Cognitive Accessibility",
-			"type":"non-bullet-list",
-			"content":[
-				{
-					"header":"",
-					"content":"We all enjoy online shopping. However, a person’s ability to use websites effectively declines by 0.8% every year over the age of 25, according to Nielsen Norman Group. Optimally designing for memory limitations will be especially important as the population ages. These techniques include:"
-				},
-				{
-					"header":"User Authentication",
-					"content":"Offer at least one alternative method that does not rely on a user to memorize character strings."
-				},
-				{
-					"header":"Don’t hide important/frequent controls",
-					"content":"Show both the text and icon labels for controls making it easier for users to remember their purpose."
-				},
-				{
-					"header":"Grouping Content",
-					"content":"Group similar items semantically and visually with a suggested maximum group size of five. This makes decision the process easier when choosing between similar items."
-				},
-				{
-					"header":"Path Markers",
-					"content":"Remind site visitors where they are in a process."
-				}
-			]
+			"header":"NAD vs Netflix Lawsuit",
+			"type":"",
+			"content":["In 2011, the National Association of the Deaf (NAD) filed a lawsuit against Netflix due to the lack of closed captioning in their streaming videos, which is considered as a violation of the ADA. More than half of all Americans use Netflix. Thus it must be made accessible to Deaf and Hard of Hearing viewers. Netflix argues that the ADA only specified that \"places of public accommodation\" must be accessible to people with disabilities and its business cannot be considered a \"place of public accommodation\" since it is not a physical place. Hence, Netflix is not subject to the ADA. NAD argued that the Internet is not exempt from the ADA, and Netflix is considered a shared or public activity, which makes the ADA applicable. The judge ruled in favor of the NAD's argument. Thus, Netflix had to add subtitles for their streaming videos (shown in Figure 1) to make their website accessible for Deaf and Hard of Hearing users."]
+		},
+		{
+			"header":"",
+			"type":"image",
+			"content":{
+				"image":"/netflix_subtitles.jpg",
+				"alt":"Netflix's implemented subtitles settings",
+				"sub_caption":"Figure 1",
+				"caption":"Netflix's Implemented Captions"
+			}
+		},
+        {
+			"header":"Professional Responsibility",
+			"type":"",
+			"content":["As software developers, we have a professional responsibility to uphold the Association for Computing Machinery (ACM) code of ethics, the Convention on the Rights of Persons with Disabilities (CRPD), and our own personal morals. We as individuals must ensure that we contribute to society and to human well-being, acknowledging that all people are stakeholders in computing (ACM 1.1) and that we are fair and take action not to discriminate (ACM 1.4). On top of this, we must take into account the protection and promotion of the human rights of persons with disabilities in all policies and programmes, including our web development (CRPD Article 4.C). In order to ensure we are compliant with all of these professional responsibilities, as well as ensure we as individuals are upholding our own morals, alternative approaches to audio cues must be considered in everything we create for the web, as without it, we are not treating individuals with a hearing loss as a stakeholder in computing, we are discriminating against their use of our applications, and we are not protecting the rights of these individuals to be able to access the internet the same as everyone else. Section 508.C is vital to the continued success of web applications on the internet."]
 		}
 	],
 	"footer":{
 		"links":[
 			{
-				"name":"Mozilla Cognitive Accessibility",
-				"link":"https://developer.mozilla.org/en-US/docs/Web/Accessibility/Cognitive_accessibility"
-			},
-			{
-				"name":"W3 Cognitive Accessibility",
-				"link":"https://www.w3.org/WAI/cognitive/"
-			},
-			{
-				"name":"Making Content Accessible",
-				"link":"https://www.w3.org/TR/coga-usable/"
+				"name":"Hearing Loss Association of America",
+				"link":"www.nchearingloss.org"
 			}
 		]
 	}
