@@ -25,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
             reading: { type: DataTypes.JSON },
             reinforcement: {type: DataTypes.JSON},
             quiz: {type: DataTypes.JSON},
+            isActive: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: true,
+            },
         }, { tableName: 'labs' }
     );
     
