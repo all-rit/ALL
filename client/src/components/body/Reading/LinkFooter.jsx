@@ -9,15 +9,18 @@ const LinkFooter = ({data})=> {
     return(
         <>  
             <h4 className="footerlink">For more information, please visit the following websites:</h4>
-            <div className="flex">
-                {data.map((name , link) =>  {
-                <a 
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    {name === null || name === undefined? name : link}
-                </a>
+            <div className="link-footer">
+                {data.map((data,index) =>  {
+                    return(
+                        <a className="link"
+                        key={index}
+                        href={data.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                            {data.name === null || data.name === undefined? data.link : data.name }
+                        </a>
+                    )
                 })
                 }
             </div>

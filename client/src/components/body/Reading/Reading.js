@@ -7,6 +7,8 @@ import StudyList from "./studylist";
 import NonBulletList from "./NonBulletList"
 import Image  from "./Image"
 import Spinner from "../../../common/Spinner/Spinner";
+import LinkFooter from "./LinkFooter";
+import Links from "./Links";
 
 const Reading = (props) => {
     const {user,labID}=props;
@@ -46,9 +48,9 @@ const Reading = (props) => {
                         <Pie data={readingData?.piechart.data} height={100} />
                     </div>
                     {readingData?.piechart.caption !== "" ?
-                        readingData?.piechart.caption.map((data)=>{
+                        readingData?.piechart.caption.map((data,index)=>{
                             return(
-                                <div id={"caption"}>
+                                <div key={index} id={"caption"}>
                                     {data}
                                 </div> 
                             )
@@ -63,9 +65,9 @@ const Reading = (props) => {
                                     {data.header !==""? <h3>{data.header}</h3>: <></>}
                                     {data.type ===""? 
                                         <>
-                                            {data.content.map((content)=>{
+                                            {data.content.map((content,index)=>{
                                                 return(
-                                                    <p>{content}</p>
+                                                    <p key={index}>{content}</p>
                                                 )
                                             })
                                             }
@@ -84,27 +86,19 @@ const Reading = (props) => {
                                         <Image data={data.content}/>
                                     :<></>
                                     }
+                                    {data.type ==="links"?
+                                        <Links data={data.content}/>
+                                    :<></>
+                                    }
                                 </>
                             )
                         })    
                     :<></>
                     }
-                    <h4>For more information, please visit the following websites:</h4>
-                    <div className="flex">
-                        {readingData?.footer !==''?
-                            readingData?.footer.links.map((data)=>{
-                                return(
-                                    <a
-                                        href={data.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {data.name}
-                                    </a>
-                                )
-                            }):<></>
-                        }
-                    </div>
+                    {readingData?.footer !==''?
+                        <LinkFooter data={readingData?.footer.links}/>
+                        :<></>
+                    }
         </div>
   );
 };
