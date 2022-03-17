@@ -90,6 +90,7 @@ router.get('/lab:labID/shortname', LabController.getLabShortName);
 router.get('/lab:labID/about', LabController.getLabAbout);
 router.get('/lab:labID/reading', LabController.getLabReading);
 router.get('/lab:labID/reinforcement', LabController.getLabReinforcement);
+router.get('/lab:labID/quiz', LabController.getLabQuiz);
 
 //Team
 router.get('/teammember', TeamMemberController.getAllTeamMembers)

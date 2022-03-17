@@ -25,3 +25,8 @@ exports.getLabReinforcement = (req, res) => {
 		res.json(records);
 	})
 };
+exports.getLabQuiz = (req, res) => {
+	LabService.getLabQuiz(req.params.labID).then((records) => {
+		res.json(records);
+	})
+};
