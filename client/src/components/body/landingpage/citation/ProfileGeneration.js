@@ -78,7 +78,7 @@ function renderProfileData(profileInformation) {
                     <div className="col-lg-12 text-center">
                       <h2 className="section-heading text-uppercase">Alumni</h2>
                       <h3 className="section-subheading " >
-                        Meet our Alumni.
+                        Meet the past memebrs of our team.
                       </h3>
                     </div>
                   </div>
