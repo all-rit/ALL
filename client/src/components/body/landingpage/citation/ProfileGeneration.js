@@ -26,7 +26,6 @@ function renderProfileData(profileInformation) {
   }
   
   const ProfileGeneration = (props) =>{
-    //const {}=props;
     const [professorInformation,setProfessorInformation] = useState(null);
     const [teamInformation,setTeamInformation] = useState(null);
 
