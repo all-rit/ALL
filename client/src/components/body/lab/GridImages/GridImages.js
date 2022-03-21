@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const GridImages = () => {
-	const handleGridImage = (id) => {
+	const [fileName, setFileName] = useState('')
+	const [id, setId] = useState('')
+
+	const handleGridImage = (id, name) => {
 		// this fn takes in the image id and does whatever you want to based on the id
-		console.log(id)
+		// console.log(id)
+		// setId(id)
+		// setFileName
+
 	}
 	return (
 		<div class="tw-container tw-mx-auto tw-space-y-2 lg:tw-space-y-0 lg:tw-gap-2 lg:tw-grid lg:tw-grid-cols-3">
-			<div class="tw-w-full tw-rounded tw-hover:opacity-50" onClick={() => handleGridImage(1)}>
+			{ }
+			<div class="tw-w-full tw-rounded tw-hover:opacity-50" onClick={() => handleGridImage('merky', 1)}>
 				<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
 					alt="image" />
 			</div>
