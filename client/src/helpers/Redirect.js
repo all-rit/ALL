@@ -96,6 +96,9 @@ export const stateChange = (actions, pathname) =>{
         case "Profile":
             actions.setBody(2);
             break;
+        case "Imagine":
+            actions.setBody(3);
+            break;
         default:
             actions.setBody(0);
             if(redirect_body !== ""){

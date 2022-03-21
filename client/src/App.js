@@ -21,6 +21,7 @@ import { default as LandingPageBody } from "./components/body/landingpage/index"
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
 import { default as Error } from "./components/body/landingpage/error";
 import { default as Profile } from "./components/body/profilepage/Profile";
+import { default as Imagine } from "./components/imagine/Imagine";
 
 import { default as Quiz } from "./components/quiz/App";
 import { stateChange } from "./helpers/Redirect";
@@ -90,6 +91,8 @@ class App extends Component {
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
+
+              <Imagine path="/Imagine" user={state.main.user} />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />

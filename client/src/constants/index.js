@@ -9,6 +9,9 @@ export const Sections = {
         }, 
         2: {
             name: "Profile"
+        },
+        3: {
+            name: "Imagine"
         }
     },
     1:{
