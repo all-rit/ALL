@@ -11,11 +11,8 @@ const NonBulletList = ({data}) => {
             {data.map((text , index) =>{
                 return(
                     <li key={index}>
-                        
                             <h5>{text.header}</h5>
-
                             <p>{text.content}</p>
-                        
                     </li>  
                 )
             })}
