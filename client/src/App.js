@@ -3,7 +3,7 @@ import ReactGA from "react-ga";
 
 import { default as About } from "./components/body/About";
 // import {default as Reading} from "./components/body/Reading";
-import {default as Reading} from "./components/body/Reading/Reading"
+import { default as Reading } from "./components/body/Reading/Reading"
 
 import { default as Reinforcement } from "./components/body/Reinforcement";
 
@@ -37,6 +37,7 @@ import "./assets/stylesheets/main.scss";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from '@reach/router';
+import GridImages from "./components/body/lab/GridImages/GridImages";
 const parse = require('url-parse');
 
 
@@ -99,7 +100,7 @@ class App extends Component {
 
               <Reading path={`/Lab${lab}/Reading`} user={state.main.user} labID={lab} />
 
-
+              <GridImages path='images' />
 
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
               <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
