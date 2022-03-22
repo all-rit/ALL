@@ -8,8 +8,9 @@ class AISimulation extends Component {
         super(props);
         this.state = { readTimerDone: false, componentName: "AISimulation" };
     }
-    handleStart(){
-        navigate("/Lab7/Exercise/AISimulation")
+
+    handleSubmit(){
+        navigate("/Lab7/Exercise/SimulationSummary");
     }
 
     readTimerDone() {
@@ -21,6 +22,13 @@ class AISimulation extends Component {
         return (
             <div>
                 <p>AI Simulation</p>
+                <button
+                    className="btn btn-primary text-black btn-xl text-uppercase"
+                    onClick={this.handleSubmit}
+                    key="continue"
+                >
+                    Continue
+                </button>
             </div>
         )
     }

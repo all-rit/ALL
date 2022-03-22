@@ -4,14 +4,10 @@ import { navigate } from "@reach/router";
 class AISimulationStart extends Component {
     constructor(props) {
         super(props);
-        this.state = { readTimerDone: false, componentName: "AISimulationStart" };
+        this.state = {componentName: "AISimulationStart" };
     }
     handleStart(){
         navigate("/Lab7/Exercise/AISimulation")
-    }
-
-    readTimerDone() {
-        this.setState({ readTimerDone: true })
     }
 
     render() {

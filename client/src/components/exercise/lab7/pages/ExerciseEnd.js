@@ -24,7 +24,7 @@ class ExerciseEnd extends Component {
         <div className="center-div">
           <div className="cognitive_instructions">
             <h4 className="margin-bottom">
-              Congratulations! You've finished the Cognitive Learning Module.
+              Congratulations! You've finished the AI Cybersecurity Module.
             </h4>
             <h4 className="margin-bottom">Here are some key takeaways:</h4>
             <div className="flex-boxes">
