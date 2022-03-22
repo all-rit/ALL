@@ -11,3 +11,9 @@ exports.getAllProfessors = (req, res) => {
 		res.json(records);
 	})
 };
+
+exports.getAllAlumni = (req, res) => {
+	TeamMemberService.getAllAlumni().then((records) => {
+		res.json(records);
+	})
+};

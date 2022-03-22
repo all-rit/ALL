@@ -95,5 +95,6 @@ router.get('/lab:labID/quiz', LabController.getLabQuiz);
 //Team
 router.get('/teammember', TeamMemberController.getAllTeamMembers)
 router.get('/professors', TeamMemberController.getAllProfessors)
+router.get('/alumni', TeamMemberController.getAllAlumni)
 
 module.exports = router;

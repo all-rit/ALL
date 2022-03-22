@@ -28,6 +28,8 @@ function renderProfileData(profileInformation) {
   const ProfileGeneration = (props) =>{
     const [professorInformation,setProfessorInformation] = useState(null);
     const [teamInformation,setTeamInformation] = useState(null);
+    const [alumniInformation,setAlumniInformation] = useState(null);
+
 
     useEffect(()=>{
         if(!professorInformation){
@@ -39,6 +41,11 @@ function renderProfileData(profileInformation) {
             TeamMemberService.getAllTeamMembers().then((data)=>{
                 setTeamInformation(data)
             })
+        }
+        if(!alumniInformation){
+          TeamMemberService.getAllAlumni().then((data)=>{
+                setAlumniInformation(data)
+          })
         }
         // eslint-disable-next-line
     },[])
@@ -53,7 +60,7 @@ function renderProfileData(profileInformation) {
                   </h3>
                 </div>
               </div>
-              {!professorInformation && !teamInformation ? 
+              {!professorInformation && !teamInformation && !alumniInformation ? 
                     <div className="landingpage__row">
                         <Spinner />
                     </div>:
@@ -65,6 +72,17 @@ function renderProfileData(profileInformation) {
                   </div>
                   <div className="landingpage__row">
                     {teamInformation ? <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData} /> : <></>}
+                  </div>
+                  <div className="alumni-row">
+                    <div className="col-lg-12 text-center">
+                      <h2 className="section-heading text-uppercase">Alumni</h2>
+                      <h3 className="section-subheading " >
+                        Meet the past members of our team.
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="landingpage__row">
+                    {alumniInformation ? <SlideSet teamInformation={alumniInformation} renderProfileData={renderProfileData} /> : <></>}
                   </div>
               </>}
           </div>
