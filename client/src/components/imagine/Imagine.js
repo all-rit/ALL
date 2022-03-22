@@ -4,8 +4,11 @@ const Imagine = (props)=>{
     
 
     return(
-        <div>
-            Imagine
+        
+        <div className="container bottomSpace" >
+            <Router className="app">
+                
+            </Router>
         </div>
     )
 }
