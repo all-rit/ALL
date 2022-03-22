@@ -26,11 +26,11 @@ class ImproveAIStart extends Component {
 
                             In this part of the exercise, you will be guided in changing the AI code to improve the accuracy of the autonomous file access system.
                         </p>
-                        <p className="playthrough__sentence">
 
-                            Click the 'Continue' button to view the code of the autonomous system.
-                        </p>
-                    </div>
+                    </div><p className="playthrough__sentence">
+
+                        Click the 'Continue' button to view the code of the autonomous system.
+                    </p>
                     <button
                         className="btn btn-primary text-black btn-xl text-uppercase "
                         onClick={this.handleStart}

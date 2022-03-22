@@ -25,7 +25,7 @@ class SimulationSummary extends Component {
         return (
 
             <div>
-                <p>
+                <p className="playthrough__sentence">
                     Simulation Summary
                 </p>
 

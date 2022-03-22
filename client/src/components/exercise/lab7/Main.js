@@ -16,6 +16,7 @@ import AICodeRepair from './pages/ImproveAICode/AICodeRepair';
 import ImprovedAISimulation from './pages/ImproveAICode/ImprovedAISimulation';
 import AlterationStart from './pages/AlterationActivity/AlterationStart';
 import AlterationQuiz from './pages/AlterationActivity/AlterationQuiz';
+import AlterationQuizResults from './pages/AlterationActivity/AlterationQuizResults';
 import ExerciseEnd from './pages/ExerciseEnd';
 
 const mapStateToProps = (state) => ({
@@ -50,6 +51,7 @@ class Main extends Component {
           {/* Phase 3: Alteration Activity */}
           <AlterationStart path="/AlterationStart" action={actions} />
           <AlterationQuiz path="/AlterationQuiz" action={actions} state={state}/>
+          <AlterationQuizResults path="/AlterationQuizResults" action={actions} state={state} />
 
           <ExerciseEnd path="/ExerciseEnd" actions={actions} state={state} user={user} />
         </Router>

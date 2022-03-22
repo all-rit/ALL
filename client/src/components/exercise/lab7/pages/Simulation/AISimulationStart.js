@@ -4,9 +4,9 @@ import { navigate } from "@reach/router";
 class AISimulationStart extends Component {
     constructor(props) {
         super(props);
-        this.state = {componentName: "AISimulationStart" };
+        this.state = { componentName: "AISimulationStart" };
     }
-    handleStart(){
+    handleStart() {
         navigate("/Lab7/Exercise/AISimulation")
     }
 
@@ -14,7 +14,7 @@ class AISimulationStart extends Component {
         const { actions } = this.props;
         return (
             <div>
-                <p>AI Simulation Page</p>
+                <p className="playthrough__sentence">AI Simulation Page</p>
 
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "

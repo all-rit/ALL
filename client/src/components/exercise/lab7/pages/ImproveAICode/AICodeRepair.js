@@ -17,7 +17,7 @@ class AICodeRepair extends Component {
         const { visible, handlers, state, data, actions } = this.props;
         return (
             <div>
-                <p>AI Code Repair</p>
+                <p className="playthrough__sentence">AI Code Repair</p>
                 <button className="btn btn-second btn-xl text-uppercase  leftButton"  key="repair">
                     Repair
                 </button>

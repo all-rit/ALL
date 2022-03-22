@@ -9,11 +9,22 @@ class ImprovedAISimulation extends Component {
         super(props);
     }
 
+    handleSubmit(){
+        navigate("/Lab7/Exercise/AlterationStart");
+    }
+
     render() {
         
         return (
             <div>
-                Improved AI Simulation
+                <p className="playthrough__sentence">Improved AI Simulation</p>
+                <button
+                    className="btn btn-primary text-black btn-xl text-uppercase"
+                    onClick={this.handleSubmit}
+                    key="continue"
+                >
+                    Continue
+                </button>
             </div>
         )
     }

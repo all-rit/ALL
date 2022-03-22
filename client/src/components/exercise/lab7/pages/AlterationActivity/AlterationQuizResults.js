@@ -2,14 +2,14 @@ import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import PageServiceTimer from "../../../shared/PageServiceTimer";
 
-class AlterationQuiz extends Component {
+class AlterationQuizResults extends Component {
     constructor(props) {
         super(props);
-        this.state = { componentName: "AlterationQuiz" };
+        this.state = { componentName: "AlterationQuizResults" };
     }
 
     handleSubmit() {
-        navigate("/Lab7/Exercise/AlterationQuizResults");
+        navigate("/Lab7/Exercise/ExerciseEnd");
     }
 
     render() {
@@ -18,15 +18,15 @@ class AlterationQuiz extends Component {
             <div className="center-div">
                 <div className="guidance margin-bottom-2">
                     <p className="playthrough__sentence">
-                        Alteration Quiz
+                        Alteration Quiz Results
                     </p>
 
                     <button
                         className="btn btn-primary text-black btn-xl text-uppercase "
                         onClick={this.handleSubmit}
-                        key="submit"
+                        key="continue"
                     >
-                        Submit
+                        Continue
                     </button>
                 </div>
             </div>
@@ -34,4 +34,4 @@ class AlterationQuiz extends Component {
     }
 }
 
-export default AlterationQuiz;
+export default AlterationQuizResults;
