@@ -12,6 +12,12 @@ exports.getGroupEnrolledStudents = (req, res) => {
     })
 };
 
+exports.getCompletedGroupLabs = (req, res) => {
+    GroupService.getCompletedGroupLabs(req.params.userID,req.params.groupID).then((records) => {
+        res.json(records);
+    })
+};
+
 exports.enrollUserInGroup = (req, res) => {
     GroupService.enrollUserInGroup(
         req.body.userID,
@@ -65,6 +71,13 @@ exports.deleteGroupLab = (req, res) => {
     GroupService.deleteGroupLab(
         req.body.groupID,
         req.body.labID
+    ).then((data) => {
+        res.sendStatus(200);
+    })
+}
+exports.deleteGroup = (req, res) => {
+    GroupService.deleteGroup(
+        req.body.groupID
     ).then((data) => {
         res.sendStatus(200);
     })

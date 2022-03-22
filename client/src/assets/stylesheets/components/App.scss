@@ -34,6 +34,53 @@
 	}
   }
 
+  .spinner {
+	margin: 10rem 0;
+  border: .5rem solid #fed135; /* Light grey */
+  border-top: .5rem solid #3d3d3d; /* Blue */
+  border-radius: 50%;
+  width: 150px;
+  height:150px;
+  animation: spin 2s linear infinite;
+  }
+  .spinner-small {
+	margin: 10rem 0;
+  border: .5rem solid #fed135; /* Light grey */
+  border-top: .5rem solid #3d3d3d; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height:50px;
+  animation: spin 2s linear infinite;
+  }
+  
+  .link-component{
+	display: flex;
+    justify-content:center;
+	flex-wrap: wrap;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+
+  .link{
+	text-decoration: underline;
+	padding-right: 10px;
+	padding-left: 10px;
+  }
+
+  .link-footer{
+	display: flex;
+    justify-content:center;
+    margin-bottom: 1rem;
+	flex-direction: column;
+    align-items: center;
+  }
+
+  @keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+  }
+  
+
 .landingpage{
     &__leftalign{
         text-align: left;
@@ -1358,7 +1405,7 @@ body {
 		font-size: 20px;
 		font-weight: 400;
 		font-style: italic;
-		margin-bottom: 50px;
+		margin-bottom: 35px;
 		text-transform: none;
 		font-family: 'Droid Serif',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
 	}
@@ -1368,6 +1415,14 @@ body {
 	justify-content: center !important;
 	margin-bottom: 25px !important;
 	text-align: center !important;
+}
+.alumni-row{
+	display: flex !important;
+    justify-content: center !important;
+	margin-top: 15px;
+	padding: 5px;
+    margin-bottom: -35px;
+    text-align: center !important;
 }
 .leftButton {
 	margin-right: 15%;

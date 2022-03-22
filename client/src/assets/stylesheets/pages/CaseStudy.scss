@@ -51,12 +51,14 @@
   > div {
     font-size: 0.9rem;
     display: flex;
-    flex-direction: column;
     text-align: center;
     margin-bottom: 2rem;
   }
   h4{
     margin-top:2rem;
+  }
+  h5{
+    text-align: left;
   }
 
   #caption {

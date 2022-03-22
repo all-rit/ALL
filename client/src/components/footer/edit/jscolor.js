@@ -1841,7 +1841,7 @@ var jsc = {
 //================================
 
 
-// By default, search for all elements with class="jscolor" and install a color picker on them.
+// By default, search for all elements with className="jscolor" and install a color picker on them.
 //
 // You can change what class name will be looked for by setting the property jscolor.lookupClass
 // anywhere in your HTML document. To completely disable the automatic lookup, set it to null.

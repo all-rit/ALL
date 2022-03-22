@@ -5,11 +5,16 @@ const groupService = {
         return API.get(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/labs`)
             .then((response) => response.json())
     },
+    getCompletedGroupLabs: (userID,groupID) => {
+        return API.get(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/labs/${userID}/completed`)
+            .then((response) => response.json())
+    },
 
     getGroupEnrolledStudents: (groupID) => {
         return API.get(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/enrolled`)
             .then((response) => response.json())
     },
+
     enrollUser: (userID, inviteCode) => {
         return API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/enroll`, {
             userID,
@@ -35,9 +40,14 @@ const groupService = {
         });
     },
     deleteGroupLab: (groupID,labID)=>{
-        return API.deleteWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/delete`, {
+        return API.putWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/${labID}/delete`, {
             groupID,
             labID,
+        });
+    },
+    deleteGroup: (groupID)=>{
+        return API.putWithBody(process.env.REACT_APP_SERVER_URL + `/group/${groupID}/delete`, {
+            groupID,
         });
     },
     updateGroup: (groupID, groupName)=>{

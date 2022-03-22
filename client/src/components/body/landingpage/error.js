@@ -9,9 +9,9 @@ const Error = (props) => {
         <div className="errorpage">
             <div>
                 <h1>Invalid Page</h1>
-                <hr class="horiz" />
+                <hr className="horiz" />
                 <p>Please click the button to navigate home</p>
-                <hr class="horiz" />
+                <hr className="horiz" />
                 <button className="btn btn-second btn-xl text-uppercase" onClick={()=>Redirect(actions,0,0)} >
                     Return Home
                 </button>

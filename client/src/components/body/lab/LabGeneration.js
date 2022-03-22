@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Lab from "./Lab";
 import LabService from "../../../services/LabService";
+import Spinner from "../../../common/Spinner/Spinner";
 
 function renderLabData(actions,labInfo,progressState, index, labRecord) {
     const {id,labName,shortDescription,thumbnailImageURL,fullDescription,learningObjectives,authors}= labInfo //destructuring
@@ -47,7 +48,7 @@ const LabGeneration = (props)=>{
               )
           } else {
               return (
-                  <p class="module__no_labs">You have no labs for this section.</p>
+                  <p className="module__no_labs">You have no labs for this section.</p>
               )
           }
       } else {
@@ -60,12 +61,19 @@ const LabGeneration = (props)=>{
               ))
           } else {
               return (
-                  <p class="module__no_labs">You have no labs for this section.</p>
+                  <p className="module__no_labs">You have no labs for this section.</p>
               )
           }
       }
   }
   else {
+    if (labInformation.length===0) {
+        return (
+          <div className="landingpage__row">
+            <Spinner />
+          </div>
+        )
+    }
       return(
           labInformation.map((labInfo, index) => {
               return renderLabData(actions, labInfo, progressState, index)

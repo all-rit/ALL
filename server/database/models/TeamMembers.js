@@ -12,14 +12,19 @@ module.exports = (sequelize, DataTypes) => {
             lastName: { type: DataTypes.TEXT },
             title: { type: DataTypes.TEXT },
             imageURL: { type: DataTypes.TEXT },
-            socials: { type: DataTypes.TEXT },
+            socials: { type: DataTypes.JSON },
             // websiteURL: { type: DataTypes.TEXT },
             // network: { type: DataTypes.TEXT },
             work: { type: DataTypes.TEXT },
-            datesActive: { type: DataTypes.TEXT }
+            datesActive: { type: DataTypes.TEXT },
+            isActive: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: true,
+            },
         },
         { tableName: 'team_members' }
     );
+
     TeamMembers.sync();
     // TeamMembers.sync({
     //     force: true
@@ -29,18 +34,19 @@ module.exports = (sequelize, DataTypes) => {
     //         lastName: "Khan",
     //         title: "Project Manager",
     //         imageURL: "/Saad_Khan.jpg",
-    //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/saad-khan23/</Link><Network>linkedin</Network></Social></Socials>",
+    //         socials: [{"link":"https://www.linkedin.com/in/saad-khan23/","network":"linkedin"},
     //         //websiteURL: "https://www.linkedin.com/in/saad-khan23/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
-    //         datesActive: "2019-2021"
+    //         datesActive: "2019-2021",
+    //          isActive: false
     //     });
     //     TeamMembers.create({
     //         firstName: "Heather",
     //         lastName: "Moses",
     //         title: "Full Stack Engineer",
     //         imageURL: "/Heather_Moses.jpg",
-    //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/heather-moses/</Link><Network>linkedin</Network></Social></Socials>",
+    //         socials: [{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}],
     //         //websiteURL: "https://www.linkedin.com/in/heather-moses/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
@@ -51,18 +57,19 @@ module.exports = (sequelize, DataTypes) => {
     //         lastName: "Savan",
     //         title: "Full Stack Engineer",
     //         imageURL: "/Christopher_Savan.jpg",
-    //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/christophersavan/</Link><Network>linkedin</Network></Social></Socials>",
+    //         socials: [{"link":"https://www.linkedin.com/in/christophersavan/","network":"linkedin"}],
     //         //websiteURL: "https://www.linkedin.com/in/christophersavan/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
-    //         datesActive: "2020-2021"
+    //         datesActive: "2020-2021",
+    //          isActive: false
     //     });
     //     TeamMembers.create({
     //         firstName:  "Su Thit",
     //         lastName: "Thazin",
     //         title: "Full Stack Engineer",
     //         imageURL: "/Su_Thit_Thazin.jpg",
-    //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/suthitthazin/</Link><Network>linkedin</Network></Social></Socials>",
+    //         socials: [{"link":"https://www.linkedin.com/in/suthitthazin/","network":"linkedin"}],
     //         //websiteURL: "https://www.linkedin.com/in/suthitthazin/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
@@ -73,7 +80,7 @@ module.exports = (sequelize, DataTypes) => {
     //         lastName: "Sternefeld",
     //         title: "Full Stack Engineer",
     //         imageURL: "/Mark_Sternefeld.jpg",
-    //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/mark-ferenc-sternefeld/</Link><Network>linkedin</Network></Social></Socials>",
+    //         socials: [{"link":"https://www.linkedin.com/in/mark-ferenc-sternefeld/","network":"linkedin"}],
     //         //websiteURL: "https://www.linkedin.com/in/mark-ferenc-sternefeld/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
@@ -84,7 +91,7 @@ module.exports = (sequelize, DataTypes) => {
     //         lastName: "Saurav",
     //         title: "Full Stack Engineer",
     //         imageURL: "/Shantanav_Saurav.jpg",
-    //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/shantanav/</Link><Network>linkedin</Network></Social></Socials>",
+    //         socials: [{"link":"https://www.linkedin.com/in/shantanav/","network":"linkedin"}],
     //         //websiteURL: "https://www.linkedin.com/in/shantanav/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
@@ -95,7 +102,7 @@ module.exports = (sequelize, DataTypes) => {
     //         lastName: "Jaji",
     //         title: "Full Stack Engineer",
     //         imageURL: "/Bashir_Jaji.jpg",
-    //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/</Link><Network>linkedin</Network></Social></Socials>",
+    //         socials: [{"link":"https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/","network":"linkedin"}],
     //         //websiteURL: "https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },
@@ -106,7 +113,7 @@ module.exports = (sequelize, DataTypes) => {
     //         lastName: "Leonard-Calcano",
     //         title: "Full Stack Engineer",
     //         imageURL: "/Andreas_Leonard_Calcano.jpg",
-    //         socials: "<?xml version='1.0' encoding='UTF-8'?><Socials><Social><Link>https://www.linkedin.com/in/andres-leonard-calcano/</Link><Network>linkedin</Network></Social></Socials>",
+    //         socials: [{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}],
     //         //websiteURL: "https://www.linkedin.com/in/andres-leonard-calcano/",
     //         //network: "linkedin",
     //         // work: { type: DataTypes.TEXT },

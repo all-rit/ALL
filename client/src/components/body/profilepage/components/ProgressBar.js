@@ -31,19 +31,19 @@ class ProgressBar extends Component{
         
         if(total===0){
             return(
-                <ul class="progressBarContainer">
+                <ul className="progressBarContainer">
                     <li><h3> No Labs Assigned </h3></li>
                 </ul>
             )
         } else{
             return(
-                <ul class="progressBarContainer">
-                    <ul class="progressBar">
+                <ul className="progressBarContainer">
+                    <ul className="progressBar">
                         {renderBars()}
                     </ul>
                         {percentage === true
-                            ? <li class="progressBar__info">{((completed/total)*100).toFixed(0)}% completed.</li>
-                            : <li class="progressBar__info"> {completed} out of {total} modules completed.</li>
+                            ? <li className="progressBar__info">{((completed/total)*100).toFixed(0)}% completed.</li>
+                            : <li className="progressBar__info"> {completed} out of {total} modules completed.</li>
                         }
                 </ul>
 

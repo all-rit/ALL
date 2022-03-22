@@ -7,7 +7,6 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
-
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(mainActions, dispatch),
@@ -79,7 +78,7 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          <div class="landingpage__row">
+          <div className="landingpage__row">
               <LabGeneration actions={actions}/>
           </div>
         </div>

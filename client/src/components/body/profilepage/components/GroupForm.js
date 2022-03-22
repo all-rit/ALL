@@ -12,6 +12,7 @@ import {
     Input,
 } from 'reactstrap';
 import FormCheckbox from './FormCheckbox';
+import DeleteModal from './DeleteModal';
 
 const GroupForm = (props) => {
     const {setInstrGroupsUpdated,toggle, user,addMode, groupID, groupName,assignedLabs} = props
@@ -49,6 +50,7 @@ const GroupForm = (props) => {
                 GroupService.createGroup(user.userid, groupName).then((data) => {
                     labs.forEach((labID)=>{
                         GroupService.addGroupLab(data.groupID,labID)
+                        setInstrGroupsUpdated(true)
                     })
                     setInstrGroupsUpdated(true)
                 })
@@ -60,12 +62,16 @@ const GroupForm = (props) => {
                     }
                     labsAssigned.forEach((labID)=>{
                         if(!labs.includes(labID)){
-                            GroupService.deleteGroupLab(groupID,labID)
+                            GroupService.deleteGroupLab(groupID,labID).then(()=>
+                                setInstrGroupsUpdated(true)
+                            )
                         }
                     })
                     labs.forEach((labID)=>{
                         if(!labsAssigned.includes(labID)){
-                            GroupService.addGroupLab(groupID,labID)
+                            GroupService.addGroupLab(groupID,labID).then(()=>
+                            setInstrGroupsUpdated(true)
+                        )
                         }
                     })
                     setInstrGroupsUpdated(true)
@@ -130,6 +136,7 @@ const GroupForm = (props) => {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" type="submit">Update Group</Button>
+                        <DeleteModal mainToggle={toggle} groupID={groupID} setInstrGroupsUpdated={setInstrGroupsUpdated}/>
                         <Button color="secondary" onClick={toggle}>Cancel</Button>
                     </ModalFooter>
                 </Form>

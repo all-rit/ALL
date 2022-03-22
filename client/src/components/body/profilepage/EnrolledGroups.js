@@ -53,19 +53,19 @@ const EnrolledGroups = (props) => {
                             {enrolledGroups.map((group, index) => (
 
                                 <ul key={index}>
-                                    {index > 0 ? <hr class="groups__horiz"/> : <></> }
-                                    <ul class="groups" key={index}>
-                                        <ul class="groups__group">
-                                            <li class="groups__instructorName">
+                                    {index > 0 ? <hr className="groups__horiz"/> : <></> }
+                                    <ul className="groups" key={index}>
+                                        <ul className="groups__group">
+                                            <li className="groups__instructorName">
                                                 <InstructorName instructorID={group.instructorUserID}/>
                                             </li>
-                                            <li class="groups__groupName">{group.groupName}</li>
+                                            <li className="groups__groupName">{group.groupName}</li>
                                         </ul>
-                                        <ul class="groups__group">
+                                        <ul className="groups__group">
                                             <GroupDetails group={group} instructing={false}/>
                                         </ul>
-                                        <ul class="groups__group">
-                                            <li class="groups__date">Enrolled on {(group.enrolledDate).split("T")[0]}</li>
+                                        <ul className="groups__group">
+                                            <li className="groups__date">Enrolled on {(group.enrolledDate).split("T")[0]}</li>
                                             <li>
                                                 <UnenrollModal
                                                     userid={user.userid}

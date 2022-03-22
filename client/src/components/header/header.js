@@ -107,9 +107,9 @@ const Header = (props) => {
                     <Nav className="ml-auto" navbar>
                         {state.main.body===0 ?
                             <Nav className="ml-auto" navbar>
-                                <NavItem class="collapse navbar-collapse" >
+                                <NavItem className="collapse navbar-collapse" >
                                     <NavLink
-                                        class="nav-link "
+                                        className="nav-link "
                                         href="#goals"
                                         style={link === 0 ? activeStyle : {color: "#fff"}}>
                                         <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -119,9 +119,9 @@ const Header = (props) => {
                                         </ul>
                                     </NavLink>
                                 </NavItem>
-                                <NavItem class="collapse navbar-collapse" >
+                                <NavItem className="collapse navbar-collapse" >
                                     <NavLink
-                                        class="nav-link "
+                                        className="nav-link "
                                         href="#labs"
                                         style={link === 1 ? activeStyle : {color: "#fff"}}>
                                         <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -131,9 +131,9 @@ const Header = (props) => {
                                         </ul>
                                     </NavLink>
                                 </NavItem>
-                                <NavItem class="collapse navbar-collapse" >
+                                <NavItem className="collapse navbar-collapse" >
                                     <NavLink
-                                        class="nav-link "
+                                        className="nav-link "
                                         href="#citation"
                                         style={link === 2 ? activeStyle : {color: "#fff"}}>
                                         <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -143,9 +143,9 @@ const Header = (props) => {
                                         </ul>
                                     </NavLink>
                                     </NavItem>
-                                <NavItem class="collapse navbar-collapse" >
+                                <NavItem className="collapse navbar-collapse" >
                                     <NavLink
-                                        class="nav-link "
+                                        className="nav-link "
                                         href="#contact"
                                         style={link === 3 ? activeStyle : {color: "#fff"}}>
                                         <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -159,9 +159,9 @@ const Header = (props) => {
                             : 
                             <Nav className="ml-auto" navbar>
                                 { state.main.body===1 &&
-                                    <NavItem class="collapse navbar-collapse" >       
+                                    <NavItem className="collapse navbar-collapse" >       
                                         <NavLink
-                                            class="nav-link "
+                                            className="nav-link "
                                             href="# "
                                             style={state.main.body===1 ? activeStyle : {color: "#fff"}}
                                             onClick={() => navigate(state,actions, 1, 0)}>
@@ -173,9 +173,9 @@ const Header = (props) => {
                                         </NavLink>
                                     </NavItem>
                                 }
-                                <NavItem class="collapse navbar-collapse" >
+                                <NavItem className="collapse navbar-collapse" >
                                     <NavLink
-                                        class="nav-link "
+                                        className="nav-link "
                                         href="# "
                                         style={{color: "#fff"}}
                                         onClick={() => navigate(state,actions, 0, 0)}>
@@ -190,9 +190,9 @@ const Header = (props) => {
                         } 
                         {state.main.user !== null &&
                             (state.main.user.firstname !== null &&
-                                <NavItem class="collapse navbar-collapse" >
+                                <NavItem className="collapse navbar-collapse" >
                                     <NavLink
-                                        class="nav-link "
+                                        className="nav-link "
                                         href="# "
                                         style={state.main.body===2 ? activeStyle : {color: "#fff"}}
                                         onClick={() => navigate(state,actions, 2, 0)}>
@@ -210,9 +210,9 @@ const Header = (props) => {
                     </Nav>
                     :
                     <Nav className="ml-auto" navbar>
-                        <NavItem class="collapse navbar-collapse">
+                        <NavItem className="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link "
+                                className="nav-link "
                                 onClick={() => navigate(state,actions, 0, 0)}
                                 href="# "
                                 style={{color: "#fff"}}>
@@ -224,9 +224,9 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
 
-                        <NavItem class="collapse navbar-collapse">
+                        <NavItem className="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link "
+                                className="nav-link "
                                 onClick={() => navigate(state, actions,0)}
                                 href="# "
                                 style={count === 0 ? activeStyle : {color: "#fff"}}>
@@ -238,9 +238,9 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
 
-                        <NavItem class="collapse navbar-collapse">
+                        <NavItem className="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link "
+                                className="nav-link "
                                 onClick={() => navigate(state, actions,1)}
                                 href="# "
                                 style={count === 1 ? activeStyle : {color: "#fff"}}>
@@ -252,9 +252,9 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
 
-                        <NavItem class="collapse navbar-collapse">
+                        <NavItem className="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link "
+                                className="nav-link "
                                 onClick={() => navigate(state, actions,2)}
                                 href="# "
                                 style={count === 2 ? activeStyle : {color: "#fff"}}>
@@ -266,9 +266,9 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
 
-                        <NavItem class="collapse navbar-collapse">
+                        <NavItem className="collapse navbar-collapse">
                             <NavLink
-                                class="nav-link "
+                                className="nav-link "
                                 onClick={() => navigate(state, actions,3)}
                                 href="# "
                                 style={count === 3 ? activeStyle : {color: "#fff"}}>
@@ -280,8 +280,8 @@ const Header = (props) => {
                             </NavLink>
                         </NavItem>
 
-                        <NavItem class="collapse navbar-collapse">
-                            <NavLink class="nav-link "
+                        <NavItem className="collapse navbar-collapse">
+                            <NavLink className="nav-link "
                                 onClick={() => navigate(state, actions,4)}
                                 href="# "
                                 style={count === 4 ? activeStyle : {color: "#fff"}}>
@@ -295,9 +295,9 @@ const Header = (props) => {
 
                         {state.main.user !== null &&
                             (state.main.user.firstname !== null &&
-                                <NavItem class="collapse navbar-collapse" >
+                                <NavItem className="collapse navbar-collapse" >
                                     <NavLink
-                                        class="nav-link "
+                                        className="nav-link "
                                         href="# "
                                         style={{color: "#fff"}}
                                         onClick={() => navigate(state,actions, 2, 0)}>

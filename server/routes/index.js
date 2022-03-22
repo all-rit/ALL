@@ -49,8 +49,10 @@ router.post('/group/unenroll', GroupController.unenrollUserFromGroup);
 router.post('/group/create', GroupController.createGroup)
 router.post('/group/:groupID/add', GroupController.addGroupLab)
 router.put('/group/:groupID/update', GroupController.updateGroup)
-router.delete('/group/:groupID/delete', GroupController.deleteGroupLab)
+router.put('/group/:groupID/:labID/delete', GroupController.deleteGroupLab)
+router.put('/group/:groupID/delete', GroupController.deleteGroup)
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
+router.get('/group/:groupID/labs/:userID/completed',GroupController.getCompletedGroupLabs)
 router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
 
 //user Lab Routes for lab progress and quiz
@@ -84,8 +86,15 @@ router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
 router.post('/page/complete', PageController.createPage);
 //Labs
 router.get('/lab', LabController.getAllLabs);
+router.get('/lab:labID/shortname', LabController.getLabShortName);
+router.get('/lab:labID/about', LabController.getLabAbout);
+router.get('/lab:labID/reading', LabController.getLabReading);
+router.get('/lab:labID/reinforcement', LabController.getLabReinforcement);
+router.get('/lab:labID/quiz', LabController.getLabQuiz);
+
 //Team
 router.get('/teammember', TeamMemberController.getAllTeamMembers)
 router.get('/professors', TeamMemberController.getAllProfessors)
+router.get('/alumni', TeamMemberController.getAllAlumni)
 
 module.exports = router;
