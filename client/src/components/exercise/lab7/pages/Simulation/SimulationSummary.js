@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
+import Collapsible from "../../components/Collapsible"
 import PageServiceTimer from "../../../shared/PageServiceTimer";
 
 class SimulationSummary extends Component {
@@ -16,7 +17,7 @@ class SimulationSummary extends Component {
     // should appear after first sim (1) and lead to Code Repair
     // should appear after AI improved/updated and lead to Alteration Start
     handleContinue() {
-        navigate("/Lab7/Exercise/ImproveAIStart");
+        navigate("/Lab7/Exercise/BadAIExplanation");
     }
 
     render() {
@@ -28,6 +29,8 @@ class SimulationSummary extends Component {
                 <p className="playthrough__sentence">
                     Simulation Summary
                 </p>
+
+                <Collapsible/>
 
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase"

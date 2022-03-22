@@ -21,7 +21,7 @@ class AISimulation extends Component {
         const { actions } = this.props;
         return (
             <div>
-                <p>AI Simulation</p>
+                <p className="playthrough__sentence">AI Simulation</p>
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase"
                     onClick={this.handleSubmit}

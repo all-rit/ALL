@@ -16,19 +16,19 @@ class AlterationQuiz extends Component {
         const { actions } = this.props;
         return (
             <div className="center-div">
-                <div className="guidance margin-bottom-2">
-                    <p className="playthrough__sentence">
-                        Alteration Quiz
-                    </p>
 
-                    <button
-                        className="btn btn-primary text-black btn-xl text-uppercase "
-                        onClick={this.handleSubmit}
-                        key="submit"
-                    >
-                        Submit
-                    </button>
-                </div>
+                <p className="playthrough__sentence">
+                    Alteration Quiz
+                </p>
+
+                <button
+                    className="btn btn-primary text-black btn-xl text-uppercase "
+                    onClick={this.handleSubmit}
+                    key="submit"
+                >
+                    Submit
+                </button>
+
             </div>
         )
     }

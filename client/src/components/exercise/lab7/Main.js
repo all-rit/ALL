@@ -11,6 +11,7 @@ import ExerciseStart from './pages/ExerciseStart';
 import AISimulationStart from './pages/Simulation/AISimulationStart';
 import AISimulation from './pages/Simulation/AISimulation';
 import SimulationSummary from './pages/Simulation/SimulationSummary';
+import BadAIExplanation from './pages/Simulation/BadAIExplanation';
 import ImproveAIStart from './pages/ImproveAICode/ImproveAIStart';
 import AICodeRepair from './pages/ImproveAICode/AICodeRepair';
 import ImprovedAISimulation from './pages/ImproveAICode/ImprovedAISimulation';
@@ -42,6 +43,7 @@ class Main extends Component {
           <AISimulationStart path="/AISimulationStart" actions={actions} state={state} />
           <AISimulation path="/AISimulation" actions={actions} state={state} />
           <SimulationSummary path="/SimulationSummary" actions={actions} state={state} />
+          <BadAIExplanation path="/BadAIExplanation" actions={actions} state={state}/>
 
           {/* Phase 2: Improve AI Code Repair */}
           <ImproveAIStart path="/ImproveAIStart" action={actions}  />

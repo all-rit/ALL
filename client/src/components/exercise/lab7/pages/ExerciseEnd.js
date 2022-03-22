@@ -22,11 +22,12 @@ class ExerciseEnd extends Component {
 
       <Fragment>
         <div className="center-div">
-          <div className="cognitive_instructions">
-            <h4 className="margin-bottom">
-              Congratulations! You've finished the AI Cybersecurity Module.
-            </h4>
-            <h4 className="margin-bottom">Here are some key takeaways:</h4>
+          <p className="playthrough__sentence">
+            Congratulations! You've finished the AI Cybersecurity Module.
+          </p>
+          <div className="guidance margin-bottom-2">
+
+          <p className="playthrough__sentence">Here are some key takeaways:</p>
             <div className="flex-boxes">
               <div>
                 <div className="icon">
