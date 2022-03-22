@@ -1,34 +1,26 @@
 import React, { Component } from "react";
 import ReactGA from "react-ga";
 
-import { default as AboutLab1 } from "./components/body/lab1/about";
-import { default as ReadingLab1 } from "./components/body/lab1/reading";
+import { default as About } from "./components/body/About";
+// import {default as Reading} from "./components/body/Reading";
+import {default as Reading} from "./components/body/Reading/Reading"
+
+import { default as Reinforcement } from "./components/body/Reinforcement";
+
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
-import { default as ReinforcementLab1 } from "./components/body/lab1/reinforcement";
 import { Sections } from "./constants/index";
 
-import { default as AboutLab2 } from "./components/body/lab2/about";
-import { default as ReadingLab2 } from "./components/body/lab2/reading";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
-import { default as ReinforcementLab2 } from "./components/body/lab2/reinforcement";
 
-import { default as AboutLab3 } from "./components/body/lab3/about";
-import { default as ReadingLab3 } from "./components/body/lab3/reading";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
-import { default as ReinforcementLab3 } from "./components/body/lab3/reinforcement";
 
-import {default as AboutLab4} from "./components/body/lab4/about";
-import {default as ExerciseLab4} from "./components/exercise/lab4/Main";
-import {default as ReadingLab4} from "./components/body/lab4/reading";
-import {default as ReinforcementLab4} from "./components/body/lab4/reinforcement";
-import {default as AboutLab5} from "./components/body/lab5/about";
-import {default as ReadingLab5} from "./components/body/lab5/reading";
-import {default as ExerciseLab5} from "./components/exercise/lab5/Main";
-import {default as ReinforcementLab5} from "./components/body/lab5/reinforcement";
-import {default as LandingPageBody} from "./components/body/landingpage/index";
-import {default as SiteMap} from "./components/body/landingpage/sitemap";
-import {default as Error} from "./components/body/landingpage/error";
-import {default as Profile} from "./components/body/profilepage/Profile";
+import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
+
+import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
+import { default as LandingPageBody } from "./components/body/landingpage/index";
+import { default as SiteMap } from "./components/body/landingpage/sitemap";
+import { default as Error } from "./components/body/landingpage/error";
+import { default as Profile } from "./components/body/profilepage/Profile";
 
 import { default as Quiz } from "./components/quiz/App";
 import { stateChange } from "./helpers/Redirect";
@@ -39,10 +31,11 @@ import { bindActionCreators } from "redux";
 import { actions as mainActions } from "./reducers/MainReducer";
 import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
-import { Router} from "@reach/router";
-import {connect} from "react-redux";
+import { Router } from "@reach/router";
+import { connect } from "react-redux";
 import { globalHistory } from '@reach/router';
 const parse = require('url-parse');
+
 
 const mapStateToProps = (state) => {
   return {
@@ -79,6 +72,7 @@ class App extends Component {
     const { state, actions } = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
+    //look into index.js in constants
     initializeReactGA();
     return (
       <div className="overflow-x-hidden">
@@ -87,46 +81,32 @@ class App extends Component {
           {lab !== 0 && (
             <BodyHeader
               body={Sections[lab][body].name}
-              lab={Sections[lab].name}
+              labID={lab}
             />
           )}
           <div className="appBody">
             <Router basepath={process.env.PUBLIC_URL} className="app">
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
-              <Profile path="/Profile" user={state.main.user}/>
+              <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
-              <AboutLab1 path="/Lab1/" user={state.main.user}/>
-              <AboutLab2 path="/Lab2/" user={state.main.user}/>
-              <AboutLab3 path="/Lab3/" user={state.main.user}/>
-              <AboutLab4 path="/Lab4/" user={state.main.user}/>
-              <AboutLab5 path="/Lab5/" user={state.main.user}/>
-              <AboutLab1 path="/Lab1/About" user={state.main.user}/>
-              <AboutLab2 path="/Lab2/About" user={state.main.user}/>
-              <AboutLab3 path="/Lab3/About" user={state.main.user}/>
-              <AboutLab4 path="/Lab4/About" user={state.main.user}/>
-              <AboutLab5 path="/Lab5/About" user={state.main.user}/>
 
-              <ReadingLab1 path="/Lab1/Reading" user={state.main.user}/>
-              <ReadingLab2 path="/Lab2/Reading" user={state.main.user}/>
-              <ReadingLab3 path="/Lab3/Reading" user={state.main.user}/>
-              <ReadingLab4 path="/Lab4/Reading" user={state.main.user}/>
-              <ReadingLab5 path="/Lab5/Reading" user={state.main.user}/>
+              <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
+              <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
 
-              <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user}/>
-              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user}/>
-              <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user}/>
-              <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user}/>
-              <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user}/>
-
-              <ReinforcementLab1 path="/Lab1/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab2 path="/Lab2/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab3 path="/Lab3/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab4 path="/Lab4/Reinforcement" user={state.main.user}/>
-              <ReinforcementLab5 path="/Lab5/Reinforcement" user={state.main.user}/>
+              <Reading path={`/Lab${lab}/Reading`} user={state.main.user} labID={lab} />
 
 
-              <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user}/>
+
+              <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
+              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
+              <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
+              <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
+              <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
+
+              <Reinforcement path={`/Lab${lab}/Reinforcement`} user={state.main.user} labID={lab} />
+
+              <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user} />
             </Router>
           </div>
         </div>
