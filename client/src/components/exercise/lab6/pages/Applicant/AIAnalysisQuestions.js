@@ -2,6 +2,7 @@ import React, {useEffect } from "react";
 import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
 import { Form, FormGroup, Input, Label } from "reactstrap";
+import Quiz from "../../../../quiz/components/Quiz";
 
 
 const AIAnalysisQuestions = (props) =>{
@@ -38,13 +39,50 @@ const AIAnalysisQuestions = (props) =>{
         }
     }
 
+    const questions = [
+        {
+            val: 0,
+            content: "Gender"
+        },
+        {
+            val: 0,
+            content: "Years of Experience"
+        },
+        {
+            val: 0,
+            content: "Facial hair"
+        },
+        {
+            val: 1,
+            content: "Age"
+        },
+        {
+            val: 1,
+            content: "GPA"
+        }
+
+    ];
 
     return(
         <Form onSubmit={onFormSubmit}>
         <div className="center-div">
             <h2 class="playthrough__title analysis__rejection">After carefully reviewing your application, we regret to inform you that you were not selected for further consideration.</h2>
-            <h2 class="cognitive_instructions">Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?</h2>
+            {/* <h2 class="cognitive_instructions">Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?</h2> */}
             
+            <Quiz
+                    answer={""}
+                    answerOptions={questions}
+                    questionId={1}
+                    question={"Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?"}
+                    questionTotal={1}
+                    onAnswerSelected={()=>{}}
+                    nextQuestion={()=>{}}
+                    disable={true}
+                    multiChoice = {true}
+            />
+
+
+{/*             
             <div className="analysis__questions">
                 <FormGroup check >
                     <Label for="years" check>
@@ -86,7 +124,7 @@ const AIAnalysisQuestions = (props) =>{
                         </div>
                     </Label>
                 </FormGroup>
-            </div>
+            </div> */}
 
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase "     

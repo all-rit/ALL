@@ -50,13 +50,14 @@ const GridImages = () => {
 	const gridImageClassnames = clsx({
 		"tw-cursor-pointer": true,
 		'tw-opacity-50': active,
+		"tw-border-double tw-border-8":active
 	});
 
 	console.log(currentFile)
 	console.log(id)
 	console.log(active)
 	return (
-		<div class="tw-container tw-mx-auto tw-space-y-2 md:tw-space-y-0 md:tw-gap-2 md:tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-5 p-2">
+		<div class="tw-container tw-mx-auto tw-space-y-2 md:tw-space-y-0 md:tw-gap-2 md:tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-5 tw-p-2 ">
 			{gridMockData?.map(data => (
 				<>
 					<div class={gridImagesClassnames} onClick={(e) => {
