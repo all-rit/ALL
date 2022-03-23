@@ -18,6 +18,11 @@ const GridImages = () => {
 		const selectImg = gridMockData.filter(img => img.id === id)?.[0]
 		setCurrentFile(selectImg)
 	}
+
+	const handleKeyPress = (e,id) =>{
+		handleGridImage(e,id);
+	}
+
 	const handleEsc = (e) => {
 		if (e.key === "Escape") {
 			setCurrentFile({})
@@ -51,14 +56,16 @@ const GridImages = () => {
 	console.log(id)
 	console.log(active)
 	return (
-		<div class="tw-container tw-mx-auto tw-space-y-2 md:tw-space-y-0 md:tw-gap-2 md:tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-4">
+		<div class="tw-container tw-mx-auto tw-space-y-2 md:tw-space-y-0 md:tw-gap-2 md:tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-5 p-2">
 			{gridMockData?.map(data => (
 				<>
 					<div class={gridImagesClassnames} onClick={(e) => {
 						handleGridImage(e,data.id);
 						setActive(true)
 					}
-					}
+					} onKeyPress={(e)=>{
+						handleKeyPress(e,data.id) 
+						setActive(true)}}
 					>
 						<img tabIndex={0} 	className={currentFile.id === data.id ? gridImageClassnames : ''} src={data.img} alt={data.name} />
 					</div>

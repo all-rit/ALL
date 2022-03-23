@@ -1,6 +1,7 @@
 import React, {useEffect } from "react";
 import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
+import GridImages from "../../../../body/lab/GridImages/GridImages";
 
 
 
@@ -21,6 +22,10 @@ const AvatarSelection = (props) =>{
             <p className="playthrough__sentence">
                 To get you started with the hiring process, please pick an avatar you most identify with.
             </p>
+
+            
+            <GridImages/>
+            
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase "
                 onClick = {confirmSelection}
