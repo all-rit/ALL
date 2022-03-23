@@ -1,36 +1,69 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { gridMockData } from '../../../mockData/gridMockData'
+import clsx from "clsx";
 
 const GridImages = () => {
-	const [fileName, setFileName] = useState('')
+	// to test this component, go to
+	// localhost:3000/gridimages
+	const [currentFile, setCurrentFile] = useState({})
 	const [id, setId] = useState('')
+	const [active, setActive] = useState(false)
 
-	const handleGridImage = (id, name) => {
-		// this fn takes in the image id and does whatever you want to based on the id
-		// console.log(id)
-		// setId(id)
-		// setFileName
 
+
+	const handleGridImage = (id) => {
+		setId(id)
+		const selectImg = gridMockData.filter(img => img.id === id)?.[0]
+		setCurrentFile(selectImg)
 	}
+	const handleEsc = (e) => {
+		if (e.key === "Escape") {
+			setCurrentFile({})
+			setActive(false)
+		};
+	};
+
+	useEffect(() => {
+		if (active) {
+			window.addEventListener("keydown", handleEsc);
+		} else {
+			window.removeEventListener("keydown", handleEsc);
+		}
+		return () => {
+			window.removeEventListener("keydown", handleEsc);
+		};
+	}, [currentFile, active]);
+
+
+
+	const gridImagesClassnames = clsx({
+		"tw-cursor-pointer tw-w-full tw-rounded": true,
+	});
+
+	const gridImageClassnames = clsx({
+		"tw-cursor-pointer": true,
+		'tw-opacity-50': active,
+	});
+
+	console.log(currentFile)
+	console.log(id)
+	console.log(active)
 	return (
-		<div class="tw-container tw-mx-auto tw-space-y-2 lg:tw-space-y-0 lg:tw-gap-2 lg:tw-grid lg:tw-grid-cols-3">
-			{ }
-			<div class="tw-w-full tw-rounded tw-hover:opacity-50" onClick={() => handleGridImage('merky', 1)}>
-				<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-					alt="image" />
-			</div>
-			<div class="tw-w-full tw-rounded tw-hover:opacity-50" onClick={() => handleGridImage(2)}>
-				<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-					alt="image" />
-			</div>
-			<div class="tw-w-full tw-rounded tw-hover:opacity-50" onClick={() => handleGridImage(3)}>
-				<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-					alt="image" />
-			</div>
-			<div class="tw-w-full tw-rounded tw-hover:opacity-50" onClick={() => handleGridImage(4)}>
-				<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-					alt="image" />
-			</div>
-		</div>
+		<div class="tw-container tw-mx-auto tw-space-y-2 lg:tw-space-y-0 lg:tw-gap-2 lg:tw-grid lg:tw-grid-cols-5">
+			{gridMockData?.map(data => (
+				<>
+					<div class={gridImagesClassnames} onClick={() => {
+						handleGridImage(data.id);
+						setActive(true)
+					}
+					}
+					>
+						<img className={currentFile.id === data.id ? gridImageClassnames : ''} src={data.img} alt={data.name} />
+					</div>
+				</>
+			))
+			}
+		</div >
 	)
 }
 

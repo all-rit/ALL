@@ -100,7 +100,7 @@ class App extends Component {
 
               <Reading path={`/Lab${lab}/Reading`} user={state.main.user} labID={lab} />
 
-              <GridImages path='images' />
+              <GridImages path='gridimages' />
 
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
               <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
