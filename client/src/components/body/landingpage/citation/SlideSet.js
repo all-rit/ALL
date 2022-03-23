@@ -66,7 +66,7 @@ const SlideSet = (props) =>{
                   </CarouselItem>
                 );
               }))
-        // eslint-disable-next-line
+    // eslint-disable-next-line
     },[teamInformation])
     
     

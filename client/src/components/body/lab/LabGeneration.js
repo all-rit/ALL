@@ -38,7 +38,6 @@ const LabGeneration = (props)=>{
   });
 
   if (labInformation !== null && labInformation.length > 0 && progressState){
-      console.log("poop")
       if (progressState === "NOT_STARTED"){
           if (labids !== null && labids.length > 0){
               return(
