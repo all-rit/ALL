@@ -60,18 +60,21 @@ function renderProfileData(profileInformation) {
                   </h3>
                 </div>
               </div>
-              {!professorInformation && !teamInformation && !alumniInformation ? 
-                    <div className="landingpage__row">
-                        <Spinner />
-                    </div>:
-                    <>
                   <div className="landingpage__row">
                     <div alt="professors" className="landingpage__row">
-                      {renderProfileData(professorInformation)}
+                      {!professorInformation ? <Spinner />:
+                        <>
+                          {professorInformation ? renderProfileData(professorInformation) : <Spinner />}
+                        </> 
+                      }
                     </div>
                   </div>
                   <div className="landingpage__row">
-                    {teamInformation ? <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData} /> : <></>}
+                    {!teamInformation ? <Spinner />:
+                      <>
+                        {teamInformation ? <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData} /> : <Spinner />}
+                      </> 
+                    }
                   </div>
                   <div className="alumni-row">
                     <div className="col-lg-12 text-center">
@@ -82,9 +85,12 @@ function renderProfileData(profileInformation) {
                     </div>
                   </div>
                   <div className="landingpage__row">
-                    {alumniInformation ? <SlideSet teamInformation={alumniInformation} renderProfileData={renderProfileData} /> : <></>}
+                  {!alumniInformation ? <Spinner />:
+                      <>
+                        {alumniInformation ? <SlideSet teamInformation={alumniInformation} renderProfileData={renderProfileData} /> : <Spinner />}
+                      </> 
+                    }
                   </div>
-              </>}
           </div>
         </section>
      );
