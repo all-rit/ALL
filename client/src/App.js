@@ -92,7 +92,7 @@ class App extends Component {
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
 
-              <Imagine path="/Imagine" user={state.main.user} />
+              <Imagine path="/Imagine/*" user={state.main.user} />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
