@@ -1,44 +1,25 @@
 export const types = {
-	UPDATE_REPAIR_PAGELAYOUT: '@accessibility-lab/cognitive/repair/update_repair_pagelayout',
-	UPDATE_REPAIR_NOTIFICATION: '@accessibility-lab/cognitive/repair/update_repair_notification',
-	UPDATE_REPAIR_FORM: '@accessibility-lab/cognitive/repair/update_repair_form',
-	UPDATE_TAB: '@accessibility-lab/cognitive/repair/update_tab',
-	OPEN_REPAIR: '@accessibility-lab/cognitive/repair/open_repair',
-	CLOSE_REPAIR: '@accessibility-lab/cognitive/repair/close_repair'
+	UPDATE_REPAIR_EQUATION: '@accessibility-lab/lab7/repair/update_repair_equation',
+	UPDATE_REPAIR_FORM: '@accessibility-lab/lab7/repair/update_repair_form',
+	UPDATE_TAB: '@accessibility-lab/lab7/repair/update_tab',
+	OPEN_REPAIR: '@accessibility-lab/lab7/repair/open_repair',
+	CLOSE_REPAIR: '@accessibility-lab/lab7/repair/close_repair'
 };
 
 export const initialState = {
-	h1value: null,
-	ulvalue: null,
-	classvalue: null,
-	fontvalue: null,
-	fontfamilyvalue: null,
+	rewardvalue: null,
+    costvalue: null,
 	repairVisible: false,
-	timeout: null,
-	fontsizevalue: null,
-	successNotification: null,
-	errorNotification: null,
-	borderColor:null,
 	changesApplied: false
 };
 
 const RepairReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case types.UPDATE_REPAIR_PAGELAYOUT:
+		case types.UPDATE_REPAIR_EQUATION:
 			return {
 				...state,
-				h1value: action.h1value,
-				ulvalue: action.ulvalue,
-				classvalue: action.classvalue,
-				fontvalue: action.fontvalue,
-				fontfamilyvalue: action.fontfamilyvalue,
-				changesApplied: true
-			};
-		case types.UPDATE_REPAIR_NOTIFICATION:
-			return {
-				...state,
-				timeout: action.timeout,
-				fontsizevalue: action.fontsizevalue,
+				rewardvalue: action.rewardvalue,
+				costvalue: action.costvalue,
 				changesApplied: true
 			};
 		case types.UPDATE_REPAIR_FORM:
@@ -73,13 +54,10 @@ const RepairReducer = (state = initialState, action) => {
 };
 
 export const actions = {
-	updateRepairPageLayout: (h1value, ulvalue, classvalue, fontvalue, fontfamilyvalue) => ({
-		type: types.UPDATE_REPAIR_PAGELAYOUT,
-		h1value,
-		ulvalue,
-		classvalue,
-		fontvalue,
-		fontfamilyvalue,
+	updateRepairEquation: (rewardvalue, costvalue) => ({
+		type: types.UPDATE_REPAIR_EQUATION,
+		rewardvalue,
+		costvalue
 	}),
 	updateRepairForm: (errorNotification,
 					   successNotification,
@@ -88,10 +66,6 @@ export const actions = {
 		errorNotification,
 		successNotification,
 		borderColor
-	}),
-	updateRepairNotification: (fontsizevalue, timeout) => ({
-		type: types.UPDATE_REPAIR_NOTIFICATION,
-		fontsizevalue, timeout
 	}),
 	updateTab: (tab) => ({ type: types.UPDATE_TAB, tab }),
 	openRepair: () => ({ type: types.OPEN_REPAIR }),

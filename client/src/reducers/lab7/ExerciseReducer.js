@@ -1,10 +1,10 @@
 import {
 	EXERCISE_IDLE
-} from '../../constants/lab5/index';
+} from '../../constants/lab7/index';
 
 export const types = {
-	UPDATE_STATE: '@accessibility-lab/cognitive/exercise/update_state',
-	ENABLE_END: '@accessibility-lab/cognitive/exercise/enable_end'
+	UPDATE_STATE: '@accessibility-lab/lab7/exercise/update_state',
+	ENABLE_END: '@accessibility-lab/lab7/exercise/enable_end'
 };
 
 export const initialState = {

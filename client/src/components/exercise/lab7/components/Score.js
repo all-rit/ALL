@@ -1,13 +1,16 @@
 import React from 'react';
-import './exerciseStyle.css';
+import '../../../../assets/stylesheets/components/Score.scss'
 
 const Score = ({ totalScore, intrusions, protectedTP, incorrectFP }) => {
     return (
-        <div className='scoreLine'>
-            <p className='scoreElement'>Total Score: {totalScore}</p>
-            <p className='scoreElement'>Intrusions: {intrusions}</p>
-            <p className='scoreElement'>Protected (TP): {protectedTP}</p>
-            <p className='scoreElement'>Incorrect (TP): {incorrectFP}</p>
+        <div className='scoreTally'>
+            <div className="scoreDetails">
+                <p className = "totalScore">Total Score: {totalScore}</p>
+
+                <p className = "scoreItem">Intrusions: {intrusions}</p>
+                <p className = "scoreItem">Protected (TP): {protectedTP}</p>
+                <p className = "scoreItem">Incorrect (TP): {incorrectFP}</p>
+            </div>
         </div>
     )
 }

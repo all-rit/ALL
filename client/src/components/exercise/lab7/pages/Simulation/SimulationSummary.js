@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import Collapsible from "../../components/Collapsible"
 import PageServiceTimer from "../../../shared/PageServiceTimer";
+import Score from "../../components/Score";
+import Collapsible from "../../components/Collapsible";
+import { roundData } from "../../../../../constants/lab7";
 
 class SimulationSummary extends Component {
     constructor(props) {
         super(props);
-        this.state = { componentName: "SimSummary", phase: "1" };
+        this.state = {
+            componentName: "SimSummary",
+            updateerror: true
+        };
     }
 
     // should appear if AI improved (Updated)
@@ -30,15 +35,26 @@ class SimulationSummary extends Component {
                     Simulation Summary
                 </p>
 
-                <Collapsible/>
+                <div >
+                    <div className="scoreTally">
+                        <Score/>
+                    </div>
+                    
+                    <div className="collapsible">
+                        {roundData.map(({title, content}) =>(
+                            <Collapsible title={title} content={content} />
+                        ))}
+                    </div>
+                </div>
 
-                <button
+                {/* <button
                     className="btn btn-primary text-black btn-xl text-uppercase"
                     onClick={this.handleUpdate}
                     key="update"
+                    disabled={this.state.updateerror}
                 >
                     Update
-                </button>
+                </button> */}
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase"
                     onClick={this.handleContinue}
