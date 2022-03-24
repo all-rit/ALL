@@ -47,14 +47,15 @@ class SimulationSummary extends Component {
                     </div>
                 </div>
 
-                {/* <button
+                <button
                     className="btn btn-primary text-black btn-xl text-uppercase"
                     onClick={this.handleUpdate}
                     key="update"
                     disabled={this.state.updateerror}
                 >
                     Update
-                </button> */}
+                </button>
+                
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase"
                     onClick={this.handleContinue}

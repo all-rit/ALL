@@ -1,8 +1,13 @@
+p {
+    text-align: center;
+    padding: 10px;
+}
 
 .scoreTally {
     width: auto;
     margin: auto;
     background-color: cornsilk;
+    max-width: 900px;
 }
 
 .scoreItem {
@@ -14,15 +19,11 @@
     font-size: 20px;
     text-align: center;
     float: left;
-    margin: 2rem auto;
 }
 
 .scoreDetails {
-    
     margin: 2rem auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 2rem auto;
-
 }
