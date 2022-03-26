@@ -10,12 +10,10 @@ const CreateText = () => {
     
     const [author, setAuthor] = useState('Claire');
 
-    
-
     return (
         <div className="createText">
             <h2>Add new input</h2>
-            {/* //change to onclick?? */}
+            {/* change to onclick?? */}
             <form onSubmit={''}>
                 <label>Chat Box</label>
                 <input
@@ -33,7 +31,7 @@ const CreateText = () => {
                 <select
                     value= {author}
                     //hopefully start to changing usernames of people in textbox.
-                    onChange={(e) => setAuthor(e.target.value)}
+                    onClick={(e) => setAuthor(e.target.value)}
                 >
                 <option value="Claire">Claire</option>
                 <option value="Blake">Blake</option>
