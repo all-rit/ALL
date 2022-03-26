@@ -15,6 +15,7 @@
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",
     "classnames": "latest",
+    "clsx": "^1.1.1",
     "hex-to-rgba": "^2.0.1",
     "immutability-helper": "^3.1.1",
     "node-sass": "^7.0.1",
@@ -33,7 +34,7 @@
     "react-social-icons": "^5.10.0",
     "react-spinners": "^0.10.6",
     "react-xml-parser": "^1.1.8",
-    "reactstrap": "^8.10.0",
+    "reactstrap": "8.10.0",
     "redux": "latest",
     "redux-saga": "latest",
     "typescript": "^4.5.5",
@@ -56,7 +57,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.8",
     "react-google-button": "^0.7.2",
-    "redux-devtools": "^3.7.0"
+    "redux-devtools": "^3.7.0",
+    "tailwindcss": "^3.0.23"
   }
 }

@@ -1,4 +1,4 @@
-import {Sections} from "../constants/index";
+import { Sections } from "../constants/index";
 import { navigate } from "@reach/router";
 
 export const handleRedirect = (actions, lab, body = 0) => {
@@ -13,37 +13,37 @@ export const handleRedirect = (actions, lab, body = 0) => {
 
 
 }
-export const stateChange = (actions, pathname) =>{
+export const stateChange = (actions, pathname) => {
     let parsed = pathname.split('/');
-    parsed =parsed.filter(x => x !== "");
+    parsed = parsed.filter(x => x !== "");
     let redirect_lab = null;
     let redirect_body = null;
     let noMatch = false;
-    if (parsed.length=== 0){ //if url is all.rit.edu
+    if (parsed.length === 0) { //if url is all.rit.edu
         actions.setLab(0);
         actions.setBody(0);
         return;
     }
     let [labs, bodies] = getLabsBodies();
-    if(parsed.length ===1){ //if url is all.rit.edu/{Lab} or all.rit.edu/{homebody}
+    if (parsed.length === 1) { //if url is all.rit.edu/{Lab} or all.rit.edu/{homebody}
         let bodies = getLabsBodies(true);//check for home body like sitemap first
-        redirect_body= bodies.includes(parsed[0]) ? parsed[0] : null;
+        redirect_body = bodies.includes(parsed[0]) ? parsed[0] : null;
         redirect_lab = "";
-        if(!redirect_body){ //means it wasn't a valid home page body, so check lab
-            redirect_lab= labs.includes(parsed[0]) ? parsed[0] : null;
+        if (!redirect_body) { //means it wasn't a valid home page body, so check lab
+            redirect_lab = labs.includes(parsed[0]) ? parsed[0] : null;
             redirect_body = "";
         }
     }
-    else{
+    else {
         parsed.filter(string => { //checks for all.rit.edu/{Lab}/{Something}
             bodies.forEach(word => {
-                if (string === word && !redirect_body){
+                if (string === word && !redirect_body) {
                     redirect_body = word;
                 }
 
             })
             labs.forEach(word => {
-                if (string === word && !redirect_lab){
+                if (string === word && !redirect_lab) {
                     redirect_lab = word;
                 }
             })
@@ -67,8 +67,8 @@ export const stateChange = (actions, pathname) =>{
             actions.setLab(5);
             break;
         case "Lab6":
-                actions.setLab(6);
-                break;
+            actions.setLab(6);
+            break;
         case "Lab7":
             actions.setLab(7);
             break;
@@ -112,31 +112,31 @@ export const stateChange = (actions, pathname) =>{
             break;
         default:
             actions.setBody(0);
-            if(redirect_body !== ""){
+            if (redirect_body !== "") {
                 noMatch = true;
             }
             break;
     }
-    if (noMatch){
+    if (noMatch) {
         actions.setBody(0);
         actions.setLab(0);
     }
-    
+
 }
-const getLabsBodies =(home = false)=>{
-    let labs=[];
-    let bodies=[];
-    for (let lab in Sections){
-        if(home){ lab =0}
+const getLabsBodies = (home = false) => {
+    let labs = [];
+    let bodies = [];
+    for (let lab in Sections) {
+        if (home) { lab = 0 }
         labs.push(Sections[lab].name);
-        for (let body in Sections[lab]){
-            if(bodies.indexOf(Sections[lab][body].name)=== -1){
+        for (let body in Sections[lab]) {
+            if (bodies.indexOf(Sections[lab][body].name) === -1) {
                 bodies.push(Sections[lab][body].name);
             }
 
         }
     }
-    if(home){
+    if (home) {
         return bodies;
     }
     return [labs, bodies];
