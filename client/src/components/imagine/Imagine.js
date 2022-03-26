@@ -10,7 +10,16 @@ const Imagine = (props)=>{
     const {user} = props;
 
     return(
-        
+        <section className="page-section">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12 text-center">
+                        <h2 className="section-heading text-uppercase">
+                                ImagineRIT '22
+                        </h2>
+                    </div>
+                </div>
+            </div>
         <div className="container bottomSpace" >
             <Router className="app">
                 <ImagineStart path="/" user={user}/>
@@ -20,6 +29,7 @@ const Imagine = (props)=>{
                 <ImagineEnd path="/End" user={user}/>
             </Router>
         </div>
+        </section>
     )
 }
 

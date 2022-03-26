@@ -72,11 +72,16 @@ export const stateChange = (actions, pathname) =>{
         case "Lab7":
             actions.setLab(7);
             break;
+        case "Imagine":
+            actions.setLab(0);
+            break;
         case "":
             actions.setLab(0);
             break;
         default:
-            noMatch = true;
+            if(redirect_body!=="Imagine"){
+                noMatch = true;
+            }
             actions.setLab(0);
             break;
     }
