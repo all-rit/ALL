@@ -15,7 +15,7 @@ const CreateText = () => {
     return (
         <div className="createText">
             <h2>Add new input</h2>
-            //change to onclick??
+            {/* //change to onclick?? */}
             <form onSubmit={''}>
                 <label>Chat Box</label>
                 <input
