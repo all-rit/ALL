@@ -30,63 +30,68 @@ const ProfileGeneration = (props) => {
   const [teamInformation, setTeamInformation] = useState(null);
   const [alumniInformation, setAlumniInformation] = useState(null);
 
-
-  useEffect(() => {
-    if (!professorInformation) {
-      TeamMemberService.getAllProfessors().then((data) => {
-        setProfessorInformation(data)
-      })
-    }
-    if (!teamInformation) {
-      TeamMemberService.getAllTeamMembers().then((data) => {
-        setTeamInformation(data)
-      })
-    }
-    if (!alumniInformation) {
-      TeamMemberService.getAllAlumni().then((data) => {
-        setAlumniInformation(data)
-      })
-    }
-    // eslint-disable-next-line
-  }, [])
-  return (
-    <section className="page-section landingpage__pagesection" >
-      <div className="container" >
-        <div className="row">
-          <div className="col-lg-12 text-center">
-            <h2 className="section-heading text-uppercase">Team Members</h2>
-            <h3 className="section-subheading " >
-              Meet our team.
-            </h3>
+    useEffect(()=>{
+        if(!professorInformation){
+            TeamMemberService.getAllProfessors().then((data)=>{
+                setProfessorInformation(data)
+            })
+        }
+        if(!teamInformation){
+            TeamMemberService.getAllTeamMembers().then((data)=>{
+                setTeamInformation(data)
+            })
+        }
+        if(!alumniInformation){
+          TeamMemberService.getAllAlumni().then((data)=>{
+                setAlumniInformation(data)
+          })
+        }
+        // eslint-disable-next-line
+    },[])
+    return(
+        <section className="page-section landingpage__pagesection" >
+          <div className="container" >
+              <div className="row">
+                <div className="col-lg-12 text-center">
+                  <h2 className="section-heading text-uppercase">Team Members</h2>
+                  <h3 className="section-subheading " >
+                    Meet our team.
+                  </h3>
+                </div>
+              </div>
+                  <div className="landingpage__row">
+                    <div alt="professors" className="landingpage__row">
+                      {!professorInformation ? <Spinner />:
+                        <>
+                          {professorInformation ? renderProfileData(professorInformation) : <Spinner />}
+                        </> 
+                      }
+                    </div>
+                  </div>
+                  <div className="landingpage__row">
+                    {!teamInformation ? <Spinner />:
+                      <>
+                        {teamInformation ? <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData} /> : <Spinner />}
+                      </> 
+                    }
+                  </div>
+                  <div className="alumni-row">
+                    <div className="col-lg-12 text-center">
+                      <h2 className="section-heading text-uppercase">Alumni</h2>
+                      <h3 className="section-subheading " >
+                        Meet the past members of our team.
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="landingpage__row">
+                  {!alumniInformation ? <Spinner />:
+                      <>
+                        {alumniInformation ? <SlideSet teamInformation={alumniInformation} renderProfileData={renderProfileData} /> : <Spinner />}
+                      </> 
+                    }
+                  </div>
           </div>
-        </div>
-        {!professorInformation && !teamInformation && !alumniInformation ?
-          <div className="landingpage__row">
-            <Spinner />
-          </div> :
-          <>
-            <div className="landingpage__row">
-              <div alt="professors" className="landingpage__row">
-                {renderProfileData(professorInformation)}
-              </div>
-            </div>
-            <div className="landingpage__row">
-              {teamInformation ? <SlideSet teamInformation={teamInformation} renderProfileData={renderProfileData} /> : <></>}
-            </div>
-            <div className="alumni-row">
-              <div className="col-lg-12 text-center">
-                <h2 className="section-heading text-uppercase">Alumni</h2>
-                <h3 className="section-subheading " >
-                  Meet the past members of our team.
-                </h3>
-              </div>
-            </div>
-            <div className="landingpage__row">
-              {alumniInformation ? <SlideSet teamInformation={alumniInformation} renderProfileData={renderProfileData} /> : <></>}
-            </div>
-          </>}
-      </div>
-    </section>
+      </section>
   );
 }
 

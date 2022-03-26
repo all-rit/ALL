@@ -73,7 +73,7 @@ const SlideSet = (props) =>{
     return(
         <>
             {slideSet ?
-                <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+                <Carousel activeIndex={activeIndex} next={next} previous={previous} ride="carousel">
                 {slideSet}
                 <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
                 <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
