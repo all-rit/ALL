@@ -10,7 +10,7 @@ const CreateText = () => {
     
     const [author, setAuthor] = useState('Claire');
 
-    cont
+    
 
     return (
         <div className="createText">
