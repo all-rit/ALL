@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { gridMockData } from '../../../mockData/gridMockData'
 import clsx from "clsx";
 
-const GridImages = () => {
+const GridImages = (props) => {
 	// to test this component, go to
 	// localhost:3000/gridimages
-	const [currentFile, setCurrentFile] = useState({})
+
+	const {multi,avatar,setAvatar} = props;
+
+	// const [currentFile, setCurrentFile] = useState({})
 	const [id, setId] = useState('')
 	const [active, setActive] = useState(false)
 
@@ -13,10 +16,10 @@ const GridImages = () => {
 
 	const handleGridImage = (e,id) => {
 		e.preventDefault();
-		console.log(e.target,'e')
+		//console.log(e.target,'e')
 		setId(id)
 		const selectImg = gridMockData.filter(img => img.id === id)?.[0]
-		setCurrentFile(selectImg)
+		setAvatar(selectImg)
 	}
 
 	const handleKeyPress = (e,id) =>{
@@ -25,7 +28,7 @@ const GridImages = () => {
 
 	const handleEsc = (e) => {
 		if (e.key === "Escape") {
-			setCurrentFile({})
+			setAvatar({})
 			setActive(false)
 		};
 	};
@@ -39,7 +42,7 @@ const GridImages = () => {
 		return () => {
 			window.removeEventListener("keydown", handleEsc);
 		};
-	}, [currentFile, active]);
+	}, [avatar, active]);
 
 
 
@@ -49,11 +52,10 @@ const GridImages = () => {
 
 	const gridImageClassnames = clsx({
 		"tw-cursor-pointer": true,
-		'tw-opacity-50': active,
-		"tw-border-double tw-border-8":active
+		'tw-opacity-50 tw-border-double tw-border-8': active
 	});
 
-	console.log(currentFile)
+	console.log(avatar)
 	console.log(id)
 	console.log(active)
 	return (
@@ -68,7 +70,7 @@ const GridImages = () => {
 						handleKeyPress(e,data.id) 
 						setActive(true)}}
 					>
-						<img tabIndex={0} 	className={currentFile.id === data.id ? gridImageClassnames : ''} src={data.img} alt={data.name} />
+						<img tabIndex={0} 	className={avatar.id === data.id ? gridImageClassnames : ''} src={data.img} alt={data.name} />
 					</div>
 				</>
 			))
