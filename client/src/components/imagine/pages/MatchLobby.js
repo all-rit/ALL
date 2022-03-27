@@ -107,14 +107,21 @@ const MatchLobby = (props) => {
                     //input the text into the new box by declaring new variables. */}
                 </Form> 
                 
-                <div> Previous messages:
                 
+                <div> Previous messages:
+                    
+                <ul>
+             
+               
                 {
+           
                     messages.map((a)=> <div>
                         <li>{a.chatText}</li>
                         </div>)
+
                 }
-             
+               
+                </ul>
                 </div>
                 
 
