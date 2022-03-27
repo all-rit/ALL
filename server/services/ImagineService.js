@@ -15,7 +15,7 @@ exports.userAvatar = (data)=> {
             ).then((user) => {
                 if (user !== null) {
                     user.avatar = avatar;
-                    Imagine.save();
+                    user.save();
                 } else {
                     db.Imagine.create({
                         userid: userID,
@@ -39,13 +39,13 @@ exports.userSquad = (data)=> {
             .findOne({
                     where:
                         {
-                            userID: userID,
+                            userid: userID,
                         }
                 }
             ).then((user) => {
                 if (user !== null) {
                     user.squad = squad;
-                    Imagine.save();
+                    user.save();
                 } else {
                     db.Imagine.create({
                         userid: userID,
@@ -71,13 +71,13 @@ exports.userLobbyMessages = (data)=> {
             .findOne({
                     where:
                         {
-                            userID: userID,
+                            userid: userID,
                         }
                 }
             ).then((user) => {
                 if (user !== null) {
                     user.lobbyMessages = lobbyMessages;
-                    Imagine.save();
+                    user.save();
                 } else {
                     db.Imagine.create({
                         userid: userID,

@@ -8,9 +8,32 @@ const GridImages = (props) => {
 
 	const {multi,avatar,setAvatar} = props;
 
+	const [data,setData] = useState([]);
+
 	// const [currentFile, setCurrentFile] = useState({})
 	const [id, setId] = useState('')
 	const [active, setActive] = useState(false)
+
+	const shuffleArray = (array) =>{
+		let currentIndex = array.length,
+			temporaryValue,
+			randomIndex;
+	
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+	
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+	
+		return array;
+	  }
+
 
 
 
@@ -18,7 +41,7 @@ const GridImages = (props) => {
 		e.preventDefault();
 		//console.log(e.target,'e')
 		setId(id)
-		const selectImg = gridMockData.filter(img => img.id === id)?.[0]
+		const selectImg = data?.filter(img => img.id === id)?.[0]
 		setAvatar(selectImg)
 	}
 
@@ -32,6 +55,13 @@ const GridImages = (props) => {
 			setActive(false)
 		};
 	};
+
+	useEffect(()=>{
+		shuffleArray(gridMockData)
+		gridMockData.length=15;
+		setData(gridMockData);
+		setActive(false)
+	},[multi])
 
 	useEffect(() => {
 		if (active) {
@@ -60,7 +90,7 @@ const GridImages = (props) => {
 	console.log(active)
 	return (
 		<div class="tw-container tw-mx-auto tw-space-y-2 md:tw-space-y-0 md:tw-gap-2 md:tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-5 tw-p-2 ">
-			{gridMockData?.map(data => (
+			{data?.map(data => (
 				<>
 					<div class={gridImagesClassnames} onClick={(e) => {
 						handleGridImage(e,data.id);

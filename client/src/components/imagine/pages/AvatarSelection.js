@@ -14,7 +14,7 @@ const AvatarSelection = (props)=>{
     const [squad, setSquad] = useState([])
 
     const handleAvatarSelection = () =>{
-        if(avatar){
+        if(Object.keys(avatar).length !== 0){
             ImagineService.userAvatar(user.userid,avatar)
             setSquadSelection(true)
         }
@@ -37,7 +37,7 @@ const AvatarSelection = (props)=>{
                 </div>
                 
                 <div className="moduleContainer tw-mb-5">
-                    <GridImages multi={false} avatar={avatar} setAvatar={setAvatar}/>
+                    <GridImages multi={squadSelection} avatar={avatar} setAvatar={setAvatar}/>
                 </div>
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
@@ -55,7 +55,7 @@ const AvatarSelection = (props)=>{
                 </div>
                 
                 <div className="moduleContainer tw-mb-5">
-                    <GridImages multi={false} avatar={avatar} setAvatar={setAvatar}/>
+                    <GridImages multi={squadSelection} avatar={avatar} setAvatar={setAvatar}/>
                 </div>
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
