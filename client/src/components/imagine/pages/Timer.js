@@ -15,6 +15,8 @@ class Timer extends Component{
     //Renderer for system
 
     //Randomly generates a number for the timer??
+        //length of time is going to depend on groups
+    
     compenentDidMount() {
         this.interval = setInterval (
             () => this.setState({ secondsLeft: this.state.secondsLeft - 1}, ()=>this.checkExpired()),
@@ -47,7 +49,8 @@ class Timer extends Component{
                 <div className="timer">
                     <div><b>Seconds Until Penalty is Lifted</b></div>
                     <div className="timer__window">
-                        0 : {this.state.secondsLeft < 60 ? "0": ""}{this.state.secondsLeft}
+                        0 : {this.state.secondsLeft < this.props.seconds ? "0": ""}{this.state.secondsLeft}
+                        {/* //will take whatever fixed time in seconds */}
                     </div>
                 </div>
             </div>
@@ -55,4 +58,4 @@ class Timer extends Component{
     }
 }
 
-export default Timer;//this allows a single object to be exported??
+export default Timer;

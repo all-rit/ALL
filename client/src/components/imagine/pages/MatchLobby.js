@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css"
 import { navigate } from "@reach/router";
-import { Form, Row } from "reactstrap";
-
+import Timer from "./Timer";
 
 const MatchLobby = (props)=>{
 
@@ -61,43 +60,7 @@ const MatchLobby = (props)=>{
                     </tbody>
                 </table>
             </div>
-                    <div className="PlayerBoard2">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Opponent</td>
-                            <td>2/5/5</td>
-                            <td>Waiting</td>
-                            <td>None</td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td>Opponent</td>
-                            <td>2/8/2</td>
-                            <td>In Game</td>
-                            <td>None</td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td>Opponent</td>
-                            <td>2/3/3</td>
-                            <td>In Game</td>
-                            <td>None</td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td>Opponent</td>
-                            <td>3/5/0</td>
-                            <td>Waiting</td>
-                            <td>Bias</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
+            <Timer></Timer>
             <button
               className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {handleNext}
