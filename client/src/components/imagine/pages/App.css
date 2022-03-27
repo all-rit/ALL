@@ -1,0 +1,47 @@
+.Match-Lobby {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+ th,
+ td {
+    border: 1px;
+    text-align: center;
+    padding: 8px;
+    font-size: 32px;
+}
+
+th {
+    background-color: white;
+}
+
+.PlayerBoard  td {
+    background-color: blue;
+    color: white;
+}
+
+.PlayerBoard2  td {
+    background-color: red;
+    color: black;
+}
+
+form {
+    display: flex;
+    gap: 5px;
+}
+
+form td:last-child {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+form * {
+    font-size: 28px;
+}
