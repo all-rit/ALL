@@ -17,6 +17,10 @@ const MatchLobby = (props) => {
     const [chatText, setChatText] = useState("");
     const [messages, setMessages] = useState([]);
 
+    //fake user A already has message under prev messages,
+    //after real user inputs, 
+    //then after a certain amt of time, have next message autogenerate
+    //after certain amt of time.
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,35 +38,10 @@ const MatchLobby = (props) => {
     //     navigate("");
     // }
 
-
-    //class doesn't do anything yet, may not use later
-    class TextAppearanceInBox extends Component {
-        render() {
-            const { visible, inputRevealed } = this.props;
-            const message = inputRevealed ? chatText:chatText;
-    
-            if (!visible) return null;
-    
-            return message;
-        }
-    }
-
-    // ReactDOM.render(element, document.getElementById('root'));
-
-    // const ChatBox = (props) => {
-    //     const handleNext = () => {
-    //         navigate("");
-    //     }
-    // }
+  
     return (
 
-        // <div className="mb-3">
-        //     <InputGroup.Prepend>
-        //     <Button variant="outline-primary">click me</Button>
-        //     </InputGroup.Prepend>
-        
-        // </InputGroup>
-        //     </div>
+       
 
 
         <div className="container bottomSpace" >
@@ -109,10 +88,12 @@ const MatchLobby = (props) => {
                 
                 
                 <div> Previous messages:
+
+               
                     
                 <ul>
              
-               
+             {/* //use css styling to have input in box */}
                 {
            
                     messages.map((a)=> <div>
@@ -122,6 +103,9 @@ const MatchLobby = (props) => {
                 }
                
                 </ul>
+
+          
+             
                 </div>
                 
 
