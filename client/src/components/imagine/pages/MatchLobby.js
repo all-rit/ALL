@@ -158,12 +158,10 @@ const MatchLobby = (props) => {
                 
                 {
 
-
-                
                     messages.map((a)=> <div style={mystyle}>
                         
-
-                        <li>{a.chatText}</li>
+                        {/* //input user is whatever name the user assigns themselves earlier on */}
+                        <li>{"Input User: " + a.chatText}</li>
 
                         <li>{RandomPersonC}</li>
 
