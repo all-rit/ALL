@@ -23,11 +23,29 @@ const MatchLobby = (props) => {
         padding: "5px",
         border: "solid-black",
         boxsizing: "border-box",
-        display: "block"
-
-
-
+        display: "list-item"
+        
     }
+
+    var names = [
+        'PikachuRising',
+        'Your Mama',
+        'Bruce Wayne',
+        'Baby Yoda',
+        'GroguForce',
+        'MilesMorales',
+        'Ultimate Spider-Man',
+        "Tobey's Spider-Man is the Best",
+        'Secret Santa'
+    ];
+
+    const randomName = names[Math.floor(Math.random() * names.length)] ;
+    const randomName2 = names[Math.floor(Math.random() * names.length)];
+    const randomName3 = names[Math.floor(Math.random() * names.length)];
+   
+    var RandomPersonA = randomName + ": " + "This waiting sucks!" 
+    var RandomPersonB = randomName2 + ": " + "Why can't I get into the game?!"
+    var RandomPersonC = randomName3 + ": " + "Yeah, it's kind of whack."
 
     //fake user A already has message under prev messages,
     //after real user inputs, 
@@ -85,6 +103,7 @@ const MatchLobby = (props) => {
                         id= "chatbox"
                         onChange={e => setChatText(e.target.value)}
                         onClick={e => setChatText(e.target.value)}
+                       
                         // {...TextAppearanceInBox}
 
                     />
@@ -98,29 +117,44 @@ const MatchLobby = (props) => {
                     //input the text into the new box by declaring new variables. */}
                 </Form> 
                 
-                
+                    
+   
                 <div className= 'prevMess' extends Component> 
                 Previous messages:
                 
-
-               
                     
                 <ul style ={{backgroundColor: "grey"}}>
+
+                <li>{RandomPersonA}</li>
+
+                <li>{RandomPersonB}</li>
              
              {/* //use css styling to have input in box */}
+             
+         
                 
-                {/* <li>SuperSanta: This is unfair!</li> */}
                 {
-                  
-           
+
+
+                
                     messages.map((a)=> <div style={mystyle}>
                         
+
                         <li>{a.chatText}</li>
+
+                        <li>{RandomPersonC}</li>
+
+                        
                         </div>)
 
+                      
                 }
-               
 
+                    
+
+                    
+               
+              
                 </ul>
           
              
