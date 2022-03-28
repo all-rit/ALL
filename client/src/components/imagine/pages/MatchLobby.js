@@ -39,13 +39,36 @@ const MatchLobby = (props) => {
         'Secret Santa'
     ];
 
+    //gives general complaints
+    var fakeUserABMessages = [
+        'This waiting sucks!',
+        "Why can't I get into the game?!",
+        "This loading is taking forever",
+        "Worst...wait...ever"
+    ]
+
+    //Generates the response to the input user, so has to agree/disagree
+    var fakeUserCMessages = [
+        "Yeah, it's kind of whack",
+        "Hopefully, it'll let us in soon..."
+    ]
+
+
+    //randomly sorts through names of fake users
     const randomName = names[Math.floor(Math.random() * names.length)] ;
     const randomName2 = names[Math.floor(Math.random() * names.length)];
     const randomName3 = names[Math.floor(Math.random() * names.length)];
+
+    //randomly sorts thru fake user responses
+    const randomAMessages = fakeUserABMessages[Math.floor(Math.random() * fakeUserABMessages.length)];
+    const randomBMessages = fakeUserABMessages[Math.floor(Math.random() * fakeUserABMessages.length)];
+    const randomCMessages = fakeUserCMessages[Math.floor(Math.random() * fakeUserCMessages.length)];
+
+
    
-    var RandomPersonA = randomName + ": " + "This waiting sucks!" 
-    var RandomPersonB = randomName2 + ": " + "Why can't I get into the game?!"
-    var RandomPersonC = randomName3 + ": " + "Yeah, it's kind of whack."
+    var RandomPersonA = randomName + ": " + randomAMessages
+    var RandomPersonB = randomName2 + ": " + randomBMessages
+    var RandomPersonC = randomName3 + ": " + randomCMessages
 
     //fake user A already has message under prev messages,
     //after real user inputs, 
