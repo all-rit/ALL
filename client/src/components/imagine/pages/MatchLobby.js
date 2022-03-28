@@ -17,6 +17,18 @@ const MatchLobby = (props) => {
     const [chatText, setChatText] = useState("");
     const [messages, setMessages] = useState([]);
 
+    const mystyle = {
+        borderradius: "4px",
+        fontsize: "16px",
+        padding: "5px",
+        border: "solid-black",
+        boxsizing: "border-box",
+        display: "block"
+
+
+
+    }
+
     //fake user A already has message under prev messages,
     //after real user inputs, 
     //then after a certain amt of time, have next message autogenerate
@@ -87,36 +99,43 @@ const MatchLobby = (props) => {
                 </Form> 
                 
                 
-                <div> Previous messages:
+                <div className= 'prevMess' extends Component> 
+                Previous messages:
+                
 
                
                     
-                <ul>
+                <ul style ={{backgroundColor: "grey"}}>
              
              {/* //use css styling to have input in box */}
+                
+                {/* <li>SuperSanta: This is unfair!</li> */}
                 {
+                  
            
-                    messages.map((a)=> <div>
+                    messages.map((a)=> <div style={mystyle}>
+                        
                         <li>{a.chatText}</li>
                         </div>)
 
                 }
                
-                </ul>
 
+                </ul>
           
              
                 </div>
                 
-
+           
             </div>
-
+ 
+    
             
 
             
         </div>
 
-        
+    
 
         
     )
@@ -125,5 +144,7 @@ const MatchLobby = (props) => {
 
 
 }
+
+
 
 export default MatchLobby;
