@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { navigate } from "@reach/router";
-import GridImages from "./../../body/lab/GridImages/GridImages"
+import GridImages from "../../body/lab/GridImages/GridImages";
 import ImagineService from "../../../services/ImagineService";
+
 const AvatarSelection = (props)=>{
     const {user}=props;
     const handleNext= ()=>{
@@ -10,19 +11,21 @@ const AvatarSelection = (props)=>{
 
     const [squadSelection,setSquadSelection]=useState(false);
 
-    const [avatar, setAvatar] = useState({})
+    const [avatar, setAvatar] = useState([])
     const [squad, setSquad] = useState([])
 
     const handleAvatarSelection = () =>{
-        if(Object.keys(avatar).length !== 0){
+        if(avatar.length !== 0){
             ImagineService.userAvatar(user.userid,avatar)
             setSquadSelection(true)
         }
     }
 
     const handleSquadSelection = () =>{
-
-        handleNext()
+        if(squad.length === 3){
+            ImagineService.userSquad(user.userid,squad)
+            handleNext()
+        }
     }
 
 
@@ -36,9 +39,8 @@ const AvatarSelection = (props)=>{
                     Choose the avatar you would like to use for the game!
                 </div>
                 
-                <div className="moduleContainer tw-mb-5">
-                    <GridImages multi={squadSelection} avatar={avatar} setAvatar={setAvatar}/>
-                </div>
+                <GridImages multi={1} setSelection={setAvatar}/>
+
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick = {handleAvatarSelection}
@@ -54,9 +56,8 @@ const AvatarSelection = (props)=>{
                     Choose the members of your squad from this group of active players.
                 </div>
                 
-                <div className="moduleContainer tw-mb-5">
-                    <GridImages multi={squadSelection} avatar={avatar} setAvatar={setAvatar}/>
-                </div>
+                <GridImages multi={3} setSelection={setSquad}/>
+
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick = {handleSquadSelection}

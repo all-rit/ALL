@@ -11,8 +11,8 @@ exports.userAvatar = (req, res) => {
 
 exports.userSquad = (req, res) => {
     ImagineService.userSquad({
-            userID: req.params.userID,
-            squad: req.params.squad
+            userID: req.body.userID,
+            squad: req.body.squad
         }).then(() => {
             res.sendStatus(200);
         })
@@ -20,8 +20,8 @@ exports.userSquad = (req, res) => {
 
 exports.userLobbyMessages = (req, res) => {
     ImagineService.userLobbyMessages({
-            userID: req.params.userID,
-            lobbyMessages: req.params.lobbyMessages
+            userID: req.body.userID,
+            lobbyMessages: req.body.lobbyMessages
         }).then(() => {
             res.sendStatus(200);
         })
