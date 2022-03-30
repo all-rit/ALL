@@ -21,54 +21,80 @@ const MatchLobby = (props) => {
         borderradius: "4px",
         fontsize: "16px",
         padding: "5px",
-        border: "solid-black",
+        border: "black",
         boxsizing: "border-box",
-        display: "list-item"
-        
+        display: "list-item",
+        textAlign: 'left',
     }
 
-    var names = [
+
+    // created different names so there are no repeated names
+    var names1 = [
         'PikachuRising',
         'Your Mama',
         'Bruce Wayne',
         'Baby Yoda',
-        'GroguForce',
+        'GroguForce'
+    ];
+
+    var names2 = [
         'MilesMorales',
         'Ultimate Spider-Man',
         "Tobey's Spider-Man is the Best",
-        'Secret Santa'
+        'Secret Santa',
+        'Artemis'  
     ];
 
-    //gives general complaints
-    var fakeUserABMessages = [
+    var names3 = [
+        'Avenger',
+        'Electron',
+        'Dr. Squid',
+        'Martian_Manhunter',
+        'Gauntlet',
+        'Hurricane'
+    ];
+
+
+
+    //gives general complaints and will now have no repeated comments
+    var fakeUserAMessages = [
         'This waiting sucks!',
         "Why can't I get into the game?!",
-        "This loading is taking forever",
-        "Worst...wait...ever"
-    ]
+        "This loading is taking forever"
+        
+    ];
+
+    var fakeUserBMessages = [
+        "Worst...wait...ever",
+        "If this waiting continues I may leave soon...",
+        "Can this be any slower?",
+        "Please load faster..."
+    ];
+
+
 
     //Generates the response to the input user, so has to agree/disagree
     var fakeUserCMessages = [
         "Yeah, it's kind of whack",
         "Hopefully, it'll let us in soon..."
-    ]
+    ];
 
 
     //randomly sorts through names of fake users
-    const randomName = names[Math.floor(Math.random() * names.length)] ;
-    const randomName2 = names[Math.floor(Math.random() * names.length)];
-    const randomName3 = names[Math.floor(Math.random() * names.length)];
+    const randomName = names1[Math.floor(Math.random() * names1.length)] ;
+    const randomName2 = names2[Math.floor(Math.random() * names2.length)];
+    const randomName3 = names3[Math.floor(Math.random() * names3.length)];
 
     //randomly sorts thru fake user responses
-    const randomAMessages = fakeUserABMessages[Math.floor(Math.random() * fakeUserABMessages.length)];
-    const randomBMessages = fakeUserABMessages[Math.floor(Math.random() * fakeUserABMessages.length)];
+    const randomAMessages = fakeUserAMessages[Math.floor(Math.random() * fakeUserAMessages.length)];
+    const randomBMessages = fakeUserBMessages[Math.floor(Math.random() * fakeUserBMessages.length)];
     const randomCMessages = fakeUserCMessages[Math.floor(Math.random() * fakeUserCMessages.length)];
 
 
    
-    var RandomPersonA = randomName + ": " + randomAMessages
-    var RandomPersonB = randomName2 + ": " + randomBMessages
-    var RandomPersonC = randomName3 + ": " + randomCMessages
+    var RandomPersonA = randomName + ": " + randomAMessages;
+    var RandomPersonB = randomName2 + ": " + randomBMessages;
+    var RandomPersonC = randomName3 + ": " + randomCMessages;
 
     //fake user A already has message under prev messages,
     //after real user inputs, 
@@ -94,9 +120,6 @@ const MatchLobby = (props) => {
   
     return (
 
-       
-
-
         <div className="container bottomSpace" >
             <div>
                 MatchLobby
@@ -109,12 +132,35 @@ const MatchLobby = (props) => {
                 Continue
             </button>
 
+
+
+
             <ul>
                 {messages.forEach(msg=> <li>{msg}</li>)}
             </ul>
 
 
-            <div className='chatbox' extends Component>
+            <div className='prevMess'> 
+                  
+                <ul style ={{backgroundColor: "grey", color: "white", textAlign: "left"}}>
+                <li>{RandomPersonA}</li>
+                <li>{RandomPersonB}</li>
+             
+             {/* //use css styling to have input in box */}   
+                {
+                    messages.map((a)=> <div style={mystyle}>
+                        
+                        {/* //input user is whatever name the user assigns themselves earlier on */}
+                        <li>{"Input User: " + a.chatText}</li>
+
+                        <li>{RandomPersonC}</li>
+                        
+                        </div>)    
+                }
+                </ul>
+
+
+            <div className='chatbox'>
                 <div>
                     ChatBox
                 </div>
@@ -130,73 +176,30 @@ const MatchLobby = (props) => {
                         // {...TextAppearanceInBox}
 
                     />
-                    <Input
+                    <Button
+                    type= "submit"
+                    name= "submit"
+                    id= "submit"
+                    value= "Submit"
+                    >
+                    Submit
+                    </Button>
+                    {/* <Input
                         type= "submit"
                         name= "submit"
                         id= "submit"
                         value= "Submit" 
-                    />
+                    /> */}
                     {/* //have another box, that takes the input, then from chatbox onclick
                     //input the text into the new box by declaring new variables. */}
                 </Form> 
-                
-                    
-   
-                <div className= 'prevMess' extends Component> 
-                Previous messages:
-                
-                    
-                <ul style ={{backgroundColor: "grey"}}>
-
-                <li>{RandomPersonA}</li>
-
-                <li>{RandomPersonB}</li>
-             
-             {/* //use css styling to have input in box */}
-             
-         
-                
-                {
-
-                    messages.map((a)=> <div style={mystyle}>
-                        
-                        {/* //input user is whatever name the user assigns themselves earlier on */}
-                        <li>{"Input User: " + a.chatText}</li>
-
-                        <li>{RandomPersonC}</li>
-
-                        
-                        </div>)
-
-                      
-                }
-
-                    
-
-                    
-               
-              
-                </ul>
-          
              
                 </div>
-                
-           
-            </div>
- 
-    
             
-
+            </div>
             
         </div>
-
-    
-
-        
     )
-
-    
-
 
 }
 
