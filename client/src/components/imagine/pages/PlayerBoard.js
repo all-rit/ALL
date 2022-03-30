@@ -1,26 +1,10 @@
-import React from "react";
+import React from "react";    
 import "./App.css"
-import { navigate } from "@reach/router";
-import { Form, Row } from "reactstrap";
-import PlayerBoard from "./PlayerBoard";
 
-
-const MatchLobby = (props)=>{
-
-    const handleNext= ()=>{ 
-        navigate("/Imagine/TicTacToe");
-    }
-
-    return(
-        
-        <div className="container bottomSpace" >
-            <div>
-                Match Lobby 
-            </div>
-
-            <PlayerBoard/>
-                        {/* <div className="PlayerBoard">
-            
+const PlayerBoard = () => { 
+    return  (
+        <div className="FullPB">
+            <div className="PlayerBoard">
                 <table>
                     <thead>
                         <tr>
@@ -64,7 +48,8 @@ const MatchLobby = (props)=>{
                     </tbody>
                 </table>
             </div>
-                    <div className="PlayerBoard2">
+
+            <div className="PlayerBoard2">
                 <table>
                     <tbody>
                         <tr>
@@ -99,17 +84,9 @@ const MatchLobby = (props)=>{
                         </tr>
                     </tbody>
                 </table>
-            </div> */}
-
-            <button
-              className="btn btn-primary text-black btn-xl text-uppercase "
-              onClick = {handleNext}
-              key="start"
-            >
-                Continue
-            </button>
             </div>
-    )
-}
+        </div>
+    );
+};
 
-export default MatchLobby;
+export default PlayerBoard;
