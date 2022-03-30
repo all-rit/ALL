@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css"
 import { navigate } from "@reach/router";
 import Timer from "./Timer";
 
 const MatchLobby = (props)=>{
-
+    const [ startDelay , setStartDelay] = useState(false);
     const handleNext= ()=>{
         navigate("/Imagine/TicTacToe");
+    }
+
+    const throwAlert = ()=>{
+        alert("Error: Bias Detected.");
     }
 
     return(
@@ -15,6 +19,13 @@ const MatchLobby = (props)=>{
             <div>
                 Match Lobby 
             </div>
+            <button
+                className="btn btn-warning btn-lg btn-block "
+                onClick={()=> throwAlert()}
+                key="Start"
+            >
+                Continue
+            </button>
 
             <div className="PlayerBoard">
                 <table>
@@ -60,7 +71,7 @@ const MatchLobby = (props)=>{
                     </tbody>
                 </table>
             </div>
-            <Timer></Timer>
+            <Timer seconds={30}/>
             <button
               className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {handleNext}
