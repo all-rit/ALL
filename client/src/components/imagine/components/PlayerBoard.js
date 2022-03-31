@@ -5,11 +5,14 @@ import GameStatus from "./GameStatus";
 import { gridMockData } from "../../mockData/gridMockData";
 import ImagineService from "../../../services/ImagineService";
 import Spinner from "../../../common/Spinner/Spinner";
+import Bias from "./Bias";
+import PenaltyStatus from "./PenaltyStatus";
 
 const PlayerBoard = (props) => { 
-    const {user,handleNext} = props;
+    const {user,handleNext,biasType} = props;
     const [team, setTeam] = useState([]);
     const [opposingTeam, setOpposingTeam] = useState([]);
+
 
     const shuffleArray = (array) =>{
 		let currentIndex = array.length,
@@ -42,44 +45,46 @@ const PlayerBoard = (props) => {
     
     return  (
         <div className="FullPB moduleContainer">
+            <Bias opposingTeam={opposingTeam} handleNext={handleNext} biasType={biasType}/>
             {team?.length!==0 ?
-                <table className="table">
-                        <thead>
-                            <tr>
-                                <th>NAME</th>
-                                <th>SCORE</th>
-                                <th>STATUS</th>
-                                <th>BIAS</th>
+                <>
+                    <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>SCORE</th>
+                                    <th>STATUS</th>
+                                    <th>PENALTY</th>
+                                </tr>
+                            </thead>
+                            <tr className="teamMember">
+                                <td>{user?.firstname != null ? user?.firstname+" "+ user?.lastinitial : "User#"+user?.userid}</td>
+                                <td>0/0/0</td>
+                                <td><GameStatus userType="user" handleNext={handleNext} biasType={biasType}/></td>
+                                <td><PenaltyStatus offender={biasType==="user"? true : false}/></td>
                             </tr>
-                        </thead>
-                        <tr className="teamMember">
-                            <td>{user?.firstname != null ? user?.firstname+" "+ user?.lastinitial : "User#"+user?.userid}</td>
-                            <td>0/0/0</td>
-                            <td><GameStatus userType="user" handleNext={handleNext}/></td>
-                            <td>None</td>
-                        </tr>
-                        {team?.map((data,index)=>{
-                            return(
-                                <tr className="teamMember" key={index}>
-                                    <td>{data.name}</td>
-                                    <td><GameScore/></td>
-                                    <td><GameStatus userType="teamMember"/></td>
-                                    <td>None</td>
-                                </tr>
-                            )
-                        })}
-                        {opposingTeam?.map((data,index)=>{
-                            return(
-                                <tr className="opposingMember" key={index}>
-                                    <td>{data.name}</td>
-                                    <td><GameScore/></td>
-                                    <td><GameStatus userType="opposingMember"/></td>
-                                    <td>None</td>
-                                </tr>
-                            )
-                        })}
-                </table>
-            
+                            {team?.map((data,index)=>{
+                                return(
+                                    <tr className="teamMember" key={index}>
+                                        <td>{data.name}</td>
+                                        <td><GameScore/></td>
+                                        <td><GameStatus userType="teamMember" biasType={biasType}/></td>
+                                        <td><PenaltyStatus offender={false}/></td>
+                                    </tr>
+                                )
+                            })}
+                            {opposingTeam?.map((data,index)=>{
+                                return(
+                                    <tr className="opposingMember" key={index}>
+                                        <td>{data.name}</td>
+                                        <td><GameScore/></td>
+                                        <td><GameStatus userType="opposingMember" biasType={"none"}/></td>
+                                        <td>None</td>
+                                    </tr>
+                                )
+                            })}
+                    </table>
+                </>
             :
                 <div className="landingpage__row">
                     <Spinner />
