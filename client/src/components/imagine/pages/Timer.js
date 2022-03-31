@@ -11,7 +11,7 @@ const Timer = ({seconds: startTime, finished}) => {//does it need to be "App"?
 
         return () => {
             clearInterval(timer.current);
-            timer.current = null;
+            timer.current = null;//safer to set to null
         }
     }, []);
 

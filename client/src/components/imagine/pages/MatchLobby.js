@@ -14,7 +14,7 @@ const MatchLobby = (props)=>{
     }
 
     const doWhenTimerFinished = () => {
-        alert("Hi!");//change this to rerout
+        alert("Now Joining Game...");//Notifies the user when they can join game
     }
 
     const [clicked, setClicked] = useState(false);
@@ -77,7 +77,7 @@ const MatchLobby = (props)=>{
             {/* change to any number */}
             <button
               className="btn btn-primary text-black btn-xl text-uppercase "
-              onClick = {()=> throwAlert()}//{handleNext}
+              onClick = {handleNext}//{()=> throwAlert()}{handleNext}
               key="start"
             >
                 Continue
