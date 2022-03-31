@@ -22,14 +22,7 @@ const RepairReducer = (state = initialState, action) => {
 				costvalue: action.costvalue,
 				changesApplied: true
 			};
-		case types.UPDATE_REPAIR_FORM:
-			return {
-				...state,
-				errorNotification: action.errorNotification,
-				successNotification: action.successNotification,
-				borderColor: action.borderColor,
-				changesApplied: true
-			};
+
 		case types.UPDATE_TAB:
 			return {
 				...state,
@@ -58,14 +51,6 @@ export const actions = {
 		type: types.UPDATE_REPAIR_EQUATION,
 		rewardvalue,
 		costvalue
-	}),
-	updateRepairForm: (errorNotification,
-					   successNotification,
-					   borderColor) => ({
-		type: types.UPDATE_REPAIR_FORM,
-		errorNotification,
-		successNotification,
-		borderColor
 	}),
 	updateTab: (tab) => ({ type: types.UPDATE_TAB, tab }),
 	openRepair: () => ({ type: types.OPEN_REPAIR }),

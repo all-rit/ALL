@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import PageServiceTimer from "../../../shared/PageServiceTimer";
-import { simTime, readTime } from "../../../../../constants/lab7";
 
 class AISimulation extends Component {
     constructor(props) {

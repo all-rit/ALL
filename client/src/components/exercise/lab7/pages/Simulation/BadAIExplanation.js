@@ -18,7 +18,7 @@ class BadAIExplanation extends Component {
                     As you can see, the AI made many mistakes when it came to managing file access when threats were detected in the system.
                 </p>
                 <p className="playthrough__sentence">
-                    This is due to the factors of the files that the AI is using to determine in a file's access should be restructed or not.
+                    This is due to the factors of the files that the AI is using to determine in a file's access should be restricted or not.
                 </p>
                 <p className="playthrough__sentence">
                     The AI is currently only using one piece of sensitive information within the file to determine the sensitivity of the entire file.

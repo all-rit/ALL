@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
+import Simulation from "../../components/Simulation";
 
 class AISimulationStart extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class AISimulationStart extends Component {
         return (
             <div>
                 <p className="playthrough__sentence">AI Simulation Page</p>
-
+                <Simulation/>
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick={this.handleStart}

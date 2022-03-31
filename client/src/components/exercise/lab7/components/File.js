@@ -1,7 +1,5 @@
-import React from 'react';
-import Countdown from 'react-countdown-now';
+import React, {Component} from 'react';
 import { OPEN_FILE, LOCKED_FILE } from '../../../../constants/lab7';
-import './exerciseStyle.css';
 
 class File extends Component {
     constructor(props){
@@ -23,11 +21,19 @@ class File extends Component {
     };
 
     changeAccess() {
-        if (this.state.accessStatus == OPEN_FILE){
+        if (this.state.accessStatus === OPEN_FILE){
             this.state.accessStatus = LOCKED_FILE;
         } else {
             this.state.accessStatus = OPEN_FILE;
         }
+    }
+
+    render(){
+        return(
+            <p>
+                FILE
+            </p>
+        );
     }
 
 }
