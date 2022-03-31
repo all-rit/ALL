@@ -32,18 +32,18 @@ const PlayerBoard = (props) => {
 	}
 
     useEffect(()=>{
-        ImagineService.getUserSquad(user.userid).then((data)=>{
+        ImagineService.getUserSquad(user?.userid).then((data)=>{
             setTeam(data)
+            console.log(data)
         })
-        let team = shuffleArray(gridMockData)
-		team.length=4;
-		setOpposingTeam(team);
+        shuffleArray(gridMockData)
+		setOpposingTeam(gridMockData.slice(0,4));
     // eslint-disable-next-line
-    },[])
+    },[user])
     
     return  (
         <div className="FullPB moduleContainer">
-            {team ?
+            {team.length!==0 ?
                 <table className="table">
                         <thead>
                             <tr>
@@ -59,7 +59,7 @@ const PlayerBoard = (props) => {
                             <td><GameStatus userType="user" handleNext={handleNext}/></td>
                             <td>None</td>
                         </tr>
-                        {team.map((data,index)=>{
+                        {team?.map((data,index)=>{
                             return(
                                 <tr className="teamMember" key={index}>
                                     <td>{data.name}</td>

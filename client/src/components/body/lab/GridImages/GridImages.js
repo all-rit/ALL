@@ -52,9 +52,8 @@ const GridImages = (props) => {
 	}
 	
 	useEffect(()=>{
-		let grid = shuffleArray(gridMockData)
-		grid.length=15;
-		setData(grid);
+		shuffleArray(gridMockData)
+		setData(gridMockData.slice(0,15));
 		setCurrentFile([]);
 		setId([]);
 	},[multi])
@@ -73,7 +72,7 @@ const GridImages = (props) => {
         <>
             <div className="moduleContainer">
                 <div className="tw-container tw-mx-auto tw-space-y-2 lg:tw-space-y-0 lg:tw-gap-2 lg:tw-grid lg:tw-grid-cols-5 tw-p-5">
-                    {gridMockData?.map(data => (
+                    {data?.map(data => (
                         <>
                             <div class={gridImagesClassnames} onClick={() => {
                                 handleGridImage(data.id);

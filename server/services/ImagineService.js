@@ -129,15 +129,7 @@ exports.getUserSquad = (userID) => {
 				userid: userID,
 			},
 			raw: true
-		}).then((squad)=>{
-            return squad;
+		}).then((user)=>{
+            return user.squad;
         })
 }
-
-// exports.getUserSquad = (userID) => {
-//     return db.sequelize.query('SELECT * FROM "imagine" WHERE "imagine"."userid"=(:userID)', {
-//         replacements: {userID: userID},
-//         type: db.sequelize.QueryTypes.SELECT,
-//         raw: true
-//     });
-// }
