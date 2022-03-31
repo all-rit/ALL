@@ -1,58 +1,37 @@
-import { Component } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-/**
- * Component for the timer used to penalize
- */
-class Timer extends Component{
+const Timer = ({seconds: startTime, finished}) => {//does it need to be "App"?
+    const [seconds, updateSeconds] = useState(startTime);
+    const timer = useRef(null);
 
-    //State for timer information
-    constructor(props){
-        super(props)
-        const {seconds} = this.props;
-        this.state = {secondsLeft: seconds};
-    }
+    useEffect(() => {
+        timer.current = setInterval(() => {
+            updateSeconds((prevSeconds) => prevSeconds - 1);
+        }, 1000);
 
-    //Renderer for system
-
-    //Randomly generates a number for the timer??
-    compenentDidMount() {
-        this.interval = setInterval (
-            () => this.setState({ secondsLeft: this.state.secondsLeft - 1}, ()=>this.checkExpired()),
-            1000
-        );
-    }
-
-    //checkExpired()
-    checkExpired(){
-        if( this.state.secondsLeft === 0){//=== equal value and equal type
-            this.props.timerDone();
-            clearInterval(this.interval);
+        return () => {
+            clearInterval(timer.current);
+            timer.current = null;//safer to set to null
         }
-    }
-    //
-    componentWillUnmount() {//this is to cleanup
-        clearInterval(this.interval);
-    }
-        
-    /**
-     * invoked after component is inserted into the tree
-     * set state
-     */
-    
-    //render()
+    }, []);
 
-    render() {
-        return (
+    useEffect(() => {
+        if (seconds === 0) {
+            clearInterval(timer.current);
+            timer.current = null;
+            finished();//change this or the logic inside
+        }
+    }, [seconds]);
+
+    return (
+        <div className="timer">
             <div>
-                <div className="timer">
-                    <div><b>Seconds Until Penalty is Lifted</b></div>
-                    <div className="timer__window">
-                        0 : {this.state.secondsLeft < 60 ? "0": ""}{this.state.secondsLeft}
-                    </div>
-                </div>
+                <h3>Time until penalty is lifted</h3>
+                <h1>{seconds}</h1>
+                <h3>Timer</h3>
             </div>
-        );
-    }
+        </div>
+    )
 }
 
-export default Timer;//this allows a single object to be exported??
+export default Timer;
