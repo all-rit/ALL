@@ -30,7 +30,6 @@ const GridImages = (props) => {
 	  }
 
     const handleGridImage = useCallback((imgId) => {
-		console.log(currentFile)
         if (id.length <= (multi-1)) {
             setId(prevState => [...prevState, imgId])
         }

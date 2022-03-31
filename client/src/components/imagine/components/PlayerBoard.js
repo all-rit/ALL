@@ -34,7 +34,6 @@ const PlayerBoard = (props) => {
     useEffect(()=>{
         ImagineService.getUserSquad(user?.userid).then((data)=>{
             setTeam(data)
-            console.log(data)
         })
         shuffleArray(gridMockData)
 		setOpposingTeam(gridMockData.slice(0,4));
@@ -43,7 +42,7 @@ const PlayerBoard = (props) => {
     
     return  (
         <div className="FullPB moduleContainer">
-            {team.length!==0 ?
+            {team?.length!==0 ?
                 <table className="table">
                         <thead>
                             <tr>

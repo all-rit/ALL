@@ -23,8 +23,9 @@ const AvatarSelection = (props)=>{
 
     const handleSquadSelection = () =>{
         if(squad.length === 3){
-            ImagineService.userSquad(user.userid,squad)
-            handleNext()
+            ImagineService.userSquad(user.userid,squad).then((data)=>{
+                handleNext()
+            })
         }
     }
 
