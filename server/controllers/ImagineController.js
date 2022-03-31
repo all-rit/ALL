@@ -26,3 +26,9 @@ exports.userLobbyMessages = (req, res) => {
             res.sendStatus(200);
         })
 };
+
+exports.getUserSquad = (req, res) => {
+	ImagineService.getUserSquad(req.params.userID).then((records) => {
+		res.json(records);
+	})
+};

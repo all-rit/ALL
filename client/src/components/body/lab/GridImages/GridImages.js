@@ -52,9 +52,9 @@ const GridImages = (props) => {
 	}
 	
 	useEffect(()=>{
-		shuffleArray(gridMockData)
-		gridMockData.length=15;
-		setData(gridMockData);
+		let grid = shuffleArray(gridMockData)
+		grid.length=15;
+		setData(grid);
 		setCurrentFile([]);
 		setId([]);
 	},[multi])

@@ -16,6 +16,10 @@ const ImagineService = {
             userID,lobbyMessages
         });
     },
+    getUserSquad: (userID) => {
+        return API.get(process.env.REACT_APP_SERVER_URL + `/imagine/squad/${userID}`)
+            .then((response) => response.json())
+    },
 }
 
 export default ImagineService;

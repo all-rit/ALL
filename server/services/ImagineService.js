@@ -121,3 +121,23 @@ exports.userLobbyMessages = (data)=> {
     return Promise.resolve();
 
 };
+
+exports.getUserSquad = (userID) => {
+	return db.Imagine
+		.findOne({
+			where: {
+				userid: userID,
+			},
+			raw: true
+		}).then((squad)=>{
+            return squad;
+        })
+}
+
+// exports.getUserSquad = (userID) => {
+//     return db.sequelize.query('SELECT * FROM "imagine" WHERE "imagine"."userid"=(:userID)', {
+//         replacements: {userID: userID},
+//         type: db.sequelize.QueryTypes.SELECT,
+//         raw: true
+//     });
+// }
