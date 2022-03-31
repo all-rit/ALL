@@ -13,6 +13,12 @@ const MatchLobby = (props)=>{
         alert("Error: Bias Detected.");
     }
 
+    const doWhenTimerFinished = () => {
+        alert("Hi!");//change this to rerout
+    }
+
+    const [clicked, setClicked] = useState(false);
+
     return(
         
         <div className="container bottomSpace" >
@@ -64,7 +70,11 @@ const MatchLobby = (props)=>{
                     </tbody>
                 </table>
             </div>
-            <Timer seconds={5}/>
+            {clicked 
+                ? <Timer seconds={5} finished={doWhenTimerFinished} />
+                : <button onClick={() => setClicked(true)}>Start</button>
+            }
+            {/* change to any number */}
             <button
               className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {()=> throwAlert()}//{handleNext}
