@@ -1,61 +1,36 @@
-import { Component } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-/**
- * Component for the timer used to penalize
- */
-class Timer extends Component{
+const Timer = ({seconds: startTime}) => {//does it need to be "App"?
+    const [seconds, updateSeconds] = useState(startTime);
+    const timer = useRef(null);
 
-    //State for timer information
-    constructor(props){
-        super(props)
-        const {seconds} = this.props;
-        this.state = {secondsLeft: seconds};
-    }
+    useEffect(() => {
+        timer.current = setInterval(() => {
+            updateSeconds((prevSeconds) => prevSeconds - 1);
+        }, 1000);
 
-    //Renderer for system
-
-    //Randomly generates a number for the timer??
-        //length of time is going to depend on groups
-    
-    compenentDidMount() {
-        this.interval = setInterval (
-            () => this.setState({ secondsLeft: this.state.secondsLeft - 1}, ()=>this.checkExpired()),
-            1000
-        );
-    }
-
-    //checkExpired()
-    checkExpired(){
-        if( this.state.secondsLeft === 0){//=== equal value and equal type
-            this.props.timerDone();
-            clearInterval(this.interval);
+        return () => {
+            clearInterval(timer.current);
+            timer.current = null;
         }
-    }
-    //
-    componentWillUnmount() {//this is to cleanup
-        clearInterval(this.interval);
-    }
-        
-    /**
-     * invoked after component is inserted into the tree
-     * set state
-     */
-    
-    //render()
+    }, []);
 
-    render() {
-        return (
+    useEffect(() => {
+        if (seconds === 0) {
+            clearInterval(timer.current);
+            timer.current = null;
+        }
+    }, [seconds]);
+
+    return (
+        <div className="timer">
             <div>
-                <div className="timer">
-                    <div><b>Seconds Until Penalty is Lifted</b></div>
-                    <div className="timer__window">
-                        0 : {this.state.secondsLeft < this.props.seconds ? "0": ""}{this.state.secondsLeft}
-                        {/* //will take whatever fixed time in seconds */}
-                    </div>
-                </div>
+                <h1>Hello</h1>
+                <h1>{seconds}</h1>
+                <h3>Timer</h3>
             </div>
-        );
-    }
+        </div>
+    )
 }
 
 export default Timer;

@@ -19,13 +19,6 @@ const MatchLobby = (props)=>{
             <div>
                 Match Lobby 
             </div>
-            <button
-                className="btn btn-warning btn-lg btn-block "
-                onClick={()=> throwAlert()}
-                key="Start"
-            >
-                Continue
-            </button>
 
             <div className="PlayerBoard">
                 <table>
@@ -71,10 +64,10 @@ const MatchLobby = (props)=>{
                     </tbody>
                 </table>
             </div>
-            <Timer seconds={30}/>
+            <Timer seconds={5}/>
             <button
               className="btn btn-primary text-black btn-xl text-uppercase "
-              onClick = {handleNext}
+              onClick = {()=> throwAlert()}//{handleNext}
               key="start"
             >
                 Continue
