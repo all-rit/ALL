@@ -6,6 +6,8 @@ import File from "./File";
 import AutoSysAI from './AutoSysAI';
 import Message from "./Message";
 import Score from "./Score"
+import RoundCounter from "./RoundCounter";
+import SimInstructions from './SimInstructions';
 
 import {
     EXERCISE_PLAYING,
@@ -115,6 +117,8 @@ class Simulation extends Component {
 
         return(
             <div className="simulation">
+                <RoundCounter/>
+                <SimInstructions/>
                 <div className="files">
                     <File/>
                     <File/>

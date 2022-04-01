@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import PageServiceTimer from "../../../shared/PageServiceTimer";
+import Simulation from "../../components/Simulation";
 
 class AISimulation extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class AISimulation extends Component {
         return (
             <div>
                 <p className="playthrough__sentence">AI Simulation</p>
+                <Simulation></Simulation>
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase"
                     onClick={this.handleSubmit}
