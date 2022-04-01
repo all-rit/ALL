@@ -2,8 +2,9 @@ import React from "react";
 import { navigate } from "@reach/router";
 
 const ImagineStart = (props)=>{
+    const {linkNum} = props;
     const handleNext= ()=>{
-        navigate("/Imagine/AvatarSelection");
+        navigate("/Imagine"+linkNum+"/AvatarSelection");
     }
 
     return(

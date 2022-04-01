@@ -2,8 +2,9 @@ import React from "react";
 import { navigate } from "@reach/router";
 
 const ImagineEnd = (props)=>{
+    const {linkNum} = props;
     const handleNext= ()=>{
-        navigate("/Imagine");
+        navigate("/Imagine"+linkNum);
     }
 
     return(

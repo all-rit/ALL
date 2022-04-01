@@ -35,7 +35,6 @@ import "./assets/stylesheets/main.scss";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from '@reach/router';
-import GridImages from "./components/body/lab/GridImages/GridImages";
 const parse = require('url-parse');
 
 
@@ -93,7 +92,9 @@ class App extends Component {
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
 
-              <Imagine path="/Imagine/*" user={state.main.user} />
+              <Imagine path="/Imagine1/*" user={state.main.user} biasType={"none"} linkNum={1}/>
+              <Imagine path="/Imagine2/*" user={state.main.user} biasType={"user"} linkNum={2}/>
+              <Imagine path="/Imagine3/*" user={state.main.user} biasType={"team"} linkNum={3}/>
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />

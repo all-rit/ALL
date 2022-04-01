@@ -35,7 +35,9 @@ const Home = (props) => {
         </div>
       </header>
       {/* Goals */}
-      <button class="btn-primary btn btn-lg tw-mt-10 "onClick={()=>{navigate("/Imagine")}}>CLICK HERE TO GO TO IMAGINE</button>
+      <button class="btn-primary btn btn-lg tw-mt-10 tw-m-5" onClick={()=>{navigate("/Imagine1")}}>CLICK HERE TO GO TO IMAGINE (Control)</button>
+      <button class="btn-primary btn btn-lg tw-mt-10  tw-m-5" onClick={()=>{navigate("/Imagine2")}}>CLICK HERE TO GO TO IMAGINE (User Bias)</button>
+      <button class="btn-primary btn btn-lg tw-mt-10  tw-m-5" onClick={()=>{navigate("/Imagine3")}}>CLICK HERE TO GO TO IMAGINE (Team Bias)</button>
       <section className="page-section landingpage__pagesection">
         <div className="container">
           <div className="row">

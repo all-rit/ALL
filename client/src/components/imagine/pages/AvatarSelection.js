@@ -4,9 +4,9 @@ import GridImages from "../../body/lab/GridImages/GridImages";
 import ImagineService from "../../../services/ImagineService";
 
 const AvatarSelection = (props)=>{
-    const {user}=props;
+    const {user,linkNum}=props;
     const handleNext= ()=>{
-        navigate("/Imagine/MatchLobby");
+        navigate("/Imagine"+linkNum+"/MatchLobby");
     }
 
     const [squadSelection,setSquadSelection]=useState(false);
@@ -37,7 +37,7 @@ const AvatarSelection = (props)=>{
             <>
                 <h2 className="playthrough__title">Choose Your Avatar</h2>
                 <div className="playthrough__sentence">
-                    Choose the avatar you would like to use for the game!
+                    Choose the avatar that represents you the most!
                 </div>
                 
                 <GridImages multi={1} setSelection={setAvatar}/>

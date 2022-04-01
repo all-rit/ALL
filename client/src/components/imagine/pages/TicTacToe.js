@@ -2,8 +2,10 @@ import React from "react";
 import { navigate } from "@reach/router";
 
 const TicTacToe = (props)=>{
+    const {linkNum} = props;
+    
     const handleNext= ()=>{
-        navigate("/Imagine/End");
+        navigate("/Imagine"+linkNum+"/End");
     }
 
     return(

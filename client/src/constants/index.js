@@ -11,7 +11,13 @@ export const Sections = {
             name: "Profile"
         },
         3: {
-            name: "Imagine"
+            name: "Imagine1"
+        },
+        4: {
+            name: "Imagine2"
+        },
+        5: {
+            name: "Imagine3"
         }
     },
     1: {

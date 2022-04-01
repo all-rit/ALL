@@ -7,7 +7,7 @@ import MatchLobby from "./pages/MatchLobby";
 import TicTacToe from "./pages/TicTacToe";
 
 const Imagine = (props)=>{
-    const {user} = props;
+    const {user,biasType,linkNum} = props;
 
     return(
         <section className="page-section">
@@ -22,11 +22,11 @@ const Imagine = (props)=>{
             </div>
         <div className="container bottomSpace" >
             <Router className="app">
-                <ImagineStart path="/" user={user}/>
-                <AvatarSelection path="/AvatarSelection" user={user}/>
-                <MatchLobby path="/MatchLobby" user={user}/>
-                <TicTacToe path="/TicTacToe" user={user}/>
-                <ImagineEnd path="/End" user={user}/>
+                <ImagineStart path="/" user={user} linkNum={linkNum}/>
+                <AvatarSelection path="/AvatarSelection" user={user} linkNum={linkNum}/>
+                <MatchLobby path="/MatchLobby" user={user} biasType={biasType} linkNum={linkNum}/>
+                <TicTacToe path="/TicTacToe" user={user} linkNum={linkNum}/>
+                <ImagineEnd path="/End" user={user} linkNum={linkNum}/>
             </Router>
         </div>
         </section>

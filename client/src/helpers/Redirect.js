@@ -72,14 +72,20 @@ export const stateChange = (actions, pathname) => {
         case "Lab7":
             actions.setLab(7);
             break;
-        case "Imagine":
+        case "Imagine1":
+            actions.setLab(0);
+            break;
+        case "Imagine2":
+            actions.setLab(0);
+            break;
+        case "Imagine3":
             actions.setLab(0);
             break;
         case "":
             actions.setLab(0);
             break;
         default:
-            if(redirect_body!=="Imagine"){
+            if(redirect_body!=="Imagine1" && redirect_body!=="Imagine2" && redirect_body!=="Imagine3"){
                 noMatch = true;
             }
             actions.setLab(0);
@@ -107,8 +113,14 @@ export const stateChange = (actions, pathname) => {
         case "Profile":
             actions.setBody(2);
             break;
-        case "Imagine":
+        case "Imagine1":
             actions.setBody(3);
+            break;
+        case "Imagine2":
+            actions.setBody(4);
+            break;
+        case "Imagine3":
+            actions.setBody(5);
             break;
         default:
             actions.setBody(0);

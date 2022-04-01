@@ -4,18 +4,18 @@ import PlayerBoard from "../components/PlayerBoard";
 
 
 const MatchLobby = (props)=>{
-    const {user} = props;
+    const {user,biasType,linkNum} = props;
 
     const handleNext= ()=>{ 
-        navigate("/Imagine/TicTacToe");
+        navigate("/Imagine"+linkNum+"/TicTacToe");
     }
 
 
     return(
         
         <div className="container bottomSpace" >
-
-            <PlayerBoard user={user} handleNext={handleNext} biasType={"none"}/>
+            {/*bias types: user, team, none */ }
+            <PlayerBoard user={user} handleNext={handleNext} biasType={biasType}/>
             
         </div>
 
