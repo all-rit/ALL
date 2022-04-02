@@ -46,6 +46,9 @@ module.exports = {
       "labYellow": "#10002B",
       "labGreen": "#7B7B7B",
       "labBlue": "#A39CB0",
+      darkGreen:"#0c3515",
+      lightGreen:"#47ff72",
+      brightRed:"#dc2626"
     },
     extend: {
       spacing: {

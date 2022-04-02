@@ -33,7 +33,7 @@ const GameStatus = (props) =>{
     
 
     return(
-        <div>
+        <div className={status==="Penalty"? "tw-text-brightRed" : (status==="In Game"? "tw-text-lightGreen": "")}>
             {status}
         </div>
     );

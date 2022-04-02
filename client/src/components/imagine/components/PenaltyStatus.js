@@ -19,7 +19,7 @@ const PenaltyStatus = (props) =>{
 
 
     return(
-        <div>
+        <div className={penalty==="Offender"? "tw-text-brightRed" : ""}>
             {penalty}
         </div>
     );
