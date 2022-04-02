@@ -133,3 +133,15 @@ exports.getUserSquad = (userID) => {
             return user.squad;
         })
 }
+
+exports.getUserAvatar = (userID) => {
+	return db.Imagine
+		.findOne({
+			where: {
+				userid: userID,
+			},
+			raw: true
+		}).then((user)=>{
+            return user.avatar;
+        })
+}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { gridMockData } from '../../../mockData/gridMockData'
+import { avatarMockData } from '../../../mockData/avatarMockData'
 import clsx from "clsx";
-
+import Avatar from 'avataaars';
+import Spinner from '../../../../common/Spinner/Spinner';
 const GridImages = (props) => {
 	const {multi,setSelection} = props;
 
@@ -51,8 +52,8 @@ const GridImages = (props) => {
 	}
 	
 	useEffect(()=>{
-		shuffleArray(gridMockData)
-		setData(gridMockData.slice(0,15));
+		shuffleArray(avatarMockData)
+		setData(avatarMockData.slice(0,15));
 		setCurrentFile([]);
 		setId([]);
 	},[multi])
@@ -64,29 +65,53 @@ const GridImages = (props) => {
 
 
     const gridImagesClassnames = clsx({
-        "tw-cursor-pointer tw-w-full tw-rounded": true,
+        "tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ": true,
     });
 
     return (
         <>
             <div className="moduleContainer">
-                <div className="tw-container tw-mx-auto tw-space-y-2 lg:tw-space-y-0 lg:tw-gap-2 lg:tw-grid lg:tw-grid-cols-5 tw-p-5">
-                    {data?.map(data => (
-                        <>
-                            <div class={gridImagesClassnames} onClick={() => {
-                                handleGridImage(data.id);
-                            }
-                            }
-                            onKeyPress={()=>{
-                                handleKeyPress(data.id) 
-                            }}
-                            >
-                                <img tabIndex="0" className={id.includes(data.id) ? 'tw-opacity-50 tw-border-double tw-border-8' : ''} src={data.img} alt={data.name} />
-                            </div>
-                        </>
-                    ))
-                    }
-                </div >
+                {data.length!==0 ?
+                    <div className="tw-container tw-mx-auto tw-space-y-2 lg:tw-space-y-0 lg:tw-gap-2 lg:tw-grid lg:tw-grid-cols-5 tw-p-2">
+                        {data?.map(data => (
+                            <>
+                                <div tabIndex="0" class={gridImagesClassnames} onClick={() => {
+                                    handleGridImage(data.id);
+                                }
+                                }
+                                onKeyPress={()=>{
+                                    handleKeyPress(data.id) 
+                                }}
+                                >
+                                    <Avatar
+                                        className={id.includes(data.id) ? 'tw-opacity-50 tw-border-double tw-border-8 tw-max-w-full tw-h-auto' : 'tw-max-w-full tw-h-auto'} alt={data.name} 
+                                        avatarStyle='Circle'
+                                        topType={data.avatarAttributes.topType}
+                                        accessoriesType={data.avatarAttributes.accessoriesType}
+                                        hairColor={data.avatarAttributes.hairColor}
+                                        facialHairType={data.avatarAttributes.facialHairType}
+                                        facialHairColor={data.avatarAttributes.facialHairColor}
+                                        clotheType={data.avatarAttributes.clotheType}
+                                        clotheColor={data.avatarAttributes.clotheColor}
+                                        graphicType={data.avatarAttributes.graphicType}
+                                        eyeType={data.avatarAttributes.eyeType}
+                                        eyebrowType={data.avatarAttributes.eyebrowType}
+                                        mouthType={data.avatarAttributes.mouthType}
+                                        skinColor={data.avatarAttributes.skinColor}
+
+                                    />
+                                </div>
+                                
+                            </>
+                        ))
+                        }
+                    </div >
+                :
+                <div className="landingpage__row">
+                    <Spinner />
+                </div>
+                }
+                
             </div>
             <div className="tw-text-xl tw-mb-5 tw-p-2">
                 {currentFile.length +" of "+multi+" selected."}

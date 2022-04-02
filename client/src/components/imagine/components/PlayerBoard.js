@@ -11,6 +11,7 @@ import PenaltyStatus from "./PenaltyStatus";
 const PlayerBoard = (props) => { 
     const {user,handleNext,biasType} = props;
     const [team, setTeam] = useState([]);
+    const [avatar, setAvatar] = useState([]);
     const [opposingTeam, setOpposingTeam] = useState([]);
 
 
@@ -38,6 +39,9 @@ const PlayerBoard = (props) => {
         ImagineService.getUserSquad(user?.userid).then((data)=>{
             setTeam(data)
         })
+        ImagineService.getUserAvatar(user?.userid).then((data)=>{
+            setAvatar(data)
+        })
         shuffleArray(gridMockData)
 		setOpposingTeam(gridMockData.slice(0,4));
     // eslint-disable-next-line
@@ -45,8 +49,10 @@ const PlayerBoard = (props) => {
     
     return  (
         <div className="FullPB moduleContainer">
-            <Bias opposingTeam={opposingTeam} handleNext={handleNext} biasType={biasType}/>
-            {team?.length!==0 ?
+            {avatar.length!==0 && team.length!==0 &&
+                <Bias handleNext={handleNext} biasType={biasType} team={team} avatar={avatar}/>
+            }
+            {team?.length!==0 && opposingTeam?.length!==0?
                 <>
                     <table className="table">
                             <thead>

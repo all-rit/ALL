@@ -32,3 +32,9 @@ exports.getUserSquad = (req, res) => {
 		res.json(records);
 	})
 };
+
+exports.getUserAvatar = (req, res) => {
+	ImagineService.getUserAvatar(req.params.userID).then((records) => {
+		res.json(records);
+	})
+};

@@ -20,6 +20,10 @@ const ImagineService = {
         return API.get(process.env.REACT_APP_SERVER_URL + `/imagine/squad/${userID}`)
             .then((response) => response.json())
     },
+    getUserAvatar: (userID) => {
+        return API.get(process.env.REACT_APP_SERVER_URL + `/imagine/avatar/${userID}`)
+            .then((response) => response.json())
+    },
 }
 
 export default ImagineService;
