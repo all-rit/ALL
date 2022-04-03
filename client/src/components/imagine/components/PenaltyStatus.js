@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const PenaltyStatus = (props) =>{
-    const {offender} = props;
+    const {isOffender} = props;
 
     const [penalty,setPenalty] = useState("None")
     
     useEffect(()=>{
-        if(offender===true){
+        if(isOffender===true){
             const penaltyTimeout = setTimeout(()=>{
                 setPenalty("Offender")
             },5100)

@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import Timer from "../components/Timer";
 
 const Bias = (props) =>{
-    const {handleNext,biasType,team,avatar} = props;
+    const {handleNext,biasType,team,avatar,offender} = props;
     const [bias,setBias]= useState(null)
 
     useState(()=>{
-        setBias(avatar[0]?.bias)
-    },[team,avatar])
+        biasType ==="team" ? setBias(avatar[0]?.bias) : setBias(offender?.bias)
+    },[team,avatar,offender])
 
     const throwAlert = ()=>{
         if(biasType==="user"){
             alert("Error: The AI has run into a computational error, ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias);
         } else{
-            alert("Error: The AI has been biased towards one of your teammates. There will be a penalty to join the game for you and your squad.");
+            alert("Error: The AI has run into a computational error with one of your teammates, ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias+ ". There will be a penalty to join the game for you and your squad.");
         }
     }
 
