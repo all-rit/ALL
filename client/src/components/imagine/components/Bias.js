@@ -8,7 +8,7 @@ const Bias = (props) =>{
     const alert = useAlert();
 
     useState(()=>{
-        biasType ==="team" ? setBias(avatar[0]?.bias) : setBias(offender?.bias)
+        biasType ==="user" ? setBias(avatar[0]?.bias) : setBias(offender?.bias)
     },[team,avatar,offender])
 
     const throwAlert = ()=>{
