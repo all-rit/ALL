@@ -18,6 +18,7 @@ const ImagineStart = (props)=>{
             <div className="playthrough__sentence">
                 Click the “Start” button to begin this activity!
             </div>
+
             <button
               className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {handleNext}

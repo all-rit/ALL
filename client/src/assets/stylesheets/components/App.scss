@@ -35,11 +35,46 @@
 	}
   }
 
-  .moduleContainer{
+.moduleContainer{
 	border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;;
 	padding: 10px;
   }
+.Match-Lobby {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 1rem;
+}
+.matchLobbyTable {
+	border-collapse: collapse;
+	width: 100%;
+	th {
+		border: 1px;
+		text-align: center;
+		padding: 8px;
+		font-size: 32px;
+		background-color: white;
+	}
+	td {
+		border: 1px;
+		text-align: center;
+		padding: 8px;
+		font-size: 32px;
+	}
+}
+
+.teamMember {
+	background-color: rgb(83, 83, 218);
+	color: white;
+	font-weight: 500;
+}
+.opposingMember {
+	background-color: rgb(252, 162, 102);
+	color: black;
+	font-weight: 500;
+}
+
 
   .spinner {
 	margin: 10rem 0;

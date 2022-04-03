@@ -14,7 +14,7 @@ const Imagine = (props)=>{
     
     const options = {
         timeout: 10000,
-        position: positions.BOTTOM_CENTER,
+        position: positions.TOP_RIGHT,
         transition: transitions.SCALE,
     };
 

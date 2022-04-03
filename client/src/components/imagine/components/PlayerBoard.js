@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";    
-import "./App.css"
 import GameScore from "./GameScore";
 import GameStatus from "./GameStatus";
 import ImagineService from "../../../services/ImagineService";
@@ -60,7 +59,7 @@ const PlayerBoard = (props) => {
                 }
                 {team?.length!==0 && opposingTeam?.length!==0 && offender!==null && avatar.length!==0?
                     <>
-                        <table className="table">
+                        <table className="matchLobbyTable">
                                 <thead>
                                     <tr>
                                         <th>AVATAR</th>
