@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Timer from "../components/Timer";
+import { useAlert } from "react-alert";
 
 const Bias = (props) =>{
     const {handleNext,biasType,team,avatar,offender} = props;
     const [bias,setBias]= useState(null)
+    const alert = useAlert();
 
     useState(()=>{
         biasType ==="team" ? setBias(avatar[0]?.bias) : setBias(offender?.bias)
@@ -11,14 +13,17 @@ const Bias = (props) =>{
 
     const throwAlert = ()=>{
         if(biasType==="user"){
-            alert("Error: The AI has run into a computational error, ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias);
+            alert.error("Error: The AI has run into a computational error");
+            alert.error("ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias);
         } else{
-            alert("Error: The AI has run into a computational error with one of your teammates, ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias+ ". There will be a penalty to join the game for you and your squad.");
+            alert.error("Error: The AI has run into a computational error with one of your teammates.");
+            alert.error("ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias+ ".");
+            alert.error("There will be a penalty to join the game for you and your squad.");
         }
     }
 
     const penaltyFinished = () => {
-        alert("Now Joining Game...");//Notifies the user when they can join game
+        alert.success("Now Joining Game...");
         handleNext()
     }
 

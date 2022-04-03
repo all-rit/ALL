@@ -5,9 +5,18 @@ import ImagineEnd from "./pages/ImagineEnd";
 import ImagineStart from "./pages/ImagineStart";
 import MatchLobby from "./pages/MatchLobby";
 import TicTacToe from "./pages/TicTacToe";
+import { transitions,positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
 const Imagine = (props)=>{
     const {user,biasType,linkNum} = props;
+
+    
+    const options = {
+        timeout: 10000,
+        position: positions.BOTTOM_CENTER,
+        transition: transitions.SCALE,
+    };
 
     return(
         <section className="page-section">
@@ -20,6 +29,7 @@ const Imagine = (props)=>{
                     </div>
                 </div>
             </div>
+        <Provider template={AlertTemplate} {...options}>
         <div className="container bottomSpace" >
             <Router className="app">
                 <ImagineStart path="/" user={user} linkNum={linkNum}/>
@@ -29,6 +39,7 @@ const Imagine = (props)=>{
                 <ImagineEnd path="/End" user={user} linkNum={linkNum}/>
             </Router>
         </div>
+        </Provider>
         </section>
     )
 }
