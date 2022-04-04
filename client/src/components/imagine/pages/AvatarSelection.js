@@ -29,7 +29,6 @@ const AvatarSelection = (props)=>{
         }
     }
 
-
     return(
         
         <div className="container bottomSpace center-div" >
