@@ -30,7 +30,7 @@ const Bias = (props) =>{
     if(biasType!=="none"){
         return(
             <div>
-                <Timer seconds={15} finished={penaltyFinished} throwAlert={throwAlert}/>
+                <Timer seconds={30} finished={penaltyFinished} throwAlert={throwAlert}/>
                 {/* change to any number */}
             </div>
         );
