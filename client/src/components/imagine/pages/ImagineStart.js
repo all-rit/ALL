@@ -10,10 +10,10 @@ const ImagineStart = (props)=>{
     return(
         
         <div className="container bottomSpace center-div" >
-            <h2 class="playthrough__title">Tic-Tac-Toe Bias: Start</h2>
+            <h2 class="playthrough__title">Tic-Tac-Toe: Start</h2>
             <div className="playthrough__sentence">
-            You are going to be competing against an AI opponent in a game of Tic-Tac-Toe and try your best beat the AI in competition. 
-            There will be other people playing the same game concurrently with you.
+            You are going to be competing against an AI opponent in a game of Tic-Tac-Toe. Try your best to beat the AI in competition. 
+            You will be playing alongside other players.
             </div>
             <div className="playthrough__sentence">
                 Click the “Start” button to begin this activity!

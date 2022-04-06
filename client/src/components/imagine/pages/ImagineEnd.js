@@ -1,25 +1,25 @@
 import React from "react";
-import { navigate } from "@reach/router";
+//import { navigate } from "@reach/router";
 
 const ImagineEnd = (props)=>{
-    const {linkNum} = props;
-    const handleNext= ()=>{
-        navigate("/Imagine"+linkNum);
-    }
+    //const {linkNum} = props;
+    // const handleNext= ()=>{
+    //     navigate("/Imagine"+linkNum);
+    // }
 
     return(
         <div className="container bottomSpace center-div" >
-            <h2 class="playthrough__title">Tic-Tac-Toe Bias: End</h2>
+            <h2 class="playthrough__title">Tic-Tac-Toe: End</h2>
                 <div className="playthrough__sentence">
-                    Congratulations! You've played a game against an AI! Thanks for playing!
+                    Congratulations! You've played your first game against an AI! You are off to a great start and are quickly climbing the ranks! Thanks for playing!
                 </div>
-            <button
+            {/* <button
               className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {handleNext}
               key="start"
             >
                 Continue
-            </button>
+            </button> */}
         </div>
     )
 }
