@@ -35,7 +35,7 @@ class SimulationSummary extends Component {
                 </p>
 
                 <div >
-                    <div className="scoreTally">
+                    <div className="scores">
                         <Score/>
                     </div>
                     

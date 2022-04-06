@@ -1,9 +1,10 @@
 import React from 'react';
+import '../../../../assets/stylesheets/components/RoundCounter.scss';
 
 const RoundCounter = (roundNumber) => {
     return (
-        <div>
-            <h4>Round 0 of 10</h4>
+        <div className='roundCounter'>
+            <h4 className='roundText'>Round 0 of 10</h4>
         </div>
     )
 }

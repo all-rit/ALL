@@ -21,7 +21,6 @@ class AISimulation extends Component {
         const { actions } = this.props;
         return (
             <div>
-                <p className="playthrough__sentence">AI Simulation</p>
                 <Simulation></Simulation>
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase"

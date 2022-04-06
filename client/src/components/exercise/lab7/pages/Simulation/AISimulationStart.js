@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import Simulation from "../../components/Simulation";
+import '../../../../../assets/stylesheets/components/Simulation.scss';
 
 class AISimulationStart extends Component {
     constructor(props) {

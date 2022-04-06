@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { OPEN_FILE, LOCKED_FILE } from '../../../../constants/lab7';
-import file from '../../../../assets/images/lab7/File.png';
 import unlocked from '../../../../assets/images/lab7/unlock.png';
 import locked from '../../../../assets/images/lab7/lock.png';
+import '../../../../assets/stylesheets//components/File.scss';
+
 
 class File extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class File extends Component {
             fileName: "",
             content: [],
             accessStatus: OPEN_FILE,
+            accessStatusIcon: unlocked,
             sensitivityLvl: 0
         };
     };
@@ -26,16 +28,26 @@ class File extends Component {
     changeAccess() {
         if (this.state.accessStatus === OPEN_FILE) {
             this.state.accessStatus = LOCKED_FILE;
+            this.state.accessStatusIcon = locked;
         } else {
             this.state.accessStatus = OPEN_FILE;
+            this.state.accessStatusIcon = unlocked;
         }
+    }
+
+    getAccessStatusIcon() {
+        return (this.state.accessStatusIcon);
     }
 
     render() {
         return (
-            <div>
-                <img className='file' src={file}></img>
-                {/* <img className='lock' src={unlocked}></img> */}
+            <div className='file'>
+                <div className='fileInfo'>
+                    <h5 className='fileName'> File Name</h5>
+                    <img className='accessStatus' src={unlocked}></img>
+                    <h6 className='sensitivityLevel'>Sensitivity Level</h6>
+                    <p className='content'> blah blah</p>
+                </div>
             </div>
         );
     }

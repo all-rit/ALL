@@ -5,9 +5,10 @@ import Files from "./Files";
 import File from "./File";
 import AutoSysAI from './AutoSysAI';
 import Message from "./Message";
-import Score from "./Score"
+import ScoreTally from "./ScoreTally"
 import RoundCounter from "./RoundCounter";
 import SimInstructions from './SimInstructions';
+import '../../../../assets/stylesheets/components/Simulation.scss';
 
 import {
     EXERCISE_PLAYING,
@@ -32,8 +33,8 @@ class Simulation extends Component {
         super(props);
     }
 
-    startRound(){
-        const {data, handlers} = this.props;
+    startRound() {
+        const { data, handlers } = this.props;
         handlers.startNewRound();
         handlers.resetDelayTimer();
         handlers.resetReadTimer();
@@ -41,25 +42,25 @@ class Simulation extends Component {
         this.randomizeThreat();
     }
 
-    startSimulation(){
-        const {data, handlers, user} = this.props;
+    startSimulation() {
+        const { data, handlers, user } = this.props;
         this.startRound();
         handlers.updateState(EXERCISE_PLAYING);
 
         if (data.roundNumber === 0) {
-			ExerciseService.createExercise(data.plays);
+            ExerciseService.createExercise(data.plays);
         }
         else if (data.roundNumber === 10) {
             handlers.updateState(EXERCISE_ENDED);
-				UserLabService.complete_exercise(LAB_ID);
-				if(user?.firstname !== null && user!==null){
-					UserLabService.user_complete_exercise(user.userid,LAB_ID)
-				}
-				ExerciseService.updateEndExerciseScore(data.score);
+            UserLabService.complete_exercise(LAB_ID);
+            if (user?.firstname !== null && user !== null) {
+                UserLabService.user_complete_exercise(user.userid, LAB_ID)
+            }
+            ExerciseService.updateEndExerciseScore(data.score);
         }
     }
 
-    resetExercise(){
+    resetExercise() {
         const { data, handlers } = this.props;
         clearInterval(this.delayTimer);
         clearInterval(this.readTimer);
@@ -74,8 +75,8 @@ class Simulation extends Component {
         handlers.reset();
     }
 
-    validateAI(choice){
-		const { data, handlers } = this.props;
+    validateAI(choice) {
+        const { data, handlers } = this.props;
         const correct = choice === data.correctChoice;
 
         let score = data.score;
@@ -91,11 +92,11 @@ class Simulation extends Component {
         ExerciseService.createChoice(score, data.file, choice, correct);
     }
 
-    calculateScore(outcome){
-        const {data} = this.props;
+    calculateScore(outcome) {
+        const { data } = this.props;
         let score = 0;
-        
-        if (outcome){
+
+        if (outcome) {
             score = 10;
         } else {
             score = 5;
@@ -106,28 +107,22 @@ class Simulation extends Component {
         // get 5 random files from dataset
     }
 
-    randomizeThreat(){
-        const {handlers} = this.props;
+    randomizeThreat() {
+        const { handlers } = this.props;
         const num = Math.floor(Math.random() * THREAT_MAX) + 1;
         handlers.updateThreatLevel(num);
     }
 
-    render(){
+    render() {
         const { data, handlers } = this.props;
 
-        return(
+        return (
             <div className="simulation">
-                <RoundCounter/>
-                <SimInstructions/>
-                <div className="files">
-                    <File/>
-                    <File/>
-                    <File/>
-                    <File/>
-                    <File/>
-                </div>
-                <Score/>
-                <Message/>
+                <RoundCounter />
+                <ScoreTally />
+                <SimInstructions />
+                <Files />
+                <Message />
             </div>
         );
     }

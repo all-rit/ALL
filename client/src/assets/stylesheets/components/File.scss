@@ -1,0 +1,80 @@
+.file {
+    width: 20%;
+    height: fit-content;
+    display: grid;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    margin: 0 auto;
+    background-image: url('../../images/lab7/FileLarge.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.accessStatus {
+    width: 45px;
+    padding: 20px;
+}
+
+.fileInfo {
+    text-align: center;
+    height: fit-content;
+    margin: auto;
+}
+
+@media screen and (min-width: 786px) {
+    .fileName {
+        font-size: 20px;
+    }
+
+    .sensitivityLevel {
+        font-size: 16px;
+    }
+
+    .content {
+        font-size: 14px;
+    }
+
+    .accessStatus {
+        padding: 10px;
+
+    }
+}
+
+@media screen and (max-width: 785px) {
+    .fileName {
+        font-size: 16px;
+    }
+
+    .sensitivityLevel {
+        font-size: 12px;
+    }
+
+    .content {
+        font-size: 10px;
+    }
+
+    .accessStatus {
+        padding: 10px;
+
+    }
+}
+
+@media screen and (max-width: 766px) {
+    .fileName {
+        font-size: 14px;
+    }
+
+    .sensitivityLevel {
+        font-size: 10px;
+    }
+
+    .content {
+        font-size: 8px;
+    }
+
+    .accessStatus {
+        padding: 10px;
+
+    }
+}
