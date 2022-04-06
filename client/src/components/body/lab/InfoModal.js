@@ -20,7 +20,7 @@ const InfoModal = (props) => {
                             <ModalBody>
                                 <ul className="module__more_info">
                                     <li className="p-text-modal">{fullDescription}</li>
-                                    <li className="p-text-modal">Participants will take part in an exercise that emulates this environment, and they will learn how to implement code in order that information is also presented visually.</li>
+                                    <li className="p-text-modal">Participants will take part in an exercise that will bring the user through simulated problemsome scenarios, then ask the user to make changes.</li>
                                     <li className="p-text-modal">Upon completion of the lab, participants will have achieved the following learning objectives:</li>
                                     <ul>
                                         {learningObjectives.map((learningObjective)=>(

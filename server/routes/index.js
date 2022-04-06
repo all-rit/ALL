@@ -29,6 +29,9 @@ let LabController = require("../controllers/LabController");
 //Team Members Controller
 let TeamMemberController = require("../controllers/TeamMemberController");
 
+//Imagien Controller
+let ImagineController = require("../controllers/ImagineController")
+
 // User Routes
 router.post('/url', UserController.storeURL)
 router.get('/auth/google', UserController.authenticate);
@@ -96,5 +99,13 @@ router.get('/lab:labID/quiz', LabController.getLabQuiz);
 router.get('/teammember', TeamMemberController.getAllTeamMembers)
 router.get('/professors', TeamMemberController.getAllProfessors)
 router.get('/alumni', TeamMemberController.getAllAlumni)
+
+//Imagine
+router.post('/imagine/avatar', ImagineController.userAvatar)
+router.get('/imagine/avatar/:userID', ImagineController.getUserAvatar)
+router.get('/imagine/squad/:userID', ImagineController.getUserSquad)
+router.post('/imagine/squad', ImagineController.userSquad)
+router.post('/imagine/lobbyMessages', ImagineController.userLobbyMessages)
+
 
 module.exports = router;
