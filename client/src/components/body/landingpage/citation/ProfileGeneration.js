@@ -1,4 +1,4 @@
-import React, {useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import Profile from "./Profile";
 import TeamMemberService from "../../../../services/TeamMemberService";
 import Spinner from "../../../../common/Spinner/Spinner";
@@ -7,29 +7,28 @@ import SlideSet from "./SlideSet";
 
 
 function renderProfileData(profileInformation) {
-    return profileInformation.map((profileInfo, index) => {
-        const {imageURL, firstName,lastName,title,work,datesActive,websiteURL,network,socials} = profileInfo //destructuring
-        return (
-                <Profile 
-                    key={index}
-                    profile_image= {imageURL} 
-                    name= {firstName +" "+lastName} 
-                    title= {title} 
-                    work={work}
-                    datesActive={datesActive}
-                    socials={socials}
-                    website={websiteURL}
-                    network={network}
-                />
-        );
-    })
-  }
-  
-  const ProfileGeneration = (props) =>{
-    const [professorInformation,setProfessorInformation] = useState(null);
-    const [teamInformation,setTeamInformation] = useState(null);
-    const [alumniInformation,setAlumniInformation] = useState(null);
+  return profileInformation.map((profileInfo, index) => {
+    const { imageURL, firstName, lastName, title, work, datesActive, websiteURL, network, socials } = profileInfo //destructuring
+    return (
+      <Profile
+        key={index}
+        profile_image={imageURL}
+        name={firstName + " " + lastName}
+        title={title}
+        work={work}
+        datesActive={datesActive}
+        socials={socials}
+        website={websiteURL}
+        network={network}
+      />
+    );
+  })
+}
 
+const ProfileGeneration = (props) => {
+  const [professorInformation, setProfessorInformation] = useState(null);
+  const [teamInformation, setTeamInformation] = useState(null);
+  const [alumniInformation, setAlumniInformation] = useState(null);
 
     useEffect(()=>{
         if(!professorInformation){
@@ -92,8 +91,8 @@ function renderProfileData(profileInformation) {
                     }
                   </div>
           </div>
-        </section>
-     );
-  }
+      </section>
+  );
+}
 
 export default ProfileGeneration;

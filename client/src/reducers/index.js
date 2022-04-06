@@ -11,6 +11,7 @@ import ExerciseReducer4 from './lab4/ExerciseReducer';
 import AppReducer5 from './lab5/AppReducer';
 import ExerciseReducer5 from './lab5/ExerciseReducer';
 import RepairReducer5 from './lab5/RepairReducer';
+import ExerciseReducer6 from './lab6/ExerciseReducer';
 import MainReducer from './MainReducer';
 
 export default combineReducers({
@@ -28,5 +29,6 @@ export default combineReducers({
 	app5: AppReducer5,
 	exercise5: ExerciseReducer5,
 	repair5: RepairReducer5,
+	exercise6: ExerciseReducer6,
 	main: MainReducer
 });

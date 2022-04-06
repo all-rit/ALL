@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import ReactGA from "react-ga";
 
 import { default as About } from "./components/body/About";
-// import {default as Reading} from "./components/body/Reading";
-import {default as Reading} from "./components/body/Reading/Reading"
+import { default as Reading } from "./components/body/Reading/Reading"
 
 import { default as Reinforcement } from "./components/body/Reinforcement";
 
@@ -17,10 +16,12 @@ import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
 import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
 
 import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
+
 import { default as LandingPageBody } from "./components/body/landingpage/index";
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
 import { default as Error } from "./components/body/landingpage/error";
 import { default as Profile } from "./components/body/profilepage/Profile";
+import { default as Imagine } from "./components/imagine/Imagine";
 
 import { default as Quiz } from "./components/quiz/App";
 import { stateChange } from "./helpers/Redirect";
@@ -91,12 +92,14 @@ class App extends Component {
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
 
+              <Imagine path="/Imagine1/*" user={state.main.user} biasType={"none"} linkNum={1}/>
+              <Imagine path="/Imagine2/*" user={state.main.user} biasType={"user"} linkNum={2}/>
+              <Imagine path="/Imagine3/*" user={state.main.user} biasType={"team"} linkNum={3}/>
+
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
 
               <Reading path={`/Lab${lab}/Reading`} user={state.main.user} labID={lab} />
-
-
 
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
               <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />

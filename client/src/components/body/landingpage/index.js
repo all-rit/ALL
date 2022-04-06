@@ -2,11 +2,13 @@ import React from "react";
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
 import handleRedirect from "../../../helpers/Redirect";
-import {actions as mainActions} from "../../../reducers/MainReducer";
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
+import { actions as mainActions } from "../../../reducers/MainReducer";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
+import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
+
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(mainActions, dispatch),
@@ -66,7 +68,8 @@ const Home = (props) => {
       </section>
       {/* Labs */}
       <div id="labs" />
-      <hr className="horiz" />
+      <HorizontalLine />
+
       <section className="page-section landingpage__pagesection">
         <div className="container">
           <div className="row">
@@ -79,15 +82,17 @@ const Home = (props) => {
             </div>
           </div>
           <div className="landingpage__row">
-              <LabGeneration actions={actions}/>
+            <LabGeneration actions={actions} />
           </div>
         </div>
       </section>
       {/* Team Citation */}
       <div id="citation" />
-      <hr className="horiz" />
+      <HorizontalLine />
+
       <ProfileGeneration />
-      <hr className="horiz" />
+      <HorizontalLine />
+
       {/* Clients */}
       <section className="py-5">
         <div className="container">

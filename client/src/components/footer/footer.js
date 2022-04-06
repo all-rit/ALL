@@ -135,68 +135,74 @@ class Footer extends Component {
         let display = getExerciseState(state) === "EXERCISE_IDLE" || body !== 2;
         let hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
         return (
-            <div className="footer">
-                <div className="container" style={{display: display ? "block" : "none"}}>
-                    <button
-                        className="btn btn-second btn-xl text-uppercase  back "
-                        onClick={() => handleRedirect(actions, lab, body - 1)}
-                        style={{display: this.disappearBack(body) || hideOnLanding ? "none" : "block"}}
-                    >
-                        Previous - {body > 0 && typeof Sections[lab][body - 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
-                    </button>
-                    <button
-                        className="btn btn-primary btn-xl text-uppercase  next"
-                        onClick={() => handleRedirect(actions, lab, body + 1)}
-                        style={{display: this.disappearNext(body) || hideOnLanding ? "none" : "block"}}
-                    >
-                        Next - {body < 4 && typeof Sections[lab][body + 1] !== "undefined" ? Sections[lab][body + 1].name : ""}
-                    </button>
-                    <div className="btn-change">
+            <>
+                {lab!==0 && body!== 3 ?
+                <div className="footer">
+                    <div className="container" style={{display: display ? "block" : "none"}}>
                         <button
-                            className="btn-text btn btn-bottom-buttons text-uppercase"
-                            alt="Increase text size"
-                            title="Larger text"
-                            onClick={() => this.changeSize(1)}
+                            className="btn btn-second btn-xl text-uppercase  back "
+                            onClick={() => handleRedirect(actions, lab, body - 1)}
+                            style={{display: this.disappearBack(body) || hideOnLanding ? "none" : "block"}}
                         >
-                            Text+
+                            Previous - {body > 0 && typeof Sections[lab][body - 1] !== "undefined" ? Sections[lab][body - 1].name : ""}
                         </button>
                         <button
-                            className="btn-text btn btn-bottom-buttons text-uppercase"
-                            alt="Decrease text size"
-                            title="Smaller text"
-                            onClick={() => this.changeSize(-1)}
+                            className="btn btn-primary btn-xl text-uppercase  next"
+                            onClick={() => handleRedirect(actions, lab, body + 1)}
+                            style={{display: this.disappearNext(body) || hideOnLanding ? "none" : "block"}}
                         >
-                            Text-
+                            Next - {body < 4 && typeof Sections[lab][body + 1] !== "undefined" ? Sections[lab][body + 1].name : ""}
                         </button>
-                        <button
-                            id="changeTextColor"
-                            className="btn btn-text btn-bottom-buttons text-uppercase"
-                            onClick={this.renderTextColorPalette}
-                        >
-                            Change Text Color
-                        </button>
+                        <div className="btn-change">
+                            <button
+                                className="btn-text btn btn-bottom-buttons text-uppercase"
+                                alt="Increase text size"
+                                title="Larger text"
+                                onClick={() => this.changeSize(1)}
+                            >
+                                Text+
+                            </button>
+                            <button
+                                className="btn-text btn btn-bottom-buttons text-uppercase"
+                                alt="Decrease text size"
+                                title="Smaller text"
+                                onClick={() => this.changeSize(-1)}
+                            >
+                                Text-
+                            </button>
+                            <button
+                                id="changeTextColor"
+                                className="btn btn-text btn-bottom-buttons text-uppercase"
+                                onClick={this.renderTextColorPalette}
+                            >
+                                Change Text Color
+                            </button>
 
-                        <button
-                            id="changeBackgroundColor"
-                            className="btn btn-text btn-bottom-buttons text-uppercase"
-                            onClick={this.renderBgColorPalette}
-                        >
-                            Change Background Color
-                        </button>
-                        {this.state.textColor && <div id="text-panel" className="div-style-text" style={{display: this.state.textColor === true ? "block" : "none"}}>
-                            <ColorPickerPanel enableAlpha={false} defaultColor={'#345679'} color={ this.state.color} onChange={this.OnTextColorChange.bind(this)}/>
-                        </div>}
-                        {this.state.bgColor && <div id="bg-panel" className="div-style-bgColor">
-                            <ColorPickerPanel enableAlpha={false} defaultColor={'#345679'} color={ this.state.backgroundColor}  onChange={this.OnBgColorChange.bind(this)} />
-                        </div>}
+                            <button
+                                id="changeBackgroundColor"
+                                className="btn btn-text btn-bottom-buttons text-uppercase"
+                                onClick={this.renderBgColorPalette}
+                            >
+                                Change Background Color
+                            </button>
+                            {this.state.textColor && <div id="text-panel" className="div-style-text" style={{display: this.state.textColor === true ? "block" : "none"}}>
+                                <ColorPickerPanel enableAlpha={false} defaultColor={'#345679'} color={ this.state.color} onChange={this.OnTextColorChange.bind(this)}/>
+                            </div>}
+                            {this.state.bgColor && <div id="bg-panel" className="div-style-bgColor">
+                                <ColorPickerPanel enableAlpha={false} defaultColor={'#345679'} color={ this.state.backgroundColor}  onChange={this.OnBgColorChange.bind(this)} />
+                            </div>}
+                        </div>
+                    </div>
+                    <div className="container" style={{display: display || hideOnLanding ? "none" : "block"}}>
+                        <div className="btn-information">
+                            The previously available navigation and accessibility buttons are disabled until the exercise is complete.
+                        </div>
                     </div>
                 </div>
-                <div className="container" style={{display: display || hideOnLanding ? "none" : "block"}}>
-                    <div className="btn-information">
-                        The previously available navigation and accessibility buttons are disabled until the exercise is complete.
-                    </div>
-                </div>
-            </div>
+            :
+                <div className="footer"/>
+            }
+            </>
         );
     };
 }

@@ -1,3 +1,4 @@
+
 :root {
 	--yellow-text: #fed136; // this is the color that changes yellow text based on the color picker
 	--blue-text: #0144d5; // this is the color that changes blue text based on the color picker
@@ -33,6 +34,47 @@
 	  }
 	}
   }
+
+.moduleContainer{
+	border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;;
+	padding: 10px;
+  }
+.Match-Lobby {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 1rem;
+}
+.matchLobbyTable {
+	border-collapse: collapse;
+	width: 100%;
+	th {
+		border: 1px;
+		text-align: center;
+		padding: 8px;
+		font-size: 32px;
+		background-color: white;
+	}
+	td {
+		border: 1px;
+		text-align: center;
+		padding: 8px;
+		font-size: 32px;
+	}
+}
+
+.teamMember {
+	background-color: rgb(83, 83, 218);
+	color: white;
+	font-weight: 500;
+}
+.opposingMember {
+	background-color: rgb(252, 162, 102);
+	color: black;
+	font-weight: 500;
+}
+
 
   .spinner {
 	margin: 10rem 0;
@@ -79,7 +121,76 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
   }
+
+
+.candidate{
+	//    margin-top: 10.35rem;
+	&__form__group{
+		padding-left: 0;
+	}
+	&__key__container{
+		margin-top: 10.05rem;
+		display: flex;
+		padding: 2px;
+		background-color: #3d3d3d;
+		color: white;
+	}
+	&__key__col{
+		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+		width: 10rem;
+	}
+	&__image{
+		height:10rem;
+		border-radius:20px 20px 0 0;
+		width: 10rem;
+		background-size: 200px;
+		background-position: center;
+	}
+	&__row{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding-top: 10px;
+		padding-bottom: 25px;
+	}
+	&__container{
+		display: flex;
+		padding: 3px;
+	}
+	&__col{
+		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+		border-radius: 20px 20px 0 0;
+		width: 10rem;
+	}
+	&__data{
+		padding:10px;
+	}
+}
   
+
+.analysis{
+	&__rejection{
+		color:red;
+	}
+	&__checkbox{
+		margin-top: 2rem;
+    	margin-left: -12rem;
+	}
+	&__questions{
+		padding: 0 0 25px 0;
+	}
+	&__question{
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border-radius: .25rem;
+		/* height: 3rem; */
+		box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+		padding: 20px 20px 20px 20px;
+		width: 20rem;
+	}
+
+}
+
 
 .landingpage{
     &__leftalign{
@@ -1301,6 +1412,7 @@ ul.social-buttons {
 }
 hr.horiz {
 	border-top: 1px solid #868e96;
+	margin: 0 auto;
 	width: 50%;
 }
 .text-muted {
