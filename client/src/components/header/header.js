@@ -200,7 +200,7 @@ const Header = (props) => {
                             </Nav>
                         } 
                         {state.main.user !== null &&
-                            (state.main.user.firstname !== null && state.main.lab!==0 && state.main.body!==3 && state.main.body!==4 && state.main.body!==5 &&
+                            (state.main.user.firstname !== null && !(state.main.lab===0 && state.main.body===3) && !(state.main.lab===0 && state.main.body===4) && !(state.main.lab===0 && state.main.body===5) &&
                                 <NavItem className="collapse navbar-collapse" >
                                     <NavLink
                                         className="nav-link "
@@ -305,7 +305,7 @@ const Header = (props) => {
                         </NavItem>
 
                         {state.main.user !== null &&
-                            (state.main.user.firstname !== null && state.main.lab!==0 && state.main.body!==3 && state.main.body!==4 && state.main.body!==5 &&
+                            (state.main.user.firstname !== null && !(state.main.lab===0 && state.main.body===3) && !(state.main.lab===0 && state.main.body===4) && !(state.main.lab===0 && state.main.body===5) &&
                                 <NavItem className="collapse navbar-collapse" >
                                     <NavLink
                                         className="nav-link "
@@ -321,7 +321,8 @@ const Header = (props) => {
                                 </NavItem>
                             )
                         }
-                        {state.main.lab===0 && state.main.body===3 ?
+
+                        {(!(state.main.lab===0 && state.main.body===3) && !(state.main.lab===0 && state.main.body===4) && !(state.main.lab===0 && state.main.body===5))?
                             <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} renderLink={true}/>
                         :
                             <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} renderLink={false}/>
