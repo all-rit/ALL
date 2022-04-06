@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import TicTacToeButton from "./TicTacToeButton";
 import Model from "../TicTacToe/Model";
 
-const TicTacToeBoard = ()=> {
+const TicTacToeBoard = (props)=> {
+    const {handleNext}=props;
     const[activePlayer , setActivePlayer] = useState(Model.Players[0]);
     const[gameInfo , setGameInfo] = useState(Model.createNewBoard());
     const[gameState, setGameState] = useState({isGameOver:false , winner:null});
@@ -69,7 +70,19 @@ const TicTacToeBoard = ()=> {
                     <TicTacToeButton piece={gameInfo.board[2][0]} moveMade={(e)=> executeMove(e,0,2)} setUpdateBoard={setUpdateBoard}/>
                 </div>
                 </div>
+                {gameState.isGameOver === Model.GameState.isGameOver ?// <h2> It's the {activePlayer.name}'s turn </h2>:
+                    <></> :
+                    <button
+                        className="btn btn-primary text-black btn-xl text-uppercase tw-mt-5"
+                        onClick = {handleNext}
+                        key="start"
+                        >
+                            Continue
+                    </button>
+                }
             </div>
+
+
     )
 }
 export default TicTacToeBoard;

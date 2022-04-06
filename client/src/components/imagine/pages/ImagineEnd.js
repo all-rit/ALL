@@ -11,8 +11,12 @@ const ImagineEnd = (props)=>{
         <div className="container bottomSpace center-div" >
             <h2 class="playthrough__title">Tic-Tac-Toe: End</h2>
                 <div className="playthrough__sentence">
-                    Congratulations! You've played your first game against an AI! You are off to a great start and are quickly climbing the ranks! Thanks for playing!
+                    Congratulations! You've played your first game against an AI! Thanks for playing!
                 </div>
+                <div className="playthrough__sentence">
+                You are off to a great start and are quickly climbing the ranks!
+                </div>
+
             {/* <button
               className="btn btn-primary text-black btn-xl text-uppercase "
               onClick = {handleNext}

@@ -25,14 +25,8 @@ const TicTacToe = (props)=>{
                 </>
             :
                 <>
-                    <TicTacToeBoard/>
-                    <button
-                    className="btn btn-primary text-black btn-xl text-uppercase "
-                    onClick = {handleNext}
-                    key="start"
-                    >
-                        Continue
-                    </button>
+                   <h2 class="playthrough__title">Tic-Tac-Toe: Match</h2>
+                    <TicTacToeBoard handleNext={handleNext}/>
                 </>
             }
         </div>
