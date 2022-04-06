@@ -44,4 +44,4 @@ const Imagine = (props)=>{
     )
 }
 
-export default Imagine;
+export default Imagine

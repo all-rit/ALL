@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { navigate } from "@reach/router";
 import Spinner from "../../../common/Spinner/Spinner";
-
+import TicTacToeBoard from "../TicTacToe/TicTacToeBoard";
 const TicTacToe = (props)=>{
     const {linkNum} = props;
     const [loading,setLoading]=useState(true);
@@ -25,9 +25,7 @@ const TicTacToe = (props)=>{
                 </>
             :
                 <>
-                    <div>
-                        TicTacToe
-                    </div>
+                    <TicTacToeBoard/>
                     <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick = {handleNext}
