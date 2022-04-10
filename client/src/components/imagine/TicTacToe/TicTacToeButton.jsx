@@ -6,7 +6,6 @@ const TicTacToeButton = ({piece, moveMade , setUpdateBoard}) => {
     const [userPiece , setPiece] = useState(null);
     
     useEffect(()=>{
-        console.log(piece);
         setPiece(piece);
     },[piece]);
 
@@ -14,15 +13,14 @@ const TicTacToeButton = ({piece, moveMade , setUpdateBoard}) => {
         e.preventDefault();
         SetIsSelected(true);
         moveMade(e);
-        console.log(piece);
         setPiece(piece);
         setUpdateBoard(true);
     }
 
     return( 
         <>   
-            <div onClick={userPiece === null ? (e) => onSelect(e) : ()=>{}} className="btn btn-block text-black tw-text-center tw-bg-bgwhite tw-p-20">
-                {userPiece}
+            <div onClick={userPiece === null ? (e) => onSelect(e) : ()=>{}} className="btn btn-block text-black tw-text-center tw-bg-white tw-p-20 tw-text-5xl">
+                {userPiece===null?<div className="tw-text-white">O</div>: userPiece}
             </div>
         </>
     );

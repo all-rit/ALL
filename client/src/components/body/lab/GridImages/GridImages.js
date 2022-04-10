@@ -113,7 +113,7 @@ const GridImages = (props) => {
                 }
                 
             </div>
-            <div className="tw-text-xl tw-mb-5 tw-p-2">
+            <div className="tw-text-2xl tw-mb-5 tw-p-2">
                 {currentFile.length +" of "+multi+" selected."}
             </div>
         </>

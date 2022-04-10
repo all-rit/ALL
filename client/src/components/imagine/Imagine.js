@@ -23,8 +23,8 @@ const Imagine = (props)=>{
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 text-center">
-                        <h2 className="section-heading text-uppercase">
-                                {"ImagineRIT '22 ID#"+user?.userid}
+                        <h2 className="section-heading text-uppercase tw-text-right">
+                                {"ID#"+user?.userid}
                         </h2>
                     </div>
                 </div>

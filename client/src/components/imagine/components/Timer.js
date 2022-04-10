@@ -34,9 +34,9 @@ const Timer = ({seconds: startTime, finished, throwAlert}) => {//does it need to
     return (
         <>
             {startTimer &&
-                <div className="timer tw-flex tw-flex-wrap tw-p-4 tw-space-x-3 ">
-                        <h3 className="tw-font-semibold ">Penalty is lifted in:</h3>
-                        <h3  className="tw-font-bold ">{seconds} seconds</h3>
+                <div className="timer tw-flex tw-flex-wrap tw-p-4 tw-space-x-3">
+                        <h3 className="tw-font-semibold  tw-text-4xl ">Penalty is lifted in:</h3>
+                        <h3  className="tw-font-bold  tw-text-4xl">{seconds} seconds</h3>
                 </div>
             }
         </>
