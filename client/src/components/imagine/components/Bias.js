@@ -13,12 +13,9 @@ const Bias = (props) =>{
 
     const throwAlert = ()=>{
         if(biasType==="user"){
-            alert.error("Error: The AI has run into a computational error");
-            alert.error("ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias);
+            alert.show("ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias,{title:"Error: The AI has run into a computational error based on the appearance of your avatar"})
         } else{
-            alert.error("Error: The AI has run into a computational error with one of your teammates.");
-            alert.error("ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias+ ".");
-            alert.error("There will be a penalty to join the game for you and your squad.");
+            alert.show("ErrCode#"+Math.floor(Math.random() * (9999 - 1) + 1)+": "+bias,{title:"Error: The AI has run into a computational error based on the appearance one of your teammates avatars"})
         }
     }
 

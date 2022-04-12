@@ -35,6 +35,10 @@
 	}
   }
 
+#alert-dialog-slide-description{
+	font-size: 2rem;
+}
+
 .moduleContainer{
 	border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;;
@@ -63,6 +67,16 @@
 		font-size: 32px;
 	}
 }
+
+.tictactoe{
+	&__team{
+		color:rgb(83, 83, 218);
+	}
+	&__opposing{
+		color:rgb(252, 162, 102);
+	}
+}
+
 
 .teamMember {
 	background-color: rgb(83, 83, 218);
