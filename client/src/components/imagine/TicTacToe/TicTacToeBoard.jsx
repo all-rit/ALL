@@ -74,7 +74,7 @@ const TicTacToeBoard = (props)=> {
 
             </div>
         </div>
-            {gameState.isGameOver === Model.GameState.isGameOver ?// <h2> It's the {activePlayer.name}'s turn </h2>:
+            {gameState.isGameOver === Model.GameState.isGameOver ?
             <></> :
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase tw-mt-5"
