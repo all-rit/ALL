@@ -20,7 +20,7 @@ const TicTacToeButton = ({piece, moveMade , setUpdateBoard}) => {
     return( 
         <>   
             <div onClick={userPiece === null ? (e) => onSelect(e) : ()=>{}} className="btn btn-block text-black tw-text-center tw-bg-white tw-p-20 tw-text-5xl">
-                {userPiece===null?<div className="tw-text-white">O</div>: userPiece}
+                {userPiece===null?<div className="tw-text-white">O</div>: <div className={userPiece==="X"? "tictactoe__team": "tictactoe__opposing"}>{userPiece}</div>}
             </div>
         </>
     );

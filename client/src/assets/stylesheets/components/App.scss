@@ -68,6 +68,16 @@
 	}
 }
 
+.tictactoe{
+	&__team{
+		color:rgb(83, 83, 218);
+	}
+	&__opposing{
+		color:rgb(252, 162, 102);
+	}
+}
+
+
 .teamMember {
 	background-color: rgb(83, 83, 218);
 	color: white;

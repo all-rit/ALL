@@ -36,7 +36,7 @@ const AvatarSelection = (props)=>{
             <>
                 <h2 className="playthrough__title">Choose Your Avatar</h2>
                 <div className="tw-text-2xl tw-mt-5 tw-mb-5">
-                    Choose the avatar that represents you the most!
+                    Choose the avatar that represents you the most.
                 </div>
                 
                 <GridImages multi={1} setSelection={setAvatar}/>
