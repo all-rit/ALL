@@ -26,6 +26,9 @@ const TicTacToe = (props)=>{
             :
                 <>
                    <h2 class="playthrough__title">Tic-Tac-Toe: Match</h2>
+                   <div className="tw-text-2xl tw-mt-5 tw-mb-5">
+                        Click an open space bellow to begin your match against the AI!
+                    </div>
                     <TicTacToeBoard handleNext={handleNext}/>
                 </>
             }
