@@ -5,14 +5,16 @@ import TicTacToeBoard from "../TicTacToe/TicTacToeBoard";
 const TicTacToe = (props)=>{
     const {linkNum} = props;
     const [loading,setLoading]=useState(true);
+    const [gameState, setGameState] = useState({isGameOver:false , winner:null});
 
     const handleNext= ()=>{
         navigate("/Imagine"+linkNum+"/End");
     }
 
     setTimeout(()=>{
-        setLoading(false)
+        setLoading(false);
     },3000)
+
 
     return(
         <div className="container bottomSpace" >
@@ -29,7 +31,7 @@ const TicTacToe = (props)=>{
                    <div className="tw-text-2xl tw-mt-5 tw-mb-5">
                         Click an open space bellow to begin your match against the AI!
                     </div>
-                    <TicTacToeBoard handleNext={handleNext}/>
+                    <TicTacToeBoard handleNext={handleNext} gameState={gameState} setGameState={setGameState} />
                 </>
             }
         </div>
