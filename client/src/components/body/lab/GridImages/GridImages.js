@@ -77,18 +77,13 @@ const GridImages = (props) => {
     "ShortHairShortFlat", "ShortHairShortRound", "ShortHairShortWaved", 
     "ShortHairSides", "ShortHairTheCaesar", "ShortHairTheCaesarSidePart"]
 
-   
-
     var Accessories = ["Blank", "Kurt", "Prescription01", "Prescription02", 
     "Round", "Sunglasses", "Wayfarers"]
-
-  
 
     
     var HairColors = ["Auburn", "Black", "Blonde", "BlondeGolden", "Brown", "BrownDark",
    "PastelPink"]
 
-  
 
    var FacialHairs = ["Blank", "BeardMedium", "BeardLight", "BeardMajestic", 
    "MoustacheFancy", "MoustacheMagnum"]
@@ -105,28 +100,19 @@ const GridImages = (props) => {
     "Hoodie", "Overall", "ShirtCrewNeck", "ShirtScoopNeck", "ShirtVNeck"]
 
 
-
-
-
     var ClothesColor = ["Black", "Blue02", "Blue03", "Gray01", "Gray02", "Heather", 
     "PastelBlue", "PastelGreen", "PastelOrange", "PastelRed", "PastelYellow", "Pink",
     "Red", "White"]
 
-   
-
-    
 
     var Eyes = ["Default", "Happy", "Wink"]
 
-    
 
     var Eyebrow = ["Default", "DefaultNatural", "FlatNatural", "UpDown", "UpDownNatural"]
 
-  
 
     var Mouth = ["Default", "Serious", "Smile", "Twinkle"]
 
-    
 
     var Skin = ["Tanned", "Brown", "DarkBrown", "Black", "Pale", "Light"]
 
@@ -155,7 +141,7 @@ const GridImages = (props) => {
                                         
 
                                         avatarStyle='Circle'
-                                        topType={ TopType[Math.floor(Math.random()*TopType.length)]}
+                                        topType={TopType[Math.floor(Math.random()*TopType.length)]}
                                         accessoriesType={Accessories[Math.floor(Math.random()*Accessories.length)]}
                                         hairColor={HairColors[Math.floor(Math.random()*HairColors.length)]}
                                         facialHairType={FacialHairs[Math.floor(Math.random()*FacialHairs.length)]}
