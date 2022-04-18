@@ -77,24 +77,23 @@ const GridImages = (props) => {
     "ShortHairShortFlat", "ShortHairShortRound", "ShortHairShortWaved", 
     "ShortHairSides", "ShortHairTheCaesar", "ShortHairTheCaesarSidePart"]
 
-    var randomTopType = TopType[Math.floor(Math.random()*TopType.length)];
+   
 
     var Accessories = ["Blank", "Kurt", "Prescription01", "Prescription02", 
     "Round", "Sunglasses", "Wayfarers"]
 
-    var randomAccessories = Accessories[Math.floor(Math.random()*Accessories.length)];
+  
 
     
     var HairColors = ["Auburn", "Black", "Blonde", "BlondeGolden", "Brown", "BrownDark",
    "PastelPink"]
 
-   var randomHairColors = HairColors[Math.floor(Math.random()*HairColors.length)];
+  
 
    var FacialHairs = ["Blank", "BeardMedium", "BeardLight", "BeardMajestic", 
    "MoustacheFancy", "MoustacheMagnum"]
 
-   var randomFacialHairs =  FacialHairs[Math.floor(Math.random()*FacialHairs.length)];
-
+  
    /**
      * Is the same as facial hair colors, and wish both hairs to be consistent
      */
@@ -106,32 +105,33 @@ const GridImages = (props) => {
     "Hoodie", "Overall", "ShirtCrewNeck", "ShirtScoopNeck", "ShirtVNeck"]
 
 
-    var randomClothes = Clothes[Math.floor(Math.random()*Clothes.length)];
+
 
 
     var ClothesColor = ["Black", "Blue02", "Blue03", "Gray01", "Gray02", "Heather", 
     "PastelBlue", "PastelGreen", "PastelOrange", "PastelRed", "PastelYellow", "Pink",
     "Red", "White"]
 
-    var randomClothesColor = ClothesColor[Math.floor(Math.random()*ClothesColor.length)];
+   
 
     
 
     var Eyes = ["Default", "Happy", "Wink"]
 
-    var randomEye = Eyes[Math.floor(Math.random()*Eyes.length)];
+    
 
     var Eyebrow = ["Default", "DefaultNatural", "FlatNatural", "UpDown", "UpDownNatural"]
 
-    var randomEyebrow = Eyebrow[Math.floor(Math.random()*Eyebrow.length)];
+  
 
     var Mouth = ["Default", "Serious", "Smile", "Twinkle"]
 
-    var randomMouth= Mouth[Math.floor(Math.random()*Mouth.length)];
+    
 
     var Skin = ["Tanned", "Brown", "DarkBrown", "Black", "Pale", "Light"]
 
-    var randomSkin= Skin[Math.floor(Math.random()*Skin.length)];
+
+
 
 
     return (
@@ -151,24 +151,28 @@ const GridImages = (props) => {
                                 >
                                     <Avatar
                                         className={id.includes(data.id) ? 'tw-opacity-50 tw-border-double tw-border-8 tw-max-w-full tw-h-auto' : 'tw-max-w-full tw-h-auto'} alt={data.name} 
+
+                                        
+
                                         avatarStyle='Circle'
-                                        topType={randomTopType}
-                                        accessoriesType={randomAccessories}
-                                        hairColor={randomHairColors}
-                                        facialHairType={randomFacialHairs}
-                                        facialHairColor={randomHairColors}
-                                        clotheType={randomClothes}
-                                        clotheColor={randomClothesColor}
+                                        topType={ TopType[Math.floor(Math.random()*TopType.length)]}
+                                        accessoriesType={Accessories[Math.floor(Math.random()*Accessories.length)]}
+                                        hairColor={HairColors[Math.floor(Math.random()*HairColors.length)]}
+                                        facialHairType={FacialHairs[Math.floor(Math.random()*FacialHairs.length)]}
+                                        facialHairColor={HairColors[Math.floor(Math.random()*HairColors.length)]}
+                                        clotheType={ Clothes[Math.floor(Math.random()*Clothes.length)]}
+                                        clotheColor={ClothesColor[Math.floor(Math.random()*ClothesColor.length)]}
                                         
                                         /**
                                          * Decided in meeting to not use graphic type. i.e. Cumbia
                                          */
                                         // graphicType={data.avatarAttributes.graphicType}
 
-                                        eyeType={randomEye}
-                                        eyebrowType={randomEyebrow}
-                                        mouthType={randomMouth}
-                                        skinColor={randomSkin}
+                                        eyeType={Eyes[Math.floor(Math.random()*Eyes.length)]}
+                                        eyebrowType={Eyebrow[Math.floor(Math.random()*Eyebrow.length)]}
+                                        mouthType={Mouth[Math.floor(Math.random()*Mouth.length)]}
+                                        skinColor={Skin[Math.floor(Math.random()*Skin.length)]} 
+                                     
 
                                     />
                                 </div>
