@@ -9,7 +9,7 @@ class AISimulation extends Component {
         this.state = { readTimerDone: false, componentName: "AISimulation" };
     }
 
-    handleSubmit(){
+    handleSubmit() {
         navigate("/Lab7/Exercise/SimulationSummary");
     }
 
@@ -18,17 +18,10 @@ class AISimulation extends Component {
     }
 
     render() {
-        const { actions } = this.props;
+        const { actions, data, handlers, user } = this.props;
         return (
             <div>
-                <Simulation></Simulation>
-                <button
-                    className="btn btn-primary text-black btn-xl text-uppercase"
-                    onClick={this.handleSubmit}
-                    key="continue"
-                >
-                    Continue
-                </button>
+                <Simulation data={data} handlers={handlers} user={user} />
             </div>
         )
     }

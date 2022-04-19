@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 class Timer extends Component {
     constructor(props) {
         super(props);
-        const {seconds} = this.props;
-        this.state = {secondsLeft: seconds};
+        const { seconds } = this.props;
+        this.state = { secondsLeft: seconds };
     }
 
     componentDidMount() {
         this.interval = setInterval(
-            () => this.setState({ secondsLeft: this.state.secondsLeft - 1 }, ()=>this.checkExpired()),
+            () => this.setState({ secondsLeft: this.state.secondsLeft - 1 }, () => this.checkExpired()),
             1000
         );
     }
-    checkExpired(){
-        if( this.state.secondsLeft === 0){
+    checkExpired() {
+        if (this.state.secondsLeft === 0) {
             this.props.timerDone();
             clearInterval(this.interval);
 
@@ -25,16 +25,18 @@ class Timer extends Component {
     }
 
     render() {
+        const { visible, time } = this.props;
+        const countdownStyle = {
+            width: this.calculatePercentage(time).toString() + '%'
+        };
+        if (!visible) return null;
+
         return (
-            <div>
-                <div className="timer">
-                    <div><b>Seconds Left to Read:</b> </div>
-                    <div className="timer__window">
-                        0 : {this.state.secondsLeft <10 ? "0": ""}{this.state.secondsLeft}
-                    </div>
+            <div className="roundTimer">
+                <div className="roundCountdown" style={countdownStyle}>
                 </div>
             </div>
-    );
+        );
     }
 }
 

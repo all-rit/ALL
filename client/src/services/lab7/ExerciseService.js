@@ -2,13 +2,14 @@ import API from '../API';
 
 const endpoints = {
 	SUBMIT_CHOICE: '/lab7/exercise/choice',
-	CREATE_SIMULATION: '/lab7/exercise/AISimulation',
-	CREATE_ROUND: '/lab7/exercise/round'
+	CREATE_SIMULATION: '/AISimulation',
+	CREATE_ROUND: '/lab7/exercise/round',
+	END_EXERCISE: '/lab7/exercise/end'
 };
 
 const ExerciseService = {
 	createSimulation: () => {
-		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_EXERCISE);
+		return API.postWithBody('process.env.REACT_APP_SERVER_URL' + endpoints.CREATE_SIMULATION);
 	},
 	createRound: () => {
 		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_ROUND);
@@ -21,6 +22,11 @@ const ExerciseService = {
 			selectedoption,
 			options
 		});
+	},
+	updateEndExerciseScore: (score) => {
+		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.END_EXERCISE, {
+			score,
+		})
 	}
 };
 

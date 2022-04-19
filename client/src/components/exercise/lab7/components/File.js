@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { OPEN_FILE, LOCKED_FILE } from '../../../../constants/lab7';
-import unlocked from '../../../../assets/images/lab7/unlock.png';
-import locked from '../../../../assets/images/lab7/lock.png';
+import OPEN from '../../../../assets/images/lab7/unlock.png';
+import LOCKED from '../../../../assets/images/lab7/lock.png';
+import { fileMockData } from './mockData/fileMockData';
 import '../../../../assets/stylesheets//components/File.scss';
 
 
@@ -12,41 +13,56 @@ class File extends Component {
             fileName: "",
             content: [],
             accessStatus: OPEN_FILE,
-            accessStatusIcon: unlocked,
+            accessStatusIcon: OPEN,
             sensitivityLvl: 0
         };
     };
 
-    // take data from dataset and create file
+    // gets data and creates a file
+    randomizeFile() {
+        const num = Math.floor(Math.random() * fileMockData.length);
+        // this.setData(fileMockData[num])
+        return fileMockData[num];
+    }
+
+    // sets data from dataset
     setData(data) {
-        this.state.fileName = data.fileName;
-        this.state.content = data.content;
-        this.state.accessStatus = data.accessStatus;
-        this.state.sensitivityLvl = data.sensitivityLvl;
+        this.setState({
+            fileName: data.fileName,
+            content: data.content,
+            accessStatus: data.accessStatus,
+            sensitivityLvl: data.sensitivityLvl
+        })
+
     };
 
     changeAccess() {
         if (this.state.accessStatus === OPEN_FILE) {
-            this.state.accessStatus = LOCKED_FILE;
-            this.state.accessStatusIcon = locked;
+            this.setState({
+                accessStatus: LOCKED_FILE,
+                accessStatusIcon: LOCKED
+            })
         } else {
-            this.state.accessStatus = OPEN_FILE;
-            this.state.accessStatusIcon = unlocked;
+            this.setState({
+                accessStatus: OPEN_FILE,
+                accessStatusIcon: OPEN
+            })
         }
     }
 
-    getAccessStatusIcon() {
-        return (this.state.accessStatusIcon);
+    getSensitivityLevel() {
+        return this.sensitivityLvl;
     }
 
     render() {
+        let data = this.randomizeFile();
         return (
             <div className='file'>
                 <div className='fileInfo'>
-                    <h5 className='fileName'> File Name</h5>
-                    <img className='accessStatus' src={unlocked}></img>
-                    <h6 className='sensitivityLevel'>Sensitivity Level</h6>
-                    <p className='content'> blah blah</p>
+                    <p className='fileName'>{data.fileName}</p>
+                    <img className='accessStatus' src={this.state.accessStatusIcon}></img>
+                    <h6 className='sensitivityLevel'>{data.sensitivityLevel}</h6>
+                    <p className='content'>{data.content} </p>
                 </div>
             </div>
         );

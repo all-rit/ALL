@@ -1,6 +1,6 @@
 .file {
     width: 20%;
-    height: fit-content;
+    height: 250px;
     display: grid;
     padding-top: 30px;
     padding-bottom: 15px;
@@ -22,9 +22,10 @@
     margin: auto;
 }
 
+
 @media screen and (min-width: 786px) {
     .fileName {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .sensitivityLevel {
@@ -33,6 +34,7 @@
 
     .content {
         font-size: 14px;
+        ;
     }
 
     .accessStatus {
@@ -43,7 +45,7 @@
 
 @media screen and (max-width: 785px) {
     .fileName {
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .sensitivityLevel {
@@ -51,7 +53,7 @@
     }
 
     .content {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .accessStatus {
@@ -62,7 +64,7 @@
 
 @media screen and (max-width: 766px) {
     .fileName {
-        font-size: 14px;
+        font-size: 10px;
     }
 
     .sensitivityLevel {
@@ -70,7 +72,7 @@
     }
 
     .content {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     .accessStatus {

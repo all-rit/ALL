@@ -8,22 +8,12 @@ class AISimulationStart extends Component {
         super(props);
         this.state = { componentName: "AISimulationStart" };
     }
-    handleStart() {
-        navigate("/Lab7/Exercise/AISimulation")
-    }
 
     render() {
-        const { actions } = this.props;
+        const { state, actions } = this.props;
         return (
             <div>
-                <Simulation/>
-                <button
-                    className="btn btn-primary text-black btn-xl text-uppercase "
-                    onClick={this.handleStart}
-                    key="start"
-                >
-                    Start
-                </button>
+                <Simulation data={state.exercise7} handlers={actions} user={state.main.user}/>
             </div>
         )
     }

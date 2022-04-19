@@ -22,6 +22,7 @@ export const types = {
 	RESET_READ_TIMER: '@accessibility-lab/lab7/exercise/reset_read-timer',
 	ADD_RESULT: '@accessibility-lab/lab7/exercise/add_result',
 	UPDATE_FILE_ACCESS: '@accessibility-lab/lab7/exercise/update_file_access',
+	UPDATE_THREAT_LEVEL: '@accessibility-lab/lab7/exercise/update_threat_level',
 	UPDATE_AI_RESULTS: '@accessibility-lab/lab7/exercise/update_AI_results'
 };
 
@@ -42,7 +43,7 @@ export const initialState = {
 	incorrect: 0,
 
 	files: FILE_DEFAULT_VALUES,
-	threat: 0
+	threatLvl: 0
 };
 
 const ExerciseReducer = (state = initialState, action) => {
@@ -125,7 +126,7 @@ const ExerciseReducer = (state = initialState, action) => {
 		case types.UPDATE_THREAT_LEVEL:
 			return {
 				...state,
-				threatLevel: action.threat
+				threatLvl: action.threatLvl
 			}
 		case types.ENABLE_END:
 			return {

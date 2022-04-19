@@ -1,8 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import File from './File';
 import '../../../../assets/stylesheets/components/Files.scss'
+import { fileMockData } from './mockData/fileMockData';
 
 class Files extends Component {
+
+    randomizeFile() {
+        const num = Math.floor(Math.random() * fileMockData.length);
+        return fileMockData[num];
+    }
+
     render() {
         // const { visible, elements } = this.props;
         // const fileElements = Object.keys(elements).map((file) => {
@@ -20,12 +27,12 @@ class Files extends Component {
 
         return (
             <div className="files">
-                    <File/>
-                    <File/>
-                    <File/>
-                    <File/>
-                    <File/>
-                </div>
+                <File/>
+                <File/>
+                <File/>
+                <File/>
+                <File/>
+            </div>
         )
     }
 }

@@ -3,8 +3,8 @@ export const EXERCISE_ENDED = 'EXERCISE_ENDED';
 export const EXERCISE_IDLE = 'EXERCISE_IDLE';
 export const EXERCISE_COUNTDOWN = 'EXERCISE_COUNTDOWN';
 
-export const AI_CORRECT = 'AI_CORRECT';
-export const AI_INCORRECT = 'AI_INCORRECT';
+export const AI_CORRECT = 'AI CORRECT';
+export const AI_INCORRECT = 'AI INCORRECT';
 
 export const OPEN_FILE = 'OPEN';
 export const LOCKED_FILE = 'LOCKED';

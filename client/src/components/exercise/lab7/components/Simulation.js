@@ -8,6 +8,7 @@ import Message from "./Message";
 import ScoreTally from "./ScoreTally"
 import RoundCounter from "./RoundCounter";
 import SimInstructions from './SimInstructions';
+import Timer from "./Timer";
 import '../../../../assets/stylesheets/components/Simulation.scss';
 
 import {
@@ -31,24 +32,32 @@ import {
 class Simulation extends Component {
     constructor(props) {
         super(props);
+        // this.state = {
+        //     roundNumber: 0
+        // }
+    }
+
+    calculatePercentage(time) {
+        const percentage = time / (30 * 1000 / 10) * 100;
+        return percentage;
     }
 
     startRound() {
         const { data, handlers } = this.props;
+        data.roundNumber++;
         handlers.startNewRound();
         handlers.resetDelayTimer();
         handlers.resetReadTimer();
-        this.randomizeFiles();
         this.randomizeThreat();
     }
 
     startSimulation() {
-        const { data, handlers, user } = this.props;
         this.startRound();
+        const { data, handlers, user } = this.props;
         handlers.updateState(EXERCISE_PLAYING);
 
         if (data.roundNumber === 0) {
-            ExerciseService.createExercise(data.plays);
+            ExerciseService.createSimulation(data.plays);
         }
         else if (data.roundNumber === 10) {
             handlers.updateState(EXERCISE_ENDED);
@@ -58,10 +67,14 @@ class Simulation extends Component {
             }
             ExerciseService.updateEndExerciseScore(data.score);
         }
+        else {
+            this.startSimulation();
+        }
     }
 
     resetExercise() {
         const { data, handlers } = this.props;
+
         clearInterval(this.delayTimer);
         clearInterval(this.readTimer);
 
@@ -103,26 +116,62 @@ class Simulation extends Component {
         }
     }
 
-    randomizeFiles() {
-        // get 5 random files from dataset
-    }
-
     randomizeThreat() {
-        const { handlers } = this.props;
-        const num = Math.floor(Math.random() * THREAT_MAX) + 1;
-        handlers.updateThreatLevel(num);
+        const { data, handlers } = this.props;
+        let num = 0;
+        if (data.roundNumber === 0) {
+            num = 0;
+        } else {
+            num = (Math.floor(Math.random() * THREAT_MAX) + 1);
+        }
+        // handlers.updateThreatLevel(num);
+        return num;
     }
 
     render() {
-        const { data, handlers } = this.props;
+        const { data, handlers, time } = this.props;
+        const randThreatLvl = this.randomizeThreat()
+        const countdownStyle = {
+            width: this.calculatePercentage(time).toString() + '%'
+        };
 
         return (
             <div className="simulation">
-                <RoundCounter />
-                <ScoreTally />
-                <SimInstructions />
-                <Files />
-                <Message />
+                <RoundCounter
+                    roundNumber={data.roundNumber}
+                />
+                <ScoreTally
+                // totalScore={data.totalScore}
+                // intrusions={data.intrusions}
+                // protectedTP={data.protectedTP}
+                // incorrectFP={data.incorrectFP}
+                />
+                <SimInstructions
+                    threatLvl={randThreatLvl}
+                />
+                <Files
+                />
+                {/* <AutoSysAI
+                /> */}
+                <Message
+                // data={data.exposedContent}
+                />
+                {/* <Timer
+                    visible={data.state === EXERCISE_PLAYING}
+                    time={data.time}
+                /> */}
+                <div className="roundTimer">
+                    <div className="roundCountdown" style={countdownStyle}>
+                    </div>
+                </div>
+                <button
+                    disabled={this.state === EXERCISE_IDLE}
+                    className="btn btn-primary text-black btn-xl text-uppercase "
+                    onClick={this.startSimulation.bind(this)}
+                    key="start"
+                >
+                    Start
+                </button>
             </div>
         );
     }
