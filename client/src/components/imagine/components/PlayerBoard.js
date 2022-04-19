@@ -6,7 +6,7 @@ import Spinner from "../../../common/Spinner/Spinner";
 import Bias from "./Bias";
 import PenaltyStatus from "./PenaltyStatus";
 import Avatar from 'avataaars';
-import { avatarMockData } from "../../mockData/avatarMockData";
+import createAvatarData from "../../body/lab/GridImages/createAvatarData";
 
 
 const PlayerBoard = (props) => { 
@@ -15,57 +15,6 @@ const PlayerBoard = (props) => {
     const [avatar, setAvatar] = useState([]);
     const [opposingTeam, setOpposingTeam] = useState([]);
     const [offender, setOffender] = useState(null)
-
-
-    var TopType = ["NoHair", "ShortHairShaggyMullet", "EyePatch", "Hat", "Hijab", 
-    "Turban", "WinterHat1", "WinterHat2",  "WinterHat3", "LongHairBob", 
-    "LongHairBigHair", "LongHairCurly", "LongHairCurvy", "LongHairFro", 
-    "LongHairFroBand", "LongHairNotTooLong", "LongHairMiaWallace", 
-    "LongHairStraightStrand", "ShortHairDreads01", "ShortHairDreads02", 
-    "ShortHairFrizzle", "ShortHairShaggyMullet", "ShortHairShortCurly", 
-    "ShortHairShortFlat", "ShortHairShortRound", "ShortHairShortWaved", 
-    "ShortHairSides", "ShortHairTheCaesar", "ShortHairTheCaesarSidePart"]
-
-    var Accessories = ["Blank", "Kurt", "Prescription01", "Prescription02", 
-    "Round", "Sunglasses", "Wayfarers"]
-
-    
-    var HairColors = ["Auburn", "Black", "Blonde", "BlondeGolden", "Brown", "BrownDark",
-   "PastelPink"]
-
-
-   var FacialHairs = ["Blank", "BeardMedium", "BeardLight", "BeardMajestic", 
-   "MoustacheFancy", "MoustacheMagnum"]
-
-  
-   /**
-     * Is the same as facial hair colors, and wish both hairs to be consistent
-     */
-//    var FacialHairColors = ["Auburn", "Black", "Blonde", "BlondeGolden", "Brown", "BrownDark",
-//    "PastelPink"]
-
-
-    var Clothes = ["BlazerShirt", "BlazerSweater", "CollarSweater", "GraphicShirt", 
-    "Hoodie", "Overall", "ShirtCrewNeck", "ShirtScoopNeck", "ShirtVNeck"]
-
-
-    var ClothesColor = ["Black", "Blue02", "Blue03", "Gray01", "Gray02", "Heather", 
-    "PastelBlue", "PastelGreen", "PastelOrange", "PastelRed", "PastelYellow", "Pink",
-    "Red", "White"]
-
-
-    var Eyes = ["Default", "Happy", "Wink"]
-
-
-    var Eyebrow = ["Default", "DefaultNatural", "FlatNatural", "UpDown", "UpDownNatural"]
-
-
-    var Mouth = ["Default", "Serious", "Smile", "Twinkle"]
-
-
-    var Skin = ["Tanned", "Brown", "DarkBrown", "Black", "Pale", "Light"]
-
-
 
     const shuffleArray = (array) =>{
 		let currentIndex = array.length,
@@ -95,8 +44,9 @@ const PlayerBoard = (props) => {
         ImagineService.getUserAvatar(user?.userid).then((data)=>{
             setAvatar(data)
         })
-        shuffleArray(avatarMockData)
-		setOpposingTeam(avatarMockData.slice(0,4));
+        let opossingData=createAvatarData(100)
+        shuffleArray(opossingData)
+		setOpposingTeam(opossingData.slice(0,4));
     // eslint-disable-next-line
     },[user])
     
@@ -146,28 +96,20 @@ const PlayerBoard = (props) => {
                                     return(
                                         <tr className="teamMember" key={index}>
                                             <td >
-                                                <Avatar
-                                                    className='tw-w-16 tw-h-16' alt={data.name} 
-                                                    avatarStyle='Circle'
-                                                    topType={TopType[Math.floor(Math.random()*TopType.length)]}
-                                                    accessoriesType={Accessories[Math.floor(Math.random()*Accessories.length)]}
-                                                    hairColor={HairColors[Math.floor(Math.random()*HairColors.length)]}
-                                                    facialHairType={FacialHairs[Math.floor(Math.random()*FacialHairs.length)]}
-                                                    facialHairColor={HairColors[Math.floor(Math.random()*HairColors.length)]}
-                                                    clotheType={ Clothes[Math.floor(Math.random()*Clothes.length)]}
-                                                    clotheColor={ClothesColor[Math.floor(Math.random()*ClothesColor.length)]}
-                                                    
-                                                    /**
-                                                     * Decided in meeting to not use graphic type. i.e. Cumbia
-                                                     */
-                                                    // graphicType={data.avatarAttributes.graphicType}
-            
-                                                    eyeType={Eyes[Math.floor(Math.random()*Eyes.length)]}
-                                                    eyebrowType={Eyebrow[Math.floor(Math.random()*Eyebrow.length)]}
-                                                    mouthType={Mouth[Math.floor(Math.random()*Mouth.length)]}
-                                                    skinColor={Skin[Math.floor(Math.random()*Skin.length)]} 
-
-                                                />
+                                            <Avatar
+                                                className='tw-w-16 tw-h-16' alt={data.name}                                         
+                                                avatarStyle='Circle'
+                                                topType={data.avatarAttributes.topType}
+                                                accessoriesType={data.avatarAttributes.accessoriesType}
+                                                hairColor={data.avatarAttributes.hairColor}
+                                                facialHairType={data.avatarAttributes.facialHairType}
+                                                clotheType={data.avatarAttributes.clotheType}
+                                                clotheColor={data.avatarAttributes.clotheColor}
+                                                eyeType={data.avatarAttributes.eyeType}
+                                                eyebrowType={data.avatarAttributes.eyebrowType}
+                                                mouthType={data.avatarAttributes.mouthType}
+                                                skinColor={data.avatarAttributes.skinColor}
+                                            />  
                                             </td>
                                             <td>{data.name}</td>
                                             <td><GameScore/></td>
@@ -177,32 +119,23 @@ const PlayerBoard = (props) => {
                                     )
                                 })}
                                 {opposingTeam?.map((data,index)=>{
-                                    console.log(data)
                                     return(
                                         <tr className="opposingMember" key={index}>
                                             <td >
-                                                <Avatar
-                                                    className='tw-w-16 tw-h-16' alt={data.name} 
-                                                    avatarStyle='Circle'
-                                        topType={TopType[Math.floor(Math.random()*TopType.length)]}
-                                        accessoriesType={Accessories[Math.floor(Math.random()*Accessories.length)]}
-                                        hairColor={HairColors[Math.floor(Math.random()*HairColors.length)]}
-                                        facialHairType={FacialHairs[Math.floor(Math.random()*FacialHairs.length)]}
-                                        facialHairColor={HairColors[Math.floor(Math.random()*HairColors.length)]}
-                                        clotheType={ Clothes[Math.floor(Math.random()*Clothes.length)]}
-                                        clotheColor={ClothesColor[Math.floor(Math.random()*ClothesColor.length)]}
-                                        
-                                        /**
-                                         * Decided in meeting to not use graphic type. i.e. Cumbia
-                                         */
-                                        // graphicType={data.avatarAttributes.graphicType}
-
-                                        eyeType={Eyes[Math.floor(Math.random()*Eyes.length)]}
-                                        eyebrowType={Eyebrow[Math.floor(Math.random()*Eyebrow.length)]}
-                                        mouthType={Mouth[Math.floor(Math.random()*Mouth.length)]}
-                                        skinColor={Skin[Math.floor(Math.random()*Skin.length)]} 
-
-                                                />
+                                            <Avatar
+                                                className='tw-w-16 tw-h-16' alt={data.name}                                         
+                                                avatarStyle='Circle'
+                                                topType={data.avatarAttributes.topType}
+                                                accessoriesType={data.avatarAttributes.accessoriesType}
+                                                hairColor={data.avatarAttributes.hairColor}
+                                                facialHairType={data.avatarAttributes.facialHairType}
+                                                clotheType={data.avatarAttributes.clotheType}
+                                                clotheColor={data.avatarAttributes.clotheColor}
+                                                eyeType={data.avatarAttributes.eyeType}
+                                                eyebrowType={data.avatarAttributes.eyebrowType}
+                                                mouthType={data.avatarAttributes.mouthType}
+                                                skinColor={data.avatarAttributes.skinColor}
+                                            />  
                                             </td>
                                             <td>{data.name}</td>
                                             <td><GameScore/></td>
