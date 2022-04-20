@@ -15,6 +15,7 @@ const PlayerBoard = (props) => {
     const [avatar, setAvatar] = useState([]);
     const [opposingTeam, setOpposingTeam] = useState([]);
     const [offender, setOffender] = useState(null)
+    const [isModalActive, setModalActive] = useState(false);
 
     const shuffleArray = (array) =>{
 		let currentIndex = array.length,
@@ -53,7 +54,7 @@ const PlayerBoard = (props) => {
     return  (
             <div className="FullPB moduleContainer">
                 {avatar.length!==0 && team.length!==0 && offender!==null &&
-                    <Bias handleNext={handleNext} biasType={biasType} team={team} avatar={avatar} offender={offender}/>
+                    <Bias handleNext={handleNext} biasType={biasType} team={team} avatar={avatar} offender={offender} isModalActive={isModalActive} setModalActive={setModalActive}/>
                 }
                 {team?.length!==0 && opposingTeam?.length!==0 && offender!==null && avatar.length!==0?
                     <>
@@ -89,7 +90,7 @@ const PlayerBoard = (props) => {
                                     </td>
                                     <td>{user?.firstname != null ? user?.firstname+" "+ user?.lastinitial : "User#"+user?.userid}</td>
                                     <td>0/0/0</td>
-                                    <td><GameStatus userType="user" handleNext={handleNext} biasType={biasType}/></td>
+                                    <td><GameStatus  setModalActive={setModalActive} userType="user"  handleNext={handleNext} biasType={biasType}/></td>
                                     <td><PenaltyStatus isOffender={biasType==="user"? true : false}/></td>
                                 </tr>
                                 {team?.map((data,index)=>{
@@ -113,7 +114,7 @@ const PlayerBoard = (props) => {
                                             </td>
                                             <td>{data.name}</td>
                                             <td><GameScore/></td>
-                                            <td><GameStatus userType="teamMember" biasType={biasType}/></td>
+                                            <td><GameStatus userType="teamMember" biasType={biasType} /></td>
                                             <td><PenaltyStatus isOffender={biasType==="team" ? (data.id===offender?.id ? true : false):false}/></td>
                                         </tr>
                                     )

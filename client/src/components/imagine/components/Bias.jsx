@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Timer from "./Timer";
-import {Modal , ModalBody, ModalFooter} from "reactstrap";
+import {Modal , ModalBody} from "reactstrap";
 
 const Bias = (props) =>{
-    const {handleNext,biasType,team,avatar,offender} = props;
+    const {handleNext,biasType,team,avatar,offender,isModalActive,setModalActive} = props;
     const [timerDone, setTimerDone] = useState(false);
-    const [isModalActive, setModalActive] = useState(true);
     const [bias,setBias] = useState(null);
 
     useState(()=>{
@@ -18,6 +17,7 @@ const Bias = (props) =>{
     const penaltyFinished = () => {
         setTimerDone(true);
         setModalActive(false);
+        onExit()
     };
 
     if(biasType!=="none"){
@@ -25,24 +25,27 @@ const Bias = (props) =>{
             <div>
                 <Modal isOpen={isModalActive}>  
                     <ModalBody>
-                        <div>
+                        <div className="tw-p-5 tw-text-center">
                             {biasType ==="user"?<h3>
                                 Your avatar was not selected because the {bias}.
                             </h3>:
-                            <p>
-                                You were not selected because of this {bias} they in the appearance of one of your teammates.
-                            </p>
+                            <h3>
+                                You were not selected because one of your teammates {bias}.
+                            </h3>
                             }
+                            <h3>
+                                You will now have to wait to join your match.
+                            </h3>
                         </div>
                         <div>
                             <Timer seconds={30} finished={penaltyFinished}/>
                         </div>
-                        <div>
+                        {/* <div>
                         {
                             timerDone? <button className="btn btn-primary text-black btn-xl text-uppercase"
                              onClick={onExit}>Next</button>:<></>
                         }
-                        </div>
+                        </div> */}
                     </ModalBody>
                 </Modal>
                 {/* change to any number */}
