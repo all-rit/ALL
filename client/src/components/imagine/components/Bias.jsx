@@ -27,7 +27,7 @@ const Bias = (props) =>{
                     <ModalBody>
                         <div className="tw-p-5 tw-text-center">
                             {biasType ==="user"?<h3>
-                                Your avatar was not selected because the {bias}.
+                                Your avatar was not selected to play because the {bias}.
                             </h3>:
                             <h3>
                                 You were not selected because one of your teammates {bias}.
