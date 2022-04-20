@@ -38,16 +38,91 @@
     //   }
     // }
 
-function generateName(){
-  return "name";
-}
+
 
 
 
 
 const createAvatarData = (avatarNumber) =>{
-    console.log(fetch("https://api.namefake.com"))
-      
+    function generateName(){
+        return firstName[Math.floor(Math.random()*firstName.length)]+" "+ lastNames[Math.floor(Math.random()*lastNames.length)];
+    }
+    const firstName = [
+        "Mark",
+        "Vincent",
+        "Tiffany",
+        "Raymond",
+        "Abraham",
+        "Courtney",
+        "Felicia",
+        "Gustavo",
+        "Benny",
+        "Janet",
+        "Jennifer",
+        "Silvia",
+        "Carmen",
+        "Teri",
+        "Bernadette",
+        "Horace",
+        "Lois",
+        "Gerald",
+        "Cody",
+        "Bill",
+        "Adam",
+        "Wesley",
+        "Meredith",
+        "Carla",
+        "Georgia",
+        "Lela",
+        "Patricia",
+        "Jonathan",
+        "Angelica",
+        "Sonja",
+        "Dana",
+        "Alfredo",
+        "Katrina",
+        "Vanessa",
+        "Violet",
+        "Elena",
+        "Lillian",
+        "Evelyn",
+        "Kimberly",
+        "Clark",
+        "Elbert",
+        "Irene",
+        "Warren",
+        "Maria",
+        "Roxanne",
+        "Toni",
+        "Jerald",
+        "Terri",
+        "Willis",
+        "Jonathon",
+        "Marianne",
+        "Kathleen",
+        "Georgia",
+        "Beth",
+        "Lawrence",
+        "Kelly",
+        "Antoinette",
+        "Brett",
+        "Tim",
+        "Lauren",
+        "Terry",
+        "Brent",
+        "Troy",
+        "Wilbert",
+        "Vega",
+        "Darrin",
+        "Bobbie",
+        "Clarke",
+        "Camille",
+        "Lester",
+        "Mindy",
+        "Morton",
+        "Brandi"
+    ]
+    const lastNames = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]      
     //Biases
     const hats= ["Hat", "WinterHat1", "WinterHat2",  "WinterHat3"]
     const glasses= ["Kurt", "Prescription01", "Prescription02", "Round", "Sunglasses", "Wayfarers"]
@@ -145,7 +220,7 @@ const createAvatarData = (avatarNumber) =>{
                             "mouthType": Mouth[Math.floor(Math.random()*Mouth.length)],
                             "skinColor": Skin[Math.floor(Math.random()*Skin.length)],
                         },
-                        "bias":"Avatar's shirt is the color "+scolor
+                        "bias":"Avatar's shirt is the color Blue"
                     }
                 )
                 break;
