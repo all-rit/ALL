@@ -6,7 +6,7 @@ import Spinner from "../../../common/Spinner/Spinner";
 import Bias from "./Bias";
 import PenaltyStatus from "./PenaltyStatus";
 import Avatar from 'avataaars';
-import { avatarMockData } from "../../mockData/avatarMockData";
+import createAvatarData from "../../body/lab/GridImages/createAvatarData";
 
 
 const PlayerBoard = (props) => { 
@@ -15,9 +15,7 @@ const PlayerBoard = (props) => {
     const [avatar, setAvatar] = useState([]);
     const [opposingTeam, setOpposingTeam] = useState([]);
     const [offender, setOffender] = useState(null)
-
-
-
+    const [isModalActive, setModalActive] = useState(false);
 
     const shuffleArray = (array) =>{
 		let currentIndex = array.length,
@@ -47,15 +45,16 @@ const PlayerBoard = (props) => {
         ImagineService.getUserAvatar(user?.userid).then((data)=>{
             setAvatar(data)
         })
-        shuffleArray(avatarMockData)
-		setOpposingTeam(avatarMockData.slice(0,4));
+        let opossingData=createAvatarData(100)
+        shuffleArray(opossingData)
+		setOpposingTeam(opossingData.slice(0,4));
     // eslint-disable-next-line
     },[user])
     
     return  (
             <div className="FullPB moduleContainer">
                 {avatar.length!==0 && team.length!==0 && offender!==null &&
-                    <Bias handleNext={handleNext} biasType={biasType} team={team} avatar={avatar} offender={offender}/>
+                    <Bias handleNext={handleNext} biasType={biasType} team={team} avatar={avatar} offender={offender} isModalActive={isModalActive} setModalActive={setModalActive}/>
                 }
                 {team?.length!==0 && opposingTeam?.length!==0 && offender!==null && avatar.length!==0?
                     <>
@@ -91,60 +90,53 @@ const PlayerBoard = (props) => {
                                     </td>
                                     <td>{user?.firstname != null ? user?.firstname+" "+ user?.lastinitial : "User#"+user?.userid}</td>
                                     <td>0/0/0</td>
-                                    <td><GameStatus userType="user" handleNext={handleNext} biasType={biasType}/></td>
+                                    <td><GameStatus  setModalActive={setModalActive} userType="user"  handleNext={handleNext} biasType={biasType}/></td>
                                     <td><PenaltyStatus isOffender={biasType==="user"? true : false}/></td>
                                 </tr>
                                 {team?.map((data,index)=>{
                                     return(
                                         <tr className="teamMember" key={index}>
                                             <td >
-                                                <Avatar
-                                                    className='tw-w-16 tw-h-16' alt={data.name} 
-                                                    avatarStyle='Circle'
-                                                    topType={data.avatarAttributes.topType}
-                                                    accessoriesType={data.avatarAttributes.accessoriesType}
-                                                    hairColor={data.avatarAttributes.hairColor}
-                                                    facialHairType={data.avatarAttributes.facialHairType}
-                                                    facialHairColor={data.avatarAttributes.facialHairColor}
-                                                    clotheType={data.avatarAttributes.clotheType}
-                                                    clotheColor={data.avatarAttributes.clotheColor}
-                                                    graphicType={data.avatarAttributes.graphicType}
-                                                    eyeType={data.avatarAttributes.eyeType}
-                                                    eyebrowType={data.avatarAttributes.eyebrowType}
-                                                    mouthType={data.avatarAttributes.mouthType}
-                                                    skinColor={data.avatarAttributes.skinColor}
-
-                                                />
+                                            <Avatar
+                                                className='tw-w-16 tw-h-16' alt={data.name}                                         
+                                                avatarStyle='Circle'
+                                                topType={data.avatarAttributes.topType}
+                                                accessoriesType={data.avatarAttributes.accessoriesType}
+                                                hairColor={data.avatarAttributes.hairColor}
+                                                facialHairType={data.avatarAttributes.facialHairType}
+                                                clotheType={data.avatarAttributes.clotheType}
+                                                clotheColor={data.avatarAttributes.clotheColor}
+                                                eyeType={data.avatarAttributes.eyeType}
+                                                eyebrowType={data.avatarAttributes.eyebrowType}
+                                                mouthType={data.avatarAttributes.mouthType}
+                                                skinColor={data.avatarAttributes.skinColor}
+                                            />  
                                             </td>
                                             <td>{data.name}</td>
                                             <td><GameScore/></td>
-                                            <td><GameStatus userType="teamMember" biasType={biasType}/></td>
+                                            <td><GameStatus userType="teamMember" biasType={biasType} /></td>
                                             <td><PenaltyStatus isOffender={biasType==="team" ? (data.id===offender?.id ? true : false):false}/></td>
                                         </tr>
                                     )
                                 })}
                                 {opposingTeam?.map((data,index)=>{
-                                    console.log(data)
                                     return(
                                         <tr className="opposingMember" key={index}>
                                             <td >
-                                                <Avatar
-                                                    className='tw-w-16 tw-h-16' alt={data.name} 
-                                                    avatarStyle='Circle'
-                                                    topType={data.avatarAttributes.topType}
-                                                    accessoriesType={data.avatarAttributes.accessoriesType}
-                                                    hairColor={data.avatarAttributes.hairColor}
-                                                    facialHairType={data.avatarAttributes.facialHairType}
-                                                    facialHairColor={data.avatarAttributes.facialHairColor}
-                                                    clotheType={data.avatarAttributes.clotheType}
-                                                    clotheColor={data.avatarAttributes.clotheColor}
-                                                    graphicType={data.avatarAttributes.graphicType}
-                                                    eyeType={data.avatarAttributes.eyeType}
-                                                    eyebrowType={data.avatarAttributes.eyebrowType}
-                                                    mouthType={data.avatarAttributes.mouthType}
-                                                    skinColor={data.avatarAttributes.skinColor}
-
-                                                />
+                                            <Avatar
+                                                className='tw-w-16 tw-h-16' alt={data.name}                                         
+                                                avatarStyle='Circle'
+                                                topType={data.avatarAttributes.topType}
+                                                accessoriesType={data.avatarAttributes.accessoriesType}
+                                                hairColor={data.avatarAttributes.hairColor}
+                                                facialHairType={data.avatarAttributes.facialHairType}
+                                                clotheType={data.avatarAttributes.clotheType}
+                                                clotheColor={data.avatarAttributes.clotheColor}
+                                                eyeType={data.avatarAttributes.eyeType}
+                                                eyebrowType={data.avatarAttributes.eyebrowType}
+                                                mouthType={data.avatarAttributes.mouthType}
+                                                skinColor={data.avatarAttributes.skinColor}
+                                            />  
                                             </td>
                                             <td>{data.name}</td>
                                             <td><GameScore/></td>
