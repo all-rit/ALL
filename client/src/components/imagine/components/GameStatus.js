@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const GameStatus = (props) =>{
-    const {userType,handleNext,biasType} = props;
+    const {userType,handleNext,biasType,setModalActive} = props;
 
     const [status,setStatus] = useState("Waiting...")
 
@@ -24,6 +24,7 @@ const GameStatus = (props) =>{
         } else{
             setTimeout(()=>{
                 setStatus("Penalty")
+                setModalActive(true)
             },5100)
         }
 

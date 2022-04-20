@@ -9,7 +9,7 @@ const PenaltyStatus = (props) =>{
         if(isOffender===true){
             const penaltyTimeout = setTimeout(()=>{
                 setPenalty("Offender")
-            },5100)
+            },5099)
     
             return () =>{
                 clearTimeout(penaltyTimeout)

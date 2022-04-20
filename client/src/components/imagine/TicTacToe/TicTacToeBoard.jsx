@@ -2,45 +2,62 @@ import { useEffect, useState } from "react";
 import TicTacToeButton from "./TicTacToeButton";
 import Model from "../TicTacToe/Model";
 
+/**
+ * TicTacToeBoard is a component for the user to be able to import both the view and logic 
+ * of a game of Tic Tac Toe. This component will display a GameBoard and allow for the player
+ * to play with an automated AI player to play the game against.
+ * @param {Object} props
+ */
 const TicTacToeBoard = (props)=> {
     const {handleNext}=props;
     const[activePlayer , setActivePlayer] = useState(Model.Players[0]);
     const[gameInfo , setGameInfo] = useState(Model.createNewBoard());
-    const[gameState, setGameState] = useState({isGameOver:false , winner:null});
-    
-    const [updateBoard , setUpdateBoard] = useState(false);
+    const[updateBoard , setUpdateBoard] = useState(false);
 
     useEffect(()=>{
         setUpdateBoard(false);
     },[gameInfo, updateBoard]);
-    
+    /**
+     * callAImove is a function that is responsible for executing the behavior of an AI 
+     * making a move on the board.
+     */
+    const callAImove = () =>{
+        // performs wait  
+        setGameInfo({...Model.aIMove(gameInfo)}); 
+        props.setGameState({...Model.checkWinner(gameInfo)});
+    };
+
+    /**
+     * executeMove is responsible for executing a move for the player and handling
+     * the re-rendering to display a new piece on the board 
+     * @param {Event} e passed in event to know when to trigger move call.
+     * @param {Number} x integer to show the x location 
+     * @param {Number} y integer to show the y location 
+     */
     const executeMove = (e,x, y) => { 
         e.preventDefault();
-        //updates the gameInfo of the component
+        // updates the gameInfo of the component
         setGameInfo({...Model.makeMove(gameInfo , activePlayer.piece, x, y)});
-        //updates Gamestate
-        setGameState({...Model.checkWinner(gameInfo)});
-        // swaps to AI
-        setActivePlayer(Model.Players[1]);
-        // performs wait 
-        
-        // updates after AI 
-        setGameInfo({...Model.aIMove(gameInfo)}); 
-        setGameState({...Model.checkWinner(gameInfo)});
-        // swaps players
-        setActivePlayer(Model.Players[0]);
-
+        // updates GameState
+        const currentGameState = {...Model.checkWinner(gameInfo)};
+        props.setGameState({...Model.checkWinner(gameInfo)});
+        if(!currentGameState.isGameOver){
+            // switches to the AI
+            setActivePlayer(Model.Players[1]);
+            // executes the AI move
+            callAImove();
+            // Sets the activePlayer back to the player
+            setActivePlayer(Model.Players[0]);
+        }
         };
-    
-
     return(
         <>
         <div className="moduleContainer">
-            {gameState.isGameOver === Model.GameState.isGameOver ? <></>: 
-                (gameState.isGameOver && gameState.winner!=="tie"?
+            {props.gameState.isGameOver === Model.GameState.isGameOver ? <></>: 
+                (props.gameState.isGameOver && props.gameState.winner!=="tie"?
                     <div className="tw-container tw-content-center tw-p-1">
                         <h2>
-                            {gameState.winner==="AI" ?
+                            {props.gameState.winner==="AI" ?
                                 <>You've lost the match!</>:<>You've won the match!</>
                             }
                         </h2>
@@ -74,7 +91,7 @@ const TicTacToeBoard = (props)=> {
 
             </div>
         </div>
-            {gameState.isGameOver === Model.GameState.isGameOver ?
+            {props.gameState.isGameOver === Model.GameState.isGameOver ?
             <></> :
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase tw-mt-5"

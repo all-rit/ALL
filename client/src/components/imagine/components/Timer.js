@@ -3,18 +3,16 @@ import React, { useEffect, useRef, useState } from "react";
 const Timer = ({seconds: startTime, finished, throwAlert}) => {//does it need to be "App"?
     const [seconds, updateSeconds] = useState(startTime);
     const [startTimer, setStartTimer] = useState(false);
-
+    
     const timer = useRef(null);
 
     useEffect(() => {
         setTimeout(()=>{
-            throwAlert()
-            setStartTimer(true)
+            setStartTimer(true);
             timer.current = setInterval(() => {
                 updateSeconds((prevSeconds) => prevSeconds - 1);
             }, 1000);
-        },5000)
-       
+        },2000);
         return () => {
             clearInterval(timer.current);
             timer.current = null;//safer to set to null
