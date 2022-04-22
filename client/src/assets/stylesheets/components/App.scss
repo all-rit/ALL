@@ -5,7 +5,15 @@
 	--white-text: #fff; // this is the color that changes white text based on the color picker
 	--light-blue-text: #bed2fe // this is the color that changes white text based on the color picker
 }
-
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+li{
+padding: 0;
+margin: 0;
+}
 @mixin breakpoint($size) {
 	@if $size == small-phone-only {
 	  @media (max-width: 330px) {
@@ -122,7 +130,15 @@
   100% { transform: rotate(360deg); }
   }
 
+  .gridApplicants{
+	  margin-bottom: 2rem;
+  }
 
+	.gridApplicants-content > * + *{
+	  padding: 1rem 2rem !important;
+	  border-top: 1px solid #d9d9d9 !important;
+	  
+  }
 .candidate{
 	//    margin-top: 10.35rem;
 	&__form__group{
