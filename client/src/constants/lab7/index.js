@@ -17,47 +17,47 @@ export const THREAT_MAX = 3;
 export const DELAY_TIME = 10;
 export const READ_TIME = 30;
 
-export const FILE_DEFAULT_VALUES = { 1: OPEN_FILE, 2: OPEN_FILE, 3: OPEN_FILE, 4: OPEN_FILE, 5: OPEN_FILE};
+export const FILE_DEFAULT_VALUES = { 1: { fileName: 'File 1', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' }, 2: { fileName: 'File 2', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' }, 3: { fileName: 'File 3', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' }, 4: { fileName: 'File 4', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' }, 5: { fileName: 'File 5', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' } };
 
 export const roundData = [
     {
         title: 'Round 1',
-        content:''
+        content: ''
     },
     {
         title: 'Round 2',
-        content:''
+        content: ''
     },
     {
         title: 'Round 3',
-        content:''
+        content: ''
     },
     {
         title: 'Round 4',
-        content:''
+        content: ''
     },
     {
         title: 'Round 5',
-        content:''
+        content: ''
     },
     {
         title: 'Round 6',
-        content:''
+        content: ''
     },
     {
         title: 'Round 7',
-        content:''
+        content: ''
     },
     {
         title: 'Round 8',
-        content:''
+        content: ''
     },
     {
         title: 'Round 9',
-        content:''
+        content: ''
     },
     {
         title: 'Round 10',
-        content:''
+        content: ''
     }
 ];

@@ -5,8 +5,7 @@ export const types = {
 };
 
 export const initialState = {
-	popupMessage: '',
-	instructionsVisible: false,
+	popupMessage: ''
 };
 
 const AppReducer = (state = initialState, action) => {

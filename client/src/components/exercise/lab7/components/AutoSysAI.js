@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import File from "./File";
 import '../../../../assets/stylesheets/components/AutoSysAI.scss'
-import { AI_CORRECT } from "../../../../constants/lab7";
+import { AI_CORRECT, AI_INCORRECT } from "../../../../constants/lab7";
 
 class AutoSysAI extends Component {
     constructor(props) {
@@ -12,41 +12,50 @@ class AutoSysAI extends Component {
         switch (threatLvl) {
             case 3:
                 if (file.getSensitivityLvl >= 4) {
-                    file.changeAccess();
+                    return file.changeAccess();
                 }
             case 2:
                 if (file.getSensitivityLvl >= 2) {
-                    file.changeAccess();
+                    return file.changeAccess();
                 }
             case 1:
                 if (file.getSensitivityLvl == 1) {
-                    file.changeAccess();
+                    return file.changeAccess();
                 }
+            default:
+                return null;
         }
-        return AI_CORRECT;
+    }
+
+    evaluateChoice(expected, actual){
+        if (actual === expected) {
+            return AI_CORRECT
+        } else {
+            return AI_INCORRECT
+        }
     }
 
     render() {
-        const {files, threatLvl} = this.props;
+        const { files, threatLvl } = this.props;
         return (
             <div className="displays">
                 <div className="fileDisplay">
-                    <p> {this.makeDecision(files[0], threatLvl)}</p>
+                    <p> {this.evaluateChoice()}</p>
                 </div>
                 <div className="fileDisplay">
-                    <p> {this.makeDecision(files[1], threatLvl)}</p>
+                    <p> {this.evaluateChoice()}</p>
 
                 </div>
                 <div className="fileDisplay">
-                    <p> {this.makeDecision(files[2], threatLvl)}</p>
+                    <p> {this.evaluateChoice()}</p>
 
                 </div>
                 <div className="fileDisplay">
-                    <p> {this.makeDecision(files[3], threatLvl)}</p>
+                    <p> {this.evaluateChoice()}</p>
 
                 </div>
                 <div className="fileDisplay">
-                    <p> {this.makeDecision(files[4], threatLvl)}</p>
+                    <p> {this.evaluateChoice()}</p>
 
                 </div>
             </div>

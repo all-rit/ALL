@@ -6,7 +6,18 @@ class SimInstructions extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            roundNumber: props.roundNumber,
+            threatLvl: props.threatLvl
+        };
     }
+    componentDidMount() {
+        this.interval = setInterval(() => this.setState({ threatLvl: this.props.threatLvl }), 100);
+      }
+      componentWillUnmount() {
+        clearInterval(this.interval);
+      }
+
 
     getInstructions(roundNumber, threatLvl) {
         if (roundNumber === 0) {
@@ -49,7 +60,7 @@ class SimInstructions extends Component {
         let data = this.props;
 
         return (
-            this.getInstructions(data.threatLvl)
+            this.getInstructions(data.roundNumber, data.threatLvl)
         )
     }
 }

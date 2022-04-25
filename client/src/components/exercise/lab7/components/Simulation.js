@@ -28,13 +28,11 @@ import {
     FILE_DEFAULT_VALUES,
     THREAT_MAX
 } from "../../../../constants/lab7";
+import { navigate } from "@reach/router";
 
 class Simulation extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     roundNumber: 0
-        // }
     }
 
     calculatePercentage(time) {
@@ -43,33 +41,33 @@ class Simulation extends Component {
     }
 
     startRound() {
-        const { data, handlers } = this.props;
-        data.roundNumber++;
-        handlers.startNewRound();
-        handlers.resetDelayTimer();
-        handlers.resetReadTimer();
-        this.randomizeThreat();
-    }
-
-    startSimulation() {
-        this.startRound();
         const { data, handlers, user } = this.props;
-        handlers.updateState(EXERCISE_PLAYING);
+        data.roundNumber += 1;
 
         if (data.roundNumber === 0) {
             ExerciseService.createSimulation(data.plays);
+            handlers.startNewRound();
         }
-        else if (data.roundNumber === 10) {
+        else if (data.roundNumber > 10) {
             handlers.updateState(EXERCISE_ENDED);
             UserLabService.complete_exercise(LAB_ID);
             if (user?.firstname !== null && user !== null) {
                 UserLabService.user_complete_exercise(user.userid, LAB_ID)
             }
             ExerciseService.updateEndExerciseScore(data.score);
+            navigate("/Lab7/Exercise/SimulationSummary");
+        } else {
+            handlers.startNewRound();
+            handlers.resetDelayTimer();
+            handlers.resetReadTimer();
+            this.randomizeThreat();
         }
-        else {
-            this.startSimulation();
-        }
+    }
+
+    startSimulation() {
+        const { handlers } = this.props;
+        handlers.updateState(EXERCISE_PLAYING);
+        this.startRound();
     }
 
     resetExercise() {
@@ -114,58 +112,53 @@ class Simulation extends Component {
         } else {
             score = 5;
         }
+        this.setState({ score: data.score + score })
     }
 
     randomizeThreat() {
         const { data, handlers } = this.props;
-        let num = 0;
+        let threatLvl = 0;
         if (data.roundNumber === 0) {
-            num = 0;
+            threatLvl = 0;
         } else {
-            num = (Math.floor(Math.random() * THREAT_MAX) + 1);
+            threatLvl = (Math.floor(Math.random() * THREAT_MAX) + 1);
         }
-        // handlers.updateThreatLevel(num);
-        return num;
+        handlers.updateThreatLevel(threatLvl);
+        return threatLvl;
     }
 
     render() {
-        const { data, handlers, time } = this.props;
-        const randThreatLvl = this.randomizeThreat()
+        const { data, time } = this.props;
         const countdownStyle = {
             width: this.calculatePercentage(time).toString() + '%'
         };
-
         return (
             <div className="simulation">
                 <RoundCounter
                     roundNumber={data.roundNumber}
                 />
                 <ScoreTally
-                // totalScore={data.totalScore}
-                // intrusions={data.intrusions}
-                // protectedTP={data.protectedTP}
-                // incorrectFP={data.incorrectFP}
+                    totalScore={data.score}
+                    intrusions={data.intrusions}
+                    protectedTP={data.protected}
+                    incorrectFP={data.incorrect}
                 />
                 <SimInstructions
-                    threatLvl={randThreatLvl}
+                    threatLvl={data.threatLvl}
                 />
+
                 <Files
+                    files={data.files}
                 />
-                {/* <AutoSysAI
-                /> */}
+                <AutoSysAI files={data.files} threatLvl={data.threatLvl} />
                 <Message
-                // data={data.exposedContent}
+                    // data={data.exposedContent}
                 />
-                {/* <Timer
-                    visible={data.state === EXERCISE_PLAYING}
-                    time={data.time}
-                /> */}
                 <div className="roundTimer">
                     <div className="roundCountdown" style={countdownStyle}>
                     </div>
                 </div>
                 <button
-                    disabled={this.state === EXERCISE_IDLE}
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick={this.startSimulation.bind(this)}
                     key="start"

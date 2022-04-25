@@ -124,6 +124,7 @@ const ExerciseReducer = (state = initialState, action) => {
 				aiResult: action.aiResult
 			};
 		case types.UPDATE_THREAT_LEVEL:
+			console.log(action.threatLvl)
 			return {
 				...state,
 				threatLvl: action.threatLvl
@@ -152,7 +153,7 @@ export const actions = {
 	startNewRound: () => ({ type: types.START_NEW_ROUND }),
 	addResult: (result) => ({ type: types.ADD_RESULT, result }),
 	updateFileAccess: (accessStatus) => ({ type: types.UPDATE_FILE_ACCESS, accessStatus }),
-	updateThreatLevel: (num) => ({ type: types.UPDATE_THREAT_LEVEL, num }),
+	updateThreatLevel: (threatLvl) => ({ type: types.UPDATE_THREAT_LEVEL, threatLvl }),
 	updateAIResults: (aiResult) => ({ type: types.UPDATE_AI_RESULTS, aiResult }),
 	enableEnd: () => ({ type: types.ENABLE_END })
 };

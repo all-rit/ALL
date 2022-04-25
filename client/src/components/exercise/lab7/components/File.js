@@ -16,12 +16,12 @@ class File extends Component {
             accessStatusIcon: OPEN,
             sensitivityLvl: 0
         };
-    };
+        };
 
     // gets data and creates a file
     randomizeFile() {
         const num = Math.floor(Math.random() * fileMockData.length);
-        // this.setData(fileMockData[num])
+        // this.setData(fileMockData[num]);
         return fileMockData[num];
     }
 
@@ -33,7 +33,6 @@ class File extends Component {
             accessStatus: data.accessStatus,
             sensitivityLvl: data.sensitivityLvl
         })
-
     };
 
     changeAccess() {
@@ -48,19 +47,29 @@ class File extends Component {
                 accessStatusIcon: OPEN
             })
         }
+        console.log(this.state.accessStatus)
+        return this.state.accessStatus;
     }
 
-    getSensitivityLevel() {
-        return this.sensitivityLvl;
+    getSensitivityLvl(){
+        return this.state.sensitivityLvl;
+    }
+
+    getAccessStatusIcon(accessStatus) {
+        if (accessStatus === LOCKED_FILE){
+            return LOCKED;
+        } else {
+            return OPEN;
+        }
     }
 
     render() {
-        let data = this.randomizeFile();
+        const data = this.randomizeFile();
         return (
             <div className='file'>
                 <div className='fileInfo'>
                     <p className='fileName'>{data.fileName}</p>
-                    <img className='accessStatus' src={this.state.accessStatusIcon}></img>
+                    <img className='accessStatus' src={this.getAccessStatusIcon(data.accessStatus)}></img>
                     <h6 className='sensitivityLevel'>{data.sensitivityLevel}</h6>
                     <p className='content'>{data.content} </p>
                 </div>

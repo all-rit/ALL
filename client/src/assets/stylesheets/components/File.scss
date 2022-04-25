@@ -1,6 +1,5 @@
 .file {
     width: 20%;
-    height: 250px;
     display: grid;
     padding-top: 30px;
     padding-bottom: 15px;
@@ -12,7 +11,7 @@
 }
 
 .accessStatus {
-    width: 45px;
+    width: 50px;
     padding: 20px;
 }
 
@@ -21,7 +20,6 @@
     height: fit-content;
     margin: auto;
 }
-
 
 @media screen and (min-width: 786px) {
     .fileName {
@@ -33,8 +31,7 @@
     }
 
     .content {
-        font-size: 14px;
-        ;
+        font-size: 80%;
     }
 
     .accessStatus {
@@ -43,7 +40,7 @@
     }
 }
 
-@media screen and (max-width: 785px) {
+@media screen and (max-width: 991px) {
     .fileName {
         font-size: 12px;
     }
@@ -53,7 +50,7 @@
     }
 
     .content {
-        font-size: 12px;
+        font-size: 65%;
     }
 
     .accessStatus {
@@ -62,7 +59,7 @@
     }
 }
 
-@media screen and (max-width: 766px) {
+@media screen and (max-width: 767px) {
     .fileName {
         font-size: 10px;
     }
@@ -72,7 +69,7 @@
     }
 
     .content {
-        font-size: 10px;
+        font-size: 40%;
     }
 
     .accessStatus {
