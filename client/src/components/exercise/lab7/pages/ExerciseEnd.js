@@ -25,30 +25,6 @@ class ExerciseEnd extends Component {
           <p className="playthrough__sentence">
             Congratulations! You've finished the AI Cybersecurity Module.
           </p>
-          <div className="guidance margin-bottom-2">
-
-          <p className="playthrough__sentence">Here are some key takeaways:</p>
-            <div className="flex-boxes">
-              <div>
-                <div className="icon">
-                  <EmojiObjects fontSize="large" />
-                </div>
-                A
-              </div>
-              <div>
-                <div className="icon">
-                  <Timer fontSize="large" />
-                </div>
-                B
-              </div>
-              <div>
-                <div className="icon">
-                  <Forum fontSize="large" />
-                </div>
-                C
-              </div>
-            </div>
-          </div>
           <p className="playthrough__sentence">
             Click the 'Home' button to return to the Exercise start page or click the 'Next' button to continue onto the Reinforcement part of the lab.
           </p>

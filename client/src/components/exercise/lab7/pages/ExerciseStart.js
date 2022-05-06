@@ -9,7 +9,7 @@ class ExerciseStart extends Component {
   }
 
   handleStart() {
-    navigate("/Lab7/Exercise/AISimulationStart");
+    navigate("/Lab7/Exercise/AISimulation");
   }
 
   render() {

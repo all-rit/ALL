@@ -1,30 +1,20 @@
 import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
 import Simulation from "../../components/Simulation";
+import '../../../../../assets/stylesheets/components/Simulation.scss';
 
-class AISimulation extends Component {
+class AISimulationStart extends Component {
     constructor(props) {
         super(props);
-        this.state = { readTimerDone: false, componentName: "AISimulation" };
-    }
-
-    handleSubmit() {
-        navigate("/Lab7/Exercise/SimulationSummary");
-    }
-
-    readTimerDone() {
-        this.setState({ readTimerDone: true })
+        this.state = { componentName: "AISimulation" };
     }
 
     render() {
-        const { data, handlers, user } = this.props;
-        console.log(handlers)
+        const { state, actions } = this.props;
         return (
             <div>
-                <Simulation data={data} handlers={handlers} user={user} />
+                <Simulation data={state.exercise7} handlers={actions} user={state.main.user}/>
             </div>
         )
     }
 }
-export default AISimulation;
+export default AISimulationStart;

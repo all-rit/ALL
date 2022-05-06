@@ -144,9 +144,9 @@ class AICodeRepair extends Component {
 									AutoSysAI.js
 								</div>
 								{/* psuedocode */}
-								<div className="code_editor__file code_editor__file--inactive">
+								{/* <div className="code_editor__file code_editor__file--inactive">
 									Psuedocode
-								</div>
+								</div> */}
 							</div>
 
 							<div className="code_editor__code">
@@ -192,6 +192,25 @@ class AICodeRepair extends Component {
 									<span className="code_editor__line--purple">) &#123;</span>
 								</div>
 
+								<div className="code_editor__line">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span className="code_editor__line--blue">file</span>
+									<span className="code_editor__line--white">.</span>
+									<span className="code_editor__line--yellow">changeAccess()</span>
+									<span className="code_editor__line--white">;</span>
+								</div>
+
+								<div className="code_editor__line">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span className="code_editor__line--darkgreen">// enter 'file.getSensitivityLvl' into the first input </span>
+								</div>
+
+								<div className="code_editor__line">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span className="code_editor__line--darkgreen">// enter 'threatLvl' into the second input</span>
+								</div>
+
+								{/* return() */}
 								<div className="code_editor__line">
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 									<span className="code_editor__line--purple">return </span>

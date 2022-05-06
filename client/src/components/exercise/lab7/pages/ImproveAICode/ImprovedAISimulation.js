@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import RepairService from '../../../../../services/lab7/RepairService';
-import PageServiceTimer from "../../../shared/PageServiceTimer";
-import AISimulation from '../Simulation/AISimulation';
 import { navigate } from "@reach/router";
+import Simulation from '../../components/Simulation';
 
 class ImprovedAISimulation extends Component {
     constructor(props) {
@@ -14,10 +12,12 @@ class ImprovedAISimulation extends Component {
     }
 
     render() {
-        
+        const { state, actions } = this.props;
+
         return (
             <div>
                 <p className="playthrough__sentence">Improved AI Simulation</p>
+                <Simulation data={state.exercise7} handlers={actions} user={state.main.user}/>
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase"
                     onClick={this.handleSubmit}
