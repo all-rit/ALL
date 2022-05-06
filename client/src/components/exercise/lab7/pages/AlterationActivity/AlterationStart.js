@@ -23,7 +23,10 @@ class AlterationStart extends Component {
                             In this part of the exercise, you will be looking at different versions of the utility equation that you edited in the last activity.
                         </p>
                         <p className="playthrough__sentence">
-                            To assess your understanding and grasp of the material, you will be given the original utility equation that was provided and you will be asked to compare them and the impact on the autonomous system.
+                            In AI and machine learning, an <b>utility function</b> or equation is used to assign values to certain actions that the AI system can take.  A simplified version of a utility equation can be written as: <b>utility = reward / cost</b>. The goal of a utility equation/function is to get more reward despite the cost or higher utility.
+                        </p>
+                        <p className="playthrough__sentence">
+                            To assess your understanding and grasp of the material, you will be given the original utility equation that was provided and a new equation. You will then be asked to compare them and their impact on the autonomous system.
                         </p>
                     </div>
                     <button

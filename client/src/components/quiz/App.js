@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import quizQuestionsLab1 from './api/Lab1/quizQuestions';
 import quizQuestionsLab2 from './api/Lab2/quizQuestions';
@@ -6,13 +6,14 @@ import quizQuestionsLab3 from './api/Lab3/quizQuestions';
 import quizQuestionsLab4 from "./api/Lab4/quizQuestions";
 import quizQuestionsLab5 from './api/Lab5/quizQuestions';
 import quizQuestionsLab7 from './api/Lab7/quizQuestions';
+import alterationQuizQuestions from './api/Lab7/alterationQuizQuestions';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import './App.css';
 import UserLabService from '../../services/UserLabService';
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import {actions as mainActions} from "../../reducers/MainReducer";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actions as mainActions } from "../../reducers/MainReducer";
 
 function initializeReactGA() {
     if (process.env.NODE_ENV === 'production') {
@@ -49,17 +50,17 @@ class App extends Component {
             disableNextQuestion: true,
             selectedAnswers: {},
             multiChoice: false,
-            lab:props.state.main.lab,
+            lab: props.state.main.lab,
             quizQuestions: []
         }
-        ;
-        
+            ;
+
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
         this.assignQuizQuestions = this.assignQuizQuestions.bind(this);
         this.setNextQuestion = this.setNextQuestion.bind(this)
     }
 
-    assignQuizQuestions(){
+    assignQuizQuestions() {
         const lab = this.props.state.main.lab;
         switch (lab) {
             case 1:
@@ -75,7 +76,11 @@ class App extends Component {
             case 5:
                 return quizQuestionsLab5
             case 7:
-                return quizQuestionsLab7
+                if (this.props.state.main.body == 2) {
+                    return alterationQuizQuestions
+                } else {
+                    return quizQuestionsLab7
+                }
             default:
                 return [{
                     question: "Default",
@@ -86,12 +91,12 @@ class App extends Component {
                         }
                     ],
                     multiChoice: false
-                }]             
+                }]
         }
     }
-    
+
     UNSAFE_componentWillMount() {
-        this.setState({quizQuestions: this.assignQuizQuestions()}, ()=>{
+        this.setState({ quizQuestions: this.assignQuizQuestions() }, () => {
             for (let i = 0; i < this.state.quizQuestions.length; i++) {
                 for (let x = 0; x < this.state.quizQuestions[i]['answers'].length; x++) {
                     let questions = this.state.quizQuestions;
@@ -237,10 +242,10 @@ class App extends Component {
 
     setResults(result) {
         UserLabService.complete_quiz(this.state.lab, this.getResults(true), this.getJsonResults())
-        if(this.props.user.firstname !== null){
-            UserLabService.user_complete_quiz(this.props.user.userid,this.state.lab, this.getResults(true))
+        if (this.props.user.firstname !== null) {
+            UserLabService.user_complete_quiz(this.props.user.userid, this.state.lab, this.getResults(true))
         }
-        this.setState({result: result})
+        this.setState({ result: result })
     }
 
 
@@ -248,12 +253,12 @@ class App extends Component {
         const jsonresults = []
         let counter = 0
         const selectedAnswers = Object.values(this.state.selectedAnswers);
-        for (const quizQuestion of this.state.quizQuestions){
+        for (const quizQuestion of this.state.quizQuestions) {
             //get right answers
-            const {question, answers} = quizQuestion //destructuring
-            let quizQuestionObject = {Question: question, Answers: [], SelectedAnswers: [], IsCorrect: this.state.myCount[counter] === 1}
-            for (const answer of answers){
-                if (answer['val'] === 1){
+            const { question, answers } = quizQuestion //destructuring
+            let quizQuestionObject = { Question: question, Answers: [], SelectedAnswers: [], IsCorrect: this.state.myCount[counter] === 1 }
+            for (const answer of answers) {
+                if (answer['val'] === 1) {
                     quizQuestionObject['Answers'].push(answer['content'])
                 }
             }
@@ -269,12 +274,12 @@ class App extends Component {
                 optionCounter += 1;
             }
             jsonresults.push(quizQuestionObject);
-            counter +=1;
+            counter += 1;
         }
         return JSON.stringify(jsonresults);
     }
     renderQuiz() {
-        return ( 
+        return (
             <div>
                 <Quiz
                     answer={this.state.answer}
@@ -285,7 +290,7 @@ class App extends Component {
                     onAnswerSelected={this.handleAnswerSelected}
                     nextQuestion={this.setNextQuestion}
                     disable={this.state.disableNextQuestion}
-                    multiChoice = {this.state.multiChoice}
+                    multiChoice={this.state.multiChoice}
                 />
             </div>
         );
@@ -293,12 +298,12 @@ class App extends Component {
 
     renderResult() {
         return (<Result
-                quizResult={this.state.result}
-                quizScore = {this.state.myCount}
-                selectedAnswers = {this.state.selectedAnswers}
-                quizQuestions= {this.state.quizQuestions}
-                lab={this.state.lab}
-            />
+            quizResult={this.state.result}
+            quizScore={this.state.myCount}
+            selectedAnswers={this.state.selectedAnswers}
+            quizQuestions={this.state.quizQuestions}
+            lab={this.state.lab}
+        />
         );
     }
 
