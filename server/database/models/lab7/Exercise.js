@@ -11,10 +11,8 @@ module.exports = (sequelize, DataTypes) => {
 			usersessionid: {
 				type: DataTypes.BIGINT
 			},
-			correct: { type: DataTypes.BOOLEAN },
-			question: { type: DataTypes.STRING },
-			selectedoption: { type: DataTypes.STRING },
-			options: { type: DataTypes.STRING }
+			playthrough: { type: DataTypes.INTEGER },
+			score: { type: DataTypes.INTEGER }
 		},
 		{ tableName: 'lab7_exercise' }
 	);
