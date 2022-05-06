@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Simulation from "../../components/Simulation";
 import '../../../../../assets/stylesheets/components/Simulation.scss';
 
-class AISimulationStart extends Component {
+class AISimulation extends Component {
     constructor(props) {
         super(props);
         this.state = { componentName: "AISimulation" };
@@ -17,4 +17,4 @@ class AISimulationStart extends Component {
         )
     }
 }
-export default AISimulationStart;
+export default AISimulation;
