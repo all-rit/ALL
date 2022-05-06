@@ -9,10 +9,6 @@ class AlterationQuiz extends Component {
         this.state = { componentName: "AlterationQuiz" };
     }
 
-    handleSubmit() {
-        navigate("/Lab7/Exercise/AlterationQuizResults");
-    }
-
     render() {
         const { state, actions } = this.props;
         return (

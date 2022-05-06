@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import File from "./File";
 import '../../../../assets/stylesheets/components/AutoSysAI.scss'
 import { AI_CORRECT, AI_INCORRECT } from "../../../../constants/lab7";
 
@@ -8,34 +7,17 @@ class AutoSysAI extends Component {
         super(props)
     }
 
-    makeCorrectDecision(file, threatLvl){
-        const sensitivityLvl = file.getSensitivityLvl;
-        console.log((sensitivityLvl / threatLvl))
-        return (sensitivityLvl / threatLvl);
+    makeCorrectDecision(fileSensitivityLvl, threatLvl){
+        return (fileSensitivityLvl / threatLvl);
     }
 
-    makeDecision(file, threatLvl) {
-        file.changeAccess();
-        return (file.getSensitivityLvl() / threatLvl);
-        // switch (threatLvl) {
-        //     case 3:
-        //         if (sensitivityLvl >= 4) {
-        //             return file.changeAccess();
-        //         }
-        //     case 2:
-        //         if (sensitivityLvl >= 2) {
-        //             return file.changeAccess();
-        //         }
-        //     case 1:
-        //         if (sensitivityLvl == 1) {
-        //             return file.changeAccess();
-        //         }
-        //     default:
-        //         return null;
-        // }
+    makeDecision(fileSensitivityLvl, threatLvl) {
+        return (fileSensitivityLvl * 2 / threatLvl);
     }
 
-    evaluateChoice(expected, actual){
+    evaluateChoice(fileSensitivityLvl, threatLvl){
+        const expected = this.makeCorrectDecision(fileSensitivityLvl, threatLvl);
+        const actual = this.makeDecision(fileSensitivityLvl, threatLvl);
         if (actual === expected) {
             return AI_CORRECT
         } else {
@@ -48,22 +30,22 @@ class AutoSysAI extends Component {
         return (
             <div className="displays">
                 <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[0], threatLvl)}</p>
+                    <p> {this.evaluateChoice(files[1].sensitivityLevel, threatLvl)}</p>
                 </div>
                 <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[1], threatLvl)}</p>
+                    <p> {this.evaluateChoice(files[2].sensitivityLevel, threatLvl)}</p>
 
                 </div>
                 <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[2], threatLvl)}</p>
+                    <p> {this.evaluateChoice(files[3].sensitivityLevel, threatLvl)}</p>
 
                 </div>
                 <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[3], threatLvl)}</p>
+                    <p> {this.evaluateChoice(files[4].sensitivityLevel, threatLvl)}</p>
 
                 </div>
                 <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[4], threatLvl)}</p>
+                    <p> {this.evaluateChoice(files[5].sensitivityLevel, threatLvl)}</p>
 
                 </div>
             </div>
