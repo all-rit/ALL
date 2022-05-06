@@ -105,6 +105,7 @@ class Simulation extends Component {
     calculateScore(outcome) {
         const { data } = this.props;
         let score = 0;
+        //needs to account for if intrusion or incorrect
 
         if (outcome) {
             score = 10;
@@ -151,7 +152,7 @@ class Simulation extends Component {
                 />
                 <AutoSysAI files={data.files} threatLvl={data.threatLvl} />
                 <Message
-                    // data={data.exposedContent}
+                // data={data.exposedContent}
                 />
                 <div className="roundTimer">
                     <div className="roundCountdown" style={countdownStyle}>
