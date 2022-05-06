@@ -18,7 +18,8 @@ class AISimulation extends Component {
     }
 
     render() {
-        const { actions, data, handlers, user } = this.props;
+        const { data, handlers, user } = this.props;
+        console.log(handlers)
         return (
             <div>
                 <Simulation data={data} handlers={handlers} user={user} />

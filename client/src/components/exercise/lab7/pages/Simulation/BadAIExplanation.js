@@ -7,7 +7,7 @@ class BadAIExplanation extends Component {
         this.state = { componentName: "BadAIExplanation" };
     }
     handleStart() {
-        navigate("/Lab7/Exercise/ImproveAIStart")
+        navigate("/Lab7/Exercise/AICodeRepair")
     }
 
     render() {

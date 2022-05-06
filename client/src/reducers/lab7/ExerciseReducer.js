@@ -124,7 +124,6 @@ const ExerciseReducer = (state = initialState, action) => {
 				aiResult: action.aiResult
 			};
 		case types.UPDATE_THREAT_LEVEL:
-			console.log(action.threatLvl)
 			return {
 				...state,
 				threatLvl: action.threatLvl

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ExerciseService from '../../../../services/lab7/ExerciseService';
 import UserLabService from "../../../../services/UserLabService";
 import Files from "./Files";
-import File from "./File";
 import AutoSysAI from './AutoSysAI';
 import Message from "./Message";
 import ScoreTally from "./ScoreTally"
