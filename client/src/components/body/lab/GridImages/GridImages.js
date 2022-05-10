@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { avatarMockData } from '../../../mockData/avatarMockData'
 import clsx from "clsx";
 import Avatar from 'avataaars';
 import Spinner from '../../../../common/Spinner/Spinner';
+import createAvatarData from './createAvatarData';
+
 const GridImages = (props) => {
 	const {multi,setSelection} = props;
 
@@ -52,8 +53,9 @@ const GridImages = (props) => {
 	}
 	
 	useEffect(()=>{
-		shuffleArray(avatarMockData)
-		setData(avatarMockData.slice(0,15));
+        let avatarData = createAvatarData(1000)
+		shuffleArray(avatarData)
+		setData(avatarData.slice(0,15));
 		setCurrentFile([]);
 		setId([]);
 	},[multi])
@@ -67,6 +69,8 @@ const GridImages = (props) => {
     const gridImagesClassnames = clsx({
         "tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ": true,
     });
+
+
 
     return (
         <>
@@ -90,16 +94,13 @@ const GridImages = (props) => {
                                         accessoriesType={data.avatarAttributes.accessoriesType}
                                         hairColor={data.avatarAttributes.hairColor}
                                         facialHairType={data.avatarAttributes.facialHairType}
-                                        facialHairColor={data.avatarAttributes.facialHairColor}
                                         clotheType={data.avatarAttributes.clotheType}
                                         clotheColor={data.avatarAttributes.clotheColor}
-                                        graphicType={data.avatarAttributes.graphicType}
                                         eyeType={data.avatarAttributes.eyeType}
                                         eyebrowType={data.avatarAttributes.eyebrowType}
                                         mouthType={data.avatarAttributes.mouthType}
                                         skinColor={data.avatarAttributes.skinColor}
-
-                                    />
+                                    />  
                                 </div>
                                 
                             </>
@@ -113,7 +114,7 @@ const GridImages = (props) => {
                 }
                 
             </div>
-            <div className="tw-text-xl tw-mb-5 tw-p-2">
+            <div className="tw-text-2xl tw-mb-5 tw-p-2">
                 {currentFile.length +" of "+multi+" selected."}
             </div>
         </>
