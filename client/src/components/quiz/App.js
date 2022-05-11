@@ -5,6 +5,7 @@ import quizQuestionsLab2 from './api/Lab2/quizQuestions';
 import quizQuestionsLab3 from './api/Lab3/quizQuestions';
 import quizQuestionsLab4 from "./api/Lab4/quizQuestions";
 import quizQuestionsLab5 from './api/Lab5/quizQuestions';
+import quizQuestionsLab6 from './api/Lab6/quizQuestions';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import './App.css';
@@ -70,9 +71,10 @@ class App extends Component {
             // case 4:
             case 4:
                 return quizQuestionsLab4
-
             case 5:
                 return quizQuestionsLab5
+            case 6:
+                return quizQuestionsLab6
             default:
                 return [{
                     question: "Default",
