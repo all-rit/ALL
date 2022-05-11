@@ -15,7 +15,7 @@ const MatchLobby = (props)=>{
     return (
 
         <div className="container bottomSpace" >
-
+            <h2 class="playthrough__title">Tic-Tac-Toe: Pre-Match Lobby</h2>
             {/*bias types: user, team, none */ }
             <PlayerBoard user={user} handleNext={handleNext} biasType={biasType}/>
             

@@ -3,25 +3,25 @@ export const avatarMockData = [
         "id":1,
         "name":"Jack S",
         "avatarAttributes":{
-            "topType":"ShortHairTheCaesarSidePart",
+            "topType":"NoHair",
             "accessoriesType":"Wayfarers",
             "hairColor":"Brown",
-            "facialHairType":"BeardMedium",
+            "facialHairType":"Blank",
             "facialHairColor":"Auburn",
             "clotheType":"CollarSweater",
             "clotheColor":"PastelOrange",
-            "eyeType":"Surprised",
+            "eyeType":"Happy",
             "eyebrowType":"UpDown",
             "mouthType":"Default",
-            "skinColor":"Yellow",
+            "skinColor":"Tanned",
         },
-        "bias":"Avatar's face is obstructed"
+        "bias":"Avatar is wearing glasses"
     },
     {
         "id":2,
         "name":"John P",
         "avatarAttributes":{
-            "topType":"WinterHat4",
+            "topType":"Hat",
             "accessoriesType":"Blank",
             "hatColor":"PastelBlue",
             "hairColor":"BlondeGolden",
@@ -31,43 +31,43 @@ export const avatarMockData = [
             "clotheColor":"Blue02",
             "eyeType":"Happy",
             "eyebrowType":"Default",
-            "mouthType":"Disbelief",
+            "mouthType":"Serious",
             "skinColor":"Pale"
         },
-        "bias":"Avatar's head is obstructed by an object"
+        "bias":"Avatar's is wearing a hat"
     },
     {
         "id":3,
         "name":"Alexa G",
         "avatarAttributes":{
             "topType":"Hijab",
-            "accessoriesType":"Prescription01",
+            "accessoriesType":"Blank",
             "hatColor":"Blue01",
-            "clotheType":"BlazerSweater",
-            "eyeType":"WinkWacky",
-            "eyebrowType":"RaisedExcited",
-            "mouthType":"Eating",
+            "clotheType":"CollarSweater",
+            "clotheColor":"Pink",
+            "eyeType":"Wink",
+            "eyebrowType":"UpDownNatural",
+            "mouthType":"Smile",
             "skinColor":"Brown",
         },
-        "bias":"Avatar's face is obstructed"
+        "bias":"Avatar's shirt is pink"
     },
     {
         "id":4,
         "name":"Britanny S",
         "avatarAttributes":{
             "topType":"LongHairFrida",
-            "accessoriesType":"Blank",
+            "accessoriesType":"Prescription01",
             "hairColor":"PastelPink",
             "facialHairType":"Blank",
             "clotheType":"GraphicShirt",
             "clotheColor":"PastelRed",
-            "graphicType":"Pizza",
-            "eyeType":"Hearts",
+            "eyeType":"Default",
             "eyebrowType":"UpDownNatural",
             "mouthType":"Smile",
             "skinColor":"Light"
         },
-        "bias":"Avatar has too many symbols"
+        "bias":"Avatar hair is pink"
     },
     {
         "id":5,
@@ -79,9 +79,9 @@ export const avatarMockData = [
             "facialHairType":"Blank",
             "clotheType":"ShirtScoopNeck",
             "clotheColor":"PastelRed",
-            "eyeType":"Default",
+            "eyeType":"Happy",
             "eyebrowType":"Default",
-            "mouthType":"Grimace",
+            "mouthType":"Twinkle",
             "skinColor":"Tanned"
         },
         "bias":"Avatar's smile is unsettling"

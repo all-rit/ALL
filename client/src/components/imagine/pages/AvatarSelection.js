@@ -35,8 +35,8 @@ const AvatarSelection = (props)=>{
             {squadSelection===false ?
             <>
                 <h2 className="playthrough__title">Choose Your Avatar</h2>
-                <div className="playthrough__sentence">
-                    Choose the avatar that represents you the most!
+                <div className="tw-text-2xl tw-mt-5 tw-mb-5">
+                    Choose the avatar that represents you the most.
                 </div>
                 
                 <GridImages multi={1} setSelection={setAvatar}/>
@@ -52,7 +52,7 @@ const AvatarSelection = (props)=>{
             :
             <>
                 <h2 className="playthrough__title">Choose Your Squad</h2>
-                <div className="playthrough__sentence">
+                <div className="tw-text-2xl tw-mt-5 tw-mb-5">
                     Choose the members of your squad from this group of active players.
                 </div>
                 
