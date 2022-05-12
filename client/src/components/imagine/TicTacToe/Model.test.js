@@ -26,7 +26,8 @@ test( "checks if 3 values are equal to each other", ()=> {
     
 });
 
-test("Placing on a board." ,()=>{
+test("Placing on a board.", 
+()=>{
     // board setup
     const TestBoard  = {...createNewBoard()};
     const FinalBoard = {...createNewBoard()};

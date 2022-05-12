@@ -30,7 +30,7 @@ const HiringCandidate = (props) => {
                     <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} />
                     {/* <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} />
                     <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} />
-                    <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} /> */} */}
+                    <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} /> */} */
                 </div>
 
                 <GridApplicants />
