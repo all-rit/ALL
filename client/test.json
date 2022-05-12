@@ -1,0 +1,58 @@
+{
+    "piechart":
+       {"header":"",
+       "caption":[""],
+       "data":{
+          "labels": [
+                ""
+             ],
+          "datasets": [
+                   {
+                   "label": "",
+                   "borderColor": "",
+                   "backgroundColor": ["", ""],
+                   "data": [0],
+                   "borderWidth": "1"
+                   }
+             ]
+          }
+    },
+    "description":{
+       "header":"What is an AI?",
+       "content":"[Needs to be written]"
+    },
+    "body":[
+       {
+          "header":"A.C.L.U v. Clearview AI",
+          "type":"",
+          "content":["[On May 28th, 2020, The American Civil Liberties Union(ACLU), ACLU of Illinois, and the law firm Edelson PC filed a lawsuit against Clearview AI claiming a violation of Illinois residents’ privacy rights under the Illinois Biometric Information Privacy Act(BIPA). Clearview AI built a database which shows about 3 Billion facial images captured illegally of people all over the world without their consent and put them in a database giving access to private companies, wealthy individuals, and enforcement agencies. The AI captured millions of new faces instead of focusing on people who gave consent. This technology did not acknowledge harmful decisions inflicted on survivors of domestic violence, undocumented immigrants, communities of color, and many more. Clearview AI settled and agreed to limit the images by not releasing to private companies, including individuals, as well as allowing the public to opt-out of any search results. "]
+       },
+       {
+        "header":"",
+        "type":"links",
+        "content":[
+            {
+                "name":"Clearview AI Lawsuit",
+                "link":"https://www.aclu.org/cases/aclu-v-clearview-ai"
+            },
+            {
+                "name":"Using AI as a Weapon?",
+                "link":"https://www.nytimes.com/2019/06/13/us/aclu-surveillance-artificial-intelligence.html"
+            },
+            {
+                "name":"More",
+                "link":"https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html?searchResultPosition=1"
+            }
+        ]
+    }
+    ],
+    "footer":{
+       "links":[
+          {
+             "name":"[Need Links]",
+             "link":"https://all.rit.edu/Lab6/Reading"
+          }
+       ]
+    }
+  }
+  
