@@ -19,13 +19,12 @@
     },
     "description":{
        "header":"What is an AI?",
-       "type": "non-bullet-list",
        "content":"Artificial Intelligence (AI) is the study of simulating human thought processes to complete any task. An artificial intellgience processes data through advanced algorithms and can look through large amounts of data to effectively find patterns or features humans can possibly miss. The algorithms used to make the intelligence run are designed by human beings and are currently incapable of simulating human emotion. This intelligence does not have an I.Q. (Intelligence Quotient) since IQ is used to track the growth of intellgicence in children and can not be applied to a computer. Contemporarily, AI is used in conjunction with big data to analyze user data and adjust the company’s practices to better serve their customers."
     },
     "body":
 		{
 			"header":"Common uses of AI",
-			"type":"non-bullet-list",
+			"type":"",
 			"content":[
 				{
 					"header":"Self-driving cars:",
