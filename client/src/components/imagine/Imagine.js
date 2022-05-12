@@ -6,7 +6,7 @@ import ImagineStart from "./pages/ImagineStart";
 import MatchLobby from "./pages/MatchLobby";
 import TicTacToe from "./pages/TicTacToe";
 import { transitions,positions, Provider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
+import AlertMUITemplate from "react-alert-template-mui";
 
 const Imagine = (props)=>{
     const {user,biasType,linkNum} = props;
@@ -14,7 +14,7 @@ const Imagine = (props)=>{
     
     const options = {
         timeout: 10000,
-        position: positions.TOP_CENTER,
+        position: positions.MIDDLE,
         transition: transitions.SCALE,
     };
 
@@ -23,13 +23,13 @@ const Imagine = (props)=>{
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 text-center">
-                        <h2 className="section-heading text-uppercase">
-                                {"ImagineRIT '22 ID#"+user?.userid}
+                        <h2 className="section-heading text-uppercase tw-text-right">
+                                {"ID#"+user?.userid}
                         </h2>
                     </div>
                 </div>
             </div>
-        <Provider template={AlertTemplate} {...options}>
+        <Provider template={AlertMUITemplate} {...options}>
         <div className="container bottomSpace" >
             <Router className="app">
                 <ImagineStart path="/" user={user} linkNum={linkNum}/>

@@ -64,7 +64,7 @@ const checkWinner = (GameInfo) => {
         return{isGameOver : true , winner: winner.name};
     }else if(winner === null && GameState.available.length === 0){
         // tie
-        return {isGameOver : false , winner: "tie" };
+        return {isGameOver : true , winner: "tie" };
     }else{
         // game continue state
         return {isGameOver : false , winner : null};
