@@ -31,7 +31,7 @@ class KnowledgeTest extends Component {
     }
     handleNav() {
         navigate(this.props.link);
-
+ 
     }
     render() {
         return (
