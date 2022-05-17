@@ -11,7 +11,7 @@ const GridApplicants = () => {
 	});
 
 	const handleGridImage = useCallback((imgId) => {
-		if (id.length <= 2) {
+		if (id.length <= 3) {
 			setId(prevState => [...prevState, imgId])
 		}
 		const selectImg = danMockData.filter(img => img.id === imgId)?.[0]

@@ -34,6 +34,7 @@ const HiringCandidate = (props) => {
                 </div>
 
                 <GridApplicants />
+                
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick={handleContinue}
