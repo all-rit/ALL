@@ -1,70 +1,70 @@
 {
-    "piechart":
-       {"header":"AI use cases in manufacturing industry percentages worldwide as of 2020",
-       "caption":[""],
-       "data":{
-          "labels": [
-                "Quality Contol", "INventory management", "Monitoring Diagnostics", " Customer Care", "Personalization of products", " Asset Maintenance"
-             ],
-          "datasets": [
-                   {
-                   "label": "AI use cases in manufacturing industry worldwide as of 2020",
-                   "borderColor": "Black",
-                   "backgroundColor": [
-                      "#cc3300",
-                      "#ff9966",
-                      "#ffcc00",
-                      "#99cc33",
-                      "#339900",
-                      "#001eff"
-                  ],
-                   "data": [59,44,32,29,22,22],
-                   "borderWidth": "1"
-                   }
-             ]
-          }
-    },
-    "description":{
-       "header":"What is an AI?",
-       "content":"Artificial Intelligence (AI) is the study of simulating human thought processes to complete any task. An artificial intellgience processes data through advanced algorithms and can look through large amounts of data to effectively find patterns or features humans can possibly miss. The algorithms used to make the intelligence run are designed by human beings and are currently incapable of simulating human emotion. This intelligence does not have an I.Q. (Intelligence Quotient) since IQ is used to track the growth of intellgicence in children and can not be applied to a computer. Contemporarily, AI is used in conjunction with big data to analyze user data and adjust the company's practices to better serve their customers."
-    },
-    "body":[
-        {
-            "header":"Common uses of AI",
-            "type":"study__list",
-            "content":["Self-driving cars", "Online Shopping", "Streaming Services", "Chatbots"]
-        },
+   "piechart":
+      {"header":"AI use cases in manufacturing industry percentages worldwide as of 2020",
+      "caption":[""],
+      "data":{
+         "labels": [
+               "Quality Contol", "Inventory Management", "Monitoring Diagnostics", " Customer Care", "Personalization of Products", " Asset Maintenance"
+            ],
+         "datasets": [
+                  {
+                  "label": "AI use cases in manufacturing industry worldwide as of 2020",
+                  "borderColor": "Black",
+                  "backgroundColor": [
+                     "#cc3300",
+                     "#ff9966",
+                     "#ffcc00",
+                     "#99cc33",
+                     "#339900",
+                     "#001eff"
+                 ],
+                  "data": [59,44,32,29,22,22],
+                  "borderWidth": "1"
+                  }
+            ]
+         }
+   },
+   "description":{
+      "header":"What is an AI?",
+      "content":"Artificial Intelligence (AI) is the study of simulating human thought processes to complete any task. An artificial intellgience processes data through advanced algorithms and can look through large amounts of data to effectively find patterns or features humans can possibly miss. The algorithms used to make the intelligence run are designed by human beings and are currently incapable of simulating human emotion. This intelligence does not have an I.Q. (Intelligence Quotient) since IQ is used to track the growth of intellgicence in children and can not be applied to a computer. Contemporarily, AI is used in conjunction with big data to analyze user data and adjust the company's practices to better serve their customers."
+   },
+   "body":[
        {
-          "header":"A.C.L.U v. Clearview AI",
-          "type":"",
-          "content":["[On May 28th, 2020, The American Civil Liberties Union(ACLU), ACLU of Illinois, and the law firm Edelson PC filed a lawsuit against Clearview AI claiming a violation of Illinois residents' privacy rights under the Illinois Biometric Information Privacy Act(BIPA). Clearview AI built a database which shows about 3 Billion facial images captured illegally of people all over the world without their consent and put them in a database giving access to private companies, wealthy individuals, and enforcement agencies. The AI captured millions of new faces instead of focusing on people who gave consent. This technology did not acknowledge harmful decisions inflicted on survivors of domestic violence, undocumented immigrants, communities of color, and many more. Clearview AI settled and agreed to limit the images by not releasing to private companies, including individuals, as well as allowing the public to opt-out of any search results. "]
+           "header":"Common uses of AI",
+           "type":"study__list",
+           "content":["Self-driving cars", "Online Shopping and retail", "Streaming Services and chatbots", "Cybersecurity and Surveillance", "Surgery analytics and Diagnosing diseases"]
        },
-       {
-        "header":"",
-        "type":"links",
-        "content":[
-            {
-                "name":"Clearview AI Lawsuit",
-                "link":"https://www.aclu.org/cases/aclu-v-clearview-ai"
-            },
-            {
-                "name":"Using AI as a Weapon?",
-                "link":"https://www.nytimes.com/2019/06/13/us/aclu-surveillance-artificial-intelligence.html"
-            },
-            {
-                "name":"More",
-                "link":"https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html?searchResultPosition=1"
-            }
-        ]
-    }
-    ],
-    "footer":{
-       "links":[
-          {
-             "name":"[Need Links]",
-             "link":"https://all.rit.edu/Lab6/Reading"
-          }
+      {
+         "header":"A.C.L.U v. Clearview AI",
+         "type":"",
+         "content":["On May 28th, 2020, The American Civil Liberties Union (ACLU), ACLU of Illinois, and the law firm Edelson PC filed a lawsuit against Clearview AI claiming a violation of Illinois residents' privacy rights under the Illinois Biometric Information Privacy Act (BIPA). Clearview AI built a database which shows about 3 Billion facial images captured illegally of people all over the world without their consent and put them in a database giving access to private companies, wealthy individuals, and enforcement agencies. The AI captured millions of new faces instead of focusing on people who gave consent. This technology did not acknowledge harmful decisions inflicted on survivors of domestic violence, undocumented immigrants, communities of color, and many more. Clearview AI settled and agreed to limit the images by not releasing to private companies, including individuals, as well as allowing the public to opt-out of any search results. "]
+      },
+      {
+       "header":"",
+       "type":"links",
+       "content":[
+           {
+               "name":"Clearview AI Lawsuit",
+               "link":"https://www.aclu.org/cases/aclu-v-clearview-ai"
+           },
+           {
+               "name":"Using AI as a Weapon?",
+               "link":"https://www.nytimes.com/2019/06/13/us/aclu-surveillance-artificial-intelligence.html"
+           },
+           {
+               "name":"More",
+               "link":"https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html?searchResultPosition=1"
+           }
        ]
-    }
-  }
-  
+   }
+   ],
+   "footer":{
+      "links":[
+         {
+            "name":"[Need Links]",
+            "link":"https://all.rit.edu/Lab6/Reading"
+         }
+      ]
+   }
+ }
+ 
