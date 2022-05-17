@@ -1,17 +1,24 @@
 {
     "piechart":
-       {"header":"",
+       {"header":"AI use cases in manufacturing industry percentages worldwide as of 2020",
        "caption":[""],
        "data":{
           "labels": [
-                ""
+                "Quality Contol", "INventory management", "Monitoring Diagnostics", " Customer Care", "Personalization of products", " Asset Maintenance"
              ],
           "datasets": [
                    {
-                   "label": "",
-                   "borderColor": "",
-                   "backgroundColor": ["", ""],
-                   "data": [0],
+                   "label": "AI use cases in manufacturing industry worldwide as of 2020",
+                   "borderColor": "Black",
+                   "backgroundColor": [
+                      "#cc3300",
+                      "#ff9966",
+                      "#ffcc00",
+                      "#99cc33",
+                      "#339900",
+                      "#001eff"
+                  ],
+                   "data": [59,44,32,29,22,22],
                    "borderWidth": "1"
                    }
              ]

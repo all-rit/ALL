@@ -17,7 +17,7 @@ const QualificationQuestions = (props) =>{
     }
 
     const questions = [
-        {
+        { 
             val: 0,
             content: "Gender"
         },
@@ -53,7 +53,7 @@ const QualificationQuestions = (props) =>{
                     onAnswerSelected={()=>{}}
                     nextQuestion={()=>{}}
                     disable={false}
-                    multiChoice = {false}
+                    multiChoice = {true}
             />
 
             <button

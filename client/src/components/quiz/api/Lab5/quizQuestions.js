@@ -18,7 +18,7 @@ const quizQuestionsLab5 = [
                 val: 0,
                 content: "500 million"
             }
-
+ 
         ],
         multiChoice: false
     },
