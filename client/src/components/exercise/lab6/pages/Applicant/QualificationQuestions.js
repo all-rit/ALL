@@ -3,10 +3,18 @@ import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
 import Quiz from "../../../../quiz/components/Quiz";
 
+const QualificationQuestions = (props) =>{
+    const {actions} = props;
 
-const QualificationQuestions = [
+    useEffect(()=>{
+        actions.updateState(EXERCISE_PLAYING);
+    },[actions]);
+
+    const handleContinue = () =>{
+        navigate("/Lab6/Exercise/AnalyzeData");
+    }
+    const QualificationQuestions = [
   
-        {
             question: "How many jobs have you held?",
             answers: [
                 {

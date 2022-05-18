@@ -13,11 +13,6 @@ import UserLabService from '../../services/UserLabService';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {actions as mainActions} from "../../reducers/MainReducer";
-import postInterviewLab6 from './components/PostInterviewQuestions';
-import QualificationQuestions from "../src/components/exercise/lab6/pages/Applicant/QualificationQuestions.js"
-
-C:\Users\MrRob\ALL\ALL\client\src\components\quiz\App.js
-
 
 function initializeReactGA() {
     if (process.env.NODE_ENV === 'production') {
@@ -80,8 +75,6 @@ class App extends Component {
                 return quizQuestionsLab5
             case 6:
                 return quizQuestionsLab6
-            case 7:
-                return QualificationQuestions
             // case 8:
             //     return QualificationQuestions
             default:
