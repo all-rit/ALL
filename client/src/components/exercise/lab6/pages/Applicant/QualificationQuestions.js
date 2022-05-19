@@ -57,6 +57,65 @@ const QualificationQuestions = (props) =>{
             content: "10+"
         },
     ];
+    const questions3 = [
+        {
+            val: 0,
+            content: "<18"
+        },
+        {
+            val: 0,
+            content: "18-25"
+        },
+        {
+            val: 0,
+            content: "25-45"
+        },
+        {
+            val: 0,
+            content: "45-65"
+        },
+        {
+            val: 0,
+            content: "65+"
+        },
+    ];
+    const questions4 = [
+        {
+            val: 0,
+            content: "Computer Science"
+        },
+        {
+            val: 0,
+            content: "Business"
+        },
+        {
+            val: 0,
+            content: "Communications"
+        },
+        {
+            val: 0,
+            content: "Other - if other, explain"
+        },
+    ];
+    const questions5 = [
+        {
+            val: 0,
+            content: "0"
+        },
+        {
+            val: 0,
+            content: "1-3"
+        },
+        {
+            val: 0,
+            content: "4-5"
+        },
+        {
+            val: 0,
+            content: "6+"
+        },
+    ];
+
 
     return(
         <div className="center-div">
@@ -84,6 +143,40 @@ const QualificationQuestions = (props) =>{
                     disable={false}
                     multiChoice = {false}
             />
+            <Quiz
+                    answer={""}
+                    answerOptions={questions3}
+                    questionId={3}
+                    question={"What is your age?"}
+                    questionTotal={5}
+                    onAnswerSelected={()=>{}}
+                    nextQuestion={()=>{}}
+                    disable={false}
+                    multiChoice = {false}
+            />
+            <Quiz
+                    answer={""}
+                    answerOptions={questions4}
+                    questionId={4}
+                    question={"What is your major/degree in?"}
+                    questionTotal={5}
+                    onAnswerSelected={()=>{}}
+                    nextQuestion={()=>{}}
+                    disable={false}
+                    multiChoice = {false}
+            />
+            <Quiz
+                    answer={""}
+                    answerOptions={questions5}
+                    questionId={5}
+                    question={"How many jobs have you held since college graduation?"}
+                    questionTotal={5}
+                    onAnswerSelected={()=>{}}
+                    nextQuestion={()=>{}}
+                    disable={false}
+                    multiChoice = {false}
+            />
+
 
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase "
