@@ -13,8 +13,8 @@ const QualificationQuestions = (props) =>{
     const handleContinue = () =>{
         navigate("/Lab6/Exercise/AnalyzeData");
     }
-}
-    export default QualificationQuestions;
+//}
+//    export default QualificationQuestions;
 
 
 
@@ -29,52 +29,52 @@ const QualificationQuestions = (props) =>{
 //         navigate("/Lab6/Exercise/AnalyzeData");
 //     }
 
-//     const questions = [
-//         {
-//             val: 0,
-//             content: "Gender"
-//         },
-//         {
-//             val: 0,
-//             content: "Years of Experience"
-//         },
-//         {
-//             val: 0,
-//             content: "Facial hair"
-//         },
-//         {
-//             val: 1,
-//             content: "Age"
-//         },
+    const questions = [
+        {
+            val: 0,
+            content: "Gender"
+        },
+        {
+            val: 0,
+            content: "Years of Experience"
+        },
+        {
+            val: 0,
+            content: "Facial hair"
+        },
+        {
+            val: 1,
+            content: "Age"
+        },
       
 
-//     ];
+    ];
 
-//     return(
-//         <div className="center-div">
-//             <h2 class="playthrough__title">Qualification Questions:</h2>
+    return(
+        <div className="center-div">
+            <h2 class="playthrough__title">Qualification Questions:</h2>
 
-//             <Quiz
-//                     answer={""}
-//                     answerOptions={questions}
-//                     questionId={1}
-//                     question={"Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?"}
-//                     questionTotal={1}
-//                     onAnswerSelected={()=>{}}
-//                     nextQuestion={()=>{}}
-//                     disable={false}
-//                     multiChoice = {false}
-//             />
+            <Quiz
+                    answer={""}
+                    answerOptions={questions}
+                    questionId={1}
+                    question={"Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?"}
+                    questionTotal={1}
+                    onAnswerSelected={()=>{}}
+                    nextQuestion={()=>{}}
+                    disable={false}
+                    multiChoice = {false}
+            />
 
-//             <button
-//                 className="btn btn-primary text-black btn-xl text-uppercase "
-//                 onClick = {handleContinue}
-//                 key="confirm"
-//             >
-//                 Finished
-//             </button>
-//       </div>
-//     );
-// }
+            <button
+                className="btn btn-primary text-black btn-xl text-uppercase "
+                onClick = {handleContinue}
+                key="confirm"
+            >
+                Finished
+            </button>
+      </div>
+    );
+}
 
-// export default QualificationQuestions;
+export default QualificationQuestions;

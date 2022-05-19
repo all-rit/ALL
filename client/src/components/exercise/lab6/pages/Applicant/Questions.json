@@ -6,19 +6,19 @@
         "answers": [
             {
                 
-                "content":"0-1"
+                "content":"0"
             },
             {
                 
-                "content": "2-3"
+                "content": "1-3"
             },
             {
                 
-                "content": "4-5"
+                "content": "4-10"
             },
             {
                 
-                "content": "5+"
+                "content": "10+"
             }
         ]
         },
@@ -75,19 +75,16 @@
             ]
         },
         {
-            "question": "How many hours can you work per week?",
+            "question": "Are you looking to work part-time or full-time?",
             "answers": [
                 {
-                    "content":"1- 10"
+                    "content":"part-time"
                 },
                 {
-                    "content": "11 - 20"
+                    "content": "full-time"
                 },
                 {
-                    "content": "21 - 30"
-                },
-                {
-                    "content": "31 - 40"
+                    "content": "other - (if other then explain(text box))"
                 }
             ]
         }
