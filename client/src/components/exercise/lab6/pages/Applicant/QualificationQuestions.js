@@ -32,22 +32,30 @@ const QualificationQuestions = (props) =>{
     const questions = [
         {
             val: 0,
-            content: "Gender"
+            content: "full-time"
         },
         {
             val: 0,
-            content: "Years of Experience"
+            content: "part-time"
+        },
+    ];
+    const questions2 = [
+        {
+            val: 0,
+            content: "0"
         },
         {
             val: 0,
-            content: "Facial hair"
+            content: "1-3"
         },
         {
-            val: 1,
-            content: "Age"
+            val: 0,
+            content: "4-10"
         },
-      
-
+        {
+            val: 0,
+            content: "10+"
+        },
     ];
 
     return(
@@ -58,8 +66,19 @@ const QualificationQuestions = (props) =>{
                     answer={""}
                     answerOptions={questions}
                     questionId={1}
-                    question={"Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?"}
-                    questionTotal={1}
+                    question={"Where you looking to work full-time or part-time?"}
+                    questionTotal={5}
+                    onAnswerSelected={()=>{}}
+                    nextQuestion={()=>{}}
+                    disable={false}
+                    multiChoice = {false}
+            />
+            <Quiz
+                    answer={""}
+                    answerOptions={questions2}
+                    questionId={2}
+                    question={"How many years of experience do you have?"}
+                    questionTotal={5}
                     onAnswerSelected={()=>{}}
                     nextQuestion={()=>{}}
                     disable={false}
