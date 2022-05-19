@@ -21,7 +21,7 @@ const AIAnalysisQuestions = (props) =>{
 
   
       const handleContinue = () =>{
-          navigate("/Lab6/Exercise/NegativeReasoning");
+          navigate("/Lab6/Exercise/EmployerStart");
       }
   
       /**

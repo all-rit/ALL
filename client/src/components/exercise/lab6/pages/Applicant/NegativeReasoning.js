@@ -11,7 +11,7 @@ const NegativeReasoning = (props) =>{
     },[actions]);
 
     const handleContinue = () =>{
-        navigate("/Lab6/Exercise/EmployerStart");
+        navigate("/Lab6/Exercise/AIAnalysisQuestions");
     }
 
     return(
