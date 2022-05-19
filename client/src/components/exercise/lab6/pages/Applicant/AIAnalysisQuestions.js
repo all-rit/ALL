@@ -21,7 +21,7 @@ const AIAnalysisQuestions = (props) =>{
 
   
       const handleContinue = () =>{
-          navigate("/Lab6/Exercise/AnalyzeData");
+          navigate("/Lab6/Exercise/NegativeReasoning");
       }
   
       /**
@@ -52,7 +52,7 @@ const AIAnalysisQuestions = (props) =>{
         </div>
         <div>
           <input id="box5" onChange={checkValue} type="checkbox" value="Box5"/>
-          <label htmlFor="#box4">GPA</label>
+          <label htmlFor="#box4">College Major</label>
         </div>
   
       

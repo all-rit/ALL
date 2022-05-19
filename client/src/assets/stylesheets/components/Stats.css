@@ -1,0 +1,45 @@
+.stats {
+  background-color: #333333;
+  width: 100%;
+  color: white;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.stats__container {
+  max-width: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 1.5rem auto;
+}
+
+.stats__category, .stats__result {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.875rem;
+}
+
+.stats__result {
+  font-weight: 300;
+  font-size: 1.7rem;
+}
+
+.stats__timer {
+  background-color: white;
+}
+
+.stats__countdown {
+  background-color: #6bff89;
+  width: 100%;
+  height: 0.8rem;
+  -webkit-transition: width ease-in;
+  transition: width ease-in;
+}
+/*# sourceMappingURL=Stats.css.map */

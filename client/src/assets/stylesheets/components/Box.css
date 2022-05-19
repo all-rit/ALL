@@ -1,0 +1,66 @@
+.box {
+  border: 1px solid black;
+  font-size: 3.5rem;
+  padding: 1rem 2rem;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.box--red {
+  background-color: red;
+  cursor: default;
+}
+
+.box--green {
+  background-color: green;
+  cursor: default;
+}
+
+.box--locked {
+  background-color: #ee8383;
+  color: #ee8383;
+  cursor: not-allowed;
+}
+
+.box--locked:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "\274c";
+  font-size: 80px;
+  color: #fff;
+  line-height: 100px;
+  text-align: center;
+}
+
+.box--glow {
+  -webkit-box-shadow: 0px 0px 15px 1px red;
+          box-shadow: 0px 0px 15px 1px red;
+}
+
+.box--glow:after {
+  -webkit-animation: MoveUpDown 1s ease-in-out infinite;
+          animation: MoveUpDown 1s ease-in-out infinite;
+  position: absolute;
+  content: "\25B2";
+  font-size: 2rem;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+}
+
+.box:not(.box--red):not(.box--green):not(.box--locked):hover {
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+}
+
+.box:not(.box--red):not(.box--green):not(.box--locked):active {
+  background-color: #333;
+}
+/*# sourceMappingURL=Box.css.map */
