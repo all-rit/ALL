@@ -44,7 +44,7 @@ const AIAnalysisQuestions = (props) =>{
         </div>
         <div>
           <input id="box3" onChange={checkValue} type="checkbox" value="Box3"/>
-          <label htmlFor="#box3">Facial Hair</label>
+          <label htmlFor="#box3">Physical Appearance</label>
         </div>
         <div>
           <input id="box4" onChange={checkValue} type="checkbox" value="Box4"/>
