@@ -4,7 +4,7 @@ export const LAB_ID = 5;
 export const DyslexiaAccessibleKnowledgeCheck={
     Question: "What is one of the symptoms of dyslexia?",
     Options:{
-        "Text becoming blurry" : 0,
+        "Text becoming blurry" : 0, 
         "Increased concentration" : 0,
         "Difficulty remembering information" : 1,
         "Heightened awareness of surroundings" : 0

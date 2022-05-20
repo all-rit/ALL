@@ -1,0 +1,80 @@
+{
+    "quizTitle": "Interview",
+    "quizSynopsis": "Qualification Questions",
+    "questions": [
+      {
+        "question": "How many jobs have you held?",
+        "questionType": "text",
+        "answers": [
+          "0",
+          "1-2",
+          "3-4",
+          "5+"
+        ],
+        "correctAnswer": "1",
+        "messageForCorrectAnswer": "Correct answer. Good job.",
+        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "point": "20"
+      },
+      {
+        "question": "How old are you?",
+        "questionType": "text",
+        "answers": [
+          "<18",
+          "18-24",
+          "25-40",
+          "41-59",
+          "60+"
+        ],
+        "correctAnswer": "1",
+        "messageForCorrectAnswer": "Correct answer. Good job.",
+        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "point": "20"
+      },
+      {
+        "question": "Are you looking to work part-time or full-time?",
+        "questionType": "text",
+        "answers": [
+          "Part-time",
+          "Full-time"
+        ],
+        "correctAnswer": "1",
+        "messageForCorrectAnswer": "Correct answer. Good job.",
+        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "point": "20"
+      },
+      {
+        "question": "How many years of experience do you have?",
+        "questionType": "text",
+        "answers": [
+          "0",
+          "1-3",
+          "4-10",
+          "10+"
+        ],
+        "correctAnswer": "1",
+        "messageForCorrectAnswer": "Correct answer. Good job.",
+        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "point": "20"
+      },
+      {
+        "question": "How did you hear about us",
+        "questionType": "photo",
+        "answers": [
+          "LinkedIn",
+          "Friends or Family",
+          "Social Media",
+          "Former Empoyer"
+        ],
+        "correctAnswer": "1",
+        "messageForCorrectAnswer": "Correct answer. Good job.",
+        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "point": "20"
+      }
+    ]
+  } 

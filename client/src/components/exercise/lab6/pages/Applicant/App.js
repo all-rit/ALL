@@ -1,6 +1,9 @@
 import { useState } from "react";
 import QualQues from "../../../../quiz/components/QualQues";
 import "C:/Users/MrRob/ALL/ALL/client/src/components/quiz/App.css";
+import { QuestionsTest } from './QuestionsTest.json';//testing
+
+<QuestionsTest questions={questions}/>//testing 
 
 export default function App() {
     const [checkedState, setCheckedState] = useState(new Array(QualQues.length).fill(false));

@@ -13,21 +13,6 @@ const QualificationQuestions = (props) =>{
     const handleContinue = () =>{
         navigate("/Lab6/Exercise/AnalyzeData");
     }
-//}
-//    export default QualificationQuestions;
-
-
-
-// const QualificationQuestions = (props) =>{
-//     const {actions} = props;
-
-//     useEffect(()=>{
-//         actions.updateState(EXERCISE_PLAYING);
-//     },[actions]);
-
-//     const handleContinue = () =>{
-//         navigate("/Lab6/Exercise/AnalyzeData");
-//     }
 
     const questions = [
         {
