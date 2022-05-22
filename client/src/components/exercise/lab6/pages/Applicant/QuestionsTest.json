@@ -11,11 +11,12 @@
           "3-4",
           "5+"
         ],
-        "correctAnswer": "1",
-        "messageForCorrectAnswer": "Correct answer. Good job.",
-        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
-        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "point": "20"
+        "correctAnswers": [
+            0, 1, 2, 3
+        ],
+        "EnteredAnswers": [
+            0, 1, 2, 3
+        ]
       },
       {
         "question": "How old are you?",
@@ -27,11 +28,9 @@
           "41-59",
           "60+"
         ],
-        "correctAnswer": "1",
-        "messageForCorrectAnswer": "Correct answer. Good job.",
-        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
-        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "point": "20"
+        "correctAnswers": [
+            0, 1, 2, 3, 4
+        ]
       },
       {
         "question": "Are you looking to work part-time or full-time?",
@@ -40,11 +39,9 @@
           "Part-time",
           "Full-time"
         ],
-        "correctAnswer": "1",
-        "messageForCorrectAnswer": "Correct answer. Good job.",
-        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
-        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "point": "20"
+        "correctAnswers": [
+            0, 1
+        ]
       },
       {
         "question": "How many years of experience do you have?",
@@ -55,11 +52,9 @@
           "4-10",
           "10+"
         ],
-        "correctAnswer": "1",
-        "messageForCorrectAnswer": "Correct answer. Good job.",
-        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
-        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "point": "20"
+        "correctAnswers": [
+            0, 1, 2, 3
+        ]
       },
       {
         "question": "How did you hear about us",
@@ -70,11 +65,9 @@
           "Social Media",
           "Former Empoyer"
         ],
-        "correctAnswer": "1",
-        "messageForCorrectAnswer": "Correct answer. Good job.",
-        "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
-        "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "point": "20"
+        "correctAnswers": [
+            0, 1, 2, 3
+        ]
       }
     ]
   } 
