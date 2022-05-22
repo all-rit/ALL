@@ -14,7 +14,7 @@ const AnalyzeData = (props) =>{
     },[actions]);
 
     const handleContinue = () =>{
-        navigate("/Lab6/Exercise/NegativeReasoning");
+        navigate("/Lab6/Exercise/AIAnalysisQuestions");
     }
 
     return(
