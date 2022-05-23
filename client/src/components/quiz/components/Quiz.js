@@ -16,7 +16,7 @@ function Quiz(props) {
                 onAnswerSelected={props.onAnswerSelected}
                 multiChoice={props.multiChoice}
             />
-        );
+        ); 
     }
 
 

@@ -68,7 +68,6 @@ class App extends Component {
                 return quizQuestionsLab2
             case 3:
                 return quizQuestionsLab3
-            // case 4:
             case 4:
                 return quizQuestionsLab4
             case 5:

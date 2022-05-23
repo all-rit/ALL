@@ -12,7 +12,7 @@ import Links from "./Links";
 
 const Reading = (props) => {
     const {user,labID}=props;
-    const [readingData,setReadingData] = useState('');
+    const [readingData,setReadingData] = useState(''); 
 
     useScroll();
     useEffect(() => {

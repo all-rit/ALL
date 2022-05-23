@@ -1,13 +1,15 @@
 
 
 export default function Quiz(props) {
-    return(
-        <div className="Quiz">
-            <h2></h2>
 
-        {/* <div className="center-div">
-        <h2 class="playthrough__title">Qualification Questions:</h2> */}
-            
-        </div>
+    //const [start, setStart] = useState(false);
+    //const [questions, setQuestions] = useState(quiz.questions);
+    //$.getJSON('pages/Applicant/Questions.js');
+    let info = require('./Questions.json')
+    console.log(info.questions);//pase data with this
+
+
+    return(
+            <p> </p>
     );
 }
