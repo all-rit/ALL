@@ -1,14 +1,31 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import { danMockData } from '../../../mockData/danMockData'
 import clsx from "clsx";
+import createAvatarData from '../../../body/lab/GridImages/createAvatarData';
+import Avatar from 'avataaars';
 
-const GridApplicants = () => {
+
+const GridApplicants = (props) => {
 	const [currentFile, setCurrentFile] = useState([])
 	const [id, setId] = useState([])
 
 	const gridImagesClassnames = clsx({
 		"tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ": true,
 	});
+
+
+	//need to create a set applicant
+	const [applicant, setApplicant] = useState([])
+
+	//added use Effect for setApplicant
+	//may need more under useEffect?
+	useEffect(()=>{
+
+		let avatarData=createAvatarData(50)
+
+		setApplicant(avatarData.slice(0,4))
+	})
+
 
 	const handleGridImage = useCallback((imgId) => {
 		if (id.length <= 3) {
@@ -26,6 +43,7 @@ const GridApplicants = () => {
 		}
 	}, [id, currentFile]);
 
+	//changed dan mock data into [varName]
 	console.log(currentFile, 'cF')
 	return (
 		<div className='gridApplicants tw-flex'>
@@ -41,9 +59,23 @@ const GridApplicants = () => {
 			</div>
 			<div className='tw-flex tw-gap-x-4'>
 
-				{danMockData?.map(data => (
+			
+				{applicant?.map(data => (
 					<ul onClick={() => handleGridImage(data?.id)} className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${id.includes(data.id) ? 'tw-opacity-75 tw-border-solid tw-border-8' : ''}`}>
-						< img className="" src={data?.src} alt='dan' />
+						<Avatar
+						className='tw-w-16 tw-h-16' alt={data.name}                                         
+						avatarStyle='Circle'
+						topType={data.avatarAttributes.topType}
+						accessoriesType={data.avatarAttributes.accessoriesType}
+						hairColor={data.avatarAttributes.hairColor}
+						facialHairType={data.avatarAttributes.facialHairType}
+						clotheType={data.avatarAttributes.clotheType}
+						clotheColor={data.avatarAttributes.clotheColor}
+						eyeType={data.avatarAttributes.eyeType}
+						eyebrowType={data.avatarAttributes.eyebrowType}
+						mouthType={data.avatarAttributes.mouthType}
+						skinColor={data.avatarAttributes.skinColor}
+						/>  
 						<li className='tw-p-4'>{data.gender}</li>
 						<li className='tw-p-4'>{data?.years}</li>
 						<li className='tw-p-4'>{data?.availability}</li>

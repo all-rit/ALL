@@ -47,6 +47,10 @@ const PlayerBoard = (props) => {
         })
         let opossingData=createAvatarData(100)
         shuffleArray(opossingData)
+
+        /**
+         * Sets the state
+         */
 		setOpposingTeam(opossingData.slice(0,4));
     // eslint-disable-next-line
     },[user])

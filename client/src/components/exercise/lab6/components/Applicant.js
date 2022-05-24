@@ -1,10 +1,11 @@
+import { Avatar } from "avataaars";
 import React from "react";
 import { FormGroup, Input, Label } from "reactstrap";
 import LongHorizontalLine from "../../../../common/HorizontalLine/LongHorizontalLine";
 
 
 const Applicant = (props)=>{
-    const {type,gender,age,years,availability,pay,ai}=props;
+    const {type,gender,age,years,availability,pay,ai,data}=props;
 
     switch(type){
         case "key":
@@ -32,7 +33,23 @@ const Applicant = (props)=>{
                 <ul>          
                 <li className="candidate__container">
                                 <ul for="applicant" className="candidate__col">
-                                    <li className="candidate__image" alt="krutz"style={{backgroundImage: "url(/img/profileImages/Professor_Krutz.jpg)" }} ></li>
+                                    <li className="candidate__image" alt="krutz">
+        
+                                            <Avatar
+                                                className='tw-w-16 tw-h-16' alt={data.name}                                         
+                                                avatarStyle='Circle'
+                                                topType={data.avatarAttributes.topType}
+                                                accessoriesType={data.avatarAttributes.accessoriesType}
+                                                hairColor={data.avatarAttributes.hairColor}
+                                                facialHairType={data.avatarAttributes.facialHairType}
+                                                clotheType={data.avatarAttributes.clotheType}
+                                                clotheColor={data.avatarAttributes.clotheColor}
+                                                eyeType={data.avatarAttributes.eyeType}
+                                                eyebrowType={data.avatarAttributes.eyebrowType}
+                                                mouthType={data.avatarAttributes.mouthType}
+                                                skinColor={data.avatarAttributes.skinColor}
+                                            />  
+                                        </li>
                                     <li><LongHorizontalLine/></li>
                                     <li className="candidate__data">{gender}</li>
                                     <li><LongHorizontalLine/></li>
