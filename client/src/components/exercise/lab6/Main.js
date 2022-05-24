@@ -42,8 +42,8 @@ class Main extends Component {
                     <AvatarSelection path="/AvatarSelection" actions={actions}/>
                     <QualificationQuestions path="/QualificationQuestions" actions={actions}/>
                     <AnalyzeData path="/AnalyzeData" actions={actions}/>
-                    <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions}/>
                     <NegativeReasoning path="/NegativeReasoning" actions={actions}/>
+                    <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions}/>
                     {/* Part 2: Employer */}
                     <EmployerStart path="/EmployerStart" actions={actions}/>
                     <HiringCandidate path="/HiringCandidate" actions={actions}/>
