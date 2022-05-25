@@ -43,7 +43,7 @@ const GridApplicants = (props) => {
 		}
 	}, [id, currentFile]);
 
-	//changed ck data into [varName]
+	//changed dan mock data into [varName]
 	console.log(currentFile, 'cF')
 	return (
 		<div className='gridApplicants tw-flex'>
