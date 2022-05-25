@@ -57,9 +57,8 @@ const GridApplicants = (props) => {
 					<li className='tw-p-4'>AI Recommendation</li>
 				</ul>
 			</div>
-			<div className='tw-flex tw-gap-x-4'>
-
-			
+			 
+			<div className='tw-flex tw-gap-x-4'>			
 				{applicant?.map(data => (
 					<ul onClick={() => handleGridImage(data?.id)} className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${id.includes(data.id) ? 'tw-opacity-75 tw-border-solid tw-border-8' : ''}`}>
 						<Avatar

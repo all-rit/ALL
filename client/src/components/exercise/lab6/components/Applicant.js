@@ -34,7 +34,6 @@ const Applicant = (props)=>{
                 <li className="candidate__container">
                                 <ul for="applicant" className="candidate__col">
                                     <li className="candidate__image" alt="krutz">
-        
                                             <Avatar
                                                 className='tw-w-16 tw-h-16' alt={data.name}                                         
                                                 avatarStyle='Circle'
@@ -48,7 +47,7 @@ const Applicant = (props)=>{
                                                 eyebrowType={data.avatarAttributes.eyebrowType}
                                                 mouthType={data.avatarAttributes.mouthType}
                                                 skinColor={data.avatarAttributes.skinColor}
-                                            />  
+                                                />  
                                         </li>
                                     <li><LongHorizontalLine/></li>
                                     <li className="candidate__data">{gender}</li>
