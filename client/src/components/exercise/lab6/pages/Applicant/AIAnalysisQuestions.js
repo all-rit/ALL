@@ -19,9 +19,10 @@ const AIAnalysisQuestions = (props) =>{
         console.log("You selected " + value);
       }
 
-  
+
+      //skips over phase 2 temporarily
       const handleContinue = () =>{
-          navigate("/Lab6/Exercise/EmployerStart");//How should we handle this (positive or negative)
+          navigate("/Lab6/Reinforcement");//How should we handle this (positive or negative)
       }
   
       /**
