@@ -150,15 +150,15 @@ const createAvatarData = (avatarNumber) =>{
                             "eyebrowType": Eyebrow[Math.floor(Math.random()*Eyebrow.length)],
                             "mouthType": Mouth[Math.floor(Math.random()*Mouth.length)],
                             "skinColor": Skin[Math.floor(Math.random()*Skin.length)],
-
+                        },
                             //added attributes to each case
                             "gender": Gender[Math.floor(Math.random()*Gender.length)],
                             "age": Age[Math.floor(Math.random()*Age.length)],
                             "year(s)": Years[Math.floor(Math.random()*Years.length)],
                             "availability": Availability[Math.floor(Math.random()*Availability.length)],
                             "pay": Pay[Math.floor(Math.random()*Pay.length)] * 1000,
-                            "ai": AI[Math.floor(Math.random()*AI.length)]
-                        },
+                            "ai": AI[Math.floor(Math.random()*AI.length)],
+                   
                         "bias":"Avatar is wearing a hat"
                   }
                 )
@@ -179,15 +179,15 @@ const createAvatarData = (avatarNumber) =>{
                             "eyebrowType": Eyebrow[Math.floor(Math.random()*Eyebrow.length)],
                             "mouthType": Mouth[Math.floor(Math.random()*Mouth.length)],
                             "skinColor": Skin[Math.floor(Math.random()*Skin.length)],
-
+                        },
                             //added attributes to each case
                             "gender": Gender[Math.floor(Math.random()*Gender.length)],
                             "age": Age[Math.floor(Math.random()*Age.length)],
                             "year(s)": Years[Math.floor(Math.random()*Years.length)],
                             "availability": Availability[Math.floor(Math.random()*Availability.length)],
                             "pay": Pay[Math.floor(Math.random()*Pay.length)] * 1000,
-                            "ai": AI[Math.floor(Math.random()*AI.length)]
-                        },
+                            "ai": AI[Math.floor(Math.random()*AI.length)],
+               
                         "bias":"Avatar is wearing glasses"
                     }
                 )
@@ -209,15 +209,15 @@ const createAvatarData = (avatarNumber) =>{
                             "eyebrowType": Eyebrow[Math.floor(Math.random()*Eyebrow.length)],
                             "mouthType": Mouth[Math.floor(Math.random()*Mouth.length)],
                             "skinColor": Skin[Math.floor(Math.random()*Skin.length)],
-
+                        },
                             //added attributes to each case
                             "gender": Gender[Math.floor(Math.random()*Gender.length)],
                             "age": Age[Math.floor(Math.random()*Age.length)],
                             "year(s)": Years[Math.floor(Math.random()*Years.length)],
                             "availability": Availability[Math.floor(Math.random()*Availability.length)],
                             "pay": Pay[Math.floor(Math.random()*Pay.length)] * 1000,
-                            "ai": AI[Math.floor(Math.random()*AI.length)]
-                        },
+                            "ai": AI[Math.floor(Math.random()*AI.length)],
+                     
                         "bias":"Avatar's shirt is the color Blue"
                     }
                 )
@@ -239,15 +239,15 @@ const createAvatarData = (avatarNumber) =>{
                             "eyebrowType": Eyebrow[Math.floor(Math.random()*Eyebrow.length)],
                             "mouthType": Mouth[Math.floor(Math.random()*Mouth.length)],
                             "skinColor": Skin[Math.floor(Math.random()*Skin.length)],
-
+                        },
                             //added attributes to each case
                             "gender": Gender[Math.floor(Math.random()*Gender.length)],
                             "age": Age[Math.floor(Math.random()*Age.length)],
                             "year(s)": Years[Math.floor(Math.random()*Years.length)],
                             "availability": Availability[Math.floor(Math.random()*Availability.length)],
                             "pay": Pay[Math.floor(Math.random()*Pay.length)] * 1000,
-                            "ai": AI[Math.floor(Math.random()*AI.length)]
-                        },
+                            "ai": AI[Math.floor(Math.random()*AI.length)],
+                        
                         "bias":"Avatar's hair is the color "+hcolor
                     }
                 )

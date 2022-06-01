@@ -75,7 +75,7 @@ const GridApplicants = (props) => {
 						mouthType={data.avatarAttributes.mouthType}
 						skinColor={data.avatarAttributes.skinColor}
 						/>  
-						<li className='tw-p-4'>{data.gender}</li>
+						<li className='tw-p-4'>{data.avatarAttributes.gender}</li>
 						<li className='tw-p-4'>{data?.years}</li>
 						<li className='tw-p-4'>{data?.availability}</li>
 						<li className='tw-p-4'>{data?.pay}</li>
