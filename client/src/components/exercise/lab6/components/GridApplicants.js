@@ -60,8 +60,8 @@ const GridApplicants = (props) => {
 				{applicant?.map(data => (
 					<ul onClick={() => handleGridImage(data?.id)} className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${id.includes(data.id) ? 'tw-opacity-75 tw-border-solid tw-border-8' : ''}`}>
 						<Avatar
-						className='tw-w-16 tw-h-16' alt={data.name}                                         
-						avatarStyle='Circle'
+						className='tw-w-40 tw-h-40' alt={data.name}                                         
+						avatarStyle='Square'
 						topType={data.avatarAttributes.topType}
 						accessoriesType={data.avatarAttributes.accessoriesType}
 						hairColor={data.avatarAttributes.hairColor}

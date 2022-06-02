@@ -116,19 +116,19 @@ const createAvatarData = (avatarNumber) =>{
     /**
      * Added attributes from danMockData
      */
-    const Gender = ["Male, Female"]
+    const Gender = ["Male", "Female"]
     
     //need min and max val's for age
     const Age = Math.floor(Math.random() * (80 - 18 + 1)) + 18
 
     //(of experience (under 20))
-    const Years = Math.floor(Math.random() * (20 - 1 + 1)) + 1
+    const Years = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
 
-    const Availability = ["Yes, No"]
+    const Availability = ["Weekends", "Weekdays", "24/7"]
 
-    const Pay= (Math.floor(Math.random() * (20 - 10 + 1)) + 10) * 1000
+    const Pay= [10,11,12,13,14,15,16,17,18,19,20]
 
-    const AI = ["True, False"]
+    const AI = ["True", "False"]
 
     let avatarData =[];
     for (let i = 0; i < avatarNumber; i++) {
@@ -154,9 +154,10 @@ const createAvatarData = (avatarNumber) =>{
                             //added attributes to each case
                             "gender": Gender[Math.floor(Math.random()*Gender.length)],
                             "age": Age[Math.floor(Math.random()*Age.length)],
-                            "year(s)": Years[Math.floor(Math.random()*Years.length)],
+                         
+                            "years": Years[Math.floor(Math.random()*Years.length)],
                             "availability": Availability[Math.floor(Math.random()*Availability.length)],
-                            "pay": Pay[Math.floor(Math.random()*Pay.length)] * 1000,
+                            "pay": "$" + Pay[Math.floor(Math.random()*Pay.length)] * 1000,
                             "ai": AI[Math.floor(Math.random()*AI.length)],
                    
                         "bias":"Avatar is wearing a hat"
@@ -183,9 +184,10 @@ const createAvatarData = (avatarNumber) =>{
                             //added attributes to each case
                             "gender": Gender[Math.floor(Math.random()*Gender.length)],
                             "age": Age[Math.floor(Math.random()*Age.length)],
-                            "year(s)": Years[Math.floor(Math.random()*Years.length)],
+                   
+                            "years": Years[Math.floor(Math.random()*Years.length)],
                             "availability": Availability[Math.floor(Math.random()*Availability.length)],
-                            "pay": Pay[Math.floor(Math.random()*Pay.length)] * 1000,
+                            "pay": "$" + Pay[Math.floor(Math.random()*Pay.length)] * 1000,
                             "ai": AI[Math.floor(Math.random()*AI.length)],
                
                         "bias":"Avatar is wearing glasses"
@@ -213,9 +215,11 @@ const createAvatarData = (avatarNumber) =>{
                             //added attributes to each case
                             "gender": Gender[Math.floor(Math.random()*Gender.length)],
                             "age": Age[Math.floor(Math.random()*Age.length)],
-                            "year(s)": Years[Math.floor(Math.random()*Years.length)],
+      
+                            "years": Years[Math.floor(Math.random()*Years.length)],
+
                             "availability": Availability[Math.floor(Math.random()*Availability.length)],
-                            "pay": Pay[Math.floor(Math.random()*Pay.length)] * 1000,
+                            "pay": "$" +  Pay[Math.floor(Math.random()*Pay.length)] * 1000,
                             "ai": AI[Math.floor(Math.random()*AI.length)],
                      
                         "bias":"Avatar's shirt is the color Blue"
@@ -243,9 +247,10 @@ const createAvatarData = (avatarNumber) =>{
                             //added attributes to each case
                             "gender": Gender[Math.floor(Math.random()*Gender.length)],
                             "age": Age[Math.floor(Math.random()*Age.length)],
-                            "year(s)": Years[Math.floor(Math.random()*Years.length)],
+                            "years": Years[Math.floor(Math.random()*Years.length)],
+
                             "availability": Availability[Math.floor(Math.random()*Availability.length)],
-                            "pay": Pay[Math.floor(Math.random()*Pay.length)] * 1000,
+                            "pay": "$" + Pay[Math.floor(Math.random()*Pay.length)] * 1000,
                             "ai": AI[Math.floor(Math.random()*AI.length)],
                         
                         "bias":"Avatar's hair is the color "+hcolor
