@@ -116,7 +116,7 @@ const createAvatarData = (avatarNumber) =>{
     /**
      * Added attributes from danMockData
      */
-    const Gender = ["Male", "Female"]
+    const Gender = ["Male", "Female", "Non-binary"]
     
     //need min and max val's for age
     const Age = Math.floor(Math.random() * (80 - 18 + 1)) + 18
