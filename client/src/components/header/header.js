@@ -94,21 +94,13 @@ const Header = (props) => {
         <Navbar id="navHeader"
         dark expand="lg" className="navbar labnav" style={{boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)", paddingTop: "1rem"}}>
             <div className="container">
-                    {state.main.lab===0 && (state.main.body===3 || state.main.body===4 || state.main.body===5) ?
-                        <>
-                        <img className="logo img-fluid"
-                            src={Logo}
-                            alt="Computing Accessibility"
-                        />
-                        </>
-                    :
+
                         <a href="# " onClick={() => navigate(state,actions, 0, 0)}>
                             <img className="logo img-fluid"
                                 src={Logo}
                                 alt="Computing Accessibility"
                             />
                         </a>
-                    }
                 {/* TODO figure out a way to consolidate repeated code*/}
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
@@ -200,7 +192,7 @@ const Header = (props) => {
                             </Nav>
                         } 
                         {state.main.user !== null &&
-                            (state.main.user.firstname !== null && !(state.main.lab===0 && state.main.body===3) && !(state.main.lab===0 && state.main.body===4) && !(state.main.lab===0 && state.main.body===5) &&
+                            (state.main.user.firstname !== null && 
                                 <NavItem className="collapse navbar-collapse" >
                                     <NavLink
                                         className="nav-link "
@@ -305,7 +297,6 @@ const Header = (props) => {
                         </NavItem>
 
                         {state.main.user !== null &&
-                            (state.main.user.firstname !== null && !(state.main.lab===0 && state.main.body===3) && !(state.main.lab===0 && state.main.body===4) && !(state.main.lab===0 && state.main.body===5) &&
                                 <NavItem className="collapse navbar-collapse" >
                                     <NavLink
                                         className="nav-link "
@@ -319,15 +310,10 @@ const Header = (props) => {
                                         </ul>
                                     </NavLink>
                                 </NavItem>
-                            )
                         }
 
-                        {(!(state.main.lab===0 && state.main.body===3) && !(state.main.lab===0 && state.main.body===4) && !(state.main.lab===0 && state.main.body===5))?
-                            <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} renderLink={true}/>
-                        :
-                            <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} renderLink={false}/>
-                        }
-                       
+                        <WelcomeMessage user={state.main.user} loginEnabled={loginEnabled} renderLink={true}/>
+          
                     </Nav> 
                 }
                 </Collapse>

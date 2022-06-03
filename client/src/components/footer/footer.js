@@ -136,7 +136,6 @@ class Footer extends Component {
         let hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
         return (
             <>
-                {lab!==0 && body!== 3 ?
                 <div className="footer">
                     <div className="container" style={{display: display ? "block" : "none"}}>
                         <button
@@ -201,7 +200,6 @@ class Footer extends Component {
                 </div>
             :
                 <div className="footer"/>
-            }
             </>
         );
     };
