@@ -20,9 +20,9 @@ const AIAnalysisQuestions = (props) =>{
       }
 
 
-      //skips over phase 2 temporarily
+      //changed so it doesn't skip phase 2
       const handleContinue = () =>{
-          navigate("/Lab6/Reinforcement");//How should we handle this (positive or negative)
+          navigate("/Lab6/Exercise/EmployerStart");
       }
   
       /**

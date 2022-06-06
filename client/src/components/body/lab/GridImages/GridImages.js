@@ -52,6 +52,7 @@ const GridImages = (props) => {
 		handleGridImage(id);
 	}
 	
+    //changed useEffect
 	useEffect(()=>{
         let avatarData = createAvatarData(1000)
 		shuffleArray(avatarData)
