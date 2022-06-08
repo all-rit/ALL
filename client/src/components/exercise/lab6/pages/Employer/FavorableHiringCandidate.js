@@ -2,7 +2,7 @@ import React, {useEffect } from "react";
 import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
 
-const EmployerStart = (props) =>{
+const FavorableHiringCandidate = (props) =>{
     const {actions} = props;
 
     useEffect(()=>{
@@ -10,16 +10,17 @@ const EmployerStart = (props) =>{
     },[actions]);
 
     const handleStart = () =>{
-        navigate("/Lab6/Exercise/FavorableHiringCandidate");
+        navigate("/Lab6/Exercise/HiringCandidate");
     }
-
+    
     return(
         <div className="center-div">
-            <h2 class="playthrough__title">Part 2: Employer</h2>
+            <h2 class="playthrough__title">Favorable Candidate:</h2>
             <div className="playthrough__sentence">
-            In this part of the exercise, you will be looking at applications for “MegaCorp” as a hiring manager with an AI assistant to help you pare down the applicants. 
-            The AI does have an error, see if you can find it.
+        Here’s what MegaCorp is looking for in new employees 
             </div>
+
+            <h2 class = "Prime candidate ex.">This is an example of a prime candidate that should be hired!</h2>
             <div className="playthrough__sentence">Click the “Continue” button to begin the second half of this exercise!</div>
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase "
@@ -32,4 +33,4 @@ const EmployerStart = (props) =>{
     );
 }
 
-export default EmployerStart;
+export default FavorableHiringCandidate;
