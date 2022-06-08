@@ -6,12 +6,17 @@ import {bindActionCreators} from "redux";
 import {actions as exerciseActions} from "../../../reducers/lab6/ExerciseReducer";
 
 import ExerciseStart from "./pages/Applicant/ExerciseStart";
+
+
 import AvatarSelection from "./pages/Applicant/AvatarSelection";
 import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
 import AnalyzeData from "./pages/Applicant/AnalyzeData";
 import NegativeReasoning from "./pages/Applicant/NegativeReasoning";
 import AIAnalysisQuestions from "./pages/Applicant/AIAnalysisQuestions";
-import EmployerStart from "./pages/Employer/EmployerStart"; 
+import EmployerStart from "./pages/Employer/EmployerStart";
+
+import FavorableHiringCandidate from "./pages/Employer/FavorableHiringCandidate"; 
+
 import HiringCandidate from "./pages/Employer/HiringCandidate";
 import AIReasoningQuestions from "./pages/Employer/AIReasoningQuestions";
 import AIReasoning from "./pages/Employer/AIReasoning";
@@ -46,6 +51,10 @@ class Main extends Component {
                     <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions}/>
                     {/* Part 2: Employer */}
                     <EmployerStart path="/EmployerStart" actions={actions}/>
+
+                    {/*Added favorablehiringcandidate pg */}
+                    <FavorableHiringCandidate path = "/FavorableHiringCandidate" actions={actions}/>
+
                     <HiringCandidate path="/HiringCandidate" actions={actions}/>
                     <AIReasoningQuestions path="/AIReasoningQuestions" actions={actions}/>
                     <AIReasoning path="/AIReasoning" actions={actions}/>
