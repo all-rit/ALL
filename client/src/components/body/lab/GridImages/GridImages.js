@@ -52,6 +52,7 @@ const GridImages = (props) => {
 		handleGridImage(id);
 	}
 	
+    //changed useEffect
 	useEffect(()=>{
         let avatarData = createAvatarData(1000)
 		shuffleArray(avatarData)
@@ -89,7 +90,7 @@ const GridImages = (props) => {
                                 >
                                     <Avatar
                                         className={id.includes(data.id) ? 'tw-opacity-50 tw-border-double tw-border-8 tw-max-w-full tw-h-auto' : 'tw-max-w-full tw-h-auto'} alt={data.name} 
-                                        avatarStyle='Circle'
+                                        avatarStyle='Square'
                                         topType={data.avatarAttributes.topType}
                                         accessoriesType={data.avatarAttributes.accessoriesType}
                                         hairColor={data.avatarAttributes.hairColor}

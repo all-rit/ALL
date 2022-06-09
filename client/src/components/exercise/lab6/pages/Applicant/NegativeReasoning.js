@@ -18,7 +18,7 @@ const NegativeReasoning = (props) =>{
         <div className="center-div">
             <h2 class="playthrough__title">Why you were not chosen:</h2>
             <div className="playthrough__sentence">
-            The reason you were not selected was because there were an overwhelming amount of applicant and an AI was used to help pare down the number of applications. 
+            The reason you were not selected was because there were an overwhelming number of applicants and an AI was used to pare down the number of applications. 
             Under normal circumstances a human would have made the decisions.
             </div>
             

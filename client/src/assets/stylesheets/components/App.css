@@ -1630,12 +1630,24 @@ hr.horiz {
   text-align: center;
 }
 
+
+
 .btn-disabled {
   background-color: lightgrey !important;
   border-color: lightgrey !important;
   margin-left: 5px !important;
   opacity: .5;
 }
+
+
+.center-shift {
+  text-align: center;
+  align-items: center;
+  display: block;
+  width: 50%
+
+}
+
 
 .next {
   background-color: #fed136;

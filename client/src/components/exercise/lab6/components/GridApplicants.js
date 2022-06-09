@@ -6,6 +6,7 @@ import Avatar from 'avataaars';
 
 
 const GridApplicants = (props) => {
+	const {numApplicants}=props;
 	const [currentFile, setCurrentFile] = useState([])
 	const [id, setId] = useState([])
 
@@ -20,11 +21,9 @@ const GridApplicants = (props) => {
 	//added use Effect for setApplicant
 	//may need more under useEffect?
 	useEffect(()=>{
-
 		let avatarData=createAvatarData(50)
-
-		setApplicant(avatarData.slice(0,4))
-	})
+		setApplicant(avatarData.slice(0,numApplicants))
+	},[numApplicants])
 
 
 	const handleGridImage = useCallback((imgId) => {
@@ -49,7 +48,6 @@ const GridApplicants = (props) => {
 		<div className='gridApplicants tw-flex'>
 			<div className='tw-mr-4'>
 				<ul className='gridApplicants-content tw-bg-bgwhite tw-mt-40'>
-
 					<li className='tw-p-4'>Gender</li>
 					<li className='tw-p-4'>Years of Experience</li>
 					<li className='tw-p-4'>Availability</li>
@@ -57,14 +55,13 @@ const GridApplicants = (props) => {
 					<li className='tw-p-4'>AI Recommendation</li>
 				</ul>
 			</div>
-			<div className='tw-flex tw-gap-x-4'>
-
-			
+			 
+			<div className='tw-flex tw-gap-x-4'>			
 				{applicant?.map(data => (
 					<ul onClick={() => handleGridImage(data?.id)} className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${id.includes(data.id) ? 'tw-opacity-75 tw-border-solid tw-border-8' : ''}`}>
 						<Avatar
-						className='tw-w-16 tw-h-16' alt={data.name}                                         
-						avatarStyle='Circle'
+						className='tw-w-40 tw-h-40' alt={data.name}                                         
+						avatarStyle='Square'
 						topType={data.avatarAttributes.topType}
 						accessoriesType={data.avatarAttributes.accessoriesType}
 						hairColor={data.avatarAttributes.hairColor}
@@ -76,7 +73,7 @@ const GridApplicants = (props) => {
 						mouthType={data.avatarAttributes.mouthType}
 						skinColor={data.avatarAttributes.skinColor}
 						/>  
-						<li className='tw-p-4'>{data.gender}</li>
+						<li className='tw-p-4'>{data?.gender}</li>
 						<li className='tw-p-4'>{data?.years}</li>
 						<li className='tw-p-4'>{data?.availability}</li>
 						<li className='tw-p-4'>{data?.pay}</li>

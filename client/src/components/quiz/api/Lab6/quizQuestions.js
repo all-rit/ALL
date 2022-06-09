@@ -1,110 +1,110 @@
 const quizQuestionsLab6 = [
     {
-        question: "This is a test? 1",
+        question: "What field can AI be used in?",
         answers: [
             {
+                val:0,
+                content:"Self-driving cars"
+            },
+            {
+                val:0,
+                content: "Chatbots"
+            },
+            {
+                val:0,
+                content: "Surveillance"
+            },
+            {
                 val:1,
-                content:"Correct answer"
-            },
-            {
-                val:0,
-                content: "Wrong answer"
-            },
-            {
-                val:0,
-                content: "Wrong answer"
-            },
-            {
-                val:0,
-                content: "Wrong answer"
+                content: "All of the Above"
             }
         ],
         multiChoice: false
     },
     {
-        question: "This is a test? 2",
+        question: "Does AI have an IQ?",
         answers: [
             {
                 val:0,
-                content:"Wrong answer"
-            },
-            {
-                val:0,
-                content: "Wrong answer"
+                content:"Yes, AI is measured just like human intelligence."
             },
             {
                 val:1,
-                content: "Correct answer"
+                content: "No, AI is measured differently than human intelligence."
             },
             {
                 val:0,
-                content: "Wrong answer"
+                content: "The computer science community is unsure."
+            },
+            {
+                val:0,
+                content: "Yes, but AI is not measured the same as human intelligence."
             }
         ],
         multiChoice: false
     },
     {
-        question: "This is a test? 3",
+        question: "What manufacturing industry uses AI most frequently?",
         answers: [
             {
                 val:0,
-                content:"Wrong answer"
+                content:"Monitoring Diagnostics"
+            },
+            {
+                val:0,
+                content: "Inventory Management"
             },
             {
                 val:1,
-                content: "Correct answer"
+                content: "Quality Control"
             },
             {
                 val:0,
-                content: "Wrong answer"
-            },
-            {
-                val:0,
-                content: "Wrong answer"
+                content: "Customer Care"
             }
         ],
         multiChoice: false
     },
     {
-        question: "This is a test? 4",
+        question: "How many facial images were captured illegally of people around the world by Clearview AI?",
         answers: [
             {
                 val:1,
-                content:"Correct answer"
+                content:"3 Billion"
             },
             {
                 val:0,
-                content: "Wrong answer"
+                content: "4 Billion"
             },
             {
                 val:0,
-                content: "Wrong answer"
+                content: "5 Billion"
             },
             {
                 val:0,
-                content: "Wrong answer"
+                content: "6 Billion"
             }
         ],
         multiChoice: false
     },
     {
-        question: "This is a test? 5",
+        question: "Who is responsible for the management of AI?",
         answers: [
             {
                 val:0,
-                content:"Wrong answer"
+                content:"Corporations"
             },
             {
                 val:0,
-                content: "Wrong answer"
+                content: "Government"
             },
             {
                 val:0,
-                content: "Wrong answer"
+                content: "Society"
             },
             {
                 val:1,
-                content: "Correct answer"
+                content: "All of the above"
             }
         ],
         multiChoice: false

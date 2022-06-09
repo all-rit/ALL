@@ -10,7 +10,7 @@ const EmployerStart = (props) =>{
     },[actions]);
 
     const handleStart = () =>{
-        navigate("/Lab6/Exercise/HiringCandidate");
+        navigate("/Lab6/Exercise/FavorableHiringCandidate");
     }
 
     return(

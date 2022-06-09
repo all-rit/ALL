@@ -6,13 +6,22 @@ import {bindActionCreators} from "redux";
 import {actions as exerciseActions} from "../../../reducers/lab6/ExerciseReducer";
 
 import ExerciseStart from "./pages/Applicant/ExerciseStart";
+
+
 import AvatarSelection from "./pages/Applicant/AvatarSelection";
 import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
 import AnalyzeData from "./pages/Applicant/AnalyzeData";
 import NegativeReasoning from "./pages/Applicant/NegativeReasoning";
 import AIAnalysisQuestions from "./pages/Applicant/AIAnalysisQuestions";
-import EmployerStart from "./pages/Employer/EmployerStart"; 
-import HiringCandidate from "./pages/Employer/HiringCandidate";
+import EmployerStart from "./pages/Employer/EmployerStart";
+
+import FavorableHiringCandidate from "./pages/Employer/FavorableHiringCandidate"; 
+
+import HiringCandidate1 from "./pages/Employer/HiringCandidate1";
+import HiringCandidate2 from "./pages/Employer/HiringCandidate2";
+import HiringCandidate3 from "./pages/Employer/HiringCandidate3";
+import HiringCandidate4 from "./pages/Employer/HiringCandidate4";
+
 import AIReasoningQuestions from "./pages/Employer/AIReasoningQuestions";
 import AIReasoning from "./pages/Employer/AIReasoning";
 import AIRepair from "./pages/Employer/AIRepair";
@@ -46,7 +55,16 @@ class Main extends Component {
                     <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions}/>
                     {/* Part 2: Employer */}
                     <EmployerStart path="/EmployerStart" actions={actions}/>
-                    <HiringCandidate path="/HiringCandidate" actions={actions}/>
+
+                    {/*Added favorablehiringcandidate pg */}
+                    <FavorableHiringCandidate path = "/FavorableHiringCandidate" actions={actions}/>
+
+                    {/*Added hiringcandidate pgs */}
+                    <HiringCandidate1 path="/HiringCandidate1" actions={actions}/>
+                    <HiringCandidate2 path="/HiringCandidate2" actions={actions}/>
+                    <HiringCandidate3 path="/HiringCandidate3" actions={actions}/>
+                    <HiringCandidate4 path="/HiringCandidate4" actions={actions}/>
+
                     <AIReasoningQuestions path="/AIReasoningQuestions" actions={actions}/>
                     <AIReasoning path="/AIReasoning" actions={actions}/>
                     <AIRepair path="/AIRepair" actions={actions}/>
