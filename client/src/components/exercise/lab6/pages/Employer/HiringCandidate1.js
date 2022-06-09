@@ -8,7 +8,7 @@ import GridApplicants from "../../components/GridApplicants";
 
 
 
-const HiringCandidate = (props) => {
+const HiringCandidate1 = (props) => {
     const { actions } = props;
 
 
@@ -17,14 +17,14 @@ const HiringCandidate = (props) => {
     }, [actions]);
 
     const handleContinue = () => {
-        navigate("/Lab6/Exercise/AIReasoningQuestions");
+        navigate("/Lab6/Exercise/HiringCandidate2");
     }
 
     return (
         <Form>
 
             <div className="center-div">
-                <h2 className="playthrough__title" >Choose A Candidate</h2>
+                <h2 className="playthrough__title" >Choose your first Candidate!</h2>
                 <h2 className="cognitive_instructions">Click on their picture to select</h2>
                 <h2 className="cognitive_instructions">Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”</h2>
 
@@ -42,4 +42,4 @@ const HiringCandidate = (props) => {
     );
 }
 
-export default HiringCandidate;
+export default HiringCandidate1;

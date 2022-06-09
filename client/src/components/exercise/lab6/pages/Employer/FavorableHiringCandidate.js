@@ -1,9 +1,8 @@
 import React, {useEffect } from "react";
 import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
-import { Input } from "reactstrap";
 import LongHorizontalLine from "../../../../../common/HorizontalLine/LongHorizontalLine";
-import { Form } from "reactstrap";
+
 
 
 const FavorableHiringCandidate = (props) =>{
@@ -16,13 +15,13 @@ const FavorableHiringCandidate = (props) =>{
     },[actions]);
 
     const handleStart = () =>{
-        navigate("/Lab6/Exercise/HiringCandidate");
+        navigate("/Lab6/Exercise/HiringCandidate1");
     }
     
     return(
 
         
-        <><div className="center-div">
+        <><div className="center-shift">
             <h2 class="playthrough__title">Favorable Candidate:</h2>
             <div className="playthrough__sentence">
                 Here’s what MegaCorp is looking for in new employees
@@ -32,7 +31,9 @@ const FavorableHiringCandidate = (props) =>{
             <div className="playthrough__sentence">Click the “Continue” button to begin the second half of this exercise!</div>
 
             <div className='gridApplicants tw-flex'>
+                {/* Number determines spacing between two cols*/}
 			<div className='tw-mr-4'>
+                {/* Number determines alignment of long horizontals*/}
 				<ul className='gridApplicants-content tw-bg-bgwhite tw-mt-40'>
 					<li className='tw-p-4'>Gender</li>
 					<li className='tw-p-4'>Years of Experience</li>
@@ -63,16 +64,11 @@ const FavorableHiringCandidate = (props) =>{
             </ul> 
             {/* </div> */}
 			</div>
-
-          
     
        
             </div>
-
           
-          
-
-            
+    
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase "
                 onClick={handleStart}
