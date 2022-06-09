@@ -1,7 +1,7 @@
 import React, {useEffect } from "react";
 import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
-import Quiz from "../../../../quiz/components/Quiz";
+import Quiz from "../../../../exercise/lab6/components/Quiz";
 
 const QualificationQuestions = (props) =>{
     const {actions} = props;
@@ -13,7 +13,6 @@ const QualificationQuestions = (props) =>{
     const handleContinue = () =>{
         navigate("/Lab6/Exercise/AnalyzeData");
     }
-
     const questions = [
         {
             val: 0,
@@ -111,50 +110,6 @@ const QualificationQuestions = (props) =>{
                     answerOptions={questions}
                     questionId={1}
                     question={"Where you looking to work full-time or part-time?"}
-                    questionTotal={5}
-                    onAnswerSelected={()=>{}}
-                    nextQuestion={()=>{}}
-                    disable={false}
-                    multiChoice = {false}
-            />
-            <Quiz
-                    answer={""}
-                    answerOptions={questions2}
-                    questionId={2}
-                    question={"How many years of experience do you have?"}
-                    questionTotal={5}
-                    onAnswerSelected={()=>{}}
-                    nextQuestion={()=>{}}
-                    disable={false}
-                    multiChoice = {false}
-            />
-            <Quiz
-                    answer={""}
-                    answerOptions={questions3}
-                    questionId={3}
-                    question={"What is your age?"}
-                    questionTotal={5}
-                    onAnswerSelected={()=>{}}
-                    nextQuestion={()=>{}}
-                    disable={false}
-                    multiChoice = {false}
-            />
-            <Quiz
-                    answer={""}
-                    answerOptions={questions4}
-                    questionId={4}
-                    question={"What is your major/degree in?"}
-                    questionTotal={5}
-                    onAnswerSelected={()=>{}}
-                    nextQuestion={()=>{}}
-                    disable={false}
-                    multiChoice = {false}
-            />
-            <Quiz
-                    answer={""}
-                    answerOptions={questions5}
-                    questionId={5}
-                    question={"How many jobs have you held since college graduation?"}
                     questionTotal={5}
                     onAnswerSelected={()=>{}}
                     nextQuestion={()=>{}}
