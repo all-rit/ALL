@@ -17,12 +17,16 @@ const QualificationQuestions = (props) =>{
     const questions = [
         {
             val: 0,
-            content: "full-time"
+            content: "Male"
         },
         {
             val: 0,
-            content: "part-time"
+            content: "Female"
         },
+        {
+            val: 0,
+            content: "Non-binary"
+        }
     ];
     const questions2 = [
         {
@@ -31,11 +35,11 @@ const QualificationQuestions = (props) =>{
         },
         {
             val: 0,
-            content: "1-3"
+            content: "1-4"
         },
         {
             val: 0,
-            content: "4-10"
+            content: "5-10"
         },
         {
             val: 0,
@@ -43,6 +47,42 @@ const QualificationQuestions = (props) =>{
         },
     ];
     const questions3 = [
+        {
+            val: 0,
+            content: "full-time"
+        },
+        {
+            val: 0,
+            content: "part-time"
+        },
+        {
+            val: 0,
+            content: "weekdays"
+        },
+        {
+            val: 0,
+            content: "weekends"
+        },
+    ];
+    const questions4 = [
+        {
+            val: 0,
+            content: "40K - 42.5K"
+        },
+        {
+            val: 0,
+            content: "42.6K - 45K"
+        },
+        {
+            val: 0,
+            content: "45.1K - 47.5K"
+        },
+        {
+            val: 0,
+            content: "47.6 - 50K"
+        },
+    ];
+    const questions5 = [
         {
             val: 0,
             content: "<18"
@@ -64,43 +104,6 @@ const QualificationQuestions = (props) =>{
             content: "65+"
         },
     ];
-    const questions4 = [
-        {
-            val: 0,
-            content: "Computer Science"
-        },
-        {
-            val: 0,
-            content: "Business"
-        },
-        {
-            val: 0,
-            content: "Communications"
-        },
-        {
-            val: 0,
-            content: "Other - if other, explain"
-        },
-    ];
-    const questions5 = [
-        {
-            val: 0,
-            content: "0"
-        },
-        {
-            val: 0,
-            content: "1-3"
-        },
-        {
-            val: 0,
-            content: "4-5"
-        },
-        {
-            val: 0,
-            content: "6+"
-        },
-    ];
-
 
     return(
         <div className="center-div">
@@ -110,7 +113,7 @@ const QualificationQuestions = (props) =>{
                     answer={""}
                     answerOptions={questions}
                     questionId={1}
-                    question={"Where you looking to work full-time or part-time?"}
+                    question={"What gender to you identify as?"}
                     questionTotal={5}
                     onAnswerSelected={()=>{}}
                     nextQuestion={()=>{}}
@@ -132,7 +135,7 @@ const QualificationQuestions = (props) =>{
                     answer={""}
                     answerOptions={questions3}
                     questionId={3}
-                    question={"What is your age?"}
+                    question={"What is your availability?"}
                     questionTotal={5}
                     onAnswerSelected={()=>{}}
                     nextQuestion={()=>{}}
@@ -143,7 +146,7 @@ const QualificationQuestions = (props) =>{
                     answer={""}
                     answerOptions={questions4}
                     questionId={4}
-                    question={"What is your major/degree in?"}
+                    question={"What is your expected salary?"}
                     questionTotal={5}
                     onAnswerSelected={()=>{}}
                     nextQuestion={()=>{}}
@@ -154,7 +157,7 @@ const QualificationQuestions = (props) =>{
                     answer={""}
                     answerOptions={questions5}
                     questionId={5}
-                    question={"How many jobs have you held since college graduation?"}
+                    question={"What is your age?"}
                     questionTotal={5}
                     onAnswerSelected={()=>{}}
                     nextQuestion={()=>{}}

@@ -122,11 +122,11 @@ const createAvatarData = (avatarNumber) =>{
     const Age = Math.floor(Math.random() * (80 - 18 + 1)) + 18
 
     //(of experience (under 20))
-    const Years = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
+    const Years = ["0","1-4","5-10","10+"]
 
-    const Availability = ["Weekends", "Weekdays", "24/7"]
+    const Availability = ["Weekends", "Weekdays", "Full-Time", "Part-Time"]
 
-    const Pay= [10,11,12,13,14,15,16,17,18,19,20]
+    const Pay= [40,41,42,43,44,45,46,47,48,49,50]
 
     const AI = ["True", "False"]
 
