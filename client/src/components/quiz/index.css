@@ -103,7 +103,7 @@ body {
   vertical-align: middle;
   background: #fff;
   border: 1px solid #bbb;
-  border-radius: 50%;
+  border-radius: 50%; 
   transition: all 0.3s;
 }
 
