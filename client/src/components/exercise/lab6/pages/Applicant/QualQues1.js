@@ -4,6 +4,8 @@ import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 
 
+
+
 const QualQues1 = (props) =>{
     const {actions} = props;
 
@@ -47,11 +49,20 @@ const QualQues1 = (props) =>{
         <Form onSubmit={onFormSubmit}>
         <div className="center-div">
             <h2 class="cognitive_instructions">What gender to you identify as?</h2>
+
+
+{/* Tried to get radio buttons inside of radio group */}
+            {/* <RadioGroup label = "What gender to you identify as?"> */}
+                {/* <Input id="gender1" name="gender1" type="radio" className="analysis__checkbox">Male</Input>
+                <Input id="gender2" name="gender2" type="radio" className="analysis__checkbox">Female</Input> */} 
+{/* 
+            /* </RadioGroup> */}
+
             
             <div className="analysis__questions">
                 <FormGroup check >
                     <Label for="Male" check>
-                        <Input id="gender" name="gender" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="gender" name="gender" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             Male
                         </div>
@@ -59,7 +70,7 @@ const QualQues1 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="Female" check>
-                        <Input id="gender2" name="gender2" type="checkbox" className="analysis__checkbox" /> 
+                        <Input id="gender2" name="gender2" type="radio" className="analysis__checkbox" /> 
                         <div className="analysis__question">
                             Female
                         </div>
@@ -67,13 +78,13 @@ const QualQues1 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="Non-binary" check>
-                        <Input id="gender3" name="gender3" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="gender3" name="gender3" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             Non-binary
                         </div>
                     </Label>
                 </FormGroup>
-            </div>
+            </div> 
 
             <button
                 className="btn btn-primary text-black btn-xl text-uppercase "     
