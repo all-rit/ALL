@@ -9,7 +9,17 @@ import ExerciseStart from "./pages/Applicant/ExerciseStart";
 
 
 import AvatarSelection from "./pages/Applicant/AvatarSelection";
-import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
+
+//Added QualQues imports
+import QualQues1 from "./pages/Applicant/QualQues1";
+import QualQues2 from "./pages/Applicant/QualQues2";
+import QualQues3 from "./pages/Applicant/QualQues3";
+import QualQues4 from "./pages/Applicant/QualQues4";
+import QualQues5 from "./pages/Applicant/QualQues5";
+
+
+// import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
+
 import AnalyzeData from "./pages/Applicant/AnalyzeData";
 import NegativeReasoning from "./pages/Applicant/NegativeReasoning";
 import AIAnalysisQuestions from "./pages/Applicant/AIAnalysisQuestions";
@@ -27,6 +37,9 @@ import AIReasoning from "./pages/Employer/AIReasoning";
 import AIRepair from "./pages/Employer/AIRepair";
 import FixedHiringCandidate from "./pages/Employer/FixedHiringCandidate";
 import ExerciseEnd from "./pages/Employer/ExerciseEnd";
+
+
+
 
 const mapStateToProps = (state) => ({
     state: state
@@ -49,7 +62,15 @@ class Main extends Component {
                     {/* Part 1: Applicant */}
                     <ExerciseStart path="/" actions={actions}/>
                     <AvatarSelection path="/AvatarSelection" actions={actions}/>
-                    <QualificationQuestions path="/QualificationQuestions" actions={actions}/>
+                    <QualQues1 path="/QualQues1" actions={actions}/>
+                    <QualQues2 path="/QualQues2" actions={actions}/>
+                    <QualQues3 path="/QualQues3" actions={actions}/>
+                    <QualQues4 path="/QualQues4" actions={actions}/>
+                    <QualQues5 path="/QualQues5" actions={actions}/>
+
+                    {/*Commented out QualificationQuestions for now */}
+
+                    {/* <QualificationQuestions path="/QualificationQuestions" actions={actions}/> */}
                     <AnalyzeData path="/AnalyzeData" actions={actions}/>
                     <NegativeReasoning path="/NegativeReasoning" actions={actions}/>
                     <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions}/>

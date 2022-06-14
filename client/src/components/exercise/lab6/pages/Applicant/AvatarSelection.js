@@ -15,7 +15,7 @@ const AvatarSelection = (props) =>{
     },[actions]);
 
     const confirmSelection = () =>{
-        navigate("/Lab6/Exercise/QualificationQuestions");
+        navigate("/Lab6/Exercise/QualQues1");
     }
 
     return(

@@ -67,10 +67,26 @@ const AIAnalysisQuestions = (props) =>{
                     </Label>
                 </FormGroup>
                 <FormGroup check >
+                    <Label for="years" check>
+                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox"/>
+                        <div className="analysis__question">
+                            Years of Experience
+                        </div>
+                    </Label>
+                </FormGroup>
+                <FormGroup check >
                     <Label for="availability" check>
                         <Input id="availability" name="availability" type="checkbox" className="analysis__checkbox" /> 
                         <div className="analysis__question">
                             Availability
+                        </div>
+                    </Label>
+                </FormGroup>
+                <FormGroup check >
+                    <Label for="salary" check>
+                        <Input id="salary" name="salary" type="checkbox" className="analysis__checkbox"/>
+                        <div className="analysis__question">
+                            Salary
                         </div>
                     </Label>
                 </FormGroup>
@@ -82,22 +98,8 @@ const AIAnalysisQuestions = (props) =>{
                         </div>
                     </Label>
                 </FormGroup>
-                <FormGroup check >
-                    <Label for="pay" check>
-                        <Input id="pay" name="pay" type="checkbox" className="analysis__checkbox"/>
-                        <div className="analysis__question">
-                            Expected Pay
-                        </div>
-                    </Label>
-                </FormGroup>
-                <FormGroup check >
-                    <Label for="years" check>
-                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox"/>
-                        <div className="analysis__question">
-                            Years of Experience
-                        </div>
-                    </Label>
-                </FormGroup>
+                
+                
             </div>
 
             <button

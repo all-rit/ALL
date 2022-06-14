@@ -15,6 +15,8 @@ const QualificationQuestions = (props) =>{
     }
 
     const questions = [
+
+        
         {
             val: 0,
             content: "Male"
@@ -109,6 +111,7 @@ const QualificationQuestions = (props) =>{
         <div className="center-div">
             <h2 class="playthrough__title">Qualification Questions:</h2>
 
+        {/*They are each their own quiz, which is why the "Next Question button is not working" */}
             <Quiz
                     answer={""}
                     answerOptions={questions}
@@ -119,6 +122,7 @@ const QualificationQuestions = (props) =>{
                     nextQuestion={()=>{}}
                     disable={false}
                     multiChoice = {false}
+                    
             />
             <Quiz
                     answer={""}
