@@ -52,7 +52,7 @@ const QualQues5 = (props) =>{
             <div className="analysis__questions">
                 <FormGroup check >
                     <Label for="age" check>
-                        <Input id="age" name="age" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="age" name="age" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                            Less than 18
                         </div>
@@ -60,7 +60,7 @@ const QualQues5 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="age" check>
-                        <Input id="age" name="age" type="checkbox" className="analysis__checkbox" /> 
+                        <Input id="age" name="age" type="radio" className="analysis__checkbox" /> 
                         <div className="analysis__question">
                             18-25
                         </div>
@@ -68,7 +68,7 @@ const QualQues5 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="age" check>
-                        <Input id="age" name="age" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="age" name="age" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                         25-45
                         </div>
@@ -76,7 +76,7 @@ const QualQues5 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="age" check>
-                        <Input id="age" name="age" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="age" name="age" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                         45-65
                         </div>
@@ -84,7 +84,7 @@ const QualQues5 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="age" check>
-                        <Input id="age" name="age" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="age" name="age" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                         65+
                         </div>

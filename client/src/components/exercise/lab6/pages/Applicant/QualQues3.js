@@ -51,7 +51,7 @@ const QualQues3 = (props) =>{
             <div className="analysis__questions">
                 <FormGroup check >
                     <Label for="availability" check>
-                        <Input id="availability" name="availability" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="availability" name="availability" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             Full-time
                         </div>
@@ -59,7 +59,7 @@ const QualQues3 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="availability" check>
-                        <Input id="availability" name="availability" type="checkbox" className="analysis__checkbox" /> 
+                        <Input id="availability" name="availability" type="radio" className="analysis__checkbox" /> 
                         <div className="analysis__question">
                             Part-time
                         </div>
@@ -67,7 +67,7 @@ const QualQues3 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="availability" check>
-                        <Input id="availability" name="availability" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="availability" name="availability" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             Weekdays
                         </div>
@@ -75,7 +75,7 @@ const QualQues3 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="availability" check>
-                        <Input id="availability" name="availability" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="availability" name="availability" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             Weekends
                         </div>

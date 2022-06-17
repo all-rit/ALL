@@ -48,7 +48,7 @@ const QualQues1 = (props) =>{
 
         <Form onSubmit={onFormSubmit}>
         <div className="center-div">
-            <h2 class="cognitive_instructions">What gender to you identify as?</h2>
+            <h2 class="cognitive_instructions">What gender do you identify as?</h2>
 
 
 {/* Tried to get radio buttons inside of radio group */}
@@ -70,7 +70,7 @@ const QualQues1 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="Female" check>
-                        <Input id="gender2" name="gender2" type="radio" className="analysis__checkbox" /> 
+                        <Input id="gender2" name="gender" type="radio" className="analysis__checkbox" /> 
                         <div className="analysis__question">
                             Female
                         </div>
@@ -78,7 +78,7 @@ const QualQues1 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="Non-binary" check>
-                        <Input id="gender3" name="gender3" type="radio" className="analysis__checkbox"/>
+                        <Input id="gender3" name="gender" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             Non-binary
                         </div>

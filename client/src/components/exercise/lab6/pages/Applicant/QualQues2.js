@@ -51,7 +51,7 @@ const QualQues2 = (props) =>{
             <div className="analysis__questions">
                 <FormGroup check >
                     <Label for="years" check>
-                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="years" name="years" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             0
                         </div>
@@ -59,7 +59,7 @@ const QualQues2 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="years" check>
-                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox" /> 
+                        <Input id="years" name="years" type="radio" className="analysis__checkbox" /> 
                         <div className="analysis__question">
                             1-4
                         </div>
@@ -67,7 +67,7 @@ const QualQues2 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="years" check>
-                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="years" name="years" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             5-10
                         </div>
@@ -75,7 +75,7 @@ const QualQues2 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="years" check>
-                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="years" name="years" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             10+
                         </div>

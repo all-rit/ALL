@@ -51,7 +51,7 @@ const QualQues4 = (props) =>{
             <div className="analysis__questions">
                 <FormGroup check >
                     <Label for="salary" check>
-                        <Input id="salary" name="salary" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="salary" name="salary" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             40K - 42.5K
                         </div>
@@ -59,7 +59,7 @@ const QualQues4 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="salary" check>
-                        <Input id="salary" name="salary" type="checkbox" className="analysis__checkbox" /> 
+                        <Input id="salary" name="salary" type="radio" className="analysis__checkbox" /> 
                         <div className="analysis__question">
                             42.6K - 45K
                         </div>
@@ -67,7 +67,7 @@ const QualQues4 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="salary" check>
-                        <Input id="salary" name="salary" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="salary" name="salary" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             45.1K - 47.5K
                         </div>
@@ -75,7 +75,7 @@ const QualQues4 = (props) =>{
                 </FormGroup>
                 <FormGroup check >
                     <Label for="salary" check>
-                        <Input id="salary" name="salary" type="checkbox" className="analysis__checkbox"/>
+                        <Input id="salary" name="salary" type="radio" className="analysis__checkbox"/>
                         <div className="analysis__question">
                             47.6 - 50K
                         </div>
