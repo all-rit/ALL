@@ -31,11 +31,13 @@ table {
 
 th {
 border-bottom: 1px solid black;
+border: 2px solid black;
 text-align: center;
 }
 
 td {
     text-align: center;
+    /* border: 2px solid black; */
   }
 
 
