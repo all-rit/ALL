@@ -6,7 +6,7 @@ import Avatar from 'avataaars';
 
 
 const GridApplicants = (props) => {
-	const {numApplicants}=props;
+	const {numApplicants, setAvatars}=props;
 	const [currentFile, setCurrentFile] = useState([])
 	const [id, setId] = useState([])
 
@@ -33,10 +33,12 @@ const GridApplicants = (props) => {
 		const selectImg = danMockData.filter(img => img.id === imgId)?.[0]
 		if (currentFile.length <= 3 && !(id.includes(selectImg.id))) {
 			setCurrentFile((prevState => ([...prevState, selectImg])))
+			setAvatars((prevState => ([...prevState, selectImg])))
 		}
 		else {
 			if (id?.includes(selectImg.id)) {
 				setCurrentFile((prevState => prevState.filter(file => file.id !== selectImg.id)))
+				setAvatars((prevState => prevState.filter(file => file.id !== selectImg.id)))
 				setId((prevState => prevState.filter(id => id !== selectImg.id)))
 			}
 		}
@@ -46,6 +48,7 @@ const GridApplicants = (props) => {
 	console.log(currentFile, 'cF')
 	return (
 		<div className='gridApplicants tw-flex'>
+
 			<div className='tw-mr-4'>
 				<ul className='gridApplicants-content tw-bg-bgwhite tw-mt-40'>
 					<li className='tw-p-4'>Gender</li>
@@ -55,7 +58,8 @@ const GridApplicants = (props) => {
 					<li className='tw-p-4'>AI Recommendation</li>
 				</ul>
 			</div>
-			 
+			
+
 			<div className='tw-flex tw-gap-x-4'>			
 				{applicant?.map(data => (
 					<ul onClick={() => handleGridImage(data?.id)} className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${id.includes(data.id) ? 'tw-opacity-75 tw-border-solid tw-border-8' : ''}`}>
