@@ -6,17 +6,16 @@ import Applicant from "../../components/Applicant";
 import { Form } from "reactstrap";
 import GridApplicants from "../../components/GridApplicants";
 import {Modal , ModalBody} from "reactstrap";
+import { AvatarStyle } from "avataaars";
 
 
 
 const HiringCandidate1 = (props) => {
     //added avatar and accessoriestype modeled after bias.jsx
-    const { actions, avatar, accessoriesType, isModalActive, setModalActive} = props;
+    const { actions, avatar, accessoriesType} = props;
+    
     //default of modal set
-    setModalActive(false);
-   
-
-
+    const [isModalActive, setModalActive] = useState(false);
 
     useEffect(() => {
         actions.updateState(EXERCISE_PLAYING);
@@ -24,8 +23,11 @@ const HiringCandidate1 = (props) => {
 
     const handleContinue = () => {
 
-        if(accessoriesType!=="blank"){
-            isModalActive = true;
+        //looping thru avatars array
+        for (let i = 0; i < avatars.length; i++){
+            if(avatars[i]!=="blank"){
+                isModalActive = true;
+            }
         }
         //do the check for what avatar has the attributes. If avatar does have glasses, have isModalActive={true}, but set default to false
 
@@ -51,7 +53,8 @@ const HiringCandidate1 = (props) => {
                 {/*Added modal body*/}
 
                 <div>
-                    <Modal isOpen={isModalActive}>
+                    {/*Edited similar to playerboard file in imagine*/}
+                    <Modal isModalActive={isModalActive} setModalActive = {setModalActive}>
                         <ModalBody>
                             <div className="tw-p-5 tw-text-center">
                                 <h3>Are you sure you wish to select this avatar. The AI advises against it.
@@ -63,11 +66,11 @@ const HiringCandidate1 = (props) => {
                         </ModalBody>
                     </Modal>
                 </div>
-                <GridApplicants numApplicants={4} />
+                <GridApplicants numApplicants={4}/>
 
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
-                    onClick={handleContinue}
+                    onClick={_handleContinue => {if(isModalActive = true){setModalActive(true)}}}
                     key="confirm"
                 >                Continue
                 </button>
