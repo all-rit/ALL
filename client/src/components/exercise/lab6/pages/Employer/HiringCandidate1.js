@@ -33,7 +33,7 @@ const HiringCandidate1 = (props) => {
         navigate("/Lab6/Exercise/HiringCandidate2");
     }
     //change to avatars and setAvatars in line 25
-    const [avatars, setAvatars] = useState(null);
+    const [avatars, setAvatars] = useState([]);
 
     useState(()=>{
         accessoriesType === "user" ? setAvatars(avatar[0]?.accessories) : setAvatars(avatar?.accessories);
