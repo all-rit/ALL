@@ -8,7 +8,7 @@ import GridApplicants from "../../components/GridApplicants";
 import {Modal , ModalBody} from "reactstrap";
 import { AvatarStyle } from "avataaars";
 
-
+//make sure to have at least one avatar to
 
 const HiringCandidate1 = (props) => {
     //added avatar and accessoriestype modeled after bias.jsx
@@ -21,8 +21,11 @@ const HiringCandidate1 = (props) => {
         actions.updateState(EXERCISE_PLAYING);
     }, [actions]);
 
-    const handleContinue = () => {
+    //change to avatars and setAvatars in line 25
+    const [avatars, setAvatars] = useState([]);
 
+    const handleContinue = () => {
+     
         //looping thru avatars array
         for (let i = 0; i < avatars.length; i++){
             if(avatars[i]!=="blank"){
@@ -34,8 +37,7 @@ const HiringCandidate1 = (props) => {
         //redo line 29 as an array for avatars, then pass setavatars into gridapplicants. This part still confuses me
         navigate("/Lab6/Exercise/HiringCandidate2");
     }
-    //change to avatars and setAvatars in line 25
-    const [avatars, setAvatars] = useState([]);
+
 
     useState(()=>{
         accessoriesType === "user" ? setAvatars(avatar[0]?.accessories) : setAvatars(avatar?.accessories);
@@ -70,7 +72,7 @@ const HiringCandidate1 = (props) => {
 
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
-                    onClick={_handleContinue => {if(isModalActive = true){setModalActive(true)}}}
+                    onClick={handleContinue}
                     key="confirm"
                 >                Continue
                 </button>

@@ -6,13 +6,16 @@ import Avatar from 'avataaars';
 
 
 const GridApplicants = (props) => {
-	const {numApplicants, setAvatars}=props;
+	const {numApplicants, handelNext, biasType, setAvatars}=props;
 	const [currentFile, setCurrentFile] = useState([])
 	const [id, setId] = useState([])
+	const [isModalActive, setModalActive] = useState(false);
 
 	const gridImagesClassnames = clsx({
 		"tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ": true,
 	});
+
+	//equivalent to playerboard component?
 
 
 	//need to create a set applicant
@@ -26,6 +29,7 @@ const GridApplicants = (props) => {
 	},[numApplicants])
 
 
+/*Create another conditional. Figure out how to get it handled to carry the state up and down*/
 	const handleGridImage = useCallback((imgId) => {
 		if (id.length <= 3) {
 			setId(prevState => [...prevState, imgId])
@@ -34,6 +38,9 @@ const GridApplicants = (props) => {
 		if (currentFile.length <= 3 && !(id.includes(selectImg.id))) {
 			setCurrentFile((prevState => ([...prevState, selectImg])))
 			setAvatars((prevState => ([...prevState, selectImg])))
+		}
+		if (selectImg.ai == "false"){
+			this.props.handleGridImage(imgId.target.value);
 		}
 		else {
 			if (id?.includes(selectImg.id)) {
@@ -49,6 +56,8 @@ const GridApplicants = (props) => {
 	return (
 		<div className='gridApplicants tw-flex'>
 
+<Bias handleNext={handleNext} biasType={biasType} id = {id} isModalActive={isModalActive} setModalActive={setModalActive}/>
+
 			<div className='tw-mr-4'>
 				<ul className='gridApplicants-content tw-bg-bgwhite tw-mt-40'>
 					<li className='tw-p-4'>Gender</li>
@@ -62,7 +71,8 @@ const GridApplicants = (props) => {
 
 			<div className='tw-flex tw-gap-x-4'>			
 				{applicant?.map(data => (
-					<ul onClick={() => handleGridImage(data?.id)} className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${id.includes(data.id) ? 'tw-opacity-75 tw-border-solid tw-border-8' : ''}`}>
+					<ul onClick={() => {handleGridImage(data?.id)
+					}} className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${id.includes(data.id) ? 'tw-opacity-75 tw-border-solid tw-border-8' : ''}`}>
 						<Avatar
 						className='tw-w-40 tw-h-40' alt={data.name}                                         
 						avatarStyle='Square'
