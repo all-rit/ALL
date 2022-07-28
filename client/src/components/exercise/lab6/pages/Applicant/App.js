@@ -1,6 +1,6 @@
 import { useState } from "react";
 import QualQues from "../../../../quiz/components/QualQues";
-import "C:/Users/MrRob/ALL/ALL/client/src/components/quiz/App.css";
+import "../../../../../components/quiz/App.css";
 
 
 export default function App() {

@@ -1,7 +1,7 @@
 import React, {useEffect } from "react";
 import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
-import "C:/Users/MrRob/ALL/ALL/client/src/components/quiz/App.css";
+import "../../../../../components/quiz/App.css";
 import ReactDOM from 'react-dom';
 
 
