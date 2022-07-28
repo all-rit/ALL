@@ -5,7 +5,7 @@ import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import Applicant from "../../components/Applicant";
 import { Form } from "reactstrap";
 import GridApplicants from "../../components/GridApplicants";
-import {Modal , ModalBody} from "reactstrap";
+import {Modal , ModalBody,ModalFooter, Button} from "reactstrap";
 import { AvatarStyle } from "avataaars";
 
 //make sure to have at least one avatar to
@@ -32,22 +32,22 @@ const HiringCandidate1 = (props) => {
     }, [actions]);
 
     //change to avatars and setAvatars in line 25
-    const [avatars, setAvatars] = useState([]);
+    // const [avatars, setAvatars] = useState([]);
 
     const handleContinue = () => {
-
-        console.log(roundOfApplicants);
-
-        // if(selection.length > 0){
-        //     userAnswers.push(selection);
-        // }
-
+        if(selection.length > 0){
+            let answers = [];
+            setModalActive(true);
+            answers.push(selection);
+            setAnswers(answers);
+        }
 
         if(roundOfApplicants > 2){
             navigate("/Lab6/Exercise/AIReasoningQuestions");
         }
         else{
-            setRoundOfApplicants(roundOfApplicants + 1);
+            let roundCount = roundOfApplicants
+            setRoundOfApplicants(roundCount + 1);
         }
      
         //looping thru avatars array
@@ -73,7 +73,6 @@ const HiringCandidate1 = (props) => {
 
     //will not need the conditional, just put in line 46. Won't display as long as isModalActive is false
     return(
-        <Form>
             <div className="center-div">
                 <h2 className="playthrough__title">Choose your first Candidate!</h2>
                 <h2 className="cognitive_instructions">Click on their picture to select</h2>
@@ -82,35 +81,32 @@ const HiringCandidate1 = (props) => {
                 {/*Added modal body*/}
 
                 {/*Edited similar to playerboard file in imagine */}
-
-                {/* <div>  
-                    <Modal isModalActive={isModalActive} setModalActive = {setModalActive}>
-                        <ModalBody>
-                            <div className="tw-p-5 tw-text-center">
-                                <h3>Are you sure you wish to select this avatar? The AI advises against it.
-                                </h3>
-                            </div>
-
-                            <button btn btn-primary btn-xl text-uppercase leftButton>No - Back to Selection</button>
-                            <button btn btn-primary btn-xl text-uppercase rightButton>Yes - Submit Selection</button>
-                        </ModalBody>
-                    </Modal>
-                </div>  */}
+                <Modal isOpen={isModalActive} toggle={()=>{setModalActive(!isModalActive)}} >  
+                    <ModalBody>
+                        <div className="tw-p-5 tw-text-center">
+                            <h3>Are you sure you wish to select this avatar? The AI advises against it.
+                            </h3>
+                        </div>
+                    </ModalBody>
+                    <ModalFooter>
+                            <Button className="btn-primary" onClick={()=>{setModalActive(!isModalActive)}}>Yes - Submit Selection</Button>{' '}
+                            <Button className="btn-second" onClick={()=>{setModalActive(!isModalActive)}}>No - Back to Selection</Button>
+                    </ModalFooter>
+                </Modal>
 
                 {roundOfApplicants===0 &&
-                    <GridApplicants numApplicants={4} setSelection={setSelection} biasType={biasType}/>
+                    <GridApplicants numApplicants={4} setSelection={setSelection}/>
                 }
                 {roundOfApplicants===1 &&
-                    <GridApplicants numApplicants={4} setSelection={setSelection} biasType={biasType}/>
+                    <GridApplicants numApplicants={4} setSelection={setSelection} />
                 }
                 {roundOfApplicants===2 &&
-                    <GridApplicants numApplicants={4} setSelection={setSelection} biasType={biasType}/>
+                    <GridApplicants numApplicants={4} setSelection={setSelection} />
                 }
                 {roundOfApplicants===3 &&
-                    <GridApplicants numApplicants={4} setSelection={setSelection} biasType={biasType}/>
+                    <GridApplicants numApplicants={4} setSelection={setSelection} />
                 }
                 
-
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick={handleContinue}
@@ -118,7 +114,6 @@ const HiringCandidate1 = (props) => {
                 >                Continue
                 </button>
             </div>
-        </Form>
         );
     }
 

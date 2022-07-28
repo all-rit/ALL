@@ -1,16 +1,14 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import { danMockData } from '../../../mockData/danMockData'
 import clsx from "clsx";
-import Bias from './Bias';
 import createAvatarData from '../../../body/lab/GridImages/createAvatarData';
 import Avatar from 'avataaars';
 
 
 const GridApplicants = (props) => {
-	const {numApplicants, handleNext, biasType, setAvatars, setSelection}=props;
+	const {numApplicants, handleNext, biasType, setSelection}=props;
 	const [currentFile, setCurrentFile] = useState([])
 	const [id, setId] = useState([])
-	const [isModalActive, setModalActive] = useState(false);
 
 	const gridImagesClassnames = clsx({
 		"tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ": true,
@@ -29,10 +27,6 @@ const GridApplicants = (props) => {
 		setApplicant(avatarData.slice(0,numApplicants))
 	},[numApplicants])
 
-	// useEffect(()=>{
-	// 	setSelection(currentFile)
-	// }, [currentFile])
-
 
 
 /*Create another conditional. Figure out how to get it handled to carry the state up and down*/
@@ -43,7 +37,7 @@ const GridApplicants = (props) => {
 		const selectImg = danMockData.filter(img => img.id === imgId)?.[0]
 		if (currentFile.length <= 3 && !(id.includes(selectImg.id))) {
 			setCurrentFile((prevState => ([...prevState, selectImg])))
-			setAvatars((prevState => ([...prevState, selectImg])))
+			setSelection((prevState => ([...prevState, selectImg])))
 		}
 		if (selectImg.ai == "false"){
 			this.props.handleGridImage(imgId.target.value);
@@ -51,7 +45,7 @@ const GridApplicants = (props) => {
 		else {
 			if (id?.includes(selectImg.id)) {
 				setCurrentFile((prevState => prevState.filter(file => file.id !== selectImg.id)))
-				setAvatars((prevState => prevState.filter(file => file.id !== selectImg.id)))
+				setSelection((prevState => prevState.filter(file => file.id !== selectImg.id)))
 				setId((prevState => prevState.filter(id => id !== selectImg.id)))
 			}
 		}
@@ -61,9 +55,6 @@ const GridApplicants = (props) => {
 	console.log(currentFile, 'cF')
 	return (
 		<div className='gridApplicants tw-flex'>
-
-<Bias handleNext={handleNext} biasType={biasType} id = {id} isModalActive={isModalActive} setModalActive={setModalActive}/>
-
 			<div className='tw-mr-4'>
 				<ul className='gridApplicants-content tw-bg-bgwhite tw-mt-40'>
 					<li className='tw-p-4'>Gender</li>
