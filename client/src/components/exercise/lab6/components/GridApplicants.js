@@ -7,7 +7,7 @@ import Avatar from 'avataaars';
 
 
 const GridApplicants = (props) => {
-	const {numApplicants, handleNext, biasType, setAvatars}=props;
+	const {numApplicants, handleNext, biasType, setAvatars, setSelection}=props;
 	const [currentFile, setCurrentFile] = useState([])
 	const [id, setId] = useState([])
 	const [isModalActive, setModalActive] = useState(false);
@@ -28,6 +28,11 @@ const GridApplicants = (props) => {
 		let avatarData=createAvatarData(50)
 		setApplicant(avatarData.slice(0,numApplicants))
 	},[numApplicants])
+
+	// useEffect(()=>{
+	// 	setSelection(currentFile)
+	// }, [currentFile])
+
 
 
 /*Create another conditional. Figure out how to get it handled to carry the state up and down*/

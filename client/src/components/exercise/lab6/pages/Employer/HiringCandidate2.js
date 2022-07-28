@@ -27,8 +27,19 @@ const HiringCandidate2 = (props) => {
                 <h2 className="cognitive_instructions">Click on their picture to select</h2>
                 <h2 className="cognitive_instructions">Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”</h2>
 
-                <GridApplicants numApplicants={4}/>
-                
+             
+                {0===0 &&
+                    <GridApplicants numApplicants={4}/>
+                }
+                {0===0 &&
+                    <GridApplicants numApplicants={4}/>
+                }
+                {0===0 &&
+                    <GridApplicants numApplicants={4}/>
+                }
+                {0===0 &&
+                    <GridApplicants numApplicants={4}/>
+                }
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick={handleContinue}

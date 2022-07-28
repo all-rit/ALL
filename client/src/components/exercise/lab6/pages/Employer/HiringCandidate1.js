@@ -18,6 +18,12 @@ const HiringCandidate1 = (props) => {
     //added avatar and accessoriestype modeled after bias.jsx
     const { actions, avatar, accessoriesType, biasType} = props;
     
+    const [roundOfApplicants, setRoundOfApplicants] = useState(0);
+
+    const [selection, setSelection] = useState([]);
+
+    const [userAnswers, setAnswers] = useState([]);
+    
     //default of modal set
     const [isModalActive, setModalActive] = useState(false);
 
@@ -29,6 +35,20 @@ const HiringCandidate1 = (props) => {
     const [avatars, setAvatars] = useState([]);
 
     const handleContinue = () => {
+
+        console.log(roundOfApplicants);
+
+        // if(selection.length > 0){
+        //     userAnswers.push(selection);
+        // }
+
+
+        if(roundOfApplicants > 2){
+            navigate("/Lab6/Exercise/AIReasoningQuestions");
+        }
+        else{
+            setRoundOfApplicants(roundOfApplicants + 1);
+        }
      
         //looping thru avatars array
         // for (let i = 0; i < avatars.length; i++){
@@ -42,14 +62,14 @@ const HiringCandidate1 = (props) => {
         
         // isModalActive = true;
 
-        navigate("/Lab6/Exercise/Popup");
+      
+
+
     }
+    // useState(()=>{
+    //     accessoriesType === "user" ? setAvatars(avatar[0]?.accessories) : setAvatars(avatar?.accessories);
 
-
-    useState(()=>{
-        accessoriesType === "user" ? setAvatars(avatar[0]?.accessories) : setAvatars(avatar?.accessories);
-
-    },[avatar]);
+    // },[avatar]);
 
     //will not need the conditional, just put in line 46. Won't display as long as isModalActive is false
     return(
@@ -77,8 +97,19 @@ const HiringCandidate1 = (props) => {
                     </Modal>
                 </div>  */}
 
-
-                <GridApplicants numApplicants={4} biasType={biasType}/>
+                {roundOfApplicants===0 &&
+                    <GridApplicants numApplicants={4} setSelection={setSelection} biasType={biasType}/>
+                }
+                {roundOfApplicants===1 &&
+                    <GridApplicants numApplicants={4} setSelection={setSelection} biasType={biasType}/>
+                }
+                {roundOfApplicants===2 &&
+                    <GridApplicants numApplicants={4} setSelection={setSelection} biasType={biasType}/>
+                }
+                {roundOfApplicants===3 &&
+                    <GridApplicants numApplicants={4} setSelection={setSelection} biasType={biasType}/>
+                }
+                
 
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "
