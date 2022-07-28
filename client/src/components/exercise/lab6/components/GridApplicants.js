@@ -1,12 +1,13 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import { danMockData } from '../../../mockData/danMockData'
 import clsx from "clsx";
+import Bias from './Bias';
 import createAvatarData from '../../../body/lab/GridImages/createAvatarData';
 import Avatar from 'avataaars';
 
 
 const GridApplicants = (props) => {
-	const {numApplicants, handelNext, biasType, setAvatars}=props;
+	const {numApplicants, handleNext, biasType, setAvatars}=props;
 	const [currentFile, setCurrentFile] = useState([])
 	const [id, setId] = useState([])
 	const [isModalActive, setModalActive] = useState(false);

@@ -32,6 +32,8 @@ import HiringCandidate2 from "./pages/Employer/HiringCandidate2";
 import HiringCandidate3 from "./pages/Employer/HiringCandidate3";
 import HiringCandidate4 from "./pages/Employer/HiringCandidate4";
 
+import Popup from "./pages/Employer/Popup";
+
 import AIReasoningQuestions from "./pages/Employer/AIReasoningQuestions";
 import AIReasoning from "./pages/Employer/AIReasoning";
 import AIRepair from "./pages/Employer/AIRepair";
@@ -82,6 +84,9 @@ class Main extends Component {
 
                     {/*Added hiringcandidate pgs */}
                     <HiringCandidate1 path="/HiringCandidate1" actions={actions}/>
+
+                    <Popup path="/Popup" actions={actions}/>
+
                     <HiringCandidate2 path="/HiringCandidate2" actions={actions}/>
                     <HiringCandidate3 path="/HiringCandidate3" actions={actions}/>
                     <HiringCandidate4 path="/HiringCandidate4" actions={actions}/>

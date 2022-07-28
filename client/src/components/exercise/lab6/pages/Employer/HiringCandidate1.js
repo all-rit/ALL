@@ -10,9 +10,13 @@ import { AvatarStyle } from "avataaars";
 
 //make sure to have at least one avatar to
 
+
+
+//equivalent to matchlobby
+
 const HiringCandidate1 = (props) => {
     //added avatar and accessoriestype modeled after bias.jsx
-    const { actions, avatar, accessoriesType} = props;
+    const { actions, avatar, accessoriesType, biasType} = props;
     
     //default of modal set
     const [isModalActive, setModalActive] = useState(false);
@@ -27,15 +31,18 @@ const HiringCandidate1 = (props) => {
     const handleContinue = () => {
      
         //looping thru avatars array
-        for (let i = 0; i < avatars.length; i++){
-            if(avatars[i]!=="blank"){
-                isModalActive = true;
-            }
-        }
+        // for (let i = 0; i < avatars.length; i++){
+        //     if(avatars[i]!=="blank"){
+        //         isModalActive = true;
+        //     }
+        // }
         //do the check for what avatar has the attributes. If avatar does have glasses, have isModalActive={true}, but set default to false
 
         //redo line 29 as an array for avatars, then pass setavatars into gridapplicants. This part still confuses me
-        navigate("/Lab6/Exercise/HiringCandidate2");
+        
+        // isModalActive = true;
+
+        navigate("/Lab6/Exercise/Popup");
     }
 
 
@@ -54,12 +61,13 @@ const HiringCandidate1 = (props) => {
 
                 {/*Added modal body*/}
 
-                <div>
-                    {/*Edited similar to playerboard file in imagine*/}
+                {/*Edited similar to playerboard file in imagine */}
+
+                {/* <div>  
                     <Modal isModalActive={isModalActive} setModalActive = {setModalActive}>
                         <ModalBody>
                             <div className="tw-p-5 tw-text-center">
-                                <h3>Are you sure you wish to select this avatar. The AI advises against it.
+                                <h3>Are you sure you wish to select this avatar? The AI advises against it.
                                 </h3>
                             </div>
 
@@ -67,8 +75,10 @@ const HiringCandidate1 = (props) => {
                             <button btn btn-primary btn-xl text-uppercase rightButton>Yes - Submit Selection</button>
                         </ModalBody>
                     </Modal>
-                </div>
-                <GridApplicants numApplicants={4}/>
+                </div>  */}
+
+
+                <GridApplicants numApplicants={4} biasType={biasType}/>
 
                 <button
                     className="btn btn-primary text-black btn-xl text-uppercase "

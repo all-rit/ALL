@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Timer from "./Timer";
+// import Timer from "./Timer";
 import {Modal , ModalBody} from "reactstrap";
 
 const Bias = (props) =>{
     const {handleNext,biasType,team,avatar,offender,isModalActive,setModalActive} = props;
-    const [timerDone, setTimerDone] = useState(false);
+    // const [timerDone, setTimerDone] = useState(false);
     const [bias,setBias] = useState(null);
 
     useState(()=>{
@@ -15,7 +15,7 @@ const Bias = (props) =>{
         handleNext();
     }
     const penaltyFinished = () => {
-        setTimerDone(true);
+        // setTimerDone(true);
         setModalActive(false);
         onExit()
     };
@@ -23,25 +23,29 @@ const Bias = (props) =>{
     if(biasType!=="none"){
         return(
             <div>
-                <Modal isOpen={isModalActive}>  
+                <Modal isOpen={isModalActive}>
                     <ModalBody>
                         <div className="tw-p-5 tw-text-center">
                             {biasType ==="user"?<h3>
-                                Your avatar was not recommended by the AIto play because the {bias}.
+                                Are you sure you want to select that/those applicant(s)?
                             </h3>:
                             <h3>
                             </h3>
                             }
                         </div>
+                        
+                        <div onClick={onExit}>
+                            <button>  
+                                Next 
+                            </button>
+                        </div>
+
                         {/* <div>
                             <Timer seconds={30} finished={penaltyFinished}/>
-                        </div> */}
-                        {/* <div>
-                        
-                            timerDone? <button className="btn btn-primary text-black btn-xl text-uppercase"
-                             onClick={onExit}>Next</button>:<></>
-                        }
-                        </div> */}
+                        </div> /}
+                        {/ <div>
+
+                            timerDone? <button className="btn btn-primary text-black btn-xl text-uppercase" */}
                     </ModalBody>
                 </Modal>
                 {/* change to any number */}
