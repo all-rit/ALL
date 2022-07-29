@@ -8,13 +8,12 @@ import GridApplicants from "../../components/GridApplicants";
 import {Modal , ModalBody,ModalFooter, Button} from "reactstrap";
 import { AvatarStyle } from "avataaars";
 
-//make sure to have at least one avatar to
 
+//need to make sure that only when at least one avatar with glasses are selected that the modal appears
+//modal doesn't appear for the last hiring candidate selection; needs to
+//need to make the bias against the glasses editable, so that when someone edits the table later the bias can change here as well
 
-
-//equivalent to matchlobby
-
-const HiringCandidate1 = (props) => {
+const HiringCandidate = (props) => {
     //added avatar and accessoriestype modeled after bias.jsx
     const { actions, avatar, accessoriesType, biasType} = props;
     
@@ -61,9 +60,6 @@ const HiringCandidate1 = (props) => {
         //redo line 29 as an array for avatars, then pass setavatars into gridapplicants. This part still confuses me
         
         // isModalActive = true;
-
-      
-
 
     }
     // useState(()=>{
@@ -121,4 +117,4 @@ const HiringCandidate1 = (props) => {
 
 
 
-export default HiringCandidate1;
+export default HiringCandidate;

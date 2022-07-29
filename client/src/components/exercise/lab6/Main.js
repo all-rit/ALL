@@ -27,10 +27,8 @@ import EmployerStart from "./pages/Employer/EmployerStart";
 
 import FavorableHiringCandidate from "./pages/Employer/FavorableHiringCandidate"; 
 
-import HiringCandidate1 from "./pages/Employer/HiringCandidate1";
-import HiringCandidate2 from "./pages/Employer/HiringCandidate2";
-import HiringCandidate3 from "./pages/Employer/HiringCandidate3";
-import HiringCandidate4 from "./pages/Employer/HiringCandidate4";
+import HiringCandidate from "./pages/Employer/HiringCandidate";
+
 
 import Popup from "./pages/Employer/Popup";
 
@@ -83,13 +81,11 @@ class Main extends Component {
                     <FavorableHiringCandidate path = "/FavorableHiringCandidate" actions={actions}/>
 
                     {/*Added hiringcandidate pgs */}
-                    <HiringCandidate1 path="/HiringCandidate1" actions={actions}/>
+                    <HiringCandidate path="/HiringCandidate" actions={actions}/>
 
                     <Popup path="/Popup" actions={actions}/>
 
-                    <HiringCandidate2 path="/HiringCandidate2" actions={actions}/>
-                    <HiringCandidate3 path="/HiringCandidate3" actions={actions}/>
-                    <HiringCandidate4 path="/HiringCandidate4" actions={actions}/>
+                    
 
                     <AIReasoningQuestions path="/AIReasoningQuestions" actions={actions}/>
                     <AIReasoning path="/AIReasoning" actions={actions}/>
