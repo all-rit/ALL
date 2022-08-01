@@ -9,7 +9,7 @@ import {Modal , ModalBody,ModalFooter, Button} from "reactstrap";
 import { AvatarStyle } from "avataaars";
 
 
-//need to make sure that only when at least one avatar with glasses are selected that the modal appears
+//need to make sure that only when the AI doesn't recommend them and that when they are selected that the modal appears
 //modal doesn't appear for the last hiring candidate selection; needs to
 //need to make the bias against the glasses editable, so that when someone edits the table later the bias can change here as well
 

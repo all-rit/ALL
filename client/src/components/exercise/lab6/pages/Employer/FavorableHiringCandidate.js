@@ -15,7 +15,7 @@ const FavorableHiringCandidate = (props) =>{
     },[actions]);
 
     const handleStart = () =>{
-        navigate("/Lab6/Exercise/HiringCandidate1");
+        navigate("/Lab6/Exercise/HiringCandidate");
     }
     
     return(
