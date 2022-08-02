@@ -33,6 +33,23 @@ const HiringCandidate = (props) => {
     //change to avatars and setAvatars in line 25
     // const [avatars, setAvatars] = useState([]);
 
+    const handleYes = () => {
+        let roundCount = roundOfApplicants
+        setRoundOfApplicants(roundCount + 1)
+        setModalActive(!isModalActive)
+    }
+
+       
+    const handleNo = () => {
+        let roundCount = roundOfApplicants
+        setRoundOfApplicants(roundCount + 0) 
+        setModalActive(!isModalActive)
+    }   
+
+        
+
+    
+
     const handleContinue = () => {
         if(selection.length > 0){
             let answers = [];
@@ -44,10 +61,10 @@ const HiringCandidate = (props) => {
         if(roundOfApplicants > 2){
             navigate("/Lab6/Exercise/AIReasoningQuestions");
         }
-        else{
-            let roundCount = roundOfApplicants
-            setRoundOfApplicants(roundCount + 1);
-        }
+        // else{
+        //     let roundCount = roundOfApplicants
+        //     setRoundOfApplicants(roundCount + 1);
+        // }
      
         //looping thru avatars array
         // for (let i = 0; i < avatars.length; i++){
@@ -85,8 +102,8 @@ const HiringCandidate = (props) => {
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                            <Button className="btn-primary" onClick={()=>{setModalActive(!isModalActive)}}>Yes - Submit Selection</Button>{' '}
-                            <Button className="btn-second" onClick={()=>{setModalActive(!isModalActive)}}>No - Back to Selection</Button>
+                            <Button className="btn-primary" onClick={handleYes}>Yes - Submit Selection</Button>{' '}
+                            <Button className="btn-second" onClick={handleNo}>No - Back to Selection</Button>
                     </ModalFooter>
                 </Modal>
 

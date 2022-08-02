@@ -25,6 +25,10 @@ const GridApplicants = (props) => {
 		setApplicant(avatarData.slice(0,numApplicants))
 	},[numApplicants])
 
+	useEffect(()=>{
+		setSelection(currentFile)
+	},[currentFile])
+
 
 	const handleGridImage = useCallback((imgId) => {
 		if (id.length <= 3) {
