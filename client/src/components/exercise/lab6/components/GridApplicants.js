@@ -39,9 +39,11 @@ const GridApplicants = (props) => {
 			setCurrentFile((prevState => ([...prevState, selectImg])))
 			setSelection((prevState => ([...prevState, selectImg])))
 		}
-		if (selectImg.ai == "false"){
-			this.props.handleGridImage(imgId.target.value);
-		}
+		// if (selectImg.ai == "false"){
+		// 	this.props.handleGridImage(imgId.target.value);
+		// }
+		//is buggy, but need to get ai recommendation tracked so then create an event with the modal footer
+
 		else {
 			if (id?.includes(selectImg.id)) {
 				setCurrentFile((prevState => prevState.filter(file => file.id !== selectImg.id)))
