@@ -128,7 +128,7 @@ const createAvatarData = (avatarNumber) =>{
 
     const Pay= [40,41,42,43,44,45,46,47,48,49,50]
 
-    const AI = ["True", "False"]
+    const AI = ["Yes", "No"]
 
     let avatarData =[];
     for (let i = 0; i < avatarNumber; i++) {

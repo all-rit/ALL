@@ -35,8 +35,17 @@ const HiringCandidate = (props) => {
 
     const handleYes = () => {
         let roundCount = roundOfApplicants
-        setRoundOfApplicants(roundCount + 1)
-        setModalActive(!isModalActive)
+        
+        if(roundOfApplicants > 2){
+            navigate("/Lab6/Exercise/AIReasoningQuestions");
+        }
+        else{
+            setRoundOfApplicants(roundCount + 1)
+            setModalActive(!isModalActive)
+
+
+        }
+
     }
 
        
@@ -58,9 +67,11 @@ const HiringCandidate = (props) => {
             setAnswers(answers);
         }
 
-        if(roundOfApplicants > 2){
-            navigate("/Lab6/Exercise/AIReasoningQuestions");
-        }
+        // if(.ai === "No"){
+        //     setModalActive(true);
+        // }
+
+       
         // else{
         //     let roundCount = roundOfApplicants
         //     setRoundOfApplicants(roundCount + 1);

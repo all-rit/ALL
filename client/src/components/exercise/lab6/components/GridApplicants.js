@@ -39,9 +39,7 @@ const GridApplicants = (props) => {
 			setCurrentFile((prevState => ([...prevState, selectImg])))
 			setSelection((prevState => ([...prevState, selectImg])))
 		}
-		// if (selectImg.ai == "false"){
-		// 	this.props.handleGridImage(imgId.target.value);
-		// }
+
 		//is buggy, but need to get ai recommendation tracked so then create an event with the modal footer
 
 		else {
@@ -72,6 +70,8 @@ const GridApplicants = (props) => {
 			<div className='tw-flex tw-gap-x-4'>			
 				{applicant?.map(data => (
 					<ul onClick={() => handleGridImage(data?.id)} className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${id.includes(data.id) ? 'tw-opacity-75 tw-border-solid tw-border-8' : ''}`}>
+				
+						
 						<Avatar
 						className='tw-w-40 tw-h-40' alt={data.name}                                         
 						avatarStyle='Square'
@@ -92,6 +92,10 @@ const GridApplicants = (props) => {
 						<li className='tw-p-4'>{data?.pay}</li>
 						<li className='tw-p-4'>{data?.ai}</li>
 					</ul>
+
+					
+
+
 				))
 				}
 
