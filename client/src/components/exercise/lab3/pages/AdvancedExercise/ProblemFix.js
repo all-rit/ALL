@@ -17,39 +17,39 @@ import Snackbar from "@material-ui/core/Snackbar";
 import { amber, green, red, yellow } from "@material-ui/core/colors";
 import CodeUpdateHeader from "../../components/CodeUpdateHeader";
 import Paper from "@material-ui/core/Paper";
-import {EXERCISE_PLAYING} from "../../../../../constants/lab3/index";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
 const variantIcon = {
   success: CheckCircleIcon,
   warning: WarningIcon,
   error: ErrorIcon,
-  info: InfoIcon
+  info: InfoIcon,
 };
 
 function MySnackbarContentWrapper(props) {
   const classes = {
     success: {
-      backgroundColor: green[600]
+      backgroundColor: green[600],
     },
     error: {
-      backgroundColor: red
+      backgroundColor: red,
     },
     info: {
-      backgroundColor: yellow
+      backgroundColor: yellow,
     },
     warning: {
-      backgroundColor: amber[700]
+      backgroundColor: amber[700],
     },
     icon: {
-      fontSize: 10
+      fontSize: 10,
     },
     iconVariant: {
-      opacity: 0.9
+      opacity: 0.9,
     },
     message: {
       display: "flex",
-      alignItems: "center"
-    }
+      alignItems: "center",
+    },
   };
   const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
@@ -79,7 +79,7 @@ function MySnackbarContentWrapper(props) {
           onClick={onClose}
         >
           <CloseIcon className={classes.icon} />
-        </IconButton>
+        </IconButton>,
       ]}
       {...other}
     />
@@ -90,7 +90,7 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired
+  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 
 class ProblemFix extends Component {
@@ -112,11 +112,11 @@ class ProblemFix extends Component {
       window.location.state = {
         endAdvancedActivityButtonEnabled: true,
         aria1: window.location.state.aria1,
-        aria2: window.location.state.aria2
+        aria2: window.location.state.aria2,
       };
       this.state = {
         textValue: window.location.state.aria1,
-        textValue1: window.location.state.aria2
+        textValue1: window.location.state.aria2,
       };
     }
   }
@@ -174,7 +174,7 @@ class ProblemFix extends Component {
     ) {
       window.location.state = {
         aria1: this.state.textValue,
-        aria2: this.state.textValue1
+        aria2: this.state.textValue1,
       };
       navigate("/Lab3/Exercise/ViewFix");
     } else if (this.state.textValue === "" || this.state.textValue1 === "") {
@@ -182,7 +182,7 @@ class ProblemFix extends Component {
     } else {
       window.location.state = {
         aria1: this.state.textValue,
-        aria2: this.state.textValue1
+        aria2: this.state.textValue1,
       };
       navigate("/Lab3/Exercise/ViewFix");
     }
@@ -218,9 +218,9 @@ class ProblemFix extends Component {
     const paperStyle = {
       marginLeft: "10px",
       marginRight: "10px",
-      marginTop: "20px"
+      marginTop: "20px",
     };
-    
+
     return (
       <div>
         <CodeUpdateHeader
@@ -292,7 +292,7 @@ class ProblemFix extends Component {
             type={"submit"}
             aria-label={"Update Code"}
             variant={"contained"}
-            className = "btn btn-second btn-xl text-uppercase  leftButton"
+            className="btn btn-second btn-xl text-uppercase  leftButton"
           >
             Update Code
           </Button>
@@ -301,7 +301,7 @@ class ProblemFix extends Component {
         <Snackbar
           anchorOrigin={{
             vertical: "bottom",
-            horizontal: "left"
+            horizontal: "left",
           }}
           open={this.state.open}
           autoHideDuration={6000}

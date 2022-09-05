@@ -15,38 +15,38 @@ import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import Link from "@material-ui/core/Link";
 import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING} from "../../../../../constants/lab3/index";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 const variantIcon = {
   success: CheckCircleIcon,
   warning: WarningIcon,
   error: ErrorIcon,
-  info: InfoIcon
+  info: InfoIcon,
 };
 
 function MySnackbarContentWrapper(props) {
   const classes = {
     success: {
-      backgroundColor: green[600]
+      backgroundColor: green[600],
     },
     error: {
-      backgroundColor: red
+      backgroundColor: red,
     },
     info: {
-      backgroundColor: yellow
+      backgroundColor: yellow,
     },
     warning: {
-      backgroundColor: amber[700]
+      backgroundColor: amber[700],
     },
     icon: {
-      fontSize: 10
+      fontSize: 10,
     },
     iconVariant: {
-      opacity: 0.9
+      opacity: 0.9,
     },
     message: {
       display: "flex",
-      alignItems: "center"
-    }
+      alignItems: "center",
+    },
   };
   const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
@@ -76,7 +76,7 @@ function MySnackbarContentWrapper(props) {
           onClick={onClose}
         >
           <CloseIcon className={classes.icon} />
-        </IconButton>
+        </IconButton>,
       ]}
       {...other}
     />
@@ -87,16 +87,16 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired
+  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 class ProblemExplanation extends Component {
   handleSubmit() {
     navigate("/Lab3/Exercise/ProblemFix");
   }
-    componentDidMount() {
-        const { actions } = this.props;
-        actions.updateState(EXERCISE_PLAYING);
-    }
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
+  }
   render() {
     const textToSpeech = (e, text) => {
       let synth = window.speechSynthesis;
@@ -104,10 +104,10 @@ class ProblemExplanation extends Component {
       let utterThis = new SpeechSynthesisUtterance(text);
       synth.speak(utterThis);
     };
-    
+
     return (
       <div>
-          <AppBar position="static" className = "appBar">
+        <AppBar position="static" className="appBar">
           <Toolbar>
             <Grid justify="center" container spacing={10}>
               <Grid item>
@@ -130,7 +130,9 @@ class ProblemExplanation extends Component {
           aria-label={"Subtitle Instructions"}
           gutterBottom
           tabindex={"0"}
-          onFocus={(e) => textToSpeech(e, "How do we make the page more accessible?")}
+          onFocus={(e) =>
+            textToSpeech(e, "How do we make the page more accessible?")
+          }
         >
           How do we make the page more accessible?
         </Typography>
@@ -141,7 +143,12 @@ class ProblemExplanation extends Component {
           paragraph={true}
           gutterBottom
           tabindex={"0"}
-          onFocus={(e) => textToSpeech(e, "The problem with the page is that we do not have the required ARIA attributes that make the buttons accessible. They cannot be effectively described by the screenreaders. Specifically, we do not have the aria-label attribute that screenreaders can make use of to read text effectively.")}
+          onFocus={(e) =>
+            textToSpeech(
+              e,
+              "The problem with the page is that we do not have the required ARIA attributes that make the buttons accessible. They cannot be effectively described by the screenreaders. Specifically, we do not have the aria-label attribute that screenreaders can make use of to read text effectively."
+            )
+          }
         >
           The problem with the page is that we do not have the required ARIA
           attributes that make the buttons accessible. They cannot be
@@ -156,11 +163,16 @@ class ProblemExplanation extends Component {
           paragraph={true}
           gutterBottom
           tabindex={"0"}
-          onFocus={(e) => textToSpeech(e, "As per developer.mozilla.org " + 
-          "The aria-label attribute is used to define a string " + 
-          "that labels the current element. Use it in cases where a text label is not visible on the screen. " + 
-          "If there is visible text labeling the element, use aria-labelled by instead. This attribute can be " + 
-          "used with any typical HTML element; it is not limited to elements that have an ARIA role assigned.")}
+          onFocus={(e) =>
+            textToSpeech(
+              e,
+              "As per developer.mozilla.org " +
+                "The aria-label attribute is used to define a string " +
+                "that labels the current element. Use it in cases where a text label is not visible on the screen. " +
+                "If there is visible text labeling the element, use aria-labelled by instead. This attribute can be " +
+                "used with any typical HTML element; it is not limited to elements that have an ARIA role assigned."
+            )
+          }
         >
           As per{" "}
           <Link
@@ -183,14 +195,21 @@ class ProblemExplanation extends Component {
           assigned.
         </Typography>
         <br />
-        <Button variant={"text"} onFocus={(e) => textToSpeech(e, "Ok button")}>Ok</Button>
-        <Button variant={"text"} onFocus={(e) => textToSpeech(e, "Cancel button")}>Cancel</Button>
+        <Button variant={"text"} onFocus={(e) => textToSpeech(e, "Ok button")}>
+          Ok
+        </Button>
+        <Button
+          variant={"text"}
+          onFocus={(e) => textToSpeech(e, "Cancel button")}
+        >
+          Cancel
+        </Button>
         <br />
         <Button
           href="#"
           onClick={this.handleSubmit}
           variant={"contained"}
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          className="btn btn-second btn-xl text-uppercase  leftButton"
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next

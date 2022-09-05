@@ -7,15 +7,18 @@ import { actions as exerciseActions } from "../../../../reducers/lab5/ExerciseRe
 import AppInstructions from "../components/AppInstructions";
 import { navigate } from "@reach/router";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     // General
-    user: state.main.user
+    user: state.main.user,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...mainActions, ...exerciseActions }, dispatch)
+    actions: bindActionCreators(
+      { ...mainActions, ...exerciseActions },
+      dispatch
+    ),
   };
 };
 
@@ -29,20 +32,18 @@ class ExerciseStart extends Component {
   render() {
     // const { user, state, plays } = this.props;
     const buttonStyleLeft = {
-      marginTop:10,
-      marginRight:2
+      marginTop: 10,
+      marginRight: 2,
     };
     const buttonStyleRight = {
-      marginTop:10,
-      marginLeft:2
+      marginTop: 10,
+      marginLeft: 2,
     };
     return (
-      
       <Fragment>
-
         <div className="center-div">
           <AppInstructions />
-          
+
           <Button
             href="#"
             onClick={this.handleSubmit}

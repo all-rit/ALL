@@ -13,31 +13,31 @@ import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.sv
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
-import {PageService} from "../../../../../services/PageService";
+import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
+import { PageService } from "../../../../../services/PageService";
 
 class ProblemDiscoveryFixedExperience extends Component {
   handleSubmit() {
     const name = "ProblemDiscoveryFixed";
     PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-    navigate( "/Lab3/Exercise/ProblemExplanation");
+    navigate("/Lab3/Exercise/ProblemExplanation");
   }
-    componentDidMount() {
-        const { actions } = this.props;
-        actions.updateState(EXERCISE_PLAYING);
-        this.interval = setInterval(
-            () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-            1000
-        );
-    }
-    constructor(props) {
-        super(props);
-        this.state = { render: "", secondsElapsed: 0 };
-    }
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
+    this.interval = setInterval(
+      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
+      1000
+    );
+  }
+  constructor(props) {
+    super(props);
+    this.state = { render: "", secondsElapsed: 0 };
+  }
 
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
   render() {
     const textToSpeech = (e, text) => {
       let synth = window.speechSynthesis;
@@ -53,20 +53,20 @@ class ProblemDiscoveryFixedExperience extends Component {
       tabIndex: "0",
       backgroundColor: "#EFEFEF",
       verticalAlign: "middle",
-      padding: "5px"
+      padding: "5px",
     };
 
     const tableStyle = {
-        border: "1px solid black",
-        marginLeft: "auto",
-        marginRight: "auto",
-        textAlign: "center",
-        marginBottom: "1rem"
+      border: "1px solid black",
+      marginLeft: "auto",
+      marginRight: "auto",
+      textAlign: "center",
+      marginBottom: "1rem",
     };
-    
+
     return (
       <div>
-          <AppBar position="static" className = "appBar">
+        <AppBar position="static" className="appBar">
           <Toolbar>
             <Grid justify="center" container spacing={10}>
               <Grid item>
@@ -75,7 +75,9 @@ class ProblemDiscoveryFixedExperience extends Component {
                   aria-label={"Discover the problem"}
                   tabIndex={"0"}
                   gutterBottom
-                  onFocus={(e) => textToSpeech(e, "Repaired version of previous page.")}
+                  onFocus={(e) =>
+                    textToSpeech(e, "Repaired version of previous page.")
+                  }
                 >
                   Repaired Version of Previous Page
                 </Typography>
@@ -89,7 +91,12 @@ class ProblemDiscoveryFixedExperience extends Component {
           aria-label={"Subtitle Instructions"}
           gutterBottom
           tabindex={"0"}
-          onFocus={(e) => textToSpeech(e, "The accessibility issues have been repaired here. All images say what their contents are as such like 'cat', 'burger' and 'car' etc. and not 'image of cat', 'image of burger', 'image of car' etc. . Try using your screenreader now.")}
+          onFocus={(e) =>
+            textToSpeech(
+              e,
+              "The accessibility issues have been repaired here. All images say what their contents are as such like 'cat', 'burger' and 'car' etc. and not 'image of cat', 'image of burger', 'image of car' etc. . Try using your screenreader now."
+            )
+          }
         >
           The accessibility issues have been repaired here. All images say what
           their contents are as such like 'cat', 'burger' and 'car' etc. and not
@@ -98,49 +105,57 @@ class ProblemDiscoveryFixedExperience extends Component {
         </Typography>
         <br />
         <table style={tableStyle} className={"center"}>
-            <tbody>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={catImage}
-                            alt={"cat"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "cat")}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={carImage}
-                            alt={"car"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "car")}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={burgerImage}
-                            alt={"burger"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "burger")}
-                        />
-                    </td>
-                </tr>
-            </tbody>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  style={imgStyle}
+                  type={"image"}
+                  src={catImage}
+                  alt={"cat"}
+                  tabIndex={"0"}
+                  onFocus={(e) => textToSpeech(e, "cat")}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  style={imgStyle}
+                  type={"image"}
+                  src={carImage}
+                  alt={"car"}
+                  tabIndex={"0"}
+                  onFocus={(e) => textToSpeech(e, "car")}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  style={imgStyle}
+                  type={"image"}
+                  src={burgerImage}
+                  alt={"burger"}
+                  tabIndex={"0"}
+                  onFocus={(e) => textToSpeech(e, "burger")}
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
-        <Button variant={"text"} aria-label={"Ok"} onFocus={(e) => textToSpeech(e, "ok")}>
+        <Button
+          variant={"text"}
+          aria-label={"Ok"}
+          onFocus={(e) => textToSpeech(e, "ok")}
+        >
           Ok
         </Button>
-        <Button variant={"text"} aria-label={"Cancel"} onFocus={(e) => textToSpeech(e, "cancel")}>
+        <Button
+          variant={"text"}
+          aria-label={"Cancel"}
+          onFocus={(e) => textToSpeech(e, "cancel")}
+        >
           Cancel
         </Button>
         <br />
@@ -148,7 +163,7 @@ class ProblemDiscoveryFixedExperience extends Component {
           href="#"
           onClick={this.handleSubmit.bind(this)}
           variant={"contained"}
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          className="btn btn-second btn-xl text-uppercase  leftButton"
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next

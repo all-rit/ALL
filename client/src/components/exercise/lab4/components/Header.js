@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <Toolbar>
         <Grid justify="space-between" container spacing={10}>
-          <Grid item/>
+          <Grid item />
         </Grid>
       </Toolbar>
     );

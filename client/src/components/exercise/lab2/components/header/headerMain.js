@@ -9,7 +9,6 @@ Component for the header of the pages. Controls the buttons and options
 displayed to the users on each page of the appilcation
 */
 class Header extends Component {
-
   render() {
     const {
       exerciseState,
@@ -28,7 +27,7 @@ class Header extends Component {
       openSecondInfoState,
       thirdInfoState,
       exerciseMode,
-      endSystem
+      endSystem,
     } = this.props;
 
     const backButton = () => {
@@ -79,46 +78,44 @@ class Header extends Component {
                   fontSizing={"25px"}
                 />
               ) : (
+                <div>
+                  {firstExercise ? null : (
                     <div>
-                      {firstExercise ? null : (
-                        <div>
-                          {colorChange ? (
-                            <div className="inlineForm">
-                              <Button
-                                clickMethod={backButton}
-                                message={"Back"}
-                                className="backButton btn btn-second btn-xl text-uppercase"
-                                fontSizing={"25px"}
-                              />
-                              <p
-                                className="mainColor secondTitle"
-                                style={{
-                                  marginTop: "15px",
-                                  marginLeft: "25px",
-                                  background: "rgba(38,38,38,1)"
-                                }}
-                              >
-                                Adjust the colors below to be in better color
-                                contrast
-                              </p>
-                            </div>
-                          ) : (
-                            <div className="oneline">
-                              <div>
-                                {exercisesPlayed > 1 &&
-                                !thirdInfoState &&
-                                !endSystem ? (
-                                  <ColorUpdate
-                                    openColorChange={openColorChange}
-                                  />
-                                ) : null}
-                              </div>
-                              <div></div>
-                            </div>
-                          )}
+                      {colorChange ? (
+                        <div className="inlineForm">
+                          <Button
+                            clickMethod={backButton}
+                            message={"Back"}
+                            className="backButton btn btn-second btn-xl text-uppercase"
+                            fontSizing={"25px"}
+                          />
+                          <p
+                            className="mainColor secondTitle"
+                            style={{
+                              marginTop: "15px",
+                              marginLeft: "25px",
+                              background: "rgba(38,38,38,1)",
+                            }}
+                          >
+                            Adjust the colors below to be in better color
+                            contrast
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="oneline">
+                          <div>
+                            {exercisesPlayed > 1 &&
+                            !thirdInfoState &&
+                            !endSystem ? (
+                              <ColorUpdate openColorChange={openColorChange} />
+                            ) : null}
+                          </div>
+                          <div></div>
                         </div>
                       )}
                     </div>
+                  )}
+                </div>
               )}
             </div>
           )}

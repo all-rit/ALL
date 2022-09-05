@@ -5,70 +5,71 @@
   position: absolute;
   left: 25%;
 }
-.inputHover:focus{
+.inputHover:focus {
   outline: 2px solid #97bfff;
 }
-.inputHover{
+.inputHover {
   width: 80px;
   background-color: #f8f9fa;
   border: none;
   margin-right: 5px;
 }
-.formButtonSubmit{
+.formButtonSubmit {
   background-color: #5a6268 !important;
   width: 100px !important;
   color: white !important;
   font-weight: bold !important;
-  display:inline-block !important;
+  display: inline-block !important;
 }
-.formButtonHelp{
+.formButtonHelp {
   background-color: #dc3545 !important;
   width: 100px !important;
   color: white !important;
   font-weight: bold !important;
-  display:inline-block !important;
+  display: inline-block !important;
 }
-.disabled{
-  opacity:50% !important;
+.disabled {
+  opacity: 50% !important;
 }
 a.skip-main {
-  position:absolute;
-  top:auto;
-  width:1px;
-  height:1px;
-  overflow:hidden;
-  z-index:-999;
+  position: absolute;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -999;
 }
-.formCompDexterity{
-  text-align:left;
+.formCompDexterity {
+  text-align: left;
   padding-top: 3%;
   padding-left: 30%;
   padding-right: 30%;
 }
-.formComp{
+.formComp {
   text-align: left;
-  margin:auto;
-  width:50%;
+  margin: auto;
+  width: 50%;
 }
-.form-error{
-  color:#fb3b3b;
+.form-error {
+  color: #fb3b3b;
 }
-.form-error-input{
-  border:1px solid #fb3b3b !important;
+.form-error-input {
+  border: 1px solid #fb3b3b !important;
 }
-a.skip-main:focus, a.skip-main:active {
+a.skip-main:focus,
+a.skip-main:active {
   color: black;
   font-weight: bold;
-  background-color:yellow;
-  left:0;
+  background-color: yellow;
+  left: 0;
   width: 30%;
   height: auto;
-  overflow:auto;
+  overflow: auto;
   margin: 10px 35%;
-  padding:5px;
+  padding: 5px;
   border-radius: 15px;
-  border:4px solid black;
-  text-align:center;
-  font-size:1.2em;
-  z-index:999;
+  border: 4px solid black;
+  text-align: center;
+  font-size: 1.2em;
+  z-index: 999;
 }

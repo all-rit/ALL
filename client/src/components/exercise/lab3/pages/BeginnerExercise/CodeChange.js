@@ -12,7 +12,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
-import {EXERCISE_PLAYING} from "../../../../../constants/lab3/index";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 import Repair from "../../components/Repair";
 import ExerciseButtons from "../../components/ExerciseButtons";
 import Popup from "../../../shared/Popup";
@@ -21,33 +21,33 @@ const variantIcon = {
   success: CheckCircleIcon,
   warning: WarningIcon,
   error: ErrorIcon,
-  info: InfoIcon
+  info: InfoIcon,
 };
 
 function MySnackbarContentWrapper(props) {
   const classes = {
     success: {
-      backgroundColor: green[600]
+      backgroundColor: green[600],
     },
     error: {
-      backgroundColor: red
+      backgroundColor: red,
     },
     info: {
-      backgroundColor: yellow
+      backgroundColor: yellow,
     },
     warning: {
-      backgroundColor: amber[700]
+      backgroundColor: amber[700],
     },
     icon: {
-      fontSize: 10
+      fontSize: 10,
     },
     iconVariant: {
-      opacity: 0.9
+      opacity: 0.9,
     },
     message: {
       display: "flex",
-      alignItems: "center"
-    }
+      alignItems: "center",
+    },
   };
   const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
@@ -77,7 +77,7 @@ function MySnackbarContentWrapper(props) {
           onClick={onClose}
         >
           <CloseIcon className={classes.icon} />
-        </IconButton>
+        </IconButton>,
       ]}
       {...other}
     />
@@ -88,7 +88,7 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired
+  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 
 class CodeChange extends Component {
@@ -107,17 +107,15 @@ class CodeChange extends Component {
   }
 
   render() {
-    const {
-      data, actions
-    } = this.props;
+    const { data, actions } = this.props;
     return (
       <div>
         <CodeUpdateHeader
-            heading={"Make Code Changes"}
-            justifyAlignment={"space-between"}
+          heading={"Make Code Changes"}
+          justifyAlignment={"space-between"}
         />
-        <div style={{display:'block', marginBottom:'10px'}}>
-        <Typography
+        <div style={{ display: "block", marginBottom: "10px" }}>
+          <Typography
             variant={"subtitle"}
             aria-label={
               "First make changes to the code, if not satisfied try again.\n" +
@@ -126,24 +124,27 @@ class CodeChange extends Component {
             }
             color={"inherit"}
             tabIndex={"0"}
-        >
-          First make changes to the code, if not satisfied try again. Then click
-          the 'End Activity' button, which will appear when you have made
-          changes at least once.
+          >
+            First make changes to the code, if not satisfied try again. Then
+            click the 'End Activity' button, which will appear when you have
+            made changes at least once.
           </Typography>
         </div>
-        <div style={{textAlign:'center'}}>
-          <Popup message={data.app3.popupMessage} handler={actions.updatePopup} />
+        <div style={{ textAlign: "center" }}>
+          <Popup
+            message={data.app3.popupMessage}
+            handler={actions.updatePopup}
+          />
           <Repair
             visible={data.repair3.repairVisible}
             data={data.repair3}
             handlers={actions}
-        />
-        <ExerciseButtons
+          />
+          <ExerciseButtons
             repairApplied={data.repair3.changesApplied}
             openRepairHandler={actions.openRepair}
             endEnabled={data.exercise3.end}
-        />
+          />
         </div>
       </div>
     );

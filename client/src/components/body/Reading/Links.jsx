@@ -5,25 +5,27 @@ import React from "react";
  * @param {data} props from the higher order component with site content
  * @returns rendered list of links to other sites
  */
-const Links = ({data})=> {
-    return(
-        <>  
-            <div className="link-component">
-                {data.map((data,index) =>  {
-                    return(
-                        <a className="link"
-                        key={index}
-                        href={data.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >
-                            {data.name === null || data.name === undefined? data.link : data.name }
-                        </a>
-                    )
-                })
-                }
-            </div>
-        </>
-    );
-}
+const Links = ({ data }) => {
+  return (
+    <>
+      <div className="link-component">
+        {data.map((data, index) => {
+          return (
+            <a
+              className="link"
+              key={index}
+              href={data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {data.name === null || data.name === undefined
+                ? data.link
+                : data.name}
+            </a>
+          );
+        })}
+      </div>
+    </>
+  );
+};
 export default Links;

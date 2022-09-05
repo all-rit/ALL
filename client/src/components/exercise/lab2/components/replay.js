@@ -11,7 +11,7 @@ class Replay extends Component {
     super(props);
     this.state = {
       scorePopup: false,
-      exerciseMode: null
+      exerciseMode: null,
     };
   }
 

@@ -58,89 +58,89 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Main extends Component {
-	render() {
-		const {
-			user,
-			popupMessage,
-			instructionsVisible,
+  render() {
+    const {
+      user,
+      popupMessage,
+      instructionsVisible,
 
-			state,
-			plays,
-			results,
-			time,
-			roundTime,
-			countdownTime,
-			score,
-			roundNumber,
-			correctAnswers,
-			incorrectAnswers,
-			boxes,
-			correctBoxNumber,
-			boxRevealed,
-			hintBoxStatus,
-			hintUsed,
-			soundEnabled,
-			congratulationMessage,
+      state,
+      plays,
+      results,
+      time,
+      roundTime,
+      countdownTime,
+      score,
+      roundNumber,
+      correctAnswers,
+      incorrectAnswers,
+      boxes,
+      correctBoxNumber,
+      boxRevealed,
+      hintBoxStatus,
+      hintUsed,
+      soundEnabled,
+      congratulationMessage,
 
-			availableMessage,
-			unavailableMessage,
-			availableBackgroundColor,
-			unavailableBackgroundColor,
-			currentTab,
-			repairVisible,
-			changesApplied,
+      availableMessage,
+      unavailableMessage,
+      availableBackgroundColor,
+      unavailableBackgroundColor,
+      currentTab,
+      repairVisible,
+      changesApplied,
 
-			actions
-		} = this.props;
+      actions,
+    } = this.props;
 
-		return (
-			<Fragment>
-				<SoundHeader
-					state={state}
-					plays={plays}
-					soundEnabled={soundEnabled}
-					toggleSoundHandler={actions.toggleSound}
-				/>
-				<Content
-					data={{
-						state,
-						plays,
-						results,
-						time,
-						roundTime,
-						countdownTime,
-						score,
-						roundNumber,
-						correctAnswers,
-						incorrectAnswers,
-						boxes,
-						correctBoxNumber,
-						boxRevealed,
-						hintBoxStatus,
-						hintUsed,
-						soundEnabled,
-						congratulationMessage,
-						availableMessage,
-						unavailableMessage,
-						availableBackgroundColor,
-						unavailableBackgroundColor,
-						currentTab,
-						repairVisible,
-						changesApplied
-					}}
-					handlers={actions}
-					user={user}
-				/>
+    return (
+      <Fragment>
+        <SoundHeader
+          state={state}
+          plays={plays}
+          soundEnabled={soundEnabled}
+          toggleSoundHandler={actions.toggleSound}
+        />
+        <Content
+          data={{
+            state,
+            plays,
+            results,
+            time,
+            roundTime,
+            countdownTime,
+            score,
+            roundNumber,
+            correctAnswers,
+            incorrectAnswers,
+            boxes,
+            correctBoxNumber,
+            boxRevealed,
+            hintBoxStatus,
+            hintUsed,
+            soundEnabled,
+            congratulationMessage,
+            availableMessage,
+            unavailableMessage,
+            availableBackgroundColor,
+            unavailableBackgroundColor,
+            currentTab,
+            repairVisible,
+            changesApplied,
+          }}
+          handlers={actions}
+          user={user}
+        />
 
-				<ExerciseInstructions
-					visible={instructionsVisible && state === EXERCISE_IDLE}
-					closeHandler={actions.closeInstructions}
-				/>
+        <ExerciseInstructions
+          visible={instructionsVisible && state === EXERCISE_IDLE}
+          closeHandler={actions.closeInstructions}
+        />
 
-				<Popup message={popupMessage} handler={actions.updatePopup} />
-			</Fragment>
-		);
-	}
+        <Popup message={popupMessage} handler={actions.updatePopup} />
+      </Fragment>
+    );
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

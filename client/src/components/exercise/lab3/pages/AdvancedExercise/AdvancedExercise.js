@@ -5,20 +5,20 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING} from "../../../../../constants/lab3/index";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
 class AdvancedExercise extends Component {
   handleSubmit() {
     navigate("/Lab3/Exercise/AdvancedInstructions");
   }
   componentDidMount() {
-      const { actions } = this.props;
-      actions.updateState(EXERCISE_PLAYING);
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
   }
   render() {
     return (
       <div>
-          <AppBar position="static" className = "appBar">
+        <AppBar position="static" className="appBar">
           <Toolbar>
             <Grid justify="center" container spacing={10}>
               <Grid item>
@@ -50,7 +50,7 @@ class AdvancedExercise extends Component {
           onClick={this.handleSubmit}
           variant={"contained"}
           aria-label={"Start Exercise"}
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          className="btn btn-second btn-xl text-uppercase  leftButton"
         >
           Start Exercise
         </Button>

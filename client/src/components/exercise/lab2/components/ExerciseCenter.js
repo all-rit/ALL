@@ -1,17 +1,29 @@
-import React, { Component } from 'react';
-import Exercise from './exercise.js';
+import React, { Component } from "react";
+import Exercise from "./exercise.js";
 
 /*
 Class for connecting the exercise component to the main system
 */
 class ExerciseCenter extends Component {
-
   //Renderer for the exercise page
   render() {
-    const {correctColor, incorrectColorOne, incorrectColorTwo, background,
-      exerciseOption, resetOption, onChangeExerciseColors, colors, resetColors,
-      selectOption, exerciseEnded, enterInfoState, enterSecondInfoState, exercisesPlayed,
-      enterThirdInfoState} = this.props;
+    const {
+      correctColor,
+      incorrectColorOne,
+      incorrectColorTwo,
+      background,
+      exerciseOption,
+      resetOption,
+      onChangeExerciseColors,
+      colors,
+      resetColors,
+      selectOption,
+      exerciseEnded,
+      enterInfoState,
+      enterSecondInfoState,
+      exercisesPlayed,
+      enterThirdInfoState,
+    } = this.props;
 
     return (
       <Exercise

@@ -8,17 +8,20 @@ class ExerciseButtons extends Component {
       repairApplied,
       openRepairHandler,
       openInstructionsHandler,
-      startExerciseHandler
+      startExerciseHandler,
     } = this.props;
     let startMessage = "Start";
     if (repairApplied) {
-      startMessage = 'Start with Repair Applied'
-    }
-    else if (plays>0){
-      startMessage = 'Next Play'
+      startMessage = "Start with Repair Applied";
+    } else if (plays > 0) {
+      startMessage = "Next Play";
     }
     const repairButton = (
-      <button className="btn btn-second btn-xl text-uppercase  leftButton" onClick={openRepairHandler} key="repair">
+      <button
+        className="btn btn-second btn-xl text-uppercase  leftButton"
+        onClick={openRepairHandler}
+        key="repair"
+      >
         Repair
       </button>
     );
@@ -42,11 +45,11 @@ class ExerciseButtons extends Component {
     );
     const buttons = [];
 
-		if (!visible) return null;
+    if (!visible) return null;
 
-		if (plays >= 2) buttons.push(repairButton);
-		if (plays === 0) buttons.push(instructionsButton);
-		buttons.push(startButton);
+    if (plays >= 2) buttons.push(repairButton);
+    if (plays === 0) buttons.push(instructionsButton);
+    buttons.push(startButton);
 
     return <Fragment>{buttons}</Fragment>;
   }

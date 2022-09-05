@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Title from "./components/header/title";
 import Home from "./home/Home";
 import ExerciseCenter from "./components/ExerciseCenter";
-import Repair from "./components/Repair.js"
+import Repair from "./components/Repair.js";
 import Header from "./components/header/headerMain";
 import SuccessMessage from "./home/successMessage";
 import Countdown from "react-countdown-now";
@@ -46,12 +46,12 @@ import {
   closeColorChange,
   toGreyBackground,
   resetSystem,
-  goBackFromExercise
+  goBackFromExercise,
 } from "../../../reducers/lab2/actions";
 
 library.add(faQuestionCircle);
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     baseBackground: state.exercise2.changeColors.baseBackground,
     baseRightCircle: state.exercise2.changeColors.baseRightCircle,
@@ -74,16 +74,16 @@ const mapStateToProps = state => {
     exercisesPlayed: state.exercise2.changeExerciseState.exercisesPlayed,
     fourthInfoState: state.exercise2.changeExerciseState.fourthInfoState,
     endSystem: state.exercise2.changeExerciseState.endSystem,
-    colorChange: state.exercise2.changeExerciseState.colorChangeState
+    colorChange: state.exercise2.changeExerciseState.colorChangeState,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onChangeDefaultColors: event => dispatch(changeDefaultColors(event)),
-    onChangeExerciseColors: event => dispatch(changeExerciseColors(event)),
-    onSelectOption: event => dispatch(selectExerciseOption(event)),
-    popupController: event => dispatch(activatePopup(event)),
+    onChangeDefaultColors: (event) => dispatch(changeDefaultColors(event)),
+    onChangeExerciseColors: (event) => dispatch(changeExerciseColors(event)),
+    onSelectOption: (event) => dispatch(selectExerciseOption(event)),
+    popupController: (event) => dispatch(activatePopup(event)),
     onStartExercise: () => dispatch(startExercise()),
     onEndExercise: () => dispatch(endExercise()),
     onResetOption: () => dispatch(resetOption()),
@@ -103,82 +103,87 @@ const mapDispatchToProps = dispatch => {
     onCloseThirdInfoState: () => dispatch(closeThirdInfoState()),
     onOpenConclusion: () => dispatch(openConclusion()),
     onToWhiteBackground: () => dispatch(toWhiteBackground()),
-    onResetBackground: event => dispatch(resetBackground(event)),
+    onResetBackground: (event) => dispatch(resetBackground(event)),
     onOpenColorChange: () => dispatch(openColorChange()),
     onCloseColorChange: () => dispatch(closeColorChange()),
     onToGreyBackground: () => dispatch(toGreyBackground()),
     onResetSystem: () => dispatch(resetSystem()),
     onGoBackFromExercise: () => dispatch(goBackFromExercise()),
-
   };
 };
 
 class Main extends Component {
   shouldComponentUpdate(nextprops) {
-    if (nextprops.exerciseState !== this.props.exerciseState){
+    if (nextprops.exerciseState !== this.props.exerciseState) {
       return true;
     }
-    if (nextprops.baseBackground !== this.props.baseBackground){
+    if (nextprops.baseBackground !== this.props.baseBackground) {
       return true;
     }
-    if (nextprops.baseRightCircle !== this.props.baseRightCircle){
+    if (nextprops.baseRightCircle !== this.props.baseRightCircle) {
       return true;
     }
-    if (nextprops.baseWrongCircleOne !== this.props.baseWrongCircleOne){
+    if (nextprops.baseWrongCircleOne !== this.props.baseWrongCircleOne) {
       return true;
     }
-    if (nextprops.baseWrongCircleTwo !== this.props.baseWrongCircleTwo){
+    if (nextprops.baseWrongCircleTwo !== this.props.baseWrongCircleTwo) {
       return true;
     }
-    if (nextprops.exerciseBackground !== this.props.exerciseBackground){
+    if (nextprops.exerciseBackground !== this.props.exerciseBackground) {
       return true;
     }
-    if (nextprops.exerciseRightCircle !== this.props.exerciseRightCircle){
+    if (nextprops.exerciseRightCircle !== this.props.exerciseRightCircle) {
       return true;
     }
-    if (nextprops.exerciseWrongCircleOne !== this.props.exerciseWrongCircleOne){
+    if (
+      nextprops.exerciseWrongCircleOne !== this.props.exerciseWrongCircleOne
+    ) {
       return true;
     }
-    if (nextprops.exerciseWrongCircleTwo !== this.props.exerciseWrongCircleTwo){
+    if (
+      nextprops.exerciseWrongCircleTwo !== this.props.exerciseWrongCircleTwo
+    ) {
       return true;
     }
-    if (nextprops.exerciseOption !== this.props.exerciseOption){
+    if (nextprops.exerciseOption !== this.props.exerciseOption) {
       return true;
     }
-    if (nextprops.exerciseWrongCircleTwo !== this.props.exerciseWrongCircleTwo){
+    if (
+      nextprops.exerciseWrongCircleTwo !== this.props.exerciseWrongCircleTwo
+    ) {
       return true;
     }
-    if (nextprops.changed !== this.props.changed){
+    if (nextprops.changed !== this.props.changed) {
       return true;
     }
-    if (nextprops.infoPopup !== this.props.infoPopup){
+    if (nextprops.infoPopup !== this.props.infoPopup) {
       return true;
     }
-    if (nextprops.aboutState !== this.props.aboutState){
+    if (nextprops.aboutState !== this.props.aboutState) {
       return true;
     }
-    if (nextprops.statState !== this.props.statState){
+    if (nextprops.statState !== this.props.statState) {
       return true;
     }
-    if (nextprops.firstExercise !== this.props.firstExercise){
+    if (nextprops.firstExercise !== this.props.firstExercise) {
       return true;
     }
-    if (nextprops.secondInfoState !== this.props.secondInfoState){
+    if (nextprops.secondInfoState !== this.props.secondInfoState) {
       return true;
     }
-    if (nextprops.thirdInfoState !== this.props.thirdInfoState){
+    if (nextprops.thirdInfoState !== this.props.thirdInfoState) {
       return true;
     }
-    if (nextprops.exercisesPlayed !== this.props.exercisesPlayed){
+    if (nextprops.exercisesPlayed !== this.props.exercisesPlayed) {
       return true;
     }
-    if (nextprops.fourthInfoState !== this.props.fourthInfoState){
+    if (nextprops.fourthInfoState !== this.props.fourthInfoState) {
       return true;
     }
-    if (nextprops.endSystem !== this.props.endSystem){
+    if (nextprops.endSystem !== this.props.endSystem) {
       return true;
     }
-    if (nextprops.colorChange !== this.props.colorChange){
+    if (nextprops.colorChange !== this.props.colorChange) {
       return true;
     }
     return false;
@@ -237,7 +242,7 @@ class Main extends Component {
       colorChange,
       onToGreyBackground,
       onResetSystem,
-      onGoBackFromExercise
+      onGoBackFromExercise,
     } = this.props;
 
     //establishing array of current colors for the system
@@ -245,12 +250,12 @@ class Main extends Component {
       baseBackground,
       baseRightCircle,
       baseWrongCircleOne,
-      baseWrongCircleTwo
+      baseWrongCircleTwo,
     ];
 
     //custom renderer for top of page popup
     //popup occurs after a successful change to the colors in the system
-    const renderer = props => {
+    const renderer = (props) => {
       if (props.total > 0) {
         return (
           <div className="successPopup">
@@ -346,80 +351,74 @@ class Main extends Component {
                             background={baseBackground}
                           />
                         ) : (
-                               <div>
-                                {fourthInfoState ? (
-                                  <FourthInstructions
-                                    closePage={onCloseThirdInfoState}
-                                    activatePopup={onOpenColorChange}
-                                    endSystem={onOpenConclusion}
-                                    toWhiteBackground={onToWhiteBackground}
-                                    background={baseBackground}
-                                    user={user}
-                                  />
+                          <div>
+                            {fourthInfoState ? (
+                              <FourthInstructions
+                                closePage={onCloseThirdInfoState}
+                                activatePopup={onOpenColorChange}
+                                endSystem={onOpenConclusion}
+                                toWhiteBackground={onToWhiteBackground}
+                                background={baseBackground}
+                                user={user}
+                              />
+                            ) : (
+                              <div>
+                                {endSystem ? (
+                                  <Conclusion resetSystem={onResetSystem} />
                                 ) : (
                                   <div>
-                                    {endSystem ? (
-                                      <Conclusion resetSystem={onResetSystem} />
+                                    {firstExercise ? (
+                                      <LandingPage
+                                        endFirstExercise={onEndFirstExercise}
+                                        toWhiteBackground={onToWhiteBackground}
+                                        background={baseBackground}
+                                      />
                                     ) : (
                                       <div>
-                                        {firstExercise ? (
-                                          <LandingPage
-                                            endFirstExercise={onEndFirstExercise}
-                                            toWhiteBackground={
-                                              onToWhiteBackground
+                                        {colorChange ? (
+                                          <Repair
+                                            changeDefaultColors={
+                                              onChangeDefaultColors
+                                            }
+                                            changeExerciseColors={
+                                              onChangeExerciseColors
+                                            }
+                                            popupController={popupController}
+                                            closeColorChange={
+                                              onCloseColorChange
+                                            }
+                                            colors={colors}
+                                            toGreyBackground={
+                                              onToGreyBackground
                                             }
                                             background={baseBackground}
                                           />
                                         ) : (
                                           <div>
-                                            {colorChange ? (
-                                              <Repair
-                                                changeDefaultColors={
-                                                  onChangeDefaultColors
-                                                }
-                                                changeExerciseColors={
-                                                  onChangeExerciseColors
-                                                }
-                                                popupController={
-                                                  popupController
-                                                }
-                                                closeColorChange={
-                                                  onCloseColorChange
-                                                }
-                                                colors={colors}
-                                                toGreyBackground={
-                                                  onToGreyBackground
-                                                }
-                                                background={baseBackground}
-                                              />
-                                            ) : (
-                                              <div>
-                                                <Title exerciseState={exerciseState} />
-                                                <Home
-                                                  background={exerciseBackground}
-                                                  onChangeExerciseColors={
-                                                    onChangeExerciseColors
-                                                  }
-                                                  exerciseOption={exerciseOption}
-                                                  correctColor={exerciseRightCircle}
-                                                  incorrectColorOne={
-                                                    exerciseWrongCircleOne
-                                                  }
-                                                  incorrectColorTwo={
-                                                    exerciseWrongCircleTwo
-                                                  }
-                                                  startExercise={onStartExercise}
-                                                  selectOption={onSelectOption}
-                                                  exercisesPlayed={exercisesPlayed}
-                                                  resetBackground={
-                                                    onResetBackground
-                                                  }
-                                                  baseBackground={
-                                                    baseBackground
-                                                  }
-                                                />
-                                              </div>
-                                            )}
+                                            <Title
+                                              exerciseState={exerciseState}
+                                            />
+                                            <Home
+                                              background={exerciseBackground}
+                                              onChangeExerciseColors={
+                                                onChangeExerciseColors
+                                              }
+                                              exerciseOption={exerciseOption}
+                                              correctColor={exerciseRightCircle}
+                                              incorrectColorOne={
+                                                exerciseWrongCircleOne
+                                              }
+                                              incorrectColorTwo={
+                                                exerciseWrongCircleTwo
+                                              }
+                                              startExercise={onStartExercise}
+                                              selectOption={onSelectOption}
+                                              exercisesPlayed={exercisesPlayed}
+                                              resetBackground={
+                                                onResetBackground
+                                              }
+                                              baseBackground={baseBackground}
+                                            />
                                           </div>
                                         )}
                                       </div>
@@ -427,6 +426,8 @@ class Main extends Component {
                                   </div>
                                 )}
                               </div>
+                            )}
+                          </div>
                         )}
                       </div>
                     )}

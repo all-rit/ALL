@@ -1,5 +1,4 @@
 .code_editor {
-
   .code_editor__content {
     margin: 2rem auto;
     background-color: white;
@@ -35,7 +34,8 @@
   .code_editor__code {
     background-color: #333;
     padding: 1rem;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
     height: 100%;
   }
 
@@ -126,7 +126,7 @@
     }
   }
 
-  .code_editor_button{
+  .code_editor_button {
     margin-top: 0;
     margin-bottom: 30px;
   }
@@ -134,7 +134,8 @@
     background-color: #222;
     color: orange;
     padding: 0;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
     border: 0;
     resize: none;
     font-size: 1rem;
@@ -148,8 +149,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height:100vh;
-   // background-color: rgba(0, 0, 0, 0.3);
+    height: 100vh;
+    // background-color: rgba(0, 0, 0, 0.3);
     z-index: 0;
     cursor: pointer;
   }
