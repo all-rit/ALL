@@ -1,6 +1,6 @@
-import React from "react";
-import Button from "../components/header/buttons/button";
-import "./secondaryInstructions.css";
+import React from 'react';
+import Button from '../components/header/buttons/button';
+import './secondaryInstructions.css';
 
 /*
 Page containing the instructions for the second popup the user sees
@@ -13,16 +13,16 @@ const ThirdInstructions = ({
   background,
   selectOption,
 }) => {
-  let alreadyCalled = false;
+  const alreadyCalled = false;
   if (!alreadyCalled) {
-    selectOption("Protanopia");
+    selectOption('Protanopia');
   }
 
   const changeColors = () => {
     activatePopup();
   };
 
-  if (background !== "white") {
+  if (background !== 'white') {
     toWhiteBackground();
   }
 
@@ -41,7 +41,7 @@ const ThirdInstructions = ({
 
         <li className="instructionsItem">
           You can change the colors with the
-          <strong style={{ marginLeft: "3px", marginRight: "3px" }}>
+          <strong style={{marginLeft: '3px', marginRight: '3px'}}>
             Update Colors
           </strong>
           button in the upper left corner of the next screen.
@@ -50,7 +50,7 @@ const ThirdInstructions = ({
         <li className="instructionsItem">
           You can use any online calculator or a calculator you've created for
           your lab! In order to fix the problem, the contrast must be above a
-          ratio of <strong>7:1</strong>.{" "}
+          ratio of <strong>7:1</strong>.{' '}
           <em>
             Black is not an applicable option, as the entire system relies upon
             black for text coloring (giving you zero contrast between the
@@ -70,8 +70,8 @@ const ThirdInstructions = ({
       <div className="center">
         <Button
           clickMethod={changeColors}
-          message={"I'm ready!"}
-          fontSizing={"25px"}
+          message={'I\'m ready!'}
+          fontSizing={'25px'}
         />
       </div>
     </div>

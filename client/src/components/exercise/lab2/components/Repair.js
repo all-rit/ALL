@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import classNames from "classnames/bind";
-import RepairService from "../../../../services/lab2/RepairService";
-import { PhotoshopPicker } from "react-color";
-//import "../../lab2/home/popup.css";
+import React, {Component} from 'react';
+import classNames from 'classnames/bind';
+import RepairService from '../../../../services/lab2/RepairService';
+import {PhotoshopPicker} from 'react-color';
+// import "../../lab2/home/popup.css";
 
 class Repair extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      background: "",
-      correctColor: "",
-      incorrectColorOne: "",
-      incorrectColorTwo: "",
-      message: "",
+      background: '',
+      correctColor: '',
+      incorrectColorOne: '',
+      incorrectColorTwo: '',
+      message: '',
       errorEqual: false,
       errorHex: false,
       errorLength: false,
@@ -30,53 +30,53 @@ class Repair extends Component {
     };
   }
 
-  //Handles changes to the background color (updates state)
+  // Handles changes to the background color (updates state)
   onBackgroundChange = (color, event) => {
-    this.setState({ background: color.hex });
-    //this.onControlBackgroundPopup(false);
+    this.setState({background: color.hex});
+    // this.onControlBackgroundPopup(false);
   };
 
-  //Handles the popup for changning the background color (updates state)
+  // Handles the popup for changning the background color (updates state)
   onControlBackgroundPopup = (event) => {
-    this.setState({ backgroundPopup: event });
+    this.setState({backgroundPopup: event});
   };
 
-  //Handles changes to the correct circle color (updates state)
+  // Handles changes to the correct circle color (updates state)
   onCorrectColorChange = (color, event) => {
-    this.setState({ correctColor: color.hex });
-    //this.onControlCorrectPopup(false);
+    this.setState({correctColor: color.hex});
+    // this.onControlCorrectPopup(false);
   };
 
-  //Handles the popup for changning the correct circle color (updates state)
+  // Handles the popup for changning the correct circle color (updates state)
   onControlCorrectPopup = (event) => {
-    this.setState({ correctColorPopup: event });
+    this.setState({correctColorPopup: event});
   };
 
-  //Handles changes to the first incorrect circle color (updates state)
+  // Handles changes to the first incorrect circle color (updates state)
   onIncorrectColorOne = (color, event) => {
-    this.setState({ incorrectColorOne: color.hex });
-    //this.onControlIncorrectPopupOne(false);
+    this.setState({incorrectColorOne: color.hex});
+    // this.onControlIncorrectPopupOne(false);
   };
 
-  //Handles the popup for changning the first incorrect circle color (updates state)
+  // Handles the popup for changning the first incorrect circle color (updates state)
   onControlIncorrectPopupOne = (event) => {
-    this.setState({ incorrectColorOnePopup: event });
+    this.setState({incorrectColorOnePopup: event});
   };
 
-  //Handles changes to the second incorrect circle color (updates state)
+  // Handles changes to the second incorrect circle color (updates state)
   onIncorrectColorTwo = (color, event) => {
-    this.setState({ incorrectColorTwo: color.hex });
-    //this.onControlIncorrectPopupTwo(false);
+    this.setState({incorrectColorTwo: color.hex});
+    // this.onControlIncorrectPopupTwo(false);
   };
 
-  //Handles the popup for changning second incorrect circle color (updates state)
+  // Handles the popup for changning second incorrect circle color (updates state)
   onControlIncorrectPopupTwo = (event) => {
-    this.setState({ incorrectColorTwoPopup: event });
+    this.setState({incorrectColorTwoPopup: event});
   };
 
-  //Ensures none of the values entered are equal to one another
+  // Ensures none of the values entered are equal to one another
   ensureNotEqual = () => {
-    const { background, correctColor, incorrectColorOne, incorrectColorTwo } =
+    const {background, correctColor, incorrectColorOne, incorrectColorTwo} =
       this.state;
     if (
       background.toUpperCase() !== correctColor.toUpperCase() &&
@@ -98,7 +98,7 @@ class Repair extends Component {
   };
 
   checkAlert = () => {
-    const { background, correctColor, incorrectColorOne, incorrectColorTwo } =
+    const {background, correctColor, incorrectColorOne, incorrectColorTwo} =
       this.state;
     let changed = 0;
     if (background !== this.props.colors[0]) {
@@ -114,7 +114,7 @@ class Repair extends Component {
       changed++;
     }
     if (changed !== 4) {
-      this.setState({ confirmPopup: true, numberChanged: changed });
+      this.setState({confirmPopup: true, numberChanged: changed});
       // return window.confirm(`You have only changed ${changed} of the four colors.
       //   Are you sure you would like to submit?`)
     } else {
@@ -122,9 +122,9 @@ class Repair extends Component {
     }
   };
 
-  //Ensures none of the colors entered are black to too close to black
+  // Ensures none of the colors entered are black to too close to black
   ensureNotBlack = () => {
-    const { background, correctColor, incorrectColorOne, incorrectColorTwo } =
+    const {background, correctColor, incorrectColorOne, incorrectColorTwo} =
       this.state;
     const check = [
       background,
@@ -166,115 +166,115 @@ class Repair extends Component {
     return true;
   };
 
-  //Verifies the input by the user
+  // Verifies the input by the user
   verifyInput = () => {
     if (!this.ensureNotEqual()) {
-      this.setState({ errorEqual: true });
+      this.setState({errorEqual: true});
     } else if (!this.ensureNotBlack()) {
-      this.setState({ errorDarkBackground: true });
+      this.setState({errorDarkBackground: true});
     } else {
       this.checkAlert();
     }
   };
 
   onFinalSubmit = () => {
-    let colors = [
+    const colors = [
       this.state.background,
       this.state.correctColor,
       this.state.incorrectColorOne,
       this.state.incorrectColorTwo,
     ];
     RepairService.submitRepair(
-      this.state.background,
-      this.state.correctColor,
-      this.state.incorrectColorOne,
-      this.state.incorrectColorTwo
+        this.state.background,
+        this.state.correctColor,
+        this.state.incorrectColorOne,
+        this.state.incorrectColorTwo,
     );
     this.props.changeDefaultColors(colors);
     this.props.changeExerciseColors(colors);
     this.props.closeColorChange();
   };
 
-  //Submits the colors for the system
+  // Submits the colors for the system
   onButtonSubmit = () => {
-    this.setState({ errorLength: false });
-    this.setState({ errorEqual: false });
-    this.setState({ errorHex: false });
-    this.setState({ errorDarkBackground: false });
+    this.setState({errorLength: false});
+    this.setState({errorEqual: false});
+    this.setState({errorHex: false});
+    this.setState({errorDarkBackground: false});
     this.verifyInput();
   };
 
-  //Renderer for the system
+  // Renderer for the system
   render() {
-    if (this.props.background !== "rgba(38,38,38,1)") {
+    if (this.props.background !== 'rgba(38,38,38,1)') {
       this.props.toGreyBackground();
     }
 
-    //Opens the background color change popup
+    // Opens the background color change popup
     const changeBackground = () => {
       this.onControlBackgroundPopup(true);
     };
 
-    //Closes the background color change popup
+    // Closes the background color change popup
     const closeBackground = () => {
       this.onControlBackgroundPopup(false);
     };
 
-    ///Revers the background color to the default color
+    // /Revers the background color to the default color
     const revertBackground = () => {
-      this.setState({ background: this.state.background });
+      this.setState({background: this.state.background});
       this.onControlBackgroundPopup(false);
     };
 
-    //Opens the correct circle color change popup
+    // Opens the correct circle color change popup
     const changeCorrectColor = () => {
       this.onControlCorrectPopup(true);
     };
 
-    //Closes the correct circle color change popup
+    // Closes the correct circle color change popup
     const closeCorrectColor = () => {
       this.onControlCorrectPopup(false);
     };
 
-    ///Revers the correct circle color to the default color
+    // /Revers the correct circle color to the default color
     const revertCorrectColor = () => {
-      this.setState({ correctColor: this.state.correctCircle });
+      this.setState({correctColor: this.state.correctCircle});
       this.onControlCorrectPopup(false);
     };
 
-    //Opens the first incorrect circle color change popup
+    // Opens the first incorrect circle color change popup
     const changeIncorrectColorOne = () => {
       this.onControlIncorrectPopupOne(true);
     };
 
-    //Closes the first incorrect color change popup
+    // Closes the first incorrect color change popup
     const closeIncorrectColorOne = () => {
       this.onControlIncorrectPopupOne(false);
     };
 
-    ///Revers the first incorrect circle color to the default color
+    // /Revers the first incorrect circle color to the default color
     const revertIncorrectColorOne = () => {
-      this.setState({ incorrectColorOne: this.state.incorrectColorOne });
+      this.setState({incorrectColorOne: this.state.incorrectColorOne});
       this.onControlIncorrectPopupOne(false);
     };
 
-    //Opens the second incorrect circle color change popup
+    // Opens the second incorrect circle color change popup
     const changeIncorrectColorTwo = () => {
       this.onControlIncorrectPopupTwo(true);
     };
 
-    //Closes the second incorrect color change popup
+    // Closes the second incorrect color change popup
     const closeIncorrectColorTwo = () => {
       this.onControlIncorrectPopupTwo(false);
     };
 
-    ///Revers the second incorrect circle color to the default color
+    // /Revers the second incorrect circle color to the default color
     const revertIncorrectColorTwo = () => {
-      this.setState({ incorrectColorTwo: this.state.incorrectColorTwo });
+      this.setState({incorrectColorTwo: this.state.incorrectColorTwo});
       this.onControlIncorrectPopupTwo(false);
     };
 
-    if (this.state.background === "") {
+    if (this.state.background === '') {
       this.setState({
         background: this.props.colors[0],
         correctColor: this.props.colors[1],
@@ -283,8 +283,8 @@ class Repair extends Component {
       });
     }
     const cssFileClasses = classNames({
-      code_editor__file: true,
-      "code_editor__file--active": true,
+      'code_editor__file': true,
+      'code_editor__file--active': true,
     });
 
     const cssFileCodeClasses = classNames({
@@ -302,7 +302,7 @@ class Repair extends Component {
           </div>
 
           <div className={cssFileCodeClasses}>
-            {/*Background*/}
+            {/* Background*/}
             <div className="code_editor__line">
               <p className="code_editor__class">.home &#123;</p>
               <div className="code_editor__form">
@@ -330,11 +330,11 @@ class Repair extends Component {
                   ) : (
                     <button
                       onClick={changeBackground}
-                      style={{ backgroundColor: this.state.background }}
+                      style={{backgroundColor: this.state.background}}
                       className={`form ${
-                        this.state.errorEqual || this.state.errorDarkBackground
-                          ? "form-error-input"
-                          : ""
+                        this.state.errorEqual || this.state.errorDarkBackground ?
+                          'form-error-input' :
+                          ''
                       }`}
                     />
                   )}
@@ -358,7 +358,7 @@ class Repair extends Component {
                   </div>
                 )}
               </div>
-              {/*Correct Circle One*/}
+              {/* Correct Circle One*/}
               <p className="code_editor__class">&#125;</p>
               <p className="code_editor__class">.correctCircle&#123;</p>
               <div className="code_editor__form">
@@ -386,11 +386,11 @@ class Repair extends Component {
                   ) : (
                     <button
                       onClick={changeCorrectColor}
-                      style={{ backgroundColor: this.state.correctColor }}
+                      style={{backgroundColor: this.state.correctColor}}
                       className={`form ${
-                        this.state.errorEqual || this.state.errorDarkBackground
-                          ? "form-error-input"
-                          : ""
+                        this.state.errorEqual || this.state.errorDarkBackground ?
+                          'form-error-input' :
+                          ''
                       }`}
                     />
                   )}
@@ -414,7 +414,7 @@ class Repair extends Component {
                   </div>
                 )}
               </div>
-              {/*Incorrect Circle One*/}
+              {/* Incorrect Circle One*/}
               <p className="code_editor__class">&#125;</p>
               <p className="code_editor__class">.incorrectCircleOne&#123;</p>
               <div className="code_editor__form">
@@ -446,9 +446,9 @@ class Repair extends Component {
                         backgroundColor: this.state.incorrectColorOne,
                       }}
                       className={`form ${
-                        this.state.errorEqual || this.state.errorDarkBackground
-                          ? "form-error-input"
-                          : ""
+                        this.state.errorEqual || this.state.errorDarkBackground ?
+                          'form-error-input' :
+                          ''
                       }`}
                     />
                   )}
@@ -472,7 +472,7 @@ class Repair extends Component {
                   </div>
                 )}
               </div>
-              {/*Incorrect Circle Two*/}
+              {/* Incorrect Circle Two*/}
               <p className="code_editor__class">&#125;</p>
               <p className="code_editor__class">.incorrectCircleTwo&#123;</p>
               <div className="code_editor__form">
@@ -504,9 +504,9 @@ class Repair extends Component {
                         backgroundColor: this.state.incorrectColorTwo,
                       }}
                       className={`form ${
-                        this.state.errorEqual || this.state.errorDarkBackground
-                          ? "form-error-input"
-                          : ""
+                        this.state.errorEqual || this.state.errorDarkBackground ?
+                          'form-error-input' :
+                          ''
                       }`}
                     />
                   )}
@@ -533,7 +533,7 @@ class Repair extends Component {
               <p className="code_editor__class">&#125;</p>
             </div>
 
-            {/*Other Styling*/}
+            {/* Other Styling*/}
             <div className="code_editor__line">
               <p className="code_editor__class">.center &#123;</p>
             </div>
@@ -542,7 +542,7 @@ class Repair extends Component {
                 &nbsp;&nbsp;&nbsp;
               </span>
               <span className="code_editor__property code_editor__line-background--light">
-                display:{" "}
+                display:{' '}
               </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; flex;
@@ -553,7 +553,7 @@ class Repair extends Component {
                 &nbsp;&nbsp;&nbsp;
               </span>
               <span className="code_editor__property code_editor__line-background--light">
-                justify-content:{" "}
+                justify-content:{' '}
               </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; center;
@@ -571,7 +571,7 @@ class Repair extends Component {
                 &nbsp;&nbsp;&nbsp;
               </span>
               <span className="code_editor__property code_editor__line-background--light">
-                font-size:{" "}
+                font-size:{' '}
               </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; 30px;
@@ -582,7 +582,7 @@ class Repair extends Component {
                 &nbsp;&nbsp;&nbsp;
               </span>
               <span className="code_editor__property code_editor__line-background--light">
-                display:{" "}
+                display:{' '}
               </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; flex;
@@ -593,7 +593,7 @@ class Repair extends Component {
                 &nbsp;&nbsp;&nbsp;
               </span>
               <span className="code_editor__property code_editor__line-background--light">
-                justify-content:{" "}
+                justify-content:{' '}
               </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; center;

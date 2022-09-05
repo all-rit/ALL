@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Carousel, CarouselItem, CarouselControl } from "reactstrap";
+/* eslint-disable react/jsx-key */
+/* eslint-disable camelcase */
+/* eslint-disable react/prop-types */
+/* eslint-disable guard-for-in */
+import React, {useEffect, useState} from 'react';
+import {Carousel, CarouselItem, CarouselControl} from 'reactstrap';
 
 const SlideSet = (props) => {
-  const { teamInformation, renderProfileData } = props;
+  const {teamInformation, renderProfileData} = props;
   const [exit, setExit] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideSet, setSlideSet] = useState(null);
   const [numSlides, setNumSlides] = useState(0);
 
   const renderSlideset = (information) => {
-    let profiles = renderProfileData(information);
-    let rows = [];
+    const profiles = renderProfileData(information);
+    const rows = [];
     let profile_row = [];
-    for (let i in profiles) {
+    for (const i in profiles) {
       profile_row.push(profiles[i]);
       if (profile_row.length === 3) {
         rows.push(profile_row);
@@ -53,13 +57,13 @@ const SlideSet = (props) => {
 
   useEffect(() => {
     setSlideSet(
-      renderSlideset(teamInformation).map((item) => {
-        return (
-          <CarouselItem onExiting={onExiting} onExited={onExited}>
-            {item}
-          </CarouselItem>
-        );
-      })
+        renderSlideset(teamInformation).map((item) => {
+          return (
+            <CarouselItem onExiting={onExiting} onExited={onExited}>
+              {item}
+            </CarouselItem>
+          );
+        }),
     );
     // eslint-disable-next-line
   }, [teamInformation]);

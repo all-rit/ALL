@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function AnswerOption(props) {
   if (props.multiChoice === true) {
@@ -25,7 +25,7 @@ function AnswerOption(props) {
           type="radio"
           className="radioCustomButton"
           name="checkboxGroup"
-          //checked={props.answerType === props.answer}
+          // checked={props.answerType === props.answer}
           id={props.answerType}
           value={props.answerType}
           onChange={props.onAnswerSelected}

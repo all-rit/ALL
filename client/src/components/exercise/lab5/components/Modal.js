@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { navigate } from "@reach/router";
+import React, {useState} from 'react';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import {navigate} from '@reach/router';
 
 const ModalExample = (props) => {
-  const { buttonLabel, message, title, link } = props;
+  const {buttonLabel, message, title, link} = props;
 
   const [modal] = useState(true);
 
@@ -15,7 +15,7 @@ const ModalExample = (props) => {
         <ModalFooter>
           <Button color="primary" onClick={() => navigate(link)}>
             {buttonLabel}
-          </Button>{" "}
+          </Button>{' '}
         </ModalFooter>
       </Modal>
     </div>

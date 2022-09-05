@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import UserCertificate from "../profilepage/components/UserCertificate";
+import React, {useState} from 'react';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import UserCertificate from '../profilepage/components/UserCertificate';
 
 const InfoModal = (props) => {
   const {
@@ -18,7 +18,7 @@ const InfoModal = (props) => {
   const toggle = () => setModal(!modal);
 
   switch (buttonLabel) {
-    case "More Info":
+    case 'More Info':
       return (
         <ul>
           <button className="btn-second btn btn-md" onClick={toggle}>
@@ -54,7 +54,7 @@ const InfoModal = (props) => {
             <ModalFooter>
               <Button className="btn-primary" onClick={redirect}>
                 Launch Lab
-              </Button>{" "}
+              </Button>{' '}
               <Button className="btn-second" onClick={toggle}>
                 Close
               </Button>
@@ -62,7 +62,7 @@ const InfoModal = (props) => {
           </Modal>
         </ul>
       );
-    case "View Certificate":
+    case 'View Certificate':
       return (
         <ul>
           <button

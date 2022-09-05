@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import { Link } from "@material-ui/core";
-import { navigate } from "@reach/router";
-import Typography from "@material-ui/core/Typography";
+import React, {Component} from 'react';
+import Button from '@material-ui/core/Button';
+import {Link} from '@material-ui/core';
+import {navigate} from '@reach/router';
+import Typography from '@material-ui/core/Typography';
 
 class CatClickNavigate extends Component {
   constructor(props) {
     super(props);
-    const { path } = this.props;
+    const {path} = this.props;
     CatClickNavigate.handleOnclick = CatClickNavigate.handleOnclick.bind(
-      this,
-      path
+        this,
+        path,
     );
   }
 
@@ -20,27 +20,27 @@ class CatClickNavigate extends Component {
 
   render() {
     const textToSpeech = (e, text) => {
-      let synth = window.speechSynthesis;
+      const synth = window.speechSynthesis;
       synth.cancel();
-      let utterThis = new SpeechSynthesisUtterance(text);
+      const utterThis = new SpeechSynthesisUtterance(text);
       synth.speak(utterThis);
     };
 
-    const typographyStyle = { color: "white" };
+    const typographyStyle = {color: 'white'};
 
     return (
-      <div id={"catClickMessage"}>
+      <div id={'catClickMessage'}>
         <Typography
-          variant={"h6"}
+          variant={'h6'}
           aria-label={
-            "Cat clicked! Please click the 'next' button to continue."
+            'Cat clicked! Please click the \'next\' button to continue.'
           }
-          tabIndex={"0"}
+          tabIndex={'0'}
           style={typographyStyle}
           onFocus={(e) =>
             textToSpeech(
-              e,
-              "Cat clicked! Please click the next button to continue."
+                e,
+                'Cat clicked! Please click the next button to continue.',
             )
           }
         >
@@ -52,7 +52,7 @@ class CatClickNavigate extends Component {
           onClick={CatClickNavigate.handleOnclick}
           variant="contained"
           className="btn btn-second btn-xl text-uppercase  leftButton"
-          onFocus={(e) => textToSpeech(e, "Next")}
+          onFocus={(e) => textToSpeech(e, 'Next')}
         >
           Next
         </Button>

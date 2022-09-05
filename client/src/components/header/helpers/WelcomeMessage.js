@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Button } from "reactstrap";
-import LoginButton from "./LoginButton";
+import React, {useState} from 'react';
+import {Button} from 'reactstrap';
+import LoginButton from './LoginButton';
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from "reactstrap";
+} from 'reactstrap';
 
 const WelcomeMessage = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { user, loginEnabled, renderLink } = props;
+  const {user, loginEnabled, renderLink} = props;
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   if (user === null || user.firstname === null) {
     return <LoginButton enabled={loginEnabled} />;
@@ -30,7 +30,7 @@ const WelcomeMessage = (props) => {
       </DropdownToggle>
       <DropdownMenu className="welcome__menu">
         {renderLink && (
-          <DropdownItem href={"/Profile"}>My Profile</DropdownItem>
+          <DropdownItem href={'/Profile'}>My Profile</DropdownItem>
         )}
         <DropdownItem href={`${process.env.REACT_APP_SERVER_URL}/logout`}>
           Logout

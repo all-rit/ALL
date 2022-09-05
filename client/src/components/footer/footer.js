@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import "../../assets/stylesheets/components/css/colorPicker.css";
-import { connect } from "react-redux";
-import { actions as appActions } from "../../reducers/lab1/AppReducer";
-import { actions as mainActions } from "../../reducers/MainReducer";
-import { bindActionCreators } from "redux";
+import React, {Component} from 'react';
+import '../../assets/stylesheets/components/css/colorPicker.css';
+import {connect} from 'react-redux';
+import {actions as appActions} from '../../reducers/lab1/AppReducer';
+import {actions as mainActions} from '../../reducers/MainReducer';
+import {bindActionCreators} from 'redux';
 import {
   changeTSize,
   setTextColor,
   setBackgroundColor,
   onNextPageChangeTSize,
-} from "./edit/editPage";
-import { Panel as ColorPickerPanel } from "rc-color-picker";
-import { Sections } from "../../constants/index";
-import handleRedirect from "../../helpers/Redirect";
-import getExerciseState from "../../helpers/GetReducer";
+} from './edit/editPage';
+import {Panel as ColorPickerPanel} from 'rc-color-picker';
+import {Sections} from '../../constants/index';
+import handleRedirect from '../../helpers/Redirect';
+import getExerciseState from '../../helpers/GetReducer';
 
 const mapStateToProps = (state) => {
   return {
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...appActions, ...mainActions }, dispatch),
+    actions: bindActionCreators({...appActions, ...mainActions}, dispatch),
   };
 };
 class Footer extends Component {
@@ -42,7 +42,7 @@ class Footer extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("click", this.handleClick);
+    document.addEventListener('click', this.handleClick);
   }
 
   componentDidUpdate(prevProps) {
@@ -55,13 +55,13 @@ class Footer extends Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener("click", this.handleClick);
+    document.removeEventListener('click', this.handleClick);
   }
 
   changeSize = (size) => {
-    let state_size = this.state.fontSize;
+    const state_size = this.state.fontSize;
     changeTSize(size);
-    this.setState({ fontSize: state_size + size });
+    this.setState({fontSize: state_size + size});
   };
   adjustSizeColor = (fontSize) => {
     for (let x = 0; x < Math.abs(fontSize); x++) {
@@ -102,24 +102,24 @@ class Footer extends Component {
 
   OnTextColorChange(obj) {
     setTextColor(obj.color);
-    this.setState({ color: obj.color });
+    this.setState({color: obj.color});
   }
 
   OnBgColorChange(obj) {
     setBackgroundColor(obj.color);
-    this.setState({ backgroundColor: obj.color });
+    this.setState({backgroundColor: obj.color});
   }
 
   handleClick(e) {
     if (this.state.textColor) {
-      if (e.target.tagName === "HTML") {
+      if (e.target.tagName === 'HTML') {
         this.setState({
           textColor: false,
         });
       } else if (e.target.parentNode.className) {
         if (
-          !e.target.parentNode.className.includes("rc-color-picker") &&
-          e.target.id !== "changeTextColor"
+          !e.target.parentNode.className.includes('rc-color-picker') &&
+          e.target.id !== 'changeTextColor'
         ) {
           this.setState({
             textColor: false,
@@ -128,14 +128,14 @@ class Footer extends Component {
       }
     }
     if (this.state.bgColor) {
-      if (e.target.tagName === "HTML") {
+      if (e.target.tagName === 'HTML') {
         this.setState({
           bgColor: false,
         });
       } else if (e.target.parentNode.className) {
         if (
-          !e.target.parentNode.className.includes("rc-color-picker") &&
-          e.target.id !== "changeBackgroundColor"
+          !e.target.parentNode.className.includes('rc-color-picker') &&
+          e.target.id !== 'changeBackgroundColor'
         ) {
           this.setState({
             bgColor: false,
@@ -146,43 +146,43 @@ class Footer extends Component {
   }
 
   render() {
-    const { state, actions } = this.props;
+    const {state, actions} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
-    let display = getExerciseState(state) === "EXERCISE_IDLE" || body !== 2;
-    let hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
+    const display = getExerciseState(state) === 'EXERCISE_IDLE' || body !== 2;
+    const hideOnLanding = lab === 0; // for buttons that should not be displayed on the landing page
     return (
       <>
         <div className="footer">
           <div
             className="container"
-            style={{ display: display ? "block" : "none" }}
+            style={{display: display ? 'block' : 'none'}}
           >
             <button
               className="btn btn-second btn-xl text-uppercase  back "
               onClick={() => handleRedirect(actions, lab, body - 1)}
               style={{
                 display:
-                  this.disappearBack(body) || hideOnLanding ? "none" : "block",
+                  this.disappearBack(body) || hideOnLanding ? 'none' : 'block',
               }}
             >
-              Previous -{" "}
-              {body > 0 && typeof Sections[lab][body - 1] !== "undefined"
-                ? Sections[lab][body - 1].name
-                : ""}
+              Previous -{' '}
+              {body > 0 && typeof Sections[lab][body - 1] !== 'undefined' ?
+                Sections[lab][body - 1].name :
+                ''}
             </button>
             <button
               className="btn btn-primary btn-xl text-uppercase  next"
               onClick={() => handleRedirect(actions, lab, body + 1)}
               style={{
                 display:
-                  this.disappearNext(body) || hideOnLanding ? "none" : "block",
+                  this.disappearNext(body) || hideOnLanding ? 'none' : 'block',
               }}
             >
-              Next -{" "}
-              {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
-                ? Sections[lab][body + 1].name
-                : ""}
+              Next -{' '}
+              {body < 4 && typeof Sections[lab][body + 1] !== 'undefined' ?
+                Sections[lab][body + 1].name :
+                ''}
             </button>
             <div className="btn-change">
               <button
@@ -221,12 +221,12 @@ class Footer extends Component {
                   id="text-panel"
                   className="div-style-text"
                   style={{
-                    display: this.state.textColor === true ? "block" : "none",
+                    display: this.state.textColor === true ? 'block' : 'none',
                   }}
                 >
                   <ColorPickerPanel
                     enableAlpha={false}
-                    defaultColor={"#345679"}
+                    defaultColor={'#345679'}
                     color={this.state.color}
                     onChange={this.OnTextColorChange.bind(this)}
                   />
@@ -236,7 +236,7 @@ class Footer extends Component {
                 <div id="bg-panel" className="div-style-bgColor">
                   <ColorPickerPanel
                     enableAlpha={false}
-                    defaultColor={"#345679"}
+                    defaultColor={'#345679'}
                     color={this.state.backgroundColor}
                     onChange={this.OnBgColorChange.bind(this)}
                   />
@@ -246,7 +246,7 @@ class Footer extends Component {
           </div>
           <div
             className="container"
-            style={{ display: display || hideOnLanding ? "none" : "block" }}
+            style={{display: display || hideOnLanding ? 'none' : 'block'}}
           >
             <div className="btn-information">
               The previously available navigation and accessibility buttons are

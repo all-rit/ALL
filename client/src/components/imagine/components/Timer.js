@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from 'react';
 
-const Timer = ({ seconds: startTime, finished, throwAlert }) => {
-  //does it need to be "App"?
+const Timer = ({seconds: startTime, finished, throwAlert}) => {
+  // does it need to be "App"?
   const [seconds, updateSeconds] = useState(startTime);
   const [startTimer, setStartTimer] = useState(false);
 
@@ -16,7 +16,7 @@ const Timer = ({ seconds: startTime, finished, throwAlert }) => {
     }, 2000);
     return () => {
       clearInterval(timer.current);
-      timer.current = null; //safer to set to null
+      timer.current = null; // safer to set to null
     };
     // eslint-disable-next-line
   }, []);
@@ -25,7 +25,7 @@ const Timer = ({ seconds: startTime, finished, throwAlert }) => {
     if (seconds === 0) {
       clearInterval(timer.current);
       timer.current = null;
-      finished(); //change this or the logic inside
+      finished(); // change this or the logic inside
     }
     // eslint-disable-next-line
   }, [seconds]);

@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import First from "../pages/First";
-import Second from "../pages/Second";
-import Third from "../pages/Third";
-import Fourth from "../pages/Fourth";
+import First from '../pages/First';
+import Second from '../pages/Second';
+import Third from '../pages/Third';
+import Fourth from '../pages/Fourth';
 
 class Playthrough extends Component {
   render() {
-    const { plays, results, visible } = this.props;
+    const {plays, results, visible} = this.props;
 
     if (!visible) return null;
 
@@ -31,10 +31,10 @@ class Playthrough extends Component {
             }
           }
         }
-        let final_results = [];
+        const final_results = [];
         final_results.push(results[0]);
         final_results.push(results[1]);
-        //for the third score, pass in the round with the max score
+        // for the third score, pass in the round with the max score
         final_results.push(results[max_score_idx]);
         return <Fourth results={final_results} />;
     }

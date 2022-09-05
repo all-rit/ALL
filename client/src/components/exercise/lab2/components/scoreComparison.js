@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Bar } from "react-chartjs-2";
+import React, {Component} from 'react';
+import {Bar} from 'react-chartjs-2';
 
 class ScoreComparison extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class ScoreComparison extends Component {
       let exerciseModeTotal = 0;
       let exerciseModeAmount = 0;
       data.scoreHistory.forEach((element) => {
-        if (element.modename === "main") {
+        if (element.modename === 'main') {
           defaultTotal += element.score;
           defaultAmount++;
         } else if (element.modename === this.props.mode.toLowerCase()) {
@@ -40,15 +40,15 @@ class ScoreComparison extends Component {
 
     const data = {
       labels: [
-        "Your Last Score",
+        'Your Last Score',
         `${this.props.mode} Mode Average`,
-        "Default Mode Average",
+        'Default Mode Average',
       ],
       datasets: [
         {
-          label: "Average Scores For Exercise Modes",
-          borderColor: "black",
-          backgroundColor: ["red", "blue", "green"],
+          label: 'Average Scores For Exercise Modes',
+          borderColor: 'black',
+          backgroundColor: ['red', 'blue', 'green'],
           data: this.state.scoreData,
         },
       ],
@@ -68,14 +68,14 @@ class ScoreComparison extends Component {
     };
 
     const fetchData = () => {
-      fetch(process.env.API_URL + "/scoreComparison", {
-        method: "GET",
-        credentials: "include",
+      fetch(process.env.API_URL + '/scoreComparison', {
+        method: 'GET',
+        credentials: 'include',
       })
-        .then((res) => res.json())
-        .then((data) => handleData(data))
-        .catch((err) => console.log(err));
-      this.setState({ retrievedData: true });
+          .then((res) => res.json())
+          .then((data) => handleData(data))
+          .catch((err) => console.log(err));
+      this.setState({retrievedData: true});
     };
 
     if (!this.state.retrievedData) {

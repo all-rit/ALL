@@ -1,41 +1,41 @@
-import API from "./API";
+import API from './API';
 
 const ImagineService = {
   userAvatar: (userID, avatar) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/avatar",
-      {
-        userID,
-        avatar,
-      }
+        process.env.REACT_APP_SERVER_URL + '/imagine/avatar',
+        {
+          userID,
+          avatar,
+        },
     );
   },
   userSquad: (userID, squad) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/squad",
-      {
-        userID,
-        squad,
-      }
+        process.env.REACT_APP_SERVER_URL + '/imagine/squad',
+        {
+          userID,
+          squad,
+        },
     );
   },
   userLobbyMessages: (userID, lobbyMessages) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/lobbyMessages",
-      {
-        userID,
-        lobbyMessages,
-      }
+        process.env.REACT_APP_SERVER_URL + '/imagine/lobbyMessages',
+        {
+          userID,
+          lobbyMessages,
+        },
     );
   },
   getUserSquad: (userID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/imagine/squad/${userID}`
+        process.env.REACT_APP_SERVER_URL + `/imagine/squad/${userID}`,
     ).then((response) => response.json());
   },
   getUserAvatar: (userID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/imagine/avatar/${userID}`
+        process.env.REACT_APP_SERVER_URL + `/imagine/avatar/${userID}`,
     ).then((response) => response.json());
   },
 };

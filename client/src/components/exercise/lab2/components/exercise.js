@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Countdown from "react-countdown-now";
-import SecondTimer from "./secondTimer";
-import Instructions from "../Instructions/instructions";
-import Circle from "./circle";
-import Title from "./header/title";
-import "./exerciseStyle.css";
+import React, {Component} from 'react';
+import Countdown from 'react-countdown-now';
+import SecondTimer from './secondTimer';
+import Instructions from '../Instructions/instructions';
+import Circle from './circle';
+import Title from './header/title';
+import './exerciseStyle.css';
 
 /*
 Class for controlling the main exercise page
@@ -17,7 +17,7 @@ class exercise extends Component {
     };
   }
 
-  //custom renderer for the class
+  // custom renderer for the class
   render() {
     const {
       correctColor,
@@ -37,17 +37,17 @@ class exercise extends Component {
       enterThirdInfoState,
     } = this.props;
 
-    //setting state for the start time of the exercise
+    // setting state for the start time of the exercise
     if (this.state.startTime === 0) {
-      this.setState({ startTime: Date.now() });
+      this.setState({startTime: Date.now()});
     }
 
-    //Resets the state time of the exercise zero so the exercise repeats
+    // Resets the state time of the exercise zero so the exercise repeats
     const updateTime = () => {
-      this.setState({ startTime: 0 });
+      this.setState({startTime: 0});
     };
 
-    //Controls the top right page countdown clock
+    // Controls the top right page countdown clock
     const mainTimerRenderer = (props) => {
       if (props.total === 0) {
         return <Title exerciseState={false} replay={true} />;
@@ -65,8 +65,8 @@ class exercise extends Component {
       }
     };
 
-    //Controls the renderer for the switching circles overall countdown of
-    //the exercise
+    // Controls the renderer for the switching circles overall countdown of
+    // the exercise
     const renderer = (props) => {
       if (props.total === 0) {
         return (
@@ -99,7 +99,7 @@ class exercise extends Component {
           </div>
         );
       }
-      //Instruction display during inital countdown
+      // Instruction display during inital countdown
       return (
         <div>
           <Title exerciseState={true} replay={false} />
@@ -128,7 +128,7 @@ class exercise extends Component {
       );
     };
 
-    //Controls the main countdown clock for the center of the screen
+    // Controls the main countdown clock for the center of the screen
     return (
       <div>
         {this.state.startTime === 0 ? null : (

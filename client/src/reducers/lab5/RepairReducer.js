@@ -1,12 +1,12 @@
 export const types = {
   UPDATE_REPAIR_PAGELAYOUT:
-    "@accessibility-lab/cognitive/repair/update_repair_pagelayout",
+    '@accessibility-lab/cognitive/repair/update_repair_pagelayout',
   UPDATE_REPAIR_NOTIFICATION:
-    "@accessibility-lab/cognitive/repair/update_repair_notification",
-  UPDATE_REPAIR_FORM: "@accessibility-lab/cognitive/repair/update_repair_form",
-  UPDATE_TAB: "@accessibility-lab/cognitive/repair/update_tab",
-  OPEN_REPAIR: "@accessibility-lab/cognitive/repair/open_repair",
-  CLOSE_REPAIR: "@accessibility-lab/cognitive/repair/close_repair",
+    '@accessibility-lab/cognitive/repair/update_repair_notification',
+  UPDATE_REPAIR_FORM: '@accessibility-lab/cognitive/repair/update_repair_form',
+  UPDATE_TAB: '@accessibility-lab/cognitive/repair/update_tab',
+  OPEN_REPAIR: '@accessibility-lab/cognitive/repair/open_repair',
+  CLOSE_REPAIR: '@accessibility-lab/cognitive/repair/close_repair',
 };
 
 export const initialState = {
@@ -76,11 +76,11 @@ const RepairReducer = (state = initialState, action) => {
 
 export const actions = {
   updateRepairPageLayout: (
-    h1value,
-    ulvalue,
-    classvalue,
-    fontvalue,
-    fontfamilyvalue
+      h1value,
+      ulvalue,
+      classvalue,
+      fontvalue,
+      fontfamilyvalue,
   ) => ({
     type: types.UPDATE_REPAIR_PAGELAYOUT,
     h1value,
@@ -100,9 +100,9 @@ export const actions = {
     fontsizevalue,
     timeout,
   }),
-  updateTab: (tab) => ({ type: types.UPDATE_TAB, tab }),
-  openRepair: () => ({ type: types.OPEN_REPAIR }),
-  closeRepair: () => ({ type: types.CLOSE_REPAIR }),
+  updateTab: (tab) => ({type: types.UPDATE_TAB, tab}),
+  openRepair: () => ({type: types.OPEN_REPAIR}),
+  closeRepair: () => ({type: types.CLOSE_REPAIR}),
 };
 
 export default RepairReducer;

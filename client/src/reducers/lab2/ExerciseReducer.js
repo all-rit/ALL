@@ -29,23 +29,23 @@ import {
   END_COLOR_CHANGE,
   RESET,
   BACK_EXERCISE,
-} from "../../constants/lab2/index";
+} from '../../constants/lab2/index';
 
-//Declaing initial state for the colors in the system
+// Declaing initial state for the colors in the system
 const initialColors = {
-  baseBackground: "#01581F",
-  baseRightCircle: "#B44040",
-  baseWrongCircleOne: "#948534",
-  baseWrongCircleTwo: "#57CC14",
-  exerciseBackground: "#01581F",
-  exerciseRightCircle: "#B44040",
-  exerciseWrongCircleOne: "#948534",
-  exerciseWrongCircleTwo: "#57CC14",
+  baseBackground: '#01581F',
+  baseRightCircle: '#B44040',
+  baseWrongCircleOne: '#948534',
+  baseWrongCircleTwo: '#57CC14',
+  exerciseBackground: '#01581F',
+  exerciseRightCircle: '#B44040',
+  exerciseWrongCircleOne: '#948534',
+  exerciseWrongCircleTwo: '#57CC14',
   popup: false,
   changed: false,
 };
 
-//Function for changing the colors for both the exercise and entire system
+// Function for changing the colors for both the exercise and entire system
 export const changeColors = (state = initialColors, action = {}) => {
   switch (action.type) {
     case UPDATE_DEFAULT_COLORS:
@@ -64,7 +64,7 @@ export const changeColors = (state = initialColors, action = {}) => {
         exerciseWrongCircleTwo: action.payload[3],
       });
     case ACTIVATE_POPUP:
-      return { ...state, popup: action.payload };
+      return {...state, popup: action.payload};
     case RESET_COLORS:
       return Object.assign({}, state, {
         exerciseBackground: initialColors.baseBackground,
@@ -73,24 +73,24 @@ export const changeColors = (state = initialColors, action = {}) => {
         exerciseWrongCircleTwo: initialColors.baseWrongCircleTwo,
       });
     case BACKGROUND_TO_WHITE:
-      return { ...state, exerciseBackground: "white" };
+      return {...state, exerciseBackground: 'white'};
     case BACKGROUND_TO_GREY:
-      return { ...state, exerciseBackground: "rgba(38,38,38,1)" };
+      return {...state, exerciseBackground: 'rgba(38,38,38,1)'};
     case RESET_BACKGROUND:
-      return { ...state, exerciseBackground: action.payload };
+      return {...state, exerciseBackground: action.payload};
     case CHANGED_RESET:
-      return Object.assign({}, state, { changed: false });
+      return Object.assign({}, state, {changed: false});
     case RESET:
       return {
         ...state,
-        baseBackground: "#01581F",
-        baseRightCircle: "#B44040",
-        baseWrongCircleOne: "#948534",
-        baseWrongCircleTwo: "#57CC14",
-        exerciseBackground: "#01581F",
-        exerciseRightCircle: "#B44040",
-        exerciseWrongCircleOne: "#948534",
-        exerciseWrongCircleTwo: "#57CC14",
+        baseBackground: '#01581F',
+        baseRightCircle: '#B44040',
+        baseWrongCircleOne: '#948534',
+        baseWrongCircleTwo: '#57CC14',
+        exerciseBackground: '#01581F',
+        exerciseRightCircle: '#B44040',
+        exerciseWrongCircleOne: '#948534',
+        exerciseWrongCircleTwo: '#57CC14',
         popup: false,
         changed: false,
       };
@@ -99,26 +99,26 @@ export const changeColors = (state = initialColors, action = {}) => {
   }
 };
 
-//initial state for the exercise option
+// initial state for the exercise option
 const initialOption = {
-  option: "Main",
+  option: 'Main',
 };
 
-//Function for changing the exercise option
+// Function for changing the exercise option
 export const selectExerciseOption = (state = initialOption, action = {}) => {
   switch (action.type) {
     case SELECT_OPTION:
-      return { ...state, option: action.payload };
+      return {...state, option: action.payload};
     case RESET_OPTION:
-      return { ...state, option: "Main" };
+      return {...state, option: 'Main'};
     case RESET:
-      return { ...state, option: "Main" };
+      return {...state, option: 'Main'};
     default:
       return state;
   }
 };
 
-//initial state for the other page controllers
+// initial state for the other page controllers
 const initialExerciseState = {
   exerciseState: false,
   oneExercisePlayed: false,
@@ -134,14 +134,14 @@ const initialExerciseState = {
   colorChangeState: false,
 };
 
-//Function for changing to other pages in the application
+// Function for changing to other pages in the application
 export const changeExerciseState = (
-  state = initialExerciseState,
-  action = {}
+    state = initialExerciseState,
+    action = {},
 ) => {
   switch (action.type) {
     case START_EXERCISE:
-      return { ...state, exerciseState: true };
+      return {...state, exerciseState: true};
     case END_EXERCISE:
       return {
         ...state,
@@ -149,13 +149,13 @@ export const changeExerciseState = (
         exercisesPlayed: (initialExerciseState.exercisesPlayed += 1),
       };
     case BACK_EXERCISE:
-      return { ...state, exerciseState: false };
+      return {...state, exerciseState: false};
     case FIRST_EXERCISE:
-      return { ...state, firstExercise: false };
+      return {...state, firstExercise: false};
     case ABOUT_STATE:
-      return { ...state, aboutState: true };
+      return {...state, aboutState: true};
     case END_ABOUT_STATE:
-      return { ...state, aboutState: false };
+      return {...state, aboutState: false};
     case STAT_STATE:
       return {
         ...state,
@@ -164,7 +164,7 @@ export const changeExerciseState = (
         exerciseState: false,
       };
     case END_STAT_STATE:
-      return { ...state, statState: false };
+      return {...state, statState: false};
     case INFO_STATE:
       return {
         ...state,
@@ -173,7 +173,7 @@ export const changeExerciseState = (
         exercisesPlayed: (initialExerciseState.exercisesPlayed = 1),
       };
     case END_INFO_STATE:
-      return { ...state, secondInfoState: false };
+      return {...state, secondInfoState: false};
     case INFO_STATE_TWO:
       return {
         ...state,
@@ -182,7 +182,7 @@ export const changeExerciseState = (
         exercisesPlayed: (initialExerciseState.exercisesPlayed = 2),
       };
     case END_INFO_STATE_TWO:
-      return { ...state, thirdInfoState: false };
+      return {...state, thirdInfoState: false};
     case INFO_STATE_THREE:
       return {
         ...state,
@@ -191,9 +191,9 @@ export const changeExerciseState = (
         exercisesPlayed: (initialExerciseState.exercisesPlayed = 3),
       };
     case END_INFO_STATE_THREE:
-      return { ...state, fourthInfoState: false };
+      return {...state, fourthInfoState: false};
     case END_SYSTEM:
-      return { ...state, endSystem: true };
+      return {...state, endSystem: true};
     case COLOR_CHANGE:
       return {
         ...state,
@@ -202,7 +202,7 @@ export const changeExerciseState = (
         thirdInfoState: false,
       };
     case END_COLOR_CHANGE:
-      return { ...state, colorChangeState: false };
+      return {...state, colorChangeState: false};
     case RESET:
       return {
         ...state,
@@ -225,7 +225,7 @@ export const changeExerciseState = (
   }
 };
 
-//Initial state for user information
+// Initial state for user information
 const initialLoginState = {
   user: null,
   loggedIn: false,
@@ -233,7 +233,7 @@ const initialLoginState = {
   admin: null,
 };
 
-//Function for changing the user information to include login information
+// Function for changing the user information to include login information
 export const changeUser = (state = initialLoginState, action = {}) => {
   switch (action.type) {
     case LOGIN:
@@ -244,7 +244,7 @@ export const changeUser = (state = initialLoginState, action = {}) => {
         admin: action.payload[2],
       });
     case CLOSE_INFO_POPUP:
-      return Object.assign({}, state, { infoPopup: false });
+      return Object.assign({}, state, {infoPopup: false});
     default:
       return state;
   }

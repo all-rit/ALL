@@ -1,6 +1,6 @@
-import hexToRgba from "hex-to-rgba";
+import hexToRgba from 'hex-to-rgba';
 
-//Check to ensure values are not outside of RGB standards
+// Check to ensure values are not outside of RGB standards
 const adjustment = (value) => {
   if (value < 0) {
     return 0;
@@ -11,27 +11,27 @@ const adjustment = (value) => {
   }
 };
 
-//Controller for switching a color given a specified matrix
+// Controller for switching a color given a specified matrix
 const switchColors = (colors, matrix) => {
-  var red =
+  const red =
     colors.R * matrix[0] +
     colors.G * matrix[1] +
     colors.B * matrix[2] +
     colors.A * matrix[3] +
     matrix[4];
-  var green =
+  const green =
     colors.R * matrix[5] +
     colors.G * matrix[6] +
     colors.B * matrix[7] +
     colors.A * matrix[8] +
     matrix[9];
-  var blue =
+  const blue =
     colors.R * matrix[10] +
     colors.G * matrix[11] +
     colors.B * matrix[12] +
     colors.A * matrix[13] +
     matrix[14];
-  var alpha =
+  const alpha =
     colors.R * matrix[15] +
     colors.G * matrix[16] +
     colors.B * matrix[17] +
@@ -46,7 +46,7 @@ const switchColors = (colors, matrix) => {
   };
 };
 
-//Matrix information for switching colors
+// Matrix information for switching colors
 const matrix = {
   Protanopia: [
     0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0,
@@ -65,7 +65,7 @@ const matrix = {
 Function for simulating color vision deficiencies
 */
 const ColorVision = (changeColors, exerciseOption, colors) => {
-  //RGBA results from simulation
+  // RGBA results from simulation
   const rgbaColors = {
     R: 0,
     G: 0,
@@ -73,34 +73,34 @@ const ColorVision = (changeColors, exerciseOption, colors) => {
     A: 0,
   };
 
-  var updatedColors = [];
-  var position = 0;
+  const updatedColors = [];
+  let position = 0;
 
   /*
   For each color passed to the calculator, the system will calculate its
   simulated value and display it to the user for the exercise
   */
   colors.forEach((color) => {
-    var tempColor = hexToRgba(color);
-    tempColor = tempColor.split("rgba");
+    let tempColor = hexToRgba(color);
+    tempColor = tempColor.split('rgba');
     tempColor = tempColor[1];
-    tempColor = tempColor.split("(");
-    tempColor = tempColor[1].split(")");
-    tempColor = tempColor[0].split(",");
+    tempColor = tempColor.split('(');
+    tempColor = tempColor[1].split(')');
+    tempColor = tempColor[0].split(',');
     rgbaColors.R = parseInt(tempColor[0]);
     rgbaColors.G = parseInt(tempColor[1].slice(1));
     rgbaColors.B = parseInt(tempColor[2].slice(1));
     rgbaColors.A = parseInt(tempColor[3].slice(1));
-    var result;
-    if (exerciseOption === "Protanopia") {
+    let result;
+    if (exerciseOption === 'Protanopia') {
       result = switchColors(rgbaColors, matrix.Protanopia);
-    } else if (exerciseOption === "Deuteranopia") {
+    } else if (exerciseOption === 'Deuteranopia') {
       result = switchColors(rgbaColors, matrix.Deuteranopia);
     } else {
       result = switchColors(rgbaColors, matrix.Tritanomaly);
     }
     updatedColors[
-      position
+        position
     ] = `rgba(${result.red}, ${result.green}, ${result.blue}, ${result.alpha})`;
     position++;
   });

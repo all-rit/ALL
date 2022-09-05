@@ -1,8 +1,8 @@
-import React from "react";
-import Button from "../components/header/buttons/button";
-import UserLabService from "../../../../services/UserLabService";
-import "./secondaryInstructions.css";
-import { LAB_ID } from "../../../../constants/lab2";
+import React from 'react';
+import Button from '../components/header/buttons/button';
+import UserLabService from '../../../../services/UserLabService';
+import './secondaryInstructions.css';
+import {LAB_ID} from '../../../../constants/lab2';
 
 /*
 Responible for displaying the fourth and final page of instructions to the users
@@ -24,7 +24,7 @@ const FourthInstructions = ({
     }
   };
 
-  if (background !== "white") {
+  if (background !== 'white') {
     toWhiteBackground();
   }
 
@@ -72,18 +72,18 @@ const FourthInstructions = ({
       <div className="center">
         <Button
           clickMethod={closeInstructions}
-          message={"Continue Playing!"}
-          fontSizing={"25px"}
+          message={'Continue Playing!'}
+          fontSizing={'25px'}
         />
         <Button
           clickMethod={endExercise}
-          message={"I'm Finished!"}
-          fontSizing={"25px"}
+          message={'I\'m Finished!'}
+          fontSizing={'25px'}
         />
         <Button
           clickMethod={activatePopup}
-          message={"Make Changes!"}
-          fontSizing={"20px"}
+          message={'Make Changes!'}
+          fontSizing={'20px'}
         />
       </div>
     </div>

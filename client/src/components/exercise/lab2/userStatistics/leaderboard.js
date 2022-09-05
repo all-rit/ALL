@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
 class Leaderboard extends Component {
   constructor(props) {
@@ -10,34 +10,34 @@ class Leaderboard extends Component {
   }
 
   render() {
-    if (this.props.background !== "white") {
+    if (this.props.background !== 'white') {
       this.props.toWhiteBackground();
     }
 
     const handleData = (data) => {
       console.log(data);
-      this.setState({ scores: data.scores });
+      this.setState({scores: data.scores});
     };
 
     const fetchData = () => {
-      fetch(process.env.API_URL + "/leaderboard", {
-        method: "GET",
-        credentials: "include",
+      fetch(process.env.API_URL + '/leaderboard', {
+        method: 'GET',
+        credentials: 'include',
       })
-        .then((res) => res.json())
-        .then((data) => handleData(data))
-        .catch((err) => console.log(err));
-      this.setState({ retrievedData: true });
+          .then((res) => res.json())
+          .then((data) => handleData(data))
+          .catch((err) => console.log(err));
+      this.setState({retrievedData: true});
     };
 
     if (!this.state.retrievedData) {
       fetchData();
     }
 
-    const headers = ["Rank", "Score", "Mode"];
+    const headers = ['Rank', 'Score', 'Mode'];
 
     const createTable = () => {
-      let table = [];
+      const table = [];
       let length = 0;
       if (this.state.scores !== null) {
         if (this.state.scores.length >= 20) {
@@ -47,7 +47,7 @@ class Leaderboard extends Component {
         }
       }
       for (let i = -1; i < length; i++) {
-        let children = [];
+        const children = [];
         let data = null;
         if (i === -1) {
           data = headers;
@@ -55,16 +55,16 @@ class Leaderboard extends Component {
           data = this.state.scores[i];
           children.push(<td key={i}>{i + 1}</td>);
         }
-        const defaultControl = "default";
-        for (var key in data) {
+        const defaultControl = 'default';
+        for (const key in data) {
           if (
-            key === "score" ||
-            key === "modename" ||
-            key === "0" ||
-            key === "1" ||
-            key === "2"
+            key === 'score' ||
+            key === 'modename' ||
+            key === '0' ||
+            key === '1' ||
+            key === '2'
           ) {
-            if (data[key] === "main") {
+            if (data[key] === 'main') {
               children.push(<td key={key}>{defaultControl}</td>);
             } else {
               children.push(<td key={key}>{data[key]}</td>);
@@ -78,8 +78,8 @@ class Leaderboard extends Component {
 
     return (
       <div>
-        <p style={{ textAlign: "center", fontSize: "40px" }}>Leaderboard:</p>
-        <table style={{ display: "flex", justifyContent: "center" }}>
+        <p style={{textAlign: 'center', fontSize: '40px'}}>Leaderboard:</p>
+        <table style={{display: 'flex', justifyContent: 'center'}}>
           <tbody>{createTable()}</tbody>
         </table>
       </div>

@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Button, CustomInput, Label } from "reactstrap";
-import { Form, FormGroup } from "reactstrap";
+import React, {useEffect, useState} from 'react';
+import {Button, CustomInput, Label} from 'reactstrap';
+import {Form, FormGroup} from 'reactstrap';
 
 const ChatBox = () => {
-  const [chatText, setChatText] = useState("");
+  const [chatText, setChatText] = useState('');
   const [messages, setMessages] = useState([]);
 
   const fakeUserAMessages = [
-    "This waiting sucks!",
-    "Why can't I get into the game?!",
-    "This loading is taking forever",
+    'This waiting sucks!',
+    'Why can\'t I get into the game?!',
+    'This loading is taking forever',
   ];
 
   const fakeUserBMessages = [
-    "Worst...wait...ever",
-    "If this waiting continues I may leave soon...",
-    "Can this be any slower?",
-    "Please load faster...",
+    'Worst...wait...ever',
+    'If this waiting continues I may leave soon...',
+    'Can this be any slower?',
+    'Please load faster...',
   ];
 
   useEffect(() => {
@@ -25,9 +25,9 @@ const ChatBox = () => {
         fakeUserAMessages[Math.floor(Math.random() * fakeUserAMessages.length)];
       const randomBMessage =
         fakeUserBMessages[Math.floor(Math.random() * fakeUserBMessages.length)];
-      let messArr = [
-        "PikachuRising: " + randomAMessage,
-        "Your Mama: " + randomBMessage,
+      const messArr = [
+        'PikachuRising: ' + randomAMessage,
+        'Your Mama: ' + randomBMessage,
       ];
       setMessages(messArr);
     }
@@ -35,13 +35,13 @@ const ChatBox = () => {
 
   useEffect(() => {}, [chatText]);
 
-  //Generates the response to the input user, so has to agree/disagree
+  // Generates the response to the input user, so has to agree/disagree
   const fakeUserCMessages = [
-    "Yeah, it's kind of whack",
-    "Hopefully, it'll let us in soon...",
+    'Yeah, it\'s kind of whack',
+    'Hopefully, it\'ll let us in soon...',
   ];
 
-  //randomly sorts thru fake user responses
+  // randomly sorts thru fake user responses
 
   const randomCMessages =
     fakeUserCMessages[Math.floor(Math.random() * fakeUserCMessages.length)];
@@ -52,10 +52,10 @@ const ChatBox = () => {
     console.log(formData.userMessage);
     setChatText(formData.userMessage);
     if (formData.userMessage) {
-      let copy = [...messages];
-      copy.push("Default User: " + formData.userMessage);
+      const copy = [...messages];
+      copy.push('Default User: ' + formData.userMessage);
       setMessages(copy);
-      setChatText("");
+      setChatText('');
     }
   };
 

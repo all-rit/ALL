@@ -1,9 +1,9 @@
-import React from "react";
-import { Table } from "reactstrap";
-import ResultLimiter from "./components/ResultLimiter";
+import React from 'react';
+import {Table} from 'reactstrap';
+import ResultLimiter from './components/ResultLimiter';
 
 const EnrolledStudentsTable = (props) => {
-  const { assignedLabs, enrolledStudents, groupid } = props;
+  const {assignedLabs, enrolledStudents, groupid} = props;
 
   return (
     <div className="enrolled_students_table">
@@ -20,7 +20,7 @@ const EnrolledStudentsTable = (props) => {
           <ResultLimiter
             assignedLabs={assignedLabs}
             data={enrolledStudents}
-            resultType={"studentLabs"}
+            resultType={'studentLabs'}
             groupid={groupid}
           />
         </Table>

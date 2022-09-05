@@ -1,7 +1,7 @@
-import React from "react";
-import handleRedirect from "../../../helpers/Redirect";
-import ProgressBar from "../profilepage/components/ProgressBar";
-import InfoModal from "./InfoModal";
+import React from 'react';
+import handleRedirect from '../../../helpers/Redirect';
+import ProgressBar from '../profilepage/components/ProgressBar';
+import InfoModal from './InfoModal';
 
 const Lab = (props) => {
   const {
@@ -23,17 +23,17 @@ const Lab = (props) => {
       score = parseFloat(score);
       switch (true) {
         case score <= 40:
-          return "crimson";
+          return 'crimson';
         case score <= 70:
-          return "orange";
+          return 'orange';
         default:
-          return "chartreuse";
+          return 'chartreuse';
       }
     }
   }
 
   switch (progressState) {
-    case "IN_PROGRESS":
+    case 'IN_PROGRESS':
       return (
         <ul className="module__col module__lab_col">
           <li>
@@ -46,7 +46,7 @@ const Lab = (props) => {
                 alt={alt}
                 className="img-fluid module__image module__lab_image"
                 style={{
-                  backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
+                  backgroundImage: 'url(/img/lab_thumbnails/' + image + ')',
                 }}
               />
             </a>
@@ -65,24 +65,24 @@ const Lab = (props) => {
                   <ProgressBar
                     labID={lab}
                     barData={[
-                      ["About", labProgress.aboutcompletedtime],
-                      ["Reading", labProgress.readingcompletedtime],
-                      ["Exercise", labProgress.exercisecompletedtime],
-                      ["Reinforcement", labProgress.reinforcementcompletedtime],
-                      ["Quiz", labProgress.quizcompletedtime],
+                      ['About', labProgress.aboutcompletedtime],
+                      ['Reading', labProgress.readingcompletedtime],
+                      ['Exercise', labProgress.exercisecompletedtime],
+                      ['Reinforcement', labProgress.reinforcementcompletedtime],
+                      ['Quiz', labProgress.quizcompletedtime],
                     ]}
                     percentage={true}
                   />
                 </li>
                 <li className="module__bio">
-                  Started on {labProgress.labstarttime.split("T")[0]}
+                  Started on {labProgress.labstarttime.split('T')[0]}
                 </li>
               </ul>
             )}
           </ul>
         </ul>
       );
-    case "COMPLETED":
+    case 'COMPLETED':
       return (
         <ul className="module__col module__lab_col">
           <li>
@@ -95,7 +95,7 @@ const Lab = (props) => {
                 alt={alt}
                 className="img-fluid module__image module__lab_image"
                 style={{
-                  backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
+                  backgroundImage: 'url(/img/lab_thumbnails/' + image + ')',
                 }}
               />
             </a>
@@ -108,20 +108,20 @@ const Lab = (props) => {
             </li>
             <ul className="module__bio">
               <li>
-                <b style={{ color: getColor(labProgress) }}>
-                  {labProgress === null || labProgress === undefined
-                    ? 0
-                    : labProgress.quizscore}
+                <b style={{color: getColor(labProgress)}}>
+                  {labProgress === null || labProgress === undefined ?
+                    0 :
+                    labProgress.quizscore}
                   % Quiz Score
                 </b>
               </li>
               <li>
-                {" "}
-                Completed on {labProgress.labcompletiontime.split("T")[0]}
+                {' '}
+                Completed on {labProgress.labcompletiontime.split('T')[0]}
               </li>
               <li className="module__bio">
                 <InfoModal
-                  buttonLabel={"View Certificate"}
+                  buttonLabel={'View Certificate'}
                   labName={name}
                   labNum={lab}
                   labProgress={labProgress}
@@ -131,7 +131,7 @@ const Lab = (props) => {
           </ul>
         </ul>
       );
-    case "NOT_STARTED":
+    case 'NOT_STARTED':
       return (
         <ul className="module__col module__lab_col">
           <li>
@@ -144,7 +144,7 @@ const Lab = (props) => {
                 alt={alt}
                 className="img-fluid module__image module__lab_image"
                 style={{
-                  backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
+                  backgroundImage: 'url(/img/lab_thumbnails/' + image + ')',
                 }}
               />
             </a>
@@ -172,7 +172,7 @@ const Lab = (props) => {
                 alt={alt}
                 className="img-fluid module__image module__lab_image"
                 style={{
-                  backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
+                  backgroundImage: 'url(/img/lab_thumbnails/' + image + ')',
                 }}
               />
             </a>
@@ -194,7 +194,7 @@ const Lab = (props) => {
                 </button>
               </li>
               <InfoModal
-                buttonLabel={"More Info"}
+                buttonLabel={'More Info'}
                 labName={name}
                 fullDescription={fullDescription}
                 learningObjectives={learningObjectives}

@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import Score from "./score";
-import Instructions from "../Instructions/instructions";
-import Circle from "./circle";
-import Replay from "./replay";
-import Countdown from "react-countdown-now";
+import React, {Component} from 'react';
+import Score from './score';
+import Instructions from '../Instructions/instructions';
+import Circle from './circle';
+import Replay from './replay';
+import Countdown from 'react-countdown-now';
 
 /*
 Component for the secondary timer used for each of the circles per second
 */
 class SecondTimer extends Component {
-  //State for score information
+  // State for score information
   constructor(props) {
     super(props);
     this.currentColor = null;
@@ -25,7 +25,7 @@ class SecondTimer extends Component {
     this.first = true;
   }
 
-  //Renderer for system
+  // Renderer for system
   render() {
     const {
       correctColor,
@@ -41,9 +41,9 @@ class SecondTimer extends Component {
       enterThirdInfoState,
     } = this.props;
 
-    const isHex = exerciseOption === "hex";
+    const isHex = exerciseOption === 'hex';
 
-    //Calculates the score based on the response from the user
+    // Calculates the score based on the response from the user
     const calculateScore = () => {
       if (
         this.numRightOnClick +
@@ -92,15 +92,15 @@ class SecondTimer extends Component {
       }
     };
 
-    //Randomly generates a color for the middle circle
+    // Randomly generates a color for the middle circle
     const calculateRandomColor = () => {
-      let options = [correctColor, incorrectColorOne, incorrectColorTwo];
-      let position = Math.floor(Math.random() * 3);
+      const options = [correctColor, incorrectColorOne, incorrectColorTwo];
+      const position = Math.floor(Math.random() * 3);
       this.currentColor = options[position];
       return options[position];
     };
 
-    //Handles the click of the middle circle and records the time
+    // Handles the click of the middle circle and records the time
     const onClick = () => {
       if (!this.clicked) {
         this.clicked = true;
@@ -109,21 +109,21 @@ class SecondTimer extends Component {
     };
 
     const updateColor = (isCorrect) => {
-      var element = document.getElementById("notifyUser");
+      const element = document.getElementById('notifyUser');
       if (element !== null) {
         element.innerHTML = `${isCorrect}`;
       }
     };
 
-    //turns the data found into an object so it can be passed to the backend
-    //after it is converted, the system sends the info to the backend and then
-    //will record the results from the past five exercises in the state of the exercise
+    // turns the data found into an object so it can be passed to the backend
+    // after it is converted, the system sends the info to the backend and then
+    // will record the results from the past five exercises in the state of the exercise
     const recordData = () => {
-      let score = this.score;
-      let numRightOnClick = this.numRightOnClick;
-      let numWrongOnClick = this.numWrongOnClick;
-      let numRightOnNoClick = this.numRightOnNoClick;
-      let numWrongOnNoClick = this.numWrongOnNoClick;
+      const score = this.score;
+      const numRightOnClick = this.numRightOnClick;
+      const numWrongOnClick = this.numWrongOnClick;
+      const numRightOnNoClick = this.numRightOnNoClick;
+      const numWrongOnNoClick = this.numWrongOnNoClick;
       const data = {
         score,
         numRightOnClick,
@@ -137,20 +137,20 @@ class SecondTimer extends Component {
         Mode: [exerciseOption.toUpperCase()],
       };
 
-      fetch(process.env.API_URL + "/exerciseStats", {
-        method: "POST",
-        headers: new Headers({ "content-type": "application/json" }),
-        credentials: "include",
+      fetch(process.env.API_URL + '/exerciseStats', {
+        method: 'POST',
+        headers: new Headers({'content-type': 'application/json'}),
+        credentials: 'include',
         body: JSON.stringify(data),
       }).catch((err) => console.log(err));
     };
 
-    //Specified by the timer for custom rendering of the center circle
+    // Specified by the timer for custom rendering of the center circle
     const renderer = (props) => {
       this.correct = this.currentColor === correctColor;
-      let isCorrect = "Incorrect";
+      let isCorrect = 'Incorrect';
       if (this.correct) {
-        isCorrect = "Correct";
+        isCorrect = 'Correct';
       }
       calculateRandomColor();
       if (!this.first) {
@@ -164,8 +164,8 @@ class SecondTimer extends Component {
       if (props.total !== 0) {
         updateColor(isCorrect);
       }
-      //Returns either the replay screen option or the center circle that
-      //Changes every second
+      // Returns either the replay screen option or the center circle that
+      // Changes every second
       return (
         <div>
           {props.total === 0 ? (
@@ -225,7 +225,7 @@ class SecondTimer extends Component {
       );
     };
 
-    //Used only for the react component used for the countdown system
+    // Used only for the react component used for the countdown system
     return (
       <div>
         <Countdown

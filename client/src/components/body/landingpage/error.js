@@ -1,8 +1,8 @@
-import React from "react";
-import Redirect from "../../../helpers/Redirect";
+import React from 'react';
+import Redirect from '../../../helpers/Redirect';
 
 const Error = (props) => {
-  const { actions } = props;
+  const {actions} = props;
   return (
     <div className="errorpage">
       <div>

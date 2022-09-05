@@ -29,7 +29,7 @@ import {
   END_COLOR_CHANGE,
   RESET,
   BACK_EXERCISE,
-} from "../../constants/lab2/index";
+} from '../../constants/lab2/index';
 
 /*
 Used to update the colors for the entire system (from popup)

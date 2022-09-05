@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import CodeUpdateHeader from "../../components/CodeUpdateHeader";
-import "../../../../../assets/stylesheets/prism.scss";
-import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
-import { amber, green, red, yellow } from "@material-ui/core/colors";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import clsx from "clsx";
-import IconButton from "@material-ui/core/IconButton";
-import WarningIcon from "@material-ui/icons/Warning";
-import ErrorIcon from "@material-ui/icons/Error";
-import InfoIcon from "@material-ui/icons/Info";
-import CloseIcon from "@material-ui/icons/Close";
-import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
-import Repair from "../../components/Repair";
-import ExerciseButtons from "../../components/ExerciseButtons";
-import Popup from "../../../shared/Popup";
+import React, {Component} from 'react';
+import CodeUpdateHeader from '../../components/CodeUpdateHeader';
+import '../../../../../assets/stylesheets/prism.scss';
+import CheckCircleIcon from '@material-ui/core/SvgIcon/SvgIcon';
+import {amber, green, red, yellow} from '@material-ui/core/colors';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import clsx from 'clsx';
+import IconButton from '@material-ui/core/IconButton';
+import WarningIcon from '@material-ui/icons/Warning';
+import ErrorIcon from '@material-ui/icons/Error';
+import InfoIcon from '@material-ui/icons/Info';
+import CloseIcon from '@material-ui/icons/Close';
+import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
+import {EXERCISE_PLAYING} from '../../../../../constants/lab3/index';
+import Repair from '../../components/Repair';
+import ExerciseButtons from '../../components/ExerciseButtons';
+import Popup from '../../../shared/Popup';
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -45,13 +45,13 @@ function MySnackbarContentWrapper(props) {
       opacity: 0.9,
     },
     message: {
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
     },
   };
-  const { className, message, onClose, variant, ...other } = props;
+  const {className, message, onClose, variant, ...other} = props;
   const Icon = variantIcon[variant];
-  const messageStyle = { marginLeft: "10px" };
+  const messageStyle = {marginLeft: '10px'};
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
@@ -63,8 +63,8 @@ function MySnackbarContentWrapper(props) {
           color={amber}
           aria-label={message}
         >
-          <Typography variant={"body2"} style={messageStyle} gutterBottom>
-            <Icon className={clsx(classes.icon, classes.iconVariant)} />{" "}
+          <Typography variant={'body2'} style={messageStyle} gutterBottom>
+            <Icon className={clsx(classes.icon, classes.iconVariant)} />{' '}
             {message}
           </Typography>
         </span>
@@ -88,49 +88,49 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
+  variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
 class CodeChange extends Component {
   constructor(props) {
     super(props);
-    document.body.style = "background: white";
+    document.body.style = 'background: white';
   }
   componentDidMount() {
-    const { actions } = this.props;
+    const {actions} = this.props;
     actions.updateState(EXERCISE_PLAYING);
   }
 
   static doEvent(obj, event) {
-    const eventInit = new Event(event, { target: obj, bubbles: true });
+    const eventInit = new Event(event, {target: obj, bubbles: true});
     return obj ? obj.dispatchEvent(eventInit) : false;
   }
 
   render() {
-    const { data, actions } = this.props;
+    const {data, actions} = this.props;
     return (
       <div>
         <CodeUpdateHeader
-          heading={"Make Code Changes"}
-          justifyAlignment={"space-between"}
+          heading={'Make Code Changes'}
+          justifyAlignment={'space-between'}
         />
-        <div style={{ display: "block", marginBottom: "10px" }}>
+        <div style={{display: 'block', marginBottom: '10px'}}>
           <Typography
-            variant={"subtitle"}
+            variant={'subtitle'}
             aria-label={
-              "First make changes to the code, if not satisfied try again.\n" +
-              "                    Then click the 'End Activity' button which will appear when you have made changes " +
-              "at least once."
+              'First make changes to the code, if not satisfied try again.\n' +
+              '                    Then click the \'End Activity\' button which will appear when you have made changes ' +
+              'at least once.'
             }
-            color={"inherit"}
-            tabIndex={"0"}
+            color={'inherit'}
+            tabIndex={'0'}
           >
             First make changes to the code, if not satisfied try again. Then
             click the 'End Activity' button, which will appear when you have
             made changes at least once.
           </Typography>
         </div>
-        <div style={{ textAlign: "center" }}>
+        <div style={{textAlign: 'center'}}>
           <Popup
             message={data.app3.popupMessage}
             handler={actions.updatePopup}

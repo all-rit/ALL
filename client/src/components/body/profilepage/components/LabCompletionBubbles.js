@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import groupService from "../../../../services/GroupService";
+import React, {useState, useEffect} from 'react';
+import groupService from '../../../../services/GroupService';
 
 const LabCompletionBubbles = (props) => {
-  const { studentid, groupid } = props;
+  const {studentid, groupid} = props;
   const [completedLabs, setCompletedLabs] = useState([]);
 
   useEffect(() => {

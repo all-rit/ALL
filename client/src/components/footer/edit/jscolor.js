@@ -11,31 +11,31 @@
  */
 
 if (!window.jscolor) {
-  window.jscolor = (function () {
+  window.jscolor = (function() {
     var jsc = {
-      register: function () {
+      register: function() {
         jsc.attachDOMReadyEvent(jsc.init);
-        jsc.attachEvent(document, "mousedown", jsc.onDocumentMouseDown);
-        jsc.attachEvent(document, "touchstart", jsc.onDocumentTouchStart);
-        jsc.attachEvent(window, "resize", jsc.onWindowResize);
+        jsc.attachEvent(document, 'mousedown', jsc.onDocumentMouseDown);
+        jsc.attachEvent(document, 'touchstart', jsc.onDocumentTouchStart);
+        jsc.attachEvent(window, 'resize', jsc.onWindowResize);
       },
 
-      init: function () {
+      init: function() {
         if (jsc.jscolor.lookupClass) {
           jsc.jscolor.installByClassName(jsc.jscolor.lookupClass);
         }
       },
 
-      tryInstallOnElements: function (elms, className) {
-        var matchClass = new RegExp(
-          "(^|\\s)(" + className + ")(\\s*(\\{[^}]*\\})|\\s|$)",
-          "i"
+      tryInstallOnElements: function(elms, className) {
+        const matchClass = new RegExp(
+            '(^|\\s)(' + className + ')(\\s*(\\{[^}]*\\})|\\s|$)',
+            'i',
         );
 
-        for (var i = 0; i < elms.length; i += 1) {
+        for (let i = 0; i < elms.length; i += 1) {
           if (
             elms[i].type !== undefined &&
-            elms[i].type.toLowerCase() === "color"
+            elms[i].type.toLowerCase() === 'color'
           ) {
             if (jsc.isColorAttrSupported) {
               // skip inputs of type 'color' if supported by the browser
@@ -48,27 +48,27 @@ if (!window.jscolor) {
             elms[i].className &&
             (m = elms[i].className.match(matchClass))
           ) {
-            var targetElm = elms[i];
-            var optsStr = null;
+            const targetElm = elms[i];
+            let optsStr = null;
 
-            var dataOptions = jsc.getDataAttr(targetElm, "jscolor");
+            const dataOptions = jsc.getDataAttr(targetElm, 'jscolor');
             if (dataOptions !== null) {
               optsStr = dataOptions;
             } else if (m[4]) {
               optsStr = m[4];
             }
 
-            var opts = {};
+            let opts = {};
             if (optsStr) {
               try {
                 // eslint-disable-next-line
                 opts = new Function("return (" + optsStr + ")")();
               } catch (eParseError) {
                 jsc.warn(
-                  "Error parsing jscolor options: " +
+                    'Error parsing jscolor options: ' +
                     eParseError +
-                    ":\n" +
-                    optsStr
+                    ':\n' +
+                    optsStr,
                 );
               }
             }
@@ -77,60 +77,60 @@ if (!window.jscolor) {
         }
       },
 
-      isColorAttrSupported: (function () {
-        var elm = document.createElement("input");
+      isColorAttrSupported: (function() {
+        const elm = document.createElement('input');
         if (elm.setAttribute) {
-          elm.setAttribute("type", "color");
-          if (elm.type.toLowerCase() === "color") {
+          elm.setAttribute('type', 'color');
+          if (elm.type.toLowerCase() === 'color') {
             return true;
           }
         }
         return false;
       })(),
 
-      isCanvasSupported: (function () {
-        var elm = document.createElement("canvas");
-        return !!(elm.getContext && elm.getContext("2d"));
+      isCanvasSupported: (function() {
+        const elm = document.createElement('canvas');
+        return !!(elm.getContext && elm.getContext('2d'));
       })(),
 
-      fetchElement: function (mixed) {
-        return typeof mixed === "string"
-          ? document.getElementById(mixed)
-          : mixed;
+      fetchElement: function(mixed) {
+        return typeof mixed === 'string' ?
+          document.getElementById(mixed) :
+          mixed;
       },
 
-      isElementType: function (elm, type) {
+      isElementType: function(elm, type) {
         return elm.nodeName.toLowerCase() === type.toLowerCase();
       },
 
-      getDataAttr: function (el, name) {
-        var attrName = "data-" + name;
-        var attrValue = el.getAttribute(attrName);
+      getDataAttr: function(el, name) {
+        const attrName = 'data-' + name;
+        const attrValue = el.getAttribute(attrName);
         if (attrValue !== null) {
           return attrValue;
         }
         return null;
       },
 
-      attachEvent: function (el, evnt, func) {
+      attachEvent: function(el, evnt, func) {
         if (el.addEventListener) {
           el.addEventListener(evnt, func, false);
         } else if (el.attachEvent) {
-          el.attachEvent("on" + evnt, func);
+          el.attachEvent('on' + evnt, func);
         }
       },
 
-      detachEvent: function (el, evnt, func) {
+      detachEvent: function(el, evnt, func) {
         if (el.removeEventListener) {
           el.removeEventListener(evnt, func, false);
         } else if (el.detachEvent) {
-          el.detachEvent("on" + evnt, func);
+          el.detachEvent('on' + evnt, func);
         }
       },
 
       _attachedGroupEvents: {},
 
-      attachGroupEvent: function (groupName, el, evnt, func) {
+      attachGroupEvent: function(groupName, el, evnt, func) {
         if (!jsc._attachedGroupEvents.hasOwnProperty(groupName)) {
           jsc._attachedGroupEvents[groupName] = [];
         }
@@ -138,43 +138,43 @@ if (!window.jscolor) {
         jsc.attachEvent(el, evnt, func);
       },
 
-      detachGroupEvents: function (groupName) {
+      detachGroupEvents: function(groupName) {
         if (jsc._attachedGroupEvents.hasOwnProperty(groupName)) {
           for (
-            var i = 0;
+            let i = 0;
             i < jsc._attachedGroupEvents[groupName].length;
             i += 1
           ) {
-            var evt = jsc._attachedGroupEvents[groupName][i];
+            const evt = jsc._attachedGroupEvents[groupName][i];
             jsc.detachEvent(evt[0], evt[1], evt[2]);
           }
           delete jsc._attachedGroupEvents[groupName];
         }
       },
 
-      attachDOMReadyEvent: function (func) {
-        var fired = false;
-        var fireOnce = function () {
+      attachDOMReadyEvent: function(func) {
+        let fired = false;
+        const fireOnce = function() {
           if (!fired) {
             fired = true;
             func();
           }
         };
 
-        if (document.readyState === "complete") {
+        if (document.readyState === 'complete') {
           setTimeout(fireOnce, 1); // async
           return;
         }
 
         if (document.addEventListener) {
-          document.addEventListener("DOMContentLoaded", fireOnce, false);
+          document.addEventListener('DOMContentLoaded', fireOnce, false);
 
           // Fallback
-          window.addEventListener("load", fireOnce, false);
+          window.addEventListener('load', fireOnce, false);
         } else if (document.attachEvent) {
           // IE
-          document.attachEvent("onreadystatechange", function () {
-            if (document.readyState === "complete") {
+          document.attachEvent('onreadystatechange', function() {
+            if (document.readyState === 'complete') {
               // eslint-disable-next-line
               document.detachEvent("onreadystatechange", arguments.callee);
               fireOnce();
@@ -182,16 +182,16 @@ if (!window.jscolor) {
           });
 
           // Fallback
-          window.attachEvent("onload", fireOnce);
+          window.attachEvent('onload', fireOnce);
 
           // IE7/8
           if (document.documentElement.doScroll && window === window.top) {
-            var tryScroll = function () {
+            var tryScroll = function() {
               if (!document.body) {
                 return;
               }
               try {
-                document.documentElement.doScroll("left");
+                document.documentElement.doScroll('left');
                 fireOnce();
               } catch (e) {
                 setTimeout(tryScroll, 1);
@@ -202,20 +202,20 @@ if (!window.jscolor) {
         }
       },
 
-      warn: function (msg) {
+      warn: function(msg) {
         if (window.console && window.console.warn) {
           window.console.warn(msg);
         }
       },
 
-      preventDefault: function (e) {
+      preventDefault: function(e) {
         if (e.preventDefault) {
           e.preventDefault();
         }
         e.returnValue = false;
       },
 
-      captureTarget: function (target) {
+      captureTarget: function(target) {
         // IE
         if (target.setCapture) {
           jsc._capturedTarget = target;
@@ -223,7 +223,7 @@ if (!window.jscolor) {
         }
       },
 
-      releaseTarget: function () {
+      releaseTarget: function() {
         // IE
         if (jsc._capturedTarget) {
           jsc._capturedTarget.releaseCapture();
@@ -231,104 +231,104 @@ if (!window.jscolor) {
         }
       },
 
-      fireEvent: function (el, evnt) {
+      fireEvent: function(el, evnt) {
         if (!el) {
           return;
         }
-        var ev;
+        let ev;
         if (document.createEvent) {
-          ev = document.createEvent("HTMLEvents");
+          ev = document.createEvent('HTMLEvents');
           ev.initEvent(evnt, true, true);
           el.dispatchEvent(ev);
         } else if (document.createEventObject) {
           ev = document.createEventObject();
-          el.fireEvent("on" + evnt, ev);
-        } else if (el["on" + evnt]) {
+          el.fireEvent('on' + evnt, ev);
+        } else if (el['on' + evnt]) {
           // alternatively use the traditional event model
-          el["on" + evnt]();
+          el['on' + evnt]();
         }
       },
 
-      classNameToList: function (className) {
-        return className.replace(/^\s+|\s+$/g, "").split(/\s+/);
+      classNameToList: function(className) {
+        return className.replace(/^\s+|\s+$/g, '').split(/\s+/);
       },
 
       // The className parameter (str) can only contain a single class name
-      hasClass: function (elm, className) {
+      hasClass: function(elm, className) {
         if (!className) {
           return false;
         }
         return (
           -1 !==
-          (" " + elm.className.replace(/\s+/g, " ") + " ").indexOf(
-            " " + className + " "
+          (' ' + elm.className.replace(/\s+/g, ' ') + ' ').indexOf(
+              ' ' + className + ' ',
           )
         );
       },
 
       // The className parameter (str) can contain multiple class names separated by whitespace
-      setClass: function (elm, className) {
-        var classList = jsc.classNameToList(className);
-        for (var i = 0; i < classList.length; i += 1) {
+      setClass: function(elm, className) {
+        const classList = jsc.classNameToList(className);
+        for (let i = 0; i < classList.length; i += 1) {
           if (!jsc.hasClass(elm, classList[i])) {
-            elm.className += (elm.className ? " " : "") + classList[i];
+            elm.className += (elm.className ? ' ' : '') + classList[i];
           }
         }
       },
 
       // The className parameter (str) can contain multiple class names separated by whitespace
-      unsetClass: function (elm, className) {
-        var classList = jsc.classNameToList(className);
-        for (var i = 0; i < classList.length; i += 1) {
-          var repl = new RegExp(
-            "^\\s*" +
+      unsetClass: function(elm, className) {
+        const classList = jsc.classNameToList(className);
+        for (let i = 0; i < classList.length; i += 1) {
+          const repl = new RegExp(
+              '^\\s*' +
               classList[i] +
-              "\\s*|" +
-              "\\s*" +
+              '\\s*|' +
+              '\\s*' +
               classList[i] +
-              "\\s*$|" +
-              "\\s+" +
+              '\\s*$|' +
+              '\\s+' +
               classList[i] +
-              "(\\s+)",
-            "g"
+              '(\\s+)',
+              'g',
           );
-          elm.className = elm.className.replace(repl, "$1");
+          elm.className = elm.className.replace(repl, '$1');
         }
       },
 
-      getStyle: function (elm) {
-        return window.getComputedStyle
-          ? window.getComputedStyle(elm)
-          : elm.currentStyle;
+      getStyle: function(elm) {
+        return window.getComputedStyle ?
+          window.getComputedStyle(elm) :
+          elm.currentStyle;
       },
 
-      setStyle: (function () {
-        var helper = document.createElement("div");
-        var getSupportedProp = function (names) {
-          for (var i = 0; i < names.length; i += 1) {
+      setStyle: (function() {
+        const helper = document.createElement('div');
+        const getSupportedProp = function(names) {
+          for (let i = 0; i < names.length; i += 1) {
             if (names[i] in helper.style) {
               return names[i];
             }
           }
         };
-        var props = {
+        const props = {
           borderRadius: getSupportedProp([
-            "borderRadius",
-            "MozBorderRadius",
-            "webkitBorderRadius",
+            'borderRadius',
+            'MozBorderRadius',
+            'webkitBorderRadius',
           ]),
           boxShadow: getSupportedProp([
-            "boxShadow",
-            "MozBoxShadow",
-            "webkitBoxShadow",
+            'boxShadow',
+            'MozBoxShadow',
+            'webkitBoxShadow',
           ]),
         };
-        return function (elm, prop, value) {
+        return function(elm, prop, value) {
           switch (prop.toLowerCase()) {
-            case "opacity":
+            case 'opacity':
               var alphaOpacity = Math.round(parseFloat(value) * 100);
               elm.style.opacity = value;
-              elm.style.filter = "alpha(opacity=" + alphaOpacity + ")";
+              elm.style.filter = 'alpha(opacity=' + alphaOpacity + ')';
               break;
             default:
               elm.style[props[prop]] = value;
@@ -337,104 +337,104 @@ if (!window.jscolor) {
         };
       })(),
 
-      setBorderRadius: function (elm, value) {
-        jsc.setStyle(elm, "borderRadius", value || "0");
+      setBorderRadius: function(elm, value) {
+        jsc.setStyle(elm, 'borderRadius', value || '0');
       },
 
-      setBoxShadow: function (elm, value) {
-        jsc.setStyle(elm, "boxShadow", value || "none");
+      setBoxShadow: function(elm, value) {
+        jsc.setStyle(elm, 'boxShadow', value || 'none');
       },
 
-      getElementPos: function (e, relativeToViewport) {
-        var x = 0,
-          y = 0;
-        var rect = e.getBoundingClientRect();
+      getElementPos: function(e, relativeToViewport) {
+        let x = 0;
+        let y = 0;
+        const rect = e.getBoundingClientRect();
         x = rect.left;
         y = rect.top;
         if (!relativeToViewport) {
-          var viewPos = jsc.getViewPos();
+          const viewPos = jsc.getViewPos();
           x += viewPos[0];
           y += viewPos[1];
         }
         return [x, y];
       },
 
-      getElementSize: function (e) {
+      getElementSize: function(e) {
         return [e.offsetWidth, e.offsetHeight];
       },
 
       // get pointer's X/Y coordinates relative to viewport
-      getAbsPointerPos: function (e) {
+      getAbsPointerPos: function(e) {
         if (!e) {
           e = window.event;
         }
-        var x = 0,
-          y = 0;
+        let x = 0;
+        let y = 0;
         if (
-          typeof e.changedTouches !== "undefined" &&
+          typeof e.changedTouches !== 'undefined' &&
           e.changedTouches.length
         ) {
           // touch devices
           x = e.changedTouches[0].clientX;
           y = e.changedTouches[0].clientY;
-        } else if (typeof e.clientX === "number") {
+        } else if (typeof e.clientX === 'number') {
           x = e.clientX;
           y = e.clientY;
         }
-        return { x: x, y: y };
+        return {x: x, y: y};
       },
 
       // get pointer's X/Y coordinates relative to target element
-      getRelPointerPos: function (e) {
+      getRelPointerPos: function(e) {
         if (!e) {
           e = window.event;
         }
-        var target = e.target || e.srcElement;
-        var targetRect = target.getBoundingClientRect();
+        const target = e.target || e.srcElement;
+        const targetRect = target.getBoundingClientRect();
 
-        var x = 0,
-          y = 0;
+        let x = 0;
+        let y = 0;
 
-        var clientX = 0,
-          clientY = 0;
+        let clientX = 0;
+        let clientY = 0;
         if (
-          typeof e.changedTouches !== "undefined" &&
+          typeof e.changedTouches !== 'undefined' &&
           e.changedTouches.length
         ) {
           // touch devices
           clientX = e.changedTouches[0].clientX;
           clientY = e.changedTouches[0].clientY;
-        } else if (typeof e.clientX === "number") {
+        } else if (typeof e.clientX === 'number') {
           clientX = e.clientX;
           clientY = e.clientY;
         }
 
         x = clientX - targetRect.left;
         y = clientY - targetRect.top;
-        return { x: x, y: y };
+        return {x: x, y: y};
       },
 
-      getViewPos: function () {
-        var doc = document.documentElement;
+      getViewPos: function() {
+        const doc = document.documentElement;
         return [
           (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0),
           (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0),
         ];
       },
 
-      getViewSize: function () {
-        var doc = document.documentElement;
+      getViewSize: function() {
+        const doc = document.documentElement;
         return [
           window.innerWidth || doc.clientWidth,
           window.innerHeight || doc.clientHeight,
         ];
       },
 
-      redrawPosition: function () {
+      redrawPosition: function() {
         if (jsc.picker && jsc.picker.owner) {
-          var thisObj = jsc.picker.owner;
+          const thisObj = jsc.picker.owner;
 
-          var tp, vp;
+          let tp; let vp;
 
           if (thisObj.fixed) {
             // Fixed elements are positioned relative to viewport,
@@ -446,22 +446,22 @@ if (!window.jscolor) {
             vp = jsc.getViewPos(); // view pos
           }
 
-          var ts = jsc.getElementSize(thisObj.targetElement); // target size
-          var vs = jsc.getViewSize(); // view size
-          var ps = jsc.getPickerOuterDims(thisObj); // picker size
-          var a, b, c;
+          const ts = jsc.getElementSize(thisObj.targetElement); // target size
+          const vs = jsc.getViewSize(); // view size
+          const ps = jsc.getPickerOuterDims(thisObj); // picker size
+          let a; let b; let c;
           switch (thisObj.position.toLowerCase()) {
-            case "left":
+            case 'left':
               a = 1;
               b = 0;
               c = -1;
               break;
-            case "right":
+            case 'right':
               a = 1;
               b = 0;
               c = 1;
               break;
-            case "top":
+            case 'top':
               a = 0;
               b = 1;
               c = -1;
@@ -472,35 +472,35 @@ if (!window.jscolor) {
               c = 1;
               break;
           }
-          var l = (ts[b] + ps[b]) / 2;
+          const l = (ts[b] + ps[b]) / 2;
 
           // compute picker position
-          var pp;
+          let pp;
           if (!thisObj.smartPosition) {
             pp = [tp[a], tp[b] + ts[b] - l + l * c];
           } else {
             pp = [
-              -vp[a] + tp[a] + ps[a] > vs[a]
-                ? -vp[a] + tp[a] + ts[a] / 2 > vs[a] / 2 &&
-                  tp[a] + ts[a] - ps[a] >= 0
-                  ? tp[a] + ts[a] - ps[a]
-                  : tp[a]
-                : tp[a],
-              -vp[b] + tp[b] + ts[b] + ps[b] - l + l * c > vs[b]
-                ? -vp[b] + tp[b] + ts[b] / 2 > vs[b] / 2 &&
-                  tp[b] + ts[b] - l - l * c >= 0
-                  ? tp[b] + ts[b] - l - l * c
-                  : tp[b] + ts[b] - l + l * c
-                : tp[b] + ts[b] - l + l * c >= 0
-                ? tp[b] + ts[b] - l + l * c
-                : tp[b] + ts[b] - l - l * c,
+              -vp[a] + tp[a] + ps[a] > vs[a] ?
+                -vp[a] + tp[a] + ts[a] / 2 > vs[a] / 2 &&
+                  tp[a] + ts[a] - ps[a] >= 0 ?
+                  tp[a] + ts[a] - ps[a] :
+                  tp[a] :
+                tp[a],
+              -vp[b] + tp[b] + ts[b] + ps[b] - l + l * c > vs[b] ?
+                -vp[b] + tp[b] + ts[b] / 2 > vs[b] / 2 &&
+                  tp[b] + ts[b] - l - l * c >= 0 ?
+                  tp[b] + ts[b] - l - l * c :
+                  tp[b] + ts[b] - l + l * c :
+                tp[b] + ts[b] - l + l * c >= 0 ?
+                tp[b] + ts[b] - l + l * c :
+                tp[b] + ts[b] - l - l * c,
             ];
           }
 
-          var x = pp[a];
-          var y = pp[b];
-          var positionValue = thisObj.fixed ? "fixed" : "absolute";
-          var contractShadow =
+          const x = pp[a];
+          const y = pp[b];
+          const positionValue = thisObj.fixed ? 'fixed' : 'absolute';
+          const contractShadow =
             (pp[0] + ps[0] > tp[0] || pp[0] < tp[0] + ts[0]) &&
             pp[1] + ps[1] < tp[1] + ts[1];
 
@@ -508,97 +508,97 @@ if (!window.jscolor) {
         }
       },
 
-      _drawPosition: function (thisObj, x, y, positionValue, contractShadow) {
-        var vShadow = contractShadow ? 0 : thisObj.shadowBlur; // px
+      _drawPosition: function(thisObj, x, y, positionValue, contractShadow) {
+        const vShadow = contractShadow ? 0 : thisObj.shadowBlur; // px
 
         jsc.picker.wrap.style.position = positionValue;
-        jsc.picker.wrap.style.left = x + "px";
-        jsc.picker.wrap.style.top = y + "px";
+        jsc.picker.wrap.style.left = x + 'px';
+        jsc.picker.wrap.style.top = y + 'px';
 
         jsc.setBoxShadow(
-          jsc.picker.boxS,
-          thisObj.shadow
-            ? new jsc.BoxShadow(
+            jsc.picker.boxS,
+          thisObj.shadow ?
+            new jsc.BoxShadow(
                 0,
                 vShadow,
                 thisObj.shadowBlur,
                 0,
-                thisObj.shadowColor
-              )
-            : null
+                thisObj.shadowColor,
+            ) :
+            null,
         );
       },
 
-      getPickerDims: function (thisObj) {
-        var displaySlider = !!jsc.getSliderComponent(thisObj);
-        var dims = [
+      getPickerDims: function(thisObj) {
+        const displaySlider = !!jsc.getSliderComponent(thisObj);
+        const dims = [
           2 * thisObj.insetWidth +
             2 * thisObj.padding +
             thisObj.width +
-            (displaySlider
-              ? 2 * thisObj.insetWidth +
+            (displaySlider ?
+              2 * thisObj.insetWidth +
                 jsc.getPadToSliderPadding(thisObj) +
-                thisObj.sliderSize
-              : 0),
+                thisObj.sliderSize :
+              0),
           2 * thisObj.insetWidth +
             2 * thisObj.padding +
             thisObj.height +
-            (thisObj.closable
-              ? 2 * thisObj.insetWidth + thisObj.padding + thisObj.buttonHeight
-              : 0),
+            (thisObj.closable ?
+              2 * thisObj.insetWidth + thisObj.padding + thisObj.buttonHeight :
+              0),
         ];
         return dims;
       },
 
-      getPickerOuterDims: function (thisObj) {
-        var dims = jsc.getPickerDims(thisObj);
+      getPickerOuterDims: function(thisObj) {
+        const dims = jsc.getPickerDims(thisObj);
         return [
           dims[0] + 2 * thisObj.borderWidth,
           dims[1] + 2 * thisObj.borderWidth,
         ];
       },
 
-      getPadToSliderPadding: function (thisObj) {
+      getPadToSliderPadding: function(thisObj) {
         return Math.max(
-          thisObj.padding,
-          1.5 * (2 * thisObj.pointerBorderWidth + thisObj.pointerThickness)
+            thisObj.padding,
+            1.5 * (2 * thisObj.pointerBorderWidth + thisObj.pointerThickness),
         );
       },
 
-      getPadYComponent: function (thisObj) {
+      getPadYComponent: function(thisObj) {
         switch (thisObj.mode.charAt(1).toLowerCase()) {
-          case "v":
-            return "v";
+          case 'v':
+            return 'v';
           default:
         }
-        return "s";
+        return 's';
       },
 
-      getSliderComponent: function (thisObj) {
+      getSliderComponent: function(thisObj) {
         if (thisObj.mode.length > 2) {
           switch (thisObj.mode.charAt(2).toLowerCase()) {
-            case "s":
-              return "s";
-            case "v":
-              return "v";
+            case 's':
+              return 's';
+            case 'v':
+              return 'v';
             default:
           }
         }
         return null;
       },
 
-      onDocumentMouseDown: function (e) {
+      onDocumentMouseDown: function(e) {
         if (!e) {
           e = window.event;
         }
-        var target = e.target || e.srcElement;
+        const target = e.target || e.srcElement;
 
         if (target._jscLinkedInstance) {
           if (target._jscLinkedInstance.showOnClick) {
             target._jscLinkedInstance.show();
           }
         } else if (target._jscControlName) {
-          jsc.onControlPointerStart(e, target, target._jscControlName, "mouse");
+          jsc.onControlPointerStart(e, target, target._jscControlName, 'mouse');
         } else {
           // Mouse is outside the picker controls -> hide the color picker!
           if (jsc.picker && jsc.picker.owner) {
@@ -607,18 +607,18 @@ if (!window.jscolor) {
         }
       },
 
-      onDocumentTouchStart: function (e) {
+      onDocumentTouchStart: function(e) {
         if (!e) {
           e = window.event;
         }
-        var target = e.target || e.srcElement;
+        const target = e.target || e.srcElement;
 
         if (target._jscLinkedInstance) {
           if (target._jscLinkedInstance.showOnClick) {
             target._jscLinkedInstance.show();
           }
         } else if (target._jscControlName) {
-          jsc.onControlPointerStart(e, target, target._jscControlName, "touch");
+          jsc.onControlPointerStart(e, target, target._jscControlName, 'touch');
         } else {
           if (jsc.picker && jsc.picker.owner) {
             jsc.picker.owner.hide();
@@ -626,11 +626,11 @@ if (!window.jscolor) {
         }
       },
 
-      onWindowResize: function (e) {
+      onWindowResize: function(e) {
         jsc.redrawPosition();
       },
 
-      onParentScroll: function (e) {
+      onParentScroll: function(e) {
         // hide the picker when one of the parent elements is scrolled
         if (jsc.picker && jsc.picker.owner) {
           jsc.picker.owner.hide();
@@ -638,69 +638,69 @@ if (!window.jscolor) {
       },
 
       _pointerMoveEvent: {
-        mouse: "mousemove",
-        touch: "touchmove",
+        mouse: 'mousemove',
+        touch: 'touchmove',
       },
       _pointerEndEvent: {
-        mouse: "mouseup",
-        touch: "touchend",
+        mouse: 'mouseup',
+        touch: 'touchend',
       },
 
       _pointerOrigin: null,
       _capturedTarget: null,
 
-      onControlPointerStart: function (e, target, controlName, pointerType) {
-        var thisObj = target._jscInstance;
+      onControlPointerStart: function(e, target, controlName, pointerType) {
+        const thisObj = target._jscInstance;
 
         jsc.preventDefault(e);
         jsc.captureTarget(target);
 
-        var registerDragEvents = function (doc, offset) {
+        const registerDragEvents = function(doc, offset) {
           jsc.attachGroupEvent(
-            "drag",
-            doc,
-            jsc._pointerMoveEvent[pointerType],
-            jsc.onDocumentPointerMove(
-              e,
-              target,
-              controlName,
-              pointerType,
-              offset
-            )
+              'drag',
+              doc,
+              jsc._pointerMoveEvent[pointerType],
+              jsc.onDocumentPointerMove(
+                  e,
+                  target,
+                  controlName,
+                  pointerType,
+                  offset,
+              ),
           );
           jsc.attachGroupEvent(
-            "drag",
-            doc,
-            jsc._pointerEndEvent[pointerType],
-            jsc.onDocumentPointerEnd(e, target, controlName, pointerType)
+              'drag',
+              doc,
+              jsc._pointerEndEvent[pointerType],
+              jsc.onDocumentPointerEnd(e, target, controlName, pointerType),
           );
         };
 
         registerDragEvents(document, [0, 0]);
 
         if (window.parent && window.frameElement) {
-          var rect = window.frameElement.getBoundingClientRect();
-          var ofs = [-rect.left, -rect.top];
+          const rect = window.frameElement.getBoundingClientRect();
+          const ofs = [-rect.left, -rect.top];
           registerDragEvents(window.parent.window.document, ofs);
         }
 
-        var abs = jsc.getAbsPointerPos(e);
-        var rel = jsc.getRelPointerPos(e);
+        const abs = jsc.getAbsPointerPos(e);
+        const rel = jsc.getRelPointerPos(e);
         jsc._pointerOrigin = {
           x: abs.x - rel.x,
           y: abs.y - rel.y,
         };
 
         switch (controlName) {
-          case "pad":
+          case 'pad':
             // if the slider is at the bottom, move it up
             switch (jsc.getSliderComponent(thisObj)) {
-              case "s":
+              case 's':
                 if (thisObj.hsv[1] === 0) {
                   thisObj.fromHSV(null, 100, null);
                 }
                 break;
-              case "v":
+              case 'v':
                 if (thisObj.hsv[2] === 0) {
                   thisObj.fromHSV(null, null, 100);
                 }
@@ -710,7 +710,7 @@ if (!window.jscolor) {
             jsc.setPad(thisObj, e, 0, 0);
             break;
 
-          case "sld":
+          case 'sld':
             jsc.setSld(thisObj, e, 0);
             break;
           default:
@@ -719,17 +719,17 @@ if (!window.jscolor) {
         jsc.dispatchFineChange(thisObj);
       },
 
-      onDocumentPointerMove: function (
-        e,
-        target,
-        controlName,
-        pointerType,
-        offset
+      onDocumentPointerMove: function(
+          e,
+          target,
+          controlName,
+          pointerType,
+          offset,
       ) {
-        return function (e) {
-          var thisObj = target._jscInstance;
+        return function(e) {
+          const thisObj = target._jscInstance;
           switch (controlName) {
-            case "pad":
+            case 'pad':
               if (!e) {
                 e = window.event;
               }
@@ -737,7 +737,7 @@ if (!window.jscolor) {
               jsc.dispatchFineChange(thisObj);
               break;
 
-            case "sld":
+            case 'sld':
               if (!e) {
                 e = window.event;
               }
@@ -749,10 +749,10 @@ if (!window.jscolor) {
         };
       },
 
-      onDocumentPointerEnd: function (e, target, controlName, pointerType) {
-        return function (e) {
-          var thisObj = target._jscInstance;
-          jsc.detachGroupEvents("drag");
+      onDocumentPointerEnd: function(e, target, controlName, pointerType) {
+        return function(e) {
+          const thisObj = target._jscInstance;
+          jsc.detachGroupEvents('drag');
           jsc.releaseTarget();
           // Always dispatch changes after detaching outstanding mouse handlers,
           // in case some user interaction will occur in user's onchange callback
@@ -761,18 +761,18 @@ if (!window.jscolor) {
         };
       },
 
-      dispatchChange: function (thisObj) {
+      dispatchChange: function(thisObj) {
         if (thisObj.valueElement) {
-          if (jsc.isElementType(thisObj.valueElement, "input")) {
-            jsc.fireEvent(thisObj.valueElement, "change");
+          if (jsc.isElementType(thisObj.valueElement, 'input')) {
+            jsc.fireEvent(thisObj.valueElement, 'change');
           }
         }
       },
 
-      dispatchFineChange: function (thisObj) {
+      dispatchFineChange: function(thisObj) {
         if (thisObj.onFineChange) {
-          var callback;
-          if (typeof thisObj.onFineChange === "string") {
+          let callback;
+          if (typeof thisObj.onFineChange === 'string') {
             // eslint-disable-next-line
             callback = new Function(thisObj.onFineChange);
           } else {
@@ -782,98 +782,98 @@ if (!window.jscolor) {
         }
       },
 
-      setPad: function (thisObj, e, ofsX, ofsY) {
-        var pointerAbs = jsc.getAbsPointerPos(e);
-        var x =
+      setPad: function(thisObj, e, ofsX, ofsY) {
+        const pointerAbs = jsc.getAbsPointerPos(e);
+        const x =
           ofsX +
           pointerAbs.x -
           jsc._pointerOrigin.x -
           thisObj.padding -
           thisObj.insetWidth;
-        var y =
+        const y =
           ofsY +
           pointerAbs.y -
           jsc._pointerOrigin.y -
           thisObj.padding -
           thisObj.insetWidth;
 
-        var xVal = x * (360 / (thisObj.width - 1));
-        var yVal = 100 - y * (100 / (thisObj.height - 1));
+        const xVal = x * (360 / (thisObj.width - 1));
+        const yVal = 100 - y * (100 / (thisObj.height - 1));
 
         switch (jsc.getPadYComponent(thisObj)) {
-          case "s":
+          case 's':
             thisObj.fromHSV(xVal, yVal, null, jsc.leaveSld);
             break;
-          case "v":
+          case 'v':
             thisObj.fromHSV(xVal, null, yVal, jsc.leaveSld);
             break;
           default:
         }
       },
 
-      setSld: function (thisObj, e, ofsY) {
-        var pointerAbs = jsc.getAbsPointerPos(e);
-        var y =
+      setSld: function(thisObj, e, ofsY) {
+        const pointerAbs = jsc.getAbsPointerPos(e);
+        const y =
           ofsY +
           pointerAbs.y -
           jsc._pointerOrigin.y -
           thisObj.padding -
           thisObj.insetWidth;
 
-        var yVal = 100 - y * (100 / (thisObj.height - 1));
+        const yVal = 100 - y * (100 / (thisObj.height - 1));
 
         switch (jsc.getSliderComponent(thisObj)) {
-          case "s":
+          case 's':
             thisObj.fromHSV(null, yVal, null, jsc.leavePad);
             break;
-          case "v":
+          case 'v':
             thisObj.fromHSV(null, null, yVal, jsc.leavePad);
             break;
           default:
         }
       },
 
-      _vmlNS: "jsc_vml_",
-      _vmlCSS: "jsc_vml_css_",
+      _vmlNS: 'jsc_vml_',
+      _vmlCSS: 'jsc_vml_css_',
       _vmlReady: false,
 
-      initVML: function () {
+      initVML: function() {
         if (!jsc._vmlReady) {
           // init VML namespace
-          var doc = document;
+          const doc = document;
           if (!doc.namespaces[jsc._vmlNS]) {
-            doc.namespaces.add(jsc._vmlNS, "urn:schemas-microsoft-com:vml");
+            doc.namespaces.add(jsc._vmlNS, 'urn:schemas-microsoft-com:vml');
           }
           if (!doc.styleSheets[jsc._vmlCSS]) {
-            var tags = [
-              "shape",
-              "shapetype",
-              "group",
-              "background",
-              "path",
-              "formulas",
-              "handles",
-              "fill",
-              "stroke",
-              "shadow",
-              "textbox",
-              "textpath",
-              "imagedata",
-              "line",
-              "polyline",
-              "curve",
-              "rect",
-              "roundrect",
-              "oval",
-              "arc",
-              "image",
+            const tags = [
+              'shape',
+              'shapetype',
+              'group',
+              'background',
+              'path',
+              'formulas',
+              'handles',
+              'fill',
+              'stroke',
+              'shadow',
+              'textbox',
+              'textpath',
+              'imagedata',
+              'line',
+              'polyline',
+              'curve',
+              'rect',
+              'roundrect',
+              'oval',
+              'arc',
+              'image',
             ];
-            var ss = doc.createStyleSheet();
+            const ss = doc.createStyleSheet();
             ss.owningElement.id = jsc._vmlCSS;
-            for (var i = 0; i < tags.length; i += 1) {
+            for (let i = 0; i < tags.length; i += 1) {
               ss.addRule(
-                jsc._vmlNS + "\\:" + tags[i],
-                "behavior:url(#default#VML);"
+                  jsc._vmlNS + '\\:' + tags[i],
+                  'behavior:url(#default#VML);',
               );
             }
           }
@@ -881,8 +881,8 @@ if (!window.jscolor) {
         }
       },
 
-      createPalette: function () {
-        var paletteObj = {
+      createPalette: function() {
+        const paletteObj = {
           elm: null,
           draw: null,
         };
@@ -890,36 +890,36 @@ if (!window.jscolor) {
         if (jsc.isCanvasSupported) {
           // Canvas implementation for modern browsers
 
-          var canvas = document.createElement("canvas");
-          var ctx = canvas.getContext("2d");
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
 
-          var drawFunc = function (width, height, type) {
+          var drawFunc = function(width, height, type) {
             canvas.width = width;
             canvas.height = height;
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            var hGrad = ctx.createLinearGradient(0, 0, canvas.width, 0);
-            hGrad.addColorStop(0 / 6, "#F00");
-            hGrad.addColorStop(1 / 6, "#FF0");
-            hGrad.addColorStop(2 / 6, "#0F0");
-            hGrad.addColorStop(3 / 6, "#0FF");
-            hGrad.addColorStop(4 / 6, "#00F");
-            hGrad.addColorStop(5 / 6, "#F0F");
-            hGrad.addColorStop(6 / 6, "#F00");
+            const hGrad = ctx.createLinearGradient(0, 0, canvas.width, 0);
+            hGrad.addColorStop(0 / 6, '#F00');
+            hGrad.addColorStop(1 / 6, '#FF0');
+            hGrad.addColorStop(2 / 6, '#0F0');
+            hGrad.addColorStop(3 / 6, '#0FF');
+            hGrad.addColorStop(4 / 6, '#00F');
+            hGrad.addColorStop(5 / 6, '#F0F');
+            hGrad.addColorStop(6 / 6, '#F00');
 
             ctx.fillStyle = hGrad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            var vGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            const vGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
             switch (type.toLowerCase()) {
-              case "s":
-                vGrad.addColorStop(0, "rgba(255,255,255,0)");
-                vGrad.addColorStop(1, "rgba(255,255,255,1)");
+              case 's':
+                vGrad.addColorStop(0, 'rgba(255,255,255,0)');
+                vGrad.addColorStop(1, 'rgba(255,255,255,1)');
                 break;
-              case "v":
-                vGrad.addColorStop(0, "rgba(0,0,0,0)");
-                vGrad.addColorStop(1, "rgba(0,0,0,1)");
+              case 'v':
+                vGrad.addColorStop(0, 'rgba(0,0,0,0)');
+                vGrad.addColorStop(1, 'rgba(0,0,0,1)');
                 break;
               default:
             }
@@ -934,57 +934,57 @@ if (!window.jscolor) {
 
           jsc.initVML();
 
-          var vmlContainer = document.createElement("div");
-          vmlContainer.style.position = "relative";
-          vmlContainer.style.overflow = "hidden";
+          const vmlContainer = document.createElement('div');
+          vmlContainer.style.position = 'relative';
+          vmlContainer.style.overflow = 'hidden';
 
-          var hGrad = document.createElement(jsc._vmlNS + ":fill");
-          hGrad.type = "gradient";
-          hGrad.method = "linear";
-          hGrad.angle = "90";
+          const hGrad = document.createElement(jsc._vmlNS + ':fill');
+          hGrad.type = 'gradient';
+          hGrad.method = 'linear';
+          hGrad.angle = '90';
           hGrad.colors =
-            "16.67% #F0F, 33.33% #00F, 50% #0FF, 66.67% #0F0, 83.33% #FF0";
+            '16.67% #F0F, 33.33% #00F, 50% #0FF, 66.67% #0F0, 83.33% #FF0';
 
-          var hRect = document.createElement(jsc._vmlNS + ":rect");
-          hRect.style.position = "absolute";
-          hRect.style.left = -1 + "px";
-          hRect.style.top = -1 + "px";
+          const hRect = document.createElement(jsc._vmlNS + ':rect');
+          hRect.style.position = 'absolute';
+          hRect.style.left = -1 + 'px';
+          hRect.style.top = -1 + 'px';
           hRect.stroked = false;
           hRect.appendChild(hGrad);
           vmlContainer.appendChild(hRect);
 
-          var vGrad = document.createElement(jsc._vmlNS + ":fill");
-          vGrad.type = "gradient";
-          vGrad.method = "linear";
-          vGrad.angle = "180";
-          vGrad.opacity = "0";
+          const vGrad = document.createElement(jsc._vmlNS + ':fill');
+          vGrad.type = 'gradient';
+          vGrad.method = 'linear';
+          vGrad.angle = '180';
+          vGrad.opacity = '0';
 
-          var vRect = document.createElement(jsc._vmlNS + ":rect");
-          vRect.style.position = "absolute";
-          vRect.style.left = -1 + "px";
-          vRect.style.top = -1 + "px";
+          const vRect = document.createElement(jsc._vmlNS + ':rect');
+          vRect.style.position = 'absolute';
+          vRect.style.left = -1 + 'px';
+          vRect.style.top = -1 + 'px';
           vRect.stroked = false;
           vRect.appendChild(vGrad);
           vmlContainer.appendChild(vRect);
 
-          drawFunc = function (width, height, type) {
-            vmlContainer.style.width = width + "px";
-            vmlContainer.style.height = height + "px";
+          drawFunc = function(width, height, type) {
+            vmlContainer.style.width = width + 'px';
+            vmlContainer.style.height = height + 'px';
 
-            hRect.style.width = vRect.style.width = width + 1 + "px";
-            hRect.style.height = vRect.style.height = height + 1 + "px";
+            hRect.style.width = vRect.style.width = width + 1 + 'px';
+            hRect.style.height = vRect.style.height = height + 1 + 'px';
 
             // Colors must be specified during every redraw, otherwise IE won't display
             // a full gradient during a subsequential redraw
-            hGrad.color = "#F00";
-            hGrad.color2 = "#F00";
+            hGrad.color = '#F00';
+            hGrad.color2 = '#F00';
 
             switch (type.toLowerCase()) {
-              case "s":
-                vGrad.color = vGrad.color2 = "#FFF";
+              case 's':
+                vGrad.color = vGrad.color2 = '#FFF';
                 break;
-              case "v":
-                vGrad.color = vGrad.color2 = "#000";
+              case 'v':
+                vGrad.color = vGrad.color2 = '#000';
                 break;
               default:
             }
@@ -997,8 +997,8 @@ if (!window.jscolor) {
         return paletteObj;
       },
 
-      createSliderGradient: function () {
-        var sliderObj = {
+      createSliderGradient: function() {
+        const sliderObj = {
           elm: null,
           draw: null,
         };
@@ -1006,16 +1006,16 @@ if (!window.jscolor) {
         if (jsc.isCanvasSupported) {
           // Canvas implementation for modern browsers
 
-          var canvas = document.createElement("canvas");
-          var ctx = canvas.getContext("2d");
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
 
-          var drawFunc = function (width, height, color1, color2) {
+          var drawFunc = function(width, height, color1, color2) {
             canvas.width = width;
             canvas.height = height;
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            var grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
             grad.addColorStop(0, color1);
             grad.addColorStop(1, color2);
 
@@ -1030,29 +1030,29 @@ if (!window.jscolor) {
 
           jsc.initVML();
 
-          var vmlContainer = document.createElement("div");
-          vmlContainer.style.position = "relative";
-          vmlContainer.style.overflow = "hidden";
+          const vmlContainer = document.createElement('div');
+          vmlContainer.style.position = 'relative';
+          vmlContainer.style.overflow = 'hidden';
 
-          var grad = document.createElement(jsc._vmlNS + ":fill");
-          grad.type = "gradient";
-          grad.method = "linear";
-          grad.angle = "180";
+          const grad = document.createElement(jsc._vmlNS + ':fill');
+          grad.type = 'gradient';
+          grad.method = 'linear';
+          grad.angle = '180';
 
-          var rect = document.createElement(jsc._vmlNS + ":rect");
-          rect.style.position = "absolute";
-          rect.style.left = -1 + "px";
-          rect.style.top = -1 + "px";
+          const rect = document.createElement(jsc._vmlNS + ':rect');
+          rect.style.position = 'absolute';
+          rect.style.left = -1 + 'px';
+          rect.style.top = -1 + 'px';
           rect.stroked = false;
           rect.appendChild(grad);
           vmlContainer.appendChild(rect);
 
-          drawFunc = function (width, height, color1, color2) {
-            vmlContainer.style.width = width + "px";
-            vmlContainer.style.height = height + "px";
+          drawFunc = function(width, height, color1, color2) {
+            vmlContainer.style.width = width + 'px';
+            vmlContainer.style.height = height + 'px';
 
-            rect.style.width = width + 1 + "px";
-            rect.style.height = height + 1 + "px";
+            rect.style.width = width + 1 + 'px';
+            rect.style.height = height + 1 + 'px';
 
             grad.color = color1;
             grad.color2 = color2;
@@ -1070,14 +1070,14 @@ if (!window.jscolor) {
       leavePad: 1 << 2,
       leaveSld: 1 << 3,
 
-      BoxShadow: (function () {
-        var BoxShadow = function (
-          hShadow,
-          vShadow,
-          blur,
-          spread,
-          color,
-          inset
+      BoxShadow: (function() {
+        const BoxShadow = function(
+            hShadow,
+            vShadow,
+            blur,
+            spread,
+            color,
+            inset,
         ) {
           this.hShadow = hShadow;
           this.vShadow = vShadow;
@@ -1087,18 +1087,18 @@ if (!window.jscolor) {
           this.inset = !!inset;
         };
 
-        BoxShadow.prototype.toString = function () {
-          var vals = [
-            Math.round(this.hShadow) + "px",
-            Math.round(this.vShadow) + "px",
-            Math.round(this.blur) + "px",
-            Math.round(this.spread) + "px",
+        BoxShadow.prototype.toString = function() {
+          const vals = [
+            Math.round(this.hShadow) + 'px',
+            Math.round(this.vShadow) + 'px',
+            Math.round(this.blur) + 'px',
+            Math.round(this.spread) + 'px',
             this.color,
           ];
           if (this.inset) {
-            vals.push("inset");
+            vals.push('inset');
           }
-          return vals.join(" ");
+          return vals.join(' ');
         };
 
         return BoxShadow;
@@ -1109,7 +1109,7 @@ if (!window.jscolor) {
       // var myColor = new jscolor(<targetElement> [, <options>])
       //
 
-      jscolor: function (targetElement, options) {
+      jscolor: function(targetElement, options) {
         // General options
         //
         this.value = null; // initial HEX color. To change it later, use methods fromString(), fromHSV() and fromRGB()
@@ -1120,7 +1120,7 @@ if (!window.jscolor) {
         this.hash = false; // whether to prefix the HEX color code with # symbol
         this.uppercase = true; // whether to uppercase the color code
         this.onFineChange = null; // called instantly every time the color changes (value can be either a function or a string with javascript code)
-        this.activeClass = "jscolor-active"; // class to be set to the target element when a picker window is open on it
+        this.activeClass = 'jscolor-active'; // class to be set to the target element when a picker window is open on it
         this.minS = 0; // min allowed saturation (0 - 100)
         this.maxS = 100; // max allowed saturation (0 - 100)
         this.minV = 0; // min allowed value (brightness) (0 - 100)
@@ -1136,59 +1136,59 @@ if (!window.jscolor) {
         this.width = 181; // width of color palette (in px)
         this.height = 101; // height of color palette (in px)
         this.showOnClick = true; // whether to display the color picker when user clicks on its target element
-        this.mode = "HSV"; // HSV | HVS | HS | HV - layout of the color picker controls
-        this.position = "bottom"; // left | right | top | bottom - position relative to the target element
+        this.mode = 'HSV'; // HSV | HVS | HS | HV - layout of the color picker controls
+        this.position = 'bottom'; // left | right | top | bottom - position relative to the target element
         this.smartPosition = true; // automatically change picker position when there is not enough space for it
         this.sliderSize = 16; // px
         this.crossSize = 8; // px
         this.closable = false; // whether to display the Close button
-        this.closeText = "Close";
-        this.buttonColor = "#000000"; // CSS color
+        this.closeText = 'Close';
+        this.buttonColor = '#000000'; // CSS color
         this.buttonHeight = 18; // px
         this.padding = 12; // px
-        this.backgroundColor = "#FFFFFF"; // CSS color
+        this.backgroundColor = '#FFFFFF'; // CSS color
         this.borderWidth = 1; // px
-        this.borderColor = "#BBBBBB"; // CSS color
+        this.borderColor = '#BBBBBB'; // CSS color
         this.borderRadius = 8; // px
         this.insetWidth = 1; // px
-        this.insetColor = "#BBBBBB"; // CSS color
+        this.insetColor = '#BBBBBB'; // CSS color
         this.shadow = true; // whether to display shadow
         this.shadowBlur = 15; // px
-        this.shadowColor = "rgba(0,0,0,0.2)"; // CSS color
-        this.pointerColor = "#4C4C4C"; // px
-        this.pointerBorderColor = "#FFFFFF"; // px
+        this.shadowColor = 'rgba(0,0,0,0.2)'; // CSS color
+        this.pointerColor = '#4C4C4C'; // px
+        this.pointerBorderColor = '#FFFFFF'; // px
         this.pointerBorderWidth = 1; // px
         this.pointerThickness = 2; // px
         this.zIndex = 1000;
         this.container = null; // where to append the color picker (BODY element by default)
 
-        for (var opt in options) {
+        for (const opt in options) {
           if (options.hasOwnProperty(opt)) {
             this[opt] = options[opt];
           }
         }
 
-        this.hide = function () {
+        this.hide = function() {
           if (isPickerOwner()) {
             detachPicker();
           }
         };
 
-        this.show = function () {
+        this.show = function() {
           drawPicker();
         };
 
-        this.redraw = function () {
+        this.redraw = function() {
           if (isPickerOwner()) {
             drawPicker();
           }
         };
 
-        this.importColor = function () {
+        this.importColor = function() {
           if (!this.valueElement) {
             this.exportColor();
           } else {
-            if (jsc.isElementType(this.valueElement, "input")) {
+            if (jsc.isElementType(this.valueElement, 'input')) {
               if (!this.refine) {
                 if (!this.fromString(this.valueElement.value, jsc.leaveValue)) {
                   if (this.styleElement) {
@@ -1205,7 +1205,7 @@ if (!window.jscolor) {
                 !this.required &&
                 /^\s*$/.test(this.valueElement.value)
               ) {
-                this.valueElement.value = "";
+                this.valueElement.value = '';
                 if (this.styleElement) {
                   this.styleElement.style.backgroundImage =
                     this.styleElement._jscOrigStyle.backgroundImage;
@@ -1227,17 +1227,17 @@ if (!window.jscolor) {
           }
         };
 
-        this.exportColor = function (flags) {
+        this.exportColor = function(flags) {
           if (!(flags & jsc.leaveValue) && this.valueElement) {
-            var value = this.toString();
+            let value = this.toString();
             if (this.uppercase) {
               value = value.toUpperCase();
             }
             if (this.hash) {
-              value = "#" + value;
+              value = '#' + value;
             }
 
-            if (jsc.isElementType(this.valueElement, "input")) {
+            if (jsc.isElementType(this.valueElement, 'input')) {
               this.valueElement.value = value;
             } else {
               this.valueElement.innerHTML = value;
@@ -1245,9 +1245,9 @@ if (!window.jscolor) {
           }
           if (!(flags & jsc.leaveStyle)) {
             if (this.styleElement) {
-              this.styleElement.style.backgroundImage = "none";
-              this.styleElement.style.backgroundColor = "#" + this.toString();
-              this.styleElement.style.color = this.isLight() ? "#000" : "#FFF";
+              this.styleElement.style.backgroundImage = 'none';
+              this.styleElement.style.backgroundColor = '#' + this.toString();
+              this.styleElement.style.color = this.isLight() ? '#000' : '#FFF';
             }
           }
           if (!(flags & jsc.leavePad) && isPickerOwner()) {
@@ -1262,7 +1262,7 @@ if (!window.jscolor) {
         // s: 0-100
         // v: 0-100
         //
-        this.fromHSV = function (h, s, v, flags) {
+        this.fromHSV = function(h, s, v, flags) {
           // null = don't change
           if (h !== null) {
             if (isNaN(h)) {
@@ -1286,7 +1286,7 @@ if (!window.jscolor) {
           this.rgb = HSV_RGB(
             h === null ? this.hsv[0] : (this.hsv[0] = h),
             s === null ? this.hsv[1] : (this.hsv[1] = s),
-            v === null ? this.hsv[2] : (this.hsv[2] = v)
+            v === null ? this.hsv[2] : (this.hsv[2] = v),
           );
 
           this.exportColor(flags);
@@ -1296,7 +1296,7 @@ if (!window.jscolor) {
         // g: 0-255
         // b: 0-255
         //
-        this.fromRGB = function (r, g, b, flags) {
+        this.fromRGB = function(r, g, b, flags) {
           // null = don't change
           if (r !== null) {
             if (isNaN(r)) {
@@ -1317,27 +1317,27 @@ if (!window.jscolor) {
             b = Math.max(0, Math.min(255, b));
           }
 
-          var hsv = RGB_HSV(
+          const hsv = RGB_HSV(
             r === null ? this.rgb[0] : r,
             g === null ? this.rgb[1] : g,
-            b === null ? this.rgb[2] : b
+            b === null ? this.rgb[2] : b,
           );
           if (hsv[0] !== null) {
             this.hsv[0] = Math.max(0, Math.min(360, hsv[0]));
           }
           if (hsv[2] !== 0) {
             this.hsv[1] =
-              hsv[1] === null
-                ? null
-                : Math.max(0, this.minS, Math.min(100, this.maxS, hsv[1]));
+              hsv[1] === null ?
+                null :
+                Math.max(0, this.minS, Math.min(100, this.maxS, hsv[1]));
           }
           this.hsv[2] =
-            hsv[2] === null
-              ? null
-              : Math.max(0, this.minV, Math.min(100, this.maxV, hsv[2]));
+            hsv[2] === null ?
+              null :
+              Math.max(0, this.minV, Math.min(100, this.maxV, hsv[2]));
 
           // update RGB according to final HSV, as some values might be trimmed
-          var rgb = HSV_RGB(this.hsv[0], this.hsv[1], this.hsv[2]);
+          const rgb = HSV_RGB(this.hsv[0], this.hsv[1], this.hsv[2]);
           this.rgb[0] = rgb[0];
           this.rgb[1] = rgb[1];
           this.rgb[2] = rgb[2];
@@ -1345,8 +1345,8 @@ if (!window.jscolor) {
           this.exportColor(flags);
         };
 
-        this.fromString = function (str, flags) {
-          var m;
+        this.fromString = function(str, flags) {
+          let m;
           // eslint-disable-next-line
           if ((m = str.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i))) {
             // HEX notation
@@ -1355,36 +1355,36 @@ if (!window.jscolor) {
             if (m[1].length === 6) {
               // 6-char notation
               this.fromRGB(
-                parseInt(m[1].substr(0, 2), 16),
-                parseInt(m[1].substr(2, 2), 16),
-                parseInt(m[1].substr(4, 2), 16),
-                flags
+                  parseInt(m[1].substr(0, 2), 16),
+                  parseInt(m[1].substr(2, 2), 16),
+                  parseInt(m[1].substr(4, 2), 16),
+                  flags,
               );
             } else {
               // 3-char notation
               this.fromRGB(
-                parseInt(m[1].charAt(0) + m[1].charAt(0), 16),
-                parseInt(m[1].charAt(1) + m[1].charAt(1), 16),
-                parseInt(m[1].charAt(2) + m[1].charAt(2), 16),
-                flags
+                  parseInt(m[1].charAt(0) + m[1].charAt(0), 16),
+                  parseInt(m[1].charAt(1) + m[1].charAt(1), 16),
+                  parseInt(m[1].charAt(2) + m[1].charAt(2), 16),
+                  flags,
               );
             }
             return true;
 
             // eslint-disable-next-line
           } else if ((m = str.match(/^\W*rgba?\(([^)]*)\)\W*$/i))) {
-            var params = m[1].split(",");
-            var re = /^\s*(\d*)(\.\d+)?\s*$/;
-            var mR, mG, mB;
+            const params = m[1].split(',');
+            const re = /^\s*(\d*)(\.\d+)?\s*$/;
+            let mR; let mG; let mB;
             if (
               params.length >= 3 &&
               (mR = params[0].match(re)) &&
               (mG = params[1].match(re)) &&
               (mB = params[2].match(re))
             ) {
-              var r = parseFloat((mR[1] || "0") + (mR[2] || ""));
-              var g = parseFloat((mG[1] || "0") + (mG[2] || ""));
-              var b = parseFloat((mB[1] || "0") + (mB[2] || ""));
+              const r = parseFloat((mR[1] || '0') + (mR[2] || ''));
+              const g = parseFloat((mG[1] || '0') + (mG[2] || ''));
+              const b = parseFloat((mB[1] || '0') + (mB[2] || ''));
               this.fromRGB(r, g, b, flags);
               return true;
             }
@@ -1392,7 +1392,7 @@ if (!window.jscolor) {
           return false;
         };
 
-        this.toString = function () {
+        this.toString = function() {
           return (
             (0x100 | Math.round(this.rgb[0])).toString(16).substr(1) +
             (0x100 | Math.round(this.rgb[1])).toString(16).substr(1) +
@@ -1400,44 +1400,44 @@ if (!window.jscolor) {
           );
         };
 
-        this.toHEXString = function () {
-          return "#" + this.toString().toUpperCase();
+        this.toHEXString = function() {
+          return '#' + this.toString().toUpperCase();
         };
 
-        this.toRGBString = function () {
+        this.toRGBString = function() {
           return (
-            "rgb(" +
+            'rgb(' +
             Math.round(this.rgb[0]) +
-            "," +
+            ',' +
             Math.round(this.rgb[1]) +
-            "," +
+            ',' +
             Math.round(this.rgb[2]) +
-            ")"
+            ')'
           );
         };
 
-        this.isLight = function () {
+        this.isLight = function() {
           return (
             0.213 * this.rgb[0] + 0.715 * this.rgb[1] + 0.072 * this.rgb[2] >
             255 / 2
           );
         };
 
-        this._processParentElementsInDOM = function () {
+        this._processParentElementsInDOM = function() {
           if (this._linkedElementsProcessed) {
             return;
           }
           this._linkedElementsProcessed = true;
 
-          var elm = this.targetElement;
+          let elm = this.targetElement;
           do {
             // If the target element or one of its parent nodes has fixed position,
             // then use fixed positioning instead
             //
             // Note: In Firefox, getComputedStyle returns null in a hidden iframe,
             // that's why we need to check if the returned style object is non-empty
-            var currStyle = jsc.getStyle(elm);
-            if (currStyle && currStyle.position.toLowerCase() === "fixed") {
+            const currStyle = jsc.getStyle(elm);
+            if (currStyle && currStyle.position.toLowerCase() === 'fixed') {
               this.fixed = true;
             }
 
@@ -1448,11 +1448,11 @@ if (!window.jscolor) {
               // Note: It's not just offsetParents that can be scrollable,
               // that's why we loop through all parent nodes
               if (!elm._jscEventsAttached) {
-                jsc.attachEvent(elm, "scroll", jsc.onParentScroll);
+                jsc.attachEvent(elm, 'scroll', jsc.onParentScroll);
                 elm._jscEventsAttached = true;
               }
             }
-          } while ((elm = elm.parentNode) && !jsc.isElementType(elm, "body"));
+          } while ((elm = elm.parentNode) && !jsc.isElementType(elm, 'body'));
         };
 
         // r: 0-255
@@ -1465,18 +1465,18 @@ if (!window.jscolor) {
           r /= 255;
           g /= 255;
           b /= 255;
-          var n = Math.min(Math.min(r, g), b);
-          var v = Math.max(Math.max(r, g), b);
-          var m = v - n;
+          const n = Math.min(Math.min(r, g), b);
+          const v = Math.max(Math.max(r, g), b);
+          const m = v - n;
           if (m === 0) {
             return [null, 0, 100 * v];
           }
-          var h =
-            r === n
-              ? 3 + (b - g) / m
-              : g === n
-              ? 5 + (r - b) / m
-              : 1 + (g - r) / m;
+          const h =
+            r === n ?
+              3 + (b - g) / m :
+              g === n ?
+              5 + (r - b) / m :
+              1 + (g - r) / m;
           return [60 * (h === 6 ? 0 : h), 100 * (m / v), 100 * v];
         }
 
@@ -1487,7 +1487,7 @@ if (!window.jscolor) {
         // returns: [ 0-255, 0-255, 0-255 ]
         //
         function HSV_RGB(h, s, v) {
-          var u = 255 * (v / 100);
+          const u = 255 * (v / 100);
 
           if (h === null) {
             return [u, u, u];
@@ -1496,10 +1496,10 @@ if (!window.jscolor) {
           h /= 60;
           s /= 100;
 
-          var i = Math.floor(h);
-          var f = i % 2 ? h - i : 1 - (h - i);
-          var m = u * (1 - s);
-          var n = u * (1 - s * f);
+          const i = Math.floor(h);
+          const f = i % 2 ? h - i : 1 - (h - i);
+          const m = u * (1 - s);
+          const n = u * (1 - s * f);
           switch (i) {
             case 6:
             case 0:
@@ -1533,29 +1533,29 @@ if (!window.jscolor) {
           if (!jsc.picker) {
             jsc.picker = {
               owner: null,
-              wrap: document.createElement("div"),
-              box: document.createElement("div"),
-              boxS: document.createElement("div"), // shadow area
-              boxB: document.createElement("div"), // border
-              pad: document.createElement("div"),
-              padB: document.createElement("div"), // border
-              padM: document.createElement("div"), // mouse/touch area
+              wrap: document.createElement('div'),
+              box: document.createElement('div'),
+              boxS: document.createElement('div'), // shadow area
+              boxB: document.createElement('div'), // border
+              pad: document.createElement('div'),
+              padB: document.createElement('div'), // border
+              padM: document.createElement('div'), // mouse/touch area
               padPal: jsc.createPalette(),
-              cross: document.createElement("div"),
-              crossBY: document.createElement("div"), // border Y
-              crossBX: document.createElement("div"), // border X
-              crossLY: document.createElement("div"), // line Y
-              crossLX: document.createElement("div"), // line X
-              sld: document.createElement("div"),
-              sldB: document.createElement("div"), // border
-              sldM: document.createElement("div"), // mouse/touch area
+              cross: document.createElement('div'),
+              crossBY: document.createElement('div'), // border Y
+              crossBX: document.createElement('div'), // border X
+              crossLY: document.createElement('div'), // line Y
+              crossLX: document.createElement('div'), // line X
+              sld: document.createElement('div'),
+              sldB: document.createElement('div'), // border
+              sldM: document.createElement('div'), // mouse/touch area
               sldGrad: jsc.createSliderGradient(),
-              sldPtrS: document.createElement("div"), // slider pointer spacer
-              sldPtrIB: document.createElement("div"), // slider pointer inner border
-              sldPtrMB: document.createElement("div"), // slider pointer middle border
-              sldPtrOB: document.createElement("div"), // slider pointer outer border
-              btn: document.createElement("div"),
-              btnT: document.createElement("span"), // text
+              sldPtrS: document.createElement('div'), // slider pointer spacer
+              sldPtrIB: document.createElement('div'), // slider pointer inner border
+              sldPtrMB: document.createElement('div'), // slider pointer middle border
+              sldPtrOB: document.createElement('div'), // slider pointer outer border
+              btn: document.createElement('div'),
+              btnT: document.createElement('span'), // text
             };
 
             jsc.picker.pad.appendChild(jsc.picker.padPal.elm);
@@ -1585,203 +1585,203 @@ if (!window.jscolor) {
             jsc.picker.wrap.appendChild(jsc.picker.boxB);
           }
 
-          var p = jsc.picker;
+          const p = jsc.picker;
 
-          var displaySlider = !!jsc.getSliderComponent(THIS);
-          var dims = jsc.getPickerDims(THIS);
-          var crossOuterSize =
+          const displaySlider = !!jsc.getSliderComponent(THIS);
+          const dims = jsc.getPickerDims(THIS);
+          const crossOuterSize =
             2 * THIS.pointerBorderWidth +
             THIS.pointerThickness +
             2 * THIS.crossSize;
-          var padToSliderPadding = jsc.getPadToSliderPadding(THIS);
-          var borderRadius = Math.min(
-            THIS.borderRadius,
-            Math.round(THIS.padding * Math.PI)
+          const padToSliderPadding = jsc.getPadToSliderPadding(THIS);
+          const borderRadius = Math.min(
+              THIS.borderRadius,
+              Math.round(THIS.padding * Math.PI),
           ); // px
-          var padCursor = "crosshair";
+          const padCursor = 'crosshair';
 
           // wrap
-          p.wrap.style.clear = "both";
-          p.wrap.style.width = dims[0] + 2 * THIS.borderWidth + "px";
-          p.wrap.style.height = dims[1] + 2 * THIS.borderWidth + "px";
+          p.wrap.style.clear = 'both';
+          p.wrap.style.width = dims[0] + 2 * THIS.borderWidth + 'px';
+          p.wrap.style.height = dims[1] + 2 * THIS.borderWidth + 'px';
           p.wrap.style.zIndex = THIS.zIndex;
 
           // picker
-          p.box.style.width = dims[0] + "px";
-          p.box.style.height = dims[1] + "px";
+          p.box.style.width = dims[0] + 'px';
+          p.box.style.height = dims[1] + 'px';
 
-          p.boxS.style.position = "absolute";
-          p.boxS.style.left = "0";
-          p.boxS.style.top = "0";
-          p.boxS.style.width = "100%";
-          p.boxS.style.height = "100%";
-          jsc.setBorderRadius(p.boxS, borderRadius + "px");
+          p.boxS.style.position = 'absolute';
+          p.boxS.style.left = '0';
+          p.boxS.style.top = '0';
+          p.boxS.style.width = '100%';
+          p.boxS.style.height = '100%';
+          jsc.setBorderRadius(p.boxS, borderRadius + 'px');
 
           // picker border
-          p.boxB.style.position = "relative";
-          p.boxB.style.border = THIS.borderWidth + "px solid";
+          p.boxB.style.position = 'relative';
+          p.boxB.style.border = THIS.borderWidth + 'px solid';
           p.boxB.style.borderColor = THIS.borderColor;
           p.boxB.style.background = THIS.backgroundColor;
-          jsc.setBorderRadius(p.boxB, borderRadius + "px");
+          jsc.setBorderRadius(p.boxB, borderRadius + 'px');
 
           // IE hack:
           // If the element is transparent, IE will trigger the event on the elements under it,
           // e.g. on Canvas or on elements with border
-          p.padM.style.background = p.sldM.style.background = "#FFF";
-          jsc.setStyle(p.padM, "opacity", "0");
-          jsc.setStyle(p.sldM, "opacity", "0");
+          p.padM.style.background = p.sldM.style.background = '#FFF';
+          jsc.setStyle(p.padM, 'opacity', '0');
+          jsc.setStyle(p.sldM, 'opacity', '0');
 
           // pad
-          p.pad.style.position = "relative";
-          p.pad.style.width = THIS.width + "px";
-          p.pad.style.height = THIS.height + "px";
+          p.pad.style.position = 'relative';
+          p.pad.style.width = THIS.width + 'px';
+          p.pad.style.height = THIS.height + 'px';
 
           // pad palettes (HSV and HVS)
           p.padPal.draw(THIS.width, THIS.height, jsc.getPadYComponent(THIS));
 
           // pad border
-          p.padB.style.position = "absolute";
-          p.padB.style.left = THIS.padding + "px";
-          p.padB.style.top = THIS.padding + "px";
-          p.padB.style.border = THIS.insetWidth + "px solid";
+          p.padB.style.position = 'absolute';
+          p.padB.style.left = THIS.padding + 'px';
+          p.padB.style.top = THIS.padding + 'px';
+          p.padB.style.border = THIS.insetWidth + 'px solid';
           p.padB.style.borderColor = THIS.insetColor;
 
           // pad mouse area
           p.padM._jscInstance = THIS;
-          p.padM._jscControlName = "pad";
-          p.padM.style.position = "absolute";
-          p.padM.style.left = "0";
-          p.padM.style.top = "0";
+          p.padM._jscControlName = 'pad';
+          p.padM.style.position = 'absolute';
+          p.padM.style.left = '0';
+          p.padM.style.top = '0';
           p.padM.style.width =
             THIS.padding +
             2 * THIS.insetWidth +
             THIS.width +
             padToSliderPadding / 2 +
-            "px";
-          p.padM.style.height = dims[1] + "px";
+            'px';
+          p.padM.style.height = dims[1] + 'px';
           p.padM.style.cursor = padCursor;
 
           // pad cross
-          p.cross.style.position = "absolute";
-          p.cross.style.left = p.cross.style.top = "0";
-          p.cross.style.width = p.cross.style.height = crossOuterSize + "px";
+          p.cross.style.position = 'absolute';
+          p.cross.style.left = p.cross.style.top = '0';
+          p.cross.style.width = p.cross.style.height = crossOuterSize + 'px';
 
           // pad cross border Y and X
-          p.crossBY.style.position = p.crossBX.style.position = "absolute";
+          p.crossBY.style.position = p.crossBX.style.position = 'absolute';
           p.crossBY.style.background = p.crossBX.style.background =
             THIS.pointerBorderColor;
           p.crossBY.style.width = p.crossBX.style.height =
-            2 * THIS.pointerBorderWidth + THIS.pointerThickness + "px";
+            2 * THIS.pointerBorderWidth + THIS.pointerThickness + 'px';
           p.crossBY.style.height = p.crossBX.style.width =
-            crossOuterSize + "px";
+            crossOuterSize + 'px';
           p.crossBY.style.left = p.crossBX.style.top =
             Math.floor(crossOuterSize / 2) -
             Math.floor(THIS.pointerThickness / 2) -
             THIS.pointerBorderWidth +
-            "px";
-          p.crossBY.style.top = p.crossBX.style.left = "0";
+            'px';
+          p.crossBY.style.top = p.crossBX.style.left = '0';
 
           // pad cross line Y and X
-          p.crossLY.style.position = p.crossLX.style.position = "absolute";
+          p.crossLY.style.position = p.crossLX.style.position = 'absolute';
           p.crossLY.style.background = p.crossLX.style.background =
             THIS.pointerColor;
           p.crossLY.style.height = p.crossLX.style.width =
-            crossOuterSize - 2 * THIS.pointerBorderWidth + "px";
+            crossOuterSize - 2 * THIS.pointerBorderWidth + 'px';
           p.crossLY.style.width = p.crossLX.style.height =
-            THIS.pointerThickness + "px";
+            THIS.pointerThickness + 'px';
           p.crossLY.style.left = p.crossLX.style.top =
             Math.floor(crossOuterSize / 2) -
             Math.floor(THIS.pointerThickness / 2) +
-            "px";
+            'px';
           p.crossLY.style.top = p.crossLX.style.left =
-            THIS.pointerBorderWidth + "px";
+            THIS.pointerBorderWidth + 'px';
 
           // slider
-          p.sld.style.overflow = "hidden";
-          p.sld.style.width = THIS.sliderSize + "px";
-          p.sld.style.height = THIS.height + "px";
+          p.sld.style.overflow = 'hidden';
+          p.sld.style.width = THIS.sliderSize + 'px';
+          p.sld.style.height = THIS.height + 'px';
 
           // slider gradient
-          p.sldGrad.draw(THIS.sliderSize, THIS.height, "#000", "#000");
+          p.sldGrad.draw(THIS.sliderSize, THIS.height, '#000', '#000');
 
           // slider border
-          p.sldB.style.display = displaySlider ? "block" : "none";
-          p.sldB.style.position = "absolute";
-          p.sldB.style.right = THIS.padding + "px";
-          p.sldB.style.top = THIS.padding + "px";
-          p.sldB.style.border = THIS.insetWidth + "px solid";
+          p.sldB.style.display = displaySlider ? 'block' : 'none';
+          p.sldB.style.position = 'absolute';
+          p.sldB.style.right = THIS.padding + 'px';
+          p.sldB.style.top = THIS.padding + 'px';
+          p.sldB.style.border = THIS.insetWidth + 'px solid';
           p.sldB.style.borderColor = THIS.insetColor;
 
           // slider mouse area
           p.sldM._jscInstance = THIS;
-          p.sldM._jscControlName = "sld";
-          p.sldM.style.display = displaySlider ? "block" : "none";
-          p.sldM.style.position = "absolute";
-          p.sldM.style.right = "0";
-          p.sldM.style.top = "0";
+          p.sldM._jscControlName = 'sld';
+          p.sldM.style.display = displaySlider ? 'block' : 'none';
+          p.sldM.style.position = 'absolute';
+          p.sldM.style.right = '0';
+          p.sldM.style.top = '0';
           p.sldM.style.width =
             THIS.sliderSize +
             padToSliderPadding / 2 +
             THIS.padding +
             2 * THIS.insetWidth +
-            "px";
-          p.sldM.style.height = dims[1] + "px";
-          p.sldM.style.cursor = "default";
+            'px';
+          p.sldM.style.height = dims[1] + 'px';
+          p.sldM.style.cursor = 'default';
 
           // slider pointer inner and outer border
           p.sldPtrIB.style.border = p.sldPtrOB.style.border =
-            THIS.pointerBorderWidth + "px solid " + THIS.pointerBorderColor;
+            THIS.pointerBorderWidth + 'px solid ' + THIS.pointerBorderColor;
 
           // slider pointer outer border
-          p.sldPtrOB.style.position = "absolute";
+          p.sldPtrOB.style.position = 'absolute';
           p.sldPtrOB.style.left =
-            -(2 * THIS.pointerBorderWidth + THIS.pointerThickness) + "px";
-          p.sldPtrOB.style.top = "0";
+            -(2 * THIS.pointerBorderWidth + THIS.pointerThickness) + 'px';
+          p.sldPtrOB.style.top = '0';
 
           // slider pointer middle border
           p.sldPtrMB.style.border =
-            THIS.pointerThickness + "px solid " + THIS.pointerColor;
+            THIS.pointerThickness + 'px solid ' + THIS.pointerColor;
 
           // slider pointer spacer
-          p.sldPtrS.style.width = THIS.sliderSize + "px";
-          p.sldPtrS.style.height = sliderPtrSpace + "px";
+          p.sldPtrS.style.width = THIS.sliderSize + 'px';
+          p.sldPtrS.style.height = sliderPtrSpace + 'px';
 
           // the Close button
           function setBtnBorder() {
-            var insetColors = THIS.insetColor.split(/\s+/);
-            var outsetColor =
-              insetColors.length < 2
-                ? insetColors[0]
-                : insetColors[1] +
-                  " " +
+            const insetColors = THIS.insetColor.split(/\s+/);
+            const outsetColor =
+              insetColors.length < 2 ?
+                insetColors[0] :
+                insetColors[1] +
+                  ' ' +
                   insetColors[0] +
-                  " " +
+                  ' ' +
                   insetColors[0] +
-                  " " +
+                  ' ' +
                   insetColors[1];
             p.btn.style.borderColor = outsetColor;
           }
-          p.btn.style.display = THIS.closable ? "block" : "none";
-          p.btn.style.position = "absolute";
-          p.btn.style.left = THIS.padding + "px";
-          p.btn.style.bottom = THIS.padding + "px";
-          p.btn.style.padding = "0 15px";
-          p.btn.style.height = THIS.buttonHeight + "px";
-          p.btn.style.border = THIS.insetWidth + "px solid";
+          p.btn.style.display = THIS.closable ? 'block' : 'none';
+          p.btn.style.position = 'absolute';
+          p.btn.style.left = THIS.padding + 'px';
+          p.btn.style.bottom = THIS.padding + 'px';
+          p.btn.style.padding = '0 15px';
+          p.btn.style.height = THIS.buttonHeight + 'px';
+          p.btn.style.border = THIS.insetWidth + 'px solid';
           setBtnBorder();
           p.btn.style.color = THIS.buttonColor;
-          p.btn.style.font = "12px sans-serif";
-          p.btn.style.textAlign = "center";
+          p.btn.style.font = '12px sans-serif';
+          p.btn.style.textAlign = 'center';
           try {
-            p.btn.style.cursor = "pointer";
+            p.btn.style.cursor = 'pointer';
           } catch (eOldIE) {
-            p.btn.style.cursor = "hand";
+            p.btn.style.cursor = 'hand';
           }
-          p.btn.onmousedown = function () {
+          p.btn.onmousedown = function() {
             THIS.hide();
           };
-          p.btnT.style.lineHeight = THIS.buttonHeight + "px";
-          p.btnT.innerHTML = "";
+          p.btnT.style.lineHeight = THIS.buttonHeight + 'px';
+          p.btnT.innerHTML = '';
           p.btnT.appendChild(document.createTextNode(THIS.closeText));
 
           // place pointers
@@ -1799,10 +1799,10 @@ if (!window.jscolor) {
 
           // The redrawPosition() method needs picker.owner to be set, that's why we call it here,
           // after setting the owner
-          if (jsc.isElementType(container, "body")) {
+          if (jsc.isElementType(container, 'body')) {
             jsc.redrawPosition();
           } else {
-            jsc._drawPosition(THIS, 0, 0, "relative", false);
+            jsc._drawPosition(THIS, 0, 0, 'relative', false);
           }
 
           if (p.wrap.parentNode !== container) {
@@ -1814,74 +1814,74 @@ if (!window.jscolor) {
 
         function redrawPad() {
           // redraw the pad pointer
-          var yComponent;
+          let yComponent;
           switch (jsc.getPadYComponent(THIS)) {
-            case "s":
+            case 's':
               yComponent = 1;
               break;
-            case "v":
+            case 'v':
               yComponent = 2;
               break;
             default:
           }
-          var x = Math.round((THIS.hsv[0] / 360) * (THIS.width - 1));
-          var y = Math.round(
-            (1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1)
+          const x = Math.round((THIS.hsv[0] / 360) * (THIS.width - 1));
+          const y = Math.round(
+              (1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1),
           );
-          var crossOuterSize =
+          const crossOuterSize =
             2 * THIS.pointerBorderWidth +
             THIS.pointerThickness +
             2 * THIS.crossSize;
-          var ofs = -Math.floor(crossOuterSize / 2);
-          jsc.picker.cross.style.left = x + ofs + "px";
-          jsc.picker.cross.style.top = y + ofs + "px";
+          const ofs = -Math.floor(crossOuterSize / 2);
+          jsc.picker.cross.style.left = x + ofs + 'px';
+          jsc.picker.cross.style.top = y + ofs + 'px';
 
           // redraw the slider
-          var color1;
-          var color2;
+          let color1;
+          let color2;
           switch (jsc.getSliderComponent(THIS)) {
-            case "s":
+            case 's':
               var rgb1 = HSV_RGB(THIS.hsv[0], 100, THIS.hsv[2]);
               var rgb2 = HSV_RGB(THIS.hsv[0], 0, THIS.hsv[2]);
               color1 =
-                "rgb(" +
+                'rgb(' +
                 Math.round(rgb1[0]) +
-                "," +
+                ',' +
                 Math.round(rgb1[1]) +
-                "," +
+                ',' +
                 Math.round(rgb1[2]) +
-                ")";
+                ')';
               color2 =
-                "rgb(" +
+                'rgb(' +
                 Math.round(rgb2[0]) +
-                "," +
+                ',' +
                 Math.round(rgb2[1]) +
-                "," +
+                ',' +
                 Math.round(rgb2[2]) +
-                ")";
+                ')';
               jsc.picker.sldGrad.draw(
-                THIS.sliderSize,
-                THIS.height,
-                color1,
-                color2
+                  THIS.sliderSize,
+                  THIS.height,
+                  color1,
+                  color2,
               );
               break;
-            case "v":
+            case 'v':
               var rgb = HSV_RGB(THIS.hsv[0], THIS.hsv[1], 100);
               color1 =
-                "rgb(" +
+                'rgb(' +
                 Math.round(rgb[0]) +
-                "," +
+                ',' +
                 Math.round(rgb[1]) +
-                "," +
+                ',' +
                 Math.round(rgb[2]) +
-                ")";
-              color2 = "#000";
+                ')';
+              color2 = '#000';
               jsc.picker.sldGrad.draw(
-                THIS.sliderSize,
-                THIS.height,
-                color1,
-                color2
+                  THIS.sliderSize,
+                  THIS.height,
+                  color1,
+                  color2,
               );
               break;
             default:
@@ -1889,27 +1889,27 @@ if (!window.jscolor) {
         }
 
         function redrawSld() {
-          var sldComponent = jsc.getSliderComponent(THIS);
+          const sldComponent = jsc.getSliderComponent(THIS);
           if (sldComponent) {
             // redraw the slider pointer
-            var yComponent;
+            let yComponent;
             switch (sldComponent) {
-              case "s":
+              case 's':
                 yComponent = 1;
                 break;
-              case "v":
+              case 'v':
                 yComponent = 2;
                 break;
               default:
             }
-            var y = Math.round(
-              (1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1)
+            const y = Math.round(
+                (1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1),
             );
             jsc.picker.sldPtrOB.style.top =
               y -
               (2 * THIS.pointerBorderWidth + THIS.pointerThickness) -
               Math.floor(sliderPtrSpace / 2) +
-              "px";
+              'px';
           }
         }
 
@@ -1922,22 +1922,22 @@ if (!window.jscolor) {
         }
 
         // Find the target element
-        if (typeof targetElement === "string") {
-          var id = targetElement;
-          var elm = document.getElementById(id);
+        if (typeof targetElement === 'string') {
+          const id = targetElement;
+          const elm = document.getElementById(id);
           if (elm) {
             this.targetElement = elm;
           } else {
-            jsc.warn("Could not find target element with ID '" + id + "'");
+            jsc.warn('Could not find target element with ID \'' + id + '\'');
           }
         } else if (targetElement) {
           this.targetElement = targetElement;
         } else {
-          jsc.warn("Invalid target element: '" + targetElement + "'");
+          jsc.warn('Invalid target element: \'' + targetElement + '\'');
         }
 
         if (this.targetElement._jscLinkedInstance) {
-          jsc.warn("Cannot link jscolor twice to the same element. Skipping.");
+          jsc.warn('Cannot link jscolor twice to the same element. Skipping.');
           return;
         }
         this.targetElement._jscLinkedInstance = this;
@@ -1948,22 +1948,22 @@ if (!window.jscolor) {
         this.styleElement = jsc.fetchElement(this.styleElement);
 
         var THIS = this;
-        var container = this.container
-          ? jsc.fetchElement(this.container)
-          : document.getElementsByTagName("body")[0];
+        var container = this.container ?
+          jsc.fetchElement(this.container) :
+          document.getElementsByTagName('body')[0];
         var sliderPtrSpace = 3; // px
 
         // For BUTTON elements it's important to stop them from sending the form when clicked
         // (e.g. in Safari)
-        if (jsc.isElementType(this.targetElement, "button")) {
+        if (jsc.isElementType(this.targetElement, 'button')) {
           if (this.targetElement.onclick) {
-            var origCallback = this.targetElement.onclick;
-            this.targetElement.onclick = function (evt) {
+            const origCallback = this.targetElement.onclick;
+            this.targetElement.onclick = function(evt) {
               origCallback.call(this, evt);
               return false;
             };
           } else {
-            this.targetElement.onclick = function () {
+            this.targetElement.onclick = function() {
               return false;
             };
           }
@@ -1995,15 +1995,15 @@ if (!window.jscolor) {
 
         // valueElement
         if (this.valueElement) {
-          if (jsc.isElementType(this.valueElement, "input")) {
-            var updateField = function () {
+          if (jsc.isElementType(this.valueElement, 'input')) {
+            const updateField = function() {
               THIS.fromString(THIS.valueElement.value, jsc.leaveValue);
               jsc.dispatchFineChange(THIS);
             };
-            jsc.attachEvent(this.valueElement, "keyup", updateField);
-            jsc.attachEvent(this.valueElement, "input", updateField);
-            jsc.attachEvent(this.valueElement, "blur", blurValue);
-            this.valueElement.setAttribute("autocomplete", "off");
+            jsc.attachEvent(this.valueElement, 'keyup', updateField);
+            jsc.attachEvent(this.valueElement, 'input', updateField);
+            jsc.attachEvent(this.valueElement, 'blur', blurValue);
+            this.valueElement.setAttribute('autocomplete', 'off');
           }
         }
 
@@ -2026,20 +2026,20 @@ if (!window.jscolor) {
       },
     };
 
-    //================================
+    // ================================
     // Public properties and methods
-    //================================
+    // ================================
 
     // By default, search for all elements with className="jscolor" and install a color picker on them.
     //
     // You can change what class name will be looked for by setting the property jscolor.lookupClass
     // anywhere in your HTML document. To completely disable the automatic lookup, set it to null.
     //
-    jsc.jscolor.lookupClass = "jscolor";
+    jsc.jscolor.lookupClass = 'jscolor';
 
-    jsc.jscolor.installByClassName = function (className) {
-      var inputElms = document.getElementsByTagName("input");
-      var buttonElms = document.getElementsByTagName("button");
+    jsc.jscolor.installByClassName = function(className) {
+      const inputElms = document.getElementsByTagName('input');
+      const buttonElms = document.getElementsByTagName('button');
 
       jsc.tryInstallOnElements(inputElms, className);
       jsc.tryInstallOnElements(buttonElms, className);

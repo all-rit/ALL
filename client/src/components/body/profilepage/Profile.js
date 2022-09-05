@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import ProfileHeader from "./ProfileHeader";
-import InstructingGroups from "./InstructingGroups";
-import Labs from "./Labs";
-import UserService from "../../../services/UserService";
-import UserLabService from "../../../services/UserLabService";
-import EnrolledGroups from "./EnrolledGroups";
+import React, {useState, useEffect} from 'react';
+import ProfileHeader from './ProfileHeader';
+import InstructingGroups from './InstructingGroups';
+import Labs from './Labs';
+import UserService from '../../../services/UserService';
+import UserLabService from '../../../services/UserLabService';
+import EnrolledGroups from './EnrolledGroups';
 
 const Profile = (props) => {
   // toDoLabs is only the assigned labs that the user hasn't made any progress in
@@ -12,8 +12,8 @@ const Profile = (props) => {
   // labRecords is fetching all the records for the labs that the user has made progress in
   const [labRecords, setLabRecords] = useState(null);
 
-  let inProgressLabs = [];
-  let completedLabs = [];
+  const inProgressLabs = [];
+  const completedLabs = [];
 
   useEffect(() => {
     if (props.user) {

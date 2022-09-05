@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { EXERCISE_IDLE, EXERCISE_ENDED } from "../../../../constants/lab1";
+import React, {Component} from 'react';
+import {EXERCISE_IDLE, EXERCISE_ENDED} from '../../../../constants/lab1';
 
-import Playthrough from "./Playthrough";
-import AppInstructions from "./AppInstructions";
-import Exercise from "./Exercise";
-import Repair from "./Repair";
+import Playthrough from './Playthrough';
+import AppInstructions from './AppInstructions';
+import Exercise from './Exercise';
+import Repair from './Repair';
 
 class Content extends Component {
   render() {
-    const { data, handlers, user } = this.props;
+    const {data, handlers, user} = this.props;
     const {
       availableMessage,
       unavailableMessage,

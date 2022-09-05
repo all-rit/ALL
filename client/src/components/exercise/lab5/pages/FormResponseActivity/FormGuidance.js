@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from "react";
-import { navigate } from "@reach/router";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import React, {Component, Fragment} from 'react';
+import {navigate} from '@reach/router';
+import PageServiceTimer from '../../../shared/PageServiceTimer';
 
 class FormGuidance extends Component {
   constructor(props) {
     super(props);
-    this.state = { componentName: "FormGuidance" };
+    this.state = {componentName: 'FormGuidance'};
   }
   handleNav() {
-    navigate("/Lab5/Exercise/FormRepair");
+    navigate('/Lab5/Exercise/FormRepair');
   }
 
   render() {
-    const { actions } = this.props;
+    const {actions} = this.props;
     return (
       <Fragment>
         <div className="center-div">

@@ -1,9 +1,9 @@
-import React from "react";
-import ProgressBar from "./components/ProgressBar";
+import React from 'react';
+import ProgressBar from './components/ProgressBar';
 
 const ProfileHeader = (props) => {
-  const { user, labRecords, toDoLabs } = props;
-  let parsedRecords = [];
+  const {user, labRecords, toDoLabs} = props;
+  const parsedRecords = [];
 
   if (labRecords) {
     labRecords.forEach((lab) => {

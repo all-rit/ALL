@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import "../../../assets/stylesheets/components/App.scss";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../../reducers/MainReducer";
-import handleRedirect from "../../../helpers/Redirect";
+import React, {useEffect} from 'react';
+import '../../../assets/stylesheets/components/App.scss';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {actions as mainActions} from '../../../reducers/MainReducer';
+import handleRedirect from '../../../helpers/Redirect';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -15,7 +15,7 @@ const SiteMap = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const { actions } = props;
+  const {actions} = props;
   return (
     <div className="landingpage">
       <div className="container">
@@ -34,19 +34,19 @@ const SiteMap = (props) => {
                   </h4>
                   <ul>
                     <li>
-                      {" "}
+                      {' '}
                       <a href="# " onClick={() => handleRedirect(actions, 0)}>
                         Goals
                       </a>
                     </li>
                     <li>
-                      {" "}
+                      {' '}
                       <a href="# " onClick={() => handleRedirect(actions, 0)}>
                         Labs
                       </a>
                     </li>
                     <li>
-                      {" "}
+                      {' '}
                       <a href="# " onClick={() => handleRedirect(actions, 0)}>
                         Contact
                       </a>

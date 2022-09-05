@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import LabService from "../../../../services/LabService";
-import GroupService from "../../../../services/GroupService";
+import React, {useEffect, useState} from 'react';
+import LabService from '../../../../services/LabService';
+import GroupService from '../../../../services/GroupService';
 
 import {
   Button,
@@ -10,9 +10,9 @@ import {
   FormGroup,
   Label,
   Input,
-} from "reactstrap";
-import FormCheckbox from "./FormCheckbox";
-import DeleteModal from "./DeleteModal";
+} from 'reactstrap';
+import FormCheckbox from './FormCheckbox';
+import DeleteModal from './DeleteModal';
 
 const GroupForm = (props) => {
   const {
@@ -27,7 +27,7 @@ const GroupForm = (props) => {
   const [labs, setLabs] = useState([]);
   // eslint-disable-next-line
   const [setState, setSetState] = useState(0);
-  let labsAssigned = [];
+  const labsAssigned = [];
   if (assignedLabs !== undefined) {
     assignedLabs.forEach((data) => {
       labsAssigned.push(data.labID);
@@ -45,17 +45,17 @@ const GroupForm = (props) => {
     // apparently that's necessary despite this not being an object-oriented or strongly typed language
     // Please refactor this eventually, for the love of all that is holy
     const formData = Object.fromEntries(new FormData(e.target).entries());
-    let labs = [];
+    const labs = [];
     for (const [key, value] of Object.entries(formData)) {
-      if (value === "on") {
+      if (value === 'on') {
         labs.push(parseInt(key));
       }
     }
 
     switch (addMode) {
-      case "add_instr_grp":
-        let groupName =
-          formData.groupName !== "" ? formData.groupName : "Default Group Name";
+      case 'add_instr_grp':
+        const groupName =
+          formData.groupName !== '' ? formData.groupName : 'Default Group Name';
         GroupService.createGroup(user.userid, groupName).then((data) => {
           labs.forEach((labID) => {
             GroupService.addGroupLab(data.groupID, labID);
@@ -64,30 +64,30 @@ const GroupForm = (props) => {
           setInstrGroupsUpdated(true);
         });
         break;
-      case "update_grp_lab":
+      case 'update_grp_lab':
         if (groupID) {
-          if (formData.groupName !== "") {
+          if (formData.groupName !== '') {
             GroupService.updateGroup(groupID, formData.groupName);
           }
           labsAssigned.forEach((labID) => {
             if (!labs.includes(labID)) {
               GroupService.deleteGroupLab(groupID, labID).then(() =>
-                setInstrGroupsUpdated(true)
+                setInstrGroupsUpdated(true),
               );
             }
           });
           labs.forEach((labID) => {
             if (!labsAssigned.includes(labID)) {
               GroupService.addGroupLab(groupID, labID).then(() =>
-                setInstrGroupsUpdated(true)
+                setInstrGroupsUpdated(true),
               );
             }
           });
           setInstrGroupsUpdated(true);
         }
         break;
-      default: //this is the case for enrolling in a group
-        console.log("Group Form Default Case");
+      default: // this is the case for enrolling in a group
+        console.log('Group Form Default Case');
     }
 
     // Always toggle the modal
@@ -101,7 +101,7 @@ const GroupForm = (props) => {
   }, [setState]);
 
   switch (addMode) {
-    case "add_instr_grp":
+    case 'add_instr_grp':
       return (
         <Form onSubmit={onFormSubmit}>
           <ModalBody>
@@ -111,7 +111,7 @@ const GroupForm = (props) => {
                 type="text"
                 name="groupName"
                 id="groupName"
-                placeholder={"SWEN 344 Web Engineering Fall 2021"}
+                placeholder={'SWEN 344 Web Engineering Fall 2021'}
               />
             </FormGroup>
             <FormGroup check>
@@ -131,7 +131,7 @@ const GroupForm = (props) => {
           </ModalFooter>
         </Form>
       );
-    case "update_grp_lab":
+    case 'update_grp_lab':
       return (
         <Form onSubmit={onFormSubmit}>
           <ModalBody>

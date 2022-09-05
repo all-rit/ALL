@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import Button from "./header/buttons/button";
-import "./exerciseStyle.css";
+import React, {Component} from 'react';
+import Button from './header/buttons/button';
+import './exerciseStyle.css';
 
 /*
   Class for replay screen and to allow the user to replay the exercise
 */
 class Replay extends Component {
-  //Constructor to hold state information
+  // Constructor to hold state information
   constructor(props) {
     super(props);
     this.state = {
@@ -15,12 +15,12 @@ class Replay extends Component {
     };
   }
 
-  //Renderer for application
+  // Renderer for application
   render() {
     // eslint-disable-next-line
     this.state.exerciseMode = "default";
 
-    //Handles the first click
+    // Handles the first click
     const clickFirst = () => {
       this.props.changeExerciseColors(this.props.colors);
       this.props.resetOption();
@@ -50,7 +50,7 @@ class Replay extends Component {
            </div>
          </div>
         */}
-        <div style={{ marginTop: "75px" }}>
+        <div style={{marginTop: '75px'}}>
           <div>
             {this.props.score > 0 ? (
               <p className="timeEnd">Good job! Here are your results:</p>
@@ -61,7 +61,7 @@ class Replay extends Component {
             )}
             <div>
               <table className="center centerExercise">
-                <tbody style={{ border: "2px solid black" }}>
+                <tbody style={{border: '2px solid black'}}>
                   <tr>
                     <td className="replayBreakdown">Final Score</td>
                     {this.props.score > 0 ? (
@@ -132,27 +132,27 @@ class Replay extends Component {
               </table>
             </div>
           </div>
-          <div className="center" style={{ marginLeft: "-25px" }}>
+          <div className="center" style={{marginLeft: '-25px'}}>
             {this.props.exercisesPlayed === 0 ? (
               <Button
                 clickMethod={clickFirst}
-                message={"Continue"}
-                fontSizing={"25px"}
+                message={'Continue'}
+                fontSizing={'25px'}
               />
             ) : (
               <div>
                 {this.props.exercisesPlayed === 1 ? (
                   <Button
                     clickMethod={clickSecond}
-                    message={"Continue"}
-                    fontSizing={"25px"}
+                    message={'Continue'}
+                    fontSizing={'25px'}
                   />
                 ) : (
                   <div>
                     <Button
                       clickMethod={clickThird}
-                      message={"Continue"}
-                      fontSizing={"25px"}
+                      message={'Continue'}
+                      fontSizing={'25px'}
                     />
                   </div>
                 )}

@@ -1,7 +1,7 @@
-import React from "react";
-import "./homeStyle.css";
-import Instructions from "../Instructions/instructions";
-import StartExercise from "./startExercise";
+import React from 'react';
+import './homeStyle.css';
+import Instructions from '../Instructions/instructions';
+import StartExercise from './startExercise';
 
 /*
 Component for the main home page
@@ -29,12 +29,12 @@ const Home = ({
     incorrectColorTwo,
   ];
 
-  //Handles switching the colors to a simulation for a selected exercise option
-  if (exerciseOption !== "default") {
+  // Handles switching the colors to a simulation for a selected exercise option
+  if (exerciseOption !== 'default') {
     onChangeExerciseColors(colors);
   }
 
-  if (background === "white") {
+  if (background === 'white') {
     resetBackground(baseBackground);
   }
 

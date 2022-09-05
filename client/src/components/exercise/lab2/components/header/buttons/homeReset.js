@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 /*
 Component for the home reset button
 */
-const HomeReset = ({ exerciseEnded, changeExerciseColors, colors }) => {
-  //Handles a click of the button
+const HomeReset = ({exerciseEnded, changeExerciseColors, colors}) => {
+  // Handles a click of the button
   const handleClick = () => {
     changeExerciseColors(colors);
     exerciseEnded();

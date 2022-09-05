@@ -1,15 +1,15 @@
-import { Router } from "@reach/router";
-import React from "react";
-import AvatarSelection from "./pages/AvatarSelection";
-import ImagineEnd from "./pages/ImagineEnd";
-import ImagineStart from "./pages/ImagineStart";
-import MatchLobby from "./pages/MatchLobby";
-import TicTacToe from "./pages/TicTacToe";
-import { transitions, positions, Provider } from "react-alert";
-import AlertMUITemplate from "react-alert-template-mui";
+import {Router} from '@reach/router';
+import React from 'react';
+import AvatarSelection from './pages/AvatarSelection';
+import ImagineEnd from './pages/ImagineEnd';
+import ImagineStart from './pages/ImagineStart';
+import MatchLobby from './pages/MatchLobby';
+import TicTacToe from './pages/TicTacToe';
+import {transitions, positions, Provider} from 'react-alert';
+import AlertMUITemplate from 'react-alert-template-mui';
 
 const Imagine = (props) => {
-  const { user, biasType, linkNum } = props;
+  const {user, biasType, linkNum} = props;
 
   const options = {
     timeout: 10000,
@@ -23,7 +23,7 @@ const Imagine = (props) => {
         <div className="row">
           <div className="col-lg-12 text-center">
             <h2 className="section-heading text-uppercase tw-text-right">
-              {"ID#" + user?.userid}
+              {'ID#' + user?.userid}
             </h2>
           </div>
         </div>

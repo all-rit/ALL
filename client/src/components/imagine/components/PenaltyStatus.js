@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from 'react';
 
 const PenaltyStatus = (props) => {
-  const { isOffender } = props;
+  const {isOffender} = props;
 
-  const [penalty, setPenalty] = useState("None");
+  const [penalty, setPenalty] = useState('None');
 
   useEffect(() => {
     if (isOffender === true) {
       const penaltyTimeout = setTimeout(() => {
-        setPenalty("Offender");
+        setPenalty('Offender');
       }, 5099);
 
       return () => {
@@ -18,7 +18,7 @@ const PenaltyStatus = (props) => {
   });
 
   return (
-    <div className={penalty === "Offender" ? "tw-text-brightRed" : ""}>
+    <div className={penalty === 'Offender' ? 'tw-text-brightRed' : ''}>
       {penalty}
     </div>
   );

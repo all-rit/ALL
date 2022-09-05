@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import ProgressBarBar from "./ProgressBarBar";
+import React, {Component} from 'react';
+import ProgressBarBar from './ProgressBarBar';
 class ProgressBar extends Component {
   render() {
-    const { barData, percentage, labID } = this.props;
+    const {barData, percentage, labID} = this.props;
     const total = barData.length;
 
     function totalCompleted(barData) {
@@ -42,7 +42,7 @@ class ProgressBar extends Component {
             </li>
           ) : (
             <li className="progressBar__info">
-              {" "}
+              {' '}
               {completed} out of {total} modules completed.
             </li>
           )}

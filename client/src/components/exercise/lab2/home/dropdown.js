@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 /*
 Handles the dropdown options for the exercise mode
 */
-const Dropdown = ({ selectOption }) => {
-  //Handles a user switching the exercise option
+const Dropdown = ({selectOption}) => {
+  // Handles a user switching the exercise option
   const handleChosenOption = (event) => {
     selectOption(event);
   };

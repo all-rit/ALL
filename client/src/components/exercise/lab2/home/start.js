@@ -1,6 +1,6 @@
-import React from "react";
-import "./homeStyle.css";
-import ColorVision from "../colors/colorVision";
+import React from 'react';
+import './homeStyle.css';
+import ColorVision from '../colors/colorVision';
 
 /*
 Component for starting the exercise
@@ -11,10 +11,10 @@ const Start = ({
   onChangeExerciseColors,
   colors,
 }) => {
-  //Handles the click of the button and changes the colors for the exercise
-  //if the exercise option is not the default or hex options
+  // Handles the click of the button and changes the colors for the exercise
+  // if the exercise option is not the default or hex options
   const startClick = () => {
-    if (exerciseOption !== "Main" && exerciseOption !== "hex") {
+    if (exerciseOption !== 'Main' && exerciseOption !== 'hex') {
       ColorVision(onChangeExerciseColors, exerciseOption, colors);
     }
     startExercise();

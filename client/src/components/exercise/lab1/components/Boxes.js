@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import Box from "./Box";
+import Box from './Box';
 
 class Boxes extends Component {
   render() {
-    const { visible, elements, clickHandler } = this.props;
+    const {visible, elements, clickHandler} = this.props;
     const boxElements = Object.keys(elements).map((box) => {
       return (
         <Box

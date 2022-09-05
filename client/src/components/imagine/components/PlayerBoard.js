@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import GameScore from "./GameScore";
-import GameStatus from "./GameStatus";
-import ImagineService from "../../../services/ImagineService";
-import Spinner from "../../../common/Spinner/Spinner";
-import Bias from "./Bias";
-import PenaltyStatus from "./PenaltyStatus";
-import Avatar from "avataaars";
-import createAvatarData from "../../body/lab/GridImages/createAvatarData";
+import React, {useEffect, useState} from 'react';
+import GameScore from './GameScore';
+import GameStatus from './GameStatus';
+import ImagineService from '../../../services/ImagineService';
+import Spinner from '../../../common/Spinner/Spinner';
+import Bias from './Bias';
+import PenaltyStatus from './PenaltyStatus';
+import Avatar from 'avataaars';
+import createAvatarData from '../../body/lab/GridImages/createAvatarData';
 
 const PlayerBoard = (props) => {
-  const { user, handleNext, biasType } = props;
+  const {user, handleNext, biasType} = props;
   const [team, setTeam] = useState([]);
   const [avatar, setAvatar] = useState([]);
   const [opposingTeam, setOpposingTeam] = useState([]);
@@ -17,9 +17,9 @@ const PlayerBoard = (props) => {
   const [isModalActive, setModalActive] = useState(false);
 
   const shuffleArray = (array) => {
-    let currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
+    let currentIndex = array.length;
+    let temporaryValue;
+    let randomIndex;
 
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
@@ -44,7 +44,7 @@ const PlayerBoard = (props) => {
     ImagineService.getUserAvatar(user?.userid).then((data) => {
       setAvatar(data);
     });
-    let opossingData = createAvatarData(100);
+    const opossingData = createAvatarData(100);
     shuffleArray(opossingData);
     setOpposingTeam(opossingData.slice(0, 4));
     // eslint-disable-next-line
@@ -99,9 +99,9 @@ const PlayerBoard = (props) => {
                 />
               </td>
               <td>
-                {user?.firstname != null
-                  ? user?.firstname + " " + user?.lastinitial
-                  : "User#" + user?.userid}
+                {user?.firstname != null ?
+                  user?.firstname + ' ' + user?.lastinitial :
+                  'User#' + user?.userid}
               </td>
               <td>0/0/0</td>
               <td>
@@ -114,7 +114,7 @@ const PlayerBoard = (props) => {
               </td>
               <td>
                 <PenaltyStatus
-                  isOffender={biasType === "user" ? true : false}
+                  isOffender={biasType === 'user' ? true : false}
                 />
               </td>
             </tr>
@@ -148,11 +148,11 @@ const PlayerBoard = (props) => {
                   <td>
                     <PenaltyStatus
                       isOffender={
-                        biasType === "team"
-                          ? data.id === offender?.id
-                            ? true
-                            : false
-                          : false
+                        biasType === 'team' ?
+                          data.id === offender?.id ?
+                            true :
+                            false :
+                          false
                       }
                     />
                   </td>
@@ -184,7 +184,7 @@ const PlayerBoard = (props) => {
                     <GameScore />
                   </td>
                   <td>
-                    <GameStatus userType="opposingMember" biasType={"none"} />
+                    <GameStatus userType="opposingMember" biasType={'none'} />
                   </td>
                   <td>None</td>
                 </tr>

@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from 'react';
 
-import CongratulationMessage from "./CongratulationMessage";
+import CongratulationMessage from './CongratulationMessage';
 
 class Countdown extends Component {
   render() {
-    const { visible, time, message } = this.props;
+    const {visible, time, message} = this.props;
 
     if (!visible) return null;
 

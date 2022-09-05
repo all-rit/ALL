@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { navigate } from "@reach/router";
-import GridImages from "../../body/lab/GridImages/GridImages";
-import ImagineService from "../../../services/ImagineService";
+import React, {useState} from 'react';
+import {navigate} from '@reach/router';
+import GridImages from '../../body/lab/GridImages/GridImages';
+import ImagineService from '../../../services/ImagineService';
 
 const AvatarSelection = (props) => {
-  const { user, linkNum } = props;
+  const {user, linkNum} = props;
   const handleNext = () => {
-    navigate("/Imagine" + linkNum + "/MatchLobby");
+    navigate('/Imagine' + linkNum + '/MatchLobby');
   };
 
   const [squadSelection, setSquadSelection] = useState(false);

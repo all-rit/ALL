@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from "react";
-import { navigate } from "@reach/router";
+import React, {Component, Fragment} from 'react';
+import {navigate} from '@reach/router';
 
 class ExerciseButtons extends Component {
   render() {
-    const { openRepairHandler, endEnabled } = this.props;
-    let startMessage = "Play";
+    const {openRepairHandler, endEnabled} = this.props;
+    const startMessage = 'Play';
     const repairButton = (
       <button
         className="btn btn-second btn-xl text-uppercase  leftButton"
@@ -17,7 +17,7 @@ class ExerciseButtons extends Component {
     const startButton = (
       <button
         className="btn btn-primary btn-xl text-uppercase  rightButton"
-        onClick={() => navigate("/Lab3/Exercise/UserUpdatedExercise")}
+        onClick={() => navigate('/Lab3/Exercise/UserUpdatedExercise')}
         key="start"
       >
         {startMessage}
@@ -26,8 +26,8 @@ class ExerciseButtons extends Component {
     const endButton = (
       <button
         className="btn btn-success btn-xl text-uppercase  float-right"
-        style={{ marginRight: "15%" }}
-        onClick={() => navigate("/Lab3/Exercise/BeginnerExerciseConclusion")}
+        style={{marginRight: '15%'}}
+        onClick={() => navigate('/Lab3/Exercise/BeginnerExerciseConclusion')}
         key="start"
       >
         End Activity

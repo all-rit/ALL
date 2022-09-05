@@ -1,41 +1,41 @@
-import React, { Component } from "react";
-import ReactGA from "react-ga";
+import React, {Component} from 'react';
+import ReactGA from 'react-ga';
 
-import { default as About } from "./components/body/About";
-import { default as Reading } from "./components/body/Reading/Reading";
+import {default as About} from './components/body/About';
+import {default as Reading} from './components/body/Reading/Reading';
 
-import { default as Reinforcement } from "./components/body/Reinforcement";
+import {default as Reinforcement} from './components/body/Reinforcement';
 
-import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
-import { Sections } from "./constants/index";
+import {default as ExerciseLab1} from './components/exercise/lab1/Main';
+import {Sections} from './constants/index';
 
-import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
+import {default as ExerciseLab2} from './components/exercise/lab2/Main';
 
-import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
+import {default as ExerciseLab3} from './components/exercise/lab3/Main';
 
-import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
+import {default as ExerciseLab4} from './components/exercise/lab4/Main';
 
-import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
+import {default as ExerciseLab5} from './components/exercise/lab5/Main';
 
-import { default as LandingPageBody } from "./components/body/landingpage/index";
-import { default as SiteMap } from "./components/body/landingpage/sitemap";
-import { default as Error } from "./components/body/landingpage/error";
-import { default as Profile } from "./components/body/profilepage/Profile";
-import { default as Imagine } from "./components/imagine/Imagine";
+import {default as LandingPageBody} from './components/body/landingpage/index';
+import {default as SiteMap} from './components/body/landingpage/sitemap';
+import {default as Error} from './components/body/landingpage/error';
+import {default as Profile} from './components/body/profilepage/Profile';
+import {default as Imagine} from './components/imagine/Imagine';
 
-import { default as Quiz } from "./components/quiz/App";
-import { stateChange } from "./helpers/Redirect";
-import Change from "./components/footer/footer";
-import Header from "./components/header/header";
-import { actions as appActions } from "./reducers/lab1/AppReducer";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "./reducers/MainReducer";
-import BodyHeader from "./components/header/BodyHeader";
-import "./assets/stylesheets/main.scss";
-import { Router } from "@reach/router";
-import { connect } from "react-redux";
-import { globalHistory } from "@reach/router";
-const parse = require("url-parse");
+import {default as Quiz} from './components/quiz/App';
+import {stateChange} from './helpers/Redirect';
+import Change from './components/footer/footer';
+import Header from './components/header/header';
+import {actions as appActions} from './reducers/lab1/AppReducer';
+import {bindActionCreators} from 'redux';
+import {actions as mainActions} from './reducers/MainReducer';
+import BodyHeader from './components/header/BodyHeader';
+import './assets/stylesheets/main.scss';
+import {Router} from '@reach/router';
+import {connect} from 'react-redux';
+import {globalHistory} from '@reach/router';
+const parse = require('url-parse');
 
 const mapStateToProps = (state) => {
   return {
@@ -45,12 +45,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...appActions, ...mainActions }, dispatch),
+    actions: bindActionCreators({...appActions, ...mainActions}, dispatch),
   };
 };
 
 function initializeReactGA() {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
     ReactGA.initialize(TRACKING_ID);
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -59,7 +59,7 @@ function initializeReactGA() {
 
 class App extends Component {
   componentDidMount() {
-    const { actions } = this.props;
+    const {actions} = this.props;
     actions.login();
     const location = parse(window.location.href);
     stateChange(actions, location.pathname);
@@ -69,15 +69,15 @@ class App extends Component {
   }
 
   render() {
-    const { state, actions } = this.props;
+    const {state, actions} = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
-    //look into index.js in constants
+    // look into index.js in constants
     initializeReactGA();
     return (
       <div className="overflow-x-hidden">
         <Header />
-        <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
+        <div className={'mainBody' + (lab !== 0 ? ' container' : '')}>
           {lab !== 0 && (
             <BodyHeader body={Sections[lab][body].name} labID={lab} />
           )}
@@ -91,19 +91,19 @@ class App extends Component {
               <Imagine
                 path="/Imagine1/*"
                 user={state.main.user}
-                biasType={"none"}
+                biasType={'none'}
                 linkNum={1}
               />
               <Imagine
                 path="/Imagine2/*"
                 user={state.main.user}
-                biasType={"user"}
+                biasType={'user'}
                 linkNum={2}
               />
               <Imagine
                 path="/Imagine3/*"
                 user={state.main.user}
-                biasType={"team"}
+                biasType={'team'}
                 linkNum={3}
               />
 

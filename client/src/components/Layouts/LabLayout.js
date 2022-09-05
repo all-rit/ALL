@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const LabLayout = ({ children }) => {
+const LabLayout = ({children}) => {
   return <div className="playthrough">{children}</div>;
 };
 
