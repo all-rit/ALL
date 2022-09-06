@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
-import { Table } from "reactstrap";
-import UserService from "../../../services/UserService";
-import GroupDetails from "./GroupDetails";
-import AddModal from "./components/AddModal";
+import React, {useEffect, useState} from 'react';
+import {Table} from 'reactstrap';
+import UserService from '../../../services/UserService';
+import GroupDetails from './GroupDetails';
+import AddModal from './components/AddModal';
 
 const InstructingGroups = (props) => {
-  const { user } = props;
+  const {user} = props;
   const [instructingGroups, setInstructingGroups] = useState([]);
   const [instrGroupsUpdated, setInstrGroupsUpdated] = useState(false);
   useEffect(() => {
@@ -23,7 +23,7 @@ const InstructingGroups = (props) => {
       <div className="header_with_button">
         <h4>My Instructing Groups</h4>
         <AddModal
-          addMode={"add_instr_grp"}
+          addMode={'add_instr_grp'}
           user={props.user}
           setInstrGroupsUpdated={setInstrGroupsUpdated}
         />

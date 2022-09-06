@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { navigate } from "@reach/router";
-import Spinner from "../../../common/Spinner/Spinner";
-import TicTacToeBoard from "../TicTacToe/TicTacToeBoard";
+import React from 'react';
+import {navigate} from '@reach/router';
+import Spinner from '../../../common/Spinner/Spinner';
+import TicTacToeBoard from '../TicTacToe/TicTacToeBoard';
 const TicTacToe = (props) => {
-  const { linkNum } = props;
+  const {linkNum} = props;
   const [loading, setLoading] = react.useState(true);
   const [gameState, setGameState] = react.useState({
     isGameOver: false,
@@ -12,7 +12,7 @@ const TicTacToe = (props) => {
   });
 
   const handleNext = () => {
-    navigate("/Imagine" + linkNum + "/End");
+    navigate('/Imagine' + linkNum + '/End');
   };
 
   setTimeout(() => {

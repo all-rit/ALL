@@ -1,8 +1,8 @@
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import GoogleButton from "react-google-button";
-import { withRouter } from "react-router";
-import "../title.css";
+import React, {Component} from 'react';
+import GoogleButton from 'react-google-button';
+import {withRouter} from 'react-router';
+import '../title.css';
 
 /*
 Class for handling the google signin button
@@ -13,16 +13,16 @@ export class Google extends Component {
   render() {
     // Handles the call back api controller
     const clickMethod = () => {
-      fetch(process.env.REACT_APP_SERVER_URL + "/auth/google", {
-        method: "GET",
-        credentials: "include",
+      fetch(process.env.REACT_APP_SERVER_URL + '/auth/google', {
+        method: 'GET',
+        credentials: 'include',
       })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          window.location.href = data.link;
-        })
-        .catch((error) => console.log(error));
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            window.location.href = data.link;
+          })
+          .catch((error) => console.log(error));
     };
 
     return (

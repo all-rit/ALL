@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
-import Circle from "../components/circle";
+import React from 'react';
+import Circle from '../components/circle';
 
 /*
 Component for displaying the instructions at the bottom of the page of the

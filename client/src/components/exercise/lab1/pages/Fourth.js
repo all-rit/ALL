@@ -3,12 +3,12 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from "victory";
+import React, {Component} from 'react';
+import {VictoryBar, VictoryChart, VictoryAxis, VictoryLabel} from 'victory';
 
 class Fourth extends Component {
   render() {
-    const { results } = this.props;
+    const {results} = this.props;
     const resultContainer = [];
 
     // score of the first exercise, used to calculate percentages below
@@ -52,45 +52,45 @@ class Fourth extends Component {
     // a variable to store the previously calculated data
     // to be displayed in the graph
     const data = [
-      { exercise: 2, score: adjScore1 },
-      { exercise: 3, score: adjScore2 },
+      {exercise: 2, score: adjScore1},
+      {exercise: 3, score: adjScore2},
     ];
 
     results.slice(0, 3).forEach((result, i) => {
-      let title = "";
+      let title = '';
 
       if (i === 0) {
-        title = "Sound On";
+        title = 'Sound On';
       } else if (i === 1) {
-        title = "Sound Off";
+        title = 'Sound Off';
       } else {
-        title = "Code Fixed + Sound Off";
+        title = 'Code Fixed + Sound Off';
       }
 
       resultContainer.push(
-        <div className="playthrough__exercise" key={i}>
-          <div className="playthrough__description">{title}</div>
+          <div className="playthrough__exercise" key={i}>
+            <div className="playthrough__description">{title}</div>
 
-          <div className="playthrough__result">
-            <div className="playthrough__category">Final Score:</div>
-            <div className="playthrough__value">{result.score}</div>
-          </div>
+            <div className="playthrough__result">
+              <div className="playthrough__category">Final Score:</div>
+              <div className="playthrough__value">{result.score}</div>
+            </div>
 
-          <div className="playthrough__result">
-            <div className="playthrough__category">Correct Answers:</div>
-            <div className="playthrough__value">{result.correctAnswers}</div>
-          </div>
+            <div className="playthrough__result">
+              <div className="playthrough__category">Correct Answers:</div>
+              <div className="playthrough__value">{result.correctAnswers}</div>
+            </div>
 
-          <div className="playthrough__result">
-            <div className="playthrough__category">Incorrect Answers:</div>
-            <div className="playthrough__value">{result.incorrectAnswers}</div>
-          </div>
+            <div className="playthrough__result">
+              <div className="playthrough__category">Incorrect Answers:</div>
+              <div className="playthrough__value">{result.incorrectAnswers}</div>
+            </div>
 
-          <div className="playthrough__result">
-            <div className="playthrough__category">Rounds:</div>
-            <div className="playthrough__value">{result.roundNumber}</div>
-          </div>
-        </div>
+            <div className="playthrough__result">
+              <div className="playthrough__category">Rounds:</div>
+              <div className="playthrough__value">{result.roundNumber}</div>
+            </div>
+          </div>,
       );
 
       i += 1;
@@ -114,11 +114,11 @@ class Fourth extends Component {
                 textAnchor="middle"
               />
 
-              <VictoryAxis tickFormat={() => ""} />
+              <VictoryAxis tickFormat={() => ''} />
               <VictoryAxis
                 tickValues={[2, 3]}
-                tickFormat={["Sound\nOff", "Code\nFixed+\nSound\nOff"]}
-                style={{ tickLabels: { fill: "#A11212" } }}
+                tickFormat={['Sound\nOff', 'Code\nFixed+\nSound\nOff']}
+                style={{tickLabels: {fill: '#A11212'}}}
                 offsetY={50}
               />
               <VictoryAxis dependentAxis tickFormat={(x) => x} />
@@ -128,9 +128,9 @@ class Fourth extends Component {
                 data={data}
                 x="exercise"
                 y="score"
-                labels={({ datum }) => datum.y}
-                domain={{ y: [0, 100] }} // setting domain avoids infinitesimally small numbers on axis
-                style={{ labels: { fill: "white" } }}
+                labels={({datum}) => datum.y}
+                domain={{y: [0, 100]}} // setting domain avoids infinitesimally small numbers on axis
+                style={{labels: {fill: 'white'}}}
                 labelComponent={<VictoryLabel dy={30} />}
               />
             </VictoryChart>
@@ -138,7 +138,7 @@ class Fourth extends Component {
 
           <p className="playthrough__sentence">
             After playing the exercise with audio, without audio, and without
-            audio but with repairs,{" "}
+            audio but with repairs,{' '}
             <b>
               we hope you have a better understanding of deaf and
               hard-of-hearing users' experiences.
@@ -146,7 +146,7 @@ class Fourth extends Component {
           </p>
 
           <p className="playthrough__sentence">
-            When developing software,{" "}
+            When developing software,{' '}
             <b>remember to consider deaf and hard-of-hearing users.</b>
           </p>
 

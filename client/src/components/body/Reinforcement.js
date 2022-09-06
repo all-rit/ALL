@@ -1,14 +1,14 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
-import useScroll from "../../use-hooks/useScroll";
-import LabService from "../../services/LabService";
-import UserLabService from "../../services/UserLabService";
-import Spinner from "../../common/Spinner/Spinner";
+import React, {useEffect, useState} from 'react';
+import useScroll from '../../use-hooks/useScroll';
+import LabService from '../../services/LabService';
+import UserLabService from '../../services/UserLabService';
+import Spinner from '../../common/Spinner/Spinner';
 
 const Reinforcement = (props) => {
-  const { user, labID } = props;
-  const [reinforcement, setReinforcement] = useState("");
+  const {user, labID} = props;
+  const [reinforcement, setReinforcement] = useState('');
   useScroll();
   useEffect(() => {
     UserLabService.complete_reinforcement(labID);

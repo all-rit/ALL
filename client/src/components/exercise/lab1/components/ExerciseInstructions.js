@@ -1,16 +1,16 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import Image1 from "../../../../assets/images/lab1/exercise/1.jpg";
-import Image2 from "../../../../assets/images/lab1/exercise/2.jpg";
-import Image3 from "../../../../assets/images/lab1/exercise/3.jpg";
-import Image4 from "../../../../assets/images/lab1/exercise/4.jpg";
-import Image5 from "../../../../assets/images/lab1/exercise/5.jpg";
-import Image6 from "../../../../assets/images/lab1/exercise/6.jpg";
-import Image7 from "../../../../assets/images/lab1/exercise/7.jpg";
-import Image8 from "../../../../assets/images/lab1/exercise/8.jpg";
+import Image1 from '../../../../assets/images/lab1/exercise/1.jpg';
+import Image2 from '../../../../assets/images/lab1/exercise/2.jpg';
+import Image3 from '../../../../assets/images/lab1/exercise/3.jpg';
+import Image4 from '../../../../assets/images/lab1/exercise/4.jpg';
+import Image5 from '../../../../assets/images/lab1/exercise/5.jpg';
+import Image6 from '../../../../assets/images/lab1/exercise/6.jpg';
+import Image7 from '../../../../assets/images/lab1/exercise/7.jpg';
+import Image8 from '../../../../assets/images/lab1/exercise/8.jpg';
 
 class ExerciseInstructions extends Component {
   constructor(props) {
@@ -26,15 +26,15 @@ class ExerciseInstructions extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    window.addEventListener("keydown", this.controls, false);
+    window.addEventListener('keydown', this.controls, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("keydown", this.controls, false);
+    window.removeEventListener('keydown', this.controls, false);
   }
 
   controls(event) {
-    const { closeHandler } = this.props;
+    const {closeHandler} = this.props;
 
     if (event.keyCode === 37) {
       this.navigatePrevSlide();
@@ -46,46 +46,46 @@ class ExerciseInstructions extends Component {
   }
 
   navigatePrevSlide() {
-    const { currentSlide, MIN_VALUE } = this.state;
+    const {currentSlide, MIN_VALUE} = this.state;
 
     if (currentSlide > MIN_VALUE) {
-      this.setState({ currentSlide: currentSlide - 1 });
+      this.setState({currentSlide: currentSlide - 1});
     }
   }
 
   navigateNextSlide() {
-    const { currentSlide, MAX_VALUE } = this.state;
+    const {currentSlide, MAX_VALUE} = this.state;
 
     if (currentSlide < MAX_VALUE) {
-      this.setState({ currentSlide: currentSlide + 1 });
+      this.setState({currentSlide: currentSlide + 1});
     }
   }
 
   render() {
-    const { visible, closeHandler } = this.props;
+    const {visible, closeHandler} = this.props;
 
     if (!visible) return null;
 
-    let image = "";
-    let alt = "";
+    let image = '';
+    let alt = '';
 
     switch (this.state.currentSlide) {
       case 2:
         image = Image2;
         alt =
-          "One of the four boxes will contain a treasure and you need to guess which.";
+          'One of the four boxes will contain a treasure and you need to guess which.';
         break;
 
       case 3:
         image = Image3;
         alt =
-          "The time is limited in the exercise, play fast to get a lot of points.";
+          'The time is limited in the exercise, play fast to get a lot of points.';
         break;
 
       case 4:
         image = Image4;
         alt =
-          "There is a hint box in the exercise and you can click on it to get a possible hint.";
+          'There is a hint box in the exercise and you can click on it to get a possible hint.';
         break;
 
       case 5:
@@ -96,23 +96,23 @@ class ExerciseInstructions extends Component {
 
       case 6:
         image = Image6;
-        alt = "Either it will show no hint";
+        alt = 'Either it will show no hint';
         break;
 
       case 7:
         image = Image7;
-        alt = "Or reveal the location of the treasure!";
+        alt = 'Or reveal the location of the treasure!';
         break;
 
       case 8:
         image = Image8;
-        alt = "Good luck!";
+        alt = 'Good luck!';
         break;
 
       default:
         image = Image1;
         alt =
-          "Image of the exercise showing a hint box, four boxes, statistics (score/correct answers/incorrect answers/round number), and a message indicating the goal to find the box with the treasure.";
+          'Image of the exercise showing a hint box, four boxes, statistics (score/correct answers/incorrect answers/round number), and a message indicating the goal to find the box with the treasure.';
     }
 
     return (

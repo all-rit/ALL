@@ -1,13 +1,13 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, useCallback } from "react";
-import clsx from "clsx";
-import Avatar from "avataaars";
-import Spinner from "../../../../common/Spinner/Spinner";
-import createAvatarData from "./createAvatarData";
+import React, {useState, useEffect, useCallback} from 'react';
+import clsx from 'clsx';
+import Avatar from 'avataaars';
+import Spinner from '../../../../common/Spinner/Spinner';
+import createAvatarData from './createAvatarData';
 
 const GridImages = (props) => {
-  const { multi, setSelection } = props;
+  const {multi, setSelection} = props;
 
   const [currentFile, setCurrentFile] = useState([]);
   const [id, setId] = useState([]);
@@ -34,24 +34,24 @@ const GridImages = (props) => {
   };
 
   const handleGridImage = useCallback(
-    (imgId) => {
-      if (id.length <= multi - 1) {
-        setId((prevState) => [...prevState, imgId]);
-      }
-      const selectImg = data.filter((img) => img.id === imgId)?.[0];
-      if (currentFile.length <= multi - 1 && !id.includes(selectImg.id)) {
-        setCurrentFile((prevState) => [...prevState, selectImg]);
-      } else {
-        if (id?.includes(selectImg.id)) {
-          setCurrentFile((prevState) =>
-            prevState.filter((file) => file.id !== selectImg.id)
-          );
-          setId((prevState) => prevState.filter((id) => id !== selectImg.id));
+      (imgId) => {
+        if (id.length <= multi - 1) {
+          setId((prevState) => [...prevState, imgId]);
         }
-      }
+        const selectImg = data.filter((img) => img.id === imgId)?.[0];
+        if (currentFile.length <= multi - 1 && !id.includes(selectImg.id)) {
+          setCurrentFile((prevState) => [...prevState, selectImg]);
+        } else {
+          if (id?.includes(selectImg.id)) {
+            setCurrentFile((prevState) =>
+              prevState.filter((file) => file.id !== selectImg.id),
+            );
+            setId((prevState) => prevState.filter((id) => id !== selectImg.id));
+          }
+        }
       // eslint-disable-next-line
     },
-    [id, currentFile]
+      [id, currentFile],
   );
 
   const handleKeyPress = (id) => {
@@ -72,7 +72,7 @@ const GridImages = (props) => {
   }, [currentFile]);
 
   const gridImagesClassnames = clsx({
-    "tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ": true,
+    'tw-cursor-pointer tw-w-full tw-rounded tw-max-w-full tw-h-auto ': true,
   });
 
   return (
@@ -94,9 +94,9 @@ const GridImages = (props) => {
                 >
                   <Avatar
                     className={
-                      id.includes(data.id)
-                        ? "tw-opacity-50 tw-border-double tw-border-8 tw-max-w-full tw-h-auto"
-                        : "tw-max-w-full tw-h-auto"
+                      id.includes(data.id) ?
+                        'tw-opacity-50 tw-border-double tw-border-8 tw-max-w-full tw-h-auto' :
+                        'tw-max-w-full tw-h-auto'
                     }
                     alt={data.name}
                     avatarStyle="Circle"
@@ -122,7 +122,7 @@ const GridImages = (props) => {
         )}
       </div>
       <div className="tw-text-2xl tw-mb-5 tw-p-2">
-        {currentFile.length + " of " + multi + " selected."}
+        {currentFile.length + ' of ' + multi + ' selected.'}
       </div>
     </>
   );

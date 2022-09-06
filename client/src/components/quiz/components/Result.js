@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React from "react";
-import PropTypes from "prop-types";
-import Certificate from "./Certificate";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Certificate from './Certificate';
 
 function Result(props) {
   // function renderTableHeader() {
@@ -21,25 +21,25 @@ function Result(props) {
     let counter = 0;
     let isIncorrect = false;
     return props.quizQuestions.map((quizQuestion, index) => {
-      const { question, answers } = quizQuestion; // destructuring
+      const {question, answers} = quizQuestion; // destructuring
       counter += 1;
       isIncorrect = isAnswerIncorrect(props.quizScore[counter - 1]);
 
       return (
         <tr
           key={index}
-          className={isIncorrect ? "answer-correct" : "answer-wrong"}
+          className={isIncorrect ? 'answer-correct' : 'answer-wrong'}
         >
-          <td className={"column-width"}>{question}</td>
-          <td className={"column-width"}>{renderTableAnswersData(answers)}</td>
-          <td className={"column-width"}>
+          <td className={'column-width'}>{question}</td>
+          <td className={'column-width'}>{renderTableAnswersData(answers)}</td>
+          <td className={'column-width'}>
             {renderTableSelectedAnswersData(
-              props.selectedAnswers[counter - 1],
-              answers
+                props.selectedAnswers[counter - 1],
+                answers,
             )}
           </td>
-          <td className={"column-width"}>
-            {isIncorrect ? "Correct" : "Not Correct"}
+          <td className={'column-width'}>
+            {isIncorrect ? 'Correct' : 'Not Correct'}
           </td>
         </tr>
       );
@@ -50,12 +50,12 @@ function Result(props) {
     let counter = 0;
     return (
       <ul>
-        {answers.map(function (answer, index) {
+        {answers.map(function(answer, index) {
           counter += 1;
-          if (answer["val"] === 1) {
+          if (answer['val'] === 1) {
             return (
               <li key={index}>
-                {counter}. {answer["content"]}
+                {counter}. {answer['content']}
                 <hr />
               </li>
             );
@@ -72,12 +72,12 @@ function Result(props) {
     let counter = 0;
     return (
       <ul>
-        {choices.map(function (selectedAnswer, index) {
+        {choices.map(function(selectedAnswer, index) {
           counter += 1;
           if (selectedAnswer === 1) {
             return (
               <li key={index}>
-                {counter}. {answers[counter - 1]["content"]}
+                {counter}. {answers[counter - 1]['content']}
                 <hr />
               </li>
             );
@@ -107,7 +107,7 @@ function Result(props) {
               {renderTableData()}
             </tbody>
           </table>
-          <div style={{ marginTop: "50px" }}>
+          <div style={{marginTop: '50px'}}>
             <Certificate quizResult={props.quizResult} lab={props.lab} />
           </div>
         </div>

@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import Countdown from "react-countdown-now";
-import SecondTimer from "./secondTimer";
-import Instructions from "../Instructions/instructions";
-import Circle from "./circle";
-import Title from "./header/title";
-import "./exerciseStyle.css";
+import React, {Component} from 'react';
+import Countdown from 'react-countdown-now';
+import SecondTimer from './secondTimer';
+import Instructions from '../Instructions/instructions';
+import Circle from './circle';
+import Title from './header/title';
+import './exerciseStyle.css';
 
 /*
 Class for controlling the main exercise page
@@ -42,12 +42,12 @@ class exercise extends Component {
 
     // setting state for the start time of the exercise
     if (this.state.startTime === 0) {
-      this.setState({ startTime: Date.now() });
+      this.setState({startTime: Date.now()});
     }
 
     // Resets the state time of the exercise zero so the exercise repeats
     const updateTime = () => {
-      this.setState({ startTime: 0 });
+      this.setState({startTime: 0});
     };
 
     // Controls the top right page countdown clock

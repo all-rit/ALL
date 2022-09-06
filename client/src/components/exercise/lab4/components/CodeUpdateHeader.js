@@ -1,31 +1,31 @@
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import PropTypes from "prop-types";
+import React, {Component} from 'react';
+import {Typography} from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import PropTypes from 'prop-types';
 
 class CodeUpdateHeader extends Component {
   constructor(props) {
     super(props);
     this.handleHelpDialogOpen = this.handleHelpDialogOpen.bind(this);
     this.handleHelpDialogClose = this.handleHelpDialogClose.bind(this);
-    this.state = { helpDialogOpen: false };
+    this.state = {helpDialogOpen: false};
   }
 
   render() {
-    const appBarStyle = { flexGrow: "1" };
-    const { heading, justifyAlignment, helpMessage } = this.props;
+    const appBarStyle = {flexGrow: '1'};
+    const {heading, justifyAlignment, helpMessage} = this.props;
     return (
       <div>
-        <AppBar position="static" color={"primary"} style={appBarStyle}>
+        <AppBar position="static" color={'primary'} style={appBarStyle}>
           <Toolbar>
             <Grid justify={justifyAlignment} container spacing={10}>
               <Grid item>
@@ -33,15 +33,15 @@ class CodeUpdateHeader extends Component {
                   variant="contained"
                   color="secondary"
                   onClick={this.handleHelpDialogOpen}
-                  aria-label={"Help"}
+                  aria-label={'Help'}
                 >
                   Help
                 </Button>
               </Grid>
               <Grid item>
                 <Typography
-                  variant={"h4"}
-                  color={"inherit"}
+                  variant={'h4'}
+                  color={'inherit'}
                   aria-label={heading}
                 >
                   {heading}
@@ -57,7 +57,7 @@ class CodeUpdateHeader extends Component {
           aria-describedby="Code Change Help Instructions"
         >
           <DialogTitle id="alert-dialog-title">
-            {"Help and Instructions to Change Code"}
+            {'Help and Instructions to Change Code'}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
@@ -79,11 +79,11 @@ class CodeUpdateHeader extends Component {
   }
 
   handleHelpDialogOpen() {
-    this.setState({ helpDialogOpen: true });
+    this.setState({helpDialogOpen: true});
   }
 
   handleHelpDialogClose() {
-    this.setState({ helpDialogOpen: false });
+    this.setState({helpDialogOpen: false});
   }
 }
 CodeUpdateHeader.propTypes = {

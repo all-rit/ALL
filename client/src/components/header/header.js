@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
-import React, { useEffect, useState } from "react";
-import Logo from "../../assets/images/logos/ALL_Logo_Header.svg";
-import "../../assets/stylesheets/components/Header.scss";
-import WelcomeMessage from "./helpers/WelcomeMessage";
-import { connect } from "react-redux";
+import React, {useEffect, useState} from 'react';
+import Logo from '../../assets/images/logos/ALL_Logo_Header.svg';
+import '../../assets/stylesheets/components/Header.scss';
+import WelcomeMessage from './helpers/WelcomeMessage';
+import {connect} from 'react-redux';
 import {
   Collapse,
   Navbar,
@@ -13,12 +13,12 @@ import {
   Nav,
   NavItem,
   NavLink,
-} from "reactstrap";
-import { EXERCISE_IDLE } from "../../constants/lab1";
-import handleRedirect from "../../helpers/Redirect";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../reducers/MainReducer";
-import getExerciseState from "../../helpers/GetReducer";
+} from 'reactstrap';
+import {EXERCISE_IDLE} from '../../constants/lab1';
+import handleRedirect from '../../helpers/Redirect';
+import {bindActionCreators} from 'redux';
+import {actions as mainActions} from '../../reducers/MainReducer';
+import getExerciseState from '../../helpers/GetReducer';
 
 const mapStateToProps = (state) => {
   return {
@@ -40,8 +40,8 @@ const navigate = (state, actions, body, lab = state.main.lab) => {
 };
 
 const alert_check = (state) => {
-  if (getExerciseState(state) !== "EXERCISE_IDLE" && state.main.body === 2) {
-    alert("The exercise is still in progress! Please complete the exercise");
+  if (getExerciseState(state) !== 'EXERCISE_IDLE' && state.main.body === 2) {
+    alert('The exercise is still in progress! Please complete the exercise');
     return true;
   }
   return false;
@@ -49,51 +49,51 @@ const alert_check = (state) => {
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const activeStyle = { color: "#fed136" };
+  const activeStyle = {color: '#fed136'};
   const toggle = () => setIsOpen(!isOpen);
-  const { state, actions } = props;
+  const {state, actions} = props;
   const [link, setLink] = useState(0);
   if (state.main.lab > 0 || !(state.main.lab === 0 && state.main.body === 0)) {
-    document.getElementById("navHeader").style.backgroundColor =
-      "rgb(61 61 61)";
+    document.getElementById('navHeader').style.backgroundColor =
+      'rgb(61 61 61)';
   }
   const listenScrollEvent = (event) => {
     if (
       state.main.lab > 0 &&
       !(state.main.lab === 0 && state.main.body === 0)
     ) {
-      document.getElementById("navHeader").style.backgroundColor =
-        "rgb(61 61 61)";
+      document.getElementById('navHeader').style.backgroundColor =
+        'rgb(61 61 61)';
     }
     if (state.main.lab === 0 && state.main.body === 0) {
       if (window.scrollY < 800) {
         if (window.scrollY < 640) {
-          document.getElementById("navHeader").style.boxShadow =
-            "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)";
-          document.getElementById("navHeader").style.backgroundColor = "";
+          document.getElementById('navHeader').style.boxShadow =
+            'inset 0 0 0 2000px rgba(61, 61, 61, 0.4)';
+          document.getElementById('navHeader').style.backgroundColor = '';
         } else if (window.scrollY >= 640) {
-          document.getElementById("navHeader").style.backgroundColor =
-            "rgb(61 61 61)";
+          document.getElementById('navHeader').style.backgroundColor =
+            'rgb(61 61 61)';
         }
         return setLink(0);
       } else if (window.scrollY < 2100) {
-        document.getElementById("navHeader").style.backgroundColor =
-          "rgb(61 61 61)";
+        document.getElementById('navHeader').style.backgroundColor =
+          'rgb(61 61 61)';
         return setLink(1);
       } else if (window.scrollY < 3500) {
-        document.getElementById("navHeader").style.backgroundColor =
-          "rgb(61 61 61)";
+        document.getElementById('navHeader').style.backgroundColor =
+          'rgb(61 61 61)';
         return setLink(2);
       } else {
-        document.getElementById("navHeader").style.backgroundColor =
-          "rgb(61 61 61)";
+        document.getElementById('navHeader').style.backgroundColor =
+          'rgb(61 61 61)';
         return setLink(3);
       }
     }
   };
   useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
-    return () => window.removeEventListener("scroll", listenScrollEvent);
+    window.addEventListener('scroll', listenScrollEvent);
+    return () => window.removeEventListener('scroll', listenScrollEvent);
   }, [state]);
   const count = state.main.body;
   const loginEnabled =
@@ -108,8 +108,8 @@ const Header = (props) => {
       expand="lg"
       className="navbar labnav"
       style={{
-        boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)",
-        paddingTop: "1rem",
+        boxShadow: 'inset 0 0 0 2000px rgba(61, 61, 61, 0.4)',
+        paddingTop: '1rem',
       }}
     >
       <div className="container">
@@ -131,7 +131,7 @@ const Header = (props) => {
                     <NavLink
                       className="nav-link "
                       href="#goals"
-                      style={link === 0 ? activeStyle : { color: "#fff" }}
+                      style={link === 0 ? activeStyle : {color: '#fff'}}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item">Goals</li>
@@ -142,7 +142,7 @@ const Header = (props) => {
                     <NavLink
                       className="nav-link "
                       href="#labs"
-                      style={link === 1 ? activeStyle : { color: "#fff" }}
+                      style={link === 1 ? activeStyle : {color: '#fff'}}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item">Labs</li>
@@ -153,7 +153,7 @@ const Header = (props) => {
                     <NavLink
                       className="nav-link "
                       href="#citation"
-                      style={link === 2 ? activeStyle : { color: "#fff" }}
+                      style={link === 2 ? activeStyle : {color: '#fff'}}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item">Team</li>
@@ -164,7 +164,7 @@ const Header = (props) => {
                     <NavLink
                       className="nav-link "
                       href="#contact"
-                      style={link === 3 ? activeStyle : { color: "#fff" }}
+                      style={link === 3 ? activeStyle : {color: '#fff'}}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item">Contact</li>
@@ -181,9 +181,9 @@ const Header = (props) => {
                           className="nav-link "
                           href="# "
                           style={
-                            state.main.body === 1
-                              ? activeStyle
-                              : { color: "#fff" }
+                            state.main.body === 1 ?
+                              activeStyle :
+                              {color: '#fff'}
                           }
                           onClick={() => navigate(state, actions, 1, 0)}
                         >
@@ -197,7 +197,7 @@ const Header = (props) => {
                         <NavLink
                           className="nav-link "
                           href="# "
-                          style={{ color: "#fff" }}
+                          style={{color: '#fff'}}
                           onClick={() => navigate(state, actions, 0, 0)}
                         >
                           <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -215,7 +215,7 @@ const Header = (props) => {
                     className="nav-link "
                     href="# "
                     style={
-                      state.main.body === 2 ? activeStyle : { color: "#fff" }
+                      state.main.body === 2 ? activeStyle : {color: '#fff'}
                     }
                     onClick={() => navigate(state, actions, 2, 0)}
                   >
@@ -238,7 +238,7 @@ const Header = (props) => {
                   className="nav-link "
                   onClick={() => navigate(state, actions, 0, 0)}
                   href="# "
-                  style={{ color: "#fff" }}
+                  style={{color: '#fff'}}
                 >
                   <ul className="navbar-nav nav-font text-uppercase ml-auto">
                     <li className="nav-item">Home</li>
@@ -251,7 +251,7 @@ const Header = (props) => {
                   className="nav-link "
                   onClick={() => navigate(state, actions, 0)}
                   href="# "
-                  style={count === 0 ? activeStyle : { color: "#fff" }}
+                  style={count === 0 ? activeStyle : {color: '#fff'}}
                 >
                   <ul className="navbar-nav nav-font text-uppercase ml-auto">
                     <li className="nav-item">About</li>
@@ -264,7 +264,7 @@ const Header = (props) => {
                   className="nav-link "
                   onClick={() => navigate(state, actions, 1)}
                   href="# "
-                  style={count === 1 ? activeStyle : { color: "#fff" }}
+                  style={count === 1 ? activeStyle : {color: '#fff'}}
                 >
                   <ul className="navbar-nav nav-font text-uppercase ml-auto">
                     <li className="nav-item">Reading</li>
@@ -277,7 +277,7 @@ const Header = (props) => {
                   className="nav-link "
                   onClick={() => navigate(state, actions, 2)}
                   href="# "
-                  style={count === 2 ? activeStyle : { color: "#fff" }}
+                  style={count === 2 ? activeStyle : {color: '#fff'}}
                 >
                   <ul className="navbar-nav nav-font text-uppercase ml-auto">
                     <li className="nav-item">Exercise</li>
@@ -290,7 +290,7 @@ const Header = (props) => {
                   className="nav-link "
                   onClick={() => navigate(state, actions, 3)}
                   href="# "
-                  style={count === 3 ? activeStyle : { color: "#fff" }}
+                  style={count === 3 ? activeStyle : {color: '#fff'}}
                 >
                   <ul className="navbar-nav nav-font text-uppercase ml-auto">
                     <li className="nav-item">Reinforcement</li>
@@ -303,7 +303,7 @@ const Header = (props) => {
                   className="nav-link "
                   onClick={() => navigate(state, actions, 4)}
                   href="# "
-                  style={count === 4 ? activeStyle : { color: "#fff" }}
+                  style={count === 4 ? activeStyle : {color: '#fff'}}
                 >
                   <ul className="navbar-nav nav-font text-uppercase ml-auto">
                     <li className="nav-item">Quiz</li>
@@ -316,7 +316,7 @@ const Header = (props) => {
                   <NavLink
                     className="nav-link "
                     href="# "
-                    style={{ color: "#fff" }}
+                    style={{color: '#fff'}}
                     onClick={() => navigate(state, actions, 2, 0)}
                   >
                     <ul className="navbar-nav nav-font text-uppercase ml-auto">

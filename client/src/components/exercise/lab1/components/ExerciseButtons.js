@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from 'react';
 
 class ExerciseButtons extends Component {
   render() {
@@ -13,11 +13,11 @@ class ExerciseButtons extends Component {
       openInstructionsHandler,
       startExerciseHandler,
     } = this.props;
-    let startMessage = "Start";
+    let startMessage = 'Start';
     if (repairApplied) {
-      startMessage = "Start with Repair Applied";
+      startMessage = 'Start with Repair Applied';
     } else if (plays > 0) {
-      startMessage = "Next Play";
+      startMessage = 'Next Play';
     }
     const repairButton = (
       <button

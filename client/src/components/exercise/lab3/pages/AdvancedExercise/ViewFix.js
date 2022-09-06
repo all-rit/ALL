@@ -1,22 +1,22 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import { AppBar, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import { navigate } from "@reach/router";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
-import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
-import { PageService } from "../../../../../services/PageService";
+import React, {Component} from 'react';
+import {AppBar, Typography} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import {navigate} from '@reach/router';
+import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
+import {EXERCISE_PLAYING, LAB_ID} from '../../../../../constants/lab3/index';
+import {PageService} from '../../../../../services/PageService';
 class ViewFix extends Component {
   constructor(props) {
     super(props);
     ViewFix.navOnClick = ViewFix.navOnClick.bind(this);
     this.state = {
-      aria1: "Ok button",
-      aria2: "Cancel button",
-      render: "",
+      aria1: 'Ok button',
+      aria2: 'Cancel button',
+      render: '',
       secondsElapsed: 0,
     };
   }
@@ -25,23 +25,23 @@ class ViewFix extends Component {
   }
 
   static navOnClick() {
-    const name = "ViewFix";
+    const name = 'ViewFix';
     PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-    navigate("/Lab3/Exercise/ProblemFix");
+    navigate('/Lab3/Exercise/ProblemFix');
   }
 
   componentDidMount() {
-    const { actions } = this.props;
+    const {actions} = this.props;
     actions.updateState(EXERCISE_PLAYING);
     if (window.location.state) {
       this.setState({
-        aria1: window.location.state.aria1.replace(/<[^>]*>?/gm, ""),
-        aria2: window.location.state.aria2.replace(/<[^>]*>?/gm, ""),
+        aria1: window.location.state.aria1.replace(/<[^>]*>?/gm, ''),
+        aria2: window.location.state.aria2.replace(/<[^>]*>?/gm, ''),
       });
     }
     this.interval = setInterval(
-      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000
+        () => this.setState({secondsElapsed: this.state.secondsElapsed + 1}),
+        1000,
     );
   }
 
@@ -60,11 +60,11 @@ class ViewFix extends Component {
             <Grid justify="center" container spacing={10}>
               <Grid item>
                 <Typography
-                  variant={"h4"}
-                  aria-label={"Title"}
+                  variant={'h4'}
+                  aria-label={'Title'}
                   gutterBottom
-                  tabindex={"0"}
-                  onFocus={(e) => textToSpeech(e, "Test Fix")}
+                  tabindex={'0'}
+                  onFocus={(e) => textToSpeech(e, 'Test Fix')}
                 >
                   Test Repair
                 </Typography>
@@ -74,25 +74,25 @@ class ViewFix extends Component {
         </AppBar>
         <br />
         <Typography
-          variant={"h6"}
-          aria-label={"Subtitle Instructions"}
+          variant={'h6'}
+          aria-label={'Subtitle Instructions'}
           gutterBottom
-          tabindex={"0"}
-          onFocus={(e) => textToSpeech(e, "Is your page now more accessible?")}
+          tabindex={'0'}
+          onFocus={(e) => textToSpeech(e, 'Is your page now more accessible?')}
         >
           Is your page now more accessible?
         </Typography>
         <br />
         <Typography
-          variant={"body1"}
-          aria-label={"Body Instructions"}
+          variant={'body1'}
+          aria-label={'Body Instructions'}
           gutterBottom
-          tabindex={"0"}
+          tabindex={'0'}
           onFocus={(e) =>
             textToSpeech(
-              e,
-              "If you have updated the buttons with the appropriate " +
-                "aria-labels then you have succeeded. They can now be effectively described by screenreaders."
+                e,
+                'If you have updated the buttons with the appropriate ' +
+                'aria-labels then you have succeeded. They can now be effectively described by screenreaders.',
             )
           }
         >
@@ -102,14 +102,14 @@ class ViewFix extends Component {
         </Typography>
         <br />
         <Button
-          variant={"text"}
+          variant={'text'}
           aria-label={this.state.aria1}
           onFocus={(e) => textToSpeech(e, this.state.aria1)}
         >
           Ok
         </Button>
         <Button
-          variant={"text"}
+          variant={'text'}
           aria-label={this.state.aria2}
           onFocus={(e) => textToSpeech(e, this.state.aria2)}
         >
@@ -118,10 +118,10 @@ class ViewFix extends Component {
         <br />
         <br />
         <Button
-          variant={"contained"}
+          variant={'contained'}
           className="btn btn-second btn-xl text-uppercase  leftButton"
           onClick={ViewFix.navOnClick}
-          onFocus={(e) => textToSpeech(e, "Next")}
+          onFocus={(e) => textToSpeech(e, 'Next')}
         >
           Next
         </Button>

@@ -1,13 +1,13 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
 import {
   MILLISECONDS_IN_A_SECOND,
   TIMEOUT_MIN_MS,
   TIMER_SECONDS,
-} from "../../../../constants/lab1";
+} from '../../../../constants/lab1';
 
 class Stats extends Component {
   calculatePercentage(time) {
@@ -28,7 +28,7 @@ class Stats extends Component {
       time,
     } = this.props;
     const countdown_style = {
-      width: this.calculatePercentage(time).toString() + "%",
+      width: this.calculatePercentage(time).toString() + '%',
     };
 
     if (!visible) return null;

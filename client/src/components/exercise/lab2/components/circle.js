@@ -1,32 +1,32 @@
 /* eslint-disable brace-style */
 /* eslint-disable react/prop-types */
-import React from "react";
-import Countdown from "react-countdown-now";
-import "./exerciseStyle.css";
+import React from 'react';
+import Countdown from 'react-countdown-now';
+import './exerciseStyle.css';
 
 // Object for holding the current background color of the Circle
 // Used to fade to black on each circle
 const style = {
-  backgroundColor: "",
+  backgroundColor: '',
 };
 
 /*
 Function for controlling the circles on the screen. Controls both the
 instruction circles and the center circle clicked by the user in the exercise
 */
-const Circle = ({ color, clickable, onClick }) => {
+const Circle = ({color, clickable, onClick}) => {
   // Fades circle to black if the circle is the center one
-  const toDark = ({ milliseconds }) => {
+  const toDark = ({milliseconds}) => {
     style.backgroundColor = color;
     if (milliseconds < 100) {
-      style.backgroundColor = "black";
+      style.backgroundColor = 'black';
     }
     return (
       <span
         className="circle clickable"
-        style={{ backgroundColor: style.backgroundColor }}
+        style={{backgroundColor: style.backgroundColor}}
         onClick={onClick}
-        label={"circle"}
+        label={'circle'}
       />
     );
   };
@@ -48,7 +48,7 @@ const Circle = ({ color, clickable, onClick }) => {
   // Controls the circles the user doesn't click (instruction circles)
   else {
     return (
-      <span className="circle" style={{ backgroundColor: `${color}` }}></span>
+      <span className="circle" style={{backgroundColor: `${color}`}}></span>
     );
   }
 };

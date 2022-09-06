@@ -1,5 +1,5 @@
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
 class AppInstructions extends Component {
   render() {

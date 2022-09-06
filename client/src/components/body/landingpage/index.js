@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import nsf from "../../../assets/images/logos/nsf.png";
-import rit from "../../../assets/images/logos/RIT.png";
-import handleRedirect from "../../../helpers/Redirect";
-import { actions as mainActions } from "../../../reducers/MainReducer";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import LabGeneration from "../lab/LabGeneration";
-import ProfileGeneration from "./citation/ProfileGeneration";
-import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
+import React from 'react';
+import nsf from '../../../assets/images/logos/nsf.png';
+import rit from '../../../assets/images/logos/RIT.png';
+import handleRedirect from '../../../helpers/Redirect';
+import {actions as mainActions} from '../../../reducers/MainReducer';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import LabGeneration from '../lab/LabGeneration';
+import ProfileGeneration from './citation/ProfileGeneration';
+import HorizontalLine from '../../../common/HorizontalLine/HorizontalLine';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Home = (props) => {
-  const { actions } = props;
+  const {actions} = props;
   return (
     <div className="landingpage">
       {/* Header */}
@@ -133,7 +133,7 @@ const Home = (props) => {
           <div className="row contact">
             <div className="col-lg-12 text-center">
               <h2 className="section-heading text-uppercase">Contact Us</h2>
-              <h3 className="section-subheading" id={"connect-text"}>
+              <h3 className="section-subheading" id={'connect-text'}>
                 Connect with us if you have questions. <br />
                 <br />
                 Contact Dr. Daniel Krutz at
@@ -141,7 +141,7 @@ const Home = (props) => {
                   className="landingpage__contact"
                   href="mailto:aware@mail.rit.edu "
                 >
-                  {" "}
+                  {' '}
                   aware@mail.rit.edu
                 </a>
               </h3>

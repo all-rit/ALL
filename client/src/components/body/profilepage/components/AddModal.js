@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
   Modal,
   ModalHeader,
@@ -10,9 +10,9 @@ import {
   Label,
   Input,
   Button,
-} from "reactstrap";
-import GroupForm from "./GroupForm.js";
-import GroupService from "../../../../services/GroupService";
+} from 'reactstrap';
+import GroupForm from './GroupForm.js';
+import GroupService from '../../../../services/GroupService';
 
 const AddModal = (props) => {
   const {
@@ -25,25 +25,25 @@ const AddModal = (props) => {
     groupsUpdated,
   } = props;
   const [modal, setModal] = useState(false);
-  const [inviteCode, setInviteCode] = useState("");
+  const [inviteCode, setInviteCode] = useState('');
 
   const handleInviteCodeSubmit = (e) => {
     e.preventDefault();
     setInviteCode(inviteCode.trim()); // trim trailing white spaces in the invite code
-    if (!inviteCode || inviteCode.indexOf(" ") >= 0) {
+    if (!inviteCode || inviteCode.indexOf(' ') >= 0) {
       // check if the code is empty or has white space in between
-      alert("Invite code cannot be empty or have spaces.");
+      alert('Invite code cannot be empty or have spaces.');
     } else {
       GroupService.enrollUser(user.userid, inviteCode.toUpperCase()).then(
-        (response) => {
-          if (response.status === 200) {
-            alert("Successfully enrolled in group!");
-            groupsUpdated(true);
-            toggle();
-          } else {
-            alert(response.error);
-          }
-        }
+          (response) => {
+            if (response.status === 200) {
+              alert('Successfully enrolled in group!');
+              groupsUpdated(true);
+              toggle();
+            } else {
+              alert(response.error);
+            }
+          },
       );
     }
   };
@@ -51,7 +51,7 @@ const AddModal = (props) => {
   const toggle = () => setModal(!modal);
 
   switch (addMode) {
-    case "add_instr_grp":
+    case 'add_instr_grp':
       return (
         <>
           <button
@@ -73,7 +73,7 @@ const AddModal = (props) => {
           </Modal>
         </>
       );
-    case "update_grp_lab":
+    case 'update_grp_lab':
       return (
         <>
           <button

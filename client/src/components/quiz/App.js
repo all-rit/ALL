@@ -1,28 +1,28 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import ReactGA from "react-ga";
-import quizQuestionsLab1 from "./api/Lab1/quizQuestions";
-import quizQuestionsLab2 from "./api/Lab2/quizQuestions";
-import quizQuestionsLab3 from "./api/Lab3/quizQuestions";
-import quizQuestionsLab4 from "./api/Lab4/quizQuestions";
-import quizQuestionsLab5 from "./api/Lab5/quizQuestions";
-import Quiz from "./components/Quiz";
-import Result from "./components/Result";
-import "./App.css";
-import UserLabService from "../../services/UserLabService";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../reducers/MainReducer";
+import React, {Component} from 'react';
+import ReactGA from 'react-ga';
+import quizQuestionsLab1 from './api/Lab1/quizQuestions';
+import quizQuestionsLab2 from './api/Lab2/quizQuestions';
+import quizQuestionsLab3 from './api/Lab3/quizQuestions';
+import quizQuestionsLab4 from './api/Lab4/quizQuestions';
+import quizQuestionsLab5 from './api/Lab5/quizQuestions';
+import Quiz from './components/Quiz';
+import Result from './components/Result';
+import './App.css';
+import UserLabService from '../../services/UserLabService';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {actions as mainActions} from '../../reducers/MainReducer';
 
 function initializeReactGA() {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
     ReactGA.initialize(TRACKING_ID);
     ReactGA.pageview(window.location.pathname + window.location.search);
-  } else if (process.env.NODE_ENV === "development") {
-    console.log("Google Analytics cannot be implemented in development mode");
+  } else if (process.env.NODE_ENV === 'development') {
+    console.log('Google Analytics cannot be implemented in development mode');
   }
 }
 
@@ -42,10 +42,10 @@ class App extends Component {
     this.state = {
       counter: 0,
       questionId: 1,
-      question: "",
+      question: '',
       answerOptions: [],
-      answer: "",
-      result: "",
+      answer: '',
+      result: '',
       myCount: {},
       disableNextQuestion: true,
       selectedAnswers: {},
@@ -77,11 +77,11 @@ class App extends Component {
       default:
         return [
           {
-            question: "Default",
+            question: 'Default',
             answers: [
               {
                 val: 0,
-                content: "Default",
+                content: 'Default',
               },
             ],
             multiChoice: false,
@@ -91,15 +91,15 @@ class App extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    this.setState({ quizQuestions: this.assignQuizQuestions() }, () => {
+    this.setState({quizQuestions: this.assignQuizQuestions()}, () => {
       for (let i = 0; i < this.state.quizQuestions.length; i++) {
         for (
           let x = 0;
-          x < this.state.quizQuestions[i]["answers"].length;
+          x < this.state.quizQuestions[i]['answers'].length;
           x++
         ) {
           const questions = this.state.quizQuestions;
-          questions[i]["answers"][x]["type"] = "" + x;
+          questions[i]['answers'][x]['type'] = '' + x;
           this.setState({
             quizQuestions: questions,
           });
@@ -112,14 +112,14 @@ class App extends Component {
 
   componentDidMount() {
     for (let i = 0; i < this.state.quizQuestions.length; i++) {
-      this.state.quizQuestions[i]["answers"].sort(function (a, b) {
+      this.state.quizQuestions[i]['answers'].sort(function(a, b) {
         return parseInt(a.type) - parseInt(b.type);
       });
     }
     this.setState({
       question: this.state.quizQuestions[0].question,
-      answerOptions: this.state.quizQuestions[0]["answers"],
-      multiChoice: this.state.quizQuestions[0]["multiChoice"],
+      answerOptions: this.state.quizQuestions[0]['answers'],
+      multiChoice: this.state.quizQuestions[0]['multiChoice'],
     });
   }
 
@@ -167,11 +167,11 @@ class App extends Component {
   checkMultipleAnswers(currentAnswers) {
     let correctAnswer = 0;
     const options =
-      this.state.quizQuestions[this.state.counter]["answers"].length;
+      this.state.quizQuestions[this.state.counter]['answers'].length;
     for (let index = 0; index < options; index++) {
       if (
-        this.state.quizQuestions[this.state.counter]["answers"][index][
-          "val"
+        this.state.quizQuestions[this.state.counter]['answers'][index][
+            'val'
         ] === currentAnswers[index]
       ) {
         correctAnswer = 1;
@@ -185,7 +185,7 @@ class App extends Component {
   }
 
   getCheckedAnswers() {
-    const checked = document.getElementsByName("checkboxGroup");
+    const checked = document.getElementsByName('checkboxGroup');
     const currentAnswers = {};
     for (let index = 0; index < checked.length; index++) {
       if (checked[index].checked === true) {
@@ -213,7 +213,7 @@ class App extends Component {
         questionId: questionId,
         question: this.state.quizQuestions[counter].question,
         answerOptions: this.state.quizQuestions[counter].answers,
-        answer: "",
+        answer: '',
         disableNextQuestion: true,
         multiChoice: this.state.quizQuestions[counter].multiChoice,
       });
@@ -234,25 +234,25 @@ class App extends Component {
     }
     const percent = Math.floor((correct / total) * 100);
     if (!numerical) {
-      return "" + percent + "%";
+      return '' + percent + '%';
     }
     return percent;
   }
 
   setResults(result) {
     UserLabService.complete_quiz(
-      this.state.lab,
-      this.getResults(true),
-      this.getJsonResults()
+        this.state.lab,
+        this.getResults(true),
+        this.getJsonResults(),
     );
     if (this.props.user.firstname !== null) {
       UserLabService.user_complete_quiz(
-        this.props.user.userid,
-        this.state.lab,
-        this.getResults(true)
+          this.props.user.userid,
+          this.state.lab,
+          this.getResults(true),
       );
     }
-    this.setState({ result: result });
+    this.setState({result: result});
   }
 
   getJsonResults() {
@@ -261,7 +261,7 @@ class App extends Component {
     const selectedAnswers = Object.values(this.state.selectedAnswers);
     for (const quizQuestion of this.state.quizQuestions) {
       // get right answers
-      const { question, answers } = quizQuestion; // destructuring
+      const {question, answers} = quizQuestion; // destructuring
       const quizQuestionObject = {
         Question: question,
         Answers: [],
@@ -269,8 +269,8 @@ class App extends Component {
         IsCorrect: this.state.myCount[counter] === 1,
       };
       for (const answer of answers) {
-        if (answer["val"] === 1) {
-          quizQuestionObject["Answers"].push(answer["content"]);
+        if (answer['val'] === 1) {
+          quizQuestionObject['Answers'].push(answer['content']);
         }
       }
       // get user selected answers
@@ -280,8 +280,8 @@ class App extends Component {
       for (const choice of choices) {
         // is the choice the one that is selected by user
         if (choice === 1) {
-          quizQuestionObject["SelectedAnswers"].push(
-            answers[optionCounter]["content"]
+          quizQuestionObject['SelectedAnswers'].push(
+              answers[optionCounter]['content'],
           );
         }
         optionCounter += 1;

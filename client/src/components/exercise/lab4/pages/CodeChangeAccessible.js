@@ -2,25 +2,25 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import Prism from "prismjs";
-import { navigate } from "@reach/router";
-import Button from "@material-ui/core/Button";
-import { Paper } from "@material-ui/core";
-import Snackbar from "@material-ui/core/Snackbar";
-import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
-import { amber, green, red, yellow } from "@material-ui/core/colors";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import clsx from "clsx";
-import IconButton from "@material-ui/core/IconButton";
-import WarningIcon from "@material-ui/icons/Warning";
-import ErrorIcon from "@material-ui/icons/Error";
-import InfoIcon from "@material-ui/icons/Info";
-import CloseIcon from "@material-ui/icons/Close";
-import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
-import { EXERCISE_PLAYING } from "../../../../constants/lab4";
-import RepairService from "../../../../services/lab4/RepairService";
+import React, {Component} from 'react';
+import Prism from 'prismjs';
+import {navigate} from '@reach/router';
+import Button from '@material-ui/core/Button';
+import {Paper} from '@material-ui/core';
+import Snackbar from '@material-ui/core/Snackbar';
+import CheckCircleIcon from '@material-ui/core/SvgIcon/SvgIcon';
+import {amber, green, red, yellow} from '@material-ui/core/colors';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import clsx from 'clsx';
+import IconButton from '@material-ui/core/IconButton';
+import WarningIcon from '@material-ui/icons/Warning';
+import ErrorIcon from '@material-ui/icons/Error';
+import InfoIcon from '@material-ui/icons/Info';
+import CloseIcon from '@material-ui/icons/Close';
+import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
+import {EXERCISE_PLAYING} from '../../../../constants/lab4';
+import RepairService from '../../../../services/lab4/RepairService';
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -50,13 +50,13 @@ function MySnackbarContentWrapper(props) {
       opacity: 0.9,
     },
     message: {
-      display: "flex",
-      alignItems: "center",
+      display: 'flex',
+      alignItems: 'center',
     },
   };
-  const { className, message, onClose, variant, ...other } = props;
+  const {className, message, onClose, variant, ...other} = props;
   const Icon = variantIcon[variant];
-  const messageStyle = { marginLeft: "10px" };
+  const messageStyle = {marginLeft: '10px'};
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
@@ -68,8 +68,8 @@ function MySnackbarContentWrapper(props) {
           color={amber}
           aria-label={message}
         >
-          <Typography variant={"body2"} style={messageStyle} gutterBottom>
-            <Icon className={clsx(classes.icon, classes.iconVariant)} />{" "}
+          <Typography variant={'body2'} style={messageStyle} gutterBottom>
+            <Icon className={clsx(classes.icon, classes.iconVariant)} />{' '}
             {message}
           </Typography>
         </span>
@@ -93,17 +93,17 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
+  variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
 class CodeChangeAccessible extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      textValue: "",
-      textValue1: "",
+      textValue: '',
+      textValue1: '',
       snackBarOpen: false,
-      message: "Please type code before updating code!",
+      message: 'Please type code before updating code!',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -112,7 +112,7 @@ class CodeChangeAccessible extends Component {
       this.state = {
         textValue: window.location.state.hint,
         snackBarOpen: false,
-        message: "Please type code before updating code!",
+        message: 'Please type code before updating code!',
       };
       window.location.state = {
         hint: window.location.state.hint,
@@ -125,46 +125,46 @@ class CodeChangeAccessible extends Component {
   }
 
   componentDidMount() {
-    const { actions } = this.props;
+    const {actions} = this.props;
     actions.updateState(EXERCISE_PLAYING);
     Prism.highlightAll();
     if (window.location.state.hint !== undefined) {
-      const el0 = document.getElementById("first");
+      const el0 = document.getElementById('first');
       el0.value = window.location.state.hint;
-      CodeChangeAccessible.doEvent(el0, "input");
+      CodeChangeAccessible.doEvent(el0, 'input');
     }
   }
 
   handleChange(event) {
-    this.setState({ textValue: event.target.value }, () => {
-      console.log("handled change value: " + this.state.textValue);
+    this.setState({textValue: event.target.value}, () => {
+      console.log('handled change value: ' + this.state.textValue);
       Prism.highlightAll();
     });
   }
 
   handleClose(event, reason) {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
 
-    this.setState({ snackBarOpen: false }, () => {
-      console.log("SnackBar Closed");
+    this.setState({snackBarOpen: false}, () => {
+      console.log('SnackBar Closed');
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("hint updated as: " + this.state.textValue);
-    if (this.state.textValue === "") {
+    console.log('hint updated as: ' + this.state.textValue);
+    if (this.state.textValue === '') {
       this.setState({
-        message: "Please type code before updating code!",
+        message: 'Please type code before updating code!',
         snackBarOpen: true,
       });
     } else if (parseInt(this.state.textValue) !== 0) {
-      this.setState({ message: "Please enter value 0", snackBarOpen: true });
+      this.setState({message: 'Please enter value 0', snackBarOpen: true});
     } else if (!/^\d+$/.test(this.state.textValue)) {
       this.setState({
-        message: "Please enter numeric value",
+        message: 'Please enter numeric value',
         snackBarOpen: true,
       });
     } else {
@@ -172,21 +172,21 @@ class CodeChangeAccessible extends Component {
         hint: this.state.textValue,
       };
       RepairService.submitRepairHint(this.state.textValue);
-      navigate("/Lab4/Exercise/FormHintAccessible");
+      navigate('/Lab4/Exercise/FormHintAccessible');
     }
     Prism.highlightAll();
   }
 
   static doEvent(obj, event) {
-    const eventInit = new Event(event, { target: obj, bubbles: true });
+    const eventInit = new Event(event, {target: obj, bubbles: true});
     return obj ? obj.dispatchEvent(eventInit) : false;
   }
 
   render() {
     const paperStyle = {
-      marginLeft: "10px",
-      marginRight: "10px",
-      marginTop: "20px",
+      marginLeft: '10px',
+      marginRight: '10px',
+      marginTop: '20px',
     };
     return (
       <div>
@@ -206,7 +206,7 @@ class CodeChangeAccessible extends Component {
           number. Tabindex="0" means that the element should be focusable in
           sequential keyboard navigation.
         </p>
-        <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
+        <form onSubmit={this.handleSubmit} noValidate autoComplete={'off'}>
           <Paper style={paperStyle}>
             <pre>
               <code className="language-html">
@@ -221,13 +221,13 @@ class CodeChangeAccessible extends Component {
             <span tabindex= `}
               </code>
               <input
-                type={"text"}
+                type={'text'}
                 id="first"
                 value={this.state.textValue}
                 placeholder=""
                 onChange={this.handleChange}
                 aria-label={
-                  "set tab-index to 0 so tooltip can be keyboard accessible"
+                  'set tab-index to 0 so tooltip can be keyboard accessible'
                 }
               />
               <code className="language-html">
@@ -251,18 +251,18 @@ class CodeChangeAccessible extends Component {
           <br />
           <br />
           <Button
-            type={"submit"}
-            aria-label={"Update Code"}
-            variant={"contained"}
-            color={"primary"}
+            type={'submit'}
+            aria-label={'Update Code'}
+            variant={'contained'}
+            color={'primary'}
           >
             Update Code
           </Button>
         </form>
         <Snackbar
           anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
+            vertical: 'bottom',
+            horizontal: 'left',
           }}
           open={this.state.snackBarOpen}
           autoHideDuration={6000}

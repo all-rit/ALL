@@ -1,7 +1,7 @@
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import React, {Component} from 'react';
+import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
 
 class Header extends Component {
   render() {

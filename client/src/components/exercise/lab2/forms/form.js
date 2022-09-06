@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import "./formStyle.css";
+import React, {Component} from 'react';
+import './formStyle.css';
 
 /*
 Class for gathering extra information from individuals logging into the system
@@ -12,9 +12,9 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: "",
+      nickname: '',
       course: null,
-      useCase: "",
+      useCase: '',
       deficiency: null,
       age: null,
     };
@@ -22,11 +22,11 @@ class Form extends Component {
 
   // Handles submitting the form information to the backend
   onClick = () => {
-    const { nickname, course, useCase, deficiency, age } = this.state;
+    const {nickname, course, useCase, deficiency, age} = this.state;
     if (
-      nickname === "" &&
+      nickname === '' &&
       course === null &&
-      useCase === "" &&
+      useCase === '' &&
       deficiency === null &&
       age === null
     ) {
@@ -39,40 +39,40 @@ class Form extends Component {
         deficiency,
         age,
       };
-      fetch("http://localhost:5000/formAnswers", {
-        method: "POST",
-        headers: new Headers({ "content-type": "application/json" }),
+      fetch('http://localhost:5000/formAnswers', {
+        method: 'POST',
+        headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify(data),
       })
-        .then((response) => console.log(response))
-        .then(this.props.closeInfoPopup())
-        .catch((err) => console.log(err));
+          .then((response) => console.log(response))
+          .then(this.props.closeInfoPopup())
+          .catch((err) => console.log(err));
     }
   };
 
   // Handles changes to the nickname field (updates state)
   onNicknameChange = (event) => {
-    this.setState({ nickname: event.target.value });
+    this.setState({nickname: event.target.value});
   };
 
   // Handles changes to the course fied (updates state)
   onCourseChange = (event) => {
-    this.setState({ course: event.target.value });
+    this.setState({course: event.target.value});
   };
 
   // Handles changes to the use case field (updates state)
   onUseCaseChange = (event) => {
-    this.setState({ useCase: event.target.value });
+    this.setState({useCase: event.target.value});
   };
 
   // Handles changes to the deficiency field (updates state)
   onDeficiencyChange = (event) => {
-    this.setState({ deficiency: event.target.value });
+    this.setState({deficiency: event.target.value});
   };
 
   // Handles changes to the age field (updates state)
   onAgeChange = (event) => {
-    this.setState({ age: event.target.value });
+    this.setState({age: event.target.value});
   };
 
   // Renderer method for the system

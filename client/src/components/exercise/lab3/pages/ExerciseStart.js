@@ -1,13 +1,13 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import Button from "@material-ui/core/Button";
-import { actions as mainActions } from "../../../../reducers/MainReducer";
-import { actions as exerciseActions } from "../../../../reducers/lab5/ExerciseReducer";
-import AppInstructions from "../components/AppInstructions";
-import { navigate } from "@reach/router";
+import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import Button from '@material-ui/core/Button';
+import {actions as mainActions} from '../../../../reducers/MainReducer';
+import {actions as exerciseActions} from '../../../../reducers/lab5/ExerciseReducer';
+import AppInstructions from '../components/AppInstructions';
+import {navigate} from '@reach/router';
 
 const mapStateToProps = (state) => {
   return {
@@ -18,18 +18,18 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
-      { ...mainActions, ...exerciseActions },
-      dispatch
+        {...mainActions, ...exerciseActions},
+        dispatch,
     ),
   };
 };
 
 class ExerciseStart extends Component {
   handleSubmit() {
-    navigate("/Lab3/Exercise/BeginnerExercise");
+    navigate('/Lab3/Exercise/BeginnerExercise');
   }
   handleSubmitAdv() {
-    navigate("/Lab3/Exercise/AdvancedExercise");
+    navigate('/Lab3/Exercise/AdvancedExercise');
   }
   render() {
     // const { user, state, plays } = this.props;
@@ -49,8 +49,8 @@ class ExerciseStart extends Component {
           <Button
             href="#"
             onClick={this.handleSubmit}
-            variant={"contained"}
-            color={"primary"}
+            variant={'contained'}
+            color={'primary'}
             style={buttonStyleLeft}
           >
             Beginner Exercise
@@ -58,8 +58,8 @@ class ExerciseStart extends Component {
           <Button
             href="#"
             onClick={this.handleSubmitAdv}
-            variant={"contained"}
-            color={"secondary"}
+            variant={'contained'}
+            color={'secondary'}
             style={buttonStyleRight}
           >
             Advanced Exercise

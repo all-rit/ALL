@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import React from "react";
-import useScroll from "../../../../use-hooks/useScroll";
-import Button from "../components/header/buttons/button";
-import MainInstructions from "./mainInstructions";
+import React from 'react';
+import useScroll from '../../../../use-hooks/useScroll';
+import Button from '../components/header/buttons/button';
+import MainInstructions from './mainInstructions';
 
 const LandingPage = ({
   endFirstExercise,
@@ -17,7 +17,7 @@ const LandingPage = ({
     endFirstExercise();
   };
 
-  if (background !== "white") {
+  if (background !== 'white') {
     toWhiteBackground();
   }
 
@@ -32,9 +32,9 @@ const LandingPage = ({
           <p
             className="mainInstructionList"
             style={{
-              marginTop: "40px",
-              marginBottom: "10px",
-              textAlign: "left",
+              marginTop: '40px',
+              marginBottom: '10px',
+              textAlign: 'left',
             }}
           >
             To help track your exercise history and to help ensure we are
@@ -44,7 +44,7 @@ const LandingPage = ({
         </div>
         <p
           className="mainInstructionList"
-          style={{ marginTop: "40px", marginBottom: "10px" }}
+          style={{marginTop: '40px', marginBottom: '10px'}}
         >
           When you are ready, click the 'Let's Get Started' button to begin the
           exercise
@@ -52,8 +52,8 @@ const LandingPage = ({
         <div className="center">
           <Button
             clickMethod={closePage}
-            message={"Lets Get Started!"}
-            fontSizing={"25px"}
+            message={'Lets Get Started!'}
+            fontSizing={'25px'}
           />
         </div>
         <br />
