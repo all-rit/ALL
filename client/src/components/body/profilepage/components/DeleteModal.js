@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
-import GroupService from '../../../../services/GroupService';
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
+import GroupService from "../../../../services/GroupService";
 
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 const DeleteModal = (props) => {
-  const {mainToggle, groupID, setInstrGroupsUpdated} = props;
+  const { mainToggle, groupID, setInstrGroupsUpdated } = props;
 
   const [modal, setModal] = useState(false);
 

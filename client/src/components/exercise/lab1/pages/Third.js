@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
 
 class Third extends Component {
   render() {

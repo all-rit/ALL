@@ -1,9 +1,14 @@
-import React, {Component} from 'react';
-import RepairService from '../../../../../services/lab5/RepairService';
-import PageServiceTimer from '../../../shared/PageServiceTimer';
-import Popup from '../../../shared/Popup';
-import {navigate} from '@reach/router';
-import {minFontNotif, maxFontNotif} from '../../../../../constants/lab5';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-deprecated */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import RepairService from "../../../../../services/lab5/RepairService";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
+import Popup from "../../../shared/Popup";
+import { navigate } from "@reach/router";
+import { minFontNotif, maxFontNotif } from "../../../../../constants/lab5";
 
 class NotificationRepair extends Component {
   constructor(props) {
@@ -15,12 +20,12 @@ class NotificationRepair extends Component {
       timeouterror: null,
       fontsizeerror: null,
       repairerror: true,
-      componentName: 'NotificationRepair',
+      componentName: "NotificationRepair",
     };
   }
 
   componentWillMount() {
-    const {data} = this.props;
+    const { data } = this.props;
     this.setState({
       fontsizevalue: data.fontsizevalue,
       timeout: data.timeout,
@@ -30,7 +35,7 @@ class NotificationRepair extends Component {
     let error = false;
     Object.keys(this.state).map((name) => {
       switch (name) {
-        case 'fontsizevalue':
+        case "fontsizevalue":
           const fontsize = parseInt(this.state[name]);
           if (
             fontsize > maxFontNotif ||
@@ -42,16 +47,16 @@ class NotificationRepair extends Component {
               fontsizeerror: `Must enter between ${minFontNotif}px and ${maxFontNotif}px`,
             });
           } else {
-            this.setState({fontsizeerror: null});
+            this.setState({ fontsizeerror: null });
           }
           break;
-        case 'timeout':
+        case "timeout":
           const timeout = parseInt(this.state[name]);
           if (timeout < 4000 || isNaN(timeout)) {
             error = true;
-            this.setState({timeouterror: 'Must be 4000 or greater'});
+            this.setState({ timeouterror: "Must be 4000 or greater" });
           } else {
-            this.setState({timeouterror: null});
+            this.setState({ timeouterror: null });
           }
           break;
         default:
@@ -59,12 +64,12 @@ class NotificationRepair extends Component {
       }
       return [];
     });
-    this.setState({repairerror: error}, () => this.handleSubmit(e));
+    this.setState({ repairerror: error }, () => this.handleSubmit(e));
   }
 
   handleSubmit(event) {
-    const {handlers} = this.props;
-    const {fontsizevalue, timeout} = this.state;
+    const { handlers } = this.props;
+    const { fontsizevalue, timeout } = this.state;
 
     event.preventDefault();
     if (!this.state.repairerror) {
@@ -74,16 +79,16 @@ class NotificationRepair extends Component {
       });
       // Submit a repair entry in the database.
       RepairService.submitRepair(this.state.componentName, repair);
-      handlers.updatePopup('The repairs have been made.');
+      handlers.updatePopup("The repairs have been made.");
     } else {
-      handlers.updatePopup('Errors in Repair. Please fix');
+      handlers.updatePopup("Errors in Repair. Please fix");
     }
     // Update the state and close the repair.
     handlers.updateRepairNotification(fontsizevalue, timeout);
     handlers.closeRepair();
 
     setTimeout(() => {
-      handlers.updatePopup('');
+      handlers.updatePopup("");
     }, 6000);
   }
 
@@ -97,16 +102,15 @@ class NotificationRepair extends Component {
   }
 
   handleNav() {
-    navigate('/Lab5/Exercise/NotificationAccessibleRepair');
+    navigate("/Lab5/Exercise/NotificationAccessibleRepair");
   }
 
   render() {
-    const {visible, handlers, state, data, actions} = this.props;
+    const { visible, handlers, state, data, actions } = this.props;
     return (
       <div>
         <div className="cognitive_instructions margin-bottom-2">
           Let's increase the notification time and font-size to improve
-          readability. Click 'Repair' to make the appropriate changes.
         </div>
         <Popup
           message={state.app5.popupMessage}
@@ -278,7 +282,7 @@ class NotificationRepair extends Component {
                       required
                       title="must be atleast 4000"
                       className={
-                        this.state.timeouterror ? 'form-error-input' : ''
+                        this.state.timeouterror ? "form-error-input" : ""
                       }
                     />
                   </span>
@@ -382,7 +386,7 @@ class NotificationRepair extends Component {
                   <div className="code_editor__line">
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span className="code_editor__line--darkgreen">
-                      &#47;&#47; Change font-size to value between{' '}
+                      &#47;&#47; Change font-size to value between{" "}
                       {minFontNotif}px and {maxFontNotif}px.
                     </span>
                   </div>
@@ -397,7 +401,7 @@ class NotificationRepair extends Component {
                         onChange={this.changeHandler.bind(this)}
                         title={`must enter between ${minFontNotif}px and ${maxFontNotif}px`}
                         className={
-                          this.state.fontsizeerror ? 'form-error-input' : ''
+                          this.state.fontsizeerror ? "form-error-input" : ""
                         }
                       />
                     </span>

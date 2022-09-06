@@ -1,17 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import UserLabService from '../../../../services/UserLabService';
-import ProgressBar from './ProgressBar';
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from "react";
+import UserLabService from "../../../../services/UserLabService";
+import ProgressBar from "./ProgressBar";
 
 const StudentProgress = (props) => {
-  const {student, lab} = props;
+  const { student, lab } = props;
   const [progress, setProgress] = useState();
 
   useEffect(() => {
     if (student && lab) {
       UserLabService.getUserLabCompletion(student.userID, lab.labID).then(
-          (data) => {
-            setProgress(data);
-          },
+        (data) => {
+          setProgress(data);
+        }
       );
     }
   }, [student, lab]);
@@ -31,11 +32,11 @@ const StudentProgress = (props) => {
             <ProgressBar
               labID={lab.labID}
               barData={[
-                ['About', progress.aboutcompletedtime],
-                ['Reading', progress.readingcompletedtime],
-                ['Exercise', progress.exercisecompletedtime],
-                ['Reinforcement', progress.reinforcementcompletedtime],
-                ['Quiz', progress.quizcompletedtime],
+                ["About", progress.aboutcompletedtime],
+                ["Reading", progress.readingcompletedtime],
+                ["Exercise", progress.exercisecompletedtime],
+                ["Reinforcement", progress.reinforcementcompletedtime],
+                ["Quiz", progress.quizcompletedtime],
               ]}
               percentage={true}
             />
@@ -48,11 +49,11 @@ const StudentProgress = (props) => {
             <ProgressBar
               labID={lab.labID}
               barData={[
-                ['About', null],
-                ['Reading', null],
-                ['Exercise', null],
-                ['Reinforcement', null],
-                ['Quiz', null],
+                ["About", null],
+                ["Reading", null],
+                ["Exercise", null],
+                ["Reinforcement", null],
+                ["Quiz", null],
               ]}
               percentage={true}
             />

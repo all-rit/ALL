@@ -1,18 +1,18 @@
-import {combineReducers} from 'redux';
-import AppReducer1 from './lab1/AppReducer';
-import ExerciseReducer1 from './lab1/ExerciseReducer';
-import RepairReducer1 from './lab1/RepairReducer';
-import AppReducer2 from './lab2/AppReducer';
-import ExerciseReducer2 from './lab2/index';
-import AppReducer3 from './lab3/AppReducer';
-import ExerciseReducer3 from './lab3/ExerciseReducer';
-import RepairReducer3 from './lab3/RepairReducer';
-import ExerciseReducer4 from './lab4/ExerciseReducer';
-import AppReducer5 from './lab5/AppReducer';
-import ExerciseReducer5 from './lab5/ExerciseReducer';
-import RepairReducer5 from './lab5/RepairReducer';
-import ExerciseReducer6 from './lab6/ExerciseReducer';
-import MainReducer from './MainReducer';
+import { combineReducers } from "redux";
+import AppReducer1 from "./lab1/AppReducer";
+import ExerciseReducer1 from "./lab1/ExerciseReducer";
+import RepairReducer1 from "./lab1/RepairReducer";
+import AppReducer2 from "./lab2/AppReducer";
+import ExerciseReducer2 from "./lab2/index";
+import AppReducer3 from "./lab3/AppReducer";
+import ExerciseReducer3 from "./lab3/ExerciseReducer";
+import RepairReducer3 from "./lab3/RepairReducer";
+import ExerciseReducer4 from "./lab4/ExerciseReducer";
+import AppReducer5 from "./lab5/AppReducer";
+import ExerciseReducer5 from "./lab5/ExerciseReducer";
+import RepairReducer5 from "./lab5/RepairReducer";
+import ExerciseReducer6 from "./lab6/ExerciseReducer";
+import MainReducer from "./MainReducer";
 
 export default combineReducers({
   app1: AppReducer1,

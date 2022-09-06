@@ -1,29 +1,31 @@
-import React, {Component} from 'react';
-import PageServiceTimer from '../../../shared/PageServiceTimer';
-import Form from '../../components/Form';
-import {navigate} from '@reach/router';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
+import Form from "../../components/Form";
+import { navigate } from "@reach/router";
 
 class FormAccessible extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showNext: false,
-      componentName: 'FormAccessible',
+      componentName: "FormAccessible",
     };
   }
   showNext = () => {
-    this.setState({showNext: true});
+    this.setState({ showNext: true });
   };
   handleNav() {
-    navigate('/Lab5/Exercise/ExerciseEnd');
+    navigate("/Lab5/Exercise/ExerciseEnd");
   }
   render() {
-    const {actions, state} = this.props;
+    const { actions, state } = this.props;
     return (
       <div>
         <div className="cognitive_instructions">Complete the form below</div>
         <Form
-          url={'/FormGuidance'}
+          url={"/FormGuidance"}
           showNext={this.showNext}
           errorNotification={state.repair5.errorNotification}
           successNotification={state.repair5.successNotification}

@@ -1,13 +1,17 @@
-import React, {Component} from 'react';
+/* eslint-disable camelcase */
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
 
-import First from '../pages/First';
-import Second from '../pages/Second';
-import Third from '../pages/Third';
-import Fourth from '../pages/Fourth';
+import First from "../pages/First";
+import Second from "../pages/Second";
+import Third from "../pages/Third";
+import Fourth from "../pages/Fourth";
 
 class Playthrough extends Component {
   render() {
-    const {plays, results, visible} = this.props;
+    const { plays, results, visible } = this.props;
 
     if (!visible) return null;
 

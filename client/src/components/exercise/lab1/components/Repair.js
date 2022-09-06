@@ -1,7 +1,11 @@
-import React, {Component} from 'react';
-import classNames from 'classnames/bind';
-import {Panel as ColorPickerPanel} from 'rc-color-picker';
-import RepairService from '../../../../services/lab1/RepairService';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import classNames from "classnames/bind";
+import { Panel as ColorPickerPanel } from "rc-color-picker";
+import RepairService from "../../../../services/lab1/RepairService";
 
 class Repair extends Component {
   constructor(props) {
@@ -19,7 +23,7 @@ class Repair extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    const {data} = this.props;
+    const { data } = this.props;
 
     this.setState({
       availableMessage: data.availableMessage,
@@ -30,23 +34,23 @@ class Repair extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('click', this.handleClick);
+    document.addEventListener("click", this.handleClick);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleClick);
+    document.removeEventListener("click", this.handleClick);
   }
 
   handleClick(e) {
     if (this.state.availableBackgroundColorPopup) {
-      if (e.target.tagName === 'HTML') {
+      if (e.target.tagName === "HTML") {
         this.setState({
           availableBackgroundColorPopup: false,
         });
       } else if (e.target.parentNode.className) {
         if (
-          !e.target.parentNode.className.includes('rc-color-picker') &&
-          e.target.id !== 'changeAvailableColor'
+          !e.target.parentNode.className.includes("rc-color-picker") &&
+          e.target.id !== "changeAvailableColor"
         ) {
           this.setState({
             availableBackgroundColorPopup: false,
@@ -55,14 +59,14 @@ class Repair extends Component {
       }
     }
     if (this.state.unavailableBackgroundColorPopup) {
-      if (e.target.tagName === 'HTML') {
+      if (e.target.tagName === "HTML") {
         this.setState({
           unavailableBackgroundColorPopup: false,
         });
       } else if (e.target.parentNode.className) {
         if (
-          !e.target.parentNode.className.includes('rc-color-picker') &&
-          e.target.id !== 'changeUnavailableColor'
+          !e.target.parentNode.className.includes("rc-color-picker") &&
+          e.target.id !== "changeUnavailableColor"
         ) {
           this.setState({
             unavailableBackgroundColorPopup: false,
@@ -73,7 +77,7 @@ class Repair extends Component {
   }
 
   handleSubmit(event) {
-    const {handlers} = this.props;
+    const { handlers } = this.props;
     const {
       availableMessage,
       unavailableMessage,
@@ -85,24 +89,24 @@ class Repair extends Component {
 
     // Submit a repair entry in the database.
     RepairService.submitRepair(
-        availableMessage,
-        unavailableMessage,
-        availableBackgroundColor,
-        unavailableBackgroundColor,
+      availableMessage,
+      unavailableMessage,
+      availableBackgroundColor,
+      unavailableBackgroundColor
     );
 
     // Update the state and close the repair.
     handlers.updateRepair(
-        availableMessage,
-        unavailableMessage,
-        availableBackgroundColor,
-        unavailableBackgroundColor,
+      availableMessage,
+      unavailableMessage,
+      availableBackgroundColor,
+      unavailableBackgroundColor
     );
     handlers.closeRepair();
-    handlers.updatePopup('The repairs have been made.');
+    handlers.updatePopup("The repairs have been made.");
 
     setTimeout(() => {
-      handlers.updatePopup('');
+      handlers.updatePopup("");
     }, 5000);
   }
 
@@ -141,7 +145,7 @@ class Repair extends Component {
   }
 
   render() {
-    const {visible, data, handlers} = this.props;
+    const { visible, data, handlers } = this.props;
     const {
       availableBackgroundColor,
       unavailableBackgroundColor,
@@ -149,12 +153,12 @@ class Repair extends Component {
       unavailableBackgroundColorPopup,
     } = this.state;
     const jsFileClasses = classNames({
-      'code_editor__file': true,
-      'code_editor__file--active': true,
+      code_editor__file: true,
+      "code_editor__file--active": true,
     });
     const cssFileClasses = classNames({
-      'code_editor__file': true,
-      'code_editor__file--active': true,
+      code_editor__file: true,
+      "code_editor__file--active": true,
     });
     const jsFileCodeClasses = classNames({
       code_editor__code: true,
@@ -421,9 +425,9 @@ class Repair extends Component {
               </div>
               <div className="code_editor__input">
                 <button
-                  id={'changeAvailableColor'}
+                  id={"changeAvailableColor"}
                   onClick={this.toggleAvailableBackgroundColorPopup.bind(this)}
-                  style={{backgroundColor: availableBackgroundColor}}
+                  style={{ backgroundColor: availableBackgroundColor }}
                 />
                 {availableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
@@ -431,7 +435,7 @@ class Repair extends Component {
                       enableAlpha={false}
                       color={this.state.availableBackgroundColor}
                       onChange={this.changeAvailableBackgroundColorHandler.bind(
-                          this,
+                        this
                       )}
                     />
                   </div>
@@ -457,11 +461,11 @@ class Repair extends Component {
               </div>
               <div className="code_editor__input">
                 <button
-                  id={'changeUnavailableColor'}
+                  id={"changeUnavailableColor"}
                   onClick={this.toggleUnavailableBackgroundColorPopup.bind(
-                      this,
+                    this
                   )}
-                  style={{backgroundColor: unavailableBackgroundColor}}
+                  style={{ backgroundColor: unavailableBackgroundColor }}
                 />
                 {unavailableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
@@ -469,7 +473,7 @@ class Repair extends Component {
                       enableAlpha={false}
                       color={this.state.unavailableBackgroundColor}
                       onChange={this.changeUnavailableBackgroundColorHandler.bind(
-                          this,
+                        this
                       )}
                     />
                   </div>

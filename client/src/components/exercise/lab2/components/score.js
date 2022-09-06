@@ -1,5 +1,6 @@
-import React from 'react';
-import './exerciseStyle.css';
+/* eslint-disable react/prop-types */
+import React from "react";
+import "./exerciseStyle.css";
 
 /*
 Component for displaying the score at the bottom of the page

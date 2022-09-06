@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
-import createSagaMiddleware from 'redux-saga';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App';
-import reducers from './reducers';
-import sagas from './sagas';
-import * as serviceWorker from './serviceWorker';
-import ReactGA from 'react-ga';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import createSagaMiddleware from "redux-saga";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
+import reducers from "./reducers";
+import sagas from "./sagas";
+import * as serviceWorker from "./serviceWorker";
+import ReactGA from "react-ga";
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
   ReactGA.initialize(TRACKING_ID);
   ReactGA.pageview(window.location.pathname + window.location.search);
@@ -22,10 +22,10 @@ const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(sagas);
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root'),
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

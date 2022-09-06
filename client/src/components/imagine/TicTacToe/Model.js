@@ -1,3 +1,6 @@
+/* eslint-disable valid-jsdoc */
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 /**
  * Model.js is a Javascript file that is responsible for holding the logic behind a game of
  * Tic Tack Toe. This file contains the behavior starting a game and checking the given
@@ -12,12 +15,12 @@ const Board = [
 ];
 // Player Game Piece.
 const Players = [
-  {name: 'Player', piece: 'X'},
-  {name: 'AI', piece: 'O'},
+  { name: "Player", piece: "X" },
+  { name: "AI", piece: "O" },
 ];
 // Dictionary format for game status
-const GameStatus = {board: null, available: null};
-const GameState = {isGameOver: false, winner: null};
+const GameStatus = { board: null, available: null };
+const GameState = { isGameOver: false, winner: null };
 
 /**
  * createNewBoard() is a function that is responsible for configuring a new board
@@ -28,7 +31,7 @@ const createNewBoard = () => {
   const openSpots = [];
   for (let y = 0; y < 3; y++) {
     for (let x = 0; x < 3; x++) {
-      openSpots.push({x: x, y: y});
+      openSpots.push({ x: x, y: y });
     }
   }
   return {
@@ -48,15 +51,15 @@ const createNewBoard = () => {
  */
 const checkWinner = (GameInfo) => {
   let winner = null;
-  const GameState = {...GameInfo};
+  const GameState = { ...GameInfo };
   // check vertical formations
   Players.forEach((Player) => {
     for (let y = 0; y < 3; y++) {
       if (
         check3InARow(
-            GameState.board[y][0],
-            GameState.board[y][1],
-            GameState.board[y][2],
+          GameState.board[y][0],
+          GameState.board[y][1],
+          GameState.board[y][2]
         ) &&
         Player.piece === GameState.board[y][0]
       ) {
@@ -67,9 +70,9 @@ const checkWinner = (GameInfo) => {
     for (let x = 0; x < 3; x++) {
       if (
         check3InARow(
-            GameState.board[0][x],
-            GameState.board[1][x],
-            GameState.board[2][x],
+          GameState.board[0][x],
+          GameState.board[1][x],
+          GameState.board[2][x]
         ) &&
         Player.piece === GameState.board[0][x]
       ) {
@@ -79,14 +82,14 @@ const checkWinner = (GameInfo) => {
     // check diagonal formations
     if (
       (check3InARow(
-          GameState?.board[0][0],
-          GameState?.board[1][1],
-          GameState?.board[2][2],
+        GameState?.board[0][0],
+        GameState?.board[1][1],
+        GameState?.board[2][2]
       ) ||
         check3InARow(
-            GameState?.board[2][0],
-            GameState?.board[1][1],
-            GameState?.board[0][2],
+          GameState?.board[2][0],
+          GameState?.board[1][1],
+          GameState?.board[0][2]
         )) &&
       Player.piece === GameState.board[1][1]
     ) {
@@ -95,13 +98,13 @@ const checkWinner = (GameInfo) => {
   });
   if (winner !== null) {
     // win state
-    return {isGameOver: true, winner: winner.name};
+    return { isGameOver: true, winner: winner.name };
   } else if (winner === null && GameState.available.length === 0) {
     // tie
-    return {isGameOver: true, winner: 'tie'};
+    return { isGameOver: true, winner: "tie" };
   } else {
     // game continue state
-    return {isGameOver: false, winner: null};
+    return { isGameOver: false, winner: null };
   }
 };
 /**
@@ -115,7 +118,7 @@ const checkWinner = (GameInfo) => {
  * @return the updated gameState after a move could be successfully or unsuccessfully performedS
  */
 const makeMove = (GameInfo, piece, x, y) => {
-  const GameState = {...GameInfo};
+  const GameState = { ...GameInfo };
   GameState.available?.forEach((value, index) => {
     if (value.x === x && value.y === y) {
       GameState.available.splice(index, 1);
@@ -144,10 +147,10 @@ const check3InARow = (first, second, third) => {
 };
 
 const aIMove = (GameInfo) => {
-  const GameState = {...GameInfo};
+  const GameState = { ...GameInfo };
   const length = GameState.available.length - 1;
   const remove = Math.floor(Math.random() * length);
-  const removeLocation = {...GameState.available[remove]};
+  const removeLocation = { ...GameState.available[remove] };
   makeMove(GameState, Players[1].piece, removeLocation.x, removeLocation.y);
   return GameState;
 };

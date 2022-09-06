@@ -1,18 +1,21 @@
-import React, {Component} from 'react';
-import Button from '@material-ui/core/Button';
-import {AppBar, Typography, Link} from '@material-ui/core';
-import Toolbar from '@material-ui/core/Toolbar';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import {navigate} from '@reach/router';
-import {EXERCISE_PLAYING} from '../../../../../constants/lab3/index';
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import { AppBar, Typography, Link } from "@material-ui/core";
+import Toolbar from "@material-ui/core/Toolbar";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import { navigate } from "@reach/router";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
 class AdvancedInstructions extends Component {
   handleSubmit() {
-    navigate('/Lab3/Exercise/ProblemDiscovery');
+    navigate("/Lab3/Exercise/ProblemDiscovery");
   }
   componentDidMount() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
   }
   render() {
@@ -24,10 +27,10 @@ class AdvancedInstructions extends Component {
     };
 
     const paperStyle = {
-      marginLeft: '10px',
-      marginRight: '10px',
-      marginTop: '20px',
-      marginBottom: '20px',
+      marginLeft: "10px",
+      marginRight: "10px",
+      marginTop: "20px",
+      marginBottom: "20px",
     };
 
     return (
@@ -37,8 +40,8 @@ class AdvancedInstructions extends Component {
             <Grid justify="center" container spacing={10}>
               <Grid item>
                 <Typography
-                  aria-label={'Advanced Instructions'}
-                  variant={'h4'}
+                  aria-label={"Advanced Instructions"}
+                  variant={"h4"}
                   gutterBottom
                 >
                   Instructions for Advanced Activity
@@ -50,15 +53,15 @@ class AdvancedInstructions extends Component {
         <Paper style={paperStyle}>
           <Typography
             aria-label={
-              'Instructions for Advanced Activity' +
-              'You will have to learn about accessibility by performing a task which will involve finding the accessibility issues in a page.' +
-              'Please make sure you are using Google Chrome.' +
-              'For the following activity, please ensure that you have volume enabled on your device.' +
-              'Click on the button below to test the functionality of the screen reader.'
+              "Instructions for Advanced Activity" +
+              "You will have to learn about accessibility by performing a task which will involve finding the accessibility issues in a page." +
+              "Please make sure you are using Google Chrome." +
+              "For the following activity, please ensure that you have volume enabled on your device." +
+              "Click on the button below to test the functionality of the screen reader."
             }
-            variant={'h6'}
+            variant={"h6"}
             gutterBottom
-            tabIndex={'0'}
+            tabIndex={"0"}
           >
             You will have to learn about accessibility by performing a task
             which will involve finding the accessibility issues in a page.
@@ -66,10 +69,10 @@ class AdvancedInstructions extends Component {
             <Link
               component={Link}
               target="_blank"
-              href={'https://www.google.com/chrome/'}
+              href={"https://www.google.com/chrome/"}
             >
-              {' '}
-              Google Chrome.{' '}
+              {" "}
+              Google Chrome.{" "}
             </Link>
             For the following activity, please ensure that you have volume
             enabled on your device.
@@ -83,8 +86,8 @@ class AdvancedInstructions extends Component {
               <button
                 className="btn btn-second btn-xl text-uppercase  mx-auto"
                 key="repair"
-                aria-label={'Test'}
-                onClick={(e) => textToSpeech(e, 'Test')}
+                aria-label={"Test"}
+                onClick={(e) => textToSpeech(e, "Test")}
               >
                 Test
               </button>
@@ -95,7 +98,7 @@ class AdvancedInstructions extends Component {
         <Button
           href="#"
           onClick={this.handleSubmit}
-          variant={'contained'}
+          variant={"contained"}
           className="btn btn-second btn-xl text-uppercase  leftButton"
         >
           Next

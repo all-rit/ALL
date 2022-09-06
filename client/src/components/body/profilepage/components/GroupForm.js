@@ -1,6 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import LabService from '../../../../services/LabService';
-import GroupService from '../../../../services/GroupService';
+/* eslint-disable react/jsx-key */
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from "react";
+import LabService from "../../../../services/LabService";
+import GroupService from "../../../../services/GroupService";
 
 import {
   Button,
@@ -10,9 +13,9 @@ import {
   FormGroup,
   Label,
   Input,
-} from 'reactstrap';
-import FormCheckbox from './FormCheckbox';
-import DeleteModal from './DeleteModal';
+} from "reactstrap";
+import FormCheckbox from "./FormCheckbox";
+import DeleteModal from "./DeleteModal";
 
 const GroupForm = (props) => {
   const {
@@ -47,15 +50,15 @@ const GroupForm = (props) => {
     const formData = Object.fromEntries(new FormData(e.target).entries());
     const labs = [];
     for (const [key, value] of Object.entries(formData)) {
-      if (value === 'on') {
+      if (value === "on") {
         labs.push(parseInt(key));
       }
     }
 
     switch (addMode) {
-      case 'add_instr_grp':
+      case "add_instr_grp":
         const groupName =
-          formData.groupName !== '' ? formData.groupName : 'Default Group Name';
+          formData.groupName !== "" ? formData.groupName : "Default Group Name";
         GroupService.createGroup(user.userid, groupName).then((data) => {
           labs.forEach((labID) => {
             GroupService.addGroupLab(data.groupID, labID);
@@ -64,22 +67,22 @@ const GroupForm = (props) => {
           setInstrGroupsUpdated(true);
         });
         break;
-      case 'update_grp_lab':
+      case "update_grp_lab":
         if (groupID) {
-          if (formData.groupName !== '') {
+          if (formData.groupName !== "") {
             GroupService.updateGroup(groupID, formData.groupName);
           }
           labsAssigned.forEach((labID) => {
             if (!labs.includes(labID)) {
               GroupService.deleteGroupLab(groupID, labID).then(() =>
-                setInstrGroupsUpdated(true),
+                setInstrGroupsUpdated(true)
               );
             }
           });
           labs.forEach((labID) => {
             if (!labsAssigned.includes(labID)) {
               GroupService.addGroupLab(groupID, labID).then(() =>
-                setInstrGroupsUpdated(true),
+                setInstrGroupsUpdated(true)
               );
             }
           });
@@ -87,7 +90,7 @@ const GroupForm = (props) => {
         }
         break;
       default: // this is the case for enrolling in a group
-        console.log('Group Form Default Case');
+        console.log("Group Form Default Case");
     }
 
     // Always toggle the modal
@@ -101,7 +104,7 @@ const GroupForm = (props) => {
   }, [setState]);
 
   switch (addMode) {
-    case 'add_instr_grp':
+    case "add_instr_grp":
       return (
         <Form onSubmit={onFormSubmit}>
           <ModalBody>
@@ -111,7 +114,7 @@ const GroupForm = (props) => {
                 type="text"
                 name="groupName"
                 id="groupName"
-                placeholder={'SWEN 344 Web Engineering Fall 2021'}
+                placeholder={"SWEN 344 Web Engineering Fall 2021"}
               />
             </FormGroup>
             <FormGroup check>
@@ -131,7 +134,7 @@ const GroupForm = (props) => {
           </ModalFooter>
         </Form>
       );
-    case 'update_grp_lab':
+    case "update_grp_lab":
       return (
         <Form onSubmit={onFormSubmit}>
           <ModalBody>

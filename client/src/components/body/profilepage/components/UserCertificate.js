@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import logo from '../../../../assets/images/logos/ALL_Logo_Header.svg';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import logo from "../../../../assets/images/logos/ALL_Logo_Header.svg";
 
 const mapStateToProps = (state) => {
   return {
@@ -15,43 +17,43 @@ class UserCertificate extends Component {
     score = parseFloat(score);
     switch (true) {
       case score <= 40:
-        return 'crimson';
+        return "crimson";
       case score <= 70:
-        return 'orange';
+        return "orange";
       default:
-        return 'chartreuse';
+        return "chartreuse";
     }
   };
 
   render() {
-    const {state} = this.props;
+    const { state } = this.props;
 
     return (
       <div
         style={{
-          width: '100%',
-          height: 'auto',
-          padding: '20px',
-          border: '10px solid #787878',
+          width: "100%",
+          height: "auto",
+          padding: "20px",
+          border: "10px solid #787878",
         }}
       >
         <ul
-          style={{width: '100%', height: 'auto', border: '5px solid #787878'}}
+          style={{ width: "100%", height: "auto", border: "5px solid #787878" }}
         >
-          <ul style={{width: '100%', margin: 'auto'}}>
+          <ul style={{ width: "100%", margin: "auto" }}>
             <li
               style={{
-                fontSize: '50px',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                padding: '20px',
+                fontSize: "50px",
+                fontWeight: "bold",
+                textAlign: "center",
+                padding: "20px",
               }}
             >
               Certificate of Completion
             </li>
           </ul>
           <li
-            style={{fontSize: '25px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
           >
             {state.main.user !== null && state.main.user.firstname ? (
               <i>
@@ -63,30 +65,30 @@ class UserCertificate extends Component {
             )}
           </li>
           <li
-            style={{fontSize: '30px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "30px", textAlign: "center", padding: "20px" }}
           >
             {this.props.labName}
           </li>
           <li
-            style={{fontSize: '25px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
           >
-            with a score of{' '}
-            <b style={{color: this.getColor()}}>{this.props.quizScore}%</b>
+            with a score of{" "}
+            <b style={{ color: this.getColor() }}>{this.props.quizScore}%</b>
           </li>
           <li
-            style={{fontSize: '30px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "30px", textAlign: "center", padding: "20px" }}
           >
-            {String(this.props.labCompletionTime).split('T')[0]}
+            {String(this.props.labCompletionTime).split("T")[0]}
           </li>
-          <ul style={{backgroundColor: 'rgb(61, 61, 61)'}}>
-            <li style={{textAlign: 'center'}}>
+          <ul style={{ backgroundColor: "rgb(61, 61, 61)" }}>
+            <li style={{ textAlign: "center" }}>
               <img
                 src={logo}
                 alt="logo"
                 style={{
-                  height: '120px',
-                  width: '500px',
-                  padding: '15px',
+                  height: "120px",
+                  width: "500px",
+                  padding: "15px",
                 }}
               />
             </li>

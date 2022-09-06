@@ -1,6 +1,7 @@
-import {call, put, takeLatest} from 'redux-saga/effects';
-import {types} from '../reducers/MainReducer';
-import AuthService from '../services/AuthService';
+/* eslint-disable require-jsdoc */
+import { call, put, takeLatest } from "redux-saga/effects";
+import { types } from "../reducers/MainReducer";
+import AuthService from "../services/AuthService";
 
 function authApi() {
   return AuthService.getUser();
@@ -9,7 +10,7 @@ function authApi() {
 function* authFlow() {
   try {
     const user = yield call(authApi);
-    yield put({type: types.UPDATE_USER, user});
+    yield put({ type: types.UPDATE_USER, user });
   } catch (e) {
     return null;
   }

@@ -1,6 +1,7 @@
-import React from 'react';
-import LabGeneration from '../lab/LabGeneration';
-import {actions} from '../../../reducers/MainReducer';
+/* eslint-disable react/prop-types */
+import React from "react";
+import LabGeneration from "../lab/LabGeneration";
+import { actions } from "../../../reducers/MainReducer";
 
 const Labs = (props) => {
   return (

@@ -1,6 +1,9 @@
-import React, {Component} from 'react';
-import {Pie} from 'react-chartjs-2';
-import './userStats.css';
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import { Pie } from "react-chartjs-2";
+import "./userStats.css";
 
 /*
 Component for displaying user statistics on the user statistics page
@@ -40,7 +43,7 @@ class UserStats extends Component {
 
   // Renderer for data display
   render() {
-    if (this.props.background !== 'white') {
+    if (this.props.background !== "white") {
       this.props.toWhiteBackground();
     }
 
@@ -54,27 +57,27 @@ class UserStats extends Component {
 
     // Gets the data for the users in the system
     const getDataUsers = () => {
-      fetch(process.env.API_URL + '/data_totals', {
-        method: 'GET',
-        credentials: 'include',
+      fetch(process.env.API_URL + "/data_totals", {
+        method: "GET",
+        credentials: "include",
       })
-          .then((res) => res.json())
-          .then((data) => this.setFirstData(data))
-          .catch((err) => console.log(err));
-      this.setState({retrievedUsers: true});
+        .then((res) => res.json())
+        .then((data) => this.setFirstData(data))
+        .catch((err) => console.log(err));
+      this.setState({ retrievedUsers: true });
     };
 
     // Ges the data for the scores in the system
     const getDataScores = () => {
-      fetch(process.env.API_URL + '/data_scores', {
-        method: 'GET',
+      fetch(process.env.API_URL + "/data_scores", {
+        method: "GET",
       })
-          .then((res) => res.json())
-          .then((data) => {
-            this.setSecondData(data);
-          })
-          .catch((err) => console.log(err));
-      this.setState({retrievedScores: true});
+        .then((res) => res.json())
+        .then((data) => {
+          this.setSecondData(data);
+        })
+        .catch((err) => console.log(err));
+      this.setState({ retrievedScores: true });
     };
 
     if (!this.state.retrievedUsers) {
@@ -87,41 +90,41 @@ class UserStats extends Component {
     // Object for the pie chart containing a breakdown of users signed in
     // compared to total users in the system
     const usersPie = {
-      labels: ['Number of Users Connected', 'Number of Logins'],
+      labels: ["Number of Users Connected", "Number of Logins"],
       datasets: [
         {
-          label: 'Users connected compared to logged in',
-          borderColor: 'black',
-          backgroundColor: ['red', 'blue'],
+          label: "Users connected compared to logged in",
+          borderColor: "black",
+          backgroundColor: ["red", "blue"],
           data: [totalUsers, totalLogins],
-          borderWidth: '2',
+          borderWidth: "2",
         },
       ],
     };
 
     // Headers for the table
     const headers = [
-      'Score',
-      'CorrectOnClick',
-      'IncorrectOnClick',
-      'CorrectonNoClick',
-      'IncorrectOnNoClick',
-      'background',
-      'CorrectCircle',
-      'incorrectColorOne',
-      'incorrectColorTwo',
-      'Mode',
+      "Score",
+      "CorrectOnClick",
+      "IncorrectOnClick",
+      "CorrectonNoClick",
+      "IncorrectOnNoClick",
+      "background",
+      "CorrectCircle",
+      "incorrectColorOne",
+      "incorrectColorTwo",
+      "Mode",
     ];
 
     // Generates the score breakdown table from previous exercises
     const scoreTable = () => {
       const scoreTable = [];
       scoreTable.push(
-          <tr>
-            <th colSpan="10" key="-21312312">
+        <tr>
+          <th colSpan="10" key="-21312312">
             Exercise Scores
-            </th>
-          </tr>,
+          </th>
+        </tr>
       );
       for (let i = -1; i < totalExercisesPlayed; i++) {
         const children = [];
@@ -132,7 +135,7 @@ class UserStats extends Component {
           data = scores[i];
         }
         for (const key in data) {
-          if (key === 'exercisestatsid' || key === 'userid') {
+          if (key === "exercisestatsid" || key === "userid") {
             continue;
           } else {
             children.push(<td key={key}>{data[key]}</td>);
@@ -149,11 +152,11 @@ class UserStats extends Component {
       let userID = -50;
       console.log(userScores);
       userTable.push(
-          <tr>
-            <th colSpan="10" key="-3213">
+        <tr>
+          <th colSpan="10" key="-3213">
             User Scores
-            </th>
-          </tr>,
+          </th>
+        </tr>
       );
       for (let i = -1; i < totalExercisesPlayed; i++) {
         const userChildren = [];
@@ -165,16 +168,16 @@ class UserStats extends Component {
           if (data.userid !== userID) {
             userID = data.userid;
             userTable.push(
-                <tr>
-                  <td colSpan="10" key={-5000 - userID}>
+              <tr>
+                <td colSpan="10" key={-5000 - userID}>
                   User: {userID}
-                  </td>
-                </tr>,
+                </td>
+              </tr>
             );
           }
         }
         for (const key in data) {
-          if (key === 'exercisestatsid' || key === 'userid') {
+          if (key === "exercisestatsid" || key === "userid") {
             continue;
           } else {
             userChildren.push(<td key={key}>{data[key]}</td>);

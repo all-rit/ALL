@@ -1,33 +1,36 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Router} from '@reach/router';
-import '../../../assets/stylesheets/main.scss';
-import {actions as exerciseActions} from '../../../reducers/lab5/ExerciseReducer';
-import {actions as repairActions} from '../../../reducers/lab5/RepairReducer';
-import {actions as appActions} from '../../../reducers/lab5/AppReducer';
-import ExerciseStart from './pages/ExerciseStart';
-import DyslexiaAccessible from './pages/PageLayoutActivity/DyslexiaAccessible';
-import DyslexiaAccessibleKnowledgeCheck from './pages/PageLayoutActivity/DyslexiaAccessibleKnowledgeCheck';
-import DementiaInaccessible from './pages/PageLayoutActivity/DementiaInaccessible';
-import DementiaInaccessibleKnowledgeCheck from './pages/PageLayoutActivity/DementiaInaccessibleKnowledgeCheck';
-import PageLayoutGuidance from './pages/PageLayoutActivity/PageLayoutGuidance';
-import PageLayoutRepair from './pages/PageLayoutActivity/PageLayoutRepair';
-import DementiaAccessible from './pages/PageLayoutActivity/DementiaAccessible';
-import DementiaAccessibleKnowledgeCheck from './pages/PageLayoutActivity/DementiaAccessibleKnowledgeCheck';
-import NotificationAccessible from './pages/NotificationActivity/NotificationAccessible';
-import NotificationAccessibleKnowledgeCheck from './pages/NotificationActivity/NotificationAccessibleKnowledgeCheck';
-import NotificationInaccessible from './pages/NotificationActivity/NotificationInaccessible';
-import NotificationInaccessibleKnowledgeCheck from './pages/NotificationActivity/NotificationInaccessibleKnowledgeCheck';
-import NotificationGuidance from './pages/NotificationActivity/NotificationGuidance';
-import NotificationRepair from './pages/NotificationActivity/NotificationRepair';
-import {bindActionCreators} from 'redux';
-import NotificationAccessibleRepairKnowledgeCheck from './pages/NotificationActivity/NotificationAccessibleRepairKnowledgeCheck';
-import NotificationAccessibleRepair from './pages/NotificationActivity/NotificationAccessibleRepair';
-import FormInaccessible from './pages/FormResponseActivity/FormInaccessible';
-import FormGuidance from './pages/FormResponseActivity/FormGuidance';
-import FormAccessible from './pages/FormResponseActivity/FormAccessible';
-import FormRepair from './pages/FormResponseActivity/FormRepair';
-import ExerciseEnd from './pages/ExerciseEnd';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+/* eslint-disable max-len */
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Router } from "@reach/router";
+import "../../../assets/stylesheets/main.scss";
+import { actions as exerciseActions } from "../../../reducers/lab5/ExerciseReducer";
+import { actions as repairActions } from "../../../reducers/lab5/RepairReducer";
+import { actions as appActions } from "../../../reducers/lab5/AppReducer";
+import ExerciseStart from "./pages/ExerciseStart";
+import DyslexiaAccessible from "./pages/PageLayoutActivity/DyslexiaAccessible";
+import DyslexiaAccessibleKnowledgeCheck from "./pages/PageLayoutActivity/DyslexiaAccessibleKnowledgeCheck";
+import DementiaInaccessible from "./pages/PageLayoutActivity/DementiaInaccessible";
+import DementiaInaccessibleKnowledgeCheck from "./pages/PageLayoutActivity/DementiaInaccessibleKnowledgeCheck";
+import PageLayoutGuidance from "./pages/PageLayoutActivity/PageLayoutGuidance";
+import PageLayoutRepair from "./pages/PageLayoutActivity/PageLayoutRepair";
+import DementiaAccessible from "./pages/PageLayoutActivity/DementiaAccessible";
+import DementiaAccessibleKnowledgeCheck from "./pages/PageLayoutActivity/DementiaAccessibleKnowledgeCheck";
+import NotificationAccessible from "./pages/NotificationActivity/NotificationAccessible";
+import NotificationAccessibleKnowledgeCheck from "./pages/NotificationActivity/NotificationAccessibleKnowledgeCheck";
+import NotificationInaccessible from "./pages/NotificationActivity/NotificationInaccessible";
+import NotificationInaccessibleKnowledgeCheck from "./pages/NotificationActivity/NotificationInaccessibleKnowledgeCheck";
+import NotificationGuidance from "./pages/NotificationActivity/NotificationGuidance";
+import NotificationRepair from "./pages/NotificationActivity/NotificationRepair";
+import { bindActionCreators } from "redux";
+import NotificationAccessibleRepairKnowledgeCheck from "./pages/NotificationActivity/NotificationAccessibleRepairKnowledgeCheck";
+import NotificationAccessibleRepair from "./pages/NotificationActivity/NotificationAccessibleRepair";
+import FormInaccessible from "./pages/FormResponseActivity/FormInaccessible";
+import FormGuidance from "./pages/FormResponseActivity/FormGuidance";
+import FormAccessible from "./pages/FormResponseActivity/FormAccessible";
+import FormRepair from "./pages/FormResponseActivity/FormRepair";
+import ExerciseEnd from "./pages/ExerciseEnd";
 const mapStateToProps = (state) => ({
   state: state,
 });
@@ -35,15 +38,15 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
-        {...exerciseActions, ...repairActions, ...appActions},
-        dispatch,
+      { ...exerciseActions, ...repairActions, ...appActions },
+      dispatch
     ),
   };
 };
 
 class Main extends Component {
   render() {
-    const {actions, state, user} = this.props;
+    const { actions, state, user } = this.props;
     return (
       <div className="bottomSpace">
         <Router className="app">

@@ -1,16 +1,19 @@
-import React, {Component, Fragment} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+/* eslint-disable max-len */
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import Content from './components/Content';
-import ExerciseInstructions from './components/ExerciseInstructions';
-import Popup from '../shared/Popup';
+import Content from "./components/Content";
+import ExerciseInstructions from "./components/ExerciseInstructions";
+import Popup from "../shared/Popup";
 
-import {actions as appActions} from '../../../reducers/lab1/AppReducer';
-import {actions as exerciseActions} from '../../../reducers/lab1/ExerciseReducer';
-import {actions as repairActions} from '../../../reducers/lab1/RepairReducer';
-import {EXERCISE_IDLE} from '../../../constants/lab1';
-import SoundHeader from './components/SoundHeader';
+import { actions as appActions } from "../../../reducers/lab1/AppReducer";
+import { actions as exerciseActions } from "../../../reducers/lab1/ExerciseReducer";
+import { actions as repairActions } from "../../../reducers/lab1/RepairReducer";
+import { EXERCISE_IDLE } from "../../../constants/lab1";
+import SoundHeader from "./components/SoundHeader";
 
 const mapStateToProps = (state) => {
   return {
@@ -51,8 +54,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
-        {...appActions, ...exerciseActions, ...repairActions},
-        dispatch,
+      { ...appActions, ...exerciseActions, ...repairActions },
+      dispatch
     ),
   };
 };

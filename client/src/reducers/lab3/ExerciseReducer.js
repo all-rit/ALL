@@ -1,9 +1,9 @@
 // import update from 'immutability-helper';
-import {EXERCISE_IDLE} from '../../constants/lab3/index';
+import { EXERCISE_IDLE } from "../../constants/lab3/index";
 
 export const types = {
-  UPDATE_STATE: '@accessibility-lab/lab3/exercise/update_state',
-  ENABLE_END: '@accessibility-lab/lab3/exercise/enable_end',
+  UPDATE_STATE: "@accessibility-lab/lab3/exercise/update_state",
+  ENABLE_END: "@accessibility-lab/lab3/exercise/enable_end",
 };
 
 export const initialState = {
@@ -30,8 +30,8 @@ const ExerciseReducer = (state = initialState, action) => {
 };
 
 export const actions = {
-  updateState: (state) => ({type: types.UPDATE_STATE, state}),
-  enableEnd: (state) => ({type: types.ENABLE_END, state}),
+  updateState: (state) => ({ type: types.UPDATE_STATE, state }),
+  enableEnd: (state) => ({ type: types.ENABLE_END, state }),
 };
 
 export default ExerciseReducer;

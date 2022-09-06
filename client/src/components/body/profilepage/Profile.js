@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import ProfileHeader from './ProfileHeader';
-import InstructingGroups from './InstructingGroups';
-import Labs from './Labs';
-import UserService from '../../../services/UserService';
-import UserLabService from '../../../services/UserLabService';
-import EnrolledGroups from './EnrolledGroups';
+/* eslint-disable react/prop-types */
+/* eslint-disable max-len */
+import React, { useState, useEffect } from "react";
+import ProfileHeader from "./ProfileHeader";
+import InstructingGroups from "./InstructingGroups";
+import Labs from "./Labs";
+import UserService from "../../../services/UserService";
+import UserLabService from "../../../services/UserLabService";
+import EnrolledGroups from "./EnrolledGroups";
 
 const Profile = (props) => {
   // toDoLabs is only the assigned labs that the user hasn't made any progress in

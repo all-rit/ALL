@@ -1,6 +1,8 @@
-import React from 'react';
-import Button from '../components/header/buttons/button';
-import './secondaryInstructions.css';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+import React from "react";
+import Button from "../components/header/buttons/button";
+import "./secondaryInstructions.css";
 
 /*
 Page containing the instructions for the second popup the user sees
@@ -14,10 +16,10 @@ const SecondInstructions = ({
 }) => {
   const alreadyCalled = false;
   if (!alreadyCalled) {
-    selectOption('Protanopia');
+    selectOption("Protanopia");
   }
 
-  if (background !== 'white') {
+  if (background !== "white") {
     toWhiteBackground();
   }
 
@@ -47,7 +49,7 @@ const SecondInstructions = ({
         <br />
         <h2>Did you know?</h2>
         <br />
-        <li className="instructionsItem" style={{listStyleType: 'none'}}>
+        <li className="instructionsItem" style={{ listStyleType: "none" }}>
           There are three main color vision deficiencies: Protanopia (Red
           blindness), Deuteranopia (Green blindness), and Tritanopia (Blue
           blindness). These are all options for simulation for in the exercise.
@@ -56,8 +58,8 @@ const SecondInstructions = ({
       <div className="center">
         <Button
           clickMethod={closeInstructions}
-          message={'I\'m ready!'}
-          fontSizing={'25px'}
+          message={"I'm ready!"}
+          fontSizing={"25px"}
         />
       </div>
     </div>

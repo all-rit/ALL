@@ -1,4 +1,4 @@
-import hexToRgba from 'hex-to-rgba';
+import hexToRgba from "hex-to-rgba";
 
 // Check to ensure values are not outside of RGB standards
 const adjustment = (value) => {
@@ -82,25 +82,25 @@ const ColorVision = (changeColors, exerciseOption, colors) => {
   */
   colors.forEach((color) => {
     let tempColor = hexToRgba(color);
-    tempColor = tempColor.split('rgba');
+    tempColor = tempColor.split("rgba");
     tempColor = tempColor[1];
-    tempColor = tempColor.split('(');
-    tempColor = tempColor[1].split(')');
-    tempColor = tempColor[0].split(',');
+    tempColor = tempColor.split("(");
+    tempColor = tempColor[1].split(")");
+    tempColor = tempColor[0].split(",");
     rgbaColors.R = parseInt(tempColor[0]);
     rgbaColors.G = parseInt(tempColor[1].slice(1));
     rgbaColors.B = parseInt(tempColor[2].slice(1));
     rgbaColors.A = parseInt(tempColor[3].slice(1));
     let result;
-    if (exerciseOption === 'Protanopia') {
+    if (exerciseOption === "Protanopia") {
       result = switchColors(rgbaColors, matrix.Protanopia);
-    } else if (exerciseOption === 'Deuteranopia') {
+    } else if (exerciseOption === "Deuteranopia") {
       result = switchColors(rgbaColors, matrix.Deuteranopia);
     } else {
       result = switchColors(rgbaColors, matrix.Tritanomaly);
     }
     updatedColors[
-        position
+      position
     ] = `rgba(${result.red}, ${result.green}, ${result.blue}, ${result.alpha})`;
     position++;
   });

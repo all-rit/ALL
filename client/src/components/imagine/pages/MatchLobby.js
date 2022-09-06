@@ -1,13 +1,14 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React from "react";
 
-import {navigate} from '@reach/router';
-import PlayerBoard from '../components/PlayerBoard';
+import { navigate } from "@reach/router";
+import PlayerBoard from "../components/PlayerBoard";
 
 const MatchLobby = (props) => {
-  const {user, biasType, linkNum} = props;
+  const { user, biasType, linkNum } = props;
 
   const handleNext = () => {
-    navigate('/Imagine' + linkNum + '/TicTacToe');
+    navigate("/Imagine" + linkNum + "/TicTacToe");
   };
 
   return (

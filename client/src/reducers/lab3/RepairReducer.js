@@ -1,15 +1,15 @@
 export const types = {
-  UPDATE_REPAIR: '@accessibility-lab/lab3/repair/update_repair',
-  UPDATE_TAB: '@accessibility-lab/lab3/repair/update_tab',
-  OPEN_REPAIR: '@accessibility-lab/lab3/repair/open_repair',
-  CLOSE_REPAIR: '@accessibility-lab/lab3/repair/close_repair',
+  UPDATE_REPAIR: "@accessibility-lab/lab3/repair/update_repair",
+  UPDATE_TAB: "@accessibility-lab/lab3/repair/update_tab",
+  OPEN_REPAIR: "@accessibility-lab/lab3/repair/open_repair",
+  CLOSE_REPAIR: "@accessibility-lab/lab3/repair/close_repair",
 };
 
 export const initialState = {
-  cowAltValue: '',
-  carAltValue: '',
-  burgerAltValue: '',
-  catAltValue: '',
+  cowAltValue: "",
+  carAltValue: "",
+  burgerAltValue: "",
+  catAltValue: "",
   currentTab: 1,
   repairVisible: false,
   changesApplied: false,
@@ -57,9 +57,9 @@ export const actions = {
     burgerAltValue,
     catAltValue,
   }),
-  updateTab: (tab) => ({type: types.UPDATE_TAB, tab}),
-  openRepair: () => ({type: types.OPEN_REPAIR}),
-  closeRepair: () => ({type: types.CLOSE_REPAIR}),
+  updateTab: (tab) => ({ type: types.UPDATE_TAB, tab }),
+  openRepair: () => ({ type: types.OPEN_REPAIR }),
+  closeRepair: () => ({ type: types.CLOSE_REPAIR }),
 };
 
 export default RepairReducer;

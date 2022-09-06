@@ -1,21 +1,23 @@
-import React, {Component} from 'react';
-import {navigate} from '@reach/router';
-import Timer from '../../components/Timer';
-import PageServiceTimer from '../../../shared/PageServiceTimer';
-import {time} from '../../../../../constants/lab5';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import { navigate } from "@reach/router";
+import Timer from "../../components/Timer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
+import { time } from "../../../../../constants/lab5";
 class DementiaInaccessible extends Component {
   constructor(props) {
     super(props);
-    this.state = {timerDone: false, componentName: 'DementiaInaccessible'};
+    this.state = { timerDone: false, componentName: "DementiaInaccessible" };
   }
   handleNav() {
-    navigate('/Lab5/Exercise/DementiaInaccessibleKnowledgeCheck');
+    navigate("/Lab5/Exercise/DementiaInaccessibleKnowledgeCheck");
   }
   timerDone() {
-    this.setState({timerDone: true});
+    this.setState({ timerDone: true });
   }
   render() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     return (
       <div>
         <div className="cognitive_instructions">

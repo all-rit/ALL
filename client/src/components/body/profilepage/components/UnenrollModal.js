@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
-import {Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
-import GroupService from '../../../../services/GroupService';
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import GroupService from "../../../../services/GroupService";
 
 const UnenrollModal = (props) => {
-  const {buttonLabel, className, userid, groupid, groupsUpdated} = props;
+  const { buttonLabel, className, userid, groupid, groupsUpdated } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   const unenroll = (userid, groupid) => {
     GroupService.unenrollUserFromGroup(userid, groupid).then((response) => {
       if (response.status === 200) {
-        alert('Successfully unenrolled from group.');
+        alert("Successfully unenrolled from group.");
         groupsUpdated(true);
       } else {
-        alert('Failed to unenroll from group.');
+        alert("Failed to unenroll from group.");
       }
     });
     toggle();
@@ -39,7 +40,7 @@ const UnenrollModal = (props) => {
             onClick={() => unenroll(userid, groupid)}
           >
             Unenroll
-          </Button>{' '}
+          </Button>{" "}
           <Button className="btn-second" onClick={toggle}>
             Close
           </Button>

@@ -1,6 +1,8 @@
-import React from 'react';
-import './homeStyle.css';
-import ColorVision from '../colors/colorVision';
+/* eslint-disable new-cap */
+/* eslint-disable react/prop-types */
+import React from "react";
+import "./homeStyle.css";
+import ColorVision from "../colors/colorVision";
 
 /*
 Component for starting the exercise
@@ -14,7 +16,7 @@ const Start = ({
   // Handles the click of the button and changes the colors for the exercise
   // if the exercise option is not the default or hex options
   const startClick = () => {
-    if (exerciseOption !== 'Main' && exerciseOption !== 'hex') {
+    if (exerciseOption !== "Main" && exerciseOption !== "hex") {
       ColorVision(onChangeExerciseColors, exerciseOption, colors);
     }
     startExercise();

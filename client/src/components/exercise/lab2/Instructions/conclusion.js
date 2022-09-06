@@ -1,7 +1,8 @@
-import React from 'react';
-import Button from '../components/header/buttons/button';
+/* eslint-disable react/prop-types */
+import React from "react";
+import Button from "../components/header/buttons/button";
 
-const Conclusion = ({resetSystem}) => {
+const Conclusion = ({ resetSystem }) => {
   const resetFullSystem = () => {
     resetSystem();
   };
@@ -27,8 +28,8 @@ const Conclusion = ({resetSystem}) => {
       <div className="center">
         <Button
           clickMethod={resetFullSystem}
-          message={'Play Again!'}
-          fontSizing={'25px'}
+          message={"Play Again!"}
+          fontSizing={"25px"}
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable require-jsdoc */
+import React from "react";
+import PropTypes from "prop-types";
 
 function AnswerOption(props) {
   if (props.multiChoice === true) {

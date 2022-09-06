@@ -1,23 +1,25 @@
-import React, {Component} from 'react';
-import {BeatLoader} from 'react-spinners';
-import classNames from 'classnames/bind';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import { BeatLoader } from "react-spinners";
+import classNames from "classnames/bind";
 
 import {
   HINT_BOX_CLOSED,
   HINT_BOX_OPEN,
   HINT_BOX_THINKING,
-} from '../../../../constants/lab1';
+} from "../../../../constants/lab1";
 
 class ClosedHintBox extends Component {
   render() {
-    const {visible, message, backgroundColor} = this.props;
+    const { visible, message, backgroundColor } = this.props;
 
     if (!visible) return null;
 
     return (
       <div
         className="hint_box__background"
-        style={{backgroundColor: backgroundColor}}
+        style={{ backgroundColor: backgroundColor }}
       >
         <span className="hint_box__warning">Hint Box</span>
 
@@ -29,20 +31,20 @@ class ClosedHintBox extends Component {
 
 class ThinkingHintBox extends Component {
   render() {
-    const {visible} = this.props;
+    const { visible } = this.props;
 
     if (!visible) return null;
 
-    return <BeatLoader sizeUnit={'px'} size={10} />;
+    return <BeatLoader sizeUnit={"px"} size={10} />;
   }
 }
 
 class OpenHintBox extends Component {
   render() {
-    const {visible, boxRevealed} = this.props;
-    const message = boxRevealed ?
-      'The location of the treasure has been revealed!' :
-      'No hint';
+    const { visible, boxRevealed } = this.props;
+    const message = boxRevealed
+      ? "The location of the treasure has been revealed!"
+      : "No hint";
 
     if (!visible) return null;
 
@@ -63,13 +65,13 @@ class HintBox extends Component {
       clickHandler,
     } = this.props;
     const classes = classNames({
-      'hint_box': true,
-      'hint_box--open': state === HINT_BOX_OPEN,
+      hint_box: true,
+      "hint_box--open": state === HINT_BOX_OPEN,
     });
     const message = boxRevealed ? availableMessage : unavailableMessage;
-    const backgroundColor = boxRevealed ?
-      availableBackgroundColor :
-      unavailableBackgroundColor;
+    const backgroundColor = boxRevealed
+      ? availableBackgroundColor
+      : unavailableBackgroundColor;
 
     if (!visible) return null;
 

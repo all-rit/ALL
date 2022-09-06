@@ -1,4 +1,4 @@
-import update from 'immutability-helper';
+import update from "immutability-helper";
 import {
   EXERCISE_IDLE,
   TIMER_SECONDS,
@@ -7,34 +7,34 @@ import {
   COUNTDOWN_SECONDS,
   HINT_BOX_CLOSED,
   BOX_DEFAULT_VALUES,
-} from '../../constants/lab1';
+} from "../../constants/lab1";
 
 export const types = {
-  UPDATE_STATE: '@accessibility-lab/audio-cue/exercise/update_state',
-  RESET: '@accessibility-lab/audio-cue/exercise/reset',
-  TICK: '@accessibility-lab/audio-cue/exercise/tick',
-  ROUND_TICK: '@accessibility-lab/audio-cue/exercise/round_tick',
-  COUNTDOWN_TICK: '@accessibility-lab/audio-cue/exercise/countdown_tick',
-  RESET_ROUND_TIMER: '@accessibility-lab/audio-cue/exercise/reset_round_timer',
+  UPDATE_STATE: "@accessibility-lab/audio-cue/exercise/update_state",
+  RESET: "@accessibility-lab/audio-cue/exercise/reset",
+  TICK: "@accessibility-lab/audio-cue/exercise/tick",
+  ROUND_TICK: "@accessibility-lab/audio-cue/exercise/round_tick",
+  COUNTDOWN_TICK: "@accessibility-lab/audio-cue/exercise/countdown_tick",
+  RESET_ROUND_TIMER: "@accessibility-lab/audio-cue/exercise/reset_round_timer",
   RESET_COUNTDOWN_TIMER:
-    '@accessibility-lab/audio-cue/exercise/reset_countdown_timer',
-  UPDATE_SCORE: '@accessibility-lab/audio-cue/exercise/update_score',
+    "@accessibility-lab/audio-cue/exercise/reset_countdown_timer",
+  UPDATE_SCORE: "@accessibility-lab/audio-cue/exercise/update_score",
   INCREMENT_CORRECT_ANSWERS:
-    '@accessibility-lab/audio-cue/exercise/increment_correct_answers',
+    "@accessibility-lab/audio-cue/exercise/increment_correct_answers",
   INCREMENT_INCORRECT_ANSWERS:
-    '@accessibility-lab/audio-cue/exercise/increment_incorrect_answers',
-  START_NEW_ROUND: '@accessibility-lab/audio-cue/exercise/start_new_round',
+    "@accessibility-lab/audio-cue/exercise/increment_incorrect_answers",
+  START_NEW_ROUND: "@accessibility-lab/audio-cue/exercise/start_new_round",
   UPDATE_HINT_BOX_STATUS:
-    '@accessibility-lab/audio-cue/exercise/update_hint_box_status',
-  UPDATE_HINT_USED: '@accessibility-lab/audio-cue/exercise/hint_used',
-  REVEAL_BOX: '@accessibility-lab/audio-cue/exercise/reveal_box',
-  HIDE_BOX: '@accessibility-lab/audio-cue/exercise/hide_box',
-  UPDATE_BOX: '@accessibility-lab/audio-cue/exercise/update_box',
-  UPDATE_BOX_STATUS: '@accessibility-lab/audio-cue/exercise/update_box_status',
-  TOGGLE_SOUND: '@accessibility-lab/audio-cue/exercise/update_sound_status',
-  ADD_RESULT: '@accessibility-lab/audio-cue/exercise/add_result',
+    "@accessibility-lab/audio-cue/exercise/update_hint_box_status",
+  UPDATE_HINT_USED: "@accessibility-lab/audio-cue/exercise/hint_used",
+  REVEAL_BOX: "@accessibility-lab/audio-cue/exercise/reveal_box",
+  HIDE_BOX: "@accessibility-lab/audio-cue/exercise/hide_box",
+  UPDATE_BOX: "@accessibility-lab/audio-cue/exercise/update_box",
+  UPDATE_BOX_STATUS: "@accessibility-lab/audio-cue/exercise/update_box_status",
+  TOGGLE_SOUND: "@accessibility-lab/audio-cue/exercise/update_sound_status",
+  ADD_RESULT: "@accessibility-lab/audio-cue/exercise/add_result",
   UPDATE_CONGRATULATION_MESSAGE:
-    '@accessibility-lab/audio-cue/exercise/update_congratulation_message',
+    "@accessibility-lab/audio-cue/exercise/update_congratulation_message",
 };
 
 export const initialState = {
@@ -202,34 +202,34 @@ const ExerciseReducer = (state = initialState, action) => {
 };
 
 export const actions = {
-  updateState: (state) => ({type: types.UPDATE_STATE, state}),
-  reset: () => ({type: types.RESET}),
-  tick: () => ({type: types.TICK}),
-  roundTick: () => ({type: types.ROUND_TICK}),
-  countdownTick: () => ({type: types.COUNTDOWN_TICK}),
-  resetRoundTimer: () => ({type: types.RESET_ROUND_TIMER}),
-  resetCountdownTimer: () => ({type: types.RESET_COUNTDOWN_TIMER}),
-  updateScore: (score) => ({type: types.UPDATE_SCORE, score}),
-  incrementCorrectAnswers: () => ({type: types.INCREMENT_CORRECT_ANSWERS}),
+  updateState: (state) => ({ type: types.UPDATE_STATE, state }),
+  reset: () => ({ type: types.RESET }),
+  tick: () => ({ type: types.TICK }),
+  roundTick: () => ({ type: types.ROUND_TICK }),
+  countdownTick: () => ({ type: types.COUNTDOWN_TICK }),
+  resetRoundTimer: () => ({ type: types.RESET_ROUND_TIMER }),
+  resetCountdownTimer: () => ({ type: types.RESET_COUNTDOWN_TIMER }),
+  updateScore: (score) => ({ type: types.UPDATE_SCORE, score }),
+  incrementCorrectAnswers: () => ({ type: types.INCREMENT_CORRECT_ANSWERS }),
   incrementIncorrectAnswers: () => ({
     type: types.INCREMENT_INCORRECT_ANSWERS,
   }),
-  startNewRound: () => ({type: types.START_NEW_ROUND}),
+  startNewRound: () => ({ type: types.START_NEW_ROUND }),
   updateHintBoxStatus: (status) => ({
     type: types.UPDATE_HINT_BOX_STATUS,
     status,
   }),
-  updateHintUsed: (hintUsed) => ({type: types.UPDATE_HINT_USED, hintUsed}),
-  revealBox: () => ({type: types.REVEAL_BOX}),
-  hideBox: () => ({type: types.HIDE_BOX}),
-  updateBox: (box) => ({type: types.UPDATE_BOX, box}),
+  updateHintUsed: (hintUsed) => ({ type: types.UPDATE_HINT_USED, hintUsed }),
+  revealBox: () => ({ type: types.REVEAL_BOX }),
+  hideBox: () => ({ type: types.HIDE_BOX }),
+  updateBox: (box) => ({ type: types.UPDATE_BOX, box }),
   updateBoxStatus: (box, status) => ({
     type: types.UPDATE_BOX_STATUS,
     box,
     status,
   }),
-  toggleSound: () => ({type: types.TOGGLE_SOUND}),
-  addResult: (result) => ({type: types.ADD_RESULT, result}),
+  toggleSound: () => ({ type: types.TOGGLE_SOUND }),
+  addResult: (result) => ({ type: types.ADD_RESULT, result }),
   updateCongratulationMessage: (message) => ({
     type: types.UPDATE_CONGRATULATION_MESSAGE,
     message,

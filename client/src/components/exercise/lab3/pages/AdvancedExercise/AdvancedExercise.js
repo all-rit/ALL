@@ -1,18 +1,20 @@
-import React, {Component} from 'react';
-import Button from '@material-ui/core/Button';
-import {Typography} from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Grid from '@material-ui/core/Grid';
-import {navigate} from '@reach/router';
-import {EXERCISE_PLAYING} from '../../../../../constants/lab3/index';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import { Typography } from "@material-ui/core";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Grid from "@material-ui/core/Grid";
+import { navigate } from "@reach/router";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
 class AdvancedExercise extends Component {
   handleSubmit() {
-    navigate('/Lab3/Exercise/AdvancedInstructions');
+    navigate("/Lab3/Exercise/AdvancedInstructions");
   }
   componentDidMount() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
   }
   render() {
@@ -23,8 +25,8 @@ class AdvancedExercise extends Component {
             <Grid justify="center" container spacing={10}>
               <Grid item>
                 <Typography
-                  aria-label={'Advanced Exercise'}
-                  variant={'h4'}
+                  aria-label={"Advanced Exercise"}
+                  variant={"h4"}
                   gutterBottom
                 >
                   Advanced Exercise
@@ -35,8 +37,8 @@ class AdvancedExercise extends Component {
         </AppBar>
         <br />
         <Typography
-          aria-label={'instructions'}
-          variant={'h6'}
+          aria-label={"instructions"}
+          variant={"h6"}
           paragraph={true}
           gutterBottom
         >
@@ -48,8 +50,8 @@ class AdvancedExercise extends Component {
         <Button
           href="#"
           onClick={this.handleSubmit}
-          variant={'contained'}
-          aria-label={'Start Exercise'}
+          variant={"contained"}
+          aria-label={"Start Exercise"}
           className="btn btn-second btn-xl text-uppercase  leftButton"
         >
           Start Exercise

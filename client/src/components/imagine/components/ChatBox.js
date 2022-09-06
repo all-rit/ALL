@@ -1,22 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import {Button, CustomInput, Label} from 'reactstrap';
-import {Form, FormGroup} from 'reactstrap';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-key */
+import React, { useEffect, useState } from "react";
+import { Button, CustomInput } from "reactstrap";
+import { Form, FormGroup } from "reactstrap";
 
 const ChatBox = () => {
-  const [chatText, setChatText] = useState('');
+  const [chatText, setChatText] = useState("");
   const [messages, setMessages] = useState([]);
 
   const fakeUserAMessages = [
-    'This waiting sucks!',
-    'Why can\'t I get into the game?!',
-    'This loading is taking forever',
+    "This waiting sucks!",
+    "Why can't I get into the game?!",
+    "This loading is taking forever",
   ];
 
   const fakeUserBMessages = [
-    'Worst...wait...ever',
-    'If this waiting continues I may leave soon...',
-    'Can this be any slower?',
-    'Please load faster...',
+    "Worst...wait...ever",
+    "If this waiting continues I may leave soon...",
+    "Can this be any slower?",
+    "Please load faster...",
   ];
 
   useEffect(() => {
@@ -26,8 +28,8 @@ const ChatBox = () => {
       const randomBMessage =
         fakeUserBMessages[Math.floor(Math.random() * fakeUserBMessages.length)];
       const messArr = [
-        'PikachuRising: ' + randomAMessage,
-        'Your Mama: ' + randomBMessage,
+        "PikachuRising: " + randomAMessage,
+        "Your Mama: " + randomBMessage,
       ];
       setMessages(messArr);
     }
@@ -37,8 +39,8 @@ const ChatBox = () => {
 
   // Generates the response to the input user, so has to agree/disagree
   const fakeUserCMessages = [
-    'Yeah, it\'s kind of whack',
-    'Hopefully, it\'ll let us in soon...',
+    "Yeah, it's kind of whack",
+    "Hopefully, it'll let us in soon...",
   ];
 
   // randomly sorts thru fake user responses
@@ -53,9 +55,9 @@ const ChatBox = () => {
     setChatText(formData.userMessage);
     if (formData.userMessage) {
       const copy = [...messages];
-      copy.push('Default User: ' + formData.userMessage);
+      copy.push("Default User: " + formData.userMessage);
       setMessages(copy);
-      setChatText('');
+      setChatText("");
     }
   };
 

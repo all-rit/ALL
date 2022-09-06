@@ -1,8 +1,9 @@
-import React from 'react';
-import ProgressBar from './components/ProgressBar';
+/* eslint-disable react/prop-types */
+import React from "react";
+import ProgressBar from "./components/ProgressBar";
 
 const ProfileHeader = (props) => {
-  const {user, labRecords, toDoLabs} = props;
+  const { user, labRecords, toDoLabs } = props;
   const parsedRecords = [];
 
   if (labRecords) {

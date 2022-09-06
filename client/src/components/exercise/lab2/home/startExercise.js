@@ -1,7 +1,9 @@
-import React from 'react';
-import Start from './start';
-import Dropdown from './dropdown';
-import './homeStyle.css';
+/* eslint-disable react/prop-types */
+/* eslint-disable max-len */
+import React from "react";
+import Start from "./start";
+import Dropdown from "./dropdown";
+import "./homeStyle.css";
 
 /*
 Start exercise component for rendering all of the instructions for starting a exercise
@@ -23,14 +25,14 @@ const StartExercise = ({
     <div>
       <div className="center fourthTitle">
         {exercisesPlayed === 0 ? (
-          <p style={{marginBottom: '10px', marginTop: '10px'}}>
+          <p style={{ marginBottom: "10px", marginTop: "10px" }}>
             Click the button to start the exercise!
           </p>
         ) : (
           <div>
             {exercisesPlayed === 1 ? (
               <div>
-                <p style={{marginBottom: '10px', marginTop: '10px'}}>
+                <p style={{ marginBottom: "10px", marginTop: "10px" }}>
                   You will now conduct the same exercise of clicking on the
                   correct colored circle, but this time with a vision deficiency
                   emulation feature turned on. You will now experience the
@@ -42,7 +44,7 @@ const StartExercise = ({
               <div>
                 {exercisesPlayed === 2 ? (
                   <div>
-                    <p style={{marginBottom: '10px', marginTop: '10px'}}>
+                    <p style={{ marginBottom: "10px", marginTop: "10px" }}>
                       Click the button to restart the exercise with the same
                       color vision deficiency!
                     </p>
@@ -53,7 +55,7 @@ const StartExercise = ({
                     </p>
                   </div>
                 ) : (
-                  <p style={{marginBottom: '10px', marginTop: '10px'}}>
+                  <p style={{ marginBottom: "10px", marginTop: "10px" }}>
                     Choose a color vision deficiency and click the button to
                     start the exercise!
                   </p>

@@ -1,3 +1,8 @@
+/* eslint-disable max-len */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-deprecated */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import RepairService from "../../../../../services/lab5/RepairService";
 import PageServiceTimer from "../../../shared/PageServiceTimer";
@@ -355,7 +360,7 @@ class FormRepair extends Component {
                   </span>
                   <span className="code_editor__line--blue">onChange</span>
                   <span className="code_editor__line--white">
-                    &nbsp;=&nbsp;&#123;e&nbsp;=>&nbsp;
+                    &nbsp;=&nbsp;&#123;e&nbsp;=&gt;&nbsp;
                   </span>
                   <span className="code_editor__line--orange">
                     this.testInputValidity
@@ -561,7 +566,7 @@ class FormRepair extends Component {
                   <span className="code_editor__line--white">"&nbsp;</span>
                   <span className="code_editor__line--blue">onChange</span>
                   <span className="code_editor__line--white">
-                    &nbsp;=&nbsp;&#123;e&nbsp;=>&nbsp;
+                    &nbsp;=&nbsp;&#123;e&nbsp;&gt;&nbsp;
                   </span>
                   <span className="code_editor__line--orange">
                     this.formSubmit

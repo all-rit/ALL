@@ -1,16 +1,18 @@
-import React from 'react';
-import {SocialIcon} from 'react-social-icons';
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
+import React from "react";
+import { SocialIcon } from "react-social-icons";
 
 const Profile = (props) => {
-  const {profile_image, name, title, work, datesActive, socials} = props;
+  const { profile_image, name, title, work, datesActive, socials } = props;
   return (
     <ul id={name} className="citation module__col">
       <li id="profile_image">
         <div
-          alt={name + 'Profile Image'}
+          alt={name + "Profile Image"}
           className="img-fluid module__image module__profile_image"
           style={{
-            backgroundImage: 'url(/img/profileImages' + profile_image + ')',
+            backgroundImage: "url(/img/profileImages" + profile_image + ")",
           }}
         />
       </li>

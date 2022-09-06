@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable require-jsdoc */
+import React from "react";
+import PropTypes from "prop-types";
 
 function Question(props) {
   return (
     <h2 className="quiz question">
-      {props.content} {props.multi ? ' Select all that apply' : ''}
+      {props.content} {props.multi ? " Select all that apply" : ""}
     </h2>
   );
 }

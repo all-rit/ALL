@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
 
 class First extends Component {
   render() {
@@ -13,18 +15,18 @@ class First extends Component {
           <ul className="playthrough__list">
             <li>
               <b>Four small boxes</b> will be presented on your screen. One of
-              the four boxes contains a treasure, and it's your job to{' '}
+              the four boxes contains a treasure, and it's your job to{" "}
               <b>guess which box.</b>
             </li>
             <li>
               A <b>large hint box</b> will also be presented on your screen.
               Sometimes a hint will be available that will reveal which of the
-              four boxes has the treasure.{' '}
+              four boxes has the treasure.{" "}
               <b>Hints are only available when you hear an audio cue.</b> If you
               click on the hint box and there is a hint, it will reveal which
               box has the treasure. However, if you click on the hint box and
               there is no hint, the boxes will be 'locked' for 1.5 seconds
-              before you can select again. Beware,{' '}
+              before you can select again. Beware,{" "}
               <b>opening the hint box costs 25 points!</b>
             </li>
             <li>
@@ -43,7 +45,7 @@ class First extends Component {
 
             <li>
               Every time you find the box with the treasure, a countdown will be
-              displayed and a new round will ensue,{' '}
+              displayed and a new round will ensue,{" "}
               <b>until the timer runs out.</b>
             </li>
           </ul>

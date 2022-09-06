@@ -1,21 +1,23 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import Title from './components/header/title';
-import Home from './home/Home';
-import ExerciseCenter from './components/ExerciseCenter';
-import Repair from './components/Repair.js';
-import Header from './components/header/headerMain';
-import SuccessMessage from './home/successMessage';
-import Countdown from 'react-countdown-now';
-import Form from './forms/form';
-import LandingPage from './LandingPage/landingPage';
-import UserStats from './userStatistics/userStats';
-import SecondInstructions from './Instructions/secondInstructions';
-import ThirdInstructions from './Instructions/thirdInstructions';
-import FourthInstructions from './Instructions/fourthInstructions';
-import Conclusion from './Instructions/conclusion';
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {faQuestionCircle} from '@fortawesome/free-solid-svg-icons';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Title from "./components/header/title";
+import Home from "./home/Home";
+import ExerciseCenter from "./components/ExerciseCenter";
+import Repair from "./components/Repair.js";
+import Header from "./components/header/headerMain";
+import SuccessMessage from "./home/successMessage";
+import Countdown from "react-countdown-now";
+import Form from "./forms/form";
+import LandingPage from "./LandingPage/landingPage";
+import UserStats from "./userStatistics/userStats";
+import SecondInstructions from "./Instructions/secondInstructions";
+import ThirdInstructions from "./Instructions/thirdInstructions";
+import FourthInstructions from "./Instructions/fourthInstructions";
+import Conclusion from "./Instructions/conclusion";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 // Imports from redux actions
 import {
   changeDefaultColors,
@@ -47,7 +49,7 @@ import {
   toGreyBackground,
   resetSystem,
   goBackFromExercise,
-} from '../../../reducers/lab2/actions';
+} from "../../../reducers/lab2/actions";
 
 library.add(faQuestionCircle);
 
@@ -273,7 +275,7 @@ class Main extends Component {
         {infoPopup ? (
           <Form closeInfoPopup={onCloseInfoPopup} />
         ) : (
-          <div style={{background: `${exerciseBackground}`}} className="main">
+          <div style={{ background: `${exerciseBackground}` }} className="main">
             {changed ? (
               <Countdown
                 date={Date.now() + 5000}

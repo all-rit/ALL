@@ -1,8 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Question from './Question';
-import QuestionCount from './QuestionCount';
-import AnswerOption from './AnswerOption';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React from "react";
+import PropTypes from "prop-types";
+import Question from "./Question";
+import QuestionCount from "./QuestionCount";
+import AnswerOption from "./AnswerOption";
 
 function Quiz(props) {
   function renderAnswerOptions(key) {
@@ -32,9 +34,9 @@ function Quiz(props) {
           onClick={props.nextQuestion}
           disabled={props.disable}
         >
-          {props.questionId === props.questionTotal ?
-            'Complete' :
-            'Next Question'}
+          {props.questionId === props.questionTotal
+            ? "Complete"
+            : "Next Question"}
         </button>
       </div>
     </div>

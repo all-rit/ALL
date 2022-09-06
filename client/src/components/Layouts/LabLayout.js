@@ -1,6 +1,7 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React from "react";
 
-const LabLayout = ({children}) => {
+const LabLayout = ({ children }) => {
   return <div className="playthrough">{children}</div>;
 };
 

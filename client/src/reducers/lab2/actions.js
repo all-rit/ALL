@@ -29,7 +29,7 @@ import {
   END_COLOR_CHANGE,
   RESET,
   BACK_EXERCISE,
-} from '../../constants/lab2/index';
+} from "../../constants/lab2/index";
 
 /*
 Used to update the colors for the entire system (from popup)
@@ -40,7 +40,8 @@ export const changeDefaultColors = (colors) => ({
 });
 
 /*
-Used to update the colors for the exercise screen only (from simulation calculation)
+Used to update the colors for the
+exercise screen only (from simulation calculation)
 */
 export const changeExerciseColors = (colors) => ({
   type: UPDATE_EXERCISE_COLORS,

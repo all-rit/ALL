@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
 import {
   Button,
   Modal,
@@ -6,11 +7,11 @@ import {
   ModalFooter,
   ModalHeader,
   Table,
-} from 'reactstrap';
-import ResultLimiter from './ResultLimiter';
+} from "reactstrap";
+import ResultLimiter from "./ResultLimiter";
 
 const ProgressModal = (props) => {
-  const {lab, enrolledStudents, instructing} = props;
+  const { lab, enrolledStudents, instructing } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
@@ -32,7 +33,7 @@ const ProgressModal = (props) => {
                 </tr>
               </thead>
               <ResultLimiter
-                resultType={'studentProgress'}
+                resultType={"studentProgress"}
                 data={enrolledStudents}
                 lab={lab}
               />

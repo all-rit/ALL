@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
-import Score from './score';
-import Instructions from '../Instructions/instructions';
-import Circle from './circle';
-import Replay from './replay';
-import Countdown from 'react-countdown-now';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import Score from "./score";
+import Instructions from "../Instructions/instructions";
+import Circle from "./circle";
+import Replay from "./replay";
+import Countdown from "react-countdown-now";
 
 /*
 Component for the secondary timer used for each of the circles per second
@@ -41,7 +43,7 @@ class SecondTimer extends Component {
       enterThirdInfoState,
     } = this.props;
 
-    const isHex = exerciseOption === 'hex';
+    const isHex = exerciseOption === "hex";
 
     // Calculates the score based on the response from the user
     const calculateScore = () => {
@@ -109,7 +111,7 @@ class SecondTimer extends Component {
     };
 
     const updateColor = (isCorrect) => {
-      const element = document.getElementById('notifyUser');
+      const element = document.getElementById("notifyUser");
       if (element !== null) {
         element.innerHTML = `${isCorrect}`;
       }
@@ -117,6 +119,7 @@ class SecondTimer extends Component {
 
     // turns the data found into an object so it can be passed to the backend
     // after it is converted, the system sends the info to the backend and then
+    // eslint-disable-next-line max-len
     // will record the results from the past five exercises in the state of the exercise
     const recordData = () => {
       const score = this.score;
@@ -137,10 +140,10 @@ class SecondTimer extends Component {
         Mode: [exerciseOption.toUpperCase()],
       };
 
-      fetch(process.env.API_URL + '/exerciseStats', {
-        method: 'POST',
-        headers: new Headers({'content-type': 'application/json'}),
-        credentials: 'include',
+      fetch(process.env.API_URL + "/exerciseStats", {
+        method: "POST",
+        headers: new Headers({ "content-type": "application/json" }),
+        credentials: "include",
         body: JSON.stringify(data),
       }).catch((err) => console.log(err));
     };
@@ -148,9 +151,9 @@ class SecondTimer extends Component {
     // Specified by the timer for custom rendering of the center circle
     const renderer = (props) => {
       this.correct = this.currentColor === correctColor;
-      let isCorrect = 'Incorrect';
+      let isCorrect = "Incorrect";
       if (this.correct) {
-        isCorrect = 'Correct';
+        isCorrect = "Correct";
       }
       calculateRandomColor();
       if (!this.first) {

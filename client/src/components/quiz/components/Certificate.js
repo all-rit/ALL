@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {actions as appActions} from '../../../reducers/lab1/AppReducer';
-import {bindActionCreators} from 'redux';
-import logo from '../../../assets/images/logos/ALL_Logo_Header.svg';
-import {Sections} from '../../../constants/index';
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { actions as appActions } from "../../../reducers/lab1/AppReducer";
+import { bindActionCreators } from "redux";
+import logo from "../../../assets/images/logos/ALL_Logo_Header.svg";
+import { Sections } from "../../../constants/index";
 
 const mapStateToProps = (state) => {
   return {
@@ -21,39 +23,39 @@ class Certificate extends Component {
     score = parseFloat(score);
     switch (true) {
       case score <= 40:
-        return 'crimson';
+        return "crimson";
       case score <= 70:
-        return 'orange';
+        return "orange";
       default:
-        return 'chartreuse';
+        return "chartreuse";
     }
   };
 
   render() {
     // console.log(this.props);
-    const {state} = this.props;
+    const { state } = this.props;
     const today = new Date();
     // console.log(state.exercise.results);
     const date =
-      today.getMonth() + 1 + '/' + today.getDate() + '/' + today.getFullYear();
+      today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
     return (
       <div
         style={{
-          width: '100%',
-          height: 'auto',
-          padding: '20px',
-          border: '10px solid #787878',
+          width: "100%",
+          height: "auto",
+          padding: "20px",
+          border: "10px solid #787878",
         }}
       >
         <div
-          style={{width: '100%', height: 'auto', border: '5px solid #787878'}}
+          style={{ width: "100%", height: "auto", border: "5px solid #787878" }}
         >
-          <div style={{width: '50%', margin: 'auto'}}>
+          <div style={{ width: "50%", margin: "auto" }}>
             <span
               style={{
-                fontSize: '50px',
-                fontWeight: 'bold',
-                textAlign: 'center',
+                fontSize: "50px",
+                fontWeight: "bold",
+                textAlign: "center",
               }}
             >
               Certificate of Completion
@@ -62,7 +64,7 @@ class Certificate extends Component {
           <br />
           <br />
           <span
-            style={{fontSize: '25px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
           >
             {state.main.user !== null && state.main.user.firstname ? (
               <i>
@@ -76,41 +78,41 @@ class Certificate extends Component {
           <br />
           <br />
           <span
-            style={{fontSize: '30px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "30px", textAlign: "center", padding: "20px" }}
           >
             {Sections[this.props.lab].fullname}
             {console.log(Sections)}
-          </span>{' '}
+          </span>{" "}
           <br />
           <br />
           <span
-            style={{fontSize: '25px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
           >
-            with score of{' '}
-            <b style={{color: this.getColor()}}>{this.props.quizResult}</b>
-          </span>{' '}
+            with score of{" "}
+            <b style={{ color: this.getColor() }}>{this.props.quizResult}</b>
+          </span>{" "}
           <br />
           <br />
           <span
-            style={{fontSize: '25px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
           >
             <i>dated</i>
           </span>
           <br />
           <span
-            style={{fontSize: '30px', textAlign: 'center', padding: '20px'}}
+            style={{ fontSize: "30px", textAlign: "center", padding: "20px" }}
           >
             {date}
           </span>
           <br />
           <br />
-          <div style={{backgroundColor: 'rgb(61, 61, 61)'}}>
+          <div style={{ backgroundColor: "rgb(61, 61, 61)" }}>
             <img
               src={logo}
               alt="logo"
               style={{
-                height: '120px',
-                width: '500px',
+                height: "120px",
+                width: "500px",
               }}
             />
           </div>

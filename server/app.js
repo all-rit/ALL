@@ -1,22 +1,22 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const session = require('express-session')
+const session = require('express-session');
 const passport = require('passport');
 const auth = require('./auth');
 const fs = require('fs');
-const https = require('https')
-const http = require('http')
+const https = require('https');
+const http = require('http');
 
 const app = express();
 const port = process.env.PORT || 5005;
 
-const allowedOrigins = [process.env.CLIENT_URL, 'https://localhost:5005','https://localhost:3000', 'https://all.rit.edu'];
+const allowedOrigins = [process.env.CLIENT_URL, 'https://localhost:5005', 'https://localhost:3000', 'https://all.rit.edu'];
 
 app.use(express.urlencoded({
-  extended: false
+  extended: false,
 }));
 
 app.use(express.json());
@@ -26,7 +26,7 @@ app.use(session({
   name: 'session',
   secret: process.env.KEY,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
 }));
 app.use(passport.authenticate('session'));
 auth(passport);
@@ -35,14 +35,14 @@ auth(passport);
 app.use(cookieParser());
 
 app.use(cors({
-  origin: function (origin, callback) {
+  origin: function(origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1) {
       return callback(null, true);
     }
 
     return callback(null, false);
   },
-  credentials: true
+  credentials: true,
 }));
 
 app.use(require('./routes'));
@@ -59,8 +59,8 @@ if (fs.existsSync(private_key, fs.R_OK) && fs.existsSync(certificate, fs.R_OK)) 
 
   const options = {
     key: key,
-    cert: cert
-  }
+    cert: cert,
+  };
 
   server = https.createServer(options, app);
 } else { // If no SSL certs, create an HTTP server.
