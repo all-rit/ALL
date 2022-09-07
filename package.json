@@ -7,8 +7,6 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "lint": "cd client && npx prettier --read ",
-    "format": "cd client && npx prettier --write .",
     "scriptname": "cmd"
   }
 }
