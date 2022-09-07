@@ -2,26 +2,26 @@
 /* eslint-disable max-len */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
-import {Typography} from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import '../../../../../assets/stylesheets/prism.scss';
-import Prism from 'prismjs';
-import {navigate} from '@reach/router';
-import WarningIcon from '@material-ui/icons/Warning';
-import ErrorIcon from '@material-ui/icons/Error';
-import InfoIcon from '@material-ui/icons/Info';
-import CloseIcon from '@material-ui/icons/Close';
-import PropTypes from 'prop-types';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import IconButton from '@material-ui/core/IconButton';
-import CheckCircleIcon from '@material-ui/core/SvgIcon/SvgIcon';
-import clsx from 'clsx';
-import Snackbar from '@material-ui/core/Snackbar';
-import {amber, green, red, yellow} from '@material-ui/core/colors';
-import CodeUpdateHeader from '../../components/CodeUpdateHeader';
-import Paper from '@material-ui/core/Paper';
-import {EXERCISE_PLAYING} from '../../../../../constants/lab3/index';
+import React, { Component } from "react";
+import { Typography } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import "../../../../../assets/stylesheets/prism.scss";
+import Prism from "prismjs";
+import { navigate } from "@reach/router";
+import WarningIcon from "@material-ui/icons/Warning";
+import ErrorIcon from "@material-ui/icons/Error";
+import InfoIcon from "@material-ui/icons/Info";
+import CloseIcon from "@material-ui/icons/Close";
+import PropTypes from "prop-types";
+import SnackbarContent from "@material-ui/core/SnackbarContent";
+import IconButton from "@material-ui/core/IconButton";
+import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import clsx from "clsx";
+import Snackbar from "@material-ui/core/Snackbar";
+import { amber, green, red, yellow } from "@material-ui/core/colors";
+import CodeUpdateHeader from "../../components/CodeUpdateHeader";
+import Paper from "@material-ui/core/Paper";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -51,13 +51,13 @@ function MySnackbarContentWrapper(props) {
       opacity: 0.9,
     },
     message: {
-      display: 'flex',
-      alignItems: 'center',
+      display: "flex",
+      alignItems: "center",
     },
   };
-  const {className, message, onClose, variant, ...other} = props;
+  const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
-  const messageStyle = {marginLeft: '10px'};
+  const messageStyle = { marginLeft: "10px" };
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
@@ -69,8 +69,8 @@ function MySnackbarContentWrapper(props) {
           color={amber}
           aria-label={message}
         >
-          <Typography variant={'body2'} style={messageStyle} gutterBottom>
-            <Icon className={clsx(classes.icon, classes.iconVariant)} />{' '}
+          <Typography variant={"body2"} style={messageStyle} gutterBottom>
+            <Icon className={clsx(classes.icon, classes.iconVariant)} />{" "}
             {message}
           </Typography>
         </span>
@@ -94,12 +94,12 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
+  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 
 class ProblemFix extends Component {
   handleEnd() {
-    navigate('/Lab3/Exercise/AdvancedExerciseConclusion');
+    navigate("/Lab3/Exercise/AdvancedExerciseConclusion");
   }
 
   constructor(props) {
@@ -110,8 +110,8 @@ class ProblemFix extends Component {
     this.handleClose = this.handleClose.bind(this);
     ProblemFix.renderButton = ProblemFix.renderButton.bind(this);
     if (window.location.state === undefined) {
-      window.location.state = {endAdvancedActivityButtonEnabled: false};
-      this.state = {textValue: '', textValue1: ''};
+      window.location.state = { endAdvancedActivityButtonEnabled: false };
+      this.state = { textValue: "", textValue1: "" };
     } else {
       window.location.state = {
         endAdvancedActivityButtonEnabled: true,
@@ -126,90 +126,90 @@ class ProblemFix extends Component {
   }
 
   componentDidMount() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
     Prism.highlightAll();
     if (
       window.location.state.aria1 !== undefined &&
       window.location.state.aria2 !== undefined
     ) {
-      const el0 = document.getElementById('first');
+      const el0 = document.getElementById("first");
       el0.value = window.location.state.aria1;
-      ProblemFix.doEvent(el0, 'input');
-      const el1 = document.getElementById('second');
+      ProblemFix.doEvent(el0, "input");
+      const el1 = document.getElementById("second");
       el1.value = window.location.state.aria2;
-      ProblemFix.doEvent(el1, 'input');
+      ProblemFix.doEvent(el1, "input");
     }
   }
 
   handleChange(event) {
-    this.setState({textValue: event.target.value}, () => {
-      console.log('handled change value: ' + this.state.textValue);
+    this.setState({ textValue: event.target.value }, () => {
+      console.log("handled change value: " + this.state.textValue);
       Prism.highlightAll();
     });
   }
 
   handleChange1(event) {
-    this.setState({textValue1: event.target.value}, () => {
-      console.log('handled change value: ' + this.state.textValue1);
+    this.setState({ textValue1: event.target.value }, () => {
+      console.log("handled change value: " + this.state.textValue1);
       Prism.highlightAll();
     });
   }
 
   handleClose(event, reason) {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
-    this.setState({open: false}, () => {
-      console.log('SnackBar Closed');
+    this.setState({ open: false }, () => {
+      console.log("SnackBar Closed");
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Cat Alt Tag updated as: ' + this.state.textValue);
-    console.log('Car Alt Tag updated as: ' + this.state.textValue1);
+    console.log("Cat Alt Tag updated as: " + this.state.textValue);
+    console.log("Car Alt Tag updated as: " + this.state.textValue1);
     if (
       window.location.state.aria1 != null &&
       window.location.state.aria2 != null &&
-      window.location.state.aria1 !== '' &&
-      window.location.state.aria2 !== ''
+      window.location.state.aria1 !== "" &&
+      window.location.state.aria2 !== ""
     ) {
       window.location.state = {
         aria1: this.state.textValue,
         aria2: this.state.textValue1,
       };
-      navigate('/Lab3/Exercise/ViewFix');
-    } else if (this.state.textValue === '' || this.state.textValue1 === '') {
-      this.setState({open: true});
+      navigate("/Lab3/Exercise/ViewFix");
+    } else if (this.state.textValue === "" || this.state.textValue1 === "") {
+      this.setState({ open: true });
     } else {
       window.location.state = {
         aria1: this.state.textValue,
         aria2: this.state.textValue1,
       };
-      navigate('/Lab3/Exercise/ViewFix');
+      navigate("/Lab3/Exercise/ViewFix");
     }
     Prism.highlightAll();
   }
 
   static doEvent(obj, event) {
-    const eventInit = new Event(event, {target: obj, bubbles: true});
+    const eventInit = new Event(event, { target: obj, bubbles: true });
     return obj ? obj.dispatchEvent(eventInit) : false;
   }
 
   static renderButton() {
     const buttonEnabled =
       window.location.state.endAdvancedActivityButtonEnabled;
-    const buttonStyle = {marginLeft: '10px'};
+    const buttonStyle = { marginLeft: "10px" };
     if (buttonEnabled) {
       return (
         <Button
           href="#"
           onClick={this.handleEnd}
-          aria-label={'End Activity'}
-          variant={'contained'}
-          color={'secondary'}
+          aria-label={"End Activity"}
+          variant={"contained"}
+          color={"secondary"}
           style={buttonStyle}
         >
           End Activity
@@ -220,28 +220,28 @@ class ProblemFix extends Component {
 
   render() {
     const paperStyle = {
-      marginLeft: '10px',
-      marginRight: '10px',
-      marginTop: '20px',
+      marginLeft: "10px",
+      marginRight: "10px",
+      marginTop: "20px",
     };
 
     return (
       <div>
         <CodeUpdateHeader
-          heading={'Problem Repair'}
-          justifyAlignment={'space-between'}
-          helpMessage={'#Placeholder'}
+          heading={"Problem Repair"}
+          justifyAlignment={"space-between"}
+          helpMessage={"#Placeholder"}
         />
         <Paper style={paperStyle}>
           <Typography
-            variant={'subtitle'}
+            variant={"subtitle"}
             aria-label={
-              'First make changes to the code, if not satisfied try again.\n' +
-              '                    Then click the \'End Activity\' button which will appear when you have made changes ' +
-              'at least once.'
+              "First make changes to the code, if not satisfied try again.\n" +
+              "                    Then click the 'End Activity' button which will appear when you have made changes " +
+              "at least once."
             }
-            color={'inherit'}
-            tabIndex={'0'}
+            color={"inherit"}
+            tabIndex={"0"}
           >
             First make changes to the code, if not satisfied try again. Then
             click the 'End Activity' button, which will appear when you have
@@ -250,41 +250,41 @@ class ProblemFix extends Component {
         </Paper>
         <Paper style={paperStyle}>
           <Typography
-            variant={'subtitle1'}
-            aria-label={'Subtitle Instructions'}
+            variant={"subtitle1"}
+            aria-label={"Subtitle Instructions"}
             gutterBottom
           >
             Update the aria-tags to repair the accessibility issues.
           </Typography>
           <Typography
-            variant={'body1'}
-            aria-label={'Body Instructions'}
+            variant={"body1"}
+            aria-label={"Body Instructions"}
             gutterBottom
           >
             Make changes and then press update code.
           </Typography>
         </Paper>
-        <form onSubmit={this.handleSubmit} noValidate autoComplete={'off'}>
+        <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
           <pre>
             <code className="language-html">
               {`
 <button aria-label="`}
             </code>
             <input
-              type={'text'}
+              type={"text"}
               value={this.state.textValue}
               onChange={this.handleChange}
-              aria-label={'Please type in alt tag contents for text field'}
-              id={'first'}
+              aria-label={"Please type in alt tag contents for text field"}
+              id={"first"}
             />
             <code>{`">Ok</button>
 <button aria-label="`}</code>
             <input
-              type={'text'}
+              type={"text"}
               value={this.state.textValue1}
               onChange={this.handleChange1}
-              aria-label={'Please type in alt tag contents for text field'}
-              id={'second'}
+              aria-label={"Please type in alt tag contents for text field"}
+              id={"second"}
             />
             <code>
               {`">Cancel</button>
@@ -293,9 +293,9 @@ class ProblemFix extends Component {
           </pre>
           <br />
           <Button
-            type={'submit'}
-            aria-label={'Update Code'}
-            variant={'contained'}
+            type={"submit"}
+            aria-label={"Update Code"}
+            variant={"contained"}
             className="btn btn-second btn-xl text-uppercase  leftButton"
           >
             Update Code
@@ -304,8 +304,8 @@ class ProblemFix extends Component {
         </form>
         <Snackbar
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
+            vertical: "bottom",
+            horizontal: "left",
           }}
           open={this.state.open}
           autoHideDuration={6000}

@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import {navigate} from '@reach/router';
+import React from "react";
+import { navigate } from "@reach/router";
 
 const ImagineStart = (props) => {
-  const {linkNum} = props;
+  const { linkNum } = props;
   const handleNext = () => {
-    navigate('/Imagine' + linkNum + '/AvatarSelection');
+    navigate("/Imagine" + linkNum + "/AvatarSelection");
   };
 
   return (

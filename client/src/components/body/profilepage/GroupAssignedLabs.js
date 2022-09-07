@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import AddModal from './components/AddModal';
-import ProgressModal from './components/ProgressModal';
+import React from "react";
+import AddModal from "./components/AddModal";
+import ProgressModal from "./components/ProgressModal";
 
 const GroupAssignedLabs = (props) => {
   const {
@@ -29,7 +29,7 @@ const GroupAssignedLabs = (props) => {
           ))}
           {instructing ? (
             <AddModal
-              addMode={'update_grp_lab'}
+              addMode={"update_grp_lab"}
               user={user}
               groupID={groupID}
               groupName={groupName}

@@ -1,160 +1,160 @@
 export const Sections = {
   0: {
-    name: '', // represents Landing Page
+    name: "", // represents Landing Page
     0: {
-      name: '',
+      name: "",
     },
     1: {
-      name: 'SiteMap',
+      name: "SiteMap",
     },
     2: {
-      name: 'Profile',
+      name: "Profile",
     },
     3: {
-      name: 'Imagine1',
+      name: "Imagine1",
     },
     4: {
-      name: 'Imagine2',
+      name: "Imagine2",
     },
     5: {
-      name: 'Imagine3',
+      name: "Imagine3",
     },
   },
   1: {
-    fullname: 'Accessibility Learning Lab 1: Accessibility to Sound and Speech',
-    name: 'Lab1',
+    fullname: "Accessibility Learning Lab 1: Accessibility to Sound and Speech",
+    name: "Lab1",
     0: {
-      name: 'About',
+      name: "About",
     },
     1: {
-      name: 'Reading',
+      name: "Reading",
     },
     2: {
-      name: 'Exercise',
+      name: "Exercise",
     },
     3: {
-      name: 'Reinforcement',
+      name: "Reinforcement",
     },
     4: {
-      name: 'Quiz',
+      name: "Quiz",
     },
   },
   2: {
-    fullname: 'Accessibility Learning Lab 2: Accessibility to Color Blindness',
-    name: 'Lab2',
+    fullname: "Accessibility Learning Lab 2: Accessibility to Color Blindness",
+    name: "Lab2",
     0: {
-      name: 'About',
+      name: "About",
     },
     1: {
-      name: 'Reading',
+      name: "Reading",
     },
     2: {
-      name: 'Exercise',
+      name: "Exercise",
     },
     3: {
-      name: 'Reinforcement',
+      name: "Reinforcement",
     },
     4: {
-      name: 'Quiz',
+      name: "Quiz",
     },
   },
   3: {
-    fullname: 'Accessibility Learning Lab 3: Accessibility with Screen Readers',
-    name: 'Lab3',
+    fullname: "Accessibility Learning Lab 3: Accessibility with Screen Readers",
+    name: "Lab3",
     0: {
-      name: 'About',
+      name: "About",
     },
     1: {
-      name: 'Reading',
+      name: "Reading",
     },
     2: {
-      name: 'Exercise',
+      name: "Exercise",
     },
     3: {
-      name: 'Reinforcement',
+      name: "Reinforcement",
     },
     4: {
-      name: 'Quiz',
+      name: "Quiz",
     },
   },
   4: {
-    fullname: 'Accessibility Learning Lab 4: Accessibility to Dexterity',
-    name: 'Lab4',
+    fullname: "Accessibility Learning Lab 4: Accessibility to Dexterity",
+    name: "Lab4",
     0: {
-      name: 'About',
+      name: "About",
     },
     1: {
-      name: 'Reading',
+      name: "Reading",
     },
     2: {
-      name: 'Exercise',
+      name: "Exercise",
     },
     3: {
-      name: 'Reinforcement',
+      name: "Reinforcement",
     },
     4: {
-      name: 'Quiz',
+      name: "Quiz",
     },
   },
   5: {
     fullname:
-      'Accessibility Learning Lab 5: Accessibility with Cognitive Impairments',
-    name: 'Lab5',
+      "Accessibility Learning Lab 5: Accessibility with Cognitive Impairments",
+    name: "Lab5",
     0: {
-      name: 'About',
+      name: "About",
     },
     1: {
-      name: 'Reading',
+      name: "Reading",
     },
     2: {
-      name: 'Exercise',
+      name: "Exercise",
     },
     3: {
-      name: 'Reinforcement',
+      name: "Reinforcement",
     },
     4: {
-      name: 'Quiz',
+      name: "Quiz",
     },
   },
   6: {
-    fullname: 'Ethics of AI',
-    name: 'Lab6',
+    fullname: "Ethics of AI",
+    name: "Lab6",
     0: {
-      name: 'About',
+      name: "About",
     },
     1: {
-      name: 'Reading',
+      name: "Reading",
     },
     2: {
-      name: 'Exercise',
+      name: "Exercise",
     },
     3: {
-      name: 'Reinforcement',
+      name: "Reinforcement",
     },
     4: {
-      name: 'Quiz',
+      name: "Quiz",
     },
   },
   7: {
-    fullname: '\'Hello World\' AI Cybersecurity',
-    name: 'Lab7',
+    fullname: "'Hello World' AI Cybersecurity",
+    name: "Lab7",
     0: {
-      name: 'About',
+      name: "About",
     },
     1: {
-      name: 'Reading',
+      name: "Reading",
     },
     2: {
-      name: 'Exercise',
+      name: "Exercise",
     },
     3: {
-      name: 'Reinforcement',
+      name: "Reinforcement",
     },
     4: {
-      name: 'Quiz',
+      name: "Quiz",
     },
   },
 };
 // for shared component
-export const EXERCISE_IDLE = 'EXERCISE_IDLE';
-export const EXERCISE_PLAYING = 'EXERCISE_PLAYING';
+export const EXERCISE_IDLE = "EXERCISE_IDLE";
+export const EXERCISE_PLAYING = "EXERCISE_PLAYING";

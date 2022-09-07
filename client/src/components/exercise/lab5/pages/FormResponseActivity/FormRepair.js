@@ -3,11 +3,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
-import RepairService from '../../../../../services/lab5/RepairService';
-import PageServiceTimer from '../../../shared/PageServiceTimer';
-import Popup from '../../../shared/Popup';
-import {navigate} from '@reach/router';
+import React, { Component } from "react";
+import RepairService from "../../../../../services/lab5/RepairService";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
+import Popup from "../../../shared/Popup";
+import { navigate } from "@reach/router";
 
 class FormRepair extends Component {
   constructor(props) {
@@ -21,12 +21,12 @@ class FormRepair extends Component {
       successNotificationerror: null,
       borderColorerror: null,
       repairerror: true,
-      componentName: 'FormRepair',
+      componentName: "FormRepair",
     };
   }
 
   componentWillMount() {
-    const {data} = this.props;
+    const { data } = this.props;
     this.setState({
       errorNotification: data.errorNotification,
       successNotification: data.successNotification,
@@ -37,34 +37,34 @@ class FormRepair extends Component {
     let error = false;
     Object.keys(this.state).map((name) => {
       switch (name) {
-        case 'errorNotification':
-          if (this.state[name] !== 'Please enter in format: YYYY-MM-DD') {
+        case "errorNotification":
+          if (this.state[name] !== "Please enter in format: YYYY-MM-DD") {
             error = true;
             this.setState({
               errorNotificationerror:
-                'Must enter \'Please enter in format: YYYY-MM-DD\'',
+                "Must enter 'Please enter in format: YYYY-MM-DD'",
             });
           } else {
-            this.setState({errorNotificationerror: null});
+            this.setState({ errorNotificationerror: null });
           }
           break;
-        case 'successNotification':
+        case "successNotification":
           if (this.state[name] === null) {
             error = true;
-            this.setState({successNotificationerror: 'Must not be empty'});
-          } else if (this.state[name].trim() === '') {
+            this.setState({ successNotificationerror: "Must not be empty" });
+          } else if (this.state[name].trim() === "") {
             error = true;
-            this.setState({successNotificationerror: 'Must not be empty'});
+            this.setState({ successNotificationerror: "Must not be empty" });
           } else {
-            this.setState({successNotificationerror: null});
+            this.setState({ successNotificationerror: null });
           }
           break;
-        case 'borderColor':
-          if (this.state[name] !== 'red') {
+        case "borderColor":
+          if (this.state[name] !== "red") {
             error = true;
-            this.setState({borderColorerror: 'Must enter \'red\''});
+            this.setState({ borderColorerror: "Must enter 'red'" });
           } else {
-            this.setState({borderColorerror: null});
+            this.setState({ borderColorerror: null });
           }
           break;
         default:
@@ -72,12 +72,12 @@ class FormRepair extends Component {
       }
       return [];
     });
-    this.setState({repairerror: error}, () => this.handleSubmit(e));
+    this.setState({ repairerror: error }, () => this.handleSubmit(e));
   }
 
   handleSubmit(event) {
-    const {handlers} = this.props;
-    const {errorNotification, successNotification, borderColor} = this.state;
+    const { handlers } = this.props;
+    const { errorNotification, successNotification, borderColor } = this.state;
 
     event.preventDefault();
     if (!this.state.repairerror) {
@@ -88,21 +88,21 @@ class FormRepair extends Component {
       });
       // Submit a repair entry in the database.
       RepairService.submitRepair(this.state.componentName, repair);
-      handlers.updatePopup('The repairs have been made.');
+      handlers.updatePopup("The repairs have been made.");
     } else {
-      handlers.updatePopup('Errors in Repair. Please fix');
+      handlers.updatePopup("Errors in Repair. Please fix");
     }
 
     // Update the state and close the repair.
     handlers.updateRepairForm(
-        errorNotification,
-        successNotification,
-        borderColor,
+      errorNotification,
+      successNotification,
+      borderColor
     );
     handlers.closeRepair();
 
     setTimeout(() => {
-      handlers.updatePopup('');
+      handlers.updatePopup("");
     }, 6000);
   }
 
@@ -116,11 +116,11 @@ class FormRepair extends Component {
   }
 
   handleNav() {
-    navigate('/Lab5/Exercise/FormAccessible');
+    navigate("/Lab5/Exercise/FormAccessible");
   }
 
   render() {
-    const {visible, handlers, state, data, actions} = this.props;
+    const { visible, handlers, state, data, actions } = this.props;
     return (
       <div>
         <div className="cognitive_instructions margin-bottom-2">
@@ -434,9 +434,9 @@ class FormRepair extends Component {
                       required
                       title="Enter: 1 for Yes and 0 for No"
                       className={
-                        this.state.errorNotificationerror ?
-                          'form-error-input' :
-                          ''
+                        this.state.errorNotificationerror
+                          ? "form-error-input"
+                          : ""
                       }
                     />
                   </span>
@@ -522,9 +522,9 @@ class FormRepair extends Component {
                       required
                       title="Enter: Successful Submission"
                       className={
-                        this.state.successNotificationerror ?
-                          'form-error-input' :
-                          ''
+                        this.state.successNotificationerror
+                          ? "form-error-input"
+                          : ""
                       }
                     />
                   </span>
@@ -654,7 +654,7 @@ class FormRepair extends Component {
                         onChange={this.changeHandler.bind(this)}
                         title={`must enter red`}
                         className={
-                          this.state.borderColorerror ? 'form-error-input' : ''
+                          this.state.borderColorerror ? "form-error-input" : ""
                         }
                       />
                     </span>

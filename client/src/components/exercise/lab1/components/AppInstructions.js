@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
 class AppInstructions extends Component {
   render() {
-    const {visible} = this.props;
+    const { visible } = this.props;
 
     if (!visible) return null;
 

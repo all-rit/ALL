@@ -4,9 +4,9 @@ const getExerciseState = (state) => {
     case 1:
       return state.exercise1.state;
     case 2:
-      return state.exercise2.changeExerciseState.exerciseState ?
-        'EXERCISE_PLAYING' :
-        'EXERCISE_IDLE';
+      return state.exercise2.changeExerciseState.exerciseState
+        ? "EXERCISE_PLAYING"
+        : "EXERCISE_IDLE";
     case 3:
       return state.exercise3.state;
     case 4:

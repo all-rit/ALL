@@ -1,8 +1,8 @@
 export const types = {
-  LOGIN: '@accessibility-lab/login',
-  UPDATE_USER: '@accessibility-lab/update_user',
-  SET_LAB: '@accessibility-lab/lab',
-  SET_BODY: '@accessibility-lab/app/set_body',
+  LOGIN: "@accessibility-lab/login",
+  UPDATE_USER: "@accessibility-lab/update_user",
+  SET_LAB: "@accessibility-lab/lab",
+  SET_BODY: "@accessibility-lab/app/set_body",
 };
 
 export const initialState = {
@@ -34,10 +34,10 @@ const MainReducer = (state = initialState, action) => {
 };
 
 export const actions = {
-  setBody: (body) => ({type: types.SET_BODY, body}),
-  login: () => ({type: types.LOGIN}),
-  setLab: (lab) => ({type: types.SET_LAB, lab}),
-  updateUser: (user) => ({type: types.UPDATE_USER, user}),
+  setBody: (body) => ({ type: types.SET_BODY, body }),
+  login: () => ({ type: types.LOGIN }),
+  setLab: (lab) => ({ type: types.SET_LAB, lab }),
+  updateUser: (user) => ({ type: types.UPDATE_USER, user }),
 };
 
 export default MainReducer;

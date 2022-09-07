@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";

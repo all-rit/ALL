@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import Timer from "./Timer";
 import { Modal, ModalBody } from "reactstrap";
@@ -12,7 +14,7 @@ const Bias = (props) => {
     isModalActive,
     setModalActive,
   } = props;
-  const [timerDone, setTimerDone] = useState(false);
+  const [setTimerDone] = useState(false);
   const [bias, setBias] = useState(null);
 
   useState(() => {

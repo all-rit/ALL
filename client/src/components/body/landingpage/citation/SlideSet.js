@@ -2,11 +2,11 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 /* eslint-disable guard-for-in */
-import React, {useEffect, useState} from 'react';
-import {Carousel, CarouselItem, CarouselControl} from 'reactstrap';
+import React, { useEffect, useState } from "react";
+import { Carousel, CarouselItem, CarouselControl } from "reactstrap";
 
 const SlideSet = (props) => {
-  const {teamInformation, renderProfileData} = props;
+  const { teamInformation, renderProfileData } = props;
   const [exit, setExit] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideSet, setSlideSet] = useState(null);
@@ -57,13 +57,13 @@ const SlideSet = (props) => {
 
   useEffect(() => {
     setSlideSet(
-        renderSlideset(teamInformation).map((item) => {
-          return (
-            <CarouselItem onExiting={onExiting} onExited={onExited}>
-              {item}
-            </CarouselItem>
-          );
-        }),
+      renderSlideset(teamInformation).map((item) => {
+        return (
+          <CarouselItem onExiting={onExiting} onExited={onExited}>
+            {item}
+          </CarouselItem>
+        );
+      })
     );
     // eslint-disable-next-line
   }, [teamInformation]);

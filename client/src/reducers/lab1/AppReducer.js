@@ -1,11 +1,11 @@
 export const types = {
-  UPDATE_POPUP: '@accessibility-lab/audio-cue/app/update_popup',
-  OPEN_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/open_instructions',
-  CLOSE_INSTRUCTIONS: '@accessibility-lab/audio-cue/app/close_instructions',
+  UPDATE_POPUP: "@accessibility-lab/audio-cue/app/update_popup",
+  OPEN_INSTRUCTIONS: "@accessibility-lab/audio-cue/app/open_instructions",
+  CLOSE_INSTRUCTIONS: "@accessibility-lab/audio-cue/app/close_instructions",
 };
 
 export const initialState = {
-  popupMessage: '',
+  popupMessage: "",
   instructionsVisible: false,
 };
 
@@ -35,9 +35,9 @@ const AppReducer = (state = initialState, action) => {
 };
 
 export const actions = {
-  updatePopup: (message) => ({type: types.UPDATE_POPUP, message}),
-  openInstructions: () => ({type: types.OPEN_INSTRUCTIONS}),
-  closeInstructions: () => ({type: types.CLOSE_INSTRUCTIONS}),
+  updatePopup: (message) => ({ type: types.UPDATE_POPUP, message }),
+  openInstructions: () => ({ type: types.OPEN_INSTRUCTIONS }),
+  closeInstructions: () => ({ type: types.CLOSE_INSTRUCTIONS }),
 };
 
 export default AppReducer;

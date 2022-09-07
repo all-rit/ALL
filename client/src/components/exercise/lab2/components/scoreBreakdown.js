@@ -1,5 +1,5 @@
-import React from 'react';
-import './exerciseStyle.css';
+import React from "react";
+import "./exerciseStyle.css";
 
 /*
 Component for displaying a score breakdown table to the user on the replay page
@@ -7,7 +7,7 @@ Component for displaying a score breakdown table to the user on the replay page
 const ScoreBreakdown = () => {
   return (
     <div>
-      <p style={{marginBottom: '0px', marginTop: '0px', fontSize: '25px'}}>
+      <p style={{ marginBottom: "0px", marginTop: "0px", fontSize: "25px" }}>
         Score Breakdown
       </p>
       <div>

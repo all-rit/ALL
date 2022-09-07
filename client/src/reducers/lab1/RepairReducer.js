@@ -1,15 +1,15 @@
 export const types = {
-  UPDATE_REPAIR: '@accessibility-lab/audio-cue/repair/update_repair',
-  UPDATE_TAB: '@accessibility-lab/audio-cue/repair/update_tab',
-  OPEN_REPAIR: '@accessibility-lab/audio-cue/repair/open_repair',
-  CLOSE_REPAIR: '@accessibility-lab/audio-cue/repair/close_repair',
+  UPDATE_REPAIR: "@accessibility-lab/audio-cue/repair/update_repair",
+  UPDATE_TAB: "@accessibility-lab/audio-cue/repair/update_tab",
+  OPEN_REPAIR: "@accessibility-lab/audio-cue/repair/open_repair",
+  CLOSE_REPAIR: "@accessibility-lab/audio-cue/repair/close_repair",
 };
 
 export const initialState = {
-  availableMessage: '',
-  unavailableMessage: '',
-  availableBackgroundColor: '#FFFFFF',
-  unavailableBackgroundColor: '#FFFFFF',
+  availableMessage: "",
+  unavailableMessage: "",
+  availableBackgroundColor: "#FFFFFF",
+  unavailableBackgroundColor: "#FFFFFF",
   currentTab: 1,
   repairVisible: false,
   changesApplied: false,
@@ -52,10 +52,10 @@ const RepairReducer = (state = initialState, action) => {
 
 export const actions = {
   updateRepair: (
-      availableMessage,
-      unavailableMessage,
-      availableBackgroundColor,
-      unavailableBackgroundColor,
+    availableMessage,
+    unavailableMessage,
+    availableBackgroundColor,
+    unavailableBackgroundColor
   ) => ({
     type: types.UPDATE_REPAIR,
     availableMessage,
@@ -63,9 +63,9 @@ export const actions = {
     availableBackgroundColor,
     unavailableBackgroundColor,
   }),
-  updateTab: (tab) => ({type: types.UPDATE_TAB, tab}),
-  openRepair: () => ({type: types.OPEN_REPAIR}),
-  closeRepair: () => ({type: types.CLOSE_REPAIR}),
+  updateTab: (tab) => ({ type: types.UPDATE_TAB, tab }),
+  openRepair: () => ({ type: types.OPEN_REPAIR }),
+  closeRepair: () => ({ type: types.CLOSE_REPAIR }),
 };
 
 export default RepairReducer;

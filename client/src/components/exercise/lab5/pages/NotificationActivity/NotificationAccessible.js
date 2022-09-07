@@ -1,21 +1,21 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
-import {navigate} from '@reach/router';
-import PageServiceTimer from '../../../shared/PageServiceTimer';
-import Notification from '../../components/Notification';
-import {AccessibleMessage} from '../../../../../constants/lab5';
+import React, { Component } from "react";
+import { navigate } from "@reach/router";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
+import Notification from "../../components/Notification";
+import { AccessibleMessage } from "../../../../../constants/lab5";
 
 class NotificationAccessible extends Component {
   constructor(props) {
     super(props);
-    this.state = {componentName: 'NotificationAccessible'};
+    this.state = { componentName: "NotificationAccessible" };
   }
   handleNav() {
-    navigate('/Lab5/Exercise/NotificationAccessibleKnowledgeCheck');
+    navigate("/Lab5/Exercise/NotificationAccessibleKnowledgeCheck");
   }
   render() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     return (
       <div>
         <div className="cognitive_instructions">

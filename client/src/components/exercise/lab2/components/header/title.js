@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import './title.css';
+import React from "react";
+import "./title.css";
 
 /*
 Displays the title of the page dependent on the state it is in
 State options: Home page or Exercise apge
 */
-const Title = ({exerciseState, replay}) => {
+const Title = ({ exerciseState, replay }) => {
   return (
     <div>
       {exerciseState ? (

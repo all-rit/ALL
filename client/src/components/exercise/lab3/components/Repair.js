@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-tabs */
 /* eslint-disable new-cap */
 /* eslint-disable react/no-unescaped-entities */
@@ -5,9 +6,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
-import classNames from 'classnames/bind';
-import RepairService from '../../../../services/lab3/RepairService';
+import React, { Component } from "react";
+import classNames from "classnames/bind";
+import RepairService from "../../../../services/lab3/RepairService";
 
 class Repair extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Repair extends Component {
   }
 
   componentWillMount() {
-    const {data} = this.props;
+    const { data } = this.props;
     this.setState({
       cowAltValue: data.cowAltValue,
       carAltValue: data.carAltValue,
@@ -32,32 +33,32 @@ class Repair extends Component {
   }
 
   handleSubmit(event) {
-    const {handlers} = this.props;
-    const {cowAltValue, carAltValue, burgerAltValue, catAltValue} =
+    const { handlers } = this.props;
+    const { cowAltValue, carAltValue, burgerAltValue, catAltValue } =
       this.state;
 
     event.preventDefault();
 
     // Submit a repair entry in the database.
     RepairService.submitRepair(
-        cowAltValue,
-        carAltValue,
-        burgerAltValue,
-        catAltValue,
+      cowAltValue,
+      carAltValue,
+      burgerAltValue,
+      catAltValue
     );
 
     // Update the state and close the repair.
     handlers.updateRepair(
-        cowAltValue,
-        carAltValue,
-        burgerAltValue,
-        catAltValue,
+      cowAltValue,
+      carAltValue,
+      burgerAltValue,
+      catAltValue
     );
     handlers.closeRepair();
-    handlers.updatePopup('The repairs have been made.');
+    handlers.updatePopup("The repairs have been made.");
 
     setTimeout(() => {
-      handlers.updatePopup('');
+      handlers.updatePopup("");
     }, 5000);
   }
 
@@ -76,10 +77,10 @@ class Repair extends Component {
     // 	marginRight: "10px",
     // 	marginTop: "20px"
     // };
-    const {visible, data, handlers} = this.props;
+    const { visible, data, handlers } = this.props;
     const jsFileClasses = classNames({
-      'code_editor__file': true,
-      'code_editor__file--active': data.currentTab === 1,
+      code_editor__file: true,
+      "code_editor__file--active": data.currentTab === 1,
     });
     const jsFileCodeClasses = classNames({
       code_editor__code: true,

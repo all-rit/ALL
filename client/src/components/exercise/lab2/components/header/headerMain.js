@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
-import ColorUpdate from './buttons/colorUpdate';
-import Home from './buttons/homeReset.js';
-import Button from './buttons/button';
-import '../../Instructions/secondaryInstructions.css';
+import React, { Component } from "react";
+import ColorUpdate from "./buttons/colorUpdate";
+import Home from "./buttons/homeReset.js";
+import Button from "./buttons/button";
+import "../../Instructions/secondaryInstructions.css";
 
 /*
 Component for the header of the pages. Controls the buttons and options
@@ -44,7 +44,7 @@ class Header extends Component {
     };
     if (exerciseState) {
       return (
-        <div className="headerStyle" style={{background: 'black'}}>
+        <div className="headerStyle" style={{ background: "black" }}>
           <div className="oneline center">
             <Home
               exerciseEnded={goBackFromExercise}
@@ -53,8 +53,8 @@ class Header extends Component {
             />
             <p className="deficiencyCheck">
               Vision Deficiency Simulation:
-              <span style={{fontWeight: 'bold', marginLeft: '3px'}}>
-                {exerciseMode === 'Main' ? ' Off' : ' On'}
+              <span style={{ fontWeight: "bold", marginLeft: "3px" }}>
+                {exerciseMode === "Main" ? " Off" : " On"}
               </span>
             </p>
           </div>
@@ -68,17 +68,17 @@ class Header extends Component {
           {aboutState ? (
             <Button
               clickMethod={closeAboutPage}
-              message={'Back'}
+              message={"Back"}
               className="backButton btn btn-second btn-xl text-uppercase "
-              fontSizing={'25px'}
+              fontSizing={"25px"}
             />
           ) : (
             <div>
               {statState ? (
                 <Button
                   clickMethod={closeStatPage}
-                  message={'Home'}
-                  fontSizing={'25px'}
+                  message={"Home"}
+                  fontSizing={"25px"}
                 />
               ) : (
                 <div>
@@ -88,16 +88,16 @@ class Header extends Component {
                         <div className="inlineForm">
                           <Button
                             clickMethod={backButton}
-                            message={'Back'}
+                            message={"Back"}
                             className="backButton btn btn-second btn-xl text-uppercase"
-                            fontSizing={'25px'}
+                            fontSizing={"25px"}
                           />
                           <p
                             className="mainColor secondTitle"
                             style={{
-                              marginTop: '15px',
-                              marginLeft: '25px',
-                              background: 'rgba(38,38,38,1)',
+                              marginTop: "15px",
+                              marginLeft: "25px",
+                              background: "rgba(38,38,38,1)",
                             }}
                           >
                             Adjust the colors below to be in better color

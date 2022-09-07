@@ -1,22 +1,22 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component, Fragment} from 'react';
-import Button from '@material-ui/core/Button';
-import {navigate} from '@reach/router';
-import {EXERCISE_PLAYING} from '../../../../constants/lab4';
+import React, { Component, Fragment } from "react";
+import Button from "@material-ui/core/Button";
+import { navigate } from "@reach/router";
+import { EXERCISE_PLAYING } from "../../../../constants/lab4";
 
 class BypassBlocksGuideline extends Component {
   handleSubmit() {
-    navigate('/Lab4/Exercise/CodeChangeBlocks');
+    navigate("/Lab4/Exercise/CodeChangeBlocks");
   }
 
   componentDidMount() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
   }
 
   render() {
-    const buttonStyle = {marginRight: '10px', marginLeft: '10px'};
+    const buttonStyle = { marginRight: "10px", marginLeft: "10px" };
     return (
       <Fragment>
         <div>
@@ -24,7 +24,7 @@ class BypassBlocksGuideline extends Component {
           <p className="playthrough__sentence">
             People with mobile dexterity disabilities sometimes use a keyboard
             to navigate the page. This can be cumbersome if there is no way to
-            skip to the main section. Software should follow the{' '}
+            skip to the main section. Software should follow the{" "}
             <a
               href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html"
               target="_blank"
@@ -38,8 +38,8 @@ class BypassBlocksGuideline extends Component {
           <Button
             href="#"
             onClick={this.handleSubmit}
-            variant={'contained'}
-            color={'primary'}
+            variant={"contained"}
+            color={"primary"}
             style={buttonStyle}
           >
             Continue

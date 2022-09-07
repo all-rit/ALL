@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import '../title.css';
+import React from "react";
+import "../title.css";
 
 /*
 Component for creating a generic button for the system
 */
-const Button = ({clickMethod, message, fontSizing}) => {
+const Button = ({ clickMethod, message }) => {
   // Handles a click by the user
   const onClick = () => {
     clickMethod();

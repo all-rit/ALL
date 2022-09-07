@@ -1,41 +1,41 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component, Fragment} from 'react';
-import Button from '@material-ui/core/Button';
-import {navigate} from '@reach/router';
-import {PageService} from '../../../../services/PageService';
-import {LAB_ID} from '../../../../constants/lab4';
-import AppInstructions from '../components/AppInstructions';
-import {EXERCISE_PLAYING} from '../../../../constants/lab4';
+import React, { Component, Fragment } from "react";
+import Button from "@material-ui/core/Button";
+import { navigate } from "@reach/router";
+import { PageService } from "../../../../services/PageService";
+import { LAB_ID } from "../../../../constants/lab4";
+import AppInstructions from "../components/AppInstructions";
+import { EXERCISE_PLAYING } from "../../../../constants/lab4";
 
 class SmallTarget extends Component {
   constructor(props) {
     super(props);
     this.state = {
       secondsElapsed: 0,
-      marginRight: this.style.marginRight + 'px',
-      marginLeft: this.style.marginLeft + 'px',
-      width: this.style.width + 'px',
-      height: this.style.height + 'px',
-      fontSize: this.style.fontSize + 'px',
-      top: 'px',
-      left: 'px',
+      marginRight: this.style.marginRight + "px",
+      marginLeft: this.style.marginLeft + "px",
+      width: this.style.width + "px",
+      height: this.style.height + "px",
+      fontSize: this.style.fontSize + "px",
+      top: "px",
+      left: "px",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
-    const name = 'SmallTarget';
+    const name = "SmallTarget";
     PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-    navigate('/Lab4/Exercise/TargetGuideline');
+    navigate("/Lab4/Exercise/TargetGuideline");
   }
 
   componentDidMount() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
     this.interval = setInterval(
-        () => this.setState({secondsElapsed: this.state.secondsElapsed + 1}),
-        1000,
+      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
+      1000
     );
   }
 
@@ -56,7 +56,7 @@ class SmallTarget extends Component {
     const distY = this.calculateDistanceY(this.myDiv, e.screenY);
     const right = -distX / 2 > -300 ? -(distX / 2) : -(distX / 2) / 25;
     const top = distY / 2 < 300 ? distY / 5 : 300;
-    this.setState({right: right + 'px', top: top + 'px'});
+    this.setState({ right: right + "px", top: top + "px" });
   };
 
   calculateDistanceX(elem, mouseX) {
@@ -67,18 +67,18 @@ class SmallTarget extends Component {
   }
 
   render() {
-    const instructions = 'Click the start button.';
+    const instructions = "Click the start button.";
     return (
       <Fragment>
         <div>
           <AppInstructions instructions={instructions} />
           <div
             style={{
-              width: '300px',
-              height: '300px',
-              margin: 'auto',
-              paddingTop: '50px',
-              position: 'relative',
+              width: "300px",
+              height: "300px",
+              margin: "auto",
+              paddingTop: "50px",
+              position: "relative",
             }}
             onMouseMove={(e) => this.wiggle(e)}
           >
@@ -86,8 +86,8 @@ class SmallTarget extends Component {
               ref={(c) => (this.myDiv = c)}
               href="#"
               onClick={this.handleSubmit}
-              variant={'contained'}
-              color={'primary'}
+              variant={"contained"}
+              color={"primary"}
               style={this.state}
             >
               Start

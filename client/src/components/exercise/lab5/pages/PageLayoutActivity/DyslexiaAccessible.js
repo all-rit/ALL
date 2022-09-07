@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
-import {navigate} from '@reach/router';
-import Timer from '../../components/Timer';
-import PageServiceTimer from '../../../shared/PageServiceTimer';
-import {time} from '../../../../../constants/lab5';
+import React, { Component } from "react";
+import { navigate } from "@reach/router";
+import Timer from "../../components/Timer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
+import { time } from "../../../../../constants/lab5";
 class DyslexiaAccessible extends Component {
   constructor(props) {
     super(props);
-    this.state = {timerDone: false, componentName: 'DyslexiaAccessible'};
+    this.state = { timerDone: false, componentName: "DyslexiaAccessible" };
   }
   handleNav() {
-    navigate('/Lab5/Exercise/DyslexiaAccessibleKnowledgeCheck');
+    navigate("/Lab5/Exercise/DyslexiaAccessibleKnowledgeCheck");
   }
   timerDone() {
-    this.setState({timerDone: true});
+    this.setState({ timerDone: true });
   }
   render() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     return (
       <div>
         <div className="cognitive_instructions">

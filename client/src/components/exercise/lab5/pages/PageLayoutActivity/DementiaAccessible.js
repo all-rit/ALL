@@ -1,35 +1,35 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
-import {navigate} from '@reach/router';
-import Timer from '../../components/Timer';
-import PageServiceTimer from '../../../shared/PageServiceTimer';
+import React, { Component } from "react";
+import { navigate } from "@reach/router";
+import Timer from "../../components/Timer";
+import PageServiceTimer from "../../../shared/PageServiceTimer";
 import {
   time,
   minFont,
   maxFont,
   defaultFont,
-} from '../../../../../constants/lab5';
+} from "../../../../../constants/lab5";
 class DementiaAccessible extends Component {
   constructor(props) {
     super(props);
-    this.state = {timerDone: false, componentName: 'DementiaAccessible'};
+    this.state = { timerDone: false, componentName: "DementiaAccessible" };
   }
   handleNav() {
-    navigate('/Lab5/Exercise/DementiaAccessibleKnowledgeCheck');
+    navigate("/Lab5/Exercise/DementiaAccessibleKnowledgeCheck");
   }
   timerDone() {
-    this.setState({timerDone: true});
+    this.setState({ timerDone: true });
   }
   render() {
-    const {actions, state} = this.props;
+    const { actions, state } = this.props;
     let fontsize = parseInt(state.repair5.fontvalue);
     fontsize =
       fontsize <= maxFont && fontsize >= minFont ? fontsize : defaultFont;
     let fontfamily = state.repair5.fontfamilyvalue;
     fontfamily =
-      fontfamily === 'arial' || fontfamily === 'roboto' ? fontfamily : 'roboto';
-    const style = {fontSize: fontsize, fontFamily: fontfamily};
+      fontfamily === "arial" || fontfamily === "roboto" ? fontfamily : "roboto";
+    const style = { fontSize: fontsize, fontFamily: fontfamily };
     return (
       <div style={style}>
         <div className="cognitive_instructions" style={style}>

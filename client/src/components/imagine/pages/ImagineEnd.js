@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React from "react";
 // import { navigate } from "@reach/router";
 
 const ImagineEnd = (props) => {

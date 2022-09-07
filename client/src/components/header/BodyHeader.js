@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import React, {useEffect, useState} from 'react';
-import LabService from '../../services/LabService';
-import Spinner from '../../common/Spinner/Spinner';
+import React, { useEffect, useState } from "react";
+import LabService from "../../services/LabService";
+import Spinner from "../../common/Spinner/Spinner";
 const Header = (props) => {
-  const {labID, body} = props;
+  const { labID, body } = props;
   const [labShortName, setLabShortname] = useState(null);
   useEffect(() => {
     LabService.getLabShortName(labID).then((data) => {

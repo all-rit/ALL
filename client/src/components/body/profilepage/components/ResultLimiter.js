@@ -2,13 +2,13 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable camelcase */
 /* eslint-disable require-jsdoc */
-import React, {useState, useEffect} from 'react';
-import {Button} from 'reactstrap';
-import LabCompletionBubbles from './LabCompletionBubbles';
-import StudentProgress from './StudentProgress';
+import React, { useState, useEffect } from "react";
+import { Button } from "reactstrap";
+import LabCompletionBubbles from "./LabCompletionBubbles";
+import StudentProgress from "./StudentProgress";
 
 const ResultLimiter = (props) => {
-  const {resultType, data, lab, groupid} = props;
+  const { resultType, data, lab, groupid } = props;
   const [index, setIndex] = useState(0);
   const [groupedData, setGroupedData] = useState([]);
 
@@ -40,7 +40,7 @@ const ResultLimiter = (props) => {
   }
 
   switch (resultType) {
-    case 'studentLabs':
+    case "studentLabs":
       if (groupedData.length !== 0) {
         return (
           <>
@@ -57,7 +57,7 @@ const ResultLimiter = (props) => {
                         <br />
                       </p>
                       <p className="grey-text">
-                        Enrolled on {student.enrolledDate.split('T')[0]}
+                        Enrolled on {student.enrolledDate.split("T")[0]}
                       </p>
                     </>
                   </td>
@@ -122,7 +122,7 @@ const ResultLimiter = (props) => {
       } else {
         return <div>Loading Data...</div>;
       }
-    case 'studentProgress':
+    case "studentProgress":
       if (groupedData.length !== 0) {
         return (
           <>

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
-const Timer = ({seconds: startTime, finished, throwAlert}) => {
+const Timer = ({ seconds: startTime, finished }) => {
   // does it need to be "App"?
   const [seconds, updateSeconds] = useState(startTime);
   const [startTimer, setStartTimer] = useState(false);

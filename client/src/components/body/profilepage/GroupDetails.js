@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import React, {useEffect, useState} from 'react';
-import GroupService from '../../../services/GroupService';
-import GroupAssignedLabs from './GroupAssignedLabs';
-import EnrolledStudentsTable from './EnrolledStudentsTable';
-import AddModal from './components/AddModal';
+import React, { useEffect, useState } from "react";
+import GroupService from "../../../services/GroupService";
+import GroupAssignedLabs from "./GroupAssignedLabs";
+import EnrolledStudentsTable from "./EnrolledStudentsTable";
+import AddModal from "./components/AddModal";
 
 const GroupDetails = (props) => {
-  const {group, instructing, user, setInstrGroupsUpdated} = props;
+  const { group, instructing, user, setInstrGroupsUpdated } = props;
   const [assignedLabs, setAssignedLabs] = useState([]);
   const [enrolledStudents, setEnrolledStudents] = useState([]);
 
@@ -29,7 +29,7 @@ const GroupDetails = (props) => {
           There are currently no assigned labs.
           {instructing ? (
             <AddModal
-              addMode={'update_grp_lab'}
+              addMode={"update_grp_lab"}
               user={user}
               groupID={group.id}
               groupName={group.groupName}

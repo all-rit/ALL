@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 /**
  * LinkFooter is a visual component used at the bottom of each of the reading

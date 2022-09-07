@@ -1,25 +1,25 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component} from 'react';
-import {navigate} from '@reach/router';
-import Prism from 'prismjs';
-import Button from '@material-ui/core/Button';
-import {Paper} from '@material-ui/core';
-import Snackbar from '@material-ui/core/Snackbar';
-import CheckCircleIcon from '@material-ui/core/SvgIcon/SvgIcon';
-import {amber, green, red, yellow} from '@material-ui/core/colors';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import clsx from 'clsx';
-import IconButton from '@material-ui/core/IconButton';
-import WarningIcon from '@material-ui/icons/Warning';
-import ErrorIcon from '@material-ui/icons/Error';
-import InfoIcon from '@material-ui/icons/Info';
-import CloseIcon from '@material-ui/icons/Close';
-import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import {EXERCISE_PLAYING} from '../../../../constants/lab4';
-import RepairService from '../../../../services/lab4/RepairService';
+import React, { Component } from "react";
+import { navigate } from "@reach/router";
+import Prism from "prismjs";
+import Button from "@material-ui/core/Button";
+import { Paper } from "@material-ui/core";
+import Snackbar from "@material-ui/core/Snackbar";
+import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import { amber, green, red, yellow } from "@material-ui/core/colors";
+import SnackbarContent from "@material-ui/core/SnackbarContent";
+import clsx from "clsx";
+import IconButton from "@material-ui/core/IconButton";
+import WarningIcon from "@material-ui/icons/Warning";
+import ErrorIcon from "@material-ui/icons/Error";
+import InfoIcon from "@material-ui/icons/Info";
+import CloseIcon from "@material-ui/icons/Close";
+import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
+import { EXERCISE_PLAYING } from "../../../../constants/lab4";
+import RepairService from "../../../../services/lab4/RepairService";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -53,13 +53,13 @@ function MySnackbarContentWrapper(props) {
       opacity: 0.9,
     },
     message: {
-      display: 'flex',
-      alignItems: 'center',
+      display: "flex",
+      alignItems: "center",
     },
   };
-  const {className, message, onClose, variant, ...other} = props;
+  const { className, message, onClose, variant, ...other } = props;
   const Icon = variantIcon[variant];
-  const messageStyle = {marginLeft: '10px'};
+  const messageStyle = { marginLeft: "10px" };
   return (
     <SnackbarContent
       className={clsx(classes[variant], className)}
@@ -71,8 +71,8 @@ function MySnackbarContentWrapper(props) {
           color={amber}
           aria-label={message}
         >
-          <Typography variant={'body2'} style={messageStyle} gutterBottom>
-            <Icon className={clsx(classes.icon, classes.iconVariant)} />{' '}
+          <Typography variant={"body2"} style={messageStyle} gutterBottom>
+            <Icon className={clsx(classes.icon, classes.iconVariant)} />{" "}
             {message}
           </Typography>
         </span>
@@ -96,17 +96,17 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
+  variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 
 class CodeChangeTarget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      textValue: '',
-      textValue1: '',
+      textValue: "",
+      textValue1: "",
       snackBarOpen: false,
-      message: 'Please type code before updating code!',
+      message: "Please type code before updating code!",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChange1 = this.handleChange1.bind(this);
@@ -117,7 +117,7 @@ class CodeChangeTarget extends Component {
         textValue: window.location.state.width,
         textValue1: window.location.state.height,
         snackBarOpen: false,
-        message: 'Please type code before updating code!',
+        message: "Please type code before updating code!",
       };
       window.location.state = {
         width: window.location.state.width,
@@ -132,53 +132,53 @@ class CodeChangeTarget extends Component {
   }
 
   componentDidMount() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
     Prism.highlightAll();
     if (
       window.location.state.height !== undefined &&
       window.location.state.width !== undefined
     ) {
-      const el0 = document.getElementById('first');
+      const el0 = document.getElementById("first");
       el0.value = window.location.state.width;
-      CodeChangeTarget.doEvent(el0, 'input');
-      const el1 = document.getElementById('second');
+      CodeChangeTarget.doEvent(el0, "input");
+      const el1 = document.getElementById("second");
       el1.value = window.location.state.height;
-      CodeChangeTarget.doEvent(el1, 'input');
+      CodeChangeTarget.doEvent(el1, "input");
     }
   }
 
   handleChange(event) {
-    this.setState({textValue: event.target.value}, () => {
-      console.log('handled change value: ' + this.state.textValue);
+    this.setState({ textValue: event.target.value }, () => {
+      console.log("handled change value: " + this.state.textValue);
       Prism.highlightAll();
     });
   }
 
   handleChange1(event) {
-    this.setState({textValue1: event.target.value}, () => {
-      console.log('handled change value: ' + this.state.textValue1);
+    this.setState({ textValue1: event.target.value }, () => {
+      console.log("handled change value: " + this.state.textValue1);
       Prism.highlightAll();
     });
   }
 
   handleClose(event, reason) {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
-    this.setState({snackBarOpen: false}, () => {
-      console.log('SnackBar Closed');
+    this.setState({ snackBarOpen: false }, () => {
+      console.log("SnackBar Closed");
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Width updated as: ' + this.state.textValue);
-    console.log('Height updated as: ' + this.state.textValue1);
-    if (this.state.textValue === '' || this.state.textValue1 === '') {
+    console.log("Width updated as: " + this.state.textValue);
+    console.log("Height updated as: " + this.state.textValue1);
+    if (this.state.textValue === "" || this.state.textValue1 === "") {
       this.setState({
-        message: 'Please type code before updating code!',
+        message: "Please type code before updating code!",
         snackBarOpen: true,
       });
     } else if (
@@ -186,7 +186,7 @@ class CodeChangeTarget extends Component {
       parseInt(this.state.textValue1) < minMax.min
     ) {
       this.setState({
-        message: 'Please enter value greater than or equal to ' + minMax.min,
+        message: "Please enter value greater than or equal to " + minMax.min,
         snackBarOpen: true,
       });
     } else if (
@@ -194,7 +194,7 @@ class CodeChangeTarget extends Component {
       parseInt(this.state.textValue1) > minMax.max
     ) {
       this.setState({
-        message: 'Please enter value less than or equal to ' + minMax.max,
+        message: "Please enter value less than or equal to " + minMax.max,
         snackBarOpen: true,
       });
     } else if (
@@ -202,7 +202,7 @@ class CodeChangeTarget extends Component {
       !/^\d+$/.test(this.state.textValue1)
     ) {
       this.setState({
-        message: 'Please enter numeric value',
+        message: "Please enter numeric value",
         snackBarOpen: true,
       });
     } else {
@@ -211,26 +211,26 @@ class CodeChangeTarget extends Component {
         height: this.state.textValue1,
       };
       RepairService.submitRepairButton(
-          this.state.textValue1,
-          this.state.textValue,
+        this.state.textValue1,
+        this.state.textValue
       );
-      navigate('/Lab4/Exercise/SubmitUpdated');
+      navigate("/Lab4/Exercise/SubmitUpdated");
     }
     Prism.highlightAll();
   }
 
   static doEvent(obj, event) {
-    const eventInit = new Event(event, {target: obj, bubbles: true});
+    const eventInit = new Event(event, { target: obj, bubbles: true });
     return obj ? obj.dispatchEvent(eventInit) : false;
   }
 
   render() {
     const paperStyle = {
-      marginLeft: '10px',
-      marginRight: '10px',
-      marginTop: '20px',
+      marginLeft: "10px",
+      marginRight: "10px",
+      marginTop: "20px",
     };
-    console.log('in codechangetarget');
+    console.log("in codechangetarget");
     return (
       <div>
         {/* <CodeUpdateHeader
@@ -246,7 +246,7 @@ class CodeChangeTarget extends Component {
           use for these users, and a larger target will help them activate the
           target.
         </p>
-        <form onSubmit={this.handleSubmit} noValidate autoComplete={'off'}>
+        <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
           <Paper style={paperStyle}>
             <pre>
               <code className="language-css">
@@ -255,24 +255,24 @@ class CodeChangeTarget extends Component {
     marginRight: 10px;
     marginLeft: 10px;
     min-width: `}
-              </code>{' '}
+              </code>{" "}
               <input
-                type={'text'}
+                type={"text"}
                 id="first"
                 value={this.state.textValue}
                 placeholder="20"
                 onChange={this.handleChange}
-                aria-label={'Please set min width to 40px'}
+                aria-label={"Please set min width to 40px"}
               />
               <code className="language-css">{` px; /*Set to at least 44px*/
-    min-height:`}</code>{' '}
+    min-height:`}</code>{" "}
               <input
-                type={'text'}
+                type={"text"}
                 id="second"
                 value={this.state.textValue1}
                 placeholder="17"
                 onChange={this.handleChange1}
-                aria-label={'Please set min height to 40px'}
+                aria-label={"Please set min height to 40px"}
               />
               <code className="language-css">
                 {` px; /*Set to at least 44px*/
@@ -285,18 +285,18 @@ class CodeChangeTarget extends Component {
           <br />
           <br />
           <Button
-            type={'submit'}
-            aria-label={'Update Code'}
-            variant={'contained'}
-            color={'primary'}
+            type={"submit"}
+            aria-label={"Update Code"}
+            variant={"contained"}
+            color={"primary"}
           >
             Update Code
           </Button>
         </form>
         <Snackbar
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
+            vertical: "bottom",
+            horizontal: "left",
           }}
           open={this.state.snackBarOpen}
           autoHideDuration={6000}

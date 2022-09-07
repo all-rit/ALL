@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
-import React, {useEffect, useState} from 'react';
-import {Button, Popover, PopoverBody} from 'reactstrap';
+import React, { useEffect, useState } from "react";
+import { Button, Popover, PopoverBody } from "reactstrap";
 import {
   timePerWord,
   minFontNotif,
   maxFontNotif,
-} from '../../../../constants/lab5';
+} from "../../../../constants/lab5";
 
 const Notification = (props) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [opened, setOpened] = useState(false);
 
-  let {message, fontSize, timeout} = props;
+  let { message, fontSize, timeout } = props;
   fontSize = parseInt(fontSize);
   timeout = parseInt(timeout);
-  const time = timeout ? timeout : message.split(' ').length * timePerWord;
+  const time = timeout ? timeout : message.split(" ").length * timePerWord;
   let actualFontSize;
   if (fontSize) {
     if (fontSize >= minFontNotif && fontSize <= maxFontNotif) {
@@ -55,7 +55,7 @@ const Notification = (props) => {
         toggle={toggle}
       >
         {/* <PopoverHeader>Notification</PopoverHeader>*/}
-        <PopoverBody style={{fontSize: actualFontSize}}>
+        <PopoverBody style={{ fontSize: actualFontSize }}>
           {message}
         </PopoverBody>
       </Popover>

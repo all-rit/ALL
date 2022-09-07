@@ -1,41 +1,41 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, {Component, Fragment} from 'react';
-import Button from '@material-ui/core/Button';
-import AppInstructions from '../components/AppInstructions';
-import {navigate} from '@reach/router';
-import {PageService} from '../../../../services/PageService';
-import {EXERCISE_PLAYING} from '../../../../constants/lab4';
-import {LAB_ID} from '../../../../constants/lab4';
+import React, { Component, Fragment } from "react";
+import Button from "@material-ui/core/Button";
+import AppInstructions from "../components/AppInstructions";
+import { navigate } from "@reach/router";
+import { PageService } from "../../../../services/PageService";
+import { EXERCISE_PLAYING } from "../../../../constants/lab4";
+import { LAB_ID } from "../../../../constants/lab4";
 
 class SubmitUpdated extends Component {
   constructor(props) {
     super(props);
     this.state = {
       secondsElapsed: 0,
-      marginRight: this.style.marginRight + 'px',
-      marginLeft: this.style.marginLeft + 'px',
-      width: this.style.width + 'px',
-      height: this.style.height + 'px',
-      fontSize: this.style.fontSize + 'px',
-      top: 'px',
-      left: 'px',
+      marginRight: this.style.marginRight + "px",
+      marginLeft: this.style.marginLeft + "px",
+      width: this.style.width + "px",
+      height: this.style.height + "px",
+      fontSize: this.style.fontSize + "px",
+      top: "px",
+      left: "px",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
     if (window.location.state !== undefined) {
       this.setState({
-        width: window.location.state.width + 'px',
-        height: window.location.state.height + 'px',
+        width: window.location.state.width + "px",
+        height: window.location.state.height + "px",
       });
     }
     this.interval = setInterval(
-        () => this.setState({secondsElapsed: this.state.secondsElapsed + 1}),
-        1000,
+      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
+      1000
     );
   }
   style = {
@@ -50,7 +50,7 @@ class SubmitUpdated extends Component {
     const distY = this.calculateDistanceY(this.myDiv, e.screenY);
     const right = -distX / 2 > -300 ? -(distX / 2) : -(distX / 2) / 25;
     const top = distY / 2 < 300 ? distY / 5 : 300;
-    this.setState({right: right + 'px', top: top + 'px'});
+    this.setState({ right: right + "px", top: top + "px" });
   };
 
   calculateDistanceX(elem, mouseX) {
@@ -61,9 +61,9 @@ class SubmitUpdated extends Component {
   }
 
   handleSubmit() {
-    const name = 'SubmitUpdated';
+    const name = "SubmitUpdated";
     PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-    navigate('/Lab4/Exercise/FormSkipToMainBroken');
+    navigate("/Lab4/Exercise/FormSkipToMainBroken");
   }
 
   componentWillUnmount() {
@@ -71,18 +71,18 @@ class SubmitUpdated extends Component {
   }
 
   render() {
-    const instructions = 'Click the start button.';
+    const instructions = "Click the start button.";
     return (
       <Fragment>
         <div>
           <AppInstructions instructions={instructions} />
           <div
             style={{
-              width: '200px',
-              height: '200px',
-              margin: 'auto',
-              paddingTop: '30px',
-              position: 'relative',
+              width: "200px",
+              height: "200px",
+              margin: "auto",
+              paddingTop: "30px",
+              position: "relative",
             }}
             onMouseMove={(e) => this.wiggle(e)}
           >
@@ -90,8 +90,8 @@ class SubmitUpdated extends Component {
               ref={(c) => (this.myDiv = c)}
               href="#"
               onClick={this.handleSubmit}
-              variant={'contained'}
-              color={'primary'}
+              variant={"contained"}
+              color={"primary"}
               style={this.state}
             >
               Start
