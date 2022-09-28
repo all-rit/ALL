@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
 /*
 Component for the home reset button
 */
 const HomeReset = ({ exerciseEnded, changeExerciseColors, colors }) => {
-  //Handles a click of the button
+  // Handles a click of the button
   const handleClick = () => {
     changeExerciseColors(colors);
     exerciseEnded();

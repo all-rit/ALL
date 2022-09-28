@@ -1,39 +1,39 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 // Universal Controllers
-let UserController = require('../controllers/UserController');
-let UserLabController = require ('../controllers/UserLabController');
-let PageController = require('../controllers/PageController');
-let GroupController = require('../controllers/GroupController');
+const UserController = require('../controllers/UserController');
+const UserLabController = require('../controllers/UserLabController');
+const PageController = require('../controllers/PageController');
+const GroupController = require('../controllers/GroupController');
 
-//LAB1 Controllers
-let ExerciseControllerLab1 = require('../controllers/lab1/ExerciseController');
-let RepairControllerLab1 = require('../controllers/lab1/RepairController');
+// LAB1 Controllers
+const ExerciseControllerLab1 = require('../controllers/lab1/ExerciseController');
+const RepairControllerLab1 = require('../controllers/lab1/RepairController');
 
-//LAB2 Controller
-let RepairControllerLab2 = require('../controllers/lab2/RepairController');
+// LAB2 Controller
+const RepairControllerLab2 = require('../controllers/lab2/RepairController');
 
-//LAB3 Controller
-let RepairControllerLab3 = require('../controllers/lab3/RepairController');
+// LAB3 Controller
+const RepairControllerLab3 = require('../controllers/lab3/RepairController');
 
-//LAB4 Controller
-let RepairControllerLab4 = require('../controllers/lab4/RepairController');
-//LAB5 Controller 
-let RepairControllerLab5 = require('../controllers/lab5/RepairController');
-let ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
+// LAB4 Controller
+const RepairControllerLab4 = require('../controllers/lab4/RepairController');
+// LAB5 Controller
+const RepairControllerLab5 = require('../controllers/lab5/RepairController');
+const ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
-//Lab Controller
-let LabController = require("../controllers/LabController");
+// Lab Controller
+const LabController = require('../controllers/LabController');
 
-//Team Members Controller
-let TeamMemberController = require("../controllers/TeamMemberController");
+// Team Members Controller
+const TeamMemberController = require('../controllers/TeamMemberController');
 
-//Imagien Controller
-let ImagineController = require("../controllers/ImagineController")
+// Imagien Controller
+const ImagineController = require('../controllers/ImagineController');
 
 // User Routes
-router.post('/url', UserController.storeURL)
+router.post('/url', UserController.storeURL);
 router.get('/auth/google', UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
 router.get('/logout', UserController.logout);
@@ -49,16 +49,16 @@ router.get('/user/:userID/:labID', UserLabController.getUserLabCompletion);
 // Group Routes
 router.post('/group/enroll', GroupController.enrollUserInGroup);
 router.post('/group/unenroll', GroupController.unenrollUserFromGroup);
-router.post('/group/create', GroupController.createGroup)
-router.post('/group/:groupID/add', GroupController.addGroupLab)
-router.put('/group/:groupID/update', GroupController.updateGroup)
-router.put('/group/:groupID/:labID/delete', GroupController.deleteGroupLab)
-router.put('/group/:groupID/delete', GroupController.deleteGroup)
+router.post('/group/create', GroupController.createGroup);
+router.post('/group/:groupID/add', GroupController.addGroupLab);
+router.put('/group/:groupID/update', GroupController.updateGroup);
+router.put('/group/:groupID/:labID/delete', GroupController.deleteGroupLab);
+router.put('/group/:groupID/delete', GroupController.deleteGroup);
 router.get('/group/:groupID/labs', GroupController.getGroupLabs);
-router.get('/group/:groupID/labs/:userID/completed',GroupController.getCompletedGroupLabs)
+router.get('/group/:groupID/labs/:userID/completed', GroupController.getCompletedGroupLabs);
 router.get('/group/:groupID/enrolled', GroupController.getGroupEnrolledStudents);
 
-//user Lab Routes for lab progress and quiz
+// user Lab Routes for lab progress and quiz
 router.post('/completeAbout', UserLabController.completeAbout);
 router.post('/completeReading', UserLabController.completeReading);
 router.post('/completeExercise', UserLabController.completeExercise);
@@ -76,7 +76,7 @@ router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);
 router.post('/lab1/exercise/round', ExerciseControllerLab1.createRound);
 router.post('/lab1/exercise/choice', ExerciseControllerLab1.createChoice);
 router.post('/lab1/exercise/end', ExerciseControllerLab1.updateEndExerciseScore);
-router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice)
+router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice);
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
 router.post('/lab2/repair/submit', RepairControllerLab2.submitChange);
@@ -85,9 +85,9 @@ router.post('/lab4/repair/submit/button', RepairControllerLab4.submitChangeButto
 router.post('/lab4/repair/submit/skip', RepairControllerLab4.submitChangeSkip);
 router.post('/lab4/repair/submit/hint', RepairControllerLab4.submitChangeHint);
 router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
-//Create a Page Entry
+// Create a Page Entry
 router.post('/page/complete', PageController.createPage);
-//Labs
+// Labs
 router.get('/lab', LabController.getAllLabs);
 router.get('/lab:labID/shortname', LabController.getLabShortName);
 router.get('/lab:labID/about', LabController.getLabAbout);
@@ -95,17 +95,17 @@ router.get('/lab:labID/reading', LabController.getLabReading);
 router.get('/lab:labID/reinforcement', LabController.getLabReinforcement);
 router.get('/lab:labID/quiz', LabController.getLabQuiz);
 
-//Team
-router.get('/teammember', TeamMemberController.getAllTeamMembers)
-router.get('/professors', TeamMemberController.getAllProfessors)
-router.get('/alumni', TeamMemberController.getAllAlumni)
+// Team
+router.get('/teammember', TeamMemberController.getAllTeamMembers);
+router.get('/professors', TeamMemberController.getAllProfessors);
+router.get('/alumni', TeamMemberController.getAllAlumni);
 
-//Imagine
-router.post('/imagine/avatar', ImagineController.userAvatar)
-router.get('/imagine/avatar/:userID', ImagineController.getUserAvatar)
-router.get('/imagine/squad/:userID', ImagineController.getUserSquad)
-router.post('/imagine/squad', ImagineController.userSquad)
-router.post('/imagine/lobbyMessages', ImagineController.userLobbyMessages)
+// Imagine
+router.post('/imagine/avatar', ImagineController.userAvatar);
+router.get('/imagine/avatar/:userID', ImagineController.getUserAvatar);
+router.get('/imagine/squad/:userID', ImagineController.getUserSquad);
+router.post('/imagine/squad', ImagineController.userSquad);
+router.post('/imagine/lobbyMessages', ImagineController.userLobbyMessages);
 
 
 module.exports = router;
