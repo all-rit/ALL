@@ -10,6 +10,9 @@ const QualQuestionsFunction = (props) => {
     const [questionsAnswered, setQuestionsAnswered] = useState(false)
     //this constant need to come into play with a handle submit
 
+    const handleSubmit = () =>{
+        navigate("/Lab6/Exercise/AnalyzeData");
+    }
 
     return (
     <div>
@@ -29,14 +32,28 @@ const QualQuestionsFunction = (props) => {
           disable={() => {}}
           multiChoice={() => {}}
          ></QualQues>
+
+         if (questionId == 4){
+            this.setState({questionsAnswered: true})
+         }
+
+         if (questionsAnswered){
+            button = <Submit onClick={this.handleSubmit}/>
+         }
+
+            {/* <button
+                className="btn btn-primary text-black btn-xl text-uppercase "
+                type="submit"
+                key="confirm"
+            >
+                Submit
+            </button> */}
         </div>
         ); 
     };
+
+
     
 
 export default QualQuestionsFunction;
-
-
-
-    
 
