@@ -26,6 +26,9 @@ import { default as Error } from "./components/body/landingpage/error";
 import { default as Profile } from "./components/body/profilepage/Profile";
 import { default as Imagine } from "./components/imagine/Imagine";
 
+//there was no imported qualification questions component 
+//this will be line where the import of qualifcation questions handler can take place
+
 import { default as Quiz } from "./components/quiz/App";
 import { stateChange } from "./helpers/Redirect";
 import Change from "./components/footer/footer";
