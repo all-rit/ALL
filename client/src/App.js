@@ -28,6 +28,7 @@ import { default as Imagine } from "./components/imagine/Imagine";
 
 //there was no imported qualification questions component 
 //this will be line where the import of qualifcation questions handler can take place
+import { default as QualifcationQuestions } from "./components/exercise/lab6/Main";
 
 import { default as Quiz } from "./components/quiz/App";
 import { stateChange } from "./helpers/Redirect";
@@ -102,6 +103,11 @@ class App extends Component {
               <Imagine path="/Imagine2/*" user={state.main.user} biasType={"user"} linkNum={2}/>
               <Imagine path="/Imagine3/*" user={state.main.user} biasType={"team"} linkNum={3}/>
 
+            
+              <QualifcationQuestions path="/Lab6/Exercise/QualificationQuestions" user={state.main.user}/>
+
+
+
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
 
@@ -115,6 +121,7 @@ class App extends Component {
               <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
 
               <Reinforcement path={`/Lab${lab}/Reinforcement`} user={state.main.user} labID={lab} />
+
 
               <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user} />
             </Router>

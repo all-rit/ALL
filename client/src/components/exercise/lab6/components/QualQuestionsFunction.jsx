@@ -1,6 +1,9 @@
 import { React, useState } from "react";
+import { navigate } from "@reach/router";
+
+//to use same functionality as quiz component
 import QualQues from "../../../quiz/components/QualQues";
-import Result from "./Result";
+// import Result from "./Result";
 //need substitute for result page, or can just implement a handle submit on this one
 
 const QualQuestionsFunction = (props) => {
@@ -31,16 +34,9 @@ const QualQuestionsFunction = (props) => {
           nextQuestion={""}
           disable={() => {}}
           multiChoice={() => {}}
-         ></QualQues>
-
-         if (questionId == 4){
-            this.setState({questionsAnswered: true})
-         }
-
-         if (questionsAnswered){
-            button = <Submit onClick={this.handleSubmit}/>
-         }
-
+         >
+        
+         </QualQues>
             {/* <button
                 className="btn btn-primary text-black btn-xl text-uppercase "
                 type="submit"
@@ -48,6 +44,19 @@ const QualQuestionsFunction = (props) => {
             >
                 Submit
             </button> */}
+         if (questionId == 4){
+            this.setState({questionsAnswered: true})
+         }
+
+         if (questionsAnswered){
+             <button
+             className="btn btn-primary text-black btn-xl text-uppercase "
+             onClick = {handleSubmit}
+             key="confirm"
+         >
+             Confirm Selection
+         </button>
+         }
         </div>
         ); 
     };

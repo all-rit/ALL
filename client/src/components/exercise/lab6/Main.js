@@ -18,6 +18,10 @@ import QualQues4 from "./pages/Applicant/QualQues4";
 import QualQues5 from "./pages/Applicant/QualQues5";
 
 
+//Add Qualification Questions handler in here and have after Avatar Selection import
+import QualQuestionsFunction from "./components/QualQuestionsFunction";
+
+
 // import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
 
 import AnalyzeData from "./pages/Applicant/AnalyzeData";
@@ -62,11 +66,16 @@ class Main extends Component {
                     {/* Part 1: Applicant */}
                     <ExerciseStart path="/" actions={actions}/>
                     <AvatarSelection path="/AvatarSelection" actions={actions}/>
+
+                    {/* Added qualification questions path to main.js while commenting out 5 redundencies underneath     */}
+                    <QualQuestionsFunction path="/QualificationQuestions" actions={actions}/>
+
+{/* 
                     <QualQues1 path="/QualQues1" actions={actions}/>
                     <QualQues2 path="/QualQues2" actions={actions}/>
                     <QualQues3 path="/QualQues3" actions={actions}/>
                     <QualQues4 path="/QualQues4" actions={actions}/>
-                    <QualQues5 path="/QualQues5" actions={actions}/>
+                    <QualQues5 path="/QualQues5" actions={actions}/> */}
 
                     {/*Commented out QualificationQuestions for now */}
 
