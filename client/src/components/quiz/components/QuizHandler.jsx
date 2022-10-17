@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable require-jsdoc */
-import { React, useEffect, useState } from 'react';
-import { PropTypes } from 'victory';
-import Quiz from './Quiz';
-import Result from './Result';
+import { React, useEffect, useState } from "react";
+import { PropTypes } from "victory";
+import Quiz from "./Quiz";
+import Result from "./Result";
 
 // TODO: This Removed to add in service functionality
-import QuestionsLab1 from '../api/Lab1/quizQuestions';
-import QuestionsLab2 from '../api/Lab2/quizQuestions';
-import QuestionsLab3 from '../api/Lab3/quizQuestions';
-import QuestionsLab4 from '../api/Lab4/quizQuestions';
-import QuestionsLab5 from '../api/Lab5/quizQuestions';
+import QuestionsLab1 from "../api/Lab1/quizQuestions";
+import QuestionsLab2 from "../api/Lab2/quizQuestions";
+import QuestionsLab3 from "../api/Lab3/quizQuestions";
+import QuestionsLab4 from "../api/Lab4/quizQuestions";
+import QuestionsLab5 from "../api/Lab5/quizQuestions";
 
 function assignQuizQuestions(labId) {
   console.log(labId);
@@ -27,11 +28,11 @@ function assignQuizQuestions(labId) {
     default:
       return [
         {
-          question: 'Default',
+          question: "Default",
           answers: [
             {
               val: 0,
-              content: 'Default',
+              content: "Default",
             },
           ],
           multiChoice: false,
@@ -52,40 +53,51 @@ const QuizHandler = (props) => {
   );
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  // initialized to a empty array to house recorded answers
+  let [selectedAnswers, setSelectedAnswers] = useState({});
+  const [disableNext, setDisableNext] = useState(true);
 
   // eslint-disable-next-line no-undef
-  const handleNext = () => {
-    currentQuestionCursor < questions.length
-      ? setCurrentQuestionCursor(currentQuestionCursor + 1)
-      : console.log('I am at the end');
-  };
+  function handleNext() {
+    if (currentQuestionCursor < questions.length) {
+      let updateCursor = currentQuestionCursor + 1;
+      setCurrentQuestionCursor(updateCursor);
+      setAnswerOption(questions[updateCursor].answers);
+      setDisableNext(true);
+    } else {
+      console.log("They have hit the end of the quiz");
+    }
+  }
 
-  const selectAnswer = () => {};
+  function selectAnswer(e) {
+    const answerValue = e.val;
+    setDisableNext(false);
+    console.log("select");
+  }
 
-  useEffect(() => {
-    // this is gonna gonna be temp function to be removed
-  });
+  useEffect(() => {});
 
   return (
     <>
       {!quizCompleted ? (
         <Quiz
-          answer={true}
+          answer={""}
           answerOptions={answerOption}
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
           questionTotal={questions.length}
-          onAnswerSelected={''}
-          nextQuestion={() => handleNext()}
-          disable={false}
-          multiChoice={() => {}}
+          onAnswerSelected={selectAnswer}
+          nextQuestion={handleNext}
+          disable={disableNext}
+          multiChoice={questions[currentQuestionCursor].multiChoice}
         ></Quiz>
       ) : (
+        // will spawn story for
         <Result
-          quizResult={''}
+          quizResult={""}
           quizScore={100}
-          selectedAnswers={['']}
-          quizQuestions={['']}
+          selectedAnswers={[""]}
+          quizQuestions={[""]}
           lab={[]}
         ></Result>
       )}
