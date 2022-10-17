@@ -5,18 +5,22 @@ const quizQuestionsLab3 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "12 million",
       },
       {
         val: 1,
+        type: "1",
         content: "285 million",
       },
       {
         val: 0,
+        type: "2",
         content: "39 million",
       },
       {
         val: 0,
+        type: "3",
         content: "500 million",
       },
     ],
@@ -27,18 +31,22 @@ const quizQuestionsLab3 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "COBRA",
       },
       {
         val: 0,
+        type: "1",
         content: "BRLTTY",
       },
       {
         val: 1,
+        type: "2",
         content: "JAWS",
       },
       {
         val: 0,
+        type: "3",
         content: "iMax for Mac",
       },
     ],
@@ -50,18 +58,22 @@ const quizQuestionsLab3 = [
     answers: [
       {
         val: 1,
+        type: "0",
         content: "Use many headings and subheadings",
       },
       {
         val: 0,
+        type: "1",
         content: "Increase the number of paragraphs",
       },
       {
         val: 0,
+        type: "2",
         content: "Decrease text size",
       },
       {
         val: 0,
+        type: "3",
         content: "Increase the number of buttons and links",
       },
     ],
@@ -73,18 +85,22 @@ const quizQuestionsLab3 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "55%",
       },
       {
         val: 0,
+        type: "1",
         content: "70%",
       },
       {
         val: 1,
+        type: "2",
         content: "82%",
       },
       {
         val: 0,
+        type: "3",
         content: "92%",
       },
     ],
@@ -96,19 +112,24 @@ const quizQuestionsLab3 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "Make the image smaller",
       },
       {
         val: 1,
+        type: "1",
         content:
           "Use an alt attribute to communicate the function of the image",
       },
       {
+        
         val: 1,
+        type: "2",
         content: "Provide a brief description of the image",
       },
       {
         val: 0,
+        type: "3",
         content: "Use it to add ambiance or visual interest to the page",
       },
     ],
