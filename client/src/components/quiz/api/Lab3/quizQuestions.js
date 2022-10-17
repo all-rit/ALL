@@ -122,7 +122,6 @@ const quizQuestionsLab3 = [
           "Use an alt attribute to communicate the function of the image",
       },
       {
-        
         val: 1,
         type: "2",
         content: "Provide a brief description of the image",
