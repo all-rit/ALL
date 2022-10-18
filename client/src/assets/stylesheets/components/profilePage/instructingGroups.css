@@ -2,10 +2,11 @@
   margin: 20px;
   padding: 15px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }
 
-th, td {
+th,
+td {
   border: 0;
   text-align: left;
 }
@@ -16,6 +17,6 @@ th, td {
 
 .table thead th {
   border-bottom: 0;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 /*# sourceMappingURL=instructingGroups.css.map */

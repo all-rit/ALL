@@ -1,8 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import ReactGA from "react-ga";
 
 import { default as About } from "./components/body/About";
-import { default as Reading } from "./components/body/Reading/Reading"
+import { default as Reading } from "./components/body/Reading/Reading";
 
 import { default as Reinforcement } from "./components/body/Reinforcement";
 
@@ -18,7 +21,6 @@ import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
 import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
 
 import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
-
 
 import { default as LandingPageBody } from "./components/body/landingpage/index";
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
@@ -37,9 +39,8 @@ import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
-import { globalHistory } from '@reach/router';
-const parse = require('url-parse');
-
+import { globalHistory } from "@reach/router";
+const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
   return {
@@ -76,17 +77,14 @@ class App extends Component {
     const { state, actions } = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
-    //look into index.js in constants
+    // look into index.js in constants
     initializeReactGA();
     return (
       <div className="overflow-x-hidden">
         <Header />
         <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
           {lab !== 0 && (
-            <BodyHeader
-              body={Sections[lab][body].name}
-              labID={lab}
-            />
+            <BodyHeader body={Sections[lab][body].name} labID={lab} />
           )}
           <div className="appBody">
             <Router basepath={process.env.PUBLIC_URL} className="app">
@@ -95,14 +93,37 @@ class App extends Component {
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
 
-              <Imagine path="/Imagine1/*" user={state.main.user} biasType={"none"} linkNum={1}/>
-              <Imagine path="/Imagine2/*" user={state.main.user} biasType={"user"} linkNum={2}/>
-              <Imagine path="/Imagine3/*" user={state.main.user} biasType={"team"} linkNum={3}/>
+              <Imagine
+                path="/Imagine1/*"
+                user={state.main.user}
+                biasType={"none"}
+                linkNum={1}
+              />
+              <Imagine
+                path="/Imagine2/*"
+                user={state.main.user}
+                biasType={"user"}
+                linkNum={2}
+              />
+              <Imagine
+                path="/Imagine3/*"
+                user={state.main.user}
+                biasType={"team"}
+                linkNum={3}
+              />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
-              <About path={`/Lab${lab}/About`} user={state.main.user} labID={lab} />
+              <About
+                path={`/Lab${lab}/About`}
+                user={state.main.user}
+                labID={lab}
+              />
 
-              <Reading path={`/Lab${lab}/Reading`} user={state.main.user} labID={lab} />
+              <Reading
+                path={`/Lab${lab}/Reading`}
+                user={state.main.user}
+                labID={lab}
+              />
 
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
               <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
@@ -111,7 +132,11 @@ class App extends Component {
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
               <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
 
-              <Reinforcement path={`/Lab${lab}/Reinforcement`} user={state.main.user} labID={lab} />
+              <Reinforcement
+                path={`/Lab${lab}/Reinforcement`}
+                user={state.main.user}
+                labID={lab}
+              />
 
               <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user} />
             </Router>

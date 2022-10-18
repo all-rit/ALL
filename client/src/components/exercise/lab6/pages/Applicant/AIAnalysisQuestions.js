@@ -1,125 +1,138 @@
-import React, {useEffect } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import { Form, FormGroup, Input, Label } from "reactstrap";
-import Quiz from "../../../../quiz/components/Quiz";
 
+const AIAnalysisQuestions = (props) => {
+  const { actions } = props;
 
-const AIAnalysisQuestions = (props) =>{
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, [actions]);
 
-    const {actions} = props;
+  function checkValue(e) {
+    var value = e.target.value;
+    console.log("You selected " + value);
+  }
 
-    useEffect(()=>{
-        actions.updateState(EXERCISE_PLAYING);
-    },[actions]);
-   
+  //changed so it doesn't skip phase 2
+  const handleContinue = () => {
+    navigate("/Lab6/Exercise/EmployerStart"); //How should we handle this (positive or negative)
+  };
 
-    function checkValue(e) {
-        var value = e.target.value;
-        console.log("You selected " + value);
+  /**
+   * Need to increase font, and align the checkboxes!!
+   */
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    // This cursed line of code will:
+    //  1. Grab the form with e.target
+    //  2. Create an instance of a FormData object from ReactStrap using the form data
+    //  3. Get the fields in that FormData object
+    //  4. Create a new object from those entries, our new object will be an Object and not FormData
+    // Essentially, this is just a really long winded way of casting FormData to Object, since
+    // apparently that's necessary despite this not being an object-oriented or strongly typed language
+    // Please refactor this eventually, for the love of all that is holy
+    const formData = Object.fromEntries(new FormData(e.target).entries());
+    let survey = [];
+    for (const [key, value] of Object.entries(formData)) {
+      if (value === "on") {
+        survey.push(key);
       }
-
-
-      //changed so it doesn't skip phase 2
-      const handleContinue = () =>{
-          navigate("/Lab6/Exercise/EmployerStart");//How should we handle this (positive or negative)
-      }
-  
-      /**
-       * Need to increase font, and align the checkboxes!!
-       */
-
-       const onFormSubmit = e => {
-        e.preventDefault()
-        // This cursed line of code will:
-        //  1. Grab the form with e.target
-        //  2. Create an instance of a FormData object from ReactStrap using the form data
-        //  3. Get the fields in that FormData object
-        //  4. Create a new object from those entries, our new object will be an Object and not FormData
-        // Essentially, this is just a really long winded way of casting FormData to Object, since
-        // apparently that's necessary despite this not being an object-oriented or strongly typed language
-        // Please refactor this eventually, for the love of all that is holy
-        const formData = Object.fromEntries((new FormData(e.target)).entries())
-        let survey=[]
-        for (const [key,value] of Object.entries(formData)){
-            if(value==="on"){
-                survey.push(key)
-            }
-        }
-        console.log(survey)
-        if(survey.length!==0){
-            handleContinue()
-        }
     }
+    console.log(survey);
+    if (survey.length !== 0) {
+      handleContinue();
+    }
+  };
 
-    return(
-        <Form onSubmit={onFormSubmit}>
-        <div className="center-div">
-            <h2 class="cognitive_instructions">Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?</h2>
-            
-            <div className="analysis__questions">
-                <FormGroup check >
-                    <Label for="gender" check>
-                        <Input id="gender" name="gender" type="checkbox" className="analysis__checkbox"/>
-                        <div className="analysis__question">
-                            Gender
-                        </div>
-                    </Label>
-                </FormGroup>
-                <FormGroup check >
-                    <Label for="years" check>
-                        <Input id="years" name="years" type="checkbox" className="analysis__checkbox"/>
-                        <div className="analysis__question">
-                            Years of Experience
-                        </div>
-                    </Label>
-                </FormGroup>
-                <FormGroup check >
-                    <Label for="availability" check>
-                        <Input id="availability" name="availability" type="checkbox" className="analysis__checkbox" /> 
-                        <div className="analysis__question">
-                            Availability
-                        </div>
-                    </Label>
-                </FormGroup>
-                <FormGroup check >
-                    <Label for="salary" check>
-                        <Input id="salary" name="salary" type="checkbox" className="analysis__checkbox"/>
-                        <div className="analysis__question">
-                            Salary
-                        </div>
-                    </Label>
-                </FormGroup>
-                <FormGroup check >
-                    <Label for="facialhair" check>
-                        <Input id="facialhair" name="facialhair" type="checkbox" className="analysis__checkbox"/>
-                        <div className="analysis__question">
-                            Age
-                        </div>
-                    </Label>
-                </FormGroup>
-                
-                
-            </div>
+  return (
+    <Form onSubmit={onFormSubmit}>
+      <div className="center-div">
+        <h2 className="cognitive_instructions">
+          Which of these attributes do you think that the AI was looking for in
+          this exercise in order to deny someone?
+        </h2>
 
-            <button
-                className="btn btn-primary text-black btn-xl text-uppercase "     
-                type="submit"
-                key="confirm"
-            >
-                Submit
-            </button>
+        <div className="analysis__questions">
+          <FormGroup check>
+            <Label for="gender" check>
+              <Input
+                id="gender"
+                name="gender"
+                type="checkbox"
+                className="analysis__checkbox"
+              />
+              <div className="analysis__question">Gender</div>
+            </Label>
+          </FormGroup>
+          <FormGroup check>
+            <Label for="years" check>
+              <Input
+                id="years"
+                name="years"
+                type="checkbox"
+                className="analysis__checkbox"
+              />
+              <div className="analysis__question">Years of Experience</div>
+            </Label>
+          </FormGroup>
+          <FormGroup check>
+            <Label for="availability" check>
+              <Input
+                id="availability"
+                name="availability"
+                type="checkbox"
+                className="analysis__checkbox"
+              />
+              <div className="analysis__question">Availability</div>
+            </Label>
+          </FormGroup>
+          <FormGroup check>
+            <Label for="salary" check>
+              <Input
+                id="salary"
+                name="salary"
+                type="checkbox"
+                className="analysis__checkbox"
+              />
+              <div className="analysis__question">Salary</div>
+            </Label>
+          </FormGroup>
+          <FormGroup check>
+            <Label for="facialhair" check>
+              <Input
+                id="facialhair"
+                name="facialhair"
+                type="checkbox"
+                className="analysis__checkbox"
+              />
+              <div className="analysis__question">Age</div>
+            </Label>
+          </FormGroup>
+        </div>
+
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase "
+          type="submit"
+          key="confirm"
+        >
+          Submit
+        </button>
       </div>
-      </Form>
-    );
-}
+    </Form>
+  );
+};
 
 export default AIAnalysisQuestions;
-  
+
 //         return(
 //           <div className="center-div">
 //               <h2 class="playthrough__title">Which of these attributes do you believe were reasons why you were not selected:</h2>
-  
+
 //               <div>
 //           <input id="box1" onChange={checkValue} type="checkbox" value="Box1"/>
 //           <label htmlFor="#box1">Gender</label>
@@ -140,8 +153,7 @@ export default AIAnalysisQuestions;
 //           <input id="box5" onChange={checkValue} type="checkbox" value="Box5"/>
 //           <label htmlFor="#box4">College Major</label>
 //         </div>
-  
-      
+
 //         <button
 //                   className="btn btn-primary text-black btn-xl text-uppercase "
 //                   onClick = {handleContinue}
@@ -153,88 +165,83 @@ export default AIAnalysisQuestions;
 //       );
 //   }
 
+// const {actions} = props;
 
+// useEffect(()=>{
+//     actions.updateState(EXERCISE_PLAYING);
+// },[actions]);
 
-    // const {actions} = props;
+// const handleContinue = () =>{
+//     navigate("/Lab6/Exercise/NegativeReasoning");
+// }
 
-    // useEffect(()=>{
-    //     actions.updateState(EXERCISE_PLAYING);
-    // },[actions]);
+// const onFormSubmit = e => {
+//     e.preventDefault()
+//     // This cursed line of code will:
+//     //  1. Grab the form with e.target
+//     //  2. Create an instance of a FormData object from ReactStrap using the form data
+//     //  3. Get the fields in that FormData object
+//     //  4. Create a new object from those entries, our new object will be an Object and not FormData
+//     // Essentially, this is just a really long winded way of casting FormData to Object, since
+//     // apparently that's necessary despite this not being an object-oriented or strongly typed language
+//     // Please refactor this eventually, for the love of all that is holy
+//     const formData = Object.fromEntries((new FormData(e.target)).entries())
+//     let survey=[]
+//     for (const [key,value] of Object.entries(formData)){
+//         if(value==="on"){
+//             survey.push(key)
+//         }
+//     }
+//     console.log(survey)
+//     if(survey.length!==0){
+//         handleContinue()
+//     }
+// }
 
-    // const handleContinue = () =>{
-    //     navigate("/Lab6/Exercise/NegativeReasoning");
-    // }
+// const questions = [
+//     {
+//         val: 0,
+//         content: "Gender"
+//     },
+//     {
+//         val: 0,
+//         content: "Years of Experience"
+//     },
+//     {
+//         val: 0,
+//         content: "Facial hair"
+//     },
+//     {
+//         val: 1,
+//         content: "Age"
+//     },
+//     {
+//         val: 1,
+//         content: "GPA"
+//     }
 
-    // const onFormSubmit = e => {
-    //     e.preventDefault()
-    //     // This cursed line of code will:
-    //     //  1. Grab the form with e.target
-    //     //  2. Create an instance of a FormData object from ReactStrap using the form data
-    //     //  3. Get the fields in that FormData object
-    //     //  4. Create a new object from those entries, our new object will be an Object and not FormData
-    //     // Essentially, this is just a really long winded way of casting FormData to Object, since
-    //     // apparently that's necessary despite this not being an object-oriented or strongly typed language
-    //     // Please refactor this eventually, for the love of all that is holy
-    //     const formData = Object.fromEntries((new FormData(e.target)).entries())
-    //     let survey=[]
-    //     for (const [key,value] of Object.entries(formData)){
-    //         if(value==="on"){
-    //             survey.push(key)
-    //         }
-    //     }
-    //     console.log(survey)
-    //     if(survey.length!==0){
-    //         handleContinue()
-    //     }
-    // }
+// ];
 
-    // const questions = [
-    //     {
-    //         val: 0,
-    //         content: "Gender"
-    //     },
-    //     {
-    //         val: 0,
-    //         content: "Years of Experience"
-    //     },
-    //     {
-    //         val: 0,
-    //         content: "Facial hair"
-    //     },
-    //     {
-    //         val: 1,
-    //         content: "Age"
-    //     },
-    //     {
-    //         val: 1,
-    //         content: "GPA"
-    //     }
+// return(
+//     <Form onSubmit={onFormSubmit}>
+//     <div className="center-div">
+//         <h2 class="playthrough__title analysis__rejection">After carefully reviewing your application, we regret to inform you that you were not selected for further consideration.</h2>
+//         {/* <h2 class="cognitive_instructions">Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?</h2> */}
 
-    // ];
+//         <Quiz
+//                 answer={""}
+//                 answerOptions={questions}
+//                 questionId={1}
+//                 question={"Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?"}
+//                 questionTotal={1}
+//                 onAnswerSelected={()=>{}}
+//                 nextQuestion={()=>{}}
+//                 disable={true}
+//                 multiChoice = {true}
+//         />
 
-
-    
-
-    // return(
-    //     <Form onSubmit={onFormSubmit}>
-    //     <div className="center-div">
-    //         <h2 class="playthrough__title analysis__rejection">After carefully reviewing your application, we regret to inform you that you were not selected for further consideration.</h2>
-    //         {/* <h2 class="cognitive_instructions">Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?</h2> */}
-            
-    //         <Quiz
-    //                 answer={""}
-    //                 answerOptions={questions}
-    //                 questionId={1}
-    //                 question={"Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?"}
-    //                 questionTotal={1}
-    //                 onAnswerSelected={()=>{}}
-    //                 nextQuestion={()=>{}}
-    //                 disable={true}
-    //                 multiChoice = {true}
-    //         />
-
-
-{/*             
+{
+  /*             
             <div className="analysis__questions">
                 <FormGroup check >
                     <Label for="years" check>
@@ -276,10 +283,11 @@ export default AIAnalysisQuestions;
                         </div>
                     </Label>
                 </FormGroup>
-            </div> */}
+            </div> */
+}
 
 //             <button
-//                 className="btn btn-primary text-black btn-xl text-uppercase "     
+//                 className="btn btn-primary text-black btn-xl text-uppercase "
 //                 type="submit"
 //                 key="confirm"
 //                 onClick={handleContinue}
@@ -290,8 +298,3 @@ export default AIAnalysisQuestions;
 //       </Form>
 //     );
 // }
-
-
-
-
-

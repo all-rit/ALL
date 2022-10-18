@@ -34,7 +34,7 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 2rem;
 }
 
@@ -59,7 +59,7 @@
   display: grid;
   margin-bottom: 0.75rem;
   -ms-grid-columns: 2fr 1fr;
-      grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .playthrough__category {

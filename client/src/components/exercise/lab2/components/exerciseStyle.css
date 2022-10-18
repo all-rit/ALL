@@ -1,24 +1,24 @@
-.circle{
+.circle {
   height: 75px;
   width: 75px;
   border-radius: 50%;
   display: inline-block;
 }
 
-.circleClicked{
+.circleClicked {
   display: flex;
   justify-content: center;
   margin-top: 90px;
   margin-bottom: 65px;
 }
 
-.timer{
+.timer {
   display: flex;
   justify-content: center;
   font-size: 40px;
   padding-top: 10px;
 }
-.exerciseTimer{
+.exerciseTimer {
   display: flex;
   justify-content: center;
   font-size: 50px;
@@ -31,12 +31,12 @@
   margin-top: 30px;
 }
 
-.startTimer{
+.startTimer {
   font-style: bold;
   font-size: 60px;
 }
 
-.startExerciseTimer{
+.startExerciseTimer {
   display: flex;
   justify-content: center;
   font-style: bold;
@@ -48,7 +48,7 @@
   margin-left: 10px;
 }
 
-.replay{
+.replay {
   font-size: 30px;
   margin-top: 10px;
   margin-bottom: 15px;
@@ -59,7 +59,7 @@
   text-align: center;
 }
 
-.center{
+.center {
   justify-content: center;
 }
 
@@ -68,7 +68,8 @@
   justify-content: space-around;
 }
 
-th, td {
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
 }
@@ -132,7 +133,7 @@ td {
   float: left;
 }
 
-.scoreLine{
+.scoreLine {
   margin-top: 25px;
   display: flex;
   justify-content: space-around;
@@ -140,7 +141,7 @@ td {
   background: black;
 }
 
-.scoreElement{
+.scoreElement {
   color: white;
   font-size: 18px;
   text-align: center;
@@ -225,7 +226,7 @@ td {
 }
 
 .negativeData {
-  background-color: red
+  background-color: red;
 }
 
 @media (min-width: 1200px) and (max-width: 1600px) {
@@ -266,7 +267,6 @@ td {
   }
 }
 
-
 @media (min-width: 1650px) {
   .circle {
     height: 75px;
@@ -302,7 +302,7 @@ td {
   }
 }
 
-@media (min-width: 600px) and (max-width: 1200px){
+@media (min-width: 600px) and (max-width: 1200px) {
   .circle {
     height: 65px;
     width: 65px;
@@ -341,7 +341,7 @@ td {
   }
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
   .circle {
     height: 30px;
     width: 30px;

@@ -1,13 +1,15 @@
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { AppBar, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { navigate } from "@reach/router";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import {EXERCISE_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
-import {PageService} from "../../../../../services/PageService";
+import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
+import { PageService } from "../../../../../services/PageService";
 class ViewFix extends Component {
-
   constructor(props) {
     super(props);
     ViewFix.navOnClick = ViewFix.navOnClick.bind(this);
@@ -15,49 +17,49 @@ class ViewFix extends Component {
       aria1: "Ok button",
       aria2: "Cancel button",
       render: "",
-      secondsElapsed: 0
-    }
+      secondsElapsed: 0,
+    };
   }
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   static navOnClick() {
     const name = "ViewFix";
     PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
     navigate("/Lab3/Exercise/ProblemFix");
   }
-  
+
   componentDidMount() {
-      const { actions } = this.props;
-      actions.updateState(EXERCISE_PLAYING);
-      if (window.location.state) {
-        this.setState({
-          aria1: window.location.state.aria1.replace(/<[^>]*>?/gm, ""),
-          aria2: window.location.state.aria2.replace(/<[^>]*>?/gm, "")
-        });
-      }
-      this.interval = setInterval(
-          () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-          1000
-      );
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
+    if (window.location.state) {
+      this.setState({
+        aria1: window.location.state.aria1.replace(/<[^>]*>?/gm, ""),
+        aria2: window.location.state.aria2.replace(/<[^>]*>?/gm, ""),
+      });
+    }
+    this.interval = setInterval(
+      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
+      1000
+    );
   }
 
   render() {
     const textToSpeech = (e, text) => {
-      let synth = window.speechSynthesis;
+      const synth = window.speechSynthesis;
       synth.cancel();
-      let utterThis = new SpeechSynthesisUtterance(text);
+      const utterThis = new SpeechSynthesisUtterance(text);
       synth.speak(utterThis);
     };
-    
+
     return (
       <div>
-        <AppBar position="static" className = "appBar">
+        <AppBar position="static" className="appBar">
           <Toolbar>
             <Grid justify="center" container spacing={10}>
               <Grid item>
-                <Typography 
+                <Typography
                   variant={"h4"}
                   aria-label={"Title"}
                   gutterBottom
@@ -86,8 +88,13 @@ class ViewFix extends Component {
           aria-label={"Body Instructions"}
           gutterBottom
           tabindex={"0"}
-          onFocus={(e) => textToSpeech(e, "If you have updated the buttons with the appropriate " + 
-          "aria-labels then you have succeeded. They can now be effectively described by screenreaders.")}
+          onFocus={(e) =>
+            textToSpeech(
+              e,
+              "If you have updated the buttons with the appropriate " +
+                "aria-labels then you have succeeded. They can now be effectively described by screenreaders."
+            )
+          }
         >
           If you have updated the buttons with the appropriate aria-labels then
           you have succeeded. They can now be effectively described by
@@ -112,7 +119,7 @@ class ViewFix extends Component {
         <br />
         <Button
           variant={"contained"}
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          className="btn btn-second btn-xl text-uppercase  leftButton"
           onClick={ViewFix.navOnClick}
           onFocus={(e) => textToSpeech(e, "Next")}
         >

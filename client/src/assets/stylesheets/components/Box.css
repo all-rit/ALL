@@ -4,9 +4,9 @@
   padding: 1rem 2rem;
   position: relative;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .box--red {
@@ -40,12 +40,12 @@
 
 .box--glow {
   -webkit-box-shadow: 0px 0px 15px 1px red;
-          box-shadow: 0px 0px 15px 1px red;
+  box-shadow: 0px 0px 15px 1px red;
 }
 
 .box--glow:after {
   -webkit-animation: MoveUpDown 1s ease-in-out infinite;
-          animation: MoveUpDown 1s ease-in-out infinite;
+  animation: MoveUpDown 1s ease-in-out infinite;
   position: absolute;
   content: "\25B2";
   font-size: 2rem;

@@ -6,9 +6,9 @@
   bottom: 0;
   z-index: 2;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .stats__container {
@@ -17,11 +17,12 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   margin: 1.5rem auto;
 }
 
-.stats__category, .stats__result {
+.stats__category,
+.stats__result {
   margin: 0 0 0.5rem 0;
   font-size: 1.875rem;
 }

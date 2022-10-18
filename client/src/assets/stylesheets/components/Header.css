@@ -4,7 +4,7 @@
   display: grid;
   min-height: 78px;
   -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   position: fixed;
   top: 0;
 }
@@ -16,7 +16,9 @@
 
 #all-header-text {
   color: #fed136;
-  font-family: "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 30px;
   margin-left: -15px;
   margin-top: -10px;
@@ -26,19 +28,27 @@
   width: 191px;
   height: 46px;
   display: inline-block;
-  background-image: image("../../images/google_buttons/btn_google_signin_dark_normal_web.png");
+  background-image: image(
+    "../../images/google_buttons/btn_google_signin_dark_normal_web.png"
+  );
 }
 
 .google__button:not(.google__button--disabled):hover {
-  background-image: image("../../images/google_buttons/btn_google_signin_dark_focus_web.png");
+  background-image: image(
+    "../../images/google_buttons/btn_google_signin_dark_focus_web.png"
+  );
 }
 
 .google__button:not(.google__button--disabled):active {
-  background-image: image("../../images/google_buttons/btn_google_signin_dark_pressed_web.png");
+  background-image: image(
+    "../../images/google_buttons/btn_google_signin_dark_pressed_web.png"
+  );
 }
 
 .google__button--disabled {
-  background-image: image("../../images/google_buttons/btn_google_signin_dark_disabled_web.png");
+  background-image: image(
+    "../../images/google_buttons/btn_google_signin_dark_disabled_web.png"
+  );
   cursor: not-allowed;
 }
 
@@ -47,8 +57,8 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 @media (min-width: 992px) {
