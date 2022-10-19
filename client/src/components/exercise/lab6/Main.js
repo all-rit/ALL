@@ -10,19 +10,16 @@ import ExerciseStart from "./pages/Applicant/ExerciseStart";
 
 import AvatarSelection from "./pages/Applicant/AvatarSelection";
 
-//Added QualQues imports
-import QualQues1 from "./pages/Applicant/QualQues1";
-import QualQues2 from "./pages/Applicant/QualQues2";
-import QualQues3 from "./pages/Applicant/QualQues3";
-import QualQues4 from "./pages/Applicant/QualQues4";
-import QualQues5 from "./pages/Applicant/QualQues5";
-
 
 //Add Qualification Questions handler in here and have after Avatar Selection import
-import QualQuestionsFunction from "./components/QualQuestionsFunction";
+// import QualQuestionsFunction from "./components/QualQuestionsFunction";
 
 
+<<<<<<< HEAD
 //import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
+=======
+import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
+>>>>>>> 12638ae9e56c37697b9732d949d373b2879e2941
 
 import AnalyzeData from "./pages/Applicant/AnalyzeData";
 import NegativeReasoning from "./pages/Applicant/NegativeReasoning";
@@ -68,7 +65,7 @@ class Main extends Component {
                     <AvatarSelection path="/AvatarSelection" actions={actions}/>
 
                     {/* Added qualification questions path to main.js while commenting out 5 redundencies underneath     */}
-                    <QualQuestionsFunction path="/QualificationQuestions" actions={actions}/>
+                    {/* <QualQuestionsFunction path="/QualificationQuestions" actions={actions}/> */}
 
 {/* 
                     <QualQues1 path="/QualQues1" actions={actions}/>
@@ -79,7 +76,7 @@ class Main extends Component {
 
                     {/*Commented out QualificationQuestions for now */}
 
-                    {/* <QualificationQuestions path="/QualificationQuestions" actions={actions}/> */}
+                    <QualificationQuestions path="/QualificationQuestions" actions={actions}/>
                     <AnalyzeData path="/AnalyzeData" actions={actions}/>
                     <NegativeReasoning path="/NegativeReasoning" actions={actions}/>
                     <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions}/>

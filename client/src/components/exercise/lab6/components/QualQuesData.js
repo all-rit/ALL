@@ -1,5 +1,5 @@
 
-[
+export const qqjson = [
     {  
       "question": "What gender do you identify as?",
       "answers": [
@@ -109,5 +109,5 @@
         }
     ],
     "multichoice": false
-  }
-]
+  },
+];
