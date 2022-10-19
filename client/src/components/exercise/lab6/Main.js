@@ -10,13 +10,6 @@ import ExerciseStart from "./pages/Applicant/ExerciseStart";
 
 import AvatarSelection from "./pages/Applicant/AvatarSelection";
 
-//Added QualQues imports
-import QualQues1 from "./pages/Applicant/QualQues1";
-import QualQues2 from "./pages/Applicant/QualQues2";
-import QualQues3 from "./pages/Applicant/QualQues3";
-import QualQues4 from "./pages/Applicant/QualQues4";
-import QualQues5 from "./pages/Applicant/QualQues5";
-
 
 //Add Qualification Questions handler in here and have after Avatar Selection import
 // import QualQuestionsFunction from "./components/QualQuestionsFunction";
