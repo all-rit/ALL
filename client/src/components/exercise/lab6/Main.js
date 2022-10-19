@@ -22,7 +22,7 @@ import QualQues5 from "./pages/Applicant/QualQues5";
 import QualQuestionsFunction from "./components/QualQuestionsFunction";
 
 
-// import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
+//import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
 
 import AnalyzeData from "./pages/Applicant/AnalyzeData";
 import NegativeReasoning from "./pages/Applicant/NegativeReasoning";
