@@ -7,10 +7,8 @@ import QualQues from "../../../quiz/components/QualQues";
 //need substitute for result page, or can just implement a handle submit on this one
 
 const QualQuestionsFunction = (props) => {
-
-    const [currentQuestion, setCurrentQuestion] = useState(0);
     const [questions, setQuestions] = useState({});
-    const [questionsAnswered, setQuestionsAnswered] = useState(false)
+    const [answered, setanswered] = useState(false);
     //this constant need to come into play with a handle submit
 
     const handleSubmit = () =>{
@@ -45,10 +43,10 @@ const QualQuestionsFunction = (props) => {
                 Submit
             </button> */}
          if (questionId == 4){
-            this.setState({questionsAnswered: true})
+            this.setState({answered: true})
          }
 
-         if (questionsAnswered){
+         if (answered){
              <button
              className="btn btn-primary text-black btn-xl text-uppercase "
              onClick = {handleSubmit}

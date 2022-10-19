@@ -19,10 +19,10 @@ import QualQues5 from "./pages/Applicant/QualQues5";
 
 
 //Add Qualification Questions handler in here and have after Avatar Selection import
-import QualQuestionsFunction from "./components/QualQuestionsFunction";
+// import QualQuestionsFunction from "./components/QualQuestionsFunction";
 
 
-// import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
+import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
 
 import AnalyzeData from "./pages/Applicant/AnalyzeData";
 import NegativeReasoning from "./pages/Applicant/NegativeReasoning";
@@ -68,7 +68,7 @@ class Main extends Component {
                     <AvatarSelection path="/AvatarSelection" actions={actions}/>
 
                     {/* Added qualification questions path to main.js while commenting out 5 redundencies underneath     */}
-                    <QualQuestionsFunction path="/QualificationQuestions" actions={actions}/>
+                    {/* <QualQuestionsFunction path="/QualificationQuestions" actions={actions}/> */}
 
 {/* 
                     <QualQues1 path="/QualQues1" actions={actions}/>
@@ -79,7 +79,7 @@ class Main extends Component {
 
                     {/*Commented out QualificationQuestions for now */}
 
-                    {/* <QualificationQuestions path="/QualificationQuestions" actions={actions}/> */}
+                    <QualificationQuestions path="/QualificationQuestions" actions={actions}/>
                     <AnalyzeData path="/AnalyzeData" actions={actions}/>
                     <NegativeReasoning path="/NegativeReasoning" actions={actions}/>
                     <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions}/>
