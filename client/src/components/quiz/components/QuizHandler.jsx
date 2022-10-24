@@ -32,6 +32,7 @@ function assignQuizQuestions(labId) {
           answers: [
             {
               val: 0,
+              type: 0,
               content: "Default",
             },
           ],
@@ -41,8 +42,10 @@ function assignQuizQuestions(labId) {
   }
 }
 /**
- * QuizHandler is react component responsible for tracking users
- * @param {*} props
+ * QuizHandler is react component responsible for tracking users responses
+ * this will be the main handler to manage the state and logic for the new quiz component
+ * @param {Object} props will be the injectable fields that will populate and provide the
+ * component with information.
  */
 const QuizHandler = (props) => {
   const [currentLabId, setCurrentLab] = useState(props.labId);
@@ -52,7 +55,6 @@ const QuizHandler = (props) => {
     questions[currentQuestionCursor].answers
   );
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState({});
   const [disableNext, setDisableNext] = useState(true);
@@ -70,12 +72,10 @@ const QuizHandler = (props) => {
   }
 
   function selectAnswer(e) {
-    const answerValue = e.val;
-    setDisableNext(false);
-    console.log("select");
+    const answerValue = e.targe.value;
+    console.log("Selected Answer: " + answerValue);
+    
   }
-
-  useEffect(() => {});
 
   return (
     <>
