@@ -76,6 +76,13 @@ const QuizHandler = (props) => {
       }
     }
   }
+  /**
+   * selectAnswer() is a function responsible for recording the
+   * behavior in which a user enters in their answer. This function once
+   * called will record the responses index and update the state of the
+   * component.
+   * @param {*} e event containing the index of the selected answer response.
+   */
   function selectAnswer(e) {
     const answerValue = e.target.value;
     let tempSelectedAnswers;
@@ -83,9 +90,42 @@ const QuizHandler = (props) => {
     console.log(questions[currentQuestionCursor].multiChoice);
     tempSelectedAnswers = [...selectedAnswers];
     tempSelectedAnswers[currentQuestionCursor] = answerValue;
-    console.log("Recorded answers:" + tempSelectedAnswers);
+    console.log("Recorded answers: " + tempSelectedAnswers);
     setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
+  }
+  /**
+   * selectMulti is a function that is responsible for handling
+   * behavior of a multi-answer question by recording the given input to
+   * a set. this allowing for no duplicates and to easily remove entries when we
+   * want to change what data is being recorded.
+   * @param {*} e event holding the index of the selected answer
+   */
+  function selectMulti(e) {
+    const answerValue = e.target.value;
+    let tempAnswers = selectedAnswers;
+    let storageSet;
+    // ensures that there is a value stored there
+    if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
+      // copies over the set
+      storageSet = new Set(tempAnswers[currentQuestionCursor]);
+      // checks to see if the set has the value in it
+      !storageSet.has(answerValue)
+        ? // adds it if it doesn't
+          storageSet.add(answerValue)
+        : // removes it if it does
+          storageSet.delete(answerValue);
+      // assigns the updated set to the array
+      tempAnswers[currentQuestionCursor] = storageSet;
+    } else {
+      // creates an empty set because does not exist in that spot
+      storageSet = new Set();
+      // adds the value
+      storageSet.add(answerValue);
+      // assigns it to the array
+      tempAnswers[currentQuestionCursor] = storageSet;
+    }
+    setSelectedAnswers(tempAnswers);
   }
 
   return (
