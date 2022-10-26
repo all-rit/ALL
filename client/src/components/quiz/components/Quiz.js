@@ -10,13 +10,14 @@ function Quiz(props) {
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
-        key={key.content}
+        key={key.type}
         answerContent={key.content}
         answerType={key.type}
         answer={props.answer}
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
         multiChoice={props.multiChoice}
+        
       />
     );
   }

@@ -56,25 +56,36 @@ const QuizHandler = (props) => {
   );
   const [quizCompleted, setQuizCompleted] = useState(false);
   // initialized to a empty array to house recorded answers
-  let [selectedAnswers, setSelectedAnswers] = useState({});
-  const [disableNext, setDisableNext] = useState(true);
+  let [selectedAnswers, setSelectedAnswers] = useState([]);
+  let [disableNext, setDisableNext] = useState(true);
 
-  // eslint-disable-next-line no-undef
+  function checkNextIfAtEnd() {
+    let question_mapper = currentQuestionCursor + 1;
+    console.log(question_mapper);
+    return question_mapper === questions.length ? false : true;
+  }
+
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
       setDisableNext(true);
-    } else {
-      console.log("They have hit the end of the quiz");
+      if (checkNextIfAtEnd) {
+        console.log("I am making it here " + updateCursor);
+      }
     }
   }
-
   function selectAnswer(e) {
-    const answerValue = e.targe.value;
+    const answerValue = e.target.value;
+    let tempSelectedAnswers;
     console.log("Selected Answer: " + answerValue);
-    
+    console.log(questions[currentQuestionCursor].multiChoice);
+    tempSelectedAnswers = [...selectedAnswers];
+    tempSelectedAnswers[currentQuestionCursor] = answerValue;
+    console.log("Recorded answers:" + tempSelectedAnswers);
+    setSelectedAnswers(tempSelectedAnswers);
+    setDisableNext(false);
   }
 
   return (
