@@ -79,7 +79,31 @@ const QuizHandler = (props) => {
    */
   function onComplete() {
     // this will be filled in currently only stub
+    console.log("completed");
   }
+
+  function scoreResults() {
+    let questionsTotal = questions.length;
+    let count = 0;
+    let output = [];
+    const QuizQuestions = {
+      question: "",
+      answers: [],
+      selectAnswers: {},
+      IsCorrect: false,
+    };
+    for (let i = 0; i < questionsTotal; i++) {
+      let tempQuestion = { ...QuizQuestions };
+      tempQuestion.question = questions[i].question;
+      if (questions[i].multiChoice) {
+        // logic for multi select
+      } else {
+        // logic for non multi select
+      }
+      
+    }
+  }
+
   /**
    * selectAnswer() is a function responsible for recording the
    * behavior in which a user enters in their answer. This function once
@@ -91,9 +115,12 @@ const QuizHandler = (props) => {
     const answerValue = e.target.value;
     let tempSelectedAnswers;
     console.log("Selected Answer: " + answerValue);
-    console.log(questions[currentQuestionCursor].multiChoice);
     tempSelectedAnswers = [...selectedAnswers];
-    tempSelectedAnswers[currentQuestionCursor] = answerValue;
+    tempSelectedAnswers[currentQuestionCursor] = {
+      content: questions[currentQuestionCursor].answers[answerValue].content,
+      val: 1,
+      type: answerValue,
+    };
     console.log("Recorded answers: " + tempSelectedAnswers);
     setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
