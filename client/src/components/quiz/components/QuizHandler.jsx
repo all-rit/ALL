@@ -59,21 +59,26 @@ const QuizHandler = (props) => {
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
 
-  function checkNextIfAtEnd() {
-    let question_mapper = currentQuestionCursor + 1;
-    console.log(question_mapper);
-    return question_mapper === questions.length ? false : true;
-  }
-
+  /**
+   * HandleNext() is a function that is responsible for allowing the user to
+   * iterate to the next question. this will then update the disabling for the
+   * selection on on the next question as it iterates to the next option
+   */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
       setDisableNext(true);
-    } else if (currentQuestionCursor + 1 === questions.length) {
-      setQuizCompleted(true);
     }
+  }
+  /**
+   * onComplete is a function that is responsible for preparing and running the
+   * calculations to grade a users responses to the quiz. This will then prepare the data
+   * to display to the user for the result portion of the quiz.
+   */
+  function onComplete() {
+    // this will be filled in currently only stub
   }
   /**
    * selectAnswer() is a function responsible for recording the
@@ -141,6 +146,7 @@ const QuizHandler = (props) => {
           multiSelectedEntry={selectMulti}
           nextQuestion={handleNext}
           onAnswerSelected={selectAnswer}
+          onComplete={onComplete}
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
           questionTotal={questions.length}
