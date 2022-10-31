@@ -71,9 +71,8 @@ const QuizHandler = (props) => {
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
       setDisableNext(true);
-      if (checkNextIfAtEnd) {
-        console.log("I am making it here " + updateCursor);
-      }
+    } else if (currentQuestionCursor + 1 === questions.length) {
+      setQuizCompleted(true);
     }
   }
   /**
@@ -103,6 +102,7 @@ const QuizHandler = (props) => {
    */
   function selectMulti(e) {
     const answerValue = e.target.value;
+    console.log("I am here");
     let tempAnswers = selectedAnswers;
     let storageSet;
     // ensures that there is a value stored there
@@ -119,12 +119,14 @@ const QuizHandler = (props) => {
       tempAnswers[currentQuestionCursor] = storageSet;
     } else {
       // creates an empty set because does not exist in that spot
+      setDisableNext(false);
       storageSet = new Set();
       // adds the value
       storageSet.add(answerValue);
       // assigns it to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     }
+    console.log(tempAnswers);
     setSelectedAnswers(tempAnswers);
   }
 
@@ -134,22 +136,23 @@ const QuizHandler = (props) => {
         <Quiz
           answer={""}
           answerOptions={answerOption}
+          disable={disableNext}
+          multiChoice={questions[currentQuestionCursor].multiChoice}
+          multiSelectedEntry={selectMulti}
+          nextQuestion={handleNext}
+          onAnswerSelected={selectAnswer}
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
           questionTotal={questions.length}
-          onAnswerSelected={selectAnswer}
-          nextQuestion={handleNext}
-          disable={disableNext}
-          multiChoice={questions[currentQuestionCursor].multiChoice}
         ></Quiz>
       ) : (
         // will spawn story for
         <Result
-          quizResult={""}
+          quizResult={"result"}
           quizScore={100}
-          selectedAnswers={[""]}
-          quizQuestions={[""]}
-          lab={[]}
+          selectedAnswers={selectedAnswers}
+          quizQuestions={questions}
+          lab={currentLabId}
         ></Result>
       )}
     </>
