@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
 const db = require('../database');
 
 exports.updateGuestUserId = (userid, usersessionid) =>{

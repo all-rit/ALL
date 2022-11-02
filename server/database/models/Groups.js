@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 module.exports = (sequelize, DataTypes) => {
   const {nanoid} = require('nanoid');
   const Groups = sequelize.define(

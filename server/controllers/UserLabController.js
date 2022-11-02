@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const UserLabService = require('../services/UserLabService');
 
 exports.completeAbout = (req, res) => {

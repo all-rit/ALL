@@ -1,3 +1,6 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
+/* eslint-disable max-len */
 const db = require('../database');
 
 exports.completeAbout= (data)=>{
@@ -231,7 +234,7 @@ exports.userCompleteReading= (data)=>{
               if (userlabcompletion.aboutcompletedtime!==null &&
                             userlabcompletion.readingcompletedtime!==null &&
                             userlabcompletion.exercisecompletedtime!==null &&
-                            userlabcompletion.reinforcementcompletedtime!==null &&
+                            // userlabcompletion.reinforcementcompletedtime!==null &&
                             userlabcompletion.quizcompletedtime!==null) {
                 userlabcompletion.labcompletiontime=datetime;
               }
