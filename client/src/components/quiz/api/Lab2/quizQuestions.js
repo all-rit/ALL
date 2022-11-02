@@ -5,23 +5,19 @@ const quizQuestionsLab2 = [
     answers: [
       {
         val: 0,
-        type: "0",
         content: "A measurement of a color’s brightness",
       },
       {
         val: 0,
-        type: "1",
         content: "A condition resulting in reduced sensitivity to green light",
       },
       {
         val: 1,
-        type: "2",
         content:
           "A measurement of the difference between two colors when they are layered on top of each other",
       },
       {
         val: 0,
-        type: "3",
         content: "None of the above",
       },
     ],
@@ -33,22 +29,18 @@ const quizQuestionsLab2 = [
     answers: [
       {
         val: 0,
-        type: "0",
         content: "Protanopia",
       },
       {
         val: 0,
-        type: "1",
         content: "Deuteranopia",
       },
       {
         val: 0,
-        type: "2",
         content: "Tritanopia",
       },
       {
         val: 1,
-        type: "3",
         content: "Dichrompia",
       },
     ],
@@ -60,22 +52,18 @@ const quizQuestionsLab2 = [
     answers: [
       {
         val: 0,
-        type: "0",
         content: "4",
       },
       {
         val: 1,
-        type: "1",
         content: "7",
       },
       {
         val: 0,
-        type: "2",
         content: "9",
       },
       {
         val: 0,
-        type: "3",
         content: "11",
       },
     ],
@@ -87,22 +75,18 @@ const quizQuestionsLab2 = [
     answers: [
       {
         val: 0,
-        type: "0",
         content: "Do nothing, it’s impossible to fix",
       },
       {
         val: 0,
-        type: "1",
         content: "Make everything black and white",
       },
       {
         val: 1,
-        type: "2",
         content: "Use a color contrast calculator",
       },
       {
         val: 0,
-        type: "3",
         content: "None of the above",
       },
     ],
@@ -114,22 +98,18 @@ const quizQuestionsLab2 = [
     answers: [
       {
         val: 0,
-        type: "0",
         content: "Dark red placed on another shade of dark red",
       },
       {
         val: 0,
-        type: "1",
         content: "White placed on light pink",
       },
       {
         val: 1,
-        type: "2",
         content: "Light pink placed on black",
       },
       {
         val: 0,
-        type: "3",
         content: "Black placed on black",
       },
     ],
