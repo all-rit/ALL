@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function RenderRadio(props) {
     return (
-        <li className = "renderRadio">
+        <li className = "answerOption">
             <input
             type="radio"
             className="radioCustomButton"

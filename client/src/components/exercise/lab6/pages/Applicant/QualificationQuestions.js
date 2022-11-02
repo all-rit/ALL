@@ -1,4 +1,7 @@
 import React, {useEffect } from "react";
+import PropTypes from "prop-types";
+import Question from "client/src/components/exercise/lab6/components/Question.js"
+import QuestionCount from "client/src/components/exercise/lab6/components/QuestionCount.js"
 import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
 import { qqjson } from "../../components/QualQuesData";
