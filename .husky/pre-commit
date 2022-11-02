@@ -10,3 +10,5 @@ eslint .
 cd ../server
 eslint --fix .
 eslint .
+
+npx pretty-quick --staged
