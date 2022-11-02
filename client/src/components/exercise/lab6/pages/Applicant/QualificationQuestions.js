@@ -4,7 +4,7 @@ import Question from "client/src/components/exercise/lab6/components/Question.js
 import QuestionCount from "client/src/components/exercise/lab6/components/QuestionCount.js"
 import { navigate } from "@reach/router";
 import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
-import { qqjson } from "../../components/QualQuesData";
+import qqjson from "../../components/QualQuesData.js";
 
 import Quiz from "../../../../quiz/components/Quiz";
 
@@ -19,22 +19,15 @@ const QualificationQuestions = (props) =>{
         navigate("/Lab6/Exercise/AnalyzeData");
     }
 
+    const qualificationquestions = {...qqjson};
+
     return(
         <div className="center-div">
             <h2 class="playthrough__title">Qualification Questions:</h2>
 
-            <>
-                {qqjson.map((data, key) => {
-                return (
-                    <div key={key}>
-                    {data.question +
-                        " , " +
-                        data.answers}
-                    </div>
-                );
-                })}
-            </>
-                    
+                <div>
+                    <h3> This is to be displayed here</h3>
+                </div>
 
 
             <button
