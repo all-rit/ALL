@@ -32,6 +32,37 @@ function QualificationQuestions(props) {
 
     // const qualificationquestions = {...qqjson};
 
+    //Commented return statement below gives nothing but white screen
+//     return (
+//         <div className="quiz container shadow" key={props.questionId}>
+//             <QuestionCount counter={props.questionId} total={props.questionTotal} />
+//             <Question content={props.question} />
+//             <ul className="answerOptions">
+//                 {props.answerOptions.map(renderRadioOptions)}
+//             </ul>
+//             <div className="align-right">
+//                 {props.questionId !== props.questionTotal ? (
+//                     <button
+//                         className="btn btn-second text-uppercase nextButton"
+//                         onClick={props.nextQuestion}
+//                         disabled={props.disable}
+//                     >
+//                         Next Question
+//                     </button>
+//                 ) : (
+//                     <button
+//                         className="btn btn-second text-uppercase nextButton"
+//                         onClick={props.onComplete}
+//                         disabled={props.disable}
+//                     >
+//                         Finished
+//                     </button>
+//                 )}
+//             </div>
+//         </div>
+//     );
+// }
+
     return (
         <div className="quiz container shadow" key={props.questionId}>
           <h2 class="playthrough_title">QualificationQuestions:</h2>
