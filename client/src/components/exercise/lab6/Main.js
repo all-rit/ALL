@@ -15,11 +15,8 @@ import AvatarSelection from "./pages/Applicant/AvatarSelection";
 // import QualQuestionsFunction from "./components/QualQuestionsFunction";
 
 
-<<<<<<< HEAD
 //import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
-=======
 import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
->>>>>>> 12638ae9e56c37697b9732d949d373b2879e2941
 
 import AnalyzeData from "./pages/Applicant/AnalyzeData";
 import NegativeReasoning from "./pages/Applicant/NegativeReasoning";
