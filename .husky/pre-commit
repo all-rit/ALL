@@ -2,14 +2,14 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "Starting Client style checking...."
+
 cd client
+
 npx prettier --write .
 
 npx prettier --check .
 
 eslint --fix .
-
-echo eslint .
 
 echo "All Client style checks passed!"
 
