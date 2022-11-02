@@ -100,7 +100,6 @@ const QuizHandler = (props) => {
       } else {
         // logic for non multi select
       }
-      
     }
   }
 
