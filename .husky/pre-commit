@@ -3,12 +3,19 @@
 
 cd client
 npx prettier --write .
+
 npx prettier --check .
+
 eslint --fix .
-eslint .
+
+echo eslint .
+
+echo "All Client tests passed!"
 
 cd ../server
 eslint --fix .
-eslint .
+echo eslint .
+
+echo "ALL Server tests passed!"
 
 npx pretty-quick --staged
