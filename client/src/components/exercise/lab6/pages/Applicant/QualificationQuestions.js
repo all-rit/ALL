@@ -32,25 +32,26 @@ function QualificationQuestions(props) {
 
     // const qualificationquestions = {...qqjson};
 
-    return(
+    return (
         <div className="quiz container shadow" key={props.questionId}>
-            <h2 class="playthrough__title">Qualification Questions:</h2>
-
-                <div>
-                    <h3> This is to be displayed here</h3>
-                </div>
-
+          <h2 class="playthrough_title">QualificationQuestions:</h2>
+          <div>
+            <h3>
+                This is to be displayed here!
+            </h3>
 
             <button
-                className="btn btn-primary text-black btn-xl text-uppercase "
-                onClick = {handleContinue}
+                className="btn btn-primary text-black btn-xl text-uppercase"
+                onClick= {handleContinue}
                 key="confirm"
             >
                 Finished
             </button>
-      </div>
-    );
-}
+            </div>
+            </div>
+        
+      );
+    }
 
 QualificationQuestions.propTypes = {
     answer: PropTypes.string.isRequired,
