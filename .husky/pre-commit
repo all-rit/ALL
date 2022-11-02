@@ -3,5 +3,10 @@
 
 cd client
 npx prettier --write .
-eslint --fix .
 npx prettier --check .
+eslint --fix .
+eslint .
+
+cd ../server
+eslint --fix .
+eslint .
