@@ -1,18 +1,26 @@
 import { React, useState } from "react";
 import { navigate } from "@reach/router";
-
+import QualQuesData from "./QualQuesData"
 //to use same functionality as quiz component
 import QualQues from "../../../quiz/components/QualQues";
 // import Result from "./Result";
 //need substitute for result page, or can just implement a handle submit on this one
 
-const QualQuestionsHandler = (props) => {
-    const [questions, setQuestions] = useState({});
+
+function assignQualQuestions() {
+    return QualQuesData;
+   
+}
+
+const QualQuestionsHandler = () => {
     let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
+    const [questions, setQuestions] = useState(assignQualQuestions());
     const [radioOption, setRadioOption] = useState(questions[currentQuestionCursor].answers);
     //this constant need to come into play with a handle submit
     let [disableNext, setDisableNext] = useState(true);
 
+  
+    
     function handleNext() {
         if (currentQuestionCursor < questions.length) {
             let updateCursor = currentQuestionCursor + 1;
@@ -44,6 +52,7 @@ const QualQuestionsHandler = (props) => {
           answer={""}
           radioOptions={radioOption}
           disable={disableNext}
+          multiChoice={questions[currentQuestionCursor].multichoice}
           nextQuestion={handleNext}
           onAnswerSelected={selectAnswer}
           onComplete={onComplete}
