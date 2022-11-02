@@ -9,7 +9,7 @@ import QualQues from "../../../quiz/components/QualQues";
 const QualQuestionsHandler = (props) => {
     const [questions, setQuestions] = useState({});
     let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-    const [answered, setanswered] = useState(questions[currentQuestionCursor].answers);
+    const [radioOption, setRadioOption] = useState(questions[currentQuestionCursor].answers);
     //this constant need to come into play with a handle submit
     let [disableNext, setDisableNext] = useState(true);
 
@@ -17,7 +17,7 @@ const QualQuestionsHandler = (props) => {
         if (currentQuestionCursor < questions.length) {
             let updateCursor = currentQuestionCursor + 1;
             setCurrentQuestionCursor(updateCursor);
-            setAnswerOption(questions[updateCursor].answers);
+            setRadioOption(questions[updateCursor].answers);
             setDisableNext(true);
         }
     }
@@ -42,7 +42,7 @@ const QualQuestionsHandler = (props) => {
         {!quizCompleted ? (
         <Quiz
           answer={""}
-          answerOptions={answerOptions}
+          radioOptions={radioOption}
           disable={disableNext}
           nextQuestion={handleNext}
           onAnswerSelected={selectAnswer}

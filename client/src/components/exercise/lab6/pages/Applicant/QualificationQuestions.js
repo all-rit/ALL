@@ -1,28 +1,39 @@
 import React, {useEffect } from "react";
 import PropTypes from "prop-types";
-import Question from "client/src/components/exercise/lab6/components/Question.js"
-import QuestionCount from "client/src/components/exercise/lab6/components/QuestionCount.js"
-import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
-import qqjson from "../../components/QualQuesData.js";
+import Question from "../../components/Question";
+import QuestionCount from "../../components/QuestionCount";
+import RadioOption from "../../components/RadioOption";
+ import { navigate } from "@reach/router";
+// import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
+// import qqjson from "../../components/QualQuesData.js";
 
-import Quiz from "../../../../quiz/components/Quiz";
+// import Quiz from "../../../../quiz/components/Quiz";
 
-const QualificationQuestions = (props) =>{
-    const {actions} = props;
+function QualificationQuestions(props) {
+    function renderRadioOptions(key) {
+        return (
+            <RadioOption
+            key={key.type}
+            answerContent={key.content}
+            answerType={key.type}
+            answer={props.answer}
+            questionId={props.questionId}
+            onAnswerSelected={props.onAnswerSelected}
+            />
+        );
+    }
 
-    useEffect(()=>{
-        actions.updateState(EXERCISE_PLAYING);
-    },[actions]);
+
+
 
     const handleContinue = () =>{
         navigate("/Lab6/Exercise/AnalyzeData");
     }
 
-    const qualificationquestions = {...qqjson};
+    // const qualificationquestions = {...qqjson};
 
     return(
-        <div className="center-div">
+        <div className="quiz container shadow" key={props.questionId}>
             <h2 class="playthrough__title">Qualification Questions:</h2>
 
                 <div>
@@ -40,5 +51,15 @@ const QualificationQuestions = (props) =>{
       </div>
     );
 }
+
+QualificationQuestions.propTypes = {
+    answer: PropTypes.string.isRequired,
+    answerOption: PropTypes.array.isRequired,
+    question: PropTypes.string.isRequired,
+    questionId: PropTypes.number.isRequired,
+    questionTotal: PropTypes.number.isRequired,
+    onAnswerSelected: PropTypes.func.isRequired,
+};
+
 
 export default QualificationQuestions;

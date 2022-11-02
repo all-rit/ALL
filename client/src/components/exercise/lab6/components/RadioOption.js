@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function RenderRadio(props) {
+function RadioOption(props) {
     return (
         <li className = "answerOption">
             <input
@@ -19,10 +19,10 @@ function RenderRadio(props) {
     )
 }
 
-RenderRadio.PropTypes = {
+RadioOption.propTypes = {
     answerType: PropTypes.string.isRequired,
     answerContent: PropTypes.string.isRequired,
     onAnswerSelected: PropTypes.func.isRequired,
 };
 
-export default RenderRadio;
+export default RadioOption;
