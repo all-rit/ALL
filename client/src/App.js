@@ -135,7 +135,7 @@ class App extends Component {
                 labID={lab}
               />
 
-              <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user} />
+              <Quiz path={`/Lab${lab}/Quiz`} labId={lab} user={state.main.user} />
             </Router>
           </div>
         </div>
