@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function RadioOption(props) {
+
+/*Supposed to be the answer component to allow radio button functionality
+*/
+function Options(props) {
     return (
         <li className = "answerOption">
             <input
@@ -19,10 +22,10 @@ function RadioOption(props) {
     )
 }
 
-RadioOption.propTypes = {
+Options.propTypes = {
     answerType: PropTypes.string.isRequired,
     answerContent: PropTypes.string.isRequired,
     onAnswerSelected: PropTypes.func.isRequired,
 };
 
-export default RadioOption;
+export default Options;

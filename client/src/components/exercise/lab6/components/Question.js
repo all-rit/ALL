@@ -14,4 +14,4 @@ Question.propTypes = {
     };
 
 
-export default Question
+export default Question;

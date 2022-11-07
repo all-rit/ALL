@@ -35,6 +35,7 @@ import AIReasoning from "./pages/Employer/AIReasoning";
 import AIRepair from "./pages/Employer/AIRepair";
 import FixedHiringCandidate from "./pages/Employer/FixedHiringCandidate";
 import ExerciseEnd from "./pages/Employer/ExerciseEnd";
+import QualificationQuestionsC from "./components/QualificationQuestionsC";
 
 
 
