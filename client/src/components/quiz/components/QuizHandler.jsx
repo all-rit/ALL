@@ -58,6 +58,7 @@ const QuizHandler = (props) => {
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
+  let [result, setResult] = useState({});
 
   /**
    * HandleNext() is a function that is responsible for allowing the user to
@@ -82,9 +83,15 @@ const QuizHandler = (props) => {
     console.log("completed");
   }
 
+  function checkIfCorrect(answerIndex, questionIndex) {
+    let isCorrect;
+    questions[questionIndex].answers[answerIndex].val === 1
+      ? (isCorrect = true)
+      : (isCorrect = false);
+  }
+
   function scoreResults() {
     let questionsTotal = questions.length;
-    let count = 0;
     let output = [];
     const QuizQuestions = {
       question: "",
@@ -97,10 +104,32 @@ const QuizHandler = (props) => {
       tempQuestion.question = questions[i].question;
       if (questions[i].multiChoice) {
         // logic for multi select
+        let userAnswers = [...selectedAnswers[i]];
+        let isCorrect = [];
+        isCorrect.push(userAnswers.forEach((element) => checkIfCorrect(i)));
+        isCorrect.every((value) => value === true)
+          ? (tempQuestion.IsCorrect = true)
+          : (tempQuestion.isCorrect = false);
+        output.push(tempQuestion);
       } else {
         // logic for non multi select
+        let userAnswers = [...selectedAnswers[i]];
+        checkIfCorrect(userAnswers)
+          ? (tempQuestion.IsCorrect = true)
+          : (tempQuestion.IsCorrect = false);
+        output.push(tempQuestion);
       }
+      console.log(output);
     }
+
+    // count number of correct questions.
+    let countCorrect = 0;
+    output.forEach((element) => {
+      element.IsCorrect ? (countCorrect += 1) : countCorrect;
+    });
+
+    console.log("user score is: " + countCorrect / questionsTotal);
+    
   }
 
   /**
