@@ -30,7 +30,7 @@ function QualificationQuestions(props) {
 
             <p>Hello</p>
 
-            {/*Taking from render quiz function*/}
+            {/* Taking from render quiz function*/}
             {/* <QualificationQuestionsC
              answer={this.state.answer}
              answerOptions={this.state.Options}

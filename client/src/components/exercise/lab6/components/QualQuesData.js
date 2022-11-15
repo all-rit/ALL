@@ -1,6 +1,5 @@
 
-  [
-
+const QualQuesData = [
     {  
       "question": "What gender do you identify as?",
       "answers": [
@@ -115,4 +114,6 @@
     ],
     "multichoice": false
   }
-]
+];
+
+export default QualQuesData;

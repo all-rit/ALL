@@ -7,7 +7,7 @@ import QualificationQuestionsC from "./QualificationQuestionsC";
 // import Result from "./Result";
 //need substitute for result page, or can just implement a handle submit on this one
 
-let info = require('./QualQuesData.json');
+let info = require('./QualQuesData');
 
 
 /* Takes data from json file and should include functionality to go from from question to the next
