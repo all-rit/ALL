@@ -18,6 +18,7 @@ import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
 import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
 
 import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
+import { default as QualQuestionsManager} from "./components/exercise/lab6/components/QualQuestionsManager";
 
 
 import { default as LandingPageBody } from "./components/body/landingpage/index";
@@ -102,9 +103,9 @@ class App extends Component {
               <Imagine path="/Imagine1/*" user={state.main.user} biasType={"none"} linkNum={1}/>
               <Imagine path="/Imagine2/*" user={state.main.user} biasType={"user"} linkNum={2}/>
               <Imagine path="/Imagine3/*" user={state.main.user} biasType={"team"} linkNum={3}/>
-{/* 
+
             
-              <QualifcationQuestions path="/Lab6/Exercise/QualificationQuestions" user={state.main.user}/> */}
+              <QualQuestionsManager labId={lab} path="/Lab6/Exercise/QualificationQuestions" user={state.main.user}/> 
 
 
 
