@@ -106,14 +106,30 @@ function App() {
         //The QualificationQuestionsC also needs a rework in the veign of the Quiz component for this to work.
         //Hold for now. Engage tomorrow 11/15/2022
         renderQualQuestions() {
-        //     return (
-        //         <div>
-        //             <QualificationQuestionsC
-        //                 key={}
-        //                 answerContent={}
-        //         </div>
-        //     )
-        // }
+            return (
+                <div>
+                    <QualificationQuestionsC
+                        answer={this.state.answer}
+                        answerOptions={this.state.answerOptions}
+                        questionId={this.state.questionId}
+                        question={this.state.question}
+                        questionTotal={this.state.qualQuestions.length}
+                        onAnswerSelected={this.handleAnswerSelected}
+                        nextQuestion={this.setNextQuestion}
+                        disable={this.state.disableNextQuestion}
+                        />
+                </div>
+            )
+        }
+
+        render() {
+            initializeReactGA();
+            return (
+                <div className="QualQuestions">
+                {this.renderQualQuestions()}
+                </div>
+            )
+        }
     }
 
     // const [checkedState, setCheckedState] = useState(new Array(QualQues.length).fill(false));
@@ -153,4 +169,4 @@ function App() {
     //     </div>
     // );
 }
-}
+
