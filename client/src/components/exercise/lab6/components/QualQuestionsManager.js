@@ -3,22 +3,18 @@ import { PropTypes } from "victory";
 //to use same functionality as quiz component
 
 import QualificationQuestionsC from "./QualificationQuestionsC";
+import QualQuesData from "./QualQuesData";
 
 // import Result from "./Result";
 //need substitute for result page, or can just implement a handle submit on this one
-
-let info = require('./QualQuesData.json');
-
-
 /* Takes data from json file and should include functionality to go from from question to the next
 with the corresponding answers */
 
 /*Created option (answer) and question object*/
 const QualQuestionsManager = (props) => {
     //currently unnecessary and should be used if other labs are being used
-    // const [currentLabId, setCurrentLab] = useState(props.labId);
-    const [questions, setQuestions] = useState(assignQualQuestions(props.labId));
     let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
+    const [questions, setQuestions] = useState({ ...assignQualQuestions(props.labId) });
     //this constant need to come into play with a handle submit
     const [questionsCompleted, setQuestionsCompleted] = useState(false);
     //Part 4 - answer object
@@ -27,7 +23,7 @@ const QualQuestionsManager = (props) => {
 
  
 function assignQualQuestions(labId) {
-    console.log(labId);
+    let info = { ...QualQuesData };
     return info;
 }
   
