@@ -66,12 +66,13 @@ function QualificationQuestionsC(props) {
 }
 
 QualificationQuestionsC.propTypes = {
-    answerP: PropTypes.string.isRequired,
-    Option: PropTypes.array.isRequired,
+    answer: PropTypes.string.isRequired,
+    Options: PropTypes.array.isRequired,
     question: PropTypes.string.isRequired,
     questionId: PropTypes.number.isRequired,
     questionTotal: PropTypes.number.isRequired,
     onAnswerSelected: PropTypes.func.isRequired,
+    multichoice: PropTypes.bool.isRequired
 };
 
 

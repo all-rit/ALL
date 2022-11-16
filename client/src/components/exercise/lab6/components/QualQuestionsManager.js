@@ -20,6 +20,9 @@ const QualQuestionsManager = (props) => {
     //Part 4 - answer object
     const [Option, setOption] = useState(questions[currentQuestionCursor].answers);
     let [disableNext, setDisableNext] = useState(true);
+   
+
+    // let [selectedAnswers, setSelectedAnswers] = useState([]);
 
  
 function assignQualQuestions(labId) {
@@ -42,15 +45,37 @@ function assignQualQuestions(labId) {
     // }
 
     function selectOption(e) {
+        console.log("E:" + e)
         const answerValue = e.target.value;
         let tempSelectedAnswers;
         console.log("Selected Answer: " + answerValue);
         console.log(questions[currentQuestionCursor].multiChoice);
         tempSelectedAnswers = [...setOption];
-        tempSelectedAnswers[currentQuestionCursor] = answerValue;
+        // tempSelectedAnswers = [...selectedAnswers];
+        // tempSelectedAnswers[currentQuestionCursor] = answerValue;
+        tempSelectedAnswers[currentQuestionCursor] = {
+            content: questions[currentQuestionCursor].answers[answerValue].content,
+            val: 1,
+            type: answerValue,
+        };
         console.log("Recorded answers: " + tempSelectedAnswers);
         setDisableNext(false);
     }
+
+    // function setUserAnswer(answer) {
+    //     this.setState((state, props) => ({
+    //         disableNextQuestion: false,
+    //         selectedAnswers: {
+    //             ...state.selectedAnswers,
+    //             [this.state.counter]: answer
+    //         },
+    //         answer: answer
+    //     }));
+    // }
+
+    
+
+
 
     return (
     <div>
@@ -70,7 +95,6 @@ function assignQualQuestions(labId) {
          </QualificationQuestionsC>
         ) : (
             <div>
-
             </div>
 
         )}</div>
