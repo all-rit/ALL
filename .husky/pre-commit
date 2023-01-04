@@ -9,14 +9,14 @@ npx prettier --write .
 
 npx prettier --check .
 
-eslint --fix .
+npx eslint --fix .
 
 echo "All Client style checks passed!"
 
 echo "Starting Server style check...."
 
 cd ../server
-eslint --fix .
+npx eslint --fix .
 
 
 echo "ALL Server tests passed!"
