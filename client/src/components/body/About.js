@@ -25,10 +25,6 @@ const About = (props) => {
     return (
       <div className="landingpage__row">
         <Spinner />
-
-
-
-
       </div>
     );
   }
