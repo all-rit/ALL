@@ -1,3 +1,5 @@
+/* eslint-disable no-irregular-whitespace */
+/* eslint-disable max-len */
 module.exports = (sequelize, DataTypes) => {
   const Labs = sequelize.define(
       'Labs', {
@@ -33,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Labs.sync();
+  // TODO: Dead code below
   // Labs.sync({
   //     force: true
   // }).then(function() {

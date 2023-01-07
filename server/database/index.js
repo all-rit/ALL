@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 const fs = require('fs');
 const path = require('path');
 const pathname = path.join(__dirname, 'models');
