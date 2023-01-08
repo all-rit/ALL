@@ -8,16 +8,16 @@
 }
 
 .knowledgeTest .options {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .knowledgeTest .option {
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   border: 1px solid;
-  padding: .25rem;
+  padding: 0.25rem;
   width: 60%;
   margin: auto;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   background-color: white;
 }
 

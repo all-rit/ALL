@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";

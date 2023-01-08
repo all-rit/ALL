@@ -1,3 +1,7 @@
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import CatClickNavigate from "../../helpers/CatClickNavigate";
 import { navigate } from "@reach/router";
@@ -5,13 +9,13 @@ import { AppBar } from "@material-ui/core";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import {PageService} from "../../../../../services/PageService";
-import {EXERCISE_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
+import { PageService } from "../../../../../services/PageService";
+import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 
 class UserUpdatedExercise extends Component {
   constructor(props) {
     super(props);
-    this.state = { render: "", secondsElapsed: 0, renderedButtons: []};
+    this.state = { render: "", secondsElapsed: 0, renderedButtons: [] };
     document.body.style = "background: black";
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
@@ -25,15 +29,14 @@ class UserUpdatedExercise extends Component {
     const { actions, data } = this.props;
     actions.updateState(EXERCISE_PLAYING);
     this.interval = setInterval(
-       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-       1000
-     );
+      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
+      1000
+    );
 
-    if(data.repair3.changesApplied) {
+    if (data.repair3.changesApplied) {
       actions.enableEnd(true);
     }
-    this.setState({renderedButtons: this.setupButtons() })
-
+    this.setState({ renderedButtons: this.setupButtons() });
   }
 
   componentWillUnmount() {
@@ -51,7 +54,7 @@ class UserUpdatedExercise extends Component {
   onFocusGain(event, className) {
     console.log("focus gained");
     const element = document.getElementsByClassName(className);
-    for (var i = 0; i < element.length; i++) {
+    for (let i = 0; i < element.length; i++) {
       element[i].style = { borderColor: "red" };
     }
   }
@@ -59,36 +62,38 @@ class UserUpdatedExercise extends Component {
   onFocusLoss(event, className) {
     console.log("focus lost");
     const element = document.getElementsByClassName(className);
-    for (var i = 0; i < element.length; i++) {
+    for (let i = 0; i < element.length; i++) {
       element[i].style = { borderColor: "black" };
     }
   }
 
   shuffleArray(array) {
-    var currentIndex = array.length,
-        temporaryValue,
-        randomIndex;
+    let currentIndex = array.length;
+    let temporaryValue;
+    let randomIndex;
 
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
 
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
     }
 
     return array;
   }
-  setupButtons(){
+  setupButtons() {
     const { data } = this.props;
-    console.log('calling setup')
+    console.log("calling setup");
     const catClick = () => {
       console.log("Cat image clicked!");
-      const name = data.repair3.changesApplied ? "UserUpdatedExercise": "InaccessibleExercise";
+      const name = data.repair3.changesApplied
+        ? "UserUpdatedExercise"
+        : "InaccessibleExercise";
       PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
       this.setState({ render: "CatClickNavigate" });
     };
@@ -105,44 +110,79 @@ class UserUpdatedExercise extends Component {
       width: "128px",
       height: "128px",
       border: "1px solid black",
-      backgroundColor: "black"
+      backgroundColor: "black",
     };
-    let buttons = []
-    if(data.repair3.changesApplied){
+    let buttons = [];
+    if (data.repair3.changesApplied) {
       buttons = [
-        <button style={imgStyle} onClick={() => catClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, data.repair3.catAltValue)}/>,
-        <button style={imgStyle} onClick={() => burgerClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, data.repair3.burgerAltValue)}/>,
-        <button style={imgStyle} onClick={() => carClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, data.repair3.carAltValue)}/>,
-        <button style={imgStyle} onClick={() => cowClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, data.repair3.cowAltValue)}/>
-      ]
-    }
-    else {
+        <button
+          style={imgStyle}
+          onClick={() => catClick()}
+          tabIndex={"0"}
+          onFocus={(e) => this.textToSpeech(e, data.repair3.catAltValue)}
+        />,
+        <button
+          style={imgStyle}
+          onClick={() => burgerClick()}
+          tabIndex={"0"}
+          onFocus={(e) => this.textToSpeech(e, data.repair3.burgerAltValue)}
+        />,
+        <button
+          style={imgStyle}
+          onClick={() => carClick()}
+          tabIndex={"0"}
+          onFocus={(e) => this.textToSpeech(e, data.repair3.carAltValue)}
+        />,
+        <button
+          style={imgStyle}
+          onClick={() => cowClick()}
+          tabIndex={"0"}
+          onFocus={(e) => this.textToSpeech(e, data.repair3.cowAltValue)}
+        />,
+      ];
+    } else {
       buttons = [
-        <button style={imgStyle} onClick={() => catClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, "Image 1")}/>,
-        <button style={imgStyle} onClick={() => burgerClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, "Image 2")}/>,
-        <button style={imgStyle} onClick={() => carClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, "Image 3")}/>,
-        <button style={imgStyle} onClick={() => cowClick()} tabIndex={"0"}
-                onFocus={(e) => this.textToSpeech(e, "Image 4")}/>
-      ]
+        <button
+          style={imgStyle}
+          onClick={() => catClick()}
+          tabIndex={"0"}
+          onFocus={(e) => this.textToSpeech(e, "Image 1")}
+        />,
+        <button
+          style={imgStyle}
+          onClick={() => burgerClick()}
+          tabIndex={"0"}
+          onFocus={(e) => this.textToSpeech(e, "Image 2")}
+        />,
+        <button
+          style={imgStyle}
+          onClick={() => carClick()}
+          tabIndex={"0"}
+          onFocus={(e) => this.textToSpeech(e, "Image 3")}
+        />,
+        <button
+          style={imgStyle}
+          onClick={() => cowClick()}
+          tabIndex={"0"}
+          onFocus={(e) => this.textToSpeech(e, "Image 4")}
+        />,
+      ];
     }
-    var renderedButtons= buttons.map(function(button,index){
-      return <td key={index} tabIndex={"1"}>{button}</td>
-    })
+    const renderedButtons = buttons.map(function (button, index) {
+      return (
+        <td key={index} tabIndex={"1"}>
+          {button}
+        </td>
+      );
+    });
 
     return this.shuffleArray(renderedButtons);
   }
 
   textToSpeech = (e, text) => {
-    let synth = window.speechSynthesis;
+    const synth = window.speechSynthesis;
     synth.cancel();
-    let utterThis = new SpeechSynthesisUtterance(text);
+    const utterThis = new SpeechSynthesisUtterance(text);
     synth.speak(utterThis);
   };
   render() {
@@ -156,8 +196,8 @@ class UserUpdatedExercise extends Component {
 
     const textStyle = { color: "white", tabIndex: "0" };
     return (
-      <div>      
-        <AppBar position="static" className = "appBar">
+      <div>
+        <AppBar position="static" className="appBar">
           <Toolbar>
             <Grid
               justify="center"
@@ -171,25 +211,31 @@ class UserUpdatedExercise extends Component {
                   color={"white"}
                   aria-label={"Inaccessible Exercise"}
                   tabIndex={"0"}
-                  onFocus={(e) => this.textToSpeech(e,"Inaccessible Exercise")}
+                  onFocus={(e) => this.textToSpeech(e, "Inaccessible Exercise")}
                 >
-                  {data.repair3.changesApplied ? "Accessible Exercise": "Inaccessible Exercise"}
+                  {data.repair3.changesApplied
+                    ? "Accessible Exercise"
+                    : "Inaccessible Exercise"}
                 </Typography>
               </Grid>
             </Grid>
           </Toolbar>
         </AppBar>
-        <Typography 
-          variant={"h6"} 
-          style={textStyle} 
+        <Typography
+          variant={"h6"}
+          style={textStyle}
           tabIndex={"0"}
-          onFocus={(e) => this.textToSpeech(e,"Click on the image of a cat. You can use the keyboard to navigate by tabbing across the page. Press the enter key to select.")}
+          onFocus={(e) =>
+            this.textToSpeech(
+              e,
+              "Click on the image of a cat. You can use the keyboard to navigate by tabbing across the page. Press the enter key to select."
+            )
+          }
         >
           Click on the image of a cat. You can use the keyboard to navigate by
           tabbing across the page. Press the enter key to select.
         </Typography>
         <table style={tableStyle} tabIndex={"0"}>
-          
           <tbody>
             <tr>
               {this.state.renderedButtons[0]}
@@ -201,7 +247,11 @@ class UserUpdatedExercise extends Component {
             </tr>
           </tbody>
         </table>
-        {this._renderSubComp(data.repair3.changesApplied ? "/Lab3/Exercise/CodeChange": "/Lab3/Exercise/AccessibleInstructions")}
+        {this._renderSubComp(
+          data.repair3.changesApplied
+            ? "/Lab3/Exercise/CodeChange"
+            : "/Lab3/Exercise/AccessibleInstructions"
+        )}
       </div>
     );
   }

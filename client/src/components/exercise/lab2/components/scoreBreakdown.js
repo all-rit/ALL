@@ -1,20 +1,22 @@
-import React from 'react';
-import './exerciseStyle.css';
+import React from "react";
+import "./exerciseStyle.css";
 
 /*
 Component for displaying a score breakdown table to the user on the replay page
 */
 const ScoreBreakdown = () => {
-  return(
+  return (
     <div>
-      <p style={{marginBottom: '0px', marginTop: '0px', fontSize: '25px'}}>
+      <p style={{ marginBottom: "0px", marginTop: "0px", fontSize: "25px" }}>
         Score Breakdown
       </p>
       <div>
         <table>
           <tbody>
             <tr>
-              <th rowSpan="2" colSpan="2">Type of Click</th>
+              <th rowSpan="2" colSpan="2">
+                Type of Click
+              </th>
               <th colSpan="8">Time in Seconds</th>
             </tr>
             <tr>
@@ -55,6 +57,6 @@ const ScoreBreakdown = () => {
       </div>
     </div>
   );
-}
+};
 
 export default ScoreBreakdown;

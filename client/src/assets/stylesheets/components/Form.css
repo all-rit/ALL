@@ -67,7 +67,8 @@ a.skip-main {
   border: 1px solid #fb3b3b !important;
 }
 
-a.skip-main:focus, a.skip-main:active {
+a.skip-main:focus,
+a.skip-main:active {
   color: black;
   font-weight: bold;
   background-color: yellow;

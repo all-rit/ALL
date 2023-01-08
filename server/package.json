@@ -24,5 +24,9 @@
     "pg": "latest",
     "react-ga": "^3.3.0",
     "sequelize": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-config-google": "^0.14.0"
   }
 }

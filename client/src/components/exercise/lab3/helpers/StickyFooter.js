@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
@@ -9,16 +10,16 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    minHeight: "40vh"
+    minHeight: "40vh",
   },
   main: {
     marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   footer: {
     padding: theme.spacing(2),
-    marginTop: "auto"
-  }
+    marginTop: "auto",
+  },
 }));
 
 export default function StickyFooter() {

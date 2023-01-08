@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /*
 For now has the same setup as Quiz.js in components
 */
@@ -56,5 +57,3 @@ QualQues.propTypes = {
 };
 
 export default QualQues;
-
-

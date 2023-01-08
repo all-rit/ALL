@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable max-len */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import Button from "./header/buttons/button";
 import "./exerciseStyle.css";
@@ -6,21 +9,21 @@ import "./exerciseStyle.css";
   Class for replay screen and to allow the user to replay the exercise
 */
 class Replay extends Component {
-  //Constructor to hold state information
+  // Constructor to hold state information
   constructor(props) {
     super(props);
     this.state = {
       scorePopup: false,
-      exerciseMode: null
+      exerciseMode: null,
     };
   }
 
-  //Renderer for application
+  // Renderer for application
   render() {
     // eslint-disable-next-line
     this.state.exerciseMode = "default";
 
-    //Handles the first click
+    // Handles the first click
     const clickFirst = () => {
       this.props.changeExerciseColors(this.props.colors);
       this.props.resetOption();

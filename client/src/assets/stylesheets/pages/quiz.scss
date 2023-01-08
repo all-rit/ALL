@@ -1,5 +1,4 @@
 .quiz {
-
   .quizHeader {
     text-align: center;
     margin-top: 110px;
@@ -8,18 +7,17 @@
   .body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #eee;
-
   }
 
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
   }
 
   * {
@@ -109,7 +107,7 @@
     left: 38px;
     width: 28px;
     height: 28px;
-    content: '';
+    content: "";
     display: inline-block;
     vertical-align: middle;
     background: #fff;
@@ -118,7 +116,7 @@
   }
 
   .checkboxCustomButton:checked ~ .checkboxCustomLabel:before {
-    content: '';
+    content: "";
     background: #8bc53f no-repeat;
     background-size: 27px;
     border-color: #8bc53f;
@@ -159,7 +157,7 @@
     left: 38px;
     width: 28px;
     height: 28px;
-    content: '';
+    content: "";
     display: inline-block;
     vertical-align: middle;
     background: #fff;
@@ -169,7 +167,7 @@
   }
 
   .radioCustomButton:checked ~ .radioCustomLabel:before {
-    content: '';
+    content: "";
     background: #8bc53f no-repeat;
     background-size: 27px;
     border-color: #8bc53f;
@@ -225,6 +223,4 @@
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
   }
-
-
 }
