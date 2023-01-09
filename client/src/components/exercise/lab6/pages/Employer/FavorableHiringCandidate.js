@@ -32,7 +32,7 @@ const FavorableHiringCandidate = (props) => {
           Click the “Continue” button to begin the second half of this exercise!
         </div>
 
-        <div className="gridApplicants tw-flex">
+        <div className="gridApplicants tw-inline-flex">
           {/* Number determines spacing between two cols*/}
           <div className="tw-mr-4">
             {/* Number determines alignment of long horizontals*/}

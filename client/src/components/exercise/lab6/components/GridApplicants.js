@@ -23,11 +23,13 @@ const GridApplicants = (props) => {
   useEffect(() => {
     let avatarData = createAvatarData(50);
     setApplicants(avatarData.slice(0, numApplicants));
-    console.log(applicants);
+    setCurrentFile([]);
+    setId([]);
   }, [numApplicants]);
 
   useEffect(() => {
     setSelection(currentFile);
+    console.log(currentFile, "cF");
   }, [currentFile]);
 
   const handleGridImage = useCallback(
@@ -36,18 +38,11 @@ const GridApplicants = (props) => {
         setId((prevState) => [...prevState, imgId]);
       }
       const selectImg = applicants.filter((img) => img.id === imgId)?.[0];
-      if (currentFile.length <= 3 && !id.includes(selectImg.id)) {
+      if (currentFile.length <= id.length <= 3 && !id.includes(selectImg.id)) {
         setCurrentFile((prevState) => [...prevState, selectImg]);
-        setSelection((prevState) => [...prevState, selectImg]);
-      }
-
-      //is buggy, but need to get ai recommendation tracked so then create an event with the modal footer
-      else {
+      } else {
         if (id?.includes(selectImg.id)) {
           setCurrentFile((prevState) =>
-            prevState.filter((file) => file.id !== selectImg.id)
-          );
-          setSelection((prevState) =>
             prevState.filter((file) => file.id !== selectImg.id)
           );
           setId((prevState) => prevState.filter((id) => id !== selectImg.id));
@@ -60,7 +55,7 @@ const GridApplicants = (props) => {
   //changed dan mock data into [varName]
   console.log(currentFile, "cF");
   return (
-    <div className="gridApplicants tw-flex">
+    <div className="gridApplicants tw-inline-flex">
       <div className="tw-mr-4">
         <ul className="gridApplicants-content tw-bg-bgwhite tw-mt-40">
           <li className="tw-p-4">Gender</li>

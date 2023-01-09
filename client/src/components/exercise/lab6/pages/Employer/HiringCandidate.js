@@ -5,11 +5,8 @@ import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect, useState } from "react";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
-import Applicant from "../../components/Applicant";
-import { Form } from "reactstrap";
 import GridApplicants from "../../components/GridApplicants";
 import { Modal, ModalBody, ModalFooter, Button } from "reactstrap";
-import { AvatarStyle } from "avataaars";
 
 //need to make sure that only when the AI doesn't recommend them and that when they are selected that the modal appears
 //modal doesn't appear for the last hiring candidate selection; needs to
@@ -39,6 +36,7 @@ const HiringCandidate = (props) => {
     let roundCount = roundOfApplicants;
 
     if (roundOfApplicants > 2) {
+      console.log(userAnswers)
       navigate("/Lab6/Exercise/AIReasoningQuestions");
     } else {
       setRoundOfApplicants(roundCount + 1);
@@ -54,7 +52,7 @@ const HiringCandidate = (props) => {
 
   const handleContinue = () => {
     if (selection.length > 0) {
-      let answers = [];
+      let answers = userAnswers.slice();
       setModalActive(true);
       answers.push(selection);
       setAnswers(answers);
