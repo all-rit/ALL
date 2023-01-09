@@ -29,12 +29,11 @@ const HiringCandidate = (props) => {
     actions.updateState(EXERCISE_PLAYING);
   }, [actions]);
 
-  //change to avatars and setAvatars in line 25
-  // const [avatars, setAvatars] = useState([]);
-
   const handleYes = () => {
     let roundCount = roundOfApplicants;
-
+    let answers = userAnswers.slice();
+    answers.push(selection);
+    setAnswers(answers);
     if (roundOfApplicants > 2) {
       console.log(userAnswers);
       navigate("/Lab6/Exercise/AIReasoningQuestions");
@@ -52,39 +51,29 @@ const HiringCandidate = (props) => {
 
   const handleContinue = () => {
     if (selection.length > 0) {
-      let answers = userAnswers.slice();
-      setModalActive(true);
-      answers.push(selection);
-      setAnswers(answers);
+      let nonRecommendedCount = 0
+      selection.map((answer)=>{
+        if(answer.ai==="No"){
+          nonRecommendedCount++;
+        }
+      })
+      if(nonRecommendedCount>0){
+        setModalActive(true);
+      } else {
+        let answers = userAnswers.slice();
+        answers.push(selection);
+        setAnswers(answers);
+        if (roundOfApplicants > 2) {
+          console.log(userAnswers);
+          navigate("/Lab6/Exercise/AIReasoningQuestions");
+        } else {
+          let roundCount = roundOfApplicants;
+          setRoundOfApplicants(roundCount + 1);
+        }
+      }
     }
-
-    // if(.ai === "No"){
-    //     setModalActive(true);
-    // }
-
-    // else{
-    //     let roundCount = roundOfApplicants
-    //     setRoundOfApplicants(roundCount + 1);
-    // }
-
-    //looping thru avatars array
-    // for (let i = 0; i < avatars.length; i++){
-    //     if(avatars[i]!=="blank"){
-    //         isModalActive = true;
-    //     }
-    // }
-    //do the check for what avatar has the attributes. If avatar does have glasses, have isModalActive={true}, but set default to false
-
-    //redo line 29 as an array for avatars, then pass setavatars into gridapplicants. This part still confuses me
-
-    // isModalActive = true;
   };
-  // useState(()=>{
-  //     accessoriesType === "user" ? setAvatars(avatar[0]?.accessories) : setAvatars(avatar?.accessories);
-
-  // },[avatar]);
-
-  //will not need the conditional, just put in line 46. Won't display as long as isModalActive is false
+  
   return (
     <div className="center-div">
       <h2 className="playthrough__title">Choose your first Candidate!</h2>
@@ -94,12 +83,9 @@ const HiringCandidate = (props) => {
       <h2 className="cognitive_instructions">
         Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”
       </h2>
-
-      {/*Added modal body*/}
-
-      {/*Edited similar to playerboard file in imagine */}
       <Modal
         isOpen={isModalActive}
+        backdrop="static"
         toggle={() => {
           setModalActive(!isModalActive);
         }}

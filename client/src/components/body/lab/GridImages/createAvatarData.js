@@ -264,7 +264,6 @@ const createAvatarData = (avatarNumber) => {
 
   const Pay = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
 
-  const AI = ["Yes", "No"];
 
   let avatarData = [];
   for (let i = 0; i < avatarNumber; i++) {
@@ -297,7 +296,7 @@ const createAvatarData = (avatarNumber) => {
           availability:
             Availability[Math.floor(Math.random() * Availability.length)],
           pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
-          ai: AI[Math.floor(Math.random() * AI.length)],
+          ai: "No",
 
           bias: "Avatar is wearing a hat",
         });
@@ -330,7 +329,7 @@ const createAvatarData = (avatarNumber) => {
           availability:
             Availability[Math.floor(Math.random() * Availability.length)],
           pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
-          ai: AI[Math.floor(Math.random() * AI.length)],
+          ai: "No",
 
           bias: "Avatar is wearing glasses",
         });
@@ -366,7 +365,7 @@ const createAvatarData = (avatarNumber) => {
           availability:
             Availability[Math.floor(Math.random() * Availability.length)],
           pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
-          ai: AI[Math.floor(Math.random() * AI.length)],
+          ai: "Yes",
 
           bias: "Avatar's shirt is the color Blue",
         });
@@ -399,7 +398,7 @@ const createAvatarData = (avatarNumber) => {
           availability:
             Availability[Math.floor(Math.random() * Availability.length)],
           pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
-          ai: AI[Math.floor(Math.random() * AI.length)],
+          ai: "Yes",
 
           bias: "Avatar's hair is the color " + hcolor,
         });
