@@ -51,13 +51,13 @@ const HiringCandidate = (props) => {
 
   const handleContinue = () => {
     if (selection.length > 0) {
-      let nonRecommendedCount = 0
-      selection.map((answer)=>{
-        if(answer.ai==="No"){
+      let nonRecommendedCount = 0;
+      selection.map((answer) => {
+        if (answer.ai === "No") {
           nonRecommendedCount++;
         }
-      })
-      if(nonRecommendedCount>0){
+      });
+      if (nonRecommendedCount > 0) {
         setModalActive(true);
       } else {
         let answers = userAnswers.slice();
@@ -73,7 +73,7 @@ const HiringCandidate = (props) => {
       }
     }
   };
-  
+
   return (
     <div className="center-div">
       <h2 className="playthrough__title">Choose your first Candidate!</h2>

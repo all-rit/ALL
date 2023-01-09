@@ -264,7 +264,6 @@ const createAvatarData = (avatarNumber) => {
 
   const Pay = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
 
-
   let avatarData = [];
   for (let i = 0; i < avatarNumber; i++) {
     let biasType = bias[Math.floor(Math.random() * bias.length)];
