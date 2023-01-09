@@ -36,7 +36,7 @@ const HiringCandidate = (props) => {
     let roundCount = roundOfApplicants;
 
     if (roundOfApplicants > 2) {
-      console.log(userAnswers)
+      console.log(userAnswers);
       navigate("/Lab6/Exercise/AIReasoningQuestions");
     } else {
       setRoundOfApplicants(roundCount + 1);
