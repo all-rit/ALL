@@ -26,8 +26,6 @@ import FavorableHiringCandidate from "./pages/Employer/FavorableHiringCandidate"
 
 import HiringCandidate from "./pages/Employer/HiringCandidate";
 
-import Popup from "./pages/Employer/Popup";
-
 import AIReasoningQuestions from "./pages/Employer/AIReasoningQuestions";
 import AIReasoning from "./pages/Employer/AIReasoning";
 import AIRepair from "./pages/Employer/AIRepair";
@@ -85,8 +83,6 @@ class Main extends Component {
 
           {/*Added hiringcandidate pgs */}
           <HiringCandidate path="/HiringCandidate" actions={actions} />
-
-          <Popup path="/Popup" actions={actions} />
 
           <AIReasoningQuestions
             path="/AIReasoningQuestions"

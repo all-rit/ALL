@@ -10,13 +10,14 @@ function Quiz(props) {
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
-        key={key.content}
+        key={key.type}
         answerContent={key.content}
         answerType={key.type}
         answer={props.answer}
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
         multiChoice={props.multiChoice}
+        multiSelected={props.multiSelectedEntry}
       />
     );
   }
@@ -29,15 +30,23 @@ function Quiz(props) {
         {props.answerOptions.map(renderAnswerOptions)}
       </ul>
       <div className="align-right">
-        <button
-          className="btn btn-second text-uppercase  nextButton"
-          onClick={props.nextQuestion}
-          disabled={props.disable}
-        >
-          {props.questionId === props.questionTotal
-            ? "Complete"
-            : "Next Question"}
-        </button>
+        {props.questionId !== props.questionTotal ? (
+          <button
+            className="btn btn-second text-uppercase  nextButton"
+            onClick={props.nextQuestion}
+            disabled={props.disable}
+          >
+            Next Question
+          </button>
+        ) : (
+          <button
+            className="btn btn-second text-uppercase  nextButton"
+            onClick={props.onComplete}
+            disabled={props.disable}
+          >
+            Complete
+          </button>
+        )}
       </div>
     </div>
   );

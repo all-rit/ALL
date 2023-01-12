@@ -1,20 +1,14 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
-import QualQuestionsManager from "../../components/QualQuestionsManager";
-import QualificationQuestionsC from "../../components/QualificationQuestionsC";
-// import {EXERCISE_PLAYING} from "../../../../../constants/lab6";
-// import qqjson from "../../components/QualQuesData.js";
+import QuestionsHandler from "../../components/QuestionsHandler";
 
-// import Quiz from "../../../../quiz/components/Quiz";
 
 function QualificationQuestions(props) {
   const { actions } = props;
-  let questions = require("../../components/QualQuestionsManager");
-  let answers = require("../../components/QualQuestionsManager");
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
@@ -24,44 +18,150 @@ function QualificationQuestions(props) {
     navigate("/Lab6/Exercise/AnalyzeData");
   };
 
+  const qualQuestionsData = [
+    {  
+      "question": "What gender do you identify as?",
+      "answers": [
+          {
+            "val": 0,
+            "type": "0",
+            "content": "Male"
+          },
+          {
+            "val": 0,
+            "type": "1",
+            "content": "Female"
+          },
+          {
+            "val": 0,
+            "type": "2",
+            "content": "Non-binary"
+          },
+          {
+            "val": 0,
+            "type": "3",
+            "content": "Prefer not to say"
+          }
+        ],
+        "multiChoice": false
+      },
+      {
+        "question":"How many years of experience do you have?",
+        "answers": [
+            {
+                "val": 0,
+                "type": "0",
+              "content": "0"
+            },
+            {
+                "val": 0,
+                "type": "1",
+              "content": "1-4"
+            },
+            {
+                "val": 0,
+                "type": "2",
+              "content": "5-10"
+            },
+            {
+            "val": 0,
+            "type": "3",
+            "content": "10+"
+            }
+        ],
+        "multiChoice": false
+      },
+      {
+        "question":"What is your availability?",
+        "answers": [
+            {
+                "val": 0,
+                "type": "0",
+              "content": "Full-time (Weekdays and Weekends)"
+            },
+            {
+                "val": 0,
+                "type": "1",
+              "content": "Full-time (Weekdays only)"
+            },
+            {
+                "val": 0,
+                "type": "2",
+              "content": "Part-time (Weekdays only)"
+            },
+            {
+                "val": 0,
+                "type": "3",
+              "content": "Part-time(Weekends only)"
+            }
+        ],
+        "multiChoice": false
+      },
+      {
+        "question": "What is your expected salary",
+        "answers": [
+          {
+            "val": 0,
+            "type": "0",
+            "content": "40K - 42.5K"
+          },
+          {
+            "val": 0,
+            "type": "1",
+            "content": "42.6K - 45K"
+          },
+          {
+            "val": 0,
+            "type": "2",
+            "content": "45.1K - 47.5K"
+          },
+          {
+            "val": 0,
+            "type": "3",
+            "content": "47.6-50K"
+          }
+      ],
+      "multiChoice": false
+    },
+    {
+      "question": "What is your age?",
+      "answers": [
+        {
+            "val": 0,
+            "type": "0",
+          "content": "<18"
+        },
+        {
+            "val": 0,
+            "type": "1",
+          "content": "18-25"
+        },
+        {
+            "val": 0,
+            "type": "2",
+          "content": "26-45"
+        },
+        {
+            "val": 0,
+            "type": "3",
+          "content": "46-64"
+        },
+        {
+            "val": 0,
+            "type": "4",
+          "content": "65+"
+        }
+    ],
+    "multiChoice": false
+  }
+];
+
   return (
-    <div className="quiz container shadow" key={props.questionId}>
-      <h2 className="playthrough_title">QualificationQuestions:</h2>
-      <div>
-        <p>Hello</p>
+    <div className="center-div">
+      <h2 className="playthrough__title">Qualification Questions</h2>
+      
+      <QuestionsHandler questions={qualQuestionsData} handleContinue={handleContinue}/>
 
-        {/* Taking from render quiz function*/}
-        {/* <QualificationQuestionsC
-             answer={this.state.answer}
-             answerOptions={this.state.Options}
-             questionId={this.state.questionId}
-             question={this.state.question}
-             questionTotal={this.state.quizQuestions.length}
-             onAnswerSelected={this.handleAnswerSelected}
-             nextQuestion={this.setNextQuestion}
-             disable={this.state.disableNextQuestion}
-             multiChoice={this.state.multiChoice}
-           /> */}
-        {/*         
-            <QualificationQuestionsC
-            question = {props.question}
-            answer = {props.answer}
-            />
-
-             */}
-
-        {/* <p className= "question">{this.props.questions}</p>
-            <p className= "answers">{this.props.answers}</p>
-             */}
-
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase"
-          onClick={handleContinue}
-          key="confirm"
-        >
-          Finished
-        </button>
-      </div>
     </div>
   );
 }
