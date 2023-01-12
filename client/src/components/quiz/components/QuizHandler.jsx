@@ -129,7 +129,6 @@ const QuizHandler = (props) => {
     });
 
     console.log("user score is: " + countCorrect / questionsTotal);
-    
   }
 
   /**
