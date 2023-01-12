@@ -1,12 +1,24 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+echo "Starting Client style checking...."
+
 cd client
+
 npx prettier --write .
+
 npx prettier --check .
-eslint --fix .
-eslint .
+
+npx eslint --fix .
+
+echo "All Client style checks passed!"
+
+echo "Starting Server style check...."
 
 cd ../server
-eslint --fix .
-eslint .
+npx eslint --fix .
+
+
+echo "ALL Server tests passed!"
+
+npx pretty-quick --staged
