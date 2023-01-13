@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable require-jsdoc */
-import { React, useEffect, useState } from "react";
-import { PropTypes } from "victory";
+import { React, useState } from "react";
+import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
 
@@ -11,6 +11,7 @@ import QuestionsLab2 from "../api/Lab2/quizQuestions";
 import QuestionsLab3 from "../api/Lab3/quizQuestions";
 import QuestionsLab4 from "../api/Lab4/quizQuestions";
 import QuestionsLab5 from "../api/Lab5/quizQuestions";
+import UserLabService from "../../../services/UserLabService";
 
 function assignQuizQuestions(labId) {
   switch (labId) {
@@ -40,6 +41,27 @@ function assignQuizQuestions(labId) {
       ];
   }
 }
+
+function shuffleArray(array) {
+  let currentIndex = array.length;
+  let temporaryValue;
+  let randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 /**
  * QuizHandler is react component responsible for tracking users responses
  * this will be the main handler to manage the state and logic for the new quiz component
@@ -78,7 +100,6 @@ const QuizHandler = (props) => {
    * to display to the user for the result portion of the quiz.
    */
   function onComplete() {
-    // this will be filled in currently only stub
     scoreResults();
     setQuizCompleted(true);
   }
@@ -91,31 +112,46 @@ const QuizHandler = (props) => {
     return isCorrect;
   }
 
+  function getMultiCorrectNumCount(questionIndex){
+    let multiCount = 0
+    questions[questionIndex].answers.map((answer)=>{
+      if(answer.val===1){
+        multiCount++;
+      }
+    })
+    return multiCount;
+  }
+
   function scoreResults() {
     let questionsTotal = questions.length;
     let output = [];
     const QuizQuestions = {
       question: "",
-      answers: [],
       selectAnswers: {},
       IsCorrect: false,
     };
     for (let i = 0; i < questionsTotal; i++) {
       let tempQuestion = { ...QuizQuestions };
       tempQuestion.question = questions[i].question;
+      tempQuestion.number = i+1;
       if (questions[i].multiChoice) {
         // logic for multi select
         let userAnswers = [...selectedAnswers[i]];
+        tempQuestion.selectAnswers = userAnswers;
         let isCorrect = userAnswers.map((element) => {
           return checkIfCorrect(element, i);
         });
         isCorrect.every((value) => value === true)
           ? (tempQuestion.IsCorrect = true)
-          : (tempQuestion.isCorrect = false);
+          : (tempQuestion.IsCorrect = false);
+        if(tempQuestion.IsCorrect){
+          tempQuestion.IsCorrect = getMultiCorrectNumCount(i) === isCorrect.length ? true : false;
+        }
         output.push(tempQuestion);
       } else {
         // logic for non multi select
         let userAnswers = { ...selectedAnswers[i] };
+        tempQuestion.selectAnswers = userAnswers;
         checkIfCorrect(userAnswers.type, i)
           ? (tempQuestion.IsCorrect = true)
           : (tempQuestion.IsCorrect = false);
@@ -130,7 +166,20 @@ const QuizHandler = (props) => {
     });
 
     console.log("user score is: " + countCorrect / questionsTotal);
+    console.log(output)
     setResult(countCorrect / questionsTotal);
+    UserLabService.complete_quiz(
+      props.labId,
+      ((countCorrect / questionsTotal)*100),
+      output
+    );
+    if (props.user.firstname !== null) {
+      UserLabService.user_complete_quiz(
+        props.user.userid,
+        props.labId,
+        ((countCorrect / questionsTotal)*100)
+      );
+    }
   }
 
   /**
@@ -205,7 +254,6 @@ const QuizHandler = (props) => {
           questionTotal={questions.length}
         ></Quiz>
       ) : (
-        // will spawn story for
         <Result
           quizResult={result * 100 + "%"}
           quizScore={100}
@@ -218,6 +266,10 @@ const QuizHandler = (props) => {
   );
 };
 QuizHandler.propTypes = {
-  labId: PropTypes.integer.isRequired,
+  labId: PropTypes.integer,
+  user: PropTypes.shape({
+    firstname: PropTypes.string,
+    userid: PropTypes.integer
+  })
 };
 export default QuizHandler;
