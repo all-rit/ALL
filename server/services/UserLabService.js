@@ -234,7 +234,7 @@ exports.userCompleteReading= (data)=>{
               if (userlabcompletion.aboutcompletedtime!==null &&
                             userlabcompletion.readingcompletedtime!==null &&
                             userlabcompletion.exercisecompletedtime!==null &&
-                            // userlabcompletion.reinforcementcompletedtime!==null &&
+                            userlabcompletion.reinforcementcompletedtime!==null &&
                             userlabcompletion.quizcompletedtime!==null) {
                 userlabcompletion.labcompletiontime=datetime;
               }
