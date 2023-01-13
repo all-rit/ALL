@@ -87,11 +87,13 @@ const quizQuestionsLab4 = [
     answers: [
       {
         val: 1,
-        content: "True",
+        type: "0",
+        content: "Yes",
       },
       {
         val: 0,
-        content: "False",
+        type: "1",
+        content: "No",
       },
     ],
     multiChoice: false,
@@ -102,21 +104,25 @@ const quizQuestionsLab4 = [
     answers: [
       {
         val: 1,
+        type: "0",
         content:
           "Users may become fatigued when using the assistive technologies",
       },
       {
         val: 0,
+        type: "1",
         content:
           "Users are able to physically interact with their hardware device",
       },
       {
         val: 0,
+        type: "2",
         content:
           "Users may become well-adapted to the assistive technologies over time",
       },
       {
         val: 1,
+        type: "3",
         content: "Users may not be able to use the mouse or peripherals",
       },
     ],

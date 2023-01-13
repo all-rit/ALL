@@ -6,29 +6,33 @@ import PropTypes from "prop-types";
 import Certificate from "./Certificate";
 
 function Result(props) {
-  // function renderTableHeader() {
-  //     let header = Object.keys(quizQuestions[0])
-  //     return header.map((key, index) => {
-  //         return <th key={index}>{key.toUpperCase()}</th>
-  //     })
-  // }
-
-  function isAnswerIncorrect(score) {
-    return score === 1;
-  }
-
+  function checkIfCorrect(answerIndex, questionIndex) {
+    let isCorrect;
+    props.quizQuestions[questionIndex].answers[answerIndex].val === 1
+      ? (isCorrect = true)
+      : (isCorrect = false);
+    return isCorrect;
+  } 
   function renderTableData() {
     let counter = 0;
-    let isIncorrect = false;
+    let isCorrect = false;
     return props.quizQuestions.map((quizQuestion, index) => {
       const { question, answers } = quizQuestion; // destructuring
       counter += 1;
-      isIncorrect = isAnswerIncorrect(props.quizScore[counter - 1]);
-
+      if (props.quizQuestions[counter-1].multiChoice) {
+        let isMultiCorrect = Array.from(props.selectedAnswers[counter-1]).map((element) => {
+          return checkIfCorrect(element,counter-1)
+        });
+        isMultiCorrect.every((value) => value === true)
+          ? (isCorrect = true)
+          : (isCorrect = false);
+      } else {
+        isCorrect = checkIfCorrect(props.selectedAnswers[counter - 1].type,index);
+      }
       return (
         <tr
           key={index}
-          className={isIncorrect ? "answer-correct" : "answer-wrong"}
+          className={isCorrect ? "answer-correct" : "answer-wrong"}
         >
           <td className={"column-width"}>{question}</td>
           <td className={"column-width"}>{renderTableAnswersData(answers)}</td>
@@ -39,7 +43,7 @@ function Result(props) {
             )}
           </td>
           <td className={"column-width"}>
-            {isIncorrect ? "Correct" : "Not Correct"}
+            {isCorrect ? "Correct" : "Not Correct"}
           </td>
         </tr>
       );
@@ -68,25 +72,30 @@ function Result(props) {
   }
 
   function renderTableSelectedAnswersData(selectedAnswers, answers) {
-    const choices = Object.values(selectedAnswers);
-    let counter = 0;
-    return (
-      <ul>
-        {choices.map(function (selectedAnswer, index) {
-          counter += 1;
-          if (selectedAnswer === 1) {
-            return (
-              <li key={index}>
-                {counter}. {answers[counter - 1]["content"]}
+    if(selectedAnswers instanceof Set){
+      return Array.from(selectedAnswers).map(answer =>{
+        let questionNumber = parseInt(answer) + 1;
+        return (
+          <ul>
+              <li key={questionNumber}>
+                {questionNumber}. {answers[answer]["content"]}
                 <hr />
               </li>
-            );
-          } else {
-            return <div />;
-          }
-        })}
-      </ul>
-    );
+          </ul>
+        );
+      })
+    } else {
+      let questionNumber = parseInt(selectedAnswers.type) + 1;
+      return (
+        <ul>
+            <li key={questionNumber}>
+              {questionNumber}. {answers[selectedAnswers.type]["content"]}
+              <hr />
+            </li>
+        </ul>
+      );
+    }
+  
   }
 
   return (
@@ -118,8 +127,7 @@ function Result(props) {
 
 Result.propTypes = {
   quizResult: PropTypes.string.isRequired,
-  quizScore: PropTypes.string.isRequired,
-  selectedAnswers: PropTypes.string.isRequired,
+  selectedAnswers: PropTypes.array.isRequired,
 };
 
 export default Result;

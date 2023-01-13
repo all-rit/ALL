@@ -13,7 +13,6 @@ import QuestionsLab4 from "../api/Lab4/quizQuestions";
 import QuestionsLab5 from "../api/Lab5/quizQuestions";
 
 function assignQuizQuestions(labId) {
-  console.log(labId);
   switch (labId) {
     case 1:
       return QuestionsLab1;
@@ -80,7 +79,8 @@ const QuizHandler = (props) => {
    */
   function onComplete() {
     // this will be filled in currently only stub
-    console.log("completed");
+    scoreResults()
+    setQuizCompleted(true)
   }
 
   function checkIfCorrect(answerIndex, questionIndex) {
@@ -88,7 +88,8 @@ const QuizHandler = (props) => {
     questions[questionIndex].answers[answerIndex].val === 1
       ? (isCorrect = true)
       : (isCorrect = false);
-  }
+    return isCorrect;
+  } 
 
   function scoreResults() {
     let questionsTotal = questions.length;
@@ -105,21 +106,21 @@ const QuizHandler = (props) => {
       if (questions[i].multiChoice) {
         // logic for multi select
         let userAnswers = [...selectedAnswers[i]];
-        let isCorrect = [];
-        isCorrect.push(userAnswers.forEach((element) => checkIfCorrect(i)));
+        let isCorrect = userAnswers.map((element)=> {
+          return checkIfCorrect(element,i)
+        });
         isCorrect.every((value) => value === true)
           ? (tempQuestion.IsCorrect = true)
           : (tempQuestion.isCorrect = false);
         output.push(tempQuestion);
       } else {
         // logic for non multi select
-        let userAnswers = [...selectedAnswers[i]];
-        checkIfCorrect(userAnswers)
+        let userAnswers = {...selectedAnswers[i]};
+        checkIfCorrect(userAnswers.type,i)
           ? (tempQuestion.IsCorrect = true)
           : (tempQuestion.IsCorrect = false);
         output.push(tempQuestion);
       }
-      console.log(output);
     }
 
     // count number of correct questions.
@@ -129,6 +130,7 @@ const QuizHandler = (props) => {
     });
 
     console.log("user score is: " + countCorrect / questionsTotal);
+    setResult(countCorrect / questionsTotal);
   }
 
   /**
@@ -141,7 +143,6 @@ const QuizHandler = (props) => {
   function selectAnswer(e) {
     const answerValue = e.target.value;
     let tempSelectedAnswers;
-    console.log("Selected Answer: " + answerValue);
     tempSelectedAnswers = [...selectedAnswers];
     tempSelectedAnswers[currentQuestionCursor] = {
       content: questions[currentQuestionCursor].answers[answerValue].content,
@@ -161,7 +162,6 @@ const QuizHandler = (props) => {
    */
   function selectMulti(e) {
     const answerValue = e.target.value;
-    console.log("I am here");
     let tempAnswers = selectedAnswers;
     let storageSet;
     // ensures that there is a value stored there
@@ -185,7 +185,6 @@ const QuizHandler = (props) => {
       // assigns it to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     }
-    console.log(tempAnswers);
     setSelectedAnswers(tempAnswers);
   }
 
@@ -208,7 +207,7 @@ const QuizHandler = (props) => {
       ) : (
         // will spawn story for
         <Result
-          quizResult={"result"}
+          quizResult={(result*100)+"%"}
           quizScore={100}
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
