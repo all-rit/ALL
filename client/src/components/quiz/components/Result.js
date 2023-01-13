@@ -12,22 +12,27 @@ function Result(props) {
       ? (isCorrect = true)
       : (isCorrect = false);
     return isCorrect;
-  } 
+  }
   function renderTableData() {
     let counter = 0;
     let isCorrect = false;
     return props.quizQuestions.map((quizQuestion, index) => {
       const { question, answers } = quizQuestion; // destructuring
       counter += 1;
-      if (props.quizQuestions[counter-1].multiChoice) {
-        let isMultiCorrect = Array.from(props.selectedAnswers[counter-1]).map((element) => {
-          return checkIfCorrect(element,counter-1)
-        });
+      if (props.quizQuestions[counter - 1].multiChoice) {
+        let isMultiCorrect = Array.from(props.selectedAnswers[counter - 1]).map(
+          (element) => {
+            return checkIfCorrect(element, counter - 1);
+          }
+        );
         isMultiCorrect.every((value) => value === true)
           ? (isCorrect = true)
           : (isCorrect = false);
       } else {
-        isCorrect = checkIfCorrect(props.selectedAnswers[counter - 1].type,index);
+        isCorrect = checkIfCorrect(
+          props.selectedAnswers[counter - 1].type,
+          index
+        );
       }
       return (
         <tr
@@ -72,30 +77,29 @@ function Result(props) {
   }
 
   function renderTableSelectedAnswersData(selectedAnswers, answers) {
-    if(selectedAnswers instanceof Set){
-      return Array.from(selectedAnswers).map(answer =>{
+    if (selectedAnswers instanceof Set) {
+      return Array.from(selectedAnswers).map((answer) => {
         let questionNumber = parseInt(answer) + 1;
         return (
           <ul>
-              <li key={questionNumber}>
-                {questionNumber}. {answers[answer]["content"]}
-                <hr />
-              </li>
+            <li key={questionNumber}>
+              {questionNumber}. {answers[answer]["content"]}
+              <hr />
+            </li>
           </ul>
         );
-      })
+      });
     } else {
       let questionNumber = parseInt(selectedAnswers.type) + 1;
       return (
         <ul>
-            <li key={questionNumber}>
-              {questionNumber}. {answers[selectedAnswers.type]["content"]}
-              <hr />
-            </li>
+          <li key={questionNumber}>
+            {questionNumber}. {answers[selectedAnswers.type]["content"]}
+            <hr />
+          </li>
         </ul>
       );
     }
-  
   }
 
   return (

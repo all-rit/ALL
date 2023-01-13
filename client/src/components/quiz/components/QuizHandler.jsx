@@ -79,8 +79,8 @@ const QuizHandler = (props) => {
    */
   function onComplete() {
     // this will be filled in currently only stub
-    scoreResults()
-    setQuizCompleted(true)
+    scoreResults();
+    setQuizCompleted(true);
   }
 
   function checkIfCorrect(answerIndex, questionIndex) {
@@ -89,7 +89,7 @@ const QuizHandler = (props) => {
       ? (isCorrect = true)
       : (isCorrect = false);
     return isCorrect;
-  } 
+  }
 
   function scoreResults() {
     let questionsTotal = questions.length;
@@ -106,8 +106,8 @@ const QuizHandler = (props) => {
       if (questions[i].multiChoice) {
         // logic for multi select
         let userAnswers = [...selectedAnswers[i]];
-        let isCorrect = userAnswers.map((element)=> {
-          return checkIfCorrect(element,i)
+        let isCorrect = userAnswers.map((element) => {
+          return checkIfCorrect(element, i);
         });
         isCorrect.every((value) => value === true)
           ? (tempQuestion.IsCorrect = true)
@@ -115,8 +115,8 @@ const QuizHandler = (props) => {
         output.push(tempQuestion);
       } else {
         // logic for non multi select
-        let userAnswers = {...selectedAnswers[i]};
-        checkIfCorrect(userAnswers.type,i)
+        let userAnswers = { ...selectedAnswers[i] };
+        checkIfCorrect(userAnswers.type, i)
           ? (tempQuestion.IsCorrect = true)
           : (tempQuestion.IsCorrect = false);
         output.push(tempQuestion);
@@ -207,7 +207,7 @@ const QuizHandler = (props) => {
       ) : (
         // will spawn story for
         <Result
-          quizResult={(result*100)+"%"}
+          quizResult={result * 100 + "%"}
           quizScore={100}
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
