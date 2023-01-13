@@ -112,13 +112,13 @@ const QuizHandler = (props) => {
     return isCorrect;
   }
 
-  function getMultiCorrectNumCount(questionIndex){
-    let multiCount = 0
-    questions[questionIndex].answers.map((answer)=>{
-      if(answer.val===1){
+  function getMultiCorrectNumCount(questionIndex) {
+    let multiCount = 0;
+    questions[questionIndex].answers.map((answer) => {
+      if (answer.val === 1) {
         multiCount++;
       }
-    })
+    });
     return multiCount;
   }
 
@@ -133,7 +133,7 @@ const QuizHandler = (props) => {
     for (let i = 0; i < questionsTotal; i++) {
       let tempQuestion = { ...QuizQuestions };
       tempQuestion.question = questions[i].question;
-      tempQuestion.number = i+1;
+      tempQuestion.number = i + 1;
       if (questions[i].multiChoice) {
         // logic for multi select
         let userAnswers = [...selectedAnswers[i]];
@@ -144,8 +144,9 @@ const QuizHandler = (props) => {
         isCorrect.every((value) => value === true)
           ? (tempQuestion.IsCorrect = true)
           : (tempQuestion.IsCorrect = false);
-        if(tempQuestion.IsCorrect){
-          tempQuestion.IsCorrect = getMultiCorrectNumCount(i) === isCorrect.length ? true : false;
+        if (tempQuestion.IsCorrect) {
+          tempQuestion.IsCorrect =
+            getMultiCorrectNumCount(i) === isCorrect.length ? true : false;
         }
         output.push(tempQuestion);
       } else {
@@ -166,18 +167,18 @@ const QuizHandler = (props) => {
     });
 
     console.log("user score is: " + countCorrect / questionsTotal);
-    console.log(output)
+    console.log(output);
     setResult(countCorrect / questionsTotal);
     UserLabService.complete_quiz(
       props.labId,
-      ((countCorrect / questionsTotal)*100),
+      (countCorrect / questionsTotal) * 100,
       output
     );
     if (props.user.firstname !== null) {
       UserLabService.user_complete_quiz(
         props.user.userid,
         props.labId,
-        ((countCorrect / questionsTotal)*100)
+        (countCorrect / questionsTotal) * 100
       );
     }
   }
@@ -269,7 +270,7 @@ QuizHandler.propTypes = {
   labId: PropTypes.integer,
   user: PropTypes.shape({
     firstname: PropTypes.string,
-    userid: PropTypes.integer
-  })
+    userid: PropTypes.integer,
+  }),
 };
 export default QuizHandler;

@@ -14,13 +14,13 @@ function Result(props) {
     return isCorrect;
   }
 
-  function getMultiCorrectNumCount(questionIndex){
-    let multiCount = 0
-    props.quizQuestions[questionIndex].answers.map((answer)=>{
-      if(answer.val===1){
+  function getMultiCorrectNumCount(questionIndex) {
+    let multiCount = 0;
+    props.quizQuestions[questionIndex].answers.map((answer) => {
+      if (answer.val === 1) {
         multiCount++;
       }
-    })
+    });
     return multiCount;
   }
 
@@ -39,8 +39,11 @@ function Result(props) {
         isMultiCorrect.every((value) => value === true)
           ? (isCorrect = true)
           : (isCorrect = false);
-        if(isCorrect){
-          isCorrect = getMultiCorrectNumCount(counter - 1) === isMultiCorrect.length ? true : false;
+        if (isCorrect) {
+          isCorrect =
+            getMultiCorrectNumCount(counter - 1) === isMultiCorrect.length
+              ? true
+              : false;
         }
       } else {
         isCorrect = checkIfCorrect(
