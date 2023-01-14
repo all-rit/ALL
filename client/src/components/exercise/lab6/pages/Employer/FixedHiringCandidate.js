@@ -3,12 +3,13 @@
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
-import Applicant from "../../components/Applicant";
-import { Form } from "reactstrap";
+
 import GridApplicants from "../../components/GridApplicants";
+import { useState } from "react";
 
 const FixedHiringCandidate = (props) => {
   const { actions } = props;
+  const [selection,setSelection] = useState([]);
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
@@ -19,7 +20,6 @@ const FixedHiringCandidate = (props) => {
   };
 
   return (
-    <Form>
       <div className="center-div">
         <h2 className="playthrough__title">REPAIRED: Choose A Candidate</h2>
         <h2 className="cognitive_instructions">
@@ -29,15 +29,7 @@ const FixedHiringCandidate = (props) => {
           Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”
         </h2>
 
-        <GridApplicants numApplicants={4} />
-
-        {/* <div className="candidate__row">
-                <Applicant type={"key"} gender={"Gender:"} age={"Age:"} years={"Years of Experience:"} availability={"Availability:"} pay={"Expected Pay:"} ai={"AI Recommendation:"} />
-                <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} />
-                <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} />
-                <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} />
-                <Applicant type={"applicant"} gender={"gender"} age={"age"} years={"years of experience"} availability={"availability"} pay={"expected pay"} ai={"AI Recommendation"} />
-            </div> */}
+        <GridApplicants numApplicants={4} setSelection={setSelection} />
 
         <button
           className="btn btn-primary text-black btn-xl text-uppercase "
@@ -47,7 +39,6 @@ const FixedHiringCandidate = (props) => {
           Continue
         </button>
       </div>
-    </Form>
   );
 };
 

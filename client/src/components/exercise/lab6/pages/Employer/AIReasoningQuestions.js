@@ -12,7 +12,7 @@ const AIReasoningQuestions = (props) => {
   }, [actions]);
 
   const handleContinue = () => {
-    navigate("/Lab6/Exercise/AIRepair");
+    navigate("/Lab6/Exercise/AIReasoning");
   };
   const aiReasoningData = [
     {
