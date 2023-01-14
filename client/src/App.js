@@ -26,7 +26,7 @@ import { default as Error } from "./components/body/landingpage/error";
 import { default as Profile } from "./components/body/profilepage/Profile";
 import { default as Imagine } from "./components/imagine/Imagine";
 
-import { default as Quiz } from "./components/quiz/App";
+import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
 import Change from "./components/footer/footer";
 import Header from "./components/header/header";
@@ -135,7 +135,11 @@ class App extends Component {
                 labID={lab}
               />
 
-              <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user} />
+              <Quiz
+                path={`/Lab${lab}/Quiz`}
+                labId={lab}
+                user={state.main.user}
+              />
             </Router>
           </div>
         </div>
