@@ -90,12 +90,12 @@ const QuizHandler = (props) => {
   }
 
   /**
- * checkIfCorrect checks to see if the users answer is correct by using the passed
- * answerIndex and referencing the question using the questionIndex and checking the
- * answer
- * @param {integer} answerIndex passed to check the questions answer
- * @param {integer} questionIndex passed to check what question the answer should be checked against
- */
+   * checkIfCorrect checks to see if the users answer is correct by using the passed
+   * answerIndex and referencing the question using the questionIndex and checking the
+   * answer
+   * @param {integer} answerIndex passed to check the questions answer
+   * @param {integer} questionIndex passed to check what question the answer should be checked against
+   */
   function checkIfCorrect(answerIndex, questionIndex) {
     let isCorrect;
     questions[questionIndex].answers[answerIndex].val === 1
@@ -105,11 +105,11 @@ const QuizHandler = (props) => {
   }
 
   /**
- * getMultiCorrectNumCount checks the question by using questionIndex and then returns the number of of
- * correct answers to the question
- * @param {integer} questionIndex passed to check how many correct answers there are 
- * for the passed index
- */
+   * getMultiCorrectNumCount checks the question by using questionIndex and then returns the number of of
+   * correct answers to the question
+   * @param {integer} questionIndex passed to check how many correct answers there are
+   * for the passed index
+   */
   function getMultiCorrectNumCount(questionIndex) {
     let multiCount = 0;
     questions[questionIndex].answers.map((answer) => {
@@ -120,11 +120,11 @@ const QuizHandler = (props) => {
     return multiCount;
   }
 
-/**
- * scoreResults takes all the users answers and checks to see if they are correct
- * it then proceeds to update the results to allow for them to be displayed
- * scoreResults also PUSHes the answers to the database aswell as the quiz score
- */
+  /**
+   * scoreResults takes all the users answers and checks to see if they are correct
+   * it then proceeds to update the results to allow for them to be displayed
+   * scoreResults also PUSHes the answers to the database aswell as the quiz score
+   */
   function scoreResults() {
     let questionsTotal = questions.length;
     let output = [];
