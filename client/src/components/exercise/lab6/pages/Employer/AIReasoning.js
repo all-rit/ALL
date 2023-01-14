@@ -20,9 +20,9 @@ const AIReasoning = (props) => {
       <div className="playthrough__sentence">
         The reason that the AI was not recommending certain people it should
         have been was because the AI was taking into account whether the
-        interviewee was wearing glasses or a hat in the image. It had nothing to do with
-        the applicants work qualities, the AI was prejudice against what the
-        people were wearing in the pictures.
+        interviewee was wearing glasses or a hat in the image. It had nothing to
+        do with the applicants work qualities, the AI was prejudice against what
+        the people were wearing in the pictures.
       </div>
       <div className="playthrough__sentence">
         {" "}

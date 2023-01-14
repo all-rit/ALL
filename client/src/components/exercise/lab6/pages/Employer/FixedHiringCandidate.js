@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const FixedHiringCandidate = (props) => {
   const { actions } = props;
-  const [selection,setSelection] = useState([]);
+  const [selection, setSelection] = useState([]);
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
@@ -20,25 +20,25 @@ const FixedHiringCandidate = (props) => {
   };
 
   return (
-      <div className="center-div">
-        <h2 className="playthrough__title">REPAIRED: Choose A Candidate</h2>
-        <h2 className="cognitive_instructions">
-          Click on a candidates picture to select
-        </h2>
-        <h2 className="cognitive_instructions">
-          Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”
-        </h2>
+    <div className="center-div">
+      <h2 className="playthrough__title">REPAIRED: Choose A Candidate</h2>
+      <h2 className="cognitive_instructions">
+        Click on a candidates picture to select
+      </h2>
+      <h2 className="cognitive_instructions">
+        Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”
+      </h2>
 
-        <GridApplicants numApplicants={4} setSelection={setSelection} />
+      <GridApplicants numApplicants={4} setSelection={setSelection} />
 
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={handleContinue}
-          key="confirm"
-        >
-          Continue
-        </button>
-      </div>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase "
+        onClick={handleContinue}
+        key="confirm"
+      >
+        Continue
+      </button>
+    </div>
   );
 };
 
