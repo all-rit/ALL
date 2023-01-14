@@ -89,9 +89,6 @@ class App extends Component {
               },
             ],
             multiChoice: false,
-            lab: props.state.main.lab,
-            quizQuestions: [],
-            //quiz questions are set up as empty array
           },
         ];
     }

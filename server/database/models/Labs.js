@@ -36,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Labs.sync();
+  // TODO: Dead code below
   // Labs.sync({
   //     force: true
   // }).then(function() {

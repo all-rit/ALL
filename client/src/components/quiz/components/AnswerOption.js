@@ -43,8 +43,8 @@ AnswerOption.propTypes = {
   answerType: PropTypes.string.isRequired,
   answerContent: PropTypes.string.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
-  multiChoice: PropTypes.bool.isRequired,
   multiSelected: PropTypes.func.isRequired,
+  multiChoice: PropTypes.bool.isRequired,
 };
 
 export default AnswerOption;

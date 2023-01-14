@@ -4,18 +4,22 @@ const quizQuestionsLab6 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "Self-driving cars",
       },
       {
         val: 0,
+        type: "1",
         content: "Chatbots",
       },
       {
         val: 0,
+        type: "2",
         content: "Surveillance",
       },
       {
         val: 1,
+        type: "3",
         content: "All of the Above",
       },
     ],
@@ -26,18 +30,22 @@ const quizQuestionsLab6 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "Yes, AI is measured just like human intelligence.",
       },
       {
         val: 1,
+        type: "1",
         content: "No, AI is measured differently than human intelligence.",
       },
       {
         val: 0,
+        type: "2",
         content: "The computer science community is unsure.",
       },
       {
         val: 0,
+        type: "3",
         content: "Yes, but AI is not measured the same as human intelligence.",
       },
     ],
@@ -48,18 +56,22 @@ const quizQuestionsLab6 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "Monitoring Diagnostics",
       },
       {
         val: 0,
+        type: "1",
         content: "Inventory Management",
       },
       {
         val: 1,
+        type: "2",
         content: "Quality Control",
       },
       {
         val: 0,
+        type: "3",
         content: "Customer Care",
       },
     ],
@@ -71,18 +83,22 @@ const quizQuestionsLab6 = [
     answers: [
       {
         val: 1,
+        type: "0",
         content: "3 Billion",
       },
       {
         val: 0,
+        type: "1",
         content: "4 Billion",
       },
       {
         val: 0,
+        type: "2",
         content: "5 Billion",
       },
       {
         val: 0,
+        type: "3",
         content: "6 Billion",
       },
     ],
@@ -93,18 +109,22 @@ const quizQuestionsLab6 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "Corporations",
       },
       {
         val: 0,
+        type: "1",
         content: "Government",
       },
       {
         val: 0,
+        type: "2",
         content: "Society",
       },
       {
         val: 1,
+        type: "3",
         content: "All of the above",
       },
     ],

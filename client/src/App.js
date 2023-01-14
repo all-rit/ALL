@@ -28,11 +28,7 @@ import { default as Error } from "./components/body/landingpage/error";
 import { default as Profile } from "./components/body/profilepage/Profile";
 import { default as Imagine } from "./components/imagine/Imagine";
 
-//there was no imported qualification questions component
-//this will be line where the import of qualifcation questions handler can take place
-// import { default as QualifcationQuestions } from "./components/exercise/lab6/Main";
-
-import { default as Quiz } from "./components/quiz/App";
+import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
 import Change from "./components/footer/footer";
 import Header from "./components/header/header";
@@ -142,7 +138,11 @@ class App extends Component {
                 labID={lab}
               />
 
-              <Quiz path={`/Lab${lab}/Quiz`} user={state.main.user} />
+              <Quiz
+                path={`/Lab${lab}/Quiz`}
+                labId={lab}
+                user={state.main.user}
+              />
             </Router>
           </div>
         </div>
