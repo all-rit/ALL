@@ -11,10 +11,6 @@ import ExerciseStart from "./pages/Applicant/ExerciseStart";
 
 import AvatarSelection from "./pages/Applicant/AvatarSelection";
 
-//Add Qualification Questions handler in here and have after Avatar Selection import
-// import QualQuestionsFunction from "./components/QualQuestionsFunction";
-
-//import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
 import QualificationQuestions from "./pages/Applicant/QualificationQuestions";
 
 import AnalyzeData from "./pages/Applicant/AnalyzeData";

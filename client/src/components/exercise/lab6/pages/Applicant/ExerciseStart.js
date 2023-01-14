@@ -2,6 +2,20 @@
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from "../../../../../constants/lab6";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../../reducers/lab6/ExerciseReducer";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => ({
+  state: state,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
 
 const ExerciseStart = (props) => {
   const { actions } = props;
@@ -37,4 +51,4 @@ const ExerciseStart = (props) => {
   );
 };
 
-export default ExerciseStart;
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseStart);
