@@ -88,12 +88,12 @@ const quizQuestionsLab4 = [
       {
         val: 1,
         type: "0",
-        content: "Yes",
+        content: "True",
       },
       {
         val: 0,
         type: "1",
-        content: "No",
+        content: "False",
       },
     ],
     multiChoice: false,

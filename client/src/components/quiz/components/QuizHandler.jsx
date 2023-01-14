@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable require-jsdoc */
 import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
@@ -13,6 +12,12 @@ import QuestionsLab4 from "../api/Lab4/quizQuestions";
 import QuestionsLab5 from "../api/Lab5/quizQuestions";
 import UserLabService from "../../../services/UserLabService";
 
+/**
+ * assignQuizQuestions is a function that returns a given set
+ * of quiz questions dependent on the labId passed
+ * @param {integer} labId is passed to the function to determine
+ * what questions to grab
+ */
 function assignQuizQuestions(labId) {
   switch (labId) {
     case 1:
@@ -40,26 +45,6 @@ function assignQuizQuestions(labId) {
         },
       ];
   }
-}
-
-function shuffleArray(array) {
-  let currentIndex = array.length;
-  let temporaryValue;
-  let randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
 }
 
 /**
@@ -104,6 +89,13 @@ const QuizHandler = (props) => {
     setQuizCompleted(true);
   }
 
+  /**
+ * checkIfCorrect checks to see if the users answer is correct by using the passed
+ * answerIndex and referencing the question using the questionIndex and checking the
+ * answer
+ * @param {integer} answerIndex passed to check the questions answer
+ * @param {integer} questionIndex passed to check what question the answer should be checked against
+ */
   function checkIfCorrect(answerIndex, questionIndex) {
     let isCorrect;
     questions[questionIndex].answers[answerIndex].val === 1
@@ -112,6 +104,12 @@ const QuizHandler = (props) => {
     return isCorrect;
   }
 
+  /**
+ * getMultiCorrectNumCount checks the question by using questionIndex and then returns the number of of
+ * correct answers to the question
+ * @param {integer} questionIndex passed to check how many correct answers there are 
+ * for the passed index
+ */
   function getMultiCorrectNumCount(questionIndex) {
     let multiCount = 0;
     questions[questionIndex].answers.map((answer) => {
@@ -122,6 +120,11 @@ const QuizHandler = (props) => {
     return multiCount;
   }
 
+/**
+ * scoreResults takes all the users answers and checks to see if they are correct
+ * it then proceeds to update the results to allow for them to be displayed
+ * scoreResults also PUSHes the answers to the database aswell as the quiz score
+ */
   function scoreResults() {
     let questionsTotal = questions.length;
     let output = [];
