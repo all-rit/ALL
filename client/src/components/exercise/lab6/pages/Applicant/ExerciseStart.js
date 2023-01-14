@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
 const ExerciseStart = (props) => {
   const { actions } = props;
 
