@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { Button, Link } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -5,34 +8,33 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Paper from "@material-ui/core/Paper";
 import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING} from "../../../../../constants/lab3/index";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
 class ExerciseInstructions extends Component {
-
   handleSubmit() {
     navigate("/Lab3/Exercise/UserUpdatedExercise");
   }
-    componentDidMount() {
-        const { actions } = this.props;
-        actions.updateState(EXERCISE_PLAYING);
-    }
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
+  }
 
   render() {
     const textToSpeech = (e, text) => {
-      let synth = window.speechSynthesis;
+      const synth = window.speechSynthesis;
       synth.cancel();
-      let utterThis = new SpeechSynthesisUtterance(text);
+      const utterThis = new SpeechSynthesisUtterance(text);
       synth.speak(utterThis);
     };
-    
+
     const paperStyle = {
       marginLeft: "10px",
       marginRight: "10px",
-      marginTop: "20px"
+      marginTop: "20px",
     };
     return (
       <div>
-        <AppBar position="static" className = "appBar">
+        <AppBar position="static" className="appBar">
           <Toolbar>
             <Typography variant={"h4"} aria-label={"Instructions"}>
               Instructions{" "}
@@ -51,8 +53,8 @@ class ExerciseInstructions extends Component {
               " Please make sure you are using Google Chrome." +
               "Please click the " +
               "'next' button to experience what a similar, simple activity might look like to someone who is " +
-              "blind." + 
-              "For the following activity, please ensure that you have volume enabled on your device." + 
+              "blind." +
+              "For the following activity, please ensure that you have volume enabled on your device." +
               "Click on the button below to test the functionality of the screen reader."
             }
             tabIndex={"0"}
@@ -60,18 +62,24 @@ class ExerciseInstructions extends Component {
             You clicked on an image. However, without the ability to see, it may
             be difficult to decipher what these images represent. Please make
             sure you are using
-            <Link component={Link} target="_blank" href={"https://www.google.com/chrome/"}>
+            <Link
+              component={Link}
+              target="_blank"
+              href={"https://www.google.com/chrome/"}
+            >
               {" "}
               Google Chrome.{" "}
             </Link>
-            For the following activity, please ensure that you have volume enabled on your device.
+            For the following activity, please ensure that you have volume
+            enabled on your device.
             <br />
             <br />
-            Click on the button below to test the functionality of the screen reader.
+            Click on the button below to test the functionality of the screen
+            reader.
           </Typography>
           <br />
           <div className="container text-center">
-            <button 
+            <button
               className="btn btn-second btn-xl text-uppercase  mx-auto"
               key="repair"
               aria-label={"Test"}
@@ -86,7 +94,7 @@ class ExerciseInstructions extends Component {
         <Button
           onClick={this.handleSubmit}
           variant={"contained"}
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          className="btn btn-second btn-xl text-uppercase  leftButton"
           aria-label={"Next"}
         >
           Next

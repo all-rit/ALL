@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import { navigate } from "@reach/router";
@@ -7,21 +10,19 @@ class CatClickFirstNavigate extends Component {
   constructor(props) {
     super(props);
     const { path } = this.props;
-    CatClickFirstNavigate.handleOnclick = CatClickFirstNavigate.handleOnclick.bind(
-      this,
-      path
-    );
+    CatClickFirstNavigate.handleOnclick =
+      CatClickFirstNavigate.handleOnclick.bind(this, path);
   }
 
   static handleOnclick(path) {
-    console.log(path)
+    console.log(path);
     navigate(path);
   }
 
   render() {
     const typographyStyle = { color: "white" };
     return (
-      <div id={"catClickMessage"} >
+      <div id={"catClickMessage"}>
         <Typography
           variant={"h6"}
           aria-label={
@@ -36,7 +37,7 @@ class CatClickFirstNavigate extends Component {
         <Button
           onClick={CatClickFirstNavigate.handleOnclick}
           variant="contained"
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          className="btn btn-second btn-xl text-uppercase  leftButton"
         >
           Next
         </Button>

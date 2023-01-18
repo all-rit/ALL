@@ -6,14 +6,14 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   margin: 20px;
   padding: 15px;
-  
-  &__userInfo{
+
+  &__userInfo {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
   }
 
-  &__logo{
+  &__logo {
     align-self: flex-start;
     border-radius: 50%;
     margin-left: 3rem;

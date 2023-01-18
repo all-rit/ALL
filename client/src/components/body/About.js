@@ -1,11 +1,9 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import Spinner from "../../common/Spinner/Spinner";
 import LabService from "../../services/LabService";
 import UserLabService from "../../services/UserLabService";
 import useScroll from "../../use-hooks/useScroll";
-
-
-
 
 const About = (props) => {
   const { user, labID } = props;
@@ -19,8 +17,8 @@ const About = (props) => {
     }
     UserLabService.complete_about(labID);
     LabService.getLabAbout(labID).then((data) => {
-      setAboutText(data[0])
-    })
+      setAboutText(data[0]);
+    });
   }, [user, labID]);
 
   if (!aboutText) {
@@ -28,14 +26,12 @@ const About = (props) => {
       <div className="landingpage__row">
         <Spinner />
       </div>
-    )
+    );
   }
 
   return (
     <div className="study">
-      <p>
-        {aboutText?.about}
-      </p>
+      <p>{aboutText?.about}</p>
     </div>
   );
 };

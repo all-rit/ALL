@@ -1,39 +1,44 @@
-import React, { Component } from 'react';
-import ReactGA from 'react-ga';
-import quizQuestionsLab1 from './api/Lab1/quizQuestions';
-import quizQuestionsLab2 from './api/Lab2/quizQuestions';
-import quizQuestionsLab3 from './api/Lab3/quizQuestions';
+
+
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable guard-for-in */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React, { Component } from "react";
+import ReactGA from "react-ga";
+import quizQuestionsLab1 from "./api/Lab1/quizQuestions";
+import quizQuestionsLab2 from "./api/Lab2/quizQuestions";
+import quizQuestionsLab3 from "./api/Lab3/quizQuestions";
 import quizQuestionsLab4 from "./api/Lab4/quizQuestions";
-import quizQuestionsLab5 from './api/Lab5/quizQuestions';
-import quizQuestionsLab7 from './api/Lab7/quizQuestions';
-import alterationQuizQuestions from './api/Lab7/alterationQuizQuestions';
-import Quiz from './components/Quiz';
-import Result from './components/Result';
-import './App.css';
-import UserLabService from '../../services/UserLabService';
+import quizQuestionsLab5 from "./api/Lab5/quizQuestions";
+import Quiz from "./components/Quiz";
+import Result from "./components/Result";
+import "./App.css";
+import UserLabService from "../../services/UserLabService";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
 
 function initializeReactGA() {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
         const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
         ReactGA.initialize(TRACKING_ID);
         ReactGA.pageview(window.location.pathname + window.location.search);
-    }
-    else if (process.env.NODE_ENV === 'development') {
-        console.log("Google Analytics cannot be implemented in development mode")
+    } else if (process.env.NODE_ENV === "development") {
+        console.log("Google Analytics cannot be implemented in development mode");
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(mainActions, dispatch)
+        actions: bindActionCreators(mainActions, dispatch),
     };
 };
 const mapStateToProps = (state) => {
     return {
-        state: state
+        state: state,
     };
 };
 class App extends Component {
@@ -42,94 +47,99 @@ class App extends Component {
         this.state = {
             counter: 0,
             questionId: 1,
-            question: '',
+            question: "",
             answerOptions: [],
-            answer: '',
-            result: '',
+            answer: "",
+            result: "",
             myCount: {},
             disableNextQuestion: true,
             selectedAnswers: {},
             multiChoice: false,
             lab: props.state.main.lab,
-            quizQuestions: []
-        }
-            ;
+            quizQuestions: [],
+        };
 
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
         this.assignQuizQuestions = this.assignQuizQuestions.bind(this);
-        this.setNextQuestion = this.setNextQuestion.bind(this)
+        this.setNextQuestion = this.setNextQuestion.bind(this);
     }
 
     assignQuizQuestions() {
         const lab = this.props.state.main.lab;
         switch (lab) {
             case 1:
-                return quizQuestionsLab1
+                return quizQuestionsLab1;
             case 2:
-                return quizQuestionsLab2
+                return quizQuestionsLab2;
             case 3:
-                return quizQuestionsLab3
+                return quizQuestionsLab3;
             // case 4:
             case 4:
-                return quizQuestionsLab4
+                return quizQuestionsLab4;
 
             case 5:
-                return quizQuestionsLab5
+                return quizQuestionsLab5;
+
             case 7:
                 if (this.props.state.main.body == 2) {
                     return alterationQuizQuestions
                 } else {
                     return quizQuestionsLab7
                 }
+
             default:
-                return [{
-                    question: "Default",
-                    answers: [
-                        {
-                            val: 0,
-                            content: "Default"
-                        }
-                    ],
-                    multiChoice: false
-                }]
+                return [
+                    {
+                        question: "Default",
+                        answers: [
+                            {
+                                val: 0,
+                                content: "Default",
+                            },
+                        ],
+                        multiChoice: false,
+                    },
+                ];
         }
     }
 
     UNSAFE_componentWillMount() {
         this.setState({ quizQuestions: this.assignQuizQuestions() }, () => {
             for (let i = 0; i < this.state.quizQuestions.length; i++) {
-                for (let x = 0; x < this.state.quizQuestions[i]['answers'].length; x++) {
-                    let questions = this.state.quizQuestions;
-                    questions[i]['answers'][x]['type'] = "" + x;
+                for (
+                    let x = 0;
+                    x < this.state.quizQuestions[i]["answers"].length;
+                    x++
+                ) {
+                    const questions = this.state.quizQuestions;
+                    questions[i]["answers"][x]["type"] = "" + x;
                     this.setState({
-                        quizQuestions: questions
-                    })
-
+                        quizQuestions: questions,
+                    });
 
                     // this.state.quizQuestions[i]['answers'][x]['type'] = "" + x;
                 }
             }
-        })
+        });
     }
-
 
     componentDidMount() {
         for (let i = 0; i < this.state.quizQuestions.length; i++) {
-            this.state.quizQuestions[i]['answers'].sort(function (a, b) {
+            this.state.quizQuestions[i]["answers"].sort(function (a, b) {
                 return parseInt(a.type) - parseInt(b.type);
             });
         }
         this.setState({
             question: this.state.quizQuestions[0].question,
-            answerOptions: this.state.quizQuestions[0]['answers'],
-            multiChoice: this.state.quizQuestions[0]['multiChoice']
+            answerOptions: this.state.quizQuestions[0]["answers"],
+            multiChoice: this.state.quizQuestions[0]["multiChoice"],
         });
     }
 
     shuffleArray(array) {
-        let currentIndex = array.length,
-            temporaryValue,
-            randomIndex;
+        let currentIndex = array.length;
+        let temporaryValue;
+        let randomIndex;
 
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
@@ -148,7 +158,7 @@ class App extends Component {
 
     handleAnswerSelected(event) {
         this.setState((state, props) => ({
-            disableNextQuestion: false
+            disableNextQuestion: false,
         }));
     }
 
@@ -157,21 +167,26 @@ class App extends Component {
             disableNextQuestion: false,
             myCount: {
                 ...state.myCount,
-                [this.state.counter]: correctanswer
+                [this.state.counter]: correctanswer,
             },
             selectedAnswers: {
                 ...state.selectedAnswers,
-                [this.state.counter]: answer
+                [this.state.counter]: answer,
             },
-            answer: answer
+            answer: answer,
         }));
     }
 
     checkMultipleAnswers(currentAnswers) {
         let correctAnswer = 0;
-        let options = this.state.quizQuestions[this.state.counter]['answers'].length;
-        for (var index = 0; index < options; index++) {
-            if (this.state.quizQuestions[this.state.counter]['answers'][index]['val'] === currentAnswers[index]) {
+        const options =
+            this.state.quizQuestions[this.state.counter]["answers"].length;
+        for (let index = 0; index < options; index++) {
+            if (
+                this.state.quizQuestions[this.state.counter]["answers"][index][
+                    "val"
+                    ] === currentAnswers[index]
+            ) {
                 correctAnswer = 1;
             } else {
                 correctAnswer = 0;
@@ -183,27 +198,25 @@ class App extends Component {
     }
 
     getCheckedAnswers() {
-        let checked = document.getElementsByName('checkboxGroup');
-        let currentAnswers = {};
+        const checked = document.getElementsByName("checkboxGroup");
+        const currentAnswers = {};
         for (let index = 0; index < checked.length; index++) {
             if (checked[index].checked === true) {
-                currentAnswers[index] = 1
-
+                currentAnswers[index] = 1;
             } else {
-                currentAnswers[index] = 0
+                currentAnswers[index] = 0;
             }
-
         }
         return currentAnswers;
     }
 
     setNextQuestion() {
-        let currentAnswers = this.getCheckedAnswers();
+        const currentAnswers = this.getCheckedAnswers();
 
-        //Calculate correct answers and set accordingly
+        // Calculate correct answers and set accordingly
         this.checkMultipleAnswers(currentAnswers);
 
-        //Set next question
+        // Set next question
         if (this.state.questionId < this.state.quizQuestions.length) {
             const counter = this.state.counter + 1;
             const questionId = this.state.questionId + 1;
@@ -213,63 +226,76 @@ class App extends Component {
                 questionId: questionId,
                 question: this.state.quizQuestions[counter].question,
                 answerOptions: this.state.quizQuestions[counter].answers,
-                answer: '',
+                answer: "",
                 disableNextQuestion: true,
                 multiChoice: this.state.quizQuestions[counter].multiChoice,
             });
         } else {
             setTimeout(() => this.setResults(this.getResults()), 300);
         }
-
     }
 
     getResults(numerical = false) {
         const myCount = this.state.myCount;
         let correct = 0;
         let total = 0;
-        for (var item in myCount) {
+        for (const item in myCount) {
             total++;
             if (myCount.hasOwnProperty(item)) {
                 if (myCount[item] === 1) correct++;
             }
         }
-        let percent = Math.floor(correct / total * 100);
+        const percent = Math.floor((correct / total) * 100);
         if (!numerical) {
-            return "" + percent + "%"
+            return "" + percent + "%";
         }
         return percent;
     }
 
     setResults(result) {
-        UserLabService.complete_quiz(this.state.lab, this.getResults(true), this.getJsonResults())
+        UserLabService.complete_quiz(
+            this.state.lab,
+            this.getResults(true),
+            this.getJsonResults()
+        );
         if (this.props.user.firstname !== null) {
-            UserLabService.user_complete_quiz(this.props.user.userid, this.state.lab, this.getResults(true))
+            UserLabService.user_complete_quiz(
+                this.props.user.userid,
+                this.state.lab,
+                this.getResults(true)
+            );
         }
-        this.setState({ result: result })
+        this.setState({ result: result });
     }
 
-
     getJsonResults() {
-        const jsonresults = []
-        let counter = 0
+        const jsonresults = [];
+        let counter = 0;
         const selectedAnswers = Object.values(this.state.selectedAnswers);
         for (const quizQuestion of this.state.quizQuestions) {
-            //get right answers
-            const { question, answers } = quizQuestion //destructuring
-            let quizQuestionObject = { Question: question, Answers: [], SelectedAnswers: [], IsCorrect: this.state.myCount[counter] === 1 }
+            // get right answers
+            const { question, answers } = quizQuestion; // destructuring
+            const quizQuestionObject = {
+                Question: question,
+                Answers: [],
+                SelectedAnswers: [],
+                IsCorrect: this.state.myCount[counter] === 1,
+            };
             for (const answer of answers) {
-                if (answer['val'] === 1) {
-                    quizQuestionObject['Answers'].push(answer['content'])
+                if (answer["val"] === 1) {
+                    quizQuestionObject["Answers"].push(answer["content"]);
                 }
             }
-            //get user selected answers
+            // get user selected answers
             const selectedAnswserQuestion = selectedAnswers[counter];
             const choices = Object.values(selectedAnswserQuestion);
             let optionCounter = 0;
             for (const choice of choices) {
-                //is the choice the one that is selected by user
+                // is the choice the one that is selected by user
                 if (choice === 1) {
-                    quizQuestionObject["SelectedAnswers"].push(answers[optionCounter]['content']);
+                    quizQuestionObject["SelectedAnswers"].push(
+                        answers[optionCounter]["content"]
+                    );
                 }
                 optionCounter += 1;
             }
@@ -297,13 +323,14 @@ class App extends Component {
     }
 
     renderResult() {
-        return (<Result
-            quizResult={this.state.result}
-            quizScore={this.state.myCount}
-            selectedAnswers={this.state.selectedAnswers}
-            quizQuestions={this.state.quizQuestions}
-            lab={this.state.lab}
-        />
+        return (
+            <Result
+                quizResult={this.state.result}
+                quizScore={this.state.myCount}
+                selectedAnswers={this.state.selectedAnswers}
+                quizQuestions={this.state.quizQuestions}
+                lab={this.state.lab}
+            />
         );
     }
 
@@ -317,5 +344,4 @@ class App extends Component {
     }
 }
 
-export default connect(
-    mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
