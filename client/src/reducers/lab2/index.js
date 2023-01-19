@@ -1,14 +1,14 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 import {
-    changeColors,
-    selectExerciseOption,
-    changeExerciseState,
-    changeUser
-  } from "./ExerciseReducer";
+  changeColors,
+  selectExerciseOption,
+  changeExerciseState,
+  changeUser,
+} from "./ExerciseReducer";
 
 export default combineReducers({
-    changeColors,
-    selectExerciseOption,
-    changeExerciseState,
-    changeUser,
-  });
+  changeColors,
+  selectExerciseOption,
+  changeExerciseState,
+  changeUser,
+});

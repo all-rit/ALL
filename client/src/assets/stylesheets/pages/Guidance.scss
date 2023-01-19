@@ -1,24 +1,23 @@
-.guidance{
+.guidance {
   font-size: 1.25rem;
   text-align: left;
   ul li {
     display: list-item;
     list-style: disc;
-    font-size:1.25rem
+    font-size: 1.25rem;
   }
   ul {
-    padding-left:30px;
+    padding-left: 30px;
   }
-  .lowercontent{
+  .lowercontent {
     margin-top: 1rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
-  .next{
+  .next {
     //float:left;
   }
-  .flex{
-    display:flex;
+  .flex {
+    display: flex;
     float: right;
   }
-
 }

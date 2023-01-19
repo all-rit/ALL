@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "@material-ui/core";
@@ -17,18 +20,17 @@ class CatClickNavigate extends Component {
   static handleOnclick(path) {
     navigate(path);
   }
-  
-  
+
   render() {
     const textToSpeech = (e, text) => {
-      let synth = window.speechSynthesis;
+      const synth = window.speechSynthesis;
       synth.cancel();
-      let utterThis = new SpeechSynthesisUtterance(text);
+      const utterThis = new SpeechSynthesisUtterance(text);
       synth.speak(utterThis);
     };
-    
+
     const typographyStyle = { color: "white" };
-    
+
     return (
       <div id={"catClickMessage"}>
         <Typography
@@ -38,7 +40,12 @@ class CatClickNavigate extends Component {
           }
           tabIndex={"0"}
           style={typographyStyle}
-          onFocus={(e) => textToSpeech(e, "Cat clicked! Please click the next button to continue.")}
+          onFocus={(e) =>
+            textToSpeech(
+              e,
+              "Cat clicked! Please click the next button to continue."
+            )
+          }
         >
           Cat clicked! Please click the 'next' button to continue.
         </Typography>
@@ -47,7 +54,7 @@ class CatClickNavigate extends Component {
           component={Link}
           onClick={CatClickNavigate.handleOnclick}
           variant="contained"
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          className="btn btn-second btn-xl text-uppercase  leftButton"
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next

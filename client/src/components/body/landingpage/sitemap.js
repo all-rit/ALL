@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import "../../../assets/stylesheets/components/App.scss";
 import { connect } from "react-redux";

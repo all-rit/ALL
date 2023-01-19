@@ -1,3 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+/* eslint-disable max-len */
 import React, { Component } from "react";
 import { AppBar, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -13,40 +17,40 @@ import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.sv
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
-import {PageService} from "../../../../../services/PageService";
+import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
+import { PageService } from "../../../../../services/PageService";
 
 class ProblemDiscovery extends Component {
   handleSubmit() {
-    const name = "ProblemDiscovery"
+    const name = "ProblemDiscovery";
     PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-    navigate( "/Lab3/Exercise/ProblemDiscoveryFixedExperience");
+    navigate("/Lab3/Exercise/ProblemDiscoveryFixedExperience");
   }
-    componentDidMount() {
-        const { actions } = this.props;
-        actions.updateState(EXERCISE_PLAYING)
-        this.interval = setInterval(
-            () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-            1000
-        );
-    }
-    constructor(props) {
-        super(props);
-        this.state = { render: "", secondsElapsed: 0 };
-    }
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
+    this.interval = setInterval(
+      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
+      1000
+    );
+  }
+  constructor(props) {
+    super(props);
+    this.state = { render: "", secondsElapsed: 0 };
+  }
 
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
-    render() {
+  render() {
     const textToSpeech = (e, text) => {
-      let synth = window.speechSynthesis;
+      const synth = window.speechSynthesis;
       synth.cancel();
-      let utterThis = new SpeechSynthesisUtterance(text);
+      const utterThis = new SpeechSynthesisUtterance(text);
       synth.speak(utterThis);
     };
-    
+
     const imgStyle = {
       width: "128px",
       height: "128px",
@@ -54,20 +58,20 @@ class ProblemDiscovery extends Component {
       tabIndex: "0",
       backgroundColor: "#EFEFEF",
       verticalAlign: "middle",
-      padding: "5px"
+      padding: "5px",
     };
 
     const tableStyle = {
-        border: "1px solid black",
-        marginLeft: "auto",
-        marginRight: "auto",
-        textAlign: "center",
-        marginBottom: "1rem"
+      border: "1px solid black",
+      marginLeft: "auto",
+      marginRight: "auto",
+      textAlign: "center",
+      marginBottom: "1rem",
     };
-    
+
     return (
       <div>
-          <AppBar position="static" className = "appBar">
+        <AppBar position="static" className="appBar">
           <Toolbar>
             <Grid justify="center" container spacing={10}>
               <Grid item>
@@ -90,7 +94,12 @@ class ProblemDiscovery extends Component {
           aria-label={"Subtitle Instructions"}
           gutterBottom
           tabIndex={"0"}
-          onFocus={(e) => textToSpeech(e, "Can you find the accessibility issues with this page? Try using your screenreader.")}
+          onFocus={(e) =>
+            textToSpeech(
+              e,
+              "Can you find the accessibility issues with this page? Try using your screenreader."
+            )
+          }
         >
           Can you find the accessibility issues with this page? Try using your
           screenreader.
@@ -101,7 +110,12 @@ class ProblemDiscovery extends Component {
           aria-label={"Body Instructions"}
           gutterBottom
           tabIndex={"0"}
-          onFocus={(e) => textToSpeech(e, "Write down the problems on a notepad or any other text editor. Go ahead take a guess. Don't actually click on the Ok and Cancel buttons. They are there for the example.")}
+          onFocus={(e) =>
+            textToSpeech(
+              e,
+              "Write down the problems on a notepad or any other text editor. Go ahead take a guess. Don't actually click on the Ok and Cancel buttons. They are there for the example."
+            )
+          }
         >
           Write down the problems on a notepad or any other text editor. Go
           ahead take a guess. Don't actually click on the Ok and Cancel buttons.
@@ -109,53 +123,60 @@ class ProblemDiscovery extends Component {
         </Typography>
         <br />
         <table style={tableStyle} className={"center"}>
-            <tbody>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={catImage}
-                            alt={"cat"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "cat")}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={carImage}
-                            alt={"image of car"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "image of car")}
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input
-                            style={imgStyle}
-                            type={"image"}
-                            src={burgerImage}
-                            alt={"image of burger"}
-                            tabIndex={"0"}
-                            onFocus={(e) => textToSpeech(e, "image of burger")}
-                        />
-                    </td>
-                </tr>
-            </tbody>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  style={imgStyle}
+                  type={"image"}
+                  src={catImage}
+                  alt={"cat"}
+                  tabIndex={"0"}
+                  onFocus={(e) => textToSpeech(e, "cat")}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  style={imgStyle}
+                  type={"image"}
+                  src={carImage}
+                  alt={"image of car"}
+                  tabIndex={"0"}
+                  onFocus={(e) => textToSpeech(e, "image of car")}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  style={imgStyle}
+                  type={"image"}
+                  src={burgerImage}
+                  alt={"image of burger"}
+                  tabIndex={"0"}
+                  onFocus={(e) => textToSpeech(e, "image of burger")}
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
-        <Button variant={"text"} onFocus={(e) => textToSpeech(e, "ok button")}>Ok</Button>
-        <Button variant={"text"} onFocus={(e) => textToSpeech(e, "cancel button")}>Cancel</Button>
+        <Button variant={"text"} onFocus={(e) => textToSpeech(e, "ok button")}>
+          Ok
+        </Button>
+        <Button
+          variant={"text"}
+          onFocus={(e) => textToSpeech(e, "cancel button")}
+        >
+          Cancel
+        </Button>
         <br />
         <Button
           href="#"
           onClick={this.handleSubmit.bind(this)}
-          variant={"contained"} 
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          variant={"contained"}
+          className="btn btn-second btn-xl text-uppercase  leftButton"
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next

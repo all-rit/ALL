@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
@@ -7,7 +8,7 @@ class Header extends Component {
     return (
       <Toolbar>
         <Grid justify="space-between" container spacing={10}>
-          <Grid item/>
+          <Grid item />
         </Grid>
       </Toolbar>
     );

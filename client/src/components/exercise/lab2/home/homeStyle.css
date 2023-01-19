@@ -1,44 +1,44 @@
-.center{
+.center {
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-.inline{
+.inline {
   flex-direction: nowrap;
   padding: 20px;
   margin-bottom: 30px;
   text-align: center;
 }
 
-.start{
+.start {
   margin-top: 40px;
   font-size: 30px;
   color: light-grey;
   padding: 10px 10px;
-  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.start:hover{
-  cursor:pointer
+.start:hover {
+  cursor: pointer;
 }
 
-.thirdTitle{
+.thirdTitle {
   font-size: 35px;
 }
 
 @media (max-width: 800px) {
-  .thirdTitle{
+  .thirdTitle {
     margin-top: 20px;
     margin-bottom: 20px;
   }
 }
 
-.fourthTitle{
+.fourthTitle {
   font-size: 25px;
 }
 
-.instruction{
+.instruction {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -46,50 +46,50 @@
   margin-bottom: 5px;
 }
 
-.Left{
+.Left {
   width: 400px;
   margin-left: 200px;
   text-align: center;
 }
 
-.Right{
+.Right {
   width: 500px;
   margin-right: 200px;
   text-align: center;
 }
 
-.selection{
+.selection {
   width: 300px;
   height: 60px;
-  margin-top:10px;
+  margin-top: 10px;
   font-size: 20px;
   margin-right: 5px;
 }
 
-.textSelection{
+.textSelection {
   font-size: 20px;
 }
 
-.circles{
+.circles {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
 }
 
-.popupArrow{
+.popupArrow {
   color: grey;
   background: #1a1a1a;
   margin-top: 0px;
   padding-top: 11px;
 }
 
-@media (min-width: 600px) and (max-width:1200px){
-  .correctCircle{
+@media (min-width: 600px) and (max-width: 1200px) {
+  .correctCircle {
     margin-right: 300px;
   }
-  .popupArrow{
-    height:15px;
+  .popupArrow {
+    height: 15px;
     padding-top: 13px;
   }
   .fourthTitle {
@@ -104,8 +104,8 @@
   }
 }
 
-@media (max-width: 600px){
-  .correctCircle{
+@media (max-width: 600px) {
+  .correctCircle {
     margin-right: 100px;
   }
   .fourthTitle {
@@ -118,7 +118,7 @@
     cursor: pointer;
     margin-left: 1px;
   }
-  .start{
+  .start {
     margin-top: 20px;
     font-size: 16px;
   }
@@ -140,8 +140,8 @@
   }
 }
 
-@media (min-width: 1200px){
-  .correctCircle{
+@media (min-width: 1200px) {
+  .correctCircle {
     margin-right: 450px;
   }
   .allLink {
@@ -150,11 +150,11 @@
   }
 }
 
-.incorrectCircle{
+.incorrectCircle {
   margin-left: 50px;
 }
 
-.submitColorPopup:hover{
+.submitColorPopup:hover {
   cursor: pointer;
 }
 

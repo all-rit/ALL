@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -5,7 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING} from "../../../../../constants/lab3/index";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
 class AccessibleInstructions extends Component {
   constructor(props) {
@@ -24,11 +27,11 @@ class AccessibleInstructions extends Component {
     const paperStyle = {
       marginLeft: "10px",
       marginRight: "10px",
-      marginTop: "20px"
+      marginTop: "20px",
     };
     return (
       <div>
-        <AppBar position="static" className = "appBar">
+        <AppBar position="static" className="appBar">
           <Toolbar>
             <Typography
               variant={"h4"}
@@ -77,7 +80,7 @@ class AccessibleInstructions extends Component {
           href="#"
           onClick={this.handleSubmit}
           variant={"contained"}
-          className = "btn btn-second btn-xl text-uppercase  leftButton"
+          className="btn btn-second btn-xl text-uppercase  leftButton"
         >
           Next
         </Button>

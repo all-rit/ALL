@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+/* eslint-disable max-len */
 import React, { Component } from "react";
 // link to image: https://pixabay.com/vectors/cat-pet-animal-kitty-kitten-cute-6484941/
 // license: https://pixabay.com/service/license/
@@ -13,24 +16,27 @@ import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.sv
 import cowImage from "../../../../../assets/images/lab3/exercise/cow.svg";
 import CatClickFirstNavigate from "../../helpers/CatClickFirstNavigate";
 import { Typography } from "@material-ui/core";
-import {PageService} from "../../../../../services/PageService";
+import { PageService } from "../../../../../services/PageService";
 import { navigate } from "@reach/router";
-import {EXERCISE_PLAYING, LAB_ID} from "../../../../../constants/lab3/index";
-import {actions as exerciseActions} from '../../../../../reducers/lab3/ExerciseReducer';
-import {bindActionCreators} from 'redux';
-import {actions as mainActions} from "../../../../../reducers/MainReducer";
-import {actions as repairActions} from '../../../../../reducers/lab3/RepairReducer';
-import {connect} from "react-redux";
+import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
+import { actions as exerciseActions } from "../../../../../reducers/lab3/ExerciseReducer";
+import { bindActionCreators } from "redux";
+import { actions as mainActions } from "../../../../../reducers/MainReducer";
+import { actions as repairActions } from "../../../../../reducers/lab3/RepairReducer";
+import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
   return {
-    state: state
+    state: state,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...exerciseActions, ...mainActions, ...repairActions}, dispatch)
+    actions: bindActionCreators(
+      { ...exerciseActions, ...mainActions, ...repairActions },
+      dispatch
+    ),
   };
 };
 
@@ -66,7 +72,7 @@ class Exercise extends Component {
       console.log("Cat image clicked!");
       const name = "NonSimulatedExercise";
       PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-      this.setState( { render: "CatClickNavigate" });
+      this.setState({ render: "CatClickNavigate" });
     };
     const burgerClick = () => {
       console.log("Burger image clicked!");
@@ -80,13 +86,13 @@ class Exercise extends Component {
     const imgStyle = {
       width: "128px",
       height: "128px",
-      border: "1px solid black"
+      border: "1px solid black",
     };
     const tableStyle = {
       border: "1px solid black",
       marginLeft: "auto",
       marginRight: "auto",
-      textAlign: "center"
+      textAlign: "center",
     };
     return (
       <div>
@@ -132,5 +138,4 @@ class Exercise extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps, mapDispatchToProps)(Exercise);
+export default connect(mapStateToProps, mapDispatchToProps)(Exercise);
