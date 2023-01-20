@@ -1,12 +1,10 @@
-
-
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable guard-for-in */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, {Component} from "react";
 import ReactGA from "react-ga";
 import quizQuestionsLab1 from "./api/Lab1/quizQuestions";
 import quizQuestionsLab2 from "./api/Lab2/quizQuestions";
@@ -17,9 +15,10 @@ import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 import "./App.css";
 import UserLabService from "../../services/UserLabService";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../reducers/MainReducer";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {actions as mainActions} from "../../reducers/MainReducer";
+import quizQuestionsLab7 from "./api/Lab7/quizQuestions";
 
 function initializeReactGA() {
     if (process.env.NODE_ENV === "production") {
@@ -41,6 +40,7 @@ const mapStateToProps = (state) => {
         state: state,
     };
 };
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -84,7 +84,7 @@ class App extends Component {
                 if (this.props.state.main.body == 2) {
                     return alterationQuizQuestions
                 } else {
-                    return quizQuestionsLab7
+                    return quizQuestionsLab7;
                 }
 
             default:
@@ -104,7 +104,7 @@ class App extends Component {
     }
 
     UNSAFE_componentWillMount() {
-        this.setState({ quizQuestions: this.assignQuizQuestions() }, () => {
+        this.setState({quizQuestions: this.assignQuizQuestions()}, () => {
             for (let i = 0; i < this.state.quizQuestions.length; i++) {
                 for (
                     let x = 0;
@@ -265,7 +265,7 @@ class App extends Component {
                 this.getResults(true)
             );
         }
-        this.setState({ result: result });
+        this.setState({result: result});
     }
 
     getJsonResults() {
@@ -274,7 +274,7 @@ class App extends Component {
         const selectedAnswers = Object.values(this.state.selectedAnswers);
         for (const quizQuestion of this.state.quizQuestions) {
             // get right answers
-            const { question, answers } = quizQuestion; // destructuring
+            const {question, answers} = quizQuestion; // destructuring
             const quizQuestionObject = {
                 Question: question,
                 Answers: [],
@@ -304,6 +304,7 @@ class App extends Component {
         }
         return JSON.stringify(jsonresults);
     }
+
     renderQuiz() {
         return (
             <div>

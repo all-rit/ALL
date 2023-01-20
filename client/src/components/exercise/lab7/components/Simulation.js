@@ -1,4 +1,7 @@
-import React, { Component } from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+
+import React, {Component} from "react";
 import ExerciseService from '../../../../services/lab7/ExerciseService';
 import UserLabService from "../../../../services/UserLabService";
 import Files from "./Files";
@@ -7,27 +10,10 @@ import Message from "./Message";
 import ScoreTally from "./ScoreTally"
 import RoundCounter from "./RoundCounter";
 import SimInstructions from './SimInstructions';
-import Timer from "./Timer";
 import '../../../../assets/stylesheets/components/Simulation.scss';
 
-import {
-    EXERCISE_PLAYING,
-    EXERCISE_ENDED,
-    EXERCISE_IDLE,
-    AI_CORRECT,
-    AI_INCORRECT,
-    OPEN_FILE,
-    LOCKED_FILE,
-    FILE_INTRUSION,
-    FILE_INCORRECT,
-    FILE_PROTECTED,
-    LAB_ID,
-    DELAY_TIME,
-    READ_TIME,
-    FILE_DEFAULT_VALUES,
-    THREAT_MAX
-} from "../../../../constants/lab7";
-import { navigate } from "@reach/router";
+import {EXERCISE_ENDED, EXERCISE_PLAYING, LAB_ID, THREAT_MAX} from "../../../../constants/lab7";
+import {navigate} from "@reach/router";
 
 class Simulation extends Component {
     constructor(props) {
@@ -35,19 +21,17 @@ class Simulation extends Component {
     }
 
     calculatePercentage(time) {
-        const percentage = time / (30 * 1000 / 10) * 100;
-        return percentage;
+        return time / (30 * 1000 / 10) * 100;
     }
 
     startRound() {
-        const { data, handlers, user } = this.props;
+        const {data, handlers, user} = this.props;
         data.roundNumber += 1;
 
         if (data.roundNumber === 0) {
             ExerciseService.createSimulation(data.plays);
             handlers.startNewRound();
-        }
-        else if (data.roundNumber > 10) {
+        } else if (data.roundNumber > 10) {
             handlers.updateState(EXERCISE_ENDED);
             UserLabService.complete_exercise(LAB_ID);
             if (user?.firstname !== null && user !== null) {
@@ -64,13 +48,13 @@ class Simulation extends Component {
     }
 
     startSimulation() {
-        const { handlers } = this.props;
+        const {handlers} = this.props;
         handlers.updateState(EXERCISE_PLAYING);
         this.startRound();
     }
 
     resetExercise() {
-        const { data, handlers } = this.props;
+        const {data, handlers} = this.props;
 
         clearInterval(this.delayTimer);
         clearInterval(this.readTimer);
@@ -86,7 +70,7 @@ class Simulation extends Component {
     }
 
     validateAI(choice) {
-        const { data, handlers } = this.props;
+        const {data, handlers} = this.props;
         const correct = choice === data.correctChoice;
 
         let score = data.score;
@@ -103,7 +87,7 @@ class Simulation extends Component {
     }
 
     calculateScore(outcome) {
-        const { data } = this.props;
+        const {data} = this.props;
         let score = 0;
         //needs to account for if intrusion or incorrect
 
@@ -112,11 +96,11 @@ class Simulation extends Component {
         } else {
             score = 5;
         }
-        this.setState({ score: data.score + score })
+        this.setState({score: data.score + score})
     }
 
     randomizeThreat() {
-        const { data, handlers } = this.props;
+        const {data, handlers} = this.props;
         let threatLvl = 0;
         if (data.roundNumber === 0) {
             threatLvl = 0;
@@ -128,7 +112,7 @@ class Simulation extends Component {
     }
 
     render() {
-        const { data, time } = this.props;
+        const {data, time} = this.props;
         const countdownStyle = {
             width: this.calculatePercentage(time).toString() + '%'
         };
@@ -150,9 +134,9 @@ class Simulation extends Component {
                 <Files
                     files={data.files}
                 />
-                <AutoSysAI files={data.files} threatLvl={data.threatLvl} />
+                <AutoSysAI files={data.files} threatLvl={data.threatLvl}/>
                 <Message
-                // data={data.exposedContent}
+                    // data={data.exposedContent}
                 />
                 <div className="roundTimer">
                     <div className="roundCountdown" style={countdownStyle}>
