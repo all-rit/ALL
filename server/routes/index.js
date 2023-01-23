@@ -82,6 +82,7 @@ router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);
 router.post('/lab1/exercise/round', ExerciseControllerLab1.createRound);
 router.post('/lab1/exercise/choice', ExerciseControllerLab1.createChoice);
 router.post('/lab1/exercise/end', ExerciseControllerLab1.updateEndExerciseScore);
+router.post('/lab7/exercise/end', ExerciseControllerLab7.updateEndExerciseScore);
 router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice);
 router.post('/lab7/exercise/choice', ExerciseControllerLab7.submitChoice);
 

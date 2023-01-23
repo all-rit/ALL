@@ -16,3 +16,10 @@ exports.submitChoice = (data) => {
 	return Promise.resolve();
 
 };
+
+exports.updateEndExerciseScore = (data) => {
+	return db.ExerciseLab7.findByPk(data.id).then((exercise) => {
+	  exercise.update({score: data.score});
+	});
+  };
+  
