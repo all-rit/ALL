@@ -9,11 +9,14 @@ import '../../../../assets/stylesheets/components/Simulation.scss';
 
 import {
     AI_CORRECT,
+    AI_INCORRECT,
+    DELAY_TIME,
     EXERCISE_ENDED,
     EXERCISE_IDLE,
     EXERCISE_PLAYING,
     LAB_ID,
     LOCKED_FILE,
+    READ_TIME,
     THREAT_LEVEL_TEXT,
     THREAT_MAX
 } from "../../../../constants/lab7";
@@ -21,15 +24,18 @@ import {navigate} from "@reach/router";
 import {fileMockData} from "./mockData/fileMockData";
 import OPEN from '../../../../assets/images/lab7/unlock.png';
 import LOCKED from '../../../../assets/images/lab7/lock.png';
+import Countdown from "react-countdown-now";
+import Message from "./Message";
 
 class Simulation extends Component {
     constructor(props) {
         super(props);
-        this.state = {files: this.generateFileList(), counter: 0}
-    }
-
-    calculatePercentage(time) {
-        return time / (30 * 1000 / 10) * 100;
+        this.state = {
+            files: this.generateFileList(),
+            counter: 0,
+            message: null,
+            countdownComponent: null
+        }
     }
 
     startRound() {
@@ -137,16 +143,55 @@ class Simulation extends Component {
         });
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    calculatePercentage(seconds) {
+        return (seconds * 1000 / READ_TIME) * 100;
+    }
+
+    countdownCallback = ({seconds, completed}) => {
+        const {counter, message, files} = this.state;
+        const {content} = files[counter - 1];
+        if (completed) {
+            this.setState({counter: counter + 1, countdownComponent: null})
+            return null;
+        } else {
+            console.log(seconds, seconds * 1000, READ_TIME, content)
+            return (
+                <div className={"tw-mt-9"}>
+                    <div style={{width: `${this.calculatePercentage(seconds)}%`}}
+                         className={`tw-bg-[#7CB1FF] tw-rounded tw-py-3 tw-transition-all tw-ease-in-out tw-duration-500`}/>
+                    <p className={"tw-font-bold tw-text-lg"}>{seconds}</p>
+                    <Message data={content}/>
+                </div>
+            );
+        }
+    }
+
+    componentDidUpdate = (prevProps, prevState, snapshot) => {
         if (prevState.counter !== this.state.counter) {
             if (this.state.counter <= this.state.files.length) {
                 const {counter, files} = this.state;
+
                 /* Include AI logic here to update the system's correctness. */
                 /* Keep track using two counters. Can use the round tracker. */
-                files[counter - 1].report = AI_CORRECT;
-                setTimeout(() => {
-                    this.setState({counter: counter + 1, files})
-                }, 1000);
+                /* LOGIC NEEDS WORK. */
+                const {fileSensitivityLvl} = files[counter - 1];
+                const [expectedUtility, actualUtility] = [this.makeCorrectDecision(fileSensitivityLvl, this.props.data.threatLvl),
+                    this.makeDecision(fileSensitivityLvl, this.props.data.threatLvl)]
+
+                if (expectedUtility === actualUtility) {
+                    files[counter - 1].report = AI_CORRECT;
+                    setTimeout(() => {
+                        this.setState({counter: counter + 1, files, countdownComponent: null})
+                    }, DELAY_TIME);
+                } else {
+                    files[counter - 1].report = AI_INCORRECT;
+                    this.setState({
+                        files,
+                        countdownComponent: <Countdown date={Date.now() + READ_TIME}
+                                                       renderer={this.countdownCallback}/>,
+                    })
+                }
+
             }
         }
     }
@@ -156,10 +201,8 @@ class Simulation extends Component {
     }
 
     render() {
-        const {data, time} = this.props;
-        const countdownStyle = {
-            width: this.calculatePercentage(time).toString() + '%'
-        };
+        const {data} = this.props;
+
         return (
             <div className="simulation">
                 {data.state === EXERCISE_IDLE && (
@@ -234,6 +277,7 @@ class Simulation extends Component {
                                     );
                                 })}
                             </div>
+                            {this.state.countdownComponent}
                         </div>
                     </>
                 )}

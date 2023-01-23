@@ -14,8 +14,8 @@ export const FILE_PROTECTED = 'FILE_PROTECTED';
 
 export const LAB_ID = 7;
 export const THREAT_MAX = 3;
-export const DELAY_TIME = 10;
-export const READ_TIME = 30;
+export const DELAY_TIME = 1.5 * 1000;
+export const READ_TIME = 30 * 1000;
 
 export const THREAT_LEVEL_TEXT = {1: "Low", 2: "Medium", 3: "High"}
 
