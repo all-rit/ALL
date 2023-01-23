@@ -270,10 +270,10 @@ const QuizHandler = (props) => {
   );
 };
 QuizHandler.propTypes = {
-  labId: PropTypes.integer,
+  labId: PropTypes.number,
   user: PropTypes.shape({
     firstname: PropTypes.string,
-    userid: PropTypes.integer,
+    userid: PropTypes.number,
   }),
 };
 export default QuizHandler;
