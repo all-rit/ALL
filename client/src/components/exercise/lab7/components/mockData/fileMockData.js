@@ -25,13 +25,13 @@ export const fileMockData = [
     },
     {
         "fileName": "Dolor.avi",
-        "content": "Social Security Number",
+        "content": "SSN",
         "sensitivityLevel": 5,
         "accessStatus": "OPEN"
     },
     {
         "fileName": "MetusSapien.avi",
-        "content": "Social Security Number",
+        "content": "SSN",
         "sensitivityLevel": 5,
         "accessStatus": "OPEN"
     },
@@ -73,7 +73,7 @@ export const fileMockData = [
     },
     {
         "fileName": "OdioPorttitorId.ppt",
-        "content": "Social Security Number",
+        "content": "SSN",
         "sensitivityLevel": 5,
         "accessStatus": "LOCKED"
     },

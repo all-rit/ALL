@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import Simulation from "../../components/Simulation";
 import '../../../../../assets/stylesheets/components/Simulation.scss';

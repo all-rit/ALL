@@ -2,22 +2,30 @@
 /* eslint-disable no-unused-vars */
 
 import React, {Component} from "react";
+import _ from "lodash";
 import ExerciseService from '../../../../services/lab7/ExerciseService';
 import UserLabService from "../../../../services/UserLabService";
-import Files from "./Files";
-import AutoSysAI from './AutoSysAI';
-import Message from "./Message";
-import ScoreTally from "./ScoreTally"
-import RoundCounter from "./RoundCounter";
-import SimInstructions from './SimInstructions';
 import '../../../../assets/stylesheets/components/Simulation.scss';
 
-import {EXERCISE_ENDED, EXERCISE_PLAYING, LAB_ID, THREAT_MAX} from "../../../../constants/lab7";
+import {
+    AI_CORRECT,
+    EXERCISE_ENDED,
+    EXERCISE_IDLE,
+    EXERCISE_PLAYING,
+    LAB_ID,
+    LOCKED_FILE,
+    THREAT_LEVEL_TEXT,
+    THREAT_MAX
+} from "../../../../constants/lab7";
 import {navigate} from "@reach/router";
+import {fileMockData} from "./mockData/fileMockData";
+import OPEN from '../../../../assets/images/lab7/unlock.png';
+import LOCKED from '../../../../assets/images/lab7/lock.png';
 
 class Simulation extends Component {
     constructor(props) {
         super(props);
+        this.state = {files: this.generateFileList(), counter: 0}
     }
 
     calculatePercentage(time) {
@@ -90,7 +98,6 @@ class Simulation extends Component {
         const {data} = this.props;
         let score = 0;
         //needs to account for if intrusion or incorrect
-
         if (outcome) {
             score = 10;
         } else {
@@ -111,6 +118,43 @@ class Simulation extends Component {
         return threatLvl;
     }
 
+    makeCorrectDecision(fileSensitivityLvl, threatLvl) {
+        return (fileSensitivityLvl / threatLvl);
+    }
+
+    makeDecision(fileSensitivityLvl, threatLvl) {
+        return (fileSensitivityLvl * 2 / threatLvl);
+    }
+
+    generateFileList = () => {
+        const {data} = this.props;
+        return _.sampleSize(fileMockData, 5).map((file) => {
+            return ({
+                ...file,
+                expectedUtility: this.makeCorrectDecision(file.sensitivityLevel, data.threatLvl),
+                actualUtility: this.makeDecision(file.sensitivityLevel, data.threatLvl)
+            })
+        });
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.counter !== this.state.counter) {
+            if (this.state.counter <= this.state.files.length) {
+                const {counter, files} = this.state;
+                /* Include AI logic here to update the system's correctness. */
+                /* Keep track using two counters. Can use the round tracker. */
+                files[counter - 1].report = AI_CORRECT;
+                setTimeout(() => {
+                    this.setState({counter: counter + 1, files})
+                }, 1000);
+            }
+        }
+    }
+
+    loadFiles = () => {
+        this.setState({files: this.generateFileList(), counter: 1});
+    }
+
     render() {
         const {data, time} = this.props;
         const countdownStyle = {
@@ -118,37 +162,81 @@ class Simulation extends Component {
         };
         return (
             <div className="simulation">
-                <RoundCounter
-                    roundNumber={data.roundNumber}
-                />
-                <ScoreTally
-                    totalScore={data.score}
-                    intrusions={data.intrusions}
-                    protectedTP={data.protected}
-                    incorrectFP={data.incorrect}
-                />
-                <SimInstructions
-                    threatLvl={data.threatLvl}
-                />
-
-                <Files
-                    files={data.files}
-                />
-                <AutoSysAI files={data.files} threatLvl={data.threatLvl}/>
-                <Message
-                    // data={data.exposedContent}
-                />
-                <div className="roundTimer">
-                    <div className="roundCountdown" style={countdownStyle}>
-                    </div>
-                </div>
-                <button
-                    className="btn btn-primary text-black btn-xl text-uppercase "
-                    onClick={this.startSimulation.bind(this)}
-                    key="start"
-                >
-                    Start
-                </button>
+                {data.state === EXERCISE_IDLE && (
+                    <>
+                        <h2 className={"bold"}>Click the Start button to begin the simulation</h2>
+                        <button
+                            className="btn btn-primary text-black btn-xl text-uppercase mt-3"
+                            onClick={() => {
+                                this.startSimulation();
+                                this.loadFiles();
+                            }}
+                            key="start"
+                        >
+                            Start
+                        </button>
+                    </>
+                )}
+                {data.state === EXERCISE_PLAYING && (
+                    <>
+                        {/* Header */}
+                        <div className={"tw-flex tw-justify-between"}>
+                            {/* Round Tracker*/}
+                            <div>
+                                <h4 className="tw-font-bold">Round {data.roundNumber} of 10</h4>
+                            </div>
+                            {/* Status Report */}
+                            <div className={"tw-flex tw-text-xl tw-m-[20px]"}>
+                                <ul className={"tw-text-left tw-font-bold"}>
+                                    <li>Intrusions:</li>
+                                    <li>Protected (TP):</li>
+                                    <li>Incorrect (FP):</li>
+                                    <li>Total Score:</li>
+                                </ul>
+                                <ul className={"tw-text-right tw-ml-6"}>
+                                    <li>{data.score}</li>
+                                    <li>{data.intrusions}</li>
+                                    <li>{data.protected}</li>
+                                    <li>{data.incorrect}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        {/* Body */}
+                        <div>
+                            {/* Threat Message */}
+                            <div className={"tw-flex tw-items-center tw-justify-center tw-w-full"}>
+                                <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
+                                    {THREAT_LEVEL_TEXT[data.threatLvl]} threat detected!
+                                </h1>
+                            </div>
+                            {/* File Display */}
+                            {/* Idea: Utilize callback function to slowly display each file and their result.*/}
+                            {/* Halt the display process if one is incorrect, resume once 30s has passed.*/}
+                            <div className={"tw-flex tw-justify-around tw-mt-16"}>
+                                {this.state.files.map((file) => {
+                                    return (
+                                        <div key={file.fileName} className={"tw-flex tw-flex-col tw-items-center"}>
+                                            <div className={"tw-space-y-1.5 file"}>
+                                                <p className={"tw-font-bold"}>{file.fileName}</p>
+                                                <img className={"tw-h-10 tw-w-10"}
+                                                     src={file.accessStatus === LOCKED_FILE ? LOCKED : OPEN}
+                                                     alt={`A .png image of ${file.accessStatus === LOCKED_FILE ? "a locked" : "an unlocked"} lock.`}/>
+                                                <p className={"tw-italic"}>Sensitivity Level {file.sensitivityLevel}</p>
+                                                <p className={"tw-font-bold"}>{file.content}</p>
+                                            </div>
+                                            {file.report !== undefined && (
+                                                <div className={"tw-bg-[#F5F5F5] tw-mt-6 tw-px-6 tw-py-1.5"}>
+                                                    <span
+                                                        className={file.report === AI_CORRECT ? "tw-text-[#47E22E]" : "tw-text-[#FF0000]"}>{file.report}</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
         );
     }

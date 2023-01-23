@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import File from './File';
 import '../../../../assets/stylesheets/components/Files.scss'

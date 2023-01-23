@@ -1,55 +1,41 @@
-import React, { Component } from "react";
+/* eslint-disable react/prop-types */
+
+import React, {Component} from "react";
 import '../../../../assets/stylesheets/components/AutoSysAI.scss'
-import { AI_CORRECT, AI_INCORRECT } from "../../../../constants/lab7";
+import {AI_CORRECT, AI_INCORRECT} from "../../../../constants/lab7";
 
 class AutoSysAI extends Component {
     constructor(props) {
         super(props)
     }
 
-    makeCorrectDecision(fileSensitivityLvl, threatLvl){
-        return (fileSensitivityLvl / threatLvl);
-    }
 
-    makeDecision(fileSensitivityLvl, threatLvl) {
-        return (fileSensitivityLvl * 2 / threatLvl);
-    }
-
-    evaluateChoice(fileSensitivityLvl, threatLvl){
-        const expected = this.makeCorrectDecision(fileSensitivityLvl, threatLvl);
-        const actual = this.makeDecision(fileSensitivityLvl, threatLvl);
-        if (actual === expected) {
-            return AI_CORRECT
-        } else {
-            return AI_INCORRECT
-        }
+    /*
+        - if threat level >= sensitivity level, then shut off access to file
+        - if threat level < sensitivity level, allow access
+        - decision-making by system is based on utility (sensitivity / threat)
+        - goal is obtain a high utility
+            - if utility is
+     */
+    evaluateChoice(expectedUtility, actualUtility) {
+        return actualUtility === expectedUtility ? <span className={"correctAnswer"}>{AI_CORRECT}</span> :
+            <span className={"wrongAnswer"}>{AI_INCORRECT}</span>;
     }
 
     render() {
-        const { files, threatLvl } = this.props;
+        const {files} = this.props;
         return (
             <div className="displays">
-                <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[1].sensitivityLevel, threatLvl)}</p>
-                </div>
-                <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[2].sensitivityLevel, threatLvl)}</p>
-
-                </div>
-                <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[3].sensitivityLevel, threatLvl)}</p>
-
-                </div>
-                <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[4].sensitivityLevel, threatLvl)}</p>
-
-                </div>
-                <div className="fileDisplay">
-                    <p> {this.evaluateChoice(files[5].sensitivityLevel, threatLvl)}</p>
-
-                </div>
+                {files.map(({fileName, expectedUtility, actualUtility}) => {
+                    return (
+                        <div key={fileName} className="fileDisplay">
+                            <p>{this.evaluateChoice(expectedUtility, actualUtility)}</p>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
 }
+
 export default AutoSysAI;

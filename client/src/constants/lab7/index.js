@@ -17,7 +17,20 @@ export const THREAT_MAX = 3;
 export const DELAY_TIME = 10;
 export const READ_TIME = 30;
 
-export const FILE_DEFAULT_VALUES = { 1: { fileName: 'File 1', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' }, 2: { fileName: 'File 2', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' }, 3: { fileName: 'File 3', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' }, 4: { fileName: 'File 4', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' }, 5: { fileName: 'File 5', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content' } };
+export const THREAT_LEVEL_TEXT = {1: "Low", 2: "Medium", 3: "High"}
+
+export const FILE_DEFAULT_VALUES = {
+    1: {
+        fileName: 'File 1',
+        accessStatus: OPEN_FILE,
+        sensitivityLevel: '0',
+        content: 'content'
+    },
+    2: {fileName: 'File 2', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content'},
+    3: {fileName: 'File 3', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content'},
+    4: {fileName: 'File 4', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content'},
+    5: {fileName: 'File 5', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content'}
+};
 
 export const roundData = [
     {

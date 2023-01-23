@@ -9,7 +9,7 @@ const endpoints = {
 
 const ExerciseService = {
 	createSimulation: () => {
-		return API.postWithBody('process.env.REACT_APP_SERVER_URL' + endpoints.CREATE_SIMULATION);
+		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_SIMULATION);
 	},
 	createRound: () => {
 		return API.postWithBody(process.env.REACT_APP_SERVER_URL + endpoints.CREATE_ROUND);
