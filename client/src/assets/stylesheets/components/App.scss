@@ -4,7 +4,15 @@
   --white-text: #fff; // this is the color that changes white text based on the color picker
   --light-blue-text: #bed2fe; // this is the color that changes white text based on the color picker
 }
-
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  padding: 0;
+  margin: 0;
+}
 @mixin breakpoint($size) {
   @if $size == small-phone-only {
     @media (max-width: 330px) {
@@ -104,6 +112,111 @@
   width: 50px;
   height: 50px;
   animation: spin 2s linear infinite;
+}
+
+.link-component {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.link {
+  text-decoration: underline;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.link-footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gridApplicants {
+  margin-bottom: 2rem;
+}
+
+.gridApplicants-content > * + * {
+  padding: 1rem 2rem !important;
+  border-top: 1px solid #d9d9d9 !important;
+}
+.candidate {
+  //    margin-top: 10.35rem;
+  &__form__group {
+    padding-left: 0;
+  }
+  &__key__container {
+    margin-top: 10.05rem;
+    display: flex;
+    padding: 2px;
+    background-color: #3d3d3d;
+    color: white;
+  }
+  &__key__col {
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    width: 10rem;
+  }
+  &__image {
+    height: 10rem;
+    border-radius: 20px 20px 0 0;
+    width: 10rem;
+    background-size: 200px;
+    background-position: center;
+  }
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 25px;
+  }
+  &__container {
+    display: flex;
+    padding: 3px;
+  }
+  &__col {
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    border-radius: 20px 20px 0 0;
+    width: 10rem;
+  }
+  &__data {
+    padding: 10px;
+  }
+}
+
+.analysis {
+  &__rejection {
+    color: red;
+  }
+  &__checkbox {
+    margin-top: 2rem;
+    margin-left: -12rem;
+  }
+  &__questions {
+    padding: 0 0 25px 0;
+  }
+  &__question {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 0.25rem;
+    /* height: 3rem; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    padding: 20px 20px 20px 20px;
+    width: 20rem;
+  }
 }
 
 .link-component {
