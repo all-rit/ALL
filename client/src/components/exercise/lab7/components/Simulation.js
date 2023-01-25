@@ -32,20 +32,23 @@ class Simulation extends Component {
         super(props);
         this.state = {
             files: this.generateFileList(),
-            counter: 0,
-            message: null,
-            countdownComponent: null
+            countdownComponent: null,
+            counter: 0
         }
     }
 
     startRound() {
         const {data, handlers, user} = this.props;
-        data.roundNumber += 1;
-
-        if (data.roundNumber === 0) {
-            ExerciseService.createSimulation(data.plays);
+        if (data.roundNumber + 1 <= 10) {
+            this.randomizeThreat();
             handlers.startNewRound();
-        } else if (data.roundNumber > 10) {
+            setTimeout(() => {
+                this.setState({counter: 1});
+            }, DELAY_TIME);
+            if (data.roundNumber !== 0) {
+                this.setState({files: this.generateFileList()});
+            }
+        } else {
             handlers.updateState(EXERCISE_ENDED);
             UserLabService.complete_exercise(LAB_ID);
             if (user?.firstname !== null && user !== null) {
@@ -53,11 +56,6 @@ class Simulation extends Component {
             }
             ExerciseService.updateEndExerciseScore(data.score);
             navigate("/Lab7/Exercise/SimulationSummary");
-        } else {
-            handlers.startNewRound();
-            handlers.resetDelayTimer();
-            handlers.resetReadTimer();
-            this.randomizeThreat();
         }
     }
 
@@ -113,15 +111,9 @@ class Simulation extends Component {
     }
 
     randomizeThreat() {
-        const {data, handlers} = this.props;
-        let threatLvl = 0;
-        if (data.roundNumber === 0) {
-            threatLvl = 0;
-        } else {
-            threatLvl = (Math.floor(Math.random() * THREAT_MAX) + 1);
-        }
+        const {handlers} = this.props;
+        const threatLvl = Math.floor(Math.random() * THREAT_MAX) + 1;
         handlers.updateThreatLevel(threatLvl);
-        return threatLvl;
     }
 
     makeCorrectDecision(fileSensitivityLvl, threatLvl) {
@@ -144,36 +136,43 @@ class Simulation extends Component {
     }
 
     calculatePercentage(seconds) {
-        return (seconds * 1000 / READ_TIME) * 100;
+        return ((seconds - 1) * 1000 / (READ_TIME - 1000)) * 100;
     }
 
-    countdownCallback = ({seconds, completed}) => {
-        const {counter, message, files} = this.state;
+    countdownRenderCallback = ({seconds, completed}) => {
+        const {counter, files} = this.state;
         const {content} = files[counter - 1];
         if (completed) {
-            this.setState({counter: counter + 1, countdownComponent: null})
-            return null;
+            return <></>;
         } else {
-            console.log(seconds, seconds * 1000, READ_TIME, content)
             return (
                 <div className={"tw-mt-9"}>
-                    <div style={{width: `${this.calculatePercentage(seconds)}%`}}
-                         className={`tw-bg-[#7CB1FF] tw-rounded tw-py-3 tw-transition-all tw-ease-in-out tw-duration-500`}/>
-                    <p className={"tw-font-bold tw-text-lg"}>{seconds}</p>
-                    <Message data={content}/>
+                    <div className={"tw-mb-9"}>
+                        <Message data={content}/>
+                    </div>
+                    <div>
+                        <div style={{width: `${this.calculatePercentage(seconds)}%`}}
+                             className={`tw-bg-[#7CB1FF] tw-rounded tw-py-3 tw-transition-all tw-ease-in-out tw-duration-500`}/>
+                        <p className={"tw-font-bold tw-text-lg"}>{seconds - 1}</p>
+                    </div>
                 </div>
             );
         }
     }
 
     componentDidUpdate = (prevProps, prevState, snapshot) => {
+        /* Counter was incremented */
         if (prevState.counter !== this.state.counter) {
+            /* Displayed report for all files, start next round if within range */
+            if (this.state.counter > this.state.files.length) {
+                this.startRound();
+            }
+            /* Counter is within range of being incremented again */
             if (this.state.counter <= this.state.files.length) {
                 const {counter, files} = this.state;
-
-                /* Include AI logic here to update the system's correctness. */
-                /* Keep track using two counters. Can use the round tracker. */
-                /* LOGIC NEEDS WORK. */
+                /* Include AI logic here to update the system's correctness */
+                /* Keep track using two counters. Can use the round tracker */
+                /* LOGIC NEEDS WORK */
                 const {fileSensitivityLvl} = files[counter - 1];
                 const [expectedUtility, actualUtility] = [this.makeCorrectDecision(fileSensitivityLvl, this.props.data.threatLvl),
                     this.makeDecision(fileSensitivityLvl, this.props.data.threatLvl)]
@@ -188,16 +187,18 @@ class Simulation extends Component {
                     this.setState({
                         files,
                         countdownComponent: <Countdown date={Date.now() + READ_TIME}
-                                                       renderer={this.countdownCallback}/>,
+                                                       renderer={this.countdownRenderCallback}/>,
                     })
+                    setTimeout(() => {
+                        this.setState({countdownComponent: null})
+                    }, READ_TIME)
                 }
-
             }
         }
-    }
-
-    loadFiles = () => {
-        this.setState({files: this.generateFileList(), counter: 1});
+        /* Timeout set countdown component to null */
+        if (prevState.countdownComponent && this.state.countdownComponent === null) {
+            this.setState({counter: this.state.counter + 1});
+        }
     }
 
     render() {
@@ -210,10 +211,7 @@ class Simulation extends Component {
                         <h2 className={"bold"}>Click the Start button to begin the simulation</h2>
                         <button
                             className="btn btn-primary text-black btn-xl text-uppercase mt-3"
-                            onClick={() => {
-                                this.startSimulation();
-                                this.loadFiles();
-                            }}
+                            onClick={() => this.startSimulation()}
                             key="start"
                         >
                             Start
@@ -224,7 +222,7 @@ class Simulation extends Component {
                     <>
                         {/* Header */}
                         <div className={"tw-flex tw-justify-between"}>
-                            {/* Round Tracker*/}
+                            {/* Round Tracker */}
                             <div>
                                 <h4 className="tw-font-bold">Round {data.roundNumber} of 10</h4>
                             </div>
@@ -253,8 +251,8 @@ class Simulation extends Component {
                                 </h1>
                             </div>
                             {/* File Display */}
-                            {/* Idea: Utilize callback function to slowly display each file and their result.*/}
-                            {/* Halt the display process if one is incorrect, resume once 30s has passed.*/}
+                            {/* Idea: Utilize callback function to slowly display each file and their result */}
+                            {/* Halt the display process if one is incorrect, resume once 30s has passed */}
                             <div className={"tw-flex tw-justify-around tw-mt-16"}>
                                 {this.state.files.map((file) => {
                                     return (
@@ -268,7 +266,7 @@ class Simulation extends Component {
                                                 <p className={"tw-font-bold"}>{file.content}</p>
                                             </div>
                                             {file.report !== undefined && (
-                                                <div className={"tw-bg-[#F5F5F5] tw-mt-6 tw-px-6 tw-py-1.5"}>
+                                                <div className={"tw-bg-[#DCDCDC] tw-mt-6 tw-px-10 tw-py-1.5"}>
                                                     <span
                                                         className={file.report === AI_CORRECT ? "tw-text-[#47E22E]" : "tw-text-[#FF0000]"}>{file.report}</span>
                                                 </div>
@@ -277,6 +275,8 @@ class Simulation extends Component {
                                     );
                                 })}
                             </div>
+                            {/* Countdown component w/ message */}
+                            {/* When countdown component is not null, it will be rendered */}
                             {this.state.countdownComponent}
                         </div>
                     </>

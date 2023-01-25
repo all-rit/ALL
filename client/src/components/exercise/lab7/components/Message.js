@@ -10,37 +10,37 @@ class Message extends Component {
         switch (content) {
             case 'SSN':
                 return (
-                    <p className='message'>
+                    <p className='tw-font-bold tw-text-2xl'>
                         {"Someone’s social security number was stolen during the security breach. As a result of the breach, an identity thief was able to steal an individual's identity. This autonomous system decision-mistake caused a case of indentity theft."}
                     </p>
                 );
             case 'Home Address':
                 return (
-                    <p className='message'>
+                    <p className='tw-font-bold tw-text-2xl'>
                         {"Someone’s home address was stolen during the security breach. As a result of the breach, an identity thief was able to change the individual’s mailing address and reroute their mail to another address. This autonomous system decision-mistake caused a case of address fraud."}
                     </p>
                 );
             case 'Mother Maiden Name':
                 return (
-                    <p className='message'>
+                    <p className='tw-font-bold tw-text-2xl'>
                         {"Someone’s mother's maiden was stolen during the security breach. As a result of the breach, an identity thief was able to answer the individual's security questions for all their accounts. This autonomous system decision-mistake caused a case of hacking and identity fraud."}
                     </p>
                 );
             case 'Full Name':
                 return (
-                    <p className='message'>
+                    <p className='tw-font-bold tw-text-2xl'>
                         {"Someone’s full was stolen during the security breach. As a result of the breach, an identity thief was able to sign up and create fake accounts under the individual's name. This autonomous system decision-mistake caused a case of identity fraud."}
                     </p>
                 );
             case 'Email Address':
                 return (
-                    <p className='message'>
+                    <p className='tw-font-bold tw-text-2xl'>
                         {"Someone’s email address was stolen during the security breach. As a result of the breach, an identity thief was able to send the individual spam emails and sign up for accounts. This autonomous system decision-mistake caused a case of spam and phishing."}
                     </p>
                 );
             case 'Protected':
                 return (
-                    <p className='message'>
+                    <p className='tw-font-bold tw-text-2xl'>
                         {"All files were correctly protected during the security breach. +5 bonus pts"}
                     </p>
                 )
