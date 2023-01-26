@@ -11,26 +11,16 @@ export const LOCKED_FILE = 'LOCKED';
 export const FILE_INTRUSION = 'FILE_INTRUSION';
 export const FILE_INCORRECT = 'FILE_INCORRECT';
 export const FILE_PROTECTED = 'FILE_PROTECTED';
+export const PERFECT_SCORE = 'PERFECT_SCORE';
 
 export const LAB_ID = 7;
 export const THREAT_MAX = 3;
 export const DELAY_TIME = 1.5 * 1000;
-export const READ_TIME = 30 * 1000;
+export const READ_TIME = 3.0 * 1000;
+
+export const SCORE_MAP = {FILE_PROTECTED: 20, FILE_INCORRECT: -20, FILE_INTRUSION: -50, PERFECT_SCORE: 20};
 
 export const THREAT_LEVEL_TEXT = {1: "Low", 2: "Medium", 3: "High"}
-
-export const FILE_DEFAULT_VALUES = {
-    1: {
-        fileName: 'File 1',
-        accessStatus: OPEN_FILE,
-        sensitivityLevel: '0',
-        content: 'content'
-    },
-    2: {fileName: 'File 2', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content'},
-    3: {fileName: 'File 3', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content'},
-    4: {fileName: 'File 4', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content'},
-    5: {fileName: 'File 5', accessStatus: OPEN_FILE, sensitivityLevel: '0', content: 'content'}
-};
 
 export const roundData = [
     {

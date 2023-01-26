@@ -14,9 +14,14 @@ import {
     EXERCISE_ENDED,
     EXERCISE_IDLE,
     EXERCISE_PLAYING,
+    FILE_INCORRECT,
+    FILE_INTRUSION,
+    FILE_PROTECTED,
     LAB_ID,
     LOCKED_FILE,
+    OPEN_FILE,
     READ_TIME,
+    SCORE_MAP,
     THREAT_LEVEL_TEXT,
     THREAT_MAX
 } from "../../../../constants/lab7";
@@ -31,23 +36,18 @@ class Simulation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            files: this.generateFileList(),
+            files: [],
             countdownComponent: null,
-            counter: 0
+            counter: -1
         }
     }
 
     startRound() {
         const {data, handlers, user} = this.props;
         if (data.roundNumber + 1 <= 10) {
-            this.randomizeThreat();
+            const threatLvl = this.randomizeThreat();
             handlers.startNewRound();
-            setTimeout(() => {
-                this.setState({counter: 1});
-            }, DELAY_TIME);
-            if (data.roundNumber !== 0) {
-                this.setState({files: this.generateFileList()});
-            }
+            this.setState({files: this.generateFileList(threatLvl), counter: 0});
         } else {
             handlers.updateState(EXERCISE_ENDED);
             UserLabService.complete_exercise(LAB_ID);
@@ -61,8 +61,8 @@ class Simulation extends Component {
 
     startSimulation() {
         const {handlers} = this.props;
-        handlers.updateState(EXERCISE_PLAYING);
         this.startRound();
+        handlers.updateState(EXERCISE_PLAYING);
     }
 
     resetExercise() {
@@ -114,29 +114,35 @@ class Simulation extends Component {
         const {handlers} = this.props;
         const threatLvl = Math.floor(Math.random() * THREAT_MAX) + 1;
         handlers.updateThreatLevel(threatLvl);
+        return threatLvl;
     }
 
-    makeCorrectDecision(fileSensitivityLvl, threatLvl) {
-        return (fileSensitivityLvl / threatLvl);
+    evaluateAIDecision = (file, decision, threatLvl) => {
+        const {sensitivityLevel} = file;
+        let expected;
+        switch (threatLvl) {
+            case (1):
+                expected = sensitivityLevel === 1 ? LOCKED_FILE : OPEN_FILE;
+                break;
+            case (2):
+                expected = sensitivityLevel === 2 || sensitivityLevel === 3 ? LOCKED_FILE : OPEN_FILE;
+                break;
+            case (3):
+                expected = sensitivityLevel === 4 || sensitivityLevel === 5 ? LOCKED_FILE : OPEN_FILE;
+                break;
+        }
+        if (decision !== expected)
+            return expected === OPEN_FILE && decision === LOCKED_FILE ? FILE_INCORRECT : FILE_INTRUSION;
+        else
+            return FILE_PROTECTED;
     }
 
-    makeDecision(fileSensitivityLvl, threatLvl) {
-        return (fileSensitivityLvl * 2 / threatLvl);
-    }
-
-    generateFileList = () => {
-        const {data} = this.props;
+    generateFileList = (threatLvl) => {
         return _.sampleSize(fileMockData, 5).map((file) => {
-            return ({
-                ...file,
-                expectedUtility: this.makeCorrectDecision(file.sensitivityLevel, data.threatLvl),
-                actualUtility: this.makeDecision(file.sensitivityLevel, data.threatLvl)
-            })
+            const utility = (file.sensitivityLevel / threatLvl);
+            const decision = utility >= 1 ? LOCKED_FILE : OPEN_FILE;
+            return ({...file, decision, result: this.evaluateAIDecision(file, decision, threatLvl)})
         });
-    }
-
-    calculatePercentage(seconds) {
-        return ((seconds - 1) * 1000 / (READ_TIME - 1000)) * 100;
     }
 
     countdownRenderCallback = ({seconds, completed}) => {
@@ -151,48 +157,77 @@ class Simulation extends Component {
                         <Message data={content}/>
                     </div>
                     <div>
-                        <div style={{width: `${this.calculatePercentage(seconds)}%`}}
+                        {/* Minus one and one thousand from the equation allows for the progress bar to be empty when the count reaches zero */}
+                        <div style={{width: `${(((seconds - 1) * 1000 / (READ_TIME - 1000)) * 100)}%`}}
                              className={`tw-bg-[#7CB1FF] tw-rounded tw-py-3 tw-transition-all tw-ease-in-out tw-duration-500`}/>
-                        <p className={"tw-font-bold tw-text-lg"}>{seconds - 1}</p>
+                        {/* Minus one to display zero when the countdown is at the last second */}
+                        <p className={"tw-font-bold tw-text-xl"}>{seconds - 1}</p>
                     </div>
                 </div>
             );
         }
     }
 
+    incrementCounter = () => {
+        setTimeout(() => this.setState({counter: this.state.counter + 1}), DELAY_TIME);
+    }
+
+    handleProtected = () => {
+        const {handlers, data} = this.props;
+        const {counter, files} = this.state;
+
+        files[counter].report = AI_CORRECT;
+        this.setState({files});
+        this.incrementCounter();
+        handlers.incrementProtected();
+    }
+
+    handleIntrusion = () => {
+        const {handlers} = this.props;
+        const {counter, files} = this.state;
+
+        files[counter].report = AI_INCORRECT;
+        this.setState({
+            files,
+            countdownComponent: <Countdown date={Date.now() + READ_TIME}
+                                           renderer={this.countdownRenderCallback}/>,
+        })
+        handlers.incrementIntrusions();
+    }
+
+    handleIncorrect = () => {
+        const {handlers, data} = this.props;
+        const {counter, files} = this.state;
+
+        files[counter].report = AI_INCORRECT;
+        this.setState({files});
+        this.incrementCounter();
+        handlers.incrementIncorrect();
+    }
+
     componentDidUpdate = (prevProps, prevState, snapshot) => {
         /* Counter was incremented */
         if (prevState.counter !== this.state.counter) {
-            /* Displayed report for all files, start next round if within range */
-            if (this.state.counter > this.state.files.length) {
-                this.startRound();
-            }
             /* Counter is within range of being incremented again */
-            if (this.state.counter <= this.state.files.length) {
+            if (this.state.counter < this.state.files.length) {
+                const {handlers} = this.props;
                 const {counter, files} = this.state;
-                /* Include AI logic here to update the system's correctness */
-                /* Keep track using two counters. Can use the round tracker */
-                /* LOGIC NEEDS WORK */
-                const {fileSensitivityLvl} = files[counter - 1];
-                const [expectedUtility, actualUtility] = [this.makeCorrectDecision(fileSensitivityLvl, this.props.data.threatLvl),
-                    this.makeDecision(fileSensitivityLvl, this.props.data.threatLvl)]
-
-                if (expectedUtility === actualUtility) {
-                    files[counter - 1].report = AI_CORRECT;
-                    setTimeout(() => {
-                        this.setState({counter: counter + 1, files, countdownComponent: null})
-                    }, DELAY_TIME);
-                } else {
-                    files[counter - 1].report = AI_INCORRECT;
-                    this.setState({
-                        files,
-                        countdownComponent: <Countdown date={Date.now() + READ_TIME}
-                                                       renderer={this.countdownRenderCallback}/>,
-                    })
-                    setTimeout(() => {
-                        this.setState({countdownComponent: null})
-                    }, READ_TIME)
+                switch (files[counter].result) {
+                    case FILE_PROTECTED:
+                        this.handleProtected();
+                        break;
+                    case FILE_INTRUSION:
+                        this.handleIntrusion();
+                        break;
+                    case FILE_INCORRECT:
+                        this.handleIncorrect();
+                        break;
+                    default:
+                        break;
                 }
+                handlers.incrementScore(SCORE_MAP[files[counter].result]);
+            } else {
+                this.startRound();
             }
         }
         /* Timeout set countdown component to null */
@@ -203,7 +238,6 @@ class Simulation extends Component {
 
     render() {
         const {data} = this.props;
-
         return (
             <div className="simulation">
                 {data.state === EXERCISE_IDLE && (
@@ -235,10 +269,10 @@ class Simulation extends Component {
                                     <li>Total Score:</li>
                                 </ul>
                                 <ul className={"tw-text-right tw-ml-6"}>
-                                    <li>{data.score}</li>
                                     <li>{data.intrusions}</li>
                                     <li>{data.protected}</li>
                                     <li>{data.incorrect}</li>
+                                    <li>{data.score}</li>
                                 </ul>
                             </div>
                         </div>
@@ -260,8 +294,8 @@ class Simulation extends Component {
                                             <div className={"tw-space-y-1.5 file"}>
                                                 <p className={"tw-font-bold"}>{file.fileName}</p>
                                                 <img className={"tw-h-10 tw-w-10"}
-                                                     src={file.accessStatus === LOCKED_FILE ? LOCKED : OPEN}
-                                                     alt={`A .png image of ${file.accessStatus === LOCKED_FILE ? "a locked" : "an unlocked"} lock.`}/>
+                                                     src={file.decision === LOCKED_FILE ? LOCKED : OPEN}
+                                                     alt={`A .png image of ${file.decision === LOCKED_FILE ? "a locked" : "an unlocked"} lock.`}/>
                                                 <p className={"tw-italic"}>Sensitivity Level {file.sensitivityLevel}</p>
                                                 <p className={"tw-font-bold"}>{file.content}</p>
                                             </div>
