@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Router} from '@reach/router';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Router } from '@reach/router';
 import '../../../assets/stylesheets/main.scss';
-import {actions as exerciseActions} from "../../../reducers/lab7/ExerciseReducer";
-import {actions as repairActions} from '../../../reducers/lab7/RepairReducer';
-import {actions as appActions} from '../../../reducers/lab7/AppReducer';
-import {bindActionCreators} from "redux";
-import {EXERCISE_IDLE} from "../../../constants/lab7";
+import { actions as exerciseActions } from "../../../reducers/lab7/ExerciseReducer";
+import { actions as repairActions } from '../../../reducers/lab7/RepairReducer';
+import { actions as appActions } from '../../../reducers/lab7/AppReducer';
+import { bindActionCreators } from "redux";
+import { EXERCISE_PLAYING } from "../../../constants/lab7";
 
 import ExerciseStart from './pages/ExerciseStart';
 import AISimulation from './pages/Simulation/AISimulation';
@@ -27,34 +27,36 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        actions: bindActionCreators({...exerciseActions, ...repairActions, ...appActions}, dispatch),
+        actions: bindActionCreators({ ...exerciseActions, ...repairActions, ...appActions }, dispatch),
     };
 };
 
 class Main extends Component {
     render() {
-        const {actions, state, user} = this.props;
+        const { actions, state, user } = this.props;
         return (
             <div className="bottomSpace">
                 <Router className="app">
-                    <ExerciseStart default path="/*" actions={actions}/>
+                    <ExerciseStart default path="/*" actions={actions} />
 
                     {/* Phase 1: Simulation */}
-                    <AISimulation path="/AISimulation" actions={actions} state={state}/>
-                    <SimulationSummary path="/SimulationSummary" actions={actions} state={state}/>
-                    <BadAIExplanation path="/BadAIExplanation" actions={actions} state={state}/>
+                    <AISimulation path="/AISimulation" actions={actions} state={state} />
+                    <SimulationSummary path="/SimulationSummary" actions={actions} state={state} />
+                    <BadAIExplanation path="/BadAIExplanation" actions={actions} state={state} />
 
                     {/* Phase 2: Improve AI Code Repair */}
+                    {/* Check why state isn't idle without having to refresh the page*/}
+
                     <AICodeRepair path="/AICodeRepair"
-                                  visible={state.repair7.repairVisible && state.exercise7.state === EXERCISE_IDLE}
-                                  state={state} handlers={actions}/>
-                    <ImprovedAISimulation path="/ImprovedAISimulation" action={actions} state={state}/>
+                        visible={state.repair7.repairVisible && state.exercise7.state === EXERCISE_PLAYING}
+                        state={state} handlers={actions} />
+                    <ImprovedAISimulation path="/ImprovedAISimulation" action={actions} state={state} />
 
                     {/* Phase 3: Alteration Activity */}
-                    <AlterationStart path="/AlterationStart" action={actions}/>
-                    <AlterationQuiz path="/AlterationQuiz" action={actions} state={state}/>
+                    <AlterationStart path="/AlterationStart" action={actions} />
+                    <AlterationQuiz path="/AlterationQuiz" action={actions} state={state} />
 
-                    <ExerciseEnd path="/ExerciseEnd" actions={actions} state={state} user={user}/>
+                    <ExerciseEnd path="/ExerciseEnd" actions={actions} state={state} user={user} />
                 </Router>
             </div>
         );
