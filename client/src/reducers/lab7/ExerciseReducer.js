@@ -10,7 +10,7 @@ export const types = {
     INCREMENT_INCORRECT: '@accessibility-lab/lab7/exercise/increment_incorrect',
     START_NEW_ROUND: '@accessibility-lab/lab7/exercise/start_new_round',
     UPDATE_THREAT_LEVEL: '@accessibility-lab/lab7/exercise/update_threat_level',
-    ADD_RESULT: '@accessibility-lab/lab7/exercise/add_result'
+    ADD_RESULTS: '@accessibility-lab/lab7/exercise/add_results'
 };
 
 export const initialState = {
@@ -71,10 +71,10 @@ const ExerciseReducer = (state = initialState, action) => {
                 ...state,
                 end: action.state
             };
-        case types.ADD_RESULT:
+        case types.ADD_RESULTS:
             return {
                 ...state,
-                results: [...state.results, action.result]
+                results: [...state.results, action.results]
             }
         default:
             return state;
@@ -91,7 +91,7 @@ export const actions = {
     incrementIncorrect: () => ({type: types.INCREMENT_INCORRECT}),
     startNewRound: () => ({type: types.START_NEW_ROUND}),
     updateThreatLevel: (threatLvl) => ({type: types.UPDATE_THREAT_LEVEL, threatLvl}),
-    addResult: (result) => ({type: types.ADD_RESULT, result})
+    addResults: (results) => ({type: types.ADD_RESULTS, results})
 };
 
 export default ExerciseReducer;

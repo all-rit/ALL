@@ -47,7 +47,9 @@ class Simulation extends Component {
         if (data.roundNumber + 1 <= 10) {
             const threatLvl = this.randomizeThreat();
             handlers.startNewRound();
-            this.setState({files: this.generateFileList(threatLvl), counter: 0});
+            const files = this.generateFileList(threatLvl);
+            this.setState({files, counter: 0});
+            handlers.addResults({files, threatLvl});
         } else {
             handlers.updateState(EXERCISE_ENDED);
             UserLabService.complete_exercise(LAB_ID);

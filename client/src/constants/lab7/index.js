@@ -15,8 +15,8 @@ export const PERFECT_SCORE = 'PERFECT_SCORE';
 
 export const LAB_ID = 7;
 export const THREAT_MAX = 3;
-export const DELAY_TIME = 0 * 1000;
-export const READ_TIME = 0 * 1000;
+export const DELAY_TIME = 1.5 * 1000;
+export const READ_TIME = 3.0 * 1000;
 
 export const SCORE_MAP = {FILE_PROTECTED: 20, FILE_INCORRECT: -20, FILE_INTRUSION: -50, PERFECT_SCORE: 20};
 

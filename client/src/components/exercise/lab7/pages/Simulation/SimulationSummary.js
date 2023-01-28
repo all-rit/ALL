@@ -4,7 +4,6 @@
 import React, {Component} from "react";
 import {navigate} from "@reach/router";
 import Collapsible from "../../components/Collapsible";
-import {roundData} from "../../../../../constants/lab7";
 
 class SimulationSummary extends Component {
     constructor(props) {
@@ -27,6 +26,7 @@ class SimulationSummary extends Component {
 
     render() {
         const {state: {exercise7}} = this.props;
+        console.log(exercise7.results)
         return (
             <div>
                 <h2 className={"tw-font-bold"}>Simulation Summary</h2>
@@ -51,8 +51,8 @@ class SimulationSummary extends Component {
                         </div>
                     </div>
                     <div className={"tw-mt-12 tw-space-y-3"}>
-                        {roundData.map(({title, content}) => (
-                            <Collapsible key={title} title={title} content={content}/>
+                        {exercise7.results.map((result, index) => (
+                            <Collapsible key={index} result={result} index={index}/>
                         ))}
                     </div>
                 </div>
