@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import GridImages from "../../../../body/lab/GridImages/GridImages";
+import ExerciseService from "../../../../../services/lab6/ExerciseService";
 
 const AvatarSelection = (props) => {
   const { actions } = props;
@@ -15,7 +16,12 @@ const AvatarSelection = (props) => {
   }, [actions]);
 
   const confirmSelection = () => {
-    navigate("/Lab6/Exercise/QualificationQuestions");
+    if (avatar.length != 0) {
+        ExerciseService.submitAvatar(
+          avatar,
+        );
+        navigate("/Lab6/Exercise/QualificationQuestions");
+    }
   };
 
   return (

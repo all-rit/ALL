@@ -25,6 +25,10 @@ const RepairControllerLab4 = require('../controllers/lab4/RepairController');
 const RepairControllerLab5 = require('../controllers/lab5/RepairController');
 const ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
+// LAB6 Controller
+// const RepairControllerLab6 = require('../controllers/lab6/RepairController');
+const ExerciseControllerLab6 = require('../controllers/lab6/ExerciseController');
+
 // Lab Controller
 const LabController = require('../controllers/LabController');
 
@@ -79,6 +83,13 @@ router.post('/lab1/exercise/round', ExerciseControllerLab1.createRound);
 router.post('/lab1/exercise/choice', ExerciseControllerLab1.createChoice);
 router.post('/lab1/exercise/end', ExerciseControllerLab1.updateEndExerciseScore);
 router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice);
+router.post('/lab6/exercise/avatar', ExerciseControllerLab6.submitAvatar);
+router.post('/lab6/exercise/qualquestions', ExerciseControllerLab6.submitQualQuestions);
+router.post('/lab6/exercise/aianalysisquestion', ExerciseControllerLab6.submitAIanalysisQuestion);
+router.post('/lab6/exercise/hiredcanidates', ExerciseControllerLab6.submitHiredCanidates);
+router.post('/lab6/exercise/aireasoningquestion', ExerciseControllerLab6.submitAIReasoningQuestion);
+router.post('/lab6/exercise/fixedhiredcanidates', ExerciseControllerLab6.submitFixedHiredCanidates);
+
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);
 router.post('/lab2/repair/submit', RepairControllerLab2.submitChange);

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import QuestionsHandler from "../../components/QuestionsHandler";
+import ExerciseService from "../../../../../services/lab6/ExerciseService";
 
 const AIReasoningQuestions = (props) => {
   const { actions } = props;
@@ -11,8 +12,11 @@ const AIReasoningQuestions = (props) => {
     actions.updateState(EXERCISE_PLAYING);
   }, [actions]);
 
-  const handleContinue = () => {
-    navigate("/Lab6/Exercise/AIReasoning");
+  const handleContinue = (answers) => {
+      ExerciseService.submitAIReasoningQuestion(
+        Array.from(answers[0]),
+      );
+      navigate("/Lab6/Exercise/AIReasoning");
   };
   const aiReasoningData = [
     {
