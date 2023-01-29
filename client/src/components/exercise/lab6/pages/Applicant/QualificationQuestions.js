@@ -1,10 +1,11 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import QuestionsHandler from "../../components/QuestionsHandler";
+import ExerciseService from "../../../../../services/lab6/ExerciseService";
 
 function QualificationQuestions(props) {
   const { actions } = props;
@@ -13,7 +14,8 @@ function QualificationQuestions(props) {
     actions.updateState(EXERCISE_PLAYING);
   }, [actions]);
 
-  const handleContinue = () => {
+  const handleContinue = (answers) => {
+    ExerciseService.submitQualQuestions(answers);
     navigate("/Lab6/Exercise/AnalyzeData");
   };
 

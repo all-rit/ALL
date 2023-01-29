@@ -7,14 +7,10 @@ import { useEffect, useState } from "react";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import GridApplicants from "../../components/GridApplicants";
 import { Modal, ModalBody, ModalFooter, Button } from "reactstrap";
-
-//need to make sure that only when the AI doesn't recommend them and that when they are selected that the modal appears
-//modal doesn't appear for the last hiring candidate selection; needs to
-//need to make the bias against the glasses editable, so that when someone edits the table later the bias can change here as well
+import ExerciseService from "../../../../../services/lab6/ExerciseService";
 
 const HiringCandidate = (props) => {
-  //added avatar and accessoriestype modeled after bias.jsx
-  const { actions, avatar, accessoriesType, biasType } = props;
+  const { actions } = props;
 
   const [roundOfApplicants, setRoundOfApplicants] = useState(0);
 
@@ -35,7 +31,7 @@ const HiringCandidate = (props) => {
     answers.push(selection);
     setAnswers(answers);
     if (roundOfApplicants > 2) {
-      console.log(userAnswers);
+      ExerciseService.submitHiredCanidates(answers);
       navigate("/Lab6/Exercise/AIReasoningQuestions");
     } else {
       setRoundOfApplicants(roundCount + 1);
@@ -65,6 +61,7 @@ const HiringCandidate = (props) => {
         setAnswers(answers);
         if (roundOfApplicants > 2) {
           console.log(userAnswers);
+          ExerciseService.submitHiredCanidates(answers);
           navigate("/Lab6/Exercise/AIReasoningQuestions");
         } else {
           let roundCount = roundOfApplicants;

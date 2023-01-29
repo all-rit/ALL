@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import QuestionsHandler from "../../components/QuestionsHandler";
+import ExerciseService from "../../../../../services/lab6/ExerciseService";
 
 const AIAnalysisQuestions = (props) => {
   const { actions } = props;
@@ -12,14 +13,9 @@ const AIAnalysisQuestions = (props) => {
     actions.updateState(EXERCISE_PLAYING);
   }, [actions]);
 
-  function checkValue(e) {
-    var value = e.target.value;
-    console.log("You selected " + value);
-  }
-
-  //changed so it doesn't skip phase 2
-  const handleContinue = () => {
-    navigate("/Lab6/Exercise/EmployerStart"); //How should we handle this (positive or negative)
+  const handleContinue = (answers) => {
+    ExerciseService.submitAIAnalysisQuestion(Array.from(answers[0]));
+    navigate("/Lab6/Exercise/EmployerStart");
   };
 
   const aiAnalysisData = [

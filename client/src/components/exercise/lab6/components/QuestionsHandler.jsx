@@ -19,7 +19,7 @@ const QuestionsHandler = (props) => {
    */
   function onComplete() {
     console.log("completed", selectedAnswers);
-    handleContinue();
+    handleContinue(selectedAnswers);
   }
 
   /**
