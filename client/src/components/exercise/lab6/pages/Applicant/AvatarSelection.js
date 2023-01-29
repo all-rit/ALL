@@ -17,10 +17,8 @@ const AvatarSelection = (props) => {
 
   const confirmSelection = () => {
     if (avatar.length != 0) {
-        ExerciseService.submitAvatar(
-          avatar,
-        );
-        navigate("/Lab6/Exercise/QualificationQuestions");
+      ExerciseService.submitAvatar(avatar);
+      navigate("/Lab6/Exercise/QualificationQuestions");
     }
   };
 

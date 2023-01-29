@@ -15,10 +15,8 @@ function QualificationQuestions(props) {
   }, [actions]);
 
   const handleContinue = (answers) => {
-      ExerciseService.submitQualQuestions(
-        answers,
-      );
-      navigate("/Lab6/Exercise/AnalyzeData");
+    ExerciseService.submitQualQuestions(answers);
+    navigate("/Lab6/Exercise/AnalyzeData");
   };
 
   const qualQuestionsData = [

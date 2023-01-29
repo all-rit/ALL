@@ -13,10 +13,8 @@ const AIReasoningQuestions = (props) => {
   }, [actions]);
 
   const handleContinue = (answers) => {
-      ExerciseService.submitAIReasoningQuestion(
-        Array.from(answers[0]),
-      );
-      navigate("/Lab6/Exercise/AIReasoning");
+    ExerciseService.submitAIReasoningQuestion(Array.from(answers[0]));
+    navigate("/Lab6/Exercise/AIReasoning");
   };
   const aiReasoningData = [
     {

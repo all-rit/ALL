@@ -10,7 +10,6 @@ import { Modal, ModalBody, ModalFooter, Button } from "reactstrap";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
 
 const HiringCandidate = (props) => {
-
   const { actions } = props;
 
   const [roundOfApplicants, setRoundOfApplicants] = useState(0);
@@ -32,9 +31,7 @@ const HiringCandidate = (props) => {
     answers.push(selection);
     setAnswers(answers);
     if (roundOfApplicants > 2) {
-      ExerciseService.submitHiredCanidates(
-        answers,
-      );
+      ExerciseService.submitHiredCanidates(answers);
       navigate("/Lab6/Exercise/AIReasoningQuestions");
     } else {
       setRoundOfApplicants(roundCount + 1);
@@ -64,9 +61,7 @@ const HiringCandidate = (props) => {
         setAnswers(answers);
         if (roundOfApplicants > 2) {
           console.log(userAnswers);
-          ExerciseService.submitHiredCanidates(
-            answers,
-          );
+          ExerciseService.submitHiredCanidates(answers);
           navigate("/Lab6/Exercise/AIReasoningQuestions");
         } else {
           let roundCount = roundOfApplicants;

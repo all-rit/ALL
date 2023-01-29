@@ -45,7 +45,8 @@ const ExerciseService = {
   },
   submitAIReasoningQuestion: (aiReasoningQuestion) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_AI_REASONING_QUESTIONS,
+      process.env.REACT_APP_SERVER_URL +
+        endpoints.SUBMIT_AI_REASONING_QUESTIONS,
       {
         aiReasoningQuestion,
       }

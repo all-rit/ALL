@@ -8,16 +8,14 @@ import ExerciseService from "../../../../../services/lab6/ExerciseService";
 
 const AIAnalysisQuestions = (props) => {
   const { actions } = props;
-  
+
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, [actions]);
 
   const handleContinue = (answers) => {
-      ExerciseService.submitAIAnalysisQuestion(
-        Array.from(answers[0]),
-      );
-      navigate("/Lab6/Exercise/EmployerStart");
+    ExerciseService.submitAIAnalysisQuestion(Array.from(answers[0]));
+    navigate("/Lab6/Exercise/EmployerStart");
   };
 
   const aiAnalysisData = [

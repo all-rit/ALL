@@ -18,7 +18,7 @@ const QuestionsHandler = (props) => {
    * to display to the user for the result portion of the quiz.
    */
   function onComplete() {
-    console.log("completed", selectedAnswers);    
+    console.log("completed", selectedAnswers);
     handleContinue(selectedAnswers);
   }
 
