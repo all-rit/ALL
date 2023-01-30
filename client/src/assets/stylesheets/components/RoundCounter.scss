@@ -1,23 +1,23 @@
 .roundCounter {
-    width: 80%;
-    display: inline-flex;
+  width: 80%;
+  display: inline-flex;
 }
 
 .roundText {
-    margin-top: 11.5px;
+  margin-top: 11.5px;
 }
 
 @media screen and (max-width: 991px) {
-    .roundCounter {
-        width: 70%;
-    }
+  .roundCounter {
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .roundCounter {
-        width: 70%;
-    }
-    .roundText {
-        font-size: 20px;
-    }
+  .roundCounter {
+    width: 70%;
+  }
+  .roundText {
+    font-size: 20px;
+  }
 }

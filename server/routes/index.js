@@ -25,9 +25,9 @@ const RepairControllerLab4 = require('../controllers/lab4/RepairController');
 const RepairControllerLab5 = require('../controllers/lab5/RepairController');
 const ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
-//LAB7 Controller
-let RepairControllerLab7 = require('../controllers/lab7/RepairController');
-let ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
+// LAB7 Controller
+const RepairControllerLab7 = require('../controllers/lab7/RepairController');
+const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
 
 // Lab Controller
 const LabController = require('../controllers/LabController');
