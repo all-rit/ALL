@@ -1,79 +1,76 @@
 .file {
-    width: 20%;
-    display: grid;
-    padding-top: 30px;
-    padding-bottom: 15px;
-    margin: 0 auto;
-    background-image: url('../../images/lab7/FileLarge.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+  width: 20%;
+  display: grid;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+  background-image: url("../../images/lab7/FileLarge.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .accessStatus {
-    width: 50px;
-    padding: 20px;
+  width: 50px;
+  padding: 20px;
 }
 
 .fileInfo {
-    text-align: center;
-    height: fit-content;
-    margin: auto;
+  text-align: center;
+  height: fit-content;
+  margin: auto;
 }
 
 @media screen and (min-width: 786px) {
-    .fileName {
-        font-size: 14px;
-    }
+  .fileName {
+    font-size: 14px;
+  }
 
-    .sensitivityLevel {
-        font-size: 16px;
-    }
+  .sensitivityLevel {
+    font-size: 16px;
+  }
 
-    .content {
-        font-size: 80%;
-    }
+  .content {
+    font-size: 80%;
+  }
 
-    .accessStatus {
-        padding: 10px;
-
-    }
+  .accessStatus {
+    padding: 10px;
+  }
 }
 
 @media screen and (max-width: 991px) {
-    .fileName {
-        font-size: 12px;
-    }
+  .fileName {
+    font-size: 12px;
+  }
 
-    .sensitivityLevel {
-        font-size: 12px;
-    }
+  .sensitivityLevel {
+    font-size: 12px;
+  }
 
-    .content {
-        font-size: 65%;
-    }
+  .content {
+    font-size: 65%;
+  }
 
-    .accessStatus {
-        padding: 10px;
-
-    }
+  .accessStatus {
+    padding: 10px;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .fileName {
-        font-size: 10px;
-    }
+  .fileName {
+    font-size: 10px;
+  }
 
-    .sensitivityLevel {
-        font-size: 10px;
-    }
+  .sensitivityLevel {
+    font-size: 10px;
+  }
 
-    .content {
-        font-size: 40%;
-    }
+  .content {
+    font-size: 40%;
+  }
 
-    .accessStatus {
-        padding: 10px;
-
-    }
+  .accessStatus {
+    padding: 10px;
+  }
 }

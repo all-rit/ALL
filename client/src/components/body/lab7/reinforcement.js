@@ -1,18 +1,20 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import useScroll from "../../../use-hooks/useScroll";
-import {LAB_ID} from '../../../constants/lab7';
-import UserLabService from '../../../services/UserLabService';
+import { LAB_ID } from "../../../constants/lab7";
+import UserLabService from "../../../services/UserLabService";
 const Reinforcement = (props) => {
-    const {user}=props;
-    useScroll();
-    useEffect(() => {
-        return () => {
-            UserLabService.complete_reinforcement(LAB_ID);
-            if(user?.firstname !== null && user!==null){
-              UserLabService.user_complete_reinforcement(user.userid,LAB_ID);
-            }
-        }
-    }, [user]);
+  const { user } = props;
+  useScroll();
+  useEffect(() => {
+    return () => {
+      UserLabService.complete_reinforcement(LAB_ID);
+      if (user?.firstname !== null && user !== null) {
+        UserLabService.user_complete_reinforcement(user.userid, LAB_ID);
+      }
+    };
+  }, [user]);
 
   return (
     <div>
@@ -46,8 +48,8 @@ const Reinforcement = (props) => {
       </div>
       <div className="row">
         <p>
-          Cybersecurity AI - An Introduction to Machine Learning and
-          Autonomous Systems
+          Cybersecurity AI - An Introduction to Machine Learning and Autonomous
+          Systems
         </p>
       </div>
     </div>
