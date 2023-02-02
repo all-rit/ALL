@@ -63,7 +63,7 @@ class PageLayoutRepair extends Component {
           }
           break;
         case "classvalue":
-          if (this.state[name] !== "body") {
+          if (this.state[name] !== "'body'") {
             error = true;
             this.setState({ classerror: "Must enter 'body'" });
           } else {
@@ -250,9 +250,8 @@ class PageLayoutRepair extends Component {
                     <input
                       name="h1value"
                       type="text"
-                      className={`htmlinput ${
-                        this.state.h1error ? "form-error-input" : ""
-                      }`}
+                      className={`htmlinput ${this.state.h1error ? "form-error-input" : ""
+                        }`}
                       defaultValue={data.h1value}
                       onChange={this.changeHandler.bind(this)}
                       required
@@ -351,9 +350,8 @@ class PageLayoutRepair extends Component {
                     <input
                       name="ulvalue"
                       type="text"
-                      className={`htmlinput ${
-                        this.state.ulerror ? "form-error-input" : ""
-                      }`}
+                      className={`htmlinput ${this.state.ulerror ? "form-error-input" : ""
+                        }`}
                       defaultValue={data.ulvalue}
                       onChange={this.changeHandler.bind(this)}
                       title="must enter ul"
