@@ -13,7 +13,7 @@ import SimInstructions from "./SimInstructions";
 import "../../../../assets/stylesheets/components/Simulation.scss";
 
 import {
-  EXERCISE_ENDED,
+
   EXERCISE_IDLE,
   EXERCISE_PLAYING,
   LAB_ID,
@@ -38,7 +38,7 @@ class Simulation extends Component {
       ExerciseService.createSimulation(data.plays);
       handlers.startNewRound();
     } else if (data.roundNumber > 10) {
-      handlers.updateState(EXERCISE_ENDED);
+
       UserLabService.complete_exercise(LAB_ID);
       if (user?.firstname !== null && user !== null) {
         UserLabService.user_complete_exercise(user.userid, LAB_ID);

@@ -3,7 +3,7 @@
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import UserLabService from "../../../../services/UserLabService";
-import { LAB_ID } from "../../../../constants/lab7";
+import { EXERCISE_ENDED, EXERCISE_IDLE, LAB_ID } from "../../../../constants/lab7";
 
 class ExerciseEnd extends Component {
   handleHome() {
@@ -11,7 +11,7 @@ class ExerciseEnd extends Component {
   }
 
   componentDidMount() {
-    const { user } = this.props;
+    const { user, actions } = this.props;
     UserLabService.complete_exercise(LAB_ID);
     if (user?.firstname !== null && user !== null) {
       UserLabService.user_complete_exercise(user.userid, LAB_ID);
