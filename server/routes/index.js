@@ -25,9 +25,9 @@ const RepairControllerLab4 = require('../controllers/lab4/RepairController');
 const RepairControllerLab5 = require('../controllers/lab5/RepairController');
 const ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
-//LAB7 Controller
-let RepairControllerLab7 = require('../controllers/lab7/RepairController');
-let ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
+// LAB7 Controller
+const RepairControllerLab7 = require('../controllers/lab7/RepairController');
+const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
 
 // Lab Controller
 const LabController = require('../controllers/LabController');
@@ -82,6 +82,7 @@ router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);
 router.post('/lab1/exercise/round', ExerciseControllerLab1.createRound);
 router.post('/lab1/exercise/choice', ExerciseControllerLab1.createChoice);
 router.post('/lab1/exercise/end', ExerciseControllerLab1.updateEndExerciseScore);
+router.post('/lab7/exercise/end', ExerciseControllerLab7.updateEndExerciseScore);
 router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice);
 router.post('/lab7/exercise/choice', ExerciseControllerLab7.submitChoice);
 
