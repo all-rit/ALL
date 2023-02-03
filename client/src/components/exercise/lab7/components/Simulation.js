@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 
 import React, { Component } from "react";
 import _ from "lodash";
@@ -11,9 +10,6 @@ import {
   AI_CORRECT,
   AI_INCORRECT,
   DELAY_TIME,
-  EXERCISE_ENDED,
-  EXERCISE_IDLE,
-  EXERCISE_PLAYING,
   FILE_INCORRECT,
   FILE_INTRUSION,
   FILE_PROTECTED,
@@ -22,6 +18,7 @@ import {
   MESSAGES,
   OPEN_FILE,
   READ_TIME,
+  ROUND_LIMIT,
   SCORE_MAP,
   THREAT_LEVEL_TEXT,
   THREAT_MAX,
@@ -36,21 +33,35 @@ class Simulation extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      started: false,
       files: [],
+      message: "",
       countdownComponent: null,
       counter: -1,
     };
   }
 
-  startSimulation() {
-    const { handlers } = this.props;
+  /**
+   * Updates the state `started` to true, switching the rendered components in the `render()` method,
+   * and invoked the `startRound()` method.
+   */
+  startSimulation = () => {
+    this.setState({ started: true });
     this.startRound();
-    handlers.updateState(EXERCISE_PLAYING);
-  }
+  };
 
-  startRound() {
+  /**
+   * Logic handling the transition of rounds.
+   *
+   * As long as we have not reached the round limit, calculate a random threat level,
+   * update the round number, generate a new list of files, update the states accordingly, and
+   * store them for the summary report.
+   *
+   * Otherwise, transition to the simulation summary.
+   */
+  startRound = () => {
     const { data, handlers, user } = this.props;
-    if (data.roundNumber < 10) {
+    if (data.roundNumber < ROUND_LIMIT) {
       const threatLvl = this.randomizeThreat();
       handlers.startNewRound();
       const files = this.generateFileList(threatLvl);
@@ -64,15 +75,29 @@ class Simulation extends Component {
       ExerciseService.updateEndExerciseScore(data.score);
       navigate("/Lab7/Exercise/SimulationSummary");
     }
-  }
+  };
 
-  randomizeThreat() {
+  /**
+   * Calculates a random threat level for the round updates the state.
+   *
+   * @returns {number} random threat level
+   */
+  randomizeThreat = () => {
     const { handlers } = this.props;
     const threatLvl = Math.floor(Math.random() * THREAT_MAX) + 1;
     handlers.updateThreatLevel(threatLvl);
     return threatLvl;
-  }
+  };
 
+  /**
+   * Generate a list of random files from existing data.
+   *
+   * The utility and AIs decision is calculated. Results are added to the file object and the
+   * file object is added to the list of files.
+   *
+   * @param threatLvl pre-calculated threat level of the round
+   * @returns {(*&{result: string, decision: string})[]} a list of file objects
+   */
   generateFileList = (threatLvl) => {
     return _.sampleSize(files, 5).map((file) => {
       const utility = threatLvl / file.sensitivityLevel;
@@ -85,6 +110,14 @@ class Simulation extends Component {
     });
   };
 
+  /**
+   * Evaluates the AIs decision-making based on the utility equation.
+   *
+   * @param file current file being evaluated
+   * @param decision AIs decision based on utility
+   * @param threatLvl pre-calculated threat level of the round
+   * @returns {string|string} `FILE_PROTECTED` | `FILE_INCORRECT` | `FILE_INTRUSION`
+   */
   evaluateAIDecision = (file, decision, threatLvl) => {
     const { sensitivityLevel } = file;
     let expected;
@@ -112,6 +145,14 @@ class Simulation extends Component {
     return FILE_PROTECTED;
   };
 
+  /**
+   * React method that is invoked whenever a state/prop is updated.
+   *
+   * @param prevProps values of props prior to update
+   * @param prevState values of states prior to update
+   * @param snapshot required for method signature
+   */
+  // eslint-disable-next-line no-unused-vars
   componentDidUpdate = (prevProps, prevState, snapshot) => {
     /* Counter was incremented */
     if (prevState.counter !== this.state.counter) {
@@ -134,21 +175,60 @@ class Simulation extends Component {
         }
         handlers.incrementScore(SCORE_MAP[files[counter].result]);
       } else {
-        this.handlePerfectScore();
-        this.startRound();
+        /* End of round */
+        const result = this.handlePerfectScore();
+        setTimeout(() => this.startRound(), result ? READ_TIME : 0);
       }
     }
   };
 
+  /**
+   * Updates `files` and `countdownComponent` states. Invoked for when a message
+   * needs to be displayed with progress bar.
+   *
+   * @param files array of file objects
+   * @param message text to be displayed
+   */
+  handleCountdownComponent = (files, message) => {
+    this.setState({
+      files,
+      message,
+      countdownComponent: (
+        <Countdown
+          date={Date.now() + READ_TIME}
+          renderer={this.countdownRenderCallback}
+        />
+      ),
+    });
+    /* Unmount countdownComponent and message after read time */
+    setTimeout(
+      () => this.setState({ countdownComponent: null, message: "" }),
+      READ_TIME
+    );
+  };
+
+  /**
+   * Logic to award bonus points if all files for a round were correctly protected.
+   *
+   * @returns {boolean} whether the files of a round were perfectly protected
+   */
   handlePerfectScore = () => {
     const { files } = this.state;
+    const { handlers } = this.props;
     const filteredFiles = files.filter(
       (file) => file.result === FILE_PROTECTED
     );
-    //if (filteredFiles.length === files.length) {
-    //}
+    if (filteredFiles.length === files.length) {
+      handlers.incrementScore(SCORE_MAP.PERFECT_SCORE);
+      this.handleCountdownComponent(files, MESSAGES.Perfect);
+      return true;
+    }
+    return false;
   };
 
+  /**
+   * Logic for when a file was correctly protected.
+   */
   handleProtected = () => {
     const { handlers } = this.props;
     const { counter, files } = this.state;
@@ -158,25 +238,22 @@ class Simulation extends Component {
     this.incrementCounter();
   };
 
+  /**
+   * Logic for when the AIs decision-making resulted in an intrusion.
+   */
   handleIntrusion = () => {
     const { handlers } = this.props;
     const { counter, files } = this.state;
     files[counter].report = AI_INCORRECT;
     files[counter].message = MESSAGES[files[counter].content];
-    this.setState({
-      files,
-      countdownComponent: (
-        <Countdown
-          date={Date.now() + READ_TIME}
-          renderer={this.countdownRenderCallback}
-        />
-      ),
-    });
     handlers.incrementIntrusions();
-    setTimeout(() => this.setState({ countdownComponent: null }), READ_TIME);
+    this.handleCountdownComponent(files, files[counter].message);
     this.incrementCounter(READ_TIME);
   };
 
+  /**
+   * Logic for when the AIs decision-making was incorrect.
+   */
   handleIncorrect = () => {
     const { handlers } = this.props;
     const { counter, files } = this.state;
@@ -186,22 +263,34 @@ class Simulation extends Component {
     this.incrementCounter();
   };
 
+  /**
+   * Updates the pointer to the file array with a delay.
+   *
+   * @param delay specified ms delay for updating the counter
+   */
   incrementCounter = (delay = DELAY_TIME) => {
     setTimeout(() => this.setState({ counter: this.state.counter + 1 }), delay);
   };
 
+  /**
+   * Callback method for a countdown. Used for progress bar.
+   *
+   * @param seconds time left on the countdown
+   * @param completed whether the countdown is complete
+   * @returns {JSX.Element} progress bar component
+   */
   countdownRenderCallback = ({ seconds, completed }) => {
-    const { counter, files } = this.state;
-    const { content } = files[counter];
+    const { message } = this.state;
     if (completed) return <></>;
-    else return <ProgressBar text={MESSAGES[content]} seconds={seconds} />;
+    else return <ProgressBar text={message} seconds={seconds} />;
   };
 
   render() {
+    const { started } = this.state;
     const { data } = this.props;
     return (
       <div className="simulation">
-        {data.state === EXERCISE_IDLE && (
+        {started === false && (
           <>
             <h2 className={"bold"}>
               Click the Start button to begin the simulation
@@ -215,7 +304,7 @@ class Simulation extends Component {
             </button>
           </>
         )}
-        {data.state === EXERCISE_PLAYING && (
+        {started === true && (
           <>
             {/* Header */}
             <div className={"tw-flex tw-justify-between"}>
@@ -252,8 +341,6 @@ class Simulation extends Component {
                 </h1>
               </div>
               {/* File Display */}
-              {/* Idea: Utilize callback function to slowly display each file and their result */}
-              {/* Halt the display process if one is incorrect, resume once 30s has passed */}
               <div className={"tw-flex tw-justify-around tw-mt-16"}>
                 {this.state.files.map((file, index) => (
                   <File key={index} data={file} />

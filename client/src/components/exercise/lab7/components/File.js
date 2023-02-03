@@ -41,7 +41,7 @@ class File extends Component {
 export default File;
 
 File.propTypes = {
-  data: PropTypes.exact({
+  data: PropTypes.shape({
     fileName: PropTypes.string,
     content: PropTypes.string,
     sensitivityLevel: PropTypes.number,

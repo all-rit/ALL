@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import "../../../../assets/stylesheets/components/Collapsible.scss";
 import {
@@ -8,10 +6,8 @@ import {
   FILE_PROTECTED,
   THREAT_LEVEL_TEXT,
 } from "../../../../constants/lab7";
+import PropTypes from "prop-types";
 
-/*
-{result: {files, threatLvl}, index}
- */
 class Collapsible extends Component {
   constructor(props) {
     super(props);
@@ -20,9 +16,14 @@ class Collapsible extends Component {
     };
   }
 
-  handleClick = (intrusions) => {
+  /**
+   * Toggle method for dropdown. No dropdown if no intrusions occurred.
+   *
+   * @param numOfIntrusions number of intrusions
+   */
+  handleClick = (numOfIntrusions) => {
     const { active } = this.state;
-    if (intrusions.length > 0) this.setState({ active: !active });
+    if (numOfIntrusions > 0) this.setState({ active: !active });
   };
 
   render = () => {
@@ -42,7 +43,7 @@ class Collapsible extends Component {
     return (
       <div className={"tw-bg-[#EBE8E8] tw-shadow-xl"}>
         <button
-          onClick={() => this.handleClick(intrusions)}
+          onClick={() => this.handleClick(intrusions.length)}
           className={
             "tw-border-none tw-flex tw-w-full tw-items-center tw-justify-around tw-justify-center tw-text-lg tw-py-3 tw-px-6"
           }
@@ -118,4 +119,21 @@ class Collapsible extends Component {
 
 export default Collapsible;
 
-Collapsible.propTypes = {};
+Collapsible.propTypes = {
+  result: PropTypes.exact({
+    threatLvl: PropTypes.number,
+    files: PropTypes.arrayOf(
+      PropTypes.shape({
+        fileName: PropTypes.string,
+        content: PropTypes.string,
+        sensitivityLevel: PropTypes.number,
+        accessStatus: PropTypes.string,
+        decision: PropTypes.string,
+        result: PropTypes.string,
+        report: PropTypes.string,
+        message: PropTypes.string,
+      })
+    ),
+  }),
+  index: PropTypes.number,
+};

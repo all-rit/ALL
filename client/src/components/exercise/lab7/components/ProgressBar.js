@@ -9,6 +9,7 @@ class ProgressBar extends Component {
 
   /**
    * Calculates the width of the progress bar, utilizing the current seconds, and the starting seconds.
+   *
    * @returns {number} width of the progress bar
    */
   calculateWidth = () => {
