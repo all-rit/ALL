@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import quizQuestionsLab7 from "./api/Lab7/quizQuestions";
+import alterationQuizQuestions from "./api/Lab7/alterationQuizQuestions";
 
 function initializeReactGA() {
   if (process.env.NODE_ENV === "production") {

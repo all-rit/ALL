@@ -1,53 +1,54 @@
-/* eslint-disable react/prop-types */
-import React, {Component} from 'react';
-import {LOCKED_FILE, OPEN_FILE} from '../../../../constants/lab7';
-import OPEN from '../../../../assets/images/lab7/unlock.png';
-import LOCKED from '../../../../assets/images/lab7/lock.png';
-import '../../../../assets/stylesheets//components/File.scss';
-
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { AI_CORRECT, LOCKED_FILE } from "../../../../constants/lab7";
+import LOCKED from "../../../../assets/images/lab7/lock.png";
+import OPEN from "../../../../assets/images/lab7/unlock.png";
 
 class File extends Component {
-    constructor(props) {
-        super(props);
-    };
+  constructor(props) {
+    super(props);
+  }
 
-    changeAccess() {
-        if (this.state.accessStatus === OPEN_FILE) {
-            this.setState({
-                accessStatus: LOCKED_FILE,
-                accessStatusIcon: LOCKED
-            })
-        } else {
-            this.setState({
-                accessStatus: OPEN_FILE,
-                accessStatusIcon: OPEN
-            })
-        }
-        return this.state.accessStatus;
-    }
+  render() {
+    const { data } = this.props;
+    const image = data.decision === LOCKED_FILE ? LOCKED : OPEN;
+    const alt = `A .png image of ${
+      data.decision === LOCKED_FILE ? "a locked" : "an unlocked"
+    } lock.`;
+    const reportClassName =
+      data.report === AI_CORRECT ? "tw-text-[#47E22E]" : "tw-text-[#FF0000]";
 
-    getAccessStatusIcon(accessStatus) {
-        if (accessStatus === LOCKED_FILE) {
-            return LOCKED;
-        } else {
-            return OPEN;
-        }
-    }
-
-    render() {
-        const {data} = this.props;
-        return (
-            <div className='file'>
-                <div className='fileInfo'>
-                    <p className='fileName'>{data.fileName}</p>
-                    <img className='accessStatus' src={this.getAccessStatusIcon(data.accessStatus)}></img>
-                    <h6 className='sensitivityLevel'>Security Level {data.sensitivityLevel}</h6>
-                    <p className='content'>{data.content} </p>
-                </div>
-            </div>
-        );
-    }
-
+    return (
+      <div className={"tw-flex tw-flex-col tw-items-center"}>
+        <div className={"tw-space-y-1.5 file"}>
+          <p className={"tw-font-bold"}>{data.fileName}</p>
+          <img className={"tw-h-10 tw-w-10"} src={image} alt={alt} />
+          <p className={"tw-italic"}>
+            Sensitivity Level {data.sensitivityLevel}
+          </p>
+          <p className={"tw-font-bold"}>{data.content}</p>
+        </div>
+        {data.report !== undefined && (
+          <div className={"tw-bg-[#DCDCDC] tw-mt-6 tw-px-10 tw-py-1.5"}>
+            <span className={reportClassName}>{data.report}</span>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
 export default File;
+
+File.propTypes = {
+  data: PropTypes.exact({
+    fileName: PropTypes.string,
+    content: PropTypes.string,
+    sensitivityLevel: PropTypes.number,
+    accessStatus: PropTypes.string,
+    decision: PropTypes.string,
+    result: PropTypes.string,
+    report: PropTypes.string,
+    message: PropTypes.string,
+  }),
+};

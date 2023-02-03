@@ -56,8 +56,6 @@ class Main extends Component {
           />
 
           {/* Phase 2: Improve AI Code Repair */}
-          {/* Check why state isn't idle without having to refresh the page*/}
-
           <AICodeRepair
             path="/AICodeRepair"
             visible={
