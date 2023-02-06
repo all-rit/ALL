@@ -7,7 +7,7 @@ import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
 import Avatar from "avataaars";
 
 const GridApplicants = (props) => {
-  const { numApplicants, setSelection, appearance} = props;
+  const { numApplicants, setSelection, appearance } = props;
   const [currentFile, setCurrentFile] = useState([]);
   const [id, setId] = useState([]);
 

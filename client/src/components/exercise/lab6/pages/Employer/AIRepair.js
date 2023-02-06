@@ -27,7 +27,6 @@ const AIRepair = (props) => {
   const [availabilityValueError, setAvailabilityValueError] = useState(false);
   const [payValueError, setPayValueError] = useState(false);
 
-
   const popUpHandler = (message) => {
     setPopUpMessage(message);
   };
@@ -38,37 +37,41 @@ const AIRepair = (props) => {
       setAppearanceValueError(true);
       error = true;
     } else {
-      setAppearanceValueError(false)
+      setAppearanceValueError(false);
     }
-    if(parseInt(experienceValue) <= 0){
-      setExperienceValueError(true)
+    if (parseInt(experienceValue) <= 0) {
+      setExperienceValueError(true);
       error = true;
     } else {
-      setExperienceValueError(false)
+      setExperienceValueError(false);
     }
-    if(parseInt(payValue) <= 0){
-      setPayValueError(true)
+    if (parseInt(payValue) <= 0) {
+      setPayValueError(true);
       error = true;
     } else {
-      setPayValueError(false)
+      setPayValueError(false);
     }
-    if(availabilityValue !== 'None' && availabilityValue !== 'Weekdays' && availabilityValue !== 'Weekends'){
-      setAvailabilityValueError(true)
+    if (
+      availabilityValue !== "None" &&
+      availabilityValue !== "Weekdays" &&
+      availabilityValue !== "Weekends"
+    ) {
+      setAvailabilityValueError(true);
       error = true;
     } else {
-      setAvailabilityValueError(false)
+      setAvailabilityValueError(false);
     }
-    if(!error){
+    if (!error) {
       setUserError(false);
       RepairService.submitRepair(
         appearanceValue,
         experienceValue,
         availabilityValue,
-        payValue,
+        payValue
       );
       setRepairOpen(false);
       popUpHandler("The repairs have been made.");
-    } else{
+    } else {
       setUserError(true);
       popUpHandler("Errors in Repair. Please fix");
     }
@@ -85,8 +88,8 @@ const AIRepair = (props) => {
         justifyAlignment={"space-between"}
       />
       <div className="cognitive_instructions margin-bottom-2">
-        Let&apos;s adjust the AI&apos;s configuration to allow for a more equitable hiring
-        process.
+        Let&apos;s adjust the AI&apos;s configuration to allow for a more
+        equitable hiring process.
         <br />
         Click &rsquo;Repair&rsquo; to make the appropriate changes.
       </div>
@@ -171,7 +174,8 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Change the number of years of expected work experience
+                    &#47;&#47; Change the number of years of expected work
+                    experience
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
@@ -203,7 +207,9 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Change the expected candidates availability (ie. &rsquo;None&rsquo;, &rsquo;Weekdays&rsquo;, &rsquo;Weekends&rsquo;)
+                    &#47;&#47; Change the expected candidates availability (ie.
+                    &rsquo;None&rsquo;, &rsquo;Weekdays&rsquo;,
+                    &rsquo;Weekends&rsquo;)
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
@@ -213,19 +219,23 @@ const AIRepair = (props) => {
                     <input
                       name="appearancevalue"
                       type="text"
-                      defaultValue={'Weekdays'}
+                      defaultValue={"Weekdays"}
                       onChange={(e) => {
                         setAvailabilityValue(e.target.value);
                       }}
                       title={`expected candidate availability`}
-                      className={availabilityValueError ? "form-error-input" : ""}
+                      className={
+                        availabilityValueError ? "form-error-input" : ""
+                      }
                     />
                   </span>
                   {availabilityValueError && (
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Availability must be the following: 'None', 'Weekdays', 'Weekends'"}
+                        {
+                          "Availability must be the following: 'None', 'Weekdays', 'Weekends'"
+                        }
                       </span>
                     </div>
                   )}

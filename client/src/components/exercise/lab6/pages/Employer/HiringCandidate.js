@@ -106,13 +106,25 @@ const HiringCandidate = (props) => {
       </Modal>
 
       {roundOfApplicants === 0 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} appearance/>
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          appearance
+        />
       )}
       {roundOfApplicants === 1 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} appearance/>
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          appearance
+        />
       )}
       {roundOfApplicants === 2 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} appearance/>
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          appearance
+        />
       )}
       {roundOfApplicants === 3 && (
         <GridApplicants numApplicants={4} setSelection={setSelection} />
