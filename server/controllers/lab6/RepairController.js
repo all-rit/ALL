@@ -14,3 +14,9 @@ exports.submitChange = (req, res) => {
     res.sendStatus(200);
   });
 };
+
+exports.getUserChange = (req, res) => {
+  RepairService.getUserChange(req.params.userID).then((records) => {
+    res.json(records);
+  });
+};

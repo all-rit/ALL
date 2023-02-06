@@ -99,6 +99,8 @@ router.post('/lab4/repair/submit/skip', RepairControllerLab4.submitChangeSkip);
 router.post('/lab4/repair/submit/hint', RepairControllerLab4.submitChangeHint);
 router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
 router.post('/lab6/repair/submit', RepairControllerLab6.submitChange);
+router.get('/lab6/repair/:userID', RepairControllerLab6.getUserChange);
+
 // Create a Page Entry
 router.post('/page/complete', PageController.createPage);
 // Labs

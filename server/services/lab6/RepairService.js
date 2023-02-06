@@ -35,3 +35,15 @@ exports.submitChange = (data) => {
   }
   return Promise.resolve();
 };
+
+exports.getUserChange = (userID) => {
+  return db.RepairLab6
+      .findOne({
+        where: {
+          userid: userID,
+        },
+        raw: true,
+      }).then((user)=>{
+        return user;
+      });
+};
