@@ -3,7 +3,7 @@
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import UserLabService from "../../../../services/UserLabService";
-import { EXERCISE_ENDED, EXERCISE_IDLE, LAB_ID } from "../../../../constants/lab7";
+import { LAB_ID } from "../../../../constants/lab7";
 
 class ExerciseEnd extends Component {
   handleHome() {

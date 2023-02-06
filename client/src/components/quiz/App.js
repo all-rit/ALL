@@ -44,6 +44,7 @@ const mapStateToProps = (state) => {
   };
 };
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -332,6 +333,7 @@ class App extends Component {
   renderResult() {
     return (
       <Result
+        hideCertificate={this.props.hideCertificate}
         quizResult={this.state.result}
         quizScore={this.state.myCount}
         selectedAnswers={this.state.selectedAnswers}

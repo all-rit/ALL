@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import { EXERCISE_IDLE } from "../../../../../constants";
 import { EXERCISE_ENDED } from "../../../../../constants/lab7";
 import { default as Quiz } from "../../../../quiz/App";
-import ExerciseEnd from "../ExerciseEnd";
+
 
 class AlterationQuiz extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class AlterationQuiz extends Component {
           compared to the original utility equation?
         </p>
 
-        <Quiz path={`/AlterationQuiz`} user={state.main.user} updateStateFunc={updateStateFunc} />
+        <Quiz path={`/AlterationQuiz`} user={state.main.user} updateStateFunc={updateStateFunc} hideCertificate={true} />
       </div>
     );
   }
