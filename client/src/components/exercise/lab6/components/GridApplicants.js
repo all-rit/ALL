@@ -7,7 +7,7 @@ import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
 import Avatar from "avataaars";
 
 const GridApplicants = (props) => {
-  const { numApplicants, setSelection } = props;
+  const { numApplicants, setSelection, appearance} = props;
   const [currentFile, setCurrentFile] = useState([]);
   const [id, setId] = useState([]);
 
@@ -21,7 +21,7 @@ const GridApplicants = (props) => {
   //added use Effect for setApplicant
   //may need more under useEffect?
   useEffect(() => {
-    let avatarData = createAvatarData(50);
+    let avatarData = createAvatarData(50, appearance);
     setApplicants(avatarData.slice(0, numApplicants));
     setCurrentFile([]);
     setId([]);

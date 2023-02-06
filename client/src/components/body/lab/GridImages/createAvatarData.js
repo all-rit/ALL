@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable require-jsdoc */
-const createAvatarData = (avatarNumber) => {
+const createAvatarData = (avatarNumber, appearance) => {
   function generateName() {
     return (
       firstName[Math.floor(Math.random() * firstName.length)] +
@@ -295,8 +295,7 @@ const createAvatarData = (avatarNumber) => {
           availability:
             Availability[Math.floor(Math.random() * Availability.length)],
           pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
-          ai: "No",
-
+          ai: appearance === true ? "No" : "Yes",
           bias: "Avatar is wearing a hat",
         });
         break;
@@ -328,8 +327,7 @@ const createAvatarData = (avatarNumber) => {
           availability:
             Availability[Math.floor(Math.random() * Availability.length)],
           pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
-          ai: "No",
-
+          ai: appearance === true ? "No" : "Yes",
           bias: "Avatar is wearing glasses",
         });
         break;
@@ -366,7 +364,7 @@ const createAvatarData = (avatarNumber) => {
           pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
           ai: "Yes",
 
-          bias: "Avatar's shirt is the color Blue",
+          bias: "Avatar's shirt is the color " + scolor,
         });
         break;
       case "hairColor":

@@ -29,7 +29,7 @@ const FixedHiringCandidate = (props) => {
         Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”
       </h2>
 
-      <GridApplicants numApplicants={4} setSelection={setSelection} />
+      <GridApplicants numApplicants={4} setSelection={setSelection} appearance={false}/>
 
       <button
         className="btn btn-primary text-black btn-xl text-uppercase "

@@ -11,11 +11,17 @@ module.exports = (sequelize, DataTypes) => {
         usersessionid: {
           type: DataTypes.BIGINT,
         },
-        activity: {
+        appearance: {
           type: DataTypes.STRING,
         },
-        repair: {
+        yearsexperience: {
+          type: DataTypes.INTEGER,
+        },
+        availability: {
           type: DataTypes.STRING,
+        },
+        expectedpay: {
+          type: DataTypes.INTEGER,
         },
       },
       {tableName: 'lab6_repair'},
