@@ -1,7 +1,13 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable require-jsdoc */
 
-const createAvatarData = (avatarNumber, appearance, experience, availability, expectedpay) => {
+const createAvatarData = (
+  avatarNumber,
+  appearance,
+  experience,
+  availability,
+  expectedpay
+) => {
   function generateName() {
     return (
       firstName[Math.floor(Math.random() * firstName.length)] +
@@ -259,21 +265,34 @@ const createAvatarData = (avatarNumber, appearance, experience, availability, ex
   const age = "N/A";
 
   const Availability = ["Full-Time", "Part-Time"];
-  console.log(appearance,experience, availability, expectedpay)
+  console.log(appearance, experience, availability, expectedpay);
   let avatarData = [];
   for (let i = 0; i < avatarNumber; i++) {
     let biasType = bias[Math.floor(Math.random() * bias.length)];
     let aiRecommended = "Yes";
-    let years = Math.floor(Math.random() * 20)
-    let candidateavailability = Availability[Math.floor(Math.random() * Availability.length)]
-    let pay = Math.floor((Math.random() * 100) + 10) * 1000
-    aiRecommended = aiRecommended === "No" ? aiRecommended : experience !== undefined ? years>=experience ? "Yes" : "No" : "Yes"
+    let years = Math.floor(Math.random() * 20);
+    let candidateavailability =
+      Availability[Math.floor(Math.random() * Availability.length)];
+    let pay = Math.floor(Math.random() * 100 + 10) * 1000;
+    aiRecommended =
+      aiRecommended === "No"
+        ? aiRecommended
+        : experience !== undefined
+        ? years >= experience
+          ? "Yes"
+          : "No"
+        : "Yes";
     // aiRecommended = aiRecommended === "No" ? aiRecommended : availability !== undefined ? (availability===candidateavailability ? "Yes" : (availability==="Any" ? "Yes" : "No")) : "Yes"
     // aiRecommended = aiRecommended === "No" ? aiRecommended : expectedpay !== undefined ? pay>=expectedpay ? "No" : "Yes" : "Yes"
 
     switch (biasType) {
       case "hats":
-        aiRecommended = aiRecommended === "No" ? aiRecommended : appearance === true ? "No" : "Yes"
+        aiRecommended =
+          aiRecommended === "No"
+            ? aiRecommended
+            : appearance === true
+            ? "No"
+            : "Yes";
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -297,15 +316,19 @@ const createAvatarData = (avatarNumber, appearance, experience, availability, ex
           age: age,
 
           years: years,
-          availability:
-            candidateavailability,
+          availability: candidateavailability,
           pay: "$" + pay,
           ai: appearance === true ? "No" : "Yes",
           bias: "Avatar is wearing a hat",
         });
         break;
       case "glasses":
-        aiRecommended = aiRecommended === "No" ? aiRecommended : appearance === true ? "No" : "Yes"
+        aiRecommended =
+          aiRecommended === "No"
+            ? aiRecommended
+            : appearance === true
+            ? "No"
+            : "Yes";
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -330,8 +353,7 @@ const createAvatarData = (avatarNumber, appearance, experience, availability, ex
           age: age,
 
           years: years,
-          availability:
-          candidateavailability,
+          availability: candidateavailability,
           pay: "$" + pay,
           ai: appearance === true ? "No" : "Yes",
           bias: "Avatar is wearing glasses",
@@ -365,8 +387,7 @@ const createAvatarData = (avatarNumber, appearance, experience, availability, ex
 
           years: years,
 
-          availability:
-          candidateavailability,
+          availability: candidateavailability,
           pay: "$" + pay,
           ai: aiRecommended,
 
@@ -398,8 +419,7 @@ const createAvatarData = (avatarNumber, appearance, experience, availability, ex
           age: age,
           years: years,
 
-          availability:
-          candidateavailability,
+          availability: candidateavailability,
           pay: "$" + pay,
           ai: aiRecommended,
 

@@ -7,7 +7,13 @@ const endpoints = {
 };
 
 const RepairService = {
-  submitRepair: (userid, appearance, yearsexperience, availability, expectedpay) => {
+  submitRepair: (
+    userid,
+    appearance,
+    yearsexperience,
+    availability,
+    expectedpay
+  ) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR,
       {

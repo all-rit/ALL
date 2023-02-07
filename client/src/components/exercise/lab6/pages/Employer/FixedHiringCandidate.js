@@ -11,13 +11,13 @@ import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import createAvatarData from "../../../../body/lab/GridImages/createAvatarData";
 
 const FixedHiringCandidate = (props) => {
-  const { actions, user} = props;
+  const { actions, user } = props;
   const [selection, setSelection] = useState([]);
   const [roundOfApplicants, setRoundOfApplicants] = useState(null);
   const [userAnswers, setAnswers] = useState([]);
   const [isModalActive, setModalActive] = useState(false);
 
-  const [candidateData, setCandidateData] = useState([])
+  const [candidateData, setCandidateData] = useState([]);
   // const [userRepairAvailability, setUserRepairAvailability] = useState(null)
   // const [userRepairExperience, setUserRepairExperience] = useState(null)
   // const [userRepairAppearance, setUserRepairAppearance] = useState(null)
@@ -43,7 +43,6 @@ const FixedHiringCandidate = (props) => {
     setModalActive(!isModalActive);
   };
 
-
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, [actions]);
@@ -51,11 +50,19 @@ const FixedHiringCandidate = (props) => {
   useEffect(() => {
     setRoundOfApplicants(null);
     RepairService.getUserRepair(user?.userid).then((data) => {
-      if(data===null){
+      if (data === null) {
         navigate("/Lab6/Exercise/AIRepair");
-      } else{
-        setCandidateData(createAvatarData(50, data.appearance === 'true' ? true : false, data.yearsexperience, data.availability, data.expectedpay))
-        setRoundOfApplicants(0)
+      } else {
+        setCandidateData(
+          createAvatarData(
+            50,
+            data.appearance === "true" ? true : false,
+            data.yearsexperience,
+            data.availability,
+            data.expectedpay
+          )
+        );
+        setRoundOfApplicants(0);
         // setUserRepairAvailability(data.availability)
         // setUserRepairExperience(data.yearsexperience)
         // setUserRepairAppearance(data.appearance === 'true' ? true : false)
@@ -87,7 +94,8 @@ const FixedHiringCandidate = (props) => {
           setRoundOfApplicants(roundCount + 1);
         }
       }
-    }  };
+    }
+  };
 
   return (
     <div className="center-div">
@@ -135,21 +143,11 @@ const FixedHiringCandidate = (props) => {
         />
       )}
       {roundOfApplicants === 1 && (
-        <GridApplicants
-          numApplicants={4}
-          setSelection={setSelection}
-        />
+        <GridApplicants numApplicants={4} setSelection={setSelection} />
       )}
-      {roundOfApplicants === 2 && (
-        <GridApplicants
-          numApplicants={4}
-        />
-      )}
+      {roundOfApplicants === 2 && <GridApplicants numApplicants={4} />}
       {roundOfApplicants === 3 && (
-        <GridApplicants 
-          numApplicants={4} 
-          setSelection={setSelection}
-        />
+        <GridApplicants numApplicants={4} setSelection={setSelection} />
       )}
 
       <button

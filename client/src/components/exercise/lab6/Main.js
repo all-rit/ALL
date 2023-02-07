@@ -54,8 +54,16 @@ class Main extends Component {
             user={user}
           />
           <AnalyzeData path="/AnalyzeData" user={user} actions={actions} />
-          <NegativeReasoning path="/NegativeReasoning" user={user} actions={actions} />
-          <AIAnalysisQuestions path="/AIAnalysisQuestions" user={user} actions={actions} />
+          <NegativeReasoning
+            path="/NegativeReasoning"
+            user={user}
+            actions={actions}
+          />
+          <AIAnalysisQuestions
+            path="/AIAnalysisQuestions"
+            user={user}
+            actions={actions}
+          />
           {/* Part 2: Employer */}
           <EmployerStart path="/EmployerStart" user={user} actions={actions} />
           <FavorableHiringCandidate
@@ -63,7 +71,11 @@ class Main extends Component {
             user={user}
             actions={actions}
           />
-          <HiringCandidate path="/HiringCandidate" user={user} actions={actions} />
+          <HiringCandidate
+            path="/HiringCandidate"
+            user={user}
+            actions={actions}
+          />
           <AIReasoningQuestions
             path="/AIReasoningQuestions"
             actions={actions}

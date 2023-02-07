@@ -127,7 +127,11 @@ const HiringCandidate = (props) => {
         />
       )}
       {roundOfApplicants === 3 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} appearance/>
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          appearance
+        />
       )}
 
       <button
