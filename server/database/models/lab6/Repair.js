@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
           primaryKey: true,
           autoIncrement: true,
         },
-        usersessionid: {
-          type: DataTypes.BIGINT,
+        userid: {
+          type: DataTypes.INTEGER,
         },
         appearance: {
           type: DataTypes.STRING,

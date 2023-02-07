@@ -1,6 +1,7 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable require-jsdoc */
-const createAvatarData = (avatarNumber, appearance) => {
+
+const createAvatarData = (avatarNumber, appearance, experience, availability, expectedpay) => {
   function generateName() {
     return (
       firstName[Math.floor(Math.random() * firstName.length)] +
@@ -255,20 +256,24 @@ const createAvatarData = (avatarNumber, appearance) => {
   const Gender = ["Male", "Female", "Non-binary"];
 
   //need min and max val's for age
-  const Age = Math.floor(Math.random() * (80 - 18 + 1)) + 18;
+  const age = "N/A";
 
-  //(of experience (under 20))
-  const Years = ["0", "1-4", "5-10", "10+"];
-
-  const Availability = ["Weekends", "Weekdays", "Full-Time", "Part-Time"];
-
-  const Pay = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50];
-
+  const Availability = ["Full-Time", "Part-Time"];
+  console.log(appearance,experience, availability, expectedpay)
   let avatarData = [];
   for (let i = 0; i < avatarNumber; i++) {
     let biasType = bias[Math.floor(Math.random() * bias.length)];
+    let aiRecommended = "Yes";
+    let years = Math.floor(Math.random() * 20)
+    let candidateavailability = Availability[Math.floor(Math.random() * Availability.length)]
+    let pay = Math.floor((Math.random() * 100) + 10) * 1000
+    aiRecommended = aiRecommended === "No" ? aiRecommended : experience !== undefined ? years>=experience ? "Yes" : "No" : "Yes"
+    // aiRecommended = aiRecommended === "No" ? aiRecommended : availability !== undefined ? (availability===candidateavailability ? "Yes" : (availability==="Any" ? "Yes" : "No")) : "Yes"
+    // aiRecommended = aiRecommended === "No" ? aiRecommended : expectedpay !== undefined ? pay>=expectedpay ? "No" : "Yes" : "Yes"
+
     switch (biasType) {
       case "hats":
+        aiRecommended = aiRecommended === "No" ? aiRecommended : appearance === true ? "No" : "Yes"
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -289,17 +294,18 @@ const createAvatarData = (avatarNumber, appearance) => {
           },
           //added attributes to each case
           gender: Gender[Math.floor(Math.random() * Gender.length)],
-          age: Age[Math.floor(Math.random() * Age.length)],
+          age: age,
 
-          years: Years[Math.floor(Math.random() * Years.length)],
+          years: years,
           availability:
-            Availability[Math.floor(Math.random() * Availability.length)],
-          pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
+            candidateavailability,
+          pay: "$" + pay,
           ai: appearance === true ? "No" : "Yes",
           bias: "Avatar is wearing a hat",
         });
         break;
       case "glasses":
+        aiRecommended = aiRecommended === "No" ? aiRecommended : appearance === true ? "No" : "Yes"
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -321,12 +327,12 @@ const createAvatarData = (avatarNumber, appearance) => {
           },
           //added attributes to each case
           gender: Gender[Math.floor(Math.random() * Gender.length)],
-          age: Age[Math.floor(Math.random() * Age.length)],
+          age: age,
 
-          years: Years[Math.floor(Math.random() * Years.length)],
+          years: years,
           availability:
-            Availability[Math.floor(Math.random() * Availability.length)],
-          pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
+          candidateavailability,
+          pay: "$" + pay,
           ai: appearance === true ? "No" : "Yes",
           bias: "Avatar is wearing glasses",
         });
@@ -355,14 +361,14 @@ const createAvatarData = (avatarNumber, appearance) => {
           },
           //added attributes to each case
           gender: Gender[Math.floor(Math.random() * Gender.length)],
-          age: Age[Math.floor(Math.random() * Age.length)],
+          age: age,
 
-          years: Years[Math.floor(Math.random() * Years.length)],
+          years: years,
 
           availability:
-            Availability[Math.floor(Math.random() * Availability.length)],
-          pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
-          ai: "Yes",
+          candidateavailability,
+          pay: "$" + pay,
+          ai: aiRecommended,
 
           bias: "Avatar's shirt is the color " + scolor,
         });
@@ -389,13 +395,13 @@ const createAvatarData = (avatarNumber, appearance) => {
           },
           //added attributes to each case
           gender: Gender[Math.floor(Math.random() * Gender.length)],
-          age: Age[Math.floor(Math.random() * Age.length)],
-          years: Years[Math.floor(Math.random() * Years.length)],
+          age: age,
+          years: years,
 
           availability:
-            Availability[Math.floor(Math.random() * Availability.length)],
-          pay: "$" + Pay[Math.floor(Math.random() * Pay.length)] * 1000,
-          ai: "Yes",
+          candidateavailability,
+          pay: "$" + pay,
+          ai: aiRecommended,
 
           bias: "Avatar's hair is the color " + hcolor,
         });

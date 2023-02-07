@@ -48,49 +48,34 @@ class Main extends Component {
           {/* Part 1: Applicant */}
           <ExerciseStart path="/" actions={actions} />
           <AvatarSelection path="/AvatarSelection" actions={actions} />
-
-          {/* Added qualification questions path to main.js while commenting out 5 redundencies underneath     */}
-          {/* <QualQuestionsFunction path="/QualificationQuestions" actions={actions}/> */}
-
-          {/* 
-                    <QualQues1 path="/QualQues1" actions={actions}/>
-                    <QualQues2 path="/QualQues2" actions={actions}/>
-                    <QualQues3 path="/QualQues3" actions={actions}/>
-                    <QualQues4 path="/QualQues4" actions={actions}/>
-                    <QualQues5 path="/QualQues5" actions={actions}/> */}
-
-          {/*Commented out QualificationQuestions for now */}
-
           <QualificationQuestions
             path="/QualificationQuestions"
             actions={actions}
+            user={user}
           />
-          <AnalyzeData path="/AnalyzeData" actions={actions} />
-          <NegativeReasoning path="/NegativeReasoning" actions={actions} />
-          <AIAnalysisQuestions path="/AIAnalysisQuestions" actions={actions} />
+          <AnalyzeData path="/AnalyzeData" user={user} actions={actions} />
+          <NegativeReasoning path="/NegativeReasoning" user={user} actions={actions} />
+          <AIAnalysisQuestions path="/AIAnalysisQuestions" user={user} actions={actions} />
           {/* Part 2: Employer */}
-          <EmployerStart path="/EmployerStart" actions={actions} />
-
-          {/*Added favorablehiringcandidate pg */}
+          <EmployerStart path="/EmployerStart" user={user} actions={actions} />
           <FavorableHiringCandidate
             path="/FavorableHiringCandidate"
+            user={user}
             actions={actions}
           />
-
-          {/*Added hiringcandidate pgs */}
-          <HiringCandidate path="/HiringCandidate" actions={actions} />
-
+          <HiringCandidate path="/HiringCandidate" user={user} actions={actions} />
           <AIReasoningQuestions
             path="/AIReasoningQuestions"
             actions={actions}
           />
-          <AIReasoning path="/AIReasoning" actions={actions} />
-          <AIRepair path="/AIRepair" actions={actions} />
+          <AIReasoning path="/AIReasoning" user={user} actions={actions} />
+          <AIRepair path="/AIRepair" user={user} actions={actions} />
           <FixedHiringCandidate
             path="/FixedHiringCandidate"
             actions={actions}
+            user={user}
           />
-          <ExerciseEnd path="/ExerciseEnd" actions={actions} />
+          <ExerciseEnd path="/ExerciseEnd" user={user} actions={actions} />
         </Router>
       </div>
     );

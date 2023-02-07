@@ -8,7 +8,7 @@ import CodeUpdateHeader from "../../../lab3/components/CodeUpdateHeader";
 import Popup from "../../../shared/Popup";
 
 const AIRepair = (props) => {
-  const { actions } = props;
+  const { actions, user } = props;
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
@@ -19,7 +19,7 @@ const AIRepair = (props) => {
   const [popUpMessage, setPopUpMessage] = useState(false);
   const [appearanceValue, setAppearanceValue] = useState("true");
   const [experienceValue, setExperienceValue] = useState(4);
-  const [availabilityValue, setAvailabilityValue] = useState("Weekdays");
+  const [availabilityValue, setAvailabilityValue] = useState("Full-Time");
   const [payValue, setPayValue] = useState(45000);
   const [userError, setUserError] = useState(true);
   const [appearanceValueError, setAppearanceValueError] = useState(false);
@@ -52,9 +52,9 @@ const AIRepair = (props) => {
       setPayValueError(false);
     }
     if (
-      availabilityValue !== "None" &&
-      availabilityValue !== "Weekdays" &&
-      availabilityValue !== "Weekends"
+      availabilityValue !== "Any" &&
+      availabilityValue !== "Full-Time" &&
+      availabilityValue !== "Part-Time"
     ) {
       setAvailabilityValueError(true);
       error = true;
@@ -64,6 +64,7 @@ const AIRepair = (props) => {
     if (!error) {
       setUserError(false);
       RepairService.submitRepair(
+        user?.userid,
         appearanceValue,
         experienceValue,
         availabilityValue,
@@ -208,8 +209,8 @@ const AIRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
                     &#47;&#47; Change the expected candidates availability (ie.
-                    &rsquo;None&rsquo;, &rsquo;Weekdays&rsquo;,
-                    &rsquo;Weekends&rsquo;)
+                    &rsquo;Any&rsquo;, &rsquo;Full-Time&rsquo;,
+                    &rsquo;Part-Time&rsquo;)
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
@@ -219,7 +220,7 @@ const AIRepair = (props) => {
                     <input
                       name="appearancevalue"
                       type="text"
-                      defaultValue={"Weekdays"}
+                      defaultValue={"Full-Time"}
                       onChange={(e) => {
                         setAvailabilityValue(e.target.value);
                       }}
@@ -234,7 +235,7 @@ const AIRepair = (props) => {
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         {
-                          "Availability must be the following: 'None', 'Weekdays', 'Weekends'"
+                          "Availability must be the following: 'Any', 'Full-Time', 'Part-Time'"
                         }
                       </span>
                     </div>

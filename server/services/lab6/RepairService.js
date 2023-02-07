@@ -1,15 +1,15 @@
 const db = require('../../database');
 
 exports.submitChange = (data) => {
-  const usersessionid = data.usersessionid;
+  const userid = data.userid;
   const appearance = data.appearance;
   const yearsexperience = data.yearsexperience;
   const availability = data.availability;
   const expectedpay = data.expectedpay;
-  if (usersessionid) {
+  if (userid) {
     return db.RepairLab6
         .findOne({
-          where: {usersessionid: usersessionid},
+          where: {userid: userid},
         },
         ).then((repair)=> {
           if (repair !== null) {
@@ -20,7 +20,7 @@ exports.submitChange = (data) => {
             repair.save();
           } else {
             db.RepairLab6.create({
-              usersessionid: usersessionid,
+              userid: userid,
               appearance: appearance,
               yearsexperience: yearsexperience,
               availability: availability,
@@ -36,11 +36,11 @@ exports.submitChange = (data) => {
   return Promise.resolve();
 };
 
-exports.getUserChange = (userID) => {
+exports.getUserChange = (userid) => {
   return db.RepairLab6
       .findOne({
         where: {
-          userid: userID,
+          userid: userid,
         },
         raw: true,
       }).then((user)=>{

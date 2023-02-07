@@ -7,10 +7,11 @@ const endpoints = {
 };
 
 const RepairService = {
-  submitRepair: (appearance, yearsexperience, availability, expectedpay) => {
+  submitRepair: (userid, appearance, yearsexperience, availability, expectedpay) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR,
       {
+        userid,
         appearance,
         yearsexperience,
         availability,
@@ -20,7 +21,7 @@ const RepairService = {
   },
   getUserRepair: (userID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + endpoints.GET_REPAIR + userID
+      process.env.REACT_APP_SERVER_URL + endpoints.GET_REPAIR + `${userID}`
     ).then((response) => response.json());
   },
 };

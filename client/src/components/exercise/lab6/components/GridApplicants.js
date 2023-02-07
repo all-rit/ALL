@@ -7,7 +7,7 @@ import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
 import Avatar from "avataaars";
 
 const GridApplicants = (props) => {
-  const { numApplicants, setSelection, appearance } = props;
+  const { numApplicants, setSelection, appearance, experience, availability, expectedpay, avatarData} = props;
   const [currentFile, setCurrentFile] = useState([]);
   const [id, setId] = useState([]);
 
@@ -21,8 +21,12 @@ const GridApplicants = (props) => {
   //added use Effect for setApplicant
   //may need more under useEffect?
   useEffect(() => {
-    let avatarData = createAvatarData(50, appearance);
-    setApplicants(avatarData.slice(0, numApplicants));
+    if(avatarData){
+      setApplicants(avatarData.slice(0, numApplicants));
+    } else{
+      let createdAvatarData = createAvatarData(50, appearance);
+      setApplicants(createdAvatarData.slice(0, numApplicants));
+    }
     setCurrentFile([]);
     setId([]);
   }, [numApplicants]);
@@ -69,6 +73,7 @@ const GridApplicants = (props) => {
       <div className="tw-flex tw-gap-x-4">
         {applicants?.map((data) => (
           <ul
+            key={data?.id}
             onClick={() => handleGridImage(data?.id)}
             className={`gridApplicants-content tw-bg-bgwhite tw-w-40 ${
               id.includes(data.id)
