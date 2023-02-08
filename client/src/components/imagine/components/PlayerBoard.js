@@ -45,7 +45,7 @@ const PlayerBoard = (props) => {
     ImagineService.getUserAvatar(user?.userid).then((data) => {
       setAvatar(data);
     });
-    const opossingData = createAvatarData(100, true);
+    const opossingData = createAvatarData(100);
     shuffleArray(opossingData);
     setOpposingTeam(opossingData.slice(0, 4));
     // eslint-disable-next-line

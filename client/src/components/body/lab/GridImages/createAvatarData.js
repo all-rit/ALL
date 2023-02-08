@@ -2,12 +2,13 @@
 /* eslint-disable require-jsdoc */
 
 const createAvatarData = (
-  avatarNumber,
-  appearance,
-  experience,
-  availability,
-  expectedpay
+  avatarNumber
 ) => {
+  let appearanceWeight = 7;
+  let experienceWeight = 6;
+  let payWeight = 5;
+  let availabilityWeight = 4;
+
   function generateName() {
     return (
       firstName[Math.floor(Math.random() * firstName.length)] +
@@ -256,43 +257,26 @@ const createAvatarData = (
   const Mouth = ["Default", "Serious", "Smile", "Twinkle"];
   const Skin = ["Tanned", "Brown", "DarkBrown", "Black", "Pale", "Light"];
 
-  /**
-   * Added attributes from danMockData
-   */
   const Gender = ["Male", "Female", "Non-binary"];
 
   //need min and max val's for age
   const age = "N/A";
 
   const Availability = ["Full-Time", "Part-Time"];
-  console.log(appearance, experience, availability, expectedpay);
   let avatarData = [];
   for (let i = 0; i < avatarNumber; i++) {
+    let currentWeight = 0;
     let biasType = bias[Math.floor(Math.random() * bias.length)];
-    let aiRecommended = "Yes";
-    let years = Math.floor(Math.random() * 20);
+    let years = Math.floor(Math.random() * 5)+1;
     let candidateavailability =
       Availability[Math.floor(Math.random() * Availability.length)];
-    let pay = Math.floor(Math.random() * 100 + 10) * 1000;
-    aiRecommended =
-      aiRecommended === "No"
-        ? aiRecommended
-        : experience !== undefined
-        ? years >= experience
-          ? "Yes"
-          : "No"
-        : "Yes";
-    // aiRecommended = aiRecommended === "No" ? aiRecommended : availability !== undefined ? (availability===candidateavailability ? "Yes" : (availability==="Any" ? "Yes" : "No")) : "Yes"
-    // aiRecommended = aiRecommended === "No" ? aiRecommended : expectedpay !== undefined ? pay>=expectedpay ? "No" : "Yes" : "Yes"
+    let pay = Math.floor((Math.random() * 15)+20);
+    currentWeight += (years >= 1 && years <= 3) ? experienceWeight : 0;
+    currentWeight += candidateavailability == "Full-Time" ? availabilityWeight : 0;
+    currentWeight += (pay >= 25 && pay <= 32) ? payWeight : 0;
 
     switch (biasType) {
       case "hats":
-        aiRecommended =
-          aiRecommended === "No"
-            ? aiRecommended
-            : appearance === true
-            ? "No"
-            : "Yes";
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -317,18 +301,12 @@ const createAvatarData = (
 
           years: years,
           availability: candidateavailability,
-          pay: "$" + pay,
-          ai: appearance === true ? "No" : "Yes",
+          pay: "$" + pay+ "/hr",
+          ai: currentWeight >=13 ? "Yes" : "No",
           bias: "Avatar is wearing a hat",
         });
         break;
       case "glasses":
-        aiRecommended =
-          aiRecommended === "No"
-            ? aiRecommended
-            : appearance === true
-            ? "No"
-            : "Yes";
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -354,12 +332,13 @@ const createAvatarData = (
 
           years: years,
           availability: candidateavailability,
-          pay: "$" + pay,
-          ai: appearance === true ? "No" : "Yes",
+          pay: "$" + pay+ "/hr",
+          ai: currentWeight >=13 ? "Yes" : "No",
           bias: "Avatar is wearing glasses",
         });
         break;
       case "shirtColor":
+        currentWeight += appearanceWeight;
         let scolor = shirtColor[Math.floor(Math.random() * shirtColor.length)];
         avatarData.push({
           id: i + 1,
@@ -388,13 +367,13 @@ const createAvatarData = (
           years: years,
 
           availability: candidateavailability,
-          pay: "$" + pay,
-          ai: aiRecommended,
-
+          pay: "$" + pay+ "/hr",
+          ai: currentWeight >=13 ? "Yes" : "No",
           bias: "Avatar's shirt is the color " + scolor,
         });
         break;
       case "hairColor":
+        currentWeight += appearanceWeight;
         let hcolor = hairColor[Math.floor(Math.random() * hairColor.length)];
         avatarData.push({
           id: i + 1,
@@ -420,9 +399,8 @@ const createAvatarData = (
           years: years,
 
           availability: candidateavailability,
-          pay: "$" + pay,
-          ai: aiRecommended,
-
+          pay: "$" + pay+ "/hr",
+          ai: currentWeight >=13 ? "Yes" : "No",
           bias: "Avatar's hair is the color " + hcolor,
         });
         break;

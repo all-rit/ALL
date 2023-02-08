@@ -60,7 +60,7 @@ const GridImages = (props) => {
 
   //changed useEffect
   useEffect(() => {
-    let avatarData = createAvatarData(1000, true);
+    let avatarData = createAvatarData(1000);
     shuffleArray(avatarData);
     setData(avatarData.slice(0, 15));
     setCurrentFile([]);
@@ -68,7 +68,7 @@ const GridImages = (props) => {
   }, [multi]);
 
   useEffect(() => {
-    const avatarData = createAvatarData(1000, true);
+    const avatarData = createAvatarData(1000);
     shuffleArray(avatarData);
     setData(avatarData.slice(0, 15));
     setCurrentFile([]);

@@ -8,20 +8,13 @@ import GridApplicants from "../../components/GridApplicants";
 import { useState } from "react";
 import RepairService from "../../../../../services/lab6/RepairService";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-import createAvatarData from "../../../../body/lab/GridImages/createAvatarData";
 
 const FixedHiringCandidate = (props) => {
   const { actions, user } = props;
   const [selection, setSelection] = useState([]);
-  const [roundOfApplicants, setRoundOfApplicants] = useState(null);
+  const [roundOfApplicants, setRoundOfApplicants] = useState(0);
   const [userAnswers, setAnswers] = useState([]);
   const [isModalActive, setModalActive] = useState(false);
-
-  const [candidateData, setCandidateData] = useState([]);
-  // const [userRepairAvailability, setUserRepairAvailability] = useState(null)
-  // const [userRepairExperience, setUserRepairExperience] = useState(null)
-  // const [userRepairAppearance, setUserRepairAppearance] = useState(null)
-  // const [userRepairExpectedPay, setUserRepairExpectedPay] = useState(null)
 
   const handleYes = () => {
     let roundCount = roundOfApplicants;
@@ -48,26 +41,11 @@ const FixedHiringCandidate = (props) => {
   }, [actions]);
 
   useEffect(() => {
-    setRoundOfApplicants(null);
+    setRoundOfApplicants(0);
     RepairService.getUserRepair(user?.userid).then((data) => {
       if (data === null) {
         navigate("/Lab6/Exercise/AIRepair");
-      } else {
-        setCandidateData(
-          createAvatarData(
-            50,
-            data.appearance === "true" ? true : false,
-            data.yearsexperience,
-            data.availability,
-            data.expectedpay
-          )
-        );
-        setRoundOfApplicants(0);
-        // setUserRepairAvailability(data.availability)
-        // setUserRepairExperience(data.yearsexperience)
-        // setUserRepairAppearance(data.appearance === 'true' ? true : false)
-        // setUserRepairExpectedPay(data.expectedpay)
-      }
+      } 
     });
   }, [user]);
 
@@ -135,19 +113,15 @@ const FixedHiringCandidate = (props) => {
         <GridApplicants
           numApplicants={4}
           setSelection={setSelection}
-          avatarData={candidateData}
-          // appearance={userRepairAppearance}
-          // experience={userRepairExperience}
-          // availability={userRepairAvailability}
-          // expectedpay={userRepairExpectedPay}
+          appearance={false}
         />
       )}
       {roundOfApplicants === 1 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} />
+        <GridApplicants numApplicants={4} setSelection={setSelection} appearance={false}/>
       )}
-      {roundOfApplicants === 2 && <GridApplicants numApplicants={4} />}
+      {roundOfApplicants === 2 && <GridApplicants setSelection={setSelection}  numApplicants={4} appearance={false}/>}
       {roundOfApplicants === 3 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} />
+        <GridApplicants numApplicants={4} setSelection={setSelection} appearance={false}/>
       )}
 
       <button
