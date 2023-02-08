@@ -4,7 +4,7 @@ import "./title.css";
 
 /*
 Displays the title of the page dependent on the state it is in
-State options: Home page or Exercise apge
+State options: Home page or Exercise page
 */
 const Title = ({ exerciseState, replay }) => {
   return (
