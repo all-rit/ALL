@@ -45,7 +45,7 @@ const FixedHiringCandidate = (props) => {
     RepairService.getUserRepair(user?.userid).then((data) => {
       if (data === null) {
         navigate("/Lab6/Exercise/AIRepair");
-      } 
+      }
     });
   }, [user]);
 
@@ -117,11 +117,25 @@ const FixedHiringCandidate = (props) => {
         />
       )}
       {roundOfApplicants === 1 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} appearance={false}/>
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          appearance={false}
+        />
       )}
-      {roundOfApplicants === 2 && <GridApplicants setSelection={setSelection}  numApplicants={4} appearance={false}/>}
+      {roundOfApplicants === 2 && (
+        <GridApplicants
+          setSelection={setSelection}
+          numApplicants={4}
+          appearance={false}
+        />
+      )}
       {roundOfApplicants === 3 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} appearance={false}/>
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          appearance={false}
+        />
       )}
 
       <button

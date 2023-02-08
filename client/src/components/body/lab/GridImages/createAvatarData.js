@@ -1,9 +1,7 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable require-jsdoc */
 
-const createAvatarData = (
-  avatarNumber
-) => {
+const createAvatarData = (avatarNumber) => {
   let appearanceWeight = 7;
   let experienceWeight = 6;
   let payWeight = 5;
@@ -267,13 +265,14 @@ const createAvatarData = (
   for (let i = 0; i < avatarNumber; i++) {
     let currentWeight = 0;
     let biasType = bias[Math.floor(Math.random() * bias.length)];
-    let years = Math.floor(Math.random() * 5)+1;
+    let years = Math.floor(Math.random() * 5) + 1;
     let candidateavailability =
       Availability[Math.floor(Math.random() * Availability.length)];
-    let pay = Math.floor((Math.random() * 15)+20);
-    currentWeight += (years >= 1 && years <= 3) ? experienceWeight : 0;
-    currentWeight += candidateavailability == "Full-Time" ? availabilityWeight : 0;
-    currentWeight += (pay >= 25 && pay <= 32) ? payWeight : 0;
+    let pay = Math.floor(Math.random() * 15 + 20);
+    currentWeight += years >= 1 && years <= 3 ? experienceWeight : 0;
+    currentWeight +=
+      candidateavailability == "Full-Time" ? availabilityWeight : 0;
+    currentWeight += pay >= 25 && pay <= 32 ? payWeight : 0;
 
     switch (biasType) {
       case "hats":
@@ -301,8 +300,8 @@ const createAvatarData = (
 
           years: years,
           availability: candidateavailability,
-          pay: "$" + pay+ "/hr",
-          ai: currentWeight >=13 ? "Yes" : "No",
+          pay: "$" + pay + "/hr",
+          ai: currentWeight >= 13 ? "Yes" : "No",
           bias: "Avatar is wearing a hat",
         });
         break;
@@ -332,8 +331,8 @@ const createAvatarData = (
 
           years: years,
           availability: candidateavailability,
-          pay: "$" + pay+ "/hr",
-          ai: currentWeight >=13 ? "Yes" : "No",
+          pay: "$" + pay + "/hr",
+          ai: currentWeight >= 13 ? "Yes" : "No",
           bias: "Avatar is wearing glasses",
         });
         break;
@@ -367,8 +366,8 @@ const createAvatarData = (
           years: years,
 
           availability: candidateavailability,
-          pay: "$" + pay+ "/hr",
-          ai: currentWeight >=13 ? "Yes" : "No",
+          pay: "$" + pay + "/hr",
+          ai: currentWeight >= 13 ? "Yes" : "No",
           bias: "Avatar's shirt is the color " + scolor,
         });
         break;
@@ -399,8 +398,8 @@ const createAvatarData = (
           years: years,
 
           availability: candidateavailability,
-          pay: "$" + pay+ "/hr",
-          ai: currentWeight >=13 ? "Yes" : "No",
+          pay: "$" + pay + "/hr",
+          ai: currentWeight >= 13 ? "Yes" : "No",
           bias: "Avatar's hair is the color " + hcolor,
         });
         break;
