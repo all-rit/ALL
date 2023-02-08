@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import React from "react";
-import useScroll from "../../../../use-hooks/useScroll";
+import useScroll from "../../../use-hooks/useScroll";
 import Button from "../components/header/buttons/button";
 import MainInstructions from "./mainInstructions";
 
