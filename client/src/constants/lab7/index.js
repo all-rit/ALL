@@ -28,7 +28,7 @@ export const SCORE_MAP = {
 export const THREAT_LEVEL_TEXT = { 1: "Low", 2: "Medium", 3: "High" };
 
 export const MESSAGES = {
-  "SSN": "Someone’s social security number was stolen during the security breach. As a result of the breach, an identity thief was able to steal an individual's identity. This autonomous system decision-mistake caused a case of indentity theft.",
+  SSN: "Someone’s social security number was stolen during the security breach. As a result of the breach, an identity thief was able to steal an individual's identity. This autonomous system decision-mistake caused a case of indentity theft.",
   "Home Address":
     "Someone’s home address was stolen during the security breach. As a result of the breach, an identity thief was able to change the individual’s mailing address and reroute their mail to another address. This autonomous system decision-mistake caused a case of address fraud.",
   "Mother Maiden Name":
@@ -37,6 +37,6 @@ export const MESSAGES = {
     "Someone’s full was stolen during the security breach. As a result of the breach, an identity thief was able to sign up and create fake accounts under the individual's name. This autonomous system decision-mistake caused a case of identity fraud.",
   "Email Address":
     "Someone’s email address was stolen during the security breach. As a result of the breach, an identity thief was able to send the individual spam emails and sign up for accounts. This autonomous system decision-mistake caused a case of spam and phishing.",
-  "Perfect":
+  Perfect:
     "All files were correctly protected during the security breach! Bonus +50 points.",
 };

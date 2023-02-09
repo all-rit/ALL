@@ -27,11 +27,10 @@ class AICodeRepair extends Component {
     }
 
     handleSubmit() {
-
     }
 
     render() {
-        const {visible, popupMessage, actions, repairError} = this.props;
+        const {repairVisible, popupMessage, actions, repairError} = this.props;
         return (
             <div>
                 <Fragment>
@@ -54,7 +53,11 @@ class AICodeRepair extends Component {
                         </p>
                     </div>
                 </Fragment>
-                <Popup message={popupMessage} handler={actions.updatePopup} error={repairError}/>
+                <Popup
+                    message={popupMessage}
+                    handler={actions.updatePopup}
+                    error={repairError}
+                />
                 <button
                     className="btn btn-second btn-xl text-uppercase leftButton"
                     onClick={actions.openRepair}
@@ -70,7 +73,7 @@ class AICodeRepair extends Component {
                 >
                     Next
                 </button>
-                {visible && <Code/>}
+                {repairVisible && <Code/>}
             </div>
         );
     }
@@ -78,12 +81,14 @@ class AICodeRepair extends Component {
 
 const mapStateToProps = (state) => {
     const {popupMessage} = state.app7;
-    const {repairError} = state.repair7;
-    return {popupMessage, repairError};
+    const {repairError, repairVisible} = state.repair7;
+    return {popupMessage, repairError, repairVisible};
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {actions: bindActionCreators({...repairActions, ...appActions}, dispatch)};
+    return {
+        actions: bindActionCreators({...repairActions, ...appActions}, dispatch),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AICodeRepair);

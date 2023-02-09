@@ -9,40 +9,34 @@ import {connect} from "react-redux";
 class Code extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            componentName: "AICodeRepair",
+        };
     }
 
-    validateRepair(input) {
-        let error = false;
-        Object.keys(this.state).map((name) => {
-            switch (name) {
-                case "rewardvalue":
-                    if (this.state[name] !== "file.getSensitivityLvl") {
-                        error = true;
-                        this.setState({rewarderror: "Must be file.getSensitivityLvl"});
-                    } else {
-                        this.setState({rewarderror: null});
-                    }
-                    break;
-                case "costvalue":
-                    if (this.state[name] !== "threatLvl") {
-                        error = true;
-                        this.setState({costerror: "Must be 'threatLvl'"});
-                    } else {
-                        this.setState({costerror: null});
-                    }
-                    break;
-                default:
-                    break;
-            }
-            return [];
-        });
-        this.setState({repairerror: error}, () => this.handleSubmit(input));
+    validateRepair() {
+        const {rewardValue, costValue, actions,} = this.props;
+        let repairError = false;
+        if (rewardValue !== "file.getSensitivityLvl") {
+            repairError = true;
+            actions.updateRewardError("Must be file.getSensitivityLvl");
+        } else {
+            actions.updateRewardError(null);
+        }
+
+        if (costValue !== "threatLvl") {
+            repairError = true;
+            actions.updateCostError("Must be 'threatLvl'");
+        } else {
+            actions.updateCostError(null);
+        }
+
+        actions.updateRepairError(repairError);
+        this.handleSubmit(repairError);
     }
 
-    handleSubmit(event) {
-        const {actions, rewardValue, costValue, repairError} = this.props;
-
-        event.preventDefault();
+    handleSubmit(repairError) {
+        const {actions, rewardValue, costValue} = this.props;
         if (!repairError) {
             const repair = JSON.stringify({rewardValue, costValue});
             RepairService.submitRepair(this.state.componentName, repair);
@@ -57,12 +51,14 @@ class Code extends Component {
         }, 6000);
     }
 
-    changeHandler(event) {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-            [name]: value,
-        });
+    handleRewardValueChange(e) {
+        const {actions} = this.props;
+        actions.updateRewardValue(e.target.value);
+    }
+
+    handleCostValueChange(e) {
+        const {actions} = this.props;
+        actions.updateCostValue(e.target.value);
     }
 
     render() {
@@ -85,27 +81,25 @@ class Code extends Component {
                         <div className="code_editor__line">
                             {/* AI file description comment */}
                             <span className="code_editor__line--darkgreen">
-                    &#47;&#47; This is where you can change the equation that
-                    the AI makes decisions with to improve its accuracy.
-                  </span>
+                &#47;&#47; This is where you can change the equation that the AI
+                makes decisions with to improve its accuracy.
+              </span>
                         </div>
 
                         {/* import React, Component from react */}
                         <div className="code_editor__line">
-                  <span className="code_editor__line--purple">
-                    import&nbsp;
-                  </span>
+                            <span className="code_editor__line--purple">import&nbsp;</span>
                             <span className="code_editor__line--blue">React</span>
                             <span className="code_editor__line--gold">,&nbsp;</span>
                             <span className="code_editor__line--gold">&#123;</span>
                             <span className="code_editor__line--blue">
-                    &nbsp;Component&nbsp;
-                  </span>
+                &nbsp;Component&nbsp;
+              </span>
                             <span className="code_editor__line--gold">&#125;&nbsp;</span>
                             <span className="code_editor__line--purple">from&nbsp;</span>
                             <span className="code_editor__line--orange">
-                    &lsquo;react&lsquo;
-                  </span>
+                &lsquo;react&lsquo;
+              </span>
                             <span className="code_editor__line--gold">;</span>
                         </div>
 
@@ -114,28 +108,20 @@ class Code extends Component {
                         {/* class AutoSysAI extends Component*/}
                         <div className="code_editor__line">
                             <span className="code_editor__line--blue">class&nbsp;</span>
-                            <span className="code_editor__line--green">
-                    AutoSysAI&nbsp;
-                  </span>
+                            <span className="code_editor__line--green">AutoSysAI&nbsp;</span>
                             <span className="code_editor__line--blue">extends&nbsp;</span>
-                            <span className="code_editor__line--green">
-                    Component&nbsp;
-                  </span>
+                            <span className="code_editor__line--green">Component&nbsp;</span>
                             <span className="code_editor__line--gold">&#123;</span>
                         </div>
 
                         {/* makeDecision(){ */}
                         <div className="code_editor__line">
                             <span>&nbsp;&nbsp;</span>
-                            <span className="code_editor__line--yellow">
-                    makeDecision
-                  </span>
+                            <span className="code_editor__line--yellow">makeDecision</span>
                             <span className="code_editor__line--purple">(</span>
                             <span className="code_editor__line--blue">&nbsp;file</span>
                             <span className="code_editor__line--white">&nbsp;,</span>
-                            <span className="code_editor__line--blue">
-                    &nbsp;threatLvl
-                  </span>
+                            <span className="code_editor__line--blue">&nbsp;threatLvl</span>
                             <span className="code_editor__line--purple">) &#123;</span>
                         </div>
 
@@ -143,25 +129,22 @@ class Code extends Component {
                             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <span className="code_editor__line--blue">file</span>
                             <span className="code_editor__line--white">.</span>
-                            <span className="code_editor__line--yellow">
-                    changeAccess()
-                  </span>
+                            <span className="code_editor__line--yellow">changeAccess()</span>
                             <span className="code_editor__line--white">;</span>
                         </div>
 
                         <div className="code_editor__line">
                             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <span className="code_editor__line--darkgreen">
-                    enter &lsquo;file.getSensitivityLvl&lsquo; into the first
-                    input{" "}
-                  </span>
+                enter &lsquo;file.getSensitivityLvl&lsquo; into the first input{" "}
+              </span>
                         </div>
 
                         <div className="code_editor__line">
                             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <span className="code_editor__line--darkgreen">
-                    enter &lsquo;threatLvl&lsquo; into the second input
-                  </span>
+                enter &lsquo;threatLvl&lsquo; into the second input
+              </span>
                         </div>
 
                         {/* return() */}
@@ -172,11 +155,9 @@ class Code extends Component {
                             <input
                                 name="rewardvalue"
                                 type="text"
-                                className={`htmlinput ${
-                                    rewardValue ? "form-error-input" : ""
-                                }`}
+                                className={`htmlinput ${rewardValue ? "form-error-input" : ""}`}
                                 defaultValue={rewardValue}
-                                onChange={this.changeHandler.bind(this)}
+                                onChange={this.handleRewardValueChange.bind(this)}
                                 required
                                 title="must enter file.getSensitivityLvl"
                             />
@@ -184,11 +165,9 @@ class Code extends Component {
                             <input
                                 name="costvalue"
                                 type="text"
-                                className={`htmlinput ${
-                                    costValue ? "form-error-input" : ""
-                                }`}
+                                className={`htmlinput ${costValue ? "form-error-input" : ""}`}
                                 defaultValue={costValue}
-                                onChange={this.changeHandler.bind(this)}
+                                onChange={this.handleCostValueChange.bind(this)}
                                 required
                                 title="must enter threatLvl"
                             />
@@ -205,12 +184,8 @@ class Code extends Component {
 
                         {/* export default AutoSysAI */}
                         <div className="code_editor__line">
-                  <span className="code_editor__line--purple">
-                    export&nbsp;
-                  </span>
-                            <span className="code_editor__line--purple">
-                    default&nbsp;
-                  </span>
+                            <span className="code_editor__line--purple">export&nbsp;</span>
+                            <span className="code_editor__line--purple">default&nbsp;</span>
                             <span className="code_editor__line--blue">AutoSysAI</span>
                             <span>;</span>
                         </div>
@@ -224,10 +199,9 @@ class Code extends Component {
                     Update
                 </button>
             </div>
-        )
+        );
     }
 }
-
 
 const mapStateToProps = (state) => {
     const {rewardValue, costValue, repairError} = state.repair7;
@@ -235,7 +209,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {actions: bindActionCreators({...repairActions, ...appActions}, dispatch)};
+    return {
+        actions: bindActionCreators({...repairActions, ...appActions}, dispatch),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Code);

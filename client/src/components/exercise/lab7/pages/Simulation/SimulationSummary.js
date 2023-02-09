@@ -21,7 +21,6 @@ class SimulationSummary extends Component {
   // should appear after first sim (1) and lead to Code Repair
   // should appear after AI improved/updated and lead to Alteration Start
   handleContinue() {
-    console.log(this.props.state.exercise7.results)
     navigate("/Lab7/Exercise/BadAIExplanation");
   }
 
