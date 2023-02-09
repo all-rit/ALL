@@ -62,8 +62,6 @@ class Main extends Component {
               state.repair7.repairVisible &&
               state.exercise7.state === EXERCISE_PLAYING
             }
-            state={state}
-            handlers={actions}
           />
           <ImprovedAISimulation
             path="/ImprovedAISimulation"

@@ -9,5 +9,9 @@
   "scripts": {
     "prepare": "husky install",
     "scriptname": "cmd"
+  },
+  "dependencies": {
+    "@redux-devtools/extension": "^3.2.5",
+    "redux-logger": "^3.0.6"
   }
 }

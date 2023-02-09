@@ -21,6 +21,7 @@ class SimulationSummary extends Component {
   // should appear after first sim (1) and lead to Code Repair
   // should appear after AI improved/updated and lead to Alteration Start
   handleContinue() {
+    console.log(this.props.state.exercise7.results)
     navigate("/Lab7/Exercise/BadAIExplanation");
   }
 
@@ -64,7 +65,7 @@ class SimulationSummary extends Component {
         </div>
         <button
           className="btn btn-primary text-black btn-xl text-uppercase tw-mt-12"
-          onClick={this.handleContinue}
+          onClick={this.handleContinue.bind(this)}
           key="continue"
         >
           Continue

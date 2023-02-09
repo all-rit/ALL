@@ -1,17 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, {Component} from "react";
 import RepairService from "../../../../services/lab7/RepairService";
+import {bindActionCreators} from "redux";
+import {actions as repairActions} from "../../../../reducers/lab7/RepairReducer";
+import {actions as appActions} from "../../../../reducers/lab7/AppReducer";
+import {connect} from "react-redux";
 
 class Code extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            rewardvalue: null,
-            costvalue: null,
-            rewarderror: null,
-            costerror: null,
-            repairerror: true,
-        }
     }
 
     validateRepair(input) {
@@ -43,24 +40,20 @@ class Code extends Component {
     }
 
     handleSubmit(event) {
-        const {handlers} = this.props;
-        const {rewardvalue, costvalue} = this.state;
+        const {actions, rewardValue, costValue, repairError} = this.props;
 
         event.preventDefault();
-        if (!this.state.repairerror) {
-            const repair = JSON.stringify({
-                rewardvalue,
-                costvalue,
-            });
+        if (!repairError) {
+            const repair = JSON.stringify({rewardValue, costValue});
             RepairService.submitRepair(this.state.componentName, repair);
-            handlers.updatePopup("The repairs have been made.");
+            actions.updatePopup("The repairs have been made.");
         } else {
-            handlers.updatePopup("Errors in Repair. Please fix");
+            actions.updatePopup("Errors in Repair. Please fix");
         }
-        handlers.updateRepairEquation(rewardvalue, costvalue);
-        handlers.closeRepair();
+        actions.updateRepairEquation(rewardValue, costValue);
+        actions.closeRepair();
         setTimeout(() => {
-            handlers.updatePopup("");
+            actions.updatePopup("");
         }, 6000);
     }
 
@@ -73,7 +66,7 @@ class Code extends Component {
     }
 
     render() {
-        const {state} = this.props;
+        const {rewardValue, costValue} = this.props;
         return (
             <div className="code_editor">
                 <div className="code_editor__content">
@@ -180,9 +173,9 @@ class Code extends Component {
                                 name="rewardvalue"
                                 type="text"
                                 className={`htmlinput ${
-                                    this.state.rewardvalue ? "form-error-input" : ""
+                                    rewardValue ? "form-error-input" : ""
                                 }`}
-                                defaultValue={state.repair7.rewardvalue}
+                                defaultValue={rewardValue}
                                 onChange={this.changeHandler.bind(this)}
                                 required
                                 title="must enter file.getSensitivityLvl"
@@ -192,25 +185,15 @@ class Code extends Component {
                                 name="costvalue"
                                 type="text"
                                 className={`htmlinput ${
-                                    this.state.costvalue ? "form-error-input" : ""
+                                    costValue ? "form-error-input" : ""
                                 }`}
-                                defaultValue={state.repair7.costvalue}
+                                defaultValue={costValue}
                                 onChange={this.changeHandler.bind(this)}
                                 required
                                 title="must enter threatLvl"
                             />
                             <span className="code_editor__line--white"> )</span>
                         </div>
-
-                        {this.state.h1error && (
-                            <div className="code_editor__line">
-                    <span>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </span>
-                                <span className="form-error">{this.state.h1error}</span>
-                            </div>
-                        )}
-
                         <div className="code_editor__line">
                             <span>&nbsp;&nbsp;</span>
                             <span className="code_editor__line--purple">&#125;</span>
@@ -245,4 +228,14 @@ class Code extends Component {
     }
 }
 
-export default Code;
+
+const mapStateToProps = (state) => {
+    const {rewardValue, costValue, repairError} = state.repair7;
+    return {rewardValue, costValue, repairError};
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {actions: bindActionCreators({...repairActions, ...appActions}, dispatch)};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Code);

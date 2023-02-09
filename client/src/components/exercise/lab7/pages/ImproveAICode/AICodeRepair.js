@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, {Component, Fragment} from "react";
-import RepairService from "../../../../../services/lab7/RepairService";
 import Popup from "../../../shared/Popup";
 import {navigate} from "@reach/router";
 import Code from "../../components/Code";
+import {LOCKED_FILE} from "../../../../../constants/lab7";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {actions as repairActions} from "../../../../../reducers/lab7/RepairReducer";
+import {actions as appActions} from "../../../../../reducers/lab7/AppReducer";
 
 class AICodeRepair extends Component {
     constructor(props) {
@@ -14,20 +18,20 @@ class AICodeRepair extends Component {
         };
     }
 
-    UNSAFE_componentWillMount() {
-        const {state} = this.props;
-        this.setState({
-            rewardvalue: state.repair7.rewardvalue,
-            costvalue: state.repair7.costvalue,
-        });
-    }
-
     handleNav() {
         navigate("/Lab7/Exercise/ImprovedAISimulation");
     }
 
+    updateMakeDecision(threatLvl, file) {
+        return LOCKED_FILE;
+    }
+
+    handleSubmit() {
+
+    }
+
     render() {
-        const {visible, state, handlers} = this.props;
+        const {visible, popupMessage, actions, repairError} = this.props;
         return (
             <div>
                 <Fragment>
@@ -50,16 +54,10 @@ class AICodeRepair extends Component {
                         </p>
                     </div>
                 </Fragment>
-
-                <Popup
-                    message={state.app7.popupMessage}
-                    handler={handlers.updatePopup}
-                    error={this.state.repairerror}
-                />
-
+                <Popup message={popupMessage} handler={actions.updatePopup} error={repairError}/>
                 <button
                     className="btn btn-second btn-xl text-uppercase leftButton"
-                    onClick={handlers.openRepair}
+                    onClick={actions.openRepair}
                     key="repair"
                 >
                     Repair
@@ -68,15 +66,24 @@ class AICodeRepair extends Component {
                     className="btn btn-primary text-black btn-xl text-uppercase "
                     onClick={this.handleNav}
                     key="Next"
-                    disabled={this.state.repairerror}
+                    disabled={repairError}
                 >
                     Next
                 </button>
-
-                {visible && <Code handlers={handlers} state={state}/>}
+                {visible && <Code/>}
             </div>
         );
     }
 }
 
-export default AICodeRepair;
+const mapStateToProps = (state) => {
+    const {popupMessage} = state.app7;
+    const {repairError} = state.repair7;
+    return {popupMessage, repairError};
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {actions: bindActionCreators({...repairActions, ...appActions}, dispatch)};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AICodeRepair);
