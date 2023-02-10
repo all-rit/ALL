@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../../constants/lab3/index";
@@ -22,11 +21,9 @@ class AdvancedExerciseConclusion extends Component {
     return (
       <div>
         <AppBar position="static" className="appBar">
-          <Toolbar>
-            <h4 className="flex-boxes ">
-              Congratulations! You have succesfully completed the Screen Readers Exercise!
-            </h4>
-          </Toolbar>
+          <h4 className="flex-boxes ">
+            Congratulations! You have succesfully completed the Screen Readers Exercise!
+          </h4>
         </AppBar>
         <br />
         <h4 className="flex-boxes" >

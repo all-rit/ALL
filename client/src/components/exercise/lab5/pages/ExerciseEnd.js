@@ -7,7 +7,6 @@ import UserLabService from "../../../../services/UserLabService";
 import { LAB_ID } from "../../../../constants/lab5";
 import { Forum, EmojiObjects, Timer } from "@material-ui/icons";
 import { AppBar } from "@material-ui/core";
-import Toolbar from "@material-ui/core/Toolbar";
 
 class ExerciseEnd extends Component {
   handleHome() {
@@ -29,11 +28,9 @@ class ExerciseEnd extends Component {
           <div className="cognitive_instructions">
             <div>
               <AppBar position="static" className="appBar">
-                <Toolbar>
-                  <h4 className="flex-boxes ">
-                    Congratulations! You have succesfully completed the Screen Readers Exercise!
-                  </h4>
-                </Toolbar>
+                <h4 className="flex-boxes ">
+                  Congratulations! You have succesfully completed the Cognitive Impairment Exercise!
+                </h4>
               </AppBar>
             </div>
             <h4 className="margin-bottom">Here are some key takeaways:</h4>
