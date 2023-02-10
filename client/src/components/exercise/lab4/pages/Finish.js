@@ -2,10 +2,10 @@
 /* eslint-disable require-jsdoc */
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
-import Button from "@material-ui/core/Button";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../constants/lab4";
 import UserLabService from "../../../../services/UserLabService";
-
+import { AppBar } from "@material-ui/core";
+import Toolbar from "@material-ui/core/Toolbar";
 class Finish extends Component {
   handleSubmit() {
     navigate("/Lab4/Exercise");
@@ -21,23 +21,29 @@ class Finish extends Component {
   }
 
   render() {
-    const buttonStyle = { marginRight: "10px", marginLeft: "10px" };
+    /*const buttonStyle = { marginRight: "10px", marginLeft: "10px" };*/
     return (
       <Fragment>
         <div>
-          <p className="playthrough__title">
-            Congratulations on finishing the module!
-          </p>
+          <AppBar position="static" className="appBar">
+            <Toolbar>
+              <h4 className="flex-boxes ">
+                Congratulations! You have succesfully completed the Screen Readers Exercise!
+              </h4>
+            </Toolbar>
+          </AppBar>
           <br />
-          <Button
-            href="#"
+          <h4 className="flex-boxes" >
+            Click the button below to restart the exercise.
+          </h4>
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase "
             onClick={this.handleSubmit}
-            variant={"contained"}
-            color={"primary"}
-            style={buttonStyle}
+            key="start"
           >
-            Home
-          </Button>
+            Return to Exercise Start
+
+          </button>
         </div>
       </Fragment>
     );
