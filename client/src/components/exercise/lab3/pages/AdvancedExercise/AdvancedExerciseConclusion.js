@@ -1,10 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../../constants/lab3/index";
@@ -25,31 +21,26 @@ class AdvancedExerciseConclusion extends Component {
     return (
       <div>
         <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid justify="center" container spacing={10}>
-              <Grid item>
-                <Typography variant={"h4"}>Conclusion</Typography>
-              </Grid>
-            </Grid>
-          </Toolbar>
+
+          <h4 className="flex-boxes ">
+            Congratulations! You have succesfully completed the Screen Readers Exercise!
+          </h4>
+
         </AppBar>
         <br />
-        <Typography variant={"body1"}>
-          You have successfully completed the activity! Click on the home button
-          to return to the main page
-        </Typography>
-        <br />
-        <div style={{ textAlign: "center" }}>
-          <Button
-            href="#"
-            onClick={this.handleSubmit}
-            variant={"contained"}
-            className="btn btn-second btn-xl text-uppercase  leftButton"
-          >
-            Home
-          </Button>
-        </div>
+        <h4 className="flex-boxes" >
+          Click the button below to restart the exercise.
+        </h4>
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase "
+          onClick={this.handleSubmit}
+          key="start"
+        >
+          Return to Exercise Start
+
+        </button>
       </div>
+
     );
   }
 }
