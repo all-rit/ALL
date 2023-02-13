@@ -30,12 +30,12 @@ const Home = (props) => {
             <div className="intro-heading text-uppercase">
               Learn about Accessibility
             </div>
-            <div id="goals" />
+            <div />
           </div>
         </div>
       </header>
       {/* Goals */}
-      <section className="page-section landingpage__pagesection">
+      <section className="page-section landingpage__pagesection" id="goals">
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
@@ -68,14 +68,14 @@ const Home = (props) => {
         </div>
       </section>
       {/* Labs */}
-      <div id="labs" />
+      <div />
       <HorizontalLine />
 
-      <section className="page-section landingpage__pagesection">
+      <section className="page-section landingpage__pagesection" id="labs">
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
-              <h2 className="section-heading text-uppercase">Labs</h2>
+              <h2 className="section-heading text-uppercase"> Labs</h2>
 
               <h3 className="section-subheading ">
                 Explore the available labs below.
@@ -89,6 +89,7 @@ const Home = (props) => {
       </section>
       {/* Team Citation */}
       <div id="citation" />
+
       <HorizontalLine />
 
       <ProfileGeneration />
@@ -127,7 +128,10 @@ const Home = (props) => {
           </div>
         </div>
       </section>
+
+
       {/* Contact */}
+
       <section className="page-section landingpage__pagesection" id="contact">
         <div className="container">
           <div className="row contact">
@@ -149,6 +153,7 @@ const Home = (props) => {
           </div>
         </div>
       </section>
+
       {/* Footer */}
       <footer className="footer">
         <ul className="list-inline quicklinks">
