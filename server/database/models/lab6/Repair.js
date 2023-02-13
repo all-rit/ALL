@@ -12,13 +12,13 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.INTEGER,
         },
         appearance: {
-          type: DataTypes.STRING,
+          type: DataTypes.INTEGER,
         },
         yearsexperience: {
           type: DataTypes.INTEGER,
         },
         availability: {
-          type: DataTypes.STRING,
+          type: DataTypes.INTEGER,
         },
         expectedpay: {
           type: DataTypes.INTEGER,

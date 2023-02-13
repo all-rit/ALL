@@ -171,10 +171,15 @@ li {
   }
   &__image {
     height: 10rem;
+    background-color: #e4e4e4;
     border-radius: 20px 20px 0 0;
-    width: 10rem;
+    width: 9.5rem;
     background-size: 200px;
     background-position: center;
+  }
+  &__image_container {
+    background-color: #e4e4e4;
+    border-radius: 20px 20px 0 0;
   }
   &__row {
     display: flex;
@@ -241,56 +246,86 @@ li {
   align-items: center;
 }
 
+.recommendation {
+  $color_1: white;
+  $font-family_1: 'Poppins' sans-serif;
+  
+  padding: 10px;
+
+  &__card {
+    width: 100%;
+    max-width: 150px;
+    height: 60px;
+    background: #353535;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    backdrop-filter: blur(10px);
+    transition: 0.5s ease-in-out;
+    &:hover,:focus {
+      transform: scale(1.05);
+      >.recommendation__img {
+        transition: 0.5s ease-in-out;
+        background: linear-gradient(#9198e5, #712020);
+      }
+    }
+  }
+  &__img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    font-size: 1.6rem;
+    font-weight: 750;
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(#d7cfcf, #9198e5);
+  }
+  &__textBox {
+    width: calc(100% - 190px);
+    margin-left: 10px;
+    color: $color_1;
+    font-family: $font-family_1;
+  }
+  &__textContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__span {
+    font-size: 10px;
+  }
+  &__title {
+    color: black;
+    font-size: 16px;
+    padding: 5px;
+    font-weight: bold;
+  }
+  &__title_reject {
+    color: #fff562;
+    margin-left: -5px;
+  }
+  &__title_hire {
+    color: #0c3515;
+  }
+  &__reject{
+    background-color: #a05c62;
+  }
+  &__hire{
+    background-color: #a1ffb7;
+  }
+  &__desc {
+    font-size: 12px;
+    font-weight: lighter;
+  }  
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
-  }
-}
-
-.candidate {
-  //    margin-top: 10.35rem;
-  &__form__group {
-    padding-left: 0;
-  }
-  &__key__container {
-    margin-top: 10.05rem;
-    display: flex;
-    padding: 2px;
-    background-color: #3d3d3d;
-    color: white;
-  }
-  &__key__col {
-    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-    width: 10rem;
-  }
-  &__image {
-    height: 10rem;
-    border-radius: 20px 20px 0 0;
-    width: 10rem;
-    background-size: 200px;
-    background-position: center;
-  }
-  &__row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 25px;
-  }
-  &__container {
-    display: flex;
-    padding: 3px;
-  }
-  &__col {
-    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-    border-radius: 20px 20px 0 0;
-    width: 10rem;
-  }
-  &__data {
-    padding: 10px;
   }
 }
 

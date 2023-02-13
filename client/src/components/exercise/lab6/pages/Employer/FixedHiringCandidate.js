@@ -8,6 +8,7 @@ import GridApplicants from "../../components/GridApplicants";
 import { useState } from "react";
 import RepairService from "../../../../../services/lab6/RepairService";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+import ExerciseService from "../../../../../services/lab6/ExerciseService";
 
 const FixedHiringCandidate = (props) => {
   const { actions, user } = props;
@@ -16,13 +17,15 @@ const FixedHiringCandidate = (props) => {
   const [userAnswers, setAnswers] = useState([]);
   const [isModalActive, setModalActive] = useState(false);
 
+  const [userData, setUserData] = useState(null);
+
   const handleYes = () => {
     let roundCount = roundOfApplicants;
     let answers = userAnswers.slice();
     answers.push(selection);
     setAnswers(answers);
     if (roundOfApplicants > 2) {
-      // ExerciseService.submitHiredCanidates(answers);
+      ExerciseService.submitFixedHiredCanidates(answers);
       navigate("/Lab6/Exercise/ExerciseEnd");
     } else {
       setRoundOfApplicants(roundCount + 1);
@@ -45,6 +48,8 @@ const FixedHiringCandidate = (props) => {
     RepairService.getUserRepair(user?.userid).then((data) => {
       if (data === null) {
         navigate("/Lab6/Exercise/AIRepair");
+      } else{
+        setUserData(data);
       }
     });
   }, [user]);
@@ -65,7 +70,7 @@ const FixedHiringCandidate = (props) => {
         setAnswers(answers);
         if (roundOfApplicants > 2) {
           console.log(userAnswers);
-          // ExerciseService.submitHiredCanidates(answers);
+          ExerciseService.submitFixedHiredCanidates(answers);
           navigate("/Lab6/Exercise/ExerciseEnd");
         } else {
           let roundCount = roundOfApplicants;
@@ -94,7 +99,7 @@ const FixedHiringCandidate = (props) => {
         <ModalBody>
           <div className="tw-p-5 tw-text-center">
             <h3>
-              Are you sure you wish to select this avatar? The AI advises
+              Are you sure you wish to select this candidate? The AI advises
               against it.
             </h3>
           </div>
@@ -108,34 +113,41 @@ const FixedHiringCandidate = (props) => {
           </Button>
         </ModalFooter>
       </Modal>
-
-      {roundOfApplicants === 0 && (
-        <GridApplicants
-          numApplicants={4}
-          setSelection={setSelection}
-          appearance={false}
-        />
-      )}
-      {roundOfApplicants === 1 && (
-        <GridApplicants
-          numApplicants={4}
-          setSelection={setSelection}
-          appearance={false}
-        />
-      )}
-      {roundOfApplicants === 2 && (
-        <GridApplicants
-          setSelection={setSelection}
-          numApplicants={4}
-          appearance={false}
-        />
-      )}
-      {roundOfApplicants === 3 && (
-        <GridApplicants
-          numApplicants={4}
-          setSelection={setSelection}
-          appearance={false}
-        />
+      {userData!==null && (
+        <>
+            {roundOfApplicants === 0 && (
+              <GridApplicants
+                numApplicants={4}
+                setSelection={setSelection}
+                weightedValues={userData}
+                favorable
+              />
+            )}
+            {roundOfApplicants === 1 && (
+              <GridApplicants
+                numApplicants={4}
+                setSelection={setSelection}
+                weightedValues={userData}
+                favorable
+              />
+            )}
+            {roundOfApplicants === 2 && (
+              <GridApplicants
+                setSelection={setSelection}
+                numApplicants={4}
+                weightedValues={userData}
+                favorable
+              />
+            )}
+            {roundOfApplicants === 3 && (
+              <GridApplicants
+                numApplicants={4}
+                setSelection={setSelection}
+                weightedValues={userData}
+                favorable
+              />
+            )}
+        </>
       )}
 
       <button
@@ -143,8 +155,7 @@ const FixedHiringCandidate = (props) => {
         onClick={handleContinue}
         key="confirm"
       >
-        {" "}
-        Continue
+        {roundOfApplicants<3 ? "Confirm" : "Confirm --- Continue"}
       </button>
     </div>
   );

@@ -1,11 +1,12 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable require-jsdoc */
 
-const createAvatarData = (avatarNumber) => {
-  let appearanceWeight = 7;
-  let experienceWeight = 6;
-  let payWeight = 5;
-  let availabilityWeight = 4;
+const createAvatarData = (avatarNumber,weightedValues) => {
+  console.log(weightedValues)
+  let appearanceWeight = weightedValues === undefined ? 7 : weightedValues?.appearance;
+  let experienceWeight = weightedValues === undefined ? 6 : weightedValues?.yearsexperience;
+  let payWeight = weightedValues === undefined ? 3 : weightedValues?.expectedpay;
+  let availabilityWeight = weightedValues === undefined ? 4 : weightedValues?.availability;
 
   function generateName() {
     return (

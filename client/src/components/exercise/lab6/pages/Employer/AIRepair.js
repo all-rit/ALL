@@ -12,20 +12,20 @@ const AIRepair = (props) => {
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
-    popUpHandler("");
   }, [actions]);
 
   const [repairOpen, setRepairOpen] = useState(false);
-  const [popUpMessage, setPopUpMessage] = useState(false);
-  const [appearanceValue, setAppearanceValue] = useState("true");
-  const [experienceValue, setExperienceValue] = useState(4);
-  const [availabilityValue, setAvailabilityValue] = useState("Full-Time");
-  const [payValue, setPayValue] = useState(45000);
+  const [popUpMessage, setPopUpMessage] = useState("");
+  const [appearanceValue, setAppearanceValue] = useState(7);
+  const [experienceValue, setExperienceValue] = useState(6);
+  const [availabilityValue, setAvailabilityValue] = useState(4);
+  const [payValue, setPayValue] = useState(3);
   const [userError, setUserError] = useState(true);
   const [appearanceValueError, setAppearanceValueError] = useState(false);
   const [experienceValueError, setExperienceValueError] = useState(false);
   const [availabilityValueError, setAvailabilityValueError] = useState(false);
   const [payValueError, setPayValueError] = useState(false);
+  const [weightedValueError, setWeightedValueError] = useState(false);
 
   const popUpHandler = (message) => {
     setPopUpMessage(message);
@@ -33,7 +33,12 @@ const AIRepair = (props) => {
 
   const validateRepair = () => {
     let error = false;
-    if (appearanceValue !== "false") {
+    let weightedValues= parseInt(appearanceValue)+parseInt(experienceValue)+parseInt(payValue)+parseInt(availabilityValue);
+    if(weightedValues !== 20){
+      setWeightedValueError(true);
+      error = true;
+    }
+    if (parseInt(appearanceValue) !== 0) {
       setAppearanceValueError(true);
       error = true;
     } else {
@@ -51,11 +56,7 @@ const AIRepair = (props) => {
     } else {
       setPayValueError(false);
     }
-    if (
-      availabilityValue !== "Any" &&
-      availabilityValue !== "Full-Time" &&
-      availabilityValue !== "Part-Time"
-    ) {
+    if (parseInt(availabilityValue) <=0) {
       setAvailabilityValueError(true);
       error = true;
     } else {
@@ -132,7 +133,20 @@ const AIRepair = (props) => {
                   &#47;&#47; to ignore appearance when making decisions
                 </span>
               </div>
+              <div className="code_editor__line">
+                <span className="code_editor__line--darkgreen">
+                  &#47;&#47; Note: the weighted values must add up to 20
+                </span>
+              </div>
               <br />
+              {weightedValueError && (
+                    <div className="code_editor__line">
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"Weighted values must add up to 20"}
+                      </span>
+                    </div>
+                  )}
               <div className="code_editor__line">
                 <span className="code_editor__const">const </span>
                 <span className="code_editor__json">hiringAIConfig </span>
@@ -143,21 +157,21 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Change appearance value from true to false
+                    &#47;&#47; Make changes to appearanceWeight it is unequitable unless its 0
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>appearance:&nbsp;</span>
+                  <span>appearanceWeight:&nbsp;</span>
                   <span>
                     <input
-                      name="appearancevalue"
+                      name="appearanceweight"
                       type="text"
-                      defaultValue={"true"}
+                      defaultValue={7}
                       onChange={(e) => {
                         setAppearanceValue(e.target.value);
                       }}
-                      title={`appearance value from true to false`}
+                      title={`appearance weight`}
                       className={appearanceValueError ? "form-error-input" : ""}
                     />
                   </span>
@@ -165,7 +179,7 @@ const AIRepair = (props) => {
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Appearance value must be 'false'"}
+                        {"appearanceWeight must be 0 to be equitable"}
                       </span>
                     </div>
                   )}
@@ -175,22 +189,21 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Change the number of years of expected work
-                    experience
+                  &#47;&#47; Adjust the experienceWeight to change the way the AI evaluates candidates
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>experience:&nbsp;</span>
+                  <span>experienceWeight:&nbsp;</span>
                   <span>
                     <input
-                      name="appearancevalue"
+                      name="experienceweight"
                       type="text"
-                      defaultValue={1}
+                      defaultValue={6}
                       onChange={(e) => {
                         setExperienceValue(e.target.value);
                       }}
-                      title={`number of years of expected work experience`}
+                      title={`experience weight`}
                       className={experienceValueError ? "form-error-input" : ""}
                     />
                   </span>
@@ -198,7 +211,7 @@ const AIRepair = (props) => {
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Experience value must be greater than 0"}
+                        {"experienceWeight must be greater than 0"}
                       </span>
                     </div>
                   )}
@@ -208,23 +221,21 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Change the expected candidates availability (ie.
-                    &rsquo;Any&rsquo;, &rsquo;Full-Time&rsquo;,
-                    &rsquo;Part-Time&rsquo;)
+                    &#47;&#47; Adjust the availabilityWeight to change the way the AI evaluates candidates
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>availability:&nbsp;</span>
+                  <span>availabilityWeight:&nbsp;</span>
                   <span>
                     <input
-                      name="appearancevalue"
+                      name="availabilityweight"
                       type="text"
-                      defaultValue={"Full-Time"}
+                      defaultValue={4}
                       onChange={(e) => {
                         setAvailabilityValue(e.target.value);
                       }}
-                      title={`expected candidate availability`}
+                      title={`availability weight`}
                       className={
                         availabilityValueError ? "form-error-input" : ""
                       }
@@ -235,7 +246,7 @@ const AIRepair = (props) => {
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         {
-                          "Availability must be the following: 'Any', 'Full-Time', 'Part-Time'"
+                          "availabilityWeight must be greater than 0"
                         }
                       </span>
                     </div>
@@ -246,21 +257,21 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Change the expected candidates pay
+                  &#47;&#47; Adjust the expectedpayWeight to change the way the AI evaluates candidates
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>expectedpay:&nbsp;</span>
+                  <span>expectedpayWeight:&nbsp;</span>
                   <span>
                     <input
-                      name="appearancevalue"
+                      name="expectedpayweight"
                       type="text"
-                      defaultValue={45000}
+                      defaultValue={3}
                       onChange={(e) => {
                         setPayValue(e.target.value);
                       }}
-                      title={`expected canidates pay`}
+                      title={`expected pay weight`}
                       className={payValueError ? "form-error-input" : ""}
                     />
                   </span>
@@ -268,7 +279,7 @@ const AIRepair = (props) => {
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Pay value must be greater than 0"}
+                        {"expectedpayWeight must be greater than 0"}
                       </span>
                     </div>
                   )}

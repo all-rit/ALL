@@ -90,7 +90,7 @@ const HiringCandidate = (props) => {
         <ModalBody>
           <div className="tw-p-5 tw-text-center">
             <h3>
-              Are you sure you wish to select this avatar? The AI advises
+              Are you sure you wish to select this candidate? The AI advises
               against it.
             </h3>
           </div>
@@ -109,28 +109,28 @@ const HiringCandidate = (props) => {
         <GridApplicants
           numApplicants={4}
           setSelection={setSelection}
-          appearance
+          favorable
         />
       )}
       {roundOfApplicants === 1 && (
         <GridApplicants
           numApplicants={4}
           setSelection={setSelection}
-          appearance
+          favorable
         />
       )}
       {roundOfApplicants === 2 && (
         <GridApplicants
           numApplicants={4}
           setSelection={setSelection}
-          appearance
+          favorable
         />
       )}
       {roundOfApplicants === 3 && (
         <GridApplicants
           numApplicants={4}
           setSelection={setSelection}
-          appearance
+          favorable
         />
       )}
 
