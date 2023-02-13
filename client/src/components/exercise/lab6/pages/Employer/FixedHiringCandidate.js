@@ -48,7 +48,7 @@ const FixedHiringCandidate = (props) => {
     RepairService.getUserRepair(user?.userid).then((data) => {
       if (data === null) {
         navigate("/Lab6/Exercise/AIRepair");
-      } else{
+      } else {
         setUserData(data);
       }
     });
@@ -113,40 +113,40 @@ const FixedHiringCandidate = (props) => {
           </Button>
         </ModalFooter>
       </Modal>
-      {userData!==null && (
+      {userData !== null && (
         <>
-            {roundOfApplicants === 0 && (
-              <GridApplicants
-                numApplicants={4}
-                setSelection={setSelection}
-                weightedValues={userData}
-                favorable
-              />
-            )}
-            {roundOfApplicants === 1 && (
-              <GridApplicants
-                numApplicants={4}
-                setSelection={setSelection}
-                weightedValues={userData}
-                favorable
-              />
-            )}
-            {roundOfApplicants === 2 && (
-              <GridApplicants
-                setSelection={setSelection}
-                numApplicants={4}
-                weightedValues={userData}
-                favorable
-              />
-            )}
-            {roundOfApplicants === 3 && (
-              <GridApplicants
-                numApplicants={4}
-                setSelection={setSelection}
-                weightedValues={userData}
-                favorable
-              />
-            )}
+          {roundOfApplicants === 0 && (
+            <GridApplicants
+              numApplicants={4}
+              setSelection={setSelection}
+              weightedValues={userData}
+              favorable
+            />
+          )}
+          {roundOfApplicants === 1 && (
+            <GridApplicants
+              numApplicants={4}
+              setSelection={setSelection}
+              weightedValues={userData}
+              favorable
+            />
+          )}
+          {roundOfApplicants === 2 && (
+            <GridApplicants
+              setSelection={setSelection}
+              numApplicants={4}
+              weightedValues={userData}
+              favorable
+            />
+          )}
+          {roundOfApplicants === 3 && (
+            <GridApplicants
+              numApplicants={4}
+              setSelection={setSelection}
+              weightedValues={userData}
+              favorable
+            />
+          )}
         </>
       )}
 
@@ -155,7 +155,7 @@ const FixedHiringCandidate = (props) => {
         onClick={handleContinue}
         key="confirm"
       >
-        {roundOfApplicants<3 ? "Confirm" : "Confirm --- Continue"}
+        {roundOfApplicants < 3 ? "Confirm" : "Confirm --- Continue"}
       </button>
     </div>
   );

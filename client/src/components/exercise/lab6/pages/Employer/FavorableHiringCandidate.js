@@ -48,7 +48,7 @@ const FavorableHiringCandidate = (props) => {
           {/*Don't change className because styling changes*/}
           <ul>
             <li>
-              <Recomendation aiRecommendation/>
+              <Recomendation aiRecommendation />
             </li>
             <ul htmlFor="applicant" className="candidate__col">
               <li className="candidate__image_container">

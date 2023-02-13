@@ -9,7 +9,7 @@ import LongHorizontalLine from "../../../../common/HorizontalLine/LongHorizontal
 import Recomendation from "./Recomendation";
 
 const GridApplicants = (props) => {
-  const { numApplicants, setSelection, weightedValues,favorable } = props;
+  const { numApplicants, setSelection, weightedValues, favorable } = props;
   const [currentFile, setCurrentFile] = useState([]);
   const [id, setId] = useState([]);
 
@@ -23,7 +23,10 @@ const GridApplicants = (props) => {
   //added use Effect for setApplicant
   //may need more under useEffect?
   useEffect(() => {
-    let createdAvatarData = weightedValues === undefined ? createAvatarData(50) : createAvatarData(50,weightedValues);
+    let createdAvatarData =
+      weightedValues === undefined
+        ? createAvatarData(50)
+        : createAvatarData(50, weightedValues);
     setApplicants(createdAvatarData.slice(0, numApplicants));
     setCurrentFile([]);
     setId([]);
@@ -59,20 +62,20 @@ const GridApplicants = (props) => {
   return (
     <div className="gridApplicants tw-inline-flex">
       <div className="tw-mr-4">
-            {/* Number determines alignment of long horizontals*/}
-            <ul className="gridApplicants-content tw-bg-bgwhite tw-mt-60">
-              <li className="tw-p-4">Gender</li>
-              <li className="tw-p-4">Experience</li>
-              <li className="tw-p-4">Availability</li>
-              <li className="tw-p-4">Pay</li>
-            </ul>
-          </div>
+        {/* Number determines alignment of long horizontals*/}
+        <ul className="gridApplicants-content tw-bg-bgwhite tw-mt-60">
+          <li className="tw-p-4">Gender</li>
+          <li className="tw-p-4">Experience</li>
+          <li className="tw-p-4">Availability</li>
+          <li className="tw-p-4">Pay</li>
+        </ul>
+      </div>
 
       <div className="tw-flex tw-gap-x-4">
-        {favorable &&(
+        {favorable && (
           <ul>
             <li>
-              <Recomendation aiRecommendation/>
+              <Recomendation aiRecommendation />
             </li>
             <ul htmlFor="applicant" className="candidate__col">
               <li className="candidate__image_container">
@@ -86,28 +89,31 @@ const GridApplicants = (props) => {
                 />
               </li>
               <li className="tw-p-4">Unimportant</li>
-              <LongHorizontalLine/>
+              <LongHorizontalLine />
               <li className="tw-p-4">1-3 years</li>
-              <LongHorizontalLine/>
+              <LongHorizontalLine />
               <li className="tw-p-4">Full-Time</li>
-              <LongHorizontalLine/>
+              <LongHorizontalLine />
               <li className="tw-p-4">$25-32/hr</li>
+            </ul>
           </ul>
-        </ul>
         )}
         {applicants?.map((data) => (
           <ul>
             <li>
-              <Recomendation aiRecommendation={data?.ai == "Yes" ? true : false}/>
+              <Recomendation
+                aiRecommendation={data?.ai == "Yes" ? true : false}
+              />
             </li>
-            <ul htmlFor="applicant" 
-                className={`candidate__col ${
-                  id.includes(data.id)
-                    ? "tw-opacity-75 tw-border-solid tw-border-7"
-                    : ""
-                }`}
+            <ul
+              htmlFor="applicant"
+              className={`candidate__col ${
+                id.includes(data.id)
+                  ? "tw-opacity-75 tw-border-solid tw-border-7"
+                  : ""
+              }`}
               onClick={() => handleGridImage(data?.id)}
-              >
+            >
               <li className="candidate__image_container">
                 <Avatar
                   className="candidate__image"
@@ -126,11 +132,11 @@ const GridApplicants = (props) => {
                 />
               </li>
               <li className="tw-p-4">{data?.gender}</li>
-              <LongHorizontalLine/>
+              <LongHorizontalLine />
               <li className="tw-p-4">{data?.years}</li>
-              <LongHorizontalLine/>
+              <LongHorizontalLine />
               <li className="tw-p-4">{data?.availability}</li>
-              <LongHorizontalLine/>
+              <LongHorizontalLine />
               <li className="tw-p-4">{data?.pay}</li>
             </ul>
           </ul>

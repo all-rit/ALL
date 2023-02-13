@@ -33,8 +33,12 @@ const AIRepair = (props) => {
 
   const validateRepair = () => {
     let error = false;
-    let weightedValues= parseInt(appearanceValue)+parseInt(experienceValue)+parseInt(payValue)+parseInt(availabilityValue);
-    if(weightedValues !== 20){
+    let weightedValues =
+      parseInt(appearanceValue) +
+      parseInt(experienceValue) +
+      parseInt(payValue) +
+      parseInt(availabilityValue);
+    if (weightedValues !== 20) {
       setWeightedValueError(true);
       error = true;
     }
@@ -56,7 +60,7 @@ const AIRepair = (props) => {
     } else {
       setPayValueError(false);
     }
-    if (parseInt(availabilityValue) <=0) {
+    if (parseInt(availabilityValue) <= 0) {
       setAvailabilityValueError(true);
       error = true;
     } else {
@@ -140,13 +144,13 @@ const AIRepair = (props) => {
               </div>
               <br />
               {weightedValueError && (
-                    <div className="code_editor__line">
-                      <span className="form-error">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Weighted values must add up to 20"}
-                      </span>
-                    </div>
-                  )}
+                <div className="code_editor__line">
+                  <span className="form-error">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {"Weighted values must add up to 20"}
+                  </span>
+                </div>
+              )}
               <div className="code_editor__line">
                 <span className="code_editor__const">const </span>
                 <span className="code_editor__json">hiringAIConfig </span>
@@ -157,7 +161,8 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Make changes to appearanceWeight it is unequitable unless its 0
+                    &#47;&#47; Make changes to appearanceWeight it is
+                    unequitable unless its 0
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
@@ -189,7 +194,8 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                  &#47;&#47; Adjust the experienceWeight to change the way the AI evaluates candidates
+                    &#47;&#47; Adjust the experienceWeight to change the way the
+                    AI evaluates candidates
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
@@ -221,7 +227,8 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Adjust the availabilityWeight to change the way the AI evaluates candidates
+                    &#47;&#47; Adjust the availabilityWeight to change the way
+                    the AI evaluates candidates
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
@@ -245,9 +252,7 @@ const AIRepair = (props) => {
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {
-                          "availabilityWeight must be greater than 0"
-                        }
+                        {"availabilityWeight must be greater than 0"}
                       </span>
                     </div>
                   )}
@@ -257,7 +262,8 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                  &#47;&#47; Adjust the expectedpayWeight to change the way the AI evaluates candidates
+                    &#47;&#47; Adjust the expectedpayWeight to change the way
+                    the AI evaluates candidates
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
