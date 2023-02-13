@@ -1,7 +1,5 @@
 export const EXERCISE_PLAYING = "EXERCISE_PLAYING";
-export const EXERCISE_ENDED = "EXERCISE_ENDED";
 export const EXERCISE_IDLE = "EXERCISE_IDLE";
-export const EXERCISE_COUNTDOWN = "EXERCISE_COUNTDOWN";
 
 export const AI_CORRECT = "AI CORRECT";
 export const AI_INCORRECT = "AI INCORRECT";
@@ -16,7 +14,10 @@ export const LAB_ID = 7;
 export const THREAT_MAX = 3;
 export const DELAY_TIME = 0;
 export const READ_TIME = 0;
-export const ROUND_LIMIT = 10;
+export const ROUND_LIMIT = 5;
+
+export const BAD_AI_EXPLANATION = "BadAIExplanation";
+export const ALTERATION_START = "AlterationStart";
 
 export const SCORE_MAP = {
   FILE_PROTECTED: 20,

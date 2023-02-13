@@ -28,12 +28,12 @@ import { files } from "./data/files";
 import Countdown from "react-countdown-now";
 import ProgressBar from "./ProgressBar";
 import File from "./File";
+import { connect } from "react-redux";
 
 class Simulation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      started: false,
       files: [],
       message: "",
       countdownComponent: null,
@@ -41,12 +41,11 @@ class Simulation extends Component {
     };
   }
 
-  /**
-   * Updates the state `started` to true, switching the rendered components in the `render()` method,
-   * and invoked the `startRound()` method.
-   */
+  componentDidMount() {
+    this.startSimulation();
+  }
+
   startSimulation() {
-    this.setState({ started: true });
     this.startRound();
   }
 
@@ -296,75 +295,59 @@ class Simulation extends Component {
   }
 
   render() {
-    const { started } = this.state;
     const { data } = this.props;
     return (
-      <div className="simulation">
-        {started === false && (
-          <>
-            <h2 className={"bold"}>
-              Click the Start button to begin the simulation
-            </h2>
-            <button
-              className="btn btn-primary text-black btn-xl text-uppercase mt-3"
-              onClick={() => this.startSimulation()}
-              key="start"
-            >
-              Start
-            </button>
-          </>
-        )}
-        {started === true && (
-          <>
-            {/* Header */}
-            <div className={"tw-flex tw-justify-between"}>
-              {/* Round Tracker */}
-              <div>
-                <h4 className="tw-font-bold">Round {data.roundNumber} of 10</h4>
-              </div>
-              {/* Status Report */}
-              <div className={"tw-flex tw-text-xl tw-m-[20px]"}>
-                <ul className={"tw-text-left tw-font-bold"}>
-                  <li>Intrusions:</li>
-                  <li>Protected (TP):</li>
-                  <li>Incorrect (FP):</li>
-                  <li>Total Score:</li>
-                </ul>
-                <ul className={"tw-text-right tw-ml-6"}>
-                  <li>{data.intrusions}</li>
-                  <li>{data.protected}</li>
-                  <li>{data.incorrect}</li>
-                  <li>{data.score}</li>
-                </ul>
-              </div>
-            </div>
-            {/* Body */}
-            <div>
-              {/* Threat Message */}
-              <div
-                className={
-                  "tw-flex tw-items-center tw-justify-center tw-w-full"
-                }
-              >
-                <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
-                  {THREAT_LEVEL_TEXT[data.threatLvl]} threat detected!
-                </h1>
-              </div>
-              {/* File Display */}
-              <div className={"tw-flex tw-justify-around tw-mt-16"}>
-                {this.state.files.map((file, index) => (
-                  <File key={index} data={file} />
-                ))}
-              </div>
-              {/* Countdown component w/ message */}
-              {/* When countdown component is not null, it will be rendered */}
-              {this.state.countdownComponent}
-            </div>
-          </>
-        )}
+      <div className="simulation tw-mt-12">
+        {/* Header */}
+        <div className={"tw-flex tw-justify-between"}>
+          {/* Round Tracker */}
+          <div>
+            <h4 className="tw-font-bold">Round {data.roundNumber} of 10</h4>
+          </div>
+          {/* Status Report */}
+          <div className={"tw-flex tw-text-xl tw-m-[20px]"}>
+            <ul className={"tw-text-left tw-font-bold"}>
+              <li>Intrusions:</li>
+              <li>Protected (TP):</li>
+              <li>Incorrect (FP):</li>
+              <li>Total Score:</li>
+            </ul>
+            <ul className={"tw-text-right tw-ml-6"}>
+              <li>{data.intrusions}</li>
+              <li>{data.protected}</li>
+              <li>{data.incorrect}</li>
+              <li>{data.score}</li>
+            </ul>
+          </div>
+        </div>
+        {/* Body */}
+        <div>
+          {/* Threat Message */}
+          <div
+            className={"tw-flex tw-items-center tw-justify-center tw-w-full"}
+          >
+            <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
+              {THREAT_LEVEL_TEXT[data.threatLvl]} threat detected!
+            </h1>
+          </div>
+          {/* File Display */}
+          <div className={"tw-flex tw-justify-around tw-mt-16"}>
+            {this.state.files.map((file, index) => (
+              <File key={index} data={file} />
+            ))}
+          </div>
+          {/* Countdown component w/ message */}
+          {/* When countdown component is not null, it will be rendered */}
+          {this.state.countdownComponent}
+        </div>
       </div>
     );
   }
 }
 
-export default Simulation;
+const mapStateToProps = (state) => {
+  const { makeDecision } = state.repair7;
+  return { makeDecision };
+};
+
+export default connect(mapStateToProps)(Simulation);

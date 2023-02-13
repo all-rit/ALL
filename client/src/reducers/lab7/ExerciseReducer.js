@@ -1,4 +1,8 @@
-import { EXERCISE_IDLE } from "../../constants/lab7/index";
+import {
+  BAD_AI_EXPLANATION,
+  EXERCISE_IDLE,
+  EXERCISE_PLAYING,
+} from "../../constants/lab7/index";
 
 export const types = {
   UPDATE_STATE: "@accessibility-lab/lab7/exercise/update_state",
@@ -11,6 +15,7 @@ export const types = {
   START_NEW_ROUND: "@accessibility-lab/lab7/exercise/start_new_round",
   UPDATE_THREAT_LEVEL: "@accessibility-lab/lab7/exercise/update_threat_level",
   ADD_RESULTS: "@accessibility-lab/lab7/exercise/add_results",
+  UPDATE_REDIRECT_URL: "@accessibility-lab/lab7/exercise/update_redirect_url",
 };
 
 export const initialState = {
@@ -23,18 +28,20 @@ export const initialState = {
   incorrect: 0,
   threatLvl: 0,
   results: [],
+  redirectURL: BAD_AI_EXPLANATION,
 };
 
 const ExerciseReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.RESET:
+      return {
+        ...initialState,
+        state: EXERCISE_PLAYING,
+      };
     case types.UPDATE_STATE:
       return {
         ...state,
         state: action.state,
-      };
-    case types.RESET:
-      return {
-        ...state,
       };
     case types.INCREMENT_SCORE:
       return {
@@ -76,6 +83,11 @@ const ExerciseReducer = (state = initialState, action) => {
         ...state,
         results: [...state.results, action.results],
       };
+    case types.UPDATE_REDIRECT_URL:
+      return {
+        ...state,
+        redirectURL: action.url,
+      };
     default:
       return state;
   }
@@ -95,6 +107,7 @@ export const actions = {
     threatLvl,
   }),
   addResults: (results) => ({ type: types.ADD_RESULTS, results }),
+  updateRedirectURL: (url) => ({ type: types.UPDATE_REDIRECT_URL, url }),
 };
 
 export default ExerciseReducer;

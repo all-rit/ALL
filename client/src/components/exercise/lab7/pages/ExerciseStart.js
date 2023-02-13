@@ -4,8 +4,18 @@
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../constants/lab7";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../reducers/lab7/ExerciseReducer";
+import { connect } from "react-redux";
 
 class ExerciseStart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      componentName: "ExerciseStart",
+    };
+  }
+
   componentDidMount() {
     const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
@@ -113,14 +123,15 @@ class ExerciseStart extends Component {
           </p>
 
           <p className="playthrough__sentence">
-            Click the 'Continue' button to move on to the simulation!
+            Click the '<span className={"tw-font-bold"}>Start</span>' button to
+            move on to the simulation!
           </p>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "
-            onClick={this.handleStart}
+            onClick={this.handleStart.bind(this)}
             key="start"
           >
-            Continue
+            Start
           </button>
         </div>
       </Fragment>
@@ -128,4 +139,10 @@ class ExerciseStart extends Component {
   }
 }
 
-export default ExerciseStart;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ExerciseStart);

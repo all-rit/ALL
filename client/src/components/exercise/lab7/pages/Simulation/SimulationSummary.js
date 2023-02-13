@@ -13,20 +13,22 @@ class SimulationSummary extends Component {
     };
   }
 
-  // should appear if AI improved (Updated)
-  handleUpdate() {
-    navigate("/Lab7/Exercise/AICodeRepair");
+  handleContinue() {
+    const {
+      state: {
+        exercise7: { redirectURL },
+      },
+    } = this.props;
+    navigate(`/Lab7/Exercise/${redirectURL}`);
   }
 
-  // should appear after first sim (1) and lead to Code Repair
-  // should appear after AI improved/updated and lead to Alteration Start
-  handleContinue() {
-    navigate("/Lab7/Exercise/BadAIExplanation");
+  handleBack() {
+    navigate(`/Lab7/Exercise/AICodeRepair`);
   }
 
   render() {
     const {
-      state: { exercise7 },
+      state: { exercise7, repair7 },
     } = this.props;
     return (
       <div>
@@ -34,7 +36,7 @@ class SimulationSummary extends Component {
         <div>
           <div
             className={
-              "tw-flex tw-items-center tw-justify-center tw-gap-32 tw-p-6 tw-bg-[#EBE8E8] tw-mt-6 tw-shadow-xl"
+              "tw-flex tw-items-center tw-justify-center tw-gap-32 tw-py-6 tw-bg-[#EBE8E8] tw-mt-6 tw-shadow-xl"
             }
           >
             <div>
@@ -62,13 +64,24 @@ class SimulationSummary extends Component {
             ))}
           </div>
         </div>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase tw-mt-12"
-          onClick={this.handleContinue.bind(this)}
-          key="continue"
-        >
-          Continue
-        </button>
+        <div className={"tw-mt-12"}>
+          {repair7.changesApplied && (
+            <button
+              className="btn btn-second text-black btn-xl text-uppercase leftButton"
+              onClick={this.handleBack.bind(this)}
+              key="repair"
+            >
+              Try a new equation
+            </button>
+          )}
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase"
+            onClick={this.handleContinue.bind(this)}
+            key="continue"
+          >
+            Continue
+          </button>
+        </div>
       </div>
     );
   }
