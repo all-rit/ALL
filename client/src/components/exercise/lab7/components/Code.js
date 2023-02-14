@@ -5,6 +5,12 @@ import { bindActionCreators } from "redux";
 import { actions as repairActions } from "../../../../reducers/lab7/RepairReducer";
 import { actions as appActions } from "../../../../reducers/lab7/AppReducer";
 import { connect } from "react-redux";
+import {
+  FILE_FORMAT_VALIDATION,
+  POPUP_DELAY,
+  POPUP_MESSAGES,
+} from "../../../../constants/lab7";
+import { evaluate } from "mathjs";
 
 class Code extends Component {
   constructor(props) {
@@ -14,25 +20,83 @@ class Code extends Component {
     };
   }
 
-  validateRepair() {
-    const { rewardValue, costValue, actions } = this.props;
-    let repairError = false;
-    if (rewardValue !== "file.getSensitivityLvl") {
-      repairError = true;
-      actions.updateRewardError("Must be file.getSensitivityLvl");
-    } else {
-      actions.updateRewardError(null);
+  validateRewardValue() {
+    const { rewardValue, actions } = this.props;
+    let value,
+      error = null;
+
+    try {
+      value = evaluate(rewardValue, FILE_FORMAT_VALIDATION);
+      if (typeof value !== "number") error = POPUP_MESSAGES.INVALID_EXPRESSION;
+    } catch (e) {
+      switch (e.data?.category) {
+        case "wrongType":
+          error = POPUP_MESSAGES.INVALID_EXPRESSION;
+          break;
+        default:
+          error = e.message;
+      }
     }
 
-    if (costValue !== "threatLvl") {
-      repairError = true;
-      actions.updateCostError("Must be 'threatLvl'");
-    } else {
-      actions.updateCostError(null);
+    const result = {
+      value: rewardValue,
+      error: `[Reward Value] ${error}`,
+      passed: !error,
+    };
+    if (!result.passed) actions.updateRepairError(result.error);
+    return result;
+  }
+
+  validateCostValue() {
+    const { costValue, actions } = this.props;
+    let value,
+      error = null;
+
+    try {
+      value = evaluate(costValue, FILE_FORMAT_VALIDATION);
+      if (typeof value !== "number") error = POPUP_MESSAGES.INVALID_EXPRESSION;
+      else if (value === 0) error = POPUP_MESSAGES.ZERO_DIVISION;
+    } catch (e) {
+      switch (e.data?.category) {
+        case "wrongType":
+          error = POPUP_MESSAGES.INVALID_EXPRESSION;
+          break;
+        default:
+          error = e.message;
+      }
     }
 
-    actions.updateRepairError(repairError);
-    this.handleSubmit(repairError);
+    const result = {
+      value: costValue,
+      error: `[Cost Value] ${error}`,
+      passed: !error,
+    };
+    if (!result.passed) actions.updateRepairError(result.error);
+    return result;
+  }
+
+  testValidateRepair() {
+    const { actions } = this.props;
+    const cost = this.validateCostValue();
+    const reward = this.validateRewardValue();
+
+    if (!cost.passed || !reward.passed) {
+      const message = !reward.passed ? reward.error : cost.error;
+      actions.undoRepairChanges();
+      this.setPopupMessage(message);
+    } else {
+      actions.updateRepairEquation(reward.value, cost.value);
+      this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
+    }
+  }
+
+  setPopupMessage(message) {
+    const { actions } = this.props;
+    actions.updatePopup(message);
+    setTimeout(() => {
+      actions.updatePopup("");
+      actions.updateRepairError(null);
+    }, POPUP_DELAY);
   }
 
   handleSubmit(repairError) {
@@ -194,7 +258,7 @@ class Code extends Component {
           </div>
         </div>
         <button
-          onClick={this.validateRepair.bind(this)}
+          onClick={this.testValidateRepair.bind(this)}
           type="submit"
           className="button button--green button--block"
         >

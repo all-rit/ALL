@@ -1,12 +1,11 @@
 export const types = {
+  RESET_REPAIR: "@accessibility-lab/lab7/repair/reset_repair",
+  UNDO_REPAIR_CHANGES: "@accessibility-lab/lab7/repair/undo_repair_changes",
   UPDATE_REPAIR_EQUATION:
     "@accessibility-lab/lab7/repair/update_repair_equation",
   UPDATE_REWARD_VALUE: "@accessibility-lab/lab7/repair/update_reward_value",
   UPDATE_COST_VALUE: "@accessibility-lab/lab7/repair/update_cost_value",
-  UPDATE_REWARD_ERROR: "@accessibility-lab/lab7/repair/update_reward_error",
-  UPDATE_COST_ERROR: "@accessibility-lab/lab7/repair/update_cost_error",
   UPDATE_REPAIR_ERROR: "@accessibility-lab/lab7/repair/update_repair_error",
-  UPDATE_REPAIR_FORM: "@accessibility-lab/lab7/repair/update_repair_form",
   UPDATE_TAB: "@accessibility-lab/lab7/repair/update_tab",
   OPEN_REPAIR: "@accessibility-lab/lab7/repair/open_repair",
   CLOSE_REPAIR: "@accessibility-lab/lab7/repair/close_repair",
@@ -17,9 +16,7 @@ export const initialState = {
   rewardValue: null,
   costValue: null,
 
-  rewardError: null,
-  costError: null,
-  repairError: true,
+  repairError: null,
 
   repairVisible: false,
   changesApplied: false,
@@ -28,6 +25,15 @@ export const initialState = {
 
 const RepairReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.RESET_REPAIR:
+      return {
+        ...initialState,
+      };
+    case types.UNDO_REPAIR_CHANGES:
+      return {
+        ...state,
+        changesApplied: false,
+      };
     case types.UPDATE_REPAIR_EQUATION:
       return {
         ...state,
@@ -44,16 +50,6 @@ const RepairReducer = (state = initialState, action) => {
       return {
         ...state,
         costValue: action.costValue,
-      };
-    case types.UPDATE_REWARD_ERROR:
-      return {
-        ...state,
-        rewardError: action.rewardError,
-      };
-    case types.UPDATE_COST_ERROR:
-      return {
-        ...state,
-        costError: action.costError,
       };
     case types.UPDATE_REPAIR_ERROR:
       return {
@@ -88,6 +84,8 @@ const RepairReducer = (state = initialState, action) => {
 };
 
 export const actions = {
+  resetRepair: () => ({ type: types.RESET_REPAIR }),
+  undoRepairChanges: () => ({ type: types.UNDO_REPAIR_CHANGES }),
   updateRepairEquation: (rewardValue, costValue) => ({
     type: types.UPDATE_REPAIR_EQUATION,
     rewardValue,
@@ -100,14 +98,6 @@ export const actions = {
   updateCostValue: (costValue) => ({
     type: types.UPDATE_COST_VALUE,
     costValue,
-  }),
-  updateRewardError: (rewardError) => ({
-    type: types.UPDATE_REWARD_ERROR,
-    rewardError,
-  }),
-  updateCostError: (costError) => ({
-    type: types.UPDATE_COST_ERROR,
-    costError,
   }),
   updateRepairError: (repairError) => ({
     type: types.UPDATE_REPAIR_ERROR,

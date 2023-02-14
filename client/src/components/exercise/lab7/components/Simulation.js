@@ -302,7 +302,9 @@ class Simulation extends Component {
         <div className={"tw-flex tw-justify-between"}>
           {/* Round Tracker */}
           <div>
-            <h4 className="tw-font-bold">Round {data.roundNumber} of 10</h4>
+            <h4 className="tw-font-bold">
+              Round {data.roundNumber} of {ROUND_LIMIT}
+            </h4>
           </div>
           {/* Status Report */}
           <div className={"tw-flex tw-text-xl tw-m-[20px]"}>

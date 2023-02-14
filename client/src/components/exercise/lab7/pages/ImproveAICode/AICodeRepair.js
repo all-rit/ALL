@@ -4,12 +4,13 @@ import React, { Component, Fragment } from "react";
 import Popup from "../../../shared/Popup";
 import { navigate } from "@reach/router";
 import Code from "../../components/Code";
-import { LOCKED_FILE } from "../../../../../constants/lab7";
+import { LOCKED_FILE, OPEN_FILE } from "../../../../../constants/lab7";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as repairActions } from "../../../../../reducers/lab7/RepairReducer";
 import { actions as appActions } from "../../../../../reducers/lab7/AppReducer";
 import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
+import { evaluate } from "mathjs";
 
 class AICodeRepair extends Component {
   constructor(props) {
@@ -19,19 +20,40 @@ class AICodeRepair extends Component {
     };
   }
 
+  componentDidMount() {
+    this.reset();
+  }
+
+  reset() {
+    const { actions } = this.props;
+    actions.resetRepair();
+    actions.updatePopup("");
+  }
+
   handleNav() {
     const { actions } = this.props;
-    actions.updateMakeDecision(this.updateMakeDecision);
+    actions.updateMakeDecision(this.updateMakeDecision.bind(this));
     actions.reset();
     navigate("/Lab7/Exercise/ImprovedAISimulation");
   }
 
   updateMakeDecision(threatLvl, file) {
-    return LOCKED_FILE;
+    const { rewardValue, costValue } = this.props;
+    const utility = evaluate(`(${rewardValue}) / (${costValue})`, {
+      file,
+      threatLvl,
+    });
+    return utility >= 1 ? LOCKED_FILE : OPEN_FILE;
   }
 
   render() {
-    const { repairVisible, popupMessage, actions, repairError } = this.props;
+    const {
+      repairVisible,
+      popupMessage,
+      actions,
+      repairError,
+      changesApplied,
+    } = this.props;
     return (
       <div>
         <Fragment>
@@ -70,7 +92,7 @@ class AICodeRepair extends Component {
           className="btn btn-primary text-black btn-xl text-uppercase "
           onClick={this.handleNav.bind(this)}
           key="Next"
-          disabled={repairError}
+          disabled={!changesApplied}
         >
           Next
         </button>
@@ -82,14 +104,22 @@ class AICodeRepair extends Component {
 
 const mapStateToProps = (state) => {
   const { popupMessage } = state.app7;
-  const { repairError, repairVisible } = state.repair7;
-  return { popupMessage, repairError, repairVisible };
+  const { repairError, repairVisible, rewardValue, costValue, changesApplied } =
+    state.repair7;
+  return {
+    popupMessage,
+    repairError,
+    repairVisible,
+    rewardValue,
+    costValue,
+    changesApplied,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
-      { ...repairActions, ...appActions, ...exerciseActions },
+      { ...repairActions, ...exerciseActions, ...appActions },
       dispatch
     ),
   };

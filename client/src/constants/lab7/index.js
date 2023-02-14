@@ -12,9 +12,16 @@ export const FILE_PROTECTED = "FILE_PROTECTED";
 
 export const LAB_ID = 7;
 export const THREAT_MAX = 3;
-export const DELAY_TIME = 0;
-export const READ_TIME = 0;
+export const DELAY_TIME = 1500;
+export const READ_TIME = 15000;
 export const ROUND_LIMIT = 5;
+
+export const POPUP_MESSAGES = {
+  INVALID_EXPRESSION: "You must pass a valid expression.",
+  ZERO_DIVISION: "Zero division is not allowed.",
+  SUCCESS: "The repairs have successfully been implemented.",
+};
+export const POPUP_DELAY = 6000;
 
 export const BAD_AI_EXPLANATION = "BadAIExplanation";
 export const ALTERATION_START = "AlterationStart";
@@ -40,4 +47,11 @@ export const MESSAGES = {
     "Someone’s email address was stolen during the security breach. As a result of the breach, an identity thief was able to send the individual spam emails and sign up for accounts. This autonomous system decision-mistake caused a case of spam and phishing.",
   Perfect:
     "All files were correctly protected during the security breach! Bonus +50 points.",
+};
+
+export const FILE_FORMAT_VALIDATION = {
+  file: {
+    sensitivityLevel: 1,
+  },
+  threatLvl: 1,
 };
