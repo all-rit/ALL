@@ -129,12 +129,22 @@ const AIRepair = (props) => {
             <div className="code_editor__code">
               <div className="code_editor__line">
                 <span className="code_editor__line--darkgreen">
-                  &#47;&#47; Now lets make changes to the config and tell the AI
+                  &#47;&#47; Now lets make changes to the config and tell the AI to ignore appearance when making decisions.
                 </span>
               </div>
               <div className="code_editor__line">
                 <span className="code_editor__line--darkgreen">
-                  &#47;&#47; to ignore appearance when making decisions
+                  &#47;&#47; When the AI is analyzing a canidate each attribute is weighted differently. 
+                </span>
+              </div>
+              <div className="code_editor__line">
+                <span className="code_editor__line--darkgreen">
+                  &#47;&#47; When a criteria from an antribute is met its weight is added to a total.
+                </span>
+              </div>
+              <div className="code_editor__line">
+                <span className="code_editor__line--darkgreen">
+                  &#47;&#47; When the weighted values add up to 65% (13) of its total (20), the AI makes a reccomendation
                 </span>
               </div>
               <div className="code_editor__line">
@@ -142,7 +152,6 @@ const AIRepair = (props) => {
                   &#47;&#47; Note: the weighted values must add up to 20
                 </span>
               </div>
-              <br />
               {weightedValueError && (
                 <div className="code_editor__line">
                   <span className="form-error">
