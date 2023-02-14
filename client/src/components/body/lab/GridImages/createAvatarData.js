@@ -2,7 +2,6 @@
 /* eslint-disable require-jsdoc */
 
 const createAvatarData = (avatarNumber, weightedValues) => {
-  console.log(weightedValues);
   let appearanceWeight =
     weightedValues === undefined ? 7 : weightedValues?.appearance;
   let experienceWeight =

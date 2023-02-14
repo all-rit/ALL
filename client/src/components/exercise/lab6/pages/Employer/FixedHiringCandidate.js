@@ -19,6 +19,8 @@ const FixedHiringCandidate = (props) => {
 
   const [userData, setUserData] = useState(null);
 
+  const [numInput, setNumInput] = useState(0);
+
   const handleYes = () => {
     let roundCount = roundOfApplicants;
     let answers = userAnswers.slice();
@@ -30,6 +32,7 @@ const FixedHiringCandidate = (props) => {
     } else {
       setRoundOfApplicants(roundCount + 1);
       setModalActive(!isModalActive);
+      setNumInput(0);
     }
   };
 
@@ -55,7 +58,7 @@ const FixedHiringCandidate = (props) => {
   }, [user]);
 
   const handleContinue = () => {
-    if (selection.length > 0) {
+    if (numInput===4) {
       let nonRecommendedCount = 0;
       selection.map((answer) => {
         if (answer.ai === "No") {
@@ -75,6 +78,7 @@ const FixedHiringCandidate = (props) => {
         } else {
           let roundCount = roundOfApplicants;
           setRoundOfApplicants(roundCount + 1);
+          setNumInput(0);
         }
       }
     }
@@ -121,6 +125,8 @@ const FixedHiringCandidate = (props) => {
               setSelection={setSelection}
               weightedValues={userData}
               favorable
+              numInput={numInput}
+              setNumInput={setNumInput}
             />
           )}
           {roundOfApplicants === 1 && (
@@ -129,6 +135,8 @@ const FixedHiringCandidate = (props) => {
               setSelection={setSelection}
               weightedValues={userData}
               favorable
+              numInput={numInput}
+              setNumInput={setNumInput}
             />
           )}
           {roundOfApplicants === 2 && (
@@ -137,6 +145,8 @@ const FixedHiringCandidate = (props) => {
               numApplicants={4}
               weightedValues={userData}
               favorable
+              numInput={numInput}
+              setNumInput={setNumInput}
             />
           )}
           {roundOfApplicants === 3 && (
@@ -145,18 +155,21 @@ const FixedHiringCandidate = (props) => {
               setSelection={setSelection}
               weightedValues={userData}
               favorable
+              numInput={numInput}
+              setNumInput={setNumInput}
             />
           )}
         </>
       )}
-
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleContinue}
-        key="confirm"
-      >
-        {roundOfApplicants < 3 ? "Confirm" : "Confirm --- Continue"}
-      </button>
+      {numInput===4 && (
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase "
+          onClick={handleContinue}
+          key="confirm"
+        >
+          {roundOfApplicants < 3 ? "Confirm" : "Confirm --- Continue"}
+        </button>
+      )}
     </div>
   );
 };

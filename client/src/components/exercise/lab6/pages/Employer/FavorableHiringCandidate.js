@@ -8,7 +8,6 @@ import Recomendation from "../../components/Recomendation";
 
 const FavorableHiringCandidate = (props) => {
   const { actions } = props;
-  const { type, gender, age, years, availability, pay, ai } = props;
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
