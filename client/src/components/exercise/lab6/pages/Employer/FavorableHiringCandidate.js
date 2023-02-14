@@ -34,7 +34,8 @@ const FavorableHiringCandidate = (props) => {
           This is an example of a prime candidate that should be hired!
         </h2>
         <div className="playthrough__sentence">
-          Select the &quot;HIRE&quot; or &quot;REJECT&quot; toggle to make a decision and &quot;Continue&quot; the process.
+          Select the &quot;HIRE&quot; or &quot;REJECT&quot; toggle to make a
+          decision and &quot;Continue&quot; the process.
         </div>
 
         <div className="gridApplicants tw-inline-flex">
@@ -77,18 +78,18 @@ const FavorableHiringCandidate = (props) => {
               <li className="tw-p-4">$25-32/hr</li>
             </ul>
             <li>
-                <Decision
-                  id={1}
-                  primary="HIRE"
-                  secondary="REJECT"
-                  handleInput={()=>{}}
-                  incrementInput={incrementNumInput}
-                />
-              </li>
+              <Decision
+                id={1}
+                primary="HIRE"
+                secondary="REJECT"
+                handleInput={() => {}}
+                incrementInput={incrementNumInput}
+              />
+            </li>
           </ul>
         </div>
       </div>
-      {numInput>0 && (
+      {numInput > 0 && (
         <button
           className="btn btn-primary text-black btn-xl text-uppercase "
           onClick={handleStart}
@@ -97,7 +98,6 @@ const FavorableHiringCandidate = (props) => {
           Continue
         </button>
       )}
-      
     </>
   );
 };

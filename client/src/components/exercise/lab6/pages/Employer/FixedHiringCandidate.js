@@ -88,7 +88,8 @@ const FixedHiringCandidate = (props) => {
     <div className="center-div">
       <h2 className="playthrough__title">REPAIRED: Choose A Candidate</h2>
       <h2 className="cognitive_instructions">
-        Select the &quot;HIRE&quot; or &quot;REJECT&quot; toggle to make a decision for each candidate and &quot;Continue&quot; the process.
+        Select the &quot;HIRE&quot; or &quot;REJECT&quot; toggle to make a
+        decision for each candidate and &quot;Continue&quot; the process.
       </h2>
       <h2 className="cognitive_instructions">
         Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”
