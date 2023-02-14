@@ -1,13 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import LongHorizontalLine from "../../../../../common/HorizontalLine/LongHorizontalLine";
 import Recomendation from "../../components/Recomendation";
+import Decision from "../../components/Decision";
 
 const FavorableHiringCandidate = (props) => {
   const { actions } = props;
+  const [numInput, setNumInput] = useState(0);
+  const incrementNumInput = () => {
+    setNumInput(numInput + 1);
+  };
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
@@ -29,7 +34,7 @@ const FavorableHiringCandidate = (props) => {
           This is an example of a prime candidate that should be hired!
         </h2>
         <div className="playthrough__sentence">
-          Click the “Continue” button to begin the second half of this exercise!
+          Select the &quot;HIRE&quot; or &quot;REJECT&quot; toggle to make a decision and &quot;Continue&quot; the process.
         </div>
 
         <div className="gridApplicants tw-inline-flex">
@@ -42,6 +47,9 @@ const FavorableHiringCandidate = (props) => {
               <li className="tw-p-4">Availability</li>
               <li className="tw-p-4">Pay</li>
             </ul>
+            <div className="tw-p-4 tw-font-bold">
+              {`${numInput} of 1 choices`}
+            </div>
           </div>
 
           {/*Don't change className because styling changes*/}
@@ -68,17 +76,28 @@ const FavorableHiringCandidate = (props) => {
               <LongHorizontalLine></LongHorizontalLine>
               <li className="tw-p-4">$25-32/hr</li>
             </ul>
+            <li>
+                <Decision
+                  id={1}
+                  primary="HIRE"
+                  secondary="REJECT"
+                  handleInput={()=>{}}
+                  incrementInput={incrementNumInput}
+                />
+              </li>
           </ul>
         </div>
       </div>
-
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleStart}
-        key="start"
-      >
-        Continue
-      </button>
+      {numInput>0 && (
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase "
+          onClick={handleStart}
+          key="start"
+        >
+          Continue
+        </button>
+      )}
+      
     </>
   );
 };

@@ -79,7 +79,7 @@ const HiringCandidate = (props) => {
     <div className="center-div">
       <h2 className="playthrough__title">Choose your first Candidate!</h2>
       <h2 className="cognitive_instructions">
-        Click on their picture to select
+      Select the &quot;HIRE&quot; or &quot;REJECT&quot; toggle to make a decision for each candidate and &quot;Continue&quot; the process.
       </h2>
       <h2 className="cognitive_instructions">
         Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”
