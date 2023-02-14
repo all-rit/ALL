@@ -276,6 +276,11 @@ li {
     color: black;
     font-weight: 600;
     text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+    &:hover,
+    &:focus {
+      transform: scale(1.15);
+    }
   }
 
   &__radio label,
@@ -341,15 +346,6 @@ li {
     align-items: center;
     justify-content: left;
     backdrop-filter: blur(10px);
-    transition: 0.5s ease-in-out;
-    &:hover,
-    :focus {
-      transform: scale(1.05);
-      > .recommendation__img {
-        transition: 0.5s ease-in-out;
-        background: linear-gradient(#9198e5, #712020);
-      }
-    }
   }
   &__img {
     width: 40px;
@@ -359,7 +355,7 @@ li {
     font-weight: 750;
     border-radius: 10px;
     color: white;
-    background: linear-gradient(#d7cfcf, #9198e5);
+    background: linear-gradient(#9198e5, #712020);
   }
   &__textBox {
     width: calc(100% - 190px);
