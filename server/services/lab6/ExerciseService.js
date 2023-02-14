@@ -81,7 +81,6 @@ exports.submitAIAnalysisQuestion = (data) => {
 };
 
 exports.submitHiredCanidates = (data) => {
-  console.log('\n\n\n\n\n\n\n\n\n\n', data);
   if (data.usersessionid) {
     return db.ExerciseLab6.findOne({
       where:
@@ -109,7 +108,6 @@ exports.submitHiredCanidates = (data) => {
 };
 
 exports.submitAIReasoningQuestion = (data) => {
-  console.log('\n\n\n\n\n\n\n\n\n\n', data);
   if (data.usersessionid) {
     return db.ExerciseLab6.findOne({
       where:

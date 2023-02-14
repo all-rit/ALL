@@ -21,6 +21,8 @@ const HiringCandidate = (props) => {
   //default of modal set
   const [isModalActive, setModalActive] = useState(false);
 
+  const [numInput, setNumInput] = useState(0);
+
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, [actions]);
@@ -36,6 +38,7 @@ const HiringCandidate = (props) => {
     } else {
       setRoundOfApplicants(roundCount + 1);
       setModalActive(!isModalActive);
+      setNumInput(0);
     }
   };
 
@@ -46,7 +49,7 @@ const HiringCandidate = (props) => {
   };
 
   const handleContinue = () => {
-    if (selection.length > 0) {
+    if (numInput === 4) {
       let nonRecommendedCount = 0;
       selection.map((answer) => {
         if (answer.ai === "No") {
@@ -66,6 +69,7 @@ const HiringCandidate = (props) => {
         } else {
           let roundCount = roundOfApplicants;
           setRoundOfApplicants(roundCount + 1);
+          setNumInput(0);
         }
       }
     }
@@ -90,7 +94,7 @@ const HiringCandidate = (props) => {
         <ModalBody>
           <div className="tw-p-5 tw-text-center">
             <h3>
-              Are you sure you wish to select this avatar? The AI advises
+              Are you sure you wish to select this candidate? The AI advises
               against it.
             </h3>
           </div>
@@ -106,26 +110,50 @@ const HiringCandidate = (props) => {
       </Modal>
 
       {roundOfApplicants === 0 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} />
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          favorable
+          numInput={numInput}
+          setNumInput={setNumInput}
+        />
       )}
       {roundOfApplicants === 1 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} />
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          favorable
+          numInput={numInput}
+          setNumInput={setNumInput}
+        />
       )}
       {roundOfApplicants === 2 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} />
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          favorable
+          numInput={numInput}
+          setNumInput={setNumInput}
+        />
       )}
       {roundOfApplicants === 3 && (
-        <GridApplicants numApplicants={4} setSelection={setSelection} />
+        <GridApplicants
+          numApplicants={4}
+          setSelection={setSelection}
+          favorable
+          numInput={numInput}
+          setNumInput={setNumInput}
+        />
       )}
-
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleContinue}
-        key="confirm"
-      >
-        {" "}
-        Continue
-      </button>
+      {numInput === 4 && (
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase "
+          onClick={handleContinue}
+          key="confirm"
+        >
+          {roundOfApplicants < 3 ? "Confirm" : "Confirm --- Continue"}
+        </button>
+      )}
     </div>
   );
 };

@@ -326,6 +326,7 @@ li {
 }
 
 .candidate__image {
+  background-color: #e4e4e4;
   height: 10rem;
   border-radius: 20px 20px 0 0;
   width: 10rem;

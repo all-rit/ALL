@@ -1,294 +1,313 @@
-/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+/* eslint-disable require-jsdoc */
 import { navigate } from "@reach/router";
+import React, { useEffect, useState } from "react";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
-import "../../../../../components/quiz/App.css";
-import ReactDOM from "react-dom";
+import RepairService from "../../../../../services/lab6/RepairService";
+import CodeUpdateHeader from "../../../lab3/components/CodeUpdateHeader";
+import Popup from "../../../shared/Popup";
 
-import Applicant from "../../components/Applicant";
+const AIRepair = (props) => {
+  const { actions, user } = props;
 
-// const AIRepair = (props) =>{
-//     const {actions} = props;
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, [actions]);
 
-//     useEffect(()=>{
-//         actions.updateState(EXERCISE_PLAYING)
-//     },[actions]);
+  const [repairOpen, setRepairOpen] = useState(false);
+  const [popUpMessage, setPopUpMessage] = useState("");
+  const [appearanceValue, setAppearanceValue] = useState(7);
+  const [experienceValue, setExperienceValue] = useState(6);
+  const [availabilityValue, setAvailabilityValue] = useState(4);
+  const [payValue, setPayValue] = useState(3);
+  const [userError, setUserError] = useState(true);
+  const [appearanceValueError, setAppearanceValueError] = useState(false);
+  const [experienceValueError, setExperienceValueError] = useState(false);
+  const [availabilityValueError, setAvailabilityValueError] = useState(false);
+  const [payValueError, setPayValueError] = useState(false);
+  const [weightedValueError, setWeightedValueError] = useState(false);
 
-const handleStart = () => {
-  navigate("/Lab6/Exercise/FixedHiringCandidate");
-};
+  const popUpHandler = (message) => {
+    setPopUpMessage(message);
+  };
 
-//using dirask create dynamic editable table post to then edit to only allow one column to be editable
-//link: https://dirask.com/posts/React-create-dynamic-editable-table-DNKArp
+  const validateRepair = () => {
+    let error = false;
+    let weightedValues =
+      parseInt(appearanceValue) +
+      parseInt(experienceValue) +
+      parseInt(payValue) +
+      parseInt(availabilityValue);
+    if (weightedValues !== 20) {
+      setWeightedValueError(true);
+      error = true;
+    }
+    if (parseInt(appearanceValue) !== 0) {
+      setAppearanceValueError(true);
+      error = true;
+    } else {
+      setAppearanceValueError(false);
+    }
+    if (parseInt(experienceValue) <= 0) {
+      setExperienceValueError(true);
+      error = true;
+    } else {
+      setExperienceValueError(false);
+    }
+    if (parseInt(payValue) <= 0) {
+      setPayValueError(true);
+      error = true;
+    } else {
+      setPayValueError(false);
+    }
+    if (parseInt(availabilityValue) <= 0) {
+      setAvailabilityValueError(true);
+      error = true;
+    } else {
+      setAvailabilityValueError(false);
+    }
+    if (!error) {
+      setUserError(false);
+      RepairService.submitRepair(
+        user?.userid,
+        appearanceValue,
+        experienceValue,
+        availabilityValue,
+        payValue
+      );
+      setRepairOpen(false);
+      popUpHandler("The repairs have been made.");
+    } else {
+      setUserError(true);
+      popUpHandler("Errors in Repair. Please fix");
+    }
+  };
 
-const itemStyle = {
-  padding: "0px",
-  position: "relative",
-  height: "26px",
-  display: "flex",
-  alignItems: "center",
-};
-
-const textStyle = {
-  ...itemStyle,
-  padding: "0px 4px",
-  height: "26px",
-  fontFamily: "Arial",
-  fontSize: "13px",
-};
-
-const inputStyle = {
-  padding: "0",
-  position: "absolute",
-  left: "2px",
-  top: "2px",
-  right: "45px",
-  bottom: "2px",
-  minWidth: "20px",
-  fontFamily: "Arial",
-  fontSize: "13px",
-};
-
-const buttonStyle = {
-  position: "absolute",
-  top: "0px",
-  right: "2px",
-  bottom: "0px",
-  width: "40px",
-};
-
-const Cell = React.memo(({ value, mode, onChange }) => {
-  const [localMode, setLocalMode] = React.useState(mode ?? "read");
-  const [localValue, setLocalValue] = React.useState(value ?? " ");
-  React.useEffect(() => setLocalMode(mode ?? "read"), [mode]);
-  React.useEffect(() => setLocalValue(value ?? ""), [value]);
-  if (localMode === "edit") {
-    const handleInputChange = (e) => setLocalValue(e.target.value);
-    const handleSaveClick = () => {
-      setLocalMode("read");
-      onChange?.(localValue);
-    };
-    return (
-      <div style={itemStyle}>
-        <input
-          type="text"
-          value={localValue}
-          style={inputStyle}
-          onChange={handleInputChange}
-        />
-        <button style={buttonStyle} onClick={handleSaveClick}>
-          Ok
-        </button>
-      </div>
-    );
-  }
-  if (localMode === "read") {
-    const handleEditClick = () => {
-      setLocalMode("edit");
-    };
-    return (
-      <div style={textStyle} onClick={handleEditClick}>
-        {localValue}
-      </div>
-    );
-  }
-  return null;
-});
-
-const tdStyle = {
-  padding: "1px",
-  border: "1px solid black",
-};
-
-const optionStyle = {
-  ...tdStyle,
-  padding: "2px 2px",
-  width: "30px",
-};
-
-// recheck this part for tomorrow
-
-const Row = React.memo(({ mode, columns, data, onChange }) => {
-  return (
-    <tr>
-      {columns.map(({ path }, columnIndex) => {
-        const handleChange = (value) => {
-          if (onChange) {
-            const changedData = { ...data, [path]: value };
-            onChange(columnIndex, changedData);
-          }
-        };
-        return (
-          <td key={path} style={tdStyle}>
-            <Cell mode={mode} value={data[path]} onChange={handleChange} />
-          </td>
-        );
-      })}
-    </tr>
-  );
-});
-
-const tableStyle = {
-  border: "1px solid black",
-  borderCollapse: "collapse",
-  width: "100%",
-  backgroundColor: "grey",
-};
-
-const Table = React.memo(({ id, columns, data, onChange }) => {
-  const [addedIndex, setAddedIndex] = React.useState();
-
-  return (
-    <>
-      <h2 className="playthrough__title">Repair the AI</h2>
-      <div className="center-div">
-        <div className="playthrough__sentence">
-          Select row, adjust inclusion of attribute, then adjust weight to
-          determine how significant each attribute is to AI selection.
-        </div>
-      </div>
-
-      <div>
-        <table style={tableStyle}>
-          <tbody>
-            <tr>
-              {columns.map(({ path, name }) => (
-                <th key={path} style={tdStyle}>
-                  {name}
-                </th>
-              ))}
-            </tr>
-            {data.map((rowData, rowIndex) => {
-              const handleChange = (columnIndex, changedData) => {
-                onChange?.(rowIndex, columnIndex, changedData);
-              };
-
-              return (
-                <Row
-                  key={rowData[id]}
-                  mode={addedIndex === rowIndex ? "edit" : "read"}
-                  columns={columns}
-                  data={rowData}
-                  onChange={handleChange}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-        <br />
-      </div>
-
-      <button
-        className="btn btn-second btn-xl text-uppercase"
-        onClick={handleStart}
-        key="start"
-      >
-        Redo With Repair
-      </button>
-    </>
-  );
-});
-
-const appendItem = (updater, item) => {
-  updater((array) => array.concat(item));
-};
-
-const replaceItem = (updater, index, item) => {
-  updater((array) => array.map((value, i) => (i === index ? item : value)));
-};
-
-const deleteItem = (updater, index) => {
-  updater((array) => array.filter((value, i) => i !== index));
-};
-
-const columns = [
-  { path: "id", name: "Characteristic" },
-  { path: "inclusion", name: "Inclusion" },
-  { path: "weight", name: "Weight (1-10):" },
-];
-
-let counter = 0;
-
-//need to add a if case to make sure number inputted remains between 1 and 10
-
-const AIRepair = () => {
-  const [data, setData] = React.useState(() => [
-    { id: "Gender", inclusion: "No", weight: "X" },
-    { id: "Years of Experience", inclusion: "No", weight: "X" },
-    { id: "Availability", inclusion: "Yes", weight: 2 },
-    { id: "Salary", inclusion: "Yes", weight: 2 },
-    { id: "Age", inclusion: "No", weight: "X" },
-    { id: "Appearance", inclusion: "Yes", weight: 6 },
-  ]);
-
-  const handleChange = (rowIndex, columnIndex, changedRowData) => {
-    replaceItem(setData, rowIndex, changedRowData);
-    const changedRowJson = JSON.stringify(changedRowData, null, 4);
-    console.log("Changed row");
+  const handleContine = () => {
+    navigate("/Lab6/Exercise/FixedHiringCandidate");
   };
 
   return (
     <div>
-      <Table id="id" columns={columns} data={data} onChange={handleChange} />
+      <CodeUpdateHeader
+        heading={"Make Config Changes"}
+        justifyAlignment={"space-between"}
+      />
+      <div className="cognitive_instructions margin-bottom-2">
+        Let&apos;s adjust the AI&apos;s configuration to allow for a more
+        equitable hiring process.
+        <br />
+        Click &rsquo;Repair&rsquo; to make the appropriate changes.
+      </div>
+      <Popup message={popUpMessage} handler={popUpHandler} error={userError} />
+
+      <button
+        className="btn btn-second btn-xl text-uppercase  leftButton"
+        onClick={() => {
+          !repairOpen ? setRepairOpen(true) : "";
+        }}
+        key="repair"
+      >
+        Repair
+      </button>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase "
+        onClick={handleContine}
+        key="Next"
+        disabled={userError}
+      >
+        Next
+      </button>
+      {repairOpen && (
+        <div className="code_editor">
+          <div className="code_editor__content">
+            <div className="code_editor__files">
+              <div className="code_editor__file code_editor__file--active">
+                hiringAIConfig.json
+              </div>
+            </div>
+            <div className="code_editor__code">
+              <div className="code_editor__line">
+                <span className="code_editor__line--darkgreen">
+                  &#47;&#47; Now lets make changes to the config and tell the AI
+                </span>
+              </div>
+              <div className="code_editor__line">
+                <span className="code_editor__line--darkgreen">
+                  &#47;&#47; to ignore appearance when making decisions
+                </span>
+              </div>
+              <div className="code_editor__line">
+                <span className="code_editor__line--darkgreen">
+                  &#47;&#47; Note: the weighted values must add up to 20
+                </span>
+              </div>
+              <br />
+              {weightedValueError && (
+                <div className="code_editor__line">
+                  <span className="form-error">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {"Weighted values must add up to 20"}
+                  </span>
+                </div>
+              )}
+              <div className="code_editor__line">
+                <span className="code_editor__const">const </span>
+                <span className="code_editor__json">hiringAIConfig </span>
+                <span>= </span>
+                <span className="code_editor__class">{"{"}</span>
+              </div>
+              <div className="code_editor__form">
+                <div className="code_editor__line">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span className="code_editor__line--darkgreen">
+                    &#47;&#47; Make changes to appearanceWeight it is
+                    unequitable unless its 0
+                  </span>
+                </div>
+                <div className="code_editor__json_value code_editor__line-background--light">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>appearanceWeight:&nbsp;</span>
+                  <span>
+                    <input
+                      name="appearanceweight"
+                      type="text"
+                      defaultValue={7}
+                      onChange={(e) => {
+                        setAppearanceValue(e.target.value);
+                      }}
+                      title={`appearance weight`}
+                      className={appearanceValueError ? "form-error-input" : ""}
+                    />
+                  </span>
+                  {appearanceValueError && (
+                    <div className="code_editor__line">
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"appearanceWeight must be 0 to be equitable"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="code_editor__form">
+                <div className="code_editor__line">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span className="code_editor__line--darkgreen">
+                    &#47;&#47; Adjust the experienceWeight to change the way the
+                    AI evaluates candidates
+                  </span>
+                </div>
+                <div className="code_editor__json_value code_editor__line-background--light">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>experienceWeight:&nbsp;</span>
+                  <span>
+                    <input
+                      name="experienceweight"
+                      type="text"
+                      defaultValue={6}
+                      onChange={(e) => {
+                        setExperienceValue(e.target.value);
+                      }}
+                      title={`experience weight`}
+                      className={experienceValueError ? "form-error-input" : ""}
+                    />
+                  </span>
+                  {experienceValueError && (
+                    <div className="code_editor__line">
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"experienceWeight must be greater than 0"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="code_editor__form">
+                <div className="code_editor__line">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span className="code_editor__line--darkgreen">
+                    &#47;&#47; Adjust the availabilityWeight to change the way
+                    the AI evaluates candidates
+                  </span>
+                </div>
+                <div className="code_editor__json_value code_editor__line-background--light">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>availabilityWeight:&nbsp;</span>
+                  <span>
+                    <input
+                      name="availabilityweight"
+                      type="text"
+                      defaultValue={4}
+                      onChange={(e) => {
+                        setAvailabilityValue(e.target.value);
+                      }}
+                      title={`availability weight`}
+                      className={
+                        availabilityValueError ? "form-error-input" : ""
+                      }
+                    />
+                  </span>
+                  {availabilityValueError && (
+                    <div className="code_editor__line">
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"availabilityWeight must be greater than 0"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="code_editor__form">
+                <div className="code_editor__line">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span className="code_editor__line--darkgreen">
+                    &#47;&#47; Adjust the expectedpayWeight to change the way
+                    the AI evaluates candidates
+                  </span>
+                </div>
+                <div className="code_editor__json_value code_editor__line-background--light">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>expectedpayWeight:&nbsp;</span>
+                  <span>
+                    <input
+                      name="expectedpayweight"
+                      type="text"
+                      defaultValue={3}
+                      onChange={(e) => {
+                        setPayValue(e.target.value);
+                      }}
+                      title={`expected pay weight`}
+                      className={payValueError ? "form-error-input" : ""}
+                    />
+                  </span>
+                  {payValueError && (
+                    <div className="code_editor__line">
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"expectedpayWeight must be greater than 0"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="code_editor__line">
+                <span className="code_editor__class">{"}"}</span>
+                <span>{";"}</span>
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={validateRepair}
+            type="submit"
+            className="button button--green button--block"
+          >
+            Update
+          </button>
+        </div>
+      )}
     </div>
   );
 };
 
-//now only change characteristic col to not be adjustable
-//Also add redo with repair button- yes
-//Then add header above the table- yes
-
 export default AIRepair;
-
-//     const data = [
-//         {Characteristic: " ", Inclusion: " ", Weight: " "},
-//         {Characteristic: "Gender", Inclusion: "No",  Weight: "X"},
-//         {Characteristic: "Years of Experience", Inclusion: "No", Weight: "X"},
-//         {Characteristic: "Availability", Inclusion: "Yes", Weight: "2/10"},
-//         {Characteristic: "Salary", Inclusion: "Yes", Weight: "2/10"},
-//         {Characteristic: "Age", Inclusion: "No", Weight: "X"},
-//         {Characteristic: "Appearance", Inclusion: "Yes", Weight: "6/10"},
-//         ]
-
-//     return(
-//         <div className="center-div">
-//             <h2 class="playthrough__title">Repair the AI</h2>
-//             <div className="center-div">
-//             <div className="playthrough__sentence">
-//             Select row, adjust inclusion of attribute, then adjust weight to determine how significant each attribute is to AI selection.
-//             </div>
-//         </div>
-
-//         <div className= "App">
-//             <table>
-//                 <thead>
-//                     <tr>
-//                         <th>Characteristic</th>
-//                         <th>Inclusion</th>
-//                         <th>Weight</th>
-//                     </tr>
-//                 </thead>
-//                 {data.map((val, key) => {
-//                     return (
-//                     <tr key={key}>
-//                         <td>{val.Characteristic}</td>
-//                         <td>{val.Inclusion}</td>
-//                         <td>{val.Weight}</td>
-//                     </tr>
-//                 )
-//             })}
-//             </table>
-//             </div>
-
-//             <button
-//                 className="btn btn-primary text-black btn-xl text-uppercase "
-//                 onClick = {handleStart}
-//                 key="start"
-//             >
-//                 Redo With Repair
-//             </button>
-//       </div>
-//     );
-// }

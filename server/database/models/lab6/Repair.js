@@ -8,14 +8,20 @@ module.exports = (sequelize, DataTypes) => {
           primaryKey: true,
           autoIncrement: true,
         },
-        usersessionid: {
-          type: DataTypes.BIGINT,
+        userid: {
+          type: DataTypes.INTEGER,
         },
-        activity: {
-          type: DataTypes.STRING,
+        appearance: {
+          type: DataTypes.INTEGER,
         },
-        repair: {
-          type: DataTypes.STRING,
+        yearsexperience: {
+          type: DataTypes.INTEGER,
+        },
+        availability: {
+          type: DataTypes.INTEGER,
+        },
+        expectedpay: {
+          type: DataTypes.INTEGER,
         },
       },
       {tableName: 'lab6_repair'},

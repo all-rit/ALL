@@ -154,7 +154,6 @@ li {
   border-top: 1px solid #d9d9d9 !important;
 }
 .candidate {
-  //    margin-top: 10.35rem;
   &__form__group {
     padding-left: 0;
   }
@@ -171,10 +170,15 @@ li {
   }
   &__image {
     height: 10rem;
+    background-color: #e4e4e4;
     border-radius: 20px 20px 0 0;
-    width: 10rem;
+    width: 9.5rem;
     background-size: 200px;
     background-position: center;
+  }
+  &__image_container {
+    background-color: #e4e4e4;
+    border-radius: 20px 20px 0 0;
   }
   &__row {
     display: flex;
@@ -241,56 +245,167 @@ li {
   align-items: center;
 }
 
+.decision {
+  display: flex;
+  justify-content: center;
+
+  fieldset {
+    margin: 10px 5px 0px 5px;
+    border: #484848;
+    border-style: solid;
+    border-radius: 20px;
+    background-color: #e4e4e4;
+  }
+
+  /* Hide default radio */
+  &__radio input[type="radio"] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  /* Customizing label */
+  &__radio label {
+    margin: 0;
+    position: relative;
+    padding: 5px 15px 5px 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__radio label,
+  .radio label::before {
+    -webkit-transition: 0.25s all ease;
+    transition: 0.25s all ease;
+  }
+
+  /* Checked toggle */
+  &__radio input[type="radio"] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+    z-index: -1;
+    + label::before {
+      border-radius: 1em;
+    }
+    &:checked + .primary {
+      background-color: #a1ffb7;
+      color: #0c3515;
+      z-index: 1;
+    }
+    &:checked + .secondary {
+      background-color: #a05c62;
+      color: #fff562;
+      z-index: 1;
+    }
+    &:checked + label {
+      padding: 5px 15px 5px 15px;
+    }
+  }
+  &__radio label {
+    position: relative;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  &__radio label,
+  .radio label::before {
+    -webkit-transition: 0.25s all ease;
+    transition: 0.25s all ease;
+  }
+  &__radio:hover input[type="radio"]:checked + label {
+    -webkit-box-shadow: #48484843 0px 0px 0px 5px;
+    box-shadow: #48484843 0px 0px 0px 5px;
+  }
+}
+
+.recommendation {
+  padding: 10px;
+
+  &__card {
+    width: 100%;
+    max-width: 150px;
+    height: 60px;
+    background: #353535;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    backdrop-filter: blur(10px);
+    transition: 0.5s ease-in-out;
+    &:hover,
+    :focus {
+      transform: scale(1.05);
+      > .recommendation__img {
+        transition: 0.5s ease-in-out;
+        background: linear-gradient(#9198e5, #712020);
+      }
+    }
+  }
+  &__img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    font-size: 1.6rem;
+    font-weight: 750;
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(#d7cfcf, #9198e5);
+  }
+  &__textBox {
+    width: calc(100% - 190px);
+    margin-left: 10px;
+    color: white;
+    font-family: "Poppins" sans-serif;
+  }
+  &__textContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__span {
+    font-size: 10px;
+  }
+  &__title {
+    color: black;
+    font-size: 16px;
+    padding: 5px;
+    font-weight: bold;
+  }
+  &__title_reject {
+    color: #fff562;
+    margin-left: -5px;
+  }
+  &__title_hire {
+    color: #0c3515;
+  }
+  &__reject {
+    background-color: #a05c62;
+  }
+  &__hire {
+    background-color: #a1ffb7;
+  }
+  &__desc {
+    font-size: 12px;
+    font-weight: lighter;
+  }
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
-  }
-}
-
-.candidate {
-  //    margin-top: 10.35rem;
-  &__form__group {
-    padding-left: 0;
-  }
-  &__key__container {
-    margin-top: 10.05rem;
-    display: flex;
-    padding: 2px;
-    background-color: #3d3d3d;
-    color: white;
-  }
-  &__key__col {
-    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-    width: 10rem;
-  }
-  &__image {
-    height: 10rem;
-    border-radius: 20px 20px 0 0;
-    width: 10rem;
-    background-size: 200px;
-    background-position: center;
-  }
-  &__row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 25px;
-  }
-  &__container {
-    display: flex;
-    padding: 3px;
-  }
-  &__col {
-    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-    border-radius: 20px 20px 0 0;
-    width: 10rem;
-  }
-  &__data {
-    padding: 10px;
   }
 }
 
