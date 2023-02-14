@@ -148,7 +148,7 @@ const AIRepair = (props) => {
               <div className="code_editor__line">
                 <span className="code_editor__line--darkgreen">
                   &#47;&#47; When the weighted values add up to 65% (13) of its
-                  total (20), the AI makes a reccomendation
+                  total (20), the AI makes a recommendation
                 </span>
               </div>
               <div className="code_editor__line">
