@@ -278,9 +278,10 @@ li {
     text-transform: uppercase;
   }
 
-  &__radio label, .radio label::before {
-    -webkit-transition: .25s all ease;
-    transition: .25s all ease;
+  &__radio label,
+  .radio label::before {
+    -webkit-transition: 0.25s all ease;
+    transition: 0.25s all ease;
   }
 
   /* Checked toggle */
@@ -316,16 +317,16 @@ li {
     font-weight: 600;
     text-transform: uppercase;
   }
-  &__radio label, .radio label::before {
-    -webkit-transition: .25s all ease;
-    transition: .25s all ease;
+  &__radio label,
+  .radio label::before {
+    -webkit-transition: 0.25s all ease;
+    transition: 0.25s all ease;
   }
   &__radio:hover input[type="radio"]:checked + label {
     -webkit-box-shadow: #48484843 0px 0px 0px 5px;
     box-shadow: #48484843 0px 0px 0px 5px;
   }
 }
-
 
 .recommendation {
   padding: 10px;

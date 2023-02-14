@@ -49,7 +49,7 @@ const HiringCandidate = (props) => {
   };
 
   const handleContinue = () => {
-    if (numInput===4) {
+    if (numInput === 4) {
       let nonRecommendedCount = 0;
       selection.map((answer) => {
         if (answer.ai === "No") {
@@ -145,7 +145,7 @@ const HiringCandidate = (props) => {
           setNumInput={setNumInput}
         />
       )}
-      {numInput===4 && (
+      {numInput === 4 && (
         <button
           className="btn btn-primary text-black btn-xl text-uppercase "
           onClick={handleContinue}
@@ -153,8 +153,7 @@ const HiringCandidate = (props) => {
         >
           {roundOfApplicants < 3 ? "Confirm" : "Confirm --- Continue"}
         </button>
-      )
-      }
+      )}
     </div>
   );
 };
