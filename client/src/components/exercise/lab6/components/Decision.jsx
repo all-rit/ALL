@@ -11,21 +11,20 @@ const Decision = (props) => {
   return (
     <div className="decision">
       <fieldset id={id} className="decision__radio">
-        <input         
-            name={`${id}switch`} id={`${id}on`} type="radio" />
+        <input name={`${id}switch`} id={`${id}on`} type="radio" />
         <label
           tabIndex={"0"}
           alt={primary}
           onKeyPress={() => {
             document.getElementById(`${id}on`).click();
             if (!hasInput) {
-                setHasInput(true);
-                incrementInput();
-              }
-              setToggle(true);
-              if (!toggle) {
-                handleInput(id);
-              }
+              setHasInput(true);
+              incrementInput();
+            }
+            setToggle(true);
+            if (!toggle) {
+              handleInput(id);
+            }
           }}
           onClick={() => {
             if (!hasInput) {
@@ -49,13 +48,13 @@ const Decision = (props) => {
           onKeyPress={() => {
             document.getElementById(`${id}off`).click();
             if (!hasInput) {
-                setHasInput(true);
-                incrementInput();
-              }
-              if (toggle) {
-                handleInput(id);
-              }
-              setToggle(false);
+              setHasInput(true);
+              incrementInput();
+            }
+            if (toggle) {
+              handleInput(id);
+            }
+            setToggle(false);
           }}
           onClick={() => {
             if (!hasInput) {
