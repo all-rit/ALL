@@ -11,6 +11,7 @@ import quizQuestionsLab2 from "./api/Lab2/quizQuestions";
 import quizQuestionsLab3 from "./api/Lab3/quizQuestions";
 import quizQuestionsLab4 from "./api/Lab4/quizQuestions";
 import quizQuestionsLab5 from "./api/Lab5/quizQuestions";
+import alterationQuizQuestions from "./api/Lab7/alterationQuizQuestions";
 import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 import "./App.css";
@@ -19,7 +20,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import quizQuestionsLab7 from "./api/Lab7/quizQuestions";
-import alterationQuizQuestions from "./api/Lab7/alterationQuizQuestions";
+import { EXERCISE_IDLE } from "../../constants/lab7";
 
 function initializeReactGA() {
   if (process.env.NODE_ENV === "production") {
@@ -267,6 +268,9 @@ class App extends Component {
       );
     }
     this.setState({ result: result });
+    if (this.props.updateStateFunc !== undefined) {
+      this.props.updateStateFunc(EXERCISE_IDLE);
+    }
   }
 
   getJsonResults() {
@@ -327,6 +331,7 @@ class App extends Component {
   renderResult() {
     return (
       <Result
+        hideCertificate={this.props.hideCertificate}
         quizResult={this.state.result}
         quizScore={this.state.myCount}
         selectedAnswers={this.state.selectedAnswers}

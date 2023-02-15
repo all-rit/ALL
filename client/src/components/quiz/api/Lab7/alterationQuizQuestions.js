@@ -4,20 +4,24 @@ const alterationQuizQuestions = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "This equation improves AI accuracy and makes less mistakes",
       },
       {
         val: 1,
+        type: "1",
         content:
           "This equation doesn't improve AI accuracy and makes more mistakes",
       },
       {
         val: 0,
+        type: "2",
         content:
           "This equation makes the same mistakes as the original equation",
       },
       {
         val: 0,
+        type: "3",
         content:
           "This equation improves AI accuracy and is the ideal equation (no mistakes)",
       },
@@ -29,20 +33,24 @@ const alterationQuizQuestions = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "This equation improves AI accuracy and makes less mistakes",
       },
       {
         val: 1,
+        type: "1",
         content:
           "This equation doesn't improve AI accuracy and makes more mistakes",
       },
       {
         val: 0,
+        type: "2",
         content:
           "This equation makes the same mistakes as the original equation",
       },
       {
         val: 0,
+        type: "3",
         content:
           "This equation improves AI accuracy and is the ideal equation (no mistakes)",
       },
@@ -55,20 +63,24 @@ const alterationQuizQuestions = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "This equation improves AI accuracy and makes less mistakes",
       },
       {
         val: 1,
+        type: "1",
         content:
           "This equation doesn't improve AI accuracy and makes more mistakes",
       },
       {
         val: 0,
+        type: "2",
         content:
           "This equation makes the same mistakes as the original equation",
       },
       {
         val: 0,
+        type: "3",
         content:
           "This equation improves AI accuracy and is the ideal equation (no mistakes)",
       },
@@ -80,20 +92,24 @@ const alterationQuizQuestions = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "This equation improves AI accuracy and makes less mistakes",
       },
       {
         val: 1,
+        type: "1",
         content:
           "This equation doesn't improve AI accuracy and makes more mistakes",
       },
       {
         val: 0,
+        type: "2",
         content:
           "This equation makes the same mistakes as the original equation",
       },
       {
         val: 0,
+        type: "3",
         content:
           "This equation improves AI accuracy and is the ideal equation (no mistakes)",
       },

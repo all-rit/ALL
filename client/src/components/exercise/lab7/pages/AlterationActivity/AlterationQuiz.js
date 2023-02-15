@@ -1,15 +1,26 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { ThirtyFpsSharp } from "@mui/icons-material";
 import React, { Component } from "react";
+import { EXERCISE_IDLE } from "../../../../../constants";
+import { EXERCISE_ENDED } from "../../../../../constants/lab7";
 import { default as Quiz } from "../../../../quiz/App";
 
 class AlterationQuiz extends Component {
   constructor(props) {
     super(props);
-    this.state = { componentName: "AlterationQuiz" };
+    this.state = {
+      componentName: "AlterationQuiz",
+      updateStateFunc: undefined,
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ updateStateFunc: this.props.action.updateState });
   }
 
   render() {
+    const { updateStateFunc } = this.state;
     const { state, actions } = this.props;
     return (
       <div className="center-div">
@@ -24,7 +35,12 @@ class AlterationQuiz extends Component {
           compared to the original utility equation?
         </p>
 
-        <Quiz path={`/AlterationQuiz`} user={state.main.user} />
+        <Quiz
+          path={`/AlterationQuiz`}
+          user={state.main.user}
+          updateStateFunc={updateStateFunc}
+          hideCertificate={true}
+        />
       </div>
     );
   }

@@ -107,9 +107,11 @@ function Result(props) {
               {renderTableData()}
             </tbody>
           </table>
-          <div style={{ marginTop: "50px" }}>
-            <Certificate quizResult={props.quizResult} lab={props.lab} />
-          </div>
+          {props.hideCertificate === undefined && (
+            <div style={{ marginTop: "50px" }}>
+              <Certificate quizResult={props.quizResult} lab={props.lab} />
+            </div>
+          )}
         </div>
       </div>
     </div>

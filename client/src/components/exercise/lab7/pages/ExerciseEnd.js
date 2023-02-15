@@ -11,7 +11,7 @@ class ExerciseEnd extends Component {
   }
 
   componentDidMount() {
-    const { user } = this.props;
+    const { user, actions } = this.props;
     UserLabService.complete_exercise(LAB_ID);
     if (user?.firstname !== null && user !== null) {
       UserLabService.user_complete_exercise(user.userid, LAB_ID);
