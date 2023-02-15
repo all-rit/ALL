@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../../../assets/stylesheets/components/Collapsible.scss";
 import {
   FILE_INCORRECT,
   FILE_INTRUSION,
