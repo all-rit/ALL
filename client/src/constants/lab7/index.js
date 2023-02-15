@@ -13,7 +13,7 @@ export const FILE_PROTECTED = "FILE_PROTECTED";
 export const LAB_ID = 7;
 export const THREAT_MAX = 3;
 export const DELAY_TIME = 1500;
-export const READ_TIME = 15000;
+export const READ_TIME = 10000;
 export const ROUND_LIMIT = 10;
 
 export const POPUP_MESSAGES = {
