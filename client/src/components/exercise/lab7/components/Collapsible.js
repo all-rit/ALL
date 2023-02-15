@@ -53,7 +53,7 @@ class Collapsible extends Component {
             Threat Level: {THREAT_LEVEL_TEXT[threatLvl]}
           </p>
           <p className={"tw-font-semibold tw-text-left tw-w-28"}>
-            <span className={intrusions.length > 0 ? "tw-text-brightRed" : ""}>
+            <span className={intrusions.length > 0 ? "tw-text-[#e31c3d]" : ""}>
               Intrusions: {intrusions.length}
             </span>
           </p>
