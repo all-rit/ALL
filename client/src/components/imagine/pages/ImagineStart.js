@@ -16,7 +16,7 @@ const ImagineStart = (props) => {
         experience how a poorly designed app might cause someone with a Color-Blindness deficiency discomfort or annoyance.
       </div>
       <div className="playthrough__sentence">
-        Click the “Start” button to begin this activity!
+        Click the &quot;Start&quot; button to begin this activity!
       </div>
 
       <button
