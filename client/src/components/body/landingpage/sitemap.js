@@ -6,9 +6,6 @@ import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../../reducers/MainReducer";
 import handleRedirect from "../../../helpers/Redirect";
 
-
-
-
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(mainActions, dispatch),
@@ -32,28 +29,26 @@ const SiteMap = (props) => {
               <div className="row text-center">
                 <div className="col-md-4">
                   <h4 className="service-heading">
-                    <a href=" " id="# " onClick={() => handleRedirect(actions, 0)}>
+                    <a
+                      href=" "
+                      id="# "
+                      onClick={() => handleRedirect(actions, 0)}
+                    >
                       Home
                     </a>
                   </h4>
                   <ul>
                     <li>
                       {" "}
-                      <a href="/#goals">
-                        Goals
-                      </a>
+                      <a href="/#goals">Goals</a>
                     </li>
                     <li>
                       {" "}
-                      <a href="/#labs">
-                        Labs
-                      </a>
+                      <a href="/#labs">Labs</a>
                     </li>
                     <li>
                       {" "}
-                      <a href="/#contact">
-                        Contact
-                      </a>
+                      <a href="/#contact">Contact</a>
                     </li>
                   </ul>
                 </div>
@@ -286,18 +281,12 @@ const SiteMap = (props) => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        href=" "
-                        onClick={() => handleRedirect(actions, 5, 3)}
-                      >
+                      <a href=" " onClick={() => handleRedirect(actions, 5, 3)}>
                         Reinforcement
                       </a>
                     </li>
                     <li>
-                      <a
-                        href=" "
-                        onClick={() => handleRedirect(actions, 5, 4)}
-                      >
+                      <a href=" " onClick={() => handleRedirect(actions, 5, 4)}>
                         Quiz
                       </a>
                     </li>

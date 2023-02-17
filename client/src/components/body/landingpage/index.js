@@ -129,7 +129,6 @@ const Home = (props) => {
         </div>
       </section>
 
-
       {/* Contact */}
 
       <section className="page-section landingpage__pagesection" id="contact">
