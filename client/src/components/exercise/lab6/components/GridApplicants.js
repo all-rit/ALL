@@ -46,7 +46,6 @@ const GridApplicants = (props) => {
 
   useEffect(() => {
     setSelection(currentFile);
-    console.log(currentFile, "cF");
   }, [currentFile]);
 
   const handleGridImage = useCallback(
@@ -69,7 +68,6 @@ const GridApplicants = (props) => {
     [id, currentFile]
   );
 
-  console.log(currentFile, "cF");
   return (
     <div className="gridApplicants tw-inline-flex">
       <div className="tw-mr-4">

@@ -63,7 +63,6 @@ const HiringCandidate = (props) => {
         answers.push(selection);
         setAnswers(answers);
         if (roundOfApplicants > 2) {
-          console.log(userAnswers);
           ExerciseService.submitHiredCanidates(answers);
           navigate("/Lab6/Exercise/AIReasoningQuestions");
         } else {
