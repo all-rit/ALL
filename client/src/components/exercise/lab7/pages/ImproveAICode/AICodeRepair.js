@@ -1,10 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import "katex/dist/katex.min.css";
 import React, { Component, Fragment } from "react";
 import Popup from "../../../shared/Popup";
 import { navigate } from "@reach/router";
 import Code from "../../components/Code";
-import { LOCKED_FILE, OPEN_FILE } from "../../../../../constants/lab7";
+import {
+  EXERCISE_PLAYING,
+  LOCKED_FILE,
+  OPEN_FILE,
+} from "../../../../../constants/lab7";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as repairActions } from "../../../../../reducers/lab7/RepairReducer";
@@ -21,6 +26,8 @@ class AICodeRepair extends Component {
   }
 
   componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
     this.reset();
   }
 
@@ -54,6 +61,7 @@ class AICodeRepair extends Component {
       repairError,
       changesApplied,
     } = this.props;
+
     return (
       <div>
         <Fragment>

@@ -10,6 +10,12 @@ class BadAIExplanation extends Component {
     super(props);
     this.state = { componentName: "BadAIExplanation" };
   }
+
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
+  }
+
   handleStart() {
     const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
@@ -44,4 +50,5 @@ class BadAIExplanation extends Component {
     );
   }
 }
+
 export default BadAIExplanation;

@@ -63,10 +63,10 @@ class Main extends Component {
           />
 
           {/* Phase 3: Alteration Activity */}
-          <AlterationStart path="/AlterationStart" action={actions} />
+          <AlterationStart path="/AlterationStart" actions={actions} />
           <AlterationQuiz
             path="/AlterationQuiz"
-            action={actions}
+            actions={actions}
             state={state}
           />
 

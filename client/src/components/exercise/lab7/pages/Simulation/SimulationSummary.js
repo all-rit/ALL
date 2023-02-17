@@ -4,6 +4,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import Collapsible from "../../components/Collapsible";
+import { EXERCISE_IDLE } from "../../../../../constants/lab7";
 
 class SimulationSummary extends Component {
   constructor(props) {
@@ -11,6 +12,12 @@ class SimulationSummary extends Component {
     this.state = {
       componentName: "SimSummary",
     };
+  }
+
+  componentDidMount() {
+    const { state } = this.props;
+    if (state.exercise7.state === EXERCISE_IDLE)
+      setTimeout(() => navigate("/Lab7/Exercise/BadAIExplanation"));
   }
 
   handleContinue() {

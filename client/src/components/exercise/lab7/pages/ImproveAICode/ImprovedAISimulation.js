@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { navigate } from "@reach/router";
 import React, { Component } from "react";
 import Simulation from "../../components/Simulation";
-import { ALTERATION_START } from "../../../../../constants/lab7";
+import {
+  ALTERATION_START,
+  EXERCISE_PLAYING,
+} from "../../../../../constants/lab7";
 
 class ImprovedAISimulation extends Component {
   constructor(props) {
@@ -10,8 +14,10 @@ class ImprovedAISimulation extends Component {
   }
 
   componentDidMount() {
-    const { actions } = this.props;
-    actions.updateRedirectURL(ALTERATION_START);
+    const { actions, state } = this.props;
+    if (state.exercise7.state === EXERCISE_PLAYING)
+      actions.updateRedirectURL(ALTERATION_START);
+    else setTimeout(() => navigate("/Lab7/Exercise/AICodeRepair"));
   }
 
   render() {

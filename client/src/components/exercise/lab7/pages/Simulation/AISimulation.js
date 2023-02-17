@@ -3,11 +3,17 @@
 import React, { Component } from "react";
 import Simulation from "../../components/Simulation";
 import "../../../../../assets/stylesheets/components/Simulation.scss";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
 
 class AISimulation extends Component {
   constructor(props) {
     super(props);
     this.state = { componentName: "AISimulation" };
+  }
+
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
   }
 
   render() {

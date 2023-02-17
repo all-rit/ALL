@@ -2,10 +2,17 @@
 /* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
+
 class AlterationStart extends Component {
   constructor(props) {
     super(props);
     this.state = { componentName: "AlterationStart" };
+  }
+
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
   }
 
   handleStart() {
@@ -50,4 +57,5 @@ class AlterationStart extends Component {
     );
   }
 }
+
 export default AlterationStart;
