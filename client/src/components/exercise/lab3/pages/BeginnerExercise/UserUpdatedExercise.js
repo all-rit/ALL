@@ -209,9 +209,13 @@ class UserUpdatedExercise extends Component {
                 <Typography
                   variant={"h4"}
                   color={"white"}
-                  aria-label={"Accessible Exercise"}
+                  aria-label={data.repair3.changesApplied
+                    ? "Accessible Exercise"
+                    : "Inaccessible Exercise"}
                   tabIndex={"0"}
-                  onFocus={(e) => this.textToSpeech(e, "Accessible Exercise")}
+                  onFocus={(e) => this.textToSpeech(e, data.repair3.changesApplied
+                    ? "Accessible Exercise"
+                    : "Inaccessible Exercise")}
                 >
                   {data.repair3.changesApplied
                     ? "Accessible Exercise"
