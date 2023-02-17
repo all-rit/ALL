@@ -17,6 +17,7 @@ class Code extends Component {
     super(props);
     this.state = {
       componentName: "AICodeRepair",
+      timeout: null,
     };
   }
 
@@ -72,10 +73,11 @@ class Code extends Component {
       passed: !error,
     };
     if (!result.passed) actions.updateRepairError(result.error);
+    else actions.updateRepairError(null);
     return result;
   }
 
-  testValidateRepair() {
+  validateRepair() {
     const { actions } = this.props;
     const cost = this.validateCostValue();
     const reward = this.validateRewardValue();
@@ -93,10 +95,18 @@ class Code extends Component {
   setPopupMessage(message) {
     const { actions } = this.props;
     actions.updatePopup(message);
-    setTimeout(() => {
-      actions.updatePopup("");
-      actions.updateRepairError(null);
-    }, POPUP_DELAY);
+    this.clearPopupMessage();
+  }
+
+  clearPopupMessage() {
+    const { actions } = this.props;
+    clearTimeout(this.state.timeout);
+    this.setState({
+      timeout: setTimeout(() => {
+        actions.updatePopup("");
+        actions.updateRepairError(null);
+      }, POPUP_DELAY),
+    });
   }
 
   handleSubmit(repairError) {
@@ -110,9 +120,7 @@ class Code extends Component {
     }
     actions.updateRepairEquation(rewardValue, costValue);
     actions.closeRepair();
-    setTimeout(() => {
-      actions.updatePopup("");
-    }, 6000);
+    this.clearPopupMessage();
   }
 
   handleRewardValueChange(e) {
@@ -258,7 +266,7 @@ class Code extends Component {
           </div>
         </div>
         <button
-          onClick={this.testValidateRepair.bind(this)}
+          onClick={this.validateRepair.bind(this)}
           type="submit"
           className="button button--green button--block"
         >
