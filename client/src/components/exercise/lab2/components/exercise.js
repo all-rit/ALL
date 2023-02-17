@@ -102,22 +102,20 @@ class exercise extends Component {
           </div>
         );
       }
-      // Instruction display during inital countdown
+      // Instruction display during initial countdown
       return (
         <div>
           <Title exerciseState={true} replay={false} />
           <div className="startExerciseTimer">{props.seconds}</div>
-          <div className="center prescreen">
-            <Circle color={correctColor} />
-            <div className="arrow">
-              <div className="point" />
-              <div className="line" />
-            </div>
+          <div className={"startExerciseTimer"} >
             <div>
-              <p className="prescreenText">
+              <p>
                 Click this color whenever it appears here!
               </p>
-              <p className="prescreenText">
+            <div>
+              <Circle color={correctColor} />
+            </div>
+              <p>
                 If its one of the other colors, don't click!
               </p>
             </div>
