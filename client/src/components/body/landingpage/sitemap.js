@@ -32,7 +32,7 @@ const SiteMap = (props) => {
               <div className="row text-center">
                 <div className="col-md-4">
                   <h4 className="service-heading">
-                    <a id="# " onClick={() => handleRedirect(actions, 0)}>
+                    <a href=" " id="# " onClick={() => handleRedirect(actions, 0)}>
                       Home
                     </a>
                   </h4>
