@@ -108,7 +108,7 @@ const quizQuestionsLab3 = [
   },
   {
     question:
-      "Which of the following should you do to ensure that an image is not purely decorative? Select all that apply.",
+      "Which of the following should you do to ensure that an image is made accessible to a screen reader?",
     answers: [
       {
         val: 0,
