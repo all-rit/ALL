@@ -6,6 +6,7 @@ import { navigate } from "@reach/router";
 import UserLabService from "../../../../services/UserLabService";
 import { LAB_ID } from "../../../../constants/lab5";
 import { Forum, EmojiObjects, Timer } from "@material-ui/icons";
+import { AppBar } from "@material-ui/core";
 
 class ExerciseEnd extends Component {
   handleHome() {
@@ -25,9 +26,13 @@ class ExerciseEnd extends Component {
       <Fragment>
         <div className="center-div">
           <div className="cognitive_instructions">
-            <h4 className="margin-bottom">
-              Congratulations! You've finished the Cognitive Learning Module.
-            </h4>
+            <div>
+              <AppBar position="static" className="appBar">
+                <h4 className="flex-boxes ">
+                  Congratulations! You have succesfully completed the Cognitive Impairment Exercise!
+                </h4>
+              </AppBar>
+            </div>
             <h4 className="margin-bottom">Here are some key takeaways:</h4>
             <div className="flex-boxes">
               <div>
@@ -50,12 +55,16 @@ class ExerciseEnd extends Component {
               </div>
             </div>
           </div>
+          <h4 className="flex-boxes" >
+            Click the button below to restart the exercise.
+          </h4>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "
             onClick={this.handleHome}
             key="start"
           >
-            Home
+            Return to Exercise Start
+
           </button>
         </div>
       </Fragment>
