@@ -225,7 +225,7 @@ class Code extends Component {
                 defaultValue={rewardValue}
                 onChange={this.handleRewardValueChange.bind(this)}
                 required
-                title="must enter file.getSensitivityLvl"
+                title="must enter file.sensitivityLevel"
               />
               <span className="code_editor__line--white"> / </span>
               <input
