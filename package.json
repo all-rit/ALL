@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
+    "mathjax-full": "^3.2.2",
     "mathjs": "^11.5.1",
     "react-mathjax2": "^0.0.2",
     "redux-logger": "^3.0.6"

@@ -60,7 +60,7 @@ function Result(props) {
               </li>
             );
           } else {
-            return <div />;
+            return <div key={index} />;
           }
         })}
       </ul>
@@ -82,7 +82,7 @@ function Result(props) {
               </li>
             );
           } else {
-            return <div />;
+            return <div key={index} />;
           }
         })}
       </ul>
