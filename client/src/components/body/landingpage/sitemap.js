@@ -29,34 +29,32 @@ const SiteMap = (props) => {
               <div className="row text-center">
                 <div className="col-md-4">
                   <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 0, 0)}>
+                    <a
+                      href=" "
+                      id="# "
+                      onClick={() => handleRedirect(actions, 0)}
+                    >
                       Home
                     </a>
                   </h4>
                   <ul>
                     <li>
                       {" "}
-                      <a href="# " onClick={() => handleRedirect(actions, 0)}>
-                        Goals
-                      </a>
+                      <a href="/#goals">Goals</a>
                     </li>
                     <li>
                       {" "}
-                      <a href="# " onClick={() => handleRedirect(actions, 0)}>
-                        Labs
-                      </a>
+                      <a href="/#labs">Labs</a>
                     </li>
                     <li>
                       {" "}
-                      <a href="# " onClick={() => handleRedirect(actions, 0)}>
-                        Contact
-                      </a>
+                      <a href="/#contact">Contact</a>
                     </li>
                   </ul>
                 </div>
                 <div className="col-md-4">
                   <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 1, 0)}>
+                    <a href=" " onClick={() => handleRedirect(actions, 1, 0)}>
                       Lab 1
                     </a>
                   </h4>
@@ -155,7 +153,7 @@ const SiteMap = (props) => {
 
                 <div className="col-md-4">
                   <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 3, 0)}>
+                    <a href=" " onClick={() => handleRedirect(actions, 3, 0)}>
                       Lab 3
                     </a>
                   </h4>
@@ -204,7 +202,7 @@ const SiteMap = (props) => {
                 </div>
                 <div className="col-md-4">
                   <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 4, 0)}>
+                    <a href=" " onClick={() => handleRedirect(actions, 4, 0)}>
                       Lab 4
                     </a>
                   </h4>
@@ -283,18 +281,12 @@ const SiteMap = (props) => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 5, 3)}
-                      >
+                      <a href=" " onClick={() => handleRedirect(actions, 5, 3)}>
                         Reinforcement
                       </a>
                     </li>
                     <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 5, 4)}
-                      >
+                      <a href=" " onClick={() => handleRedirect(actions, 5, 4)}>
                         Quiz
                       </a>
                     </li>

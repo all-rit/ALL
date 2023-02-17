@@ -142,7 +142,7 @@ const Header = (props) => {
                   <NavItem className="collapse navbar-collapse">
                     <NavLink
                       className="nav-link "
-                      href="#labs"
+                      href=" "
                       style={link === 1 ? activeStyle : { color: "#fff" }}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -181,6 +181,19 @@ const Header = (props) => {
                         <NavLink
                           className="nav-link "
                           href="# "
+                          style={{ color: "#fff" }}
+                          onClick={() => navigate(state, actions, 0, 0)}
+                        >
+                          <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                            <li className="nav-item">Home</li>
+                          </ul>
+                        </NavLink>
+                      </NavItem>
+
+                      <NavItem className="collapse navbar-collapse">
+                        <NavLink
+                          className="nav-link "
+                          href="# "
                           style={
                             state.main.body === 1
                               ? activeStyle
@@ -190,19 +203,6 @@ const Header = (props) => {
                         >
                           <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">Site Map</li>
-                          </ul>
-                        </NavLink>
-                      </NavItem>
-
-                      <NavItem className="collapse navbar-collapse">
-                        <NavLink
-                          className="nav-link "
-                          href="# "
-                          style={{ color: "#fff" }}
-                          onClick={() => navigate(state, actions, 0, 0)}
-                        >
-                          <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                            <li className="nav-item">Home</li>
                           </ul>
                         </NavLink>
                       </NavItem>
