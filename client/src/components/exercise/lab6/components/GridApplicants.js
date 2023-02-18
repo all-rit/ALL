@@ -84,9 +84,7 @@ const GridApplicants = (props) => {
         {favorable && (
           <ul>
             <ul className="tw-font-bold tw-w-4/5 tw-inline-flex tw-mt-5 tw-mb-3">
-              <li>
-                PRIME CANDIDATE
-              </li>
+              <li>PRIME CANDIDATE</li>
               {/* <Recomendation aiRecommendation /> */}
             </ul>
             <ul htmlFor="applicant" className="candidate__col">

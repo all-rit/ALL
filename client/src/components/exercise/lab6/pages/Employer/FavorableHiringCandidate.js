@@ -26,11 +26,11 @@ const FavorableHiringCandidate = (props) => {
     <>
       <div className="center-shift">
         <h2 className="playthrough__title">
-        Here’s what MegaCorp is looking for in new employees:
+          Here’s what MegaCorp is looking for in new employees:
         </h2>
         <div className="playthrough__sentence">
-            MegaCorp uses an AI assistant in its hiring process
-            to help evaluate a large number of canidates
+          MegaCorp uses an AI assistant in its hiring process to help evaluate a
+          large number of canidates
         </div>
         <div className="tw-container tw-justify-center">
           <ul className="tw-inline-flex tw-justify-evenly">
@@ -56,7 +56,8 @@ const FavorableHiringCandidate = (props) => {
           Below is a prime candidate that would be hired at MegaCorp
         </div>
         <div className="playthrough__sentence tw-font-semibold">
-          NOTE: The AI assistant is recommending this candidate, however, its not always correct
+          NOTE: The AI assistant is recommending this candidate, however, its
+          not always correct
         </div>
         <div className="playthrough__sentence">
           Select the &quot;HIRE&quot; or &quot;REJECT&quot; toggle to make a
