@@ -84,7 +84,7 @@ function QualificationQuestions(props) {
           val: 0,
           type: "1",
           content: "Part-time",
-        }
+        },
       ],
       multiChoice: false,
     },

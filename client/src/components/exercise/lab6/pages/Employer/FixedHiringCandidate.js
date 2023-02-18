@@ -131,7 +131,7 @@ const FixedHiringCandidate = (props) => {
         <>
           <div>
             <h4 className="tw-font-bold">
-              Round {roundOfApplicants+1} of {4}
+              Round {roundOfApplicants + 1} of {4}
             </h4>
           </div>
           {roundOfApplicants === 0 && (

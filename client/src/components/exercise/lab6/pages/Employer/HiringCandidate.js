@@ -110,9 +110,9 @@ const HiringCandidate = (props) => {
         </ModalFooter>
       </Modal>
       <div>
-            <h4 className="tw-font-bold">
-              Round {roundOfApplicants+1} of {4}
-            </h4>
+        <h4 className="tw-font-bold">
+          Round {roundOfApplicants + 1} of {4}
+        </h4>
       </div>
       {roundOfApplicants === 0 && (
         <GridApplicants

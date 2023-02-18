@@ -25,7 +25,9 @@ const FavorableHiringCandidate = (props) => {
   return (
     <>
       <div className="center-shift">
-        <h2 className="playthrough__title">This is an example of a prime candidate that should be hired!</h2>
+        <h2 className="playthrough__title">
+          This is an example of a prime candidate that should be hired!
+        </h2>
         <div className="playthrough__sentence">
           Here’s what MegaCorp is looking for in new employees
         </div>
@@ -35,12 +37,20 @@ const FavorableHiringCandidate = (props) => {
         <div className="tw-container tw-justify-center">
           <ul className="tw-inline-flex tw-justify-evenly">
             <ul className="tw-w-1/3">
-              <li className="recommendation__center"><Recomendation aiRecommendation /></li>
-              <li className="tw-text-lg">This means the AI assistant recommends a candidate</li>
+              <li className="recommendation__center">
+                <Recomendation aiRecommendation />
+              </li>
+              <li className="tw-text-lg">
+                This means the AI assistant recommends a candidate
+              </li>
             </ul>
             <ul className="tw-w-1/3">
-              <li className="recommendation__center"><Recomendation aiRecommendation={false} /></li>
-              <li className="tw-text-lg">This means the AI assistant does not recommend a candidate</li>
+              <li className="recommendation__center">
+                <Recomendation aiRecommendation={false} />
+              </li>
+              <li className="tw-text-lg">
+                This means the AI assistant does not recommend a candidate
+              </li>
             </ul>
           </ul>
         </div>

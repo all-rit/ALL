@@ -42,7 +42,6 @@ const AvatarSelection = (props) => {
           Confirm Selection
         </button>
       )}
-
     </div>
   );
 };
