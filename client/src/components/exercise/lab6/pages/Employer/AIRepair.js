@@ -135,13 +135,13 @@ const AIRepair = (props) => {
               </div>
               <div className="code_editor__line">
                 <span className="code_editor__line--darkgreen">
-                  &#47;&#47; When the AI is analyzing a canidate each attribute
+                  &#47;&#47; When the AI is analyzing a candidate each attribute
                   is weighted differently.
                 </span>
               </div>
               <div className="code_editor__line">
                 <span className="code_editor__line--darkgreen">
-                  &#47;&#47; When a criteria from an antribute is met its weight
+                  &#47;&#47; When a criteria from an atribute is met its weight
                   is added to a total.
                 </span>
               </div>

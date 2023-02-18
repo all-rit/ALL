@@ -178,7 +178,7 @@ const QuizHandler = (props) => {
     UserLabService.complete_quiz(
       props.labId,
       (countCorrect / questionsTotal) * 100,
-      output
+      JSON.stringify(output)
     );
     if (props.user.firstname !== null) {
       UserLabService.user_complete_quiz(
