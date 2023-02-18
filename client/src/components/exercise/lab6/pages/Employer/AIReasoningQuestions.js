@@ -19,7 +19,7 @@ const AIReasoningQuestions = (props) => {
   const aiReasoningData = [
     {
       question:
-        "Which of these attributes do you think that the AI was looking for inthis exercise in order to deny someone?",
+        "Which of these attributes do you think that the AI was looking for in this exercise in order to deny someone?",
       answers: [
         {
           val: 0,

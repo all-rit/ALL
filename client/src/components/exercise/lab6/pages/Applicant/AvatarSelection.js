@@ -33,14 +33,16 @@ const AvatarSelection = (props) => {
       </p>
 
       <GridImages multi={1} setSelection={setAvatar} />
+      {avatar.length != 0 && (
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase "
+          onClick={confirmSelection}
+          key="confirm"
+        >
+          Confirm Selection
+        </button>
+      )}
 
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={confirmSelection}
-        key="confirm"
-      >
-        Confirm Selection
-      </button>
     </div>
   );
 };

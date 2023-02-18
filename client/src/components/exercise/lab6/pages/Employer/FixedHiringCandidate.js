@@ -2,13 +2,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
+import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab6";
 
 import GridApplicants from "../../components/GridApplicants";
 import { useState } from "react";
 import RepairService from "../../../../../services/lab6/RepairService";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
+import UserLabService from "../../../../../services/UserLabService";
 
 const FixedHiringCandidate = (props) => {
   const { actions, user } = props;
@@ -28,6 +29,10 @@ const FixedHiringCandidate = (props) => {
     setAnswers(answers);
     if (roundOfApplicants > 2) {
       ExerciseService.submitFixedHiredCanidates(answers);
+      UserLabService.complete_exercise(LAB_ID);
+      if (user?.firstname !== null && user !== null) {
+        UserLabService.user_complete_exercise(user.userid, LAB_ID);
+      }
       navigate("/Lab6/Exercise/ExerciseEnd");
     } else {
       setRoundOfApplicants(roundCount + 1);
@@ -73,6 +78,10 @@ const FixedHiringCandidate = (props) => {
         setAnswers(answers);
         if (roundOfApplicants > 2) {
           ExerciseService.submitFixedHiredCanidates(answers);
+          UserLabService.complete_exercise(LAB_ID);
+          if (user?.firstname !== null && user !== null) {
+            UserLabService.user_complete_exercise(user.userid, LAB_ID);
+          }
           navigate("/Lab6/Exercise/ExerciseEnd");
         } else {
           let roundCount = roundOfApplicants;
@@ -96,6 +105,7 @@ const FixedHiringCandidate = (props) => {
       <Modal
         isOpen={isModalActive}
         backdrop="static"
+        centered
         toggle={() => {
           setModalActive(!isModalActive);
         }}
@@ -103,8 +113,8 @@ const FixedHiringCandidate = (props) => {
         <ModalBody>
           <div className="tw-p-5 tw-text-center">
             <h3>
-              Are you sure you wish to select this candidate? The AI advises
-              against it.
+              Are you sure you wish to select these candidates? The AI advises
+              against one or more of them.
             </h3>
           </div>
         </ModalBody>
@@ -119,6 +129,11 @@ const FixedHiringCandidate = (props) => {
       </Modal>
       {userData !== null && (
         <>
+          <div>
+            <h4 className="tw-font-bold">
+              Round {roundOfApplicants+1} of {4}
+            </h4>
+          </div>
           {roundOfApplicants === 0 && (
             <GridApplicants
               numApplicants={4}
@@ -167,7 +182,7 @@ const FixedHiringCandidate = (props) => {
           onClick={handleContinue}
           key="confirm"
         >
-          {roundOfApplicants < 3 ? "Confirm" : "Confirm --- Continue"}
+          {roundOfApplicants < 3 ? "Confirm" : "Confirm - Continue"}
         </button>
       )}
     </div>

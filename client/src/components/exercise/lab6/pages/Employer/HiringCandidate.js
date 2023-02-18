@@ -87,6 +87,7 @@ const HiringCandidate = (props) => {
       <Modal
         isOpen={isModalActive}
         backdrop="static"
+        centered
         toggle={() => {
           setModalActive(!isModalActive);
         }}
@@ -94,8 +95,8 @@ const HiringCandidate = (props) => {
         <ModalBody>
           <div className="tw-p-5 tw-text-center">
             <h3>
-              Are you sure you wish to select this candidate? The AI advises
-              against it.
+              Are you sure you wish to select these candidates? The AI advises
+              against one or more of them.
             </h3>
           </div>
         </ModalBody>
@@ -108,7 +109,11 @@ const HiringCandidate = (props) => {
           </Button>
         </ModalFooter>
       </Modal>
-
+      <div>
+            <h4 className="tw-font-bold">
+              Round {roundOfApplicants+1} of {4}
+            </h4>
+      </div>
       {roundOfApplicants === 0 && (
         <GridApplicants
           numApplicants={4}
@@ -151,7 +156,7 @@ const HiringCandidate = (props) => {
           onClick={handleContinue}
           key="confirm"
         >
-          {roundOfApplicants < 3 ? "Confirm" : "Confirm --- Continue"}
+          {roundOfApplicants < 3 ? "Confirm" : "Confirm - Continue"}
         </button>
       )}
     </div>

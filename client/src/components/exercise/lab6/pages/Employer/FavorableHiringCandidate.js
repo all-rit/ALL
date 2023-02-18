@@ -25,14 +25,25 @@ const FavorableHiringCandidate = (props) => {
   return (
     <>
       <div className="center-shift">
-        <h2 className="playthrough__title">Favorable Candidate:</h2>
+        <h2 className="playthrough__title">This is an example of a prime candidate that should be hired!</h2>
         <div className="playthrough__sentence">
           Here’s what MegaCorp is looking for in new employees
         </div>
-
-        <h2 className="Prime candidate ex.">
-          This is an example of a prime candidate that should be hired!
-        </h2>
+        <div className="playthrough__sentence">
+          An AI assistant is used to help evaluate candidates
+        </div>
+        <div className="tw-container tw-justify-center">
+          <ul className="tw-inline-flex tw-justify-evenly">
+            <ul className="tw-w-1/3">
+              <li className="recommendation__center"><Recomendation aiRecommendation /></li>
+              <li className="tw-text-lg">This means the AI assistant recommends a candidate</li>
+            </ul>
+            <ul className="tw-w-1/3">
+              <li className="recommendation__center"><Recomendation aiRecommendation={false} /></li>
+              <li className="tw-text-lg">This means the AI assistant does not recommend a candidate</li>
+            </ul>
+          </ul>
+        </div>
         <div className="playthrough__sentence">
           Select the &quot;HIRE&quot; or &quot;REJECT&quot; toggle to make a
           decision and &quot;Continue&quot; the process.

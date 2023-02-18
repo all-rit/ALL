@@ -336,6 +336,10 @@ li {
 .recommendation {
   padding: 10px;
 
+  &__center{
+      text-align: -webkit-center;
+  }
+
   &__card {
     width: 100%;
     max-width: 150px;

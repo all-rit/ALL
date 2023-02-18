@@ -78,48 +78,38 @@ function QualificationQuestions(props) {
         {
           val: 0,
           type: "0",
-          content: "Full-time (Weekdays and Weekends)",
+          content: "Full-time",
         },
         {
           val: 0,
           type: "1",
-          content: "Full-time (Weekdays only)",
-        },
-        {
-          val: 0,
-          type: "2",
-          content: "Part-time (Weekdays only)",
-        },
-        {
-          val: 0,
-          type: "3",
-          content: "Part-time(Weekends only)",
-        },
+          content: "Part-time",
+        }
       ],
       multiChoice: false,
     },
     {
-      question: "What is your expected salary",
+      question: "What is your expected hourly",
       answers: [
         {
           val: 0,
           type: "0",
-          content: "40K - 42.5K",
+          content: "$15-$20/hr",
         },
         {
           val: 0,
           type: "1",
-          content: "42.6K - 45K",
+          content: "$21-$25/hr",
         },
         {
           val: 0,
           type: "2",
-          content: "45.1K - 47.5K",
+          content: "$26-$30/hr",
         },
         {
           val: 0,
           type: "3",
-          content: "47.6-50K",
+          content: "$31-$35/hr",
         },
       ],
       multiChoice: false,
