@@ -43,10 +43,10 @@ const LabGeneration = (props) => {
         return LabService.getAllLabs();
       }
       fetchGroups().then((data) => {
-        let arr = []
-        data.map((lab)=> {
-          arr[lab.id-1]=lab
-        })
+        let arr = [];
+        data.map((lab) => {
+          arr[lab.id - 1] = lab;
+        });
         setLabInformation(arr);
       });
     }
@@ -74,7 +74,7 @@ const LabGeneration = (props) => {
       if (labRecords !== null && labRecords.length > 0) {
         return labRecords.map((rec, index) => {
           const idx = rec.labid - 1;
-          if(labInformation[idx]){
+          if (labInformation[idx]) {
             return renderLabData(
               actions,
               labInformation[idx],
@@ -99,7 +99,7 @@ const LabGeneration = (props) => {
       );
     }
     return labInformation.map((labInfo, index) => {
-      if(labInfo){
+      if (labInfo) {
         return renderLabData(actions, labInfo, progressState, index);
       }
     });
