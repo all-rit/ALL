@@ -16,10 +16,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(
-      { ...exerciseActions },
-      dispatch
-    ),
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
   };
 };
 

@@ -22,11 +22,12 @@ class AdvancedExerciseConclusion extends Component {
       <div>
         <AppBar position="static" className="appBar">
           <h4 className="flex-boxes ">
-            Congratulations! You have succesfully completed the Screen Readers Exercise!
+            Congratulations! You have succesfully completed the Screen Readers
+            Exercise!
           </h4>
         </AppBar>
         <br />
-        <h4 className="flex-boxes" >
+        <h4 className="flex-boxes">
           Click the button below to restart the exercise.
         </h4>
         <button
@@ -35,10 +36,8 @@ class AdvancedExerciseConclusion extends Component {
           key="start"
         >
           Return to Exercise Start
-
         </button>
       </div>
-
     );
   }
 }

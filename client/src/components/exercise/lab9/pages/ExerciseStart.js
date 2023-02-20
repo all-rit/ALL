@@ -19,9 +19,7 @@ class ExerciseStart extends Component {
     return (
       <Fragment>
         <div className="center-div">
-          <div className="guidance margin-bottom-2">
-            MAPE-K Start
-          </div>
+          <div className="guidance margin-bottom-2">MAPE-K Start</div>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "
             onClick={this.handleStart}
