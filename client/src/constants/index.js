@@ -154,6 +154,25 @@ export const Sections = {
       name: "Quiz",
     },
   },
+  9: {
+    fullname: "MAPE-K",
+    name: "Lab9",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
 };
 // for shared component
 export const EXERCISE_IDLE = "EXERCISE_IDLE";
