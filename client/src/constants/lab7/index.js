@@ -20,6 +20,8 @@ export const POPUP_MESSAGES = {
   INVALID_EXPRESSION: "You must pass a valid expression.",
   ZERO_DIVISION: "Zero division is not allowed.",
   SUCCESS: "The repairs have successfully been implemented.",
+  FILE_SENS_NOT_INCLUDED: "Must include 'file.sensitivityLevel'",
+  THREAT_LVL_NOT_INCLUDED: "Must include 'threatLvl'",
 };
 export const POPUP_DELAY = 6000;
 

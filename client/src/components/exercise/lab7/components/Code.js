@@ -26,22 +26,27 @@ class Code extends Component {
     let value,
       error = null;
 
-    try {
-      value = evaluate(rewardValue, FILE_FORMAT_VALIDATION);
-      if (typeof value !== "number") error = POPUP_MESSAGES.INVALID_EXPRESSION;
-    } catch (e) {
-      switch (e.data?.category) {
-        case "wrongType":
+    if (!rewardValue.includes("file.sensitivityLevel")) {
+      error = POPUP_MESSAGES.FILE_SENS_NOT_INCLUDED;
+    } else {
+      try {
+        value = evaluate(rewardValue, FILE_FORMAT_VALIDATION);
+        if (typeof value !== "number")
           error = POPUP_MESSAGES.INVALID_EXPRESSION;
-          break;
-        default:
-          error = e.message;
+      } catch (e) {
+        switch (e.data?.category) {
+          case "wrongType":
+            error = POPUP_MESSAGES.INVALID_EXPRESSION;
+            break;
+          default:
+            error = e.message;
+        }
       }
     }
 
     const result = {
       value: rewardValue,
-      error: `[Reward Value] ${error}`,
+      error,
       passed: !error,
     };
     if (!result.passed) actions.updateRepairError(result.error);
@@ -53,23 +58,28 @@ class Code extends Component {
     let value,
       error = null;
 
-    try {
-      value = evaluate(costValue, FILE_FORMAT_VALIDATION);
-      if (typeof value !== "number") error = POPUP_MESSAGES.INVALID_EXPRESSION;
-      else if (value === 0) error = POPUP_MESSAGES.ZERO_DIVISION;
-    } catch (e) {
-      switch (e.data?.category) {
-        case "wrongType":
+    if (!costValue.includes("threatLvl")) {
+      error = POPUP_MESSAGES.THREAT_LVL_NOT_INCLUDED;
+    } else {
+      try {
+        value = evaluate(costValue, FILE_FORMAT_VALIDATION);
+        if (typeof value !== "number")
           error = POPUP_MESSAGES.INVALID_EXPRESSION;
-          break;
-        default:
-          error = e.message;
+        else if (value === 0) error = POPUP_MESSAGES.ZERO_DIVISION;
+      } catch (e) {
+        switch (e.data?.category) {
+          case "wrongType":
+            error = POPUP_MESSAGES.INVALID_EXPRESSION;
+            break;
+          default:
+            error = e.message;
+        }
       }
     }
 
     const result = {
       value: costValue,
-      error: `[Cost Value] ${error}`,
+      error,
       passed: !error,
     };
     if (!result.passed) actions.updateRepairError(result.error);
@@ -82,11 +92,22 @@ class Code extends Component {
     const cost = this.validateCostValue();
     const reward = this.validateRewardValue();
 
-    if (!cost.passed || !reward.passed) {
-      const message = !reward.passed ? reward.error : cost.error;
+    if (!reward.passed || !cost.passed) {
+      if (!reward.passed && !cost.passed) {
+        actions.updateRewardError(reward.error);
+        actions.updateCostError(cost.error);
+      } else if (!reward.passed) {
+        actions.updateRewardError(reward.error);
+        actions.updateCostError(null);
+      } else {
+        actions.updateRewardError(null);
+        actions.updateCostError(cost.error);
+      }
       actions.undoRepairChanges();
-      this.setPopupMessage(message);
+      this.setPopupMessage("Errors in Repair. Please fix.");
     } else {
+      actions.updateRewardError(null);
+      actions.updateCostError(null);
       actions.updateRepairEquation(reward.value, cost.value);
       this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
@@ -134,7 +155,7 @@ class Code extends Component {
   }
 
   render() {
-    const { rewardValue, costValue } = this.props;
+    const { rewardValue, costValue, rewardError, costError } = this.props;
     return (
       <div className="code_editor">
         <div className="code_editor__content">
@@ -198,54 +219,88 @@ class Code extends Component {
               </span>
               <span className="code_editor__line--purple">) &#123;</span>
             </div>
-
-            <div className="code_editor__line">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--blue">file</span>
-              <span className="code_editor__line--white">.</span>
-              <span className="code_editor__line--yellow">changeAccess()</span>
-              <span className="code_editor__line--white">;</span>
-            </div>
-
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--darkgreen">
                 enter &lsquo;file.sensitivityLevel&lsquo; into the first input{" "}
               </span>
             </div>
-
+            <div className="code_editor__line code_editor__line-background--light">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className={"code_editor__line--purple"}>const </span>
+              <span className={""}>rewardValue</span>
+              <span className={"code_editor__line--purple"}> = </span>
+              <input
+                name="rewardvalue"
+                type="text"
+                className={`${rewardError ? "form-error-input" : ""}`}
+                defaultValue={rewardValue}
+                onChange={this.handleRewardValueChange.bind(this)}
+                required
+                title="must enter file.sensitivityLevel"
+              />
+              <span>;</span>
+            </div>
+            {rewardError && (
+              <div className="code_editor__line">
+                <span className={"form-error"}>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  {rewardError}
+                </span>
+              </div>
+            )}
+            <div className="code_editor__line">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--darkgreen">
                 enter &lsquo;threatLvl&lsquo; into the second input
               </span>
             </div>
-
-            {/* return() */}
-            <div className="code_editor__line">
+            <div className="code_editor__line code_editor__line-background--light">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--purple">return </span>
-              <span className="code_editor__line--white">( </span>
-              <input
-                name="rewardvalue"
-                type="text"
-                className={`htmlinput ${rewardValue ? "form-error-input" : ""}`}
-                defaultValue={rewardValue}
-                onChange={this.handleRewardValueChange.bind(this)}
-                required
-                title="must enter file.sensitivityLevel"
-              />
-              <span className="code_editor__line--white"> / </span>
+              <span className={"code_editor__line--purple"}>const </span>
+              <span className={""}>costValue</span>
+              <span className={"code_editor__line--purple"}> = </span>
               <input
                 name="costvalue"
                 type="text"
-                className={`htmlinput ${costValue ? "form-error-input" : ""}`}
+                className={costError ? "form-error-input" : ""}
                 defaultValue={costValue}
                 onChange={this.handleCostValueChange.bind(this)}
                 required
                 title="must enter threatLvl"
               />
-              <span className="code_editor__line--white"> )</span>
+              <span>;</span>
+            </div>
+            {costError && (
+              <div className="code_editor__line">
+                <span className={"form-error"}>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  {costError}
+                </span>
+              </div>
+            )}
+            <div className="code_editor__line">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <div className="code_editor__line">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className={"code_editor__line--purple"}>const </span>
+              <span>utility</span>
+              <span className={"code_editor__line--purple"}> = </span>
+              <span>
+                rewardValue{" "}
+                <span className={"code_editor__line--purple"}>/</span>{" "}
+                costValue;
+              </span>
+            </div>
+            {/* return() */}
+            <div className="code_editor__line">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__line--purple">return </span>
+              <span>utility;</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;</span>
@@ -278,8 +333,9 @@ class Code extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { rewardValue, costValue, repairError } = state.repair7;
-  return { rewardValue, costValue, repairError };
+  const { rewardValue, costValue, repairError, rewardError, costError } =
+    state.repair7;
+  return { rewardValue, costValue, repairError, rewardError, costError };
 };
 
 const mapDispatchToProps = (dispatch) => {
