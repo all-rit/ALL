@@ -4,6 +4,7 @@ import React from "react";
 import AvatarSelection from "./pages/AvatarSelection";
 import ImagineEnd from "./pages/ImagineEnd";
 import ImagineStart from "./pages/ImagineStart";
+import ExpressionStart from "./pages/ExpressionStart";
 import MatchLobby from "./pages/MatchLobby";
 import TicTacToe from "./pages/TicTacToe";
 import { transitions, positions, Provider } from "react-alert";
@@ -33,6 +34,7 @@ const Imagine = (props) => {
         <div className="container bottomSpace">
           <Router className="app">
             <ImagineStart path="/" user={user} linkNum={linkNum} />
+            <ExpressionStart path="/Expression" user={user} linkNum={linkNum} />
             <AvatarSelection
               path="/AvatarSelection"
               user={user}
