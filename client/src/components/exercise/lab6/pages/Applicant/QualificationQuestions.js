@@ -89,7 +89,7 @@ function QualificationQuestions(props) {
       multiChoice: false,
     },
     {
-      question: "What is your expected hourly",
+      question: "What is your expected hourly wage?",
       answers: [
         {
           val: 0,
