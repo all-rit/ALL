@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import { MathComponent } from "mathjax-react";
@@ -7,6 +5,7 @@ import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class AlterationStart extends Component {
   constructor(props) {
@@ -66,6 +65,10 @@ class AlterationStart extends Component {
     );
   }
 }
+
+AlterationStart.propTypes = {
+  actions: PropTypes.object,
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

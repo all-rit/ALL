@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import { navigate } from "@reach/router";
 import React, { Component } from "react";
 import Simulation from "../../components/Simulation";
@@ -10,6 +8,7 @@ import {
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class ImprovedAISimulation extends Component {
   constructor(props) {
@@ -31,6 +30,11 @@ class ImprovedAISimulation extends Component {
     );
   }
 }
+
+ImprovedAISimulation.propTypes = {
+  actions: PropTypes.object,
+  state: PropTypes.string,
+};
 
 const mapStateToProps = (state) => {
   return { state: state.exercise7.state };

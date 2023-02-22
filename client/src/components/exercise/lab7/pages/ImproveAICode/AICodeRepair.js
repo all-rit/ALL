@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from "react";
 import Popup from "../../../shared/Popup";
 import { navigate } from "@reach/router";
@@ -15,6 +13,7 @@ import { actions as repairActions } from "../../../../../reducers/lab7/RepairRed
 import { actions as appActions } from "../../../../../reducers/lab7/AppReducer";
 import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
 import { evaluate } from "mathjs";
+import PropTypes from "prop-types";
 
 class AICodeRepair extends Component {
   constructor(props) {
@@ -108,6 +107,16 @@ class AICodeRepair extends Component {
     );
   }
 }
+
+AICodeRepair.propTypes = {
+  actions: PropTypes.object,
+  rewardValue: PropTypes.string,
+  costValue: PropTypes.string,
+  popupMessage: PropTypes.string,
+  repairError: PropTypes.string,
+  changesApplied: PropTypes.bool,
+  repairVisible: PropTypes.bool,
+};
 
 const mapStateToProps = (state) => {
   const { popupMessage } = state.app7;

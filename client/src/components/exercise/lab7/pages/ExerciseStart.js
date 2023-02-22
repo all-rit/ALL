@@ -1,12 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../constants/lab7";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab7/ExerciseReducer";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class ExerciseStart extends Component {
   constructor(props) {
@@ -57,9 +55,9 @@ class ExerciseStart extends Component {
                 </li>
                 <li>
                   Based on the <b>threat level</b> and the{" "}
-                  <b>file's sensitivity level</b>, the autonomous system will
-                  appropriately restrict the file access of each file in the
-                  system.
+                  <b>file&apos;s sensitivity level</b>, the autonomous system
+                  will appropriately restrict the file access of each file in
+                  the system.
                 </li>
                 <ul>
                   <li>
@@ -81,11 +79,12 @@ class ExerciseStart extends Component {
                 <li>
                   The simulation will notify you of whether the autonomous
                   system made the correct restriction for each file by
-                  displaying <b>"AI Correct"</b> or <b>"AI Incorrect"</b>.
+                  displaying <b>&quot;AI Correct&quot;</b> or{" "}
+                  <b>&quot;AI Incorrect&quot;</b>.
                 </li>
                 <li>
-                  The autonomous system's mistakes can be categorized into two
-                  types:
+                  The autonomous system&apos;s mistakes can be categorized into
+                  two types:
                 </li>
                 <ul>
                   <li>
@@ -123,8 +122,8 @@ class ExerciseStart extends Component {
           </p>
 
           <p className="playthrough__sentence">
-            Click the '<span className={"tw-font-bold"}>Start</span>' button to
-            move on to the simulation!
+            Click the &apos;<span className={"tw-font-bold"}>Start</span>&apos;
+            button to move on to the simulation!
           </p>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "
@@ -138,6 +137,10 @@ class ExerciseStart extends Component {
     );
   }
 }
+
+ExerciseStart.propTypes = {
+  actions: PropTypes.object,
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

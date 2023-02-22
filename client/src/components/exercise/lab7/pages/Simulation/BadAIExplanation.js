@@ -1,12 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class BadAIExplanation extends Component {
   constructor(props) {
@@ -52,6 +50,10 @@ class BadAIExplanation extends Component {
     );
   }
 }
+
+BadAIExplanation.propTypes = {
+  actions: PropTypes.object,
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

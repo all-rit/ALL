@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { default as Quiz } from "../../../../quiz/App";
 import { EXERCISE_IDLE } from "../../../../../constants/lab7";
@@ -8,6 +6,7 @@ import { MathComponent } from "mathjax-react";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class AlterationQuiz extends Component {
   constructor(props) {
@@ -49,6 +48,12 @@ class AlterationQuiz extends Component {
     );
   }
 }
+
+AlterationQuiz.propTypes = {
+  actions: PropTypes.object,
+  state: PropTypes.string,
+  user: PropTypes.object,
+};
 
 const mapStateToProps = (state) => {
   const { user } = state.main;

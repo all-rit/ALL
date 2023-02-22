@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import Collapsible from "../../components/Collapsible";
@@ -7,6 +5,7 @@ import { EXERCISE_IDLE } from "../../../../../constants/lab7";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class SimulationSummary extends Component {
   constructor(props) {
@@ -88,6 +87,29 @@ class SimulationSummary extends Component {
     );
   }
 }
+
+SimulationSummary.propTypes = {
+  redirectURL: PropTypes.string,
+  intrusions: PropTypes.number,
+  score: PropTypes.number,
+  incorrect: PropTypes.number,
+  results: PropTypes.arrayOf(
+    PropTypes.shape({
+      fileName: PropTypes.string,
+      content: PropTypes.string,
+      sensitivityLevel: PropTypes.number,
+      accessStatus: PropTypes.string,
+      decision: PropTypes.string,
+      result: PropTypes.string,
+      report: PropTypes.string,
+      message: PropTypes.string,
+    })
+  ),
+  changesApplied: PropTypes.bool,
+  protect: PropTypes.number,
+  state: PropTypes.string,
+  handlers: PropTypes.object,
+};
 
 const mapStateToProps = (state) => {
   const { redirectURL, intrusions, score, incorrect, results } =
