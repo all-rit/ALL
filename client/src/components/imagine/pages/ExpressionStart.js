@@ -5,7 +5,7 @@ import { navigate } from "@reach/router";
 const ExpressionStart = (props) => {
   const { linkNum } = props;
   const handleNext = () => {
-    navigate("/Imagine" + linkNum + "/VideoExercise");
+    navigate("/Imagine" + linkNum + "/Exercise");
   };
 
   return (

@@ -5,6 +5,8 @@ import AvatarSelection from "./pages/AvatarSelection";
 import ImagineEnd from "./pages/ImagineEnd";
 import ImagineStart from "./pages/ImagineStart";
 import ExpressionStart from "./pages/ExpressionStart";
+import VideoExercise from "./pages/VideoExercise";
+import ExpressionScore from "./pages/ExpressionScore";
 import MatchLobby from "./pages/MatchLobby";
 import TicTacToe from "./pages/TicTacToe";
 import { transitions, positions, Provider } from "react-alert";
@@ -35,6 +37,8 @@ const Imagine = (props) => {
           <Router className="app">
             <ImagineStart path="/" user={user} linkNum={linkNum} />
             <ExpressionStart path="/Expression" user={user} linkNum={linkNum} />
+            <VideoExercise path="/Exercise" user={user} linkNum={linkNum} />
+            <ExpressionScore path="/ExpressionScore" user={user} linkNum={linkNum} />
             <AvatarSelection
               path="/AvatarSelection"
               user={user}
