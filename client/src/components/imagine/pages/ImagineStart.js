@@ -5,7 +5,7 @@ import { navigate } from "@reach/router";
 const ImagineStart = (props) => {
   const { linkNum } = props;
   const handleNext = () => {
-    navigate("/Imagine" + linkNum + "/AvatarSelection");
+    navigate("/Imagine" + linkNum + "/GameInstructions");
   };
 
   return (
