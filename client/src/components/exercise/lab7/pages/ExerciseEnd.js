@@ -4,6 +4,7 @@ import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import UserLabService from "../../../../services/UserLabService";
 import { LAB_ID } from "../../../../constants/lab7";
+import { connect } from "react-redux";
 
 class ExerciseEnd extends Component {
   handleHome() {
@@ -11,14 +12,14 @@ class ExerciseEnd extends Component {
   }
 
   componentDidMount() {
-    const { user, actions } = this.props;
+    const { user } = this.props;
     UserLabService.complete_exercise(LAB_ID);
     if (user?.firstname !== null && user !== null) {
       UserLabService.user_complete_exercise(user.userid, LAB_ID);
     }
   }
+
   render() {
-    // const { user, state, plays } = this.props;
     return (
       <Fragment>
         <div className="center-div">
@@ -43,4 +44,9 @@ class ExerciseEnd extends Component {
   }
 }
 
-export default ExerciseEnd;
+const mapStateToProps = (state) => {
+  const { user } = state.main;
+  return { user };
+};
+
+export default connect(mapStateToProps)(ExerciseEnd);

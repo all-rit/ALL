@@ -29,6 +29,8 @@ import Countdown from "react-countdown-now";
 import ProgressBar from "./ProgressBar";
 import File from "./File";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../reducers/lab7/ExerciseReducer";
 
 class Simulation extends Component {
   constructor(props) {
@@ -59,8 +61,8 @@ class Simulation extends Component {
    * Otherwise, transition to the simulation summary.
    */
   startRound() {
-    const { data, handlers, user } = this.props;
-    if (data.roundNumber < ROUND_LIMIT) {
+    const { roundNumber, score, handlers, user } = this.props;
+    if (roundNumber < ROUND_LIMIT) {
       const threatLvl = this.randomizeThreat();
       handlers.startNewRound();
       const files = this.generateFileList(threatLvl);
@@ -71,7 +73,7 @@ class Simulation extends Component {
       if (user?.firstname !== null && user !== null) {
         UserLabService.user_complete_exercise(user.userid, LAB_ID);
       }
-      ExerciseService.updateEndExerciseScore(data.score);
+      ExerciseService.updateEndExerciseScore(score);
       navigate("/Lab7/Exercise/SimulationSummary");
     }
   }
@@ -295,7 +297,8 @@ class Simulation extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { roundNumber, intrusions, protect, incorrect, score, threatLvl } =
+      this.props;
     return (
       <div className="simulation tw-mt-12">
         {/* Header */}
@@ -303,7 +306,7 @@ class Simulation extends Component {
           {/* Round Tracker */}
           <div>
             <h4 className="tw-font-bold">
-              Round {data.roundNumber} of {ROUND_LIMIT}
+              Round {roundNumber} of {ROUND_LIMIT}
             </h4>
           </div>
           {/* Status Report */}
@@ -315,10 +318,10 @@ class Simulation extends Component {
               <li>Total Score:</li>
             </ul>
             <ul className={"tw-text-right tw-ml-6"}>
-              <li>{data.intrusions}</li>
-              <li>{data.protected}</li>
-              <li>{data.incorrect}</li>
-              <li>{data.score}</li>
+              <li>{intrusions}</li>
+              <li>{protect}</li>
+              <li>{incorrect}</li>
+              <li>{score}</li>
             </ul>
           </div>
         </div>
@@ -329,7 +332,7 @@ class Simulation extends Component {
             className={"tw-flex tw-items-center tw-justify-center tw-w-full"}
           >
             <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
-              {THREAT_LEVEL_TEXT[data.threatLvl]} threat detected!
+              {THREAT_LEVEL_TEXT[threatLvl]} threat detected!
             </h1>
           </div>
           {/* File Display */}
@@ -348,8 +351,26 @@ class Simulation extends Component {
 }
 
 const mapStateToProps = (state) => {
+  const { roundNumber, intrusions, incorrect, score, threatLvl } =
+    state.exercise7;
   const { makeDecision } = state.repair7;
-  return { makeDecision };
+  const { user } = state.main;
+  return {
+    makeDecision,
+    user,
+    roundNumber,
+    score,
+    intrusions,
+    incorrect,
+    threatLvl,
+    protect: state.exercise7.protected,
+  };
 };
 
-export default connect(mapStateToProps)(Simulation);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handlers: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Simulation);

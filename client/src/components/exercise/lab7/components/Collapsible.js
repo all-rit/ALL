@@ -119,7 +119,7 @@ class Collapsible extends Component {
 export default Collapsible;
 
 Collapsible.propTypes = {
-  result: PropTypes.exact({
+  result: PropTypes.shape({
     threatLvl: PropTypes.number,
     files: PropTypes.arrayOf(
       PropTypes.shape({

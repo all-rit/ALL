@@ -1,14 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Router } from "@reach/router";
 import "../../../assets/stylesheets/main.scss";
-import { actions as exerciseActions } from "../../../reducers/lab7/ExerciseReducer";
-import { actions as repairActions } from "../../../reducers/lab7/RepairReducer";
-import { actions as appActions } from "../../../reducers/lab7/AppReducer";
-import { bindActionCreators } from "redux";
 
 import ExerciseStart from "./pages/ExerciseStart";
 import AISimulation from "./pages/Simulation/AISimulation";
@@ -20,66 +12,31 @@ import AlterationStart from "./pages/AlterationActivity/AlterationStart";
 import AlterationQuiz from "./pages/AlterationActivity/AlterationQuiz";
 import ExerciseEnd from "./pages/ExerciseEnd";
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(
-      { ...exerciseActions, ...repairActions, ...appActions },
-      dispatch
-    ),
-  };
-};
-
 class Main extends Component {
   render() {
-    const { actions, state, user } = this.props;
     return (
       <div className="bottomSpace">
         <Router className="app">
           <ExerciseStart default path="/*" />
 
           {/* Phase 1: Simulation */}
-          <AISimulation path="/AISimulation" actions={actions} state={state} />
-          <SimulationSummary
-            path="/SimulationSummary"
-            actions={actions}
-            state={state}
-          />
-          <BadAIExplanation
-            path="/BadAIExplanation"
-            actions={actions}
-            state={state}
-          />
+          <AISimulation path="/AISimulation" />
+          <SimulationSummary path="/SimulationSummary" />
+          <BadAIExplanation path="/BadAIExplanation" />
 
           {/* Phase 2: Improve AI Code Repair */}
           <AICodeRepair path="/AICodeRepair" />
-          <ImprovedAISimulation
-            path="/ImprovedAISimulation"
-            actions={actions}
-            state={state}
-          />
+          <ImprovedAISimulation path="/ImprovedAISimulation" />
 
           {/* Phase 3: Alteration Activity */}
-          <AlterationStart path="/AlterationStart" actions={actions} />
-          <AlterationQuiz
-            path="/AlterationQuiz"
-            actions={actions}
-            state={state}
-          />
+          <AlterationStart path="/AlterationStart" />
+          <AlterationQuiz path="/AlterationQuiz" />
 
-          <ExerciseEnd
-            path="/ExerciseEnd"
-            actions={actions}
-            state={state}
-            user={user}
-          />
+          <ExerciseEnd path="/ExerciseEnd" />
         </Router>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

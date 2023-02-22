@@ -1,10 +1,12 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import Collapsible from "../../components/Collapsible";
 import { EXERCISE_IDLE } from "../../../../../constants/lab7";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
+import { connect } from "react-redux";
 
 class SimulationSummary extends Component {
   constructor(props) {
@@ -16,16 +18,12 @@ class SimulationSummary extends Component {
 
   componentDidMount() {
     const { state } = this.props;
-    if (state.exercise7.state === EXERCISE_IDLE)
+    if (state === EXERCISE_IDLE)
       setTimeout(() => navigate("/Lab7/Exercise/BadAIExplanation"));
   }
 
   handleContinue() {
-    const {
-      state: {
-        exercise7: { redirectURL },
-      },
-    } = this.props;
+    const { redirectURL } = this.props;
     navigate(`/Lab7/Exercise/${redirectURL}`);
   }
 
@@ -34,9 +32,8 @@ class SimulationSummary extends Component {
   }
 
   render() {
-    const {
-      state: { exercise7, repair7 },
-    } = this.props;
+    const { score, intrusions, protect, incorrect, results, changesApplied } =
+      this.props;
     return (
       <div>
         <h2 className={"tw-font-bold"}>Simulation Summary</h2>
@@ -47,9 +44,7 @@ class SimulationSummary extends Component {
             }
           >
             <div>
-              <p className={"tw-font-bold tw-text-2xl"}>
-                Total Score: {exercise7.score}
-              </p>
+              <p className={"tw-font-bold tw-text-2xl"}>Total Score: {score}</p>
             </div>
             <div className={"tw-border-l-0 tw-border-solid tw-h-[125px]"} />
             <div className={"tw-flex tw-text-left tw-text-2xl"}>
@@ -59,20 +54,20 @@ class SimulationSummary extends Component {
                 <li>Incorrect (FP):</li>
               </ul>
               <ul className={"tw-text-right tw-font-bold tw-ml-6"}>
-                <li>{exercise7.intrusions}</li>
-                <li>{exercise7.protected}</li>
-                <li>{exercise7.incorrect}</li>
+                <li>{intrusions}</li>
+                <li>{protect}</li>
+                <li>{incorrect}</li>
               </ul>
             </div>
           </div>
           <div className={"tw-mt-12 tw-space-y-6"}>
-            {exercise7.results.map((result, index) => (
+            {results.map((result, index) => (
               <Collapsible key={index} result={result} index={index} />
             ))}
           </div>
         </div>
         <div className={"tw-mt-12"}>
-          {repair7.changesApplied && (
+          {changesApplied && (
             <button
               className="btn btn-second text-black btn-xl text-uppercase leftButton"
               onClick={this.handleBack.bind(this)}
@@ -94,4 +89,26 @@ class SimulationSummary extends Component {
   }
 }
 
-export default SimulationSummary;
+const mapStateToProps = (state) => {
+  const { redirectURL, intrusions, score, incorrect, results } =
+    state.exercise7;
+  const { changesApplied } = state.repair7;
+  return {
+    redirectURL,
+    intrusions,
+    score,
+    incorrect,
+    results,
+    changesApplied,
+    protect: state.exercise7.protected,
+    state: state.exercise7.state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handlers: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SimulationSummary);

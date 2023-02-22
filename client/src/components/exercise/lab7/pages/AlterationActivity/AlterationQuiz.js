@@ -5,6 +5,9 @@ import { default as Quiz } from "../../../../quiz/App";
 import { EXERCISE_IDLE } from "../../../../../constants/lab7";
 import { navigate } from "@reach/router";
 import { MathComponent } from "mathjax-react";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
+import { connect } from "react-redux";
 
 class AlterationQuiz extends Component {
   constructor(props) {
@@ -17,13 +20,13 @@ class AlterationQuiz extends Component {
 
   componentDidMount() {
     const { state } = this.props;
-    if (state.exercise7.state === EXERCISE_IDLE)
+    if (state === EXERCISE_IDLE)
       setTimeout(() => navigate("/Lab7/Exercise/AlterationStart"));
   }
 
   render() {
     const { updateStateFunc } = this.state;
-    const { state, actions } = this.props;
+    const { user } = this.props;
     return (
       <div className="center-div">
         <p className="playthrough__sentence">Alteration Quiz</p>
@@ -38,7 +41,7 @@ class AlterationQuiz extends Component {
         </div>
         <Quiz
           path={`/AlterationQuiz`}
-          user={state.main.user}
+          user={user}
           updateStateFunc={updateStateFunc}
           hideCertificate={true}
         />
@@ -47,4 +50,15 @@ class AlterationQuiz extends Component {
   }
 }
 
-export default AlterationQuiz;
+const mapStateToProps = (state) => {
+  const { user } = state.main;
+  return { user, state: state.exercise7.state };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AlterationQuiz);

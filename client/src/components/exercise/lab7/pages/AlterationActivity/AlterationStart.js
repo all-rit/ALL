@@ -4,6 +4,9 @@ import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import { MathComponent } from "mathjax-react";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
+import { connect } from "react-redux";
 
 class AlterationStart extends Component {
   constructor(props) {
@@ -21,7 +24,6 @@ class AlterationStart extends Component {
   }
 
   render() {
-    const { actions } = this.props;
     return (
       <Fragment>
         <div className="center-div">
@@ -65,4 +67,10 @@ class AlterationStart extends Component {
   }
 }
 
-export default AlterationStart;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AlterationStart);

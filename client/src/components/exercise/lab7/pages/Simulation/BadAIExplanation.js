@@ -4,6 +4,9 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
+import { connect } from "react-redux";
 
 class BadAIExplanation extends Component {
   constructor(props) {
@@ -23,7 +26,6 @@ class BadAIExplanation extends Component {
   }
 
   render() {
-    const { actions } = this.props;
     return (
       <div>
         <p className="playthrough__sentence">
@@ -51,4 +53,10 @@ class BadAIExplanation extends Component {
   }
 }
 
-export default BadAIExplanation;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(BadAIExplanation);

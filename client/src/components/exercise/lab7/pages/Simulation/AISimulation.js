@@ -4,6 +4,9 @@ import React, { Component } from "react";
 import Simulation from "../../components/Simulation";
 import "../../../../../assets/stylesheets/components/Simulation.scss";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
+import { connect } from "react-redux";
 
 class AISimulation extends Component {
   constructor(props) {
@@ -17,16 +20,18 @@ class AISimulation extends Component {
   }
 
   render() {
-    const { state, actions } = this.props;
     return (
       <div>
-        <Simulation
-          data={state.exercise7}
-          handlers={actions}
-          user={state.main.user}
-        />
+        <Simulation />
       </div>
     );
   }
 }
-export default AISimulation;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AISimulation);

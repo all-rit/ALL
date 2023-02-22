@@ -23,10 +23,12 @@ class File extends Component {
         <div
           className={"tw-space-y-3 tw-flex tw-flex-col tw-justify-center file"}
         >
-          <div>
-            <img className={"tw-h-14 tw-w-14"} src={image} alt={alt} />
-            <p className={"tw-mt-1.5 tw-font-bold"}>{data.decision} FILE</p>
-          </div>
+          {data.report !== undefined && (
+            <div>
+              <img className={"tw-h-14 tw-w-14"} src={image} alt={alt} />
+              <p className={"tw-mt-1.5 tw-font-bold"}>{data.decision} FILE</p>
+            </div>
+          )}
           <div>
             <p className={"tw-leading-tight tw-font-bold"}>{data.fileName}</p>
             <p className={"tw-leading-tight tw-italic"}>
