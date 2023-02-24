@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 //import Circle from "../components/circle";
 import { navigate } from "@reach/router";
