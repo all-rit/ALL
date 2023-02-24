@@ -6,6 +6,8 @@ import ImagineEnd from "./pages/ImagineEnd";
 import ImagineStart from "./pages/ImagineStart";
 import GameInstructions from "./pages/GameInstructions";
 import GameBoard from "./pages/GameBoard";
+import CBInstructions from "./pages/CBInstructions";
+import CBGameBoard from "./pages/CBGameBoard";
 import ExpressionStart from "./pages/ExpressionStart";
 // import MatchLobby from "./pages/MatchLobby";
 // import TicTacToe from "./pages/TicTacToe";
@@ -39,11 +41,19 @@ const Imagine = (props) => {
             <GameInstructions
               path="/GameInstructions"
               user={user}
-              /*linkNum={linkNum}*/ />
+              linkNum={linkNum} />
             <GameBoard
               path="/GameBoard"
               user={user}
-              /*linkNum={linkNum} */ />
+              linkNum={linkNum} />
+            <CBInstructions
+              path="/CBInstrucions"
+              user={user}
+              linkNum={linkNum} />
+            <CBGameBoard
+              path="/CBGameBoard"
+              user={user}
+              linkNum={linkNum} />
             <ExpressionStart path="/Expression" user={user} linkNum={linkNum} />
             {/* <AvatarSelection
               path="/AvatarSelection"

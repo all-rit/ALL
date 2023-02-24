@@ -1,7 +1,7 @@
 import React from "react";
-import Circle from "../components/circle";
+//import Circle from "../components/circle";
 import { navigate } from "@reach/router";
-import "./landingpage.css";
+//import "./landingpage.css";
 
 const GameInstructions = (props) => {
     const { linkNum } = props;
