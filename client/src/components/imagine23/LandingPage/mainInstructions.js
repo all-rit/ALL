@@ -1,8 +1,12 @@
 import React from "react";
 import Circle from "../components/circle";
-import "./landingpage.css";
+import { navigate } from "@reach/router";
+import "./landingpage.css"; h
 
 const MainInstructions = () => {
+  const handleNext = () => {
+    navigate("ImagineExperiential/exercise");
+  }
   return (
     <div className="mainInstructionsContainer">
       {/*
@@ -44,7 +48,15 @@ const MainInstructions = () => {
           seconds.
         </li>
       </ul>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase "
+        onClick={handleNext}
+        key="start"
+      >
+        Start
+      </button>
     </div>
+
   );
 };
 

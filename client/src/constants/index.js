@@ -1,4 +1,22 @@
 export const Sections = {
+  // 0: {
+  //   name: "", //Landing Page
+  //   0: {
+  //     name: "",
+  //   },
+  //   1: {
+  //     name: "SiteMap",
+  //   },
+  //   2: {
+  //     name: "Profile",
+  //   },
+  //   3: {
+  //     name: "ImagineExperiential",
+  //   },
+  //   4: {
+  //     name: "ImagineExpression",
+  //   },
+  // },
   0: {
     name: "", // represents Landing Page
     0: {

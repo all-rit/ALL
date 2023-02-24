@@ -1,46 +1,40 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
+import { navigate } from "@reach/router";
 import React from "react";
+import { navigate } from "@reach/router";
 import useScroll from "../../../use-hooks/useScroll";
 import Button from "../components/header/buttons/button";
 import MainInstructions from "./mainInstructions";
 
-const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
-  useScroll();
-
-  const closePage = () => {
-    endFirstExercise();
+const LandingPage = (props) => {
+  const handleNext = () => {
+    navigate("/ImagineExperiential/mainInstructions");
   };
+
 
   if (background !== "white") {
     toWhiteBackground();
   }
 
   return (
-    <div>
-      <div id="Header">
-        <p className="mainTitle">Welcome!</p>
+    <div className="container bottomSpace center-div">
+      <h2 className="playthrough__title">Experiancial Empathy Building: Start</h2>
+      <div className="playthrough__sentence">
+        You are going to be participating in an Empathy Building exercise in which you will
+        experience how a poorly designed app might cause someone with a Color-Blindness deficiency discomfort or annoyance.
       </div>
-      <div id="Body">
-        <MainInstructions />
-        <p
-          className="mainInstructionList"
-          style={{ marginTop: "40px", marginBottom: "10px" }}
-        >
-          When you are ready, click the 'Let's Get Started' button to begin the
-          exercise
-        </p>
-        <div className="center">
-          <Button
-            clickMethod={closePage}
-            message={"Lets Get Started!"}
-            fontSizing={"25px"}
-          />
-        </div>
-        <br />
-        <br />
-        <br />
+      <div className="playthrough__sentence">
+        Click the “Activity” button to begin!
       </div>
+
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase "
+        onClick={handleNext}
+        key="start"
+      >
+        Activity
+      </button>
     </div>
   );
 };
