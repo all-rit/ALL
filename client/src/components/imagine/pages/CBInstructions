@@ -62,14 +62,16 @@ const CBInstructions = ({
                 </li>
             </ul>
             <div className="center">
-                <Button
-                    clickMethod={closeInstructions}
-                    message={"I'm ready!"}
-                    fontSizing={"25px"}
-                />
+                <button
+                    className="btn btn-primary text-black btn-xl text-uppercase "
+                    onClick={handleNext}
+                    key="start"
+                >
+                    Start
+                </button>
             </div>
         </div>
     );
 };
 
-export default SecondInstructions;
+export default CBInstructions;
