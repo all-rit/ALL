@@ -20,7 +20,7 @@ const GameInstructions = (props) => {
                 same size as this one:
             </p>
             <div className="center">
-                <Circle color={"blue"} clickable={false} />
+                {/* <Circle color={"blue"} clickable={false} /> */}
             </div>
             <ul className="study__list">
                 <li className="mainInstructionsItem">

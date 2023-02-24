@@ -2,15 +2,15 @@
 /* eslint-disable react/prop-types */
 import { navigate } from "@reach/router";
 import React from "react";
-import Button from "../components/header/buttons/button";
-import "./secondaryInstructions.css";
+//import Button from "../components/header/buttons/button";
+//import "./secondaryInstructions.css";
 
 /*
 Page containing the instructions for the second popup the user sees
 this instructional popup covers color vision defiencies
 */
 const CBInstructions = ({
-    closePage,
+    // closePage,
     selectOption,
     toWhiteBackground,
     background,
@@ -29,9 +29,9 @@ const CBInstructions = ({
         toWhiteBackground();
     }
 
-    const closeInstructions = () => {
-        closePage();
-    };
+    // const closeInstructions = () => {
+    //     closePage();
+    // };
 
     return (
         <div className="instructionsContainer">
