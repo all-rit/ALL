@@ -63,7 +63,7 @@ class PageLayoutRepair extends Component {
           }
           break;
         case "classvalue":
-          if (this.state[name] !== "body") {
+          if (this.state[name] !== "'body'") {
             error = true;
             this.setState({ classerror: "Must enter 'body'" });
           } else {

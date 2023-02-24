@@ -24,4 +24,4 @@ const RepairService = {
   },
 };
 
-export default RepairService.js;
+export default RepairService;
