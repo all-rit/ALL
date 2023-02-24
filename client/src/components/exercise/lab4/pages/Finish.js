@@ -28,12 +28,13 @@ class Finish extends Component {
           <AppBar position="static" className="appBar">
             <Toolbar>
               <h4 className="flex-boxes ">
-                Congratulations! You have succesfully completed the Screen Readers Exercise!
+                Congratulations! You have succesfully completed the Screen
+                Readers Exercise!
               </h4>
             </Toolbar>
           </AppBar>
           <br />
-          <h4 className="flex-boxes" >
+          <h4 className="flex-boxes">
             Click the button below to restart the exercise.
           </h4>
           <button
@@ -42,7 +43,6 @@ class Finish extends Component {
             key="start"
           >
             Return to Exercise Start
-
           </button>
         </div>
       </Fragment>

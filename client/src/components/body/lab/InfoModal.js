@@ -35,7 +35,7 @@ const InfoModal = (props) => {
                 <li className="p-text-modal">{fullDescription}</li>
                 <li className="p-text-modal">
                   Participants will take part in an exercise that will bring the
-                  user through simulated problemsome scenarios, then ask the
+                  user through simulated problematic scenarios, then ask the
                   user to make changes.
                 </li>
                 <li className="p-text-modal">

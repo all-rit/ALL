@@ -14,7 +14,7 @@ class CodeUpdateHeader extends Component {
       <div>
         <AppBar position="static" style={appBarStyle}>
           <Toolbar>
-            <Grid justify={justifyAlignment} container spacing={10}>
+            <Grid justifyContent={justifyAlignment} container spacing={10}>
               <Grid item>
                 <Typography
                   variant={"h4"}

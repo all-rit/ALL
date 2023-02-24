@@ -58,6 +58,15 @@ const GridImages = (props) => {
     handleGridImage(id);
   };
 
+  //changed useEffect
+  useEffect(() => {
+    let avatarData = createAvatarData(1000);
+    shuffleArray(avatarData);
+    setData(avatarData.slice(0, 15));
+    setCurrentFile([]);
+    setId([]);
+  }, [multi]);
+
   useEffect(() => {
     const avatarData = createAvatarData(1000);
     shuffleArray(avatarData);
@@ -99,7 +108,7 @@ const GridImages = (props) => {
                         : "tw-max-w-full tw-h-auto"
                     }
                     alt={data.name}
-                    avatarStyle="Circle"
+                    avatarStyle="Square"
                     topType={data.avatarAttributes.topType}
                     accessoriesType={data.avatarAttributes.accessoriesType}
                     hairColor={data.avatarAttributes.hairColor}
