@@ -9,6 +9,8 @@ import GameBoard from "./pages/GameBoard";
 import CBInstructions from "./pages/CBInstructions";
 import CBGameBoard from "./pages/CBGameBoard";
 import ExpressionStart from "./pages/ExpressionStart";
+import VideoExercise from "./pages/VideoExercise";
+import ExpressionScore from "./pages/ExpressionScore";
 // import MatchLobby from "./pages/MatchLobby";
 // import TicTacToe from "./pages/TicTacToe";
 import { transitions, positions, Provider } from "react-alert";
@@ -55,6 +57,8 @@ const Imagine = (props) => {
               user={user}
               linkNum={linkNum} />
             <ExpressionStart path="/Expression" user={user} linkNum={linkNum} />
+            <VideoExercise path="/Exercise" user={user} linkNum={linkNum} />
+            <ExpressionScore path="/ExpressionScore" user={user} linkNum={linkNum} />
             {/* <AvatarSelection
               path="/AvatarSelection"
               user={user}
