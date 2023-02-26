@@ -172,7 +172,7 @@ export const Sections = {
     4: {
       name: "Quiz",
     },
-  }
+  },
 };
 // for shared component
 export const EXERCISE_IDLE = "EXERCISE_IDLE";
