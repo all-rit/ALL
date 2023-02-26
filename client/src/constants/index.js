@@ -155,7 +155,7 @@ export const Sections = {
     },
   },
   8: {
-    fullname: "Algorithmic Bias",
+    fullname: "Algorithmic Bias", // TODO: edit this once we have an official title
     name: "Lab8",
     0: {
       name: "About",
