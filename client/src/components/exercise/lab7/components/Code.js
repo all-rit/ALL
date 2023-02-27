@@ -87,7 +87,7 @@ class Code extends Component {
     return result;
   }
 
-  async validateRepair() {
+  validateRepair() {
     const { actions } = this.props;
     const cost = this.validateCostValue();
     const reward = this.validateRewardValue();
@@ -118,6 +118,7 @@ class Code extends Component {
       actions.updateRewardError(null);
       actions.updateCostError(null);
       actions.updateRepairEquation(rewardValue, costValue);
+      actions.closeRepair();
       this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
   }
@@ -228,7 +229,7 @@ class Code extends Component {
               <input
                 name="rewardvalue"
                 type="text"
-                className={`${rewardError ? "form-error-input" : ""}`}
+                className={`${rewardError ? "form-error-input" : ""} tw-w-96`}
                 defaultValue={rewardValue}
                 onChange={this.handleRewardValueChange.bind(this)}
                 required
@@ -261,7 +262,7 @@ class Code extends Component {
               <input
                 name="costvalue"
                 type="text"
-                className={costError ? "form-error-input" : ""}
+                className={`${costError ? "form-error-input" : ""} tw-w-96`}
                 defaultValue={costValue}
                 onChange={this.handleCostValueChange.bind(this)}
                 required

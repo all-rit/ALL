@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import ExerciseService from "../../../../../services/lab7/ExerciseService";
 
 class AlterationQuiz extends Component {
   constructor(props) {
@@ -21,6 +22,12 @@ class AlterationQuiz extends Component {
     const { state } = this.props;
     if (state === EXERCISE_IDLE)
       setTimeout(() => navigate("/Lab7/Exercise/AlterationStart"));
+  }
+
+  handleSubmitData (output, userId) {
+    const {actions} = this.props;
+    actions.updateState(EXERCISE_IDLE);
+    ExerciseService.submitRepair(output, userId);
   }
 
   render() {
@@ -43,7 +50,7 @@ class AlterationQuiz extends Component {
           user={user}
           hideCertificate
           isFinalQuiz={false}
-          submitData={() => {}}
+          submitData={this.handleSubmitData.bind(this)}
         />
       </div>
     );

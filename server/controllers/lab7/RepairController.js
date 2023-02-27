@@ -15,6 +15,6 @@ exports.updateReport = (req, res) => {
     repairId: req.body.repairId,
     report: req.body.report,
   }).then(() => {
-    res.sendStatus(200);
+    return res.sendStatus(200);
   });
 };

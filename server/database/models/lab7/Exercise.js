@@ -8,11 +8,12 @@ module.exports = (sequelize, DataTypes) => {
           primaryKey: true,
           autoIncrement: true,
         },
-        usersessionid: {
+        userid: {
           type: DataTypes.BIGINT,
         },
-        playthrough: {type: DataTypes.INTEGER},
-        score: {type: DataTypes.INTEGER},
+          report: {
+            type:DataTypes.JSON
+          }
       },
       {tableName: 'lab7_exercise'},
   );

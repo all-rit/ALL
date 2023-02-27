@@ -1,11 +1,12 @@
 const ExerciseService = require('../../services/lab7/ExerciseService');
 
-exports.submitChoice = (req, res) => {
+exports.submitRepair = (req, res) => {
   ExerciseService.submitChoice({
-    usersessionid: req.session.token,
+    userid: req.body.userId,
+    report: req.body.report
   }).then((id) => {
     req.session.exercise = id;
-    res.sendStatus(200);
+    return res.sendStatus(200);
   });
 };
 
