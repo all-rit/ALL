@@ -90,7 +90,7 @@ const GridImages = (props) => {
         {data.length !== 0 ? (
           <div className="tw-container tw-mx-auto tw-space-y-2 lg:tw-space-y-0 lg:tw-gap-2 lg:tw-grid lg:tw-grid-cols-5 tw-p-2">
             {data?.map((data) => (
-              <>
+              <div key={data.id}>
                 <div
                   tabIndex="0"
                   className={gridImagesClassnames}
@@ -121,7 +121,7 @@ const GridImages = (props) => {
                     skinColor={data.avatarAttributes.skinColor}
                   />
                 </div>
-              </>
+              </div>
             ))}
           </div>
         ) : (
