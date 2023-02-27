@@ -16,12 +16,14 @@ const AIRepair = (props) => {
 
   const [repairOpen, setRepairOpen] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
-  const [appearanceValue, setAppearanceValue] = useState(7);
-  const [experienceValue, setExperienceValue] = useState(6);
+  const [appearanceValue, setAppearanceValue] = useState(8);
+  const [experienceValue, setExperienceValue] = useState(5);
   const [availabilityValue, setAvailabilityValue] = useState(4);
   const [payValue, setPayValue] = useState(3);
   const [userError, setUserError] = useState(true);
+  const [genderValue, setGenderValue] = useState(0);
   const [appearanceValueError, setAppearanceValueError] = useState(false);
+  const [genderValueError, setGenderValueError] = useState(false);
   const [experienceValueError, setExperienceValueError] = useState(false);
   const [availabilityValueError, setAvailabilityValueError] = useState(false);
   const [payValueError, setPayValueError] = useState(false);
@@ -41,6 +43,12 @@ const AIRepair = (props) => {
     if (weightedValues !== 20) {
       setWeightedValueError(true);
       error = true;
+    }
+    if (parseInt(genderValue) !== 0) {
+      setGenderValueError(true);
+      error = true;
+    } else {
+      setGenderValueError(false);
     }
     if (parseInt(appearanceValue) !== 0) {
       setAppearanceValueError(true);
@@ -147,7 +155,7 @@ const AIRepair = (props) => {
               </div>
               <div className="code_editor__line">
                 <span className="code_editor__line--darkgreen">
-                  &#47;&#47; When the weighted values add up to 65% (13) of its
+                  &#47;&#47; When the weighted values add up to 75% (15) of its
                   total (20), the AI makes a recommendation
                 </span>
               </div>
@@ -169,6 +177,38 @@ const AIRepair = (props) => {
                 <span className="code_editor__json">hiringAIConfig </span>
                 <span>= </span>
                 <span className="code_editor__class">{"{"}</span>
+              </div>
+              <div className="code_editor__form">
+                <div className="code_editor__line">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span className="code_editor__line--darkgreen">
+                    &#47;&#47; genderWeight should always be 0 otherwise its unequitable
+                  </span>
+                </div>
+                <div className="code_editor__json_value code_editor__line-background--light">
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>genderWeight:&nbsp;</span>
+                  <span>
+                    <input
+                      name="genderweight"
+                      type="text"
+                      defaultValue={0}
+                      onChange={(e) => {
+                        setGenderValue(e.target.value);
+                      }}
+                      title={`gender weight`}
+                      className={genderValueError ? "form-error-input" : ""}
+                    />
+                  </span>
+                  {genderValueError && (
+                    <div className="code_editor__line">
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"genderWeight must be 0 to be equitable"}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="code_editor__form">
                 <div className="code_editor__line">
