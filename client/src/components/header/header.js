@@ -52,6 +52,7 @@ const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const activeStyle = { color: "#fed136" };
   const toggle = () => setIsOpen(!isOpen);
+  const closeNav = () => setIsOpen(false);
   const { state, actions } = props;
   const [link, setLink] = useState(0);
   if (state.main.lab > 0 || !(state.main.lab === 0 && state.main.body === 0)) {
@@ -111,9 +112,11 @@ const Header = (props) => {
       style={{
         boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)",
         paddingTop: "1rem",
+        alignItems: "flex-end"
+
       }}
     >
-      <div className="container">
+      <div style = {{ alignItems: "flex-end" }} className="container">
         <a href="# " onClick={() => navigate(state, actions, 0, 0)}>
           <img
             className="logo img-fluid"
@@ -122,13 +125,16 @@ const Header = (props) => {
           />
         </a>
         {/* TODO figure out a way to consolidate repeated code*/}
+        {/* Landing Page NavBar */}
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {state.main.lab === 0 ? (
-            <Nav className="ml-auto" navbar>
+            <Nav style = {{ alignItems: "flex-end",
+            flexWrap: "wrap"}} className="ml-auto" navbar>
               {state.main.body === 0 ? (
-                <Nav className="ml-auto" navbar>
-                  <NavItem className="collapse navbar-collapse">
+                <Nav style = {{ alignItems: "flex-end",
+                  flexWrap: "wrap"}} className="ml-auto" navbar>
+                  <NavItem  onClick={closeNav} className="navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="#goals"
@@ -139,10 +145,10 @@ const Header = (props) => {
                       </ul>
                     </NavLink>
                   </NavItem>
-                  <NavItem className="collapse navbar-collapse">
+                  <NavItem onClick={closeNav} className=" navbar-collapse">
                     <NavLink
                       className="nav-link "
-                      href=" "
+                      href="#labs "
                       style={link === 1 ? activeStyle : { color: "#fff" }}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -150,7 +156,7 @@ const Header = (props) => {
                       </ul>
                     </NavLink>
                   </NavItem>
-                  <NavItem className="collapse navbar-collapse">
+                  <NavItem onClick={closeNav} className=" navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="#citation"
@@ -161,7 +167,7 @@ const Header = (props) => {
                       </ul>
                     </NavLink>
                   </NavItem>
-                  <NavItem className="collapse navbar-collapse">
+                  <NavItem onClick={closeNav} className=" navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="#contact"
@@ -174,10 +180,12 @@ const Header = (props) => {
                   </NavItem>
                 </Nav>
               ) : (
-                <Nav className="ml-auto" navbar>
+                /** Mobile NavBar */
+                <Nav style = {{ alignItems: "flex-end",
+                  flexWrap: "wrap"}} className="ml-auto" navbar>
                   {state.main.body === 1 && (
                     <>
-                      <NavItem className="collapse navbar-collapse">
+                      <NavItem onClick={closeNav} className=" navbar-collapse">
                         <NavLink
                           className="nav-link "
                           href="# "
@@ -190,7 +198,7 @@ const Header = (props) => {
                         </NavLink>
                       </NavItem>
 
-                      <NavItem className="collapse navbar-collapse">
+                      <NavItem onClick={closeNav} className="collapse navbar-collapse">
                         <NavLink
                           className="nav-link "
                           href="# "
@@ -212,7 +220,7 @@ const Header = (props) => {
               )}
               {state.main.user !== null &&
                 state.main.user.firstname !== null && (
-                  <NavItem className="collapse navbar-collapse">
+                  <NavItem onClick={closeNav} className="collapse navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="# "
@@ -234,8 +242,11 @@ const Header = (props) => {
               />
             </Nav>
           ) : (
-            <Nav className="ml-auto" navbar>
-              <NavItem className="collapse navbar-collapse">
+
+            {/** In-Lab NavBar */},
+            <Nav style = {{ alignItems: "flex-end",
+              flexWrap: "wrap"}} className="ml-auto" navbar>
+              <NavItem onClick={closeNav} className=" navbar-collapse">
                 <NavLink
                   className="nav-link "
                   onClick={() => navigate(state, actions, 0, 0)}
@@ -248,7 +259,7 @@ const Header = (props) => {
                 </NavLink>
               </NavItem>
 
-              <NavItem className="collapse navbar-collapse">
+              <NavItem onClick={closeNav} className=" navbar-collapse">
                 <NavLink
                   className="nav-link "
                   onClick={() => navigate(state, actions, 0)}
@@ -261,7 +272,7 @@ const Header = (props) => {
                 </NavLink>
               </NavItem>
 
-              <NavItem className="collapse navbar-collapse">
+              <NavItem onClick={closeNav} className=" navbar-collapse">
                 <NavLink
                   className="nav-link "
                   onClick={() => navigate(state, actions, 1)}
@@ -274,7 +285,7 @@ const Header = (props) => {
                 </NavLink>
               </NavItem>
 
-              <NavItem className="collapse navbar-collapse">
+              <NavItem onClick={closeNav} className=" navbar-collapse">
                 <NavLink
                   className="nav-link "
                   onClick={() => navigate(state, actions, 2)}
@@ -287,7 +298,7 @@ const Header = (props) => {
                 </NavLink>
               </NavItem>
 
-              <NavItem className="collapse navbar-collapse">
+              <NavItem onClick={closeNav} className=" navbar-collapse">
                 <NavLink
                   className="nav-link "
                   onClick={() => navigate(state, actions, 3)}
@@ -300,7 +311,7 @@ const Header = (props) => {
                 </NavLink>
               </NavItem>
 
-              <NavItem className="collapse navbar-collapse">
+              <NavItem onClick={closeNav} className=" navbar-collapse">
                 <NavLink
                   className="nav-link "
                   onClick={() => navigate(state, actions, 4)}
@@ -314,7 +325,7 @@ const Header = (props) => {
               </NavItem>
 
               {state.main.user !== null && (
-                <NavItem className="collapse navbar-collapse">
+                <NavItem onClick={closeNav} className="collapse navbar-collapse">
                   <NavLink
                     className="nav-link "
                     href="# "
