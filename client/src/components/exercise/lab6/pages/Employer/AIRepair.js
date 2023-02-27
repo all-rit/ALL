@@ -182,7 +182,8 @@ const AIRepair = (props) => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; genderWeight should always be 0 otherwise its unequitable
+                    &#47;&#47; genderWeight should always be 0 otherwise its
+                    unequitable
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">

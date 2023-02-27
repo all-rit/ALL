@@ -26,10 +26,12 @@ const ExerciseEnd = (props) => {
         understanding of the ethics behind AI!
       </div>
       <div className="playthrough__sentence">
-        Want to try out different weighted values and hire more candidates? Click the &quot;Update Repair&quot; button.
+        Want to try out different weighted values and hire more candidates?
+        Click the &quot;Update Repair&quot; button.
       </div>
       <div className="playthrough__sentence">
-        Otherwise click the &quot;Finish Exercise&quot; button to complete this exercise!
+        Otherwise click the &quot;Finish Exercise&quot; button to complete this
+        exercise!
       </div>
       <div className="tw-flex tw-justify-evenly">
         <button
