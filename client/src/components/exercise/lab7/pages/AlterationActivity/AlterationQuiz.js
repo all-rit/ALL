@@ -43,6 +43,7 @@ class AlterationQuiz extends Component {
           user={user}
           hideCertificate
           isFinalQuiz={false}
+          submitData={()=>{}}
         />
       </div>
     );

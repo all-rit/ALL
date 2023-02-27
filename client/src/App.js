@@ -146,6 +146,7 @@ class App extends Component {
                 user={state.main.user}
                 isFinalQuiz
                 hideCertificate={false}
+                submitData={()=>{}}
               />
             </Router>
           </div>

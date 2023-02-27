@@ -198,6 +198,12 @@ const QuizHandler = (props) => {
           (countCorrect / questionsTotal) * 100
         );
       }
+    } else{
+      props.submitData(
+        props.user.userid,
+        props.labId,
+        (countCorrect / questionsTotal) * 100
+      );
     }
   }
 
@@ -289,6 +295,7 @@ QuizHandler.propTypes = {
   labId: PropTypes.number,
   isFinalQuiz: PropTypes.bool.isRequired,
   hideCertificate: PropTypes.bool.isRequired,
+  submitData: PropTypes.func.isRequired,
   user: PropTypes.shape({
     firstname: PropTypes.string,
     userid: PropTypes.number,
