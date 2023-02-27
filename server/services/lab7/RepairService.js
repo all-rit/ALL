@@ -15,9 +15,9 @@ exports.submitChange = (data) => {
 };
 
 exports.updateReport = (data) => {
-    if (data.repairId) {
-        return db.RepairLab7.findByPk(data.repairId).then((exercise) => {
-            exercise.update({report: data.report})
-        })
-    }
-}
+  if (data.repairId) {
+    return db.RepairLab7.findByPk(data.repairId).then((exercise) => {
+      exercise.update({report: data.report});
+    });
+  }
+};

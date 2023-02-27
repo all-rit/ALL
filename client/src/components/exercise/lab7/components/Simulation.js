@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 import _ from "lodash";
-import ExerciseService from "../../../../services/lab7/ExerciseService";
 import UserLabService from "../../../../services/UserLabService";
 import "../../../../assets/stylesheets/components/Simulation.scss";
 
@@ -31,6 +30,7 @@ import File from "./File";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab7/ExerciseReducer";
+import RepairService from "../../../../services/lab7/RepairService";
 
 class Simulation extends Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class Simulation extends Component {
    * Otherwise, transition to the simulation summary.
    */
   startRound() {
-    const { roundNumber, score, handlers, user } = this.props;
+    const { roundNumber, handlers, user, repairId } = this.props;
     if (roundNumber < ROUND_LIMIT) {
       const threatLvl = this.randomizeThreat();
       handlers.startNewRound();
@@ -73,9 +73,24 @@ class Simulation extends Component {
       if (user?.firstname !== null && user !== null) {
         UserLabService.user_complete_exercise(user.userid, LAB_ID);
       }
-      ExerciseService.updateEndExerciseScore(score);
+      RepairService.updateReport(repairId, this.formatReport());
       navigate("/Lab7/Exercise/SimulationSummary");
     }
+  }
+
+  formatReport() {
+    const { results } = this.props;
+    return results.map(({ threatLvl, files }) => {
+      return {
+        threatLvl,
+        intrusions: files.filter((file) => file.result === FILE_INTRUSION)
+          .length,
+        protected: files.filter((file) => file.result === FILE_PROTECTED)
+          .length,
+        incorrect: files.filter((file) => file.result === FILE_INCORRECT)
+          .length,
+      };
+    });
   }
 
   /**
@@ -351,18 +366,20 @@ class Simulation extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { roundNumber, intrusions, incorrect, score, threatLvl } =
+  const { roundNumber, intrusions, incorrect, score, threatLvl, results } =
     state.exercise7;
-  const { makeDecision } = state.repair7;
+  const { makeDecision, repairId } = state.repair7;
   const { user } = state.main;
   return {
     makeDecision,
+    repairId,
     user,
     roundNumber,
     score,
     intrusions,
     incorrect,
     threatLvl,
+    results,
     protect: state.exercise7.protected,
   };
 };

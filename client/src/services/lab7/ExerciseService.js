@@ -33,11 +33,12 @@ const ExerciseService = {
       }
     );
   },
-  updateEndExerciseScore: (score) => {
+  updateEndExerciseScore: (repairId, report) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL + endpoints.END_EXERCISE,
       {
-        score,
+        repairId,
+        report,
       }
     );
   },

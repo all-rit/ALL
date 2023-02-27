@@ -87,7 +87,7 @@ class Code extends Component {
     return result;
   }
 
-  validateRepair() {
+  async validateRepair() {
     const { actions } = this.props;
     const cost = this.validateCostValue();
     const reward = this.validateRewardValue();
@@ -106,9 +106,18 @@ class Code extends Component {
       actions.undoRepairChanges();
       this.setPopupMessage("Errors in Repair. Please fix.");
     } else {
+      const [rewardValue, costValue] = [reward.value, cost.value];
+      RepairService.submitRepair(
+        this.state.componentName,
+        JSON.stringify({ rewardValue, costValue })
+      )
+        .then((response) =>
+          response.ok ? response.json().then((json) => json.repairId) : null
+        )
+        .then((repairId) => actions.setRepairId(repairId));
       actions.updateRewardError(null);
       actions.updateCostError(null);
-      actions.updateRepairEquation(reward.value, cost.value);
+      actions.updateRepairEquation(rewardValue, costValue);
       this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
   }
@@ -128,20 +137,6 @@ class Code extends Component {
         actions.updateRepairError(null);
       }, POPUP_DELAY),
     });
-  }
-
-  handleSubmit(repairError) {
-    const { actions, rewardValue, costValue } = this.props;
-    if (!repairError) {
-      const repair = JSON.stringify({ rewardValue, costValue });
-      RepairService.submitRepair(this.state.componentName, repair);
-      actions.updatePopup("The repairs have been made.");
-    } else {
-      actions.updatePopup("Errors in Repair. Please fix");
-    }
-    actions.updateRepairEquation(rewardValue, costValue);
-    actions.closeRepair();
-    this.clearPopupMessage();
   }
 
   handleRewardValueChange(e) {

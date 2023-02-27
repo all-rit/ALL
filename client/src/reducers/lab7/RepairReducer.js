@@ -12,6 +12,7 @@ export const types = {
   OPEN_REPAIR: "@accessibility-lab/lab7/repair/open_repair",
   CLOSE_REPAIR: "@accessibility-lab/lab7/repair/close_repair",
   UPDATE_MAKE_DECISION: "@accessibility-lab/lab7/repair/update_make_decision",
+  SET_REPAIR_ID: "@accessibility-lab/lab7/repair/set_repair_id",
 };
 
 export const initialState = {
@@ -26,6 +27,8 @@ export const initialState = {
   repairVisible: false,
   changesApplied: false,
   makeDecision: null,
+
+  repairId: null,
 };
 
 const RepairReducer = (state = initialState, action) => {
@@ -93,6 +96,11 @@ const RepairReducer = (state = initialState, action) => {
         ...state,
         makeDecision: action.func,
       };
+    case types.SET_REPAIR_ID:
+      return {
+        ...state,
+        repairId: action.repairId,
+      };
     default:
       return state;
   }
@@ -130,6 +138,7 @@ export const actions = {
   openRepair: () => ({ type: types.OPEN_REPAIR }),
   closeRepair: () => ({ type: types.CLOSE_REPAIR }),
   updateMakeDecision: (func) => ({ type: types.UPDATE_MAKE_DECISION, func }),
+  setRepairId: (repairId) => ({ type: types.SET_REPAIR_ID, repairId }),
 };
 
 export default RepairReducer;
