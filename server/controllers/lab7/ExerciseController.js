@@ -9,12 +9,3 @@ exports.submitChoice = (req, res) => {
   });
 };
 
-exports.updateEndExerciseScore = (req, res) => {
-  ExerciseService.updateEndExerciseScore({
-    id: req.session.exercise,
-    score: req.body.score,
-  }).then(() => {
-    res.sendStatus(200);
-  });
-};
-

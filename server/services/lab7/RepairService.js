@@ -6,10 +6,18 @@ exports.submitChange = (data) => {
     activity: data.activity,
     repair: data.repair,
   })
-      .then(() => {
-        return true;
+      .then((result) => {
+        return result.dataValues.repairid;
       })
       .catch((err) => {
         console.log(err);
       });
 };
+
+exports.updateReport = (data) => {
+    if (data.repairId) {
+        return db.RepairLab7.findByPk(data.repairId).then((exercise) => {
+            exercise.update({report: data.report})
+        })
+    }
+}

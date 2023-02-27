@@ -85,7 +85,7 @@ router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);
 router.post('/lab1/exercise/round', ExerciseControllerLab1.createRound);
 router.post('/lab1/exercise/choice', ExerciseControllerLab1.createChoice);
 router.post('/lab1/exercise/end', ExerciseControllerLab1.updateEndExerciseScore);
-router.post('/lab7/exercise/end', ExerciseControllerLab7.updateEndExerciseScore);
+// router.post('/lab7/exercise/end', ExerciseControllerLab7.updateEndExerciseScore);
 router.post('/lab5/exercise/choice', ExerciseControllerLab5.submitChoice);
 router.post('/lab7/exercise/choice', ExerciseControllerLab7.submitChoice);
 router.post('/lab6/exercise/avatar', ExerciseControllerLab6.submitAvatar);
@@ -103,9 +103,10 @@ router.post('/lab4/repair/submit/button', RepairControllerLab4.submitChangeButto
 router.post('/lab4/repair/submit/skip', RepairControllerLab4.submitChangeSkip);
 router.post('/lab4/repair/submit/hint', RepairControllerLab4.submitChangeHint);
 router.post('/lab5/repair/submit', RepairControllerLab5.submitChange);
-router.post('/lab7/repair/submit', RepairControllerLab7.submitChange);
 router.post('/lab6/repair/submit', RepairControllerLab6.submitChange);
 router.get('/lab6/repair/:userID', RepairControllerLab6.getUserChange);
+router.post('/lab7/repair/submit', RepairControllerLab7.submitChange);
+router.post('/lab7/repair/update', RepairControllerLab7.updateReport);
 
 // Create a Page Entry
 router.post('/page/complete', PageController.createPage);

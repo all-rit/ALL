@@ -1,4 +1,5 @@
 const db = require('../../database');
+
 exports.submitChoice = (data) => {
   if (data.usersessionid) {
     return db.ExerciseLab7.create({
