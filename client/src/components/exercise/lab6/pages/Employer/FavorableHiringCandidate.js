@@ -6,6 +6,7 @@ import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import LongHorizontalLine from "../../../../../common/HorizontalLine/LongHorizontalLine";
 import Recomendation from "../../components/Recomendation";
 import Decision from "../../components/Decision";
+import useScroll from "../../../../../use-hooks/useScroll";
 
 const FavorableHiringCandidate = (props) => {
   const { actions } = props;
@@ -14,6 +15,7 @@ const FavorableHiringCandidate = (props) => {
     setNumInput(numInput + 1);
   };
 
+  useScroll();
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, [actions]);

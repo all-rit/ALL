@@ -305,7 +305,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
           years: years,
           availability: candidateavailability,
           pay: "$" + pay + "/hr",
-          ai: currentWeight >= 13 ? "Yes" : "No",
+          ai: currentWeight >= 15 ? "Yes" : "No",
           bias: "Avatar is wearing a hat",
         });
         break;
@@ -336,7 +336,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
           years: years,
           availability: candidateavailability,
           pay: "$" + pay + "/hr",
-          ai: currentWeight >= 13 ? "Yes" : "No",
+          ai: currentWeight >= 15 ? "Yes" : "No",
           bias: "Avatar is wearing glasses",
         });
         break;
@@ -371,7 +371,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
 
           availability: candidateavailability,
           pay: "$" + pay + "/hr",
-          ai: currentWeight >= 13 ? "Yes" : "No",
+          ai: currentWeight >= 15 ? "Yes" : "No",
           bias: "Avatar's shirt is the color " + scolor,
         });
         break;
@@ -403,7 +403,7 @@ const createAvatarData = (avatarNumber, weightedValues) => {
 
           availability: candidateavailability,
           pay: "$" + pay + "/hr",
-          ai: currentWeight >= 13 ? "Yes" : "No",
+          ai: currentWeight >= 15 ? "Yes" : "No",
           bias: "Avatar's hair is the color " + hcolor,
         });
         break;
