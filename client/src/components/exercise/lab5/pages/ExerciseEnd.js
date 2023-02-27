@@ -26,12 +26,14 @@ class ExerciseEnd extends Component {
       <Fragment>
         <div className="center-div">
           <div className="cognitive_instructions">
-            <AppBar position="static" className="appBar">
-              <h4 className="flex-boxes ">
-                Congratulations! You've finished the Cognitive Learning
-                Exercise.
-              </h4>
-            </AppBar>
+            <div>
+              <AppBar position="static" className="appBar">
+                <h4 className="flex-boxes ">
+                  Congratulations! You have succesfully completed the Cognitive
+                  Impairment Exercise!
+                </h4>
+              </AppBar>
+            </div>
             <h4 className="margin-bottom">Here are some key takeaways:</h4>
             <div className="flex-boxes">
               <div>

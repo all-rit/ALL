@@ -1,6 +1,16 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable require-jsdoc */
-const createAvatarData = (avatarNumber) => {
+
+const createAvatarData = (avatarNumber, weightedValues) => {
+  let appearanceWeight =
+    weightedValues === undefined ? 7 : weightedValues?.appearance;
+  let experienceWeight =
+    weightedValues === undefined ? 6 : weightedValues?.yearsexperience;
+  let payWeight =
+    weightedValues === undefined ? 3 : weightedValues?.expectedpay;
+  let availabilityWeight =
+    weightedValues === undefined ? 4 : weightedValues?.availability;
+
   function generateName() {
     return (
       firstName[Math.floor(Math.random() * firstName.length)] +
@@ -112,7 +122,7 @@ const createAvatarData = (avatarNumber) => {
     "Y",
     "Z",
   ];
-  // Biases
+  //Biases
   const hats = ["Hat", "WinterHat1", "WinterHat2", "WinterHat3"];
   const glasses = [
     "Kurt",
@@ -249,9 +259,25 @@ const createAvatarData = (avatarNumber) => {
   const Mouth = ["Default", "Serious", "Smile", "Twinkle"];
   const Skin = ["Tanned", "Brown", "DarkBrown", "Black", "Pale", "Light"];
 
-  const avatarData = [];
+  const Gender = ["Male", "Female", "Non-binary"];
+
+  //need min and max val's for age
+  const age = "N/A";
+
+  const Availability = ["Full-Time", "Part-Time"];
+  let avatarData = [];
   for (let i = 0; i < avatarNumber; i++) {
-    const biasType = bias[Math.floor(Math.random() * bias.length)];
+    let currentWeight = 0;
+    let biasType = bias[Math.floor(Math.random() * bias.length)];
+    let years = Math.floor(Math.random() * 5) + 1;
+    let candidateavailability =
+      Availability[Math.floor(Math.random() * Availability.length)];
+    let pay = Math.floor(Math.random() * 15 + 20);
+    currentWeight += years >= 1 && years <= 3 ? experienceWeight : 0;
+    currentWeight +=
+      candidateavailability == "Full-Time" ? availabilityWeight : 0;
+    currentWeight += pay >= 25 && pay <= 32 ? payWeight : 0;
+
     switch (biasType) {
       case "hats":
         avatarData.push({
@@ -272,6 +298,14 @@ const createAvatarData = (avatarNumber) => {
             mouthType: Mouth[Math.floor(Math.random() * Mouth.length)],
             skinColor: Skin[Math.floor(Math.random() * Skin.length)],
           },
+          //added attributes to each case
+          gender: Gender[Math.floor(Math.random() * Gender.length)],
+          age: age,
+
+          years: years,
+          availability: candidateavailability,
+          pay: "$" + pay + "/hr",
+          ai: currentWeight >= 15 ? "Yes" : "No",
           bias: "Avatar is wearing a hat",
         });
         break;
@@ -295,12 +329,20 @@ const createAvatarData = (avatarNumber) => {
             mouthType: Mouth[Math.floor(Math.random() * Mouth.length)],
             skinColor: Skin[Math.floor(Math.random() * Skin.length)],
           },
+          //added attributes to each case
+          gender: Gender[Math.floor(Math.random() * Gender.length)],
+          age: age,
+
+          years: years,
+          availability: candidateavailability,
+          pay: "$" + pay + "/hr",
+          ai: currentWeight >= 15 ? "Yes" : "No",
           bias: "Avatar is wearing glasses",
         });
         break;
       case "shirtColor":
-        const scolor =
-          shirtColor[Math.floor(Math.random() * shirtColor.length)];
+        currentWeight += appearanceWeight;
+        let scolor = shirtColor[Math.floor(Math.random() * shirtColor.length)];
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -321,11 +363,21 @@ const createAvatarData = (avatarNumber) => {
             mouthType: Mouth[Math.floor(Math.random() * Mouth.length)],
             skinColor: Skin[Math.floor(Math.random() * Skin.length)],
           },
-          bias: "Avatar's shirt is the color Blue",
+          //added attributes to each case
+          gender: Gender[Math.floor(Math.random() * Gender.length)],
+          age: age,
+
+          years: years,
+
+          availability: candidateavailability,
+          pay: "$" + pay + "/hr",
+          ai: currentWeight >= 15 ? "Yes" : "No",
+          bias: "Avatar's shirt is the color " + scolor,
         });
         break;
       case "hairColor":
-        const hcolor = hairColor[Math.floor(Math.random() * hairColor.length)];
+        currentWeight += appearanceWeight;
+        let hcolor = hairColor[Math.floor(Math.random() * hairColor.length)];
         avatarData.push({
           id: i + 1,
           name: generateName(),
@@ -344,6 +396,14 @@ const createAvatarData = (avatarNumber) => {
             mouthType: Mouth[Math.floor(Math.random() * Mouth.length)],
             skinColor: Skin[Math.floor(Math.random() * Skin.length)],
           },
+          //added attributes to each case
+          gender: Gender[Math.floor(Math.random() * Gender.length)],
+          age: age,
+          years: years,
+
+          availability: candidateavailability,
+          pay: "$" + pay + "/hr",
+          ai: currentWeight >= 15 ? "Yes" : "No",
           bias: "Avatar's hair is the color " + hcolor,
         });
         break;

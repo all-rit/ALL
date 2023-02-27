@@ -12,6 +12,7 @@ import quizQuestionsLab3 from "./api/Lab3/quizQuestions";
 import quizQuestionsLab4 from "./api/Lab4/quizQuestions";
 import quizQuestionsLab5 from "./api/Lab5/quizQuestions";
 import alterationQuizQuestions from "./api/Lab7/alterationQuizQuestions";
+import quizQuestionsLab6 from "./api/Lab6/quizQuestions";
 import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 import "./App.css";
@@ -81,6 +82,9 @@ class App extends Component {
 
       case 5:
         return quizQuestionsLab5;
+
+      case 6:
+        return quizQuestionsLab6;
 
       case 7:
         if (this.props.state.main.body == 2) {

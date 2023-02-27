@@ -5,7 +5,7 @@ import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../constants/lab4";
 import UserLabService from "../../../../services/UserLabService";
 import { AppBar } from "@material-ui/core";
-
+import Toolbar from "@material-ui/core/Toolbar";
 class Finish extends Component {
   handleSubmit() {
     navigate("/Lab4/Exercise");
@@ -26,11 +26,14 @@ class Finish extends Component {
       <Fragment>
         <div>
           <AppBar position="static" className="appBar">
-            <p className="flex-boxes" style={{ fontSize: 22, padding: 10 }}>
-              Congratulations! You have successfully completed the Dexterity
-              Impairment Excercise!
-            </p>
+            <Toolbar>
+              <h4 className="flex-boxes ">
+                Congratulations! You have succesfully completed the Screen
+                Readers Exercise!
+              </h4>
+            </Toolbar>
           </AppBar>
+          <br />
           <h4 className="flex-boxes">
             Click the button below to restart the exercise.
           </h4>

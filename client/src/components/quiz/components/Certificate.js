@@ -81,7 +81,6 @@ class Certificate extends Component {
             style={{ fontSize: "30px", textAlign: "center", padding: "20px" }}
           >
             {Sections[this.props.lab].fullname}
-            {console.log(Sections)}
           </span>{" "}
           <br />
           <br />

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { default as Quiz } from "../../../../quiz/App";
+import {default as Quiz} from "../../../../quiz/components/QuizHandler";
 import { EXERCISE_IDLE } from "../../../../../constants/lab7";
 import { navigate } from "@reach/router";
 import { MathComponent } from "mathjax-react";
@@ -24,7 +24,6 @@ class AlterationQuiz extends Component {
   }
 
   render() {
-    const { updateStateFunc } = this.state;
     const { user } = this.props;
     return (
       <div className="center-div">
@@ -40,9 +39,10 @@ class AlterationQuiz extends Component {
         </div>
         <Quiz
           path={`/AlterationQuiz`}
+          labId={7}
           user={user}
-          updateStateFunc={updateStateFunc}
-          hideCertificate={true}
+          hideCertificate
+          isFinalQuiz={false}
         />
       </div>
     );

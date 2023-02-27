@@ -14,12 +14,9 @@ class ExerciseStart extends Component {
     };
   }
 
-  componentDidMount() {
+  handleStart() {
     const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
-  }
-
-  handleStart() {
     navigate("/Lab7/Exercise/AISimulation");
   }
 

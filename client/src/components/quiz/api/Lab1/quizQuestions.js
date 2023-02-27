@@ -5,18 +5,22 @@ const quizQuestionsLab1 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "A vibration that conveys key information",
       },
       {
         val: 1,
+        type: "1",
         content: "A playing sound that conveys key information",
       },
       {
         val: 0,
+        type: "2",
         content: "A visual indicator that conveys key information",
       },
       {
         val: 0,
+        type: "3",
         content: "None of the above",
       },
     ],
@@ -28,18 +32,22 @@ const quizQuestionsLab1 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "20-30 million people",
       },
       {
         val: 1,
+        type: "1",
         content: "30-40 million people",
       },
       {
         val: 0,
+        type: "2",
         content: "40-50 million people",
       },
       {
         val: 0,
+        type: "3",
         content: "50-60 million people",
       },
     ],
@@ -51,18 +59,22 @@ const quizQuestionsLab1 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "At the end",
       },
       {
         val: 1,
+        type: "1",
         content: "From the beginning",
       },
       {
         val: 0,
+        type: "2",
         content: "Whenever the developer feels it's necessary",
       },
       {
         val: 0,
+        type: "3",
         content: "Only if it's needed for the project",
       },
     ],
@@ -73,20 +85,24 @@ const quizQuestionsLab1 = [
     answers: [
       {
         val: 0,
+        type: "0",
         content: "User interface components and navigation must be operable.",
       },
       {
         val: 1,
+        type: "1",
         content:
           "Information and user interface components must be presentable to users in ways they can perceive.",
       },
       {
         val: 0,
+        type: "2",
         content:
           "Information and the operation of user interface must be understandable.",
       },
       {
         val: 0,
+        type: "3",
         content: "None of the above",
       },
     ],
@@ -98,10 +114,12 @@ const quizQuestionsLab1 = [
     answers: [
       {
         val: 1,
+        type: "0",
         content: "Yes",
       },
       {
         val: 0,
+        type: "1",
         content: "No",
       },
     ],

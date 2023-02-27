@@ -12,7 +12,7 @@ function AnswerOption(props) {
           name="checkboxGroup"
           id={props.answerType}
           value={props.answerType}
-          onChange={props.onAnswerSelected}
+          onChange={props.multiSelected}
         />
         <label className="checkboxCustomLabel" htmlFor={props.answerType}>
           {props.answerContent}
@@ -43,6 +43,7 @@ AnswerOption.propTypes = {
   answerType: PropTypes.string.isRequired,
   answerContent: PropTypes.string.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
+  multiSelected: PropTypes.func.isRequired,
   multiChoice: PropTypes.bool.isRequired,
 };
 
