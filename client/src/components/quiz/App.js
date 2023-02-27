@@ -1,337 +1,282 @@
-/* eslint-disable no-prototype-builtins */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable guard-for-in */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import ReactGA from "react-ga";
-import quizQuestionsLab1 from "./api/Lab1/quizQuestions";
-import quizQuestionsLab2 from "./api/Lab2/quizQuestions";
-import quizQuestionsLab3 from "./api/Lab3/quizQuestions";
-import quizQuestionsLab4 from "./api/Lab4/quizQuestions";
-import quizQuestionsLab5 from "./api/Lab5/quizQuestions";
-import Quiz from "./components/Quiz";
-import Result from "./components/Result";
-import "./App.css";
-import UserLabService from "../../services/UserLabService";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../reducers/MainReducer";
+import { React, useState } from "react";
+import { PropTypes } from "prop-types";
+import Quiz from "./Quiz";
+import Result from "./Result";
 
-function initializeReactGA() {
-  if (process.env.NODE_ENV === "production") {
-    const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
-    ReactGA.initialize(TRACKING_ID);
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  } else if (process.env.NODE_ENV === "development") {
-    console.log("Google Analytics cannot be implemented in development mode");
+// TODO: This Removed to add in service functionality
+import QuestionsLab1 from "../api/Lab1/quizQuestions";
+import QuestionsLab2 from "../api/Lab2/quizQuestions";
+import QuestionsLab3 from "../api/Lab3/quizQuestions";
+import QuestionsLab4 from "../api/Lab4/quizQuestions";
+import QuestionsLab5 from "../api/Lab5/quizQuestions";
+import QuestionsLab8 from "../api/Lab8/quizQuestions";
+import UserLabService from "../../../services/UserLabService";
+
+/**
+ * assignQuizQuestions is a function that returns a given set
+ * of quiz questions dependent on the labId passed
+ * @param {integer} labId is passed to the function to determine
+ * what questions to grab
+ */
+function assignQuizQuestions(labId) {
+  switch (labId) {
+    case 1:
+      return QuestionsLab1;
+    case 2:
+      return QuestionsLab2;
+    case 3:
+      return QuestionsLab3;
+    case 4:
+      return QuestionsLab4;
+    case 5:
+      return QuestionsLab5;
+    case 8:
+      return QuestionsLab8;
+    default:
+      return [
+        {
+          question: "Default",
+          answers: [
+            {
+              val: 0,
+              type: 0,
+              content: "Default",
+            },
+          ],
+          multiChoice: false,
+        },
+      ];
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(mainActions, dispatch),
-  };
-};
-const mapStateToProps = (state) => {
-  return {
-    state: state,
-  };
-};
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      counter: 0,
-      questionId: 1,
+/**
+ * QuizHandler is react component responsible for tracking users responses
+ * this will be the main handler to manage the state and logic for the new quiz component
+ * @param {Object} props will be the injectable fields that will populate and provide the
+ * component with information.
+ */
+const QuizHandler = (props) => {
+  const [currentLabId, setCurrentLab] = useState(props.labId);
+  let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
+  const [questions, setQuestions] = useState(assignQuizQuestions(props.labId));
+  const [answerOption, setAnswerOption] = useState(
+    questions[currentQuestionCursor].answers
+  );
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  // initialized to a empty array to house recorded answers
+  let [selectedAnswers, setSelectedAnswers] = useState([]);
+  let [disableNext, setDisableNext] = useState(true);
+  let [result, setResult] = useState({});
+
+  /**
+   * HandleNext() is a function that is responsible for allowing the user to
+   * iterate to the next question. this will then update the disabling for the
+   * selection on on the next question as it iterates to the next option
+   */
+  function handleNext() {
+    if (currentQuestionCursor < questions.length) {
+      let updateCursor = currentQuestionCursor + 1;
+      setCurrentQuestionCursor(updateCursor);
+      setAnswerOption(questions[updateCursor].answers);
+      setDisableNext(true);
+    }
+  }
+  /**
+   * onComplete is a function that is responsible for preparing and running the
+   * calculations to grade a users responses to the quiz. This will then prepare the data
+   * to display to the user for the result portion of the quiz.
+   */
+  function onComplete() {
+    scoreResults();
+    setQuizCompleted(true);
+  }
+
+  /**
+   * checkIfCorrect checks to see if the users answer is correct by using the passed
+   * answerIndex and referencing the question using the questionIndex and checking the
+   * answer
+   * @param {integer} answerIndex passed to check the questions answer
+   * @param {integer} questionIndex passed to check what question the answer should be checked against
+   */
+  function checkIfCorrect(answerIndex, questionIndex) {
+    let isCorrect;
+    questions[questionIndex].answers[answerIndex].val === 1
+      ? (isCorrect = true)
+      : (isCorrect = false);
+    return isCorrect;
+  }
+
+  /**
+   * getMultiCorrectNumCount checks the question by using questionIndex and then returns the number of of
+   * correct answers to the question
+   * @param {integer} questionIndex passed to check how many correct answers there are
+   * for the passed index
+   */
+  function getMultiCorrectNumCount(questionIndex) {
+    let multiCount = 0;
+    questions[questionIndex].answers.map((answer) => {
+      if (answer.val === 1) {
+        multiCount++;
+      }
+    });
+    return multiCount;
+  }
+
+  /**
+   * scoreResults takes all the users answers and checks to see if they are correct
+   * it then proceeds to update the results to allow for them to be displayed
+   * scoreResults also PUSHes the answers to the database aswell as the quiz score
+   */
+  function scoreResults() {
+    let questionsTotal = questions.length;
+    let output = [];
+    const QuizQuestions = {
       question: "",
-      answerOptions: [],
-      answer: "",
-      result: "",
-      myCount: {},
-      disableNextQuestion: true,
-      selectedAnswers: {},
-      multiChoice: false,
-      lab: props.state.main.lab,
-      quizQuestions: [],
+      selectAnswers: {},
+      IsCorrect: false,
     };
-
-    this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
-    this.assignQuizQuestions = this.assignQuizQuestions.bind(this);
-    this.setNextQuestion = this.setNextQuestion.bind(this);
-  }
-
-  assignQuizQuestions() {
-    const lab = this.props.state.main.lab;
-    switch (lab) {
-      case 1:
-        return quizQuestionsLab1;
-      case 2:
-        return quizQuestionsLab2;
-      case 3:
-        return quizQuestionsLab3;
-      // case 4:
-      case 4:
-        return quizQuestionsLab4;
-
-      case 5:
-        return quizQuestionsLab5;
-      default:
-        return [
-          {
-            question: "Default",
-            answers: [
-              {
-                val: 0,
-                content: "Default",
-              },
-            ],
-            multiChoice: false,
-          },
-        ];
-    }
-  }
-
-  UNSAFE_componentWillMount() {
-    this.setState({ quizQuestions: this.assignQuizQuestions() }, () => {
-      for (let i = 0; i < this.state.quizQuestions.length; i++) {
-        for (
-          let x = 0;
-          x < this.state.quizQuestions[i]["answers"].length;
-          x++
-        ) {
-          const questions = this.state.quizQuestions;
-          questions[i]["answers"][x]["type"] = "" + x;
-          this.setState({
-            quizQuestions: questions,
-          });
-
-          // this.state.quizQuestions[i]['answers'][x]['type'] = "" + x;
+    for (let i = 0; i < questionsTotal; i++) {
+      let tempQuestion = { ...QuizQuestions };
+      tempQuestion.question = questions[i].question;
+      tempQuestion.number = i + 1;
+      if (questions[i].multiChoice) {
+        // logic for multi select
+        let userAnswers = [...selectedAnswers[i]];
+        tempQuestion.selectAnswers = userAnswers;
+        let isCorrect = userAnswers.map((element) => {
+          return checkIfCorrect(element, i);
+        });
+        isCorrect.every((value) => value === true)
+          ? (tempQuestion.IsCorrect = true)
+          : (tempQuestion.IsCorrect = false);
+        if (tempQuestion.IsCorrect) {
+          tempQuestion.IsCorrect =
+            getMultiCorrectNumCount(i) === isCorrect.length ? true : false;
         }
-      }
-    });
-  }
-
-  componentDidMount() {
-    for (let i = 0; i < this.state.quizQuestions.length; i++) {
-      this.state.quizQuestions[i]["answers"].sort(function (a, b) {
-        return parseInt(a.type) - parseInt(b.type);
-      });
-    }
-    this.setState({
-      question: this.state.quizQuestions[0].question,
-      answerOptions: this.state.quizQuestions[0]["answers"],
-      multiChoice: this.state.quizQuestions[0]["multiChoice"],
-    });
-  }
-
-  shuffleArray(array) {
-    let currentIndex = array.length;
-    let temporaryValue;
-    let randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
-
-  handleAnswerSelected(event) {
-    this.setState((state, props) => ({
-      disableNextQuestion: false,
-    }));
-  }
-
-  setUserAnswer(answer, correctanswer) {
-    this.setState((state, props) => ({
-      disableNextQuestion: false,
-      myCount: {
-        ...state.myCount,
-        [this.state.counter]: correctanswer,
-      },
-      selectedAnswers: {
-        ...state.selectedAnswers,
-        [this.state.counter]: answer,
-      },
-      answer: answer,
-    }));
-  }
-
-  checkMultipleAnswers(currentAnswers) {
-    let correctAnswer = 0;
-    const options =
-      this.state.quizQuestions[this.state.counter]["answers"].length;
-    for (let index = 0; index < options; index++) {
-      if (
-        this.state.quizQuestions[this.state.counter]["answers"][index][
-          "val"
-        ] === currentAnswers[index]
-      ) {
-        correctAnswer = 1;
+        output.push(tempQuestion);
       } else {
-        correctAnswer = 0;
-        break;
+        // logic for non multi select
+        let userAnswers = { ...selectedAnswers[i] };
+        tempQuestion.selectAnswers = userAnswers;
+        checkIfCorrect(userAnswers.type, i)
+          ? (tempQuestion.IsCorrect = true)
+          : (tempQuestion.IsCorrect = false);
+        output.push(tempQuestion);
       }
     }
 
-    this.setUserAnswer(currentAnswers, correctAnswer);
-  }
+    // count number of correct questions.
+    let countCorrect = 0;
+    output.forEach((element) => {
+      element.IsCorrect ? (countCorrect += 1) : countCorrect;
+    });
 
-  getCheckedAnswers() {
-    const checked = document.getElementsByName("checkboxGroup");
-    const currentAnswers = {};
-    for (let index = 0; index < checked.length; index++) {
-      if (checked[index].checked === true) {
-        currentAnswers[index] = 1;
-      } else {
-        currentAnswers[index] = 0;
-      }
-    }
-    return currentAnswers;
-  }
-
-  setNextQuestion() {
-    const currentAnswers = this.getCheckedAnswers();
-
-    // Calculate correct answers and set accordingly
-    this.checkMultipleAnswers(currentAnswers);
-
-    // Set next question
-    if (this.state.questionId < this.state.quizQuestions.length) {
-      const counter = this.state.counter + 1;
-      const questionId = this.state.questionId + 1;
-
-      this.setState({
-        counter: counter,
-        questionId: questionId,
-        question: this.state.quizQuestions[counter].question,
-        answerOptions: this.state.quizQuestions[counter].answers,
-        answer: "",
-        disableNextQuestion: true,
-        multiChoice: this.state.quizQuestions[counter].multiChoice,
-      });
-    } else {
-      setTimeout(() => this.setResults(this.getResults()), 300);
-    }
-  }
-
-  getResults(numerical = false) {
-    const myCount = this.state.myCount;
-    let correct = 0;
-    let total = 0;
-    for (const item in myCount) {
-      total++;
-      if (myCount.hasOwnProperty(item)) {
-        if (myCount[item] === 1) correct++;
-      }
-    }
-    const percent = Math.floor((correct / total) * 100);
-    if (!numerical) {
-      return "" + percent + "%";
-    }
-    return percent;
-  }
-
-  setResults(result) {
+    console.log("user score is: " + countCorrect / questionsTotal);
+    console.log(output);
+    setResult(countCorrect / questionsTotal);
     UserLabService.complete_quiz(
-      this.state.lab,
-      this.getResults(true),
-      this.getJsonResults()
+      props.labId,
+      (countCorrect / questionsTotal) * 100,
+      output
     );
-    if (this.props.user.firstname !== null) {
+    if (props.user.firstname !== null) {
       UserLabService.user_complete_quiz(
-        this.props.user.userid,
-        this.state.lab,
-        this.getResults(true)
+        props.user.userid,
+        props.labId,
+        (countCorrect / questionsTotal) * 100
       );
     }
-    this.setState({ result: result });
   }
 
-  getJsonResults() {
-    const jsonresults = [];
-    let counter = 0;
-    const selectedAnswers = Object.values(this.state.selectedAnswers);
-    for (const quizQuestion of this.state.quizQuestions) {
-      // get right answers
-      const { question, answers } = quizQuestion; // destructuring
-      const quizQuestionObject = {
-        Question: question,
-        Answers: [],
-        SelectedAnswers: [],
-        IsCorrect: this.state.myCount[counter] === 1,
-      };
-      for (const answer of answers) {
-        if (answer["val"] === 1) {
-          quizQuestionObject["Answers"].push(answer["content"]);
-        }
-      }
-      // get user selected answers
-      const selectedAnswserQuestion = selectedAnswers[counter];
-      const choices = Object.values(selectedAnswserQuestion);
-      let optionCounter = 0;
-      for (const choice of choices) {
-        // is the choice the one that is selected by user
-        if (choice === 1) {
-          quizQuestionObject["SelectedAnswers"].push(
-            answers[optionCounter]["content"]
-          );
-        }
-        optionCounter += 1;
-      }
-      jsonresults.push(quizQuestionObject);
-      counter += 1;
+  /**
+   * selectAnswer() is a function responsible for recording the
+   * behavior in which a user enters in their answer. This function once
+   * called will record the responses index and update the state of the
+   * component.
+   * @param {*} e event containing the index of the selected answer response.
+   */
+  function selectAnswer(e) {
+    const answerValue = e.target.value;
+    let tempSelectedAnswers;
+    tempSelectedAnswers = [...selectedAnswers];
+    tempSelectedAnswers[currentQuestionCursor] = {
+      content: questions[currentQuestionCursor].answers[answerValue].content,
+      val: 1,
+      type: answerValue,
+    };
+    console.log("Recorded answers: " + tempSelectedAnswers);
+    setSelectedAnswers(tempSelectedAnswers);
+    setDisableNext(false);
+  }
+  /**
+   * selectMulti is a function that is responsible for handling
+   * behavior of a multi-answer question by recording the given input to
+   * a set. this allowing for no duplicates and to easily remove entries when we
+   * want to change what data is being recorded.
+   * @param {*} e event holding the index of the selected answer
+   */
+  function selectMulti(e) {
+    const answerValue = e.target.value;
+    let tempAnswers = selectedAnswers;
+    let storageSet;
+    // ensures that there is a value stored there
+    if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
+      // copies over the set
+      storageSet = new Set(tempAnswers[currentQuestionCursor]);
+      // checks to see if the set has the value in it
+      !storageSet.has(answerValue)
+        ? // adds it if it doesn't
+        storageSet.add(answerValue)
+        : // removes it if it does
+        storageSet.delete(answerValue);
+      // assigns the updated set to the array
+      tempAnswers[currentQuestionCursor] = storageSet;
+    } else {
+      // creates an empty set because does not exist in that spot
+      setDisableNext(false);
+      storageSet = new Set();
+      // adds the value
+      storageSet.add(answerValue);
+      // assigns it to the array
+      tempAnswers[currentQuestionCursor] = storageSet;
     }
-    return JSON.stringify(jsonresults);
+    setSelectedAnswers(tempAnswers);
   }
-  renderQuiz() {
-    return (
-      <div>
+
+  return (
+    <>
+      {!quizCompleted ? (
         <Quiz
-          answer={this.state.answer}
-          answerOptions={this.state.answerOptions}
-          questionId={this.state.questionId}
-          question={this.state.question}
-          questionTotal={this.state.quizQuestions.length}
-          onAnswerSelected={this.handleAnswerSelected}
-          nextQuestion={this.setNextQuestion}
-          disable={this.state.disableNextQuestion}
-          multiChoice={this.state.multiChoice}
-        />
-      </div>
-    );
-  }
-
-  renderResult() {
-    return (
-      <Result
-        quizResult={this.state.result}
-        quizScore={this.state.myCount}
-        selectedAnswers={this.state.selectedAnswers}
-        quizQuestions={this.state.quizQuestions}
-        lab={this.state.lab}
-      />
-    );
-  }
-
-  render() {
-    initializeReactGA();
-    return (
-      <div className="quiz">
-        {this.state.result ? this.renderResult() : this.renderQuiz()}
-      </div>
-    );
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+          answer={""}
+          answerOptions={answerOption}
+          disable={disableNext}
+          multiChoice={questions[currentQuestionCursor].multiChoice}
+          multiSelectedEntry={selectMulti}
+          nextQuestion={handleNext}
+          onAnswerSelected={selectAnswer}
+          onComplete={onComplete}
+          questionId={currentQuestionCursor + 1}
+          question={questions[currentQuestionCursor].question}
+          questionTotal={questions.length}
+        ></Quiz>
+      ) : (
+        <Result
+          quizResult={result * 100 + "%"}
+          quizScore={100}
+          selectedAnswers={selectedAnswers}
+          quizQuestions={questions}
+          lab={currentLabId}
+        ></Result>
+      )}
+    </>
+  );
+};
+QuizHandler.propTypes = {
+  labId: PropTypes.number,
+  user: PropTypes.shape({
+    firstname: PropTypes.string,
+    userid: PropTypes.number,
+  }),
+};
+export default QuizHandler;

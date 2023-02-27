@@ -10,6 +10,7 @@ import QuestionsLab2 from "../api/Lab2/quizQuestions";
 import QuestionsLab3 from "../api/Lab3/quizQuestions";
 import QuestionsLab4 from "../api/Lab4/quizQuestions";
 import QuestionsLab5 from "../api/Lab5/quizQuestions";
+import QuestionsLab8 from "../api/Lab8/quizQuestions";
 import UserLabService from "../../../services/UserLabService";
 
 /**
@@ -30,6 +31,8 @@ function assignQuizQuestions(labId) {
       return QuestionsLab4;
     case 5:
       return QuestionsLab5;
+    case 8:
+      return QuestionsLab8;
     default:
       return [
         {
@@ -224,9 +227,9 @@ const QuizHandler = (props) => {
       // checks to see if the set has the value in it
       !storageSet.has(answerValue)
         ? // adds it if it doesn't
-          storageSet.add(answerValue)
+        storageSet.add(answerValue)
         : // removes it if it does
-          storageSet.delete(answerValue);
+        storageSet.delete(answerValue);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     } else {
