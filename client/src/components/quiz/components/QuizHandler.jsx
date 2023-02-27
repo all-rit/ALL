@@ -67,7 +67,9 @@ function assignQuizQuestions(labId, isFinalQuiz) {
 const QuizHandler = (props) => {
   const [currentLabId, setCurrentLab] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(assignQuizQuestions(props.labId,props.isFinalQuiz));
+  const [questions, setQuestions] = useState(
+    assignQuizQuestions(props.labId, props.isFinalQuiz)
+  );
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers
   );
@@ -183,7 +185,7 @@ const QuizHandler = (props) => {
     console.log("user score is: " + countCorrect / questionsTotal);
     console.log(output);
     setResult(countCorrect / questionsTotal);
-    if(props.isFinalQuiz){
+    if (props.isFinalQuiz) {
       UserLabService.complete_quiz(
         props.labId,
         (countCorrect / questionsTotal) * 100,

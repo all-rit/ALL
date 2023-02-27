@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {default as Quiz} from "../../../../quiz/components/QuizHandler";
+import { default as Quiz } from "../../../../quiz/components/QuizHandler";
 import { EXERCISE_IDLE } from "../../../../../constants/lab7";
 import { navigate } from "@reach/router";
 import { MathComponent } from "mathjax-react";
