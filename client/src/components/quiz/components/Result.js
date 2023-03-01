@@ -4,6 +4,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Certificate from "./Certificate";
+import { useNavigate } from "@reach/router";
+
+
 
 function Result(props) {
   function checkIfCorrect(answerIndex, questionIndex) {
@@ -118,8 +121,15 @@ function Result(props) {
       );
     }
   }
+  const navigate = useNavigate();
+  const navigateHome = () => {
+    navigate("/# ");
+  };
 
-  return (
+
+
+    return (
+    <div>
     <div className="quiz container shadow">
       <div className="result">
         Results <strong>Score: {props.quizResult}</strong>
@@ -141,6 +151,16 @@ function Result(props) {
             <Certificate quizResult={props.quizResult} lab={props.lab} />
           </div>
         </div>
+      </div>
+    </div>
+      <div className={"tw-m-10 result"}>
+        <button
+          href="# "
+          className="btn btn-primary text-uppercase"
+          onClick={navigateHome}
+        >
+          Return to Home
+        </button>
       </div>
     </div>
   );
