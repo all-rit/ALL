@@ -115,7 +115,7 @@ const Header = (props) => {
         alignItems: "flex-end",
       }}
     >
-      <div className="dropdown-menu-align container">
+      <div className="tw-items-end container">
         <a href="# " onClick={() => navigate(state, actions, 0, 0)}>
           <img
             className="logo img-fluid"
@@ -128,9 +128,15 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {state.main.lab === 0 ? (
-            <Nav className="ml-auto dropdown-menu-align dropdown-menu-wrap" navbar>
+            <Nav
+              className="ml-auto tw-items-end tw-flex-wrap"
+              navbar
+            >
               {state.main.body === 0 ? (
-                <Nav className="ml-auto dropdown-menu-align dropdown-menu-wrap" navbar>
+                <Nav
+                  className="ml-auto tw-items-end dropdown-menu-wrap"
+                  navbar
+                >
                   <NavItem onClick={closeNav} className="navbar-collapse">
                     <NavLink
                       className="nav-link "
@@ -178,7 +184,10 @@ const Header = (props) => {
                 </Nav>
               ) : (
                 /** Mobile NavBar */
-                <Nav className="dropdown-menu-align dropdown-menu-wrap ml-auto" navbar>
+                <Nav
+                  className="tw-items-end tw-flex-wrap ml-auto"
+                  navbar
+                >
                   {state.main.body === 1 && (
                     <>
                       <NavItem onClick={closeNav} className="navbar-collapse">
@@ -247,7 +256,10 @@ const Header = (props) => {
               /** In-Lab NavBar */
             },
             (
-              <Nav className="dropdown-menu-align dropdown-menu-wrap ml-auto" navbar>
+              <Nav
+                className="tw-items-end tw-flex-wrap ml-auto"
+                navbar
+              >
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
@@ -300,7 +312,7 @@ const Header = (props) => {
                   </NavLink>
                 </NavItem>
 
-                <NavItem onClick={closeNav} className=" navbar-collapse">
+                <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
                     onClick={() => navigate(state, actions, 3)}
