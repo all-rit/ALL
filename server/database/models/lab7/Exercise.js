@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
         userid: {
           type: DataTypes.BIGINT,
         },
-          report: {
-            type:DataTypes.JSON
-          }
+        report: {
+          type: DataTypes.JSON,
+        },
       },
       {tableName: 'lab7_exercise'},
   );

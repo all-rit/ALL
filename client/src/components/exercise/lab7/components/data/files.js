@@ -1,4 +1,7 @@
-export const files = [
+import {FILE_COUNT} from "../../../../../constants/lab7";
+import _ from "lodash";
+
+export const FILES = [
   {
     fileName: "PortaVolutpat.tiff",
     content: "Mother Maiden Name",
@@ -7,8 +10,8 @@ export const files = [
   },
   {
     fileName: "Massa.jpeg",
-    content: "Home Address",
-    sensitivityLevel: 4,
+    content: "Email Address",
+    sensitivityLevel: 1,
     accessStatus: "OPEN",
   },
   {
@@ -97,8 +100,8 @@ export const files = [
   },
   {
     fileName: "VulputateLuctus.gif",
-    content: "Mother Maiden Name",
-    sensitivityLevel: 3,
+    content: "Email Address",
+    sensitivityLevel: 1,
     accessStatus: "OPEN",
   },
   {
@@ -120,3 +123,5 @@ export const files = [
     accessStatus: "OPEN",
   },
 ];
+
+export const generateList = () => _.sampleSize(FILES, FILE_COUNT);

@@ -58,7 +58,6 @@ File.propTypes = {
     fileName: PropTypes.string,
     content: PropTypes.string,
     sensitivityLevel: PropTypes.number,
-    accessStatus: PropTypes.string,
     decision: PropTypes.string,
     result: PropTypes.string,
     report: PropTypes.string,

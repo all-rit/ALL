@@ -24,8 +24,8 @@ class AlterationQuiz extends Component {
       setTimeout(() => navigate("/Lab7/Exercise/AlterationStart"));
   }
 
-  handleSubmitData (output, userId) {
-    const {actions} = this.props;
+  handleSubmitData(output, userId) {
+    const { actions } = this.props;
     actions.updateState(EXERCISE_IDLE);
     ExerciseService.submitRepair(output, userId);
   }

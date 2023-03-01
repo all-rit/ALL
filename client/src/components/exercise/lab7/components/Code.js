@@ -167,14 +167,6 @@ class Code extends Component {
           </div>
 
           <div className="code_editor__code">
-            <div className="code_editor__line">
-              {/* AI file description comment */}
-              <span className="code_editor__line--darkgreen">
-                &#47;&#47; This is where you can change the equation that the AI
-                makes decisions with to improve its accuracy.
-              </span>
-            </div>
-
             {/* import React, Component from react */}
             <div className="code_editor__line">
               <span className="code_editor__line--purple">import&nbsp;</span>
@@ -204,6 +196,18 @@ class Code extends Component {
             </div>
 
             {/* makeDecision(){ */}
+            <div className="code_editor__line">
+              {/* AI function comment */}
+              <span className="code_editor__line--darkgreen">
+                &#47;&#47; Here is where you will update the equation to improve the AI&lsquo;s accuracy
+              </span>
+            </div>
+            <div className="code_editor__line">
+              {/* AI function comment */}
+              <span className="code_editor__line--darkgreen">
+                &#47;&#47; Feel free to add other math operations to improve its accuracy
+              </span>
+            </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;</span>
               <span className="code_editor__line--yellow">makeDecision</span>
