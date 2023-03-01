@@ -10,13 +10,13 @@ const endpoints = {
 const RepairService = {
   submitRepair: (activity, repair) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR,
+      `${process.env.REACT_APP_SERVER_URL}${endpoints.SUBMIT_REPAIR}`,
       { activity, repair }
     );
   },
   updateReport: (repairId, report) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + endpoints.UPDATE_REPORT,
+      `${process.env.REACT_APP_SERVER_URL}${endpoints.UPDATE_REPORT}`,
       { repairId, report }
     );
   },

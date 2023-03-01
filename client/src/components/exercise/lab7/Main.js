@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Router } from "@reach/router";
 import "../../../assets/stylesheets/main.scss";
 
@@ -12,31 +12,29 @@ import AlterationStart from "./pages/AlterationActivity/AlterationStart";
 import AlterationQuiz from "./pages/AlterationActivity/AlterationQuiz";
 import ExerciseEnd from "./pages/ExerciseEnd";
 
-class Main extends Component {
-  render() {
-    return (
-      <div className="bottomSpace">
-        <Router className="app">
-          <ExerciseStart default path="/*" />
+const Main = () => {
+  return (
+    <div className="bottomSpace">
+      <Router className="app">
+        <ExerciseStart default path="/*" />
 
-          {/* Phase 1: Simulation */}
-          <AISimulation path="/AISimulation" />
-          <SimulationSummary path="/SimulationSummary" />
-          <BadAIExplanation path="/BadAIExplanation" />
+        {/* Phase 1: Simulation */}
+        <AISimulation path="/AISimulation" />
+        <SimulationSummary path="/SimulationSummary" />
+        <BadAIExplanation path="/BadAIExplanation" />
 
-          {/* Phase 2: Improve AI Code Repair */}
-          <AICodeRepair path="/AICodeRepair" />
-          <ImprovedAISimulation path="/ImprovedAISimulation" />
+        {/* Phase 2: Improve AI Code Repair */}
+        <AICodeRepair path="/AICodeRepair" />
+        <ImprovedAISimulation path="/ImprovedAISimulation" />
 
-          {/* Phase 3: Alteration Activity */}
-          <AlterationStart path="/AlterationStart" />
-          <AlterationQuiz path="/AlterationQuiz" />
+        {/* Phase 3: Alteration Activity */}
+        <AlterationStart path="/AlterationStart" />
+        <AlterationQuiz path="/AlterationQuiz" />
 
-          <ExerciseEnd path="/ExerciseEnd" />
-        </Router>
-      </div>
-    );
-  }
-}
+        <ExerciseEnd path="/ExerciseEnd" />
+      </Router>
+    </div>
+  );
+};
 
 export default Main;

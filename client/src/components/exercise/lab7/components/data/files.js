@@ -1,4 +1,4 @@
-import {FILE_COUNT} from "../../../../../constants/lab7";
+import { FILE_COUNT } from "../../../../../constants/lab7";
 import _ from "lodash";
 
 export const FILES = [
