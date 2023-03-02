@@ -39,7 +39,7 @@ const Imagine = (props) => {
       <Provider template={AlertMUITemplate} {...options}>
         <div className="container bottomSpace">
           <Router className="app">
-            <ImagineStart path="/ImagineStart" user={user} linkNum={linkNum} />
+            <ImagineStart path="/" user={user} linkNum={linkNum} />
             <GameInstructions
               path="/GameInstructions"
               user={user}

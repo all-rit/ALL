@@ -4,8 +4,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { navigate } from "@reach/router";
-import GridImages from "../../body/lab/GridImages/GridImages";
-import ImagineService from "../../../services/ImagineService";
+import GridImages from "../../../body/lab/GridImages/GridImages";
+import ImagineService from "../../../../services/ImagineService";
 
 const AvatarSelection = (props) => {
   const { user, linkNum } = props;

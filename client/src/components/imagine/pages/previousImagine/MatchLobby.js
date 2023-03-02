@@ -2,7 +2,7 @@
 import React from "react";
 
 import { navigate } from "@reach/router";
-import PlayerBoard from "../components/PlayerBoard";
+import PlayerBoard from "../../components/PlayerBoard";
 
 const MatchLobby = (props) => {
   const { user, biasType, linkNum } = props;

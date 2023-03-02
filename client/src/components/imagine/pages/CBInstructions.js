@@ -9,29 +9,11 @@ import React from "react";
 Page containing the instructions for the second popup the user sees
 this instructional popup covers color vision defiencies
 */
-const CBInstructions = ({
-    // closePage,
-    selectOption,
-    toWhiteBackground,
-    background,
-    props
-}) => {
+const CBInstructions = (props) => {
     const { linkNum } = props;
     const handleNext = () => {
-        navigate("/Imagine" + linkNum + "/CBGameBoard");
+        navigate("Imagine" + linkNum + "CBGameBoard");
     };
-    const alreadyCalled = false;
-    if (!alreadyCalled) {
-        selectOption("Protanopia");
-    };
-
-    if (background !== "white") {
-        toWhiteBackground();
-    }
-
-    // const closeInstructions = () => {
-    //     closePage();
-    // };
 
     return (
         <div className="instructionsContainer">

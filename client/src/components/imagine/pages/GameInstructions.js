@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from "react";
-//import Circle from "../components/circle";
+import Circle from "../../exercise/lab2/components/circle";
 import { navigate } from "@reach/router";
 //import "./landingpage.css";
 
@@ -20,7 +21,7 @@ const GameInstructions = (props) => {
                 same size as this one:
             </p>
             <div className="center">
-                {/* <Circle color={"blue"} clickable={false} /> */}
+                <Circle color={"blue"} clickable={false} />
             </div>
             <ul className="study__list">
                 <li className="mainInstructionsItem">
