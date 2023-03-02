@@ -7,7 +7,7 @@ import { navigate } from "@reach/router";
 const GameInstructions = (props) => {
     const { linkNum } = props;
     const handleNext = () => {
-        navigate("/Imagine" + linkNum + "/GameBoard");
+        navigate("/Imagine" + linkNum + "/GameBoardCenter");
     }
     return (
         <div className="mainInstructionsContainer">
