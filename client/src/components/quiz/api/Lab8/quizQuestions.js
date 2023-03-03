@@ -132,7 +132,7 @@ const quizQuestionsLab8 = [
         val: 1,
         type: "2",
         content:
-          "Have more transparent terms and conditions so customers are fully aware of the consent they are giving.",
+          "Have more transparent terms and conditions so customers are fully aware of the consent they are giving",
       },
       {
         val: 1,
