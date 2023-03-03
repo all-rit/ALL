@@ -40,6 +40,7 @@ import "./assets/stylesheets/main.scss";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
+import { Tools } from "./components/accessibility/Tools";
 const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
@@ -80,74 +81,81 @@ class App extends Component {
     // look into index.js in constants
     initializeReactGA();
     return (
-      <div className="overflow-x-hidden">
-        <Header />
-        <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
-          {lab !== 0 && (
-            <BodyHeader body={Sections[lab][body].name} labID={lab} />
-          )}
-          <div className="appBody">
-            <Router basepath={process.env.PUBLIC_URL} className="app">
-              <LandingPageBody path="/" />
-              <SiteMap path="/SiteMap" />
-              <Profile path="/Profile" user={state.main.user} />
-              <Error actions={actions} default />
+      <>
+        <Tools />
+        <div className="overflow-x-hidden">
+          <Header />
+          <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
+            {lab !== 0 && (
+              <BodyHeader body={Sections[lab][body].name} labID={lab} />
+            )}
+            <div className="appBody">
+              <Router basepath={process.env.PUBLIC_URL} className="app">
+                <LandingPageBody path="/" />
+                <SiteMap path="/SiteMap" />
+                <Profile path="/Profile" user={state.main.user} />
+                <Error actions={actions} default />
 
-              <Imagine
-                path="/Imagine1/*"
-                user={state.main.user}
-                biasType={"none"}
-                linkNum={1}
-              />
-              <Imagine
-                path="/Imagine2/*"
-                user={state.main.user}
-                biasType={"user"}
-                linkNum={2}
-              />
-              <Imagine
-                path="/Imagine3/*"
-                user={state.main.user}
-                biasType={"team"}
-                linkNum={3}
-              />
+                <Imagine
+                  path="/Imagine1/*"
+                  user={state.main.user}
+                  biasType={"none"}
+                  linkNum={1}
+                />
+                <Imagine
+                  path="/Imagine2/*"
+                  user={state.main.user}
+                  biasType={"user"}
+                  linkNum={2}
+                />
+                <Imagine
+                  path="/Imagine3/*"
+                  user={state.main.user}
+                  biasType={"team"}
+                  linkNum={3}
+                />
 
-              <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
-              <About
-                path={`/Lab${lab}/About`}
-                user={state.main.user}
-                labID={lab}
-              />
+                <About
+                  path={`/Lab${lab}/`}
+                  user={state.main.user}
+                  labID={lab}
+                />
+                <About
+                  path={`/Lab${lab}/About`}
+                  user={state.main.user}
+                  labID={lab}
+                />
 
-              <Reading
-                path={`/Lab${lab}/Reading`}
-                user={state.main.user}
-                labID={lab}
-              />
+                <Reading
+                  path={`/Lab${lab}/Reading`}
+                  user={state.main.user}
+                  labID={lab}
+                />
 
-              <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
-              <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
-              <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
-              <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
-              <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
+                <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
+                <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
+                <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
+                <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
+                <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
+                <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
 
-              <Reinforcement
-                path={`/Lab${lab}/Reinforcement`}
-                user={state.main.user}
-                labID={lab}
-              />
+                <Reinforcement
+                  path={`/Lab${lab}/Reinforcement`}
+                  user={state.main.user}
+                  labID={lab}
+                />
 
-              <Quiz
-                path={`/Lab${lab}/Quiz`}
-                labId={lab}
-                user={state.main.user}
-              />
-            </Router>
+                <Quiz
+                  path={`/Lab${lab}/Quiz`}
+                  labId={lab}
+                  user={state.main.user}
+                />
+              </Router>
+            </div>
           </div>
+          <Change />
         </div>
-        <Change />
-      </div>
+      </>
     );
   }
 }
