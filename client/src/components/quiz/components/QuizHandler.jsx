@@ -10,6 +10,7 @@ import QuestionsLab2 from "../api/Lab2/quizQuestions";
 import QuestionsLab3 from "../api/Lab3/quizQuestions";
 import QuestionsLab4 from "../api/Lab4/quizQuestions";
 import QuestionsLab5 from "../api/Lab5/quizQuestions";
+import QuestionsLab8 from "../api/Lab8/quizQuestions";
 import UserLabService from "../../../services/UserLabService";
 
 /**
@@ -30,6 +31,8 @@ function assignQuizQuestions(labId) {
       return QuestionsLab4;
     case 5:
       return QuestionsLab5;
+    case 8:
+      return QuestionsLab8;
     default:
       return [
         {
