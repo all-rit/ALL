@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import classNames from "classnames/bind";
 import { Panel as ColorPickerPanel } from "rc-color-picker";
 import RepairService from "../../../../services/lab1/RepairService";
+import Popup from "../../shared/Popup";
 
 class Repair extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Repair extends Component {
       unavailableBackgroundColor: null,
       availableBackgroundColorPopup: false,
       unavailableBackgroundColorPopup: false,
+      inputError: false
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -96,6 +98,19 @@ class Repair extends Component {
     );
 
     // Update the state and close the repair.
+    if (availableMessage !== "Available hint here!") {
+      handlers.updateRepairError(true)
+      handlers.updatePopup("Error in repair submission. Please fix.")
+      return
+    }
+    if (unavailableMessage !== "No available hint yet...") {
+      handlers.updateRepairError(true)
+      handlers.updatePopup("Error in repair submission. Please fix.")
+      return
+    }
+
+    handlers.updateRepairError(false)
+
     handlers.updateRepair(
       availableMessage,
       unavailableMessage,
@@ -291,6 +306,7 @@ class Repair extends Component {
               <span>;</span>
             </div>
 
+
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--purple">&#125;&nbsp;</span>
@@ -322,7 +338,10 @@ class Repair extends Component {
               <span className="code_editor__line--orange">'</span>
               <span>;</span>
             </div>
-
+            {this.state.inputError && (
+              <Popup message={"There has been an incorrect input. Please try again"}
+                     handler={handlers.updatePopup} />
+              )}
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--purple">&#125;&nbsp;</span>
@@ -492,6 +511,16 @@ class Repair extends Component {
         >
           Update
         </button>
+
+        {this.state.inputError && (
+          <div className="code_editor__line--pink">
+            <span>&nbsp;&nbsp;</span>
+            <span className="form-error">
+                One or more of the submitted content forms are incorrect.
+                Please check and resubmit your code.
+            </span>
+          </div>
+        )}
       </div>
     );
   }
