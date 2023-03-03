@@ -54,48 +54,7 @@ const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen);
   const { state, actions } = props;
   const [link, setLink] = useState(0);
-  if (state.main.lab > 0 || !(state.main.lab === 0 && state.main.body === 0)) {
-    document.getElementById("navHeader").style.backgroundColor =
-      "rgb(61 61 61)";
-  }
-  const listenScrollEvent = (event) => {
-    if (
-      state.main.lab > 0 &&
-      !(state.main.lab === 0 && state.main.body === 0)
-    ) {
-      document.getElementById("navHeader").style.backgroundColor =
-        "rgb(61 61 61)";
-    }
-    if (state.main.lab === 0 && state.main.body === 0) {
-      if (window.scrollY < 800) {
-        if (window.scrollY < 640) {
-          document.getElementById("navHeader").style.boxShadow =
-            "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)";
-          document.getElementById("navHeader").style.backgroundColor = "";
-        } else if (window.scrollY >= 640) {
-          document.getElementById("navHeader").style.backgroundColor =
-            "rgb(61 61 61)";
-        }
-        return setLink(0);
-      } else if (window.scrollY < 2100) {
-        document.getElementById("navHeader").style.backgroundColor =
-          "rgb(61 61 61)";
-        return setLink(1);
-      } else if (window.scrollY < 3500) {
-        document.getElementById("navHeader").style.backgroundColor =
-          "rgb(61 61 61)";
-        return setLink(2);
-      } else {
-        document.getElementById("navHeader").style.backgroundColor =
-          "rgb(61 61 61)";
-        return setLink(3);
-      }
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
-    return () => window.removeEventListener("scroll", listenScrollEvent);
-  }, [state]);
+
   const count = state.main.body;
   const loginEnabled =
     state.main.lab === 0 ||
@@ -107,14 +66,15 @@ const Header = (props) => {
       id="navHeader"
       dark
       expand="lg"
-      className="navbar labnav"
+      className="labnav"
       style={{
-        boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)",
+        boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 100)",
         paddingTop: "1rem",
+        opacity: "100%"
       }}
     >
       <div className="container">
-        <a href="# " onClick={() => navigate(state, actions, 0, 0)}>
+        <a  href="/#goals " onClick={() => navigate(state, actions, 0, 0)}>
           <img
             className="logo img-fluid"
             src={Logo}
