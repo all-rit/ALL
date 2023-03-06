@@ -52,6 +52,7 @@ const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const activeStyle = { color: "#fed136" };
   const toggle = () => setIsOpen(!isOpen);
+  const closeNav = () => setIsOpen(false);
   const { state, actions } = props;
   const [link, setLink] = useState(0);
   if (state.main.lab > 0 || !(state.main.lab === 0 && state.main.body === 0)) {
@@ -111,9 +112,10 @@ const Header = (props) => {
       style={{
         boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 0.4)",
         paddingTop: "1rem",
+        alignItems: "flex-end",
       }}
     >
-      <div className="container">
+      <div className="tw-items-end container">
         <a href="# " onClick={() => navigate(state, actions, 0, 0)}>
           <img
             className="logo img-fluid"
@@ -122,13 +124,20 @@ const Header = (props) => {
           />
         </a>
         {/* TODO figure out a way to consolidate repeated code*/}
+        {/* Landing Page NavBar */}
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {state.main.lab === 0 ? (
-            <Nav className="ml-auto" navbar>
+            <Nav
+              className="ml-auto tw-items-end tw-flex-wrap"
+              navbar
+            >
               {state.main.body === 0 ? (
-                <Nav className="ml-auto" navbar>
-                  <NavItem className="collapse navbar-collapse">
+                <Nav
+                  className="ml-auto tw-items-end dropdown-menu-wrap"
+                  navbar
+                >
+                  <NavItem onClick={closeNav} className="navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="#goals"
@@ -139,10 +148,10 @@ const Header = (props) => {
                       </ul>
                     </NavLink>
                   </NavItem>
-                  <NavItem className="collapse navbar-collapse">
+                  <NavItem onClick={closeNav} className="navbar-collapse">
                     <NavLink
                       className="nav-link "
-                      href=" "
+                      href="#labs "
                       style={link === 1 ? activeStyle : { color: "#fff" }}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
@@ -150,7 +159,7 @@ const Header = (props) => {
                       </ul>
                     </NavLink>
                   </NavItem>
-                  <NavItem className="collapse navbar-collapse">
+                  <NavItem onClick={closeNav} className="navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="#citation"
@@ -161,7 +170,7 @@ const Header = (props) => {
                       </ul>
                     </NavLink>
                   </NavItem>
-                  <NavItem className="collapse navbar-collapse">
+                  <NavItem onClick={closeNav} className="navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="#contact"
@@ -174,10 +183,14 @@ const Header = (props) => {
                   </NavItem>
                 </Nav>
               ) : (
-                <Nav className="ml-auto" navbar>
+                /** Mobile NavBar */
+                <Nav
+                  className="tw-items-end tw-flex-wrap ml-auto"
+                  navbar
+                >
                   {state.main.body === 1 && (
                     <>
-                      <NavItem className="collapse navbar-collapse">
+                      <NavItem onClick={closeNav} className="navbar-collapse">
                         <NavLink
                           className="nav-link "
                           href="# "
@@ -190,7 +203,10 @@ const Header = (props) => {
                         </NavLink>
                       </NavItem>
 
-                      <NavItem className="collapse navbar-collapse">
+                      <NavItem
+                        onClick={closeNav}
+                        className="collapse navbar-collapse"
+                      >
                         <NavLink
                           className="nav-link "
                           href="# "
@@ -211,7 +227,10 @@ const Header = (props) => {
                 </Nav>
               )}
               {state.main.user !== null && state.main.user.firstname !== null && (
-                <NavItem className="collapse navbar-collapse">
+                <NavItem
+                  onClick={closeNav}
+                  className="collapse navbar-collapse"
+                >
                   <NavLink
                     className="nav-link "
                     href="# "
@@ -233,106 +252,117 @@ const Header = (props) => {
               />
             </Nav>
           ) : (
-            <Nav className="ml-auto" navbar>
-              <NavItem className="collapse navbar-collapse">
-                <NavLink
-                  className="nav-link "
-                  onClick={() => navigate(state, actions, 0, 0)}
-                  href="# "
-                  style={{ color: "#fff" }}
-                >
-                  <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                    <li className="nav-item">Home</li>
-                  </ul>
-                </NavLink>
-              </NavItem>
-
-              <NavItem className="collapse navbar-collapse">
-                <NavLink
-                  className="nav-link "
-                  onClick={() => navigate(state, actions, 0)}
-                  href="# "
-                  style={count === 0 ? activeStyle : { color: "#fff" }}
-                >
-                  <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                    <li className="nav-item">About</li>
-                  </ul>
-                </NavLink>
-              </NavItem>
-
-              <NavItem className="collapse navbar-collapse">
-                <NavLink
-                  className="nav-link "
-                  onClick={() => navigate(state, actions, 1)}
-                  href="# "
-                  style={count === 1 ? activeStyle : { color: "#fff" }}
-                >
-                  <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                    <li className="nav-item">Reading</li>
-                  </ul>
-                </NavLink>
-              </NavItem>
-
-              <NavItem className="collapse navbar-collapse">
-                <NavLink
-                  className="nav-link "
-                  onClick={() => navigate(state, actions, 2)}
-                  href="# "
-                  style={count === 2 ? activeStyle : { color: "#fff" }}
-                >
-                  <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                    <li className="nav-item">Exercise</li>
-                  </ul>
-                </NavLink>
-              </NavItem>
-
-              <NavItem className="collapse navbar-collapse">
-                <NavLink
-                  className="nav-link "
-                  onClick={() => navigate(state, actions, 3)}
-                  href="# "
-                  style={count === 3 ? activeStyle : { color: "#fff" }}
-                >
-                  <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                    <li className="nav-item">Reinforcement</li>
-                  </ul>
-                </NavLink>
-              </NavItem>
-
-              <NavItem className="collapse navbar-collapse">
-                <NavLink
-                  className="nav-link "
-                  onClick={() => navigate(state, actions, 4)}
-                  href="# "
-                  style={count === 4 ? activeStyle : { color: "#fff" }}
-                >
-                  <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                    <li className="nav-item">Quiz</li>
-                  </ul>
-                </NavLink>
-              </NavItem>
-
-              {state.main.user !== null && (
-                <NavItem className="collapse navbar-collapse">
+            ({
+              /** In-Lab NavBar */
+            },
+            (
+              <Nav
+                className="tw-items-end tw-flex-wrap ml-auto"
+                navbar
+              >
+                <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
+                    onClick={() => navigate(state, actions, 0, 0)}
                     href="# "
                     style={{ color: "#fff" }}
-                    onClick={() => navigate(state, actions, 2, 0)}
                   >
                     <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                      <li className="nav-item nav-last">Profile</li>
+                      <li className="nav-item">Home</li>
                     </ul>
                   </NavLink>
                 </NavItem>
-              )}
 
-              <WelcomeMessage
-                user={state.main.user}
-                loginEnabled={loginEnabled}
-                renderLink={true}
-              />
-            </Nav>
+                <NavItem onClick={closeNav} className="navbar-collapse">
+                  <NavLink
+                    className="nav-link "
+                    onClick={() => navigate(state, actions, 0)}
+                    href="# "
+                    style={count === 0 ? activeStyle : { color: "#fff" }}
+                  >
+                    <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                      <li className="nav-item">About</li>
+                    </ul>
+                  </NavLink>
+                </NavItem>
+
+                <NavItem onClick={closeNav} className="navbar-collapse">
+                  <NavLink
+                    className="nav-link "
+                    onClick={() => navigate(state, actions, 1)}
+                    href="# "
+                    style={count === 1 ? activeStyle : { color: "#fff" }}
+                  >
+                    <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                      <li className="nav-item">Reading</li>
+                    </ul>
+                  </NavLink>
+                </NavItem>
+
+                <NavItem onClick={closeNav} className="navbar-collapse">
+                  <NavLink
+                    className="nav-link "
+                    onClick={() => navigate(state, actions, 2)}
+                    href="# "
+                    style={count === 2 ? activeStyle : { color: "#fff" }}
+                  >
+                    <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                      <li className="nav-item">Exercise</li>
+                    </ul>
+                  </NavLink>
+                </NavItem>
+
+                <NavItem onClick={closeNav} className="navbar-collapse">
+                  <NavLink
+                    className="nav-link "
+                    onClick={() => navigate(state, actions, 3)}
+                    href="# "
+                    style={count === 3 ? activeStyle : { color: "#fff" }}
+                  >
+                    <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                      <li className="nav-item">Reinforcement</li>
+                    </ul>
+                  </NavLink>
+                </NavItem>
+
+                <NavItem onClick={closeNav} className="navbar-collapse">
+                  <NavLink
+                    className="nav-link "
+                    onClick={() => navigate(state, actions, 4)}
+                    href="# "
+                    style={count === 4 ? activeStyle : { color: "#fff" }}
+                  >
+                    <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                      <li className="nav-item">Quiz</li>
+                    </ul>
+                  </NavLink>
+                </NavItem>
+
+                {state.main.user !== null && (
+                  <NavItem
+                    onClick={closeNav}
+                    className="collapse navbar-collapse"
+                  >
+                    <NavLink
+                      className="nav-link "
+                      href="# "
+                      style={{ color: "#fff" }}
+                      onClick={() => navigate(state, actions, 2, 0)}
+                    >
+                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                        <li className="nav-item nav-last">Profile</li>
+                      </ul>
+                    </NavLink>
+                  </NavItem>
+                )}
+
+                <WelcomeMessage
+                  user={state.main.user}
+                  loginEnabled={loginEnabled}
+                  renderLink={true}
+                />
+              </Nav>
+            ))
           )}
         </Collapse>
       </div>
