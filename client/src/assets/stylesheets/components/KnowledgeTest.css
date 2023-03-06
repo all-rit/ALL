@@ -1,0 +1,60 @@
+.knowledgeTest {
+  font-size: 1.25rem;
+}
+
+.knowledgeTest .question {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.knowledgeTest .options {
+  margin-top: 0.5rem;
+}
+
+.knowledgeTest .option {
+  border-radius: 0.25rem;
+  border: 1px solid;
+  padding: 0.25rem;
+  width: 60%;
+  margin: auto;
+  margin-top: 0.5rem;
+  background-color: white;
+}
+
+.knowledgeTest .option:hover {
+  background-color: #e1e2e5;
+}
+
+.knowledgeTest .correct {
+  background-color: #489907 !important;
+  color: white;
+}
+
+.knowledgeTest .incorrect {
+  color: white;
+  background-color: #943939 !important;
+}
+
+.knowledgeTest .text {
+  margin-bottom: 20px;
+}
+
+.knowledgeTest .result {
+  background-color: #484848 !important;
+  padding: 20px;
+  color: white;
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.knowledgeTest .next {
+  margin: auto;
+}
+
+.knowledgeTest .cover {
+  position: absolute;
+  z-index: 1;
+  height: 400px;
+}
+/*# sourceMappingURL=KnowledgeTest.css.map */

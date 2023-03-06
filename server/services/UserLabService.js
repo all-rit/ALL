@@ -1,5 +1,5 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-tabs */
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable max-len */
 const db = require('../database');
 

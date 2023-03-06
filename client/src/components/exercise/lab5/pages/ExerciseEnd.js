@@ -29,7 +29,8 @@ class ExerciseEnd extends Component {
             <div>
               <AppBar position="static" className="appBar">
                 <h4 className="flex-boxes ">
-                  Congratulations! You have succesfully completed the Cognitive Impairment Exercise!
+                  Congratulations! You have succesfully completed the Cognitive
+                  Impairment Exercise!
                 </h4>
               </AppBar>
             </div>
@@ -55,7 +56,7 @@ class ExerciseEnd extends Component {
               </div>
             </div>
           </div>
-          <h4 className="flex-boxes" >
+          <h4 className="flex-boxes">
             Click the button below to restart the exercise.
           </h4>
           <button
@@ -64,7 +65,6 @@ class ExerciseEnd extends Component {
             key="start"
           >
             Return to Exercise Start
-
           </button>
         </div>
       </Fragment>

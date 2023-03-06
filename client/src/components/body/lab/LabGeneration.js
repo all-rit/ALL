@@ -43,7 +43,11 @@ const LabGeneration = (props) => {
         return LabService.getAllLabs();
       }
       fetchGroups().then((data) => {
-        setLabInformation(data);
+        let arr = [];
+        data.map((lab) => {
+          arr[lab.id - 1] = lab;
+        });
+        setLabInformation(arr);
       });
     }
   });
@@ -70,13 +74,15 @@ const LabGeneration = (props) => {
       if (labRecords !== null && labRecords.length > 0) {
         return labRecords.map((rec, index) => {
           const idx = rec.labid - 1;
-          return renderLabData(
-            actions,
-            labInformation[idx],
-            progressState,
-            index,
-            rec
-          );
+          if (labInformation[idx]) {
+            return renderLabData(
+              actions,
+              labInformation[idx],
+              progressState,
+              index,
+              rec
+            );
+          }
         });
       } else {
         return (
@@ -93,7 +99,9 @@ const LabGeneration = (props) => {
       );
     }
     return labInformation.map((labInfo, index) => {
-      return renderLabData(actions, labInfo, progressState, index);
+      if (labInfo) {
+        return renderLabData(actions, labInfo, progressState, index);
+      }
     });
   }
 };
