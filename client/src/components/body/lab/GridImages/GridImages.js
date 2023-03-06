@@ -58,6 +58,15 @@ const GridImages = (props) => {
     handleGridImage(id);
   };
 
+  //changed useEffect
+  useEffect(() => {
+    let avatarData = createAvatarData(1000);
+    shuffleArray(avatarData);
+    setData(avatarData.slice(0, 15));
+    setCurrentFile([]);
+    setId([]);
+  }, [multi]);
+
   useEffect(() => {
     const avatarData = createAvatarData(1000);
     shuffleArray(avatarData);
@@ -81,7 +90,7 @@ const GridImages = (props) => {
         {data.length !== 0 ? (
           <div className="tw-container tw-mx-auto tw-space-y-2 lg:tw-space-y-0 lg:tw-gap-2 lg:tw-grid lg:tw-grid-cols-5 tw-p-2">
             {data?.map((data) => (
-              <>
+              <div key={data.id}>
                 <div
                   tabIndex="0"
                   className={gridImagesClassnames}
@@ -99,7 +108,7 @@ const GridImages = (props) => {
                         : "tw-max-w-full tw-h-auto"
                     }
                     alt={data.name}
-                    avatarStyle="Circle"
+                    avatarStyle="Square"
                     topType={data.avatarAttributes.topType}
                     accessoriesType={data.avatarAttributes.accessoriesType}
                     hairColor={data.avatarAttributes.hairColor}
@@ -112,7 +121,7 @@ const GridImages = (props) => {
                     skinColor={data.avatarAttributes.skinColor}
                   />
                 </div>
-              </>
+              </div>
             ))}
           </div>
         ) : (
