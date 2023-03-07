@@ -16,6 +16,8 @@ export const types = {
   UPDATE_THREAT_LEVEL: "@accessibility-lab/lab7/exercise/update_threat_level",
   ADD_RESULTS: "@accessibility-lab/lab7/exercise/add_results",
   UPDATE_REDIRECT_URL: "@accessibility-lab/lab7/exercise/update_redirect_url",
+  SET_MODAL: "@accessibility-lab/lab7/app/set_modal",
+  SET_MESSAGE: "@accessibility-lab/lab7/app/set_message",
 };
 
 export const initialState = {
@@ -29,6 +31,8 @@ export const initialState = {
   threatLvl: 0,
   results: [],
   redirectURL: BAD_AI_EXPLANATION,
+  isModalOpen: false,
+  message: "",
 };
 
 const ExerciseReducer = (state = initialState, action) => {
@@ -88,6 +92,16 @@ const ExerciseReducer = (state = initialState, action) => {
         ...state,
         redirectURL: action.url,
       };
+    case types.SET_MODAL:
+      return {
+        ...state,
+        isModalOpen: action.isModalOpen,
+      };
+    case types.SET_MESSAGE:
+      return {
+        ...state,
+        message: action.message,
+      };
     default:
       return state;
   }
@@ -108,6 +122,8 @@ export const actions = {
   }),
   addResults: (results) => ({ type: types.ADD_RESULTS, results }),
   updateRedirectURL: (url) => ({ type: types.UPDATE_REDIRECT_URL, url }),
+  setModal: (isModalOpen) => ({ type: types.SET_MODAL, isModalOpen }),
+  setMessage: (message) => ({ type: types.SET_MESSAGE, message }),
 };
 
 export default ExerciseReducer;

@@ -32,7 +32,7 @@ class BadAIExplanation extends Component {
         </p>
         <p className="playthrough__sentence">
           This is due to the factors of the files that the AI is using to
-          determine in a file&lsquo;s access should be restricted or not.
+          determine if a file&lsquo;s access should be restricted or not.
         </p>
         <p className="playthrough__sentence">
           The AI is currently only using one piece of sensitive information

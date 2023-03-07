@@ -49,8 +49,8 @@ class SimulationSummary extends Component {
             <div className={"tw-flex tw-text-left tw-text-2xl"}>
               <ul className={"tw-text-left tw-font-bold"}>
                 <li>Intrusions:</li>
-                <li>Protected (TP):</li>
-                <li>Incorrect (FP):</li>
+                <li>Protected (True Positive):</li>
+                <li>Incorrect (False Positive):</li>
               </ul>
               <ul className={"tw-text-right tw-font-bold tw-ml-6"}>
                 <li>{intrusions}</li>

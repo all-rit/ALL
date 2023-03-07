@@ -23,21 +23,19 @@ import {
 } from "../../../../constants/lab7";
 import { navigate } from "@reach/router";
 import { generateList } from "./data/files";
-import Countdown from "react-countdown-now";
-import ProgressBar from "./ProgressBar";
 import File from "./File";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { actions as appActions } from "../../../../reducers/lab7/AppReducer";
 import { actions as exerciseActions } from "../../../../reducers/lab7/ExerciseReducer";
 import RepairService from "../../../../services/lab7/RepairService";
+import MessageModal from "./MessageModal";
 
 class Simulation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       files: [],
-      message: "",
-      countdownComponent: null,
       counter: -1,
     };
   }
@@ -208,28 +206,22 @@ class Simulation extends Component {
   }
 
   /**
-   * Updates `files` and `countdownComponent` states. Invoked for when a message
+   * Updates `files` states. Invoked for when a message
    * needs to be displayed with progress bar.
    *
    * @param files array of file objects
    * @param message text to be displayed
    */
   handleCountdownComponent(files, message) {
-    this.setState({
-      files,
-      message,
-      countdownComponent: (
-        <Countdown
-          date={Date.now() + READ_TIME}
-          renderer={this.countdownRenderCallback.bind(this)}
-        />
-      ),
-    });
-    /* Unmount countdownComponent and message after read time */
-    setTimeout(
-      () => this.setState({ countdownComponent: null, message: "" }),
-      READ_TIME
-    );
+    const { handlers } = this.props;
+
+    handlers.setMessage(message);
+    handlers.setModal(true);
+    this.setState({ files });
+
+    setTimeout(() => {
+      handlers.setModal(false);
+    }, READ_TIME);
   }
 
   /**
@@ -297,69 +289,56 @@ class Simulation extends Component {
     setTimeout(() => this.setState({ counter: this.state.counter + 1 }), delay);
   }
 
-  /**
-   * Callback method for a countdown. Used for progress bar.
-   *
-   * @param seconds time left on the countdown
-   * @param completed whether the countdown is complete
-   * @returns {JSX.Element} progress bar component
-   */
-  countdownRenderCallback({ seconds, completed }) {
-    const { message } = this.state;
-    if (completed) return <></>;
-    else return <ProgressBar text={message} seconds={seconds} />;
-  }
-
   render() {
     const { roundNumber, intrusions, protect, incorrect, score, threatLvl } =
       this.props;
     return (
-      <div className="simulation tw-mt-12">
-        {/* Header */}
-        <div className={"tw-flex tw-justify-between"}>
-          {/* Round Tracker */}
+      <>
+        <MessageModal />
+        <div className="simulation tw-mt-12">
+          {/* Header */}
+          <div className={"tw-flex tw-justify-between"}>
+            {/* Round Tracker */}
+            <div>
+              <h4 className="tw-font-bold">
+                Round {roundNumber} of {ROUND_LIMIT}
+              </h4>
+            </div>
+            {/* Status Report */}
+            <div className={"tw-flex tw-text-xl tw-m-[20px]"}>
+              <ul className={"tw-text-left tw-font-bold"}>
+                <li>Intrusions:</li>
+                <li>Protected (TP):</li>
+                <li>Incorrect (FP):</li>
+                <li>Total Score:</li>
+              </ul>
+              <ul className={"tw-text-right tw-ml-6"}>
+                <li>{intrusions}</li>
+                <li>{protect}</li>
+                <li>{incorrect}</li>
+                <li>{score}</li>
+              </ul>
+            </div>
+          </div>
+          {/* Body */}
           <div>
-            <h4 className="tw-font-bold">
-              Round {roundNumber} of {ROUND_LIMIT}
-            </h4>
-          </div>
-          {/* Status Report */}
-          <div className={"tw-flex tw-text-xl tw-m-[20px]"}>
-            <ul className={"tw-text-left tw-font-bold"}>
-              <li>Intrusions:</li>
-              <li>Protected (TP):</li>
-              <li>Incorrect (FP):</li>
-              <li>Total Score:</li>
-            </ul>
-            <ul className={"tw-text-right tw-ml-6"}>
-              <li>{intrusions}</li>
-              <li>{protect}</li>
-              <li>{incorrect}</li>
-              <li>{score}</li>
-            </ul>
+            {/* Threat Message */}
+            <div
+              className={"tw-flex tw-items-center tw-justify-center tw-w-full"}
+            >
+              <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
+                {THREAT_LEVEL_TEXT[threatLvl]} threat detected!
+              </h1>
+            </div>
+            {/* File Display */}
+            <div className={"tw-flex tw-justify-around tw-mt-16"}>
+              {this.state.files.map((file, index) => (
+                <File key={index} data={file} />
+              ))}
+            </div>
           </div>
         </div>
-        {/* Body */}
-        <div>
-          {/* Threat Message */}
-          <div
-            className={"tw-flex tw-items-center tw-justify-center tw-w-full"}
-          >
-            <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
-              {THREAT_LEVEL_TEXT[threatLvl]} threat detected!
-            </h1>
-          </div>
-          {/* File Display */}
-          <div className={"tw-flex tw-justify-around tw-mt-16"}>
-            {this.state.files.map((file, index) => (
-              <File key={index} data={file} />
-            ))}
-          </div>
-          {/* Countdown component w/ message */}
-          {/* When countdown component is not null, it will be rendered */}
-          {this.state.countdownComponent}
-        </div>
-      </div>
+      </>
     );
   }
 }
@@ -385,7 +364,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handlers: bindActionCreators({ ...exerciseActions }, dispatch),
+    handlers: bindActionCreators(
+      { ...exerciseActions, ...appActions },
+      dispatch
+    ),
   };
 };
 

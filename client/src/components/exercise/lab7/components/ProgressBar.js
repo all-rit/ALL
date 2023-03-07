@@ -13,16 +13,18 @@ const ProgressBar = ({ text, seconds }) => {
   };
 
   return (
-    <div className={"tw-mt-9"}>
-      <div className={"tw-mb-9"}>
-        <p className="tw-font-bold tw-text-xl">{text}</p>
-      </div>
+    <div className={"tw-space-y-6"}>
       <div>
+        <p className="tw-text-lg">{text}</p>
+      </div>
+      <div className={"tw-flex tw-flex-col"}>
         <div
           style={{ width: `${calculateWidth()}%` }}
-          className={`tw-bg-[#7CB1FF] tw-rounded tw-py-3 tw-transition-all tw-ease-in-out tw-duration-500`}
+          className={`tw-bg-[#7CB1FF] tw-border-solid tw-rounded tw-py-3 tw-transition-all tw-ease-in-out tw-duration-500`}
         />
-        <p className={"tw-font-bold tw-text-xl"}>{seconds - 1}</p>
+        <p className={"tw-font-bold tw-text-lg tw-mx-auto"}>
+          Reading Time Left: {seconds - 1} seconds
+        </p>
       </div>
     </div>
   );

@@ -78,7 +78,7 @@ class AICodeRepair extends Component {
               <p className={"playthrough__sentence"}>
                 Your goal should be to implement a utility equation into the
                 autonomous system. The utility equation is calculated by
-                weighting the reward of a decision and the cost of making said
+                weighing the reward of a decision and the cost of making said
                 decision.
               </p>
               <MathComponent

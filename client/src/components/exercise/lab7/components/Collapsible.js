@@ -26,6 +26,7 @@ const Collapsible = ({ result: { files, threatLvl }, index }) => {
   return (
     <div className={"tw-bg-[#EBE8E8] tw-shadow-xl"}>
       <button
+        style={{ cursor: intrusions.length > 0 ? "" : "default" }}
         onClick={() => handleClick(intrusions.length)}
         className={
           "tw-border-none tw-flex tw-w-full tw-items-center tw-justify-around tw-justify-center tw-text-lg tw-py-3 tw-px-6"
@@ -50,7 +51,9 @@ const Collapsible = ({ result: { files, threatLvl }, index }) => {
             Incorrect (FP): {incorrectFiles.length}
           </span>
         </p>
-        <div className={"tw-w-3"}>{active ? "-" : "+"}</div>
+        <div className={"tw-w-3"}>
+          {intrusions.length > 0 ? (active ? "-" : "+") : ""}
+        </div>
       </button>
       {active && intrusions.length > 0 && (
         <div className={"tw-px-16"}>

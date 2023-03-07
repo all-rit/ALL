@@ -4,7 +4,7 @@ import _ from "lodash";
 export const FILES = [
   {
     fileName: "PortaVolutpat.tiff",
-    content: "Mother Maiden Name",
+    content: "Parent's Last Name",
     sensitivityLevel: 3,
     accessStatus: "OPEN",
   },
@@ -46,13 +46,13 @@ export const FILES = [
   },
   {
     fileName: "CuraeDonec.avi",
-    content: "Mother Maiden Name",
+    content: "Parent's Last Name",
     sensitivityLevel: 3,
     accessStatus: "OPEN",
   },
   {
     fileName: "SodalesTincidunt.tiff",
-    content: "Mother Maiden Name",
+    content: "Parent's Last Name",
     sensitivityLevel: 3,
     accessStatus: "OPEN",
   },
@@ -88,7 +88,7 @@ export const FILES = [
   },
   {
     fileName: "PrimisInFaucibus.xls",
-    content: "Mother Maiden Name",
+    content: "Parent's Last Name",
     sensitivityLevel: 3,
     accessStatus: "OPEN",
   },
@@ -106,7 +106,7 @@ export const FILES = [
   },
   {
     fileName: "TurpisEget.mp3",
-    content: "Mother Maiden Name",
+    content: "Parent's Last Name",
     sensitivityLevel: 3,
     accessStatus: "OPEN",
   },

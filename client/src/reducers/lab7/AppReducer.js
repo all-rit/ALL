@@ -27,7 +27,6 @@ const AppReducer = (state = initialState, action) => {
         ...state,
         instructionsVisible: false,
       };
-
     default:
       return state;
   }

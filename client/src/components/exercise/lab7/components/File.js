@@ -24,7 +24,7 @@ const File = ({ data }) => {
           </div>
         )}
         <div>
-          <p className={"tw-leading-tight tw-font-bold"}>{data.fileName}</p>
+          <p className={"tw-leading-tight"}>{data.fileName}</p>
           <p className={"tw-leading-tight tw-italic"}>
             Sensitivity Level {data.sensitivityLevel}
           </p>

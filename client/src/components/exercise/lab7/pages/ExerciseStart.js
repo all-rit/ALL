@@ -112,7 +112,7 @@ class ExerciseStart extends Component {
               </li>
               <li>
                 At the end, a summary report containing all of the information
-                displayed throughout the simulation will be displayed
+                displayed throughout the simulation will be displayed.
               </li>
             </ul>
           </div>
