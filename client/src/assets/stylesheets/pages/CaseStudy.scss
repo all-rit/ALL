@@ -11,6 +11,26 @@
     font-weight: bold;
   }
 
+  .ordered__list__div {
+    display: flex;
+    flex-direction: column;
+    align-items: left; // make this left to align list to the left
+  }
+
+  .ordered__list {
+    text-align: left;
+    list-style: decimal;
+    font-size: 1.25rem;
+    padding-left: 5rem; // make this 5rem for indented look
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
+  .ordered__list > li {
+    margin-bottom: 1rem;
+  }
+
   &__list {
     text-align: left;
     list-style-type: disc;
