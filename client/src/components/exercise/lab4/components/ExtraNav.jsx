@@ -20,7 +20,6 @@ const ExtraNav = (props) => {
       <Navbar color="light" light expand="md">
         <NavbarBrand href="javascript:void(0);">Accessibility</NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        console.log{"open"};
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
