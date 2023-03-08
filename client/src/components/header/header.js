@@ -55,6 +55,24 @@ const Header = (props) => {
   const closeNav = () => setIsOpen(false);
   const { state, actions } = props;
   const [link, setLink] = useState(0);
+const listenScrollEvent = (event) => {
+    if (state.main.lab === 0 && state.main.body === 0) {
+      if (window.scrollY < 800) {
+        return setLink(0);
+      } else if (window.scrollY < 2100) {
+        return setLink(1);
+      } else if (window.scrollY < 3500) {
+        return setLink(2);
+      } else {
+        return setLink(3);
+      }
+    }
+  };
+  
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+    return () => window.removeEventListener("scroll", listenScrollEvent);
+  }, [state]);
 
   const count = state.main.body;
   const loginEnabled =
