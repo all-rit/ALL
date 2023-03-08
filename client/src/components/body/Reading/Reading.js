@@ -10,6 +10,7 @@ import Image from "./Image";
 import Spinner from "../../../common/Spinner/Spinner";
 import LinkFooter from "./LinkFooter";
 import Links from "./Links";
+import OrderedList from "./OrderedList";
 
 const Reading = (props) => {
   const { user, labID } = props;
@@ -76,6 +77,11 @@ const Reading = (props) => {
               )}
               {data.type === "study__list" ? (
                 <StudyList data={data.content} />
+              ) : (
+                <></>
+              )}
+              {data.type === "ordered-list" ? (
+                <OrderedList data={data.content} />
               ) : (
                 <></>
               )}
