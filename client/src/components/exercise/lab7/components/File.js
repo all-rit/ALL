@@ -54,6 +54,6 @@ File.propTypes = {
     decision: PropTypes.string,
     result: PropTypes.string,
     report: PropTypes.string,
-    message: PropTypes.string,
+    message: PropTypes.element,
   }),
 };

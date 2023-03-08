@@ -37,20 +37,20 @@ const Collapsible = ({ result: { files, threatLvl }, index }) => {
           Threat Level: {THREAT_LEVEL_TEXT[threatLvl]}
         </p>
         <p className={"tw-font-semibold tw-text-left tw-w-28"}>
-          <span className={intrusions.length > 0 ? "tw-text-[#e31c3d]" : ""}>
+          <span className={"tw-text-[#e31c3d]"}>
             Intrusions: {intrusions.length}
           </span>
         </p>
         <p className={"tw-font-semibold tw-text-left tw-w-36"}>
-          Protected (TP): {protectedFiles.length}
-        </p>
-        <p className={"tw-font-semibold tw-text-left tw-w-36"}>
           <span
-            className={incorrectFiles.length > 0 ? "tw-text-brightRed" : ""}
+            className={"tw-text-[#e31c3d]"}
           >
             Incorrect (FP): {incorrectFiles.length}
           </span>
         </p>
+          <p className={"tw-font-semibold tw-text-left tw-w-36"}>
+              Protected (TP): {protectedFiles.length}
+          </p>
         <div className={"tw-w-3"}>
           {intrusions.length > 0 ? (active ? "-" : "+") : ""}
         </div>
@@ -115,7 +115,7 @@ Collapsible.propTypes = {
         decision: PropTypes.string,
         result: PropTypes.string,
         report: PropTypes.string,
-        message: PropTypes.string,
+        message: PropTypes.element,
       })
     ),
   }),

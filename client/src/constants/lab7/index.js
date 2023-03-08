@@ -1,3 +1,5 @@
+import React from "react"
+
 export const EXERCISE_PLAYING = "EXERCISE_PLAYING";
 export const EXERCISE_IDLE = "EXERCISE_IDLE";
 
@@ -13,6 +15,7 @@ export const FILE_PROTECTED = "FILE_PROTECTED";
 export const LAB_ID = 7;
 export const FILE_COUNT = 5;
 export const THREAT_MAX = 3;
+export const NO_DELAY = 0;
 export const DELAY_TIME = 3000;
 export const READ_TIME = 10000;
 export const ROUND_LIMIT = 5;
@@ -21,8 +24,8 @@ export const POPUP_MESSAGES = {
   INVALID_EXPRESSION: "You must pass in a valid expression.",
   ZERO_DIVISION: "Division by zero is not allowed.",
   SUCCESS: "The repairs have successfully been implemented.",
-  FILE_SENS_NOT_INCLUDED: "Must include 'file.sensitivityLevel'",
-  THREAT_LVL_NOT_INCLUDED: "Must include 'threatLvl'",
+  FILE_SENS_NOT_INCLUDED: "Must include &lsquo;file.sensitivityLevel&lsquo;",
+  THREAT_LVL_NOT_INCLUDED: "Must include &lsquo;threatLvl&lsquo;",
 };
 export const POPUP_DELAY = 6000;
 
@@ -39,17 +42,16 @@ export const SCORE_MAP = {
 export const THREAT_LEVEL_TEXT = { 1: "Low", 2: "Medium", 3: "High" };
 
 export const MESSAGES = {
-  SSN: "Someone’s social security number was stolen during the security breach. As a result of the breach, an identity thief was able to steal an individual's identity. This autonomous system decision-mistake caused a case of identity theft.",
-  "Home Address":
-    "Someone’s home address was stolen during the security breach. As a result of the breach, an identity thief was able to change the individual’s mailing address and reroute their mail to another address. This autonomous system decision-mistake caused a case of address fraud.",
+  SSN: (<>Someone&lsquo;s <b>social security number</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>steal an individual&lsquo;s identity</b>. This autonomous system decision-mistake caused a case of <b>identity theft</b>.</>),
+  "Home Address":(<>Someone’s <b>home address</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>change the individual’s mailing address and reroute their mail to another address</b>. This autonomous system decision-mistake caused a case of <b>address fraud</b>.</>),
   "Parent's Last Name":
-    "Someone’s parent's last name was stolen during the security breach. As a result of the breach, an identity thief was able to answer the individual's security questions for all their accounts. This autonomous system decision-mistake caused a case of hacking and identity fraud.",
+      (<>Someone’s <b>parent&lsquo;s last name</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>answer the individual&lsquo;s security questions for all their accounts</b>. This autonomous system decision-mistake caused a case of <b>hacking</b> and <b>identity fraud</b>.</>),
   "Full Name":
-    "Someone’s full name was stolen during the security breach. As a result of the breach, an identity thief was able to sign up and create fake accounts under the individual's name. This autonomous system decision-mistake caused a case of identity fraud.",
+      (<>Someone’s <b>full name</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>sign up and create fake accounts under the individual&lsquo;s name</b>. This autonomous system decision-mistake caused a case of <b>identity fraud</b>.</>),
   "Email Address":
-    "Someone’s email address was stolen during the security breach. As a result of the breach, an identity thief was able to send the individual spam emails and sign up for accounts. This autonomous system decision-mistake caused a case of spam and phishing.",
+      (<>Someone’s <b>email address</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>send the individual spam emails and sign up for accounts</b>. This autonomous system decision-mistake caused a case of <b>spam</b> and <b>phishing</b>.</>),
   Perfect:
-    "All files were correctly protected during the security breach! Bonus +50 points.",
+      (<b>All files were correctly protected during the security breach! Bonus +50 points.</b>),
 };
 
 export const FILE_FORMAT_VALIDATION = {

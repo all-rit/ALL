@@ -32,7 +32,7 @@ export const initialState = {
   results: [],
   redirectURL: BAD_AI_EXPLANATION,
   isModalOpen: false,
-  message: "",
+  message: null,
 };
 
 const ExerciseReducer = (state = initialState, action) => {

@@ -13,7 +13,7 @@ import {
   FILE_PROTECTED,
   LAB_ID,
   LOCKED_FILE,
-  MESSAGES,
+  MESSAGES, NO_DELAY,
   OPEN_FILE,
   READ_TIME,
   ROUND_LIMIT,
@@ -63,7 +63,9 @@ class Simulation extends Component {
       const threatLvl = this.randomizeThreat();
       handlers.startNewRound();
       const files = this.generateFileList(threatLvl);
-      this.setState({ files, counter: 0 });
+      this.setState({ files });
+      // This is what 'starts' a round. Wait a 1.5s before commencing.
+      setTimeout(() => this.setState({counter: 0}), DELAY_TIME)
       handlers.addResults({ files, threatLvl });
     } else {
       UserLabService.complete_exercise(LAB_ID);
@@ -200,7 +202,7 @@ class Simulation extends Component {
       } else {
         /* End of round */
         const result = this.handlePerfectScore();
-        setTimeout(() => this.startRound(), result ? READ_TIME : 0);
+        setTimeout(() => this.startRound(), result ? READ_TIME + DELAY_TIME : NO_DELAY);
       }
     }
   }
@@ -211,18 +213,24 @@ class Simulation extends Component {
    *
    * @param files array of file objects
    * @param message text to be displayed
+   * @param delay optional parameter for delaying modal message
    */
-  handleCountdownComponent(files, message) {
+  handleCountdownComponent(files, message, delay = DELAY_TIME) {
     const { handlers } = this.props;
 
-    handlers.setMessage(message);
-    handlers.setModal(true);
     this.setState({ files });
 
     setTimeout(() => {
+      handlers.setMessage(message);
+      handlers.setModal(true);
+    }, delay)
+
+    setTimeout(() => {
       handlers.setModal(false);
-    }, READ_TIME);
+    }, READ_TIME + delay);
   }
+
+
 
   /**
    * Logic to award bonus points if all files for a round were correctly protected.
@@ -237,7 +245,7 @@ class Simulation extends Component {
     );
     if (filteredFiles.length === files.length) {
       handlers.incrementScore(SCORE_MAP.PERFECT_SCORE);
-      this.handleCountdownComponent(files, MESSAGES.Perfect);
+      this.handleCountdownComponent(files, MESSAGES.Perfect, NO_DELAY);
       return true;
     }
     return false;
@@ -265,7 +273,7 @@ class Simulation extends Component {
     files[counter].message = MESSAGES[files[counter].content];
     handlers.incrementIntrusions();
     this.handleCountdownComponent(files, files[counter].message);
-    this.incrementCounter(READ_TIME);
+    this.incrementCounter(READ_TIME + DELAY_TIME + DELAY_TIME);
   }
 
   /**
@@ -295,7 +303,7 @@ class Simulation extends Component {
     return (
       <>
         <MessageModal />
-        <div className="simulation tw-mt-12">
+        <div className="">
           {/* Header */}
           <div className={"tw-flex tw-justify-between"}>
             {/* Round Tracker */}
@@ -344,7 +352,7 @@ class Simulation extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { roundNumber, intrusions, incorrect, score, threatLvl, results } =
+  const { roundNumber, intrusions, incorrect, score, threatLvl, results, isModalOpen } =
     state.exercise7;
   const { makeDecision, repairId } = state.repair7;
   const { user } = state.main;
@@ -358,6 +366,7 @@ const mapStateToProps = (state) => {
     incorrect,
     threatLvl,
     results,
+    isModalOpen,
     protect: state.exercise7.protected,
   };
 };

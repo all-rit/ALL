@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import { Modal, ModalHeader } from "reactstrap";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab7/ExerciseReducer";
@@ -23,12 +23,11 @@ const MessageModal = (props) => {
   };
 
   const isIntrusion = props.message !== MESSAGES.Perfect;
-
   return (
     <Modal
       centered={true}
       isOpen={props.isModalOpen}
-      contentClassName={"tw-max-w-5xl"}
+      contentClassName={"tw-max-w-4xl"}
     >
       <ModalHeader>
         <span className={"tw-flex tw-items-center"}>
@@ -42,19 +41,17 @@ const MessageModal = (props) => {
           </h3>
         </span>
       </ModalHeader>
-      <ModalBody>
-        <Countdown
+      <Countdown
           date={Date.now() + READ_TIME}
           renderer={countdownRenderCallback}
-        />
-      </ModalBody>
+      />
     </Modal>
   );
 };
 
 MessageModal.propTypes = {
   isModalOpen: PropTypes.bool,
-  message: PropTypes.string,
+  message: PropTypes.element,
   handlers: PropTypes.object,
 };
 
