@@ -20,6 +20,9 @@ import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
 
 import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
 
+import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
+import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
+
 import { default as LandingPageBody } from "./components/body/landingpage/index";
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
 import { default as Error } from "./components/body/landingpage/error";
@@ -128,6 +131,8 @@ class App extends Component {
               <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
               <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
+              <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
+              <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
 
               <Reinforcement
                 path={`/Lab${lab}/Reinforcement`}
@@ -139,6 +144,9 @@ class App extends Component {
                 path={`/Lab${lab}/Quiz`}
                 labId={lab}
                 user={state.main.user}
+                isFinalQuiz
+                hideCertificate={false}
+                submitData={() => {}}
               />
             </Router>
           </div>

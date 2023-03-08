@@ -1,5 +1,5 @@
-/* eslint-disable no-tabs */
 /* eslint-disable new-cap */
+/* eslint-disable no-tabs */
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define(
       'Users',

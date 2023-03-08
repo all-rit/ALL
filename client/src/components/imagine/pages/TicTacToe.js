@@ -6,8 +6,8 @@ import Spinner from "../../../common/Spinner/Spinner";
 import TicTacToeBoard from "../TicTacToe/TicTacToeBoard";
 const TicTacToe = (props) => {
   const { linkNum } = props;
-  const [loading, setLoading] = react.useState(true);
-  const [gameState, setGameState] = react.useState({
+  const [loading, setLoading] = React.useState(true);
+  const [gameState, setGameState] = React.useState({
     isGameOver: false,
     winner: null,
   });

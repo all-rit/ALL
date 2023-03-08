@@ -355,9 +355,6 @@
   top: -9999px;
   z-index: 1000;
 }
-.rc-color-picker-wrap {
-  /* display: inline-block; */
-}
 .rc-color-picker-slide-up-enter {
   animation-duration: 0.3s;
   animation-fill-mode: both;

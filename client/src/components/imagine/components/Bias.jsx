@@ -14,7 +14,7 @@ const Bias = (props) => {
     isModalActive,
     setModalActive,
   } = props;
-  const [setTimerDone] = useState(false);
+  const [timerDone, setTimerDone] = useState(false);
   const [bias, setBias] = useState(null);
 
   useState(() => {
@@ -50,12 +50,18 @@ const Bias = (props) => {
             <div>
               <Timer seconds={30} finished={penaltyFinished} />
             </div>
-            {/* <div>
-                        {
-                            timerDone? <button className="btn btn-primary text-black btn-xl text-uppercase"
-                             onClick={onExit}>Next</button>:<></>
-                        }
-                        </div> */}
+            <div>
+              {timerDone ? (
+                <button
+                  className="btn btn-primary text-black btn-xl text-uppercase"
+                  onClick={onExit}
+                >
+                  Next
+                </button>
+              ) : (
+                <></>
+              )}
+            </div>
           </ModalBody>
         </Modal>
         {/* change to any number */}

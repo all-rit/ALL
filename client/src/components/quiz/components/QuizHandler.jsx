@@ -10,7 +10,10 @@ import QuestionsLab2 from "../api/Lab2/quizQuestions";
 import QuestionsLab3 from "../api/Lab3/quizQuestions";
 import QuestionsLab4 from "../api/Lab4/quizQuestions";
 import QuestionsLab5 from "../api/Lab5/quizQuestions";
+import QuestionsLab6 from "../api/Lab6/quizQuestions";
 import UserLabService from "../../../services/UserLabService";
+import alterationQuizQuestions from "../api/Lab7/alterationQuizQuestions";
+import quizQuestionsLab7 from "../api/Lab7/quizQuestions";
 
 /**
  * assignQuizQuestions is a function that returns a given set
@@ -18,7 +21,7 @@ import UserLabService from "../../../services/UserLabService";
  * @param {integer} labId is passed to the function to determine
  * what questions to grab
  */
-function assignQuizQuestions(labId) {
+function assignQuizQuestions(labId, isFinalQuiz) {
   switch (labId) {
     case 1:
       return QuestionsLab1;
@@ -30,6 +33,14 @@ function assignQuizQuestions(labId) {
       return QuestionsLab4;
     case 5:
       return QuestionsLab5;
+    case 6:
+      return QuestionsLab6;
+    case 7:
+      if (!isFinalQuiz) {
+        return alterationQuizQuestions;
+      } else {
+        return quizQuestionsLab7;
+      }
     default:
       return [
         {
@@ -37,7 +48,7 @@ function assignQuizQuestions(labId) {
           answers: [
             {
               val: 0,
-              type: 0,
+              type: "0",
               content: "Default",
             },
           ],
@@ -56,7 +67,9 @@ function assignQuizQuestions(labId) {
 const QuizHandler = (props) => {
   const [currentLabId, setCurrentLab] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(assignQuizQuestions(props.labId));
+  const [questions, setQuestions] = useState(
+    assignQuizQuestions(props.labId, props.isFinalQuiz)
+  );
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers
   );
@@ -172,13 +185,22 @@ const QuizHandler = (props) => {
     console.log("user score is: " + countCorrect / questionsTotal);
     console.log(output);
     setResult(countCorrect / questionsTotal);
-    UserLabService.complete_quiz(
-      props.labId,
-      (countCorrect / questionsTotal) * 100,
-      output
-    );
-    if (props.user.firstname !== null) {
-      UserLabService.user_complete_quiz(
+    if (props.isFinalQuiz) {
+      UserLabService.complete_quiz(
+        props.labId,
+        (countCorrect / questionsTotal) * 100,
+        JSON.stringify(output)
+      );
+      if (props.user.firstname !== null) {
+        UserLabService.user_complete_quiz(
+          props.user.userid,
+          props.labId,
+          (countCorrect / questionsTotal) * 100
+        );
+      }
+    } else {
+      props.submitData(
+        output,
         props.user.userid,
         props.labId,
         (countCorrect / questionsTotal) * 100
@@ -259,6 +281,7 @@ const QuizHandler = (props) => {
         ></Quiz>
       ) : (
         <Result
+          hideCertificate={props.hideCertificate}
           quizResult={result * 100 + "%"}
           quizScore={100}
           selectedAnswers={selectedAnswers}
@@ -270,10 +293,13 @@ const QuizHandler = (props) => {
   );
 };
 QuizHandler.propTypes = {
-  labId: PropTypes.integer,
+  labId: PropTypes.number,
+  isFinalQuiz: PropTypes.bool.isRequired,
+  hideCertificate: PropTypes.bool.isRequired,
+  submitData: PropTypes.func.isRequired,
   user: PropTypes.shape({
     firstname: PropTypes.string,
-    userid: PropTypes.integer,
+    userid: PropTypes.number,
   }),
 };
 export default QuizHandler;
