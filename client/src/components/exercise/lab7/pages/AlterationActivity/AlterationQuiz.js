@@ -15,6 +15,7 @@ class AlterationQuiz extends Component {
     this.state = {
       componentName: "AlterationQuiz",
       updateStateFunc: props.actions.updateState,
+      showContinue: false,
     };
   }
 
@@ -24,10 +25,15 @@ class AlterationQuiz extends Component {
       setTimeout(() => navigate("/Lab7/Exercise/AlterationStart"));
   }
 
-  handleSubmitData(output, userId) {
+  handleContinue(){
     const { actions } = this.props;
     actions.updateState(EXERCISE_IDLE);
+    navigate("/Lab7/Exercise/ExerciseEnd")
+  }
+
+  handleSubmitData(output, userId) {
     ExerciseService.submitRepair(output, userId);
+    this.setState({ showContinue: true });
   }
 
   render() {
@@ -52,6 +58,15 @@ class AlterationQuiz extends Component {
           isFinalQuiz={false}
           submitData={this.handleSubmitData.bind(this)}
         />
+        {this.state.showContinue && (
+            <button
+            className="btn btn-primary text-black btn-xl text-uppercase tw-mt-4"
+            onClick={this.handleContinue.bind(this)}
+            key="start"
+          >
+            Continue
+        </button>
+        )}
       </div>
     );
   }

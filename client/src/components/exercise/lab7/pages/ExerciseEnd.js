@@ -36,7 +36,7 @@ class ExerciseEnd extends Component {
             onClick={this.handleHome}
             key="start"
           >
-            Home
+            Exercise Home
           </button>
         </div>
       </Fragment>
