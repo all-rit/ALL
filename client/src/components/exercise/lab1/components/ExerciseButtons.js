@@ -3,6 +3,7 @@
 /* eslint-disable require-jsdoc */
 import React, { Component, Fragment } from "react";
 
+
 class ExerciseButtons extends Component {
   render() {
     const {
@@ -12,10 +13,13 @@ class ExerciseButtons extends Component {
       openRepairHandler,
       openInstructionsHandler,
       startExerciseHandler,
+
     } = this.props;
+
     let startMessage = "Start";
-    if (repairApplied) {
+    if (repairApplied === true) {
       startMessage = "Start with Repair Applied";
+
     } else if (plays > 0) {
       startMessage = "Next Play";
     }
@@ -37,11 +41,14 @@ class ExerciseButtons extends Component {
         How to Play?
       </button>
     );
+
     const startButton = (
+
       <button
         className="btn btn-primary text-black btn-xl text-uppercase  rightButton"
         onClick={startExerciseHandler}
         key="start"
+        disabled={this.props.disabled}
       >
         {startMessage}
       </button>
@@ -52,7 +59,7 @@ class ExerciseButtons extends Component {
 
     if (plays >= 2) buttons.push(repairButton);
     if (plays === 0) buttons.push(instructionsButton);
-    buttons.push(startButton);
+     buttons.push(startButton);
 
     return <Fragment>{buttons}</Fragment>;
   }

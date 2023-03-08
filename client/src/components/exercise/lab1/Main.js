@@ -132,6 +132,7 @@ class Main extends Component {
             currentTab,
             repairVisible,
             changesApplied,
+            repairError
           }}
           handlers={actions}
           user={user}
@@ -142,7 +143,11 @@ class Main extends Component {
           closeHandler={actions.closeInstructions}
         />
 
-        <Popup message={popupMessage} error={repairError} handler={actions.updatePopup} />
+        <Popup
+          message={popupMessage}
+          error={repairError}
+          handler={actions.updatePopup}
+        />
       </Fragment>
     );
   }
