@@ -14,14 +14,14 @@
   .ordered__list__div {
     display: flex;
     flex-direction: column;
-    align-items: left; // make this left to align list to the left
+    align-items: left;
   }
 
   .ordered__list {
     text-align: left;
     list-style: decimal;
     font-size: 1.25rem;
-    padding-left: 5rem; // make this 5rem for indented look
+    padding-left: 5rem;
     display: flex;
     flex-direction: column;
     align-items: left;
