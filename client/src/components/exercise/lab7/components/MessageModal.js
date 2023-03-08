@@ -42,8 +42,8 @@ const MessageModal = (props) => {
         </span>
       </ModalHeader>
       <Countdown
-          date={Date.now() + READ_TIME}
-          renderer={countdownRenderCallback}
+        date={Date.now() + READ_TIME}
+        renderer={countdownRenderCallback}
       />
     </Modal>
   );

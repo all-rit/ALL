@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 export const EXERCISE_PLAYING = "EXERCISE_PLAYING";
 export const EXERCISE_IDLE = "EXERCISE_IDLE";
@@ -42,16 +42,61 @@ export const SCORE_MAP = {
 export const THREAT_LEVEL_TEXT = { 1: "Low", 2: "Medium", 3: "High" };
 
 export const MESSAGES = {
-  SSN: (<>Someone&lsquo;s <b>social security number</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>steal an individual&lsquo;s identity</b>. This autonomous system decision-mistake caused a case of <b>identity theft</b>.</>),
-  "Home Address":(<>Someone’s <b>home address</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>change the individual’s mailing address and reroute their mail to another address</b>. This autonomous system decision-mistake caused a case of <b>address fraud</b>.</>),
-  "Parent's Last Name":
-      (<>Someone’s <b>parent&lsquo;s last name</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>answer the individual&lsquo;s security questions for all their accounts</b>. This autonomous system decision-mistake caused a case of <b>hacking</b> and <b>identity fraud</b>.</>),
-  "Full Name":
-      (<>Someone’s <b>full name</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>sign up and create fake accounts under the individual&lsquo;s name</b>. This autonomous system decision-mistake caused a case of <b>identity fraud</b>.</>),
-  "Email Address":
-      (<>Someone’s <b>email address</b> was stolen during the security breach. As a result of the breach, an identity thief was able to <b>send the individual spam emails and sign up for accounts</b>. This autonomous system decision-mistake caused a case of <b>spam</b> and <b>phishing</b>.</>),
-  Perfect:
-      (<b>All files were correctly protected during the security breach! Bonus +50 points.</b>),
+  SSN: (
+    <>
+      Someone&lsquo;s <b>social security number</b> was stolen during the
+      security breach. As a result of the breach, an identity thief was able to{" "}
+      <b>steal an individual&lsquo;s identity</b>. This autonomous system
+      decision-mistake caused a case of <b>identity theft</b>.
+    </>
+  ),
+  "Home Address": (
+    <>
+      Someone’s <b>home address</b> was stolen during the security breach. As a
+      result of the breach, an identity thief was able to{" "}
+      <b>
+        change the individual’s mailing address and reroute their mail to
+        another address
+      </b>
+      . This autonomous system decision-mistake caused a case of{" "}
+      <b>address fraud</b>.
+    </>
+  ),
+  "Parent's Last Name": (
+    <>
+      Someone’s <b>parent&lsquo;s last name</b> was stolen during the security
+      breach. As a result of the breach, an identity thief was able to{" "}
+      <b>
+        answer the individual&lsquo;s security questions for all their accounts
+      </b>
+      . This autonomous system decision-mistake caused a case of <b>hacking</b>{" "}
+      and <b>identity fraud</b>.
+    </>
+  ),
+  "Full Name": (
+    <>
+      Someone’s <b>full name</b> was stolen during the security breach. As a
+      result of the breach, an identity thief was able to{" "}
+      <b>sign up and create fake accounts under the individual&lsquo;s name</b>.
+      This autonomous system decision-mistake caused a case of{" "}
+      <b>identity fraud</b>.
+    </>
+  ),
+  "Email Address": (
+    <>
+      Someone’s <b>email address</b> was stolen during the security breach. As a
+      result of the breach, an identity thief was able to{" "}
+      <b>send the individual spam emails and sign up for accounts</b>. This
+      autonomous system decision-mistake caused a case of <b>spam</b> and{" "}
+      <b>phishing</b>.
+    </>
+  ),
+  Perfect: (
+    <b>
+      All files were correctly protected during the security breach! Bonus +50
+      points.
+    </b>
+  ),
 };
 
 export const FILE_FORMAT_VALIDATION = {

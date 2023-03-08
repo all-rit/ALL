@@ -42,15 +42,13 @@ const Collapsible = ({ result: { files, threatLvl }, index }) => {
           </span>
         </p>
         <p className={"tw-font-semibold tw-text-left tw-w-36"}>
-          <span
-            className={"tw-text-[#e31c3d]"}
-          >
+          <span className={"tw-text-[#e31c3d]"}>
             Incorrect (FP): {incorrectFiles.length}
           </span>
         </p>
-          <p className={"tw-font-semibold tw-text-left tw-w-36"}>
-              Protected (TP): {protectedFiles.length}
-          </p>
+        <p className={"tw-font-semibold tw-text-left tw-w-36"}>
+          Protected (TP): {protectedFiles.length}
+        </p>
         <div className={"tw-w-3"}>
           {intrusions.length > 0 ? (active ? "-" : "+") : ""}
         </div>

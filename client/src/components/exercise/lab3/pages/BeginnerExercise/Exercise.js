@@ -25,7 +25,6 @@ import { actions as mainActions } from "../../../../../reducers/MainReducer";
 import { actions as repairActions } from "../../../../../reducers/lab3/RepairReducer";
 import { connect } from "react-redux";
 
-
 const mapStateToProps = (state) => {
   return {
     state: state,
@@ -97,8 +96,7 @@ class Exercise extends Component {
     };
     return (
       <div>
-        <Typography className={"center"}
-        >
+        <Typography className={"center"}>
           Click on the image of a cat.
         </Typography>
         <br />

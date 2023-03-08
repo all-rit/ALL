@@ -55,7 +55,7 @@ const Header = (props) => {
   const closeNav = () => setIsOpen(false);
   const { state, actions } = props;
   const [link, setLink] = useState(0);
-const listenScrollEvent = (event) => {
+  const listenScrollEvent = (event) => {
     if (state.main.lab === 0 && state.main.body === 0) {
       if (window.scrollY < 800) {
         return setLink(0);
@@ -68,7 +68,7 @@ const listenScrollEvent = (event) => {
       }
     }
   };
-  
+
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
     return () => window.removeEventListener("scroll", listenScrollEvent);
@@ -89,11 +89,11 @@ const listenScrollEvent = (event) => {
       style={{
         boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 100)",
         paddingTop: "1rem",
-        opacity: "100%"
+        opacity: "100%",
       }}
     >
       <div className="container">
-        <a  href="/#" onClick={() => navigate(state, actions, 0, 0)}>
+        <a href="/#" onClick={() => navigate(state, actions, 0, 0)}>
           <img
             className="logo img-fluid"
             src={Logo}
@@ -105,15 +105,9 @@ const listenScrollEvent = (event) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {state.main.lab === 0 ? (
-            <Nav
-              className="ml-auto tw-items-end tw-flex-wrap"
-              navbar
-            >
+            <Nav className="ml-auto tw-items-end tw-flex-wrap" navbar>
               {state.main.body === 0 ? (
-                <Nav
-                  className="ml-auto tw-items-end dropdown-menu-wrap"
-                  navbar
-                >
+                <Nav className="ml-auto tw-items-end dropdown-menu-wrap" navbar>
                   <NavItem onClick={closeNav} className="navbar-collapse">
                     <NavLink
                       className="nav-link "
@@ -161,10 +155,7 @@ const listenScrollEvent = (event) => {
                 </Nav>
               ) : (
                 /** Mobile NavBar */
-                <Nav
-                  className="tw-items-end tw-flex-wrap ml-auto"
-                  navbar
-                >
+                <Nav className="tw-items-end tw-flex-wrap ml-auto" navbar>
                   {state.main.body === 1 && (
                     <>
                       <NavItem onClick={closeNav} className="navbar-collapse">
@@ -203,25 +194,26 @@ const listenScrollEvent = (event) => {
                   )}
                 </Nav>
               )}
-              {state.main.user !== null && state.main.user.firstname !== null && (
-                <NavItem
-                  onClick={closeNav}
-                  className="collapse navbar-collapse"
-                >
-                  <NavLink
-                    className="nav-link "
-                    href="# "
-                    style={
-                      state.main.body === 2 ? activeStyle : { color: "#fff" }
-                    }
-                    onClick={() => navigate(state, actions, 2, 0)}
+              {state.main.user !== null &&
+                state.main.user.firstname !== null && (
+                  <NavItem
+                    onClick={closeNav}
+                    className="collapse navbar-collapse"
                   >
-                    <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                      <li className="nav-item nav-last">Profile</li>
-                    </ul>
-                  </NavLink>
-                </NavItem>
-              )}
+                    <NavLink
+                      className="nav-link "
+                      href="# "
+                      style={
+                        state.main.body === 2 ? activeStyle : { color: "#fff" }
+                      }
+                      onClick={() => navigate(state, actions, 2, 0)}
+                    >
+                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                        <li className="nav-item nav-last">Profile</li>
+                      </ul>
+                    </NavLink>
+                  </NavItem>
+                )}
 
               <WelcomeMessage
                 user={state.main.user}
@@ -233,10 +225,7 @@ const listenScrollEvent = (event) => {
               /** In-Lab NavBar */
             },
             (
-              <Nav
-                className="tw-items-end tw-flex-wrap ml-auto"
-                navbar
-              >
+              <Nav className="tw-items-end tw-flex-wrap ml-auto" navbar>
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "

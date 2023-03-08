@@ -13,7 +13,8 @@ import {
   FILE_PROTECTED,
   LAB_ID,
   LOCKED_FILE,
-  MESSAGES, NO_DELAY,
+  MESSAGES,
+  NO_DELAY,
   OPEN_FILE,
   READ_TIME,
   ROUND_LIMIT,
@@ -65,7 +66,7 @@ class Simulation extends Component {
       const files = this.generateFileList(threatLvl);
       this.setState({ files });
       // This is what 'starts' a round. Wait a 1.5s before commencing.
-      setTimeout(() => this.setState({counter: 0}), DELAY_TIME)
+      setTimeout(() => this.setState({ counter: 0 }), DELAY_TIME);
       handlers.addResults({ files, threatLvl });
     } else {
       UserLabService.complete_exercise(LAB_ID);
@@ -202,7 +203,10 @@ class Simulation extends Component {
       } else {
         /* End of round */
         const result = this.handlePerfectScore();
-        setTimeout(() => this.startRound(), result ? READ_TIME + DELAY_TIME : NO_DELAY);
+        setTimeout(
+          () => this.startRound(),
+          result ? READ_TIME + DELAY_TIME : NO_DELAY
+        );
       }
     }
   }
@@ -223,14 +227,12 @@ class Simulation extends Component {
     setTimeout(() => {
       handlers.setMessage(message);
       handlers.setModal(true);
-    }, delay)
+    }, delay);
 
     setTimeout(() => {
       handlers.setModal(false);
     }, READ_TIME + delay);
   }
-
-
 
   /**
    * Logic to award bonus points if all files for a round were correctly protected.
@@ -352,8 +354,15 @@ class Simulation extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { roundNumber, intrusions, incorrect, score, threatLvl, results, isModalOpen } =
-    state.exercise7;
+  const {
+    roundNumber,
+    intrusions,
+    incorrect,
+    score,
+    threatLvl,
+    results,
+    isModalOpen,
+  } = state.exercise7;
   const { makeDecision, repairId } = state.repair7;
   const { user } = state.main;
   return {
