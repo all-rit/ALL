@@ -93,9 +93,9 @@ const Header = (props) => {
       }}
     >
       <div className="container">
-        <a href="/#" onClick={() => navigate(state, actions, 0, 0)}>
+        <a href="# " onClick={() => navigate(state, actions, 0, 0)}>
           <img
-            className="logo img-fluid"
+            className="logo img-fluid tw-cursor-pointer"
             src={Logo}
             alt="Computing Accessibility"
           />
