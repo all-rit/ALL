@@ -1,0 +1,61 @@
+.simulation {
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.roundTimer {
+  background-color: white;
+}
+
+.roundCountdown {
+  background-color: #6bff89;
+  width: 100%;
+  height: 0.8rem;
+  transition: width ease-in;
+}
+
+.message {
+  padding: 20px;
+}
+
+.simulation_files {
+  padding-top: 50px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around !important;
+}
+
+.roundCounter {
+  width: 80%;
+  display: inline-flex;
+}
+
+.roundText {
+  margin-top: 11.5px;
+}
+
+.file {
+  min-height: 300px;
+  min-width: 250px;
+  background-image: url("../../images/lab7/FileLarge.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+@media screen and (max-width: 991px) {
+  .roundCounter {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .roundCounter {
+    width: 70%;
+  }
+  .roundText {
+    font-size: 20px;
+  }
+}
