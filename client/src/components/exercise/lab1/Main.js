@@ -132,7 +132,7 @@ class Main extends Component {
             currentTab,
             repairVisible,
             changesApplied,
-            repairError
+            repairError,
           }}
           handlers={actions}
           user={user}

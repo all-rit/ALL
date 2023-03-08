@@ -38,7 +38,6 @@ class Exercise extends Component {
   constructor(props) {
     super(props);
 
-
     this.audio = new Audio(Sound);
     this.audio.loop = false;
   }
