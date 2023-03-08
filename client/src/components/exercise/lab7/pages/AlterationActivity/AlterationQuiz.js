@@ -25,10 +25,10 @@ class AlterationQuiz extends Component {
       setTimeout(() => navigate("/Lab7/Exercise/AlterationStart"));
   }
 
-  handleContinue(){
+  handleContinue() {
     const { actions } = this.props;
     actions.updateState(EXERCISE_IDLE);
-    navigate("/Lab7/Exercise/ExerciseEnd")
+    navigate("/Lab7/Exercise/ExerciseEnd");
   }
 
   handleSubmitData(output, userId) {
@@ -59,13 +59,13 @@ class AlterationQuiz extends Component {
           submitData={this.handleSubmitData.bind(this)}
         />
         {this.state.showContinue && (
-            <button
+          <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-mt-4"
             onClick={this.handleContinue.bind(this)}
             key="start"
           >
             Continue
-        </button>
+          </button>
         )}
       </div>
     );
