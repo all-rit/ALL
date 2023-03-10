@@ -102,7 +102,7 @@ class CodeChangeBlocks extends Component {
       textValue: "",
       snackBarOpen: false,
       message: "Please type code before updating code!",
-      repairError: false
+      repairError: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -125,8 +125,7 @@ class CodeChangeBlocks extends Component {
 
   componentDidMount() {
     const { actions } = this.props;
-    this.setState(
-      {repairError: false});
+    this.setState({ repairError: false });
     actions.updateState(EXERCISE_PLAYING);
     Prism.highlightAll();
     if (window.location.state.role !== undefined) {
@@ -155,20 +154,20 @@ class CodeChangeBlocks extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const anchorTag = '<a className="skip-main" href="#main">Skip to main content</a>';
+    const anchorTag =
+      '<a className="skip-main" href="#main">Skip to main content</a>';
     if (this.state.textValue === "" || null) {
-        this.setState( {repairError: true});
-        this.setState( {message: "Please type code before updating code!"});
-        this.setState( {snackBarOpen: true});
-        return
+      this.setState({ repairError: true });
+      this.setState({ message: "Please type code before updating code!" });
+      this.setState({ snackBarOpen: true });
+      return;
     } else if (this.state.textValue !== anchorTag) {
       this.setState({ repairError: true });
       this.setState({ message: "Check code syntax and resubmit your code!" });
       this.setState({ snackBarOpen: true });
-      return
-    }
-    else {
-      this.setState({repairError: false});
+      return;
+    } else {
+      this.setState({ repairError: false });
       window.location.state = {
         role: this.state.textValue,
       };
@@ -266,7 +265,6 @@ class CodeChangeBlocks extends Component {
             Update Code
           </Button>
         </form>
-
       </div>
     );
   }
