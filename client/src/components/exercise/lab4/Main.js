@@ -24,6 +24,7 @@ import ExerciseStart from "./pages/ExerciseStart";
 
 const mapStateToProps = (state) => ({
   state: state,
+  repairError: state,
 });
 
 const mapDispatchToProps = (dispatch) => {
