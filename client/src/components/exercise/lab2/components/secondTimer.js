@@ -234,7 +234,7 @@ class SecondTimer extends Component {
       <div>
         <Countdown
           date={startTime + 18000}
-          intervalDelay={1000}
+          intervalDelay={10000}
           precision={2}
           renderer={renderer}
         />

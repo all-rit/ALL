@@ -263,6 +263,7 @@ class Exercise extends Component {
     return (
       <div className="exercise">
         <ExerciseButtons
+          disabled={this.props.data.repairError}
           visible={data.state === EXERCISE_IDLE}
           plays={data.plays}
           repairApplied={data.changesApplied}

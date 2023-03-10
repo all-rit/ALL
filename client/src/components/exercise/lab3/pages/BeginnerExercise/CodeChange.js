@@ -135,19 +135,25 @@ class CodeChange extends Component {
           </Typography>
         </div>
         <div style={{ textAlign: "center" }}>
-          <Popup
-            message={data.app3.popupMessage}
-            handler={actions.updatePopup}
-          />
           <Repair
             visible={data.repair3.repairVisible}
             data={data.repair3}
             handlers={actions}
+            repairError={data.repair3.repairError}
           />
+
+          <Popup
+            classname={"tw-mb-4"}
+            message={data.app3.popupMessage}
+            handler={actions.updatePopup}
+            error={data.repair3.repairError}
+          />
+
           <ExerciseButtons
             repairApplied={data.repair3.changesApplied}
             openRepairHandler={actions.openRepair}
             endEnabled={data.exercise3.end}
+            disabled={this.props.data.repair3.repairError}
           />
         </div>
       </div>

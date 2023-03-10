@@ -13,8 +13,9 @@ class ExerciseButtons extends Component {
       openInstructionsHandler,
       startExerciseHandler,
     } = this.props;
+
     let startMessage = "Start";
-    if (repairApplied) {
+    if (repairApplied === true) {
       startMessage = "Start with Repair Applied";
     } else if (plays > 0) {
       startMessage = "Next Play";
@@ -37,11 +38,13 @@ class ExerciseButtons extends Component {
         How to Play?
       </button>
     );
+
     const startButton = (
       <button
         className="btn btn-primary text-black btn-xl text-uppercase  rightButton"
         onClick={startExerciseHandler}
         key="start"
+        disabled={this.props.disabled}
       >
         {startMessage}
       </button>

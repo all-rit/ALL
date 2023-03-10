@@ -1,4 +1,6 @@
 export const types = {
+  UPDATE_REPAIR_ERROR:
+    "@accessibility-lab/audio-cue/repair/update_repair_error",
   UPDATE_REPAIR: "@accessibility-lab/audio-cue/repair/update_repair",
   UPDATE_TAB: "@accessibility-lab/audio-cue/repair/update_tab",
   OPEN_REPAIR: "@accessibility-lab/audio-cue/repair/open_repair",
@@ -13,6 +15,7 @@ export const initialState = {
   currentTab: 1,
   repairVisible: false,
   changesApplied: false,
+  repairError: false,
 };
 
 const RepairReducer = (state = initialState, action) => {
@@ -25,6 +28,12 @@ const RepairReducer = (state = initialState, action) => {
         availableBackgroundColor: action.availableBackgroundColor,
         unavailableBackgroundColor: action.unavailableBackgroundColor,
         changesApplied: true,
+      };
+
+    case types.UPDATE_REPAIR_ERROR:
+      return {
+        ...state,
+        repairError: action.repairError,
       };
 
     case types.UPDATE_TAB:
@@ -62,6 +71,10 @@ export const actions = {
     unavailableMessage,
     availableBackgroundColor,
     unavailableBackgroundColor,
+  }),
+  updateRepairError: (repairError) => ({
+    type: types.UPDATE_REPAIR_ERROR,
+    repairError,
   }),
   updateTab: (tab) => ({ type: types.UPDATE_TAB, tab }),
   openRepair: () => ({ type: types.OPEN_REPAIR }),

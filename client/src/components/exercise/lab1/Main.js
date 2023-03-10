@@ -48,6 +48,7 @@ const mapStateToProps = (state) => {
     currentTab: state.repair1.currentTab,
     repairVisible: state.repair1.repairVisible,
     changesApplied: state.repair1.changesApplied,
+    repairError: state.repair1.repairError,
   };
 };
 
@@ -92,6 +93,7 @@ class Main extends Component {
       currentTab,
       repairVisible,
       changesApplied,
+      repairError,
 
       actions,
     } = this.props;
@@ -130,6 +132,7 @@ class Main extends Component {
             currentTab,
             repairVisible,
             changesApplied,
+            repairError,
           }}
           handlers={actions}
           user={user}
@@ -140,7 +143,11 @@ class Main extends Component {
           closeHandler={actions.closeInstructions}
         />
 
-        <Popup message={popupMessage} handler={actions.updatePopup} />
+        <Popup
+          message={popupMessage}
+          error={repairError}
+          handler={actions.updatePopup}
+        />
       </Fragment>
     );
   }

@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import classNames from "classnames/bind";
 import { Panel as ColorPickerPanel } from "rc-color-picker";
 import RepairService from "../../../../services/lab1/RepairService";
+import Popup from "../../shared/Popup";
 
 class Repair extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Repair extends Component {
       unavailableBackgroundColor: null,
       availableBackgroundColorPopup: false,
       unavailableBackgroundColorPopup: false,
+      repairError: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -96,6 +98,21 @@ class Repair extends Component {
     );
 
     // Update the state and close the repair.
+    if (availableMessage !== "Available hint here!") {
+      handlers.updateRepair(false);
+      handlers.updateRepairError(true);
+      handlers.updatePopup("Error in repair submission. Please fix.");
+      return;
+    }
+    if (unavailableMessage !== "No available hint yet...") {
+      handlers.updateRepair(false);
+      handlers.updateRepairError(true);
+      handlers.updatePopup("Error in repair submission. Please fix.");
+      return;
+    }
+
+    handlers.updateRepairError(false);
+
     handlers.updateRepair(
       availableMessage,
       unavailableMessage,
@@ -322,7 +339,12 @@ class Repair extends Component {
               <span className="code_editor__line--orange">'</span>
               <span>;</span>
             </div>
-
+            {this.state.repairError && (
+              <Popup
+                message={"There has been an incorrect input. Please try again"}
+                handler={handlers.updatePopup}
+              />
+            )}
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--purple">&#125;&nbsp;</span>
