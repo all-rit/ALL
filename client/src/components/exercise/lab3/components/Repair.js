@@ -19,6 +19,7 @@ class Repair extends Component {
       carAltValue: null,
       burgerAltValue: null,
       catAltValue: null,
+      repairError: false
     };
   }
 
@@ -29,6 +30,7 @@ class Repair extends Component {
       carAltValue: data.carAltValue,
       burgerAltValue: data.burgerAltValue,
       catAltValue: data.catAltValue,
+      repairError: data.repairError
     });
   }
 
@@ -54,6 +56,33 @@ class Repair extends Component {
       burgerAltValue,
       catAltValue
     );
+
+    if (cowAltValue === "") {
+      handlers.updateRepairError(true)
+      handlers.updatePopup("Error in repair submission. Please fix.")
+      return
+    }
+
+    if (carAltValue === "") {
+      handlers.updateRepairError(true)
+      handlers.updatePopup("Error in repair submission. Please fix.")
+      return
+    }
+
+    if (catAltValue === "") {
+      handlers.updateRepairError(true)
+      handlers.updatePopup("Error in repair submission. Please fix.")
+      return
+    }
+
+    if (burgerAltValue === "") {
+      handlers.updateRepairError(true)
+      handlers.updatePopup("Error in repair submission. Please fix.")
+      return
+    }
+
+    handlers.updateRepairError(false)
+
     handlers.closeRepair();
     handlers.updatePopup("The repairs have been made.");
 
