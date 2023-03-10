@@ -27,6 +27,7 @@ import { bindActionCreators } from "redux";
 
 const mapStateToProps = (state) => ({
   state: state,
+  repairError: state.repair3.repairError,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -42,6 +43,7 @@ class Main extends Component {
   // eslint-disable-next-line require-jsdoc
   render() {
     const { actions, state, user } = this.props;
+
     return (
       <div className="container bottomSpace">
         <Router className="app">
@@ -51,6 +53,7 @@ class Main extends Component {
             path={"/ExerciseInstructions"}
             actions={actions}
           />
+
           <UserUpdatedExercise
             path={"/UserUpdatedExercise"}
             actions={actions}
