@@ -1,19 +1,20 @@
 name: 'Production-Deployment'
-  on:
+on:
     pull_request:
       branches:
         - prod
-  jobs:
+jobs:
     run_pull:
       name: run-deploy
       runs-on: ubuntu-latest
 
-      steps:
+    steps:
       - name : install ssh key to acess server
 
-        run: install -m 600 -D /dev/null ~/.ssh/id_rsa 
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+        run: |
+        install -m 600 -D /dev/null ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_SECRET }}" > ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.SSH_HOST}} > ~/.ssh/known_hosts
 
       - name: connect and pull changes
         run: ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST_NAME} "cd {{secrets.PROJECT_PATH}}"
