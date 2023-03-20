@@ -13,7 +13,6 @@
 
   .ordered__list__div {
     display: flex;
-    flex-direction: column;
     align-items: left;
   }
 
@@ -24,7 +23,6 @@
     padding-left: 5rem;
     display: flex;
     flex-direction: column;
-    align-items: left;
   }
 
   .ordered__list > li {
