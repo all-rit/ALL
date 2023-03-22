@@ -1,0 +1,10 @@
++ eslint-config-google@0.14.0
++ eslint-plugin-react@7.32.2
++ eslint@8.36.0
+removed 10 packages, updated 3 packages and audited 1774 packages in 10.337s
+
+233 packages are looking for funding
+  run `npm fund` for details
+
+found 26 vulnerabilities (1 moderate, 23 high, 2 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details

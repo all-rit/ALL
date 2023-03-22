@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
+/* eslint-disable valid-jsdoc */
 import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
@@ -58,16 +60,16 @@ function assignQuizQuestions(labId) {
  */
 const QuizHandler = (props) => {
   const [currentLabId, setCurrentLab] = useState(props.labId);
-  let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
+  const [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions, setQuestions] = useState(assignQuizQuestions(props.labId));
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers
   );
   const [quizCompleted, setQuizCompleted] = useState(false);
   // initialized to a empty array to house recorded answers
-  let [selectedAnswers, setSelectedAnswers] = useState([]);
-  let [disableNext, setDisableNext] = useState(true);
-  let [result, setResult] = useState({});
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [disableNext, setDisableNext] = useState(true);
+  const [result, setResult] = useState({});
 
   /**
    * HandleNext() is a function that is responsible for allowing the user to
@@ -76,7 +78,7 @@ const QuizHandler = (props) => {
    */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
-      let updateCursor = currentQuestionCursor + 1;
+      const updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
       setDisableNext(true);
@@ -129,22 +131,22 @@ const QuizHandler = (props) => {
    * scoreResults also PUSHes the answers to the database aswell as the quiz score
    */
   function scoreResults() {
-    let questionsTotal = questions.length;
-    let output = [];
+    const questionsTotal = questions.length;
+    const output = [];
     const QuizQuestions = {
       question: "",
       selectAnswers: {},
       IsCorrect: false,
     };
     for (let i = 0; i < questionsTotal; i++) {
-      let tempQuestion = { ...QuizQuestions };
+      const tempQuestion = { ...QuizQuestions };
       tempQuestion.question = questions[i].question;
       tempQuestion.number = i + 1;
       if (questions[i].multiChoice) {
         // logic for multi select
-        let userAnswers = [...selectedAnswers[i]];
+        const userAnswers = [...selectedAnswers[i]];
         tempQuestion.selectAnswers = userAnswers;
-        let isCorrect = userAnswers.map((element) => {
+        const isCorrect = userAnswers.map((element) => {
           return checkIfCorrect(element, i);
         });
         isCorrect.every((value) => value === true)
@@ -157,7 +159,7 @@ const QuizHandler = (props) => {
         output.push(tempQuestion);
       } else {
         // logic for non multi select
-        let userAnswers = { ...selectedAnswers[i] };
+        const userAnswers = { ...selectedAnswers[i] };
         tempQuestion.selectAnswers = userAnswers;
         checkIfCorrect(userAnswers.type, i)
           ? (tempQuestion.IsCorrect = true)
@@ -198,7 +200,7 @@ const QuizHandler = (props) => {
    */
   function selectAnswer(e) {
     const answerValue = e.target.value;
-    let tempSelectedAnswers;
+    let tempSelectedAnswers = null;
     tempSelectedAnswers = [...selectedAnswers];
     tempSelectedAnswers[currentQuestionCursor] = {
       content: questions[currentQuestionCursor].answers[answerValue].content,
@@ -218,18 +220,16 @@ const QuizHandler = (props) => {
    */
   function selectMulti(e) {
     const answerValue = e.target.value;
-    let tempAnswers = selectedAnswers;
+    const tempAnswers = selectedAnswers;
     let storageSet;
     // ensures that there is a value stored there
     if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
       // copies over the set
       storageSet = new Set(tempAnswers[currentQuestionCursor]);
       // checks to see if the set has the value in it
-      !storageSet.has(answerValue)
-        ? // adds it if it doesn't
-          storageSet.add(answerValue)
-        : // removes it if it does
-          storageSet.delete(answerValue);
+      !storageSet.has(answerValue) // adds it if it doesn't
+        ? storageSet.add(answerValue) // removes it if it does
+        : storageSet.delete(answerValue);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     } else {
