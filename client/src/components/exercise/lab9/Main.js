@@ -9,6 +9,8 @@ import { actions as exerciseActions } from "../../../reducers/lab9/ExerciseReduc
 import { bindActionCreators } from "redux";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
+import Welcome from "./pages/SocialMedia/Welcome";
+import Profile from "./pages/SocialMedia/Profile";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -27,6 +29,8 @@ class Main extends Component {
       <div className="bottomSpace">
         <Router className="app">
           <ExerciseStart default path="/" actions={actions} />
+          <Welcome path="/Welcome" actions={actions}/>
+          <Profile path="/Profile" actions={actions}/>
           <ExerciseEnd
             path="/ExerciseEnd"
             actions={actions}
