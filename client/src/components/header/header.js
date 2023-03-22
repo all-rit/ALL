@@ -196,10 +196,7 @@ const Header = (props) => {
               )}
               {state.main.user !== null &&
                 state.main.user.firstname !== null && (
-                  <NavItem
-                    onClick={closeNav}
-                    className="collapse navbar-collapse"
-                  >
+                  <NavItem className="collapse navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="# "
