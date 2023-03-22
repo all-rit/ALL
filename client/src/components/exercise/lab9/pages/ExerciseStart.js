@@ -12,14 +12,20 @@ class ExerciseStart extends Component {
   }
 
   handleStart() {
-    navigate("/Lab9/Exercise/ExerciseEnd");
+    navigate("/Lab9/Exercise/Welcome");
   }
 
   render() {
     return (
       <Fragment>
         <div className="center-div">
-          <div className="guidance margin-bottom-2">MAPE-K Start</div>
+          <p className="tw-mb-4 guidance" >
+            In this exercise you will be participating in a social media platform called PawPrint,
+            a platform used by pet owners to talk about their pets. During the process you will experience
+            AI-based adaption control loops such as MAPE-K. If a reply in a thread is deemed inappropriate
+            by the artificial intelligence, the comment will be flagged and deleted. Click the “Start” button
+            to begin this exercise!
+          </p>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "
             onClick={this.handleStart}
