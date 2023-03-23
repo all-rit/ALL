@@ -20,10 +20,10 @@
   color: #fff;
   text-align: center;
   line-height: normal;
-  background: linear-gradient(90deg, #a8d1df 0,#4c82a5 100%);
+  background: linear-gradient(90deg, #a8d1df 0, #4c82a5 100%);
   border-radius: 50px;
-  transition: color .2s ease,background-color .2s ease,box-shadow .2s ease;
-  :hover{
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  :hover {
     box-shadow: 0 0 0 0.15rem #5ceace;
   }
 }

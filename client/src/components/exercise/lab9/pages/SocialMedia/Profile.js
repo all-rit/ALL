@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 import "../../../../../../src/assets/stylesheets/components/PawPrintProfile.scss";
 import profilepic from "../../../../../assets/images/Lab9/profilepic.png";
+import { Button } from "reactstrap";
+import { navigate } from "@reach/router";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
   }
 
+  handleNavigate() {
+    navigate("/Lab9/Exercise/Feed")
+  }
+
   render() {
     return (
+      <div>
       <div className="profile-div">
         <div className="smaller-profile-div">
           <span className="inside-profile">
@@ -28,7 +35,19 @@ class Profile extends Component {
           </span>
         </div>
       </div>
-    );
+        <div className="tw-mt-10">
+        <span className="tw-w-full tw-h-20 tw-justify-items-center">
+          <Button
+            className="view-profile-btn"
+            onClick={this.handleNavigate}
+            key="start"
+          >
+            View Feed
+          </Button>
+        </span>
+        </div>
+      </div>
+    )
   }
 }
 export default Profile;

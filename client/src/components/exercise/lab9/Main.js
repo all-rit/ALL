@@ -11,6 +11,7 @@ import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import Welcome from "./pages/SocialMedia/Welcome";
 import Profile from "./pages/SocialMedia/Profile";
+import Feed from "./pages/SocialMedia/Feed";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -31,6 +32,7 @@ class Main extends Component {
           <ExerciseStart default path="/" actions={actions} />
           <Welcome path="/Welcome" actions={actions} />
           <Profile path="/Profile" actions={actions} />
+          <Feed path="/Feed" actions={actions} />
           <ExerciseEnd
             path="/ExerciseEnd"
             actions={actions}
