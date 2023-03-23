@@ -1,14 +1,29 @@
 .paw-print-logo {
-  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
   border-radius: 50px;
-  position: absolute;
-  width: 345.35px;
-  height: 318.84px;
-  left: 258px;
-  top: 266.52px;
+  width: 450px;
+  height: 450px;
+}
 
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
-  mix-blend-mode: exclusion;
-  border: 1px solid #00d3d3;
-  transform: matrix(0.97, -0.24, 0.29, 0.96, 0, 0);
+.view-profile-btn {
+  display: inline-block;
+  outline: 0;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 9px 22px;
+  font-size: 22px;
+  height: 60px;
+  width: 180px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: normal;
+  background: linear-gradient(90deg, #a8d1df 0,#4c82a5 100%);
+  border-radius: 50px;
+  transition: color .2s ease,background-color .2s ease,box-shadow .2s ease;
+  :hover{
+    box-shadow: 0 0 0 0.15rem #5ceace;
+  }
 }

@@ -18,13 +18,11 @@ class Profile extends Component {
               className="profile-pic tw-rounded-3xl"
             />
             <div className="profile-info guidance">
-              <h1 className="tw-font-bold tw">
-                User Profile
-              </h1>
+              <h1 className="tw-font-bold tw">User Profile</h1>
               <p className="tw-font-semibold tw-mt-2 tw-text-xl">
-                You are from this point “User 812”. You are someone who has grown
-                up on a farm, and has a diverse selection of animals that you
-                continuously post about.
+                You are from this point “User 812”. You are someone who has
+                grown up on a farm, and has a diverse selection of animals that
+                you continuously post about.
               </p>
             </div>
           </span>

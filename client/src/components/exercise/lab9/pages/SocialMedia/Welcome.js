@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Logo from "../../../../../assets/images/Lab9/welcomeToPawPrint.png";
 import { navigate } from "@reach/router";
 import { Button } from "reactstrap";
+import '../../../../../assets/stylesheets/components/WelcomeToPawPrint.scss'
 class Welcome extends Component {
   constructor(props) {
     super(props);
@@ -12,11 +13,11 @@ class Welcome extends Component {
 
   render() {
     return (
-      <div className={"tw-flex tw-flex-col"}>
-        <img src={Logo} alt="welcome logo" className="tw-rounded-2xl" />
-        <span className="tw-w-full tw-h-20 tw-justify-items-center tw-bg-blue-400">
+      <div className={"tw-flex tw-flex-col tw-items-center"}>
+        <img src={Logo} alt="welcome logo" className="tw-mb-10 paw-print-logo" />
+        <span className="tw-w-full tw-h-20 tw-justify-items-center">
           <Button
-            className="btn btn-primary text-black btn-xl text-uppercase tw-rounded-3xl"
+            className="view-profile-btn"
             onClick={this.handleStart}
             key="start"
           >
