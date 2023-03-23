@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../../../../../../src/assets/stylesheets/components/PawPrintProfile.scss'
+import "../../../../../../src/assets/stylesheets/components/PawPrintProfile.scss";
 import profilepic from "../../../../../assets/images/Lab9/profilepic.png";
 
 class Profile extends Component {
@@ -8,19 +8,29 @@ class Profile extends Component {
   }
 
   render() {
-    return(
+    return (
       <div className="profile-div">
         <div className="smaller-profile-div">
-          <span className="smaller-profile-div">
-              <img src={profilepic} alt="welcome logo" className="tw-rounded-2xl"/>
-              <p className="profile-info guidance">
-                You are from this point “User 812”. You are someone who has grown up on a farm,
-                and has a diverse selection of animals that you continuously post about.
+          <span className="inside-profile">
+            <img
+              src={profilepic}
+              alt="welcome logo"
+              className="profile-pic tw-rounded-3xl"
+            />
+            <div className="profile-info guidance">
+              <h1 className="tw-font-bold tw">
+                User Profile
+              </h1>
+              <p className="tw-font-semibold tw-mt-2 tw-text-xl">
+                You are from this point “User 812”. You are someone who has grown
+                up on a farm, and has a diverse selection of animals that you
+                continuously post about.
               </p>
+            </div>
           </span>
         </div>
       </div>
-    )
+    );
   }
 }
 export default Profile;
