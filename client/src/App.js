@@ -22,6 +22,7 @@ import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
 
 import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
 import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
+import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 
 import { default as LandingPageBody } from "./components/body/landingpage/index";
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
@@ -133,6 +134,7 @@ class App extends Component {
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
               <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
               <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
+              <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
 
               <Reinforcement
                 path={`/Lab${lab}/Reinforcement`}

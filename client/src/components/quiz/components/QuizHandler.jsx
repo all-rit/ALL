@@ -14,6 +14,7 @@ import QuestionsLab6 from "../api/Lab6/quizQuestions";
 import UserLabService from "../../../services/UserLabService";
 import alterationQuizQuestions from "../api/Lab7/alterationQuizQuestions";
 import quizQuestionsLab7 from "../api/Lab7/quizQuestions";
+import QuestionsLab10 from "../api/Lab10/quizQuestions";
 
 /**
  * assignQuizQuestions is a function that returns a given set
@@ -41,6 +42,8 @@ function assignQuizQuestions(labId, isFinalQuiz) {
       } else {
         return quizQuestionsLab7;
       }
+    case 10:
+      return QuestionsLab10;
     default:
       return [
         {
