@@ -6,7 +6,7 @@ import Heart from "@material-ui/icons/Favorite";
 import Button from "@material-ui/core/Button";
 import { ThumbUp } from "@material-ui/icons";
 import profilepic from "../../../../../assets/images/Lab9/profilepic.png";
-import kitty from "../../../../../assets/images/Lab9/kitty.png"
+import kitty from "../../../../../assets/images/Lab9/kitty.png";
 
 class Feed extends Component {
   constructor(props) {
@@ -20,34 +20,30 @@ class Feed extends Component {
           <span className="user-post">
             <div>
               <div className="post-text guidance tw-font-bold">
-              <img
-                className={"poster-image"}
-                alt="posting-user"
-                src={user828}
-              />
-              <p className="tw-font-bold ">
-                User828 Posted: This cat is the cutest!
-              </p>
-              <span className={"button-row"}>
-                <Button
-                  className={"button-design"}
-                  color={"primary"}
-                  startIcon={<ThumbUp />}
-                ></Button>
-                <Button
-                  className={"button-design"}
-                  color="secondary"
-                  size={"large"}
-                  startIcon={<Heart />}
-                ></Button>
-              </span>
-            </div>
-              <div >
-               <img
-                 className={"kitty-image"}
-                 alt="kitty"
-                 src={kitty}
-               />
+                <img
+                  className={"poster-image"}
+                  alt="posting-user"
+                  src={user828}
+                />
+                <p className="tw-font-bold ">
+                  User828 Posted: This cat is the cutest!
+                </p>
+                <span className={"button-row"}>
+                  <Button
+                    className={"button-design"}
+                    color={"primary"}
+                    startIcon={<ThumbUp />}
+                  ></Button>
+                  <Button
+                    className={"button-design"}
+                    color="secondary"
+                    size={"large"}
+                    startIcon={<Heart />}
+                  ></Button>
+                </span>
+              </div>
+              <div>
+                <img className={"kitty-image"} alt="kitty" src={kitty} />
               </div>
             </div>
           </span>
@@ -60,7 +56,6 @@ class Feed extends Component {
             />
             <p className={"tw-font-bold tw-ml-5"}> Add a Comment... </p>
             <Button className={"reply-button "}>Reply</Button>
-
           </span>
         </div>
         <div className="comment-section">
@@ -69,7 +64,7 @@ class Feed extends Component {
               <img className="commenter-image" alt="userpic" src={user939} />
               <p className="guidance tw-font-bold">
                 {" "}
-              User 939 barked: &quot;Awe, thats adorbes!&quot;{" "}
+                User 939 barked: &quot;Awe, thats adorbes!&quot;{" "}
               </p>
             </span>
           </div>
