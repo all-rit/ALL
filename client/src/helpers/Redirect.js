@@ -16,6 +16,7 @@ export const handleRedirect = (actions, lab, body = 0) => {
     process.env.PUBLIC_URL + "/" + (lab !== 0 ? labname + "/" : "") + bodyname
   );
 };
+
 export const stateChange = (actions, pathname) => {
   let parsed = pathname.split("/");
   parsed = parsed.filter((x) => x !== "");

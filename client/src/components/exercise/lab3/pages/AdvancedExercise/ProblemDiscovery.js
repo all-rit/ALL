@@ -132,7 +132,7 @@ class ProblemDiscovery extends Component {
                   src={catImage}
                   alt={"cat"}
                   tabIndex={"0"}
-                  onFocus={(e) => textToSpeech(e, "cat")}
+                  onFocus={(e) => textToSpeech(e, "image of cat")}
                 />
               </td>
             </tr>

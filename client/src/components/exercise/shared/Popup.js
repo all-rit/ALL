@@ -5,7 +5,6 @@ import React, { Component } from "react";
 class Popup extends Component {
   close() {
     const { handler } = this.props;
-
     handler("");
   }
 

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
 import { Pie } from "react-chartjs-2";
@@ -61,9 +61,9 @@ const Reading = (props) => {
       )}
 
       {readingData?.body !== "" ? (
-        readingData?.body.map((data) => {
+        readingData?.body.map((data, index) => {
           return (
-            <>
+            <Fragment key={index}>
               {data.header !== "" ? <h3>{data.header}</h3> : <></>}
               {data.type === "" ? (
                 <>
@@ -86,7 +86,7 @@ const Reading = (props) => {
               )}
               {data.type === "image" ? <Image data={data.content} /> : <></>}
               {data.type === "links" ? <Links data={data.content} /> : <></>}
-            </>
+            </Fragment>
           );
         })
       ) : (

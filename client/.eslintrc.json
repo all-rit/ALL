@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": ["eslint:recommended", "prettier", "plugin:react/recommended"],
   "overrides": [],
@@ -25,27 +26,49 @@
     "propWrapperFunctions": [
       // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
       "forbidExtraProps",
-      { "property": "freeze", "object": "Object" },
-      { "property": "myFavoriteWrapper" },
+      {
+        "property": "freeze",
+        "object": "Object"
+      },
+      {
+        "property": "myFavoriteWrapper"
+      },
       // for rules that check exact prop wrappers
-      { "property": "forbidExtraProps", "exact": true }
+      {
+        "property": "forbidExtraProps",
+        "exact": true
+      }
     ],
     "componentWrapperFunctions": [
       // The name of any function used to wrap components, e.g. Mobx `observer` function. If this isn't set, components wrapped by these functions will be skipped.
       "observer", // `property`
-      { "property": "styled" }, // `object` is optional
-      { "property": "observer", "object": "Mobx" },
-      { "property": "observer", "object": "<pragma>" } // sets `object` to whatever value `settings.react.pragma` is set to
+      {
+        "property": "styled"
+      }, // `object` is optional
+      {
+        "property": "observer",
+        "object": "Mobx"
+      },
+      {
+        "property": "observer",
+        "object": "<pragma>"
+      } // sets `object` to whatever value `settings.react.pragma` is set to
     ],
     "formComponents": [
       // Components used as alternatives to <form> for forms, eg. <Form endpoint={ url } />
       "CustomForm",
-      { "name": "Form", "formAttribute": "endpoint" }
+      {
+        "name": "Form",
+        "formAttribute": "endpoint"
+      }
     ],
     "linkComponents": [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
       "Hyperlink",
-      { "name": "Link", "linkAttribute": "to" }
+      {
+        "name": "Link",
+        "linkAttribute": "to"
+      }
     ]
   }
 }
