@@ -2,27 +2,22 @@
 /* eslint-disable react/prop-types */
 import { navigate } from "@reach/router";
 import React from "react";
-import { navigate } from "@reach/router";
 import useScroll from "../../../use-hooks/useScroll";
-import Button from "../components/header/buttons/button";
-import MainInstructions from "./mainInstructions";
 
-const LandingPage = (props) => {
+const LandingPage = () => {
   const handleNext = () => {
-    navigate("/ImagineExperiential/mainInstructions");
+    navigate("/Imagine/MainInstructions");
   };
-
-
-  if (background !== "white") {
-    toWhiteBackground();
-  }
-
+  useScroll();
   return (
     <div className="container bottomSpace center-div">
-      <h2 className="playthrough__title">Experiancial Empathy Building: Start</h2>
+      <h2 className="playthrough__title">
+        Experiential Empathy Building: Start
+      </h2>
       <div className="playthrough__sentence">
-        You are going to be participating in an Empathy Building exercise in which you will
-        experience how a poorly designed app might cause someone with a Color-Blindness deficiency discomfort or annoyance.
+        You are going to be participating in an Empathy Building exercise in
+        which you will experience how a poorly designed app might cause someone
+        with a Color-Blindness deficiency discomfort or annoyance.
       </div>
       <div className="playthrough__sentence">
         Click the “Activity” button to begin!

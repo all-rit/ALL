@@ -1,19 +1,18 @@
 import React from "react";
 import Circle from "../components/circle";
 import { navigate } from "@reach/router";
-import "./landingpage.css"; h
+import "./landingpage.css";
 
 const MainInstructions = () => {
   const handleNext = () => {
-    navigate("ImagineExperiential/exercise");
-  }
+    navigate("Imagine/Exercise");
+  };
   return (
     <div className="mainInstructionsContainer">
-      {/*
-      <p className='instructionTitle'>
-        Main instructions for Color Clicker:
-      </p>
-        */}
+      <h2 className="playthrough__title">
+        Experiential Empathy Building: Main Instructions
+      </h2>
+
       <p className="mainInstructionList">
         You are about to play a exercise involving three colored circles, the
         same size as this one:
@@ -56,7 +55,6 @@ const MainInstructions = () => {
         Start
       </button>
     </div>
-
   );
 };
 

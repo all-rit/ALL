@@ -12,10 +12,12 @@ const ExpressionStart = (props) => {
     <div className="container bottomSpace center-div">
       <h2 className="playthrough__title">Empathy Building Expression: Start</h2>
       <div className="playthrough__sentence">
-      Next you will watch someone go through the same exercise you did. Can you catch the difficulties they express?
+        Next you will watch someone go through the same exercise you did. Can
+        you catch the difficulties they express?
       </div>
       <div className="playthrough__sentence">
-        There will be a button below the video, press it whenever you believe the person experiences discomfort or any negative emotion.
+        There will be a button below the video, press it whenever you believe
+        the person experiences discomfort or any negative emotion.
       </div>
       <div className="playthrough__sentence">
         Click the &quot;Start&quot; button to begin this activity!
