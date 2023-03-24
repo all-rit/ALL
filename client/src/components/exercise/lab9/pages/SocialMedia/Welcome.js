@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Logo from "../../../../../assets/images/Lab9/welcomeToPawPrintNew.png";
+
+import Logo from "../../../../../assets/images/lab9/welcomeToPawPrint.png";
+
 import { navigate } from "@reach/router";
 import { Button } from "reactstrap";
 import "../../../../../assets/stylesheets/components/WelcomeToPawPrint.scss";

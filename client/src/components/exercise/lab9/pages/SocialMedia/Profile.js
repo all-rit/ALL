@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../../../../../src/assets/stylesheets/components/PawPrintProfile.scss";
-import profilepic from "../../../../../assets/images/Lab9/profilepic.png";
+import profilepic from "../../../../../assets/images/lab9/profilepic.png";
 import { Button } from "reactstrap";
 import { navigate } from "@reach/router";
 

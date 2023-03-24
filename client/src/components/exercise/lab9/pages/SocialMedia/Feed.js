@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "../../../../../../src/assets/stylesheets/components/PawPrintFeed.scss";
-import user939 from "../../../../../assets/images/Lab9/user939.png";
-import user828 from "../../../../../assets/images/Lab9/user828.png";
-import Heart from "@material-ui/icons/Favorite";
-import Button from "@material-ui/core/Button";
+import user939 from "../../../../../assets/images/lab9/user939.png"
+import user828 from "../../../../../assets/images/lab9/user828.png";
+import Heart from '@material-ui/icons/Favorite';
+import Button from '@material-ui/core/Button'
 import { ThumbUp } from "@material-ui/icons";
-import profilepic from "../../../../../assets/images/Lab9/profilepic.png";
-import kitty from "../../../../../assets/images/Lab9/kitty.png";
+import profilepic from "../../../../../assets/images/lab9/profilepic.png";
+import kitty from "../../../../../assets/images/lab9/kitty.png";
 
 class Feed extends Component {
   constructor(props) {
