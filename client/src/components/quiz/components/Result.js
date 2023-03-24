@@ -86,7 +86,7 @@ function Result(props) {
               </li>
             );
           } else {
-            return <div />;
+            return <div key={index} />;
           }
         })}
       </ul>
@@ -137,9 +137,11 @@ function Result(props) {
               {renderTableData()}
             </tbody>
           </table>
-          <div style={{ marginTop: "50px" }}>
-            <Certificate quizResult={props.quizResult} lab={props.lab} />
-          </div>
+          {props.hideCertificate === false && (
+            <div style={{ marginTop: "50px" }}>
+              <Certificate quizResult={props.quizResult} lab={props.lab} />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -96,11 +96,7 @@ class Exercise extends Component {
     };
     return (
       <div>
-        <Typography
-          variant={"h4"}
-          aria-label={"Click on the image of a cat"}
-          color={"inherit"}
-        >
+        <Typography className={"center"}>
           Click on the image of a cat.
         </Typography>
         <br />

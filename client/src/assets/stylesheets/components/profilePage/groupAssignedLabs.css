@@ -1,0 +1,23 @@
+.assigned-labs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.assigned-labs__lab-bubble {
+  border-radius: 0.25rem;
+  color: whitesmoke;
+  background-color: #0144d5;
+  text-align: center;
+  border: 1px solid #0144d5;
+  height: auto;
+  margin: 0.5rem;
+  padding: 10px 10px;
+}
+/*# sourceMappingURL=groupAssignedLabs.css.map */

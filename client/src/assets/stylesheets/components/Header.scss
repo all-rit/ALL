@@ -26,7 +26,9 @@
 .google__button {
   width: 191px;
   height: 46px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   // link to image: https://developers.google.com/identity/branding-guidelines
   // license: https://www.google.com/intl/en/permissions/
   background-image: image(
@@ -62,15 +64,18 @@
 .welcome {
   display: inline-flex;
   align-items: center;
+
   @media (min-width: 992px) {
     padding-left: 1rem;
   }
+
   &__toggle {
     padding: 0;
     background-color: transparent;
     border: none;
     border-radius: 50%;
   }
+
   &__name {
     border-radius: 50%;
     height: 50px;
@@ -82,9 +87,11 @@
     font-weight: bold;
     border: 1px;
   }
+
   &__logout {
     display: inline-block;
   }
+
   &__menu {
     margin-top: 20px;
   }
@@ -108,6 +115,7 @@
   height: 4rem;
   width: 15rem;
 }
+
 .overflow-x-hidden {
   overflow-x: hidden;
 }

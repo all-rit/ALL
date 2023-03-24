@@ -43,6 +43,7 @@ module.exports = {
       bgwhite: "#F3F3F3",
       bgdark: "#23022E",
       darkLine: "#868e96",
+      labGray: "#F8F8F8",
       labYellow: "#10002B",
       labGreen: "#7B7B7B",
       labBlue: "#A39CB0",
