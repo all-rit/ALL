@@ -24,9 +24,9 @@ const AvatarSelection = (props) => {
         You are about to play a exercise involving three colored circles, the
         same size as this one:
       </p>
-      <div className="center">
+      {/* <div className="center">
         <Circle color={"blue"} clickable={false} />
-      </div>
+      </div> */}
       <ul className="study__list">
         <li className="mainInstructionsItem">
           You will need to <strong>click the circle</strong> in the center of
