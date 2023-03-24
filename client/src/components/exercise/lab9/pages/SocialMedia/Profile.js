@@ -22,7 +22,7 @@ class Profile extends Component {
               <img
                 src={profilepic}
                 alt="welcome logo"
-                className="profile-pic tw-rounded-3xl"
+                className="profile-image tw-rounded-3xl"
               />
               <div className="profile-info guidance">
                 <h1 className="tw-font-bold tw">User Profile</h1>
