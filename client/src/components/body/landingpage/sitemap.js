@@ -399,24 +399,24 @@ const SiteMap = (props) => {
                   <ul>
                     <li>
                       <a
-                          href="# "
-                          onClick={() => handleRedirect(actions, 9, 0)}
+                        href="# "
+                        onClick={() => handleRedirect(actions, 9, 0)}
                       >
                         About
                       </a>
                     </li>
                     <li>
                       <a
-                          href="# "
-                          onClick={() => handleRedirect(actions, 9, 1)}
+                        href="# "
+                        onClick={() => handleRedirect(actions, 9, 1)}
                       >
                         Reading
                       </a>
                     </li>
                     <li>
                       <a
-                          href="# "
-                          onClick={() => handleRedirect(actions, 9, 2)}
+                        href="# "
+                        onClick={() => handleRedirect(actions, 9, 2)}
                       >
                         Exercise
                       </a>

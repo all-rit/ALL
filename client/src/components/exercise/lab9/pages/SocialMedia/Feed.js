@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { ThumbUp } from "@material-ui/icons";
 import profilepic from "../../../../../assets/images/lab9/profilepic.png";
 import Layout from "../../components/Layout";
+import kitty from "../../../../../assets/images/lab9/kitty.png"
 
 class Feed extends Component {
   constructor(props) {
@@ -15,11 +16,11 @@ class Feed extends Component {
 
   render() {
     return (
-
       <Layout>
+        <div>
         <div className="main-div">
           <div className="content-div">
-            <span className="user-post">
+            <div className="user-post">
               <div className="post-text guidance tw-font-bold">
                 <img
                   className={"poster-image"}
@@ -29,8 +30,30 @@ class Feed extends Component {
                 <p className="tw-font-bold ">
                   User828 Posted: This cat is the cutest!
                 </p>
+                <div className={"button-row"}>
+                  <Button
+                    className={"button-design"}
+                    color={"primary"}
+                    startIcon={<ThumbUp />}
+                  ></Button>
+                  <Button
+                    className={"button-design"}
+                    color="secondary"
+                    size={"large"}
+                    startIcon={<Heart />}
+                  ></Button>
+                </div>
               </div>
-            </span>
+
+              <div>
+                <img
+                src={kitty}
+                alt="kitty"
+                className={"kitty-image"}
+                />
+              </div>
+            </div>
+
             <span className={"reply tw-ml-3 tw-mt-3"}>
               <img
                 src={profilepic}
@@ -39,17 +62,6 @@ class Feed extends Component {
               />
               <p className={"tw-font-bold tw-ml-5"}> Add a Comment... </p>
               <Button className={"button-design tw-mr-2"}>Reply</Button>
-              <Button
-                className={"button-design"}
-                color={"secondary"}
-                startIcon={<ThumbUp />}
-              ></Button>
-              <Button
-                className={"button-design"}
-                color="secondary"
-                size={"large"}
-                startIcon={<Heart />}
-              ></Button>
             </span>
           </div>
           <div className="comment-div">
@@ -61,6 +73,7 @@ class Feed extends Component {
               </p>
             </span>
           </div>
+        </div>
         </div>
       </Layout>
     );
