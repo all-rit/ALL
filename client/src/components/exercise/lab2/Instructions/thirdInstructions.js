@@ -30,7 +30,7 @@ const ThirdInstructions = ({
   if (background !== "white") {
     toWhiteBackground();
   }
-  if(isImagine){
+  if (isImagine) {
     navigate("/Imagine/ExpressionInstructions");
   }
 
@@ -41,10 +41,10 @@ const ThirdInstructions = ({
           <p className="secondInstructionTitle">Wow that was tough!</p>
           <ul>
             <li className="instructionsItem">
-              As you can see, this exercise can be very difficult for users who are
-              colorblind. The exercise was not created in an accessible manner for
-              these users. This is due to the colors being in contrast with both the
-              background and the other circles.
+              As you can see, this exercise can be very difficult for users who
+              are colorblind. The exercise was not created in an accessible
+              manner for these users. This is due to the colors being in
+              contrast with both the background and the other circles.
             </li>
             <br />
             <br />
@@ -58,22 +58,22 @@ const ThirdInstructions = ({
             </li>
             <br />
             <li className="instructionsItem">
-              You can use any online calculator or a calculator you've created for
-              your lab! In order to fix the problem, the contrast must be above a
-              ratio of <strong>7:1</strong>.{" "}
+              You can use any online calculator or a calculator you've created
+              for your lab! In order to fix the problem, the contrast must be
+              above a ratio of <strong>7:1</strong>.{" "}
               <em>
-                Black is not an applicable option, as the entire system relies upon
-                black for text coloring (giving you zero contrast between the
-                background and text).
+                Black is not an applicable option, as the entire system relies
+                upon black for text coloring (giving you zero contrast between
+                the background and text).
               </em>
             </li>
             <br />
             <h2>Did you know?</h2>
             <br />
             <li className="instructionsItem">
-              Color contrast is a measurement of how much two colors differ from one
-              another. This measurement makes a huge difference to people color
-              vision deficiencies.
+              Color contrast is a measurement of how much two colors differ from
+              one another. This measurement makes a huge difference to people
+              color vision deficiencies.
             </li>
           </ul>
           <br></br>
