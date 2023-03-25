@@ -2,14 +2,14 @@
 import React from "react";
 import { navigate } from "@reach/router";
 
-const ExpressionScore = (props) => {
-  const { linkNum } = props;
+const ExpressionScore = () => {
   const handleNext = () => {
-    navigate("/Imagine" + linkNum + "/ImagineEnd");
+    navigate("/Imagine");
   };
 
   return (
     <div className="container bottomSpace center-div">
+      <h2 className="playthrough__title">Empathy Building Expression: Score</h2>
       <div className="playthrough__sentence">
         Good Job! You detected the subjects discomfort x/x times
       </div>

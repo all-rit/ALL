@@ -8,6 +8,10 @@ import { bindActionCreators } from "redux";
 import LandingPage from "./pages/landingPage";
 import MainInstructions from "./pages/mainInstructions";
 
+import { default as ExerciseLab2 } from "../exercise/lab2/Main";
+import ExpressionStart from "./pages/ExpressionStart";
+import ExpressionScore from "./pages/ExpressionScore";
+
 const mapStateToProps = (state) => ({
   state: state,
 });
@@ -32,17 +36,30 @@ class Main extends Component {
             user={user}
           />
           <MainInstructions
-            path="/MainInstructions"
+            path="/ExperientialInstructions"
             actions={actions}
             state={state}
             user={user}
           />
-          {/* <ExerciseEnd
-            path="/ExerciseEnd"
+          <ExerciseLab2
+            path="/Exercise"
             actions={actions}
             state={state}
             user={user}
-          /> */}
+            isImagine
+          />
+          <ExpressionStart
+            path="/ExpressionInstructions"
+            actions={actions}
+            state={state}
+            user={user}
+          />
+          <ExpressionScore
+            path="/ExpressionScore"
+            actions={actions}
+            state={state}
+            user={user}
+          />
         </Router>
       </div>
     );

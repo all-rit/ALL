@@ -245,6 +245,7 @@ class Main extends Component {
       onToGreyBackground,
       onResetSystem,
       onGoBackFromExercise,
+      isImagine,
     } = this.props;
 
     // establishing array of current colors for the system
@@ -351,6 +352,7 @@ class Main extends Component {
                             activatePopup={onOpenColorChange}
                             toWhiteBackground={onToWhiteBackground}
                             background={baseBackground}
+                            isImagine={isImagine}
                           />
                         ) : (
                           <div>
@@ -369,7 +371,7 @@ class Main extends Component {
                                   <Conclusion resetSystem={onResetSystem} />
                                 ) : (
                                   <div>
-                                    {firstExercise ? (
+                                    {firstExercise && !isImagine ? (
                                       <LandingPage
                                         endFirstExercise={onEndFirstExercise}
                                         toWhiteBackground={onToWhiteBackground}

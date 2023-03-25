@@ -2,10 +2,9 @@
 import React from "react";
 import { navigate } from "@reach/router";
 
-const ExpressionStart = (props) => {
-  const { linkNum } = props;
+const ExpressionStart = () => {
   const handleNext = () => {
-    navigate("/Imagine" + linkNum + "/Exercise");
+    navigate("/Imagine/ExpressionScore");
   };
 
   return (

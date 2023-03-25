@@ -5,7 +5,7 @@ import "./landingpage.css";
 
 const MainInstructions = () => {
   const handleNext = () => {
-    navigate("Imagine/Exercise");
+    navigate("/Imagine/Exercise");
   };
   return (
     <div className="mainInstructionsContainer">
