@@ -94,29 +94,7 @@ class App extends Component {
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
 
-              {/* <Imagine
-                path="/ImagineExperiential/*"
-                user={state.main.user}
-              />
-
-              <Imagine
-                path="/ImagineExpression/*"
-                user={state.main.user}
-              /> */}
-
               <Imagine path="/Imagine/*" user={state.main.user} />
-              {/* <Imagine
-                path="/Imagine2/*"
-                user={state.main.user}
-                biasType={"user"}
-                linkNum={2}
-              />
-              <Imagine
-                path="/Imagine3/*"
-                user={state.main.user}
-                biasType={"team"}
-                linkNum={3}
-              /> */}
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About

@@ -10,7 +10,7 @@ const MainInstructions = () => {
   return (
     <div className="mainInstructionsContainer">
       <h2 className="playthrough__title">
-        Experiential Empathy Building: Main Instructions
+        Experiential Empathy Building: Instructions
       </h2>
 
       <p className="mainInstructionList">

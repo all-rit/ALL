@@ -1,22 +1,4 @@
 export const Sections = {
-  // 0: {
-  //   name: "", //Landing Page
-  //   0: {
-  //     name: "",
-  //   },
-  //   1: {
-  //     name: "SiteMap",
-  //   },
-  //   2: {
-  //     name: "Profile",
-  //   },
-  //   3: {
-  //     name: "ImagineExperiential",
-  //   },
-  //   4: {
-  //     name: "ImagineExpression",
-  //   },
-  // },
   0: {
     name: "", // represents Landing Page
     0: {
@@ -29,14 +11,8 @@ export const Sections = {
       name: "Profile",
     },
     3: {
-      name: "Imagine1",
-    },
-    4: {
-      name: "Imagine2",
-    },
-    5: {
-      name: "Imagine3",
-    },
+      name: "Imagine",
+    }
   },
   1: {
     fullname: "Accessibility Learning Lab 1: Accessibility to Sound and Speech",

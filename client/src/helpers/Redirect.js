@@ -78,20 +78,8 @@ export const stateChange = (actions, pathname) => {
       break;
     case "Lab7":
       actions.setLab(7);
-      //   break;
-      // case "ImagineExperiential":
-      //   actions.setLab(0);
-      //   break;
-      // case "ImagineExpression":
-      //   actions.setLab(0);
       break;
-    case "Imagine1":
-      actions.setLab(0);
-      break;
-    case "Imagine2":
-      actions.setLab(0);
-      break;
-    case "Imagine3":
+    case "Imagine":
       actions.setLab(0);
       break;
     case "":
@@ -99,11 +87,7 @@ export const stateChange = (actions, pathname) => {
       break;
     default:
       if (
-        // redirectBody !== "ImagineExperiential" &&
-        // redirectBody !== "ImagineExpression"
-        redirectBody !== "Imagine1" &&
-        redirectBody !== "Imagine2" &&
-        redirectBody !== "Imagine3"
+        redirectBody !== "Imagine"
       ) {
         noMatch = true;
       }
@@ -132,20 +116,8 @@ export const stateChange = (actions, pathname) => {
     case "Profile":
       actions.setBody(2);
       break;
-    // case "ImagineExperiential":
-    //   actions.setBody(3);
-    //   break;
-    // case "ImagineExpression":
-    //   actions.setBody(4);
-    //   break;
-    case "Imagine1":
+    case "Imagine":
       actions.setBody(3);
-      break;
-    case "Imagine2":
-      actions.setBody(4);
-      break;
-    case "Imagine3":
-      actions.setBody(5);
       break;
     default:
       actions.setBody(0);
