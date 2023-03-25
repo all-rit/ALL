@@ -1,0 +1,232 @@
+.quiz {
+  /* Result Component */
+  /* Quiz Component */
+  /* QuestionCount Component */
+  /* Question Component */
+  /* AnswerOption Component */
+  /* Animation */
+}
+
+.quiz .quizHeader {
+  text-align: center;
+  margin-top: 110px;
+}
+
+.quiz .body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #eee;
+}
+
+.quiz code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.quiz * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.quiz .body {
+  margin: 0;
+  padding: 0;
+  background: #eee;
+  font-family: sans-serif;
+}
+
+.quiz .container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+
+@media (min-width: 769px) {
+  .quiz .container {
+    margin: 2.5rem auto;
+  }
+}
+
+.quiz .result {
+  padding: 1.5rem 2.5rem;
+}
+
+.quiz .answerOptions {
+  margin: 16px;
+  padding: 0;
+  list-style: none;
+  display: list-item;
+}
+
+.quiz .questionCount {
+  padding: 1.5rem 2.5rem 0;
+  font-size: 14px;
+}
+
+.quiz .question {
+  margin: 0;
+  padding: 0.5rem 2.5rem 1.5rem 2.5rem;
+}
+
+.quiz .answerOption {
+  border-top: 1px solid #eee;
+}
+
+.quiz .answerOption:hover {
+  background-color: #eefbfe;
+}
+
+.quiz .checkboxCustomButton {
+  position: absolute;
+  width: auto;
+  opacity: 0;
+}
+
+.quiz .checkboxCustomButton,
+.quiz .checkboxCustomLabel {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.quiz .checkboxCustomLabel {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 1.5rem 2.5rem 1.5rem 5rem;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.quiz .checkboxCustomButton ~ .checkboxCustomLabel:before {
+  position: absolute;
+  top: 20px;
+  left: 38px;
+  width: 28px;
+  height: 28px;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background: #fff;
+  border: 1px solid #bbb;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.quiz .checkboxCustomButton:checked ~ .checkboxCustomLabel:before {
+  content: "";
+  background: #8bc53f no-repeat;
+  background-size: 27px;
+  border-color: #8bc53f;
+}
+
+.quiz .checkboxCustomButton:checked ~ .checkboxCustomLabel:after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.quiz .radioCustomButton {
+  position: absolute;
+  width: auto;
+  opacity: 0;
+}
+
+.quiz .radioCustomButton,
+.quiz .radioCustomLabel {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.quiz .radioCustomLabel {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 1.5rem 2.5rem 1.5rem 5rem;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.quiz .radioCustomButton ~ .radioCustomLabel:before {
+  position: absolute;
+  top: 20px;
+  left: 38px;
+  width: 28px;
+  height: 28px;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.quiz .radioCustomButton:checked ~ .radioCustomLabel:before {
+  content: "";
+  background: #8bc53f no-repeat;
+  background-size: 27px;
+  border-color: #8bc53f;
+}
+
+.quiz .radioCustomButton:checked ~ .radioCustomButton:after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.quiz .nextButton {
+  margin: 20px;
+  padding: 8px !important;
+}
+
+.quiz .align-right {
+  text-align: right;
+}
+
+.quiz .top-margin {
+  margin-top: 150px !important;
+}
+
+.quiz .fade-enter {
+  opacity: 0;
+}
+
+.quiz .fade-enter.fade-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in-out 0.3s;
+  transition: opacity 0.5s ease-in-out 0.3s;
+}
+
+.quiz .fade-leave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 1;
+}
+
+.quiz .fade-leave.fade-leave-active {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.quiz .fade-appear {
+  opacity: 0;
+}
+
+.quiz .fade-appear.fade-appear-active {
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+/*# sourceMappingURL=quiz.css.map */

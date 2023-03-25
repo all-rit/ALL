@@ -57,6 +57,7 @@ class Main extends Component {
             data={state}
           />
           <AccessibleInstructions
+            state={state}
             path={"/AccessibleInstructions"}
             actions={actions}
           />

@@ -6,7 +6,7 @@ import Heart from "@material-ui/icons/Favorite";
 import Button from "@material-ui/core/Button";
 import { ThumbUp } from "@material-ui/icons";
 import profilepic from "../../../../../assets/images/lab9/profilepic.png";
-import kitty from "../../../../../assets/images/lab9/kitty.png";
+import Layout from "../../components/Layout";
 
 class Feed extends Component {
   constructor(props) {
@@ -15,10 +15,11 @@ class Feed extends Component {
 
   render() {
     return (
-      <div className="main-div">
-        <div className="content-div">
-          <span className="user-post">
-            <div>
+
+      <Layout>
+        <div className="main-div">
+          <div className="content-div">
+            <span className="user-post">
               <div className="post-text guidance tw-font-bold">
                 <img
                   className={"poster-image"}
@@ -28,37 +29,29 @@ class Feed extends Component {
                 <p className="tw-font-bold ">
                   User828 Posted: This cat is the cutest!
                 </p>
-                <span className={"button-row"}>
-                  <Button
-                    className={"button-design"}
-                    color={"primary"}
-                    startIcon={<ThumbUp />}
-                  ></Button>
-                  <Button
-                    className={"button-design"}
-                    color="secondary"
-                    size={"large"}
-                    startIcon={<Heart />}
-                  ></Button>
-                </span>
               </div>
-              <div>
-                <img className={"kitty-image"} alt="kitty" src={kitty} />
-              </div>
-            </div>
-          </span>
-
-          <span className={"reply tw-ml-3 tw-mt-3"}>
-            <img
-              src={profilepic}
-              alt="welcome logo"
-              className="profile-pic tw-rounded-3xl"
-            />
-            <p className={"tw-font-bold tw-ml-5"}> Add a Comment... </p>
-            <Button className={"reply-button "}>Reply</Button>
-          </span>
-        </div>
-        <div className="comment-section">
+            </span>
+            <span className={"reply tw-ml-3 tw-mt-3"}>
+              <img
+                src={profilepic}
+                alt="welcome logo"
+                className="profile-pic tw-rounded-3xl"
+              />
+              <p className={"tw-font-bold tw-ml-5"}> Add a Comment... </p>
+              <Button className={"button-design tw-mr-2"}>Reply</Button>
+              <Button
+                className={"button-design"}
+                color={"secondary"}
+                startIcon={<ThumbUp />}
+              ></Button>
+              <Button
+                className={"button-design"}
+                color="secondary"
+                size={"large"}
+                startIcon={<Heart />}
+              ></Button>
+            </span>
+          </div>
           <div className="comment-div">
             <span className="comment-contents">
               <img className="commenter-image" alt="userpic" src={user939} />
@@ -69,7 +62,7 @@ class Feed extends Component {
             </span>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }
