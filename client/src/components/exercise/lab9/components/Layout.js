@@ -10,8 +10,8 @@ const Layout = (props) => {
   return (
     <div>
       <div className={"tw-flex tw-items-center tw-bg-[#98c1d9]"}>
-        <div>
-          <div className={"tw-inline-flex tw-w-20 tw-h-20"}>
+        <div className={"tw-ml-4"}>
+          <div className={"tw-inline-flex tw-w-14 tw-h-14"}>
             <svg
               className={"tw-text-[#fed136]"}
               style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
@@ -30,7 +30,7 @@ const Layout = (props) => {
             </svg>
           </div>
           <div>
-            <p className={"tw-font-bold tw-text-xl"}>Flagged Posts</p>
+            <p className={"tw-font-bold tw-text-lg"}>Flagged Posts</p>
           </div>
         </div>
         <div className={"tw-mx-auto"}>
@@ -40,9 +40,9 @@ const Layout = (props) => {
             className="tw-h-32 tw-w-32 tw-my-3"
           />
         </div>
-        <div className={"tw-flex tw-flex-col"}>
+        <div className={"tw-flex tw-flex-col tw-mr-4"}>
           <div>
-            <Avatar className={"tw-w-24 tw-h-24"} avatarStyle={"Circle"} />
+            <Avatar className={"tw-w-20 tw-h-20"} avatarStyle={"Circle"} />
           </div>
           <div>
             <p className={"tw-font-bold tw-text-lg"}>User #0001</p>

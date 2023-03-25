@@ -62,15 +62,19 @@ class Feed extends Component {
             </div>
             <div className={"comment-section"}>
               {/** Insert user reply here */}
-            <div className="comment-div">
-              <span className="comment-contents">
-                <img className="commenter-image" alt="userpic" src={user939} />
-                <p className="guidance tw-font-bold">
-                  {" "}
-                  User 939 barked: &quot;Awe, thats adorbes!&quot;{" "}
-                </p>
-              </span>
-            </div>
+              <div className="comment-div">
+                <span className="comment-contents">
+                  <img
+                    className="commenter-image"
+                    alt="userpic"
+                    src={user939}
+                  />
+                  <p className="guidance tw-font-bold">
+                    {" "}
+                    User 939 barked: &quot;Awe, thats adorbes!&quot;{" "}
+                  </p>
+                </span>
+              </div>
             </div>
           </div>
         </div>
