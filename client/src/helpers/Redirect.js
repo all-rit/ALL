@@ -86,9 +86,7 @@ export const stateChange = (actions, pathname) => {
       actions.setLab(0);
       break;
     default:
-      if (
-        redirectBody !== "Imagine"
-      ) {
+      if (redirectBody !== "Imagine") {
         noMatch = true;
       }
       actions.setLab(0);

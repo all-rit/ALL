@@ -12,7 +12,7 @@ export const Sections = {
     },
     3: {
       name: "Imagine",
-    }
+    },
   },
   1: {
     fullname: "Accessibility Learning Lab 1: Accessibility to Sound and Speech",
