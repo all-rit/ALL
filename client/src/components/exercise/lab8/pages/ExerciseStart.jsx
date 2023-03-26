@@ -32,10 +32,9 @@ class ExerciseStart extends Component {
               tool which uses AI to detect if a message should be removed for
               being inappropriate.{" "}
               <strong>
-                Your task is to monitor the live
-                chat and remove messages that you deem rude or inappropriate,
-                while taking into consideration the AI’s recommendation for each
-                message.
+                Your task is to monitor the live chat and remove messages that
+                you deem rude or inappropriate, while taking into consideration
+                the AI’s recommendation for each message.
               </strong>
             </p>
 
