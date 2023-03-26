@@ -4,12 +4,14 @@
 import React from "react";
 import { Router } from "@reach/router";
 import ExerciseFrame from "./components/ExerciseFrame";
+import BiasDiscovery from "./pages/BiasDiscovery";
 
 const Main = () => {
   return (
     <div className="bottomSpace">
       <Router className="app">
         <ExerciseFrame path="/StreamSimulation"/>
+        <BiasDiscovery path="/BiasDiscovery"/>
       </Router>
     </div>
   );
