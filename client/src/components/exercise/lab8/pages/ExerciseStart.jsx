@@ -30,12 +30,13 @@ class ExerciseStart extends Component {
               a live stream, the streamer for which has recently taken a break
               and is away from their computer. You are testing a new moderation
               tool which uses AI to detect if a message should be removed for
-              being inappropriate.
-              <b>
-                Your task is to monitor the live chat and remove messages that
-                you deem rude or inappropriate, while taking into consideration
-                the AI’s recommendation for each message.
-              </b>
+              being inappropriate.{" "}
+              <strong>
+                Your task is to monitor the live
+                chat and remove messages that you deem rude or inappropriate,
+                while taking into consideration the AI’s recommendation for each
+                message.
+              </strong>
             </p>
 
             <p className="playthrough__sentence">
@@ -43,12 +44,6 @@ class ExerciseStart extends Component {
               AI, followed by buttons to either remove the message or keep it.
             </p>
           </div>
-
-          <p className="playthrough__sentence">
-            <b>Note</b>: The simulation will be done by the autonomous system.
-            You will <b>NOT</b> be able to interact with the simulation once it
-            starts.
-          </p>
 
           <p className="playthrough__sentence">
             Click the &apos;<span className={"tw-font-bold"}>Start</span>&apos;
