@@ -10,8 +10,8 @@ const Main = () => {
   return (
     <div className="bottomSpace">
       <Router className="app">
-        <ExerciseFrame path="/StreamSimulation"/>
-        <BiasDiscovery path="/BiasDiscovery"/>
+        <ExerciseFrame path="/StreamSimulation" />
+        <BiasDiscovery path="/BiasDiscovery" />
       </Router>
     </div>
   );
