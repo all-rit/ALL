@@ -4,8 +4,19 @@
 import React from "react";
 import ExerciseFrame from "./components/ExerciseFrame";
 
+import ChatRoom from "./components/ChatRoom";
+
 const Main = () => {
-  return <ExerciseFrame />;
+  return (
+    <div>
+      <ExerciseFrame />
+      < ChatRoom />
+
+    </div>
+    
+  ); 
+  // return < ChatRoom />;
+ 
 };
 
 export default Main;
