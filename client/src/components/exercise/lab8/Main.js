@@ -10,13 +10,10 @@ const Main = () => {
   return (
     <div>
       <ExerciseFrame />
-      < ChatRoom />
-
+      <ChatRoom />
     </div>
-    
-  ); 
+  );
   // return < ChatRoom />;
- 
 };
 
 export default Main;
