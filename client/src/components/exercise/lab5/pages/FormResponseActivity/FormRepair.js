@@ -38,11 +38,11 @@ class FormRepair extends Component {
     Object.keys(this.state).map((name) => {
       switch (name) {
         case "errorNotification":
-          if (this.state[name] !== "Please enter in format: YYYY-MM-DD") {
+          if (this.state[name] !== '"Please enter in format: YYYY-MM-DD"') {
             error = true;
             this.setState({
               errorNotificationerror:
-                "Must enter 'Please enter in format: YYYY-MM-DD'",
+                'Must enter "Please enter in format: YYYY-MM-DD"',
             });
           } else {
             this.setState({ errorNotificationerror: null });
