@@ -13,11 +13,14 @@ jobs:
         with:
           name: allssh
           key: '${{secrets.SSH_SECRET}}'
-          known_hosts: '${{ secrets.SSH_HOST_NAME}}'
-      - name: connect and pull changes
+          known_hosts: '${{secrets.SSH_HOST_NAME}}'
+      - name: connect
         run: |
-          ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST_NAME}} cd
-          {{secrets.PROJECT_PATH}}
+          ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST_NAME}}
+      - name: cd into project directory
+        run: |
+          cd {{secrets.PROJECT_PATH}}
       - name: run npm build
         run: |
           npm run build
+
