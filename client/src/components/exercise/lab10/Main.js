@@ -9,6 +9,7 @@ import { actions as exerciseActions } from "../../../reducers/lab10/ExerciseRedu
 import { bindActionCreators } from "redux";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
+import BuildingAICodeBlock from "./pages/BuildingAICodeBlock";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -27,6 +28,10 @@ class Main extends Component {
       <div className="bottomSpace">
         <Router className="app">
           <ExerciseStart default path="/" actions={actions} />
+          <BuildingAICodeBlock default path="/BuildingAICodeBlock"
+                               actions={actions}
+                               state={state}
+                               user={user}/>
           <ExerciseEnd
             path="/ExerciseEnd"
             actions={actions}
