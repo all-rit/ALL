@@ -28,7 +28,7 @@ class Main extends Component {
       <div className="bottomSpace">
         <Router className="app">
           <ExerciseStart default path="/" actions={actions} />
-          <BuildingAI path={"/BuildingAI"}/>
+          <BuildingAI path={"/BuildingAI"} />
           <ExerciseEnd
             path="/ExerciseEnd"
             actions={actions}
