@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import { bindActionCreators } from "redux";
 // import { actions } from "../../../../reducers/lab10/ExerciseReducer"
 
-
 class BuildingAICodeBlock extends Component {
   constructor(props) {
     super(props);
@@ -80,19 +79,14 @@ class BuildingAICodeBlock extends Component {
                 balls
               </span>
             </div>
-            <div className="code_editor__line">
-              {/* AI function comment */}
-
-            </div>
+            <div className="code_editor__line">{/* AI function comment */}</div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;</span>
               <span className="code_editor__line--yellow">moveUser</span>
               <span className="code_editor__line--purple">(</span>
               <span className="code_editor__line--blue">&nbsp;left</span>
               <span className="code_editor__line--white">&nbsp;,</span>
-              <span className="code_editor__line--blue">
-                &nbsp;right&nbsp;
-              </span>
+              <span className="code_editor__line--blue">&nbsp;right&nbsp;</span>
               <span className="code_editor__line--purple">) &#123;</span>
             </div>
             <div className="code_editor__line">
@@ -115,12 +109,9 @@ class BuildingAICodeBlock extends Component {
               />
               <span>;</span>
             </div>
-              <div className="code_editor__line">
-                <span className={"form-error"}>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-              </div>
-
+            <div className="code_editor__line">
+              <span className={"form-error"}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
 
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -143,12 +134,9 @@ class BuildingAICodeBlock extends Component {
               />
               <span>;</span>
             </div>
-              <div className="code_editor__line">
-                <span className={"form-error"}>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-              </div>
-
+            <div className="code_editor__line">
+              <span className={"form-error"}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
 
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;</span>

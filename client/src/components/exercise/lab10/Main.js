@@ -28,10 +28,13 @@ class Main extends Component {
       <div className="bottomSpace">
         <Router className="app">
           <ExerciseStart default path="/" actions={actions} />
-          <BuildingAICodeBlock default path="/BuildingAICodeBlock"
-                               actions={actions}
-                               state={state}
-                               user={user}/>
+          <BuildingAICodeBlock
+            default
+            path="/BuildingAICodeBlock"
+            actions={actions}
+            state={state}
+            user={user}
+          />
           <ExerciseEnd
             path="/ExerciseEnd"
             actions={actions}
