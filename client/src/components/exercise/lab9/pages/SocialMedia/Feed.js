@@ -14,7 +14,6 @@ const Feed = (props) => {
       <div>
         <div className="main-div">
           <div className="content-div">
-
             <Post />
             <ReplyComment avatarData={data} />
           </div>
