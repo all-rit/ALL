@@ -1,42 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { bindActionCreators } from "redux";
-import WalkingManImageRight from "../../../../../assets/images/lab10/walking-man-right.svg";
-import WalkingManImageLeft from "../../../../../assets/images/lab10/walking-man-left.svg";
 import { actions as exerciseActions } from "../../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { STEP_COUNT } from "../../../../../constants/lab10";
 
-const actionMap = {
-  ArrowLeft: (x) => x - STEP_COUNT,
-  ArrowRight: (x) => x + STEP_COUNT,
-};
+const WalkingMan = (props) => {
+  const handleKeyDown = useCallback(
+    (e) => {
+      //console.log("handleKeyDown", props.hittingLeft, props.hittingRight);
+      //console.log(props.hittingLeft);
+      switch (e.key) {
+        case "a":
+        case "ArrowLeft":
+          props.actions.decrementObjectPositionX();
+          props.actions.setActionLeft();
+          break;
+        case "d":
+        case "ArrowRight":
+          props.actions.incrementObjectPositionX();
+          props.actions.setActionRight();
+          break;
+      }
+    },
+    [props.hittingLeft, props.hittingRight]
+  );
 
-const WalkingMan = () => {
-  const [x, setX] = useState(0);
-  const [action, setAction] = useState("");
-
-  const handleKeyPress = (e) => {
-    const actionX = actionMap[e.key];
-    setAction(e.key);
-    actionX && setX(actionX);
-  };
+  const handleKeyUp = useCallback(() => {
+    //console.log("handleKeyUp", props.hittingLeft, props.hittingRight);
+  });
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyPress);
-  }, []);
+    //console.log('updated useeffect 1');
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
+
+  useEffect(() => {
+    //console.log('updated useeffect 2');
+    document.addEventListener("keyup", handleKeyUp);
+    return () => document.removeEventListener("keyup", handleKeyUp);
+  }, [handleKeyUp]);
 
   return (
-    <div
-      style={{ left: x }}
-      className={"tw-relative tw-transition-all tw-duration-150"}
-    >
+    <div>
       <img
-        className={"tw-transform tw-scale-y--100"}
+        id={"child"}
+        ref={props.refObject}
+        style={{ left: props.objectPositionX }}
+        className={"tw-transform tw-relative tw-transition-all tw-duration-150"}
         alt={"Man Walking SVG"}
-        src={
-          action === "ArrowLeft" ? WalkingManImageLeft : WalkingManImageRight
-        }
+        src={props.objectImage}
         height={96}
         width={96}
       />
@@ -45,8 +58,22 @@ const WalkingMan = () => {
 };
 
 const mapStateToProps = (state) => {
-  return state.exercise10;
-  // return {};
+  const {
+    objectPositionX,
+    objectImage,
+    objectAtEdge,
+    action,
+    objectAtEdgeLeft,
+    objectAtEdgeRight,
+  } = state.exercise10;
+  return {
+    objectPositionX,
+    objectImage,
+    objectAtEdge,
+    action,
+    objectAtEdgeLeft,
+    objectAtEdgeRight,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -56,8 +83,16 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 WalkingMan.propTypes = {
-  x: PropTypes.number,
+  refObject: PropTypes.object,
+  objectPositionX: PropTypes.number,
+  objectImage: PropTypes.string,
+  objectAtEdge: PropTypes.bool,
   action: PropTypes.string,
+  objectAtEdgeLeft: PropTypes.bool,
+  objectAtEdgeRight: PropTypes.bool,
+  actions: PropTypes.object,
+  hittingLeft: PropTypes.bool,
+  hittingRight: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalkingMan);
