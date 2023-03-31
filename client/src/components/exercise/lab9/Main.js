@@ -24,31 +24,31 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const Main = (props) =>{
-    const { actions, state, user } = props;
+const Main = (props) => {
+  const { actions, state, user } = props;
 
-    const [userAvatar, setUserAvatarData] = useState(null);
+  const [userAvatar, setUserAvatarData] = useState(null);
 
-    useEffect(() => {
-      setUserAvatarData(createAvatarData(1)[0]);
-    }, []);
+  useEffect(() => {
+    setUserAvatarData(createAvatarData(1)[0]);
+  }, []);
 
-    return (
-      <div className="bottomSpace">
-        <Router className="app">
-          <ExerciseStart default path="/" actions={actions} />
-          <Welcome path="/Welcome" actions={actions} />
-          <Profile path="/Profile" actions={actions} data={userAvatar}/>
-          <Feed path="/Feed" actions={actions} data={userAvatar}/>
-          <ExerciseEnd
-            path="/ExerciseEnd"
-            actions={actions}
-            state={state}
-            user={user}
-          />
-        </Router>
-      </div>
-    );
-}
+  return (
+    <div className="bottomSpace">
+      <Router className="app">
+        <ExerciseStart default path="/" actions={actions} />
+        <Welcome path="/Welcome" actions={actions} />
+        <Profile path="/Profile" actions={actions} data={userAvatar} />
+        <Feed path="/Feed" actions={actions} data={userAvatar} />
+        <ExerciseEnd
+          path="/ExerciseEnd"
+          actions={actions}
+          state={state}
+          user={user}
+        />
+      </Router>
+    </div>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

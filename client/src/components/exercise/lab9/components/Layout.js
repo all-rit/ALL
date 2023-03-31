@@ -44,17 +44,19 @@ const Layout = (props) => {
         <div className={"tw-flex tw-flex-col tw-mr-4"}>
           <div>
             {data && (
-              <Avatar className={"tw-w-16 tw-h-16"} avatarStyle={"Circle"} 
-                  topType={data.avatarAttributes.topType}
-                  accessoriesType={data.avatarAttributes.accessoriesType}
-                  hairColor={data.avatarAttributes.hairColor}
-                  facialHairType={data.avatarAttributes.facialHairType}
-                  clotheType={data.avatarAttributes.clotheType}
-                  clotheColor={data.avatarAttributes.clotheColor}
-                  eyeType={data.avatarAttributes.eyeType}
-                  eyebrowType={data.avatarAttributes.eyebrowType}
-                  mouthType={data.avatarAttributes.mouthType}
-                  skinColor={data.avatarAttributes.skinColor}
+              <Avatar
+                className={"tw-w-16 tw-h-16"}
+                avatarStyle={"Circle"}
+                topType={data.avatarAttributes.topType}
+                accessoriesType={data.avatarAttributes.accessoriesType}
+                hairColor={data.avatarAttributes.hairColor}
+                facialHairType={data.avatarAttributes.facialHairType}
+                clotheType={data.avatarAttributes.clotheType}
+                clotheColor={data.avatarAttributes.clotheColor}
+                eyeType={data.avatarAttributes.eyeType}
+                eyebrowType={data.avatarAttributes.eyebrowType}
+                mouthType={data.avatarAttributes.mouthType}
+                skinColor={data.avatarAttributes.skinColor}
               />
             )}
           </div>
