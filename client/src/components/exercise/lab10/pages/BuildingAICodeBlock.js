@@ -10,20 +10,6 @@ class BuildingAICodeBlock extends Component {
     };
   }
 
-  /** handleValueChange(e) {
-    const { actions } = this.props;
-    actions.updateMoveRightValue(e.target.value);
-  }
-
-   updateMoveLeftValue(e) {
-
-   }
-
-  updateMoveRightValue(e) {
-
-  }
-
-*/
   render() {
     return (
       <div className="code_editor">
@@ -35,16 +21,14 @@ class BuildingAICodeBlock extends Component {
             </div>
           </div>
 
-          {/* import React, Component from react */}
+          {/* import React, Component, useState, useEffect from react */}
           <div className="code_editor__code">
             <div className="code_editor__line">
               <span className="code_editor__line--purple">import&nbsp;</span>
               <span className="code_editor__line--blue">React</span>
               <span className="code_editor__line--gold">,&nbsp;</span>
               <span className="code_editor__line--gold">&#123;</span>
-              <span className="code_editor__line--blue">
-                &nbsp;Component&nbsp;
-              </span>
+              <span className="code_editor__line--blue"> Component, useState, useEffect </span>
               <span className="code_editor__line--gold">&#125;&nbsp;</span>
               <span className="code_editor__line--purple">from&nbsp;</span>
               <span className="code_editor__line--orange">
@@ -55,7 +39,7 @@ class BuildingAICodeBlock extends Component {
 
             <div className="code_editor__line">&nbsp;</div>
 
-            {/* class AutoSysAI extends Component*/}
+            {/* class MoveUser extends Component*/}
             <div className="code_editor__line">
               <span className="code_editor__line--blue">class&nbsp;</span>
               <span className="code_editor__line--green">MoveUser&nbsp;</span>
@@ -84,30 +68,74 @@ class BuildingAICodeBlock extends Component {
               <span>&nbsp;&nbsp;</span>
               <span className="code_editor__line--yellow">moveUser</span>
               <span className="code_editor__line--purple">(</span>
-              <span className="code_editor__line--blue">&nbsp;left</span>
-              <span className="code_editor__line--white">&nbsp;,</span>
-              <span className="code_editor__line--blue">&nbsp;right&nbsp;</span>
               <span className="code_editor__line--purple">) &#123;</span>
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className={"code_editor__line--purple"}>const</span>
+              <span className={""}> [position, setPosition] = </span>
+              <span className="code_editor__line--blue">useState</span>
+              <span className={""}>(</span>
+              <span className="code_editor__line--orange">0</span>
+              <span className={""}>)</span>
+              <span className={""}>;</span>
+            </div>
+
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__line--yellow">useEffect(</span>
+              <span className={""}>()  </span>
+              <span className="code_editor__line--blue"> =&gt; </span>
+              <span className={""}> &#123; </span>
+            </div>
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className={"code_editor__line--purple"}>const </span>
+              <span className="code_editor__line--blue">handleKey</span>
+              <span className={"tw-border-white"}> = (</span>
+              <span className="code_editor__line--orange">event</span>
+              <span className={""}>) =&gt; &#123;</span>
+            </div>
+            <div>
               <span className="code_editor__line--darkgreen">
-                enter &lsquo; left &lsquo; into the first input{" "}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                Enter &lsquo;ArrowLeft&lsquo; into the input below {" "}
               </span>
             </div>
             <div className="code_editor__line code_editor__line-background--light">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--purple"}>const </span>
-              <span className={""}>moveLeft</span>
-              <span className={"code_editor__line--purple"}> = </span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className={"code_editor__line--purple"}>if </span>
+              <span className={""}>(</span>
+              <span className="code_editor__line--orange">event</span>
+              <span className={""}>.</span>
+              <span className="code_editor__line--blue">code</span>
+              <span className={""}> === </span>
               <input
                 name="moveLeft"
                 type="text"
-                //onChange= {() => this.handleValueChange()}
                 required
-                title="must enter file.sensitivityLevel"
+                title="must enter ArrowLeft"
               />
-              <span>;</span>
+              <span>) &#123;</span>
+            </div>
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__line--orange">setPosition</span>
+              <span className={""}> ((</span>
+              <span className="code_editor__line--blue">prevPosition</span>
+              <span className={""}>) =&gt; </span>
+              <span className="code_editor__line--blue">prevPosition</span>
+              <span className={""}> - </span>
+              <span className="code_editor__line--orange">10</span>
+              <span className={""}>);</span>
             </div>
             <div className="code_editor__line">
               <span className={"form-error"}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -115,31 +143,99 @@ class BuildingAICodeBlock extends Component {
 
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--darkgreen">
-                enter &lsquo;right&lsquo; into the second input
+                Enter &lsquo;ArrowRight&lsquo; into the input below.
               </span>
             </div>
 
             <div className="code_editor__line code_editor__line-background--light">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--purple"}>const </span>
-              <span className={""}>moveRight</span>
-              <span className={"code_editor__line--purple"}> = </span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className={""}>&#125; </span>
+              <span className={"code_editor__line--purple"}>else if </span>
+              <span className={""}>(</span>
+              <span className="code_editor__line--orange">event</span>
+              <span className={""}>.</span>
+              <span className="code_editor__line--blue">code</span>
+              <span className={""}> === </span>
               <input
-                name="rightValue"
+                name="moveLeft"
                 type="text"
-                // onChange= { () => this.handleValueChange()}
                 required
-                title="must enter threatLvl"
+                title="must enter ArrowLeft"
               />
-              <span>;</span>
+              <span>) &#123;</span>
+
+              <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__line--orange">setPosition</span>
+              <span className={""}> ((</span>
+              <span className="code_editor__line--blue">prevPosition</span>
+              <span className={""}>) =&gt; </span>
+              <span className="code_editor__line--blue">prevPosition</span>
+              <span className={""}> + </span>
+              <span className="code_editor__line--orange">10</span>
+              <span className={""}>);</span>
+            </div>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&#125;</span>
+            </div>
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&#125;;</span>
             </div>
             <div className="code_editor__line">
               <span className={"form-error"}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__line--gold">document</span>
+              <span className={""}>.</span>
+              <span className="code_editor__line--blue">addEventListener</span>
+              <span className={""}>(</span>
+              <span className="code_editor__line--orange">&apos;keydown&apos;</span>
+              <span className={""}>, </span>
+              <span className="code_editor__line--blue">handleKey</span>
+              <span className={""}>);</span>
+            </div>
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__line--purple">return </span>
+              <span className={""}>() =&gt; &#123;</span>
+            </div>
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__line--gold">document</span>
+              <span className={""}>.</span>
+              <span className="code_editor__line--blue">removeEventListener</span>
+              <span className={""}>(</span>
+              <span className={""}>(</span>
+              <span className="code_editor__line--orange">&apos;keydown&apos;</span>
+              <span className={""}>, </span>
+              <span className="code_editor__line--blue">handleKey</span>
+              <span className={""}>);</span>
+            </div>
+            <div className="code_editor__line">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="">&#125;;</span>
+            </div>
 
             <div className="code_editor__line">
-              <span>&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--purple">&#125;</span>
             </div>
 
