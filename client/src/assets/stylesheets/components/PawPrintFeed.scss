@@ -27,11 +27,7 @@
 }
 
 .user-post {
-  display: flex;
   padding-left: 3rem;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
   margin: 1rem;
   height: 100%;
   width: 95%;
@@ -56,10 +52,8 @@
   margin-left: 1rem;
   height: 40px;
   width: 40px;
-  border-radius: 100px;
   display: flex;
   justify-self: flex-start;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .comment-div {

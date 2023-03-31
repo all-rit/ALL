@@ -7,11 +7,12 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 const Layout = (props) => {
+  const { data, flaggedPosts } = props;
   return (
     <div>
       <div className={"tw-flex tw-items-center tw-bg-[#98c1d9]"}>
         <div className={"tw-ml-4"}>
-          <div className={"tw-inline-flex tw-w-14 tw-h-14"}>
+          <div className={"tw-inline-flex tw-w-12 tw-h-12"}>
             <svg
               className={"tw-text-[#fed136]"}
               style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
@@ -25,7 +26,7 @@ const Layout = (props) => {
                 fontWeight={"bold"}
                 fontSize="50"
               >
-                {props.flaggedPosts}
+                {flaggedPosts}
               </text>
             </svg>
           </div>
@@ -37,12 +38,25 @@ const Layout = (props) => {
           <img
             src={PawPrint}
             alt="welcome logo"
-            className="tw-h-32 tw-w-32 tw-my-3"
+            className="tw-h-20 tw-w-20 tw-my-3"
           />
         </div>
         <div className={"tw-flex tw-flex-col tw-mr-4"}>
           <div>
-            <Avatar className={"tw-w-20 tw-h-20"} avatarStyle={"Circle"} />
+            {data && (
+              <Avatar className={"tw-w-16 tw-h-16"} avatarStyle={"Circle"} 
+                  topType={data.avatarAttributes.topType}
+                  accessoriesType={data.avatarAttributes.accessoriesType}
+                  hairColor={data.avatarAttributes.hairColor}
+                  facialHairType={data.avatarAttributes.facialHairType}
+                  clotheType={data.avatarAttributes.clotheType}
+                  clotheColor={data.avatarAttributes.clotheColor}
+                  eyeType={data.avatarAttributes.eyeType}
+                  eyebrowType={data.avatarAttributes.eyebrowType}
+                  mouthType={data.avatarAttributes.mouthType}
+                  skinColor={data.avatarAttributes.skinColor}
+              />
+            )}
           </div>
           <div>
             <p className={"tw-font-bold tw-text-lg"}>User #0001</p>
@@ -58,6 +72,7 @@ const Layout = (props) => {
 Layout.propTypes = {
   children: PropTypes.element,
   flaggedPosts: PropTypes.number,
+  data: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {

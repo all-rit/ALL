@@ -1,33 +1,50 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../../../../src/assets/stylesheets/components/PawPrintFeed.scss";
-import user939 from "../../../../../assets/images/lab9/user939.png";
-import user828 from "../../../../../assets/images/lab9/user828.png";
 import Heart from "@material-ui/icons/Favorite";
 import Button from "@material-ui/core/Button";
 import { ThumbUp } from "@material-ui/icons";
-import profilepic from "../../../../../assets/images/lab9/profilepic.png";
 import Layout from "../../components/Layout";
 import kitty from "../../../../../assets/images/lab9/kitty.png";
+import Comment from "../../components/Comment";
+import createAvatarData from "../../../../body/lab/GridImages/createAvatarData";
+import Avatar from "avataaars";
+import PropTypes from "prop-types";
+import ReplyComment from "../../components/ReplyComment";
 
-class Feed extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
+const Feed = (props) => {
+    const { data } = props;
+    const [posterData, setPosterData] = useState(null);
+
+    useEffect(() => {
+      setPosterData(createAvatarData(1)[0]);
+    }, []);
+
     return (
-      <Layout>
+      <Layout data={data} >
         <div>
           <div className="main-div">
             <div className="content-div">
               <div className="user-post">
-                <div className="post-text guidance tw-font-bold">
-                  <img
-                    className={"poster-image"}
-                    alt="posting-user"
-                    src={user828}
-                  />
-                  <p className="tw-font-bold ">
+                <div className="tw-inline-flex tw-font-bold">
+                  {data && (
+                      <Avatar
+                          alt={"posting user"}
+                          className={"poster-image"}
+                          avatarStyle="Circle"
+                          topType={posterData.avatarAttributes.topType}
+                          accessoriesType={posterData.avatarAttributes.accessoriesType}
+                          hairColor={posterData.avatarAttributes.hairColor}
+                          facialHairType={posterData.avatarAttributes.facialHairType}
+                          clotheType={posterData.avatarAttributes.clotheType}
+                          clotheColor={posterData.avatarAttributes.clotheColor}
+                          eyeType={posterData.avatarAttributes.eyeType}
+                          eyebrowType={posterData.avatarAttributes.eyebrowType}
+                          mouthType={posterData.avatarAttributes.mouthType}
+                          skinColor={posterData.avatarAttributes.skinColor}
+                      />
+                  )}
+                  <p className="tw-font-bold tw-self-center">
                     User828 Posted: This cat is the cutest!
                   </p>
                   <div className={"button-row"}>
@@ -50,7 +67,7 @@ class Feed extends Component {
                 </div>
               </div>
 
-              <span className={"reply tw-ml-3 tw-mt-3"}>
+              {/* <span className={"reply tw-ml-3 tw-mt-3"}>
                 <img
                   src={profilepic}
                   alt="welcome logo"
@@ -58,28 +75,22 @@ class Feed extends Component {
                 />
                 <p className={"tw-font-bold tw-ml-5"}> Add a Comment... </p>
                 <Button className={"button-design tw-mr-2"}>Reply</Button>
-              </span>
+              </span> */}
+              <ReplyComment avatarData={data}/>
+
             </div>
             <div className={"comment-section"}>
               {/** Insert user reply here */}
-              <div className="comment-div">
-                <span className="comment-contents">
-                  <img
-                    className="commenter-image"
-                    alt="userpic"
-                    src={user939}
-                  />
-                  <p className="guidance tw-font-bold">
-                    {" "}
-                    User 939 barked: &quot;Awe, thats adorbes!&quot;{" "}
-                  </p>
-                </span>
-              </div>
+              <Comment />
             </div>
           </div>
         </div>
       </Layout>
     );
-  }
 }
+
+Feed.propTypes = {
+  data: PropTypes.object,
+};
+
 export default Feed;
