@@ -1,29 +1,42 @@
-import React, { Component } from "react";
+/* eslint-disable react/prop-types */
+import React, { useEffect } from "react";
 import "../../../../../../src/assets/stylesheets/components/PawPrintProfile.scss";
-import profilepic from "../../../../../assets/images/lab9/profilepic.png";
 import { Button } from "reactstrap";
 import { navigate } from "@reach/router";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab9";
+import  Avatar from "avataaars";
 
-class Profile extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Profile = (props) => {
+  const { data,actions } = props;
 
-  handleNavigate() {
+  useEffect(()=>{actions.updateState(EXERCISE_PLAYING);}, [actions]);
+
+  const handleNavigate = () => {
     navigate("/Lab9/Exercise/Feed");
   }
 
-  render() {
     return (
       <div>
         <div className="profile-div">
           <div className="smaller-profile-div">
             <span className="inside-profile">
-              <img
-                src={profilepic}
-                alt="welcome logo"
-                className="profile-image tw-rounded-3xl"
-              />
+              {data && (
+                  <Avatar
+                    alt={"user avatar"}
+                    className={"profile-image tw-rounded-3xl"}
+                    avatarStyle="Square"
+                    topType={data.avatarAttributes.topType}
+                    accessoriesType={data.avatarAttributes.accessoriesType}
+                    hairColor={data.avatarAttributes.hairColor}
+                    facialHairType={data.avatarAttributes.facialHairType}
+                    clotheType={data.avatarAttributes.clotheType}
+                    clotheColor={data.avatarAttributes.clotheColor}
+                    eyeType={data.avatarAttributes.eyeType}
+                    eyebrowType={data.avatarAttributes.eyebrowType}
+                    mouthType={data.avatarAttributes.mouthType}
+                    skinColor={data.avatarAttributes.skinColor}
+                  />
+                )}
               <div className="profile-info guidance">
                 <h1 className="tw-font-bold tw">User Profile</h1>
                 <p className="tw-font-semibold tw-mt-2 tw-text-xl">
@@ -39,7 +52,7 @@ class Profile extends Component {
           <span className="tw-w-full tw-h-20 tw-justify-items-center">
             <Button
               className="view-profile-btn"
-              onClick={this.handleNavigate}
+              onClick={handleNavigate}
               key="start"
             >
               View Feed
@@ -48,6 +61,5 @@ class Profile extends Component {
         </div>
       </div>
     );
-  }
 }
 export default Profile;

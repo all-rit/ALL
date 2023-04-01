@@ -1,14 +1,22 @@
 import React, { Component } from "react";
+/* eslint-disable react/prop-types */
 
 import Logo from "../../../../../assets/images/lab9/welcomeToPawPrint.png";
 
 import { navigate } from "@reach/router";
 import { Button } from "reactstrap";
 import "../../../../../assets/stylesheets/components/WelcomeToPawPrint.scss";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab9";
 class Welcome extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.updateState(EXERCISE_PLAYING);
+  }
+
   handleStart() {
     navigate("/Lab9/Exercise/Profile");
   }
