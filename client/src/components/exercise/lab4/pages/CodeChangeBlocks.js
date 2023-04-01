@@ -34,10 +34,10 @@ function MySnackbarContentWrapper(props) {
       backgroundColor: green[600],
     },
     error: {
-      backgroundColor: red,
+      backgroundColor: red.A100,
     },
     info: {
-      backgroundColor: yellow,
+      backgroundColor: yellow.A100,
     },
     warning: {
       backgroundColor: amber[700],
@@ -102,6 +102,7 @@ class CodeChangeBlocks extends Component {
       textValue: "",
       snackBarOpen: false,
       message: "Please type code before updating code!",
+      repairError: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -124,6 +125,7 @@ class CodeChangeBlocks extends Component {
 
   componentDidMount() {
     const { actions } = this.props;
+    this.setState({ repairError: false });
     actions.updateState(EXERCISE_PLAYING);
     Prism.highlightAll();
     if (window.location.state.role !== undefined) {
@@ -152,12 +154,20 @@ class CodeChangeBlocks extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const anchorTag =
+      '<a className="skip-main" href="#main">Skip to main content</a>';
     if (this.state.textValue === "" || null) {
-      this.setState({
-        message: "Please type code before updating code!",
-        snackBarOpen: true,
-      });
+      this.setState({ repairError: true });
+      this.setState({ message: "Please type code before updating code!" });
+      this.setState({ snackBarOpen: true });
+      return;
+    } else if (this.state.textValue !== anchorTag) {
+      this.setState({ repairError: true });
+      this.setState({ message: "Check code syntax and resubmit your code!" });
+      this.setState({ snackBarOpen: true });
+      return;
     } else {
+      this.setState({ repairError: false });
       window.location.state = {
         role: this.state.textValue,
       };
@@ -228,30 +238,33 @@ class CodeChangeBlocks extends Component {
           </Paper>
           <br />
           <br />
+
+          <Snackbar
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+            open={this.state.snackBarOpen}
+            autoHideDuration={6000}
+            onClose={this.handleClose}
+          >
+            <MySnackbarContentWrapper
+              onClose={this.handleClose}
+              variant="warning"
+              message={this.state.message}
+            />
+          </Snackbar>
+
           <Button
             type={"submit"}
             aria-label={"Update Code"}
             variant={"contained"}
             color={"primary"}
+            size={"large"}
           >
             Update Code
           </Button>
         </form>
-        <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          open={this.state.snackBarOpen}
-          autoHideDuration={6000}
-          onClose={this.handleClose}
-        >
-          <MySnackbarContentWrapper
-            onClose={this.handleClose}
-            variant="warning"
-            message={this.state.message}
-          />
-        </Snackbar>
       </div>
     );
   }
