@@ -10,12 +10,16 @@ import { EXERCISE_PLAYING } from "../../../../../constants/lab9";
 const Feed = (props) => {
   const { data, actions } = props;
 
-  const [comments, setComments] = useState([<Comment key={0}/>]);
+  const [comments, setComments] = useState([<Comment key={0} />]);
   const [updateComments, setUpdateComments] = useState(false);
 
-  useEffect(() => {actions.updateState(EXERCISE_PLAYING);}, [actions]);
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, [actions]);
 
-  useEffect(() => {setUpdateComments(false)}, [updateComments]);
+  useEffect(() => {
+    setUpdateComments(false);
+  }, [updateComments]);
 
   return (
     <Layout data={data}>
@@ -23,11 +27,16 @@ const Feed = (props) => {
         <div className="main-div">
           <div className="content-div">
             <Post />
-            <ReplyComment avatarData={data} comments={comments} setUpdateComments={setUpdateComments} setComments={setComments}/>
+            <ReplyComment
+              avatarData={data}
+              comments={comments}
+              setUpdateComments={setUpdateComments}
+              setComments={setComments}
+            />
           </div>
           <div className={"comment-section"}>
-            {comments.map((comment) =>{
-              return comment
+            {comments.map((comment) => {
+              return comment;
             })}
           </div>
         </div>

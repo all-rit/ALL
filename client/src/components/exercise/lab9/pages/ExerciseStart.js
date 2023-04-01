@@ -25,8 +25,8 @@ class ExerciseStart extends Component {
             about their pets. During the process you will experience AI-based
             adaption control loops such as MAPE-K. If a reply in a thread is
             deemed inappropriate by the artificial intelligence, the comment
-            will be <b>flagged and deleted</b>. Click the “Start” button to begin this
-            exercise!
+            will be <b>flagged and deleted</b>. Click the “Start” button to
+            begin this exercise!
           </p>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "

@@ -9,11 +9,13 @@ const ReplyComment = (props) => {
 
   const handleReply = () => {
     let newComments = comments;
-    newComments.unshift(<Comment avatarData={avatarData} key={newComments.length} />);
-    setComments(newComments)
-    setUpdateComments(true)
-    console.log(newComments)
-  }
+    newComments.unshift(
+      <Comment avatarData={avatarData} key={newComments.length} />
+    );
+    setComments(newComments);
+    setUpdateComments(true);
+    console.log(newComments);
+  };
 
   return (
     <span className="reply tw-ml-3 tw-mt-3">
@@ -35,7 +37,9 @@ const ReplyComment = (props) => {
         />
       )}
       <p className={"tw-font-bold tw-ml-5"}> Add a Comment... </p>
-      <Button onClick={handleReply} className={"button-design tw-mr-2"}>Reply</Button>
+      <Button onClick={handleReply} className={"button-design tw-mr-2"}>
+        Reply
+      </Button>
     </span>
   );
 };
