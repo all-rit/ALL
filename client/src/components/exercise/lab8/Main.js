@@ -13,7 +13,6 @@ const Main = () => {
       <ChatRoom />
     </div>
   );
-  // return < ChatRoom />;
 };
 
 export default Main;

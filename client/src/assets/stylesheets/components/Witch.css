@@ -15,29 +15,125 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  padding-top: 0;
+  border-radius: 30px;
+  border-width: 50px; */
+} 
 
 .chat-message {
+  box-sizing: border-box;
+  position: relative;
+  width: 70%;
+  max-width: 500px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 20px;
   display: flex;
-  /* align-items: center; */
-  border-radius: 25px;
-  margin-bottom: 10px;
-  /* position: absolute; */
-  /* z-index: 1; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-avatar-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 .chat-message-username {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
   color: #000000;
-  font-weight: bold;
-  /* margin-right: 10px; */
+  margin-bottom: 5px;
+}
+
+.chat-user-info {
+/* flex-direction: row; */
+display:inline-flex;
+align-items: center;
+
+}
+
+.chat-user-info-w-message {
+flex: auto;
+
+
 }
 
 .chat-message-content {
-  color: #ffa500;
-  font-size: 14px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
 }
 
 .chat-message-sentiment {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
   color: #000000;
-  font-size: 14px;
+}
+
+.chat-sentiment-box {
+  position: relative;
+  width: 100px;
+  max-width: 500px;
+  margin-bottom: 20px;
+
+  background: rgba(25, 151, 179, 0.47);
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  margin-right: 15px;
+}
+
+.chat-sentiment-score {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.chat-sentiment-keep,
+.chat-sentiment-remove {
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chat-sentiment-keep {
+  background: rgba(37, 179, 25, 0.5);
+}
+
+.chat-sentiment-remove {
+  background: rgba(179, 37, 25, 0.5);
 }
