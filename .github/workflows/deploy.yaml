@@ -12,10 +12,9 @@ jobs:
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.SSH_KEY }}
+        key: ${{ secrets.SSH_SECRET }}
         name: id_rsa # optional
-        known_hosts: ${{ secrets.KNOWN_HOSTS }}
-        config: ${{ secrets.CONFIG }}
+        known_hosts: ${{ secrets.SSH_HOST_NAME }}
     - name: connect
       run: ssh -tt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }} 
     - name: cd and naviagte to directory
