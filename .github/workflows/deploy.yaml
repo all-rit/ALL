@@ -5,19 +5,22 @@ name: Production-Deployment
       - prod
 jobs:
   run_pull:
-    name: run-deploy
+    name: client deploy
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2.5.1
-        with:
-          name: all-ssh
-          key: ${{ secrets.SSH_SECRET }}
-          known_hosts: ${{ secrets.SSH_HOST_NAME }}
-      - name: cd into project directory
-        run: |
-          cd "{{ secrets.PROJECT_PATH }}"
-      - name: run npm build
-        run: |
-          npm run build
-
+    - name: install ssh keys
+      # check this thread to understand why its needed:
+      # https://stackoverflow.com/a/70447517
+      run: |
+        install -m 600 -D /dev/null ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_SECRET }}" > ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+    - name: connect and pull
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }} "cd ${{ secrets.PROJECT_PATH }} && git checkout prod && git pull"
+    - name: run build
+      run: npm run build
+    - name: exit
+      run: exit
+    - name: cleanup
+      run: rm -rf ~/.ssh
