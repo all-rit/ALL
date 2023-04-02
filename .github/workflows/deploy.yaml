@@ -14,9 +14,6 @@ jobs:
           name: all-ssh
           key: ${{ secrets.SSH_SECRET }}
           known_hosts: ${{ secrets.SSH_HOST_NAME }}
-      - name: connect
-        run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }}
       - name: cd into project directory
         run: |
           cd {{ secrets.PROJECT_PATH }}
