@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Avatar from "avataaars";
-import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
+import createAvatarData from "../../../all-components/createAvatarData";
 
 const Comment = (props) => {
   const { avatarData } = props;

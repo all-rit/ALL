@@ -4,7 +4,7 @@ import Avatar from "avataaars";
 import { ThumbUp } from "@material-ui/icons";
 import Heart from "@material-ui/icons/Favorite";
 import Button from "@material-ui/core/Button";
-import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
+import createAvatarData from "../../../all-components/createAvatarData";
 import kitty from "../../../../assets/images/lab9/kitty.png";
 
 const Post = (props) => {

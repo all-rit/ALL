@@ -6,8 +6,8 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import RepairService from "../../../../../services/lab5/RepairService";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
-import Popup from "../../../shared/Popup";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
+import Popup from "../../../../all-components/Popup";
 import { navigate } from "@reach/router";
 import { minFont, maxFont } from "../../../../../constants/lab5";
 

@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
-import GridImages from "../../../../body/lab/GridImages/GridImages";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
-
+import GridImages from "../../../../all-components/GridImages"
 const AvatarSelection = (props) => {
   const { actions } = props;
 

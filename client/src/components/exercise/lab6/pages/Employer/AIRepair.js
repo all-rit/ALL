@@ -5,8 +5,7 @@ import React, { useEffect, useState } from "react";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import RepairService from "../../../../../services/lab6/RepairService";
 import CodeUpdateHeader from "../../../lab3/components/CodeUpdateHeader";
-import Popup from "../../../shared/Popup";
-
+import Popup from "../../../../all-components/Popup";
 const AIRepair = (props) => {
   const { actions, user } = props;
 

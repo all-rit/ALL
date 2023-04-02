@@ -12,7 +12,7 @@ import ExerciseEnd from "./pages/ExerciseEnd";
 import Welcome from "./pages/SocialMedia/Welcome";
 import Profile from "./pages/SocialMedia/Profile";
 import Feed from "./pages/SocialMedia/Feed";
-import createAvatarData from "../../body/lab/GridImages/createAvatarData";
+import createAvatarData from "../../all-components/createAvatarData";
 
 const mapStateToProps = (state) => ({
   state: state,
