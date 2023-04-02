@@ -9,10 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: install ssh keys
-      run: |
-        install -m 600 -D /dev/null ~/.ssh/id_rsa
-        echo "${{ secrets.SSH_SECRET }}" > ~/.ssh/id_rsa
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_KEY }}
+        name: id_rsa # optional
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+        config: ${{ secrets.CONFIG }}
     - name: connect
       run: ssh -tt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }} 
     - name: cd and naviagte to directory
@@ -21,5 +24,3 @@ jobs:
       run: npm run build
     - name: exit
       run: exit
-    - name: cleanup
-      run: rm -rf ~/.ssh
