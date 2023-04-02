@@ -10,13 +10,13 @@ jobs:
     
     steps:
     - name: install ssh keys
-      # check this thread to understand why its needed:
-      # https://stackoverflow.com/a/70447517
       run: |
         install -m 600 -D /dev/null ~/.ssh/id_rsa
         echo "${{ secrets.SSH_SECRET }}" > ~/.ssh/id_rsa
-    - name: connect and pull
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }} "cd ${{ secrets.PROJECT_PATH }} && git checkout prod && git pull"
+    - name: connect
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }} 
+    - name: cd and naviagte to directory
+      run: "cd ${{ secrets.PROJECT_PATH }} && git checkout prod && git pull"
     - name: run build
       run: npm run build
     - name: exit
