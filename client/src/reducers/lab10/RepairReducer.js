@@ -1,12 +1,13 @@
 export const types = {
   UPDATE_POPUP: "@accessibility-lab/lab10/repair/update_popup",
-  UPDATE_MOVE_LEFT_VALUE: "@accessibility-lab/lab10/repair/update_move_left_value",
-  UPDATE_MOVE_RIGHT_VALUE: "@accessibility-lab/lab10/repair/update_move_right_value",
+  UPDATE_MOVE_LEFT_VALUE:
+    "@accessibility-lab/lab10/repair/update_move_left_value",
+  UPDATE_MOVE_RIGHT_VALUE:
+    "@accessibility-lab/lab10/repair/update_move_right_value",
   UPDATE_REPAIR_ERROR: "@accessibility-lab/lab10/repair/update_repair_error",
   OPEN_REPAIR: "@accessibility-lab/lab7/repair/open_repair",
   CLOSE_REPAIR: "@accessibility-lab/lab7/repair/close_repair",
-
-}
+};
 
 export const initialState = {
   leftValue: "",
@@ -14,9 +15,9 @@ export const initialState = {
   repairError: null,
   repairVisible: false,
   changesApplied: false,
-}
+};
 
-const RepairReducer = (state = initialState, action ) => {
+const RepairReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_MOVE_LEFT_VALUE:
       return {
@@ -47,7 +48,7 @@ const RepairReducer = (state = initialState, action ) => {
       return {
         ...state,
         popupMessage: action.message,
-      }
+      };
     default:
       return state;
   }
@@ -67,8 +68,8 @@ export const actions = {
     repairError,
   }),
   updatePopup: (message) => ({ type: types.UPDATE_POPUP, message }),
-  openRepair: () => ({ type: types.OPEN_REPAIR}),
-  closeRepair: () => ({ type: types.CLOSE_REPAIR}),
+  openRepair: () => ({ type: types.OPEN_REPAIR }),
+  closeRepair: () => ({ type: types.CLOSE_REPAIR }),
 };
 
 export default RepairReducer;

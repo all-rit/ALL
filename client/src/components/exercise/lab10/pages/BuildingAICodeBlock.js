@@ -15,19 +15,15 @@ class BuildingAICodeBlock extends Component {
   static propTypes = {
     actions: PropTypes.object,
     leftValue: PropTypes.string,
-    rightValue: PropTypes.string
-  }
+    rightValue: PropTypes.string,
+  };
   validateRepair() {
     const { actions } = this.props;
     const leftValue = this.validateMoveLeftValue();
     const rightValue = this.validateMoveRightValue();
 
-
     if (!leftValue.passed || !rightValue.passed) {
-      actions.
-
-
-      this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
+      actions.this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
   }
 
@@ -48,24 +44,25 @@ class BuildingAICodeBlock extends Component {
     });
   }
 
-  validateMoveLeftValue(){
-    const {leftValue} = this.props;
+  validateMoveLeftValue() {
+    const { leftValue } = this.props;
     let error = null;
 
-    if(!leftValue.includes("ArrowLeft")){
-      error = "Invalid submission in moveLeft method. Please resubmit your answer."
+    if (!leftValue.includes("ArrowLeft")) {
+      error =
+        "Invalid submission in moveLeft method. Please resubmit your answer.";
     }
     return {
       pass: error === null,
       error: error,
-    }
+    };
   }
   validateMoveRightValue() {
-    const {rightValue} = this.props;
+    const { rightValue } = this.props;
     let error = null;
 
-    if (!rightValue.includes("ArrowRight")){
-      error = "Invalid submission. Please resubmit."
+    if (!rightValue.includes("ArrowRight")) {
+      error = "Invalid submission. Please resubmit.";
     }
     return {
       passed: error === null,
@@ -74,12 +71,12 @@ class BuildingAICodeBlock extends Component {
   }
 
   handleLeftValueChange(e) {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateMoveLeftValue(e.target.value);
   }
 
   handleRightValueChange(e) {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateMoveRightValue(e.target.value);
   }
 
@@ -351,8 +348,7 @@ class BuildingAICodeBlock extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  const { repairError, leftValue, rightValue } =
-  state.repair10;
+  const { repairError, leftValue, rightValue } = state.repair10;
   return { repairError, leftValue, rightValue };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -361,4 +357,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuildingAICodeBlock);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuildingAICodeBlock);
