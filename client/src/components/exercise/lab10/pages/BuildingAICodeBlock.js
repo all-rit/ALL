@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-// import { bindActionCreators } from "redux";
-// import { actions } from "../../../../reducers/lab10/ExerciseReducer"
+import { bindActionCreators } from "redux";
+import { actions as repairActions } from "../../../../reducers/lab10/RepairReducer";
+import { connect } from "react-redux";
+import { POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab7";
+import PropTypes from "prop-types";
 
 class BuildingAICodeBlock extends Component {
   constructor(props) {
@@ -9,8 +12,79 @@ class BuildingAICodeBlock extends Component {
       componentName: "BuildingAICodeBlock",
     };
   }
+  static propTypes = {
+    actions: PropTypes.object,
+    leftValue: PropTypes.string,
+    rightValue: PropTypes.string
+  }
+  validateRepair() {
+    const { actions } = this.props;
+    const leftValue = this.validateMoveLeftValue();
+    const rightValue = this.validateMoveRightValue();
+
+
+    if (!leftValue.passed || !rightValue.passed) {
+      actions.
+
+
+      this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
+    }
+  }
+
+  setPopupMessage(message) {
+    const { actions } = this.props;
+    actions.updatePopup(message);
+    this.clearPopupMessage();
+  }
+
+  clearPopupMessage() {
+    const { actions } = this.props;
+    clearTimeout(this.state.timeout);
+    this.setState({
+      timeout: setTimeout(() => {
+        actions.updatePopup("");
+        actions.updateRepairError(null);
+      }, POPUP_DELAY),
+    });
+  }
+
+  validateMoveLeftValue(){
+    const {leftValue} = this.props;
+    let error = null;
+
+    if(!leftValue.includes("ArrowLeft")){
+      error = "Invalid submission in moveLeft method. Please resubmit your answer."
+    }
+    return {
+      pass: error === null,
+      error: error,
+    }
+  }
+  validateMoveRightValue() {
+    const {rightValue} = this.props;
+    let error = null;
+
+    if (!rightValue.includes("ArrowRight")){
+      error = "Invalid submission. Please resubmit."
+    }
+    return {
+      passed: error === null,
+      error: error,
+    };
+  }
+
+  handleLeftValueChange(e) {
+    const {actions} = this.props;
+    actions.updateMoveLeftValue(e.target.value);
+  }
+
+  handleRightValueChange(e) {
+    const {actions} = this.props;
+    actions.updateMoveRightValue(e.target.value);
+  }
 
   render() {
+    const { leftValue, rightValue } = this.props;
     return (
       <div className="code_editor">
         <div className="code_editor__content">
@@ -28,7 +102,10 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--blue">React</span>
               <span className="code_editor__line--gold">,&nbsp;</span>
               <span className="code_editor__line--gold">&#123;</span>
-              <span className="code_editor__line--blue"> Component, useState, useEffect </span>
+              <span className="code_editor__line--blue">
+                {" "}
+                Component, useState, useEffect{" "}
+              </span>
               <span className="code_editor__line--gold">&#125;&nbsp;</span>
               <span className="code_editor__line--purple">from&nbsp;</span>
               <span className="code_editor__line--orange">
@@ -84,7 +161,7 @@ class BuildingAICodeBlock extends Component {
             <div className={"code_editor__line"}>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--yellow">useEffect(</span>
-              <span className={""}>()  </span>
+              <span className={""}>() </span>
               <span className="code_editor__line--blue"> =&gt; </span>
               <span className={""}> &#123; </span>
             </div>
@@ -102,7 +179,7 @@ class BuildingAICodeBlock extends Component {
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                Enter &lsquo;ArrowLeft&lsquo; into the input below {" "}
+                Enter &lsquo;ArrowLeft&lsquo; into the input below{" "}
               </span>
             </div>
             <div className="code_editor__line code_editor__line-background--light">
@@ -116,8 +193,10 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--blue">code</span>
               <span className={""}> === </span>
               <input
-                name="moveLeft"
+                name="leftValue"
                 type="text"
+                defaultValue={leftValue}
+                onChange={this.handleLeftValueChange.bind(this)}
                 required
                 title="must enter ArrowLeft"
               />
@@ -162,27 +241,29 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--blue">code</span>
               <span className={""}> === </span>
               <input
-                name="moveLeft"
+                name="moveRight"
                 type="text"
+                defaultValue={rightValue}
+                onChange={this.handleRightValueChange.bind(this)}
                 required
-                title="must enter ArrowLeft"
+                title="Must enter ArrowLeft"
               />
               <span>) &#123;</span>
 
               <div className={"code_editor__line"}>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--orange">setPosition</span>
-              <span className={""}> ((</span>
-              <span className="code_editor__line--blue">prevPosition</span>
-              <span className={""}>) =&gt; </span>
-              <span className="code_editor__line--blue">prevPosition</span>
-              <span className={""}> + </span>
-              <span className="code_editor__line--orange">10</span>
-              <span className={""}>);</span>
-            </div>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span className="code_editor__line--orange">setPosition</span>
+                <span className={""}> ((</span>
+                <span className="code_editor__line--blue">prevPosition</span>
+                <span className={""}>) =&gt; </span>
+                <span className="code_editor__line--blue">prevPosition</span>
+                <span className={""}> + </span>
+                <span className="code_editor__line--orange">10</span>
+                <span className={""}>);</span>
+              </div>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -203,7 +284,9 @@ class BuildingAICodeBlock extends Component {
               <span className={""}>.</span>
               <span className="code_editor__line--blue">addEventListener</span>
               <span className={""}>(</span>
-              <span className="code_editor__line--orange">&apos;keydown&apos;</span>
+              <span className="code_editor__line--orange">
+                &apos;keydown&apos;
+              </span>
               <span className={""}>, </span>
               <span className="code_editor__line--blue">handleKey</span>
               <span className={""}>);</span>
@@ -220,10 +303,14 @@ class BuildingAICodeBlock extends Component {
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--gold">document</span>
               <span className={""}>.</span>
-              <span className="code_editor__line--blue">removeEventListener</span>
+              <span className="code_editor__line--blue">
+                removeEventListener
+              </span>
               <span className={""}>(</span>
               <span className={""}>(</span>
-              <span className="code_editor__line--orange">&apos;keydown&apos;</span>
+              <span className="code_editor__line--orange">
+                &apos;keydown&apos;
+              </span>
               <span className={""}>, </span>
               <span className="code_editor__line--blue">handleKey</span>
               <span className={""}>);</span>
@@ -253,7 +340,7 @@ class BuildingAICodeBlock extends Component {
           </div>
         </div>
         <button
-          // onClick={this.validateRepair.bind(this)}
+          onClick={this.validateRepair.bind(this)}
           type="submit"
           className="button button--green button--block"
         >
@@ -263,5 +350,15 @@ class BuildingAICodeBlock extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  const { repairError, leftValue, rightValue } =
+  state.repair10;
+  return { repairError, leftValue, rightValue };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...repairActions }, dispatch),
+  };
+};
 
-export default BuildingAICodeBlock;
+export default connect(mapStateToProps, mapDispatchToProps)(BuildingAICodeBlock);
