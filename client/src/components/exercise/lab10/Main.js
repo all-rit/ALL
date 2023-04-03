@@ -28,16 +28,16 @@ class Main extends Component {
     return (
       <div className="bottomSpace">
         <Router className="app">
-          <ExerciseStart default path="/" actions={actions} />
+          <ExerciseStart default path="/*" actions={actions} />
           <BuildingAICodeBlock
-            default
+
             path="/BuildingAICodeBlock"
             actions={actions}
             state={state}
             user={user}
           />
           <TrainingAICodeBlock
-            default
+
             path="/TrainingAICodeBlock"
             actions={actions}
             state={state}

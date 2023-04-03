@@ -4,6 +4,9 @@ import { actions as repairActions } from "../../../../reducers/lab10/RepairReduc
 import { connect } from "react-redux";
 import { POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab7";
 import PropTypes from "prop-types";
+import Highlight from "react-highlight";
+import "highlight.js/styles/atom-one-dark-reasonable.css";
+import "../../../../assets/stylesheets/components/CodeBlock.css";
 
 class BuildingAICodeBlock extends Component {
   constructor(props) {
@@ -81,239 +84,51 @@ class BuildingAICodeBlock extends Component {
   }
 
   render() {
-    const { leftValue, rightValue } = this.props;
-    return (
-      <div className="code_editor">
-        <div className="code_editor__content">
-          <div className="code_editor__files">
-            {/* AutoSysAI.js */}
-            <div className="code_editor__file code_editor__file--active">
-              MoveUser.js
-            </div>
-          </div>
 
-          {/* import React, Component, useState, useEffect from react */}
-          <div className="code_editor__code">
+  const { leftValue, rightValue } = this.props;
+const preInput = `
+import React, { Component } from "react"; 
+function moveUser() {
+  const [position, setPosition] = useState(0);
+  useEffect(() => {
+     const handleKey = (event) => {
+      // Enter 'ArrowLeft' into the input below
+      if (event.code === `;
 
-            {/* makeDecision(){ */}
-            <div className="code_editor__line">
-              {/* AI function comment */}
-              <span className="code_editor__line--darkgreen">
-                &#47;&#47; Here is where you will update the code to allow the
-                user to move the person
-              </span>
-            </div>
-            <div className="code_editor__line">
-              {/* AI function comment */}
-              <span className="code_editor__line--darkgreen">
-                &#47;&#47; left and right in order to avoid the incoming falling
-                balls
-              </span>
-            </div>
-            <div className="code_editor__line">{/* AI function comment */}</div>
-            <div className="code_editor__line">
-              <span>&nbsp;&nbsp;</span>
-              <span className="code_editor__line--yellow">moveUser</span>
-              <span className="code_editor__line--purple">(</span>
-              <span className="code_editor__line--purple">) &#123;</span>
-            </div>
-            <div className="code_editor__line">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--purple"}>const</span>
-              <span className={""}> [position, setPosition] = </span>
-              <span className="code_editor__line--blue">useState</span>
-              <span className={""}>(</span>
-              <span className="code_editor__line--orange">0</span>
-              <span className={""}>)</span>
-              <span className={""}>;</span>
-            </div>
+const postLeftInput =
+  `) { 
+             setPosition((prevPosition) => prevPosition - 10);
+      // Enter 'ArrowRight' into the input below
+      } else if (event.code === `
 
-            <div className={"code_editor__line"}>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--yellow">useEffect(</span>
-              <span className={""}>() </span>
-              <span className="code_editor__line--blue"> =&gt; </span>
-              <span className={""}> &#123; </span>
-            </div>
-            <div className={"code_editor__line"}>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--purple"}>const </span>
-              <span className="code_editor__line--blue">handleKey</span>
-              <span className={"tw-border-white"}> = (</span>
-              <span className="code_editor__line--orange">event</span>
-              <span className={""}>) =&gt; &#123;</span>
-            </div>
-            <div>
-              <span className="code_editor__line--darkgreen">
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                Enter &lsquo;ArrowLeft&lsquo; into the input below{" "}
-              </span>
-            </div>
-            <div className="code_editor__line code_editor__line-background--light">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={"code_editor__line--purple"}>if </span>
-              <span className={""}>(</span>
-              <span className="code_editor__line--orange">event</span>
-              <span className={""}>.</span>
-              <span className="code_editor__line--blue">code</span>
-              <span className={""}> === </span>
-              <input
-                name="leftValue"
-                type="text"
-                defaultValue={leftValue}
-                onChange={this.handleLeftValueChange.bind(this)}
-                required
-                title="must enter ArrowLeft"
-              />
-              <span>) &#123;</span>
-            </div>
-            <div className={"code_editor__line"}>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--orange">setPosition</span>
-              <span className={""}> ((</span>
-              <span className="code_editor__line--blue">prevPosition</span>
-              <span className={""}>) =&gt; </span>
-              <span className="code_editor__line--blue">prevPosition</span>
-              <span className={""}> - </span>
-              <span className="code_editor__line--orange">10</span>
-              <span className={""}>);</span>
-            </div>
-            <div className="code_editor__line">
-              <span className={"form-error"}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            </div>
+const postRightInput =
+  `) {
+             setPosition((prevPosition) => prevPosition + 10);
+      }
+  };        
+}
+export default TrainNetwork;`
 
-            <div className="code_editor__line">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--darkgreen">
-                Enter &lsquo;ArrowRight&lsquo; into the input below.
-              </span>
-            </div>
-
-            <div className="code_editor__line code_editor__line-background--light">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={""}>&#125; </span>
-              <span className={"code_editor__line--purple"}>else if </span>
-              <span className={""}>(</span>
-              <span className="code_editor__line--orange">event</span>
-              <span className={""}>.</span>
-              <span className="code_editor__line--blue">code</span>
-              <span className={""}> === </span>
-              <input
-                name="moveRight"
-                type="text"
-                defaultValue={rightValue}
-                onChange={this.handleRightValueChange.bind(this)}
-                required
-                title="Must enter ArrowLeft"
-              />
-              <span>) &#123;</span>
-
-              <div className={"code_editor__line"}>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span className="code_editor__line--orange">setPosition</span>
-                <span className={""}> ((</span>
-                <span className="code_editor__line--blue">prevPosition</span>
-                <span className={""}>) =&gt; </span>
-                <span className="code_editor__line--blue">prevPosition</span>
-                <span className={""}> + </span>
-                <span className="code_editor__line--orange">10</span>
-                <span className={""}>);</span>
-              </div>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&#125;</span>
-            </div>
-            <div className={"code_editor__line"}>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&#125;;</span>
-            </div>
-            <div className="code_editor__line">
-              <span className={"form-error"}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            </div>
-            <div className={"code_editor__line"}>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--gold">document</span>
-              <span className={""}>.</span>
-              <span className="code_editor__line--blue">addEventListener</span>
-              <span className={""}>(</span>
-              <span className="code_editor__line--orange">
-                &apos;keydown&apos;
-              </span>
-              <span className={""}>, </span>
-              <span className="code_editor__line--blue">handleKey</span>
-              <span className={""}>);</span>
-            </div>
-            <div className={"code_editor__line"}>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--purple">return </span>
-              <span className={""}>() =&gt; &#123;</span>
-            </div>
-            <div className={"code_editor__line"}>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--gold">document</span>
-              <span className={""}>.</span>
-              <span className="code_editor__line--blue">
-                removeEventListener
-              </span>
-              <span className={""}>(</span>
-              <span className={""}>(</span>
-              <span className="code_editor__line--orange">
-                &apos;keydown&apos;
-              </span>
-              <span className={""}>, </span>
-              <span className="code_editor__line--blue">handleKey</span>
-              <span className={""}>);</span>
-            </div>
-            <div className="code_editor__line">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="">&#125;;</span>
-            </div>
-
-            <div className="code_editor__line">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--purple">&#125;</span>
-            </div>
-
-            <div className="code_editor__line">
-              <span className="code_editor__line--gold">&#125;</span>
-            </div>
-
-            {/* export default MoveUser */}
-            <div className="code_editor__line">
-              <span className="code_editor__line--purple">export&nbsp;</span>
-              <span className="code_editor__line--purple">default&nbsp;</span>
-              <span className="code_editor__line--blue">MoveUser</span>
-              <span>;</span>
-            </div>
-          </div>
-        </div>
+return (
+  <div>
+    <div className="filenameHeader">TrainingAICodeBlock.js</div>
+    <div style={{ textAlign: "left" }}>
+      <Highlight>
+        <pre>
+          <code className="language-jsx">{preInput.trim()}</code>
+          &nbsp;
+          <input type="text" value={leftValue}></input>
+          <code>{postLeftInput.trim()}</code>
+          &nbsp;
+          <input type="text" value={rightValue}></input>
+          <code>{postRightInput.trim()}</code>
+        </pre>
+      </Highlight>
+    </div>
         <button
           onClick={this.validateRepair.bind(this)}
           type="submit"
-          className="button button--green button--block"
-        >
+          className="button button--green button--block">
           Update
         </button>
       </div>
