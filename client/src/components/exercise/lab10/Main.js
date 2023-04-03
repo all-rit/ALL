@@ -10,6 +10,7 @@ import { bindActionCreators } from "redux";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import BuildingAICodeBlock from "./pages/BuildingAICodeBlock";
+import TrainingAICodeBlock from "./pages/TrainingAICodeBlock";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -35,6 +36,13 @@ class Main extends Component {
             state={state}
             user={user}
           />
+          <TrainingAICodeBlock default
+            path="/TrainingAICodeBlock"
+            actions={actions}
+            state={state}
+            user={user}
+          />
+
           <ExerciseEnd
             path="/ExerciseEnd"
             actions={actions}
