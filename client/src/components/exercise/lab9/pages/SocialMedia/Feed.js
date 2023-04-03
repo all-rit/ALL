@@ -24,7 +24,19 @@ const Feed = (props) => {
 
   return (
     <Layout data={data}>
-      <ALLModal status={false} showFooter showHeader canClose showStatusIcon header={"Alert"} failedStatusTitle={"Successfully rejected!"} statusTitle={"Successfully accepted!"} description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc eget lorem dolor sed viverra ipsum nunc. Consequat id porta nibh venenatis."}/>
+      <ALLModal
+        status={false}
+        showFooter
+        showHeader
+        canClose
+        showStatusIcon
+        header={"Alert"}
+        failedStatusTitle={"Successfully rejected!"}
+        statusTitle={"Successfully accepted!"}
+        description={
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc eget lorem dolor sed viverra ipsum nunc. Consequat id porta nibh venenatis."
+        }
+      />
       <div>
         <div className="main-div">
           <div className="content-div">

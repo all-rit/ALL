@@ -71,7 +71,7 @@ module.exports = {
           "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
       },
       height: {
-        "0.25": "0.0625rem",
+        0.25: "0.0625rem",
         128: "31rem",
       },
     },
