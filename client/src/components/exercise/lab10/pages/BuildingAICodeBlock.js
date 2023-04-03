@@ -84,9 +84,8 @@ class BuildingAICodeBlock extends Component {
   }
 
   render() {
-
-  const { leftValue, rightValue } = this.props;
-const preInput = `
+    const { leftValue, rightValue } = this.props;
+    const preInput = `
 import React, { Component } from "react"; 
 function moveUser() {
   const [position, setPosition] = useState(0);
@@ -95,40 +94,39 @@ function moveUser() {
       // Enter 'ArrowLeft' into the input below
       if (event.code === `;
 
-const postLeftInput =
-  `) { 
+    const postLeftInput = `) { 
              setPosition((prevPosition) => prevPosition - 10);
       // Enter 'ArrowRight' into the input below
-      } else if (event.code === `
+      } else if (event.code === `;
 
-const postRightInput =
-  `) {
+    const postRightInput = `) {
              setPosition((prevPosition) => prevPosition + 10);
       }
   };        
 }
-export default TrainNetwork;`
+export default TrainNetwork;`;
 
-return (
-  <div>
-    <div className="filenameHeader">TrainingAICodeBlock.js</div>
-    <div style={{ textAlign: "left" }}>
-      <Highlight>
-        <pre>
-          <code className="language-jsx">{preInput.trim()}</code>
-          &nbsp;
-          <input type="text" value={leftValue}></input>
-          <code>{postLeftInput.trim()}</code>
-          &nbsp;
-          <input type="text" value={rightValue}></input>
-          <code>{postRightInput.trim()}</code>
-        </pre>
-      </Highlight>
-    </div>
+    return (
+      <div>
+        <div className="filenameHeader">TrainingAICodeBlock.js</div>
+        <div style={{ textAlign: "left" }}>
+          <Highlight>
+            <pre>
+              <code className="language-jsx">{preInput.trim()}</code>
+              &nbsp;
+              <input type="text" value={leftValue}></input>
+              <code>{postLeftInput.trim()}</code>
+              &nbsp;
+              <input type="text" value={rightValue}></input>
+              <code>{postRightInput.trim()}</code>
+            </pre>
+          </Highlight>
+        </div>
         <button
           onClick={this.validateRepair.bind(this)}
           type="submit"
-          className="button button--green button--block">
+          className="button button--green button--block"
+        >
           Update
         </button>
       </div>

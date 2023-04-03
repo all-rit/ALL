@@ -30,14 +30,12 @@ class Main extends Component {
         <Router className="app">
           <ExerciseStart default path="/*" actions={actions} />
           <BuildingAICodeBlock
-
             path="/BuildingAICodeBlock"
             actions={actions}
             state={state}
             user={user}
           />
           <TrainingAICodeBlock
-
             path="/TrainingAICodeBlock"
             actions={actions}
             state={state}
