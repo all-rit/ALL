@@ -1,78 +1,79 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { IMG_SIZE } from "../../../../../constants/lab10";
 
 const WalkingMan = (props) => {
-  const handleKeyDown = useCallback(
-    (e) => {
-      //console.log("handleKeyDown", props.hittingLeft, props.hittingRight);
-      //console.log(props.hittingLeft);
-      switch (e.key) {
-        case "a":
-        case "ArrowLeft":
-          props.actions.decrementObjectPositionX();
-          props.actions.setActionLeft();
-          break;
-        case "d":
-        case "ArrowRight":
-          props.actions.incrementObjectPositionX();
-          props.actions.setActionRight();
-          break;
-      }
-    },
-    [props.hittingLeft, props.hittingRight]
-  );
+  /**
+   * Handle keyboard key presses and shift object accordingly
+   * @param e event data
+   */
+  const handleKeyDown = (e) => {
+    switch (e.key) {
+      case "a":
+      case "ArrowLeft":
+        props.handleShiftLeft();
+        break;
+      case "d":
+      case "ArrowRight":
+        props.handleShiftRight();
+        break;
+    }
+  };
 
-  const handleKeyUp = useCallback(() => {
-    //console.log("handleKeyUp", props.hittingLeft, props.hittingRight);
+  /**
+   * Calculates whether the object is at the edge of the Simulation Box Area
+   * If it is, at either direction, set its position to the edge of the Simulation Box Area
+   */
+  const handleEdgeTouch = () => {
+    const halfImage = IMG_SIZE / 2;
+    const halfGameBox = props?.parentBox?.width / 2;
+    if (props.positionRef.current + halfImage >= halfGameBox) {
+      props.updatePosition(halfGameBox - halfImage);
+    } else if (Math.abs(props.positionRef.current - halfImage) >= halfGameBox) {
+      props.updatePosition(-halfGameBox + halfImage);
+    }
+  };
+
+  /**
+   * Run edge touch validation whenever the object's position is updated
+   */
+  useEffect(() => {
+    handleEdgeTouch();
+  }, [props.objectPosition]);
+
+  /**
+   * Add event listeners onMount
+   * Remove event listeners onDismount
+   */
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("resize", handleEdgeTouch);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      window.addEventListener("resize", handleEdgeTouch);
+    };
   });
 
-  useEffect(() => {
-    //console.log('updated useeffect 1');
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
-
-  useEffect(() => {
-    //console.log('updated useeffect 2');
-    document.addEventListener("keyup", handleKeyUp);
-    return () => document.removeEventListener("keyup", handleKeyUp);
-  }, [handleKeyUp]);
-
   return (
-    <div>
-      <img
-        id={"child"}
-        ref={props.refObject}
-        style={{ left: props.objectPositionX }}
-        className={"tw-transform tw-relative tw-transition-all tw-duration-150"}
-        alt={"Man Walking SVG"}
-        src={props.objectImage}
-        height={96}
-        width={96}
-      />
-    </div>
+    <img
+      style={{ left: props.positionRef.current }}
+      className={"tw-transform tw-relative tw-transition-all tw-duration-150"}
+      alt={"Man Walking SVG"}
+      src={props.objectImage}
+      height={IMG_SIZE}
+      width={IMG_SIZE}
+    />
   );
 };
 
 const mapStateToProps = (state) => {
-  const {
-    objectPositionX,
-    objectImage,
-    objectAtEdge,
-    action,
-    objectAtEdgeLeft,
-    objectAtEdgeRight,
-  } = state.exercise10;
+  const { objectPosition, objectImage } = state.exercise10;
   return {
-    objectPositionX,
+    objectPosition,
     objectImage,
-    objectAtEdge,
-    action,
-    objectAtEdgeLeft,
-    objectAtEdgeRight,
   };
 };
 
@@ -83,16 +84,14 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 WalkingMan.propTypes = {
-  refObject: PropTypes.object,
-  objectPositionX: PropTypes.number,
+  updatePosition: PropTypes.func,
+  positionRef: PropTypes.object,
+  handleShiftLeft: PropTypes.func,
+  handleShiftRight: PropTypes.func,
+  parentBox: PropTypes.object,
+  objectPosition: PropTypes.number,
   objectImage: PropTypes.string,
-  objectAtEdge: PropTypes.bool,
-  action: PropTypes.string,
-  objectAtEdgeLeft: PropTypes.bool,
-  objectAtEdgeRight: PropTypes.bool,
   actions: PropTypes.object,
-  hittingLeft: PropTypes.bool,
-  hittingRight: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalkingMan);
