@@ -94,33 +94,6 @@ class BuildingAICodeBlock extends Component {
 
           {/* import React, Component, useState, useEffect from react */}
           <div className="code_editor__code">
-            <div className="code_editor__line">
-              <span className="code_editor__line--purple">import&nbsp;</span>
-              <span className="code_editor__line--blue">React</span>
-              <span className="code_editor__line--gold">,&nbsp;</span>
-              <span className="code_editor__line--gold">&#123;</span>
-              <span className="code_editor__line--blue">
-                {" "}
-                Component, useState, useEffect{" "}
-              </span>
-              <span className="code_editor__line--gold">&#125;&nbsp;</span>
-              <span className="code_editor__line--purple">from&nbsp;</span>
-              <span className="code_editor__line--orange">
-                &lsquo;react&lsquo;
-              </span>
-              <span className="code_editor__line--gold">;</span>
-            </div>
-
-            <div className="code_editor__line">&nbsp;</div>
-
-            {/* class MoveUser extends Component*/}
-            <div className="code_editor__line">
-              <span className="code_editor__line--blue">class&nbsp;</span>
-              <span className="code_editor__line--green">MoveUser&nbsp;</span>
-              <span className="code_editor__line--blue">extends&nbsp;</span>
-              <span className="code_editor__line--green">Component&nbsp;</span>
-              <span className="code_editor__line--gold">&#123;</span>
-            </div>
 
             {/* makeDecision(){ */}
             <div className="code_editor__line">
