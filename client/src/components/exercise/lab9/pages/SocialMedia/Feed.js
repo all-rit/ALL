@@ -30,12 +30,15 @@ const Feed = (props) => {
         showHeader
         canClose
         showStatusIcon
+        // timeOutTime={10}
+        // timeOutMessage={"Your post will be deleted because it contained the terms “hideous” and “pain” in:"}
         header={"Alert"}
         failedStatusTitle={"Successfully rejected!"}
         statusTitle={"Successfully accepted!"}
         description={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc eget lorem dolor sed viverra ipsum nunc. Consequat id porta nibh venenatis."
         }
+        primaryAction={() => {}}
       />
       <div>
         <div className="main-div">
