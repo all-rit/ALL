@@ -73,38 +73,38 @@ const ALLModal = (props) => {
           {/*Header*/}
           {showHeader && (
             <>
-            <div>
-              {customHeader ? (
-                customHeader
-              ) : (
-                <div className="tw-flex tw-items-center tw-justify-between tw-p-1">
-                  <div className="tw-text-2xl tw-font-medium tw-text-textGray tw-m-2">
-                    {header}
-                  </div>
-                  {canClose && (
-                    <button
-                      className="tw-p-1 tw-text-textGray tw-bg-white tw-rounded-md hover:tw-bg-hoverGray tw-border-0 tw-m-2"
-                      onClick={() => setShow(false)}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="tw-w-5 tw-h-5 tw-mx-auto"
-                        viewBox="0 0 20 20"
-                        fill="black"
+              <div>
+                {customHeader ? (
+                  customHeader
+                ) : (
+                  <div className="tw-flex tw-items-center tw-justify-between tw-p-1">
+                    <div className="tw-text-2xl tw-font-medium tw-text-textGray tw-m-2">
+                      {header}
+                    </div>
+                    {canClose && (
+                      <button
+                        className="tw-p-1 tw-text-textGray tw-bg-white tw-rounded-md hover:tw-bg-hoverGray tw-border-0 tw-m-2"
+                        onClick={() => setShow(false)}
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
-            {/*Border*/}
-            <div className="tw-mx-auto tw-bg-lightGray tw-h-0.25" />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="tw-w-5 tw-h-5 tw-mx-auto"
+                          viewBox="0 0 20 20"
+                          fill="black"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+              {/*Border*/}
+              <div className="tw-mx-auto tw-bg-lightGray tw-h-0.25" />
             </>
           )}
           {/*Body*/}
@@ -158,44 +158,46 @@ const ALLModal = (props) => {
             </div>
           </div>
           {/*Timeout Timer*/}
-            {startTime && (
-              <div className="tw-p-1 tw-space-x-2 tw-flex tw-flex-wrap tw-justify-center">
-                  <h3 className="tw-text-lg tw-text-center tw-font-semibold tw-text-textGray">
-                    {timeOutMessage ? timeOutMessage : "Closes in:"}
-                  </h3>
-                  <h3 className="tw-text-lg tw-text-center tw-font-bold tw-text-textGray ">{seconds} seconds</h3>
-              </div>
-            )}
+          {startTime && (
+            <div className="tw-p-1 tw-space-x-2 tw-flex tw-flex-wrap tw-justify-center">
+              <h3 className="tw-text-lg tw-text-center tw-font-semibold tw-text-textGray">
+                {timeOutMessage ? timeOutMessage : "Closes in:"}
+              </h3>
+              <h3 className="tw-text-lg tw-text-center tw-font-bold tw-text-textGray ">
+                {seconds} seconds
+              </h3>
+            </div>
+          )}
           {/*Footer*/}
           {showFooter && (
             <>
-            {/*Border*/}
-            <div className="tw-mx-auto tw-mt-3  tw-bg-lightGray tw-h-0.25" />
-            <div className="tw-p-4">
-              {customFooter ? (
-                customFooter
-              ) : (
-                <div className="tw-items-center tw-gap-2 sm:tw-flex">
-                  <button
-                    className="btn-md tw-w-full tw-mt-1 tw-p-2.5 tw-flex-1 tw-text-labGray tw-bg-labYellow tw-rounded-md tw-outline-none tw-ring-offset-2 tw-ring-labYellow focus:tw-ring-2 tw-font-medium tw-border-0"
-                    onClick={() => {
-                        setShow(false) 
-                        primaryAction()
-                    }}
-                  >
-                    Confirm
-                  </button>
-                  {secondaryAction && (
+              {/*Border*/}
+              <div className="tw-mx-auto tw-mt-3  tw-bg-lightGray tw-h-0.25" />
+              <div className="tw-p-4">
+                {customFooter ? (
+                  customFooter
+                ) : (
+                  <div className="tw-items-center tw-gap-2 sm:tw-flex">
                     <button
-                    className="btn-md tw-w-full tw-mt-1 p-2.5 tw-flex-1 tw-text-white tw-bg-labGray tw-rounded-md tw-outline-none tw-border-0 tw-ring-offset-2 tw-ring-labGray focus:tw-ring-2 tw-font-medium "
-                    onClick={() => setShow(false)}
+                      className="btn-md tw-w-full tw-mt-1 tw-p-2.5 tw-flex-1 tw-text-labGray tw-bg-labYellow tw-rounded-md tw-outline-none tw-ring-offset-2 tw-ring-labYellow focus:tw-ring-2 tw-font-medium tw-border-0"
+                      onClick={() => {
+                        setShow(false);
+                        primaryAction();
+                      }}
                     >
-                        Cancel
+                      Confirm
                     </button>
-                  )}
-                </div>
-              )}
-            </div>
+                    {secondaryAction && (
+                      <button
+                        className="btn-md tw-w-full tw-mt-1 p-2.5 tw-flex-1 tw-text-white tw-bg-labGray tw-rounded-md tw-outline-none tw-border-0 tw-ring-offset-2 tw-ring-labGray focus:tw-ring-2 tw-font-medium "
+                        onClick={() => setShow(false)}
+                      >
+                        Cancel
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
             </>
           )}
         </div>
