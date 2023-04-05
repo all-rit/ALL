@@ -3,3 +3,5 @@ export const EXERCISE_IDLE = "EXERCISE_IDLE";
 export const LAB_ID = 10;
 export const STEP_COUNT = 20;
 export const IMG_SIZE = 96;
+export const KEY_SIZE = 32;
+export const MIN_USER_ATTEMPTS = 6;

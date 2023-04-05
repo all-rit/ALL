@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../../reducers/lab10/ExerciseReducer";
+import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { IMG_SIZE } from "../../../../../constants/lab10";
+import { IMG_SIZE } from "../../../../constants/lab10";
 
 const WalkingMan = (props) => {
   /**

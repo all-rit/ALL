@@ -12,17 +12,26 @@ class ExerciseStart extends Component {
   }
 
   handleStart() {
-    navigate("/Lab10/Exercise/ExerciseEnd");
+    navigate("/Lab10/Exercise/BuildingAI");
   }
 
   render() {
     return (
       <Fragment>
         <div className="center-div">
-          <div className="guidance margin-bottom-2">Machine Learning Start</div>
+          <div className="guidance margin-bottom-2">
+            <p className="playthrough__sentence">
+              In this exercise, the user will experience how a neural network
+              based AI is trained and implemented. Through a simple game where
+              the user must avoid different colored falling balls, the user will
+              learn how the AI inherently builds bias based on the results of
+              the game. After analyzing the results, the user will then retrain
+              the AI in order to eliminate bias.
+            </p>
+          </div>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "
-            onClick={this.handleStart}
+            onClick={this.handleStart.bind(this)}
             key="start"
           >
             Start
