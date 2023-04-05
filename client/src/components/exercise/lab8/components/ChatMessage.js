@@ -13,13 +13,19 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
   //used to remove the entire message if removed is clicked
   const [enableMessageDisplay, setEnableMessageDisplay] = useState(true);
 
-  //used to remove the remove button if keep is clicked
-  const [enableRemoveButtonDisplay, setRemoveButtonDisplay] = useState(true);
+  //used to remove the 'remove' button if keep is clicked. Or we can just have both unable to be clicked when 'keep' is clicked
+  // const [enableRemoveButtonDisplay, setRemoveButtonDisplay] = useState(true);
 
-  //would use a setEnableDisplay if a function were to be used
+  
+  const [opacity, setOpacity] = useState(1);
+
+  const[disabled, setDisabled] = useState(false);
+
 
   function handleKeep() {
-    setRemoveButtonDisplay(false);
+    // setRemoveButtonDisplay(false);
+    setOpacity(0.5);
+    setDisabled(true);
   }
 
   function handleRemove() {
@@ -90,19 +96,22 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
                   className="chat-sentiment-keep"
                   onClick={handleKeep}
                   key="keep"
+                  style={{opacity: opacity, cursor: disabled ? 'not-allowed' : 'pointer'}}
                 >
                   Keep
                 </button>
 
-                {enableRemoveButtonDisplay && (
+                {/* {enableRemoveButtonDisplay && ( */}
                   <button
                     className="chat-sentiment-remove"
                     onClick={handleRemove}
                     key="remove"
+                    style={{opacity: opacity, cursor: disabled ? 'not-allowed' : 'pointer'}}
+
                   >
                     Remove
                   </button>
-                )}
+                {/* )} */}
               </div>
             </div>
           )}
