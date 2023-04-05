@@ -6,6 +6,7 @@ import WalkingMan from "./WalkingMan";
 import PropTypes from "prop-types";
 import { STEP_COUNT } from "../../../../constants/lab10";
 import MovementKeys from "./MovementKeys";
+import ShapeSpawner from "./ShapeSpawner";
 
 const useWindowSize = () => {
   // Initialize state with undefined width/height so server and client renders match
@@ -89,11 +90,13 @@ const Simulation = (props) => {
       <div
         ref={parent}
         className={
-          "tw-flex tw-flex-col tw-shadow-xl tw-border-solid tw-border-2 tw-border-[#BFBFBF] tw-bg-[#F8F8F8] tw-rounded tw-h-96"
+          "tw-flex tw-flex-col tw-shadow-xl tw-border-solid tw-border-2 tw-border-[#BFBFBF] tw-bg-[#F8F8F8] tw-rounded tw-h-[32rem] tw-overflow-hidden"
         }
       >
         {/* Falling object section */}
-        <div></div>
+        <div>
+          <ShapeSpawner parentRef={parent} />
+        </div>
 
         {/* Walking man section */}
         <div className={"tw-mt-auto tw-pt-6"}>

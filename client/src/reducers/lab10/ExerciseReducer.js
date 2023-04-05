@@ -17,7 +17,7 @@ export const initialState = {
   end: false,
   objectPosition: 0,
   objectImage: WalkingManImageRight,
-  userInputDisabled: true,
+  userInputDisabled: false,
   userAttempts: 0,
 };
 
