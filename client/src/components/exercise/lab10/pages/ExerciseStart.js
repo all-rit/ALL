@@ -12,15 +12,15 @@ class ExerciseStart extends Component {
   }
 
   handleStart() {
-    navigate("/Lab10/Exercise/ExerciseEnd");
+    navigate("/Lab10/Exercise/BuildingAI");
   }
 
   render() {
     return (
       <Fragment>
-        <div className="center-div tw-flex-col tw-justify-center">
-          <div className="guidance margin-bottom-2 tw-flex tw-justify-center">
-            <p className={"tw-ml-20 tw-mr-20 tw-text-2xl"}>
+        <div className="center-div">
+          <div className="guidance margin-bottom-2">
+            <p className="playthrough__sentence">
               In this exercise, the user will experience how a neural network
               based AI is trained and implemented. Through a simple game where
               the user must avoid different colored falling balls, the user will
@@ -29,15 +29,13 @@ class ExerciseStart extends Component {
               the AI in order to eliminate bias.
             </p>
           </div>
-          <div>
-            <button
-              className="btn btn-primary text-black btn-xl text-uppercase "
-              onClick={this.handleStart}
-              key="start"
-            >
-              Start Exercise
-            </button>
-          </div>
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase "
+            onClick={this.handleStart.bind(this)}
+            key="start"
+          >
+            Start
+          </button>
         </div>
       </Fragment>
     );

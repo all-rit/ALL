@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../../reducers/lab10/ExerciseReducer";
+import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import WalkingMan from "./WalkingMan";
 import PropTypes from "prop-types";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
-import { STEP_COUNT } from "../../../../../constants/lab10";
+import { STEP_COUNT } from "../../../../constants/lab10";
+import MovementKeys from "./MovementKeys";
 
 const useWindowSize = () => {
   // Initialize state with undefined width/height so server and client renders match
@@ -35,7 +35,7 @@ const useWindowSize = () => {
   return windowSize;
 };
 
-const Game = (props) => {
+const Simulation = (props) => {
   // Allows the object's position to be updated when the window size is updated
   // Utilizing this hook allows components to rerender
   // eslint-disable-next-line no-unused-vars
@@ -62,8 +62,12 @@ const Game = (props) => {
    * Updates the object's image as well
    */
   const handleShiftLeft = () => {
-    updatePosition(positionRef.current - STEP_COUNT);
-    props.actions.setImageLeft();
+    if (props.userInputDisabled) {
+      props.actions.incrementUserAttempts();
+    } else {
+      updatePosition(positionRef.current - STEP_COUNT);
+      props.actions.setImageLeft();
+    }
   };
 
   /**
@@ -71,12 +75,16 @@ const Game = (props) => {
    * Updates the object's image as well
    */
   const handleShiftRight = () => {
-    updatePosition(positionRef.current + STEP_COUNT);
-    props.actions.setImageRight();
+    if (props.userInputDisabled) {
+      props.actions.incrementUserAttempts();
+    } else {
+      updatePosition(positionRef.current + STEP_COUNT);
+      props.actions.setImageRight();
+    }
   };
 
   return (
-    <div>
+    <div className={"tw-mt-6"}>
       {/* Simulation Box Area */}
       <div
         ref={parent}
@@ -98,28 +106,21 @@ const Game = (props) => {
           />
         </div>
       </div>
+
       {/* On-screen arrow Keys */}
       <div className={"tw-space-x-12 tw-mt-6"}>
-        <button
-          onClick={handleShiftLeft}
-          className={"btn btn-primary tw-w-32 tw-h-12"}
-        >
-          <KeyboardArrowLeft />
-        </button>
-        <button
-          onClick={handleShiftRight}
-          className={"btn btn-primary tw-w-32 tw-h-12"}
-        >
-          <KeyboardArrowRight />
-        </button>
+        <MovementKeys
+          handleShiftLeft={handleShiftLeft}
+          handleShiftRight={handleShiftRight}
+        />
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  const { objectPosition } = state.exercise10;
-  return { objectPosition };
+  const { objectPosition, userInputDisabled } = state.exercise10;
+  return { objectPosition, userInputDisabled };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -128,9 +129,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-Game.propTypes = {
+Simulation.propTypes = {
   objectPosition: PropTypes.number,
   actions: PropTypes.object,
+  userInputDisabled: PropTypes.bool,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Simulation);
