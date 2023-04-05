@@ -30,6 +30,10 @@ const BuildingAI = (props) => {
     }
   }, [props.userAttempts]);
 
+  /**
+   * Redirect the user to the following page
+   * @returns {Promise} navigate promise
+   */
   const handleContinue = () => {
     return navigate("/BuildingAI/Repair");
   };
