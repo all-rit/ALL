@@ -79,8 +79,10 @@
 .chat-sentiment-box {
   width: 500px;
   max-width: 500px;
-  margin-left: 15px;
-  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
 
   background: rgba(25, 151, 179, 0.47);
   border: 1px solid #000000;
