@@ -11,13 +11,10 @@ const ExerciseFrame = () => {
     <div
       className="exercise-frame tw-w-full tw-aspect-video"
       style={{ opacity: 0.5 }}
-
     >
-
       {/* will put stuff here */}
       {/* right now the div contains a background image */}
     </div>
-    
   );
 };
 

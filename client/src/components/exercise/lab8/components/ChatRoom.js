@@ -7,11 +7,16 @@ const ChatRoom = () => {
     {
       username: "User828",
       message: "This is the best gameplay!",
-      sentiment_score: "0",
+      sentiment_score: "2",
     },
     {
       username: "User812",
       message: "This is the worst gameplay I have ever seen!",
+      sentiment_score: "0",
+    },
+    {
+      username: "User708",
+      message: "Kinda mid",
       sentiment_score: "1",
     }
   ];
@@ -19,13 +24,15 @@ const ChatRoom = () => {
   return (
     <div className="chat-room">
       {messages.map((message, index) => {
-            return <ChatMessage 
-              key={index}
-              username={message.username}
-              message={message.message}
-              timestamp={message.timestamp}
-            />
-          })}
+        return (
+          <ChatMessage
+            key={index}
+            username={message.username}
+            message={message.message}
+            sentiment_score={message.sentiment_score}
+          />
+        );
+      })}
     </div>
   );
 };
