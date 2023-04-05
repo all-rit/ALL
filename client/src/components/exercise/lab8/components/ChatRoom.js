@@ -18,7 +18,7 @@ const ChatRoom = () => {
       username: "User708",
       message: "Kinda mid",
       sentiment_score: "1",
-    }
+    },
   ];
 
   return (

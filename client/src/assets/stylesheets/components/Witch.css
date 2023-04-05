@@ -81,8 +81,6 @@
   max-width: 500px;
   margin-left: 15px;
   margin-bottom: 10px;
- 
-  
 
   background: rgba(25, 151, 179, 0.47);
   border: 1px solid #000000;
@@ -92,12 +90,9 @@
   flex-direction: column;
   align-items: center;
   padding: 15px;
- 
-
 }
 
-
-.chat-message-sentiment-title{
+.chat-message-sentiment-title {
   text-decoration: underline;
   margin-bottom: 10px;
   font-weight: bold;
@@ -118,8 +113,6 @@
   color: #000000;
 }
 
-
-
 .chat-sentiment-score {
   font-weight: bold;
   text-decoration: underline;
@@ -127,12 +120,9 @@
 }
 
 .kr-buttons {
-  
   /* flex-direction: row; */
   display: inline-flex;
   align-items: center;
-  
-
 }
 
 .chat-sentiment-keep,

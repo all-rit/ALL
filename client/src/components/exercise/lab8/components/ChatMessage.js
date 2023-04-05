@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
 import Avatar from "avataaars";
 
-
-
-
 const ChatMessage = ({ username, message, sentiment_score }) => {
   const [userAvatar, setUserAvatarData] = useState(null);
 
@@ -27,7 +24,6 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
 
   function handleRemove() {
     setEnableMessageDisplay(false);
-
   }
 
   console.log(enableMessageDisplay);
@@ -43,17 +39,14 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
   }, []);
 
   return (
-
     // <div>
-    //   
+    //
 
     <div>
-      {enableMessageDisplay &&
-
-        (<div className="chat-message">
-
+      {enableMessageDisplay && (
+        <div className="chat-message">
           {/* {enableMessageDisplay &&
-              */}
+           */}
           <div className="chat-user-info-w-message">
             {/* Above div - Needed for flex styling for avatar image and avatar username as well as content underneath */}
             <div className="chat-user-info">
@@ -65,7 +58,9 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
                     className="chat-avatar-image"
                     avatarStyle="Circle"
                     topType={userAvatar.avatarAttributes.topType}
-                    accessoriesType={userAvatar.avatarAttributes.accessoriesType}
+                    accessoriesType={
+                      userAvatar.avatarAttributes.accessoriesType
+                    }
                     hairColor={userAvatar.avatarAttributes.hairColor}
                     facialHairType={userAvatar.avatarAttributes.facialHairType}
                     clotheType={userAvatar.avatarAttributes.clotheType}
@@ -83,18 +78,12 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
             <div className="chat-message-content">{message}</div>
           </div>
 
-
-          {enableSentimentDisplay &&
-
+          {enableSentimentDisplay && (
             <div className="chat-sentiment-box">
-
-
-
               <div className="chat-message-sentiment-title">
-                  AI Score: {sentiment_score}
+                AI Score: {sentiment_score}
                 <div className="chat-message-sentiment"> </div>
               </div>
-
 
               <div className="kr-buttons">
                 <button
@@ -105,22 +94,20 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
                   Keep
                 </button>
 
-                {enableRemoveButtonDisplay &&
-
-                <button
-                  className="chat-sentiment-remove"
-                  onClick={handleRemove}
-                  key="remove"
-                >
-                  Remove
-                </button>
-                }
+                {enableRemoveButtonDisplay && (
+                  <button
+                    className="chat-sentiment-remove"
+                    onClick={handleRemove}
+                    key="remove"
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
             </div>
-          }
-
-        </div>)
-      }
+          )}
+        </div>
+      )}
     </div>
   );
 };
