@@ -1,11 +1,11 @@
 .filenameHeader {
-    background-color: #2c2c34;
-    /* Adjust background color as needed */
-    color: #fff;
-    /* Adjust font color as needed */
-    padding: 4px 8px;
-    font-family: monospace;
-    font-size: 0.9em;
-    width: 200px;
-    /* Add some spacing between the filename and the code block */
+  background-color: #2c2c34;
+  /* Adjust background color as needed */
+  color: #fff;
+  /* Adjust font color as needed */
+  padding: 4px 8px;
+  font-family: monospace;
+  font-size: 0.9em;
+  width: 200px;
+  /* Add some spacing between the filename and the code block */
 }

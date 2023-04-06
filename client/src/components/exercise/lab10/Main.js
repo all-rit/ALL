@@ -37,7 +37,6 @@ class Main extends Component {
             user={user}
           />
           <TrainingAICodeBlock
-            default
             path="/TrainingAICodeBlock"
             actions={actions}
             state={state}
