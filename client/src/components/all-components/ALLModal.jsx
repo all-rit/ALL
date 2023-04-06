@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 const ALLModal = (props) => {
   const {
+    show,
+    setShow,
     status,
     showStatusIcon,
     failedStatusTitle,
@@ -22,22 +24,20 @@ const ALLModal = (props) => {
     timeOutMessage,
   } = props;
 
-  const [show, setShow] = useState(true);
+  // const [show, setShow] = useState(showModal);
   const [seconds, updateSeconds] = useState(startTime);
-  // const [startTimer, setStartTimer] = useState(false);
 
   const timer = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
-      // setStartTimer(true);
       timer.current = setInterval(() => {
         updateSeconds((prevSeconds) => prevSeconds - 1);
       }, 1000);
     }, 2000);
     return () => {
       clearInterval(timer.current);
-      timer.current = null; // safer to set to null
+      timer.current = null;
     };
     // eslint-disable-next-line
   }, []);
@@ -78,7 +78,7 @@ const ALLModal = (props) => {
                   customHeader
                 ) : (
                   <div className="tw-flex tw-items-center tw-justify-between tw-p-1">
-                    <div className="tw-text-2xl tw-font-medium tw-text-textGray tw-m-2">
+                    <div className="tw-text-2xl tw-font-medium tw-text-textGray tw-m-3">
                       {header}
                     </div>
                     {canClose && (
@@ -108,11 +108,11 @@ const ALLModal = (props) => {
             </>
           )}
           {/*Body*/}
-          <div className="tw-mt-3 tw-p-4">
+          <div className="tw-p-4">
             {showStatusIcon && (
               <>
                 {status ? (
-                  <div className="tw-flex tw-items-center tw-justify-center tw-w-12 tw-h-12 tw-mx-auto tw-bg-correctGreen tw-rounded-full">
+                  <div className="tw-mt-3 tw-flex tw-items-center tw-justify-center tw-w-12 tw-h-12 tw-mx-auto tw-bg-green tw-rounded-full">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="tw-w-6 tw-h-6 tw-text-green-600"
@@ -209,6 +209,8 @@ const ALLModal = (props) => {
 };
 
 ALLModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  setShow: PropTypes.func.isRequired,
   status: PropTypes.bool,
   showStatusIcon: PropTypes.bool,
   failedStatusTitle: PropTypes.string,
