@@ -10,6 +10,13 @@ export const types = {
   SET_USER_INPUT: "@accessibility-lab/lab10/exercise/set_user_input",
   INCREMENT_USER_ATTEMPTS:
     "@accessibility-lab/lab10/exercise/increment_user_attempts",
+  RESET_USER_ATTEMPTS: "@accessibility-lab/lab10/exercise/reset_user_attempts",
+  SET_TRAINING_DURATION:
+    "@accessibility-lab/lab10/exercise/set_training_duration",
+  SET_SIMULATION_COVERED:
+    "@accessibility-lab/lab10/exercise/set_simulation_covered",
+  SET_SIMULATION_STARTED:
+    "@accessibility-lab/lab10/exercise/set_simulation_started",
 };
 
 export const initialState = {
@@ -17,8 +24,11 @@ export const initialState = {
   end: false,
   objectPosition: 0,
   objectImage: WalkingManImageRight,
-  userInputDisabled: false,
+  userInputDisabled: true,
   userAttempts: 0,
+  trainingDuration: 30,
+  simulationCovered: false,
+  simulationStarted: false,
 };
 
 const ExerciseReducer = (state = initialState, action) => {
@@ -53,6 +63,26 @@ const ExerciseReducer = (state = initialState, action) => {
         ...state,
         userAttempts: state.userAttempts + 1,
       };
+    case types.RESET_USER_ATTEMPTS:
+      return {
+        ...state,
+        userAttempts: initialState.userAttempts,
+      };
+    case types.SET_TRAINING_DURATION:
+      return {
+        ...state,
+        trainingDuration: action.trainingDuration,
+      };
+    case types.SET_SIMULATION_COVERED:
+      return {
+        ...state,
+        simulationCovered: action.simulationCovered,
+      };
+    case types.SET_SIMULATION_STARTED:
+      return {
+        ...state,
+        simulationStarted: action.simulationStarted,
+      };
     default:
       return state;
   }
@@ -82,6 +112,27 @@ export const actions = {
     userInputDisabled: false,
   }),
   incrementUserAttempts: () => ({ type: types.INCREMENT_USER_ATTEMPTS }),
+  resetUserAttempts: () => ({ type: types.RESET_USER_ATTEMPTS }),
+  setTrainingDuration: (trainingDuration) => ({
+    type: types.SET_TRAINING_DURATION,
+    trainingDuration,
+  }),
+  uncoverSimulation: () => ({
+    type: types.SET_SIMULATION_COVERED,
+    simulationCovered: false,
+  }),
+  coverSimulation: () => ({
+    type: types.SET_SIMULATION_COVERED,
+    simulationCovered: true,
+  }),
+  startSimulation: () => ({
+    type: types.SET_SIMULATION_STARTED,
+    simulationStarted: true,
+  }),
+  endSimulation: () => ({
+    type: types.SET_SIMULATION_STARTED,
+    simulationStarted: false,
+  }),
 };
 
 export default ExerciseReducer;
