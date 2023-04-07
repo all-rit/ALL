@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import clsx from "clsx";
 import Avatar from "avataaars";
-import Spinner from "../../../../common/Spinner/Spinner";
+import Spinner from "../../common/Spinner/Spinner";
 import createAvatarData from "./createAvatarData";
 
 const GridImages = (props) => {

@@ -19,7 +19,7 @@ import Typography from "@material-ui/core/Typography";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 import Repair from "../../components/Repair";
 import ExerciseButtons from "../../components/ExerciseButtons";
-import Popup from "../../../shared/Popup";
+import Popup from "../../../../all-components/Popup";
 
 const variantIcon = {
   success: CheckCircleIcon,

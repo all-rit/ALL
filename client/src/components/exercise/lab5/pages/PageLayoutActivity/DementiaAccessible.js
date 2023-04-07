@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import Timer from "../../components/Timer";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import {
   time,
   minFont,
