@@ -18,4 +18,7 @@ export const SIZE = [
   ["tw-w-24", "tw-h-24"],
   ["tw-w-32", "tw-h-32"],
 ];
-export const SPAWN_INTERVAL = 1000;
+export const SPAWN_INTERVAL = 1500;
+export const SPEED_STEP = 10;
+export const SPEED = 5;
+export const SECOND = 60;
