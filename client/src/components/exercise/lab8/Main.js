@@ -2,15 +2,20 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
 import React from "react";
+import { Router } from "@reach/router";
+import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseFrame from "./components/ExerciseFrame";
 
-import ChatRoom from "./components/ChatRoom";
+// import ChatRoom from "./components/ChatRoom";
 
 const Main = () => {
   return (
-    <div>
-      <ExerciseFrame />
-      <ChatRoom />
+    <div className="bottomSpace">
+      <Router className="app">
+        <ExerciseStart path="/*" />
+        <ExerciseFrame path="/StreamSimulation" />
+        {/* <ChatRoom /> */}
+      </Router>
     </div>
   );
 };
