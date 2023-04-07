@@ -22,7 +22,7 @@ const BiasDiscovery = () => {
           data that contained both appropriate and inappropriate messages, so
           why did the AI make these mistakes?
         </div>
-{/* equitable, representative */}
+        {/* equitable, representative */}
         <div className="playthrough__sentence">
           When the data used to train AI is not representative of ,{" "}
           <b>selection bias</b> can occur. In other words, selection bias occurs
