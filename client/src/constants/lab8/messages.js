@@ -35,7 +35,8 @@ const CHAT_MESSAGES = {
     },
     {
       username: "pixelmom",
-      content: "mom here, this game is so bad for our children. STOP THE STREAM!!!!!!",
+      content:
+        "mom here, this game is so bad for our children. STOP THE STREAM!!!!!!",
       ai_correct: true,
       intended_polarity: 0,
     },
@@ -47,7 +48,8 @@ const CHAT_MESSAGES = {
     },
     {
       username: "EpicGorillaGamer",
-      content: "so bored id rather watch paint dry than continue watching ur stream",
+      content:
+        "so bored id rather watch paint dry than continue watching ur stream",
       ai_correct: true,
       intended_polarity: 0,
     },
@@ -65,18 +67,12 @@ const CHAT_MESSAGES = {
     },
     // ... more messages
   ],
-}
+};
 
 const PREDATA_POINTS = {
-  positive: [
-    "I am happy",
-  ],
-  negative: [
-    "you're terrible booo",
-  ],
-  neutral: [
-    "I am tired today",
-  ]
-}
+  positive: ["I am happy"],
+  negative: ["you're terrible booo"],
+  neutral: ["I am tired today"],
+};
 
-export { CHAT_MESSAGES, PREDATA_POINTS }
+export { CHAT_MESSAGES, PREDATA_POINTS };
