@@ -17,6 +17,9 @@ export default function TrainNetwork() {
     const postInput = `
 } 
 `;
+    function validateRepair() {
+
+    }
 
     return (
         <div>
