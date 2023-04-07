@@ -7,7 +7,6 @@ import "../../../../assets/stylesheets/components/Witch.css";
 // Changing import to see if relative vs absolute positioning works
 import ChatRoom from "./ChatRoom";
 
-
 const ExerciseFrame = () => {
   return (
     <div
