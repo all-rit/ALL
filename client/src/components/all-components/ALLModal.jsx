@@ -24,7 +24,6 @@ const ALLModal = (props) => {
     timeOutMessage,
   } = props;
 
-  // const [show, setShow] = useState(showModal);
   const [seconds, updateSeconds] = useState(startTime);
 
   const timer = useRef(null);
