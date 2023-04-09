@@ -7,6 +7,8 @@ import React from "react";
 const BiasDiscovery = () => {
   const handleContinue = () => {
     // TODO: update this to go to the repair section
+    // https://github.com/all-rit/ALL/issues/320
+    // link fix to the issue above
     navigate("/Lab8/Exercise/BiasDiscovery");
   };
 
@@ -22,7 +24,6 @@ const BiasDiscovery = () => {
           data that contained both appropriate and inappropriate messages, so
           why did the AI make these mistakes?
         </div>
-        {/* equitable, representative */}
         <div className="playthrough__sentence">
           When the data used to train AI is not equitable, selection bias can
           occur. Selection bias is a result of datasets that are “not reflective
@@ -49,7 +50,6 @@ const BiasDiscovery = () => {
         To update the dataset and repair the selection bias, click &quot;
         <b>Continue</b>&quot;.
       </div>
-
       <button
         className="btn btn-primary text-black btn-xl text-uppercase "
         onClick={handleContinue}
