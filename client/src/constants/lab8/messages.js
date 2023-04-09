@@ -1,4 +1,9 @@
+// Sentiment analysis polarity meaning
+// 0 - negative
+// 1 - neutral
+// 2 - positive
 const CHAT_MESSAGES = {
+  // The AI recommends these messages to be kept
   recommend_keep: [
     {
       username: "gamerking42",
@@ -26,6 +31,7 @@ const CHAT_MESSAGES = {
     },
     // ... more messages
   ],
+  // The AI recommends these messages to be removed
   recommend_remove: [
     {
       username: "ninja_wombat",
