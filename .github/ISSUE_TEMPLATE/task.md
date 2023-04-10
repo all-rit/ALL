@@ -4,7 +4,6 @@ about: Create a task item
 title: 'Task: NAME'
 labels: ''
 assignees: ''
-
 ---
 
 # Template Instructions

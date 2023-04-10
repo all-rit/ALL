@@ -4,7 +4,6 @@ about: Create a research spike
 title: 'Spike: NAME'
 labels: ''
 assignees: ''
-
 ---
 
 # Template Instructions

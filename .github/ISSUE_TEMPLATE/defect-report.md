@@ -4,7 +4,6 @@ about: Report a defect to help us improve
 title: 'Defect: NAME'
 labels: ''
 assignees: ''
-
 ---
 
 **Describe the bug**
