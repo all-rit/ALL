@@ -43,7 +43,7 @@ const BiasDiscovery = () => {
           not contain data specific to MineALL, which is not accurately
           representative. Due to the lack of data specific to MineALL, the AI
           recommended messages that are inappropriate in a general context to be
-          removed, but are considered appropriate in the context of MineALL.
+          removed, even though they are considered appropriate in the context of MineALL.
         </div>
       </div>
       <div className="playthrough__sentence">
