@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { actions as repairActions } from "../../../../reducers/lab10/RepairReducer";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer"
+import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
-import { EXERCISE_PLAYING, POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab10";
+import {
+  EXERCISE_PLAYING,
+  POPUP_DELAY,
+  POPUP_MESSAGES,
+} from "../../../../constants/lab10";
 import Highlight from "react-highlight";
 import "highlight.js/styles/atom-one-dark-reasonable.css";
 import "../../../../assets/stylesheets/components/CodeBlock.css";
@@ -23,10 +27,10 @@ class BuildingAICodeBlock extends Component {
     leftValue: PropTypes.string,
     rightValue: PropTypes.string,
     repairError: PropTypes.string,
-  }
+  };
 
   componentDidMount() {
-    const {actions} = this.props;
+    const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
   }
 
@@ -34,7 +38,6 @@ class BuildingAICodeBlock extends Component {
     const { actions } = this.props;
     const leftValue = this.validateMoveLeftValue();
     const rightValue = this.validateMoveRightValue();
-
 
     if (leftValue.passed || rightValue.passed) {
       actions.this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
@@ -64,12 +67,11 @@ class BuildingAICodeBlock extends Component {
 
     if (leftValue === null) {
       error = POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED;
-      console.log("left empty")
+      console.log("left empty");
     }
-    if (leftValue !== ("ArrowLeft")) {
-      error =
-       POPUP_MESSAGES.ARROW_LEFT_WRONG;
-      console.log("right wrong")
+    if (leftValue !== "ArrowLeft") {
+      error = POPUP_MESSAGES.ARROW_LEFT_WRONG;
+      console.log("right wrong");
     }
     return {
       pass: error === null,
@@ -82,11 +84,11 @@ class BuildingAICodeBlock extends Component {
 
     if (rightValue.includes(null)) {
       error = POPUP_MESSAGES.ARROW_RIGHT_NOT_INCLUDED;
-      console.log("right empty")
+      console.log("right empty");
     }
     if (!rightValue.includes("ArrowRight")) {
       error = POPUP_MESSAGES.ARROW_RIGHT_WRONG;
-      console.log("left wrong")
+      console.log("left wrong");
     }
     return {
       passed: error === null,
@@ -135,21 +137,23 @@ export default TrainNetwork;`;
             <pre>
               <code className="language-jsx">{preInput.trim()}</code>
               &nbsp;
-              <input type="text"
-                     className={"tw-bg-bgdark tw-text-bgwhite"}
-                     defaultValue={leftValue}
-                     onChange={this.handleLeftValueChange}
-                     required
-                     title={"must enter ArrowLeft"}
+              <input
+                type="text"
+                className={"tw-bg-bgdark tw-text-bgwhite"}
+                defaultValue={leftValue}
+                onChange={this.handleLeftValueChange}
+                required
+                title={"must enter ArrowLeft"}
               />
               <code>{postLeftInput.trim()}</code>
               &nbsp;
-              <input type="text"
-                     className={"tw-bg-bgdark tw-text-bgwhite"}
-                     defaultValue={rightValue}
-                     onChange={this.handleRightValueChange}
-                     required
-                     title={"must enter ArrowRight"}
+              <input
+                type="text"
+                className={"tw-bg-bgdark tw-text-bgwhite"}
+                defaultValue={rightValue}
+                onChange={this.handleRightValueChange}
+                required
+                title={"must enter ArrowRight"}
               />
               <code>{postRightInput.trim()}</code>
             </pre>
@@ -172,7 +176,10 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...repairActions, ...exerciseActions}, dispatch),
+    actions: bindActionCreators(
+      { ...repairActions, ...exerciseActions },
+      dispatch
+    ),
   };
 };
 
