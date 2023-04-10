@@ -65,11 +65,15 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
           )}
           <p className="tw-ml-3 tw-font-semibold">{username}</p>
         </div>
-        <p className="tw-text-[#343434] tw-px-2 tw-pb-2 tw-text-left">{message}</p>
+        <p className="tw-text-[#343434] tw-px-2 tw-pb-2 tw-text-left">
+          {message}
+        </p>
       </div>
       {enableSentimentDisplay && (
         <div className="tw-ml-auto tw-bg-[#419ce6] tw-p-2 tw-rounded-2xl">
-          <p className="tw-text-[#000000] tw-font-bold tw-text-xl tw-underline">AI Score: {sentiment_score}</p>
+          <p className="tw-text-[#000000] tw-font-bold tw-text-xl tw-underline">
+            AI Score: {sentiment_score}
+          </p>
           <div className="tw-flex tw-mt-2">
             <button
               className="tw-bg-[#1ec029] tw-text-white tw-px-4 tw-py-2 tw-rounded-2xl tw-mr-2"
@@ -77,7 +81,7 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
               key="keep"
               style={{
                 opacity: opacity,
-                cursor: disabled ? 'not-allowed' : 'pointer',
+                cursor: disabled ? "not-allowed" : "pointer",
               }}
             >
               Keep
@@ -88,7 +92,7 @@ const ChatMessage = ({ username, message, sentiment_score }) => {
               key="remove"
               style={{
                 opacity: opacity,
-                cursor: disabled ? 'not-allowed' : 'pointer',
+                cursor: disabled ? "not-allowed" : "pointer",
               }}
             >
               Remove

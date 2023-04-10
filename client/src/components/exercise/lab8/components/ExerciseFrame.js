@@ -11,7 +11,7 @@ const ExerciseFrame = () => {
   return (
     <div
       className="exercise-frame tw-w-full tw-aspect-video"
-    // style={{ opacity: 0.5 }}
+      // style={{ opacity: 0.5 }}
     >
       <ChatRoom />
       {/* right now the div contains a background image */}
