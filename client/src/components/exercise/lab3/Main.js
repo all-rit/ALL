@@ -27,6 +27,7 @@ import { bindActionCreators } from "redux";
 
 const mapStateToProps = (state) => ({
   state: state,
+  repairError: state.repair3.repairError,
 });
 
 const mapDispatchToProps = (dispatch) => {

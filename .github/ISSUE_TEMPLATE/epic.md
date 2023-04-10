@@ -1,9 +1,9 @@
 ---
 name: Epic
 about: Create an epic
-title: "Epic: NAME"
-labels: ""
-assignees: ""
+title: 'Epic: NAME'
+labels: ''
+assignees: ''
 ---
 
 # Template Instructions

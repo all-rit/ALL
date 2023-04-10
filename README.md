@@ -1,4 +1,5 @@
 # Accessible Learning Labs
+[![Production CI](https://github.com/all-rit/ALL/actions/workflows/node.js.yml/badge.svg)](https://github.com/all-rit/ALL/actions/workflows/node.js.yml)
 
 ## Requirements
 
