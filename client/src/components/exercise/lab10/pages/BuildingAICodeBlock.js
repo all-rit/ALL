@@ -1,31 +1,42 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { actions as repairActions } from "../../../../reducers/lab10/RepairReducer";
+import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer"
 import { connect } from "react-redux";
-import { POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab7";
-import PropTypes from "prop-types";
+import { EXERCISE_PLAYING, POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab10";
 import Highlight from "react-highlight";
 import "highlight.js/styles/atom-one-dark-reasonable.css";
 import "../../../../assets/stylesheets/components/CodeBlock.css";
+import PropTypes from "prop-types";
 
 class BuildingAICodeBlock extends Component {
   constructor(props) {
     super(props);
     this.state = {
       componentName: "BuildingAICodeBlock",
+      timeout: null,
     };
   }
+
   static propTypes = {
     actions: PropTypes.object,
     leftValue: PropTypes.string,
     rightValue: PropTypes.string,
-  };
+    repairError: PropTypes.string,
+  }
+
+  componentDidMount() {
+    const {actions} = this.props;
+    actions.updateState(EXERCISE_PLAYING);
+  }
+
   validateRepair() {
     const { actions } = this.props;
     const leftValue = this.validateMoveLeftValue();
     const rightValue = this.validateMoveRightValue();
 
-    if (!leftValue.passed || !rightValue.passed) {
+
+    if (leftValue.passed || rightValue.passed) {
       actions.this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
   }
@@ -51,9 +62,14 @@ class BuildingAICodeBlock extends Component {
     const { leftValue } = this.props;
     let error = null;
 
-    if (!leftValue.includes("ArrowLeft")) {
+    if (leftValue === null) {
+      error = POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED;
+      console.log("left empty")
+    }
+    if (leftValue !== ("ArrowLeft")) {
       error =
-        "Invalid submission in moveLeft method. Please resubmit your answer.";
+       POPUP_MESSAGES.ARROW_LEFT_WRONG;
+      console.log("right wrong")
     }
     return {
       pass: error === null,
@@ -64,8 +80,13 @@ class BuildingAICodeBlock extends Component {
     const { rightValue } = this.props;
     let error = null;
 
+    if (rightValue.includes(null)) {
+      error = POPUP_MESSAGES.ARROW_RIGHT_NOT_INCLUDED;
+      console.log("right empty")
+    }
     if (!rightValue.includes("ArrowRight")) {
-      error = "Invalid submission. Please resubmit.";
+      error = POPUP_MESSAGES.ARROW_RIGHT_WRONG;
+      console.log("left wrong")
     }
     return {
       passed: error === null,
@@ -86,7 +107,7 @@ class BuildingAICodeBlock extends Component {
   render() {
     const { leftValue, rightValue } = this.props;
     const preInput = `
-import React, { Component } from "react"; 
+import { useState, useEffect } from "react"; 
 function moveUser() {
   const [position, setPosition] = useState(0);
   useEffect(() => {
@@ -108,16 +129,28 @@ export default TrainNetwork;`;
 
     return (
       <div>
-        <div className="filenameHeader">TrainingAICodeBlock.js</div>
+        <div className="filenameHeader">BuildingAICodeBlock.js</div>
         <div style={{ textAlign: "left" }}>
           <Highlight>
             <pre>
               <code className="language-jsx">{preInput.trim()}</code>
               &nbsp;
-              <input type="text" value={leftValue}></input>
+              <input type="text"
+                     className={"tw-bg-bgdark tw-text-bgwhite"}
+                     defaultValue={leftValue}
+                     onChange={this.handleLeftValueChange}
+                     required
+                     title={"must enter ArrowLeft"}
+              />
               <code>{postLeftInput.trim()}</code>
               &nbsp;
-              <input type="text" value={rightValue}></input>
+              <input type="text"
+                     className={"tw-bg-bgdark tw-text-bgwhite"}
+                     defaultValue={rightValue}
+                     onChange={this.handleRightValueChange}
+                     required
+                     title={"must enter ArrowRight"}
+              />
               <code>{postRightInput.trim()}</code>
             </pre>
           </Highlight>
@@ -139,7 +172,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...repairActions }, dispatch),
+    actions: bindActionCreators({ ...repairActions, ...exerciseActions}, dispatch),
   };
 };
 
