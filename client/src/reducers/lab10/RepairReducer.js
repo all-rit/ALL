@@ -41,7 +41,7 @@ const RepairReducer = (state = initialState, action) => {
     case types.UPDATE_TIME_ERROR:
       return {
         ...state,
-        timeValue: action.timeERROR,
+        timeValue: action.timeError,
       };
     case types.UPDATE_REPAIR_ERROR:
       return {
@@ -88,7 +88,7 @@ export const actions = {
   }),
   updateTimeError: (timeError) => ({
     type: types.UPDATE_TIME_ERROR,
-    timeERROR,
+    timeError,
   }),
   updatePopup: (message) => ({ type: types.UPDATE_POPUP, message }),
   openRepair: () => ({ type: types.OPEN_REPAIR }),
