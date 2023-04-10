@@ -1,0 +1,25 @@
+name: Production-Deployment
+"on":
+  pull_request:
+    branches:
+      - prod
+jobs:
+  run_pull:
+    name: client deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_SECRET }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.SSH_HOST_NAME }}
+      - name: connect
+        run: ssh -tt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }}
+      - name: cd and naviagte to directory
+        run: "cd ${{ secrets.PROJECT_PATH }} && git checkout prod && git pull"
+      - name: run build
+        run: npm run build
+      - name: exit
+        run: exit

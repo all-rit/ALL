@@ -20,6 +20,7 @@
     "knex": "latest",
     "nanoid": "^3.1.23",
     "passport": "latest",
+    "passport-google-oidc": "latest",
     "passport-google-oauth20": "latest",
     "pg": "latest",
     "react-ga": "^3.3.0",
