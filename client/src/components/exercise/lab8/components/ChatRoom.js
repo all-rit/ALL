@@ -16,13 +16,13 @@ const ChatRoom = () => {
     },
     {
       username: "User708",
-      message: "Kinda mid",
+      message: "kinda mid",
       sentiment_score: "1",
     },
   ];
 
   return (
-    <div className="chat-room">
+    <div className="tw-divide-y tw-space-y-6 tw-bg-[#ababab] tw-bg-opacity-50 tw-h-full tw-w-[40%] tw-p-4">
       {messages.map((message, index) => {
         return (
           <ChatMessage

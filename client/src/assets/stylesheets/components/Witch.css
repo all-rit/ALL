@@ -33,7 +33,7 @@
   width: 70%;
   max-width: 500px;
   margin-bottom: 20px;
-  padding: 15px;
+  /* padding: 15px; */
   background: #ffffff;
   border: 1px solid #000000;
   border-radius: 20px;
@@ -43,17 +43,17 @@
 }
 
 .chat-avatar-image {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .chat-message-username {
   /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 12px;
   line-height: 21px;
   color: #000000;
   margin-bottom: 5px;
@@ -79,21 +79,21 @@
 }
 
 .chat-sentiment-box {
-  width: 500px;
-  max-width: 500px;
-  margin-left: 25px;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  margin-right: 5px;
+  min-width: 120px;
+  max-width: 120px;
+  /* margin-left: 25px; */
+  /* margin-bottom: 5px; */
+  /* margin-top: 5px; */
+  /* margin-right: 5px; */
 
   background: rgba(25, 151, 179, 0.47);
-  border: 1px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+  /* border: 1px solid #000000; */
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
+  /* padding: 15px; */
 }
 
 .chat-message-sentiment-title {
@@ -127,6 +127,7 @@
   /* flex-direction: row; */
   display: inline-flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .chat-sentiment-keep,
