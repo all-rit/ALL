@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
+    "prop-types": "^15.8.1",
+    "react-highlight": "^0.15.0",
     "redux-logger": "^3.0.6"
   }
 }
