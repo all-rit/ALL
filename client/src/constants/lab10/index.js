@@ -12,12 +12,7 @@ export const COLORS = [
   "tw-bg-[#4285F4]",
   "tw-bg-[#FBBC05]",
 ];
-export const SIZE = [
-  ["tw-w-12", "tw-h-12"],
-  ["tw-w-16", "tw-h-16"],
-  ["tw-w-24", "tw-h-24"],
-  ["tw-w-32", "tw-h-32"],
-];
+export const SIZE = [48, 64, 96, 128];
 export const SPAWN_INTERVAL = 1500;
 export const SPEED_STEP = 10;
 export const SPEED = 5;

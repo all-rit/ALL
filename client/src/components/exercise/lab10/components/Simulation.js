@@ -17,11 +17,15 @@ const Simulation = (props) => {
   useWindowSize();
 
   // Create a reference to obtain attributes of the Simulation Box Area
-  const parent = useRef();
+  const parentRef = useRef();
   // Create a reference of the object's position
   const positionRef = useRef(props.objectPosition);
+  // Create a reference to obtain attributes of the Moving Object
+  const childRef = useRef();
   // Obtain the attributes of the Simulation Box Area
-  const parentBox = parent?.current?.getBoundingClientRect();
+  const parentBox = parentRef?.current?.getBoundingClientRect();
+  // Obtain the attributes of the Moving Object
+  const childBox = childRef?.current?.getBoundingClientRect();
 
   /**
    * Update the object's position reference and state with new position
@@ -60,7 +64,7 @@ const Simulation = (props) => {
     <div className={"tw-mt-6"}>
       {/* Simulation Box Area */}
       <div
-        ref={parent}
+        ref={parentRef}
         className={
           "tw-relative tw-flex tw-flex-col tw-shadow-xl tw-border-solid tw-border-2 tw-border-[#BFBFBF] tw-bg-[#F8F8F8] tw-rounded tw-h-[38rem] tw-overflow-hidden"
         }
@@ -69,18 +73,21 @@ const Simulation = (props) => {
         <SimulationCover />
 
         {/* Falling object section */}
-        <ShapeSpawner parentRef={parent} />
+        <ShapeSpawner
+          parentRef={parentRef}
+          childBox={childBox}
+          positionRef={positionRef}
+        />
 
         {/* Walking man section */}
-        <div className={"tw-mt-auto tw-pt-6"}>
-          <WalkingMan
-            updatePosition={updatePosition}
-            positionRef={positionRef}
-            handleShiftLeft={handleShiftLeft}
-            handleShiftRight={handleShiftRight}
-            parentBox={parentBox}
-          />
-        </div>
+        <WalkingMan
+          childRef={childRef}
+          updatePosition={updatePosition}
+          positionRef={positionRef}
+          handleShiftLeft={handleShiftLeft}
+          handleShiftRight={handleShiftRight}
+          parentBox={parentBox}
+        />
       </div>
 
       {/* On-screen arrow Keys */}
