@@ -8,10 +8,10 @@ import {
   POPUP_DELAY,
   POPUP_MESSAGES,
 } from "../../../../constants/lab10";
-import Highlight from "react-highlight";
 import "highlight.js/styles/atom-one-dark-reasonable.css";
 import "../../../../assets/stylesheets/components/CodeBlock.css";
 import PropTypes from "prop-types";
+import Highlight from "react-highlight";
 
 class BuildingAICodeBlock extends Component {
   constructor(props) {
@@ -19,6 +19,8 @@ class BuildingAICodeBlock extends Component {
     this.state = {
       componentName: "BuildingAICodeBlock",
       timeout: null,
+      rightValue: "",
+      leftValue: "",
     };
   }
 
@@ -32,6 +34,15 @@ class BuildingAICodeBlock extends Component {
   componentDidMount() {
     const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
+    const inputLeft = document.getElementById("input-left");
+    const inputRight = document.getElementById("input-right");
+    console.log(inputRight);
+    inputLeft.addEventListener("change", (e) =>
+      this.setState({ leftValue: e.currentTarget.value })
+    );
+    inputRight.addEventListener("change", (e) =>
+      this.setState({ rightValue: e.currentTarget.value })
+    );
   }
 
   validateRepair() {
@@ -40,7 +51,8 @@ class BuildingAICodeBlock extends Component {
     const rightValue = this.validateMoveRightValue();
 
     if (leftValue.passed || rightValue.passed) {
-      actions.this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
+      actions.closeRepair();
+      this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
   }
 
@@ -64,14 +76,15 @@ class BuildingAICodeBlock extends Component {
   validateMoveLeftValue() {
     const { leftValue } = this.props;
     let error = null;
+    console.log(this.props);
 
-    if (leftValue === null) {
+    if (leftValue.length === 0) {
       error = POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED;
       console.log("left empty");
     }
     if (leftValue !== "ArrowLeft") {
       error = POPUP_MESSAGES.ARROW_LEFT_WRONG;
-      console.log("right wrong");
+      console.log("left wrong");
     }
     return {
       pass: error === null,
@@ -82,13 +95,13 @@ class BuildingAICodeBlock extends Component {
     const { rightValue } = this.props;
     let error = null;
 
-    if (rightValue.includes(null)) {
+    if (rightValue.length === 0) {
       error = POPUP_MESSAGES.ARROW_RIGHT_NOT_INCLUDED;
       console.log("right empty");
     }
-    if (!rightValue.includes("ArrowRight")) {
+    if (rightValue !== "ArrowRight") {
       error = POPUP_MESSAGES.ARROW_RIGHT_WRONG;
-      console.log("left wrong");
+      console.log("right wrong");
     }
     return {
       passed: error === null,
@@ -98,16 +111,18 @@ class BuildingAICodeBlock extends Component {
 
   handleLeftValueChange(e) {
     const { actions } = this.props;
+    console.log(e.target.value);
     actions.updateMoveLeftValue(e.target.value);
   }
 
   handleRightValueChange(e) {
     const { actions } = this.props;
+    console.log(e.target.value);
     actions.updateMoveRightValue(e.target.value);
   }
 
   render() {
-    const { leftValue, rightValue } = this.props;
+    const { leftValue, rightValue } = this.state;
     const preInput = `
 import { useState, useEffect } from "react"; 
 function moveUser() {
@@ -138,20 +153,22 @@ export default TrainNetwork;`;
               <code className="language-jsx">{preInput.trim()}</code>
               &nbsp;
               <input
+                id={"input-left"}
+                name={"leftValue"}
                 type="text"
                 className={"tw-bg-bgdark tw-text-bgwhite"}
-                defaultValue={leftValue}
-                onChange={this.handleLeftValueChange}
+                value={leftValue}
                 required
                 title={"must enter ArrowLeft"}
               />
               <code>{postLeftInput.trim()}</code>
               &nbsp;
               <input
+                value={rightValue}
+                id={"input-right"}
+                name={"rightValue"}
                 type="text"
                 className={"tw-bg-bgdark tw-text-bgwhite"}
-                defaultValue={rightValue}
-                onChange={this.handleRightValueChange}
                 required
                 title={"must enter ArrowRight"}
               />

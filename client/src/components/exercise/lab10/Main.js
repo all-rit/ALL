@@ -9,6 +9,7 @@ import { actions as exerciseActions } from "../../../reducers/lab10/ExerciseRedu
 import { bindActionCreators } from "redux";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
+import BuildingAIPage from "./pages/BuildingAIPage";
 
 import BuildingAICodeBlock from "./pages/BuildingAICodeBlock";
 import TrainingAICodeBlock from "./pages/TrainingAICodeBlock";
@@ -32,6 +33,12 @@ class Main extends Component {
           <ExerciseStart default path="/" actions={actions} />
           <BuildingAICodeBlock
             path="/BuildingAICodeBlock"
+            actions={actions}
+            state={state}
+            user={user}
+          />
+          <BuildingAIPage
+            path="/BuildingAI"
             actions={actions}
             state={state}
             user={user}

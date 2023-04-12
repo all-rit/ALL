@@ -12,7 +12,7 @@ class ExerciseStart extends Component {
   }
 
   handleStart() {
-    navigate("/Lab10/Exercise/ExerciseEnd");
+    navigate("/Lab10/Exercise/BuildingAI");
   }
 
   render() {
