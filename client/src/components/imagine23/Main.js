@@ -10,6 +10,7 @@ import MainInstructions from "./pages/mainInstructions";
 
 import { default as ExerciseLab2 } from "../exercise/lab2/Main";
 import ExpressionStart from "./pages/ExpressionStart";
+import ExpressionExercise from "./pages/ExpressionExercise";
 import ExpressionScore from "./pages/ExpressionScore";
 
 const mapStateToProps = (state) => ({
@@ -50,6 +51,12 @@ class Main extends Component {
           />
           <ExpressionStart
             path="/ExpressionInstructions"
+            actions={actions}
+            state={state}
+            user={user}
+          />
+          <ExpressionExercise
+            path="/ExpressionExercise"
             actions={actions}
             state={state}
             user={user}

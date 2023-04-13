@@ -3,6 +3,7 @@ import React from "react";
 import { navigate } from "@reach/router";
 
 const ExpressionScore = () => {
+  // const [count, setCount] = useState(0);
   const handleNext = () => {
     navigate("/Imagine");
   };

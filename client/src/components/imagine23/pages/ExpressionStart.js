@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 
 const ExpressionStart = () => {
   const handleNext = () => {
-    navigate("/Imagine/ExpressionScore");
+    navigate("/Imagine/ExpressionExercise");
   };
 
   return (
