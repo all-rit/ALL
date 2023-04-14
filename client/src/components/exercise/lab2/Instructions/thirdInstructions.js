@@ -31,7 +31,7 @@ const ThirdInstructions = ({
     toWhiteBackground();
   }
   if (isImagine) {
-    navigate("/Imagine/ExpressionInstructions");
+    navigate("/Imagine/ExperientialExerciseEnd");
   }
 
   return (

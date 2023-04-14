@@ -9,7 +9,7 @@ const ExpressionStart = () => {
 
   return (
     <div className="container bottomSpace center-div">
-      <h2 className="playthrough__title">Empathy Building Expression: Start</h2>
+      <h2 className="playthrough__title">Expression Empathy Building: Start</h2>
       <div className="playthrough__sentence">
         Next you will watch someone go through the same exercise you did. Can
         you catch the difficulties they express?

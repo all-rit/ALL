@@ -1,44 +1,55 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import React from "react";
 import { navigate } from "@reach/router";
 
-const ExpressionExercise = () => {
-    const [count, setCount] = useState(0);
-    const incrementCount = () => {
-        setCount(count + 1);
-    };
-    
-    const handleNext = () => {
-        navigate("/Imagine/ExpressionScore");
-    };
+const ExpressionExercise = (props) => {
+  const {setCount, count} = props;
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
 
-    return (
-        <div className="container bottomSpace center-div">
-            <div className="playthrough_sentence">
-                Remember, if you believe you see discomfort, hit the button!
-            </div>
+  const handleNext = () => {
+    navigate("/Imagine/ExpressionScore");
+  };
 
-            <div className="video">
-                <iframe className="embedvideo" src="https://www.youtube.com/watch?v=NpEaa2P7qZI" />
-            </div>
+  return (
+    <div className="container bottomSpace center-div">
+      <h2 className="playthrough__title">Expression Empathy Building: Exercise</h2>
+      <div className="playthrough__sentence">
+        Remember, if you believe you see discomfort, hit the button!
+      </div>
 
-            <div className="counter">
-                <button
-                    className="btn btn-primary text-black btn-x1 text-uppercase"
-                    onClick={incrementCount}>Discomfort Detected</button>
-            </div>
-            <div className="counter">
-                {count}
-            </div>
-
+      <div className="tw-p-1">
+              <iframe
+                title={"Expression Exercise"}
+                width="660"
+                height="415"
+                src="https://www.youtube.com/embed/NpEaa2P7qZI"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen={false}
+              />
+        </div>
+        <div className="playthrough__sentence">{count} discomfort detected.</div>
+        <div className="tw-mb-11">
             <button
-                className="btn btn-primary text-black btn-x1 text-uppercase"
+            className="btn btn-primary text-black btn-xl text-uppercase"
+            onClick={incrementCount}
+            >
+            Discomfort Detected
+            </button>
+        </div>
+        {count > 0 && (
+            <button
+                className="btn btn-primary text-black btn-xl text-uppercase "
                 onClick={handleNext}
                 key="score"
             >
-                See Score
+                Continue to Score
             </button>
-        </div>
-    );
+        )}
+      
+    </div>
+  );
 };
 
 export default ExpressionExercise;

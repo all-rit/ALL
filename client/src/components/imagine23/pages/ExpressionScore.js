@@ -2,17 +2,16 @@
 import React from "react";
 import { navigate } from "@reach/router";
 
-const ExpressionScore = () => {
-  // const [count, setCount] = useState(0);
+const ExpressionScore = (props) => {
   const handleNext = () => {
-    navigate("/Imagine");
+    navigate("/Imagine/ExpressionExerciseEnd");
   };
 
   return (
     <div className="container bottomSpace center-div">
-      <h2 className="playthrough__title">Empathy Building Expression: Score</h2>
+      <h2 className="playthrough__title">Expression Empathy Building: Score</h2>
       <div className="playthrough__sentence">
-        Good Job! You detected the subjects discomfort x/x times
+        Good Job! You detected the subjects discomfort {props.count}/4 times
       </div>
       <div className="playthrough__sentence">
         Remember, empathy is important and a keystone of proper development
@@ -22,7 +21,7 @@ const ExpressionScore = () => {
         onClick={handleNext}
         key="start"
       >
-        Finish Lab
+        Finish Exercise
       </button>
     </div>
   );
