@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 
 const ChatRoom = () => {
@@ -21,8 +21,27 @@ const ChatRoom = () => {
     },
   ];
 
+  const [moderationStatus, setModerationStatus] = useState(
+    messages.map(() => false)
+  );
+
+  function handleModeration(index) {
+    setModerationStatus((prevStatus) => {
+      const newStatus = [...prevStatus];
+      newStatus[index] = true;
+      return newStatus;
+    });
+  }
+
+  useEffect(() => {
+    const allModerated = moderationStatus.every((status) => status);
+    if (allModerated) {
+      console.log("All messages have been moderated.");
+    }
+  }, [moderationStatus]);
+
   return (
-    <div className="tw-divide-y tw-space-y-6 tw-bg-[#ababab] tw-bg-opacity-50 tw-h-full tw-w-[40%] tw-p-4">
+    <div className="tw-divide-y tw-space-y-6 tw-bg-[#ababab] tw-bg-opacity-20 tw-h-full tw-w-[50%] tw-p-4">
       {messages.map((message, index) => {
         return (
           <ChatMessage
@@ -30,6 +49,8 @@ const ChatRoom = () => {
             username={message.username}
             message={message.message}
             sentiment_score={message.sentiment_score}
+            useModeration={true}
+            onModeration={() => handleModeration(index)}
           />
         );
       })}
