@@ -4,7 +4,13 @@ import PropTypes from "prop-types";
 import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
 import Avatar from "avataaars";
 
-const ChatMessage = ({ username, message, sentiment_score, useModeration, onModeration }) => {
+const ChatMessage = ({
+  username,
+  message,
+  sentiment_score,
+  useModeration,
+  onModeration,
+}) => {
   const [userAvatar, setUserAvatar] = useState(null);
 
   //used to remove the sentiment box so this component is more reusable
@@ -77,10 +83,10 @@ const ChatMessage = ({ username, message, sentiment_score, useModeration, onMode
               onClick={handleKeep}
               key="keep"
               disabled={disabled}
-            // style={{
-            //   opacity: opacity,
-            //   cursor: disabled ? "not-allowed" : "pointer",
-            // }}
+              // style={{
+              //   opacity: opacity,
+              //   cursor: disabled ? "not-allowed" : "pointer",
+              // }}
             >
               Keep
             </button>
@@ -89,10 +95,10 @@ const ChatMessage = ({ username, message, sentiment_score, useModeration, onMode
               onClick={handleRemove}
               key="remove"
               disabled={disabled}
-            // style={{
-            //   opacity: opacity,
-            //   cursor: disabled ? "not-allowed" : "pointer",
-            // }}
+              // style={{
+              //   opacity: opacity,
+              //   cursor: disabled ? "not-allowed" : "pointer",
+              // }}
             >
               Remove
             </button>
