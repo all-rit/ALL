@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { navigate } from "@reach/router";
-import counter from "../components/counter";
 
 const ExpressionExercise = () => {
     const [count, setCount] = useState(0);
     const incrementCount = () => {
         setCount(count + 1);
     };
+    
     const handleNext = () => {
         navigate("/Imagine/ExpressionScore");
     };
