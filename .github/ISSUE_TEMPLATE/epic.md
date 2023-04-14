@@ -4,7 +4,6 @@ about: Create an epic
 title: 'Epic: NAME'
 labels: ''
 assignees: ''
-
 ---
 
 # Template Instructions

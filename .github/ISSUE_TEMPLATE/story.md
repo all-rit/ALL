@@ -1,10 +1,9 @@
 ---
 name: Story
 about: Create a story
-title: 'Story: NAME'
-labels: ''
-assignees: ''
-
+title: "Story: NAME"
+labels: ""
+assignees: ""
 ---
 
 # Template Instructions
@@ -15,8 +14,8 @@ Use this template to create a new story item.
 2. Fill in the placeholders with your own information.
 3. Remove these instructions from the item (the horizontal line and above)
 4. Add any additional details or context that may be helpful.5. Assign the issue to a team member or yourself.
+5. Use the checkboxes to track progress and ensure all requirements are met before marking the issue as complete.
 6. Use the checkboxes to track progress and ensure all requirements are met before marking the issue as complete.
-
 ---
 
 # <Story Title>
