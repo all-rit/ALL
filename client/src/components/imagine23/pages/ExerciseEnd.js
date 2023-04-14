@@ -8,9 +8,12 @@ const ExerciseEnd = (props) => {
   const { isExperiential } = props;
   return (
     <div className="container bottomSpace center-div">
-      <h2 className="playthrough__title">{isExperiential ? "Experiential" : "Expression"} Empathy Building: End</h2>
+      <h2 className="playthrough__title">
+        {isExperiential ? "Experiential" : "Expression"} Empathy Building: End
+      </h2>
       <div className="playthrough__sentence">
-        Congratulations! You've completed the activity! Thanks for participating!
+        Congratulations! You've completed the activity! Thanks for
+        participating!
       </div>
 
       <h2 className="playthrough__title">
