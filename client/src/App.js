@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Helmet } from "react-helmet"; 
+import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
 
 import { default as About } from "./components/body/About";
@@ -84,9 +84,12 @@ class App extends Component {
     return (
       <>
         <div>
-        <Helmet>
-        <meta name="google-site-verification" content="RdHzLcw43KpYQpkIgZEiMa68V0H_4ggVNofQtLZxzn4" />
-        </Helmet>
+          <Helmet>
+            <meta
+              name="google-site-verification"
+              content="RdHzLcw43KpYQpkIgZEiMa68V0H_4ggVNofQtLZxzn4"
+            />
+          </Helmet>
         </div>
         <div className="overflow-x-hidden">
           <Header />
@@ -105,28 +108,37 @@ class App extends Component {
                   path="/Imagine1/*"
                   user={state.main.user}
                   biasType={"none"}
-                  linkNum={1} />
+                  linkNum={1}
+                />
                 <Imagine
                   path="/Imagine2/*"
                   user={state.main.user}
                   biasType={"user"}
-                  linkNum={2} />
+                  linkNum={2}
+                />
                 <Imagine
                   path="/Imagine3/*"
                   user={state.main.user}
                   biasType={"team"}
-                  linkNum={3} />
+                  linkNum={3}
+                />
 
-                <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
+                <About
+                  path={`/Lab${lab}/`}
+                  user={state.main.user}
+                  labID={lab}
+                />
                 <About
                   path={`/Lab${lab}/About`}
                   user={state.main.user}
-                  labID={lab} />
+                  labID={lab}
+                />
 
                 <Reading
                   path={`/Lab${lab}/Reading`}
                   user={state.main.user}
-                  labID={lab} />
+                  labID={lab}
+                />
 
                 <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
                 <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
@@ -139,7 +151,8 @@ class App extends Component {
                 <Reinforcement
                   path={`/Lab${lab}/Reinforcement`}
                   user={state.main.user}
-                  labID={lab} />
+                  labID={lab}
+                />
 
                 <Quiz
                   path={`/Lab${lab}/Quiz`}
@@ -147,12 +160,14 @@ class App extends Component {
                   user={state.main.user}
                   isFinalQuiz
                   hideCertificate={false}
-                  submitData={() => { } } />
+                  submitData={() => {}}
+                />
               </Router>
             </div>
           </div>
           <Change />
-        </div></>
+        </div>
+      </>
     );
   }
 }

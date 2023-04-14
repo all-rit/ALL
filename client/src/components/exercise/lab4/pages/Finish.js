@@ -28,7 +28,8 @@ class Finish extends Component {
           <AppBar position="static" className="appBar tw-items-center">
             <Toolbar>
               <h4 className="flex-boxes tw-flex ">
-                Congratulations! You have successfully completed the Dexterity Exercise!
+                Congratulations! You have successfully completed the Dexterity
+                Exercise!
               </h4>
             </Toolbar>
           </AppBar>
