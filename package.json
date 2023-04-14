@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
+    "react-helmet": "^6.1.0",
     "redux-logger": "^3.0.6"
   }
 }
