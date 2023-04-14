@@ -13,6 +13,7 @@ export const COLORS = [
   "tw-bg-[#FBBC05]",
 ];
 export const SIZE = [48, 64, 96, 128];
+export const SPAWN_AMOUNT = 3;
 export const SPAWN_INTERVAL = 1500;
 export const SPEED_STEP = 10;
 export const SPEED = 5;

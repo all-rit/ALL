@@ -9,6 +9,7 @@ import MovementKeys from "./MovementKeys";
 import SimulationCover from "./SimulationCover";
 import useWindowSize from "../../../../use-hooks/useWindow";
 import ShapeSpawner from "./ShapeSpawner";
+import ProgressBar from "./ProgressBar";
 
 const Simulation = (props) => {
   // Allows the object's position to be updated when the window size is updated
@@ -60,8 +61,14 @@ const Simulation = (props) => {
     props.actions.incrementUserAttempts();
   };
 
+  const onComplete = () => {
+    console.log("done");
+  };
+
   return (
     <div className={"tw-mt-6"}>
+      {/* Progress Bar */}
+      <ProgressBar duration={10} onComplete={onComplete} />
       {/* Simulation Box Area */}
       <div
         ref={parentRef}

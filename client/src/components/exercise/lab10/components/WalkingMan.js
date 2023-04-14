@@ -61,7 +61,9 @@ const WalkingMan = (props) => {
     <img
       ref={props.childRef}
       style={{ left: props.positionRef.current, bottom: 0 }}
-      className={"tw-transform tw-absolute tw-transition-all tw-duration-150"}
+      className={
+        "tw-transform tw-absolute tw-transition-all tw-duration-150 tw-border-solid"
+      }
       alt={"Man Walking SVG"}
       src={props.objectImage}
       height={IMG_SIZE}

@@ -5,6 +5,7 @@ import {
   IMG_SIZE,
   SECOND,
   SIZE,
+  SPAWN_AMOUNT,
   SPAWN_INTERVAL,
   SPEED,
   SPEED_STEP,
@@ -25,20 +26,23 @@ const ShapeSpawner = (props) => {
   const [shapes, setShapes] = useState([]);
   const intervalRef = useRef(null);
   const requestRef = useRef(null);
+
+  /* Dependencies on shapes, for whenever a Y value is updated, and the Moving Object, for whenever its X value is updated */
   useEffect(() => {
-    shapes.map(({ x, y, size, color }) => {
+    const newShapes = shapes.filter(({ x, y, size }) => {
       const touchingX =
         (props.objectPosition + IMG_SIZE >= x && props.objectPosition <= x) ||
         (props.objectPosition >= x &&
           props.objectPosition + IMG_SIZE <= x + size) ||
         (props.objectPosition <= x + size &&
           props.objectPosition + IMG_SIZE >= x + size);
+      /* True if the Moving Object is overlapping with a Falling Shape on the Y Plane */
       const touchingY =
         y + size >= props?.parentRef?.current?.offsetHeight - IMG_SIZE;
-      if (touchingX && touchingY) {
-        console.log(`hitting ${color}`);
-      }
+      /* If Objects are overlapping on the X and Y Plane, remove the shape and update the weight */
+      return !(touchingX && touchingY);
     });
+    !_.isEqual(newShapes, shapes) && setShapes(newShapes);
   }, [shapes, props.objectPosition]);
 
   const updateFallingShapes = useCallback(() => {
@@ -60,7 +64,13 @@ const ShapeSpawner = (props) => {
 
   const spawnShape = useCallback(() => {
     const parentAttributes = props.parentRef.current.getBoundingClientRect();
-    setShapes((prev) => [...prev, generateRandomShape(parentAttributes)]);
+    setShapes((prev) => {
+      const newShapes = [];
+      for (let i = 0; i < SPAWN_AMOUNT; i++) {
+        newShapes.push(generateRandomShape(parentAttributes));
+      }
+      return [...prev, ...newShapes];
+    });
   }, [setShapes]);
 
   useEffect(() => {

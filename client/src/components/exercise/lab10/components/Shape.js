@@ -6,7 +6,7 @@ const Shape = ({ y, x, color, size }) => {
   return (
     <div
       style={{ left: x, top: y, width: size, height: size }}
-      className={twMerge("tw-absolute tw-rounded-full", color)}
+      className={twMerge("tw-absolute tw-border-solid", color)}
     />
   );
 };
