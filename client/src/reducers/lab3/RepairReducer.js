@@ -3,7 +3,7 @@ export const types = {
   UPDATE_TAB: "@accessibility-lab/lab3/repair/update_tab",
   OPEN_REPAIR: "@accessibility-lab/lab3/repair/open_repair",
   CLOSE_REPAIR: "@accessibility-lab/lab3/repair/close_repair",
-  UPDATE_REPAIR_ERROR: "@accessibility-lab/lab3/repair/update_repair_error"
+  UPDATE_REPAIR_ERROR: "@accessibility-lab/lab3/repair/update_repair_error",
 };
 
 export const initialState = {
@@ -58,7 +58,10 @@ const RepairReducer = (state = initialState, action) => {
 };
 
 export const actions = {
-  updateRepairError: (repairError) => ({type:types.UPDATE_REPAIR_ERROR, repairError}),
+  updateRepairError: (repairError) => ({
+    type: types.UPDATE_REPAIR_ERROR,
+    repairError,
+  }),
   updateRepair: (cowAltValue, carAltValue, burgerAltValue, catAltValue) => ({
     type: types.UPDATE_REPAIR,
     cowAltValue,
