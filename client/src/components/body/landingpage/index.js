@@ -142,10 +142,10 @@ const Home = (props) => {
                 Contact Dr. Daniel Krutz at
                 <a
                   className="landingpage__contact"
-                  href="mailto:aware@mail.rit.edu "
+                  href="mailto:Daniel.Krutz@rit.edu"
                 >
                   {" "}
-                  aware@mail.rit.edu
+                  Daniel.Krutz@rit.edu
                 </a>
               </h3>
             </div>
