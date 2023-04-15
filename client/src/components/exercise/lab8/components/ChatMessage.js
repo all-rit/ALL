@@ -7,13 +7,13 @@ import Avatar from "avataaars";
 const ChatMessage = ({
   username,
   message,
-  sentiment_score,
+  ai_polarity,
   useModeration,
   onModeration,
 }) => {
   const [userAvatar, setUserAvatar] = useState(null);
 
-  //used to remove the sentiment box so this component is more reusable
+  //used to remove the moderation section so this component is more reusable
   const [displayModerationSection] = useState(useModeration || false);
 
   //used to remove the entire message if removed is clicked
@@ -39,13 +39,11 @@ const ChatMessage = ({
     onModeration?.();
   }
 
-  console.log(enableMessageDisplay);
-
   useEffect(() => {
     setUserAvatar(createAvatarData(1)[0]);
   }, []);
 
-  return (
+  return enableMessageDisplay ? (
     <div className="tw-bg-white tw-rounded-2xl tw-grid tw-grid-cols-[auto,1fr] tw-items-start tw-w-full">
       <div className="tw-flex tw-flex-col">
         <div className="tw-flex tw-items-center tw-p-2">
@@ -73,9 +71,9 @@ const ChatMessage = ({
         </p>
       </div>
       {displayModerationSection && (
-        <div className="tw-ml-auto tw-bg-[#419ce6] tw-p-2 tw-rounded-2xl tw-flex tw-flex-col tw-h-full tw-justify-between">
+        <div className="tw-ml-auto tw-bg-[#419ce6] tw-p-2 tw-pt-0 tw-rounded-2xl tw-flex tw-flex-col tw-h-full tw-justify-between">
           <p className="tw-text-[#000000] tw-font-bold tw-text-xl tw-underline">
-            AI Score: {sentiment_score}
+            AI Polarity: {ai_polarity}
           </p>
           <div className="tw-flex tw-mt-2">
             <button
@@ -83,10 +81,10 @@ const ChatMessage = ({
               onClick={handleKeep}
               key="keep"
               disabled={disabled}
-              // style={{
-              //   opacity: opacity,
-              //   cursor: disabled ? "not-allowed" : "pointer",
-              // }}
+            // style={{
+            //   opacity: opacity,
+            //   cursor: disabled ? "not-allowed" : "pointer",
+            // }}
             >
               Keep
             </button>
@@ -95,10 +93,10 @@ const ChatMessage = ({
               onClick={handleRemove}
               key="remove"
               disabled={disabled}
-              // style={{
-              //   opacity: opacity,
-              //   cursor: disabled ? "not-allowed" : "pointer",
-              // }}
+            // style={{
+            //   opacity: opacity,
+            //   cursor: disabled ? "not-allowed" : "pointer",
+            // }}
             >
               Remove
             </button>
@@ -106,15 +104,15 @@ const ChatMessage = ({
         </div>
       )}
     </div>
-  );
+  ) : null;
 };
 
 ChatMessage.propTypes = {
-  username: PropTypes.isRequired,
-  message: PropTypes.isRequired,
-  sentiment_score: PropTypes.isRequired,
-  useModeration: PropTypes.isRequired,
-  onModeration: PropTypes.isRequired,
+  username: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  ai_polarity: PropTypes.number.isRequired,
+  useModeration: PropTypes.bool,
+  onModeration: PropTypes.func,
 };
 
 export default ChatMessage;
