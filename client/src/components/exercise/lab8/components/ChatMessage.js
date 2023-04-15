@@ -81,10 +81,6 @@ const ChatMessage = ({
               onClick={handleKeep}
               key="keep"
               disabled={disabled}
-            // style={{
-            //   opacity: opacity,
-            //   cursor: disabled ? "not-allowed" : "pointer",
-            // }}
             >
               Keep
             </button>
@@ -93,10 +89,6 @@ const ChatMessage = ({
               onClick={handleRemove}
               key="remove"
               disabled={disabled}
-            // style={{
-            //   opacity: opacity,
-            //   cursor: disabled ? "not-allowed" : "pointer",
-            // }}
             >
               Remove
             </button>

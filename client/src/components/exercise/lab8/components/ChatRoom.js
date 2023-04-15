@@ -93,20 +93,28 @@ function selectMessages() {
   const totalMessages = Math.floor(Math.random() * 3) + 4; // Random number between 4 and 6.
   const halfMessages = Math.floor(totalMessages / 2);
 
-  const incorrectKeep = CHAT_MESSAGES.recommend_keep.filter(msg => !msg.ai_correct);
-  const incorrectRemove = CHAT_MESSAGES.recommend_remove.filter(msg => !msg.ai_correct);
+  const incorrectKeep = CHAT_MESSAGES.recommend_keep.filter(
+    (msg) => !msg.ai_correct
+  );
+  const incorrectRemove = CHAT_MESSAGES.recommend_remove.filter(
+    (msg) => !msg.ai_correct
+  );
 
-  const correctKeep = CHAT_MESSAGES.recommend_keep.filter(msg => msg.ai_correct);
-  const correctRemove = CHAT_MESSAGES.recommend_remove.filter(msg => msg.ai_correct);
+  const correctKeep = CHAT_MESSAGES.recommend_keep.filter(
+    (msg) => msg.ai_correct
+  );
+  const correctRemove = CHAT_MESSAGES.recommend_remove.filter(
+    (msg) => msg.ai_correct
+  );
 
   const selectedKeep = [
     ...shuffleArray(incorrectKeep).slice(0, 1),
-    ...shuffleArray(correctKeep).slice(0, halfMessages - 1)
+    ...shuffleArray(correctKeep).slice(0, halfMessages - 1),
   ];
 
   const selectedRemove = [
     ...shuffleArray(incorrectRemove).slice(0, 1),
-    ...shuffleArray(correctRemove).slice(0, halfMessages - 1)
+    ...shuffleArray(correctRemove).slice(0, halfMessages - 1),
   ];
 
   return shuffleArray([...selectedKeep, ...selectedRemove]);
@@ -125,7 +133,9 @@ function shuffleArray(array) {
 const ChatRoom = () => {
   const [messages] = useState(selectMessages());
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [moderationStatus, setModerationStatus] = useState(messages.map(() => false));
+  const [moderationStatus, setModerationStatus] = useState(
+    messages.map(() => false)
+  );
 
   function handleModeration(index) {
     setModerationStatus((prevStatus) => {
@@ -159,7 +169,7 @@ const ChatRoom = () => {
   }, [moderationStatus]);
 
   return (
-    <div className="chat-room tw-divide-y tw-space-y-6 tw-bg-[#ababab] tw-bg-opacity-20 tw-h-full tw-w-[50%] tw-p-4 tw-overflow-y-auto">
+    <div className="chat-room tw-space-y-6 tw-bg-[#ababab] tw-bg-opacity-20 tw-h-full tw-w-[50%] tw-p-4 tw-overflow-y-auto">
       {messages.slice(0, currentIndex).map((message, index) => {
         return (
           <ChatMessage
