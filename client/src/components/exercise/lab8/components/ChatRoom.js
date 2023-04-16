@@ -139,7 +139,6 @@ const ChatRoom = () => {
     messages.map(() => false)
   );
 
-
   // callback for when button is clicked by user
   function handleModeration(index) {
     setModerationStatus((prevStatus) => {
