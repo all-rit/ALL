@@ -1,5 +1,11 @@
 .exercise-frame {
   background-image: url("../../images/lab8/stream_bg.jpeg");
-  background-size: contain;
+  //will change the size back later
+  background-size: cover;
   background-repeat: no-repeat;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // z-index: -1;
+  position: relative;
 }
