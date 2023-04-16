@@ -93,6 +93,7 @@ function selectMessages() {
   const totalMessages = Math.floor(Math.random() * 3) + 4; // Random number between 4 and 6.
   const halfMessages = Math.floor(totalMessages / 2);
 
+  // Process all the messages into buckets based on their type
   const incorrectKeep = CHAT_MESSAGES.recommend_keep.filter(
     (msg) => !msg.ai_correct
   );
@@ -107,6 +108,7 @@ function selectMessages() {
     (msg) => msg.ai_correct
   );
 
+  // Select random messages from each bucket to display in the chat room.
   const selectedKeep = [
     ...shuffleArray(incorrectKeep).slice(0, 1),
     ...shuffleArray(correctKeep).slice(0, halfMessages - 1),
@@ -117,10 +119,10 @@ function selectMessages() {
     ...shuffleArray(correctRemove).slice(0, halfMessages - 1),
   ];
 
+  // Shuffle the messages and return them.
   return shuffleArray([...selectedKeep, ...selectedRemove]);
 }
 
-// Helper function to shuffle an array.
 function shuffleArray(array) {
   const newArray = [...array];
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -137,6 +139,8 @@ const ChatRoom = () => {
     messages.map(() => false)
   );
 
+
+  // callback for when button is clicked by user
   function handleModeration(index) {
     setModerationStatus((prevStatus) => {
       const newStatus = [...prevStatus];
@@ -145,6 +149,7 @@ const ChatRoom = () => {
     });
   }
 
+  // randomly displays messages to the chat room
   useEffect(() => {
     if (currentIndex < messages.length) {
       const timeout = setTimeout(() => {
@@ -155,12 +160,14 @@ const ChatRoom = () => {
     }
   }, [currentIndex, messages]);
 
+  // when the component mounts or unmounts, clear the timeout
   useEffect(() => {
     return () => {
       clearTimeout();
     };
   }, []);
 
+  // when all messages have been moderated, log a message
   useEffect(() => {
     const allModerated = moderationStatus.every((status) => status);
     if (allModerated) {

@@ -21,6 +21,7 @@ const ChatMessage = ({
 
   const [disabled, setDisabled] = useState(false);
 
+  // button colors can be set to tailwind classes (interpolated into className)
   const [keepButtonColor, setKeepButtonColor] = useState("tw-bg-[#1ec029]");
   const [removeButtonColor, setRemoveButtonColor] = useState("tw-bg-[#c01e1e]");
 
