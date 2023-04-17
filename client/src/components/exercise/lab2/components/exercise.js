@@ -38,6 +38,8 @@ class exercise extends Component {
       enterSecondInfoState,
       exercisesPlayed,
       enterThirdInfoState,
+      isImagine,
+      user,
     } = this.props;
 
     // setting state for the start time of the exercise
@@ -98,6 +100,8 @@ class exercise extends Component {
               enterSecondInfoState={enterSecondInfoState}
               exercisesPlayed={exercisesPlayed}
               enterThirdInfoState={enterThirdInfoState}
+              isImagine={isImagine}
+              user={user}
             />
           </div>
         );

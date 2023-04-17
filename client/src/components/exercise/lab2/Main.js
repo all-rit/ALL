@@ -325,6 +325,8 @@ class Main extends Component {
                   enterSecondInfoState={onEnterSecondInfoState}
                   exercisesPlayed={exercisesPlayed}
                   enterThirdInfoState={onOpenThirdInfoState}
+                  isImagine={isImagine}
+                  user={user}
                 />
               </div>
             ) : (

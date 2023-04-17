@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Imagine = sequelize.define(
-      'Imagine', {
+      'Imagine23', {
         id: {
           type: DataTypes.INTEGER,
           unique: true,
@@ -10,10 +10,19 @@ module.exports = (sequelize, DataTypes) => {
         userid: {
           type: DataTypes.INTEGER,
         },
-        avatar: {type: DataTypes.JSON},
-        squad: {type: DataTypes.JSON},
-        lobbyMessages: {type: DataTypes.JSON},
-      }, {tableName: 'imagine'},
+        experientialMain: {
+          type: DataTypes.JSON,
+        },
+        experientialProtanopia: {
+          type: DataTypes.JSON,
+        },
+        discomfortCount: {
+          type: DataTypes.INTEGER,
+        },
+        // avatar: {type: DataTypes.JSON},
+        // squad: {type: DataTypes.JSON},
+        // lobbyMessages: {type: DataTypes.JSON},
+      }, {tableName: 'imagine23'},
   );
 
   Imagine.sync();

@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { navigate } from "@reach/router";
+import ImagineService from "../../../services/ImagineService";
 
 const ExpressionExercise = (props) => {
-  const { setCount, count } = props;
+  const { setCount, count, user } = props;
   const incrementCount = () => {
     setCount(count + 1);
   };
 
   const handleNext = () => {
+    ImagineService.discomfortCount(user.userid, count);
     navigate("/Imagine/ExpressionScore");
   };
 
