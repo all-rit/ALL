@@ -151,11 +151,11 @@ class SecondTimer extends Component {
         body: JSON.stringify(data),
       }).catch((err) => console.log(err));
 
-      if(isImagine){
-        console.log(data,data.Mode[0]);
-        if(data.Mode[0]==="MAIN"){
+      if (isImagine) {
+        console.log(data, data.Mode[0]);
+        if (data.Mode[0] === "MAIN") {
           ImagineService.experientialMain(user.userid, data);
-        } else{
+        } else {
           ImagineService.experientialProtanopia(user.userid, data);
         }
       }

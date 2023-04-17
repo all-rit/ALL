@@ -83,7 +83,7 @@ const Main = (props) => {
             count={count}
           />
           <ExerciseEnd
-            path="/ExprientialExerciseEnd"
+            path="/ExperientialExerciseEnd"
             actions={actions}
             state={state}
             user={user}
