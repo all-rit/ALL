@@ -10,7 +10,7 @@ import { bindActionCreators } from "redux";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import BuildingAICodeBlock from "./pages/BuildingAICodeBlock";
-import TrainingAICodeBlock from "./pages/TrainingAICodeBlock";
+import TrainingAICodeBlock from "./pages/AICodeRepair/TrainingAICodeBlock";
 
 const mapStateToProps = (state) => ({
   state: state,
