@@ -4,11 +4,13 @@ export const types = {
     "@accessibility-lab/lab10/repair/update_move_left_value",
   UPDATE_MOVE_RIGHT_VALUE:
     "@accessibility-lab/lab10/repair/update_move_right_value",
+  UNDO_REPAIR_CHANGES: "@accessibility-lab/lab7/repair/undo_repair_changes",
   UPDATE_TIME_VALUE: "@accessibility-lab/lab10/repair/update_time_value",
   UPDATE_TIME_ERROR: "@accessibility-lab/lab10/repair/update_time_error",
   UPDATE_REPAIR_ERROR: "@accessibility-lab/lab10/repair/update_repair_error",
   OPEN_REPAIR: "@accessibility-lab/lab7/repair/open_repair",
   CLOSE_REPAIR: "@accessibility-lab/lab7/repair/close_repair",
+  UPDATE_TAB: "@accessibility-lab/lab7/repair/update_tab",
 };
 
 export const initialState = {
@@ -23,6 +25,15 @@ export const initialState = {
 
 const RepairReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.RESET_REPAIR:
+      return {
+        ...initialState,
+      };
+    case types.UNDO_REPAIR_CHANGES:
+      return {
+        ...state,
+        changesApplied: false,
+      };
     case types.UPDATE_MOVE_LEFT_VALUE:
       return {
         ...state,
@@ -58,10 +69,21 @@ const RepairReducer = (state = initialState, action) => {
         ...state,
         repairVisible: false,
       };
+    case types.UPDATE_TAB:
+      return {
+        ...state,
+        currentTab: action.tab,
+      };
     case types.UPDATE_POPUP:
       return {
         ...state,
         popupMessage: action.message,
+      };
+
+    case types.SET_REPAIR_ID:
+      return {
+        ...state,
+        repairId: action.repairId,
       };
     default:
       return state;
@@ -69,6 +91,7 @@ const RepairReducer = (state = initialState, action) => {
 };
 
 export const actions = {
+  undoRepairChanges: () => ({ type: types.UNDO_REPAIR_CHANGES }),
   updateMoveLeftValue: (leftValue) => ({
     type: types.UPDATE_MOVE_LEFT_VALUE,
     leftValue,
@@ -93,6 +116,7 @@ export const actions = {
   updatePopup: (message) => ({ type: types.UPDATE_POPUP, message }),
   openRepair: () => ({ type: types.OPEN_REPAIR }),
   closeRepair: () => ({ type: types.CLOSE_REPAIR }),
+  setRepairId: (repairId) => ({ type: types.SET_REPAIR_ID, repairId }),
 };
 
 export default RepairReducer;

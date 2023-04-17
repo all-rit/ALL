@@ -1,95 +1,109 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import Highlight from "react-highlight";
+import React, { useState } from "react";
+
 import { actions } from "../../../../reducers/lab10/RepairReducer";
-import "highlight.js/styles/atom-one-dark-reasonable.css";
-import "../../../../assets/stylesheets/components/CodeBlock.css";
-import { POPUP_MESSAGES } from "../../../../constants/lab10";
+
 export default function TrainingAICodeBlock() {
-  const timeValue = "";
+    const [timeValue, setTimeValue] = useState('');
+    const [timeError] = useState(false);
 
-  const preInput = `
-import React from "react"; 
-export default function TrainNetwork() {
-    //Here is where you will update the time it take the training to run
-    //So that more data can be gathered
-
-    //Enter a value between 30 and 45 seconds into the input below
-    const time = 
-`;
-  const postInput = `
-} 
-`;
-  function validateTimeValue() {
-    let error = null;
-    if (!Number.isInteger(timeValue)) {
-      error = POPUP_MESSAGES.INVALID_INTEGER;
-    } else {
-      try {
-        const upperBound = 45;
-        const lowerBound = 30;
-        if (timeValue < lowerBound && timeValue > upperBound) {
-          error = POPUP_MESSAGES.OUTSIDE_RANGE;
-        }
-      } catch (e) {
-        switch (e.data?.category) {
-          case "wrongType":
-            error = POPUP_MESSAGES.INVALID_INTEGER;
-            break;
-          default:
-            error = e.message;
-        }
-      }
-      const result = {
-        timeValue,
-        error,
-        passed: !error,
-      };
-
-      if (!result.passed) {
-        actions.updateRepairError(result.error);
-      } else {
-        actions.updateRepairError(null);
-      }
-      return result;
+    function validateRepair() {
     }
-  }
 
-  function validateRepair() {
-    const timeValue = validateTimeValue();
-    alert(timeValue);
-  }
+    function handleTimeValueChange(e) {
+        setTimeValue(e.target.value);
+        actions.updateTimeValue(e.target.value);
+    }
 
-  function handleTimeValueChange(e) {
-    actions.updateTimeValue(e.target.value);
-  }
+    return (
+        <div className="code_editor">
+            <div className="code_editor__content">
+                <div className="code_editor__files">
+                    {/* AutoSysAI.js */}
+                    <div className="code_editor__file code_editor__file--active">
+                        TrainingAI.js
+                    </div>
+                </div>
 
-  return (
-    <div>
-      <div className="filenameHeader">TrainingAICodeBlock.js</div>
-      <div style={{ textAlign: "left" }}>
-        <Highlight>
-          <pre>
-            <code className="language-jsx">{preInput.trim()}</code>
-            &nbsp;
-            <input
-              type="text"
-              value={timeValue}
-              onChange={handleTimeValueChange}
-            ></input>
-            &#59;
-            <br></br>
-            <code>{postInput.trim()}</code>
-          </pre>
-        </Highlight>
-      </div>
-      <button
-        type="submit"
-        className="button button--green button--block"
-        onClick={validateRepair}
-      >
-        Update
-      </button>
-    </div>
-  );
+                {/* import React, Component from react */}
+                <div className="code_editor__code">
+                    <div className="code_editor__line">
+                        <span className="code_editor__line--purple">import&nbsp;</span>
+                        <span className="code_editor__line--blue">React&nbsp;</span>
+                        <span className="code_editor__line--purple">from&nbsp;</span>
+                        <span className="code_editor__line--orange">
+                            &lsquo;react&lsquo;
+                        </span>
+                        <span className="code_editor__line--gold">;</span>
+                    </div>
+
+                    <div className="code_editor__line">&nbsp;</div>
+
+                    {/* class AutoSysAI extends Component*/}
+                    <div className="code_editor__line">
+                        <span className="code_editor__line--purple">export&nbsp;</span>
+                        <span className="code_editor__line--purple">default&nbsp;</span>
+                        <span className="code_editor__line--blue">function&nbsp;</span>
+                        <span className="code_editor__line--green">TrainingAI&nbsp;</span>
+                        <span className="code_editor__line--purple">&#40;</span>
+                        <span className="code_editor__line--blue">props</span>
+                        <span className="code_editor__line--purple">&#41;&nbsp;</span>
+                        <span className="code_editor__line--gold">&#123;</span>
+                    </div>
+
+                    {/* makeDecision(){ */}
+                    <div className="code_editor__line">
+                        {/* AI function comment */}
+                        <span className="code_editor__line--darkgreen">
+                            &#47;&#47; Here is where you will update the time it take the training to run so that more data can be gathered
+                        </span>
+                    </div>
+                    <div className="code_editor__line">
+                        {/* AI function comment */}
+                        <span className="code_editor__line--darkgreen">
+                            &#47;&#47; Enter a value between 30 and 45 seconds into the input below
+                        </span>
+                    </div>
+                    <div className="code_editor__line">
+                        <span>&nbsp;&nbsp;</span>
+                        <span className="code_editor__line--purple">const</span>
+                        <span className=""> timeValue</span>
+                        <span className="code_editor__line--purple"> = </span>
+                        <input type="text"
+                            className={`${timeError ? "form-error-input" : ""} tw-w-96`}
+                            value={timeValue}
+                            onChange={handleTimeValueChange}>
+                        </input>
+                    </div>
+                    {timeError && (
+                        <div className="code_editor__line">
+                            <span className={"form-error"}>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                {timeError}
+                            </span>
+                        </div>
+                    )}
+
+                    {/* return() */}
+                    <div className="code_editor__line">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <div className="code_editor__line">
+
+                    </div>
+
+                    <div className="code_editor__line">
+                        <span className="code_editor__line--gold">&#125;</span>
+                    </div>
+                </div>
+            </div>
+            <button
+                type="submit"
+                className="button button--green button--block"
+                onClick={validateRepair}
+            >
+                Update
+            </button>
+        </div>
+    );
 }
