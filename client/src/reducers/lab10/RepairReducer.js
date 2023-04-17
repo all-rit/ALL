@@ -9,6 +9,7 @@ export const types = {
   UPDATE_REPAIR_ERROR: "@accessibility-lab/lab10/repair/update_repair_error",
   OPEN_REPAIR: "@accessibility-lab/lab7/repair/open_repair",
   CLOSE_REPAIR: "@accessibility-lab/lab7/repair/close_repair",
+  UPDATE_CHANGES_APPLIED: "@accessibility-lab/lab10/repair/update_changes_applied",
 };
 
 export const initialState = {
@@ -63,6 +64,11 @@ const RepairReducer = (state = initialState, action) => {
         ...state,
         popupMessage: action.message,
       };
+    case types.UPDATE_CHANGES_APPLIED:
+      return {
+        ...state,
+        changesApplied: true,
+      };
     default:
       return state;
   }
@@ -86,9 +92,9 @@ export const actions = {
     type: types.UPDATE_TIME_VALUE,
     timeValue,
   }),
-  updateTimeError: (timeError) => ({
-    type: types.UPDATE_TIME_ERROR,
-    timeError,
+  updateChangesApplied: (changesApplied) => ({
+    type: types.UPDATE_CHANGES_APPLIED,
+    changesApplied,
   }),
   updatePopup: (message) => ({ type: types.UPDATE_POPUP, message }),
   openRepair: () => ({ type: types.OPEN_REPAIR }),

@@ -68,7 +68,7 @@ class BuildingAIPage extends Component {
           Repair
         </button>
         <button
-          className={"btn btn-second btn-xl text-uppercase leftButton"}
+          className={"btn btn-second btn-xl text-uppercase rightButton"}
           onClick={this.handleNav.bind(this)}
           disabled={!changesApplied}
         >
