@@ -4,7 +4,7 @@
 import React from "react";
 import { Router } from "@reach/router";
 import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../reducers/lab6/ExerciseReducer";
+import { actions as exerciseActions } from "../../../reducers/lab8/ExerciseReducer";
 import { connect } from "react-redux";
 
 import ExerciseStart from "./pages/ExerciseStart";
@@ -18,7 +18,7 @@ const Main = (props) => {
   return (
     <div className="bottomSpace">
       <Router className="app">
-        <ExerciseStart path="/*" actions={actions} user={user} />
+        <ExerciseStart path="/*" />
         <ExerciseFrame path="/StreamSimulation" actions={actions} user={user} />
         {/* <ChatRoom /> */}
       </Router>

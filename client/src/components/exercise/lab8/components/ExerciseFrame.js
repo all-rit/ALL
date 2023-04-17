@@ -16,7 +16,7 @@ const ExerciseFrame = (props) => {
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
+  }, []);
 
   const handleModerationComplete = () => {
     setCanContinue(true);
@@ -32,7 +32,7 @@ const ExerciseFrame = (props) => {
     <div className=" tw-flex tw-flex-col tw-items-center tw-justify-center">
       <div
         className="exercise-frame tw-w-full tw-aspect-video"
-        // style={{ opacity: 0.5 }}
+      // style={{ opacity: 0.5 }}
       >
         <ChatRoom moderationCompleteCallback={handleModerationComplete} />
         {/* right now the div contains a background image */}

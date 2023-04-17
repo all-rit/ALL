@@ -6,10 +6,10 @@ import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseRe
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const ExerciseStart = ({ actions }) => {
+const ExerciseStart = ({ actions, }) => {
   useEffect(() => {
     actions.updateState(EXERCISE_IDLE);
-  }, [actions]);
+  }, []);
 
   const handleStart = () => {
     actions.updateState(EXERCISE_PLAYING);
@@ -57,6 +57,7 @@ const ExerciseStart = ({ actions }) => {
 
 ExerciseStart.propTypes = {
   actions: PropTypes.object,
+  end: PropTypes.bool,
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -65,8 +66,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
+const mapStateToProps = (state) => {
+  const { end } = state.exercise8;
+  return { end };
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExerciseStart);
