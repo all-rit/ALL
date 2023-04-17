@@ -1,13 +1,38 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-
+import { POPUP_MESSAGES } from "../../../../constants/lab10";
 import { actions } from "../../../../reducers/lab10/RepairReducer";
+export const TrainingAICodeBlock = () => {
 
-export default function TrainingAICodeBlock() {
-    const [timeValue, setTimeValue] = useState('');
-    const [timeError] = useState(false);
+    const [timeValue, setTimeValue] = useState("");
+    const [timeError, setTimeError] = useState(null);
 
+    function validateTimeValue() {
+        let error = null;
+        let upperBound = 45;
+        let lowerBound = 30;
+        const numericTimeValue = parseInt(timeValue, 10);
+
+        if (isNaN(numericTimeValue) || !Number.isInteger(numericTimeValue)) {
+            error = POPUP_MESSAGES.INVALID_INTEGER;
+        } else if (timeValue > upperBound || timeValue < lowerBound) {
+            error = POPUP_MESSAGES.OUTSIDE_RANGE;
+        }
+
+        if (error !== null) {
+            setTimeError(error);
+            actions.updateTimeError(error);
+            actions.updatePopup(error);
+            return false;
+        }
+
+        setTimeError(null);
+        actions.updateTimeError(null);
+        actions.updatePopup(null);
+        return true;
+    }
     function validateRepair() {
+        validateTimeValue();
     }
 
     function handleTimeValueChange(e) {
@@ -55,13 +80,15 @@ export default function TrainingAICodeBlock() {
                     <div className="code_editor__line">
                         {/* AI function comment */}
                         <span className="code_editor__line--darkgreen">
-                            &#47;&#47; Here is where you will update the time it take the training to run so that more data can be gathered
+                            &#47;&#47; Here is where you will update the time it take the
+                            training to run so that more data can be gathered
                         </span>
                     </div>
                     <div className="code_editor__line">
                         {/* AI function comment */}
                         <span className="code_editor__line--darkgreen">
-                            &#47;&#47; Enter a value between 30 and 45 seconds into the input below
+                            &#47;&#47; Enter a value between 30 and 45 seconds into the input
+                            below
                         </span>
                     </div>
                     <div className="code_editor__line">
@@ -69,11 +96,12 @@ export default function TrainingAICodeBlock() {
                         <span className="code_editor__line--purple">const</span>
                         <span className=""> timeValue</span>
                         <span className="code_editor__line--purple"> = </span>
-                        <input type="text"
+                        <input
+                            type="text"
                             className={`${timeError ? "form-error-input" : ""} tw-w-96`}
                             value={timeValue}
-                            onChange={handleTimeValueChange}>
-                        </input>
+                            onChange={handleTimeValueChange}
+                        ></input>
                     </div>
                     {timeError && (
                         <div className="code_editor__line">
@@ -88,9 +116,7 @@ export default function TrainingAICodeBlock() {
                     <div className="code_editor__line">
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </div>
-                    <div className="code_editor__line">
-
-                    </div>
+                    <div className="code_editor__line"></div>
 
                     <div className="code_editor__line">
                         <span className="code_editor__line--gold">&#125;</span>
@@ -106,4 +132,6 @@ export default function TrainingAICodeBlock() {
             </button>
         </div>
     );
-}
+};
+
+export default TrainingAICodeBlock;
