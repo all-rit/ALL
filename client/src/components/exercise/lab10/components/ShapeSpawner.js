@@ -4,6 +4,7 @@ import {
   COLORS,
   IMG_SIZE,
   SECOND,
+  SIMULATION_STARTED,
   SIZE,
   SPAWN_AMOUNT,
   SPAWN_INTERVAL,
@@ -13,6 +14,8 @@ import {
 import PropTypes from "prop-types";
 import Shape from "./Shape";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 
 const generateRandomShape = (parentAttributes) => {
   const color = _.sample(COLORS);
@@ -29,7 +32,7 @@ const ShapeSpawner = (props) => {
 
   /* Dependencies on shapes, for whenever a Y value is updated, and the Moving Object, for whenever its X value is updated */
   useEffect(() => {
-    const newShapes = shapes.filter(({ x, y, size }) => {
+    const newShapes = shapes.filter(({ x, y, size, color }) => {
       const touchingX =
         (props.objectPosition + IMG_SIZE >= x && props.objectPosition <= x) ||
         (props.objectPosition >= x &&
@@ -39,8 +42,12 @@ const ShapeSpawner = (props) => {
       /* True if the Moving Object is overlapping with a Falling Shape on the Y Plane */
       const touchingY =
         y + size >= props?.parentRef?.current?.offsetHeight - IMG_SIZE;
-      /* If Objects are overlapping on the X and Y Plane, remove the shape and update the weight */
-      return !(touchingX && touchingY);
+
+      const shapesCollided = touchingX && touchingY;
+      if (shapesCollided) {
+        props.actions.updateColorWeight(color);
+      }
+      return !shapesCollided;
     });
     !_.isEqual(newShapes, shapes) && setShapes(newShapes);
   }, [shapes, props.objectPosition]);
@@ -74,34 +81,48 @@ const ShapeSpawner = (props) => {
   }, [setShapes]);
 
   useEffect(() => {
-    if (props.simulationStarted) {
+    const end = () => {
+      intervalRef.current && clearInterval(intervalRef.current);
+      requestRef.current && cancelAnimationFrame(requestRef.current);
+    };
+
+    if (props.simulationStatus === SIMULATION_STARTED) {
       intervalRef.current = setInterval(spawnShape, SPAWN_INTERVAL);
       requestRef.current = requestAnimationFrame(updateFallingShapes);
+    } else {
+      end();
     }
-  }, [updateFallingShapes, spawnShape, props.simulationStarted]);
+
+    return () => end();
+  }, [updateFallingShapes, spawnShape, props.simulationStatus]);
 
   return (
-    props.simulationStarted && (
-      <div className={"tw-relative"}>
-        {shapes.map((shape, index) => {
-          return <Shape key={`shape-${index}`} {...shape} />;
-        })}
-      </div>
-    )
+    <div className={"tw-relative"}>
+      {shapes.map((shape, index) => {
+        return <Shape key={`shape-${index}`} {...shape} />;
+      })}
+    </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  const { simulationStarted, objectPosition } = state.exercise10;
-  return { simulationStarted, objectPosition };
+  const { simulationStatus, objectPosition } = state.exercise10;
+  return { simulationStatus, objectPosition };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
 };
 
 ShapeSpawner.propTypes = {
+  actions: PropTypes.object,
   parentRef: PropTypes.object,
   childBox: PropTypes.object,
   positionRef: PropTypes.object,
   objectPosition: PropTypes.number,
-  simulationStarted: PropTypes.bool,
+  simulationStatus: PropTypes.string,
 };
 
-export default connect(mapStateToProps)(ShapeSpawner);
+export default connect(mapStateToProps, mapDispatchToProps)(ShapeSpawner);

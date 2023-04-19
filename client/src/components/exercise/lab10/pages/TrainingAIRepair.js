@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import useScroll from "../../../../use-hooks/useScroll";
 
-const BuildingAIRepair = (props) => {
+const TrainingAIRepair = (props) => {
   useScroll();
 
   /**
@@ -15,7 +15,7 @@ const BuildingAIRepair = (props) => {
    */
   const handleContinue = () => {
     props.actions.resetUserAttempts();
-    return navigate("/Lab10/Exercise/TrainingAI");
+    return navigate("/Lab10/Exercise/");
   };
 
   return (
@@ -36,8 +36,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-BuildingAIRepair.propTypes = {
+TrainingAIRepair.propTypes = {
   actions: PropTypes.object,
 };
 
-export default connect(null, mapDispatchToProps)(BuildingAIRepair);
+export default connect(null, mapDispatchToProps)(TrainingAIRepair);

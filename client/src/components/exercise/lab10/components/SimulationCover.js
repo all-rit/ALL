@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import PropTypes from "prop-types";
@@ -6,30 +6,25 @@ import { connect } from "react-redux";
 
 const SimulationCover = (props) => {
   const handleClick = () => {
-    props.actions.uncoverSimulation();
     props.actions.startSimulation();
   };
 
-  useEffect(() => {
-    props.simulationCovered
-      ? props.actions.disableUserInput()
-      : props.actions.enableUserInput();
-  }, [props.simulationCovered]);
-
   return (
-    props.simulationCovered && (
+    props.userInputDisabled && (
       <div
         className={
-          "tw-absolute tw-h-full tw-w-full tw-flex tw-items-center tw-justify-center tw-rounded tw-bg-[#000000] tw-bg-opacity-70"
+          "tw-absolute tw-h-full tw-w-full tw-flex tw-items-center tw-justify-center tw-rounded tw-bg-[#000000] tw-bg-opacity-70 tw-z-20"
         }
       >
         <div>
-          <button
-            className="btn btn-primary text-black btn-xl text-uppercase"
-            onClick={handleClick}
-          >
-            Start
-          </button>
+          {props.displayStartButton && (
+            <button
+              className="btn btn-primary text-black btn-xl text-uppercase"
+              onClick={handleClick}
+            >
+              Start
+            </button>
+          )}
         </div>
       </div>
     )
@@ -37,8 +32,8 @@ const SimulationCover = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { simulationCovered } = state.exercise10;
-  return { simulationCovered };
+  const { userInputDisabled } = state.exercise10;
+  return { userInputDisabled };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -48,7 +43,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 SimulationCover.propTypes = {
-  simulationCovered: PropTypes.bool,
+  userInputDisabled: PropTypes.bool,
+  displayStartButton: PropTypes.bool,
   actions: PropTypes.object,
 };
 

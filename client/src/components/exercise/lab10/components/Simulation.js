@@ -1,21 +1,24 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import WalkingMan from "./WalkingMan";
 import PropTypes from "prop-types";
-import { STEP_COUNT } from "../../../../constants/lab10";
+import { SIMULATION_STARTED, STEP_COUNT } from "../../../../constants/lab10";
 import MovementKeys from "./MovementKeys";
 import SimulationCover from "./SimulationCover";
 import useWindowSize from "../../../../use-hooks/useWindow";
 import ShapeSpawner from "./ShapeSpawner";
 import ProgressBar from "./ProgressBar";
+import KeyboardGuide from "./KeyboardGuide";
 
 const Simulation = (props) => {
   // Allows the object's position to be updated when the window size is updated
   // Utilizing this hook allows components to rerender
   // eslint-disable-next-line no-unused-vars
   useWindowSize();
+
+  const [displayStartButton, setDisplayStartButton] = useState(true);
 
   // Create a reference to obtain attributes of the Simulation Box Area
   const parentRef = useRef();
@@ -62,13 +65,21 @@ const Simulation = (props) => {
   };
 
   const onComplete = () => {
-    console.log("done");
+    props.actions.endSimulation();
+    setDisplayStartButton(false);
   };
 
   return (
     <div className={"tw-mt-6"}>
       {/* Progress Bar */}
-      <ProgressBar duration={10} onComplete={onComplete} />
+      {props.simulationStatus === SIMULATION_STARTED && (
+        <ProgressBar
+          className={"tw-mb-6"}
+          duration={props.trainingDuration}
+          onComplete={onComplete}
+        />
+      )}
+
       {/* Simulation Box Area */}
       <div
         ref={parentRef}
@@ -77,7 +88,9 @@ const Simulation = (props) => {
         }
       >
         {/* Simulation Cover */}
-        <SimulationCover />
+        {!props.hideCoverOverride && (
+          <SimulationCover displayStartButton={displayStartButton} />
+        )}
 
         {/* Falling object section */}
         <ShapeSpawner
@@ -103,14 +116,27 @@ const Simulation = (props) => {
           handleShiftLeft={handleShiftLeft}
           handleShiftRight={handleShiftRight}
         />
+        <KeyboardGuide />
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  const { objectPosition, userInputDisabled } = state.exercise10;
-  return { objectPosition, userInputDisabled };
+  const {
+    objectPosition,
+    userInputDisabled,
+    simulationStatus,
+    trainingDuration,
+    weights,
+  } = state.exercise10;
+  return {
+    objectPosition,
+    userInputDisabled,
+    simulationStatus,
+    trainingDuration,
+    weights,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -123,6 +149,10 @@ Simulation.propTypes = {
   objectPosition: PropTypes.number,
   actions: PropTypes.object,
   userInputDisabled: PropTypes.bool,
+  simulationStatus: PropTypes.string,
+  trainingDuration: PropTypes.number,
+  weights: PropTypes.object,
+  hideCoverOverride: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simulation);

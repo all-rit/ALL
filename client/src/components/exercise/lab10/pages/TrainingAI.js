@@ -4,13 +4,25 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Simulation from "../components/Simulation";
-import KeyboardGuide from "../components/KeyboardGuide";
-import { MIN_USER_ATTEMPTS } from "../../../../constants/lab10";
+import {
+  EXERCISE_PLAYING,
+  MIN_USER_ATTEMPTS,
+  SIMULATION_ENDED,
+  SIMULATION_IDLE,
+  SIMULATION_STARTED,
+} from "../../../../constants/lab10";
 import useScroll from "../../../../use-hooks/useScroll";
+import { navigate } from "@reach/router";
 
 const TrainingAI = (props) => {
   useScroll();
+
   const [limitReached, setLimitReach] = useState(false);
+
+  useEffect(() => {
+    props.actions.updateState(EXERCISE_PLAYING);
+    props.actions.idleSimulation(false);
+  }, []);
 
   /**
    * Update state if the minimum amount user attempts has been reached
@@ -18,14 +30,21 @@ const TrainingAI = (props) => {
   useEffect(() => {
     if (props.userAttempts >= MIN_USER_ATTEMPTS && !limitReached) {
       setLimitReach(true);
-      props.actions.disableUserInput();
-      props.actions.coverSimulation();
+      props.actions.idleSimulation(true);
     }
   }, [props.userAttempts]);
 
+  /**
+   * Redirect the user to the following page
+   * @returns {Promise} navigate promise
+   */
+  const handleContinue = () => {
+    return navigate("/Lab10/Exercise/TrainingAI/Repair");
+  };
+
   return (
     <div>
-      {!props.simulationStarted && (
+      {props.simulationStatus === SIMULATION_IDLE && (
         <div>
           {limitReached ? (
             <Fragment>
@@ -55,7 +74,7 @@ const TrainingAI = (props) => {
           )}
         </div>
       )}
-      {props.simulationStarted && (
+      {props.simulationStatus === SIMULATION_STARTED && (
         <div>
           <div>
             <p className={"tw-text-xl tw-font-bold"}>
@@ -64,24 +83,36 @@ const TrainingAI = (props) => {
           </div>
         </div>
       )}
+      {props.simulationStatus === SIMULATION_ENDED && (
+        <div>
+          <div>
+            <p className={"tw-text-xl tw-font-bold"}>
+              Proceed to the next part of this exercise.
+            </p>
+          </div>
+        </div>
+      )}
       <Simulation />
-      <KeyboardGuide />
+      {props.simulationStatus === SIMULATION_ENDED && (
+        <div className={"tw-mt-6 tw-flex tw-justify-end"}>
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase"
+            onClick={handleContinue}
+          >
+            Continue
+          </button>
+        </div>
+      )}
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  const {
-    userAttempts,
-    trainingDuration,
-    simulationCovered,
-    simulationStarted,
-  } = state.exercise10;
+  const { userAttempts, trainingDuration, simulationStatus } = state.exercise10;
   return {
     userAttempts,
     trainingDuration,
-    simulationCovered,
-    simulationStarted,
+    simulationStatus,
   };
 };
 
@@ -94,8 +125,7 @@ const mapDispatchToProps = (dispatch) => {
 TrainingAI.propTypes = {
   userAttempts: PropTypes.number,
   trainingDuration: PropTypes.number,
-  simulationCovered: PropTypes.bool,
-  simulationStarted: PropTypes.bool,
+  simulationStatus: PropTypes.string,
   actions: PropTypes.object,
 };
 
