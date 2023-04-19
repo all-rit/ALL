@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
 
@@ -13,7 +13,15 @@ const ExpressionExercise = (props) => {
   const reactPlayer = React.createRef();
 
   const incrementCount = () => {
-    setTimeStamps([...timeStamps, {"discomfortNumber": count+1,"timeStamp": Number.parseFloat(reactPlayer.current.getCurrentTime()).toFixed(5)}]);
+    setTimeStamps([
+      ...timeStamps,
+      {
+        discomfortNumber: count + 1,
+        timeStamp: Number.parseFloat(
+          reactPlayer.current.getCurrentTime()
+        ).toFixed(5),
+      },
+    ]);
     setCount(count + 1);
   };
 
@@ -32,13 +40,17 @@ const ExpressionExercise = (props) => {
       </div>
 
       <div className="tw-p-1 tw-flex tw-justify-center">
-        <ReactPlayer 
-          ref={reactPlayer} 
-          width="660px" 
-          height="415px" 
-          url='https://www.youtube.com/watch?v=NpEaa2P7qZI' 
-          onStart={()=>{setShowContinue(false)}}
-          onEnded={()=>{setShowContinue(true)}}
+        <ReactPlayer
+          ref={reactPlayer}
+          width="660px"
+          height="415px"
+          url="https://www.youtube.com/watch?v=NpEaa2P7qZI"
+          onStart={() => {
+            setShowContinue(false);
+          }}
+          onEnded={() => {
+            setShowContinue(true);
+          }}
         />
         {/* <iframe
           title={"Expression Exercise"}
@@ -49,9 +61,11 @@ const ExpressionExercise = (props) => {
           allowFullScreen={false}
         /> */}
       </div>
-      {showContine==false && (
+      {showContine == false && (
         <>
-        <div className="playthrough__sentence">{count} discomfort detected.</div>
+          <div className="playthrough__sentence">
+            {count} discomfort detected.
+          </div>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m3"
             onClick={incrementCount}
@@ -60,7 +74,7 @@ const ExpressionExercise = (props) => {
           </button>
         </>
       )}
-      
+
       {showContine && (
         <button
           className="btn btn-primary text-black btn-xl text-uppercase tw-m-4"
