@@ -20,6 +20,8 @@ class BuildingAICodeBlock extends Component {
       timeout: null,
       rightValue: "",
       leftValue: "",
+      leftError: null,
+      rightError: null,
     };
   }
 
@@ -27,14 +29,15 @@ class BuildingAICodeBlock extends Component {
     actions: PropTypes.object,
     leftValue: PropTypes.string,
     rightValue: PropTypes.string,
-    repairError: PropTypes.string,
+    repairError: PropTypes.bool,
     changesApplied: PropTypes.bool,
+    leftError: PropTypes.string,
+    rightError: PropTypes.string,
   };
 
   componentDidMount() {
     const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
-
   }
 
   validateRepair() {
@@ -42,8 +45,23 @@ class BuildingAICodeBlock extends Component {
     const leftValue = this.validateMoveLeftValue();
     const rightValue = this.validateMoveRightValue();
 
-
-    if (leftValue.passed || rightValue.passed) {
+    if (!leftValue.passed || !rightValue.passed) {
+      actions.updateRepairError(true);
+      if (!leftValue.passed && !rightValue.passed) {
+        actions.updateRightError("Must enter 'ArrowRight'");
+        actions.updateLeftError("Must  enter 'ArrowLeft'")
+      }
+      else if (!rightValue.passed) {
+        actions.updateRightError("Must enter 'ArrowRight'");
+        actions.updateLeftError(null);
+      }
+      else if (!leftValue.passed) {
+        actions.updateRightError(null);
+        actions.updateLeftError("Must enter 'ArrowLeft'");
+      }
+    }
+    actions.updateRepairError(false);
+    if (leftValue.passed && rightValue.passed) {
       actions.updateChangesApplied(this.changesApplied);
       actions.closeRepair();
       this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
@@ -68,39 +86,57 @@ class BuildingAICodeBlock extends Component {
   }
 
   validateMoveLeftValue() {
-    const { leftValue } = this.props;
-    let error = null;
+    const { actions, leftValue } = this.props;
+    let error = false;
     console.log(this.props);
-
-    if (leftValue.length === 0) {
-      error = POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED;
-      console.log("left empty");
+    if (!leftValue.includes("'ArrowLeft'")) {
+      if (leftValue.length === 0) {
+        actions.updateRepairError(true);
+        error = true;
+        this.setPopupMessage(POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED);
+        console.log("left empty");
+      } else if (leftValue > 0 && leftValue !== "'ArrowLeft'") {
+        actions.updateRepairError(true);
+        error = true;
+        this.setPopupMessage(POPUP_MESSAGES.ARROW_LEFT_WRONG);
+        console.log("left wrong");
+      }
     }
-    if (leftValue !== "'ArrowLeft'") {
-      error = POPUP_MESSAGES.ARROW_LEFT_WRONG;
-      console.log("left wrong");
-    }
-    return {
-      pass: error === null,
-      error: error,
+    const result = {
+      value: leftValue,
+      error,
+      passed: !error,
     };
+    if (!result.passed) actions.updateRepairError(true);
+    else actions.updateRepairError(null);
+    return result;
   }
   validateMoveRightValue() {
-    const { rightValue } = this.props;
-    let error = null;
+    const { actions, rightValue } = this.props;
+    let error = false;
 
-    if (rightValue.length === 0) {
-      error = POPUP_MESSAGES.ARROW_RIGHT_NOT_INCLUDED;
-      console.log("right empty");
+    if (!rightValue.includes("'ArrowRight'")) {
+      if (rightValue.length === 0) {
+        actions.updateRepairError(true);
+        error = true;
+        this.setPopupMessage(POPUP_MESSAGES.ARROW_RIGHT_NOT_INCLUDED);
+        console.log("right empty");
+      } else if (rightValue > 0 && rightValue !== "'ArrowRight'") {
+        actions.updateRepairError(true);
+        error = true;
+        this.setPopupMessage(POPUP_MESSAGES.ARROW_RIGHT_WRONG);
+        console.log("right wrong");
+      }
     }
-    if (rightValue !== "'ArrowRight'") {
-      error = POPUP_MESSAGES.ARROW_RIGHT_WRONG;
-      console.log("right wrong");
-    }
-    return {
-      passed: error === null,
-      error: error,
+
+    const result = {
+      value: rightValue,
+      error,
+      passed: !error,
     };
+    if (!result.passed) actions.updateRepairError(true);
+    else actions.updateRepairError(null);
+    return result;
   }
 
   handleLeftValueChange(e) {
@@ -116,7 +152,7 @@ class BuildingAICodeBlock extends Component {
   }
 
   render() {
-    const { leftValue, rightValue } = this.props;
+    const { leftValue, rightValue, leftError, rightError } = this.props;
     return (
       <div className="code_editor">
         <div className="code_editor__content">
@@ -133,7 +169,10 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--blue">React</span>
               <span className="code_editor__line--gold">,&nbsp;</span>
               <span className="code_editor__line--gold">&#123;</span>
-              <span className="code_editor__line--blue"> Component, useState, useEffect </span>
+              <span className="code_editor__line--blue">
+                {" "}
+                useState, useEffect{" "}
+              </span>
               <span className="code_editor__line--gold">&#125;&nbsp;</span>
               <span className="code_editor__line--purple">from&nbsp;</span>
               <span className="code_editor__line--orange">
@@ -181,7 +220,7 @@ class BuildingAICodeBlock extends Component {
             <div className={"code_editor__line"}>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--yellow">useEffect(</span>
-              <span className={""}>()  </span>
+              <span className={""}>() </span>
               <span className="code_editor__line--blue"> =&gt; </span>
               <span className={""}> &#123; </span>
             </div>
@@ -199,7 +238,7 @@ class BuildingAICodeBlock extends Component {
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                Enter &lsquo;ArrowLeft&lsquo; into the input below {" "}
+                Enter &lsquo;ArrowLeft&lsquo; into the input below{" "}
               </span>
             </div>
             <div className="code_editor__line code_editor__line-background--light">
@@ -213,15 +252,29 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--blue">code</span>
               <span className={""}> === </span>
               <input
-                name="moveLeft"
+                name="leftValue"
                 type="text"
                 value={leftValue}
-                onChange= {this.handleLeftValueChange.bind(this)}
+                onChange={this.handleLeftValueChange.bind(this)}
+                className={`${leftError ? "form-error-input" : ""} tw-w-96`}
                 required
-                title="must enter ArrowLeft"
+                title="Must enter 'ArrowLeft'"
               />
               <span>) &#123;</span>
             </div>
+
+              {leftError && (
+                <div className="code_editor__line">
+                <span className={"form-error"}>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  {leftError}
+                </span>
+                </div>
+              )}
+
             <div className={"code_editor__line"}>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -261,16 +314,32 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--blue">code</span>
               <span className={""}> === </span>
               <input
-                className={"tw-text-white tw-bg-opacity-0"}
+                className={`${rightError ? "form-error-input" : ""} tw-w-96`}
                 name="rightValue"
                 type="text"
                 value={rightValue}
-                onChange= {this.handleRightValueChange.bind(this)}
+                onChange={this.handleRightValueChange.bind(this)}
                 required
-                title="Must enter ArrowRight"
+                title="Must enter 'ArrowRight'"
               />
               <span>) &#123;</span>
+            </div>
 
+              {rightError && (
+                <div className="code_editor__line">
+                <span className={"form-error"}>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;
+
+                  {rightError}
+                </span>
+                </div>
+              )}
+
+            <div>
               <div className={"code_editor__line"}>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -305,7 +374,9 @@ class BuildingAICodeBlock extends Component {
               <span className={""}>.</span>
               <span className="code_editor__line--blue">addEventListener</span>
               <span className={""}>(</span>
-              <span className="code_editor__line--orange">&apos;keydown&apos;</span>
+              <span className="code_editor__line--orange">
+                &apos;keydown&apos;
+              </span>
               <span className={""}>, </span>
               <span className="code_editor__line--blue">handleKey</span>
               <span className={""}>);</span>
@@ -322,10 +393,14 @@ class BuildingAICodeBlock extends Component {
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--gold">document</span>
               <span className={""}>.</span>
-              <span className="code_editor__line--blue">removeEventListener</span>
+              <span className="code_editor__line--blue">
+                removeEventListener
+              </span>
               <span className={""}>(</span>
               <span className={""}>(</span>
-              <span className="code_editor__line--orange">&apos;keydown&apos;</span>
+              <span className="code_editor__line--orange">
+                &apos;keydown&apos;
+              </span>
               <span className={""}>, </span>
               <span className="code_editor__line--blue">handleKey</span>
               <span className={""}>);</span>
@@ -366,8 +441,8 @@ class BuildingAICodeBlock extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  const { repairError, leftValue, rightValue } = state.repair10;
-  return { repairError, leftValue, rightValue };
+  const { repairError, leftValue, rightValue, leftError, rightError } = state.repair10;
+  return { repairError, leftValue, rightValue, leftError, rightError };
 };
 const mapDispatchToProps = (dispatch) => {
   return {

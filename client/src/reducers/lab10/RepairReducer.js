@@ -9,12 +9,17 @@ export const types = {
   UPDATE_REPAIR_ERROR: "@accessibility-lab/lab10/repair/update_repair_error",
   OPEN_REPAIR: "@accessibility-lab/lab7/repair/open_repair",
   CLOSE_REPAIR: "@accessibility-lab/lab7/repair/close_repair",
-  UPDATE_CHANGES_APPLIED: "@accessibility-lab/lab10/repair/update_changes_applied",
+  UPDATE_CHANGES_APPLIED:
+    "@accessibility-lab/lab10/repair/update_changes_applied",
+  UPDATE_LEFT_ERROR: "@accessibility-lab/lab10/repair/update_left_error",
+  UPDATE_RIGHT_ERROR: "@accessibility-lab/lab10/repair/update_right_error"
 };
 
 export const initialState = {
   leftValue: "",
   rightValue: "",
+  leftError: "",
+  rightError: "",
   timeValue: "",
   timeError: null,
   repairError: null,
@@ -48,6 +53,16 @@ const RepairReducer = (state = initialState, action) => {
       return {
         ...state,
         repairError: action.repairError,
+      };
+    case types.UPDATE_LEFT_ERROR:
+      return {
+        ...state,
+        leftError: action.leftError,
+      };
+    case types.UPDATE_RIGHT_ERROR:
+      return {
+        ...state,
+        rightError: action.rightError,
       };
     case types.OPEN_REPAIR:
       return {
@@ -87,7 +102,14 @@ export const actions = {
     type: types.UPDATE_REPAIR_ERROR,
     repairError,
   }),
-
+  updateLeftError: (leftError) => ({
+    type: types.UPDATE_LEFT_ERROR,
+    leftError,
+  }),
+  updateRightError: (rightError) => ({
+    type: types.UPDATE_RIGHT_ERROR,
+    rightError,
+  }),
   updateTimeValue: (timeValue) => ({
     type: types.UPDATE_TIME_VALUE,
     timeValue,

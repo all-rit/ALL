@@ -7,8 +7,8 @@ export const POPUP_MESSAGES = {
   ARROW_RIGHT_WRONG: "Please re-type your answer in the ArrowRight input.",
   ARROW_LEFT_WRONG: "Please re-type your answer in for the ArrowLeft input.",
   SUCCESS: "The repairs have successfully been implemented.",
-  ARROW_LEFT_NOT_INCLUDED: "Must include &lsquo;ArrowLeft&lsquo;",
-  ARROW_RIGHT_NOT_INCLUDED: "Must include &lsquo;ArrowRight&lsquo;",
+  ARROW_LEFT_NOT_INCLUDED: "The 'ArrowLeft' input has been left empty",
+  ARROW_RIGHT_NOT_INCLUDED: "The 'ArrowRight' input has been left empty.",
 };
 
 export const POPUP_DELAY = 6000;
