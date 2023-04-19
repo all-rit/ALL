@@ -4,7 +4,7 @@
 
 import { navigate } from "@reach/router";
 import React, { useState } from "react";
-const {nanoid} = require('nanoid');
+const { nanoid } = require("nanoid");
 
 const UpdateID = (props) => {
   const { setUserID, user } = props;
@@ -20,37 +20,44 @@ const UpdateID = (props) => {
 
   const handleUpdateID = () => {
     sessionStorage.clear();
-    if(user?.userid){
-        let newID = nanoid(6).toUpperCase()
-        sessionStorage.setItem(user?.userid, newID);
-        setUserID(newID)
+    if (user?.userid) {
+      let newID = nanoid(6).toUpperCase();
+      sessionStorage.setItem(user?.userid, newID);
+      setUserID(newID);
     }
     setShowNav(true);
   };
-
 
   return (
     <div className="container bottomSpace center-div">
       {!showNav && (
         <>
-        <h2 className="playthrough__title">
-         PRESS BUTTON TO UPDATE ID
-        </h2>
-        <button className="btn btn-primary text-black btn-xl text-uppercase" onClick={handleUpdateID}>UPDATE ID</button>
+          <h2 className="playthrough__title">PRESS BUTTON TO UPDATE ID</h2>
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase"
+            onClick={handleUpdateID}
+          >
+            UPDATE ID
+          </button>
         </>
       )}
       {showNav && (
         <>
-        <h2 className="playthrough__title">
-         NAVIGATION
-      </h2>
-      <button className="btn btn-primary text-black btn-xl text-uppercase tw-m-3" onClick={handleExperiential}>Experiential</button>
-      <button className="btn btn-primary text-black btn-xl text-uppercase tw-m-3" onClick={handleExpression}>Expression</button>
-
+          <h2 className="playthrough__title">NAVIGATION</h2>
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+            onClick={handleExperiential}
+          >
+            Experiential
+          </button>
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+            onClick={handleExpression}
+          >
+            Expression
+          </button>
         </>
-        
       )}
-      
     </div>
   );
 };

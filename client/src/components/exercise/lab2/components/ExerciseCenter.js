@@ -47,8 +47,8 @@ class ExerciseCenter extends Component {
         exercisesPlayed={exercisesPlayed}
         enterThirdInfoState={enterThirdInfoState}
         isImagine={isImagine}
-        userID={userID}      
-        />
+        userID={userID}
+      />
     );
   }
 }

@@ -16,8 +16,7 @@ import ExpressionExercise from "./pages/ExpressionExercise";
 import ExpressionScore from "./pages/ExpressionScore";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import UpdateID from "./pages/UpdateID";
-const {nanoid} = require('nanoid');
-
+const { nanoid } = require("nanoid");
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -34,19 +33,19 @@ const Main = (props) => {
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
 
-  useEffect(() =>{
-    if(user?.userid){
-      let userSession = sessionStorage.getItem(user?.userid)
-      console.log(userSession)
-      if(!userSession){
-        let newID = nanoid(6).toUpperCase()
+  useEffect(() => {
+    if (user?.userid) {
+      let userSession = sessionStorage.getItem(user?.userid);
+      console.log(userSession);
+      if (!userSession) {
+        let newID = nanoid(6).toUpperCase();
         sessionStorage.setItem(user?.userid, newID);
-        setUserID(newID)
+        setUserID(newID);
       } else {
-        setUserID(userSession)
+        setUserID(userSession);
       }
     }
-  },[user])
+  }, [user]);
 
   // sessionStorage.removeItem("key");
   // sessionStorage.clear();

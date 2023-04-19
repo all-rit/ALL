@@ -95,7 +95,14 @@ const Header = (props) => {
       }}
     >
       <div className="container">
-        <a href="# " onClick={() => (state.main.lab === 0 ? (state.main.body === 3) : false) ? reachNavigate("/Imagine/UserID"): navigate(state, actions, 0, 0)}>
+        <a
+          href="# "
+          onClick={() =>
+            (state.main.lab === 0 ? state.main.body === 3 : false)
+              ? reachNavigate("/Imagine/UserID")
+              : navigate(state, actions, 0, 0)
+          }
+        >
           <img
             className="logo img-fluid tw-cursor-pointer"
             src={Logo}
@@ -216,7 +223,7 @@ const Header = (props) => {
                     </NavLink>
                   </NavItem>
                 )}
-              {state.main.lab !== 0 && state.main.body !== 3 && ( 
+              {state.main.lab !== 0 && state.main.body !== 3 && (
                 <WelcomeMessage
                   user={state.main.user}
                   loginEnabled={loginEnabled}
