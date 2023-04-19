@@ -144,15 +144,14 @@ class SecondTimer extends Component {
         Mode: [exerciseOption.toUpperCase()],
       };
 
-      fetch(process.env.API_URL + "/exerciseStats", {
-        method: "POST",
-        headers: new Headers({ "content-type": "application/json" }),
-        credentials: "include",
-        body: JSON.stringify(data),
-      }).catch((err) => console.log(err));
+      // fetch(process.env.API_URL + "/exerciseStats", {
+      //   method: "POST",
+      //   headers: new Headers({ "content-type": "application/json" }),
+      //   credentials: "include",
+      //   body: JSON.stringify(data),
+      // }).catch((err) => console.log(err));
 
       if (isImagine) {
-        console.log(data, data.Mode[0]);
         if (data.Mode[0] === "MAIN") {
           ImagineService.experientialMain(user.userid, data);
         } else {
