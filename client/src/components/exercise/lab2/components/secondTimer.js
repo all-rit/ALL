@@ -44,7 +44,7 @@ class SecondTimer extends Component {
       exercisesPlayed,
       enterThirdInfoState,
       isImagine,
-      user,
+      userID,
     } = this.props;
 
     const isHex = exerciseOption === "hex";
@@ -153,9 +153,9 @@ class SecondTimer extends Component {
 
       if (isImagine) {
         if (data.Mode[0] === "MAIN") {
-          ImagineService.experientialMain(user.userid, data);
+          ImagineService.experientialMain(userID, data);
         } else {
-          ImagineService.experientialProtanopia(user.userid, data);
+          ImagineService.experientialProtanopia(userID, data);
         }
       }
     };

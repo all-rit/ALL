@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
           autoIncrement: true,
         },
         userid: {
-          type: DataTypes.INTEGER,
+          type: DataTypes.TEXT,
         },
         experientialMain: {
           type: DataTypes.JSON,

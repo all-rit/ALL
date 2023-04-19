@@ -246,6 +246,7 @@ class Main extends Component {
       onResetSystem,
       onGoBackFromExercise,
       isImagine,
+      userID,
     } = this.props;
 
     // establishing array of current colors for the system
@@ -326,7 +327,7 @@ class Main extends Component {
                   exercisesPlayed={exercisesPlayed}
                   enterThirdInfoState={onOpenThirdInfoState}
                   isImagine={isImagine}
-                  user={user}
+                  userID={userID}
                 />
               </div>
             ) : (

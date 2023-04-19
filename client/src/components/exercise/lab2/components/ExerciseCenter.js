@@ -26,7 +26,7 @@ class ExerciseCenter extends Component {
       exercisesPlayed,
       enterThirdInfoState,
       isImagine,
-      user,
+      userID,
     } = this.props;
 
     return (
@@ -47,8 +47,8 @@ class ExerciseCenter extends Component {
         exercisesPlayed={exercisesPlayed}
         enterThirdInfoState={enterThirdInfoState}
         isImagine={isImagine}
-        user={user}
-      />
+        userID={userID}      
+        />
     );
   }
 }
