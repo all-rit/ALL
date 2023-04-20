@@ -7,7 +7,6 @@ const TrainingAIRepair = (props) => {
   const { actions, state } = props;
   const [disableNext, setDisableNext] = useState(false);
 
-
   console.log(state);
 
   function handleNext() {
@@ -49,7 +48,7 @@ const TrainingAIRepair = (props) => {
       >
         Repair
       </button>
-      {handleNext &&
+      {handleNext && (
         <button
           className="btn btn-primary text-black btn-xl text-uppercase  "
           key="Next"
@@ -58,7 +57,7 @@ const TrainingAIRepair = (props) => {
         >
           Next
         </button>
-      }
+      )}
       {state.repair10.repairVisible && <TrainingAICodeBlock />}
     </div>
   );
