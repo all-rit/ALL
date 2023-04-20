@@ -65,7 +65,6 @@ export const TrainingAICodeBlock = (props) => {
 
         {/* Description Comments */}
         <div className="code_editor__code">
-
           {/*Begining of lab comments */}
           <div className="code_editor__line">
             <span className="code_editor__line--darkgreen">
@@ -77,7 +76,8 @@ export const TrainingAICodeBlock = (props) => {
             </span>
             <br></br>
             <span className="code_editor__line--darkgreen">
-              &#47;&#47; Edit the time value so that the network collects more data
+              &#47;&#47; Edit the time value so that the network collects more
+              data
             </span>
             <br></br>
           </div>
@@ -85,9 +85,7 @@ export const TrainingAICodeBlock = (props) => {
           {/*TrainingAIConfig ={values} */}
           <div className="code_editor__line">
             <span className="code_editor__const">const&nbsp;</span>
-            <span className="code_editor__json">
-              trainingAIConfig
-            </span>
+            <span className="code_editor__json">trainingAIConfig</span>
             <span> &#61; </span>
             <span className="code_editor__class">&#123;</span>
             <br></br>

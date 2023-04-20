@@ -1,12 +1,23 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import TrainingAICodeBlock from "./TrainingAICodeBlock";
 import Popup from "../../../shared/Popup";
 import { navigate } from "@reach/router";
 const TrainingAIRepair = (props) => {
   const { actions, state } = props;
+  const [disableNext, setDisableNext] = useState(false);
+
 
   console.log(state);
+
+  function handleNext() {
+    if (state.repair10.repairError === null) {
+      setDisableNext(false);
+    } else {
+      setDisableNext(true);
+    }
+  }
+
   function handleNav() {
     return navigate("http://localhost:3000/Lab10/Reinforcement");
   }
@@ -38,13 +49,16 @@ const TrainingAIRepair = (props) => {
       >
         Repair
       </button>
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        key="Next"
-        onClick={handleNav}
-      >
-        Next
-      </button>
+      {handleNext &&
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase  "
+          key="Next"
+          onClick={handleNav}
+          disabled={disableNext}
+        >
+          Next
+        </button>
+      }
       {state.repair10.repairVisible && <TrainingAICodeBlock />}
     </div>
   );
