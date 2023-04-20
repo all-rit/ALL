@@ -6,11 +6,13 @@ import { connect } from "react-redux";
 import { Router } from "@reach/router";
 import "../../../assets/stylesheets/main.scss";
 import { actions as exerciseActions } from "../../../reducers/lab10/ExerciseReducer";
+import { actions as repairActions } from "../../../reducers/lab10/RepairReducer";
+import { actions as appActions } from "../../../reducers/lab10/AppReducer";
 import { bindActionCreators } from "redux";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import BuildingAICodeBlock from "./pages/BuildingAICodeBlock";
-import TrainingAICodeBlock from "./pages/AICodeRepair/TrainingAICodeBlock";
+import TrainingAIRepair from "./pages/AICodeRepair/TrainingAIRepair";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -18,7 +20,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+    actions: bindActionCreators(
+      { ...exerciseActions, ...repairActions, ...appActions },
+      dispatch
+    ),
   };
 };
 
@@ -35,8 +40,8 @@ class Main extends Component {
             state={state}
             user={user}
           />
-          <TrainingAICodeBlock
-            path="/TrainingAICodeBlock"
+          <TrainingAIRepair
+            path="/TrainingAIRepair"
             actions={actions}
             state={state}
             user={user}
