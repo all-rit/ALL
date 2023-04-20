@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { POPUP_MESSAGES } from "../../../../../constants/lab10";
 import { actions as repairActions } from "../../../../../reducers/lab10/RepairReducer";
@@ -66,64 +65,67 @@ export const TrainingAICodeBlock = (props) => {
 
         {/* Description Comments */}
         <div className="code_editor__code">
+
+          {/*Begining of lab comments */}
           <div className="code_editor__line">
             <span className="code_editor__line--darkgreen">
               &#47;&#47; Here is the config file that tells the Neural Network
             </span>
             <br></br>
             <span className="code_editor__line--darkgreen">
-              &#47;&#47; how long to collect data
+              &#47;&#47; how long to gather data
             </span>
             <br></br>
             <span className="code_editor__line--darkgreen">
-              &#47;&#47; There are also fields for how far the smiley face
-            </span>
-            <br></br>
-            <span className="code_editor__line--darkgreen">
-              &#47;&#47; should move left or right
-            </span>
-            <br></br>
-            <span className="code_editor__line--darkgreen">
-              &#47;&#47; Edit the time value so that the network collects data
-            </span>
-            <br></br>
-            <span className="code_editor__line--darkgreen">
-              &#47;&#47; for 30-45 seconds
+              &#47;&#47; Edit the time value so that the network collects more data
             </span>
             <br></br>
           </div>
+
+          {/*TrainingAIConfig ={values} */}
           <div className="code_editor__line">
-            <span className="code_editor__const">
-              const&nbsp;
-            </span>
+            <span className="code_editor__const">const&nbsp;</span>
             <span className="code_editor__json">
-              trainingAIConfig &#61; &#123;&nbsp;
+              trainingAIConfig
             </span>
+            <span> &#61; </span>
+            <span className="code_editor__class">&#123;</span>
             <br></br>
-            <span className="code_editor__line--blue">
-              &nbsp; moveLeft&#58; 12{" "}
-            </span>
+            <div className="code_editor__line-background--light code__editor__json_value">
+              <span className="code_editor__line--blue">
+                &nbsp; moveLeft&#58;&nbsp;
+              </span>
+              <span className="">12</span>
+            </div>
             <br></br>
-            <span className="code_editor__line--blue">
-              &nbsp; moveRight&#58; 12
-            </span>
+            <div className="code_editor__line-background--light code__editor__json_value">
+              <span className="code_editor__line--blue">
+                &nbsp; moveRight&#58;&nbsp;
+              </span>
+              <span className="code_editor__line-darkgold">12</span>
+            </div>
             <br></br>
             {/* Enter Value comment */}
             <span className="code_editor__line--darkgreen">
-              &nbsp;&nbsp;&#47;&#47; Enter a value between 30-45 seconds into the input below
+              &nbsp;&nbsp;&#47;&#47; Enter a value between 30-45 seconds into
+              the input below
             </span>
+
+            {/*User input for time value */}
           </div>
-          <div className="code_editor__line">
+          <div className="code_editor__line-background--light code__editor__json_value">
             <span className="code_editor__line--blue">
               &nbsp; timeValue&#58;{" "}
             </span>
             <input
               type="text"
-              className={`${timeError ? "form-error-input" : ""} tw-w-96`}
+              className={`${timeError ? "form-error-input" : ""} `}
               value={timeValue}
               onChange={handleTimeValueChange}
             ></input>
           </div>
+
+          {/*Popup for if input is incorrect */}
           {timeError && (
             <div className="code_editor__line">
               <span className={"form-error"}>
@@ -133,13 +135,15 @@ export const TrainingAICodeBlock = (props) => {
             </div>
           )}
 
+          {/*End of file */}
           <div className="code_editor__line">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </div>
           <div className="code_editor__line"></div>
 
           <div className="code_editor__line">
-            <span className="code_editor__line--gold">&#125;</span>
+            <span className="code_editor__class">&#125;</span>
+            <span>&#59;</span>
           </div>
         </div>
       </div>
@@ -152,9 +156,7 @@ export const TrainingAICodeBlock = (props) => {
       </button>
     </div>
   );
-
 };
-
 
 TrainingAICodeBlock.propTypes = {
   actions: PropTypes.object,
@@ -164,7 +166,6 @@ TrainingAICodeBlock.propTypes = {
   changesApplied: PropTypes.bool,
   repairVisible: PropTypes.bool,
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
