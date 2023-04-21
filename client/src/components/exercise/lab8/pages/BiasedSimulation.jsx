@@ -2,14 +2,18 @@
 /* eslint-disable require-jsdoc */
 
 import React, { useState, useEffect } from "react";
-// import "../../../../assets/stylesheets/components/ExerciseFrame.scss";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
+// import { navigate } from "@reach/router";
+
 import "../../../../assets/stylesheets/components/Witch.css";
-// Changing import to see if relative vs absolute positioning works
-import ChatRoom from "./ChatRoom";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
+
+import ChatRoom from "../components/ChatRoom";
 // import ExerciseService from "../../../../services/lab8/ExerciseService";
 
-const ExerciseFrame = (props) => {
+const BiasedSimulation = (props) => {
   const { actions } = props;
 
   const [canContinue, setCanContinue] = useState(false);
@@ -29,10 +33,10 @@ const ExerciseFrame = (props) => {
   };
 
   return (
-    <div className=" tw-flex tw-flex-col tw-items-center tw-justify-center">
+    <div className="">
       <div
         className="exercise-frame tw-w-full tw-aspect-video"
-      // style={{ opacity: 0.5 }}
+        // style={{ opacity: 0.5 }}
       >
         <ChatRoom moderationCompleteCallback={handleModerationComplete} />
         {/* right now the div contains a background image */}
@@ -49,4 +53,10 @@ const ExerciseFrame = (props) => {
   );
 };
 
-export default ExerciseFrame;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(BiasedSimulation);

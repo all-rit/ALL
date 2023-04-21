@@ -3,37 +3,21 @@
 /* eslint-disable max-len */
 import React from "react";
 import { Router } from "@reach/router";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../reducers/lab8/ExerciseReducer";
-import { connect } from "react-redux";
 
 import ExerciseStart from "./pages/ExerciseStart";
-import ExerciseFrame from "./components/ExerciseFrame";
+import BiasedSimulation from "./pages/BiasedSimulation";
 
 // import ChatRoom from "./components/ChatRoom";
 
-const Main = (props) => {
-  const { actions, user } = props;
-
+const Main = () => {
   return (
     <div className="bottomSpace">
       <Router className="app">
         <ExerciseStart path="/*" />
-        <ExerciseFrame path="/StreamSimulation" actions={actions} user={user} />
-        {/* <ChatRoom /> */}
+        <BiasedSimulation path="/BiasedSimulation" />
       </Router>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;
