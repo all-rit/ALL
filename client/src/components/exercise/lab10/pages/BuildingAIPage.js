@@ -19,10 +19,16 @@ class BuildingAIPage extends Component {
   componentDidMount() {
     const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
+    this.reset();
   }
 
   handleNav() {
     navigate("/Lab10/Exercise/");
+  }
+
+  reset() {
+    const { actions } = this.props;
+    actions.updatePopup("")
   }
 
   render() {
@@ -33,7 +39,7 @@ class BuildingAIPage extends Component {
       repairError,
       changesApplied,
     } = this.props;
-
+    console.log(changesApplied);
     return (
       <div>
         <Fragment>

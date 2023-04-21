@@ -18,10 +18,6 @@ class BuildingAICodeBlock extends Component {
     this.state = {
       componentName: "BuildingAICodeBlock",
       timeout: null,
-      rightValue: "",
-      leftValue: "",
-      leftError: null,
-      rightError: null,
     };
   }
 
@@ -42,27 +38,30 @@ class BuildingAICodeBlock extends Component {
 
   validateRepair() {
     const { actions } = this.props;
-    const leftValue = this.validateMoveLeftValue();
-    const rightValue = this.validateMoveRightValue();
+    const leftValuePassed = this.validateMoveLeftValue();
+    const rightValuePassed = this.validateMoveRightValue();
 
-    if (!leftValue.passed || !rightValue.passed) {
+    console.log(leftValuePassed, rightValuePassed)
+
+    if (!leftValuePassed || !rightValuePassed) {
       actions.updateRepairError(true);
-      if (!leftValue.passed && !rightValue.passed) {
+      if (!leftValuePassed && !rightValuePassed) {
         actions.updateRightError("Must enter 'ArrowRight'");
-        actions.updateLeftError("Must  enter 'ArrowLeft'")
-      }
-      else if (!rightValue.passed) {
+        actions.updateLeftError("Must  enter 'ArrowLeft'");
+      } else if (!leftValuePassed) {
+        actions.updateRightError(null);
+        actions.updateLeftError("Must enter 'ArrowLeft'");
+      } else if (!rightValuePassed) {
         actions.updateRightError("Must enter 'ArrowRight'");
         actions.updateLeftError(null);
       }
-      else if (!leftValue.passed) {
-        actions.updateRightError(null);
-        actions.updateLeftError("Must enter 'ArrowLeft'");
-      }
+      console.log(actions)
+      actions.updateChangesApplied(false);
     }
-    actions.updateRepairError(false);
-    if (leftValue.passed && rightValue.passed) {
-      actions.updateChangesApplied(this.changesApplied);
+    else {
+      actions.updateLeftError(null)
+      actions.updateRightError(null)
+      actions.updateChangesApplied(true);
       actions.closeRepair();
       this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
@@ -87,56 +86,41 @@ class BuildingAICodeBlock extends Component {
 
   validateMoveLeftValue() {
     const { actions, leftValue } = this.props;
-    let error = false;
     console.log(this.props);
     if (!leftValue.includes("'ArrowLeft'")) {
+      actions.updateRepairError(true)
       if (leftValue.length === 0) {
-        actions.updateRepairError(true);
-        error = true;
         this.setPopupMessage(POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED);
         console.log("left empty");
-      } else if (leftValue > 0 && leftValue !== "'ArrowLeft'") {
-        actions.updateRepairError(true);
-        error = true;
+      } else if (leftValue.length > 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_LEFT_WRONG);
         console.log("left wrong");
       }
+      return false;
     }
-    const result = {
-      value: leftValue,
-      error,
-      passed: !error,
-    };
-    if (!result.passed) actions.updateRepairError(true);
-    else actions.updateRepairError(null);
-    return result;
+    else {
+      actions.updateRepairError(false);
+      return true;
+    }
   }
   validateMoveRightValue() {
     const { actions, rightValue } = this.props;
-    let error = false;
 
     if (!rightValue.includes("'ArrowRight'")) {
+      actions.updateRepairError(true);
       if (rightValue.length === 0) {
-        actions.updateRepairError(true);
-        error = true;
         this.setPopupMessage(POPUP_MESSAGES.ARROW_RIGHT_NOT_INCLUDED);
         console.log("right empty");
-      } else if (rightValue > 0 && rightValue !== "'ArrowRight'") {
-        actions.updateRepairError(true);
-        error = true;
+      } else if (rightValue.length > 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_RIGHT_WRONG);
         console.log("right wrong");
       }
+      return false;
     }
-
-    const result = {
-      value: rightValue,
-      error,
-      passed: !error,
-    };
-    if (!result.passed) actions.updateRepairError(true);
-    else actions.updateRepairError(null);
-    return result;
+    else {
+      actions.updateRepairError(false);
+      return true
+    }
   }
 
   handleLeftValueChange(e) {
@@ -263,8 +247,8 @@ class BuildingAICodeBlock extends Component {
               <span>) &#123;</span>
             </div>
 
-              {leftError && (
-                <div className="code_editor__line">
+            {leftError && (
+              <div className="code_editor__line">
                 <span className={"form-error"}>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -272,8 +256,8 @@ class BuildingAICodeBlock extends Component {
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   {leftError}
                 </span>
-                </div>
-              )}
+              </div>
+            )}
 
             <div className={"code_editor__line"}>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -325,19 +309,18 @@ class BuildingAICodeBlock extends Component {
               <span>) &#123;</span>
             </div>
 
-              {rightError && (
-                <div className="code_editor__line">
+            {rightError && (
+              <div className="code_editor__line">
                 <span className={"form-error"}>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   &nbsp;&nbsp;&nbsp;
-
                   {rightError}
                 </span>
-                </div>
-              )}
+              </div>
+            )}
 
             <div>
               <div className={"code_editor__line"}>
@@ -441,7 +424,8 @@ class BuildingAICodeBlock extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  const { repairError, leftValue, rightValue, leftError, rightError } = state.repair10;
+  const { repairError, leftValue, rightValue, leftError, rightError } =
+    state.repair10;
   return { repairError, leftValue, rightValue, leftError, rightError };
 };
 const mapDispatchToProps = (dispatch) => {

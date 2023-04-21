@@ -12,7 +12,7 @@ export const types = {
   UPDATE_CHANGES_APPLIED:
     "@accessibility-lab/lab10/repair/update_changes_applied",
   UPDATE_LEFT_ERROR: "@accessibility-lab/lab10/repair/update_left_error",
-  UPDATE_RIGHT_ERROR: "@accessibility-lab/lab10/repair/update_right_error"
+  UPDATE_RIGHT_ERROR: "@accessibility-lab/lab10/repair/update_right_error",
 };
 
 export const initialState = {
@@ -22,7 +22,7 @@ export const initialState = {
   rightError: "",
   timeValue: "",
   timeError: null,
-  repairError: null,
+  repairError: false,
   repairVisible: false,
   changesApplied: false,
 };
@@ -82,7 +82,7 @@ const RepairReducer = (state = initialState, action) => {
     case types.UPDATE_CHANGES_APPLIED:
       return {
         ...state,
-        changesApplied: true,
+        changesApplied: action.changesApplied,
       };
     default:
       return state;
