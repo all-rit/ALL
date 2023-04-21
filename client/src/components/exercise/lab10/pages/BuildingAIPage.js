@@ -28,7 +28,7 @@ class BuildingAIPage extends Component {
 
   reset() {
     const { actions } = this.props;
-    actions.updatePopup("")
+    actions.updatePopup("");
   }
 
   render() {

@@ -41,7 +41,7 @@ class BuildingAICodeBlock extends Component {
     const leftValuePassed = this.validateMoveLeftValue();
     const rightValuePassed = this.validateMoveRightValue();
 
-    console.log(leftValuePassed, rightValuePassed)
+    console.log(leftValuePassed, rightValuePassed);
 
     if (!leftValuePassed || !rightValuePassed) {
       actions.updateRepairError(true);
@@ -55,12 +55,11 @@ class BuildingAICodeBlock extends Component {
         actions.updateRightError("Must enter 'ArrowRight'");
         actions.updateLeftError(null);
       }
-      console.log(actions)
+      console.log(actions);
       actions.updateChangesApplied(false);
-    }
-    else {
-      actions.updateLeftError(null)
-      actions.updateRightError(null)
+    } else {
+      actions.updateLeftError(null);
+      actions.updateRightError(null);
       actions.updateChangesApplied(true);
       actions.closeRepair();
       this.setPopupMessage(POPUP_MESSAGES.SUCCESS);
@@ -88,7 +87,7 @@ class BuildingAICodeBlock extends Component {
     const { actions, leftValue } = this.props;
     console.log(this.props);
     if (!leftValue.includes("'ArrowLeft'")) {
-      actions.updateRepairError(true)
+      actions.updateRepairError(true);
       if (leftValue.length === 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED);
         console.log("left empty");
@@ -97,8 +96,7 @@ class BuildingAICodeBlock extends Component {
         console.log("left wrong");
       }
       return false;
-    }
-    else {
+    } else {
       actions.updateRepairError(false);
       return true;
     }
@@ -116,10 +114,9 @@ class BuildingAICodeBlock extends Component {
         console.log("right wrong");
       }
       return false;
-    }
-    else {
+    } else {
       actions.updateRepairError(false);
-      return true
+      return true;
     }
   }
 
