@@ -37,17 +37,17 @@ const BiasedSimulation = (props) => {
     <div className="">
       <div
         className="exercise-frame tw-w-full tw-aspect-video"
-      // style={{ opacity: 0.5 }}
+        // style={{ opacity: 0.5 }}
       >
         <ChatRoom moderationCompleteCallback={handleModerationComplete} />
         {/* right now the div contains a background image */}
       </div>
 
-      {canContinue &&
+      {canContinue && (
         <div className="tw-text-[#408a28] tw-text-[18px]">
           <b>All messages have been moderated, please click `continue`.</b>
         </div>
-      }
+      )}
       <button
         className="btn btn-primary text-uppercase tw-mt-4"
         onClick={handleContinue}
