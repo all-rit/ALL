@@ -1,19 +1,18 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React from "react";
 import TrainingAICodeBlock from "./TrainingAICodeBlock";
 import Popup from "../../../shared/Popup";
 import { navigate } from "@reach/router";
 const TrainingAIRepair = (props) => {
   const { actions, state } = props;
-  const [disableNext, setDisableNext] = useState(false);
 
   console.log(state);
 
   function handleNext() {
-    if (state.repair10.repairError === null) {
-      setDisableNext(false);
+    if (state.repair10.timeError === null && state.repair10.timeValue !== "") {
+      return false;
     } else {
-      setDisableNext(true);
+      return true;
     }
   }
 
@@ -39,7 +38,7 @@ const TrainingAIRepair = (props) => {
       <Popup
         message={state.repair10.popupMessage}
         handler={actions.updatePopup}
-        error={state.repair10.repairError}
+        error={state.repair10.timeError}
       />
       <button
         className="btn btn-second btn-xl text-uppercase leftButton"
@@ -48,16 +47,16 @@ const TrainingAIRepair = (props) => {
       >
         Repair
       </button>
-      {handleNext && (
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase  "
-          key="Next"
-          onClick={handleNav}
-          disabled={disableNext}
-        >
-          Next
-        </button>
-      )}
+
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase  "
+        key="Next"
+        onClick={handleNav}
+        disabled={handleNext()}
+      >
+        Next
+      </button>
+
       {state.repair10.repairVisible && <TrainingAICodeBlock />}
     </div>
   );

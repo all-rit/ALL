@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { POPUP_MESSAGES } from "../../../../../constants/lab10";
 import { actions as repairActions } from "../../../../../reducers/lab10/RepairReducer";
 import { bindActionCreators } from "redux";
@@ -6,9 +6,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 export const TrainingAICodeBlock = (props) => {
-  const [timeValue, setTimeValue] = useState("");
-  const [timeError, setTimeError] = useState(null);
-  const { actions } = props;
+  const { actions, timeValue, timeError } = props;
 
   function validateTimeValue() {
     let error = null;
@@ -18,30 +16,24 @@ export const TrainingAICodeBlock = (props) => {
 
     if (isNaN(numericTimeValue) || !Number.isInteger(numericTimeValue)) {
       error = POPUP_MESSAGES.INVALID_INTEGER;
+      actions.updateTimeError(error);
+      return false;
     } else if (numericTimeValue > upperBound || numericTimeValue < lowerBound) {
       error = POPUP_MESSAGES.OUTSIDE_RANGE;
-    }
-
-    if (error !== null) {
-      setTimeError(error);
       actions.updateTimeError(error);
-      actions.updatePopup(error);
       return false;
+    } else {
+      return true
     }
 
-    setTimeError(null);
-    actions.updateTimeError(null);
-    actions.updatePopup(null);
-    return true;
   }
 
   function validateRepair() {
     if (!validateTimeValue()) {
-      actions.updateTimeError(timeError);
       actions.undoRepairChanges();
-      actions.updatePopup("Errors in repair, please fix.");
+      actions.updateRepairError(timeError)
+      actions.updatePopup("Errors in repair please fix.");
     } else {
-      actions.updateRepairError(null);
       actions.updateTimeError(null);
       actions.closeRepair();
       actions.updatePopup(POPUP_MESSAGES.SUCCESS);
@@ -49,7 +41,6 @@ export const TrainingAICodeBlock = (props) => {
   }
 
   function handleTimeValueChange(e) {
-    setTimeValue(e.target.value);
     actions.updateTimeValue(e.target.value);
   }
 
@@ -159,10 +150,9 @@ export const TrainingAICodeBlock = (props) => {
 TrainingAICodeBlock.propTypes = {
   actions: PropTypes.object,
   timeValue: PropTypes.string,
+  timeError: PropTypes.string,
   popupMessage: PropTypes.string,
   repairError: PropTypes.string,
-  changesApplied: PropTypes.bool,
-  repairVisible: PropTypes.bool,
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -171,4 +161,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(TrainingAICodeBlock);
+
+const mapStateToProps = (state) => {
+  const { timeValue, timeError, repairError } =
+    state.repair10;
+  return { timeValue, timeError, repairError };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingAICodeBlock);
