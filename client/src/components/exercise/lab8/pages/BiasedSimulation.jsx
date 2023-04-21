@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
+import { navigate } from "@reach/router";
 // import { navigate } from "@reach/router";
 
 import "../../../../assets/stylesheets/components/Witch.css";
@@ -29,14 +30,14 @@ const BiasedSimulation = (props) => {
   const handleContinue = () => {
     // submit choices to backend via exercise service
     // ExerciseService. ...
-    // navigate("/Lab8/Exercise/...");
+    navigate("/Lab8/Exercise/BiasDiscovery");
   };
 
   return (
     <div className="">
       <div
         className="exercise-frame tw-w-full tw-aspect-video"
-        // style={{ opacity: 0.5 }}
+      // style={{ opacity: 0.5 }}
       >
         <ChatRoom moderationCompleteCallback={handleModerationComplete} />
         {/* right now the div contains a background image */}
