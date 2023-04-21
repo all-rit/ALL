@@ -5,8 +5,7 @@ import React from "react";
 import { Router } from "@reach/router";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseFrame from "./components/ExerciseFrame";
-
-// import ChatRoom from "./components/ChatRoom";
+import BiasDiscovery from "./pages/BiasDiscovery";
 
 const Main = () => {
   return (
@@ -14,7 +13,7 @@ const Main = () => {
       <Router className="app">
         <ExerciseStart path="/*" />
         <ExerciseFrame path="/StreamSimulation" />
-        {/* <ChatRoom /> */}
+        <BiasDiscovery path="/BiasDiscovery" />
       </Router>
     </div>
   );
