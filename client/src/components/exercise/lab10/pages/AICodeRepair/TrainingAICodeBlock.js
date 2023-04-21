@@ -23,15 +23,14 @@ export const TrainingAICodeBlock = (props) => {
       actions.updateTimeError(error);
       return false;
     } else {
-      return true
+      return true;
     }
-
   }
 
   function validateRepair() {
     if (!validateTimeValue()) {
       actions.undoRepairChanges();
-      actions.updateRepairError(timeError)
+      actions.updateRepairError(timeError);
       actions.updatePopup("Errors in repair please fix.");
     } else {
       actions.updateTimeError(null);
@@ -161,12 +160,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
 const mapStateToProps = (state) => {
-  const { timeValue, timeError, repairError } =
-    state.repair10;
+  const { timeValue, timeError, repairError } = state.repair10;
   return { timeValue, timeError, repairError };
 };
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingAICodeBlock);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TrainingAICodeBlock);
