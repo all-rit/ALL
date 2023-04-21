@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 // Select random messages to display in the chat room.
 function selectMessages() {
-  const totalMessages = Math.floor(Math.random() * 3) + 4; // Random number between 4 and 6.
+  const totalMessages = Math.floor(Math.random() * 3) + 6; // Random number between 4 and 6.
   const halfMessages = Math.floor(totalMessages / 2);
 
   // Process all the messages into buckets based on their type
