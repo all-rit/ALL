@@ -74,7 +74,7 @@ const ChatMessage = ({
       {displayModerationSection && (
         <div className="tw-ml-auto tw-bg-[#419ce6] tw-p-2 tw-pt-0 tw-rounded-2xl tw-flex tw-flex-col tw-h-full tw-justify-between">
           <p className="tw-text-[#000000] tw-font-bold tw-text-xl tw-underline">
-            AI Polarity: {ai_polarity}
+            AI: {ai_polarity > 0 ? "Keep" : "Remove"}
           </p>
           <div className="tw-flex tw-mt-2">
             <button
