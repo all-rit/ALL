@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../constants/lab8";
+
+import {
+  EXERCISE_IDLE,
+  EXERCISE_PLAYING,
+  NAV_BIASED_SIMULATION,
+} from "../../../../constants/lab8";
+
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const ExerciseStart = ({ actions }) => {
+  useEffect(() => {
+    actions.updateState(EXERCISE_IDLE);
+  }, []);
+
   const handleStart = () => {
     actions.updateState(EXERCISE_PLAYING);
-    navigate("/Lab8/Exercise/StreamSimulation");
+    navigate(NAV_BIASED_SIMULATION);
   };
 
   return (
@@ -53,6 +63,7 @@ const ExerciseStart = ({ actions }) => {
 
 ExerciseStart.propTypes = {
   actions: PropTypes.object,
+  end: PropTypes.bool,
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -61,4 +72,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ExerciseStart);
+const mapStateToProps = (state) => {
+  const { end } = state.exercise8;
+  return { end };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseStart);
