@@ -38,7 +38,7 @@ const BiasedSimulation = (props) => {
     <div className="">
       <div
         className="exercise-frame tw-w-full tw-aspect-video"
-      // style={{ opacity: 0.5 }}
+        // style={{ opacity: 0.5 }}
       >
         <ChatRoom
           moderationCompleteCallback={handleModerationComplete}

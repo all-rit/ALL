@@ -10,18 +10,20 @@ const Recomendation = (props) => {
       alt={`AI Recommendation ${aiRecommendation ? "HIRE" : "DECLINE"}`}
     >
       <div
-        className={`recommendation__card ${aiRecommendation ? "recommendation__hire" : "recommendation__reject"
-          }`}
+        className={`recommendation__card ${
+          aiRecommendation ? "recommendation__hire" : "recommendation__reject"
+        }`}
       >
         <div className="recommendation__img">AI</div>
         <div className="recommendation__textBox">
           <div className="recommendation__textContent">
             <div
               className={`recommendation__title  
-                        ${aiRecommendation
-                  ? "recommendation__title_hire"
-                  : "recommendation__title_reject"
-                }`}
+                        ${
+                          aiRecommendation
+                            ? "recommendation__title_hire"
+                            : "recommendation__title_reject"
+                        }`}
             >
               {aiRecommendation ? "HIRE" : "REJECT"}
             </div>
