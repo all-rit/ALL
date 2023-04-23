@@ -8,11 +8,9 @@ import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 
-
 const BiasDiscovery = (props) => {
-   const { actions } = props;
+  const { actions } = props;
 
-  
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, []);
@@ -23,7 +21,6 @@ const BiasDiscovery = (props) => {
     // link fix to the issue above
     navigate("/Lab8/Exercise/SentimentAnalysisInfo");
   };
-
 
   return (
     <div className="center-div">
