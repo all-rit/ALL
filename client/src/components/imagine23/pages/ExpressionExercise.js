@@ -66,7 +66,6 @@ const ExpressionExercise = (props) => {
           <div className="playthrough__sentence">
             {count} discomfort detected.
           </div>
-
         </>
       )}
 

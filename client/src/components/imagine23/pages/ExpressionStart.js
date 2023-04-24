@@ -2,7 +2,7 @@
 import React from "react";
 import { navigate } from "@reach/router";
 
-const ExpressionStart = ({setCount}) => {
+const ExpressionStart = ({ setCount }) => {
   const handleNext = () => {
     navigate("/Imagine/ExpressionExercise");
     setCount(0);
