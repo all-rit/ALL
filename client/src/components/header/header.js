@@ -194,22 +194,23 @@ const Header = (props) => {
                   )}
                 </Nav>
               )}
-              {state.main.user !== null && state.main.user.firstname !== null && (
-                <NavItem className="collapse navbar-collapse">
-                  <NavLink
-                    className="nav-link "
-                    href="# "
-                    style={
-                      state.main.body === 2 ? activeStyle : { color: "#fff" }
-                    }
-                    onClick={() => navigate(state, actions, 2, 0)}
-                  >
-                    <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                      <li className="nav-item nav-last">Profile</li>
-                    </ul>
-                  </NavLink>
-                </NavItem>
-              )}
+              {state.main.user !== null &&
+                state.main.user.firstname !== null && (
+                  <NavItem className="collapse navbar-collapse">
+                    <NavLink
+                      className="nav-link "
+                      href="# "
+                      style={
+                        state.main.body === 2 ? activeStyle : { color: "#fff" }
+                      }
+                      onClick={() => navigate(state, actions, 2, 0)}
+                    >
+                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                        <li className="nav-item nav-last">Profile</li>
+                      </ul>
+                    </NavLink>
+                  </NavItem>
+                )}
 
               <WelcomeMessage
                 user={state.main.user}

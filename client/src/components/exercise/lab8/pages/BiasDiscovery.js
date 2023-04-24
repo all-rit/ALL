@@ -2,14 +2,24 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useEffect } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
+import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 
-const BiasDiscovery = () => {
+const BiasDiscovery = (props) => {
+  const { actions } = props;
+
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
+
   const handleContinue = () => {
     // TODO: update this to go to the repair section
     // https://github.com/all-rit/ALL/issues/320
     // link fix to the issue above
-    navigate("/Lab8/Exercise/BiasDiscovery");
+    navigate("/Lab8/Exercise/SentimentAnalysisInfo");
   };
 
   return (
@@ -62,4 +72,10 @@ const BiasDiscovery = () => {
   );
 };
 
-export default BiasDiscovery;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(BiasDiscovery);
