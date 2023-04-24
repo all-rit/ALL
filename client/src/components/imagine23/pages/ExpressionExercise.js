@@ -40,38 +40,33 @@ const ExpressionExercise = (props) => {
       </div>
 
       <div className="tw-p-1 tw-flex tw-justify-center">
-        <ReactPlayer
-          ref={reactPlayer}
-          width="660px"
-          height="415px"
-          url="https://www.youtube.com/watch?v=NpEaa2P7qZI"
-          onStart={() => {
-            setShowContinue(false);
-          }}
-          onEnded={() => {
-            setShowContinue(true);
-          }}
-        />
-        {/* <iframe
-          title={"Expression Exercise"}
-          width="660"
-          height="415"
-          src="https://www.youtube.com/embed/NpEaa2P7qZI"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen={false}
-        /> */}
+        {!showContine && (
+          <ReactPlayer
+            ref={reactPlayer}
+            width="760px"
+            height="515px"
+            url="https://www.youtube.com/watch?v=NpEaa2P7qZI"
+            onStart={() => {
+              setShowContinue(false);
+            }}
+            onEnded={() => {
+              setShowContinue(true);
+            }}
+          />
+        )}
       </div>
       {showContine == false && (
         <>
-          <div className="playthrough__sentence">
-            {count} discomfort detected.
-          </div>
           <button
-            className="btn btn-primary text-black btn-xl text-uppercase tw-m3"
+            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
             onClick={incrementCount}
           >
             Discomfort Detected
           </button>
+          <div className="playthrough__sentence">
+            {count} discomfort detected.
+          </div>
+
         </>
       )}
 

@@ -223,7 +223,7 @@ const Header = (props) => {
                     </NavLink>
                   </NavItem>
                 )}
-              {state.main.lab !== 0 && state.main.body !== 3 && (
+              {(state.main.lab === 0 ? state.main.body !== 3 : true) && (
                 <WelcomeMessage
                   user={state.main.user}
                   loginEnabled={loginEnabled}

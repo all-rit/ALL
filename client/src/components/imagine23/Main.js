@@ -95,6 +95,7 @@ const Main = (props) => {
             actions={actions}
             state={state}
             userID={userID}
+            setCount={setCount}
           />
           <ExpressionExercise
             path="/ExpressionExercise"
