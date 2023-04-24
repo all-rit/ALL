@@ -149,7 +149,8 @@ const DataRepair = (props) => {
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 {/* message */}
                 <span>
-                  message: &quot;watching your streams always puts me in a good mood&quot;,
+                  message: &quot;watching your streams always puts me in a good
+                  mood&quot;,
                 </span>
                 <br />
                 {/* two tab indent */}
@@ -176,7 +177,8 @@ const DataRepair = (props) => {
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 {/* message */}
                 <span>
-                  message: &quot;seen more skill from someone playing with their feet&quot;,
+                  message: &quot;seen more skill from someone playing with their
+                  feet&quot;,
                 </span>
                 <br />
                 {/* two tab indent */}
@@ -241,7 +243,8 @@ const DataRepair = (props) => {
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 {/* message */}
                 <span>
-                  message: &quot;sweet usage of that potion to poison that playa.&quot;,
+                  message: &quot;sweet usage of that potion to poison that
+                  playa.&quot;,
                 </span>
                 <br />
                 {/* two tab indent */}
