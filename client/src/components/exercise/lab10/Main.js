@@ -7,6 +7,8 @@ import BuildingAI from "./pages/BuildingAI";
 import BuildingAIRepair from "./pages/BuildingAIRepair";
 import TrainingAI from "./pages/TrainingAI";
 import TrainingAIRepair from "./pages/TrainingAIRepair";
+import ViewingAIWeightPage from "./pages/ViewingAIWeightPage";
+import AIWeightCodeBlock from "./components/AIWeightCodeBlock";
 
 const Main = () => {
   return (
@@ -22,6 +24,10 @@ const Main = () => {
         {/* Phase Two: Training the AI */}
         <TrainingAI path={"/TrainingAI"} />
         <TrainingAIRepair path={"/TrainingAI/Repair"} />
+
+        {/* Phase Three: View Current Weight */}
+        <AIWeightCodeBlock />
+        <ViewingAIWeightPage path={"/ViewWeights"} />
 
         {/* Exercise End */}
         <ExerciseEnd path="/ExerciseEnd" />
