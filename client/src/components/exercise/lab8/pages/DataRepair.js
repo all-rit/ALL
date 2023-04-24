@@ -24,6 +24,7 @@ const DataRepair = (props) => {
     state variables to contain the user's inputted repair values
     */
   const [/*messageOneValue,*/ setMessageOneValue] = useState(0);
+  const [/*messageOneValue,*/ setMessageTwoValue] = useState(0);
 
   /*
     state variables to track state of repair section
@@ -68,6 +69,7 @@ const DataRepair = (props) => {
 
       {/* add popup message */}
 
+      {/* user must click this button to populate the fake IDE */}
       <button
         className="btn btn-second btn-xl text-uppercase  leftButton"
         onClick={() => {
@@ -77,6 +79,7 @@ const DataRepair = (props) => {
       >
         Repair
       </button>
+      {/* disable this button until the user successfully enters repairs */}
       <button
         className="btn btn-primary text-black btn-xl text-uppercase "
         onClick={handleContinue}
@@ -89,6 +92,7 @@ const DataRepair = (props) => {
       {repairOpen && (
         <div className="code_editor">
           <div className="code_editor__content">
+            {/* name of file in fake IDE */}
             <div className="code_editor__files">
               <div className="code_editor__file code_editor__file--active">
                 SentimentAnalysisMessages.js
@@ -123,7 +127,8 @@ const DataRepair = (props) => {
                 </span>
               </div>
 
-              {/* opening - name of variable */}
+              {/* opening - messages variable */}
+              {/* should be on one line */}
               <div className="code_editor__line">
                 <span className="code_editor__const">const </span>
                 <span className="code_editor__json">messages </span>
@@ -131,25 +136,87 @@ const DataRepair = (props) => {
                 <span className="code_editor__class">{"{"}</span>
               </div>
 
-              {/* message one */}
-              <div className="code_editor__json_value code_editor__line-background--light">
+              {/* pre-configured messages with correct sentiment score */}
+              {/* first message */}
+              <div className="code_editor__json_value code_editor__line">
+                {/* one tab indent */}
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* opening bracket */}
                 &#123;
                 <br />
+                {/* two tab indent */}
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* message */}
                 <span>
-                  message: &quot;u r the w0r$t streamer ive ever seen&quot;
+                  message: &quot;watching your streams always puts me in a good mood&quot;,
                 </span>
                 <br />
+                {/* two tab indent */}
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* sentiment score */}
+                <span>ai_sentiment_score: 2&nbsp;</span>
+                <br />
+                {/* one tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* closing bracket */}
+                &#125;,
+              </div>
+
+              {/* second message */}
+              <div className="code_editor__json_value code_editor__line">
+                {/* one tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* opening bracket */}
+                &#123;
+                <br />
+                {/* two tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* message */}
+                <span>
+                  message: &quot;seen more skill from someone playing with their feet&quot;,
+                </span>
+                <br />
+                {/* two tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* sentiment score */}
+                <span>ai_sentiment_score: 0&nbsp;</span>
+                <br />
+                {/* one tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* closing bracket */}
+                &#125;,
+              </div>
+
+              {/* 2 messages total to repair */}
+              {/* first message */}
+              <div className="code_editor__json_value code_editor__line-background--light">
+                {/* one tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* opening bracket */}
+                &#123;
+                <br />
+                {/* two tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* message */}
+                <span>
+                  message: &quot;u r the w0r$t streamer ive ever seen&quot;,
+                </span>
+                <br />
+                {/* two tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* sentiment score */}
                 <span>ai_sentiment_score:&nbsp;</span>
                 <span>
                   <input
                     name="messageOne"
                     type="text"
-                    defaultValue={0}
+                    placeholder={0}
                     onChange={(e) => {
                       setMessageOneValue(e.target.value);
                     }}
@@ -157,8 +224,47 @@ const DataRepair = (props) => {
                   />
                 </span>
                 <br />
+                {/* one tab indent */}
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                &#125;
+                {/* closing bracket */}
+                &#125;,
+              </div>
+              {/* second message */}
+              <div className="code_editor__json_value code_editor__line-background--light">
+                {/* one tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* opening bracket */}
+                &#123;
+                <br />
+                {/* two tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* message */}
+                <span>
+                  message: &quot;sweet usage of that potion to poison that playa.&quot;,
+                </span>
+                <br />
+                {/* two tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* sentiment score */}
+                <span>ai_sentiment_score:&nbsp;</span>
+                <span>
+                  <input
+                    name="messageTwo"
+                    type="text"
+                    placeholder={0}
+                    onChange={(e) => {
+                      setMessageTwoValue(e.target.value);
+                    }}
+                    title={`message two`}
+                  />
+                </span>
+                <br />
+                {/* one tab indent */}
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                {/* closing bracket */}
+                &#125;,
               </div>
 
               {/* closing - end object */}
