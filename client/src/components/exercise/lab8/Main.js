@@ -7,6 +7,7 @@ import { Router } from "@reach/router";
 import ExerciseStart from "./pages/ExerciseStart";
 import BiasDiscovery from "./pages/BiasDiscovery";
 import BiasedSimulation from "./pages/BiasedSimulation";
+import SentimentAnalysisInfo from "./pages/SentimentAnalysisInfo";
 import DataRepair from "./pages/DataRepair";
 
 // import ChatRoom from "./components/ChatRoom";
@@ -18,6 +19,7 @@ const Main = () => {
         <ExerciseStart path="/*" />
         <BiasedSimulation path="/BiasedSimulation" />
         <BiasDiscovery path="/BiasDiscovery" />
+        <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
 
         {/* Repair Section */}
         <DataRepair path="/DataRepair" />

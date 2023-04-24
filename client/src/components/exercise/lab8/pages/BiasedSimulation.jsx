@@ -13,6 +13,7 @@ import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 
 import ChatRoom from "../components/ChatRoom";
 // import ExerciseService from "../../../../services/lab8/ExerciseService";
+import { selectMessagesAiBias } from "../selectMessagesFns";
 
 const BiasedSimulation = (props) => {
   const { actions } = props;
@@ -39,7 +40,10 @@ const BiasedSimulation = (props) => {
         className="exercise-frame tw-w-full tw-aspect-video"
         // style={{ opacity: 0.5 }}
       >
-        <ChatRoom moderationCompleteCallback={handleModerationComplete} />
+        <ChatRoom
+          moderationCompleteCallback={handleModerationComplete}
+          selectMessages={selectMessagesAiBias}
+        />
         {/* right now the div contains a background image */}
       </div>
 
