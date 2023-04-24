@@ -16,13 +16,14 @@ const Main = () => {
   return (
     <div className="bottomSpace">
       <Router className="app">
+        {/* Phase 1: experience biased sentiment analysis in action */}
         <ExerciseStart path="/*" />
         <BiasedSimulation path="/BiasedSimulation" />
         <BiasDiscovery path="/BiasDiscovery" />
-        <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
 
-        {/* Repair Section */}
+        {/* Phase 2: repair the biased dataset */}
         <DataRepair path="/DataRepair" />
+        <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
       </Router>
     </div>
   );

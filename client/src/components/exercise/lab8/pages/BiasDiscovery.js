@@ -58,8 +58,8 @@ const BiasDiscovery = (props) => {
         </div>
       </div>
       <div className="playthrough__sentence">
-        To learn more about sentiment analysis and the format of datasets 
-        used for sentiment analysis, click &quot;
+        To learn more about sentiment analysis and the format of datasets used
+        for sentiment analysis, click &quot;
         <b>Continue</b>&quot;.
       </div>
       <button

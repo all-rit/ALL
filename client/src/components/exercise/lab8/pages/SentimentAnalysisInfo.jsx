@@ -17,8 +17,8 @@ const SentimentAnalysisInfo = (props) => {
   }, []);
 
   const handleContinue = () => {
-    // will eventually go the repair section
-    navigate("/Lab8/Exercise/AIRepair");
+    // navigate to the repair section
+    navigate("/Lab8/Exercise/DataRepair");
   };
 
   return (
