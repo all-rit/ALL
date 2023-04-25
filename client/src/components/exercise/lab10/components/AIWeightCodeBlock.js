@@ -8,9 +8,9 @@ const AIWeightCodeBlock = () => {
     <div className="code_editor">
       <div className="code_editor__content">
         <div className="code_editor__files">
-          {/* AutoSysAI.js */}
+          {/* AIColorBlockWeight.js */}
           <div className="code_editor__file code_editor__file--active">
-            AutoSysAI.js
+            AIColorBlockWeight.js
           </div>
         </div>
 

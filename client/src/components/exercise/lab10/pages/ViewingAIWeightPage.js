@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
-import AIWeightCodeBlock from "../components/AIWeightCodeBlock";
 import { EXERCISE_PLAYING } from "../../../../constants/lab10";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import AIWeightCodeBlock from "../components/AIWeightCodeBlock";
 
 class ViewAIWeightPage extends Component {
   constructor(props) {
@@ -48,6 +48,7 @@ class ViewAIWeightPage extends Component {
             </div>
           </div>
         </Fragment>
+        <AIWeightCodeBlock/>
         <button
           className="btn btn-primary text-black btn-xl text-uppercase "
           onClick={this.handleNav.bind(this)}
@@ -55,7 +56,6 @@ class ViewAIWeightPage extends Component {
         >
           Next
         </button>
-        <AIWeightCodeBlock />
       </div>
     );
   }
