@@ -35,17 +35,25 @@ const ExpressionExercise = (props) => {
       <h2 className="playthrough__title">
         Expression Empathy Building: Exercise
       </h2>
-      <div className="playthrough__sentence">
-        Remember, if you believe you see discomfort, hit the button!
-      </div>
-
+      {showContine == null && (
+        <div className="playthrough__sentence">
+          Remember, if you believe you see discomfort, hit the button!
+        </div>
+      )}
+      {showContine == false && (
+        <>
+          <div className="playthrough__sentence">
+            {count} discomfort detected.
+          </div>
+        </>
+      )}
       <div className="tw-p-1 tw-flex tw-justify-center">
         {!showContine && (
           <ReactPlayer
             ref={reactPlayer}
-            width="760px"
-            height="515px"
-            url="https://www.youtube.com/watch?v=NpEaa2P7qZI"
+            width="960px"
+            height="615px"
+            url="https://www.youtube.com/watch?v=DjJTrWT60ls"
             onStart={() => {
               setShowContinue(false);
             }}
@@ -63,9 +71,6 @@ const ExpressionExercise = (props) => {
           >
             Discomfort Detected
           </button>
-          <div className="playthrough__sentence">
-            {count} discomfort detected.
-          </div>
         </>
       )}
 
