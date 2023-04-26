@@ -29,13 +29,13 @@ const DataRepair = (props) => {
   const [messageFourValue, setMessageFourValue] = useState(0);
   const [messageFiveValue, setMessageFiveValue] = useState(0);
   const [messageSixValue, setMessageSixValue] = useState(0);
-  const [/*messageOneValueError,*/ setMessageOneValueError] = useState(false);
-  const [/*messageTwoValueError,*/ setMessageTwoValueError] = useState(false);
-  const [/*messageThreeValueError,*/ setMessageThreeValueError] =
+  const [messageOneValueError, setMessageOneValueError] = useState(false);
+  const [messageTwoValueError, setMessageTwoValueError] = useState(false);
+  const [messageThreeValueError, setMessageThreeValueError] =
     useState(false);
-  const [/*messageFourValueError,*/ setMessageFourValueError] = useState(false);
-  const [/*messageFiveValueError,*/ setMessageFiveValueError] = useState(false);
-  const [/*messageSixValueError,*/ setMessageSixValueError] = useState(false);
+  const [messageFourValueError, setMessageFourValueError] = useState(false);
+  const [messageFiveValueError, setMessageFiveValueError] = useState(false);
+  const [messageSixValueError, setMessageSixValueError] = useState(false);
 
   /*
     state variables to track state of repair section
@@ -67,7 +67,7 @@ const DataRepair = (props) => {
 
     // check that each repair value is in the list of acceptable values
     // message one
-    if (!(messageOneValue in repairAllowList)) {
+    if ((!(messageOneValue in repairAllowList)) || messageOneValue == "") {
       // we need to display an error message
       setMessageOneValueError(true);
       error = true;
@@ -76,7 +76,7 @@ const DataRepair = (props) => {
       setMessageOneValueError(false);
     }
     // message two
-    if (!(messageTwoValue in repairAllowList)) {
+    if ((!(messageTwoValue in repairAllowList)) || messageTwoValue == "") {
       // we need to display an error message
       setMessageTwoValueError(true);
       error = true;
@@ -85,7 +85,7 @@ const DataRepair = (props) => {
       setMessageTwoValueError(false);
     }
     // message three
-    if (!(messageThreeValue in repairAllowList)) {
+    if ((!(messageThreeValue in repairAllowList)) || messageThreeValue == "") {
       // we need to display an error message
       setMessageThreeValueError(true);
       error = true;
@@ -94,7 +94,7 @@ const DataRepair = (props) => {
       setMessageThreeValueError(false);
     }
     // message four
-    if (!(messageFourValue in repairAllowList)) {
+    if ((!(messageFourValue in repairAllowList)) || messageFourValue == "") {
       // we need to display an error message
       setMessageFourValueError(true);
       error = true;
@@ -103,7 +103,7 @@ const DataRepair = (props) => {
       setMessageFourValueError(false);
     }
     // message five
-    if (!(messageFiveValue in repairAllowList)) {
+    if ((!(messageFiveValue in repairAllowList)) || messageFiveValue == "") {
       // we need to display an error message
       setMessageFiveValueError(true);
       error = true;
@@ -111,8 +111,8 @@ const DataRepair = (props) => {
       // clear the error message
       setMessageFiveValueError(false);
     }
-    // message two
-    if (!(messageSixValue in repairAllowList)) {
+    // message six
+    if ((!(messageSixValue in repairAllowList)) || messageSixValue == "") {
       // we need to display an error message
       setMessageSixValueError(true);
       error = true;
@@ -268,6 +268,16 @@ const DataRepair = (props) => {
                       />
                     </span>
                   </div>
+                  {messageOneValueError && (
+                    <div className="code_editor__line">
+                      {/* one tab indent */}
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"Please enter either 0, 1, or 2."}
+                      </span>
+                    </div>
+                  )}
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
@@ -318,6 +328,16 @@ const DataRepair = (props) => {
                       />
                     </span>
                   </div>
+                  {messageTwoValueError && (
+                    <div className="code_editor__line">
+                      {/* one tab indent */}
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"Please enter either 0, 1, or 2."}
+                      </span>
+                    </div>
+                  )}
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
@@ -367,6 +387,16 @@ const DataRepair = (props) => {
                       />
                     </span>
                   </div>
+                  {messageThreeValueError && (
+                    <div className="code_editor__line">
+                      {/* one tab indent */}
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"Please enter either 0, 1, or 2."}
+                      </span>
+                    </div>
+                  )}
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
@@ -417,6 +447,16 @@ const DataRepair = (props) => {
                       />
                     </span>
                   </div>
+                  {messageFourValueError && (
+                    <div className="code_editor__line">
+                      {/* one tab indent */}
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"Please enter either 0, 1, or 2."}
+                      </span>
+                    </div>
+                  )}
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
@@ -466,6 +506,16 @@ const DataRepair = (props) => {
                       />
                     </span>
                   </div>
+                  {messageFiveValueError && (
+                    <div className="code_editor__line">
+                      {/* one tab indent */}
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"Please enter either 0, 1, or 2."}
+                      </span>
+                    </div>
+                  )}
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
@@ -515,6 +565,16 @@ const DataRepair = (props) => {
                       />
                     </span>
                   </div>
+                  {messageSixValueError && (
+                    <div className="code_editor__line">
+                      {/* one tab indent */}
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <span className="form-error">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {"Please enter either 0, 1, or 2."}
+                      </span>
+                    </div>
+                  )}
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
