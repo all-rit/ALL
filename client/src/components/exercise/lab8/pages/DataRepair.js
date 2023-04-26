@@ -31,8 +31,7 @@ const DataRepair = (props) => {
   const [messageSixValue, setMessageSixValue] = useState(0);
   const [/*messageOneValueError,*/ setMessageOneValueError] = useState(false);
   const [/*messageTwoValueError,*/ setMessageTwoValueError] = useState(false);
-  const [/*messageThreeValueError,*/ setMessageThreeValueError] =
-    useState(false);
+  const [/*messageThreeValueError,*/ setMessageThreeValueError] = useState(false);
   const [/*messageFourValueError,*/ setMessageFourValueError] = useState(false);
   const [/*messageFiveValueError,*/ setMessageFiveValueError] = useState(false);
   const [/*messageSixValueError,*/ setMessageSixValueError] = useState(false);
@@ -120,7 +119,7 @@ const DataRepair = (props) => {
       // clear the error message
       setMessageSixValueError(false);
     }
-    //
+
     if (!error) {
       // eventually need to send repair data to the backend
       console.log("Repairs made with no errors");
@@ -237,25 +236,15 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;watching your streams always puts me in a good
-                    mood&quot;
-                  </span>
-                  ,
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;watching your streams always puts me in a good mood&quot;</span>,
                   <br />
                   {/* sentiment score */}
                   <div className="code_editor__line-background--light">
                     {/* two tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
                     <span>
                       <input
                         name="messageOne"
@@ -287,25 +276,15 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;mom here, this game is so bad for our children. STOP
-                    THE STREAM!!!!!!&quot;
-                  </span>
-                  ,
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;mom here, this game is so bad for our children. STOP THE STREAM!!!!!!&quot;</span>,
                   <br />
                   {/* sentiment score */}
                   <div className="code_editor__line-background--light">
                     {/* two tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
                     <span>
                       <input
                         name="messageTwo"
@@ -337,24 +316,15 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;u r the w0r$t streamer ive ever seen&quot;
-                  </span>
-                  ,
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;u r the w0r$t streamer ive ever seen&quot;</span>,
                   <br />
                   {/* sentiment score */}
                   <div className="code_editor__line-background--light">
                     {/* two tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
                     <span>
                       <input
                         name="messageThree"
@@ -386,25 +356,15 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;seen more skill from someone playing with their
-                    feet&quot;
-                  </span>
-                  ,
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;seen more skill from someone playing with their feet&quot;</span>,
                   <br />
                   {/* sentiment score */}
                   <div className="code_editor__line-background--light">
                     {/* two tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
                     <span>
                       <input
                         name="messageFour"
@@ -436,24 +396,15 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;sweet usage of that potion to poison that playa.&quot;
-                  </span>
-                  ,
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;sweet usage of that potion to poison that playa.&quot;</span>,
                   <br />
                   {/* sentiment score */}
                   <div className="code_editor__line-background--light">
                     {/* two tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
                     <span>
                       <input
                         name="messageFive"
@@ -485,24 +436,15 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;bro, your stream is straight up fire&quot;
-                  </span>
-                  ,
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;bro, your stream is straight up fire&quot;</span>,
                   <br />
                   {/* sentiment score */}
                   <div className="code_editor__line-background--light">
                     {/* two tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
                     <span>
                       <input
                         name="messageSix"
