@@ -25,8 +25,16 @@ const DataRepair = (props) => {
     */
   const [messageOneValue, setMessageOneValue] = useState(0);
   const [messageTwoValue, setMessageTwoValue] = useState(0);
+  const [messageThreeValue, setMessageThreeValue] = useState(0);
+  const [messageFourValue, setMessageFourValue] = useState(0);
+  const [messageFiveValue, setMessageFiveValue] = useState(0);
+  const [messageSixValue, setMessageSixValue] = useState(0);
   const [/*messageOneValueError,*/ setMessageOneValueError] = useState(false);
   const [/*messageTwoValueError,*/ setMessageTwoValueError] = useState(false);
+  const [/*messageThreeValueError,*/ setMessageThreeValueError] = useState(false);
+  const [/*messageFourValueError,*/ setMessageFourValueError] = useState(false);
+  const [/*messageFiveValueError,*/ setMessageFiveValueError] = useState(false);
+  const [/*messageSixValueError,*/ setMessageSixValueError] = useState(false);
 
   /*
     state variables to track state of repair section
@@ -75,7 +83,43 @@ const DataRepair = (props) => {
       // clear the error message
       setMessageTwoValueError(false);
     }
-
+    // message three
+    if (!(messageThreeValue in repairAllowList)) {
+      // we need to display an error message
+      setMessageThreeValueError(true);
+      error = true;
+    } else {
+      // clear the error message
+      setMessageThreeValueError(false);
+    }
+    // message four
+    if (!(messageFourValue in repairAllowList)) {
+      // we need to display an error message
+      setMessageFourValueError(true);
+      error = true;
+    } else {
+      // clear the error message
+      setMessageFourValueError(false);
+    }
+    // message five
+    if (!(messageFiveValue in repairAllowList)) {
+      // we need to display an error message
+      setMessageFiveValueError(true);
+      error = true;
+    } else {
+      // clear the error message
+      setMessageFiveValueError(false);
+    }
+    // message two
+    if (!(messageSixValue in repairAllowList)) {
+      // we need to display an error message
+      setMessageSixValueError(true);
+      error = true;
+    } else {
+      // clear the error message
+      setMessageSixValueError(false);
+    }
+// 
     if (!error) {
       // eventually need to send repair data to the backend
       console.log("Repairs made with no errors");
@@ -179,10 +223,10 @@ const DataRepair = (props) => {
                 <span className="code_editor__class">{"{"}</span>
               </div>
 
-              {/* pre-configured messages with correct sentiment score */}
+              {/* 6 messages total to repair */}
               {/* first message */}
               <div className="code_editor__form">
-                <div className="code_editor__json_value code_editor__line">
+                <div className="code_editor__line">
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* opening bracket */}
@@ -192,17 +236,27 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span>
-                    message: &quot;watching your streams always puts me in a
-                    good mood&quot;,
-                  </span>
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;watching your streams always puts me in a good mood&quot;</span>,
                   <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* sentiment score */}
-                  <span>ai_sentiment_score: 2&nbsp;</span>
-                  <br />
+                  <div className="code_editor__line-background--light">
+                    {/* two tab indent */}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
+                    <span>
+                      <input
+                        name="messageOne"
+                        type="text"
+                        placeholder={0}
+                        onChange={(e) => {
+                          setMessageOneValue(e.target.value);
+                        }}
+                        title={`message one`}
+                      />
+                    </span>
+                  </div>
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
@@ -212,7 +266,7 @@ const DataRepair = (props) => {
 
               {/* second message */}
               <div className="code_editor__form">
-                <div className="code_editor__json_value code_editor__line">
+                <div className="code_editor__line">
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* opening bracket */}
@@ -222,17 +276,27 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span>
-                    message: &quot;seen more skill from someone playing with
-                    their feet&quot;,
-                  </span>
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;mom here, this game is so bad for our children. STOP THE STREAM!!!!!!&quot;</span>,
                   <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* sentiment score */}
-                  <span>ai_sentiment_score: 0&nbsp;</span>
-                  <br />
+                  <div className="code_editor__line-background--light">
+                    {/* two tab indent */}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
+                    <span>
+                      <input
+                        name="messageTwo"
+                        type="text"
+                        placeholder={0}
+                        onChange={(e) => {
+                          setMessageTwoValue(e.target.value);
+                        }}
+                        title={`message two`}
+                      />
+                    </span>
+                  </div>
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
@@ -240,10 +304,9 @@ const DataRepair = (props) => {
                 </div>
               </div>
 
-              {/* 2 messages total to repair */}
-              {/* first message */}
+              {/* third message */}
               <div className="code_editor__form">
-                <div className="code_editor__json_value code_editor__line-background--light">
+                <div className="code_editor__line">
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* opening bracket */}
@@ -253,27 +316,27 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span>
-                    message: &quot;u r the w0r$t streamer ive ever seen&quot;,
-                  </span>
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;u r the w0r$t streamer ive ever seen&quot;</span>,
                   <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* sentiment score */}
-                  <span>ai_sentiment_score:&nbsp;</span>
-                  <span>
-                    <input
-                      name="messageOne"
-                      type="text"
-                      placeholder={0}
-                      onChange={(e) => {
-                        setMessageOneValue(e.target.value);
-                      }}
-                      title={`message one`}
-                    />
-                  </span>
-                  <br />
+                  <div className="code_editor__line-background--light">
+                    {/* two tab indent */}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
+                    <span>
+                      <input
+                        name="messageThree"
+                        type="text"
+                        placeholder={0}
+                        onChange={(e) => {
+                          setMessageThreeValue(e.target.value);
+                        }}
+                        title={`message three`}
+                      />
+                    </span>
+                  </div>
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
@@ -281,9 +344,9 @@ const DataRepair = (props) => {
                 </div>
               </div>
 
-              {/* second message */}
+              {/* fourth message */}
               <div className="code_editor__form">
-                <div className="code_editor__json_value code_editor__line-background--light">
+                <div className="code_editor__line">
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* opening bracket */}
@@ -293,28 +356,107 @@ const DataRepair = (props) => {
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* message */}
-                  <span>
-                    message: &quot;sweet usage of that potion to poison that
-                    playa.&quot;,
-                  </span>
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;seen more skill from someone playing with their feet&quot;</span>,
+                  <br />
+                  {/* sentiment score */}
+                  <div className="code_editor__line-background--light">
+                    {/* two tab indent */}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
+                    <span>
+                      <input
+                        name="messageFour"
+                        type="text"
+                        placeholder={0}
+                        onChange={(e) => {
+                          setMessageFourValue(e.target.value);
+                        }}
+                        title={`message four`}
+                      />
+                    </span>
+                  </div>
+                  {/* one tab indent */}
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  {/* closing bracket */}
+                  &#125;,
+                </div>
+              </div>
+
+              {/* fifth message */}
+              <div className="code_editor__form">
+                <div className="code_editor__line">
+                  {/* one tab indent */}
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  {/* opening bracket */}
+                  &#123;
                   <br />
                   {/* two tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* sentiment score */}
-                  <span>ai_sentiment_score:&nbsp;</span>
-                  <span>
-                    <input
-                      name="messageTwo"
-                      type="text"
-                      placeholder={0}
-                      onChange={(e) => {
-                        setMessageTwoValue(e.target.value);
-                      }}
-                      title={`message two`}
-                    />
-                  </span>
+                  {/* message */}
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;sweet usage of that potion to poison that playa.&quot;</span>,
                   <br />
+                  {/* sentiment score */}
+                  <div className="code_editor__line-background--light">
+                    {/* two tab indent */}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
+                    <span>
+                      <input
+                        name="messageFive"
+                        type="text"
+                        placeholder={0}
+                        onChange={(e) => {
+                          setMessageFiveValue(e.target.value);
+                        }}
+                        title={`message five`}
+                      />
+                    </span>
+                  </div>
+                  {/* one tab indent */}
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  {/* closing bracket */}
+                  &#125;,
+                </div>
+              </div>
+
+              {/* sixth message */}
+              <div className="code_editor__form">
+                <div className="code_editor__line">
+                  {/* one tab indent */}
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  {/* opening bracket */}
+                  &#123;
+                  <br />
+                  {/* two tab indent */}
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  {/* message */}
+                  <span className="code_editor__json_property_key">&quot;message&quot;</span> :&nbsp;
+                  <span className="code_editor__json_property_value">&quot;bro, your stream is straight up fire&quot;</span>,
+                  <br />
+                  {/* sentiment score */}
+                  <div className="code_editor__line-background--light">
+                    {/* two tab indent */}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span className="code_editor__json_property_key">&quot;ai_sentiment_score&quot;</span> :&nbsp;
+                    <span>
+                      <input
+                        name="messageSix"
+                        type="text"
+                        placeholder={0}
+                        onChange={(e) => {
+                          setMessageSixValue(e.target.value);
+                        }}
+                        title={`message six`}
+                      />
+                    </span>
+                  </div>
                   {/* one tab indent */}
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   {/* closing bracket */}
