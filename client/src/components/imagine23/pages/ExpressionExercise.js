@@ -59,6 +59,7 @@ const ExpressionExercise = (props) => {
             }}
             onEnded={() => {
               setShowContinue(true);
+              handleNext();
             }}
           />
         )}
