@@ -3,6 +3,7 @@
 import React from "react";
 import Button from "../components/header/buttons/button";
 import "./secondaryInstructions.css";
+import { navigate } from "@reach/router";
 
 /*
 Page containing the instructions for the second popup the user sees
@@ -13,6 +14,7 @@ const SecondInstructions = ({
   selectOption,
   toWhiteBackground,
   background,
+  isImagineExpression,
 }) => {
   const alreadyCalled = false;
   if (!alreadyCalled) {
@@ -24,7 +26,11 @@ const SecondInstructions = ({
   }
 
   const closeInstructions = () => {
-    closePage();
+    if(!isImagineExpression){
+      closePage();
+    } else {
+      navigate("/Imagine/ExpressionExerciseStart")
+    }
   };
 
   return (

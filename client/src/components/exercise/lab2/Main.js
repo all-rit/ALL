@@ -246,6 +246,7 @@ class Main extends Component {
       onResetSystem,
       onGoBackFromExercise,
       isImagine,
+      isImagineExpression,
       userID,
     } = this.props;
 
@@ -345,6 +346,7 @@ class Main extends Component {
                         selectOption={onSelectOption}
                         toWhiteBackground={onToWhiteBackground}
                         background={baseBackground}
+                        isImagineExpression={isImagineExpression}
                       />
                     ) : (
                       <div>

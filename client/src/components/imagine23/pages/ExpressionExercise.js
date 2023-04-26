@@ -53,7 +53,7 @@ const ExpressionExercise = (props) => {
             ref={reactPlayer}
             width="960px"
             height="615px"
-            url="https://www.youtube.com/watch?v=DjJTrWT60ls"
+            url="https://www.youtube.com/watch?v=k_A93MYFkzc"
             onStart={() => {
               setShowContinue(false);
             }}

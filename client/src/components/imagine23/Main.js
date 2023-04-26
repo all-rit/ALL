@@ -16,6 +16,8 @@ import ExpressionExercise from "./pages/ExpressionExercise";
 import ExpressionScore from "./pages/ExpressionScore";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import UpdateID from "./pages/UpdateID";
+import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
+import ExpressionInstructions from "./pages/ExpressionInstructions";
 const { nanoid } = require("nanoid");
 
 const mapStateToProps = (state) => ({
@@ -77,8 +79,20 @@ const Main = (props) => {
             state={state}
             userID={userID}
           />
+          <ExpressionInstructions
+            path="/ExpressionStart"
+            actions={actions}
+            state={state}
+            userID={userID}
+          />
           <MainInstructions
             path="/ExperientialInstructions"
+            actions={actions}
+            state={state}
+            userID={userID}
+          />
+          <ExpressionMainInstructions
+            path="/ExpressionInstructions"
             actions={actions}
             state={state}
             userID={userID}
@@ -90,8 +104,16 @@ const Main = (props) => {
             isImagine
             userID={userID}
           />
+          <ExerciseLab2
+            path="/ExpressionActivity"
+            actions={actions}
+            state={state}
+            isImagine
+            isImagineExpression
+            userID={userID}
+          />
           <ExpressionStart
-            path="/ExpressionStart"
+            path="/ExpressionExerciseStart"
             actions={actions}
             state={state}
             userID={userID}
