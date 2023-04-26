@@ -7,7 +7,7 @@ import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseRe
 import React, { useState, useEffect } from "react";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
-import Popup from "../../shared/Popup";
+import Popup from "../../shared/Popup"
 
 const DataRepair = (props) => {
   const { actions } = props;
@@ -124,6 +124,7 @@ const DataRepair = (props) => {
       // eventually need to send repair data to the backend
       console.log("Repairs made with no errors");
       setRepairOpen(false);
+      setUserError(false);
       popUpHandler("The repairs have been made.");
     } else {
       setUserError(true);
