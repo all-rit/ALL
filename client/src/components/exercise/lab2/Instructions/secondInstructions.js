@@ -26,10 +26,10 @@ const SecondInstructions = ({
   }
 
   const closeInstructions = () => {
-    if(!isImagineExpression){
+    if (!isImagineExpression) {
       closePage();
     } else {
-      navigate("/Imagine/ExpressionExerciseStart")
+      navigate("/Imagine/ExpressionExerciseStart");
     }
   };
 
