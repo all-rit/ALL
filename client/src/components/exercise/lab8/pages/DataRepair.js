@@ -31,8 +31,7 @@ const DataRepair = (props) => {
   const [messageSixValue, setMessageSixValue] = useState(0);
   const [messageOneValueError, setMessageOneValueError] = useState(false);
   const [messageTwoValueError, setMessageTwoValueError] = useState(false);
-  const [messageThreeValueError, setMessageThreeValueError] =
-    useState(false);
+  const [messageThreeValueError, setMessageThreeValueError] = useState(false);
   const [messageFourValueError, setMessageFourValueError] = useState(false);
   const [messageFiveValueError, setMessageFiveValueError] = useState(false);
   const [messageSixValueError, setMessageSixValueError] = useState(false);
@@ -67,7 +66,7 @@ const DataRepair = (props) => {
 
     // check that each repair value is in the list of acceptable values
     // message one
-    if ((!(messageOneValue in repairAllowList)) || messageOneValue == "") {
+    if (!(messageOneValue in repairAllowList) || messageOneValue == "") {
       // we need to display an error message
       setMessageOneValueError(true);
       error = true;
@@ -76,7 +75,7 @@ const DataRepair = (props) => {
       setMessageOneValueError(false);
     }
     // message two
-    if ((!(messageTwoValue in repairAllowList)) || messageTwoValue == "") {
+    if (!(messageTwoValue in repairAllowList) || messageTwoValue == "") {
       // we need to display an error message
       setMessageTwoValueError(true);
       error = true;
@@ -85,7 +84,7 @@ const DataRepair = (props) => {
       setMessageTwoValueError(false);
     }
     // message three
-    if ((!(messageThreeValue in repairAllowList)) || messageThreeValue == "") {
+    if (!(messageThreeValue in repairAllowList) || messageThreeValue == "") {
       // we need to display an error message
       setMessageThreeValueError(true);
       error = true;
@@ -94,7 +93,7 @@ const DataRepair = (props) => {
       setMessageThreeValueError(false);
     }
     // message four
-    if ((!(messageFourValue in repairAllowList)) || messageFourValue == "") {
+    if (!(messageFourValue in repairAllowList) || messageFourValue == "") {
       // we need to display an error message
       setMessageFourValueError(true);
       error = true;
@@ -103,7 +102,7 @@ const DataRepair = (props) => {
       setMessageFourValueError(false);
     }
     // message five
-    if ((!(messageFiveValue in repairAllowList)) || messageFiveValue == "") {
+    if (!(messageFiveValue in repairAllowList) || messageFiveValue == "") {
       // we need to display an error message
       setMessageFiveValueError(true);
       error = true;
@@ -112,7 +111,7 @@ const DataRepair = (props) => {
       setMessageFiveValueError(false);
     }
     // message six
-    if ((!(messageSixValue in repairAllowList)) || messageSixValue == "") {
+    if (!(messageSixValue in repairAllowList) || messageSixValue == "") {
       // we need to display an error message
       setMessageSixValueError(true);
       error = true;
