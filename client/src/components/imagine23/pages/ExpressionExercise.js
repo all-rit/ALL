@@ -36,13 +36,13 @@ const ExpressionExercise = (props) => {
         Expression Empathy Building: Exercise
       </h2>
       {showContine == null && (
-        <div className="playthrough__sentence">
+        <div className="playthrough__sentence__imagine">
           Remember, if you believe you see discomfort, hit the button!
         </div>
       )}
       {showContine == false && (
         <>
-          <div className="playthrough__sentence">
+          <div className="playthrough__sentence__imagine">
             {count} discomfort detected.
           </div>
         </>

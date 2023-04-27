@@ -21,6 +21,12 @@
   margin-bottom: 1.5rem;
 }
 
+.playthrough__sentence__imagine {
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .playthrough__list {
   margin-left: 2.5rem;
   list-style-type: disc;
