@@ -1,8 +1,10 @@
 name: Production-Deployment
 "on":
-  pull_request:
+  pull_request_target:
     branches:
       - prod
+    types:
+      - closed
 jobs:
   run_build:
     name: client deploy
