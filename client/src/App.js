@@ -28,7 +28,7 @@ import { default as LandingPageBody } from "./components/body/landingpage/index"
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
 import { default as Error } from "./components/body/landingpage/error";
 import { default as Profile } from "./components/body/profilepage/Profile";
-import { default as Imagine } from "./components/imagine/Imagine";
+import { default as Imagine } from "./components/imagine23/Main";
 
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
@@ -104,24 +104,7 @@ class App extends Component {
                 <Profile path="/Profile" user={state.main.user} />
                 <Error actions={actions} default />
 
-                <Imagine
-                  path="/Imagine1/*"
-                  user={state.main.user}
-                  biasType={"none"}
-                  linkNum={1}
-                />
-                <Imagine
-                  path="/Imagine2/*"
-                  user={state.main.user}
-                  biasType={"user"}
-                  linkNum={2}
-                />
-                <Imagine
-                  path="/Imagine3/*"
-                  user={state.main.user}
-                  biasType={"team"}
-                  linkNum={3}
-                />
+                <Imagine path="/Imagine/*" user={state.main.user} />
 
                 <About
                   path={`/Lab${lab}/`}

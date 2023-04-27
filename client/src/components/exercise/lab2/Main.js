@@ -245,6 +245,9 @@ class Main extends Component {
       onToGreyBackground,
       onResetSystem,
       onGoBackFromExercise,
+      isImagine,
+      isImagineExpression,
+      userID,
     } = this.props;
 
     // establishing array of current colors for the system
@@ -324,6 +327,8 @@ class Main extends Component {
                   enterSecondInfoState={onEnterSecondInfoState}
                   exercisesPlayed={exercisesPlayed}
                   enterThirdInfoState={onOpenThirdInfoState}
+                  isImagine={isImagine}
+                  userID={userID}
                 />
               </div>
             ) : (
@@ -341,6 +346,7 @@ class Main extends Component {
                         selectOption={onSelectOption}
                         toWhiteBackground={onToWhiteBackground}
                         background={baseBackground}
+                        isImagineExpression={isImagineExpression}
                       />
                     ) : (
                       <div>
@@ -351,6 +357,7 @@ class Main extends Component {
                             activatePopup={onOpenColorChange}
                             toWhiteBackground={onToWhiteBackground}
                             background={baseBackground}
+                            isImagine={isImagine}
                           />
                         ) : (
                           <div>
@@ -369,7 +376,7 @@ class Main extends Component {
                                   <Conclusion resetSystem={onResetSystem} />
                                 ) : (
                                   <div>
-                                    {firstExercise ? (
+                                    {firstExercise && !isImagine ? (
                                       <LandingPage
                                         endFirstExercise={onEndFirstExercise}
                                         toWhiteBackground={onToWhiteBackground}

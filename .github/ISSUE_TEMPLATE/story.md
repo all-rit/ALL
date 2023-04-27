@@ -16,6 +16,7 @@ Use this template to create a new story item.
 4. Add any additional details or context that may be helpful.5. Assign the issue to a team member or yourself.
 5. Use the checkboxes to track progress and ensure all requirements are met before marking the issue as complete.
 6. Use the checkboxes to track progress and ensure all requirements are met before marking the issue as complete.
+
 ---
 
 # <Story Title>

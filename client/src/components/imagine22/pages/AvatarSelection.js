@@ -20,7 +20,6 @@ const AvatarSelection = (props) => {
 
   const handleAvatarSelection = () => {
     if (avatar.length !== 0) {
-      ImagineService.userAvatar(user.userid, avatar);
       setSquadSelection(true);
     }
   };
