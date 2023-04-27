@@ -4,22 +4,35 @@ name: Production-Deployment
     branches:
       - prod
 jobs:
-  run_pull:
+  run_build:
     name: client deploy
     runs-on: ubuntu-latest
-    
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases
     steps:
-      - name: Install SSH key
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: cd client
+      - run: npm i --legacy-peer-deps
+      - run: npm run build --if-present
+      - run: npm test
+      - run: cd ../
+      - run: cd server
+      - run: npm i
+      - run: npm run build --if-present
+      - run: npm test
+  run_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Deploy
         uses: shimataro/ssh-key-action@v2
         with:
-          key: {%- raw -%} ${{ secrets.SSH_SECRET }}
-          name: id_rsa # optional
+          key: ${{ secrets.SSH_SECRET }}
           known_hosts: ${{ secrets.SSH_HOST_NAME }}
-      - name: connect
-        run: ssh -tt ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }} 
-      - name: cd and naviagte to directory
-        run: "cd ${{ secrets.PROJECT_PATH }} && git checkout prod && git pull"
-      - name: run build
-        run: npm run build
-      - name: exit
-        run: exit
+      - run: rsync -r ./build ${{secrets.PROJECT_PATH}} --delete
