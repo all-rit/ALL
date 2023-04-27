@@ -11,7 +11,7 @@ const ExerciseEnd = (props) => {
       <h2 className="playthrough__title">
         {isExperiential ? "Experiential" : "Expression"} Empathy Building: End
       </h2>
-      <div className="playthrough__sentence">
+      <div className="playthrough__sentence__imagine">
         Congratulations! You've completed the activity! Thanks for
         participating!
       </div>
