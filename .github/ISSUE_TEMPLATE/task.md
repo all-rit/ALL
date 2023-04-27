@@ -1,9 +1,9 @@
 ---
 name: Task
 about: Create a task item
-title: 'Task: NAME'
-labels: ''
-assignees: ''
+title: "Task: NAME"
+labels: ""
+assignees: ""
 ---
 
 # Template Instructions

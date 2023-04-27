@@ -1,9 +1,9 @@
 ---
 name: Spike
 about: Create a research spike
-title: 'Spike: NAME'
-labels: ''
-assignees: ''
+title: "Spike: NAME"
+labels: ""
+assignees: ""
 ---
 
 # Template Instructions
