@@ -44,7 +44,7 @@ const AIBias = (props) => {
                     {/**/}
                     <div className="code_editor__line">
                         <span className="code_editor__const">const&nbsp;</span>
-                        <span className="code_editor__json">biasConfig</span>
+                        <span className="code_editor__json">weights</span>
                         <span> &#61; </span>
                         <span className="code_editor__class">&#123;</span>
                         <br></br>
