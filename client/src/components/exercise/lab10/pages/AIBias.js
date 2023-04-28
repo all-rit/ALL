@@ -18,10 +18,9 @@ const AIBias = (props) => {
             weightList.push(weights[color]);
         });
         weightList.sort((a, b) => b - a);
-    }
+    };
     mapWeights();
     return (
-
         <div className="code_editor">
             <div className="code_editor__content">
                 <div className="code_editor__files">
@@ -36,7 +35,8 @@ const AIBias = (props) => {
                     {/*Begining of lab comments */}
                     <div className="code_editor__line">
                         <span className="code_editor__line--darkgreen">
-                            &#47;&#47; The new bias for each shape is shown in the config file below
+                            &#47;&#47; The new bias for each color is shown in the config file
+                            below
                         </span>
                         <br></br>
                     </div>
@@ -59,14 +59,18 @@ const AIBias = (props) => {
                             <span className="code_editor__line--blue">
                                 &nbsp; {COLORS[1]}&#58;&nbsp;
                             </span>
-                            <span className="code_editor__line-darkgold">{weightList[1]}</span>
+                            <span className="code_editor__line-darkgold">
+                                {weightList[1]}
+                            </span>
                         </div>
                         <br></br>
                         <div className="code__editor__json_value">
                             <span className="code_editor__line--blue">
                                 &nbsp; {COLORS[2]}&#58;&nbsp;
                             </span>
-                            <span className="code_editor__line-darkgold">{weightList[2]}</span>
+                            <span className="code_editor__line-darkgold">
+                                {weightList[2]}
+                            </span>
                         </div>
                     </div>
 
@@ -88,7 +92,7 @@ const AIBias = (props) => {
 
 AIBias.propTypes = {
     actions: PropTypes.object,
-    weights: PropTypes.object
+    weights: PropTypes.object,
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -102,9 +106,4 @@ const mapStateToProps = (state) => {
     return { weights };
 };
 
-
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(AIBias);
+export default connect(mapStateToProps, mapDispatchToProps)(AIBias);
