@@ -15,10 +15,10 @@ export const TRAINING_DURATION = 30;
 
 // check for accessibility
 export const COLORS = [
-  "tw-bg-[#EA4335]",
-  "tw-bg-[#34A853]",
-  "tw-bg-[#4285F4]",
-  "tw-bg-[#FBBC05]",
+  /* Red */ "tw-bg-[#EA4335]",
+  /* Green */ "tw-bg-[#34A853]",
+  /* Blue */ "tw-bg-[#4285F4]",
+  /* Yellow */ "tw-bg-[#FBBC05]",
 ];
 export const SIZE = [48, 64, 96, 128];
 export const SPAWN_AMOUNT = 9;

@@ -36,14 +36,10 @@ class ViewAIWeightPage extends Component {
                 created higher weight based on the color of block you were hit
                 by most, and lower weight by those you avoided.
               </p>
-              <p className="playthrough__sentence">
-                Take a look at the code block below to see how our AI was able
-                to acquire these numbers.
-              </p>
               <p className={"playthrough__sentence"}>
-                However, we now have uneven weight for different colored blocks,
-                therefore creating unwanted bias in our system. Lets see how we
-                can remove this bias.
+                However, we now have developed an uneven weight for different colored blocks,
+                therefore creating unwanted bias in our system as the AI should want
+                to avoid all blocks, not just specifically colored ones.
               </p>
             </div>
           </div>
