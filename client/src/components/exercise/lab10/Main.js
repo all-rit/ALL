@@ -26,7 +26,7 @@ const Main = () => {
         <TrainingAIRepair path={"/TrainingAI/Repair"} />
 
         {/* Phase Three: View Current Weight */}
-        <AIWeightCodeBlock path={"AIWeightCodeBlock"}/>
+        <AIWeightCodeBlock path={"AIWeightCodeBlock"} />
         <ViewingAIWeightPage path={"/ViewWeights"} />
 
         {/* Exercise End */}

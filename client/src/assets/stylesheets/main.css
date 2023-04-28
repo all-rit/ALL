@@ -2252,6 +2252,10 @@ td {
   color: #5b6ce0;
 }
 
+.code_editor .code_editor__line--pink {
+  color: #fa9eba;
+}
+
 .code_editor .code_editor_button {
   margin-top: 0;
   margin-bottom: 30px;

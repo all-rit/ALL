@@ -1,145 +1,74 @@
+/* eslint-disable no-unused-vars */
+
 import React from "react";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const AIWeightCodeBlock = () => {
+const AIWeightCodeBlock = (props) => {
   return (
     <div className="code_editor">
       <div className="code_editor__content">
         <div className="code_editor__files">
-          {/* AIColorBlockWeight.js */}
+          {/* ColorWeight.json*/}
           <div className="code_editor__file code_editor__file--active">
-            AIColorBlockWeight.js
+            ColorWeight.json
           </div>
         </div>
 
-        {/* import React, Component from react */}
         <div className="code_editor__code">
-          <div className="code_editor__line">
-            <span className="code_editor__line--purple">import&nbsp;</span>
-            <span className="code_editor__line--blue">React</span>
-            <span className="code_editor__line--gold">,&nbsp;</span>
-            <span className="code_editor__line--gold">&#123;</span>
-            <span className="code_editor__line--blue">
-              &nbsp;Component&nbsp;
-            </span>
-            <span className="code_editor__line--gold">&#125;&nbsp;</span>
-            <span className="code_editor__line--purple">from&nbsp;</span>
-            <span className="code_editor__line--orange">
-              &lsquo;react&lsquo;
-            </span>
-            <span className="code_editor__line--gold">;</span>
+          <div className="code_editor__line--darkgreen">
+            &#47;&#47; Below you will see the accrued weights from the previous
+            exercise
           </div>
-
-          <div className="code_editor__line">&nbsp;</div>
-
-          {/* class AutoSysAI extends Component*/}
-          <div className="code_editor__line">
-            <span className="code_editor__line--blue">class&nbsp;</span>
-            <span className="code_editor__line--green">AutoSysAI&nbsp;</span>
-            <span className="code_editor__line--blue">extends&nbsp;</span>
-            <span className="code_editor__line--green">Component&nbsp;</span>
-            <span className="code_editor__line--gold">&#123;</span>
+          <div className="code_editor__line--darkgreen">
+            &#47;&#47; based on the color of blocks that hit your character
           </div>
-
-          {/* makeDecision(){ */}
-          <div className="code_editor__line">
-            {/* AI function comment */}
-            <span className="code_editor__line--darkgreen">
-              &#47;&#47; Here is where you will update the equation to improve
-              the AI&lsquo;s accuracy
-            </span>
-          </div>
-          <div className="code_editor__line">
-            {/* AI function comment */}
-            <span className="code_editor__line--darkgreen">
-              &#47;&#47; Feel free to add other math operations to improve its
-              accuracy
-            </span>
-          </div>
+          <div className="code_editor__line--blue">&#123;</div>
           <div className="code_editor__line">
             <span>&nbsp;&nbsp;</span>
-            <span className="code_editor__line--yellow">makeDecision</span>
-            <span className="code_editor__line--purple">(</span>
-            <span className="code_editor__line--blue">&nbsp;file</span>
-            <span className="code_editor__line--white">&nbsp;,</span>
-            <span className="code_editor__line--blue">
-              &nbsp;threatLvl&nbsp;
+            <span className="code_editor__line--green">
+              &ldquo;weights&rdquo;
             </span>
-            <span className="code_editor__line--purple">) &#123;</span>
-          </div>
-          <div className="code_editor__line">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className="code_editor__line--darkgreen">
-              enter &lsquo;file.sensitivityLevel&lsquo; into the first input{" "}
-            </span>
-          </div>
-          <div className="code_editor__line code_editor__line-background--light">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className={"code_editor__line--purple"}>const </span>
-            <span className={""}>rewardValue</span>
-            <span className={"code_editor__line--purple"}> = </span>
-
-            <span>;</span>
+            <span className="code_editor__line--white">: </span>
+            <span className="code_editor__line--blue">[</span>
           </div>
 
-          <div className="code_editor__line">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          </div>
-          <div className="code_editor__line">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className="code_editor__line--darkgreen">
-              enter &lsquo;threatLvl&lsquo; into the second input
+          <div className="code_editor__line"></div>
+          <div id={""} className="code_editor__line">
+            <span className="code_editor__line">
+              {Object.entries(props.weights).map(([key, value]) => {
+                return (
+                  <div key={key}>
+                    <span className="code_editor__line--green">
+                      &nbsp;&nbsp;&nbsp;&nbsp; &ldquo;{key}&rdquo;
+                    </span>
+                    <span className="code_editor__line--white"> : </span>
+                    <span className="code_editor__line--orange"> {value}</span>
+                    <span className="code_editor__line--white">, </span>
+                  </div>
+                );
+              })}
             </span>
           </div>
-          <div className="code_editor__line code_editor__line-background--light">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className={"code_editor__line--purple"}>const </span>
-            <span className={""}>costValue</span>
-            <span className={"code_editor__line--purple"}> = </span>
-            <span>;</span>
-          </div>
-
+          <div className="code_editor__line--blue">&nbsp;&nbsp;]</div>
           <div className="code_editor__line">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          </div>
-          <div className="code_editor__line">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className={"code_editor__line--purple"}>const </span>
-            <span>utility</span>
-            <span className={"code_editor__line--purple"}> = </span>
-            <span>
-              rewardValue <span className={"code_editor__line--purple"}>/</span>{" "}
-              costValue;
-            </span>
-          </div>
-          {/* return() */}
-          <div className="code_editor__line">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className="code_editor__line--purple">return </span>
-            <span>utility;</span>
-          </div>
-          <div className="code_editor__line">
-            <span>&nbsp;&nbsp;</span>
-            <span className="code_editor__line--purple">&#125;</span>
-          </div>
-
-          <div className="code_editor__line">
-            <span className="code_editor__line--gold">&#125;</span>
-          </div>
-
-          {/* export default AutoSysAI */}
-          <div className="code_editor__line">
-            <span className="code_editor__line--purple">export&nbsp;</span>
-            <span className="code_editor__line--purple">default&nbsp;</span>
-            <span className="code_editor__line--blue">AutoSysAI</span>
-            <span>;</span>
+            <span className="code_editor__line--blue">&#125;</span>
           </div>
         </div>
       </div>
     </div>
   );
+};
+
+AIWeightCodeBlock.propTypes = {
+  weights: PropTypes.object,
+};
+
+const mapStateToProps = (state) => {
+  const { weights } = state.exercise10;
+  return { weights };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -148,4 +77,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(AIWeightCodeBlock);
+export default connect(mapStateToProps, mapDispatchToProps)(AIWeightCodeBlock);

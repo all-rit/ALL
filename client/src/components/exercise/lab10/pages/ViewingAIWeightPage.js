@@ -48,7 +48,7 @@ class ViewAIWeightPage extends Component {
             </div>
           </div>
         </Fragment>
-        <AIWeightCodeBlock/>
+        <AIWeightCodeBlock />
         <button
           className="btn btn-primary text-black btn-xl text-uppercase "
           onClick={this.handleNav.bind(this)}

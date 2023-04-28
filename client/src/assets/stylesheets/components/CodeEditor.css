@@ -99,6 +99,10 @@
   color: #b97ae8;
 }
 
+.code_editor .code_editor__line--pink {
+  color: #ff9fe0;
+}
+
 .code_editor .code_editor__line--blue {
   color: #7ad2e8;
 }
