@@ -7,6 +7,7 @@ import BuildingAI from "./pages/BuildingAI";
 import BuildingAIRepair from "./pages/BuildingAIRepair";
 import TrainingAI from "./pages/TrainingAI";
 import TrainingAIRepair from "./pages/TrainingAIRepair";
+import UpdatedTraining from "./pages/UpdatedTrainingAI";
 
 const Main = () => {
   return (
@@ -22,6 +23,9 @@ const Main = () => {
         {/* Phase Two: Training the AI */}
         <TrainingAI path={"/TrainingAI"} />
         <TrainingAIRepair path={"/TrainingAI/Repair"} />
+
+        {/* Phase Three: AI Simulation Pt. 2*/}
+        <UpdatedTraining path={"/UpdatedTraining"} />
 
         {/* Exercise End */}
         <ExerciseEnd path="/ExerciseEnd" />
