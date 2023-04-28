@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import _ from "lodash";
 import {
@@ -10,6 +12,7 @@ import {
   SPAWN_INTERVAL,
   SPEED,
   SPEED_STEP,
+  STEP_COUNT,
 } from "../../../../constants/lab10";
 import PropTypes from "prop-types";
 import Shape from "./Shape";
@@ -17,10 +20,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 
-const generateRandomShape = (parentAttributes) => {
+const generateRandomShape = (parentAttributes, i) => {
   const color = _.sample(COLORS);
-  const size = _.sample(SIZE);
-  const x = _.random(parentAttributes.width);
+  const size = SIZE;
+  const x = i * (size + STEP_COUNT);
   const y = 0;
   return { color, size, x, y };
 };
@@ -44,13 +47,59 @@ const ShapeSpawner = (props) => {
         y + size >= props?.parentRef?.current?.offsetHeight - IMG_SIZE;
 
       const shapesCollided = touchingX && touchingY;
+      //const avoidColor = "tw-bg-[#34A853]"
       if (shapesCollided) {
         props.actions.updateColorWeight(color);
       }
       return !shapesCollided;
     });
+
     !_.isEqual(newShapes, shapes) && setShapes(newShapes);
   }, [shapes, props.objectPosition]);
+
+  const [working, setWorking] = useState(false);
+  const [count, setCount] = useState(0);
+  const [intervalId, setIntervalId] = useState(0);
+  const [max, setMax] = useState(null);
+  const [, setRight] = useState(null);
+  useEffect(() => {
+    if (props.simulationStatus === SIMULATION_STARTED) {
+      shapes.map(({ x, size }) => {
+        const touchingX = (newObjectPosition) =>
+          (newObjectPosition + IMG_SIZE >= x && props.objectPosition <= x) ||
+          (newObjectPosition >= x &&
+            newObjectPosition + IMG_SIZE <= x + size) ||
+          (newObjectPosition <= x + size &&
+            newObjectPosition + IMG_SIZE >= x + size);
+        if (touchingX(props.objectPosition)) {
+          let shiftLeft = 0,
+            shiftRight = 0,
+            direction = "";
+          // while (true) {
+          //     let newPosition = props.objectPosition;
+          //
+          //     shiftLeft += STEP_COUNT;
+          //     newPosition = props.objectPosition - shiftLeft;
+          //     if (newPosition >= 0 && !touchingX(newPosition)) {
+          //         direction = 'left';
+          //         break;
+          //     }
+          //
+          //     shiftRight += STEP_COUNT;
+          //     newPosition = props.objectPosition + shiftLeft;
+          //     if (newPosition <= 1110 && !touchingX(newPosition)) {
+          //         direction = 'right';
+          //         break;
+          //     }
+          //
+          //     if (shiftLeft >= 1000 || shiftRight >= 1000)
+          //         break;
+          // }
+          // console.log(`Move ${direction}`);
+        }
+      });
+    }
+  }, [props.simulationStatus, working, shapes]);
 
   const updateFallingShapes = useCallback(() => {
     setShapes((shapes) => {
@@ -73,8 +122,9 @@ const ShapeSpawner = (props) => {
     const parentAttributes = props.parentRef.current.getBoundingClientRect();
     setShapes((prev) => {
       const newShapes = [];
-      for (let i = 0; i < SPAWN_AMOUNT; i++) {
-        newShapes.push(generateRandomShape(parentAttributes));
+      const numberOfShapes = Math.floor(parentAttributes?.width / SIZE);
+      for (let i = 0; i < numberOfShapes; i++) {
+        newShapes.push(generateRandomShape(parentAttributes, i));
       }
       return [...prev, ...newShapes];
     });
@@ -106,8 +156,8 @@ const ShapeSpawner = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { simulationStatus, objectPosition } = state.exercise10;
-  return { simulationStatus, objectPosition };
+  const { simulationStatus, objectPosition, weights } = state.exercise10;
+  return { simulationStatus, objectPosition, weights };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -123,6 +173,9 @@ ShapeSpawner.propTypes = {
   positionRef: PropTypes.object,
   objectPosition: PropTypes.number,
   simulationStatus: PropTypes.string,
+  weights: PropTypes.object,
+  handleShiftRight: PropTypes.func,
+  handleShiftLeft: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShapeSpawner);

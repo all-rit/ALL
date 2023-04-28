@@ -71,6 +71,8 @@ const Simulation = (props) => {
 
   return (
     <div className={"tw-mt-6"}>
+      <p>X: {Math.floor(props.objectPosition)}</p>
+      <p>Y: {Math.floor(childBox?.y)}</p>
       {/* Progress Bar */}
       {props.simulationStatus === SIMULATION_STARTED && (
         <ProgressBar
@@ -94,6 +96,8 @@ const Simulation = (props) => {
 
         {/* Falling object section */}
         <ShapeSpawner
+          handleShiftLeft={handleShiftLeft}
+          handleShiftRight={handleShiftRight}
           parentRef={parentRef}
           childBox={childBox}
           positionRef={positionRef}
@@ -153,6 +157,7 @@ Simulation.propTypes = {
   trainingDuration: PropTypes.number,
   weights: PropTypes.object,
   hideCoverOverride: PropTypes.bool,
+  ai: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simulation);

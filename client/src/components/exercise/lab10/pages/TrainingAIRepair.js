@@ -15,7 +15,7 @@ const TrainingAIRepair = (props) => {
    */
   const handleContinue = () => {
     props.actions.resetUserAttempts();
-    return navigate("/Lab10/Exercise/");
+    return navigate("/Lab10/Exercise/AISimulation");
   };
 
   return (

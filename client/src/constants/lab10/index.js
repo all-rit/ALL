@@ -11,18 +11,21 @@ export const KEY_SIZE = 32;
 export const STEP_COUNT = 20;
 export const MIN_USER_ATTEMPTS = 6;
 export const COLLISION_WEIGHT = 2;
-export const TRAINING_DURATION = 30;
+export const TRAINING_DURATION = 30 * 20;
 
 // check for accessibility
 export const COLORS = [
-  "tw-bg-[#EA4335]",
-  "tw-bg-[#34A853]",
-  "tw-bg-[#4285F4]",
-  "tw-bg-[#FBBC05]",
+  "tw-bg-[#00aa55]",
+  "tw-bg-[#009fd4]",
+  "tw-bg-[#b381b3]",
+  "tw-bg-[#939393]",
+  "tw-bg-[#aa8f00]",
+  "tw-bg-[#d47500]",
+  "tw-bg-[#ff0000]",
 ];
-export const SIZE = [48, 64, 96, 128];
-export const SPAWN_AMOUNT = 9;
-export const SPAWN_INTERVAL = 1500;
+export const SIZE = 96;
+export const SPAWN_AMOUNT = 3;
+export const SPAWN_INTERVAL = 3500;
 export const SPEED_STEP = 10;
-export const SPEED = 5;
+export const SPEED = 10;
 export const SECOND = 60;

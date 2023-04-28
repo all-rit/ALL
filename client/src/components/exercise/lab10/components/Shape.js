@@ -7,7 +7,10 @@ const Shape = ({ y, x, color, size }) => {
     <div
       style={{ left: x, top: y, width: size, height: size }}
       className={twMerge("tw-absolute tw-border-solid", color)}
-    />
+    >
+      <p>X: {Math.floor(x)}</p>
+      <p>Y: {Math.floor(y)}</p>
+    </div>
   );
 };
 
