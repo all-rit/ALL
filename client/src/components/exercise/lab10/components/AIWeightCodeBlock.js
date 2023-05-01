@@ -13,7 +13,7 @@ const AIWeightCodeBlock = (props) => {
         <div className="code_editor__files">
           {/* ColorWeight.json*/}
           <div className="code_editor__file code_editor__file--active">
-            ColorWeight.json
+            NeuralNetworkWeights.json
           </div>
         </div>
 
