@@ -40,7 +40,7 @@ export const initialState = {
 
   userInputDisabled: true,
   simulationStatus: SIMULATION_IDLE,
-  weights: COLORS.reduce((a, v) => ({ ...a, [v]: 0 }), {}),
+  weights: Object.keys(COLORS).reduce((a, v) => ({ ...a, [v]: 0 }), {}),
 };
 
 const ExerciseReducer = (state = initialState, action) => {

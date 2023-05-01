@@ -37,9 +37,10 @@ class ViewAIWeightPage extends Component {
                 by most, and lower weight by those you avoided.
               </p>
               <p className={"playthrough__sentence"}>
-                However, we now have developed an uneven weight for different colored blocks,
-                therefore creating unwanted bias in our system as the AI should want
-                to avoid all blocks, not just specifically colored ones.
+                However, we now have developed an uneven weight for different
+                colored blocks, therefore creating unwanted bias in our system
+                as the AI should want to avoid all blocks, not just specifically
+                colored ones.
               </p>
             </div>
           </div>
