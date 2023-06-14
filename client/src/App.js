@@ -42,6 +42,7 @@ import "./assets/stylesheets/main.scss";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
+import Educators from "./components/body/educators";
 const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
@@ -103,7 +104,7 @@ class App extends Component {
                 <SiteMap path="/SiteMap" />
                 <Profile path="/Profile" user={state.main.user} />
                 <Error actions={actions} default />
-
+                <Educators path="/Educators"/>
                 <Imagine path="/Imagine/*" user={state.main.user} />
 
                 <About

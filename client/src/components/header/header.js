@@ -52,8 +52,9 @@ const alert_check = (state) => {
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const activeStyle = { color: "#fed136" };
+  const activeStyle = { color: "#F3F3F3" };
   const toggle = () => setIsOpen(!isOpen);
+
   const closeNav = () => setIsOpen(false);
   const { state, actions } = props;
   const [link, setLink] = useState(0);
@@ -153,8 +154,19 @@ const Header = (props) => {
                   <NavItem onClick={closeNav} className="navbar-collapse">
                     <NavLink
                       className="nav-link "
-                      href="#contact"
+                      href="/Educators"
                       style={link === 3 ? activeStyle : { color: "#fff" }}
+                    >
+                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
+                        <li className="nav-item">Educators</li>
+                      </ul>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem onClick={closeNav} className="navbar-collapse">
+                    <NavLink
+                      className="nav-link "
+                      href="#contact"
+                      style={link === 4 ? activeStyle : { color: "#fff" }}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item">Contact</li>

@@ -1873,3 +1873,75 @@ body {
 .div-style-bgColor {
   padding: 10px 10px 10px 62%;
 }
+.educators-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 93%;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+.educator-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  font-family: Montserrat, sans-serif;
+  font-size: xxx-large;
+  font-weight: bolder;
+}
+
+.educator-welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  font-family: Montserrat, sans-serif;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.course-search {
+  box-shadow: inset #abacaf 0 0 0 2px;
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+  appearance: none;
+  width: 75%;
+  margin-left: 0.5rem;
+  position: relative;
+  border-radius: 50px;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  line-height: 1.4;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 400;
+  height: 60px;
+  transition: all .2s ease;
+  :hover{
+    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
+  }
+}
+.left-container {
+    width: 50%;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.right-container {
+  width: 50%;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-span {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
