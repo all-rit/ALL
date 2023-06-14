@@ -1918,17 +1918,17 @@ body {
   font-size: 16px;
   font-weight: 400;
   height: 60px;
-  transition: all .2s ease;
-  :hover{
+  transition: all 0.2s ease;
+  :hover {
     box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
   }
 }
 .left-container {
-    width: 50%;
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  width: 50%;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .right-container {

@@ -104,7 +104,7 @@ class App extends Component {
                 <SiteMap path="/SiteMap" />
                 <Profile path="/Profile" user={state.main.user} />
                 <Error actions={actions} default />
-                <Educators path="/Educators"/>
+                <Educators path="/Educators" />
                 <Imagine path="/Imagine/*" user={state.main.user} />
 
                 <About

@@ -11,29 +11,22 @@ const Educators = () => {
   return (
     <div className="educators-page">
       <span className={"top-span"}>
-      <div className={"left-container"}>
-        <p className={"educator-heading"}>
-          EDUCATOR RESOURCES
-        </p>
-        <p className={"educator-welcome"}>
-          Hello, [User]!
-        </p>
-        <input className={"course-search"} placeholder={"What are you looking for today?"}/>
-      </div>
-        <div className={"right-container"}>
-          <div className={"educator-welcome"}>
-          Placeholder for Intro Video
+        <div className={"left-container"}>
+          <p className={"educator-heading"}>EDUCATOR RESOURCES</p>
+          <p className={"educator-welcome"}>Hello, [User]!</p>
+          <input
+            className={"course-search"}
+            placeholder={"What are you looking for today?"}
+          />
         </div>
+        <div className={"right-container"}>
+          <div className={"educator-welcome"}>Placeholder for Intro Video</div>
         </div>
       </span>
-      <div>
-        next section
-      </div>
+      <div>next section</div>
     </div>
-
-
   );
-}
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(mainActions, dispatch),
