@@ -930,6 +930,10 @@ a.icon:hover {
     height: 18rem;
     width: 175px;
   }
+  .module__educators_image {
+    height: 15rem;
+    width: 20.6rem;
+  }
 }
 
 @media (min-width: 991px) {
@@ -945,6 +949,15 @@ a.icon:hover {
     height: 10rem;
     width: 20.6rem;
   }
+  .module__educators_image {
+    height: 15rem;
+    width: 20.6rem;
+  }
+}
+
+.module__educators_image {
+  background-position: center;
+  background-size: 350px;
 }
 
 .module__lab_image {
