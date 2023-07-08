@@ -37,4 +37,5 @@ jobs:
         with:
           key: ${{ secrets.SSH_SECRET }}
           known_hosts: ${{ secrets.SSH_HOST_NAME }}
+      - run: cd ../client
       - run: rsync -r ./build ${{secrets.PROJECT_PATH}} --delete
