@@ -2,9 +2,9 @@ name: Production-Deployment
 "on":
   pull_request_target:
     branches:
-      - prod
+      - dev
     types:
-      - closed
+      - opened
 jobs:
   run_build:
     name: client deploy
