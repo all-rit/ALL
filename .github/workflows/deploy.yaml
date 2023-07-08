@@ -2,8 +2,7 @@ name: Production-Deployment
 on:
   push:
     branches:
-      - main
-      - 'releases/**'
+      - prod
 jobs:
   run_build:
     name: client deploy
