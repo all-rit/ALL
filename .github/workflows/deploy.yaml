@@ -1,10 +1,9 @@
 name: Production-Deployment
-"on":
-  pull_request_target:
+on:
+  push:
     branches:
-      - prod
-    types:
-      - closed
+      - main
+      - 'releases/**'
 jobs:
   run_build:
     name: client deploy
@@ -38,7 +37,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+      - run: ls -a
       - run: cd client
+      - run: ls -a 
       - run: npm i --legacy-peer-deps
       - run: npm run build --if-present
       - uses: shimataro/ssh-key-action@v2
