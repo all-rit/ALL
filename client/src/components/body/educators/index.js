@@ -13,7 +13,8 @@ import contactUs from "../../../assets/images/educators/contactUs.jpg";
 //const searchBar = () => {}
 //const [searchInput, setSearchInput] = useState("");
 const Educators = (props) => {
-  const { actions } = props;
+  const { actions, user } = props;
+  const firstname = user ? user.firstname : "Educator";
   return (
     <div className="educators-page tw-h-screen">
       <span className={"top-span tw-h-600px"}>
@@ -22,7 +23,7 @@ const Educators = (props) => {
             <p className={"educator-heading"}>EDUCATOR RESOURCES</p>
           </div>
           <div className={"bottom_left_container"}>
-            <p className={"educator-welcome"}>Hello, [User First Name]!</p>
+            <p className={"educator-welcome"}>Hello, {firstname}!</p>
             <input className={"course-search"} placeholder={"Search Courses"} />
           </div>
         </div>
@@ -161,7 +162,7 @@ const Educators = (props) => {
               </ul>
               <ul className={"tw-text-labGreen tw-mb-3"}>
                 <li>
-                  Simplified and user-friendly lab assignment and grading
+                  User-friendly lab assignment and grading
                   functionality
                 </li>
               </ul>
@@ -214,10 +215,14 @@ const Educators = (props) => {
     </div>
   );
 };
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+})
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(mainActions, dispatch),
   };
 };
 
-export default connect(null, mapDispatchToProps)(Educators);
+export default connect(mapStateToProps, mapDispatchToProps)(Educators);
