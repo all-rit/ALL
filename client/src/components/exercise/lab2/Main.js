@@ -8,7 +8,7 @@ import ExerciseCenter from "./components/ExerciseCenter";
 import Repair from "./components/Repair.js";
 import Header from "./components/header/headerMain";
 import SuccessMessage from "./home/successMessage";
-import Countdown from "react-countdown-now";
+import Countdown from "react-countdown";
 import Form from "./forms/form";
 import LandingPage from "./LandingPage/landingPage";
 import UserStats from "./userStatistics/userStats";

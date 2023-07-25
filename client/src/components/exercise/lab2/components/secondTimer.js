@@ -6,7 +6,7 @@ import Score from "./score";
 import Instructions from "../Instructions/instructions";
 import Circle from "./circle";
 import Replay from "./replay";
-import Countdown from "react-countdown-now";
+import Countdown from "react-countdown";
 import ImagineService from "../../../../services/ImagineService";
 
 /*
