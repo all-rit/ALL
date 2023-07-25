@@ -35,7 +35,7 @@ jobs:
        with:
         host: ${{ secrets.SSH_HOST_NAME }}
         username: ${{ secrets.SSH_USER }}
-        key: ${{ SSH_SECRET }}
+        key: ${{ secrets.SSH_SECRET }}
         port: ${{ secrets.PORT }}
         script: |
           ls -a
