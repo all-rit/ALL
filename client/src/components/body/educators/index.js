@@ -9,7 +9,6 @@ import walkthroughImage from "../../../assets/images/educators/walkthroughVideos
 import assignHW from "../../../assets/images/educators/AssignHW.png";
 import contactUs from "../../../assets/images/educators/contactUs.jpg";
 
-
 function Educators(props) {
   const { actions, user } = props;
   const firstname = user ? user.firstname : "Educator";
@@ -65,7 +64,7 @@ function Educators(props) {
                 <li>
                   <a
                     className="tw-mb-0 tw-font-labBlue tw-text-xl tw-tracking-wide"
-                    onClick={() => navigate('/Educators/Content')}
+                    onClick={() => navigate("/Educators/Content")}
                   >
                     Go to Lecture Slides
                   </a>
@@ -209,7 +208,7 @@ function Educators(props) {
       </span>
     </div>
   );
-};
+}
 
 const mapStateToProps = (state) => ({
   user: state.user,
