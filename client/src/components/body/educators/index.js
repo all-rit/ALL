@@ -24,7 +24,6 @@ const Educators = (props) => {
           </div>
           <div className={"bottom_left_container"}>
             <p className={"educator-welcome"}>Hello, {firstname}!</p>
-            <input className={"course-search"} placeholder={"Search Courses"} />
           </div>
         </div>
         <div
@@ -161,10 +160,7 @@ const Educators = (props) => {
                 </li>
               </ul>
               <ul className={"tw-text-labGreen tw-mb-3"}>
-                <li>
-                  User-friendly lab assignment and grading
-                  functionality
-                </li>
+                <li>User-friendly lab assignment and grading functionality</li>
               </ul>
             </li>
           </ul>
@@ -218,7 +214,7 @@ const Educators = (props) => {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-})
+});
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(mainActions, dispatch),
