@@ -5,13 +5,13 @@ import handImage from "../../assets/images/educators/hand.jpg";
 import congitiveImage from "../../assets/images/educators/cognitiveimpairment.jpg";
 import ethicsImage from "../../assets/images/educators/ethicsai.jpg";
 import aicsecImage from "../../assets/images/educators/aicybersecurity.jpg";
-import labOneSlides from '../../components/body/educators/LectureSlides/lab1_lecture_slides.pptx'
-import labTwoSlides from '../../components/body/educators/LectureSlides/lab2_lecture_slides.pptx'
-import labThreeSlides from '../../components/body/educators/LectureSlides/lab3_lecture_slides.pptx'
-import labFourSlides from '../../components/body/educators/LectureSlides/lab4_lecture_slides.pptx'
-import labFiveSlides from '../../components/body/educators/LectureSlides/lab5_lecture_slides.pptx'
-import labSixSlides from '../../components/body/educators/LectureSlides/lab6_lecture_slides.pptx'
-import labSevenSlides from '../../components/body/educators/LectureSlides/lab7_lecture_slides.pptx'
+import labOneSlides from "../../components/body/educators/LectureSlides/lab1_lecture_slides.pptx";
+import labTwoSlides from "../../components/body/educators/LectureSlides/lab2_lecture_slides.pptx";
+import labThreeSlides from "../../components/body/educators/LectureSlides/lab3_lecture_slides.pptx";
+import labFourSlides from "../../components/body/educators/LectureSlides/lab4_lecture_slides.pptx";
+import labFiveSlides from "../../components/body/educators/LectureSlides/lab5_lecture_slides.pptx";
+import labSixSlides from "../../components/body/educators/LectureSlides/lab6_lecture_slides.pptx";
+import labSevenSlides from "../../components/body/educators/LectureSlides/lab7_lecture_slides.pptx";
 export default [
   {
     image: earImage,

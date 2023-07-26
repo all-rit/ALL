@@ -10,7 +10,6 @@ Content_Card.propTypes = {
   },
 };
 export function Content_Card(props) {
-
   return (
     <div className={"educator-card--main"}>
       <img className={"educator-card--image"} src={props.Card.image} />
