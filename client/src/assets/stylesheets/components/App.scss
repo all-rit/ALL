@@ -1972,3 +1972,40 @@ body {
   background-position: center;
   background-size: 230px;
 }
+
+.educator-card--main {
+  font-family: Inter, sans-serif;
+  padding: 10px;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  border: solid thin #999999;
+  box-shadow: 0 0 8px 2px #808080;
+  border-radius: 10px;
+  margin: 2rem;
+}
+
+.educator-card--image {
+  border-radius: 10px;
+  margin-right: 3rem;
+  max-height: 250px;
+  max-width: 250px;
+}
+
+.educator-lab-name {
+  font-weight: 900;
+  font-size: x-large;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.educator-card--body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}

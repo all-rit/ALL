@@ -43,6 +43,7 @@ import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
 import Educators from "./components/body/educators";
+import Content_Page from './components/body/educators/Content_Page'
 const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
@@ -122,6 +123,10 @@ class App extends Component {
                   path={`/Lab${lab}/Reading`}
                   user={state.main.user}
                   labID={lab}
+                />
+
+                <Content_Page
+                  path={'/Educators/Content'}
                 />
 
                 <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />

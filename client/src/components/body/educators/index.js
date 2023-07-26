@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import * as React from "react";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../../reducers/MainReducer";
 import { connect } from "react-redux";
@@ -8,13 +8,12 @@ import lectureImage from "../../../assets/images/educators/LectureSlides.png";
 import walkthroughImage from "../../../assets/images/educators/walkthroughVideos.png";
 import assignHW from "../../../assets/images/educators/AssignHW.png";
 import contactUs from "../../../assets/images/educators/contactUs.jpg";
-//import { useState } from 'react';
 
-//const searchBar = () => {}
-//const [searchInput, setSearchInput] = useState("");
-const Educators = (props) => {
+
+function Educators(props) {
   const { actions, user } = props;
   const firstname = user ? user.firstname : "Educator";
+
   return (
     <div className="educators-page tw-h-screen">
       <span className={"top-span tw-h-600px"}>
@@ -66,7 +65,7 @@ const Educators = (props) => {
                 <li>
                   <a
                     className="tw-mb-0 tw-font-labBlue tw-text-xl tw-tracking-wide"
-                    onClick={() => navigate(actions)}
+                    onClick={() => navigate('/Educators/Content')}
                   >
                     Go to Lecture Slides
                   </a>
