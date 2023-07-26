@@ -10,11 +10,8 @@ function Educators(props) {
   const { user } = props;
   const firstname = user ? user.firstname : "Educator";
   const cards = resourceCards.map((card) => {
-    return <Educator_Resource_Card
-      key={card.Key}
-      Card={card}
-    />
-  })
+    return <Educator_Resource_Card key={card.Key} Card={card} />;
+  });
   return (
     <div className="educators-page tw-h-screen">
       <span className={"top-span tw-h-600px"}>
@@ -36,9 +33,7 @@ function Educators(props) {
       </span>
 
       {/* Lecture Slides, Videos, and Redirect to Profile*/}
-      <span className={"bottom-span"}>
-        {cards}
-      </span>
+      <span className={"bottom-span"}>{cards}</span>
     </div>
   );
 }
