@@ -1,10 +1,8 @@
 name: Production-Deployment
-"on":
-  pull_request_target:
+on:
+  push:
     branches:
       - prod
-    types:
-      - closed
 jobs:
   run_build:
     name: client deploy
@@ -19,7 +17,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
       - run: cd client
       - run: npm i --legacy-peer-deps
       - run: npm run build --if-present
@@ -32,18 +30,13 @@ jobs:
   run_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.0
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: cd client
-      - run: npm i --legacy-peer-deps
-      - run: npm run build --if-present
-      - uses: shimataro/ssh-key-action@v2
-        with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_SECRET }}
-          known_hosts: ${{ secrets.SSH_HOST_NAME }}
-
-      - run: rsync -r ./build ${{secrets.PROJECT_PATH}} --delete
+          port: ${{ secrets.PORT }}
+          script: |
+            ls -a
+            echo 'Hello I am in the server'
