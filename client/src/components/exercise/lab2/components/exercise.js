@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Countdown from "react-countdown-now";
+import Countdown from "react-countdown";
 import SecondTimer from "./secondTimer";
 import Instructions from "../Instructions/instructions";
 import Circle from "./circle";
