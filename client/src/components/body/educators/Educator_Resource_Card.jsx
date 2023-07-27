@@ -17,7 +17,7 @@ export function Educator_Resource_Card(props) {
         <img
           className="img-fluid module__image module__educators_image"
           src={props.Card.cardImage}
-          alt={'Card Image'}
+          alt={"Card Image"}
         />
       </span>
       <ul className="module__caption">
