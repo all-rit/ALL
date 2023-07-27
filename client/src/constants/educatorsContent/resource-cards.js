@@ -21,14 +21,14 @@ export default [
   {
     cardImage: assignHW,
     cardTitle: "Assign Labs",
-    cardLink: "",
+    cardLink: "/Profile/#assign-labs",
     cardLinkTag: "Go to Lab Assignments",
     cardBody: "User-friendly lab assignment and grading functionality",
   },
   {
     cardImage: contactUs,
     cardTitle: "Contact Us",
-    cardLink: "",
+    cardLink: "/#connect-text",
     cardLinkTag: "Go to Contact Information",
     cardBody: "Have a question or suggestion? Let us know!",
   },

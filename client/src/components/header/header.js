@@ -110,6 +110,7 @@ const Header = (props) => {
             alt="Computing Accessibility"
           />
         </a>
+
         {/* TODO figure out a way to consolidate repeated code*/}
         {/* Landing Page NavBar */}
         <NavbarToggler onClick={toggle} />

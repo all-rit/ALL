@@ -40,7 +40,7 @@ const InstructingGroups = (props) => {
                   <th>Assigned Labs</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="assign-labs">
                 {instructingGroups.map((group, index) => (
                   <tr key={index}>
                     <td className="bold">

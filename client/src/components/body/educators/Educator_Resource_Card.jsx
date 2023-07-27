@@ -12,11 +12,12 @@ Educator_Resource_Card.propTypes = {
 };
 export function Educator_Resource_Card(props) {
   return (
-    <div className=" module__col module__lab_col">
+    <div className=" module__col module__lab_col educator-card-span">
       <span>
-        <div
+        <img
           className="img-fluid module__image module__educators_image"
-          style={{ backgroundImage: props.Card.cardImage }}
+          src={props.Card.cardImage}
+          alt={'Card Image'}
         />
       </span>
       <ul className="module__caption">
@@ -33,7 +34,7 @@ export function Educator_Resource_Card(props) {
             <li>
               <a
                 className="tw-mb-0 tw-font-labBlue tw-text-xl tw-tracking-wide"
-                onClick={() => navigate(props.Card.cardLink)}
+                href={props.Card.cardLink}
               >
                 {props.Card.cardLinkTag}
               </a>

@@ -911,8 +911,9 @@ a.icon:hover {
       width: 20.6rem;
     }
     &__educators_image {
-      height: 15rem;
+      height: 17rem;
       width: 20.6rem;
+      object-fit: fill;
     }
   }
   &__educators_image {
