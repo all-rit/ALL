@@ -1894,16 +1894,17 @@ body {
 .educator-heading {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
   padding: 1rem;
-  font-family: Montserrat, sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: xxx-large;
   font-weight: bolder;
 }
 
 .educator-welcome {
   padding: 1rem;
-  font-family: Montserrat, sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: xx-large;
   font-weight: bolder;
 }
@@ -1913,29 +1914,8 @@ body {
   width: 100%;
   align-items: flex-start;
 }
-
-.course-search {
-  box-shadow: inset #abacaf 0 0 0 2px;
-  border: 0;
-  background: rgba(0, 0, 0, 0);
-  appearance: none;
-  width: 75%;
-  margin-left: 0.5rem;
-  position: relative;
-  border-radius: 50px;
-  padding: 0.5rem;
-  padding-left: 2rem;
-  line-height: 1.4;
-  color: rgb(0, 0, 0);
-  font-size: 30px;
-  font-weight: 400;
-  height: 60px;
-  transition: all 0.2s ease;
-  :hover {
-    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
-  }
-}
 .left-container {
+  padding-left: 5rem;
   width: 50%;
   height: 100%;
   border-radius: 3px;
@@ -1956,7 +1936,7 @@ body {
 }
 
 .top-span {
-  width: 100%;
+  width: 110%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -2009,4 +1989,29 @@ body {
   text-align: left;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+}
+
+.educator-main--image {
+  max-width: 75%;
+  max-height: 75%;
+  border-radius: 25px;
+  box-shadow: 0 5px 20px 2px #9a9b9d;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.educator-main--body {
+  padding: 1rem;
+  text-align: left;
+  font-family: Poppins, sans-serif;
+  color: #5b5b5b;
+  font-size: larger;
+}
+
+.poppins {
+  font-family: Poppins, sans-serif;
 }

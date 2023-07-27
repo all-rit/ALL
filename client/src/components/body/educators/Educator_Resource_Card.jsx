@@ -24,7 +24,7 @@ export function Educator_Resource_Card(props) {
         <li className="tw-mt-3 tw-mb-0 module__title module__lab_title">
           <a
             className={
-              "tw-text-dark tw-text-3xl tw-font-semibold tw-tracking-wide"
+              "tw-text-dark tw-text-2xl tw-font-semibold tw-tracking-wide poppins"
             }
             onClick={() => navigate(props.Card.cardLink)}
           >
@@ -33,14 +33,14 @@ export function Educator_Resource_Card(props) {
           <ul className="tw-mt-5 tw-mb-5">
             <li>
               <a
-                className="tw-mb-0 tw-font-labBlue tw-text-xl tw-tracking-wide"
+                className="tw-mb-0 tw-font-labBlue tw-text-xl tw-tracking-wide poppins"
                 href={props.Card.cardLink}
               >
                 {props.Card.cardLinkTag}
               </a>
             </li>
           </ul>
-          <ul className={"tw-text-labGreen tw-mb-3"}>
+          <ul className={"tw-text-labGreen tw-text-xl tw-mb-3 poppins"}>
             <li>{props.Card.cardBody}</li>
           </ul>
         </li>

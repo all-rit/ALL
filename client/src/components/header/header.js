@@ -167,7 +167,7 @@ const Header = (props) => {
                     <NavLink
                       className="nav-link "
                       href="#contact"
-                      id='#contact'
+                      id="#contact"
                       style={link === 4 ? activeStyle : { color: "#fff" }}
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
