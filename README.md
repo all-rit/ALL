@@ -4,8 +4,8 @@
 
 ## Requirements
 
-- NodeJS ~= 12.16.2
-- NPM ~= 6.14.4
+- NodeJS ~= 16.20.1
+- NPM ~= 8.19.4
   May work for other versions but not guaranteed
 
 ## Setup
@@ -36,9 +36,9 @@ Clone the repository and open the command line for the upcoming instructions.
 
 ## Part of The National Science Foundation's Grant for Developing Experiential Laboratories for Computing Accessibility Education. Grant #1825023
 
-Information for this grant can be found at https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023
+Information for this grant can be found at <https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023>
 
-## The website for all the Accessible Learning Labs can be found at https://all.rit.edu
+## The website for all the Accessible Learning Labs can be found at <https://all.rit.edu>
 
 ## Contributing
 

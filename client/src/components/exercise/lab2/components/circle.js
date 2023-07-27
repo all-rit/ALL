@@ -1,7 +1,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable react/prop-types */
 import React from "react";
-import Countdown from "react-countdown-now";
+import Countdown from "react-countdown";
 import "./exerciseStyle.css";
 
 // Object for holding the current background color of the Circle
