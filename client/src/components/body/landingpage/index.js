@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 const Home = (props) => {
   const { actions } = props;
   return (
-    <div className="landingpage">
+    <div className="landingpage poppins">
       {/* Header */}
       <header className="masthead">
         <div className="container">

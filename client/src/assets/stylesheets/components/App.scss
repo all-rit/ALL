@@ -13,6 +13,8 @@ li {
   padding: 0;
   margin: 0;
 }
+
+
 @mixin breakpoint($size) {
   @if $size == small-phone-only {
     @media (max-width: 330px) {
@@ -853,8 +855,8 @@ a.icon:hover {
   }
 
   &__lab_col {
-    min-width: 20.6rem;
-    max-width: 20.6rem;
+    min-width: 200px;
+    max-width: 20rem;
   }
   &__row {
     display: flex;
@@ -1936,7 +1938,7 @@ body {
 }
 
 .top-span {
-  width: 110%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1948,6 +1950,9 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 20px;
 }
 .educator-module-image {
   background-position: center;
@@ -1955,13 +1960,13 @@ body {
 }
 
 .educator-card--main {
-  font-family: Inter, sans-serif;
+  font-family: Poppins, sans-serif;
   padding: 10px;
   width: 95%;
   display: flex;
   flex-direction: row;
-  border: solid thin #999999;
-  box-shadow: 0 0 8px 2px #808080;
+  border: solid thin #d0d0d0;
+  box-shadow: 0 5px 20px 2px #9a9b9d;
   border-radius: 10px;
   margin: 2rem;
 }
@@ -1971,6 +1976,8 @@ body {
   margin-right: 3rem;
   max-height: 250px;
   max-width: 250px;
+  box-shadow: 0 5px 20px 2px #9a9b9d;
+
 }
 
 .educator-lab-name {
@@ -1992,6 +1999,7 @@ body {
 }
 
 .educator-main--image {
+  min-width: 25%;
   max-width: 75%;
   max-height: 75%;
   border-radius: 25px;

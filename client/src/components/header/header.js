@@ -116,7 +116,7 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           {state.main.lab === 0 ? (
-            <Nav className="ml-auto tw-items-end tw-flex-wrap" navbar>
+            <Nav className="ml-auto tw-items-end tw-flex-wrap poppins" navbar>
               {state.main.body === 0 ? (
                 <Nav className="ml-auto tw-items-end dropdown-menu-wrap" navbar>
                   <NavItem onClick={closeNav} className="navbar-collapse">
