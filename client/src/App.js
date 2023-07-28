@@ -85,7 +85,7 @@ class App extends Component {
     initializeReactGA();
     return (
       <>
-        <div className={'poppins'}>
+        <div className={"poppins"}>
           <Helmet>
             <meta
               name="google-site-verification"

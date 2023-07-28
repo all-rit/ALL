@@ -14,7 +14,6 @@ li {
   margin: 0;
 }
 
-
 @mixin breakpoint($size) {
   @if $size == small-phone-only {
     @media (max-width: 330px) {
@@ -1977,7 +1976,6 @@ body {
   max-height: 250px;
   max-width: 250px;
   box-shadow: 0 5px 20px 2px #9a9b9d;
-
 }
 
 .educator-lab-name {
