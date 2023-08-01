@@ -46,6 +46,7 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
+            npm i pm2 -g
             ${{secrets.CD_SERVER}}
             pm2 delete all
             npm ci 
@@ -59,10 +60,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: cd client && npm i --legacy-peer-deps
-      - run: echo ${{ secrets.PROD_ENV }} > .env
-      - run: npm run build --verbose
-      - run: realpath build
+      - run: | 
+          cd client
+          npm i --legacy-peer-deps
+          echo ${{ secrets.PROD_ENV }} > .env
+          npm run build --verbose
+          realpath build
       - name: executing remote ssh commands using password
         uses: appleboy/scp-action@v0.1.4
         with:
