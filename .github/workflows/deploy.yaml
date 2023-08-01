@@ -53,15 +53,22 @@ jobs:
   run_client_deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: cd client && npm i --legacy-peer-deps
+      - run: echo ${{ secrets.PROD_ENV }} > .env
+      - run: npm run build --verbose
+      - run: realpath build
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1.0.0
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST_NAME }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
-          script: |
-            ${{secrets.CD_CLIENT}}
-            rm -rf build
-            npm ci
-            npm run build
+          source: "/home/runner/work/ALL/ALL/client/build"
+          target: ${{ secrets.CD_CLIENT }}
