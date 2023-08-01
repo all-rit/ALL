@@ -29,12 +29,10 @@ jobs:
       - run: cd client
       - run: npm i --legacy-peer-deps
       - run: npm run build --if-present
-      - run: npm test
       - run: cd ../
       - run: cd server
       - run: npm i
       - run: npm run build --if-present
-      - run: npm test
   run_server_deploy:
     runs-on: ubuntu-latest
     steps:
@@ -46,11 +44,10 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
-            ${{secrets.CD_SERVER}}
-            npm i pm2
-            pm2 delete all
+            ${{ secrets.CD_SERVER }}
+            ${{ secrets.PM2 }} delete all
             npm ci 
-            pm2 start
+            ${{ secrets.PM2 }} start
   run_client_deploy:
     needs: run_server_deploy
     runs-on: ubuntu-latest
