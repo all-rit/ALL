@@ -71,5 +71,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
-          source: "/home/runner/work/ALL/ALL/client/build"
+          source: '${{ GITHUB_ACTION_PATH }}client/build'
           target: ${{ secrets.CD_CLIENT }}
