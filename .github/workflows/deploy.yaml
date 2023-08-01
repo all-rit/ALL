@@ -1,15 +1,23 @@
 name: Production-Deployment
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - prod
 jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo The PR was merged
   run_build:
-    name: client deploy
+    name: client-server build
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases
     steps:
       - uses: actions/checkout@v3
@@ -27,16 +35,33 @@ jobs:
       - run: npm i
       - run: npm run build --if-present
       - run: npm test
-  run_deploy:
+  run_server_deploy:
     runs-on: ubuntu-latest
     steps:
-     - name: executing remote ssh commands using password
-       uses: appleboy/ssh-action@v1.0.0
-       with:
-        host: ${{ secrets.SSH_HOST_NAME }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_SECRET }}
-        port: ${{ secrets.PORT }}
-        script: |
-          ls -a
-          echo 'Hello I am in the server' 
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ${{secrets.CD_SERVER}}
+            pm2 delete all
+            npm ci 
+            pm2 start
+  run_client_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ${{secrets.CD_CLIENT}}
+            rm -rf build
+            npm ci
+            npm run build

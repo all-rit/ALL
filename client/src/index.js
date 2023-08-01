@@ -1,3 +1,4 @@
+/* eslint-disable react/no-deprecated */
 /* eslint-disable no-undef */
 import React from "react";
 import ReactDOM from "react-dom";
