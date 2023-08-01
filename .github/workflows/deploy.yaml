@@ -64,7 +64,6 @@ jobs:
           npm i --legacy-peer-deps
           echo ${{ secrets.PROD_ENV }} > .env
           npm run build --verbose
-          echo realpath build
       - name: rysnc build directory 
         uses: burnett01/rsync-deployments@6.0.0
         with:
