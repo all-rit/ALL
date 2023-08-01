@@ -45,15 +45,16 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             ${{ secrets.CD_SERVER }}
+            rm -f node_modules
+            npm i
             ${{ secrets.PM2 }} delete all
-            npm ci 
             ${{ secrets.PM2 }} start
   run_client_deploy:
     needs: run_server_deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: clone repository to deploy action 
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
@@ -63,13 +64,13 @@ jobs:
           npm i --legacy-peer-deps
           echo ${{ secrets.PROD_ENV }} > .env
           npm run build --verbose
-          realpath build
-      - name: executing remote ssh commands using password
-        uses: appleboy/scp-action@v0.1.4
+      - name: rysnc build directory 
+        uses: burnett01/rsync-deployments@6.0.0
         with:
-          host: ${{ secrets.SSH_HOST_NAME }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_SECRET }}
-          port: ${{ secrets.PORT }}
-          source: '${{ vars.GITHUB_ACTION_PATH }}client/build'
-          target: ${{ secrets.CD_CLIENT }}
+          switches: --delete-before --avzr
+          remote_host: ${{ secrets.SSH_HOST_NAME }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_SECRET }}
+          remote_port: ${{ secrets.PORT }}
+          path: '${{ vars.GITHUB_ACTION_PATH }}client/build'
+          remote_path: ${{ secrets.CD_CLIENT }}
