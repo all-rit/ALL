@@ -46,6 +46,7 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
+            npm i pm2 -g
             ${{secrets.CD_SERVER}}
             pm2 delete all
             npm ci 
