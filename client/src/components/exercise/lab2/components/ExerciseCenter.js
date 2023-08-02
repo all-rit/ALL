@@ -26,6 +26,7 @@ class ExerciseCenter extends Component {
       exercisesPlayed,
       enterThirdInfoState,
       isImagine,
+      isIntervention,
       userID,
     } = this.props;
 
@@ -47,6 +48,7 @@ class ExerciseCenter extends Component {
         exercisesPlayed={exercisesPlayed}
         enterThirdInfoState={enterThirdInfoState}
         isImagine={isImagine}
+        isIntervention={isIntervention}
         userID={userID}
       />
     );

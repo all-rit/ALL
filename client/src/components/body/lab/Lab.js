@@ -4,6 +4,7 @@ import React from "react";
 import handleRedirect from "../../../helpers/Redirect";
 import ProgressBar from "../profilepage/components/ProgressBar";
 import InfoModal from "./InfoModal";
+import about from "../About";
 
 const Lab = (props) => {
   const {
@@ -190,7 +191,11 @@ const Lab = (props) => {
               <li>
                 <button
                   className="btn-primary btn btn-md"
-                  onClick={() => handleRedirect(actions, lab)}
+                  onClick={() => {
+                    console.log(lab, actions.body);
+                    console.log(about);
+                    handleRedirect(actions, lab);
+                  }}
                 >
                   Launch Lab
                 </button>

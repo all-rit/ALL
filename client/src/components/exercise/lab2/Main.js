@@ -248,6 +248,8 @@ class Main extends Component {
       isImagine,
       isImagineExpression,
       userID,
+      isIntervention,
+      isInterventionExpression,
     } = this.props;
 
     // establishing array of current colors for the system
@@ -329,6 +331,7 @@ class Main extends Component {
                   enterThirdInfoState={onOpenThirdInfoState}
                   isImagine={isImagine}
                   userID={userID}
+                  isIntervention={isIntervention}
                 />
               </div>
             ) : (
@@ -347,6 +350,7 @@ class Main extends Component {
                         toWhiteBackground={onToWhiteBackground}
                         background={baseBackground}
                         isImagineExpression={isImagineExpression}
+                        isInterventionExpression={isInterventionExpression}
                       />
                     ) : (
                       <div>
@@ -358,6 +362,7 @@ class Main extends Component {
                             toWhiteBackground={onToWhiteBackground}
                             background={baseBackground}
                             isImagine={isImagine}
+                            isIntervention={isIntervention}
                           />
                         ) : (
                           <div>
@@ -376,7 +381,8 @@ class Main extends Component {
                                   <Conclusion resetSystem={onResetSystem} />
                                 ) : (
                                   <div>
-                                    {firstExercise && !isImagine ? (
+                                    {(firstExercise && !isImagine) ||
+                                    !isIntervention ? (
                                       <LandingPage
                                         endFirstExercise={onEndFirstExercise}
                                         toWhiteBackground={onToWhiteBackground}

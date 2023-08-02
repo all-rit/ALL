@@ -23,6 +23,7 @@ import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
 
 import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
 import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
+import { default as InterventionExercise } from "./components/intervention/Main";
 
 import { default as LandingPageBody } from "./components/body/landingpage/index";
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
@@ -106,11 +107,29 @@ class App extends Component {
 
                 <Imagine path="/Imagine/*" user={state.main.user} />
 
+                {/* Intervention */}
+                <About
+                  path={`/Intervention/About`}
+                  user={state.main.user}
+                  labID={lab}
+                />
+                <Reading
+                  path={`/Intervention/Reading`}
+                  user={state.main.user}
+                  labID={lab}
+                />
+                <InterventionExercise
+                  path="/Intervention/Exercise/*"
+                  user={state.main.user}
+                />
+                {/* End Intervention */}
+
                 <About
                   path={`/Lab${lab}/`}
                   user={state.main.user}
                   labID={lab}
                 />
+
                 <About
                   path={`/Lab${lab}/About`}
                   user={state.main.user}

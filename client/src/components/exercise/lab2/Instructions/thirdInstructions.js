@@ -17,6 +17,7 @@ const ThirdInstructions = ({
   background,
   selectOption,
   isImagine,
+  isIntervention,
 }) => {
   const alreadyCalled = false;
   if (!alreadyCalled) {
@@ -32,6 +33,9 @@ const ThirdInstructions = ({
   }
   if (isImagine) {
     navigate("/Imagine/ExperientialExerciseEnd");
+  }
+  if (isIntervention) {
+    navigate("/Intervention/Exercise/ExperientialEnd");
   }
 
   return (

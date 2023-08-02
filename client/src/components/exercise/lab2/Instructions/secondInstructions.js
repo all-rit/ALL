@@ -15,6 +15,7 @@ const SecondInstructions = ({
   toWhiteBackground,
   background,
   isImagineExpression,
+  isInterventionExpression,
 }) => {
   const alreadyCalled = false;
   if (!alreadyCalled) {
@@ -26,10 +27,12 @@ const SecondInstructions = ({
   }
 
   const closeInstructions = () => {
-    if (!isImagineExpression) {
+    if (!isImagineExpression && !isInterventionExpression) {
       closePage();
-    } else {
+    } else if (!isInterventionExpression) {
       navigate("/Imagine/ExpressionExerciseStart");
+    } else {
+      navigate("/Intervention/Exercise/ExpressionExerciseStart");
     }
   };
 

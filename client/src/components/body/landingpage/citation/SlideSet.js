@@ -57,10 +57,10 @@ const SlideSet = (props) => {
 
   useEffect(() => {
     setSlideSet(
-      renderSlideset(teamInformation).map((item) => {
+      renderSlideset(teamInformation).map((item, index) => {
         return (
           <CarouselItem onExiting={onExiting} onExited={onExited}>
-            {item}
+            <div key={index}> {item} </div>
           </CarouselItem>
         );
       })
