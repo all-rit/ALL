@@ -46,7 +46,7 @@ jobs:
           script: |
             ${{ secrets.CD_SERVER }}
             rm -f node_modules
-            npm i -v
+            npm i -verbose
             ${{ secrets.PM2 }} delete all
             ${{ secrets.PM2 }} start
   run_client_deploy:
