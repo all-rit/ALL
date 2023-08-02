@@ -46,7 +46,7 @@ jobs:
           script: |
             ${{ secrets.CD_SERVER }}
             rm -f node_modules
-            npm i
+            npm i -v
             ${{ secrets.PM2 }} delete all
             ${{ secrets.PM2 }} start
   run_client_deploy:
@@ -67,10 +67,10 @@ jobs:
       - name: rysnc build directory 
         uses: burnett01/rsync-deployments@6.0.0
         with:
-          switches: --delete-before
+          switches: -avzr --delete-before
           remote_host: ${{ secrets.SSH_HOST_NAME }}
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_SECRET }}
           remote_port: ${{ secrets.PORT }}
-          path: '${{ vars.GITHUB_ACTION_PATH }}client/build'
+          path: /client/build
           remote_path: ${{ secrets.CD_CLIENT }}
