@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-constant-condition */
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import _ from "lodash";
@@ -8,7 +9,6 @@ import {
   SECOND,
   SIMULATION_STARTED,
   SIZE,
-  SPAWN_AMOUNT,
   SPAWN_INTERVAL,
   SPEED,
   SPEED_STEP,
@@ -57,49 +57,62 @@ const ShapeSpawner = (props) => {
     !_.isEqual(newShapes, shapes) && setShapes(newShapes);
   }, [shapes, props.objectPosition]);
 
-  const [working, setWorking] = useState(false);
-  const [count, setCount] = useState(0);
-  const [intervalId, setIntervalId] = useState(0);
-  const [max, setMax] = useState(null);
-  const [, setRight] = useState(null);
+  const working = useRef(false);
+  const intervalId = useRef(null);
+
+  const updateMove = useCallback(
+    (direction) => {
+      direction === "right"
+        ? props.handleShiftRight()
+        : props.handleShiftLeft();
+    },
+    [props.handleShiftLeft, props.handleShiftRight]
+  );
+
   useEffect(() => {
     if (props.simulationStatus === SIMULATION_STARTED) {
-      shapes.map(({ x, size }) => {
+      shapes.map(({ x, size, color }) => {
         const touchingX = (newObjectPosition) =>
           (newObjectPosition + IMG_SIZE >= x && props.objectPosition <= x) ||
           (newObjectPosition >= x &&
             newObjectPosition + IMG_SIZE <= x + size) ||
           (newObjectPosition <= x + size &&
             newObjectPosition + IMG_SIZE >= x + size);
-        if (touchingX(props.objectPosition)) {
+        if (
+          touchingX(props.objectPosition) &&
+          color === "tw-bg-[#939393]" &&
+          !working.current
+        ) {
           let shiftLeft = 0,
             shiftRight = 0,
-            direction = "";
-          // while (true) {
-          //     let newPosition = props.objectPosition;
-          //
-          //     shiftLeft += STEP_COUNT;
-          //     newPosition = props.objectPosition - shiftLeft;
-          //     if (newPosition >= 0 && !touchingX(newPosition)) {
-          //         direction = 'left';
-          //         break;
-          //     }
-          //
-          //     shiftRight += STEP_COUNT;
-          //     newPosition = props.objectPosition + shiftLeft;
-          //     if (newPosition <= 1110 && !touchingX(newPosition)) {
-          //         direction = 'right';
-          //         break;
-          //     }
-          //
-          //     if (shiftLeft >= 1000 || shiftRight >= 1000)
-          //         break;
-          // }
-          // console.log(`Move ${direction}`);
+            direction = null;
+          while (true) {
+            let newPosition = props.objectPosition;
+            shiftLeft += STEP_COUNT;
+            newPosition = props.objectPosition - shiftLeft;
+            if (newPosition >= 0 && !touchingX(newPosition)) {
+              direction = "left";
+              break;
+            }
+
+            shiftRight += STEP_COUNT;
+            newPosition = props.objectPosition + shiftRight;
+            if (newPosition <= 1110 && !touchingX(newPosition)) {
+              direction = "right";
+              break;
+            }
+
+            if (shiftLeft >= 1000 || shiftRight >= 1000) {
+              direction = "none";
+              break;
+            }
+          }
+          intervalId.current = setInterval(() => updateMove(direction), 250);
+          working.current = true;
         }
       });
     }
-  }, [props.simulationStatus, working, shapes]);
+  }, [props.simulationStatus, working, shapes, updateMove]);
 
   const updateFallingShapes = useCallback(() => {
     setShapes((shapes) => {
