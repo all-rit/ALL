@@ -82,8 +82,8 @@ const Header = (props) => {
     state.main.lab === 0 ||
     getExerciseState(state) === EXERCISE_IDLE ||
     state.main.body !== 2;
-  const lab = state.main.lab
-  const hideIntervention = lab === 11
+  const lab = state.main.lab;
+  const hideIntervention = lab === 11;
   const body = state.main.body;
   const display =
     (getExerciseState(state) === "EXERCISE_IDLE" || body !== 2) &&
@@ -300,9 +300,14 @@ const Header = (props) => {
                     className="nav-link "
                     onClick={() => navigate(state, actions, 3)}
                     href="# "
-                    style={count === 3 ? activeStyle : {
-                      color: "#fff",
-                      display: hideIntervention ? "none" : "block" }}
+                    style={
+                      count === 3
+                        ? activeStyle
+                        : {
+                            color: "#fff",
+                            display: hideIntervention ? "none" : "block",
+                          }
+                    }
                   >
                     <ul className="navbar-nav nav-font text-uppercase ml-auto">
                       <li className="nav-item">Reinforcement</li>
@@ -315,9 +320,14 @@ const Header = (props) => {
                     className="nav-link "
                     onClick={() => navigate(state, actions, 4)}
                     href="# "
-                    style={count === 4 ? activeStyle : {
-                      color: "#fff",
-                      display: hideIntervention ? "none" : "block"}}
+                    style={
+                      count === 4
+                        ? activeStyle
+                        : {
+                            color: "#fff",
+                            display: hideIntervention ? "none" : "block",
+                          }
+                    }
                   >
                     <ul className="navbar-nav nav-font text-uppercase ml-auto">
                       <li className="nav-item">Quiz</li>

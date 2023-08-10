@@ -183,7 +183,11 @@ class Footer extends Component {
               onClick={() => handleRedirect(actions, lab, body + 1)}
               style={{
                 display:
-                  this.disappearNext(body) || hideOnLanding || hideOnIntervention && body === 2 ? "none" : "block",
+                  this.disappearNext(body) ||
+                  hideOnLanding ||
+                  (hideOnIntervention && body === 2)
+                    ? "none"
+                    : "block",
               }}
             >
               Next -{" "}
