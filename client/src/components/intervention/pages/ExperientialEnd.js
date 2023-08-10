@@ -1,9 +1,35 @@
 // @ts-ignore
+/* eslint-disable react/prop-types */
 import React from "react";
 import { navigate } from "@reach/router";
+import { connect } from "react-redux";
+import { RESET } from "../../../constants/lab2/index";
 
-export default function ExperientialEnd() {
-  const handleNavActivity = () => {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    resetColorsState: () => dispatch({ type: RESET }),
+    resetExerciseOptionState: () => dispatch({ type: RESET }),
+    resetExerciseState: () => dispatch({ type: RESET }),
+    resetUserState: () => dispatch({ type: RESET }),
+  };
+};
+
+const mapStateToProps = (state) => ({
+  exerciseState: state.exerciseState,
+});
+
+const ExperientialEnd = (props) => {
+  const {
+    resetExerciseState,
+    resetColorsState,
+    resetExerciseOptionState,
+    resetUserState,
+  } = props;
+  const handleRestartNav = () => {
+    resetColorsState(); // Reset colors state
+    resetExerciseOptionState(); // Reset exercise option state
+    resetExerciseState(); // Reset exercise state
+    resetUserState();
     navigate("/Intervention/Exercise/StartActivity");
   };
   const handleNavHome = () => {
@@ -27,7 +53,7 @@ export default function ExperientialEnd() {
       <span>
         <button
           className="btn btn-primary text-black btn-xl text-uppercase tw-m-5"
-          onClick={handleNavActivity}
+          onClick={handleRestartNav}
         >
           Return to Activity
         </button>
@@ -40,4 +66,6 @@ export default function ExperientialEnd() {
       </span>
     </div>
   );
-}
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExperientialEnd);

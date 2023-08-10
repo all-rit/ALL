@@ -2,17 +2,40 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 
-import React from "react";
+import React, { useState } from "react";
 import { navigate } from "@reach/router";
-
-const handleNavActivity = () => {
-  navigate("/Intervention/Exercise/StartActivity");
+import { RESET } from "../../../constants/lab2/index";
+import { connect } from "react-redux";
+const mapDispatchToProps = (dispatch) => {
+  return {
+    resetColorsState: () => dispatch({ type: RESET }),
+    resetExerciseOptionState: () => dispatch({ type: RESET }),
+    resetExerciseState: () => dispatch({ type: RESET }),
+    resetUserState: () => dispatch({ type: RESET }),
+  };
 };
+
+const mapStateToProps = (state) => ({
+  exerciseState: state.exerciseState,
+});
 const handleNavHome = () => {
   navigate("/#");
 };
 const ExerciseEnd = (props) => {
-  const { isExperiential } = props;
+  const {
+    isExperiential,
+    resetExerciseState,
+    resetColorsState,
+    resetExerciseOptionState,
+    resetUserState,
+  } = props;
+  const handleRestartNav = () => {
+    resetColorsState(); // Reset colors state
+    resetExerciseOptionState(); // Reset exercise option state
+    resetExerciseState(); // Reset exercise state
+    resetUserState();
+    navigate("/Intervention/Exercise/StartActivity");
+  };
   return (
     <div className="container bottomSpace center-div">
       <h2 className="playthrough__title">
@@ -29,7 +52,7 @@ const ExerciseEnd = (props) => {
       <span>
         <button
           className="btn btn-primary text-black btn-xl text-uppercase tw-m-5"
-          onClick={handleNavActivity}
+          onClick={handleRestartNav}
         >
           Return to Activity
         </button>
@@ -44,4 +67,4 @@ const ExerciseEnd = (props) => {
   );
 };
 
-export default ExerciseEnd;
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseEnd);

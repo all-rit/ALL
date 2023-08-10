@@ -100,12 +100,14 @@ const Main = (props) => {
             actions={actions}
             state={state}
             isExperiential
+            exerciseState={state.exercise2.exerciseState}
           />
           <ExerciseEnd
             path="/ExpressionExerciseEnd"
             actions={actions}
             state={state}
             isExperiential={false}
+            exerciseState={state.exercise2.exerciseState}
           />
           <ExperientialEnd
             path="/ExperientialEnd"
