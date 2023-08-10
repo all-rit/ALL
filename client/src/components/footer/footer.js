@@ -40,6 +40,7 @@ class Footer extends Component {
       displayColorPalette: false,
       backgroundColor: null,
       color: null,
+      isIntervention: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -60,7 +61,6 @@ class Footer extends Component {
   componentWillUnmount() {
     document.removeEventListener("click", this.handleClick);
   }
-
   changeSize = (size) => {
     const state_size = this.state.fontSize;
     changeTSize(size);
@@ -156,6 +156,7 @@ class Footer extends Component {
       (getExerciseState(state) === "EXERCISE_IDLE" || body !== 2) &&
       (lab === 0 ? body !== 3 : true);
     const hideOnLanding = lab === 0;
+    const hideOnIntervention = lab === 11;
     // for buttons that should not be displayed on the landing page
     return (
       <>
@@ -182,7 +183,7 @@ class Footer extends Component {
               onClick={() => handleRedirect(actions, lab, body + 1)}
               style={{
                 display:
-                  this.disappearNext(body) || hideOnLanding ? "none" : "block",
+                  this.disappearNext(body) || hideOnLanding || hideOnIntervention && body === 2 ? "none" : "block",
               }}
             >
               Next -{" "}
