@@ -45,7 +45,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             ${{ secrets.CD_SERVER }}
-            rm -f node_modules
+            rm -rf node_modules
             npm i -verbose
             ${{ secrets.PM2 }} delete all
             ${{ secrets.PM2 }} start
@@ -64,13 +64,23 @@ jobs:
           npm i --legacy-peer-deps
           echo ${{ secrets.PROD_ENV }} > .env
           npm run build --verbose
+      - uses: appleboy/ssh-action@v1.0.0
+      - name: delete build and create new 
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd research/client
+            rm -rf build
+            mkdir build
       - name: rysnc build directory 
         uses: burnett01/rsync-deployments@6.0.0
         with:
-          switches: -avzr --delete-before
+          switches: -avzr
           remote_host: ${{ secrets.SSH_HOST_NAME }}
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_SECRET }}
-          remote_port: ${{ secrets.PORT }}
           path: /client/build
           remote_path: ${{ secrets.CD_CLIENT }}
