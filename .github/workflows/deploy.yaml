@@ -47,6 +47,7 @@ jobs:
             ${{ secrets.CD_SERVER }}
             rm -rf node_modules
             npm i -verbose
+            cd ../
             ${{ secrets.PM2 }} delete all
             ${{ secrets.PM2 }} start
   run_client_deploy:
@@ -67,9 +68,9 @@ jobs:
       - name: delete build and create new 
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
             cd research/client
