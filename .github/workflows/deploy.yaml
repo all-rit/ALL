@@ -64,19 +64,19 @@ jobs:
           npm i --legacy-peer-deps
           echo ${{ secrets.PROD_ENV }} > .env
           npm run build --verbose
-      - uses: appleboy/ssh-action@v1.0.0
       - name: delete build and create new 
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-      - run: |
+          script: |
             cd research/client
             rm -rf build
             mkdir build
       - name: rysnc build directory 
-        uses: burnett01/rsync-deployments@6.0.0
+        uses: burnett01/rsync-deployments@6.0.0  
         with:
           switches: -avzr
           remote_host: ${{ secrets.SSH_HOST_NAME }}
