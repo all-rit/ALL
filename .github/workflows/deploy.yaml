@@ -76,7 +76,7 @@ jobs:
             rm -rf build
             mkdir build
       - name: rysnc build directory 
-        uses: burnett01/rsync-deployments@6.0.0
+      - uses: burnett01/rsync-deployments@6.0.0
         with:
           switches: -avzr
           remote_host: ${{ secrets.SSH_HOST_NAME }}
