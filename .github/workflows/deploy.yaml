@@ -46,6 +46,7 @@ jobs:
           script: |
             ${{ secrets.CD_SERVER }}
             rm -rf node_modules
+            rm package-lock.json
             npm i -verbose
             cd ../
             ${{ secrets.PM2 }} delete all
@@ -76,11 +77,11 @@ jobs:
             rm -rf build
             mkdir build
       - name: rysnc build directory 
-        uses: burnett01/rsync-deployments@6.0.0  
+        uses: appleboy/scp-action@v0.1.4 
         with:
-          switches: -avzr
-          remote_host: ${{ secrets.SSH_HOST_NAME }}
-          remote_user: ${{ secrets.SSH_USER }}
-          remote_key: ${{ secrets.SSH_SECRET }}
-          path: /client/build
-          remote_path: ${{ secrets.CD_CLIENT }}
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
+          port: ${{ secrets.PORT }}
+          source: /client/build
+          target: ${{ secrets.CD_CLIENT }}
