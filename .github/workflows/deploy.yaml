@@ -66,6 +66,7 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
+            cd ${{ secrets.PROJECT_PATH }}
             ${{ secrets.PM2 }} delete all
             ${{ secrets.PM2 }} start
   run_client_deploy:
