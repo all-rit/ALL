@@ -47,7 +47,7 @@ jobs:
             ${{ secrets.CD_SERVER }}
             rm -rf node_modules
             rm package-lock.json
-            npm i -verbose
+            npm i -verbose --legacy-peer-deps
             cd ../
             ${{ secrets.PM2 }} delete all
             ${{ secrets.PM2 }} start
@@ -75,7 +75,11 @@ jobs:
           script: |
             cd research/client
             rm -rf build
-            mkdir build
+      - name: Run a multi-line script
+        run: |
+          mkdir ../build
+          cp -TR . ../build
+          tar -cvf deploy.tar ../build/
       - name: rysnc build directory 
         uses: appleboy/scp-action@v0.1.4 
         with:
@@ -83,5 +87,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
-          source: /client/build
+          source: "deploy.tar"
           target: ${{ secrets.CD_CLIENT }}
