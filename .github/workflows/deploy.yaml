@@ -107,7 +107,7 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "deploy.tar"
           target: ${{ secrets.CD_CLIENT }}
-      - name: Kickstart process management
+      - name: Unzip build directory
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST_NAME }}
@@ -117,3 +117,13 @@ jobs:
           script: |
             ${{ secrets.CD_SERVER }}
             tar -xvzf deploy.tar -C ./build
+      - name: delete zipDeploy directory
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ${{ secrets.CD_SERVER }}
+            rm deploy.tar
