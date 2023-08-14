@@ -56,16 +56,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: clone repository to deploy action 
+      - name: clone repository to deploy action
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: | 
+      - run: |
           cd client
           npm i --legacy-peer-deps 
           echo ${{ secrets.PROD_ENV }} > .env && npm run build --verbose
-      - name: delete build and create new 
+      - name: delete build and create new
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST_NAME }}
@@ -75,13 +75,14 @@ jobs:
           script: |
             cd research/client
             rm -rf build
+            mkdir ../build
       - name: Run a multi-line script
         run: |
-          mkdir ../build
+          cd research/client
           cp -TR . ../build
           tar -cvf deploy.tar ../build/
-      - name: rysnc build directory 
-        uses: appleboy/scp-action@v0.1.4 
+      - name: rysnc build directory
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST_NAME }}
           username: ${{ secrets.SSH_USER }}
