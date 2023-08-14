@@ -66,8 +66,8 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
-            pm2 delete all
-            pm2 start
+            ${{ secrets.PM2 }} delete all
+            ${{ secrets.PM2 }} start
   run_client_deploy:
     needs: run_server_deploy
     runs-on: ubuntu-latest
