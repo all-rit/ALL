@@ -45,6 +45,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             ${{ secrets.CD_SERVER }}
+            npm cache clean --force
             rm -rf node_modules
             rm package-lock.json
       - name: installs server dependencies to production
