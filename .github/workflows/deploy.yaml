@@ -62,9 +62,8 @@ jobs:
           cache: "npm"
       - run: | 
           cd client
-          npm i --legacy-peer-deps
-          echo ${{ secrets.PROD_ENV }} > .env
-          npm run build --verbose
+          npm i --legacy-peer-deps 
+          echo ${{ secrets.PROD_ENV }} > .env && npm run build --verbose
       - name: delete build and create new 
         uses: appleboy/ssh-action@v1.0.0
         with:
