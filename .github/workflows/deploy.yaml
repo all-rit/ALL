@@ -45,8 +45,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             ${{ secrets.CD_SERVER }}
-            chmod +x server_deploy.sh
-            ./server_deploy.sh
+            chmod +x server_deploy.sh && ./server_deploy.sh
   run_client_deploy:
     needs: run_server_deploy
     runs-on: ubuntu-latest
