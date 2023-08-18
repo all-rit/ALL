@@ -76,6 +76,7 @@ jobs:
         run: |
           cp -TR . ../build
           tar -cvzf deploy.tar.gz ../build/
+          echo server deploy complete
       - name: scp build directory
         uses: appleboy/scp-action@v0.1.4
         with:
