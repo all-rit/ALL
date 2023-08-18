@@ -36,7 +36,7 @@ jobs:
   run_server_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: removes existing modules
+      - name: runs deploy script
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST_NAME }}
@@ -45,30 +45,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             ${{ secrets.CD_SERVER }}
-            npm cache clean --force
-            rm -rf node_modules
-            rm package-lock.json
-      - name: installs server dependencies to production
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SSH_HOST_NAME }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_SECRET }}
-          port: ${{ secrets.PORT }}
-          script: |
-            ${{ secrets.CD_SERVER }}
-            npm i -verbose --legacy-peer-deps
-      - name: Kickstart process management
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SSH_HOST_NAME }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_SECRET }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd ${{ secrets.PROJECT_PATH }}
-            ${{ secrets.PM2 }} delete all
-            ${{ secrets.PM2 }} start
+            chmod +x server_deploy.sh && ./server_deploy.sh
   run_client_deploy:
     needs: run_server_deploy
     runs-on: ubuntu-latest
@@ -95,10 +72,10 @@ jobs:
             cd research/client
             rm -rf build
             mkdir ../build
-      - name: Run a multi-line script
+      - name: tar build to
         run: |
           cp -TR . ../build
-          tar -cvf deploy.tar ../build/
+          tar -cvzf deploy.tar.gz ../build/
       - name: scp build directory
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -106,7 +83,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
-          source: "deploy.tar"
+          source: "deploy.tar.gz"
           target: ${{ secrets.CD_CLIENT }}
       - name: Unzip build directory
         uses: appleboy/ssh-action@v1.0.0
@@ -116,8 +93,8 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
-            ${{ secrets.CD_SERVER }}
-            tar -xvzf deploy.tar -C ./build
+            ${{ secrets.CD_CLIENT }}
+            tar -xvzf deploy.tar.gz -C ./build
       - name: delete zipDeploy directory
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -126,5 +103,5 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
-            ${{ secrets.CD_SERVER }}
-            rm deploy.tar
+            ${{ secrets.CD_CLIENT }}
+            rm deploy.tar.gz
