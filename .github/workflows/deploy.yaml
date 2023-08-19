@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
       - run: cd client
       - run: npm i --legacy-peer-deps
       - run: npm run build --if-present
@@ -42,7 +42,7 @@ jobs:
           host: ${{ secrets.SSH_HOST_NAME }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_SECRET }}
-          port: 5432
+          port: ${{ secrets.PORT }}
           script: |
             cd ${{ secrets.CD_SERVER }}
             chmod +x server_deploy.sh
@@ -56,7 +56,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
       - run: echo ${{ secrets.PROD_ENV }} > ./client/.env
       - run: |
           cd client
@@ -84,7 +84,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
-          source: 'deploy.tar.gz'
+          source: "deploy.tar.gz"
           target: ${{ secrets.CD_CLIENT }}
       - name: Unzip build directory
         uses: appleboy/ssh-action@v1.0.0
@@ -95,7 +95,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             ${{ secrets.CD_CLIENT }}
-            tar -xvzf deploy.tar.gz -C ./build
+            tar -xvzf deploy.tar.gz
       - name: delete zipDeploy directory
         uses: appleboy/ssh-action@v1.0.0
         with:
