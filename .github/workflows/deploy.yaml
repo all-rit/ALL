@@ -104,5 +104,5 @@ jobs:
           key: ${{ secrets.SSH_SECRET }}
           port: ${{ secrets.PORT }}
           script: |
-            ${{ secrets.CD_CLIENT }}
+            cd ${{ secrets.CD_CLIENT }}
             rm deploy.tar.gz
