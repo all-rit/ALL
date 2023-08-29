@@ -11,13 +11,7 @@ export const Sections = {
       name: "Profile",
     },
     3: {
-      name: "Imagine1",
-    },
-    4: {
-      name: "Imagine2",
-    },
-    5: {
-      name: "Imagine3",
+      name: "Imagine",
     },
   },
   1: {

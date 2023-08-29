@@ -1,10 +1,10 @@
 const db = require('../database');
 
-exports.userAvatar = (data)=> {
+exports.discomfortCount = (data)=> {
   const userID = data.userID;
-  const avatar = data.avatar;
+  const discomfortCount = data.discomfortCount;
   if (userID) {
-    return db.Imagine
+    return db.Imagine23
         .findOne({
           where:
                         {
@@ -13,12 +13,12 @@ exports.userAvatar = (data)=> {
         },
         ).then((user) => {
           if (user !== null) {
-            user.avatar = avatar;
+            user.discomfortCount = discomfortCount;
             user.save();
           } else {
-            db.Imagine.create({
+            db.Imagine23.create({
               userid: userID,
-              avatar: avatar,
+              discomfortCount: discomfortCount,
             });
           }
           return true;
@@ -30,11 +30,11 @@ exports.userAvatar = (data)=> {
   return Promise.resolve();
 };
 
-exports.userSquad = (data)=> {
+exports.experientialMain = (data)=> {
   const userID = data.userID;
-  const squad = data.squad;
+  const experientialMain = data.experientialMain;
   if (userID) {
-    return db.Imagine
+    return db.Imagine23
         .findOne({
           where:
                         {
@@ -43,42 +43,12 @@ exports.userSquad = (data)=> {
         },
         ).then((user) => {
           if (user !== null) {
-            user.squad = squad;
+            user.experientialMain = experientialMain;
             user.save();
           } else {
-            db.Imagine.create({
+            db.Imagine23.create({
               userid: userID,
-              squad: squad,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
-  }
-  return Promise.resolve();
-};
-
-exports.userLobbyMessages = (data)=> {
-  const userID = data.userID;
-  const lobbyMessages = data.lobbyMessages;
-  if (userID) {
-    return db.Imagine
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.lobbyMessages = lobbyMessages;
-            user.save();
-          } else {
-            db.Imagine.create({
-              userid: userID,
-              lobbyMessages: lobbyMessages,
+              experientialMain: experientialMain,
             });
           }
           return true;
@@ -91,11 +61,11 @@ exports.userLobbyMessages = (data)=> {
 };
 
 
-exports.userLobbyMessages = (data)=> {
+exports.experientialProtanopia = (data)=> {
   const userID = data.userID;
-  const lobbyMessages = data.lobbyMessages;
+  const experientialProtanopia = data.experientialProtanopia;
   if (userID) {
-    return db.Imagine
+    return db.Imagine23
         .findOne({
           where:
                         {
@@ -104,12 +74,12 @@ exports.userLobbyMessages = (data)=> {
         },
         ).then((user) => {
           if (user !== null) {
-            user.lobbyMessages = lobbyMessages;
+            user.experientialProtanopia = experientialProtanopia;
             user.save();
           } else {
-            db.Imagine.create({
+            db.Imagine23.create({
               userid: userID,
-              lobbyMessages: lobbyMessages,
+              experientialProtanopia: experientialProtanopia,
             });
           }
           return true;
@@ -119,28 +89,4 @@ exports.userLobbyMessages = (data)=> {
         });
   }
   return Promise.resolve();
-};
-
-exports.getUserSquad = (userID) => {
-  return db.Imagine
-      .findOne({
-        where: {
-          userid: userID,
-        },
-        raw: true,
-      }).then((user)=>{
-        return user.squad;
-      });
-};
-
-exports.getUserAvatar = (userID) => {
-  return db.Imagine
-      .findOne({
-        where: {
-          userid: userID,
-        },
-        raw: true,
-      }).then((user)=>{
-        return user.avatar;
-      });
 };

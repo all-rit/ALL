@@ -1,9 +1,11 @@
 # Accessible Learning Labs
 
+[![Production CI](https://github.com/all-rit/ALL/actions/workflows/node.js.yml/badge.svg)](https://github.com/all-rit/ALL/actions/workflows/node.js.yml)
+
 ## Requirements
 
-- NodeJS ~= 12.16.2
-- NPM ~= 6.14.4
+- NodeJS ~= 16.20.1
+- NPM ~= 8.19.4
   May work for other versions but not guaranteed
 
 ## Setup

@@ -9,26 +9,23 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "latest",
-    "bookshelf": "latest",
-    "cookie-parser": "latest",
-    "cookie-session": "latest",
-    "cors": "latest",
+    "body-parser": "^1.20.2",
+    "bookshelf": "^1.2.0",
+    "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "latest",
-    "express-session": "latest",
-    "knex": "latest",
-    "nanoid": "^3.1.23",
-    "passport": "latest",
-    "passport-google-oauth20": "latest",
-    "pg": "latest",
-    "prettier": "^2.8.6",
-    "pretty-quick": "^3.1.3",
-    "react-ga": "^3.3.0",
-    "sequelize": "latest"
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "knex": "^2.5.1",
+    "nanoid": "^3.3.6",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.11.1",
+    "sequelize": "^6.32.1"
   },
   "devDependencies": {
-    "eslint": "^8.23.0",
+    "eslint": "^8.45.0",
     "eslint-config-google": "^0.14.0"
   }
 }

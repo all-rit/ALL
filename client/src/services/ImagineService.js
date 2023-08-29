@@ -2,42 +2,32 @@
 import API from "./API";
 
 const ImagineService = {
-  userAvatar: (userID, avatar) => {
+  discomfortCount: (userID, discomfortCount) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/avatar",
+      process.env.REACT_APP_SERVER_URL + "/imagine/discomfortCount",
       {
         userID,
-        avatar,
+        discomfortCount,
       }
     );
   },
-  userSquad: (userID, squad) => {
+  experientialMain: (userID, experientialMain) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/squad",
+      process.env.REACT_APP_SERVER_URL + "/imagine/experientialMain",
       {
         userID,
-        squad,
+        experientialMain,
       }
     );
   },
-  userLobbyMessages: (userID, lobbyMessages) => {
+  experientialProtanopia: (userID, experientialProtanopia) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/lobbyMessages",
+      process.env.REACT_APP_SERVER_URL + "/imagine/experientialProtanopia",
       {
         userID,
-        lobbyMessages,
+        experientialProtanopia,
       }
     );
-  },
-  getUserSquad: (userID) => {
-    return API.get(
-      process.env.REACT_APP_SERVER_URL + `/imagine/squad/${userID}`
-    ).then((response) => response.json());
-  },
-  getUserAvatar: (userID) => {
-    return API.get(
-      process.env.REACT_APP_SERVER_URL + `/imagine/avatar/${userID}`
-    ).then((response) => response.json());
   },
 };
 
