@@ -12,7 +12,17 @@ import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 
 const DataRepair = (props) => {
   const { actions } = props;
+  const [messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
 
+  const handleAiPolarityChange = (messageId, newValue) => {
+    setMessages((prevMessages) =>
+      prevMessages.map((message) =>
+        message.id === messageId
+          ? { ...message, ai_polarity: newValue }
+          : message
+      )
+    );
+  };
   /*
     make sure that users cannot click "previous" or "continue buttons"
     while they are playing the exercise
@@ -24,18 +34,8 @@ const DataRepair = (props) => {
   /*
     state variables to contain the user's inputted repair values
     */
-  const [messageOneValue, setMessageOneValue] = useState(0);
-  const [messageTwoValue, setMessageTwoValue] = useState(0);
-  const [messageThreeValue, setMessageThreeValue] = useState(0);
-  const [messageFourValue, setMessageFourValue] = useState(0);
-  const [messageFiveValue, setMessageFiveValue] = useState(0);
-  const [messageSixValue, setMessageSixValue] = useState(0);
-  const [messageOneValueError, setMessageOneValueError] = useState(false);
-  const [messageTwoValueError, setMessageTwoValueError] = useState(false);
-  const [messageThreeValueError, setMessageThreeValueError] = useState(false);
-  const [messageFourValueError, setMessageFourValueError] = useState(false);
-  const [messageFiveValueError, setMessageFiveValueError] = useState(false);
-  const [messageSixValueError, setMessageSixValueError] = useState(false);
+  const [messageValue] = useState(0);
+  const [messageError, setMessageError] = useState(false);
 
   /*
     state variables to track state of repair section
@@ -67,60 +67,14 @@ const DataRepair = (props) => {
 
     // check that each repair value is in the list of acceptable values
     // message one
-    if (!(messageOneValue in repairAllowList) || messageOneValue == "") {
+    if (!(messageValue in repairAllowList) || messageValue === "") {
       // we need to display an error message
-      setMessageOneValueError(true);
+      setMessageError(true);
       error = true;
     } else {
       // clear the error message
-      setMessageOneValueError(false);
+      setMessageError(false);
     }
-    // message two
-    if (!(messageTwoValue in repairAllowList) || messageTwoValue == "") {
-      // we need to display an error message
-      setMessageTwoValueError(true);
-      error = true;
-    } else {
-      // clear the error message
-      setMessageTwoValueError(false);
-    }
-    // message three
-    if (!(messageThreeValue in repairAllowList) || messageThreeValue == "") {
-      // we need to display an error message
-      setMessageThreeValueError(true);
-      error = true;
-    } else {
-      // clear the error message
-      setMessageThreeValueError(false);
-    }
-    // message four
-    if (!(messageFourValue in repairAllowList) || messageFourValue == "") {
-      // we need to display an error message
-      setMessageFourValueError(true);
-      error = true;
-    } else {
-      // clear the error message
-      setMessageFourValueError(false);
-    }
-    // message five
-    if (!(messageFiveValue in repairAllowList) || messageFiveValue == "") {
-      // we need to display an error message
-      setMessageFiveValueError(true);
-      error = true;
-    } else {
-      // clear the error message
-      setMessageFiveValueError(false);
-    }
-    // message six
-    if (!(messageSixValue in repairAllowList) || messageSixValue == "") {
-      // we need to display an error message
-      setMessageSixValueError(true);
-      error = true;
-    } else {
-      // clear the error message
-      setMessageSixValueError(false);
-    }
-
     if (!error) {
       // eventually need to send repair data to the backend
       console.log("Repairs made with no errors");
@@ -134,10 +88,6 @@ const DataRepair = (props) => {
       );
     }
   };
-
-  const getMessageContent = (messageIndex) => {
-    return CHAT_MESSAGES.before_repair[messageIndex].content
-  }
 
   const handleContinue = () => {
     // TODO: navigate to the next page
@@ -230,377 +180,73 @@ const DataRepair = (props) => {
               </div>
 
               {/* 6 messages total to repair */}
-              {/* first message */}
-              <div className="code_editor__form">
-                <div className="code_editor__line">
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* opening bracket */}
-                  &#123;
-                  <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;{getMessageContent(0)}&quot;
-                  </span>
-                  ,
-                  <br />
-                  {/* sentiment score */}
-                  <div className="code_editor__line-background--light">
-                    {/* two tab indent */}
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
-                    <span>
-                      <input
-                        name="messageOne"
-                        type="text"
-                        placeholder={0}
-                        onChange={(e) => {
-                          setMessageOneValue(e.target.value);
-                        }}
-                        title={`message one`}
-                        className={
-                          messageOneValueError ? "form-error-input" : ""
-                        }
-                      />
-                    </span>
-                  </div>
-                  {messageOneValueError && (
-                    <div className="code_editor__line">
-                      {/* one tab indent */}
-                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                      <span className="form-error">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Please enter either 0, 1, or 2."}
-                      </span>
-                    </div>
-                  )}
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* closing bracket */}
-                  &#125;,
-                </div>
-              </div>
 
-              {/* second message */}
-              <div className="code_editor__form">
-                <div className="code_editor__line">
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* opening bracket */}
-                  &#123;
-                  <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;{getMessageContent(1)}&quot;
-                  </span>
-                  ,
-                  <br />
-                  {/* sentiment score */}
-                  <div className="code_editor__line-background--light">
-                    {/* two tab indent */}
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
-                    <span>
-                      <input
-                        name="messageTwo"
-                        type="text"
-                        placeholder={0}
-                        onChange={(e) => {
-                          setMessageTwoValue(e.target.value);
-                        }}
-                        title={`message two`}
-                        className={
-                          messageTwoValueError ? "form-error-input" : ""
-                        }
-                      />
-                    </span>
-                  </div>
-                  {messageTwoValueError && (
-                    <div className="code_editor__line">
-                      {/* one tab indent */}
-                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                      <span className="form-error">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Please enter either 0, 1, or 2."}
-                      </span>
-                    </div>
-                  )}
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* closing bracket */}
-                  &#125;,
-                </div>
-              </div>
+              {/* Going to map all of the messages instead of one by one */}
 
-              {/* third message */}
-              <div className="code_editor__form">
-                <div className="code_editor__line">
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* opening bracket */}
-                  &#123;
-                  <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;{getMessageContent(2)}&quot;
-                  </span>
-                  ,
-                  <br />
-                  {/* sentiment score */}
-                  <div className="code_editor__line-background--light">
+              {messages.map((message) => (
+                <div className="code_editor__form" key={message.id}>
+                  <div className="code_editor__line">
+                    {/* one tab indent */}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    {/* opening bracket */}
+                    &#123;
+                    <br />
                     {/* two tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    {/* message */}
                     <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
+                      &quot;message&quot;
                     </span>{" "}
                     :&nbsp;
-                    <span>
-                      <input
-                        name="messageThree"
-                        type="text"
-                        placeholder={0}
-                        onChange={(e) => {
-                          setMessageThreeValue(e.target.value);
-                        }}
-                        title={`message three`}
-                        className={
-                          messageThreeValueError ? "form-error-input" : ""
-                        }
-                      />
+                    <span className="code_editor__json_property_value">
+                      &quot;{message.content}&quot;
                     </span>
-                  </div>
-                  {messageThreeValueError && (
-                    <div className="code_editor__line">
-                      {/* one tab indent */}
+                    ,
+                    <br />
+                    {/* sentiment score */}
+                    <div className="code_editor__line-background--light">
+                      {/* two tab indent */}
                       <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                      <span className="form-error">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Please enter either 0, 1, or 2."}
+                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      <span className="code_editor__json_property_key">
+                        &quot;ai_sentiment_score&quot;
+                      </span>{" "}
+                      :&nbsp;
+                      <span>
+                        <input
+                          name="message"
+                          type="number"
+                          placeholder={0}
+                          value={message.ai_polarity}
+                          onChange={(e) => {
+                            handleAiPolarityChange(
+                              message.id,
+                              parseInt(e.target.value)
+                            );
+                          }}
+                          title={message.id}
+                          className={messageError ? "form-error-input" : ""}
+                        />
                       </span>
                     </div>
-                  )}
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* closing bracket */}
-                  &#125;,
-                </div>
-              </div>
-
-              {/* fourth message */}
-              <div className="code_editor__form">
-                <div className="code_editor__line">
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* opening bracket */}
-                  &#123;
-                  <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;{getMessageContent(3)}&quot;
-                  </span>
-                  ,
-                  <br />
-                  {/* sentiment score */}
-                  <div className="code_editor__line-background--light">
-                    {/* two tab indent */}
+                    {messageError && (
+                      <div className="code_editor__line">
+                        {/* one tab indent */}
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span className="form-error">
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+                          {"Please enter either 0, 1, or 2."}
+                        </span>
+                      </div>
+                    )}
+                    {/* one tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
-                    <span>
-                      <input
-                        name="messageFour"
-                        type="text"
-                        placeholder={0}
-                        onChange={(e) => {
-                          setMessageFourValue(e.target.value);
-                        }}
-                        title={`message four`}
-                        className={
-                          messageFourValueError ? "form-error-input" : ""
-                        }
-                      />
-                    </span>
+                    {/* closing bracket */}
+                    &#125;,
                   </div>
-                  {messageFourValueError && (
-                    <div className="code_editor__line">
-                      {/* one tab indent */}
-                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                      <span className="form-error">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Please enter either 0, 1, or 2."}
-                      </span>
-                    </div>
-                  )}
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* closing bracket */}
-                  &#125;,
                 </div>
-              </div>
-
-              {/* fifth message */}
-              <div className="code_editor__form">
-                <div className="code_editor__line">
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* opening bracket */}
-                  &#123;
-                  <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;{getMessageContent(4)}&quot;
-                  </span>
-                  ,
-                  <br />
-                  {/* sentiment score */}
-                  <div className="code_editor__line-background--light">
-                    {/* two tab indent */}
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
-                    <span>
-                      <input
-                        name="messageFive"
-                        type="text"
-                        placeholder={0}
-                        onChange={(e) => {
-                          setMessageFiveValue(e.target.value);
-                        }}
-                        title={`message five`}
-                        className={
-                          messageFiveValueError ? "form-error-input" : ""
-                        }
-                      />
-                    </span>
-                  </div>
-                  {messageFiveValueError && (
-                    <div className="code_editor__line">
-                      {/* one tab indent */}
-                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                      <span className="form-error">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Please enter either 0, 1, or 2."}
-                      </span>
-                    </div>
-                  )}
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* closing bracket */}
-                  &#125;,
-                </div>
-              </div>
-
-              {/* sixth message */}
-              <div className="code_editor__form">
-                <div className="code_editor__line">
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* opening bracket */}
-                  &#123;
-                  <br />
-                  {/* two tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* message */}
-                  <span className="code_editor__json_property_key">
-                    &quot;message&quot;
-                  </span>{" "}
-                  :&nbsp;
-                  <span className="code_editor__json_property_value">
-                    &quot;{getMessageContent(5)}e&quot;
-                  </span>
-                  ,
-                  <br />
-                  {/* sentiment score */}
-                  <div className="code_editor__line-background--light">
-                    {/* two tab indent */}
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span className="code_editor__json_property_key">
-                      &quot;ai_sentiment_score&quot;
-                    </span>{" "}
-                    :&nbsp;
-                    <span>
-                      <input
-                        name="messageSix"
-                        type="text"
-                        placeholder={0}
-                        onChange={(e) => {
-                          setMessageSixValue(e.target.value);
-                        }}
-                        title={`message six`}
-                        className={
-                          messageSixValueError ? "form-error-input" : ""
-                        }
-                      />
-                    </span>
-                  </div>
-                  {messageSixValueError && (
-                    <div className="code_editor__line">
-                      {/* one tab indent */}
-                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                      <span className="form-error">
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"Please enter either 0, 1, or 2."}
-                      </span>
-                    </div>
-                  )}
-                  {/* one tab indent */}
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  {/* closing bracket */}
-                  &#125;,
-                </div>
-              </div>
+              ))}
 
               {/* closing - end object */}
               <div className="code_editor__line">
