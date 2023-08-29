@@ -29,7 +29,7 @@ const BiasedSimulation = (props) => {
   };
 
   const handleContinue = () => {
-    // submit choices to backend via exercise service
+    // submit user's choice to keep or remove each message to backend via exercise service
     // ExerciseService. ...
     navigate("/Lab8/Exercise/BiasDiscovery");
   };

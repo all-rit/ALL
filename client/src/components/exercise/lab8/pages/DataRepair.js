@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import Popup from "../../shared/Popup";
+import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 
 const DataRepair = (props) => {
   const { actions } = props;
@@ -134,6 +135,10 @@ const DataRepair = (props) => {
     }
   };
 
+  const getMessageContent = (messageIndex) => {
+    return CHAT_MESSAGES.before_repair[messageIndex].content
+  }
+
   const handleContinue = () => {
     // TODO: navigate to the next page
     navigate("/Lab8/Exercise/DataRepair");
@@ -242,8 +247,7 @@ const DataRepair = (props) => {
                   </span>{" "}
                   :&nbsp;
                   <span className="code_editor__json_property_value">
-                    &quot;watching your streams always puts me in a good
-                    mood&quot;
+                    &quot;{getMessageContent(0)}&quot;
                   </span>
                   ,
                   <br />
@@ -305,8 +309,7 @@ const DataRepair = (props) => {
                   </span>{" "}
                   :&nbsp;
                   <span className="code_editor__json_property_value">
-                    &quot;mom here, this game is so bad for our children. STOP
-                    THE STREAM!!!!!!&quot;
+                    &quot;{getMessageContent(1)}&quot;
                   </span>
                   ,
                   <br />
@@ -368,7 +371,7 @@ const DataRepair = (props) => {
                   </span>{" "}
                   :&nbsp;
                   <span className="code_editor__json_property_value">
-                    &quot;u r the w0r$t streamer ive ever seen&quot;
+                    &quot;{getMessageContent(2)}&quot;
                   </span>
                   ,
                   <br />
@@ -430,8 +433,7 @@ const DataRepair = (props) => {
                   </span>{" "}
                   :&nbsp;
                   <span className="code_editor__json_property_value">
-                    &quot;seen more skill from someone playing with their
-                    feet&quot;
+                    &quot;{getMessageContent(3)}&quot;
                   </span>
                   ,
                   <br />
@@ -493,7 +495,7 @@ const DataRepair = (props) => {
                   </span>{" "}
                   :&nbsp;
                   <span className="code_editor__json_property_value">
-                    &quot;sweet usage of that potion to poison that playa.&quot;
+                    &quot;{getMessageContent(4)}&quot;
                   </span>
                   ,
                   <br />
@@ -555,7 +557,7 @@ const DataRepair = (props) => {
                   </span>{" "}
                   :&nbsp;
                   <span className="code_editor__json_property_value">
-                    &quot;bro, your stream is straight up fire&quot;
+                    &quot;{getMessageContent(5)}e&quot;
                   </span>
                   ,
                   <br />

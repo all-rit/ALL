@@ -12,7 +12,7 @@ const ChatRoom = (props) => {
     messages.map(() => false)
   );
 
-  // callback for when button is clicked by user
+  // callback for when keep/remove button is clicked by user
   function handleModeration(index) {
     setModerationStatus((prevStatus) => {
       const newStatus = [...prevStatus];
