@@ -12,7 +12,7 @@ import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 
 const DataRepair = (props) => {
   const { actions } = props;
-  const [ messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
+  const [messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
 
   const handleAiPolarityChange = (messageId, newValue) => {
     setMessages((prevState) =>
@@ -34,7 +34,14 @@ const DataRepair = (props) => {
   /*
     state variables to contain the user's inputted repair values
     */
-  const [messageError, setMessageError] = useState([false, false, false, false, false, false]);
+  const [messageError, setMessageError] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   /*
     state variables to track state of repair section
@@ -62,24 +69,22 @@ const DataRepair = (props) => {
     */
   const validateRepair = () => {
     // track if the user made an error in their repairs
-    let error = false; 
+    let error = false;
     const localMessageError = [...messageError];
 
     messages.forEach((message, index) => {
       // check that each repair value is in the list of acceptable values
       // message one
-      
+
       if (!(message.ai_polarity in repairAllowList)) {
         // we need to display an error message
         error = true;
         localMessageError.splice(index, 1, true);
       } else {
         // clear the error message
-        
         localMessageError.splice(index, 1, false);
-      }    
-    })
-    console.warn(localMessageError);
+      }
+    });
     if (!error) {
       // eventually need to send repair data to the backend
       console.log("Repairs made with no errors");
@@ -93,7 +98,7 @@ const DataRepair = (props) => {
       );
     }
     setMessageError(localMessageError);
-  }
+  };
 
   const handleContinue = () => {
     // TODO: navigate to the next page
@@ -232,12 +237,13 @@ const DataRepair = (props) => {
                             );
                           }}
                           title={message.ai_polarity}
-                          className={messageError[index] ? "form-error-input" : ""}
+                          className={
+                            messageError[index] ? "form-error-input" : ""
+                          }
                         />
                       </span>
                     </div>
-                    {
-                      messageError[index] && (
+                    {messageError[index] && (
                       <div className="code_editor__line">
                         {/* one tab indent */}
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
