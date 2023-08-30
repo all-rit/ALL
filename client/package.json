@@ -33,7 +33,7 @@
     "lodash": "^4.17.21",
     "mathjax-react": "^2.0.1",
     "mathjs": "^11.5.1",
-    "node-sass": "^7.0.1",
+    "node-sass": "^9.0.0",
     "prismjs": "^1.25.0",
     "rc-color-picker": "^1.2.6",
     "react": "^18.2.0",
