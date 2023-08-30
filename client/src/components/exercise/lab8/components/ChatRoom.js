@@ -54,6 +54,7 @@ const ChatRoom = (props) => {
         return (
           <ChatMessage
             key={index}
+            id={message.id}
             username={message.username}
             message={message.content}
             ai_polarity={message.ai_polarity}

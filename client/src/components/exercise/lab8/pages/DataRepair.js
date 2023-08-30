@@ -15,8 +15,8 @@ const DataRepair = (props) => {
   const [messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
 
   const handleAiPolarityChange = (messageId, newValue) => {
-    setMessages((prevMessages) =>
-      prevMessages.map((message) =>
+    setMessages((prevState) =>
+      prevState.map((message) =>
         message.id === messageId
           ? { ...message, ai_polarity: newValue }
           : message
@@ -34,7 +34,6 @@ const DataRepair = (props) => {
   /*
     state variables to contain the user's inputted repair values
     */
-  const [messageValue] = useState(0);
   const [messageError, setMessageError] = useState(false);
 
   /*
@@ -61,13 +60,14 @@ const DataRepair = (props) => {
     i.e. they cannot enter a string, boolean, etc.
     use the allow list to compare user entered value to acceptable values
     */
-  const validateRepair = () => {
+  const validateRepair = (message) => {
     // track if the user made an error in their repairs
     let error = false;
 
     // check that each repair value is in the list of acceptable values
     // message one
-    if (!(messageValue in repairAllowList) || messageValue === "") {
+
+    if (!(message.ai_polarity in repairAllowList) || message.ai_polarity === null) {
       // we need to display an error message
       setMessageError(true);
       error = true;
@@ -225,7 +225,7 @@ const DataRepair = (props) => {
                               parseInt(e.target.value)
                             );
                           }}
-                          title={message.id}
+                          title={message.ai_polarity}
                           className={messageError ? "form-error-input" : ""}
                         />
                       </span>
