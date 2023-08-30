@@ -12,7 +12,7 @@ import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 
 const DataRepair = (props) => {
   const { actions } = props;
-  const [messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
+  const [ messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
 
   const handleAiPolarityChange = (messageId, newValue) => {
     setMessages((prevState) =>
@@ -34,7 +34,7 @@ const DataRepair = (props) => {
   /*
     state variables to contain the user's inputted repair values
     */
-  const [messageError, setMessageError] = useState(false);
+  const [messageError, setMessageError] = useState([false, false, false, false, false, false]);
 
   /*
     state variables to track state of repair section
@@ -60,21 +60,26 @@ const DataRepair = (props) => {
     i.e. they cannot enter a string, boolean, etc.
     use the allow list to compare user entered value to acceptable values
     */
-  const validateRepair = (message) => {
+  const validateRepair = () => {
     // track if the user made an error in their repairs
-    let error = false;
+    let error = false; 
+    const localMessageError = [...messageError];
 
-    // check that each repair value is in the list of acceptable values
-    // message one
-
-    if (!(message.ai_polarity in repairAllowList) || message.ai_polarity === null) {
-      // we need to display an error message
-      setMessageError(true);
-      error = true;
-    } else {
-      // clear the error message
-      setMessageError(false);
-    }
+    messages.forEach((message, index) => {
+      // check that each repair value is in the list of acceptable values
+      // message one
+      
+      if (!(message.ai_polarity in repairAllowList)) {
+        // we need to display an error message
+        error = true;
+        localMessageError.splice(index, 1, true);
+      } else {
+        // clear the error message
+        
+        localMessageError.splice(index, 1, false);
+      }    
+    })
+    console.warn(localMessageError);
     if (!error) {
       // eventually need to send repair data to the backend
       console.log("Repairs made with no errors");
@@ -87,7 +92,8 @@ const DataRepair = (props) => {
         "There are errors in your repair. Please correct the errors."
       );
     }
-  };
+    setMessageError(localMessageError);
+  }
 
   const handleContinue = () => {
     // TODO: navigate to the next page
@@ -183,7 +189,7 @@ const DataRepair = (props) => {
 
               {/* Going to map all of the messages instead of one by one */}
 
-              {messages.map((message) => (
+              {messages.map((message, index) => (
                 <div className="code_editor__form" key={message.id}>
                   <div className="code_editor__line">
                     {/* one tab indent */}
@@ -226,11 +232,12 @@ const DataRepair = (props) => {
                             );
                           }}
                           title={message.ai_polarity}
-                          className={messageError ? "form-error-input" : ""}
+                          className={messageError[index] ? "form-error-input" : ""}
                         />
                       </span>
                     </div>
-                    {messageError && (
+                    {
+                      messageError[index] && (
                       <div className="code_editor__line">
                         {/* one tab indent */}
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
