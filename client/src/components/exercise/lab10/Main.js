@@ -1,25 +1,66 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Router } from "@reach/router";
 import "../../../assets/stylesheets/main.scss";
+import { actions as exerciseActions } from "../../../reducers/lab10/ExerciseReducer";
+import { bindActionCreators } from "redux";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
-import BuildingAI from "./pages/BuildingAI";
+import BuildingAIPage from "./pages/BuildingAIPage";
 
-const Main = () => {
-  return (
-    <div className="bottomSpace">
-      <Router className="app">
-        {/* Exercise Start */}
-        <ExerciseStart default path="/" />
+import BuildingAICodeBlock from "./pages/BuildingAICodeBlock";
+import TrainingAICodeBlock from "./pages/TrainingAICodeBlock";
 
-        {/* Phase One: Building the AI */}
-        <BuildingAI path={"/BuildingAI"} />
+const mapStateToProps = (state) => ({
+  state: state,
+});
 
-        {/* Exercise End */}
-        <ExerciseEnd path="/ExerciseEnd" />
-      </Router>
-    </div>
-  );
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
 };
 
-export default Main;
+class Main extends Component {
+  render() {
+    const { actions, state, user } = this.props;
+    return (
+      <div className="bottomSpace">
+        <Router className="app">
+            {/* Exercise Start */}
+            <ExerciseStart default path="/" actions={actions} />
+
+            {/* Phase One: Building the AI */}
+            <BuildingAICodeBlock
+            path="/BuildingAICodeBlock"
+            actions={actions}
+            state={state}
+            user={user}
+          />
+          <BuildingAIPage
+            path="/BuildingAI"
+            actions={actions}
+            state={state}
+            user={user}
+          />
+          <TrainingAICodeBlock
+            path="/TrainingAICodeBlock"
+            actions={actions}
+            state={state}
+            user={user}
+          />
+
+            {/* Exercise End */}
+          <ExerciseEnd
+            path="/ExerciseEnd"
+            actions={actions}
+            state={state}
+            user={user}
+          />
+        </Router>
+      </div>
+    );
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
