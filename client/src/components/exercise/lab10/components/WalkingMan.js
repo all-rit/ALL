@@ -28,12 +28,12 @@ const WalkingMan = (props) => {
    * If it is, at either direction, set its position to the edge of the Simulation Box Area
    */
   const handleEdgeTouch = () => {
-    const halfImage = IMG_SIZE / 2;
-    const halfGameBox = props?.parentBox?.width / 2;
-    if (props.positionRef.current + halfImage >= halfGameBox) {
-      props.updatePosition(halfGameBox - halfImage);
-    } else if (Math.abs(props.positionRef.current - halfImage) >= halfGameBox) {
-      props.updatePosition(-halfGameBox + halfImage);
+    const leftEdge = 0;
+    const rightEdge = props?.parentBox?.width;
+    if (props.positionRef.current <= leftEdge) {
+      props.updatePosition(leftEdge);
+    } else if (props.positionRef.current + IMG_SIZE >= rightEdge) {
+      props.updatePosition(rightEdge - IMG_SIZE);
     }
   };
 
@@ -59,8 +59,11 @@ const WalkingMan = (props) => {
 
   return (
     <img
-      style={{ left: props.positionRef.current }}
-      className={"tw-transform tw-relative tw-transition-all tw-duration-150"}
+      ref={props.childRef}
+      style={{ left: props.positionRef.current, bottom: 0 }}
+      className={
+        "tw-transform tw-absolute tw-transition-all tw-duration-150 tw-border-solid"
+      }
       alt={"Man Walking SVG"}
       src={props.objectImage}
       height={IMG_SIZE}
@@ -84,6 +87,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 WalkingMan.propTypes = {
+  childRef: PropTypes.object,
   updatePosition: PropTypes.func,
   positionRef: PropTypes.object,
   handleShiftLeft: PropTypes.func,

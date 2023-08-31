@@ -8,10 +8,11 @@ import {
   EXERCISE_PLAYING,
   MIN_USER_ATTEMPTS,
 } from "../../../../constants/lab10";
-import KeyboardGuide from "../components/KeyboardGuide";
 import { navigate } from "@reach/router";
+import useScroll from "../../../../use-hooks/useScroll";
 
 const BuildingAI = (props) => {
+  useScroll();
   const [limitReached, setLimitReach] = useState(false);
 
   /**
@@ -19,6 +20,7 @@ const BuildingAI = (props) => {
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
+    props.actions.idleSimulation(true);
   }, []);
 
   /**
@@ -35,7 +37,7 @@ const BuildingAI = (props) => {
    * @returns {Promise} navigate promise
    */
   const handleContinue = () => {
-    return navigate("/BuildingAI/Repair");
+    return navigate("/Lab10/Exercise/BuildingAI/Repair");
   };
 
   return (
@@ -74,8 +76,8 @@ const BuildingAI = (props) => {
           </Fragment>
         )}
       </div>
-      <Simulation />
-      {limitReached ? (
+      <Simulation hideCoverOverride={true} />
+      {limitReached && (
         <div className={"tw-mt-6 tw-flex tw-justify-end"}>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase"
@@ -84,8 +86,6 @@ const BuildingAI = (props) => {
             Continue
           </button>
         </div>
-      ) : (
-        <KeyboardGuide />
       )}
     </div>
   );

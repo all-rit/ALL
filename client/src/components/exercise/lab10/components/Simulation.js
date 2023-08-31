@@ -1,52 +1,35 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import WalkingMan from "./WalkingMan";
 import PropTypes from "prop-types";
-import { STEP_COUNT } from "../../../../constants/lab10";
+import { SIMULATION_STARTED, STEP_COUNT } from "../../../../constants/lab10";
 import MovementKeys from "./MovementKeys";
-
-const useWindowSize = () => {
-  // Initialize state with undefined width/height so server and client renders match
-  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
-  });
-
-  useEffect(() => {
-    // Handler to call on window resize
-    const handleResize = () => {
-      // Set window width/height to state
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
-  return windowSize;
-};
+import SimulationCover from "./SimulationCover";
+import useWindowSize from "../../../../use-hooks/useWindow";
+import ShapeSpawner from "./ShapeSpawner";
+import ProgressBar from "./ProgressBar";
+import KeyboardGuide from "./KeyboardGuide";
 
 const Simulation = (props) => {
   // Allows the object's position to be updated when the window size is updated
   // Utilizing this hook allows components to rerender
   // eslint-disable-next-line no-unused-vars
-  const windowSize = useWindowSize();
+  useWindowSize();
+
+  const [displayStartButton, setDisplayStartButton] = useState(true);
 
   // Create a reference to obtain attributes of the Simulation Box Area
-  const parent = useRef();
+  const parentRef = useRef();
   // Create a reference of the object's position
   const positionRef = useRef(props.objectPosition);
+  // Create a reference to obtain attributes of the Moving Object
+  const childRef = useRef();
   // Obtain the attributes of the Simulation Box Area
-  const parentBox = parent?.current?.getBoundingClientRect();
+  const parentBox = parentRef?.current?.getBoundingClientRect();
+  // Obtain the attributes of the Moving Object
+  const childBox = childRef?.current?.getBoundingClientRect();
 
   /**
    * Update the object's position reference and state with new position
@@ -62,12 +45,11 @@ const Simulation = (props) => {
    * Updates the object's image as well
    */
   const handleShiftLeft = () => {
-    if (props.userInputDisabled) {
-      props.actions.incrementUserAttempts();
-    } else {
+    if (!props.userInputDisabled) {
       updatePosition(positionRef.current - STEP_COUNT);
       props.actions.setImageLeft();
     }
+    props.actions.incrementUserAttempts();
   };
 
   /**
@@ -75,36 +57,57 @@ const Simulation = (props) => {
    * Updates the object's image as well
    */
   const handleShiftRight = () => {
-    if (props.userInputDisabled) {
-      props.actions.incrementUserAttempts();
-    } else {
+    if (!props.userInputDisabled) {
       updatePosition(positionRef.current + STEP_COUNT);
       props.actions.setImageRight();
     }
+    props.actions.incrementUserAttempts();
+  };
+
+  const onComplete = () => {
+    props.actions.endSimulation();
+    setDisplayStartButton(false);
   };
 
   return (
     <div className={"tw-mt-6"}>
+      {/* Progress Bar */}
+      {props.simulationStatus === SIMULATION_STARTED && (
+        <ProgressBar
+          className={"tw-mb-6"}
+          duration={props.trainingDuration}
+          onComplete={onComplete}
+        />
+      )}
+
       {/* Simulation Box Area */}
       <div
-        ref={parent}
+        ref={parentRef}
         className={
-          "tw-flex tw-flex-col tw-shadow-xl tw-border-solid tw-border-2 tw-border-[#BFBFBF] tw-bg-[#F8F8F8] tw-rounded tw-h-96"
+          "tw-relative tw-flex tw-flex-col tw-shadow-xl tw-border-solid tw-border-2 tw-border-[#BFBFBF] tw-bg-[#F8F8F8] tw-rounded tw-h-[38rem] tw-overflow-hidden"
         }
       >
+        {/* Simulation Cover */}
+        {!props.hideCoverOverride && (
+          <SimulationCover displayStartButton={displayStartButton} />
+        )}
+
         {/* Falling object section */}
-        <div></div>
+        <ShapeSpawner
+          parentRef={parentRef}
+          childBox={childBox}
+          positionRef={positionRef}
+        />
 
         {/* Walking man section */}
-        <div className={"tw-mt-auto tw-pt-6"}>
-          <WalkingMan
-            updatePosition={updatePosition}
-            positionRef={positionRef}
-            handleShiftLeft={handleShiftLeft}
-            handleShiftRight={handleShiftRight}
-            parentBox={parentBox}
-          />
-        </div>
+        <WalkingMan
+          childRef={childRef}
+          updatePosition={updatePosition}
+          positionRef={positionRef}
+          handleShiftLeft={handleShiftLeft}
+          handleShiftRight={handleShiftRight}
+          parentBox={parentBox}
+        />
       </div>
 
       {/* On-screen arrow Keys */}
@@ -113,14 +116,27 @@ const Simulation = (props) => {
           handleShiftLeft={handleShiftLeft}
           handleShiftRight={handleShiftRight}
         />
+        <KeyboardGuide />
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  const { objectPosition, userInputDisabled } = state.exercise10;
-  return { objectPosition, userInputDisabled };
+  const {
+    objectPosition,
+    userInputDisabled,
+    simulationStatus,
+    trainingDuration,
+    weights,
+  } = state.exercise10;
+  return {
+    objectPosition,
+    userInputDisabled,
+    simulationStatus,
+    trainingDuration,
+    weights,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -133,6 +149,10 @@ Simulation.propTypes = {
   objectPosition: PropTypes.number,
   actions: PropTypes.object,
   userInputDisabled: PropTypes.bool,
+  simulationStatus: PropTypes.string,
+  trainingDuration: PropTypes.number,
+  weights: PropTypes.object,
+  hideCoverOverride: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simulation);
