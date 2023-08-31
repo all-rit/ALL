@@ -145,7 +145,7 @@ typings/
 .history
 
 ### Local PM2 files
- ecosystem.config.js
+ecosystem.config.js
 
 ### deploy scripts
 server/deploy
