@@ -9,6 +9,7 @@ import BiasDiscovery from "./pages/BiasDiscovery";
 import BiasedSimulation from "./pages/BiasedSimulation";
 import SentimentAnalysisInfo from "./pages/SentimentAnalysisInfo";
 import DataRepair from "./pages/DataRepair";
+import Conclusion from "./pages/Conclusion";
 
 // import ChatRoom from "./components/ChatRoom";
 
@@ -24,6 +25,8 @@ const Main = () => {
         {/* Phase 2: repair the biased dataset */}
         <DataRepair path="/DataRepair" />
         <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
+
+        <Conclusion path="/Conclusion" />
       </Router>
     </div>
   );
