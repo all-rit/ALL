@@ -9,7 +9,7 @@ async function submitChange(req, res) {
 
 }
 /**
- * getRepair() is a function that is responsible for retrieving
+ * getRepair(): is a function that is responsible for retrieving
  * the player's previous repair to be used for them to update then again.
  * @param {Object} req
  * @param {Object} res
@@ -19,5 +19,6 @@ async function getRepair(req, res) {
 }
 
 module.export = {
+  getRepair,
   submitChange,
 };
