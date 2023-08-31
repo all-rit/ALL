@@ -6,9 +6,14 @@ import { EXERCISE_IDLE } from "../../../../constants/lab8";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
+import { navigate } from "@reach/router";
 
 const Conclusion = (props) => {
   const { actions } = props;
+
+  const handleFinish = () => {
+    navigate("/Lab8/Reinforcement");
+  };
 
   useEffect(() => {
     actions.updateState(EXERCISE_IDLE);
@@ -24,6 +29,13 @@ const Conclusion = (props) => {
         page, or click the &#39;Next&#39; button to continue to the
         Reinforcement section of the lab.
       </div>
+      <button
+            className="btn btn-primary text-black btn-xl text-uppercase "
+            onClick={handleFinish}
+            key="start"
+          >
+            Exercise Home
+        </button>
     </div>
   );
 };
