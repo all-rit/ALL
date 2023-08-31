@@ -44,6 +44,7 @@ const Simulation = (props) => {
    * Updates the object's image as well
    */
   const handleShiftLeft = () => {
+    console.log("shift left");
     if (!props.userInputDisabled) {
       updatePosition(positionRef.current - STEP_COUNT);
       props.actions.setImageLeft();
