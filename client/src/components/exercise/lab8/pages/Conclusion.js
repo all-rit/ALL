@@ -30,12 +30,12 @@ const Conclusion = (props) => {
         Reinforcement section of the lab.
       </div>
       <button
-            className="btn btn-primary text-black btn-xl text-uppercase "
-            onClick={handleFinish}
-            key="start"
-          >
-            Exercise Home
-        </button>
+        className="btn btn-primary text-black btn-xl text-uppercase "
+        onClick={handleFinish}
+        key="start"
+      >
+        Exercise Home
+      </button>
     </div>
   );
 };
