@@ -19,7 +19,7 @@ async function submitChange(data) {
         repair: repair,
         isComplete: isComplete,
       };
-      return await db.RepairLab8.create(
+      return await db.ExerciseLab8.create(
           updatedChange,
       ).id;
     } else {
@@ -43,7 +43,7 @@ async function submitChange(data) {
 async function getRepair(data, raw=false) {
   const {userid} = data;
   try {
-    return await db.RepairLab8.findOne({
+    return await db.ExerciseLab8.findOne({
       where: {userid: userid},
       raw: raw,
     });

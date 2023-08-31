@@ -110,8 +110,12 @@ router.post('/lab6/repair/submit', RepairControllerLab6.submitChange);
 router.get('/lab6/repair/:userID', RepairControllerLab6.getUserChange);
 router.post('/lab7/repair/submit', RepairControllerLab7.submitChange);
 router.post('/lab7/repair/update', RepairControllerLab7.updateReport);
-router.get('/lab8/repair/:userID', ExerciseControllerLab8.getRepair);
-router.post('/lab8/repair/submit', ExerciseControllerLab8.submit);
+router.get('/lab8/repair/:userID', async function(req, res) {
+  res.json(await ExerciseControllerLab8.getRepair(req, true));
+});
+router.post('/lab8/repair/submit', async function(req, res) {
+  res.send(await ExerciseControllerLab8.submit(req, true));
+});
 
 // Create a Page Entry
 router.post('/page/complete', PageController.createPage);

@@ -1,4 +1,4 @@
-const RepairService = require('../../services/lab8/ExerciseService');
+const ExerciseService = require('../../services/lab8/ExerciseService');
 
 /**
  * submitChange(): is a function responsible for handling when a user
@@ -10,7 +10,7 @@ async function submitChange(req, res) {
   try {
     const {userid, repair, isComplete} = req.body;
 
-    await RepairService.submitChange({
+    await ExerciseService.submitChange({
       userid: userid,
       repair: repair,
       isComplete: isComplete,
@@ -30,7 +30,7 @@ async function getRepair(req, res) {
   const raw = true;
   try {
     const {userid} = req.params;
-    const recordRepair = await RepairService.getRepair(userid, raw);
+    const recordRepair = await ExerciseService.getRepair(userid, raw);
     res.json(recordRepair);
     res.sendStatus(200);
   } catch (error) {
