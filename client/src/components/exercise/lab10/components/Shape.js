@@ -8,8 +8,14 @@ const Shape = ({ y, x, color, size }) => {
       style={{ left: x, top: y, width: size, height: size }}
       className={twMerge("tw-absolute tw-border-solid", color)}
     >
-      <p>X: {Math.floor(x)}</p>
-      <p>Y: {Math.floor(y)}</p>
+      <div
+        className={
+          "tw-flex tw-flex-col tw-w-full tw-h-full tw-items-center tw-justify-center"
+        }
+      >
+        <p className={"tw-text-lg"}>X: {Math.floor(x)}</p>
+        <p className={"tw-text-lg"}>Y: {Math.floor(y)}</p>
+      </div>
     </div>
   );
 };

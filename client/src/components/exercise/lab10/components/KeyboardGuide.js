@@ -6,7 +6,7 @@ import DKey from "../../../../assets/images/lab10/d-key.png";
 
 const KeyboardGuide = () => {
   return (
-    <div className={"tw-flex tw-justify-around tw-mt-3"}>
+    <div className={"tw-flex tw-justify-around tw-mt-6"}>
       <div>
         <div>
           <p className={"tw-text-xl tw-font-bold"}>Move Left</p>

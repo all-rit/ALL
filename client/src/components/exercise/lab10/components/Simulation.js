@@ -15,7 +15,6 @@ import KeyboardGuide from "./KeyboardGuide";
 const Simulation = (props) => {
   // Allows the object's position to be updated when the window size is updated
   // Utilizing this hook allows components to rerender
-  // eslint-disable-next-line no-unused-vars
   useWindowSize();
 
   const [displayStartButton, setDisplayStartButton] = useState(true);
@@ -45,7 +44,6 @@ const Simulation = (props) => {
    * Updates the object's image as well
    */
   const handleShiftLeft = () => {
-    console.log("shift left");
     if (!props.userInputDisabled) {
       updatePosition(positionRef.current - STEP_COUNT);
       props.actions.setImageLeft();
@@ -72,8 +70,6 @@ const Simulation = (props) => {
 
   return (
     <div className={"tw-mt-6"}>
-      <p>X: {Math.floor(props.objectPosition)}</p>
-      <p>Y: {Math.floor(childBox?.y)}</p>
       {/* Progress Bar */}
       {props.simulationStatus === SIMULATION_STARTED && (
         <ProgressBar
@@ -87,7 +83,7 @@ const Simulation = (props) => {
       <div
         ref={parentRef}
         className={
-          "tw-relative tw-flex tw-flex-col tw-shadow-xl tw-border-solid tw-border-2 tw-border-[#BFBFBF] tw-bg-[#F8F8F8] tw-rounded tw-h-[38rem] tw-overflow-hidden"
+          "tw-relative tw-flex tw-flex-col tw-shadow-xl tw-border-solid tw-border-2 tw-border-[#BFBFBF] tw-bg-[#F8F8F8] tw-rounded tw-h-[32rem] tw-overflow-hidden"
         }
       >
         {/* Simulation Cover */}
@@ -115,8 +111,21 @@ const Simulation = (props) => {
         />
       </div>
 
+      {/* On-screen coordinates */}
+      <div className={"tw-mt-3 tw-flex tw-justify-center"}>
+        <div>
+          <p className={"tw-text-xl tw-font-bold"}>Current Coordinates: </p>
+        </div>
+        <div className={"tw-ml-3 tw-self-center"}>
+          <span className={"tw-text-lg"}>
+            (X: {Math.floor(props.objectPosition)}, Y: {Math.floor(childBox?.y)}
+            )
+          </span>
+        </div>
+      </div>
+
       {/* On-screen arrow Keys */}
-      <div className={"tw-space-x-12 tw-mt-6"}>
+      <div className={"tw-space-x-12"}>
         <MovementKeys
           handleShiftLeft={handleShiftLeft}
           handleShiftRight={handleShiftRight}
@@ -158,7 +167,6 @@ Simulation.propTypes = {
   trainingDuration: PropTypes.number,
   weights: PropTypes.object,
   hideCoverOverride: PropTypes.bool,
-  ai: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simulation);

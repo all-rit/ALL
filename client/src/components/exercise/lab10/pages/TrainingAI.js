@@ -58,7 +58,8 @@ const TrainingAI = (props) => {
               </p>
               <div>
                 <p className={"tw-text-xl tw-font-bold"}>
-                  Click <i>Start</i> to commence the training exercise.
+                  Objective: Click <i>Start</i> to commence the training
+                  exercise.
                 </p>
               </div>
             </Fragment>
@@ -87,7 +88,7 @@ const TrainingAI = (props) => {
         <div>
           <div>
             <p className={"tw-text-xl tw-font-bold"}>
-              Proceed to the next part of this exercise.
+              Objective: Proceed to the next part of this exercise.
             </p>
           </div>
         </div>

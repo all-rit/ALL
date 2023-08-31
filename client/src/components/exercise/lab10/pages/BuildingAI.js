@@ -53,7 +53,7 @@ const BuildingAI = (props) => {
             </p>
             <div>
               <p className={"tw-text-xl tw-font-bold"}>
-                Proceed to the next part of this exercise.
+                Objective: Proceed to the next part of this exercise.
               </p>
             </div>
           </Fragment>
@@ -69,8 +69,8 @@ const BuildingAI = (props) => {
             </p>
             <div>
               <p className={"tw-text-xl tw-font-bold"}>
-                Start by moving the object using the on-screen buttons or your
-                keyboard.
+                Objective: Start by moving the object using the on-screen
+                buttons or your keyboard. Notice something wrong?
               </p>
             </div>
           </Fragment>
