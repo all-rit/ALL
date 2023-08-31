@@ -8,7 +8,14 @@ const RepairService = require('../../services/lab8/ExerciseService');
  */
 async function submitChange(req, res) {
   try {
+    const {userid, repair, isComplete} = req.body;
 
+    await RepairService.submitChange({
+      userid: userid,
+      repair: repair,
+      isComplete: isComplete,
+    });
+    res.sendStatus(200);
   } catch (error) {
 
   }
@@ -25,6 +32,7 @@ async function getRepair(req, res) {
     const {userid} = req.params;
     const recordRepair = await RepairService.getRepair(userid, raw);
     res.json(recordRepair);
+    res.sendStatus(200);
   } catch (error) {
     console.error(error);
   }
