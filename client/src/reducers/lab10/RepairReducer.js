@@ -4,6 +4,7 @@ export const types = {
     "@accessibility-lab/lab10/repair/update_move_left_value",
   UPDATE_MOVE_RIGHT_VALUE:
     "@accessibility-lab/lab10/repair/update_move_right_value",
+  UNDO_REPAIR_CHANGES: "@accessibility-lab/lab10/repair/undo_repair_changes",
   UPDATE_TIME_VALUE: "@accessibility-lab/lab10/repair/update_time_value",
   UPDATE_TIME_ERROR: "@accessibility-lab/lab10/repair/update_time_error",
   UPDATE_REPAIR_ERROR: "@accessibility-lab/lab10/repair/update_repair_error",
@@ -13,6 +14,8 @@ export const types = {
     "@accessibility-lab/lab10/repair/update_changes_applied",
   UPDATE_LEFT_ERROR: "@accessibility-lab/lab10/repair/update_left_error",
   UPDATE_RIGHT_ERROR: "@accessibility-lab/lab10/repair/update_right_error",
+  UPDATE_TAB: "@accessibility-lab/lab10/repair/update_tab",
+    RESET_REPAIR: "@accessibility-lab/lab10/repair/reset_repair"
 };
 
 export const initialState = {
@@ -21,6 +24,7 @@ export const initialState = {
   leftError: "",
   rightError: "",
   timeValue: "",
+  popupMessage: "",
   timeError: null,
   repairError: false,
   repairVisible: false,
@@ -29,6 +33,15 @@ export const initialState = {
 
 const RepairReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.RESET_REPAIR:
+      return {
+        ...initialState,
+      };
+    case types.UNDO_REPAIR_CHANGES:
+      return {
+        ...state,
+        changesApplied: false,
+      };
     case types.UPDATE_MOVE_LEFT_VALUE:
       return {
         ...state,
@@ -47,7 +60,7 @@ const RepairReducer = (state = initialState, action) => {
     case types.UPDATE_TIME_ERROR:
       return {
         ...state,
-        timeValue: action.timeError,
+        timeError: action.timeError,
       };
     case types.UPDATE_REPAIR_ERROR:
       return {
@@ -74,10 +87,21 @@ const RepairReducer = (state = initialState, action) => {
         ...state,
         repairVisible: false,
       };
+    case types.UPDATE_TAB:
+      return {
+        ...state,
+        currentTab: action.tab,
+      };
     case types.UPDATE_POPUP:
       return {
         ...state,
         popupMessage: action.message,
+      };
+
+    case types.SET_REPAIR_ID:
+      return {
+        ...state,
+        repairId: action.repairId,
       };
     case types.UPDATE_CHANGES_APPLIED:
       return {
@@ -90,6 +114,7 @@ const RepairReducer = (state = initialState, action) => {
 };
 
 export const actions = {
+  undoRepairChanges: () => ({ type: types.UNDO_REPAIR_CHANGES }),
   updateMoveLeftValue: (leftValue) => ({
     type: types.UPDATE_MOVE_LEFT_VALUE,
     leftValue,
@@ -121,6 +146,7 @@ export const actions = {
   updatePopup: (message) => ({ type: types.UPDATE_POPUP, message }),
   openRepair: () => ({ type: types.OPEN_REPAIR }),
   closeRepair: () => ({ type: types.CLOSE_REPAIR }),
+  setRepairId: (repairId) => ({ type: types.SET_REPAIR_ID, repairId }),
 };
 
 export default RepairReducer;
