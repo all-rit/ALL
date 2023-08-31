@@ -73,9 +73,6 @@ const DataRepair = (props) => {
     const localMessageError = [...messageError];
 
     messages.forEach((message, index) => {
-      // check that each repair value is in the list of acceptable values
-      // message one
-
       if (!(message.ai_polarity in repairAllowList)) {
         // we need to display an error message
         error = true;
@@ -101,8 +98,8 @@ const DataRepair = (props) => {
   };
 
   const handleContinue = () => {
-    // TODO: navigate to the next page
-    navigate("/Lab8/Exercise/DataRepair");
+    // go back to the biased simulation
+    navigate("/Lab8/Exercise/BiasedSimulation");
   };
 
   return (
@@ -191,9 +188,7 @@ const DataRepair = (props) => {
               </div>
 
               {/* 6 messages total to repair */}
-
               {/* Going to map all of the messages instead of one by one */}
-
               {messages.map((message, index) => (
                 <div className="code_editor__form" key={message.id}>
                   <div className="code_editor__line">
