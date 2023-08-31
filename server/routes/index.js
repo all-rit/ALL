@@ -34,7 +34,7 @@ const RepairControllerLab7 = require('../controllers/lab7/RepairController');
 const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
 
 // Lab 8 Controller
-const RepairControllerLab8 = require('../controllers/lab8/RepairController');
+const ExerciseControllerLab8 = require('../controllers/lab8/ExerciseController');
 // Lab Controller
 const LabController = require('../controllers/LabController');
 
@@ -110,8 +110,8 @@ router.post('/lab6/repair/submit', RepairControllerLab6.submitChange);
 router.get('/lab6/repair/:userID', RepairControllerLab6.getUserChange);
 router.post('/lab7/repair/submit', RepairControllerLab7.submitChange);
 router.post('/lab7/repair/update', RepairControllerLab7.updateReport);
-router.get('/lab8/repair/:userID', RepairControllerLab8);
-router.post('/lab8/repair/submit', RepairControllerLab8.submit);
+router.get('/lab8/repair/:userID', ExerciseControllerLab8.getRepair);
+router.post('/lab8/repair/submit', ExerciseControllerLab8.submit);
 
 // Create a Page Entry
 router.post('/page/complete', PageController.createPage);

@@ -9,11 +9,14 @@ const Repair = sequelize.define(
         primaryKey: true,
         autoIncrement: true,
       },
-      usersessionid: {
+      userid: {
         type: DataTypes.BIGINT,
       },
       repair: {
         type: DataTypes.JSON,
+      },
+      isComplete: {
+        type: DataTypes.BOOLEAN,
       },
     }, {
       tableName: 'lab8_repair',
