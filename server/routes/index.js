@@ -25,13 +25,16 @@ const RepairControllerLab4 = require('../controllers/lab4/RepairController');
 const RepairControllerLab5 = require('../controllers/lab5/RepairController');
 const ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
-// LAB7 Controller
-const RepairControllerLab7 = require('../controllers/lab7/RepairController');
-const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
 // LAB6 Controller
 const RepairControllerLab6 = require('../controllers/lab6/RepairController');
 const ExerciseControllerLab6 = require('../controllers/lab6/ExerciseController');
 
+// LAB7 Controller
+const RepairControllerLab7 = require('../controllers/lab7/RepairController');
+const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
+
+// Lab 8 Controller
+const ExerciseControllerLab8 = require('../controllers/lab8/ExerciseController');
 // Lab Controller
 const LabController = require('../controllers/LabController');
 
@@ -40,6 +43,7 @@ const TeamMemberController = require('../controllers/TeamMemberController');
 
 // Imagien Controller
 const ImagineController = require('../controllers/ImagineController');
+
 
 // User Routes
 router.post('/url', UserController.storeURL);
@@ -106,6 +110,13 @@ router.post('/lab6/repair/submit', RepairControllerLab6.submitChange);
 router.get('/lab6/repair/:userID', RepairControllerLab6.getUserChange);
 router.post('/lab7/repair/submit', RepairControllerLab7.submitChange);
 router.post('/lab7/repair/update', RepairControllerLab7.updateReport);
+router.get('/lab8/exercise/:userID', async function(req, res) {
+  res.json(await ExerciseControllerLab8.getRepair(req, true));
+});
+router.post('/lab8/exercise/submit', async function(req, res) {
+  const id = await ExerciseControllerLab8.submitChange(req, true);
+  res.send(id);
+});
 
 // Create a Page Entry
 router.post('/page/complete', PageController.createPage);
