@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) =>{
   const Exercise = sequelize.define(
-      'RepairLab8',
+      'ExerciseLab8',
       {
         repairId: {
           type: DataTypes.INTEGER,

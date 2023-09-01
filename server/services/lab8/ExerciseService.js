@@ -9,13 +9,13 @@ const db = require('../../database');
  * @return id for the created entry
  */
 async function submitChange(data) {
-  const {userid, repair, isComplete} = data;
+  const {userId, repair, isComplete} = data;
   try {
-    const returnUser = await getRepair(data);
+    const returnUser = await getRepair(userId);
 
     if (!returnUser) {
       const updatedChange = {
-        userid: userid,
+        userid: userId,
         repair: repair,
         isComplete: isComplete,
       };
@@ -24,7 +24,7 @@ async function submitChange(data) {
       ).id;
     } else {
       returnUser.repair = repair,
-      returnUser.isComplete = repair,
+      returnUser.isComplete = isComplete,
       await returnUser.save();
       return data.id;
     }
@@ -36,15 +36,14 @@ async function submitChange(data) {
 /**
  * getRepair is responsible for returning the previous repair's
  * recorded entry.
- * @param {Object} data object storing infromation from the request
+ * @param {Object} data object storing information from the request
  * @param {boolean} raw indicate use of raw flag
- * @return represented infomration either in string or object form
+ * @return represented information either in string or object form
  */
 async function getRepair(data, raw=false) {
-  const {userid} = data;
   try {
     return await db.ExerciseLab8.findOne({
-      where: {userid: userid},
+      where: {userid: data},
       raw: raw,
     });
   } catch (error) {
