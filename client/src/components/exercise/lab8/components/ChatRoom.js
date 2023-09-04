@@ -4,7 +4,11 @@ import ChatMessage from "./ChatMessage";
 import PropTypes from "prop-types";
 
 const ChatRoom = (props) => {
-  const { moderationCompleteCallback, messages: updatedMessages, selectMessages } = props;
+  const {
+    moderationCompleteCallback,
+    messages: updatedMessages,
+    selectMessages,
+  } = props;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [moderationStatus, setModerationStatus] = useState(
@@ -12,7 +16,6 @@ const ChatRoom = (props) => {
   );
 
   const currentMessages = updatedMessages || selectMessages();
-
 
   // callback for when keep/remove button is clicked by user
   function handleModeration(index) {

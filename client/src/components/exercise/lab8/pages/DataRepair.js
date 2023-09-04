@@ -15,8 +15,6 @@ const DataRepair = (props) => {
   const [messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
   const [repairState, setRepairState] = useState(false);
 
-
-
   const handleAiPolarityChange = (messageId, newValue) => {
     setMessages((prevState) =>
       prevState.map((message) =>
@@ -103,7 +101,9 @@ const DataRepair = (props) => {
 
   const handleContinue = () => {
     // go back to the biased simulation
-    navigate("/Lab8/Exercise/BiasedSimulation", {state:{messages, repairState}});
+    navigate("/Lab8/Exercise/BiasedSimulation", {
+      state: { messages, repairState },
+    });
   };
 
   return (

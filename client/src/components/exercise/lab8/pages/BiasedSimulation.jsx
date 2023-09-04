@@ -30,11 +30,9 @@ const BiasedSimulation = (props) => {
     actions.updateState(EXERCISE_PLAYING);
   }, []);
 
-
   const handleModerationComplete = () => {
     setCanContinue(true);
   };
-
 
   const handleContinue = () => {
     // submit user's choice to keep or remove each message to backend via exercise service
