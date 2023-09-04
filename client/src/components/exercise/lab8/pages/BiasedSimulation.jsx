@@ -14,19 +14,27 @@ import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 import ChatRoom from "../components/ChatRoom";
 // import ExerciseService from "../../../../services/lab8/ExerciseService";
 import { selectMessagesAiBias } from "../selectMessagesFns";
+import { useLocation } from "@reach/router";
 
 const BiasedSimulation = (props) => {
   const { actions } = props;
 
   const [canContinue, setCanContinue] = useState(false);
 
+  const messageLocation = useLocation();
+  const updatedMessages = messageLocation.state.messages;
+
+  const repairState = messageLocation.state.repairState;
+
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, []);
 
+
   const handleModerationComplete = () => {
     setCanContinue(true);
   };
+
 
   const handleContinue = () => {
     // submit user's choice to keep or remove each message to backend via exercise service
@@ -40,10 +48,20 @@ const BiasedSimulation = (props) => {
         className="exercise-frame tw-w-full tw-aspect-video"
         // style={{ opacity: 0.5 }}
       >
-        <ChatRoom
-          moderationCompleteCallback={handleModerationComplete}
-          selectMessages={selectMessagesAiBias}
-        />
+        {repairState ? (
+          // Render updatedMessages if repairState is true
+          <ChatRoom
+            moderationCompleteCallback={handleModerationComplete}
+            selectMessages={selectMessagesAiBias}
+            messages={updatedMessages} // Pass updatedMessages
+          />
+        ) : (
+          // Render the old messages if repairState is false
+          <ChatRoom
+            moderationCompleteCallback={handleModerationComplete}
+            selectMessages={selectMessagesAiBias}
+          />
+        )}
         {/* right now the div contains a background image */}
       </div>
 

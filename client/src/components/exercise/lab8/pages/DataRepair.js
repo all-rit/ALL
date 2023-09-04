@@ -13,6 +13,9 @@ import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 const DataRepair = (props) => {
   const { actions } = props;
   const [messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
+  const [repairState, setRepairState] = useState(false);
+
+
 
   const handleAiPolarityChange = (messageId, newValue) => {
     setMessages((prevState) =>
@@ -88,6 +91,7 @@ const DataRepair = (props) => {
       setRepairOpen(false);
       setUserError(false);
       popUpHandler("The repairs have been made.");
+      setRepairState(true);
     } else {
       setUserError(true);
       popUpHandler(
@@ -99,7 +103,7 @@ const DataRepair = (props) => {
 
   const handleContinue = () => {
     // go back to the biased simulation
-    navigate("/Lab8/Exercise/BiasedSimulation");
+    navigate("/Lab8/Exercise/BiasedSimulation", {state:{messages, repairState}});
   };
 
   return (
