@@ -47,6 +47,7 @@ const BiasedSimulation = (props) => {
         {/* right now the div contains a background image */}
       </div>
 
+
       {canContinue && (
         <div className="tw-text-[#408a28] tw-text-[18px]">
           <b>All messages have been moderated, please click `continue`.</b>

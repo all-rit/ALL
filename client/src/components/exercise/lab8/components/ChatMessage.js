@@ -45,7 +45,7 @@ const ChatMessage = ({
   }, []);
 
   return enableMessageDisplay ? (
-    <div className="tw-bg-white tw-rounded-2xl tw-grid tw-grid-cols-[auto,1fr] tw-items-start tw-w-full">
+    <div className="tw-border-solid tw-p-3 tw-grid tw-grid-cols-[auto,1fr] tw-bg-[#ffffff] tw-items-start tw-w-full">
       <div className="tw-flex tw-flex-col">
         <div className="tw-flex tw-items-center tw-p-2">
           {userAvatar && (
@@ -72,13 +72,16 @@ const ChatMessage = ({
         </p>
       </div>
       {displayModerationSection && (
-        <div className="tw-ml-auto tw-bg-[#419ce6] tw-p-2 tw-pt-0 tw-rounded-2xl tw-flex tw-flex-col tw-h-full tw-justify-between">
-          <p className="tw-text-[#000000] tw-font-bold tw-text-xl tw-underline">
-            AI: {ai_polarity > 0 ? "Keep" : "Remove"}
+        <div className="tw-ml-auto tw-p-2 tw-pt-0 tw-rounded-2xl tw-flex tw-flex-col tw-h-full tw-justify-between">
+          <p className="tw-text-[#000000] tw-font-bold tw-text-lg tw-underline tw-text-sm">
+            AI Decision:
           </p>
-          <div className="tw-flex tw-mt-2">
+          <p className="tw-text-[#000000] tw-font-bold tw-text-lg tw-underline tw-text-sm">
+            {ai_polarity > 0 ? "Keep" : "Remove"}
+          </p>
+          <div className="tw-flex tw-mt-2 tw-flex-col">
             <button
-              className={`${keepButtonColor} tw-text-white tw-px-4 tw-py-2 tw-rounded-2xl tw-mr-2`}
+              className={`${keepButtonColor} tw-text-white tw-px-4 tw-py-2 tw-w-[100%] tw-rounded-lg tw-mb-1`}
               onClick={handleKeep}
               key="keep"
               disabled={disabled}
@@ -86,7 +89,7 @@ const ChatMessage = ({
               Keep
             </button>
             <button
-              className={`${removeButtonColor} tw-text-white tw-px-4 tw-py-2 tw-rounded-2xl`}
+              className={`${removeButtonColor} tw-text-white tw-w-[100%] tw-px-4 tw-py-2 tw-rounded-lg`}
               onClick={handleRemove}
               key="remove"
               disabled={disabled}

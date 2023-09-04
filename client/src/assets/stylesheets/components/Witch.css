@@ -1,7 +1,7 @@
 /*make sure whole box scales properly decrease size of avatar image. Maybe use margin top to increase distance between avatar image and chat message!  */
 
 .exercise-frame {
-  background-image: url("../../images/lab8/stream_bg.jpeg");
+  background-image: url("../../images/lab8/Stream_Background.jpg");
   /* will change the size back later */
   background-size: cover;
   background-repeat: no-repeat;
