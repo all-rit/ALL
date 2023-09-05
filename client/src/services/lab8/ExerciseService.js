@@ -7,18 +7,17 @@ const endpoints = {
 };
 
 const ExerciseService = {
-  submitRepair: (userId, repair) => {
-    return API.postWithBody(
-      `${process.env.REACT_APP_SERVER_URL}${endpoints}`,
-      {
-        userId,
-        repair,
-      }
-    );
+  submitRepair: (data = {}) => {
+    const body = {
+      userId: data.userid,
+      repair: data.repair,
+      isComplete: data.isComplete,
+    }
+    return API.postWithBody(`${process.env.REACT_APP_SERVER_URL}${endpoints.SUBMIT_REPAIR}`, body);
   },
   getUserRepair: (userId) => {
     return API.get(
-    `${process.env.REACT_APP_SERVER_URL}${endpoints.GET_REPAIR}${userId}`
+      `${process.env.REACT_APP_SERVER_URL}${endpoints.GET_REPAIR}${userId}`
     ).then((response) => response.json());
   },
 };

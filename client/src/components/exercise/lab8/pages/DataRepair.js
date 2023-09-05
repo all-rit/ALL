@@ -12,7 +12,7 @@ import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 import ExerciseService from "../../../../services/lab8/ExerciseService";
 
 const DataRepair = (props) => {
-  const { actions, user } = props;
+  const { actions, user, isComplete } = props;
   const { userid } = user;
   const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
   const [repairState, setRepairState] = useState(false);
@@ -26,7 +26,6 @@ const DataRepair = (props) => {
       )
     );
   };
-
   const fetchDataRepair = async () => {
     try {
       return await ExerciseService.getUserRepair(userid);
@@ -34,6 +33,14 @@ const DataRepair = (props) => {
       console.error(error);
     }
   };
+
+  const postExerciseChange = async (data) => {
+    try {
+      return await ExerciseService.submitRepair(data)
+    } catch (error) {
+      console.error(error);
+    }
+  }
   /*
     make sure that users cannot click "previous" or "continue buttons"
     while they are playing the exercise
@@ -115,9 +122,16 @@ const DataRepair = (props) => {
 
   const handleContinue = () => {
     // go back to the biased simulation
+    console.warn(userid)
+    postExerciseChange({
+      userId: userid,
+      repair: messages,
+      isComplete: isComplete
+    })
     navigate("/Lab8/Exercise/BiasedSimulation", {
       state: { messages, repairState },
     });
+    
   };
 
   return (

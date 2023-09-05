@@ -24,7 +24,7 @@ const Main = (props) => {
         <BiasDiscovery path="/BiasDiscovery" user={user} />
 
         {/* Phase 2: repair the biased dataset */}
-        <DataRepair path="/DataRepair" user={user} />
+        <DataRepair path="/DataRepair" user={user} isComplete={false} />
         <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
 
         <Conclusion path="/Conclusion" />
