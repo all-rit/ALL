@@ -143,3 +143,9 @@ typings/
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+### Local PM2 files
+ecosystem.config.js
+
+### deploy scripts
+server/deploy
