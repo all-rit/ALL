@@ -3,7 +3,7 @@ import { CHAT_MESSAGES } from "../../../constants/lab8";
 // Select and shuffle messages to display in the chat room before the repair.
 export function selectMessagesAiBias() {
   // Shuffle the messages and return them.
-  const messages = shuffleArray(CHAT_MESSAGES.before_repair);
+  const messages = shuffleArray(CHAT_MESSAGES.messages);
 
   return messages;
 }

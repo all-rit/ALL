@@ -3,7 +3,7 @@
 // 1 - neutral
 // 2 - positive
 const CHAT_MESSAGES = {
-  before_repair: [
+  messages: [
     {
       id: 1,
       username: "epic_panda",
