@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { CheckRounded, WarningRounded } from "@material-ui/icons";
 import ProgressBar from "./ProgressBar";
 import { MESSAGES, READ_TIME } from "../../../../constants/lab7";
-import Countdown from "react-countdown-now";
+import Countdown from "react-countdown";
 
 const MessageModal = (props) => {
   /**

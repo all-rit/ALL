@@ -25,11 +25,11 @@ class Finish extends Component {
     return (
       <Fragment>
         <div>
-          <AppBar position="static" className="appBar">
+          <AppBar position="static" className="appBar tw-items-center">
             <Toolbar>
-              <h4 className="flex-boxes ">
-                Congratulations! You have succesfully completed the Screen
-                Readers Exercise!
+              <h4 className="flex-boxes tw-flex ">
+                Congratulations! You have successfully completed the Dexterity
+                Exercise!
               </h4>
             </Toolbar>
           </AppBar>

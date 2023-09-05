@@ -8,7 +8,7 @@ import ExerciseCenter from "./components/ExerciseCenter";
 import Repair from "./components/Repair.js";
 import Header from "./components/header/headerMain";
 import SuccessMessage from "./home/successMessage";
-import Countdown from "react-countdown-now";
+import Countdown from "react-countdown";
 import Form from "./forms/form";
 import LandingPage from "./LandingPage/landingPage";
 import UserStats from "./userStatistics/userStats";
@@ -245,6 +245,9 @@ class Main extends Component {
       onToGreyBackground,
       onResetSystem,
       onGoBackFromExercise,
+      isImagine,
+      isImagineExpression,
+      userID,
     } = this.props;
 
     // establishing array of current colors for the system
@@ -324,6 +327,8 @@ class Main extends Component {
                   enterSecondInfoState={onEnterSecondInfoState}
                   exercisesPlayed={exercisesPlayed}
                   enterThirdInfoState={onOpenThirdInfoState}
+                  isImagine={isImagine}
+                  userID={userID}
                 />
               </div>
             ) : (
@@ -341,6 +346,7 @@ class Main extends Component {
                         selectOption={onSelectOption}
                         toWhiteBackground={onToWhiteBackground}
                         background={baseBackground}
+                        isImagineExpression={isImagineExpression}
                       />
                     ) : (
                       <div>
@@ -351,6 +357,7 @@ class Main extends Component {
                             activatePopup={onOpenColorChange}
                             toWhiteBackground={onToWhiteBackground}
                             background={baseBackground}
+                            isImagine={isImagine}
                           />
                         ) : (
                           <div>
@@ -369,7 +376,7 @@ class Main extends Component {
                                   <Conclusion resetSystem={onResetSystem} />
                                 ) : (
                                   <div>
-                                    {firstExercise ? (
+                                    {firstExercise && !isImagine ? (
                                       <LandingPage
                                         endFirstExercise={onEndFirstExercise}
                                         toWhiteBackground={onToWhiteBackground}

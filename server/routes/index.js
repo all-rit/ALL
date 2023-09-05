@@ -124,11 +124,8 @@ router.get('/professors', TeamMemberController.getAllProfessors);
 router.get('/alumni', TeamMemberController.getAllAlumni);
 
 // Imagine
-router.post('/imagine/avatar', ImagineController.userAvatar);
-router.get('/imagine/avatar/:userID', ImagineController.getUserAvatar);
-router.get('/imagine/squad/:userID', ImagineController.getUserSquad);
-router.post('/imagine/squad', ImagineController.userSquad);
-router.post('/imagine/lobbyMessages', ImagineController.userLobbyMessages);
-
+router.post('/imagine/discomfortCount', ImagineController.discomfortCount);
+router.post('/imagine/experientialMain', ImagineController.experientialMain);
+router.post('/imagine/experientialProtanopia', ImagineController.experientialProtanopia);
 
 module.exports = router;
