@@ -1,40 +1,29 @@
 const ImagineService = require('../services/ImagineService');
 
-exports.userAvatar = (req, res) => {
-  ImagineService.userAvatar({
+exports.discomfortCount = (req, res) => {
+  ImagineService.discomfortCount({
     userID: req.body.userID,
-    avatar: req.body.avatar,
+    discomfortCount: req.body.discomfortCount,
   }).then(() => {
     res.sendStatus(200);
   });
 };
 
-exports.userSquad = (req, res) => {
-  ImagineService.userSquad({
+exports.experientialMain = (req, res) => {
+  ImagineService.experientialMain({
     userID: req.body.userID,
-    squad: req.body.squad,
+    experientialMain: req.body.experientialMain,
   }).then(() => {
     res.sendStatus(200);
   });
 };
 
-exports.userLobbyMessages = (req, res) => {
-  ImagineService.userLobbyMessages({
+exports.experientialProtanopia = (req, res) => {
+  ImagineService.experientialProtanopia({
     userID: req.body.userID,
-    lobbyMessages: req.body.lobbyMessages,
+    experientialProtanopia: req.body.experientialProtanopia,
   }).then(() => {
     res.sendStatus(200);
   });
 };
 
-exports.getUserSquad = (req, res) => {
-  ImagineService.getUserSquad(req.params.userID).then((records) => {
-    res.json(records);
-  });
-};
-
-exports.getUserAvatar = (req, res) => {
-  ImagineService.getUserAvatar(req.params.userID).then((records) => {
-    res.json(records);
-  });
-};

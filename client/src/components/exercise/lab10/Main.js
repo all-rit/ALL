@@ -4,10 +4,10 @@ import "../../../assets/stylesheets/main.scss";
 import ExerciseStart from "./pages/ExerciseStart";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import BuildingAI from "./pages/BuildingAI";
-import BuildingAIRepair from "./pages/BuildingAIRepair";
 import TrainingAI from "./pages/TrainingAI";
 import TrainingAIRepair from "./pages/TrainingAIRepair";
 import AISimulation from "./pages/AISimulation";
+import BuildingAIPage from "./pages/BuildingAIPage";
 
 const Main = () => {
   return (
@@ -18,7 +18,7 @@ const Main = () => {
 
         {/* Phase One: Building the AI */}
         <BuildingAI path={"/BuildingAI"} />
-        <BuildingAIRepair path={"/BuildingAI/Repair"} />
+        <BuildingAIPage path={"/BuildingAI/Repair"} />
 
         {/* Phase Two: Training the AI */}
         <TrainingAI path={"/TrainingAI"} />

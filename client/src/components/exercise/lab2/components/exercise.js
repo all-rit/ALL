@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Countdown from "react-countdown-now";
+import Countdown from "react-countdown";
 import SecondTimer from "./secondTimer";
 import Instructions from "../Instructions/instructions";
 import Circle from "./circle";
@@ -38,6 +38,8 @@ class exercise extends Component {
       enterSecondInfoState,
       exercisesPlayed,
       enterThirdInfoState,
+      isImagine,
+      userID,
     } = this.props;
 
     // setting state for the start time of the exercise
@@ -98,6 +100,8 @@ class exercise extends Component {
               enterSecondInfoState={enterSecondInfoState}
               exercisesPlayed={exercisesPlayed}
               enterThirdInfoState={enterThirdInfoState}
+              isImagine={isImagine}
+              userID={userID}
             />
           </div>
         );

@@ -60,21 +60,6 @@ const ExerciseReducer = (state = initialState, action) => {
         ...state,
         end: action.state,
       };
-    case types.SET_OBJECT_IMAGE:
-      return {
-        ...state,
-        objectImage: action.objectImage,
-      };
-    case types.SET_OBJECT_POSITION:
-      return {
-        ...state,
-        objectPosition: action.objectPosition,
-      };
-    case types.INCREMENT_USER_ATTEMPTS:
-      return {
-        ...state,
-        userAttempts: state.userAttempts + 1,
-      };
     case types.RESET_USER_ATTEMPTS:
       return {
         ...state,
@@ -102,6 +87,26 @@ const ExerciseReducer = (state = initialState, action) => {
         userInputDisabled: action.userInputDisabled,
       };
 
+    case types.SET_OBJECT_IMAGE:
+      return {
+        ...state,
+        objectImage: action.objectImage,
+      };
+    case types.SET_OBJECT_POSITION:
+      return {
+        ...state,
+        objectPosition: action.objectPosition,
+      };
+    case types.SET_USER_INPUT:
+      return {
+        ...state,
+        userInputDisabled: action.userInputDisabled,
+      };
+    case types.INCREMENT_USER_ATTEMPTS:
+      return {
+        ...state,
+        userAttempts: state.userAttempts + 1,
+      };
     default:
       return state;
   }
@@ -110,24 +115,6 @@ const ExerciseReducer = (state = initialState, action) => {
 export const actions = {
   updateState: (state) => ({ type: types.UPDATE_STATE, state }),
   enableEnd: (state) => ({ type: types.ENABLE_END, state }),
-  setObjectPosition: (objectPosition) => ({
-    type: types.SET_OBJECT_POSITION,
-    objectPosition,
-  }),
-  setImageLeft: () => ({
-    type: types.SET_OBJECT_IMAGE,
-    objectImage: WalkingManImageLeft,
-  }),
-  setImageRight: () => ({
-    type: types.SET_OBJECT_IMAGE,
-    objectImage: WalkingManImageRight,
-  }),
-  incrementUserAttempts: () => ({ type: types.INCREMENT_USER_ATTEMPTS }),
-  resetUserAttempts: () => ({ type: types.RESET_USER_ATTEMPTS }),
-  setTrainingDuration: (trainingDuration) => ({
-    type: types.SET_TRAINING_DURATION,
-    trainingDuration,
-  }),
   updateColorWeight: (color) => ({
     type: types.UPDATE_WEIGHTS,
     color,
@@ -147,6 +134,27 @@ export const actions = {
     simulationStatus: SIMULATION_IDLE,
     userInputDisabled,
   }),
+  setObjectPosition: (objectPosition) => ({
+    type: types.SET_OBJECT_POSITION,
+    objectPosition,
+  }),
+  setImageLeft: () => ({
+    type: types.SET_OBJECT_IMAGE,
+    objectImage: WalkingManImageLeft,
+  }),
+  setImageRight: () => ({
+    type: types.SET_OBJECT_IMAGE,
+    objectImage: WalkingManImageRight,
+  }),
+  disableUserInput: () => ({
+    type: types.SET_USER_INPUT,
+    userInputDisabled: true,
+  }),
+  enableUserInput: () => ({
+    type: types.SET_USER_INPUT,
+    userInputDisabled: false,
+  }),
+  incrementUserAttempts: () => ({ type: types.INCREMENT_USER_ATTEMPTS }),
 };
 
 export default ExerciseReducer;

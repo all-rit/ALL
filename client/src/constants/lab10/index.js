@@ -29,3 +29,13 @@ export const SPAWN_INTERVAL = 3500;
 export const SPEED_STEP = 10;
 export const SPEED = 10;
 export const SECOND = 60;
+
+export const POPUP_MESSAGES = {
+  ARROW_RIGHT_WRONG: "Please re-type your answer in the ArrowRight input.",
+  ARROW_LEFT_WRONG: "Please re-type your answer in for the ArrowLeft input.",
+  SUCCESS: "The repairs have successfully been implemented.",
+  ARROW_LEFT_NOT_INCLUDED: "The 'ArrowLeft' input has been left empty",
+  ARROW_RIGHT_NOT_INCLUDED: "The 'ArrowRight' input has been left empty.",
+};
+
+export const POPUP_DELAY = 6000;
