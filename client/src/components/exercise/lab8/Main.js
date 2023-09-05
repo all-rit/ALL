@@ -13,17 +13,18 @@ import Conclusion from "./pages/Conclusion";
 
 // import ChatRoom from "./components/ChatRoom";
 
-const Main = () => {
+const Main = (props) => {
+  const { user } = props;
   return (
     <div className="bottomSpace">
       <Router className="app">
         {/* Phase 1: experience biased sentiment analysis in action */}
         <ExerciseStart path="/*" />
-        <BiasedSimulation path="/BiasedSimulation" />
-        <BiasDiscovery path="/BiasDiscovery" />
+        <BiasedSimulation path="/BiasedSimulation" user={user} />
+        <BiasDiscovery path="/BiasDiscovery" user={user} />
 
         {/* Phase 2: repair the biased dataset */}
-        <DataRepair path="/DataRepair" />
+        <DataRepair path="/DataRepair" user={user} />
         <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
 
         <Conclusion path="/Conclusion" />

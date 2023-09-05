@@ -9,11 +9,12 @@ import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import Popup from "../../shared/Popup";
 import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
-import getUserRepair from "../../../../services/lab8/RepairService";
+import ExerciseService from "../../../../services/lab8/ExerciseService";
 
 const DataRepair = (props) => {
-  const { actions } = props;
-  const [messages, setMessages] = useState(CHAT_MESSAGES.before_repair);
+  const { actions, user } = props;
+  const { userid } = user;
+  const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
   const [repairState, setRepairState] = useState(false);
 
   const handleAiPolarityChange = (messageId, newValue) => {
@@ -27,12 +28,12 @@ const DataRepair = (props) => {
   };
 
   const fetchDataRepair = async () => {
-      try {
-        return await getUserRepair(props.userId);
-      } catch (error) {
-        console.error(error);
-      }
-  }
+    try {
+      return await ExerciseService.getUserRepair(userid);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   /*
     make sure that users cannot click "previous" or "continue buttons"
     while they are playing the exercise
@@ -40,10 +41,9 @@ const DataRepair = (props) => {
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
     const dataRepair = fetchDataRepair();
-    if (dataRepair.id) { 
-      setMessages({...dataRepair.repair})
+    if (dataRepair.userid) {
+      setMessages({ ...dataRepair.repair.messages });
     }
-    
   }, [actions]);
 
   /*
