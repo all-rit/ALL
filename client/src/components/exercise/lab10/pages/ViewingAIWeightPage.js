@@ -8,14 +8,13 @@ import PropTypes from "prop-types";
 import AIWeightCodeBlock from "../components/AIWeightCodeBlock";
 
 const ViewAIWeightPage = (props) => {
-
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
   }, []);
 
   const handleNav = () => {
     navigate("/Lab10/Exercise/UpdatedSim");
-  }
+  };
 
   return (
     <div>
@@ -23,15 +22,15 @@ const ViewAIWeightPage = (props) => {
         <div className="center-div">
           <div className="guidance margin-bottom-2">
             <p className="playthrough__sentence">
-              Looks like you got hit by a couple blocks! With each colored
-              block you were hit by, the AI was able to gather data that
-              created higher weight based on the color of block you were hit
-              by most, and lower weight by those you avoided.
+              Looks like you got hit by a couple blocks! With each colored block
+              you were hit by, the AI was able to gather data that created
+              higher weight based on the color of block you were hit by most,
+              and lower weight by those you avoided.
             </p>
             <p className={"playthrough__sentence"}>
               However, we now have developed an uneven weight for different
-              colored blocks, therefore creating unwanted bias in our system
-              as the AI should want to avoid all blocks, not just specifically
+              colored blocks, therefore creating unwanted bias in our system as
+              the AI should want to avoid all blocks, not just specifically
               colored ones.
             </p>
           </div>
@@ -47,7 +46,7 @@ const ViewAIWeightPage = (props) => {
       </button>
     </div>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
