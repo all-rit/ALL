@@ -15,8 +15,7 @@ const CHAT_MESSAGES = {
     {
       id: 2,
       username: "gamer4life",
-      content:
-        "Nice move, now jump and kill that turtle!",
+      content: "Nice move, now jump and kill that turtle!",
       ai_polarity: 0,
       ai_correct: false,
       intended_polarity: 2,
@@ -67,8 +66,8 @@ const CHAT_MESSAGES = {
       content: "This is the best stream I have ever seen!",
       ai_polarity: 2,
       ai_correct: true,
-      intended_polarity: 2
-    }
+      intended_polarity: 2,
+    },
   ],
 };
 
