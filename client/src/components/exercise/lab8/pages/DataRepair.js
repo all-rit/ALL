@@ -36,11 +36,11 @@ const DataRepair = (props) => {
 
   const postExerciseChange = async (data) => {
     try {
-      return await ExerciseService.submitRepair(data)
+      return await ExerciseService.submitRepair(data);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
   /*
     make sure that users cannot click "previous" or "continue buttons"
     while they are playing the exercise
@@ -122,16 +122,15 @@ const DataRepair = (props) => {
 
   const handleContinue = () => {
     // go back to the biased simulation
-    console.warn(userid)
+    console.warn(userid);
     postExerciseChange({
       userId: userid,
       repair: messages,
-      isComplete: isComplete
-    })
+      isComplete: isComplete,
+    });
     navigate("/Lab8/Exercise/BiasedSimulation", {
       state: { messages, repairState },
     });
-    
   };
 
   return (

@@ -9,11 +9,14 @@ const endpoints = {
 const ExerciseService = {
   submitRepair: (data = {}) => {
     const body = {
-      userId: data.userid,
+      userId: data.userId,
       repair: data.repair,
       isComplete: data.isComplete,
-    }
-    return API.postWithBody(`${process.env.REACT_APP_SERVER_URL}${endpoints.SUBMIT_REPAIR}`, body);
+    };
+    return API.postWithBody(
+      `${process.env.REACT_APP_SERVER_URL}${endpoints.SUBMIT_REPAIR}`,
+      body
+    );
   },
   getUserRepair: (userId) => {
     return API.get(
