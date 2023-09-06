@@ -148,26 +148,26 @@ const DataRepair = (props) => {
    */
   // eslint-disable-next-line no-unused-vars
   const validateCorrectAI = () => {
-    let isCorrect = false;
+    const localMessages = [...messages]  
+    let isCorrectLocal = true;
     const validateEnteredVsPolarity = (message) => {
       return message?.ai_polarity === message?.intended_polarity;
     };
-    
+
     const messagesOutput = [];
-    messages.forEach((message) => {
+    localMessages.forEach((message) => {
       if (validateEnteredVsPolarity(message)) {
         messagesOutput.push(true);
+      } else {
+        messagesOutput.push(false);
       }
-      messagesOutput.push(false);
     });
     messagesOutput.forEach((message) => {
       if (!message) {
-        isCorrect = false;
+        isCorrectLocal = false;
       }
     });
-    isCorrect = true;
-
-    return isCorrect;
+    return isCorrectLocal;
   };
   /**
    * handleContinue() is a helper function that is responsible for
