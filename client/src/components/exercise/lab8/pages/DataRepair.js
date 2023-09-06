@@ -13,7 +13,6 @@ import ExerciseService from "../../../../services/lab8/ExerciseService";
 
 const DataRepair = (props) => {
   const { actions, user, isComplete } = props;
-  const { userid } = user;
   const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
   const [repairState, setRepairState] = useState(false);
 
@@ -26,31 +25,12 @@ const DataRepair = (props) => {
       )
     );
   };
-  const fetchDataRepair = async () => {
-    try {
-      return await ExerciseService.getUserRepair(userid);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const postExerciseChange = async (data) => {
-    try {
-      return await ExerciseService.submitRepair(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
   /*
     make sure that users cannot click "previous" or "continue buttons"
     while they are playing the exercise
     */
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
-    const dataRepair = fetchDataRepair();
-    if (dataRepair.userid) {
-      setMessages({ ...dataRepair.repair.messages });
-    }
   }, [actions]);
 
   /*
@@ -120,12 +100,55 @@ const DataRepair = (props) => {
     setMessageError(localMessageError);
   };
 
-  const handleContinue = () => {
+  /**
+   * fetchDataRepair(): is a function responsible for handling retrieval of data to
+   * populate data repair sections.
+   * @returns returns object containing user lab information
+   */
+  const fetchDataRepair = async () => {
+    try {
+      const { userid } = user;
+      return await ExerciseService.getUserRepair(userid);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  /**
+   * postDataRepair(): is a function responsible for handling retrieval of data to
+   * populate data repair sections.
+   * @returns returns object containing user lab information
+   */
+  const postExerciseChange = async (data) => {
+    try {
+      return await ExerciseService.submitRepair(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  /**
+   * handleRepair(): is a helper function that is responsible for the
+   * opening and closing of the repair window in this view.
+   */
+  const handleRepair = async () => {
+    !repairOpen ? setRepairOpen(true) : "";
+    const dataRepair = await fetchDataRepair();
+    if (dataRepair?.userid) {
+      const { messages } = dataRepair.repair;
+      setMessages([...messages]);
+    }
+  };
+  /**
+   * handleContinue() is a helper function that is responsible for
+   * handling Continue behavior as it sends the request to send user data
+   * then navigates them to the simulation.
+   */
+  const handleContinue = async () => {
     // go back to the biased simulation
-    console.warn(userid);
-    postExerciseChange({
+    const { userid } = user;
+    await postExerciseChange({
       userId: userid,
-      repair: messages,
+      repair: { messages: [...messages] },
       isComplete: isComplete,
     });
     navigate("/Lab8/Exercise/BiasedSimulation", {
@@ -155,7 +178,7 @@ const DataRepair = (props) => {
       <button
         className="btn btn-second btn-xl text-uppercase  leftButton"
         onClick={() => {
-          !repairOpen ? setRepairOpen(true) : "";
+          handleRepair();
         }}
         key="repair"
       >
