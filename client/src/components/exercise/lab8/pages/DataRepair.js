@@ -127,17 +127,17 @@ const DataRepair = (props) => {
   };
 
   /**
-   * handleRepair(): is a helper function that is responsible for the 
+   * handleRepair(): is a helper function that is responsible for the
    * opening and closing of the repair window in this view.
    */
-  const handleRepair = async () => { 
+  const handleRepair = async () => {
     !repairOpen ? setRepairOpen(true) : "";
     const dataRepair = await fetchDataRepair();
-    const { messages } = dataRepair.repair;
-    if (dataRepair.userid) {
+    if (dataRepair?.userid) {
+      const { messages } = dataRepair.repair;
       setMessages([...messages]);
     }
-  }
+  };
   /**
    * handleContinue() is a helper function that is responsible for
    * handling Continue behavior as it sends the request to send user data
@@ -148,7 +148,7 @@ const DataRepair = (props) => {
     console.warn(userid);
     await postExerciseChange({
       userId: userid,
-      repair: { messages : [...messages] },
+      repair: { messages: [...messages] },
       isComplete: isComplete,
     });
     navigate("/Lab8/Exercise/BiasedSimulation", {
@@ -178,7 +178,7 @@ const DataRepair = (props) => {
       <button
         className="btn btn-second btn-xl text-uppercase  leftButton"
         onClick={() => {
-          handleRepair()
+          handleRepair();
         }}
         key="repair"
       >
