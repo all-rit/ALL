@@ -6,14 +6,13 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { navigate } from "@reach/router";
-// import { navigate } from "@reach/router";
 
 import "../../../../assets/stylesheets/components/Witch.css";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 
 import ChatRoom from "../components/ChatRoom";
+import { getMessages } from "../../../../constants/lab8/messages";
 // import ExerciseService from "../../../../services/lab8/ExerciseService";
-import { selectMessagesAiBias } from "../selectMessagesFns";
 import { useLocation } from "@reach/router";
 
 const BiasedSimulation = (props) => {
@@ -50,14 +49,14 @@ const BiasedSimulation = (props) => {
           // Render updatedMessages if repairState is true
           <ChatRoom
             moderationCompleteCallback={handleModerationComplete}
-            selectMessages={selectMessagesAiBias}
+            selectMessages={getMessages}
             messages={updatedMessages} // Pass updatedMessages
           />
         ) : (
           // Render the old messages if repairState is false
           <ChatRoom
             moderationCompleteCallback={handleModerationComplete}
-            selectMessages={selectMessagesAiBias}
+            selectMessages={getMessages}
           />
         )}
         {/* right now the div contains a background image */}
