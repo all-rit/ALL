@@ -12,7 +12,7 @@ const ChatRoom = (props) => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [moderationStatus, setModerationStatus] = useState(
-    (updatedMessages || []).map(() => false)
+    (updatedMessages || selectMessages()).map(() => false)
   );
 
   const currentMessages = updatedMessages || selectMessages();
