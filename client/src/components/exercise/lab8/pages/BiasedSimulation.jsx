@@ -43,7 +43,6 @@ const BiasedSimulation = (props) => {
     <div className="">
       <div
         className="exercise-frame tw-w-full tw-aspect-video"
-        // style={{ opacity: 0.5 }}
       >
         {repairState ? (
           // Render updatedMessages if repairState is true
@@ -59,7 +58,7 @@ const BiasedSimulation = (props) => {
             selectMessages={getMessages}
           />
         )}
-        {/* right now the div contains a background image */}
+
       </div>
 
       {canContinue && (

@@ -44,11 +44,10 @@ const ChatRoom = (props) => {
     };
   }, []);
 
-  // when all messages have been moderated, log a message
+  // check if all messages have been moderated
   useEffect(() => {
     const allModerated = moderationStatus.every((status) => status);
     if (allModerated) {
-      console.log("All messages have been moderated.");
       moderationCompleteCallback();
     }
   }, [moderationStatus]);

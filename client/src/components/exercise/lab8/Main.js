@@ -11,8 +11,6 @@ import SentimentAnalysisInfo from "./pages/SentimentAnalysisInfo";
 import DataRepair from "./pages/DataRepair";
 import Conclusion from "./pages/Conclusion";
 
-// import ChatRoom from "./components/ChatRoom";
-
 const Main = (props) => {
   const { user } = props;
   return (
