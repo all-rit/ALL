@@ -77,4 +77,8 @@ const PREDATA_POINTS = {
   neutral: ["I am tired today"],
 };
 
-export { CHAT_MESSAGES, PREDATA_POINTS };
+function getMessages() {
+  return CHAT_MESSAGES.messages;
+}
+
+export { CHAT_MESSAGES, PREDATA_POINTS, getMessages };

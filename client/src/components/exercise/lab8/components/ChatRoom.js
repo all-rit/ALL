@@ -44,27 +44,26 @@ const ChatRoom = (props) => {
     };
   }, []);
 
-  // when all messages have been moderated, log a message
+  // check if all messages have been moderated
   useEffect(() => {
     const allModerated = moderationStatus.every((status) => status);
     if (allModerated) {
-      console.log("All messages have been moderated.");
       moderationCompleteCallback();
     }
   }, [moderationStatus]);
 
   return (
     <div className="chat-room tw-space-y-6 tw-bg-[#ffffff] tw-bg-opacity-80 tw-h-[624px] tw-w-[35%] tw-p-4 tw-overflow-y-auto">
-      {currentMessages.slice(0, currentIndex).map((message, index) => {
+      {currentMessages.slice(0, currentIndex).map((message) => {
         return (
           <ChatMessage
-            key={index}
+            key={message.id}
             id={message.id}
             username={message.username}
             message={message.content}
             ai_polarity={message.ai_polarity}
             useModeration={true}
-            onModeration={() => handleModeration(index)}
+            onModeration={() => handleModeration(message.id)}
           />
         );
       })}
