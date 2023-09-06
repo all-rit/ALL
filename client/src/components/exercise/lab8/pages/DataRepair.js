@@ -13,7 +13,6 @@ import ExerciseService from "../../../../services/lab8/ExerciseService";
 
 const DataRepair = (props) => {
   const { actions, user, isComplete } = props;
-  const { userid } = user;
   const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
   const [repairState, setRepairState] = useState(false);
 
@@ -108,6 +107,7 @@ const DataRepair = (props) => {
    */
   const fetchDataRepair = async () => {
     try {
+      const { userid } = user;
       return await ExerciseService.getUserRepair(userid);
     } catch (error) {
       console.error(error);
@@ -145,7 +145,7 @@ const DataRepair = (props) => {
    */
   const handleContinue = async () => {
     // go back to the biased simulation
-    console.warn(userid);
+    const { userid } = user;
     await postExerciseChange({
       userId: userid,
       repair: { messages: [...messages] },
