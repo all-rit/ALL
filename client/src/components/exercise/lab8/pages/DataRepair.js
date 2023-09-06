@@ -138,6 +138,31 @@ const DataRepair = (props) => {
       setMessages([...messages]);
     }
   };
+
+  /**
+   * validateCorrectAI(): is a helper function that is responsible for checking
+   * to see if the ai polarity of all of the messages matches the value of the
+   * intended polarity value.
+   */
+  // eslint-disable-next-line no-unused-vars
+  const validateCorrectAI = () => {
+    let isCorrect = false;
+    const validateEnteredVsPolarity = (message) => {
+      return message?.ai_polarity === message?.intended_polarity;
+    };
+
+    const messagesOutput = [...messages];
+    messagesOutput.map((message) => {
+      if (validateEnteredVsPolarity(message)) {
+        return true;
+      }
+      return false;
+    });
+    if (!messagesOutput.find((message) => message === false)) {
+      isCorrect = true;
+    }
+    return isCorrect;
+  };
   /**
    * handleContinue() is a helper function that is responsible for
    * handling Continue behavior as it sends the request to send user data
@@ -151,6 +176,7 @@ const DataRepair = (props) => {
       repair: { messages: [...messages] },
       isComplete: isComplete,
     });
+
     navigate("/Lab8/Exercise/BiasedSimulation", {
       state: { messages, repairState },
     });
