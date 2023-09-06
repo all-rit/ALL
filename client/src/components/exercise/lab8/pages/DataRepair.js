@@ -12,9 +12,10 @@ import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 import ExerciseService from "../../../../services/lab8/ExerciseService";
 
 const DataRepair = (props) => {
-  const { actions, user, isComplete } = props;
+  const { actions, user } = props;
   const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
   const [repairState, setRepairState] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   const handleAiPolarityChange = (messageId, newValue) => {
     setMessages((prevState) =>
@@ -91,6 +92,7 @@ const DataRepair = (props) => {
       setUserError(false);
       popUpHandler("The repairs have been made.");
       setRepairState(true);
+      setIsCorrect(validateCorrectAI());
     } else {
       setUserError(true);
       popUpHandler(
@@ -174,12 +176,9 @@ const DataRepair = (props) => {
     await postExerciseChange({
       userId: userid,
       repair: { messages: [...messages] },
-      isComplete: isComplete,
+      isComplete: isCorrect,
     });
-
-    navigate("/Lab8/Exercise/BiasedSimulation", {
-      state: { messages, repairState },
-    });
+    !isCorrect ? navigate("/Lab8/Exercise/BiasedSimulation", { state: { messages, repairState }, }) : navigate("/Lab8/Exercise/Conclusion", { state: { messages, repairState }, });
   };
 
   return (
