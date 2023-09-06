@@ -41,9 +41,7 @@ const BiasedSimulation = (props) => {
 
   return (
     <div className="">
-      <div
-        className="exercise-frame tw-w-full tw-aspect-video"
-      >
+      <div className="exercise-frame tw-w-full tw-aspect-video">
         {repairState ? (
           // Render updatedMessages if repairState is true
           <ChatRoom
@@ -58,7 +56,6 @@ const BiasedSimulation = (props) => {
             selectMessages={getMessages}
           />
         )}
-
       </div>
 
       {canContinue && (
