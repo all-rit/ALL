@@ -152,17 +152,21 @@ const DataRepair = (props) => {
     const validateEnteredVsPolarity = (message) => {
       return message?.ai_polarity === message?.intended_polarity;
     };
-
-    const messagesOutput = [...messages];
-    messagesOutput.map((message) => {
+    
+    const messagesOutput = [];
+    messages.forEach((message) => {
       if (validateEnteredVsPolarity(message)) {
-        return true;
+        messagesOutput.push(true);
       }
-      return false;
+      messagesOutput.push(false);
     });
-    if (!messagesOutput.find((message) => message === false)) {
-      isCorrect = true;
-    }
+    messagesOutput.forEach((message) => {
+      if (!message) {
+        isCorrect = false;
+      }
+    });
+    isCorrect = true;
+
     return isCorrect;
   };
   /**
@@ -178,7 +182,13 @@ const DataRepair = (props) => {
       repair: { messages: [...messages] },
       isComplete: isCorrect,
     });
-    !isCorrect ? navigate("/Lab8/Exercise/BiasedSimulation", { state: { messages, repairState }, }) : navigate("/Lab8/Exercise/Conclusion", { state: { messages, repairState }, });
+    !isCorrect
+      ? navigate("/Lab8/Exercise/BiasedSimulation", {
+          state: { messages, repairState },
+        })
+      : navigate("/Lab8/Exercise/Conclusion", {
+          state: { messages, repairState },
+        });
   };
 
   return (
