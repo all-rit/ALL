@@ -13,7 +13,7 @@ const Conclusion = (props) => {
 
   const handleFinish = () => {
     // if the user clicks this button, we need to reset the state
-    navigate("/Lab8/Reinforcement");
+    navigate("/Lab8/Exercise");
   };
 
   useEffect(() => {
