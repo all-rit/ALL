@@ -16,8 +16,7 @@ const DataRepair = (props) => {
   const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
   const [repairState, setRepairState] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  // pull repair count from backend
-  const repairCount = 0;
+  const [repairCount, setRepairCount] = useState(0);
 
   const handleAiPolarityChange = (messageId, newValue) => {
     setMessages((prevState) =>
@@ -137,8 +136,9 @@ const DataRepair = (props) => {
     !repairOpen ? setRepairOpen(true) : "";
     const dataRepair = await fetchDataRepair();
     if (dataRepair?.userid) {
-      const { messages } = dataRepair.repair;
+      const { messages, numRepair } = dataRepair.repair;
       setMessages([...messages]);
+      setRepairCount(numRepair);
     }
   };
 
