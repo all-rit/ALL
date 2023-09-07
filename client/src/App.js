@@ -124,14 +124,17 @@ class App extends Component {
                   labID={lab}
                 />
 
-              <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
-              <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
-              <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
-              <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
-              <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
-              <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
-              <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
+                <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
+                <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
+                <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
+                <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
+                <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
+                <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
+                <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
+                <ExerciseLab10
+                  path="/Lab10/Exercise/*"
+                  user={state.main.user}
+                />
 
                 <Reinforcement
                   path={`/Lab${lab}/Reinforcement`}

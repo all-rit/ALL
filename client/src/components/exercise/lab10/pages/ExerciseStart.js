@@ -31,8 +31,8 @@ const ExerciseStart = (props) => {
             based AI is trained and implemented. Through a simple game where the
             user must avoid different colored falling balls, the user will learn
             how the AI inherently builds bias based on the results of the game.
-            After analyzing the results, the user will then retrain the AI in
-            order to eliminate bias.
+            After analyzing the results, the user will then re-train the AI to
+            eliminate bias.
           </p>
         </div>
         <button

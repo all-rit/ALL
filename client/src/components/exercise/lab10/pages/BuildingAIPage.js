@@ -23,7 +23,7 @@ class BuildingAIPage extends Component {
   }
 
   handleNav() {
-    navigate("/Lab10/Exercise/");
+    return navigate("/Lab10/Exercise/TrainingAI");
   }
 
   reset() {
@@ -39,7 +39,7 @@ class BuildingAIPage extends Component {
       repairError,
       changesApplied,
     } = this.props;
-    console.log(changesApplied);
+
     return (
       <div>
         <Fragment>

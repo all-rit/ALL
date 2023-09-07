@@ -67,8 +67,8 @@ const TrainingAI = (props) => {
             <Fragment>
               <div>
                 <p className={"tw-text-xl tw-font-bold"}>
-                  Again, try to move the object using the on-screen buttons or
-                  your keyboard.
+                  Objective: Now, try to move the object using the on-screen
+                  buttons or your keyboard.
                 </p>
               </div>
             </Fragment>

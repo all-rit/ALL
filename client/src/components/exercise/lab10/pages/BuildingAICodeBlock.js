@@ -41,8 +41,6 @@ class BuildingAICodeBlock extends Component {
     const leftValuePassed = this.validateMoveLeftValue();
     const rightValuePassed = this.validateMoveRightValue();
 
-    console.log(leftValuePassed, rightValuePassed);
-
     if (!leftValuePassed || !rightValuePassed) {
       actions.updateRepairError(true);
       if (!leftValuePassed && !rightValuePassed) {
@@ -55,7 +53,6 @@ class BuildingAICodeBlock extends Component {
         actions.updateRightError("Must enter 'ArrowRight'");
         actions.updateLeftError(null);
       }
-      console.log(actions);
       actions.updateChangesApplied(false);
     } else {
       actions.updateLeftError(null);
@@ -85,15 +82,12 @@ class BuildingAICodeBlock extends Component {
 
   validateMoveLeftValue() {
     const { actions, leftValue } = this.props;
-    console.log(this.props);
     if (!leftValue.includes("'ArrowLeft'")) {
       actions.updateRepairError(true);
       if (leftValue.length === 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED);
-        console.log("left empty");
       } else if (leftValue.length > 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_LEFT_WRONG);
-        console.log("left wrong");
       }
       return false;
     } else {
@@ -108,10 +102,8 @@ class BuildingAICodeBlock extends Component {
       actions.updateRepairError(true);
       if (rightValue.length === 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_RIGHT_NOT_INCLUDED);
-        console.log("right empty");
       } else if (rightValue.length > 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_RIGHT_WRONG);
-        console.log("right wrong");
       }
       return false;
     } else {
@@ -122,13 +114,11 @@ class BuildingAICodeBlock extends Component {
 
   handleLeftValueChange(e) {
     const { actions } = this.props;
-    console.log(e.target.value);
     actions.updateMoveLeftValue(e.target.value);
   }
 
   handleRightValueChange(e) {
     const { actions } = this.props;
-    console.log(e.target.value);
     actions.updateMoveRightValue(e.target.value);
   }
 

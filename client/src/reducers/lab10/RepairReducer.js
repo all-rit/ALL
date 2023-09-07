@@ -15,7 +15,7 @@ export const types = {
   UPDATE_LEFT_ERROR: "@accessibility-lab/lab10/repair/update_left_error",
   UPDATE_RIGHT_ERROR: "@accessibility-lab/lab10/repair/update_right_error",
   UPDATE_TAB: "@accessibility-lab/lab10/repair/update_tab",
-    RESET_REPAIR: "@accessibility-lab/lab10/repair/reset_repair"
+  RESET_REPAIR: "@accessibility-lab/lab10/repair/reset_repair",
 };
 
 export const initialState = {

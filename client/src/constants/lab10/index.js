@@ -25,7 +25,7 @@ export const COLORS = [
 ];
 export const SIZE = 96;
 export const SPAWN_AMOUNT = 3;
-export const SPAWN_INTERVAL = 3500;
+export const SPAWN_INTERVAL = 2500;
 export const SPEED_STEP = 10;
 export const SPEED = 10;
 export const SECOND = 60;
