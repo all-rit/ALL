@@ -15,6 +15,8 @@ const DataRepair = (props) => {
   const { actions, user, isComplete } = props;
   const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
   const [repairState, setRepairState] = useState(false);
+  // pull repair count from backend
+  const repairCount = 0;
 
   const handleAiPolarityChange = (messageId, newValue) => {
     setMessages((prevState) =>
@@ -86,7 +88,6 @@ const DataRepair = (props) => {
     });
     if (!error) {
       // eventually need to send repair data to the backend
-      console.log("Repairs made with no errors");
       setRepairOpen(false);
       setUserError(false);
       popUpHandler("The repairs have been made.");
@@ -114,7 +115,7 @@ const DataRepair = (props) => {
     }
   };
   /**
-   * postDataRepair(): is a function responsible for handling retrieval of data to
+   * postDataRepair(): is a function responsible for handling posting of data to
    * populate data repair sections.
    * @returns returns object containing user lab information
    */
@@ -302,6 +303,21 @@ const DataRepair = (props) => {
                         </span>
                       </div>
                     )}
+                    {/* if this is the user's third (or higher) time doing the repair section */}
+                    {/* then display a hint */}
+                    {
+                      repairCount >= 3 && (
+                        <div className="code_editor__line">
+                          {/* one tab indent */}
+                          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                          <span className="form-error">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            {"Hint: try entering " + message.intended_polarity}
+                          </span>
+                        </div>
+                      )
+                    }
+
                     {/* one tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     {/* closing bracket */}
