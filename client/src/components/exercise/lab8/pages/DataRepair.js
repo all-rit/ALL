@@ -148,7 +148,7 @@ const DataRepair = (props) => {
    */
   // eslint-disable-next-line no-unused-vars
   const validateCorrectAI = () => {
-    const localMessages = [...messages]  
+    const localMessages = [...messages];
     let isCorrectLocal = true;
     const validateEnteredVsPolarity = (message) => {
       return message?.ai_polarity === message?.intended_polarity;

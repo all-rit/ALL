@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) =>{
         isComplete: {
           type: DataTypes.BOOLEAN,
         },
+        numRepair: {
+          type: DataTypes.BIGINT,
+          autoIncrement: true,
+        },
       }, {
         tableName: 'lab8_exercise',
       },

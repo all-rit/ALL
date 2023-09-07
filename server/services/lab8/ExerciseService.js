@@ -43,7 +43,7 @@ async function submitChange(data) {
 async function getRepair(data, raw=false) {
   try {
     return await db.ExerciseLab8.findOne({
-      where: {userid: data},
+      where: {userid: data, isComplete: false},
       raw: raw,
     });
   } catch (error) {
