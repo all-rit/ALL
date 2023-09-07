@@ -179,13 +179,13 @@ const DataRepair = (props) => {
    */
   const handleContinue = async () => {
     // go back to the biased simulation
-
+    let localRepairCount = repairCount; 
     const { userid } = user;
     await postExerciseChange({
       userId: userid,
       repair: { messages: [...messages] },
       isComplete: isCorrect,
-      // numRepair: (numRepair += 1),
+      numRepair: ( localRepairCount += 1),
     });
     !isCorrect
       ? navigate("/Lab8/Exercise/BiasedSimulation", {
