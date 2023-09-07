@@ -60,7 +60,10 @@ const BiasedSimulation = (props) => {
 
       {canContinue && (
         <div className="tw-text-[#408a28] tw-text-[18px]">
-          <b>All messages have been moderated! Please click the &quot;Continue&quot; button.</b>
+          <b>
+            All messages have been moderated! Please click the
+            &quot;Continue&quot; button.
+          </b>
         </div>
       )}
       <button

@@ -305,19 +305,16 @@ const DataRepair = (props) => {
                     )}
                     {/* if this is the user's third (or higher) time doing the repair section */}
                     {/* then display a hint */}
-                    {
-                      repairCount >= 3 && (
-                        <div className="code_editor__line">
-                          {/* one tab indent */}
-                          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                          <span className="form-error">
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            {"Hint: try entering " + message.intended_polarity}
-                          </span>
-                        </div>
-                      )
-                    }
-
+                    {repairCount >= 3 && (
+                      <div className="code_editor__line">
+                        {/* one tab indent */}
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span className="form-error">
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+                          {"Hint: try entering " + message.intended_polarity}
+                        </span>
+                      </div>
+                    )}
                     {/* one tab indent */}
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     {/* closing bracket */}
