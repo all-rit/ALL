@@ -136,8 +136,10 @@ const DataRepair = (props) => {
     !repairOpen ? setRepairOpen(true) : "";
     const dataRepair = await fetchDataRepair();
     if (dataRepair?.userid) {
-      const { messages, numRepair } = dataRepair.repair;
-      setMessages([...messages]);
+      const { messages, numRepair, isComplete } = dataRepair.repair;
+      isComplete
+        ? setMessages([...CHAT_MESSAGES.messages])
+        : setMessages([...messages]);
       setRepairCount(numRepair);
     }
   };
@@ -177,11 +179,13 @@ const DataRepair = (props) => {
    */
   const handleContinue = async () => {
     // go back to the biased simulation
+
     const { userid } = user;
     await postExerciseChange({
       userId: userid,
       repair: { messages: [...messages] },
       isComplete: isCorrect,
+      // numRepair: (numRepair += 1),
     });
     !isCorrect
       ? navigate("/Lab8/Exercise/BiasedSimulation", {

@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) =>{
         },
         numRepair: {
           type: DataTypes.BIGINT,
-          autoIncrement: true,
         },
       }, {
         tableName: 'lab8_exercise',
