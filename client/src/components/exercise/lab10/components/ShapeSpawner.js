@@ -78,6 +78,9 @@ const ShapeSpawner = (props) => {
     !_.isEqual(newShapes, shapes) && setShapes(newShapes);
   }, [shapes, props.objectPosition]);
 
+  /**
+   * This will have to be smoother
+   */
   const updateMove = useCallback(
     (direction) => {
       direction === "right"
@@ -87,7 +90,9 @@ const ShapeSpawner = (props) => {
     [props.handleShiftLeft, props.handleShiftRight]
   );
 
-  /* 'AI' Logic */
+  /**
+   * AI Logic
+   */
   useEffect(() => {
     const withinBounds = (leftShape, rightShape) => {
       if (leftShape === null) {
@@ -103,19 +108,35 @@ const ShapeSpawner = (props) => {
     };
 
     if (props.simulationStatus === SIMULATION_STARTED) {
-      const emptyShapeIndex = shapes.findIndex((shape) => shape.empty);
-      const emptyShape = shapes[emptyShapeIndex];
-      const [leftShape, rightShape] = [
-        emptyShapeIndex === 0 ? null : shapes[emptyShapeIndex - 1],
-        emptyShapeIndex === shapes.length - 1
-          ? null
-          : shapes[emptyShapeIndex + 1],
-      ];
-      const safe = withinBounds(leftShape, rightShape);
-      if (!safe) {
-        const direction =
-          props.objectPosition > emptyShape.x ? "left" : "right";
-        updateMove(direction);
+      let minDifference = Infinity;
+      let closestGapIndex = null;
+      for (let i = 0; i < shapes.length; i++) {
+        const shape = shapes[i];
+        if (shape.empty) {
+          const absoluteDifference = Math.abs(props.objectPosition - shape.x);
+          if (absoluteDifference < minDifference) {
+            minDifference = absoluteDifference;
+            closestGapIndex = i;
+          }
+        }
+      }
+      /* Shape at every column */
+      if (closestGapIndex === null) {
+        /* Avoid the heaviest color */
+      } else {
+      /* Gap exist at closestGapIndex  */
+        const shape = shapes[closestGapIndex];
+        const leftShape =
+          closestGapIndex === 0 ? null : shapes[closestGapIndex - 1];
+        const rightShape =
+          closestGapIndex === shapes.length - 1
+            ? null
+            : shapes[closestGapIndex + 1];
+        const safe = withinBounds(leftShape, rightShape);
+        if (!safe) {
+          const direction = shape.x <= props.objectPosition ? "left" : "right";
+          updateMove(direction);
+        }
       }
     }
   }, [shapes]);
@@ -149,11 +170,12 @@ const ShapeSpawner = (props) => {
       /* Calculate gap between shapes. Adding 1 to consider space for the last shape. */
       const gap = remainingGap / (numberOfShapes + 1);
       /* Randomly determine a number to leave an empty space. */
-      const ignoreColumn = _.random(numberOfShapes - 1);
       let currentPosition = gap;
       let colors = new RandomRoundRobin([...COLORS]);
       for (let i = 0; i < numberOfShapes; i++) {
-        if (i === ignoreColumn) {
+        /* 1/4 of an empty shape */
+        const ignoreColumn = _.random(3);
+        if (ignoreColumn === 0) {
           newShapes.push({
             ...generateRandomShape(currentPosition),
             empty: true,
@@ -188,9 +210,11 @@ const ShapeSpawner = (props) => {
 
   return (
     <div className={"tw-relative"}>
-      {shapes.map((shape, index) => {
-        return <Shape key={`shape-${index}`} {...shape} />;
-      })}
+      {shapes
+        .filter((shape) => !shape.empty)
+        .map((shape, index) => {
+          return <Shape key={`shape-${index}`} {...shape} />;
+        })}
     </div>
   );
 };

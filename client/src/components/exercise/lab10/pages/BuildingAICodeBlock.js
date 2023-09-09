@@ -171,8 +171,7 @@ class BuildingAICodeBlock extends Component {
             </div>
             <div className="code_editor__line">{/* AI function comment */}</div>
             <div className="code_editor__line">
-              <span>&nbsp;&nbsp;</span>
-              <span className="code_editor__line--purple">function </span>
+              <span className="code_editor__line--purple">export const </span>
               <span className="code_editor__line--yellow">moveUser</span>
               <span className="code_editor__line--purple">(</span>
               <span className="code_editor__line--purple">) &#123;</span>
@@ -188,10 +187,14 @@ class BuildingAICodeBlock extends Component {
               <span className={""}>;</span>
             </div>
 
+            <div className="code_editor__line">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+
             <div className={"code_editor__line"}>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className="code_editor__line--yellow">useEffect(</span>
-              <span className={""}>() </span>
+              <span className="code_editor__line--yellow">useEffect</span>
+              <span className={""}>(() </span>
               <span className="code_editor__line--blue"> =&gt; </span>
               <span className={""}> &#123; </span>
             </div>
@@ -260,6 +263,12 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--orange">10</span>
               <span className={""}>);</span>
             </div>
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className={""}>&#125; </span>
+            </div>
             <div className="code_editor__line">
               <span className={"form-error"}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
@@ -309,35 +318,31 @@ class BuildingAICodeBlock extends Component {
               </div>
             )}
 
-            <div>
-              <div className={"code_editor__line"}>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span className="code_editor__line--orange">setPosition</span>
-                <span className={""}> ((</span>
-                <span className="code_editor__line--blue">prevPosition</span>
-                <span className={""}>) =&gt; </span>
-                <span className="code_editor__line--blue">prevPosition</span>
-                <span className={""}> + </span>
-                <span className="code_editor__line--orange">10</span>
-                <span className={""}>);</span>
-              </div>
+            <div className={"code_editor__line"}>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&#125;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__line--orange">setPosition</span>
+              <span className={""}> ((</span>
+              <span className="code_editor__line--blue">prevPosition</span>
+              <span className={""}>) =&gt; </span>
+              <span className="code_editor__line--blue">prevPosition</span>
+              <span className={""}> + </span>
+              <span className="code_editor__line--orange">10</span>
+              <span className={""}>);</span>
             </div>
             <div className={"code_editor__line"}>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&#125;;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className={""}>&#125;;</span>
             </div>
             <div className="code_editor__line">
               <span className={"form-error"}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
             <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--gold">document</span>
@@ -354,10 +359,12 @@ class BuildingAICodeBlock extends Component {
             <div className={"code_editor__line"}>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--purple">return </span>
               <span className={""}>() =&gt; &#123;</span>
             </div>
             <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -366,7 +373,6 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--blue">
                 removeEventListener
               </span>
-              <span className={""}>(</span>
               <span className={""}>(</span>
               <span className="code_editor__line--orange">
                 &apos;keydown&apos;
@@ -378,24 +384,17 @@ class BuildingAICodeBlock extends Component {
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="">&#125;;</span>
+            </div>
+
+            <div className={"code_editor__line"}>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="">&#125;;</span>
             </div>
 
             <div className="code_editor__line">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--purple">&#125;</span>
-            </div>
-
-            <div className="code_editor__line">
-              <span className="code_editor__line--gold">&#125;</span>
-            </div>
-
-            {/* export default MoveUser */}
-            <div className="code_editor__line">
-              <span className="code_editor__line--purple">export&nbsp;</span>
-              <span className="code_editor__line--purple">default&nbsp;</span>
-              <span className="code_editor__line--blue">MoveUser</span>
-              <span>;</span>
             </div>
           </div>
         </div>
