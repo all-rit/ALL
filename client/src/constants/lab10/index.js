@@ -9,9 +9,10 @@ export const IMG_SIZE = 96;
 export const KEY_SIZE = 32;
 
 export const STEP_COUNT = 20;
+export const STEP_SPEED = 5;
 export const MIN_USER_ATTEMPTS = 6;
 export const COLLISION_WEIGHT = 2;
-export const TRAINING_DURATION = 30;
+export const TRAINING_DURATION = 60 * 5;
 
 // check for accessibility
 export const COLORS = [

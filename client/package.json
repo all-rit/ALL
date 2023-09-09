@@ -52,6 +52,7 @@
     "react-redux": "^7.2.5",
     "react-router": "^5.2.1",
     "react-scripts": "^5.0.0",
+    "react-smooth": "^2.0.3",
     "react-social-icons": "^5.10.0",
     "react-spinners": "^0.10.6",
     "react-xml-parser": "^1.1.8",

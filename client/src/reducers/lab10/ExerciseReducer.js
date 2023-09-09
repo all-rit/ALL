@@ -28,6 +28,7 @@ export const types = {
   SET_SIMULATION_STATUS:
     "@accessibility-lab/lab10/exercise/set_simulation_status",
   UPDATE_WEIGHTS: "@accessibility-lab/lab10/exercise/update_weights",
+  SET_AI: "@accessibility-lab/lab10/exercise/set_ai",
 };
 
 export const initialState = {
@@ -37,7 +38,7 @@ export const initialState = {
   objectImage: WalkingManImageRight,
   userAttempts: 0,
   trainingDuration: TRAINING_DURATION,
-
+  ai: false,
   userInputDisabled: true,
   simulationStatus: SIMULATION_IDLE,
   weights: {
@@ -107,6 +108,11 @@ const ExerciseReducer = (state = initialState, action) => {
         ...state,
         userAttempts: state.userAttempts + 1,
       };
+    case types.SET_AI:
+      return {
+        ...state,
+        ai: state.ai,
+      };
     default:
       return state;
   }
@@ -156,6 +162,8 @@ export const actions = {
   }),
   incrementUserAttempts: () => ({ type: types.INCREMENT_USER_ATTEMPTS }),
   resetUserAttempts: () => ({ type: types.RESET_USER_ATTEMPTS }),
+  enableAI: () => ({ type: types.SET_AI, ai: true }),
+  disableAI: () => ({ type: types.SET_AI, ai: false }),
 };
 
 export default ExerciseReducer;

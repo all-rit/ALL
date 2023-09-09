@@ -27,7 +27,9 @@ const generateRandomShape = (currentPosition, color) => {
   return { color, size, x, y };
 };
 
-/* True if the Moving Object is overlapping with a Falling Shape on the X Plane */
+/**
+ * True if the Moving Object is overlapping with a Falling Shape on the X Plane
+ */
 const isTouchingX = (objectPosition, x, size) => {
   return (
     (objectPosition + IMG_SIZE >= x && objectPosition <= x) ||
@@ -36,7 +38,9 @@ const isTouchingX = (objectPosition, x, size) => {
   );
 };
 
-/* True if the Moving Object is overlapping with a Falling Shape on the Y Plane */
+/**
+ * True if the Moving Object is overlapping with a Falling Shape on the Y Plane
+ */
 const isTouchingY = (height, y, size) => {
   return y + size >= height - IMG_SIZE;
 };
@@ -45,12 +49,17 @@ const ShapeSpawner = (props) => {
   const [shapes, setShapes] = useState([]);
   const intervalRef = useRef(null);
   const requestRef = useRef(null);
-  const working = useRef(false);
-  const intervalId = useRef(null);
 
-  /* Dependencies on shapes, for whenever a Y value is updated, and the Moving Object, for whenever its X value is updated */
+  /**
+   * Dependencies on shapes, for whenever a Y value is updated,
+   * and the Moving Object, for whenever its X value is updated
+   */
   useEffect(() => {
-    const newShapes = shapes.filter(({ x, y, size, color }) => {
+    const newShapes = shapes.filter(({ x, y, size, color, empty }) => {
+      if (empty) {
+        return true;
+      }
+
       const touchingX = isTouchingX(props.objectPosition, x, size);
       const touchingY = isTouchingY(
         props?.parentRef?.current?.offsetHeight,
@@ -80,44 +89,36 @@ const ShapeSpawner = (props) => {
 
   /* 'AI' Logic */
   useEffect(() => {
+    const withinBounds = (leftShape, rightShape) => {
+      if (leftShape === null) {
+        return props.objectPosition + IMG_SIZE < rightShape.x;
+      } else if (rightShape === null) {
+        return props.objectPosition > leftShape.x + leftShape.size;
+      } else {
+        return (
+          props.objectPosition + IMG_SIZE < rightShape.x &&
+          props.objectPosition > leftShape.x + leftShape.size
+        );
+      }
+    };
+
     if (props.simulationStatus === SIMULATION_STARTED) {
-      shapes.map(({ x, size, color }) => {
-        const touchingX = isTouchingX(props.objectPosition, x, size);
-        // if (
-        //     touchingX &&
-        //   color === "tw-bg-[#939393]" &&
-        //   !working.current
-        // ) {
-        //   let shiftLeft = 0,
-        //     shiftRight = 0,
-        //     direction = null;
-        //   while (true) {
-        //     let newPosition = props.objectPosition;
-        //     shiftLeft += STEP_COUNT;
-        //     newPosition = props.objectPosition - shiftLeft;
-        //     if (newPosition >= 0 && !touchingX(newPosition)) {
-        //       direction = "left";
-        //       break;
-        //     }
-        //
-        //     shiftRight += STEP_COUNT;
-        //     newPosition = props.objectPosition + shiftRight;
-        //     if (newPosition <= 1110 && !touchingX(newPosition)) {
-        //       direction = "right";
-        //       break;
-        //     }
-        //
-        //     if (shiftLeft >= 1000 || shiftRight >= 1000) {
-        //       direction = "none";
-        //       break;
-        //     }
-        //   }
-        //   intervalId.current = setInterval(() => updateMove(direction), 250);
-        //   working.current = true;
-        // }
-      });
+      const emptyShapeIndex = shapes.findIndex((shape) => shape.empty);
+      const emptyShape = shapes[emptyShapeIndex];
+      const [leftShape, rightShape] = [
+        emptyShapeIndex === 0 ? null : shapes[emptyShapeIndex - 1],
+        emptyShapeIndex === shapes.length - 1
+          ? null
+          : shapes[emptyShapeIndex + 1],
+      ];
+      const safe = withinBounds(leftShape, rightShape);
+      if (!safe) {
+        const direction =
+          props.objectPosition > emptyShape.x ? "left" : "right";
+        updateMove(direction);
+      }
     }
-  }, [props.simulationStatus, working, shapes, updateMove]);
+  }, [shapes]);
 
   const updateFallingShapes = useCallback(() => {
     setShapes((shapes) => {
@@ -152,10 +153,15 @@ const ShapeSpawner = (props) => {
       let currentPosition = gap;
       let colors = new RandomRoundRobin([...COLORS]);
       for (let i = 0; i < numberOfShapes; i++) {
-        const color = colors.next().value;
-        newShapes.push(
-          i === ignoreColumn ? {} : generateRandomShape(currentPosition, color)
-        );
+        if (i === ignoreColumn) {
+          newShapes.push({
+            ...generateRandomShape(currentPosition),
+            empty: true,
+          });
+        } else {
+          const color = colors.next().value;
+          newShapes.push(generateRandomShape(currentPosition, color));
+        }
         currentPosition += gap + SIZE;
       }
       return [...prev, ...newShapes];

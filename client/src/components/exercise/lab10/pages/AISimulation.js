@@ -8,14 +8,18 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const AISimulation = (props) => {
+  /**
+   * Executed on mount
+   */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
     props.actions.idleSimulation(true);
+    props.actions.enableAI();
   }, []);
 
   return (
     <div>
-      <Simulation ai={true} />
+      <Simulation />
     </div>
   );
 };
