@@ -15,13 +15,16 @@ export const TRAINING_DURATION = 30;
 
 // check for accessibility
 export const COLORS = [
-  "tw-bg-[#00aa55]",
-  "tw-bg-[#009fd4]",
-  "tw-bg-[#b381b3]",
-  "tw-bg-[#939393]",
-  "tw-bg-[#aa8f00]",
-  "tw-bg-[#d47500]",
-  "tw-bg-[#ff0000]",
+  "tw-bg-[#88CCED]",
+  "tw-bg-[#44AA98]",
+  "tw-bg-[#107733]",
+  "tw-bg-[#322288]",
+  "tw-bg-[#DDCC76]",
+  "tw-bg-[#999934]",
+  "tw-bg-[#CC6677]",
+  "tw-bg-[#882155]",
+  "tw-bg-[#AA4399]",
+  "tw-bg-[#DDDDDD]",
 ];
 export const SIZE = 96;
 export const SPAWN_AMOUNT = 3;

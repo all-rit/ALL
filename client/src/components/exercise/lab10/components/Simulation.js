@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
@@ -63,10 +63,20 @@ const Simulation = (props) => {
     props.actions.incrementUserAttempts();
   };
 
+  /**
+   * Executed when the progress bar is complete
+   */
   const onComplete = () => {
     props.actions.endSimulation();
     setDisplayStartButton(false);
   };
+
+  /**
+   * Resets the user attempts on dismount
+   */
+  useEffect(() => {
+    return () => props.actions.resetUserAttempts();
+  }, []);
 
   return (
     <div className={"tw-mt-6"}>

@@ -1351,6 +1351,23 @@
   resolved "https://registry.npmjs.org/@csstools/selector-specificity/-/selector-specificity-2.2.0.tgz"
   integrity sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==
 
+"@datastructures-js/heap@^4.3.1":
+  version "4.3.2"
+  resolved "https://registry.npmjs.org/@datastructures-js/heap/-/heap-4.3.2.tgz"
+  integrity sha512-7/9QSsIZ+wMG3C9++mz9iOjdtTp9C036PISHvNjG3eyFO8nXOBJQFKgeV7M6/+EPl+oXXFRGBb8Ue60LsqTqGw==
+
+"@datastructures-js/linked-list@^5.2.2":
+  version "5.2.5"
+  resolved "https://registry.npmjs.org/@datastructures-js/linked-list/-/linked-list-5.2.5.tgz"
+  integrity sha512-YhlkDh7yMOaJ2bGgmrwvyF3vCrMELo2ERTiRxFMMkQF6+5n6expCBoseHtMIwe8fHJu1bzT7IaEHRU58hBoMUQ==
+
+"@datastructures-js/priority-queue@^6.1.0":
+  version "6.3.0"
+  resolved "https://registry.npmjs.org/@datastructures-js/priority-queue/-/priority-queue-6.3.0.tgz"
+  integrity sha512-bJkryPys8zVYMCSjyBPYzJlw5V2kMeOYzGHRBXiGkwqTv8vZ/Ux5RO736T8Y6l3cH+ocbQV9UxlsFwA9qI4VhA==
+  dependencies:
+    "@datastructures-js/heap" "^4.3.1"
+
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"
   resolved "https://registry.npmjs.org/@emotion/babel-plugin/-/babel-plugin-11.11.0.tgz"
@@ -10405,6 +10422,14 @@ rollup@^2.43.1:
   integrity sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==
   optionalDependencies:
     fsevents "~2.3.2"
+
+round-robin-js@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.npmjs.org/round-robin-js/-/round-robin-js-3.0.5.tgz"
+  integrity sha512-3T1+azyfZ/XDrBr8tYO3x2QvODHPGUfifxxCs6tuhOW7QSGN7iDZQ4JyYHNLtgpnqiIbTMyEZpqArKL289C9iQ==
+  dependencies:
+    "@datastructures-js/linked-list" "^5.2.2"
+    "@datastructures-js/priority-queue" "^6.1.0"
 
 run-parallel@^1.1.9:
   version "1.2.0"

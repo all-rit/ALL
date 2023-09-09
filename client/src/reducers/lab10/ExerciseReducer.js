@@ -155,6 +155,7 @@ export const actions = {
     userInputDisabled: false,
   }),
   incrementUserAttempts: () => ({ type: types.INCREMENT_USER_ATTEMPTS }),
+  resetUserAttempts: () => ({ type: types.RESET_USER_ATTEMPTS }),
 };
 
 export default ExerciseReducer;

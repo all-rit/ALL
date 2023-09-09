@@ -58,6 +58,7 @@
     "reactstrap": "^8.10.0",
     "redux": "latest",
     "redux-saga": "^1.2.2",
+    "round-robin-js": "^3.0.5",
     "tailwind-merge": "^1.14.0",
     "typescript": "^4.5.5",
     "url-parse": "^1.5.6",

@@ -19,9 +19,9 @@ import Shape from "./Shape";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
+import { RandomRoundRobin } from "round-robin-js";
 
-const generateRandomShape = (currentPosition) => {
-  const color = _.sample(COLORS);
+const generateRandomShape = (currentPosition, color) => {
   const size = SIZE;
   const [x, y] = [currentPosition, 0];
   return { color, size, x, y };
@@ -148,11 +148,13 @@ const ShapeSpawner = (props) => {
       /* Calculate gap between shapes. Adding 1 to consider space for the last shape. */
       const gap = remainingGap / (numberOfShapes + 1);
       /* Randomly determine a number to leave an empty space. */
-      const ignoreColumn = Math.floor(Math.random() * numberOfShapes);
+      const ignoreColumn = _.random(numberOfShapes - 1);
       let currentPosition = gap;
+      let colors = new RandomRoundRobin([...COLORS]);
       for (let i = 0; i < numberOfShapes; i++) {
+        const color = colors.next().value;
         newShapes.push(
-          i === ignoreColumn ? {} : generateRandomShape(currentPosition)
+          i === ignoreColumn ? {} : generateRandomShape(currentPosition, color)
         );
         currentPosition += gap + SIZE;
       }
@@ -164,6 +166,7 @@ const ShapeSpawner = (props) => {
     const end = () => {
       intervalRef.current && clearInterval(intervalRef.current);
       requestRef.current && cancelAnimationFrame(requestRef.current);
+      setShapes([]);
     };
 
     if (props.simulationStatus === SIMULATION_STARTED) {
