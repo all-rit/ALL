@@ -24,8 +24,6 @@ const StreamWindow = (props) => {
 
   const handleContinue = () => {
     // submit choices to backend via exercise service
-    // ExerciseService. ...
-    // navigate("/Lab8/Exercise/...");
   };
 
   return (

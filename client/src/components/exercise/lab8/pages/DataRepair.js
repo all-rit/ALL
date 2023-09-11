@@ -37,7 +37,7 @@ const DataRepair = (props) => {
   const [repairOpen, setRepairOpen] = useState(false);
   const [userError, setUserError] = useState(true);
   const [popUpMessage, setPopUpMessage] = useState("");
-  
+
   const handleAiPolarityChange = (messageId, newValue) => {
     setMessages((prevState) =>
       prevState.map((message) =>

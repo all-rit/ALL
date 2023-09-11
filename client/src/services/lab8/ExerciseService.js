@@ -12,7 +12,7 @@ const ExerciseService = {
       userId: data.userId,
       repair: data.repair,
       isComplete: data.isComplete,
-      numRepair: data.numRepair
+      numRepair: data.numRepair,
     };
     return API.postWithBody(
       `${process.env.REACT_APP_SERVER_URL}${endpoints.SUBMIT_REPAIR}`,

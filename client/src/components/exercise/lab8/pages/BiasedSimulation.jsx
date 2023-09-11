@@ -12,7 +12,6 @@ import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 
 import ChatRoom from "../components/ChatRoom";
 import { getMessages } from "../../../../constants/lab8/messages";
-// import ExerciseService from "../../../../services/lab8/ExerciseService";
 import { useLocation } from "@reach/router";
 
 const BiasedSimulation = (props) => {
