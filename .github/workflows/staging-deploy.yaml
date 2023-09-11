@@ -51,7 +51,7 @@ jobs:
           cache: "npm"
       - run: |
           cd client
-          export ${{ secrets.ENV_URL }}
+          export ${{ secrets.STAGING_ENV_URL }}
           export ${{ secrets.GA_TRACKING }}
           export ${{ secrets.LINT_DISABLE }}
           npm i --legacy-peer-deps 
