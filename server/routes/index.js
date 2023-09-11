@@ -114,7 +114,7 @@ router.get('/lab8/exercise/:userID', async function(req, res) {
   res.json(await ExerciseControllerLab8.getRepair(req, true));
 });
 router.post('/lab8/exercise/submit', async function(req, res) {
-  const id = await ExerciseControllerLab8.submitChange(req, true);
+  const id = await ExerciseControllerLab8.submitChange(req);
   res.send(id);
 });
 
