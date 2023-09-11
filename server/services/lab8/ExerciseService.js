@@ -18,6 +18,7 @@ async function submitChange(data) {
         userid: userId,
         repair: repair,
         isComplete: isComplete,
+        numRepair: 0,
       };
       return await db.ExerciseLab8.create(
           updatedChange,

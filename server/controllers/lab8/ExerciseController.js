@@ -7,12 +7,13 @@ const ExerciseService = require('../../services/lab8/ExerciseService');
  */
 async function submitChange(req) {
   try {
-    const {userId, repair, isComplete} = req.body;
+    const {userId, repair, isComplete, numRepair} = req.body;
 
     return await ExerciseService.submitChange({
       userId: userId,
       repair: repair,
       isComplete: isComplete,
+      numRepair: numRepair,
     }).id;
   } catch (error) {
     console.error(error);

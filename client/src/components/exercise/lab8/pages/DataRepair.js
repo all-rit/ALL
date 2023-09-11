@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import { navigate } from "@reach/router";
@@ -136,10 +137,10 @@ const DataRepair = (props) => {
     !repairOpen ? setRepairOpen(true) : "";
     const dataRepair = await fetchDataRepair();
     if (dataRepair?.userid) {
-      const { messages, numRepair, isComplete } = dataRepair.repair;
+      const { repair, numRepair, isComplete } = dataRepair;
       isComplete
         ? setMessages([...CHAT_MESSAGES.messages])
-        : setMessages([...messages]);
+        : setMessages([...repair.messages]);
       setRepairCount(numRepair);
     }
   };
@@ -179,14 +180,16 @@ const DataRepair = (props) => {
    */
   const handleContinue = async () => {
     // go back to the biased simulation
-    let localRepairCount = repairCount; 
     const { userid } = user;
-    await postExerciseChange({
+    const localRepairCount = Number(repairCount) + 1;
+    const body = {
       userId: userid,
       repair: { messages: [...messages] },
       isComplete: isCorrect,
-      numRepair: ( localRepairCount += 1),
-    });
+      numRepair: localRepairCount,
+    };
+    console.warn(body.numRepair);
+    await postExerciseChange(body);
     !isCorrect
       ? navigate("/Lab8/Exercise/BiasedSimulation", {
           state: { messages, repairState },
