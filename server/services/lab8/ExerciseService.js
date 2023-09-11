@@ -9,7 +9,9 @@ const db = require('../../database');
  * @return id for the created entry
  */
 async function submitChange(data) {
-  const {userId, repair, isComplete} = data;
+  const {userId, repair, isComplete, numRepair} = data;
+  let localRepair = parseInt(numRepair);
+  localRepair += 1;
   try {
     const returnUser = await getRepair(userId);
 
@@ -18,7 +20,7 @@ async function submitChange(data) {
         userid: userId,
         repair: repair,
         isComplete: isComplete,
-        numRepair: 0,
+        numRepair: 1,
       };
       return await db.ExerciseLab8.create(
           updatedChange,
@@ -26,6 +28,7 @@ async function submitChange(data) {
     } else {
       returnUser.repair = repair,
       returnUser.isComplete = isComplete,
+      returnUser.numRepair = localRepair,
       await returnUser.save();
       return data.id;
     }

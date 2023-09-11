@@ -19,23 +19,6 @@ const DataRepair = (props) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [repairCount, setRepairCount] = useState(0);
 
-  const handleAiPolarityChange = (messageId, newValue) => {
-    setMessages((prevState) =>
-      prevState.map((message) =>
-        message.id === messageId
-          ? { ...message, ai_polarity: newValue }
-          : message
-      )
-    );
-  };
-  /*
-    make sure that users cannot click "previous" or "continue buttons"
-    while they are playing the exercise
-    */
-  useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
-
   /*
     state variables to contain the user's inputted repair values
     */
@@ -54,6 +37,23 @@ const DataRepair = (props) => {
   const [repairOpen, setRepairOpen] = useState(false);
   const [userError, setUserError] = useState(true);
   const [popUpMessage, setPopUpMessage] = useState("");
+  
+  const handleAiPolarityChange = (messageId, newValue) => {
+    setMessages((prevState) =>
+      prevState.map((message) =>
+        message.id === messageId
+          ? { ...message, ai_polarity: newValue }
+          : message
+      )
+    );
+  };
+  /*
+    make sure that users cannot click "previous" or "continue buttons"
+    while they are playing the exercise
+    */
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, [actions]);
 
   // the only acceptable values that a user can enter
   // for their repairs
@@ -181,12 +181,11 @@ const DataRepair = (props) => {
   const handleContinue = async () => {
     // go back to the biased simulation
     const { userid } = user;
-    const localRepairCount = Number(repairCount) + 1;
     const body = {
       userId: userid,
       repair: { messages: [...messages] },
       isComplete: isCorrect,
-      numRepair: localRepairCount,
+      numRepair: repairCount,
     };
     console.warn(body.numRepair);
     await postExerciseChange(body);
