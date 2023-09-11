@@ -2,12 +2,10 @@
 /* eslint-disable require-jsdoc */
 
 import React, { useState, useEffect } from "react";
-// import "../../../../assets/stylesheets/components/ExerciseFrame.scss";
 import "../../../../assets/stylesheets/components/Witch.css";
 // Changing import to see if relative vs absolute positioning works
 import ChatRoom from "./ChatRoom";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
-// import ExerciseService from "../../../../services/lab8/ExerciseService";
 
 const StreamWindow = (props) => {
   const { actions } = props;
