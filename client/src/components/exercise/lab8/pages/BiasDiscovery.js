@@ -1,12 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
+import PropTypes from "prop-types";
 
 const BiasDiscovery = (props) => {
   const { actions } = props;
@@ -16,9 +14,6 @@ const BiasDiscovery = (props) => {
   }, []);
 
   const handleContinue = () => {
-    // TODO: update this to go to the repair section
-    // https://github.com/all-rit/ALL/issues/320
-    // link fix to the issue above
     navigate("/Lab8/Exercise/SentimentAnalysisInfo");
   };
 
@@ -71,6 +66,10 @@ const BiasDiscovery = (props) => {
       </button>
     </div>
   );
+};
+
+BiasDiscovery.propTypes = {
+  actions: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => {

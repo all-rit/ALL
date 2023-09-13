@@ -14,7 +14,7 @@ const ChatMessage = ({
   const [userAvatar, setUserAvatar] = useState(null);
 
   //used to remove the moderation section so this component is more reusable
-  const [displayModerationSection] = useState(useModeration || false);
+  const displayModerationSection = useModeration || false;
 
   //used to remove the entire message if removed is clicked
   const [enableMessageDisplay, setEnableMessageDisplay] = useState(true);
@@ -40,8 +40,12 @@ const ChatMessage = ({
     onModeration?.();
   }
 
+  function createAvatarComponent() {
+    return createAvatarData(1)[0];
+  }
+
   useEffect(() => {
-    setUserAvatar(createAvatarData(1)[0]);
+    setUserAvatar(createAvatarComponent());
   }, []);
 
   return enableMessageDisplay ? (

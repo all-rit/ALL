@@ -1,24 +1,21 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
 import React, { useEffect } from "react";
 import { EXERCISE_IDLE } from "../../../../constants/lab8";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 
 const Conclusion = (props) => {
   const { actions } = props;
 
   const handleFinish = () => {
-    // if the user clicks this button, we need to reset the state
     navigate("/Lab8/Exercise");
   };
 
   useEffect(() => {
     actions.updateState(EXERCISE_IDLE);
-  }, [actions]);
+  }, []);
 
   return (
     <div className="center-div">
@@ -39,6 +36,10 @@ const Conclusion = (props) => {
       </button>
     </div>
   );
+};
+
+Conclusion.propTypes = {
+  actions: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => {

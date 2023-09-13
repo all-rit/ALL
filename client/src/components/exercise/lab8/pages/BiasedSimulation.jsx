@@ -1,18 +1,14 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-
 import React, { useState, useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { navigate } from "@reach/router";
-
 import "../../../../assets/stylesheets/components/Witch.css";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
-
 import ChatRoom from "../components/ChatRoom";
 import { getMessages } from "../../../../constants/lab8/messages";
 import { useLocation } from "@reach/router";
+import PropTypes from "prop-types";
 
 const BiasedSimulation = (props) => {
   const { actions } = props;
@@ -20,9 +16,8 @@ const BiasedSimulation = (props) => {
   const [canContinue, setCanContinue] = useState(false);
 
   const messageLocation = useLocation();
-  const updatedMessages = messageLocation.state.messages;
 
-  const repairState = messageLocation.state.repairState;
+  const { updatedMessages, repairState } = messageLocation.state;
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
@@ -74,6 +69,10 @@ const BiasedSimulation = (props) => {
       </button>
     </div>
   );
+};
+
+BiasedSimulation.propTypes = {
+  actions: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => {

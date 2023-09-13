@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import API from "../API";
 
 const endpoints = {

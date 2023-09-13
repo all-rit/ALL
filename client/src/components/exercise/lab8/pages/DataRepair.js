@@ -1,6 +1,3 @@
-/* eslint-disable no-const-assign */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import { navigate } from "@reach/router";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -11,6 +8,11 @@ import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import Popup from "../../shared/Popup";
 import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 import ExerciseService from "../../../../services/lab8/ExerciseService";
+import PropTypes from "prop-types";
+
+// the only acceptable values that a user can enter
+// for their repairs
+const repairAllowList = [0, 1, 2];
 
 const DataRepair = (props) => {
   const { actions, user } = props;
@@ -53,11 +55,7 @@ const DataRepair = (props) => {
     */
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
-
-  // the only acceptable values that a user can enter
-  // for their repairs
-  const repairAllowList = [0, 1, 2];
+  }, []);
 
   /*
     set the message to be displayed in the popup
@@ -88,7 +86,6 @@ const DataRepair = (props) => {
       }
     });
     if (!error) {
-      // eventually need to send repair data to the backend
       setRepairOpen(false);
       setUserError(false);
       popUpHandler("The repairs have been made.");
@@ -134,13 +131,13 @@ const DataRepair = (props) => {
    * opening and closing of the repair window in this view.
    */
   const handleRepair = async () => {
-    !repairOpen ? setRepairOpen(true) : "";
+    if (!repairOpen) {
+      setRepairOpen(true);
+    }
     const dataRepair = await fetchDataRepair();
     if (dataRepair?.userid) {
       const { repair, numRepair, isComplete } = dataRepair;
-      isComplete
-        ? setMessages([...CHAT_MESSAGES.messages])
-        : setMessages([...repair.messages]);
+      setMessages(isComplete ? CHAT_MESSAGES.messages : repair.messages);
       setRepairCount(numRepair);
     }
   };
@@ -150,9 +147,8 @@ const DataRepair = (props) => {
    * to see if the ai polarity of all of the messages matches the value of the
    * intended polarity value.
    */
-  // eslint-disable-next-line no-unused-vars
   const validateCorrectAI = () => {
-    const localMessages = [...messages];
+    const localMessages = messages;
     let isCorrectLocal = true;
     const validateEnteredVsPolarity = (message) => {
       return message?.ai_polarity === message?.intended_polarity;
@@ -164,10 +160,6 @@ const DataRepair = (props) => {
         messagesOutput.push(true);
       } else {
         messagesOutput.push(false);
-      }
-    });
-    messagesOutput.forEach((message) => {
-      if (!message) {
         isCorrectLocal = false;
       }
     });
@@ -183,19 +175,20 @@ const DataRepair = (props) => {
     const { userid } = user;
     const body = {
       userId: userid,
-      repair: { messages: [...messages] },
+      repair: { messages },
       isComplete: isCorrect,
       numRepair: repairCount,
     };
     console.warn(body.numRepair);
     await postExerciseChange(body);
-    !isCorrect
-      ? navigate("/Lab8/Exercise/BiasedSimulation", {
-          state: { messages, repairState },
-        })
-      : navigate("/Lab8/Exercise/Conclusion", {
-          state: { messages, repairState },
-        });
+    navigate(
+      !isCorrect
+        ? "/Lab8/Exercise/BiasedSimulation"
+        : "/Lab8/Exercise/Conclusion",
+      {
+        state: { messages, repairState },
+      }
+    );
   };
 
   return (
@@ -382,6 +375,11 @@ const DataRepair = (props) => {
       )}
     </div>
   );
+};
+
+DataRepair.propTypes = {
+  actions: PropTypes.string,
+  user: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => {

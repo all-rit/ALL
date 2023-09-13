@@ -1,13 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
+import PropTypes from "prop-types";
 
 const SentimentAnalysisInfo = (props) => {
   const { actions } = props;
@@ -64,6 +61,10 @@ const SentimentAnalysisInfo = (props) => {
       </button>
     </div>
   );
+};
+
+SentimentAnalysisInfo.propTypes = {
+  actions: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => {

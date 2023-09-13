@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
 import React from "react";
 import { Router } from "@reach/router";
+import PropTypes from "prop-types";
 
 import ExerciseStart from "./pages/ExerciseStart";
 import BiasDiscovery from "./pages/BiasDiscovery";
@@ -29,6 +27,10 @@ const Main = (props) => {
       </Router>
     </div>
   );
+};
+
+Main.propTypes = {
+  user: PropTypes.string.isRequired,
 };
 
 export default Main;

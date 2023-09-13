@@ -65,33 +65,23 @@ const Reading = (props) => {
         readingData?.body.map((data, index) => {
           return (
             <Fragment key={index}>
-              {data.header !== "" ? <h3>{data.header}</h3> : <></>}
-              {data.type === "" ? (
+              {data.header !== "" && <h3>{data.header}</h3>}
+              {data.type === "" && (
                 <>
                   {data.content.map((content, index) => {
                     return <p key={index}>{content}</p>;
                   })}
                 </>
-              ) : (
-                <></>
               )}
-              {data.type === "study__list" ? (
-                <StudyList data={data.content} />
-              ) : (
-                <></>
-              )}
-              {data.type === "ordered-list" ? (
+              {data.type === "study__list" && <StudyList data={data.content} />}
+              {data.type === "ordered-list" && (
                 <OrderedList data={data.content} />
-              ) : (
-                <></>
               )}
-              {data.type === "non-bullet-list" ? (
+              {data.type === "non-bullet-list" && (
                 <NonBulletList data={data.content} />
-              ) : (
-                <></>
               )}
-              {data.type === "image" ? <Image data={data.content} /> : <></>}
-              {data.type === "links" ? <Links data={data.content} /> : <></>}
+              {data.type === "image" && <Image data={data.content} />}
+              {data.type === "links" && <Links data={data.content} />}
             </Fragment>
           );
         })
