@@ -74,8 +74,12 @@ const Reading = (props) => {
                 </>
               )}
               {data.type === "study__list" && <StudyList data={data.content} />}
-              {data.type === "ordered-list" && <OrderedList data={data.content} />}
-              {data.type === "non-bullet-list" && <NonBulletList data={data.content} />}
+              {data.type === "ordered-list" && (
+                <OrderedList data={data.content} />
+              )}
+              {data.type === "non-bullet-list" && (
+                <NonBulletList data={data.content} />
+              )}
               {data.type === "image" && <Image data={data.content} />}
               {data.type === "links" && <Links data={data.content} />}
             </Fragment>
