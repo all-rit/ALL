@@ -124,7 +124,7 @@ const ShapeSpawner = (props) => {
       if (closestGapIndex === null) {
         /* Avoid the heaviest color */
       } else {
-      /* Gap exist at closestGapIndex  */
+        /* Gap exist at closestGapIndex  */
         const shape = shapes[closestGapIndex];
         const leftShape =
           closestGapIndex === 0 ? null : shapes[closestGapIndex - 1];

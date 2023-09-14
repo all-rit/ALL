@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
-import { actions as repairActions } from "../../../../reducers/lab10/RepairReducer";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
+import { actions as repairActions } from "../../../../../reducers/lab10/RepairReducer";
+import { actions as exerciseActions } from "../../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import {
   EXERCISE_PLAYING,
   POPUP_DELAY,
   POPUP_MESSAGES,
-} from "../../../../constants/lab10";
+} from "../../../../../constants/lab10";
 import "highlight.js/styles/atom-one-dark-reasonable.css";
-import "../../../../assets/stylesheets/components/CodeBlock.css";
+import "../../../../../assets/stylesheets/components/CodeBlock.css";
 import PropTypes from "prop-types";
 
 class BuildingAICodeBlock extends Component {
@@ -286,7 +286,6 @@ class BuildingAICodeBlock extends Component {
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span className={""}>&#125; </span>
               <span className={"code_editor__line--purple"}>else if </span>
               <span className={""}>(</span>
               <span className="code_editor__line--orange">event</span>
@@ -383,6 +382,12 @@ class BuildingAICodeBlock extends Component {
             </div>
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span className="">&#125;;</span>
+            </div>
+
+            <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="">&#125;;</span>

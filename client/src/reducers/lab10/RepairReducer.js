@@ -1,3 +1,5 @@
+import { TRAINING_DURATION } from "../../constants/lab10";
+
 export const types = {
   UPDATE_POPUP: "@accessibility-lab/lab10/repair/update_popup",
   UPDATE_MOVE_LEFT_VALUE:
@@ -23,10 +25,9 @@ export const initialState = {
   rightValue: "",
   leftError: "",
   rightError: "",
-  timeValue: "",
+  timeValue: TRAINING_DURATION.toString(),
   popupMessage: "",
-  timeError: null,
-  repairError: false,
+  repairError: null,
   repairVisible: false,
   changesApplied: false,
 };

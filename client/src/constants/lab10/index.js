@@ -12,7 +12,7 @@ export const STEP_COUNT = 20;
 export const STEP_SPEED = 5;
 export const MIN_USER_ATTEMPTS = 6;
 export const COLLISION_WEIGHT = 2;
-export const TRAINING_DURATION = 60 * 5;
+export const TRAINING_DURATION = 30;
 
 // check for accessibility
 export const COLORS = [
@@ -28,6 +28,7 @@ export const SPAWN_INTERVAL = 2500;
 export const SPEED_STEP = 10;
 export const SPEED = 10;
 export const SECOND = 60;
+export const DURATION_RANGE = [60, 120];
 
 export const POPUP_MESSAGES = {
   ARROW_RIGHT_WRONG: "Please re-type your answer in the ArrowRight input.",
@@ -35,6 +36,8 @@ export const POPUP_MESSAGES = {
   SUCCESS: "The repairs have successfully been implemented.",
   ARROW_LEFT_NOT_INCLUDED: "The 'ArrowLeft' input has been left empty",
   ARROW_RIGHT_NOT_INCLUDED: "The 'ArrowRight' input has been left empty.",
+  INVALID_INTEGER: "The input you provided is not a number.",
+  OUTSIDE_RANGE: "The number you provided is outside the specified range.",
 };
 
 export const POPUP_DELAY = 6000;

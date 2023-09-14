@@ -164,6 +164,10 @@ export const actions = {
   resetUserAttempts: () => ({ type: types.RESET_USER_ATTEMPTS }),
   enableAI: () => ({ type: types.SET_AI, ai: true }),
   disableAI: () => ({ type: types.SET_AI, ai: false }),
+  setTrainingDuration: (trainingDuration) => ({
+    type: types.SET_TRAINING_DURATION,
+    trainingDuration,
+  }),
 };
 
 export default ExerciseReducer;

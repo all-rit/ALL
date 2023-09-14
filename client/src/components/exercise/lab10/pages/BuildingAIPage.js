@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Popup from "../../shared/Popup";
-import BuildingAICodeBlock from "./BuildingAICodeBlock";
+import BuildingAICodeBlock from "../components/code/BuildingAICodeBlock";
 import { navigate } from "@reach/router";
 class BuildingAIPage extends Component {
   constructor(props) {
@@ -45,13 +45,13 @@ class BuildingAIPage extends Component {
         <Fragment>
           <div className={"center-div"}>
             <div className={"guidance margin-bottom-2"}>
-              <p className={"playthrough__sentence"}>
+              <p className={"playthrough__sentence tw-text-center"}>
                 Now that we have described how neuro-network based AI work,
                 let&lsquo;s create our own AI using a simple exercise where you
                 will move a person left and right across your screen and attempt
                 to avoid different colored falling balls.
               </p>
-              <p className={"playthrough__sentence"}>
+              <p className={"playthrough__sentence tw-text-center"}>
                 First, in order to gather data, we need our person to be able to
                 move. Click the &lsquo;
                 <span className={"tw-font-bold"}>Repair</span>
@@ -85,6 +85,7 @@ class BuildingAIPage extends Component {
     );
   }
 }
+
 BuildingAIPage.propTypes = {
   actions: PropTypes.object,
   leftValue: PropTypes.string,
