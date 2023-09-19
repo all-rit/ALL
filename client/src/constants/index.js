@@ -167,26 +167,26 @@ export const Sections = {
     4: {
       name: "Quiz",
     },
+  },
     9: {
       fullname: "Localization",
       name: "Lab9",
       0: {
-        name: "About"
+        name: "About",
       },
       1: {
-        name: "Reading"
+        name: "Reading",
       },
       2: {
-        name: "Exercise"
+        name: "Exercise",
       },
       3: {
-        name:"Reinforcement"
+        name: "Reinforcement",
       },
       4: {
-        name: "Quiz"
+        name: "Quiz",
       },
-    }
-  },
+    },
 };
 // for shared component
 export const EXERCISE_IDLE = "EXERCISE_IDLE";
