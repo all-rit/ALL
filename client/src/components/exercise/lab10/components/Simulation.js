@@ -4,17 +4,18 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import { connect } from "react-redux";
 import WalkingMan from "./WalkingMan";
 import PropTypes from "prop-types";
-import { SIMULATION_STARTED, STEP_COUNT } from "../../../../constants/lab10";
+import { SIMULATION_STARTED, STEP_COUNT } from "~/constants/lab10";
 import MovementKeys from "./MovementKeys";
 import SimulationCover from "./SimulationCover";
 import useWindowSize from "../../../../use-hooks/useWindow";
 import ShapeSpawner from "./ShapeSpawner";
 import ProgressBar from "./ProgressBar";
 import KeyboardGuide from "./KeyboardGuide";
+import ExerciseService from "../../../../services/lab10/ExerciseService";
 
 const Simulation = (props) => {
-  // Allows the object's position to be updated when the window size is updated
-  // Utilizing this hook allows components to rerender
+  // Allows the object's position to be updated when the window size is updated.
+  // Utilizing this hook allows components to rerender.
   useWindowSize();
 
   const [displayStartButton, setDisplayStartButton] = useState(true);
@@ -31,8 +32,15 @@ const Simulation = (props) => {
   const childBox = childRef?.current?.getBoundingClientRect();
 
   /**
+   * Executed on mount
+   */
+  useEffect(() => {
+    ExerciseService.submitWeights();
+  }, []);
+
+  /**
    * Update the object's position reference and state with new position
-   * @param data object's new position
+   * @param data object's new position.
    */
   const updatePosition = (data) => {
     positionRef.current = data;
@@ -41,7 +49,7 @@ const Simulation = (props) => {
 
   /**
    * Handle the object shift to the left by decrementing its position
-   * Updates the object's image as well
+   * Updates the object's image as well.
    */
   const handleShiftLeft = () => {
     if (!props.userInputDisabled) {
@@ -53,7 +61,7 @@ const Simulation = (props) => {
 
   /**
    * Handle the object shift to the right by incrementing its position
-   * Updates the object's image as well
+   * Updates the object's image as well.
    */
   const handleShiftRight = () => {
     if (!props.userInputDisabled) {
@@ -64,15 +72,16 @@ const Simulation = (props) => {
   };
 
   /**
-   * Executed when the progress bar is complete
+   * Executed when the progress bar is complete.
    */
   const onComplete = () => {
+    ExerciseService.submitWeights(props.weights, props.user?.userid);
     props.actions.endSimulation();
     setDisplayStartButton(false);
   };
 
   /**
-   * Resets the user attempts on dismount
+   * Resets the user attempts on dismount.
    */
   useEffect(() => {
     return () => props.actions.resetUserAttempts();
@@ -121,21 +130,8 @@ const Simulation = (props) => {
         />
       </div>
 
-      {/* On-screen coordinates */}
-      <div className={"tw-mt-3 tw-flex tw-justify-center"}>
-        <div>
-          <p className={"tw-text-xl tw-font-bold"}>Current Coordinates: </p>
-        </div>
-        <div className={"tw-ml-3 tw-self-center"}>
-          <span className={"tw-text-lg"}>
-            (X: {Math.floor(props.objectPosition)}, Y: {Math.floor(childBox?.y)}
-            )
-          </span>
-        </div>
-      </div>
-
       {/* On-screen arrow Keys */}
-      <div className={"tw-space-x-12"}>
+      <div className={"tw-mt-3 tw-space-x-12"}>
         <MovementKeys
           handleShiftLeft={handleShiftLeft}
           handleShiftRight={handleShiftRight}
@@ -147,6 +143,7 @@ const Simulation = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  const { user } = state.main;
   const {
     objectPosition,
     userInputDisabled,
@@ -160,6 +157,7 @@ const mapStateToProps = (state) => {
     simulationStatus,
     trainingDuration,
     weights,
+    user,
   };
 };
 
@@ -177,6 +175,7 @@ Simulation.propTypes = {
   trainingDuration: PropTypes.number,
   weights: PropTypes.object,
   hideCoverOverride: PropTypes.bool,
+  user: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simulation);

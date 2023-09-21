@@ -41,12 +41,7 @@ export const initialState = {
   ai: false,
   userInputDisabled: true,
   simulationStatus: SIMULATION_IDLE,
-  weights: {
-    "tw-bg-[#EA4335]": 15,
-    "tw-bg-[#34A853]": 21,
-    "tw-bg-[#4285F4]": 9,
-    "tw-bg-[#FBBC05]": 20,
-  },
+  weights: Object.fromEntries(COLORS),
 };
 
 const ExerciseReducer = (state = initialState, action) => {
@@ -73,9 +68,7 @@ const ExerciseReducer = (state = initialState, action) => {
       };
 
     case types.UPDATE_WEIGHTS:
-      if (COLORS.includes(action.color)) {
-        state.weights[action.color] += 1;
-      }
+      state.weights[action.color] += 1;
       return {
         ...state,
         weights: state.weights,
@@ -111,7 +104,7 @@ const ExerciseReducer = (state = initialState, action) => {
     case types.SET_AI:
       return {
         ...state,
-        ai: state.ai,
+        ai: action.ai,
       };
     default:
       return state;

@@ -14,13 +14,15 @@ export const MIN_USER_ATTEMPTS = 6;
 export const COLLISION_WEIGHT = 2;
 export const TRAINING_DURATION = 30;
 
-// check for accessibility
 export const COLORS = [
-  "tw-bg-[#88CCED]",
-  "tw-bg-[#44AA98]",
-  "tw-bg-[#DDCC76]",
-  "tw-bg-[#999934]",
-  "tw-bg-[#EE8866]",
+  ["tw-bg-[#005C97]", 0], // Blue
+  ["tw-bg-[#00A1E4]", 0], // Sky Blue
+  ["tw-bg-[#41D3BD]", 0], // Turquoise
+  ["tw-bg-[#8DC63F]", 0], // Green
+  ["tw-bg-[#FFD100]", 0], // Yellow
+  ["tw-bg-[#FF971C]", 0], // Orange
+  ["tw-bg-[#DB0202]", 0], // Red
+  ["tw-bg-[#8A1C7C]", 0], // Purple
 ];
 export const SIZE = 96;
 export const SPAWN_AMOUNT = 3;

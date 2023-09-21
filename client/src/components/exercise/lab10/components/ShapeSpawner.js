@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-constant-condition */
-
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import _ from "lodash";
 import {
@@ -12,7 +9,6 @@ import {
   SPAWN_INTERVAL,
   SPEED,
   SPEED_STEP,
-  STEP_COUNT,
 } from "../../../../constants/lab10";
 import PropTypes from "prop-types";
 import Shape from "./Shape";
@@ -20,15 +16,29 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { RandomRoundRobin } from "round-robin-js";
+import { twMerge } from "tailwind-merge";
 
+/**
+ * Create a Shape Object, randomly.
+ */
 const generateRandomShape = (currentPosition, color) => {
   const size = SIZE;
   const [x, y] = [currentPosition, 0];
-  return { color, size, x, y };
+  const randomShape = () => {
+    switch (_.random(1)) {
+      /* Circle */
+      case 1:
+        return "tw-absolute tw-border-solid tw-rounded-full";
+      /* Square */
+      default:
+        return "tw-absolute tw-border-solid tw-rounded";
+    }
+  };
+  return { color, size, x, y, className: twMerge(randomShape(), color) };
 };
 
 /**
- * True if the Moving Object is overlapping with a Falling Shape on the X Plane
+ * True if the Moving Object is overlapping with a Falling Shape on the X Plane.
  */
 const isTouchingX = (objectPosition, x, size) => {
   return (
@@ -39,7 +49,7 @@ const isTouchingX = (objectPosition, x, size) => {
 };
 
 /**
- * True if the Moving Object is overlapping with a Falling Shape on the Y Plane
+ * True if the Moving Object is overlapping with a Falling Shape on the Y Plane.
  */
 const isTouchingY = (height, y, size) => {
   return y + size >= height - IMG_SIZE;
@@ -51,8 +61,8 @@ const ShapeSpawner = (props) => {
   const requestRef = useRef(null);
 
   /**
-   * Dependencies on shapes, for whenever a Y value is updated,
-   * and the Moving Object, for whenever its X value is updated
+   * Dependency on Shapes for whenever a Y value is updated.
+   * Dependency on Object Position for whenever its X value is updated.
    */
   useEffect(() => {
     const newShapes = shapes.filter(({ x, y, size, color, empty }) => {
@@ -79,19 +89,9 @@ const ShapeSpawner = (props) => {
   }, [shapes, props.objectPosition]);
 
   /**
-   * This will have to be smoother
-   */
-  const updateMove = useCallback(
-    (direction) => {
-      direction === "right"
-        ? props.handleShiftRight()
-        : props.handleShiftLeft();
-    },
-    [props.handleShiftLeft, props.handleShiftRight]
-  );
-
-  /**
-   * AI Logic
+   * AI Logic.
+   * Moves towards an empty slot if one exist.
+   * Otherwise, do not touch the color with the heaviest weight.
    */
   useEffect(() => {
     const withinBounds = (leftShape, rightShape) => {
@@ -107,7 +107,7 @@ const ShapeSpawner = (props) => {
       }
     };
 
-    if (props.simulationStatus === SIMULATION_STARTED) {
+    if (props.simulationStatus === SIMULATION_STARTED && props.ai) {
       let minDifference = Infinity;
       let closestGapIndex = null;
       for (let i = 0; i < shapes.length; i++) {
@@ -120,9 +120,9 @@ const ShapeSpawner = (props) => {
           }
         }
       }
-      /* Shape at every column */
+      /* If there is a Shape at every column */
       if (closestGapIndex === null) {
-        /* Avoid the heaviest color */
+        /* Avoid the color with the heaviest weight */
       } else {
         /* Gap exist at closestGapIndex  */
         const shape = shapes[closestGapIndex];
@@ -134,13 +134,20 @@ const ShapeSpawner = (props) => {
             : shapes[closestGapIndex + 1];
         const safe = withinBounds(leftShape, rightShape);
         if (!safe) {
-          const direction = shape.x <= props.objectPosition ? "left" : "right";
-          updateMove(direction);
+          if (shape.x <= props.objectPosition) {
+            props.handleShiftLeft();
+          } else {
+            props.handleShiftRight();
+          }
         }
       }
     }
-  }, [shapes]);
+  }, [props.simulationStatus, shapes, props.ai]);
 
+  /**
+   * Updates Shapes Y Position for smooth animation of falling shapes.
+   * Takes advantage of the requestAnimationFrame API.
+   */
   const updateFallingShapes = useCallback(() => {
     setShapes((shapes) => {
       const newShapes = [];
@@ -158,6 +165,10 @@ const ShapeSpawner = (props) => {
     });
   }, [setShapes]);
 
+  /**
+   * Spawns an array of Shapes.
+   * For every column, 1/4 probability of the slot being empty.
+   */
   const spawnShape = useCallback(() => {
     const parentAttributes = props.parentRef.current.getBoundingClientRect();
     setShapes((prev) => {
@@ -171,7 +182,9 @@ const ShapeSpawner = (props) => {
       const gap = remainingGap / (numberOfShapes + 1);
       /* Randomly determine a number to leave an empty space. */
       let currentPosition = gap;
-      let colors = new RandomRoundRobin([...COLORS]);
+      let colors = new RandomRoundRobin(
+        COLORS.flatMap((element) => element[0])
+      );
       for (let i = 0; i < numberOfShapes; i++) {
         /* 1/4 of an empty shape */
         const ignoreColumn = _.random(3);
@@ -190,6 +203,9 @@ const ShapeSpawner = (props) => {
     });
   }, [setShapes]);
 
+  /**
+   * Starts the simulation when the status is updated to SIMULATION_STARTED.
+   */
   useEffect(() => {
     const end = () => {
       intervalRef.current && clearInterval(intervalRef.current);
@@ -220,8 +236,8 @@ const ShapeSpawner = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { simulationStatus, objectPosition, weights } = state.exercise10;
-  return { simulationStatus, objectPosition, weights };
+  const { simulationStatus, objectPosition, weights, ai } = state.exercise10;
+  return { simulationStatus, objectPosition, weights, ai };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -240,6 +256,7 @@ ShapeSpawner.propTypes = {
   weights: PropTypes.object,
   handleShiftRight: PropTypes.func,
   handleShiftLeft: PropTypes.func,
+  ai: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShapeSpawner);

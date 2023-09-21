@@ -16,11 +16,11 @@ const TrainingAIPage = (props) => {
     props;
 
   const handleNext = () => {
-    return !(repairError === null && timeValue !== initialState.timeValue);
+    return !(repairError === false && timeValue !== initialState.timeValue);
   };
 
   const handleNav = () => {
-    return navigate("/Lab10/Exercise/TrainingAI");
+    return navigate("/Lab10/Exercise/UpdatedTrainingAI");
   };
 
   return (
@@ -29,15 +29,16 @@ const TrainingAIPage = (props) => {
         <div className={"center-div"}>
           <div className={"guidance margin-bottom-2"}>
             <p className={"playthrough__sentence tw-text-center"}>
-              That was very quick. The duration of the simulation needs to be
-              increased to allow the neural network to collect more data, which
-              will improve its decision-making.
+              That was very quick! The duration of the simulation needs to be
+              increased to allow the neural network to collect more data to
+              improve its decision-making. Let&apos;s increase the duration of
+              the simulation to collect more data points.
             </p>
             <p className={"playthrough__sentence tw-text-center"}>
               Click the &lsquo;
               <span className={"tw-font-bold"}>Repair</span>
-              &lsquo; button to view and edit the code so that the simulation
-              runs for a longer duration.
+              &lsquo; button to view and edit the code. Update the simulation to
+              run for a longer duration.
             </p>
           </div>
         </div>
@@ -71,7 +72,7 @@ const TrainingAIPage = (props) => {
 
 TrainingAIPage.propTypes = {
   actions: PropTypes.object,
-  repairError: PropTypes.string,
+  repairError: PropTypes.any,
   timeValue: PropTypes.string,
   popupMessage: PropTypes.string,
   repairVisible: PropTypes.bool,

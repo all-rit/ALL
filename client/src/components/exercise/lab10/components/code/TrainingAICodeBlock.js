@@ -15,6 +15,7 @@ const TrainingAICodeBlock = (props) => {
 
   const handleSubmit = () => {
     const value = parseInt(timeValue, 10);
+    actions.updateRepairError(true);
     if (isNaN(value) || !Number.isInteger(value)) {
       actions.updateRepairError("Try inputting a number.");
       actions.updatePopup(POPUP_MESSAGES.INVALID_INTEGER);
@@ -26,8 +27,9 @@ const TrainingAICodeBlock = (props) => {
         actions.updatePopup(POPUP_MESSAGES.OUTSIDE_RANGE);
       } else {
         actions.closeRepair();
-        actions.updateRepairError(null);
+        actions.updateRepairError(false);
         actions.updatePopup(POPUP_MESSAGES.SUCCESS);
+        actions.setTrainingDuration(value);
       }
     }
   };
@@ -36,9 +38,9 @@ const TrainingAICodeBlock = (props) => {
     <div className="code_editor">
       <div className="code_editor__content">
         <div className="code_editor__files">
-          {/* AutoSysAI.js */}
+          {/* Simulation.js */}
           <div className="code_editor__file code_editor__file--active">
-            BuildingAI.js
+            Simulation.js
           </div>
         </div>
 
@@ -73,7 +75,21 @@ const TrainingAICodeBlock = (props) => {
             <span className="code_editor__line--gold">&#125;&nbsp;</span>
             <span className="code_editor__line--purple">from&nbsp;</span>
             <span className="code_editor__line--orange">
-              &lsquo;./utils&lsquo;
+              &lsquo;../utils&lsquo;
+            </span>
+            <span className="code_editor__line--gold">;</span>
+          </div>
+
+          <div className="code_editor__line">
+            <span className="code_editor__line--purple">import&nbsp;</span>
+            <span className="code_editor__line--gold">&#123;</span>
+            <span className="code_editor__line--blue">
+              {" collectSimulationData "}
+            </span>
+            <span className="code_editor__line--gold">&#125;&nbsp;</span>
+            <span className="code_editor__line--purple">from&nbsp;</span>
+            <span className="code_editor__line--orange">
+              &lsquo;../data/NeuralNetwork&lsquo;
             </span>
             <span className="code_editor__line--gold">;</span>
           </div>
@@ -121,7 +137,9 @@ const TrainingAICodeBlock = (props) => {
           </div>
           <div className="code_editor__line">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span className="code_editor__line--blue">useCollectUserData</span>
+            <span className="code_editor__line--blue">
+              collectSimulationData
+            </span>
             <span className={"code_editor__line--purple"}>()</span>
             <span>;</span>
           </div>
@@ -221,14 +239,6 @@ const TrainingAICodeBlock = (props) => {
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>{"</"}</span>
-              <span className={"code_editor__line--red"}>{"div"}</span>
-              <span>{">"}</span>
-            </div>
-            <div className="code_editor__line">
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>{"<"}</span>
               <span className={"code_editor__line--orange"}>
@@ -284,6 +294,14 @@ const TrainingAICodeBlock = (props) => {
             <div className="code_editor__line">
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>{"</"}</span>
+              <span className={"code_editor__line--red"}>{"div"}</span>
+              <span>{">"}</span>
+            </div>
+            <div className="code_editor__line">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>{"</"}</span>
               <span className={"code_editor__line--red"}>{"div"}</span>
               <span>{">"}</span>
@@ -313,7 +331,7 @@ const TrainingAICodeBlock = (props) => {
 TrainingAICodeBlock.propTypes = {
   actions: PropTypes.object,
   timeValue: PropTypes.string,
-  repairError: PropTypes.string,
+  repairError: PropTypes.any,
 };
 
 const mapDispatchToProps = (dispatch) => {

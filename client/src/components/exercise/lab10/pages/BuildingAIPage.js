@@ -46,7 +46,7 @@ class BuildingAIPage extends Component {
           <div className={"center-div"}>
             <div className={"guidance margin-bottom-2"}>
               <p className={"playthrough__sentence tw-text-center"}>
-                Now that we have described how neuro-network based AI work,
+                Now that we have described how neural-network based AI work,
                 let&lsquo;s create our own AI using a simple exercise where you
                 will move a person left and right across your screen and attempt
                 to avoid different colored falling balls.

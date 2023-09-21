@@ -21,16 +21,22 @@ const RepairControllerLab3 = require('../controllers/lab3/RepairController');
 
 // LAB4 Controller
 const RepairControllerLab4 = require('../controllers/lab4/RepairController');
+
 // LAB5 Controller
 const RepairControllerLab5 = require('../controllers/lab5/RepairController');
 const ExerciseControllerLab5 = require('../controllers/lab5/ExerciseController');
 
-// LAB7 Controller
-const RepairControllerLab7 = require('../controllers/lab7/RepairController');
-const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
 // LAB6 Controller
 const RepairControllerLab6 = require('../controllers/lab6/RepairController');
 const ExerciseControllerLab6 = require('../controllers/lab6/ExerciseController');
+
+
+// LAB7 Controller
+const RepairControllerLab7 = require('../controllers/lab7/RepairController');
+const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController');
+
+// LAB10 Controller
+const ExerciseControllerLab10 = require('../controllers/lab10/ExerciseController');
 
 // Lab Controller
 const LabController = require('../controllers/LabController');
@@ -93,6 +99,8 @@ router.post('/lab6/exercise/hiredcanidates', ExerciseControllerLab6.submitHiredC
 router.post('/lab6/exercise/aireasoningquestion', ExerciseControllerLab6.submitAIReasoningQuestion);
 router.post('/lab6/exercise/fixedhiredcanidates', ExerciseControllerLab6.submitFixedHiredCanidates);
 router.post('/lab7/exercise/report', ExerciseControllerLab7.submitRepair);
+
+router.post('/lab10/exercise/weights', ExerciseControllerLab10.updateWeights);
 
 // Code Editor Routes
 router.post('/lab1/repair/submit', RepairControllerLab1.submitChange);

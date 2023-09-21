@@ -128,9 +128,9 @@ class BuildingAICodeBlock extends Component {
       <div className="code_editor">
         <div className="code_editor__content">
           <div className="code_editor__files">
-            {/* AutoSysAI.js */}
+            {/* MovingObject.js */}
             <div className="code_editor__file code_editor__file--active">
-              BuildingAI.js
+              MovingObject.js
             </div>
           </div>
 
@@ -152,9 +152,7 @@ class BuildingAICodeBlock extends Component {
               <span className="code_editor__line--gold">;</span>
             </div>
 
-            <div className="code_editor__line">&nbsp;</div>
-
-            {/* makeDecision(){ */}
+            {/* moveUser() */}
             <div className="code_editor__line">
               {/* AI function comment */}
               <span className="code_editor__line--darkgreen">
