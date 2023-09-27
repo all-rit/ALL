@@ -1,17 +1,23 @@
 name: Production-Deployment
-"on":
-  pull_request_target:
-    branches:
-      - prod
+on:
+  pull_request:
     types:
       - closed
+    branches:
+      - prod
 jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo The PR was merged
   run_build:
-    name: client deploy
+    name: client-server build
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases
     steps:
       - uses: actions/checkout@v3
@@ -23,18 +29,82 @@ jobs:
       - run: cd client
       - run: npm i --legacy-peer-deps
       - run: npm run build --if-present
-      - run: npm test
       - run: cd ../
       - run: cd server
       - run: npm i
       - run: npm run build --if-present
-      - run: npm test
-  run_deploy:
+  run_server_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Deploy
-        uses: shimataro/ssh-key-action@v2
+      - name: runs deploy script
+        uses: appleboy/ssh-action@v1.0.0
         with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_SECRET }}
-          known_hosts: ${{ secrets.SSH_HOST_NAME }}
-      - run: rsync -r ./build ${{secrets.PROJECT_PATH}} --delete
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ${{ secrets.CD_SERVER }}
+            chmod +x server_deploy.sh
+            ./server_deploy.sh
+  run_client_deploy:
+    needs: run_server_deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: clone repository to deploy action
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: |
+          cd client
+          export ${{ secrets.ENV_URL }}
+          export ${{ secrets.GA_TRACKING }}
+          export ${{ secrets.LINT_DISABLE }}
+          npm i --legacy-peer-deps 
+          npm run build --verbose
+      - name: delete build and create new
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd research/client
+            rm -rf build
+            mkdir build
+      - name: tar build to
+        run: |
+          cp -TR client/build ../build
+          tar -cvzf deploy.tar.gz ../build/
+      - name: scp build directory
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
+          port: ${{ secrets.PORT }}
+          source: "deploy.tar.gz"
+          target: ${{ secrets.CD_CLIENT }}
+      - name: Unzip build directory
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ${{ secrets.CD_CLIENT }}
+            tar -xvzf deploy.tar.gz
+      - name: delete zipDeploy directory
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST_NAME }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_SECRET }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ${{ secrets.CD_CLIENT }}
+            rm deploy.tar.gz

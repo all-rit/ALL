@@ -4,13 +4,37 @@
 
 ## Requirements
 
-- NodeJS ~= 12.16.2
-- NPM ~= 6.14.4
+- NodeJS ~= 16.20.1
+- NPM ~= 8.19.4
   May work for other versions but not guaranteed
 
 ## Setup
 
 Clone the repository and open the command line for the upcoming instructions.
+
+### ESlint and Pre-commit setup
+
+After cloning the repository in the top level directory, run `npm install` this will install all of the tools needed to
+commit and correctly format all code within the project.
+
+### PM2 Instructions
+
+After installing the dependencies for the super directory, first run `pm2 -v` to ensure that pm2 is installed correctly
+if it gives you any issues install it to your global npm registry with this command: `npm i -g pm2`.
+
+Next add the ecosystem.config.js file to your top level directory and this will allow you to have
+the correct env for client and server. after thats complete then you can follow the install st`eps below.
+
+#### Full start up
+
+1. Navigate to top level folder.
+2. Connect to the port of your local db or production.
+3. `pm2 start`
+4. to check the logs and see if things built correctly use `pm2 log`
+   1. if there are any errors run:
+   2. `pm2 delete all`
+   3. `pm2 start`
+5. to stop the application run `pm2 stop all`
 
 ### Server
 
@@ -36,9 +60,9 @@ Clone the repository and open the command line for the upcoming instructions.
 
 ## Part of The National Science Foundation's Grant for Developing Experiential Laboratories for Computing Accessibility Education. Grant #1825023
 
-Information for this grant can be found at https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023
+Information for this grant can be found at <https://www.nsf.gov/awardsearch/showAward?AWD_ID=1825023>
 
-## The website for all the Accessible Learning Labs can be found at https://all.rit.edu
+## The website for all the Accessible Learning Labs can be found at <https://all.rit.edu>
 
 ## Contributing
 
