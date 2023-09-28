@@ -27,8 +27,10 @@ export const types = {
     "@accessibility-lab/lab10/exercise/set_simulation_started",
   SET_SIMULATION_STATUS:
     "@accessibility-lab/lab10/exercise/set_simulation_status",
+  SET_WEIGHTS: "@accessibility-lab/lab10/exercise/set_weights",
   UPDATE_WEIGHTS: "@accessibility-lab/lab10/exercise/update_weights",
   SET_AI: "@accessibility-lab/lab10/exercise/set_ai",
+  COLLECT_WEIGHTS: "@accessibility-lab/lab10/exercise/collect_weights",
 };
 
 export const initialState = {
@@ -42,6 +44,8 @@ export const initialState = {
   userInputDisabled: true,
   simulationStatus: SIMULATION_IDLE,
   weights: Object.fromEntries(COLORS),
+  collectWeights: true,
+  simulationCovered: true,
 };
 
 const ExerciseReducer = (state = initialState, action) => {
@@ -67,6 +71,7 @@ const ExerciseReducer = (state = initialState, action) => {
         trainingDuration: action.trainingDuration,
       };
 
+    /* TODO: can we just leave it as ...state */
     case types.UPDATE_WEIGHTS:
       state.weights[action.color] += 1;
       return {
@@ -74,11 +79,16 @@ const ExerciseReducer = (state = initialState, action) => {
         weights: state.weights,
       };
 
+    case types.SET_WEIGHTS:
+      return {
+        ...state,
+        weights: action.weights,
+      };
+
     case types.SET_SIMULATION_STATUS:
       return {
         ...state,
         simulationStatus: action.simulationStatus,
-        userInputDisabled: action.userInputDisabled,
       };
 
     case types.SET_OBJECT_IMAGE:
@@ -106,6 +116,16 @@ const ExerciseReducer = (state = initialState, action) => {
         ...state,
         ai: action.ai,
       };
+    case types.COLLECT_WEIGHTS:
+      return {
+        ...state,
+        collectWeights: action.collectWeights,
+      };
+    case types.SET_SIMULATION_COVERED:
+      return {
+        ...state,
+        simulationCovered: action.simulationCovered,
+      };
     default:
       return state;
   }
@@ -114,24 +134,38 @@ const ExerciseReducer = (state = initialState, action) => {
 export const actions = {
   updateState: (state) => ({ type: types.UPDATE_STATE, state }),
   enableEnd: (state) => ({ type: types.ENABLE_END, state }),
-  updateColorWeight: (color) => ({
-    type: types.UPDATE_WEIGHTS,
-    color,
-  }),
   startSimulation: () => ({
     type: types.SET_SIMULATION_STATUS,
     simulationStatus: SIMULATION_STARTED,
-    userInputDisabled: false,
   }),
   endSimulation: () => ({
     type: types.SET_SIMULATION_STATUS,
     simulationStatus: SIMULATION_ENDED,
-    userInputDisabled: true,
   }),
-  idleSimulation: (userInputDisabled) => ({
+  idleSimulation: () => ({
     type: types.SET_SIMULATION_STATUS,
     simulationStatus: SIMULATION_IDLE,
-    userInputDisabled,
+  }),
+  enableUserInput: () => ({
+    type: types.SET_USER_INPUT,
+    userInputDisabled: false,
+  }),
+  disableUserInput: () => ({
+    type: types.SET_USER_INPUT,
+    userInputDisabled: true,
+  }),
+  enableSimulationCover: () => ({
+    type: types.SET_SIMULATION_COVERED,
+    simulationCovered: true,
+  }),
+  disableSimulationCover: () => ({
+    type: types.SET_SIMULATION_COVERED,
+    simulationCovered: false,
+  }),
+
+  updateColorWeight: (color) => ({
+    type: types.UPDATE_WEIGHTS,
+    color,
   }),
   setObjectPosition: (objectPosition) => ({
     type: types.SET_OBJECT_POSITION,
@@ -145,14 +179,6 @@ export const actions = {
     type: types.SET_OBJECT_IMAGE,
     objectImage: WalkingManImageRight,
   }),
-  disableUserInput: () => ({
-    type: types.SET_USER_INPUT,
-    userInputDisabled: true,
-  }),
-  enableUserInput: () => ({
-    type: types.SET_USER_INPUT,
-    userInputDisabled: false,
-  }),
   incrementUserAttempts: () => ({ type: types.INCREMENT_USER_ATTEMPTS }),
   resetUserAttempts: () => ({ type: types.RESET_USER_ATTEMPTS }),
   enableAI: () => ({ type: types.SET_AI, ai: true }),
@@ -160,6 +186,15 @@ export const actions = {
   setTrainingDuration: (trainingDuration) => ({
     type: types.SET_TRAINING_DURATION,
     trainingDuration,
+  }),
+  setWeights: (weights) => ({ type: types.SET_WEIGHTS, weights }),
+  enableCollectWeights: () => ({
+    type: types.COLLECT_WEIGHTS,
+    collectWeights: true,
+  }),
+  disableCollectWeights: () => ({
+    type: types.COLLECT_WEIGHTS,
+    collectWeights: false,
   }),
 };
 

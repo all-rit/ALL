@@ -99,7 +99,7 @@ router.post('/lab6/exercise/hiredcanidates', ExerciseControllerLab6.submitHiredC
 router.post('/lab6/exercise/aireasoningquestion', ExerciseControllerLab6.submitAIReasoningQuestion);
 router.post('/lab6/exercise/fixedhiredcanidates', ExerciseControllerLab6.submitFixedHiredCanidates);
 router.post('/lab7/exercise/report', ExerciseControllerLab7.submitRepair);
-
+router.get('/lab10/exercise/weights/:userID', ExerciseControllerLab10.retrieveWeights);
 router.post('/lab10/exercise/weights', ExerciseControllerLab10.updateWeights);
 
 // Code Editor Routes

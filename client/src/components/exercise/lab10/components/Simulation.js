@@ -4,7 +4,7 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import { connect } from "react-redux";
 import WalkingMan from "./WalkingMan";
 import PropTypes from "prop-types";
-import { SIMULATION_STARTED, STEP_COUNT } from "~/constants/lab10";
+import { SIMULATION_STARTED, STEP_COUNT } from "../../../../constants/lab10";
 import MovementKeys from "./MovementKeys";
 import SimulationCover from "./SimulationCover";
 import useWindowSize from "../../../../use-hooks/useWindow";
@@ -35,8 +35,16 @@ const Simulation = (props) => {
    * Executed on mount
    */
   useEffect(() => {
-    ExerciseService.submitWeights();
-  }, []);
+    if (props.user?.userid) {
+      ExerciseService.retrieveWeights(props.user.userid).then((response) => {
+        if (response.ok) {
+          response.json().then((json) => {
+            props.actions.setWeights(json.weights);
+          });
+        }
+      });
+    }
+  }, [props.user]);
 
   /**
    * Update the object's position reference and state with new position
@@ -52,7 +60,7 @@ const Simulation = (props) => {
    * Updates the object's image as well.
    */
   const handleShiftLeft = () => {
-    if (!props.userInputDisabled) {
+    if (!props.userInputDisabled || props.ai) {
       updatePosition(positionRef.current - STEP_COUNT);
       props.actions.setImageLeft();
     }
@@ -64,7 +72,7 @@ const Simulation = (props) => {
    * Updates the object's image as well.
    */
   const handleShiftRight = () => {
-    if (!props.userInputDisabled) {
+    if (!props.userInputDisabled || props.ai) {
       updatePosition(positionRef.current + STEP_COUNT);
       props.actions.setImageRight();
     }
@@ -75,7 +83,11 @@ const Simulation = (props) => {
    * Executed when the progress bar is complete.
    */
   const onComplete = () => {
-    ExerciseService.submitWeights(props.weights, props.user?.userid);
+    if (props.user?.userid) {
+      ExerciseService.submitWeights(props.weights, props.user.userid);
+    }
+    props.actions.enableSimulationCover();
+    props.actions.disableUserInput();
     props.actions.endSimulation();
     setDisplayStartButton(false);
   };
@@ -106,9 +118,7 @@ const Simulation = (props) => {
         }
       >
         {/* Simulation Cover */}
-        {!props.hideCoverOverride && (
-          <SimulationCover displayStartButton={displayStartButton} />
-        )}
+        <SimulationCover displayStartButton={displayStartButton} />
 
         {/* Falling object section */}
         <ShapeSpawner
@@ -150,6 +160,7 @@ const mapStateToProps = (state) => {
     simulationStatus,
     trainingDuration,
     weights,
+    ai,
   } = state.exercise10;
   return {
     objectPosition,
@@ -158,6 +169,7 @@ const mapStateToProps = (state) => {
     trainingDuration,
     weights,
     user,
+    ai,
   };
 };
 
@@ -174,8 +186,8 @@ Simulation.propTypes = {
   simulationStatus: PropTypes.string,
   trainingDuration: PropTypes.number,
   weights: PropTypes.object,
-  hideCoverOverride: PropTypes.bool,
   user: PropTypes.object,
+  ai: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simulation);

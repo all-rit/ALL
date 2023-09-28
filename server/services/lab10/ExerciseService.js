@@ -10,3 +10,14 @@ exports.updateWeights = (data) => {
     console.log(err);
   });
 };
+
+exports.retrieveWeights = (userid) => {
+  return db.ExerciseLab10.findOne({
+    where: {
+      userid,
+    },
+    raw: true,
+  }).then((user) => {
+    return user;
+  });
+};

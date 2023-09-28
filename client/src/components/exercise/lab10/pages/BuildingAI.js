@@ -20,7 +20,9 @@ const BuildingAI = (props) => {
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
-    props.actions.idleSimulation(true);
+    props.actions.disableSimulationCover();
+    props.actions.disableUserInput();
+    props.actions.idleSimulation();
   }, []);
 
   /**
@@ -76,7 +78,7 @@ const BuildingAI = (props) => {
           </Fragment>
         )}
       </div>
-      <Simulation hideCoverOverride={true} />
+      <Simulation />
       {limitReached && (
         <div className={"tw-mt-6 tw-flex tw-justify-end"}>
           <button

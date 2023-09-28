@@ -18,7 +18,9 @@ const UpdatedTrainingAI = (props) => {
 
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
-    props.actions.idleSimulation(true);
+    props.actions.enableSimulationCover();
+    props.actions.disableUserInput();
+    props.actions.idleSimulation();
   }, []);
 
   /**

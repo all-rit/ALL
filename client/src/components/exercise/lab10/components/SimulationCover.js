@@ -6,11 +6,13 @@ import { connect } from "react-redux";
 
 const SimulationCover = (props) => {
   const handleClick = () => {
+    props.actions.disableSimulationCover();
+    props.actions.enableUserInput();
     props.actions.startSimulation();
   };
 
   return (
-    props.userInputDisabled && (
+    props.simulationCovered && (
       <div
         className={
           "tw-absolute tw-h-full tw-w-full tw-flex tw-items-center tw-justify-center tw-rounded tw-bg-[#000000] tw-bg-opacity-70 tw-z-20"
@@ -32,8 +34,8 @@ const SimulationCover = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { userInputDisabled } = state.exercise10;
-  return { userInputDisabled };
+  const { simulationCovered } = state.exercise10;
+  return { simulationCovered };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -43,7 +45,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 SimulationCover.propTypes = {
-  userInputDisabled: PropTypes.bool,
+  simulationCovered: PropTypes.bool,
   displayStartButton: PropTypes.bool,
   actions: PropTypes.object,
 };

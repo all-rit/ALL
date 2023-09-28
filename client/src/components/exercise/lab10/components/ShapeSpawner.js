@@ -78,7 +78,7 @@ const ShapeSpawner = (props) => {
       );
       const shapesCollided = touchingX && touchingY;
 
-      if (shapesCollided) {
+      if (shapesCollided && props.collectWeights) {
         props.actions.updateColorWeight(color);
       }
 
@@ -236,8 +236,9 @@ const ShapeSpawner = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { simulationStatus, objectPosition, weights, ai } = state.exercise10;
-  return { simulationStatus, objectPosition, weights, ai };
+  const { simulationStatus, objectPosition, weights, ai, collectWeights } =
+    state.exercise10;
+  return { simulationStatus, objectPosition, weights, ai, collectWeights };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -257,6 +258,7 @@ ShapeSpawner.propTypes = {
   handleShiftRight: PropTypes.func,
   handleShiftLeft: PropTypes.func,
   ai: PropTypes.bool,
+  collectWeights: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShapeSpawner);

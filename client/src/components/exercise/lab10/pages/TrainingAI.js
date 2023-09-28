@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "~/reducers/lab10/ExerciseReducer";
+import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Simulation from "../components/Simulation";
@@ -10,8 +10,8 @@ import {
   SIMULATION_ENDED,
   SIMULATION_IDLE,
   SIMULATION_STARTED,
-} from "~/constants/lab10";
-import useScroll from "~/hooks/useScroll";
+} from "../../../../constants/lab10";
+import useScroll from "../../../../use-hooks/useScroll";
 import { navigate } from "@reach/router";
 
 const TrainingAI = (props) => {
@@ -23,7 +23,9 @@ const TrainingAI = (props) => {
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
-    props.actions.idleSimulation(false);
+    props.actions.disableSimulationCover();
+    props.actions.enableUserInput();
+    props.actions.idleSimulation();
   }, []);
 
   /**
@@ -32,7 +34,8 @@ const TrainingAI = (props) => {
   useEffect(() => {
     if (props.userAttempts >= MIN_USER_ATTEMPTS && !limitReached) {
       setLimitReach(true);
-      props.actions.idleSimulation(true);
+      props.actions.enableSimulationCover();
+      props.actions.disableUserInput();
     }
   }, [props.userAttempts]);
 

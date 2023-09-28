@@ -5,8 +5,10 @@ const endpoints = {
 };
 
 const ExerciseService = {
-  retrieveWeights: () => {
-    return API.get(`${process.env.REACT_APP_SERVER_URL}${endpoints.WEIGHTS}`);
+  retrieveWeights: (userId) => {
+    return API.get(
+      `${process.env.REACT_APP_SERVER_URL}${endpoints.WEIGHTS}/${userId}`
+    );
   },
   submitWeights: (weights, userId) => {
     return API.postWithBody(

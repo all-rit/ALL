@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Simulation from "../components/Simulation";
-import { useEffect } from "react";
 import {
   EXERCISE_PLAYING,
   SIMULATION_ENDED,
@@ -19,9 +18,20 @@ const AISimulation = (props) => {
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
-    props.actions.idleSimulation(true);
+    props.actions.enableSimulationCover();
+    props.actions.disableUserInput();
+    props.actions.idleSimulation();
     props.actions.enableAI();
+    props.actions.disableCollectWeights();
   }, []);
+
+  /**
+   * User input is enabled in the child component 'SimulationCover'.
+   * Keep the user input disabled throughout this exercise.
+   */
+  useEffect(() => {
+    props.actions.disableUserInput();
+  }, [props.simulationStatus]);
 
   /**
    * Redirect the user to the following page
@@ -35,7 +45,12 @@ const AISimulation = (props) => {
     <div>
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
-          <p className={"playthrough__sentence"}>Something here</p>
+          <p className={"playthrough__sentence"}>
+            Now that you have generated data for the neural network, view how it
+            performs! Compared to humans, computers are very quick are
+            calculating and solving problems, so you will notice the AI being
+            very quick!
+          </p>
           <div>
             <p className={"tw-text-xl tw-font-bold"}>
               Objective: Click <i>Start</i> to commence the AI Simulation.
