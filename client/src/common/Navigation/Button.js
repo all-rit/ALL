@@ -14,7 +14,7 @@ const Button = (props) => {
     disabled = false,
     isPrimary = true,
   } = props;
-  let style = "btn btn-primary btn-xl text-uppercase";
+  let style = "btn btn-primary text-black btn-xl text-uppercase";
   if (!isPrimary) {
     style = "btn btn-second btn-xl text-uppercase";
   }
