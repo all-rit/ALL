@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import Form from "../../components/Form";
 import { navigate } from "@reach/router";
 

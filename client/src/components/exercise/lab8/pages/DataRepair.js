@@ -5,7 +5,7 @@ import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseRe
 import React, { useState, useEffect } from "react";
 import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
-import Popup from "../../shared/Popup";
+import Popup from "../../../all-components/Popup";
 import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 import ExerciseService from "../../../../services/lab8/ExerciseService";
 import PropTypes from "prop-types";

@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import { NotificationInaccessibleKnowledgeCheck as KnowledgeCheck } from "../../../../../constants/lab5";
 class NotificationInaccessibleKnowledgeCheck extends Component {
   constructor(props) {

@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useCallback, useState } from "react";
 import clsx from "clsx";
-import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
+import createAvatarData from "../../../all-components/createAvatarData";
 import Avatar from "avataaars";
 import LongHorizontalLine from "../../../../common/HorizontalLine/LongHorizontalLine";
 import Recomendation from "./Recomendation";

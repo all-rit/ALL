@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Popup from "../../../shared/Popup";
+import Popup from "../../../../all-components/Popup";
 import { navigate } from "@reach/router";
 import Code from "../../components/Code";
 import {
