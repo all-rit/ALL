@@ -1,6 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
+/**
+ * A modal component that displays a header, body, and footer with customizable content.
+ * @param {Object} props - The props object containing various properties to customize the modal.
+ * @param {boolean} props.show - Determines whether the modal is currently displayed.
+ * @param {function} props.setShow - A function to update the `show` prop.
+ * @param {boolean} props.status - Determines whether the modal displays a success or failure status icon.
+ * @param {boolean} props.showStatusIcon - Determines whether the modal displays a status icon.
+ * @param {string} props.failedStatusTitle - The title to display when the modal has a failure status.
+ * @param {ReactNode} props.customHeader - Custom content to display in the modal header.
+ * @param {ReactNode} props.customBody - Custom content to display in the modal body.
+ * @param {string} props.header - The title to display in the modal header.
+ * @param {string} props.statusTitle - The title to display in the modal body when it has a success status.
+ * @param {string} props.description - The description to display in the modal body.
+ * @param {ReactNode} props.customFooter - Custom content to display in the modal footer.
+ * @param {boolean} props.showFooter - Determines whether the modal displays a footer.
+ * @param {function} props.primaryAction - A function to execute when the primary action button is clicked.
+ * @param {function} props.secondaryAction - A function to execute when the secondary action button is clicked.
+ * @param {boolean} props.showHeader - Determines whether the modal displays a header.
+ * @param {boolean} props.canClose - Determines whether the modal can be closed by clicking the close button.
+ * @param {boolean} props.canDismiss - Determines whether the modal can be dismissed by clicking outside of it.
+ * @param {number} props.timeOutTime - The amount of time in seconds before the modal automatically closes.
+ * @param {string} props.timeOutMessage - The message to display when the modal automatically closes.
+ * @returns {JSX.Element} - The modal component.
+ */
 const ALLModal = (props) => {
   const {
     show,

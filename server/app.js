@@ -51,8 +51,8 @@ app.use(require('./routes'));
 
 let server;
 
-const private_key = '/etc/letsencrypt/live/all.rit.edu/privkey.pem';
-const certificate = '/etc/letsencrypt/live/all.rit.edu/fullchain.pem';
+const private_key = `/etc/letsencrypt/live/${process.env.HOST}/privkey.pem`;
+const certificate = `/etc/letsencrypt/live/${process.env.HOST}/fullchain.pem`;
 
 // Only serve the API over HTTPS if the SSL files exist.
 if (fs.existsSync(private_key, fs.R_OK) && fs.existsSync(certificate, fs.R_OK)) {
