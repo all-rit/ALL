@@ -7,7 +7,7 @@ import Spinner from "../../../common/Spinner/Spinner";
 import Bias from "./Bias";
 import PenaltyStatus from "./PenaltyStatus";
 import Avatar from "avataaars";
-import createAvatarData from "../../body/lab/GridImages/createAvatarData";
+import createAvatarData from "../../all-components/createAvatarData";
 
 const PlayerBoard = (props) => {
   const { user, handleNext, biasType } = props;
