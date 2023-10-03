@@ -1,7 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
 import PropTypes from "prop-types";
-
 // lab imported dependencies;
 import Repair from "./pages/Repair";
 import { REPAIR } from "../../../constants/lab9";
