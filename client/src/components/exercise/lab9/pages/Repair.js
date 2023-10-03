@@ -34,7 +34,7 @@ const Repair = (props) => {
           </p>
         ))}
       </div>
-      <div className="tw-flex tw-justify-center ">
+      <div className="tw-flex tw-justify-center code_editor ">
         <div className="tw-pr-10">
           <Button
             buttonText={"Repair"}
@@ -47,7 +47,8 @@ const Repair = (props) => {
         </div>
       </div>
 
-      {isRepairActive && <CodeBlock fileName="hello.js"/>}
+      {isRepairActive &&
+        <CodeBlock fileName="hello.js"/>}
     </div>
   );
 };

@@ -10,8 +10,7 @@ const CodeBlock = ({ fileName, children }) => {
           <div className=" tw-bg-labGray tw-inline-block tw-border-t-dark tw-border-t-2 tw-border-r-2 tw-border-r-dark tw-border-l-4 tw-border-l-dark tw-cursor-pointer tw-p-3">
             {fileName}
           </div>
-          <div className="tw-grow">
-          </div>
+          <div className="tw-grow"></div>
         </div>
         <div className="tw-ease-in tw-p-5 tw-rounded-lg tw-shadow-2xl font-mono">
           {children}
