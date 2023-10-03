@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const JSONBlock = ({ children }) => {
   return (
-    <div className={"tw-bg-yellow code_editor__code tw-flex tw-flex-col"}>
+    <div className={""}>
       {children}
     </div>
   );
