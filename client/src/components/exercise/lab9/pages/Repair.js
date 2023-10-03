@@ -10,7 +10,7 @@ import CodeBlock from "../../../all-components/CodeBlock/Codeblock";
 const Repair = (props) => {
   const GameContext = useContext(GameStateContext);
   // eslint-disable-next-line react/prop-types
-  const { user = "", headingText = "", repairText = [], fileName="" } = props;
+  const { user = "", headingText = "", repairText = [], fileName = "" } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [next, setNext] = useState(false);
 
@@ -34,19 +34,22 @@ const Repair = (props) => {
           </p>
         ))}
       </div>
-      <div className="tw-flex tw-justify-center">
-        <div className="tw-pr-10">
+      <div className="tw-flex tw-justify-center tw-pb-5">
+        <div className="">
           <Button
             buttonText={"Repair"}
             isPrimary={false}
             onClick={handleRepair}
           />
         </div>
-        <div className="tw-pl-10">
+        <div className="tw-p-2"></div>
+        <div className="">
           <Button buttonText={"Next"} disabled={next} />
         </div>
       </div>
       {isRepairActive && <CodeBlock fileName={fileName}>
+      
+      This
       </CodeBlock>}
     </div>
   );
