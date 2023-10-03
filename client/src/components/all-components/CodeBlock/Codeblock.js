@@ -22,6 +22,6 @@ const CodeBlock = ({ fileName, children }) => {
 
 CodeBlock.PropTypes = {
   fileName: PropTypes.string.isRequired,
-  children: PropTypes.array,
+  children: PropTypes.element,
 };
 export default CodeBlock;
