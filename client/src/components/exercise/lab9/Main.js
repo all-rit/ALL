@@ -17,7 +17,12 @@ const Main = (props) => {
     <div className="bottomSpace">
       <GameStateContext.Provider>
         <Router className="app">
-          <Repair path={REPAIR} user={user} />
+          <Repair
+            path={REPAIR}
+            user={user}
+            repairText={["Hello", "My name is bob", "how are you"]}
+            fileName={"SentimentAnalysisMessages.js"}
+          />
         </Router>
       </GameStateContext.Provider>
     </div>
