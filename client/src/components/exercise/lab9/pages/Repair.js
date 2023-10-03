@@ -13,7 +13,7 @@ import JSONBlock from "../../../all-components/HTMLComponents/JSONBlock";
 const Repair = (props) => {
   const GameContext = useContext(GameStateContext);
   // eslint-disable-next-line react/prop-types
-  const { user = "", headingText = "", repairText = [], fileName = ""} = props;
+  const { user = "", headingText = "", repairText = [], fileName = "" } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [next, setNext] = useState(false);
 
@@ -52,15 +52,13 @@ const Repair = (props) => {
         </div>
       </div>
 
-      {isRepairActive &&
+      {isRepairActive && (
         <CodeBlock fileName={fileName}>
           <JSONBlock>
-           <CodeLine>
-             lets sheet on this
-           </CodeLine>
+            <CodeLine>lets sheet on this</CodeLine>
           </JSONBlock>
         </CodeBlock>
-      }
+      )}
     </div>
   );
 };

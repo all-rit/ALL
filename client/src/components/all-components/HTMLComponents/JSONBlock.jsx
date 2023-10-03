@@ -2,11 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const JSONBlock = ({ children }) => {
-  return (
-    <div className={""}>
-      {children}
-    </div>
-  );
+  return <div className={""}>{children}</div>;
 };
 
 JSONBlock.propTypes = {
