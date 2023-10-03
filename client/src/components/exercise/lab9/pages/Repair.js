@@ -4,8 +4,8 @@ import Proptypes from "prop-types";
 import GameStateContext from "../Lab9Context";
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import React from "react";
-import Button from "../../../../common/Navigation/Button";
-import CodeBlock from "../../../../common/CodeBlock/Codeblock";
+import Button from "../../../all-components/Navigation/Button";
+import CodeBlock from "../../../all-components/CodeBlock/Codeblock";
 
 const Repair = (props) => {
   const GameContext = useContext(GameStateContext);
@@ -27,14 +27,14 @@ const Repair = (props) => {
         heading={headingText}
         justifyAlignment={"space-between"}
       />
-      <div>
+      <div className="tw-pb-10 tw-text-xl">
         {repairText.map((text, index) => (
-          <p className="indent-2" key={index}>
+          <p className="tw-indent-2" key={index}>
             {text}
           </p>
         ))}
       </div>
-      <div className="tw-flex tw-justify-center ">
+      <div className="tw-flex tw-justify-center">
         <div className="tw-pr-10">
           <Button
             buttonText={"Repair"}
@@ -45,9 +45,11 @@ const Repair = (props) => {
         <div className="tw-pl-10">
           <Button buttonText={"Next"} disabled={next} />
         </div>
+      
       </div>
-
-      {isRepairActive && <CodeBlock fileName="hello.js"/>}
+      {isRepairActive && <CodeBlock fileName="hello.js">
+      
+      </CodeBlock>}
     </div>
   );
 };
