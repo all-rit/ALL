@@ -47,10 +47,7 @@ const Repair = (props) => {
           <Button buttonText={"Next"} disabled={next} />
         </div>
       </div>
-      {isRepairActive && <CodeBlock fileName={fileName}>
-      
-      This
-      </CodeBlock>}
+      {isRepairActive && <CodeBlock fileName={fileName}>This</CodeBlock>}
     </div>
   );
 };
