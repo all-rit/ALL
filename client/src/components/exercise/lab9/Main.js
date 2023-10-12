@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import PropTypes from "prop-types";
 // lab imported dependencies;
 import Repair from "./pages/Repair";
-import { REPAIR} from "../../../constants/lab9";
+import { REPAIR } from "../../../constants/lab9";
 import GameStateContext from "../lab9/Lab9Context";
 import Webpage from "./components/Webpage";
 /**
@@ -15,10 +15,9 @@ const Main = (props) => {
   const { user } = props;
   return (
     <div className="bottomSpace">
-
       <GameStateContext.Provider>
         <Router className="app">
-          <Webpage path={"page"}/>
+          <Webpage path={"page"} />
           <Repair
             path={REPAIR}
             user={user}
