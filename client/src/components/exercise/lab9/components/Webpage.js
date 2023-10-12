@@ -17,7 +17,7 @@ const Webpage = () => {
                 <img
                   loading="lazy"
                   srcSet="..."
-                  className="tw-aspect-[1.13] tw-object-cover tw-object-center tw-w-[54px] tw-shrink-0 tw-border-[6px] tw-border-solid"
+                  className="tw-aspect-[1.13] tw-object-cover tw-object-center tw-w-[54px] tw-shrink-0 tw-border-[6px] tw-border-solid tw-border-stone-900"
                 />
                 <div className="tw-text-[#260D0D] tw-text-4xl tw-font-light tw-tracking-tighter tw-self-center tw-my-auto">
                   ALL University
@@ -64,12 +64,14 @@ const Webpage = () => {
           </div>
         </div>
         <div className="tw-relative tw-bg-[#260D0D] tw-flex tw-w-full tw-flex-col tw-mt-60 tw-px-5 tw-max-md:tw-max-w-full tw-max-md:mt-52">
-          <div className="tw-self-center tw-z-[1] tw-w-full tw-max-w-[1337px] tw-ml-4 tw-mt-20 tw-max-md:tw-max-w-full">
+          <div className="tw-self-center tw-z-[1] tw-w-full tw-ml-4 tw-mt-20 tw-max-md:tw-max-w-full">
             <div className="tw-gap-5 tw-flex tw-max-md:tw-flex-col tw-max-md:tw-items-stretch tw-max-md:tw-gap-0">
               <div className="tw-flex tw-flex-col tw-items-stretch tw-w-[28%] tw-max-md:tw-w-full">
-                <div className="tw-flex tw-grow tw-flex-col tw-w-[355px] tw-max-md:mt-12">
+                
+                
+                <div className="tw-flex tw-grow tw-flex-col tw-max-md:mt-12">
                   <div className="tw-shadow-[3px_4px_7px_0px_rgba(0,0,0,0.25)] tw-bg-[#D9D9D9] tw-self-stretch tw-flex tw-w-full tw-flex-col tw-pt-7 tw-pb-4 tw-px-5">
-                    <div className="tw-flex tw-w-[265px] tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-ml-3 tw-max-md:tw-ml-2.5">
+                    <div className="tw-flex tw-w-xl tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-ml-3 tw-max-md:tw-ml-2.5">
                       <div className="tw-text-[#260D0D] tw-text-center tw-text-4xl tw-font-bold tw-tracking-tighter tw-mt-px">
                         <span className="tw-font-light">
                           Join
@@ -77,14 +79,14 @@ const Webpage = () => {
                         </span>
                         <span className="tw-font-bold">Us</span>
                       </div>
-                      <div className="tw-text-[#260D0D] tw-text-xl tw-font-light tw-w-[207px]">
+                      <div className="tw-text-[#260D0D] tw-text-xl tw-font-light">
                         Unlock your full potential and embrace endless
                         opportunities by applying to ALL University, where
                         innovation meets excellence in education.
                       </div>
                     </div>
-                    <div className="tw-flex w-[310px] tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-ml-0.5 tw-mt-9">
-                      <div className="tw-bg-stone-900 tw-self-center tw-w-[198px] tw-h-[5px] tw-my-auto" />
+                    <div className="tw-flex tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-ml-0.5 tw-mt-9">
+                      <div className="tw-bg-[#D9D9D9] tw-self-center tw-h-[5px] tw-my-auto" />
                       <div className="tw-text-[#260D0D] tw-text-center tw-text-base tw-font-[350] tw-self-stretch tw-w-[78px] tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-max-w-full tw-pl-4 tw-pr-4 tw-pt-2.5 tw-pb-2.5 tw-border-[3px] tw-border-solid tw-border-stone-900">
                         Apply
                       </div>
@@ -125,7 +127,7 @@ const Webpage = () => {
                       </div>
                       <div className="tw-self-stretch tw-flex tw-w-[612px] tw-h-[31px] tw-flex-col tw-grow tw-shrink-0 tw-basis-auto tw-border-[3px] tw-border-solid tw-border-black tw-max-md:max-w-full" />
                     </div>
-                    <div className="tw-self-center tw-flex tw-ml-0 w-[656px] tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-mt-7 tw-max-md:flex-wrap">
+                    <div className="tw-self-center tw-flex tw-ml-0 tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-mt-7 tw-max-md:flex-wrap">
                       <div className="tw-flex tw-grow tw-shrink-0 tw-basis-auto tw-items-start tw-justify-between tw-gap-3.5 tw-max-md:max-w-full tw-max-md:tw-flex-wrap tw-max-md:tw-justify-center">
                         <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-my-auto">
                           City
