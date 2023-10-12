@@ -1,12 +1,14 @@
 import React from "react";
-
+import logo from "../../../../assets/images/lab9/logo.png";
+import uni from "../../../../assets/images/lab9/uni.jpeg";
+import person from "../../../../assets/images/lab9/person.jpeg";
 const Webpage = () => {
   return (
     <div className="tw-bg-white tw-flex tw-flex-col">
-      <div className="tw-flex-col tw-self-stretch tw-relative tw-flex tw-min-h-[1024px] tw-w-full tw-max-md:tw-max-w-full">
+      <div className="tw-flex-col tw-bg-white tw-self-stretch tw-relative tw-flex tw-min-h-[1024px] tw-w-full tw-max-md:tw-max-w-full">
         <img
           loading="lazy"
-          srcSet="..."
+          src={uni}
           className="tw-absolute tw-h-full tw-w-full tw-object-cover tw-object-center"
         />
         <div className="tw-relative tw-shadow-[3px_4px_16px_0px_rgba(0,0,0,0.25)] tw-bg-gray-200 tw-flex tw-w-full tw-flex-col tw-pl-5 tw-pr-5 tw-py-3 tw-max-md:tw-max-w-full">
@@ -16,7 +18,7 @@ const Webpage = () => {
               <div className="tw-flex tw-w-[282px] tw-max-w-full tw-items-start tw-gap-2.5">
                 <img
                   loading="lazy"
-                  srcSet="..."
+                  srcSet={logo}
                   className="tw-aspect-[1.13] tw-object-cover tw-object-center tw-w-[54px] tw-shrink-0 tw-border-[6px] tw-border-solid tw-border-stone-900"
                 />
                 <div className="tw-text-[#260D0D] tw-text-4xl tw-font-light tw-tracking-tighter tw-self-center tw-my-auto">
@@ -67,34 +69,32 @@ const Webpage = () => {
           <div className="tw-self-center tw-z-[1] tw-w-full tw-ml-4 tw-mt-20 tw-max-md:tw-max-w-full">
             <div className="tw-gap-5 tw-flex tw-max-md:tw-flex-col tw-max-md:tw-items-stretch tw-max-md:tw-gap-0">
               <div className="tw-flex tw-flex-col tw-items-stretch tw-w-[28%] tw-max-md:tw-w-full">
-                
-                
                 <div className="tw-flex tw-grow tw-flex-col tw-max-md:mt-12">
                   <div className="tw-shadow-[3px_4px_7px_0px_rgba(0,0,0,0.25)] tw-bg-[#D9D9D9] tw-self-stretch tw-flex tw-w-full tw-flex-col tw-pt-7 tw-pb-4 tw-px-5">
                     <div className="tw-flex tw-w-xl tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-ml-3 tw-max-md:tw-ml-2.5">
-                      <div className="tw-text-[#260D0D] tw-text-center tw-text-4xl tw-font-bold tw-tracking-tighter tw-mt-px">
+                      <div className="tw-text-[#260D0D] tw-text-center tw-text-3xl tw-font-bold tw-tracking-tighter tw-mt-px">
                         <span className="tw-font-light">
                           Join
                           <br />
                         </span>
                         <span className="tw-font-bold">Us</span>
                       </div>
-                      <div className="tw-text-[#260D0D] tw-text-xl tw-font-light">
+                      <div className="tw-text-[#260D0D] tw-text-lg tw-font-light">
                         Unlock your full potential and embrace endless
                         opportunities by applying to ALL University, where
                         innovation meets excellence in education.
                       </div>
                     </div>
                     <div className="tw-flex tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-ml-0.5 tw-mt-9">
-                      <div className="tw-bg-[#D9D9D9] tw-self-center tw-h-[5px] tw-my-auto" />
-                      <div className="tw-text-[#260D0D] tw-text-center tw-text-base tw-font-[350] tw-self-stretch tw-w-[78px] tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-max-w-full tw-pl-4 tw-pr-4 tw-pt-2.5 tw-pb-2.5 tw-border-[3px] tw-border-solid tw-border-stone-900">
+                      <div className="tw-bg-[#D9D9D9] tw-self-center tw-my-auto" />
+                      <div className="tw-text-[#260D0D] tw-text-center tw-text-base tw-self-stretch tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-max-w-full tw-pl-4 tw-pr-4 tw-pt-2.5 tw-pb-2.5 tw-border-[3px] tw-border-solid">
                         Apply
                       </div>
                     </div>
                   </div>
                   <img
                     loading="lazy"
-                    srcSet="..."
+                    srcSet={person}
                     className="tw-aspect-[2.57] tw-object-cover tw-object-center tw-w-full tw-shadow-[3px_4px_7px_rgba(0,0,0,0.25)] tw-self-stretch tw-grow tw-mt-12"
                   />
                 </div>
@@ -117,7 +117,7 @@ const Webpage = () => {
                       Welcome to another edition of your weekly newsletter, your
                       go-to source for the latest updates, events, and
                       highlights from our vibrant campus community. As we settle
-                      into the rhythm of the academic year, we`&apos;`re excited
+                      into the rhythm of the academic year, we&apos;re excited
                       to keep you informed and engaged with all that &apos s
                       happening here at ALL University.
                     </div>
