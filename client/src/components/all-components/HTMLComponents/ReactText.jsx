@@ -44,11 +44,7 @@ const ReactText = ({ children }) => {
     });
   };
 
-  return (
-    <div className="code_editor__code">
-      {highlightSyntax(children)}
-    </div>
-  );
+  return <div className="code_editor__code">{highlightSyntax(children)}</div>;
 };
 
 ReactText.propTypes = {

@@ -12,8 +12,7 @@ const HTMLTag = ({ children }) => {
             {segment}
           </span>
         );
-      }
-      else if (htmlElementRegex.test(segment)) {
+      } else if (htmlElementRegex.test(segment)) {
         return (
           <span key={index} className="htmlAttribute">
             {segment}
@@ -28,11 +27,7 @@ const HTMLTag = ({ children }) => {
     });
   };
 
-  return (
-    <div className="code_editor__code">
-      {highlightSyntax(children)}
-    </div>
-  );
+  return <div className="code_editor__code">{highlightSyntax(children)}</div>;
 };
 
 HTMLTag.propTypes = {

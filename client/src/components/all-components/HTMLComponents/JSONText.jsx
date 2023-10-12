@@ -5,7 +5,6 @@ const JSONText = ({ children }) => {
   const highlightSyntax = (text) => {
     const operatorRegex = /(\+|-|\*|\/|;|:|=|==|>|\(|\)|{|})/g;
 
-
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {
       if (operatorRegex.test(segment)) {
         return (
@@ -22,11 +21,7 @@ const JSONText = ({ children }) => {
     });
   };
 
-  return (
-    <div className="code_editor__code">
-      {highlightSyntax(children)}
-    </div>
-  );
+  return <div className="code_editor__code">{highlightSyntax(children)}</div>;
 };
 
 JSONText.propTypes = {

@@ -60,7 +60,7 @@ const Repair = (props) => {
         <CodeBlock fileName={fileName}>
           <ReactText>export const ReactText = (props) = &#123;</ReactText>
           <CodeLine>
-            <Tab/> <ReactText> const handleNext = () =&#62; </ReactText>
+            <Tab /> <ReactText> const handleNext = () =&#62; </ReactText>
           </CodeLine>
           <CodeLine>
             <Tab /> <Tab />
@@ -71,19 +71,13 @@ const Repair = (props) => {
 
           <ReactText>&#125;</ReactText>
           <ReactText>export default ReactText;</ReactText>
-          <JSONText>
-              variable: asdfasdfasdf
-          </JSONText>
-          <HTMLTag>
-            &#60;div className = &ldquo;coolCSS&rdquo;
-          </HTMLTag>
+          <JSONText>variable: asdfasdfasdf</JSONText>
+          <HTMLTag>&#60;div className = &ldquo;coolCSS&rdquo;</HTMLTag>
           <CodeLine>
-            <Tab/>
+            <Tab />
             <HTMLText> hello this is html text </HTMLText>
           </CodeLine>
-          <HTMLTag>
-            &#60;/div&#62;
-          </HTMLTag>
+          <HTMLTag>&#60;/div&#62;</HTMLTag>
         </CodeBlock>
       )}
     </div>
