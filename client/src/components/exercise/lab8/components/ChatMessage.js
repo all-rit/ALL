@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../../../assets/stylesheets/components/Witch.css";
 import PropTypes from "prop-types";
-import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
+import createAvatarData from "../../../all-components/createAvatarData";
 import Avatar from "avataaars";
 
 const ChatMessage = ({

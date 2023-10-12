@@ -2,7 +2,7 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import Notification from "../../components/Notification";
 import { AccessibleRepairMessage } from "../../../../../constants/lab5";
 

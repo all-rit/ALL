@@ -24,11 +24,8 @@ const Home = (props) => {
       <header className="masthead">
         <div className="container">
           <div className="intro-text">
-            <div className="intro-lead-in">
-              Welcome to the Accessible Learning Labs (ALL) Project!
-            </div>
             <div className="intro-heading text-uppercase">
-              Learn about Accessibility
+              Welcome to the Accessible Learning Labs (ALL)!
             </div>
             <div />
           </div>
