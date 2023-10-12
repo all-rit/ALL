@@ -9,6 +9,7 @@ import AISimulation from "./pages/AISimulation";
 import BuildingAIPage from "./pages/BuildingAIPage";
 import TrainingAIPage from "./pages/TrainingAIPage";
 import UpdatedTrainingAI from "./pages/UpdatedTrainingAI";
+import AIExplanation from "./pages/AIExplanation";
 
 const Main = () => {
   return (
@@ -28,6 +29,7 @@ const Main = () => {
 
         {/* Phase Three: AI Simulation */}
         <AISimulation path={"/AISimulation"} />
+        <AIExplanation path={"AIExplanation"} />
 
         {/* Exercise End */}
         <ExerciseEnd path="/ExerciseEnd" />

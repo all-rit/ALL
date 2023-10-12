@@ -47,9 +47,9 @@ const AISimulation = (props) => {
         <div>
           <p className={"playthrough__sentence"}>
             Now that you have generated data for the neural network, view how it
-            performs! Compared to humans, computers are very quick are
-            calculating and solving problems, so you will notice the AI being
-            very quick!
+            performs! Compared to humans, computers are very quick at
+            calculating and solving complex problems. You will notice the
+            AI&apos;s response to be very quick!
           </p>
           <div>
             <p className={"tw-text-xl tw-font-bold"}>

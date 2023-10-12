@@ -18,6 +18,35 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import { RandomRoundRobin } from "round-robin-js";
 import { twMerge } from "tailwind-merge";
 
+const getHeaviestColor = (weights) => {
+  return Object.keys(weights).reduce((a, b) => {
+    return weights[a] > weights[b] ? a : b;
+  });
+};
+
+/**
+ * Gets the shape with the heaviest weight
+ */
+// const getHeaviestShapeIndex = (shapes, weights) => {
+//     const heaviestColor = getHeaviestColor(weights);
+//     return shapes.findIndex((shape) => shape.color === heaviestColor);
+// }
+
+/**
+ * For a specified index, return the specified shape and its neighbors
+ */
+const getShapeAndNeighbors = (shapeIndex, shapes) => {
+  const shape = shapes[shapeIndex];
+  const leftShape = shapeIndex === 0 ? null : shapes[shapeIndex - 1];
+  const rightShape =
+    shapeIndex === shapes.length - 1 ? null : shapes[shapeIndex + 1];
+  return {
+    shape,
+    leftShape,
+    rightShape,
+  };
+};
+
 /**
  * Create a Shape Object, randomly.
  */
@@ -120,24 +149,47 @@ const ShapeSpawner = (props) => {
           }
         }
       }
-      /* If there is a Shape at every column */
-      if (closestGapIndex === null) {
-        /* Avoid the color with the heaviest weight */
-      } else {
-        /* Gap exist at closestGapIndex  */
-        const shape = shapes[closestGapIndex];
-        const leftShape =
-          closestGapIndex === 0 ? null : shapes[closestGapIndex - 1];
-        const rightShape =
-          closestGapIndex === shapes.length - 1
-            ? null
-            : shapes[closestGapIndex + 1];
-        const safe = withinBounds(leftShape, rightShape);
-        if (!safe) {
-          if (shape.x <= props.objectPosition) {
-            props.handleShiftLeft();
-          } else {
-            props.handleShiftRight();
+
+      if (!_.isEmpty(shapes)) {
+        /* If there is a Shape at every column */
+        if (closestGapIndex === null) {
+          /* Avoid the color with the heaviest weight */
+          // const heaviestColor = getHeaviestColor(props.weights);
+          // let index = 0, l = 0, r = shapes.length - 1;
+          //
+          // const {leftShape, rightShape} = getShapeAndNeighbors(index, shapes);
+          // const onShape = withinBounds(leftShape, rightShape);
+          // console.log(onShape)
+          // if (onShape) {
+          //     if (leftShape === null) {
+          //         /* Move to the right shape */
+          //         const safe = withinBounds(null, rightShape);
+          //         if (!safe) {
+          //             props.handleShiftRight();
+          //         }
+          //
+          //     } else {
+          //         /* Move to the left shape */
+          //         const safe = withinBounds(leftShape, null);
+          //         if (!safe) {
+          //             props.handleShiftLeft();
+          //         }
+          //     }
+          // }
+        } else {
+          /* Gap exist at closestGapIndex  */
+          const { leftShape, shape, rightShape } = getShapeAndNeighbors(
+            closestGapIndex,
+            shapes
+          );
+          const safe = withinBounds(leftShape, rightShape);
+          /* Move until you are at the shape */
+          if (!safe) {
+            if (shape.x <= props.objectPosition) {
+              props.handleShiftLeft();
+            } else {
+              props.handleShiftRight();
+            }
           }
         }
       }
@@ -182,26 +234,48 @@ const ShapeSpawner = (props) => {
       const gap = remainingGap / (numberOfShapes + 1);
       /* Randomly determine a number to leave an empty space. */
       let currentPosition = gap;
-      let colors = new RandomRoundRobin(
-        COLORS.flatMap((element) => element[0])
-      );
+
+      const heaviestColor = getHeaviestColor(props.weights);
+      const colors = COLORS.flatMap((element) => element[0]);
+      let colorOptions = [];
+
+      if (props.ai) {
+        /* Increase odds of spawning a shape with the heaviest color */
+        const filteredColors = new RandomRoundRobin(
+          colors.filter((color) => color !== heaviestColor)
+        );
+        const thirdFrac = numberOfShapes / 3;
+        /* 2/3 will be the heaviest color */
+        for (let i = 0; i < numberOfShapes; i++) {
+          if (i < thirdFrac) {
+            colorOptions.push(filteredColors.next().value);
+          } else {
+            colorOptions.push(heaviestColor);
+          }
+        }
+      } else {
+        /* Random/Equal probability of all colors */
+        colorOptions = colors;
+      }
+
+      const randomRoundRobin = new RandomRoundRobin(colorOptions);
       for (let i = 0; i < numberOfShapes; i++) {
-        /* 1/4 of an empty shape */
-        const ignoreColumn = _.random(3);
+        /* 1/2 of an empty shape */
+        const ignoreColumn = _.random(6);
         if (ignoreColumn === 0) {
           newShapes.push({
             ...generateRandomShape(currentPosition),
             empty: true,
           });
         } else {
-          const color = colors.next().value;
+          const color = randomRoundRobin.next().value;
           newShapes.push(generateRandomShape(currentPosition, color));
         }
         currentPosition += gap + SIZE;
       }
       return [...prev, ...newShapes];
     });
-  }, [setShapes]);
+  }, [setShapes, props.ai]);
 
   /**
    * Starts the simulation when the status is updated to SIMULATION_STARTED.
