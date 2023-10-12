@@ -12,7 +12,7 @@ const CodeBlock = ({ fileName, children }) => {
           </div>
           <div className="tw-grow"></div>
         </div>
-        <div className="tw-bg-[#333] tw-ml-3 tw-mr-3 tw-mb-3  tw-ease-in tw-pl-5 tw-shadow-2xl tw-rounded-r-sm font-mono">
+        <div className="tw-bg-[#333] tw-ml-3 tw-mr-3 tw-mb-3  tw-ease-in tw-pl-5 tw-shadow-2xl tw-rounded-r-sm code_editor__code">
           {children}
         </div>
       </div>
@@ -22,6 +22,6 @@ const CodeBlock = ({ fileName, children }) => {
 
 CodeBlock.PropTypes = {
   fileName: PropTypes.string.isRequired,
-  children: PropTypes.array,
+  children: PropTypes.element,
 };
 export default CodeBlock;

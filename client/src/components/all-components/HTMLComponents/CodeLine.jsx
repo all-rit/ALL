@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const CodeLine = ({ children, className }) => {
-  return <div className={className}>{children}</div>;
+const CodeLine = ({ children }) => {
+  return <div className={"tw-flex tw-row-auto"}>{children}</div>;
 };
 
 CodeLine.propTypes = {
-  children: PropTypes.string,
-  className: PropTypes.string
+  children: PropTypes.element,
 };
+
+export default CodeLine;

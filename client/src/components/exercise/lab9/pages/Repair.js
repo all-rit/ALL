@@ -7,8 +7,10 @@ import React from "react";
 import Button from "../../../all-components/Navigation/Button";
 import CodeBlock from "../../../all-components/CodeBlock/Codeblock";
 import { HTMLBlock } from "../../../all-components/HTMLComponents/HTMLBlock";
-import { CodeLine } from "../../../all-components/HTMLComponents/CodeLine";
+import CodeLine  from "../../../all-components/HTMLComponents/CodeLine";
 import JSONBlock from "../../../all-components/HTMLComponents/JSONBlock";
+import ReactText from "../../../all-components/HTMLComponents/ReactText";
+import Tab from "../../../all-components/HTMLComponents/Tab"
 
 const Repair = (props) => {
   const GameContext = useContext(GameStateContext);
@@ -54,9 +56,25 @@ const Repair = (props) => {
 
       {isRepairActive && (
         <CodeBlock fileName={fileName}>
-          <JSONBlock>
-            <CodeLine>lets sheet on this</CodeLine>
-          </JSONBlock>
+          <ReactText>
+            export const ReactText = (props) = &#123;
+          </ReactText>
+          <CodeLine>
+            <Tab/> <ReactText> const handleNext = () =&#62; </ReactText>
+          </CodeLine>
+          <CodeLine>
+            <Tab/> <Tab/>
+            <ReactText> const input = </ReactText>
+            <input className={"code_editor__input"}/>
+            <ReactText>;</ReactText>
+          </CodeLine>
+
+          <ReactText>
+            &#125;
+          </ReactText>
+          <ReactText>
+            export default ReactText;
+          </ReactText>
         </CodeBlock>
       )}
     </div>
