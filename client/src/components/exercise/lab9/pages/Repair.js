@@ -71,8 +71,9 @@ const Repair = (props) => {
                 id: 1,
                 name: "example",
                 type: "text",
-                placeholder: "This is a placeholder"
-              }}/>
+                placeholder: "This is a placeholder",
+              }}
+            />
             <ReactText>;</ReactText>
           </CodeLine>
 
@@ -99,5 +100,5 @@ Button.PropTypes = {
 
 CodeBlockInput.propTypes = {
   attributes: PropTypes.object,
-}
+};
 export default Repair;
