@@ -71,7 +71,8 @@ const Repair = (props) => {
                 id: 1,
                 name: "example",
                 type: "text",
-                placeholder: "This is a placeholder",
+                defaultValue: 1,
+                placeholder: "Enter Code Here",
               }}
             />
             <ReactText>;</ReactText>
