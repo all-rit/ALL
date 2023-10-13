@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
-import Proptypes, { element } from "prop-types";
+import Proptypes, { element, PropTypes } from "prop-types";
 import GameStateContext from "../Lab9Context";
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import React from "react";
@@ -13,6 +13,7 @@ import ReactText from "../../../all-components/HTMLComponents/ReactText";
 import Tab from "../../../all-components/HTMLComponents/Tab";
 import HTMLTag from "../../../all-components/HTMLComponents/HTMLTag";
 import HTMLText from "../../../all-components/HTMLComponents/HTMLText";
+import CodeBlockInput from "../../../all-components/HTMLComponents/CodeBlockInput";
 
 const Repair = (props) => {
   const GameContext = useContext(GameStateContext);
@@ -65,14 +66,20 @@ const Repair = (props) => {
           <CodeLine>
             <Tab /> <Tab />
             <ReactText> const input = </ReactText>
-            <input className={"code_editor__input"} />
+            <CodeBlockInput
+              attributes={{
+                id: 1,
+                name: "example",
+                type: "text",
+                placeholder: "This is a placeholder"
+              }}/>
             <ReactText>;</ReactText>
           </CodeLine>
 
           <ReactText>&#125;</ReactText>
           <ReactText>export default ReactText;</ReactText>
           <JSONText>variable: asdfasdfasdf</JSONText>
-          <HTMLTag>&#60;div className = &ldquo;coolCSS&rdquo;</HTMLTag>
+          <HTMLTag>&#60;div className = &ldquo;coolCSS&rdquo;&#62;</HTMLTag>
           <CodeLine>
             <Tab />
             <HTMLText> hello this is html text </HTMLText>
@@ -90,4 +97,7 @@ Button.PropTypes = {
   repairText: Proptypes.array.isRequired,
 };
 
+CodeBlockInput.propTypes = {
+  attributes: PropTypes.object,
+}
 export default Repair;
