@@ -1,9 +1,11 @@
 import {
   // useContext,
-  useState } from "react";
+  useState,
+} from "react";
 import Proptypes, {
   // element,
-  PropTypes } from "prop-types";
+  PropTypes,
+} from "prop-types";
 // import GameStateContext from "../Lab9Context";
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import React from "react";
@@ -22,7 +24,10 @@ const Repair = (props) => {
   // const GameContext = useContext(GameStateContext);
   const {
     // user = "",
-    headingText = "", repairText = [], fileName = "" } = props;
+    headingText = "",
+    repairText = [],
+    fileName = "",
+  } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [next, setNext] = useState(false);
 
@@ -117,6 +122,6 @@ Repair.propTypes = {
   user: Proptypes.string,
   headingText: Proptypes.string,
   repairText: Proptypes.array,
-  fileName: Proptypes.string
-}
+  fileName: Proptypes.string,
+};
 export default Repair;
