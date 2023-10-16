@@ -60,7 +60,7 @@ const Repair = (props) => {
             onClick={handleRepair}
           />
         </div>
-        <div className="tw-p-2"></div>
+        <div className="tw-p-16"></div>
         <div className="">
           <Button buttonText={"Next"} onClick={handleNext} disabled={next} />
         </div>
