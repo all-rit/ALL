@@ -126,7 +126,6 @@ class App extends Component {
                 <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
                 <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
                 <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
-
                 <Reinforcement
                   path={`/Lab${lab}/Reinforcement`}
                   user={state.main.user}
