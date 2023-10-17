@@ -54,14 +54,14 @@ const Repair = (props) => {
       </div>
 
       <div className="tw-flex tw-justify-center tw-pb-5">
-        <div className="">
+        <div className="tw-pr-10">
           <Button
             buttonText={"Repair"}
             isPrimary={false}
             onClick={handleRepair}
           />
         </div>
-        <div className="tw-p-2"></div>
+        <div className="tw-p-16"></div>
         <div className="">
           <Button buttonText={"Next"} onClick={handleNext} disabled={next} />
         </div>

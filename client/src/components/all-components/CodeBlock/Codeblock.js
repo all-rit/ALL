@@ -1,3 +1,8 @@
+/**
+ * CodeBlock is a function that is responsible for being a universal wrapper 
+ * around the code repair section. this will provide the styling to show the 
+ * grey code environment.
+ */
 import React from "react";
 import PropTypes from "prop-types";
 
