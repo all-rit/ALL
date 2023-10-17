@@ -1,6 +1,6 @@
 import { createContext } from "react";
 const GameStateContext = createContext({
-  exerciseState: "hello",
+  exerciseState: "",
   setExerciseState: () => {},
 });
 
