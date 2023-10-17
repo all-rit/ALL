@@ -11,7 +11,7 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const TrainingAIPage = (props) => {
+const TrainingAIRepair = (props) => {
   const { actions, repairError, timeValue, popupMessage, repairVisible } =
     props;
 
@@ -70,7 +70,7 @@ const TrainingAIPage = (props) => {
   );
 };
 
-TrainingAIPage.propTypes = {
+TrainingAIRepair.propTypes = {
   actions: PropTypes.object,
   repairError: PropTypes.any,
   timeValue: PropTypes.string,
@@ -98,4 +98,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingAIPage);
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingAIRepair);

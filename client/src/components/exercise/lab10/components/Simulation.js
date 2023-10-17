@@ -83,7 +83,7 @@ const Simulation = (props) => {
    * Executed when the progress bar is complete.
    */
   const onComplete = () => {
-    if (props.user?.userid) {
+    if (props.user?.userid && props.collectWeights) {
       ExerciseService.submitWeights(props.weights, props.user.userid);
     }
     props.actions.enableSimulationCover();
@@ -161,6 +161,7 @@ const mapStateToProps = (state) => {
     trainingDuration,
     weights,
     ai,
+    collectWeights,
   } = state.exercise10;
   return {
     objectPosition,
@@ -170,6 +171,7 @@ const mapStateToProps = (state) => {
     weights,
     user,
     ai,
+    collectWeights,
   };
 };
 
@@ -188,6 +190,7 @@ Simulation.propTypes = {
   weights: PropTypes.object,
   user: PropTypes.object,
   ai: PropTypes.bool,
+  collectWeights: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simulation);

@@ -6,8 +6,8 @@ import ExerciseEnd from "./pages/ExerciseEnd";
 import BuildingAI from "./pages/BuildingAI";
 import TrainingAI from "./pages/TrainingAI";
 import AISimulation from "./pages/AISimulation";
-import BuildingAIPage from "./pages/BuildingAIPage";
-import TrainingAIPage from "./pages/TrainingAIPage";
+import BuildingAIRepair from "./pages/BuildingAIRepair";
+import TrainingAIRepair from "./pages/TrainingAIRepair";
 import UpdatedTrainingAI from "./pages/UpdatedTrainingAI";
 import AIExplanation from "./pages/AIExplanation";
 
@@ -20,16 +20,16 @@ const Main = () => {
 
         {/* Phase One: Building the AI */}
         <BuildingAI path={"/BuildingAI"} />
-        <BuildingAIPage path={"/BuildingAI/Repair"} />
+        <BuildingAIRepair path={"/BuildingAI/Repair"} />
 
         {/* Phase Two: Training the AI */}
         <TrainingAI path={"/TrainingAI"} />
-        <TrainingAIPage path={"/TrainingAI/Repair"} />
+        <TrainingAIRepair path={"/TrainingAI/Repair"} />
         <UpdatedTrainingAI path={"/UpdatedTrainingAI"} />
 
         {/* Phase Three: AI Simulation */}
         <AISimulation path={"/AISimulation"} />
-        <AIExplanation path={"AIExplanation"} />
+        <AIExplanation path={"/AISimulation/Explanation"} />
 
         {/* Exercise End */}
         <ExerciseEnd path="/ExerciseEnd" />

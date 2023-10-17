@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import Popup from "../../shared/Popup";
 import BuildingAICodeBlock from "../components/code/BuildingAICodeBlock";
 import { navigate } from "@reach/router";
-class BuildingAIPage extends Component {
+class BuildingAIRepair extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,7 +86,7 @@ class BuildingAIPage extends Component {
   }
 }
 
-BuildingAIPage.propTypes = {
+BuildingAIRepair.propTypes = {
   actions: PropTypes.object,
   leftValue: PropTypes.string,
   rightValue: PropTypes.string,
@@ -118,4 +118,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuildingAIPage);
+export default connect(mapStateToProps, mapDispatchToProps)(BuildingAIRepair);

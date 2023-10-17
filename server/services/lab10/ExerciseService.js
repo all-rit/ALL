@@ -16,7 +16,7 @@ exports.retrieveWeights = (userid) => {
     where: {
       userid,
     },
-    raw: true,
+    order: [['exerciseid', 'DESC']],
   }).then((user) => {
     return user;
   });
