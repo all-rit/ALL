@@ -16,9 +16,10 @@ import CodeLine from "../../../all-components/HTMLComponents/CodeLine";
 // import JSONBlock from "../../../all-components/HTMLComponents/HTMLTag";
 import ReactText from "../../../all-components/HTMLComponents/ReactText";
 import Tab from "../../../all-components/HTMLComponents/Tab";
-import HTMLTag from "../../../all-components/HTMLComponents/HTMLTag";
-import HTMLText from "../../../all-components/HTMLComponents/HTMLText";
+// import HTMLTag from "../../../all-components/HTMLComponents/HTMLTag";
+// import HTMLText from "../../../all-components/HTMLComponents/HTMLText";
 import CodeBlockInput from "../../../all-components/HTMLComponents/CodeBlockInput";
+import CommentText from "../../../all-components/HTMLComponents/CommentText"
 
 const Repair = (props) => {
   // const GameContext = useContext(GameStateContext);
@@ -68,40 +69,69 @@ const Repair = (props) => {
 
       {isRepairActive && (
         <CodeBlock fileName={fileName}>
-          <ReactText>export const ReactText = (props) = &#123;</ReactText>
+          <ReactText>export const dateform = (props) = &#123;</ReactText>
 
           <CodeLine>
-            <Tab /> <ReactText> const handleNext = () =&#62; </ReactText>
+            <Tab /> <ReactText> const us = &ldquo;us&rdquo; </ReactText>
+          </CodeLine>
+          <CodeLine>
+            <Tab /> <ReactText> const eu = &ldquo;eu&rdquo; </ReactText>
+          </CodeLine>
+          <CodeLine>
+            <Tab /> <ReactText> const dates = &#123; </ReactText>
           </CodeLine>
 
           <CodeLine>
-            <Tab /> <Tab />
-            <ReactText> const input = </ReactText>
+            <Tab /> <Tab/> <ReactText> &ldquo;us&rdquo; = &#123;</ReactText>
+          </CodeLine>
+          <CodeLine>
+            <Tab/> <Tab/> <Tab/>
+            <CommentText>
+              &#47;&#47; Enter &ldquo;yyyy-mm-dd&rdquo; for localized US dateform
+            </CommentText>
+          </CodeLine>
+          <CodeLine>
+            <Tab /> <Tab/> <Tab/>
+            <JSONText> &ldquo;dateform&rdquo; : </JSONText>
             <CodeBlockInput
               attributes={{
                 id: 1,
-                name: "example",
+                name: "us_dateform",
                 type: "text",
-                defaultValue: 1,
-                placeholder: "Enter Code Here",
+                placeholder: "Enter Dateform Here",
               }}
             />
-            <ReactText>;</ReactText>
           </CodeLine>
-
-          <ReactText>&#125;</ReactText>
-          <ReactText>export default ReactText;</ReactText>
-
-          <JSONText>variable: asdfasdfasdf</JSONText>
-
-          <HTMLTag>&#60;div className = &ldquo;coolCSS&rdquo;&#62;</HTMLTag>
+          <CodeLine>
+            <Tab/> <Tab/>
+            <ReactText> &#125;, </ReactText>
+          </CodeLine>
 
           <CodeLine>
-            <Tab />
-            <HTMLText> hello this is html text </HTMLText>
+            <Tab /> <Tab/> <ReactText> &ldquo;eu&rdquo; = &#123;</ReactText>
           </CodeLine>
-
-          <HTMLTag>&#60;/div&#62;</HTMLTag>
+          <CodeLine>
+            <Tab /> <Tab/> <Tab/>
+            <JSONText> &ldquo;dateform&rdquo; : </JSONText>
+            <CodeBlockInput
+              attributes={{
+                id: 2,
+                name: "eu_dateform",
+                type: "text",
+                placeholder: "Enter Dateform Here",
+              }}
+            />
+          </CodeLine>
+          <CodeLine>
+            <Tab/> <Tab/>
+            <ReactText> &#125;, </ReactText>
+          </CodeLine>
+          <CodeLine>
+            <Tab/>
+            <ReactText> &#125; </ReactText>
+          </CodeLine>
+          <ReactText>&#125;</ReactText>
+          <ReactText>export default ReactText;</ReactText>
         </CodeBlock>
       )}
     </div>

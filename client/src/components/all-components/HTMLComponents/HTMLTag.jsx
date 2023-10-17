@@ -1,6 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/**
+ * React component for rendering HTML-like code with syntax highlighting for HTML tags and attributes.
+ *
+ * The `HTMLTag` component takes a single prop, `children`, which should be a string containing
+ * HTML-like code to be displayed with syntax highlighting. It applies syntax highlighting to the text,
+ * distinguishing between HTML tags and attributes to make the code more readable and understandable.
+ *
+ * @param {Object} props - The props for the `HTMLTag` component.
+ * @param {string} props.children - The HTML-like code to be displayed and syntax-highlighted.
+ *
+ * @return {JSX.Element} The rendered component that displays HTML-like code with syntax highlighting.
+ */
+
 const HTMLTag = ({ children }) => {
   const highlightSyntax = (text) => {
     const htmlTagRegex = /\b(div|span|Button|p)\b/g;

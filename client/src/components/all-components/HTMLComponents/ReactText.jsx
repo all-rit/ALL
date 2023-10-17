@@ -2,6 +2,20 @@ import PropTypes from "prop-types";
 import React from "react";
 import "../../../assets/stylesheets/components/CodeBlockCSS.scss";
 
+/**
+ * React component for rendering code with syntax highlighting tailored for React code.
+ *
+ * The `ReactText` component takes a single prop, `children`, which should be a string containing
+ * React code to be displayed with syntax highlighting. It applies syntax highlighting to the text,
+ * distinguishing between keywords, operators, React-specific functions, and numbers to make the code more
+ * readable and understandable for users.
+ *
+ * @param {Object} props - The props for the `ReactText` component.
+ * @param {string} props.children - The React code to be displayed and syntax-highlighted.
+ *
+ * @return {JSX.Element} The rendered component that displays React code with syntax highlighting.
+ */
+
 const ReactText = ({ children }) => {
   const highlightSyntax = (text) => {
     const keywordRegex =
