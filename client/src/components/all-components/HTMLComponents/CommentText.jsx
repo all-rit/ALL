@@ -15,10 +15,10 @@ import React from "react";
  */
 
 const CommentText = ({ children }) => {
-	return <div className="code_editor__code comment">{children}</div>;
+  return <div className="code_editor__code comment">{children}</div>;
 };
 
 CommentText.propTypes = {
-	children: PropTypes.string,
-}
+  children: PropTypes.string,
+};
 export default CommentText;

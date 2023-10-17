@@ -19,7 +19,7 @@ import Tab from "../../../all-components/HTMLComponents/Tab";
 // import HTMLTag from "../../../all-components/HTMLComponents/HTMLTag";
 // import HTMLText from "../../../all-components/HTMLComponents/HTMLText";
 import CodeBlockInput from "../../../all-components/HTMLComponents/CodeBlockInput";
-import CommentText from "../../../all-components/HTMLComponents/CommentText"
+import CommentText from "../../../all-components/HTMLComponents/CommentText";
 
 const Repair = (props) => {
   // const GameContext = useContext(GameStateContext);
@@ -82,16 +82,17 @@ const Repair = (props) => {
           </CodeLine>
 
           <CodeLine>
-            <Tab /> <Tab/> <ReactText> &ldquo;us&rdquo; = &#123;</ReactText>
+            <Tab /> <Tab /> <ReactText> &ldquo;us&rdquo; = &#123;</ReactText>
           </CodeLine>
           <CodeLine>
-            <Tab/> <Tab/> <Tab/>
+            <Tab /> <Tab /> <Tab />
             <CommentText>
-              &#47;&#47; Enter &ldquo;yyyy-mm-dd&rdquo; for localized US dateform
+              &#47;&#47; Enter &ldquo;yyyy-mm-dd&rdquo; for localized US
+              dateform
             </CommentText>
           </CodeLine>
           <CodeLine>
-            <Tab /> <Tab/> <Tab/>
+            <Tab /> <Tab /> <Tab />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
             <CodeBlockInput
               attributes={{
@@ -103,15 +104,15 @@ const Repair = (props) => {
             />
           </CodeLine>
           <CodeLine>
-            <Tab/> <Tab/>
+            <Tab /> <Tab />
             <ReactText> &#125;, </ReactText>
           </CodeLine>
 
           <CodeLine>
-            <Tab /> <Tab/> <ReactText> &ldquo;eu&rdquo; = &#123;</ReactText>
+            <Tab /> <Tab /> <ReactText> &ldquo;eu&rdquo; = &#123;</ReactText>
           </CodeLine>
           <CodeLine>
-            <Tab /> <Tab/> <Tab/>
+            <Tab /> <Tab /> <Tab />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
             <CodeBlockInput
               attributes={{
@@ -123,11 +124,11 @@ const Repair = (props) => {
             />
           </CodeLine>
           <CodeLine>
-            <Tab/> <Tab/>
+            <Tab /> <Tab />
             <ReactText> &#125;, </ReactText>
           </CodeLine>
           <CodeLine>
-            <Tab/>
+            <Tab />
             <ReactText> &#125; </ReactText>
           </CodeLine>
           <ReactText>&#125;</ReactText>
