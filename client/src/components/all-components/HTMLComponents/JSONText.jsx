@@ -16,7 +16,9 @@ import PropTypes from "prop-types";
 
 const JSONText = ({ children }) => {
   const highlightSyntax = (text) => {
-    {/* Operator regex only colors operator symbols in a passed in child, such as /?+, etc */}
+    {
+      /* Operator regex only colors operator symbols in a passed in child, such as /?+, etc */
+    }
     const operatorRegex = /(\+|-|\*|\/|;|:|=|==|>|\(|\)|{|})/g;
 
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {

@@ -16,11 +16,15 @@ import PropTypes from "prop-types";
 
 const HTMLTag = ({ children }) => {
   const highlightSyntax = (text) => {
-    {/* htmlTagRegex parses the passed in children for html keywords
-    such as div, span, etc and will color them similarly to an IDE */}
+    {
+      /* htmlTagRegex parses the passed in children for html keywords
+    such as div, span, etc and will color them similarly to an IDE */
+    }
     const htmlTagRegex = /\b(div|span|Button|p)\b/g;
-    {/* htmlElementRegex uses regex to parse the passed in children for html
-    attributes such as className, onClick, etc and colors them accordingly */}
+    {
+      /* htmlElementRegex uses regex to parse the passed in children for html
+    attributes such as className, onClick, etc and colors them accordingly */
+    }
     const htmlElementRegex = /\b(className|onClick|disabled|next|fileName|)\b/g;
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {
       if (htmlTagRegex.test(segment)) {

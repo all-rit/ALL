@@ -18,17 +18,25 @@ import "../../../assets/stylesheets/components/CodeBlockCSS.scss";
 
 const ReactText = ({ children }) => {
   const highlightSyntax = (text) => {
-    {/* KeywordRegex searches for javascript keywords such as const, var, etc */}
+    {
+      /* KeywordRegex searches for javascript keywords such as const, var, etc */
+    }
     const keywordRegex =
       /\b(const|var|let|function|default|return|import|export)\b/g;
 
-    {/* OperatorRegex searches for operands */}
+    {
+      /* OperatorRegex searches for operands */
+    }
     const operatorRegex = /(\+|-|\*|\/|;|:|=|==|>|\(|\)|{|})/g;
 
-    {/* ReactRegex searches in the children for ReactJS keywords like props or useState */}
+    {
+      /* ReactRegex searches in the children for ReactJS keywords like props or useState */
+    }
     const reactRegex = /\b(useState|useEffect|props)\b/g;
 
-    {/* NumberRegex searches for javascript keywords such as const, var, etc */}
+    {
+      /* NumberRegex searches for javascript keywords such as const, var, etc */
+    }
     const numberRegex = /-?\d+(\.\d+)?/g;
 
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {
