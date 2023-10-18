@@ -15,6 +15,7 @@ import React from "react";
  */
 
 const HTMLText = ({ children }) => {
+  {/* Will color all text white as it would in an IDE */}
   return <div className="code_editor__code tw-text-bgwhite">{children}</div>;
 };
 

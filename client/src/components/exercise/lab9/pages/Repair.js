@@ -45,7 +45,7 @@ const Repair = (props) => {
         heading={headingText}
         justifyAlignment={"space-between"}
       />
-      <div className="tw-pb-10 tw-text-xl">
+      <div className="tw-pb-10 tw-text-xl ">
         {repairText.map((text, index) => (
           <p className="tw-indent-2" key={index}>
             {text}
