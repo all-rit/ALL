@@ -11,7 +11,8 @@ import "../../../assets/stylesheets/components/CodeBlockCSS.scss";
  * readable and understandable for users.
  *
  * @param {Object} props - The props for the `ReactText` component.
- * @param {string} props.children - The React code to be displayed and syntax-highlighted.
+ * @param {string} props.children - props.children - The React element representing the content of the code line, in this
+ * case, the children will simply be passed in text, which will then be styled and syntactically highlighted similarly to React/Javascript style code.
  *
  * @return {JSX.Element} The rendered component that displays React code with syntax highlighting.
  */

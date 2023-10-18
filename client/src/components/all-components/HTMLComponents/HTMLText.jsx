@@ -8,7 +8,9 @@ import React from "react";
  * plain text to be displayed with a background color that is suitable for representing HTML content.
  *
  * @param {Object} props - The props for the `HTMLText` component.
- * @param {string} props.children - The plain text to be displayed with a background color.
+ * @param {string} props.children - props.children - The React element representing the content of the code line, in this
+ * case, the children will simply be passed in text, which will then be styled and syntactically highlighted similarly to text inside
+ * an HTML element, which will be white.
  *
  * @return {JSX.Element} The rendered component that displays the plain text with a background color
  * suitable for HTML content.

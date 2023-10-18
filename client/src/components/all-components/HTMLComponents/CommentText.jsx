@@ -9,7 +9,8 @@ import React from "react";
  * to distinguish them from regular code text.
  *
  * @param {Object} props - The props for the `CommentText` component.
- * @param {string} props.children - The text to be displayed in dark green.
+ * @param {string} props.children - The React element representing the content of the code line, in this
+ * case, the children will simply be passed in text, which will be displayed in dark green.
  *
  * @return {JSX.Element} The rendered component that displays the text in a dark green color.
  */

@@ -9,7 +9,8 @@ import PropTypes from "prop-types";
  * distinguishing between HTML tags and attributes to make the code more readable and understandable.
  *
  * @param {Object} props - The props for the `HTMLTag` component.
- * @param {string} props.children - The HTML-like code to be displayed and syntax-highlighted.
+ * @param {string} props.children - The React element representing the content of the code line, in this
+ * case, the children will simply be passed in text, which will then be styled and syntactically highlighted similarly to HTML-like code.
  *
  * @return {JSX.Element} The rendered component that displays HTML-like code with syntax highlighting.
  */

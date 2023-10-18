@@ -9,7 +9,8 @@ import PropTypes from "prop-types";
  * typically as a row in a multi-line code block.
  *
  * @param {Object} props - The props for the `CodeLine` component.
- * @param {ReactElement} props.children - The React element representing the content of the code line.
+ * @param {ReactElement} props.children - The React element representing the content of the code line, in this
+ * case, the children will be CodeBlock components, i.e. ReactText, HTMLTag, etc
  *
  * @return {JSX.Element} The rendered component that displays the code line as a row.
  */

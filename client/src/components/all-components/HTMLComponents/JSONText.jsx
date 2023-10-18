@@ -9,7 +9,8 @@ import PropTypes from "prop-types";
  * between JSON data and operators, making it more readable for users.
  *
  * @param {Object} props - The props for the `JSONText` component.
- * @param {string} props.children - The JSON-formatted text to be displayed and syntax-highlighted.
+ * @param {string} props.children - props.children - The React element representing the content of the code line, in this
+ * case, the children will simply be passed in text, which will then be styled and syntactically highlighted similarly to JSON-formatted text.
  *
  * @return {JSX.Element} The rendered component that displays JSON text with syntax highlighting.
  */
