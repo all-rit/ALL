@@ -24,7 +24,7 @@ export const NavBarRepair = () => {
 
   return (
     <>
-      <ReactText>export const NavBar = () = &#123;</ReactText>
+      <ReactText>const NavBar = () =&#62; &#123;</ReactText>
       <CodeLine>
         <Tab /> <ReactText> return ( </ReactText>
       </CodeLine>
@@ -79,6 +79,8 @@ export const NavBarRepair = () => {
       <CodeLine>
         <Tab /> <HTMLTag>);</HTMLTag>
       </CodeLine>
+			<ReactText>&#125;</ReactText>
+			<br/>
       <ReactText>export default NavBar;</ReactText>
     </>
   );
