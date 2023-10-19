@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import "../../../assets/stylesheets/components/CodeBlockCSS.scss";
+import "../../../../assets/stylesheets/components/CodeBlockCSS.scss";
 
 /**
  * React component for rendering code with syntax highlighting tailored for React code.

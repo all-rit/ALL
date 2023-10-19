@@ -10,17 +10,17 @@ import Proptypes, {
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import React from "react";
 import Button from "../../../all-components/Navigation/Button";
-import CodeBlock from "../../../all-components/CodeBlock/Codeblock";
-import JSONText from "../../../all-components/HTMLComponents/JSONText";
-import CodeLine from "../../../all-components/HTMLComponents/CodeLine";
+import CodeBlock from "../../../all-components/CodeBlock/Components/Codeblock";
+import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText";
+import CodeLine from "../../../all-components/CodeBlock/Components/CodeLine";
 // import JSONBlock from "../../../all-components/HTMLComponents/HTMLTag";
-import ReactText from "../../../all-components/HTMLComponents/ReactText";
-import Tab from "../../../all-components/HTMLComponents/Tab";
+import ReactText from "../../../all-components/CodeBlock/StyleComponents/ReactText";
+import Tab from "../../../all-components/CodeBlock/Components/Tab";
 // import HTMLTag from "../../../all-components/HTMLComponents/HTMLTag";
 // import HTMLText from "../../../all-components/HTMLComponents/HTMLText";
-import CodeBlockInput from "../../../all-components/HTMLComponents/CodeBlockInput";
-import CommentText from "../../../all-components/HTMLComponents/CommentText";
-import MultiTab from "../../../all-components/HTMLComponents/MultiTab";
+import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
+import CommentText from "../../../all-components/CodeBlock/StyleComponents/CommentText";
+import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
 
 const Repair = (props) => {
   // const GameContext = useContext(GameStateContext);

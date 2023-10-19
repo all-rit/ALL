@@ -2,6 +2,12 @@
  * CodeBlock is a function that is responsible for being a universal wrapper
  * around the code repair section. This will provide the styling to show the
  * grey code environment.
+ *
+ * @component
+ * @param {Object} props - The component's properties.
+ * @param {string} props.fileName - The name of the file associated with the code block.
+ * @param {ReactNode} props.children - The content of the code block, typically containing code.
+ * @returns {ReactElement} A React element representing the CodeBlock component.
  */
 import React from "react";
 import PropTypes from "prop-types";
