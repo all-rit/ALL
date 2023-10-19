@@ -58,7 +58,7 @@ const Repair = (props) => {
 
       {isRepairActive && (
         <CodeBlock fileName={fileName}>
-          <NavBarRepair/>
+          <NavBarRepair />
         </CodeBlock>
       )}
     </div>
