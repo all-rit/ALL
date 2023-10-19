@@ -1,16 +1,22 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import Proptypes from "prop-types";
-import GameStateContext from "../Lab9Context";
-import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
+import GameStateContext from "../../exercise/lab9/Lab9Context";
+import CodeUpdateHeader from "../../exercise/lab3/components/CodeUpdateHeader";
 import React from "react";
-import Button from "../../../all-components/Navigation/Button";
-import CodeBlock from "../../../all-components/CodeBlock/Codeblock";
+import Button from "../../all-components/Navigation/Button";
+import CodeBlock from "../../all-components/CodeBlock/Codeblock";
 
 const Repair = (props) => {
-  const GameContext = useContext(GameStateContext);
   // eslint-disable-next-line react/prop-types
-  const { user = "", headingText = "", repairText = [], fileName = "" } = props;
+  const {
+    user = "",
+    headingText = "",
+    repairText = [],
+    fileName = "",
+    CodeImplementation = () => {},
+  } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [next, setNext] = useState(false);
 
@@ -47,7 +53,9 @@ const Repair = (props) => {
           <Button buttonText={"Next"} disabled={next} />
         </div>
       </div>
-      {isRepairActive && <CodeBlock fileName={fileName}>This</CodeBlock>}
+      {isRepairActive && (
+        <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
+      )}
     </div>
   );
 };
