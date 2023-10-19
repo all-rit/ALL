@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {htmlTagRegex, htmlElementRegex} from "../Constants"
+import { htmlTagRegex, htmlElementRegex } from "../Constants";
 
 /**
  * React component for rendering HTML-like code with syntax highlighting for HTML tags and attributes.

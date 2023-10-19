@@ -1,4 +1,3 @@
-
 /* javascriptRegex searches for javascript keywords such as const, var, etc */
 export const javascriptRegex =
   /\b(const|var|let|function|default|return|import|export)\b/g;
@@ -16,4 +15,5 @@ export const numberRegex = /-?\d+(\.\d+)?/g;
 export const htmlTagRegex = /\b(div|span|Button|p)\b/g;
 
 /* htmlElementRegex uses regex html attributes such as className, onClick, etc */
-export const htmlElementRegex = /\b(className|onClick|disabled|next|fileName|)\b/g;
+export const htmlElementRegex =
+  /\b(className|onClick|disabled|next|fileName|)\b/g;

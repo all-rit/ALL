@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
 import React from "react";
 import "../../../../assets/stylesheets/components/CodeBlockCSS.scss";
-import {javascriptRegex, operatorRegex, reactRegex, numberRegex} from "../Constants"
+import {
+  javascriptRegex,
+  operatorRegex,
+  reactRegex,
+  numberRegex,
+} from "../Constants";
 
 /**
  * React component for rendering code with syntax highlighting tailored for React code.

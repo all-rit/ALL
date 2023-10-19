@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {operatorRegex} from "../Constants"
+import { operatorRegex } from "../Constants";
 
 /**
  * React component for rendering JSON-formatted text with syntax highlighting.
