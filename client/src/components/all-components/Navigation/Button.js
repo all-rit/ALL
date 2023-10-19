@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 /**
@@ -26,7 +25,7 @@ const Button = (props) => {
   );
 };
 
-Button.PropTypes = {
+Button.propTypes = {
   buttonText: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   key: PropTypes.number,

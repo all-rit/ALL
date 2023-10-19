@@ -1,7 +1,17 @@
+/**
+ * CodeBlock is a function that is responsible for being a universal wrapper
+ * around the code repair section. This will provide the styling to show the
+ * grey code environment.
+ *
+ * @component
+ * @param {Object} props - The component's properties.
+ * @param {string} props.fileName - The name of the file associated with the code block.
+ * @param {ReactNode} props.children - The content of the code block, typically containing code.
+ * @returns {ReactElement} A React element representing the CodeBlock component.
+ */
 import React from "react";
 import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 const CodeBlock = ({ fileName, children }) => {
   return (
     <>
@@ -12,7 +22,7 @@ const CodeBlock = ({ fileName, children }) => {
           </div>
           <div className="tw-grow"></div>
         </div>
-        <div className="tw-bg-[#333] tw-ml-3 tw-mr-3 tw-mb-3  tw-ease-in tw-pl-5 tw-shadow-2xl tw-rounded-r-sm font-mono">
+        <div className="tw-bg-[#333] tw-ml-3 tw-mr-3 tw-mb-3  tw-ease-in tw-pl-5 tw-shadow-2xl tw-rounded-r-sm code_editor__code">
           {children}
         </div>
       </div>
@@ -20,7 +30,7 @@ const CodeBlock = ({ fileName, children }) => {
   );
 };
 
-CodeBlock.PropTypes = {
+CodeBlock.propTypes = {
   fileName: PropTypes.string.isRequired,
   children: PropTypes.element,
 };
