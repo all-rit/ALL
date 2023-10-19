@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {operatorRegex} from "../Constants"
 
 /**
  * React component for rendering JSON-formatted text with syntax highlighting.
@@ -17,11 +18,6 @@ import PropTypes from "prop-types";
 
 const JSONText = ({ children }) => {
   const highlightSyntax = (text) => {
-    {
-      /* Operator regex only colors operator symbols in a passed in child, such as /?+, etc */
-    }
-    const operatorRegex = /(\+|-|\*|\/|;|:|=|==|>|\(|\)|{|})/g;
-
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {
       if (operatorRegex.test(segment)) {
         return (

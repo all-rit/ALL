@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import "../../../../assets/stylesheets/components/CodeBlockCSS.scss";
+import {javascriptRegex, operatorRegex, reactRegex, numberRegex} from "../Constants"
 
 /**
  * React component for rendering code with syntax highlighting tailored for React code.
@@ -19,29 +20,8 @@ import "../../../../assets/stylesheets/components/CodeBlockCSS.scss";
 
 const ReactText = ({ children }) => {
   const highlightSyntax = (text) => {
-    {
-      /* KeywordRegex searches for javascript keywords such as const, var, etc */
-    }
-    const keywordRegex =
-      /\b(const|var|let|function|default|return|import|export)\b/g;
-
-    {
-      /* OperatorRegex searches for operands */
-    }
-    const operatorRegex = /(\+|-|\*|\/|;|:|=|==|>|\(|\)|{|})/g;
-
-    {
-      /* ReactRegex searches in the children for ReactJS keywords like props or useState */
-    }
-    const reactRegex = /\b(useState|useEffect|props)\b/g;
-
-    {
-      /* NumberRegex searches for javascript keywords such as const, var, etc */
-    }
-    const numberRegex = /-?\d+(\.\d+)?/g;
-
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {
-      if (keywordRegex.test(segment)) {
+      if (javascriptRegex.test(segment)) {
         return (
           <span key={index} className="keyword">
             {segment}
@@ -73,7 +53,6 @@ const ReactText = ({ children }) => {
       );
     });
   };
-
   return <div className="code_editor__code">{highlightSyntax(children)}</div>;
 };
 
