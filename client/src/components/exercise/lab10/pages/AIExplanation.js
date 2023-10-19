@@ -8,17 +8,18 @@ import AIExplanationCodeBlock from "../components/code/AIExplanationCodeBlock";
 import useScroll from "../../../../use-hooks/useScroll";
 import ExerciseService from "../../../../services/lab10/ExerciseService";
 import { twMerge } from "tailwind-merge";
-
-const getHeaviestColor = (weights) => {
-  return Object.keys(weights).reduce((a, b) => {
-    return weights[a] > weights[b] ? a : b;
-  });
-};
+import _ from "lodash";
+import { EXERCISE_PLAYING } from "../../../../constants/lab10";
 
 const AIExplanation = (props) => {
   useScroll();
 
-  const heaviestColor = getHeaviestColor(props.weights);
+  /**
+   * Executed on mount
+   */
+  useEffect(() => {
+    props.actions.updateState(EXERCISE_PLAYING);
+  }, []);
 
   /**
    * Executed on mount
@@ -35,8 +36,26 @@ const AIExplanation = (props) => {
     }
   }, [props.user]);
 
+  /**
+   * Sorts the colors based on their weight.
+   */
+  const keys = Object.keys(props.weights ?? {}).sort((a, b) => {
+    const weightA = props.weights[a],
+      weightB = props.weights[b];
+
+    if (weightA === weightB) {
+      return 0;
+    }
+
+    return weightA < weightB ? 1 : -1;
+  });
+
+  /**
+   * Redirect the user to the following page
+   * @returns {Promise} navigate promise
+   */
   const handleNav = () => {
-    return navigate("/Lab10/Exercise/TrainingAI");
+    return navigate("/Lab10/Exercise/SecondTrainingAI");
   };
 
   return (
@@ -49,9 +68,8 @@ const AIExplanation = (props) => {
               during the simulation?
             </p>
             <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
-              Whenever there was an empty hole, the AI knew to move towards that
-              hole to make sure it does not get hit by any of the falling
-              shapes.
+              Whenever there was an empty hole, the AI knew to move towards it
+              to make sure it does not get hit by any of the falling shapes.
             </p>
             <p className={"playthrough__sentence tw-text-center tw-mt-0"}>
               On the other hand, when the AI was unable to find an empty hole,
@@ -74,20 +92,22 @@ const AIExplanation = (props) => {
               <div
                 className={twMerge(
                   "tw-border-black tw-border-solid tw-border-[2px] tw-w-9 tw-h-9 tw-rounded",
-                  heaviestColor
+                  !_.isEmpty(keys) && keys[0]
                 )}
               />
             </div>
           </div>
         </div>
       </Fragment>
-      <button
-        className={"btn btn-primary btn-xl text-uppercase rightButton"}
-        onClick={handleNav}
-      >
-        Next
-      </button>
       <AIExplanationCodeBlock />
+      <div className={"tw-mt-6 tw-flex tw-justify-end"}>
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase"
+          onClick={handleNav}
+        >
+          Continue
+        </button>
+      </div>
     </div>
   );
 };

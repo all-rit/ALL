@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
-import Simulation from "../components/Simulation";
+import useScroll from "../../../../use-hooks/useScroll";
+import { bindActionCreators } from "redux";
+import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import {
   EXERCISE_PLAYING,
   SIMULATION_ENDED,
   SIMULATION_IDLE,
   SIMULATION_STARTED,
 } from "../../../../constants/lab10";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import Simulation from "../components/Simulation";
 import { navigate } from "@reach/router";
-import useScroll from "../../../../use-hooks/useScroll";
 
-const AISimulation = (props) => {
+const SecondTrainingAI = (props) => {
   useScroll();
 
   /**
@@ -21,31 +21,16 @@ const AISimulation = (props) => {
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
+    props.actions.enableSimulationCover();
+    props.actions.disableUserInput();
     props.actions.idleSimulation();
   }, []);
 
-  useEffect(() => {
-    switch (props.simulationStatus) {
-      case SIMULATION_IDLE:
-        props.actions.disableUserInput();
-        props.actions.enableSimulationCover();
-        break;
-      case SIMULATION_STARTED:
-        props.actions.enableAI();
-        props.actions.disableCollectWeights();
-        break;
-      case SIMULATION_ENDED:
-        props.actions.disableAI();
-        break;
-    }
-  }, [props.simulationStatus]);
-
   /**
    * Redirect the user to the following page
-   * @returns {Promise} navigate promise
    */
   const handleContinue = () => {
-    return navigate("/Lab10/Exercise/AISimulation/Explanation");
+    return navigate("/Lab10/Exercise/TrainingAI/Repair");
   };
 
   return (
@@ -53,14 +38,20 @@ const AISimulation = (props) => {
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
           <p className={"playthrough__sentence"}>
-            Now that you have generated data for the neural network, view how it
-            performs! Compared to humans, computers are very quick at
-            calculating and solving complex problems. You will notice the
-            AI&apos;s response to be very quick!
+            Clearly, the AI had a bias towards a specific color. While the
+            context of the bias is within a simulation game, unwanted bias can
+            be problematic because it can lead to unfair discrimination in a
+            system, resulting in the reduction of trust towards AI.
+          </p>
+          <p className={"playthrough__sentence"}>
+            Attempt to eliminate this bias by establishing an equal distribution
+            of weights among the colored shapes. In other words, ensure all
+            colored shapes are hit an equal number of times. This will
+            inherently eliminate the bias.
           </p>
           <div>
             <p className={"tw-text-xl tw-font-bold"}>
-              Objective: Click <i>Start</i> to commence the AI Simulation.
+              Objective: Click <i>Start</i> to commence the training exercise.
             </p>
           </div>
         </div>
@@ -69,7 +60,8 @@ const AISimulation = (props) => {
         <div>
           <div>
             <p className={"tw-text-xl tw-font-bold"}>
-              Objective: Observe the AI Simulation.
+              Objective: Eliminate bias by hitting all colored shapes an equal
+              number of times.
             </p>
           </div>
         </div>
@@ -99,11 +91,9 @@ const AISimulation = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { trainingDuration, simulationStatus, ai } = state.exercise10;
+  const { simulationStatus } = state.exercise10;
   return {
-    trainingDuration,
     simulationStatus,
-    ai,
   };
 };
 
@@ -113,11 +103,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-AISimulation.propTypes = {
-  actions: PropTypes.object,
-  trainingDuration: PropTypes.number,
+SecondTrainingAI.propTypes = {
   simulationStatus: PropTypes.string,
-  ai: PropTypes.bool,
+  actions: PropTypes.object,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AISimulation);
+export default connect(mapStateToProps, mapDispatchToProps)(SecondTrainingAI);

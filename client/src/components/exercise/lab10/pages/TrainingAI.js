@@ -28,6 +28,22 @@ const TrainingAI = (props) => {
     props.actions.idleSimulation();
   }, []);
 
+  useEffect(() => {
+    switch (props.simulationStatus) {
+      case SIMULATION_IDLE:
+        props.actions.disableUserInput();
+        props.actions.enableSimulationCover();
+        break;
+      case SIMULATION_STARTED:
+        props.actions.enableAI();
+        props.actions.disableCollectWeights();
+        break;
+      case SIMULATION_ENDED:
+        props.actions.disableAI();
+        break;
+    }
+  }, [props.simulationStatus]);
+
   /**
    * Update state if the minimum amount user attempts has been reached
    */
@@ -41,7 +57,6 @@ const TrainingAI = (props) => {
 
   /**
    * Redirect the user to the following page
-   * @returns {Promise} navigate promise
    */
   const handleContinue = () => {
     return navigate("/Lab10/Exercise/TrainingAI/Repair");

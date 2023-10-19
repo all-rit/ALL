@@ -4,8 +4,12 @@ import { actions as repairActions } from "../../../../../reducers/lab10/RepairRe
 import { actions as exerciseActions } from "../../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { twMerge } from "tailwind-merge";
 
 const AIExplanationCodeBlock = (props) => {
+  /**
+   * Sorts the colors based on their weight.
+   */
   const keys = Object.keys(props.weights ?? {}).sort((a, b) => {
     const weightA = props.weights[a],
       weightB = props.weights[b];
@@ -16,8 +20,6 @@ const AIExplanationCodeBlock = (props) => {
 
     return weightA < weightB ? 1 : -1;
   });
-
-  console.log(keys);
 
   return (
     <div className="code_editor">
@@ -30,22 +32,24 @@ const AIExplanationCodeBlock = (props) => {
         </div>
         <div className="code_editor__code">
           <div className="code_editor__line">{"{"}</div>
-          {keys.map((weight) => {
-            console.log(weight, props.weights[weight]);
+          {keys.map((weight, index) => {
             const hex = weight.match(/tw-bg-\[(#[0-9A-Fa-f]{6})\]/)[1];
+            const isHeaviest = index === 0;
+
             return (
               <Fragment key={weight}>
-                <div className="code_editor__line">
+                <div
+                  className={twMerge(
+                    "code_editor__line",
+                    isHeaviest && "code_editor__line-background--light tw-m-0"
+                  )}
+                >
                   <div className={"tw-inline-flex"}>
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span className={"code_editor__line--green"}>
                       {`"${hex}"`}
                     </span>
-                    <span>{`:`}&nbsp;</span>
-                    <span className={"code_editor__line--yellow"}>
-                      {props.weights[weight]}
-                    </span>
-                    <span>{","}</span>
+                    <span>{`: {`}&nbsp;</span>
                     <span>&nbsp;</span>
                     <div
                       className={
@@ -60,6 +64,32 @@ const AIExplanationCodeBlock = (props) => {
                       />
                     </div>
                   </div>
+                </div>
+                <div
+                  className={twMerge(
+                    "code_editor__line",
+                    isHeaviest && "code_editor__line-background--light tw-m-0"
+                  )}
+                >
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span className={"code_editor__line--green"}>
+                    {`"weight"`}
+                  </span>
+                  <span>{`:`}&nbsp;</span>
+                  <span className={"code_editor__line--yellow"}>
+                    {props.weights[weight]}
+                  </span>
+                  <span>{`,`}</span>
+                </div>
+                <div
+                  className={twMerge(
+                    "code_editor__line",
+                    isHeaviest && "code_editor__line-background--light tw-m-0"
+                  )}
+                >
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>{`},`}</span>
                 </div>
               </Fragment>
             );

@@ -60,7 +60,7 @@ const Simulation = (props) => {
    * Updates the object's image as well.
    */
   const handleShiftLeft = () => {
-    if (!props.userInputDisabled || props.ai) {
+    if (!props.userInputDisabled || (props.userInputDisabled && props.ai)) {
       updatePosition(positionRef.current - STEP_COUNT);
       props.actions.setImageLeft();
     }
@@ -72,7 +72,8 @@ const Simulation = (props) => {
    * Updates the object's image as well.
    */
   const handleShiftRight = () => {
-    if (!props.userInputDisabled || props.ai) {
+    console.log(props.userInputDisabled, props.ai);
+    if (!props.userInputDisabled || (props.userInputDisabled && props.ai)) {
       updatePosition(positionRef.current + STEP_COUNT);
       props.actions.setImageRight();
     }

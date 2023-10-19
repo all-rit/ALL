@@ -18,10 +18,17 @@ const UpdatedTrainingAI = (props) => {
 
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
-    props.actions.enableSimulationCover();
-    props.actions.disableUserInput();
     props.actions.idleSimulation();
   }, []);
+
+  useEffect(() => {
+    switch (props.simulationStatus) {
+      case SIMULATION_IDLE:
+        props.actions.enableSimulationCover();
+        props.actions.disableUserInput();
+        break;
+    }
+  }, [props.simulationStatus]);
 
   /**
    * Redirect the user to the following page
