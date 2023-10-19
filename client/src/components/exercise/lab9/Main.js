@@ -3,9 +3,9 @@ import React, { useState, useMemo, useContext } from "react";
 import { Router } from "@reach/router";
 import PropTypes from "prop-types";
 // lab imported dependencies;
-import Repair from "./pages/Repair";
+import Repair from "../../body/Repair/Repair";
 import { REPAIR, GAME_STATES } from "../../../constants/lab9";
-import GameStateContext from "../lab9/Lab9Context";
+import GameStateContext from "./Lab9Context";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -22,6 +22,7 @@ const Main = (props) => {
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
           <Repair
+            logicHook={() => {}}
             path={REPAIR}
             user={user}
             repairText={["Hello", "My name is bob", "how are you"]}
@@ -49,7 +50,7 @@ const ContextTester = () => {
   return (
     <div>
       <h1>{exerciseState}</h1>
-      <button value={GAME_STATES.NAV_BAR_REPAIR} onClick={nav_repair_handler}>
+      <button value={GAME_STATES.REPAIR_NAV_BAR} onClick={nav_repair_handler}>
         nav bar
       </button>
       <button
