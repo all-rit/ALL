@@ -8,7 +8,7 @@ export const operatorRegex = /(\+|-|\*|\/|;|:|=|==|>|\(|\)|{|})/g;
 /* reactRegex searches in the children for ReactJS keywords like props or useState */
 export const reactRegex = /\b(useState|useEffect|useMemo|useContext|props)\b/g;
 
-/* numberRegex searches for javascript keywords such as const, var, etc */
+/* numberRegex searches for numbers */
 export const numberRegex = /-?\d+(\.\d+)?/g;
 
 /* htmlTagRegex searches for html tag keywords such as div, span, etc */
