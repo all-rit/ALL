@@ -12,7 +12,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 const CodeBlock = ({ fileName, children }) => {
   return (
     <>
@@ -31,7 +30,7 @@ const CodeBlock = ({ fileName, children }) => {
   );
 };
 
-CodeBlock.PropTypes = {
+CodeBlock.propTypes = {
   fileName: PropTypes.string.isRequired,
   children: PropTypes.element,
 };
