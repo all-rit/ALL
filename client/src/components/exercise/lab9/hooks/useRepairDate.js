@@ -5,12 +5,14 @@ const dates = [
   {
     id: 0,
     userInput: "",
-    correct: "MM-DD-YY",
+    correct: "MM-DD-YYYY",
+    validate_expression: ""
   },
   {
     id: 1,
     userInput: "",
-    correct: "MM-DD-YY",
+      correct: "YYYY-MM-DD",
+    validate_expression: ""
   },
 ];
 
@@ -19,7 +21,29 @@ const useRepairDate = ({ user }) => {
   const [isInputValid, setIsInputValid] = useState(
     new Array(dates.length).fill(false)
   );
-  const [userError, setUserError] = useState();
+    const [userError, setUserError] = useState(false);
+
+    const checkInputValid = () =>  {
+        let error = false;
+        let localValidArray = [...isInputValid];
+        let currentRepairState = [...exercisePromptsState];
+        currentRepairState.forEach((value, index) => {
+            // use regex to validate the entered string is just characters and letters
+            if (!RegExp(value.validate_expression).test(value.serInput)) {
+                //fails so we need to display error
+                error = true;
+                localValidArray.splice(index, 1, true);
+            }
+        });
+        return checkInputValid;
+    }
+
+    const handleUserInputChange = () => {
+
+    }
+
+
+    
 
   return;
 };
