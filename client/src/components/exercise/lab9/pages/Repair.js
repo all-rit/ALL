@@ -20,6 +20,7 @@ import Tab from "../../../all-components/HTMLComponents/Tab";
 // import HTMLText from "../../../all-components/HTMLComponents/HTMLText";
 import CodeBlockInput from "../../../all-components/HTMLComponents/CodeBlockInput";
 import CommentText from "../../../all-components/HTMLComponents/CommentText";
+import MultiTab from "../../../all-components/HTMLComponents/MultiTab";
 
 const Repair = (props) => {
   // const GameContext = useContext(GameStateContext);
@@ -124,7 +125,7 @@ const Repair = (props) => {
             />
           </CodeLine>
           <CodeLine>
-            <Tab /> <Tab />
+            <MultiTab numberOfTabs={2}/>
             <ReactText> &#125;, </ReactText>
           </CodeLine>
           <CodeLine>
