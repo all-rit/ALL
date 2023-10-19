@@ -125,7 +125,7 @@ const Repair = (props) => {
             />
           </CodeLine>
           <CodeLine>
-            <MultiTab numberOfTabs={2}/>
+            <MultiTab numberOfTabs={2} />
             <ReactText> &#125;, </ReactText>
           </CodeLine>
           <CodeLine>
