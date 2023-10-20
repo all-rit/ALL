@@ -11,7 +11,7 @@ const Webpage = () => {
           src={uni}
           className="tw-absolute tw-h-full tw-w-full tw-object-cover tw-object-center"
         />
-        <div className="tw-relative tw-shadow-[3px_4px_16px_0px_rgba(0,0,0,0.25)] tw-bg-gray-200 tw-flex tw-w-full tw-flex-col tw-pl-5 tw-pr-5 tw-py-3 tw-max-md:tw-max-w-full">
+        <div className="tw-relative tw-shadow-[3px_4px_16px_0px_rgba(0,0,0,0.25)] tw-bg-[#E8E8E8] tw-flex tw-w-full tw-flex-col tw-pl-5 tw-pr-5 tw-py-3 tw-max-md:tw-max-w-full">
           <div className="tw-self-center tw-flex tw-ml-0 tw-w-full tw-max-w-[1373px] tw-items-start tw-justify-between tw-gap-5 tw-mt-px tw-mb-px tw-max-md:tw-max-w-full tw-max-md:tw-flex-wrap">
             <div className="tw-self-stretch tw-flex tw-flex-col">
               <div className="tw-text-[#260D0D]  tw-w-[54px] tw-h-1.5" />
