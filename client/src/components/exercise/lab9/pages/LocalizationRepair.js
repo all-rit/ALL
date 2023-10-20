@@ -1,20 +1,25 @@
-import { useContext } from "react";
+/* eslint-disable no-empty-pattern */
+/* eslint-disable no-case-declarations */
+import React , { useContext } from "react";
 import GameStateContext from "../Lab9Context";
 import { GAME_STATES } from "../../../../constants/lab9";
+import useRepairDate from "../hooks/useRepairDate";
+import Repair from "../../../body/Repair/Repair";
 
-const LocalizationRepair = () => {
+
+// eslint-disable-next-line react/prop-types
+const LocalizationRepair = ({ user }) => {
   const { exerciseState } = useContext(GameStateContext);
   switch (exerciseState) {
-    case GAME_STATES.REPAIR_NAV_BAR:
-      console.log();
-      break;
-    case GAME_STATES.REPAIR_ADDRESS_FORM:
-      console.log();
-      break;
     case GAME_STATES.REPAIR_DATE_REPAIR:
-      console.log();
-      break;
+      const { data, functions } = useRepairDate(user);
+      const { } = data;
+      const { } = functions;
+      return (
+        <Repair path={"date-repair"} CodeImplementation={() => { }}  />
+      )
   }
+     
 };
 
 export default LocalizationRepair;

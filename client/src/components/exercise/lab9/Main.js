@@ -4,6 +4,7 @@ import { Router } from "@reach/router";
 import PropTypes from "prop-types";
 // lab imported dependencies;
 import Repair from "../../body/Repair/Repair";
+import LocalizationRepair from "../lab9/pages/LocalizationRepair";
 import { REPAIR, GAME_STATES } from "../../../constants/lab9";
 import GameStateContext from "./Lab9Context";
 /**
@@ -21,12 +22,9 @@ const Main = (props) => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <Repair
-            logicHook={() => {}}
-            path={REPAIR}
+          <LocalizationRepair
             user={user}
-            repairText={["Hello", "My name is bob", "how are you"]}
-            fileName={"SentimentAnalysisMessages.js"}
+            path={REPAIR}
           />
           <ContextTester path={"/Context"} />
         </Router>
