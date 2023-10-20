@@ -43,31 +43,43 @@ const useRepairDate = ({ user }) => {
       if (!RegExp(value.validate_expression).test(value.userInput)) {
         //fails so we need to display error
         localValidArray.splice(index, 1, true);
-      } else { 
+      } else {
         localValidArray.splice(index, 1, false);
       }
     });
     setIsInputValid(localValidArray);
-    return localValidArray.every(v => v === false);
+    return localValidArray.every((v) => v === false);
   };
 
   const handleUserInputChange = (dataId, newValue) => {
     setExercisePromptsState((previous) => {
-      previous.map((dateRepair) => dateRepair.id === dataId ?
-        {
-          ...dateRepair, userInput: newValue
-        } : dateRepair)
+      previous.map((dateRepair) =>
+        dateRepair.id === dataId
+          ? {
+              ...dateRepair,
+              userInput: newValue,
+            }
+          : dateRepair
+      );
     });
   };
-  
-  const fetchRepair = async () => { 
+
+  const fetchRepair = async () => {
     console.log(user);
-  }
-  
+  };
+
   const postRepair = async () => {
     console.log(user);
-   }
+  };
 
-  return { data: { exercisePromptsState, isInputValid}, functions: {checkInputValid, setExercisePromptsState, setIsInputValid, handleUserInputChange} }
+  return {
+    data: { exercisePromptsState, isInputValid },
+    functions: {
+      checkInputValid,
+      setExercisePromptsState,
+      setIsInputValid,
+      handleUserInputChange,
+    },
+  };
 };
 export default useRepairDate;
