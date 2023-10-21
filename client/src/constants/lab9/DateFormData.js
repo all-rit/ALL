@@ -7,7 +7,7 @@ export const DateFormData = {
       comment: "// Enter 'MM-DD-YYYY' for localized dateform for the US",
       userInput: "",
       validate_expression: "",
-      correctDateForm: "MM-DD-YYYY"
+      correctDateForm: "MM-DD-YYYY",
     },
     {
       id: 1,
@@ -16,7 +16,7 @@ export const DateFormData = {
       comment: "// Enter 'YYYY-MM-DD' for localized dateform for the UK",
       userInput: "",
       validate_expression: "",
-      correctDateForm: "YYYY-MM-DD"
+      correctDateForm: "YYYY-MM-DD",
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ export const DateFormData = {
       comment: "// Enter 'YYYY-MM-DD' for localized dateform for Japan",
       userInput: "",
       validate_expression: "",
-      correctDateForm: "YYYY-MM-DD"
+      correctDateForm: "YYYY-MM-DD",
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ export const DateFormData = {
       comment: "// Enter 'DD-MM-YYYY' for localized dateform for the Dubai",
       userInput: "",
       validate_expression: "",
-      correctDateForm: "DD-MM-YYYY"
-    }
-  ]
-}
+      correctDateForm: "DD-MM-YYYY",
+    },
+  ],
+};

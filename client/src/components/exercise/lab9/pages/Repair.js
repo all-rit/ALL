@@ -58,7 +58,7 @@ const Repair = (props) => {
 
       {isRepairActive && (
         <CodeBlock fileName={fileName}>
-          <DateformRepair/>
+          <DateformRepair />
         </CodeBlock>
       )}
     </div>
