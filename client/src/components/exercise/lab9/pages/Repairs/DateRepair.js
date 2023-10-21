@@ -9,10 +9,16 @@ const DateRepair = ({ user = "" }) => {
   const { data, functions } = useRepairDate(user);
   const {} = data;
   const {} = functions;
-  return <Repair path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`} CodeImplementation={() => { }} navigateNext={ () => {}} />;
+  return (
+    <Repair
+      path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`}
+      CodeImplementation={() => {}}
+      navigateNext={() => {}}
+    />
+  );
 };
 
 DateRepair.propTypes = {
   user: PropTypes.string.isRequired,
-}
+};
 export default DateRepair;

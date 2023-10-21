@@ -11,10 +11,10 @@ import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
  * LocalizationRepair is a Route wrapper component that is responsible for declaring the
- * structure for routing of individual repair pages. this allows for the addition of repairs 
+ * structure for routing of individual repair pages. this allows for the addition of repairs
  * in the future by then only needing to import the component to one location
  * @param {String} user is a string representing user id for data retrieval purposes.
- * @returns 
+ * @returns
  */
 const LocalizationRepair = ({ user }) => {
   return (
@@ -23,12 +23,11 @@ const LocalizationRepair = ({ user }) => {
       <AddressRepair path={`${GAME_STATES.REPAIR_ADDRESS_FORM}`} user={user} />
       <NavBarRepair path={`${GAME_STATES.REPAIR_NAV_BAR}`} user={user} />
     </Router>
-  )
+  );
 };
 
 LocalizationRepair.propTypes = {
   user: PropTypes.string.isRequired,
-}
- 
+};
 
 export default LocalizationRepair;

@@ -46,30 +46,32 @@ const ContextTester = () => {
     <div>
       <h1>{exerciseState}</h1>
       <div>
-      <button value={GAME_STATES.REPAIR_NAV_BAR} onClick={nav_repair_handler}>
-        nav bar
-      </button>
-      <button
-        value={GAME_STATES.REPAIR_DATE_REPAIR}
-        onClick={date_repair_handler}
-      >
-        date repair
-      </button>
-      <button
-        value={GAME_STATES.REPAIR_ADDRESS_FORM}
-        onClick={address_repair_handler}
-      >
-        address
-      </button>
-      <button
-        value={GAME_STATES.EXERCISE_SELECTION_DEFAULT}
-        onClick={setSelection}
-      >
-        set selection
-      </button>
+        <button value={GAME_STATES.REPAIR_NAV_BAR} onClick={nav_repair_handler}>
+          nav bar
+        </button>
+        <button
+          value={GAME_STATES.REPAIR_DATE_REPAIR}
+          onClick={date_repair_handler}
+        >
+          date repair
+        </button>
+        <button
+          value={GAME_STATES.REPAIR_ADDRESS_FORM}
+          onClick={address_repair_handler}
+        >
+          address
+        </button>
+        <button
+          value={GAME_STATES.EXERCISE_SELECTION_DEFAULT}
+          onClick={setSelection}
+        >
+          set selection
+        </button>
       </div>
-      <button onClick={ () => navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`)}>
-        go to  {exerciseState} 
+      <button
+        onClick={() => navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`)}
+      >
+        go to {exerciseState}
       </button>
     </div>
   );
