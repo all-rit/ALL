@@ -24,8 +24,13 @@ import {
  */
 
 const ReactText = ({ children }) => {
-  const highlightSyntax = (text) => {
-    return text.split(/(\s+|\b|\W)/).map((segment, index) => {
+  console.log("children", children)
+  // eslint-disable-next-line no-prototype-builtins
+  if (typeof children === 'object') {
+    children = children.toString().replaceAll( /,/g, '').padStart(1);
+  }
+  const highlightSyntax = (string) => {
+    return string.split(/(\s+|\b|\W)/).map((segment, index) => {
       if (javascriptRegex.test(segment)) {
         return (
           <span key={index} className="keyword">
