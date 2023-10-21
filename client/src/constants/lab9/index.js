@@ -3,10 +3,10 @@ const START_PATH = "/*";
 const EXERCISE_SELECTION = "/Exercise";
 const REPAIR = "/GameRepair";
 
-const REPAIR_ADDRESS_FORM = "ADDRESS_REPAIR";
-const REPAIR_DATE_REPAIR = "REPAIR_DATE";
-const REPAIR_NAV_BAR = "NAV_BAR_REPAIR";
-const EXERCISE_SELECTION_DEFAULT = "selection";
+const REPAIR_ADDRESS_FORM = "Address-repair";
+const REPAIR_DATE_REPAIR = "Date-Repair";
+const REPAIR_NAV_BAR = "Nav-Bar-Repair";
+const EXERCISE_SELECTION_DEFAULT = "Selection";
 
 const GAME_STATES = {
   REPAIR_ADDRESS_FORM,

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useMemo, useContext } from "react";
-import { Router } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import PropTypes from "prop-types";
 // lab imported dependencies;
 import Repair from "../../body/Repair/Repair";
@@ -22,7 +22,7 @@ const Main = (props) => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <LocalizationRepair user={user} path={REPAIR} />
+          <LocalizationRepair user={user} path={`${REPAIR}/*`} />
           <ContextTester path={"/Context"} />
         </Router>
       </GameStateContext.Provider>
@@ -45,6 +45,7 @@ const ContextTester = () => {
   return (
     <div>
       <h1>{exerciseState}</h1>
+      <div>
       <button value={GAME_STATES.REPAIR_NAV_BAR} onClick={nav_repair_handler}>
         nav bar
       </button>
@@ -65,6 +66,10 @@ const ContextTester = () => {
         onClick={setSelection}
       >
         set selection
+      </button>
+      </div>
+      <button onClick={ () => navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`)}>
+        go to  {exerciseState} 
       </button>
     </div>
   );
