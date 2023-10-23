@@ -3,7 +3,11 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import useRepairDate from "../../hooks/useRepairDate";
 import Repair from "../../../../body/Repair/Repair";
-import { REPAIR_DATE_REPAIR_HEADING, GAME_STATES, REPAIR } from "../../../../../constants/lab9";
+import {
+  REPAIR_DATE_REPAIR_HEADING,
+  GAME_STATES,
+  REPAIR,
+} from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
 /**
  * Date Repair is a component that is responsible for passing logic into the universal
@@ -14,16 +18,18 @@ import DateFormRepair from "../DateFormRepair";
  */
 const DateRepair = (props) => {
   const { user } = props;
-   const { data, functions } = useRepairDate(user);
+  const { data, functions } = useRepairDate(user);
   const { exercisePromptsState } = data;
   const {} = functions;
   return (
     <Repair
       fileName={"DateFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`}
-      headingText={REPAIR_DATE_REPAIR_HEADING }
-      repairText={["in this section you will be making changes to the repair data file below"]}
-      CodeImplementation={<DateFormRepair dateForms={exercisePromptsState}/>}
+      headingText={REPAIR_DATE_REPAIR_HEADING}
+      repairText={[
+        "in this section you will be making changes to the repair data file below",
+      ]}
+      CodeImplementation={<DateFormRepair dateForms={exercisePromptsState} />}
       navigateNext={() => {}}
     />
   );

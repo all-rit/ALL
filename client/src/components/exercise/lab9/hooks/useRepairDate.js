@@ -12,7 +12,9 @@ import { DateFormData } from "../../../../constants/lab9/DateFormData";
  * @returns {Object} of function calls to hooks and fetched user data.
  */
 const useRepairDate = ({ user }) => {
-  const [exercisePromptsState, setExercisePromptsState] = useState(DateFormData.countries);
+  const [exercisePromptsState, setExercisePromptsState] = useState(
+    DateFormData.countries
+  );
   const [isInputValid, setIsInputValid] = useState(
     new Array(DateFormData.countries.length).fill(false)
   );
