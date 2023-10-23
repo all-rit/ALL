@@ -36,7 +36,7 @@ Main.propTypes = {
 export default Main;
 
 /**
- * ContextTester is a component that is responsible for basically containing a 
+ * ContextTester is a component that is responsible for basically containing a
  * proof of concept of the transition int utilizing react context and how to modify it.
  * @returns rendered webpage with buttons to navigate.
  */
