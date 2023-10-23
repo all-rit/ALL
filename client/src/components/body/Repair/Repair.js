@@ -59,12 +59,11 @@ const Repair = (props) => {
   );
 };
 
-
 Repair.propTypes = {
   user: Proptypes.string,
   headingText: Proptypes.string,
   repairText: Proptypes.array,
   fileName: Proptypes.string,
-  CodeImplementation:  Proptypes.func.isRequired
+  CodeImplementation: Proptypes.func.isRequired,
 };
 export default Repair;
