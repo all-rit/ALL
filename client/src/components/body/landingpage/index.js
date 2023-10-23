@@ -25,7 +25,7 @@ const Home = (props) => {
         <div className="container">
           <div className="intro-text">
             <div className="intro-heading text-uppercase">
-              Welcome to the Accessible Learning Labs (ALL)!
+              Welcome to the <br /> Accessible Learning Labs (ALL)
             </div>
             <div />
           </div>
