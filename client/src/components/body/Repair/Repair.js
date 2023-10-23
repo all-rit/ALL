@@ -7,11 +7,11 @@ import React from "react";
 import Button from "../../all-components/Navigation/Button";
 import CodeBlock from "../../all-components/CodeBlock/Codeblock";
 /**
- * Repair: is a reusable component that is responsible for 
- * allowing for the ability to render and handle new repair pages 
+ * Repair: is a reusable component that is responsible for
+ * allowing for the ability to render and handle new repair pages
  * moving forward. This is a logic and display component that will use props
  * to render and display information to the page
- * @param {Object} props 
+ * @param {Object} props
  * @returns rendered repair page.s
  */
 const Repair = (props) => {
