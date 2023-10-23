@@ -20,6 +20,7 @@ const Repair = (props) => {
     headingText = "",
     repairText = [],
     fileName = "",
+    validateRepair = () => { },
     CodeImplementation = () => {},
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
@@ -60,7 +61,18 @@ const Repair = (props) => {
         </div>
       </div>
       {isRepairActive && (
-        <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
+        <>
+          <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock><div>
+          <button
+            onClick={validateRepair}
+            type="submit"
+            className="button button--green button--block"
+          >
+            Update
+          </button>
+          </div>
+        </>
+
       )}
     </div>
   );
@@ -72,5 +84,6 @@ Repair.propTypes = {
   repairText: Proptypes.array,
   fileName: Proptypes.string,
   CodeImplementation: Proptypes.func.isRequired,
+  validateRepair: Proptypes.func.isRequired,
 };
 export default Repair;

@@ -37,6 +37,7 @@ const useRepairDate = ({ user }) => {
       }
     });
     setIsInputValid(localValidArray);
+    console.warn(localValidArray);
     return localValidArray.every((v) => v === false);
   };
 

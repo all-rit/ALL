@@ -12,7 +12,7 @@ import React from "react";
 //import { DateFormData } from "../../../../constants/lab9/DateFormData";
 
 const DateFormRepair = (props = {}, attributes = {}) => {
-  const { dateForms } = props;
+  const { dateForms, onChange } = props;
 
   return (
     <>
@@ -52,6 +52,7 @@ const DateFormRepair = (props = {}, attributes = {}) => {
             <MultiTab numberOfTabs={3} />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
             <CodeBlockInput
+              onChange={(country, index) => onChange}
               attributes={{
                 id: country.id,
                 name: "us_dateform",

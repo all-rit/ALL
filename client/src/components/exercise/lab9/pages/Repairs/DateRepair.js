@@ -19,17 +19,25 @@ import DateFormRepair from "../DateFormRepair";
 const DateRepair = (props) => {
   const { user } = props;
   const { data, functions } = useRepairDate(user);
-  const { exercisePromptsState } = data;
-  const {} = functions;
+  const { exercisePromptsState, handleUserInputChange } = data;
+  const {checkInputValid} = functions;
   return (
     <Repair
       fileName={"DateFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`}
       headingText={REPAIR_DATE_REPAIR_HEADING}
+      validateRepair={checkInputValid}
       repairText={[
         "in this section you will be making changes to the repair data file below",
       ]}
-      CodeImplementation={<DateFormRepair dateForms={exercisePromptsState} />}
+      CodeImplementation={
+        <DateFormRepair dateForms={exercisePromptsState}
+
+          onChange={handleUserInputChange}
+
+        />
+        
+      }
       navigateNext={() => {}}
     />
   );
