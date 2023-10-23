@@ -9,7 +9,7 @@ import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
  * repair page component, what this allows us to do is call the re-useable repair component
  * with custom logic pertaining to that repair section.
  * @param {String} user contains user id for data state and logging user input
- * @returns 
+ * @returns
  */
 const DateRepair = ({ user = "" }) => {
   const { data, functions } = useRepairDate(user);

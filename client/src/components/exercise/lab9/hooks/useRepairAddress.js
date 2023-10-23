@@ -4,6 +4,6 @@
  * This is to be used to allow for decoupling of the display and logic based portions of
  * repair section.
  */
-const useRepairAddress = () => { };
+const useRepairAddress = () => {};
 
 export default useRepairAddress;
