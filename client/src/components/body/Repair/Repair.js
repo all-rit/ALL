@@ -20,7 +20,7 @@ const Repair = (props) => {
     headingText = "",
     repairText = [],
     fileName = "",
-    validateRepair = () => { },
+    validateRepair = () => {},
     CodeImplementation = () => {},
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
@@ -62,17 +62,17 @@ const Repair = (props) => {
       </div>
       {isRepairActive && (
         <>
-          <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock><div>
-          <button
-            onClick={validateRepair}
-            type="submit"
-            className="button button--green button--block"
-          >
-            Update
-          </button>
+          <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
+          <div>
+            <button
+              onClick={validateRepair}
+              type="submit"
+              className="button button--green button--block"
+            >
+              Update
+            </button>
           </div>
         </>
-
       )}
     </div>
   );

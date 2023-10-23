@@ -20,7 +20,7 @@ const DateRepair = (props) => {
   const { user } = props;
   const { data, functions } = useRepairDate(user);
   const { exercisePromptsState, handleUserInputChange } = data;
-  const {checkInputValid} = functions;
+  const { checkInputValid } = functions;
   return (
     <Repair
       fileName={"DateFormat.js"}
@@ -31,12 +31,10 @@ const DateRepair = (props) => {
         "in this section you will be making changes to the repair data file below",
       ]}
       CodeImplementation={
-        <DateFormRepair dateForms={exercisePromptsState}
-
+        <DateFormRepair
+          dateForms={exercisePromptsState}
           onChange={handleUserInputChange}
-
         />
-        
       }
       navigateNext={() => {}}
     />
