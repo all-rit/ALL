@@ -1,20 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import { DateFormData } from "../../../../constants/lab9/DateFormData";
 
-const dates = [
-  {
-    id: 0,
-    userInput: "",
-    correct: "MM-DD-YYYY",
-    validate_expression: "",
-  },
-  {
-    id: 1,
-    userInput: "",
-    correct: "YYYY-MM-DD",
-    validate_expression: "",
-  },
-];
 /**
  * usRepairDate(): is a custom hook to abstract the logic implementation for the
  * repair portion of the localization lab. This allows for conditional behavior of
@@ -25,9 +12,9 @@ const dates = [
  * @returns {Object} of function calls to hooks and fetched user data.
  */
 const useRepairDate = ({ user }) => {
-  const [exercisePromptsState, setExercisePromptsState] = useState(dates);
+  const [exercisePromptsState, setExercisePromptsState] = useState(DateFormData.countries);
   const [isInputValid, setIsInputValid] = useState(
-    new Array(dates.length).fill(false)
+    new Array(DateFormData.countries.length).fill(false)
   );
 
   /**
