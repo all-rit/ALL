@@ -35,6 +35,7 @@ const Reading = (props) => {
     );
   }
 
+
   return (
     <div className="study">
       {readingData?.description !== "" ? (
