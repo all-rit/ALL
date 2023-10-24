@@ -20,7 +20,7 @@ const Repair = (props) => {
     fileName,
     navigateNext,
     CodeImplementation,
-    validateRepair
+    validateRepair,
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [enableNext, setEnableNext] = useState(false);
@@ -56,20 +56,25 @@ const Repair = (props) => {
         </div>
 
         <div className="tw-pl-10">
-          <Button buttonText={"Next"} disabled={enableNext} onClick={navigateNext} />
+          <Button
+            buttonText={"Next"}
+            disabled={enableNext}
+            onClick={navigateNext}
+          />
         </div>
       </div>
       {isRepairActive && (
         <>
-          <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock><div>
-          <button
-            onClick={validateRepair}
-            type="submit"
-            className="button button--green button--block"
-          >
-            Update
-          </button>
-        </div>
+          <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
+          <div>
+            <button
+              onClick={validateRepair}
+              type="submit"
+              className="button button--green button--block"
+            >
+              Update
+            </button>
+          </div>
         </>
       )}
     </div>
