@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Proptypes from "prop-types";
-import GameStateContext from "../../exercise/lab9/Lab9Context";
 import CodeUpdateHeader from "../../exercise/lab3/components/CodeUpdateHeader";
 import React from "react";
 import Button from "../../all-components/Navigation/Button";
-import CodeBlock from "../../all-components/CodeBlock/Codeblock";
+import CodeBlock from "../../all-components/CodeBlock/Components/Codeblock";
 /**
  * Repair: is a reusable component that is responsible for
  * allowing for the ability to render and handle new repair pages
