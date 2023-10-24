@@ -2,6 +2,12 @@ import React from "react";
 
 import person from "../../../../../assets/images/lab9/person.jpeg";
 
+/**
+ * WebpageSidebar is a sub-component of the main Webpage component.
+ * It is responsible for displaying the "Join Us" application section,
+ * as well as a small picture underneath.
+ * @returns rendered webpage sidebar
+ */
 const WebpageSidebar = () => {
   return (
     <div className="tw-flex tw-grow tw-flex-col tw-max-md:mt-12">

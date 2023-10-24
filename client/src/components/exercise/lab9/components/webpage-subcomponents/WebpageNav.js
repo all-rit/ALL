@@ -1,6 +1,12 @@
 import React from "react";
 import logo from "../../../../../assets/images/lab9/logo.png";
 
+/**
+ * WebpageNav is a sub-component of the main Webpage component.
+ * It is responsible for displaying the navigation bar, which
+ * includes the "Careers", "Education", "Who We Are", and "Contact Us" tabs.
+ * @returns rendered webpage navbar
+ */
 const WebpageNav = () => {
   return (
     <div className="tw-relative tw-shadow-[3px_4px_16px_0px_rgba(0,0,0,0.25)] tw-bg-[#E8E8E8] tw-flex tw-w-full tw-flex-col tw-pl-5 tw-pr-5 tw-py-3 tw-max-md:tw-max-w-full">

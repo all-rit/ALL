@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * NewsletterForm is a sub-component of the main Webpage component.
+ * It is responsible for displaying the newsletter sign-up form,
+ * which asks for an address, city, state, zip, and phone number.
+ * @returns rendered newsletter form
+ */
 const WebpageForm = () => {
   return (
     <div className="tw-flex tw-flex-col tw-items-stretch tw-w-[72%] tw-ml-5 tw-max-md:tw-w-full">
@@ -21,7 +27,7 @@ const WebpageForm = () => {
             source for the latest updates, events, and highlights from our
             vibrant campus community. As we settle into the rhythm of the
             academic year, we&apos;re excited to keep you informed and engaged
-            with all that &apos s happening here at ALL University.
+            with all that&apos;s happening here at ALL University.
           </div>
           <div className="tw-flex tw-w-[717px] tw-max-w-full tw-items-start tw-gap-2.5 tw-mt-14 tw-max-md:tw-flex-wrap">
             <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-w-[113px] tw-my-auto">
