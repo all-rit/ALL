@@ -11,7 +11,7 @@ import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
  * @param {String} user contains user id for data state and logging user input
  * @returns
  */
-const DateRepair = ({ user = "" }) => {
+const DateRepair = ({ user }) => {
   const { data, functions } = useRepairDate(user);
   const {} = data;
   const {} = functions;
@@ -25,6 +25,6 @@ const DateRepair = ({ user = "" }) => {
 };
 
 DateRepair.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
 };
 export default DateRepair;

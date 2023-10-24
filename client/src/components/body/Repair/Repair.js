@@ -15,20 +15,21 @@ import CodeBlock from "../../all-components/CodeBlock/Components/Codeblock";
  */
 const Repair = (props) => {
   const {
-    //user = "",
-    headingText = "",
-    repairText = [],
-    fileName = "",
-    CodeImplementation = () => {},
+    headingText,
+    repairText,
+    fileName,
+    navigateNext,
+    CodeImplementation,
+    validateRepair
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
-  const [next, setNext] = useState(false);
+  const [enableNext, setEnableNext] = useState(false);
 
   const handleRepair = () => {
     setIsRepairActive(true);
   };
   const handleNext = () => {
-    setNext();
+    setEnableNext(true);
   };
 
   return (
@@ -38,8 +39,8 @@ const Repair = (props) => {
         justifyAlignment={"space-between"}
       />
       <div className="tw-pb-10 tw-text-xl ">
-        {repairText.map((text, index) => (
-          <p className="tw-indent-2" key={index}>
+        {repairText.map((text) => (
+          <p className="tw-indent-2" key={text}>
             {text}
           </p>
         ))}
@@ -55,21 +56,33 @@ const Repair = (props) => {
         </div>
 
         <div className="tw-pl-10">
-          <Button buttonText={"Next"} disabled={next} />
+          <Button buttonText={"Next"} disabled={enableNext} onClick={navigateNext} />
         </div>
       </div>
       {isRepairActive && (
-        <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
+        <>
+          <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock><div>
+          <button
+            onClick={validateRepair}
+            type="submit"
+            className="button button--green button--block"
+          >
+            Update
+          </button>
+        </div>
+        </>
       )}
     </div>
   );
 };
 
 Repair.propTypes = {
-  user: Proptypes.string,
-  headingText: Proptypes.string,
-  repairText: Proptypes.array,
-  fileName: Proptypes.string,
   CodeImplementation: Proptypes.func.isRequired,
+  fileName: Proptypes.string,
+  headingText: Proptypes.string,
+  navigateNext: Proptypes.func.isRequired,
+  repairText: Proptypes.array,
+  user: Proptypes.string,
+  validateRepair: Proptypes.func.isRequired,
 };
 export default Repair;
