@@ -10,7 +10,7 @@ import DataRepair from "./pages/DataRepair";
 import Conclusion from "./pages/Conclusion";
 
 const Main = (props) => {
-  const { user } = props;
+  const { user = "" } = props;
   return (
     <div className="bottomSpace">
       <Router className="app">

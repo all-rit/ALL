@@ -1,8 +1,7 @@
 import { createContext } from "react";
-
 const GameStateContext = createContext({
-  gameState: "",
-  setGameState: () => {},
+  exerciseState: "",
+  setExerciseState: () => {},
 });
 
 export default GameStateContext;

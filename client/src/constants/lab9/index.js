@@ -3,14 +3,16 @@ const START_PATH = "/*";
 const EXERCISE_SELECTION = "/Exercise";
 const REPAIR = "/GameRepair";
 
-const REPAIR_REACT = "";
-const REPAIR_REACT_TEXT = "";
-const REPAIR_JSON = "";
+const REPAIR_ADDRESS_FORM = "Address-repair";
+const REPAIR_DATE_REPAIR = "Date-Repair";
+const REPAIR_NAV_BAR = "Nav-Bar-Repair";
+const EXERCISE_SELECTION_DEFAULT = "Selection";
 
 const GAME_STATES = {
-  REPAIR_REACT,
-  REPAIR_JSON,
-  REPAIR_REACT_TEXT,
+  REPAIR_ADDRESS_FORM,
+  REPAIR_DATE_REPAIR,
+  REPAIR_NAV_BAR,
+  EXERCISE_SELECTION_DEFAULT,
 };
 
 export { LAB_ID, START_PATH, EXERCISE_SELECTION, REPAIR, GAME_STATES };
