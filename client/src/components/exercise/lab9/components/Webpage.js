@@ -7,10 +7,10 @@ import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
 
 /**
- * Webpage is a reusable component used to display 
+ * Webpage is a reusable component used to display
  * the ALL University's website homepage.
  * The webpage features a navbar, header, form, and sidebar,
- * each of which are sub-components. 
+ * each of which are sub-components.
  * @returns rendered webpage
  */
 const Webpage = () => {
