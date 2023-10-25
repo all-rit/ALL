@@ -3,6 +3,7 @@ import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
 import useRepairAddress from "../../hooks/useRepairAddress";
+import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
@@ -16,7 +17,7 @@ const AddressRepair = (user = "") => {
   return (
     <Repair
       path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
-      CodeImplementation={() => {}}
+      CodeImplementation={<AddressRepairCodeBlock />}
       navigateNext={() => {}}
     />
   );
