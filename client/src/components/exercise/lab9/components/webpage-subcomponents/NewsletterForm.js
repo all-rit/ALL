@@ -13,6 +13,7 @@ const WebpageForm = () => {
         <div className="tw-self-stretch tw-flex tw-mb-0 tw-flex-col tw-ml-0.5 tw-mr-4 tw-mt-0.5 tw-max-md:tw-max-w-full tw-max-md:mr-2.5">
           <div className="tw-flex tw-w-[723px] tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-max-md:flex-wrap">
             <div className="tw-bg-gray tw-self-center tw-w-[577px] tw-h-[5px] tw-grow tw-shrink-0 tw-basis-auto tw-my-auto tw-max-md:tw-max-w-full" />
+            {/* will want a button around the date here that routes to the date repair */}
             <div className="tw-text-[#260D0D] tw-text-center tw-text-2xl tw-self-stretch tw-w-[155px]">
               8/28/2027
             </div>
@@ -29,6 +30,7 @@ const WebpageForm = () => {
             academic year, we&apos;re excited to keep you informed and engaged
             with all that&apos;s happening here at ALL University.
           </div>
+          {/* will want a button around this section that leads to the address form repair */}
           <div className="tw-flex tw-w-[717px] tw-max-w-full tw-items-start tw-gap-2.5 tw-mt-14 tw-max-md:tw-flex-wrap">
             <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-w-[113px] tw-my-auto">
               Address Line

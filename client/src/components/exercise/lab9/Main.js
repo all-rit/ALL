@@ -7,6 +7,7 @@ import Repair from "../../body/Repair/Repair";
 import LocalizationRepair from "../lab9/pages/LocalizationRepair";
 import { REPAIR, GAME_STATES } from "../../../constants/lab9";
 import GameStateContext from "./Lab9Context";
+import Webpage from "../lab9/components/Webpage"
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -22,6 +23,7 @@ const Main = (props) => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
+          <Webpage path={"/page"} />
           <LocalizationRepair user={user} path={`${REPAIR}/*`} />
           <ContextTester path={"/Context"} />
         </Router>
