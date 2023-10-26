@@ -31,7 +31,6 @@ const Reading = (props) => {
     }
     LabService.getLabReading(labID).then((data) => {
       setReadingData(data[0].reading);
-      console.log(data[0].reading)
     });
     LabService.getLabShortName(labID).then((data) => {
       setLabShortname(data[0].labShortName);
@@ -49,76 +48,77 @@ const Reading = (props) => {
   return (
     <div>
       <div className="page-section">
-      <h2 className="section-heading text-uppercase">
-        {labShortName}: READING
-      </h2>
+        <h2 className="section-heading text-uppercase">
+          {labShortName}: READING
+        </h2>
       </div>
-    
-    <div className="study">
-      
-      {readingData?.description !== "" ? (
-        <>
-          <h3>{readingData?.description.header}</h3>
-          <p>{readingData?.description.content}</p>
-        </>
-      ) : (
-        <></>
-      )}
-      <h3>{readingData?.piechart.header}</h3>
-      <div className="flex">
-        <Pie data={readingData?.piechart.data} height={100} />
-      </div>
-      {readingData?.piechart.caption !== "" ? (
-        readingData?.piechart.caption.map((data, index) => {
-          return (
-            <div key={index} id={"caption"}>
-              {data}
-            </div>
-          );
-        })
-      ) : (
-        <></>
-      )}
 
-      {readingData?.body !== "" ? (
-        readingData?.body.map((data, index) => {
-          return (
-            <Fragment key={index}>
-              {data.header !== "" && <h3>{data.header}</h3>}
-              {data.type === "" && (
-                <>
-                  {data.content.map((content, index) => {
-                    return <p key={index}>{content}</p>;
-                  })}
-                </>
-              )}
-              {data.type === "study__list" && <StudyList data={data.content} />}
-              {data.type === "ordered-list" && (
-                <OrderedList data={data.content} />
-              )}
-              {data.type === "non-bullet-list" && (
-                <NonBulletList data={data.content} />
-              )}
-              {data.type === "image" && <Image data={data.content} />}
-              {data.type === "links" && <Links data={data.content} />}
-            </Fragment>
-          );
-        })
-      ) : (
-        <></>
-      )}
-      {readingData?.footer !== "" ? (
-        <LinkFooter data={readingData?.footer.links} />
-      ) : (
-        <></>
-      )}
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-        onClick={handleNext}
-      >
-        Continue to Quiz
-      </button>
-    </div>
+      <div className="study">
+        {readingData?.description !== "" ? (
+          <>
+            <h3>{readingData?.description.header}</h3>
+            <p>{readingData?.description.content}</p>
+          </>
+        ) : (
+          <></>
+        )}
+        <h3>{readingData?.piechart.header}</h3>
+        <div className="flex">
+          <Pie data={readingData?.piechart.data} height={100} />
+        </div>
+        {readingData?.piechart.caption !== "" ? (
+          readingData?.piechart.caption.map((data, index) => {
+            return (
+              <div key={index} id={"caption"}>
+                {data}
+              </div>
+            );
+          })
+        ) : (
+          <></>
+        )}
+
+        {readingData?.body !== "" ? (
+          readingData?.body.map((data, index) => {
+            return (
+              <Fragment key={index}>
+                {data.header !== "" && <h3>{data.header}</h3>}
+                {data.type === "" && (
+                  <>
+                    {data.content.map((content, index) => {
+                      return <p key={index}>{content}</p>;
+                    })}
+                  </>
+                )}
+                {data.type === "study__list" && (
+                  <StudyList data={data.content} />
+                )}
+                {data.type === "ordered-list" && (
+                  <OrderedList data={data.content} />
+                )}
+                {data.type === "non-bullet-list" && (
+                  <NonBulletList data={data.content} />
+                )}
+                {data.type === "image" && <Image data={data.content} />}
+                {data.type === "links" && <Links data={data.content} />}
+              </Fragment>
+            );
+          })
+        ) : (
+          <></>
+        )}
+        {readingData?.footer !== "" ? (
+          <LinkFooter data={readingData?.footer.links} />
+        ) : (
+          <></>
+        )}
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+          onClick={handleNext}
+        >
+          Continue to Quiz
+        </button>
+      </div>
     </div>
   );
 };
