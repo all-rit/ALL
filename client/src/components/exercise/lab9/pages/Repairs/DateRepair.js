@@ -16,8 +16,8 @@ import DateFormRepair from "../DateFormRepair";
  * @param {String} user contains user id for data state and logging user input
  * @returns
  */
-const DateRepair = (props) => {
-  const { user } = props;
+
+const DateRepair = ({ user }) => {
   const { data, functions } = useRepairDate(user);
   const { exercisePromptsState, handleUserInputChange } = data;
   const { checkInputValid } = functions;
@@ -42,6 +42,6 @@ const DateRepair = (props) => {
 };
 
 DateRepair.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
 };
 export default DateRepair;
