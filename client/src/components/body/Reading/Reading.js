@@ -93,7 +93,6 @@ const Reading = (props) => {
       ) : (
         <></>
       )}
-     
     </div>
   );
 };

@@ -100,13 +100,12 @@ const Reading = (props) => {
         <></>
       )}
 
-      <button 
-        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3" 
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
         onClick={handleNext}
       >
         Continue to Quiz
       </button>
-     
     </div>
   );
 };

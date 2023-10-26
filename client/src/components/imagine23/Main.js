@@ -9,7 +9,7 @@ import { Router } from "@reach/router";
 import { bindActionCreators } from "redux";
 import LandingPage from "./pages/landingPage";
 import MainInstructions from "./pages/mainInstructions";
-import Reading from "./pages/Reading"
+import Reading from "./pages/Reading";
 
 import { default as ExerciseLab2 } from "../exercise/lab2/Main";
 import ExpressionStart from "./pages/ExpressionStart";
@@ -152,9 +152,7 @@ const Main = (props) => {
             />
 
             <Reading path={`/Reading`} user={state.main.user} labID={labId} />
-            
           </Router>
-        
         </div>
       </div>
     </>
