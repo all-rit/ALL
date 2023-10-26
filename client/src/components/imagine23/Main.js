@@ -65,97 +65,97 @@ const Main = (props) => {
             </h2>
           </div>
         </div>
-      </div>
-      <div className="bottomSpace">
-        <Router className="app">
-          <UpdateID
-            default
-            path="/UpdateID"
-            actions={actions}
-            state={state}
-            setUserID={setUserID}
-            user={user}
-          />
-          <LandingPage
-            path="/ExperientialStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExpressionInstructions
-            path="/ExpressionStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <MainInstructions
-            path="/ExperientialInstructions"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExpressionMainInstructions
-            path="/ExpressionInstructions"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExerciseLab2
-            path="/ExperientialExercise"
-            actions={actions}
-            state={state}
-            isImagine
-            userID={userID}
-          />
-          <ExerciseLab2
-            path="/ExpressionActivity"
-            actions={actions}
-            state={state}
-            isImagine
-            isImagineExpression
-            userID={userID}
-          />
-          <ExpressionStart
-            path="/ExpressionExerciseStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-            setCount={setCount}
-          />
-          <ExpressionExercise
-            path="/ExpressionExercise"
-            actions={actions}
-            state={state}
-            setCount={setCount}
-            count={count}
-            userID={userID}
-          />
-          <ExpressionScore
-            path="/ExpressionScore"
-            actions={actions}
-            state={state}
-            count={count}
-            userID={userID}
-          />
-          <ExerciseEnd
-            path="/ExperientialExerciseEnd"
-            actions={actions}
-            state={state}
-            isExperiential
-            userID={userID}
-          />
-          <ExerciseEnd
-            path="/ExpressionExerciseEnd"
-            actions={actions}
-            state={state}
-            isExperiential={false}
-            userID={userID}
-          />
+        <div className="bottomSpace">
+          <Router className="app">
+            <UpdateID
+              default
+              path="/UpdateID"
+              actions={actions}
+              state={state}
+              setUserID={setUserID}
+              user={user}
+            />
+            <LandingPage
+              path="/ExperientialStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExpressionInstructions
+              path="/ExpressionStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <MainInstructions
+              path="/ExperientialInstructions"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExpressionMainInstructions
+              path="/ExpressionInstructions"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExerciseLab2
+              path="/ExperientialExercise"
+              actions={actions}
+              state={state}
+              isImagine
+              userID={userID}
+            />
+            <ExerciseLab2
+              path="/ExpressionActivity"
+              actions={actions}
+              state={state}
+              isImagine
+              isImagineExpression
+              userID={userID}
+            />
+            <ExpressionStart
+              path="/ExpressionExerciseStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+              setCount={setCount}
+            />
+            <ExpressionExercise
+              path="/ExpressionExercise"
+              actions={actions}
+              state={state}
+              setCount={setCount}
+              count={count}
+              userID={userID}
+            />
+            <ExpressionScore
+              path="/ExpressionScore"
+              actions={actions}
+              state={state}
+              count={count}
+              userID={userID}
+            />
+            <ExerciseEnd
+              path="/ExperientialExerciseEnd"
+              actions={actions}
+              state={state}
+              isExperiential
+              userID={userID}
+            />
+            <ExerciseEnd
+              path="/ExpressionExerciseEnd"
+              actions={actions}
+              state={state}
+              isExperiential={false}
+              userID={userID}
+            />
 
-          <Reading path={`/Reading`} user={state.main.user} labID={labId} />
-          
-        </Router>
-       
+            <Reading path={`/Reading`} user={state.main.user} labID={labId} />
+            
+          </Router>
+        
+        </div>
       </div>
     </>
   );

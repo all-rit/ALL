@@ -12,10 +12,15 @@ import LinkFooter from "../../body/Reading/LinkFooter";
 import Links from "../../body/Reading/Links";
 import OrderedList from "../../body/Reading/OrderedList";
 
+import { navigate } from "@reach/router";
+
 const Reading = (props) => {
   const { user, labID } = props;
   const [readingData, setReadingData] = useState("");
 
+  const handleNext = () => {
+    navigate("/Imagine/ExpressionExerciseEnd");
+  };
 
   useScroll();
   useEffect(() => {
@@ -95,7 +100,12 @@ const Reading = (props) => {
         <></>
       )}
 
-      
+      <button 
+        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3" 
+        onClick={handleNext}
+      >
+        Continue to Quiz
+      </button>
      
     </div>
   );

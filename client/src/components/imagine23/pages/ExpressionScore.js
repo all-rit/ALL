@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 
 const ExpressionScore = (props) => {
   const handleNext = () => {
-    navigate("/Imagine/ExpressionExerciseEnd");
+    navigate("/Imagine/Reading");
   };
 
   return (
@@ -21,7 +21,7 @@ const ExpressionScore = (props) => {
         onClick={handleNext}
         key="start"
       >
-        Finish Exercise
+        Continue to Reading
       </button>
     </div>
   );
