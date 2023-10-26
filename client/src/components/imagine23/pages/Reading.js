@@ -17,6 +17,7 @@ import { navigate } from "@reach/router";
 const Reading = (props) => {
   const { user, labID } = props;
   const [readingData, setReadingData] = useState("");
+  const [labShortName, setLabShortname] = useState(null);
 
   const handleNext = () => {
     navigate("/Imagine/ExpressionExerciseEnd");
@@ -30,6 +31,10 @@ const Reading = (props) => {
     }
     LabService.getLabReading(labID).then((data) => {
       setReadingData(data[0].reading);
+      console.log(data[0].reading)
+    });
+    LabService.getLabShortName(labID).then((data) => {
+      setLabShortname(data[0].labShortName);
     });
   }, [user, labID]);
 
@@ -42,7 +47,15 @@ const Reading = (props) => {
   }
 
   return (
+    <div>
+      <div className="page-section">
+      <h2 className="section-heading text-uppercase">
+        {labShortName}: READING
+      </h2>
+      </div>
+    
     <div className="study">
+      
       {readingData?.description !== "" ? (
         <>
           <h3>{readingData?.description.header}</h3>
@@ -99,13 +112,13 @@ const Reading = (props) => {
       ) : (
         <></>
       )}
-
       <button
         className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
         onClick={handleNext}
       >
         Continue to Quiz
       </button>
+    </div>
     </div>
   );
 };
