@@ -9,7 +9,7 @@ import { Router } from "@reach/router";
 import { bindActionCreators } from "redux";
 import LandingPage from "./pages/landingPage";
 import MainInstructions from "./pages/mainInstructions";
-import Reading from "../body/Reading/Reading";
+import Reading from "./pages/Reading"
 
 import { default as ExerciseLab2 } from "../exercise/lab2/Main";
 import ExpressionStart from "./pages/ExpressionStart";
@@ -31,13 +31,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
 const Main = (props) => {
   const { actions, state, user } = props;
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
 
-  const [labId,setLabId] = useState(2);
+  const [labId, setLabId] = useState(2);
 
   useEffect(() => {
     if (user?.userid) {
@@ -69,7 +68,6 @@ const Main = (props) => {
       </div>
       <div className="bottomSpace">
         <Router className="app">
-
           <UpdateID
             default
             path="/UpdateID"
@@ -78,13 +76,6 @@ const Main = (props) => {
             setUserID={setUserID}
             user={user}
           />
-
-          <Reading
-            path={`/Reading`}
-            user={state.main.user}
-            labID={labId}
-          />
-          
           <LandingPage
             path="/ExperientialStart"
             actions={actions}
@@ -160,7 +151,11 @@ const Main = (props) => {
             isExperiential={false}
             userID={userID}
           />
+
+          <Reading path={`/Reading`} user={state.main.user} labID={labId} />
+          
         </Router>
+       
       </div>
     </>
   );

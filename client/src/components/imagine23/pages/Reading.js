@@ -1,20 +1,21 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from "react";
-import UserLabService from "../../../services/UserLabService";
-import LabService from "../../../services/LabService";
+import UserLabService from "./../../../services/UserLabService";
+import LabService from "./../../../services/LabService";
 import { Pie } from "react-chartjs-2";
-import useScroll from "../../../use-hooks/useScroll";
-import StudyList from "./studylist";
-import NonBulletList from "./NonBulletList";
-import Image from "./Image";
-import Spinner from "../../../common/Spinner/Spinner";
-import LinkFooter from "./LinkFooter";
-import Links from "./Links";
-import OrderedList from "./OrderedList";
+import useScroll from "./../../../use-hooks/useScroll";
+import StudyList from "../../body/Reading/studylist";
+import NonBulletList from "../../body/Reading/NonBulletList";
+import Image from "../../body/Reading/Image";
+import Spinner from "./../../../common/Spinner/Spinner";
+import LinkFooter from "../../body/Reading/LinkFooter";
+import Links from "../../body/Reading/Links";
+import OrderedList from "../../body/Reading/OrderedList";
 
 const Reading = (props) => {
   const { user, labID } = props;
   const [readingData, setReadingData] = useState("");
+
 
   useScroll();
   useEffect(() => {
@@ -93,6 +94,8 @@ const Reading = (props) => {
       ) : (
         <></>
       )}
+
+      
      
     </div>
   );
