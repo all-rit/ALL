@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import logo from "../../../../../assets/images/lab9/logo.png";
 import GameStateContext from "../../Lab9Context";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
@@ -12,10 +12,10 @@ import { navigate } from "@reach/router";
  */
 const WebpageNav = () => {
   const { exerciseState, setExerciseState } = useContext(GameStateContext);
-  
+
   const nav_repair_handler = () => {
-    setExerciseState(GAME_STATES.REPAIR_NAV_BAR)
-    navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`)
+    setExerciseState(GAME_STATES.REPAIR_NAV_BAR);
+    navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`);
   };
 
   return (
@@ -34,7 +34,11 @@ const WebpageNav = () => {
             </div>
           </div>
         </div>
-        <div value={GAME_STATES.REPAIR_NAV_BAR} onClick={nav_repair_handler} className="tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-10 tw-my-auto tw-max-md:tw-max-w-full tw-max-md:tw-flex-wrap tw-max-md:tw-justify-center tw-border-dashed tw-border-brightRed tw-p-5">
+        <div
+          value={GAME_STATES.REPAIR_NAV_BAR}
+          onClick={nav_repair_handler}
+          className="tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-10 tw-my-auto tw-max-md:tw-max-w-full tw-max-md:tw-flex-wrap tw-max-md:tw-justify-center tw-border-dashed tw-border-brightRed tw-p-5"
+        >
           <div className="tw-text-[#260D0D] tw-text-center tw-text-base">
             Careers
           </div>
