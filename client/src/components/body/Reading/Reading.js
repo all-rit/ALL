@@ -44,10 +44,14 @@ const Reading = (props) => {
       ) : (
         <></>
       )}
-      <h3>{readingData?.piechart.header}</h3>
-      <div className="flex">
-        <Pie data={readingData?.piechart.data} height={100} />
-      </div>
+      {readingData?.piechart?.header && (
+        <>
+          <h3>{readingData?.piechart.header}</h3>
+          <div className="flex">
+            <Pie data={readingData?.piechart.data} height={100} />
+          </div>
+        </>
+      )}
       {readingData?.piechart.caption !== "" ? (
         readingData?.piechart.caption.map((data, index) => {
           return (

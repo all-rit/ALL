@@ -3,7 +3,6 @@ import _ from "lodash";
 import {
   COLORS,
   IMG_SIZE,
-  SECOND,
   SIMULATION_STARTED,
   SIZE,
   SPAWN_INTERVAL,
@@ -19,9 +18,18 @@ import { RandomRoundRobin } from "round-robin-js";
 import { twMerge } from "tailwind-merge";
 
 const getHeaviestColor = (weights) => {
-  return Object.keys(weights).reduce((a, b) => {
-    return weights[a] > weights[b] ? a : b;
+  const keys = Object.keys(weights ?? {}).sort((a, b) => {
+    const weightA = weights[a],
+      weightB = weights[b];
+
+    if (weightA === weightB) {
+      return 0;
+    }
+
+    return weightA < weightB ? 1 : -1;
   });
+
+  return _.isEmpty(keys) ? "" : keys[0];
 };
 
 /**
@@ -86,8 +94,15 @@ const isTouchingY = (height, y, size) => {
 
 const ShapeSpawner = (props) => {
   const [shapes, setShapes] = useState([]);
+  const fpsRef = useRef(60);
   const intervalRef = useRef(null);
   const requestRef = useRef(null);
+
+  useEffect(() => {
+    if (props.fps !== fpsRef.current) {
+      fpsRef.current = props.fps;
+    }
+  }, [props.fps]);
 
   /**
    * Dependency on Shapes for whenever a Y value is updated.
@@ -200,11 +215,11 @@ const ShapeSpawner = (props) => {
    * Updates Shapes Y Position for smooth animation of falling shapes.
    * Takes advantage of the requestAnimationFrame API.
    */
-  const updateFallingShapes = useCallback(() => {
+  const updateFallingShapes = useCallback(async () => {
     setShapes((shapes) => {
       const newShapes = [];
       for (const shape of shapes) {
-        const newY = shape.y + (SPEED_STEP * SPEED) / SECOND;
+        const newY = shape.y + (SPEED_STEP * SPEED) / (fpsRef.current / 2);
         if (newY <= props.parentRef.current.offsetHeight) {
           newShapes.push({
             ...shape,
@@ -333,6 +348,7 @@ ShapeSpawner.propTypes = {
   handleShiftLeft: PropTypes.func,
   ai: PropTypes.bool,
   collectWeights: PropTypes.bool,
+  fps: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShapeSpawner);

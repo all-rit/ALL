@@ -18,7 +18,7 @@ const ExerciseEnd = () => {
           <div>
             <AppBar position="static" className="appBar">
               <h4 className="flex-boxes ">
-                Congratulations! You have succesfully completed the Machine
+                Congratulations! You have successfully completed the Machine
                 Learning Exercise!
               </h4>
             </AppBar>

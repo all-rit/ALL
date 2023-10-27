@@ -29,10 +29,10 @@ const ExerciseStart = (props) => {
           <p className="playthrough__sentence">
             In this exercise, the user will experience how a neural network
             based AI is trained and implemented. Through a simple game where the
-            user must avoid different colored falling balls, the user will learn
-            how the AI inherently builds bias based on the results of the game.
-            After analyzing the results, the user will then re-train the AI to
-            eliminate bias.
+            user must avoid different colored falling shapes, the user will
+            learn how the AI inherently builds bias based on the results of the
+            game. After analyzing the results, the user will then re-train the
+            AI to eliminate bias.
           </p>
         </div>
         <button

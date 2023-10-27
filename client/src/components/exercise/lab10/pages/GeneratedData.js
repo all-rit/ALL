@@ -3,15 +3,15 @@ import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { navigate } from "@reach/router";
-import AIExplanationCodeBlock from "../components/code/AIExplanationCodeBlock";
-import useScroll from "../../../../use-hooks/useScroll";
-import ExerciseService from "../../../../services/lab10/ExerciseService";
 import { twMerge } from "tailwind-merge";
 import _ from "lodash";
+import AIExplanationCodeBlock from "../components/code/AIExplanationCodeBlock";
+import useScroll from "../../../../use-hooks/useScroll";
 import { EXERCISE_PLAYING } from "../../../../constants/lab10";
+import ExerciseService from "../../../../services/lab10/ExerciseService";
+import { navigate } from "@reach/router";
 
-const AIExplanation = (props) => {
+const GeneratedData = (props) => {
   useScroll();
 
   /**
@@ -50,12 +50,16 @@ const AIExplanation = (props) => {
     return weightA < weightB ? 1 : -1;
   });
 
-  /**
-   * Redirect the user to the following page
-   * @returns {Promise} navigate promise
-   */
-  const handleNav = () => {
+  const trainAINav = () => {
     return navigate("/Lab10/Exercise/SecondTrainingAI");
+  };
+
+  const experienceAINav = () => {
+    return navigate("/Lab10/Exercise/SecondAISimulation");
+  };
+
+  const continueNav = () => {
+    return navigate("/Lab10/Reinforcement");
   };
 
   return (
@@ -63,25 +67,23 @@ const AIExplanation = (props) => {
       <Fragment>
         <div className={"center-div"}>
           <div className={"guidance margin-bottom-2"}>
+            <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
+              Below is the data you have generated for your AI. As noted
+              earlier, your goal is to hit each colored shape an equal number of
+              times. In doing so, you eliminate the bias that the AI has towards
+              a specific shape.
+            </p>
             <p className={"playthrough__sentence tw-text-center"}>
-              Did you notice something different about how the AI responded
-              during the simulation?
+              If you would like to continue with the lab, click on the{" "}
+              <b>Continue</b> button.
+            </p>
+            <p className={"playthrough__sentence tw-text-center"}>
+              If you would like to generate more data for the AI, click on the{" "}
+              <b>Train AI</b> button.
             </p>
             <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
-              Whenever there was an empty hole, the AI knew to move towards it
-              to make sure it does not get hit by any of the falling shapes.
-            </p>
-            <p className={"playthrough__sentence tw-text-center tw-mt-0"}>
-              On the other hand, when the AI was unable to find an empty hole,
-              it would move to ensure it does not get hit by a specific color.
-            </p>
-            <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
-              Based on the data you generated when playing the game, the AI
-              avoided the color that was most frequently hit.
-            </p>
-            <p className={"playthrough__sentence tw-text-center tw-mt-0"}>
-              Below is the generated data that the AI utilized during the
-              simulation.
+              If you would like to experience the AI simulation, click on the{" "}
+              <b>Experience AI</b> button.
             </p>
           </div>
           <div className={"tw-flex tw-items-center tw-justify-center tw-mb-6"}>
@@ -100,10 +102,22 @@ const AIExplanation = (props) => {
         </div>
       </Fragment>
       <AIExplanationCodeBlock />
-      <div className={"tw-mt-6 tw-flex tw-justify-end"}>
+      <div className={"tw-mt-6 tw-flex tw-justify-evenly"}>
+        <button
+          className="btn btn-second btn-xl text-uppercase"
+          onClick={trainAINav}
+        >
+          Train AI
+        </button>
+        <button
+          className="btn btn-second btn-xl text-uppercase"
+          onClick={experienceAINav}
+        >
+          Experience AI
+        </button>
         <button
           className="btn btn-primary text-black btn-xl text-uppercase"
-          onClick={handleNav}
+          onClick={continueNav}
         >
           Continue
         </button>
@@ -124,10 +138,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-AIExplanation.propTypes = {
+GeneratedData.propTypes = {
   user: PropTypes.object,
   actions: PropTypes.object,
   weights: PropTypes.object,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AIExplanation);
+export default connect(mapStateToProps, mapDispatchToProps)(GeneratedData);

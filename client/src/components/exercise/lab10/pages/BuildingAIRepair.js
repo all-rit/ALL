@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import Popup from "../../shared/Popup";
 import BuildingAICodeBlock from "../components/code/BuildingAICodeBlock";
 import { navigate } from "@reach/router";
+
 class BuildingAIRepair extends Component {
   constructor(props) {
     super(props);
@@ -46,14 +47,13 @@ class BuildingAIRepair extends Component {
           <div className={"center-div"}>
             <div className={"guidance margin-bottom-2"}>
               <p className={"playthrough__sentence tw-text-center"}>
-                Now that we have described how neural-network based AI work,
-                let&lsquo;s create our own AI using a simple exercise where you
+                Let&lsquo;s create our own AI using a simple exercise where you
                 will move a person left and right across your screen and attempt
-                to avoid different colored falling balls.
+                to avoid different colored falling shapes.
               </p>
               <p className={"playthrough__sentence tw-text-center"}>
-                First, in order to gather data, we need our person to be able to
-                move. Click the &lsquo;
+                We need to generate and collect data, but first, we need to
+                write code to make our object move. Click the &lsquo;
                 <span className={"tw-font-bold"}>Repair</span>
                 &lsquo; button to view and edit the code so that our character
                 can move left and right using the keyboard arrows.

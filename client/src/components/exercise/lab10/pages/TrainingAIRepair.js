@@ -38,7 +38,7 @@ const TrainingAIRepair = (props) => {
               Click the &lsquo;
               <span className={"tw-font-bold"}>Repair</span>
               &lsquo; button to view and edit the code. Update the simulation to
-              run for a longer duration.
+              run between 60 - 120 seconds.
             </p>
           </div>
         </div>

@@ -30,16 +30,11 @@ const TrainingAI = (props) => {
 
   useEffect(() => {
     switch (props.simulationStatus) {
-      case SIMULATION_IDLE:
-        props.actions.disableUserInput();
-        props.actions.enableSimulationCover();
-        break;
       case SIMULATION_STARTED:
-        props.actions.enableAI();
-        props.actions.disableCollectWeights();
+        props.actions.enableUserInput();
+        props.actions.disableSimulationCover();
         break;
       case SIMULATION_ENDED:
-        props.actions.disableAI();
         break;
     }
   }, [props.simulationStatus]);
@@ -50,8 +45,8 @@ const TrainingAI = (props) => {
   useEffect(() => {
     if (props.userAttempts >= MIN_USER_ATTEMPTS && !limitReached) {
       setLimitReach(true);
-      props.actions.enableSimulationCover();
       props.actions.disableUserInput();
+      props.actions.enableSimulationCover();
     }
   }, [props.userAttempts]);
 

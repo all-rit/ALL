@@ -48,7 +48,7 @@ const BuildingAI = (props) => {
         {limitReached ? (
           <Fragment>
             <p className={"playthrough__sentence"}>
-              Notice how nothing occurred? The object did not move at all.
+              Notice how nothing happened? The object did not move at all.
               <br />
               Fix this by adding some code that will allow you to move the
               object.

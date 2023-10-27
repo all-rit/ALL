@@ -22,15 +22,28 @@ const SecondTrainingAI = (props) => {
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
     props.actions.enableSimulationCover();
-    props.actions.disableUserInput();
     props.actions.idleSimulation();
+    props.actions.enableCollectWeights();
   }, []);
+
+  useEffect(() => {
+    switch (props.simulationStatus) {
+      case SIMULATION_IDLE:
+        props.actions.enableSimulationCover();
+        props.actions.disableUserInput();
+        break;
+      case SIMULATION_STARTED:
+        props.actions.enableUserInput();
+        props.actions.disableSimulationCover();
+        break;
+    }
+  }, [props.simulationStatus]);
 
   /**
    * Redirect the user to the following page
    */
   const handleContinue = () => {
-    return navigate("/Lab10/Exercise/TrainingAI/Repair");
+    return navigate("/Lab10/Exercise/GeneratedData");
   };
 
   return (

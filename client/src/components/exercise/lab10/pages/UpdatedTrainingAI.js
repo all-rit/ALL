@@ -27,6 +27,10 @@ const UpdatedTrainingAI = (props) => {
         props.actions.enableSimulationCover();
         props.actions.disableUserInput();
         break;
+      case SIMULATION_STARTED:
+        props.actions.enableUserInput();
+        props.actions.disableSimulationCover();
+        break;
     }
   }, [props.simulationStatus]);
 

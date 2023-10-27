@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 const SimulationCover = (props) => {
   const handleClick = () => {
     props.actions.disableSimulationCover();
-    props.actions.enableUserInput();
     props.actions.startSimulation();
   };
 

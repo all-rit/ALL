@@ -16,7 +16,7 @@ import ExerciseService from "../../../../services/lab10/ExerciseService";
 const Simulation = (props) => {
   // Allows the object's position to be updated when the window size is updated.
   // Utilizing this hook allows components to rerender.
-  useWindowSize();
+  const { fps } = useWindowSize();
 
   const [displayStartButton, setDisplayStartButton] = useState(true);
 
@@ -72,7 +72,6 @@ const Simulation = (props) => {
    * Updates the object's image as well.
    */
   const handleShiftRight = () => {
-    console.log(props.userInputDisabled, props.ai);
     if (!props.userInputDisabled || (props.userInputDisabled && props.ai)) {
       updatePosition(positionRef.current + STEP_COUNT);
       props.actions.setImageRight();
@@ -123,6 +122,7 @@ const Simulation = (props) => {
 
         {/* Falling object section */}
         <ShapeSpawner
+          fps={fps}
           handleShiftLeft={handleShiftLeft}
           handleShiftRight={handleShiftRight}
           parentRef={parentRef}
