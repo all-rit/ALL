@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         attemptTime: {
           type: DataTypes.DATE,
         },
+        repairCount: {
+          type: DataTypes.BIGINT,
+        },
       },
       {
         tableName: 'lab9_date_repair',
