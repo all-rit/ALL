@@ -12,7 +12,7 @@ const LiteracyExerciseStart = (props) => {
 
   const handleStart = () => {
     actions.updateState(EXERCISE_PLAYING);
-    navigate("/Lab11/Exercise/ExerciseEnd");
+    navigate("/Lab11/Exercise/InformationLetterIntroduction");
   };
 
   return (

@@ -7,6 +7,7 @@ import LiteracyExerciseEnd from "./pages/LiteracyExerciseEnd";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../reducers/lab11/ExerciseReducer";
 import { connect } from "react-redux";
+import InformationLetterIntroduction from "./pages/InformationLetterIntroduction";
 
 const Main = (props) => {
   const { user, actions } = props;
@@ -21,6 +22,11 @@ const Main = (props) => {
           <LiteracyExerciseStart
             default
             path="/"
+            user={user}
+            actions={actions}
+          />
+          <InformationLetterIntroduction
+            path="/InformationLetterIntroduction"
             user={user}
             actions={actions}
           />
