@@ -31,7 +31,10 @@ const useRepairDate = ({ user }) => {
     currentRepairState.forEach((value, index) => {
       const correctDateFormRegex = new RegExp(value.validate_expression);
       // Use regex to validate the entered string matches the correct date form
-      if (correctDateFormRegex.test(value.userInput) && value.userInput === value.validate_expression) {
+      if (
+        correctDateFormRegex.test(value.userInput) &&
+        value.userInput === value.validate_expression
+      ) {
         // Fails, so we need to display an error
         localValidArray.splice(index, 1, true);
       } else {
@@ -49,13 +52,13 @@ const useRepairDate = ({ user }) => {
       return previous.map((dateRepair) =>
         dateRepair.id === dataId
           ? {
-            ...dateRepair,
-            userInput: newValue,
-          }
+              ...dateRepair,
+              userInput: newValue,
+            }
           : dateRepair
       );
     });
-    console.log(newValue)
+    console.log(newValue);
   };
 
   const fetchRepair = async () => {

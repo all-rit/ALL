@@ -17,7 +17,6 @@ import { GAME_STATES } from "../../../../constants/lab9";
  * @returns
  */
 const LocalizationRepair = ({ user }) => {
-
   return (
     <Router className="app">
       <DateRepair path={`${GAME_STATES.REPAIR_DATE_REPAIR}`} user={user} />

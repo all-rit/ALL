@@ -14,7 +14,7 @@ import GameStateContext from "./Lab9Context";
  */
 const Main = (props) => {
   const { user = "" } = props;
-  const { userid = "2"} = user;
+  const { userid = "2" } = user;
   const [exerciseState, setExerciseState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
   );

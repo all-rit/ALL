@@ -18,9 +18,7 @@ const CodeBlockInput = (props) => {
   const { attributes } = props;
   return (
     <>
-      <input className={"p-1 code_editor__input"}
-        {...attributes}
-      />
+      <input className={"p-1 code_editor__input"} {...attributes} />
     </>
   );
 };

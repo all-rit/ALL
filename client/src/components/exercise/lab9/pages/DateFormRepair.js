@@ -54,11 +54,11 @@ const DateFormRepair = (props = {}) => {
             <CodeBlockInput
               attributes={{
                 onChange: (event) => {
-                  userInput(country.id, event.target.value)
+                  userInput(country.id, event.target.value);
                 },
                 name: country.name,
-                type:"text",
-                placeholder: "Enter Dateform Here"
+                type: "text",
+                placeholder: "Enter Dateform Here",
               }}
             />
           </CodeLine>
@@ -80,7 +80,7 @@ const DateFormRepair = (props = {}) => {
 
 CodeBlockInput.propTypes = {
   userInput: PropTypes.func,
-  dateForms: PropTypes.array
+  dateForms: PropTypes.array,
 };
 
 export default DateFormRepair;
