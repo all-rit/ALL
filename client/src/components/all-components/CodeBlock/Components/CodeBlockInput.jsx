@@ -15,12 +15,10 @@ import { PropTypes } from "prop-types";
  */
 
 const CodeBlockInput = (props) => {
-  const { attributes, onChange } = props;
+  const { attributes } = props;
   return (
     <>
-      <input
-        onChange={onChange}
-        className={"p-1 code_editor__input"}
+      <input className={"p-1 code_editor__input"}
         {...attributes}
       />
     </>

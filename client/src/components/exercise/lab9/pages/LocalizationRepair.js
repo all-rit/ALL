@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // library imports
 import React from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import { Router } from "@reach/router";
 // component imports
 import AddressRepair from "./Repairs/AddressRepair";
@@ -17,6 +17,7 @@ import { GAME_STATES } from "../../../../constants/lab9";
  * @returns
  */
 const LocalizationRepair = ({ user }) => {
+
   return (
     <Router className="app">
       <DateRepair path={`${GAME_STATES.REPAIR_DATE_REPAIR}`} user={user} />
@@ -26,8 +27,8 @@ const LocalizationRepair = ({ user }) => {
   );
 };
 
-LocalizationRepair.propTypes = {
-  user: PropTypes.string.isRequired,
-};
-
 export default LocalizationRepair;
+
+LocalizationRepair.propTypes = {
+  user: PropTypes.object.isRequired,
+};

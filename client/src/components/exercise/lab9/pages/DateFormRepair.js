@@ -8,11 +8,11 @@ import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
 import React from "react";
-//import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 //import { DateFormData } from "../../../../constants/lab9/DateFormData";
 
-const DateFormRepair = (props = {}, attributes = {}) => {
-  const { dateForms, onChange } = props;
+const DateFormRepair = (props = {}) => {
+  const { dateForms, userInput } = props;
 
   return (
     <>
@@ -52,12 +52,13 @@ const DateFormRepair = (props = {}, attributes = {}) => {
             <MultiTab numberOfTabs={3} />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
             <CodeBlockInput
-              onChange={(country, index) => onChange}
               attributes={{
-                id: country.id,
-                name: "us_dateform",
-                type: "text",
-                placeholder: "Enter Dateform Here",
+                onChange: (event) => {
+                  userInput(country.id, event.target.value)
+                },
+                name: country.name,
+                type:"text",
+                placeholder: "Enter Dateform Here"
               }}
             />
           </CodeLine>
@@ -77,6 +78,9 @@ const DateFormRepair = (props = {}, attributes = {}) => {
   );
 };
 
-CodeBlockInput.propTypes = {};
+CodeBlockInput.propTypes = {
+  userInput: PropTypes.func,
+  dateForms: PropTypes.array
+};
 
 export default DateFormRepair;

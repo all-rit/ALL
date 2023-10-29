@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { DateFormData } from "../../../../constants/lab9/DateFormData";
+import dateRepair from "../pages/Repairs/DateRepair";
 
 /**
  * usRepairDate(): is a custom hook to abstract the logic implementation for the
@@ -28,30 +29,33 @@ const useRepairDate = ({ user }) => {
     let localValidArray = [...isInputValid];
     let currentRepairState = [...exercisePromptsState];
     currentRepairState.forEach((value, index) => {
-      // use regex to validate the entered string is just characters and letters
-      if (!RegExp(value.validate_expression).test(value.userInput)) {
-        //fails so we need to display error
+      const correctDateFormRegex = new RegExp(value.validate_expression);
+      // Use regex to validate the entered string matches the correct date form
+      if (correctDateFormRegex.test(value.userInput) && value.userInput === value.validate_expression) {
+        // Fails, so we need to display an error
         localValidArray.splice(index, 1, true);
       } else {
         localValidArray.splice(index, 1, false);
       }
     });
     setIsInputValid(localValidArray);
-    console.warn(localValidArray);
+    console.log(localValidArray);
+    console.warn(exercisePromptsState);
     return localValidArray.every((v) => v === false);
   };
 
   const handleUserInputChange = (dataId, newValue) => {
     setExercisePromptsState((previous) => {
-      previous.map((dateRepair) =>
+      return previous.map((dateRepair) =>
         dateRepair.id === dataId
           ? {
-              ...dateRepair,
-              userInput: newValue,
-            }
+            ...dateRepair,
+            userInput: newValue,
+          }
           : dateRepair
       );
     });
+    console.log(newValue)
   };
 
   const fetchRepair = async () => {

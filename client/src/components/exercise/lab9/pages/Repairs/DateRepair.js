@@ -1,6 +1,6 @@
 /* eslint-disable no-empty-pattern */
 import React from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import useRepairDate from "../../hooks/useRepairDate";
 import Repair from "../../../../body/Repair/Repair";
 import {
@@ -19,8 +19,8 @@ import DateFormRepair from "../DateFormRepair";
 
 const DateRepair = ({ user }) => {
   const { data, functions } = useRepairDate(user);
-  const { exercisePromptsState, handleUserInputChange } = data;
-  const { checkInputValid } = functions;
+  const { exercisePromptsState } = data;
+  const { handleUserInputChange, checkInputValid } = functions;
   return (
     <Repair
       fileName={"DateFormat.js"}
@@ -33,7 +33,7 @@ const DateRepair = ({ user }) => {
       CodeImplementation={
         <DateFormRepair
           dateForms={exercisePromptsState}
-          onChange={handleUserInputChange}
+          userInput={handleUserInputChange}
         />
       }
       navigateNext={() => {}}
@@ -42,6 +42,6 @@ const DateRepair = ({ user }) => {
 };
 
 DateRepair.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
 export default DateRepair;
