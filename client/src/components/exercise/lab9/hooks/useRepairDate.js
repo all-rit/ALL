@@ -35,9 +35,10 @@ const useRepairDate = ({ user }) => {
         correctDateFormRegex.test(value.userInput) &&
         value.userInput === value.validate_expression
       ) {
-        // Fails, so we need to display an error
+        // Passes, so we display true in the valid array
         localValidArray.splice(index, 1, true);
       } else {
+        // Fails, so we keep the false value in the valid array
         localValidArray.splice(index, 1, false);
       }
     });
