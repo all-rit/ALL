@@ -1,17 +1,24 @@
 import { navigate } from "@reach/router";
 import React from "react";
+import { useEffect } from "react";
+import {
+  EXERCISE_PLAYING,
+  REPAIR,
+  EXERCISE_STATES,
+} from "../../../../../constants/lab11";
 import PropTypes from "prop-types";
 
-const LiteracyExerciseEnd = (props) => {
+const FogIndexFormulaSentences = (props) => {
   const { actions } = props;
 
-  const handleFinish = () => {
-    actions.updateState("EXERCISE_IDLE");
-    navigate("/Lab11/Reinforcement");
-  };
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
 
-  const handleTryAgain = () => {
-    navigate("/Lab11/Exercise/InformationLetterFogIndexFormula");
+  const handleContinue = () => {
+    navigate(
+      `/Lab11/Exercise${REPAIR}/${EXERCISE_STATES.REPAIR_SENTENCE_COUNT}`
+    );
   };
 
   return (
@@ -36,35 +43,22 @@ const LiteracyExerciseEnd = (props) => {
         tincidunt. Suspendisse potenti. In gravida interdum lacinia.
       </div>
       <div className="playthrough__sentence">
-        Click the &quot;Try Again&quot; button. To mess arround with your Fog
-        Index Calulator
-      </div>
-      <div className="playthrough__sentence">
-        Otherwise click the &quot;Finish Exercise&quot; button to complete this
-        exercise!
+        Click the &quot;Continue to Repair&quot; button.
       </div>
       <div className="tw-flex tw-justify-evenly">
         <button
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-          onClick={handleTryAgain}
-          key="repair"
-        >
-          Try Again
-        </button>
-        <button
           className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={handleFinish}
+          onClick={handleContinue}
           key="start"
         >
-          Finish Exercise
+          Continue to Repair
         </button>
       </div>
     </div>
   );
 };
 
-LiteracyExerciseEnd.propTypes = {
+FogIndexFormulaSentences.propTypes = {
   actions: PropTypes.object,
 };
-
-export default LiteracyExerciseEnd;
+export default FogIndexFormulaSentences;

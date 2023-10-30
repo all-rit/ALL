@@ -5,7 +5,9 @@ import signature from "../../../../assets/images/lab11/signature.png";
 import { useContext } from "react";
 import ExerciseStateContext from "../Lab11Context";
 
-const Letter = (props) => {
+import PropTypes from "prop-types";
+
+const Letter = ({ isEditable }) => {
   const {
     letterContent,
     setLetterContent,
@@ -137,7 +139,7 @@ const Letter = (props) => {
             <div
               id="editable-letter"
               aria-label="Please edit the letter below to change fog index."
-              contentEditable="true"
+              contentEditable={isEditable}
               suppressContentEditableWarning={true}
               tabIndex={0}
               className={`tw-px-2 tw-text-black tw-text-xl tw-font-medium tw-break-words tw-text-start `}
@@ -198,6 +200,10 @@ const Letter = (props) => {
       <div className="tw-w-full tw-h-10 tw-bg-[#431407]" />
     </div>
   );
+};
+
+Letter.propTypes = {
+  isEditable: PropTypes.boolean,
 };
 
 export default Letter;

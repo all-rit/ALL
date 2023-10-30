@@ -1,19 +1,22 @@
 import { navigate } from "@reach/router";
 import React from "react";
-import Letter from "../components/Letter";
+import Letter from "../../components/Letter";
 import { useEffect } from "react";
-import { EXERCISE_PLAYING } from "../../../../constants/lab11";
+import { EXERCISE_PLAYING } from "../../../../../constants/lab11";
 import PropTypes from "prop-types";
+import useScroll from "../../../../../use-hooks/useScroll";
 
-const InformationLetterIntroduction = (props) => {
+const InformationLetterComplexWords = (props) => {
   const { actions } = props;
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, []);
 
+  useScroll();
+
   const handleContinue = () => {
-    navigate("/Lab11/Exercise/ExerciseEnd");
+    navigate("/Lab11/Exercise/FogIndexFormulaConclusion");
   };
 
   return (
@@ -52,7 +55,7 @@ const InformationLetterIntroduction = (props) => {
       </div>
 
       <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
+        className="btn btn-primary text-black btn-xl text-uppercase tw-mt-5"
         onClick={handleContinue}
         key="start"
       >
@@ -62,7 +65,7 @@ const InformationLetterIntroduction = (props) => {
   );
 };
 
-InformationLetterIntroduction.propTypes = {
+InformationLetterComplexWords.propTypes = {
   actions: PropTypes.object,
 };
-export default InformationLetterIntroduction;
+export default InformationLetterComplexWords;

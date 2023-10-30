@@ -1,8 +1,18 @@
 const LAB_ID = 11;
 const EXERCISE_PLAYING = "EXERCISE_PLAYING";
 const EXERCISE_IDLE = "EXERCISE_IDLE";
+const REPAIR = "/ExerciseRepair";
+const EXERCISE_PATH = "/Lab11/Exercise";
 
-const EXERCISE_STATES = {};
+const REPAIR_WORD_COUNT = "WordCount";
+const REPAIR_SENTENCE_COUNT = "SentenceCount";
+const REPAIR_COMPLEX_WORDS = "Nav-Bar-Repair";
+
+const EXERCISE_STATES = {
+  REPAIR_WORD_COUNT,
+  REPAIR_SENTENCE_COUNT,
+  REPAIR_COMPLEX_WORDS,
+};
 
 const LETTER_TEXT = `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
@@ -42,4 +52,6 @@ export {
   EXERCISE_IDLE,
   EXERCISE_STATES,
   LETTER_TEXT,
+  REPAIR,
+  EXERCISE_PATH,
 };
