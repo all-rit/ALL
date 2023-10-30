@@ -22,7 +22,6 @@ const Webpage = () => {
           src={uni}
           className="tw-absolute tw-h-full tw-w-full tw-object-cover tw-object-center"
         />
-        {/* will want a button around the navbar that routes to navbar repair */}
         <WebpageNav />
         <WebpageHeader />
         <div className="tw-relative tw-bg-[#260D0D] tw-flex tw-w-full tw-flex-col tw-mt-60 tw-px-5">
