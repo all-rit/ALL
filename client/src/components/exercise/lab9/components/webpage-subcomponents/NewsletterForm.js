@@ -10,14 +10,16 @@ import { GAME_STATES } from "../../../../../constants/lab9";
  */
 const WebpageForm = () => {
   // eslint-disable-next-line no-unused-vars
-  const [gameState, setGameState] = useState(GAME_STATES.EXERCISE_SELECTION_DEFAULT)
+  const [gameState, setGameState] = useState(
+    GAME_STATES.EXERCISE_SELECTION_DEFAULT
+  );
   const updateState = (newState) => {
-    setGameState(newState)
-  }
+    setGameState(newState);
+  };
   const handleNav = (path) => {
     updateState(path);
     navigate(`/Lab9/Exercise/GameRepair/${path}`);
-  }
+  };
 
   return (
     <div className="tw-flex tw-flex-col tw-items-stretch tw-ml-5">
@@ -26,7 +28,10 @@ const WebpageForm = () => {
           <div className="tw-flex tw-w-[723px] tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-max-md:flex-wrap">
             <div className="tw-bg-gray tw-self-center tw-w-[577px] tw-h-[5px] tw-grow tw-shrink-0 tw-basis-auto tw-my-auto tw-max-md:tw-max-w-full" />
             {/* will want a button around the date here that routes to the date repair */}
-            <div onClick={() => handleNav(GAME_STATES.REPAIR_DATE_REPAIR)} className="tw-text-[#260D0D] tw-cursor-pointer hover:tw-bg-labYellow tw-rounded-xl tw-border-solid tw-bw-5 tw-p-5 tw-text-center tw-text-2xl tw-mr-5">
+            <div
+              onClick={() => handleNav(GAME_STATES.REPAIR_DATE_REPAIR)}
+              className="tw-text-[#260D0D] tw-cursor-pointer hover:tw-bg-labYellow tw-rounded-xl tw-border-solid tw-bw-5 tw-p-5 tw-text-center tw-text-2xl tw-mr-5"
+            >
               8/28/2027
             </div>
           </div>
@@ -43,10 +48,15 @@ const WebpageForm = () => {
             with all that&apos;s happening here at ALL University.
           </div>
           {/* will want a button around this section that leads to the address form repair */}
-          <div onClick={() => handleNav(GAME_STATES.REPAIR_ADDRESS_FORM)} className={"tw-cursor-pointer hover:tw-bg-labYellow tw-rounded-xl tw-mt-5 tw-border-solid tw-p-5"}>
+          <div
+            onClick={() => handleNav(GAME_STATES.REPAIR_ADDRESS_FORM)}
+            className={
+              "tw-cursor-pointer hover:tw-bg-labYellow tw-rounded-xl tw-mt-5 tw-border-solid tw-p-5"
+            }
+          >
             <div className="tw-flex tw-w-[717px] tw-max-w-full tw-items-start tw-gap-2.5">
               <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-w-[113px] tw-my-auto tw-mt-0">
-              Address Line
+                Address Line
               </div>
               <div className="tw-self-stretch tw-flex tw-w-[612px] tw-h-[31px] tw-flex-col tw-grow tw-shrink-0 tw-basis-auto tw-border-[3px] tw-border-solid tw-border-black tw-max-md:max-w-full" />
             </div>
