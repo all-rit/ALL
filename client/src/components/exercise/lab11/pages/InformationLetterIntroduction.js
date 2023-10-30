@@ -1,8 +1,17 @@
 import { navigate } from "@reach/router";
 import React from "react";
 import Letter from "../components/Letter";
+import { useEffect } from "react";
+import { EXERCISE_PLAYING } from "../../../../constants/lab11";
+import PropTypes from "prop-types";
 
-const InformationLetterIntroduction = () => {
+const InformationLetterIntroduction = (props) => {
+  const { actions } = props;
+
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
+
   const handleContinue = () => {
     navigate("/Lab11/Exercise/ExerciseEnd");
   };
@@ -16,8 +25,29 @@ const InformationLetterIntroduction = () => {
       </div>
 
       <div className="tw-flex flex-col tw-justify-center">
-        <div className="tw-w-full tw-h-auto tw-bg-white tw-rounded-2xl tw-shadow tw-py-5">
-          <Letter />
+        <div className="tw-w-full tw-h-auto tw-bg-[#E8EBED] tw-rounded-2xl tw-shadow tw-py-5 tw-flex tw-flex-col">
+          <div className="tw-flex tw-justify-center">
+            <div className={`tw-w-[90%] tw-flex tw-flex-col`}>
+              <div
+                className={`tw-text-xl tw-self-start tw-my-4 tw-mb-5 tw-font-bold`}
+              >
+                New Message
+              </div>
+            </div>
+          </div>
+          <div className="tw-bg-white tw-flex tw-justify-center tw-pt-4">
+            <div className={`tw-w-[90%] tw-flex tw-flex-col `}>
+              <div className={`tw-opacity-50 tw-text-xl tw-self-start`}>
+                Recipents
+              </div>
+              <div className="tw-w-full tw-mx-auto tw-bg-[#B4B4B4] tw-h-[2px] tw-my-4 tw-opacity-40" />
+              <div className={`tw-opacity-50 tw-text-xl tw-self-start`}>
+                Subject
+              </div>
+              <div className="tw-w-full tw-mx-auto tw-bg-[#B4B4B4] tw-h-[2px] tw-my-4 tw-opacity-40" />
+              <Letter />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -32,4 +62,7 @@ const InformationLetterIntroduction = () => {
   );
 };
 
+InformationLetterIntroduction.propTypes = {
+  actions: PropTypes.object,
+};
 export default InformationLetterIntroduction;

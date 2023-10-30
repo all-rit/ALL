@@ -1,9 +1,73 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import grad_hat from "../../../../assets/images/lab11/grad_hat.png";
 import signature from "../../../../assets/images/lab11/signature.png";
+import { useContext } from "react";
+import ExerciseStateContext from "../Lab11Context";
 
 const Letter = (props) => {
+  const {
+    letterContent,
+    setLetterContent,
+    totalWords,
+    setTotalWords,
+    totalSentences,
+    setTotalSentences,
+    totalComplexWords,
+    setTotalComplexWords,
+    fogIndex,
+    setFogIndex,
+  } = useContext(ExerciseStateContext);
+
+  function countSyllables(word) {
+    let syllableCount = 0;
+    const vowels = new Set(["a", "e", "i", "o", "u", "y"]);
+
+    if (vowels.has(word[0])) {
+      syllableCount++;
+    }
+
+    for (let i = 1; i < word.length; i++) {
+      if (vowels.has(word[i]) && !vowels.has(word[i - 1])) {
+        syllableCount++;
+      }
+    }
+
+    if (word.endsWith("e")) {
+      syllableCount--;
+    }
+
+    if (
+      word.endsWith("le") &&
+      word.length > 2 &&
+      !vowels.has(word[word.length - 3])
+    ) {
+      syllableCount++;
+    }
+
+    if (syllableCount === 0) {
+      syllableCount++;
+    }
+
+    return syllableCount;
+  }
+
+  useEffect(() => {
+    let words = letterContent.split(" ").length;
+    let sentences = letterContent.split(".").length;
+    let complex = letterContent
+      .split(" ")
+      .filter((word) => countSyllables(word) > 3).length;
+    let fogIndex = (
+      0.4 *
+      (words / sentences + 100 * (complex / words))
+    ).toFixed(4);
+    setTotalWords(words);
+    setTotalSentences(sentences);
+    setTotalComplexWords(complex);
+    setFogIndex(fogIndex);
+  }, [letterContent]);
+
   return (
     <div className={`tw-w-full tw-h-auto`}>
       {/* Letter Header */}
@@ -18,7 +82,7 @@ const Letter = (props) => {
               <img className={`tw-w-9 tw-h-9 tw-m-2`} src={grad_hat} />
               <div className={`tw-bg-[#431407] tw-h-3 tw-w-full`} />
             </div>
-            <div className={`tw-bg-white tw-w-3 tw-h-[76px]`} />
+            <div className={`tw-w-3 tw-h-[76px]`} />
           </div>
           <div
             className={`tw-text-[#1c1917] tw-text-4xl tw-font-light tw-break-words`}
@@ -31,9 +95,9 @@ const Letter = (props) => {
           className={`tw-w-1/3 md:tw-w-1/2 tw-h-auto tw-flex tw-flex-row max-sm:tw-hidden`}
         >
           <div className={`tw-flex tw-flex-col tw-w-2/3`}>
-            <div className={`tw-h-[42.5%] tw-bg-white`} />
+            <div className={`tw-h-[42.5%] `} />
             <div className={`tw-h-[15%] tw-bg-[#431407]`} />
-            <div className={`tw-h-[42.5%] tw-bg-white`} />
+            <div className={`tw-h-[42.5%] `} />
           </div>
           <div
             className={`tw-bg-[#431407] tw-w-1/3 tw-h-[65%] tw-self-center`}
@@ -43,7 +107,7 @@ const Letter = (props) => {
       {/* Letter Content */}
       <div className={`tw-flex tw-w-full tw-flex-row tw-h-auto`}>
         <div className="tw-flex tw-flex-col tw-w-[5%]">
-          <div className="tw-h-1/3 tw-bg-white" />
+          <div className="tw-h-1/3 " />
           <div className="tw-h-2/3 tw-bg-[#431407]" />
         </div>
         <div className="tw-w-[90%] tw-flex tw-justify-center">
@@ -64,9 +128,23 @@ const Letter = (props) => {
             >
               Dear Lorem,
             </div>
+            <div className="tw-flex tw-flex-row tw-w-full tw-space-x-6 tw-py-6 tw-text-2xl">
+              <div>Total Words: {totalWords}</div>
+              <div>Total Sentences: {totalSentences}</div>
+              <div>Total Complex Words: {totalComplexWords}</div>
+              <div>Fog Index: {fogIndex}</div>
+            </div>
             <div
-              className={`tw-px-2 tw-text-black tw-text-xl tw-font-medium tw-break-words tw-text-start`}
+              id="editable-letter"
+              aria-label="Please edit the letter below to change fog index."
+              contentEditable="true"
+              suppressContentEditableWarning={true}
+              tabIndex={0}
+              className={`tw-px-2 tw-text-black tw-text-xl tw-font-medium tw-break-words tw-text-start `}
               style={{ fontFamily: "Kumbh Sans" }}
+              onInput={(e) => {
+                setLetterContent(e.target.innerText);
+              }}
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
               eros tellus, hendrerit quis iaculis non, blandit eget turpis. Sed
@@ -113,7 +191,7 @@ const Letter = (props) => {
           </div>
         </div>
         <div className="tw-flex tw-flex-col tw-w-[5%]">
-          <div className="tw-h-1/3 tw-bg-white" />
+          <div className="tw-h-1/3 " />
           <div className="tw-h-2/3 tw-bg-[#431407]" />
         </div>
       </div>

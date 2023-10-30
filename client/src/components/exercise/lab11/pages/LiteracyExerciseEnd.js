@@ -59,7 +59,7 @@ const LiteracyExerciseEnd = (props) => {
 };
 
 LiteracyExerciseEnd.propTypes = {
-  actions: PropTypes.string,
+  actions: PropTypes.object,
 };
 
 export default LiteracyExerciseEnd;
