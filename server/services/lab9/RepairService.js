@@ -54,8 +54,9 @@ async function getRepair(data, modelSelectorStr) {
 /**
  * submitRepair(): is a function that is responsible for
  * recording a users repair changes.
- * @param {Object} data
- * @param {String} modelSelectorStr
+ * @param {Object} data Object containing body of the request
+ * @param {String} modelSelectorStr allows for the dynamic
+ * assignment for the correct service
  * @return {Number} repair id to show it is created
  */
 async function submitRepair(data, modelSelectorStr) {
