@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // library imports
 import React from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import { Router } from "@reach/router";
 // component imports
 import AddressRepair from "./Repairs/AddressRepair";
@@ -26,8 +26,8 @@ const LocalizationRepair = ({ user }) => {
   );
 };
 
-LocalizationRepair.propTypes = {
-  user: PropTypes.string.isRequired,
-};
-
 export default LocalizationRepair;
+
+LocalizationRepair.propTypes = {
+  user: PropTypes.object.isRequired,
+};

@@ -25,6 +25,7 @@ const CodeBlockInput = (props) => {
 
 CodeBlockInput.propTypes = {
   attributes: PropTypes.object,
+  onChange: PropTypes.function,
 };
 
 export default CodeBlockInput;
