@@ -22,7 +22,6 @@ const SentenceCountRepair = (user = "") => {
     <Repair
       path={`${REPAIR}/${EXERCISE_STATES.REPAIR_SENTENCE_COUNT}`}
       CodeImplementation={() => {}}
-      nCodeImplementation={() => {}}
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/InformationLetterSentenceCount`);
       }}

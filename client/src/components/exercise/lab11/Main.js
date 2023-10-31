@@ -1,24 +1,20 @@
 import React, { useState } from "react";
 import ExerciseStateContext from "./Lab11Context";
 import PropTypes from "prop-types";
-import { Router } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import LiteracyExerciseStart from "./pages/LiteracyExerciseStart";
 import LiteracyExerciseEnd from "./pages/LiteracyExerciseEnd";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../reducers/lab11/ExerciseReducer";
 import { connect } from "react-redux";
-import InformationLetterIntroduction from "./pages/InformationLetters/InformationLetterIntroduction";
+import InformationLetterEmail from "./pages/InformationLetterEmail";
 import { LETTER_TEXT, REPAIR } from "../../../constants/lab11";
 import FogIndexFormulaIntroduction from "./pages/Explanations/FogIndexFormulaIntroduction";
 import useScroll from "../../../use-hooks/useScroll";
 import LiteracyRepair from "./pages/LiteracyRepair";
-import InformationLetterWordCount from "./pages/InformationLetters/InformationLetterWordCount";
 import FogIndexFormulaSentences from "./pages/Explanations/FogIndexFormulaSetences";
-import InformationLetterSentences from "./pages/InformationLetters/InformationLetterSentences";
 import FogIndexFormulaComplexWords from "./pages/Explanations/FogIndexFormulaComplexWords";
-import InformationLetterComplexWords from "./pages/InformationLetters/InformationLetterComplexWords";
 import FogIndexFormulaConclusion from "./pages/Explanations/FogIndexFormulaConclusion";
-import InformationLetterFogIndexFormula from "./pages/InformationLetters/InformationLetterFogIndexFormula";
 
 const Main = (props) => {
   const { user, actions } = props;
@@ -57,10 +53,19 @@ const Main = (props) => {
             actions={actions}
           />
 
-          <InformationLetterIntroduction
+          <LiteracyRepair path={`${REPAIR}/*`} user={user} actions={actions} />
+
+          <InformationLetterEmail
             path="/InformationLetterIntroduction"
             user={user}
             actions={actions}
+            words={false}
+            sentences={false}
+            complexWords={false}
+            isEditable={false}
+            handleContinue={() =>
+              navigate("/Lab11/Exercise/FogIndexFormulaIntroduction")
+            }
           />
 
           <FogIndexFormulaIntroduction
@@ -68,12 +73,18 @@ const Main = (props) => {
             user={user}
             actions={actions}
           />
-          <LiteracyRepair path={`${REPAIR}/*`} user={user} actions={actions} />
 
-          <InformationLetterWordCount
+          <InformationLetterEmail
             path="/InformationLetterWordCount"
             user={user}
             actions={actions}
+            words
+            sentences={false}
+            complexWords={false}
+            isEditable={false}
+            handleContinue={() =>
+              navigate("/Lab11/Exercise/FogIndexFormulaSentences")
+            }
           />
 
           <FogIndexFormulaSentences
@@ -82,10 +93,17 @@ const Main = (props) => {
             actions={actions}
           />
 
-          <InformationLetterSentences
+          <InformationLetterEmail
             path="/InformationLetterSentenceCount"
             user={user}
             actions={actions}
+            words
+            sentences
+            complexWords={false}
+            isEditable={false}
+            handleContinue={() =>
+              navigate("/Lab11/Exercise/FogIndexFormulaComplexWords")
+            }
           />
 
           <FogIndexFormulaComplexWords
@@ -94,10 +112,17 @@ const Main = (props) => {
             actions={actions}
           />
 
-          <InformationLetterComplexWords
+          <InformationLetterEmail
             path="/InformationLetterComplexWordCount"
             user={user}
             actions={actions}
+            words
+            sentences
+            complexWords
+            isEditable={false}
+            handleContinue={() =>
+              navigate("/Lab11/Exercise/FogIndexFormulaConclusion")
+            }
           />
 
           <FogIndexFormulaConclusion
@@ -106,10 +131,15 @@ const Main = (props) => {
             actions={actions}
           />
 
-          <InformationLetterFogIndexFormula
+          <InformationLetterEmail
             path="/InformationLetterFogIndexFormula"
             user={user}
             actions={actions}
+            words
+            sentences
+            complexWords
+            isEditable
+            handleContinue={() => navigate("/Lab11/Exercise/ExerciseEnd")}
           />
 
           <LiteracyExerciseEnd

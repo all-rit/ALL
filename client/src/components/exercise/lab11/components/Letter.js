@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React from "react";
 import grad_hat from "../../../../assets/images/lab11/grad_hat.png";
 import signature from "../../../../assets/images/lab11/signature.png";
 import { useContext } from "react";
@@ -7,75 +6,21 @@ import ExerciseStateContext from "../Lab11Context";
 
 import PropTypes from "prop-types";
 
+/**
+ * React component for rendering a letter with editable content and displaying its total words, total sentences, total complex words, and fog index.
+ * @param {Object} props - The props object containing the isEditable boolean value.
+ * @param {boolean} props.isEditable - A boolean value indicating whether the letter content is editable or not.
+ * @returns {JSX.Element} - The JSX element representing the Letter component.
+ */
 const Letter = ({ isEditable }) => {
-  const {
-    letterContent,
-    setLetterContent,
-    totalWords,
-    setTotalWords,
-    totalSentences,
-    setTotalSentences,
-    totalComplexWords,
-    setTotalComplexWords,
-    fogIndex,
-    setFogIndex,
-  } = useContext(ExerciseStateContext);
-
-  function countSyllables(word) {
-    let syllableCount = 0;
-    const vowels = new Set(["a", "e", "i", "o", "u", "y"]);
-
-    if (vowels.has(word[0])) {
-      syllableCount++;
-    }
-
-    for (let i = 1; i < word.length; i++) {
-      if (vowels.has(word[i]) && !vowels.has(word[i - 1])) {
-        syllableCount++;
-      }
-    }
-
-    if (word.endsWith("e")) {
-      syllableCount--;
-    }
-
-    if (
-      word.endsWith("le") &&
-      word.length > 2 &&
-      !vowels.has(word[word.length - 3])
-    ) {
-      syllableCount++;
-    }
-
-    if (syllableCount === 0) {
-      syllableCount++;
-    }
-
-    return syllableCount;
-  }
-
-  useEffect(() => {
-    let words = letterContent.split(" ").length;
-    let sentences = letterContent.split(".").length;
-    let complex = letterContent
-      .split(" ")
-      .filter((word) => countSyllables(word) > 3).length;
-    let fogIndex = (
-      0.4 *
-      (words / sentences + 100 * (complex / words))
-    ).toFixed(4);
-    setTotalWords(words);
-    setTotalSentences(sentences);
-    setTotalComplexWords(complex);
-    setFogIndex(fogIndex);
-  }, [letterContent]);
+  const { setLetterContent } = useContext(ExerciseStateContext);
 
   return (
-    <div className={`tw-w-full tw-h-auto`}>
+    <div className={`tw-w-full tw-h-full`}>
       {/* Letter Header */}
-      <div className={`tw-my-8 tw-flex tw-flex-row tw-w-full`}>
+      <div className={`tw-h-ful tw-my-8 tw-flex tw-flex-row tw-w-full`}>
         <div
-          className={`tw-w-full md:tw-w-1/2 sm:tw-px-5 tw-flex tw-flex-row sm:tw-space-x-6 tw-items-center`}
+          className={`tw-w-full tw-h-full md:tw-w-1/2 sm:tw-px-5 tw-flex tw-flex-row sm:tw-space-x-6 tw-items-center`}
         >
           <div className={`tw-flex tw-flex-row tw-h-full tw-items-center`}>
             <div className={`tw-bg-[#431407] tw-w-3 tw-h-[76px]`} />
@@ -94,7 +39,7 @@ const Letter = ({ isEditable }) => {
           </div>
         </div>
         <div
-          className={`tw-w-1/3 md:tw-w-1/2 tw-h-auto tw-flex tw-flex-row max-sm:tw-hidden`}
+          className={`tw-w-1/3 md:tw-w-1/2 tw-h-full tw-flex tw-flex-row max-sm:tw-hidden`}
         >
           <div className={`tw-flex tw-flex-col tw-w-2/3`}>
             <div className={`tw-h-[42.5%] `} />
@@ -108,7 +53,7 @@ const Letter = ({ isEditable }) => {
       </div>
       {/* Letter Content */}
       <div className={`tw-flex tw-w-full tw-flex-row tw-h-auto`}>
-        <div className="tw-flex tw-flex-col tw-w-[5%]">
+        <div className="tw-h-auto tw-flex tw-flex-col tw-w-[5%]">
           <div className="tw-h-1/3 " />
           <div className="tw-h-2/3 tw-bg-[#431407]" />
         </div>
@@ -129,12 +74,6 @@ const Letter = ({ isEditable }) => {
               style={{ fontFamily: "Kumbh Sans" }}
             >
               Dear Lorem,
-            </div>
-            <div className="tw-flex tw-flex-row tw-w-full tw-space-x-6 tw-py-6 tw-text-2xl">
-              <div>Total Words: {totalWords}</div>
-              <div>Total Sentences: {totalSentences}</div>
-              <div>Total Complex Words: {totalComplexWords}</div>
-              <div>Fog Index: {fogIndex}</div>
             </div>
             <div
               id="editable-letter"
@@ -192,12 +131,12 @@ const Letter = ({ isEditable }) => {
             />
           </div>
         </div>
-        <div className="tw-flex tw-flex-col tw-w-[5%]">
+        <div className="tw-h-auto tw-flex tw-flex-col tw-w-[5%]">
           <div className="tw-h-1/3 " />
           <div className="tw-h-2/3 tw-bg-[#431407]" />
         </div>
       </div>
-      <div className="tw-w-full tw-h-10 tw-bg-[#431407]" />
+      <div className="tw-w-full tw--mt-1 tw-h-10 tw-bg-[#431407]" />
     </div>
   );
 };
