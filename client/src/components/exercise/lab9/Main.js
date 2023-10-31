@@ -24,7 +24,7 @@ const Main = (props) => {
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
           <LocalizationRepair user={userid} path={`${REPAIR}/*`} />
-          <ContextTester user={ userid } path={"/Context"} />
+          <ContextTester user={userid} path={"/Context"} />
         </Router>
       </GameStateContext.Provider>
     </div>

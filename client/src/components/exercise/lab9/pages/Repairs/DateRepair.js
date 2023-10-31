@@ -9,7 +9,10 @@ import {
   REPAIR,
 } from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
-import {RepairService, endpoints } from "../../../../../services/lab9/RepairService"
+import {
+  RepairService,
+  endpoints,
+} from "../../../../../services/lab9/RepairService";
 /**
  * Date Repair is a component that is responsible for passing logic into the universal
  * repair page component, what this allows us to do is call the re-useable repair component
@@ -19,7 +22,13 @@ import {RepairService, endpoints } from "../../../../../services/lab9/RepairServ
  */
 
 const DateRepair = ({ user }) => {
-  const { data, functions } = useRepairData(user, RepairService.getRepair, RepairService.submitRepair, endpoints.GET_DATE_REPAIR, endpoints.POST_DATE_REPAIR );
+  const { data, functions } = useRepairData(
+    user,
+    RepairService.getRepair,
+    RepairService.submitRepair,
+    endpoints.GET_DATE_REPAIR,
+    endpoints.POST_DATE_REPAIR
+  );
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid } = functions;
   return (

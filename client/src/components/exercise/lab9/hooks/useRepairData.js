@@ -15,7 +15,7 @@ const useRepairData = (props) => {
   const { userid = "2" } = user;
   const [exercisePromptsState, setExercisePromptsState] = useState([]);
   const [isInputValid, setIsInputValid] = useState([]);
-  const [repairCount] = useState(0)
+  const [repairCount] = useState(0);
 
   /**
    * checkInputValid(): is a function that is intended on handling the logic to
@@ -58,15 +58,15 @@ const useRepairData = (props) => {
     });
     console.log(newValue);
   };
-    
-    const fetchRepair = async () => {
-      try {
-          const repair = await getRepairData(user, getRoute);
-          setExercisePromptsState(repair);
-          setIsInputValid(new Array(repair.length).fill(false));
-      } catch (error) {
-            console.error(error)
-      }
+
+  const fetchRepair = async () => {
+    try {
+      const repair = await getRepairData(user, getRoute);
+      setExercisePromptsState(repair);
+      setIsInputValid(new Array(repair.length).fill(false));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const postRepair = async () => {
@@ -75,12 +75,12 @@ const useRepairData = (props) => {
         userId: userid,
         repair: exercisePromptsState,
         isComplete: isInputValid,
-        numRepair: repairCount
-      }
+        numRepair: repairCount,
+      };
       const repairID = await postRepairData(body, postRoute);
       return repairID;
     } catch (error) {
-        console.error(error)
+      console.error(error);
     }
   };
 
@@ -92,7 +92,7 @@ const useRepairData = (props) => {
       setIsInputValid,
       handleUserInputChange,
       postRepair,
-      fetchRepair
+      fetchRepair,
     },
   };
 };
