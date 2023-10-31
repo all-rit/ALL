@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { DateFormData } from "../../../../constants/lab9/DateFormData";
-
 
 /**
- * usRepairDate(): is a custom hook to abstract the logic implementation for the
+ * usRepairData(): is a custom hook to abstract the logic implementation for the
  * repair portion of the localization lab. This allows for conditional behavior of
  * initializing the custom behavior for validating and managing state during the
  * date repair portion of the lab
@@ -12,13 +10,12 @@ import { DateFormData } from "../../../../constants/lab9/DateFormData";
  * @param {Object} user to pass in a user into the hook to better prepare data.
  * @returns {Object} of function calls to hooks and fetched user data.
  */
-const useRepairDate = ({ user }) => {
-  const [exercisePromptsState, setExercisePromptsState] = useState(
-    DateFormData.countries
-  );
-  const [isInputValid, setIsInputValid] = useState(
-    new Array(DateFormData.countries.length).fill(false)
-  );
+const useRepairData = (props) => {
+  const { user, getRepairData, postRepairData, getRoute, postRoute } = props;
+  const { userid = "2" } = user;
+  const [exercisePromptsState, setExercisePromptsState] = useState([]);
+  const [isInputValid, setIsInputValid] = useState([]);
+  const [repairCount] = useState(0)
 
   /**
    * checkInputValid(): is a function that is intended on handling the logic to
@@ -61,13 +58,30 @@ const useRepairDate = ({ user }) => {
     });
     console.log(newValue);
   };
-
-  const fetchRepair = async () => {
-    console.log(user);
+    
+    const fetchRepair = async () => {
+      try {
+          const repair = await getRepairData(user, getRoute);
+          setExercisePromptsState(repair);
+          setIsInputValid(new Array(repair.length).fill(false));
+      } catch (error) {
+            console.error(error)
+      }
   };
 
   const postRepair = async () => {
-    console.log(user);
+    try {
+      const body = {
+        userId: userid,
+        repair: exercisePromptsState,
+        isComplete: isInputValid,
+        numRepair: repairCount
+      }
+      const repairID = await postRepairData(body, postRoute);
+      return repairID;
+    } catch (error) {
+        console.error(error)
+    }
   };
 
   return {
@@ -77,7 +91,9 @@ const useRepairDate = ({ user }) => {
       setExercisePromptsState,
       setIsInputValid,
       handleUserInputChange,
+      postRepair,
+      fetchRepair
     },
   };
 };
-export default useRepairDate;
+export default useRepairData;
