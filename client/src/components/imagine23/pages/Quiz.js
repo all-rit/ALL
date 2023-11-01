@@ -246,7 +246,7 @@ const QuizHandler = (props) => {
     <>
       {!quizCompleted ? (
         <>
-        <Quiz
+          <Quiz
             answer={""}
             answerOptions={answerOption}
             disable={disableNext}
@@ -258,34 +258,31 @@ const QuizHandler = (props) => {
             questionId={currentQuestionCursor + 1}
             question={questions[currentQuestionCursor].question}
             questionTotal={questions.length}
-        >
-        </Quiz>
-        <button
+          ></Quiz>
+          <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={() => handleQuizButton("Reading")}>
+            onClick={() => handleQuizButton("Reading")}
+          >
             Previous Reading
-        </button></>
-      )   
-      
-      : 
-      
-    (
-    <><Result
+          </button>
+        </>
+      ) : (
+        <>
+          <Result
             hideCertificate={props.hideCertificate}
             quizResult={result * 100 + "%"}
             quizScore={100}
             selectedAnswers={selectedAnswers}
             quizQuestions={questions}
             lab={currentLabId}
-        ></Result>
-        
-    <button 
-    className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-    //should be post survey component
-    onClick={()=> handleQuizButton("ExerciseEnd")}
-    >
-    Continue to Post Survey
-    </button>
+          ></Result>    
+          <button 
+            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+            //should be post survey component
+            onClick={()=> handleQuizButton("ExerciseEnd")}
+          >
+            Continue to Post Survey
+          </button>
         </>
       )}
     </>

@@ -136,12 +136,25 @@ const Main = (props) => {
               count={count}
               userID={userID}
             />
+            <Reading 
+              path={`/Reading`} 
+              user={state.main.user} 
+              labID={labId} 
+            />
             <ExerciseEnd
               path="/ExperientialExerciseEnd"
               actions={actions}
               state={state}
               isExperiential
               userID={userID}
+            />
+            <Quiz 
+              path={`/Quiz`}
+              labId={labId}
+              user={state.main.user}
+              isFinalQuiz
+              hideCertificate={false}
+              submitData={() => {}}
             />
             <ExerciseEnd
               path="/ExpressionExerciseEnd"
@@ -150,18 +163,6 @@ const Main = (props) => {
               isExperiential={false}
               userID={userID}
             />
-
-            <Reading path={`/Reading`} user={state.main.user} labID={labId} />
-            
-            <Quiz 
-            path={`/Quiz`}
-            labId={labId}
-            user={state.main.user}
-            isFinalQuiz
-            hideCertificate={false}
-            submitData={() => {}}
-            />
-
           </Router>
         </div>
       </div>
