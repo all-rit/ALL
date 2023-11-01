@@ -1,5 +1,5 @@
 /**
- * RepairService(): This file is responsible for managing all states for routing for 
+ * RepairService(): This file is responsible for managing all states for routing for
  * interacting and requesting to the database.
  */
 import API from "../API";
@@ -46,7 +46,8 @@ const RepairService = {
     }
   },
   /**
-   * 
+   * getRepair(): is a function that is responsible for sending a request to get someone's information about
+   * their last recorded attempt when making changes in the repair section.
    * @param {Object} data contains user information especially the userid to request correct data.
    * @param {Object} route rout endpoint to ALL DB server
    * @returns {Object} Containing the last state recorded when it was played or repaired
