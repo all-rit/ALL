@@ -7,7 +7,7 @@ import {
 } from "../../../../services/lab9/RepairService";
 
 /**
- * usRepairDate(): is a custom hook to abstract the logic implementation for the
+ * useRepairDate(): is a custom hook to abstract the logic implementation for the
  * repair portion of the localization lab. This allows for conditional behavior of
  * initializing the custom behavior for validating and managing state during the
  * date repair portion of the lab

@@ -35,7 +35,7 @@ const Repair = (props) => {
     if (enableNext) {
       navigateNext;
       const state = await submitRepair();
-     }
+    }
   };
 
   return (
