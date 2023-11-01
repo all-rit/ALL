@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import  DateFormData from "../../../../constants/lab9/DateFormData";
-import { RepairService, endpoints } from "../../../../services/lab9/RepairService";
+import DateFormData from "../../../../constants/lab9/DateFormData";
+import {
+  RepairService,
+  endpoints,
+} from "../../../../services/lab9/RepairService";
 
 /**
  * usRepairDate(): is a custom hook to abstract the logic implementation for the
@@ -13,12 +16,8 @@ import { RepairService, endpoints } from "../../../../services/lab9/RepairServic
  * @returns {Object} of function calls to hooks and fetched user data.
  */
 const useRepairDate = ({ user }) => {
-  const [exercisePromptsState, setExercisePromptsState] = useState(
-    []
-  );
-  const [isInputValid, setIsInputValid] = useState(
-    []
-  );
+  const [exercisePromptsState, setExercisePromptsState] = useState([]);
+  const [isInputValid, setIsInputValid] = useState([]);
   const [repairCount, setRepairCount] = useState(0);
 
   /**
@@ -63,26 +62,29 @@ const useRepairDate = ({ user }) => {
     console.log(newValue);
   };
 
-  async function fetchRepair(){
+  async function fetchRepair() {
     try {
-      const repairData = await RepairService.getRepair(user, endpoints.GET_DATE_REPAIR);
-      if (repairData) { 
+      const repairData = await RepairService.getRepair(
+        user,
+        endpoints.GET_DATE_REPAIR
+      );
+      if (repairData) {
         const newStartState = DateFormData.countries;
-          setExercisePromptsState(newStartState);
-          setIsInputValid(new Array(newStartState.length).fill(false));
-          setRepairCount(0);
+        setExercisePromptsState(newStartState);
+        setIsInputValid(new Array(newStartState.length).fill(false));
+        setRepairCount(0);
         return;
       } else {
         const { repair, repairCount } = repairData;
         setExercisePromptsState(repair);
         setIsInputValid(new Array(repair.length).fill(false));
-        setRepairCount(repairCount)
+        setRepairCount(repairCount);
         return;
       }
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
   async function postRepair() {
     try {
@@ -92,12 +94,15 @@ const useRepairDate = ({ user }) => {
         isComplete: checkInputValid(),
         numRepair: repairCount,
       };
-      const repairID = await RepairService.submitRepair(body, endpoints.postRoute);
+      const repairID = await RepairService.submitRepair(
+        body,
+        endpoints.postRoute
+      );
       return repairID;
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
   return {
     data: { exercisePromptsState, isInputValid },
@@ -107,7 +112,7 @@ const useRepairDate = ({ user }) => {
       setIsInputValid,
       handleUserInputChange,
       fetchRepair,
-      postRepair
+      postRepair,
     },
   };
 };
