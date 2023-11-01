@@ -1,5 +1,5 @@
 import DateFormData from "../../../../constants/lab9/DateFormData";
-import useLabRepair from "../hooks/useLabRepair"; 
+import useLabRepair from "../hooks/useLabRepair";
 import {
   RepairService,
   endpoints,
@@ -15,17 +15,11 @@ import {
  * @returns {Object} of function calls to hooks and fetched user data.
  */
 const useRepairAddress = ({ user }) => {
-    const { data, functions } = useLabRepair();
-    const {  exercisePromptsState,
-        isInputValid,
-        repairCount,} = data;
-    const { checkInputValid,
-        setExercisePromptsState,
-        handleUserInputChange,
-        setIsInputValid,
-        setRepairCount  } = functions
+  const { data, functions } = useLabRepair();
+  const { exercisePromptsState, isInputValid, repairCount } = data;
+  const { checkInputValid, setExercisePromptsState, handleUserInputChange,
+    setIsInputValid, setRepairCount } = functions;
 
-    
   async function fetchRepair() {
     try {
       const repairData = await RepairService.getRepair(
