@@ -14,13 +14,14 @@ import DateFormRepair from "../DateFormRepair";
  * repair page component, what this allows us to do is call the re-useable repair component
  * with custom logic pertaining to that repair section.
  * @param {String} user contains user id for data state and logging user input
- * @returns 
+ * @returns
  */
 
 const DateRepair = ({ user }) => {
   const { data, functions } = useRepairDate(user);
   const { exercisePromptsState } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair} = functions;
+  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
+    functions;
   return (
     <Repair
       fileName={"DateFormat.js"}

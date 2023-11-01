@@ -22,7 +22,7 @@ const Repair = (props) => {
     CodeImplementation,
     validateRepair,
     fetchRepair,
-    submitRepair 
+    submitRepair,
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [enableNext, setEnableNext] = useState(false);
@@ -94,6 +94,6 @@ Repair.propTypes = {
   user: Proptypes.string,
   validateRepair: Proptypes.func.isRequired,
   fetchRepair: Proptypes.func.isRequired,
-  submitRepair:Proptypes.func.isRequired,
+  submitRepair: Proptypes.func.isRequired,
 };
 export default Repair;

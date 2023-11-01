@@ -23,27 +23,27 @@ const endpoints = {
 const RepairService = {
   submitRepair: async (data = {}, route) => {
     try {
-        const body = {
-            userid: data.userID,
-            repair: data.repair,
-            isComplete: data.isComplete,
-            numRepair: data.numRepair,
-          };
-          return await API.postWithBody(route, body);
+      const body = {
+        userid: data.userID,
+        repair: data.repair,
+        isComplete: data.isComplete,
+        numRepair: data.numRepair,
+      };
+      return await API.postWithBody(route, body);
     } catch (error) {
-        console.error(error)
+      console.error(error);
     }
   },
   getRepair: async (data = {}, route) => {
-   try {
-    const body = {
+    try {
+      const body = {
         userid: data.userid,
       };
-        const result = await API.get(route, body);
-        return result;
-   } catch (error) {
-       console.error(error);
-   }  
+      const result = await API.get(route, body);
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
   },
 };
 
