@@ -13,8 +13,7 @@ import GameStateContext from "./Lab9Context";
  * and acting as the container managing the state of the user.
  */
 const Main = (props) => {
-  const { user } = props;
-  const { userid = "2" } = user;
+  const { user = "" } = props;
   const [exerciseState, setExerciseState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
   );
@@ -23,8 +22,8 @@ const Main = (props) => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <LocalizationRepair user={userid} path={`${REPAIR}/*`} />
-          <ContextTester user={userid} path={"/Context"} />
+          <LocalizationRepair user={user} path={`${REPAIR}/*`} />
+          <ContextTester user={user} path={"/Context"} />
         </Router>
       </GameStateContext.Provider>
     </div>

@@ -1,4 +1,4 @@
-export const DateFormData = {
+const DateFormData = {
   countries: [
     {
       id: 0,
@@ -38,3 +38,4 @@ export const DateFormData = {
     },
   ],
 };
+export default DateFormData;

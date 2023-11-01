@@ -21,15 +21,19 @@ const Repair = (props) => {
     navigateNext,
     CodeImplementation,
     validateRepair,
+    fetchRepair,
+    submitRepair 
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [enableNext, setEnableNext] = useState(false);
 
-  const handleRepair = () => {
+  const handleRepair = async () => {
     setIsRepairActive(true);
+    await fetchRepair();
   };
-  const handleNext = () => {
+  const handleNext = async () => {
     setEnableNext(true);
+    await submitRepair();
   };
 
   return (
@@ -82,12 +86,14 @@ const Repair = (props) => {
 };
 
 Repair.propTypes = {
-  CodeImplementation: Proptypes.func.isRequired,
+  CodeImplementation: Proptypes.object.isRequired,
   fileName: Proptypes.string,
   headingText: Proptypes.string,
   navigateNext: Proptypes.func.isRequired,
   repairText: Proptypes.array,
   user: Proptypes.string,
   validateRepair: Proptypes.func.isRequired,
+  fetchRepair: Proptypes.func.isRequired,
+  submitRepair:Proptypes.func.isRequired,
 };
 export default Repair;

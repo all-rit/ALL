@@ -11,11 +11,10 @@ import { useState } from "react";
  * @returns {Object} of function calls to hooks and fetched user data.
  */
 const useRepairData = (props) => {
-  const { user, getRepairData, postRepairData, getRoute, postRoute } = props;
-  const { userid = "2" } = user;
+  const { user, getRepairData, postRepairData, getRoute, postRoute, defaultState } = props;
   const [exercisePromptsState, setExercisePromptsState] = useState([]);
   const [isInputValid, setIsInputValid] = useState([]);
-  const [repairCount] = useState(0);
+  const [repairCount, setRepairCount] = useState(0);
 
   /**
    * checkInputValid(): is a function that is intended on handling the logic to
@@ -59,22 +58,31 @@ const useRepairData = (props) => {
     console.log(newValue);
   };
 
-  const fetchRepair = async () => {
+  async function fetchRepair(){
     try {
-      const repair = await getRepairData(user, getRoute);
-      setExercisePromptsState(repair);
-      setIsInputValid(new Array(repair.length).fill(false));
+      const repairData = await getRepairData(user, getRoute);
+      if (!repairData) { 
+        const newStartState = [...defaultState];
+          setExercisePromptsState(newStartState);
+          setIsInputValid(new Array(newStartState.length).fill(false));
+        setRepairCount(0);
+      } else {
+        const { repair, repairCount } = repairData;
+        setExercisePromptsState(repair);
+        setIsInputValid(new Array(repair.length).fill(false));
+        setRepairCount(repairCount)
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
-  const postRepair = async () => {
+  async function postRepair() {
     try {
       const body = {
-        userId: userid,
+        userId: user,
         repair: exercisePromptsState,
-        isComplete: isInputValid,
+        isComplete: checkInputValid(),
         numRepair: repairCount,
       };
       const repairID = await postRepairData(body, postRoute);
