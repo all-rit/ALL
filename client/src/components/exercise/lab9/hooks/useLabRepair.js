@@ -1,9 +1,9 @@
 import { useState } from "react";
 /**
- * useLabRepair(): is one of the new custom hooks responsible for validating 
- * user inputted info during the lab repair sections. This hook is intended to be 
+ * useLabRepair(): is one of the new custom hooks responsible for validating
+ * user inputted info during the lab repair sections. This hook is intended to be
  * the single source of truth in managing and reading logic.
- * @returns {Object} containing data and functions to be passed to the 
+ * @returns {Object} containing data and functions to be passed to the
  * component it is using.
  */
 const useLabRepair = () => {
@@ -38,7 +38,7 @@ const useLabRepair = () => {
     return localValidArray.every((v) => v === true);
   };
   /**
-   * handleUserInputChange() is a function that is responsible for handling the 
+   * handleUserInputChange() is a function that is responsible for handling the
    * saving of user inputted data into the state of the exercise hook. This allows for
    * the information to be recorded and then can be manipulate however intended.
    * @param {*} dataId id of the particular input question field
