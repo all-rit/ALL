@@ -32,8 +32,10 @@ const Repair = (props) => {
     await fetchRepair();
   };
   const handleNext = async () => {
-    setEnableNext(true);
-    await submitRepair();
+    if (enableNext) {
+      navigateNext;
+      const state = await submitRepair();
+     }
   };
 
   return (
@@ -63,7 +65,7 @@ const Repair = (props) => {
           <Button
             buttonText={"Next"}
             disabled={enableNext}
-            onClick={navigateNext}
+            onClick={handleNext}
           />
         </div>
       </div>
