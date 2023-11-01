@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 const db = require('../../database');
 
-const DATE_REPAIR = '';
-const ADDRESS_REPAIR = '';
-const NAV_BAR_REPAIR = '';
+const DATE_REPAIR = 'address-repair';
+const ADDRESS_REPAIR = 'Date-Repair';
+const NAV_BAR_REPAIR = 'nav-Bar-Repair';
+
+
 /**
  * serviceSelector(): to return the correct db function to access the
  * right database table.
