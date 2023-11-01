@@ -1,3 +1,7 @@
+/**
+ * RepairService(): This file is responsible for managing all states for routing for 
+ * interacting and requesting to the database.
+ */
 import API from "../API";
 import { GAME_STATES } from "../../constants/lab9";
 
@@ -21,6 +25,13 @@ const endpoints = {
 };
 
 const RepairService = {
+  /**
+   * submitRepair(): is an async function that is responsible for handling the submission of user input
+   * to the database. This depends on calling the fetch api to send a post request to the ALL DB.
+   * @param {Object} data payload that is to be secured in the body of the post request.
+   * @param {string} route designated route for the backend database.
+   * @returns {Number} the id of the repair.
+   */
   submitRepair: async (data = {}, route) => {
     try {
       const body = {
@@ -34,6 +45,12 @@ const RepairService = {
       console.error(error);
     }
   },
+  /**
+   * 
+   * @param {Object} data contains user information especially the userid to request correct data.
+   * @param {Object} route rout endpoint to ALL DB server
+   * @returns {Object} Containing the last state recorded when it was played or repaired
+   */
   getRepair: async (data = {}, route) => {
     try {
       const body = {

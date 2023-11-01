@@ -29,7 +29,7 @@ const DateRepair = ({ user }) => {
       headingText={REPAIR_DATE_REPAIR_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}
-      submitRepair={postRepair}
+      submitRepair={() => postRepair()}
       repairText={[
         "in this section you will be making changes to the repair data file below",
       ]}
