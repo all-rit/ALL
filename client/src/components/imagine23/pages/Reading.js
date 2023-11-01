@@ -20,7 +20,7 @@ const Reading = (props) => {
   const [labShortName, setLabShortname] = useState(null);
 
   const handleNext = () => {
-    navigate("/Imagine/ExpressionExerciseEnd");
+    navigate("/Imagine/Quiz");
   };
 
   useScroll();
