@@ -31,6 +31,7 @@ const Repair = (props) => {
     setIsRepairActive(true);
     await fetchRepair();
   };
+
   const handleNext = async () => {
     if (enableNext) {
       navigateNext;
