@@ -26,12 +26,12 @@ const useRepairAddress = ({ user }) => {
 
   async function fetchRepair() {
     try {
-        const repairData = await RepairService.getRepair(
-            user,
-            endpoints.GET_ADDRESS_REPAIR
+      const repairData = await RepairService.getRepair(
+        user,
+        endpoints.GET_ADDRESS_REPAIR
       );
-        if (repairData) {
-          // change this array to the template array data
+      if (repairData) {
+        // change this array to the template array data
         const newStartState = [];
         setExercisePromptsState(newStartState);
         setIsInputValid(new Array(newStartState.length).fill(false));
