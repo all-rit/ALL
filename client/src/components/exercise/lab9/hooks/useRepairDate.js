@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import useLabRepair from "../../../../hooks/useLabRepair"
+import useLabRepair from "../../../../hooks/useLabRepair";
 import DateFormData from "../../../../constants/lab9/DateFormData";
 import {
   RepairService,

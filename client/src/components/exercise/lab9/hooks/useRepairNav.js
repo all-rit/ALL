@@ -1,5 +1,5 @@
 import DateFormData from "../../../../constants/lab9/DateFormData";
-import useLabRepair from "../../../../hooks/useLabRepair"
+import useLabRepair from "../../../../hooks/useLabRepair";
 import {
   RepairService,
   endpoints,
