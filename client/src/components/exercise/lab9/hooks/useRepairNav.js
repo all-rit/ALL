@@ -15,16 +15,15 @@ import {
  * @returns {Object} of function calls to hooks and fetched user data.
  */
 const useRepairNav = ({ user }) => {
-    const { data, functions } = useLabRepair();
-    const { exercisePromptsState, isInputValid, repairCount } = data;
-    const {
-      checkInputValid,
-      setExercisePromptsState,
-      handleUserInputChange,
-      setIsInputValid,
-      setRepairCount,
-    } = functions;
-  
+  const { data, functions } = useLabRepair();
+  const { exercisePromptsState, isInputValid, repairCount } = data;
+  const {
+    checkInputValid,
+    setExercisePromptsState,
+    handleUserInputChange,
+    setIsInputValid,
+    setRepairCount,
+  } = functions;
 
   async function fetchRepair() {
     try {

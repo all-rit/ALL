@@ -1,4 +1,3 @@
-import DateFormData from "../../../../constants/lab9/DateFormData";
 import useLabRepair from "../hooks/useLabRepair";
 import {
   RepairService,
@@ -27,12 +26,13 @@ const useRepairAddress = ({ user }) => {
 
   async function fetchRepair() {
     try {
-      const repairData = await RepairService.getRepair(
-        user,
-        endpoints.GET_DATE_REPAIR
+        const repairData = await RepairService.getRepair(
+            user,
+            endpoints.GET_ADDRESS_REPAIR
       );
-      if (repairData) {
-        const newStartState = DateFormData.countries;
+        if (repairData) {
+          // change this array to the template array data
+        const newStartState = [];
         setExercisePromptsState(newStartState);
         setIsInputValid(new Array(newStartState.length).fill(false));
         setRepairCount(0);
@@ -59,7 +59,7 @@ const useRepairAddress = ({ user }) => {
       };
       const repairID = await RepairService.submitRepair(
         body,
-        endpoints.POST_DATE_REPAIR
+        endpoints.POST_ADDRESS_REPAIR
       );
       return repairID;
     } catch (error) {
