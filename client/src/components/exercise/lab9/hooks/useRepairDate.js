@@ -19,8 +19,13 @@ import {
 const useRepairDate = ({ user }) => {
   const { data, functions } = useLabRepair();
   const { exercisePromptsState, isInputValid, repairCount } = data;
-  const { checkInputValid, setExercisePromptsState, handleUserInputChange,
-    setIsInputValid, setRepairCount } = functions;
+  const {
+    checkInputValid,
+    setExercisePromptsState,
+    handleUserInputChange,
+    setIsInputValid,
+    setRepairCount,
+  } = functions;
 
   async function fetchRepair() {
     try {
