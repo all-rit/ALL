@@ -96,7 +96,7 @@ const useRepairDate = ({ user }) => {
       };
       const repairID = await RepairService.submitRepair(
         body,
-        endpoints.postRoute
+        endpoints.POST_DATE_REPAIR
       );
       return repairID;
     } catch (error) {
