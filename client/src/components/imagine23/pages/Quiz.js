@@ -275,11 +275,11 @@ const QuizHandler = (props) => {
             selectedAnswers={selectedAnswers}
             quizQuestions={questions}
             lab={currentLabId}
-          ></Result>    
-          <button 
+          ></Result>
+          <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
             //should be post survey component
-            onClick={()=> handleQuizButton("ExerciseEnd")}
+            onClick={() => handleQuizButton("ExerciseEnd")}
           >
             Continue to Post Survey
           </button>
