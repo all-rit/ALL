@@ -76,12 +76,21 @@ const Main = (props) => {
             setUserID={setUserID}
             user={user}
           />
+          
           <Survey
             path={`/PreSurvey`}
             user={state.main.user}
             hideCertificate={false}
             submitData={() => {}}
           />
+          
+          <Navigation
+            path="/Navigation"
+            actions={actions}
+            state={state}
+            userID={userID}
+          />
+
           <LandingPage
             path="/ExperientialStart"
             actions={actions}

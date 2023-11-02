@@ -4,40 +4,33 @@
 import { navigate } from "@reach/router";
 import React from "react";
 
-const Navigation = () =>{
+const Navigation = () => {
+  const handleExpression = () => {
+    navigate("/Imagine/ExpressionStart");
+  };
+  const handleExperiential = () => {
+    navigate("/Imagine/ExperientialStart");
+  };
 
-    const handleExpression = () => {
-        navigate("/Imagine/ExpressionStart");
-    };
-      const handleExperiential = () => {
-        navigate("/Imagine/ExperientialStart");
-    };
-    
-    return (
-        <>
-    
-        <h2 className="playthrough__title">NAVIGATION</h2>
-    
-        <button
-            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={handleExperiential}
-        >
+  return (
+    <>
+      <h2 className="playthrough__title">NAVIGATION</h2>
+
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+        onClick={handleExperiential}
+      >
         Experiential
-        </button>
-    
-        <button
-            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={handleExpression}
-        >
+      </button>
+
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+        onClick={handleExpression}
+      >
         Expression
-        </button>
-    
-        </>
-    )
-}
+      </button>
+    </>
+  );
+};
 
 export default Navigation;
-
-
-
-

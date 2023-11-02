@@ -26,15 +26,14 @@ const UpdateID = (props) => {
   return (
     <div className="container bottomSpace center-div">
       <h2 className="playthrough__title">PRESS BUTTON TO UPDATE ID</h2>
-          <button
-            className="btn btn-primary text-black btn-xl text-uppercase"
-            onClick={handleUpdateID}
-          >
-          UPDATE ID
-          </button>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase"
+        onClick={handleUpdateID}
+      >
+        UPDATE ID
+      </button>
     </div>
-
-);
+  );
 };
 
 export default UpdateID;
