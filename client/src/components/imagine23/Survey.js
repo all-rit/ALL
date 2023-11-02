@@ -40,9 +40,7 @@ function assignQuizQuestions(labId) {
  */
 const QuizHandler = (props) => {
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(
-    assignQuizQuestions(2)
-  );
+  const [questions, setQuestions] = useState(assignQuizQuestions(2));
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers
   );
@@ -71,7 +69,7 @@ const QuizHandler = (props) => {
    */
   function onComplete() {
     setSurveyComplete(true);
-    ImagineService.preSurvey(props.user.userid, selectedAnswers)
+    ImagineService.preSurvey(props.user.userid, selectedAnswers);
   }
 
   /**
@@ -149,10 +147,10 @@ const QuizHandler = (props) => {
           question={questions[currentQuestionCursor].question}
           questionTotal={questions.length}
         ></Quiz>
-      ) : ( 
+      ) : (
         <>
           <h2 className="p-5">Thank you for completing the pre-survey!</h2>
-          <button 
+          <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
             onClick={() => handleNextPage("Reading")}
           >

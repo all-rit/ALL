@@ -58,116 +58,116 @@ const Main = (props) => {
 
   return (
     <div className="container">
-        <div className="row">
-          <div className="col-lg-12 text-center">
-            <h2 className="section-heading text-uppercase tw-text-right">
-              {"ID#" + userID}
-            </h2>
-          </div>
-        </div>
-        <div className="bottomSpace">
-          <Router className="app">
-            <UpdateID
-              default
-              path="/UpdateID"
-              actions={actions}
-              state={state}
-              setUserID={setUserID}
-              user={user}
-            />
-            <Survey
-              path={`/PreSurvey`}
-              user={state.main.user}
-              hideCertificate={false}
-              submitData={() => {}}
-            />
-            <LandingPage
-              path="/ExperientialStart"
-              actions={actions}
-              state={state}
-              userID={userID}
-            />
-            <ExpressionInstructions
-              path="/ExpressionStart"
-              actions={actions}
-              state={state}
-              userID={userID}
-            />
-            <MainInstructions
-              path="/ExperientialInstructions"
-              actions={actions}
-              state={state}
-              userID={userID}
-            />
-            <ExpressionMainInstructions
-              path="/ExpressionInstructions"
-              actions={actions}
-              state={state}
-              userID={userID}
-            />
-            <ExerciseLab2
-              path="/ExperientialExercise"
-              actions={actions}
-              state={state}
-              isImagine
-              userID={userID}
-            />
-            <ExerciseLab2
-              path="/ExpressionActivity"
-              actions={actions}
-              state={state}
-              isImagine
-              isImagineExpression
-              userID={userID}
-            />
-            <ExpressionStart
-              path="/ExpressionExerciseStart"
-              actions={actions}
-              state={state}
-              userID={userID}
-              setCount={setCount}
-            />
-            <ExpressionExercise
-              path="/ExpressionExercise"
-              actions={actions}
-              state={state}
-              setCount={setCount}
-              count={count}
-              userID={userID}
-            />
-            <ExpressionScore
-              path="/ExpressionScore"
-              actions={actions}
-              state={state}
-              count={count}
-              userID={userID}
-            />
-            <Reading path={`/Reading`} user={state.main.user} labID={labId} />
-            <ExerciseEnd
-              path="/ExperientialExerciseEnd"
-              actions={actions}
-              state={state}
-              isExperiential
-              userID={userID}
-            />
-            <Quiz
-              path={`/Quiz`}
-              labId={labId}
-              user={state.main.user}
-              isFinalQuiz
-              hideCertificate={false}
-              submitData={() => {}}
-            />
-            <ExerciseEnd
-              path="/ExpressionExerciseEnd"
-              actions={actions}
-              state={state}
-              isExperiential={false}
-              userID={userID}
-            />
-          </Router>
+      <div className="row">
+        <div className="col-lg-12 text-center">
+          <h2 className="section-heading text-uppercase tw-text-right">
+            {"ID#" + userID}
+          </h2>
         </div>
       </div>
+      <div className="bottomSpace">
+        <Router className="app">
+          <UpdateID
+            default
+            path="/UpdateID"
+            actions={actions}
+            state={state}
+            setUserID={setUserID}
+            user={user}
+          />
+          <Survey
+            path={`/PreSurvey`}
+            user={state.main.user}
+            hideCertificate={false}
+            submitData={() => {}}
+          />
+          <LandingPage
+            path="/ExperientialStart"
+            actions={actions}
+            state={state}
+            userID={userID}
+          />
+          <ExpressionInstructions
+            path="/ExpressionStart"
+            actions={actions}
+            state={state}
+            userID={userID}
+          />
+          <MainInstructions
+            path="/ExperientialInstructions"
+            actions={actions}
+            state={state}
+            userID={userID}
+          />
+          <ExpressionMainInstructions
+            path="/ExpressionInstructions"
+            actions={actions}
+            state={state}
+            userID={userID}
+          />
+          <ExerciseLab2
+            path="/ExperientialExercise"
+            actions={actions}
+            state={state}
+            isImagine
+            userID={userID}
+          />
+          <ExerciseLab2
+            path="/ExpressionActivity"
+            actions={actions}
+            state={state}
+            isImagine
+            isImagineExpression
+            userID={userID}
+          />
+          <ExpressionStart
+            path="/ExpressionExerciseStart"
+            actions={actions}
+            state={state}
+            userID={userID}
+            setCount={setCount}
+          />
+          <ExpressionExercise
+            path="/ExpressionExercise"
+            actions={actions}
+            state={state}
+            setCount={setCount}
+            count={count}
+            userID={userID}
+          />
+          <ExpressionScore
+            path="/ExpressionScore"
+            actions={actions}
+            state={state}
+            count={count}
+            userID={userID}
+          />
+          <Reading path={`/Reading`} user={state.main.user} labID={labId} />
+          <ExerciseEnd
+            path="/ExperientialExerciseEnd"
+            actions={actions}
+            state={state}
+            isExperiential
+            userID={userID}
+          />
+          <Quiz
+            path={`/Quiz`}
+            labId={labId}
+            user={state.main.user}
+            isFinalQuiz
+            hideCertificate={false}
+            submitData={() => {}}
+          />
+          <ExerciseEnd
+            path="/ExpressionExerciseEnd"
+            actions={actions}
+            state={state}
+            isExperiential={false}
+            userID={userID}
+          />
+        </Router>
+      </div>
+    </div>
   );
 };
 
