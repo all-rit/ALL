@@ -83,8 +83,12 @@ const Simulation = (props) => {
    * Executed when the progress bar is complete.
    */
   const onComplete = () => {
-    if (props.user?.userid && props.collectWeights) {
-      ExerciseService.submitWeights(props.weights, props.user.userid);
+    const session = {
+      trainingCounter: props.trainingCounter,
+      experienceCounter: props.experienceCounter,
+    };
+    if (props.user?.userid) {
+      ExerciseService.submitWeights(props.weights, session, props.user.userid);
     }
     props.actions.enableSimulationCover();
     props.actions.disableUserInput();
@@ -163,6 +167,8 @@ const mapStateToProps = (state) => {
     weights,
     ai,
     collectWeights,
+    trainingCounter,
+    experienceCounter,
   } = state.exercise10;
   return {
     objectPosition,
@@ -173,6 +179,8 @@ const mapStateToProps = (state) => {
     user,
     ai,
     collectWeights,
+    trainingCounter,
+    experienceCounter,
   };
 };
 
@@ -192,6 +200,8 @@ Simulation.propTypes = {
   user: PropTypes.object,
   ai: PropTypes.bool,
   collectWeights: PropTypes.bool,
+  trainingCounter: PropTypes.number,
+  experienceCounter: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simulation);

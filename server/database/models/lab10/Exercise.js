@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         weights: {
           type: DataTypes.JSON,
         },
+        session: {
+          type: DataTypes.JSON,
+        },
       },
       {tableName: 'lab10_exercise'},
   );

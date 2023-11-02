@@ -30,6 +30,7 @@ const GeneratedData = (props) => {
         if (response.ok) {
           response.json().then((json) => {
             props.actions.setWeights(json.weights);
+            props.actions.setSessionCounters(json.session);
           });
         }
       });
@@ -51,10 +52,12 @@ const GeneratedData = (props) => {
   });
 
   const trainAINav = () => {
+    props.actions.incrementTrainingCounter();
     return navigate("/Lab10/Exercise/SecondTrainingAI");
   };
 
   const experienceAINav = () => {
+    props.actions.incrementExperienceCounter();
     return navigate("/Lab10/Exercise/SecondAISimulation");
   };
 
@@ -86,7 +89,7 @@ const GeneratedData = (props) => {
               <b>Experience AI</b> button.
             </p>
           </div>
-          <div className={"tw-flex tw-items-center tw-justify-center tw-mb-6"}>
+          <div className={"tw-flex tw-items-center tw-justify-center tw-mb-0"}>
             <p className={"playthrough__sentence tw-my-0 tw-font-bold"}>
               Heaviest Color / Most Frequently Hit :
             </p>
@@ -98,6 +101,12 @@ const GeneratedData = (props) => {
                 )}
               />
             </div>
+          </div>
+          <div className={"tw-flex tw-items-center tw-justify-center  tw-mb-6"}>
+            <p className={"playthrough__sentence tw-my-0 tw-font-bold"}>
+              Session Counter :{" "}
+              {props.trainingCounter + props.experienceCounter}
+            </p>
           </div>
         </div>
       </Fragment>
@@ -128,8 +137,8 @@ const GeneratedData = (props) => {
 
 const mapStateToProps = (state) => {
   const { user } = state.main;
-  const { weights } = state.exercise10;
-  return { user, weights };
+  const { weights, trainingCounter, experienceCounter } = state.exercise10;
+  return { user, weights, trainingCounter, experienceCounter };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -142,6 +151,8 @@ GeneratedData.propTypes = {
   user: PropTypes.object,
   actions: PropTypes.object,
   weights: PropTypes.object,
+  trainingCounter: PropTypes.number,
+  experienceCounter: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GeneratedData);

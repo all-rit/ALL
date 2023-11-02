@@ -76,12 +76,13 @@ const AIExplanation = (props) => {
               it would move to ensure it does not get hit by a specific color.
             </p>
             <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
-              Based on the data you generated when playing the game, the AI
-              avoided the color that was most frequently hit.
+              Based on the data <strong>you</strong> generated from playing the
+              game, the AI avoided the color that <strong>you</strong> most
+              frequently hit.
             </p>
             <p className={"playthrough__sentence tw-text-center tw-mt-0"}>
-              Below is the generated data that the AI utilized during the
-              simulation.
+              Below is <strong>your</strong> generated data that the AI utilized
+              for the simulation.
             </p>
           </div>
           <div className={"tw-flex tw-items-center tw-justify-center tw-mb-6"}>

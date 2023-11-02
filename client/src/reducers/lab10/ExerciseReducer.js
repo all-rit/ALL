@@ -31,6 +31,12 @@ export const types = {
   UPDATE_WEIGHTS: "@accessibility-lab/lab10/exercise/update_weights",
   SET_AI: "@accessibility-lab/lab10/exercise/set_ai",
   COLLECT_WEIGHTS: "@accessibility-lab/lab10/exercise/collect_weights",
+  SET_SESSION_COUNTERS:
+    "@accessibility-lab/lab10/exercise/set_session_counters",
+  INCREMENT_TRAINING_COUNTER:
+    "@accessibility-lab/lab10/exercise/increment_training_counter",
+  INCREMENT_EXPERIENCE_COUNTER:
+    "@accessibility-lab/lab10/exercise/increment_experience_counter",
 };
 
 export const initialState = {
@@ -46,6 +52,8 @@ export const initialState = {
   weights: Object.fromEntries(COLORS),
   collectWeights: true,
   simulationCovered: true,
+  trainingCounter: 0,
+  experienceCounter: 0,
 };
 
 const ExerciseReducer = (state = initialState, action) => {
@@ -126,6 +134,22 @@ const ExerciseReducer = (state = initialState, action) => {
         ...state,
         simulationCovered: action.simulationCovered,
       };
+    case types.SET_SESSION_COUNTERS:
+      return {
+        ...state,
+        trainingCounter: action.session?.trainingCounter || 0,
+        experienceCounter: action.session?.experienceCounter || 0,
+      };
+    case types.INCREMENT_TRAINING_COUNTER:
+      return {
+        ...state,
+        trainingCounter: state.trainingCounter + 1,
+      };
+    case types.INCREMENT_EXPERIENCE_COUNTER:
+      return {
+        ...state,
+        experienceCounter: state.experienceCounter + 1,
+      };
     default:
       return state;
   }
@@ -195,6 +219,16 @@ export const actions = {
   disableCollectWeights: () => ({
     type: types.COLLECT_WEIGHTS,
     collectWeights: false,
+  }),
+  setSessionCounters: (session) => ({
+    type: types.SET_SESSION_COUNTERS,
+    session,
+  }),
+  incrementTrainingCounter: () => ({
+    type: types.INCREMENT_TRAINING_COUNTER,
+  }),
+  incrementExperienceCounter: () => ({
+    type: types.INCREMENT_EXPERIENCE_COUNTER,
   }),
 };
 

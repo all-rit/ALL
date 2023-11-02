@@ -24,6 +24,18 @@ export const COLORS = [
   ["tw-bg-[#DB0202]", 0], // Red
   ["tw-bg-[#8A1C7C]", 0], // Purple
 ];
+
+export const NAMES = {
+  "tw-bg-[#005C97]": "Blue",
+  "tw-bg-[#00A1E4]": "Sky Blue",
+  "tw-bg-[#41D3BD]": "Turquoise",
+  "tw-bg-[#8DC63F]": "Green",
+  "tw-bg-[#FFD100]": "Yellow",
+  "tw-bg-[#FF971C]": "Orange",
+  "tw-bg-[#DB0202]": "Red",
+  "tw-bg-[#8A1C7C]": "Purple",
+};
+
 export const SIZE = 96;
 export const SPAWN_AMOUNT = 3;
 export const SPAWN_INTERVAL = 2500;

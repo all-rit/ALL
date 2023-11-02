@@ -82,7 +82,7 @@ class BuildingAICodeBlock extends Component {
 
   validateMoveLeftValue() {
     const { actions, leftValue } = this.props;
-    if (!leftValue.includes("'ArrowLeft'")) {
+    if (!leftValue.includes("ArrowLeft")) {
       actions.updateRepairError(true);
       if (leftValue.length === 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_LEFT_NOT_INCLUDED);
@@ -95,10 +95,11 @@ class BuildingAICodeBlock extends Component {
       return true;
     }
   }
+
   validateMoveRightValue() {
     const { actions, rightValue } = this.props;
 
-    if (!rightValue.includes("'ArrowRight'")) {
+    if (!rightValue.includes("ArrowRight")) {
       actions.updateRepairError(true);
       if (rightValue.length === 0) {
         this.setPopupMessage(POPUP_MESSAGES.ARROW_RIGHT_NOT_INCLUDED);
@@ -223,6 +224,7 @@ class BuildingAICodeBlock extends Component {
               <span className={""}>.</span>
               <span className="code_editor__line--blue">code</span>
               <span className={""}> === </span>
+              <span>{'"'}</span>
               <input
                 name="leftValue"
                 type="text"
@@ -232,6 +234,7 @@ class BuildingAICodeBlock extends Component {
                 required
                 title="Must enter 'ArrowLeft'"
               />
+              <span>{'"'}</span>
               <span>) &#123;</span>
             </div>
 
@@ -290,6 +293,7 @@ class BuildingAICodeBlock extends Component {
               <span className={""}>.</span>
               <span className="code_editor__line--blue">code</span>
               <span className={""}> === </span>
+              <span>{'"'}</span>
               <input
                 className={`${rightError ? "form-error-input" : ""} tw-w-96`}
                 name="rightValue"
@@ -299,6 +303,7 @@ class BuildingAICodeBlock extends Component {
                 required
                 title="Must enter 'ArrowRight'"
               />
+              <span>{'"'}</span>
               <span>) &#123;</span>
             </div>
 
@@ -412,6 +417,7 @@ class BuildingAICodeBlock extends Component {
     );
   }
 }
+
 const mapStateToProps = (state) => {
   const { repairError, leftValue, rightValue, leftError, rightError } =
     state.repair10;

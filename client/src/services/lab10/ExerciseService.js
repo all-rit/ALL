@@ -10,11 +10,12 @@ const ExerciseService = {
       `${process.env.REACT_APP_SERVER_URL}${endpoints.WEIGHTS}/${userId}`
     );
   },
-  submitWeights: (weights, userId) => {
+  submitWeights: (weights, session, userId) => {
     return API.postWithBody(
       `${process.env.REACT_APP_SERVER_URL}${endpoints.WEIGHTS}`,
       {
         weights,
+        session,
         userId,
       }
     );
