@@ -9,13 +9,8 @@ const { nanoid } = require("nanoid");
 const UpdateID = (props) => {
   const { setUserID, user } = props;
 
-  const [showNav, setShowNav] = useState(false);
-
-  const handleExpression = () => {
-    navigate("/Imagine/ExpressionStart");
-  };
-  const handleExperiential = () => {
-    navigate("/Imagine/ExperientialStart");
+  const handleNext = () => {
+    navigate("/Imagine/Navigation");
   };
 
   const handleUpdateID = () => {
@@ -25,41 +20,21 @@ const UpdateID = (props) => {
       sessionStorage.setItem(user?.userid, newID);
       setUserID(newID);
     }
-    setShowNav(true);
+    handleNext();
   };
 
   return (
     <div className="container bottomSpace center-div">
-      {!showNav && (
-        <>
-          <h2 className="playthrough__title">PRESS BUTTON TO UPDATE ID</h2>
+      <h2 className="playthrough__title">PRESS BUTTON TO UPDATE ID</h2>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase"
             onClick={handleUpdateID}
           >
-            UPDATE ID
+          UPDATE ID
           </button>
-        </>
-      )}
-      {showNav && (
-        <>
-          <h2 className="playthrough__title">NAVIGATION</h2>
-          <button
-            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={handleExperiential}
-          >
-            Experiential
-          </button>
-          <button
-            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={handleExpression}
-          >
-            Expression
-          </button>
-        </>
-      )}
     </div>
-  );
+
+);
 };
 
 export default UpdateID;
