@@ -1,4 +1,4 @@
-const RepairService = require('../../services/lab9/RepairService');
+const RepairService = require('../../services/lab9/NavRepairService');
 
 /**
  * submitChange(): is a function that is responsible for
@@ -8,7 +8,7 @@ const RepairService = require('../../services/lab9/RepairService');
 async function submitChange(req) {
   try {
     const {userId, repair, isComplete, numRepair} = req.body;
-    return await RepairService.submitChange({
+    return await RepairService.submitRepair({
       userId, repair, isComplete, numRepair,
     },
     RepairService.NAV_REPAIR);

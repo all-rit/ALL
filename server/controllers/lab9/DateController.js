@@ -1,4 +1,4 @@
-const RepairService = require('../../services/lab9/RepairService');
+const RepairService = require('../../services/lab9/DateRepairService');
 
 /**
  * submitChange(): is a function that is responsible for
@@ -7,11 +7,10 @@ const RepairService = require('../../services/lab9/RepairService');
  */
 async function submitChange(req) {
   try {
-    const {userId, repair, isComplete, numRepair} = req.body;
-    return await RepairService.submitChange({
-      userId, repair, isComplete, numRepair,
-    },
-    RepairService.DATE_REPAIR);
+    const {userId, repair, isComplete} = req.body;
+    return await RepairService.submitRepair({
+      userId, repair, isComplete,
+    });
   } catch (error) {
     console.error(error);
   }
@@ -24,9 +23,9 @@ async function submitChange(req) {
  * @param {Object} req
  */
 async function getRepair(req) {
+  const {userID} = req.params;
   try {
-    const repair = await RepairService.getRepair(req,
-        RepairService.DATE_REPAIR);
+    const repair = await RepairService.getRepair(userID);
     return repair;
   } catch (error) {
     console.error(error);
