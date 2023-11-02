@@ -27,8 +27,7 @@ const preSurveyQuestionsImagine = [
     multiChoice: false,
   },
   {
-    question:
-      "What is your major?",
+    question: "What is your major?",
     answers: [
       {
         index: "0",
@@ -46,8 +45,7 @@ const preSurveyQuestionsImagine = [
     multiChoice: false,
   },
   {
-    question:
-      "What is your ethnicity?",
+    question: "What is your ethnicity?",
     answers: [
       {
         index: "0",
@@ -104,8 +102,7 @@ const preSurveyQuestionsImagine = [
     multiChoice: false,
   },
   {
-    question:
-      "What is your age range?",
+    question: "What is your age range?",
     answers: [
       {
         index: "0",
