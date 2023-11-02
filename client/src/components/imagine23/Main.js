@@ -76,21 +76,17 @@ const Main = (props) => {
             setUserID={setUserID}
             user={user}
           />
-          
           <Survey
             path={`/PreSurvey`}
             user={state.main.user}
-            hideCertificate={false}
             submitData={() => {}}
           />
-          
           <Navigation
             path="/Navigation"
             actions={actions}
             state={state}
             userID={userID}
           />
-
           <LandingPage
             path="/ExperientialStart"
             actions={actions}
@@ -153,13 +149,6 @@ const Main = (props) => {
             userID={userID}
           />
           <Reading path={`/Reading`} user={state.main.user} labID={labId} />
-          <ExerciseEnd
-            path="/ExperientialExerciseEnd"
-            actions={actions}
-            state={state}
-            isExperiential
-            userID={userID}
-          />
           <Quiz
             path={`/Quiz`}
             labId={labId}
@@ -167,6 +156,13 @@ const Main = (props) => {
             isFinalQuiz
             hideCertificate={false}
             submitData={() => {}}
+          />
+          <ExerciseEnd
+            path="/ExperientialExerciseEnd"
+            actions={actions}
+            state={state}
+            isExperiential
+            userID={userID}
           />
           <ExerciseEnd
             path="/ExpressionExerciseEnd"

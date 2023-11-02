@@ -152,7 +152,7 @@ const QuizHandler = (props) => {
           <h2 className="p-5">Thank you for completing the pre-survey!</h2>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={() => handleNextPage("Reading")}
+            onClick={() => handleNextPage("Navigation")}
           >
             Continue
           </button>
@@ -162,7 +162,6 @@ const QuizHandler = (props) => {
   );
 };
 QuizHandler.propTypes = {
-  hideCertificate: PropTypes.bool.isRequired,
   submitData: PropTypes.func.isRequired,
   user: PropTypes.shape({
     firstname: PropTypes.string,

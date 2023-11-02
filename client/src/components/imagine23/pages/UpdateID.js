@@ -10,7 +10,7 @@ const UpdateID = (props) => {
   const { setUserID, user } = props;
 
   const handleNext = () => {
-    navigate("/Imagine/Navigation");
+    navigate("/Imagine/PreSurvey");
   };
 
   const handleUpdateID = () => {
