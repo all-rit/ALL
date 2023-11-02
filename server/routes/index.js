@@ -124,26 +124,26 @@ router.post('/lab8/exercise/submit', async function(req, res) {
   res.send(id);
 });
 
-router.get('/lab8/repair/address-repair/:userID', async function(req, res) {
+router.get('/lab9/repair/address-repair/:userID', async function(req, res) {
   res.json(await AddressRepairControllerLab9.getRepair(req));
 });
-router.post('/lab8/repair/address-repair/submit', async function(req, res) {
+router.post('/lab9/repair/address-repair/submit', async function(req, res) {
   const id = await AddressRepairControllerLab9.submitChange(req);
   res.send(id);
 });
 
-router.get('/lab8/repair/date-repair/:userID', async function(req, res) {
+router.get('/lab9/repair/date-repair/:userID', async function(req, res) {
   res.json(await DateRepairControllerLab9.getRepair(req));
 });
-router.post('/lab8/repair/date-repair/submit', async function(req, res) {
+router.post('/lab9/repair/date-repair/submit', async function(req, res) {
   const id = await DateRepairControllerLab9.submitChange(req);
   res.send(id);
 });
 
-router.get('/lab8/repair/nav-repair/:userID', async function(req, res) {
+router.get('/lab9/repair/nav-repair/:userID', async function(req, res) {
   res.json(await NavRepairControllerLab9.getRepair(req));
 });
-router.post('/lab8/repair/nav-repair/submit', async function(req, res) {
+router.post('/lab9/repair/nav-repair/submit', async function(req, res) {
   const id = await NavRepairControllerLab9.submitChange(req);
   res.send(id);
 });
