@@ -28,9 +28,9 @@ exports.experientialProtanopia = (req, res) => {
 };
 
 exports.preSurvey = (req, res) => {
-  ImagineService.experientialProtanopia({
+  ImagineService.preSurvey({
     userID: req.body.userID,
-    experientialProtanopia: req.body.preSurvey,
+    preSurvey: req.body.preSurvey,
   }).then(() => {
     res.sendStatus(200);
   });

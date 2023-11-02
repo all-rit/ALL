@@ -18,7 +18,7 @@ import ExerciseEnd from "./pages/ExerciseEnd";
 import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
-import Survey from "./Survey";
+import Survey from "./SurveyHandler";
 import Navigation from "./pages/Navigation";
 import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");

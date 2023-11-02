@@ -1,171 +1,65 @@
-/* eslint-disable no-unused-vars */
-import { React, useState } from "react";
-import { PropTypes } from "prop-types";
-import Quiz from "../quiz/components/Quiz";
-import { navigate } from "@reach/router";
-import QuestionsLab2 from "../quiz/api/Lab2/quizQuestions";
-import ImagineService from "../../services/ImagineService";
-/**
- * assignQuizQuestions is a function that returns a given set
- * of quiz questions dependent on the labId passed
- * @param {integer} labId is passed to the function to determine
- * what questions to grab
- */
-function assignQuizQuestions(labId) {
-  switch (labId) {
-    case 2:
-      return QuestionsLab2;
-    default:
-      return [
-        {
-          question: "Default",
-          answers: [
-            {
-              val: 0,
-              type: "0",
-              content: "Default",
-            },
-          ],
-          multiChoice: false,
-        },
-      ];
-  }
-}
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+import React from "react";
+import PropTypes from "prop-types";
+import QuestionCount from "../quiz/components/QuestionCount";
+import AnswerOption from "./AnswerOption";
 
-/**
- * QuizHandler is react component responsible for tracking users responses
- * this will be the main handler to manage the state and logic for the new quiz component
- * @param {Object} props will be the injectable fields that will populate and provide the
- * component with information.
- */
-const QuizHandler = (props) => {
-  let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(assignQuizQuestions(2));
-  const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers
-  );
-  // initialized to a empty array to house recorded answers
-  let [selectedAnswers, setSelectedAnswers] = useState([]);
-  let [disableNext, setDisableNext] = useState(true);
-  let [surveyComplete, setSurveyComplete] = useState(false);
-
-  /**
-   * HandleNext() is a function that is responsible for allowing the user to
-   * iterate to the next question. this will then update the disabling for the
-   * selection on on the next question as it iterates to the next option
-   */
-  function handleNext() {
-    if (currentQuestionCursor < questions.length) {
-      let updateCursor = currentQuestionCursor + 1;
-      setCurrentQuestionCursor(updateCursor);
-      setAnswerOption(questions[updateCursor].answers);
-      setDisableNext(true);
-    }
+function Survey(props) {
+  function renderAnswerOptions(key) {
+    return (
+      <AnswerOption
+        answerContent={key.content}
+        answerType={key.index}
+        answer={props.answer}
+        questionId={props.questionId}
+        onAnswerSelected={props.onAnswerSelected}
+        multiChoice={props.multiChoice}
+        multiSelected={props.multiSelectedEntry}
+      />
+    );
   }
-  /**
-   * onComplete is a function that is responsible for preparing and running the
-   * calculations to grade a users responses to the quiz. This will then prepare the data
-   * to display to the user for the result portion of the quiz.
-   */
-  function onComplete() {
-    setSurveyComplete(true);
-    ImagineService.preSurvey(props.user.userid, selectedAnswers);
-  }
-
-  /**
-   * selectAnswer() is a function responsible for recording the
-   * behavior in which a user enters in their answer. This function once
-   * called will record the responses index and update the state of the
-   * component.
-   * @param {*} e event containing the index of the selected answer response.
-   */
-  function selectAnswer(e) {
-    const answerValue = e.target.value;
-    let tempSelectedAnswers;
-    tempSelectedAnswers = [...selectedAnswers];
-    tempSelectedAnswers[currentQuestionCursor] = {
-      content: questions[currentQuestionCursor].answers[answerValue].content,
-      val: 1,
-      type: answerValue,
-    };
-    console.log("Recorded answers: " + tempSelectedAnswers);
-    setSelectedAnswers(tempSelectedAnswers);
-    setDisableNext(false);
-  }
-  /**
-   * selectMulti is a function that is responsible for handling
-   * behavior of a multi-answer question by recording the given input to
-   * a set. this allowing for no duplicates and to easily remove entries when we
-   * want to change what data is being recorded.
-   * @param {*} e event holding the index of the selected answer
-   */
-  function selectMulti(e) {
-    const answerValue = e.target.value;
-    let tempAnswers = selectedAnswers;
-    let storageSet;
-    // ensures that there is a value stored there
-    if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
-      // copies over the set
-      storageSet = new Set(tempAnswers[currentQuestionCursor]);
-      // checks to see if the set has the value in it
-      !storageSet.has(answerValue)
-        ? // adds it if it doesn't
-          storageSet.add(answerValue)
-        : // removes it if it does
-          storageSet.delete(answerValue);
-      // assigns the updated set to the array
-      tempAnswers[currentQuestionCursor] = storageSet;
-    } else {
-      // creates an empty set because does not exist in that spot
-      setDisableNext(false);
-      storageSet = new Set();
-      // adds the value
-      storageSet.add(answerValue);
-      // assigns it to the array
-      tempAnswers[currentQuestionCursor] = storageSet;
-    }
-    setSelectedAnswers(tempAnswers);
-  }
-
-  const handleNextPage = (link) => {
-    navigate(`/Imagine/${link}`);
-  };
 
   return (
-    <>
-      {!surveyComplete ? (
-        <Quiz
-          answer={""}
-          answerOptions={answerOption}
-          disable={disableNext}
-          multiChoice={questions[currentQuestionCursor].multiChoice}
-          multiSelectedEntry={selectMulti}
-          nextQuestion={handleNext}
-          onAnswerSelected={selectAnswer}
-          onComplete={onComplete}
-          questionId={currentQuestionCursor + 1}
-          question={questions[currentQuestionCursor].question}
-          questionTotal={questions.length}
-        ></Quiz>
-      ) : (
-        <>
-          <h2 className="p-5">Thank you for completing the pre-survey!</h2>
+    <div className="quiz container shadow" key={props.questionId}>
+      <QuestionCount counter={props.questionId} total={props.questionTotal} />
+      <h2 className="quiz question">
+        {props.question} {props.multiChoice && " Select all that apply."}
+      </h2>
+      <ul className="answerOptions">
+        {props.answerOptions.map(renderAnswerOptions)}
+      </ul>
+      <div className="align-right">
+        {props.questionId !== props.questionTotal ? (
           <button
-            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={() => handleNextPage("Navigation")}
+            className="btn btn-second text-uppercase  nextButton"
+            onClick={props.nextQuestion}
+            disabled={props.disable}
           >
-            Continue
+            Next Question
           </button>
-        </>
-      )}
-    </>
+        ) : (
+          <button
+            className="btn btn-second text-uppercase  nextButton"
+            onClick={props.onComplete}
+            disabled={props.disable}
+          >
+            Complete
+          </button>
+        )}
+      </div>
+    </div>
   );
+}
+
+Survey.propTypes = {
+  answer: PropTypes.string.isRequired,
+  answerOptions: PropTypes.array.isRequired,
+  question: PropTypes.string.isRequired,
+  questionId: PropTypes.number.isRequired,
+  questionTotal: PropTypes.number.isRequired,
+  onAnswerSelected: PropTypes.func.isRequired,
+  multiChoice: PropTypes.bool.isRequired,
 };
-QuizHandler.propTypes = {
-  submitData: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    firstname: PropTypes.string,
-    userid: PropTypes.number,
-  }),
-};
-export default QuizHandler;
+
+export default Survey;
