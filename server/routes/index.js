@@ -138,5 +138,6 @@ router.get('/alumni', TeamMemberController.getAllAlumni);
 router.post('/imagine/discomfortCount', ImagineController.discomfortCount);
 router.post('/imagine/experientialMain', ImagineController.experientialMain);
 router.post('/imagine/experientialProtanopia', ImagineController.experientialProtanopia);
+router.post('/imagine/preSurvey', ImagineController.preSurvey);
 
 module.exports = router;

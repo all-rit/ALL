@@ -90,3 +90,33 @@ exports.experientialProtanopia = (data)=> {
   }
   return Promise.resolve();
 };
+
+exports.preSurvey = (data) => {
+  const userID = data.userID;
+  const preSurvey = data.answers;
+  if (userID) {
+    return db.Imagine23
+        .findOne({
+          where:
+                        {
+                          userid: userID,
+                        },
+        },
+        ).then((user) => {
+          if (user !== null) {
+            user.preSurvey = preSurvey;
+            user.save();
+          } else {
+            db.Imagine23.create({
+              userid: userID,
+              preSurvey: preSurvey,
+            });
+          }
+          return true;
+        }).catch((err) => {
+          console.log(err);
+          return true;
+        });
+  }
+  return Promise.resolve();
+};

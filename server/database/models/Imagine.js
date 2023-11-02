@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         discomfortCount: {
           type: DataTypes.JSON,
         },
+        preSurvey: {
+          type: DataTypes.JSON,
+        },
         // avatar: {type: DataTypes.JSON},
         // squad: {type: DataTypes.JSON},
         // lobbyMessages: {type: DataTypes.JSON},

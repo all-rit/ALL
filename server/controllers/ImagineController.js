@@ -27,3 +27,12 @@ exports.experientialProtanopia = (req, res) => {
   });
 };
 
+exports.preSurvey = (req, res) => {
+  ImagineService.experientialProtanopia({
+    userID: req.body.userID,
+    experientialProtanopia: req.body.preSurvey,
+  }).then(() => {
+    res.sendStatus(200);
+  });
+};
+

@@ -29,6 +29,15 @@ const ImagineService = {
       }
     );
   },
+  preSurvey: (userID, answers) => {
+    return API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
+      {
+        userID,
+        answers,
+      }
+    );
+  },
 };
 
 export default ImagineService;

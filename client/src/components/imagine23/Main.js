@@ -18,6 +18,7 @@ import ExerciseEnd from "./pages/ExerciseEnd";
 import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
+import Survey from "./Survey";
 import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");
 
@@ -73,6 +74,12 @@ const Main = (props) => {
               state={state}
               setUserID={setUserID}
               user={user}
+            />
+            <Survey
+              path={`/PreSurvey`}
+              user={state.main.user}
+              hideCertificate={false}
+              submitData={() => {}}
             />
             <LandingPage
               path="/ExperientialStart"
