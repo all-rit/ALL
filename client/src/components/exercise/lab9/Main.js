@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useMemo, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Router, navigate } from "@reach/router";
 import PropTypes from "prop-types";
 // lab imported dependencies;
-import Repair from "../../body/Repair/Repair";
 import LocalizationRepair from "../lab9/pages/LocalizationRepair";
 import { REPAIR, GAME_STATES } from "../../../constants/lab9";
 import GameStateContext from "./Lab9Context";
@@ -14,6 +13,7 @@ import GameStateContext from "./Lab9Context";
  */
 const Main = (props) => {
   const { user = "" } = props;
+  console.warn(user);
   const [exerciseState, setExerciseState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
   );

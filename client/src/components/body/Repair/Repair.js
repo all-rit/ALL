@@ -32,10 +32,14 @@ const Repair = (props) => {
     await fetchRepair();
   };
 
+  const handleUpdate = async () => {
+      validateRepair;
+    await submitRepair();
+   }
+
   const handleNext = async () => {
     if (enableNext) {
       navigateNext;
-      const state = await submitRepair();
     }
   };
 
@@ -75,7 +79,7 @@ const Repair = (props) => {
           <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
           <div>
             <button
-              onClick={validateRepair}
+              onClick={handleUpdate}
               type="submit"
               className="button button--green button--block"
             >

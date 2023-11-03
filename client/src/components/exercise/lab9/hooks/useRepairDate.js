@@ -16,7 +16,7 @@ import {
  * @param {Object} user to pass in a user into the hook to better prepare data.
  * @returns {Object} of function calls to hooks and fetched user data.
  */
-const useRepairDate = ({ user }) => {
+const useRepairDate = (user) => {
   const { data, functions } = useLabRepair();
   const { exercisePromptsState, isInputValid, repairCount } = data;
   const {
@@ -33,18 +33,20 @@ const useRepairDate = ({ user }) => {
         user,
         endpoints.GET_DATE_REPAIR
       );
-      if (repairData) {
+
+      console.warn(repairData);
+
+      if (!repairData) {
         const newStartState = DateFormData.countries;
         setExercisePromptsState(newStartState);
         setIsInputValid(new Array(newStartState.length).fill(false));
         setRepairCount(0);
-        return;
       } else {
         const { repair, repairCount } = repairData;
-        setExercisePromptsState(repair);
-        setIsInputValid(new Array(repair.length).fill(false));
+        const listRepair = Object.values(repair);
+        setExercisePromptsState(Object.values(repair));
+        setIsInputValid(new Array(listRepair.length).fill(false));
         setRepairCount(repairCount);
-        return;
       }
     } catch (error) {
       console.error(error);
@@ -53,8 +55,9 @@ const useRepairDate = ({ user }) => {
 
   async function postRepair() {
     try {
+      console.warn(user);
       const body = {
-        userId: user,
+        userid: user.userid,
         repair: { ...exercisePromptsState },
         isComplete: checkInputValid(),
         numRepair: repairCount,

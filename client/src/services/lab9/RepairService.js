@@ -7,12 +7,12 @@ import { GAME_STATES } from "../../constants/lab9";
 
 const prefix = {
   POST_SUFFIX: `/submit`,
-  LAB_PREFIX: `${process.env.REACT_APP_SERVER_URL}/lab8/`,
+  LAB_PREFIX: `${process.env.REACT_APP_SERVER_URL}/lab9`,
 };
 const resources = {
-  NAV_REPAIR: `${prefix.LAB_PREFIX}repair/${GAME_STATES.REPAIR_NAV_BAR}`,
-  DATE_REPAIR: `${prefix.LAB_PREFIX}repair/${GAME_STATES.REPAIR_NAV_BAR}`,
-  ADDRESS_REPAIR: `${prefix.LAB_PREFIX}repair/${GAME_STATES.REPAIR_NAV_BAR}`,
+  NAV_REPAIR: `${prefix.LAB_PREFIX}/repair/${GAME_STATES.REPAIR_NAV_BAR}`,
+  DATE_REPAIR: `${prefix.LAB_PREFIX}/repair/${GAME_STATES.REPAIR_DATE_REPAIR}`,
+  ADDRESS_REPAIR: `${prefix.LAB_PREFIX}repair/${GAME_STATES.REPAIR_ADDRESS_FORM}`,
 };
 
 const endpoints = {
@@ -35,11 +35,12 @@ const RepairService = {
   submitRepair: async (data = {}, route) => {
     try {
       const body = {
-        userid: data.userID,
+        userId: data.userid,
         repair: data.repair,
         isComplete: data.isComplete,
         numRepair: data.numRepair,
       };
+      console.warn(body);
       return await API.postWithBody(route, body);
     } catch (error) {
       console.error(error);
@@ -54,11 +55,12 @@ const RepairService = {
    */
   getRepair: async (data = {}, route) => {
     try {
-      const body = {
-        userid: data.userid,
-      };
-      const result = await API.get(route, body);
+      
+      const getRoute = `${route}/${data.userid}`
+      console.warn(getRoute);
+      const result = API.get(getRoute).then((response) => response.json());
       return result;
+
     } catch (error) {
       console.error(error);
     }
