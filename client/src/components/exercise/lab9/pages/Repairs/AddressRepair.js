@@ -14,18 +14,19 @@ import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
 const AddressRepair = (user = "") => {
   // eslint-disable-next-line no-unused-vars
   const { data, functions } = useRepairAddress(user);
-  const {exercisePromptsState} = data;
+  const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid } = functions;
   return (
     <Repair
-      fileName={'AddressForm.js'}
+      fileName={"AddressForm.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
       validateRepair={checkInputValid}
       repairText={[
-        'in this section you will be making changes in the file below']}
+        "in this section you will be making changes in the file below",
+      ]}
       CodeImplementation={
         <AddressRepairCodeBlock
-          addressForms = {exercisePromptsState}
+          addressForms={exercisePromptsState}
           userInput={handleUserInputChange}
         />
       }

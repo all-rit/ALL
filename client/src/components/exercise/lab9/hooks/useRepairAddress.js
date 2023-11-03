@@ -47,9 +47,9 @@ const useRepairAddress = (user) => {
       return previous.map((dateRepair) =>
         dateRepair.id === dataId
           ? {
-            ...dateRepair,
-            userInput: newValue,
-          }
+              ...dateRepair,
+              userInput: newValue,
+            }
           : dateRepair
       );
     });

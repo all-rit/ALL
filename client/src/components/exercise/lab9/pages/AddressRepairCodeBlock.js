@@ -2,10 +2,10 @@ import Tab from "../../../all-components/CodeBlock/Components/Tab";
 import CodeLine from "../../../all-components/CodeBlock/Components/CodeLine";
 import ReactText from "../../../all-components/CodeBlock/StyleComponents/ReactText";
 import PropTypes from "prop-types";
-import React from 'react'
+import React from "react";
 
 const AddressRepairCodeBlock = (props) => {
-  const {addressForms } = props;
+  const { addressForms } = props;
   return (
     <>
       <ReactText>const AddressFormats = (props) =&#62; &#123;</ReactText>
@@ -29,10 +29,9 @@ const AddressRepairCodeBlock = (props) => {
   );
 };
 
-
 AddressRepairCodeBlock.propTypes = {
   addressForms: PropTypes.array,
-  userInput: PropTypes.func
-}
+  userInput: PropTypes.func,
+};
 
 export default AddressRepairCodeBlock;
