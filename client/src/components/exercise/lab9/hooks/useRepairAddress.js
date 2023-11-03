@@ -39,10 +39,10 @@ const useRepairAddress = ({ user }) => {
         return;
       } else {
         const { repair, repairCount } = repairData;
-        setExercisePromptsState(repair);
-        setIsInputValid(new Array(repair.length).fill(false));
+        const listRepair = Object.values(repair);
+        setExercisePromptsState(Object.values(repair));
+        setIsInputValid(new Array(listRepair.length).fill(false));
         setRepairCount(repairCount);
-        return;
       }
     } catch (error) {
       console.error(error);
@@ -52,7 +52,7 @@ const useRepairAddress = ({ user }) => {
   async function postRepair() {
     try {
       const body = {
-        userId: user,
+        userId: user.userid,
         repair: { ...exercisePromptsState },
         isComplete: checkInputValid(),
         numRepair: repairCount,

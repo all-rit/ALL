@@ -1,4 +1,3 @@
-import DateFormData from "../../../../constants/lab9/DateFormData";
 import useLabRepair from "../../../../hooks/useLabRepair";
 import {
   RepairService,
@@ -32,17 +31,16 @@ const useRepairNav = ({ user }) => {
         endpoints.GET_NAV_REPAIR
       );
       if (repairData) {
-        const newStartState = DateFormData.countries;
+        const newStartState = [];
         setExercisePromptsState(newStartState);
         setIsInputValid(new Array(newStartState.length).fill(false));
         setRepairCount(0);
-        return;
       } else {
         const { repair, repairCount } = repairData;
-        setExercisePromptsState(repair);
-        setIsInputValid(new Array(repair.length).fill(false));
+        const listRepair = Object.values(repair);
+        setExercisePromptsState(Object.values(repair));
+        setIsInputValid(new Array(listRepair.length).fill(false));
         setRepairCount(repairCount);
-        return;
       }
     } catch (error) {
       console.error(error);
@@ -52,7 +50,7 @@ const useRepairNav = ({ user }) => {
   async function postRepair() {
     try {
       const body = {
-        userId: user,
+        userId: user.userid,
         repair: { ...exercisePromptsState },
         isComplete: checkInputValid(),
         numRepair: repairCount,

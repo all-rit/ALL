@@ -55,7 +55,6 @@ const useRepairDate = (user) => {
 
   async function postRepair() {
     try {
-      console.warn(user);
       const body = {
         userid: user.userid,
         repair: { ...exercisePromptsState },
