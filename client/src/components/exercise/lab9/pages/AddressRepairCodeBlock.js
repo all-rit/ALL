@@ -1,5 +1,6 @@
 import Tab from "../../../all-components/CodeBlock/Components/Tab";
 import CodeLine from "../../../all-components/CodeBlock/Components/CodeLine";
+import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
 import ReactText from "../../../all-components/CodeBlock/StyleComponents/ReactText";
 import PropTypes from "prop-types";
 import React from "react";
@@ -25,6 +26,14 @@ const AddressRepairCodeBlock = (props) => {
       <CodeLine>
         <Tab /> <ReactText> const addressFormats = &#123; </ReactText>
       </CodeLine>
+
+      {addressForms.map(() => (
+        <>
+          <CodeLine>
+            <MultiTab numberOfTabs={2} />
+          </CodeLine>
+        </>
+      ))}
     </>
   );
 };
