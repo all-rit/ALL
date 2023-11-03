@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useMemo, useContext } from "react";
+import React, { useState, useMemo, useContext, useEffect } from "react";
 import { Router, navigate } from "@reach/router";
 import PropTypes from "prop-types";
 // lab imported dependencies;
@@ -18,6 +18,10 @@ const Main = (props) => {
   const [exerciseState, setExerciseState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
   );
+
+  // useEffect(() => {
+  //   navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`);
+  // }, [exerciseState])
 
   return (
     <div className="bottomSpace">
