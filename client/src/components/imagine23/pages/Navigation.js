@@ -4,11 +4,13 @@
 import { navigate } from "@reach/router";
 import React from "react";
 
-const Navigation = () => {
+const Navigation = (props) => {
   const handleExpression = () => {
+    props.setIsExperiential(false);
     navigate("/Imagine/ExpressionStart");
   };
   const handleExperiential = () => {
+    props.setIsExperiential(true);
     navigate("/Imagine/ExperientialStart");
   };
 

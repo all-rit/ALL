@@ -39,6 +39,7 @@ const Main = (props) => {
   const [userID, setUserID] = useState(null);
 
   const [labId, setLabId] = useState(2);
+  const [isExperiential, setIsExperiential] = useState(false);
 
   useEffect(() => {
     if (user?.userid) {
@@ -82,6 +83,7 @@ const Main = (props) => {
             actions={actions}
             state={state}
             userID={userID}
+            setIsExperiential={setIsExperiential}
           />
           <LandingPage
             path="/ExperientialStart"
@@ -155,17 +157,10 @@ const Main = (props) => {
           />
           <Survey path={`/PostSurvey`} userID={userID} type="post" />
           <ExerciseEnd
-            path="/ExperientialExerciseEnd"
+            path="/ExerciseEnd"
             actions={actions}
             state={state}
-            isExperiential
-            userID={userID}
-          />
-          <ExerciseEnd
-            path="/ExpressionExerciseEnd"
-            actions={actions}
-            state={state}
-            isExperiential={false}
+            isExperiential={isExperiential}
             userID={userID}
           />
         </Router>

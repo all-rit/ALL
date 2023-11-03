@@ -5,11 +5,11 @@ const preSurveyQuestionsImagine = [
     answers: [
       {
         index: "0",
-        content: "Horrible",
+        content: "Amazing!!!!!",
       },
       {
         index: "1",
-        content: "Not great",
+        content: "Pretty good",
       },
       {
         index: "2",
@@ -17,11 +17,11 @@ const preSurveyQuestionsImagine = [
       },
       {
         index: "3",
-        content: "Pretty good",
+        content: "Not great",
       },
       {
         index: "4",
-        content: "Amazing!!!!!",
+        content: "Horrible",
       },
     ],
     multiChoice: false,
