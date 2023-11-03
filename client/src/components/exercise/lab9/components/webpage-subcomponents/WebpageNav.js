@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import logo from "../../../../../assets/images/lab9/logo.png";
-import GameStateContext from "../../Lab9Context";
-import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
+import { GAME_STATES } from "../../../../../constants/lab9";
 import { navigate } from "@reach/router";
 
 /**
@@ -11,11 +10,16 @@ import { navigate } from "@reach/router";
  * @returns rendered webpage navbar
  */
 const WebpageNav = () => {
-  const { exerciseState, setExerciseState } = useContext(GameStateContext);
-
-  const nav_repair_handler = () => {
-    setExerciseState(GAME_STATES.REPAIR_NAV_BAR);
-    navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`);
+  // eslint-disable-next-line no-unused-vars
+  const [gameState, setGameState] = useState(
+    GAME_STATES.EXERCISE_SELECTION_DEFAULT
+  );
+  const updateState = (newState) => {
+    setGameState(newState);
+  };
+  const handleNav = (path) => {
+    updateState(path);
+    navigate(`/Lab9/Exercise/GameRepair/${path}`);
   };
 
   return (
@@ -34,11 +38,8 @@ const WebpageNav = () => {
             </div>
           </div>
         </div>
-        <div
-          value={GAME_STATES.REPAIR_NAV_BAR}
-          onClick={nav_repair_handler}
-          className="tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-10 tw-my-auto tw-max-md:tw-max-w-full tw-max-md:tw-flex-wrap tw-max-md:tw-justify-center tw-border-dashed tw-border-brightRed tw-p-5"
-        >
+        <div onClick={() => handleNav(GAME_STATES.REPAIR_NAV_BAR)}
+          className="tw-cursor-pointer hover:tw-bg-labYellow tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-2 tw-border-solid tw-rounded-xl tw-p-5">
           <div className="tw-text-[#260D0D] tw-text-center tw-text-base">
             Careers
           </div>
