@@ -33,9 +33,9 @@ const Repair = (props) => {
   };
 
   const handleUpdate = async () => {
-      validateRepair;
+    validateRepair;
     await submitRepair();
-   }
+  };
 
   const handleNext = async () => {
     if (enableNext) {

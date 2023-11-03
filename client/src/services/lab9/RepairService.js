@@ -55,12 +55,10 @@ const RepairService = {
    */
   getRepair: async (data = {}, route) => {
     try {
-      
-      const getRoute = `${route}/${data.userid}`
+      const getRoute = `${route}/${data.userid}`;
       console.warn(getRoute);
       const result = API.get(getRoute).then((response) => response.json());
       return result;
-
     } catch (error) {
       console.error(error);
     }

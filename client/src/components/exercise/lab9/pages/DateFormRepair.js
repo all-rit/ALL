@@ -51,21 +51,9 @@ const DateFormRepair = (props = {}) => {
           <CodeLine>
             <MultiTab numberOfTabs={3} />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
-            {
-              country.userInput? (
-                <CodeBlockInput
-                  value={country.userInput}
-              attributes={{
-                onChange: (event) => {
-                  userInput(country.id, event.target.value);
-                },
-                name: country.name,
-                type: "text",
-                placeholder: "Enter Dateform Here",
-                }
-                  }
-            />
-              ):(<CodeBlockInput
+            {country.userInput ? (
+              <CodeBlockInput
+                value={country.userInput}
                 attributes={{
                   onChange: (event) => {
                     userInput(country.id, event.target.value);
@@ -74,8 +62,19 @@ const DateFormRepair = (props = {}) => {
                   type: "text",
                   placeholder: "Enter Dateform Here",
                 }}
-              />)
-            }
+              />
+            ) : (
+              <CodeBlockInput
+                attributes={{
+                  onChange: (event) => {
+                    userInput(country.id, event.target.value);
+                  },
+                  name: country.name,
+                  type: "text",
+                  placeholder: "Enter Dateform Here",
+                }}
+              />
+            )}
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={2} />
