@@ -3,7 +3,8 @@ import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Survey from "./Survey";
 import { navigate } from "@reach/router";
-import PreSurveyQuestinos from "./preSurveyQuestions";
+import PreSurveyQuestions from "./preSurveyQuestions";
+import PostSurveyQuestions from "./postSurveyQuestions";
 import ImagineService from "../../services/ImagineService";
 /**
  * assignQuizQuestions is a function that returns a given set
@@ -11,10 +12,12 @@ import ImagineService from "../../services/ImagineService";
  * @param {integer} labId is passed to the function to determine
  * what questions to grab
  */
-function assignQuizQuestions(labId) {
-  switch (labId) {
-    case 2:
-      return PreSurveyQuestinos;
+function assignQuizQuestions(surveyType) {
+  switch (surveyType) {
+    case "pre":
+      return PreSurveyQuestions;
+    case "post":
+      return PostSurveyQuestions;
     default:
       return [
         {
@@ -40,7 +43,7 @@ function assignQuizQuestions(labId) {
  */
 const SurveyHandler = (props) => {
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(assignQuizQuestions(2));
+  const [questions, setQuestions] = useState(assignQuizQuestions(props.type));
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers
   );
@@ -126,8 +129,18 @@ const SurveyHandler = (props) => {
     setSelectedAnswers(tempAnswers);
   }
 
-  const handleNextPage = (link) => {
-    navigate(`/Imagine/${link}`);
+  const handleNextPage = (surveyType) => {
+    switch (surveyType) {
+      case "pre":
+        navigate("/Imagine/Navigation");
+        break;
+      case "post":
+        navigate("/Imagine/ExerciseEnd");
+        break;
+      default:
+        navigate("/Imagine");
+        break;
+    }
   };
 
   return (
@@ -151,7 +164,7 @@ const SurveyHandler = (props) => {
           <h2 className="p-5">Thank you for completing the pre-survey!</h2>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={() => handleNextPage("Navigation")}
+            onClick={() => handleNextPage(props.type)}
           >
             Continue
           </button>
@@ -163,5 +176,6 @@ const SurveyHandler = (props) => {
 SurveyHandler.propTypes = {
   submitData: PropTypes.func.isRequired,
   userID: PropTypes.string,
+  type: PropTypes.string,
 };
 export default SurveyHandler;

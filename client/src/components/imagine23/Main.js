@@ -76,11 +76,7 @@ const Main = (props) => {
             setUserID={setUserID}
             user={user}
           />
-          <Survey
-            path={`/PreSurvey`}
-            userID={userID}
-            type="pre"
-          />
+          <Survey path={`/PreSurvey`} userID={userID} type="pre" />
           <Navigation
             path="/Navigation"
             actions={actions}
@@ -157,6 +153,7 @@ const Main = (props) => {
             hideCertificate={false}
             submitData={() => {}}
           />
+          <Survey path={`/PostSurvey`} userID={userID} type="post" />
           <ExerciseEnd
             path="/ExperientialExerciseEnd"
             actions={actions}

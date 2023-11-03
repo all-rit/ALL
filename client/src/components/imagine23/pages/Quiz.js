@@ -279,7 +279,7 @@ const QuizHandler = (props) => {
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
             //should be post survey component
-            onClick={() => handleQuizButton("ExerciseEnd")}
+            onClick={() => handleQuizButton("PostSurvey")}
           >
             Continue to Post Survey
           </button>
