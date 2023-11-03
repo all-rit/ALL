@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { React, useState } from "react";
 import { PropTypes } from "prop-types";
-import Survey from "./Survey";
+import Survey from "../components/Survey";
 import { navigate } from "@reach/router";
-import PreSurveyQuestions from "./preSurveyQuestions";
-import PostSurveyQuestions from "./postSurveyQuestions";
-import ImagineService from "../../services/ImagineService";
+import PreSurveyQuestions from "../data/preSurveyQuestions";
+import PostSurveyQuestions from "../data/postSurveyQuestions";
+import ImagineService from "../../../services/ImagineService";
 /**
  * assignQuizQuestions is a function that returns a given set
  * of quiz questions dependent on the labId passed
@@ -161,7 +161,10 @@ const SurveyHandler = (props) => {
         ></Survey>
       ) : (
         <>
-          <h2 className="p-5">Thank you for completing the pre-survey!</h2>
+          <h2 className="p-5">
+            Thank you for completing the {props.type == "pre" ? "pre" : "post"}
+            -survey!
+          </h2>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
             onClick={() => handleNextPage(props.type)}
