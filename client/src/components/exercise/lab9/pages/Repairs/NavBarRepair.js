@@ -13,8 +13,7 @@ const NavBarRepair = (user = "") => {
   const { data, functions } = useRepairNav(user);
   // eslint-disable-next-line no-empty-pattern
   const {} = data;
-  const { checkInputValid, fetchRepair, postRepair } =
-    functions;
+  const { checkInputValid, fetchRepair, postRepair } = functions;
   return (
     <Repair
       fileName={"DateFormat.js"}

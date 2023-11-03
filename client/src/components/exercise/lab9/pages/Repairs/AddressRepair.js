@@ -28,9 +28,7 @@ const AddressRepair = (user = "") => {
       repairText={[
         "in this section you will be making changes to the repair data file below",
       ]}
-      CodeImplementation={
-        () => { }
-      }
+      CodeImplementation={() => {}}
       navigateNext={() => {}}
     />
   );
