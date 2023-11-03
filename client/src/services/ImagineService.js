@@ -30,6 +30,7 @@ const ImagineService = {
     );
   },
   preSurvey: (userID, answers) => {
+    console.log(answers)
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
       {

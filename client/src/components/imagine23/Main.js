@@ -78,8 +78,8 @@ const Main = (props) => {
           />
           <Survey
             path={`/PreSurvey`}
-            user={state.main.user}
-            submitData={() => {}}
+            userID={userID}
+            type="pre"
           />
           <Navigation
             path="/Navigation"

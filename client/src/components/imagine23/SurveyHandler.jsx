@@ -69,7 +69,7 @@ const SurveyHandler = (props) => {
    */
   function onComplete() {
     setSurveyComplete(true);
-    ImagineService.preSurvey(props.user.userid, selectedAnswers);
+    ImagineService.preSurvey(props.userID, selectedAnswers);
   }
 
   /**
@@ -162,9 +162,6 @@ const SurveyHandler = (props) => {
 };
 SurveyHandler.propTypes = {
   submitData: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    firstname: PropTypes.string,
-    userid: PropTypes.number,
-  }),
+  userID: PropTypes.string,
 };
 export default SurveyHandler;
