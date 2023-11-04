@@ -27,6 +27,7 @@ const ExpressionExercise = (props) => {
 
   const handleNext = () => {
     ImagineService.discomfortCount(userID, timeStamps);
+    console.log(timeStamps);
     navigate("/Imagine/ExpressionScore");
   };
 

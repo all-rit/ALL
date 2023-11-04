@@ -36,7 +36,7 @@ function assignQuizQuestions(surveyType) {
 }
 
 /**
- * QuizHandler is react component responsible for tracking users responses
+ * SurveyHandler is react component responsible for tracking users responses
  * this will be the main handler to manage the state and logic for the new quiz component
  * @param {Object} props will be the injectable fields that will populate and provide the
  * component with information.
@@ -70,9 +70,14 @@ const SurveyHandler = (props) => {
    * calculations to grade a users responses to the quiz. This will then prepare the data
    * to display to the user for the result portion of the quiz.
    */
-  function onComplete() {
+  function onComplete(surveyType) {
     setSurveyComplete(true);
-    ImagineService.preSurvey(props.userID, selectedAnswers);
+    if(surveyType === "pre"){
+      ImagineService.preSurvey(props.userID,selectedAnswers)
+    }else if(surveyType === "post"){
+      ImagineService.postSurvey(props.userID,selectedAnswers)
+    }
+    console.log(selectedAnswers);
   }
 
   /**
@@ -84,14 +89,19 @@ const SurveyHandler = (props) => {
    */
   function selectAnswer(e) {
     const answerValue = e.target.value;
-    let tempSelectedAnswers;
-    tempSelectedAnswers = [...selectedAnswers];
-    tempSelectedAnswers[currentQuestionCursor] = {
-      content: questions[currentQuestionCursor].answers[answerValue].content,
-      val: 1,
-      type: answerValue,
-    };
-    setSelectedAnswers(tempSelectedAnswers);
+    // let tempSelectedAnswers;
+    setSelectedAnswers([
+      ...selectedAnswers,{
+        question: questions[currentQuestionCursor].question,
+        answers: questions[currentQuestionCursor].answers[answerValue].content
+      }
+      
+    ])
+    // tempSelectedAnswers = [...selectedAnswers];
+    // tempSelectedAnswers[currentQuestionCursor] = {
+    //   content: questions[currentQuestionCursor].answers[answerValue].content,
+    // };
+    // setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
   }
   /**
@@ -154,7 +164,7 @@ const SurveyHandler = (props) => {
           multiSelectedEntry={selectMulti}
           nextQuestion={handleNext}
           onAnswerSelected={selectAnswer}
-          onComplete={onComplete}
+          onComplete={() => onComplete(props.type)}
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
           questionTotal={questions.length}
@@ -177,7 +187,7 @@ const SurveyHandler = (props) => {
   );
 };
 SurveyHandler.propTypes = {
-  submitData: PropTypes.func.isRequired,
+  // submitData: PropTypes.func.isRequired,
   userID: PropTypes.string,
   type: PropTypes.string,
 };

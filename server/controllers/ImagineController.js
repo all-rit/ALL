@@ -37,3 +37,13 @@ exports.preSurvey = (req, res) => {
   });
 };
 
+exports.postSurvey = (req, res) => {
+  console.log(req.body);
+  ImagineService.postSurvey({
+    userID: req.body.userID,
+    preSurvey: req.body.postSurvey,
+  }).then(() => {
+    res.sendStatus(200);
+  });
+};
+

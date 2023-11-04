@@ -139,5 +139,6 @@ router.post('/imagine/discomfortCount', ImagineController.discomfortCount);
 router.post('/imagine/experientialMain', ImagineController.experientialMain);
 router.post('/imagine/experientialProtanopia', ImagineController.experientialProtanopia);
 router.post('/imagine/preSurvey', ImagineController.preSurvey);
+router.post('/imagine/postSurvey', ImagineController.postSurvey);
 
 module.exports = router;

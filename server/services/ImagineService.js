@@ -93,7 +93,7 @@ exports.experientialProtanopia = (data)=> {
 
 exports.preSurvey = (data) => {
   const userID = data.userID;
-  const preSurvey = data.answers;
+  const preSurvey = data.preSurvey;
   if (userID) {
     return db.Imagine23
         .findOne({
@@ -110,6 +110,36 @@ exports.preSurvey = (data) => {
             db.Imagine23.create({
               userid: userID,
               preSurvey: preSurvey,
+            });
+          }
+          return true;
+        }).catch((err) => {
+          console.log(err);
+          return true;
+        });
+  }
+  return Promise.resolve();
+};
+
+exports.postSurvey = (data) => {
+  const userID = data.userID;
+  const postSurvey = data.postSurvey;
+  if (userID) {
+    return db.Imagine23
+        .findOne({
+          where:
+                        {
+                          userid: userID,
+                        },
+        },
+        ).then((user) => {
+          if (user !== null) {
+            user.postSurvey = postSurvey;
+            user.save();
+          } else {
+            db.Imagine23.create({
+              userid: userID,
+              postSurvey: postSurvey,
             });
           }
           return true;

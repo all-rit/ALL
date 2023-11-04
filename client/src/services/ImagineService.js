@@ -38,6 +38,15 @@ const ImagineService = {
       }
     );
   },
+  postSurvey: (userID, postSurvey) => {
+    return API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + "/imagine/postSurvey",
+      {
+        userID,
+        postSurvey,
+      }
+    );
+  },
 };
 
 export default ImagineService;
