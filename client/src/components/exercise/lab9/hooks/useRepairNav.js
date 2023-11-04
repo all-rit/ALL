@@ -13,7 +13,7 @@ import {
  * @param {Object} user to pass in a user into the hook to better prepare data.
  * @returns {Object} of function calls to hooks and fetched user data.
  */
-const useRepairNav = ( user ) => {
+const useRepairNav = (user) => {
   const { data, functions } = useLabRepair();
   const { exercisePromptsState, isInputValid, repairCount } = data;
   const {

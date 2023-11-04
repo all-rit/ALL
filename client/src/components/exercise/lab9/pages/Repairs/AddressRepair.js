@@ -19,7 +19,7 @@ const AddressRepair = (user = "") => {
     functions;
   return (
     <Repair
-      fileName={"DateFormat.js"}
+      fileName={"AddressFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
       headingText={""}
       validateRepair={checkInputValid}
