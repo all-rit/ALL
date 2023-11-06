@@ -5,7 +5,7 @@ export const AddressRepairData = {
       countryVariable: "us",
       countryName: "united_states",
       comment:
-        "// enter the following address infomation: streetAddress, city, state, postalCode",
+        "// enter the following address format: streetAddress, city, state, postalCode",
       userInput: "",
       validate_expression: "",
       correctAddressFormat: "streetAddress, city, state, postalCode",
@@ -15,7 +15,7 @@ export const AddressRepairData = {
       countryVariable: "uk",
       countryName: "united_kingdom",
       comment:
-        "// enter the following address infomation: streetAddress, locality, city, postalCode",
+        "// enter the following address format: streetAddress, locality, city, postalCode",
       userInput: "",
       validate_expression: "",
       correctAddressFormat: "streetAddress, locality, city, postalCode",
@@ -25,18 +25,18 @@ export const AddressRepairData = {
       countryVariable: "jp",
       countryName: "japan",
       comment:
-        "// enter the following address infomation: postalCode, prefecture, city, ward, block, buildingName",
+        "// enter the following address format: postalCode, prefecture, city, ward, block, buildingName",
       userInput: "",
       validate_expression: "",
       correctAddressFormat:
         "postalCode, prefecture, city, ward, block, buildingName",
     },
     {
-      id: 2,
+      id: 3,
       countryVariable: "db",
       countryName: "dubai",
       comment:
-        "// enter the following address infomation: streetAddress, locality, city, emirate, postalCode",
+        "// enter the following address format: streetAddress, locality, city, emirate, postalCode",
       userInput: "",
       validate_expression: "",
       correctAddressFormat:
