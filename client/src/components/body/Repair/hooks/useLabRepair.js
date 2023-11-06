@@ -33,8 +33,6 @@ const useLabRepair = () => {
       }
     });
     setIsInputValid(localValidArray);
-    console.warn(localValidArray);
-    console.warn(exercisePromptsState);
     return localValidArray.every((v) => v === true);
   };
   /**
@@ -55,7 +53,6 @@ const useLabRepair = () => {
           : dateRepair
       );
     });
-    console.log(newValue);
   };
 
   return {
