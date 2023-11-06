@@ -50,12 +50,12 @@ const WebpageForm = () => {
           <div
             onClick={() => handleNav(GAME_STATES.REPAIR_ADDRESS_FORM)}
             className={
-              "tw-w-full hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-animate-reduced-bounce tw-cursor-pointer tw-rounded-xl tw-mt-5 tw-border-solid tw-p-8"
+              "tw-w-full hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-animate-reduced-bounce tw-cursor-pointer tw-rounded-xl tw-mt-5 tw-border-solid tw-p-4 tw-pb-10"
             }
           >
             <div className="tw-flex tw-items-start tw-justify-between tw-h-1/4 tw-gap-2.5">
               <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-mt-0">
-                Address Line
+                Address
               </div>
               <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />
             </div>
@@ -89,8 +89,8 @@ const WebpageForm = () => {
                 </div>
                 <div className="tw-self-stretch tw-rounded-md tw-flex tw-flex-col tw-w-4/5 tw-h-10 tw-border-[3px] tw-border-solid tw-border-black" />
               </div>
-              <div className="tw-text-[#260D0D] tw-rounded-md tw-bg-lightGreen tw-justify-center tw-align-middle tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-w-1/4 tw-h-10 tw-border-[3px] tw-border-solid">
-                <p> Sign Up </p>
+              <div className="tw-text-[#260D0D] tw-rounded-md tw-bg-labGreen tw-justify-center tw-align-middle tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-w-1/4 tw-h-10 tw-border-[3px] tw-border-solid">
+                <p className="tw-font-medium tw-text-lg tw-text-bgwhite "> Sign Up </p>
               </div>
             </div>
           </div>
