@@ -90,7 +90,10 @@ const WebpageForm = () => {
                 <div className="tw-self-stretch tw-rounded-md tw-flex tw-flex-col tw-w-4/5 tw-h-10 tw-border-[3px] tw-border-solid tw-border-black" />
               </div>
               <div className="tw-text-[#260D0D] tw-rounded-md tw-bg-labGreen tw-justify-center tw-align-middle tw-shadow-[0px_4px_7px_0px_rgba(0,0,0,0.25)] tw-w-1/4 tw-h-10 tw-border-[3px] tw-border-solid">
-                <p className="tw-font-medium tw-text-lg tw-text-bgwhite "> Sign Up </p>
+                <p className="tw-font-medium tw-text-lg tw-text-bgwhite ">
+                  {" "}
+                  Sign Up{" "}
+                </p>
               </div>
             </div>
           </div>
