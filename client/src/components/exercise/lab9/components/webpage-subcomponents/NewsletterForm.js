@@ -28,7 +28,6 @@ const WebpageForm = () => {
           <div className="tw-flex tw-items-start tw-justify-between tw-gap-5">
             <div className="tw-bg-gray tw-self-center" />
             {/* will want a button around the date here that routes to the date repair */}
-
           </div>
           <div className="tw-flex tw-flex-row tw-justify-between tw-text-[#260D0D] tw-text-4xl tw-font-bold tw-tracking-tighter tw-w-full tw-ml-1.5 tw-mt-4">
             <span className="">Weekly Newsletter</span>
@@ -61,7 +60,6 @@ const WebpageForm = () => {
               <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />
             </div>
 
-
             <div className=" tw-flex tw-flex-row tw-h-1/4 tw-justify-between tw-gap-5 tw-mt-7">
               <div className="tw-flex tw-flex-row tw-w-1/3 tw-items-start tw-gap-3 tw-mt-0.5">
                 <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-my-auto">
@@ -80,9 +78,9 @@ const WebpageForm = () => {
                 <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-my-auto">
                   Zip
                 </div>
-                <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />              </div>
+                <div className="tw-self-stretch tw-rounded-md tw-flex tw-w-full tw-flex-col tw-border-[3px] tw-border-solid tw-border-black" />{" "}
+              </div>
             </div>
-
 
             <div className="tw-flex tw-max-w-full tw-max-h-1/5 tw-align-middle tw-justify-between tw-gap-3 tw-mr-1 tw-mt-7 ">
               <div className="tw-flex tw-items-start tw-w-full tw-h-full tw-gap-3 tw-mt-0.5">

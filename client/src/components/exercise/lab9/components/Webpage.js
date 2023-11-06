@@ -30,7 +30,7 @@ const Webpage = () => {
         >
           <div className="tw-w-full tw-flex tw-flex-row tw-mt-10">
             <div className="tw-flex tw-w-1/4 tw-ml-5">
-              <WebpageSidebar/>
+              <WebpageSidebar />
             </div>
             <div className="tw-flex tw-w-3/4 tw-mr-5">
               <NewsletterForm />
