@@ -13,11 +13,9 @@ import GameStateContext from "./Lab9Context";
  */
 const Main = (props) => {
   const { user = "" } = props;
-  console.warn(user);
   const [exerciseState, setExerciseState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
   );
-
   return (
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
