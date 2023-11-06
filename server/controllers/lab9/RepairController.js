@@ -25,8 +25,8 @@ async function submitChange(req) {
  */
 async function getRepair(req) {
   try {
-    const {section} = req.params;
-    const repair = await RepairService.getRepair(req,
+    const {userID, section} = req.params;
+    const repair = await RepairService.getRepair(userID,
         section);
     return repair;
   } catch (error) {

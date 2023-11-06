@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
-import useLabRepair from "../../../../hooks/useLabRepair";
+import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
 import DateFormData from "../../../../constants/lab9/DateFormData";
 import {
   RepairService,
-  endpoints,
 } from "../../../../services/lab9/RepairService";
+import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
  * useRepairDate(): is a custom hook to abstract the logic implementation for the
@@ -30,12 +28,8 @@ const useRepairDate = (user) => {
   async function fetchRepair() {
     try {
       const repairData = await RepairService.getRepair(
-        user,
-        endpoints.GET_DATE_REPAIR
+        user, GAME_STATES.REPAIR_DATE_REPAIR
       );
-
-      console.warn(repairData);
-
       if (!repairData) {
         const newStartState = DateFormData.countries;
         setExercisePromptsState(newStartState);
@@ -58,12 +52,12 @@ const useRepairDate = (user) => {
       const body = {
         userid: user.userid,
         repair: { ...exercisePromptsState },
+        section: GAME_STATES.REPAIR_DATE_REPAIR,
         isComplete: checkInputValid(),
         numRepair: repairCount,
       };
       const repairID = await RepairService.submitRepair(
-        body,
-        endpoints.POST_DATE_REPAIR
+        body
       );
       return repairID;
     } catch (error) {

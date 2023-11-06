@@ -13,8 +13,10 @@ async function getRepair(data, section) {
   try {
     return await db.RepairLab9.findOne({
       order: [['repairId', 'DESC']],
-      where: {userid: data},
-      section: section,
+      where: {
+        userid: data,
+        section: section,
+      },
       raw: true,
     });
   } catch (error) {

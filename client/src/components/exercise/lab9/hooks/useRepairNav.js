@@ -1,8 +1,8 @@
-import useLabRepair from "../../../../hooks/useLabRepair";
+import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
 import {
   RepairService,
-  endpoints,
 } from "../../../../services/lab9/RepairService";
+import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
  * useRepairNav(): is a custom hook to abstract the logic implementation for the
@@ -28,7 +28,7 @@ const useRepairNav = (user) => {
     try {
       const repairData = await RepairService.getRepair(
         user,
-        endpoints.GET_NAV_REPAIR
+        GAME_STATES.REPAIR_NAV_BAR
       );
       if (repairData) {
         const newStartState = [];
@@ -53,11 +53,11 @@ const useRepairNav = (user) => {
         userId: user.userid,
         repair: { ...exercisePromptsState },
         isComplete: checkInputValid(),
+        section: GAME_STATES.REPAIR_NAV_BAR,
         numRepair: repairCount,
       };
       const repairID = await RepairService.submitRepair(
         body,
-        endpoints.POST_NAV_REPAIR
       );
       return repairID;
     } catch (error) {

@@ -1,8 +1,8 @@
-import useLabRepair from "../../../../hooks/useLabRepair";
+import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
 import {
-  RepairService,
-  endpoints,
+  RepairService
 } from "../../../../services/lab9/RepairService";
+import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
  * useRepairAddress(): is a custom hook to abstract the logic implementation for the
@@ -28,7 +28,7 @@ const useRepairAddress = ({ user }) => {
     try {
       const repairData = await RepairService.getRepair(
         user,
-        endpoints.GET_ADDRESS_REPAIR
+        GAME_STATES.REPAIR_ADDRESS_FORM
       );
       if (repairData) {
         // change this array to the template array data
@@ -56,10 +56,10 @@ const useRepairAddress = ({ user }) => {
         repair: { ...exercisePromptsState },
         isComplete: checkInputValid(),
         numRepair: repairCount,
+        section: GAME_STATES.REPAIR_ADDRESS_FORM,
       };
       const repairID = await RepairService.submitRepair(
-        body,
-        endpoints.POST_ADDRESS_REPAIR
+        body
       );
       return repairID;
     } catch (error) {
