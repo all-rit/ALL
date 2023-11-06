@@ -22,15 +22,15 @@ const WebpageForm = () => {
   };
 
   return (
-    <div className="tw-flex tw-flex-col tw-items-stretch tw-ml-5">
-      <div className="tw-shadow-[3px_4px_7px_0px_rgba(0,0,0,0.25)] tw-bg-[#D9D9D9] tw-flex tw-grow tw-flex-col tw-w-full tw-mx-auto tw-px-5 tw-py-5 tw-max-md:tw-max-w-full tw-max-md:tw-mt-12">
+    <div className="tw-flex tw-flex-col tw-resize tw-ml-5">
+      <div className="tw-bg-[#D9D9D9] tw-flex tw-grow tw-flex-col tw-px-5 tw-py-5">
         <div className="tw-self-stretch tw-flex tw-mb-0 tw-flex-col tw-ml-0.5 tw-mr-4 tw-mt-0.5 tw-max-md:tw-max-w-full tw-max-md:mr-2.5">
           <div className="tw-flex tw-w-[723px] tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-max-md:flex-wrap">
             <div className="tw-bg-gray tw-self-center tw-w-[577px] tw-h-[5px] tw-grow tw-shrink-0 tw-basis-auto tw-my-auto tw-max-md:tw-max-w-full" />
             {/* will want a button around the date here that routes to the date repair */}
             <div
               onClick={() => handleNav(GAME_STATES.REPAIR_DATE_REPAIR)}
-              className="tw-text-[#260D0D] tw-cursor-pointer hover:tw-bg-labYellow tw-rounded-xl tw-border-solid tw-bw-5 tw-p-5 tw-text-center tw-text-2xl tw-mr-5"
+              className="tw-animate-reduced-bounce hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-text-[#260D0D] tw-cursor-pointer hover:tw-bg-labYellow tw-rounded-xl tw-border-solid tw-bw-5 tw-p-5 tw-text-center tw-text-2xl tw-mr-5"
             >
               8/28/2027
             </div>
@@ -51,10 +51,10 @@ const WebpageForm = () => {
           <div
             onClick={() => handleNav(GAME_STATES.REPAIR_ADDRESS_FORM)}
             className={
-              "tw-cursor-pointer hover:tw-bg-labYellow tw-rounded-xl tw-mt-5 tw-border-solid tw-p-5"
+              "hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-animate-reduced-bounce tw-cursor-pointer tw-rounded-xl tw-mt-5 tw-border-solid tw-p-5"
             }
           >
-            <div className="tw-flex tw-w-[717px] tw-max-w-full tw-items-start tw-gap-2.5">
+            <div className="tw-flex tw-w-[717px] tw-max-w-full tw-flex-shrink tw-items-start tw-gap-2.5">
               <div className="tw-justify-center tw-text-[#260D0D] tw-text-base tw-self-center tw-w-[113px] tw-my-auto tw-mt-0">
                 Address Line
               </div>
