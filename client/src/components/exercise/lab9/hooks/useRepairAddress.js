@@ -1,7 +1,5 @@
 import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
-import {
-  RepairService
-} from "../../../../services/lab9/RepairService";
+import { RepairService } from "../../../../services/lab9/RepairService";
 import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
@@ -58,9 +56,7 @@ const useRepairAddress = ({ user }) => {
         numRepair: repairCount,
         section: GAME_STATES.REPAIR_ADDRESS_FORM,
       };
-      const repairID = await RepairService.submitRepair(
-        body
-      );
+      const repairID = await RepairService.submitRepair(body);
       return repairID;
     } catch (error) {
       console.error(error);

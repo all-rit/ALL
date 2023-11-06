@@ -1,8 +1,6 @@
 import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
 import DateFormData from "../../../../constants/lab9/DateFormData";
-import {
-  RepairService,
-} from "../../../../services/lab9/RepairService";
+import { RepairService } from "../../../../services/lab9/RepairService";
 import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
@@ -28,7 +26,8 @@ const useRepairDate = (user) => {
   async function fetchRepair() {
     try {
       const repairData = await RepairService.getRepair(
-        user, GAME_STATES.REPAIR_DATE_REPAIR
+        user,
+        GAME_STATES.REPAIR_DATE_REPAIR
       );
       if (!repairData) {
         const newStartState = DateFormData.countries;
@@ -56,9 +55,7 @@ const useRepairDate = (user) => {
         isComplete: checkInputValid(),
         numRepair: repairCount,
       };
-      const repairID = await RepairService.submitRepair(
-        body
-      );
+      const repairID = await RepairService.submitRepair(body);
       return repairID;
     } catch (error) {
       console.error(error);

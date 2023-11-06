@@ -1,7 +1,5 @@
 import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
-import {
-  RepairService,
-} from "../../../../services/lab9/RepairService";
+import { RepairService } from "../../../../services/lab9/RepairService";
 import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
@@ -56,9 +54,7 @@ const useRepairNav = (user) => {
         section: GAME_STATES.REPAIR_NAV_BAR,
         numRepair: repairCount,
       };
-      const repairID = await RepairService.submitRepair(
-        body,
-      );
+      const repairID = await RepairService.submitRepair(body);
       return repairID;
     } catch (error) {
       console.error(error);
