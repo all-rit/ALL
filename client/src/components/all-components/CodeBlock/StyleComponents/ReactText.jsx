@@ -24,7 +24,6 @@ import {
  */
 
 const ReactText = ({ children }) => {
-  console.log("children", children);
   // eslint-disable-next-line no-prototype-builtins
   if (typeof children === "object") {
     children = children.toString().replaceAll(/,/g, "").padStart(1);
