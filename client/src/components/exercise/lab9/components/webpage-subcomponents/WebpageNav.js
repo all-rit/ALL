@@ -38,8 +38,10 @@ const WebpageNav = () => {
             </div>
           </div>
         </div>
-        <div onClick={() => handleNav(GAME_STATES.REPAIR_NAV_BAR)}
-          className="tw-animate-reduced-bounce hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-cursor-pointer tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-2 tw-border-solid tw-rounded-xl tw-p-5">
+        <div
+          onClick={() => handleNav(GAME_STATES.REPAIR_NAV_BAR)}
+          className="tw-animate-reduced-bounce hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-cursor-pointer tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-2 tw-border-solid tw-rounded-xl tw-p-5"
+        >
           <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base">
             Careers
           </div>

@@ -24,7 +24,10 @@ const Webpage = () => {
         />
         <WebpageNav />
         <WebpageHeader />
-        <div className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-col tw-mt-60" style={{ zIndex: 1 }}>
+        <div
+          className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-col tw-mt-60"
+          style={{ zIndex: 1 }}
+        >
           <div className="tw-self-center tw-mt-10">
             <div className="tw-flex tw-flex-row tw-p-5">
               <WebpageSidebar />

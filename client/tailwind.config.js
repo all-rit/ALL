@@ -66,20 +66,24 @@ module.exports = {
           "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
       },
       height: {
-        128: "31rem"
+        128: "31rem",
       },
       keyframes: {
         reducedBounce: {
-          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)'},
-          '40%': { transform: 'translateY(-8px)',
-                    animationTimingFunction: 'cubic-bezier(0.5, 0.05, 1, 0.5)'},
-          '60%': { transform: 'translateY(-5px)',
-                    animationTimingFunction: 'cubic-bezier(0.5, 0.05, 1, 0.5)'},
+          "0%, 20%, 50%, 80%, 100%": { transform: "translateY(0)" },
+          "40%": {
+            transform: "translateY(-8px)",
+            animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",
+          },
+          "60%": {
+            transform: "translateY(-5px)",
+            animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",
+          },
         },
       },
       animation: {
-        'reduced-bounce': `reducedBounce 2s linear infinite`
-      }
+        "reduced-bounce": `reducedBounce 2s linear infinite`,
+      },
     },
   },
   variants: {
