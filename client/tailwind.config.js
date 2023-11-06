@@ -70,7 +70,7 @@ module.exports = {
       },
       keyframes: {
         reducedBounce: {
-          "0%, 20%, 50%, 80%, 100%": { transform: "translateY(0)" },
+          "20%, 50%, 80%, 100%": { transform: "translateY(0)" },
           "40%": {
             transform: "translateY(-8px)",
             animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",

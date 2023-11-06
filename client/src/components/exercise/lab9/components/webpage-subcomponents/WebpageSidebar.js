@@ -10,7 +10,7 @@ import person from "../../../../../assets/images/lab9/person.jpeg";
  */
 const WebpageSidebar = () => {
   return (
-    <div className="tw-flex tw-grow tw-flex-col tw-max-md:mt-12">
+    <div className="tw-flex tw-flex-col tw-w-full">
       <div className="tw-shadow-[3px_4px_7px_0px_rgba(0,0,0,0.25)] tw-bg-[#D9D9D9] tw-self-stretch tw-flex tw-w-full tw-flex-col tw-pt-7 tw-pb-4 tw-px-5">
         <div className="tw-flex tw-w-xl tw-max-w-full tw-items-start tw-justify-between tw-gap-5 tw-ml-3 tw-max-md:tw-ml-2.5">
           <div className="tw-text-[#260D0D] tw-text-center tw-text-3xl tw-font-bold tw-tracking-tighter tw-mt-px">

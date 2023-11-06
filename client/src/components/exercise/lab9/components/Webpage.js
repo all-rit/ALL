@@ -16,7 +16,7 @@ import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
 const Webpage = () => {
   return (
     <div className="tw-bg-white tw-flex tw-flex-col">
-      <div className="tw-flex-col tw-bg-white tw-relative tw-flex tw-min-h-[1024px] tw-w-100">
+      <div className="tw-flex-col tw-bg-white tw-relative tw-flex tw-min-h-[1024px] tw-w-full">
         <img
           loading="lazy"
           src={uni}
@@ -25,12 +25,14 @@ const Webpage = () => {
         <WebpageNav />
         <WebpageHeader />
         <div
-          className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-col tw-mt-60"
+          className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-row tw-mt-60"
           style={{ zIndex: 1 }}
         >
-          <div className="tw-self-center tw-mt-10">
-            <div className="tw-flex tw-flex-row tw-p-5">
-              <WebpageSidebar />
+          <div className="tw-w-full tw-flex tw-flex-row tw-mt-10">
+            <div className="tw-flex tw-w-1/4 tw-ml-5">
+              <WebpageSidebar/>
+            </div>
+            <div className="tw-flex tw-w-3/4 tw-mr-5">
               <NewsletterForm />
             </div>
           </div>
