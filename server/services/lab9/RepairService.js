@@ -39,6 +39,7 @@ async function submitRepair(data) {
         userid: userId,
         repair: repair,
         isComplete: isComplete,
+        section: section,
         attemptTime: currentTime,
         repairCount: 1,
       };
@@ -50,6 +51,7 @@ async function submitRepair(data) {
       userid: userId,
       repair: repair,
       isComplete: isComplete,
+      section: section,
       attemptTime: currentTime,
       repairCount: newCount,
     };

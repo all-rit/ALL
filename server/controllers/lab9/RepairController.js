@@ -9,8 +9,8 @@ async function submitChange(req) {
   try {
     const {userId, repair, isComplete, numRepair, section} = req.body;
     return await RepairService.submitRepair({
-      userId, repair, isComplete, numRepair,
-    }, section);
+      userId, repair, isComplete, numRepair, section,
+    });
   } catch (error) {
     console.error(error);
   }
