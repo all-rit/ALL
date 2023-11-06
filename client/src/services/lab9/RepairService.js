@@ -14,7 +14,7 @@ const resources = {
 
 const endpoints = {
   REPAIR: resources.REPAIR,
-  POST_NAV_REPAIR: `${resources.REPAIR}${prefix.POST_SUFFIX}`,
+  POST_REPAIR: `${resources.REPAIR}/${prefix.POST_SUFFIX}`,
 };
 
 const RepairService = {
@@ -25,7 +25,7 @@ const RepairService = {
    * @param {string} route designated route for the backend database.
    * @returns {Number} the id of the repair.
    */
-  submitRepair: async (data = {}, route) => {
+  submitRepair: async (data = {}) => {
     try {
       const body = {
         userId: data.userid,
@@ -34,7 +34,7 @@ const RepairService = {
         isComplete: data.isComplete,
         numRepair: data.numRepair,
       };
-      return await API.postWithBody(route, body);
+      return await API.postWithBody(endpoints.POST_REPAIR, body);
     } catch (error) {
       console.error(error);
     }
