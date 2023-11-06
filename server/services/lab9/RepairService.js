@@ -6,14 +6,15 @@ const db = require('../../database');
  * when input is logged.
  * @param {Object} data Object storing payload of the request to retrieve
  * information based on the request.
+* @param {String} section string section indicator to indicate the
+ * repair section
  */
-async function getRepair(data) {
+async function getRepair(data, section) {
   try {
-    return await db.DateRepairLab9.findOne({
+    return await db.RepairLab9.findOne({
       order: [['repairId', 'DESC']],
-      where: {
-        userid: data,
-      },
+      where: {userid: data},
+      section: section,
       raw: true,
     });
   } catch (error) {
@@ -29,10 +30,10 @@ async function getRepair(data) {
  * @return {Number} repair id to show it is created
  */
 async function submitRepair(data) {
-  const {userId, repair, isComplete} = data;
+  const {userId, repair, isComplete, section} = data;
   try {
     const currentTime = new Date().toISOString();
-    const outputData = await getRepair(userId);
+    const outputData = await getRepair(userId, section);
     if ((!outputData) || outputData.isComplete === true) {
       const newRepair = {
         userid: userId,
@@ -41,7 +42,7 @@ async function submitRepair(data) {
         attemptTime: currentTime,
         repairCount: 1,
       };
-      return await db.DateRepairLab9.create(newRepair).id;
+      return await db.RepairLab9.create(newRepair).id;
     }
     const convert = parseInt(outputData.repairCount);
     const newCount = convert + 1;
@@ -52,8 +53,7 @@ async function submitRepair(data) {
       attemptTime: currentTime,
       repairCount: newCount,
     };
-
-    return await db.DateRepairLab9.create(postRepair).id;
+    return await db.RepairLab9.create(postRepair).id;
   } catch (error) {
     console.error(error);
   }

@@ -1,4 +1,4 @@
-const RepairService = require('../../services/lab9/AddressRepairService');
+const RepairService = require('../../services/lab9/RepairService');
 
 /**
  * submitChange(): is a function that is responsible for
@@ -7,11 +7,10 @@ const RepairService = require('../../services/lab9/AddressRepairService');
  */
 async function submitChange(req) {
   try {
-    const {userId, repair, isComplete, numRepair} = req.body;
+    const {userId, repair, isComplete, numRepair, section} = req.body;
     return await RepairService.submitRepair({
       userId, repair, isComplete, numRepair,
-    },
-    RepairService.ADDRESS_REPAIR);
+    }, section);
   } catch (error) {
     console.error(error);
   }
@@ -21,12 +20,14 @@ async function submitChange(req) {
  * getRepair(): is a function that is responsible
  * for handling retrieving the last recorded
  * state of a users repair when request
- * @param {Object} req
+ * @param {Object} req request object sent to retrieve repair
+ * information.
  */
 async function getRepair(req) {
   try {
+    const {section} = req.params;
     const repair = await RepairService.getRepair(req,
-        RepairService.ADDRESS_REPAIR);
+        section);
     return repair;
   } catch (error) {
     console.error(error);
