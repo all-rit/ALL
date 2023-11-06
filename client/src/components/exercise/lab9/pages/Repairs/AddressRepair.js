@@ -22,7 +22,7 @@ const AddressRepair = (user = "") => {
       path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
       validateRepair={checkInputValid}
       repairText={[
-        "In this section you will be making changes in the file below",
+        "Let's localize the address for our newsletter subscription form. Click 'Repair' to make the appropriate changes.",
       ]}
       CodeImplementation={
         <AddressRepairCodeBlock
