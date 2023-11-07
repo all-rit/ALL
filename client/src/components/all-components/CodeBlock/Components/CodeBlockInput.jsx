@@ -20,7 +20,7 @@ const CodeBlockInput = (props) => {
     <>
       <input
         value={value}
-        className={"p-1 code_editor__input"}
+        className={"tw-p-1 code_editor__input"}
         {...attributes}
       />
     </>
