@@ -7,7 +7,7 @@ export const NavBarData = {
         "// Enter the following image file to implement the house icon: house.svg",
       userInput: "",
       validate_expression: "house\\.svg",
-      correct_expression: "house.svg"
+      correct_expression: "house.svg",
     },
     {
       id: 1,
@@ -16,7 +16,7 @@ export const NavBarData = {
         "// Enter the following image file to implement the briefcase icon: briefcase.svg",
       userInput: "",
       validate_expression: "briefcase\\.svg",
-      correct_expression: "briefcase.svg"
+      correct_expression: "briefcase.svg",
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ export const NavBarData = {
         "// Enter the following image file to implement the graduation cap icon: grad_cap.svg",
       userInput: "",
       validate_expression: "grad_cap\\.svg",
-      correct_expression: "grad_cap.svg"
+      correct_expression: "grad_cap.svg",
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ export const NavBarData = {
         "// Enter the following image file to implement the phone icon: phone.svg",
       userInput: "",
       validate_expression: "phone\\.svg",
-      correct_expression: "phone.svg"
+      correct_expression: "phone.svg",
     },
   ],
 };
