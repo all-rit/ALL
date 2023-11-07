@@ -1,3 +1,4 @@
+const db = require('../../database');
 /**
  * getExercise(): is a function that is responsible for retrieving
  * the last played exercise by a particular user. this function is
@@ -6,7 +7,22 @@
  * @param {Object} data Contains information about the user to search
  * the database.
  */
-async function getExercise(data) { }
+async function getExercise(data) {
+  try {
+    const exerciseResponse = await db.ExerciseLab9.findOne(
+        {
+          order: [['attemptCount', 'DESC']],
+          where: {
+            userid: data,
+          },
+          raw: true,
+        },
+    );
+    return exerciseResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 /**
  * postExercise(): is a function that is responsible for storing
@@ -16,7 +32,9 @@ async function getExercise(data) { }
  * @param {Object} data Contains information that is intended to be stored
  * in the database,
  */
-async function postExercise(data) { }
+async function postExercise(data) {
+
+}
 
 
 module.exports = {
