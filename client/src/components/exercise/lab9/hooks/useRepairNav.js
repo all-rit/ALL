@@ -25,11 +25,11 @@ const useRepairNav = ({ user }) => {
     let localValidArray = [...isInputValid];
     let currentRepairState = [...exercisePromptsState];
     currentRepairState.forEach((value, index) => {
-      const correctDateFormRegex = new RegExp(value.validate_expression);
+      const correctNavIconRegex = new RegExp(value.validate_expression);
       // Use regex to validate the entered string matches the correct date form
       if (
-        correctDateFormRegex.test(value.userInput) &&
-        value.userInput === value.validate_expression
+        correctNavIconRegex.test(value.userInput) &&
+        value.userInput === value.correct_expression
       ) {
         // Passes, so we display true in the valid array
         localValidArray.splice(index, 1, true);

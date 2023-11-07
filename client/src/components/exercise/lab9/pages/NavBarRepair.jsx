@@ -20,9 +20,8 @@ export const NavBarRepair = (props = {}) => {
       <CodeLine>
         <MultiTab numberOfTabs={2} /> <HTMLTag> &#60;span&#62;</HTMLTag>
       </CodeLine>
-      {/* eslint-disable-next-line no-unused-vars */}
       {navItems.map((element, index) => (
-        <div key={element.id}>
+        <div key={index}>
           <CodeLine>
             <MultiTab numberOfTabs={3} />{" "}
             <HTMLTag> &#60;div className = &ldquo;nav-item&rdquo;&#62;</HTMLTag>
