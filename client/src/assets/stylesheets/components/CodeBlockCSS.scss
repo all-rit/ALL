@@ -1,0 +1,55 @@
+.keyword {
+  color: mediumpurple;
+}
+
+.operator {
+  color: white;
+}
+
+.otherText {
+  color: cornflowerblue;
+}
+
+.react {
+  color: #69d0a5;
+}
+
+.number {
+  color: #f6af5c;
+}
+
+.code_editor__code {
+  background-color: #333;
+  padding: 2px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  height: 100%;
+}
+
+.code_editor__input {
+  display: inline-block;
+  position: relative;
+  background: #333;
+  border-radius: 10px;
+  color: lightsalmon;
+}
+
+.json {
+  color: #00ff66;
+}
+
+.htmlTag {
+  color: #69d0a5;
+}
+
+.htmlAttribute {
+  color: #7bff00;
+}
+
+.htmlText {
+  color: white;
+}
+
+.comment {
+  color: #218417;
+}

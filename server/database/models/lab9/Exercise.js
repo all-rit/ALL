@@ -1,11 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  const Exercise = sequelize.define(
-      'ExerciseLab9', {
-        ExerciseId: {
+  const Exercise = sequelize.define('ExerciseLab9',
+      {
+        repairId: {
           type: DataTypes.INTEGER,
           unique: true,
           primaryKey: true,
           autoIncrement: true,
+        },
+        userid: {
+          type: DataTypes.BIGINT,
         },
         isAddressComplete: {
           type: DataTypes.BOOLEAN,
@@ -16,13 +19,17 @@ module.exports = (sequelize, DataTypes) => {
         isNavComplete: {
           type: DataTypes.BOOLEAN,
         },
-        isExerciseComplete: {
-          type: DataTypes.BOOLEAN,
+        attemptTime: {
+          type: DataTypes.DATE,
         },
-      }, {
+      },
+      {
         tableName: 'lab9_exercise',
       },
   );
+
   Exercise.sync();
   return Exercise;
 };
+
+
