@@ -2,15 +2,16 @@ import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
 import { RepairService } from "../../../../services/lab9/RepairService";
 
 /**
- * useRepairDate(): is a custom hook to abstract the logic implementation for the
+ * usDataService(): is a custom hook to abstract the logic implementation for the
  * repair portion of the localization lab. This allows for conditional behavior of
  * initializing the custom behavior for validating and managing state during the
  * date repair portion of the lab
  *
  * @param {Object} user to pass in a user into the hook to better prepare data.
+ * @param {String} handles 
  * @returns {Object} of function calls to hooks and fetched user data.
  */
-const useRepairDate = (user, section, defaultGameState) => {
+const useDataService = (user, section, defaultGameState) => {
   const { data, functions } = useLabRepair();
   const { exercisePromptsState, isInputValid, repairCount } = data;
   const {
@@ -23,10 +24,7 @@ const useRepairDate = (user, section, defaultGameState) => {
 
   async function fetchRepair() {
     try {
-      const repairData = await RepairService.getRepair(
-        user,
-        section
-      );
+      const repairData = await RepairService.getRepair(user, section);
       if (!repairData) {
         const newStartState = [...defaultGameState];
         setExercisePromptsState(newStartState);
@@ -72,4 +70,4 @@ const useRepairDate = (user, section, defaultGameState) => {
     },
   };
 };
-export default useRepairDate;
+export default useDataService;
