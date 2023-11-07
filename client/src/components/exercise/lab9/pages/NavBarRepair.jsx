@@ -4,24 +4,13 @@ import Tab from "../../../all-components/CodeBlock/Components/Tab";
 import CommentText from "../../../all-components/CodeBlock/StyleComponents/CommentText";
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
-import React, { useState } from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import HTMLTag from "../../../all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText";
-import { NAV_BAR_ELEMENTS } from "../../../../constants/lab9/NavBarElements";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
-import { connect } from "react-redux";
+import React from 'react'
 
-export const NavBarRepair = () => {
-  const [elements] = useState(NAV_BAR_ELEMENTS.elements);
-  // const [messageError, setMessageError] = useState([
-  // 	false,
-  // 	false,
-  // 	false,
-  // 	false,
-  // ]);
-
+export const NavBarRepair = (props = {}) => {
+  const { navItems, userInput } = props;
   return (
     <>
       <ReactText>const NavBar = () =&#62; &#123;</ReactText>
@@ -31,7 +20,8 @@ export const NavBarRepair = () => {
       <CodeLine>
         <MultiTab numberOfTabs={2} /> <HTMLTag> &#60;span&#62;</HTMLTag>
       </CodeLine>
-      {elements.map((element, index) => (
+      {/* eslint-disable-next-line no-unused-vars */}
+      {navItems.map((element, index) => (
         <div key={element.id}>
           <CodeLine>
             <MultiTab numberOfTabs={3} />{" "}
@@ -46,25 +36,27 @@ export const NavBarRepair = () => {
             <HTMLText> {element.navbar_item} </HTMLText>
           </CodeLine>
           <CodeLine>
-            <MultiTab numberOfTabs={5} />
+            <MultiTab numberOfTabs={4} />
+            <HTMLTag> &#60;/p&#62;</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={4} />
             {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
             <CommentText> {element.comment} </CommentText>
           </CodeLine>
           <CodeLine>
-            <MultiTab numberOfTabs={5} /> <HTMLTag> &#60;img href = </HTMLTag>
+            <MultiTab numberOfTabs={4} /> <HTMLTag> &#60;img href = </HTMLTag>
             <CodeBlockInput
               attributes={{
-                title: {},
+                onChange: (event) => {
+                  userInput(element.id, event.target.value)
+                },
+                name: element.name,
                 type: "text",
                 placeholder: "Enter icon image file here",
-                // className: messageError[index] ? "form error-input" : ""
               }}
             />
             <HTMLTag>/&#62; </HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={4} />
-            <HTMLTag> &#60;/p&#62;</HTMLTag>
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={3} />
@@ -72,9 +64,8 @@ export const NavBarRepair = () => {
           </CodeLine>
         </div>
       ))}
-      ;
       <CodeLine>
-        <MultiTab numberOfTabs={2} /> <HTMLTag> &#60;span&#62;</HTMLTag>
+        <MultiTab numberOfTabs={2} /> <HTMLTag> &#60;/span&#62;</HTMLTag>
       </CodeLine>
       <CodeLine>
         <Tab /> <HTMLTag>);</HTMLTag>
@@ -86,18 +77,9 @@ export const NavBarRepair = () => {
   );
 };
 
-CodeBlockInput.propTypes = {
-  attributes: PropTypes.object,
-};
 NavBarRepair.propTypes = {
-  actions: PropTypes.string,
-  user: PropTypes.string,
+  userInput: PropTypes.func,
+  navItems: PropTypes.array,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(NavBarRepair);
+export default NavBarRepair;

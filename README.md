@@ -28,13 +28,14 @@ the correct env for client and server. after thats complete then you can follow 
 #### Full start up
 
 1. Navigate to top level folder.
-2. Connect to the port of your local db or production.
-3. `pm2 start`
-4. to check the logs and see if things built correctly use `pm2 log`
+2. Run `npm install --legacy-peer-deps`.
+3. Connect to the port of your local db or production.
+4. `pm2 start`
+5. to check the logs and see if things built correctly use `pm2 log`
    1. if there are any errors run:
    2. `pm2 delete all`
    3. `pm2 start`
-5. to stop the application run `pm2 stop all`
+6. to stop the application run `pm2 stop all`
 
 ### Server
 

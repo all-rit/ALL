@@ -1,36 +1,36 @@
-export const NAV_BAR_ELEMENTS = {
-  elements: [
+export const NavBarData = {
+  navItems: [
     {
       id: 0,
       navbar_item: "Home",
       comment:
         "// Enter the following image file to implement the house icon: house.svg",
-      correct_filename: "house.svg",
-      correct: false,
+      userInput: "",
+      validate_expression: "house.svg"
     },
     {
       id: 1,
       navbar_item: "Careers",
       comment:
         "// Enter the following image file to implement the briefcase icon: briefcase.svg",
-      correct_filename: "briefcase.svg",
-      correct: false,
+      userInput: "",
+      validate_expression: "briefcase.svg"
     },
     {
       id: 2,
       navbar_item: "Education",
       comment:
         "// Enter the following image file to implement the graduation cap icon: grad_cap.svg",
-      correct_filename: "grad_cap.svg",
-      correct: false,
+      userInput: "",
+      validate_expression: "grad_cap.svg"
     },
     {
       id: 3,
       navbar_item: "Contact",
       comment:
         "// Enter the following image file to implement the phone icon: phone.svg",
-      correct_filename: "phone.svg",
-      correct: false,
+      userInput: "",
+      validate_expression: "phone.svg"
     },
   ],
 };
