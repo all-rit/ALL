@@ -19,10 +19,6 @@ const Main = (props) => {
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
   );
 
-  // useEffect(() => {
-  //   navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`);
-  // }, [exerciseState])
-
   return (
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
