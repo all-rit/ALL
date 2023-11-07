@@ -2,7 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
-import useRepairNav from "../../hooks/useRepairNav";
+import useDataService from "../../../../body/Repair/hooks/useDataService";
 /**
  * NavBarRepair() is a react component that is responsible for passing down
  * the visual information needed to render the repair page itself. This
@@ -10,7 +10,11 @@ import useRepairNav from "../../hooks/useRepairNav";
  * @returns Repair Component to render to the browser.
  */
 const NavBarRepair = (user = "") => {
-  const { data, functions } = useRepairNav(user);
+  const { data, functions } = useDataService(
+    user,
+    GAME_STATES.REPAIR_NAV_BAR,
+    []
+  );
   // eslint-disable-next-line no-empty-pattern
   const {} = data;
   const { checkInputValid, fetchRepair, postRepair } = functions;
