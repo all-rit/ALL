@@ -3,10 +3,12 @@ const START_PATH = "/*";
 const EXERCISE_SELECTION = "/Exercise";
 const REPAIR = "/GameRepair";
 
-const REPAIR_ADDRESS_FORM = "Address-repair";
-const REPAIR_DATE_REPAIR = "Date-Repair";
-const REPAIR_NAV_BAR = "Nav-Bar-Repair";
-const EXERCISE_SELECTION_DEFAULT = "Selection";
+const REPAIR_ADDRESS_FORM = "address-repair";
+const REPAIR_DATE_REPAIR = "date-repair";
+const REPAIR_NAV_BAR = "nav-bar-repair";
+const EXERCISE_SELECTION_DEFAULT = "selection";
+
+const REPAIR_DATE_REPAIR_HEADING = "Repair Date Format";
 
 const GAME_STATES = {
   REPAIR_ADDRESS_FORM,
@@ -15,4 +17,11 @@ const GAME_STATES = {
   EXERCISE_SELECTION_DEFAULT,
 };
 
-export { LAB_ID, START_PATH, EXERCISE_SELECTION, REPAIR, GAME_STATES };
+export {
+  LAB_ID,
+  START_PATH,
+  EXERCISE_SELECTION,
+  REPAIR_DATE_REPAIR_HEADING,
+  REPAIR,
+  GAME_STATES,
+};

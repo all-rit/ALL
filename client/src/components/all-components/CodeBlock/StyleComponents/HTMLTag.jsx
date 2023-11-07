@@ -17,6 +17,9 @@ import { htmlTagRegex, htmlElementRegex } from "../Constants";
  */
 
 const HTMLTag = ({ children }) => {
+  if (typeof children === "object") {
+    children = children.toString().replaceAll(/,/g, "").padStart(1);
+  }
   const highlightSyntax = (text) => {
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {
       if (htmlTagRegex.test(segment)) {
