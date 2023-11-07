@@ -1,14 +1,15 @@
 /* eslint-disable no-empty-pattern */
 import React from "react";
 import PropTypes from "prop-types";
-import useRepairDate from "../../hooks/useRepairDate";
 import Repair from "../../../../body/Repair/Repair";
+import DateFormData from "../../../../../constants/lab9/DateFormData";
 import {
   REPAIR_DATE_REPAIR_HEADING,
   GAME_STATES,
   REPAIR,
 } from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
+import useDataService from "../../../../body/Repair/hooks/useDataService"
 /**
  * Date Repair is a component that is responsible for passing logic into the universal
  * repair page component, what this allows us to do is call the re-useable repair component
@@ -18,7 +19,7 @@ import DateFormRepair from "../DateFormRepair";
  */
 
 const DateRepair = ({ user }) => {
-  const { data, functions } = useRepairDate(user);
+  const { data, functions } = useDataService(user, GAME_STATES.REPAIR_DATE_REPAIR, DateFormData.countries);
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
