@@ -9,7 +9,6 @@ import { useState } from "react";
 const useLabRepair = () => {
   const [exercisePromptsState, setExercisePromptsState] = useState([]);
   const [isInputValid, setIsInputValid] = useState([]);
-  const [repairCount, setRepairCount] = useState(0);
   /**
    * checkInputValid(): is a function that is intended on handling the logic to
    * ensure that you can check if user inputted strings are valid before letting them
@@ -19,9 +18,11 @@ const useLabRepair = () => {
     let localValidArray = [...isInputValid];
     let currentRepairState = [...exercisePromptsState];
     currentRepairState.forEach((value, index) => {
-      const correctFormRegex = new RegExp(value.validate_expression);
+      const regex = new RegExp(value.validate_expression);
       // Use regex to validate the entered string matches the correct date form
-      const result = regex.test(value.userInput) && value.userInput === value.correctExpression;
+      const result =
+        regex.test(value.userInput) &&
+        value.userInput === value.correct_expression;
       localValidArray.splice(index, 1, result);
     });
     setIsInputValid(localValidArray);
@@ -51,12 +52,11 @@ const useLabRepair = () => {
     data: {
       exercisePromptsState,
       isInputValid,
-      repairCount,
     },
     functions: {
       checkInputValid,
       setExercisePromptsState,
-      handleUserInputChange
+      handleUserInputChange,
     },
   };
 };
