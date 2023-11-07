@@ -125,10 +125,10 @@ router.post('/lab8/exercise/submit', async function(req, res) {
   res.send(id);
 });
 router.get('/lab9/exercise/:userID', async function(req, res) {
-  res.json(await ExerciseControllerLab9.getRepair(req, true));
+  res.json(await ExerciseControllerLab9.getExercise(req, true));
 });
 router.post('/lab9/exercise/submit', async function(req, res) {
-  const id = await ExerciseControllerLab9.submitChange(req);
+  const id = await ExerciseControllerLab9.postExercise(req);
   res.send(id);
 });
 

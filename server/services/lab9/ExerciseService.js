@@ -34,13 +34,13 @@ async function getExercise(data) {
  */
 async function postExercise(data) {
   try {
-    const {userID, isAddressComplete,
+    const {userId, isAddressComplete,
       isDateComplete, isNavComplete, isExerciseComplete} = data;
-    const getExerciseResponse = getExercise(userID);
+    const getExerciseResponse = await getExercise(userId);
+    const currentTime = new Date().toISOString();
     if (!getExerciseResponse || getExerciseResponse.isComplete === true) {
-      const currentTime = new Date().toISOString();
       const newExercise = {
-        userid: userID,
+        userid: userId,
         isAddressComplete: isAddressComplete,
         isDateComplete: isDateComplete,
         isNavComplete: isNavComplete,
@@ -51,14 +51,15 @@ async function postExercise(data) {
       return await db.ExerciseLab9.create(newExercise).id;
     } else {
       const convert = parseInt(getExerciseResponse.attemptCount);
+      const newVal = convert + 1;
       const updatedExercise = {
-        userid: userID,
+        userid: userId,
         isAddressComplete: isAddressComplete,
         isDateComplete: isDateComplete,
         isNavComplete: isNavComplete,
         isExerciseComplete: isExerciseComplete,
         attemptTime: currentTime,
-        attemptCount: convert++,
+        attemptCount: newVal,
       };
       return await db.ExerciseLab9.create(updatedExercise).id;
     }

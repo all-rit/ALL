@@ -32,7 +32,7 @@ async function postExercise(req) {
       isDateComplete: isDateComplete,
       isNavComplete: isNavComplete,
       isExerciseComplete: isExerciseComplete,
-    });
+    }).id;
     return responseId;
   } catch (error) {
     console.error(error);
