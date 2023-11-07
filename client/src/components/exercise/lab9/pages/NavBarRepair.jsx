@@ -7,7 +7,7 @@ import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
 import PropTypes from "prop-types";
 import HTMLTag from "../../../all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText";
-import React from 'react'
+import React from "react";
 
 export const NavBarRepair = (props = {}) => {
   const { navItems, userInput } = props;
@@ -49,7 +49,7 @@ export const NavBarRepair = (props = {}) => {
             <CodeBlockInput
               attributes={{
                 onChange: (event) => {
-                  userInput(element.id, event.target.value)
+                  userInput(element.id, event.target.value);
                 },
                 name: element.name,
                 type: "text",
@@ -70,8 +70,8 @@ export const NavBarRepair = (props = {}) => {
       <CodeLine>
         <Tab /> <HTMLTag>);</HTMLTag>
       </CodeLine>
-			<ReactText>&#125;</ReactText>
-			<br/>
+      <ReactText>&#125;</ReactText>
+      <br />
       <ReactText>export default NavBar;</ReactText>
     </>
   );

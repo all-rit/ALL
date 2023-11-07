@@ -49,9 +49,9 @@ const useRepairNav = ({ user }) => {
       return previous.map((navItem) =>
         navItem.id === dataId
           ? {
-            ...navItem,
-            userInput: newValue,
-          }
+              ...navItem,
+              userInput: newValue,
+            }
           : navItem
       );
     });
