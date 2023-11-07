@@ -33,7 +33,38 @@ async function getExercise(data) {
  * in the database,
  */
 async function postExercise(data) {
-
+  try {
+    const {userID, isAddressComplete,
+      isDateComplete, isNavComplete, isExerciseComplete} = data;
+    const getExerciseResponse = getExercise(userID);
+    if (!getExerciseResponse || getExerciseResponse.isComplete === true) {
+      const currentTime = new Date().toISOString();
+      const newExercise = {
+        userid: userID,
+        isAddressComplete: isAddressComplete,
+        isDateComplete: isDateComplete,
+        isNavComplete: isNavComplete,
+        isExerciseComplete: isExerciseComplete,
+        attemptTime: currentTime,
+        attemptCount: 1,
+      };
+      return await db.ExerciseLab9.create(newExercise).id;
+    } else {
+      const convert = parseInt(getExerciseResponse.attemptCount);
+      const updatedExercise = {
+        userid: userID,
+        isAddressComplete: isAddressComplete,
+        isDateComplete: isDateComplete,
+        isNavComplete: isNavComplete,
+        isExerciseComplete: isExerciseComplete,
+        attemptTime: currentTime,
+        attemptCount: convert++,
+      };
+      return await db.ExerciseLab9.create(updatedExercise).id;
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 
