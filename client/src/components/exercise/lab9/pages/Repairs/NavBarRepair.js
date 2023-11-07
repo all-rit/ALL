@@ -10,7 +10,11 @@ import useDataService from "../../../../body/Repair/hooks/useDataService";
  * @returns Repair Component to render to the browser.
  */
 const NavBarRepair = (user = "") => {
-  const { data, functions } = useDataService(user, GAME_STATES.REPAIR_NAV_BAR, []);
+  const { data, functions } = useDataService(
+    user,
+    GAME_STATES.REPAIR_NAV_BAR,
+    []
+  );
   // eslint-disable-next-line no-empty-pattern
   const {} = data;
   const { checkInputValid, fetchRepair, postRepair } = functions;

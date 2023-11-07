@@ -18,11 +18,11 @@ const useLabRepair = () => {
     let localValidArray = [...isInputValid];
     let currentRepairState = [...exercisePromptsState];
     currentRepairState.forEach((value, index) => {
-      const correctFormRegex = new RegExp(value.validate_expression);
+      const regex = new RegExp(value.validate_expression);
       // Use regex to validate the entered string matches the correct date form
       const result =
-        correctFormRegex.test(value.userInput) &&
-        value.userInput === value.correctExpression;
+        regex.test(value.userInput) &&
+        value.userInput === value.correct_expression;
       localValidArray.splice(index, 1, result);
     });
     setIsInputValid(localValidArray);

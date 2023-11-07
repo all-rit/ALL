@@ -12,7 +12,11 @@ import useDataService from "../../../../body/Repair/hooks/useDataService";
  * @returns Component to handle custom logic for the lab.
  */
 const AddressRepair = (user = "") => {
-  const { data, functions } = useDataService(user, GAME_STATES.REPAIR_ADDRESS_FORM, []);
+  const { data, functions } = useDataService(
+    user,
+    GAME_STATES.REPAIR_ADDRESS_FORM,
+    []
+  );
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;

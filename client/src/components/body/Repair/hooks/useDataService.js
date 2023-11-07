@@ -8,7 +8,7 @@ import { RepairService } from "../../../../services/lab9/RepairService";
  * date repair portion of the lab
  *
  * @param {Object} user to pass in a user into the hook to better prepare data.
- * @param {String} handles 
+ * @param {String} handles
  * @returns {Object} of function calls to hooks and fetched user data.
  */
 const useDataService = (user, section, defaultGameState) => {
