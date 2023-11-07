@@ -21,16 +21,8 @@ const useLabRepair = () => {
     currentRepairState.forEach((value, index) => {
       const correctFormRegex = new RegExp(value.validate_expression);
       // Use regex to validate the entered string matches the correct date form
-      if (
-        correctFormRegex.test(value.userInput) &&
-        value.userInput === value.correctInput
-      ) {
-        // Passes, so we display true in the valid array
-        localValidArray.splice(index, 1, true);
-      } else {
-        // Fails, so we keep the false value in the valid array
-        localValidArray.splice(index, 1, false);
-      }
+      const result = regex.test(value.userInput) && value.userInput === value.correctExpression;
+      localValidArray.splice(index, 1, result);
     });
     setIsInputValid(localValidArray);
     return localValidArray.every((v) => v === true);
@@ -64,9 +56,7 @@ const useLabRepair = () => {
     functions: {
       checkInputValid,
       setExercisePromptsState,
-      handleUserInputChange,
-      setIsInputValid,
-      setRepairCount,
+      handleUserInputChange
     },
   };
 };
