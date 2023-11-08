@@ -17,7 +17,7 @@ const AddressRepair = (user = "") => {
   const { data, functions } = useDataService(
     user,
     GAME_STATES.REPAIR_ADDRESS_FORM,
-    AddressRepairData.countries
+    AddressRepairData
   );
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
@@ -31,7 +31,7 @@ const AddressRepair = (user = "") => {
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}
       repairText={[
-        "in this section you will be making changes to the repair data file below",
+        "Let's localize the address for our newsletter subscription form. Click 'Repair' to make the appropriate changes.",
       ]}
       CodeImplementation={
         <AddressRepairCodeBlock
