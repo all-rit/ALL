@@ -13,11 +13,11 @@ import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairDa
  * @param {String} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */
-const AddressRepair = (user = "") => {
+const AddressRepair = ({ user }) => {
   const { data, functions } = useDataService(
     user,
     GAME_STATES.REPAIR_ADDRESS_FORM,
-    AddressRepairData
+    AddressRepairData.countries
   );
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
