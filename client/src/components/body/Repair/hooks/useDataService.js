@@ -20,7 +20,7 @@ const useDataService = (user, section, defaultGameState) => {
   async function fetchRepair() {
     try {
       const repairData = await RepairService.getRepair(user, section);
-      if (!repairData || repairData.isComplete === true) {
+      if (!repairData || repairData?.isComplete === true) {
         const newStartState = [...defaultGameState];
         setExercisePromptsState(newStartState);
       } else {
@@ -51,7 +51,6 @@ const useDataService = (user, section, defaultGameState) => {
     data: { exercisePromptsState, isInputValid },
     functions: {
       checkInputValid,
-      setExercisePromptsState,
       handleUserInputChange,
       fetchRepair,
       postRepair,
