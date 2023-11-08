@@ -13,29 +13,19 @@ import { RepairService } from "../../../../services/lab9/RepairService";
  */
 const useDataService = (user, section, defaultGameState) => {
   const { data, functions } = useLabRepair();
-  const { exercisePromptsState, isInputValid, repairCount } = data;
-  const {
-    checkInputValid,
-    setExercisePromptsState,
-    handleUserInputChange,
-    setIsInputValid,
-    setRepairCount,
-  } = functions;
+  const { exercisePromptsState, isInputValid } = data;
+  const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
+    functions;
 
   async function fetchRepair() {
     try {
       const repairData = await RepairService.getRepair(user, section);
-      if (!repairData) {
+      if (!repairData || repairData.isComplete === true) {
         const newStartState = [...defaultGameState];
         setExercisePromptsState(newStartState);
-        setIsInputValid(new Array(newStartState.length).fill(false));
-        setRepairCount(0);
       } else {
-        const { repair, repairCount } = repairData;
-        const listRepair = Object.values(repair);
+        const { repair } = repairData;
         setExercisePromptsState(Object.values(repair));
-        setIsInputValid(new Array(listRepair.length).fill(false));
-        setRepairCount(repairCount);
       }
     } catch (error) {
       console.error(error);
@@ -49,7 +39,6 @@ const useDataService = (user, section, defaultGameState) => {
         repair: { ...exercisePromptsState },
         section: section,
         isComplete: checkInputValid(),
-        numRepair: repairCount,
       };
       const repairID = await RepairService.submitRepair(body);
       return repairID;
@@ -63,7 +52,6 @@ const useDataService = (user, section, defaultGameState) => {
     functions: {
       checkInputValid,
       setExercisePromptsState,
-      setIsInputValid,
       handleUserInputChange,
       fetchRepair,
       postRepair,
