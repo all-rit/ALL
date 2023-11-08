@@ -17,7 +17,7 @@ const AddressRepair = ({ user }) => {
   const { data, functions } = useDataService(
     user,
     GAME_STATES.REPAIR_ADDRESS_FORM,
-    AddressRepairData
+    AddressRepairData.countries
   );
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =

@@ -13,21 +13,18 @@ import { RepairService } from "../../../../services/lab9/RepairService";
  */
 const useDataService = (user, section, defaultGameState) => {
   const { data, functions } = useLabRepair();
-  const { exercisePromptsState, isInputValid} = data;
-  const {
-    checkInputValid,
-    setExercisePromptsState,
-    handleUserInputChange,
-  } = functions;
+  const { exercisePromptsState, isInputValid } = data;
+  const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
+    functions;
 
   async function fetchRepair() {
     try {
       const repairData = await RepairService.getRepair(user, section);
-      if (!repairData || repairData?.isComplete === true ) {
+      if (!repairData || repairData?.isComplete === true) {
         const newStartState = [...defaultGameState];
         setExercisePromptsState(newStartState);
       } else {
-        const {repair } = repairData;
+        const { repair } = repairData;
         setExercisePromptsState(Object.values(repair));
       }
     } catch (error) {
@@ -41,7 +38,7 @@ const useDataService = (user, section, defaultGameState) => {
         userid: user.userid,
         repair: { ...exercisePromptsState },
         section: section,
-        isComplete: checkInputValid()
+        isComplete: checkInputValid(),
       };
       const repairID = await RepairService.submitRepair(body);
       return repairID;
