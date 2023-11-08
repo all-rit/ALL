@@ -5,6 +5,7 @@ import Repair from "../../../../body/Repair/Repair";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
 import useDataService from "../../../../body/Repair/hooks/useDataService";
 import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
+import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairData";
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
@@ -16,7 +17,7 @@ const AddressRepair = (user = "") => {
   const { data, functions } = useDataService(
     user,
     GAME_STATES.REPAIR_ADDRESS_FORM,
-    []
+    AddressRepairData.countries
   );
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
