@@ -13,12 +13,9 @@ import { RepairService } from "../../../../services/lab9/RepairService";
  */
 const useDataService = (user, section, defaultGameState) => {
   const { data, functions } = useLabRepair();
-  const { exercisePromptsState, isInputValid} = data;
-  const {
-    checkInputValid,
-    setExercisePromptsState,
-    handleUserInputChange,
-  } = functions;
+  const { exercisePromptsState, isInputValid } = data;
+  const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
+    functions;
 
   async function fetchRepair() {
     try {
