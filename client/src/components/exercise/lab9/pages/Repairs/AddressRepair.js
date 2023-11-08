@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
-import useRepairAddress from "../../hooks/useRepairAddress";
+import useDataService from "../../../../body/Repair/hooks/useDataService";
 import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
@@ -12,17 +13,24 @@ import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
  * @returns Component to handle custom logic for the lab.
  */
 const AddressRepair = (user = "") => {
-  // eslint-disable-next-line no-unused-vars
-  const { data, functions } = useRepairAddress(user);
+  const { data, functions } = useDataService(
+    user,
+    GAME_STATES.REPAIR_ADDRESS_FORM,
+    []
+  );
   const { exercisePromptsState } = data;
-  const { handleUserInputChange, checkInputValid } = functions;
+  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
+    functions;
   return (
     <Repair
-      fileName={"AddressForm.js"}
+      fileName={"AddressFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
+      headingText={""}
       validateRepair={checkInputValid}
+      fetchRepair={() => fetchRepair()}
+      submitRepair={() => postRepair()}
       repairText={[
-        "Let's localize the address for our newsletter subscription form. Click 'Repair' to make the appropriate changes.",
+        "in this section you will be making changes to the repair data file below",
       ]}
       CodeImplementation={
         <AddressRepairCodeBlock
