@@ -18,11 +18,11 @@ const endpoints = {
  */
 const ExerciseService = {
   /**
-   * fetchExercise(): is a service function responsible for 
-   * retrieving a user's previous state of their exercise. 
-   * @param {Number} data the user ID number associated with the 
+   * fetchExercise(): is a service function responsible for
+   * retrieving a user's previous state of their exercise.
+   * @param {Number} data the user ID number associated with the
    * session.
-   * @returns {Object} containing information about the user's 
+   * @returns {Object} containing information about the user's
    * currently played exercise.
    */
   fetchExercise: async (data = {}) => {
@@ -33,9 +33,9 @@ const ExerciseService = {
     } catch (error) {
       console.error(error);
     }
-    },
+  },
   /**
-   * submitExercise(): function that is responsible for sending a 
+   * submitExercise(): function that is responsible for sending a
    * request to the backend updating the state of the game.
    * @param {Object} data payload storing new updated state info
    * @returns status indicating the request was complete.
