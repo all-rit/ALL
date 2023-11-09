@@ -13,6 +13,13 @@ import ProgressBar from "./ProgressBar";
 import KeyboardGuide from "./KeyboardGuide";
 import ExerciseService from "../../../../services/lab10/ExerciseService";
 
+/**
+ * Simulation component for the game
+ * Renders the following: ProgressBar, SimulationCover, ShapeSpawner, WalkingMan, MovementKeys, KeyboardGuide
+ * Responsible for updating the object's position, handling user input, and resetting the state
+ * Fetches weights on mount and submits them on completion
+ * Be cautious when updating logic here
+ */
 const Simulation = (props) => {
   // Allows the object's position to be updated when the window size is updated.
   // Utilizing this hook allows components to rerender.

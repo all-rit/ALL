@@ -88,8 +88,6 @@
     "eslint": "^8.45.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-webpack": "^0.13.7",
-    "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-react": "^7.33.0",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.30",
@@ -97,8 +95,6 @@
     "react-google-button": "^0.7.2",
     "redux-devtools": "^3.7.0",
     "stylelint-config-prettier": "^9.0.3",
-    "tailwindcss": "^3.3.3",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "tailwindcss": "^3.3.3"
   }
 }

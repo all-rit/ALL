@@ -17,16 +17,25 @@ class BuildingAIRepair extends Component {
     };
   }
 
+  /**
+   * Update lab state onMount
+   */
   componentDidMount() {
     const { actions } = this.props;
     actions.updateState(EXERCISE_PLAYING);
     this.reset();
   }
 
+  /**
+   * Redirect the user to the following page
+   */
   handleNav() {
     return navigate("/Lab10/Exercise/TrainingAI");
   }
 
+  /**
+   * Resets popup message onMount
+   */
   reset() {
     const { actions } = this.props;
     actions.updatePopup("");

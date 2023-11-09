@@ -36,7 +36,6 @@ const BuildingAI = (props) => {
 
   /**
    * Redirect the user to the following page
-   * @returns {Promise} navigate promise
    */
   const handleContinue = () => {
     return navigate("/Lab10/Exercise/BuildingAI/Repair");

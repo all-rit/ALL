@@ -15,14 +15,14 @@ const GeneratedData = (props) => {
   useScroll();
 
   /**
-   * Executed on mount
+   * Update lab state onMount
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
   }, []);
 
   /**
-   * Executed on mount
+   * Retrieve user weights, from db, when user data has loaded
    */
   useEffect(() => {
     if (props.user?.userid) {
@@ -38,7 +38,7 @@ const GeneratedData = (props) => {
   }, [props.user]);
 
   /**
-   * Sorts the colors based on their weight.
+   * Sorts the colors based on their weight in descending order
    */
   const keys = Object.keys(props.weights ?? {}).sort((a, b) => {
     const weightA = props.weights[a],
@@ -51,16 +51,25 @@ const GeneratedData = (props) => {
     return weightA < weightB ? 1 : -1;
   });
 
+  /**
+   * Redirect the user to the following page
+   */
   const trainAINav = () => {
     props.actions.incrementTrainingCounter();
     return navigate("/Lab10/Exercise/SecondTrainingAI");
   };
 
+  /**
+   * Redirect the user to the following page
+   */
   const experienceAINav = () => {
     props.actions.incrementExperienceCounter();
     return navigate("/Lab10/Exercise/SecondAISimulation");
   };
 
+  /**
+   * Redirect the user to the following page
+   */
   const continueNav = () => {
     return navigate("/Lab10/Reinforcement");
   };

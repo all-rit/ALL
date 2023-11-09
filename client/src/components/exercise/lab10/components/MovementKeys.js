@@ -5,6 +5,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
+/**
+ * MovementKeys component for buttons that can be pressed to play simulation
+ * Required for keyboard accessibility
+ */
 const MovementKeys = (props) => {
   return (
     <Fragment>

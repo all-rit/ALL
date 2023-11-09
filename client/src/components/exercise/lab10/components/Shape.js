@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
 import { NAMES } from "../../../../constants/lab10";
 
+/**
+ * Shape component for render
+ */
 const Shape = ({ y, x, size, className, color }) => {
   const name = NAMES[color];
   return (

@@ -17,7 +17,7 @@ const SecondTrainingAI = (props) => {
   useScroll();
 
   /**
-   * Executed on mount
+   * Update lab state onMount
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
@@ -26,6 +26,9 @@ const SecondTrainingAI = (props) => {
     props.actions.enableCollectWeights();
   }, []);
 
+  /**
+   * Enable/Disable properties based on the SIMULATION state
+   */
   useEffect(() => {
     switch (props.simulationStatus) {
       case SIMULATION_IDLE:

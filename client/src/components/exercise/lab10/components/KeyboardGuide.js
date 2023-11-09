@@ -4,6 +4,9 @@ import { KEY_SIZE } from "../../../../constants/lab10";
 import AKey from "../../../../assets/images/lab10/a-key.png";
 import DKey from "../../../../assets/images/lab10/d-key.png";
 
+/**
+ * KeyboardGuide component for displaying keyboard keys that can be pressed to play the simulation
+ */
 const KeyboardGuide = () => {
   return (
     <div className={"tw-flex tw-justify-around tw-mt-6"}>

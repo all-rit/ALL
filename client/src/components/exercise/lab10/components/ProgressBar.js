@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
 
+/**
+ * ProgressBar component to display remaining time on the simulation
+ */
 const ProgressBar = ({
   duration,
   onComplete,
@@ -15,6 +18,9 @@ const ProgressBar = ({
   const [complete, setComplete] = useState(false);
   let init = null;
 
+  /**
+   * Update width based on current time and start time
+   */
   const updateWidth = (now) => {
     if (init === null) {
       init = now;
@@ -29,16 +35,25 @@ const ProgressBar = ({
     requestAnimationFrame(updateWidth);
   };
 
+  /**
+   * Cool way to render components smoothly
+   */
   useEffect(() => {
     requestAnimationFrame(updateWidth);
   }, []);
 
+  /**
+   * Execute function when time is over
+   */
   useEffect(() => {
     if (complete && onComplete) {
       onComplete();
     }
   }, [complete]);
 
+  /**
+   * Update elapsed time
+   */
   useEffect(() => {
     if (onCountChange) {
       onCountChange(elapsed);

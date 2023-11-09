@@ -5,7 +5,6 @@ import { AppBar } from "@material-ui/core";
 const ExerciseEnd = () => {
   /**
    * Redirect the user to the following page
-   * @returns {Promise} navigate promise
    */
   const handleHome = () => {
     return navigate("/Lab10/Exercise");

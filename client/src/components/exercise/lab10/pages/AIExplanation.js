@@ -15,14 +15,14 @@ const AIExplanation = (props) => {
   useScroll();
 
   /**
-   * Executed on mount
+   * Update lab state onMount
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
   }, []);
 
   /**
-   * Executed on mount
+   * Retrieve user weights, from db, when user data has loaded
    */
   useEffect(() => {
     if (props.user?.userid) {
@@ -37,7 +37,7 @@ const AIExplanation = (props) => {
   }, [props.user]);
 
   /**
-   * Sorts the colors based on their weight.
+   * Sorts the colors based on their weight in descending order
    */
   const keys = Object.keys(props.weights ?? {}).sort((a, b) => {
     const weightA = props.weights[a],
@@ -52,7 +52,6 @@ const AIExplanation = (props) => {
 
   /**
    * Redirect the user to the following page
-   * @returns {Promise} navigate promise
    */
   const handleNav = () => {
     return navigate("/Lab10/Exercise/SecondTrainingAI");

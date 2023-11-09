@@ -15,10 +15,16 @@ const TrainingAIRepair = (props) => {
   const { actions, repairError, timeValue, popupMessage, repairVisible } =
     props;
 
+  /**
+   * Determines whether the repair was successful, allowing for navigation to the following page
+   */
   const handleNext = () => {
     return !(repairError === false && timeValue !== initialState.timeValue);
   };
 
+  /**
+   * Redirect the user to the following page
+   */
   const handleNav = () => {
     return navigate("/Lab10/Exercise/UpdatedTrainingAI");
   };

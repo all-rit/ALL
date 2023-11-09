@@ -4,7 +4,14 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
+/**
+ * SimulationCover component to restrict the user from starting the simulation
+ * Requires user input (click) to uncover and start simulation
+ */
 const SimulationCover = (props) => {
+  /**
+   * Hide cover and start the simulation when start button is clicked
+   */
   const handleClick = () => {
     props.actions.disableSimulationCover();
     props.actions.startSimulation();

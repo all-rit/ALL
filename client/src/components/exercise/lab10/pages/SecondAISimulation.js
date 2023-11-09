@@ -1,4 +1,4 @@
-import useScroll from "../../../../use-hooks/useScroll";
+import useScroll from "src/use-hooks/useScroll";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import PropTypes from "prop-types";
@@ -17,7 +17,7 @@ const SecondAISimulation = (props) => {
   useScroll();
 
   /**
-   * Executed on mount
+   * Update lab state onMount
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
@@ -25,6 +25,9 @@ const SecondAISimulation = (props) => {
     props.actions.disableCollectWeights();
   }, []);
 
+  /**
+   * Enable/Disable properties based on the SIMULATION state
+   */
   useEffect(() => {
     switch (props.simulationStatus) {
       case SIMULATION_IDLE:
@@ -43,7 +46,6 @@ const SecondAISimulation = (props) => {
 
   /**
    * Redirect the user to the following page
-   * @returns {Promise} navigate promise
    */
   const handleContinue = () => {
     return navigate("/Lab10/Exercise/GeneratedData");

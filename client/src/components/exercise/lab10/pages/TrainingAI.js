@@ -28,6 +28,9 @@ const TrainingAI = (props) => {
     props.actions.idleSimulation();
   }, []);
 
+  /**
+   * Enable/Disable properties based on the SIMULATION state
+   */
   useEffect(() => {
     switch (props.simulationStatus) {
       case SIMULATION_STARTED:

@@ -10,9 +10,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "import"],
+  "plugins": ["react"],
   "settings": {
-    "import/resolver": "webpack",
     "react": {
       "createClass": "createReactClass",
       // Regex for Component Factory to use,

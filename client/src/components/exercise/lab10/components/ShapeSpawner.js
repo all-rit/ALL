@@ -17,6 +17,9 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import { RandomRoundRobin } from "round-robin-js";
 import { twMerge } from "tailwind-merge";
 
+/**
+ * Sorts the colors based on their weight in descending order and returns heaviest color
+ */
 const getHeaviestColor = (weights) => {
   const keys = Object.keys(weights ?? {}).sort((a, b) => {
     const weightA = weights[a],
@@ -31,14 +34,6 @@ const getHeaviestColor = (weights) => {
 
   return _.isEmpty(keys) ? "" : keys[0];
 };
-
-/**
- * Gets the shape with the heaviest weight
- */
-// const getHeaviestShapeIndex = (shapes, weights) => {
-//     const heaviestColor = getHeaviestColor(weights);
-//     return shapes.findIndex((shape) => shape.color === heaviestColor);
-// }
 
 /**
  * For a specified index, return the specified shape and its neighbors
@@ -92,12 +87,19 @@ const isTouchingY = (height, y, size) => {
   return y + size >= height - IMG_SIZE;
 };
 
+/**
+ * ShapeSpawner component responsible for the spawning of shapes
+ * Be cautious when updating logic here
+ */
 const ShapeSpawner = (props) => {
   const [shapes, setShapes] = useState([]);
   const fpsRef = useRef(60);
   const intervalRef = useRef(null);
   const requestRef = useRef(null);
 
+  /**
+   * Update reference value when prop value is updated
+   */
   useEffect(() => {
     if (props.fps !== fpsRef.current) {
       fpsRef.current = props.fps;

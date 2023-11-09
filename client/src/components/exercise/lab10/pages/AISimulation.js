@@ -17,13 +17,16 @@ const AISimulation = (props) => {
   useScroll();
 
   /**
-   * Executed on mount
+   * Update lab state onMount
    */
   useEffect(() => {
     props.actions.updateState(EXERCISE_PLAYING);
     props.actions.idleSimulation();
   }, []);
 
+  /**
+   * Enable/Disable properties based on the SIMULATION state
+   */
   useEffect(() => {
     switch (props.simulationStatus) {
       case SIMULATION_IDLE:
@@ -42,7 +45,6 @@ const AISimulation = (props) => {
 
   /**
    * Redirect the user to the following page
-   * @returns {Promise} navigate promise
    */
   const handleContinue = () => {
     return navigate("/Lab10/Exercise/AISimulation/Explanation");

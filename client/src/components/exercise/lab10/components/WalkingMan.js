@@ -5,10 +5,14 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { IMG_SIZE } from "../../../../constants/lab10";
 
+/**
+ * WalkingMan component for the simulation
+ * Responsible for registering and unregistering user input
+ * Ensures image stays within game bounds
+ */
 const WalkingMan = (props) => {
   /**
    * Handle keyboard key presses and shift object accordingly
-   * @param e event data
    */
   const handleKeyDown = (e) => {
     switch (e.key) {
