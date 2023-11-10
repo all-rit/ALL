@@ -21,15 +21,26 @@ const Repair = (props) => {
     navigateNext,
     CodeImplementation,
     validateRepair,
+    fetchRepair,
+    submitRepair,
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
-  const [enableNext, setEnableNext] = useState(false);
+  const [enableNext, setEnableNext] = useState(true);
 
-  const handleRepair = () => {
+  const handleRepair = async () => {
     setIsRepairActive(true);
+    await fetchRepair();
   };
-  const handleNext = () => {
-    setEnableNext(true);
+
+  const handleUpdate = async () => {
+    setEnableNext(!validateRepair);
+    await submitRepair();
+  };
+
+  const handleNext = async () => {
+    if (validateRepair) {
+      navigateNext;
+    }
   };
 
   return (
@@ -59,7 +70,7 @@ const Repair = (props) => {
           <Button
             buttonText={"Next"}
             disabled={enableNext}
-            onClick={navigateNext}
+            onClick={handleNext}
           />
         </div>
       </div>
@@ -68,7 +79,7 @@ const Repair = (props) => {
           <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
           <div>
             <button
-              onClick={validateRepair}
+              onClick={handleUpdate}
               type="submit"
               className="button button--green button--block"
             >
@@ -82,12 +93,14 @@ const Repair = (props) => {
 };
 
 Repair.propTypes = {
-  CodeImplementation: Proptypes.func.isRequired,
+  CodeImplementation: Proptypes.object.isRequired,
   fileName: Proptypes.string,
   headingText: Proptypes.string,
   navigateNext: Proptypes.func.isRequired,
   repairText: Proptypes.array,
   user: Proptypes.string,
   validateRepair: Proptypes.func.isRequired,
+  fetchRepair: Proptypes.func.isRequired,
+  submitRepair: Proptypes.func.isRequired,
 };
 export default Repair;

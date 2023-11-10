@@ -35,6 +35,10 @@ const ExerciseControllerLab7 = require('../controllers/lab7/ExerciseController')
 
 // Lab 8 Controller
 const ExerciseControllerLab8 = require('../controllers/lab8/ExerciseController');
+
+// Lab 9 Controller
+const RepairControllerLab9 = require('../controllers/lab9/RepairController');
+
 // Lab Controller
 const LabController = require('../controllers/LabController');
 
@@ -117,7 +121,13 @@ router.post('/lab8/exercise/submit', async function(req, res) {
   const id = await ExerciseControllerLab8.submitChange(req);
   res.send(id);
 });
-
+router.get('/lab9/repair/:userID/:section', async function(req, res) {
+  res.json(await RepairControllerLab9.getRepair(req));
+});
+router.post('/lab9/repair/submit', async function(req, res) {
+  const id = await RepairControllerLab9.submitChange(req);
+  res.send(id);
+});
 // Create a Page Entry
 router.post('/page/complete', PageController.createPage);
 
