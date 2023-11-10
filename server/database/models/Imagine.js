@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         preSurvey: {
           type: DataTypes.JSON,
         },
-        postSurvey:{
-          type: DataTypes.JSON
-        }
+        postSurvey: {
+          type: DataTypes.JSON,
+        },
         // avatar: {type: DataTypes.JSON},
         // squad: {type: DataTypes.JSON},
         // lobbyMessages: {type: DataTypes.JSON},
