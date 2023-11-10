@@ -17,6 +17,9 @@ import { operatorRegex } from "../Constants";
  */
 
 const JSONText = ({ children }) => {
+  if (typeof children === "object") {
+    children = children.toString().replaceAll(/,/g, "").padStart(1);
+  }
   const highlightSyntax = (text) => {
     return text.split(/(\s+|\b|\W)/).map((segment, index) => {
       if (operatorRegex.test(segment)) {

@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
-import useRepairAddress from "../../hooks/useRepairAddress";
+import useDataService from "../../../../body/Repair/hooks/useDataService";
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
@@ -11,11 +12,25 @@ import useRepairAddress from "../../hooks/useRepairAddress";
  * @returns Component to handle custom logic for the lab.
  */
 const AddressRepair = (user = "") => {
-  // eslint-disable-next-line no-unused-vars
-  const { data, functions } = useRepairAddress(user);
+  const { data, functions } = useDataService(
+    user,
+    GAME_STATES.REPAIR_ADDRESS_FORM,
+    []
+  );
+  const { exercisePromptsState } = data;
+  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
+    functions;
   return (
     <Repair
+      fileName={"AddressFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
+      headingText={""}
+      validateRepair={checkInputValid}
+      fetchRepair={() => fetchRepair()}
+      submitRepair={() => postRepair()}
+      repairText={[
+        "in this section you will be making changes to the repair data file below",
+      ]}
       CodeImplementation={() => {}}
       navigateNext={() => {}}
     />
