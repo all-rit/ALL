@@ -13,9 +13,10 @@ function Survey(props) {
         answerType={key.index}
         answer={props.answer}
         questionId={props.questionId}
+        questionType={props.questionType}
         onAnswerSelected={props.onAnswerSelected}
-        multiChoice={props.multiChoice}
-        multiSelected={props.multiSelectedEntry}
+        onMultiSelected={props.onMultiSelected}
+        onFreeTextInput={props.onFreeTextInput}
       />
     );
   }
@@ -59,7 +60,8 @@ Survey.propTypes = {
   questionId: PropTypes.number.isRequired,
   questionTotal: PropTypes.number.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
-  multiChoice: PropTypes.bool.isRequired,
+  onMultiChoice: PropTypes.func.isRequired,
+  onFreeTextInput: PropTypes.func.isRequired,
 };
 
 export default Survey;

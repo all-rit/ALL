@@ -1,6 +1,16 @@
 /* eslint-disable max-len */
 const preSurveyQuestionsImagine = [
   {
+    question: "What is your gender?",
+    answers: [
+      {
+        index: "0",
+        content: "Enter here",
+      },
+    ],
+    type: "freeText",
+  },
+  {
     question: "What is your year of study?",
     answers: [
       {
@@ -24,7 +34,7 @@ const preSurveyQuestionsImagine = [
         content: "Above",
       },
     ],
-    multiChoice: false,
+    type: "singleChoice",
   },
   {
     question: "What is your major?",
@@ -42,7 +52,7 @@ const preSurveyQuestionsImagine = [
         content: "Something else",
       },
     ],
-    multiChoice: false,
+    type: "singleChoice",
   },
   {
     question: "What is your ethnicity?",
@@ -72,7 +82,7 @@ const preSurveyQuestionsImagine = [
         content: "American Indian or Alaska Native",
       },
     ],
-    multiChoice: true,
+    type: "multiChoice",
   },
   {
     question:
@@ -99,7 +109,7 @@ const preSurveyQuestionsImagine = [
         content: "Strongly agree",
       },
     ],
-    multiChoice: false,
+    type: "singleChoice",
   },
   {
     question: "What is your age range?",
@@ -125,7 +135,7 @@ const preSurveyQuestionsImagine = [
         content: "45+ years old",
       },
     ],
-    multiChoice: false,
+    type: "singleChoice",
   },
 ];
 

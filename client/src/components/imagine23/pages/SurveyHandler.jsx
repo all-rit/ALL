@@ -59,6 +59,7 @@ const SurveyHandler = (props) => {
    */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
+      console.log(selectedAnswers);
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
@@ -72,10 +73,10 @@ const SurveyHandler = (props) => {
    */
   function onComplete(surveyType) {
     setSurveyComplete(true);
-    if(surveyType === "pre"){
-      ImagineService.preSurvey(props.userID,selectedAnswers)
-    }else if(surveyType === "post"){
-      ImagineService.postSurvey(props.userID,selectedAnswers)
+    if (surveyType === "pre") {
+      ImagineService.preSurvey(props.userID, selectedAnswers);
+    } else if (surveyType === "post") {
+      ImagineService.postSurvey(props.userID, selectedAnswers);
     }
     console.log(selectedAnswers);
   }
@@ -91,12 +92,12 @@ const SurveyHandler = (props) => {
     const answerValue = e.target.value;
     // let tempSelectedAnswers;
     setSelectedAnswers([
-      ...selectedAnswers,{
+      ...selectedAnswers,
+      {
         question: questions[currentQuestionCursor].question,
-        answers: questions[currentQuestionCursor].answers[answerValue].content
-      }
-      
-    ])
+        answer: questions[currentQuestionCursor].answers[answerValue].content,
+      },
+    ]);
     // tempSelectedAnswers = [...selectedAnswers];
     // tempSelectedAnswers[currentQuestionCursor] = {
     //   content: questions[currentQuestionCursor].answers[answerValue].content,
@@ -112,13 +113,14 @@ const SurveyHandler = (props) => {
    * @param {*} e event holding the index of the selected answer
    */
   function selectMulti(e) {
-    const answerValue = e.target.value;
+    const answerValue =
+      questions[currentQuestionCursor].answers[e.target.value].content;
     let tempAnswers = selectedAnswers;
     let storageSet;
     // ensures that there is a value stored there
     if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
       // copies over the set
-      storageSet = new Set(tempAnswers[currentQuestionCursor]);
+      storageSet = new Set(tempAnswers[currentQuestionCursor].answers);
       // checks to see if the set has the value in it
       !storageSet.has(answerValue)
         ? // adds it if it doesn't
@@ -136,7 +138,23 @@ const SurveyHandler = (props) => {
       // assigns it to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     }
+
+    tempAnswers[currentQuestionCursor] = {
+      question: questions[currentQuestionCursor].question,
+      answer: Array.from(storageSet),
+    };
     setSelectedAnswers(tempAnswers);
+  }
+
+  function inputFreeText(e) {
+    const answerValue = e.target.value;
+    let tempSelectedAnswers = [...selectedAnswers];
+    tempSelectedAnswers[currentQuestionCursor] = {
+      question: questions[currentQuestionCursor].question,
+      answer: answerValue,
+    };
+    setSelectedAnswers(tempSelectedAnswers);
+    setDisableNext(answerValue === "" ? true : false);
   }
 
   const handleNextPage = (surveyType) => {
@@ -160,10 +178,11 @@ const SurveyHandler = (props) => {
           answer={""}
           answerOptions={answerOption}
           disable={disableNext}
-          multiChoice={questions[currentQuestionCursor].multiChoice}
-          multiSelectedEntry={selectMulti}
-          nextQuestion={handleNext}
+          questionType={questions[currentQuestionCursor].type}
           onAnswerSelected={selectAnswer}
+          onMultiSelected={selectMulti}
+          onFreeTextInput={inputFreeText}
+          nextQuestion={handleNext}
           onComplete={() => onComplete(props.type)}
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
