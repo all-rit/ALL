@@ -5,6 +5,7 @@ import NewsletterForm from "./webpage-subcomponents/NewsletterForm";
 import WebpageNav from "./webpage-subcomponents/WebpageNav";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
+import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
 
 /**
  * Webpage is a reusable component used to display
@@ -14,6 +15,8 @@ import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
  * @returns rendered webpage
  */
 const Webpage = () => {
+  const { data } = useLabRepair();
+  const { isRepairComplete } = data;
   return (
     <div className="tw-bg-white tw-flex tw-flex-col">
       <div className="tw-flex-col tw-bg-white tw-relative tw-flex tw-min-h-[1024px] tw-w-full">
@@ -22,7 +25,7 @@ const Webpage = () => {
           src={uni}
           className="tw-absolute tw-h-full tw-w-full tw-object-cover tw-object-center"
         />
-        <WebpageNav />
+        <WebpageNav repairComplete={isRepairComplete} />
         <WebpageHeader />
         <div
           className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-row tw-mt-60"
@@ -33,7 +36,7 @@ const Webpage = () => {
               <WebpageSidebar />
             </div>
             <div className="tw-flex tw-w-3/4 tw-mr-5">
-              <NewsletterForm />
+              <NewsletterForm repairComplete={isRepairComplete} />
             </div>
           </div>
         </div>

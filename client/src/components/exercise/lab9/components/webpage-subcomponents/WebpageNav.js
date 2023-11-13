@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import logo from "../../../../../assets/images/lab9/logo.png";
 import { GAME_STATES } from "../../../../../constants/lab9";
 import { navigate } from "@reach/router";
+import HomeIcon from "@material-ui/icons/Home";
+import BadgeIcon from "@mui/icons-material/Badge";
+import SchoolIcon from "@mui/icons-material/School";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import PropTypes from "prop-types";
 
 /**
  * WebpageNav is a sub-component of the main Webpage component.
@@ -9,7 +14,8 @@ import { navigate } from "@reach/router";
  * includes the "Careers", "Education", "Who We Are", and "Contact Us" tabs.
  * @returns rendered webpage navbar
  */
-const WebpageNav = () => {
+const WebpageNav = (props) => {
+  const { repairComplete } = props;
   // eslint-disable-next-line no-unused-vars
   const [gameState, setGameState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
@@ -17,6 +23,52 @@ const WebpageNav = () => {
   const updateState = (newState) => {
     setGameState(newState);
   };
+
+  const renderNavItems = () => {
+    if (repairComplete) {
+      return (
+        <div className="tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-2 tw-border-solid tw-rounded-xl tw-p-5">
+          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base">
+            <HomeIcon />
+            Home
+          </div>
+          <div className="tw-bg-transparent tw-text-[#260D0D] tw-c tw-text-center tw-text-base tw-w-md">
+            <BadgeIcon />
+            Careers
+          </div>
+          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base tw-w-md">
+            <SchoolIcon />
+            Education
+          </div>
+          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base tw-w-md">
+            <LocalPhoneIcon />
+            Contact Us
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          onClick={() => handleNav(GAME_STATES.REPAIR_NAV_BAR)}
+          className="tw-animate-reduced-bounce hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-cursor-pointer tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-2 tw-border-solid tw-rounded-xl tw-p-5"
+        >
+          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base">
+            Home
+          </div>
+          <div className="tw-bg-transparent tw-text-[#260D0D] tw-c tw-text-center tw-text-base tw-w-md">
+            Careers
+          </div>
+          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base tw-w-md">
+            Education
+          </div>
+          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base tw-w-md">
+            Contact Us
+          </div>
+        </div>
+      );
+    }
+  };
+
   const handleNav = (path) => {
     updateState(path);
     navigate(`/Lab9/Exercise/GameRepair/${path}`);
@@ -38,26 +90,13 @@ const WebpageNav = () => {
             </div>
           </div>
         </div>
-        <div
-          onClick={() => handleNav(GAME_STATES.REPAIR_NAV_BAR)}
-          className="tw-animate-reduced-bounce hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-cursor-pointer tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-2 tw-border-solid tw-rounded-xl tw-p-5"
-        >
-          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base">
-            Careers
-          </div>
-          <div className="tw-bg-transparent tw-text-[#260D0D] tw-c tw-text-center tw-text-base tw-w-md">
-            Education
-          </div>
-          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base tw-w-md">
-            Who We Are
-          </div>
-          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base tw-w-md">
-            Contact Us
-          </div>
-        </div>
+        <div>{renderNavItems()}</div>
       </div>
     </div>
   );
 };
 
+WebpageNav.propTypes = {
+  repairComplete: PropTypes.bool,
+};
 export default WebpageNav;
