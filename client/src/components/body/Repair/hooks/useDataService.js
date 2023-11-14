@@ -48,13 +48,19 @@ const useDataService = (user, section, defaultGameState) => {
    */
   async function handleExerciseUpdate(body, section) {
     try {
-      const {isComplete} = body;
+      const { isComplete, userid } = body;
+      const { isAddressComplete, isDateComplete, isNavComplete } = await ExerciseService.fetchExercise({
+        userid: userid
+      });
       if (isComplete) {
-         const updatedBody = {
+        const updatedBody = {
           userid: body.userid,
-          isAddressComplete: section === GAME_STATES.REPAIR_ADDRESS_FORM? true : false,
-          isDateComplete: section === GAME_STATES.REPAIR_DATE_REPAIR? true : false,
-          isNavComplete: section === GAME_STATES.REPAIR_NAV_REPAIR? true : false,
+          isAddressComplete:
+            section === GAME_STATES.REPAIR_ADDRESS_FORM ? true : isAddressComplete,
+          isDateComplete:
+            section === GAME_STATES.REPAIR_DATE_REPAIR ? true : isDateComplete,
+          isNavComplete:
+            section === GAME_STATES.REPAIR_NAV_REPAIR ? true : isNavComplete,
         };
         const response = await ExerciseService.submitExercise(updatedBody);
         return response.status;
