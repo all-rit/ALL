@@ -1,6 +1,7 @@
 import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
 import { RepairService } from "../../../../services/lab9/RepairService";
 import { ExerciseService } from "../../../../services/lab9/ExerciseService";
+import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
  * usDataService(): is a custom hook to abstract the logic implementation for the
@@ -38,42 +39,30 @@ const useDataService = (user, section, defaultGameState) => {
     }
   }
 
-
- /**
-     * handleExerciseUpdate is an inner function that is responsible
-     * for handling the posting of the change instate after a section of the lab is deemed
-     * complete. This allows for the Exercise to know when a section of the lab is complete.
-     * @param {Object} body Object storing the post modified payload.
-     * @returns status code to ensure the post was successful
-     */
- async function handleExerciseUpdate(body){
-  try {
-    if (body?.isComplete) {
-      const exerciseState = await ExerciseService.fetchExercise(
-        { userid: body.userid }
-      );
-      const updatedBody = {
-        userid: body.userid,
-        isAddressComplete:
-          exerciseState.isAddressComplete !== body.isAddressComplete
-            ? body.isAddressComplete
-            : exerciseState.isAddressComplete,
-        isDateComplete:
-          exerciseState.isDateComplete !== body.isDateComplete
-            ? body.isDateComplete
-            : exerciseState.isDateComplete,
-        isNavComplete:
-          exerciseState.isNavComplete !== body.isNavComplete
-            ? body.isNavComplete
-            : exerciseState.isNavComplete,
-      };
-      const response = await ExerciseService.submitExercise(updatedBody);
-      return response.status;
+  /**
+   * handleExerciseUpdate is an inner function that is responsible
+   * for handling the posting of the change instate after a section of the lab is deemed
+   * complete. This allows for the Exercise to know when a section of the lab is complete.
+   * @param {Object} body Object storing the post modified payload.
+   * @returns status code to ensure the post was successful
+   */
+  async function handleExerciseUpdate(body, section) {
+    try {
+      const {isComplete} = body;
+      if (isComplete) {
+         const updatedBody = {
+          userid: body.userid,
+          isAddressComplete: section === GAME_STATES.REPAIR_ADDRESS_FORM? true : false,
+          isDateComplete: section === GAME_STATES.REPAIR_DATE_REPAIR? true : false,
+          isNavComplete: section === GAME_STATES.REPAIR_NAV_REPAIR? true : false,
+        };
+        const response = await ExerciseService.submitExercise(updatedBody);
+        return response.status;
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
   }
-}
   /**
    * postRepair(): is an async custom hook function that is responsible for
    * sending new information after a repair is iterated through by the user, this
@@ -90,7 +79,7 @@ const useDataService = (user, section, defaultGameState) => {
       };
       const repairID = await RepairService.submitRepair(body);
       // eslint-disable-next-line no-unused-vars
-      await handleExerciseUpdate(body);
+      await handleExerciseUpdate(body, section);
       return repairID;
     } catch (error) {
       console.error(error);
