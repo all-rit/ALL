@@ -4,13 +4,15 @@ import { ExerciseService } from "../../../../../services/lab9/ExerciseService";
 import { GAME_STATES } from "../../../../../constants/lab9";
 
 /**
- * usDataService(): is a custom hook to abstract the logic implementation for the
+ * useDataService(): is a custom hook to abstract the logic implementation for the
  * repair portion of the localization lab. This allows for conditional behavior of
  * initializing the custom behavior for validating and managing state during the
  * date repair portion of the lab
  *
  * @param {Object} user to pass in a user into the hook to better prepare data.
- * @param {String} handles
+ * @param {String} section includes the section of the lab that will be storing data for.
+ * @param {Array[{Objects}]} defaultGameState storing the default state that should be given to 
+ * the user when they are starting an entirely new lab exercise.
  * @returns {Object} of function calls to hooks and fetched user data.
  */
 const useDataService = (user, section, defaultGameState) => {

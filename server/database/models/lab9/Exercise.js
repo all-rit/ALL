@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.DATE,
         },
         attemptCount: {
-          type: DataTypes.BIGINT,
+          type: DataTypes.INTEGER,
         },
       },
       {
