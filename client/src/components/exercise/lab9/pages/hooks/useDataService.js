@@ -11,7 +11,7 @@ import { GAME_STATES } from "../../../../../constants/lab9";
  *
  * @param {Object} user to pass in a user into the hook to better prepare data.
  * @param {String} section includes the section of the lab that will be storing data for.
- * @param {Array[{Objects}]} defaultGameState storing the default state that should be given to 
+ * @param {Array[{Objects}]} defaultGameState storing the default state that should be given to
  * the user when they are starting an entirely new lab exercise.
  * @returns {Object} of function calls to hooks and fetched user data.
  */
