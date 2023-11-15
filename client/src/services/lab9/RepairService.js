@@ -28,7 +28,7 @@ const RepairService = {
   submitRepair: async (data = {}) => {
     try {
       const body = {
-        userId: data.userid,
+        userID: data.userid,
         repair: data.repair,
         section: data.section,
         isComplete: data.isComplete,
