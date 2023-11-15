@@ -11,11 +11,11 @@ import { GAME_STATES } from "../../../../../constants/lab9";
  *
  * @param {Object} user to pass in a user into the hook to better prepare data.
  * @param {String} section includes the section of the lab that will be storing data for.
- * @param {Array[{Objects}]} defaultGameState storing the default state that should be given to
+ * @param {Array[{Objects}]} defaultExerciseState storing the default state that should be given to
  * the user when they are starting an entirely new lab exercise.
  * @returns {Object} of function calls to hooks and fetched user data.
  */
-const useDataService = (user, section, defaultGameState) => {
+const useDataService = (user, section, defaultExerciseState) => {
   const { data, functions } = useLabRepair();
   const { exercisePromptsState, isInputValid } = data;
   const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
@@ -30,7 +30,7 @@ const useDataService = (user, section, defaultGameState) => {
     try {
       const repairData = await RepairService.getRepair(user, section);
       if (!repairData || repairData?.isComplete === true) {
-        const newStartState = [...defaultGameState];
+        const newStartState = [...defaultExerciseState];
         setExercisePromptsState(newStartState);
       } else {
         const { repair } = repairData;
