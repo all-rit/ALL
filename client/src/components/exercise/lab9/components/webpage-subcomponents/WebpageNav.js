@@ -14,8 +14,7 @@ import PropTypes from "prop-types";
  * includes the "Careers", "Education", "Who We Are", and "Contact Us" tabs.
  * @returns rendered webpage navbar
  */
-const WebpageNav = (props) => {
-  const { repairComplete } = props;
+const WebpageNav = ({ repairComplete }) => {
   // eslint-disable-next-line no-unused-vars
   const [gameState, setGameState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
