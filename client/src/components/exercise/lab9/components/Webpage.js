@@ -5,7 +5,7 @@ import NewsletterForm from "./webpage-subcomponents/NewsletterForm";
 import WebpageNav from "./webpage-subcomponents/WebpageNav";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
-import { ExerciseService } from "../../../../services/lab9/ExerciseService"
+import { ExerciseService } from "../../../../services/lab9/ExerciseService";
 /**
  * Webpage is a reusable component used to display
  * the ALL University's website homepage.
@@ -14,22 +14,22 @@ import { ExerciseService } from "../../../../services/lab9/ExerciseService"
  * @returns rendered webpage
  */
 const Webpage = () => {
-  const [isNavComplete, setNavComplete] = useState(false)
-  const [isDateComplete, setDateComplete] = useState(false)
-  const [isAddressComplete, setAddressComplete] = useState(false)
+  const [isNavComplete, setNavComplete] = useState(false);
+  const [isDateComplete, setDateComplete] = useState(false);
+  const [isAddressComplete, setAddressComplete] = useState(false);
 
   useEffect(() => {
     const fetchRepair = async () => {
-      const response = ExerciseService.fetchExercise()
-      const isNavRepaired = response.isNavComplete
-      const isDateRepaired = response.isDateComplete
-      const isAddressRepaired = response.isAddressComplete
-      isNavRepaired ? setNavComplete(true) : setNavComplete(false)
-      isDateRepaired ? setDateComplete(true) : setDateComplete(false)
-      isAddressRepaired ? setAddressComplete(true) : setAddressComplete(false)
-    }
-    fetchRepair()
-  }, [])
+      const response = ExerciseService.fetchExercise();
+      const isNavRepaired = response.isNavComplete;
+      const isDateRepaired = response.isDateComplete;
+      const isAddressRepaired = response.isAddressComplete;
+      isNavRepaired ? setNavComplete(true) : setNavComplete(false);
+      isDateRepaired ? setDateComplete(true) : setDateComplete(false);
+      isAddressRepaired ? setAddressComplete(true) : setAddressComplete(false);
+    };
+    fetchRepair();
+  }, []);
   return (
     <div className="tw-bg-white tw-flex tw-flex-col">
       <div className="tw-flex-col tw-bg-white tw-relative tw-flex tw-min-h-[1024px] tw-w-full">
