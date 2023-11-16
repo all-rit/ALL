@@ -102,7 +102,7 @@ const SurveyHandler = (props) => {
       ...selectedAnswers,
       {
         question: questions[currentQuestionCursor].question,
-        answers: questions[currentQuestionCursor].answers[answerValue].content,
+        answer: questions[currentQuestionCursor].answers[answerValue].content,
       },
     ]);
     // tempSelectedAnswers = [...selectedAnswers];
@@ -127,13 +127,13 @@ const SurveyHandler = (props) => {
     // ensures that there is a value stored there
     if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
       // copies over the set
-      storageSet = new Set(tempAnswers[currentQuestionCursor].answers);
+      storageSet = new Set(tempAnswers[currentQuestionCursor].answer);
       // checks to see if the set has the value in it
       !storageSet.has(answerValue)
-        ? // adds it if it doesn't
-          storageSet.add(answerValue)
-        : // removes it if it does
-          storageSet.delete(answerValue);
+        ? storageSet.add(answerValue)
+        : storageSet.delete(answerValue);
+      // disable next if the set is empty
+      setDisableNext(storageSet.size === 0 ? true : false);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     } else {
