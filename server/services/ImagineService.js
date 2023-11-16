@@ -163,3 +163,34 @@ exports.getUsers = () => {
     },
   });
 };
+
+exports.readMoreCount = (data) => {
+  const userID = data.userID
+  const readMoreCount = data.readMoreCount
+  
+  if (userID) {
+    return db.Imagine23
+        .findOne({
+          where:
+                        {
+                          userid: userID,
+                        },
+        },
+        ).then((user) => {
+          if (user !== null) {
+            user.readMoreCount = readMoreCount;
+            user.save();
+          } else {
+            db.Imagine23.create({
+              userid: userID,
+              readMoreCount: readMoreCount,
+            });
+          }
+          return true;
+        }).catch((err) => {
+          console.log(err);
+          return true;
+        });
+  }
+  return Promise.resolve();
+}

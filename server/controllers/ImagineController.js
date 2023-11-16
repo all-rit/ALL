@@ -51,3 +51,13 @@ exports.getUsers = (req, res) => {
   });
 };
 
+
+exports.readMoreCount = (req,res) =>{
+  ImagineService.readMoreCount({
+    userID: req.body.userID,
+    readMoreCount: req.body.readMoreCount,
+  }).then(() => {
+    res.sendStatus(200);
+  })
+}
+

@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
         postSurvey: {
           type: DataTypes.JSON,
         },
+        readMoreCount: {
+          type:DataTypes.INTEGER
+        },
         // avatar: {type: DataTypes.JSON},
         // squad: {type: DataTypes.JSON},
         // lobbyMessages: {type: DataTypes.JSON},

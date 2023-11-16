@@ -8,9 +8,10 @@ import StudyList from "../../body/Reading/studylist";
 import NonBulletList from "../../body/Reading/NonBulletList";
 import Image from "../../body/Reading/Image";
 import Spinner from "./../../../common/Spinner/Spinner";
-import LinkFooter from "../../body/Reading/LinkFooter";
+// import LinkFooter from "../../body/Reading/LinkFooter";
 import Links from "../../body/Reading/Links";
 import OrderedList from "../../body/Reading/OrderedList";
+import ReadMoreButton from "../components/LearnMoreButton"
 
 import { navigate } from "@reach/router";
 
@@ -18,7 +19,6 @@ const Reading = (props) => {
   const { user, labID } = props;
   const [readingData, setReadingData] = useState("");
   const [labShortName, setLabShortname] = useState(null);
-
   const handleNext = () => {
     navigate("/Imagine/Quiz");
   };
@@ -77,7 +77,6 @@ const Reading = (props) => {
         ) : (
           <></>
         )}
-
         {readingData?.body !== "" ? (
           readingData?.body.map((data, index) => {
             return (
@@ -108,7 +107,11 @@ const Reading = (props) => {
           <></>
         )}
         {readingData?.footer !== "" ? (
-          <LinkFooter data={readingData?.footer.links} />
+          // <LinkFooter data={readingData?.footer.links} />
+           <ReadMoreButton 
+           userID = {user.userid}
+           data={readingData?.footer.links + "hello"}
+          />
         ) : (
           <></>
         )}

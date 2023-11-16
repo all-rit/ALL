@@ -52,6 +52,18 @@ const ImagineService = {
       .then((response) => response.json())
       .then((json) => json);
   },
+
+
+  readMoreCount: (userID, readMoreCount) => {
+    return API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + "/imagine/readMoreCount",
+      {
+        userID,
+        readMoreCount,
+      }
+    );
+  },
+
 };
 
 export default ImagineService;

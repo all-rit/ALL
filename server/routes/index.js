@@ -142,4 +142,5 @@ router.post('/imagine/preSurvey', ImagineController.preSurvey);
 router.post('/imagine/postSurvey', ImagineController.postSurvey);
 router.get('/imagine/users', ImagineController.getUsers);
 
+router.post('/imagine/readMoreCount', ImagineController.readMoreCount);
 module.exports = router;
