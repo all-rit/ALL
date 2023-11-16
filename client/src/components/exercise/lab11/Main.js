@@ -63,6 +63,7 @@ const Main = (props) => {
             sentences={false}
             complexWords={false}
             isEditable={false}
+            sectionTitle={"Information Letter"}
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaIntroduction")
             }
@@ -82,6 +83,7 @@ const Main = (props) => {
             sentences={false}
             complexWords={false}
             isEditable={false}
+            sectionTitle={"Information Letter: Word Count"}
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaSentences")
             }
@@ -101,6 +103,7 @@ const Main = (props) => {
             sentences
             complexWords={false}
             isEditable={false}
+            sectionTitle={"Information Letter: Sentence Count"}
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaComplexWords")
             }
@@ -120,6 +123,7 @@ const Main = (props) => {
             sentences
             complexWords
             isEditable={false}
+            sectionTitle={"Information Letter: Complex Word Count"}
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaConclusion")
             }
@@ -139,6 +143,7 @@ const Main = (props) => {
             sentences
             complexWords
             isEditable
+            sectionTitle={"Information Letter: Fog Index Formula"}
             handleContinue={() => navigate("/Lab11/Exercise/ExerciseEnd")}
           />
 

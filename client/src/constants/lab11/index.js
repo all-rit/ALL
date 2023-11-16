@@ -6,7 +6,11 @@ const EXERCISE_PATH = "/Lab11/Exercise";
 
 const REPAIR_WORD_COUNT = "WordCount";
 const REPAIR_SENTENCE_COUNT = "SentenceCount";
-const REPAIR_COMPLEX_WORDS = "Nav-Bar-Repair";
+const REPAIR_COMPLEX_WORDS = "ComplexWords";
+
+const WORD_COUNT_REPAIR_HEADING = "Word Count Repair";
+const SENTENCE_COUNT_REPAIR_HEADING = "Sentence Count Repair";
+const COMPLEX_WORD_COUNT_REPAIR_HEADING = "Complex Word Count Repair";
 
 const EXERCISE_STATES = {
   REPAIR_WORD_COUNT,
@@ -54,4 +58,7 @@ export {
   LETTER_TEXT,
   REPAIR,
   EXERCISE_PATH,
+  WORD_COUNT_REPAIR_HEADING,
+  SENTENCE_COUNT_REPAIR_HEADING,
+  COMPLEX_WORD_COUNT_REPAIR_HEADING,
 };

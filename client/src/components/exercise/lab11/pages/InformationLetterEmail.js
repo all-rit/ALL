@@ -27,6 +27,7 @@ const InformationLetterEmail = (props) => {
     words,
     sentences,
     complexWords,
+    sectionTitle,
     isEditable,
     handleContinue,
   } = props;
@@ -105,6 +106,7 @@ const InformationLetterEmail = (props) => {
 
   return (
     <div className="center-div">
+      {sectionTitle && <h1 className="playthrough__title">{sectionTitle}</h1>}
       <div className="playthrough__sentence">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
         tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
@@ -198,5 +200,6 @@ InformationLetterEmail.propTypes = {
   complexWords: PropTypes.bool,
   isEditable: PropTypes.bool,
   handleContinue: PropTypes.func.isRequired,
+  sectionTitle: PropTypes.string,
 };
 export default InformationLetterEmail;

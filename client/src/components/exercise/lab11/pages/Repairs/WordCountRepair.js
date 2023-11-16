@@ -6,8 +6,9 @@ import {
   EXERCISE_STATES,
   REPAIR,
 } from "../../../../../constants/lab11";
-import useWordCountRepair from "../../hooks/useWordCountRepair";
 import { navigate } from "@reach/router";
+import { WORD_COUNT_REPAIR_HEADING } from "../../../../../constants/lab11";
+import useDataService from "../../hooks/useDataService";
 /**
  * WordCountRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
@@ -16,19 +17,27 @@ import { navigate } from "@reach/router";
  * @returns Component to handle custom logic for the lab.
  */
 const WordCountRepair = (user = "") => {
+  const { data, functions } = useDataService(user);
   // eslint-disable-next-line no-unused-vars
-  const { data, functions } = useWordCountRepair(user);
+  const { exercisePromptsState } = data;
+  // eslint-disable-next-line no-unused-vars
+  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
+    functions;
   return (
     <Repair
+      fileName={"FogIndexCalculation.js"}
       path={`${REPAIR}/${EXERCISE_STATES.REPAIR_WORD_COUNT}`}
+      headingText={WORD_COUNT_REPAIR_HEADING}
+      validateRepair={checkInputValid}
+      fetchRepair={() => fetchRepair()}
+      submitRepair={() => postRepair()}
+      repairText={[
+        "in this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct word count is being calculated.",
+      ]}
       CodeImplementation={() => {}}
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/InformationLetterWordCount`);
       }}
-      headingText={"Word Count Repair"}
-      repairText={["Lorem ipsum dolor sit amet, consectetur adipiscing elit."]}
-      fileName={"FogIndexCalculation.js"}
-      validateRepair={() => {}}
     />
   );
 };
