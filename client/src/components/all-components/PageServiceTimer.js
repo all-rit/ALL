@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import { Component } from "react";
-import { PageService } from "../../../services/PageService";
-import { EXERCISE_PLAYING } from "../../../constants/index";
+import { PageService } from "../../services/PageService";
+import { EXERCISE_PLAYING } from "../../constants/index";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({

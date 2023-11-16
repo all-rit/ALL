@@ -5,7 +5,7 @@ import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseR
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Popup from "../../shared/Popup";
+import Popup from "src/components/all-components/Popup";
 import BuildingAICodeBlock from "../components/code/BuildingAICodeBlock";
 import { navigate } from "@reach/router";
 

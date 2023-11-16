@@ -3,7 +3,7 @@
 /* eslint-disable require-jsdoc */
 import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 
 class NotificationGuidance extends Component {
   constructor(props) {

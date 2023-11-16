@@ -11,6 +11,24 @@
     font-weight: bold;
   }
 
+  .ordered__list__div {
+    display: flex;
+    align-items: left;
+  }
+
+  .ordered__list {
+    text-align: left;
+    list-style: decimal;
+    font-size: 1.25rem;
+    padding-left: 5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ordered__list > li {
+    margin-bottom: 1rem;
+  }
+
   &__list {
     text-align: left;
     list-style-type: disc;

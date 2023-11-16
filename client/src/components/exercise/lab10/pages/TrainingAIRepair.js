@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { navigate } from "@reach/router";
 import TrainingAICodeBlock from "../components/code/TrainingAICodeBlock";
-import Popup from "../../shared/Popup";
+import Popup from "src/components/all-components/Popup";
 import { bindActionCreators } from "redux";
 import {
   actions as repairActions,
