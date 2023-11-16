@@ -32,13 +32,13 @@ async function getRepair(data, section) {
  * @return {Number} repair id to show it is created
  */
 async function submitRepair(data) {
-  const {userId, repair, isComplete, section} = data;
+  const {userID, repair, isComplete, section} = data;
   try {
     const currentTime = new Date().toISOString();
-    const outputData = await getRepair(userId, section);
+    const outputData = await getRepair(userID, section);
     if ((!outputData) || outputData.isComplete === true) {
       const newRepair = {
-        userid: userId,
+        userid: userID,
         repair: repair,
         isComplete: isComplete,
         section: section,
@@ -50,7 +50,7 @@ async function submitRepair(data) {
     const convert = parseInt(outputData.repairCount);
     const newCount = convert + 1;
     const postRepair = {
-      userid: userId,
+      userid: userID,
       repair: repair,
       isComplete: isComplete,
       section: section,
