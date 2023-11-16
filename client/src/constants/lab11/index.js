@@ -6,7 +6,7 @@ const EXERCISE_PATH = "/Lab11/Exercise";
 
 const REPAIR_WORD_COUNT = "WordCount";
 const REPAIR_SENTENCE_COUNT = "SentenceCount";
-const REPAIR_COMPLEX_WORDS = "ComplexWords";
+const REPAIR_COMPLEX_WORDS = "ComplexWordCount";
 
 const WORD_COUNT_REPAIR_HEADING = "Word Count Repair";
 const SENTENCE_COUNT_REPAIR_HEADING = "Sentence Count Repair";

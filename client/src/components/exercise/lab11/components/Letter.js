@@ -142,7 +142,7 @@ const Letter = ({ isEditable }) => {
 };
 
 Letter.propTypes = {
-  isEditable: PropTypes.boolean,
+  isEditable: PropTypes.bool,
 };
 
 export default Letter;

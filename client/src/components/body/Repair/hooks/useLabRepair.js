@@ -20,6 +20,7 @@ const useLabRepair = () => {
     currentRepairState.forEach((value, index) => {
       const regex = new RegExp(value.validate_expression);
       // Use regex to validate the entered string matches the correct date form
+      console.log(value.userInput, value.correct_expression, regex, regex.test(value.userInput), value.userInput === value.correct_expression)
       const result =
         regex.test(value.userInput) &&
         value.userInput === value.correct_expression;

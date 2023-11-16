@@ -16,7 +16,8 @@ import { EXERCISE_STATES } from "../../../../constants/lab11";
  * @param {Object} user is a string representing user id for data retrieval purposes.
  * @returns
  */
-const LiteracyRepair = ({ user }) => {
+const LiteracyRepair = (props) => {
+  const { user = "" } = props;
   return (
     <Router className="app">
       <WordCountRepair
@@ -36,7 +37,7 @@ const LiteracyRepair = ({ user }) => {
 };
 
 LiteracyRepair.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
 
 export default LiteracyRepair;

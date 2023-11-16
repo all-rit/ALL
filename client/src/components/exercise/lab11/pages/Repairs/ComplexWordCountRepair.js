@@ -34,7 +34,7 @@ const ComplexWordCountRepair = (user = "") => {
 };
 
 ComplexWordCountRepair.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
 
 export default ComplexWordCountRepair;

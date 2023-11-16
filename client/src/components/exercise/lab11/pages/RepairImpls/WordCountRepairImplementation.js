@@ -26,7 +26,7 @@ const WordCountRepairImplementation = (props = {}) => {
       {fogIndexCalculationData.map((input) => (
         <Fragment key={input.key}>
           <CodeLine>
-            <CommentText>{input.comment}</CommentText>
+            <Tab/><CommentText>{input.comment}</CommentText>
           </CodeLine>
           <CodeLine>
             <Tab /> <ReactText> let {input.variableName} = </ReactText>
@@ -54,7 +54,7 @@ const WordCountRepairImplementation = (props = {}) => {
                 }}
               />
             )}
-            ;
+            <ReactText>;</ReactText>
           </CodeLine>
         </Fragment>
       ))}

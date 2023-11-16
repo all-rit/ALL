@@ -5,34 +5,34 @@ const FogIndexCalculationData = {
       key: "wordsInput0",
       variableName: "wordCount",
       comment:
-        "// Enter 'letterContent.split(' ').length' for the correct implementation of the word count",
+        `// Enter 'letterContent.split(" ").length' for the correct implementation of the word count`,
       userInput: "",
-      validate_expression: "letterContent.split(' ').length",
-      correct_expression: "letterContent.split(' ').length",
+      validate_expression: `letterContent.split(" ").length`,
+      correct_expression: `letterContent.split(" ").length`,
     },
   ],
   sentences: [
     {
       id: "0",
-      key: "sentencesInput0",
-      variableName: "sentenceCount",
+      key: "wordsInput0",
+      variableName: "wordCount",
       comment:
-        "// Enter 'letterContent.split('.').length' for the correct implementation of the sentence count",
+        `// Enter 'letterContent.split(" ").length' for the correct implementation of the word count`,
       userInput: "",
-      validate_expression: "letterContent.split('.').length",
-      correct_expression: "letterContent.split('.').length",
+      validate_expression: `letterContent.split(" ").length`,
+      correct_expression: `letterContent.split(" ").length`,
     },
   ],
   complexWords: [
     {
       id: "0",
-      key: "complexWordsInput0",
-      variableName: "complexWordCount",
+      key: "wordsInput0",
+      variableName: "wordCount",
       comment:
-        "// Enter 'letterContent.split(' ').length' for the correct implementation of the word count",
+        `// Enter 'letterContent.split(" ").length' for the correct implementation of the word count`,
       userInput: "",
-      validate_expression: "letterContent.split(' ').length",
-      correct_expression: "letterContent.split(' ').length",
+      validate_expression: `letterContent.split(" ").length`,
+      correct_expression: `letterContent.split(" ").length`,
     },
   ],
 };

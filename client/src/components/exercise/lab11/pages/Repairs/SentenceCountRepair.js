@@ -34,7 +34,7 @@ const SentenceCountRepair = (user = "") => {
 };
 
 SentenceCountRepair.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
 
 export default SentenceCountRepair;
