@@ -102,7 +102,7 @@ const SurveyHandler = (props) => {
       ...selectedAnswers,
       {
         question: questions[currentQuestionCursor].question,
-        answer: questions[currentQuestionCursor].answers[answerValue].content,
+        answers: questions[currentQuestionCursor].answers[answerValue].content,
       },
     ]);
     // tempSelectedAnswers = [...selectedAnswers];
