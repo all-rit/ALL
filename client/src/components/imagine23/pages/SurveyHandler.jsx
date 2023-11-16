@@ -6,6 +6,7 @@ import { navigate } from "@reach/router";
 import PreSurveyQuestions from "../data/preSurveyQuestions";
 import PostSurveyQuestions from "../data/postSurveyQuestions";
 import ImagineService from "../../../services/ImagineService";
+import Spinner from "../../../common/Spinner/Spinner";
 /**
  * assignQuizQuestions is a function that returns a given set
  * of quiz questions dependent on the labId passed
@@ -71,21 +72,59 @@ const SurveyHandler = (props) => {
    * calculations to grade a users responses to the quiz. This will then prepare the data
    * to display to the user for the result portion of the quiz.
    */
-  function onComplete(surveyType) {
+  async function onComplete(surveyType) {
     setSurveyComplete(true);
-    if (surveyType === "pre") {
-      // ImagineService.getUsers().then((users) => {
-      //   let same = users.filter(
-      //     (user) => user.preSurvey[0].answer === selectedAnswers[0].answer
-      //   );
-      //   console.log(same);
-      // });
 
+    if (surveyType === "pre") {
       ImagineService.preSurvey(props.userID, selectedAnswers);
+      groupUserByAnswers(); // This will handle navigation
     } else if (surveyType === "post") {
       ImagineService.postSurvey(props.userID, selectedAnswers);
+      navigate("/Imagine/ExerciseEnd");
     }
-    console.log(selectedAnswers);
+    // console.log(selectedAnswers);
+  }
+
+  function groupUserByAnswers() {
+    let groupingQuestions = [0, 1, 2];
+
+    // Helper function to compare answers, since they can be either strings or arrays
+    const isEqualAnswer = (a, b) => {
+      // Normalize both answers to arrays and sort to ensure order doesn't matter
+      const arrA = Array.isArray(a) ? a : [a];
+      const arrB = Array.isArray(b) ? b : [b];
+      arrA.sort();
+      arrB.sort();
+
+      // Check if arrays are of the same length and have equal elements (case-insensitive for strings)
+      return (
+        arrA.length === arrB.length &&
+        arrA.every((val, index) => {
+          return typeof val === "string" && typeof arrB[index] === "string"
+            ? val.toLowerCase() === arrB[index].toLowerCase()
+            : val === arrB[index];
+        })
+      );
+    };
+
+    // Use age, gender, and enthnicity to group users together
+    ImagineService.getUsers().then((users) => {
+      let groupedUsers = users.filter((user) =>
+        groupingQuestions.every((index) => {
+          return isEqualAnswer(
+            user.preSurvey[index].answer,
+            selectedAnswers[index].answer
+          );
+        })
+      );
+
+      console.log(groupedUsers);
+
+      // Is in either group 1 or 2 (experiential or expressive). Judge this based on whether, in their group, they is an even or odd number of people in their group
+      let group = groupedUsers.length % 2;
+      console.log(group === 0 ? "Experiential" : "Expression");
+      props.handleGroupAssignment(group === 0 ? true : false);
+    });
   }
 
   /**
@@ -105,11 +144,6 @@ const SurveyHandler = (props) => {
         answer: questions[currentQuestionCursor].answers[answerValue].content,
       },
     ]);
-    // tempSelectedAnswers = [...selectedAnswers];
-    // tempSelectedAnswers[currentQuestionCursor] = {
-    //   content: questions[currentQuestionCursor].answers[answerValue].content,
-    // };
-    // setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
   }
   /**
@@ -164,20 +198,6 @@ const SurveyHandler = (props) => {
     setDisableNext(answerValue === "" ? true : false);
   }
 
-  const handleNextPage = (surveyType) => {
-    switch (surveyType) {
-      case "pre":
-        navigate("/Imagine/Navigation");
-        break;
-      case "post":
-        navigate("/Imagine/ExerciseEnd");
-        break;
-      default:
-        navigate("/Imagine");
-        break;
-    }
-  };
-
   return (
     <>
       {!surveyComplete ? (
@@ -196,25 +216,17 @@ const SurveyHandler = (props) => {
           onComplete={() => onComplete(props.type)}
         ></Survey>
       ) : (
-        <>
-          <h2 className="p-5">
-            Thank you for completing the {props.type == "pre" ? "pre" : "post"}
-            -survey!
-          </h2>
-          <button
-            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-            onClick={() => handleNextPage(props.type)}
-          >
-            Continue
-          </button>
-        </>
+        <div className="flex !tw-justify-center items-center">
+          <Spinner className="m-auto" />
+        </div>
       )}
     </>
   );
 };
 SurveyHandler.propTypes = {
-  // submitData: PropTypes.func.isRequired,
-  userID: PropTypes.string,
-  type: PropTypes.string,
+  path: PropTypes.string.isRequired,
+  userID: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  handleGroupAssignment: PropTypes.func, // optional
 };
 export default SurveyHandler;

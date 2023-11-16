@@ -135,16 +135,6 @@ const preSurveyQuestionsImagine = [
     ],
     type: "singleChoice",
   },
-  {
-    question: "Please provide any further comments that you would like to share about the activity.",
-    answers: [
-      {
-        index: "0",
-        content: "Enter here",
-      },
-    ],
-    type: "freeText",
-  },
 ];
 
 export default preSurveyQuestionsImagine;

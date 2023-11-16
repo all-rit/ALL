@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Router } from "@reach/router";
+import { navigate, Router } from "@reach/router";
 import { bindActionCreators } from "redux";
 import LandingPage from "./pages/landingPage";
 import MainInstructions from "./pages/mainInstructions";
@@ -40,6 +40,16 @@ const Main = (props) => {
 
   const [labId, setLabId] = useState(2);
   const [isExperiential, setIsExperiential] = useState(false);
+
+  function handleGroupAssignment(isExperiential) {
+    setIsExperiential(isExperiential);
+
+    if (isExperiential) {
+      navigate("/Imagine/ExperientialStart");
+    } else {
+      navigate("/Imagine/ExpressionStart");
+    }
+  }
 
   useEffect(() => {
     if (user?.userid) {
@@ -77,7 +87,7 @@ const Main = (props) => {
             setUserID={setUserID}
             user={user}
           />
-          <Survey path={`/PreSurvey`} userID={userID} type="pre" />
+          <Survey path={`/PreSurvey`} userID={userID} type="pre" handleGroupAssignment={handleGroupAssignment} />
           <Navigation
             path="/Navigation"
             actions={actions}
