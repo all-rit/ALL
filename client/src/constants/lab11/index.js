@@ -1,7 +1,7 @@
 const LAB_ID = 11;
 const EXERCISE_PLAYING = "EXERCISE_PLAYING";
 const EXERCISE_IDLE = "EXERCISE_IDLE";
-const REPAIR = "/ExerciseRepair";
+const REPAIR = "/Repair";
 const EXERCISE_PATH = "/Lab11/Exercise";
 
 const REPAIR_WORD_COUNT = "WordCount";

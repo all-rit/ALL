@@ -9,6 +9,7 @@ import { useContext } from "react";
 import ExerciseStateContext from "../Lab11Context";
 import check_mark from "../../../../assets/images/lab11/checkmark.png";
 import exclamation_mark from "../../../../assets/images/lab11/exclamationmark.png";
+import { fogIndexCalculation } from "../helpers/FogIndexCalculation";
 
 /**
  * Renders the Information Letter Email page component.
@@ -50,54 +51,9 @@ const InformationLetterEmail = (props) => {
     setFogIndex,
   } = useContext(ExerciseStateContext);
 
-  /**
-   * Counts the number of syllables in a given word.
-   * @param {string} word - The word to count syllables for.
-   * @returns {number} The number of syllables in the word.
-   */
-  function countSyllables(word) {
-    let syllableCount = 0;
-    const vowels = new Set(["a", "e", "i", "o", "u", "y"]);
-
-    if (vowels.has(word[0])) {
-      syllableCount++;
-    }
-
-    for (let i = 1; i < word.length; i++) {
-      if (vowels.has(word[i]) && !vowels.has(word[i - 1])) {
-        syllableCount++;
-      }
-    }
-
-    if (word.endsWith("e")) {
-      syllableCount--;
-    }
-
-    if (
-      word.endsWith("le") &&
-      word.length > 2 &&
-      !vowels.has(word[word.length - 3])
-    ) {
-      syllableCount++;
-    }
-
-    if (syllableCount === 0) {
-      syllableCount++;
-    }
-
-    return syllableCount;
-  }
 
   useEffect(() => {
-    let words = letterContent.split(" ").length;
-    let sentences = letterContent.split(".").length;
-    let complex = letterContent
-      .split(" ")
-      .filter((word) => countSyllables(word) > 3).length;
-    let fogIndex = (
-      0.4 *
-      (words / sentences + 100 * (complex / words))
-    ).toFixed(4);
+    const { words, sentences, complex, fogIndex } = fogIndexCalculation(letterContent);
     setTotalWords(words);
     setTotalSentences(sentences);
     setTotalComplexWords(complex);

@@ -13,7 +13,7 @@ import { EXERCISE_STATES } from "../../../../constants/lab11";
  * LiteracyRepair is a Route wrapper component that is responsible for declaring the
  * structure for routing of individual repair pages. this allows for the addition of repairs
  * in the future by then only needing to import the component to one location
- * @param {String} user is a string representing user id for data retrieval purposes.
+ * @param {Object} user is a string representing user id for data retrieval purposes.
  * @returns
  */
 const LiteracyRepair = ({ user }) => {
