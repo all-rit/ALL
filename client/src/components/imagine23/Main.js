@@ -146,7 +146,12 @@ const Main = (props) => {
             count={count}
             userID={userID}
           />
-          <Reading path={`/Reading`} user={state.main.user} labID={labId} />
+          <Reading
+            path={`/Reading`}
+            user={state.main.user}
+            userID={userID}
+            labID={labId}
+          />
           <Quiz
             path={`/Quiz`}
             labId={labId}

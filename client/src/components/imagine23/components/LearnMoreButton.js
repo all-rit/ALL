@@ -28,7 +28,7 @@ const LearnMoreButton = (props) => {
       </button>
       <Modal isOpen={modal} toggle={toggle}>
         <div className="modal-content__header">
-          <h1>For more information, please visit the following websites:</h1>
+          <h1>For more information, please visit the following websites: </h1>
         </div>
 
         <ModalBody>
