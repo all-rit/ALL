@@ -60,7 +60,7 @@ const SurveyHandler = (props) => {
    */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
-      console.log(selectedAnswers);
+      // console.log(selectedAnswers);
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
@@ -82,7 +82,6 @@ const SurveyHandler = (props) => {
       ImagineService.postSurvey(props.userID, selectedAnswers);
       navigate("/Imagine/ExerciseEnd");
     }
-    // console.log(selectedAnswers);
   }
 
   function groupUserByAnswers() {
@@ -117,8 +116,6 @@ const SurveyHandler = (props) => {
           );
         })
       );
-
-      console.log(groupedUsers);
 
       // Is in either group 1 or 2 (experiential or expressive). Judge this based on whether, in their group, they is an even or odd number of people in their group
       let group = groupedUsers.length % 2;

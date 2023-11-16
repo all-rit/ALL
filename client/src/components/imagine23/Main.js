@@ -87,14 +87,19 @@ const Main = (props) => {
             setUserID={setUserID}
             user={user}
           />
-          <Survey path={`/PreSurvey`} userID={userID} type="pre" handleGroupAssignment={handleGroupAssignment} />
-          <Navigation
+          <Survey
+            path={`/PreSurvey`}
+            userID={userID}
+            type="pre"
+            handleGroupAssignment={handleGroupAssignment}
+          />
+          {/* <Navigation
             path="/Navigation"
             actions={actions}
             state={state}
             userID={userID}
             setIsExperiential={setIsExperiential}
-          />
+          /> */}
           <LandingPage
             path="/ExperientialStart"
             actions={actions}
