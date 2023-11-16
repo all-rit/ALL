@@ -11,7 +11,7 @@ import Spinner from "./../../../common/Spinner/Spinner";
 // import LinkFooter from "../../body/Reading/LinkFooter";
 import Links from "../../body/Reading/Links";
 import OrderedList from "../../body/Reading/OrderedList";
-import ReadMoreButton from "../components/LearnMoreButton"
+import ReadMoreButton from "../components/LearnMoreButton";
 
 import { navigate } from "@reach/router";
 
@@ -108,9 +108,9 @@ const Reading = (props) => {
         )}
         {readingData?.footer !== "" ? (
           // <LinkFooter data={readingData?.footer.links} />
-           <ReadMoreButton 
-           userID = {user.userid}
-           data={readingData?.footer.links + "hello"}
+          <ReadMoreButton
+            userID={user.userid}
+            data={readingData?.footer.links + "hello"}
           />
         ) : (
           <></>

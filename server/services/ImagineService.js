@@ -165,9 +165,9 @@ exports.getUsers = () => {
 };
 
 exports.readMoreCount = (data) => {
-  const userID = data.userID
-  const readMoreCount = data.readMoreCount
-  
+  const userID = data.userID;
+  const readMoreCount = data.readMoreCount;
+
   if (userID) {
     return db.Imagine23
         .findOne({
@@ -193,4 +193,4 @@ exports.readMoreCount = (data) => {
         });
   }
   return Promise.resolve();
-}
+};
