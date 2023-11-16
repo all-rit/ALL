@@ -49,8 +49,7 @@ const ReactText = ({ children }) => {
             {segment}
           </span>
         );
-      }
-      else if (numberRegex.test(segment)) {
+      } else if (numberRegex.test(segment)) {
         return (
           <span key={index} className="number">
             {segment}
@@ -62,7 +61,7 @@ const ReactText = ({ children }) => {
             {segment}
           </span>
         );
-      } 
+      }
       return (
         <span key={index} className={"otherText"}>
           {segment}

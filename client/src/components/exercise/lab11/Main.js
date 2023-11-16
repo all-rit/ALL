@@ -17,7 +17,7 @@ import FogIndexFormulaComplexWords from "./pages/Explanations/FogIndexFormulaCom
 import FogIndexFormulaConclusion from "./pages/Explanations/FogIndexFormulaConclusion";
 
 const Main = (props) => {
-  const { user = "" , actions } = props;
+  const { user = "", actions } = props;
   const [exerciseState, setExerciseState] = useState("");
   const [letterContent, setLetterContent] = useState(LETTER_TEXT);
   const [totalWords, setTotalWords] = useState(0);

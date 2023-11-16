@@ -9,7 +9,8 @@ export const operatorRegex = /(\+|-|\*|\/|;|:|=|==|>|\.|\(|\)|{|})/g;
 export const reactRegex = /\b(useState|useEffect|useMemo|useContext|props)\b/g;
 
 /* funcRegex searches in the children for a function call keywords like .() */
-export const funcRegex = /\b(map|filter|split|toFixed|includes|endsWith|startsWith)\b/g;
+export const funcRegex =
+  /\b(map|filter|split|toFixed|includes|endsWith|startsWith)\b/g;
 
 /* numberRegex searches for numbers */
 export const numberRegex = /-?\d+(\.\d+)?/g;

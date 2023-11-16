@@ -27,25 +27,27 @@ const WordCountRepair = (user = "") => {
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
-    return ( 
-        <Repair
-          fileName={"FogIndexCalculation.js"}
-          path={`${REPAIR}/${EXERCISE_STATES.REPAIR_WORD_COUNT}`}
-          headingText={WORD_COUNT_REPAIR_HEADING}
-          validateRepair={checkInputValid}
-          fetchRepair={() => fetchRepair()}
-          submitRepair={() => postRepair()}
-          repairText={[
-            "in this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct word count is being calculated.",
-          ]}
-          CodeImplementation={<WordCountRepairImplementation 
-            userInput={handleUserInputChange}
-            fogIndexCalculationData={exercisePromptsState}
-          />}
-          navigateNext={() => {
-            navigate(`${EXERCISE_PATH}/InformationLetterWordCount`);
-          }}
+  return (
+    <Repair
+      fileName={"FogIndexCalculation.js"}
+      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_WORD_COUNT}`}
+      headingText={WORD_COUNT_REPAIR_HEADING}
+      validateRepair={checkInputValid}
+      fetchRepair={() => fetchRepair()}
+      submitRepair={() => postRepair()}
+      repairText={[
+        "in this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct word count is being calculated.",
+      ]}
+      CodeImplementation={
+        <WordCountRepairImplementation
+          userInput={handleUserInputChange}
+          fogIndexCalculationData={exercisePromptsState}
         />
+      }
+      navigateNext={() => {
+        navigate(`${EXERCISE_PATH}/InformationLetterWordCount`);
+      }}
+    />
   );
 };
 

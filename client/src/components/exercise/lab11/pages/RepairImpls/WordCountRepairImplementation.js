@@ -13,9 +13,15 @@ const WordCountRepairImplementation = (props = {}) => {
 
   return (
     <>
-      <ReactText>const fogIndexCalculation = ( letterContent ) =&#62; &#123;</ReactText>
+      <ReactText>
+        const fogIndexCalculation = ( letterContent ) =&#62; &#123;
+      </ReactText>
       <CodeLine>
-        <Tab /> <ReactText> let wordCount = letterContent.split(&#39; 	&#39;).length;</ReactText>
+        <Tab />{" "}
+        <ReactText>
+          {" "}
+          let wordCount = letterContent.split(&#39; &#39;).length;
+        </ReactText>
       </CodeLine>
       {fogIndexCalculationData.map((input) => (
         <Fragment key={input.key}>
@@ -53,7 +59,10 @@ const WordCountRepairImplementation = (props = {}) => {
         </Fragment>
       ))}
       <CodeLine>
-        <Tab /> <ReactText>let fogIndex = ( 0.4 * (words + 100 * (words))).toFixed(4);</ReactText>
+        <Tab />{" "}
+        <ReactText>
+          let fogIndex = ( 0.4 * (words + 100 * (words))).toFixed(4);
+        </ReactText>
       </CodeLine>
       <CodeLine>
         <Tab /> <ReactText> return &#123; words, fogIndex &#125;</ReactText>
