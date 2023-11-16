@@ -47,6 +47,11 @@ const ImagineService = {
       }
     );
   },
+  getUsers: () => {
+    return API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users")
+    .then((response) => response.json())
+    .then((json) => json);
+  },
 };
 
 export default ImagineService;

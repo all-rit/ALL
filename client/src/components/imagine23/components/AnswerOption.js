@@ -40,7 +40,10 @@ function AnswerOption(props) {
     case "freeText":
       return (
         <li>
-          <label className="inline-block w-75 text-left" htmlFor={props.answerType}>
+          <label
+            className="inline-block w-75 text-left"
+            htmlFor={props.answerType}
+          >
             {props.answerContent}
           </label>
           <input
@@ -51,13 +54,13 @@ function AnswerOption(props) {
           />
         </li>
       );
-  };
+  }
 }
 
 AnswerOption.propTypes = {
   answerType: PropTypes.string.isRequired,
   answerContent: PropTypes.string.isRequired,
-  questionType: PropTypes.bool.isRequired,
+  questionType: PropTypes.string.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
   onMultiSelected: PropTypes.func.isRequired,
   onFreeTextInput: PropTypes.func.isRequired,

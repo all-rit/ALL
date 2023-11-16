@@ -45,3 +45,9 @@ exports.postSurvey = (req, res) => {
   });
 };
 
+exports.getUsers = (req, res) => {
+  ImagineService.getUsers().then((users) => {
+    res.json(users);
+  });
+};
+

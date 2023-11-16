@@ -1,3 +1,4 @@
+const {Op} = require('sequelize');
 const db = require('../database');
 
 exports.discomfortCount = (data)=> {
@@ -149,4 +150,16 @@ exports.postSurvey = (data) => {
         });
   }
   return Promise.resolve();
+};
+
+exports.getUsers = () => {
+  return db.Imagine23.findAll({
+    attributes: ['id', 'userid', 'preSurvey'],
+    raw: true,
+    where: {
+      preSurvey: {
+        [Op.not]: null,
+      },
+    },
+  });
 };

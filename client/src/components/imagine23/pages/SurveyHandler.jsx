@@ -74,6 +74,13 @@ const SurveyHandler = (props) => {
   function onComplete(surveyType) {
     setSurveyComplete(true);
     if (surveyType === "pre") {
+      // ImagineService.getUsers().then((users) => {
+      //   let same = users.filter(
+      //     (user) => user.preSurvey[0].answer === selectedAnswers[0].answer
+      //   );
+      //   console.log(same);
+      // });
+
       ImagineService.preSurvey(props.userID, selectedAnswers);
     } else if (surveyType === "post") {
       ImagineService.postSurvey(props.userID, selectedAnswers);
@@ -177,16 +184,16 @@ const SurveyHandler = (props) => {
         <Survey
           answer={""}
           answerOptions={answerOption}
-          disable={disableNext}
+          question={questions[currentQuestionCursor].question}
+          questionId={currentQuestionCursor + 1}
+          questionTotal={questions.length}
           questionType={questions[currentQuestionCursor].type}
+          disable={disableNext}
           onAnswerSelected={selectAnswer}
           onMultiSelected={selectMulti}
           onFreeTextInput={inputFreeText}
           nextQuestion={handleNext}
           onComplete={() => onComplete(props.type)}
-          questionId={currentQuestionCursor + 1}
-          question={questions[currentQuestionCursor].question}
-          questionTotal={questions.length}
         ></Survey>
       ) : (
         <>

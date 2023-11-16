@@ -9,6 +9,7 @@ function Survey(props) {
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
+        key={key.index}
         answerContent={key.content}
         answerType={key.index}
         answer={props.answer}
@@ -59,8 +60,9 @@ Survey.propTypes = {
   question: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,
   questionTotal: PropTypes.number.isRequired,
+  questionType: PropTypes.string.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
-  onMultiChoice: PropTypes.func.isRequired,
+  onMultiSelected: PropTypes.func.isRequired,
   onFreeTextInput: PropTypes.func.isRequired,
 };
 
