@@ -33,13 +33,13 @@ const Repair = (props) => {
   };
 
   const handleUpdate = async () => {
-    setEnableNext(!validateRepair);
+    setEnableNext(!validateRepair());
     await submitRepair();
   };
 
   const handleNext = async () => {
-    if (validateRepair) {
-      navigateNext;
+    if (validateRepair()) {
+      navigateNext();
     }
   };
 

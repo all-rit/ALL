@@ -52,11 +52,11 @@ const InformationLetterEmail = (props) => {
   } = useContext(ExerciseStateContext);
 
   useEffect(() => {
-    const { words, sentences, complex, fogIndex } =
+    const { wordCount, sentenceCount, complexWordCount, fogIndex } =
       fogIndexCalculation(letterContent);
-    setTotalWords(words);
-    setTotalSentences(sentences);
-    setTotalComplexWords(complex);
+    setTotalWords(wordCount);
+    setTotalSentences(sentenceCount);
+    setTotalComplexWords(complexWordCount);
     setFogIndex(fogIndex);
   }, [letterContent]);
 

@@ -145,7 +145,7 @@ router.post('/lab9/repair/submit', async function(req, res) {
 });
 
 router.get('/lab11/exercise/:userID', async function(req, res) {
-  res.json(await ExerciseControllerLab11.getExercise(req, true));
+  res.json(await ExerciseControllerLab11.getExercise(req));
 });
 router.post('/lab11/exercise/submit', async function(req, res) {
   const id = await ExerciseControllerLab11.postExercise(req);

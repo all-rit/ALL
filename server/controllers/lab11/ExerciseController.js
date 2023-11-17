@@ -9,6 +9,15 @@ async function getExercise(req) {
   try {
     const {userID} = req.params;
     const response = await ExerciseService.getExercise(userID);
+    if (response === null) {
+      return {
+        userId: userID,
+        isRepairWordCountComplete: false,
+        isRepairSentenceCountComplete: false,
+        isRepairComplexWordCountComplete: false,
+        isExerciseComplete: false,
+      };
+    }
     return response;
   } catch (error) {
     console.error(error);
