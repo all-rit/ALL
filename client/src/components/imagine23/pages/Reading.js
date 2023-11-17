@@ -16,7 +16,7 @@ import ReadMoreButton from "../components/LearnMoreButton";
 import { navigate } from "@reach/router";
 
 const Reading = (props) => {
-  const { user,userID, labID } = props;  
+  const { user, userID, labID } = props;
   const [readingData, setReadingData] = useState("");
   const [labShortName, setLabShortname] = useState(null);
   const handleNext = () => {
@@ -103,14 +103,11 @@ const Reading = (props) => {
               </Fragment>
             );
           })
-        ) : ( 
+        ) : (
           <></>
         )}
         {readingData?.footer !== "" ? (
-          <ReadMoreButton
-            userID={userID}
-            data={readingData?.footer.links}
-          />
+          <ReadMoreButton userID={userID} data={readingData?.footer.links} />
         ) : (
           <></>
         )}

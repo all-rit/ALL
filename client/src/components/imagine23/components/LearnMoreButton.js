@@ -15,7 +15,6 @@ const LearnMoreButton = (props) => {
     setCounter(1);
   };
 
-
   const saveData = () => {
     console.log(counter);
     ImagineService.readMoreCount(userID, counter);
@@ -23,18 +22,12 @@ const LearnMoreButton = (props) => {
     toggle();
   };
 
-  
-
-
   return (
     <>
       <button className="btn-second btn btn-md tw-m-3" onClick={readMoreCount}>
-        Read more 
+        Read more
       </button>
-      <Modal 
-      isOpen={modal} toggle={toggle}
-      scrollable={true}
-      >
+      <Modal isOpen={modal} toggle={toggle} scrollable={true}>
         <div className="modal-content__header">
           <h1>For more information, please visit the following websites: </h1>
         </div>
@@ -45,20 +38,23 @@ const LearnMoreButton = (props) => {
               Learn more about Accessibility for Color Blindness:
             </li>
           </ul>
-                <div>
-              {data.map((data, index) => {
-                return (
-                  <>
+          <div>
+            {data.map((data, index) => {
+              return (
+                <>
                   <div key={index}>
-                    <h1 >{data.name}</h1>
-                    <iframe src={data.link} title={data.name}  name="link" style={{ height: '80vh', width: '100%'}}></iframe>
+                    <h1>{data.name}</h1>
+                    <iframe
+                      src={data.link}
+                      title={data.name}
+                      name="link"
+                      style={{ height: "80vh", width: "100%" }}
+                    ></iframe>
                   </div>
-                  
-                  </>
-                
-                );
-              })}
-               </div>
+                </>
+              );
+            })}
+          </div>
         </ModalBody>
         <ModalFooter>
           <Button className="btn-primary" onClick={saveData}>
