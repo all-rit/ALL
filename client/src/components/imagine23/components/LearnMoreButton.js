@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import ImagineService from "../../../services/ImagineService";
 
@@ -13,8 +13,7 @@ const LearnMoreButton = (props) => {
   const readMoreCount = () => {
     setModal(true);
     setCounter(1);
-    console.log(counter)
-   
+    console.log(counter);
   };
 
   const saveData = () => {
@@ -24,15 +23,16 @@ const LearnMoreButton = (props) => {
     toggle();
   };
 
-
   useEffect(() => {
     ImagineService.readMoreCount(userID, counter);
   }, [counter, userID]);
 
-
   return (
     <>
-      <button className="btn-second btn btn-md tw-m-3" onClick={()=> saveData()}>
+      <button
+        className="btn-second btn btn-md tw-m-3"
+        onClick={() => saveData()}
+      >
         Read more
       </button>
       <Modal isOpen={modal} toggle={toggle}>
@@ -50,23 +50,21 @@ const LearnMoreButton = (props) => {
             {data.map((data, index) => {
               return (
                 <div key={index}>
-                    <h1 >{data.name}</h1>
-                    <iframe
-                      src={data.link}
-                      sandbox="allow-orientation-lock"
-                      title={data.name}
-                      name="link"
-                      style={{ height: "80vh", width: "100%" }}
-                    ></iframe>
-                  </div>
+                  <h1>{data.name}</h1>
+                  <iframe
+                    src={data.link}
+                    sandbox="allow-orientation-lock"
+                    title={data.name}
+                    name="link"
+                    style={{ height: "80vh", width: "100%" }}
+                  ></iframe>
+                </div>
               );
             })}
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button className="btn-primary">
-            Close
-          </Button>
+          <Button className="btn-primary">Close</Button>
         </ModalFooter>
       </Modal>
     </>
