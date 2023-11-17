@@ -6,7 +6,7 @@ const FogIndexCalculationData = {
       variableName: "wordCount",
       comment: `// Enter 'letterContent.split(' ').length' for the correct implementation of the word count`,
       userInput: "",
-      validate_expression:  /letterContent\.split\(' '\)\.length/g,
+      validate_expression: /letterContent\.split\(' '\)\.length/g,
       correct_expression: `letterContent.split(' ').length`,
     },
   ],
