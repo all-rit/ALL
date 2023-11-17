@@ -6,29 +6,48 @@ import {
   EXERCISE_STATES,
   REPAIR,
 } from "../../../../../constants/lab11";
-import useSentenceCountRepair from "../../hooks/useSentenceCountRepair";
 import { navigate } from "@reach/router";
+import { SENTENCE_COUNT_REPAIR_HEADING } from "../../../../../constants/lab11";
+import useDataService from "../../hooks/useDataService";
+import WordCountRepairImplementation from "../RepairImpls/WordCountRepairImplementation";
+import FogIndexCalculationData from "../../../../../constants/lab11/FogIndexCalculationData";
 /**
  * SentenceCountRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
- * and custom implementation for the address repair for lab 9 localization.
- * @param {String} user contains user id for data state and logging user input
+ * and custom implementation for the sentence count repair for lab 11 literacy.
+ * @param {Object} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */
-const SentenceCountRepair = (user = "") => {
-  // eslint-disable-next-line no-unused-vars
-  const { data, functions } = useSentenceCountRepair(user);
+const SentenceCountRepair = (props) => {
+  const { user = "" } = props;
+  const { data, functions } = useDataService(
+    user,
+    EXERCISE_STATES.REPAIR_SENTENCE_COUNT,
+    FogIndexCalculationData.sentences
+  );
+  const { exercisePromptsState } = data;
+  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
+    functions;
   return (
     <Repair
+      fileName={"FogIndexCalculation.js"}
       path={`${REPAIR}/${EXERCISE_STATES.REPAIR_SENTENCE_COUNT}`}
-      CodeImplementation={() => {}}
+      headingText={SENTENCE_COUNT_REPAIR_HEADING}
+      validateRepair={checkInputValid}
+      fetchRepair={() => fetchRepair()}
+      submitRepair={() => postRepair()}
+      repairText={[
+        "in this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct sentence count is being calculated.",
+      ]}
+      CodeImplementation={
+        <WordCountRepairImplementation
+          userInput={handleUserInputChange}
+          fogIndexCalculationData={exercisePromptsState}
+        />
+      }
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/InformationLetterSentenceCount`);
       }}
-      headingText={"Sentence Count Repair"}
-      repairText={["Lorem ipsum dolor sit amet, consectetur adipiscing elit."]}
-      fileName={"FogIndexCalculation.js"}
-      validateRepair={() => {}}
     />
   );
 };

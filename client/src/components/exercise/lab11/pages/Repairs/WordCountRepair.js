@@ -14,7 +14,7 @@ import FogIndexCalculationData from "../../../../../constants/lab11/FogIndexCalc
 /**
  * WordCountRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
- * and custom implementation for the address repair for lab 9 localization.
+ * and custom implementation for the word count repair for lab 11 literacy.
  * @param {Object} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */

@@ -6,29 +6,48 @@ import {
   EXERCISE_STATES,
   REPAIR,
 } from "../../../../../constants/lab11";
-import useComplexWordCountRepair from "../../hooks/useComplexWordCountRepair";
 import { navigate } from "@reach/router";
+import { COMPLEX_WORD_COUNT_REPAIR_HEADING } from "../../../../../constants/lab11";
+import useDataService from "../../hooks/useDataService";
+import WordCountRepairImplementation from "../RepairImpls/WordCountRepairImplementation";
+import FogIndexCalculationData from "../../../../../constants/lab11/FogIndexCalculationData";
 /**
  * ComplexWordCountRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
- * and custom implementation for the address repair for lab 9 localization.
- * @param {String} user contains user id for data state and logging user input
+ * and custom implementation for the complex word count repair for lab 11 literacy.
+ * @param {Object} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */
-const ComplexWordCountRepair = (user = "") => {
-  // eslint-disable-next-line no-unused-vars
-  const { data, functions } = useComplexWordCountRepair(user);
+const ComplexWordCountRepair = (props) => {
+  const { user = "" } = props;
+  const { data, functions } = useDataService(
+    user,
+    EXERCISE_STATES.REPAIR_COMPLEX_WORDS,
+    FogIndexCalculationData.complexWords
+  );
+  const { exercisePromptsState } = data;
+  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
+    functions;
   return (
     <Repair
+      fileName={"FogIndexCalculation.js"}
       path={`${REPAIR}/${EXERCISE_STATES.REPAIR_COMPLEX_WORDS}`}
-      CodeImplementation={() => {}}
+      headingText={COMPLEX_WORD_COUNT_REPAIR_HEADING}
+      validateRepair={checkInputValid}
+      fetchRepair={() => fetchRepair()}
+      submitRepair={() => postRepair()}
+      repairText={[
+        "in this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct complex word count is being calculated.",
+      ]}
+      CodeImplementation={
+        <WordCountRepairImplementation
+          userInput={handleUserInputChange}
+          fogIndexCalculationData={exercisePromptsState}
+        />
+      }
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/InformationLetterComplexWordCount`);
       }}
-      headingText={"Complex Word Count Repair"}
-      repairText={["Lorem ipsum dolor sit amet, consectetur adipiscing elit."]}
-      fileName={"FogIndexCalculation.js"}
-      validateRepair={() => {}}
     />
   );
 };
