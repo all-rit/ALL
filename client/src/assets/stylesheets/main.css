@@ -2594,12 +2594,12 @@ td {
   width: 35px;
   height: 35px;
   cursor: pointer;
-  background-image: url("../../assets/images/./../../images/lab1/exercise/volume_on.svg");
+  background-image: url("../../assets/images/lab1/exercise/volume_on.svg");
   background-size: contain;
 }
 
 .sound_icon--off {
-  background-image: url("../../assets/images/./../../images/lab1/exercise/volume_off.svg");
+  background-image: url("../../assets/images/lab1/exercise/volume_off.svg");
 }
 
 .sound_icon--disabled {

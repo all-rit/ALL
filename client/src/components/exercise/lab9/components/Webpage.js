@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import uni from "../../../../assets/images/lab9/uni.jpeg";
-
+import PropTypes from "prop-types"
 import NewsletterForm from "./webpage-subcomponents/NewsletterForm";
 import WebpageNav from "./webpage-subcomponents/WebpageNav";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
@@ -13,23 +13,20 @@ import { ExerciseService } from "../../../../services/lab9/ExerciseService";
  * each of which are sub-components.
  * @returns rendered webpage
  */
-const Webpage = () => {
+const Webpage = ({user}) => {
   const [isNavComplete, setNavComplete] = useState(false);
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
 
   useEffect(() => {
-    const fetchRepair = async () => {
-      const response = ExerciseService.fetchExercise();
-      const isNavRepaired = response.isNavComplete;
-      const isDateRepaired = response.isDateComplete;
-      const isAddressRepaired = response.isAddressComplete;
-      isNavRepaired ? setNavComplete(true) : setNavComplete(false);
-      isDateRepaired ? setDateComplete(true) : setDateComplete(false);
-      isAddressRepaired ? setAddressComplete(true) : setAddressComplete(false);
-    };
-    fetchRepair();
-  }, []);
+    ExerciseService.fetchExercise(user).then(response => {
+      const { isNavComplete, isDateComplete, isAddressComplete } = response
+      setNavComplete(isNavComplete);
+      setDateComplete(isDateComplete);
+      setAddressComplete(isAddressComplete);
+    })
+  }, [])
+
   return (
     <div className="tw-bg-white tw-flex tw-flex-col">
       <div className="tw-flex-col tw-bg-white tw-relative tw-flex tw-min-h-[1024px] tw-w-full">
@@ -61,4 +58,7 @@ const Webpage = () => {
   );
 };
 
+Webpage.propTypes = {
+  user: PropTypes.object
+}
 export default Webpage;
