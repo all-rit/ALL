@@ -10,6 +10,8 @@ import useScroll from "../../../../use-hooks/useScroll";
 import { EXERCISE_PLAYING } from "../../../../constants/lab10";
 import ExerciseService from "../../../../services/lab10/ExerciseService";
 import { navigate } from "@reach/router";
+import UserLabService from "../../../../services/UserLabService";
+import { LAB_ID } from "../../../../constants/lab10";
 
 const GeneratedData = (props) => {
   useScroll();
@@ -71,6 +73,11 @@ const GeneratedData = (props) => {
    * Redirect the user to the following page
    */
   const continueNav = () => {
+    const { user } = props;
+    UserLabService.complete_exercise(LAB_ID);
+    if (user?.firstname !== null && user !== null) {
+      UserLabService.user_complete_exercise(user.userid, LAB_ID);
+    }
     return navigate("/Lab10/Reinforcement");
   };
 
@@ -85,15 +92,24 @@ const GeneratedData = (props) => {
               times. In doing so, you eliminate the bias that the AI has towards
               a specific shape.
             </p>
-            <p className={"playthrough__sentence tw-text-center"}>
+            <p
+              className={
+                "playthrough__sentence tw-text-center tw-mb-0 tw-font-bold"
+              }
+            >
+              Note: While complete elimination of bias is nearly impossible, it
+              is crucial to minimize unwanted bias in AI to ensure fair,
+              equitable outcomes and maintain trust in decision-making.
+            </p>
+            <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
               If you would like to continue with the lab, click on the{" "}
               <b>Continue</b> button.
             </p>
-            <p className={"playthrough__sentence tw-text-center"}>
+            <p className={"playthrough__sentence tw-text-center tw-my-0"}>
               If you would like to generate more data for the AI, click on the{" "}
               <b>Train AI</b> button.
             </p>
-            <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
+            <p className={"playthrough__sentence tw-text-center tw-my-0"}>
               If you would like to experience the AI simulation, click on the{" "}
               <b>Experience AI</b> button.
             </p>

@@ -13,25 +13,21 @@ export const MIN_USER_ATTEMPTS = 6;
 export const TRAINING_DURATION = 30;
 
 export const COLORS = [
-  ["tw-bg-[#005C97]", 0], // Blue
-  ["tw-bg-[#00A1E4]", 0], // Sky Blue
-  ["tw-bg-[#41D3BD]", 0], // Turquoise
-  ["tw-bg-[#8DC63F]", 0], // Green
-  ["tw-bg-[#FFD100]", 0], // Yellow
-  ["tw-bg-[#FF971C]", 0], // Orange
-  ["tw-bg-[#DB0202]", 0], // Red
-  ["tw-bg-[#8A1C7C]", 0], // Purple
+  ["tw-bg-[#ffeb00]", 0],
+  ["tw-bg-[#ff2713]", 0],
+  ["tw-bg-[#09da4f]", 0],
+  ["tw-bg-[#9e8fe5]", 0],
+  ["tw-bg-[#d67b41]", 0],
+  ["tw-bg-[#86aedf]", 0],
 ];
 
 export const NAMES = {
-  "tw-bg-[#005C97]": "Blue",
-  "tw-bg-[#00A1E4]": "Sky Blue",
-  "tw-bg-[#41D3BD]": "Turquoise",
-  "tw-bg-[#8DC63F]": "Green",
-  "tw-bg-[#FFD100]": "Yellow",
-  "tw-bg-[#FF971C]": "Orange",
-  "tw-bg-[#DB0202]": "Red",
-  "tw-bg-[#8A1C7C]": "Purple",
+  "tw-bg-[#ffeb00]": "Yellow",
+  "tw-bg-[#ff2713]": "Red",
+  "tw-bg-[#09da4f]": "Green",
+  "tw-bg-[#9e8fe5]": "Purple",
+  "tw-bg-[#d67b41]": "Brown",
+  "tw-bg-[#86aedf]": "Blue",
 };
 
 export const SIZE = 96;

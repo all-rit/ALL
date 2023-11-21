@@ -110,7 +110,26 @@ const quizQuestionsLab10 = [
       {
         val: 1,
         type: "0",
-        content: "It's for the greater good",
+        content:
+          "To promote fairness, equity, and unbiased decision-making in AI systems",
+      },
+      {
+        val: 0,
+        type: "1",
+        content:
+          "To maximize profits and market share in the competitive AI industry",
+      },
+      {
+        val: 0,
+        type: "2",
+        content:
+          "To create AI systems without considering the potential societal impacts",
+      },
+      {
+        val: 0,
+        type: "3",
+        content:
+          "To prioritize speed and efficiency in AI development over ethical considerations",
       },
     ],
     multiChoice: false,

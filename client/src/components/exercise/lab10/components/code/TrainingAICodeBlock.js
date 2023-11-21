@@ -97,6 +97,12 @@ const TrainingAICodeBlock = (props) => {
           <div className="code_editor__line">&nbsp;</div>
 
           <div className="code_editor__line">
+            <span className="code_editor__line--darkgreen">
+              {"// Enter a number between 60 - 120 below."}
+            </span>
+          </div>
+
+          <div className="code_editor__line">
             <span className="code_editor__line--purple">const</span>
             <span className="code_editor__line--yellow">
               {" SIMULATION_DURATION_SECONDS "}

@@ -158,14 +158,14 @@ class BuildingAICodeBlock extends Component {
               {/* AI function comment */}
               <span className="code_editor__line--darkgreen">
                 &#47;&#47; Here is where you will update the code to allow the
-                user to move the person
+                user to move the person.
               </span>
             </div>
             <div className="code_editor__line">
               {/* AI function comment */}
               <span className="code_editor__line--darkgreen">
                 &#47;&#47; left and right in order to avoid the incoming falling
-                balls
+                balls.
               </span>
             </div>
             <div className="code_editor__line">{/* AI function comment */}</div>
@@ -211,7 +211,7 @@ class BuildingAICodeBlock extends Component {
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                Enter &lsquo;ArrowLeft&lsquo; into the input below{" "}
+                {"// Enter 'ArrowLeft' into the input below."}
               </span>
             </div>
             <div className="code_editor__line code_editor__line-background--light">
@@ -279,7 +279,7 @@ class BuildingAICodeBlock extends Component {
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span className="code_editor__line--darkgreen">
-                Enter &lsquo;ArrowRight&lsquo; into the input below.
+                {"// Enter 'ArrowRight' into the input below."}
               </span>
             </div>
 

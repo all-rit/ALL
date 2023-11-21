@@ -130,7 +130,7 @@ export const Sections = {
     },
   },
   7: {
-    fullname: "'Hello World' AI Cybersecurity",
+    fullname: "AI Cybersecurity",
     name: "Lab7",
     0: {
       name: "About",
