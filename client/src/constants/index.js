@@ -186,7 +186,7 @@ export const Sections = {
     4: {
       name: "Quiz",
     },
-  }, 
+  },
   10: {
     fullname: "Machine Learning",
     name: "Lab10",
