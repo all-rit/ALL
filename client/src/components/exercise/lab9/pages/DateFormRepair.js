@@ -7,11 +7,21 @@ import CommentText from "../../../all-components/CodeBlock/StyleComponents/Comme
 import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText";
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const DateFormRepair = (props = {}) => {
   const { dateForms, userInput } = props;
+  const [error, setError] = useState(false);
+
+  const handleError = (id, value) => {
+    userInput(id, value);
+    setError((prevState) => ({
+      ...prevState,
+      [id]: true,
+    }));
+  };
 
   return (
     <>
@@ -35,7 +45,7 @@ const DateFormRepair = (props = {}) => {
 
       {/* eslint-disable-next-line no-unused-vars */}
       {dateForms.map((country, index) => (
-        <>
+        <div key={index}>
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
@@ -75,11 +85,21 @@ const DateFormRepair = (props = {}) => {
               />
             )}
           </CodeLine>
+          {error[country.id] && (
+            <CodeLine>
+              <MultiTab numberOfTabs={3} />
+              <ErrorText>
+                {" "}
+                Error in form submission. Please check your input values and
+                resubmit.{" "}
+              </ErrorText>
+            </CodeLine>
+          )}
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText> &#125;, </ReactText>
           </CodeLine>
-        </>
+        </div>
       ))}
       <CodeLine>
         <Tab />

@@ -48,6 +48,12 @@ const useLabRepair = () => {
     });
   };
 
+  const isRepairComplete = (exercisePromptsState, isInputValid) => {
+    return (
+      isInputValid.every((valid) => valid) && exercisePromptsState.length > 0
+    );
+  };
+
   return {
     data: {
       exercisePromptsState,
@@ -57,6 +63,7 @@ const useLabRepair = () => {
       checkInputValid,
       setExercisePromptsState,
       handleUserInputChange,
+      isRepairComplete,
     },
   };
 };

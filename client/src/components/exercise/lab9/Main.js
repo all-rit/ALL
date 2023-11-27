@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 import React, { useState, useContext } from "react";
 import { Router, navigate } from "@reach/router";
 import PropTypes from "prop-types";
@@ -6,6 +7,7 @@ import PropTypes from "prop-types";
 import LocalizationRepair from "../lab9/pages/LocalizationRepair";
 import { REPAIR, GAME_STATES } from "../../../constants/lab9";
 import GameStateContext from "./Lab9Context";
+import Webpage from "../lab9/components/Webpage";
 import ExerciseStart from "../lab9/pages/ExerciseStart";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -13,7 +15,7 @@ import ExerciseStart from "../lab9/pages/ExerciseStart";
  * and acting as the container managing the state of the user.
  */
 const Main = (props) => {
-  const { user = "" } = props;
+  const { user } = props;
   const [exerciseState, setExerciseState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
   );
@@ -22,6 +24,7 @@ const Main = (props) => {
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
           <ExerciseStart path="/*" />
+          <Webpage user={user} path={"/page"} />
           <LocalizationRepair user={user} path={`${REPAIR}/*`} />
           <ContextTester user={user} path={"/Context"} />
         </Router>
