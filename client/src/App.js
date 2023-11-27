@@ -9,21 +9,16 @@ import { default as Reading } from "./components/body/Reading/Reading";
 
 import { default as Reinforcement } from "./components/body/Reinforcement";
 
-import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { Sections } from "./constants/index";
-
+import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
-
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
-
 import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
-
 import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
-
-import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
 import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
-
+import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
 import { default as ExerciseLab8 } from "./components/exercise/lab8/Main";
+import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 
 import { default as LandingPageBody } from "./components/body/landingpage/index";
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
@@ -124,6 +119,10 @@ class App extends Component {
                 <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
                 <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
                 <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
+                <ExerciseLab10
+                  path="/Lab10/Exercise/*"
+                  user={state.main.user}
+                />
 
                 <Reinforcement
                   path={`/Lab${lab}/Reinforcement`}

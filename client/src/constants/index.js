@@ -130,7 +130,7 @@ export const Sections = {
     },
   },
   7: {
-    fullname: "'Hello World' AI Cybersecurity",
+    fullname: "AI Cybersecurity",
     name: "Lab7",
     0: {
       name: "About",
@@ -152,6 +152,25 @@ export const Sections = {
     fullname: "Algorithmic Bias",
     // TODO: edit this once we have an official title
     name: "Lab8",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
+  10: {
+    fullname: "Machine Learning",
+    name: "Lab10",
     0: {
       name: "About",
     },
