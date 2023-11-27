@@ -22,7 +22,7 @@ const Main = (props) => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <Webpage path={"/page"} />
+          <Webpage user={user} path={"/page"} />
           <LocalizationRepair user={user} path={`${REPAIR}/*`} />
           <ContextTester user={user} path={"/Context"} />
         </Router>

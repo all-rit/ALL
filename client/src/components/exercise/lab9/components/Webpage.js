@@ -17,15 +17,34 @@ const Webpage = ({ user }) => {
   const [isNavComplete, setNavComplete] = useState(false);
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
-
-  useEffect(() => {
-    ExerciseService.fetchExercise(user).then((response) => {
-      const { isNavComplete, isDateComplete, isAddressComplete } = response;
-      setNavComplete(isNavComplete);
-      setDateComplete(isDateComplete);
-      setAddressComplete(isAddressComplete);
-    });
-  }, []);
+  
+  const dataHandling = async () => {
+    try {
+      const newState = await ExerciseService.fetchExercise(user);
+      if (!newState) {
+        const body = {
+          userID: user.userid,
+          isAddressComplete: false,
+          isDateComplete: false,
+          isNavComplete: false,
+        }
+        setNavComplete(false);
+        setDateComplete(false);
+        setAddressComplete(false);
+        await ExerciseService.submitExercise(body);
+      } else {
+        const { isNavComplete, isDateComplete, isAddressComplete } = newState;
+        setNavComplete(isNavComplete);
+        setDateComplete(isDateComplete);
+        setAddressComplete(isAddressComplete);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => { 
+    dataHandling();
+    }, []);
 
   return (
     <div className="tw-bg-white tw-flex tw-flex-col">
