@@ -4,6 +4,8 @@ import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
 import useDataService from "../hooks/useDataService";
+import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairData";
+import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
