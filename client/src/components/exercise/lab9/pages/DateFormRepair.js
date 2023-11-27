@@ -13,15 +13,15 @@ import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorTe
 
 const DateFormRepair = (props = {}) => {
   const { dateForms, userInput } = props;
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const handleError = (id, value) => {
-    userInput(id, value)
+    userInput(id, value);
     setError((prevState) => ({
       ...prevState,
-        [id]: true,
-    }))
-  }
+      [id]: true,
+    }));
+  };
 
   return (
     <>
@@ -87,8 +87,12 @@ const DateFormRepair = (props = {}) => {
           </CodeLine>
           {error[country.id] && (
             <CodeLine>
-              <MultiTab numberOfTabs={3}/>
-              <ErrorText> Error in form submission. Please check your input values and resubmit. </ErrorText>
+              <MultiTab numberOfTabs={3} />
+              <ErrorText>
+                {" "}
+                Error in form submission. Please check your input values and
+                resubmit.{" "}
+              </ErrorText>
             </CodeLine>
           )}
           <CodeLine>

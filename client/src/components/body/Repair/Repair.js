@@ -35,14 +35,14 @@ const Repair = (props) => {
   const handleUpdate = async () => {
     setEnableNext(!validateRepair);
     if (validateRepair) {
-      setIsRepairActive(false)
+      setIsRepairActive(false);
     }
     await submitRepair();
   };
 
   const handleNext = async () => {
     if (validateRepair) {
-      navigateNext()
+      navigateNext();
     }
   };
 

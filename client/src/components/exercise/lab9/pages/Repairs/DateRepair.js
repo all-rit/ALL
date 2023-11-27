@@ -26,8 +26,8 @@ const DateRepair = ({ user }) => {
     DateFormData.countries
   );
   const handleNav = () => {
-    navigate("/Lab9/Exercise/page")
-  }
+    navigate("/Lab9/Exercise/page");
+  };
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
