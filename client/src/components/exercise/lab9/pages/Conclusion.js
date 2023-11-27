@@ -1,8 +1,10 @@
+import { navigate } from "@reach/router";
 import React from "react";
 
 const Conclusion = () => {
   const handleFinish = () => {
-    // handle finish navigation
+    // navigate to the reinforcement section
+    navigate("/Lab9/Reinforcement");
   };
 
   return (

@@ -36,7 +36,7 @@ const DateRepair = ({ user }) => {
       fileName={"DateFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`}
       headingText={REPAIR_DATE_REPAIR_HEADING}
-      validateRepair={checkInputValid}
+      validateRepair={() => checkInputValid()}
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}
       repairText={[

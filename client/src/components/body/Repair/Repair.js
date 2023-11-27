@@ -25,23 +25,26 @@ const Repair = (props) => {
     submitRepair,
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
-  const [enableNext, setEnableNext] = useState(true);
+  const [enableNext, setEnableNext] = useState(false);
 
   const handleRepair = async () => {
     setIsRepairActive(true);
+    setEnableNext(false);
     await fetchRepair();
   };
 
   const handleUpdate = async () => {
-    setEnableNext(!validateRepair);
     if (validateRepair) {
+      setEnableNext(true);
       setIsRepairActive(false);
+    } else {
+      setEnableNext(false);
     }
     await submitRepair();
   };
 
   const handleNext = async () => {
-    if (validateRepair) {
+    if (enableNext && validateRepair) {
       navigateNext();
     }
   };

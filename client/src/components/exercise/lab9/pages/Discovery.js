@@ -1,8 +1,10 @@
+import { navigate } from "@reach/router";
 import React from "react";
 
 const Discovery = () => {
   const handleNext = () => {
-    // navigate to next page
+    // navigate to the webpage
+    navigate("/Lab9/Exercise/page");
   };
 
   return (

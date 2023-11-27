@@ -14,6 +14,7 @@ async function getExercise(data) {
           order: [['attemptCount', 'DESC']],
           where: {
             userid: data,
+            isComplete: false,
           },
           raw: true,
         },
