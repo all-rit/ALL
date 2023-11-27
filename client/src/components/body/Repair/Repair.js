@@ -34,12 +34,15 @@ const Repair = (props) => {
 
   const handleUpdate = async () => {
     setEnableNext(!validateRepair);
+    if (validateRepair) {
+      setIsRepairActive(false)
+    }
     await submitRepair();
   };
 
   const handleNext = async () => {
     if (validateRepair) {
-      navigateNext;
+      navigateNext()
     }
   };
 
@@ -69,7 +72,7 @@ const Repair = (props) => {
         <div className="tw-pl-10">
           <Button
             buttonText={"Next"}
-            disabled={enableNext}
+            disabled={!enableNext}
             onClick={handleNext}
           />
         </div>
