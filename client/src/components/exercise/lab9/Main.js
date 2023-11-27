@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import LocalizationRepair from "../lab9/pages/LocalizationRepair";
 import { REPAIR, GAME_STATES } from "../../../constants/lab9";
 import GameStateContext from "./Lab9Context";
-import ExerciseStart from "../lab9/pages/ExerciseStart"
+import ExerciseStart from "../lab9/pages/ExerciseStart";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
