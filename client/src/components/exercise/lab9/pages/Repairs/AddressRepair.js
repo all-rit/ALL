@@ -3,9 +3,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
-import useDataService from "../../../../body/Repair/hooks/useDataService";
-import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
-import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairData";
+import useDataService from "../hooks/useDataService";
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing

@@ -9,7 +9,7 @@ import {
   REPAIR,
 } from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
-import useDataService from "../../../../body/Repair/hooks/useDataService";
+import useDataService from "../hooks/useDataService";
 /**
  * Date Repair is a component that is responsible for passing logic into the universal
  * repair page component, what this allows us to do is call the re-useable repair component

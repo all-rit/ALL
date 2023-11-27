@@ -7,9 +7,9 @@ const RepairService = require('../../services/lab9/RepairService');
  */
 async function submitChange(req) {
   try {
-    const {userId, repair, isComplete, numRepair, section} = req.body;
+    const {userID, repair, isComplete, numRepair, section} = req.body;
     return await RepairService.submitRepair({
-      userId, repair, isComplete, numRepair, section,
+      userID, repair, isComplete, numRepair, section,
     });
   } catch (error) {
     console.error(error);

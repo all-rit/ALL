@@ -2,7 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
-import useDataService from "../../../../body/Repair/hooks/useDataService";
+import useDataService from "../hooks/useDataService";
 /**
  * NavBarRepair() is a react component that is responsible for passing down
  * the visual information needed to render the repair page itself. This
