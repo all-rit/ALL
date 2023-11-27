@@ -14,7 +14,7 @@ import Webpage from "../lab9/components/Webpage";
  * and acting as the container managing the state of the user.
  */
 const Main = (props) => {
-  const { user = "" } = props;
+  const { user } = props;
   const [exerciseState, setExerciseState] = useState(
     GAME_STATES.EXERCISE_SELECTION_DEFAULT
   );

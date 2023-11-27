@@ -45,7 +45,7 @@ const DateFormRepair = (props = {}) => {
 
       {/* eslint-disable-next-line no-unused-vars */}
       {dateForms.map((country, index) => (
-        <>
+        <div key={index}>
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
@@ -99,7 +99,7 @@ const DateFormRepair = (props = {}) => {
             <MultiTab numberOfTabs={2} />
             <ReactText> &#125;, </ReactText>
           </CodeLine>
-        </>
+        </div>
       ))}
       <CodeLine>
         <Tab />
