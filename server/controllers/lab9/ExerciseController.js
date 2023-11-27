@@ -24,7 +24,7 @@ async function getExercise(req) {
  */
 async function postExercise(req) {
   try {
-    const {userID, isAddressComplete, isDateComplete, isNavComplete, 
+    const {userID, isAddressComplete, isDateComplete, isNavComplete,
       isExerciseComplete, isComplete} = req.body;
     const responseId = await ExerciseService.postExercise({
       userId: userID,
