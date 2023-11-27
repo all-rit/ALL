@@ -17,7 +17,7 @@ const Webpage = ({ user }) => {
   const [isNavComplete, setNavComplete] = useState(false);
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
-  
+
   const dataHandling = async () => {
     try {
       const newState = await ExerciseService.fetchExercise(user);
@@ -27,7 +27,7 @@ const Webpage = ({ user }) => {
           isAddressComplete: false,
           isDateComplete: false,
           isNavComplete: false,
-        }
+        };
         setNavComplete(false);
         setDateComplete(false);
         setAddressComplete(false);
@@ -41,10 +41,10 @@ const Webpage = ({ user }) => {
     } catch (error) {
       console.error(error);
     }
-  }
-  useEffect(() => { 
+  };
+  useEffect(() => {
     dataHandling();
-    }, []);
+  }, []);
 
   return (
     <div className="tw-bg-white tw-flex tw-flex-col">
