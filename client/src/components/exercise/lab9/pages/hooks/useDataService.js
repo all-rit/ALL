@@ -51,31 +51,31 @@ const useDataService = (user, section, defaultExerciseState) => {
   async function handleExerciseUpdate(body, section) {
     try {
       const { isComplete, userid } = body;
-      const { isAddressComplete, isDateComplete, isNavComplete } =
-        await ExerciseService.fetchExercise({
-          userid: userid,
-        });
-      if (isComplete) {
-        const updatedBody = {
-          userid: body.userid,
-          isAddressComplete:
-            section === GAME_STATES.REPAIR_ADDRESS_FORM
-              ? true
-              : isAddressComplete,
-          isDateComplete:
-            section === GAME_STATES.REPAIR_DATE_REPAIR ? true : isDateComplete,
-          isNavComplete:
-            section === GAME_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
-        };
-        const data = [
-          updatedBody.isAddressComplete,
-          updatedBody.isDateComplete,
-          updatedBody.isNavComplete,
-        ];
-        const isExerciseComplete = data.every((value) => value === true);
-        updatedBody.isComplete = isExerciseComplete;
-        const response = await ExerciseService.submitExercise(updatedBody);
-        return response.status;
+      const data = await ExerciseService.fetchExercise({ userid: userid });
+      if (data) {
+        const { isAddressComplete, isDateComplete, isNavComplete } = data;
+        if (isComplete) {
+          const updatedBody = {
+            userid: body.userid,
+            isAddressComplete:
+              section === GAME_STATES.REPAIR_ADDRESS_FORM
+                ? true
+                : isAddressComplete,
+            isDateComplete:
+              section === GAME_STATES.REPAIR_DATE_REPAIR ? true : isDateComplete,
+            isNavComplete:
+              section === GAME_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
+          };
+          const data = [
+            updatedBody.isAddressComplete,
+            updatedBody.isDateComplete,
+            updatedBody.isNavComplete,
+          ];
+          const isExerciseComplete = data.every((value) => value === true);
+          updatedBody.isComplete = isExerciseComplete;
+          const response = await ExerciseService.submitExercise(updatedBody);
+          return response.status;
+        }
       }
     } catch (error) {
       console.error(error);

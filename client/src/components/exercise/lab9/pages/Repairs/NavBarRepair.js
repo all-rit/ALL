@@ -10,7 +10,7 @@ import { navigate } from "@reach/router";
  * component will integrate the individualized custom hook to handle custom logic.
  * @returns Repair Component to render to the browser.
  */
-const NavBarRepair = (user = "") => {
+const NavBarRepair = ({ user }) => {
   const { data, functions } = useDataService(
     user,
     GAME_STATES.REPAIR_NAV_BAR,
@@ -39,7 +39,7 @@ const NavBarRepair = (user = "") => {
 };
 
 NavBarRepair.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.object,
 };
 
 export default NavBarRepair;

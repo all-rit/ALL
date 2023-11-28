@@ -26,8 +26,10 @@ const useLabRepair = () => {
         value.userInput === value.correct_expression;
       localValidArray.splice(index, 1, result);
     });
-    setIsInputValid(localValidArray)
-    localValidArray.every((v) => v === true) ? setIsComplete(true) : setIsComplete(false);
+    setIsInputValid(localValidArray);
+    localValidArray.every((v) => v === true)
+      ? setIsComplete(true)
+      : setIsComplete(false);
     return localValidArray.every((v) => v === true);
   };
   /**

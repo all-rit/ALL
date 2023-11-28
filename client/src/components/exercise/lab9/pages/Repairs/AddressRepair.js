@@ -12,7 +12,7 @@ import { navigate } from "@reach/router";
  * @param {String} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */
-const AddressRepair = (user = "") => {
+const AddressRepair = ({ user }) => {
   const { data, functions } = useDataService(
     user,
     GAME_STATES.REPAIR_ADDRESS_FORM,
@@ -41,7 +41,7 @@ const AddressRepair = (user = "") => {
 };
 
 AddressRepair.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.Object,
 };
 
 export default AddressRepair;

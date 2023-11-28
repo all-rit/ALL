@@ -5,7 +5,7 @@ const REPAIR = "/GameRepair";
 
 const REPAIR_ADDRESS_FORM = "address-repair";
 const REPAIR_DATE_REPAIR = "date-repair";
-const REPAIR_NAV_BAR = "nav-bar-repair";
+const REPAIR_NAV_BAR = "nav-repair";
 const EXERCISE_SELECTION_DEFAULT = "selection";
 
 const REPAIR_DATE_REPAIR_HEADING = "Repair Date Format";
