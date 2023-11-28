@@ -8,7 +8,7 @@ import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../reducers/lab11/ExerciseReducer";
 import { connect } from "react-redux";
 import InformationLetterEmail from "./pages/InformationLetterEmail";
-import { LETTER_TEXT_FOG_INDEX_12, REPAIR } from "../../../constants/lab11";
+import { LETTER_TEXT_ARRAY, LETTER_TEXT_FOG_INDEX_20, REPAIR } from "../../../constants/lab11";
 import FogIndexFormulaIntroduction from "./pages/Explanations/FogIndexFormulaIntroduction";
 import useScroll from "../../../use-hooks/useScroll";
 import LiteracyRepair from "./pages/LiteracyRepair";
@@ -19,11 +19,13 @@ import FogIndexFormulaConclusion from "./pages/Explanations/FogIndexFormulaConcl
 const Main = (props) => {
   const { user = "", actions } = props;
   const [exerciseState, setExerciseState] = useState("");
-  const [letterContent, setLetterContent] = useState(LETTER_TEXT_FOG_INDEX_12);
+  const [letterContent, setLetterContent] = useState(LETTER_TEXT_FOG_INDEX_20);
   const [totalWords, setTotalWords] = useState(0);
   const [totalSentences, setTotalSentences] = useState(0);
   const [totalComplexWords, setTotalComplexWords] = useState(0);
   const [fogIndex, setFogIndex] = useState(0);
+  const [letterContentArray, setLetterContentArray] = useState(LETTER_TEXT_ARRAY);
+  const [letterContentIndex, setLetterContentIndex] = useState(LETTER_TEXT_ARRAY.length-1);
 
   useScroll();
 
@@ -43,6 +45,10 @@ const Main = (props) => {
           setTotalComplexWords,
           fogIndex,
           setFogIndex,
+          letterContentIndex,
+          setLetterContentIndex,
+          letterContentArray,
+          setLetterContentArray,
         }}
       >
         <Router className="app">
@@ -67,6 +73,9 @@ const Main = (props) => {
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaIntroduction")
             }
+            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
+            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
+            tristique ex.`}
           />
 
           <FogIndexFormulaIntroduction
@@ -87,6 +96,9 @@ const Main = (props) => {
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaSentences")
             }
+            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
+            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
+            tristique ex.`}
           />
 
           <FogIndexFormulaSentences
@@ -107,6 +119,9 @@ const Main = (props) => {
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaComplexWords")
             }
+            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
+            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
+            tristique ex.`}
           />
 
           <FogIndexFormulaComplexWords
@@ -127,6 +142,9 @@ const Main = (props) => {
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaConclusion")
             }
+            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
+            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
+            tristique ex.`}
           />
 
           <FogIndexFormulaConclusion
@@ -145,6 +163,9 @@ const Main = (props) => {
             isEditable
             sectionTitle={"Information Letter: Fog Index Formula"}
             handleContinue={() => navigate("/Lab11/Exercise/ExerciseEnd")}
+            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
+            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
+            tristique ex.`}
           />
 
           <LiteracyExerciseEnd

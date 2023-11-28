@@ -12,6 +12,9 @@ const ExerciseStateContext = createContext({
   setTotalComplexWords: () => {},
   fogIndex: 0,
   setFogIndex: () => {},
+  letterContentIndex: 0,
+  setLetterContentIndex: () => {},
+  letterContentArray: [],
 });
 
 export default ExerciseStateContext;

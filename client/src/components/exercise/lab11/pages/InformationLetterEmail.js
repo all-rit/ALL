@@ -7,8 +7,6 @@ import PropTypes from "prop-types";
 import useScroll from "../../../../use-hooks/useScroll";
 import { useContext } from "react";
 import ExerciseStateContext from "../Lab11Context";
-import check_mark from "../../../../assets/images/lab11/checkmark.png";
-import exclamation_mark from "../../../../assets/images/lab11/exclamationmark.png";
 import { fogIndexCalculation } from "../helpers/FogIndexCalculation";
 import FogIndexOverlay from "../components/FogIndexOverlay";
 
@@ -32,6 +30,7 @@ const InformationLetterEmail = (props) => {
     sectionTitle,
     isEditable,
     handleContinue,
+    descriptionText,
   } = props;
 
   useEffect(() => {
@@ -65,9 +64,7 @@ const InformationLetterEmail = (props) => {
     <div className="center-div">
       {sectionTitle && <h1 className="playthrough__title">{sectionTitle}</h1>}
       <div className="playthrough__sentence">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-        tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-        tristique ex.
+        {descriptionText}
       </div>
 
       <div className="tw-flex flex-col tw-justify-center tw-relative">
@@ -124,5 +121,6 @@ InformationLetterEmail.propTypes = {
   isEditable: PropTypes.bool,
   handleContinue: PropTypes.func.isRequired,
   sectionTitle: PropTypes.string,
+  descriptionText: PropTypes.string,
 };
 export default InformationLetterEmail;

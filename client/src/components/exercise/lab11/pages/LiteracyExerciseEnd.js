@@ -1,14 +1,24 @@
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { EXERCISE_PLAYING, LAB_ID } from "../../../../constants/lab11";
+import UserLabService from "../../../../services/UserLabService";
 
 const LiteracyExerciseEnd = (props) => {
-  const { actions } = props;
+  const { actions, user } = props;
 
   const handleFinish = () => {
     actions.updateState("EXERCISE_IDLE");
+    UserLabService.complete_exercise(LAB_ID);
+    if (user?.firstname !== null && user !== null) {
+      UserLabService.user_complete_exercise(user.userid, LAB_ID);
+    }
     navigate("/Lab11/Reinforcement");
   };
+
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
 
   const handleTryAgain = () => {
     navigate("/Lab11/Exercise/InformationLetterFogIndexFormula");
@@ -65,6 +75,7 @@ const LiteracyExerciseEnd = (props) => {
 
 LiteracyExerciseEnd.propTypes = {
   actions: PropTypes.object,
+  user: PropTypes.object,
 };
 
 export default LiteracyExerciseEnd;

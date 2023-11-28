@@ -43,6 +43,15 @@ Come together and connect over all that enriches campus life. Chat with classmat
 We walk with each student, offering backup so you can feel engaged, empowered and determined seeing this promising term through. We expect great personal growth and discovery in the months ahead! Let the adventure begin!
 `;
 
+const LETTER_TEXT_ARRAY = [
+  LETTER_TEXT_FOG_INDEX_6,
+  LETTER_TEXT_FOG_INDEX_8,
+  LETTER_TEXT_FOG_INDEX_10,
+  LETTER_TEXT_FOG_INDEX_12,
+  LETTER_TEXT_FOG_INDEX_16,
+  LETTER_TEXT_FOG_INDEX_20,
+];
+
 export {
   LAB_ID,
   EXERCISE_PLAYING,
@@ -59,4 +68,5 @@ export {
   WORD_COUNT_REPAIR_HEADING,
   SENTENCE_COUNT_REPAIR_HEADING,
   COMPLEX_WORD_COUNT_REPAIR_HEADING,
+  LETTER_TEXT_ARRAY,
 };

@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 // library imports
-import React from "react";
+import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
 import { Router } from "@reach/router";
 // component imports
 import WordCountRepair from "./Repairs/WordCountRepair";
 import SentenceCountRepair from "./Repairs/SentenceCountRepair";
 import ComplexWordCountRepair from "./Repairs/ComplexWordCountRepair";
-import { EXERCISE_STATES } from "../../../../constants/lab11";
+import { EXERCISE_PLAYING, EXERCISE_STATES } from "../../../../constants/lab11";
 
 /**
  * LiteracyRepair is a Route wrapper component that is responsible for declaring the
@@ -17,7 +17,12 @@ import { EXERCISE_STATES } from "../../../../constants/lab11";
  * @returns
  */
 const LiteracyRepair = (props) => {
-  const { user = "" } = props;
+  const { user = "", actions } = props;
+
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
+  
   return (
     <Router className="app">
       <WordCountRepair
@@ -38,6 +43,7 @@ const LiteracyRepair = (props) => {
 
 LiteracyRepair.propTypes = {
   user: PropTypes.object,
+  actions: PropTypes.object,
 };
 
 export default LiteracyRepair;
