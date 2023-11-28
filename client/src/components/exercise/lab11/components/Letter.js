@@ -13,27 +13,33 @@ import PropTypes from "prop-types";
  * @returns {JSX.Element} - The JSX element representing the Letter component.
  */
 const Letter = ({ isEditable }) => {
-  const { setLetterContent, letterContent, setLetterContentIndex, letterContentIndex, letterContentArray } = useContext(ExerciseStateContext);
+  const {
+    setLetterContent,
+    letterContent,
+    setLetterContentIndex,
+    letterContentIndex,
+    letterContentArray,
+  } = useContext(ExerciseStateContext);
 
   const handleNextLetter = () => {
-    if (letterContentIndex < letterContentArray.length-1) {
-      setLetterContentIndex(letterContentIndex+1);
-      setLetterContent(letterContentArray[letterContentIndex+1]);
+    if (letterContentIndex < letterContentArray.length - 1) {
+      setLetterContentIndex(letterContentIndex + 1);
+      setLetterContent(letterContentArray[letterContentIndex + 1]);
     } else {
       setLetterContentIndex(0);
       setLetterContent(letterContentArray[0]);
     }
-  }
+  };
 
   const handlePreviousLetter = () => {
     if (letterContentIndex > 0) {
-      setLetterContentIndex(letterContentIndex-1);
-      setLetterContent(letterContentArray[letterContentIndex-1]);
+      setLetterContentIndex(letterContentIndex - 1);
+      setLetterContent(letterContentArray[letterContentIndex - 1]);
     } else {
-      setLetterContentIndex(letterContentArray.length-1);
-      setLetterContent(letterContentArray[letterContentArray.length-1]);
+      setLetterContentIndex(letterContentArray.length - 1);
+      setLetterContent(letterContentArray[letterContentArray.length - 1]);
     }
-  }
+  };
 
   return (
     <div className={`tw-w-full tw-h-full`}>
@@ -76,22 +82,24 @@ const Letter = ({ isEditable }) => {
         {isEditable && (
           <Fragment>
             <div className="tw-absolute tw-top-[50%] tw-left-2 tw-shadow-2xl">
-                <button tabIndex={0}
-                  onClick={handlePreviousLetter}
-                  aria-label="Previous letter text button"
-                      className="btn-md tw-w-full tw-mt-1 tw-p-2.5 tw-flex-1 tw-text-black tw-bg-[#fed136] tw-rounded-md tw-outline-none tw-ring-offset-2 tw-ring-[#fed136] focus:tw-ring-2 tw-font-medium tw-border-0"
-                      >
-                    Previous
-                </button>
+              <button
+                tabIndex={0}
+                onClick={handlePreviousLetter}
+                aria-label="Previous letter text button"
+                className="btn-md tw-w-full tw-mt-1 tw-p-2.5 tw-flex-1 tw-text-black tw-bg-[#fed136] tw-rounded-md tw-outline-none tw-ring-offset-2 tw-ring-[#fed136] focus:tw-ring-2 tw-font-medium tw-border-0"
+              >
+                Previous
+              </button>
             </div>
             <div className="tw-absolute tw-top-[50%] tw-right-2 tw-shadow-2xl ">
-                <button tabIndex={0}
-                  onClick={handleNextLetter}
-                  aria-label="Next letter text button"
-                      className="btn-md tw-w-full tw-mt-1 tw-p-2.5 tw-flex-1 tw-text-black tw-bg-[#fed136] tw-rounded-md tw-outline-none tw-ring-offset-2 tw-ring-[#fed136] focus:tw-ring-2 tw-font-medium tw-border-0"
-                      >
-                    Next
-                </button>
+              <button
+                tabIndex={0}
+                onClick={handleNextLetter}
+                aria-label="Next letter text button"
+                className="btn-md tw-w-full tw-mt-1 tw-p-2.5 tw-flex-1 tw-text-black tw-bg-[#fed136] tw-rounded-md tw-outline-none tw-ring-offset-2 tw-ring-[#fed136] focus:tw-ring-2 tw-font-medium tw-border-0"
+              >
+                Next
+              </button>
             </div>
           </Fragment>
         )}
@@ -129,8 +137,8 @@ const Letter = ({ isEditable }) => {
                 setLetterContent(e.target.innerText);
               }}
             >
-                {letterContent}
-              </div>              
+              {letterContent}
+            </div>
             <div
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-bold tw-break-words tw-self-start tw-text-start tw-mt-10`}
               style={{ fontFamily: "Kumbh Sans" }}

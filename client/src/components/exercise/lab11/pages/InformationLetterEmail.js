@@ -63,9 +63,7 @@ const InformationLetterEmail = (props) => {
   return (
     <div className="center-div">
       {sectionTitle && <h1 className="playthrough__title">{sectionTitle}</h1>}
-      <div className="playthrough__sentence">
-        {descriptionText}
-      </div>
+      <div className="playthrough__sentence">{descriptionText}</div>
 
       <div className="tw-flex flex-col tw-justify-center tw-relative">
         <div className="tw-w-full tw-h-auto tw-bg-[#E8EBED] tw-rounded-2xl tw-shadow tw-py-5 tw-flex tw-flex-col">

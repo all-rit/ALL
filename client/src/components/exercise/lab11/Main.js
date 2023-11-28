@@ -8,7 +8,11 @@ import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../reducers/lab11/ExerciseReducer";
 import { connect } from "react-redux";
 import InformationLetterEmail from "./pages/InformationLetterEmail";
-import { LETTER_TEXT_ARRAY, LETTER_TEXT_FOG_INDEX_20, REPAIR } from "../../../constants/lab11";
+import {
+  LETTER_TEXT_ARRAY,
+  LETTER_TEXT_FOG_INDEX_20,
+  REPAIR,
+} from "../../../constants/lab11";
 import FogIndexFormulaIntroduction from "./pages/Explanations/FogIndexFormulaIntroduction";
 import useScroll from "../../../use-hooks/useScroll";
 import LiteracyRepair from "./pages/LiteracyRepair";
@@ -24,8 +28,11 @@ const Main = (props) => {
   const [totalSentences, setTotalSentences] = useState(0);
   const [totalComplexWords, setTotalComplexWords] = useState(0);
   const [fogIndex, setFogIndex] = useState(0);
-  const [letterContentArray, setLetterContentArray] = useState(LETTER_TEXT_ARRAY);
-  const [letterContentIndex, setLetterContentIndex] = useState(LETTER_TEXT_ARRAY.length-1);
+  const [letterContentArray, setLetterContentArray] =
+    useState(LETTER_TEXT_ARRAY);
+  const [letterContentIndex, setLetterContentIndex] = useState(
+    LETTER_TEXT_ARRAY.length - 1
+  );
 
   useScroll();
 

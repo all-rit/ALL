@@ -22,7 +22,7 @@ const LiteracyRepair = (props) => {
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, []);
-  
+
   return (
     <Router className="app">
       <WordCountRepair
