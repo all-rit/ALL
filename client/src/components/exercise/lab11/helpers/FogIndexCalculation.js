@@ -39,10 +39,17 @@ const countSyllables = (word) => {
 const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
   let wordCount = words ? letterContent.split(" ").length : null;
   let sentenceCount = sentences ? letterContent.split(".").length : null;
-  let complexWordCount = complexWords ? letterContent
-    .split(" ")
-    .filter((word) => countSyllables(word) > 3).length : null;
-  let fogIndex = complexWords ? ( 0.4 * (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))).toFixed(4) : sentenceCount ? ( 0.4 * (wordCount / sentenceCount + 100 * (wordCount))).toFixed(4) : ( 0.4 * (wordCount + 100 * (wordCount))).toFixed(4);
+  let complexWordCount = complexWords
+    ? letterContent.split(" ").filter((word) => countSyllables(word) > 3).length
+    : null;
+  let fogIndex = complexWords
+    ? (
+        0.4 *
+        (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))
+      ).toFixed(4)
+    : sentenceCount
+    ? (0.4 * (wordCount / sentenceCount + 100 * wordCount)).toFixed(4)
+    : (0.4 * (wordCount + 100 * wordCount)).toFixed(4);
 
   return {
     wordCount,

@@ -28,7 +28,8 @@ const FogIndexCalculationData = {
       variableName: "complexWordCount",
       comment: `// Enter '.filter((word) => countSyllables(word) > 3)' for the correct implementation of the complex word count`,
       userInput: "",
-      validate_expression: /\.filter\(\(word\) => countSyllables\(word\) > 3\)/g,
+      validate_expression:
+        /\.filter\(\(word\) => countSyllables\(word\) > 3\)/g,
       correct_expression: `.filter((word) => countSyllables(word) > 3)`,
     },
   ],

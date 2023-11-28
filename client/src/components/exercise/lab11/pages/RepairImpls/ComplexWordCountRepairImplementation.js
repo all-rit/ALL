@@ -37,7 +37,11 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
             <CommentText>{input.comment}</CommentText>
           </CodeLine>
           <CodeLine>
-            <Tab /> <ReactText> let {input.variableName} = letterContent.split(&#39; &#39;)</ReactText>
+            <Tab />{" "}
+            <ReactText>
+              {" "}
+              let {input.variableName} = letterContent.split(&#39; &#39;)
+            </ReactText>
             {input.userInput ? (
               <CodeBlockInput
                 value={input.userInput}
@@ -69,7 +73,8 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
       <CodeLine>
         <Tab />{" "}
         <ReactText>
-          let fogIndex = ( 0.4 * (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))).toFixed(4);
+          let fogIndex = ( 0.4 * (wordCount / sentenceCount + 100 *
+          (complexWordCount / wordCount))).toFixed(4);
         </ReactText>
       </CodeLine>
       <CodeLine>

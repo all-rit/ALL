@@ -62,7 +62,8 @@ const SentenceCountRepairImplementation = (props = {}) => {
       <CodeLine>
         <Tab />{" "}
         <ReactText>
-          let fogIndex = ( 0.4 * (wordCount / sentenceCount + 100 * (wordCount))).toFixed(4);
+          let fogIndex = ( 0.4 * (wordCount / sentenceCount + 100 *
+          (wordCount))).toFixed(4);
         </ReactText>
       </CodeLine>
       <CodeLine>
