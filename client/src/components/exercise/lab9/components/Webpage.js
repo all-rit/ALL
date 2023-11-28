@@ -34,7 +34,7 @@ const Webpage = ({ user }) => {
       const newState = await ExerciseService.fetchExercise(user);
       if (!newState) {
         const body = {
-          userID: user.userid,
+          userid: user.userid,
           isAddressComplete: false,
           isDateComplete: false,
           isNavComplete: false,

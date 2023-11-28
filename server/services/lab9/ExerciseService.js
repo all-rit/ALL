@@ -36,7 +36,7 @@ async function getExercise(data) {
 async function postExercise(data) {
   try {
     const {userId, isAddressComplete,
-      isDateComplete, isNavComplete, isExerciseComplete} = data;
+      isDateComplete, isNavComplete, isExerciseComplete, isComplete} = data;
     const getExerciseResponse = await getExercise(userId);
     const currentTime = new Date().toISOString();
     if (!getExerciseResponse || getExerciseResponse.isComplete === true) {
@@ -46,6 +46,7 @@ async function postExercise(data) {
         isDateComplete: isDateComplete,
         isNavComplete: isNavComplete,
         isExerciseComplete: isExerciseComplete,
+        isComplete: false,
         attemptTime: currentTime,
         attemptCount: 1,
       };
@@ -61,6 +62,7 @@ async function postExercise(data) {
         isExerciseComplete: isExerciseComplete,
         attemptTime: currentTime,
         attemptCount: newVal,
+        isComplete: isComplete,
       };
       return await db.ExerciseLab9.create(updatedExercise).id;
     }

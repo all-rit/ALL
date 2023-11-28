@@ -21,6 +21,7 @@ const Repair = (props) => {
     navigateNext,
     CodeImplementation,
     validateRepair,
+    repairComplete,
     fetchRepair,
     submitRepair,
   } = props;
@@ -35,8 +36,10 @@ const Repair = (props) => {
 
   const handleUpdate = async () => {
     if (validateRepair) {
-      setEnableNext(true);
-      setIsRepairActive(false);
+      if (repairComplete) {
+        setIsRepairActive(false);
+        setEnableNext(true);
+      }
     } else {
       setEnableNext(false);
     }
@@ -44,9 +47,7 @@ const Repair = (props) => {
   };
 
   const handleNext = async () => {
-    if (enableNext && validateRepair) {
       navigateNext();
-    }
   };
 
   return (
@@ -106,6 +107,7 @@ Repair.propTypes = {
   repairText: Proptypes.array,
   user: Proptypes.string,
   validateRepair: Proptypes.func.isRequired,
+  repairComplete: Proptypes.bool.isRequired,
   fetchRepair: Proptypes.func.isRequired,
   submitRepair: Proptypes.func.isRequired,
 };

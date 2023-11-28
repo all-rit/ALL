@@ -17,7 +17,7 @@ import { GAME_STATES } from "../../../../../constants/lab9";
  */
 const useDataService = (user, section, defaultExerciseState) => {
   const { data, functions } = useLabRepair();
-  const { exercisePromptsState, isInputValid } = data;
+  const { exercisePromptsState, isInputValid, repairComplete } = data;
   const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
     functions;
   /**
@@ -105,7 +105,7 @@ const useDataService = (user, section, defaultExerciseState) => {
   }
 
   return {
-    data: { exercisePromptsState, isInputValid },
+    data: { exercisePromptsState, isInputValid, repairComplete },
     functions: {
       checkInputValid,
       handleUserInputChange,
