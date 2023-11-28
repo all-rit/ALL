@@ -53,7 +53,7 @@ const InformationLetterEmail = (props) => {
 
   useEffect(() => {
     const { wordCount, sentenceCount, complexWordCount, fogIndex } =
-      fogIndexCalculation(letterContent);
+      fogIndexCalculation(letterContent, words, sentences, complexWords);
     setTotalWords(wordCount);
     setTotalSentences(sentenceCount);
     setTotalComplexWords(complexWordCount);
@@ -117,13 +117,13 @@ const InformationLetterEmail = (props) => {
                       Total:
                     </div>
                     <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
-                      Words: {totalWords}
+                      Words: {totalWords ? totalWords : 0}
                     </div>
                     <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
-                      Sentences: {totalSentences}
+                      Sentences: {totalSentences ? totalSentences : 0}
                     </div>
                     <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
-                      Complex Words: {totalComplexWords}
+                      Complex Words: {totalComplexWords ? totalComplexWords : 0}
                     </div>
                     <div
                       className={`tw-text-3xl tw-font-bold tw-self-start tw-py-2`}

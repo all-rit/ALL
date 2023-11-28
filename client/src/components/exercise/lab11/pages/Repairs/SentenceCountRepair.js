@@ -9,8 +9,8 @@ import {
 import { navigate } from "@reach/router";
 import { SENTENCE_COUNT_REPAIR_HEADING } from "../../../../../constants/lab11";
 import useDataService from "../../hooks/useDataService";
-import WordCountRepairImplementation from "../RepairImpls/WordCountRepairImplementation";
 import FogIndexCalculationData from "../../../../../constants/lab11/FogIndexCalculationData";
+import SentenceCountRepairImplementation from "../RepairImpls/SentenceCountRepairImplementation";
 /**
  * SentenceCountRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
@@ -40,7 +40,7 @@ const SentenceCountRepair = (props) => {
         "in this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct sentence count is being calculated.",
       ]}
       CodeImplementation={
-        <WordCountRepairImplementation
+        <SentenceCountRepairImplementation
           userInput={handleUserInputChange}
           fogIndexCalculationData={exercisePromptsState}
         />

@@ -36,16 +36,13 @@ const countSyllables = (word) => {
   return syllableCount;
 };
 
-const fogIndexCalculation = (letterContent) => {
-  let wordCount = letterContent.split(" ").length;
-  let sentenceCount = letterContent.split(".").length;
-  let complexWordCount = letterContent
+const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
+  let wordCount = words ? letterContent.split(" ").length : null;
+  let sentenceCount = sentences ? letterContent.split(".").length : null;
+  let complexWordCount = complexWords ? letterContent
     .split(" ")
-    .filter((word) => countSyllables(word) > 3).length;
-  let fogIndex = (
-    0.4 *
-    (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))
-  ).toFixed(4);
+    .filter((word) => countSyllables(word) > 3).length : null;
+  let fogIndex = complexWords ? ( 0.4 * (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))).toFixed(4) : sentenceCount ? ( 0.4 * (wordCount / sentenceCount + 100 * (wordCount))).toFixed(4) : ( 0.4 * (wordCount + 100 * (wordCount))).toFixed(4);
 
   return {
     wordCount,

@@ -8,7 +8,7 @@ import Tab from "../../../../all-components/CodeBlock/Components/Tab";
 import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
 import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
 
-const WordCountRepairImplementation = (props = {}) => {
+const SentenceCountRepairImplementation = (props = {}) => {
   const { fogIndexCalculationData, userInput } = props;
 
   return (
@@ -16,6 +16,13 @@ const WordCountRepairImplementation = (props = {}) => {
       <ReactText>
         const fogIndexCalculation = ( letterContent ) =&#62; &#123;
       </ReactText>
+      <CodeLine>
+        <Tab />{" "}
+        <ReactText>
+          {" "}
+          let wordCount = letterContent.split(&#39; &#39;).length;
+        </ReactText>
+      </CodeLine>
       {fogIndexCalculationData.map((input) => (
         <Fragment key={input.key}>
           <CodeLine>
@@ -33,7 +40,7 @@ const WordCountRepairImplementation = (props = {}) => {
                   },
                   name: input.variableName,
                   type: "text",
-                  placeholder: "Enter Word Count Impl Here",
+                  placeholder: "Enter Sentence Count Impl Here",
                 }}
               />
             ) : (
@@ -44,7 +51,7 @@ const WordCountRepairImplementation = (props = {}) => {
                   },
                   name: input.variableName,
                   type: "text",
-                  placeholder: "Enter Word Count Impl Here",
+                  placeholder: "Enter Sentence Count Impl Here",
                 }}
               />
             )}
@@ -55,7 +62,7 @@ const WordCountRepairImplementation = (props = {}) => {
       <CodeLine>
         <Tab />{" "}
         <ReactText>
-          let fogIndex = ( 0.4 * (words + 100 * (words))).toFixed(4);
+          let fogIndex = ( 0.4 * (wordCount / sentenceCount + 100 * (wordCount))).toFixed(4);
         </ReactText>
       </CodeLine>
       <CodeLine>
@@ -67,9 +74,9 @@ const WordCountRepairImplementation = (props = {}) => {
   );
 };
 
-WordCountRepairImplementation.propTypes = {
+SentenceCountRepairImplementation.propTypes = {
   userInput: PropTypes.func,
   fogIndexCalculationData: PropTypes.array,
 };
 
-export default WordCountRepairImplementation;
+export default SentenceCountRepairImplementation;

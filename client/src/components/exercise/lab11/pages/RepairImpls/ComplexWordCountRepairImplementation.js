@@ -8,7 +8,7 @@ import Tab from "../../../../all-components/CodeBlock/Components/Tab";
 import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
 import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
 
-const WordCountRepairImplementation = (props = {}) => {
+const ComplexWordCountRepairImplementation = (props = {}) => {
   const { fogIndexCalculationData, userInput } = props;
 
   return (
@@ -16,6 +16,20 @@ const WordCountRepairImplementation = (props = {}) => {
       <ReactText>
         const fogIndexCalculation = ( letterContent ) =&#62; &#123;
       </ReactText>
+      <CodeLine>
+        <Tab />{" "}
+        <ReactText>
+          {" "}
+          let wordCount = letterContent.split(&#39; &#39;).length;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab />{" "}
+        <ReactText>
+          {" "}
+          let sentenceCount = letterContent.split(&#39;.&#39;).length;
+        </ReactText>
+      </CodeLine>
       {fogIndexCalculationData.map((input) => (
         <Fragment key={input.key}>
           <CodeLine>
@@ -23,7 +37,7 @@ const WordCountRepairImplementation = (props = {}) => {
             <CommentText>{input.comment}</CommentText>
           </CodeLine>
           <CodeLine>
-            <Tab /> <ReactText> let {input.variableName} = </ReactText>
+            <Tab /> <ReactText> let {input.variableName} = letterContent.split(&#39; &#39;)</ReactText>
             {input.userInput ? (
               <CodeBlockInput
                 value={input.userInput}
@@ -33,7 +47,7 @@ const WordCountRepairImplementation = (props = {}) => {
                   },
                   name: input.variableName,
                   type: "text",
-                  placeholder: "Enter Word Count Impl Here",
+                  placeholder: "Enter Complex Word Count Impl Here",
                 }}
               />
             ) : (
@@ -44,18 +58,18 @@ const WordCountRepairImplementation = (props = {}) => {
                   },
                   name: input.variableName,
                   type: "text",
-                  placeholder: "Enter Word Count Impl Here",
+                  placeholder: "Enter Complex Word Count Impl Here",
                 }}
               />
             )}
-            <ReactText>;</ReactText>
+            <ReactText>.length;</ReactText>
           </CodeLine>
         </Fragment>
       ))}
       <CodeLine>
         <Tab />{" "}
         <ReactText>
-          let fogIndex = ( 0.4 * (words + 100 * (words))).toFixed(4);
+          let fogIndex = ( 0.4 * (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))).toFixed(4);
         </ReactText>
       </CodeLine>
       <CodeLine>
@@ -67,9 +81,9 @@ const WordCountRepairImplementation = (props = {}) => {
   );
 };
 
-WordCountRepairImplementation.propTypes = {
+ComplexWordCountRepairImplementation.propTypes = {
   userInput: PropTypes.func,
   fogIndexCalculationData: PropTypes.array,
 };
 
-export default WordCountRepairImplementation;
+export default ComplexWordCountRepairImplementation;
