@@ -8,7 +8,7 @@ import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../reducers/lab11/ExerciseReducer";
 import { connect } from "react-redux";
 import InformationLetterEmail from "./pages/InformationLetterEmail";
-import { LETTER_TEXT, REPAIR } from "../../../constants/lab11";
+import { LETTER_TEXT_FOG_INDEX_12, REPAIR } from "../../../constants/lab11";
 import FogIndexFormulaIntroduction from "./pages/Explanations/FogIndexFormulaIntroduction";
 import useScroll from "../../../use-hooks/useScroll";
 import LiteracyRepair from "./pages/LiteracyRepair";
@@ -19,7 +19,7 @@ import FogIndexFormulaConclusion from "./pages/Explanations/FogIndexFormulaConcl
 const Main = (props) => {
   const { user = "", actions } = props;
   const [exerciseState, setExerciseState] = useState("");
-  const [letterContent, setLetterContent] = useState(LETTER_TEXT);
+  const [letterContent, setLetterContent] = useState(LETTER_TEXT_FOG_INDEX_12);
   const [totalWords, setTotalWords] = useState(0);
   const [totalSentences, setTotalSentences] = useState(0);
   const [totalComplexWords, setTotalComplexWords] = useState(0);
