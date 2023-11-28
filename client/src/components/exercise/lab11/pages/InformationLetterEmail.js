@@ -94,7 +94,12 @@ const InformationLetterEmail = (props) => {
               {/* Letter Content */}
               <Letter isEditable={isEditable} />
               {/* Fog Index Overlay*/}
-              <FogIndexOverlay fogIndex={fogIndex} totalWords={totalWords} totalSentences={totalSentences} totalComplexWords={totalComplexWords} />
+              <FogIndexOverlay
+                fogIndex={fogIndex}
+                totalWords={totalWords}
+                totalSentences={totalSentences}
+                totalComplexWords={totalComplexWords}
+              />
             </div>
           </div>
         </div>

@@ -26,33 +26,23 @@ const LETTER_TEXT_FOG_INDEX_20 = `As the terrestrial orb concluded its perennial
 
 const LETTER_TEXT_FOG_INDEX_16 = `As our eminent institution reopens its palatial portals to inaugurate another term of erudite ratiocination and speculation after the inclement yet salubrious hiatus, we salute the convocation of preeminent savants within these halcyon, ivy-clad edifices. Resplendent neophytes embark upon nascent intellectual odysseys, imbibing the elucubrations of bygone philosophes and polymaths, thus auguring sagacious scholarliness. Concurrently, their perspicacious forbearers generate experiments and treatises expanding human cognition: altruistic contributions toward illumination and edification. All stalwart academics, bask within our academe’s effulgence! Allow fecund dialectics to germinate innovative insights. Assessing the prodigious potential of this burgeoning term, myriad groundbreaking developments shall indubitably eventuate from the fruitful pens and lips of our institution’s luminaries. What boons untold await revelation through cogent ratiocination and assiduous extrapolation of new theorems flowing from this numinous font of wisdom!`;
 
-const LETTER_TEXT_FOG_INDEX_6 =  `Welcome Back Students!
-
+const LETTER_TEXT_FOG_INDEX_6 = `Welcome Back Students!
 We hope you enjoyed your break and are rested and recharged for the start of a new semester here on campus. Whether you went home or stayed here over the holidays, we're excited to have you back!
-
 As you return to your classes, clubs, sports, and more, remember that your student resources are here to support you. Tutoring services can help sharpen your skills and prep for exams. Counseling and wellness programs support overall health. And campus events let you meet up with friends or make new ones.
-
 This semester, be sure to tap into the great amenities that make our campus community special. Catch up over coffee at the student union. Hit the newly upgraded gym after classes. Or study with friends at the library before heading out to enjoy the sunny quad.
-
 We look forward to seeing all that you accomplish this term! Let us know how we can back you up on your journey. Have a great start!`;
 
 const LETTER_TEXT_FOG_INDEX_10 = `Greetings Students,
-
 As we find ourselves embarking upon another semester here at our beloved institution of higher learning, a warm welcome to you all whether returning from a restful holiday respite or persevering straight on through enrollment. This close-knit campus provides fertile soil for personal betterment and we trust your roots have sunk deeply into said bounty.
-
 Please do empower your scholastic efforts during this budding term. Strong guidance is at the ready to bolster comprehension, while counsel remains prepared to uphold mental well-being. Take joy in the student union over refreshing drinks, athletic feats honed side-by-side in the newly refurbished gymnasium, and the whispering halls of knowledge united in learning’s cause at our library’s trying tables.
-
 Communicate any needs requiring assistance and we shall provide support through the peaks and valleys ahead. For now, fare thee well and do embark up the educational mountain with aplomb!`;
 
 const LETTER_TEXT_FOG_INDEX_8 = `Welcome back for another semester! We hope all students returning from break feel recharged and ready for the weeks ahead as we resume our vibrant on-campus community. We're glad to have everyone back together in this stimulating academic environment.
-
 Take advantage of our stellar resources to aid your learning goals this term. Seek out peer tutoring groups collaborating to comprehend challenging topics. Talk with counselors available for advice on managing study stress and staying mentally and physically healthy. Reflect on wellness tips for balancing busy schedules.
-
 Come together and connect over all that enriches campus life. Chat with classmates over coffee for spirited discussions that brew new thinking. Make new friends for moral support while exercising in the gym or dining halls. Find your band of compatible peers hitting the books in the library—learning thrives on teamwork.
-
 We walk with each student, offering backup so you can feel engaged, empowered and determined seeing this promising term through. We expect great personal growth and discovery in the months ahead! Let the adventure begin!
-
 `;
+
 export {
   LAB_ID,
   EXERCISE_PLAYING,
