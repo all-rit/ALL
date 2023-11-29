@@ -67,7 +67,7 @@ const useDataService = (user, section, defaultExerciseState) => {
                 : isDateComplete,
             isNavComplete:
               section === GAME_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
-            isComplete: false
+            isComplete: false,
           };
           const response = await ExerciseService.submitExercise(updatedBody);
           return response.status;
