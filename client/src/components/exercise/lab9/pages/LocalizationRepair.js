@@ -6,7 +6,7 @@ import { Router } from "@reach/router";
 // component imports
 import AddressRepair from "./Repairs/AddressRepair";
 import DateRepair from "./Repairs/DateRepair";
-import NavBarRepair from "./Repairs/NavBarRepair";
+import NavRepairPage from "./Repairs/NavRepairPage";
 import { GAME_STATES } from "../../../../constants/lab9";
 
 /**
@@ -21,7 +21,7 @@ const LocalizationRepair = ({ user }) => {
     <Router className="app">
       <DateRepair path={`${GAME_STATES.REPAIR_DATE_REPAIR}`} user={user} />
       <AddressRepair path={`${GAME_STATES.REPAIR_ADDRESS_FORM}`} user={user} />
-      <NavBarRepair path={`${GAME_STATES.REPAIR_NAV_BAR}`} user={user} />
+      <NavRepairPage path={`${GAME_STATES.REPAIR_NAV_BAR}`} user={user} />
     </Router>
   );
 };
