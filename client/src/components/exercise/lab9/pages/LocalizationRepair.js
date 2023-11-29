@@ -6,7 +6,7 @@ import { Router } from "@reach/router";
 // component imports
 import AddressRepair from "./Repairs/AddressRepair";
 import DateRepair from "./Repairs/DateRepair";
-import NavRepairPage from "./Repairs/NavRepairPage";
+import NavRepairPage from "./Repairs/NavBarRepair";
 import { GAME_STATES } from "../../../../constants/lab9";
 
 /**

@@ -3,11 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import DateFormData from "../../../../../constants/lab9/DateFormData";
-import {
-  REPAIR_DATE_REPAIR_HEADING,
-  GAME_STATES,
-  REPAIR,
-} from "../../../../../constants/lab9";
+import { HEADINGS, GAME_STATES, REPAIR } from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
@@ -35,7 +31,7 @@ const DateRepair = ({ user }) => {
     <Repair
       fileName={"DateFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`}
-      headingText={REPAIR_DATE_REPAIR_HEADING}
+      headingText={HEADINGS.REPAIR_DATE_REPAIR_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}

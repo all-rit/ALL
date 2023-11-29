@@ -1,4 +1,4 @@
-export const NavBarData = {
+const NavBarData = {
   navItems: [
     {
       id: 0,
@@ -38,3 +38,4 @@ export const NavBarData = {
     },
   ],
 };
+export default NavBarData;

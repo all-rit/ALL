@@ -9,8 +9,8 @@ import HTMLTag from "../../../all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText";
 import React from "react";
 
-export const NavBarRepair = (props = {}) => {
-  const { navItems, userInput } = props;
+export const NavBarRepairView = (props = {}) => {
+  const { navItems = [], userInput } = props;
   return (
     <>
       <ReactText>const NavBar = () =&#62; &#123;</ReactText>
@@ -76,9 +76,9 @@ export const NavBarRepair = (props = {}) => {
   );
 };
 
-NavBarRepair.propTypes = {
+NavBarRepairView.propTypes = {
   userInput: PropTypes.func,
   navItems: PropTypes.array,
 };
 
-export default NavBarRepair;
+export default NavBarRepairView;
