@@ -22,6 +22,12 @@ module.exports = (sequelize, DataTypes) => {
         attemptTime: {
           type: DataTypes.DATE,
         },
+        isComplete: {
+          type: DataTypes.BOOLEAN,
+        },
+        attemptCount: {
+          type: DataTypes.INTEGER,
+        },
       },
       {
         tableName: 'lab9_exercise',
