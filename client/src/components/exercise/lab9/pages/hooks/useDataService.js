@@ -62,7 +62,9 @@ const useDataService = (user, section, defaultExerciseState) => {
                 ? true
                 : isAddressComplete,
             isDateComplete:
-              section === GAME_STATES.REPAIR_DATE_REPAIR ? true : isDateComplete,
+              section === GAME_STATES.REPAIR_DATE_REPAIR
+                ? true
+                : isDateComplete,
             isNavComplete:
               section === GAME_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
           };
