@@ -13,6 +13,100 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
 
   return (
     <>
+      {/* Syllable Count Calc Function */}
+      <CodeLine>
+        <CommentText>
+          {`// This function counts the number of syllables in a word.`}
+        </CommentText>
+      </CodeLine>
+      <ReactText>
+        const countSyllables = ( word ) =&#62; &#123;
+      </ReactText>
+      <CodeLine>
+        <Tab />{" "}
+        <ReactText>
+          {" "}
+          let syllableCount = 0;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab />{" "}
+        <ReactText>
+          {" "}
+          const vowels = new Set(&#91;&#39;a&#39;, &#39;e&#39;, &#39;i&#39;,
+          &#39;o&#39;, &#39;u&#39;, &#39;y&#39;&#93;);
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> if (vowels.has(word&#91;0&#93;)) &#123;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <Tab /> <ReactText> syllableCount++;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> &#125;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> for (let i = 1; i &#60; word.length; i++) &#123;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <Tab />{" "}
+        <ReactText>
+          {" "}
+          if (vowels.has(word&#91;i&#93;) && !vowels.has(word&#91;i - 1&#93;))
+          &#123;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <Tab /> <Tab /> <ReactText> syllableCount++;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <Tab /> <ReactText> &#125;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> &#125;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> if (word.endsWith(&#39;e&#39;)) &#123;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <Tab /> <ReactText> syllableCount--;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> &#125;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab />{" "}
+        <ReactText>
+          {" "}
+          if (word.endsWith(&#39;le&#39;) && word.length &#62; 2 && !vowels.has(word&#91;word.length - 3&#93;)) &#123;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <Tab /> <ReactText> syllableCount++;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> &#125;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> if (syllableCount === 0) &#123;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <Tab /> <ReactText> syllableCount++;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> &#125;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab /> <ReactText> return syllableCount;</ReactText>
+      </CodeLine>
+      <ReactText>&#125;;</ReactText>
+      {/* Fog Index Calc Function */}
+      <CodeLine>
+        <CommentText>
+          {`// This function calculates the fog index of a given letter.`}
+        </CommentText>
+      </CodeLine>
       <ReactText>
         const fogIndexCalculation = ( letterContent ) =&#62; &#123;
       </ReactText>
@@ -40,7 +134,7 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
             <Tab />{" "}
             <ReactText>
               {" "}
-              let {input.variableName} = letterContent.split(&#39; &#39;)
+              let {input.variableName} = letterContent.split(&#39; &#39;).filter((word) =&#62;
             </ReactText>
             {input.userInput ? (
               <CodeBlockInput
@@ -66,7 +160,7 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
                 }}
               />
             )}
-            <ReactText>.length;</ReactText>
+            <ReactText>).length;</ReactText>
           </CodeLine>
         </Fragment>
       ))}
@@ -78,10 +172,10 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
         </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <ReactText> return &#123; words, fogIndex &#125;</ReactText>
+        <Tab /> <ReactText> return &#123; words, fogIndex &#125;;</ReactText>
       </CodeLine>
-      <ReactText>&#125;</ReactText>
-      <ReactText>export &#123; fogIndexCalculation &#125;</ReactText>
+      <ReactText>&#125;;</ReactText>
+      <ReactText>export &#123; fogIndexCalculation &#125;;</ReactText>
     </>
   );
 };

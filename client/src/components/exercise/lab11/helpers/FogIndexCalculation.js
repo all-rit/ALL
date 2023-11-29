@@ -36,6 +36,17 @@ const countSyllables = (word) => {
   return syllableCount;
 };
 
+/**
+ * Calculates the fog index of a given letter.
+ * @param {string} letterContent - The content of the letter.
+ * @param {boolean} words - Whether or not to calculate the word count.
+ * @param {boolean} sentences - Whether or not to calculate the sentence count.
+ * @param {boolean} complexWords - Whether or not to calculate the complex word count.
+ * @returns {object} An object containing the word count, sentence count, complex word count, and fog index.
+ * @example
+ * fogIndexCalculation("This is a sentence.", true, true, true);
+ * // returns { wordCount: 4, sentenceCount: 1, complexWordCount: 0, fogIndex: 4.4 }
+ **/
 const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
   let wordCount = words ? letterContent.split(" ").length : null;
   let sentenceCount = sentences ? letterContent.split(".").length : null;

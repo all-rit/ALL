@@ -13,6 +13,12 @@ const SentenceCountRepairImplementation = (props = {}) => {
 
   return (
     <>
+      {/* Fog Index Calc Function */}
+      <CodeLine>
+        <CommentText>
+          {`// This function calculates the fog index of a given letter.`}
+        </CommentText>
+      </CodeLine>
       <ReactText>
         const fogIndexCalculation = ( letterContent ) =&#62; &#123;
       </ReactText>
@@ -67,10 +73,10 @@ const SentenceCountRepairImplementation = (props = {}) => {
         </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <ReactText> return &#123; words, fogIndex &#125;</ReactText>
+        <Tab /> <ReactText> return &#123; words, fogIndex &#125;;</ReactText>
       </CodeLine>
-      <ReactText>&#125;</ReactText>
-      <ReactText>export &#123; fogIndexCalculation &#125;</ReactText>
+      <ReactText>&#125;;</ReactText>
+      <ReactText>export &#123; fogIndexCalculation &#125;;</ReactText>
     </>
   );
 };
