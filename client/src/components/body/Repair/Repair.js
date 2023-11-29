@@ -25,7 +25,7 @@ const Repair = (props) => {
     submitRepair,
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
-  const [enableNext, setEnableNext] = useState(true);
+  const [enableNext, setEnableNext] = useState(false);
 
   const handleRepair = async () => {
     setIsRepairActive(true);
@@ -33,14 +33,16 @@ const Repair = (props) => {
   };
 
   const handleUpdate = async () => {
-    setEnableNext(!validateRepair);
+    const localValidateRepair = validateRepair();
+    if (localValidateRepair) {
+      setIsRepairActive(false);
+      setEnableNext(true);
+    }
     await submitRepair();
   };
 
   const handleNext = async () => {
-    if (validateRepair) {
-      navigateNext;
-    }
+    navigateNext();
   };
 
   return (
@@ -69,7 +71,7 @@ const Repair = (props) => {
         <div className="tw-pl-10">
           <Button
             buttonText={"Next"}
-            disabled={enableNext}
+            disabled={!enableNext}
             onClick={handleNext}
           />
         </div>
@@ -100,6 +102,7 @@ Repair.propTypes = {
   repairText: Proptypes.array,
   user: Proptypes.string,
   validateRepair: Proptypes.func.isRequired,
+  repairComplete: Proptypes.bool.isRequired,
   fetchRepair: Proptypes.func.isRequired,
   submitRepair: Proptypes.func.isRequired,
 };
