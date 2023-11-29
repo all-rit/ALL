@@ -19,15 +19,9 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
           {`// This function counts the number of syllables in a word.`}
         </CommentText>
       </CodeLine>
-      <ReactText>
-        const countSyllables = ( word ) =&#62; &#123;
-      </ReactText>
+      <ReactText>const countSyllables = ( word ) =&#62; &#123;</ReactText>
       <CodeLine>
-        <Tab />{" "}
-        <ReactText>
-          {" "}
-          let syllableCount = 0;
-        </ReactText>
+        <Tab /> <ReactText> let syllableCount = 0;</ReactText>
       </CodeLine>
       <CodeLine>
         <Tab />{" "}
@@ -47,7 +41,8 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
         <Tab /> <ReactText> &#125;</ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <ReactText> for (let i = 1; i &#60; word.length; i++) &#123;</ReactText>
+        <Tab />{" "}
+        <ReactText> for (let i = 1; i &#60; word.length; i++) &#123;</ReactText>
       </CodeLine>
       <CodeLine>
         <Tab /> <Tab />{" "}
@@ -79,7 +74,8 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
         <Tab />{" "}
         <ReactText>
           {" "}
-          if (word.endsWith(&#39;le&#39;) && word.length &#62; 2 && !vowels.has(word&#91;word.length - 3&#93;)) &#123;
+          if (word.endsWith(&#39;le&#39;) && word.length &#62; 2 &&
+          !vowels.has(word&#91;word.length - 3&#93;)) &#123;
         </ReactText>
       </CodeLine>
       <CodeLine>
@@ -134,7 +130,8 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
             <Tab />{" "}
             <ReactText>
               {" "}
-              let {input.variableName} = letterContent.split(&#39; &#39;).filter((word) =&#62;
+              let {input.variableName} = letterContent.split(&#39;
+              &#39;).filter((word) =&#62;
             </ReactText>
             {input.userInput ? (
               <CodeBlockInput
