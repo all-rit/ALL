@@ -51,6 +51,7 @@ async function postExercise(data) {
       hasViewed: false,
     };
     if (!getExerciseResponse) {
+      // adds in new entry
       return await db.ExerciseLab9.create(newExercise).id;
     } else {
       const convert = parseInt(getExerciseResponse.attemptCount);
@@ -65,7 +66,7 @@ async function postExercise(data) {
         attemptCount: newVal,
         hasViewed: hasViewed,
       };
-        // reset stat
+        // reset state
       return await db.ExerciseLab9.create(updatedExercise).id;
     }
   } catch (error) {

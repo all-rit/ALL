@@ -22,7 +22,7 @@ const NavBarRepair = ({ user }) => {
   const { checkInputValid, fetchRepair, postRepair } = functions;
   return (
     <Repair
-      fileName={"DateFormat.js"}
+      fileName={"NavFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_NAV_BAR}`}
       headingText={""}
       validateRepair={checkInputValid}

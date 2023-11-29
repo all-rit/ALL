@@ -20,7 +20,12 @@ const Webpage = ({ user }) => {
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
-
+  /**
+   * handleComplete(): is a function that is responsible for
+   * performing the action of setting the viewed state of the 
+   * page component to know to reset the exercise on the next 
+   * play through.
+   */
   const handleComplete = async () => {
     if (isComplete) {
       // navigate to the conclusion page
@@ -38,6 +43,11 @@ const Webpage = ({ user }) => {
     }
   };
 
+  /**
+   * resetData(): helper function that is responsible for 
+   * clearing the state of the component. and pushing the new
+   * body to the db.
+   */
   const resetData = async () => {
     const body = {
       userid: user.userid,
@@ -58,6 +68,7 @@ const Webpage = ({ user }) => {
   const dataHandling = async () => {
     try {
       const newState = await ExerciseService.fetchExercise(user);
+      // if the data returned null then reset data
       if (!newState) {
         resetData();
       } else {
@@ -72,6 +83,7 @@ const Webpage = ({ user }) => {
         setDateComplete(isDateComplete);
         setAddressComplete(isAddressComplete);
         setIsComplete(isExerciseComplete);
+        // other reset state to handle if the user has completed what they were doing.
         if (isExerciseComplete && hasViewed) {
           resetData();
         }
