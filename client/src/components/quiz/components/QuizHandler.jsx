@@ -12,6 +12,7 @@ import QuestionsLab4 from "../api/Lab4/quizQuestions";
 import QuestionsLab5 from "../api/Lab5/quizQuestions";
 import QuestionsLab6 from "../api/Lab6/quizQuestions";
 import QuestionsLab8 from "../api/Lab8/quizQuestions";
+import QuestionsLab11 from "../api/Lab11/quizQuestions";
 import UserLabService from "../../../services/UserLabService";
 import alterationQuizQuestions from "../api/Lab7/alterationQuizQuestions";
 import quizQuestionsLab7 from "../api/Lab7/quizQuestions";
@@ -44,6 +45,8 @@ function assignQuizQuestions(labId, isFinalQuiz) {
       }
     case 8:
       return QuestionsLab8;
+    case 11:
+      return QuestionsLab11;
     default:
       return [
         {
