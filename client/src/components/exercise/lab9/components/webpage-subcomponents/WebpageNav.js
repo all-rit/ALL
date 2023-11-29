@@ -26,21 +26,21 @@ const WebpageNav = ({ repairComplete }) => {
   const renderNavItems = () => {
     if (repairComplete) {
       return (
-        <div className="tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-2 tw-border-solid tw-rounded-xl tw-p-5">
-          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base">
-            <HomeIcon />
+        <div className="tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-3 tw-p-5">
+          <div className="tw-bg-transparent tw-text-center tw-text-base">
+            <HomeIcon className="tw-m-1" />
             Home
           </div>
-          <div className="tw-bg-transparent tw-text-[#260D0D] tw-c tw-text-center tw-text-base tw-w-md">
-            <BadgeIcon />
+          <div className="tw-bg-transparent tw-text-center tw-text-base">
+            <BadgeIcon className="tw-m-1" />
             Careers
           </div>
-          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base tw-w-md">
-            <SchoolIcon />
+          <div className="tw-bg-transparent tw-text-center tw-text-base">
+            <SchoolIcon className="tw-m-1" />
             Education
           </div>
-          <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base tw-w-md">
-            <LocalPhoneIcon />
+          <div className="tw-bg-transparent tw-text-center tw-text-base">
+            <LocalPhoneIcon className="tw-m-1" />
             Contact Us
           </div>
         </div>

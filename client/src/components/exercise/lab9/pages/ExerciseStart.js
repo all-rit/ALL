@@ -4,7 +4,7 @@ import React from "react";
 const ExerciseStart = () => {
   const handleStart = () => {
     // navigate to the webpage
-    navigate("/Lab9/Exercise/page");
+    navigate("/Lab9/Exercise/InitialPage");
   };
 
   return (
