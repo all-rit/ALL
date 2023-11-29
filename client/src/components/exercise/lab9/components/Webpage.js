@@ -43,12 +43,24 @@ const Webpage = ({ user }) => {
         // to create initial exercise to db
         await ExerciseService.submitExercise(body);
       } else {
-        const { isNavComplete, isDateComplete, isAddressComplete, isComplete } =
+        const { isNavComplete, isDateComplete, isAddressComplete} =
           newState;
+        const localState = [isNavComplete, isDateComplete, isAddressComplete] 
         setNavComplete(isNavComplete);
         setDateComplete(isDateComplete);
         setAddressComplete(isAddressComplete);
-        setIsComplete(isComplete);
+        const isLabComplete = localState.every((value) => value === true);
+        if (isLabComplete) {
+          setIsComplete(isLabComplete);
+          const complete = {
+            userid: user.userid,
+            isNavComplete: isNavComplete,
+            isDateComplete: isDateComplete,
+            isAddressComplete: isAddressComplete,
+            isComplete: isLabComplete
+          }
+          ExerciseService.submitExercise(complete);
+        }
       }
     } catch (error) {
       console.error(error);

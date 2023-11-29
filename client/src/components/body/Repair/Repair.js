@@ -35,6 +35,7 @@ const Repair = (props) => {
   const handleUpdate = async () => {
     const localValidateRepair = validateRepair();
     if (localValidateRepair) {
+      
       setIsRepairActive(false);
       setEnableNext(true);
     }
