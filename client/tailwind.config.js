@@ -3,7 +3,7 @@
 module.exports = {
   prefix: "tw-",
   content: ["../client/src/**/*.{js,jsx}"],
-
+  important: true,
   theme: {
     screens: {
       xs: "320px",
@@ -38,13 +38,13 @@ module.exports = {
       ],
     },
     colors: {
-      dark: "#000000",
+      black: "#000000",
       white: "#FFFFFF",
       bgwhite: "#F3F3F3",
       bgdark: "#23022E",
       darkLine: "#868e96",
       labGray: "#F8F8F8",
-      labYellow: "#10002B",
+      labYellow: "#fec810",
       labGreen: "#7B7B7B",
       labBlue: "#A39CB0",
       darkGreen: "#0c3515",
