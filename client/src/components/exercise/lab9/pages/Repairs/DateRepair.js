@@ -28,7 +28,7 @@ const DateRepair = ({ user }) => {
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
-  const { exercisePromptsState, repairComplete } = data;
+  const { exercisePromptsState} = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
   return (
@@ -36,7 +36,6 @@ const DateRepair = ({ user }) => {
       fileName={"DateFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`}
       headingText={REPAIR_DATE_REPAIR_HEADING}
-      repairComplete={repairComplete}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}

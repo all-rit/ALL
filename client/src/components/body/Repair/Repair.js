@@ -21,7 +21,6 @@ const Repair = (props) => {
     navigateNext,
     CodeImplementation,
     validateRepair,
-    repairComplete,
     fetchRepair,
     submitRepair,
   } = props;
@@ -30,16 +29,14 @@ const Repair = (props) => {
 
   const handleRepair = async () => {
     setIsRepairActive(true);
-    setEnableNext(false);
     await fetchRepair();
   };
 
   const handleUpdate = async () => {
-    if (repairComplete) {
+    const localValidateRepair = validateRepair();
+    if (localValidateRepair) {
       setIsRepairActive(false);
       setEnableNext(true);
-    } else {
-      setEnableNext(false);
     }
     await submitRepair();
   };
