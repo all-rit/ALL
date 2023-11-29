@@ -1,11 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
-import {
-  HEADINGS,
-  GAME_STATES,
-  REPAIR,
-} from "../../../../../constants/lab9";
+import { HEADINGS, GAME_STATES, REPAIR } from "../../../../../constants/lab9";
 import NavBarRepair from "../NavBarRepair";
 import useRepairNav from "../../hooks/useRepairNav";
 /**
