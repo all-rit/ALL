@@ -8,6 +8,7 @@ import { navigate } from "@reach/router";
  * NavBarRepair() is a react component that is responsible for passing down
  * the visual information needed to render the repair page itself. This
  * component will integrate the individualized custom hook to handle custom logic.
+ * @param {Object} user contains user id for data state and logging user input
  * @returns Repair Component to render to the browser.
  */
 const NavBarRepair = ({ user }) => {

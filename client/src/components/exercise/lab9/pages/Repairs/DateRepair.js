@@ -15,7 +15,7 @@ import { navigate } from "@reach/router";
  * Date Repair is a component that is responsible for passing logic into the universal
  * repair page component, what this allows us to do is call the re-useable repair component
  * with custom logic pertaining to that repair section.
- * @param {String} user contains user id for data state and logging user input
+ * @param {Object} user contains user id for data state and logging user input
  * @returns
  */
 
@@ -28,7 +28,7 @@ const DateRepair = ({ user }) => {
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
-  const { exercisePromptsState} = data;
+  const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
   return (

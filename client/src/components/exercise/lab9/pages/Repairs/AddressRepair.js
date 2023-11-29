@@ -9,7 +9,7 @@ import { navigate } from "@reach/router";
  * AddressRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
  * and custom implementation for the address repair for lab 9 localization.
- * @param {String} user contains user id for data state and logging user input
+ * @param {Object} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */
 const AddressRepair = ({ user }) => {
