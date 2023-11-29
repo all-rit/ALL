@@ -19,10 +19,10 @@ const getExerciseState = (state) => {
       return state.exercise7.state;
     case 8:
       return state.exercise8.state;
-    case 11:
-      return state.exercise11.state;
     case 10:
       return state.exercise10.state;
+    case 11:
+      return state.exercise11.state;
     default:
       return state.exercise1.state;
   }
