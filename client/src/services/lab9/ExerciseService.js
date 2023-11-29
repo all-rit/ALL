@@ -48,7 +48,7 @@ const ExerciseService = {
         isDateComplete: data.isDateComplete,
         isNavComplete: data.isNavComplete,
         isExerciseComplete: data.isExerciseComplete,
-        hasViewed: data.hasViewed
+        hasViewed: data.hasViewed,
       };
       const response = await API.postWithBody(endpoints.POST_EXERCISE, body);
       return response.status;

@@ -21,7 +21,7 @@ const Webpage = ({ user }) => {
   const [isAddressComplete, setAddressComplete] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
-  const handleComplete = async() => {
+  const handleComplete = async () => {
     if (isComplete) {
       // navigate to the conclusion page
       // only when all repairs are completed
@@ -31,12 +31,11 @@ const Webpage = ({ user }) => {
         isDateComplete: isDateComplete,
         isNavComplete: isNavComplete,
         isExerciseComplete: isComplete,
-        hasViewed: true
-      }
+        hasViewed: true,
+      };
       await ExerciseService.submitExercise(body);
       navigate("/Lab9/Exercise/Conclusion");
     }
-
   };
 
   const resetData = async () => {
@@ -46,7 +45,7 @@ const Webpage = ({ user }) => {
       isDateComplete: false,
       isNavComplete: false,
       isExerciseComplete: false,
-      hasViewed: false
+      hasViewed: false,
     };
     setIsComplete(false);
     setAddressComplete(false);
@@ -54,15 +53,21 @@ const Webpage = ({ user }) => {
     setNavComplete(false);
     // to create initial exercise to db
     await ExerciseService.submitExercise(body);
-  }
+  };
 
   const dataHandling = async () => {
     try {
       const newState = await ExerciseService.fetchExercise(user);
       if (!newState) {
-          resetData();
-        } else {
-        const { isNavComplete, isDateComplete, isAddressComplete, isExerciseComplete, hasViewed} = newState;
+        resetData();
+      } else {
+        const {
+          isNavComplete,
+          isDateComplete,
+          isAddressComplete,
+          isExerciseComplete,
+          hasViewed,
+        } = newState;
         setNavComplete(isNavComplete);
         setDateComplete(isDateComplete);
         setAddressComplete(isAddressComplete);
@@ -74,10 +79,10 @@ const Webpage = ({ user }) => {
             isDateComplete: isDateComplete,
             isNavComplete: isNavComplete,
             isExerciseComplete: isExerciseComplete,
-            hasViewed: true
-          }
+            hasViewed: true,
+          };
           await ExerciseService.submitExercise(body);
-        } else if (isExerciseComplete && hasViewed) { 
+        } else if (isExerciseComplete && hasViewed) {
           resetData();
         }
       }
