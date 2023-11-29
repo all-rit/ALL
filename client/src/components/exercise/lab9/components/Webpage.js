@@ -72,17 +72,7 @@ const Webpage = ({ user }) => {
         setDateComplete(isDateComplete);
         setAddressComplete(isAddressComplete);
         setIsComplete(isExerciseComplete);
-        if (isExerciseComplete && !hasViewed) {
-          const body = {
-            userid: user.userid,
-            isAddressComplete: isAddressComplete,
-            isDateComplete: isDateComplete,
-            isNavComplete: isNavComplete,
-            isExerciseComplete: isExerciseComplete,
-            hasViewed: true,
-          };
-          await ExerciseService.submitExercise(body);
-        } else if (isExerciseComplete && hasViewed) {
+        if (isExerciseComplete && hasViewed) {
           resetData();
         }
       }
