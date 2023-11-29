@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import DateFormData from "../../../../../constants/lab9/DateFormData";
 import {
-  REPAIR_DATE_REPAIR_HEADING,
+  HEADINGS,
   GAME_STATES,
   REPAIR,
 } from "../../../../../constants/lab9";
@@ -35,7 +35,7 @@ const DateRepair = ({ user }) => {
     <Repair
       fileName={"DateFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`}
-      headingText={REPAIR_DATE_REPAIR_HEADING}
+      headingText={HEADINGS.REPAIR_DATE_REPAIR_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}

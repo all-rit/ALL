@@ -2,7 +2,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
-import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
+import { GAME_STATES, HEADINGS, REPAIR } from "../../../../../constants/lab9";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
 /**
@@ -25,7 +25,7 @@ const AddressRepair = ({ user }) => {
     <Repair
       fileName={"AddressFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
-      headingText={""}
+      headingText={HEADINGS.REPAIR_ADDRESS_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}

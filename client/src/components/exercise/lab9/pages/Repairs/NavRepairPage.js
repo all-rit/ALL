@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import {
-  REPAIR_NAV_HEADING,
+  HEADINGS,
   GAME_STATES,
   REPAIR,
 } from "../../../../../constants/lab9";
@@ -24,7 +24,7 @@ const NavRepairPage = ({ user }) => {
     <Repair
       fileName={"NavBar.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_NAV_BAR}`}
-      headingText={REPAIR_NAV_HEADING}
+      headingText={HEADINGS.REPAIR_NAV_HEADING}
       validateRepair={checkInputValid}
       repairText={[
         "in this section you will be making changes to the repair data file below",
