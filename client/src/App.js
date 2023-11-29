@@ -130,7 +130,7 @@ class App extends Component {
                   path="/Lab11/Exercise/*"
                   user={state.main.user}
                 />
-                
+
                 <Reinforcement
                   path={`/Lab${lab}/Reinforcement`}
                   user={state.main.user}
