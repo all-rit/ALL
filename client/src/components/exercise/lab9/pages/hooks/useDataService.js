@@ -17,7 +17,7 @@ import { GAME_STATES } from "../../../../../constants/lab9";
  */
 const useDataService = (user, section, defaultExerciseState) => {
   const { data, functions } = useLabRepair();
-  const { exercisePromptsState, isInputValid } = data;
+  const { exercisePromptsState, isInputValid, repairComplete } = data;
   const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
     functions;
   /**
@@ -51,24 +51,27 @@ const useDataService = (user, section, defaultExerciseState) => {
   async function handleExerciseUpdate(body, section) {
     try {
       const { isComplete, userid } = body;
-      const { isAddressComplete, isDateComplete, isNavComplete } =
-        await ExerciseService.fetchExercise({
-          userid: userid,
-        });
-      if (isComplete) {
-        const updatedBody = {
-          userid: body.userid,
-          isAddressComplete:
-            section === GAME_STATES.REPAIR_ADDRESS_FORM
-              ? true
-              : isAddressComplete,
-          isDateComplete:
-            section === GAME_STATES.REPAIR_DATE_REPAIR ? true : isDateComplete,
-          isNavComplete:
-            section === GAME_STATES.REPAIR_NAV_REPAIR ? true : isNavComplete,
-        };
-        const response = await ExerciseService.submitExercise(updatedBody);
-        return response.status;
+      const data = await ExerciseService.fetchExercise({ userid: userid });
+      if (data) {
+        const { isAddressComplete, isDateComplete, isNavComplete } = data;
+        if (isComplete) {
+          const updatedBody = {
+            userid: body.userid,
+            isAddressComplete:
+              section === GAME_STATES.REPAIR_ADDRESS_FORM
+                ? true
+                : isAddressComplete,
+            isDateComplete:
+              section === GAME_STATES.REPAIR_DATE_REPAIR
+                ? true
+                : isDateComplete,
+            isNavComplete:
+              section === GAME_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
+            isComplete: false,
+          };
+          const response = await ExerciseService.submitExercise(updatedBody);
+          return response.status;
+        }
       }
     } catch (error) {
       console.error(error);
@@ -98,7 +101,7 @@ const useDataService = (user, section, defaultExerciseState) => {
   }
 
   return {
-    data: { exercisePromptsState, isInputValid },
+    data: { exercisePromptsState, isInputValid, repairComplete },
     functions: {
       checkInputValid,
       handleUserInputChange,

@@ -36,7 +36,7 @@ const HTMLTag = ({ children }) => {
         );
       }
       return (
-        <span key={index} className={"htmlText"}>
+        <span key={index} className="htmlText">
           {segment}
         </span>
       );

@@ -16,7 +16,7 @@ export const funcRegex =
 export const numberRegex = /-?\d+(\.\d+)?/g;
 
 /* htmlTagRegex searches for html tag keywords such as div, span, etc */
-export const htmlTagRegex = /\b(div|span|Button|p)\b/g;
+export const htmlTagRegex = /\b(div|span|Button|p|img)\b/g;
 
 /* htmlElementRegex uses regex html attributes such as className, onClick, etc */
 export const htmlElementRegex =
