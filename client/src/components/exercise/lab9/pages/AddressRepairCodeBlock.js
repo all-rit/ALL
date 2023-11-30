@@ -67,7 +67,6 @@ const AddressRepairCodeBlock = (props) => {
                 }}
               />
             ) : (
-
               <CodeBlockInput
                 attributes={{
                   onChange: (event) => {

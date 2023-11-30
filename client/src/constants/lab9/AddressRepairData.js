@@ -7,7 +7,7 @@ export const AddressRepairData = {
       comment:
         "// enter the following address format: streetAddress, city, state, postalCode",
       userInput: "",
-      validate_expression: /streetAddress, city, state, postalCode/,
+      validate_expression: "streetAddress, city, state, postalCode",
       correctAddressFormat: "streetAddress, city, state, postalCode",
     },
     {
@@ -17,7 +17,7 @@ export const AddressRepairData = {
       comment:
         "// enter the following address format: streetAddress, locality, city, postalCode",
       userInput: "",
-      validate_expression: /streetAddress, locality, city, postalCode/,
+      validate_expression: "streetAddress, locality, city, postalCode",
       correctAddressFormat: "streetAddress, locality, city, postalCode",
     },
     {
@@ -27,7 +27,8 @@ export const AddressRepairData = {
       comment:
         "// enter the following address format: postalCode, prefecture, city, ward, block, buildingName",
       userInput: "",
-      validate_expression: /postalCode, prefecture, city, ward, block, buildingName/,
+      validate_expression:
+        "postalCode, prefecture, city, ward, block, buildingName",
       correctAddressFormat:
         "postalCode, prefecture, city, ward, block, buildingName",
     },
@@ -38,7 +39,7 @@ export const AddressRepairData = {
       comment:
         "// enter the following address format: streetAddress, locality, city, emirate, postalCode",
       userInput: "",
-      validate_expression: /streetAddress, locality, city, emirate, postalCode/,
+      validate_expression: "streetAddress, locality, city, emirate, postalCode",
       correctAddressFormat:
         "streetAddress, locality, city, emirate, postalCode",
     },
