@@ -22,7 +22,8 @@ const NavRepairPage = ({ user }) => {
     NavBarData.navItems
   );
   const { exercisePromptsState } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } = functions;
+  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
+    functions;
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
