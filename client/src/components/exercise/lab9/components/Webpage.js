@@ -22,8 +22,8 @@ const Webpage = ({ user }) => {
   const [isComplete, setIsComplete] = useState(false);
   /**
    * handleComplete(): is a function that is responsible for
-   * performing the action of setting the viewed state of the 
-   * page component to know to reset the exercise on the next 
+   * performing the action of setting the viewed state of the
+   * page component to know to reset the exercise on the next
    * play through.
    */
   const handleComplete = async () => {
@@ -44,7 +44,7 @@ const Webpage = ({ user }) => {
   };
 
   /**
-   * resetData(): helper function that is responsible for 
+   * resetData(): helper function that is responsible for
    * clearing the state of the component. and pushing the new
    * body to the db.
    */

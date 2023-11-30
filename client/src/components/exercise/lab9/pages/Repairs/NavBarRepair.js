@@ -21,7 +21,7 @@ const NavBarRepair = ({ user }) => {
   );
   const { exercisePromptsState } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
-  functions;
+    functions;
   return (
     <Repair
       fileName={"NavFormat.js"}
