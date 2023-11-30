@@ -9,6 +9,7 @@ import { useState } from "react";
 const useLabRepair = () => {
   const [exercisePromptsState, setExercisePromptsState] = useState([]);
   const [isInputValid, setIsInputValid] = useState([]);
+  const [repairComplete, setIsComplete] = useState(false);
   /**
    * checkInputValid(): is a function that is intended on handling the logic to
    * ensure that you can check if user inputted strings are valid before letting them
@@ -26,6 +27,9 @@ const useLabRepair = () => {
       localValidArray.splice(index, 1, result);
     });
     setIsInputValid(localValidArray);
+    localValidArray.every((v) => v === true)
+      ? setIsComplete(true)
+      : setIsComplete(false);
     return localValidArray.every((v) => v === true);
   };
   /**
@@ -48,8 +52,15 @@ const useLabRepair = () => {
     });
   };
 
+  const isRepairComplete = (exercisePromptsState, isInputValid) => {
+    return (
+      isInputValid.every((valid) => valid) && exercisePromptsState.length > 0
+    );
+  };
+
   return {
     data: {
+      repairComplete,
       exercisePromptsState,
       isInputValid,
     },
@@ -57,6 +68,7 @@ const useLabRepair = () => {
       checkInputValid,
       setExercisePromptsState,
       handleUserInputChange,
+      isRepairComplete,
     },
   };
 };

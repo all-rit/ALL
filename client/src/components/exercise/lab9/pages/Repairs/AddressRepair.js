@@ -2,15 +2,16 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
-import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
+import { GAME_STATES, HEADINGS, REPAIR } from "../../../../../constants/lab9";
 import useDataService from "../hooks/useDataService";
+import { navigate } from "@reach/router";
 import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairData";
 import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
  * and custom implementation for the address repair for lab 9 localization.
- * @param {String} user contains user id for data state and logging user input
+ * @param {Object} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */
 const AddressRepair = ({ user }) => {
@@ -26,7 +27,7 @@ const AddressRepair = ({ user }) => {
     <Repair
       fileName={"AddressFormat.js"}
       path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
-      headingText={""}
+      headingText={HEADINGS.REPAIR_ADDRESS_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}
@@ -37,15 +38,18 @@ const AddressRepair = ({ user }) => {
         <AddressRepairCodeBlock
           addressForms={exercisePromptsState}
           userInput={handleUserInputChange}
+          repairError={checkInputValid}
         />
       }
-      navigateNext={() => {}}
+      navigateNext={() => {
+        navigate("/Lab9/Exercise/page");
+      }}
     />
   );
 };
 
 AddressRepair.propTypes = {
-  user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 export default AddressRepair;
