@@ -9,7 +9,7 @@ import HTMLTag from "../../../all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText";
 import React from "react";
 
-export const NavBarRepairView = (props = {}) => {
+export const NavBarRepair = (props = {}) => {
   const { navItems = [], userInput } = props;
   return (
     <>
@@ -76,9 +76,9 @@ export const NavBarRepairView = (props = {}) => {
   );
 };
 
-NavBarRepairView.propTypes = {
+NavBarRepair.propTypes = {
   userInput: PropTypes.func,
   navItems: PropTypes.array,
 };
 
-export default NavBarRepairView;
+export default NavBarRepair;

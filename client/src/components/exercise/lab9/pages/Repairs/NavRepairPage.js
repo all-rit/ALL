@@ -5,7 +5,7 @@ import { HEADINGS, GAME_STATES, REPAIR } from "../../../../../constants/lab9";
 import NavBarRepair from "../NavBarRepair";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
-import { NavBarData } from "src/constants/lab9/NavBarData";
+import  NavBarData  from "../../../../../constants/lab9/NavBarData";
 
 /**
  * Nav Repair is a component that is responsible for passing logic into the universal
@@ -22,7 +22,8 @@ const NavRepairPage = ({ user }) => {
     NavBarData.navItems
   );
   const { exercisePromptsState } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } = functions;
+  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
+    functions;
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
