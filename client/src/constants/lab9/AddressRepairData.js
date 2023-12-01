@@ -39,9 +39,9 @@ export const AddressRepairData = {
       comment:
         "// enter the following address format: streetAddress, locality, city, emirate, postalCode",
       userInput: "",
-      validate_expression: /streetAddress, locality, city, emirate, postalCode/g,
-      correct_expression:
-        "streetAddress, locality, city, emirate, postalCode",
+      validate_expression:
+        /streetAddress, locality, city, emirate, postalCode/g,
+      correct_expression: "streetAddress, locality, city, emirate, postalCode",
     },
   ],
 };
