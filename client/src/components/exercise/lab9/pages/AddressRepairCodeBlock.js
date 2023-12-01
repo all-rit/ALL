@@ -7,7 +7,7 @@ import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText"
+import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const AddressRepairCodeBlock = (props = {}) => {
   const { addressForms, userInput } = props;
@@ -32,9 +32,9 @@ const AddressRepairCodeBlock = (props = {}) => {
 
   useEffect(() => {
     addressForms.forEach((country) => {
-      handleError(country.id, country.userInput)
-      console.log(country.id)
-    })
+      handleError(country.id, country.userInput);
+      console.log(country.id);
+    });
   }, []);
 
   return (

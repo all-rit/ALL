@@ -33,18 +33,16 @@ const DateFormRepair = (props = {}) => {
 
   useEffect(() => {
     dateForms.forEach((country) => {
-      handleError(country.id, country.userInput)
-      console.log(country.id)
-    })
+      handleError(country.id, country.userInput);
+      console.log(country.id);
+    });
   }, []);
 
   return (
     <>
       <ReactText>const DateForm = (props) =&#62; &#123;</ReactText>
-      {/* eslint-disable-next-line no-unused-vars */}
       {dateForms.map((country, index) => (
-        // eslint-disable-next-line react/jsx-key
-        <CodeLine>
+        <CodeLine key={index}>
           <Tab />{" "}
           <ReactText>
             {" "}

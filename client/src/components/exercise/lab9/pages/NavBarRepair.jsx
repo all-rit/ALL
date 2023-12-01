@@ -11,6 +11,32 @@ import React from "react";
 
 export const NavBarRepair = (props = {}) => {
   const { navItems, userInput } = props;
+
+  const [error, setError] = useState(false);
+
+  const handleError = (id, value) => {
+    userInput(id, value);
+    const country = navItems.find((item) => item.id === id);
+    if (country && value !== item.correct_expression) {
+      setError((prevState) => ({
+        ...prevState,
+        [id]: true,
+      }));
+    } else {
+      setError((prevState) => ({
+        ...prevState,
+        [id]: false,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    navItems.forEach((item) => {
+      handleError(item.id, item.userInput);
+      console.log(item.id);
+    });
+  }, []);
+
   return (
     <>
       <ReactText>const NavBar = () =&#62; &#123;</ReactText>
@@ -55,6 +81,15 @@ export const NavBarRepair = (props = {}) => {
                 placeholder: "Enter icon image file here",
               }}
             />
+            {error[element.id] && (
+              <CodeLine>
+                <MultiTab numberOfTabs={3} />
+                <ErrorText>
+                  Error in form submission. Please check your input values and
+                  resubmit.
+                </ErrorText>
+              </CodeLine>
+            )}
             <HTMLTag>/&#62; </HTMLTag>
           </CodeLine>
           <CodeLine>
