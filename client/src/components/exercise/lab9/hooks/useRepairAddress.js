@@ -6,7 +6,7 @@ import { AddressRepairData as AddressFormsData } from "../../../../constants/lab
  * This is to be used to allow for decoupling of the display and logic based portions of
  * repair section.
  */
-const useRepairAddress = (user) => {
+const useRepairAddress = ({ user }) => {
   const [exercisePromptsState, setExercisePromptsState] = useState(
     AddressFormsData.countries
   );
@@ -47,9 +47,9 @@ const useRepairAddress = (user) => {
       return previous.map((dateRepair) =>
         dateRepair.id === dataId
           ? {
-              ...dateRepair,
-              userInput: newValue,
-            }
+            ...dateRepair,
+            userInput: newValue,
+          }
           : dateRepair
       );
     });

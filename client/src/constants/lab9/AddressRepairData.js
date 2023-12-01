@@ -7,8 +7,8 @@ export const AddressRepairData = {
       comment:
         "// enter the following address format: streetAddress, city, state, postalCode",
       userInput: "",
-      validate_expression: "streetAddress, city, state, postalCode",
-      correctAddressFormat: "streetAddress, city, state, postalCode",
+      validate_expression: /streetAddress, city, state, postalCode/g,
+      correct_expression: "streetAddress, city, state, postalCode",
     },
     {
       id: 1,
@@ -17,8 +17,8 @@ export const AddressRepairData = {
       comment:
         "// enter the following address format: streetAddress, locality, city, postalCode",
       userInput: "",
-      validate_expression: "streetAddress, locality, city, postalCode",
-      correctAddressFormat: "streetAddress, locality, city, postalCode",
+      validate_expression: /streetAddress, locality, city, postalCode/g,
+      correct_expression: "streetAddress, locality, city, postalCode",
     },
     {
       id: 2,
@@ -28,8 +28,8 @@ export const AddressRepairData = {
         "// enter the following address format: postalCode, prefecture, city, ward, block, buildingName",
       userInput: "",
       validate_expression:
-        "postalCode, prefecture, city, ward, block, buildingName",
-      correctAddressFormat:
+        /postalCode, prefecture, city, ward, block, buildingName/g,
+      correct_expression:
         "postalCode, prefecture, city, ward, block, buildingName",
     },
     {
@@ -39,8 +39,8 @@ export const AddressRepairData = {
       comment:
         "// enter the following address format: streetAddress, locality, city, emirate, postalCode",
       userInput: "",
-      validate_expression: "streetAddress, locality, city, emirate, postalCode",
-      correctAddressFormat:
+      validate_expression: /streetAddress, locality, city, emirate, postalCode/g,
+      correct_expression:
         "streetAddress, locality, city, emirate, postalCode",
     },
   ],

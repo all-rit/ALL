@@ -8,7 +8,7 @@ import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlo
 import PropTypes from "prop-types";
 import React from "react";
 
-const AddressRepairCodeBlock = (props) => {
+const AddressRepairCodeBlock = (props = {}) => {
   const { addressForms, userInput } = props;
   return (
     <>
@@ -31,8 +31,8 @@ const AddressRepairCodeBlock = (props) => {
         <Tab /> <ReactText> const addressFormats = &#123; </ReactText>
       </CodeLine>
 
-      {addressForms.map((country) => (
-        <>
+      {addressForms.map((country, index) => (
+        <div key={index}>
           {/* line 1 */}
           <CodeLine>
             <MultiTab numberOfTabs={2} />
@@ -75,7 +75,6 @@ const AddressRepairCodeBlock = (props) => {
                   name: country.countryName,
                   type: "text",
                   placeholder: "Enter Address Format Here",
-                  // overwrite styling to make input wider
                   className: "p-1 tw-w-[34rem] code_editor__input",
                 }}
               />
@@ -87,7 +86,7 @@ const AddressRepairCodeBlock = (props) => {
             <MultiTab numberOfTabs={2} />
             <ReactText> &#125;, </ReactText>
           </CodeLine>
-        </>
+        </div>
       ))}
       <CodeLine>
         <Tab />

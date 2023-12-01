@@ -43,7 +43,6 @@ const DateFormRepair = (props = {}) => {
         <Tab /> <ReactText> const dates = &#123; </ReactText>
       </CodeLine>
 
-      {/* eslint-disable-next-line no-unused-vars */}
       {dateForms.map((country, index) => (
         <div key={index}>
           <CodeLine>
