@@ -73,7 +73,7 @@ const DateFormRepair = (props = {}) => {
               />
             )}
           </CodeLine>
-          {(!isInputValid[index] && !isFirst) && (
+          {!isInputValid[index] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>

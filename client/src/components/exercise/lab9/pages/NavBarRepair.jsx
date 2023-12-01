@@ -58,7 +58,7 @@ const NavBarRepair = (props = {}) => {
             />
             <HTMLTag>/&#62; </HTMLTag>
           </CodeLine>
-          {(!isInputValid[index] && !isFirst) && (
+          {!isInputValid[index] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={4} />
               <ErrorText>

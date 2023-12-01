@@ -2,7 +2,7 @@ import useLabRepair from "../../../../body/Repair/hooks/useLabRepair";
 import { RepairService } from "../../../../../services/lab9/RepairService";
 import { ExerciseService } from "../../../../../services/lab9/ExerciseService";
 import { GAME_STATES } from "../../../../../constants/lab9";
-import { useState } from 'react';
+import { useState } from "react";
 
 /**
  * useDataService(): is a custom hook to abstract the logic implementation for the
@@ -34,15 +34,14 @@ const useDataService = (user, section, defaultExerciseState) => {
       if (!repairData || repairData?.isComplete === true) {
         const newStartState = [...defaultExerciseState];
         setExercisePromptsState(newStartState);
-        setIsFirst(true)
+        setIsFirst(true);
       } else {
         const { repair } = repairData;
         setExercisePromptsState(Object.values(repair));
-        console.warn(repairData.repairCount)
+        console.warn(repairData.repairCount);
         if (repairData.repairCount >= 1 && !repairData.isComplete) {
-          setIsFirst(false)
-        }
-        else {
+          setIsFirst(false);
+        } else {
           setIsFirst(true);
         }
       }
