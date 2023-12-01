@@ -24,6 +24,7 @@ const useLabRepair = () => {
       const result =
         regex.test(value.userInput) &&
         value.userInput === value.correct_expression;
+      console.log(value.userInput === value.correct_expression);
       localValidArray.splice(index, 1, result);
     });
     setIsInputValid(localValidArray);

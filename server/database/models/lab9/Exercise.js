@@ -22,7 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         attemptTime: {
           type: DataTypes.DATE,
         },
-        isComplete: {
+        isExerciseComplete: {
+          type: DataTypes.BOOLEAN,
+        },
+        hasViewed: {
           type: DataTypes.BOOLEAN,
         },
         attemptCount: {

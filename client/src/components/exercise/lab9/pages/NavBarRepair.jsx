@@ -10,7 +10,7 @@ import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText
 import React from "react";
 
 export const NavBarRepair = (props = {}) => {
-  const { navItems, userInput } = props;
+  const { navItems = [], userInput } = props;
   return (
     <>
       <ReactText>const NavBar = () =&#62; &#123;</ReactText>

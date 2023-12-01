@@ -1,33 +1,20 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import ReactText from "../../../all-components/CodeBlock/StyleComponents/ReactText";
-import CodeLine from "../../../all-components/CodeBlock/Components/CodeLine";
 import Tab from "../../../all-components/CodeBlock/Components/Tab";
+import CodeLine from "../../../all-components/CodeBlock/Components/CodeLine";
+import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
+import ReactText from "../../../all-components/CodeBlock/StyleComponents/ReactText";
 import CommentText from "../../../all-components/CodeBlock/StyleComponents/CommentText";
 import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText";
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
-import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
-import React, { useState } from "react";
 import PropTypes from "prop-types";
-import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
+import React from "react";
 
-const DateFormRepair = (props = {}) => {
-  const { dateForms, userInput } = props;
-  const [error, setError] = useState(false);
-
-  const handleError = (id, value) => {
-    userInput(id, value);
-    setError((prevState) => ({
-      ...prevState,
-      [id]: true,
-    }));
-  };
-
+const AddressRepairCodeBlock = (props = {}) => {
+  const { addressForms, userInput } = props;
   return (
     <>
-      <ReactText>const DateForm = (props) =&#62; &#123;</ReactText>
+      <ReactText>const AddressFormats = (props) =&#62; &#123;</ReactText>
       {/* eslint-disable-next-line no-unused-vars */}
-      {dateForms.map((country, index) => (
+      {addressForms.map((country, index) => (
         // eslint-disable-next-line react/jsx-key
         <CodeLine>
           <Tab />{" "}
@@ -39,12 +26,14 @@ const DateFormRepair = (props = {}) => {
         </CodeLine>
       ))}
 
+      <br />
       <CodeLine>
-        <Tab /> <ReactText> const dates = &#123; </ReactText>
+        <Tab /> <ReactText> const addressFormats = &#123; </ReactText>
       </CodeLine>
 
-      {dateForms.map((country, index) => (
+      {addressForms.map((country, index) => (
         <div key={index}>
+          {/* line 1 */}
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
@@ -52,13 +41,17 @@ const DateFormRepair = (props = {}) => {
               &ldquo;{country.countryVariable}&rdquo; = &#123;
             </ReactText>
           </CodeLine>
+
+          {/* line 2 */}
           <CodeLine>
             <MultiTab numberOfTabs={3} />
             <CommentText>{country.comment}</CommentText>
           </CodeLine>
+
+          {/* line 3 */}
           <CodeLine>
             <MultiTab numberOfTabs={3} />
-            <JSONText> &ldquo;dateform&rdquo; : </JSONText>
+            <JSONText>&ldquo;addressFormat&rdquo; :</JSONText>
             {country.userInput ? (
               <CodeBlockInput
                 value={country.userInput}
@@ -66,9 +59,11 @@ const DateFormRepair = (props = {}) => {
                   onChange: (event) => {
                     userInput(country.id, event.target.value);
                   },
-                  name: country.name,
+                  name: country.countryName,
                   type: "text",
-                  placeholder: "Enter Dateform Here",
+                  placeholder: "Enter Address Format Here",
+                  // overwrite styling to make input wider
+                  className: "p-1 tw-w-[34rem] code_editor__input",
                 }}
               />
             ) : (
@@ -77,23 +72,16 @@ const DateFormRepair = (props = {}) => {
                   onChange: (event) => {
                     userInput(country.id, event.target.value);
                   },
-                  name: country.name,
+                  name: country.countryName,
                   type: "text",
-                  placeholder: "Enter Dateform Here",
+                  placeholder: "Enter Address Format Here",
+                  className: "p-1 tw-w-[34rem] code_editor__input",
                 }}
               />
             )}
           </CodeLine>
-          {error[country.id] && (
-            <CodeLine>
-              <MultiTab numberOfTabs={3} />
-              <ErrorText>
-                {" "}
-                Error in form submission. Please check your input values and
-                resubmit.{" "}
-              </ErrorText>
-            </CodeLine>
-          )}
+
+          {/* line 4 */}
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText> &#125;, </ReactText>
@@ -105,14 +93,14 @@ const DateFormRepair = (props = {}) => {
         <ReactText> &#125; </ReactText>
       </CodeLine>
       <ReactText>&#125;</ReactText>
-      <ReactText>export default DateForm;</ReactText>
+      <ReactText>export default AddressFormats;</ReactText>
     </>
   );
 };
 
-CodeBlockInput.propTypes = {
+AddressRepairCodeBlock.propTypes = {
+  addressForms: PropTypes.array,
   userInput: PropTypes.func,
-  dateForms: PropTypes.array,
 };
 
-export default DateFormRepair;
+export default AddressRepairCodeBlock;
