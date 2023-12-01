@@ -9,8 +9,8 @@ const REPAIR_NAV_BAR = "nav-repair";
 const EXERCISE_SELECTION_DEFAULT = "selection";
 
 const REPAIR_DATE_REPAIR_HEADING = "Repair Date Format";
-const REPAIR_NAV_HEADING = "";
-const REPAIR_ADDRESS_HEADING = "";
+const REPAIR_NAV_HEADING = "Repair Navigation Bar Format";
+const REPAIR_ADDRESS_HEADING = "Repair Address Format";
 
 const HEADINGS = {
   REPAIR_DATE_REPAIR_HEADING,
