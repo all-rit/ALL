@@ -12,31 +12,20 @@ import PropTypes from "prop-types";
 import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const DateFormRepair = (props = {}) => {
-  const { dateForms, userInput } = props;
-  const [error, setError] = useState(false);
+  const { dateForms, userInput, isInputValid } = props;
+  const [error, setError] = useState(false)
 
-  const handleError = (id, value) => {
-    userInput(id, value);
-    const country = dateForms.find((country) => country.id === id);
-    if (country && value !== country.correct_expression) {
-      setError((prevState) => ({
-        ...prevState,
-        [id]: true,
-      }));
-    } else {
-      setError((prevState) => ({
-        ...prevState,
-        [id]: false,
-      }));
-    }
-  };
+  const invalidRepair = () => {
+    dateForms.forEach((country, index) => {
+      if (!isInputValid[index]) {
+        setError[country.id] = true
+      }
+    })
+  }
 
   useEffect(() => {
-    dateForms.forEach((country) => {
-      handleError(country.id, country.userInput);
-      console.log(country.id);
-    });
-  }, []);
+    invalidRepair();
+  }, [])
 
   return (
     <>
@@ -78,7 +67,6 @@ const DateFormRepair = (props = {}) => {
                 attributes={{
                   onChange: (event) => {
                     userInput(country.id, event.target.value);
-                    handleError(country.id, event.target.value);
                   },
                   name: country.name,
                   type: "text",

@@ -10,6 +10,7 @@ const useLabRepair = () => {
   const [exercisePromptsState, setExercisePromptsState] = useState([]);
   const [isInputValid, setIsInputValid] = useState([]);
   const [repairComplete, setIsComplete] = useState(false);
+  const [error, setError] = useState(false)
   /**
    * checkInputValid(): is a function that is intended on handling the logic to
    * ensure that you can check if user inputted strings are valid before letting them
@@ -42,15 +43,35 @@ const useLabRepair = () => {
    */
   const handleUserInputChange = (dataId, newValue) => {
     setExercisePromptsState((previous) => {
-      return previous.map((dateRepair) =>
+      const updatedState = previous.map((dateRepair) =>
         dateRepair.id === dataId
           ? {
-              ...dateRepair,
-              userInput: newValue,
-            }
+            ...dateRepair,
+            userInput: newValue,
+          }
           : dateRepair
       );
+      updatedState.forEach((value, index) => {
+        handleError(index, value.userInput);
+      });
+      return updatedState;
     });
+  };
+
+  const handleError = (id, value) => {
+    const element = exercisePromptsState.find((element) => element.id === id);
+    if (element && value !== element.correct_expression) {
+      setError((prevState) => ({
+        ...prevState,
+        [id]: true,
+      }));
+    } else {
+      setError((prevState) => ({
+        ...prevState,
+        [id]: false,
+      }));
+    }
+    return error;
   };
 
   const isRepairComplete = (exercisePromptsState, isInputValid) => {
@@ -69,6 +90,7 @@ const useLabRepair = () => {
       checkInputValid,
       setExercisePromptsState,
       handleUserInputChange,
+      handleError,
       isRepairComplete,
     },
   };

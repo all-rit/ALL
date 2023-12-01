@@ -7,7 +7,9 @@ import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
 import PropTypes from "prop-types";
 import HTMLTag from "../../../all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
+
 
 export const NavBarRepair = (props = {}) => {
   const { navItems, userInput } = props;
@@ -16,8 +18,8 @@ export const NavBarRepair = (props = {}) => {
 
   const handleError = (id, value) => {
     userInput(id, value);
-    const country = navItems.find((item) => item.id === id);
-    if (country && value !== item.correct_expression) {
+    const navItem = navItems.find((item) => item.id === id);
+    if (navItem && value !== navItem.correct_expression) {
       setError((prevState) => ({
         ...prevState,
         [id]: true,
@@ -75,6 +77,7 @@ export const NavBarRepair = (props = {}) => {
               attributes={{
                 onChange: (event) => {
                   userInput(element.id, event.target.value);
+                  handleError(element.id, event.target.value);
                 },
                 name: element.name,
                 type: "text",
