@@ -7,25 +7,11 @@ import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
 import PropTypes from "prop-types";
 import HTMLTag from "../../../all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
 
-export const NavBarRepair = (props = {}) => {
-  const { navItems = [], userInput, isInputValid } = props;
-
-  const [error, setError] = useState(false);
-
-  const invalidRepair = () => {
-    navItems.forEach((item, index) => {
-      if (isInputValid[index] === false) {
-        setError[item.id] = true;
-      }
-    });
-  };
-
-  useEffect(() => {
-    invalidRepair();
-  }, []);
+const NavBarRepair = (props = {}) => {
+  const { navItems, userInput, isInputValid, isFirst } = props;
 
   return (
     <>
@@ -56,7 +42,6 @@ export const NavBarRepair = (props = {}) => {
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={4} />
-            {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
             <CommentText> {element.comment} </CommentText>
           </CodeLine>
           <CodeLine>
@@ -71,17 +56,17 @@ export const NavBarRepair = (props = {}) => {
                 placeholder: "Enter icon image file here",
               }}
             />
-            {error[element.id] && (
-              <CodeLine>
-                <MultiTab numberOfTabs={3} />
-                <ErrorText>
-                  Error in form submission. Please check your input values and
-                  resubmit.
-                </ErrorText>
-              </CodeLine>
-            )}
             <HTMLTag>/&#62; </HTMLTag>
           </CodeLine>
+          {(!isInputValid[index] && !isFirst) && (
+            <CodeLine>
+              <MultiTab numberOfTabs={4} />
+              <ErrorText>
+                Error in form submission. Please check your input values and
+                resubmit.
+              </ErrorText>
+            </CodeLine>
+          )}
           <CodeLine>
             <MultiTab numberOfTabs={3} />
             <HTMLTag> &#60;/div&#62;</HTMLTag>
@@ -105,6 +90,7 @@ NavBarRepair.propTypes = {
   userInput: PropTypes.func,
   navItems: PropTypes.array,
   isInputValid: PropTypes.array,
+  isFirst: PropTypes.bool,
 };
 
 export default NavBarRepair;

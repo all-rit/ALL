@@ -6,25 +6,11 @@ import CommentText from "../../../all-components/CodeBlock/StyleComponents/Comme
 import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText";
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const AddressRepairCodeBlock = (props = {}) => {
-  const { addressForms, userInput, isInputValid } = props;
-
-  const [error, setError] = useState(false);
-
-  const invalidRepair = () => {
-    addressForms.forEach((country, index) => {
-      if (!isInputValid[index]) {
-        setError[country.id] = true;
-      }
-    });
-  };
-
-  useEffect(() => {
-    invalidRepair();
-  }, []);
+  const { addressForms, userInput, isInputValid, isFirst } = props;
 
   return (
     <>
@@ -94,7 +80,7 @@ const AddressRepairCodeBlock = (props = {}) => {
               />
             )}
           </CodeLine>
-          {error[country.id] && (
+          {(!isInputValid[index] && isFirst) && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
@@ -125,6 +111,7 @@ AddressRepairCodeBlock.propTypes = {
   addressForms: PropTypes.array,
   isInputValid: PropTypes.array,
   userInput: PropTypes.func,
+  isFirst: PropTypes.bool,
 };
 
 export default AddressRepairCodeBlock;

@@ -24,7 +24,7 @@ const DateRepair = ({ user }) => {
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
-  const { exercisePromptsState, isInputValid } = data;
+  const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
   return (
@@ -43,6 +43,7 @@ const DateRepair = ({ user }) => {
           dateForms={exercisePromptsState}
           userInput={handleUserInputChange}
           isInputValid={isInputValid}
+          isFirst={isFirst}
         />
       }
       navigateNext={() => handleNav()}

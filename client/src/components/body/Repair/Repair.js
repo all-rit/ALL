@@ -39,6 +39,9 @@ const Repair = (props) => {
       setEnableNext(true);
     }
     await submitRepair();
+    if (!localValidateRepair) {
+      await fetchRepair();
+    }
   };
 
   const handleNext = async () => {

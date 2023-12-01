@@ -12,20 +12,7 @@ import PropTypes from "prop-types";
 import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const DateFormRepair = (props = {}) => {
-  const { dateForms, userInput, isInputValid } = props;
-  const [error, setError] = useState(false);
-
-  const invalidRepair = () => {
-    dateForms.forEach((country, index) => {
-      if (!isInputValid[index]) {
-        setError[country.id] = true;
-      }
-    });
-  };
-
-  useEffect(() => {
-    invalidRepair();
-  }, []);
+  const { dateForms, userInput, isInputValid, isFirst } = props;
 
   return (
     <>
@@ -86,7 +73,7 @@ const DateFormRepair = (props = {}) => {
               />
             )}
           </CodeLine>
-          {error[country.id] && (
+          {(!isInputValid[index] && !isFirst) && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
