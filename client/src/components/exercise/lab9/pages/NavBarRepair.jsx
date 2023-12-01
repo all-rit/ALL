@@ -7,35 +7,24 @@ import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
 import PropTypes from "prop-types";
 import HTMLTag from "../../../all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
 
 export const NavBarRepair = (props = {}) => {
-  const { navItems, userInput } = props;
+  const { navItems = [], userInput, isInputValid } = props;
 
   const [error, setError] = useState(false);
 
-  const handleError = (id, value) => {
-    userInput(id, value);
-    const navItem = navItems.find((item) => item.id === id);
-    if (navItem && value !== navItem.correct_expression) {
-      setError((prevState) => ({
-        ...prevState,
-        [id]: true,
-      }));
-    } else {
-      setError((prevState) => ({
-        ...prevState,
-        [id]: false,
-      }));
-    }
+  const invalidRepair = () => {
+    navItems.forEach((item, index) => {
+      if (isInputValid[index] === false) {
+        setError[item.id] = true;
+      }
+    });
   };
 
   useEffect(() => {
-    navItems.forEach((item) => {
-      handleError(item.id, item.userInput);
-      console.log(item.id);
-    });
+    invalidRepair();
   }, []);
 
   return (
@@ -76,7 +65,6 @@ export const NavBarRepair = (props = {}) => {
               attributes={{
                 onChange: (event) => {
                   userInput(element.id, event.target.value);
-                  handleError(element.id, event.target.value);
                 },
                 name: element.name,
                 type: "text",
@@ -116,6 +104,7 @@ export const NavBarRepair = (props = {}) => {
 NavBarRepair.propTypes = {
   userInput: PropTypes.func,
   navItems: PropTypes.array,
+  isInputValid: PropTypes.array,
 };
 
 export default NavBarRepair;

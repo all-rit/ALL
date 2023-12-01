@@ -10,32 +10,20 @@ import React, { useState, useEffect } from "react";
 import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const AddressRepairCodeBlock = (props = {}) => {
-  const { addressForms, userInput } = props;
+  const { addressForms, userInput, isInputValid } = props;
 
   const [error, setError] = useState(false);
 
-  const handleError = (id, value) => {
-    userInput(id, value);
-    console.log(userInput(id, value));
-    const country = addressForms.find((country) => country.id === id);
-    if (country && value !== country.correct_expression) {
-      setError((prevState) => ({
-        ...prevState,
-        [id]: true,
-      }));
-    } else {
-      setError((prevState) => ({
-        ...prevState,
-        [id]: false,
-      }));
-    }
+  const invalidRepair = () => {
+    addressForms.forEach((country, index) => {
+      if (!isInputValid[index]) {
+        setError[country.id] = true;
+      }
+    });
   };
 
   useEffect(() => {
-    addressForms.forEach((country) => {
-      handleError(country.id, country.userInput);
-      console.log(country.id);
-    });
+    invalidRepair();
   }, []);
 
   return (
@@ -84,7 +72,6 @@ const AddressRepairCodeBlock = (props = {}) => {
                 attributes={{
                   onChange: (event) => {
                     userInput(country.id, event.target.value);
-                    handleError(country.id, event.target.value);
                   },
                   name: country.countryName,
                   type: "text",
@@ -136,6 +123,7 @@ const AddressRepairCodeBlock = (props = {}) => {
 
 AddressRepairCodeBlock.propTypes = {
   addressForms: PropTypes.array,
+  isInputValid: PropTypes.array,
   userInput: PropTypes.func,
 };
 

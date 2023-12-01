@@ -20,7 +20,7 @@ const AddressRepair = ({ user }) => {
     GAME_STATES.REPAIR_ADDRESS_FORM,
     AddressRepairData.countries
   );
-  const { exercisePromptsState } = data;
+  const { exercisePromptsState, isInputValid } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
   return (
@@ -38,7 +38,7 @@ const AddressRepair = ({ user }) => {
         <AddressRepairCodeBlock
           addressForms={exercisePromptsState}
           userInput={handleUserInputChange}
-          repairError={checkInputValid}
+          isInputValid={isInputValid}
         />
       }
       navigateNext={() => {

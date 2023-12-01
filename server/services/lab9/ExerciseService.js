@@ -14,7 +14,6 @@ async function getExercise(data) {
           order: [['attemptCount', 'DESC']],
           where: {
             userid: data,
-            isComplete: false,
           },
           raw: true,
         },
@@ -36,20 +35,23 @@ async function getExercise(data) {
 async function postExercise(data) {
   try {
     const {userId, isAddressComplete,
-      isDateComplete, isNavComplete, isExerciseComplete, isComplete} = data;
+      isDateComplete, isNavComplete,
+      isExerciseComplete,
+      hasViewed} = data;
     const getExerciseResponse = await getExercise(userId);
     const currentTime = new Date().toISOString();
-    if (!getExerciseResponse || getExerciseResponse.isComplete === true) {
-      const newExercise = {
-        userid: userId,
-        isAddressComplete: isAddressComplete,
-        isDateComplete: isDateComplete,
-        isNavComplete: isNavComplete,
-        isExerciseComplete: isExerciseComplete,
-        isComplete: false,
-        attemptTime: currentTime,
-        attemptCount: 1,
-      };
+    const newExercise = {
+      userid: userId,
+      isAddressComplete: false,
+      isDateComplete: false,
+      isNavComplete: false,
+      isExerciseComplete: false,
+      attemptTime: currentTime,
+      attemptCount: 1,
+      hasViewed: false,
+    };
+    if (!getExerciseResponse) {
+      // adds in new entry
       return await db.ExerciseLab9.create(newExercise).id;
     } else {
       const convert = parseInt(getExerciseResponse.attemptCount);
@@ -62,8 +64,9 @@ async function postExercise(data) {
         isExerciseComplete: isExerciseComplete,
         attemptTime: currentTime,
         attemptCount: newVal,
-        isComplete: isComplete,
+        hasViewed: hasViewed,
       };
+        // reset state
       return await db.ExerciseLab9.create(updatedExercise).id;
     }
   } catch (error) {

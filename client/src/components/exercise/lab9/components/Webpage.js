@@ -19,46 +19,73 @@ const Webpage = ({ user }) => {
   const [isNavComplete, setNavComplete] = useState(false);
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
-  const [isComplete, setIsComplete] = useState(true);
-
-  const handleComplete = () => {
+  const [isComplete, setIsComplete] = useState(false);
+  /**
+   * handleComplete(): is a function that is responsible for
+   * performing the action of setting the viewed state of the
+   * page component to know to reset the exercise on the next
+   * play through.
+   */
+  const handleComplete = async () => {
     if (isComplete) {
       // navigate to the conclusion page
       // only when all repairs are completed
+      const body = {
+        userid: user.userid,
+        isAddressComplete: isAddressComplete,
+        isDateComplete: isDateComplete,
+        isNavComplete: isNavComplete,
+        isExerciseComplete: isComplete,
+        hasViewed: true,
+      };
+      await ExerciseService.submitExercise(body);
       navigate("/Lab9/Exercise/Conclusion");
     }
+  };
+
+  /**
+   * resetData(): helper function that is responsible for
+   * clearing the state of the component. and pushing the new
+   * body to the db.
+   */
+  const resetData = async () => {
+    const body = {
+      userid: user.userid,
+      isAddressComplete: false,
+      isDateComplete: false,
+      isNavComplete: false,
+      isExerciseComplete: false,
+      hasViewed: false,
+    };
+    setIsComplete(false);
+    setAddressComplete(false);
+    setDateComplete(false);
+    setNavComplete(false);
+    // to create initial exercise to db
+    await ExerciseService.submitExercise(body);
   };
 
   const dataHandling = async () => {
     try {
       const newState = await ExerciseService.fetchExercise(user);
+      // if the data returned null then reset data
       if (!newState) {
-        const body = {
-          userid: user.userid,
-          isAddressComplete: false,
-          isDateComplete: false,
-          isNavComplete: false,
-          isComplete: false,
-        };
-        // to create initial exercise to db
-        await ExerciseService.submitExercise(body);
+        resetData();
       } else {
-        const { isNavComplete, isDateComplete, isAddressComplete } = newState;
-        const localState = [isNavComplete, isDateComplete, isAddressComplete];
+        const {
+          isNavComplete,
+          isDateComplete,
+          isAddressComplete,
+          isExerciseComplete,
+          hasViewed,
+        } = newState;
         setNavComplete(isNavComplete);
         setDateComplete(isDateComplete);
         setAddressComplete(isAddressComplete);
-        const isLabComplete = localState.every((value) => value === true);
-        if (isLabComplete) {
-          setIsComplete(isLabComplete);
-          const complete = {
-            userid: user.userid,
-            isNavComplete: isNavComplete,
-            isDateComplete: isDateComplete,
-            isAddressComplete: isAddressComplete,
-            isComplete: isLabComplete,
-          };
-          ExerciseService.submitExercise(complete);
+        setIsComplete(isExerciseComplete);
+        // other reset state to handle if the user has completed what they were doing.
+        if (isExerciseComplete && hasViewed) {
+          resetData();
         }
       }
     } catch (error) {
