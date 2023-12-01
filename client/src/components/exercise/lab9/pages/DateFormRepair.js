@@ -7,7 +7,7 @@ import CommentText from "../../../all-components/CodeBlock/StyleComponents/Comme
 import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText";
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
@@ -17,11 +17,26 @@ const DateFormRepair = (props = {}) => {
 
   const handleError = (id, value) => {
     userInput(id, value);
-    setError((prevState) => ({
-      ...prevState,
-      [id]: true,
-    }));
+    const country = dateForms.find((country) => country.id === id);
+    if (country && value !== country.correct_expression) {
+      setError((prevState) => ({
+        ...prevState,
+        [id]: true,
+      }));
+    } else {
+      setError((prevState) => ({
+        ...prevState,
+        [id]: false,
+      }));
+    }
   };
+
+  useEffect(() => {
+    dateForms.forEach((country) => {
+      handleError(country.id, country.userInput)
+      console.log(country.id)
+    })
+  }, []);
 
   return (
     <>
@@ -65,6 +80,7 @@ const DateFormRepair = (props = {}) => {
                 attributes={{
                   onChange: (event) => {
                     userInput(country.id, event.target.value);
+                    handleError(country.id, event.target.value);
                   },
                   name: country.name,
                   type: "text",
@@ -88,9 +104,8 @@ const DateFormRepair = (props = {}) => {
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
-                {" "}
                 Error in form submission. Please check your input values and
-                resubmit.{" "}
+                resubmit.
               </ErrorText>
             </CodeLine>
           )}

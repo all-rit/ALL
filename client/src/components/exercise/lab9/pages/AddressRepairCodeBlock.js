@@ -6,10 +6,37 @@ import CommentText from "../../../all-components/CodeBlock/StyleComponents/Comme
 import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText";
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText"
 
 const AddressRepairCodeBlock = (props = {}) => {
   const { addressForms, userInput } = props;
+
+  const [error, setError] = useState(false);
+
+  const handleError = (id, value) => {
+    userInput(id, value);
+    const country = addressForms.find((country) => country.id === id);
+    if (country && value !== country.correct_expression) {
+      setError((prevState) => ({
+        ...prevState,
+        [id]: true,
+      }));
+    } else {
+      setError((prevState) => ({
+        ...prevState,
+        [id]: false,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    addressForms.forEach((country) => {
+      handleError(country.id, country.userInput)
+      console.log(country.id)
+    })
+  }, []);
+
   return (
     <>
       <ReactText>const AddressFormats = (props) =&#62; &#123;</ReactText>
@@ -80,6 +107,15 @@ const AddressRepairCodeBlock = (props = {}) => {
               />
             )}
           </CodeLine>
+          {error[country.id] && (
+            <CodeLine>
+              <MultiTab numberOfTabs={3} />
+              <ErrorText>
+                Error in form submission. Please check your input values and
+                resubmit.
+              </ErrorText>
+            </CodeLine>
+          )}
 
           {/* line 4 */}
           <CodeLine>
