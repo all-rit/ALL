@@ -10,7 +10,6 @@ import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText
 import React, { useEffect, useState } from "react";
 import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
 
-
 export const NavBarRepair = (props = {}) => {
   const { navItems, userInput } = props;
 

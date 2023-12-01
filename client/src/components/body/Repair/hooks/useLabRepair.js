@@ -10,7 +10,7 @@ const useLabRepair = () => {
   const [exercisePromptsState, setExercisePromptsState] = useState([]);
   const [isInputValid, setIsInputValid] = useState([]);
   const [repairComplete, setIsComplete] = useState(false);
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
   /**
    * checkInputValid(): is a function that is intended on handling the logic to
    * ensure that you can check if user inputted strings are valid before letting them
@@ -46,9 +46,9 @@ const useLabRepair = () => {
       const updatedState = previous.map((dateRepair) =>
         dateRepair.id === dataId
           ? {
-            ...dateRepair,
-            userInput: newValue,
-          }
+              ...dateRepair,
+              userInput: newValue,
+            }
           : dateRepair
       );
       updatedState.forEach((value, index) => {

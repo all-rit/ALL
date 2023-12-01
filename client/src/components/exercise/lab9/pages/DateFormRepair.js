@@ -13,19 +13,19 @@ import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorTe
 
 const DateFormRepair = (props = {}) => {
   const { dateForms, userInput, isInputValid } = props;
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const invalidRepair = () => {
     dateForms.forEach((country, index) => {
       if (!isInputValid[index]) {
-        setError[country.id] = true
+        setError[country.id] = true;
       }
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     invalidRepair();
-  }, [])
+  }, []);
 
   return (
     <>
