@@ -40,10 +40,8 @@ const AddressRepairCodeBlock = (props = {}) => {
   return (
     <>
       <ReactText>const AddressFormats = (props) =&#62; &#123;</ReactText>
-      {/* eslint-disable-next-line no-unused-vars */}
       {addressForms.map((country, index) => (
-        // eslint-disable-next-line react/jsx-key
-        <CodeLine>
+        <CodeLine key={index}>
           <Tab />{" "}
           <ReactText>
             {" "}
