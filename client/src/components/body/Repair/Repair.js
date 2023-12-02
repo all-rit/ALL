@@ -41,8 +41,8 @@ const Repair = (props) => {
   /**
    * handleUpdate(): is an async function that is responsible for
    * handling the behavior for validating and posting the results
-   * of a repair session. This function checks to see if the 
-   * repair is correct then if it's not complete fetches the prior 
+   * of a repair session. This function checks to see if the
+   * repair is correct then if it's not complete fetches the prior
    * state so the user can see errors update in realtime.
    */
   const handleUpdate = async () => {
@@ -57,7 +57,7 @@ const Repair = (props) => {
     }
   };
   /**
-   * handleNext(): is a helper function responsible 
+   * handleNext(): is a helper function responsible
    * for navigating the user to the next page in the exercise.
    */
   const handleNext = async () => {
