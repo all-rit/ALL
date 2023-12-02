@@ -65,7 +65,7 @@ const Webpage = ({ user }) => {
     await ExerciseService.submitExercise(body);
   };
   /**
-   * dataHandling(): is a function that is responsible for getting and 
+   * dataHandling(): is a function that is responsible for getting and
    * retrieving data when the exercise is in progress. This allows for fetching the
    * state of the user from the database, then if the user either has completed their game
    * or is starting a new exercise we can set the state of the user properly.
