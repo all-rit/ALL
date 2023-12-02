@@ -27,11 +27,24 @@ const Repair = (props) => {
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [enableNext, setEnableNext] = useState(false);
 
+  /**
+   * handleRepair(): is a function that is responsible
+   * for handling the opening of the Codeblock on the
+   * repair page. This allows for the fetching of user information
+   * and populates the code block with the code implementation view.
+   */
   const handleRepair = async () => {
     setIsRepairActive(true);
     await fetchRepair();
   };
 
+  /**
+   * handleUpdate(): is an async function that is responsible for
+   * handling the behavior for validating and posting the results
+   * of a repair session. This function checks to see if the 
+   * repair is correct then if it's not complete fetches the prior 
+   * state so the user can see errors update in realtime.
+   */
   const handleUpdate = async () => {
     const localValidateRepair = validateRepair();
     if (localValidateRepair) {
@@ -43,7 +56,10 @@ const Repair = (props) => {
       await fetchRepair();
     }
   };
-
+  /**
+   * handleNext(): is a helper function responsible 
+   * for navigating the user to the next page in the exercise.
+   */
   const handleNext = async () => {
     navigateNext();
   };
