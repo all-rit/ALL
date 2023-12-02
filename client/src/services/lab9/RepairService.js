@@ -32,7 +32,6 @@ const RepairService = {
         repair: data.repair,
         section: data.section,
         isComplete: data.isComplete,
-        numRepair: data.numRepair,
       };
       return await API.postWithBody(endpoints.POST_REPAIR, body);
     } catch (error) {
