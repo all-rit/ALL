@@ -21,7 +21,7 @@ const NavRepairPage = ({ user }) => {
     GAME_STATES.REPAIR_NAV_BAR,
     NavBarData.navItems
   );
-  const { exercisePromptsState } = data;
+  const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
   const handleNav = () => {
@@ -42,6 +42,8 @@ const NavRepairPage = ({ user }) => {
         <NavBarRepair
           navItems={exercisePromptsState}
           userInput={handleUserInputChange}
+          isInputValid={isInputValid}
+          isFirst={isFirst}
         />
       }
       navigateNext={() => handleNav()}

@@ -8,9 +8,11 @@ import PropTypes from "prop-types";
 import HTMLTag from "../../../all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "../../../all-components/CodeBlock/StyleComponents/HTMLText";
 import React from "react";
+import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
 
-export const NavBarRepair = (props = {}) => {
-  const { navItems = [], userInput } = props;
+const NavBarRepair = (props = {}) => {
+  const { navItems, userInput, isInputValid, isFirst } = props;
+
   return (
     <>
       <ReactText>const NavBar = () =&#62; &#123;</ReactText>
@@ -40,7 +42,6 @@ export const NavBarRepair = (props = {}) => {
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={4} />
-            {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
             <CommentText> {element.comment} </CommentText>
           </CodeLine>
           <CodeLine>
@@ -57,6 +58,15 @@ export const NavBarRepair = (props = {}) => {
             />
             <HTMLTag>/&#62; </HTMLTag>
           </CodeLine>
+          {!isInputValid[index] && !isFirst && (
+            <CodeLine>
+              <MultiTab numberOfTabs={4} />
+              <ErrorText>
+                Error in form submission. Please check your input values and
+                resubmit.
+              </ErrorText>
+            </CodeLine>
+          )}
           <CodeLine>
             <MultiTab numberOfTabs={3} />
             <HTMLTag> &#60;/div&#62;</HTMLTag>
@@ -79,6 +89,8 @@ export const NavBarRepair = (props = {}) => {
 NavBarRepair.propTypes = {
   userInput: PropTypes.func,
   navItems: PropTypes.array,
+  isInputValid: PropTypes.array,
+  isFirst: PropTypes.bool,
 };
 
 export default NavBarRepair;

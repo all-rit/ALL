@@ -7,16 +7,16 @@ import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import PropTypes from "prop-types";
 import React from "react";
+import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const AddressRepairCodeBlock = (props = {}) => {
-  const { addressForms, userInput } = props;
+  const { addressForms, userInput, isInputValid, isFirst } = props;
+
   return (
     <>
       <ReactText>const AddressFormats = (props) =&#62; &#123;</ReactText>
-      {/* eslint-disable-next-line no-unused-vars */}
       {addressForms.map((country, index) => (
-        // eslint-disable-next-line react/jsx-key
-        <CodeLine>
+        <CodeLine key={index}>
           <Tab />{" "}
           <ReactText>
             {" "}
@@ -80,6 +80,15 @@ const AddressRepairCodeBlock = (props = {}) => {
               />
             )}
           </CodeLine>
+          {!isInputValid[index] && !isFirst && (
+            <CodeLine>
+              <MultiTab numberOfTabs={3} />
+              <ErrorText>
+                Error in form submission. Please check your input values and
+                resubmit.
+              </ErrorText>
+            </CodeLine>
+          )}
 
           {/* line 4 */}
           <CodeLine>
@@ -100,7 +109,9 @@ const AddressRepairCodeBlock = (props = {}) => {
 
 AddressRepairCodeBlock.propTypes = {
   addressForms: PropTypes.array,
+  isInputValid: PropTypes.array,
   userInput: PropTypes.func,
+  isFirst: PropTypes.bool,
 };
 
 export default AddressRepairCodeBlock;
