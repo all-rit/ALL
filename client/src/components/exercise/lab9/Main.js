@@ -32,7 +32,6 @@ const Main = (props) => {
           <Webpage user={user} path={"/page"} />
           <LocalizationRepair user={user} path={`${REPAIR}/*`} />
           <Conclusion path="/Conclusion" />
-          <ContextTester user={user} path={"/Context"} />
         </Router>
       </GameStateContext.Provider>
     </div>
@@ -83,7 +82,7 @@ const ContextTester = () => {
         </button>
       </div>
       <button
-        onClick={() => navigate(`/Lab9/Exercise${REPAIR}/${exerciseState}`)}
+        onClick={() => navigate(`/Lab9/Exercise/${REPAIR}/${exerciseState}`)}
       >
         go to {exerciseState}
       </button>

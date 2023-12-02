@@ -1,7 +1,7 @@
 const LAB_ID = 9;
 const START_PATH = "/*";
 const EXERCISE_SELECTION = "/Exercise";
-const REPAIR = "/GameRepair";
+const REPAIR = "/Repair";
 
 const REPAIR_ADDRESS_FORM = "address-repair";
 const REPAIR_DATE_REPAIR = "date-repair";

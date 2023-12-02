@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { navigate } from "@reach/router";
 import { GAME_STATES } from "../../../../../constants/lab9";
 import PropTypes from "prop-types";
+import { REPAIR } from "src/constants/lab9/index";
 
 /**
  * NewsletterForm is a sub-component of the main Webpage component.
@@ -20,7 +21,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
   };
   const handleNav = (path) => {
     updateState(path);
-    navigate(`/Lab9/Exercise/GameRepair/${path}`);
+    navigate(`/Lab9/Exercise${REPAIR}/${path}`);
   };
 
   return (

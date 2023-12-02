@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../../../../assets/images/lab9/logo.png";
-import { GAME_STATES } from "../../../../../constants/lab9";
+import { GAME_STATES, REPAIR } from "../../../../../constants/lab9";
 import { navigate } from "@reach/router";
 import HomeIcon from "@material-ui/icons/Home";
 import BadgeIcon from "@mui/icons-material/Badge";
@@ -70,7 +70,7 @@ const WebpageNav = ({ repairComplete }) => {
 
   const handleNav = (path) => {
     updateState(path);
-    navigate(`/Lab9/Exercise/GameRepair/${path}`);
+    navigate(`/Lab9/Exercise${REPAIR}/${path}`);
   };
 
   return (
