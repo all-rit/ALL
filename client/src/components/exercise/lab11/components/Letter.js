@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import grad_hat from "../../../../assets/images/lab11/grad_hat.png";
 import signature from "../../../../assets/images/lab11/signature.png";
 import { useContext } from "react";
@@ -21,13 +21,17 @@ const Letter = ({ isEditable }) => {
     letterContentArray,
   } = useContext(ExerciseStateContext);
 
+  const [currentLetterContent, setCurrentLetterContent] = useState(letterContent);
+
   const handleNextLetter = () => {
     if (letterContentIndex < letterContentArray.length - 1) {
       setLetterContentIndex(letterContentIndex + 1);
       setLetterContent(letterContentArray[letterContentIndex + 1]);
+      setCurrentLetterContent(letterContentArray[letterContentIndex + 1]);
     } else {
       setLetterContentIndex(0);
       setLetterContent(letterContentArray[0]);
+      setCurrentLetterContent(letterContentArray[0]);
     }
   };
 
@@ -44,7 +48,7 @@ const Letter = ({ isEditable }) => {
   return (
     <div className={`tw-w-full tw-h-full`}>
       {/* Letter Header */}
-      <div className={`tw-h-ful tw-my-8 tw-flex tw-flex-row tw-w-full`}>
+      <div className={`tw-my-8 tw-flex tw-flex-row tw-w-full`}>
         <div
           className={`tw-w-full tw-h-full md:tw-w-1/2 sm:tw-px-5 tw-flex tw-flex-row sm:tw-space-x-6 tw-items-center`}
         >
@@ -137,7 +141,7 @@ const Letter = ({ isEditable }) => {
                 setLetterContent(e.target.innerText);
               }}
             >
-              {letterContent}
+              {currentLetterContent}
             </div>
             <div
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-bold tw-break-words tw-self-start tw-text-start tw-mt-10`}
