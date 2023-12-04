@@ -21,7 +21,8 @@ const Letter = ({ isEditable }) => {
     letterContentArray,
   } = useContext(ExerciseStateContext);
 
-  const [currentLetterContent, setCurrentLetterContent] = useState(letterContent);
+  const [currentLetterContent, setCurrentLetterContent] =
+    useState(letterContent);
 
   const handleNextLetter = () => {
     if (letterContentIndex < letterContentArray.length - 1) {
