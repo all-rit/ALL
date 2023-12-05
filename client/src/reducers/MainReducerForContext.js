@@ -54,18 +54,3 @@ export const MainReducerForContext = (state = initialState, action) => {
       return state;
   }
 };
-
-export const actions = {
-  setBody: (dispatch, body) =>
-    dispatch({ type: types.SET_BODY, payload: { body: body } }),
-  login: (dispatch) => dispatch({ type: types.LOGIN }),
-  setLab: (dispatch, lab) =>
-    dispatch({ type: types.SET_LAB, payload: { lab: lab } }),
-  updateUser: (dispatch, user) =>
-    dispatch({ type: types.UPDATE_USER, payload: { user: user } }),
-  updateUserState: (dispatch, userState) =>
-    dispatch({
-      type: types.UPDATE_USER_STATE,
-      payload: { userState: userState },
-    }),
-};

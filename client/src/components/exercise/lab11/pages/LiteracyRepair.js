@@ -21,7 +21,7 @@ const LiteracyRepair = () => {
   const { user = null, actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   return (

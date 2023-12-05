@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import { Router, navigate } from "@reach/router";
 import LiteracyExerciseStart from "./pages/LiteracyExerciseStart";
 import LiteracyExerciseEnd from "./pages/LiteracyExerciseEnd";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../reducers/lab11/ExerciseReducer";
-import { connect } from "react-redux";
 import InformationLetterEmail from "./pages/InformationLetterEmail";
 import {
   LETTER_TEXT_ARRAY,
@@ -19,9 +16,11 @@ import LiteracyRepair from "./pages/LiteracyRepair";
 import FogIndexFormulaSentences from "./pages/Explanations/FogIndexFormulaSetences";
 import FogIndexFormulaComplexWords from "./pages/Explanations/FogIndexFormulaComplexWords";
 import FogIndexFormulaConclusion from "./pages/Explanations/FogIndexFormulaConclusion";
+import useMainStateContext from "src/reducers/MainContext";
 
 const Main = (props) => {
-  const { user = "", actions } = props;
+  const { user = null } = props;
+  const { actions } = useMainStateContext();
   const [exerciseState, setExerciseState] = useState("");
   const [letterContent, setLetterContent] = useState(LETTER_TEXT_FOG_INDEX_20);
   const [totalWords, setTotalWords] = useState(0);
@@ -188,17 +187,6 @@ const Main = (props) => {
 
 Main.propTypes = {
   user: PropTypes.object,
-  actions: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

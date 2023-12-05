@@ -37,14 +37,17 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const navigate = (state, actions, body, lab = state.main.lab) => {
-  if (!alert_check(state)) {
+const navigate = (state, reduxState, actions, body, lab = state.main.lab) => {
+  if (!alert_check(state, reduxState)) {
     handleRedirect(actions, lab, body);
   }
 };
 
-const alert_check = (state) => {
-  if (getExerciseState(state) !== "EXERCISE_IDLE" && state.main.body === 2) {
+const alert_check = (state, reduxState) => {
+  if (
+    getExerciseState(state, reduxState) !== "EXERCISE_IDLE" &&
+    state.main.body === 2
+  ) {
     alert("The exercise is still in progress! Please complete the exercise");
     return true;
   }
@@ -81,7 +84,7 @@ const Header = (props) => {
   const count = state.main.body;
   const loginEnabled =
     state.main.lab === 0 ||
-    getExerciseState(state) === EXERCISE_IDLE ||
+    getExerciseState(state, props.state) === EXERCISE_IDLE ||
     state.main.body !== 2;
 
   return (
@@ -102,7 +105,7 @@ const Header = (props) => {
           onClick={() =>
             (state.main.lab === 0 ? state.main.body === 3 : false)
               ? reachNavigate("/Imagine/UserID")
-              : navigate(state, actions, 0, 0)
+              : navigate(state, props.state, actions, 0, 0)
           }
         >
           <img
@@ -174,7 +177,9 @@ const Header = (props) => {
                           className="nav-link "
                           href="# "
                           style={{ color: "#fff" }}
-                          onClick={() => navigate(state, actions, 0, 0)}
+                          onClick={() =>
+                            navigate(state, props.state, actions, 0, 0)
+                          }
                         >
                           <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">Home</li>
@@ -194,7 +199,9 @@ const Header = (props) => {
                               ? activeStyle
                               : { color: "#fff" }
                           }
-                          onClick={() => navigate(state, actions, 1, 0)}
+                          onClick={() =>
+                            navigate(state, props.state, actions, 1, 0)
+                          }
                         >
                           <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">Site Map</li>
@@ -214,7 +221,9 @@ const Header = (props) => {
                       style={
                         state.main.body === 2 ? activeStyle : { color: "#fff" }
                       }
-                      onClick={() => navigate(state, actions, 2, 0)}
+                      onClick={() =>
+                        navigate(state, props.state, actions, 2, 0)
+                      }
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item nav-last">Profile</li>
@@ -238,7 +247,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 0, 0)}
+                    onClick={() => navigate(state, props.state, actions, 0, 0)}
                     href="# "
                     style={{ color: "#fff" }}
                   >
@@ -251,7 +260,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 0)}
+                    onClick={() => navigate(state, props.state, actions, 0)}
                     href="# "
                     style={count === 0 ? activeStyle : { color: "#fff" }}
                   >
@@ -264,7 +273,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 1)}
+                    onClick={() => navigate(state, props.state, actions, 1)}
                     href="# "
                     style={count === 1 ? activeStyle : { color: "#fff" }}
                   >
@@ -277,7 +286,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 2)}
+                    onClick={() => navigate(state, props.state, actions, 2)}
                     href="# "
                     style={count === 2 ? activeStyle : { color: "#fff" }}
                   >
@@ -290,7 +299,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 3)}
+                    onClick={() => navigate(state, props.state, actions, 3)}
                     href="# "
                     style={count === 3 ? activeStyle : { color: "#fff" }}
                   >
@@ -303,7 +312,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 4)}
+                    onClick={() => navigate(state, props.state, actions, 4)}
                     href="# "
                     style={count === 4 ? activeStyle : { color: "#fff" }}
                   >
@@ -322,7 +331,9 @@ const Header = (props) => {
                       className="nav-link "
                       href="# "
                       style={{ color: "#fff" }}
-                      onClick={() => navigate(state, actions, 2, 0)}
+                      onClick={() =>
+                        navigate(state, props.state, actions, 2, 0)
+                      }
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item nav-last">Profile</li>

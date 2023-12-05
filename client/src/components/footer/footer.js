@@ -154,7 +154,8 @@ class Footer extends Component {
     const lab = state.main.lab;
     const body = state.main.body;
     const display =
-      (getExerciseState(state) === "EXERCISE_IDLE" || body !== 2) &&
+      (getExerciseState(state, this.props.state) === "EXERCISE_IDLE" ||
+        body !== 2) &&
       (lab === 0 ? body !== 3 : true);
     const hideOnLanding = lab === 0;
     // for buttons that should not be displayed on the landing page
