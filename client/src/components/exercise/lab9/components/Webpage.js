@@ -11,7 +11,7 @@ import Button from "src/components/all-components/Navigation/Button";
 import { EXERCISE_PLAYING } from "src/constants/lab9/index";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {actions as exerciseActions} from "../../../../reducers/lab9/ExerciseReducer"
+import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
 /**
  * Webpage is a reusable component used to display
  * the ALL University's website homepage.

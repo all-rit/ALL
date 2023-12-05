@@ -1,5 +1,5 @@
 import { navigate } from "@reach/router";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";

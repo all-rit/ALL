@@ -9,11 +9,11 @@ import PropTypes from "prop-types";
 
 const ExerciseStart = ({ actions }) => {
   useEffect(() => {
-    actions.updateState(EXERCISE_IDLE)
+    actions.updateState(EXERCISE_IDLE);
   });
 
   const handleStart = () => {
-    actions.updateState(EXERCISE_PLAYING)
+    actions.updateState(EXERCISE_PLAYING);
     // navigate to the static faux webpage
     navigate("/Lab9/Exercise/InitialPage");
   };
