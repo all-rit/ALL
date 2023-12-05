@@ -74,7 +74,7 @@ const DateFormRepair = (props = {}) => {
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
-                Error in form submission. Please check your input values and
+                Error in form submission. Please enter &quot;{country.correct_expression}&quot; and
                 resubmit.
               </ErrorText>
             </CodeLine>
