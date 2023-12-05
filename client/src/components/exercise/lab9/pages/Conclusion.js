@@ -1,11 +1,22 @@
 import { navigate } from "@reach/router";
-import React from "react";
+import React, {useEffect} from "react";
+import { EXERCISE_IDLE } from "src/constants/lab9/index";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
+import PropTypes from "prop-types";
 
-const Conclusion = () => {
+const Conclusion = (props) => {
+  const { actions } = props;
+
   const handleFinish = () => {
     // navigate to the reinforcement section
     navigate("/Lab9/Reinforcement");
   };
+
+  useEffect(() => {
+    actions.updateState(EXERCISE_IDLE);
+  }, []);
 
   return (
     <>
@@ -44,4 +55,14 @@ const Conclusion = () => {
   );
 };
 
-export default Conclusion;
+Conclusion.propTypes = {
+  actions: PropTypes.string,
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Conclusion);
