@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import {
   EXERCISE_STATES,
+  EXERCISE_PLAYING,
   HEADINGS,
   REPAIR,
 } from "../../../../../constants/lab9";
@@ -17,7 +18,7 @@ import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
  * @param {Object} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */
-const AddressRepair = ({ user }) => {
+const AddressRepair = ({ user, actions }) => {
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_ADDRESS_FORM,
@@ -26,6 +27,10 @@ const AddressRepair = ({ user }) => {
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
+
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
   return (
     <Repair
       fileName={"AddressFormat.js"}
@@ -54,6 +59,7 @@ const AddressRepair = ({ user }) => {
 
 AddressRepair.propTypes = {
   user: PropTypes.object,
+  actions: PropTypes.object,
 };
 
 export default AddressRepair;

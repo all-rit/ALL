@@ -1,10 +1,11 @@
-import React from "react";
+import React ,{ useEffect } from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import DateFormData from "../../../../../constants/lab9/DateFormData";
 import {
   HEADINGS,
   EXERCISE_STATES,
+  EXERCISE_PLAYING,
   REPAIR,
 } from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
@@ -18,12 +19,18 @@ import { navigate } from "@reach/router";
  * @returns
  */
 
-const DateRepair = ({ user }) => {
+const DateRepair = (props) => {
+  const { user, actions} = props
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_DATE_REPAIR,
     DateFormData.countries
   );
+  
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
+
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
@@ -56,5 +63,6 @@ const DateRepair = ({ user }) => {
 
 DateRepair.propTypes = {
   user: PropTypes.object,
+  actions: PropTypes.object,
 };
 export default DateRepair;

@@ -1,7 +1,18 @@
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useEffect } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
+import { EXERCISE_PLAYING } from "../../../../constants/lab9";
+import PropTypes from "prop-types";
 
-const Discovery = () => {
+const Discovery = (props) => {
+  const { actions } = props;
+
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
+
   const handleNext = () => {
     // navigate to the webpage
     navigate("/Lab9/Exercise/page");
@@ -48,4 +59,14 @@ const Discovery = () => {
   );
 };
 
-export default Discovery;
+Discovery.propTypes = {
+  actions: PropTypes.string,
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Discovery);
