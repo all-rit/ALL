@@ -45,7 +45,8 @@ const NavBarRepair = (props = {}) => {
             <CommentText> {element.comment} </CommentText>
           </CodeLine>
           <CodeLine>
-            <MultiTab numberOfTabs={4} /> <HTMLTag> &#60;img href = &quot;</HTMLTag>
+            <MultiTab numberOfTabs={4} />{" "}
+            <HTMLTag> &#60;img href = &quot;</HTMLTag>
             <CodeBlockInput
               attributes={{
                 onChange: (event) => {
@@ -62,8 +63,8 @@ const NavBarRepair = (props = {}) => {
             <CodeLine>
               <MultiTab numberOfTabs={4} />
               <ErrorText>
-                Error in form submission. Please enter &quot;{element.correct_expression}&quot; and
-                resubmit.
+                Error in form submission. Please enter &quot;
+                {element.correct_expression}&quot; and resubmit.
               </ErrorText>
             </CodeLine>
           )}
