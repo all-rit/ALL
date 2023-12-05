@@ -170,10 +170,13 @@ FacadeWebpage.propTypes = {
   actions: PropTypes.string,
 };
 
+const mapStateToProps = (state) => ({
+  state: state,
+});
+
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({ ...exerciseActions }, dispatch),
   };
 };
-
-export default connect(null, mapDispatchToProps)(FacadeWebpage);
+export default connect(mapStateToProps, mapDispatchToProps)(FacadeWebpage);

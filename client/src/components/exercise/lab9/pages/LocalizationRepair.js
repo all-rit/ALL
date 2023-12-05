@@ -8,6 +8,10 @@ import DateRepair from "./Repairs/DateRepair";
 import NavRepairPage from "./Repairs/NavRepairPage";
 import { EXERCISE_STATES } from "../../../../constants/lab9";
 
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux"
+import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
+
 /**
  * LocalizationRepair is a Route wrapper component that is responsible for declaring the
  * structure for routing of individual repair pages. this allows for the addition of repairs
@@ -15,21 +19,33 @@ import { EXERCISE_STATES } from "../../../../constants/lab9";
  * @param {String} user is a string representing user id for data retrieval purposes.
  * @returns
  */
-const LocalizationRepair = ({ user }) => {
+const LocalizationRepair = ({ user, actions }) => {
   return (
     <Router className="app">
-      <DateRepair path={`${EXERCISE_STATES.REPAIR_DATE_REPAIR}`} user={user} />
+      <DateRepair path={`${EXERCISE_STATES.REPAIR_DATE_REPAIR}`} user={user} actions={ actions } />
       <AddressRepair
         path={`${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`}
         user={user}
+        actions={actions}
       />
-      <NavRepairPage path={`${EXERCISE_STATES.REPAIR_NAV_BAR}`} user={user} />
+      <NavRepairPage path={`${EXERCISE_STATES.REPAIR_NAV_BAR}`} user={user} actions={actions} />
     </Router>
   );
 };
 
-export default LocalizationRepair;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({ ...exerciseActions }, dispatch),
+  };
+};
+
+const mapStateToProps = (state) => ({
+  state: state,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocalizationRepair);
 
 LocalizationRepair.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired, 
+  actions: PropTypes.object,
 };

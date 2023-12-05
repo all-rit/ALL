@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import {
   HEADINGS,
   EXERCISE_STATES,
+  EXERCISE_PLAYING,
   REPAIR,
 } from "../../../../../constants/lab9";
 import NavBarRepair from "../NavBarRepair";
@@ -19,7 +20,7 @@ import NavBarData from "../../../../../constants/lab9/NavBarData";
  * @returns
  */
 
-const NavRepairPage = ({ user }) => {
+const NavRepairPage = ({ user, actions }) => {
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_NAV_BAR,
@@ -31,6 +32,10 @@ const NavRepairPage = ({ user }) => {
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
+  
   return (
     <Repair
       fileName={"NavBar.js"}
@@ -57,5 +62,6 @@ const NavRepairPage = ({ user }) => {
 
 NavRepairPage.propTypes = {
   user: PropTypes.object,
+  actions: PropTypes.object,
 };
 export default NavRepairPage;
