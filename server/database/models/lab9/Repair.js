@@ -15,7 +15,11 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.BIGINT,
         },
         section: {
-          type: DataTypes.ENUM(ADDRESS_REPAIR, DATE_REPAIR, NAV_REPAIR),
+          type:
+            DataTypes.ENUM(
+                ADDRESS_REPAIR,
+                DATE_REPAIR,
+                NAV_REPAIR),
         },
         repair: {
           type: DataTypes.JSON,

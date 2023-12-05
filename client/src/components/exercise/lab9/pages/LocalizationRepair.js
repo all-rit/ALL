@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // library imports
 import React from "react";
 import PropTypes from "prop-types";

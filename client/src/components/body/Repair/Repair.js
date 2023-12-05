@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Proptypes from "prop-types";
 import CodeUpdateHeader from "../../exercise/lab3/components/CodeUpdateHeader";

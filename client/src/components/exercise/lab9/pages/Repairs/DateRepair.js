@@ -1,4 +1,3 @@
-/* eslint-disable no-empty-pattern */
 import React from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";

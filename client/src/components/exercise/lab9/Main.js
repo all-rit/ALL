@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
-
-import React, { useState, useContext } from "react";
-import { Router, navigate } from "@reach/router";
+import React, { useState } from "react";
+import { Router } from "@reach/router";
 import PropTypes from "prop-types";
 // lab imported dependencies;
 import LocalizationRepair from "../lab9/pages/LocalizationRepair";
-import { REPAIR, GAME_STATES } from "../../../constants/lab9";
+import { REPAIR, EXERCISE_STATES } from "../../../constants/lab9";
 import GameStateContext from "./Lab9Context";
 import Webpage from "../lab9/components/Webpage";
 import ExerciseStart from "../lab9/pages/ExerciseStart";
@@ -20,7 +18,7 @@ import FacadeWebpage from "./components/FacadeWebpage";
 const Main = (props) => {
   const { user } = props;
   const [exerciseState, setExerciseState] = useState(
-    GAME_STATES.EXERCISE_SELECTION_DEFAULT
+    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT
   );
   return (
     <div className="bottomSpace">

@@ -1,7 +1,7 @@
 import useLabRepair from "../../../../body/Repair/hooks/useLabRepair";
 import { RepairService } from "../../../../../services/lab9/RepairService";
 import { ExerciseService } from "../../../../../services/lab9/ExerciseService";
-import { GAME_STATES } from "../../../../../constants/lab9";
+import { EXERCISE_STATES } from "../../../../../constants/lab9";
 import { useState } from "react";
 
 /**
@@ -67,17 +67,17 @@ const useDataService = (user, section, defaultExerciseState) => {
           const updatedBody = {
             userid: body.userid,
             isAddressComplete:
-              section === GAME_STATES.REPAIR_ADDRESS_FORM
+              section === EXERCISE_STATES.REPAIR_ADDRESS_FORM
                 ? true
                 : isAddressComplete,
 
             isDateComplete:
-              section === GAME_STATES.REPAIR_DATE_REPAIR
+              section === EXERCISE_STATES.REPAIR_DATE_REPAIR
                 ? true
                 : isDateComplete,
 
             isNavComplete:
-              section === GAME_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
+              section === EXERCISE_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
 
             isComplete: false,
             hasViewed: false,
