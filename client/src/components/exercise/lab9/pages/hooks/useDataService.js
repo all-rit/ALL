@@ -38,7 +38,6 @@ const useDataService = (user, section, defaultExerciseState) => {
       } else {
         const { repair } = repairData;
         setExercisePromptsState(Object.values(repair));
-        console.warn(repairData.repairCount);
         if (repairData.repairCount >= 0 && !repairData.isComplete) {
           setIsFirst(false);
         } else {
