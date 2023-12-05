@@ -6,7 +6,7 @@ import { Router } from "@reach/router";
 import AddressRepair from "./Repairs/AddressRepair";
 import DateRepair from "./Repairs/DateRepair";
 import NavRepairPage from "./Repairs/NavRepairPage";
-import { GAME_STATES } from "../../../../constants/lab9";
+import { EXERCISE_STATES } from "../../../../constants/lab9";
 
 /**
  * LocalizationRepair is a Route wrapper component that is responsible for declaring the
@@ -18,9 +18,9 @@ import { GAME_STATES } from "../../../../constants/lab9";
 const LocalizationRepair = ({ user }) => {
   return (
     <Router className="app">
-      <DateRepair path={`${GAME_STATES.REPAIR_DATE_REPAIR}`} user={user} />
-      <AddressRepair path={`${GAME_STATES.REPAIR_ADDRESS_FORM}`} user={user} />
-      <NavRepairPage path={`${GAME_STATES.REPAIR_NAV_BAR}`} user={user} />
+      <DateRepair path={`${EXERCISE_STATES.REPAIR_DATE_REPAIR}`} user={user} />
+      <AddressRepair path={`${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`} user={user} />
+      <NavRepairPage path={`${EXERCISE_STATES.REPAIR_NAV_BAR}`} user={user} />
     </Router>
   );
 };

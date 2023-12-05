@@ -1,7 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
-import { GAME_STATES, HEADINGS, REPAIR } from "../../../../../constants/lab9";
+import { EXERCISE_STATES, HEADINGS, REPAIR } from "../../../../../constants/lab9";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
 import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairData";
@@ -16,7 +16,7 @@ import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
 const AddressRepair = ({ user }) => {
   const { data, functions } = useDataService(
     user,
-    GAME_STATES.REPAIR_ADDRESS_FORM,
+    EXERCISE_STATES.REPAIR_ADDRESS_FORM,
     AddressRepairData.countries
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
@@ -25,7 +25,7 @@ const AddressRepair = ({ user }) => {
   return (
     <Repair
       fileName={"AddressFormat.js"}
-      path={`${REPAIR}/${GAME_STATES.REPAIR_ADDRESS_FORM}`}
+      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`}
       headingText={HEADINGS.REPAIR_ADDRESS_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}
