@@ -72,12 +72,12 @@ const Repair = (props) => {
     navigateNext();
   };
 
-   /*
+  /*
     set the message to be displayed in the popup
   */
-    const popUpHandler = (message) => {
-      setPopUpMessage(message);
-    };
+  const popUpHandler = (message) => {
+    setPopUpMessage(message);
+  };
   return (
     <div>
       <CodeUpdateHeader
@@ -108,7 +108,11 @@ const Repair = (props) => {
           />
         </div>
       </div>
-      <Popup message={popUpMessage} handler={() => popUpHandler} error={!userError} />
+      <Popup
+        message={popUpMessage}
+        handler={() => popUpHandler}
+        error={!userError}
+      />
       {isRepairActive && (
         <>
           <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
