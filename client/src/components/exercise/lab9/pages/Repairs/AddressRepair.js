@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import {
@@ -27,10 +27,10 @@ const AddressRepair = ({ user, actions }) => {
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
-  
-    useEffect(() => {
-      actions.updateState(EXERCISE_PLAYING);
-    }, []);
+
+  useEffect(() => {
+    actions.updateState(EXERCISE_PLAYING);
+  }, []);
   return (
     <Repair
       fileName={"AddressFormat.js"}

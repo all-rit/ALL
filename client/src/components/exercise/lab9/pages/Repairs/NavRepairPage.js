@@ -35,7 +35,7 @@ const NavRepairPage = ({ user, actions }) => {
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, []);
-  
+
   return (
     <Repair
       fileName={"NavBar.js"}

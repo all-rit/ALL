@@ -9,7 +9,7 @@ import NavRepairPage from "./Repairs/NavRepairPage";
 import { EXERCISE_STATES } from "../../../../constants/lab9";
 
 import { bindActionCreators } from "redux";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
 
 /**
@@ -22,13 +22,21 @@ import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseRe
 const LocalizationRepair = ({ user, actions }) => {
   return (
     <Router className="app">
-      <DateRepair path={`${EXERCISE_STATES.REPAIR_DATE_REPAIR}`} user={user} actions={ actions } />
+      <DateRepair
+        path={`${EXERCISE_STATES.REPAIR_DATE_REPAIR}`}
+        user={user}
+        actions={actions}
+      />
       <AddressRepair
         path={`${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`}
         user={user}
         actions={actions}
       />
-      <NavRepairPage path={`${EXERCISE_STATES.REPAIR_NAV_BAR}`} user={user} actions={actions} />
+      <NavRepairPage
+        path={`${EXERCISE_STATES.REPAIR_NAV_BAR}`}
+        user={user}
+        actions={actions}
+      />
     </Router>
   );
 };
@@ -38,7 +46,6 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({ ...exerciseActions }, dispatch),
   };
 };
-
 const mapStateToProps = (state) => ({
   state: state,
 });
@@ -46,6 +53,6 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(LocalizationRepair);
 
 LocalizationRepair.propTypes = {
-  user: PropTypes.object.isRequired, 
+  user: PropTypes.object.isRequired,
   actions: PropTypes.object,
 };

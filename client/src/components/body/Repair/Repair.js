@@ -41,7 +41,7 @@ const Repair = (props) => {
     setIsRepairActive(true);
     await fetchRepair();
   };
-  
+
   /**
    * handleUpdate(): is an async function that is responsible for
    * handling the behavior for validating and posting the results
