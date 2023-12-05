@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // library imports
 import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
@@ -7,7 +6,9 @@ import { Router } from "@reach/router";
 import WordCountRepair from "./Repairs/WordCountRepair";
 import SentenceCountRepair from "./Repairs/SentenceCountRepair";
 import ComplexWordCountRepair from "./Repairs/ComplexWordCountRepair";
-import { EXERCISE_PLAYING, EXERCISE_STATES } from "../../../../constants/lab11";
+import { EXERCISE_STATES } from "../../../../constants/lab11";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 /**
  * LiteracyRepair is a Route wrapper component that is responsible for declaring the
@@ -16,8 +17,8 @@ import { EXERCISE_PLAYING, EXERCISE_STATES } from "../../../../constants/lab11";
  * @param {Object} user is a string representing user id for data retrieval purposes.
  * @returns
  */
-const LiteracyRepair = (props) => {
-  const { user = "", actions } = props;
+const LiteracyRepair = () => {
+  const { user = null, actions } = useMainStateContext();
 
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);

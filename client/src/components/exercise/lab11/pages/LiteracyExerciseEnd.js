@@ -1,14 +1,18 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { EXERCISE_PLAYING, LAB_ID } from "../../../../constants/lab11";
+
+import { LAB_ID } from "../../../../constants/lab11";
 import UserLabService from "../../../../services/UserLabService";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 
 const LiteracyExerciseEnd = (props) => {
-  const { actions, user } = props;
+  const { user } = props;
+  const { actions } = useMainStateContext();
 
   const handleFinish = () => {
-    actions.updateState("EXERCISE_IDLE");
+    actions.updateUserState(EXERCISE_IDLE);
     UserLabService.complete_exercise(LAB_ID);
     if (user?.firstname !== null && user !== null) {
       UserLabService.user_complete_exercise(user.userid, LAB_ID);
@@ -17,7 +21,7 @@ const LiteracyExerciseEnd = (props) => {
   };
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleTryAgain = () => {

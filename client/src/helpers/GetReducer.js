@@ -1,5 +1,8 @@
 const getExerciseState = (state) => {
   const lab = state.main.lab;
+  if (state.userState) {
+    return state.userState;
+  }
   switch (lab) {
     case 1:
       return state.exercise1.state;

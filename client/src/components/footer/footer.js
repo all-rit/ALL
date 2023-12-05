@@ -149,7 +149,8 @@ class Footer extends Component {
   }
 
   render() {
-    const { state, actions } = this.props;
+    // const { state, actions } = this.props;
+    const { state, actions } = this.props.context;
     const lab = state.main.lab;
     const body = state.main.body;
     const display =

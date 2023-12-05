@@ -187,7 +187,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   actions: PropTypes.object,
 };
 

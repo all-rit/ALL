@@ -2,13 +2,14 @@
 import React from "react";
 import Letter from "../components/Letter";
 import { useEffect } from "react";
-import { EXERCISE_PLAYING } from "../../../../constants/lab11";
 import PropTypes from "prop-types";
 import useScroll from "../../../../use-hooks/useScroll";
 import { useContext } from "react";
 import ExerciseStateContext from "../Lab11Context";
 import { fogIndexCalculation } from "../helpers/FogIndexCalculation";
 import FogIndexOverlay from "../components/FogIndexOverlay";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 /**
  * Renders the Information Letter Email page component.
@@ -23,7 +24,6 @@ import FogIndexOverlay from "../components/FogIndexOverlay";
  */
 const InformationLetterEmail = (props) => {
   const {
-    actions,
     words,
     sentences,
     complexWords,
@@ -33,8 +33,10 @@ const InformationLetterEmail = (props) => {
     descriptionText,
   } = props;
 
+  const { actions } = useMainStateContext();
+
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   useScroll();

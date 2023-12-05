@@ -1,7 +1,7 @@
 /* eslint-disable react/no-deprecated */
 /* eslint-disable no-undef */
+import { createRoot } from "react-dom/client";
 import React from "react";
-import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
@@ -11,6 +11,7 @@ import reducers from "./reducers";
 import sagas from "./sagas";
 import * as serviceWorker from "./serviceWorker";
 import ReactGA from "react-ga";
+import { MainContextProvider } from "./reducers/MainContext";
 
 if (process.env.NODE_ENV === "production") {
   const TRACKING_ID = process.env.REACT_APP_GA_TRACKING_ID;
@@ -23,11 +24,14 @@ const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(sagas);
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
   <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
+    <MainContextProvider>
+      <App />
+    </MainContextProvider>
+  </Provider>
 );
 
 // If you want your app to work offline and load faster, you can change

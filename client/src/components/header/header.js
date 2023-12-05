@@ -22,6 +22,7 @@ import { actions as mainActions } from "../../reducers/MainReducer";
 import getExerciseState from "../../helpers/GetReducer";
 
 import { navigate as reachNavigate } from "@reach/router";
+import useMainStateContext from "src/reducers/MainContext";
 
 const mapStateToProps = (state) => {
   return {
@@ -51,11 +52,12 @@ const alert_check = (state) => {
 };
 
 const Header = (props) => {
+  const context = useMainStateContext();
   const [isOpen, setIsOpen] = useState(false);
   const activeStyle = { color: "#fed136" };
   const toggle = () => setIsOpen(!isOpen);
   const closeNav = () => setIsOpen(false);
-  const { state, actions } = props;
+  const { state, actions } = context;
   const [link, setLink] = useState(0);
   const listenScrollEvent = (event) => {
     if (state.main.lab === 0 && state.main.body === 0) {

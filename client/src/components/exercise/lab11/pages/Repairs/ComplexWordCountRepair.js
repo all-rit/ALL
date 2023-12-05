@@ -19,7 +19,7 @@ import ComplexWordCountRepairImplementation from "../RepairImpls/ComplexWordCoun
  * @returns Component to handle custom logic for the lab.
  */
 const ComplexWordCountRepair = (props) => {
-  const { user = "" } = props;
+  const { user = null } = props;
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_COMPLEX_WORDS,
@@ -37,7 +37,7 @@ const ComplexWordCountRepair = (props) => {
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}
       repairText={[
-        "in this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct complex word count is being calculated.",
+        "In this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct complex word count is being calculated.",
       ]}
       CodeImplementation={
         <ComplexWordCountRepairImplementation

@@ -1,18 +1,16 @@
 import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect } from "react";
-import {
-  EXERCISE_PLAYING,
-  REPAIR,
-  EXERCISE_STATES,
-} from "../../../../../constants/lab11";
+import { REPAIR, EXERCISE_STATES } from "../../../../../constants/lab11";
 import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const FogIndexFormulaSentences = (props) => {
-  const { actions } = props;
+const FogIndexFormulaSentences = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleContinue = () => {
