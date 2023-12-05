@@ -11,10 +11,6 @@ import {
 import DateFormRepair from "../DateFormRepair";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
-
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux"
-import { actions as exerciseActions } from "../../../../../reducers/lab9/ExerciseReducer";
 /**
  * Date Repair is a component that is responsible for passing logic into the universal
  * repair page component, what this allows us to do is call the re-useable repair component
@@ -23,7 +19,8 @@ import { actions as exerciseActions } from "../../../../../reducers/lab9/Exercis
  * @returns
  */
 
-const DateRepair = ({ user, actions }) => {
+const DateRepair = (props) => {
+  const { user, actions} = props
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_DATE_REPAIR,
@@ -68,14 +65,4 @@ DateRepair.propTypes = {
   user: PropTypes.object,
   actions: PropTypes.object,
 };
-
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps) (DateRepair);
+export default DateRepair;

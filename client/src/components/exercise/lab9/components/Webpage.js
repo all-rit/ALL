@@ -19,9 +19,8 @@ import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseRe
  * each of which are sub-components.
  * @returns rendered webpage
  */
-const Webpage = (props, { user }) => {
-  const { actions } = props;
-
+const Webpage = (props) => {
+  const { actions, user } = props;
   const [isNavComplete, setNavComplete] = useState(false);
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
@@ -145,6 +144,7 @@ const Webpage = (props, { user }) => {
 Webpage.propTypes = {
   user: PropTypes.object,
   actions: PropTypes.string,
+  props: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
