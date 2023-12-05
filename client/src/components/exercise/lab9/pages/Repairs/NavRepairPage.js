@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
-import { HEADINGS, GAME_STATES, REPAIR } from "../../../../../constants/lab9";
+import {
+  HEADINGS,
+  EXERCISE_STATES,
+  REPAIR,
+} from "../../../../../constants/lab9";
 import NavBarRepair from "../NavBarRepair";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
@@ -18,7 +22,7 @@ import NavBarData from "../../../../../constants/lab9/NavBarData";
 const NavRepairPage = ({ user }) => {
   const { data, functions } = useDataService(
     user,
-    GAME_STATES.REPAIR_NAV_BAR,
+    EXERCISE_STATES.REPAIR_NAV_BAR,
     NavBarData.navItems
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
@@ -30,7 +34,7 @@ const NavRepairPage = ({ user }) => {
   return (
     <Repair
       fileName={"NavBar.js"}
-      path={`${REPAIR}/${GAME_STATES.REPAIR_NAV_BAR}`}
+      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_NAV_BAR}`}
       headingText={HEADINGS.REPAIR_NAV_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { navigate } from "@reach/router";
-import { GAME_STATES } from "../../../../../constants/lab9";
+import { EXERCISE_STATES } from "../../../../../constants/lab9";
 import PropTypes from "prop-types";
 import { REPAIR } from "src/constants/lab9/index";
 
@@ -13,7 +13,7 @@ import { REPAIR } from "src/constants/lab9/index";
 const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
   // eslint-disable-next-line no-unused-vars
   const [gameState, setGameState] = useState(
-    GAME_STATES.EXERCISE_SELECTION_DEFAULT
+    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT
   );
 
   const updateState = (newState) => {
@@ -40,7 +40,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
               </div>
             ) : (
               <div
-                onClick={() => handleNav(GAME_STATES.REPAIR_DATE_REPAIR)}
+                onClick={() => handleNav(EXERCISE_STATES.REPAIR_DATE_REPAIR)}
                 className="tw-flex-wrap tw-animate-reduced-bounce tw-h-full tw-text-xl tw-w-1/5 hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-text-[#260D0D] tw-cursor-pointer tw-rounded-xl tw-border-solid tw-p-5 tw-text-center tw-mr-5"
               >
                 8/28/2027
@@ -105,7 +105,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
             </div>
           ) : (
             <div
-              onClick={() => handleNav(GAME_STATES.REPAIR_ADDRESS_FORM)}
+              onClick={() => handleNav(EXERCISE_STATES.REPAIR_ADDRESS_FORM)}
               className={
                 "tw-w-full hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-animate-reduced-bounce tw-cursor-pointer tw-rounded-xl tw-mt-5 tw-border-solid tw-p-4 tw-pb-10"
               }

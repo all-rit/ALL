@@ -1,9 +1,12 @@
-/* eslint-disable no-empty-pattern */
 import React from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import DateFormData from "../../../../../constants/lab9/DateFormData";
-import { HEADINGS, GAME_STATES, REPAIR } from "../../../../../constants/lab9";
+import {
+  HEADINGS,
+  EXERCISE_STATES,
+  REPAIR,
+} from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
@@ -18,7 +21,7 @@ import { navigate } from "@reach/router";
 const DateRepair = ({ user }) => {
   const { data, functions } = useDataService(
     user,
-    GAME_STATES.REPAIR_DATE_REPAIR,
+    EXERCISE_STATES.REPAIR_DATE_REPAIR,
     DateFormData.countries
   );
   const handleNav = () => {
@@ -30,7 +33,7 @@ const DateRepair = ({ user }) => {
   return (
     <Repair
       fileName={"DateFormat.js"}
-      path={`${REPAIR}/${GAME_STATES.REPAIR_DATE_REPAIR}`}
+      path={`${REPAIR}/${EXERCISE_STATES.REPAIR_DATE_REPAIR}`}
       headingText={HEADINGS.REPAIR_DATE_REPAIR_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={() => fetchRepair()}

@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import ReactText from "../../../all-components/CodeBlock/StyleComponents/ReactText";
 import CodeLine from "../../../all-components/CodeBlock/Components/CodeLine";
 import Tab from "../../../all-components/CodeBlock/Components/Tab";
@@ -7,13 +5,12 @@ import CommentText from "../../../all-components/CodeBlock/StyleComponents/Comme
 import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText";
 import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
 import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const DateFormRepair = (props = {}) => {
   const { dateForms, userInput, isInputValid, isFirst } = props;
-
   return (
     <>
       <ReactText>const DateForm = (props) =&#62; &#123;</ReactText>
@@ -97,10 +94,11 @@ const DateFormRepair = (props = {}) => {
     </>
   );
 };
-
-CodeBlockInput.propTypes = {
+DateFormRepair.propTypes = {
   userInput: PropTypes.func,
   dateForms: PropTypes.array,
+  isInputValid: PropTypes.array,
+  isFirst: PropTypes.bool,
 };
 
 export default DateFormRepair;
