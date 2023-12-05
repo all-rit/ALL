@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import DateFormData from "../../../../../constants/lab9/DateFormData";
-import { HEADINGS, EXERCISE_STATES, REPAIR } from "../../../../../constants/lab9";
+import {
+  HEADINGS,
+  EXERCISE_STATES,
+  REPAIR,
+} from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";

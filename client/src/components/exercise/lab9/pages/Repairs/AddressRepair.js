@@ -1,7 +1,11 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
-import { EXERCISE_STATES, HEADINGS, REPAIR } from "../../../../../constants/lab9";
+import {
+  EXERCISE_STATES,
+  HEADINGS,
+  REPAIR,
+} from "../../../../../constants/lab9";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
 import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairData";

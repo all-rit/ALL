@@ -19,7 +19,10 @@ const LocalizationRepair = ({ user }) => {
   return (
     <Router className="app">
       <DateRepair path={`${EXERCISE_STATES.REPAIR_DATE_REPAIR}`} user={user} />
-      <AddressRepair path={`${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`} user={user} />
+      <AddressRepair
+        path={`${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`}
+        user={user}
+      />
       <NavRepairPage path={`${EXERCISE_STATES.REPAIR_NAV_BAR}`} user={user} />
     </Router>
   );
