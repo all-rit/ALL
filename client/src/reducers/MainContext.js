@@ -49,7 +49,7 @@ const useMainStateContext = () => {
  */
 export const MainContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(MainReducerForContext, initialState);
-  
+
   /**
    * Actions object containing various action functions.
    * @typedef {Object} Actions
@@ -84,7 +84,6 @@ export const MainContextProvider = ({ children }) => {
         payload: { userState: newUserState },
       }),
   };
-
 
   /**
    * Represents the value of the MainContext.
