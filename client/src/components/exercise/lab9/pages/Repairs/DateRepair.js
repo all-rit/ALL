@@ -1,4 +1,4 @@
-import React ,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import DateFormData from "../../../../../constants/lab9/DateFormData";
@@ -20,13 +20,13 @@ import { navigate } from "@reach/router";
  */
 
 const DateRepair = (props) => {
-  const { user, actions} = props
+  const { user, actions } = props;
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_DATE_REPAIR,
     DateFormData.countries
   );
-  
+
   useEffect(() => {
     actions.updateState(EXERCISE_PLAYING);
   }, []);

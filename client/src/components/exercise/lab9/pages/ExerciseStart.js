@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 const ExerciseStart = ({ actions }) => {
   useEffect(() => {
     actions.updateState(EXERCISE_IDLE);
-  },[]);
+  }, []);
 
   const handleStart = () => {
     actions.updateState(EXERCISE_PLAYING);
