@@ -1,15 +1,14 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import LongHorizontalLine from "../../../../../common/HorizontalLine/LongHorizontalLine";
 import Recomendation from "../../components/Recomendation";
 import Decision from "../../components/Decision";
 import useScroll from "../../../../../use-hooks/useScroll";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const FavorableHiringCandidate = (props) => {
-  const { actions } = props;
+const FavorableHiringCandidate = () => {
+  const { actions } = useMainStateContext();
   const [numInput, setNumInput] = useState(0);
   const incrementNumInput = () => {
     setNumInput(numInput + 1);
@@ -17,8 +16,8 @@ const FavorableHiringCandidate = (props) => {
 
   useScroll();
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
   const handleStart = () => {
     navigate("/Lab6/Exercise/HiringCandidate");

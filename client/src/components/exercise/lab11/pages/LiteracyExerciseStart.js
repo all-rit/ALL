@@ -1,17 +1,18 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from "../../../../constants/lab11";
 import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 
-const LiteracyExerciseStart = (props) => {
-  const { actions } = props;
+const LiteracyExerciseStart = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_IDLE);
+    actions.updateUserState(EXERCISE_IDLE);
   }, []);
 
   const handleStart = () => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
     navigate("/Lab11/Exercise/InformationLetterIntroduction");
   };
 

@@ -31,11 +31,13 @@ const FogIndexOverlay = ({
         )}
         {fogIndex > 9 ? (
           <img
+            alt="exclamation mark"
             className="tw-w-14 tw-h-14 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-[20px] tw--mt-[12px]"
             src={exclamation_mark}
           />
         ) : (
           <img
+            alt="check mark"
             className="tw-w-14 tw-h-14 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-[20px] tw--mt-[12px]"
             src={check_mark}
           />

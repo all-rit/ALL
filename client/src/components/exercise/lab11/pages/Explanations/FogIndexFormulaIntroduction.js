@@ -1,20 +1,18 @@
 import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect } from "react";
-import {
-  EXERCISE_PLAYING,
-  REPAIR,
-  EXERCISE_STATES,
-} from "../../../../../constants/lab11";
+import { REPAIR, EXERCISE_STATES } from "../../../../../constants/lab11";
 import PropTypes from "prop-types";
 import fog_index_formula from "../../../../../assets/images/lab11/fog_index_formula.png";
 import fog_index_reading_levels from "../../../../../assets/images/lab11/fog_index_reading_levels.png";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const FogIndexFormulaIntroduction = (props) => {
-  const { actions } = props;
+const FogIndexFormulaIntroduction = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleContinue = () => {

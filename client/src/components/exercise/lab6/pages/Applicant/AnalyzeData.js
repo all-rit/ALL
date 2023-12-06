@@ -1,18 +1,18 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import Spinner from "../../../../../common/Spinner/Spinner";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const AnalyzeData = (props) => {
-  const { actions } = props;
+const AnalyzeData = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
     setTimeout(function () {
       handleContinue();
     }, 5000);
-  }, [actions]);
+  }, []);
 
   const handleContinue = () => {
     navigate("/Lab6/Exercise/NegativeReasoning");

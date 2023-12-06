@@ -100,7 +100,7 @@ Repair.propTypes = {
   headingText: Proptypes.string,
   navigateNext: Proptypes.func.isRequired,
   repairText: Proptypes.array,
-  user: Proptypes.string,
+  user: Proptypes.object,
   validateRepair: Proptypes.func.isRequired,
   repairComplete: Proptypes.bool.isRequired,
   fetchRepair: Proptypes.func.isRequired,

@@ -29,5 +29,5 @@ const LocalizationRepair = ({ user }) => {
 export default LocalizationRepair;
 
 LocalizationRepair.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
 };
