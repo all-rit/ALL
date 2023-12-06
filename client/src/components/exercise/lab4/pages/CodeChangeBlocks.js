@@ -1,7 +1,5 @@
 /* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Prism from "prismjs";
 import { navigate } from "@reach/router";
 import Button from "@material-ui/core/Button";
@@ -18,8 +16,9 @@ import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
-import { EXERCISE_PLAYING } from "../../../../constants/lab4";
 import RepairService from "../../../../services/lab4/RepairService";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -95,166 +94,136 @@ MySnackbarContentWrapper.propTypes = {
   variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 
-class CodeChangeBlocks extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      textValue: "",
-      snackBarOpen: false,
-      message: "Please type code before updating code!",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    if (window.location.state !== undefined) {
-      this.state = {
-        textValue: window.location.state.role,
-        snackBarOpen: false,
-        message: "Please type code before updating code!",
-      };
-      window.location.state = {
-        role: window.location.state.role,
-      };
-    } else {
-      window.location.state = {
-        role: null,
-      };
-    }
-  }
+const CodeChangeBlocks = () => {
+  const { actions } = useMainStateContext();
 
-  componentDidMount() {
-    const { actions } = this.props;
-    actions.updateState(EXERCISE_PLAYING);
+  const [textValue, setTextValue] = useState("");
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const [message, setMessage] = useState(
+    "Please type code before updating code!"
+  );
+
+  const handleChange = (event) => {
+    setTextValue(event.target.value);
+    console.log("handled change value: " + textValue);
     Prism.highlightAll();
-    if (window.location.state.role !== undefined) {
-      const el0 = document.getElementById("first");
-      el0.value = window.location.state.role;
-      CodeChangeBlocks.doEvent(el0, "input");
-    }
-  }
+  };
 
-  handleChange(event) {
-    this.setState({ textValue: event.target.value }, () => {
-      console.log("handled change value: " + this.state.textValue);
-      Prism.highlightAll();
-    });
-  }
-
-  handleClose(event, reason) {
+  const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
 
-    this.setState({ snackBarOpen: false }, () => {
-      console.log("SnackBar Closed");
-    });
-  }
+    setSnackBarOpen(false);
+    console.log("SnackBar Closed");
+  };
 
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.textValue === "" || null) {
-      this.setState({
-        message: "Please type code before updating code!",
-        snackBarOpen: true,
-      });
+    if (textValue === "" || textValue === null) {
+      setMessage("Please type code before updating code!");
+      setSnackBarOpen(true);
     } else {
       window.location.state = {
-        role: this.state.textValue,
+        role: textValue,
       };
-      RepairService.submitRepairSkip(this.state.textValue);
+      RepairService.submitRepairSkip(textValue);
       navigate("/Lab4/Exercise/FormSkipToMainFixed");
     }
     Prism.highlightAll();
-  }
+  };
 
-  static doEvent(obj, event) {
+  const doEvent = (obj, event) => {
     const eventInit = new Event(event, { target: obj, bubbles: true });
     return obj ? obj.dispatchEvent(eventInit) : false;
-  }
+  };
 
-  render() {
-    const paperStyle = {
-      marginLeft: "10px",
-      marginRight: "10px",
-      marginTop: "20px",
-    };
-    return (
-      <div>
-        {/* <CodeUpdateHeader
-                    heading={"Make Code Changes"}
-                    justifyAlignment={"space-between"}
-                    helpMessage={"Copy the code from the comment at the top of the code editor, and paste it into the input field in the code editor."}
-                /> */}
-        <h2 className="playthrough__title">Repair</h2>
-        <p className="app__instructions">
-          The intent of this code repair is to allow people who navigate
-          sequentially through content more direct access to the primary content
-          of the Web page and skip over repeated blocks. These include but are
-          not limited to navigation links, heading graphics, and advertising
-          frames.
-        </p>
-        <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
-          <Paper style={paperStyle}>
-            <pre>
-              <code className="language-html">
-                {`/* add the following in the input: <a className="skip-main" href="#main">Skip to main content</a> */
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+    Prism.highlightAll();
+    if (window.location.state.role !== undefined) {
+      const el0 = document.getElementById("first");
+      el0.value = window.location.state.role;
+      doEvent(el0, "input");
+    }
+  }, []);
+
+  const paperStyle = {
+    marginLeft: "10px",
+    marginRight: "10px",
+    marginTop: "20px",
+  };
+
+  return (
+    <div>
+      <h2 className="playthrough__title">Repair</h2>
+      <p className="app__instructions">
+        The intent of this code repair is to allow people who navigate
+        sequentially through content more direct access to the primary content
+        of the Web page and skip over repeated blocks. These include but are not
+        limited to navigation links, heading graphics, and advertising frames.
+      </p>
+      <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
+        <Paper style={paperStyle}>
+          <pre>
+            <code className="language-html">
+              {`/* add the following in the input: <a className="skip-main" href="#main">Skip to main content</a> */
 `}
-              </code>
-              <input
-                type={"text"}
-                id="first"
-                style={{ width: "600px" }}
-                value={this.state.textValue}
-                placeholder=""
-                onChange={this.handleChange}
-                aria-label={
-                  'add the following: <a className="skip-main" href="#main">Skip to main content</a>'
-                }
-              />
+            </code>
+            <input
+              type={"text"}
+              id="first"
+              style={{ width: "600px" }}
+              value={textValue}
+              placeholder=""
+              onChange={handleChange}
+              aria-label={
+                'add the following: <a className="skip-main" href="#main">Skip to main content</a>'
+              }
+            />
 
-              <code className="language-html">
-                {`
+            <code className="language-html">
+              {`
 <div>
-    <header>...</header>
+  <header>...</header>
 </div>
 <div>
-    <nav>...</nav>
+  <nav>...</nav>
 </div>
-    <form id="main">...</form>
+  <form id="main">...</form>
 </div>
-                        `}
-              </code>
-            </pre>
-          </Paper>
-          <br />
-          <br />
-          <Button
-            type={"submit"}
-            aria-label={"Update Code"}
-            variant={"contained"}
-            color={"primary"}
-          >
-            Update Code
-          </Button>
-        </form>
-        <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          open={this.state.snackBarOpen}
-          autoHideDuration={6000}
-          onClose={this.handleClose}
+                      `}
+            </code>
+          </pre>
+        </Paper>
+        <br />
+        <br />
+        <Button
+          type={"submit"}
+          aria-label={"Update Code"}
+          variant={"contained"}
+          color={"primary"}
         >
-          <MySnackbarContentWrapper
-            onClose={this.handleClose}
-            variant="warning"
-            message={this.state.message}
-          />
-        </Snackbar>
-      </div>
-    );
-  }
-}
+          Update Code
+        </Button>
+      </form>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        open={snackBarOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <MySnackbarContentWrapper
+          onClose={handleClose}
+          variant="warning"
+          message={message}
+        />
+      </Snackbar>
+    </div>
+  );
+};
 
 export default CodeChangeBlocks;
