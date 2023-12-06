@@ -50,8 +50,8 @@ const LiteracyExerciseEnd = (props) => {
         tincidunt. Suspendisse potenti. In gravida interdum lacinia.
       </div>
       <div className="playthrough__sentence">
-        Click the &quot;Try Again&quot; button to continue using your Fog
-        Index Calulator
+        Click the &quot;Try Again&quot; button to continue using your Fog Index
+        Calulator
       </div>
       <div className="playthrough__sentence">
         Otherwise click the &quot;Finish Exercise&quot; button to complete this
