@@ -37,7 +37,7 @@ const WordCountRepair = (props) => {
       fetchRepair={() => fetchRepair()}
       submitRepair={() => postRepair()}
       repairText={[
-        "in this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct word count is being calculated.",
+        "In this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct word count is being calculated.",
       ]}
       CodeImplementation={
         <WordCountRepairImplementation
