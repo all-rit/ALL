@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import ReactText from "../../../../all-components/CodeBlock/StyleComponents/ReactText";
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
@@ -8,7 +6,7 @@ import Tab from "../../../../all-components/CodeBlock/Components/Tab";
 import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
 import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
 
-const ComplexWordCountRepairImplementation = (props = {}) => {
+const ComplexWordCountRepairImplementation = (props) => {
   const { fogIndexCalculationData, userInput } = props;
 
   return (
@@ -142,7 +140,7 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
                   },
                   name: input.variableName,
                   type: "text",
-                  placeholder: "Enter Complex Word Count Impl Here",
+                  placeholder: "Enter Answer Here",
                 }}
               />
             ) : (
@@ -153,7 +151,7 @@ const ComplexWordCountRepairImplementation = (props = {}) => {
                   },
                   name: input.variableName,
                   type: "text",
-                  placeholder: "Enter Complex Word Count Impl Here",
+                  placeholder: "Enter Answer Here",
                 }}
               />
             )}

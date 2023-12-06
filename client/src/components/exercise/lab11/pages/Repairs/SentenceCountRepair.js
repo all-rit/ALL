@@ -34,8 +34,8 @@ const SentenceCountRepair = (props) => {
       path={`${REPAIR}/${EXERCISE_STATES.REPAIR_SENTENCE_COUNT}`}
       headingText={SENTENCE_COUNT_REPAIR_HEADING}
       validateRepair={checkInputValid}
-      fetchRepair={() => fetchRepair()}
-      submitRepair={() => postRepair()}
+      fetchRepair={fetchRepair}
+      submitRepair={postRepair}
       repairText={[
         "In this section you will be making changes to the FogIndexCalculation.js file below to ensure the correct sentence count is being calculated.",
       ]}
