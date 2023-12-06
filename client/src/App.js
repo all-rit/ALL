@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { useEffect } from "react";
 import ReactGA from "react-ga";
 
@@ -77,7 +74,6 @@ const App = () => {
   const { state, actions } = context;
   const lab = state.main.lab;
   const body = state.main.body;
-  console.log(state);
   // look into index.js in constants
   initializeReactGA();
   return (

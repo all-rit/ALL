@@ -1,21 +1,18 @@
 import { navigate } from "@reach/router";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import React, { useState, useEffect } from "react";
-import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import Popup from "../../../all-components/Popup";
 import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 import ExerciseService from "../../../../services/lab8/ExerciseService";
-import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 // the only acceptable values that a user can enter
 // for their repairs
 const repairAllowList = [0, 1, 2];
 
-const DataRepair = (props) => {
-  const { actions, user } = props;
+const DataRepair = () => {
+  const { actions, state } = useMainStateContext();
   const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
   const [repairState, setRepairState] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -54,7 +51,7 @@ const DataRepair = (props) => {
     while they are playing the exercise
     */
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   /*
@@ -107,7 +104,7 @@ const DataRepair = (props) => {
    */
   const fetchDataRepair = async () => {
     try {
-      const { userid } = user;
+      const { userid } = state.main.user;
       return await ExerciseService.getUserRepair(userid);
     } catch (error) {
       console.error(error);
@@ -172,7 +169,7 @@ const DataRepair = (props) => {
    */
   const handleContinue = async () => {
     // go back to the biased simulation
-    const { userid } = user;
+    const { userid } = state.main.user;
     const body = {
       userId: userid,
       repair: { messages },
@@ -376,16 +373,4 @@ const DataRepair = (props) => {
     </div>
   );
 };
-
-DataRepair.propTypes = {
-  actions: PropTypes.string,
-  user: PropTypes.string,
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(DataRepair);
+export default DataRepair;

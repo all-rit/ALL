@@ -1,16 +1,13 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
-import { EXERCISE_PLAYING } from "../../../../constants/lab8";
-import PropTypes from "prop-types";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
-const BiasDiscovery = (props) => {
-  const { actions } = props;
+const BiasDiscovery = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleContinue = () => {
@@ -68,14 +65,4 @@ const BiasDiscovery = (props) => {
   );
 };
 
-BiasDiscovery.propTypes = {
-  actions: PropTypes.string,
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(BiasDiscovery);
+export default BiasDiscovery;

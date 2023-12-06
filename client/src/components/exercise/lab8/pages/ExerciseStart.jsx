@@ -2,23 +2,20 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 
 import {
-  EXERCISE_IDLE,
-  EXERCISE_PLAYING,
   NAV_BIASED_SIMULATION,
 } from "../../../../constants/lab8";
 
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
-const ExerciseStart = ({ actions }) => {
+const ExerciseStart = () => {
+  const { actions } = useMainStateContext();
   useEffect(() => {
-    actions.updateState(EXERCISE_IDLE);
+    actions.updateUserState(EXERCISE_IDLE);
   }, []);
 
   const handleStart = () => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
     navigate(NAV_BIASED_SIMULATION);
   };
 
@@ -61,20 +58,4 @@ const ExerciseStart = ({ actions }) => {
   );
 };
 
-ExerciseStart.propTypes = {
-  actions: PropTypes.object,
-  end: PropTypes.bool,
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-const mapStateToProps = (state) => {
-  const { end } = state.exercise8;
-  return { end };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ExerciseStart);
+export default ExerciseStart;
