@@ -44,7 +44,7 @@ const InfoModal = (props) => {
                 </li>
                 <ul>
                   {learningObjectives.map((learningObjective) => (
-                    <li className="ml-8 list-style-disc">
+                    <li key={learningObjective} className="ml-8 list-style-disc">
                       {learningObjective}
                     </li>
                   ))}

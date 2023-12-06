@@ -13,8 +13,6 @@ const getExerciseState = (state, reduxState) => {
       return reduxState.exercise4.state;
     case 5:
       return reduxState.exercise5.state;
-    case 6:
-      return reduxState.exercise6.state;
     case 7:
       return reduxState.exercise7.state;
     case 8:

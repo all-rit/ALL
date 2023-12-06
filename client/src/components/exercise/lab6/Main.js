@@ -1,11 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Router } from "@reach/router";
 import "../../../assets/stylesheets/main.scss";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../reducers/lab6/ExerciseReducer";
 
 import ExerciseStart from "./pages/Applicant/ExerciseStart";
 
@@ -28,70 +23,43 @@ import AIRepair from "./pages/Employer/AIRepair";
 import FixedHiringCandidate from "./pages/Employer/FixedHiringCandidate";
 import ExerciseEnd from "./pages/Employer/ExerciseEnd";
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-class Main extends Component {
-  // eslint-disable-next-line require-jsdoc
-  render() {
-    const { actions, user } = this.props;
+const Main = () => {
     return (
       <div className="container bottomSpace">
         <Router className="app">
           {/* Part 1: Applicant */}
-          <ExerciseStart path="/" actions={actions} />
-          <AvatarSelection path="/AvatarSelection" actions={actions} />
+          <ExerciseStart path="/"  />
+          <AvatarSelection path="/AvatarSelection" />
           <QualificationQuestions
             path="/QualificationQuestions"
-            actions={actions}
-            user={user}
           />
-          <AnalyzeData path="/AnalyzeData" user={user} actions={actions} />
+          <AnalyzeData path="/AnalyzeData"/>
           <NegativeReasoning
             path="/NegativeReasoning"
-            user={user}
-            actions={actions}
           />
           <AIAnalysisQuestions
             path="/AIAnalysisQuestions"
-            user={user}
-            actions={actions}
           />
           {/* Part 2: Employer */}
-          <EmployerStart path="/EmployerStart" user={user} actions={actions} />
+          <EmployerStart path="/EmployerStart"/>
           <FavorableHiringCandidate
             path="/FavorableHiringCandidate"
-            user={user}
-            actions={actions}
           />
           <HiringCandidate
             path="/HiringCandidate"
-            user={user}
-            actions={actions}
           />
           <AIReasoningQuestions
             path="/AIReasoningQuestions"
-            actions={actions}
           />
-          <AIReasoning path="/AIReasoning" user={user} actions={actions} />
-          <AIRepair path="/AIRepair" user={user} actions={actions} />
+          <AIReasoning path="/AIReasoning" />
+          <AIRepair path="/AIRepair" />
           <FixedHiringCandidate
             path="/FixedHiringCandidate"
-            actions={actions}
-            user={user}
           />
-          <ExerciseEnd path="/ExerciseEnd" user={user} actions={actions} />
+          <ExerciseEnd path="/ExerciseEnd"/>
         </Router>
       </div>
     );
-  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

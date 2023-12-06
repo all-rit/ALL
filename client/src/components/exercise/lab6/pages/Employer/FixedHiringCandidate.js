@@ -1,18 +1,17 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab6";
-
+import { LAB_ID } from "../../../../../constants/lab6";
 import GridApplicants from "../../components/GridApplicants";
 import { useState } from "react";
 import RepairService from "../../../../../services/lab6/RepairService";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
 import UserLabService from "../../../../../services/UserLabService";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const FixedHiringCandidate = (props) => {
-  const { actions, user } = props;
+const FixedHiringCandidate = () => {
+  const { actions, state } = useMainStateContext();
   const [selection, setSelection] = useState([]);
   const [roundOfApplicants, setRoundOfApplicants] = useState(0);
   const [userAnswers, setAnswers] = useState([]);
@@ -30,8 +29,8 @@ const FixedHiringCandidate = (props) => {
     if (roundOfApplicants > 2) {
       ExerciseService.submitFixedHiredCanidates(answers);
       UserLabService.complete_exercise(LAB_ID);
-      if (user?.firstname !== null && user !== null) {
-        UserLabService.user_complete_exercise(user.userid, LAB_ID);
+      if (state.main.user?.firstname !== null && state.main.user !== null) {
+        UserLabService.user_complete_exercise(state.main.user.userid, LAB_ID);
       }
       navigate("/Lab6/Exercise/ExerciseEnd");
     } else {
@@ -48,19 +47,19 @@ const FixedHiringCandidate = (props) => {
   };
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
   useEffect(() => {
     setRoundOfApplicants(0);
-    RepairService.getUserRepair(user?.userid).then((data) => {
+    RepairService.getUserRepair(state.main.user?.userid).then((data) => {
       if (data === null) {
         navigate("/Lab6/Exercise/AIRepair");
       } else {
         setUserData(data);
       }
     });
-  }, [user]);
+  }, [state.main.user]);
 
   const handleContinue = () => {
     if (numInput === 4) {
@@ -79,8 +78,8 @@ const FixedHiringCandidate = (props) => {
         if (roundOfApplicants > 2) {
           ExerciseService.submitFixedHiredCanidates(answers);
           UserLabService.complete_exercise(LAB_ID);
-          if (user?.firstname !== null && user !== null) {
-            UserLabService.user_complete_exercise(user.userid, LAB_ID);
+          if (state.main.user?.firstname !== null && state.main.user !== null) {
+            UserLabService.user_complete_exercise(state.main.user.userid, LAB_ID);
           }
           navigate("/Lab6/Exercise/ExerciseEnd");
         } else {
