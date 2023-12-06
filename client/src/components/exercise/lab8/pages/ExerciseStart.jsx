@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 
-import {
-  NAV_BIASED_SIMULATION,
-} from "../../../../constants/lab8";
+import { NAV_BIASED_SIMULATION } from "../../../../constants/lab8";
 
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
