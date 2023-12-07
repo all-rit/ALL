@@ -29,7 +29,7 @@ const Main = (props) => {
           <Discovery path="/Discovery" />
           <Webpage user={user} path={"/page"} />
           <LocalizationRepair user={user} path={`${REPAIR}/*`} />
-          <Conclusion path="/Conclusion" />
+          <Conclusion path="/Conclusion" user={user} />
         </Router>
       </GameStateContext.Provider>
     </div>
