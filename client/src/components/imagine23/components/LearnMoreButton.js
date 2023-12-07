@@ -8,29 +8,28 @@ const LearnMoreButton = (props) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const [counter, setCounter] = useState(1);
-  const [time,setTime] = useState(0);
-  const [timeElapsed,setTimeElapsed] = useState("");
-  const [running, setRunning] = useState(false)
+  const [time, setTime] = useState(0);
+  const [timeElapsed, setTimeElapsed] = useState("");
+  const [running, setRunning] = useState(false);
   const timer = useRef();
 
-
-  useEffect(()=>{
-    if(running){
-      timer.current = setInterval(()=>{
-        setTime((pre) => pre+1)
-      },1000)
+  useEffect(() => {
+    if (running) {
+      timer.current = setInterval(() => {
+        setTime((pre) => pre + 1);
+      }, 1000);
     }
-  },[running])
+  }, [running]);
 
-  const stopTimer = () =>{
+  const stopTimer = () => {
     toggle();
-    setRunning(false)
-    console.log("time elapsed "+  formatTime(time))
-    setTimeElapsed(formatTime(time))
+    setRunning(false);
+    console.log("time elapsed " + formatTime(time));
+    setTimeElapsed(formatTime(time));
     clearInterval(timer.current);
     // setTimeElapsed(formatTime(time))
-    console.log("get current time" + formatTime(time))
-  }
+    console.log("get current time" + formatTime(time));
+  };
 
   const readMoreCount = () => {
     setModal(true);
@@ -39,7 +38,7 @@ const LearnMoreButton = (props) => {
   };
 
   const saveData = () => {
-    setRunning(true)
+    setRunning(true);
     console.log(counter);
     readMoreCount();
     toggle();
@@ -52,17 +51,15 @@ const LearnMoreButton = (props) => {
   const formatTime = (time) => {
     let minutes = Math.floor(time / 60);
     let seconds = time % 60;
-    minutes = minutes < 10 ? '0' + minutes : minutes
-    seconds = seconds < 10 ? '0' + seconds : seconds
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
     return minutes + ":" + seconds;
   };
 
-  useEffect(()=>{
-    ImagineService.readMoreTimeElapsed(userID,timeElapsed);
-  },[timeElapsed,userID]
-  );
-
+  useEffect(() => {
+    ImagineService.readMoreTimeElapsed(userID, timeElapsed);
+  }, [timeElapsed, userID]);
 
   return (
     <>
@@ -101,9 +98,9 @@ const LearnMoreButton = (props) => {
           </div>
         </ModalBody>
         <ModalFooter>
-        <Button className="btn-primary" onClick={stopTimer}> 
-          Close
-        </Button>
+          <Button className="btn-primary" onClick={stopTimer}>
+            Close
+          </Button>
         </ModalFooter>
       </Modal>
     </>
