@@ -100,8 +100,8 @@ const InformationLetterEmail = (props) => {
           </div>
         </div>
       </div>
-
-      {fogIndex < 10 && (
+      
+      {isEditable && fogIndex < 10 && (
         <button
           className="btn btn-primary text-black btn-xl text-uppercase tw-mt-14"
           onClick={handleContinue}
@@ -110,6 +110,17 @@ const InformationLetterEmail = (props) => {
           Next
         </button>
       )}
+
+      {!isEditable && (
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase tw-mt-14"
+          onClick={handleContinue}
+          key="start"
+        >
+          Next
+        </button>
+      )}
+      
     </div>
   );
 };
