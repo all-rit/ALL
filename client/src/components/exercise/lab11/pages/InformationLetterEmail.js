@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import Letter from "../components/Letter";
 import { useEffect } from "react";
@@ -102,13 +101,15 @@ const InformationLetterEmail = (props) => {
         </div>
       </div>
 
-      <button
+      {fogIndex < 10 && (
+        <button
         className="btn btn-primary text-black btn-xl text-uppercase tw-mt-14"
         onClick={handleContinue}
         key="start"
-      >
-        Next
-      </button>
+        >
+          Next
+        </button>
+      )}
     </div>
   );
 };

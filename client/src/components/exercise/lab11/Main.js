@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ExerciseStateContext from "./Lab11Context";
-import PropTypes from "prop-types";
 import { Router, navigate } from "@reach/router";
 import LiteracyExerciseStart from "./pages/LiteracyExerciseStart";
 import LiteracyExerciseEnd from "./pages/LiteracyExerciseEnd";
@@ -17,9 +16,9 @@ import FogIndexFormulaSentences from "./pages/Explanations/FogIndexFormulaSetenc
 import FogIndexFormulaComplexWords from "./pages/Explanations/FogIndexFormulaComplexWords";
 import FogIndexFormulaConclusion from "./pages/Explanations/FogIndexFormulaConclusion";
 import useMainStateContext from "src/reducers/MainContext";
+import { FOG_INDEX_FORMULA_COMPLEX_WORDS, FOG_INDEX_FORMULA_CONCLUSION, FOG_INDEX_FORMULA_INTRODUCTION, FOG_INDEX_FORMULA_SENTENCES, INFORMATION_LETTER_COMPLEX_WORD_COUNT, INFORMATION_LETTER_FOG_INDEX_FORMULA, INFORMATION_LETTER_INTRODUCTION, INFORMATION_LETTER_SENTENCE_COUNT, INFORMATION_LETTER_WORD_COUNT, LITERACY_EXERCISE_END } from "src/constants/lab11/index";
 
-const Main = (props) => {
-  const { user = null } = props;
+const Main = () => {
   const { actions } = useMainStateContext();
   const [exerciseState, setExerciseState] = useState("");
   const [letterContent, setLetterContent] = useState(LETTER_TEXT_FOG_INDEX_20);
@@ -61,20 +60,12 @@ const Main = (props) => {
           <LiteracyExerciseStart
             default
             path="/"
-            user={user}
-            actions={actions}
           />
 
-          <LiteracyRepair path={`${REPAIR}/*`} user={user} actions={actions} />
+          <LiteracyRepair path={`${REPAIR}/*`} actions={actions} />
 
           <InformationLetterEmail
-            path="/InformationLetterIntroduction"
-            user={user}
-            actions={actions}
-            words={false}
-            sentences={false}
-            complexWords={false}
-            isEditable={false}
+            path={INFORMATION_LETTER_INTRODUCTION}
             sectionTitle={"Information Letter"}
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaIntroduction")
@@ -83,19 +74,12 @@ const Main = (props) => {
           />
 
           <FogIndexFormulaIntroduction
-            path="/FogIndexFormulaIntroduction"
-            user={user}
-            actions={actions}
+            path={FOG_INDEX_FORMULA_INTRODUCTION}
           />
 
           <InformationLetterEmail
-            path="/InformationLetterWordCount"
-            user={user}
-            actions={actions}
+            path={INFORMATION_LETTER_WORD_COUNT}
             words
-            sentences={false}
-            complexWords={false}
-            isEditable={false}
             sectionTitle={"Information Letter: Word Count"}
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaSentences")
@@ -104,19 +88,13 @@ const Main = (props) => {
           />
 
           <FogIndexFormulaSentences
-            path="/FogIndexFormulaSentences"
-            user={user}
-            actions={actions}
-          />
+            path={FOG_INDEX_FORMULA_SENTENCES}
+            />
 
           <InformationLetterEmail
-            path="/InformationLetterSentenceCount"
-            user={user}
-            actions={actions}
+            path={INFORMATION_LETTER_SENTENCE_COUNT}
             words
             sentences
-            complexWords={false}
-            isEditable={false}
             sectionTitle={"Information Letter: Sentence Count"}
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaComplexWords")
@@ -125,19 +103,14 @@ const Main = (props) => {
           />
 
           <FogIndexFormulaComplexWords
-            path="/FogIndexFormulaComplexWords"
-            user={user}
-            actions={actions}
-          />
+            path={FOG_INDEX_FORMULA_COMPLEX_WORDS}
+            />
 
           <InformationLetterEmail
-            path="/InformationLetterComplexWordCount"
-            user={user}
-            actions={actions}
+            path={INFORMATION_LETTER_COMPLEX_WORD_COUNT}
             words
             sentences
             complexWords
-            isEditable={false}
             sectionTitle={"Information Letter: Complex Word Count"}
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaConclusion")
@@ -146,15 +119,11 @@ const Main = (props) => {
           />
 
           <FogIndexFormulaConclusion
-            path="/FogIndexFormulaConclusion"
-            user={user}
-            actions={actions}
-          />
+            path={FOG_INDEX_FORMULA_CONCLUSION}
+            />
 
           <InformationLetterEmail
-            path="/InformationLetterFogIndexFormula"
-            user={user}
-            actions={actions}
+            path={INFORMATION_LETTER_FOG_INDEX_FORMULA}
             words
             sentences
             complexWords
@@ -165,18 +134,12 @@ const Main = (props) => {
           />
 
           <LiteracyExerciseEnd
-            path="/ExerciseEnd"
-            user={user}
-            actions={actions}
+            path={LITERACY_EXERCISE_END}
           />
         </Router>
       </ExerciseStateContext.Provider>
     </div>
   );
-};
-
-Main.propTypes = {
-  user: PropTypes.object,
 };
 
 export default Main;

@@ -4,36 +4,24 @@
  * @returns {number} The number of syllables in the word.
  */
 const countSyllables = (word) => {
-  let syllableCount = 0;
   const vowels = new Set(["a", "e", "i", "o", "u", "y"]);
+  let syllableCount = 0;
 
-  if (vowels.has(word[0])) {
-    syllableCount++;
-  }
-
-  for (let i = 1; i < word.length; i++) {
-    if (vowels.has(word[i]) && !vowels.has(word[i - 1])) {
+  for (let i = 0; i < word.length; i++) {
+    if (vowels.has(word[i]) && (i === 0 || !vowels.has(word[i - 1]))) {
       syllableCount++;
     }
   }
 
-  if (word.endsWith("e")) {
+  if (word.endsWith("le") && word.length > 2 && !vowels.has(word[word.length - 3])) {
+    syllableCount++;
+  }
+
+  if (word.endsWith("e") && (!word.endsWith("le") || vowels.has(word[word.length - 3]))) {
     syllableCount--;
   }
 
-  if (
-    word.endsWith("le") &&
-    word.length > 2 &&
-    !vowels.has(word[word.length - 3])
-  ) {
-    syllableCount++;
-  }
-
-  if (syllableCount === 0) {
-    syllableCount++;
-  }
-
-  return syllableCount;
+  return Math.max(syllableCount, 1);
 };
 
 /**
@@ -48,11 +36,12 @@ const countSyllables = (word) => {
  * // returns { wordCount: 4, sentenceCount: 1, complexWordCount: 0, fogIndex: 4.4 }
  **/
 const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
-  let wordCount = words ? letterContent.split(" ").length : null;
-  let sentenceCount = sentences ? letterContent.split(".").length : null;
+  let wordCount = words ? letterContent.split(" ").length : 0;
+  let sentenceCount = sentences ? letterContent.split(".").length - 1 : 0;
   let complexWordCount = complexWords
     ? letterContent.split(" ").filter((word) => countSyllables(word) > 3).length
-    : null;
+    : 0;
+  
   let fogIndex = complexWords
     ? (
         0.4 *
@@ -61,6 +50,8 @@ const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
     : sentenceCount
     ? (0.4 * (wordCount / sentenceCount + 100 * wordCount)).toFixed(4)
     : (0.4 * (wordCount + 100 * wordCount)).toFixed(4);
+
+  fogIndex = parseFloat(fogIndex);
 
   return {
     wordCount,

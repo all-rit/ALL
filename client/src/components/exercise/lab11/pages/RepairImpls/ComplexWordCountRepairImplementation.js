@@ -17,84 +17,106 @@ const ComplexWordCountRepairImplementation = (props) => {
           {`// This function counts the number of syllables in a word.`}
         </CommentText>
       </CodeLine>
-      <ReactText>const countSyllables = ( word ) =&#62; &#123;</ReactText>
       <CodeLine>
-        <Tab /> <ReactText> let syllableCount = 0;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab />{" "}
         <ReactText>
-          {" "}
-          const vowels = new Set(&#91;&#39;a&#39;, &#39;e&#39;, &#39;i&#39;,
-          &#39;o&#39;, &#39;u&#39;, &#39;y&#39;&#93;);
+          const countSyllables = (word) =&#62;  &#123;
         </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <ReactText> if (vowels.has(word&#91;0&#93;)) &#123;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab /> <Tab /> <ReactText> syllableCount++;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab /> <ReactText> &#125;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab />{" "}
-        <ReactText> for (let i = 1; i &#60; word.length; i++) &#123;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab /> <Tab />{" "}
+        <Tab />
         <ReactText>
-          {" "}
-          if (vowels.has(word&#91;i&#93;) && !vowels.has(word&#91;i - 1&#93;))
-          &#123;
+          const vowels = new Set([&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;, &#39;y&#39;]);
         </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <Tab /> <Tab /> <ReactText> syllableCount++;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab /> <Tab /> <ReactText> &#125;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab /> <ReactText> &#125;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab /> <ReactText> if (word.endsWith(&#39;e&#39;)) &#123;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab /> <Tab /> <ReactText> syllableCount--;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab /> <ReactText> &#125;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <Tab />{" "}
+        <Tab />
         <ReactText>
-          {" "}
-          if (word.endsWith(&#39;le&#39;) && word.length &#62; 2 &&
-          !vowels.has(word&#91;word.length - 3&#93;)) &#123;
+          let syllableCount = 0;
         </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <Tab /> <ReactText> syllableCount++;</ReactText>
+        <Tab />
+        <ReactText>
+          for (let i = 0; i &#60; word.length; i++) &#123;
+        </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <ReactText> &#125;</ReactText>
+        <Tab />
+        <Tab />
+        <ReactText>
+          if (vowels.has(word[i]) && (i === 0 || !vowels.has(word[i - 1]))) &#123;
+        </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <ReactText> if (syllableCount === 0) &#123;</ReactText>
+        <Tab />
+        <Tab />
+        <Tab />
+        <ReactText>
+          syllableCount++;
+        </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <Tab /> <ReactText> syllableCount++;</ReactText>
+        <Tab />
+        <Tab />
+        <ReactText>
+          &#125;
+        </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <ReactText> &#125;</ReactText>
+        <Tab />
+        <ReactText>
+          &#125;
+        </ReactText>
       </CodeLine>
       <CodeLine>
-        <Tab /> <ReactText> return syllableCount;</ReactText>
+        <Tab />
+        <ReactText>
+          if (word.endsWith(&#39;le&#39;) && word.length &#62; 2 && !vowels.has(word[word.length - 3])) &#123;
+        </ReactText>
       </CodeLine>
-      <ReactText>&#125;;</ReactText>
+      <CodeLine>
+        <Tab />
+        <Tab />
+        <ReactText>
+          syllableCount++;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab />
+        <ReactText>
+          &#125;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab />
+        <ReactText>
+          if (word.endsWith(&#39;e&#39;) && (!word.endsWith(&#39;le&#39;) || vowels.has(word[word.length - 3]))) &#123;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab />
+        <Tab />
+        <ReactText>
+          syllableCount--;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab />
+        <ReactText>
+          &#125;
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <Tab />
+        <ReactText>
+          return Math.max(syllableCount, 1);
+        </ReactText>
+      </CodeLine>
+      <CodeLine>
+        <ReactText>
+          &#125;;
+        </ReactText>
+      </CodeLine>
       {/* Fog Index Calc Function */}
       <CodeLine>
         <CommentText>
@@ -115,7 +137,7 @@ const ComplexWordCountRepairImplementation = (props) => {
         <Tab />{" "}
         <ReactText>
           {" "}
-          let sentenceCount = letterContent.split(&#39;.&#39;).length;
+          let sentenceCount = letterContent.split(&#39;.&#39;).length - 1;
         </ReactText>
       </CodeLine>
       {fogIndexCalculationData.map((input) => (

@@ -25,7 +25,7 @@ const FogIndexFormulaComplexWords = () => {
         <p className="playthrough__sentence">
           Great work, the fog index widget now displays the correct number of
           sentences! You may have noticed that the fog index widget indicated
-          that the email had a fog index of 5128.5333. This is because the
+          that the email had a fog index of 5130.24. This is because the
           sentence count is now correctly implemented. However, this fog index
           is still incorrect. Next, you will repair the “complex words” portion
           of the fog index formula.

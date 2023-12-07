@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import check_mark from "../../../../assets/images/lab11/checkmark.png";
 import exclamation_mark from "../../../../assets/images/lab11/exclamationmark.png";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Renders the Fog Index Overlay component.
@@ -19,15 +20,24 @@ const FogIndexOverlay = ({
   totalSentences,
   totalComplexWords,
 }) => {
+  let className ="tw-w-16 tw-h-16 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4"  
+  if (fogIndex > 12) {  
+    className = twMerge(className, "tw-bg-[#FF0000]");  
+  } else if (fogIndex > 9) {  
+    className = twMerge(className, "tw-bg-[#FED136]");  
+  } else {  
+    className = twMerge(className, "tw-bg-[#14FF00]");  
+  }  
+
   return (
     <div className="tw-bg-white tw--mb-8 tw--mr-10 tw-w-full max-md:tw-left-0 md:tw-right-0 md:tw-w-[45%] lg:tw-w-[32%] tw-h-auto tw-bg-gray-200 tw-flex tw-items-center tw-justify-center tw-absolute tw-bottom-0  tw-shadow-2xl tw-rounded-3xl">
       <div className="tw-relative">
         {fogIndex > 12 ? (
-          <div className="tw-w-16 tw-h-16 tw-bg-[#FF0000] tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4" />
+          <div className={className} />
         ) : fogIndex > 9 ? (
-          <div className="tw-w-16 tw-h-16 tw-bg-[#FED136] tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4" />
+          <div className={className} />
         ) : (
-          <div className="tw-w-16 tw-h-16 tw-bg-[#14FF00] tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4" />
+          <div className={className} />
         )}
         {fogIndex > 9 ? (
           <img
@@ -45,13 +55,13 @@ const FogIndexOverlay = ({
         <div className="tw-flex tw-flex-col tw-w-full tw-py-4 tw-text-2xl tw-px-6">
           <div className={`tw-text-3xl tw-font-bold tw-py-2`}>Total:</div>
           <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
-            Words: {totalWords ? totalWords : 0}
+            Words: {totalWords}
           </div>
           <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
-            Sentences: {totalSentences ? totalSentences : 0}
+            Sentences: {totalSentences}
           </div>
           <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
-            Complex Words: {totalComplexWords ? totalComplexWords : 0}
+            Complex Words: {totalComplexWords}
           </div>
           <div className={`tw-text-3xl tw-font-bold tw-self-start tw-py-2`}>
             Fog Index: {fogIndex}
@@ -63,7 +73,7 @@ const FogIndexOverlay = ({
 };
 
 FogIndexOverlay.propTypes = {
-  fogIndex: PropTypes.number.isRequired,
+  fogIndex: PropTypes.number,
   totalWords: PropTypes.number,
   totalSentences: PropTypes.number,
   totalComplexWords: PropTypes.number,
