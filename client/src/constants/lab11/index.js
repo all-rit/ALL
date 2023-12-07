@@ -8,11 +8,11 @@ const FOG_INDEX_FORMULA_COMPLEX_WORDS = "/FogIndexFormulaComplexWords";
 const FOG_INDEX_FORMULA_CONCLUSION = "/FogIndexFormulaConclusion";
 const INFORMATION_LETTER_WORD_COUNT = "/InformationLetterWordCount";
 const INFORMATION_LETTER_SENTENCE_COUNT = "/InformationLetterSentenceCount";
-const INFORMATION_LETTER_COMPLEX_WORD_COUNT = "/InformationLetterComplexWordCount";
-const INFORMATION_LETTER_FOG_INDEX_FORMULA = "/InformationLetterFogIndexFormula";
+const INFORMATION_LETTER_COMPLEX_WORD_COUNT =
+  "/InformationLetterComplexWordCount";
+const INFORMATION_LETTER_FOG_INDEX_FORMULA =
+  "/InformationLetterFogIndexFormula";
 const LITERACY_EXERCISE_END = "/ExerciseEnd";
-
-
 
 const REPAIR_WORD_COUNT = "WordCount";
 const REPAIR_SENTENCE_COUNT = "SentenceCount";

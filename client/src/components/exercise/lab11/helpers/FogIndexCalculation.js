@@ -13,11 +13,18 @@ const countSyllables = (word) => {
     }
   }
 
-  if (word.endsWith("le") && word.length > 2 && !vowels.has(word[word.length - 3])) {
+  if (
+    word.endsWith("le") &&
+    word.length > 2 &&
+    !vowels.has(word[word.length - 3])
+  ) {
     syllableCount++;
   }
 
-  if (word.endsWith("e") && (!word.endsWith("le") || vowels.has(word[word.length - 3]))) {
+  if (
+    word.endsWith("e") &&
+    (!word.endsWith("le") || vowels.has(word[word.length - 3]))
+  ) {
     syllableCount--;
   }
 
@@ -41,7 +48,7 @@ const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
   let complexWordCount = complexWords
     ? letterContent.split(" ").filter((word) => countSyllables(word) > 3).length
     : 0;
-  
+
   let fogIndex = complexWords
     ? (
         0.4 *

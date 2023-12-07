@@ -20,14 +20,15 @@ const FogIndexOverlay = ({
   totalSentences,
   totalComplexWords,
 }) => {
-  let className ="tw-w-16 tw-h-16 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4"  
-  if (fogIndex > 12) {  
-    className = twMerge(className, "tw-bg-[#FF0000]");  
-  } else if (fogIndex > 9) {  
-    className = twMerge(className, "tw-bg-[#FED136]");  
-  } else {  
-    className = twMerge(className, "tw-bg-[#14FF00]");  
-  }  
+  let className =
+    "tw-w-16 tw-h-16 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4";
+  if (fogIndex > 12) {
+    className = twMerge(className, "tw-bg-[#FF0000]");
+  } else if (fogIndex > 9) {
+    className = twMerge(className, "tw-bg-[#FED136]");
+  } else {
+    className = twMerge(className, "tw-bg-[#14FF00]");
+  }
 
   return (
     <div className="tw-bg-white tw--mb-8 tw--mr-10 tw-w-full max-md:tw-left-0 md:tw-right-0 md:tw-w-[45%] lg:tw-w-[32%] tw-h-auto tw-bg-gray-200 tw-flex tw-items-center tw-justify-center tw-absolute tw-bottom-0  tw-shadow-2xl tw-rounded-3xl">

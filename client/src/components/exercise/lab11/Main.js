@@ -16,7 +16,18 @@ import FogIndexFormulaSentences from "./pages/Explanations/FogIndexFormulaSetenc
 import FogIndexFormulaComplexWords from "./pages/Explanations/FogIndexFormulaComplexWords";
 import FogIndexFormulaConclusion from "./pages/Explanations/FogIndexFormulaConclusion";
 import useMainStateContext from "src/reducers/MainContext";
-import { FOG_INDEX_FORMULA_COMPLEX_WORDS, FOG_INDEX_FORMULA_CONCLUSION, FOG_INDEX_FORMULA_INTRODUCTION, FOG_INDEX_FORMULA_SENTENCES, INFORMATION_LETTER_COMPLEX_WORD_COUNT, INFORMATION_LETTER_FOG_INDEX_FORMULA, INFORMATION_LETTER_INTRODUCTION, INFORMATION_LETTER_SENTENCE_COUNT, INFORMATION_LETTER_WORD_COUNT, LITERACY_EXERCISE_END } from "src/constants/lab11/index";
+import {
+  FOG_INDEX_FORMULA_COMPLEX_WORDS,
+  FOG_INDEX_FORMULA_CONCLUSION,
+  FOG_INDEX_FORMULA_INTRODUCTION,
+  FOG_INDEX_FORMULA_SENTENCES,
+  INFORMATION_LETTER_COMPLEX_WORD_COUNT,
+  INFORMATION_LETTER_FOG_INDEX_FORMULA,
+  INFORMATION_LETTER_INTRODUCTION,
+  INFORMATION_LETTER_SENTENCE_COUNT,
+  INFORMATION_LETTER_WORD_COUNT,
+  LITERACY_EXERCISE_END,
+} from "src/constants/lab11/index";
 
 const Main = () => {
   const { actions } = useMainStateContext();
@@ -57,10 +68,7 @@ const Main = () => {
         }}
       >
         <Router className="app">
-          <LiteracyExerciseStart
-            default
-            path="/"
-          />
+          <LiteracyExerciseStart default path="/" />
 
           <LiteracyRepair path={`${REPAIR}/*`} actions={actions} />
 
@@ -73,9 +81,7 @@ const Main = () => {
             descriptionText={`First, read through the family weekend invitation email. Then, look at the fog index widget. Finally, click the “Next” button to continue to the next section!`}
           />
 
-          <FogIndexFormulaIntroduction
-            path={FOG_INDEX_FORMULA_INTRODUCTION}
-          />
+          <FogIndexFormulaIntroduction path={FOG_INDEX_FORMULA_INTRODUCTION} />
 
           <InformationLetterEmail
             path={INFORMATION_LETTER_WORD_COUNT}
@@ -87,9 +93,7 @@ const Main = () => {
             descriptionText={`Notice that the fog index widget displays the correct number of words now. However, the number of sentences and complex words is still incorrect, and the fog index is incorrect.`}
           />
 
-          <FogIndexFormulaSentences
-            path={FOG_INDEX_FORMULA_SENTENCES}
-            />
+          <FogIndexFormulaSentences path={FOG_INDEX_FORMULA_SENTENCES} />
 
           <InformationLetterEmail
             path={INFORMATION_LETTER_SENTENCE_COUNT}
@@ -102,9 +106,7 @@ const Main = () => {
             descriptionText={`Notice that the fog index widget displays the correct number of sentences now. However, the number of complex words is still incorrect, and the fog index is incorrect.`}
           />
 
-          <FogIndexFormulaComplexWords
-            path={FOG_INDEX_FORMULA_COMPLEX_WORDS}
-            />
+          <FogIndexFormulaComplexWords path={FOG_INDEX_FORMULA_COMPLEX_WORDS} />
 
           <InformationLetterEmail
             path={INFORMATION_LETTER_COMPLEX_WORD_COUNT}
@@ -118,9 +120,7 @@ const Main = () => {
             descriptionText={`Notice that the fog index widget displays the correct number of complex words now, and the fog index is correct! However, this fog index is not ideal.`}
           />
 
-          <FogIndexFormulaConclusion
-            path={FOG_INDEX_FORMULA_CONCLUSION}
-            />
+          <FogIndexFormulaConclusion path={FOG_INDEX_FORMULA_CONCLUSION} />
 
           <InformationLetterEmail
             path={INFORMATION_LETTER_FOG_INDEX_FORMULA}
@@ -133,9 +133,7 @@ const Main = () => {
             descriptionText={`Choose one of the emails with a fog index of 10 or less.`}
           />
 
-          <LiteracyExerciseEnd
-            path={LITERACY_EXERCISE_END}
-          />
+          <LiteracyExerciseEnd path={LITERACY_EXERCISE_END} />
         </Router>
       </ExerciseStateContext.Provider>
     </div>
