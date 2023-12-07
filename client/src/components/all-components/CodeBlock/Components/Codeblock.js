@@ -14,20 +14,18 @@ import PropTypes from "prop-types";
 
 const CodeBlock = ({ fileName, children }) => {
   return (
-    <>
-      <div className="tw-flex tw-flex-col tw-m-2 tw-bg-[#ffffffe8] tw-rounded-lg tw-text-left tw-border-solid tw-border-0 tw-shadow-[0px_0px_10px_0px_rgba(0,0,0,.4)]">
-        <div className="tw-flex-row tw-pt-3 tw-pl-3">
-          <div className="tw-font-normal tw-text-sm tw-bg-[#fff] tw-border-solid tw-inline-block tw-border-t-2 tw-border-r-2 tw-border-l-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg hover:tw-font-extrabold ">
-            {fileName}
-          </div>
-          <div className="tw-grow"></div>
+    <div className="tw-flex tw-flex-col tw-m-2 tw-bg-[#ffffffe8] tw-rounded-lg tw-text-left tw tw-border-solid tw-border-0 tw-shadow-[0px_0px_10px_0px_rgba(0,0,0,.4)]">
+      <div className="tw-flex-row tw-pt-3 tw-pl-3">
+        <div className="tw-font-normal tw-text-sm tw-bg-[#fff] tw-border-solid tw-inline-block tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg hover:tw-font-extrabold ">
+          {fileName}
         </div>
-
-        <div className="tw-bg-[#333] tw-ml-3 tw-mr-3 tw-mb-3  tw-ease-in  tw-shadow-2xl tw-rounded-r-sm code_editor__code">
-          <div className={"tw-m-5"}>{children}</div>
-        </div>
+        <div className="tw-grow"></div>
       </div>
-    </>
+
+      <div className="tw-bg-[#333] tw-m-3 tw-mt-0 tw-ease-in  tw-shadow-2xl tw-rounded-r-sm code_editor__code">
+        <div className={"tw-m-5"}>{children}</div>
+      </div>
+    </div>
   );
 };
 

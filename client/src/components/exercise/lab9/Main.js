@@ -36,7 +36,6 @@ const Main = (props) => {
   );
 };
 Main.propTypes = {
-  user: PropTypes.object.isRequired,
-  actions: PropTypes.object,
+  user: PropTypes.object,
 };
 export default Main;

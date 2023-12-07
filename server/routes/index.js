@@ -41,6 +41,10 @@ const ExerciseControllerLab8 = require('../controllers/lab8/ExerciseController')
 const ExerciseControllerLab9 = require('../controllers/lab9/ExerciseController');
 // Lab 9 Controller
 const RepairControllerLab9 = require('../controllers/lab9/RepairController');
+
+// LAB 11 Controller
+const ExerciseControllerLab11 = require('../controllers/lab11/ExerciseController');
+const RepairControllerLab11 = require('../controllers/lab11/RepairController');
 // LAB10 Controller
 const ExerciseControllerLab10 = require('../controllers/lab10/ExerciseController');
 
@@ -141,6 +145,22 @@ router.get('/lab9/repair/:userID/:section', async function(req, res) {
 });
 router.post('/lab9/repair/submit', async function(req, res) {
   const id = await RepairControllerLab9.submitChange(req);
+  res.send(id);
+});
+
+router.get('/lab11/exercise/:userID', async function(req, res) {
+  res.json(await ExerciseControllerLab11.getExercise(req));
+});
+router.post('/lab11/exercise/submit', async function(req, res) {
+  const id = await ExerciseControllerLab11.postExercise(req);
+  res.send(id);
+});
+
+router.get('/lab11/repair/:userID/:section', async function(req, res) {
+  res.json(await RepairControllerLab11.getRepair(req));
+});
+router.post('/lab11/repair/submit', async function(req, res) {
+  const id = await RepairControllerLab11.submitChange(req);
   res.send(id);
 });
 // Create a Page Entry

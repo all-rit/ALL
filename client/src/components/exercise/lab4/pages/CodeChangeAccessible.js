@@ -1,8 +1,5 @@
 /* eslint-disable max-len */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Prism from "prismjs";
 import { navigate } from "@reach/router";
 import Button from "@material-ui/core/Button";
@@ -19,8 +16,9 @@ import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
-import { EXERCISE_PLAYING } from "../../../../constants/lab4";
 import RepairService from "../../../../services/lab4/RepairService";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -96,187 +94,153 @@ MySnackbarContentWrapper.propTypes = {
   variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 
-class CodeChangeAccessible extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      textValue: "",
-      textValue1: "",
-      snackBarOpen: false,
-      message: "Please type code before updating code!",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    if (window.location.state !== undefined) {
-      this.state = {
-        textValue: window.location.state.hint,
-        snackBarOpen: false,
-        message: "Please type code before updating code!",
-      };
-      window.location.state = {
-        hint: window.location.state.hint,
-      };
-    } else {
-      window.location.state = {
-        hint: null,
-      };
-    }
-  }
+const CodeChangeAccessible = () => {
+  const { actions } = useMainStateContext();
+  const [textValue, setTextValue] = useState("");
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
+  const [message, setMessage] = useState(
+    "Please type code before updating code!"
+  );
 
-  componentDidMount() {
-    const { actions } = this.props;
-    actions.updateState(EXERCISE_PLAYING);
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
     Prism.highlightAll();
     if (window.location.state.hint !== undefined) {
       const el0 = document.getElementById("first");
       el0.value = window.location.state.hint;
-      CodeChangeAccessible.doEvent(el0, "input");
+      doEvent(el0, "input");
     }
-  }
+  }, []);
 
-  handleChange(event) {
-    this.setState({ textValue: event.target.value }, () => {
-      console.log("handled change value: " + this.state.textValue);
-      Prism.highlightAll();
-    });
-  }
+  const handleChange = (event) => {
+    setTextValue(event.target.value);
+    console.log("handled change value: " + textValue);
+    Prism.highlightAll();
+  };
 
-  handleClose(event, reason) {
+  const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
+    setSnackBarOpen(false);
+    console.log("SnackBar Closed");
+  };
 
-    this.setState({ snackBarOpen: false }, () => {
-      console.log("SnackBar Closed");
-    });
-  }
-
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("hint updated as: " + this.state.textValue);
-    if (this.state.textValue === "") {
-      this.setState({
-        message: "Please type code before updating code!",
-        snackBarOpen: true,
-      });
-    } else if (parseInt(this.state.textValue) !== 0) {
-      this.setState({ message: "Please enter value 0", snackBarOpen: true });
-    } else if (!/^\d+$/.test(this.state.textValue)) {
-      this.setState({
-        message: "Please enter numeric value",
-        snackBarOpen: true,
-      });
+    console.log("hint updated as: " + textValue);
+    if (textValue === "") {
+      setMessage("Please type code before updating code!");
+      setSnackBarOpen(true);
+    } else if (parseInt(textValue) !== 0) {
+      setMessage("Please enter value 0");
+      setSnackBarOpen(true);
+    } else if (!/^\d+$/.test(textValue)) {
+      setMessage("Please enter numeric value");
+      setSnackBarOpen(true);
     } else {
       window.location.state = {
-        hint: this.state.textValue,
+        hint: textValue,
       };
-      RepairService.submitRepairHint(this.state.textValue);
+      RepairService.submitRepairHint(textValue);
       navigate("/Lab4/Exercise/FormHintAccessible");
     }
     Prism.highlightAll();
-  }
+  };
 
-  static doEvent(obj, event) {
+  const doEvent = (obj, event) => {
     const eventInit = new Event(event, { target: obj, bubbles: true });
     return obj ? obj.dispatchEvent(eventInit) : false;
-  }
+  };
 
-  render() {
-    const paperStyle = {
-      marginLeft: "10px",
-      marginRight: "10px",
-      marginTop: "20px",
-    };
-    return (
+  const paperStyle = {
+    marginLeft: "10px",
+    marginRight: "10px",
+    marginTop: "20px",
+  };
+  return (
+    <div>
+      <h2 className="playthrough__title">Repair</h2>
+      <p className="app__instructions">
+        The intent of this code repair is to ensure that, wherever possible,
+        content can be operated through a keyboard or keyboard interface.
+        <br />
+        Tabindex=&quot;-1&quot; prevents access through keyboard navigation.
+        Tabindex=&quot;2&quot; (positive non-zero) means focusable in sequential
+        keyboard navigation, with its order defined by the value of the number.
+        Tabindex=&quot;0&quot; means that the element should be focusable in
+        sequential keyboard navigation.
+      </p>
+      <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
+        <Paper style={paperStyle}>
+          <pre>
+            <code className="language-html">
+              {`<form>
+  <div>
+      <label>Favorite Animal</label>
+      <input>
+  </div>
+  <div>
+      <label>Favorite Color</label>
       <div>
-        {/* <CodeUpdateHeader
-                    heading={"Make Code Changes"}
-                    justifyAlignment={"space-between"}
-                    helpMessage={"Set the tabindex to 0 in the code editor."}
-                /> */}
-        <h2 className="playthrough__title">Repair</h2>
-        <p className="app__instructions">
-          The intent of this code repair is to ensure that, wherever possible,
-          content can be operated through a keyboard or keyboard interface.
-          <br />
-          Tabindex="-1" prevents access through keyboard navigation.
-          Tabindex="2" (positive non-zero) means focusable in sequential
-          keyboard navigation, with its order defined by the value of the
-          number. Tabindex="0" means that the element should be focusable in
-          sequential keyboard navigation.
-        </p>
-        <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
-          <Paper style={paperStyle}>
-            <pre>
-              <code className="language-html">
-                {`<form>
-    <div>
-        <label>Favorite Animal</label>
-        <input>
-    </div>
-    <div>
-        <label>Favorite Color</label>
-        <div>
-            <span tabindex= `}
-              </code>
-              <input
-                type={"text"}
-                id="first"
-                value={this.state.textValue}
-                placeholder=""
-                onChange={this.handleChange}
-                aria-label={
-                  "set tab-index to 0 so tooltip can be keyboard accessible"
-                }
-              />
-              <code className="language-html">
-                {`>hint</span> /* set tab-index to 0 so tooltip can be keyboard accessible*/
-        </div>
-
-        <input>
-    </div>
-    <div>
-        <label>Favorite Candy</label>
-        <input>
-    </div>
-    <div>
-        <label>Favorite City</label>
-        <input>
-    </div>
-`}
-              </code>
-            </pre>
-          </Paper>
-          <br />
-          <br />
-          <Button
-            type={"submit"}
-            aria-label={"Update Code"}
-            variant={"contained"}
-            color={"primary"}
-          >
-            Update Code
-          </Button>
-        </form>
-        <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          open={this.state.snackBarOpen}
-          autoHideDuration={6000}
-          onClose={this.handleClose}
-        >
-          <MySnackbarContentWrapper
-            onClose={this.handleClose}
-            variant="warning"
-            message={this.state.message}
-          />
-        </Snackbar>
+          <span tabindex= `}
+            </code>
+            <input
+              type={"text"}
+              id="first"
+              value={textValue}
+              placeholder=""
+              onChange={handleChange}
+              aria-label={
+                "set tab-index to 0 so tooltip can be keyboard accessible"
+              }
+            />
+            <code className="language-html">
+              {`>hint</span> /* set tab-index to 0 so tooltip can be keyboard accessible*/
       </div>
-    );
-  }
-}
+
+      <input>
+  </div>
+  <div>
+      <label>Favorite Candy</label>
+      <input>
+  </div>
+  <div>
+      <label>Favorite City</label>
+      <input>
+  </div>
+`}
+            </code>
+          </pre>
+        </Paper>
+        <br />
+        <br />
+        <Button
+          type={"submit"}
+          aria-label={"Update Code"}
+          variant={"contained"}
+          color={"primary"}
+        >
+          Update Code
+        </Button>
+      </form>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        open={snackBarOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <MySnackbarContentWrapper
+          onClose={handleClose}
+          variant="warning"
+          message={message}
+        />
+      </Snackbar>
+    </div>
+  );
+};
 
 export default CodeChangeAccessible;
