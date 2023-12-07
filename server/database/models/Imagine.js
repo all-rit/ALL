@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
         readMoreCount: {
           type: DataTypes.INTEGER,
         },
+        readMoreTimeElapsed: {
+          type: DataTypes.JSON,
+        },
         // avatar: {type: DataTypes.JSON},
         // squad: {type: DataTypes.JSON},
         // lobbyMessages: {type: DataTypes.JSON},

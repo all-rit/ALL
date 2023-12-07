@@ -62,6 +62,19 @@ const ImagineService = {
       }
     );
   },
+
+  readMoreTimeElapsed: (userID, readMoreTimeElapsed) => {
+    return API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + "/imagine/readMoreTimeElapsed",
+      {
+        userID,
+        readMoreTimeElapsed,
+      }
+    );
+  },
+
 };
+
+
 
 export default ImagineService;

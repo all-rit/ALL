@@ -194,3 +194,36 @@ exports.readMoreCount = (data) => {
   }
   return Promise.resolve();
 };
+
+
+exports.readMoreTimeElapsed = (data) => {
+  const userID = data.userID;
+  const readMoreTimeElapsed = data.readMoreTimeElapsed;
+
+  if (userID) {
+    return db.Imagine23
+        .findOne({
+          where:
+                        {
+                          userid: userID,
+                        },
+        },
+        ).then((user) => {
+          if (user !== null) {
+            user.readMoreTimeElapsed = readMoreTimeElapsed;
+            user.save();
+          } else {
+            db.Imagine23.create({
+              userid: userID,
+              readMoreTimeElapsed: readMoreTimeElapsed,
+            });
+          }
+          return true;
+        }).catch((err) => {
+          console.log(err);
+          return true;
+        });
+  }
+  return Promise.resolve();
+};
+

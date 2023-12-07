@@ -61,3 +61,13 @@ exports.readMoreCount = (req, res) =>{
   });
 };
 
+
+exports.readMoreTimeElapsed = (req, res) =>{
+  ImagineService.readMoreTimeElapsed({
+    userID: req.body.userID,
+    readMoreTimeElapsed: req.body.readMoreTimeElapsed,
+  }).then(() => {
+    res.sendStatus(200);
+  });
+};
+

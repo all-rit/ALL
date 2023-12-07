@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import ImagineService from "../../../services/ImagineService";
 
@@ -7,8 +7,30 @@ const LearnMoreButton = (props) => {
   const { data, userID } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const [counter, setCounter] = useState(1);
+  const [time,setTime] = useState(0);
+  const [timeElapsed,setTimeElapsed] = useState("");
+  const [running, setRunning] = useState(false)
+  const timer = useRef();
 
-  const [counter, setCounter] = useState(0);
+
+  useEffect(()=>{
+    if(running){
+      timer.current = setInterval(()=>{
+        setTime((pre) => pre+1)
+      },1000)
+    }
+  },[running])
+
+  const stopTimer = () =>{
+    toggle();
+    setRunning(false)
+    console.log("time elapsed "+  formatTime(time))
+    setTimeElapsed(formatTime(time))
+    clearInterval(timer.current);
+    // setTimeElapsed(formatTime(time))
+    console.log("get current time" + formatTime(time))
+  }
 
   const readMoreCount = () => {
     setModal(true);
@@ -17,15 +39,30 @@ const LearnMoreButton = (props) => {
   };
 
   const saveData = () => {
+    setRunning(true)
     console.log(counter);
     readMoreCount();
-
     toggle();
   };
 
   useEffect(() => {
     ImagineService.readMoreCount(userID, counter);
   }, [counter, userID]);
+
+  const formatTime = (time) => {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    minutes = minutes < 10 ? '0' + minutes : minutes
+    seconds = seconds < 10 ? '0' + seconds : seconds
+
+    return minutes + ":" + seconds;
+  };
+
+  useEffect(()=>{
+    ImagineService.readMoreTimeElapsed(userID,timeElapsed);
+  },[timeElapsed,userID]
+  );
+
 
   return (
     <>
@@ -64,7 +101,9 @@ const LearnMoreButton = (props) => {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button className="btn-primary">Close</Button>
+        <Button className="btn-primary" onClick={stopTimer}> 
+          Close
+        </Button>
         </ModalFooter>
       </Modal>
     </>
