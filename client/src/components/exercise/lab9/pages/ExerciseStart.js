@@ -53,7 +53,7 @@ const ExerciseStart = () => {
 };
 
 ExerciseStart.propTypes = {
-  actions: PropTypes.object
+  actions: PropTypes.object,
 };
 
 export default ExerciseStart;

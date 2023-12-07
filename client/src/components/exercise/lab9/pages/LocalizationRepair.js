@@ -1,5 +1,5 @@
 // library imports
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Router } from "@reach/router";
 // component imports
