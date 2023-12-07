@@ -1,5 +1,5 @@
 // library imports
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import { Router } from "@reach/router";
 // component imports
@@ -7,10 +7,8 @@ import AddressRepair from "./Repairs/AddressRepair";
 import DateRepair from "./Repairs/DateRepair";
 import NavRepairPage from "./Repairs/NavRepairPage";
 import { EXERCISE_STATES } from "../../../../constants/lab9";
-
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 /**
  * LocalizationRepair is a Route wrapper component that is responsible for declaring the
@@ -19,7 +17,13 @@ import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseRe
  * @param {String} user is a string representing user id for data retrieval purposes.
  * @returns
  */
-const LocalizationRepair = ({ user, actions }) => {
+const LocalizationRepair = ({ user }) => {
+  const { actions } = useMainStateContext();
+
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
+
   return (
     <Router className="app">
       <DateRepair
@@ -41,18 +45,9 @@ const LocalizationRepair = ({ user, actions }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LocalizationRepair);
-
 LocalizationRepair.propTypes = {
   user: PropTypes.object,
   actions: PropTypes.object,
 };
+
+export default LocalizationRepair;

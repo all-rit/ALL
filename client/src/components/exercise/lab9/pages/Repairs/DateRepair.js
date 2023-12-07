@@ -5,12 +5,14 @@ import DateFormData from "../../../../../constants/lab9/DateFormData";
 import {
   HEADINGS,
   EXERCISE_STATES,
-  EXERCISE_PLAYING,
   REPAIR,
 } from "../../../../../constants/lab9";
 import DateFormRepair from "../DateFormRepair";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
+
 /**
  * Date Repair is a component that is responsible for passing logic into the universal
  * repair page component, what this allows us to do is call the re-useable repair component
@@ -20,7 +22,8 @@ import { navigate } from "@reach/router";
  */
 
 const DateRepair = (props) => {
-  const { user, actions } = props;
+  const { user } = props;
+  const { actions } = useMainStateContext();
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_DATE_REPAIR,
@@ -28,7 +31,7 @@ const DateRepair = (props) => {
   );
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleNav = () => {

@@ -3,7 +3,6 @@ import { PropTypes } from "prop-types";
 import Repair from "../../../../body/Repair/Repair";
 import {
   EXERCISE_STATES,
-  EXERCISE_PLAYING,
   HEADINGS,
   REPAIR,
 } from "../../../../../constants/lab9";
@@ -11,6 +10,9 @@ import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
 import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairData";
 import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
+
 /**
  * AddressRepair: is a Component responsible for passing in both logic and information
  * into the universal repair component. This allows for the ability to handle the custom routing
@@ -18,7 +20,9 @@ import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
  * @param {Object} user contains user id for data state and logging user input
  * @returns Component to handle custom logic for the lab.
  */
-const AddressRepair = ({ user, actions }) => {
+const AddressRepair = ({ user }) => {
+  const { actions } = useMainStateContext();
+
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_ADDRESS_FORM,
@@ -29,8 +33,9 @@ const AddressRepair = ({ user, actions }) => {
     functions;
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
+
   return (
     <Repair
       fileName={"AddressFormat.js"}

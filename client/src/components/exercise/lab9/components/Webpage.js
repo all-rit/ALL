@@ -8,10 +8,9 @@ import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
 import { ExerciseService } from "../../../../services/lab9/ExerciseService";
 import Button from "src/components/all-components/Navigation/Button";
-import { EXERCISE_PLAYING } from "src/constants/lab9/index";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
+
 /**
  * Webpage is a reusable component used to display
  * the ALL University's website homepage.
@@ -20,7 +19,8 @@ import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseRe
  * @returns rendered webpage
  */
 const Webpage = (props) => {
-  const { actions, user } = props;
+  const { user } = props;
+  const { actions } = useMainStateContext();
   const [isNavComplete, setNavComplete] = useState(false);
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
@@ -103,7 +103,7 @@ const Webpage = (props) => {
     }
   };
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
     dataHandling();
   }, []);
 
@@ -147,13 +147,4 @@ Webpage.propTypes = {
   props: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Webpage);
+export default Webpage;
