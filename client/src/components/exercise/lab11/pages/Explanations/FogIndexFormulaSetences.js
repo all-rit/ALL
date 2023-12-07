@@ -21,24 +21,15 @@ const FogIndexFormulaSentences = () => {
 
   return (
     <div className="center-div">
-      <div className="playthrough__sentence">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-        tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-        tristique ex. Nam feugiat sodales nulla, ac lobortis diam porttitor vel.
-        Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Sed iaculis lectus orci, eget imperdiet lectus venenatis
-        non. Pellentesque tincidunt arcu a nisi luctus, non vulputate elit
-        placerat. Sed eu eleifend nunc, at porttitor massa. Vestibulum eleifend
-        turpis vitae pulvinar consequat. Nulla non dui magna. Curabitur vitae
-        lacinia ante, non convallis turpis. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Cras ut dolor velit. Mauris posuere, enim
-        vitae feugiat fringilla, eros quam iaculis est, in facilisis massa odio
-        vel eros. Sed ut erat convallis, posuere lorem sit amet, auctor augue.
-        Sed in neque sed magna aliquam semper. Donec tincidunt risus at nibh
-        dictum consectetur. Morbi porta fringilla mauris a cursus. Sed
-        condimentum porttitor mauris, eget egestas libero eleifend et. Donec
-        laoreet congue tellus id condimentum. Sed accumsan non nisl non
-        tincidunt. Suspendisse potenti. In gravida interdum lacinia.
+      <div className="guidance margin-bottom-2">
+        <p className="playthrough__sentence">
+          Great work, the fog index widget now displays the correct number of
+          words! You may have noticed that the fog index widget indicated that
+          the email had a fog index of 5171.2. This is because the word count is
+          now correctly implemented. However, this fog index is still incorrect.
+          Next, you will repair the “total sentences” portion of the fog index
+          formula.
+        </p>
       </div>
       <div className="playthrough__sentence">
         Click the &quot;Continue to Repair&quot; button.

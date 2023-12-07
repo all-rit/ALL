@@ -18,29 +18,24 @@ const LiteracyExerciseStart = () => {
 
   return (
     <div className="center-div">
-      <h2 className="playthrough__title">Information Letter</h2>
-      <div className="playthrough__sentence">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-        tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-        tristique ex. Nam feugiat sodales nulla, ac lobortis diam porttitor vel.
-        Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Sed iaculis lectus orci, eget imperdiet lectus venenatis
-        non. Pellentesque tincidunt arcu a nisi luctus, non vulputate elit
-        placerat. Sed eu eleifend nunc, at porttitor massa. Vestibulum eleifend
-        turpis vitae pulvinar consequat. Nulla non dui magna. Curabitur vitae
-        lacinia ante, non convallis turpis. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Cras ut dolor velit. Mauris posuere, enim
-        vitae feugiat fringilla, eros quam iaculis est, in facilisis massa odio
-        vel eros. Sed ut erat convallis, posuere lorem sit amet, auctor augue.
-        Sed in neque sed magna aliquam semper. Donec tincidunt risus at nibh
-        dictum consectetur. Morbi porta fringilla mauris a cursus. Sed
-        condimentum porttitor mauris, eget egestas libero eleifend et. Donec
-        laoreet congue tellus id condimentum. Sed accumsan non nisl non
-        tincidunt. Suspendisse potenti. In gravida interdum lacinia.
+      <div className="guidance margin-bottom-2">
+        <p className="playthrough__sentence">
+          Welcome to ALL University! In this exercise, you are a student and
+          receive an email from ALL University for their family weekend event.
+          However, the email is incomprehensible due to the amount of complex
+          words, so you are unsure of what events will occur during the family
+          weekend event.
+        </p>
+        <p className="playthrough__sentence">
+          In this exercise, you will implement the fog index formula, which
+          measures readability, by calculating the total number of words, total
+          number of sentences, and total number of complex words. Afterwards,
+          you will use the fog index to edit the email to increase readability.
+        </p>
       </div>
-      <div className="playthrough__sentence">
+      <p className="playthrough__sentence">
         Click the “Start” button to begin this exercise!
-      </div>
+      </p>
       <button
         className="btn btn-primary text-black btn-xl text-uppercase "
         onClick={handleStart}

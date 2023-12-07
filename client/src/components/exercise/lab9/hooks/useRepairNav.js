@@ -39,7 +39,6 @@ const useRepairNav = ({ user }) => {
       }
     });
     setIsInputValid(localValidArray);
-    console.log(localValidArray);
     console.warn(exercisePromptsState);
     return localValidArray.every((v) => v === false);
   };
@@ -55,7 +54,6 @@ const useRepairNav = ({ user }) => {
           : navItem
       );
     });
-    console.log(newValue);
   };
 
   // eslint-disable-next-line no-unused-vars

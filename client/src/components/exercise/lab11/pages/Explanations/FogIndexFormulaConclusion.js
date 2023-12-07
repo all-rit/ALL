@@ -18,24 +18,19 @@ const FogIndexFormulaConclusion = () => {
 
   return (
     <div className="center-div">
-      <div className="playthrough__sentence">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-        tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-        tristique ex. Nam feugiat sodales nulla, ac lobortis diam porttitor vel.
-        Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Sed iaculis lectus orci, eget imperdiet lectus venenatis
-        non. Pellentesque tincidunt arcu a nisi luctus, non vulputate elit
-        placerat. Sed eu eleifend nunc, at porttitor massa. Vestibulum eleifend
-        turpis vitae pulvinar consequat. Nulla non dui magna. Curabitur vitae
-        lacinia ante, non convallis turpis. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Cras ut dolor velit. Mauris posuere, enim
-        vitae feugiat fringilla, eros quam iaculis est, in facilisis massa odio
-        vel eros. Sed ut erat convallis, posuere lorem sit amet, auctor augue.
-        Sed in neque sed magna aliquam semper. Donec tincidunt risus at nibh
-        dictum consectetur. Morbi porta fringilla mauris a cursus. Sed
-        condimentum porttitor mauris, eget egestas libero eleifend et. Donec
-        laoreet congue tellus id condimentum. Sed accumsan non nisl non
-        tincidunt. Suspendisse potenti. In gravida interdum lacinia.
+      <div className="guidance margin-bottom-2">
+        <p className="playthrough__sentence">
+          Great work, you implemented all 3 parts of the fog index formula, and
+          the fog index widget now displays the correct fog index!
+        </p>
+        <p className="playthrough__sentence">
+          The fog index of the email was 19.1583, which is the equivalent of a
+          post-graduate reading level. Since this email is intended for students
+          and families of students, the fog index shouldn’t be higher than 10,
+          or the reading level of a high school sophomore. To repair the
+          readability of the email, you will choose one of the emails on the
+          following page with a fog index of 10 or less.
+        </p>
       </div>
       <div className="playthrough__sentence">
         Click the &quot;Continue to Exercise&quot; button.

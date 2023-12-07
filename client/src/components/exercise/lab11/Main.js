@@ -79,9 +79,7 @@ const Main = (props) => {
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaIntroduction")
             }
-            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-            tristique ex.`}
+            descriptionText={`First, read through the family weekend invitation email. Then, look at the fog index widget. Finally, click the “Next” button to continue to the next section!`}
           />
 
           <FogIndexFormulaIntroduction
@@ -102,9 +100,7 @@ const Main = (props) => {
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaSentences")
             }
-            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-            tristique ex.`}
+            descriptionText={`Notice that the fog index widget displays the correct number of words now. However, the number of sentences and complex words is still incorrect, and the fog index is incorrect.`}
           />
 
           <FogIndexFormulaSentences
@@ -125,9 +121,7 @@ const Main = (props) => {
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaComplexWords")
             }
-            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-            tristique ex.`}
+            descriptionText={`Notice that the fog index widget displays the correct number of sentences now. However, the number of complex words is still incorrect, and the fog index is incorrect.`}
           />
 
           <FogIndexFormulaComplexWords
@@ -148,9 +142,7 @@ const Main = (props) => {
             handleContinue={() =>
               navigate("/Lab11/Exercise/FogIndexFormulaConclusion")
             }
-            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-            tristique ex.`}
+            descriptionText={`Notice that the fog index widget displays the correct number of complex words now, and the fog index is correct! However, this fog index is not ideal.`}
           />
 
           <FogIndexFormulaConclusion
@@ -169,9 +161,7 @@ const Main = (props) => {
             isEditable
             sectionTitle={"Information Letter: Fog Index Formula"}
             handleContinue={() => navigate("/Lab11/Exercise/ExerciseEnd")}
-            descriptionText={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eros
-            tellus, hendrerit quis iaculis non, blandit eget turpis. Sed at
-            tristique ex.`}
+            descriptionText={`Choose one of the emails with a fog index of 10 or less.`}
           />
 
           <LiteracyExerciseEnd
