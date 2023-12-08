@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import uni from "../../../../assets/images/lab9/uni.jpeg";
-import PropTypes from "prop-types";
 import NewsletterForm from "./webpage-subcomponents/NewsletterForm";
 import WebpageNav from "./webpage-subcomponents/WebpageNav";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
@@ -18,9 +17,8 @@ import { EXERCISE_PLAYING } from "src/constants/index";
  * each of which are sub-components.
  * @returns rendered webpage
  */
-const Webpage = (props) => {
-  const { user } = props;
-  const { actions } = useMainStateContext();
+const Webpage = () => {
+  const { actions, state } = useMainStateContext();
   const [isNavComplete, setNavComplete] = useState(false);
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
@@ -36,7 +34,7 @@ const Webpage = (props) => {
       // navigate to the conclusion page
       // only when all repairs are completed
       const body = {
-        userid: user.userid,
+        userid: state.main.user.userid,
         isAddressComplete: isAddressComplete,
         isDateComplete: isDateComplete,
         isNavComplete: isNavComplete,
@@ -55,7 +53,7 @@ const Webpage = (props) => {
    */
   const resetData = async () => {
     const body = {
-      userid: user.userid,
+      userid: state.main.user.userid,
       isAddressComplete: false,
       isDateComplete: false,
       isNavComplete: false,
@@ -77,7 +75,7 @@ const Webpage = (props) => {
    */
   const dataHandling = async () => {
     try {
-      const newState = await ExerciseService.fetchExercise(user);
+      const newState = await ExerciseService.fetchExercise(state.main.user);
       // if the data returned null then reset data
       if (!newState) {
         resetData();
@@ -139,12 +137,6 @@ const Webpage = (props) => {
       {isComplete && <Button onClick={handleComplete} buttonText="Continue" />}
     </div>
   );
-};
-
-Webpage.propTypes = {
-  user: PropTypes.object,
-  actions: PropTypes.string,
-  props: PropTypes.object,
 };
 
 export default Webpage;

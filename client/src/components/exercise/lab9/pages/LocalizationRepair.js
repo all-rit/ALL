@@ -1,6 +1,5 @@
 // library imports
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import { Router } from "@reach/router";
 // component imports
 import AddressRepair from "./Repairs/AddressRepair";
@@ -14,11 +13,10 @@ import { EXERCISE_PLAYING } from "src/constants/index";
  * LocalizationRepair is a Route wrapper component that is responsible for declaring the
  * structure for routing of individual repair pages. this allows for the addition of repairs
  * in the future by then only needing to import the component to one location
- * @param {String} user is a string representing user id for data retrieval purposes.
  * @returns
  */
-const LocalizationRepair = ({ user }) => {
-  const { actions } = useMainStateContext();
+const LocalizationRepair = () => {
+  const { actions, state } = useMainStateContext();
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
@@ -28,26 +26,21 @@ const LocalizationRepair = ({ user }) => {
     <Router className="app">
       <DateRepair
         path={`${EXERCISE_STATES.REPAIR_DATE_REPAIR}`}
-        user={user}
+        user={state.main.user}
         actions={actions}
       />
       <AddressRepair
         path={`${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`}
-        user={user}
+        user={state.main.user}
         actions={actions}
       />
       <NavRepairPage
         path={`${EXERCISE_STATES.REPAIR_NAV_BAR}`}
-        user={user}
+        user={state.main.user}
         actions={actions}
       />
     </Router>
   );
-};
-
-LocalizationRepair.propTypes = {
-  user: PropTypes.object,
-  actions: PropTypes.object,
 };
 
 export default LocalizationRepair;
