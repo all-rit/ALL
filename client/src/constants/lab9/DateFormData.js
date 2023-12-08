@@ -6,7 +6,7 @@ const DateFormData = {
       countryName: "united_states",
       comment: "// Enter 'MM-DD-YYYY' for localized dateform for the US",
       userInput: "",
-      validate_expression: /MM-DD-YYYY/g,
+      validate_expression: "MM-DD-YYYY",
       correct_expression: "MM-DD-YYYY",
     },
     {
@@ -15,7 +15,7 @@ const DateFormData = {
       countryName: "united_kingdom",
       comment: "// Enter 'YYYY-MM-DD' for localized dateform for the UK",
       userInput: "",
-      validate_expression: /YYYY-MM-DD/g,
+      validate_expression: "YYYY-MM-DD",
       correct_expression: "YYYY-MM-DD",
     },
     {
@@ -24,7 +24,7 @@ const DateFormData = {
       countryName: "japan",
       comment: "// Enter 'YYYY-MM-DD' for localized dateform for Japan",
       userInput: "",
-      validate_expression: /YYYY-MM-DD/g,
+      validate_expression: "YYYY-MM-DD",
       correct_expression: "YYYY-MM-DD",
     },
     {
@@ -33,7 +33,7 @@ const DateFormData = {
       countryName: "dubai",
       comment: "// Enter 'DD-MM-YYYY' for localized dateform for the Dubai",
       userInput: "",
-      validate_expression: /DD-MM-YYYY/g,
+      validate_expression: "DD-MM-YYYY",
       correct_expression: "DD-MM-YYYY",
     },
   ],
