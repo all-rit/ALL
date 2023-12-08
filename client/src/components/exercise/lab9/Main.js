@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Router } from "@reach/router";
-import PropTypes from "prop-types";
 // lab imported dependencies;
 import LocalizationRepair from "../lab9/pages/LocalizationRepair";
 import { REPAIR, EXERCISE_STATES } from "../../../constants/lab9";
@@ -15,8 +14,7 @@ import FacadeWebpage from "./components/FacadeWebpage";
  * this will be responsible for iterating through the different stages of the lab
  * and acting as the container managing the state of the user.
  */
-const Main = (props) => {
-  const { user } = props;
+const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT
   );
@@ -27,15 +25,12 @@ const Main = (props) => {
           <ExerciseStart path="/*" />
           <FacadeWebpage path="/InitialPage" />
           <Discovery path="/Discovery" />
-          <Webpage user={user} path={"/page"} />
-          <LocalizationRepair user={user} path={`${REPAIR}/*`} />
-          <Conclusion path="/Conclusion" user={user} />
+          <Webpage path={"/page"} />
+          <LocalizationRepair path={`${REPAIR}/*`} />
+          <Conclusion path="/Conclusion" />
         </Router>
       </GameStateContext.Provider>
     </div>
   );
-};
-Main.propTypes = {
-  user: PropTypes.object,
 };
 export default Main;

@@ -4,19 +4,17 @@ import { LAB_ID } from "src/constants/lab9/index";
 import UserLabService from "src/services/UserLabService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE } from "src/constants/index";
-import PropTypes from "prop-types";
 
-const Conclusion = (props) => {
-  const { user } = props;
-  const { actions } = useMainStateContext();
+const Conclusion = () => {
+  const { actions, state } = useMainStateContext();
 
   const handleFinish = () => {
     // navigate to the reinforcement section
-    actions.updateState(EXERCISE_IDLE);
+    actions.updateUserState(EXERCISE_IDLE);
     navigate("/Lab9/Reinforcement");
     UserLabService.complete_exercise(LAB_ID);
-    if (user?.firstname !== null && user !== null) {
-      UserLabService.user_complete_exercise(user.userid, LAB_ID);
+    if (state.main.user?.firstname !== null && state.main.user !== null) {
+      UserLabService.user_complete_exercise(state.main.user.userid, LAB_ID);
     }
   };
 
@@ -59,11 +57,6 @@ const Conclusion = (props) => {
       </button>
     </>
   );
-};
-
-Conclusion.propTypes = {
-  actions: PropTypes.string,
-  user: PropTypes.object,
 };
 
 export default Conclusion;
