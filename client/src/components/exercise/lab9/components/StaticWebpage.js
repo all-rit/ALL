@@ -68,9 +68,7 @@ const FacadeWebpage = () => {
               className="tw-absolute tw-h-full tw-w-full tw-object-cover tw-object-center"
             />
             <WebpageHeader />
-            <div
-              className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-row tw-mt-60 z-1"
-            >
+            <div className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-row tw-mt-60 z-1">
               <div className="tw-w-full tw-flex tw-flex-row tw-mt-10">
                 <div className="tw-flex tw-w-1/4 tw-ml-5">
                   <WebpageSidebar />

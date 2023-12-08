@@ -15,9 +15,7 @@ import PropTypes from "prop-types";
  * @returns rendered webpage navbar
  */
 const WebpageNav = ({ repairComplete }) => {
-  const [,setGameState] = useState(
-    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT
-  );
+  const [, setGameState] = useState(EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT);
   const updateState = (newState) => {
     setGameState(newState);
   };

@@ -6,13 +6,7 @@ import PropTypes from "prop-types";
  * implementation.
  */
 const Button = (props) => {
-  const {
-    buttonText,
-    onClick,
-    key,
-    disabled,
-    isPrimary = true,
-  } = props;
+  const { buttonText, onClick, key, disabled, isPrimary = true } = props;
   let style = "btn btn-primary text-black btn-xl text-uppercase";
   if (!isPrimary) {
     style = "btn btn-second btn-xl text-uppercase";
