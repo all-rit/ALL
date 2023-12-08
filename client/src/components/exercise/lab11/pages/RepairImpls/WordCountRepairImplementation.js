@@ -5,9 +5,11 @@ import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
 import Tab from "../../../../all-components/CodeBlock/Components/Tab";
 import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
 import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
+import MultiTab from "src/components/all-components/CodeBlock/Components/MultiTab";
+import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
 
 const WordCountRepairImplementation = (props) => {
-  const { fogIndexCalculationData, userInput } = props;
+  const { fogIndexCalculationData, userInput, isInputValid, isFirst } = props;
 
   return (
     <>
@@ -54,6 +56,15 @@ const WordCountRepairImplementation = (props) => {
             )}
             <ReactText>;</ReactText>
           </CodeLine>
+          {!isInputValid[input.id] && !isFirst && (
+              <CodeLine>
+                <MultiTab numberOfTabs={3} />
+                <ErrorText>
+                  Error in form submission. Please type &quot;
+                  {input.correct_expression}&quot; and resubmit.
+                </ErrorText>
+              </CodeLine>
+            )}
         </Fragment>
       ))}
       <CodeLine>
@@ -74,6 +85,8 @@ const WordCountRepairImplementation = (props) => {
 WordCountRepairImplementation.propTypes = {
   userInput: PropTypes.func,
   fogIndexCalculationData: PropTypes.array,
+  isInputValid: PropTypes.array,
+  isFirst: PropTypes.bool,
 };
 
 export default WordCountRepairImplementation;
