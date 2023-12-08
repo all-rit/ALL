@@ -4,13 +4,14 @@ import Repair from "../../../../body/Repair/Repair";
 import {
   HEADINGS,
   EXERCISE_STATES,
-  EXERCISE_PLAYING,
   REPAIR,
 } from "../../../../../constants/lab9";
 import NavBarRepair from "../NavBarRepair";
 import useDataService from "../hooks/useDataService";
 import { navigate } from "@reach/router";
 import NavBarData from "../../../../../constants/lab9/NavBarData";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 /**
  * Nav Repair is a component that is responsible for passing logic into the universal
@@ -20,7 +21,8 @@ import NavBarData from "../../../../../constants/lab9/NavBarData";
  * @returns
  */
 
-const NavRepairPage = ({ user, actions }) => {
+const NavRepairPage = ({ user }) => {
+  const { actions } = useMainStateContext();
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_NAV_BAR,
@@ -29,11 +31,13 @@ const NavRepairPage = ({ user, actions }) => {
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
+
   const handleNav = () => {
     navigate("/Lab9/Exercise/page");
   };
+
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   return (

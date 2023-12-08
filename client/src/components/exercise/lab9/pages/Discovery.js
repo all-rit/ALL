@@ -1,16 +1,14 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
-import { EXERCISE_PLAYING } from "../../../../constants/lab9";
 import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const Discovery = (props) => {
-  const { actions } = props;
+const Discovery = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleNext = () => {
@@ -60,13 +58,7 @@ const Discovery = (props) => {
 };
 
 Discovery.propTypes = {
-  actions: PropTypes.string,
+  actions: PropTypes.object,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Discovery);
+export default Discovery;

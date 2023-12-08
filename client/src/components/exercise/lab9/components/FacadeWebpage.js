@@ -4,11 +4,9 @@ import uni from "../../../../assets/images/lab9/uni.jpeg";
 import logo from "../../../../assets/images/lab9/logo.png";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
-import { EXERCISE_PLAYING } from "src/constants/lab9/index";
 import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 /**
  * FacadeWebpage is a static component used to display
@@ -17,11 +15,11 @@ import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseRe
  * for the user to analyze inaccessible design.
  * @returns rendered webpage
  */
-const FacadeWebpage = (props) => {
-  const { actions } = props;
+const FacadeWebpage = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleNext = () => {
@@ -167,16 +165,7 @@ const FacadeWebpage = (props) => {
 };
 
 FacadeWebpage.propTypes = {
-  actions: PropTypes.string,
+  actions: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(FacadeWebpage);
+export default FacadeWebpage;

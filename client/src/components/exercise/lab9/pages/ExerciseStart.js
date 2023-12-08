@@ -1,19 +1,18 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
-
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/lab9/index";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab9/ExerciseReducer";
-import { connect } from "react-redux";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 import PropTypes from "prop-types";
 
-const ExerciseStart = ({ actions }) => {
+const ExerciseStart = () => {
+  const { actions } = useMainStateContext();
+
   useEffect(() => {
-    actions.updateState(EXERCISE_IDLE);
-  },[]);
+    actions.updateUserState(EXERCISE_IDLE);
+  }, []);
 
   const handleStart = () => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
     // navigate to the static faux webpage
     navigate("/Lab9/Exercise/InitialPage");
   };
@@ -55,17 +54,6 @@ const ExerciseStart = ({ actions }) => {
 
 ExerciseStart.propTypes = {
   actions: PropTypes.object,
-  end: PropTypes.bool,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ExerciseStart);
+export default ExerciseStart;

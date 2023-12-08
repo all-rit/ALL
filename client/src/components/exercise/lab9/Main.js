@@ -25,21 +25,17 @@ const Main = (props) => {
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
           <ExerciseStart path="/*" />
-          <FacadeWebpage path="/InitialPage"/>
+          <FacadeWebpage path="/InitialPage" />
           <Discovery path="/Discovery" />
           <Webpage user={user} path={"/page"} />
-          <LocalizationRepair
-            user={user}
-            path={`${REPAIR}/*`}
-          />
-          <Conclusion path="/Conclusion" />
+          <LocalizationRepair user={user} path={`${REPAIR}/*`} />
+          <Conclusion path="/Conclusion" user={user} />
         </Router>
       </GameStateContext.Provider>
     </div>
   );
 };
 Main.propTypes = {
-  user: PropTypes.object.isRequired,
-  actions: PropTypes.object,
+  user: PropTypes.object,
 };
 export default Main;

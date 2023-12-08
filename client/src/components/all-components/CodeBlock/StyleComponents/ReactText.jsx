@@ -6,6 +6,7 @@ import {
   operatorRegex,
   reactRegex,
   numberRegex,
+  funcRegex,
 } from "../Constants";
 
 /**
@@ -51,6 +52,12 @@ const ReactText = ({ children }) => {
       } else if (numberRegex.test(segment)) {
         return (
           <span key={index} className="number">
+            {segment}
+          </span>
+        );
+      } else if (funcRegex.test(segment)) {
+        return (
+          <span key={index} className="function">
             {segment}
           </span>
         );
