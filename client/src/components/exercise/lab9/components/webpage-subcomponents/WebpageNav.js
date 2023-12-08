@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../../../../assets/images/lab9/logo.png";
-import { GAME_STATES } from "../../../../../constants/lab9";
+import { EXERCISE_STATES, REPAIR } from "../../../../../constants/lab9";
 import { navigate } from "@reach/router";
 import HomeIcon from "@material-ui/icons/Home";
 import BadgeIcon from "@mui/icons-material/Badge";
@@ -17,7 +17,7 @@ import PropTypes from "prop-types";
 const WebpageNav = ({ repairComplete }) => {
   // eslint-disable-next-line no-unused-vars
   const [gameState, setGameState] = useState(
-    GAME_STATES.EXERCISE_SELECTION_DEFAULT
+    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT
   );
   const updateState = (newState) => {
     setGameState(newState);
@@ -48,7 +48,7 @@ const WebpageNav = ({ repairComplete }) => {
     } else {
       return (
         <div
-          onClick={() => handleNav(GAME_STATES.REPAIR_NAV_BAR)}
+          onClick={() => handleNav(EXERCISE_STATES.REPAIR_NAV_BAR)}
           className="tw-animate-reduced-bounce hover:tw-bg-labYellow hover:tw-border-white tw-bg-bgwhite tw-cursor-pointer tw-self-center tw-flex tw-items-start tw-justify-between tw-gap-2 tw-border-solid tw-rounded-xl tw-p-5"
         >
           <div className="tw-bg-transparent tw-text-[#260D0D] tw-text-center tw-text-base">
@@ -70,7 +70,7 @@ const WebpageNav = ({ repairComplete }) => {
 
   const handleNav = (path) => {
     updateState(path);
-    navigate(`/Lab9/Exercise/GameRepair/${path}`);
+    navigate(`/Lab9/Exercise${REPAIR}/${path}`);
   };
 
   return (

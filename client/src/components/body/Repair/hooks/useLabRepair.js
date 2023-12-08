@@ -35,8 +35,8 @@ const useLabRepair = () => {
    * handleUserInputChange() is a function that is responsible for handling the
    * saving of user inputted data into the state of the exercise hook. This allows for
    * the information to be recorded and then can be manipulate however intended.
-   * @param {*} dataId id of the particular input question field
-   * @param {*} newValue the new assignable value to the state.
+   * @param {Number} dataId id of the particular input question field
+   * @param {Object} newValue the new assignable value to the state.
    */
   const handleUserInputChange = (dataId, newValue) => {
     setExercisePromptsState((previous) => {
@@ -51,12 +51,6 @@ const useLabRepair = () => {
     });
   };
 
-  const isRepairComplete = (exercisePromptsState, isInputValid) => {
-    return (
-      isInputValid.every((valid) => valid) && exercisePromptsState.length > 0
-    );
-  };
-
   return {
     data: {
       repairComplete,
@@ -67,7 +61,6 @@ const useLabRepair = () => {
       checkInputValid,
       setExercisePromptsState,
       handleUserInputChange,
-      isRepairComplete,
     },
   };
 };

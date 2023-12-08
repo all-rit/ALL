@@ -1,11 +1,26 @@
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useEffect } from "react";
+import { LAB_ID } from "src/constants/lab9/index";
+import UserLabService from "src/services/UserLabService";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_IDLE } from "src/constants/index";
 
 const Conclusion = () => {
+  const { actions, state } = useMainStateContext();
+
   const handleFinish = () => {
     // navigate to the reinforcement section
+    actions.updateUserState(EXERCISE_IDLE);
     navigate("/Lab9/Reinforcement");
+    UserLabService.complete_exercise(LAB_ID);
+    if (state.main.user?.firstname !== null && state.main.user !== null) {
+      UserLabService.user_complete_exercise(state.main.user.userid, LAB_ID);
+    }
   };
+
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_IDLE);
+  }, []);
 
   return (
     <>

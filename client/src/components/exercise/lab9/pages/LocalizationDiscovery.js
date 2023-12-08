@@ -1,7 +1,16 @@
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 const Discovery = () => {
+  const { actions } = useMainStateContext();
+
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
+
   const handleNext = () => {
     // navigate to the webpage
     navigate("/Lab9/Exercise/page");
@@ -46,6 +55,10 @@ const Discovery = () => {
       </button>
     </>
   );
+};
+
+Discovery.propTypes = {
+  actions: PropTypes.object,
 };
 
 export default Discovery;

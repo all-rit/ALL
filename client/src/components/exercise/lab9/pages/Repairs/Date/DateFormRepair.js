@@ -1,35 +1,21 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import ReactText from "../../../all-components/CodeBlock/StyleComponents/ReactText";
-import CodeLine from "../../../all-components/CodeBlock/Components/CodeLine";
-import Tab from "../../../all-components/CodeBlock/Components/Tab";
-import CommentText from "../../../all-components/CodeBlock/StyleComponents/CommentText";
-import JSONText from "../../../all-components/CodeBlock/StyleComponents/JSONText";
-import CodeBlockInput from "../../../all-components/CodeBlock/Components/CodeBlockInput";
-import MultiTab from "../../../all-components/CodeBlock/Components/MultiTab";
-import React, { useState } from "react";
+import ReactText from "../../../../../all-components/CodeBlock/StyleComponents/ReactText";
+import CodeLine from "../../../../../all-components/CodeBlock/Components/CodeLine";
+import Tab from "../../../../../all-components/CodeBlock/Components/Tab";
+import CommentText from "../../../../../all-components/CodeBlock/StyleComponents/CommentText";
+import JSONText from "../../../../../all-components/CodeBlock/StyleComponents/JSONText";
+import CodeBlockInput from "../../../../../all-components/CodeBlock/Components/CodeBlockInput";
+import MultiTab from "../../../../../all-components/CodeBlock/Components/MultiTab";
+import React from "react";
 import PropTypes from "prop-types";
-import ErrorText from "../../../all-components/CodeBlock/StyleComponents/ErrorText";
+import ErrorText from "../../../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const DateFormRepair = (props = {}) => {
-  const { dateForms, userInput } = props;
-  const [error, setError] = useState(false);
-
-  const handleError = (id, value) => {
-    userInput(id, value);
-    setError((prevState) => ({
-      ...prevState,
-      [id]: true,
-    }));
-  };
-
+  const { dateForms, userInput, isInputValid, isFirst } = props;
   return (
     <>
       <ReactText>const DateForm = (props) =&#62; &#123;</ReactText>
-      {/* eslint-disable-next-line no-unused-vars */}
       {dateForms.map((country, index) => (
-        // eslint-disable-next-line react/jsx-key
-        <CodeLine>
+        <CodeLine key={index}>
           <Tab />{" "}
           <ReactText>
             {" "}
@@ -43,7 +29,6 @@ const DateFormRepair = (props = {}) => {
         <Tab /> <ReactText> const dates = &#123; </ReactText>
       </CodeLine>
 
-      {/* eslint-disable-next-line no-unused-vars */}
       {dateForms.map((country, index) => (
         <div key={index}>
           <CodeLine>
@@ -85,13 +70,12 @@ const DateFormRepair = (props = {}) => {
               />
             )}
           </CodeLine>
-          {error[country.id] && (
+          {!isInputValid[index] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
-                {" "}
-                Error in form submission. Please check your input values and
-                resubmit.{" "}
+                Error in form submission. Please enter &quot;
+                {country.correct_expression}&quot; and resubmit.
               </ErrorText>
             </CodeLine>
           )}
@@ -110,10 +94,11 @@ const DateFormRepair = (props = {}) => {
     </>
   );
 };
-
-CodeBlockInput.propTypes = {
+DateFormRepair.propTypes = {
   userInput: PropTypes.func,
   dateForms: PropTypes.array,
+  isInputValid: PropTypes.array,
+  isFirst: PropTypes.bool,
 };
 
 export default DateFormRepair;

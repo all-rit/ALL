@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import uni from "../../../../assets/images/lab9/uni.jpeg";
-import PropTypes from "prop-types";
 import NewsletterForm from "./webpage-subcomponents/NewsletterForm";
 import WebpageNav from "./webpage-subcomponents/WebpageNav";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
 import { ExerciseService } from "../../../../services/lab9/ExerciseService";
 import Button from "src/components/all-components/Navigation/Button";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
+
 /**
  * Webpage is a reusable component used to display
  * the ALL University's website homepage.
@@ -15,50 +17,83 @@ import Button from "src/components/all-components/Navigation/Button";
  * each of which are sub-components.
  * @returns rendered webpage
  */
-const Webpage = ({ user }) => {
+const Webpage = () => {
+  const { actions, state } = useMainStateContext();
   const [isNavComplete, setNavComplete] = useState(false);
   const [isDateComplete, setDateComplete] = useState(false);
   const [isAddressComplete, setAddressComplete] = useState(false);
-  const [isComplete, setIsComplete] = useState(true);
-
-  const handleComplete = () => {
+  const [isComplete, setIsComplete] = useState(false);
+  /**
+   * handleComplete(): is a function that is responsible for
+   * performing the action of setting the viewed state of the
+   * page component to know to reset the exercise on the next
+   * play through.
+   */
+  const handleComplete = async () => {
     if (isComplete) {
       // navigate to the conclusion page
       // only when all repairs are completed
+      const body = {
+        userid: state.main.user.userid,
+        isAddressComplete: isAddressComplete,
+        isDateComplete: isDateComplete,
+        isNavComplete: isNavComplete,
+        isExerciseComplete: isComplete,
+        hasViewed: true,
+      };
+      await ExerciseService.submitExercise(body);
       navigate("/Lab9/Exercise/Conclusion");
     }
   };
 
+  /**
+   * resetData(): helper function that is responsible for
+   * clearing the state of the component. and pushing the new
+   * body to the db.
+   */
+  const resetData = async () => {
+    const body = {
+      userid: state.main.user.userid,
+      isAddressComplete: false,
+      isDateComplete: false,
+      isNavComplete: false,
+      isExerciseComplete: false,
+      hasViewed: false,
+    };
+    setIsComplete(false);
+    setAddressComplete(false);
+    setDateComplete(false);
+    setNavComplete(false);
+    // to create initial exercise to db
+    await ExerciseService.submitExercise(body);
+  };
+  /**
+   * dataHandling(): is a function that is responsible for getting and
+   * retrieving data when the exercise is in progress. This allows for fetching the
+   * state of the user from the database, then if the user either has completed their game
+   * or is starting a new exercise we can set the state of the user properly.
+   */
   const dataHandling = async () => {
     try {
-      const newState = await ExerciseService.fetchExercise(user);
+      const newState = await ExerciseService.fetchExercise(state.main.user);
+      // if the data returned null then reset data
       if (!newState) {
-        const body = {
-          userid: user.userid,
-          isAddressComplete: false,
-          isDateComplete: false,
-          isNavComplete: false,
-          isComplete: false,
-        };
-        // to create initial exercise to db
-        await ExerciseService.submitExercise(body);
+        resetData();
       } else {
-        const { isNavComplete, isDateComplete, isAddressComplete } = newState;
-        const localState = [isNavComplete, isDateComplete, isAddressComplete];
+        const {
+          isNavComplete,
+          isDateComplete,
+          isAddressComplete,
+          isExerciseComplete,
+          hasViewed,
+        } = newState;
         setNavComplete(isNavComplete);
         setDateComplete(isDateComplete);
         setAddressComplete(isAddressComplete);
-        const isLabComplete = localState.every((value) => value === true);
-        if (isLabComplete) {
-          setIsComplete(isLabComplete);
-          const complete = {
-            userid: user.userid,
-            isNavComplete: isNavComplete,
-            isDateComplete: isDateComplete,
-            isAddressComplete: isAddressComplete,
-            isComplete: isLabComplete,
-          };
-          ExerciseService.submitExercise(complete);
+        setIsComplete(isExerciseComplete);
+        // other reset state to handle if the user has completed what they were doing.
+        if (isExerciseComplete && hasViewed) {
+          resetData();
         }
       }
     } catch (error) {
@@ -66,6 +101,7 @@ const Webpage = ({ user }) => {
     }
   };
   useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
     dataHandling();
   }, []);
 
@@ -103,7 +139,4 @@ const Webpage = ({ user }) => {
   );
 };
 
-Webpage.propTypes = {
-  user: PropTypes.object,
-};
 export default Webpage;

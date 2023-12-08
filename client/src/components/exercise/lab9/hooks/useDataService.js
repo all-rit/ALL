@@ -1,7 +1,8 @@
-import useLabRepair from "../../../../body/Repair/hooks/useLabRepair";
-import { RepairService } from "../../../../../services/lab9/RepairService";
-import { ExerciseService } from "../../../../../services/lab9/ExerciseService";
-import { GAME_STATES } from "../../../../../constants/lab9";
+import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
+import { RepairService } from "../../../../services/lab9/RepairService";
+import { ExerciseService } from "../../../../services/lab9/ExerciseService";
+import { EXERCISE_STATES } from "../../../../constants/lab9";
+import { useState } from "react";
 
 /**
  * useDataService(): is a custom hook to abstract the logic implementation for the
@@ -20,6 +21,7 @@ const useDataService = (user, section, defaultExerciseState) => {
   const { exercisePromptsState, isInputValid, repairComplete } = data;
   const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
     functions;
+  const [isFirst, setIsFirst] = useState(true);
   /**
    * fetchRepair(): is an Async Custom Hook function that is
    * responsible for fetching data about a user's repair session.
@@ -32,9 +34,15 @@ const useDataService = (user, section, defaultExerciseState) => {
       if (!repairData || repairData?.isComplete === true) {
         const newStartState = [...defaultExerciseState];
         setExercisePromptsState(newStartState);
+        setIsFirst(true);
       } else {
         const { repair } = repairData;
         setExercisePromptsState(Object.values(repair));
+        if (repairData.repairCount >= 0 && !repairData.isComplete) {
+          setIsFirst(false);
+        } else {
+          setIsFirst(true);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -58,17 +66,28 @@ const useDataService = (user, section, defaultExerciseState) => {
           const updatedBody = {
             userid: body.userid,
             isAddressComplete:
-              section === GAME_STATES.REPAIR_ADDRESS_FORM
+              section === EXERCISE_STATES.REPAIR_ADDRESS_FORM
                 ? true
                 : isAddressComplete,
+
             isDateComplete:
-              section === GAME_STATES.REPAIR_DATE_REPAIR
+              section === EXERCISE_STATES.REPAIR_DATE_REPAIR
                 ? true
                 : isDateComplete,
+
             isNavComplete:
-              section === GAME_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
+              section === EXERCISE_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
+
             isComplete: false,
+            hasViewed: false,
           };
+          const data = [
+            updatedBody.isAddressComplete,
+            updatedBody.isDateComplete,
+            updatedBody.isNavComplete,
+          ];
+          const isExerciseComplete = data.every((value) => value === true);
+          updatedBody.isExerciseComplete = isExerciseComplete;
           const response = await ExerciseService.submitExercise(updatedBody);
           return response.status;
         }
@@ -94,6 +113,7 @@ const useDataService = (user, section, defaultExerciseState) => {
       const repairID = await RepairService.submitRepair(body);
       // eslint-disable-next-line no-unused-vars
       await handleExerciseUpdate(body, section);
+
       return repairID;
     } catch (error) {
       console.error(error);
@@ -101,7 +121,7 @@ const useDataService = (user, section, defaultExerciseState) => {
   }
 
   return {
-    data: { exercisePromptsState, isInputValid, repairComplete },
+    data: { exercisePromptsState, isInputValid, repairComplete, isFirst },
     functions: {
       checkInputValid,
       handleUserInputChange,

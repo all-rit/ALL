@@ -1,9 +1,19 @@
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useEffect } from "react";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
+import PropTypes from "prop-types";
 
 const ExerciseStart = () => {
+  const { actions } = useMainStateContext();
+
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_IDLE);
+  }, []);
+
   const handleStart = () => {
-    // navigate to the webpage
+    actions.updateUserState(EXERCISE_PLAYING);
+    // navigate to the static faux webpage
     navigate("/Lab9/Exercise/InitialPage");
   };
 
@@ -40,6 +50,10 @@ const ExerciseStart = () => {
       </button>
     </>
   );
+};
+
+ExerciseStart.propTypes = {
+  actions: PropTypes.object,
 };
 
 export default ExerciseStart;

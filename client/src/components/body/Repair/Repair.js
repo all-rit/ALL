@@ -1,10 +1,12 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Proptypes from "prop-types";
 import CodeUpdateHeader from "../../exercise/lab3/components/CodeUpdateHeader";
 import React from "react";
 import Button from "../../all-components/Navigation/Button";
 import CodeBlock from "../../all-components/CodeBlock/Components/Codeblock";
+import Popup from "src/components/all-components/Popup";
+const REPAIR_MESSAGE = "The repairs have been made.";
+const ERROR_MESSAGE = "Error in Repair. Please fix";
 /**
  * Repair: is a reusable component that is responsible for
  * allowing for the ability to render and handle new repair pages
@@ -26,25 +28,56 @@ const Repair = (props) => {
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [enableNext, setEnableNext] = useState(false);
+  const [popUpMessage, setPopUpMessage] = useState("");
+  const [userError, setUserError] = useState(true);
 
+  /**
+   * handleRepair(): is a function that is responsible
+   * for handling the opening of the Codeblock on the
+   * repair page. This allows for the fetching of user information
+   * and populates the code block with the code implementation view.
+   */
   const handleRepair = async () => {
     setIsRepairActive(true);
     await fetchRepair();
   };
 
+  /**
+   * handleUpdate(): is an async function that is responsible for
+   * handling the behavior for validating and posting the results
+   * of a repair session. This function checks to see if the
+   * repair is correct then if it's not complete fetches the prior
+   * state so the user can see errors update in realtime.
+   */
   const handleUpdate = async () => {
     const localValidateRepair = validateRepair();
     if (localValidateRepair) {
       setIsRepairActive(false);
+      setUserError(true);
+      popUpHandler(REPAIR_MESSAGE);
       setEnableNext(true);
     }
     await submitRepair();
+    if (!localValidateRepair) {
+      await fetchRepair();
+      setUserError(false);
+      popUpHandler(ERROR_MESSAGE);
+    }
   };
-
+  /**
+   * handleNext(): is a helper function responsible
+   * for navigating the user to the next page in the exercise.
+   */
   const handleNext = async () => {
     navigateNext();
   };
 
+  /*
+    set the message to be displayed in the popup
+  */
+  const popUpHandler = (message) => {
+    setPopUpMessage(message);
+  };
   return (
     <div>
       <CodeUpdateHeader
@@ -67,7 +100,6 @@ const Repair = (props) => {
             onClick={handleRepair}
           />
         </div>
-
         <div className="tw-pl-10">
           <Button
             buttonText={"Next"}
@@ -76,6 +108,11 @@ const Repair = (props) => {
           />
         </div>
       </div>
+      <Popup
+        message={popUpMessage}
+        handler={() => popUpHandler}
+        error={!userError}
+      />
       {isRepairActive && (
         <>
           <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>

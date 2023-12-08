@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import uni from "../../../../assets/images/lab9/uni.jpeg";
 import logo from "../../../../assets/images/lab9/logo.png";
 import WebpageHeader from "./webpage-subcomponents/WebpageHeader";
 import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
+import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 /**
  * FacadeWebpage is a static component used to display
@@ -13,6 +16,12 @@ import WebpageSidebar from "./webpage-subcomponents/WebpageSidebar";
  * @returns rendered webpage
  */
 const FacadeWebpage = () => {
+  const { actions } = useMainStateContext();
+
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
+
   const handleNext = () => {
     navigate("/Lab9/Exercise/Discovery");
   };
@@ -153,6 +162,10 @@ const FacadeWebpage = () => {
       </button>
     </div>
   );
+};
+
+FacadeWebpage.propTypes = {
+  actions: PropTypes.object,
 };
 
 export default FacadeWebpage;
