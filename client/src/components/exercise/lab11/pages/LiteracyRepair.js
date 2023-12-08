@@ -1,6 +1,5 @@
 // library imports
 import React, { useEffect } from "react";
-import { PropTypes } from "prop-types";
 import { Router } from "@reach/router";
 // component imports
 import WordCountRepair from "./Repairs/WordCountRepair";
@@ -40,11 +39,6 @@ const LiteracyRepair = () => {
       />
     </Router>
   );
-};
-
-LiteracyRepair.propTypes = {
-  user: PropTypes.object,
-  actions: PropTypes.object,
 };
 
 export default LiteracyRepair;

@@ -2,7 +2,6 @@ import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect } from "react";
 import { REPAIR, EXERCISE_STATES } from "../../../../../constants/lab11";
-import PropTypes from "prop-types";
 import fog_index_formula from "../../../../../assets/images/lab11/fog_index_formula.png";
 import fog_index_reading_levels from "../../../../../assets/images/lab11/fog_index_reading_levels.png";
 import useMainStateContext from "src/reducers/MainContext";
@@ -91,7 +90,4 @@ const FogIndexFormulaIntroduction = () => {
   );
 };
 
-FogIndexFormulaIntroduction.propTypes = {
-  actions: PropTypes.object,
-};
 export default FogIndexFormulaIntroduction;

@@ -1,6 +1,5 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 
@@ -47,7 +46,4 @@ const LiteracyExerciseStart = () => {
   );
 };
 
-LiteracyExerciseStart.propTypes = {
-  actions: PropTypes.object,
-};
 export default LiteracyExerciseStart;

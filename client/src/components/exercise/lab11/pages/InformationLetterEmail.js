@@ -125,7 +125,6 @@ const InformationLetterEmail = (props) => {
 };
 
 InformationLetterEmail.propTypes = {
-  actions: PropTypes.object,
   words: PropTypes.bool,
   sentences: PropTypes.bool,
   complexWords: PropTypes.bool,
