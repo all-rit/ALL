@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { PropTypes } from "prop-types";
-import Repair from "../../../../body/Repair/Repair";
+import Repair from "../../../../../body/Repair/Repair";
 import {
   EXERCISE_STATES,
   HEADINGS,
   REPAIR,
-} from "../../../../../constants/lab9";
-import useDataService from "../hooks/useDataService";
+} from "../../../../../../constants/lab9";
+import useDataService from "../../../hooks/useDataService";
 import { navigate } from "@reach/router";
-import { AddressRepairData } from "../../../../../constants/lab9/AddressRepairData";
-import AddressRepairCodeBlock from "../AddressRepairCodeBlock";
+import { AddressRepairData } from "../../../../../../constants/lab9/AddressRepairData";
+import AddressRepairCodeBlock from "./AddressRepairCodeBlock";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
 

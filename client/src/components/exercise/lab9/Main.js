@@ -4,11 +4,11 @@ import { Router } from "@reach/router";
 import LocalizationRepair from "../lab9/pages/LocalizationRepair";
 import { REPAIR, EXERCISE_STATES } from "../../../constants/lab9";
 import GameStateContext from "./Lab9Context";
-import Webpage from "../lab9/components/Webpage";
-import ExerciseStart from "../lab9/pages/ExerciseStart";
-import Discovery from "./pages/Discovery";
-import Conclusion from "../lab9/pages/Conclusion";
-import FacadeWebpage from "./components/FacadeWebpage";
+import DynamicWebpage from "./components/DynamicWebpage";
+import LocalizationExerciseStart from "./pages/LocalizationExerciseStart";
+import LocalizationDiscovery from "./pages/LocalizationDiscovery";
+import LocalizationExerciseEnd from "./pages/LocalizationExerciseEnd";
+import StaticWebpage from "./components/StaticWebpage";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -22,12 +22,12 @@ const Main = () => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <ExerciseStart path="/*" />
-          <FacadeWebpage path="/InitialPage" />
-          <Discovery path="/Discovery" />
-          <Webpage path={"/page"} />
+          <LocalizationExerciseStart path="/*" />
+          <StaticWebpage path="/InitialPage" />
+          <LocalizationDiscovery path="/Discovery" />
+          <DynamicWebpage path={"/page"} />
           <LocalizationRepair path={`${REPAIR}/*`} />
-          <Conclusion path="/Conclusion" />
+          <LocalizationExerciseEnd path="/Conclusion" />
         </Router>
       </GameStateContext.Provider>
     </div>

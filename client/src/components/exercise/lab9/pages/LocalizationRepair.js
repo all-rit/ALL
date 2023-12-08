@@ -2,9 +2,9 @@
 import React, { useEffect } from "react";
 import { Router } from "@reach/router";
 // component imports
-import AddressRepair from "./Repairs/AddressRepair";
-import DateRepair from "./Repairs/DateRepair";
-import NavRepairPage from "./Repairs/NavRepairPage";
+import AddressRepair from "./Repairs/Address/AddressRepair";
+import DateRepair from "./Repairs/Date/DateRepair";
+import NavRepairPage from "./Repairs/Nav/NavRepairPage";
 import { EXERCISE_STATES } from "../../../../constants/lab9";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";

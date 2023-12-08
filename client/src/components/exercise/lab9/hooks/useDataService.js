@@ -1,7 +1,7 @@
-import useLabRepair from "../../../../body/Repair/hooks/useLabRepair";
-import { RepairService } from "../../../../../services/lab9/RepairService";
-import { ExerciseService } from "../../../../../services/lab9/ExerciseService";
-import { EXERCISE_STATES } from "../../../../../constants/lab9";
+import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
+import { RepairService } from "../../../../services/lab9/RepairService";
+import { ExerciseService } from "../../../../services/lab9/ExerciseService";
+import { EXERCISE_STATES } from "../../../../constants/lab9";
 import { useState } from "react";
 
 /**
