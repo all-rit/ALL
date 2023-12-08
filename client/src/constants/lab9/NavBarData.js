@@ -6,7 +6,7 @@ const NavBarData = {
       comment:
         "// Enter the following image file to implement the house icon: house",
       userInput: "",
-      validate_expression: /house/g,
+      validate_expression: `house`,
       correct_expression: "house",
     },
     {
@@ -15,7 +15,7 @@ const NavBarData = {
       comment:
         "// Enter the following image file to implement the briefcase icon: briefcase",
       userInput: "",
-      validate_expression: /briefcase/g,
+      validate_expression: `briefcase`,
       correct_expression: "briefcase",
     },
     {
@@ -24,7 +24,7 @@ const NavBarData = {
       comment:
         "// Enter the following image file to implement the graduation cap icon: grad_cap",
       userInput: "",
-      validate_expression: /grad_cap/g,
+      validate_expression: `grad_cap`,
       correct_expression: "grad_cap",
     },
     {
@@ -33,7 +33,7 @@ const NavBarData = {
       comment:
         "// Enter the following image file to implement the phone icon: phone",
       userInput: "",
-      validate_expression: /phone/g,
+      validate_expression: `phone`,
       correct_expression: "phone",
     },
   ],

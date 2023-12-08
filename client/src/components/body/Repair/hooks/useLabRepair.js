@@ -19,11 +19,10 @@ const useLabRepair = () => {
     let localValidArray = [...isInputValid];
     let currentRepairState = [...exercisePromptsState];
     currentRepairState.forEach((value, index) => {
-      const regex = new RegExp(value.validate_expression);
+      const regex = new RegExp(value.validate_expression, "g");
       const result =
         regex.test(value.userInput) &&
         value.userInput === value.correct_expression;
-      console.log(value.userInput === value.correct_expression);
       localValidArray.splice(index, 1, result);
     });
     setIsInputValid(localValidArray);

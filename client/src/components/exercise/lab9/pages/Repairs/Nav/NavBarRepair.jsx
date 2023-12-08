@@ -15,6 +15,12 @@ const NavBarRepair = (props = {}) => {
 
   return (
     <>
+      <ReactText>import house from &ldquo;./img/house&rdquo;;</ReactText>
+      <ReactText>
+        import briefcase from &ldquo;./img/briefcase&rdquo;;
+      </ReactText>
+      <ReactText>import grad_cap from &ldquo;./img/grad_cap&rdquo;;</ReactText>
+      <ReactText>import phone from &ldquo;./img/phone&rdquo;;</ReactText>
       <ReactText>const NavBar = () =&#62; &#123;</ReactText>
       <CodeLine>
         <Tab /> <ReactText> return ( </ReactText>
@@ -46,7 +52,7 @@ const NavBarRepair = (props = {}) => {
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={4} />{" "}
-            <HTMLTag> &#60;img href = &quot;</HTMLTag>
+            <HTMLTag> &#60;img href = {"{"}</HTMLTag>
             <CodeBlockInput
               attributes={{
                 onChange: (event) => {
@@ -57,7 +63,7 @@ const NavBarRepair = (props = {}) => {
                 placeholder: "Enter icon image file here",
               }}
             />
-            <HTMLTag>&quot;/&#62; </HTMLTag>
+            <HTMLTag>{"}"}/&#62; </HTMLTag>
           </CodeLine>
           {!isInputValid[index] && !isFirst && (
             <CodeLine>
