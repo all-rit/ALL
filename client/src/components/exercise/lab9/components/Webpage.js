@@ -53,7 +53,7 @@ const Webpage = () => {
    */
   const resetData = async () => {
     const body = {
-      userid:state.main.user.userid,
+      userid: state.main.user.userid,
       isAddressComplete: false,
       isDateComplete: false,
       isNavComplete: false,
