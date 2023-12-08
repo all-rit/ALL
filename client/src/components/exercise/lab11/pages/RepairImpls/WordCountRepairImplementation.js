@@ -57,14 +57,14 @@ const WordCountRepairImplementation = (props) => {
             <ReactText>;</ReactText>
           </CodeLine>
           {!isInputValid[input.id] && !isFirst && (
-              <CodeLine>
-                <MultiTab numberOfTabs={3} />
-                <ErrorText>
-                  Error in form submission. Please type &quot;
-                  {input.correct_expression}&quot; and resubmit.
-                </ErrorText>
-              </CodeLine>
-            )}
+            <CodeLine>
+              <MultiTab numberOfTabs={3} />
+              <ErrorText>
+                Error in form submission. Please type &quot;
+                {input.correct_expression}&quot; and resubmit.
+              </ErrorText>
+            </CodeLine>
+          )}
         </Fragment>
       ))}
       <CodeLine>
