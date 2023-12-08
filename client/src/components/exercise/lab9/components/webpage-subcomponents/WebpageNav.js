@@ -15,8 +15,7 @@ import PropTypes from "prop-types";
  * @returns rendered webpage navbar
  */
 const WebpageNav = ({ repairComplete }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [gameState, setGameState] = useState(
+  const [,setGameState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT
   );
   const updateState = (newState) => {

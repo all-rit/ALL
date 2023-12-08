@@ -26,10 +26,9 @@ const useLabRepair = () => {
       localValidArray.splice(index, 1, result);
     });
     setIsInputValid(localValidArray);
-    localValidArray.every((v) => v === true)
-      ? setIsComplete(true)
-      : setIsComplete(false);
-    return localValidArray.every((v) => v === true);
+    const complete = localValidArray.every((v) => v);
+    setIsComplete(complete);
+    return complete;
   };
   /**
    * handleUserInputChange() is a function that is responsible for handling the

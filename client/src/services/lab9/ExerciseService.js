@@ -28,8 +28,7 @@ const ExerciseService = {
   fetchExercise: async (data = {}) => {
     try {
       const getRoute = `${endpoints.GET_EXERCISE}/${data.userid}`;
-      const response = API.get(getRoute).then((response) => response.json());
-      return response;
+      return API.get(getRoute).then((response) => response.json());;
     } catch (error) {
       console.error(error);
     }

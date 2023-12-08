@@ -36,6 +36,7 @@ const WebpageSidebar = () => {
       <img
         loading="lazy"
         srcSet={person}
+        alt="Person using power tools"
         className="tw-aspect-[2.57] tw-object-cover tw-object-center tw-w-full tw-shadow-[3px_4px_7px_rgba(0,0,0,0.25)] tw-self-stretch tw-grow tw-mt-12"
       />
     </div>

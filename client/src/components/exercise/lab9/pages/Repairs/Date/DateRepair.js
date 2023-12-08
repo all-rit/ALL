@@ -46,8 +46,8 @@ const DateRepair = (props) => {
       path={`${REPAIR}/${EXERCISE_STATES.REPAIR_DATE_REPAIR}`}
       headingText={HEADINGS.REPAIR_DATE_REPAIR_HEADING}
       validateRepair={checkInputValid}
-      fetchRepair={() => fetchRepair()}
-      submitRepair={() => postRepair()}
+      fetchRepair={fetchRepair}
+      submitRepair={postRepair}
       repairText={[
         "in this section you will be making changes to the repair data file below",
       ]}

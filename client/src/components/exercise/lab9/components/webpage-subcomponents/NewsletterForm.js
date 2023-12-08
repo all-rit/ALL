@@ -11,8 +11,7 @@ import { REPAIR } from "src/constants/lab9/index";
  * @returns rendered newsletter form
  */
 const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [gameState, setGameState] = useState(
+  const [,setGameState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT
   );
 

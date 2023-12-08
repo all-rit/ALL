@@ -10,7 +10,7 @@ const Button = (props) => {
     buttonText,
     onClick,
     key,
-    disabled = false,
+    disabled,
     isPrimary = true,
   } = props;
   let style = "btn btn-primary text-black btn-xl text-uppercase";
