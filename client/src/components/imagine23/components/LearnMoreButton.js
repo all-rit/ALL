@@ -28,7 +28,7 @@ const LearnMoreButton = (props) => {
     setTimeElapsed(formatTime(time));
     clearInterval(timer.current);
     // setTimeElapsed(formatTime(time))
-    console.log("get current time" + formatTime(time));
+    console.log("get current time " + formatTime(time));
   };
 
   const readMoreCount = () => {
