@@ -108,7 +108,7 @@ const quizQuestionsLab11 = [
   },
   {
     question:
-      "The fog index calculates the complexity of text based on which factors?",
+      "The Fog Index calculates the complexity of text based on which factors?",
     answers: [
       {
         val: 1,

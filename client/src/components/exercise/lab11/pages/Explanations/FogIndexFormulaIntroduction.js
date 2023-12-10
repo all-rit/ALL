@@ -26,26 +26,26 @@ const FogIndexFormulaIntroduction = () => {
         <p className="playthrough__sentence">
           You may have noticed that the family weekend invitation email was
           difficult to read and comprehend due to the amount of complex words.
-          In addition, you may have noticed that the fog index widget indicated
-          that the email had a fog index of 0.
+          In addition, you may have noticed that the Fog Index widget indicated
+          that the email had a Fog Index of 0.
         </p>
         <p className="playthrough__sentence">
           The Gunning Fog Index is a tool used to quantifiably measure the
           readability of English text. The formula below indicates how to
-          calculate the fog index.
+          calculate the Fog Index.
         </p>
       </div>
 
-      <img src={fog_index_formula} alt="Fog index formula" />
+      <img src={fog_index_formula} alt="Fog Index formula" />
 
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
           “Total words” represents the total number of words, “Total sentences”
           represents the total number of sentences, and “Complex words”
           represents the total number of words with 3 or more syllables. The
-          higher the fog index is, the higher the associated reading level is.
-          The table below indicates what reading level corresponds to every fog
-          index.
+          higher the Fog Index is, the higher the associated reading level is.
+          The table below indicates what reading level corresponds to every Fog
+          Index.
         </p>
       </div>
 
@@ -66,10 +66,10 @@ const FogIndexFormulaIntroduction = () => {
 
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
-          Since the email contained a high number of complex words, the fog
-          index should not be 0. In the next 3 sections of the exercise, you
-          will repair the fog index widget by implementing all 3 parts of the
-          fog index formula. First, you will repair the “total words” portion of
+          Since the email contained a high number of complex words, the Fog
+          Index should not be 0. In the next 3 sections of the exercise, you
+          will repair the Fog Index widget by implementing all 3 parts of the
+          Fog Index formula. First, you will repair the “total words” portion of
           the formula.
         </p>
       </div>

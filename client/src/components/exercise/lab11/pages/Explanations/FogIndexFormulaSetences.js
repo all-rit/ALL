@@ -22,11 +22,11 @@ const FogIndexFormulaSentences = () => {
     <div className="center-div">
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
-          Great work, the fog index widget now displays the correct number of
-          words! You may have noticed that the fog index widget indicated that
-          the email had a fog index of 5171.2. This is because the word count is
-          now correctly implemented. However, this fog index is still incorrect.
-          Next, you will repair the “total sentences” portion of the fog index
+          Great work, the Fog Index widget now displays the correct number of
+          words! You may have noticed that the Fog Index widget indicated that
+          the email had a Fog Index of 5171.2. This is because the word count is
+          now correctly implemented. However, this Fog Index is still incorrect.
+          Next, you will repair the “total sentences” portion of the Fog Index
           formula.
         </p>
       </div>

@@ -8,7 +8,7 @@ import { twMerge } from "tailwind-merge";
  * Renders the Fog Index Overlay component.
  *
  * @param {Object} props - The component props.
- * @param {number} props.fogIndex - The fog index value.
+ * @param {number} props.fogIndex - The Fog Index value.
  * @param {number} props.totalWords - The total number of words.
  * @param {number} props.totalSentences - The total number of sentences.
  * @param {number} props.totalComplexWords - The total number of complex words.

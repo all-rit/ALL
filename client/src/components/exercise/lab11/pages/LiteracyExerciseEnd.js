@@ -30,7 +30,7 @@ const LiteracyExerciseEnd = () => {
     <div className="center-div">
       <h3>Congratulations - you have completed the Literacy exercise!</h3>
       <p className="playthrough__sentence">
-        In conclusion, the fog index is a useful tool to determine the
+        In conclusion, the Fog Index is a useful tool to determine the
         readability of text. Remember to consider your audience and the best
         reading level for your audience when writing text.
       </p>

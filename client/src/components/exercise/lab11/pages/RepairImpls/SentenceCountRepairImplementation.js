@@ -16,7 +16,7 @@ const SentenceCountRepairImplementation = (props) => {
       {/* Fog Index Calc Function */}
       <CodeLine>
         <CommentText>
-          {`// This function calculates the fog index of a given letter.`}
+          {`// This function calculates the Fog Index of a given letter.`}
         </CommentText>
       </CodeLine>
       <ReactText>
