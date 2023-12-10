@@ -8,17 +8,18 @@ import StudyList from "../../body/Reading/studylist";
 import NonBulletList from "../../body/Reading/NonBulletList";
 import Image from "../../body/Reading/Image";
 import Spinner from "./../../../common/Spinner/Spinner";
-// import LinkFooter from "../../body/Reading/LinkFooter";
 import Links from "../../body/Reading/Links";
 import OrderedList from "../../body/Reading/OrderedList";
 import ReadMoreButton from "../components/LearnMoreButton";
-
 import { navigate } from "@reach/router";
 
 const Reading = (props) => {
   const { user, userID, labID } = props;
   const [readingData, setReadingData] = useState("");
   const [labShortName, setLabShortname] = useState(null);
+  const [scrollPositionPercentage,setScrollPositionPercentage] = useState(0);
+  const [seconds,setSeconds] = useState(0);
+
   const handleNext = () => {
     navigate("/Imagine/Quiz");
   };
@@ -37,6 +38,32 @@ const Reading = (props) => {
     });
   }, [user, labID]);
 
+  const screenPositionPercentage = (scrollPosition) =>{
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percentage = (scrollPosition / totalHeight) * 100;
+
+    if(percentage > 100){
+      setScrollPositionPercentage(100);
+    }else{
+      setScrollPositionPercentage(percentage);
+    }
+  }
+
+  useEffect(()=>{
+    const interval = setInterval(()=>{
+      setSeconds((pre) => pre + 1);
+      const scrollPosition = document.documentElement.scrollTop;
+      screenPositionPercentage(scrollPosition);
+      console.log("Scroll position pixels: " + scrollPosition);
+      console.log("Scroll position percentage: " + scrollPositionPercentage + '\n'+ "at " + seconds + " seconds");
+    },1000)
+    return ()=>{
+      clearInterval(interval);
+    }
+    
+  },[screenPositionPercentage])
+
+
   if (!readingData) {
     return (
       <div className="landingpage__row">
@@ -44,7 +71,6 @@ const Reading = (props) => {
       </div>
     );
   }
-
   return (
     <div>
       <div className="page-section">
