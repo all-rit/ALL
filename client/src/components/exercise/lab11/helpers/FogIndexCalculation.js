@@ -50,11 +50,19 @@ const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
   let complexWordCount = complexWords
     ? letterContent.split(" ").filter((word) => countSyllables(word) > 3).length
     : 0;
-  
-  complexWordCount = complexWords ? complexWordCount : letterContent.length > 0 ? 1 : 0;
-  sentenceCount = sentenceCount ? sentenceCount : letterContent.length > 0 ? 1 : 0;
 
-  if(letterContent.length === 0 ){
+  complexWordCount = complexWords
+    ? complexWordCount
+    : letterContent.length > 0
+    ? 1
+    : 0;
+  sentenceCount = sentenceCount
+    ? sentenceCount
+    : letterContent.length > 0
+    ? 1
+    : 0;
+
+  if (letterContent.length === 0) {
     wordCount = 0;
   } else {
     fogIndex = (

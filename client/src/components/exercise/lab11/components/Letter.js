@@ -44,7 +44,9 @@ const Letter = ({ isEditable }) => {
     } else {
       setLetterContentIndex(letterContentArray.length - 1);
       setLetterContent(letterContentArray[letterContentArray.length - 1]);
-      setCurrentLetterContent(letterContentArray[letterContentArray.length - 1]);
+      setCurrentLetterContent(
+        letterContentArray[letterContentArray.length - 1]
+      );
     }
   };
 
