@@ -107,6 +107,7 @@ const Webpage = () => {
 
   return (
     <div>
+      <div className="playthrough__sentence">Click on all 3 sections of the website that need to be localized. The changes you make will be reflected for the Dubai campus.</div>
       <div className="tw-bg-white tw-flex tw-flex-col pb-5">
         <div className="tw-flex-col tw-bg-white tw-relative tw-flex tw-min-h-[1024px] tw-w-full">
           <img

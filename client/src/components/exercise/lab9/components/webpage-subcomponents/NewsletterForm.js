@@ -33,7 +33,7 @@ const WebpageForm = ({ isDateRepaired, isAddressRepaired }) => {
             <span className="">Weekly Newsletter</span>
             {isDateRepaired ? (
               <div className="tw-flex-wrap tw-h-full tw-text-xl tw-w-1/5  tw-text-[#260D0D] tw-p-5 tw-text-center tw-mr-5">
-                8/28/2027
+                28/8/2027
               </div>
             ) : (
               <div

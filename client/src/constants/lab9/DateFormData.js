@@ -36,6 +36,15 @@ const DateFormData = {
       validate_expression: `DD-MM-YYYY`,
       correct_expression: "DD-MM-YYYY",
     },
+    {
+      id: 4,
+      countryVariable: "df",
+      countryName: "default_format",
+      comment: "// Enter 'MM-DD-YYYY' for the default dateform",
+      userInput: "",
+      validate_expression: `MM-DD-YYYY`,
+      correct_expression: "MM-DD-YYYY",
+    }
   ],
 };
 export default DateFormData;

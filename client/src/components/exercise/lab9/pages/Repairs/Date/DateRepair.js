@@ -49,7 +49,7 @@ const DateRepair = (props) => {
       fetchRepair={fetchRepair}
       submitRepair={postRepair}
       repairText={[
-        "in this section you will be making changes to the repair data file below",
+        "In this section you will be making changes to the repair data file below",
       ]}
       CodeImplementation={
         <DateFormRepair
