@@ -6,7 +6,7 @@ import LiteracyExerciseEnd from "./pages/LiteracyExerciseEnd";
 import InformationLetterEmail from "./pages/InformationLetterEmail";
 import {
   LETTER_TEXT_ARRAY,
-  LETTER_TEXT_FOG_INDEX_12,
+  LETTER_TEXT_FOG_INDEX_10,
   REPAIR,
 } from "../../../constants/lab11/index";
 import FogIndexFormulaIntroduction from "./pages/Explanations/FogIndexFormulaIntroduction";
@@ -32,14 +32,14 @@ import {
 const Main = () => {
   const { actions } = useMainStateContext();
   const [exerciseState, setExerciseState] = useState("");
-  const [letterContent, setLetterContent] = useState(LETTER_TEXT_FOG_INDEX_12);
+  const [letterContent, setLetterContent] = useState(LETTER_TEXT_FOG_INDEX_10);
   const [totalWords, setTotalWords] = useState(0);
   const [totalSentences, setTotalSentences] = useState(0);
   const [totalComplexWords, setTotalComplexWords] = useState(0);
   const [fogIndex, setFogIndex] = useState(0);
   const [letterContentArray, setLetterContentArray] =
     useState(LETTER_TEXT_ARRAY);
-  const [letterContentIndex, setLetterContentIndex] = useState(3);
+  const [letterContentIndex, setLetterContentIndex] = useState(2);
 
   useScroll();
 
@@ -128,7 +128,7 @@ const Main = () => {
             isEditable
             sectionTitle={"Information Letter: Fog Index Formula"}
             handleContinue={() => navigate("/Lab11/Exercise/ExerciseEnd")}
-            descriptionText={`Choose one of the emails with a Fog Index of 10 or less.`}
+            descriptionText={`Choose one of the emails with a Fog Index greater than 4 but less than 10.`}
           />
 
           <LiteracyExerciseEnd path={LITERACY_EXERCISE_END} />

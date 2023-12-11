@@ -43,20 +43,25 @@ const countSyllables = (word) => {
  * // returns { wordCount: 4, sentenceCount: 1, complexWordCount: 0, fogIndex: 4.4 }
  **/
 const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
+  let fogIndex = 0;
+  letterContent = letterContent.trim();
   let wordCount = words ? letterContent.split(" ").length : 0;
   let sentenceCount = sentences ? letterContent.split(/[.!?]/).length - 1 : 0;
   let complexWordCount = complexWords
     ? letterContent.split(" ").filter((word) => countSyllables(word) > 3).length
     : 0;
+  
+  complexWordCount = complexWords ? complexWordCount : letterContent.length > 0 ? 1 : 0;
+  sentenceCount = sentenceCount ? sentenceCount : letterContent.length > 0 ? 1 : 0;
 
-  let fogIndex = complexWords
-    ? (
-        0.4 *
-        (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))
-      ).toFixed(4)
-    : sentenceCount
-    ? (0.4 * (wordCount / sentenceCount + 100 * wordCount)).toFixed(2)
-    : (0.4 * (wordCount + 100 * wordCount)).toFixed(2);
+  if(letterContent.length === 0 ){
+    wordCount = 0;
+  } else {
+    fogIndex = (
+      0.4 *
+      (wordCount / sentenceCount + 100 * (complexWordCount / wordCount))
+    ).toFixed(2);
+  }
 
   fogIndex = parseFloat(fogIndex);
 

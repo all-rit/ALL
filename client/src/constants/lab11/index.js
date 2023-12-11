@@ -28,6 +28,8 @@ const EXERCISE_STATES = {
   REPAIR_COMPLEX_WORDS,
 };
 
+const LETTER_TEXT_FOG_INDEX_CREATE_YOUR_OWN = `Salutations Students! [Click/Navigate here to edit this text.]`;
+
 const LETTER_TEXT_FOG_INDEX_12 = `
 As the vernal equinox unfurls its fecund blossoms, we bid you an effusive welcome to the commencement of a new semester replete with scholastic opportunities. For freshmen and fledgling scholars embarking on novel academic journeys, orient yourselves to the manifold intellectual pursuits our venerable institution curates. Avail yourselves of the copious resources at our disposal—from our unparalleled anthology of incunabula to cutting-edge laboratory equipment for propitious scientific discovery. Veterans of campus life revel in reuniting with professors and peers after the languor of summer and winter respites dissolved productive scholarly collaboration. Now we reconvene our elevated colloquies anew. Let erudite contemplation and fecund cogitation see your nascent notions transformed into myriad fruits of human progress. Together we shall illuminate the gloom of ignorance and celebrate the abundant creativity within every student.
 `;
@@ -60,6 +62,7 @@ const LETTER_TEXT_ARRAY = [
   LETTER_TEXT_FOG_INDEX_12,
   LETTER_TEXT_FOG_INDEX_16,
   LETTER_TEXT_FOG_INDEX_20,
+  LETTER_TEXT_FOG_INDEX_CREATE_YOUR_OWN,
 ];
 
 export {
@@ -71,6 +74,7 @@ export {
   LETTER_TEXT_FOG_INDEX_12,
   LETTER_TEXT_FOG_INDEX_16,
   LETTER_TEXT_FOG_INDEX_20,
+  LETTER_TEXT_FOG_INDEX_CREATE_YOUR_OWN,
   REPAIR,
   EXERCISE_PATH,
   WORD_COUNT_REPAIR_HEADING,
