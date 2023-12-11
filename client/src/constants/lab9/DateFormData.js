@@ -44,7 +44,7 @@ const DateFormData = {
       userInput: "",
       validate_expression: `MM-DD-YYYY`,
       correct_expression: "MM-DD-YYYY",
-    }
+    },
   ],
 };
 export default DateFormData;

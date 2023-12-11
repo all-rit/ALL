@@ -45,7 +45,8 @@ export const AddressRepairData = {
       id: 4,
       countryVariable: "df",
       countryName: "default_format",
-      comment: "// Enter the following address format for the default: 'streetAddress, city, state, postalCode'",
+      comment:
+        "// Enter the following address format for the default: 'streetAddress, city, state, postalCode'",
       userInput: "",
       validate_expression: `streetAddress, city, state, postalCode`,
       correct_expression: "streetAddress, city, state, postalCode",

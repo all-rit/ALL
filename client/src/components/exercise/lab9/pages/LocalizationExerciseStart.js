@@ -25,18 +25,19 @@ const ExerciseStart = () => {
             Welcome to ALL University! ALL University’s primary campus is
             located in the US, but there are also several satellite campuses
             around the world, including the United Kingdom, Japan, and Dubai.
-            The website for ALL University was built for the US campus, but they want
-            to expand their website to be accessible to their satellite campuses
-            as well.
+            The website for ALL University was built for the US campus, but they
+            want to expand their website to be accessible to their satellite
+            campuses as well.
           </p>
           <p className="playthrough__sentence">
             In this exercise, you will assist ALL University in localizing their
-            website to be accessible to various locales. As you proceed through the localization process, you will see your changes reflected on the website for the Dubai campus.
+            website to be accessible to various locales. As you proceed through
+            the localization process, you will see your changes reflected on the
+            website for the Dubai campus.
           </p>
           <p className="playthrough__sentence">
-          On the next page, you
-            will see ALL University’s current website. See if you can spot the
-            un-localized parts of the website.
+            On the next page, you will see ALL University’s current website. See
+            if you can spot the un-localized parts of the website.
           </p>
         </div>
       </div>

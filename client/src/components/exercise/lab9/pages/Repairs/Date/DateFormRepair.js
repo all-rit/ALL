@@ -24,8 +24,8 @@ const DateFormRepair = (props = {}) => {
           </ReactText>
         </CodeLine>
       ))}
-      
-      <br/>
+
+      <br />
 
       <CodeLine>
         <Tab /> <ReactText> const dates = &#123; </ReactText>

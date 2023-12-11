@@ -27,7 +27,7 @@ const AddressRepairCodeBlock = (props = {}) => {
       ))}
 
       <br />
-      
+
       <CodeLine>
         <Tab /> <ReactText> const addressFormats = &#123; </ReactText>
       </CodeLine>
