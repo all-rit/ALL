@@ -21,9 +21,9 @@ const LiteracyExerciseStart = () => {
         <p className="playthrough__sentence">
           Welcome to ALL University! In this exercise, you are a student and
           receive an email from ALL University for their family weekend event.
-          However, the email is difficult to understand due to the amount of complex
-          words, so you are unsure of what events will occur during the family
-          weekend event.
+          However, the email is difficult to understand due to the amount of
+          complex words, so you are unsure of what events will occur during the
+          family weekend event.
         </p>
         <p className="playthrough__sentence">
           In this exercise, you will implement the Fog Index formula, which

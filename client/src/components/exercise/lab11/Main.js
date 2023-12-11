@@ -39,9 +39,7 @@ const Main = () => {
   const [fogIndex, setFogIndex] = useState(0);
   const [letterContentArray, setLetterContentArray] =
     useState(LETTER_TEXT_ARRAY);
-  const [letterContentIndex, setLetterContentIndex] = useState(
-    3
-  );
+  const [letterContentIndex, setLetterContentIndex] = useState(3);
 
   useScroll();
 
