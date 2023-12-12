@@ -12,17 +12,18 @@ import Links from "../../body/Reading/Links";
 import OrderedList from "../../body/Reading/OrderedList";
 import ReadMoreButton from "../components/LearnMoreButton";
 import { navigate } from "@reach/router";
+import ImagineService from "../../../services/ImagineService";
 
 const Reading = (props) => {
   const { user, userID, labID } = props;
   const [readingData, setReadingData] = useState("");
   const [labShortName, setLabShortname] = useState(null);
-  const [scrollPositionPercentage,setScrollPositionPercentage] = useState(0);
-  const [seconds,setSeconds] = useState(0);
+  let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
+  let [seconds, setSeconds] = useState(0);
+  let [pagePosition,setPagePosition] = useState([]);
+  let [saveData,setSaveData] = useState(false)
 
-  const handleNext = () => {
-    navigate("/Imagine/Quiz");
-  };
+
 
   useScroll();
   useEffect(() => {
@@ -38,30 +39,66 @@ const Reading = (props) => {
     });
   }, [user, labID]);
 
-  const screenPositionPercentage = (scrollPosition) =>{
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const screenPositionPercentage = (scrollPosition) => {
+    const totalHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
     const percentage = (scrollPosition / totalHeight) * 100;
 
-    if(percentage > 100){
+    if (percentage > 100) {
       setScrollPositionPercentage(100);
-    }else{
+    } else {
       setScrollPositionPercentage(percentage);
     }
-  }
+  };
 
-  useEffect(()=>{
-    const interval = setInterval(()=>{
+  useEffect(() => {
+    const interval = setInterval(() => {
       setSeconds((pre) => pre + 1);
       const scrollPosition = document.documentElement.scrollTop;
       screenPositionPercentage(scrollPosition);
-      console.log("Scroll position pixels: " + scrollPosition);
-      console.log("Scroll position percentage: " + scrollPositionPercentage + '\n'+ "at " + seconds + " seconds");
-    },1000)
-    return ()=>{
+      
+      setPagePosition(prevPagePosition => [
+        ...prevPagePosition,
+        {
+          second : seconds,
+          positionPercentage: scrollPositionPercentage,
+        },
+      ]);
+
+      console.log(
+        "Scroll position percentage: " +
+          JSON.stringify(pagePosition) +
+          "\n" +
+          "at " +
+          seconds +
+          " seconds"
+      );
+      
+
+    }, 1000);
+    return () => {
       clearInterval(interval);
+
+    };
+  }, [screenPositionPercentage]);
+
+
+  const handleNext = () => {
+    console.log(
+      "Scroll position percentage: " +
+        JSON.stringify(pagePosition)
+    );
+    setSaveData(true);
+    navigate("/Imagine/Quiz");
+  };
+  
+  useEffect(() => {
+    if(saveData){
+      ImagineService.readingSectionPagePosition(userID, pagePosition);
+      setSaveData(false)
     }
-    
-  },[screenPositionPercentage])
+     
+  }, [saveData,userID,pagePosition]);
 
 
   if (!readingData) {

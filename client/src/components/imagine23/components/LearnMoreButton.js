@@ -7,7 +7,7 @@ const LearnMoreButton = (props) => {
   const { data, userID } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(0);
   const [time, setTime] = useState(0);
   const [timeElapsed, setTimeElapsed] = useState("");
   const [running, setRunning] = useState(false);

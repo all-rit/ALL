@@ -71,3 +71,12 @@ exports.readMoreTimeElapsed = (req, res) =>{
   });
 };
 
+exports.readingSectionPagePosition = (req, res) =>{
+  ImagineService.readingSectionPagePosition({
+    userID: req.body.userID,
+    readingSectionPagePosition: req.body.readingSectionPagePosition,
+  }).then(() => {
+    res.sendStatus(200);
+  });
+};
+

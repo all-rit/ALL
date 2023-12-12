@@ -227,3 +227,34 @@ exports.readMoreTimeElapsed = (data) => {
   return Promise.resolve();
 };
 
+exports.readingSectionPagePosition = (data) => {
+  const userID = data.userID;
+  const readingSectionPagePosition = data.readingSectionPagePosition;
+
+  if (userID) {
+    return db.Imagine23
+        .findOne({
+          where:
+                        {
+                          userid: userID,
+                        },
+        },
+        ).then((user) => {
+          if (user !== null) {
+            user.readingSectionPagePosition = readingSectionPagePosition;
+            user.save();
+          } else {
+            db.Imagine23.create({
+              userid: userID,
+              readingSectionPagePosition: readingSectionPagePosition,
+            });
+          }
+          return true;
+        }).catch((err) => {
+          console.log(err);
+          return true;
+        });
+  }
+  return Promise.resolve();
+};
+

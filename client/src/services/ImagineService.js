@@ -72,6 +72,20 @@ const ImagineService = {
       }
     );
   },
+
+  readingSectionPagePosition: (userID, readingSectionPagePosition) => {
+    return API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + "/imagine/readingSectionPagePosition",
+      {
+        userID,
+        readingSectionPagePosition,
+      }
+    );
+  },
 };
+
+
+
+
 
 export default ImagineService;

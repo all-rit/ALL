@@ -31,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
         readMoreTimeElapsed: {
           type: DataTypes.JSON,
         },
+        readingSectionPagePosition: {
+          type: DataTypes.JSON,
+        },
         // avatar: {type: DataTypes.JSON},
         // squad: {type: DataTypes.JSON},
         // lobbyMessages: {type: DataTypes.JSON},

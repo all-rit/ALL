@@ -144,4 +144,5 @@ router.get('/imagine/users', ImagineController.getUsers);
 
 router.post('/imagine/readMoreCount', ImagineController.readMoreCount);
 router.post('/imagine/readMoreTimeElapsed', ImagineController.readMoreTimeElapsed);
+router.post('/imagine/readingSectionPagePosition', ImagineController.readingSectionPagePosition);
 module.exports = router;
