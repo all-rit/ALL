@@ -84,8 +84,4 @@ const ImagineService = {
   },
 };
 
-
-
-
-
 export default ImagineService;
