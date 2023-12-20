@@ -17,25 +17,25 @@ const NavBarRepair = (props = {}) => {
   return (
     <>
       <CodeLine>
-        <ReactText>import house from {" "}</ReactText>
+        <ReactText>import house from </ReactText>
         <ImportText>&ldquo;./img/house&rdquo;</ImportText>
         <ReactText>;</ReactText>
       </CodeLine>
 
       <CodeLine>
-        <ReactText> import briefcase from {" "} </ReactText>
+        <ReactText> import briefcase from </ReactText>
         <ImportText> &ldquo;./img/briefcase&rdquo;</ImportText>
         <ReactText>;</ReactText>
       </CodeLine>
 
       <CodeLine>
-        <ReactText>import grad_cap from {" "}</ReactText>
+        <ReactText>import grad_cap from </ReactText>
         <ImportText>&ldquo;./img/grad_cap&rdquo;</ImportText>
         <ReactText>;</ReactText>
       </CodeLine>
 
       <CodeLine>
-        <ReactText>import phone from {" "} </ReactText>
+        <ReactText>import phone from </ReactText>
         <ImportText>&ldquo;./img/phone&rdquo;</ImportText>
         <ReactText>;</ReactText>
       </CodeLine>
