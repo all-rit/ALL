@@ -131,9 +131,7 @@ body {
   --yellow-text: #fed136;
   --blue-text: #0144d5;
   --white-text: #fff;
-  --light-blue-text: #bed2fe
-    // this is the color that changes white text based on the color picker
-;
+  --light-blue-text: #bed2fe; /** this is the color that changes white text based on the color picker */
 }
 
 ul {
@@ -492,7 +490,6 @@ li {
 
 .limiter__page {
   font-size: 14px;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   margin-left: 5px;
@@ -562,7 +559,7 @@ header.masthead {
   margin-top: -120px;
   text-align: center;
   color: white;
-  background-image: url("../../images/landingpage/landingpage_hero.jpg") !important;
+  background-image: url("../images/landingpage/landingpage_hero.jpg") !important;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -691,8 +688,6 @@ a.icon:hover {
 }
 
 .modal-dialog {
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
   min-width: fit-content;
 }
 
@@ -879,8 +874,6 @@ a.icon:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-  -ms-flex-pack: left;
   justify-content: left;
   text-align: center;
   -ms-flex-wrap: wrap;
@@ -902,8 +895,7 @@ a.icon:hover {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: left;
-  -ms-flex-pack: left;
+
   justify-content: left;
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
@@ -974,8 +966,6 @@ a.icon:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
 }
 
@@ -1515,7 +1505,7 @@ a.icon:hover {
 
 section#contact {
   background-color: #212529;
-  background-image: url(../../images/landingpage/map.png);
+  background-image: url("../images/landingpage/map.png");
   background-size: cover;
   background-position: center;
 }
@@ -2311,24 +2301,23 @@ td {
   width: 191px;
   height: 46px;
   display: inline-block;
-  background-image: url("../../assets/images/../../images/google_buttons/btn_google_signin_dark_normal_web.png");
+  background-image: url("../../assets/images/google_buttons/btn_google_signin_dark_normal_web.png");
 }
 
 .google__button:not(.google__button--disabled):hover {
-  background-image: url("../../assets/images/../../images/google_buttons/btn_google_signin_dark_focus_web.png");
+  background-image: url("../../assets/images/google_buttons/btn_google_signin_dark_focus_web.png");
 }
 
 .google__button:not(.google__button--disabled):active {
-  background-image: url("../../assets/images/../../images/google_buttons/btn_google_signin_dark_pressed_web.png");
+  background-image: url("../../assets/images/google_buttons/btn_google_signin_dark_pressed_web.png");
 }
 
 .google__button--disabled {
-  background-image: url("../../assets/images/../../images/google_buttons/btn_google_signin_dark_disabled_web.png");
+  background-image: url("../../assets/images/google_buttons/btn_google_signin_dark_disabled_web.png");
   cursor: not-allowed;
 }
 
 .welcome {
-  display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-box-align: center;
@@ -2594,12 +2583,12 @@ td {
   width: 35px;
   height: 35px;
   cursor: pointer;
-  background-image: url("../../assets/images/./../../images/lab1/exercise/volume_on.svg");
+  background-image: url("../../assets/images/lab1/exercise/volume_on.svg");
   background-size: contain;
 }
 
 .sound_icon--off {
-  background-image: url("../../assets/images/./../../images/lab1/exercise/volume_off.svg");
+  background-image: url("../../assets/images/lab1/exercise/volume_off.svg");
 }
 
 .sound_icon--disabled {

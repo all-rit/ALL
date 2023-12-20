@@ -44,9 +44,9 @@ module.exports = {
       bgdark: "#23022E",
       darkLine: "#868e96",
       labGray: "#F8F8F8",
-      labYellow: "#fec810",
+      labYellow: "#ffc334",
       labGreen: "#7B7B7B",
-      labBlue: "#A39CB0",
+      labBlue: "#0d28bc",
       darkGreen: "#0c3515",
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
@@ -68,10 +68,32 @@ module.exports = {
       height: {
         128: "31rem",
       },
+      keyframes: {
+        reducedBounce: {
+          "20%, 50%, 80%, 100%": { transform: "translateY(0)" },
+          "40%": {
+            transform: "translateY(-8px)",
+            animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",
+          },
+          "60%": {
+            transform: "translateY(-5px)",
+            animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",
+          },
+        },
+      },
+      animation: {
+        "reduced-bounce": `reducedBounce 2s linear infinite`,
+      },
+      zIndex: {
+        1: "1",
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      animation: ["group", "responsive", "hover", "focus", "reduced-bounce"],
+      bg: ["group", "responsive", "hover", "focus"],
+    },
   },
   plugins: [],
 };

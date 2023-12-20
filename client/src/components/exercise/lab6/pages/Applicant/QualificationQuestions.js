@@ -1,18 +1,16 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import QuestionsHandler from "../../components/QuestionsHandler";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-function QualificationQuestions(props) {
-  const { actions } = props;
+function QualificationQuestions() {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
   const handleContinue = (answers) => {
     ExerciseService.submitQualQuestions(answers);

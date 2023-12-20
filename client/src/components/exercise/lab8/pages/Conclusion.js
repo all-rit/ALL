@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
-import { EXERCISE_IDLE } from "../../../../constants/lab8";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_IDLE } from "src/constants/index";
 
-const Conclusion = (props) => {
-  const { actions } = props;
+const Conclusion = () => {
+  const { actions } = useMainStateContext();
 
   const handleFinish = () => {
     navigate("/Lab8/Exercise");
   };
 
   useEffect(() => {
-    actions.updateState(EXERCISE_IDLE);
+    actions.updateUserState(EXERCISE_IDLE);
   }, []);
 
   return (
@@ -38,14 +35,4 @@ const Conclusion = (props) => {
   );
 };
 
-Conclusion.propTypes = {
-  actions: PropTypes.string,
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Conclusion);
+export default Conclusion;

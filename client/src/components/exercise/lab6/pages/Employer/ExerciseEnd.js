@@ -1,14 +1,14 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from "../../../../../constants/lab6";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 
-const ExerciseEnd = (props) => {
-  const { actions } = props;
+const ExerciseEnd = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_IDLE);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_IDLE);
+  }, []);
 
   const handleFinish = () => {
     navigate("/Lab6/Reinforcement");
