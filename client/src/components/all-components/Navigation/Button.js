@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from "tailwind-merge";
 
 /**
  * Button is a component that is responsible for being the universally styles ALL
@@ -17,7 +17,15 @@ const Button = (props) => {
   } = props;
 
   return (
-    <button className={twMerge("btn btn-xl text-uppercase", isPrimary ? "btn-primary text-black" : "btn-second")} onClick={onClick} key={key} disabled={disabled}>
+    <button
+      className={twMerge(
+        "btn btn-xl text-uppercase",
+        isPrimary ? "btn-primary text-black" : "btn-second"
+      )}
+      onClick={onClick}
+      key={key}
+      disabled={disabled}
+    >
       {buttonText}
     </button>
   );
