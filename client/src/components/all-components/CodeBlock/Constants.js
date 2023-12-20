@@ -1,6 +1,6 @@
 /* javascriptRegex searches for javascript keywords such as const, var, etc */
 export const javascriptRegex =
-  /\b(const|var|let|function|default|return|import|export)\b/g;
+  /\b(const|var|let|function|default|return|import|export|from)\b/g;
 
 /* operatorRegex only colors operator symbols in a passed in child, such as /?+, etc */
 export const operatorRegex = /(\+|-|\*|\/|;|:|=|==|>|\.|\(|\)|{|})/g;

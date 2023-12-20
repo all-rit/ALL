@@ -28,6 +28,13 @@ const FacadeWebpage = () => {
 
   return (
     <div>
+      <div className="playthrough__sentence">
+        This is ALL University&apos;s current website, built for the US. Can you
+        spot the un-localized parts of this website?
+      </div>
+      <div className="playthrough__sentence">
+        Click the &apos;Next&apos; button when you&apos;re ready to continue!
+      </div>
       <div className="tw-bg-white tw-flex tw-flex-col pb-5">
         <div className="tw-relative tw-shadow-[3px_4px_16px_0px_rgba(0,0,0,0.25)] tw-bg-[#E8E8E8] tw-flex tw-w-full tw-flex-col tw-pl-5 tw-pr-5 tw-py-3 tw-max-md:tw-max-w-full">
           <div className="tw-self-center tw-flex tw-ml-0 tw-w-full tw-items-start tw-justify-between tw-gap-5">
@@ -68,10 +75,7 @@ const FacadeWebpage = () => {
               className="tw-absolute tw-h-full tw-w-full tw-object-cover tw-object-center"
             />
             <WebpageHeader />
-            <div
-              className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-row tw-mt-60"
-              style={{ zIndex: 1 }}
-            >
+            <div className="tw-flex tw-bg-[#260D0D] tw-w-full tw-flex-row tw-mt-60 tw-z-1">
               <div className="tw-w-full tw-flex tw-flex-row tw-mt-10">
                 <div className="tw-flex tw-w-1/4 tw-ml-5">
                   <WebpageSidebar />

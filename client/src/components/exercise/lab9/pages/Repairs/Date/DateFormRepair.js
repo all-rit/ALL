@@ -25,6 +25,8 @@ const DateFormRepair = (props = {}) => {
         </CodeLine>
       ))}
 
+      <br />
+
       <CodeLine>
         <Tab /> <ReactText> const dates = &#123; </ReactText>
       </CodeLine>
@@ -45,6 +47,7 @@ const DateFormRepair = (props = {}) => {
           <CodeLine>
             <MultiTab numberOfTabs={3} />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
+            <JSONText>&ldquo;</JSONText>
             {country.userInput ? (
               <CodeBlockInput
                 value={country.userInput}
@@ -69,6 +72,7 @@ const DateFormRepair = (props = {}) => {
                 }}
               />
             )}
+            <JSONText>&rdquo;</JSONText>
           </CodeLine>
           {!isInputValid[index] && !isFirst && (
             <CodeLine>

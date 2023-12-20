@@ -27,6 +27,7 @@ const AddressRepairCodeBlock = (props = {}) => {
       ))}
 
       <br />
+
       <CodeLine>
         <Tab /> <ReactText> const addressFormats = &#123; </ReactText>
       </CodeLine>
@@ -52,6 +53,7 @@ const AddressRepairCodeBlock = (props = {}) => {
           <CodeLine>
             <MultiTab numberOfTabs={3} />
             <JSONText>&ldquo;addressFormat&rdquo; :</JSONText>
+            <JSONText>&ldquo;</JSONText>
             {country.userInput ? (
               <CodeBlockInput
                 value={country.userInput}
@@ -79,6 +81,7 @@ const AddressRepairCodeBlock = (props = {}) => {
                 }}
               />
             )}
+            <JSONText>&rdquo;</JSONText>
           </CodeLine>
           {!isInputValid[index] && !isFirst && (
             <CodeLine>

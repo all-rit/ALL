@@ -8,8 +8,7 @@ const ExerciseService = require('../../services/lab9/ExerciseService');
 async function getExercise(req) {
   try {
     const {userID} = req.params;
-    const response = await ExerciseService.getExercise(userID);
-    return response;
+    return await ExerciseService.getExercise(userID);
   } catch (error) {
     console.error(error);
   }

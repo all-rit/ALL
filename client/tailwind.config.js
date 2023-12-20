@@ -84,6 +84,9 @@ module.exports = {
       animation: {
         "reduced-bounce": `reducedBounce 2s linear infinite`,
       },
+      zIndex: {
+        1: "1",
+      },
     },
   },
   variants: {

@@ -9,18 +9,37 @@ import HTMLTag from "../../../../../all-components/CodeBlock/StyleComponents/HTM
 import HTMLText from "../../../../../all-components/CodeBlock/StyleComponents/HTMLText";
 import React from "react";
 import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
+import ImportText from "src/components/all-components/CodeBlock/StyleComponents/ImportText";
 
 const NavBarRepair = (props = {}) => {
   const { navItems, userInput, isInputValid, isFirst } = props;
 
   return (
     <>
-      <ReactText>import house from &ldquo;./img/house&rdquo;;</ReactText>
-      <ReactText>
-        import briefcase from &ldquo;./img/briefcase&rdquo;;
-      </ReactText>
-      <ReactText>import grad_cap from &ldquo;./img/grad_cap&rdquo;;</ReactText>
-      <ReactText>import phone from &ldquo;./img/phone&rdquo;;</ReactText>
+      <CodeLine>
+        <ReactText>import house from </ReactText>
+        <ImportText>&ldquo;./img/house&rdquo;</ImportText>
+        <ReactText>;</ReactText>
+      </CodeLine>
+
+      <CodeLine>
+        <ReactText> import briefcase from </ReactText>
+        <ImportText> &ldquo;./img/briefcase&rdquo;</ImportText>
+        <ReactText>;</ReactText>
+      </CodeLine>
+
+      <CodeLine>
+        <ReactText>import grad_cap from </ReactText>
+        <ImportText>&ldquo;./img/grad_cap&rdquo;</ImportText>
+        <ReactText>;</ReactText>
+      </CodeLine>
+
+      <CodeLine>
+        <ReactText>import phone from </ReactText>
+        <ImportText>&ldquo;./img/phone&rdquo;</ImportText>
+        <ReactText>;</ReactText>
+      </CodeLine>
+
       <ReactText>const NavBar = () =&#62; &#123;</ReactText>
       <CodeLine>
         <Tab /> <ReactText> return ( </ReactText>

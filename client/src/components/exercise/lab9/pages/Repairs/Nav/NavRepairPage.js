@@ -46,8 +46,8 @@ const NavRepairPage = ({ user }) => {
       path={`${REPAIR}/${EXERCISE_STATES.REPAIR_NAV_BAR}`}
       headingText={HEADINGS.REPAIR_NAV_HEADING}
       validateRepair={checkInputValid}
-      fetchRepair={() => fetchRepair()}
-      submitRepair={() => postRepair()}
+      fetchRepair={fetchRepair}
+      submitRepair={postRepair}
       repairText={[
         "in this section you will be making changes to the repair data file below",
       ]}

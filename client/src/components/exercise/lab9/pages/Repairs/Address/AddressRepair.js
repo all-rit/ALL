@@ -42,8 +42,8 @@ const AddressRepair = ({ user }) => {
       path={`${REPAIR}/${EXERCISE_STATES.REPAIR_ADDRESS_FORM}`}
       headingText={HEADINGS.REPAIR_ADDRESS_HEADING}
       validateRepair={checkInputValid}
-      fetchRepair={() => fetchRepair()}
-      submitRepair={() => postRepair()}
+      fetchRepair={fetchRepair}
+      submitRepair={postRepair}
       repairText={[
         "Let's localize the address for our newsletter subscription form. Click 'Repair' to make the appropriate changes.",
       ]}
