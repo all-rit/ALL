@@ -25,7 +25,7 @@ const ComplexWordCountRepair = (props) => {
     EXERCISE_STATES.REPAIR_COMPLEX_WORDS,
     FogIndexCalculationData.complexWords
   );
-  const { exercisePromptsState } = data;
+  const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
   return (
@@ -43,6 +43,8 @@ const ComplexWordCountRepair = (props) => {
         <ComplexWordCountRepairImplementation
           userInput={handleUserInputChange}
           fogIndexCalculationData={exercisePromptsState}
+          isInputValid={isInputValid}
+          isFirst={isFirst}
         />
       }
       navigateNext={() => {

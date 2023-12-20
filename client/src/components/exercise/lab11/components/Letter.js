@@ -7,7 +7,7 @@ import ExerciseStateContext from "../Lab11Context";
 import PropTypes from "prop-types";
 
 /**
- * React component for rendering a letter with editable content and displaying its total words, total sentences, total complex words, and fog index.
+ * React component for rendering a letter with editable content and displaying its total words, total sentences, total complex words, and Fog Index.
  * @param {Object} props - The props object containing the isEditable boolean value.
  * @param {boolean} props.isEditable - A boolean value indicating whether the letter content is editable or not.
  * @returns {JSX.Element} - The JSX element representing the Letter component.
@@ -40,9 +40,13 @@ const Letter = ({ isEditable }) => {
     if (letterContentIndex > 0) {
       setLetterContentIndex(letterContentIndex - 1);
       setLetterContent(letterContentArray[letterContentIndex - 1]);
+      setCurrentLetterContent(letterContentArray[letterContentIndex - 1]);
     } else {
       setLetterContentIndex(letterContentArray.length - 1);
       setLetterContent(letterContentArray[letterContentArray.length - 1]);
+      setCurrentLetterContent(
+        letterContentArray[letterContentArray.length - 1]
+      );
     }
   };
 
@@ -132,7 +136,7 @@ const Letter = ({ isEditable }) => {
             </div>
             <div
               id="editable-letter"
-              aria-label="Please edit the letter below to change fog index."
+              aria-label="Please edit the letter below to change Fog Index."
               contentEditable={isEditable}
               suppressContentEditableWarning={true}
               tabIndex={0}

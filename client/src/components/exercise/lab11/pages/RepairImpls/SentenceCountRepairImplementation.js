@@ -5,16 +5,18 @@ import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
 import Tab from "../../../../all-components/CodeBlock/Components/Tab";
 import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
 import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
+import MultiTab from "src/components/all-components/CodeBlock/Components/MultiTab";
+import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
 
 const SentenceCountRepairImplementation = (props) => {
-  const { fogIndexCalculationData, userInput } = props;
+  const { fogIndexCalculationData, userInput, isInputValid, isFirst } = props;
 
   return (
     <>
       {/* Fog Index Calc Function */}
       <CodeLine>
         <CommentText>
-          {`// This function calculates the fog index of a given letter.`}
+          {`// This function calculates the Fog Index of a given letter.`}
         </CommentText>
       </CodeLine>
       <ReactText>
@@ -61,6 +63,15 @@ const SentenceCountRepairImplementation = (props) => {
             )}
             <ReactText>;</ReactText>
           </CodeLine>
+          {!isInputValid[input.id] && !isFirst && (
+            <CodeLine>
+              <MultiTab numberOfTabs={3} />
+              <ErrorText>
+                Error in form submission. Please type &quot;
+                {input.correct_expression}&quot; and resubmit.
+              </ErrorText>
+            </CodeLine>
+          )}
         </Fragment>
       ))}
       <CodeLine>
@@ -82,6 +93,8 @@ const SentenceCountRepairImplementation = (props) => {
 SentenceCountRepairImplementation.propTypes = {
   userInput: PropTypes.func,
   fogIndexCalculationData: PropTypes.array,
+  isInputValid: PropTypes.array,
+  isFirst: PropTypes.bool,
 };
 
 export default SentenceCountRepairImplementation;

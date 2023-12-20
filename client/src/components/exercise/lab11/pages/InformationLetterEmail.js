@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import Letter from "../components/Letter";
 import { useEffect } from "react";
@@ -102,19 +101,30 @@ const InformationLetterEmail = (props) => {
         </div>
       </div>
 
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase tw-mt-14"
-        onClick={handleContinue}
-        key="start"
-      >
-        Next
-      </button>
+      {isEditable && fogIndex < 10 && fogIndex > 4 && (
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase tw-mt-14"
+          onClick={handleContinue}
+          key="start"
+        >
+          Next
+        </button>
+      )}
+
+      {!isEditable && (
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase tw-mt-14"
+          onClick={handleContinue}
+          key="start"
+        >
+          Next
+        </button>
+      )}
     </div>
   );
 };
 
 InformationLetterEmail.propTypes = {
-  actions: PropTypes.object,
   words: PropTypes.bool,
   sentences: PropTypes.bool,
   complexWords: PropTypes.bool,

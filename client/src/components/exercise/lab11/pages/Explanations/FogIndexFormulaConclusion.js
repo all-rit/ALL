@@ -1,7 +1,6 @@
 import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect } from "react";
-import PropTypes from "prop-types";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
 
@@ -20,16 +19,16 @@ const FogIndexFormulaConclusion = () => {
     <div className="center-div">
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
-          Great work, you implemented all 3 parts of the fog index formula, and
-          the fog index widget now displays the correct fog index!
+          Great work, you implemented all 3 parts of the Fog Index formula, and
+          the Fog Index widget now displays the correct Fog Index!
         </p>
         <p className="playthrough__sentence">
-          The fog index of the email was 19.1583, which is the equivalent of a
+          The Fog Index of the email was 20.86, which is the equivalent of a
           post-graduate reading level. Since this email is intended for students
-          and families of students, the fog index shouldn’t be higher than 10,
+          and families of students, the Fog Index shouldn’t be higher than 10,
           or the reading level of a high school sophomore. To repair the
           readability of the email, you will choose one of the emails on the
-          following page with a fog index of 10 or less.
+          following page with a Fog Index of 10 or less.
         </p>
       </div>
       <div className="playthrough__sentence">
@@ -48,7 +47,4 @@ const FogIndexFormulaConclusion = () => {
   );
 };
 
-FogIndexFormulaConclusion.propTypes = {
-  actions: PropTypes.object,
-};
 export default FogIndexFormulaConclusion;

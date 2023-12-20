@@ -2,6 +2,7 @@ import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
 import { RepairService } from "../../../../services/lab11/RepairService";
 import { ExerciseService } from "../../../../services/lab11/ExerciseService";
 import { EXERCISE_STATES } from "../../../../constants/lab11";
+import { useState } from "react";
 /**
  * useDataService(): is a custom hook to abstract the logic implementation for the
  * repair portion of the localization lab. This allows for conditional behavior of
@@ -19,6 +20,7 @@ const useDataService = (user, section, defaultExerciseState) => {
   const { exercisePromptsState, isInputValid } = data;
   const { checkInputValid, setExercisePromptsState, handleUserInputChange } =
     functions;
+  const [isFirst, setIsFirst] = useState(true);
   /**
    * fetchRepair(): is an Async Custom Hook function that is
    * responsible for fetching data about a user's repair session.
@@ -31,9 +33,15 @@ const useDataService = (user, section, defaultExerciseState) => {
       if (!repairData || repairData?.isComplete === true) {
         const newStartState = [...defaultExerciseState];
         setExercisePromptsState(newStartState);
+        setIsFirst(true);
       } else {
         const { repair } = repairData;
         setExercisePromptsState(Object.values(repair));
+        if (repairData.repairCount >= 0 && !repairData.isComplete) {
+          setIsFirst(false);
+        } else {
+          setIsFirst(true);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -103,7 +111,7 @@ const useDataService = (user, section, defaultExerciseState) => {
   }
 
   return {
-    data: { exercisePromptsState, isInputValid },
+    data: { exercisePromptsState, isInputValid, isFirst },
     functions: {
       checkInputValid,
       handleUserInputChange,

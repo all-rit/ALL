@@ -15,11 +15,11 @@ import { EXERCISE_IDLE } from "src/constants/index";
  * @type {Types}
  */
 export const types = {
-  LOGIN: "@accessibility-lab/login",
-  UPDATE_USER: "@accessibility-lab/update_user",
-  SET_LAB: "@accessibility-lab/lab",
-  SET_BODY: "@accessibility-lab/app/set_body",
-  UPDATE_USER_STATE: "@accessibility-lab/update_user_state",
+  LOGIN: "@accessibility-lab/context/login",
+  UPDATE_USER: "@accessibility-lab/context/update_user",
+  SET_LAB: "@accessibility-lab/context/lab",
+  SET_BODY: "@accessibility-lab/context/app/set_body",
+  UPDATE_USER_STATE: "@accessibility-lab/context/update_user_state",
 };
 
 /**

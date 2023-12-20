@@ -1,6 +1,5 @@
 // library imports
 import React, { useEffect } from "react";
-import { PropTypes } from "prop-types";
 import { Router } from "@reach/router";
 // component imports
 import WordCountRepair from "./Repairs/WordCountRepair";
@@ -18,7 +17,7 @@ import { EXERCISE_PLAYING } from "src/constants/index";
  * @returns
  */
 const LiteracyRepair = () => {
-  const { user = null, actions } = useMainStateContext();
+  const { state, actions } = useMainStateContext();
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
@@ -28,23 +27,18 @@ const LiteracyRepair = () => {
     <Router className="app">
       <WordCountRepair
         path={`${EXERCISE_STATES.REPAIR_WORD_COUNT}`}
-        user={user}
+        user={state.main.user}
       />
       <SentenceCountRepair
         path={`${EXERCISE_STATES.REPAIR_SENTENCE_COUNT}`}
-        user={user}
+        user={state.main.user}
       />
       <ComplexWordCountRepair
         path={`${EXERCISE_STATES.REPAIR_COMPLEX_WORDS}`}
-        user={user}
+        user={state.main.user}
       />
     </Router>
   );
-};
-
-LiteracyRepair.propTypes = {
-  user: PropTypes.object,
-  actions: PropTypes.object,
 };
 
 export default LiteracyRepair;
