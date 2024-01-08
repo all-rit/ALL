@@ -23,7 +23,7 @@ const FogIndexFormulaConclusion = () => {
           the Fog Index widget now displays the correct Fog Index!
         </p>
         <p className="playthrough__sentence">
-          The Fog Index of the email was 20.86, which is the equivalent of a
+          The Fog Index of the email was 10.71, which is the equivalent of a
           post-graduate reading level. Since this email is intended for students
           and families of students, the Fog Index shouldn’t be higher than 10,
           or the reading level of a high school sophomore. To repair the
