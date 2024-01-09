@@ -1,16 +1,13 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
-import { EXERCISE_PLAYING } from "../../../../constants/lab8";
-import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const SentimentAnalysisInfo = (props) => {
-  const { actions } = props;
+const SentimentAnalysisInfo = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleContinue = () => {
@@ -63,14 +60,4 @@ const SentimentAnalysisInfo = (props) => {
   );
 };
 
-SentimentAnalysisInfo.propTypes = {
-  actions: PropTypes.string,
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(SentimentAnalysisInfo);
+export default SentimentAnalysisInfo;

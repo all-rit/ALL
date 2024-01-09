@@ -11,7 +11,7 @@ export const initialState = {
   body: 0,
 };
 
-const MainReducer = (state = initialState, action) => {
+export const MainReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_BODY:
       return {

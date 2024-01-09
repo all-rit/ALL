@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import { Tooltip } from "reactstrap";
 
@@ -27,7 +26,7 @@ const Toolitip = (tab) => {
         target="DisabledAutoHideExample"
         toggle={toggle}
       >
-        Color must be "violet"
+        Color must be &quot;violet&quot;
       </Tooltip>
     </div>
   );

@@ -1,26 +1,22 @@
-const getExerciseState = (state) => {
+const getExerciseState = (state, reduxState) => {
   const lab = state.main.lab;
   switch (lab) {
     case 1:
-      return state.exercise1.state;
+      return reduxState.exercise1.state;
     case 2:
-      return state.exercise2.changeExerciseState.exerciseState
+      return reduxState.exercise2.changeExerciseState.exerciseState
         ? "EXERCISE_PLAYING"
         : "EXERCISE_IDLE";
     case 3:
-      return state.exercise3.state;
-    case 4:
-      return state.exercise4.state;
+      return reduxState.exercise3.state;
     case 5:
-      return state.exercise5.state;
-    case 6:
-      return state.exercise6.state;
+      return reduxState.exercise5.state;
     case 7:
-      return state.exercise7.state;
-    case 8:
-      return state.exercise8.state;
+      return reduxState.exercise7.state;
+    case 10:
+      return reduxState.exercise10.state;
     default:
-      return state.exercise1.state;
+      return state.userState;
   }
 };
 

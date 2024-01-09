@@ -75,7 +75,9 @@ const ChatBox = () => {
             >
               {messages.map((message) => {
                 return (
-                  <option className="tw-text-xl tw-text-dark">{message}</option>
+                  <option className="tw-text-xl tw-text-black">
+                    {message}
+                  </option>
                 );
               })}
             </CustomInput>
