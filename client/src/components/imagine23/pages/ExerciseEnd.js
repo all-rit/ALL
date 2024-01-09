@@ -12,13 +12,14 @@ const ExerciseEnd = (props) => {
         {isExperiential ? "Experiential" : "Expression"} Empathy Building: End
       </h2>
       <div className="playthrough__sentence__imagine">
-        Congratulations! You've completed the activity! Thanks for
-        participating!
+        Congratulations! You've completed the activity! 
       </div>
 
       <h2 className="playthrough__title">
-        Please ask the supervisor for your Post-Survey.
+      Thanks for participating!
       </h2>
+
+
     </div>
   );
 };
