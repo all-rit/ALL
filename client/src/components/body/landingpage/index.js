@@ -38,8 +38,12 @@ const Home = (props) => {
             <div className="col-lg-12 text-center">
               <h2 className="section-heading text-uppercase">Lab Goals</h2>
               <h3 className="section-subheading lab-section-subheading">
-                To provide activities that incorporate accessibility education
-                and accessible design.
+                Accessible Learning Labs is an NSF funded initiative aimed at
+                empowering inclusive software education and fostering STEM
+                proficiency. We are dedicated to equipping users with the skills
+                and knowledge to create accessible software solutions. Through
+                our interactive and intuitive labs, we aim to make the internet
+                a more equitable place for everyone.
               </h3>
             </div>
           </div>

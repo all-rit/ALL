@@ -29,6 +29,7 @@
     "classnames": "latest",
     "clsx": "^1.1.1",
     "hex-to-rgba": "^2.0.1",
+    "highlight.js": "^11.8.0",
     "immutability-helper": "^3.1.1",
     "lodash": "^4.17.21",
     "mathjax-react": "^2.0.1",
@@ -51,12 +52,15 @@
     "react-redux": "^7.2.5",
     "react-router": "^5.2.1",
     "react-scripts": "^5.0.0",
+    "react-smooth": "^2.0.3",
     "react-social-icons": "^5.10.0",
     "react-spinners": "^0.10.6",
     "react-xml-parser": "^1.1.8",
     "reactstrap": "^8.10.0",
     "redux": "latest",
     "redux-saga": "^1.2.2",
+    "round-robin-js": "^3.0.5",
+    "tailwind-merge": "^1.14.0",
     "typescript": "^4.5.5",
     "url-parse": "^1.5.6",
     "uuid": "^8.0.3",
@@ -80,7 +84,7 @@
   ],
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "autoprefixer": "^10.4.2",
+    "autoprefixer": "^10.4.15",
     "eslint": "^8.45.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
@@ -91,6 +95,6 @@
     "react-google-button": "^0.7.2",
     "redux-devtools": "^3.7.0",
     "stylelint-config-prettier": "^9.0.3",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.3.3"
   }
 }
