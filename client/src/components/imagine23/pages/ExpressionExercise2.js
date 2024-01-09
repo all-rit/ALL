@@ -1,4 +1,3 @@
-
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
@@ -47,7 +46,6 @@ const ExpressionExercise2 = (props) => {
             {count} discomfort detected.
           </div>
         </>
-
       )}
       <div className="tw-p-1 tw-flex tw-justify-center">
         {!showContine && (

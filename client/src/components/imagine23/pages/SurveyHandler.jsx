@@ -122,7 +122,6 @@ const SurveyHandler = (props) => {
       console.log(group === 0 ? "Experiential" : "Expression");
       props.handleGroupAssignment(group === 0 ? true : false);
     });
-    
   }
 
   /**
