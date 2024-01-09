@@ -1,10 +1,11 @@
+
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
 
-const ExpressionExercise = (props) => {
+const ExpressionExercise2 = (props) => {
   const { setCount, count, userID } = props;
 
   const [showContine, setShowContinue] = useState(null);
@@ -33,7 +34,7 @@ const ExpressionExercise = (props) => {
   return (
     <div className="container bottomSpace center-div">
       <h2 className="playthrough__title">
-        Expression Empathy Building: Exercise
+        Expression Empathy Building: Exercise 2
       </h2>
       {showContine == null && (
         <div className="playthrough__sentence__imagine">
@@ -46,6 +47,7 @@ const ExpressionExercise = (props) => {
             {count} discomfort detected.
           </div>
         </>
+
       )}
       <div className="tw-p-1 tw-flex tw-justify-center">
         {!showContine && (
@@ -53,7 +55,7 @@ const ExpressionExercise = (props) => {
             ref={reactPlayer}
             width="960px"
             height="615px"
-            url="https://www.youtube.com/watch?v=414ICZRkOH4"
+            url="https://www.youtube.com/watch?v=k_A93MYFkzc"
             onStart={() => {
               setShowContinue(false);
             }}
@@ -88,4 +90,4 @@ const ExpressionExercise = (props) => {
   );
 };
 
-export default ExpressionExercise;
+export default ExpressionExercise2;
