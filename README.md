@@ -57,6 +57,8 @@ docker compose down
    1. For local dev
       1. `cd server/database`
       2. `docker compose up -d`
+         1. if you want reuse this volume to **keep your changes use** `docker compose start`
+         2. in the event you want to stop it **without losing the volume** `docker compose stop`
    2. For dev connecting to staging or production
       1. run the documented developer instructions to connect.
 4. `pm2 start`
