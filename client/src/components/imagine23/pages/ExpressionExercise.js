@@ -26,7 +26,7 @@ const ExpressionExercise = (props) => {
   };
 
   const handleNext = () => {
-    const body = { userID, section, study : timeStamps }
+    const body = { userID, section, study: timeStamps };
     ImagineService.postStudy(body);
     navigate("/Imagine/ExpressionScore");
   };
