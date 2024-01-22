@@ -41,14 +41,14 @@ create table imagine
     "lobbyMessages" json,
     primary key (id)
 );
+create type enum_imagine23 as enum ('experientialMain', 'experientialProtanopia', 'discomfortCount');
 
 create table imagine23
 (
     id                           serial,
     userid                       text,
-    "experientialMain"           json,
-    "experientialProtanopia"     json,
-    "discomfortCount"            json,
+    section                      enum_imagine23,
+    study                        json,
     "preSurvey"                  json,
     "postSurvey"                 json,
     "readMoreCount"              integer,
