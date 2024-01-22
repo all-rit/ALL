@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 module.exports = (sequelize, DataTypes) => {
   const Imagine = sequelize.define(
       'Imagine23', {
@@ -10,13 +11,12 @@ module.exports = (sequelize, DataTypes) => {
         userid: {
           type: DataTypes.TEXT,
         },
-        experientialMain: {
-          type: DataTypes.JSON,
+        section: {
+          type: DataTypes.ENUM('experientialMain',
+              'experientialProtanopia',
+              'discomfortCount'),
         },
-        experientialProtanopia: {
-          type: DataTypes.JSON,
-        },
-        discomfortCount: {
+        study: {
           type: DataTypes.JSON,
         },
         preSurvey: {
@@ -34,9 +34,6 @@ module.exports = (sequelize, DataTypes) => {
         readingSectionPagePosition: {
           type: DataTypes.JSON,
         },
-        // avatar: {type: DataTypes.JSON},
-        // squad: {type: DataTypes.JSON},
-        // lobbyMessages: {type: DataTypes.JSON},
       }, {tableName: 'imagine23'},
   );
 
