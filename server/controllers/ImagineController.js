@@ -1,82 +1,123 @@
 const ImagineService = require('../services/ImagineService');
 
-exports.discomfortCount = (req, res) => {
-  ImagineService.discomfortCount({
-    userID: req.body.userID,
-    discomfortCount: req.body.discomfortCount,
-  }).then(() => {
+const submitStudy = async (req, res) => {
+  try {
+    const {userID, section, study} = req.body;
+    const result = await ImagineService.submitStudy({userID, section, study});
+    if (!result) {
+      throw new Error('Instance of study was not recorded');
+    }
     res.sendStatus(200);
-  });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 };
 
-exports.experientialMain = (req, res) => {
-  ImagineService.experientialMain({
-    userID: req.body.userID,
-    experientialMain: req.body.experientialMain,
-  }).then(() => {
+const preSurvey = async (req, res) => {
+  const {userID, preSurvey} = req.body;
+  try {
+    const resPreSurvey = await ImagineService.preSurvey({
+      userID,
+      preSurvey,
+    });
+    if (!resPreSurvey) {
+      throw new Error('Pre survey was not recorded');
+    }
     res.sendStatus(200);
-  });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  };
 };
 
-exports.experientialProtanopia = (req, res) => {
-  ImagineService.experientialProtanopia({
-    userID: req.body.userID,
-    experientialProtanopia: req.body.experientialProtanopia,
-  }).then(() => {
+const postSurvey = async (req, res) => {
+  const {userID, postSurvey} = req.body;
+  try {
+    const respostSurvey = await ImagineService.postSurvey({
+      userID,
+      postSurvey,
+    });
+    if (!respostSurvey) {
+      throw new Error('Post survey was not recorded');
+    }
     res.sendStatus(200);
-  });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  };
 };
 
-exports.preSurvey = (req, res) => {
-  ImagineService.preSurvey({
-    userID: req.body.userID,
-    preSurvey: req.body.preSurvey,
-  }).then(() => {
+const getUsers = async (req, res) => {
+  try {
+    const users = ImagineService.getUsers();
     res.sendStatus(200);
-  });
-};
-
-exports.postSurvey = (req, res) => {
-  ImagineService.postSurvey({
-    userID: req.body.userID,
-    postSurvey: req.body.postSurvey,
-  }).then(() => {
-    res.sendStatus(200);
-  });
-};
-
-exports.getUsers = (req, res) => {
-  ImagineService.getUsers().then((users) => {
     res.json(users);
-  });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 
-exports.readMoreCount = (req, res) =>{
-  ImagineService.readMoreCount({
-    userID: req.body.userID,
-    readMoreCount: req.body.readMoreCount,
-  }).then(() => {
+const readMoreCount = async (req, res) =>{
+  const {userID, readMoreCount} = req.body;
+  try {
+    const resReadMoreCount = await ImagineService.readMoreCount({
+      userID,
+      readMoreCount,
+    });
+    if (!resReadMoreCount) {
+      throw new Error('Read more count was not recorded');
+    }
     res.sendStatus(200);
-  });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  };
 };
 
 
-exports.readMoreTimeElapsed = (req, res) =>{
-  ImagineService.readMoreTimeElapsed({
-    userID: req.body.userID,
-    readMoreTimeElapsed: req.body.readMoreTimeElapsed,
-  }).then(() => {
+const readMoreTimeElapsed = async (req, res) =>{
+  const {userID, readMoreTimeElapsed} = req.body;
+  try {
+    const resReadMoreTimeElapsed = await ImagineService.readMoreTimeElapsed({
+      userID,
+      readMoreTimeElapsed,
+    });
+    if (!resReadMoreTimeElapsed) {
+      throw new Error('Time elapsed was not recorded');
+    }
     res.sendStatus(200);
-  });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  };
 };
 
-exports.readingSectionPagePosition = (req, res) =>{
-  ImagineService.readingSectionPagePosition({
-    userID: req.body.userID,
-    readingSectionPagePosition: req.body.readingSectionPagePosition,
-  }).then(() => {
+const readingSectionPagePosition = async (req, res) =>{
+  const {userID, readingSectionPagePosition} = req.body;
+  try {
+    const resReadingSectionPagePosition = await
+    ImagineService.readingSectionPagePosition({
+      userID,
+      readingSectionPagePosition,
+    });
+    if (!resReadingSectionPagePosition) {
+      throw new Error('Reading Section position was not recorded');
+    }
     res.sendStatus(200);
-  });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  };
 };
 
+module.exports = {
+  readMoreCount,
+  readMoreTimeElapsed,
+  readingSectionPagePosition,
+  getUsers,
+  postSurvey,
+  preSurvey,
+  submitStudy,
+};
