@@ -13,6 +13,8 @@ import OrderedList from "../../body/Reading/OrderedList";
 import ReadMoreButton from "../components/LearnMoreButton";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
+import { useContext } from "react";
+import FontSizeContext from "../Imagine23Context";
 
 const Reading = (props) => {
   const { user, userID, labID } = props;
@@ -22,6 +24,17 @@ const Reading = (props) => {
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
   let [saveData, setSaveData] = useState(false);
+
+  const {
+    // h2FontSize,
+    // seth2FontSize,
+    // h3FontSize,
+    // seth3FontSize,
+    // h5FontSize,
+    // seth5FontSize,
+    pFontSize,
+    setpFontSize,
+  } = useContext(FontSizeContext);
 
   useScroll();
   useEffect(() => {
@@ -53,6 +66,16 @@ const Reading = (props) => {
   const getScreenSize = () => {
     const screenSize = window.innerWidth;
     console.log("screen width: ", screenSize);
+
+    // calculate font sizes
+    // large screens
+    if (screenSize >= 992) {
+      setpFontSize("tw-text-base");
+    } else if (screenSize >= 768 && screenSize < 992) {
+      setpFontSize("tw-text-15xl");
+    } else if (screenSize < 768) {
+      setpFontSize("tw-text-xs");
+    }
   };
 
   useEffect(() => {
@@ -108,8 +131,9 @@ const Reading = (props) => {
       <div className="study">
         {readingData?.description !== "" ? (
           <>
+            {/* change these */}
             <h3>{readingData?.description.header}</h3>
-            <p>{readingData?.description.content}</p>
+            <p className={pFontSize}>{readingData?.description.content}</p>
           </>
         ) : (
           <></>
@@ -138,7 +162,11 @@ const Reading = (props) => {
                 {data.type === "" && (
                   <>
                     {data.content.map((content, index) => {
-                      return <p key={index}>{content}</p>;
+                      return (
+                        <p className={pFontSize} key={index}>
+                          {content}
+                        </p>
+                      );
                     })}
                   </>
                 )}

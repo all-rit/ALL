@@ -22,6 +22,7 @@ import Survey from "./pages/SurveyHandler";
 import Navigation from "./pages/Navigation";
 import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");
+import FontSizeContext from "./Imagine23Context";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -40,6 +41,12 @@ const Main = (props) => {
 
   const [labId, setLabId] = useState(2);
   const [isExperiential, setIsExperiential] = useState(false);
+
+  // font size state
+  const [h2FontSize, seth2FontSize] = useState("");
+  const [h3FontSize, seth3FontSize] = useState("");
+  const [h5FontSize, seth5FontSize] = useState("");
+  const [pFontSize, setpFontSize] = useState("");
 
   function handleGroupAssignment(isExperiential) {
     setIsExperiential(isExperiential);
@@ -78,112 +85,125 @@ const Main = (props) => {
         </div>
       </div>
       <div className="bottomSpace">
-        <Router className="app">
-          <UpdateID
-            default
-            path="/UpdateID"
-            actions={actions}
-            state={state}
-            setUserID={setUserID}
-            user={user}
-          />
-          <Survey
-            path={`/PreSurvey`}
-            userID={userID}
-            type="pre"
-            handleGroupAssignment={handleGroupAssignment}
-          />
-          {/* <Navigation
+        <FontSizeContext.Provider
+          value={{
+            h2FontSize,
+            seth2FontSize,
+            h3FontSize,
+            seth3FontSize,
+            h5FontSize,
+            seth5FontSize,
+            pFontSize,
+            setpFontSize,
+          }}
+        >
+          <Router className="app">
+            <UpdateID
+              default
+              path="/UpdateID"
+              actions={actions}
+              state={state}
+              setUserID={setUserID}
+              user={user}
+            />
+            <Survey
+              path={`/PreSurvey`}
+              userID={userID}
+              type="pre"
+              handleGroupAssignment={handleGroupAssignment}
+            />
+            {/* <Navigation
             path="/Navigation"
             actions={actions}
             state={state}
             userID={userID}
             setIsExperiential={setIsExperiential}
           /> */}
-          <LandingPage
-            path="/ExperientialStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExpressionInstructions
-            path="/ExpressionStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <MainInstructions
-            path="/ExperientialInstructions"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExpressionMainInstructions
-            path="/ExpressionInstructions"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExerciseLab2
-            path="/ExperientialExercise"
-            actions={actions}
-            state={state}
-            isImagine
-            userID={userID}
-          />
-          <ExerciseLab2
-            path="/ExpressionActivity"
-            actions={actions}
-            state={state}
-            isImagine
-            isImagineExpression
-            userID={userID}
-          />
-          <ExpressionStart
-            path="/ExpressionExerciseStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-            setCount={setCount}
-          />
-          <ExpressionExercise
-            path="/ExpressionExercise"
-            actions={actions}
-            state={state}
-            setCount={setCount}
-            count={count}
-            userID={userID}
-          />
-          <ExpressionScore
-            path="/ExpressionScore"
-            actions={actions}
-            state={state}
-            count={count}
-            userID={userID}
-          />
-          <Reading
-            path={`/Reading`}
-            user={state.main.user}
-            userID={userID}
-            labID={labId}
-          />
-          <Quiz
-            path={`/Quiz`}
-            labId={labId}
-            user={state.main.user}
-            isFinalQuiz
-            hideCertificate={false}
-            submitData={() => {}}
-          />
-          <Survey path={`/PostSurvey`} userID={userID} type="post" />
-          <ExerciseEnd
-            path="/ExerciseEnd"
-            actions={actions}
-            state={state}
-            isExperiential={isExperiential}
-            userID={userID}
-          />
-        </Router>
+            <LandingPage
+              path="/ExperientialStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExpressionInstructions
+              path="/ExpressionStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <MainInstructions
+              path="/ExperientialInstructions"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExpressionMainInstructions
+              path="/ExpressionInstructions"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExerciseLab2
+              path="/ExperientialExercise"
+              actions={actions}
+              state={state}
+              isImagine
+              userID={userID}
+            />
+            <ExerciseLab2
+              path="/ExpressionActivity"
+              actions={actions}
+              state={state}
+              isImagine
+              isImagineExpression
+              userID={userID}
+            />
+            <ExpressionStart
+              path="/ExpressionExerciseStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+              setCount={setCount}
+            />
+            <ExpressionExercise
+              path="/ExpressionExercise"
+              actions={actions}
+              state={state}
+              setCount={setCount}
+              count={count}
+              userID={userID}
+            />
+            <ExpressionScore
+              path="/ExpressionScore"
+              actions={actions}
+              state={state}
+              count={count}
+              userID={userID}
+            />
+            <Reading
+              path={`/Reading`}
+              user={state.main.user}
+              userID={userID}
+              labID={labId}
+            />
+            <Quiz
+              path={`/Quiz`}
+              labId={labId}
+              user={state.main.user}
+              isFinalQuiz
+              hideCertificate={false}
+              submitData={() => {}}
+            />
+            <Survey path={`/PostSurvey`} userID={userID} type="post" />
+            <ExerciseEnd
+              path="/ExerciseEnd"
+              actions={actions}
+              state={state}
+              isExperiential={isExperiential}
+              userID={userID}
+            />
+          </Router>
+        </FontSizeContext.Provider>
       </div>
     </div>
   );
