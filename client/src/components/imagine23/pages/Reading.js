@@ -53,7 +53,7 @@ const Reading = (props) => {
   const getScreenSize = () => {
     const screenSize = window.innerWidth;
     console.log("screen width: ", screenSize);
-  }
+  };
 
   useEffect(() => {
     getScreenSize();
@@ -100,7 +100,7 @@ const Reading = (props) => {
     <div>
       <div className="page-section">
         {/* change this h2 tag font size */}
-        <h2 className="section-heading text-uppercase"> 
+        <h2 className="section-heading text-uppercase">
           {labShortName}: READING
         </h2>
       </div>
