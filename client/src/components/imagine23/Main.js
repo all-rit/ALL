@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
@@ -19,7 +18,6 @@ import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
-import Navigation from "./pages/Navigation";
 import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");
 
@@ -38,7 +36,7 @@ const Main = (props) => {
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
 
-  const [labId, setLabId] = useState(2);
+  const [labId] = useState(2);
   const [isExperiential, setIsExperiential] = useState(false);
 
   function handleGroupAssignment(isExperiential) {

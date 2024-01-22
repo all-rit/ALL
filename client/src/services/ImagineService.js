@@ -2,30 +2,13 @@
 import API from "./API";
 
 const ImagineService = {
-  discomfortCount: (userID, discomfortCount) => {
+  postStudy: (userID, study, section) => {
     return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/discomfortCount",
+      process.env.REACT_APP_SERVER_URL + "/imagine/postStudy",
       {
         userID,
-        discomfortCount,
-      }
-    );
-  },
-  experientialMain: (userID, experientialMain) => {
-    return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/experientialMain",
-      {
-        userID,
-        experientialMain,
-      }
-    );
-  },
-  experientialProtanopia: (userID, experientialProtanopia) => {
-    return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/experientialProtanopia",
-      {
-        userID,
-        experientialProtanopia,
+        study,
+        section,
       }
     );
   },
