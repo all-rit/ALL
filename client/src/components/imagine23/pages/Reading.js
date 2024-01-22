@@ -49,7 +49,15 @@ const Reading = (props) => {
     }
   };
 
+  // function to get screen size
+  const getScreenSize = () => {
+    const screenSize = window.innerWidth;
+    console.log("screen width: ", screenSize);
+  }
+
   useEffect(() => {
+    getScreenSize();
+
     const interval = setInterval(() => {
       setSeconds((pre) => pre + 1);
       const scrollPosition = document.documentElement.scrollTop;
@@ -62,15 +70,6 @@ const Reading = (props) => {
           positionPercentage: scrollPositionPercentage,
         },
       ]);
-
-      console.log(
-        "Scroll position percentage: " +
-          JSON.stringify(pagePosition) +
-          "\n" +
-          "at " +
-          seconds +
-          " seconds"
-      );
     }, 1000);
     return () => {
       clearInterval(interval);
@@ -100,7 +99,8 @@ const Reading = (props) => {
   return (
     <div>
       <div className="page-section">
-        <h2 className="section-heading text-uppercase">
+        {/* change this h2 tag font size */}
+        <h2 className="section-heading text-uppercase"> 
           {labShortName}: READING
         </h2>
       </div>
@@ -133,6 +133,7 @@ const Reading = (props) => {
           readingData?.body.map((data, index) => {
             return (
               <Fragment key={index}>
+                {/* change this h3 tag font size */}
                 {data.header !== "" && <h3>{data.header}</h3>}
                 {data.type === "" && (
                   <>

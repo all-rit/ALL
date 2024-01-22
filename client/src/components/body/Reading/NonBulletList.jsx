@@ -12,6 +12,7 @@ const NonBulletList = ({ data }) => {
         {data.map((text, index) => {
           return (
             <li key={index}>
+              {/* change h5 and p tags font size */}
               <h5>{text.header}</h5>
               <p>{text.content}</p>
             </li>
