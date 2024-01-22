@@ -1,98 +1,34 @@
 const {Op} = require('sequelize');
 const db = require('../database');
 
-exports.discomfortCount = (data)=> {
-  const userID = data.userID;
-  const discomfortCount = data.discomfortCount;
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.discomfortCount = discomfortCount;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              discomfortCount: discomfortCount,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
+const submitStudy = async (data) => {
+  const {userID, section, study} = data;
+  try {
+    if (userID) {
+      const user = await db.Imagine23
+          .findOne({
+            where:
+          {
+            userid: userID,
+            section: section,
+          },
+          });
+      if (user !== null) {
+        user.study = study;
+        user.save();
+      } else {
+        db.Imagine23.create({
+          userid: userID,
+          study: study,
         });
+      }
+    }
+  } catch (error) {
+    console.error(error);
   }
-  return Promise.resolve();
 };
 
-exports.experientialMain = (data)=> {
-  const userID = data.userID;
-  const experientialMain = data.experientialMain;
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.experientialMain = experientialMain;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              experientialMain: experientialMain,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
-  }
-  return Promise.resolve();
-};
-
-
-exports.experientialProtanopia = (data)=> {
-  const userID = data.userID;
-  const experientialProtanopia = data.experientialProtanopia;
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.experientialProtanopia = experientialProtanopia;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              experientialProtanopia: experientialProtanopia,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
-  }
-  return Promise.resolve();
-};
-
-exports.preSurvey = (data) => {
+const preSurvey = (data) => {
   const userID = data.userID;
   const preSurvey = data.preSurvey;
   if (userID) {
@@ -122,7 +58,7 @@ exports.preSurvey = (data) => {
   return Promise.resolve();
 };
 
-exports.postSurvey = (data) => {
+const postSurvey = (data) => {
   const userID = data.userID;
   const postSurvey = data.postSurvey;
   if (userID) {
@@ -152,7 +88,7 @@ exports.postSurvey = (data) => {
   return Promise.resolve();
 };
 
-exports.getUsers = () => {
+const getUsers = () => {
   return db.Imagine23.findAll({
     attributes: ['id', 'userid', 'preSurvey'],
     raw: true,
@@ -164,7 +100,7 @@ exports.getUsers = () => {
   });
 };
 
-exports.readMoreCount = (data) => {
+const readMoreCount = (data) => {
   const userID = data.userID;
   const readMoreCount = data.readMoreCount;
 
@@ -196,7 +132,7 @@ exports.readMoreCount = (data) => {
 };
 
 
-exports.readMoreTimeElapsed = (data) => {
+const readMoreTimeElapsed = (data) => {
   const userID = data.userID;
   const readMoreTimeElapsed = data.readMoreTimeElapsed;
 
@@ -227,7 +163,7 @@ exports.readMoreTimeElapsed = (data) => {
   return Promise.resolve();
 };
 
-exports.readingSectionPagePosition = (data) => {
+const readingSectionPagePosition = (data) => {
   const userID = data.userID;
   const readingSectionPagePosition = data.readingSectionPagePosition;
 
@@ -258,3 +194,12 @@ exports.readingSectionPagePosition = (data) => {
   return Promise.resolve();
 };
 
+module.exports = {
+  submitStudy,
+  preSurvey,
+  postSurvey,
+  getUsers,
+  readMoreCount,
+  readingSectionPagePosition,
+  readMoreTimeElapsed,
+};
