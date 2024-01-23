@@ -119,20 +119,28 @@ const Reading = (props) => {
           <>
             {/* change these */}
             <h3>{readingData?.description.header}</h3>
-            <p className="tw-text-xl lg:tw-text-xl">{readingData?.description.content}</p>
+            <p className="tw-text-xl lg:tw-text-xl">
+              {readingData?.description.content}
+            </p>
           </>
         ) : (
           <></>
         )}
         {/* change this font size */}
-        <h3 className="tw-text-2xl lg:tw-text-[1.75rem] lg:tw-mb-[2rem]">{readingData?.piechart.header}</h3>
+        <h3 className="tw-text-2xl lg:tw-text-[1.75rem] lg:tw-mb-[2rem]">
+          {readingData?.piechart.header}
+        </h3>
         <div className="flex">
           <Pie data={readingData?.piechart.data} height={100} />
         </div>
         {readingData?.piechart.caption !== "" ? (
           readingData?.piechart.caption.map((data, index) => {
             return (
-              <div key={index} id={"caption"} className="tw-text-sm tw-mb-4 lg:tw-text-xl">
+              <div
+                key={index}
+                id={"caption"}
+                className="tw-text-sm tw-mb-4 lg:tw-text-xl"
+              >
                 {data}
               </div>
             );
@@ -145,7 +153,11 @@ const Reading = (props) => {
             return (
               <Fragment key={index}>
                 {/* change this h3 tag font size */}
-                {data.header !== "" && <h3 className="tw-text-2xl lg:tw-text-[1.75rem]">{data.header}</h3>}
+                {data.header !== "" && (
+                  <h3 className="tw-text-2xl lg:tw-text-[1.75rem]">
+                    {data.header}
+                  </h3>
+                )}
                 {data.type === "" && (
                   <>
                     {data.content.map((content, index) => {
