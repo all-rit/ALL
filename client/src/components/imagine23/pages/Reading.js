@@ -13,8 +13,6 @@ import OrderedList from "../../body/Reading/OrderedList";
 import ReadMoreButton from "../components/LearnMoreButton";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
-import { useContext } from "react";
-import FontSizeContext from "../Imagine23Context";
 
 const Reading = (props) => {
   const { user, userID, labID } = props;
@@ -24,17 +22,6 @@ const Reading = (props) => {
   let [seconds, setSeconds] = useState(0);
   let [pagePosition, setPagePosition] = useState([]);
   let [saveData, setSaveData] = useState(false);
-
-  const {
-    // h2FontSize,
-    // seth2FontSize,
-    // h3FontSize,
-    // seth3FontSize,
-    // h5FontSize,
-    // seth5FontSize,
-    pFontSize,
-    setpFontSize,
-  } = useContext(FontSizeContext);
 
   useScroll();
   useEffect(() => {
@@ -62,25 +49,7 @@ const Reading = (props) => {
     }
   };
 
-  // function to get screen size
-  const getScreenSize = () => {
-    const screenSize = window.innerWidth;
-    console.log("screen width: ", screenSize);
-
-    // calculate font sizes
-    // large screens
-    if (screenSize >= 992) {
-      setpFontSize("tw-text-base");
-    } else if (screenSize >= 768 && screenSize < 992) {
-      setpFontSize("tw-text-15xl");
-    } else if (screenSize < 768) {
-      setpFontSize("tw-text-xs");
-    }
-  };
-
   useEffect(() => {
-    getScreenSize();
-
     const interval = setInterval(() => {
       setSeconds((pre) => pre + 1);
       const scrollPosition = document.documentElement.scrollTop;
@@ -100,7 +69,6 @@ const Reading = (props) => {
   }, [screenPositionPercentage]);
 
   const handleNext = () => {
-    console.log("Scroll position percentage: " + JSON.stringify(pagePosition));
     setSaveData(true);
     navigate("/Imagine/Quiz");
   };
@@ -120,10 +88,28 @@ const Reading = (props) => {
     );
   }
   return (
+    // default font sizes for large screens
+    // h2: 40px (2.5rem)
+    // h3: 1.75rem
+    // h5: 1.25rem
+    // p: 1.25rem
+
+    // font sizes for medium screens
+    // h2: 40px
+    // h3: 1.75rem
+    // h5: 1.25rem
+    // p: 1.25rem
+
+    // font sizes for small screens
+    // h2: 2xl (1.5rem)
+    // h3: lg (1.125rem)
+    // h5: sm (.875rem)
+    // p: sm (.875rem)
+
     <div>
       <div className="page-section">
         {/* change this h2 tag font size */}
-        <h2 className="section-heading text-uppercase">
+        <h2 className="section-heading text-uppercase tw-text-2xl lg:tw-text-[40px]">
           {labShortName}: READING
         </h2>
       </div>
@@ -133,19 +119,20 @@ const Reading = (props) => {
           <>
             {/* change these */}
             <h3>{readingData?.description.header}</h3>
-            <p className={pFontSize}>{readingData?.description.content}</p>
+            <p className="tw-text-xl lg:tw-text-xl">{readingData?.description.content}</p>
           </>
         ) : (
           <></>
         )}
-        <h3>{readingData?.piechart.header}</h3>
+        {/* change this font size */}
+        <h3 className="tw-text-2xl lg:tw-text-[1.75rem] lg:tw-mb-[2rem]">{readingData?.piechart.header}</h3>
         <div className="flex">
           <Pie data={readingData?.piechart.data} height={100} />
         </div>
         {readingData?.piechart.caption !== "" ? (
           readingData?.piechart.caption.map((data, index) => {
             return (
-              <div key={index} id={"caption"}>
+              <div key={index} id={"caption"} className="tw-text-sm tw-mb-4 lg:tw-text-xl">
                 {data}
               </div>
             );
@@ -158,12 +145,12 @@ const Reading = (props) => {
             return (
               <Fragment key={index}>
                 {/* change this h3 tag font size */}
-                {data.header !== "" && <h3>{data.header}</h3>}
+                {data.header !== "" && <h3 className="tw-text-2xl lg:tw-text-[1.75rem]">{data.header}</h3>}
                 {data.type === "" && (
                   <>
                     {data.content.map((content, index) => {
                       return (
-                        <p className={pFontSize} key={index}>
+                        <p className="tw-text-15xl lg:tw-text-xl" key={index}>
                           {content}
                         </p>
                       );

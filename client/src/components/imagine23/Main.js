@@ -22,7 +22,6 @@ import Survey from "./pages/SurveyHandler";
 import Navigation from "./pages/Navigation";
 import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");
-import FontSizeContext from "./Imagine23Context";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -42,12 +41,6 @@ const Main = (props) => {
   const [labId, setLabId] = useState(2);
   const [isExperiential, setIsExperiential] = useState(false);
 
-  // font size state
-  const [h2FontSize, seth2FontSize] = useState("");
-  const [h3FontSize, seth3FontSize] = useState("");
-  const [h5FontSize, seth5FontSize] = useState("");
-  const [pFontSize, setpFontSize] = useState("");
-
   function handleGroupAssignment(isExperiential) {
     setIsExperiential(isExperiential);
 
@@ -61,7 +54,6 @@ const Main = (props) => {
   useEffect(() => {
     if (user?.userid) {
       let userSession = sessionStorage.getItem(user?.userid);
-      console.log(userSession);
       if (!userSession) {
         let newID = nanoid(6).toUpperCase();
         sessionStorage.setItem(user?.userid, newID);
@@ -79,24 +71,13 @@ const Main = (props) => {
     <div className="container">
       <div className="row">
         <div className="col-lg-12 text-center">
-          <h2 className="section-heading text-uppercase tw-text-right">
+          {/* change font size */}
+          <h2 className="section-heading text-uppercase tw-text-right tw-text-2xl lg:tw-text-[40px]">
             {"ID#" + userID}
           </h2>
         </div>
       </div>
       <div className="bottomSpace">
-        <FontSizeContext.Provider
-          value={{
-            h2FontSize,
-            seth2FontSize,
-            h3FontSize,
-            seth3FontSize,
-            h5FontSize,
-            seth5FontSize,
-            pFontSize,
-            setpFontSize,
-          }}
-        >
           <Router className="app">
             <UpdateID
               default
@@ -203,7 +184,6 @@ const Main = (props) => {
               userID={userID}
             />
           </Router>
-        </FontSizeContext.Provider>
       </div>
     </div>
   );
