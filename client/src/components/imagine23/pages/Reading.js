@@ -162,7 +162,10 @@ const Reading = (props) => {
                   <>
                     {data.content.map((content, index) => {
                       return (
-                        <p className="tw-text-sm tw-mb-4 md:tw-text-3xl lg:tw-text-xl" key={index}>
+                        <p
+                          className="tw-text-sm tw-mb-4 md:tw-text-3xl lg:tw-text-xl"
+                          key={index}
+                        >
                           {content}
                         </p>
                       );
