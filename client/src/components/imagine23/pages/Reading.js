@@ -95,7 +95,7 @@ const Reading = (props) => {
     // p: 1.25rem
 
     // font sizes for medium screens
-    // h2: 40px
+    // h2: 2rem
     // h3: 1.75rem
     // h5: 1.25rem
     // p: 1.25rem
@@ -109,7 +109,7 @@ const Reading = (props) => {
     <div>
       <div className="page-section">
         {/* change this h2 tag font size */}
-        <h2 className="section-heading text-uppercase tw-text-2xl lg:tw-text-[40px]">
+        <h2 className="section-heading text-uppercase tw-text-2xl md:tw-text-6xl lg:tw-text-[40px]">
           {labShortName}: READING
         </h2>
       </div>
@@ -127,7 +127,7 @@ const Reading = (props) => {
           <></>
         )}
         {/* change this font size */}
-        <h3 className="tw-text-2xl lg:tw-text-[1.75rem] lg:tw-mb-[2rem]">
+        <h3 className="tw-text-2xl md:tw-text-4xl md:tw-mb-[3rem] lg:tw-text-[1.75rem] lg:tw-mb-[2rem]">
           {readingData?.piechart.header}
         </h3>
         <div className="flex">
@@ -139,7 +139,7 @@ const Reading = (props) => {
               <div
                 key={index}
                 id={"caption"}
-                className="tw-text-sm tw-mb-4 lg:tw-text-xl"
+                className="tw-text-sm tw-mb-4 md:tw-text-3xl md:tw-mb-[3rem] lg:tw-text-xl lg:tw-mb-[2rem]"
               >
                 {data}
               </div>
@@ -154,7 +154,7 @@ const Reading = (props) => {
               <Fragment key={index}>
                 {/* change this h3 tag font size */}
                 {data.header !== "" && (
-                  <h3 className="tw-text-2xl lg:tw-text-[1.75rem]">
+                  <h3 className="tw-text-2xl md:tw-text-4xl md:tw-mb-[2rem] lg:tw-text-[1.75rem] lg:tw-mb-[1rem]">
                     {data.header}
                   </h3>
                 )}
@@ -162,7 +162,7 @@ const Reading = (props) => {
                   <>
                     {data.content.map((content, index) => {
                       return (
-                        <p className="tw-text-15xl lg:tw-text-xl" key={index}>
+                        <p className="tw-text-sm tw-mb-4 md:tw-text-3xl lg:tw-text-xl" key={index}>
                           {content}
                         </p>
                       );
