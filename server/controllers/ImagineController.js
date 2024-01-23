@@ -50,9 +50,8 @@ const postSurvey = async (req, res) => {
 
 const getUsers = async (req, res) => {
   try {
-    const users = ImagineService.getUsers();
-    res.sendStatus(200);
-    res.json(users);
+    const users = await ImagineService.getUsers();
+    return users;
   } catch (error) {
     console.log(error);
   }

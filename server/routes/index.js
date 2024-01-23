@@ -185,16 +185,16 @@ router.post('/imagine/submitStudy', async function(req, res) {
   res.send(resp);
 });
 router.post('/imagine/preSurvey', async function(req, res) {
-  const resp = await ImagineController.preSurvey(req);
+  const resp = await ImagineController.preSurvey(req, res);
   res.send(resp);
 });
 router.post('/imagine/postSurvey', async function(req, res) {
   const resp = await ImagineController.postSurvey(req);
   res.send(resp);
 });
-router.post('/imagine/users', async function(req, res) {
-  const resp = await ImagineController.getUsers(req);
-  res.send(resp);
+router.get('/imagine/users', async function(req, res) {
+  const imagineUsers = await ImagineController.getUsers();
+  res.json(imagineUsers);
 });
 router.post('/imagine/readMoreCount', async function(req, res) {
   const resp = await ImagineController.readMoreCount(req);

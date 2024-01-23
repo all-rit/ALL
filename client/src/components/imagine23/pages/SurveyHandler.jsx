@@ -84,7 +84,7 @@ const SurveyHandler = (props) => {
     }
   }
 
-  function groupUserByAnswers() {
+  async function groupUserByAnswers() {
     let groupingQuestions = [0, 1, 2];
 
     // Helper function to compare answers, since they can be either strings or arrays
@@ -107,21 +107,20 @@ const SurveyHandler = (props) => {
     };
 
     // Use age, gender, and enthnicity to group users together
-    ImagineService.getUsers().then((users) => {
-      let groupedUsers = users.filter((user) =>
-        groupingQuestions.every((index) => {
-          return isEqualAnswer(
-            user.preSurvey[index].answer,
-            selectedAnswers[index].answer
-          );
-        })
-      );
+    const resUsers = await ImagineService.getUsers();
+    let groupedUsers = resUsers.filter((user) =>
+      groupingQuestions.every((index) => {
+        return isEqualAnswer(
+          user.preSurvey[index].answer,
+          selectedAnswers[index].answer
+        );
+      })
+    );
 
-      // Is in either group 1 or 2 (experiential or expressive). Judge this based on whether, in their group, they is an even or odd number of people in their group
-      let group = groupedUsers.length % 2;
-      console.log(group === 0 ? "Experiential" : "Expression");
-      props.handleGroupAssignment(group === 0 ? true : false);
-    });
+    // Is in either group 1 or 2 (experiential or expressive). Judge this based on whether, in their group, they is an even or odd number of people in their group
+    let group = groupedUsers.length % 2;
+    console.log(group === 0 ? "Experiential" : "Expression");
+    props.handleGroupAssignment(group === 0 ? true : false);
   }
 
   /**

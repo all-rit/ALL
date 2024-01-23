@@ -2,8 +2,8 @@
 import API from "./API";
 
 const ImagineService = {
-  postStudy: (userID, study, section) => {
-    return API.postWithBody(
+  postStudy: async (userID, study, section) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/postStudy",
       {
         userID,
@@ -12,8 +12,8 @@ const ImagineService = {
       }
     );
   },
-  preSurvey: (userID, preSurvey) => {
-    return API.postWithBody(
+  preSurvey: async (userID, preSurvey) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
       {
         userID,
@@ -21,8 +21,8 @@ const ImagineService = {
       }
     );
   },
-  postSurvey: (userID, postSurvey) => {
-    return API.postWithBody(
+  postSurvey: async (userID, postSurvey) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/postSurvey",
       {
         userID,
@@ -30,14 +30,13 @@ const ImagineService = {
       }
     );
   },
-  getUsers: () => {
-    return API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users")
-      .then((response) => response.json())
-      .then((json) => json);
+  getUsers:() => {
+    return Promise.resolve(API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users")
+      .then((response) => response.json()));
   },
 
-  readMoreCount: (userID, readMoreCount) => {
-    return API.postWithBody(
+  readMoreCount: async (userID, readMoreCount) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/readMoreCount",
       {
         userID,
@@ -46,8 +45,8 @@ const ImagineService = {
     );
   },
 
-  readMoreTimeElapsed: (userID, readMoreTimeElapsed) => {
-    return API.postWithBody(
+  readMoreTimeElapsed: async (userID, readMoreTimeElapsed) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/readMoreTimeElapsed",
       {
         userID,
@@ -56,8 +55,8 @@ const ImagineService = {
     );
   },
 
-  readingSectionPagePosition: (userID, readingSectionPagePosition) => {
-    return API.postWithBody(
+  readingSectionPagePosition: async (userID, readingSectionPagePosition) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/readingSectionPagePosition",
       {
         userID,

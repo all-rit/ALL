@@ -86,15 +86,17 @@ const postSurvey = async (data) => {
 };
 
 const getUsers = async () => {
-  return await db.Imagine23.findAll({
+  const users = await db.Imagine23.findAll({
     attributes: ['id', 'userid', 'preSurvey'],
-    raw: true,
+    raw: false,
     where: {
       preSurvey: {
         [Op.not]: null,
       },
     },
   });
+  console.log(users);
+  return users;
 };
 
 const readMoreCount = async (data) => {
