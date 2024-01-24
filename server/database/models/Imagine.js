@@ -12,9 +12,11 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.TEXT,
         },
         section: {
-          type: DataTypes.ENUM('experientialMain',
-              'experientialProtanopia',
-              'discomfortCount'),
+          type: DataTypes.ENUM(
+              'experiential',
+              'discomfortCountPOC',
+              'discomfortCountNonPOC',
+              'control'),
         },
         study: {
           type: DataTypes.JSON,

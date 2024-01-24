@@ -7,10 +7,8 @@ const submitStudy = async (req, res) => {
     if (!result) {
       throw new Error('Instance of study was not recorded');
     }
-    res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.sendStatus(500);
   }
 };
 
@@ -24,10 +22,8 @@ const preSurvey = async (req, res) => {
     if (!resPreSurvey) {
       throw new Error('Pre survey was not recorded');
     }
-    res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.sendStatus(500);
   };
 };
 
@@ -41,10 +37,8 @@ const postSurvey = async (req, res) => {
     if (!respostSurvey) {
       throw new Error('Post survey was not recorded');
     }
-    res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.sendStatus(500);
   };
 };
 
@@ -52,6 +46,16 @@ const getUsers = async (req, res) => {
   try {
     const users = await ImagineService.getUsers();
     return users;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getUserByID = async (req, res) => {
+  try {
+    const {userID} = req.body;
+    const user = await ImagineService.getUserByID(userID);
+    return user;
   } catch (error) {
     console.log(error);
   }
@@ -68,10 +72,8 @@ const readMoreCount = async (req, res) =>{
     if (!resReadMoreCount) {
       throw new Error('Read more count was not recorded');
     }
-    res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.sendStatus(500);
   };
 };
 
@@ -86,10 +88,8 @@ const readMoreTimeElapsed = async (req, res) =>{
     if (!resReadMoreTimeElapsed) {
       throw new Error('Time elapsed was not recorded');
     }
-    res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.sendStatus(500);
   };
 };
 
@@ -104,10 +104,8 @@ const readingSectionPagePosition = async (req, res) =>{
     if (!resReadingSectionPagePosition) {
       throw new Error('Reading Section position was not recorded');
     }
-    res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.sendStatus(500);
   };
 };
 
@@ -116,6 +114,7 @@ module.exports = {
   readMoreTimeElapsed,
   readingSectionPagePosition,
   getUsers,
+  getUserByID,
   postSurvey,
   preSurvey,
   submitStudy,

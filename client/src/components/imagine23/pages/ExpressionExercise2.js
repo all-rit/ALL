@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
+const section = "discomfortCountNonPOC";
 
 const ExpressionExercise2 = (props) => {
-  const section = "";
   const { setCount, count, userID } = props;
 
   const [showContine, setShowContinue] = useState(null);

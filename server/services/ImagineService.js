@@ -15,10 +15,12 @@ const submitStudy = async (data) => {
           });
       if (user !== null) {
         user.study = study;
+        user.section = section;
         user.save();
       } else {
-        db.Imagine23.create({
+        await db.Imagine23.create({
           userid: userID,
+          section: section,
           study: study,
         });
       }
@@ -95,8 +97,20 @@ const getUsers = async () => {
       },
     },
   });
-  console.log(users);
   return users;
+};
+
+const getUserByID = async (data) => {
+  try {
+    const user = await db.Imagine23.findOne({
+      where: {
+        userid: data,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const readMoreCount = async (data) => {
@@ -119,7 +133,6 @@ const readMoreCount = async (data) => {
           readMoreCount: readMoreCount,
         });
       }
-      return true;
     }
   } catch (error) {
     console.error(error);
@@ -187,6 +200,7 @@ module.exports = {
   preSurvey,
   postSurvey,
   getUsers,
+  getUserByID,
   readMoreCount,
   readingSectionPagePosition,
   readMoreTimeElapsed,

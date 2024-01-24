@@ -180,7 +180,7 @@ router.get('/professors', TeamMemberController.getAllProfessors);
 router.get('/alumni', TeamMemberController.getAllAlumni);
 
 // Imagine
-router.post('/imagine/submitStudy', async function(req, res) {
+router.post('/imagine/postStudy', async function(req, res) {
   const resp = await ImagineController.submitStudy(req);
   res.send(resp);
 });
@@ -195,6 +195,10 @@ router.post('/imagine/postSurvey', async function(req, res) {
 router.get('/imagine/users', async function(req, res) {
   const imagineUsers = await ImagineController.getUsers();
   res.json(imagineUsers);
+});
+router.get('/imagine/user', async function(req, res) {
+  const imagineUser = await ImagineController.getUserByID(req);
+  res.json(imagineUser);
 });
 router.post('/imagine/readMoreCount', async function(req, res) {
   const resp = await ImagineController.readMoreCount(req);

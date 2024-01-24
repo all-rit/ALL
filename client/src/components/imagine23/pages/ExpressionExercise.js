@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
-const section = "";
+const section = "discomfortCountNonPOC";
 const ExpressionExercise = (props) => {
   const { setCount, count, userID } = props;
 
@@ -27,7 +27,7 @@ const ExpressionExercise = (props) => {
 
   const handleNext = () => {
     const body = { userID, section, study: timeStamps };
-    ImagineService.postStudy(userID, body, section);
+    ImagineService.postStudy(body);
     navigate("/Imagine/ExpressionScore");
   };
 
