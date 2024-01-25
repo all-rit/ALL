@@ -184,17 +184,6 @@ const SurveyHandler = (props) => {
     setSelectedAnswers(tempAnswers);
   }
 
-  function inputFreeText(e) {
-    const answerValue = e.target.value;
-    let tempSelectedAnswers = [...selectedAnswers];
-    tempSelectedAnswers[currentQuestionCursor] = {
-      question: questions[currentQuestionCursor].question,
-      answer: answerValue,
-    };
-    setSelectedAnswers(tempSelectedAnswers);
-    setDisableNext(answerValue === "" ? true : false);
-  }
-
   return (
     <>
       {!surveyComplete ? (
@@ -208,7 +197,6 @@ const SurveyHandler = (props) => {
           disable={disableNext}
           onAnswerSelected={selectAnswer}
           onMultiSelected={selectMulti}
-          onFreeTextInput={inputFreeText}
           nextQuestion={handleNext}
           onComplete={() => onComplete(props.type)}
         ></Survey>
