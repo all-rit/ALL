@@ -2,11 +2,11 @@ const API = {
   get: (path) => {
     return fetch(path, { credentials: "include", method: "GET" });
   },
-  getWithBody: (path, body) => { 
+  getWithBody: (path, body) => {
     return fetch(path, {
       credentials: "include",
       method: "GET",
-      headers: new Headers({"content-type": "application/json" }),
+      headers: new Headers({ "content-type": "application/json" }),
       body: JSON.stringify(body),
     });
   },

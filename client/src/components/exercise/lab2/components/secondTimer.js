@@ -152,10 +152,14 @@ class SecondTimer extends Component {
       // }).catch((err) => console.log(err));
 
       if (isImagine) {
+        const section = "experiential";
+        const user = ImagineService.getUserByID(userID);
         if (data.Mode[0] === "MAIN") {
-          ImagineService.experientialMain(userID, data);
+          const study = !user.study ? {} : { main: { ...data } }
+          ImagineService.postStudy(userID, study, section);
         } else {
-          ImagineService.experientialProtanopia(userID, data);
+          const study = !user.study ? {} : { main: { ...user.study.main }, protonopia: { ...data } }
+          ImagineService.postStudy(userID, study, section);
         }
       }
     };

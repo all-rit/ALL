@@ -30,15 +30,19 @@ const ImagineService = {
       }
     );
   },
-  getUsers:() => {
-    return Promise.resolve(API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users")
-      .then((response) => response.json()));
+  getUsers: () => {
+    return Promise.resolve(
+      API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users").then(
+        (response) => response.json()
+      )
+    );
   },
   getUserByID: (userID) => {
-    return Promise.resolve(API.getWithBody(process.env.REACT_APP_SERVER_URL + "/imagine/user", {
-      userID
-    })
-      .then((response) => response.json()));
+    return Promise.resolve(
+      API.getWithBody(process.env.REACT_APP_SERVER_URL + "/imagine/user", {
+        userID,
+      }).then((response) => response.json())
+    );
   },
   readMoreCount: async (userID, readMoreCount) => {
     return await API.postWithBody(
