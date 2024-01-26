@@ -131,7 +131,10 @@ const Reading = (props) => {
           {readingData?.piechart.header}
         </h3>
         <div className="flex">
-          <Pie data={readingData?.piechart.data} options={{maintainAspectRatio: false}}/>
+          <Pie
+            data={readingData?.piechart.data}
+            options={{ maintainAspectRatio: false }}
+          />
         </div>
         {readingData?.piechart.caption !== "" ? (
           readingData?.piechart.caption.map((data, index) => {
