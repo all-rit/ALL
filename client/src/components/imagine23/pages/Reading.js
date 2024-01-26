@@ -109,7 +109,7 @@ const Reading = (props) => {
     <div>
       <div className="page-section">
         {/* change this h2 tag font size */}
-        <h2 className="section-heading text-uppercase tw-text-2xl md:tw-text-6xl lg:tw-text-[40px]">
+        <h2 className="section-heading text-uppercase tw-text-[5vw] md:tw-text-[4vw] lg:tw-text-[2vw]">
           {labShortName}: READING
         </h2>
       </div>
@@ -127,11 +127,11 @@ const Reading = (props) => {
           <></>
         )}
         {/* change this font size */}
-        <h3 className="tw-text-2xl md:tw-text-4xl md:tw-mb-[3rem] lg:tw-text-[1.75rem] lg:tw-mb-[2rem]">
+        <h3 className="tw-text-[5vw] md:tw-text-[3vw] lg:tw-text-[1.5vw]">
           {readingData?.piechart.header}
         </h3>
         <div className="flex">
-          <Pie data={readingData?.piechart.data} height={100} />
+          <Pie data={readingData?.piechart.data} options={{maintainAspectRatio: false}}/>
         </div>
         {readingData?.piechart.caption !== "" ? (
           readingData?.piechart.caption.map((data, index) => {
@@ -139,7 +139,7 @@ const Reading = (props) => {
               <div
                 key={index}
                 id={"caption"}
-                className="tw-text-sm tw-mb-4 md:tw-text-3xl md:tw-mb-[3rem] lg:tw-text-xl lg:tw-mb-[2rem]"
+                className="tw-text-[3vw] md:tw-text-[2.5vw] lg:tw-text-[1vw]"
               >
                 {data}
               </div>
@@ -154,7 +154,7 @@ const Reading = (props) => {
               <Fragment key={index}>
                 {/* change this h3 tag font size */}
                 {data.header !== "" && (
-                  <h3 className="tw-text-2xl md:tw-text-4xl md:tw-mb-[2rem] lg:tw-text-[1.75rem] lg:tw-mb-[1rem]">
+                  <h3 className="tw-text-[5vw] md:tw-text-[3vw] lg:tw-text-[1.5vw]">
                     {data.header}
                   </h3>
                 )}
@@ -163,7 +163,7 @@ const Reading = (props) => {
                     {data.content.map((content, index) => {
                       return (
                         <p
-                          className="tw-text-sm tw-mb-4 md:tw-text-3xl lg:tw-text-xl"
+                          className="tw-text-[3vw] md:tw-text-[2.5vw] lg:tw-text-[1vw]"
                           key={index}
                         >
                           {content}
