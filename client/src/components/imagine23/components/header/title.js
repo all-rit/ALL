@@ -41,7 +41,7 @@ const Title = ({ exerciseState, replay }) => {
 
 Title.propTypes = {
   exerciseState: PropTypes.object,
-  replay: PropTypes.boolean
-}
+  replay: PropTypes.boolean,
+};
 
 export default Title;

@@ -24,6 +24,6 @@ const Button = ({ clickMethod, message }) => {
 Button.propTypes = {
   clickMethod: PropTypes.func,
   message: PropTypes.string,
-}
+};
 
 export default Button;
