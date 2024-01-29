@@ -1,10 +1,7 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
-
 import { navigate } from "@reach/router";
-import React, { useState } from "react";
+import React from "react";
 const { nanoid } = require("nanoid");
+import { PropTypes } from "prop-types";
 
 const UpdateID = (props) => {
   const { setUserID, user } = props;
@@ -34,6 +31,11 @@ const UpdateID = (props) => {
       </button>
     </div>
   );
+};
+
+UpdateID.propTypes = {
+  setUserID: PropTypes.func,
+  user: PropTypes.object,
 };
 
 export default UpdateID;

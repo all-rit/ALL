@@ -6,27 +6,27 @@ exports.discomfortCount = (data)=> {
   const discomfortCount = data.discomfortCount;
   if (userID) {
     return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.discomfortCount = discomfortCount;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              discomfortCount: discomfortCount,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
+      .findOne({
+        where:
+          {
+            userid: userID,
+          },
+      },
+      ).then((user) => {
+        if (user !== null) {
+          user.discomfortCount = discomfortCount;
+          user.save();
+        } else {
+          db.Imagine23.create({
+            userid: userID,
+            discomfortCount: discomfortCount,
+          });
+        }
+        return true;
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
   }
   return Promise.resolve();
 };
@@ -36,27 +36,27 @@ exports.experientialMain = (data)=> {
   const experientialMain = data.experientialMain;
   if (userID) {
     return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.experientialMain = experientialMain;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              experientialMain: experientialMain,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
+      .findOne({
+        where:
+          {
+            userid: userID,
+          },
+      },
+      ).then((user) => {
+        if (user !== null) {
+          user.experientialMain = experientialMain;
+          user.save();
+        } else {
+          db.Imagine23.create({
+            userid: userID,
+            experientialMain: experientialMain,
+          });
+        }
+        return true;
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
   }
   return Promise.resolve();
 };
@@ -67,27 +67,27 @@ exports.experientialProtanopia = (data)=> {
   const experientialProtanopia = data.experientialProtanopia;
   if (userID) {
     return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.experientialProtanopia = experientialProtanopia;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              experientialProtanopia: experientialProtanopia,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
+      .findOne({
+        where:
+          {
+            userid: userID,
+          },
+      },
+      ).then((user) => {
+        if (user !== null) {
+          user.experientialProtanopia = experientialProtanopia;
+          user.save();
+        } else {
+          db.Imagine23.create({
+            userid: userID,
+            experientialProtanopia: experientialProtanopia,
+          });
+        }
+        return true;
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
   }
   return Promise.resolve();
 };
@@ -97,27 +97,27 @@ exports.preSurvey = (data) => {
   const preSurvey = data.preSurvey;
   if (userID) {
     return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.preSurvey = preSurvey;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              preSurvey: preSurvey,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
+      .findOne({
+        where:
+          {
+            userid: userID,
+          },
+      },
+      ).then((user) => {
+        if (user !== null) {
+          user.preSurvey = preSurvey;
+          user.save();
+        } else {
+          db.Imagine23.create({
+            userid: userID,
+            preSurvey: preSurvey,
+          });
+        }
+        return true;
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
   }
   return Promise.resolve();
 };
@@ -127,27 +127,27 @@ exports.postSurvey = (data) => {
   const postSurvey = data.postSurvey;
   if (userID) {
     return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.postSurvey = postSurvey;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              postSurvey: postSurvey,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
+      .findOne({
+        where:
+          {
+            userid: userID,
+          },
+      },
+      ).then((user) => {
+        if (user !== null) {
+          user.postSurvey = postSurvey;
+          user.save();
+        } else {
+          db.Imagine23.create({
+            userid: userID,
+            postSurvey: postSurvey,
+          });
+        }
+        return true;
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
   }
   return Promise.resolve();
 };
@@ -170,27 +170,27 @@ exports.readMoreCount = (data) => {
 
   if (userID) {
     return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.readMoreCount = readMoreCount;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              readMoreCount: readMoreCount,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
+      .findOne({
+        where:
+          {
+            userid: userID,
+          },
+      },
+      ).then((user) => {
+        if (user !== null) {
+          user.readMoreCount = readMoreCount;
+          user.save();
+        } else {
+          db.Imagine23.create({
+            userid: userID,
+            readMoreCount: readMoreCount,
+          });
+        }
+        return true;
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
   }
   return Promise.resolve();
 };
@@ -202,27 +202,27 @@ exports.readMoreTimeElapsed = (data) => {
 
   if (userID) {
     return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.readMoreTimeElapsed = readMoreTimeElapsed;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              readMoreTimeElapsed: readMoreTimeElapsed,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
+      .findOne({
+        where:
+          {
+            userid: userID,
+          },
+      },
+      ).then((user) => {
+        if (user !== null) {
+          user.readMoreTimeElapsed = readMoreTimeElapsed;
+          user.save();
+        } else {
+          db.Imagine23.create({
+            userid: userID,
+            readMoreTimeElapsed: readMoreTimeElapsed,
+          });
+        }
+        return true;
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
   }
   return Promise.resolve();
 };
@@ -233,27 +233,27 @@ exports.readingSectionPagePosition = (data) => {
 
   if (userID) {
     return db.Imagine23
-        .findOne({
-          where:
-                        {
-                          userid: userID,
-                        },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.readingSectionPagePosition = readingSectionPagePosition;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              readingSectionPagePosition: readingSectionPagePosition,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
+      .findOne({
+        where:
+          {
+            userid: userID,
+          },
+      },
+      ).then((user) => {
+        if (user !== null) {
+          user.readingSectionPagePosition = readingSectionPagePosition;
+          user.save();
+        } else {
+          db.Imagine23.create({
+            userid: userID,
+            readingSectionPagePosition: readingSectionPagePosition,
+          });
+        }
+        return true;
+      }).catch((err) => {
+        console.log(err);
+        return true;
+      });
   }
   return Promise.resolve();
 };

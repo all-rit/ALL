@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef } from "react";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import ImagineService from "../../../services/ImagineService";
+import PropTypes from "prop-types";
 
 const LearnMoreButton = (props) => {
   const { data, userID } = props;
@@ -27,7 +27,6 @@ const LearnMoreButton = (props) => {
     console.log("time elapsed " + formatTime(time));
     setTimeElapsed(formatTime(time));
     clearInterval(timer.current);
-    // setTimeElapsed(formatTime(time))
     console.log("get current time " + formatTime(time));
   };
 
@@ -104,6 +103,11 @@ const LearnMoreButton = (props) => {
       </Modal>
     </>
   );
+};
+
+LearnMoreButton.propTypes = {
+  data: PropTypes.string,
+  userID: PropTypes.string,
 };
 
 export default LearnMoreButton;

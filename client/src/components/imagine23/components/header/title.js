@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import "./title.css";
+import PropTypes from "prop-types";
 
 /*
 Displays the title of the page dependent on the state it is in
@@ -38,5 +38,10 @@ const Title = ({ exerciseState, replay }) => {
     </div>
   );
 };
+
+Title.propTypes = {
+  exerciseState: PropTypes.object,
+  replay: PropTypes.boolean
+}
 
 export default Title;
