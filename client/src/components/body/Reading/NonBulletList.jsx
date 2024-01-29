@@ -13,10 +13,10 @@ const NonBulletList = ({ data }) => {
           return (
             <li key={index}>
               {/* change h5 and p tags font size */}
-              <h5 className="tw-text-[3vw] md:tw-text-[2.5vw] lg:tw-text-[1vw]">
+              <h5 className="tw-text-[3vw] md:tw-text-[4vw] lg:tw-text-[1vw]">
                 {text.header}
               </h5>
-              <p className="tw-text-[3vw] md:tw-text-[2.5vw] lg:tw-text-[1vw]">
+              <p className="tw-text-[3vw] md:tw-text-[2.75vw] lg:tw-text-[1vw]">
                 {text.content}
               </p>
             </li>

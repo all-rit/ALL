@@ -88,28 +88,10 @@ const Reading = (props) => {
     );
   }
   return (
-    // default font sizes for large screens
-    // h2: 40px (2.5rem)
-    // h3: 1.75rem
-    // h5: 1.25rem
-    // p: 1.25rem
-
-    // font sizes for medium screens
-    // h2: 2rem
-    // h3: 1.75rem
-    // h5: 1.25rem
-    // p: 1.25rem
-
-    // font sizes for small screens
-    // h2: 2xl (1.5rem)
-    // h3: lg (1.125rem)
-    // h5: sm (.875rem)
-    // p: sm (.875rem)
-
     <div>
       <div className="page-section">
         {/* change this h2 tag font size */}
-        <h2 className="section-heading text-uppercase tw-text-[5vw] md:tw-text-[4vw] lg:tw-text-[2vw]">
+        <h2 className="section-heading text-uppercase tw-text-[5vw] md:tw-text-[5vw] lg:tw-text-[2vw]">
           {labShortName}: READING
         </h2>
       </div>
@@ -127,7 +109,7 @@ const Reading = (props) => {
           <></>
         )}
         {/* change this font size */}
-        <h3 className="tw-text-[5vw] md:tw-text-[3vw] lg:tw-text-[1.5vw]">
+        <h3 className="tw-text-[4vw] md:tw-text-[4vw] lg:tw-text-[1.5vw]">
           {readingData?.piechart.header}
         </h3>
         <div className="flex">
@@ -142,7 +124,7 @@ const Reading = (props) => {
               <div
                 key={index}
                 id={"caption"}
-                className="tw-text-[3vw] md:tw-text-[2.5vw] lg:tw-text-[1vw]"
+                className="tw-text-[3vw] md:tw-text-[2.75vw] lg:tw-text-[1vw]"
               >
                 {data}
               </div>
@@ -157,7 +139,7 @@ const Reading = (props) => {
               <Fragment key={index}>
                 {/* change this h3 tag font size */}
                 {data.header !== "" && (
-                  <h3 className="tw-text-[5vw] md:tw-text-[3vw] lg:tw-text-[1.5vw]">
+                  <h3 className="tw-text-[4vw] md:tw-text-[4vw] lg:tw-text-[1.5vw]">
                     {data.header}
                   </h3>
                 )}
@@ -166,7 +148,7 @@ const Reading = (props) => {
                     {data.content.map((content, index) => {
                       return (
                         <p
-                          className="tw-text-[3vw] md:tw-text-[2.5vw] lg:tw-text-[1vw]"
+                          className="tw-text-[3vw] md:tw-text-[2.75vw] lg:tw-text-[1vw]"
                           key={index}
                         >
                           {content}
