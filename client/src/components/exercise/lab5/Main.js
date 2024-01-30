@@ -23,70 +23,44 @@ import FormGuidance from "./pages/FormResponseActivity/FormGuidance";
 import FormAccessible from "./pages/FormResponseActivity/FormAccessible";
 import FormRepair from "./pages/FormResponseActivity/FormRepair";
 import ExerciseEnd from "./pages/ExerciseEnd";
-import useLab5StateContext, { Lab5ContextProvider } from "src/reducers/lab5/Lab5Context";
+import useLab5StateContext, {
+  Lab5ContextProvider,
+} from "src/reducers/lab5/Lab5Context";
 
 const Main = () => {
-  const { state , actions } = useLab5StateContext();
+  const { state, actions } = useLab5StateContext();
 
   return (
     <Lab5ContextProvider>
       <div className="bottomSpace">
         <Router className="app">
           <ExerciseStart default path="/" />
-          <DyslexiaAccessible
-            path="/DyslexiaAccessible"
-          />
-          <DyslexiaAccessibleKnowledgeCheck
-            path="/DyslexiaAccessibleKnowledgeCheck"
-          />
-          <DementiaInaccessible
-            path="/DementiaInaccessible"
-          />
-          <DementiaInaccessibleKnowledgeCheck
-            path="/DementiaInaccessibleKnowledgeCheck"
-          />
+          <DyslexiaAccessible path="/DyslexiaAccessible" />
+          <DyslexiaAccessibleKnowledgeCheck path="/DyslexiaAccessibleKnowledgeCheck" />
+          <DementiaInaccessible path="/DementiaInaccessible" />
+          <DementiaInaccessibleKnowledgeCheck path="/DementiaInaccessibleKnowledgeCheck" />
           <PageLayoutGuidance path="/PageLayoutGuidance" />
           <PageLayoutRepair
             path="/PageLayoutRepair"
             visible={state.repairVisible}
             data={state}
           />
-          <DementiaAccessible
-            path="/DementiaAccessible"
-          />
-          <DementiaAccessibleKnowledgeCheck
-            path="/DementiaAccessibleKnowledgeCheck"
-          />
-          <NotificationAccessible
-            path="/NotificationAccessible"
-          />
-          <NotificationAccessibleKnowledgeCheck
-            path="/NotificationAccessibleKnowledgeCheck"
-          />
-          <NotificationInaccessible
-            path="/NotificationInaccessible"
-          />
-          <NotificationInaccessibleKnowledgeCheck
-            path="/NotificationInaccessibleKnowledgeCheck"
-          />
-          <NotificationGuidance
-            path="/NotificationGuidance"
-          />
+          <DementiaAccessible path="/DementiaAccessible" />
+          <DementiaAccessibleKnowledgeCheck path="/DementiaAccessibleKnowledgeCheck" />
+          <NotificationAccessible path="/NotificationAccessible" />
+          <NotificationAccessibleKnowledgeCheck path="/NotificationAccessibleKnowledgeCheck" />
+          <NotificationInaccessible path="/NotificationInaccessible" />
+          <NotificationInaccessibleKnowledgeCheck path="/NotificationInaccessibleKnowledgeCheck" />
+          <NotificationGuidance path="/NotificationGuidance" />
           <NotificationRepair
             path="/NotificationRepair"
             visible={state.repairVisible}
             data={state}
             handlers={actions}
           />
-          <NotificationAccessibleRepair
-            path="/NotificationAccessibleRepair"
-          />
-          <NotificationAccessibleRepairKnowledgeCheck
-            path="/NotificationAccessibleRepairKnowledgeCheck"
-          />
-          <FormInaccessible
-            path="/FormInaccessible"
-          />
+          <NotificationAccessibleRepair path="/NotificationAccessibleRepair" />
+          <NotificationAccessibleRepairKnowledgeCheck path="/NotificationAccessibleRepairKnowledgeCheck" />
+          <FormInaccessible path="/FormInaccessible" />
           <FormGuidance path="/FormGuidance" />
           <FormRepair
             path="/FormRepair"
@@ -94,12 +68,8 @@ const Main = () => {
             visible={state.repairVisible}
             data={state}
           />
-          <FormAccessible
-            path="/FormAccessible"
-          />
-          <ExerciseEnd
-            path="/ExerciseEnd"
-          />
+          <FormAccessible path="/FormAccessible" />
+          <ExerciseEnd path="/ExerciseEnd" />
         </Router>
       </div>
     </Lab5ContextProvider>

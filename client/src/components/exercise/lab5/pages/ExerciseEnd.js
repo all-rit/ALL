@@ -8,7 +8,7 @@ import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE } from "src/constants/index";
 
 const ExerciseEnd = () => {
-  const {state, actions} = useMainStateContext();
+  const { state, actions } = useMainStateContext();
   const handleHome = () => {
     navigate("/Lab5/Exercise/ExerciseStart");
   };
@@ -24,41 +24,41 @@ const ExerciseEnd = () => {
   return (
     <React.Fragment>
       <div className="center-div">
-          <div className="cognitive_instructions">
+        <div className="cognitive_instructions">
+          <div>
+            <AppBar position="static" className="appBar">
+              <h4 className="flex-boxes ">
+                Congratulations! You have succesfully completed the Cognitive
+                Impairment Exercise!
+              </h4>
+            </AppBar>
+          </div>
+          <h4 className="margin-bottom">Here are some key takeaways:</h4>
+          <div className="flex-boxes">
             <div>
-              <AppBar position="static" className="appBar">
-                <h4 className="flex-boxes ">
-                  Congratulations! You have succesfully completed the Cognitive
-                  Impairment Exercise!
-                </h4>
-              </AppBar>
+              <div className="icon">
+                <EmojiObjects fontSize="large" />
+              </div>
+              Use proper headings and subheadings to reduce cognitive load
             </div>
-            <h4 className="margin-bottom">Here are some key takeaways:</h4>
-            <div className="flex-boxes">
-              <div>
-                <div className="icon">
-                  <EmojiObjects fontSize="large" />
-                </div>
-                Use proper headings and subheadings to reduce cognitive load
+            <div>
+              <div className="icon">
+                <Timer fontSize="large" />
               </div>
-              <div>
-                <div className="icon">
-                  <Timer fontSize="large" />
-                </div>
-                Allow users to have enough time to read
+              Allow users to have enough time to read
+            </div>
+            <div>
+              <div className="icon">
+                <Forum fontSize="large" />
               </div>
-              <div>
-                <div className="icon">
-                  <Forum fontSize="large" />
-                </div>
-                Provide clear descriptive feedback on forms
-              </div>
+              Provide clear descriptive feedback on forms
             </div>
           </div>
-          <h4 className="flex-boxes">
-            Click the button below to restart the exercise.
-          </h4>
-          <button
+        </div>
+        <h4 className="flex-boxes">
+          Click the button below to restart the exercise.
+        </h4>
+        <button
           className="btn btn-primary text-black btn-xl text-uppercase "
           onClick={handleHome}
           key="start"

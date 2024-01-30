@@ -40,4 +40,4 @@ const actions = {
   closeInstructions: () => ({ type: types.CLOSE_INSTRUCTIONS }),
 };
 
-export {AppReducer, actions, types, initialState};
+export { AppReducer, actions, types, initialState };

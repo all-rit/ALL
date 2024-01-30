@@ -1,7 +1,15 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { PropTypes } from "prop-types";
-import {AppReducer as Lab5AppReducer, initialState as Lab5AppInititalState, types as Lab5AppTypes} from "./AppReducer";
-import {RepairReducer as Lab5RepairReducer, initialState as Lab5RepairInititalState, types as Lab5RepairTypes} from "./RepairReducer";
+import {
+  AppReducer as Lab5AppReducer,
+  initialState as Lab5AppInititalState,
+  types as Lab5AppTypes,
+} from "./AppReducer";
+import {
+  RepairReducer as Lab5RepairReducer,
+  initialState as Lab5RepairInititalState,
+  types as Lab5RepairTypes,
+} from "./RepairReducer";
 
 /**
  * Context object for Lab5 state and actions.
@@ -21,18 +29,18 @@ import {RepairReducer as Lab5RepairReducer, initialState as Lab5RepairInititalSt
  * @property {Function} actions.closeRepair - Closes the repair.
  */
 const Lab5StateContext = createContext({
-    state: {...Lab5AppInititalState, ...Lab5RepairInititalState},
-    actions: {
-      updatePopup: () => {},
-      openInstructions: () => {},
-      closeInstructions: () => {},
-      updateRepairPageLayout: () => {},
-      updateRepairForm: () => {},
-      updateRepairNotification: () => {},
-      updateTab: () => {},
-      openRepair: () => {},
-      closeRepair: () => {},
-    },
+  state: { ...Lab5AppInititalState, ...Lab5RepairInititalState },
+  actions: {
+    updatePopup: () => {},
+    openInstructions: () => {},
+    closeInstructions: () => {},
+    updateRepairPageLayout: () => {},
+    updateRepairForm: () => {},
+    updateRepairNotification: () => {},
+    updateTab: () => {},
+    openRepair: () => {},
+    closeRepair: () => {},
+  },
 });
 
 /**
@@ -59,9 +67,14 @@ const useLab5StateContext = () => {
  * @returns {React.ReactNode} The rendered component.
  */
 export const Lab5ContextProvider = ({ children }) => {
-  const [appState, appDispatch] = useReducer(Lab5AppReducer, Lab5AppInititalState);
-  const [repairState, repairDispatch] = useReducer(Lab5RepairReducer, Lab5RepairInititalState);
-
+  const [appState, appDispatch] = useReducer(
+    Lab5AppReducer,
+    Lab5AppInititalState
+  );
+  const [repairState, repairDispatch] = useReducer(
+    Lab5RepairReducer,
+    Lab5RepairInititalState
+  );
 
   /**
    * Actions for Lab5App.
@@ -71,11 +84,13 @@ export const Lab5ContextProvider = ({ children }) => {
    * @property {function} closeInstructions - Closes the instructions.
    */
   const appActions = {
-    updatePopup: (message) => appDispatch({ type: Lab5AppTypes.UPDATE_POPUP, message }),
-    openInstructions: () => appDispatch({ type: Lab5AppTypes.OPEN_INSTRUCTIONS }),
-    closeInstructions: () => appDispatch({ type: Lab5AppTypes.CLOSE_INSTRUCTIONS }),
+    updatePopup: (message) =>
+      appDispatch({ type: Lab5AppTypes.UPDATE_POPUP, message }),
+    openInstructions: () =>
+      appDispatch({ type: Lab5AppTypes.OPEN_INSTRUCTIONS }),
+    closeInstructions: () =>
+      appDispatch({ type: Lab5AppTypes.CLOSE_INSTRUCTIONS }),
   };
-
 
   /**
    * Object containing action functions for updating the repair page layout, form, notification, tab, and repair state.
@@ -94,26 +109,30 @@ export const Lab5ContextProvider = ({ children }) => {
       classvalue,
       fontvalue,
       fontfamilyvalue
-    ) => repairDispatch({
-      type: Lab5RepairTypes.UPDATE_REPAIR_PAGELAYOUT,
-      h1value,
-      ulvalue,
-      classvalue,
-      fontvalue,
-      fontfamilyvalue,
-    }),
-    updateRepairForm: (errorNotification, successNotification, borderColor) => repairDispatch({
-      type: Lab5RepairTypes.UPDATE_REPAIR_FORM,
-      errorNotification,
-      successNotification,
-      borderColor,
-    }),
-    updateRepairNotification: (fontsizevalue, timeout) => repairDispatch({
-      type: Lab5RepairTypes.UPDATE_REPAIR_NOTIFICATION,
-      fontsizevalue,
-      timeout,
-    }),
-    updateTab: (tab) => repairDispatch({ type: Lab5RepairTypes.UPDATE_TAB, tab }),
+    ) =>
+      repairDispatch({
+        type: Lab5RepairTypes.UPDATE_REPAIR_PAGELAYOUT,
+        h1value,
+        ulvalue,
+        classvalue,
+        fontvalue,
+        fontfamilyvalue,
+      }),
+    updateRepairForm: (errorNotification, successNotification, borderColor) =>
+      repairDispatch({
+        type: Lab5RepairTypes.UPDATE_REPAIR_FORM,
+        errorNotification,
+        successNotification,
+        borderColor,
+      }),
+    updateRepairNotification: (fontsizevalue, timeout) =>
+      repairDispatch({
+        type: Lab5RepairTypes.UPDATE_REPAIR_NOTIFICATION,
+        fontsizevalue,
+        timeout,
+      }),
+    updateTab: (tab) =>
+      repairDispatch({ type: Lab5RepairTypes.UPDATE_TAB, tab }),
     openRepair: () => repairDispatch({ type: Lab5RepairTypes.OPEN_REPAIR }),
     closeRepair: () => repairDispatch({ type: Lab5RepairTypes.CLOSE_REPAIR }),
   };
@@ -125,7 +144,7 @@ export const Lab5ContextProvider = ({ children }) => {
    * @property {Object} actions - The combined actions object.
    */
   const value = {
-    state: { ...appState, ...repairState},
+    state: { ...appState, ...repairState },
     actions: { ...appActions, ...repairActions },
   };
 
@@ -134,7 +153,7 @@ export const Lab5ContextProvider = ({ children }) => {
       {children}
     </Lab5StateContext.Provider>
   );
-}
+};
 
 Lab5ContextProvider.propTypes = {
   children: PropTypes.element,

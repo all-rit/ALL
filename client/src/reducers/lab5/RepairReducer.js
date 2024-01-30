@@ -105,4 +105,4 @@ export const actions = {
   closeRepair: () => ({ type: types.CLOSE_REPAIR }),
 };
 
-export {RepairReducer, types, initialState};
+export { RepairReducer, types, initialState };

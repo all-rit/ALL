@@ -12,7 +12,7 @@ import useMainStateContext from "src/reducers/MainContext";
  * @returns {null}
  */
 const PageServiceTimer = ({ name }) => {
-  const {state} = useMainStateContext();
+  const { state } = useMainStateContext();
   const [secondsElapsed, setSecondsElapsed] = useState(0);
 
   useEffect(() => {
@@ -28,7 +28,6 @@ const PageServiceTimer = ({ name }) => {
       PageService.createPage(name, secondsElapsed, state.main.lab);
     };
   }, [name, secondsElapsed, state.main.lab]); // This effect runs on unmount and whenever name, secondsElapsed, or state.main.lab changes
-
 
   return null;
 };
