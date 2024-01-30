@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Button from "@material-ui/core/Button";
 import { actions as mainActions } from "../../../../reducers/MainReducer";
-import { actions as exerciseActions } from "../../../../reducers/lab5/ExerciseReducer";
+import { actions as exerciseActions } from "../../../../reducers/lab3/ExerciseReducer";
 import AppInstructions from "../components/AppInstructions";
 import { navigate } from "@reach/router";
 

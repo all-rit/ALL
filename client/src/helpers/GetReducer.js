@@ -9,8 +9,6 @@ const getExerciseState = (state, reduxState) => {
         : "EXERCISE_IDLE";
     case 3:
       return reduxState.exercise3.state;
-    case 5:
-      return reduxState.exercise5.state;
     case 7:
       return reduxState.exercise7.state;
     case 10:

@@ -1,47 +1,40 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import { Component } from "react";
+import { useState, useEffect } from "react";
 import { PageService } from "../../services/PageService";
-import { EXERCISE_PLAYING } from "../../constants/index";
-import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
 
-const mapStateToProps = (state) => ({
-  labid: state.main.lab,
-});
+/**
+ * A component that tracks the time elapsed and creates a page service on unmount.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.name - The name of the page.
+ * @returns {null}
+ */
+const PageServiceTimer = ({ name }) => {
+  const {state} = useMainStateContext();
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
 
-class PageServiceTimer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      secondsElapsed: 0,
-      name: this.props.name,
-      exerciseState: this.props.exerciseState,
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSecondsElapsed((seconds) => seconds + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
+
+  useEffect(() => {
+    return () => {
+      PageService.createPage(name, secondsElapsed, state.main.lab);
     };
-  }
+  }, [name, secondsElapsed, state.main.lab]); // This effect runs on unmount and whenever name, secondsElapsed, or state.main.lab changes
 
-  componentDidMount() {
-    const { actions } = this.props;
-    const exerciseState = this.props.exerciseState
-      ? this.props.exerciseState
-      : EXERCISE_PLAYING;
-    actions.updateState(exerciseState);
-    this.interval = setInterval(
-      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000
-    );
-  }
 
-  componentWillUnmount() {
-    PageService.createPage(
-      this.state.name,
-      this.state.secondsElapsed,
-      this.props.labid
-    );
-    clearInterval(this.interval);
-  }
-  render() {
-    return null;
-  }
-}
+  return null;
+};
 
-export default connect(mapStateToProps)(PageServiceTimer);
+PageServiceTimer.propTypes = {
+  name: PropTypes.string.isRequired,
+};
+
+export default PageServiceTimer;

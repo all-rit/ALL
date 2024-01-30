@@ -1,13 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Router } from "@reach/router";
 import "../../../assets/stylesheets/main.scss";
-import { actions as exerciseActions } from "../../../reducers/lab5/ExerciseReducer";
-import { actions as repairActions } from "../../../reducers/lab5/RepairReducer";
-import { actions as appActions } from "../../../reducers/lab5/AppReducer";
 import ExerciseStart from "./pages/ExerciseStart";
 import DyslexiaAccessible from "./pages/PageLayoutActivity/DyslexiaAccessible";
 import DyslexiaAccessibleKnowledgeCheck from "./pages/PageLayoutActivity/DyslexiaAccessibleKnowledgeCheck";
@@ -23,7 +16,6 @@ import NotificationInaccessible from "./pages/NotificationActivity/NotificationI
 import NotificationInaccessibleKnowledgeCheck from "./pages/NotificationActivity/NotificationInaccessibleKnowledgeCheck";
 import NotificationGuidance from "./pages/NotificationActivity/NotificationGuidance";
 import NotificationRepair from "./pages/NotificationActivity/NotificationRepair";
-import { bindActionCreators } from "redux";
 import NotificationAccessibleRepairKnowledgeCheck from "./pages/NotificationActivity/NotificationAccessibleRepairKnowledgeCheck";
 import NotificationAccessibleRepair from "./pages/NotificationActivity/NotificationAccessibleRepair";
 import FormInaccessible from "./pages/FormResponseActivity/FormInaccessible";
@@ -31,136 +23,87 @@ import FormGuidance from "./pages/FormResponseActivity/FormGuidance";
 import FormAccessible from "./pages/FormResponseActivity/FormAccessible";
 import FormRepair from "./pages/FormResponseActivity/FormRepair";
 import ExerciseEnd from "./pages/ExerciseEnd";
-const mapStateToProps = (state) => ({
-  state: state,
-});
+import useLab5StateContext, { Lab5ContextProvider } from "src/reducers/lab5/Lab5Context";
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(
-      { ...exerciseActions, ...repairActions, ...appActions },
-      dispatch
-    ),
-  };
-};
+const Main = () => {
+  const { state , actions } = useLab5StateContext();
 
-class Main extends Component {
-  render() {
-    const { actions, state, user } = this.props;
-    return (
+  return (
+    <Lab5ContextProvider>
       <div className="bottomSpace">
         <Router className="app">
-          <ExerciseStart default path="/" actions={actions} />
+          <ExerciseStart default path="/" />
           <DyslexiaAccessible
             path="/DyslexiaAccessible"
-            actions={actions}
-            state={state}
           />
           <DyslexiaAccessibleKnowledgeCheck
             path="/DyslexiaAccessibleKnowledgeCheck"
-            actions={actions}
-            state={state}
           />
           <DementiaInaccessible
             path="/DementiaInaccessible"
-            actions={actions}
-            state={state}
           />
           <DementiaInaccessibleKnowledgeCheck
             path="/DementiaInaccessibleKnowledgeCheck"
-            actions={actions}
-            state={state}
           />
-          <PageLayoutGuidance path="/PageLayoutGuidance" actions={actions} />
+          <PageLayoutGuidance path="/PageLayoutGuidance" />
           <PageLayoutRepair
             path="/PageLayoutRepair"
-            visible={state.repair5.repairVisible}
-            data={state.repair5}
-            handlers={actions}
-            state={state}
-            actions={actions}
+            visible={state.repairVisible}
+            data={state}
           />
           <DementiaAccessible
             path="/DementiaAccessible"
-            actions={actions}
-            state={state}
           />
           <DementiaAccessibleKnowledgeCheck
             path="/DementiaAccessibleKnowledgeCheck"
-            actions={actions}
-            state={state}
           />
           <NotificationAccessible
             path="/NotificationAccessible"
-            actions={actions}
-            state={state}
           />
           <NotificationAccessibleKnowledgeCheck
             path="/NotificationAccessibleKnowledgeCheck"
-            actions={actions}
-            state={state}
           />
           <NotificationInaccessible
             path="/NotificationInaccessible"
-            actions={actions}
-            state={state}
           />
           <NotificationInaccessibleKnowledgeCheck
             path="/NotificationInaccessibleKnowledgeCheck"
-            actions={actions}
-            state={state}
           />
           <NotificationGuidance
             path="/NotificationGuidance"
-            actions={actions}
           />
           <NotificationRepair
             path="/NotificationRepair"
-            visible={state.repair5.repairVisible}
-            data={state.repair5}
+            visible={state.repairVisible}
+            data={state}
             handlers={actions}
-            state={state}
-            actions={actions}
           />
           <NotificationAccessibleRepair
             path="/NotificationAccessibleRepair"
-            actions={actions}
-            state={state}
           />
           <NotificationAccessibleRepairKnowledgeCheck
             path="/NotificationAccessibleRepairKnowledgeCheck"
-            actions={actions}
-            state={state}
           />
           <FormInaccessible
             path="/FormInaccessible"
-            actions={actions}
-            state={state}
           />
-          <FormGuidance path="/FormGuidance" actions={actions} state={state} />
+          <FormGuidance path="/FormGuidance" />
           <FormRepair
             path="/FormRepair"
-            actions={actions}
-            state={state}
             handlers={actions}
-            visible={state.repair5.repairVisible}
-            data={state.repair5}
+            visible={state.repairVisible}
+            data={state}
           />
           <FormAccessible
             path="/FormAccessible"
-            actions={actions}
-            state={state}
           />
           <ExerciseEnd
             path="/ExerciseEnd"
-            actions={actions}
-            state={state}
-            user={user}
           />
         </Router>
       </div>
-    );
-  }
-}
+    </Lab5ContextProvider>
+  );
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

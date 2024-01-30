@@ -1,4 +1,4 @@
-export const types = {
+const types = {
   UPDATE_REPAIR_PAGELAYOUT:
     "@accessibility-lab/cognitive/repair/update_repair_pagelayout",
   UPDATE_REPAIR_NOTIFICATION:
@@ -9,7 +9,7 @@ export const types = {
   CLOSE_REPAIR: "@accessibility-lab/cognitive/repair/close_repair",
 };
 
-export const initialState = {
+const initialState = {
   h1value: null,
   ulvalue: null,
   classvalue: null,
@@ -105,4 +105,4 @@ export const actions = {
   closeRepair: () => ({ type: types.CLOSE_REPAIR }),
 };
 
-export default RepairReducer;
+export {RepairReducer, types, initialState};

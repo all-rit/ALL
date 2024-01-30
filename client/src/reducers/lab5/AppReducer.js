@@ -1,10 +1,10 @@
-export const types = {
+const types = {
   UPDATE_POPUP: "@accessibility-lab/cognitive/app/update_popup",
   OPEN_INSTRUCTIONS: "@accessibility-lab/cognitive/app/open_instructions",
   CLOSE_INSTRUCTIONS: "@accessibility-lab/cognitive/app/close_instructions",
 };
 
-export const initialState = {
+const initialState = {
   popupMessage: "",
   instructionsVisible: false,
 };
@@ -34,10 +34,10 @@ const AppReducer = (state = initialState, action) => {
   }
 };
 
-export const actions = {
+const actions = {
   updatePopup: (message) => ({ type: types.UPDATE_POPUP, message }),
   openInstructions: () => ({ type: types.OPEN_INSTRUCTIONS }),
   closeInstructions: () => ({ type: types.CLOSE_INSTRUCTIONS }),
 };
 
-export default AppReducer;
+export {AppReducer, actions, types, initialState};

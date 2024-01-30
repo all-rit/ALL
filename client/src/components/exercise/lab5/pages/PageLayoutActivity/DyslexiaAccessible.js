@@ -1,31 +1,42 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import Timer from "../../components/Timer";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import { time } from "../../../../../constants/lab5";
-class DyslexiaAccessible extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { timerDone: false, componentName: "DyslexiaAccessible" };
-  }
-  handleNav() {
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
+
+/**
+ * Renders a component for dyslexia accessibility.
+ *
+ * @returns {JSX.Element} The DyslexiaAccessible component.
+ */
+const DyslexiaAccessible = () => {
+  const {actions: mainActions} = useMainStateContext();
+
+  const [timerDone, setTimerDone] = useState(false);
+  const componentName = "DyslexiaAccessible";
+
+  useEffect(() => {
+    mainActions.updateUserState(EXERCISE_PLAYING);
+  }, []);
+
+  const handleNav = () => {
     navigate("/Lab5/Exercise/DyslexiaAccessibleKnowledgeCheck");
-  }
-  timerDone() {
-    this.setState({ timerDone: true });
-  }
-  render() {
-    const { actions } = this.props;
-    return (
-      <div>
-        <div className="cognitive_instructions">
-          Read the following information about Dyslexia from w3.org
-        </div>
-        <div className="cognitive_information">
-          {!this.state.timerDone ? (
-            <div>
+  };
+
+  const timerDoneCallback = () => {
+    setTimerDone(true);
+  };
+
+  return (
+    <div>
+      <div className="cognitive_instructions">
+        Read the following information about Dyslexia from w3.org
+      </div>
+      <div className="cognitive_information">
+        {!timerDone ? (
+          <div>
               <div className="heading">1.0 Dyslexia</div>
               <div>
                 Dyslexia is a syndrome best known for its effect on the
@@ -53,26 +64,26 @@ class DyslexiaAccessible extends Component {
                 <li>Minimalistic-navigation system</li>
               </ul>
             </div>
-          ) : (
+        ): (
             <div className="center">
               Time Has Expired! Click Next to Proceed
             </div>
           )}
         </div>
         <div className="flex">
-          <Timer seconds={time} timerDone={this.timerDone.bind(this)} />
+          <Timer seconds={time} timerDone={timerDoneCallback} />
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "
-            onClick={this.handleNav}
+            onClick={handleNav}
             key="next"
           >
             Next
           </button>
         </div>
-        <PageServiceTimer actions={actions} name={this.state.componentName} />
+        <PageServiceTimer name={componentName} />
       </div>
     );
-  }
-}
-
+  };
+  
 export default DyslexiaAccessible;
+

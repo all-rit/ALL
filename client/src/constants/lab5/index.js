@@ -1,6 +1,3 @@
-export const EXERCISE_PLAYING = "EXERCISE_PLAYING";
-export const EXERCISE_IDLE = "EXERCISE_IDLE";
-export const LAB_ID = 5;
 export const DyslexiaAccessibleKnowledgeCheck = {
   Question: "What is one of the symptoms of dyslexia?",
   Options: {
@@ -57,6 +54,8 @@ export const NotificationAccessibleRepairKnowledgeCheck = {
     None: 0,
   },
 };
+
+export const LAB_ID = 5;
 
 export const AccessibleMessage = "Meeting at 12pm!";
 export const InaccessibleMessage = "Now I now why I passed";
