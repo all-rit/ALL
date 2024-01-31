@@ -76,7 +76,8 @@ const SurveyHandler = (props) => {
     setSurveyComplete(true);
 
     if (surveyType === "pre") {
-      ImagineService.preSurvey(props.userID, selectedAnswers);
+      // will need to be changed with next logic story
+      ImagineService.preSurvey(props.userID, selectedAnswers, "experiential");
       groupUserByAnswers(); // This will handle navigation
     } else if (surveyType === "post") {
       ImagineService.postSurvey(props.userID, selectedAnswers);

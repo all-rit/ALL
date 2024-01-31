@@ -2,22 +2,22 @@
 import API from "./API";
 
 const ImagineService = {
-  postStudy: async (userID, study, section) => {
+  postStudy: async (userID, study) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/postStudy",
       {
         userID,
         study,
-        section,
       }
     );
   },
-  preSurvey: async (userID, preSurvey) => {
+  preSurvey: async (userID, preSurvey, section) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
       {
         userID,
         preSurvey,
+        section,
       }
     );
   },
@@ -39,9 +39,10 @@ const ImagineService = {
   },
   getUserByID: (userID) => {
     return Promise.resolve(
-      API.getWithBody(process.env.REACT_APP_SERVER_URL + "/imagine/user", {
-        userID,
-      }).then((response) => response.json())
+      API.get(
+        process.env.REACT_APP_SERVER_URL + `/imagine/user/${userID}`,
+        {}
+      ).then((response) => response.json())
     );
   },
   readMoreCount: async (userID, readMoreCount) => {

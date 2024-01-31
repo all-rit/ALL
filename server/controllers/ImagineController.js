@@ -2,8 +2,8 @@ const ImagineService = require('../services/ImagineService');
 
 const submitStudy = async (req, res) => {
   try {
-    const {userID, section, study} = req.body;
-    const result = await ImagineService.submitStudy({userID, section, study});
+    const {userID, study} = req.body;
+    const result = await ImagineService.submitStudy({userID, study});
     if (!result) {
       throw new Error('Instance of study was not recorded');
     }
@@ -13,11 +13,12 @@ const submitStudy = async (req, res) => {
 };
 
 const preSurvey = async (req, res) => {
-  const {userID, preSurvey} = req.body;
+  const {userID, preSurvey, section} = req.body;
   try {
     const resPreSurvey = await ImagineService.preSurvey({
       userID,
       preSurvey,
+      section,
     });
     if (!resPreSurvey) {
       throw new Error('Pre survey was not recorded');
@@ -53,7 +54,7 @@ const getUsers = async (req, res) => {
 
 const getUserByID = async (req, res) => {
   try {
-    const {userID} = req.body;
+    const {userID} = req.params;
     const user = await ImagineService.getUserByID(userID);
     return user;
   } catch (error) {

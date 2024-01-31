@@ -196,7 +196,7 @@ router.get('/imagine/users', async function(req, res) {
   const imagineUsers = await ImagineController.getUsers();
   res.json(imagineUsers);
 });
-router.get('/imagine/user', async function(req, res) {
+router.get('/imagine/user/:userID', async function(req, res) {
   const imagineUser = await ImagineController.getUserByID(req);
   res.json(imagineUser);
 });

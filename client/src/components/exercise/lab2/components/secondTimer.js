@@ -125,7 +125,7 @@ class SecondTimer extends Component {
     // after it is converted, the system sends the info to the backend and then
     // eslint-disable-next-line max-len
     // will record the results from the past five exercises in the state of the exercise
-    const recordData = () => {
+    const recordData = async () => {
       const score = this.score;
       const numRightOnClick = this.numRightOnClick;
       const numWrongOnClick = this.numWrongOnClick;
@@ -153,12 +153,14 @@ class SecondTimer extends Component {
 
       if (isImagine) {
         const section = "experiential";
-        const user = ImagineService.getUserByID(userID);
+        const user = await ImagineService.getUserByID(userID);
+        console.warn(user);
         if (data.Mode[0] === "MAIN") {
-          const study = !user.study ? {} : { main: { ...data } }
+          const study = { main: { ...data } };
           ImagineService.postStudy(userID, study, section);
         } else {
-          const study = !user.study ? {} : { main: { ...user.study.main }, protonopia: { ...data } }
+          const study = { ...user.study };
+          study.protonopia = { ...data };
           ImagineService.postStudy(userID, study, section);
         }
       }

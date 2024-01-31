@@ -2,7 +2,7 @@ const {Op} = require('sequelize');
 const db = require('../database');
 
 const submitStudy = async (data) => {
-  const {userID, section, study} = data;
+  const {userID, study} = data;
   try {
     if (userID) {
       const user = await db.Imagine23
@@ -10,17 +10,14 @@ const submitStudy = async (data) => {
             where:
           {
             userid: userID,
-            section: section,
           },
           });
       if (user !== null) {
         user.study = study;
-        user.section = section;
         user.save();
       } else {
         await db.Imagine23.create({
           userid: userID,
-          section: section,
           study: study,
         });
       }
@@ -32,8 +29,7 @@ const submitStudy = async (data) => {
 };
 
 const preSurvey = async (data) => {
-  const {userID, preSurvey} = data;
-
+  const {userID, preSurvey, section} = data;
   try {
     if (userID) {
       const user = await db.Imagine23
@@ -45,11 +41,13 @@ const preSurvey = async (data) => {
           });
       if (user !== null) {
         user.preSurvey = preSurvey;
+        user.section = section;
         user.save();
       } else {
         await db.Imagine23.create({
           userid: userID,
           preSurvey: preSurvey,
+          section: section,
         });
       }
       return true;
