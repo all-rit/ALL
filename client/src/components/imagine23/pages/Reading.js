@@ -13,10 +13,9 @@ import ReadMoreButton from "../components/LearnMoreButton";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
-import 'bootstrap/dist/css/bootstrap.css';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import "bootstrap/dist/css/bootstrap.css";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Button } from "reactstrap";
-
 
 const Reading = (props) => {
   const { user, userID, labID } = props;
@@ -53,10 +52,10 @@ const Reading = (props) => {
     }
   };
 
-  const [modalOpen, setModalOpen] = useState(true)
+  const [modalOpen, setModalOpen] = useState(true);
   const closeModal = () => {
-    setModalOpen(false)
-  }
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,11 +72,11 @@ const Reading = (props) => {
       ]);
       console.log(
         "Scroll position percentage: " +
-        JSON.stringify(pagePosition) +
-        "\n" +
-        "at " +
-        seconds +
-        " seconds"
+          JSON.stringify(pagePosition) +
+          "\n" +
+          "at " +
+          seconds +
+          " seconds"
       );
     }, 1000);
     return () => {
@@ -113,12 +112,8 @@ const Reading = (props) => {
         </h2>
       </div>
       <Modal isOpen={modalOpen}>
-        <ModalHeader>
-          Expand Window
-        </ModalHeader>
-        <ModalBody>
-          Please expand your window to fit the screen.
-        </ModalBody>
+        <ModalHeader>Expand Window</ModalHeader>
+        <ModalBody>Please expand your window to fit the screen.</ModalBody>
         <ModalFooter>
           <Button onClick={closeModal}> Close </Button>
         </ModalFooter>
