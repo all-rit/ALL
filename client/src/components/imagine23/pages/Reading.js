@@ -112,9 +112,7 @@ const Reading = (props) => {
         {readingData?.description !== "" ? (
           <>
             <h3>{readingData?.description.header}</h3>
-            <p className="tw-text-xl">
-              {readingData?.description.content}
-            </p>
+            <p className="tw-text-xl">{readingData?.description.content}</p>
           </>
         ) : (
           <></>
