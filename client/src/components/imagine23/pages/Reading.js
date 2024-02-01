@@ -13,7 +13,6 @@ import ReadMoreButton from "../components/LearnMoreButton";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
-import "bootstrap/dist/css/bootstrap.css";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Button } from "reactstrap";
 
