@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React from "react";
 import PropTypes from "prop-types";
 import QuestionCount from "../../quiz/components/QuestionCount";
@@ -64,6 +62,10 @@ Survey.propTypes = {
   onAnswerSelected: PropTypes.func.isRequired,
   onMultiSelected: PropTypes.func.isRequired,
   onFreeTextInput: PropTypes.func.isRequired,
+  multiChoice: PropTypes.string,
+  nextQuestion: PropTypes.string,
+  disable: PropTypes.boolean,
+  onComplete: PropTypes.func,
 };
 
 export default Survey;

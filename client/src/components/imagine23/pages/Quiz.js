@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "../../quiz/components/Quiz";
@@ -40,9 +39,9 @@ function assignQuizQuestions(labId) {
  * component with information.
  */
 const QuizHandler = (props) => {
-  const [currentLabId, setCurrentLab] = useState(props.labId);
+  const [currentLabId] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(
+  const [questions] = useState(
     assignQuizQuestions(props.labId, props.isFinalQuiz)
   );
   const [answerOption, setAnswerOption] = useState(

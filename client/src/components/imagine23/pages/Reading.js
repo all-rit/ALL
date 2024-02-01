@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "./../../../services/UserLabService";
 import LabService from "./../../../services/LabService";
@@ -13,6 +12,9 @@ import OrderedList from "../../body/Reading/OrderedList";
 import ReadMoreButton from "../components/LearnMoreButton";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
+import PropTypes from "prop-types";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button } from "reactstrap";
 
 const Reading = (props) => {
   const { user, userID, labID } = props;
@@ -47,6 +49,11 @@ const Reading = (props) => {
     } else {
       setScrollPositionPercentage(percentage);
     }
+  };
+
+  const [modalOpen, setModalOpen] = useState(true);
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   useEffect(() => {
@@ -95,7 +102,13 @@ const Reading = (props) => {
           {labShortName}: READING
         </h2>
       </div>
-
+      <Modal isOpen={modalOpen}>
+        <ModalHeader>Expand Window</ModalHeader>
+        <ModalBody>Please expand your window to fit the screen.</ModalBody>
+        <ModalFooter>
+          <Button onClick={closeModal}> Close </Button>
+        </ModalFooter>
+      </Modal>
       <div className="study">
         {readingData?.description !== "" ? (
           <>
@@ -188,6 +201,12 @@ const Reading = (props) => {
       </div>
     </div>
   );
+};
+
+Reading.propTypes = {
+  user: PropTypes.object,
+  userID: PropTypes.string,
+  labID: PropTypes.number,
 };
 
 export default Reading;

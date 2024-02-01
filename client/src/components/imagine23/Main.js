@@ -1,8 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
-
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { navigate, Router } from "@reach/router";
@@ -19,9 +14,9 @@ import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
-import Navigation from "./pages/Navigation";
 import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");
+import { PropTypes } from "prop-types";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -38,7 +33,7 @@ const Main = (props) => {
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
 
-  const [labId, setLabId] = useState(2);
+  const [labId] = useState(2);
   const [isExperiential, setIsExperiential] = useState(false);
 
   function handleGroupAssignment(isExperiential) {
@@ -63,9 +58,6 @@ const Main = (props) => {
       }
     }
   }, [user]);
-
-  // sessionStorage.removeItem("key");
-  // sessionStorage.clear();
 
   return (
     <div className="container">
@@ -93,13 +85,6 @@ const Main = (props) => {
             type="pre"
             handleGroupAssignment={handleGroupAssignment}
           />
-          {/* <Navigation
-            path="/Navigation"
-            actions={actions}
-            state={state}
-            userID={userID}
-            setIsExperiential={setIsExperiential}
-          /> */}
           <LandingPage
             path="/ExperientialStart"
             actions={actions}
@@ -187,6 +172,12 @@ const Main = (props) => {
       </div>
     </div>
   );
+};
+
+Main.propTypes = {
+  actions: PropTypes.object,
+  state: PropTypes.string,
+  user: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

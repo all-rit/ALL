@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
+import PropTypes from "prop-types";
 
 const ExpressionExercise = (props) => {
   const { setCount, count, userID } = props;
@@ -86,6 +86,12 @@ const ExpressionExercise = (props) => {
       )}
     </div>
   );
+};
+
+ExpressionExercise.propTypes = {
+  setCount: PropTypes.func,
+  count: PropTypes.number,
+  userID: PropTypes.string,
 };
 
 export default ExpressionExercise;

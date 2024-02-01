@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const preSurveyQuestionsImagine = [
   {
     question: "What is your age range?",

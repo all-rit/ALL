@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
 import { navigate } from "@reach/router";
 import React from "react";
+import PropTypes from "prop-types";
 
 const Navigation = (props) => {
   const handleExpression = () => {
@@ -33,6 +31,10 @@ const Navigation = (props) => {
       </button>
     </>
   );
+};
+
+Navigation.propTypes = {
+  setIsExperiential: PropTypes.func,
 };
 
 export default Navigation;
