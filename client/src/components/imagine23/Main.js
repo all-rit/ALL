@@ -64,7 +64,7 @@ const Main = (props) => {
       <div className="row">
         <div className="col-lg-12 text-center">
           {/* change font size */}
-          <h2 className="section-heading text-uppercase tw-text-right tw-text-[5vw] md:tw-text-[4vw] lg:tw-text-[2vw]">
+          <h2 className="section-heading text-uppercase tw-text-right tw-text-[5vw] md:tw-text-[4vw] lg:tw-text-[3.5vh]">
             {"ID#" + userID}
           </h2>
         </div>

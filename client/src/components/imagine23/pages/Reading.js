@@ -97,8 +97,7 @@ const Reading = (props) => {
   return (
     <div>
       <div className="page-section">
-        {/* change this h2 tag font size */}
-        <h2 className="section-heading text-uppercase tw-text-[5vw] md:tw-text-[5vw] lg:tw-text-[2vw]">
+        <h2 className="section-heading text-uppercase tw-text-[5vw] md:tw-text-[5vw] lg:tw-text-[5vh]">
           {labShortName}: READING
         </h2>
       </div>
@@ -112,17 +111,15 @@ const Reading = (props) => {
       <div className="study">
         {readingData?.description !== "" ? (
           <>
-            {/* change these */}
             <h3>{readingData?.description.header}</h3>
-            <p className="tw-text-xl lg:tw-text-xl">
+            <p className="tw-text-xl">
               {readingData?.description.content}
             </p>
           </>
         ) : (
           <></>
         )}
-        {/* change this font size */}
-        <h3 className="tw-text-[4vw] md:tw-text-[4vw] lg:tw-text-[1.5vw]">
+        <h3 className="tw-text-[4vw] md:tw-text-[4vw] lg:tw-text-[3.5vh]">
           {readingData?.piechart.header}
         </h3>
         <div className="flex">
@@ -137,7 +134,7 @@ const Reading = (props) => {
               <div
                 key={index}
                 id={"caption"}
-                className="tw-text-[3vw] md:tw-text-[2.75vw] lg:tw-text-[1vw]"
+                className="tw-text-[3vw] md:tw-text-[2.75vw] lg:tw-text-[2.25vh]"
               >
                 {data}
               </div>
@@ -150,9 +147,8 @@ const Reading = (props) => {
           readingData?.body.map((data, index) => {
             return (
               <Fragment key={index}>
-                {/* change this h3 tag font size */}
                 {data.header !== "" && (
-                  <h3 className="tw-text-[4vw] md:tw-text-[4vw] lg:tw-text-[1.5vw]">
+                  <h3 className="tw-text-[4vw] md:tw-text-[4vw] lg:tw-text-[3.5vh]">
                     {data.header}
                   </h3>
                 )}
@@ -161,7 +157,7 @@ const Reading = (props) => {
                     {data.content.map((content, index) => {
                       return (
                         <p
-                          className="tw-text-[3vw] md:tw-text-[2.75vw] lg:tw-text-[1vw]"
+                          className="tw-text-[3vw] md:tw-text-[2.75vw] lg:tw-text-[2.25vh]"
                           key={index}
                         >
                           {content}
