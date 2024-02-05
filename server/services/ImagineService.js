@@ -8,9 +8,9 @@ exports.discomfortCount = (data)=> {
     return db.Imagine23
         .findOne({
           where:
-                        {
-                          userid: userID,
-                        },
+          {
+            userid: userID,
+          },
         },
         ).then((user) => {
           if (user !== null) {
@@ -38,9 +38,9 @@ exports.experientialMain = (data)=> {
     return db.Imagine23
         .findOne({
           where:
-                        {
-                          userid: userID,
-                        },
+          {
+            userid: userID,
+          },
         },
         ).then((user) => {
           if (user !== null) {
@@ -69,9 +69,9 @@ exports.experientialProtanopia = (data)=> {
     return db.Imagine23
         .findOne({
           where:
-                        {
-                          userid: userID,
-                        },
+          {
+            userid: userID,
+          },
         },
         ).then((user) => {
           if (user !== null) {
@@ -99,9 +99,9 @@ exports.preSurvey = (data) => {
     return db.Imagine23
         .findOne({
           where:
-                        {
-                          userid: userID,
-                        },
+          {
+            userid: userID,
+          },
         },
         ).then((user) => {
           if (user !== null) {
@@ -129,9 +129,9 @@ exports.postSurvey = (data) => {
     return db.Imagine23
         .findOne({
           where:
-                        {
-                          userid: userID,
-                        },
+          {
+            userid: userID,
+          },
         },
         ).then((user) => {
           if (user !== null) {
@@ -172,9 +172,9 @@ exports.readMoreCount = (data) => {
     return db.Imagine23
         .findOne({
           where:
-                        {
-                          userid: userID,
-                        },
+          {
+            userid: userID,
+          },
         },
         ).then((user) => {
           if (user !== null) {
@@ -204,9 +204,9 @@ exports.readMoreTimeElapsed = (data) => {
     return db.Imagine23
         .findOne({
           where:
-                        {
-                          userid: userID,
-                        },
+          {
+            userid: userID,
+          },
         },
         ).then((user) => {
           if (user !== null) {
@@ -235,9 +235,9 @@ exports.readingSectionPagePosition = (data) => {
     return db.Imagine23
         .findOne({
           where:
-                        {
-                          userid: userID,
-                        },
+          {
+            userid: userID,
+          },
         },
         ).then((user) => {
           if (user !== null) {

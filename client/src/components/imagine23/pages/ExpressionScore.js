@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 
 const ExpressionScore = (props) => {
   const handleNext = () => {
@@ -25,6 +25,10 @@ const ExpressionScore = (props) => {
       </button>
     </div>
   );
+};
+
+ExpressionScore.propTypes = {
+  count: PropTypes.number,
 };
 
 export default ExpressionScore;

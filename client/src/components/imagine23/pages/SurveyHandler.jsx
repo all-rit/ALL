@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Survey from "../components/Survey";
@@ -44,7 +43,7 @@ function assignQuizQuestions(surveyType) {
  */
 const SurveyHandler = (props) => {
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(assignQuizQuestions(props.type));
+  const [questions] = useState(assignQuizQuestions(props.type));
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers
   );
