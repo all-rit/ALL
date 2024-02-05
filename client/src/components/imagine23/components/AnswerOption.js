@@ -35,23 +35,6 @@ function AnswerOption(props) {
           </label>
         </li>
       );
-    case "freeText":
-      return (
-        <li>
-          <label
-            className="inline-block w-75 text-left"
-            htmlFor={props.answerType}
-          >
-            {props.answerContent}
-          </label>
-          <input
-            type="text"
-            className="w-75 p-2 tw-outline-none tw-border-solid tw-rounded-lg"
-            id={props.answerType}
-            onChange={props.onFreeTextInput}
-          />
-        </li>
-      );
   }
 }
 

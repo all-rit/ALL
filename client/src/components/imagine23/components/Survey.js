@@ -15,7 +15,6 @@ function Survey(props) {
         questionType={props.questionType}
         onAnswerSelected={props.onAnswerSelected}
         onMultiSelected={props.onMultiSelected}
-        onFreeTextInput={props.onFreeTextInput}
       />
     );
   }
@@ -61,7 +60,6 @@ Survey.propTypes = {
   questionType: PropTypes.string.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
   onMultiSelected: PropTypes.func.isRequired,
-  onFreeTextInput: PropTypes.func.isRequired,
   multiChoice: PropTypes.string,
   nextQuestion: PropTypes.string,
   disable: PropTypes.boolean,
