@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const preSurveyQuestionsImagine = [
   {
     question: "What is your age range?",
@@ -27,10 +26,22 @@ const preSurveyQuestionsImagine = [
     answers: [
       {
         index: "0",
-        content: "Enter here",
+        content: "Woman",
+      },
+      {
+        index: "1",
+        content: "Non-Binary",
+      },
+      {
+        index: "2",
+        content: "Man",
+      },
+      {
+        index: "3",
+        content: "Prefer not to answer",
       },
     ],
-    type: "freeText",
+    type: "singleChoice",
   },
   {
     question:

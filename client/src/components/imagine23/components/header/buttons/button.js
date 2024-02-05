@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import "../title.css";
+import PropTypes from "prop-types";
 
 /*
 Component for creating a generic button for the system
@@ -19,6 +19,11 @@ const Button = ({ clickMethod, message }) => {
       {message}
     </button>
   );
+};
+
+Button.propTypes = {
+  clickMethod: PropTypes.func,
+  message: PropTypes.string,
 };
 
 export default Button;

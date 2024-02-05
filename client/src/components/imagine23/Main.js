@@ -1,7 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { navigate, Router } from "@reach/router";
@@ -20,6 +16,7 @@ import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
 import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");
+import { PropTypes } from "prop-types";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -63,9 +60,6 @@ const Main = (props) => {
     }
   }, [user]);
 
-  // sessionStorage.removeItem("key");
-  // sessionStorage.clear();
-
   return (
     <div className="container">
       <div className="row">
@@ -91,13 +85,6 @@ const Main = (props) => {
             type="pre"
             handleGroupAssignment={handleGroupAssignment}
           />
-          {/* <Navigation
-            path="/Navigation"
-            actions={actions}
-            state={state}
-            userID={userID}
-            setIsExperiential={setIsExperiential}
-          /> */}
           <LandingPage
             path="/ExperientialStart"
             actions={actions}
@@ -185,6 +172,12 @@ const Main = (props) => {
       </div>
     </div>
   );
+};
+
+Main.propTypes = {
+  actions: PropTypes.object,
+  state: PropTypes.string,
+  user: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

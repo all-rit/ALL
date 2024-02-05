@@ -1,8 +1,9 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
+import PropTypes from "prop-types";
+
 const section = "discomfortCountNonPOC";
 
 const ExpressionExercise2 = (props) => {
@@ -88,6 +89,12 @@ const ExpressionExercise2 = (props) => {
       )}
     </div>
   );
+};
+
+ExpressionExercise2.propTypes = {
+  setCount: PropTypes.func,
+  count: PropTypes.number,
+  userID: PropTypes.string,
 };
 
 export default ExpressionExercise2;

@@ -1,8 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
-
 import React from "react";
+import PropTypes from "prop-types";
 
 const ExerciseEnd = (props) => {
   const { isExperiential } = props;
@@ -12,12 +9,16 @@ const ExerciseEnd = (props) => {
         {isExperiential ? "Experiential" : "Expression"} Empathy Building: End
       </h2>
       <div className="playthrough__sentence__imagine">
-        Congratulations! You've completed the activity!
+        Congratulations! You&apos;ve completed the activity!
       </div>
 
       <h2 className="playthrough__title">Thanks for participating!</h2>
     </div>
   );
+};
+
+ExerciseEnd.propTypes = {
+  isExperiential: PropTypes.boolean,
 };
 
 export default ExerciseEnd;
