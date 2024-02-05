@@ -13,7 +13,7 @@ const Shape = ({ y, x, size, className, color }) => {
       style={{ left: x, top: y, width: size, height: size }}
       className={twMerge(
         className,
-        "tw-flex tw-items-center tw-justify-center tw-font-bold"
+        "tw-flex tw-items-center tw-justify-center tw-font-bold",
       )}
     >
       {name}

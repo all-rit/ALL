@@ -3,7 +3,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
 import { Pie } from "react-chartjs-2";
-import {Chart, ArcElement} from 'chart.js'
 import useScroll from "../../../use-hooks/useScroll";
 import StudyList from "./studylist";
 import NonBulletList from "./NonBulletList";
@@ -16,7 +15,6 @@ import OrderedList from "./OrderedList";
 const Reading = (props) => {
   const { user, labID } = props;
   const [readingData, setReadingData] = useState("");
-  Chart.register(ArcElement);
   useScroll();
   useEffect(() => {
     UserLabService.complete_reading(labID);

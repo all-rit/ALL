@@ -104,7 +104,7 @@ SimulationSummary.propTypes = {
       result: PropTypes.string,
       report: PropTypes.string,
       message: PropTypes.string,
-    })
+    }),
   ),
   changesApplied: PropTypes.bool,
   protect: PropTypes.number,

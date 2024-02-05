@@ -27,7 +27,7 @@ class PageServiceTimer extends Component {
     actions.updateState(exerciseState);
     this.interval = setInterval(
       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000
+      1000,
     );
   }
 
@@ -35,7 +35,7 @@ class PageServiceTimer extends Component {
     PageService.createPage(
       this.state.name,
       this.state.secondsElapsed,
-      this.props.labid
+      this.props.labid,
     );
     clearInterval(this.interval);
   }
