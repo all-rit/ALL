@@ -1,30 +1,17 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_IDLE, EXERCISE_PLAYING } from "../../../../../constants/lab6";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../../reducers/lab6/ExerciseReducer";
-import { connect } from "react-redux";
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-const ExerciseStart = (props) => {
-  const { actions } = props;
+const ExerciseStart = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_IDLE);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_IDLE);
+  }, []);
 
   const handleStart = () => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
     navigate("/Lab6/Exercise/AvatarSelection");
   };
 
@@ -50,4 +37,4 @@ const ExerciseStart = (props) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExerciseStart);
+export default ExerciseStart;

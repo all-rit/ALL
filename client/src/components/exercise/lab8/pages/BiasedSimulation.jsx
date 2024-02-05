@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actions as exerciseActions } from "../../../../reducers/lab8/ExerciseReducer";
 import { navigate } from "@reach/router";
 import "../../../../assets/stylesheets/components/Witch.css";
-import { EXERCISE_PLAYING } from "../../../../constants/lab8";
 import ChatRoom from "../components/ChatRoom";
 import { getMessages } from "../../../../constants/lab8/messages";
 import { useLocation } from "@reach/router";
-import PropTypes from "prop-types";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
-const BiasedSimulation = (props) => {
-  const { actions } = props;
+const BiasedSimulation = () => {
+  const { actions } = useMainStateContext();
 
   const [canContinue, setCanContinue] = useState(false);
 
@@ -20,7 +17,7 @@ const BiasedSimulation = (props) => {
   const { updatedMessages, repairState } = messageLocation.state;
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
   const handleModerationComplete = () => {
@@ -71,14 +68,4 @@ const BiasedSimulation = (props) => {
   );
 };
 
-BiasedSimulation.propTypes = {
-  actions: PropTypes.string,
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(BiasedSimulation);
+export default BiasedSimulation;
