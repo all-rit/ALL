@@ -1,73 +1,73 @@
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, { Fragment } from "react";
 import Button from "@material-ui/core/Button";
-import { actions as mainActions } from "../../../../reducers/MainReducer";
-import { actions as exerciseActions } from "../../../../reducers/lab5/ExerciseReducer";
 import AppInstructions from "../components/AppInstructions";
 import { navigate } from "@reach/router";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const mapStateToProps = (state) => {
-  return {
-    // General
-    user: state.main.user,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(
-      { ...mainActions, ...exerciseActions },
-      dispatch
-    ),
-  };
-};
+/**
+ * Renders the ExerciseStart component.
+ * This component displays the start page for the exercise.
+ *
+ * @returns {JSX.Element} The rendered ExerciseStart component.
+ */
+const ExerciseStart = () => {
+  const {actions} = useMainStateContext();
 
-class ExerciseStart extends Component {
-  handleSubmit() {
+  const handleSubmit = () => {
+    actions.updateUserState(EXERCISE_PLAYING)
     navigate("/Lab3/Exercise/BeginnerExercise");
-  }
-  handleSubmitAdv() {
+  };
+
+  const handleSubmitAdv = () => {
+    actions.updateUserState(EXERCISE_PLAYING)
     navigate("/Lab3/Exercise/AdvancedExercise");
-  }
-  render() {
-    // const { user, state, plays } = this.props;
-    const buttonStyleLeft = {
-      marginTop: 10,
-      marginRight: 2,
-    };
-    const buttonStyleRight = {
-      marginTop: 10,
-      marginLeft: 2,
-    };
-    return (
-      <Fragment>
-        <div className="center-div">
-          <AppInstructions />
+  };
 
-          <Button
-            href="#"
-            onClick={this.handleSubmit}
-            variant={"contained"}
-            color={"primary"}
-            style={buttonStyleLeft}
-          >
-            Beginner Exercise
-          </Button>
-          <Button
-            href="#"
-            onClick={this.handleSubmitAdv}
-            variant={"contained"}
-            color={"secondary"}
-            style={buttonStyleRight}
-          >
-            Advanced Exercise
-          </Button>
-        </div>
-      </Fragment>
-    );
-  }
-}
+  /**
+   * Style object for the left button.
+   * @type {Object}
+   */
+  const buttonStyleLeft = {
+    marginTop: 10,
+    marginRight: 2,
+  };
+  
+  /**
+   * Style object for the right button.
+   * @type {Object}
+   */
+  const buttonStyleRight = {
+    marginTop: 10,
+    marginLeft: 2,
+  };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExerciseStart);
+  return (
+    <Fragment>
+      <div className="center-div">
+        <AppInstructions />
+
+        <Button
+          href="#"
+          onClick={handleSubmit}
+          variant={"contained"}
+          color={"primary"}
+          style={buttonStyleLeft}
+        >
+          Beginner Exercise
+        </Button>
+        <Button
+          href="#"
+          onClick={handleSubmitAdv}
+          variant={"contained"}
+          color={"secondary"}
+          style={buttonStyleRight}
+        >
+          Advanced Exercise
+        </Button>
+      </div>
+    </Fragment>
+  );
+};
+
+export default ExerciseStart;

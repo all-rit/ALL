@@ -7,8 +7,6 @@ const getExerciseState = (state, reduxState) => {
       return reduxState.exercise2.changeExerciseState.exerciseState
         ? "EXERCISE_PLAYING"
         : "EXERCISE_IDLE";
-    case 3:
-      return reduxState.exercise3.state;
     case 5:
       return reduxState.exercise5.state;
     case 7:

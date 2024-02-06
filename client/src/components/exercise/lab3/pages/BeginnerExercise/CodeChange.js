@@ -1,8 +1,4 @@
-/* eslint-disable max-len */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import CodeUpdateHeader from "../../components/CodeUpdateHeader";
 import "../../../../../assets/stylesheets/prism.scss";
 import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
@@ -16,10 +12,12 @@ import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 import Repair from "../../components/Repair";
 import ExerciseButtons from "../../components/ExerciseButtons";
 import Popup from "../../../../all-components/Popup";
+import useLab3StateContext from "src/reducers/lab3/Lab3Context";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -28,7 +26,18 @@ const variantIcon = {
   info: InfoIcon,
 };
 
-function MySnackbarContentWrapper(props) {
+/**
+ * Wrapper component for displaying a snackbar content.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.className - The class name for the component.
+ * @param {string} props.message - The message to be displayed in the snackbar.
+ * @param {function} props.onClose - The callback function to be called when the snackbar is closed.
+ * @param {string} props.variant - The variant of the snackbar (success, error, info, warning).
+ * @param {Object} props.other - Additional props to be passed to the SnackbarContent component.
+ * @returns {JSX.Element} The rendered MySnackbarContentWrapper component.
+ */
+const MySnackbarContentWrapper = (props) =>{
   const classes = {
     success: {
       backgroundColor: green[600],
@@ -95,68 +104,70 @@ MySnackbarContentWrapper.propTypes = {
   variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 
-class CodeChange extends Component {
-  constructor(props) {
-    super(props);
-    document.body.style = "background: white";
-  }
-  componentDidMount() {
-    const { actions } = this.props;
-    actions.updateState(EXERCISE_PLAYING);
-  }
+/**
+ * Renders the CodeChange component.
+ * This component is responsible for displaying the code change section of the exercise.
+ * It allows the user to make changes to the code and provides buttons for ending the activity and applying repairs.
+ *
+ * @returns {JSX.Element} The rendered CodeChange component.
+ */
+const CodeChange = () => {
+  const { actions: mainActions } = useMainStateContext();
+  const { state, actions } = useLab3StateContext();
 
-  static doEvent(obj, event) {
+  useEffect(() => {
+    mainActions.updateUserState(EXERCISE_PLAYING);
+  }, []);
+
+  const doEvent = (obj, event) => {
     const eventInit = new Event(event, { target: obj, bubbles: true });
     return obj ? obj.dispatchEvent(eventInit) : false;
-  }
+  };
 
-  render() {
-    const { data, actions } = this.props;
-    return (
-      <div>
-        <CodeUpdateHeader
-          heading={"Make Code Changes"}
-          justifyAlignment={"space-between"}
-        />
-        <div style={{ display: "block", marginBottom: "10px" }}>
-          <Typography
-            variant={"subtitle"}
-            aria-label={
-              "First make changes to the code, if not satisfied try again.\n" +
-              "                    Then click the 'End Activity' button which will appear when you have made changes " +
-              "at least once."
-            }
-            color={"inherit"}
-            tabIndex={"0"}
-          >
-            First make changes to the code, if not satisfied try again. Then
-            click the 'End Activity' button, which will appear when you have
-            made changes at least once.
-          </Typography>
-        </div>
-        <div style={{ textAlign: "center" }}>
-          <Repair
-            visible={data.repair3.repairVisible}
-            data={data.repair3}
-            handlers={actions}
-          />
-
-          <Popup
-            message={data.app3.popupMessage}
-            handler={actions.updatePopup}
-            error={data.repair3.repairError}
-          />
-
-          <ExerciseButtons
-            repairApplied={data.repair3.changesApplied}
-            openRepairHandler={actions.openRepair}
-            endEnabled={data.exercise3.end}
-            disabled={this.props.data.repair3.repairError}
-          />
-        </div>
+  return (
+    <div>
+      <CodeUpdateHeader
+        heading={"Make Code Changes"}
+        justifyAlignment={"space-between"}
+      />
+      <div style={{ display: "block", marginBottom: "10px" }}>
+        <Typography
+          variant={"subtitle"}
+          aria-label={
+            "First make changes to the code, if not satisfied try again.\n" +
+            "                    Then click the 'End Activity' button which will appear when you have made changes " +
+            "at least once."
+          }
+          color={"inherit"}
+          tabIndex={"0"}
+        >
+          First make changes to the code, if not satisfied try again. Then
+          click the &rsquo;End Activity&lsquo; button, which will appear when you have
+          made changes at least once.
+        </Typography>
       </div>
-    );
-  }
-}
+      <div style={{ textAlign: "center" }}>
+        <Repair
+          visible={state.repairVisible}
+          data={state.repair3}
+          handlers={actions}
+        />
+
+        <Popup
+          message={state.popupMessage}
+          handler={actions.updatePopup}
+          error={state.repairError}
+        />
+
+        <ExerciseButtons
+          repairApplied={state.changesApplied}
+          openRepairHandler={actions.openRepair}
+          endEnabled={state.exercise3.end}
+          disabled={state.repairError}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default CodeChange;

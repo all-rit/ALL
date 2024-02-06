@@ -1,38 +1,52 @@
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Button, Link } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Paper from "@material-ui/core/Paper";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-class ExerciseInstructions extends Component {
-  handleSubmit() {
+/**
+ * Renders the exercise instructions component.
+ *
+ * @returns {JSX.Element} The exercise instructions component.
+ */
+const ExerciseInstructions = () => {
+  const { actions } = useMainStateContext();
+
+  const handleSubmit = () => {
     navigate("/Lab3/Exercise/UserUpdatedExercise");
-  }
-  componentDidMount() {
-    const { actions } = this.props;
-    actions.updateState(EXERCISE_PLAYING);
-  }
+  };
 
-  render() {
-    const textToSpeech = (e, text) => {
-      const synth = window.speechSynthesis;
-      synth.cancel();
-      const utterThis = new SpeechSynthesisUtterance(text);
-      synth.speak(utterThis);
-    };
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, [actions]);
 
-    const paperStyle = {
-      marginLeft: "10px",
-      marginRight: "10px",
-      marginTop: "20px",
-    };
-    return (
+  /**
+   * Speaks the given text using the browser's speech synthesis API.
+   * @param {Event} e - The event object.
+   * @param {string} text - The text to be spoken.
+   */
+  const textToSpeech = (e, text) => {
+    const synth = window.speechSynthesis;
+    synth.cancel();
+    const utterThis = new SpeechSynthesisUtterance(text);
+    synth.speak(utterThis);
+  };
+
+  /**
+   * The style object for the paper component.
+   * @type {Object}
+   */
+  const paperStyle = {
+    marginLeft: "10px",
+    marginRight: "10px",
+    marginTop: "20px",
+  };
+
+  return (
       <div>
         <AppBar position="static" className="appBar">
           <Toolbar>
@@ -92,7 +106,7 @@ class ExerciseInstructions extends Component {
         </Paper>
         <br />
         <Button
-          onClick={this.handleSubmit}
+          onClick={handleSubmit}
           variant={"contained"}
           className="btn btn-second btn-xl text-uppercase  leftButton"
           aria-label={"Next"}
@@ -100,8 +114,7 @@ class ExerciseInstructions extends Component {
           Next
         </Button>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default ExerciseInstructions;

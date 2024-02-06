@@ -1,13 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Router } from "@reach/router";
 import "../../../assets/stylesheets/main.scss";
-import { actions as exerciseActions } from "../../../reducers/lab3/ExerciseReducer";
-import { actions as repairActions } from "../../../reducers/lab3/RepairReducer";
-import { actions as appActions } from "../../../reducers/lab3/AppReducer";
 import ExerciseStart from "./pages/ExerciseStart";
 import FullExercise from "../../exercise/lab3/pages/BeginnerExercise/Exercise";
 import UserUpdatedExercise from "../../exercise/lab3/pages/BeginnerExercise/UserUpdatedExercise";
@@ -23,73 +16,48 @@ import BeginnerExerciseConclusion from "../../exercise/lab3/pages/BeginnerExerci
 import AdvancedExerciseConclusion from "../../exercise/lab3/pages/AdvancedExercise/AdvancedExerciseConclusion";
 import ViewFix from "../../exercise/lab3/pages/AdvancedExercise/ViewFix";
 import ProblemDiscoveryFixedExperience from "../../exercise/lab3/pages/AdvancedExercise/ProblemDiscoveryFixedExperience";
-import { bindActionCreators } from "redux";
+import { Lab3ContextProvider } from "src/reducers/lab3/Lab3Context";
 
-const mapStateToProps = (state) => ({
-  state: state,
-  repairError: state.repair3.repairError,
-});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(
-      { ...exerciseActions, ...repairActions, ...appActions },
-      dispatch
-    ),
-  };
-};
+const Main = () => {
 
-class Main extends Component {
-  // eslint-disable-next-line require-jsdoc
-  render() {
-    const { actions, state, user } = this.props;
-    return (
+  return (
+    <Lab3ContextProvider>
       <div className="container bottomSpace">
         <Router className="app">
           <ExerciseStart default path="/" />
-          <FullExercise path="/BeginnerExercise" actions={actions} />
+          <FullExercise path="/BeginnerExercise" />
           <ExerciseInstructions
             path={"/ExerciseInstructions"}
-            actions={actions}
           />
           <UserUpdatedExercise
             path={"/UserUpdatedExercise"}
-            actions={actions}
-            data={state}
           />
           <AccessibleInstructions
-            state={state}
             path={"/AccessibleInstructions"}
-            actions={actions}
           />
-          <CodeChange path={"/CodeChange"} actions={actions} data={state} />
-          <AdvancedExercise path={"/AdvancedExercise"} actions={actions} />
+          <CodeChange path={"/CodeChange"}/>
+          <AdvancedExercise path={"/AdvancedExercise"} />
           <AdvancedInstructions
             path={"/AdvancedInstructions"}
-            actions={actions}
           />
-          <ProblemDiscovery path={"/ProblemDiscovery"} actions={actions} />
-          <ProblemExplanation path={"/ProblemExplanation"} actions={actions} />
+          <ProblemDiscovery path={"/ProblemDiscovery"} />
+          <ProblemExplanation path={"/ProblemExplanation"} />
           <ProblemDiscoveryFixedExperience
             path={"/ProblemDiscoveryFixedExperience"}
-            actions={actions}
           />
-          <ProblemFix path={"/ProblemFix"} actions={actions} />
+          <ProblemFix path={"/ProblemFix"} />
           <BeginnerExerciseConclusion
             path={"/BeginnerExerciseConclusion"}
-            actions={actions}
-            user={user}
           />
           <AdvancedExerciseConclusion
             path={"/AdvancedExerciseConclusion"}
-            actions={actions}
-            user={user}
           />
-          <ViewFix path={"/ViewFix"} actions={actions} />
+          <ViewFix path={"/ViewFix"} />
         </Router>
       </div>
-    );
-  }
-}
+    </Lab3ContextProvider>
+  );
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

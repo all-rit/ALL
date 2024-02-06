@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
@@ -6,6 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 
+/**
+ * Returns the styles for the StickyFooter component.
+ *
+ * @returns {Object} The styles object.
+ */
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -22,7 +26,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function StickyFooter() {
+/**
+ * Renders a sticky footer component.
+ * @returns {JSX.Element} The sticky footer component.
+ */
+const StickyFooter = () => {
   const classes = useStyles();
 
   return (
@@ -42,3 +50,4 @@ export default function StickyFooter() {
     </div>
   );
 }
+export default StickyFooter;

@@ -1,59 +1,46 @@
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { AppBar, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { navigate } from "@reach/router";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
+import { LAB_ID } from "../../../../../constants/lab3/index";
 import { PageService } from "../../../../../services/PageService";
-class ViewFix extends Component {
-  constructor(props) {
-    super(props);
-    ViewFix.navOnClick = ViewFix.navOnClick.bind(this);
-    this.state = {
-      aria1: "Ok button",
-      aria2: "Cancel button",
-      render: "",
-      secondsElapsed: 0,
-    };
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+import { EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
-  static navOnClick() {
-    const name = "ViewFix";
-    PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-    navigate("/Lab3/Exercise/ProblemFix");
-  }
+const ViewFix = () => {
+  const {actions} = useMainStateContext();
+  const [aria1, setAria1] = useState("Ok button");
+  const [aria2, setAria2] = useState("Cancel button");
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
 
-  componentDidMount() {
-    const { actions } = this.props;
-    actions.updateState(EXERCISE_PLAYING);
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
     if (window.location.state) {
-      this.setState({
-        aria1: window.location.state.aria1.replace(/<[^>]*>?/gm, ""),
-        aria2: window.location.state.aria2.replace(/<[^>]*>?/gm, ""),
-      });
+      setAria1(window.location.state.aria1.replace(/<[^>]*>?/gm, ""));
+      setAria2(window.location.state.aria2.replace(/<[^>]*>?/gm, ""));
     }
-    this.interval = setInterval(
-      () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000
-    );
-  }
+    const interval = setInterval(() => {
+      setSecondsElapsed(secondsElapsed + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [actions, secondsElapsed]);
 
-  render() {
-    const textToSpeech = (e, text) => {
-      const synth = window.speechSynthesis;
-      synth.cancel();
-      const utterThis = new SpeechSynthesisUtterance(text);
-      synth.speak(utterThis);
-    };
+  const navOnClick = () => {
+    const name = "ViewFix";
+    PageService.createPage(name, secondsElapsed, LAB_ID);
+    navigate("/Lab3/Exercise/ProblemFix");
+  };
 
-    return (
+  const textToSpeech = (text) => {
+    const synth = window.speechSynthesis;
+    synth.cancel();
+    const utterThis = new SpeechSynthesisUtterance(text);
+    synth.speak(utterThis);
+  };
+
+  return (
       <div>
         <AppBar position="static" className="appBar">
           <Toolbar>
@@ -103,15 +90,15 @@ class ViewFix extends Component {
         <br />
         <Button
           variant={"text"}
-          aria-label={this.state.aria1}
-          onFocus={(e) => textToSpeech(e, this.state.aria1)}
+          aria-label={aria1}
+          onFocus={(e) => textToSpeech(e, aria1)}
         >
           Ok
         </Button>
         <Button
           variant={"text"}
-          aria-label={this.state.aria2}
-          onFocus={(e) => textToSpeech(e, this.state.aria2)}
+          aria-label={aria2}
+          onFocus={(e) => textToSpeech(e, aria2)}
         >
           Cancel
         </Button>
@@ -120,14 +107,14 @@ class ViewFix extends Component {
         <Button
           variant={"contained"}
           className="btn btn-second btn-xl text-uppercase  leftButton"
-          onClick={ViewFix.navOnClick}
+          onClick={navOnClick}
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next
         </Button>
       </div>
-    );
-  }
-}
+  );
+};
+
 
 export default ViewFix;
