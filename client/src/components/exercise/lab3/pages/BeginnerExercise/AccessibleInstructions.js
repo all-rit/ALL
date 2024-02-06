@@ -23,7 +23,6 @@ const AccessibleInstructions = () => {
     synth.speak(utterThis);
   };
 
-
   const [text] = useState(
     state.changesApplied
       ? "By adding alt tags that specified what the image\n" +
@@ -63,7 +62,7 @@ const AccessibleInstructions = () => {
             tabIndex={"0"}
             color={"inherit"}
             onFocus={(e) => {
-              textToSpeech(e, "Instructions")
+              textToSpeech(e, "Instructions");
             }}
           >
             Instructions
@@ -84,7 +83,7 @@ const AccessibleInstructions = () => {
         </Typography>
       </Paper>
       <Paper style={paperStyle}>
-        <Typography display={"inline"} variant={"h5"} >
+        <Typography display={"inline"} variant={"h5"}>
           Note:
         </Typography>
         <Typography
@@ -93,9 +92,14 @@ const AccessibleInstructions = () => {
           tabIndex={"0"}
           paragraph={true}
           display={"block"}
-          onFocus={(e) => textToSpeech(e, `In the actual project we will show instructions on how to make the
+          onFocus={(e) =>
+            textToSpeech(
+              e,
+              `In the actual project we will show instructions on how to make the
           page more accessible to users. Participants will also be lead through
-          the activity of repairing the code.`)}
+          the activity of repairing the code.`
+            )
+          }
         >
           In the actual project we will show instructions on how to make the
           page more accessible to users. Participants will also be lead through
