@@ -1,47 +1,48 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-class Timer extends Component {
-  constructor(props) {
-    super(props);
-    const { seconds } = this.props;
-    this.state = { secondsLeft: seconds };
-  }
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-  componentDidMount() {
-    this.interval = setInterval(
-      () =>
-        this.setState({ secondsLeft: this.state.secondsLeft - 1 }, () =>
-          this.checkExpired()
-        ),
-      1000
-    );
-  }
-  checkExpired() {
-    if (this.state.secondsLeft === 0) {
-      this.props.timerDone();
-      clearInterval(this.interval);
+/**
+ * Timer component that counts down the seconds and triggers a callback when the timer is done.
+ * @param {Object} props - The props object containing the seconds and timerDone function.
+ * @param {number} props.seconds - The number of seconds for the timer.
+ * @param {Function} props.timerDone - The callback function to be triggered when the timer is done.
+ * @returns {JSX.Element} The Timer component.
+ */
+const Timer = (props) => {
+  const { seconds, timerDone } = props;
+  const [secondsLeft, setSecondsLeft] = useState(seconds);
+
+  useEffect(() => {
+    let interval = null;
+    if (secondsLeft > 0) {
+      interval = setInterval(() => {
+        setSecondsLeft((secondsLeft) => secondsLeft - 1);
+      }, 1000);
+    } else {
+      timerDone();
+      clearInterval(interval);
     }
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+    return () => clearInterval(interval);
+  }, [secondsLeft, timerDone]);
 
-  render() {
-    return (
-      <div>
-        <div className="timer">
-          <div>
-            <b>Seconds Left to Read:</b>{" "}
-          </div>
-          <div className="timer__window">
-            0 : {this.state.secondsLeft < 10 ? "0" : ""}
-            {this.state.secondsLeft}
-          </div>
+  return (
+    <div>
+      <div className="timer">
+        <div>
+          <b>Seconds Left to Read:</b>{" "}
+        </div>
+        <div className="timer__window tw-w-fit">
+          0 : {secondsLeft < 10 ? "0" : ""}
+          {secondsLeft}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+Timer.propTypes = {
+  seconds: PropTypes.number.isRequired,
+  timerDone: PropTypes.func.isRequired,
+};
 
 export default Timer;

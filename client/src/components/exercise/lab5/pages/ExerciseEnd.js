@@ -7,6 +7,13 @@ import { AppBar } from "@material-ui/core";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE } from "src/constants/index";
 
+/**
+ * Renders the ExerciseEnd component.
+ * This component displays a congratulatory message and key takeaways after completing the Cognitive Impairment Exercise.
+ * It also provides a button to restart the exercise.
+ *
+ * @returns {JSX.Element} The ExerciseEnd component.
+ */
 const ExerciseEnd = () => {
   const { state, actions } = useMainStateContext();
   const handleHome = () => {

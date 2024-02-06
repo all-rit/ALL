@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 
 const ModalExample = (props) => {
   const { buttonLabel, message, title, link } = props;
@@ -21,6 +21,13 @@ const ModalExample = (props) => {
       </Modal>
     </div>
   );
+};
+
+ModalExample.propTypes = {
+  buttonLabel: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 export default ModalExample;

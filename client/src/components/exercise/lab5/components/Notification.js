@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { Button, Popover, PopoverBody } from "reactstrap";
 import {
@@ -6,7 +5,17 @@ import {
   minFontNotif,
   maxFontNotif,
 } from "../../../../constants/lab5";
+import PropTypes from "prop-types";
 
+/**
+ * Notification component displays a notification message in a popover.
+ *
+ * @param {Object} props - The props object containing the following properties:
+ *   - message {string} - The notification message.
+ *   - fontSize {string} - The font size of the notification message.
+ *   - timeout {string} - The timeout duration for the notification.
+ * @returns {JSX.Element} The rendered Notification component.
+ */
 const Notification = (props) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [opened, setOpened] = useState(false);
@@ -23,6 +32,9 @@ const Notification = (props) => {
       actualFontSize = minFontNotif;
     }
   }
+  /**
+   * Toggles the popover open state and updates the opened state.
+   */
   const toggle = () => {
     if (!opened) {
       setPopoverOpen(!popoverOpen);
@@ -61,6 +73,12 @@ const Notification = (props) => {
       </Popover>
     </div>
   );
+};
+
+Notification.propTypes = {
+  message: PropTypes.string,
+  fontSize: PropTypes.string,
+  timeout: PropTypes.string,
 };
 
 export default Notification;

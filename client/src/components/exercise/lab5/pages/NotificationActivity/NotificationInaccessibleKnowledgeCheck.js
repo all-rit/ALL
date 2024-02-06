@@ -1,32 +1,31 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-import React, { Component } from "react";
+import React, { useState } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import { NotificationInaccessibleKnowledgeCheck as KnowledgeCheck } from "../../../../../constants/lab5";
-class NotificationInaccessibleKnowledgeCheck extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: false,
-      componentName: "NotificationInaccessibleKnowledgeCheck",
-    };
-  }
 
-  render() {
-    const { actions } = this.props;
-    return (
-      <div>
-        <KnowledgeTest
-          handler={this.handler}
-          question={KnowledgeCheck}
-          link={"/Lab5/Exercise/NotificationGuidance"}
-        />
-        <PageServiceTimer actions={actions} name={this.state.componentName} />
-      </div>
-    );
-  }
-}
+/**
+ * Renders the NotificationInaccessibleKnowledgeCheck component.
+ * This component displays a knowledge check and a page service timer.
+ * @returns {JSX.Element} The rendered NotificationInaccessibleKnowledgeCheck component.
+ */
+const NotificationInaccessibleKnowledgeCheck = () => {
+  const [selected, setSelected] = useState(false);
+  const componentName = "NotificationInaccessibleKnowledgeCheck";
+
+  const handler = () => {
+    setSelected(!selected);
+  };
+
+  return (
+    <div>
+      <KnowledgeTest
+        handler={handler}
+        question={KnowledgeCheck}
+        link={"/Lab5/Exercise/NotificationGuidance"}
+      />
+      <PageServiceTimer name={componentName} />
+    </div>
+  );
+};
 
 export default NotificationInaccessibleKnowledgeCheck;

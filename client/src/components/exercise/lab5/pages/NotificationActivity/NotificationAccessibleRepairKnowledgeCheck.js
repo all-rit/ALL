@@ -1,32 +1,33 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useState } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";
-// eslint-disable-next-line max-len
 import { NotificationAccessibleRepairKnowledgeCheck as KnowledgeCheck } from "../../../../../constants/lab5";
-class NotificationAccessibleRepairKnowledgeCheck extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: false,
-      componentName: "NotificationAccessibleRepairKnowledgeCheck",
-    };
-  }
 
-  render() {
-    const { actions } = this.props;
-    return (
-      <div>
-        <KnowledgeTest
-          handler={this.handler}
-          question={KnowledgeCheck}
-          link={"/Lab5/Exercise/FormInaccessible" + ""}
-        />
-        <PageServiceTimer actions={actions} name={this.state.componentName} />
-      </div>
-    );
-  }
-}
+/**
+ * Renders the NotificationAccessibleRepairKnowledgeCheck component.
+ * This component displays a knowledge check for repairing accessible notifications.
+ * It manages the selected state and provides a handler function to toggle the selection.
+ *
+ * @returns {JSX.Element} The rendered NotificationAccessibleRepairKnowledgeCheck component.
+ */
+const NotificationAccessibleRepairKnowledgeCheck = () => {
+  const [selected, setSelected] = useState(false);
+  const componentName = "NotificationAccessibleRepairKnowledgeCheck";
+
+  const handler = () => {
+    setSelected(!selected);
+  };
+
+  return (
+    <div>
+      <KnowledgeTest
+        handler={handler}
+        question={KnowledgeCheck}
+        link={"/Lab5/Exercise/FormInaccessible"}
+      />
+      <PageServiceTimer name={componentName} />
+    </div>
+  );
+};
 
 export default NotificationAccessibleRepairKnowledgeCheck;

@@ -1,32 +1,31 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-import React, { Component } from "react";
+import React, { useState } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import { DementiaInaccessibleKnowledgeCheck as KnowledgeCheck } from "../../../../../constants/lab5";
-class DementiaInaccessibleKnowledgeCheck extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: false,
-      componentName: "DementiaInaccessibleKnowledgeCheck",
-    };
-  }
 
-  render() {
-    const { actions } = this.props;
-    return (
-      <div>
-        <KnowledgeTest
-          handler={this.handler}
-          question={KnowledgeCheck}
-          link={"/Lab5/Exercise/PageLayoutGuidance"}
-        />
-        <PageServiceTimer actions={actions} name={this.state.componentName} />
-      </div>
-    );
-  }
-}
+/**
+ * Renders the DementiaInaccessibleKnowledgeCheck component.
+ *
+ * @returns {JSX.Element} The rendered DementiaInaccessibleKnowledgeCheck component.
+ */
+const DementiaInaccessibleKnowledgeCheck = () => {
+  const [selected, setSelected] = useState(false);
+  const componentName = "DementiaInaccessibleKnowledgeCheck";
+
+  const handler = () => {
+    setSelected(!selected);
+  };
+
+  return (
+    <div>
+      <KnowledgeTest
+        handler={handler}
+        question={KnowledgeCheck}
+        link={"/Lab5/Exercise/PageLayoutGuidance"}
+      />
+      <PageServiceTimer name={componentName} />
+    </div>
+  );
+};
 
 export default DementiaInaccessibleKnowledgeCheck;

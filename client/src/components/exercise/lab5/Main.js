@@ -27,6 +27,12 @@ import useLab5StateContext, {
   Lab5ContextProvider,
 } from "src/reducers/lab5/Lab5Context";
 
+/**
+ * Main component for the exercise lab5.
+ * Renders the exercise routes and provides the necessary context.
+ *
+ * @returns {JSX.Element} The rendered Main component.
+ */
 const Main = () => {
   const { state, actions } = useLab5StateContext();
 
