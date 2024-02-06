@@ -55,7 +55,6 @@ const UserUpdatedExercise = () => {
     }
   };
 
-
   useEffect(() => {
     document.body.style = "background: black";
     mainActions.updateUserState(EXERCISE_PLAYING);
@@ -96,7 +95,7 @@ const UserUpdatedExercise = () => {
     }
 
     return array;
-  }
+  };
 
   /**
    * Sets up the buttons for the exercise.
@@ -137,11 +136,11 @@ const UserUpdatedExercise = () => {
           onClick={() => catClick()}
           tabIndex={"0"}
           onFocus={(e) => {
-            textToSpeech(e, state.catAltValue)
-            onFocusGain(e, "cat")
+            textToSpeech(e, state.catAltValue);
+            onFocusGain(e, "cat");
           }}
           onBlur={(e) => {
-            onFocusLoss(e, "cat")
+            onFocusLoss(e, "cat");
           }}
         />,
         <button
@@ -151,11 +150,11 @@ const UserUpdatedExercise = () => {
           onClick={() => burgerClick()}
           tabIndex={"0"}
           onFocus={(e) => {
-            textToSpeech(e, state.burgerAltValue)
-            onFocusGain(e, "burger")
+            textToSpeech(e, state.burgerAltValue);
+            onFocusGain(e, "burger");
           }}
           onBlur={(e) => {
-            onFocusLoss(e, "burger")
+            onFocusLoss(e, "burger");
           }}
         />,
         <button
@@ -165,11 +164,11 @@ const UserUpdatedExercise = () => {
           onClick={() => carClick()}
           tabIndex={"0"}
           onFocus={(e) => {
-            textToSpeech(e, state.carAltValue)
-            onFocusGain(e, "car")
+            textToSpeech(e, state.carAltValue);
+            onFocusGain(e, "car");
           }}
           onBlur={(e) => {
-            onFocusLoss(e, "car")
+            onFocusLoss(e, "car");
           }}
         />,
         <button
@@ -179,11 +178,11 @@ const UserUpdatedExercise = () => {
           onClick={() => cowClick()}
           tabIndex={"0"}
           onFocus={(e) => {
-            textToSpeech(e, state.cowAltValue)
-            onFocusGain(e, "cow")
+            textToSpeech(e, state.cowAltValue);
+            onFocusGain(e, "cow");
           }}
           onBlur={(e) => {
-            onFocusLoss(e, "cow")
+            onFocusLoss(e, "cow");
           }}
         />,
       ];
@@ -196,11 +195,11 @@ const UserUpdatedExercise = () => {
           onClick={() => catClick()}
           tabIndex={"0"}
           onFocus={(e) => {
-            textToSpeech(e, "Image 1")
-            onFocusGain(e, "cat")
+            textToSpeech(e, "Image 1");
+            onFocusGain(e, "cat");
           }}
           onBlur={(e) => {
-            onFocusLoss(e, "cat")
+            onFocusLoss(e, "cat");
           }}
         />,
         <button
@@ -210,11 +209,11 @@ const UserUpdatedExercise = () => {
           onClick={() => burgerClick()}
           tabIndex={"0"}
           onFocus={(e) => {
-            textToSpeech(e, "Image 2")
-            onFocusGain(e, "burger")
+            textToSpeech(e, "Image 2");
+            onFocusGain(e, "burger");
           }}
           onBlur={(e) => {
-            onFocusLoss(e, "burger")
+            onFocusLoss(e, "burger");
           }}
         />,
         <button
@@ -224,11 +223,11 @@ const UserUpdatedExercise = () => {
           onClick={() => carClick()}
           tabIndex={"0"}
           onFocus={(e) => {
-            textToSpeech(e, "Image 3")
-            onFocusGain(e, "car")
+            textToSpeech(e, "Image 3");
+            onFocusGain(e, "car");
           }}
           onBlur={(e) => {
-            onFocusLoss(e, "car")
+            onFocusLoss(e, "car");
           }}
         />,
         <button
@@ -238,11 +237,11 @@ const UserUpdatedExercise = () => {
           onClick={() => cowClick()}
           tabIndex={"0"}
           onFocus={(e) => {
-            textToSpeech(e, "Image 4")
-            onFocusGain(e, "cow")
+            textToSpeech(e, "Image 4");
+            onFocusGain(e, "cow");
           }}
           onBlur={(e) => {
-            onFocusLoss(e, "cow")
+            onFocusLoss(e, "cow");
           }}
         />,
       ];
@@ -262,7 +261,7 @@ const UserUpdatedExercise = () => {
     });
 
     return shuffleArray(renderedButtons);
-  }
+  };
 
   /**
    * Converts text to speech using the Web Speech API.
@@ -287,75 +286,75 @@ const UserUpdatedExercise = () => {
     }
   };
 
-    return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid
-              justify="center"
-              container
-              spacing={10}
-              aria-label={"Page Title Grid"}
-            >
-              <Grid item>
-                <Typography
-                  variant={"h4"}
-                  color={"white"}
-                  aria-label={
+  return (
+    <div>
+      <AppBar position="static" className="appBar">
+        <Toolbar>
+          <Grid
+            justify="center"
+            container
+            spacing={10}
+            aria-label={"Page Title Grid"}
+          >
+            <Grid item>
+              <Typography
+                variant={"h4"}
+                color={"white"}
+                aria-label={
+                  state.changesApplied
+                    ? "Accessible Exercise"
+                    : "Inaccessible Exercise"
+                }
+                tabIndex={"0"}
+                onFocus={(e) =>
+                  textToSpeech(
+                    e,
                     state.changesApplied
                       ? "Accessible Exercise"
                       : "Inaccessible Exercise"
-                  }
-                  tabIndex={"0"}
-                  onFocus={(e) =>
-                    textToSpeech(
-                      e,
-                      state.changesApplied
-                        ? "Accessible Exercise"
-                        : "Inaccessible Exercise"
-                    )
-                  }
-                >
-                  {state.changesApplied
-                    ? "Accessible Exercise"
-                    : "Inaccessible Exercise"}
-                </Typography>
-              </Grid>
+                  )
+                }
+              >
+                {state.changesApplied
+                  ? "Accessible Exercise"
+                  : "Inaccessible Exercise"}
+              </Typography>
             </Grid>
-          </Toolbar>
-        </AppBar>
-        <Typography
-          variant={"h6"}
-          style={textStyle}
-          tabIndex={"0"}
-          onFocus={(e) =>
-            textToSpeech(
-              e,
-              "Click on the image of a cat. You can use the keyboard to navigate by tabbing across the page. Press the enter key to select."
-            )
-          }
-        >
-          Click on the image of a cat. You can use the keyboard to navigate by
-          tabbing across the page. Press the enter key to select.
-        </Typography>
-        <table style={tableStyle} tabIndex={"0"}>
-          <tbody>
-            <tr>
-              {renderedButtons[0]}
-              {renderedButtons[1]}
-            </tr>
-            <tr>
-              {renderedButtons[2]}
-              {renderedButtons[3]}
-            </tr>
-          </tbody>
-        </table>
-        {_renderSubComp(
-          state.changesApplied
-            ? "/Lab3/Exercise/CodeChange"
-            : "/Lab3/Exercise/AccessibleInstructions"
-        )}
-      </div>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+      <Typography
+        variant={"h6"}
+        style={textStyle}
+        tabIndex={"0"}
+        onFocus={(e) =>
+          textToSpeech(
+            e,
+            "Click on the image of a cat. You can use the keyboard to navigate by tabbing across the page. Press the enter key to select."
+          )
+        }
+      >
+        Click on the image of a cat. You can use the keyboard to navigate by
+        tabbing across the page. Press the enter key to select.
+      </Typography>
+      <table style={tableStyle} tabIndex={"0"}>
+        <tbody>
+          <tr>
+            {renderedButtons[0]}
+            {renderedButtons[1]}
+          </tr>
+          <tr>
+            {renderedButtons[2]}
+            {renderedButtons[3]}
+          </tr>
+        </tbody>
+      </table>
+      {_renderSubComp(
+        state.changesApplied
+          ? "/Lab3/Exercise/CodeChange"
+          : "/Lab3/Exercise/AccessibleInstructions"
+      )}
+    </div>
   );
 };
 

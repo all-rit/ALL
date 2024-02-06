@@ -73,9 +73,9 @@ const AdvancedInstructions = () => {
           gutterBottom
           tabIndex={"0"}
         >
-          You will have to learn about accessibility by performing a task
-          which will involve finding the accessibility issues in a page.
-          Please make sure you are using
+          You will have to learn about accessibility by performing a task which
+          will involve finding the accessibility issues in a page. Please make
+          sure you are using
           <Link
             component={Link}
             target="_blank"
@@ -84,8 +84,8 @@ const AdvancedInstructions = () => {
             {" "}
             Google Chrome.{" "}
           </Link>
-          For the following activity, please ensure that you have volume
-          enabled on your device.
+          For the following activity, please ensure that you have volume enabled
+          on your device.
           <br />
           <br />
           Click on the button below to test the functionality of the screen

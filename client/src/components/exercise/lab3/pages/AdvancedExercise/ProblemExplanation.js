@@ -94,7 +94,7 @@ const MySnackbarContentWrapper = (props) => {
       {...other}
     />
   );
-}
+};
 
 MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
@@ -105,7 +105,7 @@ MySnackbarContentWrapper.propTypes = {
 
 /**
  * Renders the problem explanation page.
- * 
+ *
  * @returns {JSX.Element} The problem explanation component.
  */
 const ProblemExplanation = () => {
@@ -179,10 +179,10 @@ const ProblemExplanation = () => {
         }
       >
         The problem with the page is that we do not have the required ARIA
-        attributes that make the buttons accessible. They cannot be
-        effectively described by the screenreaders. Specifically, we do not
-        have the aria-label attribute that screenreaders can make use of to
-        read text effectively.
+        attributes that make the buttons accessible. They cannot be effectively
+        described by the screenreaders. Specifically, we do not have the
+        aria-label attribute that screenreaders can make use of to read text
+        effectively.
       </Typography>
       <br />
       <Typography
@@ -244,6 +244,6 @@ const ProblemExplanation = () => {
       </Button>
     </div>
   );
-}
+};
 
 export default ProblemExplanation;

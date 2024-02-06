@@ -1,4 +1,3 @@
-
 /**
  * A component that renders its children if a condition is true.
  *
@@ -8,6 +7,6 @@
  */
 const Conditional = (props) => {
   return !!props.if && props.children;
-}
+};
 
 export default Conditional;

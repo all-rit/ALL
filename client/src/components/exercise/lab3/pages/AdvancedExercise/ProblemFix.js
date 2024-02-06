@@ -27,7 +27,7 @@ const variantIcon = {
   info: InfoIcon,
 };
 
-const  MySnackbarContentWrapper = (props) =>{
+const MySnackbarContentWrapper = (props) => {
   const classes = {
     success: {
       backgroundColor: green[600],
@@ -85,7 +85,7 @@ const  MySnackbarContentWrapper = (props) =>{
       {...other}
     />
   );
-}
+};
 
 MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
@@ -94,7 +94,7 @@ MySnackbarContentWrapper.propTypes = {
   variant: PropTypes.oneOf(["error", "info", "success", "warning"]).isRequired,
 };
 
-const ProblemFix = () =>{
+const ProblemFix = () => {
   const [textValue, setTextValue] = useState("");
   const [textValue1, setTextValue1] = useState("");
   const [open, setOpen] = useState(false);
@@ -168,7 +168,8 @@ const ProblemFix = () =>{
   };
 
   const renderButton = () => {
-    const buttonEnabled = window.location.state.endAdvancedActivityButtonEnabled;
+    const buttonEnabled =
+      window.location.state.endAdvancedActivityButtonEnabled;
     const buttonStyle = { marginLeft: "10px" };
     if (buttonEnabled) {
       return (
@@ -210,8 +211,8 @@ const ProblemFix = () =>{
           color={"inherit"}
           tabIndex={"0"}
         >
-          First make changes to the code, if not satisfied try again. Then
-          click the &lsquo;End Activity&rsquo; button, which will appear when you have
+          First make changes to the code, if not satisfied try again. Then click
+          the &lsquo;End Activity&rsquo; button, which will appear when you have
           made changes at least once.
         </Typography>
       </Paper>
@@ -286,6 +287,6 @@ const ProblemFix = () =>{
       </Snackbar>
     </div>
   );
-}
+};
 
 export default ProblemFix;

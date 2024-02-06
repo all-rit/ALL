@@ -19,7 +19,7 @@ import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
 
 const Exercise = () => {
-  const {actions} = useMainStateContext();
+  const { actions } = useMainStateContext();
   const [render, setRender] = useState("");
   const [secondsElapsed, setSecondsElapsed] = useState(0);
 
@@ -70,41 +70,39 @@ const Exercise = () => {
   };
 
   return (
-      <div>
-        <Typography className={"center"}>
-          Click on the image of a cat.
-        </Typography>
-        <br />
-        <table style={tableStyle} className={"center"}>
-          <tbody>
-            <tr>
-              <td>
-                <button style={imgStyle} onClick={() => catClick()}>
-                  <img src={catImage} alt={"image1"} />
-                </button>
-              </td>
-              <td>
-                <button style={imgStyle} onClick={() => carClick()}>
-                  <img src={carImage} alt={"image2"} />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button style={imgStyle} onClick={() => burgerClick()}>
-                  <img src={burgerImage} alt={"image3"} />
-                </button>
-              </td>
-              <td>
-                <button style={imgStyle} onClick={() => cowClick()}>
-                  <img src={cowImage} alt={"image4"} />
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        {_renderSubComp("/Lab3/Exercise/ExerciseInstructions")}
-      </div>
+    <div>
+      <Typography className={"center"}>Click on the image of a cat.</Typography>
+      <br />
+      <table style={tableStyle} className={"center"}>
+        <tbody>
+          <tr>
+            <td>
+              <button style={imgStyle} onClick={() => catClick()}>
+                <img src={catImage} alt={"image1"} />
+              </button>
+            </td>
+            <td>
+              <button style={imgStyle} onClick={() => carClick()}>
+                <img src={carImage} alt={"image2"} />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button style={imgStyle} onClick={() => burgerClick()}>
+                <img src={burgerImage} alt={"image3"} />
+              </button>
+            </td>
+            <td>
+              <button style={imgStyle} onClick={() => cowClick()}>
+                <img src={cowImage} alt={"image4"} />
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {_renderSubComp("/Lab3/Exercise/ExerciseInstructions")}
+    </div>
   );
 };
 

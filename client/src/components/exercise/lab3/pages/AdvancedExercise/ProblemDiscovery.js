@@ -135,8 +135,8 @@ const ProblemDiscovery = () => {
           )
         }
       >
-        Write down the problems on a notepad or any other text editor. Go
-        ahead take a guess. Don&apos;t actually click on the Ok and Cancel buttons.
+        Write down the problems on a notepad or any other text editor. Go ahead
+        take a guess. Don&apos;t actually click on the Ok and Cancel buttons.
         They are there for the example.
       </Typography>
       <br />

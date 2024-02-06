@@ -64,49 +64,52 @@ export const Lab3ContextProvider = ({ children }) => {
     Lab3RepairInititalState
   );
 
-
-/**
- * Object containing actions for Lab3Context.
- * @typedef {Object} appActions
- * @property {Function} updatePopup - Action to update the popup with a message.
- * @param {string} message - The message to be displayed in the popup.
- */
+  /**
+   * Object containing actions for Lab3Context.
+   * @typedef {Object} appActions
+   * @property {Function} updatePopup - Action to update the popup with a message.
+   * @param {string} message - The message to be displayed in the popup.
+   */
   const appActions = {
-    updatePopup: (message) => appDispatch({ type: Lab3AppTypes.UPDATE_POPUP, message }),
+    updatePopup: (message) =>
+      appDispatch({ type: Lab3AppTypes.UPDATE_POPUP, message }),
   };
 
-/**
- * Object containing actions related to repair in Lab3Context.
- * @typedef {Object} RepairActions
- * @property {function} updateRepairError - Action to update repair error.
- * @property {function} updateRepair - Action to update repair values.
- * @property {function} updateTab - Action to update tab.
- * @property {function} openRepair - Action to open repair.
- * @property {function} closeRepair - Action to close repair.
- */
+  /**
+   * Object containing actions related to repair in Lab3Context.
+   * @typedef {Object} RepairActions
+   * @property {function} updateRepairError - Action to update repair error.
+   * @property {function} updateRepair - Action to update repair values.
+   * @property {function} updateTab - Action to update tab.
+   * @property {function} openRepair - Action to open repair.
+   * @property {function} closeRepair - Action to close repair.
+   */
   const repairActions = {
-    updateRepairError: (repairError) => repairDispatch({
+    updateRepairError: (repairError) =>
+      repairDispatch({
         type: Lab3RepairTypes.UPDATE_REPAIR_ERROR,
         repairError,
       }),
-      updateRepair: (cowAltValue, carAltValue, burgerAltValue, catAltValue) => repairDispatch({
+    updateRepair: (cowAltValue, carAltValue, burgerAltValue, catAltValue) =>
+      repairDispatch({
         type: Lab3RepairTypes.UPDATE_REPAIR,
         cowAltValue,
         carAltValue,
         burgerAltValue,
         catAltValue,
       }),
-      updateTab: (tab) => repairDispatch({ type: Lab3RepairTypes.UPDATE_TAB, tab }),
-      openRepair: () => repairDispatch({ type: Lab3RepairTypes.OPEN_REPAIR }),
-      closeRepair: () => repairDispatch({ type: Lab3RepairTypes.CLOSE_REPAIR }),
+    updateTab: (tab) =>
+      repairDispatch({ type: Lab3RepairTypes.UPDATE_TAB, tab }),
+    openRepair: () => repairDispatch({ type: Lab3RepairTypes.OPEN_REPAIR }),
+    closeRepair: () => repairDispatch({ type: Lab3RepairTypes.CLOSE_REPAIR }),
   };
 
-/**
- * The value object containing the state and actions for Lab3Context.
- * @typedef {Object} Lab3ContextValue
- * @property {Object} state - The combined state of appState and repairState.
- * @property {Object} actions - The combined actions of appActions and repairActions.
- */
+  /**
+   * The value object containing the state and actions for Lab3Context.
+   * @typedef {Object} Lab3ContextValue
+   * @property {Object} state - The combined state of appState and repairState.
+   * @property {Object} actions - The combined actions of appActions and repairActions.
+   */
   const value = {
     state: { ...appState, ...repairState },
     actions: { ...appActions, ...repairActions },

@@ -25,7 +25,7 @@ import useMainStateContext from "src/reducers/MainContext";
  * The component also includes buttons for user interaction and a Next button to proceed to the next step.
  */
 const ProblemDiscoveryFixedExperience = () => {
-  const {actions} = useMainStateContext();
+  const { actions } = useMainStateContext();
   const [secondsElapsed, setSecondsElapsed] = useState(0);
 
   const handleSubmit = () => {
@@ -115,9 +115,10 @@ const ProblemDiscoveryFixedExperience = () => {
         }
       >
         The accessibility issues have been repaired here. All images say what
-        their contents are as such like &lsquo;cat&rsquo;, &lsquo;burger&rsquo; and &lsquo;car&rsquo; etc. and not
-        &lsquo;image of cat&rsquo;, &lsquo;image of burger&rsquo;, &lsquo;image of car&rsquo; etc. . Try using
-        your screenreader now.
+        their contents are as such like &lsquo;cat&rsquo;, &lsquo;burger&rsquo;
+        and &lsquo;car&rsquo; etc. and not &lsquo;image of cat&rsquo;,
+        &lsquo;image of burger&rsquo;, &lsquo;image of car&rsquo; etc. . Try
+        using your screenreader now.
       </Typography>
       <br />
       <table style={tableStyle} className={"center"}>

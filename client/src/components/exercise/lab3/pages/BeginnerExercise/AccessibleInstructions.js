@@ -14,19 +14,19 @@ import useLab3StateContext from "src/reducers/lab3/Lab3Context";
  */
 const AccessibleInstructions = () => {
   const { actions: mainActions } = useMainStateContext();
-  const { state } = useLab3StateContext(); 
+  const { state } = useLab3StateContext();
   const [text] = useState(
     state.changesApplied
       ? "By adding alt tags that specified what the image\n" +
-        "contained, you have now seen how a screen reader allows the\n" +
-        "the user to more easily identify the image of the cat despite being\n" +
-        "unable to see it, therefore successfully improving the accessibility of the page."
+          "contained, you have now seen how a screen reader allows the\n" +
+          "the user to more easily identify the image of the cat despite being\n" +
+          "unable to see it, therefore successfully improving the accessibility of the page."
       : "You clicked on an image. However, without the ability to see, it may\n" +
-        "be difficult to decipher what these images represent. The previous\n" +
-        "page demonstrated how difficult it was to use a page that was\n" +
-        "inaccessible. In order to make the pages readable by a screenreader\n" +
-        "we need to be add 'alt' attributes to content which will help\n" +
-        "improve accessibility."
+          "be difficult to decipher what these images represent. The previous\n" +
+          "page demonstrated how difficult it was to use a page that was\n" +
+          "inaccessible. In order to make the pages readable by a screenreader\n" +
+          "we need to be add 'alt' attributes to content which will help\n" +
+          "improve accessibility."
   );
 
   useEffect(() => {
@@ -82,8 +82,8 @@ const AccessibleInstructions = () => {
           display={"block"}
         >
           In the actual project we will show instructions on how to make the
-          page more accessible to users. Participants will also be lead
-          through the activity of repairing the code.
+          page more accessible to users. Participants will also be lead through
+          the activity of repairing the code.
         </Typography>
       </Paper>
       <Button

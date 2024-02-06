@@ -18,41 +18,27 @@ import ViewFix from "../../exercise/lab3/pages/AdvancedExercise/ViewFix";
 import ProblemDiscoveryFixedExperience from "../../exercise/lab3/pages/AdvancedExercise/ProblemDiscoveryFixedExperience";
 import { Lab3ContextProvider } from "src/reducers/lab3/Lab3Context";
 
-
 const Main = () => {
-
   return (
     <Lab3ContextProvider>
       <div className="container bottomSpace">
         <Router className="app">
           <ExerciseStart default path="/" />
           <FullExercise path="/BeginnerExercise" />
-          <ExerciseInstructions
-            path={"/ExerciseInstructions"}
-          />
-          <UserUpdatedExercise
-            path={"/UserUpdatedExercise"}
-          />
-          <AccessibleInstructions
-            path={"/AccessibleInstructions"}
-          />
-          <CodeChange path={"/CodeChange"}/>
+          <ExerciseInstructions path={"/ExerciseInstructions"} />
+          <UserUpdatedExercise path={"/UserUpdatedExercise"} />
+          <AccessibleInstructions path={"/AccessibleInstructions"} />
+          <CodeChange path={"/CodeChange"} />
           <AdvancedExercise path={"/AdvancedExercise"} />
-          <AdvancedInstructions
-            path={"/AdvancedInstructions"}
-          />
+          <AdvancedInstructions path={"/AdvancedInstructions"} />
           <ProblemDiscovery path={"/ProblemDiscovery"} />
           <ProblemExplanation path={"/ProblemExplanation"} />
           <ProblemDiscoveryFixedExperience
             path={"/ProblemDiscoveryFixedExperience"}
           />
           <ProblemFix path={"/ProblemFix"} />
-          <BeginnerExerciseConclusion
-            path={"/BeginnerExerciseConclusion"}
-          />
-          <AdvancedExerciseConclusion
-            path={"/AdvancedExerciseConclusion"}
-          />
+          <BeginnerExerciseConclusion path={"/BeginnerExerciseConclusion"} />
+          <AdvancedExerciseConclusion path={"/AdvancedExerciseConclusion"} />
           <ViewFix path={"/ViewFix"} />
         </Router>
       </div>

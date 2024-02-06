@@ -12,15 +12,15 @@ import { EXERCISE_PLAYING } from "src/constants/index";
  * @returns {JSX.Element} The rendered ExerciseStart component.
  */
 const ExerciseStart = () => {
-  const {actions} = useMainStateContext();
+  const { actions } = useMainStateContext();
 
   const handleSubmit = () => {
-    actions.updateUserState(EXERCISE_PLAYING)
+    actions.updateUserState(EXERCISE_PLAYING);
     navigate("/Lab3/Exercise/BeginnerExercise");
   };
 
   const handleSubmitAdv = () => {
-    actions.updateUserState(EXERCISE_PLAYING)
+    actions.updateUserState(EXERCISE_PLAYING);
     navigate("/Lab3/Exercise/AdvancedExercise");
   };
 
@@ -32,7 +32,7 @@ const ExerciseStart = () => {
     marginTop: 10,
     marginRight: 2,
   };
-  
+
   /**
    * Style object for the right button.
    * @type {Object}

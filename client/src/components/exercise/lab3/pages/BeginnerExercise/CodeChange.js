@@ -37,7 +37,7 @@ const variantIcon = {
  * @param {Object} props.other - Additional props to be passed to the SnackbarContent component.
  * @returns {JSX.Element} The rendered MySnackbarContentWrapper component.
  */
-const MySnackbarContentWrapper = (props) =>{
+const MySnackbarContentWrapper = (props) => {
   const classes = {
     success: {
       backgroundColor: green[600],
@@ -95,7 +95,7 @@ const MySnackbarContentWrapper = (props) =>{
       {...other}
     />
   );
-}
+};
 
 MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
@@ -119,10 +119,10 @@ const CodeChange = () => {
     mainActions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
-  const doEvent = (obj, event) => {
-    const eventInit = new Event(event, { target: obj, bubbles: true });
-    return obj ? obj.dispatchEvent(eventInit) : false;
-  };
+  // const doEvent = (obj, event) => {
+  //   const eventInit = new Event(event, { target: obj, bubbles: true });
+  //   return obj ? obj.dispatchEvent(eventInit) : false;
+  // };
 
   return (
     <div>
@@ -141,8 +141,8 @@ const CodeChange = () => {
           color={"inherit"}
           tabIndex={"0"}
         >
-          First make changes to the code, if not satisfied try again. Then
-          click the &rsquo;End Activity&lsquo; button, which will appear when you have
+          First make changes to the code, if not satisfied try again. Then click
+          the &rsquo;End Activity&lsquo; button, which will appear when you have
           made changes at least once.
         </Typography>
       </div>

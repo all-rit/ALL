@@ -49,5 +49,5 @@ const StickyFooter = () => {
       </footer>
     </div>
   );
-}
+};
 export default StickyFooter;

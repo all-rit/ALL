@@ -30,9 +30,7 @@ const CatClickNavigate = ({ path }) => {
     <div id={"catClickMessage"}>
       <Typography
         variant={"h6"}
-        aria-label={
-          "Cat clicked! Please click the 'next' button to continue."
-        }
+        aria-label={"Cat clicked! Please click the 'next' button to continue."}
         tabIndex={"0"}
         style={typographyStyle}
         onFocus={(e) =>

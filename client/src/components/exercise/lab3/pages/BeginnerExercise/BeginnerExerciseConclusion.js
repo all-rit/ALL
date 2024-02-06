@@ -12,7 +12,7 @@ import { EXERCISE_IDLE } from "src/constants/index";
 
 /**
  * Renders the conclusion page for the beginner exercise.
- * 
+ *
  * @returns {JSX.Element} The rendered conclusion page component.
  */
 const BeginnerExerciseConclusion = () => {

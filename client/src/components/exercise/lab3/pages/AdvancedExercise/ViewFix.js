@@ -10,7 +10,7 @@ import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
 
 const ViewFix = () => {
-  const {actions} = useMainStateContext();
+  const { actions } = useMainStateContext();
   const [aria1, setAria1] = useState("Ok button");
   const [aria2, setAria2] = useState("Cancel button");
   const [secondsElapsed, setSecondsElapsed] = useState(0);
@@ -41,80 +41,79 @@ const ViewFix = () => {
   };
 
   return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid justify="center" container spacing={10}>
-              <Grid item>
-                <Typography
-                  variant={"h4"}
-                  aria-label={"Title"}
-                  gutterBottom
-                  tabindex={"0"}
-                  onFocus={(e) => textToSpeech(e, "Test Fix")}
-                >
-                  Test Repair
-                </Typography>
-              </Grid>
+    <div>
+      <AppBar position="static" className="appBar">
+        <Toolbar>
+          <Grid justify="center" container spacing={10}>
+            <Grid item>
+              <Typography
+                variant={"h4"}
+                aria-label={"Title"}
+                gutterBottom
+                tabindex={"0"}
+                onFocus={(e) => textToSpeech(e, "Test Fix")}
+              >
+                Test Repair
+              </Typography>
             </Grid>
-          </Toolbar>
-        </AppBar>
-        <br />
-        <Typography
-          variant={"h6"}
-          aria-label={"Subtitle Instructions"}
-          gutterBottom
-          tabindex={"0"}
-          onFocus={(e) => textToSpeech(e, "Is your page now more accessible?")}
-        >
-          Is your page now more accessible?
-        </Typography>
-        <br />
-        <Typography
-          variant={"body1"}
-          aria-label={"Body Instructions"}
-          gutterBottom
-          tabindex={"0"}
-          onFocus={(e) =>
-            textToSpeech(
-              e,
-              "If you have updated the buttons with the appropriate " +
-                "aria-labels then you have succeeded. They can now be effectively described by screenreaders."
-            )
-          }
-        >
-          If you have updated the buttons with the appropriate aria-labels then
-          you have succeeded. They can now be effectively described by
-          screenreaders.
-        </Typography>
-        <br />
-        <Button
-          variant={"text"}
-          aria-label={aria1}
-          onFocus={(e) => textToSpeech(e, aria1)}
-        >
-          Ok
-        </Button>
-        <Button
-          variant={"text"}
-          aria-label={aria2}
-          onFocus={(e) => textToSpeech(e, aria2)}
-        >
-          Cancel
-        </Button>
-        <br />
-        <br />
-        <Button
-          variant={"contained"}
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-          onClick={navOnClick}
-          onFocus={(e) => textToSpeech(e, "Next")}
-        >
-          Next
-        </Button>
-      </div>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+      <br />
+      <Typography
+        variant={"h6"}
+        aria-label={"Subtitle Instructions"}
+        gutterBottom
+        tabindex={"0"}
+        onFocus={(e) => textToSpeech(e, "Is your page now more accessible?")}
+      >
+        Is your page now more accessible?
+      </Typography>
+      <br />
+      <Typography
+        variant={"body1"}
+        aria-label={"Body Instructions"}
+        gutterBottom
+        tabindex={"0"}
+        onFocus={(e) =>
+          textToSpeech(
+            e,
+            "If you have updated the buttons with the appropriate " +
+              "aria-labels then you have succeeded. They can now be effectively described by screenreaders."
+          )
+        }
+      >
+        If you have updated the buttons with the appropriate aria-labels then
+        you have succeeded. They can now be effectively described by
+        screenreaders.
+      </Typography>
+      <br />
+      <Button
+        variant={"text"}
+        aria-label={aria1}
+        onFocus={(e) => textToSpeech(e, aria1)}
+      >
+        Ok
+      </Button>
+      <Button
+        variant={"text"}
+        aria-label={aria2}
+        onFocus={(e) => textToSpeech(e, aria2)}
+      >
+        Cancel
+      </Button>
+      <br />
+      <br />
+      <Button
+        variant={"contained"}
+        className="btn btn-second btn-xl text-uppercase  leftButton"
+        onClick={navOnClick}
+        onFocus={(e) => textToSpeech(e, "Next")}
+      >
+        Next
+      </Button>
+    </div>
   );
 };
-
 
 export default ViewFix;
