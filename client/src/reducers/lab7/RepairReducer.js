@@ -1,4 +1,4 @@
-export const types = {
+const types = {
   RESET_REPAIR: "@accessibility-lab/lab7/repair/reset_repair",
   UNDO_REPAIR_CHANGES: "@accessibility-lab/lab7/repair/undo_repair_changes",
   UPDATE_REPAIR_EQUATION:
@@ -15,7 +15,7 @@ export const types = {
   SET_REPAIR_ID: "@accessibility-lab/lab7/repair/set_repair_id",
 };
 
-export const initialState = {
+const initialState = {
   rewardValue: "",
   costValue: "",
 
@@ -106,39 +106,4 @@ const RepairReducer = (state = initialState, action) => {
   }
 };
 
-export const actions = {
-  resetRepair: () => ({ type: types.RESET_REPAIR }),
-  undoRepairChanges: () => ({ type: types.UNDO_REPAIR_CHANGES }),
-  updateRepairEquation: (rewardValue, costValue) => ({
-    type: types.UPDATE_REPAIR_EQUATION,
-    rewardValue,
-    costValue,
-  }),
-  updateRewardValue: (rewardValue) => ({
-    type: types.UPDATE_REWARD_VALUE,
-    rewardValue,
-  }),
-  updateCostValue: (costValue) => ({
-    type: types.UPDATE_COST_VALUE,
-    costValue,
-  }),
-  updateRewardError: (rewardError) => ({
-    type: types.UPDATE_REWARD_ERROR,
-    rewardError,
-  }),
-  updateCostError: (costError) => ({
-    type: types.UPDATE_COST_ERROR,
-    costError,
-  }),
-  updateRepairError: (repairError) => ({
-    type: types.UPDATE_REPAIR_ERROR,
-    repairError,
-  }),
-  updateTab: (tab) => ({ type: types.UPDATE_TAB, tab }),
-  openRepair: () => ({ type: types.OPEN_REPAIR }),
-  closeRepair: () => ({ type: types.CLOSE_REPAIR }),
-  updateMakeDecision: (func) => ({ type: types.UPDATE_MAKE_DECISION, func }),
-  setRepairId: (repairId) => ({ type: types.SET_REPAIR_ID, repairId }),
-};
-
-export default RepairReducer;
+export { RepairReducer, initialState, types };

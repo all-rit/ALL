@@ -1,15 +1,20 @@
 import React from "react";
 import { Modal, ModalHeader } from "reactstrap";
-import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../reducers/lab7/ExerciseReducer";
-import { connect } from "react-redux";
 import { CheckRounded, WarningRounded } from "@material-ui/icons";
 import ProgressBar from "./ProgressBar";
 import { MESSAGES, READ_TIME } from "../../../../constants/lab7";
 import Countdown from "react-countdown";
+import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
 
-const MessageModal = (props) => {
+
+/**
+ * Represents a message modal component.
+ * 
+ * @component
+ * @returns {JSX.Element} MessageModal component
+ */
+const MessageModal = () => {
+  const { state } = useLab7StateContext();
   /**
    * Callback method for a countdown. Used for progress bar.
    *
@@ -19,14 +24,14 @@ const MessageModal = (props) => {
    */
   const countdownRenderCallback = ({ seconds, completed }) => {
     if (completed) return <></>;
-    else return <ProgressBar text={props.message} seconds={seconds} />;
+    else return <ProgressBar text={state.message} seconds={seconds} />;
   };
 
-  const isIntrusion = props.message !== MESSAGES.Perfect;
+  const isIntrusion = state.message !== MESSAGES.Perfect;
   return (
     <Modal
       centered={true}
-      isOpen={props.isModalOpen}
+      isOpen={state.isModalOpen}
       contentClassName={"tw-max-w-4xl"}
     >
       <ModalHeader>
@@ -49,21 +54,4 @@ const MessageModal = (props) => {
   );
 };
 
-MessageModal.propTypes = {
-  isModalOpen: PropTypes.bool,
-  message: PropTypes.element,
-  handlers: PropTypes.object,
-};
-
-const mapStateToProps = (state) => {
-  const { isModalOpen, message } = state.exercise7;
-  return { isModalOpen, message };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handlers: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MessageModal);
+export default MessageModal;
