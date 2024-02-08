@@ -6,10 +6,9 @@ import { MESSAGES, READ_TIME } from "../../../../constants/lab7";
 import Countdown from "react-countdown";
 import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
 
-
 /**
  * Represents a message modal component.
- * 
+ *
  * @component
  * @returns {JSX.Element} MessageModal component
  */

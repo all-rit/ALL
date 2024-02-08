@@ -11,10 +11,10 @@ import { EXERCISE_PLAYING } from "src/constants/index";
  * @returns {JSX.Element} The ExerciseStart component.
  */
 const ExerciseStart = () => {
-  const {actions} = useMainStateContext();
+  const { actions } = useMainStateContext();
 
   const handleStart = () => {
-    actions.updateUserState(EXERCISE_PLAYING)
+    actions.updateUserState(EXERCISE_PLAYING);
     navigate("/Lab7/Exercise/AISimulation");
   };
 
@@ -46,8 +46,8 @@ const ExerciseStart = () => {
               The simulation will consist of <b>ten rounds</b>
               <ul className={"tw-space-y-1.5"}>
                 <li>
-                  For each round, a <b>threat level</b> will be detected in
-                  the system
+                  For each round, a <b>threat level</b> will be detected in the
+                  system
                 </li>
                 <li>
                   The system will restrict file access based on the{" "}
@@ -91,8 +91,8 @@ const ExerciseStart = () => {
                   <b>&quot;AI Incorrect&quot;</b>.
                 </li>
                 <li>
-                  The autonomous system&apos;s mistakes can be categorized
-                  into two types:
+                  The autonomous system&apos;s mistakes can be categorized into
+                  two types:
                 </li>
                 <ul className={"tw-py-1.5"}>
                   <li>
@@ -100,9 +100,9 @@ const ExerciseStart = () => {
                     should have been restricted.
                   </li>
                   <li>
-                    An <b>incorrect decision</b>, or{" "}
-                    <b>false positive (FP)</b>, occurs when a file is
-                    restricted when it should have been accessible.
+                    An <b>incorrect decision</b>, or <b>false positive (FP)</b>,
+                    occurs when a file is restricted when it should have been
+                    accessible.
                   </li>
                 </ul>
               </ul>
@@ -115,8 +115,8 @@ const ExerciseStart = () => {
         </div>
 
         <p className="playthrough__sentence">
-          <b>Note</b>: The simulation will be done by the autonomous system.
-          You will <b>NOT</b> be able to interact with the simulation once it
+          <b>Note</b>: The simulation will be done by the autonomous system. You
+          will <b>NOT</b> be able to interact with the simulation once it
           starts.
         </p>
 

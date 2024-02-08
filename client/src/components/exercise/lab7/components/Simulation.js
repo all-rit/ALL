@@ -48,9 +48,9 @@ const Simulation = () => {
   }, []);
 
   useEffect(() => {
-    if (counter >= 0){
-      console.log(state)
-      if ( counter < files.length) {
+    if (counter >= 0) {
+      console.log(state);
+      if (counter < files.length) {
         switch (files[counter].result) {
           case FILE_PROTECTED:
             handleProtected();
@@ -67,11 +67,13 @@ const Simulation = () => {
         actions.incrementScore(SCORE_MAP[files[counter].result]);
       } else {
         const result = handlePerfectScore();
-        setTimeout(() => startRound(), result ? READ_TIME + DELAY_TIME : NO_DELAY);
+        setTimeout(
+          () => startRound(),
+          result ? READ_TIME + DELAY_TIME : NO_DELAY
+        );
       }
     }
   }, [counter]); // Only re-run the effect if counter changes
-  
 
   /**
    * Starts the simulation.
@@ -204,7 +206,7 @@ const Simulation = () => {
 
   /**
    * Handles the countdown component.
-   * 
+   *
    * @param {Array} files - The files to be set.
    * @param {string} message - The message to be set.
    * @param {number} [delay=DELAY_TIME] - The delay time in milliseconds.
@@ -227,7 +229,9 @@ const Simulation = () => {
    * @returns {boolean} Returns true if the score is perfect, otherwise false.
    */
   const handlePerfectScore = () => {
-    const filteredFiles = files.filter((file) => file.result === FILE_PROTECTED);
+    const filteredFiles = files.filter(
+      (file) => file.result === FILE_PROTECTED
+    );
     if (filteredFiles.length === files.length) {
       actions.incrementScore(SCORE_MAP.PERFECT_SCORE);
       handleCountdownComponent(files, MESSAGES.Perfect, NO_DELAY);
@@ -244,7 +248,7 @@ const Simulation = () => {
     setFiles(files);
     actions.incrementProtected();
     incrementCounter();
-};
+  };
 
   /**
    * Handles an intrusion event.
@@ -277,50 +281,50 @@ const Simulation = () => {
 
   return (
     <>
-       <MessageModal />
-        <div className="">
-          {/* Header */}
-          <div className={"tw-flex tw-justify-between"}>
-            {/* Round Tracker */}
-            <div>
-              <h4 className="tw-font-bold">
-                Round {roundNumber} of {ROUND_LIMIT}
-              </h4>
-            </div>
-            {/* Status Report */}
-            <div className={"tw-flex tw-text-xl tw-m-[20px]"}>
-              <ul className={"tw-text-left tw-font-bold"}>
-                <li>Intrusions:</li>
-                <li>Protected (TP):</li>
-                <li>Incorrect (FP):</li>
-                <li>Total Score:</li>
-              </ul>
-              <ul className={"tw-text-right tw-ml-6"}>
-                <li>{intrusions}</li>
-                <li>{protectedNum}</li>
-                <li>{incorrect}</li>
-                <li>{score}</li>
-              </ul>
-            </div>
-          </div>
-          {/* Body */}
+      <MessageModal />
+      <div className="">
+        {/* Header */}
+        <div className={"tw-flex tw-justify-between"}>
+          {/* Round Tracker */}
           <div>
-            {/* Threat Message */}
-            <div
-              className={"tw-flex tw-items-center tw-justify-center tw-w-full"}
-            >
-              <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
-                {THREAT_LEVEL_TEXT[state.threatLvl]} threat detected!
-              </h1>
-            </div>
-            {/* File Display */}
-            <div className={"tw-flex tw-justify-around tw-mt-16"}>
-              {files.map((file, index) => (
-                <File key={index} data={file} />
-              ))}
-            </div>
+            <h4 className="tw-font-bold">
+              Round {roundNumber} of {ROUND_LIMIT}
+            </h4>
+          </div>
+          {/* Status Report */}
+          <div className={"tw-flex tw-text-xl tw-m-[20px]"}>
+            <ul className={"tw-text-left tw-font-bold"}>
+              <li>Intrusions:</li>
+              <li>Protected (TP):</li>
+              <li>Incorrect (FP):</li>
+              <li>Total Score:</li>
+            </ul>
+            <ul className={"tw-text-right tw-ml-6"}>
+              <li>{intrusions}</li>
+              <li>{protectedNum}</li>
+              <li>{incorrect}</li>
+              <li>{score}</li>
+            </ul>
           </div>
         </div>
+        {/* Body */}
+        <div>
+          {/* Threat Message */}
+          <div
+            className={"tw-flex tw-items-center tw-justify-center tw-w-full"}
+          >
+            <h1 className={"tw-font-bold tw-absolute tw-m-0 -tw-mt-16"}>
+              {THREAT_LEVEL_TEXT[state.threatLvl]} threat detected!
+            </h1>
+          </div>
+          {/* File Display */}
+          <div className={"tw-flex tw-justify-around tw-mt-16"}>
+            {files.map((file, index) => (
+              <File key={index} data={file} />
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,6 +1,4 @@
-import {
-  BAD_AI_EXPLANATION,
-} from "../../constants/lab7/index";
+import { BAD_AI_EXPLANATION } from "../../constants/lab7/index";
 
 const types = {
   ENABLE_END: "@accessibility-lab/lab7/exercise/enable_end",
