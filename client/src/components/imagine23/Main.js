@@ -4,7 +4,7 @@ import { navigate, Router } from "@reach/router";
 import { bindActionCreators } from "redux";
 import LandingPage from "./pages/landingPage";
 import MainInstructions from "./pages/mainInstructions";
-import Reading from "./pages/Reading";
+import Reading from "../body/Reading/Reading";
 import { default as ExerciseLab2 } from "../exercise/lab2/Main";
 import ExpressionStart from "./pages/ExpressionStart";
 import ExpressionExercise from "./pages/ExpressionExercise";
@@ -14,7 +14,6 @@ import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
-import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");
 import { PropTypes } from "prop-types";
 
@@ -33,7 +32,7 @@ const Main = (props) => {
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
 
-  const [labId] = useState(2);
+  const [labId] = useState(23);
   const [isExperiential, setIsExperiential] = useState(false);
 
   function handleGroupAssignment(isExperiential) {
@@ -151,14 +150,7 @@ const Main = (props) => {
             user={state.main.user}
             userID={userID}
             labID={labId}
-          />
-          <Quiz
-            path={`/Quiz`}
-            labId={labId}
-            user={state.main.user}
-            isFinalQuiz
-            hideCertificate={false}
-            submitData={() => {}}
+            imagine={true}
           />
           <Survey path={`/PostSurvey`} userID={userID} type="post" />
           <ExerciseEnd
