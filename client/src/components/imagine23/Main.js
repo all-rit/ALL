@@ -4,7 +4,7 @@ import { navigate, Router } from "@reach/router";
 import { bindActionCreators } from "redux";
 import LandingPage from "./pages/landingPage";
 import MainInstructions from "./pages/mainInstructions";
-import Reading from "../body/Reading/Reading";
+import Reading from "./pages/Reading";
 import { default as ExerciseLab2 } from "../exercise/lab2/Main";
 import ExpressionStart from "./pages/ExpressionStart";
 import ExpressionExercise from "./pages/ExpressionExercise";
