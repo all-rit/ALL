@@ -66,13 +66,11 @@ const getUserByID = async (req, res) => {
 const readMoreCount = async (req, res) =>{
   const {userID, readMoreCount} = req.body;
   try {
-    const resReadMoreCount = await ImagineService.readMoreCount({
+    const result = await ImagineService.readMoreCount({
       userID,
       readMoreCount,
     });
-    if (!resReadMoreCount) {
-      throw new Error('Read more count was not recorded');
-    }
+    return result;
   } catch (error) {
     console.error(error);
   };
@@ -82,13 +80,11 @@ const readMoreCount = async (req, res) =>{
 const readMoreTimeElapsed = async (req, res) =>{
   const {userID, readMoreTimeElapsed} = req.body;
   try {
-    const resReadMoreTimeElapsed = await ImagineService.readMoreTimeElapsed({
+    const result = await ImagineService.readMoreTimeElapsed({
       userID,
       readMoreTimeElapsed,
     });
-    if (!resReadMoreTimeElapsed) {
-      throw new Error('Time elapsed was not recorded');
-    }
+    return result;
   } catch (error) {
     console.error(error);
   };
@@ -97,14 +93,12 @@ const readMoreTimeElapsed = async (req, res) =>{
 const readingSectionPagePosition = async (req, res) =>{
   const {userID, readingSectionPagePosition} = req.body;
   try {
-    const resReadingSectionPagePosition = await
+    const result = await
     ImagineService.readingSectionPagePosition({
       userID,
       readingSectionPagePosition,
     });
-    if (!resReadingSectionPagePosition) {
-      throw new Error('Reading Section position was not recorded');
-    }
+    return result;
   } catch (error) {
     console.error(error);
   };
