@@ -32,7 +32,7 @@ const Main = (props) => {
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
 
-  const [labId] = useState(23);
+  const [labId] = useState(2);
   const [isExperiential, setIsExperiential] = useState(false);
 
   function handleGroupAssignment(isExperiential) {
