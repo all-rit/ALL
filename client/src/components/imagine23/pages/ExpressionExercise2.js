@@ -4,6 +4,8 @@ import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
 
+const section = "discomfortCountNonPOC";
+
 const ExpressionExercise2 = (props) => {
   const { setCount, count, userID } = props;
 
@@ -26,7 +28,8 @@ const ExpressionExercise2 = (props) => {
   };
 
   const handleNext = () => {
-    ImagineService.discomfortCount(userID, timeStamps);
+    const body = { userID, study: timeStamps, section };
+    ImagineService.postStudy(body);
     navigate("/Imagine/ExpressionScore");
   };
 

@@ -14,7 +14,6 @@ import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
-import { default as Quiz } from "./pages/Quiz";
 const { nanoid } = require("nanoid");
 import { PropTypes } from "prop-types";
 
@@ -151,14 +150,7 @@ const Main = (props) => {
             user={state.main.user}
             userID={userID}
             labID={labId}
-          />
-          <Quiz
-            path={`/Quiz`}
-            labId={labId}
-            user={state.main.user}
-            isFinalQuiz
-            hideCertificate={false}
-            submitData={() => {}}
+            imagine={true}
           />
           <Survey path={`/PostSurvey`} userID={userID} type="post" />
           <ExerciseEnd

@@ -2,44 +2,27 @@
 import API from "./API";
 
 const ImagineService = {
-  discomfortCount: (userID, discomfortCount) => {
-    return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/discomfortCount",
+  postStudy: async (userID, study) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + "/imagine/postStudy",
       {
         userID,
-        discomfortCount,
+        study,
       }
     );
   },
-  experientialMain: (userID, experientialMain) => {
-    return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/experientialMain",
-      {
-        userID,
-        experientialMain,
-      }
-    );
-  },
-  experientialProtanopia: (userID, experientialProtanopia) => {
-    return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/experientialProtanopia",
-      {
-        userID,
-        experientialProtanopia,
-      }
-    );
-  },
-  preSurvey: (userID, preSurvey) => {
-    return API.postWithBody(
+  preSurvey: async (userID, preSurvey, section) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
       {
         userID,
         preSurvey,
+        section,
       }
     );
   },
-  postSurvey: (userID, postSurvey) => {
-    return API.postWithBody(
+  postSurvey: async (userID, postSurvey) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/postSurvey",
       {
         userID,
@@ -48,13 +31,22 @@ const ImagineService = {
     );
   },
   getUsers: () => {
-    return API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users")
-      .then((response) => response.json())
-      .then((json) => json);
+    return Promise.resolve(
+      API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users").then(
+        (response) => response.json()
+      )
+    );
   },
-
-  readMoreCount: (userID, readMoreCount) => {
-    return API.postWithBody(
+  getUserByID: (userID) => {
+    return Promise.resolve(
+      API.get(
+        process.env.REACT_APP_SERVER_URL + `/imagine/user/${userID}`,
+        {}
+      ).then((response) => response.json())
+    );
+  },
+  readMoreCount: async (userID, readMoreCount) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/readMoreCount",
       {
         userID,
@@ -63,8 +55,8 @@ const ImagineService = {
     );
   },
 
-  readMoreTimeElapsed: (userID, readMoreTimeElapsed) => {
-    return API.postWithBody(
+  readMoreTimeElapsed: async (userID, readMoreTimeElapsed) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/readMoreTimeElapsed",
       {
         userID,
@@ -73,8 +65,8 @@ const ImagineService = {
     );
   },
 
-  readingSectionPagePosition: (userID, readingSectionPagePosition) => {
-    return API.postWithBody(
+  readingSectionPagePosition: async (userID, readingSectionPagePosition) => {
+    return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/readingSectionPagePosition",
       {
         userID,

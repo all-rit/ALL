@@ -1,260 +1,205 @@
 const {Op} = require('sequelize');
 const db = require('../database');
 
-exports.discomfortCount = (data)=> {
-  const userID = data.userID;
-  const discomfortCount = data.discomfortCount;
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
+const submitStudy = async (data) => {
+  const {userID, study} = data;
+  try {
+    if (userID) {
+      const user = await db.Imagine23
+          .findOne({
+            where:
           {
             userid: userID,
           },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.discomfortCount = discomfortCount;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              discomfortCount: discomfortCount,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
+          });
+      if (user !== null) {
+        user.study = study;
+        user.save();
+      } else {
+        await db.Imagine23.create({
+          userid: userID,
+          study: study,
         });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
   }
-  return Promise.resolve();
 };
 
-exports.experientialMain = (data)=> {
-  const userID = data.userID;
-  const experientialMain = data.experientialMain;
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
+const preSurvey = async (data) => {
+  const {userID, preSurvey, section} = data;
+  try {
+    if (userID) {
+      const user = await db.Imagine23
+          .findOne({
+            where:
           {
             userid: userID,
           },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.experientialMain = experientialMain;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              experientialMain: experientialMain,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
+          });
+      if (user !== null) {
+        user.preSurvey = preSurvey;
+        user.section = section;
+        user.save();
+      } else {
+        await db.Imagine23.create({
+          userid: userID,
+          preSurvey: preSurvey,
+          section: section,
         });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
   }
-  return Promise.resolve();
 };
 
+const postSurvey = async (data) => {
+  const {userID, postSurvey} = data;
 
-exports.experientialProtanopia = (data)=> {
-  const userID = data.userID;
-  const experientialProtanopia = data.experientialProtanopia;
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
+  try {
+    if (userID) {
+      const user = await db.Imagine23
+          .findOne({
+            where:
           {
             userid: userID,
           },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.experientialProtanopia = experientialProtanopia;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              experientialProtanopia: experientialProtanopia,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
+          });
+      if (user !== null) {
+        user.postSurvey = postSurvey;
+        user.save();
+      } else {
+        await db.Imagine23.create({
+          userid: userID,
+          postSurvey: postSurvey,
         });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
   }
-  return Promise.resolve();
 };
 
-exports.preSurvey = (data) => {
-  const userID = data.userID;
-  const preSurvey = data.preSurvey;
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
-          {
-            userid: userID,
-          },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.preSurvey = preSurvey;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              preSurvey: preSurvey,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
-  }
-  return Promise.resolve();
-};
-
-exports.postSurvey = (data) => {
-  const userID = data.userID;
-  const postSurvey = data.postSurvey;
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
-          {
-            userid: userID,
-          },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.postSurvey = postSurvey;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              postSurvey: postSurvey,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
-        });
-  }
-  return Promise.resolve();
-};
-
-exports.getUsers = () => {
-  return db.Imagine23.findAll({
+const getUsers = async () => {
+  const users = await db.Imagine23.findAll({
     attributes: ['id', 'userid', 'preSurvey'],
-    raw: true,
+    raw: false,
     where: {
       preSurvey: {
         [Op.not]: null,
       },
     },
   });
+  return users;
 };
 
-exports.readMoreCount = (data) => {
-  const userID = data.userID;
-  const readMoreCount = data.readMoreCount;
+const getUserByID = async (data) => {
+  try {
+    const user = await db.Imagine23.findOne({
+      where: {
+        userid: data,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
+const readMoreCount = async (data) => {
+  const {userID, readMoreCount} = data;
+  try {
+    if (userID) {
+      const user = await db.Imagine23
+          .findOne({
+            where:
           {
             userid: userID,
           },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.readMoreCount = readMoreCount;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              readMoreCount: readMoreCount,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
+          });
+      if (user !== null) {
+        user.readMoreCount = readMoreCount;
+        user.save();
+      } else {
+        db.Imagine23.create({
+          userid: userID,
+          readMoreCount: readMoreCount,
         });
+      }
+    }
+  } catch (error) {
+    console.error(error);
   }
-  return Promise.resolve();
 };
 
 
-exports.readMoreTimeElapsed = (data) => {
-  const userID = data.userID;
-  const readMoreTimeElapsed = data.readMoreTimeElapsed;
-
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
+const readMoreTimeElapsed = async (data) => {
+  const {userID, readMoreTimeElapsed} = data;
+  try {
+    if (userID) {
+      const user = await db.Imagine23
+          .findOne({
+            where:
           {
             userid: userID,
           },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.readMoreTimeElapsed = readMoreTimeElapsed;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              readMoreTimeElapsed: readMoreTimeElapsed,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
+          });
+      if (user !== null) {
+        user.readMoreTimeElapsed = readMoreTimeElapsed;
+        user.save();
+      } else {
+        await db.Imagine23.create({
+          userid: userID,
+          readMoreTimeElapsed: readMoreTimeElapsed,
         });
+      }
+      return true;
+    };
+  } catch (error) {
+    console.error(error);
   }
-  return Promise.resolve();
 };
 
-exports.readingSectionPagePosition = (data) => {
+const readingSectionPagePosition = async (data) => {
   const userID = data.userID;
   const readingSectionPagePosition = data.readingSectionPagePosition;
-
-  if (userID) {
-    return db.Imagine23
-        .findOne({
-          where:
+  try {
+    if (userID) {
+      const user = await db.Imagine23
+          .findOne({
+            where:
           {
             userid: userID,
           },
-        },
-        ).then((user) => {
-          if (user !== null) {
-            user.readingSectionPagePosition = readingSectionPagePosition;
-            user.save();
-          } else {
-            db.Imagine23.create({
-              userid: userID,
-              readingSectionPagePosition: readingSectionPagePosition,
-            });
-          }
-          return true;
-        }).catch((err) => {
-          console.log(err);
-          return true;
+          });
+      if (user !== null) {
+        user.readingSectionPagePosition = readingSectionPagePosition;
+        user.save();
+      } else {
+        await db.Imagine23.create({
+          userid: userID,
+          readingSectionPagePosition: readingSectionPagePosition,
         });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
   }
-  return Promise.resolve();
 };
 
+module.exports = {
+  submitStudy,
+  preSurvey,
+  postSurvey,
+  getUsers,
+  getUserByID,
+  readMoreCount,
+  readingSectionPagePosition,
+  readMoreTimeElapsed,
+};
