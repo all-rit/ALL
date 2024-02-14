@@ -197,8 +197,6 @@ const readingSectionPagePosition = async (data) => {
 
 const determineGroup = async (data) => {
   const {preSurvey} = data;
-  const users = await getUsers();
-
   // retrieve all existing groupings
   const getCategories = async (category) => {
     const output = {};
@@ -221,7 +219,31 @@ const determineGroup = async (data) => {
   const discomfortCountPOC = await getCategories('discomfortCountPOC');
   const discomfortCountNonPOC = await getCategories('discomfortCountNonPOC');
   const control = await getCategories('control');
+  // repeats the same flattening for the user.
+  const userResponse = preSurvey.map((question, index) => {
+    if (index === 0 || index === 1 || index === 5) {
+      return question.answer;
+    }
+  }).flat().toString();
+  let minValue = Infinity;
+  let lowestPool = '';
+
+  // Iterate over each hashmap to find the lowest value
+  for (const [pool, hashmap] of [['experiential', experiential],
+    ['discomfortCountPOC', discomfortCountPOC],
+    ['discomfortCountNonPOC', discomfortCountNonPOC],
+    ['control', control]]) {
+    // Check if the key exists in the hashmap
+    if (userResponse in hashmap) {
+      // Compare the value with the current minimum value
+      if (hashmap[userResponse] < minValue) {
+        minValue = hashmap['key1'];
+        lowestPool = pool;
+      }
+    }
+  }
   // get users answers
+  return lowestPool;
 };
 module.exports = {
   submitStudy,
