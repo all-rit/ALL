@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const {Op} = require('sequelize');
 const db = require('../database');
 
@@ -193,6 +194,35 @@ const readingSectionPagePosition = async (data) => {
   }
 };
 
+
+const determineGroup = async (data) => {
+  const {preSurvey} = data;
+  const users = await getUsers();
+
+  // retrieve all existing groupings
+  const getCategories = async (category) => {
+    const output = {};
+    const responses = await db.Imagine23.findAll({
+      where: category,
+    });
+    responses.forEach((response) => {
+      const userResponse = response.map((question, index) => {
+        // leaves in maintainability for adding in demo field
+        if (index === 0 || index === 1 || index === 5) {
+          return question.answer;
+        }
+      });
+      const userResponses = userResponse.flat().toString();
+      output[userResponses] = (output[userResponses] || 0) + 1;
+    });
+    return output;
+  };
+  const experiential = await getCategories('experiential');
+  const discomfortCountPOC = await getCategories('discomfortCountPOC');
+  const discomfortCountNonPOC = await getCategories('discomfortCountNonPOC');
+  const control = await getCategories('control');
+  // get users answers
+};
 module.exports = {
   submitStudy,
   preSurvey,

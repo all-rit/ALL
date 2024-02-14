@@ -16,6 +16,7 @@ function assignQuizQuestions(surveyType) {
   switch (surveyType) {
     case "pre":
       return PreSurveyQuestions;
+
     case "post":
       return PostSurveyQuestions;
     default:
@@ -45,7 +46,7 @@ const SurveyHandler = (props) => {
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions] = useState(assignQuizQuestions(props.type));
   const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers
+    questions[currentQuestionCursor].answers,
   );
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -112,9 +113,9 @@ const SurveyHandler = (props) => {
       groupingQuestions.every((index) => {
         return isEqualAnswer(
           user.preSurvey[index].answer,
-          selectedAnswers[index].answer
+          selectedAnswers[index].answer,
         );
-      })
+      }),
     );
 
     // Is in either group 1 or 2 (experiential or expressive). Judge this based on whether, in their group, they is an even or odd number of people in their group
@@ -137,7 +138,7 @@ const SurveyHandler = (props) => {
       ...selectedAnswers,
       {
         question: questions[currentQuestionCursor].question,
-        answer: questions[currentQuestionCursor].answers[answerValue].content,
+        answer: questions[currentQuestionCursor].answers[answerValue],
       },
     ]);
     setDisableNext(false);
