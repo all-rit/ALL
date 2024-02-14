@@ -16,6 +16,7 @@ import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
 const { nanoid } = require("nanoid");
 import { PropTypes } from "prop-types";
+import useMainStateContext from '../../reducers/MainContext'
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -28,12 +29,15 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Main = (props) => {
-  const { actions, state, user } = props;
+  const { state, user, isImagine } = props;
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
 
   const [labId] = useState(2);
   const [isExperiential, setIsExperiential] = useState(false);
+
+  const context = useMainStateContext();
+  const { actions } = context;
 
   function handleGroupAssignment(isExperiential) {
     setIsExperiential(isExperiential);
@@ -49,6 +53,7 @@ const Main = (props) => {
     if (user?.userid) {
       let userSession = sessionStorage.getItem(user?.userid);
       console.log(userSession);
+      console.log(isImagine);
       if (!userSession) {
         let newID = nanoid(6).toUpperCase();
         sessionStorage.setItem(user?.userid, newID);
@@ -72,16 +77,17 @@ const Main = (props) => {
         <Router className="app">
           <UpdateID
             default
-            path="/UpdateID"
+            path="/About"
             actions={actions}
-            state={state}
             setUserID={setUserID}
+            isImagine={isImagine}
             user={user}
           />
           <Survey
             path={`/PreSurvey`}
             userID={userID}
             type="pre"
+            isImagine={isImagine}
             handleGroupAssignment={handleGroupAssignment}
           />
           <LandingPage
@@ -152,7 +158,11 @@ const Main = (props) => {
             labID={labId}
             imagine={true}
           />
-          <Survey path={`/PostSurvey`} userID={userID} type="post" />
+          <Survey
+            path={`/PostSurvey`}
+            userID={userID}
+            type="post"
+          />
           <ExerciseEnd
             path="/ExerciseEnd"
             actions={actions}
@@ -170,6 +180,7 @@ Main.propTypes = {
   actions: PropTypes.object,
   state: PropTypes.string,
   user: PropTypes.object,
+  isImagine: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

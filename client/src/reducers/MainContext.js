@@ -16,11 +16,12 @@ import AuthService from "src/services/AuthService";
 const MainStateContext = createContext({
   state: initialState,
   actions: {
-    setBody: () => {},
-    login: () => {},
-    setLab: () => {},
-    updateUser: () => {},
-    updateUserState: () => {},
+    setBody: () => { },
+    login: () => { },
+    setLab: () => { },
+    updateUser: () => { },
+    updateUserState: () => { },
+    setIsImagine: () => { }
   },
 });
 
@@ -58,6 +59,7 @@ export const MainContextProvider = ({ children }) => {
    * @property {Function} setLab - Sets the lab value in the state.
    * @property {Function} updateUser - Updates the user value in the state.
    * @property {Function} updateUserState - Updates the user state value in the state.
+   * @property {Function} setIsImagine - Set the value of imagine to true or false, allowing special actions.
    */
   const actions = {
     setBody: (newBody) =>
@@ -83,6 +85,8 @@ export const MainContextProvider = ({ children }) => {
         type: types.UPDATE_USER_STATE,
         payload: { userState: newUserState },
       }),
+    setIsImagine: (isImagine) =>
+      dispatch({ type: types.SET_IS_IMAGINE, payload: { isImagine: isImagine } })
   };
 
   /**

@@ -4,7 +4,7 @@ const { nanoid } = require("nanoid");
 import { PropTypes } from "prop-types";
 
 const UpdateID = (props) => {
-  const { setUserID, user } = props;
+  const { setUserID, user, isImagine, actions } = props;
 
   const handleNext = () => {
     navigate("/Imagine/PreSurvey");
@@ -12,12 +12,16 @@ const UpdateID = (props) => {
 
   const handleUpdateID = () => {
     sessionStorage.clear();
+    console.log(isImagine)
     if (user?.userid) {
       let newID = nanoid(6).toUpperCase();
       sessionStorage.setItem(user?.userid, newID);
       setUserID(newID);
+      console.log(sessionStorage.getItem(user?.userid));
     }
+    actions.setIsImagine(true);
     handleNext();
+    console.log(isImagine)
   };
 
   return (
@@ -36,6 +40,8 @@ const UpdateID = (props) => {
 UpdateID.propTypes = {
   setUserID: PropTypes.func,
   user: PropTypes.object,
+  actions: PropTypes.object,
+  isImagine: PropTypes.bool,
 };
 
 export default UpdateID;

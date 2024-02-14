@@ -64,16 +64,21 @@ const App = () => {
   useEffect(() => {
     // const { actions } = props;
     actions.login();
+    console.log(state.main.isImagine)
     const location = parse(window.location.href);
     stateChange(actions, location.pathname);
     globalHistory.listen((location) => {
       stateChange(actions, location.location.pathname);
     });
+    // actions.setIsImagine(true);
   }, []);
   const context = useMainStateContext();
   const { state, actions } = context;
   const lab = state.main.lab;
   const body = state.main.body;
+  const isImagine = state.main.isImagine;
+  console.log(isImagine);
+
   // look into index.js in constants
   initializeReactGA();
   return (
@@ -91,7 +96,12 @@ const App = () => {
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
 
-              <Imagine path="/Imagine/*" user={state.main.user} />
+              <Imagine
+                path="/Imagine/*"
+                user={state.main.user}
+                isImagine={isImagine}
+                actions={actions}
+              />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About
@@ -104,10 +114,11 @@ const App = () => {
                 path={`/Lab${lab}/Reading`}
                 user={state.main.user}
                 labID={lab}
+                isImagine={state.main.isImagine}
               />
 
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
+              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} isImagine={state.main.isImagine} />
               <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
               <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
@@ -130,7 +141,8 @@ const App = () => {
                 user={state.main.user}
                 isFinalQuiz
                 hideCertificate={false}
-                submitData={() => {}}
+                submitData={() => { }}
+                isImagine={state.main.isImagine}
               />
             </Router>
           </div>

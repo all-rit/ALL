@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 import Survey from "../components/Survey";
 import { navigate } from "@reach/router";
@@ -183,6 +183,10 @@ const SurveyHandler = (props) => {
     setSelectedAnswers(tempAnswers);
   }
 
+  useEffect(() => {
+    console.log(props.isImagine);
+  }, [])
+
   return (
     <>
       {!surveyComplete ? (
@@ -212,5 +216,6 @@ SurveyHandler.propTypes = {
   userID: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   handleGroupAssignment: PropTypes.func, // optional
+  isImagine: PropTypes.string
 };
 export default SurveyHandler;
