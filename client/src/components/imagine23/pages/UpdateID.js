@@ -12,7 +12,7 @@ const UpdateID = (props) => {
 
   const handleUpdateID = () => {
     sessionStorage.clear();
-    console.log(isImagine)
+    console.log(isImagine);
     if (user?.userid) {
       let newID = nanoid(6).toUpperCase();
       sessionStorage.setItem(user?.userid, newID);
@@ -21,7 +21,7 @@ const UpdateID = (props) => {
     }
     actions.setIsImagine(true);
     handleNext();
-    console.log(isImagine)
+    console.log(isImagine);
   };
 
   return (

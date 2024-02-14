@@ -185,7 +185,7 @@ const SurveyHandler = (props) => {
 
   useEffect(() => {
     console.log(props.isImagine);
-  }, [])
+  }, []);
 
   return (
     <>
@@ -216,6 +216,6 @@ SurveyHandler.propTypes = {
   userID: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   handleGroupAssignment: PropTypes.func, // optional
-  isImagine: PropTypes.string
+  isImagine: PropTypes.string,
 };
 export default SurveyHandler;

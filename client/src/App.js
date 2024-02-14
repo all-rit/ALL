@@ -64,7 +64,7 @@ const App = () => {
   useEffect(() => {
     // const { actions } = props;
     actions.login();
-    console.log(state.main.isImagine)
+    console.log(state.main.isImagine);
     const location = parse(window.location.href);
     stateChange(actions, location.pathname);
     globalHistory.listen((location) => {
@@ -118,7 +118,11 @@ const App = () => {
               />
 
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} isImagine={state.main.isImagine} />
+              <ExerciseLab2
+                path="/Lab2/Exercise"
+                user={state.main.user}
+                isImagine={state.main.isImagine}
+              />
               <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
               <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
@@ -141,7 +145,7 @@ const App = () => {
                 user={state.main.user}
                 isFinalQuiz
                 hideCertificate={false}
-                submitData={() => { }}
+                submitData={() => {}}
                 isImagine={state.main.isImagine}
               />
             </Router>

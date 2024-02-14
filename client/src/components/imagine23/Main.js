@@ -16,7 +16,7 @@ import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
 const { nanoid } = require("nanoid");
 import { PropTypes } from "prop-types";
-import useMainStateContext from '../../reducers/MainContext'
+import useMainStateContext from "../../reducers/MainContext";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -158,11 +158,7 @@ const Main = (props) => {
             labID={labId}
             imagine={true}
           />
-          <Survey
-            path={`/PostSurvey`}
-            userID={userID}
-            type="post"
-          />
+          <Survey path={`/PostSurvey`} userID={userID} type="post" />
           <ExerciseEnd
             path="/ExerciseEnd"
             actions={actions}

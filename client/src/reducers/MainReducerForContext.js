@@ -21,7 +21,7 @@ export const types = {
   SET_LAB: "@accessibility-lab/context/lab",
   SET_BODY: "@accessibility-lab/context/app/set_body",
   UPDATE_USER_STATE: "@accessibility-lab/context/update_user_state",
-  SET_IS_IMAGINE: "@accessibility-lab/context/set_is_imagine"
+  SET_IS_IMAGINE: "@accessibility-lab/context/set_is_imagine",
 };
 
 /**
@@ -45,7 +45,7 @@ export const initialState = {
     user: null,
     lab: 0,
     body: 0,
-    isImagine: false
+    isImagine: false,
   },
 };
 
@@ -93,8 +93,8 @@ export const MainReducerForContext = (state = initialState, action) => {
         ...state,
         main: {
           ...state.main,
-          isImagine: payload.isImagine
-        }
+          isImagine: payload.isImagine,
+        },
       };
     default:
       return state;
