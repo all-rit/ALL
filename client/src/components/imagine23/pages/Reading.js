@@ -71,11 +71,11 @@ const Reading = (props) => {
       ]);
       console.log(
         "Scroll position percentage: " +
-          JSON.stringify(pagePosition) +
-          "\n" +
-          "at " +
-          seconds +
-          " seconds"
+        JSON.stringify(pagePosition) +
+        "\n" +
+        "at " +
+        seconds +
+        " seconds"
       );
     }, 1000);
     return () => {
@@ -86,7 +86,7 @@ const Reading = (props) => {
   const handleNext = () => {
     console.log("Scroll position percentage: " + JSON.stringify(pagePosition));
     setSaveData(true);
-    navigate("/Imagine/Quiz");
+    navigate("/Lab2/Quiz");
   };
 
   useEffect(() => {

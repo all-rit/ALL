@@ -77,7 +77,7 @@ const Main = (props) => {
         <Router className="app">
           <UpdateID
             default
-            path="/About"
+            path="/"
             actions={actions}
             setUserID={setUserID}
             isImagine={isImagine}

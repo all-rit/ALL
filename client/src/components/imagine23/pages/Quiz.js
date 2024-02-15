@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "../../quiz/components/Quiz";
 import Result from "../../quiz/components/Result";
@@ -202,6 +202,10 @@ const QuizHandler = (props) => {
     setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
   }
+
+  useEffect(() => {
+    console.log(props.isImagine)
+  })
   /**
    * selectMulti is a function that is responsible for handling
    * behavior of a multi-answer question by recording the given input to
@@ -220,9 +224,9 @@ const QuizHandler = (props) => {
       // checks to see if the set has the value in it
       !storageSet.has(answerValue)
         ? // adds it if it doesn't
-          storageSet.add(answerValue)
+        storageSet.add(answerValue)
         : // removes it if it does
-          storageSet.delete(answerValue);
+        storageSet.delete(answerValue);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     } else {
@@ -274,6 +278,7 @@ const QuizHandler = (props) => {
             selectedAnswers={selectedAnswers}
             quizQuestions={questions}
             lab={currentLabId}
+            isImagine={props.isImagine}
           ></Result>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
@@ -296,5 +301,6 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
+  isImagine: PropTypes.bool
 };
 export default QuizHandler;

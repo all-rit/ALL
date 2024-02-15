@@ -97,7 +97,7 @@ const App = () => {
               <Error actions={actions} default />
 
               <Imagine
-                path="/Imagine/*"
+                path={"/Imagine/*"}
                 user={state.main.user}
                 isImagine={isImagine}
                 actions={actions}
@@ -145,7 +145,7 @@ const App = () => {
                 user={state.main.user}
                 isFinalQuiz
                 hideCertificate={false}
-                submitData={() => {}}
+                submitData={() => { }}
                 isImagine={state.main.isImagine}
               />
             </Router>
