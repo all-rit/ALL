@@ -7,7 +7,6 @@ import Certificate from "./Certificate";
 import { navigate } from "@reach/router";
 
 function Result(props) {
-
   function checkIfCorrect(answerIndex, questionIndex) {
     let isCorrect;
     props.quizQuestions[questionIndex].answers[answerIndex].val === 1
@@ -122,12 +121,12 @@ function Result(props) {
   }
 
   const handleImagineNav = () => {
-    navigate('/Imagine/PostSurvey')
-  }
+    navigate("/Imagine/PostSurvey");
+  };
 
   useEffect(() => {
-    console.log(props.isImagine)
-  })
+    console.log(props.isImagine);
+  });
   return (
     <div className="quiz container shadow">
       <div className="result">
@@ -161,8 +160,7 @@ function Result(props) {
           </button>
         ) : (
           <></>
-        )
-        }
+        )}
       </div>
     </div>
   );
@@ -171,7 +169,7 @@ function Result(props) {
 Result.propTypes = {
   quizResult: PropTypes.string.isRequired,
   selectedAnswers: PropTypes.array.isRequired,
-  isImagine: PropTypes.bool
+  isImagine: PropTypes.bool,
 };
 
 export default Result;

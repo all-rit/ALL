@@ -204,8 +204,8 @@ const QuizHandler = (props) => {
   }
 
   useEffect(() => {
-    console.log(props.isImagine)
-  })
+    console.log(props.isImagine);
+  });
   /**
    * selectMulti is a function that is responsible for handling
    * behavior of a multi-answer question by recording the given input to
@@ -224,9 +224,9 @@ const QuizHandler = (props) => {
       // checks to see if the set has the value in it
       !storageSet.has(answerValue)
         ? // adds it if it doesn't
-        storageSet.add(answerValue)
+          storageSet.add(answerValue)
         : // removes it if it does
-        storageSet.delete(answerValue);
+          storageSet.delete(answerValue);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     } else {
@@ -301,6 +301,6 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
-  isImagine: PropTypes.bool
+  isImagine: PropTypes.bool,
 };
 export default QuizHandler;

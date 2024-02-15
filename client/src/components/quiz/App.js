@@ -283,6 +283,6 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
-  isImagine: PropTypes.bool
+  isImagine: PropTypes.bool,
 };
 export default QuizHandler;

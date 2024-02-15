@@ -8,7 +8,7 @@ const ExerciseEnd = (props) => {
   const endActivity = () => {
     props.actions.setIsImagine(false);
     navigate("/");
-  }
+  };
 
   return (
     <div className="container bottomSpace center-div">
@@ -32,8 +32,8 @@ const ExerciseEnd = (props) => {
 ExerciseEnd.propTypes = {
   isExperiential: PropTypes.boolean,
   actions: PropTypes.shape({
-    setIsImagine: PropTypes.func
-  })
+    setIsImagine: PropTypes.func,
+  }),
 };
 
 export default ExerciseEnd;

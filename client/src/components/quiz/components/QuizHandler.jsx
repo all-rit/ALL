@@ -106,8 +106,8 @@ const QuizHandler = (props) => {
   }
 
   useEffect(() => {
-    console.log(props.isImagine)
-  })
+    console.log(props.isImagine);
+  });
   /**
    * onComplete is a function that is responsible for preparing and running the
    * calculations to grade a users responses to the quiz. This will then prepare the data
@@ -262,9 +262,9 @@ const QuizHandler = (props) => {
       // checks to see if the set has the value in it
       !storageSet.has(answerValue)
         ? // adds it if it doesn't
-        storageSet.add(answerValue)
+          storageSet.add(answerValue)
         : // removes it if it does
-        storageSet.delete(answerValue);
+          storageSet.delete(answerValue);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     } else {
@@ -318,6 +318,6 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
-  isImagine: PropTypes.bool
+  isImagine: PropTypes.bool,
 };
 export default QuizHandler;
