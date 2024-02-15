@@ -52,8 +52,6 @@ const Main = (props) => {
   useEffect(() => {
     if (user?.userid) {
       let userSession = sessionStorage.getItem(user?.userid);
-      console.log(userSession);
-      console.log(isImagine);
       if (!userSession) {
         let newID = nanoid(6).toUpperCase();
         sessionStorage.setItem(user?.userid, newID);

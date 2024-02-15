@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Certificate from "./Certificate";
 import { navigate } from "@reach/router";
@@ -124,9 +124,6 @@ function Result(props) {
     navigate("/Imagine/PostSurvey");
   };
 
-  useEffect(() => {
-    console.log(props.isImagine);
-  });
   return (
     <div className="quiz container shadow">
       <div className="result">
@@ -136,7 +133,6 @@ function Result(props) {
           <table id="quizResults">
             <tbody>
               <tr>
-                {/* {renderTableHeader()}*/}
                 <th>QUESTION</th>
                 <th>CORRECT ANSWERS</th>
                 <th>SELECTED ANSWERS</th>

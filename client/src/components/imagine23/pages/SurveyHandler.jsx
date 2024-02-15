@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Survey from "../components/Survey";
 import { navigate } from "@reach/router";
@@ -59,7 +59,6 @@ const SurveyHandler = (props) => {
    */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
-      // console.log(selectedAnswers);
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
@@ -132,7 +131,6 @@ const SurveyHandler = (props) => {
    */
   function selectAnswer(e) {
     const answerValue = e.target.value;
-    // let tempSelectedAnswers;
     setSelectedAnswers([
       ...selectedAnswers,
       {
@@ -183,10 +181,6 @@ const SurveyHandler = (props) => {
     setSelectedAnswers(tempAnswers);
   }
 
-  useEffect(() => {
-    console.log(props.isImagine);
-  }, []);
-
   return (
     <>
       {!surveyComplete ? (
@@ -216,6 +210,5 @@ SurveyHandler.propTypes = {
   userID: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   handleGroupAssignment: PropTypes.func, // optional
-  isImagine: PropTypes.string,
 };
 export default SurveyHandler;

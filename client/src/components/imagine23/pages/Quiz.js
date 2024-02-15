@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "../../quiz/components/Quiz";
 import Result from "../../quiz/components/Result";
@@ -203,9 +203,6 @@ const QuizHandler = (props) => {
     setDisableNext(false);
   }
 
-  useEffect(() => {
-    console.log(props.isImagine);
-  });
   /**
    * selectMulti is a function that is responsible for handling
    * behavior of a multi-answer question by recording the given input to

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
@@ -105,9 +105,6 @@ const QuizHandler = (props) => {
     }
   }
 
-  useEffect(() => {
-    console.log(props.isImagine);
-  });
   /**
    * onComplete is a function that is responsible for preparing and running the
    * calculations to grade a users responses to the quiz. This will then prepare the data
