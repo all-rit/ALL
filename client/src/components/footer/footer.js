@@ -17,7 +17,7 @@ import { Panel as ColorPickerPanel } from "rc-color-picker";
 import { Sections } from "../../constants/index";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
-import { navigate } from '@reach/router';
+import { navigate } from "@reach/router";
 
 const mapStateToProps = (state) => {
   return {
@@ -185,14 +185,15 @@ class Footer extends Component {
                 : ""}
             </button>
 
-
             {!this.props.isImagine ? (
               <button
                 className="btn btn-primary btn-xl text-uppercase  next"
                 onClick={() => handleRedirect(actions, lab, body + 1)}
                 style={{
                   display:
-                    this.disappearNext(body) || hideOnLanding ? "none" : "block",
+                    this.disappearNext(body) || hideOnLanding
+                      ? "none"
+                      : "block",
                 }}
               >
                 Next -{" "}
@@ -208,7 +209,6 @@ class Footer extends Component {
                 Continue to Post-Survey
               </button>
             )}
-
 
             <div className="btn-change">
               <button

@@ -96,7 +96,10 @@ const LearnMoreButton = (props) => {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button className="btn btn-primary text-black btn-xl text-uppercase tw-m-3" onClick={stopTimer}>
+          <Button
+            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+            onClick={stopTimer}
+          >
             Close
           </Button>
         </ModalFooter>
