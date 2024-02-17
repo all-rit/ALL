@@ -140,13 +140,13 @@ const App = () => {
               user={state.main.user}
               isFinalQuiz
               hideCertificate={false}
-              submitData={() => {}}
+              submitData={() => { }}
               isImagine={state.main.isImagine}
             />
           </Router>
         </div>
       </div>
-      <Change context={context} />
+      <Change context={context} isImagine={isImagine} />
     </div>
   );
 };

@@ -4,7 +4,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Certificate from "./Certificate";
-import { navigate } from "@reach/router";
 
 function Result(props) {
   function checkIfCorrect(answerIndex, questionIndex) {
@@ -120,10 +119,6 @@ function Result(props) {
     }
   }
 
-  const handleImagineNav = () => {
-    navigate("/Imagine/PostSurvey");
-  };
-
   return (
     <div className="quiz container shadow">
       <div className="result">
@@ -147,16 +142,6 @@ function Result(props) {
             </div>
           )}
         </div>
-        {props.isImagine ? (
-          <button
-            className="btn btn-second text-uppercase nextButton"
-            onClick={handleImagineNav}
-          >
-            Complete
-          </button>
-        ) : (
-          <></>
-        )}
       </div>
     </div>
   );

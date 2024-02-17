@@ -62,7 +62,7 @@ const LearnMoreButton = (props) => {
   return (
     <>
       <button
-        className="btn-second btn btn-md tw-m-3"
+        className="btn btn-second text-white btn-xl text-uppercase tw-m-3"
         onClick={() => saveData()}
       >
         Read more
@@ -96,7 +96,7 @@ const LearnMoreButton = (props) => {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button className="btn-primary" onClick={stopTimer}>
+          <Button className="btn btn-primary text-black btn-xl text-uppercase tw-m-3" onClick={stopTimer}>
             Close
           </Button>
         </ModalFooter>

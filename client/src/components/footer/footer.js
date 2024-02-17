@@ -17,6 +17,7 @@ import { Panel as ColorPickerPanel } from "rc-color-picker";
 import { Sections } from "../../constants/index";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
+import { navigate } from '@reach/router';
 
 const mapStateToProps = (state) => {
   return {
@@ -60,6 +61,10 @@ class Footer extends Component {
   componentWillUnmount() {
     document.removeEventListener("click", this.handleClick);
   }
+
+  handleImagineNav = () => {
+    navigate("/Imagine/PostSurvey");
+  };
 
   changeSize = (size) => {
     const state_size = this.state.fontSize;
@@ -179,19 +184,32 @@ class Footer extends Component {
                 ? Sections[lab][body - 1].name
                 : ""}
             </button>
-            <button
-              className="btn btn-primary btn-xl text-uppercase  next"
-              onClick={() => handleRedirect(actions, lab, body + 1)}
-              style={{
-                display:
-                  this.disappearNext(body) || hideOnLanding ? "none" : "block",
-              }}
-            >
-              Next -{" "}
-              {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
-                ? Sections[lab][body + 1].name
-                : ""}
-            </button>
+
+
+            {!this.props.isImagine ? (
+              <button
+                className="btn btn-primary btn-xl text-uppercase  next"
+                onClick={() => handleRedirect(actions, lab, body + 1)}
+                style={{
+                  display:
+                    this.disappearNext(body) || hideOnLanding ? "none" : "block",
+                }}
+              >
+                Next -{" "}
+                {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
+                  ? Sections[lab][body + 1].name
+                  : ""}
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary btn-xl text-uppercase  next"
+                onClick={this.handleImagineNav}
+              >
+                Continue to Post-Survey
+              </button>
+            )}
+
+
             <div className="btn-change">
               <button
                 className="btn-text btn btn-bottom-buttons text-uppercase"
