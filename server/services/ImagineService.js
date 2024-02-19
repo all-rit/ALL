@@ -30,16 +30,11 @@ const submitStudy = async (data) => {
 };
 
 const preSurvey = async (data) => {
-  const {userID, preSurvey, section} = data;
+  const {userID, preSurvey} = data;
   try {
+    const section = await determineGroup(preSurvey);
     if (userID) {
-      const user = await db.Imagine23
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const user = await getUserByID(userID);
       if (user !== null) {
         user.preSurvey = preSurvey;
         user.section = section;
@@ -89,7 +84,6 @@ const postSurvey = async (data) => {
 const getUsers = async () => {
   const users = await db.Imagine23.findAll({
     attributes: ['id', 'userid', 'preSurvey'],
-    raw: false,
     where: {
       preSurvey: {
         [Op.not]: null,
@@ -196,13 +190,15 @@ const readingSectionPagePosition = async (data) => {
 
 
 const determineGroup = async (data) => {
-  const {preSurvey} = data;
   // retrieve all existing groupings
   const getCategories = async (category) => {
     const output = {};
     const responses = await db.Imagine23.findAll({
       where: category,
-    });
+    }).preSurvey;
+    if (!responses) {
+      return {};
+    }
     responses.forEach((response) => {
       const userResponse = response.map((question, index) => {
         // leaves in maintainability for adding in demo field
@@ -220,26 +216,36 @@ const determineGroup = async (data) => {
   const discomfortCountNonPOC = await getCategories('discomfortCountNonPOC');
   const control = await getCategories('control');
   // repeats the same flattening for the user.
-  const userResponse = preSurvey.map((question, index) => {
+  const userResponse = data.map((question, index) => {
     if (index === 0 || index === 1 || index === 5) {
-      return question.answer;
+      return question.answer.index;
     }
-  }).flat().toString();
+  }).toString();
+
   let minValue = Infinity;
   let lowestPool = '';
-
-  // Iterate over each hashmap to find the lowest value
-  for (const [pool, hashmap] of [['experiential', experiential],
+  const dataset = [['experiential', experiential],
     ['discomfortCountPOC', discomfortCountPOC],
     ['discomfortCountNonPOC', discomfortCountNonPOC],
-    ['control', control]]) {
-    // Check if the key exists in the hashmap
-    if (userResponse in hashmap) {
-      // Compare the value with the current minimum value
-      if (hashmap[userResponse] < minValue) {
-        minValue = hashmap['key1'];
-        lowestPool = pool;
+    ['control', control]];
+  // Iterate over each hashmap to find the lowest value
+  for (const [pool, hashmap] of dataset) {
+    // Check if the key exists in all the hashmaps
+    if (userResponse in dataset[0][1] ||
+      userResponse in dataset[1][1] ||
+      userResponse in dataset[2][1] ||
+      userResponse in dataset[3][1]) {
+      if (userResponse in hashmap) {
+        // Compare the value with the current minimum value
+        if (hashmap[userResponse] < minValue) {
+          minValue = hashmap[userResponse];
+          lowestPool = pool;
+        }
       }
+    } else {
+      // randomly generate number from 0-3
+      const groupSelector = Math.floor(Math.random() * 4);
+      return String(dataset[groupSelector][0]);
     }
   }
   // get users answers
