@@ -41,6 +41,7 @@ create table imagine
     "lobbyMessages" json,
     primary key (id)
 );
+
 create type enum_imagine23 as enum ('experiential','discomfortCountPOC','discomfortCountNonPOC','control');
 
 create table imagine23
