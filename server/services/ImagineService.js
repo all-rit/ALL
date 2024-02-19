@@ -32,8 +32,8 @@ const submitStudy = async (data) => {
 const preSurvey = async (data) => {
   const {userID, preSurvey} = data;
   try {
-    const section = await determineGroup(preSurvey);
     if (userID) {
+      const section = determineGroup(preSurvey);
       const user = await getUserByID(userID);
       if (user !== null) {
         user.preSurvey = preSurvey;
@@ -221,6 +221,7 @@ const determineGroup = async (data) => {
       return question.answer.index;
     }
   }).toString();
+  userResponse.trim(',');
 
   let minValue = Infinity;
   let lowestPool = '';
