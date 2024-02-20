@@ -2,10 +2,7 @@ import React, { useEffect } from "react";
 import Popup from "../../../../all-components/Popup";
 import { navigate } from "@reach/router";
 import Code from "../../components/Code";
-import {
-  LOCKED_FILE,
-  OPEN_FILE,
-} from "../../../../../constants/lab7";
+import { LOCKED_FILE, OPEN_FILE } from "../../../../../constants/lab7";
 import { evaluate } from "mathjs";
 import { EXERCISE_PLAYING } from "src/constants/index";
 import { MathComponent } from "mathjax-react";
@@ -66,8 +63,8 @@ const AICodeRepair = () => {
         <div className="guidance margin-bottom-2">
           <p className="playthrough__sentence">
             We have identified the component of the AI that is impacting its
-            decision-making, let&lsquo;s take a look into the AI and see how
-            it can be improved.
+            decision-making, let&lsquo;s take a look into the AI and see how it
+            can be improved.
           </p>
           <p className="playthrough__sentence">
             In this part of the exercise, you will have the opportunity to

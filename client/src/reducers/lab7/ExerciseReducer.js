@@ -34,7 +34,7 @@ const ExerciseReducer = (state = initialState, action) => {
     case types.RESET:
       return {
         ...initialState,
-    };
+      };
     case types.INCREMENT_SCORE:
       return {
         ...state,

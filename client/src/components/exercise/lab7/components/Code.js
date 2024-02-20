@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import RepairService from "../../../../services/lab7/RepairService";
-import {
-  POPUP_DELAY,
-  POPUP_MESSAGES,
-} from "../../../../constants/lab7";
+import { POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab7";
 import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
 import { evaluate } from "mathjs";
 import { FILE_FORMAT_VALIDATION } from "src/constants/lab7/index";
@@ -21,7 +18,7 @@ const Code = () => {
    * Validates the reward value.
    * @returns {Object} The validation result containing the value, error, and passed status.
    */
-  const validateRewardValue = () =>{
+  const validateRewardValue = () => {
     let value,
       error = null;
 
@@ -50,7 +47,7 @@ const Code = () => {
     };
     if (!result.passed) actions.updateRepairError(result.error);
     return result;
-  }
+  };
 
   /**
    * Validates the cost value.
@@ -59,7 +56,7 @@ const Code = () => {
    * @property {string|null} error - The error message, if any.
    * @property {boolean} passed - Indicates if the validation passed or not.
    */
-  const validateCostValue = () =>{
+  const validateCostValue = () => {
     let value,
       error = null;
 
@@ -90,7 +87,7 @@ const Code = () => {
     if (!result.passed) actions.updateRepairError(result.error);
     else actions.updateRepairError(null);
     return result;
-  }
+  };
 
   /**
    * Sets the popup message and clears the previous message.
@@ -134,7 +131,7 @@ const Code = () => {
    * If there are no errors, submits the repair, updates the repair ID, and closes the repair.
    * @returns {void}
    */
-  const validateRepair = () =>{
+  const validateRepair = () => {
     const cost = validateCostValue();
     const reward = validateRewardValue();
 
@@ -167,7 +164,7 @@ const Code = () => {
       actions.closeRepair();
       setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
-  }
+  };
 
   return (
     <div className="code_editor">
@@ -223,7 +220,9 @@ const Code = () => {
           </div>
           <div className="code_editor__line">
             <span>&nbsp;&nbsp;</span>
-            <span className="code_editor__line--yellow">function makeDecision</span>
+            <span className="code_editor__line--yellow">
+              function makeDecision
+            </span>
             <span className="code_editor__line--purple">(</span>
             <span className="code_editor__line--blue">&nbsp;file</span>
             <span className="code_editor__line--white">&nbsp;,</span>
@@ -246,7 +245,9 @@ const Code = () => {
             <input
               name="rewardvalue"
               type="text"
-              className={`${state.rewardError ? "form-error-input" : ""} tw-w-96`}
+              className={`${
+                state.rewardError ? "form-error-input" : ""
+              } tw-w-96`}
               defaultValue={state.rewardValue}
               onChange={handleRewardValueChange}
               required
@@ -304,8 +305,7 @@ const Code = () => {
             <span>utility</span>
             <span className={"code_editor__line--purple"}> = </span>
             <span>
-              rewardValue{" "}
-              <span className={"code_editor__line--purple"}>/</span>{" "}
+              rewardValue <span className={"code_editor__line--purple"}>/</span>{" "}
               costValue;
             </span>
           </div>

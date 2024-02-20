@@ -8,13 +8,13 @@ import { EXERCISE_IDLE } from "src/constants/index";
 
 /**
  * Renders the Simulation Summary component.
- * 
+ *
  * @returns {JSX.Element} The rendered Simulation Summary component.
  */
 const SimulationSummary = () => {
   const { state: mainState } = useMainStateContext();
   const { state } = useLab7StateContext();
-    
+
   useEffect(() => {
     if (mainState.userState === EXERCISE_IDLE)
       setTimeout(() => navigate("/Lab7/Exercise/BadAIExplanation"));
@@ -38,7 +38,9 @@ const SimulationSummary = () => {
           }
         >
           <div>
-            <p className={"tw-font-bold tw-text-2xl"}>Total Score: {state.score}</p>
+            <p className={"tw-font-bold tw-text-2xl"}>
+              Total Score: {state.score}
+            </p>
           </div>
           <div className={"tw-border-l-0 tw-border-solid tw-h-[125px]"} />
           <div className={"tw-flex tw-text-left tw-text-2xl"}>
@@ -91,7 +93,7 @@ SimulationSummary.propTypes = {
   incorrect: PropTypes.number.isRequired,
   results: PropTypes.array.isRequired,
   changesApplied: PropTypes.bool.isRequired,
-  redirectURL: PropTypes.string.isRequired
+  redirectURL: PropTypes.string.isRequired,
 };
 
 export default SimulationSummary;

@@ -45,10 +45,10 @@ const AlterationStart = () => {
             </p>
           </div>
           <p className="playthrough__sentence">
-            To assess your understanding and grasp of the material, you will
-            be given the original utility equation that was provided and a new
-            equation. You will then be asked to compare them and their impact
-            on the autonomous system.
+            To assess your understanding and grasp of the material, you will be
+            given the original utility equation that was provided and a new
+            equation. You will then be asked to compare them and their impact on
+            the autonomous system.
           </p>
         </div>
         <button
