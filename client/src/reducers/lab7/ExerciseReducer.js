@@ -31,6 +31,10 @@ const initialState = {
 
 const ExerciseReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.RESET:
+      return {
+        ...initialState,
+    };
     case types.INCREMENT_SCORE:
       return {
         ...state,
@@ -44,7 +48,7 @@ const ExerciseReducer = (state = initialState, action) => {
     case types.INCREMENT_PROTECTED:
       return {
         ...state,
-        protected: state.protectedNum + 1,
+        protectedNum: state.protectedNum + 1,
       };
     case types.INCREMENT_INCORRECT:
       return {

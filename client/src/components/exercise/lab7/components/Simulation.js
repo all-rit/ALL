@@ -114,7 +114,7 @@ const Simulation = () => {
         threatLvl,
         intrusions: files.filter((file) => file.result === FILE_INTRUSION)
           .length,
-        protected: files.filter((file) => file.result === FILE_PROTECTED)
+        protectedNum: files.filter((file) => file.result === FILE_PROTECTED)
           .length,
         incorrect: files.filter((file) => file.result === FILE_INCORRECT)
           .length,

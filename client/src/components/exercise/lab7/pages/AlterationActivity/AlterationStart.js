@@ -1,79 +1,66 @@
-import React, { Component, Fragment } from "react";
+import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { MathComponent } from "mathjax-react";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
-class AlterationStart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { componentName: "AlterationStart" };
-  }
+/**
+ * Renders the start page for the Alteration activity.
+ * This page provides an introduction to the activity and allows the user to start the quiz.
+ *
+ * @returns {JSX.Element} The rendered AlterationStart component.
+ */
+const AlterationStart = () => {
+  const { actions } = useMainStateContext();
 
-  componentDidMount() {
-    const { actions } = this.props;
-    actions.updateState(EXERCISE_PLAYING);
-  }
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
-  handleStart() {
+  const handleStart = () => {
     navigate("/Lab7/Exercise/AlterationQuiz");
-  }
+  };
 
-  render() {
-    return (
-      <Fragment>
-        <div className="center-div">
-          <div className="guidance margin-bottom-2">
+  return (
+    <>
+      <div className="center-div">
+        <div className="guidance margin-bottom-2">
+          <p className="playthrough__sentence">
+            In this part of the exercise, you will be looking at different
+            versions of the utility equation that you edited in the last
+            activity.
+          </p>
+          <div>
             <p className="playthrough__sentence">
-              In this part of the exercise, you will be looking at different
-              versions of the utility equation that you edited in the last
-              activity.
+              In machine learning, a <b>utility equation</b> is used to assign
+              values to certain actions that the AI system can take. A
+              simplified version of a utility equation can be written as:
             </p>
-            <div>
-              <p className="playthrough__sentence">
-                In machine learning, a <b>utility equation</b> is used to assign
-                values to certain actions that the AI system can take. A
-                simplified version of a utility equation can be written as:
-              </p>
-              <MathComponent
-                tex={String.raw`Utility = \frac{Reward\;Value}{Cost\;Value}`}
-              />
-              <p className="playthrough__sentence">
-                The goal of a <b>utility equation</b> is to get more reward,
-                despite the cost or higher utility.
-              </p>
-            </div>
+            <MathComponent
+              tex={String.raw`Utility = \frac{Reward\;Value}{Cost\;Value}`}
+            />
             <p className="playthrough__sentence">
-              To assess your understanding and grasp of the material, you will
-              be given the original utility equation that was provided and a new
-              equation. You will then be asked to compare them and their impact
-              on the autonomous system.
+              The goal of a <b>utility equation</b> is to get more reward,
+              despite the cost or higher utility.
             </p>
           </div>
-          <button
-            className="btn btn-primary text-black btn-xl text-uppercase "
-            onClick={this.handleStart}
-            key="continue"
-          >
-            Continue
-          </button>
+          <p className="playthrough__sentence">
+            To assess your understanding and grasp of the material, you will
+            be given the original utility equation that was provided and a new
+            equation. You will then be asked to compare them and their impact
+            on the autonomous system.
+          </p>
         </div>
-      </Fragment>
-    );
-  }
-}
-
-AlterationStart.propTypes = {
-  actions: PropTypes.object,
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase "
+          onClick={handleStart}
+          key="continue"
+        >
+          Continue
+        </button>
+      </div>
+    </>
+  );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(AlterationStart);
+export default AlterationStart;

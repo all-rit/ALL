@@ -1,52 +1,33 @@
 import { navigate } from "@reach/router";
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import Simulation from "../../components/Simulation";
 import {
   ALTERATION_START,
-  EXERCISE_PLAYING,
 } from "../../../../../constants/lab7";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
+import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
 
-class ImprovedAISimulation extends Component {
-  constructor(props) {
-    super(props);
-  }
+/**
+ * Renders the Improved AI Simulation component.
+ *
+ * @returns {JSX.Element} The rendered Improved AI Simulation component.
+ */
+const ImprovedAISimulation = () => {
+  const { state: mainState } = useMainStateContext();
+  const { actions } = useLab7StateContext();
 
-  componentDidMount() {
-    const { actions, state } = this.props;
-    if (state === EXERCISE_PLAYING) actions.updateRedirectURL(ALTERATION_START);
+  useEffect(() => {
+    if (mainState.userState === EXERCISE_PLAYING) actions.updateRedirectURL(ALTERATION_START);
     else setTimeout(() => navigate("/Lab7/Exercise/AICodeRepair"));
-  }
+  }, []);
 
-  render() {
-    return (
-      <div>
-        <p className="playthrough__sentence">Improved AI Simulation</p>
-        <Simulation />
-      </div>
-    );
-  }
-}
-
-ImprovedAISimulation.propTypes = {
-  actions: PropTypes.object,
-  state: PropTypes.string,
+  return (
+    <div>
+      <p className="playthrough__sentence">Improved AI Simulation</p>
+      <Simulation />
+    </div>
+  );
 };
 
-const mapStateToProps = (state) => {
-  return { state: state.exercise7.state };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ImprovedAISimulation);
+export default ImprovedAISimulation;

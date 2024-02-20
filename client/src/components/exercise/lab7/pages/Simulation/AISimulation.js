@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import Simulation from "../../components/Simulation";
 import "../../../../../assets/stylesheets/components/Simulation.scss";
-import PropTypes from "prop-types";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
 
@@ -21,10 +20,6 @@ const AISimulation = () => {
       <Simulation />
     </Fragment>
   );
-};
-
-AISimulation.propTypes = {
-  actions: PropTypes.object,
 };
 
 export default AISimulation;
