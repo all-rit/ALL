@@ -140,7 +140,7 @@ const App = () => {
               user={state.main.user}
               isFinalQuiz
               hideCertificate={false}
-              submitData={() => {}}
+              submitData={() => { }}
               isImagine={state.main.isImagine}
             />
           </Router>
