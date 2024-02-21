@@ -219,8 +219,7 @@ const QuizHandler = (props) => {
           props.labId,
           (countCorrect / questionsTotal) * 100
         );
-      }
-      else {
+      } else {
         props.submitData(
           output,
           props.user.userid,
@@ -269,9 +268,9 @@ const QuizHandler = (props) => {
       // checks to see if the set has the value in it
       !storageSet.has(answerValue)
         ? // adds it if it doesn't
-        storageSet.add(answerValue)
+          storageSet.add(answerValue)
         : // removes it if it does
-        storageSet.delete(answerValue);
+          storageSet.delete(answerValue);
       // assigns the updated set to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     } else {
@@ -326,6 +325,6 @@ QuizHandler.propTypes = {
     userid: PropTypes.number,
   }),
   isImagine: PropTypes.bool,
-  userID: PropTypes.string
+  userID: PropTypes.string,
 };
 export default QuizHandler;

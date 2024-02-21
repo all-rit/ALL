@@ -14,9 +14,8 @@ import OrderedList from "./OrderedList";
 import ReadMoreButton from "../../imagine23/components/LearnMoreButton";
 import ImagineService from "src/services/ImagineService";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
-import { navigate } from '@reach/router';
+import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
-
 
 const Reading = (props) => {
   const { user, labID, isImagine, userID } = props;
@@ -69,11 +68,11 @@ const Reading = (props) => {
         ]);
         console.log(
           "Scroll position percentage: " +
-          JSON.stringify(pagePosition) +
-          "\n" +
-          "at " +
-          seconds +
-          " seconds"
+            JSON.stringify(pagePosition) +
+            "\n" +
+            "at " +
+            seconds +
+            " seconds"
         );
       }, 1000);
 
@@ -86,7 +85,16 @@ const Reading = (props) => {
       ImagineService.readingSectionPagePosition(userID, pagePosition);
       setSaveData(false);
     }
-  }, [user, labID, isImagine, saveData, userID, pagePosition, seconds, scrollPositionPercentage]);
+  }, [
+    user,
+    labID,
+    isImagine,
+    saveData,
+    userID,
+    pagePosition,
+    seconds,
+    scrollPositionPercentage,
+  ]);
 
   if (!readingData) {
     return (
@@ -145,7 +153,9 @@ const Reading = (props) => {
                     })}
                   </>
                 )}
-                {data.type === "study__list" && <StudyList data={data.content} />}
+                {data.type === "study__list" && (
+                  <StudyList data={data.content} />
+                )}
                 {data.type === "ordered-list" && (
                   <OrderedList data={data.content} />
                 )}
@@ -189,7 +199,6 @@ const Reading = (props) => {
       ) : (
         <></>
       )}
-
     </div>
   );
 };
@@ -199,7 +208,7 @@ Reading.propTypes = {
   userID: PropTypes.string,
   labID: PropTypes.number,
   isImagine: PropTypes.bool,
-  data: PropTypes.array
+  data: PropTypes.array,
 };
 
 export default Reading;
