@@ -11,13 +11,12 @@ const ImagineService = {
       }
     );
   },
-  preSurvey: async (userID, preSurvey, section) => {
+  preSurvey: async (userID, preSurvey) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
       {
         userID,
         preSurvey,
-        section,
       }
     );
   },
