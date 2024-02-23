@@ -203,7 +203,7 @@ const determineGroup = async (data) => {
       const userResponse = response.map((question, index) => {
         // leaves in maintainability for adding in demo field
         if (index === 0 || index === 1 || index === 5) {
-          return question.answer;
+          return question.answer.index;
         }
       });
       const userResponses = userResponse.flat().toString();
