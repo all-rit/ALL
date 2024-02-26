@@ -33,7 +33,7 @@ const preSurvey = async (data) => {
   const {userID, preSurvey} = data;
   try {
     if (userID) {
-      const section = determineGroup(preSurvey);
+      const section = await determineGroup(preSurvey);
       const user = await getUserByID(userID);
       if (user !== null) {
         user.preSurvey = preSurvey;
@@ -190,20 +190,28 @@ const readingSectionPagePosition = async (data) => {
 
 const getSection = async (sectionName) => {
   const output = {};
+
   const responses = await db.Imagine23.findAll({
-    where: {section: sectionName},
-  }).preSurvey;
+    where: {
+      section: {
+        [Op.eq]: sectionName,
+      },
+    },
+    raw: true,
+  });
+
   if (!responses) {
     return {};
   }
   responses.forEach((response) => {
-    const userResponse = response.map((question, index) => {
+    const survey = response.preSurvey;
+    const userResponse = survey.map((question, index) => {
       // leaves in maintainability for adding in demo field
       if (index === 0 || index === 1 || index === 5) {
         return question.answer.index;
       }
     });
-    const userResponses = userResponse.flat().toString();
+    const userResponses = userResponse.flat().toString().replace(/,/g, '');
     output[userResponses] = (output[userResponses] || 0) + 1;
   });
   return output;
@@ -220,8 +228,7 @@ const determineGroup = async (data) => {
     if (index === 0 || index === 1 || index === 5) {
       return question.answer.index;
     }
-  }).toString();
-  userResponse.trim(',');
+  }).toString().replace(/,/g, '');
 
   let minValue = Infinity;
   let lowestPool = '';
