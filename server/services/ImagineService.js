@@ -188,29 +188,29 @@ const readingSectionPagePosition = async (data) => {
   }
 };
 
+const getCategories = async (category) => {
+  const output = {};
+  const responses = await db.Imagine23.findAll({
+    where: category,
+  }).preSurvey;
+  if (!responses) {
+    return {};
+  }
+  responses.forEach((response) => {
+    const userResponse = response.map((question, index) => {
+      // leaves in maintainability for adding in demo field
+      if (index === 0 || index === 1 || index === 5) {
+        return question.answer.index;
+      }
+    });
+    const userResponses = userResponse.flat().toString();
+    output[userResponses] = (output[userResponses] || 0) + 1;
+  });
+  return output;
+};
 
 const determineGroup = async (data) => {
   // retrieve all existing groupings
-  const getCategories = async (category) => {
-    const output = {};
-    const responses = await db.Imagine23.findAll({
-      where: category,
-    }).preSurvey;
-    if (!responses) {
-      return {};
-    }
-    responses.forEach((response) => {
-      const userResponse = response.map((question, index) => {
-        // leaves in maintainability for adding in demo field
-        if (index === 0 || index === 1 || index === 5) {
-          return question.answer.index;
-        }
-      });
-      const userResponses = userResponse.flat().toString();
-      output[userResponses] = (output[userResponses] || 0) + 1;
-    });
-    return output;
-  };
   const experiential = await getCategories('experiential');
   const discomfortCountPOC = await getCategories('discomfortCountPOC');
   const discomfortCountNonPOC = await getCategories('discomfortCountNonPOC');
