@@ -238,22 +238,19 @@ const determineGroup = async (data) => {
     ['control', control]];
   // Iterate over each hashmap to find the lowest value
   for (const [pool, hashmap] of dataset) {
-    // Check if the key exists in all the hashmaps
-    if (userResponse in dataset[0][1] ||
-      userResponse in dataset[1][1] ||
-      userResponse in dataset[2][1] ||
-      userResponse in dataset[3][1]) {
-      if (userResponse in hashmap) {
-        // Compare the value with the current minimum value
-        if (hashmap[userResponse] < minValue) {
-          minValue = hashmap[userResponse];
-          lowestPool = pool;
-        }
+    // if user response is in the hasmap
+    // Ex: [(userResponse, count) ('232', 3)]
+    // then bubble sort on count
+    if (userResponse in hashmap) {
+      // Compare the value with the current minimum value
+      if (hashmap[userResponse] < minValue) {
+        minValue = hashmap[userResponse];
+        lowestPool = pool;
       }
     } else {
-      // randomly generate number from 0-3
-      const groupSelector = Math.floor(Math.random() * 4);
-      return String(dataset[groupSelector][0]);
+      // else the lowest count for this pool is 0
+      minValue = 0;
+      lowestPool = pool;
     }
   }
   // get users answers
