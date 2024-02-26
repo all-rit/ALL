@@ -75,7 +75,7 @@ const Reading = (props) => {
           "\n" +
           "at " +
           seconds +
-          " seconds"
+          " seconds",
       );
     }, 1000);
     return () => {

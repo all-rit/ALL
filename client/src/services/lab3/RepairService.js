@@ -14,7 +14,7 @@ const RepairService = {
         carAltValue,
         burgerAltValue,
         catAltValue,
-      }
+      },
     );
   },
 };

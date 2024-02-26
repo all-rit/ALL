@@ -12,7 +12,7 @@ const ChatRoom = (props) => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [moderationStatus, setModerationStatus] = useState(
-    (updatedMessages || selectMessages()).map(() => false)
+    (updatedMessages || selectMessages()).map(() => false),
   );
 
   const currentMessages = updatedMessages || selectMessages();
@@ -29,9 +29,12 @@ const ChatRoom = (props) => {
   // randomly displays messages to the chat room
   useEffect(() => {
     if (currentIndex < currentMessages.length) {
-      const timeout = setTimeout(() => {
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, Math.floor(Math.random() * 3000) + 500);
+      const timeout = setTimeout(
+        () => {
+          setCurrentIndex((prevIndex) => prevIndex + 1);
+        },
+        Math.floor(Math.random() * 3000) + 500,
+      );
 
       return () => clearTimeout(timeout);
     }

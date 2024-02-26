@@ -188,10 +188,10 @@ const readingSectionPagePosition = async (data) => {
   }
 };
 
-const getCategories = async (category) => {
+const getSection = async (sectionName) => {
   const output = {};
   const responses = await db.Imagine23.findAll({
-    where: category,
+    where: {section: sectionName},
   }).preSurvey;
   if (!responses) {
     return {};
@@ -211,10 +211,10 @@ const getCategories = async (category) => {
 
 const determineGroup = async (data) => {
   // retrieve all existing groupings
-  const experiential = await getCategories('experiential');
-  const discomfortCountPOC = await getCategories('discomfortCountPOC');
-  const discomfortCountNonPOC = await getCategories('discomfortCountNonPOC');
-  const control = await getCategories('control');
+  const experiential = await getSection('experiential');
+  const discomfortCountPOC = await getSection('discomfortCountPOC');
+  const discomfortCountNonPOC = await getSection('discomfortCountNonPOC');
+  const control = await getSection('control');
   // repeats the same flattening for the user.
   const userResponse = data.map((question, index) => {
     if (index === 0 || index === 1 || index === 5) {

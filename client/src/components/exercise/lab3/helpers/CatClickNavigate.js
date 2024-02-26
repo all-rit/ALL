@@ -13,7 +13,7 @@ class CatClickNavigate extends Component {
     const { path } = this.props;
     CatClickNavigate.handleOnclick = CatClickNavigate.handleOnclick.bind(
       this,
-      path
+      path,
     );
   }
 
@@ -43,7 +43,7 @@ class CatClickNavigate extends Component {
           onFocus={(e) =>
             textToSpeech(
               e,
-              "Cat clicked! Please click the next button to continue."
+              "Cat clicked! Please click the next button to continue.",
             )
           }
         >
