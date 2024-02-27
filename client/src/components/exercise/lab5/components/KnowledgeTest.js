@@ -30,9 +30,9 @@ class KnowledgeTest extends Component {
             this.state.correct,
             this.state.question,
             this.state.currentSelection,
-            JSON.stringify(this.state.options)
+            JSON.stringify(this.state.options),
           );
-        }
+        },
       );
     }
   }
@@ -60,9 +60,9 @@ class KnowledgeTest extends Component {
                 option === this.state.currentSelection && !this.state.correct
                   ? "incorrect"
                   : "" + option === this.state.currentSelection &&
-                    this.state.correct
-                  ? "correct"
-                  : ""
+                      this.state.correct
+                    ? "correct"
+                    : ""
               }`}
             >
               {option}

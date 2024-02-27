@@ -45,7 +45,7 @@ const useLabRepair = () => {
               ...dateRepair,
               userInput: newValue,
             }
-          : dateRepair
+          : dateRepair,
       );
     });
   };
