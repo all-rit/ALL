@@ -76,9 +76,9 @@ function assignQuizQuestions(labId, isFinalQuiz) {
  * component with information.
  */
 const QuizHandler = (props) => {
-  const [currentLabId, ] = useState(props.labId);
+  const [currentLabId] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, ] = useState(
+  const [questions] = useState(
     assignQuizQuestions(props.labId, props.isFinalQuiz)
   );
   const [answerOption, setAnswerOption] = useState(

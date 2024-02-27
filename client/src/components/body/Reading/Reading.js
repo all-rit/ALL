@@ -175,7 +175,7 @@ const Reading = (props) => {
           <></>
         )}
       </div>
-      {isImagine && readingData?.footer !== "" &&
+      {isImagine && readingData?.footer !== "" && (
         <div>
           <ReadMoreButton userID={userID} data={readingData?.footer.links} />
           <button
@@ -185,7 +185,7 @@ const Reading = (props) => {
             Continue to Quiz
           </button>
         </div>
-      }
+      )}
 
       {isImagine ? (
         <Modal isOpen={modalOpen}>
