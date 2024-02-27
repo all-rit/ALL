@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
@@ -176,17 +175,17 @@ const Reading = (props) => {
           <></>
         )}
       </div>
-      {isImagine && readingData?.footer !== "" ? (
-        <ReadMoreButton userID={userID} data={readingData?.footer.links} />
-      ) : (
-        <></>
-      )}
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-        onClick={handleNext}
-      >
-        Continue to Quiz
-      </button>
+      {isImagine && readingData?.footer !== "" &&
+        <div>
+          <ReadMoreButton userID={userID} data={readingData?.footer.links} />
+          <button
+            className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+            onClick={handleNext}
+          >
+            Continue to Quiz
+          </button>
+        </div>
+      }
 
       {isImagine ? (
         <Modal isOpen={modalOpen}>

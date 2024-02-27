@@ -109,14 +109,14 @@ const App = () => {
               path={`/Lab${lab}/Reading`}
               user={state.main.user}
               labID={lab}
-              isImagine={state.main.isImagine}
+              isImagine={isImagine}
             />
 
             <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
             <ExerciseLab2
               path="/Lab2/Exercise"
               user={state.main.user}
-              isImagine={state.main.isImagine}
+              isImagine={isImagine}
             />
             <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
             <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
@@ -141,7 +141,7 @@ const App = () => {
               isFinalQuiz
               hideCertificate={false}
               submitData={() => {}}
-              isImagine={state.main.isImagine}
+              isImagine={isImagine}
             />
           </Router>
         </div>
