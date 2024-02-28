@@ -62,7 +62,7 @@ const LabGeneration = (props) => {
             labInformation[idx],
             progressState,
             index,
-            null
+            null,
           );
         });
       } else {
@@ -80,7 +80,7 @@ const LabGeneration = (props) => {
               labInformation[idx],
               progressState,
               index,
-              rec
+              rec,
             );
           }
         });

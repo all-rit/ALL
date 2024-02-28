@@ -80,7 +80,7 @@ export const actions = {
     ulvalue,
     classvalue,
     fontvalue,
-    fontfamilyvalue
+    fontfamilyvalue,
   ) => ({
     type: types.UPDATE_REPAIR_PAGELAYOUT,
     h1value,

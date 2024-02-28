@@ -4,8 +4,8 @@
 
 ## Requirements
 
-- NodeJS ~= 16.20.1
-- NPM ~= 8.19.4
+- NodeJS ~= v20.11.0
+- NPM ~= 10.2.4
   May work for other versions but not guaranteed
 
 ## Setup

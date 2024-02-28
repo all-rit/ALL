@@ -15,7 +15,6 @@ import OrderedList from "./OrderedList";
 const Reading = (props) => {
   const { user, labID } = props;
   const [readingData, setReadingData] = useState("");
-
   useScroll();
   useEffect(() => {
     UserLabService.complete_reading(labID);

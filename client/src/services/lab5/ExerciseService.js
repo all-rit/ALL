@@ -14,7 +14,7 @@ const ExerciseService = {
         question,
         selectedoption,
         options,
-      }
+      },
     );
   },
 };
