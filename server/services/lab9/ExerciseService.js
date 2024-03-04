@@ -18,7 +18,6 @@ async function getExercise(data) {
           raw: true,
         },
     );
-    console.log('exerciseResponse', exerciseResponse);
     return exerciseResponse;
   } catch (error) {
     console.error(error);
