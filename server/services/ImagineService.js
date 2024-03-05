@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const {Op} = require('sequelize');
 const db = require('../database');
 
@@ -34,6 +33,7 @@ const preSurvey = async (data) => {
   try {
     if (userID) {
       const section = await determineGroup(preSurvey);
+      console.log(section);
       const user = await getUserByID(userID);
       if (user !== null) {
         user.preSurvey = preSurvey;
@@ -46,7 +46,7 @@ const preSurvey = async (data) => {
           section: section,
         });
       }
-      return true;
+      return section;
     }
   } catch (error) {
     console.error(error);
@@ -189,32 +189,35 @@ const readingSectionPagePosition = async (data) => {
 };
 
 const getSection = async (sectionName) => {
-  const output = {};
-
-  const responses = await db.Imagine23.findAll({
-    where: {
-      section: {
-        [Op.eq]: sectionName,
+  try {
+    const output = {};
+    const responses = await db.Imagine23.findAll({
+      where: {
+        section: {
+          [Op.eq]: sectionName,
+        },
       },
-    },
-    raw: true,
-  });
-
-  if (!responses) {
-    return {};
-  }
-  responses.forEach((response) => {
-    const survey = response.preSurvey;
-    const userResponse = survey.map((question, index) => {
-      // leaves in maintainability for adding in demo field
-      if (index === 0 || index === 1 || index === 5) {
-        return question.answer.index;
-      }
+      raw: true,
     });
-    const userResponses = userResponse.flat().toString().replace(/,/g, '');
-    output[userResponses] = (output[userResponses] || 0) + 1;
-  });
-  return output;
+
+    if (!responses) {
+      return {};
+    }
+    responses.forEach((response) => {
+      const survey = response.preSurvey;
+      const userResponse = survey.map((question, index) => {
+      // leaves in maintainability for adding in demo field
+        if (index === 0 || index === 1 || index === 5) {
+          return question.answer.index;
+        }
+      });
+      const userResponses = userResponse.flat().toString().replace(/,/g, '');
+      output[userResponses] = (output[userResponses] || 0) + 1;
+    });
+    return output;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const determineGroup = async (data) => {
@@ -238,7 +241,7 @@ const determineGroup = async (data) => {
     ['control', control]];
   // Iterate over each hashmap to find the lowest value
   for (const [pool, hashmap] of dataset) {
-    // if user response is in the hasmap
+    // if user response is in the hashmap
     // Ex: [(userResponse, count) ('232', 3)]
     // then bubble sort on count
     if (userResponse in hashmap) {
@@ -253,6 +256,7 @@ const determineGroup = async (data) => {
       lowestPool = pool;
     }
   }
+  console.log(lowestPool);
   // get users answers
   return lowestPool;
 };

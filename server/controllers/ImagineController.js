@@ -22,6 +22,7 @@ const preSurvey = async (req, res) => {
     if (!resPreSurvey) {
       throw new Error('Pre survey was not recorded');
     }
+    return resPreSurvey;
   } catch (error) {
     console.error(error);
   };
