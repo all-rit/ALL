@@ -4,19 +4,19 @@ import API from "./API";
 const groupService = {
   getGroupAssignedLabs: (groupID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/group/${groupID}/labs`
+      process.env.REACT_APP_SERVER_URL + `/group/${groupID}/labs`,
     ).then((response) => response.json());
   },
   getCompletedGroupLabs: (userID, groupID) => {
     return API.get(
       process.env.REACT_APP_SERVER_URL +
-        `/group/${groupID}/labs/${userID}/completed`
+        `/group/${groupID}/labs/${userID}/completed`,
     ).then((response) => response.json());
   },
 
   getGroupEnrolledStudents: (groupID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/group/${groupID}/enrolled`
+      process.env.REACT_APP_SERVER_URL + `/group/${groupID}/enrolled`,
     ).then((response) => response.json());
   },
 
@@ -26,7 +26,7 @@ const groupService = {
       {
         userID,
         inviteCode,
-      }
+      },
     ).then((response) => response.json());
   },
   unenrollUserFromGroup: (userID, groupID) => {
@@ -35,7 +35,7 @@ const groupService = {
       {
         userID,
         groupID,
-      }
+      },
     );
   },
   createGroup: (userID, groupName) => {
@@ -44,7 +44,7 @@ const groupService = {
       {
         userID,
         groupName,
-      }
+      },
     ).then((response) => response.json());
   },
   addGroupLab: (groupID, labID) => {
@@ -53,7 +53,7 @@ const groupService = {
       {
         groupID,
         labID,
-      }
+      },
     );
   },
   deleteGroupLab: (groupID, labID) => {
@@ -62,7 +62,7 @@ const groupService = {
       {
         groupID,
         labID,
-      }
+      },
     );
   },
   deleteGroup: (groupID) => {
@@ -70,7 +70,7 @@ const groupService = {
       process.env.REACT_APP_SERVER_URL + `/group/${groupID}/delete`,
       {
         groupID,
-      }
+      },
     );
   },
   updateGroup: (groupID, groupName) => {
@@ -79,7 +79,7 @@ const groupService = {
       {
         groupID,
         groupName,
-      }
+      },
     );
   },
 };

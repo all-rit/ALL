@@ -12,7 +12,7 @@ const RepairService = {
     appearance,
     yearsexperience,
     availability,
-    expectedpay
+    expectedpay,
   ) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR,
@@ -22,12 +22,12 @@ const RepairService = {
         yearsexperience,
         availability,
         expectedpay,
-      }
+      },
     );
   },
   getUserRepair: (userID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + endpoints.GET_REPAIR + `${userID}`
+      process.env.REACT_APP_SERVER_URL + endpoints.GET_REPAIR + `${userID}`,
     ).then((response) => response.json());
   },
 };

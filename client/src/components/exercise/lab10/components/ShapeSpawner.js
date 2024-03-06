@@ -120,7 +120,7 @@ const ShapeSpawner = (props) => {
       const touchingY = isTouchingY(
         props?.parentRef?.current?.offsetHeight,
         y,
-        size
+        size,
       );
       const shapesCollided = touchingX && touchingY;
 
@@ -197,7 +197,7 @@ const ShapeSpawner = (props) => {
           /* Gap exist at closestGapIndex  */
           const { leftShape, shape, rightShape } = getShapeAndNeighbors(
             closestGapIndex,
-            shapes
+            shapes,
           );
           const safe = withinBounds(leftShape, rightShape);
           /* Move until you are at the shape */
@@ -259,7 +259,7 @@ const ShapeSpawner = (props) => {
       if (props.ai) {
         /* Increase odds of spawning a shape with the heaviest color */
         const filteredColors = new RandomRoundRobin(
-          colors.filter((color) => color !== heaviestColor)
+          colors.filter((color) => color !== heaviestColor),
         );
         const thirdFrac = numberOfShapes / 3;
         /* 2/3 will be the heaviest color */
