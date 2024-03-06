@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
@@ -77,9 +76,9 @@ function assignQuizQuestions(labId, isFinalQuiz) {
  * component with information.
  */
 const QuizHandler = (props) => {
-  const [currentLabId, setCurrentLab] = useState(props.labId);
+  const [currentLabId] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(
+  const [questions] = useState(
     assignQuizQuestions(props.labId, props.isFinalQuiz)
   );
   const [answerOption, setAnswerOption] = useState(
