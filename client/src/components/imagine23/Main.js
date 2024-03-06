@@ -163,7 +163,7 @@ const Main = (props) => {
             labId={labId}
             isImagine={isImagine}
             hideCertificate={false}
-            submitData={() => { }}
+            submitData={() => {}}
             isFinalQuiz={false}
             userID={userID}
           />

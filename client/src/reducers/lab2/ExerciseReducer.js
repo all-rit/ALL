@@ -137,7 +137,7 @@ const initialExerciseState = {
 // Function for changing to other pages in the application
 export const changeExerciseState = (
   state = initialExerciseState,
-  action = {},
+  action = {}
 ) => {
   switch (action.type) {
     case START_EXERCISE:

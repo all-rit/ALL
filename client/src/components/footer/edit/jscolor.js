@@ -36,7 +36,7 @@ if (!window.jscolor) {
       tryInstallOnElements: function (elms, className) {
         const matchClass = new RegExp(
           "(^|\\s)(" + className + ")(\\s*(\\{[^}]*\\})|\\s|$)",
-          "i",
+          "i"
         );
 
         for (let i = 0; i < elms.length; i += 1) {
@@ -75,7 +75,7 @@ if (!window.jscolor) {
                   "Error parsing jscolor options: " +
                     eParseError +
                     ":\n" +
-                    optsStr,
+                    optsStr
                 );
               }
             }
@@ -268,7 +268,7 @@ if (!window.jscolor) {
         return (
           -1 !==
           (" " + elm.className.replace(/\s+/g, " ") + " ").indexOf(
-            " " + className + " ",
+            " " + className + " "
           )
         );
       },
@@ -297,7 +297,7 @@ if (!window.jscolor) {
               "\\s+" +
               classList[i] +
               "(\\s+)",
-            "g",
+            "g"
           );
           elm.className = elm.className.replace(repl, "$1");
         }
@@ -502,8 +502,8 @@ if (!window.jscolor) {
                   ? tp[b] + ts[b] - l - l * c
                   : tp[b] + ts[b] - l + l * c
                 : tp[b] + ts[b] - l + l * c >= 0
-                  ? tp[b] + ts[b] - l + l * c
-                  : tp[b] + ts[b] - l - l * c,
+                ? tp[b] + ts[b] - l + l * c
+                : tp[b] + ts[b] - l - l * c,
             ];
           }
 
@@ -533,9 +533,9 @@ if (!window.jscolor) {
                 vShadow,
                 thisObj.shadowBlur,
                 0,
-                thisObj.shadowColor,
+                thisObj.shadowColor
               )
-            : null,
+            : null
         );
       },
 
@@ -571,7 +571,7 @@ if (!window.jscolor) {
       getPadToSliderPadding: function (thisObj) {
         return Math.max(
           thisObj.padding,
-          1.5 * (2 * thisObj.pointerBorderWidth + thisObj.pointerThickness),
+          1.5 * (2 * thisObj.pointerBorderWidth + thisObj.pointerThickness)
         );
       },
 
@@ -675,14 +675,14 @@ if (!window.jscolor) {
               target,
               controlName,
               pointerType,
-              offset,
-            ),
+              offset
+            )
           );
           jsc.attachGroupEvent(
             "drag",
             doc,
             jsc._pointerEndEvent[pointerType],
-            jsc.onDocumentPointerEnd(e, target, controlName, pointerType),
+            jsc.onDocumentPointerEnd(e, target, controlName, pointerType)
           );
         };
 
@@ -734,7 +734,7 @@ if (!window.jscolor) {
         target,
         controlName,
         pointerType,
-        offset,
+        offset
       ) {
         return function (e) {
           const thisObj = target._jscInstance;
@@ -883,7 +883,7 @@ if (!window.jscolor) {
             for (let i = 0; i < tags.length; i += 1) {
               ss.addRule(
                 jsc._vmlNS + "\\:" + tags[i],
-                "behavior:url(#default#VML);",
+                "behavior:url(#default#VML);"
               );
             }
           }
@@ -1087,7 +1087,7 @@ if (!window.jscolor) {
           blur,
           spread,
           color,
-          inset,
+          inset
         ) {
           this.hShadow = hShadow;
           this.vShadow = vShadow;
@@ -1296,7 +1296,7 @@ if (!window.jscolor) {
           this.rgb = HSV_RGB(
             h === null ? this.hsv[0] : (this.hsv[0] = h),
             s === null ? this.hsv[1] : (this.hsv[1] = s),
-            v === null ? this.hsv[2] : (this.hsv[2] = v),
+            v === null ? this.hsv[2] : (this.hsv[2] = v)
           );
 
           this.exportColor(flags);
@@ -1330,7 +1330,7 @@ if (!window.jscolor) {
           const hsv = RGB_HSV(
             r === null ? this.rgb[0] : r,
             g === null ? this.rgb[1] : g,
-            b === null ? this.rgb[2] : b,
+            b === null ? this.rgb[2] : b
           );
           if (hsv[0] !== null) {
             this.hsv[0] = Math.max(0, Math.min(360, hsv[0]));
@@ -1368,7 +1368,7 @@ if (!window.jscolor) {
                 parseInt(m[1].substr(0, 2), 16),
                 parseInt(m[1].substr(2, 2), 16),
                 parseInt(m[1].substr(4, 2), 16),
-                flags,
+                flags
               );
             } else {
               // 3-char notation
@@ -1376,7 +1376,7 @@ if (!window.jscolor) {
                 parseInt(m[1].charAt(0) + m[1].charAt(0), 16),
                 parseInt(m[1].charAt(1) + m[1].charAt(1), 16),
                 parseInt(m[1].charAt(2) + m[1].charAt(2), 16),
-                flags,
+                flags
               );
             }
             return true;
@@ -1487,8 +1487,8 @@ if (!window.jscolor) {
             r === n
               ? 3 + (b - g) / m
               : g === n
-                ? 5 + (r - b) / m
-                : 1 + (g - r) / m;
+              ? 5 + (r - b) / m
+              : 1 + (g - r) / m;
           return [60 * (h === 6 ? 0 : h), 100 * (m / v), 100 * v];
         }
 
@@ -1608,7 +1608,7 @@ if (!window.jscolor) {
           const padToSliderPadding = jsc.getPadToSliderPadding(THIS);
           const borderRadius = Math.min(
             THIS.borderRadius,
-            Math.round(THIS.padding * Math.PI),
+            Math.round(THIS.padding * Math.PI)
           ); // px
           const padCursor = "crosshair";
 
@@ -1838,7 +1838,7 @@ if (!window.jscolor) {
           }
           const x = Math.round((THIS.hsv[0] / 360) * (THIS.width - 1));
           const y = Math.round(
-            (1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1),
+            (1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1)
           );
           const crossOuterSize =
             2 * THIS.pointerBorderWidth +
@@ -1875,7 +1875,7 @@ if (!window.jscolor) {
                 THIS.sliderSize,
                 THIS.height,
                 color1,
-                color2,
+                color2
               );
               break;
             case "v":
@@ -1893,7 +1893,7 @@ if (!window.jscolor) {
                 THIS.sliderSize,
                 THIS.height,
                 color1,
-                color2,
+                color2
               );
               break;
             default:
@@ -1915,7 +1915,7 @@ if (!window.jscolor) {
               default:
             }
             const y = Math.round(
-              (1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1),
+              (1 - THIS.hsv[yComponent] / 100) * (THIS.height - 1)
             );
             jsc.picker.sldPtrOB.style.top =
               y -

@@ -14,7 +14,7 @@ const ExerciseService = {
       process.env.REACT_APP_SERVER_URL + endpoints.CREATE_EXERCISE,
       {
         playthrough,
-      },
+      }
     );
   },
   createRound: (soundOption) => {
@@ -22,7 +22,7 @@ const ExerciseService = {
       process.env.REACT_APP_SERVER_URL + endpoints.CREATE_ROUND,
       {
         soundOption,
-      },
+      }
     );
   },
   createChoice: (score, hintUsed, boxNumber, correct) => {
@@ -33,7 +33,7 @@ const ExerciseService = {
         hintUsed,
         boxNumber,
         correct,
-      },
+      }
     );
   },
   updateEndExerciseScore: (score) => {
@@ -41,7 +41,7 @@ const ExerciseService = {
       process.env.REACT_APP_SERVER_URL + endpoints.END_EXERCISE,
       {
         score,
-      },
+      }
     );
   },
 };

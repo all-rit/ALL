@@ -54,13 +54,13 @@ const fogIndexCalculation = (letterContent, words, sentences, complexWords) => {
   complexWordCount = complexWords
     ? complexWordCount
     : letterContent.length > 0
-      ? 1
-      : 0;
+    ? 1
+    : 0;
   sentenceCount = sentenceCount
     ? sentenceCount
     : letterContent.length > 0
-      ? 1
-      : 0;
+    ? 1
+    : 0;
 
   if (letterContent.length === 0) {
     wordCount = 0;
