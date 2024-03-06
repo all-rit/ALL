@@ -144,7 +144,7 @@ function Result(props) {
             </table>
             {props.hideCertificate === false && (
               <div style={{ marginTop: "50px" }}>
-                <Certificate quizResult={props.quizResult} lab={props.lab} />
+                <Certificate quizResult={props.quizResult} lab={props.lab} isImagine={props.isImagine} />
               </div>
             )}
           </div>
