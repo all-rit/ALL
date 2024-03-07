@@ -13,7 +13,7 @@ export const PageService = {
         pagename,
         completiontime,
         labid,
-      }
+      },
     );
   },
 };

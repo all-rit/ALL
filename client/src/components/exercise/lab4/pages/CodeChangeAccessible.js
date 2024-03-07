@@ -99,7 +99,7 @@ const CodeChangeAccessible = () => {
   const [textValue, setTextValue] = useState("");
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [message, setMessage] = useState(
-    "Please type code before updating code!"
+    "Please type code before updating code!",
   );
 
   useEffect(() => {

@@ -39,8 +39,8 @@ const GameStatus = (props) => {
         status === "Penalty"
           ? "tw-text-brightRed"
           : status === "In Game"
-          ? "tw-text-lightGreen"
-          : ""
+            ? "tw-text-lightGreen"
+            : ""
       }
     >
       {status}

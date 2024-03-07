@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import { CustomInput } from "reactstrap";
+import { Input } from "reactstrap";
 
 const FormCheckbox = (props) => {
   const { isChecked, lab } = props;
@@ -11,7 +11,7 @@ const FormCheckbox = (props) => {
   };
 
   return (
-    <CustomInput
+    <Input
       for={"lab" + lab.id}
       type="checkbox"
       checked={checked}
