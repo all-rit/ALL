@@ -18,11 +18,7 @@ const Routes = (props) => {
   routeItems.push(
     <div className="col-md-4">
       <h4 className="service-heading">
-        <a
-          href=" "
-          id="# "
-          onClick={() => handleRedirect(actions, 0)}
-        >
+        <a href=" " id="# " onClick={() => handleRedirect(actions, 0)}>
           Home
         </a>
       </h4>
@@ -41,10 +37,9 @@ const Routes = (props) => {
         </li>
       </ul>
     </div>
-  )
+  );
   for (let i = 1; i < 12; i++) {
     routeItems.push(
-
       <div className="col-md-4">
         <h4 className=" ">
           <a href=" " onClick={() => handleRedirect(actions, i, 0)}>
@@ -53,51 +48,36 @@ const Routes = (props) => {
         </h4>
         <ul>
           <li>
-            <a
-              href="# "
-              onClick={() => handleRedirect(actions, i, 0)}
-            >
+            <a href="# " onClick={() => handleRedirect(actions, i, 0)}>
               About
             </a>
           </li>
           <li>
-            <a
-              href="# "
-              onClick={() => handleRedirect(actions, i, 1)}
-            >
+            <a href="# " onClick={() => handleRedirect(actions, i, 1)}>
               Reading
             </a>
           </li>
           <li>
-            <a
-              href="# "
-              onClick={() => handleRedirect(actions, i, 2)}
-            >
+            <a href="# " onClick={() => handleRedirect(actions, i, 2)}>
               Exercise
             </a>
           </li>
           <li>
-            <a
-              href="# "
-              onClick={() => handleRedirect(actions, i, 3)}
-            >
+            <a href="# " onClick={() => handleRedirect(actions, i, 3)}>
               Reinforcement
             </a>
           </li>
           <li>
-            <a
-              href="# "
-              onClick={() => handleRedirect(actions, i, 4)}
-            >
+            <a href="# " onClick={() => handleRedirect(actions, i, 4)}>
               Quiz
             </a>
           </li>
         </ul>
       </div>
-    )
+    );
   }
   return routeItems;
-}
+};
 
 const SiteMap = (props) => {
   useEffect(() => {
@@ -124,7 +104,6 @@ const SiteMap = (props) => {
           </div>
         </section>
       </div>
-
 
       {/* // <!-- Footer --> */}
       <footer className="footer">

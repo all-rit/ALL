@@ -23,7 +23,7 @@ const SentenceCountRepair = (props) => {
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_SENTENCE_COUNT,
-    FogIndexCalculationData.sentences,
+    FogIndexCalculationData.sentences
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =

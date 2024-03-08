@@ -99,7 +99,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
       { ...repairActions, ...exerciseActions },
-      dispatch,
+      dispatch
     ),
   };
 };

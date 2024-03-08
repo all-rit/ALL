@@ -55,7 +55,7 @@ export const actions = {
     availableMessage,
     unavailableMessage,
     availableBackgroundColor,
-    unavailableBackgroundColor,
+    unavailableBackgroundColor
   ) => ({
     type: types.UPDATE_REPAIR,
     availableMessage,

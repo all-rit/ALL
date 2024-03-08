@@ -20,7 +20,7 @@ it("renders without crashing", () => {
     <Provider store={store}>
       <App />
     </Provider>,
-    div,
+    div
   );
   ReactDOM.unmountComponentAtNode(div);
 });

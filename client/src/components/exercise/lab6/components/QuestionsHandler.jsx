@@ -7,7 +7,7 @@ const QuestionsHandler = (props) => {
   const { questions, handleContinue } = props;
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers,
+    questions[currentQuestionCursor].answers
   );
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);

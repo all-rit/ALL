@@ -8,7 +8,7 @@ const ImagineService = {
       {
         userID,
         discomfortCount,
-      },
+      }
     );
   },
   experientialMain: (userID, experientialMain) => {
@@ -17,7 +17,7 @@ const ImagineService = {
       {
         userID,
         experientialMain,
-      },
+      }
     );
   },
   experientialProtanopia: (userID, experientialProtanopia) => {
@@ -26,7 +26,7 @@ const ImagineService = {
       {
         userID,
         experientialProtanopia,
-      },
+      }
     );
   },
 };
