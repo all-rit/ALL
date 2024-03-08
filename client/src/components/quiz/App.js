@@ -271,6 +271,7 @@ const QuizHandler = (props) => {
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
           lab={currentLabId}
+          isImagine={props.isImagine}
         ></Result>
       )}
     </>
@@ -282,5 +283,6 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
+  isImagine: PropTypes.bool,
 };
 export default QuizHandler;

@@ -192,6 +192,7 @@ class Footer extends Component {
                 ? Sections[lab][body + 1].name
                 : ""}
             </button>
+
             <div className="btn-change">
               <button
                 className="btn-text btn btn-bottom-buttons text-uppercase"
