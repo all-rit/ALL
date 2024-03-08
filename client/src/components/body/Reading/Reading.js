@@ -114,16 +114,26 @@ const Reading = (props) => {
         )}
         {readingData?.piechart?.header && (
           <>
-            <h3 className={isImagine && 'tw-text-[4vw] lg:tw-text-[3.5vh]'}>{readingData?.piechart.header}</h3>
+            <h3 className={isImagine && "tw-text-[4vw] lg:tw-text-[3.5vh]"}>
+              {readingData?.piechart.header}
+            </h3>
             <div className="flex">
-              <Pie data={readingData?.piechart.data} height={!isImagine && 100} options={isImagine && { maintainAspectRatio: false }} />
+              <Pie
+                data={readingData?.piechart.data}
+                height={!isImagine && 100}
+                options={isImagine && { maintainAspectRatio: false }}
+              />
             </div>
           </>
         )}
         {readingData?.piechart.caption !== "" ? (
           readingData?.piechart.caption.map((data, index) => {
             return (
-              <div key={index} id={"caption"} className={isImagine ? 'tw-text-[3vw] lg:tw-text-[2.25vh]' : ''}>
+              <div
+                key={index}
+                id={"caption"}
+                className={isImagine ? "tw-text-[3vw] lg:tw-text-[2.25vh]" : ""}
+              >
                 {data}
               </div>
             );
@@ -136,11 +146,26 @@ const Reading = (props) => {
           readingData?.body.map((data, index) => {
             return (
               <Fragment key={index}>
-                {data.header !== "" && <h3 className={isImagine && "tw-text-[4vw] lg:tw-text-[3.5vh]"}>{data.header}</h3>}
+                {data.header !== "" && (
+                  <h3
+                    className={isImagine && "tw-text-[4vw] lg:tw-text-[3.5vh]"}
+                  >
+                    {data.header}
+                  </h3>
+                )}
                 {data.type === "" && (
                   <>
                     {data.content.map((content, index) => {
-                      return <p key={index} className={isImagine && "tw-text-[3vw] lg:tw-text-[2.25vh]"}>{content}</p>;
+                      return (
+                        <p
+                          key={index}
+                          className={
+                            isImagine && "tw-text-[3vw] lg:tw-text-[2.25vh]"
+                          }
+                        >
+                          {content}
+                        </p>
+                      );
                     })}
                   </>
                 )}
