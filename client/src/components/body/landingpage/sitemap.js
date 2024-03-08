@@ -12,6 +12,93 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+const Routes = (props) => {
+  const { actions } = props;
+  const routeItems = [];
+  routeItems.push(
+    <div className="col-md-4">
+      <h4 className="service-heading">
+        <a
+          href=" "
+          id="# "
+          onClick={() => handleRedirect(actions, 0)}
+        >
+          Home
+        </a>
+      </h4>
+      <ul>
+        <li>
+          {" "}
+          <a href="/#goals">Goals</a>
+        </li>
+        <li>
+          {" "}
+          <a href="/#labs">Labs</a>
+        </li>
+        <li>
+          {" "}
+          <a href="/#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  )
+  for (let i = 1; i < 12; i++) {
+    routeItems.push(
+
+      <div className="col-md-4">
+        <h4 className=" ">
+          <a href=" " onClick={() => handleRedirect(actions, i, 0)}>
+            Lab {i}
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a
+              href="# "
+              onClick={() => handleRedirect(actions, i, 0)}
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="# "
+              onClick={() => handleRedirect(actions, i, 1)}
+            >
+              Reading
+            </a>
+          </li>
+          <li>
+            <a
+              href="# "
+              onClick={() => handleRedirect(actions, i, 2)}
+            >
+              Exercise
+            </a>
+          </li>
+          <li>
+            <a
+              href="# "
+              onClick={() => handleRedirect(actions, i, 3)}
+            >
+              Reinforcement
+            </a>
+          </li>
+          <li>
+            <a
+              href="# "
+              onClick={() => handleRedirect(actions, i, 4)}
+            >
+              Quiz
+            </a>
+          </li>
+        </ul>
+      </div>
+    )
+  }
+  return routeItems;
+}
+
 const SiteMap = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,571 +113,18 @@ const SiteMap = (props) => {
               <div className="col-lg-12 text-center">
                 <h2 className="section-heading text-uppercase">Site Map</h2>
               </div>
-              <div className="row text-center">
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a
-                      href=" "
-                      id="# "
-                      onClick={() => handleRedirect(actions, 0)}
-                    >
-                      Home
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      {" "}
-                      <a href="/#goals">Goals</a>
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="/#labs">Labs</a>
-                    </li>
-                    <li>
-                      {" "}
-                      <a href="/#contact">Contact</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href=" " onClick={() => handleRedirect(actions, 1, 0)}>
-                      Lab 1
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 1, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 1, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 1, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 1, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 1, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 2, 0)}>
-                      Lab 2
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 2, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 2, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 2, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 2, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 2, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href=" " onClick={() => handleRedirect(actions, 3, 0)}>
-                      Lab 3
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 3, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 3, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 3, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 3, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 3, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href=" " onClick={() => handleRedirect(actions, 4, 0)}>
-                      Lab 4
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 4, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 4, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 4, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 4, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 4, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 5, 0)}>
-                      Lab 5
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 5, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 5, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 5, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a href=" " onClick={() => handleRedirect(actions, 5, 3)}>
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a href=" " onClick={() => handleRedirect(actions, 5, 4)}>
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 6, 0)}>
-                      Lab 6
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 6, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 6, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 6, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 6, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 6, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 7, 0)}>
-                      Lab 7
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 7, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 7, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 7, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 7, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 7, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 8, 0)}>
-                      Lab 8
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 8, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 8, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 8, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 8, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 8, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 9, 0)}>
-                      Lab 9
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 9, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 9, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 9, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 9, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 9, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 10, 0)}>
-                      Lab 10
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 10, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 10, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 10, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 10, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 10, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-4">
-                  <h4 className="service-heading">
-                    <a href="# " onClick={() => handleRedirect(actions, 11, 0)}>
-                      Lab 11
-                    </a>
-                  </h4>
-                  <ul>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 11, 0)}
-                      >
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 11, 1)}
-                      >
-                        Reading
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 11, 2)}
-                      >
-                        Exercise
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 11, 3)}
-                      >
-                        Reinforcement
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="# "
-                        onClick={() => handleRedirect(actions, 11, 4)}
-                      >
-                        Quiz
-                      </a>
-                    </li>
-                  </ul>
+              <div className="grid-container">
+                <div className="col-md-auto">
+                  <div className="row">
+                    <Routes actions={actions} />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
       </div>
+
 
       {/* // <!-- Footer --> */}
       <footer className="footer">
