@@ -92,7 +92,7 @@ class Repair extends Component {
       availableMessage,
       unavailableMessage,
       availableBackgroundColor,
-      unavailableBackgroundColor
+      unavailableBackgroundColor,
     );
 
     // Update the state and close the repair.
@@ -100,7 +100,7 @@ class Repair extends Component {
       availableMessage,
       unavailableMessage,
       availableBackgroundColor,
-      unavailableBackgroundColor
+      unavailableBackgroundColor,
     );
     handlers.closeRepair();
     handlers.updatePopup("The repairs have been made.");
@@ -435,7 +435,7 @@ class Repair extends Component {
                       enableAlpha={false}
                       color={this.state.availableBackgroundColor}
                       onChange={this.changeAvailableBackgroundColorHandler.bind(
-                        this
+                        this,
                       )}
                     />
                   </div>
@@ -463,7 +463,7 @@ class Repair extends Component {
                 <button
                   id={"changeUnavailableColor"}
                   onClick={this.toggleUnavailableBackgroundColorPopup.bind(
-                    this
+                    this,
                   )}
                   style={{ backgroundColor: unavailableBackgroundColor }}
                 />
@@ -473,7 +473,7 @@ class Repair extends Component {
                       enableAlpha={false}
                       color={this.state.unavailableBackgroundColor}
                       onChange={this.changeUnavailableBackgroundColorHandler.bind(
-                        this
+                        this,
                       )}
                     />
                   </div>

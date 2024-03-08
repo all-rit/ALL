@@ -180,14 +180,36 @@ router.get('/professors', TeamMemberController.getAllProfessors);
 router.get('/alumni', TeamMemberController.getAllAlumni);
 
 // Imagine
-router.post('/imagine/discomfortCount', ImagineController.discomfortCount);
-router.post('/imagine/experientialMain', ImagineController.experientialMain);
-router.post('/imagine/experientialProtanopia', ImagineController.experientialProtanopia);
-router.post('/imagine/preSurvey', ImagineController.preSurvey);
-router.post('/imagine/postSurvey', ImagineController.postSurvey);
-router.get('/imagine/users', ImagineController.getUsers);
-
-router.post('/imagine/readMoreCount', ImagineController.readMoreCount);
-router.post('/imagine/readMoreTimeElapsed', ImagineController.readMoreTimeElapsed);
-router.post('/imagine/readingSectionPagePosition', ImagineController.readingSectionPagePosition);
+router.post('/imagine/postStudy', async function(req, res) {
+  const resp = await ImagineController.submitStudy(req);
+  res.send(resp);
+});
+router.post('/imagine/preSurvey', async function(req, res) {
+  const resp = await ImagineController.preSurvey(req, res);
+  res.send(resp);
+});
+router.post('/imagine/postSurvey', async function(req, res) {
+  const resp = await ImagineController.postSurvey(req);
+  res.send(resp);
+});
+router.get('/imagine/users', async function(req, res) {
+  const imagineUsers = await ImagineController.getUsers();
+  res.json(imagineUsers);
+});
+router.get('/imagine/user/:userID', async function(req, res) {
+  const imagineUser = await ImagineController.getUserByID(req);
+  res.json(imagineUser);
+});
+router.post('/imagine/readMoreCount', async function(req, res) {
+  const resp = await ImagineController.readMoreCount(req);
+  res.send(resp);
+});
+router.post('/imagine/readMoreTimeElapsed', async function(req, res) {
+  const resp = await ImagineController.readMoreTimeElapsed(req);
+  res.send(resp);
+});
+router.post('/imagine/readingSectionPagePosition', async function(req, res) {
+  const resp = await ImagineController.readingSectionPagePosition(req);
+  res.send(resp);
+});
 module.exports = router;

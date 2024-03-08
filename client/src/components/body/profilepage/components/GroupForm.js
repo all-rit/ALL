@@ -76,14 +76,14 @@ const GroupForm = (props) => {
           labsAssigned.forEach((labID) => {
             if (!labs.includes(labID)) {
               GroupService.deleteGroupLab(groupID, labID).then(() =>
-                setInstrGroupsUpdated(true)
+                setInstrGroupsUpdated(true),
               );
             }
           });
           labs.forEach((labID) => {
             if (!labsAssigned.includes(labID)) {
               GroupService.addGroupLab(groupID, labID).then(() =>
-                setInstrGroupsUpdated(true)
+                setInstrGroupsUpdated(true),
               );
             }
           });

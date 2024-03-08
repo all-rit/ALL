@@ -12,7 +12,7 @@ const RepairService = {
       {
         activity,
         repair,
-      }
+      },
     );
   },
 };
