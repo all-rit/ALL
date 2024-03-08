@@ -59,13 +59,13 @@ const GridApplicants = (props) => {
       } else {
         if (id?.includes(selectImg.id)) {
           setCurrentFile((prevState) =>
-            prevState.filter((file) => file.id !== selectImg.id),
+            prevState.filter((file) => file.id !== selectImg.id)
           );
           setId((prevState) => prevState.filter((id) => id !== selectImg.id));
         }
       }
     },
-    [id, currentFile],
+    [id, currentFile]
   );
 
   return (

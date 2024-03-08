@@ -10,7 +10,7 @@ const RepairService = {
     background,
     correctColor,
     incorrectColorOne,
-    incorrectColorTwo,
+    incorrectColorTwo
   ) => {
     return API.postWithBody(
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR,
@@ -19,7 +19,7 @@ const RepairService = {
         correctColor,
         incorrectColorOne,
         incorrectColorTwo,
-      },
+      }
     );
   },
 };

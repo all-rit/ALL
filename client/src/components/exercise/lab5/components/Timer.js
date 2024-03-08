@@ -12,9 +12,9 @@ class Timer extends Component {
     this.interval = setInterval(
       () =>
         this.setState({ secondsLeft: this.state.secondsLeft - 1 }, () =>
-          this.checkExpired(),
+          this.checkExpired()
         ),
-      1000,
+      1000
     );
   }
   checkExpired() {

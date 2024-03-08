@@ -123,7 +123,7 @@ class PageLayoutRepair extends Component {
       ulvalue,
       classvalue,
       fontvalue,
-      fontfamilyvalue,
+      fontfamilyvalue
     );
     handlers.closeRepair();
     setTimeout(() => {

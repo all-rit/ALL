@@ -26,7 +26,7 @@ const NavRepairPage = ({ user }) => {
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_NAV_BAR,
-    NavBarData.navItems,
+    NavBarData.navItems
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =

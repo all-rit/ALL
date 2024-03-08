@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
       { ...exerciseActions, ...mainActions, ...repairActions },
-      dispatch,
+      dispatch
     ),
   };
 };
@@ -59,7 +59,7 @@ class Exercise extends Component {
     actions.updateState(EXERCISE_PLAYING);
     this.interval = setInterval(
       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000,
+      1000
     );
   }
 
