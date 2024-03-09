@@ -42,10 +42,10 @@ const QuizHandler = (props) => {
   const [currentLabId] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions] = useState(
-    assignQuizQuestions(props.labId, props.isFinalQuiz),
+    assignQuizQuestions(props.labId, props.isFinalQuiz)
   );
   const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers,
+    questions[currentQuestionCursor].answers
   );
   const [quizCompleted, setQuizCompleted] = useState(false);
   // initialized to a empty array to house recorded answers
@@ -163,13 +163,13 @@ const QuizHandler = (props) => {
       UserLabService.complete_quiz(
         props.labId,
         (countCorrect / questionsTotal) * 100,
-        JSON.stringify(output),
+        JSON.stringify(output)
       );
       if (props.user.firstname !== null) {
         UserLabService.user_complete_quiz(
           props.user.userid,
           props.labId,
-          (countCorrect / questionsTotal) * 100,
+          (countCorrect / questionsTotal) * 100
         );
       }
     } else {
@@ -177,7 +177,7 @@ const QuizHandler = (props) => {
         output,
         props.user.userid,
         props.labId,
-        (countCorrect / questionsTotal) * 100,
+        (countCorrect / questionsTotal) * 100
       );
     }
   }
@@ -202,6 +202,7 @@ const QuizHandler = (props) => {
     setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
   }
+
   /**
    * selectMulti is a function that is responsible for handling
    * behavior of a multi-answer question by recording the given input to
@@ -274,6 +275,7 @@ const QuizHandler = (props) => {
             selectedAnswers={selectedAnswers}
             quizQuestions={questions}
             lab={currentLabId}
+            isImagine={props.isImagine}
           ></Result>
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
@@ -296,5 +298,6 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
+  isImagine: PropTypes.bool,
 };
 export default QuizHandler;

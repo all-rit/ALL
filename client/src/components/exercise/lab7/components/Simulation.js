@@ -205,7 +205,7 @@ class Simulation extends Component {
         const result = this.handlePerfectScore();
         setTimeout(
           () => this.startRound(),
-          result ? READ_TIME + DELAY_TIME : NO_DELAY,
+          result ? READ_TIME + DELAY_TIME : NO_DELAY
         );
       }
     }
@@ -243,7 +243,7 @@ class Simulation extends Component {
     const { files } = this.state;
     const { handlers } = this.props;
     const filteredFiles = files.filter(
-      (file) => file.result === FILE_PROTECTED,
+      (file) => file.result === FILE_PROTECTED
     );
     if (filteredFiles.length === files.length) {
       handlers.incrementScore(SCORE_MAP.PERFECT_SCORE);
@@ -384,7 +384,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handlers: bindActionCreators(
       { ...exerciseActions, ...appActions },
-      dispatch,
+      dispatch
     ),
   };
 };

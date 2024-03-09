@@ -4,6 +4,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Certificate from "./Certificate";
+import { navigate } from "@reach/router";
 
 function Result(props) {
   function checkIfCorrect(answerIndex, questionIndex) {
@@ -32,7 +33,7 @@ function Result(props) {
       counter += 1;
       if (props.quizQuestions[counter - 1].multiChoice) {
         const isMultiCorrect = Array.from(
-          props.selectedAnswers[counter - 1],
+          props.selectedAnswers[counter - 1]
         ).map((element) => {
           return checkIfCorrect(element, counter - 1);
         });
@@ -48,7 +49,7 @@ function Result(props) {
       } else {
         isCorrect = checkIfCorrect(
           props.selectedAnswers[counter - 1].type,
-          index,
+          index
         );
       }
       return (
@@ -61,7 +62,7 @@ function Result(props) {
           <td className={"column-width"}>
             {renderTableSelectedAnswersData(
               props.selectedAnswers[counter - 1],
-              answers,
+              answers
             )}
           </td>
           <td className={"column-width"}>
@@ -119,30 +120,51 @@ function Result(props) {
     }
   }
 
+  const handleImagineSurvey = () => {
+    navigate("/Imagine/PostSurvey");
+  };
+
   return (
-    <div className="quiz container shadow">
-      <div className="result">
-        Results <strong>Score: {props.quizResult}</strong>
-        <br />
-        <div>
-          <table id="quizResults">
-            <tbody>
-              <tr>
-                {/* {renderTableHeader()}*/}
-                <th>QUESTION</th>
-                <th>CORRECT ANSWERS</th>
-                <th>SELECTED ANSWERS</th>
-                <th>RESULTS</th>
-              </tr>
-              {renderTableData()}
-            </tbody>
-          </table>
-          {props.hideCertificate === false && (
-            <div style={{ marginTop: "50px" }}>
-              <Certificate quizResult={props.quizResult} lab={props.lab} />
-            </div>
-          )}
+    <div>
+      <div className="quiz container shadow">
+        <div className="result">
+          Results <strong>Score: {props.quizResult}</strong>
+          <br />
+          <div>
+            <table id="quizResults">
+              <tbody>
+                <tr>
+                  <th>QUESTION</th>
+                  <th>CORRECT ANSWERS</th>
+                  <th>SELECTED ANSWERS</th>
+                  <th>RESULTS</th>
+                </tr>
+                {renderTableData()}
+              </tbody>
+            </table>
+            {props.hideCertificate === false && (
+              <div style={{ marginTop: "50px" }}>
+                <Certificate
+                  quizResult={props.quizResult}
+                  lab={props.lab}
+                  isImagine={props.isImagine}
+                />
+              </div>
+            )}
+          </div>
         </div>
+      </div>
+      <div className=" d-flex flex-column justify-content-center mt-3">
+        {props.isImagine ? (
+          <button
+            className="btn btn-primary btn-xl text-uppercase  next"
+            onClick={handleImagineSurvey}
+          >
+            Continue to Post-Survey
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
@@ -151,6 +173,7 @@ function Result(props) {
 Result.propTypes = {
   quizResult: PropTypes.string.isRequired,
   selectedAnswers: PropTypes.array.isRequired,
+  isImagine: PropTypes.bool,
 };
 
 export default Result;

@@ -45,7 +45,7 @@ const SurveyHandler = (props) => {
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions] = useState(assignQuizQuestions(props.type));
   const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers,
+    questions[currentQuestionCursor].answers
   );
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -59,7 +59,6 @@ const SurveyHandler = (props) => {
    */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
-      // console.log(selectedAnswers);
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
@@ -112,9 +111,9 @@ const SurveyHandler = (props) => {
       groupingQuestions.every((index) => {
         return isEqualAnswer(
           user.preSurvey[index].answer,
-          selectedAnswers[index].answer,
+          selectedAnswers[index].answer
         );
-      }),
+      })
     );
 
     // Is in either group 1 or 2 (experiential or expressive). Judge this based on whether, in their group, they is an even or odd number of people in their group
@@ -132,7 +131,6 @@ const SurveyHandler = (props) => {
    */
   function selectAnswer(e) {
     const answerValue = e.target.value;
-    // let tempSelectedAnswers;
     setSelectedAnswers([
       ...selectedAnswers,
       {

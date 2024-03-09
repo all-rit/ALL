@@ -14,7 +14,7 @@ const RepairService = {
       {
         height,
         width,
-      },
+      }
     );
   },
   submitRepairSkip: (skiptomain) => {
@@ -22,7 +22,7 @@ const RepairService = {
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR_SKIP,
       {
         skiptomain,
-      },
+      }
     );
   },
   submitRepairHint: (tabindex) => {
@@ -30,7 +30,7 @@ const RepairService = {
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_REPAIR_HINT,
       {
         tabindex,
-      },
+      }
     );
   },
 };

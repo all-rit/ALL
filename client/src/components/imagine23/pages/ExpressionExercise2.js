@@ -20,7 +20,7 @@ const ExpressionExercise2 = (props) => {
       {
         discomfortNumber: count + 1,
         timeStamp: Number.parseFloat(
-          reactPlayer.current.getCurrentTime(),
+          reactPlayer.current.getCurrentTime()
         ).toFixed(5),
       },
     ]);

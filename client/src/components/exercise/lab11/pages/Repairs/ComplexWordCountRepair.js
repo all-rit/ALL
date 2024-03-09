@@ -23,7 +23,7 @@ const ComplexWordCountRepair = (props) => {
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_COMPLEX_WORDS,
-    FogIndexCalculationData.complexWords,
+    FogIndexCalculationData.complexWords
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =

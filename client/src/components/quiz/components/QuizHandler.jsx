@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
@@ -77,13 +76,13 @@ function assignQuizQuestions(labId, isFinalQuiz) {
  * component with information.
  */
 const QuizHandler = (props) => {
-  const [currentLabId, setCurrentLab] = useState(props.labId);
+  const [currentLabId] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(
-    assignQuizQuestions(props.labId, props.isFinalQuiz),
+  const [questions] = useState(
+    assignQuizQuestions(props.labId, props.isFinalQuiz)
   );
   const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers,
+    questions[currentQuestionCursor].answers
   );
   const [quizCompleted, setQuizCompleted] = useState(false);
   // initialized to a empty array to house recorded answers
@@ -104,6 +103,7 @@ const QuizHandler = (props) => {
       setDisableNext(true);
     }
   }
+
   /**
    * onComplete is a function that is responsible for preparing and running the
    * calculations to grade a users responses to the quiz. This will then prepare the data
@@ -201,22 +201,31 @@ const QuizHandler = (props) => {
       UserLabService.complete_quiz(
         props.labId,
         (countCorrect / questionsTotal) * 100,
-        JSON.stringify(output),
+        JSON.stringify(output)
       );
       if (props.user.firstname !== null) {
         UserLabService.user_complete_quiz(
           props.user.userid,
           props.labId,
-          (countCorrect / questionsTotal) * 100,
+          (countCorrect / questionsTotal) * 100
         );
       }
     } else {
-      props.submitData(
-        output,
-        props.user.userid,
-        props.labId,
-        (countCorrect / questionsTotal) * 100,
-      );
+      if (props.isImagine) {
+        props.submitData(
+          output,
+          props.userID,
+          props.labId,
+          (countCorrect / questionsTotal) * 100
+        );
+      } else {
+        props.submitData(
+          output,
+          props.user.userid,
+          props.labId,
+          (countCorrect / questionsTotal) * 100
+        );
+      }
     }
   }
 
@@ -299,6 +308,7 @@ const QuizHandler = (props) => {
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
           lab={currentLabId}
+          isImagine={props.isImagine}
         ></Result>
       )}
     </>
@@ -313,5 +323,7 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
+  isImagine: PropTypes.bool,
+  userID: PropTypes.string,
 };
 export default QuizHandler;

@@ -15,12 +15,12 @@ const ExerciseService = {
     };
     return API.postWithBody(
       `${process.env.REACT_APP_SERVER_URL}${endpoints.SUBMIT_REPAIR}`,
-      body,
+      body
     );
   },
   getUserRepair: (userId) => {
     return API.get(
-      `${process.env.REACT_APP_SERVER_URL}${endpoints.GET_REPAIR}${userId}`,
+      `${process.env.REACT_APP_SERVER_URL}${endpoints.GET_REPAIR}${userId}`
     ).then((response) => response.json());
   },
 };
