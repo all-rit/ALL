@@ -186,7 +186,7 @@ router.post('/imagine/postStudy', async function(req, res) {
 });
 router.post('/imagine/preSurvey', async function(req, res) {
   const resp = await ImagineController.preSurvey(req, res);
-  res.send(resp);
+  res.send(JSON.stringify(resp));
 });
 router.post('/imagine/postSurvey', async function(req, res) {
   const resp = await ImagineController.postSurvey(req);

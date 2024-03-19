@@ -77,51 +77,29 @@ const SurveyHandler = (props) => {
 
     if (surveyType === "pre") {
       // will need to be changed with next logic story
-      ImagineService.preSurvey(props.userID, selectedAnswers, "experiential");
-      groupUserByAnswers(); // This will handle navigation
+      const response = await ImagineService.preSurvey(
+        props.userID,
+        selectedAnswers,
+      );
+      const section = (await response.text()).replace(/['"]+/g, "");
+
+      if (section == "experiential" || section === "control") {
+        console.log("Navigating to Experiential");
+        navigate("/Imagine/ExperientialExercise");
+      } else if (
+        section == "discomfortCountPOC" ||
+        section == "discomfortCountNonPOC"
+      ) {
+        console.log("Navigating to Expression");
+        navigate("/Imagine/ExpressionExercise");
+      } else {
+        console.log("Navigating to None");
+      }
+      // This will handle navigation
     } else if (surveyType === "post") {
       ImagineService.postSurvey(props.userID, selectedAnswers);
       navigate("/Imagine/ExerciseEnd");
     }
-  }
-
-  async function groupUserByAnswers() {
-    let groupingQuestions = [0, 1, 2];
-
-    // Helper function to compare answers, since they can be either strings or arrays
-    const isEqualAnswer = (a, b) => {
-      // Normalize both answers to arrays and sort to ensure order doesn't matter
-      const arrA = Array.isArray(a) ? a : [a];
-      const arrB = Array.isArray(b) ? b : [b];
-      arrA.sort();
-      arrB.sort();
-
-      // Check if arrays are of the same length and have equal elements (case-insensitive for strings)
-      return (
-        arrA.length === arrB.length &&
-        arrA.every((val, index) => {
-          return typeof val === "string" && typeof arrB[index] === "string"
-            ? val.toLowerCase() === arrB[index].toLowerCase()
-            : val === arrB[index];
-        })
-      );
-    };
-
-    // Use age, gender, and enthnicity to group users together
-    const resUsers = await ImagineService.getUsers();
-    let groupedUsers = resUsers.filter((user) =>
-      groupingQuestions.every((index) => {
-        return isEqualAnswer(
-          user.preSurvey[index].answer,
-          selectedAnswers[index].answer,
-        );
-      }),
-    );
-
-    // Is in either group 1 or 2 (experiential or expressive). Judge this based on whether, in their group, they is an even or odd number of people in their group
-    let group = groupedUsers.length % 2;
-    console.log(group === 0 ? "Experiential" : "Expression");
-    props.handleGroupAssignment(group === 0 ? true : false);
   }
 
   /**

@@ -33,7 +33,6 @@ const preSurvey = async (data) => {
   try {
     if (userID) {
       const section = await determineGroup(preSurvey);
-      console.log(section);
       const user = await getUserByID(userID);
       if (user !== null) {
         user.preSurvey = preSurvey;
