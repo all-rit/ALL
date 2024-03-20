@@ -26,7 +26,7 @@ const AddressRepair = ({ user }) => {
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_ADDRESS_FORM,
-    AddressRepairData.countries,
+    AddressRepairData.countries
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =

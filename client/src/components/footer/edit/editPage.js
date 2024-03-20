@@ -3,7 +3,7 @@
 // New Implementation to increment and decrement size of UI.
 export function changeTSize(num, className = null) {
   let elems = document.querySelectorAll(
-    ".mainBody *, .nav-link, button, .navbar-brand, .labnav",
+    ".mainBody *, .nav-link, button, .navbar-brand, .labnav"
   );
   let fontSizeString;
   let index = 0;
@@ -59,13 +59,13 @@ export function setTextColor(picker) {
   }
   document.documentElement.style.setProperty(
     "--yellow-text",
-    picker.toString(),
+    picker.toString()
   );
   document.documentElement.style.setProperty("--blue-text", picker.toString());
   document.documentElement.style.setProperty("--white-text", picker.toString());
   document.documentElement.style.setProperty(
     "--light-blue-text",
-    picker.toString(),
+    picker.toString()
   );
 }
 

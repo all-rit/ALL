@@ -8,6 +8,7 @@ import { EXERCISE_IDLE } from "src/constants/index";
  * @property {string} SET_LAB - The action type for setting lab.
  * @property {string} SET_BODY - The action type for setting body.
  * @property {string} UPDATE_USER_STATE - The action type for updating user state.
+ * @property {bool} SET_IS_IMAGINE - The action type for setting up special actions for Imagine based content.
  */
 
 /**
@@ -20,6 +21,7 @@ export const types = {
   SET_LAB: "@accessibility-lab/context/lab",
   SET_BODY: "@accessibility-lab/context/app/set_body",
   UPDATE_USER_STATE: "@accessibility-lab/context/update_user_state",
+  SET_IS_IMAGINE: "@accessibility-lab/context/set_is_imagine",
 };
 
 /**
@@ -30,6 +32,7 @@ export const types = {
  * @property {Object} main.user - The user object.
  * @property {number} main.lab - The lab number.
  * @property {number} main.body - The body number.
+ * @property {bool} main.isImagine - The current state of isImagine.
  */
 
 /**
@@ -42,6 +45,7 @@ export const initialState = {
     user: null,
     lab: 0,
     body: 0,
+    isImagine: false,
   },
 };
 
@@ -83,6 +87,14 @@ export const MainReducerForContext = (state = initialState, action) => {
       return {
         ...state,
         userState: payload.userState,
+      };
+    case types.SET_IS_IMAGINE:
+      return {
+        ...state,
+        main: {
+          ...state.main,
+          isImagine: payload.isImagine,
+        },
       };
     default:
       return state;

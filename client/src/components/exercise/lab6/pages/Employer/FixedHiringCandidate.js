@@ -81,7 +81,7 @@ const FixedHiringCandidate = () => {
           if (state.main.user?.firstname !== null && state.main.user !== null) {
             UserLabService.user_complete_exercise(
               state.main.user.userid,
-              LAB_ID,
+              LAB_ID
             );
           }
           navigate("/Lab6/Exercise/ExerciseEnd");

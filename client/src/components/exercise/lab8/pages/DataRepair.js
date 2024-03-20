@@ -42,8 +42,8 @@ const DataRepair = () => {
       prevState.map((message) =>
         message.id === messageId
           ? { ...message, ai_polarity: newValue }
-          : message,
-      ),
+          : message
+      )
     );
   };
   /*
@@ -91,7 +91,7 @@ const DataRepair = () => {
     } else {
       setUserError(true);
       popUpHandler(
-        "There are errors in your repair. Please correct the errors.",
+        "There are errors in your repair. Please correct the errors."
       );
     }
     setMessageError(localMessageError);
@@ -184,7 +184,7 @@ const DataRepair = () => {
         : "/Lab8/Exercise/Conclusion",
       {
         state: { messages, repairState },
-      },
+      }
     );
   };
 
@@ -314,7 +314,7 @@ const DataRepair = () => {
                           onChange={(e) => {
                             handleAiPolarityChange(
                               message.id,
-                              parseInt(e.target.value),
+                              parseInt(e.target.value)
                             );
                           }}
                           title={message.ai_polarity}

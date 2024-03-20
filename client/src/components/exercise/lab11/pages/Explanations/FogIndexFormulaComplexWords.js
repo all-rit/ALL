@@ -14,7 +14,7 @@ const FogIndexFormulaComplexWords = () => {
 
   const handleContinue = () => {
     navigate(
-      `/Lab11/Exercise${REPAIR}/${EXERCISE_STATES.REPAIR_COMPLEX_WORDS}`,
+      `/Lab11/Exercise${REPAIR}/${EXERCISE_STATES.REPAIR_COMPLEX_WORDS}`
     );
   };
 

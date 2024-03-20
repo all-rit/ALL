@@ -27,7 +27,7 @@ const DateRepair = (props) => {
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_DATE_REPAIR,
-    DateFormData.countries,
+    DateFormData.countries
   );
 
   useEffect(() => {
