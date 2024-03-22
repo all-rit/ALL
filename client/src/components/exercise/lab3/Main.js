@@ -27,6 +27,7 @@ import { bindActionCreators } from "redux";
 
 const mapStateToProps = (state) => ({
   state: state,
+  repairError: state.repair3.repairError,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -57,6 +58,7 @@ class Main extends Component {
             data={state}
           />
           <AccessibleInstructions
+            state={state}
             path={"/AccessibleInstructions"}
             actions={actions}
           />

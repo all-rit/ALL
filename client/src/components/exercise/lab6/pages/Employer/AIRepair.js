@@ -1,18 +1,17 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import { navigate } from "@reach/router";
 import React, { useEffect, useState } from "react";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import RepairService from "../../../../../services/lab6/RepairService";
 import CodeUpdateHeader from "../../../lab3/components/CodeUpdateHeader";
-import Popup from "../../../shared/Popup";
+import Popup from "../../../../all-components/Popup";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const AIRepair = (props) => {
-  const { actions, user } = props;
+const AIRepair = () => {
+  const { actions, state } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
   const [repairOpen, setRepairOpen] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
@@ -77,7 +76,7 @@ const AIRepair = (props) => {
     if (!error) {
       setUserError(false);
       RepairService.submitRepair(
-        user?.userid,
+        state.main.user?.userid,
         appearanceValue,
         experienceValue,
         availabilityValue,

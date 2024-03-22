@@ -1,7 +1,4 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import ReactGA from "react-ga";
 
 import { default as About } from "./components/body/About";
@@ -9,24 +6,24 @@ import { default as Reading } from "./components/body/Reading/Reading";
 
 import { default as Reinforcement } from "./components/body/Reinforcement";
 
-import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { Sections } from "./constants/index";
-
+import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
-
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
-
 import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
-
 import { default as ExerciseLab5 } from "./components/exercise/lab5/Main";
-
 import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
+import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
+import { default as ExerciseLab8 } from "./components/exercise/lab8/Main";
+import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
+import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
+import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 
 import { default as LandingPageBody } from "./components/body/landingpage/index";
 import { default as SiteMap } from "./components/body/landingpage/sitemap";
 import { default as Error } from "./components/body/landingpage/error";
 import { default as Profile } from "./components/body/profilepage/Profile";
-import { default as Imagine } from "./components/imagine/Imagine";
+import { default as Imagine } from "./components/imagine23/Main";
 
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
@@ -41,6 +38,7 @@ import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
 const parse = require("url-parse");
+import useMainStateContext from "./reducers/MainContext";
 
 const mapStateToProps = (state) => {
   return {
@@ -62,24 +60,24 @@ function initializeReactGA() {
   }
 }
 
-class App extends Component {
-  componentDidMount() {
-    const { actions } = this.props;
+const App = () => {
+  useEffect(() => {
+    // const { actions } = props;
     actions.login();
     const location = parse(window.location.href);
     stateChange(actions, location.pathname);
     globalHistory.listen((location) => {
       stateChange(actions, location.location.pathname);
     });
-  }
-
-  render() {
-    const { state, actions } = this.props;
-    const lab = state.main.lab;
-    const body = state.main.body;
-    // look into index.js in constants
-    initializeReactGA();
-    return (
+  }, []);
+  const context = useMainStateContext();
+  const { state, actions } = context;
+  const lab = state.main.lab;
+  const body = state.main.body;
+  // look into index.js in constants
+  initializeReactGA();
+  return (
+    <>
       <div className="overflow-x-hidden">
         <Header />
         <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
@@ -93,24 +91,7 @@ class App extends Component {
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
 
-              <Imagine
-                path="/Imagine1/*"
-                user={state.main.user}
-                biasType={"none"}
-                linkNum={1}
-              />
-              <Imagine
-                path="/Imagine2/*"
-                user={state.main.user}
-                biasType={"user"}
-                linkNum={2}
-              />
-              <Imagine
-                path="/Imagine3/*"
-                user={state.main.user}
-                biasType={"team"}
-                linkNum={3}
-              />
+              <Imagine path="/Imagine/*" user={state.main.user} />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About
@@ -131,6 +112,11 @@ class App extends Component {
               <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
               <ExerciseLab6 path="/Lab6/Exercise/*" user={state.main.user} />
+              <ExerciseLab7 path="/Lab7/Exercise/*" user={state.main.user} />
+              <ExerciseLab8 path="/Lab8/Exercise/*" user={state.main.user} />
+              <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
+              <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
+              <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
 
               <Reinforcement
                 path={`/Lab${lab}/Reinforcement`}
@@ -142,13 +128,16 @@ class App extends Component {
                 path={`/Lab${lab}/Quiz`}
                 labId={lab}
                 user={state.main.user}
+                isFinalQuiz
+                hideCertificate={false}
+                submitData={() => {}}
               />
             </Router>
           </div>
         </div>
-        <Change />
+        <Change context={context} />
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 export default connect(mapStateToProps, mapDispatchToProps)(App);

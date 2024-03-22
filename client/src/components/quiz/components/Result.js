@@ -34,11 +34,11 @@ function Result(props) {
       const { question, answers } = quizQuestion; // destructuring
       counter += 1;
       if (props.quizQuestions[counter - 1].multiChoice) {
-        let isMultiCorrect = Array.from(props.selectedAnswers[counter - 1]).map(
-          (element) => {
-            return checkIfCorrect(element, counter - 1);
-          }
-        );
+        const isMultiCorrect = Array.from(
+          props.selectedAnswers[counter - 1]
+        ).map((element) => {
+          return checkIfCorrect(element, counter - 1);
+        });
         isMultiCorrect.every((value) => value === true)
           ? (isCorrect = true)
           : (isCorrect = false);
@@ -89,7 +89,7 @@ function Result(props) {
               </li>
             );
           } else {
-            return <div />;
+            return <div key={index} />;
           }
         })}
       </ul>
@@ -99,7 +99,7 @@ function Result(props) {
   function renderTableSelectedAnswersData(selectedAnswers, answers) {
     if (selectedAnswers instanceof Set) {
       return Array.from(selectedAnswers).map((answer) => {
-        let questionNumber = parseInt(answer) + 1;
+        const questionNumber = parseInt(answer) + 1;
         return (
           <ul>
             <li key={questionNumber}>
@@ -110,7 +110,7 @@ function Result(props) {
         );
       });
     } else {
-      let questionNumber = parseInt(selectedAnswers.type) + 1;
+      const questionNumber = parseInt(selectedAnswers.type) + 1;
       return (
         <ul>
           <li key={questionNumber}>
@@ -147,9 +147,11 @@ function Result(props) {
               {renderTableData()}
             </tbody>
           </table>
-          <div style={{ marginTop: "50px" }}>
-            <Certificate quizResult={props.quizResult} lab={props.lab} />
-          </div>
+          {props.hideCertificate === false && (
+            <div style={{ marginTop: "50px" }}>
+              <Certificate quizResult={props.quizResult} lab={props.lab} />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -6,7 +6,8 @@ import Score from "./score";
 import Instructions from "../Instructions/instructions";
 import Circle from "./circle";
 import Replay from "./replay";
-import Countdown from "react-countdown-now";
+import Countdown from "react-countdown";
+import ImagineService from "../../../../services/ImagineService";
 
 /*
 Component for the secondary timer used for each of the circles per second
@@ -42,6 +43,8 @@ class SecondTimer extends Component {
       enterSecondInfoState,
       exercisesPlayed,
       enterThirdInfoState,
+      isImagine,
+      userID,
     } = this.props;
 
     const isHex = exerciseOption === "hex";
@@ -141,12 +144,20 @@ class SecondTimer extends Component {
         Mode: [exerciseOption.toUpperCase()],
       };
 
-      fetch(process.env.API_URL + "/exerciseStats", {
-        method: "POST",
-        headers: new Headers({ "content-type": "application/json" }),
-        credentials: "include",
-        body: JSON.stringify(data),
-      }).catch((err) => console.log(err));
+      // fetch(process.env.API_URL + "/exerciseStats", {
+      //   method: "POST",
+      //   headers: new Headers({ "content-type": "application/json" }),
+      //   credentials: "include",
+      //   body: JSON.stringify(data),
+      // }).catch((err) => console.log(err));
+
+      if (isImagine) {
+        if (data.Mode[0] === "MAIN") {
+          ImagineService.experientialMain(userID, data);
+        } else {
+          ImagineService.experientialProtanopia(userID, data);
+        }
+      }
     };
 
     // Specified by the timer for custom rendering of the center circle

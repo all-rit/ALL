@@ -21,6 +21,7 @@ class ExerciseButtons extends Component {
         className="btn btn-primary btn-xl text-uppercase  rightButton"
         onClick={() => navigate("/Lab3/Exercise/UserUpdatedExercise")}
         key="start"
+        disabled={this.props.disabled}
       >
         {startMessage}
       </button>
@@ -31,6 +32,7 @@ class ExerciseButtons extends Component {
         style={{ marginRight: "15%" }}
         onClick={() => navigate("/Lab3/Exercise/BeginnerExerciseConclusion")}
         key="start"
+        disabled={this.props.disabled}
       >
         End Activity
       </button>

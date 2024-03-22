@@ -1,0 +1,13 @@
+# Use postgres/example user/password credentials
+version: "3.1"
+services:
+  db:
+    image: postgres
+    ports:
+      - "5433:5433"
+    restart: always
+    env_file:
+      - ../.env
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    command: -p 5433

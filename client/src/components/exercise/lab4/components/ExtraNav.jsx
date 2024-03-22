@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-script-url */
 import React, { useState } from "react";
 import {
   Collapse,
@@ -10,7 +8,7 @@ import {
   NavItem,
 } from "reactstrap";
 
-const ExtraNav = (props) => {
+const ExtraNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
