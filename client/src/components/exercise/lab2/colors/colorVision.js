@@ -99,8 +99,9 @@ const ColorVision = (changeColors, exerciseOption, colors) => {
     } else {
       result = switchColors(rgbaColors, matrix.Tritanomaly);
     }
-    updatedColors[position] =
-      `rgba(${result.red}, ${result.green}, ${result.blue}, ${result.alpha})`;
+    updatedColors[
+      position
+    ] = `rgba(${result.red}, ${result.green}, ${result.blue}, ${result.alpha})`;
     position++;
   });
   changeColors(updatedColors);

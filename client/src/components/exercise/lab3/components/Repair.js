@@ -46,7 +46,7 @@ class Repair extends Component {
       cowAltValue,
       carAltValue,
       burgerAltValue,
-      catAltValue,
+      catAltValue
     );
 
     // Update the state and close the repair.
@@ -54,7 +54,7 @@ class Repair extends Component {
       cowAltValue,
       carAltValue,
       burgerAltValue,
-      catAltValue,
+      catAltValue
     );
 
     if (cowAltValue === "") {

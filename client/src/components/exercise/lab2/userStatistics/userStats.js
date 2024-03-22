@@ -125,7 +125,7 @@ class UserStats extends Component {
           <th colSpan="10" key="-21312312">
             Exercise Scores
           </th>
-        </tr>,
+        </tr>
       );
       for (let i = -1; i < totalExercisesPlayed; i++) {
         const children = [];
@@ -157,7 +157,7 @@ class UserStats extends Component {
           <th colSpan="10" key="-3213">
             User Scores
           </th>
-        </tr>,
+        </tr>
       );
       for (let i = -1; i < totalExercisesPlayed; i++) {
         const userChildren = [];
@@ -173,7 +173,7 @@ class UserStats extends Component {
                 <td colSpan="10" key={-5000 - userID}>
                   User: {userID}
                 </td>
-              </tr>,
+              </tr>
             );
           }
         }

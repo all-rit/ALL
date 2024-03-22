@@ -31,7 +31,7 @@ class ProblemDiscoveryFixedExperience extends Component {
     actions.updateState(EXERCISE_PLAYING);
     this.interval = setInterval(
       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000,
+      1000
     );
   }
   constructor(props) {
@@ -98,7 +98,7 @@ class ProblemDiscoveryFixedExperience extends Component {
           onFocus={(e) =>
             textToSpeech(
               e,
-              "The accessibility issues have been repaired here. All images say what their contents are as such like 'cat', 'burger' and 'car' etc. and not 'image of cat', 'image of burger', 'image of car' etc. . Try using your screenreader now.",
+              "The accessibility issues have been repaired here. All images say what their contents are as such like 'cat', 'burger' and 'car' etc. and not 'image of cat', 'image of burger', 'image of car' etc. . Try using your screenreader now."
             )
           }
         >
