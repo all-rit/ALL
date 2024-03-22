@@ -197,7 +197,7 @@ class UserUpdatedExercise extends Component {
         <AppBar position="static" className="appBar">
           <Toolbar>
             <Grid
-              justify="center"
+              justifyContent="center"
               container
               spacing={10}
               aria-label={"Page Title Grid"}

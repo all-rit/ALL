@@ -80,6 +80,7 @@ function MySnackbarContentWrapper(props) {
           aria-label="close"
           color="inherit"
           onClick={onClose}
+          size="large"
         >
           <CloseIcon className={classes.icon} />
         </IconButton>,

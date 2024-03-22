@@ -28,7 +28,7 @@ const CodeUpdateHeader = ({ heading, justifyAlignment, helpMessage }) => {
     <div>
       <AppBar position="static" color={"primary"} style={appBarStyle}>
         <Toolbar>
-          <Grid justify={justifyAlignment} container spacing={10}>
+          <Grid justifyContent={justifyAlignment} container spacing={10}>
             <Grid item>
               <Button
                 variant="contained"

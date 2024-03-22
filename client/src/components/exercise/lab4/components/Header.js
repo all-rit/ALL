@@ -5,7 +5,7 @@ import Grid from "@mui/core/Grid";
 const Header = () => {
   return (
     <Toolbar>
-      <Grid justify="space-between" container spacing={10}>
+      <Grid justifyContent="space-between" container spacing={10}>
         <Grid item />
       </Grid>
     </Toolbar>

@@ -23,7 +23,7 @@ class BeginnerExerciseConclusion extends Component {
       <div>
         <AppBar position="static" className="appBar">
           <Toolbar>
-            <Grid justify="center" container spacing={10}>
+            <Grid justifyContent="center" container spacing={10}>
               <Grid item>
                 <Typography variant={"h4"}>Conclusion</Typography>
               </Grid>
