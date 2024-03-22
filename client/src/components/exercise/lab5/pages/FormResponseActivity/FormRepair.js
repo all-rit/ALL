@@ -97,7 +97,7 @@ class FormRepair extends Component {
     handlers.updateRepairForm(
       errorNotification,
       successNotification,
-      borderColor
+      borderColor,
     );
     handlers.closeRepair();
 

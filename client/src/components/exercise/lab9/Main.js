@@ -16,7 +16,7 @@ import StaticWebpage from "./components/StaticWebpage";
  */
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
-    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT
+    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
   return (
     <div className="bottomSpace">

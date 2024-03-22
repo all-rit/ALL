@@ -71,7 +71,7 @@ const ProgressBar = ({
         style={{ width: `${width}%` }}
         className={twMerge(
           "tw-bg-[#7CB1FF] tw-border-solid tw-rounded tw-py-3",
-          innerClassName
+          innerClassName,
         )}
       />
     </div>

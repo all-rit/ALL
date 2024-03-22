@@ -157,11 +157,11 @@ class SecondTimer extends Component {
         console.warn(user);
         if (data.Mode[0] === "MAIN") {
           const study = { main: { ...data } };
-          ImagineService.postStudy(userID, study, section);
+          ImagineService.postStudy({ userID, study, section });
         } else {
           const study = { ...user.study };
           study.protonopia = { ...data };
-          ImagineService.postStudy(userID, study, section);
+          ImagineService.postStudy({ userID, study, section });
         }
       }
     };

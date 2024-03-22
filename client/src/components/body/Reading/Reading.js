@@ -65,6 +65,14 @@ const Reading = (props) => {
             positionPercentage: scrollPositionPercentage,
           },
         ]);
+        console.log(
+          "Scroll position percentage: " +
+            JSON.stringify(pagePosition) +
+            "\n" +
+            "at " +
+            seconds +
+            " seconds",
+        );
       }, 1000);
 
       return () => {

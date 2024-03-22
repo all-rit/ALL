@@ -8,6 +8,7 @@ import Reading from "../body/Reading/Reading";
 import { default as ExerciseLab2 } from "../exercise/lab2/Main";
 import ExpressionStart from "./pages/ExpressionStart";
 import ExpressionExercise from "./pages/ExpressionExercise";
+import ExpressionExercise2 from "./pages/ExpressionExercise2";
 import ExpressionScore from "./pages/ExpressionScore";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import UpdateID from "./pages/UpdateID";
@@ -138,6 +139,14 @@ const Main = (props) => {
           />
           <ExpressionExercise
             path="/ExpressionExercise"
+            actions={actions}
+            state={state}
+            setCount={setCount}
+            count={count}
+            userID={userID}
+          />
+          <ExpressionExercise2
+            path="/ExpressionPOCExercise"
             actions={actions}
             state={state}
             setCount={setCount}

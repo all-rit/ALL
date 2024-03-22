@@ -4,8 +4,6 @@ import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
 
-const section = "discomfortCountNonPOC";
-
 const ExpressionExercise2 = (props) => {
   const { setCount, count, userID } = props;
 
@@ -20,7 +18,7 @@ const ExpressionExercise2 = (props) => {
       {
         discomfortNumber: count + 1,
         timeStamp: Number.parseFloat(
-          reactPlayer.current.getCurrentTime()
+          reactPlayer.current.getCurrentTime(),
         ).toFixed(5),
       },
     ]);
@@ -28,7 +26,7 @@ const ExpressionExercise2 = (props) => {
   };
 
   const handleNext = () => {
-    const body = { userID, study: timeStamps, section };
+    const body = { userID: userID, study: timeStamps };
     ImagineService.postStudy(body);
     navigate("/Imagine/ExpressionScore");
   };

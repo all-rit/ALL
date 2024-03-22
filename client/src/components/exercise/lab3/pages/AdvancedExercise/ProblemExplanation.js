@@ -149,7 +149,7 @@ class ProblemExplanation extends Component {
           onFocus={(e) =>
             textToSpeech(
               e,
-              "The problem with the page is that we do not have the required ARIA attributes that make the buttons accessible. They cannot be effectively described by the screenreaders. Specifically, we do not have the aria-label attribute that screenreaders can make use of to read text effectively."
+              "The problem with the page is that we do not have the required ARIA attributes that make the buttons accessible. They cannot be effectively described by the screenreaders. Specifically, we do not have the aria-label attribute that screenreaders can make use of to read text effectively.",
             )
           }
         >
@@ -173,7 +173,7 @@ class ProblemExplanation extends Component {
                 "The aria-label attribute is used to define a string " +
                 "that labels the current element. Use it in cases where a text label is not visible on the screen. " +
                 "If there is visible text labeling the element, use aria-labelled by instead. This attribute can be " +
-                "used with any typical HTML element; it is not limited to elements that have an ARIA role assigned."
+                "used with any typical HTML element; it is not limited to elements that have an ARIA role assigned.",
             )
           }
         >
