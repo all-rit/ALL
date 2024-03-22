@@ -11,13 +11,7 @@ export const Sections = {
       name: "Profile",
     },
     3: {
-      name: "Imagine1",
-    },
-    4: {
-      name: "Imagine2",
-    },
-    5: {
-      name: "Imagine3",
+      name: "Imagine",
     },
   },
   1: {
@@ -136,8 +130,85 @@ export const Sections = {
     },
   },
   7: {
-    fullname: "'Hello World' AI Cybersecurity",
+    fullname: "AI Cybersecurity",
     name: "Lab7",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
+  8: {
+    fullname: "Algorithmic Bias",
+    // TODO: edit this once we have an official title
+    name: "Lab8",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
+  9: {
+    fullname: "Localization",
+    name: "Lab9",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
+  10: {
+    fullname: "Machine Learning",
+    name: "Lab10",
+    0: {
+      name: "About",
+    },
+    1: {
+      name: "Reading",
+    },
+    2: {
+      name: "Exercise",
+    },
+    3: {
+      name: "Reinforcement",
+    },
+    4: {
+      name: "Quiz",
+    },
+  },
+  11: {
+    fullname: "Literacy",
+    name: "Lab11",
     0: {
       name: "About",
     },

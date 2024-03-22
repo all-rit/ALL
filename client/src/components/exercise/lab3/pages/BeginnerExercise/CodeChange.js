@@ -19,7 +19,7 @@ import Typography from "@material-ui/core/Typography";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 import Repair from "../../components/Repair";
 import ExerciseButtons from "../../components/ExerciseButtons";
-import Popup from "../../../shared/Popup";
+import Popup from "../../../../all-components/Popup";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -135,19 +135,23 @@ class CodeChange extends Component {
           </Typography>
         </div>
         <div style={{ textAlign: "center" }}>
-          <Popup
-            message={data.app3.popupMessage}
-            handler={actions.updatePopup}
-          />
           <Repair
             visible={data.repair3.repairVisible}
             data={data.repair3}
             handlers={actions}
           />
+
+          <Popup
+            message={data.app3.popupMessage}
+            handler={actions.updatePopup}
+            error={data.repair3.repairError}
+          />
+
           <ExerciseButtons
             repairApplied={data.repair3.changesApplied}
             openRepairHandler={actions.openRepair}
             endEnabled={data.exercise3.end}
+            disabled={this.props.data.repair3.repairError}
           />
         </div>
       </div>

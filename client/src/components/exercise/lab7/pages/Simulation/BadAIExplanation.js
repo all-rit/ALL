@@ -1,63 +1,50 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab7";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../../../reducers/lab7/ExerciseReducer";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
-class BadAIExplanation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { componentName: "BadAIExplanation" };
-  }
+/**
+ * Renders the component that explains the behavior of a bad AI in file access management.
+ * The AI makes mistakes when it comes to managing file access when threats are detected in the system.
+ * It uses only one piece of sensitive information within the file to determine the sensitivity of the entire file.
+ *
+ * @returns {JSX.Element} The rendered BadAIExplanation component.
+ */
+const BadAIExplanation = () => {
+  const { actions } = useMainStateContext();
 
-  componentDidMount() {
-    const { actions } = this.props;
-    actions.updateState(EXERCISE_PLAYING);
-  }
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
-  handleStart() {
-    const { actions } = this.props;
-    actions.updateState(EXERCISE_PLAYING);
+  const handleStart = () => {
+    actions.updateUserState(EXERCISE_PLAYING);
     navigate("/Lab7/Exercise/AICodeRepair");
-  }
-
-  render() {
-    return (
-      <div>
-        <p className="playthrough__sentence">
-          As you can see, the AI made many mistakes when it came to managing
-          file access when threats were detected in the system.
-        </p>
-        <p className="playthrough__sentence">
-          This is due to the factors of the files that the AI is using to
-          determine if a file&lsquo;s access should be restricted or not.
-        </p>
-        <p className="playthrough__sentence">
-          The AI is currently only using one piece of sensitive information
-          within the file to determine the sensitivity of the entire file.
-        </p>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={this.handleStart.bind(this)}
-          key="start"
-        >
-          Start
-        </button>
-      </div>
-    );
-  }
-}
-
-BadAIExplanation.propTypes = {
-  actions: PropTypes.object,
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
   };
+
+  return (
+    <div>
+      <p className="playthrough__sentence">
+        As you can see, the AI made many mistakes when it came to managing file
+        access when threats were detected in the system.
+      </p>
+      <p className="playthrough__sentence">
+        This is due to the factors of the files that the AI is using to
+        determine if a file&lsquo;s access should be restricted or not.
+      </p>
+      <p className="playthrough__sentence">
+        The AI is currently only using one piece of sensitive information within
+        the file to determine the sensitivity of the entire file.
+      </p>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase "
+        onClick={handleStart}
+        key="start"
+      >
+        Start
+      </button>
+    </div>
+  );
 };
 
-export default connect(null, mapDispatchToProps)(BadAIExplanation);
+export default BadAIExplanation;

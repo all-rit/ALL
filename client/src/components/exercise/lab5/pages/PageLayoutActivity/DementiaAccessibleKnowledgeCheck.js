@@ -3,7 +3,7 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import KnowledgeTest from "../../components/KnowledgeTest";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import { DementiaAccessibleKnowledgeCheck as KnowledgeCheck } from "../../../../../constants/lab5";
 class DementiaAccessibleKnowledgeCheck extends Component {
   constructor(props) {

@@ -1,16 +1,19 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-class AppInstructions extends Component {
-  render() {
-    return (
-      <div>
-        <p className="app__instructions">{this.props.instructions}</p>
-        <p className={this.props.class}>{this.props.instructions2}</p>
-      </div>
-    );
-  }
-}
+const AppInstructions = (props) => {
+  return (
+    <div>
+      <p className="app__instructions">{props.instructions}</p>
+      <p className={props.class}>{props.instructions2}</p>
+    </div>
+  );
+};
+
+AppInstructions.propTypes = {
+  instructions: PropTypes.string,
+  class: PropTypes.string,
+  instructions2: PropTypes.string,
+};
 
 export default AppInstructions;

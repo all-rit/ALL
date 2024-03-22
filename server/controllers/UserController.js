@@ -45,6 +45,7 @@ exports.authenticate = passport.authenticate('google', {
 
 // Callback used for Google OAuth
 exports.authenticateRedirect = passport.authenticate('google', {
+  keepSessionInfo: true,
   failureRedirect: '/',
 });
 
@@ -64,8 +65,10 @@ exports.storeURL = (req, res) => {
 };
 
 // Logging out will clear sessions
-exports.logout = (req, res) => {
-  req.logout();
-  req.session.token = null;
-  res.redirect(req.session.url);
+exports.logout = (req, res, next) => {
+  req.logout({keepSessionInfo: true}, (error) => {
+    if (error) next(error);
+    req.session.token = null;
+    res.redirect(req.session.url);
+  });
 };

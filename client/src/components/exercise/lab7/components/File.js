@@ -4,6 +4,13 @@ import { AI_CORRECT, LOCKED_FILE } from "../../../../constants/lab7";
 import LOCKED from "../../../../assets/images/lab7/lock.png";
 import OPEN from "../../../../assets/images/lab7/unlock.png";
 
+/**
+ * Renders a file component.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.data - The data object containing file information.
+ * @returns {JSX.Element} The rendered file component.
+ */
 const File = ({ data }) => {
   const image = data.decision === LOCKED_FILE ? LOCKED : OPEN;
   const alt = `A .png image of ${

@@ -24,11 +24,8 @@ const Home = (props) => {
       <header className="masthead">
         <div className="container">
           <div className="intro-text">
-            <div className="intro-lead-in">
-              Welcome to the Accessible Learning Labs (ALL) Project!
-            </div>
             <div className="intro-heading text-uppercase">
-              Learn about Accessibility
+              Welcome to the <br /> Accessible Learning Labs (ALL)
             </div>
             <div />
           </div>
@@ -41,8 +38,12 @@ const Home = (props) => {
             <div className="col-lg-12 text-center">
               <h2 className="section-heading text-uppercase">Lab Goals</h2>
               <h3 className="section-subheading lab-section-subheading">
-                To provide activities that incorporate accessibility education
-                and accessible design.
+                Accessible Learning Labs is an NSF funded initiative aimed at
+                empowering inclusive software education and fostering STEM
+                proficiency. We are dedicated to equipping users with the skills
+                and knowledge to create accessible software solutions. Through
+                our interactive and intuitive labs, we aim to make the internet
+                a more equitable place for everyone.
               </h3>
             </div>
           </div>
@@ -142,10 +143,10 @@ const Home = (props) => {
                 Contact Dr. Daniel Krutz at
                 <a
                   className="landingpage__contact"
-                  href="mailto:aware@mail.rit.edu "
+                  href="mailto:Daniel.Krutz@rit.edu"
                 >
                   {" "}
-                  aware@mail.rit.edu
+                  Daniel.Krutz@rit.edu
                 </a>
               </h3>
             </div>

@@ -21,6 +21,9 @@ import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import getExerciseState from "../../helpers/GetReducer";
 
+import { navigate as reachNavigate } from "@reach/router";
+import useMainStateContext from "src/reducers/MainContext";
+
 const mapStateToProps = (state) => {
   return {
     // General
@@ -34,14 +37,17 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const navigate = (state, actions, body, lab = state.main.lab) => {
-  if (!alert_check(state)) {
+const navigate = (state, reduxState, actions, body, lab = state.main.lab) => {
+  if (!alert_check(state, reduxState)) {
     handleRedirect(actions, lab, body);
   }
 };
 
-const alert_check = (state) => {
-  if (getExerciseState(state) !== "EXERCISE_IDLE" && state.main.body === 2) {
+const alert_check = (state, reduxState) => {
+  if (
+    getExerciseState(state, reduxState) !== "EXERCISE_IDLE" &&
+    state.main.body === 2
+  ) {
     alert("The exercise is still in progress! Please complete the exercise");
     return true;
   }
@@ -49,11 +55,12 @@ const alert_check = (state) => {
 };
 
 const Header = (props) => {
+  const context = useMainStateContext();
   const [isOpen, setIsOpen] = useState(false);
   const activeStyle = { color: "#fed136" };
   const toggle = () => setIsOpen(!isOpen);
   const closeNav = () => setIsOpen(false);
-  const { state, actions } = props;
+  const { state, actions } = context;
   const [link, setLink] = useState(0);
   const listenScrollEvent = (event) => {
     if (state.main.lab === 0 && state.main.body === 0) {
@@ -77,7 +84,7 @@ const Header = (props) => {
   const count = state.main.body;
   const loginEnabled =
     state.main.lab === 0 ||
-    getExerciseState(state) === EXERCISE_IDLE ||
+    getExerciseState(state, props.state) === EXERCISE_IDLE ||
     state.main.body !== 2;
 
   return (
@@ -93,7 +100,14 @@ const Header = (props) => {
       }}
     >
       <div className="container">
-        <a href="# " onClick={() => navigate(state, actions, 0, 0)}>
+        <a
+          href="# "
+          onClick={() =>
+            (state.main.lab === 0 ? state.main.body === 3 : false)
+              ? reachNavigate("/Imagine/UserID")
+              : navigate(state, props.state, actions, 0, 0)
+          }
+        >
           <img
             className="logo img-fluid tw-cursor-pointer"
             src={Logo}
@@ -163,7 +177,9 @@ const Header = (props) => {
                           className="nav-link "
                           href="# "
                           style={{ color: "#fff" }}
-                          onClick={() => navigate(state, actions, 0, 0)}
+                          onClick={() =>
+                            navigate(state, props.state, actions, 0, 0)
+                          }
                         >
                           <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">Home</li>
@@ -183,7 +199,9 @@ const Header = (props) => {
                               ? activeStyle
                               : { color: "#fff" }
                           }
-                          onClick={() => navigate(state, actions, 1, 0)}
+                          onClick={() =>
+                            navigate(state, props.state, actions, 1, 0)
+                          }
                         >
                           <ul className="navbar-nav nav-font text-uppercase ml-auto">
                             <li className="nav-item">Site Map</li>
@@ -196,17 +214,16 @@ const Header = (props) => {
               )}
               {state.main.user !== null &&
                 state.main.user.firstname !== null && (
-                  <NavItem
-                    onClick={closeNav}
-                    className="collapse navbar-collapse"
-                  >
+                  <NavItem className="collapse navbar-collapse">
                     <NavLink
                       className="nav-link "
                       href="# "
                       style={
                         state.main.body === 2 ? activeStyle : { color: "#fff" }
                       }
-                      onClick={() => navigate(state, actions, 2, 0)}
+                      onClick={() =>
+                        navigate(state, props.state, actions, 2, 0)
+                      }
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item nav-last">Profile</li>
@@ -214,11 +231,12 @@ const Header = (props) => {
                     </NavLink>
                   </NavItem>
                 )}
-
-              <WelcomeMessage
-                user={state.main.user}
-                loginEnabled={loginEnabled}
-              />
+              {(state.main.lab === 0 ? state.main.body !== 3 : true) && (
+                <WelcomeMessage
+                  user={state.main.user}
+                  loginEnabled={loginEnabled}
+                />
+              )}
             </Nav>
           ) : (
             ({
@@ -229,7 +247,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 0, 0)}
+                    onClick={() => navigate(state, props.state, actions, 0, 0)}
                     href="# "
                     style={{ color: "#fff" }}
                   >
@@ -242,7 +260,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 0)}
+                    onClick={() => navigate(state, props.state, actions, 0)}
                     href="# "
                     style={count === 0 ? activeStyle : { color: "#fff" }}
                   >
@@ -255,7 +273,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 1)}
+                    onClick={() => navigate(state, props.state, actions, 1)}
                     href="# "
                     style={count === 1 ? activeStyle : { color: "#fff" }}
                   >
@@ -268,7 +286,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 2)}
+                    onClick={() => navigate(state, props.state, actions, 2)}
                     href="# "
                     style={count === 2 ? activeStyle : { color: "#fff" }}
                   >
@@ -281,7 +299,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 3)}
+                    onClick={() => navigate(state, props.state, actions, 3)}
                     href="# "
                     style={count === 3 ? activeStyle : { color: "#fff" }}
                   >
@@ -294,7 +312,7 @@ const Header = (props) => {
                 <NavItem onClick={closeNav} className="navbar-collapse">
                   <NavLink
                     className="nav-link "
-                    onClick={() => navigate(state, actions, 4)}
+                    onClick={() => navigate(state, props.state, actions, 4)}
                     href="# "
                     style={count === 4 ? activeStyle : { color: "#fff" }}
                   >
@@ -313,7 +331,9 @@ const Header = (props) => {
                       className="nav-link "
                       href="# "
                       style={{ color: "#fff" }}
-                      onClick={() => navigate(state, actions, 2, 0)}
+                      onClick={() =>
+                        navigate(state, props.state, actions, 2, 0)
+                      }
                     >
                       <ul className="navbar-nav nav-font text-uppercase ml-auto">
                         <li className="nav-item nav-last">Profile</li>

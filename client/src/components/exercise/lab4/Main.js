@@ -1,12 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Router } from "@reach/router";
 import "../../../assets/stylesheets/main.scss";
-import { bindActionCreators } from "redux";
-import { actions as exerciseActions } from "../../../reducers/lab4/ExerciseReducer";
 import SmallTarget from "./pages/SmallTarget";
 import TargetGuideline from "./pages/TargetGuideline";
 import SubmitUpdated from "./pages/SubmitUpdated";
@@ -22,59 +16,27 @@ import FormHintAccessible from "./pages/FormHintAccessible";
 import Finish from "./pages/Finish";
 import ExerciseStart from "./pages/ExerciseStart";
 
-const mapStateToProps = (state) => ({
-  state: state,
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ ...exerciseActions }, dispatch),
-  };
+const Main = () => {
+  return (
+    <div className="container bottomSpace">
+      <Router className="app">
+        <ExerciseStart path="/" />
+        <SmallTarget path="/SmallTarget" />
+        <TargetGuideline path="/TargetGuideline" />
+        <CodeChangeTarget path={"/CodeChangeTarget"} />
+        <SubmitUpdated path="/SubmitUpdated" />
+        <CodeChangeBlocks path={"/CodeChangeBlocks"} />
+        <BypassBlocksGuideline path={"/BypassBlocksGuideline"} />
+        <FormSkipToMainBroken path={"/FormSkipToMainBroken"} />
+        <FormSkipToMainFixed path={"/FormSkipToMainFixed"} />
+        <FormHintInaccessible path={"FormHintInaccessible"} />
+        <AccessibleGuideline path={"/AccessibleGuideline"} />
+        <CodeChangeAccessible path={"/CodeChangeAccessible"} />
+        <FormHintAccessible path={"/FormHintAccessible"} />
+        <Finish path={"/Finish"} />
+      </Router>
+    </div>
+  );
 };
 
-class Main extends Component {
-  // eslint-disable-next-line require-jsdoc
-  render() {
-    const { actions, user } = this.props;
-    return (
-      <div className="container bottomSpace">
-        <Router className="app">
-          <ExerciseStart path="/" actions={actions} />
-          <SmallTarget path="/SmallTarget" actions={actions} />
-          <TargetGuideline path="/TargetGuideline" actions={actions} />
-          <CodeChangeTarget path={"/CodeChangeTarget"} actions={actions} />
-          <SubmitUpdated path="/SubmitUpdated" actions={actions} />
-          <CodeChangeBlocks path={"/CodeChangeBlocks"} actions={actions} />
-          <BypassBlocksGuideline
-            path={"/BypassBlocksGuideline"}
-            actions={actions}
-          />
-          <FormSkipToMainBroken
-            path={"/FormSkipToMainBroken"}
-            actions={actions}
-          />
-          <FormSkipToMainFixed
-            path={"/FormSkipToMainFixed"}
-            actions={actions}
-          />
-          <FormHintInaccessible
-            path={"FormHintInaccessible"}
-            actions={actions}
-          />
-          <AccessibleGuideline
-            path={"/AccessibleGuideline"}
-            actions={actions}
-          />
-          <CodeChangeAccessible
-            path={"/CodeChangeAccessible"}
-            actions={actions}
-          />
-          <FormHintAccessible path={"/FormHintAccessible"} actions={actions} />
-          <Finish path={"/Finish"} actions={actions} user={user} />
-        </Router>
-      </div>
-    );
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;
