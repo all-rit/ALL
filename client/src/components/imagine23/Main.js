@@ -4,7 +4,7 @@ import { navigate, Router } from "@reach/router";
 import { bindActionCreators } from "redux";
 import LandingPage from "./pages/landingPage";
 import MainInstructions from "./pages/mainInstructions";
-import Reading from "./pages/Reading";
+import Reading from "../body/Reading/Reading";
 import { default as ExerciseLab2 } from "../exercise/lab2/Main";
 import ExpressionStart from "./pages/ExpressionStart";
 import ExpressionExercise from "./pages/ExpressionExercise";
@@ -17,6 +17,8 @@ import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
 const { nanoid } = require("nanoid");
 import { PropTypes } from "prop-types";
+import useMainStateContext from "../../reducers/MainContext";
+import { default as Quiz } from "../quiz/components/QuizHandler";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -29,12 +31,15 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Main = (props) => {
-  const { actions, state, user } = props;
+  const { state, user, isImagine } = props;
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
 
-  const [labId] = useState(2);
+  const labId = 2;
   const [isExperiential, setIsExperiential] = useState(false);
+
+  const context = useMainStateContext();
+  const { actions } = context;
 
   function handleGroupAssignment(isExperiential) {
     setIsExperiential(isExperiential);
@@ -49,7 +54,6 @@ const Main = (props) => {
   useEffect(() => {
     if (user?.userid) {
       let userSession = sessionStorage.getItem(user?.userid);
-      console.log(userSession);
       if (!userSession) {
         let newID = nanoid(6).toUpperCase();
         sessionStorage.setItem(user?.userid, newID);
@@ -73,16 +77,17 @@ const Main = (props) => {
         <Router className="app">
           <UpdateID
             default
-            path="/UpdateID"
+            path="/"
             actions={actions}
-            state={state}
             setUserID={setUserID}
+            isImagine={isImagine}
             user={user}
           />
           <Survey
             path={`/PreSurvey`}
             userID={userID}
             type="pre"
+            isImagine={isImagine}
             handleGroupAssignment={handleGroupAssignment}
           />
           <LandingPage
@@ -159,7 +164,17 @@ const Main = (props) => {
             user={state.main.user}
             userID={userID}
             labID={labId}
-            imagine={true}
+            isImagine={isImagine}
+          />
+          <Quiz
+            path={"/Quiz"}
+            user={state.main.user}
+            labId={labId}
+            isImagine={isImagine}
+            hideCertificate={false}
+            submitData={() => {}}
+            isFinalQuiz={false}
+            userID={userID}
           />
           <Survey path={`/PostSurvey`} userID={userID} type="post" />
           <ExerciseEnd
@@ -177,8 +192,9 @@ const Main = (props) => {
 
 Main.propTypes = {
   actions: PropTypes.object,
-  state: PropTypes.string,
+  state: PropTypes.object,
   user: PropTypes.object,
+  isImagine: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -60,7 +60,6 @@ const SurveyHandler = (props) => {
    */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
-      // console.log(selectedAnswers);
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
@@ -111,7 +110,6 @@ const SurveyHandler = (props) => {
    */
   function selectAnswer(e) {
     const answerValue = e.target.value;
-    // let tempSelectedAnswers;
     setSelectedAnswers([
       ...selectedAnswers,
       {

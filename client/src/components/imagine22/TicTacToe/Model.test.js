@@ -20,24 +20,24 @@ test("checks if 3 values are equal to each other", () => {
     check3InARow(
       CUT.Players[0].piece,
       CUT.Players[0].piece,
-      CUT.Players[0].piece,
-    ),
+      CUT.Players[0].piece
+    )
   ).toBe(true);
 
   expect(
     check3InARow(
       CUT.Players[1].piece,
       CUT.Players[1].piece,
-      CUT.Players[1].piece,
-    ),
+      CUT.Players[1].piece
+    )
   ).toBe(true);
 
   expect(
     check3InARow(
       CUT.Players[1].piece,
       CUT.Players[0].piece,
-      CUT.Players[1].piece,
-    ),
+      CUT.Players[1].piece
+    )
   ).toBe(false);
 });
 

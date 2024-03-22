@@ -43,7 +43,7 @@ const AddModal = (props) => {
           } else {
             alert(response.error);
           }
-        },
+        }
       );
     }
   };

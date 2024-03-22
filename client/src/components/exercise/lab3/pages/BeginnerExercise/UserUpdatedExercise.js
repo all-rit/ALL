@@ -30,7 +30,7 @@ class UserUpdatedExercise extends Component {
     actions.updateState(EXERCISE_PLAYING);
     this.interval = setInterval(
       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000,
+      1000
     );
 
     if (data.repair3.changesApplied) {
@@ -220,7 +220,7 @@ class UserUpdatedExercise extends Component {
                       e,
                       data.repair3.changesApplied
                         ? "Accessible Exercise"
-                        : "Inaccessible Exercise",
+                        : "Inaccessible Exercise"
                     )
                   }
                 >
@@ -239,7 +239,7 @@ class UserUpdatedExercise extends Component {
           onFocus={(e) =>
             this.textToSpeech(
               e,
-              "Click on the image of a cat. You can use the keyboard to navigate by tabbing across the page. Press the enter key to select.",
+              "Click on the image of a cat. You can use the keyboard to navigate by tabbing across the page. Press the enter key to select."
             )
           }
         >
@@ -261,7 +261,7 @@ class UserUpdatedExercise extends Component {
         {this._renderSubComp(
           data.repair3.changesApplied
             ? "/Lab3/Exercise/CodeChange"
-            : "/Lab3/Exercise/AccessibleInstructions",
+            : "/Lab3/Exercise/AccessibleInstructions"
         )}
       </div>
     );
