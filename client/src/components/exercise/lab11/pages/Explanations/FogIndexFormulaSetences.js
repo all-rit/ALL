@@ -14,7 +14,7 @@ const FogIndexFormulaSentences = () => {
 
   const handleContinue = () => {
     navigate(
-      `/Lab11/Exercise${REPAIR}/${EXERCISE_STATES.REPAIR_SENTENCE_COUNT}`
+      `/Lab11/Exercise${REPAIR}/${EXERCISE_STATES.REPAIR_SENTENCE_COUNT}`,
     );
   };
 

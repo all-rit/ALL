@@ -16,7 +16,7 @@ const ExerciseService = {
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_AVATAR,
       {
         avatar,
-      }
+      },
     );
   },
   submitQualQuestions: (qualQuestions) => {
@@ -24,7 +24,7 @@ const ExerciseService = {
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_QUAL_QUESTIONS,
       {
         qualQuestions,
-      }
+      },
     );
   },
   submitAIAnalysisQuestion: (aiAnalysisQuestion) => {
@@ -32,7 +32,7 @@ const ExerciseService = {
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_AI_ANALYSIS_QUESTION,
       {
         aiAnalysisQuestion,
-      }
+      },
     );
   },
   submitHiredCanidates: (hiredCanidates) => {
@@ -40,7 +40,7 @@ const ExerciseService = {
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_HIRED_CANIDATES,
       {
         hiredCanidates,
-      }
+      },
     );
   },
   submitAIReasoningQuestion: (aiReasoningQuestion) => {
@@ -49,7 +49,7 @@ const ExerciseService = {
         endpoints.SUBMIT_AI_REASONING_QUESTIONS,
       {
         aiReasoningQuestion,
-      }
+      },
     );
   },
   submitFixedHiredCanidates: (fixedHiredCanidates) => {
@@ -57,7 +57,7 @@ const ExerciseService = {
       process.env.REACT_APP_SERVER_URL + endpoints.SUBMIT_FIXED_HIRED_CANIDATES,
       {
         fixedHiredCanidates,
-      }
+      },
     );
   },
 };

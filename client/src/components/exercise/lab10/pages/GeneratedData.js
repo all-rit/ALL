@@ -122,7 +122,7 @@ const GeneratedData = (props) => {
               <div
                 className={twMerge(
                   "tw-border-black tw-border-solid tw-border-[2px] tw-w-9 tw-h-9 tw-rounded",
-                  !_.isEmpty(keys) && keys[0]
+                  !_.isEmpty(keys) && keys[0],
                 )}
               />
             </div>

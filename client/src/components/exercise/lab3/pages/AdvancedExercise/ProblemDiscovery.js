@@ -31,7 +31,7 @@ class ProblemDiscovery extends Component {
     actions.updateState(EXERCISE_PLAYING);
     this.interval = setInterval(
       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000
+      1000,
     );
   }
   constructor(props) {
@@ -97,7 +97,7 @@ class ProblemDiscovery extends Component {
           onFocus={(e) =>
             textToSpeech(
               e,
-              "Can you find the accessibility issues with this page? Try using your screenreader."
+              "Can you find the accessibility issues with this page? Try using your screenreader.",
             )
           }
         >
@@ -113,7 +113,7 @@ class ProblemDiscovery extends Component {
           onFocus={(e) =>
             textToSpeech(
               e,
-              "Write down the problems on a notepad or any other text editor. Go ahead take a guess. Don't actually click on the Ok and Cancel buttons. They are there for the example."
+              "Write down the problems on a notepad or any other text editor. Go ahead take a guess. Don't actually click on the Ok and Cancel buttons. They are there for the example.",
             )
           }
         >

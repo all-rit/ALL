@@ -80,7 +80,7 @@ const AIRepair = () => {
         appearanceValue,
         experienceValue,
         availabilityValue,
-        payValue
+        payValue,
       );
       setRepairOpen(false);
       popUpHandler("The repairs have been made.");

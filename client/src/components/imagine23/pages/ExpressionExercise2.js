@@ -18,7 +18,7 @@ const ExpressionExercise2 = (props) => {
       {
         discomfortNumber: count + 1,
         timeStamp: Number.parseFloat(
-          reactPlayer.current.getCurrentTime()
+          reactPlayer.current.getCurrentTime(),
         ).toFixed(5),
       },
     ]);
@@ -26,7 +26,7 @@ const ExpressionExercise2 = (props) => {
   };
 
   const handleNext = () => {
-    const body = { userID: userID, study: timeStamps};
+    const body = { userID: userID, study: timeStamps };
     ImagineService.postStudy(body);
     navigate("/Imagine/ExpressionScore");
   };
