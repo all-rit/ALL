@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
 
-const section = "discomfortCountNonPOC";
+const section = "discomfortCountPOC";
 
 const ExpressionExercise2 = (props) => {
   const { setCount, count, userID } = props;

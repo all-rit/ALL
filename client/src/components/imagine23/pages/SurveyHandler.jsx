@@ -86,12 +86,12 @@ const SurveyHandler = (props) => {
       if (section == "experiential" || section === "control") {
         console.log("Navigating to Experiential");
         navigate("/Imagine/ExperientialExercise");
-      } else if (
-        section == "discomfortCountPOC" ||
-        section == "discomfortCountNonPOC"
-      ) {
+      } else if (section == "discomfortCountNonPOC") {
         console.log("Navigating to Expression");
         navigate("/Imagine/ExpressionExercise");
+      } else if (section == "discomfortCountPOC") {
+        console.log("Navigating to Expression POC");
+        navigate("/Imagine/ExpressionPOCExercise");
       } else {
         console.log("Navigating to None");
       }
