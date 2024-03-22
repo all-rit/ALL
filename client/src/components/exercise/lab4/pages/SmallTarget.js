@@ -65,7 +65,7 @@ const SmallTarget = () => {
           ...prevState,
           secondsElapsed: prevState.secondsElapsed + 1,
         })),
-      1000,
+      1000
     );
 
     return () => {

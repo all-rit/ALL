@@ -20,7 +20,7 @@ const Button = (props) => {
     <button
       className={twMerge(
         "btn btn-xl text-uppercase",
-        isPrimary ? "btn-primary text-black" : "btn-second",
+        isPrimary ? "btn-primary text-black" : "btn-second"
       )}
       onClick={onClick}
       key={key}

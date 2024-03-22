@@ -230,7 +230,7 @@ const Simulation = () => {
    */
   const handlePerfectScore = () => {
     const filteredFiles = files.filter(
-      (file) => file.result === FILE_PROTECTED,
+      (file) => file.result === FILE_PROTECTED
     );
     if (filteredFiles.length === files.length) {
       actions.incrementScore(SCORE_MAP.PERFECT_SCORE);
