@@ -23,7 +23,7 @@ const WordCountRepair = (props) => {
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.REPAIR_WORD_COUNT,
-    FogIndexCalculationData.words
+    FogIndexCalculationData.words,
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =

@@ -35,7 +35,7 @@ const useMainStateContext = () => {
 
   if (context === undefined) {
     throw new Error(
-      "useMainStateContext must be used within MainStateContextProvider"
+      "useMainStateContext must be used within MainStateContextProvider",
     );
   }
 

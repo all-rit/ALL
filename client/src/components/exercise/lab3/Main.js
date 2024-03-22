@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
       { ...exerciseActions, ...repairActions, ...appActions },
-      dispatch
+      dispatch,
     ),
   };
 };

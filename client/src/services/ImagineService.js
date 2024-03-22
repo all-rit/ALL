@@ -13,8 +13,8 @@ const ImagineService = {
       process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
       {
         userID,
-        preSurvey
-      }
+        preSurvey,
+      },
     );
   },
   postSurvey: async (userID, postSurvey) => {
@@ -23,22 +23,22 @@ const ImagineService = {
       {
         userID,
         postSurvey,
-      }
+      },
     );
   },
   getUsers: () => {
     return Promise.resolve(
       API.get(process.env.REACT_APP_SERVER_URL + "/imagine/users").then(
-        (response) => response.json()
-      )
+        (response) => response.json(),
+      ),
     );
   },
   getUserByID: (userID) => {
     return Promise.resolve(
       API.get(
         process.env.REACT_APP_SERVER_URL + `/imagine/user/${userID}`,
-        {}
-      ).then((response) => response.json())
+        {},
+      ).then((response) => response.json()),
     );
   },
   readMoreCount: async (userID, readMoreCount) => {
@@ -47,7 +47,7 @@ const ImagineService = {
       {
         userID,
         readMoreCount,
-      }
+      },
     );
   },
 
@@ -57,7 +57,7 @@ const ImagineService = {
       {
         userID,
         readMoreTimeElapsed,
-      }
+      },
     );
   },
 
@@ -67,7 +67,7 @@ const ImagineService = {
       {
         userID,
         readingSectionPagePosition,
-      }
+      },
     );
   },
 };

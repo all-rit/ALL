@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
       { ...mainActions, ...exerciseActions },
-      dispatch
+      dispatch,
     ),
   };
 };
