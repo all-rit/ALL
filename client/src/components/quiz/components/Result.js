@@ -4,9 +4,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Certificate from "./Certificate";
-import { useNavigate } from "@reach/router";
-
-
 
 function Result(props) {
   function checkIfCorrect(answerIndex, questionIndex) {
@@ -121,48 +118,33 @@ function Result(props) {
       );
     }
   }
-  const navigate = useNavigate();
-  const navigateHome = () => {
-    navigate("/# ");
-  };
 
-
-
-    return (
+  return (
     <div>
-    <div className="quiz container shadow">
-      <div className="result">
-        Results <strong>Score: {props.quizResult}</strong>
-        <br />
-        <div>
-          <table id="quizResults">
-            <tbody>
-              <tr>
-                {/* {renderTableHeader()}*/}
-                <th>QUESTION</th>
-                <th>CORRECT ANSWERS</th>
-                <th>SELECTED ANSWERS</th>
-                <th>RESULTS</th>
-              </tr>
-              {renderTableData()}
-            </tbody>
-          </table>
-          {props.hideCertificate === false && (
-            <div style={{ marginTop: "50px" }}>
-              <Certificate quizResult={props.quizResult} lab={props.lab} />
-            </div>
-          )}
+      <div className="quiz container shadow">
+        <div className="result">
+          Results <strong>Score: {props.quizResult}</strong>
+          <br />
+          <div>
+            <table id="quizResults">
+              <tbody>
+                <tr>
+                  {/* {renderTableHeader()}*/}
+                  <th>QUESTION</th>
+                  <th>CORRECT ANSWERS</th>
+                  <th>SELECTED ANSWERS</th>
+                  <th>RESULTS</th>
+                </tr>
+                {renderTableData()}
+              </tbody>
+            </table>
+            {props.hideCertificate === false && (
+              <div style={{ marginTop: "50px" }}>
+                <Certificate quizResult={props.quizResult} lab={props.lab} />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </div>
-      <div className={"tw-m-10 result"}>
-        <button
-          href="# "
-          className="btn btn-primary text-uppercase"
-          onClick={navigateHome}
-        >
-          Return to Home
-        </button>
       </div>
     </div>
   );

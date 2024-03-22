@@ -17,6 +17,7 @@ import { Panel as ColorPickerPanel } from "rc-color-picker";
 import { Sections } from "../../constants/index";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
+import { navigate } from "@reach/router";
 
 const mapStateToProps = (state) => {
   return {
@@ -80,6 +81,10 @@ class Footer extends Component {
     if (this.state.backgroundColor) {
       setBackgroundColor(this.state.backgroundColor);
     }
+  };
+
+  navigateHome = () => {
+    navigate("/# ");
   };
 
   disappearNext = (count) => {
@@ -179,6 +184,33 @@ class Footer extends Component {
                 ? Sections[lab][body - 1].name
                 : ""}
             </button>
+
+            {body === 4 ? (
+              <button
+                href="# "
+                className="btn btn-primary btn-xl text-uppercase  next"
+                onClick={this.navigateHome}
+              >
+                Return to Home
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary btn-xl text-uppercase  next"
+                onClick={() => handleRedirect(actions, lab, body + 1)}
+                style={{
+                  display:
+                    this.disappearNext(body) || hideOnLanding
+                      ? "none"
+                      : "block",
+                }}
+              >
+                Next -{" "}
+                {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
+                  ? Sections[lab][body + 1].name
+                  : ""}
+              </button>
+            )}
+
             <button
               className="btn btn-primary btn-xl text-uppercase  next"
               onClick={() => handleRedirect(actions, lab, body + 1)}
