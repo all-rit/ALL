@@ -1,11 +1,6 @@
-import {
-  BAD_AI_EXPLANATION,
-  EXERCISE_IDLE,
-  EXERCISE_PLAYING,
-} from "../../constants/lab7/index";
+import { BAD_AI_EXPLANATION } from "../../constants/lab7/index";
 
-export const types = {
-  UPDATE_STATE: "@accessibility-lab/lab7/exercise/update_state",
+const types = {
   ENABLE_END: "@accessibility-lab/lab7/exercise/enable_end",
   RESET: "@accessibility-lab/lab7/exercise/reset",
   INCREMENT_SCORE: "@accessibility-lab/lab7/exercise/increment_score",
@@ -20,13 +15,12 @@ export const types = {
   SET_MESSAGE: "@accessibility-lab/lab7/app/set_message",
 };
 
-export const initialState = {
-  state: EXERCISE_IDLE,
+const initialState = {
   end: false,
   score: 0,
   roundNumber: 0,
   intrusions: 0,
-  protected: 0,
+  protectedNum: 0,
   incorrect: 0,
   threatLvl: 0,
   results: [],
@@ -40,12 +34,6 @@ const ExerciseReducer = (state = initialState, action) => {
     case types.RESET:
       return {
         ...initialState,
-        state: EXERCISE_PLAYING,
-      };
-    case types.UPDATE_STATE:
-      return {
-        ...state,
-        state: action.state,
       };
     case types.INCREMENT_SCORE:
       return {
@@ -60,7 +48,7 @@ const ExerciseReducer = (state = initialState, action) => {
     case types.INCREMENT_PROTECTED:
       return {
         ...state,
-        protected: state.protected + 1,
+        protectedNum: state.protectedNum + 1,
       };
     case types.INCREMENT_INCORRECT:
       return {
@@ -107,23 +95,4 @@ const ExerciseReducer = (state = initialState, action) => {
   }
 };
 
-export const actions = {
-  updateState: (state) => ({ type: types.UPDATE_STATE, state }),
-  enableEnd: () => ({ type: types.ENABLE_END }),
-  reset: () => ({ type: types.RESET }),
-  incrementScore: (score) => ({ type: types.INCREMENT_SCORE, score }),
-  incrementIntrusions: () => ({ type: types.INCREMENT_INTRUSIONS }),
-  incrementProtected: () => ({ type: types.INCREMENT_PROTECTED }),
-  incrementIncorrect: () => ({ type: types.INCREMENT_INCORRECT }),
-  startNewRound: () => ({ type: types.START_NEW_ROUND }),
-  updateThreatLevel: (threatLvl) => ({
-    type: types.UPDATE_THREAT_LEVEL,
-    threatLvl,
-  }),
-  addResults: (results) => ({ type: types.ADD_RESULTS, results }),
-  updateRedirectURL: (url) => ({ type: types.UPDATE_REDIRECT_URL, url }),
-  setModal: (isModalOpen) => ({ type: types.SET_MODAL, isModalOpen }),
-  setMessage: (message) => ({ type: types.SET_MESSAGE, message }),
-};
-
-export default ExerciseReducer;
+export { ExerciseReducer, types, initialState };
