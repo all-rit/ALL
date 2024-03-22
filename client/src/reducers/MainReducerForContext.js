@@ -57,7 +57,6 @@ export const initialState = {
  */
 export const MainReducerForContext = (state = initialState, action) => {
   const { type, payload } = action;
-  console.log(action);
   switch (type) {
     case types.SET_BODY:
       return {
