@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab7/ExerciseReducer";
 import { connect } from "react-redux";
-import { CheckRounded, WarningRounded } from "@material-ui/icons";
+import { CheckRounded, WarningRounded } from "@mui/icons-material";
 import ProgressBar from "./ProgressBar";
 import { MESSAGES, READ_TIME } from "../../../../constants/lab7";
 import Countdown from "react-countdown";

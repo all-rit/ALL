@@ -2,11 +2,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { AppBar, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import { AppBar, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
 import { navigate } from "@reach/router";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 import { PageService } from "../../../../../services/PageService";
 class ViewFix extends Component {

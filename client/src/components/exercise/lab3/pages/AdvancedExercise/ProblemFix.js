@@ -3,24 +3,23 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import { Typography, Button } from "@mui/material";
 import "../../../../../assets/stylesheets/prism.scss";
 import Prism from "prismjs";
 import { navigate } from "@reach/router";
-import WarningIcon from "@material-ui/icons/Warning";
-import ErrorIcon from "@material-ui/icons/Error";
-import InfoIcon from "@material-ui/icons/Info";
-import CloseIcon from "@material-ui/icons/Close";
+import WarningIcon from "@mui/icons-material/Warning";
+import ErrorIcon from "@mui/icons-material/Error";
+import InfoIcon from "@mui/icons-material/Info";
+import CloseIcon from "@mui/icons-material/Close";
 import PropTypes from "prop-types";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import IconButton from "@material-ui/core/IconButton";
-import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import SnackbarContent from "@mui/material/SnackbarContent";
+import IconButton from "@mui/material/IconButton";
+import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
 import clsx from "clsx";
-import Snackbar from "@material-ui/core/Snackbar";
-import { amber, green, red, yellow } from "@material-ui/core/colors";
+import Snackbar from "@mui/material/Snackbar";
+import { amber, green, red, yellow } from "@mui/material/colors";
 import CodeUpdateHeader from "../../components/CodeUpdateHeader";
-import Paper from "@material-ui/core/Paper";
+import Paper from "@mui/material/Paper";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
 const variantIcon = {

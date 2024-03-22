@@ -15,7 +15,7 @@ import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.sv
 // license: https://pixabay.com/service/license/
 import cowImage from "../../../../../assets/images/lab3/exercise/cow.svg";
 import CatClickFirstNavigate from "../../helpers/CatClickFirstNavigate";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import { PageService } from "../../../../../services/PageService";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";

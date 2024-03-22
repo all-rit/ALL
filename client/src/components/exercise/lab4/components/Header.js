@@ -1,6 +1,6 @@
 import React from "react";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import Toolbar from "@mui/core/Toolbar";
+import Grid from "@mui/core/Grid";
 
 const Header = () => {
   return (

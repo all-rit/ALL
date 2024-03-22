@@ -5,10 +5,7 @@
 import React, { Component } from "react";
 import CatClickNavigate from "../../helpers/CatClickNavigate";
 import { navigate } from "@reach/router";
-import { AppBar } from "@material-ui/core";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import { AppBar, Toolbar, Typography, Grid } from "@mui/material";
 import { PageService } from "../../../../../services/PageService";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 

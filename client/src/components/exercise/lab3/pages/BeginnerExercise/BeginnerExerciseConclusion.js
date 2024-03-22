@@ -1,11 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import { Typography, Button, AppBar, Toolbar, Grid } from "@mui/material";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../../constants/lab3";
 import UserLabService from "../../../../../services/UserLabService";

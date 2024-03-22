@@ -5,8 +5,8 @@ import React, { Component, Fragment } from "react";
 import { navigate } from "@reach/router";
 import UserLabService from "../../../../services/UserLabService";
 import { LAB_ID } from "../../../../constants/lab5";
-import { Forum, EmojiObjects, Timer } from "@material-ui/icons";
-import { AppBar } from "@material-ui/core";
+import { Forum, EmojiObjects, Timer } from "@mui/icons-material";
+import { AppBar } from "@mui/material";
 
 class ExerciseEnd extends Component {
   handleHome() {

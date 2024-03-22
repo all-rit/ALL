@@ -2,21 +2,22 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { AppBar, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
-import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
-import { amber, green, red, yellow } from "@material-ui/core/colors";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
+import CheckCircleIcon from "@mui/material/SvgIcon/";
+import { amber, green, red, yellow } from "@mui/material/colors";
+import SnackbarContent from "@mui/material/SnackbarContent";
 import clsx from "clsx";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@mui/material/IconButton";
 import PropTypes from "prop-types";
-import WarningIcon from "@material-ui/icons/Warning";
-import ErrorIcon from "@material-ui/icons/Error";
-import InfoIcon from "@material-ui/icons/Info";
-import CloseIcon from "@material-ui/icons/Close";
-import Link from "@material-ui/core/Link";
+import WarningIcon from "@mui/icons-material/Warning";
+import ErrorIcon from "@mui/icons-material/Error";
+import InfoIcon from "@mui/icons-material/Info";
+import CloseIcon from "@mui/icons-material/Close";
+import Link from "@mui/material/Link";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 const variantIcon = {

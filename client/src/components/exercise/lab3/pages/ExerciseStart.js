@@ -3,7 +3,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import { actions as mainActions } from "../../../../reducers/MainReducer";
 import { actions as exerciseActions } from "../../../../reducers/lab5/ExerciseReducer";
 import AppInstructions from "../components/AppInstructions";

@@ -3,8 +3,9 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
 import React, { Component } from "react";
-import { AppBar, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 // link to image: https://pixabay.com/vectors/cat-pet-animal-kitty-kitten-cute-6484941/
 // license: https://pixabay.com/service/license/
 import catImage from "../../../../../assets/images/lab3/exercise/cat.svg";
@@ -14,8 +15,8 @@ import carImage from "../../../../../assets/images/lab3/exercise/car.svg";
 // link to image: https://pixabay.com/vectors/hamburger-cheeseburger-fast-food-31775/
 // license: https://pixabay.com/service/license/
 import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.svg";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 import { PageService } from "../../../../../services/PageService";

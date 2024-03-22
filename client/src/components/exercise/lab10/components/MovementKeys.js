@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 
 /**
  * MovementKeys component for buttons that can be pressed to play simulation
