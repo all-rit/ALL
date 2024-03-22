@@ -13,16 +13,16 @@ const submitStudy = async (req, res) => {
 };
 
 const preSurvey = async (req, res) => {
-  const {userID, preSurvey, section} = req.body;
+  const {userID, preSurvey} = req.body;
   try {
     const resPreSurvey = await ImagineService.preSurvey({
       userID,
       preSurvey,
-      section,
     });
     if (!resPreSurvey) {
       throw new Error('Pre survey was not recorded');
     }
+    return resPreSurvey;
   } catch (error) {
     console.error(error);
   };

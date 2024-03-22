@@ -2,22 +2,18 @@
 import API from "./API";
 
 const ImagineService = {
-  postStudy: async (userID, study) => {
+  postStudy: async (data) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/postStudy",
-      {
-        userID,
-        study,
-      },
+      data,
     );
   },
-  preSurvey: async (userID, preSurvey, section) => {
+  preSurvey: async (userID, preSurvey) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
       {
         userID,
         preSurvey,
-        section,
       },
     );
   },

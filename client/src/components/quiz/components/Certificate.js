@@ -33,7 +33,7 @@ class Certificate extends Component {
 
   render() {
     // console.log(this.props);
-    const { state } = this.props;
+    const { state, isImagine } = this.props;
     const today = new Date();
     // console.log(state.exercise.results);
     const date =
@@ -80,7 +80,13 @@ class Certificate extends Component {
           <span
             style={{ fontSize: "30px", textAlign: "center", padding: "20px" }}
           >
-            {Sections[this.props.lab].fullname}
+            {isImagine ? (
+              <p style={{ fontSize: "50px", textAlign: "center" }}>
+                Empathy Immersion
+              </p>
+            ) : (
+              Sections[this.props.lab].fullname
+            )}
           </span>{" "}
           <br />
           <br />

@@ -29,16 +29,11 @@ const submitStudy = async (data) => {
 };
 
 const preSurvey = async (data) => {
-  const {userID, preSurvey, section} = data;
+  const {userID, preSurvey} = data;
   try {
     if (userID) {
-      const user = await db.Imagine23
-          .findOne({
-            where:
-          {
-            userid: userID,
-          },
-          });
+      const section = await determineGroup(preSurvey);
+      const user = await getUserByID(userID);
       if (user !== null) {
         user.preSurvey = preSurvey;
         user.section = section;
@@ -50,7 +45,7 @@ const preSurvey = async (data) => {
           section: section,
         });
       }
-      return true;
+      return section;
     }
   } catch (error) {
     console.error(error);
@@ -88,7 +83,6 @@ const postSurvey = async (data) => {
 const getUsers = async () => {
   const users = await db.Imagine23.findAll({
     attributes: ['id', 'userid', 'preSurvey'],
-    raw: false,
     where: {
       preSurvey: {
         [Op.not]: null,
@@ -193,6 +187,78 @@ const readingSectionPagePosition = async (data) => {
   }
 };
 
+const getSection = async (sectionName) => {
+  try {
+    const output = {};
+    const responses = await db.Imagine23.findAll({
+      where: {
+        section: {
+          [Op.eq]: sectionName,
+        },
+      },
+      raw: true,
+    });
+
+    if (!responses) {
+      return {};
+    }
+    responses.forEach((response) => {
+      const survey = response.preSurvey;
+      const userResponse = survey.map((question, index) => {
+      // leaves in maintainability for adding in demo field
+        if (index === 0 || index === 1 || index === 5) {
+          return question.answer.index;
+        }
+      });
+      const userResponses = userResponse.flat().toString().replace(/,/g, '');
+      output[userResponses] = (output[userResponses] || 0) + 1;
+    });
+    return output;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const determineGroup = async (data) => {
+  // retrieve all existing groupings
+  const experiential = await getSection('experiential');
+  const discomfortCountPOC = await getSection('discomfortCountPOC');
+  const discomfortCountNonPOC = await getSection('discomfortCountNonPOC');
+  const control = await getSection('control');
+  // repeats the same flattening for the user.
+  const userResponse = data.map((question, index) => {
+    if (index === 0 || index === 1 || index === 5) {
+      return question.answer.index;
+    }
+  }).toString().replace(/,/g, '');
+
+  let minValue = Infinity;
+  let lowestPool = '';
+  const dataset = [['experiential', experiential],
+    ['discomfortCountPOC', discomfortCountPOC],
+    ['discomfortCountNonPOC', discomfortCountNonPOC],
+    ['control', control]];
+  // Iterate over each hashmap to find the lowest value
+  for (const [pool, hashmap] of dataset) {
+    // if user response is in the hashmap
+    // Ex: [(userResponse, count) ('232', 3)]
+    // then bubble sort on count
+    if (userResponse in hashmap) {
+      // Compare the value with the current minimum value
+      if (hashmap[userResponse] < minValue) {
+        minValue = hashmap[userResponse];
+        lowestPool = pool;
+      }
+    } else {
+      // else the lowest count for this pool is 0
+      minValue = 0;
+      lowestPool = pool;
+    }
+  }
+  console.log(lowestPool);
+  // get users answers
+  return lowestPool;
+};
 module.exports = {
   submitStudy,
   preSurvey,
