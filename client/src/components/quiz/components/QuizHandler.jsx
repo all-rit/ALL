@@ -111,7 +111,6 @@ const QuizHandler = (props) => {
   function onComplete() {
     scoreResults();
     props.setQuizCompleted(true);
-    console.warn(props.quizCompleted);
   }
 
   /**

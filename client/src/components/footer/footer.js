@@ -84,6 +84,7 @@ class Footer extends Component {
   };
 
   navigateHome = () => {
+    this.props.setQuizCompleted(false);
     navigate("/# ");
   };
 

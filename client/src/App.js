@@ -139,7 +139,11 @@ const App = () => {
             </Router>
           </div>
         </div>
-        <Change context={context} quizCompleted={quizCompleted} />
+        <Change
+          context={context}
+          quizCompleted={quizCompleted}
+          setQuizCompleted={setQuizCompleted}
+        />
       </div>
     </>
   );
