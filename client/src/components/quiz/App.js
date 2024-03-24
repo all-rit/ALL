@@ -67,9 +67,8 @@ const QuizHandler = (props) => {
   const [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions, setQuestions] = useState(assignQuizQuestions(props.labId));
   const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers
+    questions[currentQuestionCursor].answers,
   );
-  const [quizCompleted, setQuizCompleted] = useState(false);
   // initialized to a empty array to house recorded answers
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [disableNext, setDisableNext] = useState(true);
@@ -95,7 +94,8 @@ const QuizHandler = (props) => {
    */
   function onComplete() {
     scoreResults();
-    setQuizCompleted(true);
+    props.setQuizCompleted(true);
+    console.warn(props.quizCompleted);
   }
 
   /**
@@ -184,13 +184,13 @@ const QuizHandler = (props) => {
     UserLabService.complete_quiz(
       props.labId,
       (countCorrect / questionsTotal) * 100,
-      output
+      output,
     );
     if (props.user.firstname !== null) {
       UserLabService.user_complete_quiz(
         props.user.userid,
         props.labId,
-        (countCorrect / questionsTotal) * 100
+        (countCorrect / questionsTotal) * 100,
       );
     }
   }
@@ -250,7 +250,7 @@ const QuizHandler = (props) => {
 
   return (
     <>
-      {!quizCompleted ? (
+      {!props.quizCompleted ? (
         <Quiz
           answer={""}
           answerOptions={answerOption}
@@ -282,5 +282,7 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
+  quizCompleted: PropTypes.boolean,
+  setQuizCompleted: PropTypes.func,
 };
 export default QuizHandler;

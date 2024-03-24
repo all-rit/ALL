@@ -156,6 +156,7 @@ class Footer extends Component {
   render() {
     // const { state, actions } = this.props;
     const { state, actions } = this.props.context;
+    const { quizCompleted } = this.props;
     const lab = state.main.lab;
     const body = state.main.body;
     const display =
@@ -163,6 +164,7 @@ class Footer extends Component {
         body !== 2) &&
       (lab === 0 ? body !== 3 : true);
     const hideOnLanding = lab === 0;
+
     // for buttons that should not be displayed on the landing page
     return (
       <>
@@ -185,11 +187,17 @@ class Footer extends Component {
                 : ""}
             </button>
 
-            {body === 4 ? (
+            {body === 4 && quizCompleted ? (
               <button
                 href="# "
                 className="btn btn-primary btn-xl text-uppercase  next"
                 onClick={this.navigateHome}
+                style={{
+                  display:
+                    this.disappearBack(body) || hideOnLanding
+                      ? "none"
+                      : "block",
+                }}
               >
                 Return to Home
               </button>
@@ -211,19 +219,6 @@ class Footer extends Component {
               </button>
             )}
 
-            <button
-              className="btn btn-primary btn-xl text-uppercase  next"
-              onClick={() => handleRedirect(actions, lab, body + 1)}
-              style={{
-                display:
-                  this.disappearNext(body) || hideOnLanding ? "none" : "block",
-              }}
-            >
-              Next -{" "}
-              {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
-                ? Sections[lab][body + 1].name
-                : ""}
-            </button>
             <div className="btn-change">
               <button
                 className="btn-text btn btn-bottom-buttons text-uppercase"

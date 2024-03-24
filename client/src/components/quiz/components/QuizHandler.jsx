@@ -80,12 +80,11 @@ const QuizHandler = (props) => {
   const [currentLabId, setCurrentLab] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions, setQuestions] = useState(
-    assignQuizQuestions(props.labId, props.isFinalQuiz)
+    assignQuizQuestions(props.labId, props.isFinalQuiz),
   );
   const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers
+    questions[currentQuestionCursor].answers,
   );
-  const [quizCompleted, setQuizCompleted] = useState(false);
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
@@ -111,7 +110,8 @@ const QuizHandler = (props) => {
    */
   function onComplete() {
     scoreResults();
-    setQuizCompleted(true);
+    props.setQuizCompleted(true);
+    console.warn(props.quizCompleted);
   }
 
   /**
@@ -201,13 +201,13 @@ const QuizHandler = (props) => {
       UserLabService.complete_quiz(
         props.labId,
         (countCorrect / questionsTotal) * 100,
-        JSON.stringify(output)
+        JSON.stringify(output),
       );
       if (props.user.firstname !== null) {
         UserLabService.user_complete_quiz(
           props.user.userid,
           props.labId,
-          (countCorrect / questionsTotal) * 100
+          (countCorrect / questionsTotal) * 100,
         );
       }
     } else {
@@ -215,7 +215,7 @@ const QuizHandler = (props) => {
         output,
         props.user.userid,
         props.labId,
-        (countCorrect / questionsTotal) * 100
+        (countCorrect / questionsTotal) * 100,
       );
     }
   }
@@ -277,7 +277,7 @@ const QuizHandler = (props) => {
 
   return (
     <>
-      {!quizCompleted ? (
+      {!props.quizCompleted ? (
         <Quiz
           answer={""}
           answerOptions={answerOption}
@@ -313,5 +313,7 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
+  quizCompleted: PropTypes.bool,
+  setQuizCompleted: PropTypes.func,
 };
 export default QuizHandler;
