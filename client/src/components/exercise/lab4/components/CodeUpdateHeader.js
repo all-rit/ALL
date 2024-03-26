@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Typography } from "@mui/core";
-import AppBar from "@mui/core/AppBar";
-import Toolbar from "@mui/core/Toolbar";
-import Grid from "@mui/core/Grid";
-import DialogTitle from "@mui/core/DialogTitle";
-import DialogContent from "@mui/core/DialogContent";
-import DialogContentText from "@mui/core/DialogContentText";
-import DialogActions from "@mui/core/DialogActions";
-import Button from "@mui/core/Button";
-import Dialog from "@mui/core/Dialog";
+import { Typography } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
 import PropTypes from "prop-types";
 
 const CodeUpdateHeader = ({ heading, justifyAlignment, helpMessage }) => {
