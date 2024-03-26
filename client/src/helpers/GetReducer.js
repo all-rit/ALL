@@ -1,8 +1,6 @@
 const getExerciseState = (state, reduxState) => {
   const lab = state.main.lab;
   switch (lab) {
-    case 1:
-      return reduxState.exercise1.state;
     case 2:
       return reduxState.exercise2.changeExerciseState.exerciseState
         ? "EXERCISE_PLAYING"

@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-/* eslint-disable camelcase */
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/images/logos/ALL_Logo_Header.svg";
 import "../../assets/stylesheets/components/Header.scss";
 import WelcomeMessage from "./helpers/WelcomeMessage";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import {
   Collapse,
   Navbar,
@@ -15,7 +12,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { EXERCISE_IDLE } from "../../constants/lab1";
+import { EXERCISE_IDLE } from "src/constants/index";
 import handleRedirect from "../../helpers/Redirect";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
@@ -54,6 +51,13 @@ const alert_check = (state, reduxState) => {
   return false;
 };
 
+/**
+ * Header component for the application.
+ *
+ * @component
+ * @param {Object} props - The props object containing the component's properties.
+ * @returns {JSX.Element} The rendered Header component.
+ */
 const Header = (props) => {
   const context = useMainStateContext();
   const [isOpen, setIsOpen] = useState(false);
@@ -62,7 +66,7 @@ const Header = (props) => {
   const closeNav = () => setIsOpen(false);
   const { state, actions } = context;
   const [link, setLink] = useState(0);
-  const listenScrollEvent = (event) => {
+  const listenScrollEvent = () => {
     if (state.main.lab === 0 && state.main.body === 0) {
       if (window.scrollY < 800) {
         return setLink(0);
@@ -354,6 +358,11 @@ const Header = (props) => {
       </div>
     </Navbar>
   );
+};
+
+Header.propTypes = {
+  state: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

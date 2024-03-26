@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
-
+import PropTypes from "prop-types";
 import {
   BOX_UNOPENED,
   BOX_INCORRECT,
@@ -11,28 +9,42 @@ import {
   BOX_LOCKED,
 } from "../../../../constants/lab1";
 
-class Box extends Component {
-  render() {
-    const { number, state, clickHandler } = this.props;
-    const classes = classNames({
-      box: true,
-      "box--green": state === BOX_CORRECT,
-      "box--red": state === BOX_INCORRECT,
-      "box--glow": state === BOX_REVEALED,
-      "box--locked": state === BOX_LOCKED,
-    });
+/**
+ * Represents a Box component.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {number} props.number - The number to display inside the box.
+ * @param {string} props.state - The state of the box.
+ * @param {Function} props.clickHandler - The click handler function.
+ * @returns {JSX.Element} The rendered Box component.
+ */
+const Box = ({ number, state, clickHandler }) => {
+  const [classes] = useState({
+    box: true,
+    "box--green": state === BOX_CORRECT,
+    "box--red": state === BOX_INCORRECT,
+    "box--glow": state === BOX_REVEALED,
+    "box--locked": state === BOX_LOCKED,
+  });
 
-    return (
-      <button
-        className={classes}
-        onClick={
-          state === BOX_UNOPENED || state === BOX_REVEALED ? clickHandler : null
-        }
-      >
-        {number}
-      </button>
-    );
-  }
-}
+  const handleClick = () => {
+    if (state === BOX_UNOPENED || state === BOX_REVEALED) {
+      clickHandler();
+    }
+  };
+
+  return (
+    <button className={classNames(classes)} onClick={handleClick}>
+      {number}
+    </button>
+  );
+};
+
+Box.propTypes = {
+  number: PropTypes.number.isRequired,
+  state: PropTypes.number.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+};
 
 export default Box;

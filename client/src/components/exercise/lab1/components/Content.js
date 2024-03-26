@@ -1,52 +1,40 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import { EXERCISE_IDLE, EXERCISE_ENDED } from "../../../../constants/lab1";
-
+import React from "react";
+import { EXERCISE_ENDED } from "../../../../constants/lab1";
 import Playthrough from "./Playthrough";
 import AppInstructions from "./AppInstructions";
 import Exercise from "./Exercise";
 import Repair from "./Repair";
+import { useLab1StateContext } from "src/reducers/lab1/Lab1Context";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_IDLE } from "src/constants/index";
 
-class Content extends Component {
-  render() {
-    const { data, handlers, user } = this.props;
-    const {
-      availableMessage,
-      unavailableMessage,
-      availableBackgroundColor,
-      unavailableBackgroundColor,
-      currentTab,
-      repairVisible,
-    } = data;
-    return (
-      <main className="content">
-        <Playthrough
-          plays={data.plays}
-          results={data.results}
-          visible={data.state === EXERCISE_IDLE}
-        />
+/**
+ * Renders the content of the exercise lab1.
+ *
+ * @returns {JSX.Element} The content component.
+ */
+const Content = () => {
+  const { state: lab1State } = useLab1StateContext();
+  const { state: mainState } = useMainStateContext();
 
-        <AppInstructions
-          visible={
-            data.state !== EXERCISE_ENDED && data.state !== EXERCISE_IDLE
-          }
-        />
-        <Repair
-          visible={repairVisible && data.state === EXERCISE_IDLE}
-          data={{
-            availableMessage,
-            unavailableMessage,
-            availableBackgroundColor,
-            unavailableBackgroundColor,
-            currentTab,
-          }}
-          handlers={handlers}
-        />
-        <Exercise data={data} handlers={handlers} user={user} />
-      </main>
-    );
-  }
-}
+  return (
+    <main className="content">
+      <Playthrough visible={mainState.userState === EXERCISE_IDLE} />
+
+      <AppInstructions
+        visible={
+          lab1State.exerciseState !== EXERCISE_ENDED &&
+          lab1State.exerciseState !== EXERCISE_IDLE
+        }
+      />
+      <Repair
+        visible={
+          lab1State.repairVisible && lab1State.exerciseState === EXERCISE_IDLE
+        }
+      />
+      <Exercise />
+    </main>
+  );
+};
 
 export default Content;

@@ -1,7 +1,5 @@
 // Exercise States
-export const EXERCISE_IDLE = "EXERCISE_IDLE";
 export const EXERCISE_ENDED = "EXERCISE_ENDED";
-export const EXERCISE_PLAYING = "EXERCISE_PLAYING";
 export const EXERCISE_COUNTDOWN = "EXERCISE_COUNTDOWN";
 
 // Hint Box States

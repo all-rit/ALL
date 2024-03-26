@@ -1,29 +1,37 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-class Popup extends Component {
-  close() {
-    const { handler } = this.props;
+const Popup = ({ handler, message, error }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const close = () => {
     handler("");
-  }
+  };
 
-  render() {
-    const { message, error } = this.props;
+  useEffect(() => {
+    if (message !== "") {
+      setIsOpen(true);
+    }
+  }, [message]);
 
-    if (message === "") return null;
+  if (!isOpen) return null;
 
-    return (
-      <div className="popup">
-        <div className={`popup__content ${error ? "popup__error" : ""}`}>
-          <span className="popup__message">{message}</span>
-          <span className="popup__close" onClick={this.close.bind(this)}>
-            &times;
-          </span>
-        </div>
+  return (
+    <div className="popup">
+      <div className={`popup__content ${error ? "popup__error" : ""}`}>
+        <span className="popup__message">{message}</span>
+        <span className="popup__close" onClick={close}>
+          &times;
+        </span>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+Popup.propTypes = {
+  handler: PropTypes.func.isRequired,
+  message: PropTypes.string.isRequired,
+  error: PropTypes.bool,
+};
 
 export default Popup;

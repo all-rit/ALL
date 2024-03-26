@@ -29,7 +29,6 @@ import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
 import Change from "./components/footer/footer";
 import Header from "./components/header/header";
-import { actions as appActions } from "./reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "./reducers/MainReducer";
 import BodyHeader from "./components/header/BodyHeader";
@@ -48,7 +47,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...appActions, ...mainActions }, dispatch),
+    actions: bindActionCreators({ ...mainActions }, dispatch),
   };
 };
 

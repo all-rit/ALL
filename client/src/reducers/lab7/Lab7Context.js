@@ -89,6 +89,13 @@ const Lab7ContextProvider = ({ children }) => {
     Lab7ExerciseInititalState
   );
 
+  /**
+   * Actions for Lab7App.
+   * @typedef {Object} appActions
+   * @property {function(string): void} updatePopup - Updates the popup message.
+   * @property {function(): void} openInstructions - Opens the instructions.
+   * @property {function(): void} closeInstructions - Closes the instructions.
+   */
   const appActions = {
     updatePopup: (message) =>
       appDispatch({ type: Lab7AppTypes.UPDATE_POPUP, message }),
@@ -98,6 +105,24 @@ const Lab7ContextProvider = ({ children }) => {
       appDispatch({ type: Lab7AppTypes.CLOSE_INSTRUCTIONS }),
   };
 
+  /**
+   * Object containing action functions for repairing.
+   *
+   * @typedef {Object} repairActions
+   * @property {Function} resetRepair - Resets the repair state.
+   * @property {Function} undoRepairChanges - Undoes the repair changes.
+   * @property {Function} updateRepairEquation - Updates the repair equation with the given reward and cost values.
+   * @property {Function} updateRewardValue - Updates the reward value.
+   * @property {Function} updateCostValue - Updates the cost value.
+   * @property {Function} updateRewardError - Updates the reward error.
+   * @property {Function} updateCostError - Updates the cost error.
+   * @property {Function} updateRepairError - Updates the repair error.
+   * @property {Function} updateTab - Updates the active tab.
+   * @property {Function} openRepair - Opens the repair.
+   * @property {Function} closeRepair - Closes the repair.
+   * @property {Function} updateMakeDecision - Updates the make decision function.
+   * @property {Function} setRepairId - Sets the repair ID.
+   */
   const repairActions = {
     resetRepair: () => repairDispatch({ type: Lab7RepairTypes.RESET_REPAIR }),
     undoRepairChanges: () =>
@@ -143,6 +168,23 @@ const Lab7ContextProvider = ({ children }) => {
       repairDispatch({ type: Lab7RepairTypes.SET_REPAIR_ID, repairId }),
   };
 
+  /**
+   * Object containing action functions for Lab7Context.
+   *
+   * @typedef {Object} exerciseActions
+   * @property {Function} enableEnd - Enables the end of the exercise.
+   * @property {Function} reset - Resets the exercise.
+   * @property {Function} incrementScore - Increments the score by a given value.
+   * @property {Function} incrementIntrusions - Increments the number of intrusions.
+   * @property {Function} incrementProtected - Increments the number of protected items.
+   * @property {Function} incrementIncorrect - Increments the number of incorrect attempts.
+   * @property {Function} startNewRound - Starts a new round of the exercise.
+   * @property {Function} updateThreatLevel - Updates the threat level with a given value.
+   * @property {Function} addResults - Adds results to the exercise.
+   * @property {Function} updateRedirectURL - Updates the redirect URL with a given value.
+   * @property {Function} setModal - Sets the modal state.
+   * @property {Function} setMessage - Sets the message for the exercise.
+   */
   const exerciseActions = {
     enableEnd: () => exerciseDispatch({ type: Lab7ExerciseTypes.ENABLE_END }),
     reset: () => exerciseDispatch({ type: Lab7ExerciseTypes.RESET }),
@@ -171,6 +213,13 @@ const Lab7ContextProvider = ({ children }) => {
       exerciseDispatch({ type: Lab7ExerciseTypes.SET_MESSAGE, message }),
   };
 
+  /**
+   * The value object that contains the state and actions for Lab7Context.
+   *
+   * @typedef {Object} value
+   * @property {Object} state - The combined state object.
+   * @property {Object} actions - The combined actions object.
+   */
   const value = {
     state: { ...appState, ...repairState, ...exerciseState },
     actions: { ...appActions, ...repairActions, ...exerciseActions },

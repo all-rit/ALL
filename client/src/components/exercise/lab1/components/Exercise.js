@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
+import React, { useState } from "react";
 import ExerciseService from "../../../../services/lab1/ExerciseService";
 import UserLabService from "../../../../services/UserLabService";
 import ExerciseButtons from "./ExerciseButtons";
@@ -9,13 +7,10 @@ import HintBox from "./HintBox";
 import Boxes from "./Boxes";
 import Stats from "./Stats";
 import Results from "./Results";
-
 import Sound from "../../../../assets/sounds/female.mp3";
 
 import {
-  EXERCISE_PLAYING,
   EXERCISE_ENDED,
-  EXERCISE_IDLE,
   EXERCISE_COUNTDOWN,
   BOX_CORRECT,
   BOX_INCORRECT,
@@ -33,142 +28,170 @@ import {
   OPEN_HINT_BOX_DELAY,
   LAB_ID,
 } from "../../../../constants/lab1";
+import { useLab1StateContext } from "src/reducers/lab1/Lab1Context";
+import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
 
-class Exercise extends Component {
-  constructor(props) {
-    super(props);
+/**
+ * Exercise component represents the main exercise screen.
+ * It manages the state and logic for the exercise.
+ *
+ * @returns {JSX.Element} The Exercise component.
+ */
+const Exercise = () => {
+  const { state: lab1State, actions: lab1Actions } = useLab1StateContext();
+  const { state: mainState } = useMainStateContext();
+  const [countdownTimer, setCountDownTimer] = useState(null);
+  const [roundTimer, setRoundTimer] = useState(null);
+  const audio = new Audio(Sound);
 
-    this.audio = new Audio(Sound);
-    this.audio.loop = false;
-  }
-
-  startExercise() {
+  /**
+   * Starts the exercise.
+   *
+   * @returns {void}
+   */
+  const startExercise = () => {
     // Proceed with starting the Exercise
-    this.startRound();
-    this.timer = setInterval(() => {
-      const { data, handlers, user } = this.props;
+    startRound();
+    setRoundTimer(
+      setInterval(() => {
+        if (lab1State.exerciseState === EXERCISE_PLAYING) lab1Actions.tick();
 
-      if (data.state === EXERCISE_PLAYING) handlers.tick();
-
-      if (data.time <= 0) {
-        handlers.updateState(EXERCISE_ENDED);
-        UserLabService.complete_exercise(LAB_ID);
-        if (user?.firstname !== null && user !== null) {
-          UserLabService.user_complete_exercise(user.userid, LAB_ID);
+        if (lab1State.time <= 0) {
+          lab1Actions.updateState(EXERCISE_ENDED);
+          UserLabService.complete_exercise(LAB_ID);
+          if (mainState.user?.firstname !== null && mainState.user !== null) {
+            UserLabService.user_complete_exercise(
+              mainState.user.userid,
+              LAB_ID
+            );
+          }
+          ExerciseService.updateEndExerciseScore(lab1State.score);
+          // Clear all timers
+          clearInterval(roundTimer);
+          clearInterval(countdownTimer);
         }
-        ExerciseService.updateEndExerciseScore(data.score);
-        // Clear all timers
-        clearInterval(this.timer);
-        clearInterval(this.countdownTimer);
-      }
-    }, TIMEOUT_MIN_MS);
-  }
+      }, TIMEOUT_MIN_MS)
+    );
+  };
 
-  startRound() {
-    const { data, handlers } = this.props;
+  /**
+   * Starts a new round in the exercise.
+   */
+  const startRound = () => {
     const chance = Math.floor(Math.random() * 2) + 1;
 
     // Proceed with starting a new round
-    handlers.updateHintBoxStatus(HINT_BOX_CLOSED);
-    handlers.resetRoundTimer();
-    handlers.hideBox();
-    handlers.startNewRound();
-    this.randomizeBox();
+    lab1Actions.updateHintBoxStatus(HINT_BOX_CLOSED);
+    lab1Actions.resetRoundTimer();
+    lab1Actions.hideBox();
+    lab1Actions.startNewRound();
+    randomizeBox();
 
     // Load audio if sound is enabled
-    if (data.soundEnabled) this.audio.load();
+    if (lab1State.soundEnabled) audio.load();
 
     // Play the audio cue based on chance
     if (chance > 1) {
-      handlers.revealBox();
+      lab1Actions.revealBox();
 
-      if (data.soundEnabled) this.audio.play();
+      if (lab1State.soundEnabled) audio.play();
     }
-  }
+  };
 
-  startCountdown() {
-    const { data, handlers } = this.props;
-
+  /**
+   * Starts the countdown timer for the exercise.
+   */
+  const startCountdown = () => {
     // Reset countdown timer back to three and change the exercise state
-    handlers.resetCountdownTimer();
-    handlers.updateState(EXERCISE_COUNTDOWN);
+    lab1Actions.resetCountdownTimer();
+    lab1Actions.updateState(EXERCISE_COUNTDOWN);
 
-    if (data.roundNumber === 0) {
+    if (lab1State.roundNumber === 0) {
       // Create a new exercise entry in the database
-      ExerciseService.createExercise(data.plays);
+      ExerciseService.createExercise(lab1State.plays);
     }
 
     // We still have to create a new timer, don't we?
-    this.countdownTimer = setInterval(() => {
-      const { data } = this.props;
+    setCountDownTimer(
+      setInterval(() => {
+        lab1Actions.countdownTick();
 
-      handlers.countdownTick();
+        if (lab1State.countdownTime <= 0) {
+          lab1Actions.updateState(EXERCISE_PLAYING);
 
-      if (data.countdownTime <= 0) {
-        handlers.updateState(EXERCISE_PLAYING);
+          // Create a new round entry in the database
+          ExerciseService.createRound(lab1State.soundEnabled);
 
-        // Create a new round entry in the database
-        ExerciseService.createRound(data.soundEnabled);
+          if (lab1State.roundNumber === 0) {
+            startExercise();
+          } else {
+            startRound();
+          }
 
-        if (data.roundNumber === 0) {
-          this.startExercise();
-        } else {
-          this.startRound();
+          clearInterval(countdownTimer);
         }
+      }, MILLISECONDS_IN_A_SECOND)
+    );
+  };
 
-        clearInterval(this.countdownTimer);
-      }
-    }, MILLISECONDS_IN_A_SECOND);
-  }
-
-  resetExercise() {
-    const { data, handlers } = this.props;
-
+  /**
+   * Resets the exercise by stopping the round timer, storing the results, and resetting the exercise state.
+   * If it's the first playthrough, it also disables the sound.
+   */
+  const resetExercise = () => {
     // Stop the round timer
-    clearInterval(this.roundTimer);
+    clearInterval(roundTimer);
 
     // Store the results and reset the exercise
-    handlers.addResult({
-      score: data.score,
-      correctAnswers: data.correctAnswers,
-      incorrectAnswers: data.incorrectAnswers,
-      roundNumber: data.roundNumber,
-      soundEnabled: data.soundEnabled,
+    lab1Actions.addResult({
+      score: lab1State.score,
+      correctAnswers: lab1State.correctAnswers,
+      incorrectAnswers: lab1State.incorrectAnswers,
+      roundNumber: lab1State.roundNumber,
+      soundEnabled: lab1State.soundEnabled,
     });
-    handlers.reset();
+    lab1Actions.reset();
 
     // Disable sound for a certain playthrough
-    if (data.plays === 0) handlers.toggleSound();
-  }
+    if (lab1State.plays === 0) lab1Actions.toggleSound();
+  };
 
-  validateAnswer(number) {
-    const { data, handlers } = this.props;
-    const correct = number === data.correctBoxNumber;
+  /**
+   * Validates the user's answer for the exercise.
+   * @param {number} number - The number chosen by the user.
+   * @returns {void}
+   */
+  const validateAnswer = (number) => {
+    const correct = number === lab1State.correctBoxNumber;
 
-    let score = data.score;
+    let score = lab1State.score;
     if (correct) {
-      score = score + this.calculateScore();
-      handlers.updateBoxStatus(number, BOX_CORRECT);
-      clearInterval(this.roundTimer);
-      this.audio.pause();
-      handlers.updateScore(score);
-      handlers.incrementCorrectAnswers();
+      score = score + calculateScore();
+      lab1Actions.updateBoxStatus(number, BOX_CORRECT);
+      clearInterval(roundTimer);
+      audio.pause();
+      lab1Actions.updateScore(score);
+      lab1Actions.incrementCorrectAnswers();
 
-      this.updateCongratulationMessage();
-      this.startCountdown();
+      updateCongratulationMessage();
+      startCountdown();
     } else {
       score = score - 75;
-      handlers.updateBoxStatus(number, BOX_INCORRECT);
-      handlers.updateScore(score);
-      handlers.incrementIncorrectAnswers();
+      lab1Actions.updateBoxStatus(number, BOX_INCORRECT);
+      lab1Actions.updateScore(score);
+      lab1Actions.incrementIncorrectAnswers();
     }
     // Create a new choice entry in the database
-    ExerciseService.createChoice(score, data.hintUsed, number, correct);
-  }
+    ExerciseService.createChoice(score, lab1State.hintUsed, number, correct);
+  };
 
-  calculateScore() {
-    const { data } = this.props;
-    const seconds = data.roundTime / MILLISECONDS_IN_A_SECOND;
+  /**
+   * Calculates the score based on the round time in seconds.
+   * @returns {number} The calculated score.
+   */
+  const calculateScore = () => {
+    const seconds = lab1State.roundTime / MILLISECONDS_IN_A_SECOND;
     let score = 0;
 
     if (seconds < 1) {
@@ -186,131 +209,135 @@ class Exercise extends Component {
     }
 
     return score;
-  }
+  };
 
-  randomizeBox() {
-    const { handlers } = this.props;
+  /**
+   * Randomizes the box number and updates the box.
+   */
+  const randomizeBox = () => {
     const number = Math.floor(Math.random() * BOXES_NUM_VALUE) + 1;
 
-    handlers.updateBox(number);
-  }
+    lab1Actions.updateBox(number);
+  };
 
-  lockBoxes() {
-    const { data, handlers } = this.props;
-
-    Object.keys(data.boxes).forEach((box) => {
-      if (data.boxes[box] === BOX_UNOPENED) {
-        handlers.updateBoxStatus(box, BOX_LOCKED);
+  /**
+   * Locks all unopened boxes in the lab1State.
+   */
+  const lockBoxes = () => {
+    Object.keys(lab1State.boxes).forEach((box) => {
+      if (lab1State.boxes[box] === BOX_UNOPENED) {
+        lab1Actions.updateBoxStatus(box, BOX_LOCKED);
       }
     });
-  }
+  };
 
-  unlockBoxes() {
-    const { data, handlers } = this.props;
-
-    Object.keys(data.boxes).forEach((box) => {
-      if (data.boxes[box] === BOX_LOCKED) {
-        handlers.updateBoxStatus(box, BOX_UNOPENED);
+  /**
+   * Unlocks all the boxes in the lab1State by updating their status to BOX_UNOPENED.
+   */
+  const unlockBoxes = () => {
+    Object.keys(lab1State.boxes).forEach((box) => {
+      if (lab1State.boxes[box] === BOX_LOCKED) {
+        lab1Actions.updateBoxStatus(box, BOX_UNOPENED);
       }
     });
-  }
+  };
 
-  openHintBox() {
-    const { data, handlers } = this.props;
-
+  /**
+   * Opens the hint box and performs necessary actions based on the current state.
+   * If there is an available hint, it shows it instantly. Otherwise, it simulates the hint box "thinking"
+   * and updates the hint box status, score, and locks/unlocks the boxes accordingly.
+   */
+  const openHintBox = () => {
     // If there is an available hint, just show it instantly
-    if (data.boxRevealed) {
-      handlers.updateHintBoxStatus(HINT_BOX_OPEN);
-      handlers.updateHintUsed(true);
-      handlers.updateBoxStatus(data.correctBoxNumber, BOX_REVEALED);
+    if (lab1State.boxRevealed) {
+      lab1Actions.updateHintBoxStatus(HINT_BOX_OPEN);
+      lab1Actions.updateHintUsed(true);
+      lab1Actions.updateBoxStatus(lab1State.correctBoxNumber, BOX_REVEALED);
     } else {
       // Otherwise, have the hint box "think"
       // Update hint box status & used status and update the score
-      handlers.updateHintBoxStatus(HINT_BOX_THINKING);
-      handlers.updateHintUsed(true);
-      handlers.updateScore(data.score - 25);
+      lab1Actions.updateHintBoxStatus(HINT_BOX_THINKING);
+      lab1Actions.updateHintUsed(true);
+      lab1Actions.updateScore(lab1State.score - 25);
 
       // Lock the unopened boxes
-      this.lockBoxes();
+      lockBoxes();
 
       // Create a timer for the hint box to "think"
       setTimeout(() => {
-        const { handlers } = this.props;
-
         // Update hint box status and unlock boxes
-        handlers.updateHintBoxStatus(HINT_BOX_OPEN);
+        lab1Actions.updateHintBoxStatus(HINT_BOX_OPEN);
 
         setTimeout(() => {
-          this.unlockBoxes();
+          unlockBoxes();
         }, OPEN_HINT_BOX_DELAY * MILLISECONDS_IN_A_SECOND);
       }, HINT_BOX_THINKING_TIMER_SECONDS * MILLISECONDS_IN_A_SECOND);
     }
-  }
+  };
 
-  updateCongratulationMessage() {
-    const { handlers } = this.props;
+  /**
+   * Updates the congratulation message with a random message from the CONGRATULATION_MESSAGES array.
+   */
+  const updateCongratulationMessage = () => {
     const message =
       CONGRATULATION_MESSAGES[
         Math.floor(Math.random() * CONGRATULATION_MESSAGES.length)
       ];
 
-    handlers.updateCongratulationMessage(message);
-  }
+    lab1Actions.updateCongratulationMessage(message);
+  };
 
-  render() {
-    const { data, handlers } = this.props;
-
-    return (
-      <div className="exercise">
-        <ExerciseButtons
-          visible={data.state === EXERCISE_IDLE}
-          plays={data.plays}
-          repairApplied={data.changesApplied}
-          openRepairHandler={handlers.openRepair}
-          openInstructionsHandler={handlers.openInstructions}
-          startExerciseHandler={this.startCountdown.bind(this)}
-        />
-        <Countdown
-          visible={data.state === EXERCISE_COUNTDOWN}
-          time={data.countdownTime}
-          message={data.congratulationMessage}
-        />
-        <HintBox
-          visible={data.state === EXERCISE_PLAYING}
-          state={data.hintBoxStatus}
-          boxRevealed={data.boxRevealed}
-          availableMessage={data.availableMessage}
-          unavailableMessage={data.unavailableMessage}
-          availableBackgroundColor={data.availableBackgroundColor}
-          unavailableBackgroundColor={data.unavailableBackgroundColor}
-          clickHandler={this.openHintBox.bind(this)}
-        />
-        <Boxes
-          visible={data.state === EXERCISE_PLAYING}
-          elements={data.boxes}
-          clickHandler={this.validateAnswer.bind(this)}
-        />
-        <Stats
-          visible={
-            data.state !== EXERCISE_IDLE && data.state !== EXERCISE_ENDED
-          }
-          score={data.score}
-          correctAnswers={data.correctAnswers}
-          incorrectAnswers={data.incorrectAnswers}
-          roundNumber={data.roundNumber}
-          time={data.time}
-        />
-        <Results
-          visible={data.state === EXERCISE_ENDED}
-          score={data.score}
-          correctAnswers={data.correctAnswers}
-          incorrectAnswers={data.incorrectAnswers}
-          roundNumber={data.roundNumber}
-          clickHandler={this.resetExercise.bind(this)}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="exercise">
+      <ExerciseButtons
+        visible={lab1State.exerciseState === EXERCISE_IDLE}
+        plays={lab1State.plays}
+        repairApplied={lab1State.changesApplied}
+        openRepairHandler={lab1Actions.openRepair}
+        openInstructionsHandler={lab1Actions.openInstructions}
+        startExerciseHandler={startCountdown}
+      />
+      <Countdown
+        visible={lab1State.exerciseState === EXERCISE_COUNTDOWN}
+        time={lab1State.countdownTime}
+        message={lab1State.congratulationMessage}
+      />
+      <HintBox
+        visible={lab1State.exerciseState === EXERCISE_PLAYING}
+        state={lab1State.hintBoxStatus}
+        boxRevealed={lab1State.boxRevealed}
+        availableMessage={lab1State.availableMessage}
+        unavailableMessage={lab1State.unavailableMessage}
+        availableBackgroundColor={lab1State.availableBackgroundColor}
+        unavailableBackgroundColor={lab1State.unavailableBackgroundColor}
+        clickHandler={openHintBox}
+      />
+      <Boxes
+        visible={lab1State.exerciseState === EXERCISE_PLAYING}
+        elements={lab1State.boxes}
+        clickHandler={validateAnswer}
+      />
+      <Stats
+        visible={
+          lab1State.exerciseState !== EXERCISE_IDLE &&
+          lab1State.exerciseState !== EXERCISE_ENDED
+        }
+        score={lab1State.score}
+        correctAnswers={lab1State.correctAnswers}
+        incorrectAnswers={lab1State.incorrectAnswers}
+        roundNumber={lab1State.roundNumber}
+        time={lab1State.time}
+      />
+      <Results
+        visible={lab1State.exerciseState === EXERCISE_ENDED}
+        score={lab1State.score}
+        correctAnswers={lab1State.correctAnswers}
+        incorrectAnswers={lab1State.incorrectAnswers}
+        roundNumber={lab1State.roundNumber}
+        clickHandler={resetExercise}
+      />
+    </div>
+  );
+};
 
 export default Exercise;

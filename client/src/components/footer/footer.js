@@ -4,7 +4,6 @@
 import React, { Component } from "react";
 import "../../assets/stylesheets/components/css/colorPicker.css";
 import { connect } from "react-redux";
-import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import { bindActionCreators } from "redux";
 import {
@@ -27,7 +26,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...appActions, ...mainActions }, dispatch),
+    actions: bindActionCreators({ ...mainActions }, dispatch),
   };
 };
 class Footer extends Component {
