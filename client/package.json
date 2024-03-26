@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "/",
   "dependencies": {
+    "@babel/runtime-corejs2": "^7.24.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -16,7 +17,6 @@
     "@mui/material": "^5.15.14",
     "@mui/styles": "^5.15.14",
     "@npmcli/fs": "^3.1.0",
-    "@popperjs/core": "^2.11.8",
     "@reach/dialog": "^0.18.0",
     "@reach/router": "^1.3.4",
     "@redux-devtools/core": "^4.0.0",
@@ -27,6 +27,7 @@
     "chart.js": "^2.9.4",
     "classnames": "^2.5.1",
     "clsx": "^2.1.0",
+    "core-js": "^3.36.1",
     "hex-to-rgba": "^2.0.1",
     "highlight.js": "^11.9.0",
     "immutability-helper": "^3.1.1",
@@ -79,7 +80,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.3",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.24.3",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-google": "^0.14.0",
