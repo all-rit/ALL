@@ -2,8 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { navigate } from "@reach/router";
 import { LAB_ID } from "../../../../constants/lab4";
 import UserLabService from "../../../../services/UserLabService";
-import { AppBar } from "@material-ui/core";
-import Toolbar from "@material-ui/core/Toolbar";
+import { AppBar, Toolbar } from "@mui/material";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE } from "src/constants/index";
 

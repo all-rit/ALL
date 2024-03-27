@@ -69,7 +69,7 @@ const Simulation = () => {
         const result = handlePerfectScore();
         setTimeout(
           () => startRound(),
-          result ? READ_TIME + DELAY_TIME : NO_DELAY
+          result ? READ_TIME + DELAY_TIME : NO_DELAY,
         );
       }
     }
@@ -230,7 +230,7 @@ const Simulation = () => {
    */
   const handlePerfectScore = () => {
     const filteredFiles = files.filter(
-      (file) => file.result === FILE_PROTECTED
+      (file) => file.result === FILE_PROTECTED,
     );
     if (filteredFiles.length === files.length) {
       actions.incrementScore(SCORE_MAP.PERFECT_SCORE);

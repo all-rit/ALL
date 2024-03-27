@@ -114,7 +114,7 @@ Collapsible.propTypes = {
         result: PropTypes.string,
         report: PropTypes.string,
         message: PropTypes.element,
-      })
+      }),
     ),
   }),
   index: PropTypes.number,

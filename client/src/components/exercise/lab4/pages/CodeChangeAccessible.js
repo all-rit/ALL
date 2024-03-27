@@ -2,20 +2,22 @@
 import React, { useEffect, useState } from "react";
 import Prism from "prismjs";
 import { navigate } from "@reach/router";
-import Button from "@material-ui/core/Button";
-import { Paper } from "@material-ui/core";
-import Snackbar from "@material-ui/core/Snackbar";
-import CheckCircleIcon from "@material-ui/core/SvgIcon/SvgIcon";
-import { amber, green, red, yellow } from "@material-ui/core/colors";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
+import {
+  Paper,
+  Snackbar,
+  SnackbarContent,
+  IconButton,
+  Button,
+  Typography,
+} from "@mui/material";
+import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
+import { amber, green, red, yellow } from "@mui/material/colors";
 import clsx from "clsx";
-import IconButton from "@material-ui/core/IconButton";
-import WarningIcon from "@material-ui/icons/Warning";
-import ErrorIcon from "@material-ui/icons/Error";
-import InfoIcon from "@material-ui/icons/Info";
-import CloseIcon from "@material-ui/icons/Close";
+import ErrorIcon from "@mui/icons-material/Error";
+import InfoIcon from "@mui/icons-material/Info";
+import CloseIcon from "@mui/icons-material/Close";
+import WarningIcon from "@mui/icons-material/Warning";
 import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
 import RepairService from "../../../../services/lab4/RepairService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
@@ -78,6 +80,7 @@ function MySnackbarContentWrapper(props) {
           aria-label="close"
           color="inherit"
           onClick={onClose}
+          size="large"
         >
           <CloseIcon className={classes.icon} />
         </IconButton>,
@@ -99,7 +102,7 @@ const CodeChangeAccessible = () => {
   const [textValue, setTextValue] = useState("");
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [message, setMessage] = useState(
-    "Please type code before updating code!"
+    "Please type code before updating code!",
   );
 
   useEffect(() => {

@@ -73,7 +73,7 @@ const alterationQuizQuestions = [
   {
     // "U = (File Sensitivity Level * Threat Level) / File Sensitivity Level"
     question: formulateEquation(
-      "\\frac{Reward\\;Value*Cost\\;Value}{Reward\\;Value}"
+      "\\frac{Reward\\;Value*Cost\\;Value}{Reward\\;Value}",
     ),
     answers: [
       {

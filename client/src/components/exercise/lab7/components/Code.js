@@ -152,10 +152,10 @@ const Code = () => {
       const [rewardValue, costValue] = [reward.value, cost.value];
       RepairService.submitRepair(
         componentName,
-        JSON.stringify({ rewardValue, costValue })
+        JSON.stringify({ rewardValue, costValue }),
       )
         .then((response) =>
-          response.ok ? response.json().then((json) => json.repairId) : null
+          response.ok ? response.json().then((json) => json.repairId) : null,
         )
         .then((repairId) => actions.setRepairId(repairId));
       actions.updateRewardError(null);

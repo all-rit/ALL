@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, ModalHeader } from "reactstrap";
-import { CheckRounded, WarningRounded } from "@material-ui/icons";
+import { CheckRounded, WarningRounded } from "@mui/icons-material";
 import ProgressBar from "./ProgressBar";
 import { MESSAGES, READ_TIME } from "../../../../constants/lab7";
 import Countdown from "react-countdown";

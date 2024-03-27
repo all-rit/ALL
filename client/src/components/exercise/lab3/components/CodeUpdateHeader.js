@@ -1,9 +1,9 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import { Typography } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
 import PropTypes from "prop-types";
 
 class CodeUpdateHeader extends Component {

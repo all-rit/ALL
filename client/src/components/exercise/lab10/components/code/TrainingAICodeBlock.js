@@ -22,7 +22,7 @@ const TrainingAICodeBlock = (props) => {
     } else {
       if (!(value >= DURATION_RANGE[0] && value <= DURATION_RANGE[1])) {
         actions.updateRepairError(
-          `Input a number between ${DURATION_RANGE[0]} and ${DURATION_RANGE[1]}.`
+          `Input a number between ${DURATION_RANGE[0]} and ${DURATION_RANGE[1]}.`,
         );
         actions.updatePopup(POPUP_MESSAGES.OUTSIDE_RANGE);
       } else {
@@ -345,7 +345,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
       { ...repairActions, setTrainingDuration },
-      dispatch
+      dispatch,
     ),
   };
 };
@@ -357,5 +357,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(TrainingAICodeBlock);

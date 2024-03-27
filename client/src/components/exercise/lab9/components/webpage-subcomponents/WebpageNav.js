@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../../../../assets/images/lab9/logo.png";
 import { EXERCISE_STATES, REPAIR } from "../../../../../constants/lab9";
 import { navigate } from "@reach/router";
-import HomeIcon from "@material-ui/icons/Home";
+import HomeIcon from "@mui/icons-material/Home";
 import BadgeIcon from "@mui/icons-material/Badge";
 import SchoolIcon from "@mui/icons-material/School";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
