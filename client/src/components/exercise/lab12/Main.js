@@ -4,6 +4,8 @@ import { Router } from "@reach/router";
 import Test from "./pages/Test";
 import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
+import Diploma from "./components/Diploma";
+
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -18,6 +20,8 @@ const Main = () => {
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
           <Test path="/*" />
+          {/* TODO: remove this */}
+          <Diploma path="/diploma" />
         </Router>
       </GameStateContext.Provider>
     </div>
