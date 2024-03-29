@@ -13,14 +13,14 @@ const Diploma = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "2rem",
+        padding: "1rem",
       }}
     >
       <h1 className="fancy-text tw-text-7xl">ALL University</h1>
       <p className="fancy-text tw-text-3xl">
         Upon the recommendation of the President and Faculty of the
-        <span id="college-name">COLLEGE NAME</span> and by the Board of Trustees
-        has conferred upo
+        <span id="college-name">COLLEGE NAME</span>
+        and by the Board of Trustees has conferred upon
       </p>
       <h2 className="diploma-name tw-text-5xl">
         <span>FIRST NAME</span> Phillip <span>LAST NAME</span>
