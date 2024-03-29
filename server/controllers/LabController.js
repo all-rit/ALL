@@ -1,7 +1,5 @@
-import {
-  getAllLabs, getLabShortName, getLabAbout,
-  getLabReading, getLabReinforcement, getLabQuiz,
-} from '../services/LabService';
+const LabService = require('../services/LabService');
+
 /**
  * getAllLabsController(): Gets all labs and their information.
  * @param {Object} req request object containing payload.
@@ -9,7 +7,7 @@ import {
  */
 async function getAllLabsController(req, res) {
   try {
-    const labs = await getAllLabs();
+    const labs = await LabService.getAllLabs();
     res.json(labs);
   } catch (error) {
     console.error(error);
@@ -24,7 +22,7 @@ async function getAllLabsController(req, res) {
 async function getLabShortNameController(req, res) {
   try {
     const {labID} = req.params;
-    const shortName = await getLabShortName(labID);
+    const shortName = await LabService.getLabShortName(labID);
     res.json(shortName);
   } catch (error) {
     console.error(error);
@@ -39,7 +37,7 @@ async function getLabShortNameController(req, res) {
 async function getLabAboutController(req, res) {
   try {
     const {labID} = req.params;
-    const about = await getLabAbout(labID);
+    const about = await LabService.getLabAbout(labID);
     res.json(about);
   } catch (error) {
     console.error(error);
@@ -54,7 +52,7 @@ async function getLabAboutController(req, res) {
 async function getLabReadingController(req, res) {
   try {
     const {labID} = req.params;
-    const reading = await getLabReading(labID);
+    const reading = await LabService.getLabReading(labID);
     res.json(reading);
   } catch (error) {
     console.error(error);
@@ -69,7 +67,7 @@ async function getLabReadingController(req, res) {
 async function getLabReinforcementController(req, res) {
   try {
     const {labID} = req.params;
-    const reinforcement = await getLabReinforcement(labID);
+    const reinforcement = await LabService.getLabReinforcement(labID);
     res.json(reinforcement);
   } catch (error) {
     console.error(error);
@@ -84,15 +82,20 @@ async function getLabReinforcementController(req, res) {
 async function getLabQuizController(req, res) {
   try {
     const {labID} = req.params;
-    const quiz = await getLabQuiz(labID);
+    const quiz = await LabService.getLabQuiz(labID);
     res.json(quiz);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Quiz'});
   }
 }
-export {
-  getAllLabsController, getLabShortNameController,
-  getLabAboutController, getLabReadingController,
-  getLabReinforcementController, getLabQuizController,
+
+module.exports = {
+  getAllLabsController,
+  getLabShortNameController,
+  getLabAboutController,
+  getLabReadingController,
+  getLabReinforcementController,
+  getLabQuizController,
 };
+

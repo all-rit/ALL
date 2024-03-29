@@ -102,4 +102,11 @@ async function getLabQuiz(labID) {
 };
 
 
-export {getAllLabs, getLabShortName, getLabAbout, getLabReading, getLabReinforcement, getLabQuiz};
+module.exports = {
+  getAllLabs,
+  getLabShortName,
+  getLabAbout,
+  getLabReading,
+  getLabReinforcement,
+  getLabQuiz,
+};
