@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400");
 @import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
-@import url("https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap");
 @tailwind components;
 @tailwind utilities;
 html {
