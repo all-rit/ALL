@@ -7,6 +7,12 @@ const fancyText = {
   fontFamily: "'UnifrakturMaguntia', cursive",
 };
 
+const horizontalBarStyling = {
+  flex: "0 0 20%",
+  height: "2px",
+  backgroundColor: "black",
+};
+
 const Diploma = () => {
   return (
     <div
@@ -16,7 +22,7 @@ const Diploma = () => {
     >
       <h1 style={fancyText}>ALL University</h1>
       <p style={fancyText}>
-        Upon the recommendation of the President and Faculty of the{" "}
+        Upon the recommendation of the President and Faculty of the
         <span id="college-name">COLLEGE NAME</span> and by the Board of Trustees
         has conferred upon
       </p>
@@ -34,7 +40,18 @@ const Diploma = () => {
       <p style={fancyText}>
         Earned on this <span>DATE</span>
       </p>
-      <img src={SealImage} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+        }}
+      >
+        <hr style={horizontalBarStyling} />
+        <img src={SealImage} />
+        <hr style={horizontalBarStyling} />
+      </div>
     </div>
   );
 };
