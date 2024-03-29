@@ -167,12 +167,24 @@ router.post('/lab11/repair/submit', async function(req, res) {
 router.post('/page/complete', PageController.createPage);
 
 // Labs
-router.get('/lab', LabController.getAllLabs);
-router.get('/lab:labID/shortname', LabController.getLabShortName);
-router.get('/lab:labID/about', LabController.getLabAbout);
-router.get('/lab:labID/reading', LabController.getLabReading);
-router.get('/lab:labID/reinforcement', LabController.getLabReinforcement);
-router.get('/lab:labID/quiz', LabController.getLabQuiz);
+router.get('/lab', async function(req, res) {
+  LabController.getAllLabs(req, res);
+});
+router.get('/lab:labID/shortname', async function(req, res) {
+  LabController.getLabShortNameController(req, res);
+});
+router.get('/lab:labID/about', async function(req, res) {
+  LabController.getLabAbout(req, res);
+});
+router.get('/lab:labID/reading', async function(req, res) {
+  LabController.getLabReading(req, res);
+});
+router.get('/lab:labID/reinforcement', async function(req, res) {
+  LabController.getLabReinforcement(req, res);
+});
+router.get('/lab:labID/quiz', async function(req, res) {
+  LabController.getLabQuiz(req, res);
+});
 
 // Team
 router.get('/teammember', TeamMemberController.getAllTeamMembers);
