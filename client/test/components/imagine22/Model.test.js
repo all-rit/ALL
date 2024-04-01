@@ -67,6 +67,7 @@ test("Horizontal Testing", () => {
   makeMove(horizontal, Players[1].piece, 0, 1);
   makeMove(horizontal, Players[1].piece, 1, 1);
   makeMove(horizontal, Players[1].piece, 2, 1);
+
   expect(checkWinner(horizontal)).toStrictEqual(HWinOutPut);
 });
 
