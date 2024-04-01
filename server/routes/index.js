@@ -168,22 +168,22 @@ router.post('/page/complete', PageController.createPage);
 
 // Labs
 router.get('/lab', async function(req, res) {
-  LabController.getAllLabs(req, res);
+  await LabController.getAllLabsController(req, res);
 });
 router.get('/lab:labID/shortname', async function(req, res) {
-  LabController.getLabShortNameController(req, res);
+  await LabController.getLabShortNameController(req, res);
 });
 router.get('/lab:labID/about', async function(req, res) {
-  LabController.getLabAbout(req, res);
+  await LabController.getLabAboutController(req, res);
 });
 router.get('/lab:labID/reading', async function(req, res) {
-  LabController.getLabReading(req, res);
+  await LabController.getLabReadingController(req, res);
 });
 router.get('/lab:labID/reinforcement', async function(req, res) {
-  LabController.getLabReinforcement(req, res);
+  await LabController.getLabReinforcementController(req, res);
 });
 router.get('/lab:labID/quiz', async function(req, res) {
-  LabController.getLabQuiz(req, res);
+  await LabController.getLabQuizController(req, res);
 });
 
 // Team

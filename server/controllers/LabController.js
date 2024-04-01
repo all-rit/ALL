@@ -8,7 +8,7 @@ const LabService = require('../services/LabService');
 async function getAllLabsController(req, res) {
   try {
     const labs = await LabService.getAllLabs();
-    res.json(labs);
+    return await res.send(JSON.stringify(labs));
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Labs'});
@@ -23,7 +23,7 @@ async function getLabShortNameController(req, res) {
   try {
     const {labID} = req.params;
     const shortName = await LabService.getLabShortName(labID);
-    res.json(shortName);
+    return res.json(shortName);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Short Name'});
@@ -38,7 +38,7 @@ async function getLabAboutController(req, res) {
   try {
     const {labID} = req.params;
     const about = await LabService.getLabAbout(labID);
-    res.json(about);
+    return res.json(about);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find About'});
@@ -53,7 +53,7 @@ async function getLabReadingController(req, res) {
   try {
     const {labID} = req.params;
     const reading = await LabService.getLabReading(labID);
-    res.json(reading);
+    return res.send(JSON.stringify(reading));
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Reading'});
@@ -68,7 +68,7 @@ async function getLabReinforcementController(req, res) {
   try {
     const {labID} = req.params;
     const reinforcement = await LabService.getLabReinforcement(labID);
-    res.json(reinforcement);
+    return res.send(JSON.stringify(reinforcement));
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Reinforcement'});
@@ -82,8 +82,8 @@ async function getLabReinforcementController(req, res) {
 async function getLabQuizController(req, res) {
   try {
     const {labID} = req.params;
-    const quiz = await LabService.getLabQuiz(labID);
-    res.json(quiz);
+    const quiz = LabService.getLabQuiz(labID);
+    return res.send(JSON.stringify(quiz));
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Quiz'});

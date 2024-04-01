@@ -2,11 +2,11 @@
 const db = require('../database');
 
 /**
- * getAllLabs(): Get all labs and information.
- * @return {Array<Object>} list of Objects for each of the labs
+ * getAllLabs(): Get all Labs and information.
+ * @return {Array<Object>} list of Objects for each of the Labs
  */
 async function getAllLabs() {
-  return await db.labs.findAll({
+  return await db.Labs.findAll({
     raw: true,
   });
 };
@@ -17,12 +17,12 @@ async function getAllLabs() {
  */
 async function getLabShortName(labID) {
   try {
-    const shortName = await db.labs.findOne({
+    const shortName = await db.Labs.findOne({
       where: {id: labID},
       attributes: ['labShortName'],
       raw: true,
     });
-    return shortName.labShortName;
+    return shortName;
   } catch (error) {
     console.error(error);
     return 'Error: Short Name Not Found';
@@ -35,12 +35,12 @@ async function getLabShortName(labID) {
  */
 async function getLabAbout(labID) {
   try {
-    const about = await db.labs.findOne({
+    const about = await db.Labs.findOne({
       where: {id: labID},
       attributes: ['about'],
       raw: true,
     });
-    return about.about;
+    return about;
   } catch (error) {
     console.error(error);
     return 'Error: About Not Found';
@@ -53,12 +53,12 @@ async function getLabAbout(labID) {
  */
 async function getLabReading(labID) {
   try {
-    const reading = await db.labs.findOne({
+    const reading = await db.Labs.findOne({
       where: {id: labID},
       attributes: ['reading'],
       raw: true,
     });
-    return reading.reading;
+    return reading;
   } catch (error) {
     console.error(error);
     return 'Error: Reading Not Found';
@@ -71,12 +71,12 @@ async function getLabReading(labID) {
  */
 async function getLabReinforcement(labID) {
   try {
-    const reinforcement = await db.labs.findOne({
+    const reinforcement = await db.Labs.findOne({
       where: {id: labID},
       attributes: ['reinforcement'],
       raw: true,
     });
-    return reinforcement.reinforcement;
+    return reinforcement;
   } catch (error) {
     console.error(error);
     return 'Error: Reinforcement Not Found';
@@ -89,12 +89,12 @@ async function getLabReinforcement(labID) {
  */
 async function getLabQuiz(labID) {
   try {
-    const quiz = await db.labs.findOne({
+    const quiz = await db.Labs.findOne({
       where: {id: labID},
       attributes: ['quiz'],
       raw: true,
     });
-    return quiz.quiz;
+    return quiz;
   } catch (error) {
     console.error(error);
     return 'Error: Quiz Not Found';
