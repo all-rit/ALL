@@ -32,7 +32,7 @@ function Result(props) {
       counter += 1;
       if (props.quizQuestions[counter - 1].multiChoice) {
         const isMultiCorrect = Array.from(
-          props.selectedAnswers[counter - 1]
+          props.selectedAnswers[counter - 1],
         ).map((element) => {
           return checkIfCorrect(element, counter - 1);
         });
@@ -48,7 +48,7 @@ function Result(props) {
       } else {
         isCorrect = checkIfCorrect(
           props.selectedAnswers[counter - 1].type,
-          index
+          index,
         );
       }
       return (
@@ -61,7 +61,7 @@ function Result(props) {
           <td className={"column-width"}>
             {renderTableSelectedAnswersData(
               props.selectedAnswers[counter - 1],
-              answers
+              answers,
             )}
           </td>
           <td className={"column-width"}>
@@ -120,28 +120,30 @@ function Result(props) {
   }
 
   return (
-    <div className="quiz container shadow">
-      <div className="result">
-        Results <strong>Score: {props.quizResult}</strong>
-        <br />
-        <div>
-          <table id="quizResults">
-            <tbody>
-              <tr>
-                {/* {renderTableHeader()}*/}
-                <th>QUESTION</th>
-                <th>CORRECT ANSWERS</th>
-                <th>SELECTED ANSWERS</th>
-                <th>RESULTS</th>
-              </tr>
-              {renderTableData()}
-            </tbody>
-          </table>
-          {props.hideCertificate === false && (
-            <div style={{ marginTop: "50px" }}>
-              <Certificate quizResult={props.quizResult} lab={props.lab} />
-            </div>
-          )}
+    <div>
+      <div className="quiz container shadow">
+        <div className="result">
+          Results <strong>Score: {props.quizResult}</strong>
+          <br />
+          <div>
+            <table id="quizResults">
+              <tbody>
+                <tr>
+                  {/* {renderTableHeader()}*/}
+                  <th>QUESTION</th>
+                  <th>CORRECT ANSWERS</th>
+                  <th>SELECTED ANSWERS</th>
+                  <th>RESULTS</th>
+                </tr>
+                {renderTableData()}
+              </tbody>
+            </table>
+            {props.hideCertificate === false && (
+              <div style={{ marginTop: "50px" }}>
+                <Certificate quizResult={props.quizResult} lab={props.lab} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

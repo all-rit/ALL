@@ -3,8 +3,9 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
 import React, { Component } from "react";
-import { AppBar, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 // link to image: https://pixabay.com/vectors/cat-pet-animal-kitty-kitten-cute-6484941/
 // license: https://pixabay.com/service/license/
 import catImage from "../../../../../assets/images/lab3/exercise/cat.svg";
@@ -14,8 +15,8 @@ import carImage from "../../../../../assets/images/lab3/exercise/car.svg";
 // link to image: https://pixabay.com/vectors/hamburger-cheeseburger-fast-food-31775/
 // license: https://pixabay.com/service/license/
 import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.svg";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 import { PageService } from "../../../../../services/PageService";
@@ -31,7 +32,7 @@ class ProblemDiscovery extends Component {
     actions.updateState(EXERCISE_PLAYING);
     this.interval = setInterval(
       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000
+      1000,
     );
   }
   constructor(props) {
@@ -73,7 +74,7 @@ class ProblemDiscovery extends Component {
       <div>
         <AppBar position="static" className="appBar">
           <Toolbar>
-            <Grid justify="center" container spacing={10}>
+            <Grid justifyContent="center" container spacing={10}>
               <Grid item>
                 <Typography
                   variant={"h4"}
@@ -97,7 +98,7 @@ class ProblemDiscovery extends Component {
           onFocus={(e) =>
             textToSpeech(
               e,
-              "Can you find the accessibility issues with this page? Try using your screenreader."
+              "Can you find the accessibility issues with this page? Try using your screenreader.",
             )
           }
         >
@@ -113,7 +114,7 @@ class ProblemDiscovery extends Component {
           onFocus={(e) =>
             textToSpeech(
               e,
-              "Write down the problems on a notepad or any other text editor. Go ahead take a guess. Don't actually click on the Ok and Cancel buttons. They are there for the example."
+              "Write down the problems on a notepad or any other text editor. Go ahead take a guess. Don't actually click on the Ok and Cancel buttons. They are there for the example.",
             )
           }
         >

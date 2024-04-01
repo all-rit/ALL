@@ -36,7 +36,7 @@ const Routes = (props) => {
           <a href="/#contact">Contact</a>
         </li>
       </ul>
-    </div>
+    </div>,
   );
   for (let i = 1; i < 12; i++) {
     routeItems.push(
@@ -73,7 +73,7 @@ const Routes = (props) => {
             </a>
           </li>
         </ul>
-      </div>
+      </div>,
     );
   }
   return routeItems;

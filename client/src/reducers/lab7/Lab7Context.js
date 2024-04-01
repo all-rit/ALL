@@ -64,7 +64,7 @@ const useLab7StateContext = () => {
 
   if (context === undefined) {
     throw new Error(
-      "useLab7StateContext must be used within Lab7ContextProvider"
+      "useLab7StateContext must be used within Lab7ContextProvider",
     );
   }
 
@@ -78,15 +78,15 @@ const useLab7StateContext = () => {
 const Lab7ContextProvider = ({ children }) => {
   const [appState, appDispatch] = useReducer(
     Lab7AppReducer,
-    Lab7AppInititalState
+    Lab7AppInititalState,
   );
   const [repairState, repairDispatch] = useReducer(
     Lab7RepairReducer,
-    Lab7RepairInititalState
+    Lab7RepairInititalState,
   );
   const [exerciseState, exerciseDispatch] = useReducer(
     Lab7ExerciseReducer,
-    Lab7ExerciseInititalState
+    Lab7ExerciseInititalState,
   );
 
   const appActions = {

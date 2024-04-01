@@ -57,7 +57,7 @@ const AIExplanationCodeBlock = (props) => {
                 <div
                   className={twMerge(
                     "code_editor__line",
-                    isHeaviest && "code_editor__line-background--light tw-m-0"
+                    isHeaviest && "code_editor__line-background--light tw-m-0",
                   )}
                 >
                   <div className={"tw-inline-flex"}>
@@ -84,7 +84,7 @@ const AIExplanationCodeBlock = (props) => {
                 <div
                   className={twMerge(
                     "code_editor__line",
-                    isHeaviest && "code_editor__line-background--light tw-m-0"
+                    isHeaviest && "code_editor__line-background--light tw-m-0",
                   )}
                 >
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -101,7 +101,7 @@ const AIExplanationCodeBlock = (props) => {
                 <div
                   className={twMerge(
                     "code_editor__line",
-                    isHeaviest && "code_editor__line-background--light tw-m-0"
+                    isHeaviest && "code_editor__line-background--light tw-m-0",
                   )}
                 >
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -116,7 +116,7 @@ const AIExplanationCodeBlock = (props) => {
                 <div
                   className={twMerge(
                     "code_editor__line",
-                    isHeaviest && "code_editor__line-background--light tw-m-0"
+                    isHeaviest && "code_editor__line-background--light tw-m-0",
                   )}
                 >
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -145,12 +145,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
       { ...repairActions, ...exerciseActions },
-      dispatch
+      dispatch,
     ),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AIExplanationCodeBlock);

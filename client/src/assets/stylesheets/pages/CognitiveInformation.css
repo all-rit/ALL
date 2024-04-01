@@ -22,7 +22,9 @@
 }
 
 .cognitive_information .inaccessible {
-  font-family: Brush Script MT, cursive;
+  font-family:
+    Brush Script MT,
+    cursive;
 }
 
 .cognitive_information ul li {
