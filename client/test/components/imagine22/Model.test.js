@@ -67,7 +67,6 @@ test("Horizontal Testing", () => {
   makeMove(horizontal, Players[1].piece, 0, 1);
   makeMove(horizontal, Players[1].piece, 1, 1);
   makeMove(horizontal, Players[1].piece, 2, 1);
-  console.log(horizontal);
   expect(checkWinner(horizontal)).toStrictEqual(HWinOutPut);
 });
 
@@ -92,7 +91,6 @@ test("Tie Condition", () => {
   makeMove(Tie, Players[1].piece, 0, 0);
   makeMove(Tie, Players[1].piece, 1, 0);
   makeMove(Tie, Players[0].piece, 2, 0);
-  console.log(Tie);
   expect(checkWinner(Tie)).toStrictEqual(outputTest);
 });
 
