@@ -67,7 +67,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -89,10 +89,12 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.34.1",
+    "jest": "^29.7.0",
     "lint-staged": "^15.2.2",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "react-google-button": "^0.7.2",
+    "react-test-renderer": "^18.2.0",
     "redux-devtools": "^3.7.0",
     "stylelint-config-prettier": "^9.0.5",
     "tailwindcss": "^3.4.1"
