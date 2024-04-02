@@ -1,16 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap");
 
+@font-face {
+  font-family: "Diploma";
+  src: url("../../fonts/diploma.ttf");
+}
+
 .fancy-text {
   font-family: "UnifrakturMaguntia", cursive;
   max-width: 70%;
-}
-
-.horizontal-bar-styling {
-  flex: 0 0 20%;
-  height: 2px;
-  background-color: black;
-}
-
-.diploma-name {
-  font-weight: bold;
 }
