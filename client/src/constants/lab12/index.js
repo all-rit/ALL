@@ -1,0 +1,7 @@
+const EXERCISE_SELECTION_DEFAULT = "selection";
+
+const EXERCISE_STATES = {
+  EXERCISE_SELECTION_DEFAULT,
+};
+
+export { EXERCISE_STATES };

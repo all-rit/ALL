@@ -2505,7 +2505,49 @@ to test your knowledge. Click "Next" to start!', e'{
         ]
 	}
 }', e'[{"title":"Web Accessibility Perspectives: Understandable Content","link": "https://www.youtube.com/embed/BYRxF2yInfA?si=KedpgpG7XE4TK8B5"},
-{"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', '[]', true);
+{"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', '[]', true),
+(12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab introduces the concept of identity in software', e'[
+    "LO1: Understand common areas of non-identity inclusive software",
+    "LO2: How to recognize non-identity inclusive  software",
+    "LO3: Demonstrate how to improve non-identity inclusive software."
+]', 'Domenic Mangano, Heather Moses', 'https://ball.rit.edu/Lab12/', null, 'About Page Paragraph', e'{
+  "piechart":{
+		"header":"Pie Chart Header",
+		"caption":["Pie Chart Caption"],
+		"data":{
+				"labels": [
+				  "Example", "Example", "Example", "Example", "Example"
+				],
+				"datasets": [
+					{
+					  "label": "Company investments, in billions",
+					  "borderColor": "black",
+					  "backgroundColor": ["#ffeb00","#ff2713","#09da4f","#9e8fe5","#d67b41","#86aedf"],
+					  "data": [30.7, 22.1, 10, 10, 17],
+					  "borderWidth": "1"
+					}
+				]
+		}
+	},
+	"description":{
+		"header":"What is Identity?",
+		"content":"Explanation of Identity and its importance in software."
+	},
+	"body":[{
+          "header":"",
+          "type":"",
+          "content":["Main Identity Reading Content"]
+       }
+    ],
+	"footer":{
+		"links":[
+			{
+				"name":"Example Link",
+				"link":"https://www.exampleLink.com/"
+			}
+		]
+	}
+}', '[{"title":"Example Video","link": "https://www.youtube.com/embed/bfmFfD2RIcg"},{"title":"Example Video","link": "https://www.youtube.com/embed/gV0_raKR2UQ"}]', '[]', true);
 
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
