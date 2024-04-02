@@ -69,7 +69,6 @@ const QuizHandler = (props) => {
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers,
   );
-  const [quizCompleted, setQuizCompleted] = useState(false);
   // initialized to a empty array to house recorded answers
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [disableNext, setDisableNext] = useState(true);
@@ -95,7 +94,7 @@ const QuizHandler = (props) => {
    */
   function onComplete() {
     scoreResults();
-    setQuizCompleted(true);
+    props.setQuizCompleted(true);
   }
 
   /**
@@ -250,7 +249,7 @@ const QuizHandler = (props) => {
 
   return (
     <>
-      {!quizCompleted ? (
+      {!props.quizCompleted ? (
         <Quiz
           answer={""}
           answerOptions={answerOption}
@@ -282,5 +281,7 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
+  quizCompleted: PropTypes.boolean,
+  setQuizCompleted: PropTypes.func,
 };
 export default QuizHandler;

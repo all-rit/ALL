@@ -155,8 +155,9 @@ const aIMove = (GameInfo) => {
   return GameState;
 };
 
-export default {
+export {
   makeMove,
+  check3InARow,
   createNewBoard,
   Players,
   checkWinner,
