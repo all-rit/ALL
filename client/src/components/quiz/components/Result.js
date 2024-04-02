@@ -120,28 +120,30 @@ function Result(props) {
   }
 
   return (
-    <div className="quiz container shadow">
-      <div className="result">
-        Results <strong>Score: {props.quizResult}</strong>
-        <br />
-        <div>
-          <table id="quizResults">
-            <tbody>
-              <tr>
-                {/* {renderTableHeader()}*/}
-                <th>QUESTION</th>
-                <th>CORRECT ANSWERS</th>
-                <th>SELECTED ANSWERS</th>
-                <th>RESULTS</th>
-              </tr>
-              {renderTableData()}
-            </tbody>
-          </table>
-          {props.hideCertificate === false && (
-            <div style={{ marginTop: "50px" }}>
-              <Certificate quizResult={props.quizResult} lab={props.lab} />
-            </div>
-          )}
+    <div>
+      <div className="quiz container shadow">
+        <div className="result">
+          Results <strong>Score: {props.quizResult}</strong>
+          <br />
+          <div>
+            <table id="quizResults">
+              <tbody>
+                <tr>
+                  {/* {renderTableHeader()}*/}
+                  <th>QUESTION</th>
+                  <th>CORRECT ANSWERS</th>
+                  <th>SELECTED ANSWERS</th>
+                  <th>RESULTS</th>
+                </tr>
+                {renderTableData()}
+              </tbody>
+            </table>
+            {props.hideCertificate === false && (
+              <div style={{ marginTop: "50px" }}>
+                <Certificate quizResult={props.quizResult} lab={props.lab} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

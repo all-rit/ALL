@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
 import { default as About } from "./components/body/About";
@@ -75,6 +75,8 @@ const App = () => {
   const { state, actions } = context;
   const lab = state.main.lab;
   const body = state.main.body;
+  const [quizCompleted, setQuizCompleted] = useState(false);
+
   // look into index.js in constants
   initializeReactGA();
   return (
@@ -133,11 +135,17 @@ const App = () => {
                 isFinalQuiz
                 hideCertificate={false}
                 submitData={() => {}}
+                quizCompleted={quizCompleted}
+                setQuizCompleted={setQuizCompleted}
               />
             </Router>
           </div>
         </div>
-        <Change context={context} />
+        <Change
+          context={context}
+          quizCompleted={quizCompleted}
+          setQuizCompleted={setQuizCompleted}
+        />
       </div>
     </>
   );
