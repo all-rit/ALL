@@ -1720,13 +1720,13 @@ to test your knowledge. Click "Next" to start!', e'{
     {
 			"type":"ordered-list",
 			"content": [
-        "Human Rights", 
-        "Well-being", 
-        "Data Agency", 
-        "Effectiveness", 
-        "Transparency", 
-        "Accountability", 
-        "Awareness of Misuse", 
+        "Human Rights",
+        "Well-being",
+        "Data Agency",
+        "Effectiveness",
+        "Transparency",
+        "Accountability",
+        "Awareness of Misuse",
         "Competence"
       ]
 		},
@@ -2250,7 +2250,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content":["Localization is the process whereby the software, documentation, and user interface are adapted to suit the needs of different world markets and user segments, or what is known as a locale. As software engineers, the process that prepares software and digital content for subsequent localization, designing products from the ground up to support various languages and cultural norms without the need for redesign, is known as internationalization."]
         },
 		{
-            "header": "Examples of Localization Challenges", 
+            "header": "Examples of Localization Challenges",
             "type": "study__list",
             "content": ["Cultural Significance of Numbers: The number 13 is unlucky in the U.S. but lucky in Italy. This impacts product design and marketing strategies.","Content Adaptation for Cultural Relevance: The movie ‘Inside Out’ changed Riley’s disliked food from broccoli (U.S. version) to green peppers (Japanese version) to maintain cultural relatability.","Color Symbolism: White signifies purity in the West but mourning in many Asian cultures. This influences design and branding.","Date/Time Formats: The U.S. uses mm/dd/yy, Europe uses dd/mm/yy, and Japan uses yy/mm/dd. This is crucial for software interfaces and documentation.","Number Punctuation: In the United States, large numbers are separated with commas and decimals are separated with a period (e.g. 1,234.56), while in places like France, numbers the way these commas and periods are used is swapped (e.g. 1.234,56). Key for accuracy in financial transactions and data interpretation."]},
 		{
@@ -2460,7 +2460,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content":["According to the UI/UX research and consulting firm Nielsen Norman Group, the primary considerations when creating impactful web content are"]
         },
 		{
-            "header": "", 
+            "header": "",
             "type": "study__list",
             "content": ["Legibility: This refers to the visual design and typography\'s clarity.", "Readability: This concerns the level of complexity in words and sentence structures.", "Comprehension: Easy to understand and draw valid conclusions."]
         },
@@ -2510,7 +2510,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "LO1: Understand common areas of non-identity inclusive software",
     "LO2: How to recognize non-identity inclusive  software",
     "LO3: Demonstrate how to improve non-identity inclusive software."
-]', 'Domenic Mangano, Heather Moses', 'https://ball.rit.edu/Lab12/', null, 'About Page Paragraph', e'{
+]', 'Domenic Mangano, Heather Moses', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than Male or Female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click “next” to start!', e'{
   "piechart":{
 		"header":"Pie Chart Header",
 		"caption":["Pie Chart Caption"],
