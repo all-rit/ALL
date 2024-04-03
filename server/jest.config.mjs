@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config({
   path: '.env',
 });
+dotenv.config({path: '.test.env'});
 /** @type {import('jest').Config} */
 
 const config = {

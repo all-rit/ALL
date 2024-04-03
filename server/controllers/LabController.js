@@ -8,7 +8,7 @@ const LabService = require('../services/LabService');
 async function getAllLabsController(req, res) {
   try {
     const labs = await LabService.getAllLabs();
-    return await res.send(JSON.stringify(labs));
+    return await res.json(labs);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Labs'});
