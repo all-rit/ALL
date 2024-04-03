@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from "react";
-import Logo from "../../assets/images/logos/NewALLLogo.png";
+import Logo from "../../assets/images/logos/FinalALLLogo.png";
 import "../../assets/stylesheets/components/Header.scss";
 import WelcomeMessage from "./helpers/WelcomeMessage";
 import { connect } from "react-redux";
@@ -92,14 +92,9 @@ const Header = (props) => {
       id="navHeader"
       dark
       expand="lg"
-      className="labnav"
-      style={{
-        boxShadow: "inset 0 0 0 2000px rgba(61, 61, 61, 100)",
-        paddingTop: "1rem",
-        opacity: "100%",
-      }}
+      className="labnav tw-bg-labGray tw-pt-3 montserratNormal tw-font-bold"
     >
-      <div className="container">
+      <div className="container ">
         <a
           href="# "
           onClick={() =>
@@ -133,7 +128,7 @@ const Header = (props) => {
                       </ul>
                     </NavLink>
                   </NavItem>
-                  <NavItem onClick={closeNav} className="navbar-collapse">
+                  <NavItem onClick={closeNav} className="navbar-collapse ">
                     <NavLink
                       className="nav-link "
                       href="#labs "

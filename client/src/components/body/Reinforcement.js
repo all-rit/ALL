@@ -31,28 +31,36 @@ const Reinforcement = (props) => {
   return (
     <div>
       <div className="row">
-        <h4>Here is some supplemental material to reinforce the topic.</h4>
+        <h4 className="tw-font-bold">
+          Here is some supplemental material to reinforce the topic.
+        </h4>
       </div>
-      {reinforcement.map((data) => {
-        return (
-          <>
-            <div className="row">
-              <iframe
-                title={data.title}
-                width="560"
-                height="315"
-                src={data.link}
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+      <div className="tw-position-relative tw-bg-labYellow tw-rounded-3xl shadow">
+        {reinforcement.map((data) => {
+          return (
+            <div
+              className="tw-position-absolute tw-rounded-3xl shadow p-3 m-3 tw-bg-labLightGray questionContainer"
+              key={data.key}
+            >
+              <div className="row">
+                <p className="tw-font-bold">{data.title}</p>
+              </div>
+              <div className="row">
+                <iframe
+                  className="tw-rounded-xl"
+                  title={data.title}
+                  width="75%"
+                  height="400"
+                  src={data.link}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
             </div>
-            <div className="row">
-              <p>{data.title}</p>
-            </div>
-          </>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

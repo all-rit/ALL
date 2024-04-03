@@ -23,20 +23,22 @@ function Quiz(props) {
   }
 
   return (
-    <div className="tw-position-absolute p-3 shadow tw-rounded-3xl tw-bg-labYellow">
-      <div
-        className="quiz container tw-bg-labLightGray tw-rounded-3xl tw-translate-x-2 tw-translate-y-2"
-        key={props.questionId}
-      >
+    <div className="tw-position-relative shadow tw-rounded-3xl tw-bg-labYellow">
+      <div className="tw-position-absolute p-3 shadow bg-white tw-rounded-3xl questionContainer tw-bg-labLightGray">
         <QuestionCount counter={props.questionId} total={props.questionTotal} />
         <Question content={props.question} multi={props.multiChoice} />
+      </div>
+      <div
+        className="quiz container tw-position-absolute bg-white tw-rounded-3xl shadow questionContainer pt-1 mt-3  tw-bg-labLightGray"
+        key={props.questionId}
+      >
         <ul className="answerOptions">
           {props.answerOptions.map(renderAnswerOptions)}
         </ul>
         <div className="align-right">
           {props.questionId !== props.questionTotal ? (
             <button
-              className="btn btn-second text-uppercase  nextButton"
+              className="btn tw-bg-labBlue text-white text-uppercase mt-0 nextButton"
               onClick={props.nextQuestion}
               disabled={props.disable}
             >
@@ -44,7 +46,7 @@ function Quiz(props) {
             </button>
           ) : (
             <button
-              className="btn btn-second text-uppercase  nextButton"
+              className="btn btn-second text-uppercase mt-0 nextButton"
               onClick={props.onComplete}
               disabled={props.disable}
             >
