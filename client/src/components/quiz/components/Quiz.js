@@ -23,30 +23,35 @@ function Quiz(props) {
   }
 
   return (
-    <div className="quiz container shadow" key={props.questionId}>
-      <QuestionCount counter={props.questionId} total={props.questionTotal} />
-      <Question content={props.question} multi={props.multiChoice} />
-      <ul className="answerOptions">
-        {props.answerOptions.map(renderAnswerOptions)}
-      </ul>
-      <div className="align-right">
-        {props.questionId !== props.questionTotal ? (
-          <button
-            className="btn btn-second text-uppercase  nextButton"
-            onClick={props.nextQuestion}
-            disabled={props.disable}
-          >
-            Next Question
-          </button>
-        ) : (
-          <button
-            className="btn btn-second text-uppercase  nextButton"
-            onClick={props.onComplete}
-            disabled={props.disable}
-          >
-            Complete
-          </button>
-        )}
+    <div className="tw-position-absolute p-3 shadow tw-rounded-3xl tw-bg-labYellow">
+      <div
+        className="quiz container tw-bg-labLightGray tw-rounded-3xl tw-translate-x-2 tw-translate-y-2"
+        key={props.questionId}
+      >
+        <QuestionCount counter={props.questionId} total={props.questionTotal} />
+        <Question content={props.question} multi={props.multiChoice} />
+        <ul className="answerOptions">
+          {props.answerOptions.map(renderAnswerOptions)}
+        </ul>
+        <div className="align-right">
+          {props.questionId !== props.questionTotal ? (
+            <button
+              className="btn btn-second text-uppercase  nextButton"
+              onClick={props.nextQuestion}
+              disabled={props.disable}
+            >
+              Next Question
+            </button>
+          ) : (
+            <button
+              className="btn btn-second text-uppercase  nextButton"
+              onClick={props.onComplete}
+              disabled={props.disable}
+            >
+              Complete
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

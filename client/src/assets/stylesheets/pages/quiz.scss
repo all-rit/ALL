@@ -33,6 +33,8 @@
 
   .container {
     position: relative;
+    transform: translateX(50px);
+    transform: translateY(50px);
     max-width: 1000px;
     margin: 0 auto;
     border-radius: 3px;
@@ -168,9 +170,8 @@
 
   .radioCustomButton:checked ~ .radioCustomLabel:before {
     content: "";
-    background: #8bc53f no-repeat;
+    background: #0d28bc no-repeat;
     background-size: 27px;
-    border-color: #8bc53f;
   }
 
   .radioCustomButton:checked ~ .radioCustomButton:after {
@@ -186,7 +187,7 @@
 
   .homeButton {
     margin: 40px;
-    padding:15px;
+    padding: 15px;
     background-color: #3f51b5;
   }
 

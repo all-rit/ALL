@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from "react";
-import Logo from "../../assets/images/logos/ALL_Logo_Header.svg";
+import Logo from "../../assets/images/logos/NewALLLogo.png";
 import "../../assets/stylesheets/components/Header.scss";
 import WelcomeMessage from "./helpers/WelcomeMessage";
 import { connect } from "react-redux";
@@ -109,7 +109,7 @@ const Header = (props) => {
           }
         >
           <img
-            className="logo img-fluid tw-cursor-pointer"
+            className="logo tw-cursor-pointer"
             src={Logo}
             alt="Computing Accessibility"
           />
