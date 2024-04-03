@@ -23,7 +23,7 @@ async function getLabShortNameController(req, res) {
   try {
     const {labID} = req.params;
     const shortName = await LabService.getLabShortName(labID);
-    return res.json(shortName);
+    return res.json([shortName]);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Short Name'});
@@ -38,7 +38,7 @@ async function getLabAboutController(req, res) {
   try {
     const {labID} = req.params;
     const about = await LabService.getLabAbout(labID);
-    return res.json(about);
+    return res.json([about]);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find About'});
@@ -53,7 +53,7 @@ async function getLabReadingController(req, res) {
   try {
     const {labID} = req.params;
     const reading = await LabService.getLabReading(labID);
-    return res.send(JSON.stringify(reading));
+    return res.json([reading]);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Reading'});
@@ -68,7 +68,7 @@ async function getLabReinforcementController(req, res) {
   try {
     const {labID} = req.params;
     const reinforcement = await LabService.getLabReinforcement(labID);
-    return res.send(JSON.stringify(reinforcement));
+    return res.json([reinforcement]);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Reinforcement'});
@@ -83,7 +83,7 @@ async function getLabQuizController(req, res) {
   try {
     const {labID} = req.params;
     const quiz = LabService.getLabQuiz(labID);
-    return res.send(JSON.stringify(quiz));
+    return res.json([quiz]);
   } catch (error) {
     console.error(error);
     res.status(500).json({error: 'Error: Could Not Find Quiz'});
