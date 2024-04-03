@@ -92,9 +92,9 @@ const Header = (props) => {
       id="navHeader"
       dark
       expand="lg"
-      className="labnav tw-bg-labGray tw-pt-3 montserratNormal tw-font-bold"
+      className="labnav tw-bg-labGray tw-pt-3 poppins tw-font-bold"
     >
-      <div className="container ">
+      <div className="w-100 d-flex flex-row justify-content-center  ml-5 mr-5">
         <a
           href="# "
           onClick={() =>

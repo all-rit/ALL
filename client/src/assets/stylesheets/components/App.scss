@@ -1724,12 +1724,14 @@ hr.horiz {
   opacity: 0.5;
 }
 .next {
-  background-color: #fed136;
-  border-color: #fed136;
+  // background-color: #fed136;
+  // border-color: #fed136;
   color: #404040;
   float: right;
-  padding: 8px !important;
+  padding: 15px !important;
   margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   &:disabled {
     background-color: lightgrey !important;
     border-color: lightgrey !important;
@@ -1738,12 +1740,14 @@ hr.horiz {
   }
 }
 .back {
-  background-color: #404040;
-  border-color: #404040;
-  color: white;
+  // background-color: #404040;
+  // border-color: #404040;
+  color: black;
   float: left;
-  padding: 8px !important;
+  padding: 15px !important;
   margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .hidden {
   display: none;
@@ -1907,4 +1911,24 @@ body {
 .montserratNormal {
   font-family: "Montserrat", sans-serif !important;
   font-weight: 600;
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.blueFooterLine {
+  transform: translate(40%, 140%);
+  height: 15px;
+  border-radius: 25px;
+  width: 60%;
+  z-index: -4;
+}
+
+.yellowFooterLine {
+  transform: translate(20%, 200%);
+  height: 15px;
+  border-radius: 25px;
+  width: 60%;
+  z-index: -5;
 }

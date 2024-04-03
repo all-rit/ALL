@@ -20,10 +20,13 @@ const Header = (props) => {
             <span className="tw-absolute tw-top-16 blueHeaderLine tw-bg-labBlue"></span>
           </div>
           <div className="tw-bg-labLightGray tw-rounded-3xl d-flex flex-column align-items-center m-3 p-2 tw-w-8/12 bodyHeader shadow">
-            <h2 className="section-heading mt-2">
+            <h2 className="section-heading mt-2 poppins">
               {labShortName}: {body}
             </h2>
-            <h5 className="mt-1 mb-3"> Accessible Learning Labs</h5>
+            <h5 className="mt-1 mb-3 montserratNormal">
+              {" "}
+              Accessible Learning Labs
+            </h5>
           </div>
         </div>
       ) : (

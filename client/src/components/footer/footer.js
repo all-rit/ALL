@@ -171,11 +171,13 @@ class Footer extends Component {
       <>
         <div className="footer">
           <div
-            className="container"
+            className="tw-relative ml-5 mr-5 mb-5"
             style={{ display: display ? "block" : "none" }}
           >
+            <span className="tw-absolute bottom blueFooterLine tw-bg-labBlue"></span>
+            <span className="tw-absolute yellowFooterLine tw-bg-labYellow"></span>
             <button
-              className="btn btn-second btn-xl text-uppercase  back "
+              className="btn tw-bg-labLightGray btn-xl text-uppercase back "
               onClick={() => handleRedirect(actions, lab, body - 1)}
               style={{
                 display:
@@ -191,7 +193,7 @@ class Footer extends Component {
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
-                className="btn btn-primary btn-xl text-uppercase  next"
+                className="btn tw-bg-labLightGray btn-xl text-uppercase next"
                 onClick={this.navigateHome}
                 style={{
                   display:
@@ -203,21 +205,23 @@ class Footer extends Component {
                 Return to Home
               </button>
             ) : (
-              <button
-                className="btn btn-primary btn-xl text-uppercase  next"
-                onClick={() => handleRedirect(actions, lab, body + 1)}
-                style={{
-                  display:
-                    this.disappearNext(body) || hideOnLanding
-                      ? "none"
-                      : "block",
-                }}
-              >
-                Next -{" "}
-                {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
-                  ? Sections[lab][body + 1].name
-                  : ""}
-              </button>
+              <div>
+                <button
+                  className="btn tw-bg-labLightGray btn-xl text-uppercase next"
+                  onClick={() => handleRedirect(actions, lab, body + 1)}
+                  style={{
+                    display:
+                      this.disappearNext(body) || hideOnLanding
+                        ? "none"
+                        : "block",
+                  }}
+                >
+                  Next -{" "}
+                  {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
+                    ? Sections[lab][body + 1].name
+                    : ""}
+                </button>
+              </div>
             )}
 
             <div className="btn-change">
