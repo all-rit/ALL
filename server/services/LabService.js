@@ -1,5 +1,16 @@
 /* eslint-disable max-len */
 const db = require('../database');
+const shortNameNotFound = 'Error: Short Name Not Found';
+const shortNameNotRetrieved= 'Error: Short Name Not Retrieved';
+const aboutNotFound = 'Error: About Not Found';
+const aboutNotRetrieved = 'Error: About Not Retrieved';
+const readingNotFound = 'Error: Reading Not Found';
+const readingNotRetrieved = 'Error: Reading Not Retrieved';
+const reinforcementNotFound = 'Error: Reinforcement Not Found';
+const reinforcementNotRetrieved = 'Error: Reinforcement Not Retrieved';
+const quizNotFound = 'Error: Quiz Not Found';
+const quizNotRetrieved = 'Error: Quiz Not Retrieved';
+
 
 /**
  * getAllLabs(): Get all Labs and information.
@@ -22,10 +33,13 @@ async function getLabShortName(labID) {
       attributes: ['labShortName'],
       raw: true,
     });
+    if (!shortName) {
+      return shortNameNotFound;
+    }
     return shortName;
   } catch (error) {
     console.error(error);
-    return 'Error: Short Name Not Found';
+    return shortNameNotRetrieved;
   }
 };
 /**
@@ -40,10 +54,13 @@ async function getLabAbout(labID) {
       attributes: ['about'],
       raw: true,
     });
+    if (!about) {
+      return aboutNotFound;
+    }
     return about;
   } catch (error) {
     console.error(error);
-    return 'Error: About Not Found';
+    return aboutNotRetrieved;
   };
 };
 /**
@@ -58,10 +75,13 @@ async function getLabReading(labID) {
       attributes: ['reading'],
       raw: true,
     });
+    if (!reading) {
+      return readingNotFound;
+    }
     return reading;
   } catch (error) {
     console.error(error);
-    return 'Error: Reading Not Found';
+    return readingNotRetrieved;
   };
 };
 /**
@@ -76,10 +96,13 @@ async function getLabReinforcement(labID) {
       attributes: ['reinforcement'],
       raw: true,
     });
+    if (!reinforcement) {
+      return reinforcementNotFound;
+    }
     return reinforcement;
   } catch (error) {
     console.error(error);
-    return 'Error: Reinforcement Not Found';
+    return reinforcementNotRetrieved;
   }
 };
 /**
@@ -94,10 +117,13 @@ async function getLabQuiz(labID) {
       attributes: ['quiz'],
       raw: true,
     });
+    if (!quiz) {
+      return quizNotFound;
+    }
     return quiz;
   } catch (error) {
     console.error(error);
-    return 'Error: Quiz Not Found';
+    return quizNotRetrieved;
   }
 };
 
