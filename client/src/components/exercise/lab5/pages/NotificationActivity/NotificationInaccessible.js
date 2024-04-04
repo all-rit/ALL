@@ -18,7 +18,7 @@ class NotificationInaccessible extends Component {
   render() {
     const { actions } = this.props;
     return (
-      <div>
+      <div className="mb-5">
         <div className="cognitive_instructions">
           There is a notification that has appeared. Click on it to view it!
           Note: it can only be viewed once.

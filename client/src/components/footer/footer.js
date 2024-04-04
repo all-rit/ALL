@@ -296,7 +296,7 @@ class Footer extends Component {
             className="container"
             style={{ display: display || hideOnLanding ? "none" : "block" }}
           >
-            <div className="btn-information">
+            <div className="btn-information tw-mt-24">
               The previously available navigation and accessibility buttons are
               disabled until the exercise is complete.
             </div>
