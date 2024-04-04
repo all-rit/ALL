@@ -49,7 +49,10 @@
   #quizResults th {
     font-size: 16px;
     padding: 10px;
-    border: #ebebeb thin solid;
+    border-bottom: #ebebeb thin solid;
+    border-right: none;
+    border-left: none;
+    border-top: none;
   }
 
   #quizResults th {
@@ -57,4 +60,13 @@
     color: #ffffff;
     background-color: rgb(32, 45, 187);
   }
+}
+
+.resultTopLeft {
+  border-top-left-radius: 24px;
+}
+
+.resultTopRight {
+  border-top-right-radius: 24px !important;
+  border-top: none;
 }

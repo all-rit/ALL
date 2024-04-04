@@ -34,7 +34,7 @@ function Result(props) {
       counter += 1;
       if (props.quizQuestions[counter - 1].multiChoice) {
         const isMultiCorrect = Array.from(
-          props.selectedAnswers[counter - 1],
+          props.selectedAnswers[counter - 1]
         ).map((element) => {
           return checkIfCorrect(element, counter - 1);
         });
@@ -50,7 +50,7 @@ function Result(props) {
       } else {
         isCorrect = checkIfCorrect(
           props.selectedAnswers[counter - 1].type,
-          index,
+          index
         );
       }
       return (
@@ -58,15 +58,17 @@ function Result(props) {
           key={index}
           className={isCorrect ? "answer-correct" : "answer-wrong"}
         >
-          <td className={"column-width"}>{question}</td>
-          <td className={"column-width"}>{renderTableAnswersData(answers)}</td>
-          <td className={"column-width"}>
+          <td className={"column-width p-3"}>{question}</td>
+          <td className={"column-width p-3"}>
+            {renderTableAnswersData(answers)}
+          </td>
+          <td className={"column-width p-3"}>
             {renderTableSelectedAnswersData(
               props.selectedAnswers[counter - 1],
-              answers,
+              answers
             )}
           </td>
-          <td className={"column-width"}>
+          <td className={"column-width p-3"}>
             {isCorrect ? (
               <img src={GreenCheck} alt={"Correct"} />
             ) : (
@@ -81,7 +83,7 @@ function Result(props) {
   function renderTableAnswersData(answers) {
     let counter = 0;
     return (
-      <ul>
+      <ul className="tw-rounded-3xl">
         {answers.map(function (answer, index) {
           counter += 1;
           if (answer["val"] === 1) {
@@ -124,19 +126,23 @@ function Result(props) {
 
   return (
     <div className="tw-relative">
-      <div className="quiz container shadow p-3 tw-bg-labYellow tw-rounded-3xl">
-        <div className="result tw-bg-labLightGray tw-rounded-3xl">
-          Results <strong>Score: {props.quizResult}</strong>
-          <br />
+      <div className="quiz container shadow p-3 tw-bg-labYellow tw-rounded-3xl shadow">
+        <div className=" w-100 result tw-bg-labLightGray tw-rounded-2xl poppins mb-3 shadow">
+          <h1>
+            <strong>RESULTS</strong>
+          </h1>
+          <strong>Score: {props.quizResult}</strong>
+        </div>
+        <div className="result tw-bg-labLightGray p-3 tw-rounded-2xl poppins shadow">
           <div>
             <table id="quizResults" className="tw-bg-white tw-rounded-3xl">
               <tbody>
                 <tr>
                   {/* {renderTableHeader()}*/}
-                  <th>QUESTION</th>
+                  <th className="resultTopLeft">QUESTION</th>
                   <th>CORRECT ANSWERS</th>
                   <th>SELECTED ANSWERS</th>
-                  <th>RESULTS</th>
+                  <th className="resultTopRight p-3">RESULTS</th>
                 </tr>
                 {renderTableData()}
               </tbody>
