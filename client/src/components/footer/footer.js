@@ -170,12 +170,18 @@ class Footer extends Component {
     return (
       <>
         <div className="footer">
+          {hideOnLanding ? (
+            <></>
+          ) : (
+            <div>
+              <span className="tw-absolute bottom blueFooterLine tw-bg-labBlue"></span>
+              <span className="tw-absolute yellowFooterLine tw-bg-labYellow"></span>
+            </div>
+          )}
           <div
-            className="tw-relative ml-5 mr-5 mb-5"
+            className="tw-relative container"
             style={{ display: display ? "block" : "none" }}
           >
-            <span className="tw-absolute bottom blueFooterLine tw-bg-labBlue"></span>
-            <span className="tw-absolute yellowFooterLine tw-bg-labYellow"></span>
             <button
               className="btn tw-bg-labLightGray btn-xl text-uppercase back "
               onClick={() => handleRedirect(actions, lab, body - 1)}

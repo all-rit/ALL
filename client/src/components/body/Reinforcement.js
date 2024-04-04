@@ -47,7 +47,7 @@ const Reinforcement = (props) => {
               </div>
               <div className="row">
                 <iframe
-                  className="tw-rounded-xl"
+                  className="tw-rounded-4xl"
                   title={data.title}
                   width="75%"
                   height="400"

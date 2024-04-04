@@ -33,7 +33,7 @@
   /* Result Table */
   #title {
     text-align: left;
-    font-family: arial, sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   #quizResults {
@@ -42,30 +42,19 @@
       "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
     border-collapse: collapse;
-    border: 1px solid #6c757d;
     width: 100%;
   }
 
   #quizResults td,
   #quizResults th {
-    border: 1px solid #6c757d;
     font-size: 16px;
     padding: 10px;
+    border: #ebebeb thin solid;
   }
 
   #quizResults th {
     text-align: center;
-    color: #fed136;
-    background-color: rgb(72, 72, 72);
-  }
-
-  .answer-wrong {
-    color: #fff562;
-    background-color: #a05c62;
-  }
-
-  .answer-correct {
-    color: #0c3515;
-    background-color: #a1ffb7;
+    color: #ffffff;
+    background-color: rgb(32, 45, 187);
   }
 }

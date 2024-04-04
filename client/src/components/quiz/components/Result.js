@@ -4,6 +4,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Certificate from "./Certificate";
+import RedX from "../../../assets/images/RedX.png";
+import GreenCheck from "../../../assets/images/GreenCheck.webp";
 
 function Result(props) {
   function checkIfCorrect(answerIndex, questionIndex) {
@@ -65,7 +67,11 @@ function Result(props) {
             )}
           </td>
           <td className={"column-width"}>
-            {isCorrect ? "Correct" : "Not Correct"}
+            {isCorrect ? (
+              <img src={GreenCheck} alt={"Correct"} />
+            ) : (
+              <img src={RedX} alt="Incorrect" />
+            )}
           </td>
         </tr>
       );
@@ -82,7 +88,6 @@ function Result(props) {
             return (
               <li key={index}>
                 {counter}. {answer["content"]}
-                <hr />
               </li>
             );
           } else {
@@ -101,7 +106,6 @@ function Result(props) {
           <ul>
             <li key={questionNumber}>
               {questionNumber}. {answers[answer]["content"]}
-              <hr />
             </li>
           </ul>
         );
@@ -112,7 +116,6 @@ function Result(props) {
         <ul>
           <li key={questionNumber}>
             {questionNumber}. {answers[selectedAnswers.type]["content"]}
-            <hr />
           </li>
         </ul>
       );
@@ -120,13 +123,13 @@ function Result(props) {
   }
 
   return (
-    <div>
-      <div className="quiz container shadow">
-        <div className="result">
+    <div className="tw-relative">
+      <div className="quiz container shadow p-3 tw-bg-labYellow tw-rounded-3xl">
+        <div className="result tw-bg-labLightGray tw-rounded-3xl">
           Results <strong>Score: {props.quizResult}</strong>
           <br />
           <div>
-            <table id="quizResults">
+            <table id="quizResults" className="tw-bg-white tw-rounded-3xl">
               <tbody>
                 <tr>
                   {/* {renderTableHeader()}*/}
