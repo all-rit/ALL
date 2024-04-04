@@ -71,7 +71,7 @@ async function getLabReinforcementController(req, res) {
     return res.json([reinforcement]);
   } catch (error) {
     console.error(error);
-    res.status(500).json({error: 'Error: Could Not Find Reinforcement'});
+    res.status(500).json({error: 'Error: Could not retrieve reinforcement'});
   }
 }
 /**
@@ -82,7 +82,7 @@ async function getLabReinforcementController(req, res) {
 async function getLabQuizController(req, res) {
   try {
     const {labID} = req.params;
-    const quiz = LabService.getLabQuiz(labID);
+    const quiz = await LabService.getLabQuiz(labID);
     return res.json([quiz]);
   } catch (error) {
     console.error(error);
