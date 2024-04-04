@@ -31,7 +31,7 @@ const Reinforcement = (props) => {
   return (
     <div>
       <div className="row">
-        <h4 className="tw-font-bold">
+        <h4 className="tw-font-bold tw-text-center pb-3">
           Here is some supplemental material to reinforce the topic.
         </h4>
       </div>
@@ -43,7 +43,7 @@ const Reinforcement = (props) => {
               key={data.key}
             >
               <div className="row">
-                <p className="tw-font-bold">{data.title}</p>
+                <h5 className="tw-font-bold poppins">{data.title}</h5>
               </div>
               <div className="row">
                 <iframe

@@ -174,8 +174,10 @@ class Footer extends Component {
             <></>
           ) : (
             <div>
-              <span className="tw-absolute bottom blueFooterLine tw-bg-labBlue"></span>
-              <span className="tw-absolute yellowFooterLine tw-bg-labYellow"></span>
+              <span className="tw-absolute bottom leftBlueFooterLine tw-bg-labBlue"></span>
+              <span className="tw-absolute bottom rightBlueFooterLine tw-bg-labBlue"></span>
+              <span className="tw-absolute leftYellowFooterLine tw-bg-labYellow"></span>
+              <span className="tw-absolute rightYellowFooterLine tw-bg-labYellow"></span>
             </div>
           )}
           <div

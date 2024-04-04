@@ -23,10 +23,7 @@ const Header = (props) => {
             <h2 className="section-heading mt-2 poppins">
               {labShortName}: {body}
             </h2>
-            <h5 className="mt-1 mb-3 montserratNormal">
-              {" "}
-              Accessible Learning Labs
-            </h5>
+            <h5 className="mt-1 mb-3 poppins"> Accessible Learning Labs</h5>
           </div>
         </div>
       ) : (
