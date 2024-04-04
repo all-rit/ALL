@@ -18,8 +18,8 @@ function formatRequest(req) {
  */
 function formatResponse() {
   return {
-    json: async (data) => {
-      return await JSON.stringify(data);
+    json: (data) => {
+      return JSON.stringify(data);
     },
     send: (data) => {
       return data;
