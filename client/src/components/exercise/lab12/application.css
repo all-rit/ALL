@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400");
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+
+/* application.css */
+
+.module__app {
+    font-family: 'Open Sans';
+    margin: 30px;
+    position: relative;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    justify-content: left;
+    border-radius: 20px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    width: calc(50vw - 40px);
+    /* fraction of the screen's width minus margin */
+    height: calc(95vh - 40px);
+    /* fraction of the screen's height minus margin */
+}
+
+@media (max-width: 990px) {
+    .module__app {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        min-width: 450px;
+        max-width: 480px;
+    }
+}
+
+.aligned_form {
+    display: grid;
+
+    grid-template-columns: auto-fill, minmax(160px, 1fr);
+    grid-column-gap: 20px;
+    grid-template-rows: repeat(8 30px);
+    gap: 16px;
+}
+
+.item_a {
+    grid-column: 1 / span 2;
+    /* Spans both columns */
+    grid-row: 1;
+    /* First row */
+}
+
+.item_b {
+    grid-column: 1 / span 2;
+    /* Spans both columns */
+    grid-row: 5;
+    /* Fifth row */
+}
+
+.form-error {
+    color: #fb3b3b;
+}
+
+.form-error-input {
+    border: 1px solid #fb3b3b !important;
+}
