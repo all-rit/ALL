@@ -9,6 +9,7 @@ module.exports = {
       xs: "320px",
       sm: "640px",
       md: "768px",
+      md2: "920px",
       lg: "1024px",
       xl: "1280px",
       xxl: "1600px",
@@ -37,6 +38,9 @@ module.exports = {
         "BlinkMacSystemFont",
       ],
     },
+    textColor: {
+      'error-red': '#dc2626',
+    },
     colors: {
       black: "#000000",
       white: "#FFFFFF",
@@ -44,7 +48,9 @@ module.exports = {
       bgdark: "#23022E",
       darkLine: "#868e96",
       labGray: "#F8F8F8",
+      submitGray: "#404040",
       labYellow: "#ffc334",
+      submitYellow: "#fed136",
       labGreen: "#7B7B7B",
       labBlue: "#0d28bc",
       darkGreen: "#0c3515",
@@ -57,6 +63,7 @@ module.exports = {
         144: "36rem",
       },
       borderRadius: {
+        "2.5xl": "20px",
         "4xl": "2rem",
       },
       backgroundImage: {
@@ -80,6 +87,9 @@ module.exports = {
             animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",
           },
         },
+      },
+      boxShadow: {
+        '2xl-top-bottom': '0 -6px 12px -6px rgba(0, 0, 0, 0.25), 0 6px 12px -6px rgba(0, 0, 0, 0.25)',
       },
       animation: {
         "reduced-bounce": `reducedBounce 2s linear infinite`,

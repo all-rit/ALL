@@ -1,21 +1,16 @@
 /* eslint-disable no-unused-vars */
 // import useMainStateContext from "src/reducers/MainContext";
 import React, { useState } from "react";
-// import Popup from "../../all-components/Popup";
-import './application.css';
 
 
 const Application = () => {
-  // const { actions, state } = useMainStateContext();
 
-  // const [popUpMessage, setPopUpMessage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [pronouns, setPronouns] = useState("");
   const [college, setCollege] = useState("");
   const [major, setMajor] = useState("");
   const [gradTerm, setGradTerm] = useState("");
-  // const [userError, setUserError] = useState(true);
 
   const [fNameErr, setFirstNameErr] = useState(false);
   const [lNameErr, setLastNameErr] = useState(false);
@@ -30,33 +25,45 @@ const Application = () => {
   const [collegeEmptyErr, setCollegeEmptyErr] = useState(false);
   const [majorEmptyErr, setMajorEmptyErr] = useState(false);
   const [gradTermEmptyErr, setGradTermEmptyErr] = useState(false);
-  // const popUpHandler = (message) => {
-  //   setPopUpMessage(message);
-  // };
 
   const validateInput = () => {
 
     let error = false;
+    setFirstNameEmptyErr(false);
+    setFirstNameErr(false);
+    setLastNameEmptyErr(false);
+    setLastNameErr(false);
+    setPronounsEmptyErr(false);
+    setPronounsErr(false);
+    setCollegeEmptyErr(false);
+    setCollegeErr(false);
+    setMajorEmptyErr(false);
+    setMajorErr(false);
+    setGradTermEmptyErr(false);
+    setGradTermErr(false);
 
-    // RegExp for special characters (anything except letters and whitespace)
-    const specialChar = new RegExp('[^A-Za-z\\s+]', 'g');
-    // RegExp for checking if there's at least one letter (uppercase or lowercase)
+    // RegExp catches on anything but white space
+    const hasCharacter = new RegExp('[\\S]');
     const hasLetter = new RegExp('[A-Za-z]');
 
-    if (specialChar.test(firstName)) {
+    // RegExp for special characters (anything except letters and whitespace));
+    const fnSpecialChar = new RegExp('[^A-Za-z\\s+]', 'g');
+    if (fnSpecialChar.test(firstName)) {
       error = true;
       setFirstNameErr(true);
     }
-    if (!hasLetter.test(firstName)) {
+    if (!hasCharacter.test(firstName)) {
       error = true;
       setFirstNameEmptyErr(true);
     }
 
-    if (specialChar.test(lastName)) {
+    // RegExp for special characters (anything except letters and whitespace));
+    const lnSpecialChar = new RegExp('[^A-Za-z\\s+]', 'g');
+    if (lnSpecialChar.test(lastName)) {
       error = true;
       setLastNameErr(true);
     }
-    if (!hasLetter.test(lastName)) {
+    if (!hasCharacter.test(lastName)) {
       error = true;
       setLastNameEmptyErr(true);
     }
@@ -66,25 +73,27 @@ const Application = () => {
       error = true;
       setPronounsErr(true);
     }
-    if (!hasLetter.test(pronouns)) {
+    if (!hasCharacter.test(pronouns)) {
       error = true;
       setPronounsEmptyErr(true);
     }
 
-    const cmReg = new RegExp('[^A-Za-z\\s+.]', 'g');;
-    if (cmReg.test(college)) {
+    const cReg = new RegExp('[^A-Za-z\\s+.]', 'g');
+    if (cReg.test(college)) {
       error = true;
       setCollegeErr(true);
     }
-    if (!hasLetter.test(college)) {
+    if (!hasCharacter.test(college) && !hasLetter.test(college)) {
       error = true;
       setCollegeEmptyErr(true);
     }
-    if (cmReg.test(major)) {
+
+    const mReg = new RegExp('[^A-Za-z\\s+.]', 'g');
+    if (mReg.test(major)) {
       error = true;
       setMajorErr(true);
     }
-    if (!hasLetter.test(major)) {
+    if (!hasCharacter.test(major) && !hasLetter.test(major)) {
       error = true;
       setMajorEmptyErr(true);
     }
@@ -94,17 +103,16 @@ const Application = () => {
       error = true;
       setGradTermErr(true);
     }
-    if (!hasLetter.test(gradTerm)) {
+    if (!hasCharacter.test(gradTerm)) {
       error = true;
       setGradTermEmptyErr(true);
     }
     // -------------------------------------------------
   };
-
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div className="tw-mt-10 tw-shadow-2xl-top-bottom tw-rounded-3xl tw-w-5/12 tw-h-full tw-p-10">
+        <div className="tw-mt-10 tw-shadow-2xl-top-bottom tw-rounded-3xl tw-min-w-72 tw-w-9/12 lg:tw-w-5/12 md:tw-w-7/12 tw-h-full tw-p-10">
           <h1 className="tw-text-3xl tw-font-bold tw-mb-8">Apply for Graduation at ALL University</h1>
           <div className="tw-text-left tw-p-6">
             <h2 className="tw-text-xl tw-font-semibold tw-mb-1.5">Personal Information: </h2>
@@ -116,10 +124,10 @@ const Application = () => {
                 }}
               />
               {fNameErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Invalid character used.</label>
               )}
               {fNameEmptyErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error: Empty</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Input required.</label>
               )}
             </div>
             <div className="tw-flex1 tw-mb-4">
@@ -130,10 +138,10 @@ const Application = () => {
                 }}
               />
               {lNameErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Invalid character used.</label>
               )}
               {lNameEmptyErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error: Empty</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Input required.</label>
               )}
             </div>
             <div className="tw-flex1 tw-mb-4">
@@ -144,10 +152,10 @@ const Application = () => {
                 }}
               />
               {pronounsErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Invalid character used.</label>
               )}
               {pronounsEmptyErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error: Empty</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Input required.</label>
               )}
             </div>
             <h3 className="tw-mt-10 tw-text-xl tw-font-semibold tw-mb-1.5">Academic Information: </h3>
@@ -159,10 +167,10 @@ const Application = () => {
                 }}
               />
               {collegeErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Invalid character used.</label>
               )}
               {collegeEmptyErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error: Empty</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Input required.</label>
               )}
             </div>
             <div className="tw-flex1 tw-mb-4">
@@ -173,10 +181,10 @@ const Application = () => {
                 }}
               />
               {majorErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Invalid character used.</label>
               )}
               {majorEmptyErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error: Empty</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Input required.</label>
               )}
             </div>
             <div className="tw-flex1 tw-mb-4">
@@ -187,14 +195,14 @@ const Application = () => {
                 }}
               />
               {gradTermErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Invalid character used.</label>
               )}
               {gradTermEmptyErr && (
-                <label className="tw-text-sm tw-pl-4 tw-italic">Error: Empty</label>
+                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">Error: Input required.</label>
               )}
             </div>
           </div>
-          <button className="tw-mt-8 btn-primary btn btn-md" onClick={() => { validateInput(); }}>
+          <button className="tw-text-error-red tw-mt-8 btn-primary btn btn-md" onClick={() => { validateInput(); }}>
             Submit Application
           </button>{" "}
         </div>
