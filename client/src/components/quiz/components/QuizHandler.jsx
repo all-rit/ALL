@@ -11,13 +11,14 @@ import QuestionsLab3 from "../api/Lab3/quizQuestions";
 import QuestionsLab4 from "../api/Lab4/quizQuestions";
 import QuestionsLab5 from "../api/Lab5/quizQuestions";
 import QuestionsLab6 from "../api/Lab6/quizQuestions";
-import QuestionsLab8 from "../api/Lab8/quizQuestions";
-import QuestionsLab11 from "../api/Lab11/quizQuestions";
-import QuestionsLab9 from "../api/Lab9/quizQuestions";
-import QuestionsLab10 from "../api/Lab10/quizQuestions";
-import UserLabService from "../../../services/UserLabService";
 import alterationQuizQuestions from "../api/Lab7/alterationQuizQuestions";
 import quizQuestionsLab7 from "../api/Lab7/quizQuestions";
+import QuestionsLab8 from "../api/Lab8/quizQuestions";
+import QuestionsLab9 from "../api/Lab9/quizQuestions";
+import QuestionsLab10 from "../api/Lab10/quizQuestions";
+import QuestionsLab11 from "../api/Lab11/quizQuestions";
+import QuestionsLab12 from "../api/Lab12/quizQuestions";
+import UserLabService from "../../../services/UserLabService";
 
 /**
  * assignQuizQuestions is a function that returns a given set
@@ -53,6 +54,8 @@ function assignQuizQuestions(labId, isFinalQuiz) {
       return QuestionsLab10;
     case 11:
       return QuestionsLab11;
+    case 12:
+      return QuestionsLab12;
     default:
       return [
         {
