@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
@@ -16,59 +16,12 @@ import QuestionsLab11 from "../api/Lab11/quizQuestions";
 import QuestionsLab9 from "../api/Lab9/quizQuestions";
 import QuestionsLab10 from "../api/Lab10/quizQuestions";
 import UserLabService from "../../../services/UserLabService";
+import labService from "src/services/LabService";
 import alterationQuizQuestions from "../api/Lab7/alterationQuizQuestions";
 import quizQuestionsLab7 from "../api/Lab7/quizQuestions";
+import { set } from "lodash";
 
-/**
- * assignQuizQuestions is a function that returns a given set
- * of quiz questions dependent on the labId passed
- * @param {integer} labId is passed to the function to determine
- * what questions to grab
- */
-function assignQuizQuestions(labId, isFinalQuiz) {
-  switch (labId) {
-    case 1:
-      return QuestionsLab1;
-    case 2:
-      return QuestionsLab2;
-    case 3:
-      return QuestionsLab3;
-    case 4:
-      return QuestionsLab4;
-    case 5:
-      return QuestionsLab5;
-    case 6:
-      return QuestionsLab6;
-    case 7:
-      if (!isFinalQuiz) {
-        return alterationQuizQuestions;
-      } else {
-        return quizQuestionsLab7;
-      }
-    case 8:
-      return QuestionsLab8;
-    case 9:
-      return QuestionsLab9;
-    case 10:
-      return QuestionsLab10;
-    case 11:
-      return QuestionsLab11;
-    default:
-      return [
-        {
-          question: "Default",
-          answers: [
-            {
-              val: 0,
-              type: "0",
-              content: "Default",
-            },
-          ],
-          multiChoice: false,
-        },
-      ];
-  }
-}
+//questions[currentQuestionCursor].answers,
 
 /**
  * QuizHandler is react component responsible for tracking users responses
@@ -79,16 +32,26 @@ function assignQuizQuestions(labId, isFinalQuiz) {
 const QuizHandler = (props) => {
   const [currentLabId, setCurrentLab] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState(
-    assignQuizQuestions(props.labId, props.isFinalQuiz),
-  );
-  const [answerOption, setAnswerOption] = useState(
-    questions[currentQuestionCursor].answers,
-  );
+  const [questions, setQuestions] = useState([]);
+  const [answerOption, setAnswerOption] = useState([]);
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
   let [result, setResult] = useState({});
+
+  useEffect(async () => {
+    const quiz = await getQuiz();
+    if (!props.isFinalQuiz) {
+      setQuestions(quiz.alterationQuizQuestions);
+    }
+    setQuestions(quiz.finalQuiz);
+    setAnswerOption(quiz.finalQuiz[currentQuestionCursor].answers);
+  }, []);
+
+  async function getQuiz() {
+    const response = await labService.getLabQuiz(props.labId);
+    return await JSON.parse(response);
+  }
 
   /**
    * HandleNext() is a function that is responsible for allowing the user to
@@ -289,6 +252,7 @@ const QuizHandler = (props) => {
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
           questionTotal={questions.length}
+          isFinalQuiz={props.isFinalQuiz}
         ></Quiz>
       ) : (
         <Result
