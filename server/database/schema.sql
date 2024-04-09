@@ -2543,7 +2543,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content": [
                 {
                     "name": "2023 LGBTQ+ Youth Report Survey",
-                    "links": "https://reports.hrc.org/2023-lgbtq-youth-report?_ga=2.167609654.968366084.1711659164-297823230.1711659164#gender-identity"
+                    "link": "https://reports.hrc.org/2023-lgbtq-youth-report?_ga=2.167609654.968366084.1711659164-297823230.1711659164#gender-identity"
                 }
             ]
         },
@@ -2573,11 +2573,11 @@ to test your knowledge. Click "Next" to start!', e'{
             "content": [
                 {
                     "name": "Fostering Inclusive Environments in the Workplace",
-                    "links": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx#:~:text=A%20model%20inclusion%20policy%20created,a%20court%2Dordered%20name%20change."
+                    "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx#:~:text=A%20model%20inclusion%20policy%20created,a%20court%2Dordered%20name%20change."
                 },
                 {
                     "name": "Using Preferred Names at Work",
-                    "links": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+                    "link": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
                 }
             ]
         },
