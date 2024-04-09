@@ -2595,7 +2595,8 @@ to test your knowledge. Click "Next" to start!', e'{
 			}
 		]
 	}
-}', '[{"title":"Example Video","link": "https://www.youtube.com/embed/bfmFfD2RIcg"},{"title":"Example Video","link": "https://www.youtube.com/embed/gV0_raKR2UQ"}]', '[]', true);
+}', 
+'[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use inclusive language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Inclusivity","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[]', true);
 
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
