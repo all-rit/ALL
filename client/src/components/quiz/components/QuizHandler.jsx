@@ -1,28 +1,9 @@
-/* eslint-disable no-unused-vars */
 import { React, useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
-
-// TODO: This Removed to add in service functionality
-import QuestionsLab1 from "../api/Lab1/quizQuestions";
-import QuestionsLab2 from "../api/Lab2/quizQuestions";
-import QuestionsLab3 from "../api/Lab3/quizQuestions";
-import QuestionsLab4 from "../api/Lab4/quizQuestions";
-import QuestionsLab5 from "../api/Lab5/quizQuestions";
-import QuestionsLab6 from "../api/Lab6/quizQuestions";
-import QuestionsLab8 from "../api/Lab8/quizQuestions";
-import QuestionsLab11 from "../api/Lab11/quizQuestions";
-import QuestionsLab9 from "../api/Lab9/quizQuestions";
-import QuestionsLab10 from "../api/Lab10/quizQuestions";
 import UserLabService from "../../../services/UserLabService";
 import labService from "src/services/LabService";
-import alterationQuizQuestions from "../api/Lab7/alterationQuizQuestions";
-import quizQuestionsLab7 from "../api/Lab7/quizQuestions";
-import { set } from "lodash";
-
-//questions[currentQuestionCursor].answers,
-
 /**
  * QuizHandler is react component responsible for tracking users responses
  * this will be the main handler to manage the state and logic for the new quiz component
@@ -40,6 +21,7 @@ const QuizHandler = (props) => {
   let [result, setResult] = useState({});
 
   useEffect(async () => {
+    setCurrentLab(props.labId);
     const quiz = await getQuiz();
     if (!props.isFinalQuiz) {
       setQuestions(quiz.alterationQuizQuestions);
