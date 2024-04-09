@@ -120,7 +120,8 @@ const Application = () => {
             <div className="tw-resize-x tw-flex1 tw-mb-4">
               <label className="tw-pr-8">Legal First Name:</label>
               <input
-                placeholder="Ex: Jane" className="tw-h-8 tw-w-full md:tw-w-6/12"
+                placeholder="Ex: Jane"
+                className="tw-h-8 tw-w-full sm:tw-w-6/12"
                 onChange={(e) => {
                   setFirstName(e.target.value);
                 }}
@@ -140,7 +141,8 @@ const Application = () => {
             <div className="tw-flex1 tw-mb-4">
               <label className="tw-pr-8">Legal Last Name:</label>
               <input
-                placeholder="Ex: Smith" className="tw-h-8 tw-w-full md:tw-w-6/12"
+                placeholder="Ex: Smith"
+                className="tw-h-8 tw-w-full sm:tw-w-6/12"
                 type="text"
                 onChange={(e) => {
                   setLastName(e.target.value);
@@ -161,7 +163,8 @@ const Application = () => {
             <div className="tw-flex1 tw-mb-4">
               <label className="tw-pr-8">Pronouns:</label>
               <input
-                placeholder="Ex: They/Them" className="tw-h-8 tw-w-full md:tw-w-6/12"
+                placeholder="Ex: They/Them"
+                className="tw-h-8 tw-w-full sm:tw-w-6/12"
                 type="text"
                 onChange={(e) => {
                   setPronouns(e.target.value);
@@ -185,7 +188,8 @@ const Application = () => {
             <div className="tw-flex1 tw-mb-4">
               <label className="tw-pr-8">College:</label>
               <input
-                placeholder="Ex: RIT" className="tw-h-8 tw-w-full md:tw-w-6/12"
+                placeholder="Ex: RIT"
+                className="tw-h-8 tw-w-full sm:tw-w-6/12"
                 type="text"
                 onChange={(e) => {
                   setCollege(e.target.value);
@@ -206,7 +210,8 @@ const Application = () => {
             <div className="tw-flex1 tw-mb-4">
               <label className="tw-pr-8">Major:</label>
               <input
-                placeholder="Ex: CS" className="tw-h-8 tw-w-full md:tw-w-6/12"
+                placeholder="Ex: CS"
+                className="tw-h-8 tw-w-full sm:tw-w-6/12"
                 type="text"
                 onChange={(e) => {
                   setMajor(e.target.value);
@@ -227,7 +232,8 @@ const Application = () => {
             <div className="tw-flex1 tw-mb-4">
               <label className="tw-pr-8">Graduation Term:</label>
               <input
-                placeholder="Ex: Spring 2024" className="tw-h-8 tw-w-full md:tw-w-6/12"
+                placeholder="Ex: Spring 2024"
+                className="tw-h-8 tw-w-full sm:tw-w-6/12"
                 type="text"
                 onChange={(e) => {
                   setGradTerm(e.target.value);
