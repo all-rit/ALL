@@ -117,7 +117,7 @@ const Application = () => {
             <h2 className="tw-text-xl tw-font-semibold tw-mb-1.5">
               Personal Information:{" "}
             </h2>
-            <div className="tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-4">
               <label className="tw-pr-8">Legal First Name:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
                 <input
@@ -128,30 +128,28 @@ const Application = () => {
                 />
                 {fNameErr && (
                   <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character used.
+                    Error: Invalid character.
                   </label>
                 )}
               </div>
-              {fNameEmptyErr && (
-                <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                  Error: Input required.
-                </label>
-              )}
             </div>
-            <div className="tw-flex tw-mb-4">
+            {fNameEmptyErr && (
+              <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                Error: Input required.
+              </label>
+            )}
+            <div className="sm:tw-flex tw-mb-4">
               <label className="tw-pr-8">Legal Last Name:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
                 <input
                   placeholder="Ex: Smith"
-                  type="text"
                   onChange={(e) => {
                     setLastName(e.target.value);
                   }}
                 />
-                <br />
                 {lNameErr && (
                   <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character used.
+                    Error: Invalid character.
                   </label>
                 )}
                 {lNameEmptyErr && (
@@ -161,20 +159,18 @@ const Application = () => {
                 )}
               </div>
             </div>
-            <div className="tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-4">
               <label className="tw-pr-8">Pronouns:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
                 <input
                   placeholder="Ex: They/Them"
-                  type="text"
                   onChange={(e) => {
                     setPronouns(e.target.value);
                   }}
                 />
-                <br />
                 {pronounsErr && (
                   <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character used.
+                    Error: Invalid character.
                   </label>
                 )}
                 {pronounsEmptyErr && (
@@ -187,20 +183,18 @@ const Application = () => {
             <h3 className="tw-mt-10 tw-text-xl tw-font-semibold tw-mb-1.5">
               Academic Information:{" "}
             </h3>
-            <div className="tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-4">
               <label className="tw-pr-8">College:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
                 <input
                   placeholder="Ex: RIT"
-                  type="text"
                   onChange={(e) => {
                     setCollege(e.target.value);
                   }}
                 />
-                <br />
                 {collegeErr && (
                   <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character used.
+                    Error: Invalid character.
                   </label>
                 )}
                 {collegeEmptyErr && (
@@ -210,20 +204,18 @@ const Application = () => {
                 )}
               </div>
             </div>
-            <div className="tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-4">
               <label className="tw-pr-8">Major:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
                 <input
                   placeholder="Ex: CS"
-                  type="text"
                   onChange={(e) => {
                     setMajor(e.target.value);
                   }}
                 />
-                <br />
                 {majorErr && (
                   <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character used.
+                    Error: Invalid character.
                   </label>
                 )}
                 {majorEmptyErr && (
@@ -233,20 +225,18 @@ const Application = () => {
                 )}
               </div>
             </div>
-            <div className="tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-4">
               <label className="tw-pr-8">Graduation Term:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
                 <input
                   placeholder="Ex: Spring 2024"
-                  type="text"
                   onChange={(e) => {
                     setGradTerm(e.target.value);
                   }}
                 />
-                <br />
                 {gradTermErr && (
                   <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character used.
+                    Error: Invalid character.
                   </label>
                 )}
                 {gradTermEmptyErr && (
@@ -267,7 +257,7 @@ const Application = () => {
           </button>{" "}
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
