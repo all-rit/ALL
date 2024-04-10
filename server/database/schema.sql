@@ -1,6 +1,3 @@
-CREATE USER all_dev WITH PASSWORD 'all_dev';
-GRANT ALL PRIVILEGES ON DATABASE testing TO all_dev;
-
 create table imagine22
 (
     id              serial,
@@ -1492,7 +1489,142 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
         ]
     }
   }
-  ', '[{"title":"Ethics & AI: Equal Access and Algorithmic Bias","link":"https://www.youtube.com/embed/tJQSyzBUAew"}, {"title":"Moral Code: The Ethics of AI","link":"https://www.youtube.com/embed/GboOXAjGevA"}]', '[]', true),
+  ','[{"title":"Ethics & AI: Equal Access and Algorithmic Bias","link":"https://www.youtube.com/embed/tJQSyzBUAew"},
+   {"title":"Moral Code: The Ethics of AI","link":"https://www.youtube.com/embed/GboOXAjGevA"}]',
+ e'[
+  {
+    "question": "What field can AI be used in?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Self-driving cars"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Chatbots"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Surveillance"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the Above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Does AI have an IQ?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Yes, AI is measured just like human intelligence."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "No, AI is measured differently than human intelligence."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "The computer science community is unsure."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Yes, but AI is not measured the same as human intelligence."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What manufacturing industry uses AI most frequently?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Monitoring Diagnostics"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Inventory Management"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Quality Control"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Customer Care"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How many facial images were captured illegally of people around the world by Clearview AI?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "3 Billion"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "4 Billion"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "5 Billion"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "6 Billion"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Who is responsible for the management of AI?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Corporations"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Government"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Society"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
+  }
+]
+',
+ true),
   (7, 'AI Cybersecurity', 'AI Cybersecurity', 'AI', '/aicybersecurity.jpg', 'Learn more about the basics of AI in cybersecurity.', 'This lab will provide participants with a fundamental understanding of the core aspects of autonomous systems through a cybersecurity lens, which is a significant area of application for AI and Machine Learning. To strengthen this understanding, the participant will progress through a simulation of an autonomous system that will modify the access of sensitive files when security threats are present in the system.', '["LO1: Recognize foundational components of a cybersecurity-focused autonomous system (Comprehension)", "LO2: Use provided elements to demonstrate basic cyber security-focused autonomous systems in action (Application)", "LO3: Compose a minor alteration to an existing cyber security-focused autonomous system and assess its impacts (Evaluation)", "LO4: Recognize and identify the ethical impact of cyber security-focused autonomous systems and decision-making", "SLO1 Supplemental: Construct a basic cyber security-focused autonomous system (Synthesis)"]', 'Kelley Lam, Jonathan Cruz, Domenic Mangano, Janae Moring', 'https://all.rit.edu/Lab7/', null, e'In this lab, you will learn about the basics of AI and Machine Learning
 through a cybersecurity lens. You will learn the fundamental components
 and impact of AI and Machine Learning in a cybersecurity-focused environment.
@@ -2411,7 +2543,140 @@ to test your knowledge. Click "Next" to start!', e'{
 			}
 		]
 	}
-}', '[{"title":"Neural Networks","link": "https://www.youtube.com/embed/bfmFfD2RIcg"},{"title":"Algorithmic Bias and Fairness","link": "https://www.youtube.com/embed/gV0_raKR2UQ"}]', '[]', true),
+}', '[{"title":"Neural Networks","link": "https://www.youtube.com/embed/bfmFfD2RIcg"},{"title":"Algorithmic Bias and Fairness","link": "https://www.youtube.com/embed/gV0_raKR2UQ"}]',
+e'[
+  {
+    "question": "Neural networks are modeled off of what?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Algorithm"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Heart"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Human Brain"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Chemistry"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Where are neural networks being used in industry?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Social Media"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "User Testing"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Targeted Marketing"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Making Games"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "Neural networks consist of what three layers?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Input, Output, Hidden"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Initial, Middle, Return"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "One, Two, Three"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Input, Middle, End"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is the most effective way researchers are currently attempting to reduce bias in neural networks? ",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "They aren’t"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Reducing complexity"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Guessing"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Extensive training sets"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Why is having an ethical AI important?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "To promote fairness, equity, and unbiased decision-making in AI systems"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "To maximize profits and market share in the competitive AI industry"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "To create AI systems without considering the potential societal impacts"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "To prioritize speed and efficiency in AI development over ethical considerations"
+      }
+    ],
+    "multiChoice": false
+  }
+]',
+ true),
  (11, 'Accessibility to Literacy', 'Literacy', 'Accessibility', '/literacy.jpg', 'Learn more about designing the web for varying literacy levels.', 'This lab explores considerations related to literacy levels. The user will be introduced to the Fog Index formula and learn how it can be used to understand the literacy level of text. Finally, the user will be introduced to key principles related to improving content readability.', e'["LO1: Recognize the significance of the range of literacy in the population and their needs for accessible software (Knowledge).",
 "LO2: Examine a scenario that doesn’t properly accommodate accessibility to literacy in a relatable context (Analysis).",
 "LO3: Use knowledge of accessibility design solutions to construct corrective measures to allow a previously inaccessible scenario to become accessible to appropriate parties (Application).",
@@ -2509,8 +2774,143 @@ to test your knowledge. Click "Next" to start!', e'{
             }
         ]
 	}
-}', e'[{"title":"Web Accessibility Perspectives: Understandable Content","link": "https://www.youtube.com/embed/BYRxF2yInfA?si=KedpgpG7XE4TK8B5"},
-{"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', '[]', true);
+}', 
+e'[{"title":"Web Accessibility Perspectives: Understandable Content","link": "https://www.youtube.com/embed/BYRxF2yInfA?si=KedpgpG7XE4TK8B5"},
+{"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', 
+e'[
+  {
+    "question": "What does readability refer to?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Ease of understanding web content"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Quality of UI design"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Website loading speed"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Number of images used in a website"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What are the primary considerations to creating readable web content?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Legibility, readability, and comprehension"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Font size, font color, and text alignment"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Navigation and color schemes"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Visual appealing"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following are suggestions to improve readability?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Improving color schemes"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Use straight forward language"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Use concise and brief text content"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Target 8th grade reading level"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What is the recommended education level for targeting a broad consumer audience?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "12th grade"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "8th grade"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "College level"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "1st grade"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "The Fog Index calculates the complexity of text based on which factors?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Number of sentences"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Font size and font color"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Number of complex words"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Number of words"
+      }
+    ],
+    "multiChoice": true
+  }
+]
+'
+, true);
 
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
