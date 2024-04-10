@@ -2510,44 +2510,93 @@ to test your knowledge. Click "Next" to start!', e'{
     "LO1: Understand common areas of non-identity inclusive software",
     "LO2: How to recognize non-identity inclusive  software",
     "LO3: Demonstrate how to improve non-identity inclusive software."
-]', 'Domenic Mangano, Heather Moses', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than Male or Female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click “next” to start!', e'{
-  "piechart":{
-		"header":"Pie Chart Header",
-		"caption":["Pie Chart Caption"],
-		"data":{
-				"labels": [
-				  "Example", "Example", "Example", "Example", "Example"
-				],
-				"datasets": [
-					{
-					  "label": "Company investments, in billions",
-					  "borderColor": "black",
-					  "backgroundColor": ["#ffeb00","#ff2713","#09da4f","#9e8fe5","#d67b41","#86aedf"],
-					  "data": [30.7, 22.1, 10, 10, 17],
-					  "borderWidth": "1"
-					}
-				]
-		}
+]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than Male or Female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click “next” to start!', e'{
+  "piechart": {
+        "header":"Inclusive Forms",
+		"caption":["59% of Gen Z believes forms should have options outside of male and female"],
+		"data": {
+			"labels": [
+				"Gen Zers who believe forms should have options outside of male / female",
+				"Gen Zers who DO NOT believe forms should have options outside of male / female"
+			  ],
+			  "datasets": [
+				{
+				  "label": "Color Visions Deficiencies in a Population of 10,000 People",
+				  "borderColor": "black",
+				  "backgroundColor": ["#ACADBC","#473BF0"],
+				  "data": [59, 41],
+				  "borderWidth": "2"
+				}
+			  ]
+		  }
 	},
-	"description":{
-		"header":"What is Identity?",
-		"content":"Explanation of Identity and its importance in software."
-	},
-	"body":[{
-          "header":"",
-          "type":"",
-          "content":["Main Identity Reading Content"]
-       }
-    ],
+	"description":"",
+	"body":[
+		{
+			"header":"Gender Identity",
+			"type":"",
+			"content":["Gender Identity is the concept of self; male, female, both, neither and more. It\'s an individual\'s unique perception of who they are. Gender identity may match assigned sex at birth but many don\'t fit in these assigned categories. 69.5% of youth between 13-18 years old within the LGBTQ+ community identify as at least one non-cisgender (male/female) identity according to a 2023 survey conducted by the Human Rights Campaign (HRC). These gender identities are expressed by people\'s characteristics, clothing, behavior and notably through preferred names and pronouns. The same survey shows a clear link between the usage of preferred names and pronouns by those around an individual and a reduction in anxiety and depression."]
+		},
+        {
+            "header": "",
+            "type": "links",
+            "content": [
+                {
+                    "name": "2023 LGBTQ+ Youth Report Survey",
+                    "link": "https://reports.hrc.org/2023-lgbtq-youth-report?_ga=2.167609654.968366084.1711659164-297823230.1711659164#gender-identity"
+                }
+            ]
+        },
+		{
+			"header":"",
+			"type":"",
+			"content":["As the LGBTQ+ community continues to expand, as it has within the past two decades, it\'s important to stay open. Laws continue to be passed nationwide to keep up with this growth, serving to protect members of these communities from harassment and discrimination. Those who identify outside of the traditional male or female gender identities have been perpetual targets for hate speech and violence. Adapting to new practices when it comes to gender identity is crucial to creating a safe and positive environment, whether that be within the workplace, classrooms, or at home."]
+		},
+        {
+            "header": "",
+            "type": "image",
+            "content" : {
+                "image":"/pronoun_guide.png",
+                "alt":"Pronouns- A How To Guide",
+                "sub_caption":"Figure 1",
+                "caption":"A Guide to Effective use of Pronouns"   
+            }
+        },
+        {
+            "header": "Gender Inclusivity in the Workplace",
+            "type": "",
+            "content": ["One company that has strived for acceptance and inclusion is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an inclusive environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
+        },
+        {
+            "header": "",
+            "type": "links",
+            "content": [
+                {
+                    "name": "Fostering Inclusive Environments in the Workplace",
+                    "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx#:~:text=A%20model%20inclusion%20policy%20created,a%20court%2Dordered%20name%20change."
+                },
+                {
+                    "name": "Using Preferred Names at Work",
+                    "link": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+                }
+            ]
+        },
+        {
+            "header": "",
+            "type": "",
+            "content": ["These practices should be reflected throughout any institutions, including gender inclusive terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, the inclusion of preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
+        }
+	],
 	"footer":{
 		"links":[
 			{
-				"name":"Example Link",
-				"link":"https://www.exampleLink.com/"
+				"name":"Approaching Gender in Software Products",
+				"link":"https://blog.carbonfive.com/approaching-gender-in-software-products/"
 			}
 		]
 	}
-}', '[{"title":"Example Video","link": "https://www.youtube.com/embed/bfmFfD2RIcg"},{"title":"Example Video","link": "https://www.youtube.com/embed/gV0_raKR2UQ"}]', '[]', true);
+}', 
+'[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use inclusive language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Inclusivity","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[]', true);
 
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
