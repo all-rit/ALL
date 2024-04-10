@@ -24,6 +24,9 @@ const Letter = ({ isEditable }) => {
   const [currentLetterContent, setCurrentLetterContent] =
     useState(letterContent);
 
+  // eventually we will pull the name of the letter recipient from the database
+  const [letterRecipient] = useState("Lorem");
+
   const handleNextLetter = () => {
     if (letterContentIndex < letterContentArray.length - 1) {
       setLetterContentIndex(letterContentIndex + 1);
@@ -132,7 +135,7 @@ const Letter = ({ isEditable }) => {
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-bold tw-self-start tw-mb-10`}
               style={{ fontFamily: "Kumbh Sans" }}
             >
-              Dear Lorem,
+              Dear {letterRecipient},
             </div>
             <div
               id="editable-letter"
