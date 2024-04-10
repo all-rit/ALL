@@ -3,10 +3,10 @@ const REPAIR = "/Repair";
 const EXERCISE_PATH = "/Lab12/Exercise";
 
 const IDENTITY_REPAIR_HEADING = "Identity Repair";
-const IDENTITY_REPAIR = "IdentityRepair";
+const EXERCISE_SELECTION_DEFAULT = "IdentityRepair";
 
 const EXERCISE_STATES = {
-  IDENTITY_REPAIR,
+  EXERCISE_SELECTION_DEFAULT,
 };
 
 export {
@@ -14,6 +14,6 @@ export {
   REPAIR,
   EXERCISE_PATH,
   IDENTITY_REPAIR_HEADING,
-  IDENTITY_REPAIR,
+  EXERCISE_SELECTION_DEFAULT,
   EXERCISE_STATES,
 };

@@ -15,7 +15,7 @@ const IdentityRepair = (props) => {
   const { user = null } = props;
   const { data, functions } = useDataService(
     user,
-    EXERCISE_STATES.IDENTITY_REPAIR,
+    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
@@ -24,7 +24,7 @@ const IdentityRepair = (props) => {
   return (
     <Repair
       fileName={"IdentityForm.js"}
-      path={`${REPAIR}/${EXERCISE_STATES.IDENTITY_REPAIR}`}
+      path={`${REPAIR}/${EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT}`}
       headingText={IDENTITY_REPAIR_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={fetchRepair}
