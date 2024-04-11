@@ -18,7 +18,6 @@ describe("first", () => {
         </h1>,
       )
       .toJSON();
-    console.log(header);
     expect(JSON.stringify(component.children[0])).toBe(JSON.stringify(header));
   });
 });
