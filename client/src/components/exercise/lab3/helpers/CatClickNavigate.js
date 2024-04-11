@@ -2,10 +2,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import { Link } from "@material-ui/core";
+import Button from "@mui/material/Button";
+import { Link } from "@mui/material";
 import { navigate } from "@reach/router";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 
 class CatClickNavigate extends Component {
   constructor(props) {

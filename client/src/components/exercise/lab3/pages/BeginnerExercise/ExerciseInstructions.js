@@ -2,11 +2,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Button, Link } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Paper from "@material-ui/core/Paper";
+import {
+  Button,
+  Link,
+  AppBar,
+  Toolbar,
+  Paper,
+  Typography,
+} from "@mui/material";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 

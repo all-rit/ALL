@@ -1,8 +1,5 @@
 import React from "react";
 
-export const EXERCISE_PLAYING = "EXERCISE_PLAYING";
-export const EXERCISE_IDLE = "EXERCISE_IDLE";
-
 export const AI_CORRECT = "AI CORRECT";
 export const AI_INCORRECT = "AI INCORRECT";
 
