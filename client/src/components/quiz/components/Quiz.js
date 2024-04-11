@@ -22,9 +22,8 @@ function Quiz(props) {
         key={key.type}
         answerContent={key.content}
         answerType={key.type}
-        answer={props.answer}
         questionId={props.questionId}
-        onAnswerSelected={props.onAnswerSelected}
+        onAnswerSelected={(e) => props.onAnswerSelected(e.target.value)}
         multiChoice={props.multiChoice}
         multiSelected={props.multiSelectedEntry}
       />

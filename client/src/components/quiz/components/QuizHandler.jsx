@@ -3,7 +3,9 @@ import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
 import UserLabService from "../../../services/UserLabService";
+import alterationQuizQuestions from "src/constants/lab7/alterationQuestions";
 import labService from "src/services/LabService";
+
 /**
  * QuizHandler is react component responsible for tracking users responses
  * this will be the main handler to manage the state and logic for the new quiz component
@@ -13,26 +15,47 @@ import labService from "src/services/LabService";
 const QuizHandler = (props) => {
   const [currentLabId, setCurrentLab] = useState(props.labId);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([
+    {
+      question: "Default",
+      answers: [
+        {
+          val: 0,
+          type: "0",
+          content: "Default",
+        },
+      ],
+      multiChoice: false,
+    },
+  ]);
   const [answerOption, setAnswerOption] = useState([]);
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
   let [result, setResult] = useState({});
 
-  useEffect(async () => {
+  useEffect(() => {
     setCurrentLab(props.labId);
-    const quiz = await getQuiz();
     if (!props.isFinalQuiz) {
-      setQuestions(quiz.alterationQuizQuestions);
+      const quiz = alterationQuizQuestions;
+      const quizAnswers = quiz[currentQuestionCursor].answers;
+      setQuestions(quiz);
+      setAnswerOption(quizAnswers);
+    } else {
+      getQuiz();
     }
-    setQuestions(quiz.finalQuiz);
-    setAnswerOption(quiz.finalQuiz[currentQuestionCursor].answers);
   }, []);
 
   async function getQuiz() {
-    const response = await labService.getLabQuiz(props.labId);
-    return await JSON.parse(response);
+    try {
+      const response = await labService.getLabQuiz(props.labId);
+      const { quiz } = response[0];
+      const quizAnswers = quiz[currentQuestionCursor].answers;
+      setQuestions(quiz);
+      setAnswerOption(quizAnswers);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   /**
@@ -229,7 +252,7 @@ const QuizHandler = (props) => {
           multiChoice={questions[currentQuestionCursor].multiChoice}
           multiSelectedEntry={selectMulti}
           nextQuestion={handleNext}
-          onAnswerSelected={selectAnswer}
+          onAnswerSelected={(e) => selectAnswer(e)}
           onComplete={onComplete}
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
