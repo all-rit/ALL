@@ -6,7 +6,8 @@ export const javascriptRegex =
 export const operatorRegex = /(\+|-|\*|\/|\]|\[|,|;|:|=|==|>|\.|\(|\)|{|})/g;
 
 /* reactRegex searches in the children for ReactJS keywords like props or useState */
-export const reactRegex = /\b(useState|useEffect|useMemo|useContext|props)\b/g;
+export const reactRegex =
+  /\b(useState|useEffect|useMemo|useContext|props|then|fetch|JSON|target|json)\b/g;
 
 /* funcRegex searches in the children for a function call keywords like .() */
 export const funcRegex =
