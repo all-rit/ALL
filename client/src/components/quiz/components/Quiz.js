@@ -23,7 +23,7 @@ function Quiz(props) {
         answerContent={key.content}
         answerType={key.type}
         questionId={props.questionId}
-        onAnswerSelected={(e) => props.onAnswerSelected(e.target.value)}
+        onAnswerSelected={props.onAnswerSelected}
         multiChoice={props.multiChoice}
         multiSelected={props.multiSelectedEntry}
       />
@@ -36,9 +36,13 @@ function Quiz(props) {
       {props.isFinalQuiz ? (
         <Question content={props.question} multi={props.multiChoice} />
       ) : (
-        formulateEquation(props.question)
+        <Question
+          content={formulateEquation(props.question)}
+          multi={props.multiChoice}
+        />
       )}
       <ul className="answerOptions">
+        {console.log(props.answerOptions)}
         {props.answerOptions.map(renderAnswerOptions)}
       </ul>
       <div className="align-right">

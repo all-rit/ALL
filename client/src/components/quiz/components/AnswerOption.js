@@ -29,7 +29,7 @@ function AnswerOption(props) {
           // checked={props.answerType === props.answer}
           id={props.answerType}
           value={props.answerType}
-          onChange={(e) => props.onAnswerSelected(e.target.value)}
+          onChange={props.onAnswerSelected}
         />
         <label className="radioCustomLabel" htmlFor={props.answerType}>
           {props.answerContent}

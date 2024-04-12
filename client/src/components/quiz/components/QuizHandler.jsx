@@ -3,7 +3,6 @@ import { PropTypes } from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
 import UserLabService from "../../../services/UserLabService";
-import alterationQuizQuestions from "src/constants/lab7/alterationQuestions";
 import labService from "src/services/LabService";
 
 /**
@@ -37,8 +36,8 @@ const QuizHandler = (props) => {
   useEffect(() => {
     setCurrentLab(props.labId);
     if (!props.isFinalQuiz) {
-      const quiz = alterationQuizQuestions;
-      const quizAnswers = quiz[currentQuestionCursor].answers;
+      const quiz = props.quizQuestions;
+      const quizAnswers = props.quizQuestions[currentQuestionCursor].answers;
       setQuestions(quiz);
       setAnswerOption(quizAnswers);
     } else {
@@ -274,6 +273,7 @@ const QuizHandler = (props) => {
 };
 QuizHandler.propTypes = {
   labId: PropTypes.number,
+  quizQuestions: PropTypes.array,
   isFinalQuiz: PropTypes.bool.isRequired,
   hideCertificate: PropTypes.bool.isRequired,
   submitData: PropTypes.func.isRequired,
