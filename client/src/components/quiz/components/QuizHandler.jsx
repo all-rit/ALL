@@ -251,7 +251,7 @@ const QuizHandler = (props) => {
           multiChoice={questions[currentQuestionCursor].multiChoice}
           multiSelectedEntry={selectMulti}
           nextQuestion={handleNext}
-          onAnswerSelected={(e) => selectAnswer(e)}
+          onAnswerSelected={selectAnswer}
           onComplete={onComplete}
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
