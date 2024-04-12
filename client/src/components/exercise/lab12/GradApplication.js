@@ -109,7 +109,7 @@ const Application = () => {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div className="tw-mt-10 tw-shadow-2xl-top-bottom tw-rounded-3xl tw-min-w-72 tw-w-9/12 lg:tw-w-5/12 md:tw-w-7/12 tw-h-full tw-p-10">
+        <div className="tw-mt-10 tw-shadow-2xl-top-bottom tw-rounded-3xl tw-min-w-72 tw-w-9/12 lg:tw-w-7/12 tw-h-full tw-p-10">
           <h1 className="tw-text-3xl tw-font-bold tw-mb-8">
             Apply for Graduation at ALL University
           </h1>
@@ -117,9 +117,9 @@ const Application = () => {
             <h2 className="tw-text-xl tw-font-semibold tw-mb-1.5">
               Personal Information:{" "}
             </h2>
-            <div className="sm:tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-6">
               <label className="tw-pr-8">Legal First Name:</label>
-              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
+              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
                   placeholder="Ex: Jane"
                   onChange={(e) => {
@@ -131,16 +131,16 @@ const Application = () => {
                     Error: Invalid character.
                   </label>
                 )}
+                {fNameEmptyErr && (
+                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                    Error: Input required.
+                  </label>
+                )}
               </div>
             </div>
-            {fNameEmptyErr && (
-              <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                Error: Input required.
-              </label>
-            )}
-            <div className="sm:tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-6">
               <label className="tw-pr-8">Legal Last Name:</label>
-              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
+              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
                   placeholder="Ex: Smith"
                   onChange={(e) => {
@@ -159,9 +159,9 @@ const Application = () => {
                 )}
               </div>
             </div>
-            <div className="sm:tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-6">
               <label className="tw-pr-8">Pronouns:</label>
-              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
+              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
                   placeholder="Ex: They/Them"
                   onChange={(e) => {
@@ -183,9 +183,9 @@ const Application = () => {
             <h3 className="tw-mt-10 tw-text-xl tw-font-semibold tw-mb-1.5">
               Academic Information:{" "}
             </h3>
-            <div className="sm:tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-6">
               <label className="tw-pr-8">College:</label>
-              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
+              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
                   placeholder="Ex: RIT"
                   onChange={(e) => {
@@ -204,46 +204,50 @@ const Application = () => {
                 )}
               </div>
             </div>
-            <div className="sm:tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-6">
               <label className="tw-pr-8">Major:</label>
-              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
+              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
                   placeholder="Ex: CS"
                   onChange={(e) => {
                     setMajor(e.target.value);
                   }}
                 />
-                {majorErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character.
-                  </label>
-                )}
-                {majorEmptyErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Input required.
-                  </label>
-                )}
+                <div className="tw-mb-4">
+                  {majorErr && (
+                    <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                      Error: Invalid character.
+                    </label>
+                  )}
+                  {majorEmptyErr && (
+                    <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                      Error: Input required.
+                    </label>
+                  )}
+                </div>
               </div>
             </div>
-            <div className="sm:tw-flex tw-mb-4">
+            <div className="sm:tw-flex tw-mb-6">
               <label className="tw-pr-8">Graduation Term:</label>
-              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-6/12 tw-mb-2">
+              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
                   placeholder="Ex: Spring 2024"
                   onChange={(e) => {
                     setGradTerm(e.target.value);
                   }}
                 />
-                {gradTermErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character.
-                  </label>
-                )}
-                {gradTermEmptyErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Input required.
-                  </label>
-                )}
+                <div className="tw-mb-4">
+                  {gradTermErr && (
+                    <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                      Error: Invalid character.
+                    </label>
+                  )}
+                  {gradTermEmptyErr && (
+                    <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                      Error: Input required.
+                    </label>
+                  )}
+                </div>
               </div>
             </div>
           </div>
