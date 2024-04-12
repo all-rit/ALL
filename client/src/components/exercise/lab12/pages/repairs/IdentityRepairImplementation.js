@@ -200,8 +200,40 @@ const IdentityRepairImplementation = (props) => {
       </CodeLine>
       <CodeLine>
         {" "}
+        <MultiTab numberOfTabs={2} /> <ReactText>&#125;)</ReactText>
+      </CodeLine>
+      <CodeLine>
+        {" "}
+        <MultiTab numberOfTabs={2} />{" "}
+        <ReactText>.then((data) =&#62; &#123;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        {" "}
+        <MultiTab numberOfTabs={3} /> <ReactText>return data;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        {" "}
+        <MultiTab numberOfTabs={2} /> <ReactText>&#125;)</ReactText>
+      </CodeLine>
+      <CodeLine>
+        {" "}
+        <MultiTab numberOfTabs={2} />{" "}
+        <ReactText>.catch((error) =&#62; &#123;</ReactText>
+      </CodeLine>
+      <CodeLine>
+        {" "}
+        <MultiTab numberOfTabs={3} /> <ReactText>console.log(error)</ReactText>
+      </CodeLine>
+      <CodeLine>
+        {" "}
+        <MultiTab numberOfTabs={2} /> <ReactText>&#125;)</ReactText>
+      </CodeLine>
+      <CodeLine>
+        {" "}
         <Tab /> <ReactText>&#125;</ReactText>
       </CodeLine>
+
+      {/* RETURN HTML WITH INPUTS */}
       <CodeLine>
         <Tab /> <ReactText> return ( </ReactText>
       </CodeLine>
@@ -211,6 +243,46 @@ const IdentityRepairImplementation = (props) => {
           &#60;div className = &ldquo;tw-flex tw-flex-col tw-m-3&rdquo;&#62;
         </HTMLTag>
       </CodeLine>
+      <CodeLine>
+        <MultiTab numberOfTabs={3} />
+        <HTMLTag>&#60;ul&#62;</HTMLTag>
+      </CodeLine>
+
+      {IdentityFormData.constData.map((item) => (
+        <>
+          <CodeLine>
+            <MultiTab numberOfTabs={4} />
+            <HTMLTag>&#60;li&#62;</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={5} />
+            <HTMLTag>&#60;label&#62;</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            <HTMLTag>{item.itemName}</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            <HTMLTag>&#60;input/&#62;</HTMLTag>
+          </CodeLine>
+
+          <CodeLine>
+            <MultiTab numberOfTabs={5} />
+            <HTMLTag>&#60;label&#62;</HTMLTag>
+          </CodeLine>
+
+          <CodeLine>
+            <MultiTab numberOfTabs={4} />
+            <HTMLTag>&#60;/li&#62;</HTMLTag>
+          </CodeLine>
+        </>
+      ))}
+      <CodeLine>
+        <MultiTab numberOfTabs={3} />
+        <HTMLTag>&#60;/ul&#62;</HTMLTag>
+      </CodeLine>
+
       <CodeLine>
         <MultiTab numberOfTabs={3} />
         <HTMLTag>&#60;button</HTMLTag>
