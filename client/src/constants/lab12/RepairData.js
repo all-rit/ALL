@@ -2,35 +2,60 @@ const IdentityFormData = {
   constData: [
     {
       id: 0,
-      itemName: "legalFirstName",
+      listName: "Legal First Name",
+      variableName: "legalFirstName",
     },
     {
       id: 1,
-      itemName: "legalLastName",
+      listName: "Legal Last Name",
+      variableName: "legalLastName",
     },
     {
       id: 2,
-      itemName: "college",
+      listName: "College",
+      variableName: "college",
     },
     {
       id: 3,
-      itemName: "major",
+      listName: "Major",
+      variableName: "major",
     },
     {
       id: 4,
-      itemName: "graduationTerm",
+      listName: "Graduation Term",
+      variableName: "graduationTerm",
     },
   ],
   inputData: [
     {
       id: 0,
-      itemName: "preferredName",
-      input: "",
+      listName: "Preferred Name",
+      variableName: "preferredName",
+      formDataName: "formData.preferredName",
+
+      correctListExpression: "Preferred Name",
+      validateListExpression: `Preferred Name`,
+
+      correctVariableExpression: "preferredName",
+      validateVariableExpression: `preferredName`,
+
+      correctFormDataName: "formData.preferredName",
+      validateFormDataName: `formData.preferredName`,
     },
     {
       id: 1,
-      itemName: "pronouns",
-      input: "",
+      listName: "Pronouns",
+      variableName: "pronouns",
+      formDataName: "formData.pronouns",
+
+      correctListExpression: "Pronouns",
+      validateListExpression: `Pronouns`,
+
+      correctVariableExpression: "pronouns",
+      validateVariableExpression: `pronouns`,
+
+      correctFormDataName: "formData.pronouns",
+      validateFormDataName: `formData.pronouns`,
     },
   ],
 };

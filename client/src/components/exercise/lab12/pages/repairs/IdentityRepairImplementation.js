@@ -29,7 +29,7 @@ const IdentityRepairImplementation = (props) => {
       {IdentityFormData.constData.map((item) => (
         <CodeLine key={item.id}>
           <MultiTab numberOfTabs={2} />{" "}
-          <JSONText>{item.itemName}: &ldquo;&rdquo;,</JSONText>
+          <JSONText>{item.variableName}: &ldquo;&rdquo;,</JSONText>
         </CodeLine>
       ))}
       {IdentityFormData.inputData.map((item) => (
@@ -37,7 +37,7 @@ const IdentityRepairImplementation = (props) => {
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <CommentText>
-              Enter &lsquo;{item.itemName}&rsquo; below:{" "}
+              Enter &lsquo;{item.variableName}&rsquo; below:{" "}
             </CommentText>
           </CodeLine>
           <CodeLine>
@@ -49,7 +49,7 @@ const IdentityRepairImplementation = (props) => {
                   onChange: (event) => {
                     userInput(item.id, event.target.value);
                   },
-                  name: item.itemName,
+                  name: item.variableName,
                   type: "text",
                   placeholder: "Enter Answer Here",
                 }}
@@ -112,8 +112,9 @@ const IdentityRepairImplementation = (props) => {
 
       {IdentityFormData.constData.map((item) => (
         <CodeLine key={item.id}>
-          <MultiTab numberOfTabs={3} /> <JSONText>{item.itemName}:</JSONText>
-          <HTMLText>formData.{item.itemName},</HTMLText>
+          <MultiTab numberOfTabs={3} />{" "}
+          <JSONText>{item.variableName}:</JSONText>
+          <HTMLText>formData.{item.variableName},</HTMLText>
         </CodeLine>
       ))}
       {IdentityFormData.inputData.map((item) => (
@@ -121,11 +122,12 @@ const IdentityRepairImplementation = (props) => {
           <CodeLine>
             <MultiTab numberOfTabs={3} />{" "}
             <CommentText>
-              Enter &lsquo;formData.{item.itemName}&rsquo; below:{" "}
+              Enter &lsquo;formData.{item.variableName}&rsquo; below:{" "}
             </CommentText>
           </CodeLine>
           <CodeLine key={item.id}>
-            <MultiTab numberOfTabs={3} /> <JSONText>{item.itemName}:</JSONText>
+            <MultiTab numberOfTabs={3} />{" "}
+            <JSONText>{item.variableName}:</JSONText>
             {userInput ? (
               <CodeBlockInput
                 value={userInput}
@@ -133,7 +135,7 @@ const IdentityRepairImplementation = (props) => {
                   onChange: (event) => {
                     userInput(item.id, event.target.value);
                   },
-                  name: item.itemName,
+                  name: item.variableName,
                   type: "text",
                   placeholder: "Enter Answer Here",
                 }}
@@ -260,16 +262,35 @@ const IdentityRepairImplementation = (props) => {
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={6} />
-            <HTMLTag>{item.itemName}</HTMLTag>
+            <HTMLTag>{item.listName}: </HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={5} />
+            <HTMLTag>&#60;/label&#62;</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={5} />
+            <HTMLTag>&#60;input</HTMLTag>
+          </CodeLine>
+
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            <HTMLTag>name=&ldquo;{item.variableName}&rdquo;</HTMLTag>
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={6} />
-            <HTMLTag>&#60;input/&#62;</HTMLTag>
+            <HTMLTag>value=</HTMLTag>
+            <ReactText>&#123;formData.{item.variableName}&#125;</ReactText>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            <HTMLTag>onChange=</HTMLTag>
+            <ReactText>&#123;handleChange&#125;</ReactText>
           </CodeLine>
 
           <CodeLine>
             <MultiTab numberOfTabs={5} />
-            <HTMLTag>&#60;label&#62;</HTMLTag>
+            <HTMLTag>/&#62;</HTMLTag>
           </CodeLine>
 
           <CodeLine>
@@ -277,6 +298,87 @@ const IdentityRepairImplementation = (props) => {
             <HTMLTag>&#60;/li&#62;</HTMLTag>
           </CodeLine>
         </>
+      ))}
+
+      {IdentityFormData.inputData.map((item) => (
+        <div key={item.id}>
+          <CodeLine>
+            <MultiTab numberOfTabs={4} />
+            <HTMLTag>&#60;li&#62;</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={5} />
+            <HTMLTag>&#60;label&#62;</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            <CommentText>
+              {" "}
+              Enter &lsquo;{item.correctListExpression}&rsquo; to create the new
+              input labels
+            </CommentText>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            {userInput ? (
+              <CodeBlockInput
+                value={userInput}
+                attributes={{
+                  onChange: (event) => {
+                    userInput(item.id, event.target.value);
+                  },
+                  name: item.variableName,
+                  type: "text",
+                  placeholder: "Enter Answer Here",
+                }}
+              />
+            ) : (
+              <CodeBlockInput
+                attributes={{
+                  onChange: (event) => {
+                    userInput(item.id, event.target.value);
+                  },
+                  name: item.input,
+                  type: "text",
+                  placeholder: "Enter Answer Here",
+                }}
+              />
+            )}
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={5} />
+            <HTMLTag>&#60;/label&#62;</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={5} />
+            <HTMLTag>&#60;input</HTMLTag>
+          </CodeLine>
+
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            <HTMLTag>name=&ldquo;{item.variableName}&rdquo;</HTMLTag>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            <HTMLTag>value=</HTMLTag>
+            <ReactText>&#123;formData.{item.variableName}&#125;</ReactText>
+          </CodeLine>
+          <CodeLine>
+            <MultiTab numberOfTabs={6} />
+            <HTMLTag>onChange=</HTMLTag>
+            <ReactText>&#123;handleChange&#125;</ReactText>
+          </CodeLine>
+
+          <CodeLine>
+            <MultiTab numberOfTabs={5} />
+            <HTMLTag>/&#62;</HTMLTag>
+          </CodeLine>
+
+          <CodeLine>
+            <MultiTab numberOfTabs={4} />
+            <HTMLTag>&#60;/li&#62;</HTMLTag>
+          </CodeLine>
+        </div>
       ))}
       <CodeLine>
         <MultiTab numberOfTabs={3} />
@@ -293,7 +395,8 @@ const IdentityRepairImplementation = (props) => {
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={4} />
-        <HTMLTag> onClick=&#123;submitForm()&#125; </HTMLTag>
+        <HTMLTag> onClick=</HTMLTag>
+        <ReactText>&#123;submitForm&#125;</ReactText>
       </CodeLine>
       <CodeLine>
         <MultiTab numberOfTabs={3} />
