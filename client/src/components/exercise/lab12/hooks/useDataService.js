@@ -1,5 +1,5 @@
 import useLabRepair from "../../../body/Repair/hooks/useLabRepair";
-import { RepairService } from "../../../../services/lab9/RepairService";
+import { RepairService } from "../../../../services/lab12/RepairService";
 import { ExerciseService } from "../../../../services/lab12/ExerciseService";
 import { EXERCISE_STATES } from "../../../../constants/lab12";
 import { useState } from "react";
@@ -61,31 +61,19 @@ const useDataService = (user, section, defaultExerciseState) => {
       const { isComplete, userid } = body;
       const data = await ExerciseService.fetchExercise({ userid: userid });
       if (data) {
-        const { isAddressComplete, isDateComplete, isNavComplete } = data;
+        const { isRepairComplete } = data;
         if (isComplete) {
           const updatedBody = {
             userid: body.userid,
-            isAddressComplete:
-              section === EXERCISE_STATES.REPAIR_ADDRESS_FORM
+            isRepairComplete:
+              section === EXERCISE_STATES.IDENTITY_REPAIR
                 ? true
-                : isAddressComplete,
-
-            isDateComplete:
-              section === EXERCISE_STATES.REPAIR_DATE_REPAIR
-                ? true
-                : isDateComplete,
-
-            isNavComplete:
-              section === EXERCISE_STATES.REPAIR_NAV_BAR ? true : isNavComplete,
+                : isRepairComplete,
 
             isComplete: false,
             hasViewed: false,
           };
-          const data = [
-            updatedBody.isAddressComplete,
-            updatedBody.isDateComplete,
-            updatedBody.isNavComplete,
-          ];
+          const data = [updatedBody.isRepairComplete];
           const isExerciseComplete = data.every((value) => value === true);
           updatedBody.isExerciseComplete = isExerciseComplete;
           const response = await ExerciseService.submitExercise(updatedBody);

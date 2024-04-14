@@ -9,12 +9,13 @@ const db = require('../../database');
 * @param {String} section string section indicator to indicate the
  * repair section
  */
-async function getRepair(data) {
+async function getRepair(data, section) {
   try {
     return await db.RepairLab12.findOne({
       order: [['repairId', 'DESC']],
       where: {
         userid: data,
+        section: section,
       },
       raw: true,
     });
@@ -31,15 +32,16 @@ async function getRepair(data) {
  * @return {Number} repair id to show it is created
  */
 async function submitRepair(data) {
-  const {userID, repair, isComplete} = data;
+  const {userID, repair, isComplete, section} = data;
   try {
     const currentTime = new Date().toISOString();
-    const outputData = await getRepair(userID);
+    const outputData = await getRepair(userID, section);
     if ((!outputData) || outputData.isComplete === true) {
       const newRepair = {
         userid: userID,
         repair: repair,
         isComplete: isComplete,
+        section: section,
         attemptTime: currentTime,
         repairCount: 1,
       };
@@ -51,6 +53,7 @@ async function submitRepair(data) {
       userid: userID,
       repair: repair,
       isComplete: isComplete,
+      section: section,
       attemptTime: currentTime,
       repairCount: newCount,
     };

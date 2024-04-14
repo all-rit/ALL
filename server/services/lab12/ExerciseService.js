@@ -34,9 +34,12 @@ async function getExercise(data) {
  */
 async function postExercise(data) {
   try {
-    const {userId, isRepairComplete,
+    const {
+      userId,
+      isRepairComplete,
       isExerciseComplete,
-      hasViewed} = data;
+      hasViewed,
+    } = data;
     const getExerciseResponse = await getExercise(userId);
     const currentTime = new Date().toISOString();
     const newExercise = {
