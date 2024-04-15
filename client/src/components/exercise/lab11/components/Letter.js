@@ -155,7 +155,7 @@ const Letter = ({ isEditable }) => {
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-bold tw-break-words tw-self-start tw-text-start tw-mt-10`}
               style={{ fontFamily: "Kumbh Sans" }}
             >
-              Sincerly,
+              Sincerely,
               <br />
               Fake Name
             </div>
