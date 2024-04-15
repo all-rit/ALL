@@ -4,7 +4,6 @@ import ReactText from "src/components/all-components/CodeBlock/StyleComponents/R
 import PropTypes from "prop-types";
 import Tab from "src/components/all-components/CodeBlock/Components/Tab";
 import MultiTab from "src/components/all-components/CodeBlock/Components/MultiTab";
-import HTMLTag from "src/components/all-components/CodeBlock/StyleComponents/HTMLTag";
 import HTMLText from "src/components/all-components/CodeBlock/StyleComponents/HTMLText";
 import JSONText from "src/components/all-components/CodeBlock/StyleComponents/JSONText";
 import CommentText from "src/components/all-components/CodeBlock/StyleComponents/CommentText";
@@ -75,7 +74,7 @@ const IdentityRepairImplementation = (props) => {
       </CodeLine>
 
       {/* Handle Change function */}
-      <CodeLine>
+      {/* <CodeLine>
         <Tab />
         <ReactText>const handleChange = (e) =&#62; &#123;</ReactText>
       </CodeLine>
@@ -98,7 +97,7 @@ const IdentityRepairImplementation = (props) => {
       <CodeLine>
         {" "}
         <Tab /> <ReactText>&#125;</ReactText>
-      </CodeLine>
+      </CodeLine> */}
 
       {/** Submit Form Function */}
       <CodeLine>
@@ -235,182 +234,6 @@ const IdentityRepairImplementation = (props) => {
         <Tab /> <ReactText>&#125;</ReactText>
       </CodeLine>
 
-      {/* RETURN HTML WITH INPUTS */}
-      <CodeLine>
-        <Tab /> <ReactText> return ( </ReactText>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={2} />
-        <HTMLTag>
-          &#60;div className = &ldquo;tw-flex tw-flex-col tw-m-3&rdquo;&#62;
-        </HTMLTag>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={3} />
-        <HTMLTag>&#60;ul&#62;</HTMLTag>
-      </CodeLine>
-
-      {IdentityFormData.constData.map((item) => (
-        <>
-          <CodeLine>
-            <MultiTab numberOfTabs={4} />
-            <HTMLTag>&#60;li&#62;</HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={5} />
-            <HTMLTag>&#60;label&#62;</HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            <HTMLTag>{item.listName}: </HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={5} />
-            <HTMLTag>&#60;/label&#62;</HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={5} />
-            <HTMLTag>&#60;input</HTMLTag>
-          </CodeLine>
-
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            <HTMLTag>name=&ldquo;{item.variableName}&rdquo;</HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            <HTMLTag>value=</HTMLTag>
-            <ReactText>&#123;formData.{item.variableName}&#125;</ReactText>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            <HTMLTag>onChange=</HTMLTag>
-            <ReactText>&#123;handleChange&#125;</ReactText>
-          </CodeLine>
-
-          <CodeLine>
-            <MultiTab numberOfTabs={5} />
-            <HTMLTag>/&#62;</HTMLTag>
-          </CodeLine>
-
-          <CodeLine>
-            <MultiTab numberOfTabs={4} />
-            <HTMLTag>&#60;/li&#62;</HTMLTag>
-          </CodeLine>
-        </>
-      ))}
-
-      {IdentityFormData.inputData.map((item) => (
-        <div key={item.id}>
-          <CodeLine>
-            <MultiTab numberOfTabs={4} />
-            <HTMLTag>&#60;li&#62;</HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={5} />
-            <HTMLTag>&#60;label&#62;</HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            <CommentText>
-              {" "}
-              Enter &lsquo;{item.correctListExpression}&rsquo; to create the new
-              input labels
-            </CommentText>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            {userInput ? (
-              <CodeBlockInput
-                value={userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(item.id, event.target.value);
-                  },
-                  name: item.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(item.id, event.target.value);
-                  },
-                  name: item.input,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            )}
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={5} />
-            <HTMLTag>&#60;/label&#62;</HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={5} />
-            <HTMLTag>&#60;input</HTMLTag>
-          </CodeLine>
-
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            <HTMLTag>name=&ldquo;{item.variableName}&rdquo;</HTMLTag>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            <HTMLTag>value=</HTMLTag>
-            <ReactText>&#123;formData.{item.variableName}&#125;</ReactText>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={6} />
-            <HTMLTag>onChange=</HTMLTag>
-            <ReactText>&#123;handleChange&#125;</ReactText>
-          </CodeLine>
-
-          <CodeLine>
-            <MultiTab numberOfTabs={5} />
-            <HTMLTag>/&#62;</HTMLTag>
-          </CodeLine>
-
-          <CodeLine>
-            <MultiTab numberOfTabs={4} />
-            <HTMLTag>&#60;/li&#62;</HTMLTag>
-          </CodeLine>
-        </div>
-      ))}
-      <CodeLine>
-        <MultiTab numberOfTabs={3} />
-        <HTMLTag>&#60;/ul&#62;</HTMLTag>
-      </CodeLine>
-
-      <CodeLine>
-        <MultiTab numberOfTabs={3} />
-        <HTMLTag>&#60;button</HTMLTag>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={4} />
-        <HTMLTag>className=&ldquo;btn btn-xl btn-primary&rdquo;&#62;</HTMLTag>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={4} />
-        <HTMLTag> onClick=</HTMLTag>
-        <ReactText>&#123;submitForm&#125;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={3} />
-        <HTMLTag>/&#62;</HTMLTag>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={2} />
-        <HTMLTag>&#60;div&#62;</HTMLTag>
-      </CodeLine>
-      <CodeLine>
-        {" "}
-        <Tab />
-        <HTMLText>)</HTMLText>
-      </CodeLine>
       <CodeLine>
         <ReactText>&#125;</ReactText>
       </CodeLine>
