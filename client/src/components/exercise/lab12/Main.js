@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Router } from "@reach/router";
 // lab imported dependencies;
-import Test from "./pages/Test";
+import Test from "./pages/Test.js";
 import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
+import GradApplication from "./GradApplication";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -20,6 +21,7 @@ const Main = () => {
           <Test path="/*" />
         </Router>
       </GameStateContext.Provider>
+      <GradApplication />
     </div>
   );
 };

@@ -25,7 +25,7 @@ const Application = () => {
   const [gradTermEmptyErr, setGradTermEmptyErr] = useState(false);
 
   const validateInput = () => {
-    let error = false;
+    // reset errors
     setFirstNameEmptyErr(false);
     setFirstNameErr(false);
     setLastNameEmptyErr(false);
@@ -46,62 +46,50 @@ const Application = () => {
     // RegExp for special characters (anything except letters and whitespace));
     const fnSpecialChar = new RegExp("[^A-Za-z\\s+]", "g");
     if (fnSpecialChar.test(firstName)) {
-      error = true;
       setFirstNameErr(true);
     }
     if (!hasCharacter.test(firstName)) {
-      error = true;
       setFirstNameEmptyErr(true);
     }
 
     // RegExp for special characters (anything except letters and whitespace));
     const lnSpecialChar = new RegExp("[^A-Za-z\\s+]", "g");
     if (lnSpecialChar.test(lastName)) {
-      error = true;
       setLastNameErr(true);
     }
     if (!hasCharacter.test(lastName)) {
-      error = true;
       setLastNameEmptyErr(true);
     }
 
     const pReg = new RegExp("[^A-Za-z\\s+/]", "g");
     if (pReg.test(pronouns)) {
-      error = true;
       setPronounsErr(true);
     }
     if (!hasCharacter.test(pronouns)) {
-      error = true;
       setPronounsEmptyErr(true);
     }
 
     const cReg = new RegExp("[^A-Za-z\\s+.]", "g");
     if (cReg.test(college)) {
-      error = true;
       setCollegeErr(true);
     }
     if (!hasCharacter.test(college) || !hasLetter.test(college)) {
-      error = true;
       setCollegeEmptyErr(true);
     }
 
     const mReg = new RegExp("[^A-Za-z\\s+.]", "g");
     if (mReg.test(major)) {
-      error = true;
       setMajorErr(true);
     }
     if (!hasCharacter.test(major) || !hasLetter.test(major)) {
-      error = true;
       setMajorEmptyErr(true);
     }
 
     const gtReg = new RegExp("[^A-Za-z0-9\\s+]", "g");
     if (gtReg.test(gradTerm)) {
-      error = true;
       setGradTermErr(true);
     }
     if (!hasCharacter.test(gradTerm)) {
-      error = true;
       setGradTermEmptyErr(true);
     }
     // -------------------------------------------------
