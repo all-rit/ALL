@@ -30,6 +30,7 @@ const InformationLetterEmail = (props) => {
     isEditable,
     handleContinue,
     descriptionText,
+    showsFogIndex = true,
   } = props;
 
   const { actions } = useMainStateContext();
@@ -90,12 +91,15 @@ const InformationLetterEmail = (props) => {
               {/* Letter Content */}
               <Letter isEditable={isEditable} />
               {/* Fog Index Overlay*/}
-              <FogIndexOverlay
-                fogIndex={fogIndex}
-                totalWords={totalWords}
-                totalSentences={totalSentences}
-                totalComplexWords={totalComplexWords}
-              />
+              {/* check to see if we should display the fog index overlay */}
+              {showsFogIndex && (
+                <FogIndexOverlay
+                  fogIndex={fogIndex}
+                  totalWords={totalWords}
+                  totalSentences={totalSentences}
+                  totalComplexWords={totalComplexWords}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -132,5 +136,6 @@ InformationLetterEmail.propTypes = {
   handleContinue: PropTypes.func.isRequired,
   sectionTitle: PropTypes.string,
   descriptionText: PropTypes.string,
+  showsFogIndex: PropTypes.bool,
 };
 export default InformationLetterEmail;
