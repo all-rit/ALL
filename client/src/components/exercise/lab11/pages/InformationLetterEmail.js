@@ -31,6 +31,8 @@ const InformationLetterEmail = (props) => {
     handleContinue,
     descriptionText,
     showsFogIndex = true,
+    letterBody,
+    alumniName,
   } = props;
 
   const { actions } = useMainStateContext();
@@ -89,7 +91,11 @@ const InformationLetterEmail = (props) => {
               </div>
               <div className="tw-w-full tw-mx-auto tw-bg-[#B4B4B4] tw-h-[2px] tw-my-4 tw-opacity-40" />
               {/* Letter Content */}
-              <Letter isEditable={isEditable} />
+              <Letter
+                isEditable={isEditable}
+                letterBody={letterBody}
+                alumniName={alumniName}
+              />
               {/* Fog Index Overlay*/}
               {/* check to see if we should display the fog index overlay */}
               {showsFogIndex && (
@@ -137,5 +143,7 @@ InformationLetterEmail.propTypes = {
   sectionTitle: PropTypes.string,
   descriptionText: PropTypes.string,
   showsFogIndex: PropTypes.bool,
+  letterBody: PropTypes.string,
+  alumniName: PropTypes.string,
 };
 export default InformationLetterEmail;

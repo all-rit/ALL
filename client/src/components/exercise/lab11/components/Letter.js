@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
  * @param {boolean} props.isEditable - A boolean value indicating whether the letter content is editable or not.
  * @returns {JSX.Element} - The JSX element representing the Letter component.
  */
-const Letter = ({ isEditable }) => {
+const Letter = ({ isEditable, letterBody, alumniName = "John Doe" }) => {
   const {
     setLetterContent,
     letterContent,
@@ -21,11 +21,9 @@ const Letter = ({ isEditable }) => {
     letterContentArray,
   } = useContext(ExerciseStateContext);
 
-  const [currentLetterContent, setCurrentLetterContent] =
-    useState(letterContent);
-
-  // eventually we will pull the name of the letter recipient from the database
-  const [letterRecipient] = useState("Lorem");
+  const [currentLetterContent, setCurrentLetterContent] = useState(
+    letterContent === "" ? letterBody : letterContent,
+  );
 
   const handleNextLetter = () => {
     if (letterContentIndex < letterContentArray.length - 1) {
@@ -125,17 +123,17 @@ const Letter = ({ isEditable }) => {
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-medium tw-self-start tw-text-start tw-word-breaks tw-mb-16`}
               style={{ fontFamily: "Kumbh Sans" }}
             >
-              Fake Name Here
+              {alumniName}
               <br />
-              111 Street Name Here,
+              111 Accessibility Street,
               <br />
-              City, State, 14626
+              Rochester, New York, 14626
             </div>
             <div
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-bold tw-self-start tw-mb-10`}
               style={{ fontFamily: "Kumbh Sans" }}
             >
-              Dear {letterRecipient},
+              Dear {alumniName},
             </div>
             <div
               id="editable-letter"
@@ -157,7 +155,7 @@ const Letter = ({ isEditable }) => {
             >
               Sincerely,
               <br />
-              Fake Name
+              Dean Ted Moseby
             </div>
             <img
               className={`tw-w-[50px] tw-h-[50px] tw-mb-10 tw-self-start`}
@@ -177,6 +175,8 @@ const Letter = ({ isEditable }) => {
 
 Letter.propTypes = {
   isEditable: PropTypes.bool,
+  letterBody: PropTypes.string,
+  alumniName: PropTypes.string,
 };
 
 export default Letter;
