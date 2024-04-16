@@ -63,9 +63,9 @@ class PageLayoutRepair extends Component {
           }
           break;
         case "classvalue":
-          if (this.state[name] !== "'body'") {
+          if (this.state[name] !== '"body"' && this.state[name] !== "'body'") {
             error = true;
-            this.setState({ classerror: "Must enter 'body'" });
+            this.setState({ classerror: 'Must enter "body"' });
           } else {
             this.setState({ classerror: null });
           }
@@ -307,7 +307,7 @@ class PageLayoutRepair extends Component {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47;Enter 'body' into the input below
+                    &#47;&#47;Enter "body" into the input below
                   </span>
                 </div>
                 <div className="code_editor__line code_editor__line-background--light">

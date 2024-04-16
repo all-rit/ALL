@@ -2127,3 +2127,9 @@ body {
   padding: 10px 10px 10px 62%;
 }
 /*# sourceMappingURL=App.css.map */
+
+.unifrakturmaguntia-regular {
+  font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

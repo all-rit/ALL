@@ -4,7 +4,6 @@ import { Router } from "@reach/router";
 import Test from "./pages/Test";
 import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
-
 import ExerciseIntro from "./pages/Explanations/ExerciseIntro";
 import PreWrongDiploma from "./pages/Explanations/PreWrongDiploma";
 import PostWrongNewsletter from "./pages/Explanations/PostWrongNewsletter";
