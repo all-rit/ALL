@@ -24,7 +24,7 @@ const ExerciseIntro = () => {
           You just graduated from ALL University! Congratulations on completing your degree! Now that you have finished, you will apply for graduation and transition from being a student to being an alum. 
         </p>
         <p className="playthrough__sentence">
-          In this exercise, you will enter your personal information in a small form. This information will appear on your diploma and we will see how to improve the questionnaire. Click the “Start” button to begin this exercise!
+          In this exercise, you will enter your personal information in a small form. This information will appear on your diploma and we will see how to improve the form. Click the “Start” button to begin this exercise!
         </p>
       </div>
       <div className="playthrough__sentence">
