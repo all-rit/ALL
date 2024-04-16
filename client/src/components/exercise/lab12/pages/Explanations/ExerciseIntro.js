@@ -14,7 +14,7 @@ const ExerciseIntro = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate(`/Lab12/Exercise/`); // WHATEVER THE LINK IS TO THE FIRST AINSLEY INPUT FORM (wrong pronouns)
+    navigate(`/Lab12/Exercise/`);  // WHATEVER THE LINK IS TO THE FIRST AINSLEY INPUT FORM (wrong pronouns)
   };
 
   return (
@@ -36,7 +36,7 @@ const ExerciseIntro = () => {
           onClick={handleContinue}
           key="start"
         >
-          Fart
+          Start
         </button>
       </div>
     </div>

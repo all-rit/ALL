@@ -26,7 +26,7 @@ const KeyTakeaways = () => {
           You have completed the exercise for Accessibility to Expression. Some
           of your key takeaways from this lab should include:
         </p>
-        <ol>
+        <ul>
           <li>
             Gender is not a social construct, but one’s own feelings as to who
             they are as a person.
@@ -40,7 +40,7 @@ const KeyTakeaways = () => {
             Applications and forms should ask the user for their preferred name,
             pronouns, etc. and use them in all further communications.
           </li>
-        </ol>
+        </ul>
       </div>
       <div className="playthrough__sentence">
         Click the &quot;Next&quot; button to move on the the Reinforcement
