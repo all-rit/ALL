@@ -1,6 +1,21 @@
 import { FILE_COUNT } from "../../../../../constants/lab7";
 import _ from "lodash";
 
+/**
+ * Array of files with their respective properties.
+ *
+ * @typedef {Object} File
+ * @property {string} fileName - The name of the file.
+ * @property {string} content - The content of the file.
+ * @property {number} sensitivityLevel - The sensitivity level of the file.
+ * @property {string} accessStatus - The access status of the file.
+ */
+
+/**
+ * Array of files.
+ *
+ * @type {File[]}
+ */
 export const FILES = [
   {
     fileName: "PortaVolutpat.tiff",

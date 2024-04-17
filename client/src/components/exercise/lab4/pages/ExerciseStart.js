@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { navigate } from "@reach/router";
 import AppInstructions from "../components/AppInstructions";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 
 const ExerciseStart = () => {
   const handleSubmit = () => {

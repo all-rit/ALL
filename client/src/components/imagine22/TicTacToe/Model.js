@@ -59,7 +59,7 @@ const checkWinner = (GameInfo) => {
         check3InARow(
           GameState.board[y][0],
           GameState.board[y][1],
-          GameState.board[y][2]
+          GameState.board[y][2],
         ) &&
         Player.piece === GameState.board[y][0]
       ) {
@@ -72,7 +72,7 @@ const checkWinner = (GameInfo) => {
         check3InARow(
           GameState.board[0][x],
           GameState.board[1][x],
-          GameState.board[2][x]
+          GameState.board[2][x],
         ) &&
         Player.piece === GameState.board[0][x]
       ) {
@@ -84,12 +84,12 @@ const checkWinner = (GameInfo) => {
       (check3InARow(
         GameState?.board[0][0],
         GameState?.board[1][1],
-        GameState?.board[2][2]
+        GameState?.board[2][2],
       ) ||
         check3InARow(
           GameState?.board[2][0],
           GameState?.board[1][1],
-          GameState?.board[0][2]
+          GameState?.board[0][2],
         )) &&
       Player.piece === GameState.board[1][1]
     ) {
@@ -155,8 +155,9 @@ const aIMove = (GameInfo) => {
   return GameState;
 };
 
-export default {
+export {
   makeMove,
+  check3InARow,
   createNewBoard,
   Players,
   checkWinner,

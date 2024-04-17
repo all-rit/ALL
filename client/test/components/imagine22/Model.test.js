@@ -1,10 +1,11 @@
 /* eslint-disable no-undef */
-const CUT = require("./Model");
-const check3InARow = CUT.check3InARow;
-const Players = CUT.Players;
-const checkWinner = CUT.checkWinner;
-const createNewBoard = CUT.createNewBoard;
-const makeMove = CUT.makeMove;
+const {
+  Players,
+  createNewBoard,
+  makeMove,
+  check3InARow,
+  checkWinner,
+} = require("../../../src/components/imagine22/TicTacToe/Model");
 
 test("checks if 3 values are equal to each other", () => {
   // 3 values that are the same
@@ -17,27 +18,15 @@ test("checks if 3 values are equal to each other", () => {
   expect(check3InARow(null, null, null)).toBe(false);
 
   expect(
-    check3InARow(
-      CUT.Players[0].piece,
-      CUT.Players[0].piece,
-      CUT.Players[0].piece
-    )
+    check3InARow(Players[0].piece, Players[0].piece, Players[0].piece),
   ).toBe(true);
 
   expect(
-    check3InARow(
-      CUT.Players[1].piece,
-      CUT.Players[1].piece,
-      CUT.Players[1].piece
-    )
+    check3InARow(Players[1].piece, Players[1].piece, Players[1].piece),
   ).toBe(true);
 
   expect(
-    check3InARow(
-      CUT.Players[1].piece,
-      CUT.Players[0].piece,
-      CUT.Players[1].piece
-    )
+    check3InARow(Players[1].piece, Players[0].piece, Players[1].piece),
   ).toBe(false);
 });
 
@@ -78,7 +67,7 @@ test("Horizontal Testing", () => {
   makeMove(horizontal, Players[1].piece, 0, 1);
   makeMove(horizontal, Players[1].piece, 1, 1);
   makeMove(horizontal, Players[1].piece, 2, 1);
-  console.log(horizontal);
+
   expect(checkWinner(horizontal)).toStrictEqual(HWinOutPut);
 });
 
@@ -93,7 +82,7 @@ test("Diagonal Testing", () => {
 
 test("Tie Condition", () => {
   const Tie = { ...createNewBoard() };
-  const outputTest = { isGameOver: false, winner: "tie" };
+  const outputTest = { isGameOver: true, winner: "tie" };
   makeMove(Tie, Players[1].piece, 0, 2);
   makeMove(Tie, Players[0].piece, 1, 2);
   makeMove(Tie, Players[0].piece, 2, 2);
@@ -103,7 +92,6 @@ test("Tie Condition", () => {
   makeMove(Tie, Players[1].piece, 0, 0);
   makeMove(Tie, Players[1].piece, 1, 0);
   makeMove(Tie, Players[0].piece, 2, 0);
-  console.log(Tie);
   expect(checkWinner(Tie)).toStrictEqual(outputTest);
 });
 

@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import { Typography } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
@@ -22,7 +22,7 @@ class AdvancedExercise extends Component {
       <div>
         <AppBar position="static" className="appBar">
           <Toolbar>
-            <Grid justify="center" container spacing={10}>
+            <Grid justifyContent="center" container spacing={10}>
               <Grid item>
                 <Typography
                   aria-label={"Advanced Exercise"}

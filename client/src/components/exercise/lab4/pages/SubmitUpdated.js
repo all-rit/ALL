@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import AppInstructions from "../components/AppInstructions";
 import { navigate } from "@reach/router";
 import { PageService } from "../../../../services/PageService";
@@ -71,7 +71,7 @@ const SubmitUpdated = () => {
           ...prevState,
           secondsElapsed: prevState.secondsElapsed + 1,
         })),
-      1000
+      1000,
     );
 
     return () => {
