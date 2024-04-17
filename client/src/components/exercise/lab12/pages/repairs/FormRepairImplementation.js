@@ -10,7 +10,7 @@ import CommentText from "src/components/all-components/CodeBlock/StyleComponents
 import CodeBlockInput from "src/components/all-components/CodeBlock/Components/CodeBlockInput";
 import IdentityFormData from "src/constants/lab12/RepairData";
 
-const IdentityRepairImplementation = (props) => {
+const FormRepairImplementation = (props) => {
   const { userInput } = props;
 
   return (
@@ -72,32 +72,6 @@ const IdentityRepairImplementation = (props) => {
       <CodeLine>
         <Tab /> <ReactText> &#125;); </ReactText>
       </CodeLine>
-
-      {/* Handle Change function */}
-      {/* <CodeLine>
-        <Tab />
-        <ReactText>const handleChange = (e) =&#62; &#123;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={2} />
-        <ReactText>setFormData(&#123;</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={3} />
-        <ReactText>...formData,</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={3} />
-        <ReactText>[e.target.name]: e.target.value</ReactText>
-      </CodeLine>
-      <CodeLine>
-        <MultiTab numberOfTabs={2} />
-        <ReactText>&#125;)</ReactText>
-      </CodeLine>
-      <CodeLine>
-        {" "}
-        <Tab /> <ReactText>&#125;</ReactText>
-      </CodeLine> */}
 
       {/** Submit Form Function */}
       <CodeLine>
@@ -241,11 +215,11 @@ const IdentityRepairImplementation = (props) => {
   );
 };
 
-IdentityRepairImplementation.propTypes = {
+FormRepairImplementation.propTypes = {
   userInput: PropTypes.func,
   identityData: PropTypes.array,
   isInputValid: PropTypes.func,
   isFirst: PropTypes.bool,
 };
 
-export default IdentityRepairImplementation;
+export default FormRepairImplementation;

@@ -3,7 +3,8 @@ import { Router } from "@reach/router";
 // lab imported dependencies;
 import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
-import IdentityRepair from "./pages/IdentityRepair";
+import FormRepair from "./pages/FormRepair";
+import DatabaseRepair from "./pages/DatabaseRepair";
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -17,7 +18,8 @@ const Main = () => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <IdentityRepair path="/Repair" />
+          <FormRepair path="/FormRepair" />
+          <DatabaseRepair path={"/DatabaseRepair"} />
         </Router>
       </GameStateContext.Provider>
     </div>

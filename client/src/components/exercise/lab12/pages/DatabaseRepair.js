@@ -1,24 +1,24 @@
-import React, { useEffect } from "react";
-import { PropTypes } from "prop-types";
+import useMainStateContext from "../../../../reducers/MainContext";
 import useDataService from "../../lab9/hooks/useDataService";
-import Repair from "src/components/body/Repair/Repair";
-import { navigate } from "@reach/router";
 import {
-  IDENTITY_REPAIR_HEADING,
+  DATABASE_REPAIR_HEADING,
+  EXERCISE_PATH,
   EXERCISE_STATES,
   REPAIR,
-  EXERCISE_PATH,
-} from "src/constants/lab12/index";
-import IdentityRepairImplementation from "./repairs/IdentityRepairImplementation";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+} from "../../../../constants/lab12";
 import RepairData from "../../../../constants/lab12/RepairData";
+import React, { useEffect } from "react";
+import { EXERCISE_PLAYING } from "../../../../constants";
+import Repair from "../../../body/Repair/Repair";
+import { navigate } from "@reach/router";
+import { PropTypes } from "prop-types";
+import DatabaseRepairImplementation from "./repairs/DatabaseRepairImplementation";
 
-const IdentityRepair = ({ user }) => {
+const DatabaseRepair = ({ user }) => {
   const { actions } = useMainStateContext();
   const { data, functions } = useDataService(
     user,
-    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
+    EXERCISE_STATES.FORM_REPAIR,
     RepairData.inputData,
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
@@ -31,17 +31,17 @@ const IdentityRepair = ({ user }) => {
 
   return (
     <Repair
-      fileName={"IdentityForm.js"}
-      path={`${REPAIR}/${EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT}`}
-      headingText={IDENTITY_REPAIR_HEADING}
+      fileName={"schema.sql"}
+      path={`${REPAIR}/${EXERCISE_STATES.DATABASE_REPAIR}`}
+      headingText={DATABASE_REPAIR_HEADING}
       validateRepair={checkInputValid}
       fetchRepair={fetchRepair}
       submitRepair={postRepair}
       repairText={[
-        "In this section you will be making changes to the IdentityForm.js file that handles inputs in the previous form.",
+        "In this section you will be making changes to the sql database file that  creates the table for our user's data.",
       ]}
       CodeImplementation={
-        <IdentityRepairImplementation
+        <DatabaseRepairImplementation
           userInput={handleUserInputChange}
           identityData={exercisePromptsState}
           isInputValid={isInputValid}
@@ -51,13 +51,14 @@ const IdentityRepair = ({ user }) => {
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/FixedForm`);
       }}
+      repairComplete
     />
   );
 };
 
-IdentityRepair.propTypes = {
+DatabaseRepair.propTypes = {
   user: PropTypes.object,
   actions: PropTypes.object,
 };
 
-export default IdentityRepair;
+export default DatabaseRepair;

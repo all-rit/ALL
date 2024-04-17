@@ -1,19 +1,26 @@
 const LAB_ID = 12;
 const REPAIR = "/Repair";
 const EXERCISE_PATH = "/Lab12/Exercise";
+const FORM_REPAIR_HEADING = "Form Repair";
+const DATABASE_REPAIR_HEADING = "Database Repair";
 
-const IDENTITY_REPAIR_HEADING = "Identity Repair";
-const IDENTITY_REPAIR = "IdentityRepair";
+const EXERCISE_SELECTION_DEFAULT = "default selection";
+const FORM_REPAIR = "FormRepair";
+const DATABASE_REPAIR = "DatabaseRepair";
 
 const EXERCISE_STATES = {
-  IDENTITY_REPAIR,
+  EXERCISE_SELECTION_DEFAULT,
+  FORM_REPAIR,
+  DATABASE_REPAIR,
 };
 
 export {
   LAB_ID,
   REPAIR,
   EXERCISE_PATH,
-  IDENTITY_REPAIR_HEADING,
-  IDENTITY_REPAIR,
+  FORM_REPAIR_HEADING,
+  DATABASE_REPAIR_HEADING,
+  FORM_REPAIR,
+  DATABASE_REPAIR,
   EXERCISE_STATES,
 };
