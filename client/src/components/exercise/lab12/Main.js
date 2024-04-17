@@ -5,6 +5,8 @@ import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
 import FormRepair from "./pages/FormRepair";
 import DatabaseRepair from "./pages/DatabaseRepair";
+import Diploma from "./components/Diploma";
+
 /**
  * Main(): is the routing component for managing the lab exercise progression,
  * this will be responsible for iterating through the different stages of the lab
@@ -20,6 +22,7 @@ const Main = () => {
         <Router className="app">
           <FormRepair path="/FormRepair" />
           <DatabaseRepair path={"/DatabaseRepair"} />
+          <Diploma path="/diploma" />
         </Router>
       </GameStateContext.Provider>
     </div>
