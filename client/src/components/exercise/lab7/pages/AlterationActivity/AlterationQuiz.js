@@ -15,6 +15,8 @@ import alterationQuizQuestions from "src/constants/lab7/alterationQuestions";
  */
 const AlterationQuiz = () => {
   const [showContinue, setShowContinue] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [quizComplete, setQuizComplete] = useState(false);
   const { state: mainState, actions: mainActions } = useMainStateContext();
 
   useEffect(() => {
@@ -29,6 +31,7 @@ const AlterationQuiz = () => {
 
   const handleSubmitData = (output, userId) => {
     ExerciseService.submitRepair(output, userId);
+    setQuizComplete(true);
     setShowContinue(true);
   };
 

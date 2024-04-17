@@ -31,38 +31,44 @@ function Quiz(props) {
   }
 
   return (
-    <div className="quiz container shadow" key={props.questionId}>
-      <QuestionCount counter={props.questionId} total={props.questionTotal} />
-      {props.isFinalQuiz ? (
-        <Question content={props.question} multi={props.multiChoice} />
-      ) : (
-        <Question
-          content={formulateEquation(props.question)}
-          multi={props.multiChoice}
-        />
-      )}
-      <ul className="answerOptions">
-        {console.log(props.answerOptions)}
-        {props.answerOptions.map(renderAnswerOptions)}
-      </ul>
-      <div className="align-right">
-        {props.questionId !== props.questionTotal ? (
-          <button
-            className="btn btn-second text-uppercase  nextButton"
-            onClick={props.nextQuestion}
-            disabled={props.disable}
-          >
-            Next Question
-          </button>
+    <div className="tw-position-relative shadow tw-rounded-3xl tw-bg-labYellow">
+      <div className="tw-position-absolute p-3 shadow bg-white tw-rounded-3xl questionContainer tw-bg-labLightGray">
+        <QuestionCount counter={props.questionId} total={props.questionTotal} />
+        {props.isFinalQuiz ? (
+          <Question content={props.question} multi={props.multiChoice} />
         ) : (
-          <button
-            className="btn btn-second text-uppercase  nextButton"
-            onClick={props.onComplete}
-            disabled={props.disable}
-          >
-            Complete
-          </button>
+          <Question
+            content={formulateEquation(props.question)}
+            multi={props.multiChoice}
+          />
         )}
+      </div>
+      <div
+        className="quiz container tw-position-absolute bg-white tw-rounded-3xl shadow questionContainer pt-1 mt-3  tw-bg-labLightGray"
+        key={props.questionId}
+      >
+        <ul className="answerOptions">
+          {props.answerOptions.map(renderAnswerOptions)}
+        </ul>
+        <div className="align-right">
+          {props.questionId !== props.questionTotal ? (
+            <button
+              className="btn tw-bg-labBlue text-white text-uppercase mt-0 nextButton"
+              onClick={props.nextQuestion}
+              disabled={props.disable}
+            >
+              Next Question
+            </button>
+          ) : (
+            <button
+              className="btn btn-second text-uppercase mt-0 nextButton"
+              onClick={props.onComplete}
+              disabled={props.disable}
+            >
+              Complete
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

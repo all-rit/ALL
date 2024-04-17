@@ -3720,9 +3720,11 @@ a.skip-main:active {
 
 .timer__window {
   background-color: #d3d6d9;
-  width: 100px;
+  display: flex;
+  flex-direction: row;
   margin: 1rem;
   padding: 1rem;
+  width: 150px;
 }
 
 .flex {

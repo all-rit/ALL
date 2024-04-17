@@ -18,7 +18,7 @@ class PageLayoutGuidance extends Component {
     const { actions } = this.props;
     return (
       <Fragment>
-        <div className="center-div">
+        <div className="center-div mb-5">
           <div className="guidance">
             The text you read was meant to stimulate what an individual with
             cognitive disability experiences. As read earlier, these individuals
