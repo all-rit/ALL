@@ -30,11 +30,11 @@ class Timer extends Component {
   render() {
     return (
       <div>
-        <div className="timer">
+        <div className="timer poppins">
           <div>
             <b>Seconds Left to Read:</b>{" "}
           </div>
-          <div className="timer__window">
+          <div className="timer__window tw-w-36 tw-rounded-xl tw-bg-labYellow">
             0 : {this.state.secondsLeft < 10 ? "0" : ""}
             {this.state.secondsLeft}
           </div>
