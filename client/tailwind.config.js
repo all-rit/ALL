@@ -37,9 +37,10 @@ module.exports = {
         "-apple-system",
         "BlinkMacSystemFont",
       ],
+      diploma: ["Diploma", "serif"],
     },
     textColor: {
-      'error-red': '#dc2626',
+      "error-red": "#dc2626",
     },
     colors: {
       black: "#000000",
@@ -71,6 +72,8 @@ module.exports = {
           "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
         "hero-dark":
           "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
+        "diploma-background":
+          "url('/src/assets/images/lab12/diploma_background.png')",
       },
       height: {
         128: "31rem",
@@ -89,7 +92,8 @@ module.exports = {
         },
       },
       boxShadow: {
-        '2xl-top-bottom': '0 -6px 12px -6px rgba(0, 0, 0, 0.25), 0 6px 12px -6px rgba(0, 0, 0, 0.25)',
+        "2xl-top-bottom":
+          "0 -6px 12px -6px rgba(0, 0, 0, 0.25), 0 6px 12px -6px rgba(0, 0, 0, 0.25)",
       },
       animation: {
         "reduced-bounce": `reducedBounce 2s linear infinite`,
