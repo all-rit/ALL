@@ -8,10 +8,11 @@ import GradApplication from "../../../src/components/exercise/lab12/GradApplicat
  * And one "Submit Application" button field
  */
 describe("Test GradApplication Component Input Fields", () => {
-  it("has 6 input fields", () => {
-    const component = renderer.create(<GradApplication />);
-    const rootInstance = component.root;
+  const component = renderer.create(<GradApplication />);
+  const rootInstance = component.root;
+  const inputFields = rootInstance.findAllByType("input");
 
+  it("has 6 input fields", () => {
     // Verify header:
     const textElement = rootInstance.findByProps({
       children: "Apply for Graduation at ALL University",
@@ -19,8 +20,9 @@ describe("Test GradApplication Component Input Fields", () => {
     expect(textElement).toBeTruthy();
 
     // Verify input fields:
-    const inputFields = rootInstance.findAllByType("input");
     expect(inputFields.length).toBe(6);
+  });
+  it("has correct placeholder text", () => {
     // Check placeholder text:
     const firstNameInputPlaceholder = inputFields[0].props.placeholder;
     const lastNameInputPlaceholder = inputFields[1].props.placeholder;
@@ -34,7 +36,8 @@ describe("Test GradApplication Component Input Fields", () => {
     expect(collegeInputPlaceholder).toBe("Ex: RIT");
     expect(majorInputPlaceholder).toBe("Ex: CS");
     expect(gradTermInputPlaceholder).toBe("Ex: Spring 2024");
-
+  });
+  it("has correct button text", () => {
     // Verify button:
     const buttons = rootInstance.findAllByType("button");
     const submitButton = buttons.find(
