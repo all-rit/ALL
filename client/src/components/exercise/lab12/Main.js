@@ -23,9 +23,9 @@ const Main = () => {
           <Test path="/*" />
           {/* TODO: remove this */}
           <Diploma path="/diploma" />
+          <GradApplication path="/GraduationApplication"/>
         </Router>
       </GameStateContext.Provider>
-      <GradApplication />
     </div>
   );
 };
