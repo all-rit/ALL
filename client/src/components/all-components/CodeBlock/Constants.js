@@ -22,4 +22,10 @@ export const htmlTagRegex =
 
 /* htmlElementRegex uses regex html attributes such as className, onClick, etc */
 export const htmlElementRegex =
-  /\b(className|onClick|disabled|next|fileName|)\b/g;
+  /\b(className|onClick|disabled|next|fileName)\b/g;
+
+export const sqlKeywordRegex =
+  /\b(CREATE|TABLE|COUNT|\*|ALTER|DEFAULT|DELETE|DROP|COLUMN|ROW|FOREIGN KEY|IN|INDEX|INNER JOIN|OUTER JOIN|INSERT INTO|IS NOT NULL|IS NULL| LIMIT|PRIMARY KEY|SELECT|SELECT ALL)\b/g;
+
+export const sqlVariableRegex =
+  /\b(varchar|char|enum|boolean|int|integer|float|double|date|datetime|timestamp|serial)\b/g;
