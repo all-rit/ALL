@@ -15,19 +15,9 @@
 
 #all-header-text {
   color: #fed136;
-  font-family:
-    "Calibri",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
+  font-family: "Calibri", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 30px;
   margin-left: -15px;
   margin-top: -10px;
@@ -110,6 +100,7 @@
 .labnav {
   // padding-top: 0.8rem;
   padding-bottom: 0.8rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .nav-last {
@@ -123,7 +114,7 @@
   padding: 0px;
   margin-top: -5px;
   height: 4rem;
-  width: 15rem;
+  width: 14rem;
 }
 
 .overflow-x-hidden {

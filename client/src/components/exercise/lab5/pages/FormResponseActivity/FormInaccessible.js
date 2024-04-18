@@ -22,7 +22,7 @@ class FormInaccessible extends Component {
     // eslint-disable-next-line react/prop-types
     const { actions } = this.props;
     return (
-      <div>
+      <div className="mb-5">
         <div className="cognitive_instructions">Complete the form below</div>
         <Form url={"/FormGuidance"} showNext={this.showNext} />
         {this.state.showNext && (

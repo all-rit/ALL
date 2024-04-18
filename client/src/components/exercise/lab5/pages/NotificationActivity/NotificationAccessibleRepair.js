@@ -17,7 +17,7 @@ class NotificationAccessibleRepair extends Component {
   render() {
     const { actions, state } = this.props;
     return (
-      <div>
+      <div className="mb-5">
         <div className="cognitive_instructions">
           There is a notification that has appeared. Click on it to view it!
           Note: it can only be viewed once.
