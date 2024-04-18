@@ -36,6 +36,7 @@ module.exports = {
         "-apple-system",
         "BlinkMacSystemFont",
       ],
+      diploma: ["Diploma", "serif"],
     },
     colors: {
       black: "#000000",
@@ -43,7 +44,8 @@ module.exports = {
       bgwhite: "#F3F3F3",
       bgdark: "#23022E",
       darkLine: "#868e96",
-      labGray: "#F8F8F8",
+      labGray: "#616161",
+      labLightGray: "#E5E2E2",
       labYellow: "#ffc334",
       labGreen: "#7B7B7B",
       labBlue: "#0d28bc",
@@ -64,6 +66,8 @@ module.exports = {
           "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
         "hero-dark":
           "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
+        "diploma-background":
+          "url('/src/assets/images/lab12/diploma_background.png')",
       },
       height: {
         128: "31rem",
