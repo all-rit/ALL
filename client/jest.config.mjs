@@ -175,7 +175,8 @@ const config = {
     "src/components/exercise/lab1/components/Exercise.js",
   ],
   moduleNameMapper: {
-    "\\.(mp3|wav)$": "test/__mocks__/fileMock.js",
+    "\\.(mp3|wav|jpg|jpeg|png|gif|webp|svg|css)$":
+      "<rootDir>/test/__mocks__/fileMock.js",
   },
 
   // A map from regular expressions to paths to transformers
