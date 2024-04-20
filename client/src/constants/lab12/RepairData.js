@@ -31,31 +31,33 @@ const IdentityFormData = {
       id: 0,
       listName: "Preferred Name",
       variableName: "preferredName",
-      formDataName: "formData.preferredName",
-
-      correctListExpression: "Preferred Name",
-      validateListExpression: `Preferred Name`,
-
       correctVariableExpression: "preferredName",
       validateVariableExpression: `preferredName`,
-
-      correctFormDataName: "formData.preferredName",
-      validateFormDataName: `formData.preferredName`,
+      userInput: "",
     },
     {
       id: 1,
       listName: "Pronouns",
       variableName: "pronouns",
-      formDataName: "formData.pronouns",
-
-      correctListExpression: "Pronouns",
-      validateListExpression: `Pronouns`,
-
       correctVariableExpression: "pronouns",
       validateVariableExpression: `pronouns`,
-
+      userInput: "",
+    },
+    {
+      id: 2,
+      variableName: "preferredName",
+      formDataName: "formData.preferredName",
+      correctFormDataName: "formData.preferredName",
+      validateFormDataName: `formData.preferredName`,
+      userInput: "",
+    },
+    {
+      id: 3,
+      variableName: "pronouns",
+      formDataName: "formData.pronouns",
       correctFormDataName: "formData.pronouns",
       validateFormDataName: `formData.pronouns`,
+      userInput: "",
     },
   ],
 };

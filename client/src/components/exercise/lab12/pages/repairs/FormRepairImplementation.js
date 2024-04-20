@@ -10,7 +10,7 @@ import CommentText from "src/components/all-components/CodeBlock/StyleComponents
 import CodeBlockInput from "src/components/all-components/CodeBlock/Components/CodeBlockInput";
 import IdentityFormData from "src/constants/lab12/RepairData";
 
-const FormRepairImplementation = (props) => {
+const FormRepairImplementation = (props = {}) => {
   const { userInput } = props;
 
   return (
@@ -31,7 +31,7 @@ const FormRepairImplementation = (props) => {
           <JSONText>{item.variableName}: &ldquo;&rdquo;,</JSONText>
         </CodeLine>
       ))}
-      {IdentityFormData.inputData.map((item) => (
+      {IdentityFormData.inputData.slice(0, 2).map((item) => (
         <div key={item.id}>
           <CodeLine>
             <MultiTab numberOfTabs={2} />
@@ -41,7 +41,7 @@ const FormRepairImplementation = (props) => {
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={2} />
-            {userInput ? (
+            {item.userInput ? (
               <CodeBlockInput
                 value={userInput}
                 attributes={{
@@ -59,7 +59,7 @@ const FormRepairImplementation = (props) => {
                   onChange: (event) => {
                     userInput(item.id, event.target.value);
                   },
-                  name: item.input,
+                  name: item.variableName,
                   type: "text",
                   placeholder: "Enter Answer Here",
                 }}
@@ -90,7 +90,7 @@ const FormRepairImplementation = (props) => {
           <HTMLText>formData.{item.variableName},</HTMLText>
         </CodeLine>
       ))}
-      {IdentityFormData.inputData.map((item) => (
+      {IdentityFormData.inputData.slice(2, 4).map((item) => (
         <div key={item.id}>
           <CodeLine>
             <MultiTab numberOfTabs={3} />{" "}
@@ -101,7 +101,7 @@ const FormRepairImplementation = (props) => {
           <CodeLine key={item.id}>
             <MultiTab numberOfTabs={3} />{" "}
             <JSONText>{item.variableName}:</JSONText>
-            {userInput ? (
+            {item.userInput ? (
               <CodeBlockInput
                 value={userInput}
                 attributes={{
@@ -119,7 +119,7 @@ const FormRepairImplementation = (props) => {
                   onChange: (event) => {
                     userInput(item.id, event.target.value);
                   },
-                  name: item.input,
+                  name: item.variableName,
                   type: "text",
                   placeholder: "Enter Answer Here",
                 }}
