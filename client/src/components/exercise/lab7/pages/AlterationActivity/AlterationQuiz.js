@@ -13,6 +13,7 @@ import useMainStateContext from "src/reducers/MainContext";
  */
 const AlterationQuiz = () => {
   const [showContinue, setShowContinue] = useState(false);
+  const [quizComplete, setQuizComplete] = useState(false);
   const { state: mainState, actions: mainActions } = useMainStateContext();
 
   useEffect(() => {
@@ -27,6 +28,7 @@ const AlterationQuiz = () => {
 
   const handleSubmitData = (output, userId) => {
     ExerciseService.submitRepair(output, userId);
+    setQuizComplete(true);
     setShowContinue(true);
   };
 
@@ -49,6 +51,8 @@ const AlterationQuiz = () => {
         hideCertificate
         isFinalQuiz={false}
         submitData={handleSubmitData}
+        quizCompleted={quizComplete}
+        setQuizCompleted={setQuizComplete}
       />
       {showContinue && (
         <button

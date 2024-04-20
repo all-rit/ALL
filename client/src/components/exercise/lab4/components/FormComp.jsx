@@ -91,8 +91,8 @@ const FormComp = (props) => {
   };
 
   return (
-    <main>
-      <div className="overlap" onClick={(e) => focusElem(e)}>
+    <main className="tw-z-50 tw-min-h-144">
+      <div className="overlap h-100 " onClick={(e) => focusElem(e)}>
         <Form>
           <FormGroup>
             <Label for="animal">Favorite Animal</Label>
