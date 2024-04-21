@@ -9,10 +9,11 @@ import JSONText from "src/components/all-components/CodeBlock/StyleComponents/JS
 import CommentText from "src/components/all-components/CodeBlock/StyleComponents/CommentText";
 import CodeBlockInput from "src/components/all-components/CodeBlock/Components/CodeBlockInput";
 import IdentityFormData from "src/constants/lab12/FormRepair";
+import ErrorText from "../../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const FormRepairImplementation = (props = {}) => {
-  const { userInput } = props;
-
+  const { identityData, isInputValid, isFirst, userInput } = props;
+  console.log(identityData);
   return (
     <>
       <CodeLine>
@@ -31,44 +32,55 @@ const FormRepairImplementation = (props = {}) => {
           <JSONText>{item.variableName}: &ldquo;&rdquo;,</JSONText>
         </CodeLine>
       ))}
-      {IdentityFormData.inputData.slice(0, 2).map((item) => (
-        <div key={item.id}>
-          <CodeLine>
-            <MultiTab numberOfTabs={2} />
-            <CommentText>
-              Enter &lsquo;{item.variableName}&rsquo; below:{" "}
-            </CommentText>
-          </CodeLine>
-          <CodeLine>
-            <MultiTab numberOfTabs={2} />
-            {item.userInput ? (
-              <CodeBlockInput
-                value={userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(item.id, event.target.value);
-                  },
-                  name: item.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(item.id, event.target.value);
-                  },
-                  name: item.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
+      {identityData
+        .filter((item) => item.id < 2)
+        .map((item, index) => (
+          <div key={item.id}>
+            <CodeLine>
+              <MultiTab numberOfTabs={2} />
+              <CommentText>
+                Enter &lsquo;{item.variableName}&rsquo; below:{" "}
+              </CommentText>
+            </CodeLine>
+            <CodeLine>
+              <MultiTab numberOfTabs={2} />
+              {item.userInput ? (
+                <CodeBlockInput
+                  value={item.userInput}
+                  attributes={{
+                    onChange: (event) => {
+                      userInput(item.id, event.target.value);
+                    },
+                    name: item.variableName,
+                    type: "text",
+                    placeholder: "Enter Answer Here",
+                  }}
+                />
+              ) : (
+                <CodeBlockInput
+                  attributes={{
+                    onChange: (event) => {
+                      userInput(item.id, event.target.value);
+                    },
+                    name: item.variableName,
+                    type: "text",
+                    placeholder: "Enter Answer Here",
+                  }}
+                />
+              )}
+              <JSONText>: &ldquo;&rdquo;,</JSONText>
+            </CodeLine>
+            {!isInputValid[index] && !isFirst && (
+              <CodeLine>
+                <MultiTab numberOfTabs={3} />
+                <ErrorText>
+                  Error in form submission. Please enter &quot;
+                  {item.correct_expression}&quot; and resubmit.
+                </ErrorText>
+              </CodeLine>
             )}
-            <JSONText>: &ldquo;&rdquo;,</JSONText>
-          </CodeLine>
-        </div>
-      ))}
+          </div>
+        ))}
       <CodeLine>
         <Tab /> <ReactText> &#125;); </ReactText>
       </CodeLine>
@@ -90,44 +102,55 @@ const FormRepairImplementation = (props = {}) => {
           <HTMLText>formData.{item.variableName},</HTMLText>
         </CodeLine>
       ))}
-      {IdentityFormData.inputData.slice(2, 4).map((item) => (
-        <div key={item.id}>
-          <CodeLine>
-            <MultiTab numberOfTabs={3} />{" "}
-            <CommentText>
-              Enter &lsquo;formData.{item.variableName}&rsquo; below:{" "}
-            </CommentText>
-          </CodeLine>
-          <CodeLine key={item.id}>
-            <MultiTab numberOfTabs={3} />{" "}
-            <JSONText>{item.variableName}:</JSONText>
-            {item.userInput ? (
-              <CodeBlockInput
-                value={userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(item.id, event.target.value);
-                  },
-                  name: item.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(item.id, event.target.value);
-                  },
-                  name: item.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
+      {identityData
+        .filter((item) => item.id > 1)
+        .map((item, index) => (
+          <div key={item.id}>
+            <CodeLine>
+              <MultiTab numberOfTabs={3} />{" "}
+              <CommentText>
+                Enter &lsquo;formData.{item.variableName}&rsquo; below:{" "}
+              </CommentText>
+            </CodeLine>
+            <CodeLine key={item.id}>
+              <MultiTab numberOfTabs={3} />{" "}
+              <JSONText>{item.variableName}:</JSONText>
+              {item.userInput ? (
+                <CodeBlockInput
+                  value={item.userInput}
+                  attributes={{
+                    onChange: (event) => {
+                      userInput(item.id, event.target.value);
+                    },
+                    name: item.variableName,
+                    type: "text",
+                    placeholder: "Enter Answer Here",
+                  }}
+                />
+              ) : (
+                <CodeBlockInput
+                  attributes={{
+                    onChange: (event) => {
+                      userInput(item.id, event.target.value);
+                    },
+                    name: item.variableName,
+                    type: "text",
+                    placeholder: "Enter Answer Here",
+                  }}
+                />
+              )}
+            </CodeLine>
+            {!isInputValid[index] && !isFirst && (
+              <CodeLine>
+                <MultiTab numberOfTabs={3} />
+                <ErrorText>
+                  Error in form submission. Please enter &quot;
+                  {item.correct_expression}&quot; and resubmit.
+                </ErrorText>
+              </CodeLine>
             )}
-          </CodeLine>
-        </div>
-      ))}
+          </div>
+        ))}
       <CodeLine>
         <MultiTab numberOfTabs={2} /> <ReactText>&#125;);</ReactText>
       </CodeLine>
@@ -218,7 +241,7 @@ const FormRepairImplementation = (props = {}) => {
 FormRepairImplementation.propTypes = {
   userInput: PropTypes.func,
   identityData: PropTypes.array,
-  isInputValid: PropTypes.func,
+  isInputValid: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 

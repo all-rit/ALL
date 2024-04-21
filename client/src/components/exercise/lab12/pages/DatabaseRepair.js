@@ -10,7 +10,7 @@ import React, { useEffect } from "react";
 import { EXERCISE_PLAYING } from "../../../../constants";
 import Repair from "../../../body/Repair/Repair";
 import { navigate } from "@reach/router";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import DatabaseRepairImplementation from "./repairs/DatabaseRepairImplementation";
 import IdentityDatabaseData from "../../../../constants/lab12/DatabaseRepair";
 
@@ -28,6 +28,12 @@ const DatabaseRepair = () => {
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
+    console.warn(
+      "Input Data array: ",
+      exercisePromptsState,
+      ", isInputValid: ",
+      isInputValid,
+    );
   }, []);
 
   return (

@@ -3,7 +3,7 @@ import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
 import SQLText from "../../../../all-components/CodeBlock/StyleComponents/SQLText";
 import MultiTab from "../../../../all-components/CodeBlock/Components/MultiTab";
 import CodeBlockInput from "../../../../all-components/CodeBlock/Components/CodeBlockInput";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
 import ErrorText from "../../../../all-components/CodeBlock/StyleComponents/ErrorText";
 import IdentityDatabaseData from "../../../../../constants/lab12/DatabaseRepair";
@@ -34,7 +34,7 @@ const DatabaseRepairImplementation = (props) => {
           &lsquo;they/them&rsquo;
         </CommentText>
       </CodeLine>
-      {IdentityDatabaseData.inputData
+      {identityData
         .filter((item) => item.id === 0)
         .map((item, index) => (
           <div key={index}>
@@ -89,7 +89,7 @@ const DatabaseRepairImplementation = (props) => {
         {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
         <CommentText>// Enter &lsquo;varchar(255)&rsquo;</CommentText>
       </CodeLine>
-      {IdentityDatabaseData.inputData
+      {identityData
         .filter((item) => item.id === 1)
         .map((item, index) => (
           <div key={index}>
@@ -142,7 +142,7 @@ const DatabaseRepairImplementation = (props) => {
 };
 
 DatabaseRepairImplementation.propTypes = {
-  userInput: PropTypes.string,
+  userInput: PropTypes.func,
   isInputValid: PropTypes.array,
   isFirst: PropTypes.bool,
   identityData: PropTypes.array,
