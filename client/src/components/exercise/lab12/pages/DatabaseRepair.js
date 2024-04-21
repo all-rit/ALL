@@ -1,25 +1,25 @@
 import useMainStateContext from "../../../../reducers/MainContext";
-import useDataService from "../../lab9/hooks/useDataService";
+import useDataService from "../../lab12/hooks/useDataService";
 import {
   DATABASE_REPAIR_HEADING,
   EXERCISE_PATH,
   EXERCISE_STATES,
   REPAIR,
 } from "../../../../constants/lab12";
-import RepairData from "../../../../constants/lab12/FormRepair";
 import React, { useEffect } from "react";
 import { EXERCISE_PLAYING } from "../../../../constants";
 import Repair from "../../../body/Repair/Repair";
 import { navigate } from "@reach/router";
 import { PropTypes } from "prop-types";
 import DatabaseRepairImplementation from "./repairs/DatabaseRepairImplementation";
+import IdentityDatabaseData from "../../../../constants/lab12/DatabaseRepair";
 
 const DatabaseRepair = ({ user }) => {
   const { actions } = useMainStateContext();
   const { data, functions } = useDataService(
     user,
-    EXERCISE_STATES.FORM_REPAIR,
-    RepairData.inputData,
+    EXERCISE_STATES.DATABASE_REPAIR,
+    IdentityDatabaseData.inputData,
   );
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =

@@ -1,4 +1,4 @@
-const DatabaseFormData = {
+const IdentityDatabaseData = {
   constData: [
     {
       id: 0,
@@ -48,17 +48,17 @@ const DatabaseFormData = {
       id: 0,
       variable: "pronouns",
       userInput: "",
-      correctExpression: "'he/him', 'she/her', 'they/them'",
-      validateExpression: `'he/him', 'she/her', 'they/them'`,
+      correct_expression: "'he/him', 'she/her', 'they/them'",
+      validate_expression: `'he/him', 'she/her', 'they/them'`,
     },
     {
       id: 1,
       variable: "preferredName",
       userInput: "",
-      correctExpression: "varchar(255)",
-      validateExpression: "varchar(255)",
+      correct_expression: "varchar(255)",
+      validate_expression: `varchar(255)`,
     },
   ],
 };
 
-export default DatabaseFormData;
+export default IdentityDatabaseData;
