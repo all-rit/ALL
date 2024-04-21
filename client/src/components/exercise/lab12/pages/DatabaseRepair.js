@@ -14,8 +14,9 @@ import { PropTypes } from "prop-types";
 import DatabaseRepairImplementation from "./repairs/DatabaseRepairImplementation";
 import IdentityDatabaseData from "../../../../constants/lab12/DatabaseRepair";
 
-const DatabaseRepair = ({ user }) => {
-  const { actions } = useMainStateContext();
+const DatabaseRepair = () => {
+  const { actions, state } = useMainStateContext();
+  const user = state.main.user;
   const { data, functions } = useDataService(
     user,
     EXERCISE_STATES.DATABASE_REPAIR,
@@ -59,6 +60,7 @@ const DatabaseRepair = ({ user }) => {
 DatabaseRepair.propTypes = {
   user: PropTypes.object,
   actions: PropTypes.object,
+  state: PropTypes.object,
 };
 
 export default DatabaseRepair;

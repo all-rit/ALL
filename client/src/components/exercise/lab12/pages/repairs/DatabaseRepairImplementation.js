@@ -38,7 +38,7 @@ const DatabaseRepairImplementation = (props) => {
         .filter((item) => item.id === 0)
         .map((item, index) => (
           <div key={index}>
-            <CodeLine key={index}>
+            <CodeLine>
               <MultiTab numberOfTabs={2} />
               <SQLText>{item.variable}</SQLText>
               <MultiTab numberOfTabs={6} />

@@ -17,6 +17,7 @@ const Reading = (props) => {
   const [readingData, setReadingData] = useState("");
   useScroll();
   useEffect(() => {
+    console.warn(user.userid);
     UserLabService.complete_reading(labID);
     if (user?.firstname !== null && user !== null) {
       UserLabService.user_complete_reading(user.userid, labID);
