@@ -1,5 +1,7 @@
 /* eslint-disable new-cap */
-const IDENTITY_REPAIR = 'identityRepair';
+// eslint-disable-next-line max-len
+const FORM_REPAIR = 'FormRepair';
+const DATABASE_REPAIR = 'DatabaseRepair';
 module.exports = (sequelize, DataTypes) => {
   const IdentityRepair = sequelize.define('RepairLab12',
       {
@@ -15,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         section: {
           type:
             DataTypes.ENUM(
-                IDENTITY_REPAIR,
+                FORM_REPAIR,
+                DATABASE_REPAIR,
             ),
         },
         repair: {
@@ -30,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
         repairCount: {
           type: DataTypes.BIGINT,
         },
+      },
+      {
+        tableName: 'lab12_repair',
       },
   );
   IdentityRepair.sync();

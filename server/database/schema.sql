@@ -353,6 +353,19 @@ create table lab11_exercise
     primary key ("repairId")
 );
 
+create table lab12_exercise
+(
+    "repairId"                         serial,
+    userid                             bigint,
+    "isFormRepairComplete"             boolean,
+    "isDatabaseRepairComplete"         boolean,
+    "attemptTime"                      timestamp with time zone,
+    "isExerciseComplete"               boolean,
+    "hasViewed"                        boolean,
+    "attemptCount"                     integer,
+    primary key ("repairId")
+);
+
 create type enum_lab11_repair_section as enum ('WordCount', 'SentenceCount', 'ComplexWordCount');
 
 create table lab11_repair
@@ -380,6 +393,19 @@ create table lab9_repair
     "repairCount" bigint,
     primary key ("repairId")
 );
+
+create type enum_lab12_repair_section as enum ('FormRepair', 'DatabaseRepair');
+
+create table lab12_repair (
+        "repairId"    serial,
+        userid        bigint,
+        section       enum_lab12_repair_section,
+        repair        json,
+        "isComplete"  boolean,
+        "attemptTime" timestamp with time zone,
+        "repairCount" bigint,
+        primary key ("repairId")
+)
 
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
                 that is accessible to users who utilize screenreaders.

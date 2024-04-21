@@ -36,7 +36,8 @@ async function postExercise(data) {
   try {
     const {
       userId,
-      isRepairComplete,
+      isFormRepairComplete,
+      isDatabaseRepairComplete,
       isExerciseComplete,
       hasViewed,
     } = data;
@@ -44,7 +45,8 @@ async function postExercise(data) {
     const currentTime = new Date().toISOString();
     const newExercise = {
       userid: userId,
-      isRepairComplete: false,
+      isFormRepairComplete: false,
+      isDatabaseRepairComplete: false,
       isExerciseComplete: false,
       attemptTime: currentTime,
       attemptCount: 1,
@@ -58,7 +60,8 @@ async function postExercise(data) {
       const newVal = convert + 1;
       const updatedExercise = {
         userid: userId,
-        isRepairComplete: isRepairComplete,
+        isFormRepairComplete: isFormRepairComplete,
+        isDatabaseRepairComplete: isDatabaseRepairComplete,
         isExerciseComplete: isExerciseComplete,
         attemptTime: currentTime,
         attemptCount: newVal,

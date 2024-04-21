@@ -10,11 +10,20 @@ module.exports = (sequelize, DataTypes) => {
         userid: {
           type: DataTypes.BIGINT,
         },
-        isRepairComplete: {
+        isFormRepairComplete: {
+          type: DataTypes.BOOLEAN,
+        },
+        isDatabaseRepairComplete: {
           type: DataTypes.BOOLEAN,
         },
         attemptTime: {
-          type: DataTypes.Date,
+          type: DataTypes.DATE,
+        },
+        isExerciseComplete: {
+          type: DataTypes.BOOLEAN,
+        },
+        hasViewed: {
+          type: DataTypes.BOOLEAN,
         },
         attemptCount: {
           type: DataTypes.INTEGER,
