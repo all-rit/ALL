@@ -49,14 +49,14 @@ const IdentityDatabaseData = {
       variable: "pronouns",
       userInput: "",
       correct_expression: "'he/him', 'she/her', 'they/them'",
-      validate_expression: `'he/him', 'she/her', 'they/them'`,
+      validate_expression: `'he\\/him', 'she\\/her', 'they\\/them`,
     },
     {
       id: 1,
       variable: "preferredName",
       userInput: "",
       correct_expression: "varchar(255)",
-      validate_expression: `varchar(255)`,
+      validate_expression: `varchar\\(255\\)`,
     },
   ],
 };
