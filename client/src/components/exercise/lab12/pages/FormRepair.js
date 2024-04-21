@@ -12,7 +12,7 @@ import {
 import FormRepairImplementation from "./repairs/FormRepairImplementation";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
-import RepairData from "../../../../constants/lab12/RepairData";
+import RepairData from "../../../../constants/lab12/FormRepair";
 
 const FormRepair = ({ user }) => {
   const { actions } = useMainStateContext();

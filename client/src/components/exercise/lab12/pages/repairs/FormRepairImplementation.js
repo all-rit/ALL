@@ -8,7 +8,7 @@ import HTMLText from "src/components/all-components/CodeBlock/StyleComponents/HT
 import JSONText from "src/components/all-components/CodeBlock/StyleComponents/JSONText";
 import CommentText from "src/components/all-components/CodeBlock/StyleComponents/CommentText";
 import CodeBlockInput from "src/components/all-components/CodeBlock/Components/CodeBlockInput";
-import IdentityFormData from "src/constants/lab12/RepairData";
+import IdentityFormData from "src/constants/lab12/FormRepair";
 
 const FormRepairImplementation = (props = {}) => {
   const { userInput } = props;

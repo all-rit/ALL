@@ -6,7 +6,7 @@ import {
   EXERCISE_STATES,
   REPAIR,
 } from "../../../../constants/lab12";
-import RepairData from "../../../../constants/lab12/RepairData";
+import RepairData from "../../../../constants/lab12/FormRepair";
 import React, { useEffect } from "react";
 import { EXERCISE_PLAYING } from "../../../../constants";
 import Repair from "../../../body/Repair/Repair";
