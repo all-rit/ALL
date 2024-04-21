@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
 import ErrorText from "../../../../all-components/CodeBlock/StyleComponents/ErrorText";
 import IdentityDatabaseData from "../../../../../constants/lab12/DatabaseRepair";
-const DatabaseRepairImplementation = (props) => {
+const DatabaseRepairImplementation = (props = {}) => {
   // eslint-disable-next-line no-unused-vars
   const { identityData, userInput, isInputValid, isFirst } = props;
   return (
@@ -73,7 +73,7 @@ const DatabaseRepairImplementation = (props) => {
             </CodeLine>
             {!isInputValid[index] && !isFirst && (
               <CodeLine>
-                <MultiTab numberOfTabs={3} />
+                <MultiTab numberOfTabs={11} />
                 <ErrorText>
                   Error in form submission. Please enter &quot;
                   {item.correct_expression}&quot; and resubmit.
@@ -125,7 +125,7 @@ const DatabaseRepairImplementation = (props) => {
             </CodeLine>
             {!isInputValid[index] && !isFirst && (
               <CodeLine>
-                <MultiTab numberOfTabs={3} />
+                <MultiTab numberOfTabs={11} />
                 <ErrorText>
                   Error in form submission. Please enter &quot;
                   {item.correct_expression}&quot; and resubmit.

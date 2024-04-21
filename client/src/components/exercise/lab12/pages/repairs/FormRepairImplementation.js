@@ -72,7 +72,7 @@ const FormRepairImplementation = (props = {}) => {
             </CodeLine>
             {!isInputValid[index] && !isFirst && (
               <CodeLine>
-                <MultiTab numberOfTabs={3} />
+                <MultiTab numberOfTabs={2} />
                 <ErrorText>
                   Error in form submission. Please enter &quot;
                   {item.correct_expression}&quot; and resubmit.
