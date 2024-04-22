@@ -8,7 +8,16 @@ const ExerciseService = require('../../services/lab12/ExerciseService');
 async function getExercise(req) {
   try {
     const {userID} = req.params;
-    return await ExerciseService.getExercise(userID);
+    const response = await ExerciseService.getExercise(userID);
+    if (response === null) {
+      return {
+        userId: userID,
+        isFormRepairComplete: false,
+        isDatabaseRepairComplete: false,
+        isExerciseComplete: false,
+        hasViewed: false,
+      };
+    }
   } catch (error) {
     console.error(error);
   }
@@ -23,13 +32,12 @@ async function getExercise(req) {
  */
 async function postExercise(req) {
   try {
-    const {userID, isAddressComplete, isDateComplete, isNavComplete,
+    const {userID, isDatabaseRepairComplete, isFormRepairComplete,
       isExerciseComplete, hasViewed} = req.body;
     const responseId = await ExerciseService.postExercise({
       userId: userID,
-      isAddressComplete: isAddressComplete,
-      isDateComplete: isDateComplete,
-      isNavComplete: isNavComplete,
+      isFormRepairComplete: isFormRepairComplete,
+      isDatabaseRepairComplete: isDatabaseRepairComplete,
       isExerciseComplete: isExerciseComplete,
       hasViewed: hasViewed,
     }).id;
