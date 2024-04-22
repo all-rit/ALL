@@ -261,7 +261,7 @@ const QuizHandler = (props) => {
       ) : (
         <Result
           hideCertificate={props.hideCertificate}
-          quizResult={result * 100 + "%"}
+          quizResult={Math.round(result * 100) + "%"}
           quizScore={100}
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
