@@ -5,6 +5,15 @@ import PropTypes from "prop-types";
 import Question from "./Question";
 import QuestionCount from "./QuestionCount";
 import AnswerOption from "./AnswerOption";
+import { MathComponent } from "mathjax-react";
+
+const formulateEquation = (equation) => {
+  return (
+    <div className={"tw-flex tw-flex-col"}>
+      <MathComponent tex={String.raw`New\;Utility\;Equation=${equation}`} />
+    </div>
+  );
+};
 
 function Quiz(props) {
   function renderAnswerOptions(key) {
@@ -13,7 +22,6 @@ function Quiz(props) {
         key={key.type}
         answerContent={key.content}
         answerType={key.type}
-        answer={props.answer}
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
         multiChoice={props.multiChoice}
@@ -26,7 +34,14 @@ function Quiz(props) {
     <div className="tw-position-relative shadow tw-rounded-3xl tw-bg-labYellow">
       <div className="tw-position-absolute p-3 shadow bg-white tw-rounded-3xl questionContainer tw-bg-labLightGray">
         <QuestionCount counter={props.questionId} total={props.questionTotal} />
-        <Question content={props.question} multi={props.multiChoice} />
+        {props.isFinalQuiz ? (
+          <Question content={props.question} multi={props.multiChoice} />
+        ) : (
+          <Question
+            content={formulateEquation(props.question)}
+            multi={props.multiChoice}
+          />
+        )}
       </div>
       <div
         className="quiz container tw-position-absolute bg-white tw-rounded-3xl shadow questionContainer pt-1 mt-3  tw-bg-labLightGray"
