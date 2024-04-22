@@ -1,6 +1,3 @@
-CREATE USER all_dev WITH PASSWORD 'all_dev';
-GRANT ALL PRIVILEGES ON DATABASE testing TO all_dev;
-
 create table imagine22
 (
     id              serial,
@@ -381,601 +378,8 @@ create table lab9_repair
     primary key ("repairId")
 );
 
-INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
-                that is accessible to users who utilize screenreaders.
-                You will learn about using alt tags,
-                increase your understanding through an interactive module about
-                screenreaders and alt tags, view related media to reinforce the topic, and take a quiz
-                to test your knowledge. Click "Next" to start!', e'{
-	"piechart":
-		{"header":"Approximate Visually Impaired Population in the World",
-		"caption":["Currently, as high as 80% of all visual impairments are preventable or curable.","Globally the number of people of all ages visually impaired is estimated to be 285 million, of whom 39 million are blind.","People of age 50 and over account for 82% of the blind.","Understanding the degree of visual impairment and its causes are important in adequately allocating resources to various health areas of work."],
-		"data":{
-			"labels": ["World Population (Millions)", "Visually Impaired (Millions)"],
-			"datasets": [
-			  {
-				"label": "Visually Impaired in a Population of 6,697 People",
-				"borderColor": "black",
-				"backgroundColor": ["blue", "red"],
-				"data": [6697, 285],
-				"borderWidth": "1"
-			  }
-			]
-		  }
-	},
-	"description":{
-		"header":"What is a Screen Reader?",
-		"content":"A screen reader is an essential software program that aids visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both."
-	},
-	"body":[
-		{
-			"header":"What are some examples of visual impairment?",
-			"type":"study__list",
-			"content":["Diabetic retinopathy","Childhood blindness","Age-related macular degeneration (AMD)","Corneal opacities","Glaucoma","Trachoma","Cataracts","Uncorrected refractive errors"]
-		},
-		{
-			"header":"Effect that impaired vision has on the computing world",
-			"type":"",
-			"content":["By acknowledging that visual impairment is a major global health issue, the computing world made necessary advances in screen readers. Screen readers have increased in both availability and popularity. One example of such screen readers is JAWS (Job Access With Speech) which is the world’s most popular screen reader. Screen readers now include many more features that allow the visually impaired to get through life much more easily."]
-		},
-		{
-			"header":"Usability tips for screen reader friendly interfaces:",
-			"type":"study__list",
-			"content":["Use many headings and subheadings","Code headings correctly with proper size","Keep big blocks of text short","Increase button size","Include “Skip” links","Decrease the number of links","Limit the use of popups"]
-		}
-	],
-	"footer":{
-		"links":[
-			{
-				"name":"American Foundation for the Blind",
-				"link":"https://www.afb.org/"
-			},
-			{
-				"name":"World Health Organization",
-				"link":"https://www.who.int/"
-			},
-			{
-				"name":"Braille Institute",
-				"link":"https://www.brailleinstitute.org/"
-			}
-		]
-	}
-}', '[{"title":"Accessibility for Blind/Visually-Impaired Users","link":"https://www.youtube.com/embed/1by5J7c5Vz4"},{"title":"How a blind developer uses accessibility features in Visual Studio","link":"https://www.youtube.com/embed/94swlF55tVc?"}]', e'[
-    {
-        "question": "How many people around the world have visual impairments?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "12 million"
-            },
-            {
-                "val": 1,
-                "content": "285 million"
-            },
-            {
-                "val": 0,
-                "content": "39 million"
-            },
-            {
-                "val": 0,
-                "content": "500 million"
-            }
 
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "What is the most popular screen reader currently available?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "COBRA"
-            },
-            {
-                "val": 0,
-                "content": "BRLTTY"
-            },
-            {
-                "val": 1,
-                "content": "JAWS"
-            },
-            {
-                "val": 0,
-                "content": "iMax for Mac"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Which of the following is one way to make a screen reader interface more user-friendly?",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Use many headings and subheadings"
-            },
-            {
-                "val": 0,
-                "content": "Increase the number of paragraphs"
-            },
-            {
-                "val": 0,
-                "content": "Decrease text size"
-            },
-            {
-                "val": 0,
-                "content": "Increase the number of buttons and links"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "About what percentage of all blind people are aged 50 years or older?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "55%"
-            },
-            {
-                "val": 0,
-                "content": "70%"
-            },
-            {
-                "val": 1,
-                "content": "82%"
-            },
-            {
-                "val": 0,
-                "content": "92%"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Which of the following should you do to ensure that an image is not purely decorative? Select all that apply.",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Make the image smaller"
-            },
-            {
-                "val": 1,
-                "content": "Use an alt attribute to communicate the function of the image"
-            },
-            {
-                "val": 1,
-                "content": "Provide a brief description of the image"
-            },
-            {
-                "val": 0,
-                "content": "Use it to add ambiance or visual interest to the page"
-            }
-
-        ],
-        "multiChoice": true
-    }
-]', true), (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
-               that is accessible to users who face cognitive impairments.
-               You will learn about using clear descriptive headings, handling time driven notifications, and
-               creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz
-               to test your knowledge. Click "Next" to start!
-', e'{
-	"piechart":
-		{"header":"How Many People are Affected?",
-		"caption":["Survey information gathered by the CDC concludes that as high as 11% of all Americans face a cognitive disability resulting in serious difficulty concentrating, remembering, or making decisions.","According to research conducted by the National Institute of Health (NIH), the current prevalence of adult ADHD in the US is 4.4%. Another NIH research study concluded that the prevalence of dyslexia in the US is 20%, or one in five people.","Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources for research in accessibility improvements."],
-		"data":{
-			"labels": [
-					"US Population without Cognitive Impairment (Millions)",
-					"US Population with Cognitive Disability (CDC Survey) (Millions)",
-                    "US Population with Dyslexia (Millions)",
-                    "US Population with ADHD (Millions)"
-				],
-			"datasets": [
-						{
-						"label": "Cognitively Impaired in a Population of 328 People",
-						"borderColor": "black",
-						"backgroundColor": ["#335C67", "#9e2a2b", "#FFF3B0", "#E09F3E"],
-						"data": [212, 36, 66, 14],
-						"borderWidth": "1"
-						}
-				]
-			}
-	},
-	"description":{
-		"header":"What is a Cognitive Impairment?",
-		"content":"The term cognitive impairment or cognitive disability refers to a broad range of disabilities including intellectual disabilities and age-related issues regarding thinking and remembering, as well as learning disabilities and other cognitive issues such as dyslexia and attention deficit hyperactivity disorder (ADHD)."
-	},
-	"body":[
-        {
-			"header":"",
-			"type":"links",
-			"content":[
-				{
-					"name":"Cognitive Disability Prevalence (CDC)",
-					"link":"https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html"
-				},
-				{
-					"name":"ADHD Prevalence (NIH)",
-					"link":"https://www.nimh.nih.gov/health/statistics/attention-deficit-hyperactivity-disorder-adhd"
-				},
-				{
-					"name":"Dyslexia Prevalence Research (NIH)",
-					"link":"https://pubmed.ncbi.nlm.nih.gov/33278155/"
-				}
-			]
-		},
-		{
-			"header":"Common Challenges",
-			"type":"study__list",
-			"content":["Understanding content","Remembering how to complete tasks","Confusion caused by inconsistent or non-traditional web page layouts","Keeping focus while completing a task","Different processing speed, requiring additional time"]
-		},
-		{
-			"header":"How to Address These Problems?",
-			"type":"non-bullet-list",
-			"content":[
-				{
-					"header":"",
-					"content":"WCAG, Web Content Accessibility Guidelines, includes several guidelines to improve cognitive accessibility. They define 17 specific guidelines, of which six are especially relevant for cognitive accessibility."
-				},
-				{
-					"header":"Adaptability",
-					"content":"All information should be available in a form that can be perceived by all users. For example, the information could be spoken aloud via a narration tool. Thus you should ensure the content can be understood by the software."
-				},
-				{
-					"header":"Time",
-					"content":"It is important to allow users the time they require to complete tasks. Guideline 2.2 states \'provide users enough time to read and use content.\' People with cognitive disabilities may require more time to read content, or to perform functions such as filling out forms."
-				},
-				{
-					"header":"Navigation",
-					"content":"Guideline 2.4 states to include clear and descriptive headings so users can easily find information and understand relationships between different content sections."
-				},
-				{
-					"header":"Readability",
-					"content":"Guideline 3.1 states \'make text content readable and understandable.\' Keep the writing style simple and easy to understand."
-				},
-				{
-					"header":"Predictability",
-					"content":"Guideline 3.2 states to \'make web pages appear and operate in predictable ways.\' Use consistency with the page layout."
-				},
-				{
-					"header":"Input Assistance",
-					"content":"Guideline 3.3 states to \'help users avoid and correct mistakes.\' If they do make a mistake, ensure the message allows them to easily fix the error."
-				}
-			]
-		},
-		{
-			"header":"Practical Applications of Cognitive Accessibility",
-			"type":"non-bullet-list",
-			"content":[
-				{
-					"header":"",
-					"content":"We all enjoy online shopping. However, a person’s ability to use websites effectively declines by 0.8% every year over the age of 25, according to Nielsen Norman Group. Optimally designing for memory limitations will be especially important as the population ages. These techniques include:"
-				},
-				{
-					"header":"User Authentication",
-					"content":"Offer at least one alternative method that does not rely on a user to memorize character strings."
-				},
-				{
-					"header":"Don’t hide important/frequent controls",
-					"content":"Show both the text and icon labels for controls making it easier for users to remember their purpose."
-				},
-				{
-					"header":"Grouping Content",
-					"content":"Group similar items semantically and visually with a suggested maximum group size of five. This makes decision the process easier when choosing between similar items."
-				},
-				{
-					"header":"Path Markers",
-					"content":"Remind site visitors where they are in a process."
-				}
-			]
-		}
-	],
-	"footer":{
-		"links":[
-			{
-				"name":"Mozilla Cognitive Accessibility",
-				"link":"https://developer.mozilla.org/en-US/docs/Web/Accessibility/Cognitive_accessibility"
-			},
-			{
-				"name":"W3 Cognitive Accessibility",
-				"link":"https://www.w3.org/WAI/cognitive/"
-			},
-			{
-				"name":"Making Content Accessible",
-				"link":"https://www.w3.org/TR/coga-usable/"
-			}
-		]
-	}
-}', '[{"title":"Dyslexia & Web Accessibility","link":"https://www.youtube.com/embed/9XiHhQikNrY"},{"title":"Web Accessibility Perspectives: Understandable Content","link":"https://www.youtube.com/embed/BYRxF2yInfA"}]', e'[
-    {
-        "question": "How many people in the US have cognitive impairments?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "1.3 million"
-            },
-            {
-                "val": 1,
-                "content": "16 million"
-            },
-            {
-                "val": 0,
-                "content": "285 million"
-            },
-            {
-                "val": 0,
-                "content": "500 million"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "What is common challenge for cognitively impaired users?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Hearing audio cues"
-            },
-            {
-                "val": 0,
-                "content": "Clicking large buttons"
-            },
-            {
-                "val": 0,
-                "content": "Distinguishing colors apart"
-            },
-            {
-                "val": 1,
-                "content": "Working under time constraints"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "How can you improve accessibility for cognitively impaired users?",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Use proper headings and subheadings"
-            },
-            {
-                "val": 1,
-                "content": "Clearly define any errors and suggestions to fix them"
-            },
-            {
-                "val": 1,
-                "content": "Provide them enough time to read the content"
-            },
-            {
-                "val": 0,
-                "content": "Increase the number of buttons and links"
-            }
-
-        ],
-        "multiChoice": true
-    },
-    {
-        "question": "What are various types of cognitive disabilities?",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Alzheimer\'s"
-            },
-            {
-                "val": 0,
-                "content": "Dueteranope"
-
-            },
-            {
-                "val": 1,
-                "content": "Dementia"
-            },
-            {
-                "val": 1,
-                "content": "Dyslexia"
-            }
-
-        ],
-        "multiChoice": true
-    },
-    {
-        "question": "What is a common challenge of dyslexic users?",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Trouble matching letters with the sounds of those letters"
-            },
-
-            {
-                "val": 0,
-                "content": "Writing with their non dominant hand"
-            },
-            {
-                "val": 1,
-                "content": "Spelling"
-            },
-            {
-                "val": 0,
-                "content": "Memorizing pronouns"
-            }
-
-        ],
-        "multiChoice": true
-    }
-]', true), (4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
-                that is accessible to users with dexterity impairments.
-                You will learn about issues related to dexterity,
-                increase your understanding through an interactive module about
-                dexterity impairments, view related media to reinforce the topic,
-                and take a quiz to test your knowledge. Click "Next" to start!', e'{
-	"piechart":{
-		"header":"Approximate Population with Dexterity Impairments in the US",
-		"caption":["16.3% of the US adult population is affected by a mobility impairment"],
-		"data":{
-				"labels": [
-					"Population without Dexterity Impairments (Millions)",
-					"Population with Dexterity Impairments (Millions)"
-				],
-				"datasets": [
-					{
-					  "label": "Dexterity Impaired in a Population of 328 Million People",
-					  "borderColor": "black",
-					  "backgroundColor": ["blue", "red"],
-					  "data": [328, 40.7],
-					  "borderWidth": "1"
-					}
-				]
-		}
-	},
-	"description":{
-		"header":"What Is a Dexterity Impairment?",
-		"content":"Many types of dexterity impairments exist, but all limit the functionality of one or more limbs and cause the loss of fine control of movement. They can be caused by an injury, a genetic disorder, or a disease. For example, Muscular dystrophy is a genetic disorder that causes progressive weakness in the muscles."
-	},
-	"body":[
-		{
-			"header":"Examples of Dexterity Impairments",
-			"type":"study__list",
-			"content":["Spinal cord injury","Loss or damage of limb","Cerebral palsy","Muscular dystrophy","Multiple sclerosis","Spina bifida","Amyotrophic Lateral Sclerosis (ALS)","Arthritis","Parkinson’s disease","Essential tremor"]
-		},
-		{
-			"header":"Effects of Dexterity Impairments on Software Usage",
-			"type":"",
-			"content":["Dexterity impairments can make it difficult to use traditional technologies such as a keyboard or mouse. To combat these challenges, people with dexterity impairments can use various assistive technologies. For example, voice-activated technologies can be used to browse the web with only voice commands. Other technologies include keyboard-only navigation, alternative keyboards, switch devices, and on-screen keyboard programs. It is important to be aware that some users may become fatigued from using assistive technologies."]
-		},
-		{
-			"header":"Accessibility Standards for Dexterity Impairment",
-			"type":"",
-			"content":["The W3C organization makes several suggestions for making software accessible to users with dexterity impairments. One guideline is to ensure that all features can be accessed via a keyboard. In addition, another guideline is to make all touch targets (for example, a button) at least 9mm high by 9mm wide."]
-		}
-	],
-	"footer":{
-		"links":[
-			{
-				"name":"Assistive Technologies",
-				"link":"https://webaim.org/articles/motor/assistive"
-			},
-			{
-				"name":"W3 Mobile Accessibility",
-				"link":"https://www.w3.org/TR/mobile-accessibility-mapping/"
-			},
-			{
-				"name":"W3 Physical Disabilities",
-				"link":"https://www.w3.org/WAI/people-use-web/abilities-barriers/#physical"
-			}
-		]
-	}
-}', '[{"title":"Motor Impaired User Review","link":"https://www.youtube.com/embed/yE1S0Biuxcc"},{"title":"Digital Accessibility User Impact: Motor Disabilities","link":"https://www.youtube.com/embed/nnDw7JPJBAE"}]', e'[
-    {
-        "question": "What is a dexterity/mobility impairment?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Inability to hear"
-            },
-            {
-                "val": 1,
-                "content": "Loss of fine control of movement"
-            },
-            {
-                "val": 0,
-                "content": "Loss of vision"
-            },
-            {
-                "val": 0,
-                "content": "Inability to distinguish between certain colors"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "What are some examples of assistive technology for people with dexterity impairments?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Altered keyboards"
-            },
-            {
-                "val": 0,
-                "content": "Voice/speech recognition systems"
-            },
-            {
-                "val": 0,
-                "content": "On-screen keyboard programs"
-            },
-            {
-                "val": 1,
-                "content": "All of the above"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "What is one way to improve web accessibility for people with dexterity/mobility impairments?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Use many headings and subheadings"
-            },
-            {
-                "val": 0,
-                "content": "Ensure that text and interactive elements have a color contrast ratio of at least 4.5:1"
-            },
-            {
-                "val": 0,
-                "content": "Use audio cues upon completion of an interaction"
-            },
-            {
-                "val": 1,
-                "content": "Ensure all functions can be accessed with the keyboard"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "A large portion of the elderly community deal with worsening motor capabilities, making it hard for them to use the web.",
-        "answers": [
-            {
-                "val": 1,
-                "content": "True"
-            },
-            {
-                "val": 0,
-                "content": "False"
-            }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Which of the following are challenges that people with dexterity/mobility impairments experience?",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Users may become fatigued when using the assistive technologies"
-            },
-            {
-                "val": 0,
-                "content": "Users are able to physically interact with their hardware device"
-            },
-            {
-                "val": 0,
-                "content": "Users may become well-adapted to the assistive technologies over time"
-            },
-            {
-                "val": 1,
-                "content": "Users may not be able to use the mouse or peripherals"
-            }
-
-        ],
-        "multiChoice": true
-    }
-]', true),(1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
+INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
             fought for easier access for hearing impaired individuals,
@@ -1126,109 +530,1182 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
 	}
 }', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
 ', e'[
-    {
-        "question": "What is an audio cue?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "A vibration that conveys key information"
-            },
-            {
-                "val": 1,
-                "content": "A playing sound that conveys key information"
-            },
-            {
-                "val": 0,
-                "content": "A visual indicator that conveys key information"
-            },
-            {
-                "val": 0,
-                "content": "None of the above"
-            }
-        ],
-        "multiChoice": false
+  {
+    "question": "What is an audio cue?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "A vibration that conveys key information"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "A playing sound that conveys key information"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "A visual indicator that conveys key information"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How many people (aged 18 and over) with hearing loss are there in the United States?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "20-30 million people"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "30-40 million people"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "40-50 million people"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "50-60 million people"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "When should accessibility be considered in the development process?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "At the end"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "From the beginning"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Whenever the developer feels it\'s necessary"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Only if it\'s needed for the project"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What does the \'Perceivable\' accessibility principle mean?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "User interface components and navigation must be operable."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Information and user interface components must be presentable to users in ways they can perceive."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Information and the operation of user interface must be understandable."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Do users with hearing loss have a disadvantage when they use applications that utilize audio cues?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Yes"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "No"
+      }
+    ],
+    "multiChoice": false
+  }
+]
+', true),
+ (2, 'Accessibility to Color Blindness', 'Color Blindness', 'Accessibility', '/colorblindness.jpg', 'Learn more about designing the web for color blind individuals.', 'This lab explores accessibility issues involving color blindness. This will be introduced to the user through a simulated color blind lens. The user will then be asked to navigate through the exercise with the lens activated and once without. The user will then be asked to implement accessible colors that will allow every user to have the same experience.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is colorblind, the types of colorblindness that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for those who are colorblind (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to colorblindness (Comprehension)"]', 'Scott Frauenknecht', 'https://all.rit.edu/Lab2/', null, e'In this lab, you will learn about why it is important to create
+            software that is accessible to users with visual impairments.
+            You will learn about different color vision deficiencies,
+            increase your understanding through an interactive module about
+            visual impairments, view related media to reinforce the topic, and take a
+            quiz to test your knowledge. Click "Next" to start!', e'{
+	"piechart":
+		{"header":"Color Vision Deficiencies",
+		"caption":["Color Vision Deficiencies (or CVDs) affects 1 in 12 men (8%) and 1 in 200 Women across the world.","The pie chart above shows this data in a population of 10,000 people."],
+		"data":{
+			"labels": [
+				"Males With A CVD",
+				"Females With A CVD",
+				"Males Without A CVD",
+				"Females Without A CVD"
+			  ],
+			  "datasets": [
+				{
+				  "label": "Color Visions Deficiencies in a Population of 10,000 People",
+				  "borderColor": "black",
+				  "backgroundColor": ["orange","darkred", "lightblue", "purple"],
+				  "data": [416.67, 25, 4583.33, 4975],
+				  "borderWidth": "2"
+				}
+			  ]
+		  }
+	},
+	"description":"",
+	"body":[
+		{
+			"header":"Four Main Types of Color Vision Deficiencies",
+			"type":"non-bullet-list",
+			"content":[
+				{
+					"header":"Protanomaly (proht-n-om-uh-lee):",
+					"content":"There is a reduced sensitivity to red light. Most people with this have issues distinguishing between reds, greens, browns, and oranges. There can also be confusion when comparing blues and purples to one another. This is one of the most common forms of a CVD."
+				},
+				{
+					"header":"Deuteranomaly (deu-ter-​anom-a-ly):",
+					"content":"There is a reduced sensitivity to green light. Most people with this also have issues distinguishing between reds, greens, browns, and oranges. They can also confuse blues and purples when copmpared to one another. This is the other most common form of a CVD."
+				},
+				{
+					"header":"Tritanomaly (trī′tə-nŏm′ə-lē):",
+					"content":"There is a reduced sensitivity to blue light. Most people with this have issues distinguishing between blue and yellow, violet and red, and blue and green. Most of the colors someone with this would see are pink, red, black, white, grey, and turquoise. This CVD is extremely rare."
+				},
+				{
+					"header":"Monochromacy (mon-o-chro-ma-cy):",
+					"content":"Individuals with this deficiency can see no colors at all. Everything is a shade of grey that ranges between white and black. This is incredibly rare (approximately 1 in 33,000 people are diagnosed with this condition). Due to the range of colors these individuals can see, it can make it difficult to perform even everyday tasks."
+				}
+			]
+		},
+		{
+			"header":"Each form of CVD has varying levels of severity.",
+			"type":"",
+			"content":[]
+		},
+		{
+			"header":"What, in the eye, is causing colors to be perceived in this way?",
+			"type":"",
+			"content":["For individuals with Protanomaly, Deuteranomaly, and Tritanomaly, they are considered dichromatic, meaning that they only have two types of cones in their eyes to perceived colors. People without these deficiencies have three cones and each cone is responsible for perceiving red, green, and blue. This is where the reduced sensitivity comes from, as the reduction in one cone causes a section of the color spectrum to not be viewable to the individual. This section happens to overlap for individuals with Protanomaly and Deuteranomaly, which is why some individuals may refer to their deficiency as \'red/green colorblindness\', as these individuals may tend to see the world in very similar ways."]
+		},
+		{
+			"header":"Causes of color vision deficiencies:",
+			"type":"",
+			"content":["Color vision deficiencies are normally caused by genetic conditions and are usually inheritied from an individual\'s parents. Men are more often impacted than women because the gene is carried in the X chromosome. There can be some other cases that cause color vision deficiencies however their causes are still being researched to determine the exact cause."]
+		},
+		{
+			"header":"At this moment in time, there is no cure to these deficiencies.",
+			"type":"",
+			"content":[]
+		}
+	],
+	"footer":{
+		"links":[
+			{
+				"name":"Colour Blind Awareness",
+				"link":"http://www.colourblindawareness.org/"
+			},
+			{
+				"name":"American Optometric Association",
+				"link":"https://www.aoa.org/patients-and-public/eye-and-vision-problems/glossary-of-eye-and-vision-conditions/color-deficiency"
+			},
+			{
+				"name":"Colblindor",
+				"link":"https://www.color-blindness.com/"
+			}
+		]
+	}
+}
+', '[{"title":"Color Blindness Testimony","link":"https://www.youtube.com/embed/d6KKsmmOKEI"},{"title":"Color Contrast Lecture","link":"https://www.youtube.com/embed/zrl0CW8m-Qk"}]', e'[
+  {
+    "question": "Which of the following best describes \'color contrast\'?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "A measurement of a color’s brightness"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "A condition resulting in reduced sensitivity to green light"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "A measurement of the difference between two colors when they are layered on top of each other"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following is NOT a form of color vision deficiency?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Protanopia"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Deuteranopia"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Tritanopia"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Dichrompia"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is the minimum contrast allowed by the WCAG AAA Color Standards?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "4"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "7"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "9"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "11"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following is the best way to correct an improper ratio in color contrast?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Do nothing, it’s impossible to fix"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Make everything black and white"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Use a color contrast calculator"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "If placed in a color contrast calculator, which of the following would result in a proper color contrast ratio?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Dark red placed on another shade of dark red"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "White placed on light pink"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Light pink placed on black"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Black placed on black"
+      }
+    ],
+    "multiChoice": false
+  }
+]
+', true),
+(3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
+                that is accessible to users who utilize screenreaders.
+                You will learn about using alt tags,
+                increase your understanding through an interactive module about
+                screenreaders and alt tags, view related media to reinforce the topic, and take a quiz
+                to test your knowledge. Click "Next" to start!', e'{
+	"piechart":
+		{"header":"Approximate Visually Impaired Population in the World",
+		"caption":["Currently, as high as 80% of all visual impairments are preventable or curable.","Globally the number of people of all ages visually impaired is estimated to be 285 million, of whom 39 million are blind.","People of age 50 and over account for 82% of the blind.","Understanding the degree of visual impairment and its causes are important in adequately allocating resources to various health areas of work."],
+		"data":{
+			"labels": ["World Population (Millions)", "Visually Impaired (Millions)"],
+			"datasets": [
+			  {
+				"label": "Visually Impaired in a Population of 6,697 People",
+				"borderColor": "black",
+				"backgroundColor": ["blue", "red"],
+				"data": [6697, 285],
+				"borderWidth": "1"
+			  }
+			]
+		  }
+	},
+	"description":{
+		"header":"What is a Screen Reader?",
+		"content":"A screen reader is an essential software program that aids visually impaired or blind users in reading text displayed on a computer screen. This is achieved through the use of a speech synthesizer or braille display. In simple terms, screen readers turn text that is displayed on a screen into a tactile or auditory form, or both."
+	},
+	"body":[
+		{
+			"header":"What are some examples of visual impairment?",
+			"type":"study__list",
+			"content":["Diabetic retinopathy","Childhood blindness","Age-related macular degeneration (AMD)","Corneal opacities","Glaucoma","Trachoma","Cataracts","Uncorrected refractive errors"]
+		},
+		{
+			"header":"Effect that impaired vision has on the computing world",
+			"type":"",
+			"content":["By acknowledging that visual impairment is a major global health issue, the computing world made necessary advances in screen readers. Screen readers have increased in both availability and popularity. One example of such screen readers is JAWS (Job Access With Speech) which is the world’s most popular screen reader. Screen readers now include many more features that allow the visually impaired to get through life much more easily."]
+		},
+		{
+			"header":"Usability tips for screen reader friendly interfaces:",
+			"type":"study__list",
+			"content":["Use many headings and subheadings","Code headings correctly with proper size","Keep big blocks of text short","Increase button size","Include “Skip” links","Decrease the number of links","Limit the use of popups"]
+		}
+	],
+	"footer":{
+		"links":[
+			{
+				"name":"American Foundation for the Blind",
+				"link":"https://www.afb.org/"
+			},
+			{
+				"name":"World Health Organization",
+				"link":"https://www.who.int/"
+			},
+			{
+				"name":"Braille Institute",
+				"link":"https://www.brailleinstitute.org/"
+			}
+		]
+	}
+}', '[{"title":"Accessibility for Blind/Visually-Impaired Users","link":"https://www.youtube.com/embed/1by5J7c5Vz4"},{"title":"How a blind developer uses accessibility features in Visual Studio","link":"https://www.youtube.com/embed/94swlF55tVc?"}]', e'[
+  {
+    "question": "How many people around the world have visual impairments?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "12 million"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "285 million"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "39 million"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "500 million"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is the most popular screen reader currently available?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "COBRA"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "BRLTTY"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "JAWS"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "iMax for Mac"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following is one way to make a screen reader interface more user-friendly?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Use many headings and subheadings"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Increase the number of paragraphs"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Decrease text size"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Increase the number of buttons and links"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "About what percentage of all blind people are aged 50 years or older?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "55%"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "70%"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "82%"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "92%"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following should you do to ensure that an image is made accessible to a screen reader?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Make the image smaller"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Use an alt attribute to communicate the function of the image"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Provide a brief description of the image"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Use it to add ambiance or visual interest to the page"
+      }
+    ],
+    "multiChoice": true
+  }
+]', true),
+(4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
+                that is accessible to users with dexterity impairments.
+                You will learn about issues related to dexterity,
+                increase your understanding through an interactive module about
+                dexterity impairments, view related media to reinforce the topic,
+                and take a quiz to test your knowledge. Click "Next" to start!', e'{
+	"piechart":{
+		"header":"Approximate Population with Dexterity Impairments in the US",
+		"caption":["16.3% of the US adult population is affected by a mobility impairment"],
+		"data":{
+				"labels": [
+					"Population without Dexterity Impairments (Millions)",
+					"Population with Dexterity Impairments (Millions)"
+				],
+				"datasets": [
+					{
+					  "label": "Dexterity Impaired in a Population of 328 Million People",
+					  "borderColor": "black",
+					  "backgroundColor": ["blue", "red"],
+					  "data": [328, 40.7],
+					  "borderWidth": "1"
+					}
+				]
+		}
+	},
+	"description":{
+		"header":"What Is a Dexterity Impairment?",
+		"content":"Many types of dexterity impairments exist, but all limit the functionality of one or more limbs and cause the loss of fine control of movement. They can be caused by an injury, a genetic disorder, or a disease. For example, Muscular dystrophy is a genetic disorder that causes progressive weakness in the muscles."
+	},
+	"body":[
+		{
+			"header":"Examples of Dexterity Impairments",
+			"type":"study__list",
+			"content":["Spinal cord injury","Loss or damage of limb","Cerebral palsy","Muscular dystrophy","Multiple sclerosis","Spina bifida","Amyotrophic Lateral Sclerosis (ALS)","Arthritis","Parkinson’s disease","Essential tremor"]
+		},
+		{
+			"header":"Effects of Dexterity Impairments on Software Usage",
+			"type":"",
+			"content":["Dexterity impairments can make it difficult to use traditional technologies such as a keyboard or mouse. To combat these challenges, people with dexterity impairments can use various assistive technologies. For example, voice-activated technologies can be used to browse the web with only voice commands. Other technologies include keyboard-only navigation, alternative keyboards, switch devices, and on-screen keyboard programs. It is important to be aware that some users may become fatigued from using assistive technologies."]
+		},
+		{
+			"header":"Accessibility Standards for Dexterity Impairment",
+			"type":"",
+			"content":["The W3C organization makes several suggestions for making software accessible to users with dexterity impairments. One guideline is to ensure that all features can be accessed via a keyboard. In addition, another guideline is to make all touch targets (for example, a button) at least 9mm high by 9mm wide."]
+		}
+	],
+	"footer":{
+		"links":[
+			{
+				"name":"Assistive Technologies",
+				"link":"https://webaim.org/articles/motor/assistive"
+			},
+			{
+				"name":"W3 Mobile Accessibility",
+				"link":"https://www.w3.org/TR/mobile-accessibility-mapping/"
+			},
+			{
+				"name":"W3 Physical Disabilities",
+				"link":"https://www.w3.org/WAI/people-use-web/abilities-barriers/#physical"
+			}
+		]
+	}
+}', '[{"title":"Motor Impaired User Review","link":"https://www.youtube.com/embed/yE1S0Biuxcc"},{"title":"Digital Accessibility User Impact: Motor Disabilities","link":"https://www.youtube.com/embed/nnDw7JPJBAE"}]', e'[
+  {
+    "question": "What is a dexterity/mobility impairment?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Inability to hear"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Loss of fine control of movement"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Loss of vision"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Inability to distinguish between certain colors"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What are some examples of assistive technology for people with dexterity impairments?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Altered keyboards"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Voice/speech recognition systems"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "On-screen keyboard programs"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is one way to improve web accessibility for people with dexterity/mobility impairments?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Use many headings and subheadings"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Ensure that text and interactive elements have a color contrast ratio of at least 4.5:1"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Use audio cues upon completion of an interaction"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Ensure all functions can be accessed with the keyboard"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "A large portion of the elderly community deal with worsening motor capabilities, making it hard for them to use the web.",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "True"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "False"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following are challenges that people with dexterity/mobility impairments experience?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Users may become fatigued when using the assistive technologies"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Users are able to physically interact with their hardware device"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Users may become well-adapted to the assistive technologies over time"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Users may not be able to use the mouse or peripherals"
+      }
+    ],
+    "multiChoice": true
+  }
+]', true),
+ (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
+               that is accessible to users who face cognitive impairments.
+               You will learn about using clear descriptive headings, handling time driven notifications, and
+               creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz
+               to test your knowledge. Click "Next" to start!
+', e'{
+	"piechart":
+		{"header":"How Many People are Affected?",
+		"caption":["Survey information gathered by the CDC concludes that as high as 11% of all Americans face a cognitive disability resulting in serious difficulty concentrating, remembering, or making decisions.","According to research conducted by the National Institute of Health (NIH), the current prevalence of adult ADHD in the US is 4.4%. Another NIH research study concluded that the prevalence of dyslexia in the US is 20%, or one in five people.","Understanding the degree of cognitive impairment and its causes is important in adequately allocating resources for research in accessibility improvements."],
+		"data":{
+			"labels": [
+					"US Population without Cognitive Impairment (Millions)",
+					"US Population with Cognitive Disability (CDC Survey) (Millions)",
+                    "US Population with Dyslexia (Millions)",
+                    "US Population with ADHD (Millions)"
+				],
+			"datasets": [
+						{
+						"label": "Cognitively Impaired in a Population of 328 People",
+						"borderColor": "black",
+						"backgroundColor": ["#335C67", "#9e2a2b", "#FFF3B0", "#E09F3E"],
+						"data": [212, 36, 66, 14],
+						"borderWidth": "1"
+						}
+				]
+			}
+	},
+	"description":{
+		"header":"What is a Cognitive Impairment?",
+		"content":"The term cognitive impairment or cognitive disability refers to a broad range of disabilities including intellectual disabilities and age-related issues regarding thinking and remembering, as well as learning disabilities and other cognitive issues such as dyslexia and attention deficit hyperactivity disorder (ADHD)."
+	},
+	"body":[
+        {
+			"header":"",
+			"type":"links",
+			"content":[
+				{
+					"name":"Cognitive Disability Prevalence (CDC)",
+					"link":"https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html"
+				},
+				{
+					"name":"ADHD Prevalence (NIH)",
+					"link":"https://www.nimh.nih.gov/health/statistics/attention-deficit-hyperactivity-disorder-adhd"
+				},
+				{
+					"name":"Dyslexia Prevalence Research (NIH)",
+					"link":"https://pubmed.ncbi.nlm.nih.gov/33278155/"
+				}
+			]
+		},
+		{
+			"header":"Common Challenges",
+			"type":"study__list",
+			"content":["Understanding content","Remembering how to complete tasks","Confusion caused by inconsistent or non-traditional web page layouts","Keeping focus while completing a task","Different processing speed, requiring additional time"]
+		},
+		{
+			"header":"How to Address These Problems?",
+			"type":"non-bullet-list",
+			"content":[
+				{
+					"header":"",
+					"content":"WCAG, Web Content Accessibility Guidelines, includes several guidelines to improve cognitive accessibility. They define 17 specific guidelines, of which six are especially relevant for cognitive accessibility."
+				},
+				{
+					"header":"Adaptability",
+					"content":"All information should be available in a form that can be perceived by all users. For example, the information could be spoken aloud via a narration tool. Thus you should ensure the content can be understood by the software."
+				},
+				{
+					"header":"Time",
+					"content":"It is important to allow users the time they require to complete tasks. Guideline 2.2 states \'provide users enough time to read and use content.\' People with cognitive disabilities may require more time to read content, or to perform functions such as filling out forms."
+				},
+				{
+					"header":"Navigation",
+					"content":"Guideline 2.4 states to include clear and descriptive headings so users can easily find information and understand relationships between different content sections."
+				},
+				{
+					"header":"Readability",
+					"content":"Guideline 3.1 states \'make text content readable and understandable.\' Keep the writing style simple and easy to understand."
+				},
+				{
+					"header":"Predictability",
+					"content":"Guideline 3.2 states to \'make web pages appear and operate in predictable ways.\' Use consistency with the page layout."
+				},
+				{
+					"header":"Input Assistance",
+					"content":"Guideline 3.3 states to \'help users avoid and correct mistakes.\' If they do make a mistake, ensure the message allows them to easily fix the error."
+				}
+			]
+		},
+		{
+			"header":"Practical Applications of Cognitive Accessibility",
+			"type":"non-bullet-list",
+			"content":[
+				{
+					"header":"",
+					"content":"We all enjoy online shopping. However, a person’s ability to use websites effectively declines by 0.8% every year over the age of 25, according to Nielsen Norman Group. Optimally designing for memory limitations will be especially important as the population ages. These techniques include:"
+				},
+				{
+					"header":"User Authentication",
+					"content":"Offer at least one alternative method that does not rely on a user to memorize character strings."
+				},
+				{
+					"header":"Don’t hide important/frequent controls",
+					"content":"Show both the text and icon labels for controls making it easier for users to remember their purpose."
+				},
+				{
+					"header":"Grouping Content",
+					"content":"Group similar items semantically and visually with a suggested maximum group size of five. This makes decision the process easier when choosing between similar items."
+				},
+				{
+					"header":"Path Markers",
+					"content":"Remind site visitors where they are in a process."
+				}
+			]
+		}
+	],
+	"footer":{
+		"links":[
+			{
+				"name":"Mozilla Cognitive Accessibility",
+				"link":"https://developer.mozilla.org/en-US/docs/Web/Accessibility/Cognitive_accessibility"
+			},
+			{
+				"name":"W3 Cognitive Accessibility",
+				"link":"https://www.w3.org/WAI/cognitive/"
+			},
+			{
+				"name":"Making Content Accessible",
+				"link":"https://www.w3.org/TR/coga-usable/"
+			}
+		]
+	}
+}', '[{"title":"Dyslexia & Web Accessibility","link":"https://www.youtube.com/embed/9XiHhQikNrY"},{"title":"Web Accessibility Perspectives: Understandable Content","link":"https://www.youtube.com/embed/BYRxF2yInfA"}]', e'[
+  {
+    "question": "How many people in the US have cognitive impairments?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "1.3 million"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "16 million"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "285 million"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "500 million"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is a common challenge for cognitively impaired users?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Hearing audio cues"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Clicking large buttons"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Distinguishing colors apart"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Working under time constraints"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How can you improve accessibility for cognitively impaired users?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Use proper headings and subheadings"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Clearly define any errors and suggestions to fix them"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Provide them enough time to read the content"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Increase the number of buttons and links"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What are various types of cognitive disabilities?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Alzheimer\'s"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Deuteranope"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Dementia"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Dyslexia"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What is a common challenge of dyslexic users?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Trouble matching letters with the sounds of those letters"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Writing with their non dominant hand"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Spelling"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Memorizing pronouns"
+      }
+    ],
+    "multiChoice": true
+  }
+]
+', true), (6, 'Ethics of AI', 'Ethics of AI', 'AI', '/ethicsai.jpg', 'Learn more about the ethics behind AI.', 'This lab introduces the ethics behind AI. The user will be introduced to what goes into the development of an AI and what needs to be done to make it ethical. The exercise portion will bring the user through multiple scenarios where the AI has a bias against certain groups. The user will then be asked about the issues bias brings and asks the user to make changes to the AI.', '["LO1: Recognize different ethical challenges in AI (Comprehension)","LO2: Practice consideration of ethics in a AI-related scenario (Application)","LO3: Diagnose ethical implications of choices made by AI (Synthesis)","SLO1 Supplemental: Assess impact and determine appropriate response to ethical scenarios (Synthesis)"]', 'Mark Sternefeld, Jaden Wedner, Kyle Messerle', 'https://all.rit.edu/Lab6/', null, 'In this lab, you will learn about the importance of ethical implications of using Artificial Intelligence (AI). You will learn about issues related to a lack of diversity and human biases in data, increase your understanding through an interactive module about bias in software, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
+    "piechart":
+       {"header":"AI use cases in manufacturing industry percentages worldwide as of 2020",
+       "caption":[""],
+       "data":{
+          "labels": [
+                "Quality Contol", "Inventory Management", "Monitoring Diagnostics", " Customer Care", "Personalization of Products", " Asset Maintenance"
+             ],
+          "datasets": [
+                   {
+                   "label": "AI use cases in manufacturing industry worldwide as of 2020",
+                   "borderColor": "Black",
+                   "backgroundColor": [
+                      "#283D3B",
+                      "#197278",
+                      "#83A8A6",
+                      "#EDDDD4",
+                      "#C44536",
+                      "#772E25"
+                  ],
+                   "data": [59,44,32,29,22,22],
+                   "borderWidth": "1"
+                   }
+             ]
+          }
     },
-    {
-        "question": "How many people (aged 18 and over) with hearing loss are there in the United States?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "20-30 million people"
-            },
-            {
-                "val": 1,
-                "content": "30-40 million people"
-            },
-            {
-                "val": 0,
-                "content": "40-50 million people"
-            },
-            {
-                "val": 0,
-                "content": "50-60 million people"
-            }
-        ],
-        "multiChoice": false
+    "description":{
+       "header":"What is an AI?",
+       "content":"Artificial Intelligence (AI) is the study of simulating human thought processes to complete a task. An artificial intelligence processes data through advanced algorithms and can look through large amounts of data to effectively find patterns or features humans can possibly miss. The algorithms used to make the intelligence run are designed by human beings and are currently incapable of simulating human emotion. This intelligence does not have an I.Q. (Intelligence Quotient) since IQ is used to track the growth of intellgicence in children and can not be applied to a computer. Contemporarily, AI is used in conjunction with big data to analyze user data and adjust the company\'s practices to better serve their customers."
     },
-    {
-        "question": "When should accessibility be considered in the development process?",
-        "answers": [
+    "body":[
+        {
+            "header":"Common uses of AI",
+            "type":"study__list",
+            "content":["Self-driving cars", "Online Shopping and retail", "Streaming Services and chatbots", "Cybersecurity and Surveillance", "Surgery analytics and Diagnosing diseases"]
+        },
+       {
+          "header":"A.C.L.U v. Clearview AI",
+          "type":"",
+          "content":["On May 28th, 2020, The American Civil Liberties Union (ACLU), ACLU of Illinois, and the law firm Edelson PC filed a lawsuit against Clearview AI claiming a violation of Illinois residents\' privacy rights under the Illinois Biometric Information Privacy Act (BIPA). Clearview AI built a database which shows about 3 Billion facial images captured illegally of people all over the world without their consent and put them in a database giving access to private companies, wealthy individuals, and enforcement agencies. The AI captured millions of new faces instead of focusing on people who gave consent. This technology did not acknowledge harmful decisions inflicted on survivors of domestic violence, undocumented immigrants, communities of color, and many more. Clearview AI settled and agreed to limit the images by not releasing to private companies, including individuals, as well as allowing the public to opt-out of any search results. "]
+       }
+    ],
+    "footer":{
+       "links":[
             {
-                "val": 0,
-                "content": "At the end"
+                "name":"Clearview AI Lawsuit",
+                "link":"https://www.aclu.org/cases/aclu-v-clearview-ai"
             },
             {
-                "val": 1,
-                "content": "From the beginning"
+                "name":"Using AI as a Weapon?",
+                "link":"https://www.nytimes.com/2019/06/13/us/aclu-surveillance-artificial-intelligence.html"
             },
             {
-                "val": 0,
-                "content": "Whenever the developer feels it\'s necessary"
-            },
-            {
-                "val": 0,
-                "content": "Only if it\'s needed for the project"
+                "name":"More",
+                "link":"https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html?searchResultPosition=1"
             }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "What does the \'Perceivable\' accessibility principle mean?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "User interface components and navigation must be operable."
-            },
-            {
-                "val": 1,
-                "content": "Information and user interface components must be presentable to users in ways they can perceive."
-            },
-            {
-                "val": 0,
-                "content": "Information and the operation of user interface must be understandable."
-            },
-            {
-                "val": 0,
-                "content": "None of the above"
-            }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Do users with hearing loss have a disadvantage when they use applications that utilize audio cues?",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Yes"
-            },
-            {
-                "val": 0,
-                "content": "No"
-            }
-        ],
-        "multiChoice": false
+        ]
     }
-]', true),  (7, 'AI Cybersecurity', 'AI Cybersecurity', 'AI', '/aicybersecurity.jpg', 'Learn more about the basics of AI in cybersecurity.', 'This lab will provide participants with a fundamental understanding of the core aspects of autonomous systems through a cybersecurity lens, which is a significant area of application for AI and Machine Learning. To strengthen this understanding, the participant will progress through a simulation of an autonomous system that will modify the access of sensitive files when security threats are present in the system.', '["LO1: Recognize foundational components of a cybersecurity-focused autonomous system (Comprehension)", "LO2: Use provided elements to demonstrate basic cyber security-focused autonomous systems in action (Application)", "LO3: Compose a minor alteration to an existing cyber security-focused autonomous system and assess its impacts (Evaluation)", "LO4: Recognize and identify the ethical impact of cyber security-focused autonomous systems and decision-making", "SLO1 Supplemental: Construct a basic cyber security-focused autonomous system (Synthesis)"]', 'Kelley Lam, Jonathan Cruz, Domenic Mangano, Janae Moring', 'https://all.rit.edu/Lab7/', null, e'In this lab, you will learn about the basics of AI and Machine Learning
+  }
+  ', e'[{"title":"Ethics & AI: Equal Access and Algorithmic Bias","link":"https://www.youtube.com/embed/tJQSyzBUAew"},
+   {"title":"Moral Code: The Ethics of AI","link":"https://www.youtube.com/embed/GboOXAjGevA"}]', e'[
+  {
+    "question": "What field can AI be used in?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Self-driving cars"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Chatbots"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Surveillance"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the Above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Does AI have an IQ?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Yes, AI is measured just like human intelligence."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "No, AI is measured differently than human intelligence."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "The computer science community is unsure."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Yes, but AI is not measured the same as human intelligence."
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What manufacturing industry uses AI most frequently?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Monitoring Diagnostics"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Inventory Management"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Quality Control"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Customer Care"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How many facial images were captured illegally of people around the world by Clearview AI?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "3 Billion"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "4 Billion"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "5 Billion"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "6 Billion"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Who is responsible for the management of AI?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Corporations"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Government"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Society"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
+  }
+]
+', true), (7, 'AI Cybersecurity', 'AI Cybersecurity', 'AI', '/aicybersecurity.jpg', 'Learn more about the basics of AI in cybersecurity.', 'This lab will provide participants with a fundamental understanding of the core aspects of autonomous systems through a cybersecurity lens, which is a significant area of application for AI and Machine Learning. To strengthen this understanding, the participant will progress through a simulation of an autonomous system that will modify the access of sensitive files when security threats are present in the system.', '["LO1: Recognize foundational components of a cybersecurity-focused autonomous system (Comprehension)", "LO2: Use provided elements to demonstrate basic cyber security-focused autonomous systems in action (Application)", "LO3: Compose a minor alteration to an existing cyber security-focused autonomous system and assess its impacts (Evaluation)", "LO4: Recognize and identify the ethical impact of cyber security-focused autonomous systems and decision-making", "SLO1 Supplemental: Construct a basic cyber security-focused autonomous system (Synthesis)"]', 'Kelley Lam, Jonathan Cruz, Domenic Mangano, Janae Moring', 'https://all.rit.edu/Lab7/', null, e'In this lab, you will learn about the basics of AI and Machine Learning
 through a cybersecurity lens. You will learn the fundamental components
 and impact of AI and Machine Learning in a cybersecurity-focused environment.
 Afterwards, you will view related media to reinforce the topic and take a quiz
@@ -1404,191 +1881,149 @@ to test your knowledge. Click "Next" to start!', e'{
     ]
   }
 }', '[{"title":"How does artificial intelligence learn? - Briana Brownell","link":"https://www.youtube.com/embed/0yCJMt9Mx9c"}, {"title":"Applying Deep Learning To Detect Any Cyber-Threat | NVIDIA", "link":"https://www.youtube.com/embed/_qdvTAgKiv0"},{"title":"Artificial Intelligence for smarter Cybersecurity | IBM Technology", "link":"https://www.youtube.com/embed/rH9-m7AhJhk"}]', e'[
-    {
-        "question": "What is the MAIN difference between supervised and unsupervised learning?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Supervised learning requires human intervention, while an unsupervised learning does not"
-            },
-            {
-                "val": 1,
-                "content": "Supervised learning uses labeled input and output data, while an unsupervised learning does not"
-            },
-            {
-                "val": 0,
-                "content": "Supervised learning makes more accurate decisions than unsupervised learning"
-            },
-            {
-                "val": 0,
-                "content": "Supervised learning is less time-consuming to train than unsupervised learning"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Based on the exercise, what type of machine learning was the autonomous file access system?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Semi-supervised learning"
-            },
-            {
-                "val": 0,
-                "content": "Unsupervised learning"
-            },
-            {
-                "val": 0,
-                "content": "Reinforcement learning"
-            },
-            {
-                "val": 1,
-                "content": "Supervised learning"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "What are the foundational components of an autonomous system? <Select multiple>",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Sensing"
-            },
-            {
-                "val": 1,
-                "content": "Perceiving and Understanding"
-            },
-            {
-                "val": 1,
-                "content": "Taking Action"
-            },
-            {
-                "val": 0,
-                "content": "Training"
-            },
-            {
-                "val": 1,
-                "content": "Making Decisons"
-            }
-
-        ],
-        "multiChoice": true
-    },
-    {
-        "question": "Based on the exercise, what does the autonomous system identify as sensitive information?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Social security number"
-            },
-            {
-                "val": 0,
-                "content": "Home Address"
-
-            },
-            {
-                "val": 0,
-                "content": "Full Name"
-            },
-            {
-                "val": 0,
-                "content": "Email Address"
-            },
-            {
-                "val": 1,
-                "content": "All of the above"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Why is machine learning model performance important?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Machine learning is expensive to develop and hard to use"
-            },
-
-            {
-                "val": 0,
-                "content": "Machine learning needs to perform well to replace humans in the workplace"
-            },
-            {
-                "val": 1,
-                "content": "Machine learning decisions have significant impact on people’s lives"
-            },
-            {
-                "val": 0,
-                "content": "All of the above"
-            }
-
-        ],
-        "multiChoice": false
-    }
-]', true),  (6, 'Ethics of AI', 'Ethics of AI', 'AI', '/ethicsai.jpg', 'Learn more about the ethics behind AI.', 'This lab introduces the ethics behind AI. The user will be introduced to what goes into the development of an AI and what needs to be done to make it ethical. The exercise portion will bring the user through multiple scenarios where the AI has a bias against certain groups. The user will then be asked about the issues bias brings and asks the user to make changes to the AI.', '["LO1: Recognize different ethical challenges in AI (Comprehension)","LO2: Practice consideration of ethics in a AI-related scenario (Application)","LO3: Diagnose ethical implications of choices made by AI (Synthesis)","SLO1 Supplemental: Assess impact and determine appropriate response to ethical scenarios (Synthesis)"]', 'Mark Sternefeld, Jaden Wedner, Kyle Messerle', 'https://all.rit.edu/Lab6/', null, 'In this lab, you will learn about the importance of ethical implications of using Artificial Intelligence (AI). You will learn about issues related to a lack of diversity and human biases in data, increase your understanding through an interactive module about bias in software, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
-    "piechart":
-       {"header":"AI use cases in manufacturing industry percentages worldwide as of 2020",
-       "caption":[""],
-       "data":{
-          "labels": [
-                "Quality Contol", "Inventory Management", "Monitoring Diagnostics", " Customer Care", "Personalization of Products", " Asset Maintenance"
-             ],
-          "datasets": [
-                   {
-                   "label": "AI use cases in manufacturing industry worldwide as of 2020",
-                   "borderColor": "Black",
-                   "backgroundColor": [
-                      "#283D3B",
-                      "#197278",
-                      "#83A8A6",
-                      "#EDDDD4",
-                      "#C44536",
-                      "#772E25"
-                  ],
-                   "data": [59,44,32,29,22,22],
-                   "borderWidth": "1"
-                   }
-             ]
-          }
-    },
-    "description":{
-       "header":"What is an AI?",
-       "content":"Artificial Intelligence (AI) is the study of simulating human thought processes to complete a task. An artificial intelligence processes data through advanced algorithms and can look through large amounts of data to effectively find patterns or features humans can possibly miss. The algorithms used to make the intelligence run are designed by human beings and are currently incapable of simulating human emotion. This intelligence does not have an I.Q. (Intelligence Quotient) since IQ is used to track the growth of intellgicence in children and can not be applied to a computer. Contemporarily, AI is used in conjunction with big data to analyze user data and adjust the company\'s practices to better serve their customers."
-    },
-    "body":[
-        {
-            "header":"Common uses of AI",
-            "type":"study__list",
-            "content":["Self-driving cars", "Online Shopping and retail", "Streaming Services and chatbots", "Cybersecurity and Surveillance", "Surgery analytics and Diagnosing diseases"]
-        },
-       {
-          "header":"A.C.L.U v. Clearview AI",
-          "type":"",
-          "content":["On May 28th, 2020, The American Civil Liberties Union (ACLU), ACLU of Illinois, and the law firm Edelson PC filed a lawsuit against Clearview AI claiming a violation of Illinois residents\' privacy rights under the Illinois Biometric Information Privacy Act (BIPA). Clearview AI built a database which shows about 3 Billion facial images captured illegally of people all over the world without their consent and put them in a database giving access to private companies, wealthy individuals, and enforcement agencies. The AI captured millions of new faces instead of focusing on people who gave consent. This technology did not acknowledge harmful decisions inflicted on survivors of domestic violence, undocumented immigrants, communities of color, and many more. Clearview AI settled and agreed to limit the images by not releasing to private companies, including individuals, as well as allowing the public to opt-out of any search results. "]
-       }
+  {
+    "question": "What is the MAIN difference between supervised and unsupervised learning?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Supervised learning requires human intervention, while an unsupervised learning does not"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Supervised learning uses labeled input and output data, while an unsupervised learning does not"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Supervised learning makes more accurate decisions than unsupervised learning"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Supervised learning is less time-consuming to train than unsupervised learning"
+      }
     ],
-    "footer":{
-       "links":[
-            {
-                "name":"Clearview AI Lawsuit",
-                "link":"https://www.aclu.org/cases/aclu-v-clearview-ai"
-            },
-            {
-                "name":"Using AI as a Weapon?",
-                "link":"https://www.nytimes.com/2019/06/13/us/aclu-surveillance-artificial-intelligence.html"
-            },
-            {
-                "name":"More",
-                "link":"https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html?searchResultPosition=1"
-            }
-        ]
-    }
+    "multiChoice": false
+  },
+  {
+    "question": "Based on the exercise, what type of machine learning was the autonomous file access system?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Semi-supervised learning"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Unsupervised learning"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Reinforcement learning"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Supervised learning"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What are the foundational components of an autonomous system?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Sensing"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Perceiving and Understanding"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Taking Action"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Training"
+      },
+      {
+        "val": 1,
+        "type": "4",
+        "content": "Making Decisons"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "Based on the exercise, what does the autonomous system identify as sensitive information?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Social security number"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Home Address"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Full Name"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Email Address"
+      },
+      {
+        "val": 1,
+        "type": "4",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Why is machine learning model performance important?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Machine learning are expensive to develop and to use"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Machine learning need to perform well to replace humans in the workplace"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Machine learning decisions have significant impact on people’s lives"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
   }
-  ', '[{"title":"Ethics & AI: Equal Access and Algorithmic Bias","link":"https://www.youtube.com/embed/tJQSyzBUAew"}, {"title":"Moral Code: The Ethics of AI","link":"https://www.youtube.com/embed/GboOXAjGevA"}]', '[]', true),  (8, 'Algorithmic Bias', 'Algorithmic Bias', 'AI', '/aibias.png', 'Learn more about bias in machine learning.', 'This lab explores machine learning bias and associated guiding principles to mitigate this bias. The user will learn about examples of real-world biased AI models and their impacts. Additionally, the lab demonstrates that an inequitable dataset can result in inappropriate bias in a sentiment analysis scenario.', e'["LO1: Identify how human prejudice infiltrates datasets resulting in biased machine learning systems (Knowledge).",
+]
+', true),
+ (8, 'Algorithmic Bias', 'Algorithmic Bias', 'AI', '/aibias.png', 'Learn more about bias in machine learning.', 'This lab explores machine learning bias and associated guiding principles to mitigate this bias. The user will learn about examples of real-world biased AI models and their impacts. Additionally, the lab demonstrates that an inequitable dataset can result in inappropriate bias in a sentiment analysis scenario.', e'["LO1: Identify how human prejudice infiltrates datasets resulting in biased machine learning systems (Knowledge).",
 "LO2: Classify different types of inequitable bias in machine learning systems (Comprehension).",
 "LO3: Apply standard guiding principles when developing machine learning systems (Application).",
 "LO4: Analyze examples of real-world machine learning systems to diagnose the impact of harmful bias (Synthesis)."
@@ -1772,432 +2207,165 @@ to test your knowledge. Click "Next" to start!', e'{
         "link":"https://www.youtube.com/embed/RyanJ2h-9-g"
     }
 ]', e'[
-    {
-        "question": "How is bias introduced to Artificial Intelligence (AI) software?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "At random"
-            },
-            {
-                "val": 1,
-                "content": "Biased training data sets"
-            },
-            {
-                "val": 1,
-                "content": "Biased developers"
-            },
-            {
-                "val": 0,
-                "content": "It is unknown how bias is introduced to AI software"
-            }
-        ],
-        "multiChoice": true
-    },
-    {
-        "question": "Which of the following is true regarding bias in Artificial Intelligence (AI)/Machine Learning (ML) software?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "It can amplify bias already present in datasets"
-            },
-            {
-                "val": 0,
-                "content": "It results in software that may treat certain groups and demographics unfairly"
-            },
-            {
-                "val": 0,
-                "content": "Bias can be minimized by following IEEE ethical principles for the use of AI in software"
-            },
-            {
-                "val": 1,
-                "content": "All of the above"
-            }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Which of the following is NOT an example of a biased AI model?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "A recruiting tool that selects men more than women for technical roles"
-            },
-            {
-                "val": 0,
-                "content": "A corrections assessment tool that misclassifies black inmates as having a disproportionately higher chance of reoffense than white inmates"
-            },
-            {
-                "val": 1,
-                "content": "A plagiarism-checking tool that identifies plagiarized sections of a paper"
-            },
-            {
-                "val": 0,
-                "content": "An ad targeting tool that shows certain ads only to a specific demographic"
-            }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Which of the following is considered a guiding principle established by the Institute of Electrical and Electronics Engineers (IEEE) to follow when developing software that uses AI?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Efficiency"
-            },
-            {
-                "val": 0,
-                "content": "Inequality"
-            },
-            {
-                "val": 1,
-                "content": "Human Rights"
-            },
-            {
-                "val": 0,
-                "content": "Incompatibility"
-            }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Which of the following should be the goals of software developers when creating AI software?",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Protect the interests and rights of all human demographics (i.e. race, gender, age, etc.)"
-            },
-            {
-                "val": 1,
-                "content": "Increase productivity and economic wellbeing for society (i.e. increasing the GDP)"
-            },
-            {
-                "val": 1,
-                "content": "Have more transparent terms and conditions so customers are fully aware of the consent they are giving."
-            },
-            {
-                "val": 1,
-                "content": "Hold accountable to address potential legal issues with the product"
-            }
-        ],
-        "multiChoice": true
-    },
-    {
-        "question": "Which of the following are methods to prevent the perpetuation of human bias in AI software?",
-        "answers": [
-            {
-                "val": 1,
-                "content": "Ensure that the developers creating AI software come from diverse backgrounds"
-            },
-            {
-                "val": 0,
-                "content": "Train AI software with data representing only one demographic"
-            },
-            {
-                "val": 1,
-                "content": "Ensure the AI is trained on data that equally represents all members of society"
-            },
-            {
-                "val": 0,
-                "content": "There are no methods to prevent human bias in AI software"
-            }
-        ],
-        "multiChoice": true
-    }
-]', true),
- (2, 'Accessibility to Color Blindness', 'Color Blindness', 'Accessibility', '/colorblindness.jpg', 'Learn more about designing the web for color blind individuals.', 'This lab explores accessibility issues involving color blindness. This will be introduced to the user through a simulated color blind lens. The user will then be asked to navigate through the exercise with the lens activated and once without. The user will then be asked to implement accessible colors that will allow every user to have the same experience.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is colorblind, the types of colorblindness that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for those who are colorblind (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to colorblindness (Comprehension)"]', 'Scott Frauenknecht', 'https://all.rit.edu/Lab2/', null, e'In this lab, you will learn about why it is important to create
-            software that is accessible to users with visual impairments.
-            You will learn about different color vision deficiencies,
-            increase your understanding through an interactive module about
-            visual impairments, view related media to reinforce the topic, and take a
-            quiz to test your knowledge. Click "Next" to start!', e'{
-	"piechart":
-		{"header":"Color Vision Deficiencies",
-		"caption":["Color Vision Deficiencies (or CVDs) affects 1 in 12 men (8%) and 1 in 200 Women across the world.","The pie chart above shows this data in a population of 10,000 people."],
-		"data":{
-			"labels": [
-				"Males With A CVD",
-				"Females With A CVD",
-				"Males Without A CVD",
-				"Females Without A CVD"
-			  ],
-			  "datasets": [
-				{
-				  "label": "Color Visions Deficiencies in a Population of 10,000 People",
-				  "borderColor": "black",
-				  "backgroundColor": ["orange","darkred", "lightblue", "purple"],
-				  "data": [416.67, 25, 4583.33, 4975],
-				  "borderWidth": "2"
-				}
-			  ]
-		  }
-	},
-	"description":"",
-	"body":[
-		{
-			"header":"Four Main Types of Color Vision Deficiencies",
-			"type":"non-bullet-list",
-			"content":[
-				{
-					"header":"Protanomaly (proht-n-om-uh-lee):",
-					"content":"There is a reduced sensitivity to red light. Most people with this have issues distinguishing between reds, greens, browns, and oranges. There can also be confusion when comparing blues and purples to one another. This is one of the most common forms of a CVD."
-				},
-				{
-					"header":"Deuteranomaly (deu-ter-​anom-a-ly):",
-					"content":"There is a reduced sensitivity to green light. Most people with this also have issues distinguishing between reds, greens, browns, and oranges. They can also confuse blues and purples when copmpared to one another. This is the other most common form of a CVD."
-				},
-				{
-					"header":"Tritanomaly (trī′tə-nŏm′ə-lē):",
-					"content":"There is a reduced sensitivity to blue light. Most people with this have issues distinguishing between blue and yellow, violet and red, and blue and green. Most of the colors someone with this would see are pink, red, black, white, grey, and turquoise. This CVD is extremely rare."
-				},
-				{
-					"header":"Monochromacy (mon-o-chro-ma-cy):",
-					"content":"Individuals with this deficiency can see no colors at all. Everything is a shade of grey that ranges between white and black. This is incredibly rare (approximately 1 in 33,000 people are diagnosed with this condition). Due to the range of colors these individuals can see, it can make it difficult to perform even everyday tasks."
-				}
-			]
-		},
-		{
-			"header":"Each form of CVD has varying levels of severity.",
-			"type":"",
-			"content":[]
-		},
-		{
-			"header":"What, in the eye, is causing colors to be perceived in this way?",
-			"type":"",
-			"content":["For individuals with Protanomaly, Deuteranomaly, and Tritanomaly, they are considered dichromatic, meaning that they only have two types of cones in their eyes to perceived colors. People without these deficiencies have three cones and each cone is responsible for perceiving red, green, and blue. This is where the reduced sensitivity comes from, as the reduction in one cone causes a section of the color spectrum to not be viewable to the individual. This section happens to overlap for individuals with Protanomaly and Deuteranomaly, which is why some individuals may refer to their deficiency as \'red/green colorblindness\', as these individuals may tend to see the world in very similar ways."]
-		},
-		{
-			"header":"Causes of color vision deficiencies:",
-			"type":"",
-			"content":["Color vision deficiencies are normally caused by genetic conditions and are usually inheritied from an individual\'s parents. Men are more often impacted than women because the gene is carried in the X chromosome. There can be some other cases that cause color vision deficiencies however their causes are still being researched to determine the exact cause."]
-		},
-		{
-			"header":"At this moment in time, there is no cure to these deficiencies.",
-			"type":"",
-			"content":[]
-		}
-	],
-	"footer":{
-		"links":[
-			{
-				"name":"Colour Blind Awareness",
-				"link":"http://www.colourblindawareness.org/"
-			},
-			{
-				"name":"American Optometric Association",
-				"link":"https://www.aoa.org/patients-and-public/eye-and-vision-problems/glossary-of-eye-and-vision-conditions/color-deficiency"
-			},
-			{
-				"name":"Colblindor",
-				"link":"https://www.color-blindness.com/"
-			}
-		]
-	}
-}
-', '[{"title":"Color Blindness Testimony","link":"https://www.youtube.com/embed/d6KKsmmOKEI"},{"title":"Color Contrast Lecture","link":"https://www.youtube.com/embed/zrl0CW8m-Qk"}]', e'[
-    {
-        "question": "Which of the following best describes \'color contrast\'?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "A measurement of a color’s brightness"
-            },
-            {
-                "val": 0,
-                "content": "A condition resulting in reduced sensitivity to green light"
-            },
-            {
-                "val": 1,
-                "content": "A measurement of the difference between two colors when they are layered on top of each other"
-            },
-            {
-                "val": 0,
-                "content": "None of the above"
-            }
-
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Which of the following is NOT a form of color vision deficiency?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Protanopia"
-            },
-            {
-                "val": 0,
-                "content": "Deuteranopia"
-            },
-            {
-                "val": 0,
-                "content": "Tritanopia"
-            },
-            {
-                "val": 1,
-                "content": "Dichrompia"
-            }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "What is the minimum contrast allowed by the WCAG AAA Color Standards?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "4"
-            },
-            {
-                "val": 1,
-                "content": "7"
-            },
-            {
-                "val": 0,
-                "content": "9"
-            },
-            {
-                "val": 0,
-                "content": "11"
-            }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "Which of the following is the best way to correct an improper ratio in color contrast?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Do nothing, it’s impossible to fix"
-            },
-            {
-                "val": 0,
-                "content": "Make everything black and white"
-            },
-            {
-                "val": 1,
-                "content": "Use a color contrast calculator"
-            },
-            {
-                "val": 0,
-                "content": "None of the above"
-            }
-        ],
-        "multiChoice": false
-    },
-    {
-        "question": "If placed in a color contrast calculator, which of the following would result in a proper color contrast ratio?",
-        "answers": [
-            {
-                "val": 0,
-                "content": "Dark red placed on another shade of dark red"
-            },
-            {
-                "val": 0,
-                "content": "White placed on light pink"
-            },
-            {
-                "val": 1,
-                "content": "Light pink placed on black"
-            },
-            {
-                "val": 0,
-                "content": "Black placed on black"
-            }
-        ],
-        "multiChoice": false
-    }
-]', true),
- (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab introduces machine learning', e'[
-    "LO1: Construct a basic neural network using provided components (Synthesis)",
-    "LO2: Simulate neural network training (Comprehension).",
-    "LO3: Demonstrate bias present in a neural network (Application)."
-]', 'Jonathan Cruz, Domenic Mangano, Emily Crilley', 'https://ball.rit.edu/Lab10/', null, 'In this lab, you will learn about where bias is present within neural networks and ways to help reduce the biases developed in the algorithms. You will understand how neural networks work and how to build appropriate training data sets to combat development bias, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
-  "piechart":{
-		"header":"Company investments towards AI",
-		"caption":["Billions of dollars invested towards AI by major tech companies"],
-		"data":{
-				"labels": [
-				  "Google", "Facebook", "Amazon", "Microsoft", "Alibaba"
-				],
-				"datasets": [
-					{
-					  "label": "Company investments, in billions",
-					  "borderColor": "black",
-					  "backgroundColor": ["#ffeb00","#ff2713","#09da4f","#9e8fe5","#d67b41","#86aedf"],
-					  "data": [30.7, 22.1, 10, 10, 17],
-					  "borderWidth": "1"
-					}
-				]
-		}
-	},
-	"description":{
-		"header":"What is a Neural Network?",
-		"content":"Neural networks are one of the subtypes of artificial intelligence. Neural networks are a series of algorithms that mimic the human brain. They are used to recognize patterns and relationships in extensive data. Over time neural networks are constantly being trained for improvement."
-	},
-	"body":[{
-          "header":"",
-          "type":"",
-          "content":["Neural networks rely on nodes, similar to how the human brain relies on neurons. Both are stimulated given input and must process and respond in the form of output. "]
-       },{
-			"header":"",
-			"type":"image",
-			"content":{
-				"image":"/neural_network.jpg",
-				"alt":"Image of a model of a neural network",
-				"sub_caption":"Figure 1",
-				"caption":"Neural Network Model"
-			}
-		},{
-          "header":"Neural Network Layers",
-          "type":"",
-          "content":["Neural networks have three different layers: the Input Layer, Hidden Layer, and Output Layer. The input layer is where the initial neurons receive data. This data is then processed within the hidden layer using mathematical equations and shared via the output layer of the neural network. "]
-       },{
-            "header":"How are They Being Used in Tech?",
-            "type":"",
-            "content":["While neural networks were created to work similar to the human brain, they have become more complex over time and their applications have grown exponentially. Neural networks are being used in various fields, including but not limited to:"]
-        },{"header": "", "type": "study__list","content": ["Computer Vision","Speech Recognition","Social Network Filters","Playing Games","Medical Diagnoses","Targeted Marketing","Identifying Fraud","Financial Predictions"]},{
-          "header":"Biases in Neural Networks",
-          "type":"",
-          "content":["Bias is present in all facets of artificial intelligence. Necessary biases become a constant in the mathematical formulation within the hidden layer of a neural network. These necessary biases, or weights, impact the efficiency of the system. Necessary biases are needed within these formulas to help simulate real world scenarios; they make the systems more flexible and contribute to a more robust training set. "]
-       },{
-          "header":"",
-          "type":"",
-          "content":["While necessary bias is needed, too much or unwanted bias can be problematic and lead to discrimination in a system. "]
-       },{
-          "header":"How is the Challenge of Too Much Bias Being Addressed?",
-          "type":"",
-          "content":["Companies are working on various ways to reduce the impact of negative unwanted biases in artificial intelligence systems. One of the biggest ways is to incorporate extensive training sets. Another approach highly debated in practice is to create transparency in these complex systems. "]
-       },{
-          "header":"",
-          "type":"",
-          "content":["Unwanted bias is a problem for many systems in industry, so creating diverse teams to challenge potential biases early in development is often employed as a tactic to try and gain a reduction in discrimination these systems may replicate. "]
-       }
+  {
+    "question": "How is bias introduced to Artificial Intelligence (AI) software?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "At random"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Biased training data sets"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Biased developers"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "It is unknown how bias is introduced to AI software"
+      }
     ],
-	"footer":{
-		"links":[
-			{
-				"name":"IBM Neural Networks",
-				"link":"https://www.ibm.com/cloud/learn/neural-networks"
-			},			{
-				"name":"SAS Neural Networks",
-				"link":"https://www.sas.com/en_us/insights/analytics/neural-networks.html"
-			},			{
-				"name":"Role of Bias",
-				"link":"https://www.pico.net/kb/the-role-of-bias-in-neural-networks/#:~:text=Bias%20allows%20you%20to%20shift,transposed%20by%20the%20constant%20value"
-			},			{
-				"name":"Deep-Learning Systems",
-				"link":"https://spectrum.ieee.org/its-too-easy-to-hide-bias-in-deeplearning-systems"
-			},			{
-				"name":"Effect of Bias",
-				"link":"https://www.geeksforgeeks.org/effect-of-bias-in-neural-network/"
-			},			{
-				"name":"How Much is Invested in Artificial Intelligence?",
-				"link":"https://insight.openexo.com/how-much-is-invested-in-artificial-intelligence/"
-			}
-		]
-	}
-}', '[{"title":"Neural Networks","link": "https://www.youtube.com/embed/bfmFfD2RIcg"},{"title":"Algorithmic Bias and Fairness","link": "https://www.youtube.com/embed/gV0_raKR2UQ"}]', '[]', true),
- (9, 'Accessibility to Localization', 'Localization', 'Accessibility', '/localization.jpg', 'Learn more about localization.', 'This lab explores localization and guiding principles to adapt software to meet the needs of various languages, cultures, and locales. The user will practice localizing a webpage by following the steps of the localization process.', e'["LO1: Recognize the significance of the non-English population and their needs for accessible software (Knowledge).",
+    "multiChoice": true
+  },
+  {
+    "question": "Which of the following is true regarding bias in Artificial Intelligence(AI)/ Machine Learning(ML) software ? ",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "It can amplify bias already present in datasets"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "It results in software that may treat certain groups and demographics unfairly"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Bias can be minimized by following IEEE ethical principles for the use of AI in software"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following is NOT an example of a biased AI model?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "A recruiting tool that selects men more than women for technical roles"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "A corrections assessment tool that misclassifies black inmates as having a disproportionately higher chance of reoffense than white inmates"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "A plagiarism-checking tool that identifies plagiarized sections of a paper"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "An ad targeting tool that shows certain ads only to a specific demographic"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following is considered a guiding principle established by the Institute of Electrical and Electronics Engineers (IEEE) to follow when developing software that uses AI?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Efficiency"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Inequality"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Human Rights"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Incompatibility"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following should be the goals of software developers when creating AI software?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Protect the interests and rights of all human demographics (i.e. race, gender, age, etc.)"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Increase productivity and economic wellbeing for society (i.e. increasing the GDP)"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Have more transparent terms and conditions so customers are fully aware of the consent they are giving"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Hold accountable to address potential legal issues with the product"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "Which of the following are methods to prevent the perpetuation of human bias in AI software?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Ensure that the developers creating AI software come from diverse backgrounds"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Train AI software with data representing only one demographic"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Ensure the AI is trained on data that equally represents all members of society"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "There are no methods to prevent human bias in AI software"
+      }
+    ],
+    "multiChoice": true
+  }
+]
+', true),
+(9, 'Accessibility to Localization', 'Localization', 'Accessibility', '/localization.jpg', 'Learn more about localization.', 'This lab explores localization and guiding principles to adapt software to meet the needs of various languages, cultures, and locales. The user will practice localizing a webpage by following the steps of the localization process.', e'["LO1: Recognize the significance of the non-English population and their needs for accessible software (Knowledge).",
 "LO2: Examine a software application that doesn’t properly accommodate accessibility to localization in various (Analysis).",
 "LO3: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application).",
 "LO4: Relate to individuals who experience difficulties with accessibility to localization (Comprehension)"
@@ -2293,121 +2461,362 @@ to test your knowledge. Click "Next" to start!', e'{
   }
 ]', e'[
   {
-      "question": "What is the difference between translation and localization?",
-      "answers": [
-          {
-              "val": 0,
-              "content": "Translation involves changing software design, while localization does not."
-          },
-          {
-              "val": 1,
-              "content": "Translation is a part of the localization process, which includes cultural adaptation beyond language."
-          },
-          {
-              "val": 0,
-              "content": "Localization is only about language translation, while translation includes cultural adaptation."
-          },
-          {
-              "val": 0,
-              "content": "There is no difference; both terms mean the same thing."
-          }
-      ],
-      "multiChoice": false
+    "question": "What is the difference between translation and localization?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Translation involves changing software design, while localization does not."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Translation is a part of the localization process, which includes cultural adaptation beyond language."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Localization is only about language translation, while translation includes cultural adaptation."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "There is no difference; both terms mean the same thing."
+      }
+    ],
+    "multiChoice": false
   },
   {
-      "question": "Which of the following are elements to consider when localizing a software application?",
-      "answers": [
-          {
-              "val": 1,
-              "content": "Date and time format"
-          },
-          {
-              "val": 1,
-              "content": "Language direction"
-          },
-          {
-              "val": 1,
-              "content": "Images and icons"
-          },
-          {
-              "val": 1,
-              "content": "Currency format"
-          },
-          {
-            "val": 0,
-            "content": "Links"
-          }
-      ],
-      "multiChoice": true
+    "question": "Which of the following are elements to consider when localizing a software application?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Date and time format"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Language direction"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Images and icons"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Currency format"
+      },
+      {
+        "val": 0,
+        "type": "4",
+        "content": "Links"
+      }
+    ],
+    "multiChoice": true
   },
   {
-      "question": "In the context of localization, why is the adaptation of number formats important?",
-      "answers": [
-          {
-              "val": 0,
-              "content": "To enhance the visual appeal"
-          },
-          {
-              "val": 0,
-              "content": "To increase download speed"
-          },
-          {
-              "val": 1,
-              "content": "For accurate data interpretation and financial transactions"
-          },
-          {
-              "val": 0,
-              "content": "To reduce software development costs"
-          }
-      ],
-      "multiChoice": false
+    "question": "In the context of localization, why is the adaptation of number formats important?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "To enhance the visual appeal"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "To increase download speed"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "For accurate data interpretation and financial transactions"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "To reduce software development costs"
+      }
+    ],
+    "multiChoice": false
   },
   {
-      "question": "Which of the following is NOT a common challenge in localization?",
-      "answers": [
-          {
-              "val": 0,
-              "content": "Cultural nuances in translation"
-          },
-          {
-              "val": 1,
-              "content": "Changing the software’s core functionality"
-          },
-          {
-              "val": 0,
-              "content": "Adapting content for cultural relevance"
-          },
-          {
-              "val": 0,
-              "content": "Ensuring legal compliance across regions"
-          }
-      ],
-      "multiChoice": false
+    "question": "Which of the following is NOT a common challenge in localization?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Cultural nuances in translation"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Changing the software’s core functionality"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Adapting content for cultural relevance"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Ensuring legal compliance across regions"
+      }
+    ],
+    "multiChoice": false
   },
   {
-      "question": "Which of the following is the primary responsibility of a software engineer in the process of localization?",
-      "answers": [
-          {
-              "val": 1,
-              "content": "Ensuring the software architecture supports localization"
-          },
-          {
-              "val": 0,
-              "content": "Translating the content into various languages"
-          },
-          {
-              "val": 0,
-              "content": "Designing marketing strategies for different regions"
-          },
-          {
-              "val": 0,
-              "content": "Conducting cultural research for each target market"
-          }
-      ],
-      "multiChoice": false
+    "question": "Which of the following is the primary responsibility of a software engineer in the process of localization?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Ensuring the software architecture supports localization."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Translating the content into various languages."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Designing marketing strategies for different regions."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Conducting cultural research for each target market."
+      }
+    ],
+    "multiChoice": false
   }
-]', true),
- (11, 'Accessibility to Literacy', 'Literacy', 'Accessibility', '/literacy.jpg', 'Learn more about designing the web for varying literacy levels.', 'This lab explores considerations related to literacy levels. The user will be introduced to the Fog Index formula and learn how it can be used to understand the literacy level of text. Finally, the user will be introduced to key principles related to improving content readability.', e'["LO1: Recognize the significance of the range of literacy in the population and their needs for accessible software (Knowledge).",
+]
+', true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab introduces machine learning', e'[
+    "LO1: Construct a basic neural network using provided components (Synthesis)",
+    "LO2: Simulate neural network training (Comprehension).",
+    "LO3: Demonstrate bias present in a neural network (Application)."
+]', 'Jonathan Cruz, Domenic Mangano, Emily Crilley', 'https://ball.rit.edu/Lab10/', null, 'In this lab, you will learn about where bias is present within neural networks and ways to help reduce the biases developed in the algorithms. You will understand how neural networks work and how to build appropriate training data sets to combat development bias, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
+  "piechart":{
+		"header":"Company investments towards AI",
+		"caption":["Billions of dollars invested towards AI by major tech companies"],
+		"data":{
+				"labels": [
+				  "Google", "Facebook", "Amazon", "Microsoft", "Alibaba"
+				],
+				"datasets": [
+					{
+					  "label": "Company investments, in billions",
+					  "borderColor": "black",
+					  "backgroundColor": ["#ffeb00","#ff2713","#09da4f","#9e8fe5","#d67b41","#86aedf"],
+					  "data": [30.7, 22.1, 10, 10, 17],
+					  "borderWidth": "1"
+					}
+				]
+		}
+	},
+	"description":{
+		"header":"What is a Neural Network?",
+		"content":"Neural networks are one of the subtypes of artificial intelligence. Neural networks are a series of algorithms that mimic the human brain. They are used to recognize patterns and relationships in extensive data. Over time neural networks are constantly being trained for improvement."
+	},
+	"body":[{
+          "header":"",
+          "type":"",
+          "content":["Neural networks rely on nodes, similar to how the human brain relies on neurons. Both are stimulated given input and must process and respond in the form of output. "]
+       },{
+			"header":"",
+			"type":"image",
+			"content":{
+				"image":"/neural_network.jpg",
+				"alt":"Image of a model of a neural network",
+				"sub_caption":"Figure 1",
+				"caption":"Neural Network Model"
+			}
+		},{
+          "header":"Neural Network Layers",
+          "type":"",
+          "content":["Neural networks have three different layers: the Input Layer, Hidden Layer, and Output Layer. The input layer is where the initial neurons receive data. This data is then processed within the hidden layer using mathematical equations and shared via the output layer of the neural network. "]
+       },{
+            "header":"How are They Being Used in Tech?",
+            "type":"",
+            "content":["While neural networks were created to work similar to the human brain, they have become more complex over time and their applications have grown exponentially. Neural networks are being used in various fields, including but not limited to:"]
+        },{"header": "", "type": "study__list","content": ["Computer Vision","Speech Recognition","Social Network Filters","Playing Games","Medical Diagnoses","Targeted Marketing","Identifying Fraud","Financial Predictions"]},{
+          "header":"Biases in Neural Networks",
+          "type":"",
+          "content":["Bias is present in all facets of artificial intelligence. Necessary biases become a constant in the mathematical formulation within the hidden layer of a neural network. These necessary biases, or weights, impact the efficiency of the system. Necessary biases are needed within these formulas to help simulate real world scenarios; they make the systems more flexible and contribute to a more robust training set. "]
+       },{
+          "header":"",
+          "type":"",
+          "content":["While necessary bias is needed, too much or unwanted bias can be problematic and lead to discrimination in a system. "]
+       },{
+          "header":"How is the Challenge of Too Much Bias Being Addressed?",
+          "type":"",
+          "content":["Companies are working on various ways to reduce the impact of negative unwanted biases in artificial intelligence systems. One of the biggest ways is to incorporate extensive training sets. Another approach highly debated in practice is to create transparency in these complex systems. "]
+       },{
+          "header":"",
+          "type":"",
+          "content":["Unwanted bias is a problem for many systems in industry, so creating diverse teams to challenge potential biases early in development is often employed as a tactic to try and gain a reduction in discrimination these systems may replicate. "]
+       }
+    ],
+	"footer":{
+		"links":[
+			{
+				"name":"IBM Neural Networks",
+				"link":"https://www.ibm.com/cloud/learn/neural-networks"
+			},			{
+				"name":"SAS Neural Networks",
+				"link":"https://www.sas.com/en_us/insights/analytics/neural-networks.html"
+			},			{
+				"name":"Role of Bias",
+				"link":"https://www.pico.net/kb/the-role-of-bias-in-neural-networks/#:~:text=Bias%20allows%20you%20to%20shift,transposed%20by%20the%20constant%20value"
+			},			{
+				"name":"Deep-Learning Systems",
+				"link":"https://spectrum.ieee.org/its-too-easy-to-hide-bias-in-deeplearning-systems"
+			},			{
+				"name":"Effect of Bias",
+				"link":"https://www.geeksforgeeks.org/effect-of-bias-in-neural-network/"
+			},			{
+				"name":"How Much is Invested in Artificial Intelligence?",
+				"link":"https://insight.openexo.com/how-much-is-invested-in-artificial-intelligence/"
+			}
+		]
+	}
+}', '[{"title":"Neural Networks","link": "https://www.youtube.com/embed/bfmFfD2RIcg"},{"title":"Algorithmic Bias and Fairness","link": "https://www.youtube.com/embed/gV0_raKR2UQ"}]', e'[
+  {
+    "question": "Neural networks are modeled off of what?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Algorithm"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Heart"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Human Brain"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Chemistry"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Where are neural networks being used in industry?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Social Media"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "User Testing"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Targeted Marketing"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Making Games"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "Neural networks consist of what three layers?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Input, Output, Hidden"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Initial, Middle, Return"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "One, Two, Three"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Input, Middle, End"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What is the most effective way researchers are currently attempting to reduce bias in neural networks? ",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "They aren’t"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Reducing complexity"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Guessing"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Extensive training sets"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Why is having an ethical AI important?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "To promote fairness, equity, and unbiased decision-making in AI systems"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "To maximize profits and market share in the competitive AI industry"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "To create AI systems without considering the potential societal impacts"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "To prioritize speed and efficiency in AI development over ethical considerations"
+      }
+    ],
+    "multiChoice": false
+  }
+]', true), (11, 'Accessibility to Literacy', 'Literacy', 'Accessibility', '/literacy.jpg', 'Learn more about designing the web for varying literacy levels.', 'This lab explores considerations related to literacy levels. The user will be introduced to the Fog Index formula and learn how it can be used to understand the literacy level of text. Finally, the user will be introduced to key principles related to improving content readability.', e'["LO1: Recognize the significance of the range of literacy in the population and their needs for accessible software (Knowledge).",
 "LO2: Examine a scenario that doesn’t properly accommodate accessibility to literacy in a relatable context (Analysis).",
 "LO3: Use knowledge of accessibility design solutions to construct corrective measures to allow a previously inaccessible scenario to become accessible to appropriate parties (Application).",
 "LO4: Relate to individuals who experience difficulties with accessibility to literacy (Comprehension)."
@@ -2505,7 +2914,139 @@ to test your knowledge. Click "Next" to start!', e'{
         ]
 	}
 }', e'[{"title":"Web Accessibility Perspectives: Understandable Content","link": "https://www.youtube.com/embed/BYRxF2yInfA?si=KedpgpG7XE4TK8B5"},
-{"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', '[]', true);
+{"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', e'[
+  {
+    "question": "What does readability refer to?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Ease of understanding web content"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Quality of UI design"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Website loading speed"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Number of images used in a website"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What are the primary considerations to creating readable web content?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Legibility, readability, and comprehension"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Font size, font color, and text alignment"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Navigation and color schemes"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Visual appealing"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following are suggestions to improve readability?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Improving color schemes"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Use straight forward language"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Use concise and brief text content"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Target 8th grade reading level"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What is the recommended education level for targeting a broad consumer audience?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "12th grade"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "8th grade"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "College level"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "1st grade"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "The Fog Index calculates the complexity of text based on which factors?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Number of sentences"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "Font size and font color"
+      },
+      {
+        "val": 1,
+        "type": "2",
+        "content": "Number of complex words"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Number of words"
+      }
+    ],
+    "multiChoice": true
+  }
+]
+', true);
 
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
