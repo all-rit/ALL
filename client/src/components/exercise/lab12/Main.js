@@ -6,6 +6,12 @@ import GameStateContext from "./Lab12Context";
 import FormRepair from "./pages/FormRepair";
 import DatabaseRepair from "./pages/DatabaseRepair";
 import Diploma from "./components/Diploma";
+import ExerciseIntro from "./pages/Explanations/ExerciseIntro";
+import PreWrongDiploma from "./pages/Explanations/PreWrongDiploma";
+import PostWrongNewsletter from "./pages/Explanations/PostWrongNewsletter";
+import PreCorrectDiploma from "./pages/Explanations/PreCorrectDiploma";
+import PostCorrectNewsletter from "./pages/Explanations/PostCorrectNewsletter";
+import KeyTakeaways from "./pages/Explanations/KeyTakeaways";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -23,6 +29,12 @@ const Main = () => {
           <FormRepair path="/FormRepair" />
           <DatabaseRepair path={"/DatabaseRepair"} />
           <Diploma path="/diploma" />
+          <ExerciseIntro path="/ExerciseIntro" />
+          <PreWrongDiploma path="/PreWrongDiploma" />
+          <PostWrongNewsletter path="/PostWrongNewsletter" />
+          <PreCorrectDiploma path="/PreCorrectDiploma" />
+          <PostCorrectNewsletter path="/PostCorrectNewsletter" />
+          <KeyTakeaways path="/KeyTakeaways" />
         </Router>
       </GameStateContext.Provider>
     </div>

@@ -2137,7 +2137,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "LO1: Construct a basic neural network using provided components (Synthesis)",
     "LO2: Simulate neural network training (Comprehension).",
     "LO3: Demonstrate bias present in a neural network (Application)."
-]', 'Jonathan Cruz, Domenic Mangano, Emily Crilley', 'https://ball.rit.edu/Lab10/', null, 'In this lab, you will learn about where bias is present within neural networks and ways to help reduce the biases developed in the algorithms. You will understand how neural networks work and how to build appropriate training data sets to combat development bias, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
+]', 'Jonathan Cruz, Domenic Mangano, Emily Crilley', 'https://all.rit.edu/Lab10/', null, 'In this lab, you will learn about where bias is present within neural networks and ways to help reduce the biases developed in the algorithms. You will understand how neural networks work and how to build appropriate training data sets to combat development bias, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
   "piechart":{
 		"header":"Company investments towards AI",
 		"caption":["Billions of dollars invested towards AI by major tech companies"],
@@ -2532,10 +2532,11 @@ to test your knowledge. Click "Next" to start!', e'{
 	}
 }', e'[{"title":"Web Accessibility Perspectives: Understandable Content","link": "https://www.youtube.com/embed/BYRxF2yInfA?si=KedpgpG7XE4TK8B5"},
 {"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', '[]', true),
-(12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab introduces the concept of identity in software', e'[
-    "LO1: Understand common areas of non-identity inclusive software",
-    "LO2: How to recognize non-identity inclusive  software",
-    "LO3: Demonstrate how to improve non-identity inclusive software."
+(12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement inclusive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not inclusive, and learn how and why to implement an interface that is accessible to gender and identity.', e'[
+    "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
+    "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility in regards to identity (Analysis)",
+    "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
+    "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
 ]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than Male or Female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click “next” to start!', e'{
   "piechart": {
         "header":"Inclusive Forms",
