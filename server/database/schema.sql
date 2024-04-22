@@ -378,19 +378,6 @@ create table lab9_repair
     primary key ("repairId")
 );
 
-create table lab12_exercise
-(
-    "repairId"                         serial,
-    userid                             bigint,
-    "isFormRepairComplete"             boolean,
-    "isDatabaseRepairComplete"         boolean,
-    "attemptTime"                      timestamp with time zone,
-    "isExerciseComplete"               boolean,
-    "hasViewed"                        boolean,
-    "attemptCount"                     integer,
-    primary key ("repairId")
-);
-
 create type enum_lab12_repair_section as enum ('FormRepair', 'DatabaseRepair');
 
 create table lab12_repair (
@@ -402,6 +389,19 @@ create table lab12_repair (
                               "attemptTime" timestamp with time zone,
                               "repairCount" bigint,
                               primary key ("repairId")
+);
+
+create table lab12_exercise
+(
+    "repairId"                         serial,
+    userid                             bigint,
+    "isFormRepairComplete"             boolean,
+    "isDatabaseRepairComplete"         boolean,
+    "attemptTime"                      timestamp with time zone,
+    "isExerciseComplete"               boolean,
+    "hasViewed"                        boolean,
+    "attemptCount"                     integer,
+    primary key ("repairId")
 );
 
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
@@ -899,7 +899,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
   }
 ]
 ', true),
-                                                                                                                                                                                                                                                      (3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
+(3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
                 that is accessible to users who utilize screenreaders.
                 You will learn about using alt tags,
                 increase your understanding through an interactive module about
@@ -1090,7 +1090,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": true
   }
 ]', true),
-                                                                                                                                                                                                                                                      (4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
+(4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
                 that is accessible to users with dexterity impairments.
                 You will learn about issues related to dexterity,
                 increase your understanding through an interactive module about
@@ -1274,7 +1274,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": true
   }
 ]', true),
-                                                                                                                                                                                                                                                      (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
+ (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
                that is accessible to users who face cognitive impairments.
                You will learn about using clear descriptive headings, handling time driven notifications, and
                creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz
@@ -2180,13 +2180,13 @@ to test your knowledge. Click "Next" to start!', e'{
     {
 			"type":"ordered-list",
 			"content": [
-        "Human Rights",
-        "Well-being",
-        "Data Agency",
-        "Effectiveness",
-        "Transparency",
-        "Accountability",
-        "Awareness of Misuse",
+        "Human Rights", 
+        "Well-being", 
+        "Data Agency", 
+        "Effectiveness", 
+        "Transparency", 
+        "Accountability", 
+        "Awareness of Misuse", 
         "Competence"
       ]
 		},
@@ -2443,7 +2443,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content":["Localization is the process whereby the software, documentation, and user interface are adapted to suit the needs of different world markets and user segments, or what is known as a locale. As software engineers, the process that prepares software and digital content for subsequent localization, designing products from the ground up to support various languages and cultural norms without the need for redesign, is known as internationalization."]
         },
 		{
-            "header": "Examples of Localization Challenges",
+            "header": "Examples of Localization Challenges", 
             "type": "study__list",
             "content": ["Cultural Significance of Numbers: The number 13 is unlucky in the U.S. but lucky in Italy. This impacts product design and marketing strategies.","Content Adaptation for Cultural Relevance: The movie ‘Inside Out’ changed Riley’s disliked food from broccoli (U.S. version) to green peppers (Japanese version) to maintain cultural relatability.","Color Symbolism: White signifies purity in the West but mourning in many Asian cultures. This influences design and branding.","Date/Time Formats: The U.S. uses mm/dd/yy, Europe uses dd/mm/yy, and Japan uses yy/mm/dd. This is crucial for software interfaces and documentation.","Number Punctuation: In the United States, large numbers are separated with commas and decimals are separated with a period (e.g. 1,234.56), while in places like France, numbers the way these commas and periods are used is swapped (e.g. 1.234,56). Key for accuracy in financial transactions and data interpretation."]},
 		{
@@ -2894,7 +2894,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content":["According to the UI/UX research and consulting firm Nielsen Norman Group, the primary considerations when creating impactful web content are"]
         },
 		{
-            "header": "",
+            "header": "", 
             "type": "study__list",
             "content": ["Legibility: This refers to the visual design and typography\'s clarity.", "Readability: This concerns the level of complexity in words and sentence structures.", "Comprehension: Easy to understand and draw valid conclusions."]
         },
@@ -3071,7 +3071,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
-', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement inclusive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not inclusive, and learn how and why to implement an interface that is accessible to gender and identity.',
+', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement inclusive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not inclusive, and learn how and why to implement an interface that is accessible to gender and identity.', 
 e'[
     "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
     "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
@@ -3292,7 +3292,7 @@ e'[
     ],
     "multiChoice": false
   }
-]', true);
+]', true);    
 
 
 
@@ -3301,33 +3301,33 @@ e'[
 
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
-                                                                                                                    (2, 'Samuel', 'Malachowsky', 'PI', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]
+(2, 'Samuel', 'Malachowsky', 'PI', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]
 ', null, null), (3, 'Hector', 'Torres', 'PI', '/Torres.jpg', '[{"link":"https://www.linkedin.com/in/dr-hector-n-torres-41844539/","network": "sharethis"}]', null, null);
 
 INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive", "isActive") VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://www.linkedin.com/in/saad-khan23/","network":"linkedin"}]', null, '2019-2021', false)
-                                                                                                                                ,(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-Present', true)
-                                                                                                                                ,(3, 'Christopher', 'Savan', 'Engineer', '/Christopher_Savan.jpg', '[{"link":"https://www.linkedin.com/in/christophersavan/","network":"linkedin"}]', null, '2020-2021', false)
-                                                                                                                                ,(15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-Present', true)
-                                                                                                                                ,(17, 'Garsha', 'Thomas', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-Present', true)
-                                                                                                                                ,(16, 'Destiny', 'Francois', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-Present', true)
-                                                                                                                                ,(5, 'Mark', 'Sternefeld', 'PM, Engineer', '/Mark_Sternefeld.jpg', '[{"link":"https://www.linkedin.com/in/mark-ferenc-sternefeld/","network":"linkedin"}]', null, '2020-Present', true)
-                                                                                                                                ,(6, 'Shantanav', 'Saurav', 'Engineer', '/Shantanav_Saurav.jpg', '[{"link":"https://www.linkedin.com/in/shantanav/","network":"linkedin"}]', null, '2021-2022', false)
-                                                                                                                                ,(7, 'Bashir', 'Jaji', 'Engineer', '/Bashir_Jaji.jpg', '[{"link":"https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/","network":"linkedin"}]', null, '2021-2022', false)
-                                                                                                                                ,(8, 'Andreas', 'Leonard-Calcano', 'Architect, Tech Lead, Engineer', '/Andreas_Leonard_Calcano.jpg', '[{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}]', null, '2021-Present', true)
-                                                                                                                                ,(10, 'Kyle', 'Messerle', 'Outreach', '/Kyle.jpg', '[{"link":"https://www.linkedin.com/in/kyle-messerle/","network":"linkedin"}]', null, '2022-Present', true)
-                                                                                                                                ,(4, 'Su Thit', 'Thazin', 'PM, Engineer, Director of Outreach', '/Su_Thit_Thazin.jpg', '[{"link":"https://www.linkedin.com/in/suthitthazin/","network":"linkedin"}]', null, '2020-2023', false)
-                                                                                                                                ,(9, 'Saige', 'Moon', 'Design', '/default_profile_image.jpg', '[]', null, '2023-Present', true)
-                                                                                                                                ,(18, 'Fabi', 'Marrufo', 'Engineer', '/Fabi.jpg', '[{"link":"https://www.linkedin.com/in/fabi-marrufo/","network":"linkedin"}]', null, '2022-2022', false)
-                                                                                                                                ,(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notcruz/"}]', null, '2023-Present', true)
-                                                                                                                                ,(19, 'Santosh', 'Lamichhane', 'Engineer', '/Santosh.jpg', '[{"link": "https://www.linkedin.com/in/santosh-lamichhane-1b2737195/","network": "linkedin"}]', null, '2022-Present', true)
-                                                                                                                                ,(20, 'Jaden', 'Wedner', 'Engineer', '/Jaden.jpg', '[{"link": "https://www.linkedin.com/in/jaden-w-3a9326190/","network": "linkedin"}]', null, '2022-2023', false)
-                                                                                                                                ,(21, 'Kelley', 'Lam', 'Engineer', '/Kelley.jpg', '[{"link":"https://www.linkedin.com/in/kelley-lam/","network":"linkedin"}]', null, '2022-2022', false)
-                                                                                                                                ,(14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-Present', true)
-                                                                                                                                ,(22, 'Dynasty', 'Chappel', 'Education', '/Dynasti.jpg', '[{"link": "https://www.linkedin.com/in/dynasti-chappell-2085a51b7/","network": "linkedin"}]', null, '2022-Present', true)
-                                                                                                                                ,(23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-Present', false)
-                                                                                                                                ,(24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false)
-                                                                                                                                ,(12, 'Carla', 'Lopez', 'Outreach', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true)
-                                                                                                                                ,(11, 'Domenic', 'Mangano', 'PM, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true)
-                                                                                                                                ,(25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-Present', true)
-                                                                                                                                ,(26, 'Owen', 'Luts', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true)
-                                                                                                                                ,(27, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[]', null,'2024-Present', true);
+,(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-Present', true)
+,(3, 'Christopher', 'Savan', 'Engineer', '/Christopher_Savan.jpg', '[{"link":"https://www.linkedin.com/in/christophersavan/","network":"linkedin"}]', null, '2020-2021', false)
+,(15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-Present', true)
+,(17, 'Garsha', 'Thomas', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-Present', true)
+,(16, 'Destiny', 'Francois', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-Present', true)
+,(5, 'Mark', 'Sternefeld', 'PM, Engineer', '/Mark_Sternefeld.jpg', '[{"link":"https://www.linkedin.com/in/mark-ferenc-sternefeld/","network":"linkedin"}]', null, '2020-Present', true)
+,(6, 'Shantanav', 'Saurav', 'Engineer', '/Shantanav_Saurav.jpg', '[{"link":"https://www.linkedin.com/in/shantanav/","network":"linkedin"}]', null, '2021-2022', false)
+,(7, 'Bashir', 'Jaji', 'Engineer', '/Bashir_Jaji.jpg', '[{"link":"https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/","network":"linkedin"}]', null, '2021-2022', false)
+,(8, 'Andreas', 'Leonard-Calcano', 'Architect, Tech Lead, Engineer', '/Andreas_Leonard_Calcano.jpg', '[{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}]', null, '2021-Present', true)
+,(10, 'Kyle', 'Messerle', 'Outreach', '/Kyle.jpg', '[{"link":"https://www.linkedin.com/in/kyle-messerle/","network":"linkedin"}]', null, '2022-Present', true)
+,(4, 'Su Thit', 'Thazin', 'PM, Engineer, Director of Outreach', '/Su_Thit_Thazin.jpg', '[{"link":"https://www.linkedin.com/in/suthitthazin/","network":"linkedin"}]', null, '2020-2023', false)
+,(9, 'Saige', 'Moon', 'Design', '/default_profile_image.jpg', '[]', null, '2023-Present', true)
+,(18, 'Fabi', 'Marrufo', 'Engineer', '/Fabi.jpg', '[{"link":"https://www.linkedin.com/in/fabi-marrufo/","network":"linkedin"}]', null, '2022-2022', false)
+,(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notcruz/"}]', null, '2023-Present', true)
+,(19, 'Santosh', 'Lamichhane', 'Engineer', '/Santosh.jpg', '[{"link": "https://www.linkedin.com/in/santosh-lamichhane-1b2737195/","network": "linkedin"}]', null, '2022-Present', true)
+,(20, 'Jaden', 'Wedner', 'Engineer', '/Jaden.jpg', '[{"link": "https://www.linkedin.com/in/jaden-w-3a9326190/","network": "linkedin"}]', null, '2022-2023', false)
+,(21, 'Kelley', 'Lam', 'Engineer', '/Kelley.jpg', '[{"link":"https://www.linkedin.com/in/kelley-lam/","network":"linkedin"}]', null, '2022-2022', false)
+,(14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-Present', true)
+,(22, 'Dynasty', 'Chappel', 'Education', '/Dynasti.jpg', '[{"link": "https://www.linkedin.com/in/dynasti-chappell-2085a51b7/","network": "linkedin"}]', null, '2022-Present', true)
+,(23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-Present', false)
+,(24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false)
+,(12, 'Carla', 'Lopez', 'Outreach', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true)
+,(11, 'Domenic', 'Mangano', 'PM, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true)
+,(25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-Present', true)
+,(26, 'Owen', 'Luts', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true)
+,(27, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[]', null,'2024-Present', true);
