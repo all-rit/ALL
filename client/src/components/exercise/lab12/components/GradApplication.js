@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-// import useMainStateContext from "src/reducers/MainContext";
 import React, { useState } from "react";
 
 const Application = () => {

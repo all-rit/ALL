@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Router } from "@reach/router";
 // lab imported dependencies;
-import Test from "./pages/Test.js";
+import Test from "./pages/Test";
 import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
-import GradApplication from "./GradApplication";
+import GradApplication from "./components/GradApplication.js";
 import Diploma from "./components/Diploma";
 
 /**
@@ -23,7 +23,7 @@ const Main = () => {
           <Test path="/*" />
           {/* TODO: remove this */}
           <Diploma path="/diploma" />
-          <GradApplication path="/GraduationApplication"/>
+          <GradApplication path="/GraduationApplication" />
         </Router>
       </GameStateContext.Provider>
     </div>

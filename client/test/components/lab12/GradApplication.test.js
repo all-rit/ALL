@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import GradApplication from "../../../src/components/exercise/lab12/GradApplication";
+import GradApplication from "../../../src/components/exercise/lab12/components/GradApplication";
 
 /*
  * Test that the component has 6 input fileds for
