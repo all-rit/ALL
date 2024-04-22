@@ -30,8 +30,8 @@ const DatabaseRepairImplementation = (props = {}) => {
         <MultiTab numberOfTabs={11} />
         {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
         <CommentText>
-          // Enter &lsquo;he/him&rsquo;, &lsquo;she/her&rsquo;,
-          &lsquo;they/them&rsquo;
+          // Enter &apos;he/him&apos;, &apos;she/her&apos;,
+          &apos;they/them&apos;
         </CommentText>
       </CodeLine>
       {identityData
@@ -87,7 +87,7 @@ const DatabaseRepairImplementation = (props = {}) => {
       <CodeLine>
         <MultiTab numberOfTabs={11} />
         {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
-        <CommentText>// Enter &lsquo;varchar(255)&rsquo;</CommentText>
+        <CommentText>// Enter &apos;varchar(255)&apos;</CommentText>
       </CodeLine>
       {identityData
         .filter((item) => item.id === 1)
