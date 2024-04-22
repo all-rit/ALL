@@ -4,7 +4,13 @@ import { Router } from "@reach/router";
 import Test from "./pages/Test";
 import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
-import Diploma from "./components/Diploma";
+
+import ExerciseIntro from "./pages/Explanations/ExerciseIntro";
+import PreWrongDiploma from "./pages/Explanations/PreWrongDiploma";
+import PostWrongNewsletter from "./pages/Explanations/PostWrongNewsletter";
+import PreCorrectDiploma from "./pages/Explanations/PreCorrectDiploma";
+import PostCorrectNewsletter from "./pages/Explanations/PostCorrectNewsletter";
+import KeyTakeaways from "./pages/Explanations/KeyTakeaways";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -20,8 +26,12 @@ const Main = () => {
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
           <Test path="/*" />
-          {/* TODO: remove this */}
-          <Diploma path="/diploma" />
+          <ExerciseIntro path="/ExerciseIntro"/>
+          <PreWrongDiploma path="/PreWrongDiploma"/>
+          <PostWrongNewsletter path="/PostWrongNewsletter"/>
+          <PreCorrectDiploma path="/PreCorrectDiploma"/>
+          <PostCorrectNewsletter path="/PostCorrectNewsletter"/>
+          <KeyTakeaways path="/KeyTakeaways"/>
         </Router>
       </GameStateContext.Provider>
     </div>
