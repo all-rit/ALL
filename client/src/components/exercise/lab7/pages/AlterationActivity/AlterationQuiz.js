@@ -15,8 +15,7 @@ import alterationQuizQuestions from "src/constants/lab7/alterationQuestions";
  */
 const AlterationQuiz = () => {
   const [showContinue, setShowContinue] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [quizComplete, setQuizComplete] = useState(false);
+  const [, setQuizComplete] = useState(false);
   const { state: mainState, actions: mainActions } = useMainStateContext();
 
   useEffect(() => {

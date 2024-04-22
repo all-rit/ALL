@@ -173,7 +173,7 @@ const QuizHandler = (props) => {
         UserLabService.user_complete_quiz(
           props.user.userid,
           props.labId,
-          (countCorrect / questionsTotal) * 100,
+          Math.ceil((countCorrect / questionsTotal) * 100),
         );
       }
     } else {
@@ -181,7 +181,7 @@ const QuizHandler = (props) => {
         output,
         props.user.userid,
         props.labId,
-        (countCorrect / questionsTotal) * 100,
+        Math.ceil((countCorrect / questionsTotal) * 100),
       );
     }
   }
