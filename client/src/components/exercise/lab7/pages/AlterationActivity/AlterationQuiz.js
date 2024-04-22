@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { default as Quiz } from "../../../../quiz/components/QuizHandler";
 import { EXERCISE_IDLE } from "src/constants/index";
 import { navigate } from "@reach/router";
 import { MathComponent } from "mathjax-react";
 import ExerciseService from "../../../../../services/lab7/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
+import alterationQuizQuestions from "src/constants/lab7/alterationQuestions";
 
 /**
  * Renders the Alteration Quiz component.
@@ -13,7 +15,7 @@ import useMainStateContext from "src/reducers/MainContext";
  */
 const AlterationQuiz = () => {
   const [showContinue, setShowContinue] = useState(false);
-  const [quizComplete, setQuizComplete] = useState(false);
+  const [, setQuizComplete] = useState(false);
   const { state: mainState, actions: mainActions } = useMainStateContext();
 
   useEffect(() => {
@@ -51,8 +53,10 @@ const AlterationQuiz = () => {
         hideCertificate
         isFinalQuiz={false}
         submitData={handleSubmitData}
-        quizCompleted={quizComplete}
-        setQuizCompleted={setQuizComplete}
+        quizQuestions={alterationQuizQuestions}
+        setQuizCompleted={() => {
+          return true;
+        }}
       />
       {showContinue && (
         <button
@@ -65,6 +69,9 @@ const AlterationQuiz = () => {
       )}
     </div>
   );
+};
+AlterationQuiz.propTypes = {
+  setQuizCompleted: PropTypes.func.isRequired,
 };
 
 export default AlterationQuiz;
