@@ -4,7 +4,14 @@
     "es2021": true
   },
   "extends": "google",
-  "overrides": [],
+  "overrides": [
+    {
+    "files": ["**/*.spec.js", "**/*.spec.jsx"],
+    "env": {
+      "jest": true
+    }
+  }
+  ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
