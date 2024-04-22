@@ -14,6 +14,13 @@ import PropTypes from "prop-types";
 import DatabaseRepairImplementation from "./repairs/DatabaseRepairImplementation";
 import IdentityDatabaseData from "../../../../constants/lab12/DatabaseRepair";
 
+/**
+ * DatabaseRepair is a component that is responsible for passing logic into the universal
+ * repair page component, what this allows us to do is call the re-useable repair component
+ * with custom logic pertaining to that repair section.
+ * @returns
+ */
+
 const DatabaseRepair = () => {
   const { actions, state } = useMainStateContext();
   const user = state.main.user;

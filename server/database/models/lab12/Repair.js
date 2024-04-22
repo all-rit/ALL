@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 const FORM_REPAIR = 'FormRepair';
 const DATABASE_REPAIR = 'DatabaseRepair';
 module.exports = (sequelize, DataTypes) => {
@@ -14,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         section: {
           type:
-            DataTypes.enum(
+            DataTypes.ENUM(
                 FORM_REPAIR,
                 DATABASE_REPAIR,
             ),

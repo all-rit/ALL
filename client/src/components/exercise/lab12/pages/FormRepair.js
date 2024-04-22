@@ -14,6 +14,13 @@ import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
 import IdentityFormData from "../../../../constants/lab12/FormRepair";
 
+/**
+ * FormRepair is a component that is responsible for passing logic into the universal
+ * repair page component, what this allows us to do is call the re-useable repair component
+ * with custom logic pertaining to that repair section.
+ * @returns
+ */
+
 const FormRepair = () => {
   const { actions, state } = useMainStateContext();
   const user = state.main.user;
