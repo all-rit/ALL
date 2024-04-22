@@ -132,9 +132,8 @@ const App = () => {
                 path={`/Lab${lab}/Quiz`}
                 labId={lab}
                 user={state.main.user}
-                isFinalQuiz
+                isFinalQuiz={true}
                 hideCertificate={false}
-                submitData={() => {}}
                 quizCompleted={quizCompleted}
                 setQuizCompleted={setQuizCompleted}
               />

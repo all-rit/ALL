@@ -34,7 +34,7 @@ function Result(props) {
       counter += 1;
       if (props.quizQuestions[counter - 1].multiChoice) {
         const isMultiCorrect = Array.from(
-          props.selectedAnswers[counter - 1]
+          props.selectedAnswers[counter - 1],
         ).map((element) => {
           return checkIfCorrect(element, counter - 1);
         });
@@ -50,7 +50,7 @@ function Result(props) {
       } else {
         isCorrect = checkIfCorrect(
           props.selectedAnswers[counter - 1].type,
-          index
+          index,
         );
       }
       return (
@@ -65,7 +65,7 @@ function Result(props) {
           <td className={"column-width p-3"}>
             {renderTableSelectedAnswersData(
               props.selectedAnswers[counter - 1],
-              answers
+              answers,
             )}
           </td>
           <td className={"column-width p-3"}>
