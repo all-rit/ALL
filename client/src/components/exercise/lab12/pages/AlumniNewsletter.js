@@ -13,8 +13,6 @@ const AlumniNewsletter = (props) => {
     // eventually should navigate to next page
   };
 
-  console.log("props: " + props);
-
   return (
     <div className="center-div">
       <InformationLetterEmail
