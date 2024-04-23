@@ -122,7 +122,6 @@ const Letter = ({ isEditable, letterBody, alumniName = "John Doe" }) => {
             <div
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-medium tw-self-start tw-text-start tw-word-breaks tw-mb-16`}
               style={{ fontFamily: "Kumbh Sans" }}
-              data-testid="letter-address"
             >
               {alumniName}
               <br />
