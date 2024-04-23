@@ -104,9 +104,12 @@ const Application = () => {
               Personal Information:{" "}
             </h2>
             <div className="sm:tw-flex tw-mb-6">
-              <label className="tw-pr-8">Legal First Name:</label>
+              <label htmlFor="firstName" className="tw-pr-8">
+                Legal First Name:
+              </label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
+                  id="firstName"
                   label="Legal First Name"
                   placeholder="Ex: Jane"
                   onChange={(e) => {
@@ -114,33 +117,48 @@ const Application = () => {
                   }}
                 />
                 {fNameErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                  <label
+                    htmlFor="firstName"
+                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                  >
                     Error: Invalid character.
                   </label>
                 )}
                 {fNameEmptyErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                  <label
+                    htmlFor="firstName"
+                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                  >
                     Error: Input required.
                   </label>
                 )}
               </div>
             </div>
             <div className="sm:tw-flex tw-mb-6">
-              <label className="tw-pr-8">Legal Last Name:</label>
+              <label htmlFor="lastName" className="tw-pr-8">
+                Legal Last Name:
+              </label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
+                  id="lastName"
                   placeholder="Ex: Smith"
                   onChange={(e) => {
                     setLastName(e.target.value);
                   }}
                 />
                 {lNameErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                  <label
+                    htmlFor="lastName"
+                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                  >
                     Error: Invalid character.
                   </label>
                 )}
                 {lNameEmptyErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                  <label
+                    htmlFor="lastName"
+                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                  >
                     Error: Input required.
                   </label>
                 )}
