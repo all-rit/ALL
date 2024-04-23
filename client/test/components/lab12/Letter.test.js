@@ -17,7 +17,7 @@ describe("Letter tests", () => {
     );
 
     expect(screen.getByTestId("letter-address")).toHaveTextContent(
-      `${name}111 Accessibility Street,Rochester, New York, 14626`,
+      `${name}111 Accessibility StreetRochester, New York, 14626`,
     );
   });
 

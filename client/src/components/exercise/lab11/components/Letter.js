@@ -126,7 +126,7 @@ const Letter = ({ isEditable, letterBody, alumniName = "John Doe" }) => {
             >
               {alumniName}
               <br />
-              111 Accessibility Street,
+              111 Accessibility Street
               <br />
               Rochester, New York, 14626
             </div>
