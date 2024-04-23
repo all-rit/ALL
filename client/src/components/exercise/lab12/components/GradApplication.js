@@ -107,6 +107,7 @@ const Application = () => {
               <label className="tw-pr-8">Legal First Name:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
+                  label="Legal First Name"
                   placeholder="Ex: Jane"
                   onChange={(e) => {
                     setFirstName(e.target.value);
