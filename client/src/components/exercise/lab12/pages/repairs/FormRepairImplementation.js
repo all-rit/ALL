@@ -50,7 +50,7 @@ const FormRepairImplementation = (props = {}) => {
             <CodeLine>
               <MultiTab numberOfTabs={2} />
               <CommentText>
-                Enter &lsquo;{item.variableName}&rsquo; below:{" "}
+                {"// "}Enter &lsquo;{item.variableName}&rsquo; below:{" "}
               </CommentText>
             </CodeLine>
             <CodeLine>
@@ -120,7 +120,7 @@ const FormRepairImplementation = (props = {}) => {
             <CodeLine>
               <MultiTab numberOfTabs={3} />{" "}
               <CommentText>
-                Enter &lsquo;formData.{item.variableName}&rsquo; below:{" "}
+                {"// "}Enter &lsquo;formData.{item.variableName}&rsquo; below:{" "}
               </CommentText>
             </CodeLine>
             <CodeLine key={item.id}>
