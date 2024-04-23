@@ -18,25 +18,25 @@ const Diploma = (props) => {
       <h1 className="tw-font-diploma tw-text-7xl tw-leading-none tw-pb-8 tw-pt-4">
         ALL University
       </h1>
-      <p className="fancy-text tw-text-3xl tw-leading-none">
+      <p className="fancy-text tw-text-3xl tw-leading-none" data-testid="collegeName">
         Upon the recommendation of the President and Faculty of the{" "}
         <span className="tw-font-diploma tw-leading-none">{collegeName}</span>{" "}
         and by the Board of Trustees has conferred upon
       </p>
-      <h2 className="tw-font-bold tw-text-5xl tw-leading-none tw-pb-4 tw-pt-4">
+      <h2 className="tw-font-bold tw-text-5xl tw-leading-none tw-pb-4 tw-pt-4" data-testid="names">
         {firstName} {middleName} {lastName}
       </h2>
       <p className="fancy-text tw-text-3xl tw-leading-none">
         for the degree of
       </p>
-      <h3 className="tw-font-diploma tw-text-5xl tw-leading-none tw-pb-4 tw-pt-4">
+      <h3 className="tw-font-diploma tw-text-5xl tw-leading-none tw-pb-4 tw-pt-4" data-testid="degree">
         {degree}
       </h3>
       <p className="fancy-text tw-text-3xl tw-leading-none">
         In testimony, thereof, the Board of Trustees has granted this diploma
         bearing the Seal of the Institution.
       </p>
-      <p className="fancy-text tw-text-3xl tw-pb-8 tw-leading-normal">
+      <p className="fancy-text tw-text-3xl tw-pb-8 tw-leading-normal" data-testid="date">
         Earned on this {date}
       </p>
       <div className="tw-flex tw-row tw-justify-evenly tw-items-center tw-w-full">
