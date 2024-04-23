@@ -122,6 +122,7 @@ const Letter = ({ isEditable, letterBody, alumniName = "John Doe" }) => {
             <div
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-medium tw-self-start tw-text-start tw-word-breaks tw-mb-16`}
               style={{ fontFamily: "Kumbh Sans" }}
+              data-testid="letter-address"
             >
               {alumniName}
               <br />
@@ -132,6 +133,7 @@ const Letter = ({ isEditable, letterBody, alumniName = "John Doe" }) => {
             <div
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-bold tw-self-start tw-mb-10`}
               style={{ fontFamily: "Kumbh Sans" }}
+              data-testid="dear-name"
             >
               Dear {alumniName},
             </div>
@@ -146,6 +148,7 @@ const Letter = ({ isEditable, letterBody, alumniName = "John Doe" }) => {
               onInput={(e) => {
                 setLetterContent(e.target.innerText);
               }}
+              data-testid="letter-body"
             >
               {currentLetterContent}
             </div>
