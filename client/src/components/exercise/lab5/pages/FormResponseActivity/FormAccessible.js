@@ -22,7 +22,7 @@ class FormAccessible extends Component {
   render() {
     const { actions, state } = this.props;
     return (
-      <div>
+      <div className="mb-5">
         <div className="cognitive_instructions">Complete the form below</div>
         <Form
           url={"/FormGuidance"}
