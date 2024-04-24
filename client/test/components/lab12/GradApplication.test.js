@@ -134,18 +134,4 @@ describe("Grad Application Tests", () => {
     const buttonField = container.querySelectorAll("button");
     expect(buttonField.length).toBe(1);
   });
-  /**
-   test("LFN", async () => {
-     const user = userEvent.setup();
-
-     const updateCallback = vi.fn()
-     render(<MyTest value="" updateCallback={updateCallback}/>)
-
-     const input = screen.getByLabelText("My Test");
-
-     await act(async () => await user.type(input, "my-value"));
-
-     expect(updateCallback).toHaveBeenLastCalledWith("my-value");
-   });
-   */
 });
