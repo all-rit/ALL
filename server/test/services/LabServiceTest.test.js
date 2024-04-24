@@ -1,6 +1,6 @@
 const labService = require('../../services/LabService');
 const db = require('../../database');
-const labCount = 11;
+const labCount = 12;
 
 afterAll(() => {
   db.sequelize.close();

@@ -1,25 +1,19 @@
 const ExerciseService = require('../../services/lab12/ExerciseService');
+// eslint-disable-next-line valid-jsdoc
 /**
  * getExercise(): is a function responsible for retrieving the
  * user id from the query params from the route to the endpoint.
  * this allows for the ability to retrieve the last game state.
  * @param {Object} req request object containing userId;
  */
-async function getExercise(req) {
+async function getExercise(req, res) {
   try {
     const {userID} = req.params;
-    const response = await ExerciseService.getExercise(userID);
-    if (response === null) {
-      return {
-        userId: userID,
-        isFormRepairComplete: false,
-        isDatabaseRepairComplete: false,
-        isExerciseComplete: false,
-        hasViewed: false,
-      };
-    }
+    const exercise = await ExerciseService.getExercise(userID);
+    return res.json([exercise]);
   } catch (error) {
     console.error(error);
+    res.status(500).json({error: 'Error: Could Not Find Exercise'});
   }
 }
 
