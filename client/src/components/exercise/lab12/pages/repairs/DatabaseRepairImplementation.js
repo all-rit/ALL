@@ -63,7 +63,7 @@ const DatabaseRepairImplementation = (props = {}) => {
                     name: item.variable,
                     type: "text",
                     placeholder: "Enter Answer Here",
-                    className: "p-1 tw-w-[34rem] code_editor__input",
+                    className: "p-1 tw-w-[21rem] code_editor__input",
                   }}
                 />
               ) : (
