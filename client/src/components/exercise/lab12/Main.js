@@ -27,14 +27,17 @@ const Main = () => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <FormRepair path="/FormRepair" />
-          <DatabaseRepair path={"/DatabaseRepair"} />
-          <Diploma path="/diploma" />
+          <ExerciseIntro path="/" />
           <GradApplication path="/GraduationApplication" />
-          <ExerciseIntro path="/ExerciseIntro" />
           <PreWrongDiploma path="/PreWrongDiploma" />
+          <Diploma path="/Diploma" />
           <PostWrongNewsletter path="/PostWrongNewsletter" />
+          <FormRepair path="/FormRepair" />
+          <DatabaseRepair path="/DatabaseRepair" />
+          {/* go to grad application again */}
           <PreCorrectDiploma path="/PreCorrectDiploma" />
+          {/* go to diploma again */}
+          {/* go to newsletter again */}
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />
         </Router>
