@@ -18,6 +18,7 @@ async function getExercise(data) {
           raw: true,
         },
     );
+
     return exerciseResponse;
   } catch (error) {
     console.error(error);

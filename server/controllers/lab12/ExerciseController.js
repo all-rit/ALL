@@ -11,10 +11,11 @@ async function getExercise(req, res) {
   try {
     const {userID} = req.params;
     const exercise = await ExerciseService.getExercise(userID);
-    return JSON.stringify(exercise);
+    return res.json([exercise]);
   } catch (error) {
     console.error(error);
-    res.status(500).json({error: 'Error: Could Not Find Exercise'});
+    res.status(500);
+    res.json({error: 'Error: Could Not Find Exercise'});
   }
 }
 
@@ -37,7 +38,7 @@ async function postExercise(req, res) {
       isExerciseComplete: isExerciseComplete,
       hasViewed: hasViewed,
     });
-    return JSON.stringify(response);
+    return res.json([response]);
   } catch (error) {
     console.error(error);
     return res.status(500).json({error: 'Error: Could Not Post Exercise'});
