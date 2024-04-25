@@ -27,7 +27,6 @@ const Main = () => {
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
           <Test path="/*" />
-          {/* TODO: remove this */}
           <Diploma path="/diploma" />
           <GradApplication path="/GraduationApplication" />
           <ExerciseIntro path="/ExerciseIntro" />
