@@ -68,7 +68,8 @@ async function postExercise(data) {
         hasViewed: hasViewed,
       };
         // reset state
-      return await db.ExerciseLab12.create(updatedExercise).id;
+      await db.ExerciseLab12.create(updatedExercise).id;
+      return updatedExercise;
     }
   } catch (error) {
     console.error(error);
