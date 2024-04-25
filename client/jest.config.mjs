@@ -143,7 +143,7 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "jest-environment-node",
+  testEnvironment: "jest-environment-jsdom",
 
   // Options that will be passed to the testEnvironmentFt
   // testEnvironmentOptions: {},
