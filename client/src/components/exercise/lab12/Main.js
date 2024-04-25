@@ -5,6 +5,7 @@ import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
 import FormRepair from "./pages/FormRepair";
 import DatabaseRepair from "./pages/DatabaseRepair";
+import GradApplication from "./components/GradApplication.js";
 import Diploma from "./components/Diploma";
 import ExerciseIntro from "./pages/Explanations/ExerciseIntro";
 import PreWrongDiploma from "./pages/Explanations/PreWrongDiploma";
@@ -29,6 +30,7 @@ const Main = () => {
           <FormRepair path="/FormRepair" />
           <DatabaseRepair path={"/DatabaseRepair"} />
           <Diploma path="/diploma" />
+          <GradApplication path="/GraduationApplication" />
           <ExerciseIntro path="/ExerciseIntro" />
           <PreWrongDiploma path="/PreWrongDiploma" />
           <PostWrongNewsletter path="/PostWrongNewsletter" />
