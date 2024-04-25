@@ -1,7 +1,7 @@
 import { createContext } from "react";
-const GameStateContext = createContext({
+const ExerciseStateContext = createContext({
   exerciseState: "",
   setExerciseState: () => {},
 });
 
-export default GameStateContext;
+export default ExerciseStateContext;

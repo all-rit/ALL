@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import GradApplication from "../../../src/components/exercise/lab12/components/GradApplication";
+import ExerciseStateContext from "../../../src/components/exercise/lab12/Lab12Context";
 
 /*
  * Test that the component has 6 input fileds for
@@ -8,24 +9,64 @@ import GradApplication from "../../../src/components/exercise/lab12/components/G
  * And one "Submit Application" button field
  */
 describe("Test GradApplication Component Input Fields", () => {
-  test("has 6 input fields", async () => {
+  test("Verify header", async () => {
     render(<GradApplication />);
-    // Verify header:'
+    // Verify header:
     const textElement = await screen.findByText(
       "Apply for Graduation at ALL University",
     );
     expect(textElement).toBeTruthy();
   });
 
-  test("has correct placeholder text", async () => {
+  test("has correct placeholder text before repair", async () => {
+    const repairComplete = true;
     // Check placeholder text:
-    render(<GradApplication />);
+    render(
+      <ExerciseStateContext.Provider
+        value={{
+          repairComplete,
+        }}
+      >
+        <GradApplication />
+      </ExerciseStateContext.Provider>,
+    );
+    const firstNameInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: Jane").placeholder;
+    const lastNameInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: Smith").placeholder;
+    const collegeInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: RIT").placeholder;
+    const majorInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: CS").placeholder;
+    const gradTermInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: Spring 2024").placeholder;
+    expect(firstNameInputPlaceholder).toBe("Ex: Jane");
+    expect(lastNameInputPlaceholder).toBe("Ex: Smith");
+    expect(collegeInputPlaceholder).toBe("Ex: RIT");
+    expect(majorInputPlaceholder).toBe("Ex: CS");
+    expect(gradTermInputPlaceholder).toBe("Ex: Spring 2024");
+  });
+
+  test("has correct placeholder text after repair", async () => {
+    const repairComplete = true;
+    // Check placeholder text:
+    render(
+      <ExerciseStateContext.Provider
+        value={{
+          repairComplete,
+        }}
+      >
+        <GradApplication />
+      </ExerciseStateContext.Provider>,
+    );
     const firstNameInputPlaceholder =
       await screen.getByPlaceholderText("Ex: Jane").placeholder;
     const lastNameInputPlaceholder =
       await screen.getByPlaceholderText("Ex: Smith").placeholder;
     const pronounsInputPlaceholder =
       await screen.getByPlaceholderText("Ex: They/Them").placeholder;
+    const preferredNameInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: Alex Smith").placeholder;
     const collegeInputPlaceholder =
       await screen.getByPlaceholderText("Ex: RIT").placeholder;
     const majorInputPlaceholder =
@@ -35,19 +76,40 @@ describe("Test GradApplication Component Input Fields", () => {
     expect(firstNameInputPlaceholder).toBe("Ex: Jane");
     expect(lastNameInputPlaceholder).toBe("Ex: Smith");
     expect(pronounsInputPlaceholder).toBe("Ex: They/Them");
+    expect(preferredNameInputPlaceholder).toBe("Ex: Alex Smith");
     expect(collegeInputPlaceholder).toBe("Ex: RIT");
     expect(majorInputPlaceholder).toBe("Ex: CS");
     expect(gradTermInputPlaceholder).toBe("Ex: Spring 2024");
   });
+
   test("invalid firstName info", async () => {
-    render(<GradApplication />);
+    const repairComplete = true;
+    render(
+      <ExerciseStateContext.Provider
+        value={{
+          repairComplete,
+        }}
+      >
+        <GradApplication />
+      </ExerciseStateContext.Provider>,
+    );
     const inputElement = await screen.getByLabelText("Legal First Name:");
     expect(inputElement).toBeTruthy();
   });
 });
+
 describe("Test GradApplication Component", () => {
   it("renders correctly", () => {
-    render(<GradApplication />);
+    const repairComplete = true;
+    render(
+      <ExerciseStateContext.Provider
+        value={{
+          repairComplete,
+        }}
+      >
+        <GradApplication />
+      </ExerciseStateContext.Provider>,
+    );
 
     //Test if the main heading is rendered ?? is this necessary
     expect(
@@ -58,13 +120,24 @@ describe("Test GradApplication Component", () => {
     expect(screen.getByPlaceholderText("Ex: Jane")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: Smith")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: They/Them")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Ex: Alex Smith")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: RIT")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: CS")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: Spring 2024")).toBeTruthy();
   });
 
   it("validates input correctly", () => {
-    render(<GradApplication />);
+    const repairComplete = true;
+    // Check placeholder text:
+    render(
+      <ExerciseStateContext.Provider
+        value={{
+          repairComplete,
+        }}
+      >
+        <GradApplication />
+      </ExerciseStateContext.Provider>,
+    );
 
     //Fill in input fields with invalid data
     //fireEvent allows us to simulate user interactions with the application that change its state
@@ -76,6 +149,9 @@ describe("Test GradApplication Component", () => {
     });
     fireEvent.change(screen.getByPlaceholderText("Ex: They/Them"), {
       target: { value: "They/Them123" },
+    });
+    fireEvent.change(screen.getByPlaceholderText("Ex: Alex Smith"), {
+      target: { value: "Alex Smith123" },
     });
     fireEvent.change(screen.getByPlaceholderText("Ex: RIT"), {
       target: { value: "RIT123" },
@@ -90,9 +166,8 @@ describe("Test GradApplication Component", () => {
     fireEvent.click(screen.getByText("Submit Application"));
 
     //Check if error messages are displayed
-    //idk if this works yet
     const errorMessages = screen.getAllByText("Error: Invalid character.");
-    expect(errorMessages).toHaveLength(6);
+    expect(errorMessages).toHaveLength(7);
 
     //Fill in input fields with empty data
     fireEvent.change(screen.getByPlaceholderText("Ex: Jane"), {
@@ -102,6 +177,9 @@ describe("Test GradApplication Component", () => {
       target: { value: " " },
     });
     fireEvent.change(screen.getByPlaceholderText("Ex: They/Them"), {
+      target: { value: "    " },
+    });
+    fireEvent.change(screen.getByPlaceholderText("Ex: Alex Smith"), {
       target: { value: "    " },
     });
     fireEvent.change(screen.getByPlaceholderText("Ex: RIT"), {
@@ -116,17 +194,26 @@ describe("Test GradApplication Component", () => {
     fireEvent.click(screen.getByText("Submit Application"));
     //Check if error messages are displayed
     const error2Messages = screen.getAllByText("Error: Input required.");
-    expect(error2Messages).toHaveLength(6);
+    expect(error2Messages).toHaveLength(7);
   });
 });
 
 describe("Grad Application Tests", () => {
-  test("component has 6 input fields", () => {
-    const { container } = render(<GradApplication />); // Render component
+  test("component has 7 input fields", () => {
+    const repairComplete = true;
+    const { container } = render(
+      <ExerciseStateContext.Provider
+        value={{
+          repairComplete,
+        }}
+      >
+        <GradApplication />
+      </ExerciseStateContext.Provider>,
+    ); // Render component
     // Get all input elements within the rendered GradApplication
     const inputFields = container.querySelectorAll("input");
     // Assert that there are 6 fields (LFN, LLN, PR, COL, MJ, GT)
-    expect(inputFields.length).toBe(6);
+    expect(inputFields.length).toBe(7);
   });
 
   test("component has 1 button field", () => {

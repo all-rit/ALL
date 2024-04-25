@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import ExerciseStateContext from "../Lab12Context";
 
 const Application = () => {
+  const { repairComplete, setRepairComplete } =
+    useContext(ExerciseStateContext);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [preferredName, setPreferredName] = useState("");
   const [pronouns, setPronouns] = useState("");
   const [college, setCollege] = useState("");
   const [major, setMajor] = useState("");
@@ -10,6 +15,7 @@ const Application = () => {
 
   const [fNameErr, setFirstNameErr] = useState(false);
   const [lNameErr, setLastNameErr] = useState(false);
+  const [preferredNameErr, setPreferredNameErr] = useState(false);
   const [pronounsErr, setPronounsErr] = useState(false);
   const [collegeErr, setCollegeErr] = useState(false);
   const [majorErr, setMajorErr] = useState(false);
@@ -17,10 +23,21 @@ const Application = () => {
 
   const [fNameEmptyErr, setFirstNameEmptyErr] = useState(false);
   const [lNameEmptyErr, setLastNameEmptyErr] = useState(false);
+  const [preferredNameEmptyErr, setPreferredNameEmptyErr] = useState(false);
   const [pronounsEmptyErr, setPronounsEmptyErr] = useState(false);
   const [collegeEmptyErr, setCollegeEmptyErr] = useState(false);
   const [majorEmptyErr, setMajorEmptyErr] = useState(false);
   const [gradTermEmptyErr, setGradTermEmptyErr] = useState(false);
+
+  const handleSubmit = () => {
+    validateInput();
+    // after we validated their input, we can say the repair is completed
+    // check if we have the setRepairComplete function
+    // we don't have that function in GradApplication.test
+    if (setRepairComplete) {
+      setRepairComplete(true);
+    }
+  };
 
   const validateInput = () => {
     // reset errors
@@ -57,6 +74,15 @@ const Application = () => {
     }
     if (!hasCharacter.test(lastName)) {
       setLastNameEmptyErr(true);
+    }
+
+    // RegExp for special characters (anything except letters and whitespace));
+    const preferredNameSpecialChar = new RegExp("[^A-Za-z\\s+]", "g");
+    if (preferredNameSpecialChar.test(preferredName)) {
+      setPreferredNameErr(true);
+    }
+    if (!hasCharacter.test(preferredName)) {
+      setPreferredNameEmptyErr(true);
     }
 
     const pReg = new RegExp("[^A-Za-z\\s+/]", "g");
@@ -164,27 +190,52 @@ const Application = () => {
                 )}
               </div>
             </div>
-            <div className="sm:tw-flex tw-mb-6">
-              <label className="tw-pr-8">Pronouns:</label>
-              <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
-                <input
-                  placeholder="Ex: They/Them"
-                  onChange={(e) => {
-                    setPronouns(e.target.value);
-                  }}
-                />
-                {pronounsErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Invalid character.
-                  </label>
-                )}
-                {pronounsEmptyErr && (
-                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
-                    Error: Input required.
-                  </label>
-                )}
+            {repairComplete && (
+              <div className="sm:tw-flex tw-mb-6">
+                <label className="tw-pr-8">Preferred Name:</label>
+                <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
+                  <input
+                    placeholder="Ex: Alex Smith"
+                    onChange={(e) => {
+                      setPreferredName(e.target.value);
+                    }}
+                  />
+                  {preferredNameErr && (
+                    <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                      Error: Invalid character.
+                    </label>
+                  )}
+                  {preferredNameEmptyErr && (
+                    <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                      Error: Input required.
+                    </label>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
+            {repairComplete && (
+              <div className="sm:tw-flex tw-mb-6">
+                <label className="tw-pr-8">Pronouns:</label>
+                <div className="tw-flex tw-flex-col tw-max-w-72 tw-h-8 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
+                  <input
+                    placeholder="Ex: They/Them"
+                    onChange={(e) => {
+                      setPronouns(e.target.value);
+                    }}
+                  />
+                  {pronounsErr && (
+                    <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                      Error: Invalid character.
+                    </label>
+                  )}
+                  {pronounsEmptyErr && (
+                    <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                      Error: Input required.
+                    </label>
+                  )}
+                </div>
+              </div>
+            )}
             <h3 className="tw-mt-10 tw-text-xl tw-font-semibold tw-mb-1.5">
               Academic Information:{" "}
             </h3>
@@ -259,7 +310,7 @@ const Application = () => {
           <button
             className="tw-text-error-red tw-mt-8 btn-primary btn btn-md"
             onClick={() => {
-              validateInput();
+              handleSubmit();
             }}
           >
             Submit Application

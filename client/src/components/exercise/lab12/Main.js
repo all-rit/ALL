@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Router } from "@reach/router";
 // lab imported dependencies;
 import { EXERCISE_STATES } from "../../../constants/lab12";
-import GameStateContext from "./Lab12Context";
+import ExerciseStateContext from "./Lab12Context";
 import FormRepair from "./pages/FormRepair";
 import DatabaseRepair from "./pages/DatabaseRepair";
 import GradApplication from "./components/GradApplication.js";
@@ -23,9 +23,19 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
+  // state to track repair
+  const [repairComplete, setRepairComplete] = useState(false);
+
   return (
     <div className="bottomSpace">
-      <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
+      <ExerciseStateContext.Provider
+        value={{
+          exerciseState,
+          setExerciseState,
+          repairComplete,
+          setRepairComplete,
+        }}
+      >
         <Router className="app">
           <ExerciseIntro path="/" />
           <GradApplication path="/GraduationApplication" />
@@ -41,7 +51,7 @@ const Main = () => {
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />
         </Router>
-      </GameStateContext.Provider>
+      </ExerciseStateContext.Provider>
     </div>
   );
 };
