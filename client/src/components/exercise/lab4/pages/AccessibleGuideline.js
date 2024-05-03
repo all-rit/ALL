@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import { navigate } from "@reach/router";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";

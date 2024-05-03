@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../../reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
-import logo from "../../../assets/images/logos/ALL_Logo_Header.svg";
+import logo from "../../../assets/images/logos/FinalALLLogo.png";
 import { Sections } from "../../../constants/index";
 
 const mapStateToProps = (state) => {
@@ -45,9 +45,12 @@ class Certificate extends Component {
           height: "auto",
           padding: "20px",
           border: "10px solid #787878",
+          borderRadius: "28px",
+          backgroundColor: "white",
         }}
       >
         <div
+          className="tw-rounded-3xl"
           style={{ width: "100%", height: "auto", border: "5px solid #787878" }}
         >
           <div style={{ width: "50%", margin: "auto" }}>
@@ -93,7 +96,7 @@ class Certificate extends Component {
           <span
             style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
           >
-            with score of{" "}
+            with a score of{" "}
             <b style={{ color: this.getColor() }}>{this.props.quizResult}</b>
           </span>{" "}
           <br />
@@ -101,7 +104,7 @@ class Certificate extends Component {
           <span
             style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
           >
-            <i>dated</i>
+            <i>Completed on:</i>
           </span>
           <br />
           <span
@@ -111,12 +114,12 @@ class Certificate extends Component {
           </span>
           <br />
           <br />
-          <div style={{ backgroundColor: "rgb(61, 61, 61)" }}>
+          <div className="p-3 tw-bg-labGray tw-rounded-b-2xl">
             <img
               src={logo}
               alt="logo"
               style={{
-                height: "120px",
+                height: "140px",
                 width: "500px",
               }}
             />

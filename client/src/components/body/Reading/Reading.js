@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
@@ -110,8 +111,8 @@ const Reading = (props) => {
   };
 
   return (
-    <div>
-      <div className="study">
+    <div className="tw-relative tw-bg-labYellow p-3 tw-rounded-3xl shadow">
+      <div className="study tw-bg-white p-5 tw-rounded-2xl shadow">
         {readingData?.description !== "" ? (
           <>
             <h3>{readingData?.description.header}</h3>

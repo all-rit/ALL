@@ -99,7 +99,10 @@
 
 .timer__window {
   background-color: #d3d6d9;
-  width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin: 1rem;
   padding: 1rem;
 }

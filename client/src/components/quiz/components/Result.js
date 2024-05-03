@@ -4,6 +4,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Certificate from "./Certificate";
+import GreenCheck from "../../../assets/images/GreenCheck.webp";
+import RedX from "../../../assets/images/RedX.png";
 import { navigate } from "@reach/router";
 
 function Result(props) {
@@ -57,16 +59,22 @@ function Result(props) {
           key={index}
           className={isCorrect ? "answer-correct" : "answer-wrong"}
         >
-          <td className={"column-width"}>{question}</td>
-          <td className={"column-width"}>{renderTableAnswersData(answers)}</td>
-          <td className={"column-width"}>
+          <td className={"column-width p-3"}>{question}</td>
+          <td className={"column-width p-3"}>
+            {renderTableAnswersData(answers)}
+          </td>
+          <td className={"column-width p-3"}>
             {renderTableSelectedAnswersData(
               props.selectedAnswers[counter - 1],
               answers,
             )}
           </td>
-          <td className={"column-width"}>
-            {isCorrect ? "Correct" : "Not Correct"}
+          <td className={"column-width p-3"}>
+            {isCorrect ? (
+              <img src={GreenCheck} alt={"Correct"} />
+            ) : (
+              <img src={RedX} alt="Incorrect" />
+            )}
           </td>
         </tr>
       );
@@ -76,7 +84,7 @@ function Result(props) {
   function renderTableAnswersData(answers) {
     let counter = 0;
     return (
-      <ul>
+      <ul className="tw-rounded-3xl">
         {answers.map(function (answer, index) {
           counter += 1;
           if (answer["val"] === 1) {
@@ -102,7 +110,6 @@ function Result(props) {
           <ul>
             <li key={questionNumber}>
               {questionNumber}. {answers[answer]["content"]}
-              <hr />
             </li>
           </ul>
         );
@@ -113,7 +120,6 @@ function Result(props) {
         <ul>
           <li key={questionNumber}>
             {questionNumber}. {answers[selectedAnswers.type]["content"]}
-            <hr />
           </li>
         </ul>
       );
@@ -125,19 +131,24 @@ function Result(props) {
   };
 
   return (
-    <div>
-      <div className="quiz container shadow">
-        <div className="result">
-          Results <strong>Score: {props.quizResult}</strong>
-          <br />
+    <div className="tw-relative">
+      <div className="quiz container shadow p-3 tw-bg-labYellow tw-rounded-3xl shadow">
+        <div className=" w-100 result tw-bg-labLightGray tw-rounded-2xl poppins mb-3 shadow">
+          <h1>
+            <strong>RESULTS</strong>
+          </h1>
+          <strong>Score: {props.quizResult}</strong>
+        </div>
+        <div className="result tw-bg-labLightGray p-3 tw-rounded-2xl poppins shadow">
           <div>
-            <table id="quizResults">
+            <table id="quizResults" className="tw-bg-white tw-rounded-3xl">
               <tbody>
                 <tr>
-                  <th>QUESTION</th>
+                  {/* {renderTableHeader()}*/}
+                  <th className="resultTopLeft">QUESTION</th>
                   <th>CORRECT ANSWERS</th>
                   <th>SELECTED ANSWERS</th>
-                  <th>RESULTS</th>
+                  <th className="resultTopRight p-3">RESULTS</th>
                 </tr>
                 {renderTableData()}
               </tbody>

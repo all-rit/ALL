@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { navigate } from "@reach/router";
-import { AppBar } from "@material-ui/core";
+import { AppBar } from "@mui/material";
 
 const ExerciseEnd = () => {
   /**
