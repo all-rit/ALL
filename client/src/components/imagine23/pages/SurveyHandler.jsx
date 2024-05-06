@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Survey from "../components/Survey";
 import { navigate } from "@reach/router";
@@ -66,7 +66,7 @@ const SurveyHandler = (props) => {
     }
   }
   /**
-   * onComplete is a function that is responsible for preparing and running the
+   * onComplete(): is a function that is responsible for preparing and running the
    * calculations to grade a users responses to the quiz. This will then prepare the data
    * to display to the user for the result portion of the quiz.
    */
@@ -75,51 +75,37 @@ const SurveyHandler = (props) => {
 
     if (surveyType === "pre") {
       // will need to be changed with next logic story
-      ImagineService.preSurvey(props.userID, selectedAnswers, "experiential");
-      groupUserByAnswers(); // This will handle navigation
+      activitySelector();
+      // This will handle navigation
     } else if (surveyType === "post") {
       ImagineService.postSurvey(props.userID, selectedAnswers);
       navigate("/Imagine/ExerciseEnd");
     }
   }
-
-  async function groupUserByAnswers() {
-    let groupingQuestions = [0, 1, 2];
-
-    // Helper function to compare answers, since they can be either strings or arrays
-    const isEqualAnswer = (a, b) => {
-      // Normalize both answers to arrays and sort to ensure order doesn't matter
-      const arrA = Array.isArray(a) ? a : [a];
-      const arrB = Array.isArray(b) ? b : [b];
-      arrA.sort();
-      arrB.sort();
-
-      // Check if arrays are of the same length and have equal elements (case-insensitive for strings)
-      return (
-        arrA.length === arrB.length &&
-        arrA.every((val, index) => {
-          return typeof val === "string" && typeof arrB[index] === "string"
-            ? val.toLowerCase() === arrB[index].toLowerCase()
-            : val === arrB[index];
-        })
-      );
-    };
-
-    // Use age, gender, and enthnicity to group users together
-    const resUsers = await ImagineService.getUsers();
-    let groupedUsers = resUsers.filter((user) =>
-      groupingQuestions.every((index) => {
-        return isEqualAnswer(
-          user.preSurvey[index].answer,
-          selectedAnswers[index].answer,
-        );
-      }),
+  /**
+   * activitySelector(): is a function that is responsible for determining
+   * what activity the user will be directed to based on the responses given
+   * in the pre-survey.
+   */
+  async function activitySelector() {
+    const response = await ImagineService.preSurvey(
+      props.userID,
+      selectedAnswers,
     );
+    const section = (await response.text()).replace(/['"]+/g, "");
 
-    // Is in either group 1 or 2 (experiential or expressive). Judge this based on whether, in their group, they is an even or odd number of people in their group
-    let group = groupedUsers.length % 2;
-    console.log(group === 0 ? "Experiential" : "Expression");
-    props.handleGroupAssignment(group === 0 ? true : false);
+    if (section == "experiential" || section === "control") {
+      console.log("Navigating to Experiential");
+      navigate("/Imagine/ExperientialExercise");
+    } else if (section == "discomfortCountNonPOC") {
+      console.log("Navigating to Expression");
+      navigate("/Imagine/ExpressionExercise");
+    } else if (section == "discomfortCountPOC") {
+      console.log("Navigating to Expression POC");
+      navigate("/Imagine/ExpressionPOCExercise");
+    } else {
+      console.log("Navigating to None");
+    }
   }
 
   /**
@@ -180,12 +166,6 @@ const SurveyHandler = (props) => {
     };
     setSelectedAnswers(tempAnswers);
   }
-
-  useEffect(() => {
-    console.log(props.userID);
-    console.log(props.isImagine);
-  }, []);
-
   return (
     <>
       {!surveyComplete ? (
@@ -215,6 +195,5 @@ SurveyHandler.propTypes = {
   userID: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   handleGroupAssignment: PropTypes.func, // optional
-  isImagine: PropTypes.bool,
 };
 export default SurveyHandler;

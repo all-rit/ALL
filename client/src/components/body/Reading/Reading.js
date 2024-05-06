@@ -107,7 +107,7 @@ const Reading = (props) => {
   const handleNext = () => {
     console.log("Scroll position percentage: " + JSON.stringify(pagePosition));
     setSaveData(true);
-    navigate("/Imagine/Quiz");
+    navigate("/Imagine/PostSurvey");
   };
 
   return (
@@ -208,7 +208,7 @@ const Reading = (props) => {
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
             onClick={handleNext}
           >
-            Continue to Quiz
+            Continue to Post Survey
           </button>
         </div>
       )}

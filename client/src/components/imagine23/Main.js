@@ -18,7 +18,6 @@ import Survey from "./pages/SurveyHandler";
 const { nanoid } = require("nanoid");
 import { PropTypes } from "prop-types";
 import useMainStateContext from "../../reducers/MainContext";
-import { default as Quiz } from "../quiz/components/QuizHandler";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -166,16 +165,6 @@ const Main = (props) => {
             userID={userID}
             labID={labId}
             isImagine={isImagine}
-          />
-          <Quiz
-            path={"/Quiz"}
-            user={state.main.user}
-            labId={2}
-            isImagine={isImagine}
-            hideCertificate={false}
-            submitData={() => {}}
-            isFinalQuiz={false}
-            userID={userID}
           />
           <Survey path={`/PostSurvey`} userID={userID} type="post" />
           <ExerciseEnd
