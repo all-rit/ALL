@@ -170,7 +170,7 @@ const Main = (props) => {
           <Quiz
             path={"/Quiz"}
             user={state.main.user}
-            labId={labId}
+            labId={2}
             isImagine={isImagine}
             hideCertificate={false}
             submitData={() => {}}

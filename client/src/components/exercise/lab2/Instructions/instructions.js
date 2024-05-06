@@ -15,11 +15,11 @@ const Instructions = ({
   return (
     <div>
       <p className="thirdTitle center lowMargin">Instructions:</p>
-      <div className="instruction">
-        <p className="fourthTitle Left">
+      <div className="instruction tw-flex tw-flex-row tw-justify-between">
+        <p className="fourthTitle tw-ml-3 Left">
           When this colored circle pops up, click it!
         </p>
-        <p className="fourthTitle Right">
+        <p className="fourthTitle tw-mr-5 tw-ml-5">
           When either of these colored circles pop up, don't click them!
         </p>
       </div>

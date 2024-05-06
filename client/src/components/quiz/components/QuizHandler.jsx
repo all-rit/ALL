@@ -35,13 +35,14 @@ const QuizHandler = (props) => {
 
   useEffect(() => {
     setCurrentLab(props.labId);
+    console.log(props.labId);
     if (!props.isFinalQuiz) {
       const quiz = props.quizQuestions;
       const quizAnswers = props.quizQuestions[currentQuestionCursor].answers;
       setQuestions(quiz);
       setAnswerOption(quizAnswers);
     } else {
-      getQuiz();
+      getQuiz().then((r) => r.json());
     }
   }, []);
 
@@ -49,6 +50,7 @@ const QuizHandler = (props) => {
     try {
       const response = await labService.getLabQuiz(props.labId);
       const { quiz } = response[0];
+      console.log(quiz);
       const quizAnswers = quiz[currentQuestionCursor].answers;
       setQuestions(quiz);
       setAnswerOption(quizAnswers);

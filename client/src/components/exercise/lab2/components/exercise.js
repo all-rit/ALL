@@ -113,7 +113,7 @@ class exercise extends Component {
           <div className="startExerciseTimer">{props.seconds}</div>
           <div className="center prescreen">
             <Circle color={correctColor} />
-            <div className="arrow">
+            <div className="arrow tw-absolute">
               <div className="point" />
               <div className="line" />
             </div>
