@@ -72,10 +72,10 @@ const SurveyHandler = (props) => {
    */
   async function onComplete(surveyType) {
     setSurveyComplete(true);
-
     if (surveyType === "pre") {
       // will need to be changed with next logic story
-      activitySelector();
+      const response = await activitySelector();
+      return response;
       // This will handle navigation
     } else if (surveyType === "post") {
       ImagineService.postSurvey(props.userID, selectedAnswers);
@@ -96,13 +96,13 @@ const SurveyHandler = (props) => {
 
     if (section == "experiential" || section === "control") {
       console.log("Navigating to Experiential");
-      navigate("/Imagine/ExperientialExercise");
-    } else if (section == "discomfortCountNonPOC") {
+      navigate("/Imagine/ExperientialStart");
+    } else if (
+      section === "discomfortCountNonPOC" ||
+      section === "discomfortCountPOC"
+    ) {
       console.log("Navigating to Expression");
-      navigate("/Imagine/ExpressionExercise");
-    } else if (section == "discomfortCountPOC") {
-      console.log("Navigating to Expression POC");
-      navigate("/Imagine/ExpressionPOCExercise");
+      navigate("/Imagine/ExpressionStart");
     } else {
       console.log("Navigating to None");
     }

@@ -35,14 +35,13 @@ const QuizHandler = (props) => {
 
   useEffect(() => {
     setCurrentLab(props.labId);
-    console.log(props.labId);
     if (!props.isFinalQuiz) {
       const quiz = props.quizQuestions;
       const quizAnswers = props.quizQuestions[currentQuestionCursor].answers;
       setQuestions(quiz);
       setAnswerOption(quizAnswers);
     } else {
-      getQuiz().then((r) => r.json());
+      getQuiz();
     }
   }, []);
 
@@ -50,7 +49,6 @@ const QuizHandler = (props) => {
     try {
       const response = await labService.getLabQuiz(props.labId);
       const { quiz } = response[0];
-      console.log(quiz);
       const quizAnswers = quiz[currentQuestionCursor].answers;
       setQuestions(quiz);
       setAnswerOption(quizAnswers);
@@ -179,21 +177,12 @@ const QuizHandler = (props) => {
         );
       }
     } else {
-      if (props.isImagine) {
-        props.submitData(
-          output,
-          props.user.userid,
-          props.labId,
-          Math.ceil((countCorrect / questionsTotal) * 100),
-        );
-      } else {
-        props.submitData(
-          output,
-          props.user.userid,
-          props.labId,
-          Math.ceil((countCorrect / questionsTotal) * 100),
-        );
-      }
+      props.submitData(
+        output,
+        props.user.userid,
+        props.labId,
+        Math.ceil((countCorrect / questionsTotal) * 100),
+      );
     }
   }
 
@@ -277,7 +266,6 @@ const QuizHandler = (props) => {
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
           lab={currentLabId}
-          isImagine={props.isImagine}
         ></Result>
       )}
     </>
@@ -285,6 +273,7 @@ const QuizHandler = (props) => {
 };
 QuizHandler.propTypes = {
   labId: PropTypes.number,
+  quizQuestions: PropTypes.array,
   isFinalQuiz: PropTypes.bool.isRequired,
   hideCertificate: PropTypes.bool.isRequired,
   submitData: PropTypes.func.isRequired,
@@ -292,10 +281,7 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
-  quizQuestions: PropTypes.array,
   quizCompleted: PropTypes.bool,
   setQuizCompleted: PropTypes.func,
-  isImagine: PropTypes.bool,
-  userID: PropTypes.string,
 };
 export default QuizHandler;

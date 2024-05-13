@@ -3,10 +3,13 @@ import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
 
 const ExerciseEnd = (props) => {
-  const { isExperiential } = props;
+  const { isExperiential, state, resetSystem } = props;
 
   const endActivity = () => {
     props.actions.setIsImagine(false);
+    resetSystem();
+    // eslint-disable-next-line react/prop-types
+    console.log(state.exercise2.changeExerciseState.exerciseState);
     navigate("/");
   };
 
@@ -30,10 +33,12 @@ const ExerciseEnd = (props) => {
 };
 
 ExerciseEnd.propTypes = {
-  isExperiential: PropTypes.boolean,
+  isExperiential: PropTypes.bool,
   actions: PropTypes.shape({
     setIsImagine: PropTypes.func,
   }),
+  state: PropTypes.shape({}),
+  resetSystem: PropTypes.func,
 };
 
 export default ExerciseEnd;

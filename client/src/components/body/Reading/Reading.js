@@ -111,92 +111,110 @@ const Reading = (props) => {
   };
 
   return (
-    <div className="tw-relative tw-bg-labYellow p-3 tw-rounded-3xl shadow">
-      <div className="study tw-bg-white p-5 tw-rounded-2xl shadow">
-        {readingData?.description !== "" ? (
-          <>
-            <h3>{readingData?.description.header}</h3>
-            <p>{readingData?.description.content}</p>
-          </>
-        ) : (
-          <></>
-        )}
-        {readingData?.piechart?.header && (
-          <>
-            <h3 className={isImagine && "tw-text-[4vw] lg:tw-text-[3.5vh]"}>
-              {readingData?.piechart.header}
-            </h3>
-            <div className="flex">
-              <Pie
-                data={readingData?.piechart.data}
-                height={!isImagine && 100}
-                options={isImagine && { maintainAspectRatio: false }}
-              />
-            </div>
-          </>
-        )}
-        {readingData?.piechart.caption !== "" ? (
-          readingData?.piechart.caption.map((data, index) => {
-            return (
-              <div
-                key={index}
-                id={"caption"}
-                className={isImagine ? "tw-text-[3vw] lg:tw-text-[2.25vh]" : ""}
-              >
-                {data}
+    <div>
+      <div className="tw-relative tw-bg-labYellow p-3 tw-rounded-3xl shadow">
+        <div className="study tw-bg-white p-5 tw-rounded-2xl shadow">
+          {readingData?.description !== "" ? (
+            <>
+              <h3>{readingData?.description.header}</h3>
+              <p>{readingData?.description.content}</p>
+            </>
+          ) : (
+            <></>
+          )}
+          {readingData?.piechart?.header && (
+            <>
+              <h3 className={isImagine && "tw-text-[4vw] lg:tw-text-[3.5vh]"}>
+                {readingData?.piechart.header}
+              </h3>
+              <div className="flex">
+                <Pie
+                  data={readingData?.piechart.data}
+                  height={!isImagine && 100}
+                  options={isImagine && { maintainAspectRatio: false }}
+                />
               </div>
-            );
-          })
-        ) : (
-          <></>
-        )}
+            </>
+          )}
+          {readingData?.piechart.caption !== "" ? (
+            readingData?.piechart.caption.map((data, index) => {
+              return (
+                <div
+                  key={index}
+                  id={"caption"}
+                  className={
+                    isImagine ? "tw-text-[3vw] lg:tw-text-[2.25vh]" : ""
+                  }
+                >
+                  {data}
+                </div>
+              );
+            })
+          ) : (
+            <></>
+          )}
 
-        {readingData?.body !== "" ? (
-          readingData?.body.map((data, index) => {
-            return (
-              <Fragment key={index}>
-                {data.header !== "" && (
-                  <h3
-                    className={isImagine && "tw-text-[4vw] lg:tw-text-[3.5vh]"}
-                  >
-                    {data.header}
-                  </h3>
-                )}
-                {data.type === "" && (
-                  <>
-                    {data.content.map((content, index) => {
-                      return (
-                        <p
-                          key={index}
-                          className={
-                            isImagine && "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                          }
-                        >
-                          {content}
-                        </p>
-                      );
-                    })}
-                  </>
-                )}
-                {data.type === "study__list" && (
-                  <StudyList data={data.content} />
-                )}
-                {data.type === "ordered-list" && (
-                  <OrderedList data={data.content} />
-                )}
-                {data.type === "non-bullet-list" && (
-                  <NonBulletList data={data.content} isImagine={isImagine} />
-                )}
-                {data.type === "image" && <Image data={data.content} />}
-                {data.type === "links" && <Links data={data.content} />}
-              </Fragment>
-            );
-          })
-        ) : (
-          <></>
-        )}
-        {readingData?.footer !== "" ? (
-          <LinkFooter data={readingData?.footer.links} />
+          {readingData?.body !== "" ? (
+            readingData?.body.map((data, index) => {
+              return (
+                <Fragment key={index}>
+                  {data.header !== "" && (
+                    <h3
+                      className={
+                        isImagine && "tw-text-[4vw] lg:tw-text-[3.5vh]"
+                      }
+                    >
+                      {data.header}
+                    </h3>
+                  )}
+                  {data.type === "" && (
+                    <>
+                      {data.content.map((content, index) => {
+                        return (
+                          <p
+                            key={index}
+                            className={
+                              isImagine && "tw-text-[3vw] lg:tw-text-[2.25vh]"
+                            }
+                          >
+                            {content}
+                          </p>
+                        );
+                      })}
+                    </>
+                  )}
+                  {data.type === "study__list" && (
+                    <StudyList data={data.content} />
+                  )}
+                  {data.type === "ordered-list" && (
+                    <OrderedList data={data.content} />
+                  )}
+                  {data.type === "non-bullet-list" && (
+                    <NonBulletList data={data.content} isImagine={isImagine} />
+                  )}
+                  {data.type === "image" && <Image data={data.content} />}
+                  {data.type === "links" && <Links data={data.content} />}
+                </Fragment>
+              );
+            })
+          ) : (
+            <></>
+          )}
+          {readingData?.footer !== "" ? (
+            <LinkFooter data={readingData?.footer.links} />
+          ) : (
+            <></>
+          )}
+        </div>
+
+        {isImagine ? (
+          <Modal isOpen={modalOpen}>
+            <ModalHeader>Expand Window</ModalHeader>
+            <ModalBody>Please expand your window to fit the screen.</ModalBody>
+            <ModalFooter>
+              <Button onClick={closeModal}> Close </Button>
+            </ModalFooter>
+          </Modal>
         ) : (
           <></>
         )}
@@ -211,18 +229,6 @@ const Reading = (props) => {
             Continue to Post Survey
           </button>
         </div>
-      )}
-
-      {isImagine ? (
-        <Modal isOpen={modalOpen}>
-          <ModalHeader>Expand Window</ModalHeader>
-          <ModalBody>Please expand your window to fit the screen.</ModalBody>
-          <ModalFooter>
-            <Button onClick={closeModal}> Close </Button>
-          </ModalFooter>
-        </Modal>
-      ) : (
-        <></>
       )}
     </div>
   );

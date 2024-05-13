@@ -15,7 +15,9 @@ import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
 import Survey from "./pages/SurveyHandler";
+import { resetSystem } from "../../reducers/lab2/actions";
 const { nanoid } = require("nanoid");
+
 import { PropTypes } from "prop-types";
 import useMainStateContext from "../../reducers/MainContext";
 
@@ -173,6 +175,7 @@ const Main = (props) => {
             state={state}
             isExperiential={isExperiential}
             userID={userID}
+            resetSystem={resetSystem}
           />
         </Router>
       </div>

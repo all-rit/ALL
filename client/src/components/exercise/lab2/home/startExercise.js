@@ -25,7 +25,7 @@ const StartExercise = ({
     <div>
       <div className="center fourthTitle">
         {exercisesPlayed === 0 ? (
-          <p className={"tw-p-5 tw-m-3"}>
+          <p className={"tw-p-5 tw-mt-3 tw-text-2xl"}>
             Click the button to start the exercise!
           </p>
         ) : (

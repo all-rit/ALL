@@ -44,7 +44,10 @@ class Header extends Component {
     };
     if (exerciseState) {
       return (
-        <div className="headerStyle" style={{ background: "black" }}>
+        <div
+          className="headerStyle tw-rounded-t-4xl tw-p-3 tw-shadow-2xl"
+          style={{ background: "black" }}
+        >
           <div className="oneline center">
             <Home
               exerciseEnded={goBackFromExercise}
@@ -63,7 +66,7 @@ class Header extends Component {
     }
 
     return (
-      <div className="headerStyle">
+      <div className="headerStyle tw-rounded-t-4xl">
         <div>
           {aboutState ? (
             <Button
