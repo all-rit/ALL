@@ -1,29 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
+import { RESET } from "../../../constants/lab2/index";
+import { useDispatch } from "react-redux";
 
 const ExerciseEnd = (props) => {
-  const { isExperiential, state, resetSystem } = props;
+  const { isExperiential } = props;
+  const dispatch = useDispatch();
 
   const endActivity = () => {
     props.actions.setIsImagine(false);
-    resetSystem();
-    // eslint-disable-next-line react/prop-types
-    console.log(state.exercise2.changeExerciseState.exerciseState);
+    dispatch({ type: RESET });
     navigate("/");
   };
 
   return (
     <div className="container bottomSpace center-div">
-      <h2 className="playthrough__title">
+      <h2 className="playthrough__title tw-font-bold tw-text-5xl">
         {isExperiential ? "Experiential" : "Expression"} Empathy Building: End
       </h2>
-      <div className="playthrough__sentence__imagine">
+      <div className="playthrough__sentence__imagine tw-font-medium tw-text-4xl">
         Congratulations! You&apos;ve completed the activity!
       </div>
-      <h2 className="playthrough__title">Thanks for participating!</h2>
+      <h2 className="playthrough__title tw-font-medium">
+        Thanks for participating!
+      </h2>
       <button
-        className="btn btn-second text-uppercase nextButton"
+        className="btn btn-xl btn-second text-uppercase nextButton"
         onClick={endActivity}
       >
         Return Home
@@ -38,7 +41,6 @@ ExerciseEnd.propTypes = {
     setIsImagine: PropTypes.func,
   }),
   state: PropTypes.shape({}),
-  resetSystem: PropTypes.func,
 };
 
 export default ExerciseEnd;
