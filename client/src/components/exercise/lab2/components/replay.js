@@ -3,7 +3,7 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import Button from "./header/buttons/button";
-import "./exerciseStyle.css";
+import "./exerciseStyle.scss";
 
 /*
   Class for replay screen and to allow the user to replay the exercise

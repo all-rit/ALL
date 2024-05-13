@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import Countdown from "react-countdown";
-import "./exerciseStyle.css";
+import "./exerciseStyle.scss";
 
 // Object for holding the current background color of the Circle
 // Used to fade to black on each circle

@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import reducers from "./reducers";
 import * as serviceWorker from "./serviceWorker";

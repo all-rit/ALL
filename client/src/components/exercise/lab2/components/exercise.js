@@ -7,7 +7,7 @@ import SecondTimer from "./secondTimer";
 import Instructions from "../Instructions/instructions";
 import Circle from "./circle";
 import Title from "./header/title";
-import "./exerciseStyle.css";
+import "./exerciseStyle.scss";
 
 /*
 Class for controlling the main exercise page

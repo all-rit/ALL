@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { navigate } from "@reach/router";
-import "../../../../assets/stylesheets/components/Witch.css";
+import "../../../../assets/stylesheets/components/Witch.scss";
 import ChatRoom from "../components/ChatRoom";
 import { getMessages } from "../../../../constants/lab8/messages";
 import { useLocation } from "@reach/router";

@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,cAAc,CAAC;EACb,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,SAAS;EACjB,SAAS,EAAE,MAAM;CAclB;;AAjBD,AAKE,cALY,GAKV,EAAE,CAAC;EACH,aAAa,EAAE,IAAI;CACpB;;AAEA,AAAD,oBAAO,CAAC;EACN,UAAU,EAAE,IAAI;EAChB,eAAe,EAAE,IAAI;CAKtB;;AAPA,AAIC,oBAJK,GAIH,EAAE,CAAC;EACH,aAAa,EAAE,IAAI;CACpB",
-    "sources": [
-        "Supplementary.scss"
-    ],
-    "names": [],
-    "file": "Supplementary.css"
-}

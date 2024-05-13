@@ -9,7 +9,6 @@ import {
   POPUP_MESSAGES,
 } from "../../../../../constants/lab10";
 import "highlight.js/styles/atom-one-dark-reasonable.css";
-import "../../../../../assets/stylesheets/components/CodeBlock.css";
 import PropTypes from "prop-types";
 
 class BuildingAICodeBlock extends Component {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../../../assets/stylesheets/components/Witch.css";
+import "../../../../assets/stylesheets/components/Witch.scss";
 import PropTypes from "prop-types";
 import createAvatarData from "../../../all-components/createAvatarData";
 import Avatar from "avataaars";
