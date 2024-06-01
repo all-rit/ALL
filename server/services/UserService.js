@@ -20,6 +20,7 @@ const authenticate = (data) => {
   const firstName = data.name.givenName;
   const lastInitial = data.name.familyName.slice(0, 1);
   const email = data.emails[0].value;
+  console.warn(process.env.ENVIRONMENT);
   return db.Session
       .findByPk(userSessionID)
       .then((session) => {

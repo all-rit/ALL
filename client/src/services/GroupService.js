@@ -39,13 +39,16 @@ const groupService = {
     );
   },
   createGroup: (userID, groupName) => {
-    return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/group/create`,
-      {
-        userID,
-        groupName,
-      },
-    ).then((response) => response.json());
+    API.postWithBody(process.env.REACT_APP_SERVER_URL + `/group/create`, {
+      userID,
+      groupName,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((error) => {
+        console.error(error, "Could not create group.");
+      });
   },
   addGroupLab: (groupID, labID) => {
     return API.postWithBody(

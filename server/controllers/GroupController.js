@@ -53,8 +53,8 @@ const createGroup = (req, res) => {
   GroupService.createGroup(
       req.body.userID,
       req.body.groupName,
-      req.body.courses,
   ).then((data) => {
+    console.warn(data);
     res.json(data);
   });
 };

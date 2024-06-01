@@ -1,6 +1,5 @@
 const passport = require('passport');
 const UserService = require('../services/UserService');
-const nanoid = require('nanoid');
 
 // Checks if it's a guest or user entering webpage
 const main = (req, res) => {
@@ -51,15 +50,17 @@ const authenticateRedirect = passport.authenticate('google', {
 });
 
 const authenticateCallback = (req, res) => {
-  if (process.env.ENVIRONMENT === 'dev') {
-    UserService.authenticate({
-      id: parseInt(nanoid(18)),
-      name: {
-        givenName: 'mock',
-        familyName: 'name',
-      },
-      emails: ['mockEmail@gmail.com'],
-    }).then((data) => {
+  const mockData = {
+    id: Math.random(),
+    name: {
+      givenName: 'mock',
+      familyName: 'name',
+    },
+    emails: [`${Math.random().toString().slice(2, 5)}@gmail.com`],
+  };
+  if (process.env.NODE_ENV === 'development') {
+    UserService.authenticate(mockData).then((data) => {
+      console.warn(data);
       UserService.updateGuestUserId(data.userid, req.session.token).then(() => {
         req.session.token = data.usersessionid;
         res.redirect(req.session.url);

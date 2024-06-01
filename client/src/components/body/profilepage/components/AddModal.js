@@ -62,7 +62,7 @@ const AddModal = (props) => {
             Create Group
           </button>
           <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
-            <ModalHeader>Create an instructing group</ModalHeader>
+            <ModalHeader>Create an Instructing Group</ModalHeader>
             <GroupForm
               toggle={toggle}
               setInstrGroupsUpdated={setInstrGroupsUpdated}
@@ -84,7 +84,7 @@ const AddModal = (props) => {
             Update Group
           </button>
           <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
-            <ModalHeader>Update an instructing group</ModalHeader>
+            <ModalHeader>Update an Instructing Group</ModalHeader>
             <GroupForm
               toggle={toggle}
               setInstrGroupsUpdated={setInstrGroupsUpdated}
@@ -108,7 +108,7 @@ const AddModal = (props) => {
             Enroll in Group
           </button>
           <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
-            <ModalHeader>Enroll in an existing group</ModalHeader>
+            <ModalHeader>Enroll in an Existing Group</ModalHeader>
 
             <Form onSubmit={handleInviteCodeSubmit}>
               <ModalBody>
