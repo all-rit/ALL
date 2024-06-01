@@ -100,7 +100,7 @@ const createGroup = (userID, groupName) => {
     groupName: groupName,
     createdDate: Date.now(),
     isActive: true,
-    code: nanoid(6).toUpperCase(),
+    code: Math.random().toString().slice(0, 6),
   }).then((data) => {
     console.log(data);
     return {'groupID': data.id};

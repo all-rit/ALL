@@ -62,7 +62,7 @@ const GroupForm = (props) => {
 
     const formData = new FormData(e.target);
     const groupName = formData.get("groupName") || "Default Group Name";
-
+    console.warn(await GroupService.createGroup(user.userid, groupName));
     try {
       if (addMode === "add_instr_grp") {
         await GroupService.createGroup(user.userid, groupName);
@@ -75,16 +75,20 @@ const GroupForm = (props) => {
         if (formData.get("groupName")) {
           await GroupService.updateGroup(groupID, formData.get("groupName"));
         }
-        assignedLabs.forEach((labID) => {
-          if (!selectedLabs.includes(labID)) {
-            GroupService.deleteGroupLab(groupID, labID);
-          }
-        });
-        selectedLabs.forEach((labID) => {
-          if (!assignedLabs.includes(labID)) {
-            GroupService.addGroupLab(groupID, labID);
-          }
-        });
+        if (assignedLabs.length >= 0 || assignedLabs !== undefined) {
+          assignedLabs.forEach((labID) => {
+            if (!selectedLabs.includes(labID)) {
+              GroupService.deleteGroupLab(groupID, labID);
+            }
+          });
+        }
+        if (selectedLabs.length >= 0) {
+          selectedLabs.forEach((labID) => {
+            if (!assignedLabs.includes(labID)) {
+              GroupService.addGroupLab(groupID, labID);
+            }
+          });
+        }
         setInstrGroupsUpdated(true);
       }
     } catch (error) {
