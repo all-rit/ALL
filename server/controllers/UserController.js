@@ -1,5 +1,6 @@
 const passport = require('passport');
 const UserService = require('../services/UserService');
+const nanoid = require('nanoid');
 
 // Checks if it's a guest or user entering webpage
 const main = (req, res) => {
@@ -50,26 +51,30 @@ const authenticateRedirect = passport.authenticate('google', {
 });
 
 const authenticateCallback = (req, res) => {
+  if (process.env.ENVIRONMENT === 'dev') {
+    UserService.authenticate({
+      id: parseInt(nanoid(18)),
+      name: {
+        givenName: 'mock',
+        familyName: 'name',
+      },
+      emails: ['mockEmail@gmail.com'],
+    }).then((data) => {
+      UserService.updateGuestUserId(data.userid, req.session.token).then(() => {
+        req.session.token = data.usersessionid;
+        res.redirect(req.session.url);
+      },
+      );
+    });
+  }
+
   UserService.authenticate(req.user.profile).then((data) => {
-    UserService.updateGuestUserId(data.userid, req.session.token).then(()=>{
+    UserService.updateGuestUserId(data.userid, req.session.token).then(()=> {
       req.session.token = data.usersessionid;
       res.redirect(req.session.url);
     },
     );
   });
-};
-
-const mockAuthenticate = (req, res) => {
-  if (process.env.NODE_ENV === 'development') {
-    UserService.mockLogin({userId: 1, name: 'mockFirstName M'}, 1).then(() => {
-      req.session.token = 1;
-      res.redirect(req.session.url);
-    }).catch((error) => {
-      res.status(500).json({message: 'Mock login failed', error});
-    });
-  } else {
-    res.status(403).json({message: 'Mock login only allowed in development'});
-  }
 };
 
 const storeURL = (req, res) => {
@@ -98,5 +103,4 @@ module.exports = {
   getUserInstructingGroups,
   getUserAssignedLabs,
   getUserToDoLabs,
-  mockAuthenticate,
 };

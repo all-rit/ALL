@@ -51,23 +51,6 @@ const authenticate = (data) => {
       });
 };
 
-const mockLogin = (user, token) => {
-  return db.Users.create({
-    userid: user.userId,
-    firstname: user.name.split(' ')[0],
-    lastinitial: user.name.split(' ')[1]?.[0] || '',
-    email1: `${user.name.replace(' ', '.').toLowerCase()}@gmail.com`,
-  }).then((mockUser) => {
-    return db.Session.create({
-      usersessionid: token,
-      userid: mockUser.userid,
-    });
-  }).catch((err) => {
-    console.log('Error creating mock user/session', err);
-    throw err;
-  });
-};
-
 const getSession = (token) => {
   // If the token doesn't exist, it's a guest, so create a new account!
   if (!token) {
@@ -174,6 +157,5 @@ module.exports = {
   getUserAssignedLabs,
   authenticate,
   updateGuestUserId,
-  mockLogin,
 };
 

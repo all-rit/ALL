@@ -248,10 +248,6 @@ create table session
     primary key (usersessionid)
 );
 
-/* Mock data for testing login */
-INSERT INTO session (usersessionid, userid)
-VALUES (1, 1);
-
 create table team_members
 (
     id            serial,
@@ -308,10 +304,6 @@ CREATE TABLE users
     UNIQUE (email1),
     UNIQUE (email2)
 );
-
-
-INSERT INTO users (userid, firstname, lastinitial, email1, email2)
-VALUES (1, 'mockFirstName', 'm', 'mockEmail1@gmail.edu', 'mockEmail2@gmail.edu');
 
 create table lab8_exercise
 (

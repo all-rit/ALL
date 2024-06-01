@@ -1,25 +1,25 @@
 /* eslint-disable max-len */
 const GroupService = require('../services/GroupService');
 
-exports.getGroupLabs = (req, res) => {
+const getGroupLabs = (req, res) => {
   GroupService.getGroupLabs(req.params.groupID).then((records) => {
     res.json(records);
   });
 };
 
-exports.getGroupEnrolledStudents = (req, res) => {
+const getGroupEnrolledStudents = (req, res) => {
   GroupService.getGroupEnrolledStudents(req.params.groupID).then((records) => {
     res.json(records);
   });
 };
 
-exports.getCompletedGroupLabs = (req, res) => {
+const getCompletedGroupLabs = (req, res) => {
   GroupService.getCompletedGroupLabs(req.params.userID, req.params.groupID).then((records) => {
     res.json(records);
   });
 };
 
-exports.enrollUserInGroup = (req, res) => {
+const enrollUserInGroup = (req, res) => {
   GroupService.enrollUserInGroup(
       req.body.userID,
       req.body.inviteCode,
@@ -40,7 +40,7 @@ exports.enrollUserInGroup = (req, res) => {
   });
 };
 
-exports.unenrollUserFromGroup = (req, res) => {
+const unenrollUserFromGroup = (req, res) => {
   GroupService.unenrollUserFromGroup({
     userID: req.body.userID,
     groupID: req.body.groupID,
@@ -49,7 +49,7 @@ exports.unenrollUserFromGroup = (req, res) => {
   });
 };
 
-exports.createGroup = (req, res) => {
+const createGroup = (req, res) => {
   GroupService.createGroup(
       req.body.userID,
       req.body.groupName,
@@ -59,7 +59,7 @@ exports.createGroup = (req, res) => {
   });
 };
 
-exports.addGroupLab = (req, res) => {
+const addGroupLab = (req, res) => {
   GroupService.addGroupLab(
       req.body.groupID,
       req.body.labID,
@@ -68,7 +68,7 @@ exports.addGroupLab = (req, res) => {
   });
 };
 
-exports.deleteGroupLab = (req, res) => {
+const deleteGroupLab = (req, res) => {
   GroupService.deleteGroupLab(
       req.body.groupID,
       req.body.labID,
@@ -76,7 +76,7 @@ exports.deleteGroupLab = (req, res) => {
     res.sendStatus(200);
   });
 };
-exports.deleteGroup = (req, res) => {
+const deleteGroup = (req, res) => {
   GroupService.deleteGroup(
       req.body.groupID,
   ).then((data) => {
@@ -84,11 +84,24 @@ exports.deleteGroup = (req, res) => {
   });
 };
 
-exports.updateGroup = (req, res)=>{
+const updateGroup = (req, res)=>{
   GroupService.updateGroup(
       req.body.groupID,
       req.body.groupName,
   ).then((data) =>{
     res.sendStatus(200);
   });
+};
+
+module.exports = {
+  updateGroup,
+  deleteGroup,
+  deleteGroupLab,
+  addGroupLab,
+  createGroup,
+  unenrollUserFromGroup,
+  enrollUserInGroup,
+  getCompletedGroupLabs,
+  getGroupEnrolledStudents,
+  getGroupLabs,
 };
