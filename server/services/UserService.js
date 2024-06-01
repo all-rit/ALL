@@ -2,7 +2,7 @@
 /* eslint-disable no-tabs */
 const db = require('../database');
 
-exports.updateGuestUserId = (userid, usersessionid) =>{
+const updateGuestUserId = (userid, usersessionid) =>{
   return db.Session
       .findByPk(usersessionid)
       .then((session) => {
@@ -15,7 +15,7 @@ exports.updateGuestUserId = (userid, usersessionid) =>{
       });
 };
 
-exports.authenticate = (data) => {
+const authenticate = (data) => {
   const userSessionID = data.id.slice(0, 19);
   const firstName = data.name.givenName;
   const lastInitial = data.name.familyName.slice(0, 1);
@@ -51,7 +51,24 @@ exports.authenticate = (data) => {
       });
 };
 
-exports.getSession = (token) => {
+const mockLogin = (user, token) => {
+  return db.Users.create({
+    userid: user.userId,
+    firstname: user.name.split(' ')[0],
+    lastinitial: user.name.split(' ')[1]?.[0] || '',
+    email1: `${user.name.replace(' ', '.').toLowerCase()}@gmail.com`,
+  }).then((mockUser) => {
+    return db.Session.create({
+      usersessionid: token,
+      userid: mockUser.userid,
+    });
+  }).catch((err) => {
+    console.log('Error creating mock user/session', err);
+    throw err;
+  });
+};
+
+const getSession = (token) => {
   // If the token doesn't exist, it's a guest, so create a new account!
   if (!token) {
     return db.Users
@@ -80,7 +97,7 @@ exports.getSession = (token) => {
       });
 };
 
-exports.getUserEnrolledGroups = (userid) => {
+const getUserEnrolledGroups = (userid) => {
   return db.sequelize.query(
       `SELECT * FROM "enrollment" 
 			JOIN "groups" ON  "enrollment"."groupID"="groups"."id" 
@@ -92,7 +109,7 @@ exports.getUserEnrolledGroups = (userid) => {
       });
 };
 
-exports.getUserInstructingGroups = (userid) => {
+const getUserInstructingGroups = (userid) => {
   return db.Groups
       .findAll({
         where: {
@@ -105,7 +122,7 @@ exports.getUserInstructingGroups = (userid) => {
 
 // fetches only the labs that the user has been assigned (across all groups)
 // but hasn't made any progress in
-exports.getUserToDoLabs = (userid) => {
+const getUserToDoLabs = (userid) => {
   return db.sequelize.query(
       `
 		SELECT DISTINCT "labID", "labName" FROM "group_labs"
@@ -121,7 +138,7 @@ exports.getUserToDoLabs = (userid) => {
       });
 };
 
-exports.getUserAssignedLabs = (userid) => {
+const getUserAssignedLabs = (userid) => {
   return db.sequelize.query(
       `SELECT DISTINCT "labID" FROM "group_labs" 
 			JOIN "enrollment" ON  "group_labs"."groupID"="enrollment"."groupID" 
@@ -133,7 +150,7 @@ exports.getUserAssignedLabs = (userid) => {
       });
 };
 
-exports.getUser = (userid) => {
+const getUser = (userid) => {
   return db.Users
       .findOne({
         where:
@@ -146,5 +163,17 @@ exports.getUser = (userid) => {
       .catch((err) => {
         console.log(err);
       });
+};
+
+module.exports = {
+  getUserEnrolledGroups,
+  getUser,
+  getSession,
+  getUserInstructingGroups,
+  getUserToDoLabs,
+  getUserAssignedLabs,
+  authenticate,
+  updateGuestUserId,
+  mockLogin,
 };
 

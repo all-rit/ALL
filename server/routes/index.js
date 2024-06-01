@@ -62,6 +62,7 @@ const ImagineController = require('../controllers/ImagineController');
 router.post('/url', UserController.storeURL);
 router.get('/auth/google', UserController.authenticate);
 router.get('/auth/google/callback', UserController.authenticateRedirect, UserController.authenticateCallback);
+router.get('/mockAuthenticate', UserController.mockAuthenticate);
 router.get('/logout', UserController.logout);
 router.get('/user', UserController.main);
 router.get('/user/:userID', UserController.getUser);

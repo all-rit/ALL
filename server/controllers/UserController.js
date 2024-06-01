@@ -2,54 +2,54 @@ const passport = require('passport');
 const UserService = require('../services/UserService');
 
 // Checks if it's a guest or user entering webpage
-exports.main = (req, res) => {
+const main = (req, res) => {
   UserService.getSession(req.session.token).then((data) => {
     req.session.token = data.token;
     res.json(data.user);
   });
 };
 
-exports.getUser = (req, res) => {
+const getUser = (req, res) => {
   UserService.getUser(req.params.userID).then((records) => {
     res.json(records);
   });
 };
 
-exports.getUserToDoLabs = (req, res) => {
+const getUserToDoLabs = (req, res) => {
   UserService.getUserToDoLabs(req.params.userID).then((records) => {
     res.json(records);
   });
 };
-exports.getUserAssignedLabs = (req, res) => {
+const getUserAssignedLabs = (req, res) => {
   UserService.getUserAssignedLabs(req.params.userID).then((records) => {
     res.json(records);
   });
 };
 
-exports.getUserEnrolledGroups = (req, res) => {
+const getUserEnrolledGroups = (req, res) => {
   UserService.getUserEnrolledGroups(req.params.userID).then((records) => {
     res.json(records);
   });
 };
 
-exports.getUserInstructingGroups = (req, res) => {
+const getUserInstructingGroups = (req, res) => {
   UserService.getUserInstructingGroups(req.params.userID).then((records) => {
     res.json(records);
   });
 };
 
 // Authenticates User through Google OAuth
-exports.authenticate = passport.authenticate('google', {
+const authenticate = passport.authenticate('google', {
   scope: ['email', 'profile'],
 });
 
 // Callback used for Google OAuth
-exports.authenticateRedirect = passport.authenticate('google', {
+const authenticateRedirect = passport.authenticate('google', {
   keepSessionInfo: true,
   failureRedirect: '/',
 });
 
-exports.authenticateCallback = (req, res) => {
+const authenticateCallback = (req, res) => {
   UserService.authenticate(req.user.profile).then((data) => {
     UserService.updateGuestUserId(data.userid, req.session.token).then(()=>{
       req.session.token = data.usersessionid;
@@ -59,16 +59,44 @@ exports.authenticateCallback = (req, res) => {
   });
 };
 
-exports.storeURL = (req, res) => {
+const mockAuthenticate = (req, res) => {
+  if (process.env.NODE_ENV === 'development') {
+    UserService.mockLogin({userId: 1, name: 'mockFirstName M'}, 1).then(() => {
+      req.session.token = 1;
+      res.redirect(req.session.url);
+    }).catch((error) => {
+      res.status(500).json({message: 'Mock login failed', error});
+    });
+  } else {
+    res.status(403).json({message: 'Mock login only allowed in development'});
+  }
+};
+
+const storeURL = (req, res) => {
   req.session.url = req.body.url.href;
   res.sendStatus(200);
 };
 
 // Logging out will clear sessions
-exports.logout = (req, res, next) => {
+const logout = (req, res, next) => {
   req.logout({keepSessionInfo: true}, (error) => {
     if (error) next(error);
     req.session.token = null;
     res.redirect(req.session.url);
   });
+};
+
+module.exports = {
+  main,
+  storeURL,
+  getUser,
+  logout,
+  authenticate,
+  authenticateRedirect,
+  authenticateCallback,
+  getUserEnrolledGroups,
+  getUserInstructingGroups,
+  getUserAssignedLabs,
+  getUserToDoLabs,
+  mockAuthenticate,
 };
