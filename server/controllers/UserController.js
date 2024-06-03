@@ -49,33 +49,35 @@ const authenticateRedirect = passport.authenticate('google', {
   failureRedirect: '/',
 });
 
-const authenticateCallback = (req, res) => {
-  const mockData = {
-    id: Math.random(),
-    name: {
-      givenName: 'mock',
-      familyName: 'name',
-    },
-    emails: [`${Math.random().toString().slice(2, 5)}@gmail.com`],
-  };
-  if (process.env.NODE_ENV === 'development') {
-    UserService.authenticate(mockData).then((data) => {
-      console.warn(data);
-      UserService.updateGuestUserId(data.userid, req.session.token).then(() => {
-        req.session.token = data.usersessionid;
-        res.redirect(req.session.url);
-      },
-      );
-    });
+const mockAuthenticate = async (req, res) => {
+  try {
+    const data = await UserService.mockAuthenticate();
+    if (data) {
+      req.session.token = data.sessionID;
+      await UserService.updateGuestUserId(data.user.userid, req.session.token);
+      res.redirect(req.session.url || '/');
+    } else {
+      res.status(500).send('Mock authentication failed');
+    }
+  } catch (error) {
+    console.error(
+        'Error occurred in mockAuthenticate of UserController', error);
+    res.status(500).send('Internal Server Error');
   }
+};
 
-  UserService.authenticate(req.user.profile).then((data) => {
-    UserService.updateGuestUserId(data.userid, req.session.token).then(()=> {
+const authenticateCallback = async (req, res) => {
+  if (process.env.ENVIRONMENT === 'production') {
+    try {
+      const data = await UserService.authenticate(req.user.profile);
       req.session.token = data.usersessionid;
+      await UserService.updateGuestUserId(data.userid, req.session.token);
       res.redirect(req.session.url);
-    },
-    );
-  });
+    } catch (error) {
+      console.error('Error while executing authenticateCallback', error);
+      res.redirect('/');
+    }
+  }
 };
 
 const storeURL = (req, res) => {
@@ -98,6 +100,7 @@ module.exports = {
   getUser,
   logout,
   authenticate,
+  mockAuthenticate,
   authenticateRedirect,
   authenticateCallback,
   getUserEnrolledGroups,

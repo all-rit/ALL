@@ -15,41 +15,65 @@ const updateGuestUserId = (userid, usersessionid) =>{
       });
 };
 
-const authenticate = (data) => {
-  const userSessionID = data.id.slice(0, 19);
-  const firstName = data.name.givenName;
-  const lastInitial = data.name.familyName.slice(0, 1);
-  const email = data.emails[0].value;
-  console.warn(process.env.ENVIRONMENT);
-  return db.Session
-      .findByPk(userSessionID)
-      .then((session) => {
-        // Session doesn't exist, so let's create a new account!
-        if (session === null) {
-          throw new Error('Session do not exist in the database');
-        }
-        return session;
-      })
-      .catch(() => {
-        // Create a new account
-        return db.Users
-            .create({
-              firstname: firstName,
-              lastinitial: lastInitial,
-              email1: email,
-            })
-            .then((user) => {
-              // Create a new session
-              return db.Session.create({
-                usersessionid: userSessionID,
-                userid: user.userid,
-              });
-            })
-            .catch(()=> 'error inputting session id from google');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+const authenticate = async (data) => {
+  try {
+    const userSessionID = data.id.slice(0, 19);
+    const firstName = data.name.givenName;
+    const lastInitial = data.name.familyName.slice(0, 1);
+    const email = data.emails[0].value;
+
+    console.warn(process.env.ENVIRONMENT);
+
+    let session = await db.Session.findOne(userSessionID);
+    if (!session) {
+      const newAccount = {
+        firstName: firstName,
+        lastInitial: lastInitial,
+        email: email,
+      };
+      session = await createNewAccountAndSession(userSessionID, newAccount);
+    }
+    return session;
+  } catch (error) {
+    console.error('Error while authenticating: ', error);
+    throw error;
+  }
+};
+
+const mockAuthenticate = async () => {
+  try {
+    const mockUser = {
+      id: parseInt(Math.random().toString().slice(0, 19)),
+      name: {
+        givenName: 'mock',
+        familyName: 'user',
+      },
+      emails: [{value: 'mockuser@gmail.com'}],
+    };
+    return await authenticate(mockUser);
+  } catch (error) {
+    console.error('Error while executing mockAuthenticate', error);
+  }
+};
+
+
+const createNewAccountAndSession = async (userSessionID, newAccount) => {
+  try {
+    const user = await db.Users.create({
+      firstname: newAccount.firstName,
+      lastInitial: newAccount.lastInitial,
+      email1: newAccount.email,
+    });
+    console.warn(user);
+    const newSession = await db.Session.create({
+      userSessionID: userSessionID,
+      userid: user.userid,
+    });
+    return newSession;
+  } catch (error) {
+    console.error('Error creating new account and session', error);
+    throw error;
+  }
 };
 
 const getSession = (token) => {
@@ -70,7 +94,7 @@ const getSession = (token) => {
 
   // Find the user's details
   return db.Session
-      .findByPk(token)
+      .findOne(token)
       .then((session) => {
         return db.Users.findByPk(session.userid).then((user) => {
           return {user, token};
@@ -157,6 +181,7 @@ module.exports = {
   getUserToDoLabs,
   getUserAssignedLabs,
   authenticate,
+  mockAuthenticate,
   updateGuestUserId,
 };
 

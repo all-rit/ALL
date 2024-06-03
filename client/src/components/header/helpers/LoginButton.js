@@ -15,8 +15,13 @@ class LoginButton extends Component {
             API.postWithBody(process.env.REACT_APP_SERVER_URL + "/url", {
               url: window.location,
             }).then(() => {
-              window.location.href =
-                process.env.REACT_APP_SERVER_URL + "/auth/google";
+              if (process.env.NODE_ENV === "development") {
+                window.location.href =
+                  process.env.REACT_APP_SERVER_URL + "/mockAuthenticate";
+              } else {
+                window.location.href =
+                  process.env.REACT_APP_SERVER_URL + "/auth/google";
+              }
             })
           }
         >
