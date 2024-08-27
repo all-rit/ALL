@@ -1,19 +1,18 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
-import GridImages from "../../../../body/lab/GridImages/GridImages";
+import GridImages from "../../../../all-components/GridImages";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const AvatarSelection = (props) => {
-  const { actions } = props;
+const AvatarSelection = () => {
+  const { actions } = useMainStateContext();
 
   const [avatar, setAvatar] = useState([]);
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
   const confirmSelection = () => {
     if (avatar.length != 0) {

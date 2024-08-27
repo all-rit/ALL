@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import Form from "../../components/Form";
 import { navigate } from "@reach/router";
 
@@ -22,7 +22,7 @@ class FormAccessible extends Component {
   render() {
     const { actions, state } = this.props;
     return (
-      <div>
+      <div className="mb-5">
         <div className="cognitive_instructions">Complete the form below</div>
         <Form
           url={"/FormGuidance"}

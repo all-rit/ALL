@@ -2,7 +2,7 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import Notification from "../../components/Notification";
 import { AccessibleMessage } from "../../../../../constants/lab5";
 
@@ -17,7 +17,7 @@ class NotificationAccessible extends Component {
   render() {
     const { actions } = this.props;
     return (
-      <div>
+      <div className="mb-5">
         <div className="cognitive_instructions">
           There is a notification that has appeared. Click on it to view it!
           Note: it can only be viewed once.

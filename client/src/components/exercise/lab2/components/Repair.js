@@ -192,7 +192,7 @@ class Repair extends Component {
       this.state.background,
       this.state.correctColor,
       this.state.incorrectColorOne,
-      this.state.incorrectColorTwo
+      this.state.incorrectColorTwo,
     );
     this.props.changeDefaultColors(colors);
     this.props.changeExerciseColors(colors);

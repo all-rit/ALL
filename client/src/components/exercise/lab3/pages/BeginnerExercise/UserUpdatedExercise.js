@@ -5,10 +5,7 @@
 import React, { Component } from "react";
 import CatClickNavigate from "../../helpers/CatClickNavigate";
 import { navigate } from "@reach/router";
-import { AppBar } from "@material-ui/core";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import { AppBar, Toolbar, Typography, Grid } from "@mui/material";
 import { PageService } from "../../../../../services/PageService";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 
@@ -30,7 +27,7 @@ class UserUpdatedExercise extends Component {
     actions.updateState(EXERCISE_PLAYING);
     this.interval = setInterval(
       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000
+      1000,
     );
 
     if (data.repair3.changesApplied) {
@@ -200,7 +197,7 @@ class UserUpdatedExercise extends Component {
         <AppBar position="static" className="appBar">
           <Toolbar>
             <Grid
-              justify="center"
+              justifyContent="center"
               container
               spacing={10}
               aria-label={"Page Title Grid"}
@@ -220,7 +217,7 @@ class UserUpdatedExercise extends Component {
                       e,
                       data.repair3.changesApplied
                         ? "Accessible Exercise"
-                        : "Inaccessible Exercise"
+                        : "Inaccessible Exercise",
                     )
                   }
                 >
@@ -239,7 +236,7 @@ class UserUpdatedExercise extends Component {
           onFocus={(e) =>
             this.textToSpeech(
               e,
-              "Click on the image of a cat. You can use the keyboard to navigate by tabbing across the page. Press the enter key to select."
+              "Click on the image of a cat. You can use the keyboard to navigate by tabbing across the page. Press the enter key to select.",
             )
           }
         >
@@ -261,7 +258,7 @@ class UserUpdatedExercise extends Component {
         {this._renderSubComp(
           data.repair3.changesApplied
             ? "/Lab3/Exercise/CodeChange"
-            : "/Lab3/Exercise/AccessibleInstructions"
+            : "/Lab3/Exercise/AccessibleInstructions",
         )}
       </div>
     );

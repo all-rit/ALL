@@ -20,7 +20,7 @@ client/build
 # misc
 .env.local
 .env.development.local
-.env.test.local
+.env.test
 .env.production.local
 
 ### macOS ###
@@ -143,3 +143,9 @@ typings/
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+### Local PM2 files
+ecosystem.config.js
+
+### deploy scripts
+server/deploy

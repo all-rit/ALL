@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useCallback, useState } from "react";
 import clsx from "clsx";
-import createAvatarData from "../../../body/lab/GridImages/createAvatarData";
+import createAvatarData from "../../../all-components/createAvatarData";
 import Avatar from "avataaars";
 import LongHorizontalLine from "../../../../common/HorizontalLine/LongHorizontalLine";
 import Recomendation from "./Recomendation";
@@ -59,13 +59,13 @@ const GridApplicants = (props) => {
       } else {
         if (id?.includes(selectImg.id)) {
           setCurrentFile((prevState) =>
-            prevState.filter((file) => file.id !== selectImg.id)
+            prevState.filter((file) => file.id !== selectImg.id),
           );
           setId((prevState) => prevState.filter((id) => id !== selectImg.id));
         }
       }
     },
-    [id, currentFile]
+    [id, currentFile],
   );
 
   return (

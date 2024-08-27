@@ -1,14 +1,14 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const NegativeReasoning = (props) => {
-  const { actions } = props;
+const NegativeReasoning = () => {
+  const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
   const handleContinue = () => {
     navigate("/Lab6/Exercise/AIAnalysisQuestions");

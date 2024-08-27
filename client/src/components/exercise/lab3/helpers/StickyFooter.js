@@ -1,10 +1,10 @@
 /* eslint-disable require-jsdoc */
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Divider from "@material-ui/core/Divider";
+import CssBaseline from "@mui/material/CssBaseline";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/material/styles";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
 
 const useStyles = makeStyles((theme) => ({
   root: {

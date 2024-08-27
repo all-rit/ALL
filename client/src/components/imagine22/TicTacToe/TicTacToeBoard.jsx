@@ -79,7 +79,7 @@ const TicTacToeBoard = (props) => {
             </div>
           </div>
         )}
-        <div className="moduleContainer tw-container tw-bg-dark tw-mx-auto tw-space-y-2 md:tw-space-y-0 md:tw-gap-2 md:tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-3 tw-p-3">
+        <div className="moduleContainer tw-container tw-bg-black tw-mx-auto tw-space-y-2 md:tw-space-y-0 md:tw-gap-2 md:tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-3 tw-p-3">
           <TicTacToeButton
             piece={gameInfo.board[0][2]}
             moveMade={(e) => executeMove(e, 2, 0)}

@@ -12,7 +12,7 @@ const StudentProgress = (props) => {
       UserLabService.getUserLabCompletion(student.userID, lab.labID).then(
         (data) => {
           setProgress(data);
-        }
+        },
       );
     }
   }, [student, lab]);

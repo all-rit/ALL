@@ -90,7 +90,7 @@ class Fourth extends Component {
             <div className="playthrough__category">Rounds:</div>
             <div className="playthrough__value">{result.roundNumber}</div>
           </div>
-        </div>
+        </div>,
       );
 
       i += 1;

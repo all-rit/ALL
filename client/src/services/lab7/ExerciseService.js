@@ -13,7 +13,7 @@ const ExerciseService = {
       {
         report,
         userId,
-      }
+      },
     );
   },
 };

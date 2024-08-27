@@ -1,18 +1,15 @@
-/* eslint-disable require-jsdoc */
-import React, { Component } from "react";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import React from "react";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
 
-class Header extends Component {
-  render() {
-    return (
-      <Toolbar>
-        <Grid justify="space-between" container spacing={10}>
-          <Grid item />
-        </Grid>
-      </Toolbar>
-    );
-  }
-}
+const Header = () => {
+  return (
+    <Toolbar>
+      <Grid justifyContent="space-between" container spacing={10}>
+        <Grid item />
+      </Grid>
+    </Toolbar>
+  );
+};
 
 export default Header;

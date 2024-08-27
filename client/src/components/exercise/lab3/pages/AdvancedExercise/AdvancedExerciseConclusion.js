@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import AppBar from "@material-ui/core/AppBar/AppBar";
+import AppBar from "@mui/material/AppBar";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../../constants/lab3/index";
 import UserLabService from "../../../../../services/UserLabService";

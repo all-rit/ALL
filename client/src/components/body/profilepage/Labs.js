@@ -1,12 +1,13 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import LabGeneration from "../lab/LabGeneration";
-import { actions } from "../../../reducers/MainReducer";
+import useMainStateContext from "src/reducers/MainContext";
+import PropTypes from "prop-types";
 
 const Labs = (props) => {
+  const { actions, state } = useMainStateContext();
   return (
     <>
-      {props.user && props.labRecords && (
+      {state.main.user && props.labRecords && (
         <>
           <div className="module__row">
             <div>
@@ -46,6 +47,13 @@ const Labs = (props) => {
       )}
     </>
   );
+};
+
+Labs.propTypes = {
+  labRecords: PropTypes.array,
+  toDoLabs: PropTypes.array,
+  inProgressLabs: PropTypes.array,
+  completedLabs: PropTypes.array,
 };
 
 export default Labs;

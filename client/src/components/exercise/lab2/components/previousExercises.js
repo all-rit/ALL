@@ -49,7 +49,7 @@ class PreviousExercises extends Component {
           <th colSpan="2" key={5000}>
             Previous Exercises
           </th>
-        </tr>
+        </tr>,
       );
       let length = 0;
       if (this.state.scores !== null) {

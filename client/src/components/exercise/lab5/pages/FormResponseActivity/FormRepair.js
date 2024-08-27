@@ -5,8 +5,8 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import RepairService from "../../../../../services/lab5/RepairService";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
-import Popup from "../../../shared/Popup";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
+import Popup from "../../../../all-components/Popup";
 import { navigate } from "@reach/router";
 
 class FormRepair extends Component {
@@ -38,11 +38,15 @@ class FormRepair extends Component {
     Object.keys(this.state).map((name) => {
       switch (name) {
         case "errorNotification":
-          if (this.state[name] !== "Please enter in format: YYYY-MM-DD") {
+          console.log(this.state[name]);
+          if (
+            this.state[name] !== '"Please enter in format: YYYY-MM-DD"' &&
+            this.state[name] !== "'Please enter in format: YYYY-MM-DD'"
+          ) {
             error = true;
             this.setState({
               errorNotificationerror:
-                "Must enter 'Please enter in format: YYYY-MM-DD'",
+                'Must enter "Please enter in format: YYYY-MM-DD"',
             });
           } else {
             this.setState({ errorNotificationerror: null });
@@ -97,7 +101,7 @@ class FormRepair extends Component {
     handlers.updateRepairForm(
       errorNotification,
       successNotification,
-      borderColor
+      borderColor,
     );
     handlers.closeRepair();
 

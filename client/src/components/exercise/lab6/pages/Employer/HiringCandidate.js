@@ -1,16 +1,14 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-
 import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect, useState } from "react";
-import { EXERCISE_PLAYING } from "../../../../../constants/lab6";
 import GridApplicants from "../../components/GridApplicants";
 import { Modal, ModalBody, ModalFooter, Button } from "reactstrap";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
+import useMainStateContext from "src/reducers/MainContext";
+import { EXERCISE_PLAYING } from "src/constants/index";
 
-const HiringCandidate = (props) => {
-  const { actions } = props;
+const HiringCandidate = () => {
+  const { actions } = useMainStateContext();
 
   const [roundOfApplicants, setRoundOfApplicants] = useState(0);
 
@@ -24,8 +22,8 @@ const HiringCandidate = (props) => {
   const [numInput, setNumInput] = useState(0);
 
   useEffect(() => {
-    actions.updateState(EXERCISE_PLAYING);
-  }, [actions]);
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
 
   const handleYes = () => {
     let roundCount = roundOfApplicants;

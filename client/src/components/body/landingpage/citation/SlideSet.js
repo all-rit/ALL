@@ -63,7 +63,7 @@ const SlideSet = (props) => {
             {item}
           </CarouselItem>
         );
-      })
+      }),
     );
     // eslint-disable-next-line
   }, [teamInformation]);

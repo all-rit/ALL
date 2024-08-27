@@ -2,11 +2,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { AppBar, Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import { AppBar, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
 import { navigate } from "@reach/router";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 import { PageService } from "../../../../../services/PageService";
 class ViewFix extends Component {
@@ -41,7 +41,7 @@ class ViewFix extends Component {
     }
     this.interval = setInterval(
       () => this.setState({ secondsElapsed: this.state.secondsElapsed + 1 }),
-      1000
+      1000,
     );
   }
 
@@ -57,7 +57,7 @@ class ViewFix extends Component {
       <div>
         <AppBar position="static" className="appBar">
           <Toolbar>
-            <Grid justify="center" container spacing={10}>
+            <Grid justifyContent="center" container spacing={10}>
               <Grid item>
                 <Typography
                   variant={"h4"}
@@ -92,7 +92,7 @@ class ViewFix extends Component {
             textToSpeech(
               e,
               "If you have updated the buttons with the appropriate " +
-                "aria-labels then you have succeeded. They can now be effectively described by screenreaders."
+                "aria-labels then you have succeeded. They can now be effectively described by screenreaders.",
             )
           }
         >

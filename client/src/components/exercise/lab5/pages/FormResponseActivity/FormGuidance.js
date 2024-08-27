@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import PageServiceTimer from "../../../shared/PageServiceTimer";
+import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 
 class FormGuidance extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class FormGuidance extends Component {
   render() {
     const { actions } = this.props;
     return (
-      <Fragment>
+      <div className="mb-5">
         <div className="center-div">
           <div className="guidance">
             The activity you completed was meant to stimulate poor cognitive
@@ -52,7 +52,7 @@ class FormGuidance extends Component {
           </div>
         </div>
         <PageServiceTimer actions={actions} name={this.state.componentName} />
-      </Fragment>
+      </div>
     );
   }
 }

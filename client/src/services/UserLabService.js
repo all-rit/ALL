@@ -16,7 +16,7 @@ const UserLabService = {
       process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_ABOUT,
       {
         labid,
-      }
+      },
     );
   },
   complete_reading: (labid) => {
@@ -24,7 +24,7 @@ const UserLabService = {
       process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_READING,
       {
         labid,
-      }
+      },
     );
   },
   complete_exercise: (labid) => {
@@ -32,7 +32,7 @@ const UserLabService = {
       process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_EXERCISE,
       {
         labid,
-      }
+      },
     );
   },
   complete_reinforcement: (labid) => {
@@ -40,7 +40,7 @@ const UserLabService = {
       process.env.REACT_APP_SERVER_URL + endpoints.COMPLETE_REINFORCEMENT,
       {
         labid,
-      }
+      },
     );
   },
   complete_quiz: (labid, quizscore, quizresult) => {
@@ -50,7 +50,7 @@ const UserLabService = {
         labid,
         quizscore,
         quizresult,
-      }
+      },
     );
   },
 
@@ -62,7 +62,7 @@ const UserLabService = {
       {
         userid,
         labid,
-      }
+      },
     );
   },
   user_complete_reading: (userid, labid) => {
@@ -73,7 +73,7 @@ const UserLabService = {
       {
         userid,
         labid,
-      }
+      },
     );
   },
   user_complete_exercise: (userid, labid) => {
@@ -84,7 +84,7 @@ const UserLabService = {
       {
         userid,
         labid,
-      }
+      },
     );
   },
   user_complete_reinforcement: (userid, labid) => {
@@ -95,7 +95,7 @@ const UserLabService = {
       {
         userid,
         labid,
-      }
+      },
     );
   },
   user_complete_quiz: (userid, labid, quizscore) => {
@@ -105,19 +105,19 @@ const UserLabService = {
         userid,
         labid,
         quizscore,
-      }
+      },
     );
   },
   getUserLabCompletion: (userID, labID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/user/${userID}/${labID}`
+      process.env.REACT_APP_SERVER_URL + `/user/${userID}/${labID}`,
     )
       .then((response) => response.json())
       .then((json) => json);
   },
   getUserLabRecords: (userID) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/user/${userID}/labrecords`
+      process.env.REACT_APP_SERVER_URL + `/user/${userID}/labrecords`,
     )
       .then((response) => response.json())
       .then((json) => json);

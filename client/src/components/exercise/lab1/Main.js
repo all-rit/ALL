@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 
 import Content from "./components/Content";
 import ExerciseInstructions from "./components/ExerciseInstructions";
-import Popup from "../shared/Popup";
+import Popup from "../../all-components/Popup";
 
 import { actions as appActions } from "../../../reducers/lab1/AppReducer";
 import { actions as exerciseActions } from "../../../reducers/lab1/ExerciseReducer";
@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(
       { ...appActions, ...exerciseActions, ...repairActions },
-      dispatch
+      dispatch,
     ),
   };
 };

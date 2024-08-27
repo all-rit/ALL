@@ -1,32 +1,101 @@
 const LabService = require('../services/LabService');
 
-exports.getAllLabs = (req, res) => {
-  LabService.getAllLabs().then((records) => {
-    res.json(records);
-  });
+/**
+ * getAllLabsController(): Gets all labs and their information.
+ * @param {Object} req request object containing payload.
+ * @param {Object} res response object. containing information to client
+ */
+async function getAllLabsController(req, res) {
+  try {
+    const labs = await LabService.getAllLabs();
+    return await res.json(labs);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({error: 'Error: Could Not Find Labs'});
+  }
+}
+/**
+ * getLabShortNameController(): Gets the short name of a lab.
+ * @param {Object} req request object containing payload.
+ * @param {Object} res response object. containing information to client
+ */
+async function getLabShortNameController(req, res) {
+  try {
+    const {labID} = req.params;
+    const shortName = await LabService.getLabShortName(labID);
+    return res.json([shortName]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({error: 'Error: Could Not Find Short Name'});
+  }
+}
+/**
+ * getLabAboutController(): Gets the about section of a lab.
+ * @param {Object} req request object containing payload.
+ * @param {Object} res response object. containing information to client
+ */
+async function getLabAboutController(req, res) {
+  try {
+    const {labID} = req.params;
+    const about = await LabService.getLabAbout(labID);
+    return res.json([about]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({error: 'Error: Could Not Find About'});
+  }
+}
+/**
+ * getLabReadingController(): Gets the reading section of a lab.
+ * @param {Object} req request object containing payload.
+ * @param {Object} res response object. containing information to client
+ */
+async function getLabReadingController(req, res) {
+  try {
+    const {labID} = req.params;
+    const reading = await LabService.getLabReading(labID);
+    return res.json([reading]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({error: 'Error: Could Not Find Reading'});
+  }
+}
+/**
+ * getLabReinforcementController(): Gets the reinforcement section of a lab.
+ * @param {Object} req request object containing payload.
+ * @param {Object} res response object. containing information to client
+ */
+async function getLabReinforcementController(req, res) {
+  try {
+    const {labID} = req.params;
+    const reinforcement = await LabService.getLabReinforcement(labID);
+    return res.json([reinforcement]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({error: 'Error: Could not retrieve reinforcement'});
+  }
+}
+/**
+ * getLabQuizController(): Gets the quiz section of a lab.
+ * @param {Object} req request object containing payload.
+ * @param {Object} res response object. containing information to client
+ */
+async function getLabQuizController(req, res) {
+  try {
+    const {labID} = req.params;
+    const quiz = await LabService.getLabQuiz(labID);
+    return res.json([quiz]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({error: 'Error: Could Not Find Quiz'});
+  }
+}
+
+module.exports = {
+  getAllLabsController,
+  getLabShortNameController,
+  getLabAboutController,
+  getLabReadingController,
+  getLabReinforcementController,
+  getLabQuizController,
 };
-exports.getLabShortName = (req, res) => {
-  LabService.getLabShortName(req.params.labID).then((records) => {
-    res.json(records);
-  });
-};
-exports.getLabAbout = (req, res) => {
-  LabService.getLabAbout(req.params.labID).then((records) => {
-    res.json(records);
-  });
-};
-exports.getLabReading = (req, res) => {
-  LabService.getLabReading(req.params.labID).then((records) => {
-    res.json(records);
-  });
-};
-exports.getLabReinforcement = (req, res) => {
-  LabService.getLabReinforcement(req.params.labID).then((records) => {
-    res.json(records);
-  });
-};
-exports.getLabQuiz = (req, res) => {
-  LabService.getLabQuiz(req.params.labID).then((records) => {
-    res.json(records);
-  });
-};
+
