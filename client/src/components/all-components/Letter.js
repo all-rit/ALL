@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
-import grad_hat from "../../../../assets/images/lab11/grad_hat.png";
-import signature from "../../../../assets/images/lab11/signature.png";
+import grad_hat from "../../assets/images/lab11/grad_hat.png";
+import signature from "../../assets/images/lab11/signature.png";
 import { useContext } from "react";
-import ExerciseStateContext from "../Lab11Context";
+import ExerciseStateContext from "../exercise/lab11/Lab11Context";
 
 import PropTypes from "prop-types";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Letter from "../../../src/components/exercise/lab11/components/Letter";
+import Letter from "../../../src/components/all-components/Letter";
 import { ALUMNI_NEWSLETTER_CONTENT } from "../../../src/constants/lab12/index";
 
 describe("Letter tests", () => {

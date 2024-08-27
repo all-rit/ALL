@@ -1,12 +1,12 @@
 import React from "react";
-import Letter from "../components/Letter";
+import Letter from "./Letter";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import useScroll from "../../../../use-hooks/useScroll";
+import useScroll from "../../use-hooks/useScroll";
 import { useContext } from "react";
-import ExerciseStateContext from "../Lab11Context";
-import { fogIndexCalculation } from "../helpers/FogIndexCalculation";
-import FogIndexOverlay from "../components/FogIndexOverlay";
+import ExerciseStateContext from "../exercise/lab11/Lab11Context";
+import { fogIndexCalculation } from "../exercise/lab11/helpers/FogIndexCalculation";
+import FogIndexOverlay from "../exercise/lab11/components/FogIndexOverlay";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
 

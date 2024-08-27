@@ -1,8 +1,5 @@
 import React from "react";
-// import { navigate } from "@reach/router";
-// import { useEffect } from "react";
-// import { REPAIR, EXERCISE_STATES } from "../../../../../constants/lab12";
-import InformationLetterEmail from "../../lab11/pages/InformationLetterEmail";
+import InformationLetterEmail from "../../../all-components/InformationLetterEmail";
 import { ALUMNI_NEWSLETTER_CONTENT } from "src/constants/lab12/index";
 import PropTypes from "prop-types";
 
@@ -20,17 +17,8 @@ const AlumniNewsletter = (props) => {
         letterBody={ALUMNI_NEWSLETTER_CONTENT}
         showsFogIndex={false}
         alumniName={name}
+        handleContinue={handleContinue}
       />
-
-      <div className="tw-flex tw-justify-evenly">
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={handleContinue}
-          key="start"
-        >
-          Next
-        </button>
-      </div>
     </div>
   );
 };
