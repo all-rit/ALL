@@ -42,7 +42,7 @@ test("Placing on a board.", () => {
   expect(newval).toStrictEqual(FinalBoard);
 });
 
-test("Test to see if you can fill in the entire board", () => {
+test("to see if you can fill in the entire board", () => {
   const fillBoard = { ...createNewBoard() };
   for (let x = 0; x < 3; x++) {
     for (let y = 0; y < 3; y++) {
@@ -52,7 +52,7 @@ test("Test to see if you can fill in the entire board", () => {
   expect(fillBoard.available.length).toBe(0);
 });
 
-test("Test to see vertical win configuration", () => {
+test("to see vertical win configuration", () => {
   const vertical = { ...createNewBoard() };
   const WinOutPut = { isGameOver: true, winner: "Player" };
   makeMove(vertical, "X", 0, 0);

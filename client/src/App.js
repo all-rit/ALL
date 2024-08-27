@@ -38,7 +38,7 @@ import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
 import Educators from "./components/body/educators";
-import Content_Page from "./components/body/educators/Content_Page";
+import EducatorsContent from "./components/body/educators/EducatorsContent";
 const parse = require("url-parse");
 import useMainStateContext from "./reducers/MainContext";
 
@@ -93,7 +93,6 @@ const App = () => {
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
-              <Educators path="/Educators" />
               <Imagine path="/Imagine/*" user={state.main.user} />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
@@ -109,8 +108,11 @@ const App = () => {
                 labID={lab}
               />
 
-              <Content_Page path={"/Educators/Content"} />
+              {/* Educators Section */}
+              <Educators path="/Educators" user={state.main.user} />
+              <EducatorsContent path={"/Educators/Content"} />
 
+              {/* Exercises */}
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
               <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
               <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
