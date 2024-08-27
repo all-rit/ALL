@@ -4,7 +4,6 @@ const LabService = require('../../services/LabService');
 
 const labCount = 12;
 
-
 describe( 'Test LabController for successful Payloads', () => {
   test('Test get all labs', async () => {
     const req = ControllerTestUtil.formatRequest({});

@@ -6,20 +6,6 @@ const ExerciseService = require('../../../services/lab12/ExerciseService');
 
 // eslint-disable-next-line max-len
 describe('Test successful payloads in Lab 12 ExerciseController functions', () => {
-  test('Test getExercise function', async () => {
-    const req = ControllerTestUtil.formatRequest({params: {userID: 100}});
-    const res = ControllerTestUtil.formatResponse();
-    const response = await ExerciseController.getExercise(req, res);
-    const expected = await ExerciseService.getExercise(100);
-    console.log(JSON.parse(response));
-    expect(JSON.parse(response)).toStrictEqual(([
-      {
-        ...expected,
-        attemptTime: new Date(expected.attemptTime).toJSON(),
-      },
-    ]));
-  });
-
   test('Test postExercise function', async () => {
     const req = ControllerTestUtil.formatRequest({
       body: {
@@ -37,6 +23,18 @@ describe('Test successful payloads in Lab 12 ExerciseController functions', () =
     expect(JSON.parse(
         response)[0].attemptCount).toStrictEqual(
         (expected.attemptCount + 1));
+  });
+  test('Test getExercise function', async () => {
+    const req = ControllerTestUtil.formatRequest({params: {userID: 100}});
+    const res = ControllerTestUtil.formatResponse();
+    const response = await ExerciseController.getExercise(req, res);
+    const expected = await ExerciseService.getExercise(100);
+    expect(JSON.parse(response)).toStrictEqual(([
+      {
+        ...expected,
+        attemptTime: new Date(expected.attemptTime).toJSON(),
+      },
+    ]));
   });
 });
 

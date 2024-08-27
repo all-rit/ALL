@@ -2,29 +2,23 @@ const RepairService = require('../../services/lab12/RepairService');
 
 /**
  * submitChange(): is a function that is responsible for
- * handling when a user submits their change to the address repair fields
+ * handling when a user submits their change to either
+ * the database or form repair fields
  * @param {Object} req
- * @param {Object} res
+ * @param {Object} res response object. containing information to client
  */
 async function submitChange(req, res) {
-  const {userID, repair, isComplete, section} = req.body;
-  if (userID === '' || section === '' || repair === '') {
-    res.status(400); // Bad request status
-    return res.json({error: 'Required fields are missing.'});
-  } else {
-    try {
-      const response = await RepairService.submitRepair({
-        userID: userID,
-        section: section,
-        repair: repair,
-        isComplete: isComplete,
+  try {
+    const {userID, repair, isComplete, section} = req.body;
+    // eslint-disable-next-line max-len
+    if (userID !== '' || repair !== '' || isComplete !== null || section !== '') {
+      const response = RepairService.submitRepair({
+        userID, repair, section, isComplete,
       });
-      return res.json(response);
-    } catch (error) {
-      console.error(error);
-      res.status(500);
-      res.json({error: 'Error: Could not post submit repair.'});
+      return await res.json(response);
     }
+  } catch (error) {
+    res.status(500).json({error: 'Error: Repair submission failed.'});
   }
 }
 

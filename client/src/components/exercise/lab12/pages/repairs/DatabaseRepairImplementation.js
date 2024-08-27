@@ -63,7 +63,6 @@ const DatabaseRepairImplementation = (props = {}) => {
                     name: item.variable,
                     type: "text",
                     placeholder: "Enter Answer Here",
-                    className: "p-1 tw-w-[21rem] code_editor__input",
                   }}
                 />
               ) : (
@@ -75,7 +74,6 @@ const DatabaseRepairImplementation = (props = {}) => {
                     name: item.variable,
                     type: "text",
                     placeholder: "Enter Answer Here",
-                    className: "p-1 tw-w-[21rem] code_editor__input",
                   }}
                 />
               )}
@@ -108,7 +106,7 @@ const DatabaseRepairImplementation = (props = {}) => {
               <SQLText>{item.variable}</SQLText>
               <MultiTab numberOfTabs={4} />
               &nbsp;
-              {item.userInput ? (
+              {userInput ? (
                 <CodeBlockInput
                   value={item.userInput}
                   attributes={{
