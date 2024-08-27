@@ -95,13 +95,11 @@ const SurveyHandler = (props) => {
     const section = (await response.text()).replace(/['"]+/g, "");
 
     if (section == "experiential" || section === "control") {
-      console.log("Navigating to Experiential");
       navigate("/Imagine/ExperientialStart");
     } else if (
       section === "discomfortCountNonPOC" ||
       section === "discomfortCountPOC"
     ) {
-      console.log("Navigating to Expression");
       navigate("/Imagine/ExpressionStart");
     } else {
       console.log("Navigating to None");

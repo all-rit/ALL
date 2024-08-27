@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 module.exports = (sequelize, DataTypes) => {
   const Imagine = sequelize.define(
       'Imagine23', {

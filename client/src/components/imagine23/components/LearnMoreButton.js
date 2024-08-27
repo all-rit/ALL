@@ -24,21 +24,17 @@ const LearnMoreButton = (props) => {
   const stopTimer = () => {
     toggle();
     setRunning(false);
-    console.log("time elapsed " + formatTime(time));
     setTimeElapsed(formatTime(time));
     clearInterval(timer.current);
-    console.log("get current time " + formatTime(time));
   };
 
   const readMoreCount = () => {
     setModal(true);
     setCounter(1);
-    console.log(counter);
   };
 
   const saveData = () => {
     setRunning(true);
-    console.log(counter);
     readMoreCount();
     toggle();
   };

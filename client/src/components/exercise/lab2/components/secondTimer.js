@@ -154,7 +154,6 @@ class SecondTimer extends Component {
       if (isImagine) {
         const section = "experiential";
         const user = await ImagineService.getUserByID(userID);
-        console.warn(user);
         if (data.Mode[0] === "MAIN") {
           const study = { main: { ...data } };
           ImagineService.postStudy({ userID, study, section });
