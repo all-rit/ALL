@@ -69,8 +69,8 @@ const InformationLetterEmail = (props) => {
       {sectionTitle && <h1 className="playthrough__title">{sectionTitle}</h1>}
       <div className="playthrough__sentence">{descriptionText}</div>
 
-      <div className="tw-flex flex-col tw-justify-center tw-relative">
-        <div className="tw-w-full tw-h-auto tw-bg-[#E8EBED] tw-rounded-2xl tw-shadow tw-py-5 tw-flex tw-flex-col">
+      <div className="tw-flex flex-col tw-justify-center tw-relative tw-rounded-2xl tw-shadow-2xl">
+        <div className="tw-w-full tw-h-auto tw-bg-[#E8EBED] tw-rounded-2xl tw-py-5 tw-flex tw-flex-col">
           <div className="tw-flex tw-justify-center">
             <div className={`tw-w-[90%] tw-flex tw-flex-col`}>
               <div
