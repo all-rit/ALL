@@ -110,15 +110,25 @@ class exercise extends Component {
       return (
         <div>
           <Title exerciseState={true} replay={false} />
-          <div className="startExerciseTimer">{props.seconds}</div>
-          <div className="center prescreen">
-            <Circle color={correctColor} />
-            <div className="arrow">
-              <div className="point" />
-              <div className="line" />
+          <div className="startExerciseTimer tw-relative tw-m-12">
+            {props.seconds}
+          </div>
+          <div className="center prescreen tw-m-12 tw-p-5">
+            <div className={"tw-absolute tw-m-12"}>
+              <Circle color={correctColor} />
             </div>
-            <div>
-              <p className="prescreenText">
+            <div
+              className="arrow tw-absolute"
+              style={{ transform: "translateX(200%)" }}
+            >
+              <div className="point" />
+              <div className="line tw-w-100" />
+            </div>
+            <div
+              className={"tw-absolute"}
+              style={{ transform: "translate(50%, -150%)" }}
+            >
+              <p className="prescreenText ">
                 Click this color whenever it appears here!
               </p>
               <p className="prescreenText">
