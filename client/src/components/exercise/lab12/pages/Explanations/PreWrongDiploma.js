@@ -14,9 +14,7 @@ const PreWrongDiploma = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise`, // LINK TO OWEN's FIRST DIPLOMA (wrong pronouns)
-    );
+    navigate(`/Lab12/Exercise/Diploma`);
   };
 
   return (

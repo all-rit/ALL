@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Router } from "@reach/router";
 // lab imported dependencies;
-import Test from "./pages/Test";
 import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
 import GradApplication from "./components/GradApplication.js";
@@ -26,10 +25,9 @@ const Main = () => {
     <div className="bottomSpace">
       <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
         <Router className="app">
-          <Test path="/*" />
-          <Diploma path="/diploma" />
+          <ExerciseIntro default path="/" />
           <GradApplication path="/GraduationApplication" />
-          <ExerciseIntro path="/ExerciseIntro" />
+          <Diploma path="/Diploma" />
           <PreWrongDiploma path="/PreWrongDiploma" />
           <PostWrongNewsletter path="/PostWrongNewsletter" />
           <PreCorrectDiploma path="/PreCorrectDiploma" />
