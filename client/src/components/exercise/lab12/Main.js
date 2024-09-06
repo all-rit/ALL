@@ -5,6 +5,7 @@ import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
 import GradApplication from "./components/GradApplication.js";
 import Diploma from "./components/Diploma";
+import AlumniNewsletter from "./pages/AlumniNewsletter";
 import ExerciseIntro from "./pages/Explanations/ExerciseIntro";
 import PreWrongDiploma from "./pages/Explanations/PreWrongDiploma";
 import PostWrongNewsletter from "./pages/Explanations/PostWrongNewsletter";
@@ -33,6 +34,8 @@ const Main = () => {
           <PreCorrectDiploma path="/PreCorrectDiploma" />
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />
+          {/* TODO: name needs to come from db */}
+          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
         </Router>
       </GameStateContext.Provider>
     </div>

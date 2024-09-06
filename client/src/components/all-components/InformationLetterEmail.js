@@ -1,12 +1,12 @@
 import React from "react";
-import Letter from "../components/Letter";
+import Letter from "./Letter";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import useScroll from "../../../../use-hooks/useScroll";
+import useScroll from "../../use-hooks/useScroll";
 import { useContext } from "react";
-import ExerciseStateContext from "../Lab11Context";
-import { fogIndexCalculation } from "../helpers/FogIndexCalculation";
-import FogIndexOverlay from "../components/FogIndexOverlay";
+import ExerciseStateContext from "../exercise/lab11/Lab11Context";
+import { fogIndexCalculation } from "../exercise/lab11/helpers/FogIndexCalculation";
+import FogIndexOverlay from "../exercise/lab11/components/FogIndexOverlay";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
 
@@ -30,6 +30,9 @@ const InformationLetterEmail = (props) => {
     isEditable,
     handleContinue,
     descriptionText,
+    showsFogIndex = true,
+    letterBody,
+    alumniName,
   } = props;
 
   const { actions } = useMainStateContext();
@@ -66,8 +69,8 @@ const InformationLetterEmail = (props) => {
       {sectionTitle && <h1 className="playthrough__title">{sectionTitle}</h1>}
       <div className="playthrough__sentence">{descriptionText}</div>
 
-      <div className="tw-flex flex-col tw-justify-center tw-relative">
-        <div className="tw-w-full tw-h-auto tw-bg-[#E8EBED] tw-rounded-2xl tw-shadow tw-py-5 tw-flex tw-flex-col">
+      <div className="tw-flex flex-col tw-justify-center tw-relative tw-rounded-2xl tw-shadow-2xl">
+        <div className="tw-w-full tw-h-auto tw-bg-[#E8EBED] tw-rounded-2xl tw-py-5 tw-flex tw-flex-col">
           <div className="tw-flex tw-justify-center">
             <div className={`tw-w-[90%] tw-flex tw-flex-col`}>
               <div
@@ -88,14 +91,21 @@ const InformationLetterEmail = (props) => {
               </div>
               <div className="tw-w-full tw-mx-auto tw-bg-[#B4B4B4] tw-h-[2px] tw-my-4 tw-opacity-40" />
               {/* Letter Content */}
-              <Letter isEditable={isEditable} />
-              {/* Fog Index Overlay*/}
-              <FogIndexOverlay
-                fogIndex={fogIndex}
-                totalWords={totalWords}
-                totalSentences={totalSentences}
-                totalComplexWords={totalComplexWords}
+              <Letter
+                isEditable={isEditable}
+                letterBody={letterBody}
+                alumniName={alumniName}
               />
+              {/* Fog Index Overlay*/}
+              {/* check to see if we should display the fog index overlay */}
+              {showsFogIndex && (
+                <FogIndexOverlay
+                  fogIndex={fogIndex}
+                  totalWords={totalWords}
+                  totalSentences={totalSentences}
+                  totalComplexWords={totalComplexWords}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -132,5 +142,8 @@ InformationLetterEmail.propTypes = {
   handleContinue: PropTypes.func.isRequired,
   sectionTitle: PropTypes.string,
   descriptionText: PropTypes.string,
+  showsFogIndex: PropTypes.bool,
+  letterBody: PropTypes.string,
+  alumniName: PropTypes.string,
 };
 export default InformationLetterEmail;
