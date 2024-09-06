@@ -15,7 +15,7 @@ const Diploma = (props) => {
   } = props;
 
   const handleContinue = () => {
-    navigate(`/Lab12/Exercise/`);
+    navigate(`/Lab12/Exercise/AlumniNewsletter`);
   };
 
   return (

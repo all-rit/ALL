@@ -14,9 +14,7 @@ const PostCorrectNewsletter = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise/Explanations/KeyTakeaways`, // LINK TO KEY TAKEAWAYS
-    );
+    navigate(`/Lab12/Exercise/KeyTakeaways`);
   };
 
   return (

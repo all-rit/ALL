@@ -14,9 +14,7 @@ const PreCorrectDiploma = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise`, // LINK TO OWEN's DIPLOMA (correct pronouns)
-    );
+    navigate(`/Lab12/Exercise/Diploma`);
   };
 
   return (
@@ -24,7 +22,7 @@ const PreCorrectDiploma = () => {
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
           Congratulations, you’ve graduated from ALL University! You attend
-          graduation to walk the stage! This time, after being prompted for your
+          graduation to walk the stage. This time, after being prompted for your
           pronouns, the Dean uses your correct pronouns AND preferred name at
           graduation! Since the form you filled out prompted you for a preferred
           name or pronouns, this recognition from your school and from your dean
