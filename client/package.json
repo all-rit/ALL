@@ -69,7 +69,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "eslintConfig": {
     "extends": "react-app"
