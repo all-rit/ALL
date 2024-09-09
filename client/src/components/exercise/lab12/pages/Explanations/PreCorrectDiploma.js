@@ -23,10 +23,11 @@ const PreCorrectDiploma = () => {
         <p className="playthrough__sentence">
           Congratulations, you’ve graduated from ALL University! You attend
           graduation to walk the stage. This time, after being prompted for your
-          pronouns, the Dean uses your correct pronouns AND preferred name at
-          graduation! Since the form you filled out prompted you for a preferred
-          name or pronouns, this recognition from your school and from your dean
-          in front of the entire audience fills you with self pride and joy.
+          preferred name and pronouns, the Dean uses your correct pronouns AND
+          preferred name at graduation! Since the form you filled out prompted
+          you for a preferred name and pronouns, this recognition from your
+          school and from your dean in front of the entire audience fills you
+          with self pride and joy.
         </p>
       </div>
       <div className="playthrough__sentence">

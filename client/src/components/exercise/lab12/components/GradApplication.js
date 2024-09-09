@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const Application = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [preferredName, setPreferredName] = useState("");
   const [pronouns, setPronouns] = useState("");
   const [college, setCollege] = useState("");
   const [major, setMajor] = useState("");
@@ -10,6 +11,7 @@ const Application = () => {
 
   const [fNameErr, setFirstNameErr] = useState(false);
   const [lNameErr, setLastNameErr] = useState(false);
+  const [preferredNameErr, setPreferredNameErr] = useState(false);
   const [pronounsErr, setPronounsErr] = useState(false);
   const [collegeErr, setCollegeErr] = useState(false);
   const [majorErr, setMajorErr] = useState(false);
@@ -17,6 +19,7 @@ const Application = () => {
 
   const [fNameEmptyErr, setFirstNameEmptyErr] = useState(false);
   const [lNameEmptyErr, setLastNameEmptyErr] = useState(false);
+  const [preferredNameEmptyErr, setPreferredNameEmptyErr] = useState(false);
   const [pronounsEmptyErr, setPronounsEmptyErr] = useState(false);
   const [collegeEmptyErr, setCollegeEmptyErr] = useState(false);
   const [majorEmptyErr, setMajorEmptyErr] = useState(false);
@@ -28,6 +31,8 @@ const Application = () => {
     setFirstNameErr(false);
     setLastNameEmptyErr(false);
     setLastNameErr(false);
+    setPreferredNameEmptyErr(false);
+    setPreferredNameErr(false);
     setPronounsEmptyErr(false);
     setPronounsErr(false);
     setCollegeEmptyErr(false);
@@ -57,6 +62,15 @@ const Application = () => {
     }
     if (!hasCharacter.test(lastName)) {
       setLastNameEmptyErr(true);
+    }
+
+    // RegExp for special characters (anything except letters and whitespace));
+    const preferredNameSpecialChar = new RegExp("[^A-Za-z\\s+]", "g");
+    if (preferredNameSpecialChar.test(preferredName)) {
+      setPreferredNameErr(true);
+    }
+    if (!hasCharacter.test(preferredName)) {
+      setPreferredNameEmptyErr(true);
     }
 
     const pReg = new RegExp("[^A-Za-z\\s+/]", "g");
@@ -105,6 +119,7 @@ const Application = () => {
             </h2>
             <div className="sm:tw-flex tw-items-center tw-mb-6">
               <label htmlFor="firstName" className="tw-pr-8">
+                <span className="tw-text-error-red">*</span>
                 Legal First Name:
               </label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
@@ -136,6 +151,7 @@ const Application = () => {
             </div>
             <div className="sm:tw-flex tw-items-center tw-mb-6">
               <label htmlFor="lastName" className="tw-pr-8">
+                <span className="tw-text-error-red">*</span>
                 Legal Last Name:
               </label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
@@ -164,8 +180,33 @@ const Application = () => {
                 )}
               </div>
             </div>
+            {/* preferred name shouldn't be shown until repair is completed */}
             <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label className="tw-pr-8">Pronouns:</label>
+              <label className="tw-pr-8">Preferred Name:</label>
+              <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
+                <input
+                  placeholder="Ex: Jay"
+                  onChange={(e) => {
+                    setPreferredName(e.target.value);
+                  }}
+                />
+                {preferredNameErr && (
+                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                    Error: Invalid character.
+                  </label>
+                )}
+                {preferredNameEmptyErr && (
+                  <label className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic">
+                    Error: Input required.
+                  </label>
+                )}
+              </div>
+            </div>
+            {/* pronouns shouldn't be shown until repair is completed */}
+            <div className="sm:tw-flex tw-items-center tw-mb-6">
+              <label className="tw-pr-8">
+                <span className="tw-text-error-red">*</span>Pronouns:
+              </label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <input
                   placeholder="Ex: They/Them"

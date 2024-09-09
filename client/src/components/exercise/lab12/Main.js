@@ -28,14 +28,15 @@ const Main = () => {
         <Router className="app">
           <ExerciseIntro default path="/" />
           <GradApplication path="/GraduationApplication" />
-          <Diploma path="/Diploma" />
           <PreWrongDiploma path="/PreWrongDiploma" />
+          <Diploma path="/Diploma" />
+          {/* TODO: name needs to come from db */}
+          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
           <PostWrongNewsletter path="/PostWrongNewsletter" />
+          {/* repair here */}
           <PreCorrectDiploma path="/PreCorrectDiploma" />
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />
-          {/* TODO: name needs to come from db */}
-          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
         </Router>
       </GameStateContext.Provider>
     </div>

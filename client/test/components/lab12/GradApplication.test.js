@@ -8,7 +8,7 @@ import GradApplication from "../../../src/components/exercise/lab12/components/G
  * And one "Submit Application" button field
  */
 describe("Test GradApplication Component Input Fields", () => {
-  test("has 6 input fields", async () => {
+  test("has 7 input fields", async () => {
     render(<GradApplication />);
     // Verify header:'
     const textElement = await screen.findByText(
@@ -24,6 +24,8 @@ describe("Test GradApplication Component Input Fields", () => {
       await screen.getByPlaceholderText("Ex: Jane").placeholder;
     const lastNameInputPlaceholder =
       await screen.getByPlaceholderText("Ex: Smith").placeholder;
+    const preferredNameInputPlaceholder =
+      await screen.getByPlaceholderText("Ex: Jay").placeholder;
     const pronounsInputPlaceholder =
       await screen.getByPlaceholderText("Ex: They/Them").placeholder;
     const collegeInputPlaceholder =
@@ -34,6 +36,7 @@ describe("Test GradApplication Component Input Fields", () => {
       await screen.getByPlaceholderText("Ex: Spring 2024").placeholder;
     expect(firstNameInputPlaceholder).toBe("Ex: Jane");
     expect(lastNameInputPlaceholder).toBe("Ex: Smith");
+    expect(preferredNameInputPlaceholder).toBe("Ex: Jay");
     expect(pronounsInputPlaceholder).toBe("Ex: They/Them");
     expect(collegeInputPlaceholder).toBe("Ex: RIT");
     expect(majorInputPlaceholder).toBe("Ex: CS");
@@ -41,7 +44,7 @@ describe("Test GradApplication Component Input Fields", () => {
   });
   test("invalid firstName info", async () => {
     render(<GradApplication />);
-    const inputElement = await screen.getByLabelText("Legal First Name:");
+    const inputElement = await screen.getByLabelText("*Legal First Name:");
     expect(inputElement).toBeTruthy();
   });
 });
@@ -57,6 +60,7 @@ describe("Test GradApplication Component", () => {
     //Test if input fields are rendered
     expect(screen.getByPlaceholderText("Ex: Jane")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: Smith")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Ex: Jay")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: They/Them")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: RIT")).toBeTruthy();
     expect(screen.getByPlaceholderText("Ex: CS")).toBeTruthy();
@@ -74,6 +78,9 @@ describe("Test GradApplication Component", () => {
     fireEvent.change(screen.getByPlaceholderText("Ex: Smith"), {
       target: { value: "Smith123" },
     });
+    fireEvent.change(screen.getByPlaceholderText("Ex: Jay"), {
+      target: { value: "Jay123" },
+    });
     fireEvent.change(screen.getByPlaceholderText("Ex: They/Them"), {
       target: { value: "They/Them123" },
     });
@@ -90,15 +97,17 @@ describe("Test GradApplication Component", () => {
     fireEvent.click(screen.getByText("Submit Application"));
 
     //Check if error messages are displayed
-    //idk if this works yet
     const errorMessages = screen.getAllByText("Error: Invalid character.");
-    expect(errorMessages).toHaveLength(6);
+    expect(errorMessages).toHaveLength(7);
 
     //Fill in input fields with empty data
     fireEvent.change(screen.getByPlaceholderText("Ex: Jane"), {
       target: { value: " " },
     });
     fireEvent.change(screen.getByPlaceholderText("Ex: Smith"), {
+      target: { value: " " },
+    });
+    fireEvent.change(screen.getByPlaceholderText("Ex: Jay"), {
       target: { value: " " },
     });
     fireEvent.change(screen.getByPlaceholderText("Ex: They/Them"), {
@@ -116,17 +125,17 @@ describe("Test GradApplication Component", () => {
     fireEvent.click(screen.getByText("Submit Application"));
     //Check if error messages are displayed
     const error2Messages = screen.getAllByText("Error: Input required.");
-    expect(error2Messages).toHaveLength(6);
+    expect(error2Messages).toHaveLength(7);
   });
 });
 
 describe("Grad Application Tests", () => {
-  test("component has 6 input fields", () => {
+  test("component has 7 input fields", () => {
     const { container } = render(<GradApplication />); // Render component
     // Get all input elements within the rendered GradApplication
     const inputFields = container.querySelectorAll("input");
     // Assert that there are 6 fields (LFN, LLN, PR, COL, MJ, GT)
-    expect(inputFields.length).toBe(6);
+    expect(inputFields.length).toBe(7);
   });
 
   test("component has 1 button field", () => {
