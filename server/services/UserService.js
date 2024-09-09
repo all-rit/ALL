@@ -17,14 +17,12 @@ const updateGuestUserId = (userid, usersessionid) =>{
 
 const authenticate = async (data) => {
   try {
-    const userSessionID = data.id.slice(0, 19);
+    const userSessionID = data.id.slice(0, 8);
     const firstName = data.name.givenName;
     const lastInitial = data.name.familyName.slice(0, 1);
     const email = data.emails[0].value;
 
-    console.warn(process.env.ENVIRONMENT);
-
-    let session = await db.Session.findOne(userSessionID);
+    let session = await db.Session.findByPk(userSessionID);
     if (!session) {
       const newAccount = {
         firstName: firstName,
@@ -40,33 +38,15 @@ const authenticate = async (data) => {
   }
 };
 
-const mockAuthenticate = async () => {
-  try {
-    const mockUser = {
-      id: parseInt(Math.random().toString().slice(0, 19)),
-      name: {
-        givenName: 'mock',
-        familyName: 'user',
-      },
-      emails: [{value: 'mockuser@gmail.com'}],
-    };
-    return await authenticate(mockUser);
-  } catch (error) {
-    console.error('Error while executing mockAuthenticate', error);
-  }
-};
-
-
 const createNewAccountAndSession = async (userSessionID, newAccount) => {
   try {
     const user = await db.Users.create({
       firstname: newAccount.firstName,
-      lastInitial: newAccount.lastInitial,
-      email1: newAccount.email,
+      lastinitial: newAccount.lastInitial,
+      email1: newAccount.email1,
     });
-    console.warn(user);
     const newSession = await db.Session.create({
-      userSessionID: userSessionID,
+      usersessionid: userSessionID,
       userid: user.userid,
     });
     return newSession;
@@ -76,33 +56,30 @@ const createNewAccountAndSession = async (userSessionID, newAccount) => {
   }
 };
 
-const getSession = (token) => {
-  // If the token doesn't exist, it's a guest, so create a new account!
-  if (!token) {
-    return db.Users
-        .create({})
-        .then((user) => {
-          return db.Session
-              .create({
-                userid: user.userid,
-              })
-              .then((session) => {
-                return {user, token: session.usersessionid};
-              });
-        });
-  }
 
-  // Find the user's details
-  return db.Session
-      .findOne(token)
-      .then((session) => {
-        return db.Users.findByPk(session.userid).then((user) => {
-          return {user, token};
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+const getSession = async (token) => {
+  try {
+    if (!token) {
+      // Creates a brand new user and session
+      const user = await db.Users.create({});
+      const session = await db.Session.create({userid: user.userid});
+      return {user, token: session.usersessionid};
+    }
+
+    // If a token exists, check for an existing session and user
+    const session = await db.Session.findByPk(token);
+    if (!session) {
+      throw new Error('Invalid session token');
+    }
+    const user = await db.Users.findByPk(session.userid);
+    if (!user) {
+      throw new Error('User not found');
+    }
+    return {user, token};
+  } catch (error) {
+    console.error('Error getting session:', error);
+    throw error;
+  }
 };
 
 const getUserEnrolledGroups = (userid) => {
@@ -181,7 +158,6 @@ module.exports = {
   getUserToDoLabs,
   getUserAssignedLabs,
   authenticate,
-  mockAuthenticate,
   updateGuestUserId,
 };
 

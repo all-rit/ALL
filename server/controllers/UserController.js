@@ -49,34 +49,21 @@ const authenticateRedirect = passport.authenticate('google', {
   failureRedirect: '/',
 });
 
-const mockAuthenticate = async (req, res) => {
-  try {
-    const data = await UserService.mockAuthenticate();
-    if (data) {
-      req.session.token = data.sessionID;
-      await UserService.updateGuestUserId(data.user.userid, req.session.token);
-      res.redirect(req.session.url || '/');
-    } else {
-      res.status(500).send('Mock authentication failed');
-    }
-  } catch (error) {
-    console.error(
-        'Error occurred in mockAuthenticate of UserController', error);
-    res.status(500).send('Internal Server Error');
-  }
-};
-
 const authenticateCallback = async (req, res) => {
-  if (process.env.ENVIRONMENT === 'production') {
-    try {
-      const data = await UserService.authenticate(req.user.profile);
-      req.session.token = data.usersessionid;
-      await UserService.updateGuestUserId(data.userid, req.session.token);
-      res.redirect(req.session.url);
-    } catch (error) {
-      console.error('Error while executing authenticateCallback', error);
-      res.redirect('/');
-    }
+  try {
+    const data = await UserService.authenticate(req.user.profile);
+    req.session.token = data.usersessionid;
+    await UserService.updateGuestUserId(data.userid, req.session.token);
+
+    // Instead of redirecting, send a response
+    res.json({
+      message: 'Authentication successful',
+      token: req.session.token,
+      data: data,
+    });
+  } catch (error) {
+    console.error('Error while executing authenticateCallback', error);
+    res.status(500).json({error: error.message});
   }
 };
 
@@ -100,7 +87,6 @@ module.exports = {
   getUser,
   logout,
   authenticate,
-  mockAuthenticate,
   authenticateRedirect,
   authenticateCallback,
   getUserEnrolledGroups,
