@@ -13,6 +13,7 @@ const GroupAssignedLabs = (props) => {
     groupName,
     setInstrGroupsUpdated,
   } = props;
+  console.warn(assignedLabs);
   return (
     <>
       {assignedLabs.length === 0 ? (

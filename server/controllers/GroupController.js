@@ -1,22 +1,34 @@
 /* eslint-disable max-len */
 const GroupService = require('../services/GroupService');
 
-const getGroupLabs = (req, res) => {
-  GroupService.getGroupLabs(req.params.groupID).then((records) => {
-    res.json(records);
-  });
+const getGroupLabs = async (req, res) => {
+  try {
+    const data = await GroupService.getGroupLabs(req.params.groupID);
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('Error while fetching group labs', error);
+    res.status(500).json({message: error.message});
+  }
 };
 
-const getGroupEnrolledStudents = (req, res) => {
-  GroupService.getGroupEnrolledStudents(req.params.groupID).then((records) => {
-    res.json(records);
-  });
+const getGroupEnrolledStudents = async (req, res) => {
+  try {
+    const data = await GroupService.getGroupEnrolledStudents(req.params.groupID);
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('Error while getting students group', error);
+    res.status(500).json({message: error.message});
+  }
 };
 
-const getCompletedGroupLabs = (req, res) => {
-  GroupService.getCompletedGroupLabs(req.params.userID, req.params.groupID).then((records) => {
-    res.json(records);
-  });
+const getCompletedGroupLabs = async (req, res) => {
+  try {
+    const data = await GroupService.getCompletedGroupLabs(req.params.userID, req.params.groupID);
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('Error while getting completed group labs', error);
+    res.status(500).json({message: error.message});
+  }
 };
 
 const enrollUserInGroup = (req, res) => {
@@ -49,23 +61,30 @@ const unenrollUserFromGroup = (req, res) => {
   });
 };
 
-const createGroup = (req, res) => {
-  GroupService.createGroup(
-      req.body.userID,
-      req.body.groupName,
-  ).then((data) => {
-    console.warn(data);
-    res.json(data);
-  });
+const createGroup = async (req, res) => {
+  try {
+    await GroupService.createGroup(
+        req.body.userID,
+        req.body.groupName,
+    );
+    res.status(200);
+  } catch (error) {
+    console.error('Error while creating group', error);
+    res.status(500).json({error: error.message});
+  }
 };
 
-const addGroupLab = (req, res) => {
-  GroupService.addGroupLab(
-      req.body.groupID,
-      req.body.labID,
-  ).then((data) => {
-    res.sendStatus(200);
-  });
+const addGroupLab = async (req, res) => {
+  try {
+    await GroupService.addGroupLab(
+        req.body.groupID,
+        req.body.labID,
+    );
+    res.status(200);
+  } catch (error) {
+    console.error('Error while adding lab to group', error);
+    res.status(500).json({error: error.message});
+  }
 };
 
 const deleteGroupLab = (req, res) => {

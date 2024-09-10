@@ -2,7 +2,7 @@
 const db = require('../database');
 
 const getGroupLabs = (groupid) => {
-  return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."isActive"=true', {
+  return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID)', {
     replacements: {groupID: groupid},
     type: db.sequelize.QueryTypes.SELECT,
     raw: true,

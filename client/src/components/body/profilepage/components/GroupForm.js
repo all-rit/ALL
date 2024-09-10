@@ -90,12 +90,11 @@ const GroupForm = (props) => {
           });
         }
         setInstrGroupsUpdated(true);
+        toggle();
       }
     } catch (error) {
       console.error("Error creating or updating group:", error);
     }
-
-    toggle();
   };
 
   return (
