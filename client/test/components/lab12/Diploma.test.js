@@ -1,62 +1,84 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Diploma from "../../../src/components/exercise/lab12/components/Diploma";
+import ExerciseStateContext from "src/components/exercise/lab12/Lab12Context";
 
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
 
 describe("Diploma Tests", () => {
   test("collegeName Test", async () => {
-    const collegeName = "ALL University";
-    render(<Diploma collegeName={collegeName} />)
+    const firstName = "Owen";
+    const lastName = "Luts";
+    const preferredName = "Jay";
+    const college = "RIT";
+    const major = "CS";
+    const gradTerm = "Spring 2024";
+
+    render(
+      <ExerciseStateContext.Provider
+        value={{ firstName, lastName, preferredName, college, major, gradTerm }}
+      >
+        <Diploma />
+      </ExerciseStateContext.Provider>,
+    );
 
     // ACT
     const component = await screen.findByTestId("collegeName");
 
-    // ASSERT 
-    expect(component).toHaveTextContent("Upon the recommendation of the President and Faculty of the " + collegeName + " and by the Board of Trustees has conferred upon");
+    // ASSERT
+    expect(component).toHaveTextContent(
+      "Upon the recommendation of the President and Faculty of the " +
+        college +
+        " and by the Board of Trustees has conferred upon",
+    );
   });
 
-  test("First, Middle, Last name Test", async () => {
+  test("First and Last Name Test", async () => {
     const firstName = "Owen";
-    const middleName = "Daniel";
     const lastName = "Luts";
 
     render(
-      <Diploma
-        firstName={firstName}
-        middleName={middleName}
-        lastName={lastName}
-      />
+      <ExerciseStateContext.Provider value={{ firstName, lastName }}>
+        <Diploma />
+      </ExerciseStateContext.Provider>,
     );
 
     // ACT
     const component = await screen.findByTestId("names");
 
     // ASSERT
-    expect(component).toHaveTextContent(firstName + " " + middleName + " " + lastName);
+    expect(component).toHaveTextContent(firstName + " " + lastName);
   });
 
   test("Degree Test", async () => {
-    const degree = "Software Engineering";
+    const major = "Software Engineering";
 
-    render(<Diploma degree={degree} />)
+    render(
+      <ExerciseStateContext.Provider value={{ major }}>
+        <Diploma />
+      </ExerciseStateContext.Provider>,
+    );
 
     // ACT
     const component = await screen.findByTestId("degree");
 
     // ASSERT
-    expect(component).toHaveTextContent(degree);
+    expect(component).toHaveTextContent(major);
   });
 
   test("Date Test", async () => {
-    const date = "September 21st";
+    const gradTerm = "September 21st";
 
-    render(<Diploma date={date} />);
+    render(
+      <ExerciseStateContext.Provider value={{ gradTerm }}>
+        <Diploma />
+      </ExerciseStateContext.Provider>,
+    );
 
     // ACT
     const component = await screen.findByTestId("date");
 
     // ASSERT
-    expect(component).toHaveTextContent("Earned on this " + date);
-  });  
+    expect(component).toHaveTextContent("Earned on this " + gradTerm);
+  });
 });

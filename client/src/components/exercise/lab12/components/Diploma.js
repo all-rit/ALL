@@ -1,18 +1,24 @@
-import React from "react";
+import { React, useEffect, useContext, useState } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import SealImage from "../../../../assets/images/lab12/diploma_seal.png";
 import "../../../../assets/stylesheets/components/Diploma.css";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import useMainStateContext from "src/reducers/MainContext";
+import ExerciseStateContext from "../Lab12Context";
 
-const Diploma = (props) => {
-  const {
-    collegeName = "",
-    firstName = "",
-    middleName = "",
-    lastName = "",
-    degree = "",
-    date = "",
-  } = props;
+const Diploma = () => {
+  const { actions } = useMainStateContext();
+
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
+
+  const { firstName, lastName, preferredName, college, major, gradTerm } =
+    useContext(ExerciseStateContext);
+
+  // will need to update
+  const [isRepairComplete] = useState(false);
 
   const handleContinue = () => {
     navigate(`/Lab12/Exercise/AlumniNewsletter`);
@@ -29,14 +35,14 @@ const Diploma = (props) => {
           data-testid="collegeName"
         >
           Upon the recommendation of the President and Faculty of the{" "}
-          <span className="tw-font-diploma tw-leading-none">{collegeName}</span>{" "}
-          and by the Board of Trustees has conferred upon
+          <span className="tw-font-diploma tw-leading-none">{college}</span> and
+          by the Board of Trustees has conferred upon
         </p>
         <h2
           className="tw-font-bold tw-text-5xl tw-leading-none tw-pb-4 tw-pt-4"
           data-testid="names"
         >
-          {firstName} {middleName} {lastName}
+          {isRepairComplete ? preferredName : firstName} {lastName}
         </h2>
         <p className="fancy-text tw-text-3xl tw-leading-none">
           for the degree of
@@ -45,7 +51,7 @@ const Diploma = (props) => {
           className="tw-font-diploma tw-text-5xl tw-leading-none tw-pb-4 tw-pt-4"
           data-testid="degree"
         >
-          {degree}
+          {major}
         </h3>
         <p className="fancy-text tw-text-3xl tw-leading-none">
           In testimony, thereof, the Board of Trustees has granted this diploma
@@ -55,7 +61,7 @@ const Diploma = (props) => {
           className="fancy-text tw-text-3xl tw-pb-8 tw-leading-normal"
           data-testid="date"
         >
-          Earned on this {date}
+          Earned on this {gradTerm}
         </p>
         <div className="tw-flex tw-row tw-justify-evenly tw-items-center tw-w-full">
           <hr className="tw-flex-none tw-flex-grow-0 tw-w-1/5 tw-h-2 tw-border-2" />
@@ -68,7 +74,7 @@ const Diploma = (props) => {
         </div>
       </div>
       <div className="playthrough__sentence">
-        Click the &quot;Continue to Alumni Newsletter&quot; button.
+        Click the &quot;Continue to Alumni Newsletter&quot; button to continue.
       </div>
       <div className="tw-flex tw-justify-evenly">
         <button
@@ -76,7 +82,7 @@ const Diploma = (props) => {
           onClick={handleContinue}
           key="start"
         >
-          Continue to Newsletter
+          Continue to Alumni Newsletter
         </button>
       </div>
     </div>

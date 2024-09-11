@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Router } from "@reach/router";
 // lab imported dependencies;
 import { EXERCISE_STATES } from "../../../constants/lab12";
-import GameStateContext from "./Lab12Context";
+import ExerciseStateContext from "./Lab12Context";
 import GradApplication from "./components/GradApplication.js";
 import Diploma from "./components/Diploma";
 import AlumniNewsletter from "./pages/AlumniNewsletter";
@@ -22,9 +22,36 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [preferredName, setPreferredName] = useState("");
+  const [pronouns, setPronouns] = useState("");
+  const [college, setCollege] = useState("");
+  const [major, setMajor] = useState("");
+  const [gradTerm, setGradTerm] = useState("");
+
   return (
     <div className="bottomSpace">
-      <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
+      <ExerciseStateContext.Provider
+        value={{
+          exerciseState,
+          setExerciseState,
+          firstName,
+          setFirstName,
+          lastName,
+          setLastName,
+          preferredName,
+          setPreferredName,
+          pronouns,
+          setPronouns,
+          college,
+          setCollege,
+          major,
+          setMajor,
+          gradTerm,
+          setGradTerm,
+        }}
+      >
         <Router className="app">
           <ExerciseIntro default path="/" />
           <GradApplication path="/GraduationApplication" />
@@ -38,7 +65,7 @@ const Main = () => {
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />
         </Router>
-      </GameStateContext.Provider>
+      </ExerciseStateContext.Provider>
     </div>
   );
 };
