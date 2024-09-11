@@ -91,24 +91,6 @@ describe("Test GradApplication Component", () => {
       </ExerciseStateContext.Provider>,
     );
 
-    //Fill in input fields with invalid data
-    //fireEvent allows us to simulate user interactions with the application that change its state
-    fireEvent.change(screen.getByPlaceholderText("Ex: Jane"), {
-      target: { value: "Jane123" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Ex: Smith"), {
-      target: { value: "Smith123" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Ex: RIT"), {
-      target: { value: "RIT123" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Ex: CS"), {
-      target: { value: "CS123" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Ex: Spring 2024"), {
-      target: { value: "Spring 2024!" },
-    });
-
     fireEvent.click(screen.getByText("Submit Application"));
 
     //Check if error messages are displayed
@@ -147,22 +129,6 @@ describe("Test GradApplication Component", () => {
       </ExerciseStateContext.Provider>,
     );
 
-    //Fill in input fields with empty data
-    fireEvent.change(screen.getByPlaceholderText("Ex: Jane"), {
-      target: { value: " " },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Ex: Smith"), {
-      target: { value: " " },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Ex: RIT"), {
-      target: { value: " " },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Ex: CS"), {
-      target: { value: " " },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Ex: Spring 2024"), {
-      target: { value: " " },
-    });
     fireEvent.click(screen.getByText("Submit Application"));
     //Check if error messages are displayed
     const error2Messages = screen.getAllByLabelText("Error: Input required.");
