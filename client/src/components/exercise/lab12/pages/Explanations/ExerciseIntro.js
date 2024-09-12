@@ -28,7 +28,7 @@ const ExerciseIntro = () => {
         <p className="playthrough__sentence">
           In this exercise, you will enter your personal information in a short
           form. This information will appear on your diploma as well as an
-          aulmni newsletter. Then, we will see how to improve the form.
+          alumni newsletter. Then, we will see how to improve the form.
         </p>
       </div>
       <div className="playthrough__sentence">
