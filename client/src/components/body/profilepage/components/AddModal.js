@@ -83,13 +83,14 @@ const AddModal = (props) => {
     case "update_grp_lab":
       return (
         <>
-          <button
-            className="btn btn-second groups__labs__btn"
+          <Button
+            color="secondary"
+            className="m-3"
             aria-label="add"
             onClick={toggleModal}
           >
             Update Group
-          </button>
+          </Button>
           <Modal
             isOpen={modal}
             toggle={toggleModal}

@@ -15,7 +15,6 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import DeleteModal from "./DeleteModal";
 
 const GroupForm = (props) => {
   const {
@@ -130,13 +129,6 @@ const GroupForm = (props) => {
         <Button color="primary" type="submit">
           {addMode === "add_instr_grp" ? "Create Group" : "Update Group"}
         </Button>
-        {addMode === "update_grp_lab" && (
-          <DeleteModal
-            mainToggle={toggle}
-            groupID={groupID}
-            setInstrGroupsUpdated={setInstrGroupsUpdated}
-          />
-        )}
         <Button color="secondary" onClick={toggle}>
           Cancel
         </Button>
