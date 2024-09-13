@@ -2,7 +2,7 @@
 const db = require('../database');
 
 const getGroupLabs = (groupid) => {
-  return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID)', {
+  return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."isActive"=true', {
     replacements: {groupID: groupid},
     type: db.sequelize.QueryTypes.SELECT,
     raw: true,
@@ -94,27 +94,30 @@ const unenrollUserFromGroup = (data) => {
   return Promise.resolve();
 };
 
-const createGroup = (userID, groupName) => {
-  return db.Groups.create({
-    instructorUserID: userID,
-    groupName: groupName,
-    createdDate: Date.now(),
-    isActive: true,
-    code: Math.random().toString().slice(0, 6),
-  }).then((data) => {
-    console.log(data);
-    return {'groupID': data.id};
-  }).catch(() => console.log('Error encountered'));
+const createGroup = async (userID, groupName) => {
+  try {
+    const data = await db.Groups.create({
+      instructorUserID: userID,
+      groupName: groupName,
+      createdDate: Date.now(),
+      isActive: true,
+      code: Math.random().toString().slice(1, 7),
+    });
+    return data;
+  } catch (error) {
+    console.error('Error while creating group', error);
+  }
 };
 
-const addGroupLab = (groupID, labID) => {
-  return db.GroupLabs.findOne({
-    where:
-            {
-              groupID: groupID,
-              labID: labID,
-            }},
-  ).then((groupLab) => {
+const addGroupLab = async (groupID, labID) => {
+  try {
+    const groupLab = await db.GroupLabs.findOne({
+      where:
+              {
+                groupID: groupID,
+                labID: labID,
+              },
+    });
     if (groupLab !== null) {
       groupLab.isActive = true;
       groupLab.save();
@@ -122,11 +125,11 @@ const addGroupLab = (groupID, labID) => {
       return db.GroupLabs.create({
         groupID: groupID,
         labID: labID,
-      }).then((data) => {
-        console.log(data);
-      }).catch(() => console.log('Error encountered'));
+      });
     }
-  });
+  } catch (error) {
+    console.log('Error adding group lab', error);
+  };
 };
 
 const deleteGroupLab = (groupID, labID) => {

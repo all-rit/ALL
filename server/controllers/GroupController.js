@@ -63,11 +63,11 @@ const unenrollUserFromGroup = (req, res) => {
 
 const createGroup = async (req, res) => {
   try {
-    await GroupService.createGroup(
+    const data = await GroupService.createGroup(
         req.body.userID,
         req.body.groupName,
     );
-    res.status(200);
+    res.status(200).json(data);
   } catch (error) {
     console.error('Error while creating group', error);
     res.status(500).json({error: error.message});
@@ -87,29 +87,40 @@ const addGroupLab = async (req, res) => {
   }
 };
 
-const deleteGroupLab = (req, res) => {
-  GroupService.deleteGroupLab(
-      req.body.groupID,
-      req.body.labID,
-  ).then((data) => {
-    res.sendStatus(200);
-  });
-};
-const deleteGroup = (req, res) => {
-  GroupService.deleteGroup(
-      req.body.groupID,
-  ).then((data) => {
-    res.sendStatus(200);
-  });
+const deleteGroupLab = async (req, res) => {
+  try {
+    const data = await GroupService.deleteGroupLab(
+        req.body.groupID,
+        req.body.labID,
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
 };
 
-const updateGroup = (req, res)=>{
-  GroupService.updateGroup(
-      req.body.groupID,
-      req.body.groupName,
-  ).then((data) =>{
-    res.sendStatus(200);
-  });
+const deleteGroup = async (req, res) => {
+  try {
+    const data = await GroupService.deleteGroup(
+        req.body.groupID,
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('Error while deleting group:', error);
+    res.status(500).json({error: error.message});
+  }
+};
+
+const updateGroup = async (req, res) => {
+  try {
+    const data = await GroupService.updateGroup(
+        req.body.groupID,
+        req.body.groupName,
+    );
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
 };
 
 module.exports = {

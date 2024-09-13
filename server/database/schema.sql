@@ -9,11 +9,22 @@ create table imagine22
         primary key (id)
 );
 
+create table enrollment
+(
+    id              serial,
+    "userID"        integer,
+    "groupID"       integer,
+    "enrolledDate"  DATE,
+    "isActive"      boolean,
+    primary key (id)
+);
+
 create table group_labs
 (
-    id        serial,
-    "groupID" integer,
-    "labID"   integer,
+    id         serial,
+    "groupID"  integer,
+    "labID"    integer,
+    "isActive" boolean,
     primary key (id)
 );
 
