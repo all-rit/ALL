@@ -113,13 +113,13 @@ const deleteGroup = async (req, res) => {
 
 const updateGroup = async (req, res) => {
   try {
-    const data = await GroupService.updateGroup(
+    await GroupService.updateGroup(
         req.body.groupID,
         req.body.groupName,
     );
-    res.status(200).json(data);
+    res.status(200).send('Group name successfully updated!');
   } catch (error) {
-    console.error('Error in updateGroup controller:', error);
+    console.error('Error in updating groupName:', error);
     res.status(500).json({error: error.message});
   }
 };

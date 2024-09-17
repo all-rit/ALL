@@ -156,16 +156,18 @@ const deleteGroup = (groupID) => {
 };
 
 
-const updateGroup = (groupID, groupName) => {
-  const update = db.Groups.update(
-      {groupName: groupName},
-      {
-        where: {
-          groupID: groupID,
-        },
-      });
-  console.log('Group name updated', update);
-  return update;
+const updateGroup = async (groupID, groupName) => {
+  try {
+    return await db.Groups.update(
+        {groupName: groupName},
+        {
+          where: {
+            id: groupID,
+          },
+        });
+  } catch (error) {
+    console.warn('Error updating lab name: ', error);
+  }
 };
 
 module.exports = {

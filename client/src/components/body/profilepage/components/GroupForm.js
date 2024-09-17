@@ -74,9 +74,8 @@ const GroupForm = (props) => {
 
         await Promise.all(addLabPromises);
       } else if (addMode === "update_grp_lab" && groupID) {
-        if (formData.get("groupName") !== groupName) {
+        if (formData.get("groupName") !== props.groupName) {
           await GroupService.updateGroup(groupID, formData.get("groupName"));
-          console.log(`Group ${groupID} name updated`);
         }
 
         if (selectedLabs.length >= 0) {
