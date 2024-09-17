@@ -76,11 +76,11 @@ const createGroup = async (req, res) => {
 
 const addGroupLab = async (req, res) => {
   try {
-    await GroupService.addGroupLab(
+    const lab = await GroupService.addGroupLab(
         req.body.groupID,
         req.body.labID,
     );
-    res.status(200);
+    res.status(200).json(lab);
   } catch (error) {
     console.error('Error while adding lab to group', error);
     res.status(500).json({error: error.message});
@@ -89,11 +89,11 @@ const addGroupLab = async (req, res) => {
 
 const deleteGroupLab = async (req, res) => {
   try {
-    const data = await GroupService.deleteGroupLab(
+    await GroupService.deleteGroupLab(
         req.body.groupID,
         req.body.labID,
     );
-    res.status(200).json(data);
+    res.status(200).send('Lab successfully deleted!');
   } catch (error) {
     res.status(500).json({error: error.message});
   }
@@ -119,6 +119,7 @@ const updateGroup = async (req, res) => {
     );
     res.status(200).json(data);
   } catch (error) {
+    console.error('Error in updateGroup controller:', error);
     res.status(500).json({error: error.message});
   }
 };

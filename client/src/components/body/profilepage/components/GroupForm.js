@@ -33,11 +33,11 @@ const GroupForm = (props) => {
     LabService.getAllLabs().then((data) => {
       setLabs(data);
       const initialCheckedState = {};
-      data.forEach((lab) => {
-        initialCheckedState[lab.id] = assignedLabs
-          ? assignedLabs.includes(lab.labID)
-          : false;
-      });
+      if (assignedLabs) {
+        assignedLabs.map((lab) => {
+          initialCheckedState[lab.labID] = true;
+        });
+      }
       setCheckedLabs(initialCheckedState);
     });
   }, [assignedLabs]);
@@ -52,47 +52,50 @@ const GroupForm = (props) => {
   const onFormSubmit = async (e) => {
     e.preventDefault();
 
-    const selectedLabs = [];
-    for (const [labID, isChecked] of Object.entries(checkedLabs)) {
-      if (isChecked) {
-        selectedLabs.push(parseInt(labID));
-      }
-    }
-
-    const formData = new FormData(e.target);
-    const groupName = formData.get("groupName") || "Default Group Name";
-    console.warn(await GroupService.createGroup(user.userid, groupName));
     try {
+      const formData = new FormData(e.target);
+      const groupName = formData.get("groupName") || "Default Group Name";
+
+      let selectedLabs = Object.keys(checkedLabs)
+        .filter((labID) => checkedLabs[labID])
+        .map((labID) => parseInt(labID));
+
       if (addMode === "add_instr_grp") {
-        await GroupService.createGroup(user.userid, groupName);
-        const addLabPromises = selectedLabs.map((labID) =>
-          GroupService.addGroupLab(groupID, labID),
-        );
+        const newGroup = await GroupService.createGroup(user.userid, groupName);
+        console.log("New group created:", newGroup);
+
+        const addLabPromises = selectedLabs.map((labID) => {
+          GroupService.addGroupLab(newGroup.id, labID);
+        });
+
         await Promise.all(addLabPromises);
-        setInstrGroupsUpdated(true);
       } else if (addMode === "update_grp_lab" && groupID) {
-        if (formData.get("groupName")) {
+        if (formData.get("groupName") !== groupName) {
           await GroupService.updateGroup(groupID, formData.get("groupName"));
+          console.log(`Group ${groupID} name updated`);
         }
-        if (assignedLabs.length >= 0 || assignedLabs !== undefined) {
-          assignedLabs.forEach((labID) => {
-            if (!selectedLabs.includes(labID)) {
-              GroupService.deleteGroupLab(groupID, labID);
-            }
-          });
-        }
+
         if (selectedLabs.length >= 0) {
-          selectedLabs.forEach((labID) => {
-            if (!assignedLabs.includes(labID)) {
-              GroupService.addGroupLab(groupID, labID);
+          for (const lab in checkedLabs) {
+            if (!assignedLabs.includes(lab.labID)) {
+              await GroupService.addGroupLab(groupID, `${lab}`);
+            }
+          }
+        }
+
+        if (assignedLabs.length >= 0 || assignedLabs !== undefined) {
+          assignedLabs.forEach((lab) => {
+            if (!selectedLabs.includes(lab.labID)) {
+              GroupService.deleteGroupLab(groupID, lab.labID);
             }
           });
         }
+
         setInstrGroupsUpdated(true);
       }
       props.toggle();
     } catch (error) {
-      console.error("Error creating or updating group:", error);
+      console.error("Error in form submission:", error);
     }
   };
 
@@ -117,7 +120,7 @@ const GroupForm = (props) => {
                 type="checkbox"
                 name={lab.id}
                 id={"lab" + lab.id}
-                checked={checkedLabs[lab.id]}
+                checked={checkedLabs[lab.id] || false}
                 onChange={() => toggleCheck(lab.id)}
               />
               <Label for={"lab" + lab.id}>{lab.labShortName}</Label>

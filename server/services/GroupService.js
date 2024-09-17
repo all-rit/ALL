@@ -111,34 +111,42 @@ const createGroup = async (userID, groupName) => {
 
 const addGroupLab = async (groupID, labID) => {
   try {
-    const groupLab = await db.GroupLabs.findOne({
-      where:
-              {
-                groupID: groupID,
-                labID: labID,
-              },
-    });
-    if (groupLab !== null) {
-      groupLab.isActive = true;
-      groupLab.save();
-    } else {
-      return db.GroupLabs.create({
+    const [groupLab, created] = await db.GroupLabs.findOrCreate({
+      where: {
         groupID: groupID,
         labID: labID,
-      });
+      },
+      defaults: {
+        isActive: true,
+      },
+    });
+
+    if (!created && !groupLab.isActive) {
+      groupLab.isActive = true;
+      await groupLab.save();
     }
+
+    return groupLab;
   } catch (error) {
-    console.log('Error adding group lab', error);
-  };
+    console.error('Error adding group lab', error);
+  }
 };
 
-const deleteGroupLab = (groupID, labID) => {
-  return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."labID"=(:labID)', {
-    replacements: {groupID: groupID, labID: labID},
-    type: db.sequelize.QueryTypes.UPDATE,
-    raw: true,
-  });
+const deleteGroupLab = async (groupID, labID) => {
+  try {
+    return await db.GroupLabs.update(
+        {isActive: false},
+        {
+          where: {
+            groupID: groupID,
+            labID: labID,
+          },
+        });
+  } catch (error) {
+    console.error('Error occurred while deleting lab: ', error);
+  }
 };
+
 const deleteGroup = (groupID) => {
   return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID); UPDATE "groups" SET "isActive"=false WHERE "groups"."id"=(:groupID); UPDATE "enrollment" SET "isActive"=false WHERE "enrollment"."groupID" =(:groupID);  ', {
     replacements: {groupID: groupID},
@@ -148,12 +156,16 @@ const deleteGroup = (groupID) => {
 };
 
 
-const updateGroup = (groupID, groupName) =>{
-  return db.sequelize.query('UPDATE "groups" SET "groupName" = (:groupName) WHERE "id" = (:groupID)', {
-    replacements: {groupID: groupID, groupName: groupName},
-    type: db.sequelize.QueryTypes.UPDATE,
-    raw: true,
-  });
+const updateGroup = (groupID, groupName) => {
+  const update = db.Groups.update(
+      {groupName: groupName},
+      {
+        where: {
+          groupID: groupID,
+        },
+      });
+  console.log('Group name updated', update);
+  return update;
 };
 
 module.exports = {
