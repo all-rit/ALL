@@ -43,6 +43,7 @@ const GroupForm = (props) => {
   }, [assignedLabs]);
 
   useEffect(() => {
+    console.log(crypto.randomUUID().toUpperCase().slice(1, 7));
     console.log(checkedLabs);
   }, [checkedLabs]);
 

@@ -101,7 +101,7 @@ const createGroup = async (userID, groupName) => {
       groupName: groupName,
       createdDate: Date.now(),
       isActive: true,
-      code: Math.random().toString().slice(1, 7),
+      code: crypto.randomUUID().toUpperCase().slice(1, 7),
     });
     return data;
   } catch (error) {
