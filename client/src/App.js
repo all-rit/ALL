@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactGA from "react-ga";
 
 import { default as About } from "./components/body/About";
@@ -74,6 +74,8 @@ const App = () => {
   }, []);
   const lab = state.main.lab;
   const body = state.main.body;
+  const isImagine = state.main.isImagine;
+
   const [quizCompleted, setQuizCompleted] = useState(false);
 
   // look into index.js in constants
@@ -93,7 +95,12 @@ const App = () => {
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
 
-              <Imagine path="/Imagine/*" user={state.main.user} />
+              <Imagine
+                path={"/Imagine/*"}
+                user={state.main.user}
+                isImagine={isImagine}
+                actions={actions}
+              />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
               <About
@@ -106,10 +113,15 @@ const App = () => {
                 path={`/Lab${lab}/Reading`}
                 user={state.main.user}
                 labID={lab}
+                isImagine={isImagine}
               />
 
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
-              <ExerciseLab2 path="/Lab2/Exercise" user={state.main.user} />
+              <ExerciseLab2
+                path="/Lab2/Exercise"
+                user={state.main.user}
+                isImagine={isImagine}
+              />
               <ExerciseLab3 path="/Lab3/Exercise/*" user={state.main.user} />
               <ExerciseLab4 path="/Lab4/Exercise/*" user={state.main.user} />
               <ExerciseLab5 path="/Lab5/Exercise/*" user={state.main.user} />
@@ -125,7 +137,6 @@ const App = () => {
                 user={state.main.user}
                 labID={lab}
               />
-
               <Quiz
                 path={`/Lab${lab}/Quiz`}
                 labId={lab}
@@ -142,6 +153,7 @@ const App = () => {
           context={context}
           quizCompleted={quizCompleted}
           setQuizCompleted={setQuizCompleted}
+          isImagine={isImagine}
         />
       </div>
     </>

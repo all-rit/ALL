@@ -48,7 +48,10 @@ const Circle = ({ color, clickable, onClick }) => {
   // Controls the circles the user doesn't click (instruction circles)
   else {
     return (
-      <span className="circle" style={{ backgroundColor: `${color}` }}></span>
+      <span
+        className="circle tw-relative"
+        style={{ backgroundColor: `${color}` }}
+      ></span>
     );
   }
 };

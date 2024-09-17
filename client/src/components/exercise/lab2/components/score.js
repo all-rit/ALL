@@ -17,7 +17,7 @@ const Score = ({
   exerciseMode,
 }) => {
   return (
-    <div className="scoreLine">
+    <div className="scoreLine tw-rounded-b-4xl tw-p-5 tw-mt-5">
       <p className="scoreElement">Score: {score}</p>
       <p className="scoreElement">Number Correct From Click: {rightClick}</p>
       <p className="scoreElement">Number Incorrect From Click: {wrongClick}</p>

@@ -25,14 +25,14 @@ const StartExercise = ({
     <div>
       <div className="center fourthTitle">
         {exercisesPlayed === 0 ? (
-          <p style={{ marginBottom: "10px", marginTop: "10px" }}>
+          <p className={"tw-p-5 tw-mt-3 tw-text-2xl"}>
             Click the button to start the exercise!
           </p>
         ) : (
           <div>
             {exercisesPlayed === 1 ? (
               <div>
-                <p style={{ marginBottom: "10px", marginTop: "10px" }}>
+                <p className={"tw-p-5 tw-m-3"}>
                   You will now conduct the same exercise of clicking on the
                   correct colored circle, but this time with a vision deficiency
                   emulation feature turned on. You will now experience the
@@ -44,7 +44,7 @@ const StartExercise = ({
               <div>
                 {exercisesPlayed === 2 ? (
                   <div>
-                    <p style={{ marginBottom: "10px", marginTop: "10px" }}>
+                    <p className={"tw-p-5"}>
                       Click the button to restart the exercise with the same
                       color vision deficiency!
                     </p>

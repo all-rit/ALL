@@ -50,13 +50,14 @@ create table imagine
     primary key (id)
 );
 
+create type enum_imagine23 as enum ('experiential','discomfortCountPOC','discomfortCountNonPOC','control');
+
 create table imagine23
 (
     id                           serial,
     userid                       text,
-    "experientialMain"           json,
-    "experientialProtanopia"     json,
-    "discomfortCount"            json,
+    section                      enum_imagine23,
+    study                        json,
     "preSurvey"                  json,
     "postSurvey"                 json,
     "readMoreCount"              integer,
