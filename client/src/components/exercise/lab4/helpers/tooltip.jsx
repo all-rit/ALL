@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Tooltip } from "reactstrap";
 
-const Toolitip = (tab) => {
+const TooltipWithTab = (tab) => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggle = () => setTooltipOpen(!tooltipOpen);
@@ -32,4 +32,4 @@ const Toolitip = (tab) => {
   );
 };
 
-export default Toolitip;
+export default TooltipWithTab;

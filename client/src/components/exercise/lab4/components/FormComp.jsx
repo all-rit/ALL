@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { PageService } from "../../../../services/PageService";
 import { navigate } from "@reach/router";
 import { LAB_ID } from "../../../../constants/lab4";
+import TooltipWithTab from "../helpers/tooltip";
 
 const FormComp = (props) => {
   const [state, setState] = useState({
@@ -106,7 +107,10 @@ const FormComp = (props) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="color">Favorite Color</Label>
+            <Label for="color">
+              Favorite Color{" "}
+              {props.showTab && <TooltipWithTab tab={props.tab} />}
+            </Label>
             <Input
               type="text"
               name="color"
@@ -144,7 +148,7 @@ const FormComp = (props) => {
             onClick={(e) => form_sub(e)}
             className="formButtonSubmit"
           />
-          {props.rule && state.submitted && (
+          {state.show && (
             <Input
               type="submit"
               value="Give Up"
@@ -164,6 +168,8 @@ FormComp.propTypes = {
   url: PropTypes.string,
   rule: PropTypes.bool,
   parentCallback: PropTypes.func,
+  tab: PropTypes.string,
+  showTab: PropTypes.bool,
 };
 
 export default FormComp;

@@ -39,6 +39,7 @@ const FormHintAccessible = () => {
       <FormComp
         url={url}
         rule={true}
+        showTab={true}
         tab={tab}
         parentCallback={callbackFunction}
         name={name}
