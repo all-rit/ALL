@@ -42,6 +42,10 @@ const GroupForm = (props) => {
     });
   }, [assignedLabs]);
 
+  useEffect(() => {
+    console.log(checkedLabs);
+  }, [checkedLabs]);
+
   const toggleCheck = (labID) => {
     setCheckedLabs((prevCheckedLabs) => ({
       ...prevCheckedLabs,
@@ -77,22 +81,28 @@ const GroupForm = (props) => {
 
         if (selectedLabs.length >= 0) {
           for (const lab in checkedLabs) {
-            if (!assignedLabs.includes(lab.labID)) {
+            if (Array.isArray(assignedLabs) && assignedLabs.length !== 0) {
+              if (
+                !assignedLabs.includes(lab.labID) ||
+                assignedLabs.length === 0
+              ) {
+                await GroupService.addGroupLab(groupID, `${lab}`);
+              }
+            } else {
               await GroupService.addGroupLab(groupID, `${lab}`);
             }
           }
         }
 
-        if (assignedLabs.length >= 0 || assignedLabs !== undefined) {
+        if (Array.isArray(assignedLabs) && assignedLabs.length >= 0) {
           assignedLabs.forEach((lab) => {
             if (!selectedLabs.includes(lab.labID)) {
               GroupService.deleteGroupLab(groupID, lab.labID);
             }
           });
         }
-
-        setInstrGroupsUpdated(true);
       }
+      setInstrGroupsUpdated(true);
       props.toggle();
     } catch (error) {
       console.error("Error in form submission:", error);
