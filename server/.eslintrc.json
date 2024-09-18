@@ -6,11 +6,11 @@
   "extends": "google",
   "overrides": [
     {
-    "files": ["**/*.spec.js", "**/*.spec.jsx"],
-    "env": {
+      "files": ["**/*.spec.js", "**/*.spec.jsx"],
+      "env": {
       "jest": true
+      }
     }
-  }
   ],
   "parserOptions": {
     "ecmaVersion": "latest",

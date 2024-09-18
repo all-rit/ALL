@@ -4,8 +4,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Certificate from "./Certificate";
-import RedX from "../../../assets/images/RedX.png";
 import GreenCheck from "../../../assets/images/GreenCheck.webp";
+import RedX from "../../../assets/images/RedX.png";
+import { navigate } from "@reach/router";
 
 function Result(props) {
   function checkIfCorrect(answerIndex, questionIndex) {
@@ -90,6 +91,7 @@ function Result(props) {
             return (
               <li key={index}>
                 {counter}. {answer["content"]}
+                <hr />
               </li>
             );
           } else {
@@ -124,6 +126,10 @@ function Result(props) {
     }
   }
 
+  const handleImagineSurvey = () => {
+    navigate("/Imagine/PostSurvey");
+  };
+
   return (
     <div className="tw-relative">
       <div className="quiz container shadow p-3 tw-bg-labYellow tw-rounded-3xl shadow">
@@ -149,11 +155,27 @@ function Result(props) {
             </table>
             {props.hideCertificate === false && (
               <div style={{ marginTop: "50px" }}>
-                <Certificate quizResult={props.quizResult} lab={props.lab} />
+                <Certificate
+                  quizResult={props.quizResult}
+                  lab={props.lab}
+                  isImagine={props.isImagine}
+                />
               </div>
             )}
           </div>
         </div>
+      </div>
+      <div className=" d-flex flex-column justify-content-center mt-3">
+        {props.isImagine ? (
+          <button
+            className="btn btn-primary btn-xl text-uppercase  next"
+            onClick={handleImagineSurvey}
+          >
+            Continue to Post-Survey
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
@@ -162,6 +184,7 @@ function Result(props) {
 Result.propTypes = {
   quizResult: PropTypes.string.isRequired,
   selectedAnswers: PropTypes.array.isRequired,
+  isImagine: PropTypes.bool,
 };
 
 export default Result;

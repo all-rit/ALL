@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Router } from "@reach/router";
-// lab imported dependencies;
+
+import AlumniNewsletter from "./pages/AlumniNewsletter";
 import { EXERCISE_STATES } from "../../../constants/lab12";
 import GameStateContext from "./Lab12Context";
 import FormRepair from "./pages/FormRepair";
@@ -29,14 +30,16 @@ const Main = () => {
         <Router className="app">
           <FormRepair path="/FormRepair" />
           <DatabaseRepair path={"/DatabaseRepair"} />
+          <ExerciseIntro path="/" />
           <Diploma path="/diploma" />
           <GradApplication path="/GraduationApplication" />
-          <ExerciseIntro path="/ExerciseIntro" />
           <PreWrongDiploma path="/PreWrongDiploma" />
           <PostWrongNewsletter path="/PostWrongNewsletter" />
           <PreCorrectDiploma path="/PreCorrectDiploma" />
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />
+          {/* TODO: name needs to come from db */}
+          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
         </Router>
       </GameStateContext.Provider>
     </div>

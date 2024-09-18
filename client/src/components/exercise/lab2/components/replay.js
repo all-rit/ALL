@@ -53,17 +53,17 @@ class Replay extends Component {
            </div>
          </div>
         */}
-        <div style={{ marginTop: "75px" }}>
+        <div className={"tw-m-5 tw-p-5"}>
           <div>
             {this.props.score > 0 ? (
               <p className="timeEnd">Good job! Here are your results:</p>
             ) : (
-              <p className="timeEnd">
+              <p className="timeEnd tw-text-2xl">
                 Better luck next time! Here are your results:
               </p>
             )}
             <div>
-              <table className="center centerExercise">
+              <table className="center centerExercise tw-m-5">
                 <tbody style={{ border: "2px solid black" }}>
                   <tr>
                     <td className="replayBreakdown">Final Score</td>
@@ -135,7 +135,7 @@ class Replay extends Component {
               </table>
             </div>
           </div>
-          <div className="center" style={{ marginLeft: "-25px" }}>
+          <div className="center tw-m-5" style={{ marginLeft: "-25px" }}>
             {this.props.exercisesPlayed === 0 ? (
               <Button
                 clickMethod={clickFirst}

@@ -24,6 +24,7 @@
     "react-highlight": "^0.15.0",
     "react-live": "^4.0.0",
     "react-syntax-highlighter": "^15.5.0",
+    "reactstrap": "^9.2.2",
     "redux-logger": "^3.0.6",
     "tailwind-merge": "^2.1.0"
   }

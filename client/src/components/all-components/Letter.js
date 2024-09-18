@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
-import grad_hat from "../../../../assets/images/lab11/grad_hat.png";
-import signature from "../../../../assets/images/lab11/signature.png";
+import grad_hat from "../../assets/images/lab11/grad_hat.png";
+import signature from "../../assets/images/lab11/signature.png";
 import { useContext } from "react";
-import ExerciseStateContext from "../Lab11Context";
+import ExerciseStateContext from "../exercise/lab11/Lab11Context";
 
 import PropTypes from "prop-types";
 
@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
  * @param {boolean} props.isEditable - A boolean value indicating whether the letter content is editable or not.
  * @returns {JSX.Element} - The JSX element representing the Letter component.
  */
-const Letter = ({ isEditable }) => {
+const Letter = ({ isEditable, letterBody, alumniName = "John Doe" }) => {
   const {
     setLetterContent,
     letterContent,
@@ -21,8 +21,9 @@ const Letter = ({ isEditable }) => {
     letterContentArray,
   } = useContext(ExerciseStateContext);
 
-  const [currentLetterContent, setCurrentLetterContent] =
-    useState(letterContent);
+  const [currentLetterContent, setCurrentLetterContent] = useState(
+    letterContent === "" ? letterBody : letterContent,
+  );
 
   const handleNextLetter = () => {
     if (letterContentIndex < letterContentArray.length - 1) {
@@ -121,18 +122,20 @@ const Letter = ({ isEditable }) => {
             <div
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-medium tw-self-start tw-text-start tw-word-breaks tw-mb-16`}
               style={{ fontFamily: "Kumbh Sans" }}
+              data-testid="letter-address"
             >
-              Fake Name Here
+              {alumniName}
               <br />
-              111 Street Name Here,
+              111 Accessibility Street
               <br />
-              City, State, 14626
+              Rochester, New York, 14626
             </div>
             <div
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-bold tw-self-start tw-mb-10`}
               style={{ fontFamily: "Kumbh Sans" }}
+              data-testid="dear-name"
             >
-              Dear Lorem,
+              Dear {alumniName},
             </div>
             <div
               id="editable-letter"
@@ -145,6 +148,7 @@ const Letter = ({ isEditable }) => {
               onInput={(e) => {
                 setLetterContent(e.target.innerText);
               }}
+              data-testid="letter-body"
             >
               {currentLetterContent}
             </div>
@@ -152,9 +156,9 @@ const Letter = ({ isEditable }) => {
               className={`tw-h-auto tw-text-xl tw-text-black tw-font-bold tw-break-words tw-self-start tw-text-start tw-mt-10`}
               style={{ fontFamily: "Kumbh Sans" }}
             >
-              Sincerly,
+              Sincerely,
               <br />
-              Fake Name
+              Dean Ted Moseby
             </div>
             <img
               className={`tw-w-[50px] tw-h-[50px] tw-mb-10 tw-self-start`}
@@ -174,6 +178,8 @@ const Letter = ({ isEditable }) => {
 
 Letter.propTypes = {
   isEditable: PropTypes.bool,
+  letterBody: PropTypes.string,
+  alumniName: PropTypes.string,
 };
 
 export default Letter;

@@ -4,9 +4,7 @@ import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
 
-const section = "discomfortCountNonPOC";
-
-const ExpressionExercise = (props) => {
+const ExpressionExercise2 = (props) => {
   const { setCount, count, userID } = props;
 
   const [showContine, setShowContinue] = useState(null);
@@ -28,7 +26,7 @@ const ExpressionExercise = (props) => {
   };
 
   const handleNext = () => {
-    const body = { userID: userID, section, study: timeStamps };
+    const body = { userID: userID, study: timeStamps };
     ImagineService.postStudy(body);
     navigate("/Imagine/ExpressionScore");
   };
@@ -36,7 +34,7 @@ const ExpressionExercise = (props) => {
   return (
     <div className="container bottomSpace center-div">
       <h2 className="playthrough__title">
-        Expression Empathy Building: Exercise
+        Expression Empathy Building: Exercise 2
       </h2>
       {showContine == null && (
         <div className="playthrough__sentence__imagine">
@@ -56,7 +54,7 @@ const ExpressionExercise = (props) => {
             ref={reactPlayer}
             width="960px"
             height="615px"
-            url="https://www.youtube.com/watch?v=414ICZRkOH4"
+            url="https://www.youtube.com/watch?v=2cVChTeNPn8"
             onStart={() => {
               setShowContinue(false);
             }}
@@ -91,10 +89,10 @@ const ExpressionExercise = (props) => {
   );
 };
 
-ExpressionExercise.propTypes = {
+ExpressionExercise2.propTypes = {
   setCount: PropTypes.func,
   count: PropTypes.number,
   userID: PropTypes.string,
 };
 
-export default ExpressionExercise;
+export default ExpressionExercise2;

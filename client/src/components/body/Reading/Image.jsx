@@ -10,11 +10,7 @@ const Image = ({ data }) => {
     <>
       <ul>
         <li>
-          <img
-            className="center"
-            src={"/img/lab_images" + data.image}
-            alt={data.alt}
-          />
+          <img src={"/img/lab_images" + data.image} alt={data.alt} />
         </li>
         <ul>
           <li>

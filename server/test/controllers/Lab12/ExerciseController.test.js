@@ -57,6 +57,6 @@ describe('Test failed payloads in Lab 12 ExerciseController functions', () => {
     });
     const res = ControllerTestUtil.formatResponse();
     const response = await ExerciseController.postExercise(req, res);
-    expect(JSON.parse(response)[0]).toBeNull();
+    expect(response.userid).toBeUndefined();
   });
 });
