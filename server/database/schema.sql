@@ -1563,12 +1563,12 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
                 "link":"https://www.aclu.org/cases/aclu-v-clearview-ai"
             },
             {
-                "name":"Using AI as a Weapon?",
-                "link":"https://www.nytimes.com/2019/06/13/us/aclu-surveillance-artificial-intelligence.html"
+                "name":"Risk of AI in Weapons",
+                "link":"https://hms.harvard.edu/news/risks-artificial-intelligence-weapons-design"
             },
             {
-                "name":"More",
-                "link":"https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html?searchResultPosition=1"
+                "name":"Privacy",
+                "link":"https://cybersecurity.illinois.edu/policies-governance/privacy-considerations-for-generative-ai/"
             }
         ]
     }
