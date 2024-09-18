@@ -21,7 +21,7 @@ const FormHintAccessible = () => {
     "Complete the form below. Use tab to go next, and shift+tab to go back.";
   const instructions2 = "Do not use the mouse!";
   const url = "/Lab4/Exercise/Finish";
-  const tab = "0";
+  const tooltipTab = "0";
   const name = "FormHintAccessible";
 
   return (
@@ -39,8 +39,9 @@ const FormHintAccessible = () => {
       <FormComp
         url={url}
         rule={true}
-        showTab={true}
-        tab={tab}
+        showTooltip={true}
+        tooltipDisabled={false}
+        tooltipTab={tooltipTab}
         parentCallback={callbackFunction}
         name={name}
       />

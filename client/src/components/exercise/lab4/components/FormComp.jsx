@@ -109,7 +109,12 @@ const FormComp = (props) => {
           <FormGroup>
             <Label for="color">
               Favorite Color{" "}
-              {props.showTab && <TooltipWithTab tab={props.tab} />}
+              {props.showTooltip && (
+                <TooltipWithTab
+                  tab={props.tooltipTab}
+                  disabled={props.tooltipDisabled}
+                />
+              )}
             </Label>
             <Input
               type="text"
@@ -168,8 +173,9 @@ FormComp.propTypes = {
   url: PropTypes.string,
   rule: PropTypes.bool,
   parentCallback: PropTypes.func,
-  tab: PropTypes.string,
-  showTab: PropTypes.bool,
+  tooltipTab: PropTypes.string,
+  showTooltip: PropTypes.bool,
+  tooltipDisabled: PropTypes.bool,
 };
 
 export default FormComp;
