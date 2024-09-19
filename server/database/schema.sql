@@ -305,7 +305,7 @@ create table userlabcompletion
     primary key (id)
 );
 
-CREATE TABLE users
+create table users
 (
     userid      serial,
     firstname   text,

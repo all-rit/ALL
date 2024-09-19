@@ -49,7 +49,6 @@ const AddModal = (props) => {
   };
 
   const toggleModal = () => {
-    console.log(modal);
     setModal(!modal);
   };
 
@@ -60,7 +59,7 @@ const AddModal = (props) => {
           <button
             className="btn btn-second groups__create_btn"
             aria-label="add"
-            onClick={() => toggleModal()}
+            onClick={toggleModal}
           >
             Create Group
           </button>

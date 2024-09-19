@@ -42,10 +42,6 @@ const GroupForm = (props) => {
     });
   }, [assignedLabs]);
 
-  useEffect(() => {
-    console.log(checkedLabs);
-  }, [checkedLabs]);
-
   const toggleCheck = (labID) => {
     setCheckedLabs((prevCheckedLabs) => ({
       ...prevCheckedLabs,
@@ -66,7 +62,6 @@ const GroupForm = (props) => {
 
       if (addMode === "add_instr_grp") {
         const newGroup = await GroupService.createGroup(user.userid, groupName);
-        console.log("New group created:", newGroup);
 
         const addLabPromises = selectedLabs.map((labID) => {
           GroupService.addGroupLab(newGroup.id, labID);
@@ -78,22 +73,20 @@ const GroupForm = (props) => {
           await GroupService.updateGroup(groupID, formData.get("groupName"));
         }
 
-        if (selectedLabs.length >= 0) {
-          for (const lab in checkedLabs) {
-            if (Array.isArray(assignedLabs) && assignedLabs.length !== 0) {
-              if (
-                !assignedLabs.includes(lab.labID) ||
-                assignedLabs.length === 0
-              ) {
-                await GroupService.addGroupLab(groupID, `${lab}`);
-              }
-            } else {
+        for (const lab in checkedLabs) {
+          if (Array.isArray(assignedLabs)) {
+            if (
+              !assignedLabs.includes(lab.labID) ||
+              assignedLabs.length === 0
+            ) {
               await GroupService.addGroupLab(groupID, `${lab}`);
             }
+          } else {
+            await GroupService.addGroupLab(groupID, `${lab}`);
           }
         }
 
-        if (Array.isArray(assignedLabs) && assignedLabs.length >= 0) {
+        if (Array.isArray(assignedLabs)) {
           assignedLabs.forEach((lab) => {
             if (!selectedLabs.includes(lab.labID)) {
               GroupService.deleteGroupLab(groupID, lab.labID);
@@ -117,7 +110,7 @@ const GroupForm = (props) => {
             type="text"
             name="groupName"
             id="groupName"
-            defaultValue={groupName || ""}
+            defaultValue={groupName}
             placeholder="Enter Group Name"
           />
         </FormGroup>
@@ -129,7 +122,7 @@ const GroupForm = (props) => {
                 type="checkbox"
                 name={lab.id}
                 id={"lab" + lab.id}
-                checked={checkedLabs[lab.id] || false}
+                checked={!!checkedLabs[lab.id]}
                 onChange={() => toggleCheck(lab.id)}
               />
               <Label for={"lab" + lab.id}>{lab.labShortName}</Label>
