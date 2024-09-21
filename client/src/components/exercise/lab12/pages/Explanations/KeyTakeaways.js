@@ -1,23 +1,16 @@
 // Key Takeaways (Page #6)
 
-import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect } from "react";
 import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { EXERCISE_IDLE } from "src/constants/index";
 
 const KeyTakeaways = () => {
   const { actions } = useMainStateContext();
 
   useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
+    actions.updateUserState(EXERCISE_IDLE);
   }, []);
-
-  const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise/`, // LINK TO REINFORCEMENT
-    );
-  };
 
   return (
     <div className="center-div">
@@ -45,15 +38,6 @@ const KeyTakeaways = () => {
       <div className="playthrough__sentence">
         Click the &quot;Next&quot; button to move on the the Reinforcement
         Section!
-      </div>
-      <div className="tw-flex tw-justify-evenly">
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={handleContinue}
-          key="start"
-        >
-          Next
-        </button>
       </div>
     </div>
   );

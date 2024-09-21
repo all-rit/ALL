@@ -14,9 +14,7 @@ const PreWrongDiploma = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise`, // LINK TO OWEN's FIRST DIPLOMA (wrong pronouns)
-    );
+    navigate(`/Lab12/Exercise/Diploma`);
   };
 
   return (
@@ -24,7 +22,7 @@ const PreWrongDiploma = () => {
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
           Congratulations, you’ve graduated from ALL University! You attend
-          graduation to walk the stage! However, without being prompted for your
+          graduation to walk the stage. However, without being prompted for your
           pronouns, the Dean uses your wrong pronouns at graduation! Since the
           form you filled out never prompted you for a preferred name or
           pronouns, this lack of recognition of your identity in front of

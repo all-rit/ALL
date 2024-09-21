@@ -14,7 +14,7 @@ const ExerciseIntro = () => {
   }, []);
 
   const handleContinue = () => {
-    navigate(`/Lab12/Exercise/`); // WHATEVER THE LINK IS TO THE FIRST AINSLEY INPUT FORM (wrong pronouns)
+    navigate(`/Lab12/Exercise/GraduationApplication`);
   };
 
   return (
@@ -23,12 +23,12 @@ const ExerciseIntro = () => {
         <p className="playthrough__sentence">
           You just graduated from ALL University! Congratulations on completing
           your degree! Now that you have finished, you will apply for graduation
-          and transition from being a student to being an alum.
+          and transition from being a student to an alum.
         </p>
         <p className="playthrough__sentence">
-          In this exercise, you will enter your personal information in a small
-          form. This information will appear on your diploma and we will see how
-          to improve the form. Click the “Start” button to begin this exercise!
+          In this exercise, you will enter your personal information in a short
+          form. This information will appear on your diploma as well as an
+          alumni newsletter. Then, we will see how to improve the form.
         </p>
       </div>
       <div className="playthrough__sentence">

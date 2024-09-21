@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Router } from "@reach/router";
 
-import AlumniNewsletter from "./pages/AlumniNewsletter";
 import { EXERCISE_STATES } from "../../../constants/lab12";
-import GameStateContext from "./Lab12Context";
+import ExerciseStateContext from "./Lab12Context";
 import FormRepair from "./pages/FormRepair";
 import DatabaseRepair from "./pages/DatabaseRepair";
+
+// lab imported dependencies;
 import GradApplication from "./components/GradApplication.js";
 import Diploma from "./components/Diploma";
+import AlumniNewsletter from "./pages/AlumniNewsletter";
 import ExerciseIntro from "./pages/Explanations/ExerciseIntro";
 import PreWrongDiploma from "./pages/Explanations/PreWrongDiploma";
 import PostWrongNewsletter from "./pages/Explanations/PostWrongNewsletter";
@@ -24,24 +26,52 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [preferredName, setPreferredName] = useState("");
+  const [pronouns, setPronouns] = useState("");
+  const [college, setCollege] = useState("");
+  const [major, setMajor] = useState("");
+  const [gradTerm, setGradTerm] = useState("");
+
   return (
     <div className="bottomSpace">
-      <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
+      <ExerciseStateContext.Provider
+        value={{
+          exerciseState,
+          setExerciseState,
+          firstName,
+          setFirstName,
+          lastName,
+          setLastName,
+          preferredName,
+          setPreferredName,
+          pronouns,
+          setPronouns,
+          college,
+          setCollege,
+          major,
+          setMajor,
+          gradTerm,
+          setGradTerm,
+        }}
+      >
         <Router className="app">
           <FormRepair path="/FormRepair" />
           <DatabaseRepair path={"/DatabaseRepair"} />
-          <ExerciseIntro path="/" />
-          <Diploma path="/diploma" />
+          <ExerciseIntro default path="/" />
           <GradApplication path="/GraduationApplication" />
           <PreWrongDiploma path="/PreWrongDiploma" />
+          <Diploma path="/Diploma" />
+          {/* TODO: name needs to come from db */}
+          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
           <PostWrongNewsletter path="/PostWrongNewsletter" />
+          {/* repair here */}
           <PreCorrectDiploma path="/PreCorrectDiploma" />
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />
-          {/* TODO: name needs to come from db */}
-          <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
         </Router>
-      </GameStateContext.Provider>
+      </ExerciseStateContext.Provider>
     </div>
   );
 };
