@@ -1,17 +1,36 @@
-import { React, useEffect, useContext, useState } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import SealImage from "../../../../assets/images/lab12/diploma_seal.png";
 import "../../../../assets/stylesheets/components/Diploma.css";
-import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
 import ExerciseStateContext from "../Lab12Context";
+import { ExerciseService } from "../../../../services/lab12/ExerciseService";
 
 const Diploma = () => {
-  const { actions } = useMainStateContext();
+  const { state } = useMainStateContext();
+  const [nextPage, setNextPage] = useState(`/Lab12/Exercise/AlumniNewsletter`);
+  const [buttonLabel, setButtonLabel] = useState(
+    "Continue to Alumni Newsletter",
+  );
+  const user = state.main.user;
+
+  const fetchExercise = async () => {
+    try {
+      const currentExercise = await ExerciseService.fetchExercise({
+        userid: user.userid,
+      });
+      if (currentExercise.isFormRepairComplete) {
+        setButtonLabel("Continue");
+        setNextPage("/Lab12/Exercise/PreDbRepair");
+      }
+    } catch (error) {
+      console.error("Error fetching exercise: ", error);
+    }
+  };
 
   useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
+    fetchExercise();
   }, []);
 
   const { firstName, lastName, preferredName, college, major, gradTerm } =
@@ -21,7 +40,7 @@ const Diploma = () => {
   const [isRepairComplete] = useState(false);
 
   const handleContinue = () => {
-    navigate(`/Lab12/Exercise/AlumniNewsletter`);
+    navigate(nextPage);
   };
 
   return (
@@ -82,7 +101,7 @@ const Diploma = () => {
           onClick={handleContinue}
           key="start"
         >
-          Continue to Alumni Newsletter
+          {buttonLabel}
         </button>
       </div>
     </div>

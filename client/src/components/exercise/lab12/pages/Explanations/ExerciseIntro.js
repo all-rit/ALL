@@ -5,16 +5,27 @@ import useMainStateContext from "src/reducers/MainContext";
 import { navigate } from "@reach/router";
 import { useEffect } from "react";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
 
 const ExerciseIntro = () => {
-  const { actions } = useMainStateContext();
+  const { actions, state } = useMainStateContext();
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
   }, []);
 
+  const startExercise = async () => {
+    const body = {
+      userid: state.main.user.userid,
+      isFormRepairComplete: false,
+      isDatabaseRepairComplete: false,
+      hasViewed: true,
+    };
+    await ExerciseService.submitExercise(body);
+  };
   const handleContinue = () => {
-    navigate(`/Lab12/Exercise/GraduationApplication`);
+    startExercise();
+    navigate("/Lab12/Exercise/GraduationApplication");
   };
 
   return (

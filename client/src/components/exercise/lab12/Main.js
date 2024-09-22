@@ -16,6 +16,7 @@ import PostWrongNewsletter from "./pages/Explanations/PostWrongNewsletter";
 import PreCorrectDiploma from "./pages/Explanations/PreCorrectDiploma";
 import PostCorrectNewsletter from "./pages/Explanations/PostCorrectNewsletter";
 import KeyTakeaways from "./pages/Explanations/KeyTakeaways";
+import PreDbRepair from "./pages/Explanations/PreDbRepair";
 
 /**
  * Main(): is the routing component for managing the lab exercise progression,
@@ -63,10 +64,9 @@ const Main = () => {
           <GradApplication path="/GraduationApplication" />
           <PreWrongDiploma path="/PreWrongDiploma" />
           <Diploma path="/Diploma" />
-          {/* TODO: name needs to come from db */}
           <AlumniNewsletter path="/AlumniNewsletter" name="Test" />
           <PostWrongNewsletter path="/PostWrongNewsletter" />
-          {/* repair here */}
+          <PreDbRepair path={"/PreDbRepair"} />
           <PreCorrectDiploma path="/PreCorrectDiploma" />
           <PostCorrectNewsletter path="/PostCorrectNewsletter" />
           <KeyTakeaways path="/KeyTakeaways" />

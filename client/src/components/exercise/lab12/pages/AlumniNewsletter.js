@@ -1,15 +1,26 @@
-import { React, useContext, useState } from "react";
+import { React, useContext } from "react";
 import InformationLetterEmail from "../../../all-components/InformationLetterEmail";
 import { ALUMNI_NEWSLETTER_CONTENT } from "src/constants/lab12/index";
 import ExerciseStateContext from "../Lab12Context";
 import { navigate } from "@reach/router";
+import { ExerciseService } from "../../../../services/lab12/ExerciseService";
+import useMainStateContext from "../../../../reducers/MainContext";
 
 const AlumniNewsletter = () => {
   const { firstName, lastName, preferredName } =
     useContext(ExerciseStateContext);
+  const { state } = useMainStateContext();
+  const user = state.main.user;
 
-  // will need to update
-  const [isRepairComplete] = useState(false);
+  const isRepairComplete = async () => {
+    const currentExercise = await ExerciseService.fetchExercise({
+      userid: user.userid,
+    });
+    return (
+      currentExercise.isFormRepairComplete &&
+      currentExercise.isDatabaseRepairComplete
+    );
+  };
 
   var alumniName = "";
   var handleContinue;

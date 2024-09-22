@@ -2,22 +2,9 @@
 
 import { navigate } from "@reach/router";
 import React from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
 
 const PostWrongDiploma = () => {
-  const { state } = useMainStateContext();
-  const startExercise = async () => {
-    const body = {
-      userid: state.main.user.userid,
-      isFormRepairComplete: false,
-      isDatabaseRepairComplete: false,
-      hasViewed: true,
-    };
-    await ExerciseService.submitExercise(body);
-  };
   const handleContinue = () => {
-    startExercise();
     navigate(
       `/Lab12/Exercise/FormRepair`, // LINK TO REPAIR SECTION
     );

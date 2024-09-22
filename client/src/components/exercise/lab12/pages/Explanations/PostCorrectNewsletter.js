@@ -4,13 +4,25 @@ import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect } from "react";
 import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { EXERCISE_IDLE } from "src/constants/index";
+import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
 
 const PostCorrectNewsletter = () => {
-  const { actions } = useMainStateContext();
+  const { actions, state } = useMainStateContext();
+
+  const setExerciseComplete = async () => {
+    const body = {
+      userid: state.main.user.userid,
+      isFormRepairComplete: false,
+      isDatabaseRepairComplete: false,
+      hasViewed: true,
+    };
+    await ExerciseService.submitExercise(body);
+  };
 
   useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
+    setExerciseComplete();
+    actions.setExerciseState(EXERCISE_IDLE);
   }, []);
 
   const handleContinue = () => {

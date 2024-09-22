@@ -3,17 +3,45 @@ import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
 import ExerciseStateContext from "../Lab12Context";
 import { navigate } from "@reach/router";
+import { ExerciseService } from "../../../../services/lab12/ExerciseService";
+import {
+  ButtonDropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Input,
+} from "reactstrap";
 
 const GradApplication = () => {
-  const { actions } = useMainStateContext();
+  const { actions, state } = useMainStateContext();
+  const user = state.main.user;
+
+  const [isRepairComplete, setIsRepairComplete] = useState(false);
+  const fetchExercise = async () => {
+    try {
+      const currentExercise = await ExerciseService.fetchExercise({
+        userid: user.userid,
+      });
+      setIsRepairComplete(currentExercise.isFormRepairComplete);
+    } catch (error) {
+      console.error("Could not fetch exercise: ", error);
+    }
+  };
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownLabel, setDropdownLabel] = useState("Select Pronouns");
+
+  const setPronounsAndDropdownLabel = (pronouns) => {
+    setPronouns(pronouns);
+    setDropdownLabel(pronouns);
+  };
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
+    fetchExercise();
   }, []);
 
   // will need to update
-  const [isRepairComplete] = useState(false);
-
   const {
     firstName,
     setFirstName,
@@ -179,7 +207,7 @@ const GradApplication = () => {
                 Legal First Name:
               </label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
-                <input
+                <Input
                   id="firstName"
                   label="Legal First Name"
                   placeholder="Ex: Jane"
@@ -212,7 +240,7 @@ const GradApplication = () => {
                 Legal Last Name:
               </label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
-                <input
+                <Input
                   id="lastName"
                   placeholder="Ex: Smith"
                   onChange={(e) => {
@@ -242,7 +270,7 @@ const GradApplication = () => {
               <div className="sm:tw-flex tw-items-center tw-mb-6">
                 <label className="tw-pr-8">Preferred Name:</label>
                 <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
-                  <input
+                  <Input
                     id="preferredName"
                     placeholder="Ex: Jay"
                     onChange={(e) => {
@@ -275,20 +303,41 @@ const GradApplication = () => {
                   <span className="tw-text-error-red">*</span>Pronouns:
                 </label>
                 <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
-                  <input
-                    id="pronouns"
-                    placeholder="Ex: They/Them"
-                    onChange={(e) => {
-                      setPronouns(e.target.value);
-                    }}
-                  />
+                  <ButtonDropdown
+                    toggle={() => setDropdownOpen(!dropdownOpen)}
+                    isOpen={dropdownOpen}
+                  >
+                    <DropdownToggle className={"bg-primary"} caret>
+                      {dropdownLabel}
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem
+                        onClick={() => setPronounsAndDropdownLabel("He/Him")}
+                      >
+                        {" "}
+                        He/Him{" "}
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={() => setPronounsAndDropdownLabel("She/Her")}
+                      >
+                        {" "}
+                        She/Her{" "}
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={() => setPronounsAndDropdownLabel("They/Them")}
+                      >
+                        {" "}
+                        They/Them{" "}
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </ButtonDropdown>
                   {pronounsErr && (
                     <label
                       htmlFor="pronouns"
                       className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                       data-testid="invalid-char"
                     >
-                      Error: Invalid character.
+                      Error: Must make a selection.
                     </label>
                   )}
                   {pronounsEmptyErr && (
@@ -308,7 +357,7 @@ const GradApplication = () => {
             <div className="sm:tw-flex tw-items-center tw-mb-6">
               <label className="tw-pr-8">College:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
-                <input
+                <Input
                   id="college"
                   placeholder="Ex: RIT"
                   onChange={(e) => {
@@ -337,7 +386,7 @@ const GradApplication = () => {
             <div className="sm:tw-flex tw-items-center tw-mb-6">
               <label className="tw-pr-8">Major:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
-                <input
+                <Input
                   id="major"
                   placeholder="Ex: CS"
                   onChange={(e) => {
@@ -366,7 +415,7 @@ const GradApplication = () => {
             <div className="sm:tw-flex tw-items-center tw-mb-6">
               <label className="tw-pr-8">Graduation Term:</label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
-                <input
+                <Input
                   id="gradTerm"
                   placeholder="Ex: Spring 2024"
                   onChange={(e) => {

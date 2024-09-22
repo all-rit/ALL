@@ -63,7 +63,7 @@ const DatabaseRepair = () => {
         />
       }
       navigateNext={() => {
-        navigate(`${EXERCISE_PATH}/FixedForm`);
+        navigate(`${EXERCISE_PATH}/PreCorrect`);
       }}
       repairComplete
     />
