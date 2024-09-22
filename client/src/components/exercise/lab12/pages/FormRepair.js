@@ -35,12 +35,9 @@ const FormRepair = () => {
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
-    console.warn(
-      "Input Data array: ",
-      exercisePromptsState,
-      ", isInputValid: ",
-      isInputValid,
-    );
+    console.warn(state);
+    const fetchedRepair = fetchRepair();
+    console.log(fetchedRepair);
   }, []);
 
   return (

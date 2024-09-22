@@ -7,7 +7,7 @@ const RepairService = require('../../services/lab12/RepairService');
  * @param {Object} req
  * @param {Object} res response object. containing information to client
  */
-async function submitChange(req, res) {
+async function submitChange(req) {
   try {
     const {userID, repair, isComplete, section} = req.body;
     // eslint-disable-next-line max-len
@@ -15,10 +15,10 @@ async function submitChange(req, res) {
       const response = RepairService.submitRepair({
         userID, repair, section, isComplete,
       });
-      return await res.json(response);
+      return response;
     }
   } catch (error) {
-    res.status(500).json({error: 'Error: Repair submission failed.'});
+    console.error('Error submitting change: ', error);
   }
 }
 

@@ -4,7 +4,6 @@ import ReactText from "src/components/all-components/CodeBlock/StyleComponents/R
 import PropTypes from "prop-types";
 import Tab from "src/components/all-components/CodeBlock/Components/Tab";
 import MultiTab from "src/components/all-components/CodeBlock/Components/MultiTab";
-import HTMLText from "src/components/all-components/CodeBlock/StyleComponents/HTMLText";
 import JSONText from "src/components/all-components/CodeBlock/StyleComponents/JSONText";
 import CommentText from "src/components/all-components/CodeBlock/StyleComponents/CommentText";
 import CodeBlockInput from "src/components/all-components/CodeBlock/Components/CodeBlockInput";
@@ -24,7 +23,6 @@ import ErrorText from "../../../../all-components/CodeBlock/StyleComponents/Erro
 
 const FormRepairImplementation = (props = {}) => {
   const { identityData, isInputValid, isFirst, userInput } = props;
-  console.log(identityData);
   return (
     <>
       <CodeLine>
@@ -110,7 +108,7 @@ const FormRepairImplementation = (props = {}) => {
         <CodeLine key={item.id}>
           <MultiTab numberOfTabs={3} />{" "}
           <JSONText>{item.variableName}:</JSONText>
-          <HTMLText>formData.{item.variableName},</HTMLText>
+          <ReactText>formData.{item.variableName},</ReactText>
         </CodeLine>
       ))}
       {identityData

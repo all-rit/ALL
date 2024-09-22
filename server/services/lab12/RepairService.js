@@ -4,17 +4,17 @@ const db = require('../../database');
  * operability to retrieve a user's date based on their user id
  * and their closest ime from when the request is sent to track
  * when input is logged.
- * @param {Object} data Object storing payload of the request to retrieve
+ * @param {Number} userid integer storing payload of the request to retrieve
  * information based on the request.
 * @param {String} section string section indicator to indicate the
  * repair section
  */
-async function getRepair(data, section) {
+async function getRepair(userid, section) {
   try {
     return await db.RepairLab12.findOne({
       order: [['repairId', 'DESC']],
       where: {
-        userid: data,
+        userid: userid,
         section: section,
       },
       raw: true,

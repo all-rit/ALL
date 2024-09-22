@@ -17,19 +17,17 @@ describe('Test successful payloads in Lab 12 ExerciseController functions', () =
         attemptCount: 1,
       },
     });
-    const res = ControllerTestUtil.formatResponse();
-    const response = await ExerciseController.postExercise(req, res);
+    const response = await ExerciseController.postExercise(req);
     const expected = await ExerciseService.getExercise(100);
-    expect(JSON.parse(
-        response)[0].attemptCount).toStrictEqual(
+    expect(
+        response.attemptCount).toStrictEqual(
         (expected.attemptCount + 1));
   });
   test('Test getExercise function', async () => {
     const req = ControllerTestUtil.formatRequest({params: {userID: 100}});
-    const res = ControllerTestUtil.formatResponse();
-    const response = await ExerciseController.getExercise(req, res);
+    const response = await ExerciseController.getExercise(req);
     const expected = await ExerciseService.getExercise(100);
-    expect(JSON.parse(response)[0].attemptCount).toBe(expected.attemptCount);
+    expect(response.attemptCount).toBe(expected.attemptCount);
   });
 });
 
@@ -38,7 +36,7 @@ describe('Test failed payloads in Lab 12 ExerciseController functions', () => {
     const req = ControllerTestUtil.formatRequest({params: {userID: 101}});
     const res = ControllerTestUtil.formatResponse();
     const response = await ExerciseController.getExercise(req, res);
-    expect(JSON.parse(response)[0]).toBeNull();
+    expect(JSON.parse(response)).toBeNull();
   });
 
   test('Test postExercise function fails', async () => {
@@ -52,6 +50,6 @@ describe('Test failed payloads in Lab 12 ExerciseController functions', () => {
     });
     const res = ControllerTestUtil.formatResponse();
     const response = await ExerciseController.postExercise(req, res);
-    expect(response.userid).toBeUndefined();
+    expect(response).toBeUndefined();
   });
 });

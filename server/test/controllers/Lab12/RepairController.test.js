@@ -45,6 +45,6 @@ describe('Test failed payloads in Lab 12 RepairController functions', () => {
     });
     const res = ControllerTestUtil.formatResponse();
     const response = await RepairController.submitChange(req, res);
-    expect(response).toBe('{}');
+    expect(response).toBeUndefined();
   });
 });

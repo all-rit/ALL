@@ -2,20 +2,24 @@
 
 import { navigate } from "@reach/router";
 import React from "react";
-import { useEffect } from "react";
 import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
 
 const PostWrongDiploma = () => {
-  const { actions } = useMainStateContext();
-
-  useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
-  }, []);
-
+  const { state } = useMainStateContext();
+  const startExercise = async () => {
+    const body = {
+      userid: state.main.user.userid,
+      isFormRepairComplete: false,
+      isDatabaseRepairComplete: false,
+      hasViewed: true,
+    };
+    await ExerciseService.submitExercise(body);
+  };
   const handleContinue = () => {
+    startExercise();
     navigate(
-      `/Lab12/Exercise`, // LINK TO REPAIR SECTION
+      `/Lab12/Exercise/FormRepair`, // LINK TO REPAIR SECTION
     );
   };
 

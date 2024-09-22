@@ -7,15 +7,12 @@ const ExerciseService = require('../../services/lab12/ExerciseService');
  * @param {Object} req request object containing userId;
  * @param {Object} res response object containing the response;
  */
-async function getExercise(req, res) {
+async function getExercise(req) {
   try {
     const {userID} = req.params;
-    const exercise = await ExerciseService.getExercise(userID);
-    return res.json([exercise]);
+    return await ExerciseService.getExercise(userID);
   } catch (error) {
-    console.error(error);
-    res.status(500);
-    res.json({error: 'Error: Could Not Find Exercise'});
+    console.error('Error: Could Not Find Exercise', error);
   }
 }
 
@@ -27,7 +24,7 @@ async function getExercise(req, res) {
  * @param {Object} req request object containing user information and payload.
  * @param {Object} res response object containing the response;
  */
-async function postExercise(req, res) {
+async function postExercise(req) {
   try {
     const {userID, isDatabaseRepairComplete, isFormRepairComplete,
       isExerciseComplete, hasViewed} = req.body;
@@ -38,10 +35,9 @@ async function postExercise(req, res) {
       isExerciseComplete: isExerciseComplete,
       hasViewed: hasViewed,
     });
-    return res.json([response]);
+    return response;
   } catch (error) {
     console.error(error);
-    return res.status(500).json({error: 'Error: Could Not Post Exercise'});
   }
 }
 

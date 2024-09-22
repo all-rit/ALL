@@ -60,6 +60,7 @@ const useDataService = (user, section, defaultExerciseState) => {
     try {
       const { isComplete, userid } = body;
       const data = await ExerciseService.fetchExercise({ userid: userid });
+      console.log(data);
       if (data) {
         const { isFormRepairComplete, isDatabaseRepairComplete } = data;
         if (isComplete) {
@@ -73,17 +74,11 @@ const useDataService = (user, section, defaultExerciseState) => {
               section === EXERCISE_STATES.DATABASE_REPAIR
                 ? true
                 : isDatabaseRepairComplete,
-            isComplete: false,
-            hasViewed: false,
           };
-          const data = [
-            updatedBody.isFormRepairComplete,
-            updatedBody.isDatabaseRepairComplete,
-          ];
-          const isExerciseComplete = data.every((value) => value === true);
-          updatedBody.isExerciseComplete = isExerciseComplete;
+
           const response = await ExerciseService.submitExercise(updatedBody);
-          return response.status;
+          console.warn(response);
+          return response;
         }
       }
     } catch (error) {
