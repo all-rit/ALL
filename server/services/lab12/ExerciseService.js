@@ -11,7 +11,7 @@ async function getExercise(data) {
   try {
     const exerciseResponse = await db.ExerciseLab12.findOne(
         {
-          order: [['attemptCount', 'DESC']],
+          order: [['attemptTime', 'DESC']],
           where: {
             userid: data,
           },

@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import InformationLetterEmail from "../../../all-components/InformationLetterEmail";
 import { ALUMNI_NEWSLETTER_CONTENT } from "src/constants/lab12/index";
 import ExerciseStateContext from "../Lab12Context";
@@ -11,19 +11,28 @@ const AlumniNewsletter = () => {
     useContext(ExerciseStateContext);
   const { state } = useMainStateContext();
   const user = state.main.user;
+  const [isRepairComplete, setIsRepairComplete] = useState(false);
 
-  const isRepairComplete = async () => {
-    const currentExercise = await ExerciseService.fetchExercise({
-      userid: user.userid,
-    });
-    return (
-      currentExercise.isFormRepairComplete &&
-      currentExercise.isDatabaseRepairComplete
-    );
+  useEffect(() => {
+    checkRepairComplete();
+  }, []);
+
+  const checkRepairComplete = async () => {
+    try {
+      const currentExercise = await ExerciseService.fetchExercise({
+        userid: user.userid,
+      });
+      setIsRepairComplete(
+        currentExercise.isFormRepairComplete &&
+          currentExercise.isDatabaseRepairComplete,
+      );
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  var alumniName = "";
-  var handleContinue;
+  let alumniName = "";
+  let handleContinue;
 
   if (isRepairComplete) {
     alumniName = preferredName + " " + lastName;

@@ -22,7 +22,8 @@ import ErrorText from "../../../../all-components/CodeBlock/StyleComponents/Erro
  */
 
 const FormRepairImplementation = (props = {}) => {
-  const { identityData, isInputValid, isFirst, userInput } = props;
+  const { identityData, isInputValid, isFirst, handleUserInputChange } = props;
+
   return (
     <>
       <CodeLine>
@@ -43,7 +44,7 @@ const FormRepairImplementation = (props = {}) => {
       ))}
       {identityData
         .filter((item) => item.id < 2)
-        .map((item, index) => (
+        .map((item) => (
           <div key={item.id}>
             <CodeLine>
               <MultiTab numberOfTabs={2} />
@@ -58,7 +59,7 @@ const FormRepairImplementation = (props = {}) => {
                   value={item.userInput}
                   attributes={{
                     onChange: (event) => {
-                      userInput(item.id, event.target.value);
+                      handleUserInputChange(item.id, event.target.value);
                     },
                     name: item.variableName,
                     type: "text",
@@ -69,7 +70,7 @@ const FormRepairImplementation = (props = {}) => {
                 <CodeBlockInput
                   attributes={{
                     onChange: (event) => {
-                      userInput(item.id, event.target.value);
+                      handleUserInputChange(item.id, event.target.value);
                     },
                     name: item.variableName,
                     type: "text",
@@ -79,7 +80,7 @@ const FormRepairImplementation = (props = {}) => {
               )}
               <JSONText>: &ldquo;&rdquo;,</JSONText>
             </CodeLine>
-            {!isInputValid[index] && !isFirst && (
+            {!isInputValid[item.id] && !isFirst && (
               <CodeLine>
                 <MultiTab numberOfTabs={2} />
                 <ErrorText>
@@ -113,7 +114,7 @@ const FormRepairImplementation = (props = {}) => {
       ))}
       {identityData
         .filter((item) => item.id > 1)
-        .map((item, index) => (
+        .map((item) => (
           <div key={item.id}>
             <CodeLine>
               <MultiTab numberOfTabs={3} />{" "}
@@ -129,7 +130,7 @@ const FormRepairImplementation = (props = {}) => {
                   value={item.userInput}
                   attributes={{
                     onChange: (event) => {
-                      userInput(item.id, event.target.value);
+                      handleUserInputChange(item.id, event.target.value);
                     },
                     name: item.variableName,
                     type: "text",
@@ -140,7 +141,7 @@ const FormRepairImplementation = (props = {}) => {
                 <CodeBlockInput
                   attributes={{
                     onChange: (event) => {
-                      userInput(item.id, event.target.value);
+                      handleUserInputChange(item.id, event.target.value);
                     },
                     name: item.variableName,
                     type: "text",
@@ -149,7 +150,7 @@ const FormRepairImplementation = (props = {}) => {
                 />
               )}
             </CodeLine>
-            {!isInputValid[index] && !isFirst && (
+            {!isInputValid[item.id] && !isFirst && (
               <CodeLine>
                 <MultiTab numberOfTabs={3} />
                 <ErrorText>
@@ -248,7 +249,7 @@ const FormRepairImplementation = (props = {}) => {
 };
 
 FormRepairImplementation.propTypes = {
-  userInput: PropTypes.func,
+  handleUserInputChange: PropTypes.func,
   identityData: PropTypes.array,
   isInputValid: PropTypes.array,
   isFirst: PropTypes.bool,

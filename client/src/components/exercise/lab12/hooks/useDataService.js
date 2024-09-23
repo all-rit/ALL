@@ -60,7 +60,6 @@ const useDataService = (user, section, defaultExerciseState) => {
     try {
       const { isComplete, userid } = body;
       const data = await ExerciseService.fetchExercise({ userid: userid });
-      console.log(data);
       if (data) {
         const { isFormRepairComplete, isDatabaseRepairComplete } = data;
         if (isComplete) {
@@ -77,7 +76,6 @@ const useDataService = (user, section, defaultExerciseState) => {
           };
 
           const response = await ExerciseService.submitExercise(updatedBody);
-          console.warn(response);
           return response;
         }
       }
@@ -100,7 +98,6 @@ const useDataService = (user, section, defaultExerciseState) => {
         isComplete: checkInputValid(),
       };
       const repairID = await RepairService.submitRepair(body);
-      console.warn(body);
       // eslint-disable-next-line no-unused-vars
       await handleExerciseUpdate(body, section);
 

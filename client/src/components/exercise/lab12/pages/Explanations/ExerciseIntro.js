@@ -19,6 +19,7 @@ const ExerciseIntro = () => {
       userid: state.main.user.userid,
       isFormRepairComplete: false,
       isDatabaseRepairComplete: false,
+      isExerciseComplete: false,
       hasViewed: true,
     };
     await ExerciseService.submitExercise(body);

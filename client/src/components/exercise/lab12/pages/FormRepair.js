@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import useDataService from "../../lab12/hooks/useDataService";
 import Repair from "src/components/body/Repair/Repair";
@@ -11,7 +11,6 @@ import {
 } from "src/constants/lab12/index";
 import FormRepairImplementation from "./repairs/FormRepairImplementation";
 import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
 import IdentityFormData from "../../../../constants/lab12/FormRepair";
 
 /**
@@ -22,7 +21,7 @@ import IdentityFormData from "../../../../constants/lab12/FormRepair";
  */
 
 const FormRepair = () => {
-  const { actions, state } = useMainStateContext();
+  const { state } = useMainStateContext();
   const user = state.main.user;
   const { data, functions } = useDataService(
     user,
@@ -32,13 +31,6 @@ const FormRepair = () => {
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
-
-  useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
-    console.warn(state);
-    const fetchedRepair = fetchRepair();
-    console.log(fetchedRepair);
-  }, []);
 
   return (
     <Repair
@@ -54,7 +46,7 @@ const FormRepair = () => {
       ]}
       CodeImplementation={
         <FormRepairImplementation
-          userInput={handleUserInputChange}
+          handleUserInputChange={handleUserInputChange}
           identityData={exercisePromptsState}
           isInputValid={isInputValid}
           isFirst={isFirst}

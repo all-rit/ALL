@@ -6,8 +6,7 @@ import {
   EXERCISE_STATES,
   REPAIR,
 } from "../../../../constants/lab12";
-import React, { useEffect } from "react";
-import { EXERCISE_PLAYING } from "../../../../constants";
+import React from "react";
 import Repair from "../../../body/Repair/Repair";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
@@ -22,7 +21,7 @@ import IdentityDatabaseData from "../../../../constants/lab12/DatabaseRepair";
  */
 
 const DatabaseRepair = () => {
-  const { actions, state } = useMainStateContext();
+  const { state } = useMainStateContext();
   const user = state.main.user;
   const { data, functions } = useDataService(
     user,
@@ -32,16 +31,6 @@ const DatabaseRepair = () => {
   const { exercisePromptsState, isInputValid, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
-
-  useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
-    console.warn(
-      "Input Data array: ",
-      exercisePromptsState,
-      ", isInputValid: ",
-      isInputValid,
-    );
-  }, []);
 
   return (
     <Repair
@@ -63,7 +52,7 @@ const DatabaseRepair = () => {
         />
       }
       navigateNext={() => {
-        navigate(`${EXERCISE_PATH}/PreCorrect`);
+        navigate(`${EXERCISE_PATH}/PreCorrectDiploma`);
       }}
       repairComplete
     />

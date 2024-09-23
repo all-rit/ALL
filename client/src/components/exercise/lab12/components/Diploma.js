@@ -13,6 +13,8 @@ const Diploma = () => {
   const [buttonLabel, setButtonLabel] = useState(
     "Continue to Alumni Newsletter",
   );
+  const [isRepairComplete, setIsRepairComplete] = useState(false);
+
   const user = state.main.user;
 
   const fetchExercise = async () => {
@@ -20,10 +22,17 @@ const Diploma = () => {
       const currentExercise = await ExerciseService.fetchExercise({
         userid: user.userid,
       });
-      if (currentExercise.isFormRepairComplete) {
+      if (
+        currentExercise.isFormRepairComplete &&
+        !currentExercise.isDatabaseRepairComplete
+      ) {
         setButtonLabel("Continue");
         setNextPage("/Lab12/Exercise/PreDbRepair");
       }
+      setIsRepairComplete(
+        currentExercise.isFormRepairComplete &&
+          currentExercise.isDatabaseRepairComplete,
+      );
     } catch (error) {
       console.error("Error fetching exercise: ", error);
     }
@@ -35,9 +44,6 @@ const Diploma = () => {
 
   const { firstName, lastName, preferredName, college, major, gradTerm } =
     useContext(ExerciseStateContext);
-
-  // will need to update
-  const [isRepairComplete] = useState(false);
 
   const handleContinue = () => {
     navigate(nextPage);

@@ -4,11 +4,10 @@ import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect } from "react";
 import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_IDLE } from "src/constants/index";
 import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
 
 const PostCorrectNewsletter = () => {
-  const { actions, state } = useMainStateContext();
+  const { state } = useMainStateContext();
 
   const setExerciseComplete = async () => {
     const body = {
@@ -22,7 +21,6 @@ const PostCorrectNewsletter = () => {
 
   useEffect(() => {
     setExerciseComplete();
-    actions.setExerciseState(EXERCISE_IDLE);
   }, []);
 
   const handleContinue = () => {
