@@ -10,11 +10,11 @@ const DeleteModal = (props) => {
 
   const toggle = () => setModal(!modal);
 
-  const deleteGroup = () => {
-    GroupService.deleteGroup(groupID).then(() => {
+  const deleteGroup = async () => {
+    const deletionCompleted = await GroupService.deleteGroup(groupID);
+    if (deletionCompleted) {
       setInstrGroupsUpdated(true);
-    });
-
+    }
     toggle();
     mainToggle();
   };

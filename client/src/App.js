@@ -62,8 +62,10 @@ function initializeReactGA() {
 }
 
 const App = () => {
+  const context = useMainStateContext();
+  const { state, actions } = context;
+
   useEffect(() => {
-    // const { actions } = props;
     actions.login();
     const location = parse(window.location.href);
     stateChange(actions, location.pathname);
@@ -71,8 +73,6 @@ const App = () => {
       stateChange(actions, location.location.pathname);
     });
   }, []);
-  const context = useMainStateContext();
-  const { state, actions } = context;
   const lab = state.main.lab;
   const body = state.main.body;
   const isImagine = state.main.isImagine;

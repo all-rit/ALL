@@ -4,11 +4,17 @@ import GroupService from "../../../services/GroupService";
 import GroupAssignedLabs from "./GroupAssignedLabs";
 import EnrolledStudentsTable from "./EnrolledStudentsTable";
 import AddModal from "./components/AddModal";
+import DeleteModal from "./components/DeleteModal";
 
 const GroupDetails = (props) => {
   const { group, instructing, user, setInstrGroupsUpdated } = props;
   const [assignedLabs, setAssignedLabs] = useState([]);
   const [enrolledStudents, setEnrolledStudents] = useState([]);
+  const [toggle, setToggle] = useState(false);
+
+  const toggleModal = () => {
+    setToggle(!toggle);
+  };
 
   useEffect(() => {
     if (group) {
@@ -28,13 +34,20 @@ const GroupDetails = (props) => {
         <td>
           There are currently no assigned labs.
           {instructing ? (
-            <AddModal
-              addMode={"update_grp_lab"}
-              user={user}
-              groupID={group.id}
-              groupName={group.groupName}
-              setInstrGroupsUpdated={setInstrGroupsUpdated}
-            />
+            <>
+              <AddModal
+                addMode={"update_grp_lab"}
+                user={user}
+                groupID={group.id}
+                groupName={group.groupName}
+                setInstrGroupsUpdated={setInstrGroupsUpdated}
+              />
+              <DeleteModal
+                mainToggle={toggleModal}
+                groupID={group.id}
+                setInstrGroupsUpdated={setInstrGroupsUpdated}
+              />
+            </>
           ) : (
             <></>
           )}

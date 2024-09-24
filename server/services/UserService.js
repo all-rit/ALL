@@ -2,7 +2,7 @@
 /* eslint-disable no-tabs */
 const db = require('../database');
 
-exports.updateGuestUserId = (userid, usersessionid) =>{
+const updateGuestUserId = (userid, usersessionid) =>{
   return db.Session
       .findByPk(usersessionid)
       .then((session) => {
@@ -15,72 +15,74 @@ exports.updateGuestUserId = (userid, usersessionid) =>{
       });
 };
 
-exports.authenticate = (data) => {
-  const userSessionID = data.id.slice(0, 19);
-  const firstName = data.name.givenName;
-  const lastInitial = data.name.familyName.slice(0, 1);
-  const email = data.emails[0].value;
-  return db.Session
-      .findByPk(userSessionID)
-      .then((session) => {
-        // Session doesn't exist, so let's create a new account!
-        if (session === null) {
-          throw new Error('Session do not exist in the database');
-        }
-        return session;
-      })
-      .catch(() => {
-        // Create a new account
-        return db.Users
-            .create({
-              firstname: firstName,
-              lastinitial: lastInitial,
-              email1: email,
-            })
-            .then((user) => {
-              // Create a new session
-              return db.Session.create({
-                usersessionid: userSessionID,
-                userid: user.userid,
-              });
-            })
-            .catch(()=> 'error inputting session id from google');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-};
+const authenticate = async (data) => {
+  try {
+    const userSessionID = data.id.slice(0, 8);
+    const firstName = data.name.givenName;
+    const lastInitial = data.name.familyName.slice(0, 1);
+    const email = data.emails[0].value;
 
-exports.getSession = (token) => {
-  // If the token doesn't exist, it's a guest, so create a new account!
-  if (!token) {
-    return db.Users
-        .create({})
-        .then((user) => {
-          return db.Session
-              .create({
-                userid: user.userid,
-              })
-              .then((session) => {
-                return {user, token: session.usersessionid};
-              });
-        });
+    let session = await db.Session.findByPk(userSessionID);
+    if (!session) {
+      const newAccount = {
+        firstName: firstName,
+        lastInitial: lastInitial,
+        email: email,
+      };
+      session = await createNewAccountAndSession(userSessionID, newAccount);
+    }
+    return session;
+  } catch (error) {
+    console.error('Error while authenticating: ', error);
+    throw error;
   }
-
-  // Find the user's details
-  return db.Session
-      .findByPk(token)
-      .then((session) => {
-        return db.Users.findByPk(session.userid).then((user) => {
-          return {user, token};
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
 };
 
-exports.getUserEnrolledGroups = (userid) => {
+const createNewAccountAndSession = async (userSessionID, newAccount) => {
+  try {
+    const user = await db.Users.create({
+      firstname: newAccount.firstName,
+      lastinitial: newAccount.lastInitial,
+      email1: newAccount.email1,
+    });
+    const newSession = await db.Session.create({
+      usersessionid: userSessionID,
+      userid: user.userid,
+    });
+    return newSession;
+  } catch (error) {
+    console.error('Error creating new account and session', error);
+    throw error;
+  }
+};
+
+
+const getSession = async (token) => {
+  try {
+    if (!token) {
+      // Creates a brand new user and session
+      const user = await db.Users.create({});
+      const session = await db.Session.create({userid: user.userid});
+      return {user, token: session.usersessionid};
+    }
+
+    // If a token exists, check for an existing session and user
+    const session = await db.Session.findByPk(token);
+    if (!session) {
+      throw new Error('Invalid session token');
+    }
+    const user = await db.Users.findByPk(session.userid);
+    if (!user) {
+      throw new Error('User not found');
+    }
+    return {user, token};
+  } catch (error) {
+    console.error('Error getting session:', error);
+    throw error;
+  }
+};
+
+const getUserEnrolledGroups = (userid) => {
   return db.sequelize.query(
       `SELECT * FROM "enrollment" 
 			JOIN "groups" ON  "enrollment"."groupID"="groups"."id" 
@@ -92,7 +94,7 @@ exports.getUserEnrolledGroups = (userid) => {
       });
 };
 
-exports.getUserInstructingGroups = (userid) => {
+const getUserInstructingGroups = (userid) => {
   return db.Groups
       .findAll({
         where: {
@@ -105,7 +107,7 @@ exports.getUserInstructingGroups = (userid) => {
 
 // fetches only the labs that the user has been assigned (across all groups)
 // but hasn't made any progress in
-exports.getUserToDoLabs = (userid) => {
+const getUserToDoLabs = (userid) => {
   return db.sequelize.query(
       `
 		SELECT DISTINCT "labID", "labName" FROM "group_labs"
@@ -121,7 +123,7 @@ exports.getUserToDoLabs = (userid) => {
       });
 };
 
-exports.getUserAssignedLabs = (userid) => {
+const getUserAssignedLabs = (userid) => {
   return db.sequelize.query(
       `SELECT DISTINCT "labID" FROM "group_labs" 
 			JOIN "enrollment" ON  "group_labs"."groupID"="enrollment"."groupID" 
@@ -133,7 +135,7 @@ exports.getUserAssignedLabs = (userid) => {
       });
 };
 
-exports.getUser = (userid) => {
+const getUser = (userid) => {
   return db.Users
       .findOne({
         where:
@@ -146,5 +148,16 @@ exports.getUser = (userid) => {
       .catch((err) => {
         console.log(err);
       });
+};
+
+module.exports = {
+  getUserEnrolledGroups,
+  getUser,
+  getSession,
+  getUserInstructingGroups,
+  getUserToDoLabs,
+  getUserAssignedLabs,
+  authenticate,
+  updateGuestUserId,
 };
 
