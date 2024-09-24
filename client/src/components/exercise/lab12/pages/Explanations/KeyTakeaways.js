@@ -1,16 +1,26 @@
 // Key Takeaways (Page #6)
 
 import React from "react";
-import { useEffect } from "react";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE } from "src/constants/index";
+import UserLabService from "../../../../../services/UserLabService";
+import { LAB_ID } from "../../../../../constants/lab12";
+import { navigate } from "@reach/router";
 
 const KeyTakeaways = () => {
-  const { actions } = useMainStateContext();
+  const { actions, state } = useMainStateContext();
 
-  useEffect(() => {
+  const handleFinish = async () => {
     actions.updateUserState(EXERCISE_IDLE);
-  }, []);
+    await navigate("/Lab12/Reinforcement");
+    await UserLabService.complete_exercise(LAB_ID);
+    if (state.main.user?.firstname !== null && state.main.user !== null) {
+      await UserLabService.user_complete_exercise(
+        state.main.user.userid,
+        LAB_ID,
+      );
+    }
+  };
 
   return (
     <div className="center-div">
@@ -39,6 +49,13 @@ const KeyTakeaways = () => {
         Click the &quot;Next&quot; button to move on the the Reinforcement
         Section!
       </div>
+      <button
+        className="btn btn-primary text-black btn-xl text-uppercase "
+        onClick={handleFinish}
+        key="start"
+      >
+        Continue
+      </button>
     </div>
   );
 };
