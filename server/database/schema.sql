@@ -2166,13 +2166,13 @@ to test your knowledge. Click "Next" to start!', e'{
     {
 			"type":"ordered-list",
 			"content": [
-        "Human Rights",
-        "Well-being",
-        "Data Agency",
-        "Effectiveness",
-        "Transparency",
-        "Accountability",
-        "Awareness of Misuse",
+        "Human Rights", 
+        "Well-being", 
+        "Data Agency", 
+        "Effectiveness", 
+        "Transparency", 
+        "Accountability", 
+        "Awareness of Misuse", 
         "Competence"
       ]
 		},
@@ -2429,7 +2429,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content":["Localization is the process whereby the software, documentation, and user interface are adapted to suit the needs of different world markets and user segments, or what is known as a locale. As software engineers, the process that prepares software and digital content for subsequent localization, designing products from the ground up to support various languages and cultural norms without the need for redesign, is known as internationalization."]
         },
 		{
-            "header": "Examples of Localization Challenges",
+            "header": "Examples of Localization Challenges", 
             "type": "study__list",
             "content": ["Cultural Significance of Numbers: The number 13 is unlucky in the U.S. but lucky in Italy. This impacts product design and marketing strategies.","Content Adaptation for Cultural Relevance: The movie ‘Inside Out’ changed Riley’s disliked food from broccoli (U.S. version) to green peppers (Japanese version) to maintain cultural relatability.","Color Symbolism: White signifies purity in the West but mourning in many Asian cultures. This influences design and branding.","Date/Time Formats: The U.S. uses mm/dd/yy, Europe uses dd/mm/yy, and Japan uses yy/mm/dd. This is crucial for software interfaces and documentation.","Number Punctuation: In the United States, large numbers are separated with commas and decimals are separated with a period (e.g. 1,234.56), while in places like France, numbers the way these commas and periods are used is swapped (e.g. 1.234,56). Key for accuracy in financial transactions and data interpretation."]},
 		{
@@ -2966,7 +2966,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content":["According to the UI/UX research and consulting firm Nielsen Norman Group, the primary considerations when creating impactful web content are"]
         },
 		{
-            "header": "",
+            "header": "", 
             "type": "study__list",
             "content": ["Legibility: This refers to the visual design and typography\'s clarity.", "Readability: This concerns the level of complexity in words and sentence structures.", "Comprehension: Easy to understand and draw valid conclusions."]
         },
@@ -3011,6 +3011,7 @@ to test your knowledge. Click "Next" to start!', e'{
         ]
 	}
 }', e'[{"title":"Web Accessibility Perspectives: Understandable Content","link": "https://www.youtube.com/embed/BYRxF2yInfA?si=KedpgpG7XE4TK8B5"},
+<<<<<<< HEAD
 <<<<<<< HEAD
 {"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', '[]', true),
 (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab introduces the concept of identity in software', e'[
@@ -3106,6 +3107,8 @@ to test your knowledge. Click "Next" to start!', e'{
 '[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use inclusive language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Inclusivity","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[]', true);
 
 =======
+=======
+>>>>>>> b78c9a68b904433edf8fdbbac0616cc61bd1b65c
 {"title":"How To Improve The Readability of Your Website","link": "https://www.youtube.com/embed/mtTD3uJ5e7k?si=qpUrFyTfY8Qh6OzC"}]', e'[
   {
     "question": "What does readability refer to?",
@@ -3238,8 +3241,239 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
+<<<<<<< HEAD
 ', true);
 >>>>>>> 7241874e946dd45a6bac32637d7e98b3b108b3e8
+=======
+', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement inclusive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not inclusive, and learn how and why to implement an interface that is accessible to gender and identity.', 
+e'[
+    "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
+    "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
+    "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
+    "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
+]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than Male or Female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
+“next
+” to start!', e'{
+  "piechart": {
+        "header":"Inclusive Forms",
+		"caption":["59% of Gen Z believes forms should have options outside of male and female"],
+		"data": {
+			"labels": [
+				"Gen Zers who believe forms should have options outside of male / female",
+				"Gen Zers who DO NOT believe forms should have options outside of male / female"
+			  ],
+			  "datasets": [
+				{
+				  "label": "Color Visions Deficiencies in a Population of 10,000 People",
+				  "borderColor": "black",
+				  "backgroundColor": ["#ACADBC","#473BF0"],
+				  "data": [59, 41],
+				  "borderWidth": "2"
+				}
+			  ]
+		  }
+	},
+	"description":"",
+	"body":[
+		{
+			"header":"Gender Identity",
+			"type":"",
+			"content":["Gender Identity is the concept of self; male, female, both, neither and more. It\'s an individual\'s unique perception of who they are. Gender identity may match assigned sex at birth but many don\'t fit in these assigned categories. 69.5% of youth between 13-18 years old within the LGBTQ+ community identify as at least one non-cisgender (male/female) identity according to a 2023 survey conducted by the Human Rights Campaign (HRC). These gender identities are expressed by people\'s characteristics, clothing, behavior and notably through preferred names and pronouns. The same survey shows a clear link between the usage of preferred names and pronouns by those around an individual and a reduction in anxiety and depression."]
+		},
+        {
+            "header": "",
+            "type": "links",
+            "content": [
+                {
+                    "name": "2023 LGBTQ+ Youth Report Survey",
+                    "link": "https://reports.hrc.org/2023-lgbtq-youth-report?_ga=2.167609654.968366084.1711659164-297823230.1711659164#gender-identity"
+                }
+            ]
+        },
+		{
+			"header":"",
+			"type":"",
+			"content":["As the LGBTQ+ community continues to expand, as it has within the past two decades, it\'s important to stay open. Laws continue to be passed nationwide to keep up with this growth, serving to protect members of these communities from harassment and discrimination. Those who identify outside of the traditional male or female gender identities have been perpetual targets for hate speech and violence. Adapting to new practices when it comes to gender identity is crucial to creating a safe and positive environment, whether that be within the workplace, classrooms, or at home."]
+		},
+        {
+            "header": "",
+            "type": "image",
+            "content" : {
+                "image":"/pronoun_guide.png",
+                "alt":"Pronouns- A How To Guide",
+                "sub_caption":"Figure 1",
+                "caption":"A Guide to Effective use of Pronouns"
+            }
+        },
+        {
+            "header": "Gender Inclusivity in the Workplace",
+            "type": "",
+            "content": ["One company that has strived for acceptance and inclusion is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an inclusive environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
+        },
+        {
+            "header": "",
+            "type": "links",
+            "content": [
+                {
+                    "name": "Fostering Inclusive Environments in the Workplace",
+                    "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx#:~:text=A%20model%20inclusion%20policy%20created,a%20court%2Dordered%20name%20change."
+                },
+                {
+                    "name": "Using Preferred Names at Work",
+                    "link": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+                }
+            ]
+        },
+        {
+            "header": "",
+            "type": "",
+            "content": ["These practices should be reflected throughout any institutions, including gender inclusive terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, the inclusion of preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
+        }
+	],
+	"footer":{
+		"links":[
+			{
+				"name":"Approaching Gender in Software Products",
+				"link":"https://blog.carbonfive.com/approaching-gender-in-software-products/"
+			}
+		]
+	}
+}',
+'[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use inclusive language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Inclusivity","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[
+
+  {
+    "question": "What does gender refer to?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "A person’s assigned sex at birth"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "A person’s unique perception of who they are"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "The sex other people perceive a person as"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Why is it important to respect someone’s chosen pronouns/name?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "To show respect to others"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "It can lead to a decrease in anxiety"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "To foster an inclusive environment"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "All of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Which of the following could be used to add gender-inclusive features to software?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "Making everything rainbow colored"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Adding an ‘other’ text field when asking for gender"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Mandating/requiring users to input their gender"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Adjust font size, font color, and text alignment"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "ADP, an HR and Payroll consulting company, has recently strived for inclusiveness in which of the following ways?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Advocates for the importance of using preferred names"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Outline the best practices for using preferred names at work"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Harshly reprimanding anyone who doesn’t follow these social standards"
+      },
+      {
+        "val": 1,
+        "type": "3",
+        "content": "Become familiar with and consistent with someone’s preferred pronouns"
+      }
+    ],
+    "multiChoice": true
+  },
+  {
+    "question": "What percentage of youth surveyed want to be open about their gender identity at their future job?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "76%"
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "31%"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "12%"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "This hasn’t been surveyed before."
+      }
+    ],
+    "multiChoice": false
+  }
+]', true);    
+
+
+
+
+
+
+>>>>>>> b78c9a68b904433edf8fdbbac0616cc61bd1b65c
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
 (2, 'Samuel', 'Malachowsky', 'PI', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]
