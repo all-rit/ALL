@@ -56,7 +56,7 @@ const FormRepairImplementation = (props = {}) => {
               <MultiTab numberOfTabs={2} />
               {item.userInput ? (
                 <CodeBlockInput
-                  value={item.userInput}
+                  defaultValue={item.userInput}
                   attributes={{
                     onChange: (event) => {
                       handleUserInputChange(item.id, event.target.value);
@@ -127,7 +127,7 @@ const FormRepairImplementation = (props = {}) => {
               <JSONText>{item.variableName}:</JSONText>
               {item.userInput ? (
                 <CodeBlockInput
-                  value={item.userInput}
+                  defaultValue={item.userInput}
                   attributes={{
                     onChange: (event) => {
                       handleUserInputChange(item.id, event.target.value);

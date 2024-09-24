@@ -5,9 +5,7 @@ import React from "react";
 
 const PostWrongDiploma = () => {
   const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise/FormRepair`, // LINK TO REPAIR SECTION
-    );
+    navigate(`/Lab12/Exercise/FormRepair`);
   };
 
   return (

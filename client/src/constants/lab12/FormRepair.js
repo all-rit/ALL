@@ -1,4 +1,4 @@
-const IdentityFormData = {
+let IdentityFormData = {
   constData: [
     {
       id: 0,

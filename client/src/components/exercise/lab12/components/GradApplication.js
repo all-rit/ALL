@@ -1,5 +1,4 @@
-import { React, useState, useEffect, useContext } from "react";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import React, { useState, useEffect, useContext } from "react";
 import useMainStateContext from "src/reducers/MainContext";
 import ExerciseStateContext from "../Lab12Context";
 import { navigate } from "@reach/router";
@@ -13,7 +12,7 @@ import {
 } from "reactstrap";
 
 const GradApplication = () => {
-  const { actions, state } = useMainStateContext();
+  const { state } = useMainStateContext();
   const user = state.main.user;
 
   const [isRepairComplete, setIsRepairComplete] = useState(false);
@@ -37,7 +36,6 @@ const GradApplication = () => {
   };
 
   useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
     fetchExercise();
   }, []);
 
@@ -181,12 +179,7 @@ const GradApplication = () => {
   const handleSubmit = () => {
     validateInput();
     if (!isFormError) {
-      // navigate to pre explanation or post explanation, depending on if repair is complete
-      if (isRepairComplete) {
-        navigate(`/Lab12/Exercise/PreCorrectDiploma`);
-      } else {
-        navigate(`/Lab12/Exercise/PreWrongDiploma`);
-      }
+      navigate(`/Lab12/Exercise/PreWrongDiploma`);
     }
   };
 
@@ -307,7 +300,7 @@ const GradApplication = () => {
                     toggle={() => setDropdownOpen(!dropdownOpen)}
                     isOpen={dropdownOpen}
                   >
-                    <DropdownToggle className={"bg-primary"} caret>
+                    <DropdownToggle color={"secondary"} caret>
                       {dropdownLabel}
                     </DropdownToggle>
                     <DropdownMenu>
