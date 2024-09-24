@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 const db = require('../database');
 
-exports.completeAbout= (data)=>{
+completeAbout= (data)=>{
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -35,7 +35,8 @@ exports.completeAbout= (data)=>{
   }
   return Promise.resolve();
 };
-exports.completeReading= (data)=>{
+
+completeReading= (data)=>{
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -67,7 +68,8 @@ exports.completeReading= (data)=>{
   }
   return Promise.resolve();
 };
-exports.completeExercise = (data)=> {
+
+completeExercise = (data)=> {
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -99,7 +101,8 @@ exports.completeExercise = (data)=> {
   }
   return Promise.resolve();
 };
-exports.completeReinforcement= (data)=>{
+
+completeReinforcement = (data)=>{
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -131,7 +134,8 @@ exports.completeReinforcement= (data)=>{
   }
   return Promise.resolve();
 };
-exports.completeQuiz= (data)=>{
+
+completeQuiz= (data)=>{
   const usersessionid = data.usersessionid;
   const labid = data.labid;
   const datetime = data.date;
@@ -172,7 +176,7 @@ exports.completeQuiz= (data)=>{
   return Promise.resolve();
 };
 
-exports.userCompleteAbout= (data)=>{
+userCompleteAbout= (data)=>{
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -214,7 +218,8 @@ exports.userCompleteAbout= (data)=>{
   }
   return Promise.resolve();
 };
-exports.userCompleteReading= (data)=>{
+
+userCompleteReading = (data)=>{
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -256,7 +261,8 @@ exports.userCompleteReading= (data)=>{
   }
   return Promise.resolve();
 };
-exports.userCompleteExercise = (data)=> {
+
+userCompleteExercise = (data)=> {
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -298,7 +304,8 @@ exports.userCompleteExercise = (data)=> {
   }
   return Promise.resolve();
 };
-exports.userCompleteReinforcement= (data)=>{
+
+userCompleteReinforcement = (data)=>{
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -340,7 +347,8 @@ exports.userCompleteReinforcement= (data)=>{
   }
   return Promise.resolve();
 };
-exports.userCompleteQuiz= (data)=>{
+
+userCompleteQuiz = (data)=>{
   const userid = data.userid;
   const labid = data.labid;
   const datetime = data.date;
@@ -387,7 +395,7 @@ exports.userCompleteQuiz= (data)=>{
 };
 
 
-exports.getUserLabCompletion = (userid, labid) => {
+getUserLabCompletion = (userid, labid) => {
   if (userid) {
     return db.UserLabCompletion
         .findOne({
@@ -406,16 +414,35 @@ exports.getUserLabCompletion = (userid, labid) => {
   return Promise.resolve;
 };
 
-exports.getUserLabRecords = (userid) => {
-  if (userid) {
-    return db.sequelize.query(
-        `SELECT * FROM "userlabcompletion" 
+getUserLabRecords = async (userid) => {
+  try {
+    if (userid) {
+      return db.sequelize.query(
+          `SELECT * FROM "userlabcompletion" 
 			JOIN "labs" ON  "userlabcompletion"."labid"="labs"."id" 
 			WHERE "userlabcompletion"."userid"=(:userID)
 		    `, {
-          replacements: {userID: userid},
-          type: db.sequelize.QueryTypes.SELECT,
-          raw: true,
-        });
+            replacements: {userID: userid},
+            type: db.sequelize.QueryTypes.SELECT,
+            raw: true,
+          });
+    }
+  } catch (error) {
+    console.warn('Error getting user lab records', error);
   }
+};
+
+module.exports = {
+  completeAbout,
+  completeReading,
+  completeExercise,
+  completeReinforcement,
+  completeQuiz,
+  userCompleteAbout,
+  userCompleteReading,
+  userCompleteExercise,
+  userCompleteReinforcement,
+  userCompleteQuiz,
+  getUserLabCompletion,
+  getUserLabRecords,
 };
