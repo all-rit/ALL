@@ -25,7 +25,7 @@ const FormSkipToMainBroken = () => {
   const name = "FormSkipToMainBroken";
 
   return (
-    <Fragment>
+    <Fragment className="tw-z-50">
       <ExtraNav />
       <AppInstructions
         className={classState}

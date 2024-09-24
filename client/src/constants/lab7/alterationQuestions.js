@@ -1,18 +1,7 @@
-import React from "react";
-import { MathComponent } from "mathjax-react";
-
-const formulateEquation = (equation) => {
-  return (
-    <div className={"tw-flex tw-flex-col"}>
-      <MathComponent tex={String.raw`New\;Utility\;Equation=${equation}`} />
-    </div>
-  );
-};
-
 const alterationQuizQuestions = [
   // "U = File Sensitivity Level^2 / Threat Level"
   {
-    question: formulateEquation("\\frac{(Reward\\;Value)^2}{Cost\\;Value}"),
+    question: "\\frac{(Reward\\;Value)^2}{Cost\\;Value}",
     answers: [
       {
         val: 0,
@@ -42,7 +31,7 @@ const alterationQuizQuestions = [
   },
   // "U = File Sensitivity Level / Threat Level^2",
   {
-    question: formulateEquation("\\frac{Reward\\;Value}{(Cost\\;Value)^2}"),
+    question: "\\frac{Reward\\;Value}{(Cost\\;Value)^2}",
     answers: [
       {
         val: 0,
@@ -72,9 +61,7 @@ const alterationQuizQuestions = [
   },
   {
     // "U = (File Sensitivity Level * Threat Level) / File Sensitivity Level"
-    question: formulateEquation(
-      "\\frac{Reward\\;Value*Cost\\;Value}{Reward\\;Value}",
-    ),
+    question: "\\frac{Reward\\;Value*Cost\\;Value}{Reward\\;Value}",
     answers: [
       {
         val: 0,
@@ -104,7 +91,7 @@ const alterationQuizQuestions = [
   },
   // "U = (File Sensitivity Level * 2) / Threat Level"
   {
-    question: formulateEquation("\\frac{Reward\\;Value*2}{Cost\\;Value}"),
+    question: "\\frac{Reward\\;Value*2}{Cost\\;Value}",
     answers: [
       {
         val: 0,

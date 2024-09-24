@@ -1,8 +1,10 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { navigate } from "@reach/router";
 import ImagineService from "../../../services/ImagineService";
+import PropTypes from "prop-types";
+
+const section = "discomfortCountNonPOC";
 
 const ExpressionExercise = (props) => {
   const { setCount, count, userID } = props;
@@ -26,7 +28,8 @@ const ExpressionExercise = (props) => {
   };
 
   const handleNext = () => {
-    ImagineService.discomfortCount(userID, timeStamps);
+    const body = { userID: userID, section, study: timeStamps };
+    ImagineService.postStudy(body);
     navigate("/Imagine/ExpressionScore");
   };
 
@@ -53,7 +56,7 @@ const ExpressionExercise = (props) => {
             ref={reactPlayer}
             width="960px"
             height="615px"
-            url="https://www.youtube.com/watch?v=k_A93MYFkzc"
+            url="https://www.youtube.com/watch?v=414ICZRkOH4"
             onStart={() => {
               setShowContinue(false);
             }}
@@ -86,6 +89,12 @@ const ExpressionExercise = (props) => {
       )}
     </div>
   );
+};
+
+ExpressionExercise.propTypes = {
+  setCount: PropTypes.func,
+  count: PropTypes.number,
+  userID: PropTypes.string,
 };
 
 export default ExpressionExercise;

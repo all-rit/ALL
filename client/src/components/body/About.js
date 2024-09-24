@@ -30,8 +30,10 @@ const About = (props) => {
   }
 
   return (
-    <div className="study">
-      <p>{aboutText?.about}</p>
+    <div className="study tw-position-relative tw-bg-labYellow tw-rounded-3xl shadow">
+      <div className="study tw-position-absolute questionContainer tw-bg-labLightGray p-4 tw-rounded-3xl shadow">
+        <p>{aboutText?.about}</p>
+      </div>
     </div>
   );
 };

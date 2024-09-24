@@ -15,8 +15,6 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import FormCheckbox from "./FormCheckbox";
-import DeleteModal from "./DeleteModal";
 
 const GroupForm = (props) => {
   const {
@@ -29,152 +27,119 @@ const GroupForm = (props) => {
     assignedLabs,
   } = props;
   const [labs, setLabs] = useState([]);
-  // eslint-disable-next-line
-  const [setState, setSetState] = useState(0);
-  const labsAssigned = [];
-  if (assignedLabs !== undefined) {
-    assignedLabs.forEach((data) => {
-      labsAssigned.push(data.labID);
-    });
-  }
-
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-    // This cursed line of code will:
-    //  1. Grab the form with e.target
-    //  2. Create an instance of a FormData object from ReactStrap using the form data
-    //  3. Get the fields in that FormData object
-    //  4. Create a new object from those entries, our new object will be an Object and not FormData
-    // Essentially, this is just a really long winded way of casting FormData to Object, since
-    // apparently that's necessary despite this not being an object-oriented or strongly typed language
-    // Please refactor this eventually, for the love of all that is holy
-    const formData = Object.fromEntries(new FormData(e.target).entries());
-    const labs = [];
-    for (const [key, value] of Object.entries(formData)) {
-      if (value === "on") {
-        labs.push(parseInt(key));
-      }
-    }
-
-    switch (addMode) {
-      case "add_instr_grp":
-        const groupName =
-          formData.groupName !== "" ? formData.groupName : "Default Group Name";
-        GroupService.createGroup(user.userid, groupName).then((data) => {
-          labs.forEach((labID) => {
-            GroupService.addGroupLab(data.groupID, labID);
-            setInstrGroupsUpdated(true);
-          });
-          setInstrGroupsUpdated(true);
-        });
-        break;
-      case "update_grp_lab":
-        if (groupID) {
-          if (formData.groupName !== "") {
-            GroupService.updateGroup(groupID, formData.groupName);
-          }
-          labsAssigned.forEach((labID) => {
-            if (!labs.includes(labID)) {
-              GroupService.deleteGroupLab(groupID, labID).then(() =>
-                setInstrGroupsUpdated(true),
-              );
-            }
-          });
-          labs.forEach((labID) => {
-            if (!labsAssigned.includes(labID)) {
-              GroupService.addGroupLab(groupID, labID).then(() =>
-                setInstrGroupsUpdated(true),
-              );
-            }
-          });
-          setInstrGroupsUpdated(true);
-        }
-        break;
-      default: // this is the case for enrolling in a group
-        console.log("Group Form Default Case");
-    }
-
-    // Always toggle the modal
-    toggle();
-  };
+  const [checkedLabs, setCheckedLabs] = useState({});
 
   useEffect(() => {
     LabService.getAllLabs().then((data) => {
       setLabs(data);
+      const initialCheckedState = {};
+      if (assignedLabs) {
+        assignedLabs.map((lab) => {
+          initialCheckedState[lab.labID] = true;
+        });
+      }
+      setCheckedLabs(initialCheckedState);
     });
-  }, [setState]);
+  }, [assignedLabs]);
 
-  switch (addMode) {
-    case "add_instr_grp":
-      return (
-        <Form onSubmit={onFormSubmit}>
-          <ModalBody>
-            <FormGroup>
-              <Label for="groupName">Group name</Label>
+  const toggleCheck = (labID) => {
+    setCheckedLabs((prevCheckedLabs) => ({
+      ...prevCheckedLabs,
+      [labID]: !prevCheckedLabs[labID],
+    }));
+  };
+
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData(e.target);
+      const groupName = formData.get("groupName") || "Default Group Name";
+
+      let selectedLabs = Object.keys(checkedLabs)
+        .filter((labID) => checkedLabs[labID])
+        .map((labID) => parseInt(labID));
+
+      if (addMode === "add_instr_grp") {
+        const newGroup = await GroupService.createGroup(user.userid, groupName);
+
+        const addLabPromises = selectedLabs.map((labID) => {
+          GroupService.addGroupLab(newGroup.id, labID);
+        });
+
+        await Promise.all(addLabPromises);
+      } else if (addMode === "update_grp_lab" && groupID) {
+        if (formData.get("groupName") !== props.groupName) {
+          await GroupService.updateGroup(groupID, formData.get("groupName"));
+        }
+
+        for (const lab in checkedLabs) {
+          if (Array.isArray(assignedLabs)) {
+            if (
+              !assignedLabs.includes(lab.labID) ||
+              assignedLabs.length === 0
+            ) {
+              await GroupService.addGroupLab(groupID, `${lab}`);
+            }
+          } else {
+            await GroupService.addGroupLab(groupID, `${lab}`);
+          }
+        }
+
+        if (Array.isArray(assignedLabs)) {
+          assignedLabs.forEach((lab) => {
+            if (!selectedLabs.includes(lab.labID)) {
+              GroupService.deleteGroupLab(groupID, lab.labID);
+            }
+          });
+        }
+      }
+      setInstrGroupsUpdated(true);
+      props.toggle();
+    } catch (error) {
+      console.error("Error in form submission:", error);
+    }
+  };
+
+  return (
+    <Form onSubmit={onFormSubmit}>
+      <ModalBody>
+        <FormGroup>
+          <Label for="groupName">Group Name</Label>
+          <Input
+            type="text"
+            name="groupName"
+            id="groupName"
+            defaultValue={groupName}
+            placeholder="Enter Group Name"
+          />
+        </FormGroup>
+        <FormGroup check>
+          <Label for="assign-lab">Choose labs to assign</Label>
+          {labs.map((lab) => (
+            <div key={lab.id}>
               <Input
-                type="text"
-                name="groupName"
-                id="groupName"
-                placeholder={"SWEN 344 Web Engineering Fall 2021"}
+                type="checkbox"
+                name={lab.id}
+                id={"lab" + lab.id}
+                checked={!!checkedLabs[lab.id]}
+                onChange={() => toggleCheck(lab.id)}
               />
-            </FormGroup>
-            <FormGroup check>
-              <Label for="assign-lab">Choose labs to assign</Label>
-              {labs.map((lab) => (
-                <FormCheckbox isChecked={false} lab={lab} />
-              ))}
-            </FormGroup>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" type="submit">
-              Create Group
-            </Button>
-            <Button color="secondary" onClick={toggle}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Form>
-      );
-    case "update_grp_lab":
-      return (
-        <Form onSubmit={onFormSubmit}>
-          <ModalBody>
-            <FormGroup>
-              <Label for="groupName">Group name</Label>
-              <Input
-                type="text"
-                name="groupName"
-                id="groupName"
-                placeholder={groupName}
-              />
-            </FormGroup>
-            <FormGroup check>
-              <Label for="assign-lab">Choose labs to assign</Label>
-              {labs.map((lab) => (
-                <FormCheckbox
-                  isChecked={labsAssigned.includes(lab.id)}
-                  lab={lab}
-                />
-              ))}
-            </FormGroup>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" type="submit">
-              Update Group
-            </Button>
-            <DeleteModal
-              mainToggle={toggle}
-              groupID={groupID}
-              setInstrGroupsUpdated={setInstrGroupsUpdated}
-            />
-            <Button color="secondary" onClick={toggle}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Form>
-      );
-    default:
-      return <></>;
-  }
+              <Label for={"lab" + lab.id}>{lab.labShortName}</Label>
+            </div>
+          ))}
+        </FormGroup>
+      </ModalBody>
+      <ModalFooter>
+        <Button color="primary" type="submit">
+          {addMode === "add_instr_grp" ? "Create Group" : "Update Group"}
+        </Button>
+        <Button color="secondary" onClick={toggle}>
+          Cancel
+        </Button>
+      </ModalFooter>
+    </Form>
+  );
 };
+
 export default GroupForm;

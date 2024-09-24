@@ -39,7 +39,7 @@ const AddModal = (props) => {
           if (response.status === 200) {
             alert("Successfully enrolled in group!");
             groupsUpdated(true);
-            toggle();
+            toggleModal();
           } else {
             alert(response.error);
           }
@@ -48,7 +48,9 @@ const AddModal = (props) => {
     }
   };
 
-  const toggle = () => setModal(!modal);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   switch (addMode) {
     case "add_instr_grp":
@@ -57,14 +59,18 @@ const AddModal = (props) => {
           <button
             className="btn btn-second groups__create_btn"
             aria-label="add"
-            onClick={toggle}
+            onClick={toggleModal}
           >
             Create Group
           </button>
-          <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
-            <ModalHeader>Create an instructing group</ModalHeader>
+          <Modal
+            isOpen={modal}
+            toggle={toggleModal}
+            className="add_instr_grp_modal"
+          >
+            <ModalHeader>Create an Instructing Group</ModalHeader>
             <GroupForm
-              toggle={toggle}
+              toggle={toggleModal}
               setInstrGroupsUpdated={setInstrGroupsUpdated}
               user={user}
               groupID={groupID}
@@ -76,17 +82,22 @@ const AddModal = (props) => {
     case "update_grp_lab":
       return (
         <>
-          <button
-            className="btn btn-second groups__labs__btn"
+          <Button
+            color="secondary"
+            className="m-3"
             aria-label="add"
-            onClick={toggle}
+            onClick={toggleModal}
           >
             Update Group
-          </button>
-          <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
-            <ModalHeader>Update an instructing group</ModalHeader>
+          </Button>
+          <Modal
+            isOpen={modal}
+            toggle={toggleModal}
+            className="add_instr_grp_modal"
+          >
+            <ModalHeader>Update an Instructing Group</ModalHeader>
             <GroupForm
-              toggle={toggle}
+              toggle={toggleModal}
               setInstrGroupsUpdated={setInstrGroupsUpdated}
               user={user}
               groupID={groupID}
@@ -103,12 +114,16 @@ const AddModal = (props) => {
           <button
             className="btn btn-second groups__create_btn"
             aria-label="add"
-            onClick={toggle}
+            onClick={toggleModal}
           >
             Enroll in Group
           </button>
-          <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
-            <ModalHeader>Enroll in an existing group</ModalHeader>
+          <Modal
+            isOpen={modal}
+            toggle={toggleModal}
+            className="add_instr_grp_modal"
+          >
+            <ModalHeader>Enroll in an Existing Group</ModalHeader>
 
             <Form onSubmit={handleInviteCodeSubmit}>
               <ModalBody>
@@ -126,7 +141,7 @@ const AddModal = (props) => {
                 <Button color="primary" onClick={handleInviteCodeSubmit}>
                   Enroll in Group
                 </Button>
-                <Button color="secondary" onClick={toggle}>
+                <Button color="secondary" onClick={toggleModal}>
                   Cancel
                 </Button>
               </ModalFooter>
