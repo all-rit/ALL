@@ -2,28 +2,17 @@
 
 import { navigate } from "@reach/router";
 import React from "react";
-import { useEffect } from "react";
-import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
 
 const PostWrongDiploma = () => {
-  const { actions } = useMainStateContext();
-
-  useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
-  }, []);
-
   const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise`, // LINK TO REPAIR SECTION
-    );
+    navigate(`/Lab12/Exercise/FormRepair`);
   };
 
   return (
     <div className="center-div">
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
-          As with before, the Alumni newsletter used your incorrect pronouns.
+          As with before, the alumni newsletter used your non-preferred name.
           Since we as a community should be as inclusive as possible to those
           around us, even if their beliefs contradict your own, this makes you
           unrecognized by your college, a place where you spent some much time

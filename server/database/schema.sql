@@ -390,6 +390,35 @@ create table lab9_repair
     primary key ("repairId")
 );
 
+<<<<<<< HEAD
+create type enum_lab12_repair_section as enum ('FormRepair', 'DatabaseRepair');
+
+create table lab12_repair (
+                              "repairId"    serial,
+                              userid        bigint,
+                              section       enum_lab12_repair_section,
+                              repair        json,
+                              "isComplete"  boolean,
+                              "attemptTime" timestamp with time zone,
+                              "repairCount" bigint,
+                              primary key ("repairId")
+);
+
+create table lab12_exercise
+(
+    "repairId"                         serial,
+    userid                             bigint,
+    "isFormRepairComplete"             boolean,
+    "isDatabaseRepairComplete"         boolean,
+    "attemptTime"                      timestamp with time zone,
+    "isExerciseComplete"               boolean,
+    "hasViewed"                        boolean,
+    "attemptCount"                     integer,
+    primary key ("repairId")
+);
+
+=======
+>>>>>>> 1d08b08828e6016124a4a3b080fcb04881f11081
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)

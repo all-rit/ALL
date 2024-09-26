@@ -15,11 +15,12 @@ import { PropTypes } from "prop-types";
  */
 
 const CodeBlockInput = (props) => {
-  const { attributes, value } = props;
+  const { attributes, value, defaultValue } = props;
   return (
     <>
       <input
         value={value}
+        defaultValue={defaultValue}
         className={"tw-p-1 code_editor__input"}
         {...attributes}
       />
@@ -29,6 +30,7 @@ const CodeBlockInput = (props) => {
 
 CodeBlockInput.propTypes = {
   value: PropTypes.string,
+  defaultValue: PropTypes.string,
   attributes: PropTypes.object,
 };
 

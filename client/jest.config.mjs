@@ -177,6 +177,7 @@ const config = {
   moduleNameMapper: {
     "\\.(mp3|wav|jpg|jpeg|png|gif|webp|svg|css)$":
       "<rootDir>/test/__mocks__/fileMock.js",
+    "^src/(.*)$": "<rootDir>/src/$1",
   },
 
   // A map from regular expressions to paths to transformers

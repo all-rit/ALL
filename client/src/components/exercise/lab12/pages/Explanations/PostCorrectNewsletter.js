@@ -4,30 +4,38 @@ import { navigate } from "@reach/router";
 import React from "react";
 import { useEffect } from "react";
 import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
 
 const PostCorrectNewsletter = () => {
-  const { actions } = useMainStateContext();
+  const { state } = useMainStateContext();
+
+  const setExerciseComplete = async () => {
+    const body = {
+      userid: state.main.user.userid,
+      isFormRepairComplete: false,
+      isDatabaseRepairComplete: false,
+      hasViewed: true,
+    };
+    await ExerciseService.submitExercise(body);
+  };
 
   useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
+    setExerciseComplete();
   }, []);
 
   const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise/Explanations/KeyTakeaways`, // LINK TO KEY TAKEAWAYS
-    );
+    navigate(`/Lab12/Exercise/KeyTakeaways`);
   };
 
   return (
     <div className="center-div">
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
-          This time the alumni newsletter uses your preferred name and pronouns,
-          even years after you graduated. This not only affirms your beliefs in
-          who you are, it also makes you proud of your school and hopeful for
-          the next generation of people who identify outside of their given sex
-          and name at birth.
+          This time the alumni newsletter uses your preferred name, even years
+          after you graduated. This not only affirms your beliefs in who you
+          are, it also makes you proud of your school and hopeful for the next
+          generation of people who identify outside of their given sex and name
+          at birth.
         </p>
       </div>
       <div className="playthrough__sentence">

@@ -1,35 +1,54 @@
 // Pre Wrong Diploma (Page #2)
 
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import useMainStateContext from "src/reducers/MainContext";
-import { EXERCISE_PLAYING } from "src/constants/index";
+import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
 
 const PreWrongDiploma = () => {
-  const { actions } = useMainStateContext();
+  const { state } = useMainStateContext();
+  const user = state.main.user;
+
+  const [isRepairComplete, setIsRepairComplete] = useState(false);
+  const fetchExercise = async () => {
+    try {
+      const currentExercise = await ExerciseService.fetchExercise({
+        userid: user.userid,
+      });
+      setIsRepairComplete(currentExercise.isFormRepairComplete);
+    } catch (error) {
+      console.error("Could not fetch exercise: ", error);
+    }
+  };
 
   useEffect(() => {
-    actions.updateUserState(EXERCISE_PLAYING);
+    fetchExercise();
   }, []);
 
   const handleContinue = () => {
-    navigate(
-      `/Lab12/Exercise`, // LINK TO OWEN's FIRST DIPLOMA (wrong pronouns)
-    );
+    navigate(`/Lab12/Exercise/Diploma`);
   };
 
   return (
     <div className="center-div">
       <div className="guidance margin-bottom-2">
-        <p className="playthrough__sentence">
-          Congratulations, you’ve graduated from ALL University! You attend
-          graduation to walk the stage! However, without being prompted for your
-          pronouns, the Dean uses your wrong pronouns at graduation! Since the
-          form you filled out never prompted you for a preferred name or
-          pronouns, this lack of recognition of your identity in front of
-          everyone leaves you saddened and embarrassed.
-        </p>
+        {isRepairComplete ? (
+          <p className="playthrough__sentence">
+            Great job! Now that you&apos;ve updated the graduation application,
+            you&apos;re excited to receive your newly minted diploma that shows
+            respect for your preferred name and pronouns.
+          </p>
+        ) : (
+          <p className="playthrough__sentence">
+            Congratulations, you’ve graduated from ALL University! You attend
+            graduation to walk the stage. However, without being prompted for
+            your pronouns, the Dean uses your wrong pronouns at graduation!
+            Since the form you filled out never prompted you for a preferred
+            name or pronouns, this lack of recognition of your identity in front
+            of everyone leaves you saddened and embarrassed.
+          </p>
+        )}
       </div>
       <div className="playthrough__sentence">
         Click the &quot;Continue to Diploma&quot; button.

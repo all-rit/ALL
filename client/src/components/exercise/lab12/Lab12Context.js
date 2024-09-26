@@ -1,7 +1,21 @@
 import { createContext } from "react";
-const GameStateContext = createContext({
+const ExerciseStateContext = createContext({
   exerciseState: "",
   setExerciseState: () => {},
+  firstName: "",
+  setFirstName: () => {},
+  lastName: "",
+  setLastName: () => {},
+  preferredName: "",
+  setPreferredName: () => {},
+  pronouns: "",
+  setPronouns: () => {},
+  college: "",
+  setCollege: () => {},
+  major: "",
+  setMajor: () => {},
+  gradTerm: "",
+  setGradTerm: () => {},
 });
 
-export default GameStateContext;
+export default ExerciseStateContext;
