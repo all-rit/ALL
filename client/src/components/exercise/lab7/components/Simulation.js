@@ -49,7 +49,6 @@ const Simulation = () => {
 
   useEffect(() => {
     if (counter >= 0) {
-      console.log(state);
       if (counter < files.length) {
         switch (files[counter].result) {
           case FILE_PROTECTED:

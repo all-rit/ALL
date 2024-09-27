@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const UserLabService = require('../services/UserLabService');
 
-exports.completeAbout = (req, res) => {
+completeAbout = (req, res) => {
   UserLabService.completeAbout({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -11,7 +11,7 @@ exports.completeAbout = (req, res) => {
   });
 };
 
-exports.completeReading = (req, res) => {
+completeReading = (req, res) => {
   UserLabService.completeReading({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -21,7 +21,7 @@ exports.completeReading = (req, res) => {
   });
 };
 
-exports.completeExercise = (req, res) => {
+completeExercise = (req, res) => {
   UserLabService.completeExercise({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -31,7 +31,7 @@ exports.completeExercise = (req, res) => {
   });
 };
 
-exports.completeReinforcement = (req, res) => {
+completeReinforcement = (req, res) => {
   UserLabService.completeReinforcement({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -41,7 +41,7 @@ exports.completeReinforcement = (req, res) => {
   });
 };
 
-exports.completeQuiz = (req, res) => {
+completeQuiz = (req, res) => {
   UserLabService.completeQuiz({
     labid: req.body.labid,
     usersessionid: req.session.token,
@@ -53,7 +53,7 @@ exports.completeQuiz = (req, res) => {
   });
 };
 
-exports.userCompleteAbout = (req, res) => {
+userCompleteAbout = (req, res) => {
   UserLabService.userCompleteAbout({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -63,7 +63,7 @@ exports.userCompleteAbout = (req, res) => {
   });
 };
 
-exports.userCompleteReading = (req, res) => {
+userCompleteReading = (req, res) => {
   UserLabService.userCompleteReading({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -73,7 +73,7 @@ exports.userCompleteReading = (req, res) => {
   });
 };
 
-exports.userCompleteExercise = (req, res) => {
+userCompleteExercise = (req, res) => {
   UserLabService.userCompleteExercise({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -83,7 +83,7 @@ exports.userCompleteExercise = (req, res) => {
   });
 };
 
-exports.userCompleteReinforcement = (req, res) => {
+userCompleteReinforcement = (req, res) => {
   UserLabService.userCompleteReinforcement({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -93,7 +93,7 @@ exports.userCompleteReinforcement = (req, res) => {
   });
 };
 
-exports.userCompleteQuiz = (req, res) => {
+userCompleteQuiz = (req, res) => {
   UserLabService.userCompleteQuiz({
     labid: req.body.labid,
     userid: req.body.userid,
@@ -104,7 +104,7 @@ exports.userCompleteQuiz = (req, res) => {
   });
 };
 
-exports.getUserLabCompletion = (req, res) => {
+getUserLabCompletion = (req, res) => {
   UserLabService.getUserLabCompletion({
     userID: req.params.userID,
     labID: req.params.labID,
@@ -113,14 +113,27 @@ exports.getUserLabCompletion = (req, res) => {
   });
 };
 
-exports.getUserLabCompletion = (req, res) => {
-  UserLabService.getUserLabCompletion(req.params.userID, req.params.labID).then((records) => {
-    res.json(records);
-  });
+getUserLabRecords = async (req, res) => {
+  try {
+    const labs = await UserLabService.getUserLabRecords(req.params.userID);
+    res.status(200).json(labs);
+  } catch (error) {
+    console.error('Error while executing getUserLabRecords', error);
+    res.status(500).json({error: error.message});
+  }
 };
 
-exports.getUserLabRecords = (req, res) => {
-  UserLabService.getUserLabRecords(req.params.userID).then((records) => {
-    res.json(records);
-  });
+module.exports = {
+  completeAbout,
+  completeReading,
+  completeExercise,
+  completeReinforcement,
+  completeQuiz,
+  userCompleteAbout,
+  userCompleteReading,
+  userCompleteExercise,
+  userCompleteReinforcement,
+  userCompleteQuiz,
+  getUserLabCompletion,
+  getUserLabRecords,
 };
