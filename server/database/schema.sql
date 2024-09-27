@@ -9,11 +9,22 @@ create table imagine22
         primary key (id)
 );
 
+create table enrollment
+(
+    id              serial,
+    "userID"        integer,
+    "groupID"       integer,
+    "enrolledDate"  DATE,
+    "isActive"      boolean,
+    primary key (id)
+);
+
 create table group_labs
 (
-    id        serial,
-    "groupID" integer,
-    "labID"   integer,
+    id         serial,
+    "groupID"  integer,
+    "labID"    integer,
+    "isActive" boolean,
     primary key (id)
 );
 
@@ -301,9 +312,9 @@ create table users
     lastinitial char,
     email1      text,
     email2      text,
-    primary key (userid),
-    unique (email1),
-    unique (email2)
+    PRIMARY KEY (userid),
+    UNIQUE (email1),
+    UNIQUE (email2)
 );
 
 create table lab8_exercise
@@ -378,7 +389,6 @@ create table lab9_repair
     "repairCount" bigint,
     primary key ("repairId")
 );
-
 
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
@@ -2156,13 +2166,13 @@ to test your knowledge. Click "Next" to start!', e'{
     {
 			"type":"ordered-list",
 			"content": [
-        "Human Rights", 
-        "Well-being", 
-        "Data Agency", 
-        "Effectiveness", 
-        "Transparency", 
-        "Accountability", 
-        "Awareness of Misuse", 
+        "Human Rights",
+        "Well-being",
+        "Data Agency",
+        "Effectiveness",
+        "Transparency",
+        "Accountability",
+        "Awareness of Misuse",
         "Competence"
       ]
 		},
@@ -2419,7 +2429,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content":["Localization is the process whereby the software, documentation, and user interface are adapted to suit the needs of different world markets and user segments, or what is known as a locale. As software engineers, the process that prepares software and digital content for subsequent localization, designing products from the ground up to support various languages and cultural norms without the need for redesign, is known as internationalization."]
         },
 		{
-            "header": "Examples of Localization Challenges", 
+            "header": "Examples of Localization Challenges",
             "type": "study__list",
             "content": ["Cultural Significance of Numbers: The number 13 is unlucky in the U.S. but lucky in Italy. This impacts product design and marketing strategies.","Content Adaptation for Cultural Relevance: The movie ‘Inside Out’ changed Riley’s disliked food from broccoli (U.S. version) to green peppers (Japanese version) to maintain cultural relatability.","Color Symbolism: White signifies purity in the West but mourning in many Asian cultures. This influences design and branding.","Date/Time Formats: The U.S. uses mm/dd/yy, Europe uses dd/mm/yy, and Japan uses yy/mm/dd. This is crucial for software interfaces and documentation.","Number Punctuation: In the United States, large numbers are separated with commas and decimals are separated with a period (e.g. 1,234.56), while in places like France, numbers the way these commas and periods are used is swapped (e.g. 1.234,56). Key for accuracy in financial transactions and data interpretation."]},
 		{
@@ -2870,7 +2880,7 @@ to test your knowledge. Click "Next" to start!', e'{
             "content":["According to the UI/UX research and consulting firm Nielsen Norman Group, the primary considerations when creating impactful web content are"]
         },
 		{
-            "header": "", 
+            "header": "",
             "type": "study__list",
             "content": ["Legibility: This refers to the visual design and typography\'s clarity.", "Readability: This concerns the level of complexity in words and sentence structures.", "Comprehension: Easy to understand and draw valid conclusions."]
         },
@@ -3048,7 +3058,6 @@ to test your knowledge. Click "Next" to start!', e'{
   }
 ]
 ', true);
-
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
 (2, 'Samuel', 'Malachowsky', 'PI', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]
