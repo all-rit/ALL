@@ -23,7 +23,10 @@ const InfoModal = (props) => {
     case "More Info":
       return (
         <ul>
-          <button className="btn-second btn btn-md" onClick={toggle}>
+          <button
+            className="tw-bg-labGray poppins tw-text-white tw-border-0 tw-ps-3 tw-text-xl"
+            onClick={toggle}
+          >
             {buttonLabel}
           </button>
           <Modal isOpen={modal} toggle={toggle} className={className}>

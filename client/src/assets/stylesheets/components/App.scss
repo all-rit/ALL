@@ -995,7 +995,11 @@ a.icon:hover {
     justify-content: space-evenly;
   }
   &__lab_title {
+    text-align: left;
     min-height: 63px;
+    text-decoration: none !important;
+    color: black !important;
+    cursor: pointer;
   }
   &__lab_button {
     font-family: "Open Sans", sans-serif;
@@ -1016,7 +1020,20 @@ a.icon:hover {
     padding-right: 20px;
     text-align: center;
   }
-
+  &__lab_difficulty {
+    background: transparent;
+    border: solid black 0.01rem;
+    border-radius: 50%;
+    height: 1rem;
+    width: 1rem;
+    &_filled {
+      background: blue;
+      border: solid black 0.01rem;
+      border-radius: 50%;
+      height: 1rem;
+      width: 1rem;
+    }
+  }
   &__bio {
     word-wrap: break-word;
     font-size: 18px;
@@ -1122,9 +1139,10 @@ p {
 }
 
 a {
-  color: var(--blue-text);
+  color: #000000;
+  text-decoration: none;
   &:hover {
-    color: #3e7bfe;
+    color: #4c4c4c;
   }
 }
 

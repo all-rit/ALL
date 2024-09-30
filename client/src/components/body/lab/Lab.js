@@ -18,6 +18,7 @@ const Lab = (props) => {
     authors,
     actions,
     labProgress,
+    difficulty,
   } = props;
   function getColor(labProgress) {
     if (labProgress !== null && labProgress !== undefined) {
@@ -34,10 +35,24 @@ const Lab = (props) => {
     }
   }
 
+  const displayDifficulty = () => {
+    const totalCircles = 3;
+    const rating = [];
+    for (let i = 1; i <= totalCircles; i++) {
+      rating.push(
+        <div
+          className={`tw-m-0.5 
+          ${i <= difficulty ? "module__lab_difficulty_filled" : "module__lab_difficulty"}`}
+        ></div>,
+      );
+    }
+    return <div className={"tw-flex tw-flex-row tw-ms-1"}>{rating}</div>;
+  };
+
   switch (progressState) {
     case "IN_PROGRESS":
       return (
-        <ul className="module__col module__lab_col">
+        <ul className="module__col module__lab_col tw-relative">
           <li>
             <a
               className="portfolio-link "
@@ -179,32 +194,42 @@ const Lab = (props) => {
               />
             </a>
           </li>
-          <ul className="module__caption">
-            <li className="module__title module__lab_title">
-              <a onClick={() => handleRedirect(actions, lab)} href="# ">
-                {name}
-              </a>
-            </li>
-            <li className="module__bio">{bio}</li>
-            <ul className="module__bio module__lab_buttons">
-              <li>
-                <button
-                  className="btn-primary btn btn-md"
-                  onClick={() => handleRedirect(actions, lab)}
-                >
-                  Launch Lab
-                </button>
-              </li>
-              <InfoModal
-                buttonLabel={"More Info"}
-                labName={name}
-                fullDescription={fullDescription}
-                learningObjectives={learningObjectives}
-                authors={authors}
-                redirect={() => handleRedirect(actions, lab)}
-              />
-            </ul>
-          </ul>
+          <div className={"tw-flex tw-flex-row tw-justify-between"}>
+            <div
+              className={
+                "tw-flex tw-flex-row poppins tw-font-medium tw-text-sm tw-p-3"
+              }
+            >
+              Difficulty: {displayDifficulty()}
+            </div>
+            <div className="module__bio module__lab_buttons">
+              <button
+                className="tw-bg-labYellow poppins tw-border-0 tw-ps-3 tw-text-xl tw-absolute tw-right-0 tw-bottom-40"
+                onClick={() => handleRedirect(actions, lab)}
+              >
+                Launch Lab
+              </button>
+              <div className={"tw-absolute tw-right-0 tw-top-36"}>
+                <InfoModal
+                  buttonLabel={"More Info"}
+                  labName={name}
+                  fullDescription={fullDescription}
+                  learningObjectives={learningObjectives}
+                  authors={authors}
+                  redirect={() => handleRedirect(actions, lab)}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="module__title module__lab_title tw-m-5">
+            <div className={"tw-font-medium tw-text-sm"}>
+              {" "}
+              Accessible Learning Labs
+            </div>
+            <a onClick={() => handleRedirect(actions, lab)} href="# ">
+              {name}
+            </a>
+          </div>
         </ul>
       );
   }

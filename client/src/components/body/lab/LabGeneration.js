@@ -15,6 +15,7 @@ function renderLabData(actions, labInfo, progressState, index, labRecord) {
     fullDescription,
     learningObjectives,
     authors,
+    difficulty,
   } = labInfo; // destructuring
   return (
     <Lab
@@ -30,6 +31,7 @@ function renderLabData(actions, labInfo, progressState, index, labRecord) {
       authors={authors}
       actions={actions}
       labProgress={labRecord}
+      difficulty={difficulty}
     />
   );
 }
@@ -43,6 +45,7 @@ const LabGeneration = (props) => {
         return LabService.getAllLabs();
       }
       fetchGroups().then((data) => {
+        console.log(data);
         let arr = [];
         data.map((lab) => {
           arr[lab.id - 1] = lab;
