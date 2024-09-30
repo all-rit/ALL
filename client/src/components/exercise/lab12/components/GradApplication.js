@@ -8,7 +8,10 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
+  Form,
+  FormGroup,
   Input,
+  Label,
 } from "reactstrap";
 
 const GradApplication = () => {
@@ -39,7 +42,6 @@ const GradApplication = () => {
     fetchExercise();
   }, []);
 
-  // will need to update
   const {
     firstName,
     setFirstName,
@@ -176,7 +178,8 @@ const GradApplication = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     validateInput();
     if (!isFormError) {
       navigate(`/Lab12/Exercise/PreWrongDiploma`);
@@ -184,7 +187,7 @@ const GradApplication = () => {
   };
 
   return (
-    <div>
+    <Form onSubmit={handleSubmit}>
       <div className="tw-flex tw-justify-center">
         <div className="tw-mt-10 tw-shadow-2xl-top-bottom tw-rounded-3xl tw-min-w-72 tw-w-9/12 lg:tw-w-7/12 tw-h-full tw-p-10">
           <h1 className="tw-text-3xl tw-font-bold tw-mb-8">
@@ -194,13 +197,14 @@ const GradApplication = () => {
             <h2 className="tw-text-xl tw-font-semibold tw-mb-1.5">
               Personal Information:{" "}
             </h2>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label htmlFor="firstName" className="tw-pr-8">
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label htmlFor="firstName" className="tw-pr-8 tw-mb-0">
                 <span className="tw-text-error-red">*</span>
                 Legal First Name:
-              </label>
+              </Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="firstName"
                   label="Legal First Name"
                   placeholder="Ex: Jane"
@@ -209,31 +213,32 @@ const GradApplication = () => {
                   }}
                 />
                 {fNameErr && (
-                  <label
+                  <Label
                     htmlFor="firstName"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     data-testid="invalid-char"
                   >
                     Error: Invalid character.
-                  </label>
+                  </Label>
                 )}
                 {fNameEmptyErr && (
-                  <label
+                  <Label
                     htmlFor="firstName"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                   >
                     Error: Input required.
-                  </label>
+                  </Label>
                 )}
               </div>
-            </div>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label htmlFor="lastName" className="tw-pr-8">
+            </FormGroup>
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label htmlFor="lastName" className="tw-pr-8 tw-mb-0">
                 <span className="tw-text-error-red">*</span>
                 Legal Last Name:
-              </label>
+              </Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="lastName"
                   placeholder="Ex: Smith"
                   onChange={(e) => {
@@ -241,29 +246,30 @@ const GradApplication = () => {
                   }}
                 />
                 {lNameErr && (
-                  <label
+                  <Label
                     htmlFor="lastName"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     data-testid="invalid-char"
                   >
                     Error: Invalid character.
-                  </label>
+                  </Label>
                 )}
                 {lNameEmptyErr && (
-                  <label
+                  <Label
                     htmlFor="lastName"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                   >
                     Error: Input required.
-                  </label>
+                  </Label>
                 )}
               </div>
-            </div>
+            </FormGroup>
             {isRepairComplete && (
-              <div className="sm:tw-flex tw-items-center tw-mb-6">
-                <label className="tw-pr-8">Preferred Name:</label>
+              <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+                <Label className="tw-pr-8 tw-mb-0">Preferred Name:</Label>
                 <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                   <Input
+                    type="text"
                     id="preferredName"
                     placeholder="Ex: Jay"
                     onChange={(e) => {
@@ -271,30 +277,30 @@ const GradApplication = () => {
                     }}
                   />
                   {preferredNameErr && (
-                    <label
+                    <Label
                       htmlFor="preferredName"
                       className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                       data-testid="invalid-char"
                     >
                       Error: Invalid character.
-                    </label>
+                    </Label>
                   )}
                   {preferredNameEmptyErr && (
-                    <label
+                    <Label
                       htmlFor="preferredName"
                       className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     >
                       Error: Input required.
-                    </label>
+                    </Label>
                   )}
                 </div>
-              </div>
+              </FormGroup>
             )}
             {isRepairComplete && (
-              <div className="sm:tw-flex tw-items-center tw-mb-6">
-                <label className="tw-pr-8">
+              <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+                <Label className="tw-pr-8 tw-mb-0">
                   <span className="tw-text-error-red">*</span>Pronouns:
-                </label>
+                </Label>
                 <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                   <ButtonDropdown
                     toggle={() => setDropdownOpen(!dropdownOpen)}
@@ -325,32 +331,33 @@ const GradApplication = () => {
                     </DropdownMenu>
                   </ButtonDropdown>
                   {pronounsErr && (
-                    <label
+                    <Label
                       htmlFor="pronouns"
                       className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                       data-testid="invalid-char"
                     >
                       Error: Must make a selection.
-                    </label>
+                    </Label>
                   )}
                   {pronounsEmptyErr && (
-                    <label
+                    <Label
                       htmlFor="pronouns"
                       className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     >
                       Error: Input required.
-                    </label>
+                    </Label>
                   )}
                 </div>
-              </div>
+              </FormGroup>
             )}
             <h3 className="tw-mt-14 tw-text-xl tw-font-semibold tw-mb-1.5">
               Academic Information:{" "}
             </h3>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label className="tw-pr-8">College:</label>
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label className="tw-pr-8 tw-mb-0">College:</Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="college"
                   placeholder="Ex: RIT"
                   onChange={(e) => {
@@ -358,28 +365,29 @@ const GradApplication = () => {
                   }}
                 />
                 {collegeErr && (
-                  <label
+                  <Label
                     htmlFor="college"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     data-testid="invalid-char"
                   >
                     Error: Invalid character.
-                  </label>
+                  </Label>
                 )}
                 {collegeEmptyErr && (
-                  <label
+                  <Label
                     htmlFor="college"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                   >
                     Error: Input required.
-                  </label>
+                  </Label>
                 )}
               </div>
-            </div>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label className="tw-pr-8">Major:</label>
+            </FormGroup>
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label className="tw-pr-8 tw-mb-0">Major:</Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="major"
                   placeholder="Ex: CS"
                   onChange={(e) => {
@@ -387,28 +395,29 @@ const GradApplication = () => {
                   }}
                 />
                 {majorErr && (
-                  <label
+                  <Label
                     htmlFor="major"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     data-testid="invalid-char"
                   >
                     Error: Invalid character.
-                  </label>
+                  </Label>
                 )}
                 {majorEmptyErr && (
-                  <label
+                  <Label
                     htmlFor="major"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                   >
                     Error: Input required.
-                  </label>
+                  </Label>
                 )}
               </div>
-            </div>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label className="tw-pr-8">Graduation Term:</label>
+            </FormGroup>
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label className="tw-pr-8 tw-mb-0">Graduation Term:</Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="gradTerm"
                   placeholder="Ex: Spring 2024"
                   onChange={(e) => {
@@ -416,36 +425,37 @@ const GradApplication = () => {
                   }}
                 />
                 {gradTermErr && (
-                  <label
+                  <Label
                     htmlFor="gradTerm"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     data-testid="invalid-char"
                   >
                     Error: Invalid character.
-                  </label>
+                  </Label>
                 )}
                 {gradTermEmptyErr && (
-                  <label
+                  <Label
                     htmlFor="gradTerm"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                   >
                     Error: Input required.
-                  </label>
+                  </Label>
                 )}
               </div>
-            </div>
+            </FormGroup>
           </div>
           <button
+            type="button"
             className="tw-text-error-red tw-mt-8 btn-primary btn btn-md"
-            onClick={() => {
-              handleSubmit();
+            onClick={(e) => {
+              handleSubmit(e);
             }}
           >
             Submit Application
-          </button>{" "}
+          </button>
         </div>
       </div>
-    </div>
+    </Form>
   );
 };
 
