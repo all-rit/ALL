@@ -15,6 +15,7 @@ const sequelize = new Sequelize(URI, {
   define: {
     timestamps: false,
   },
+  logging: process.env.TESTING === 'test'? false : console.log,
 });
 const db = {};
 

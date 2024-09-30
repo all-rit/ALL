@@ -278,7 +278,10 @@ class Main extends Component {
         {infoPopup ? (
           <Form closeInfoPopup={onCloseInfoPopup} />
         ) : (
-          <div style={{ background: `${exerciseBackground}` }} className="main">
+          <div
+            className={"tw-rounded-4xl main"}
+            style={{ background: `${exerciseBackground}` }}
+          >
             {changed ? (
               <Countdown
                 date={Date.now() + 5000}

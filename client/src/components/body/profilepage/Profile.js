@@ -17,15 +17,23 @@ const Profile = () => {
   const inProgressLabs = [];
   const completedLabs = [];
 
-  useEffect(() => {
+  const getUserLabs = async () => {
     if (state.main.user) {
-      UserService.getUserToDoLabs(state.main.user.userid).then((data) => {
-        setToDoLabs(data);
-      });
-      UserLabService.getUserLabRecords(state.main.user.userid).then((data) => {
-        setLabRecords(data);
-      });
+      try {
+        const toDo = await UserService.getUserToDoLabs(state.main.user.userid);
+        setToDoLabs(toDo);
+        const records = await UserLabService.getUserLabRecords(
+          state.main.user.userid,
+        );
+        setLabRecords(records);
+      } catch (error) {
+        console.error("Could not get labs", error);
+      }
     }
+  };
+
+  useEffect(() => {
+    getUserLabs();
   }, [state.main.user]);
 
   // go through the lab records fetched from the database and categorize if

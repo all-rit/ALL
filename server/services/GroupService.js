@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 const db = require('../database');
+const crypto = require('crypto');
 
-exports.getGroupLabs = (groupid) => {
+const getGroupLabs = (groupid) => {
   return db.sequelize.query('SELECT * FROM "labs" JOIN "group_labs" ON  "group_labs"."labID"="labs"."id" WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."isActive"=true', {
     replacements: {groupID: groupid},
     type: db.sequelize.QueryTypes.SELECT,
@@ -9,7 +10,7 @@ exports.getGroupLabs = (groupid) => {
   });
 };
 
-exports.getGroupEnrolledStudents = (groupid) => {
+const getGroupEnrolledStudents = (groupid) => {
   return db.sequelize.query('SELECT * FROM "enrollment" JOIN "users" ON  "enrollment"."userID"="users"."userid" WHERE "enrollment"."groupID"=(:groupID)', {
     replacements: {groupID: groupid},
     type: db.sequelize.QueryTypes.SELECT,
@@ -17,7 +18,7 @@ exports.getGroupEnrolledStudents = (groupid) => {
   });
 };
 
-exports.getCompletedGroupLabs = (userid, groupid) =>{
+const getCompletedGroupLabs = (userid, groupid) =>{
   return db.sequelize.query('SELECT labs."labShortName" FROM userlabcompletion INNER JOIN labs ON labs.id = userlabcompletion.labid INNER JOIN group_labs ON group_labs."labID" = userlabcompletion.labid INNER JOIN enrollment ON enrollment."groupID" = group_labs."groupID" WHERE userlabcompletion.labcompletiontime IS NOT NULL AND userlabcompletion.userid=(:userID) AND group_labs."groupID"= (:groupID) AND enrollment."userID" = (:userID)', {
     replacements: {groupID: groupid, userID: userid},
     type: db.sequelize.QueryTypes.SELECT,
@@ -25,7 +26,7 @@ exports.getCompletedGroupLabs = (userid, groupid) =>{
   });
 };
 
-exports.enrollUserInGroup = (userid, code) => {
+const enrollUserInGroup = (userid, code) => {
   return db.Groups
       .findOne({
         where: {
@@ -71,7 +72,7 @@ exports.enrollUserInGroup = (userid, code) => {
       );
 };
 
-exports.unenrollUserFromGroup = (data) => {
+const unenrollUserFromGroup = (data) => {
   const userid = data.userID;
   const groupid = data.groupID;
   if (userid && groupid) {
@@ -94,49 +95,60 @@ exports.unenrollUserFromGroup = (data) => {
   return Promise.resolve();
 };
 
-exports.createGroup = (userID, groupName) => {
-  return db.Groups.create({
-    instructorUserID: userID,
-    groupName: groupName,
-    createdDate: Date.now(),
-    isActive: true,
-    code: nanoid(6).toUpperCase(),
-  }).then((data) => {
-    console.log(data);
-    return {'groupID': data.id};
-  }).catch(() => console.log('Error encountered'));
+const createGroup = async (userID, groupName) => {
+  try {
+    const data = await db.Groups.create({
+      instructorUserID: userID,
+      groupName: groupName,
+      createdDate: Date.now(),
+      isActive: true,
+      code: crypto.randomUUID().toUpperCase().slice(1, 7),
+    });
+    return data;
+  } catch (error) {
+    console.error('Error while creating group', error);
+  }
 };
 
-exports.addGroupLab = (groupID, labID) => {
-  return db.GroupLabs.findOne({
-    where:
-            {
-              groupID: groupID,
-              labID: labID,
-            }},
-  ).then((groupLab) => {
-    if (groupLab !== null) {
-      groupLab.isActive = true;
-      groupLab.save();
-    } else {
-      return db.GroupLabs.create({
+const addGroupLab = async (groupID, labID) => {
+  try {
+    const [groupLab, created] = await db.GroupLabs.findOrCreate({
+      where: {
         groupID: groupID,
         labID: labID,
-      }).then((data) => {
-        console.log(data);
-      }).catch(() => console.log('Error encountered'));
+      },
+      defaults: {
+        isActive: true,
+      },
+    });
+
+    if (!created && !groupLab.isActive) {
+      groupLab.isActive = true;
+      await groupLab.save();
     }
-  });
+
+    return groupLab;
+  } catch (error) {
+    console.error('Error adding group lab', error);
+  }
 };
 
-exports.deleteGroupLab = (groupID, labID) => {
-  return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID) AND "group_labs"."labID"=(:labID)', {
-    replacements: {groupID: groupID, labID: labID},
-    type: db.sequelize.QueryTypes.UPDATE,
-    raw: true,
-  });
+const deleteGroupLab = async (groupID, labID) => {
+  try {
+    return await db.GroupLabs.update(
+        {isActive: false},
+        {
+          where: {
+            groupID: groupID,
+            labID: labID,
+          },
+        });
+  } catch (error) {
+    console.error('Error occurred while deleting lab: ', error);
+  }
 };
-exports.deleteGroup = (groupID) => {
+
+const deleteGroup = (groupID) => {
   return db.sequelize.query('UPDATE "group_labs" SET "isActive"=false WHERE "group_labs"."groupID"=(:groupID); UPDATE "groups" SET "isActive"=false WHERE "groups"."id"=(:groupID); UPDATE "enrollment" SET "isActive"=false WHERE "enrollment"."groupID" =(:groupID);  ', {
     replacements: {groupID: groupID},
     type: db.sequelize.QueryTypes.UPDATE,
@@ -145,10 +157,29 @@ exports.deleteGroup = (groupID) => {
 };
 
 
-exports.updateGroup = (groupID, groupName) =>{
-  return db.sequelize.query('UPDATE "groups" SET "groupName" = (:groupName) WHERE "id" = (:groupID)', {
-    replacements: {groupID: groupID, groupName: groupName},
-    type: db.sequelize.QueryTypes.UPDATE,
-    raw: true,
-  });
+const updateGroup = async (groupID, groupName) => {
+  try {
+    return await db.Groups.update(
+        {groupName: groupName},
+        {
+          where: {
+            id: groupID,
+          },
+        });
+  } catch (error) {
+    console.warn('Error updating lab name: ', error);
+  }
+};
+
+module.exports = {
+  getGroupLabs,
+  updateGroup,
+  deleteGroup,
+  deleteGroupLab,
+  addGroupLab,
+  createGroup,
+  unenrollUserFromGroup,
+  getCompletedGroupLabs,
+  enrollUserInGroup,
+  getGroupEnrolledStudents,
 };
