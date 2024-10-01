@@ -58,16 +58,24 @@ const LabGeneration = (props) => {
   if (labInformation !== null && labInformation.length > 0 && progressState) {
     if (progressState === "NOT_STARTED") {
       if (labids !== null && labids.length > 0) {
-        return labids.map((lab, index) => {
-          const idx = lab.labID - 1;
-          return renderLabData(
-            actions,
-            labInformation[idx],
-            progressState,
-            index,
-            null,
-          );
-        });
+        return (
+          <div className={"landing"}>
+            {labids.map((lab, index) => {
+              const idx = lab.labID - 1;
+              return (
+                <div key={idx} className="tw-m-2">
+                  {renderLabData(
+                    actions,
+                    labInformation[idx],
+                    progressState,
+                    index,
+                    null,
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        );
       } else {
         return (
           <p className="module__no_labs">You have no labs for this section.</p>

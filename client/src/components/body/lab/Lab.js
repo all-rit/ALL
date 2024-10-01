@@ -225,11 +225,8 @@ const Lab = (props) => {
               </div>
             </div>
           </div>
-          <div className="module__title module__lab_title tw-m-5 xs:tw-w-full xs:tw-justify-start xs:tw-ps-3">
-            <div className={"tw-font-medium tw-text-sm"}>
-              {" "}
-              Accessible Learning Labs
-            </div>
+          <div className="module__title module__lab_title tw-mt-0 tw-mb-3 xs:tw-w-full xs:tw-justify-start xs:tw-ps-3">
+            <div className={"tw-font-medium tw-text-sm"}> Lab {lab}</div>
             <a onClick={() => handleRedirect(actions, lab)} href="# ">
               {name}
             </a>
