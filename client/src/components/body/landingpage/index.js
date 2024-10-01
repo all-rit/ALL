@@ -72,7 +72,10 @@ const Home = (props) => {
       <div />
       <HorizontalLine />
 
-      <section className="page-section landingpage__pagesection" id="labs">
+      <section
+        className="tw-p-3 page-section landingpage__pagesection"
+        id="labs"
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">

@@ -178,38 +178,42 @@ const Lab = (props) => {
       );
     default:
       return (
-        <ul className="module__col module__lab_col">
-          <li>
+        <ul className="module__col module__lab_col xs:tw-flex-col">
+          <li className={"xs:tw-w-full"}>
             <a
-              className="portfolio-link "
+              className="portfolio-link"
               onClick={() => handleRedirect(actions, lab)}
               href="# "
             >
               <div
                 alt={alt}
-                className="img-fluid module__image module__lab_image"
+                className="img-fluid module__image module__lab_image xs:tw-w-full"
                 style={{
                   backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
                 }}
               />
             </a>
           </li>
-          <div className={"tw-flex tw-flex-row tw-justify-between"}>
+          <div className={"tw-flex tw-flex-row tw-justify-start tw-w-full"}>
             <div
               className={
-                "tw-flex tw-flex-row poppins tw-font-medium tw-text-sm tw-p-3"
+                "tw-flex tw-flex-row poppins tw-font-medium tw-text-sm tw-p-3 tw-w-full xs:tw-justify-start"
               }
             >
               Difficulty: {displayDifficulty()}
             </div>
             <div className="module__bio module__lab_buttons">
               <button
-                className="tw-bg-labYellow poppins tw-border-0 tw-ps-3 tw-text-xl tw-absolute tw-right-0 tw-bottom-40"
+                className="tw-bg-labYellow poppins tw-border-0 tw-ps-3 tw-text-xl tw-absolute tw-right-0 md:lg:tw-top-48 md:lg:tw-m-0 xs:tw-mt-3"
                 onClick={() => handleRedirect(actions, lab)}
               >
                 Launch Lab
               </button>
-              <div className={"tw-absolute tw-right-0 tw-top-36"}>
+              <div
+                className={
+                  "tw-absolute tw-right-0 md:lg:tw-top-36 xs:tw-top-64 md:lg:tw-m-0 xs:tw-mt-3 "
+                }
+              >
                 <InfoModal
                   buttonLabel={"More Info"}
                   labName={name}
@@ -221,7 +225,7 @@ const Lab = (props) => {
               </div>
             </div>
           </div>
-          <div className="module__title module__lab_title tw-m-5">
+          <div className="module__title module__lab_title tw-m-5 xs:tw-w-full xs:tw-justify-start xs:tw-ps-3">
             <div className={"tw-font-medium tw-text-sm"}>
               {" "}
               Accessible Learning Labs

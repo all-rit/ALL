@@ -941,11 +941,12 @@ a.icon:hover {
   @media (max-width: 990px) {
     &__col {
       display: flex;
-      min-width: 450px;
+      min-width: 320px;
       max-width: 480px;
     }
     &__image {
-      border-radius: 20px 0 0 20px;
+      border-radius: 20px 20px 0 0;
+      width: 100%;
     }
     &__profile_image {
       height: 175px;
@@ -973,7 +974,7 @@ a.icon:hover {
   }
   &__lab_image {
     background-position: center;
-    background-size: 350px;
+    background-size: 400px;
   }
   &__profile_image {
     background-position: center;
