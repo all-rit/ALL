@@ -9,6 +9,7 @@ import {
   Navbar,
   Nav,
   NavItem,
+  NavLink,
 } from "reactstrap";
 
 function Header() {
@@ -34,11 +35,31 @@ function Header() {
 				/>
 			</a>
 			<Nav className='tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-md tw-border-l-labYellow tw-border-b-labYellow' navbar>
-				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold" href="#">Home</NavItem>
-				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2" href="#labs">Labs</NavItem>
-				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2" href="#">About Us</NavItem>
-				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2" href="#">Resources</NavItem>
-				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2" href="#">Sign In</NavItem>
+				<NavItem className="px-4">
+					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#">
+						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Home</p>
+					</NavLink>
+				</NavItem>
+				<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
+					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#labs">
+						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Labs</p>
+					</NavLink>
+				</NavItem>
+				<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
+					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#about">
+						<p className='tw-text-base tw-text-labBlue tw-font-bold'>About Us</p>
+					</NavLink>
+				</NavItem>
+				<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
+					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#resources">
+						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Resources</p>
+					</NavLink>
+				</NavItem>
+				<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
+					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#sign-in">
+						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Sign In</p>
+					</NavLink>
+				</NavItem>
 			</Nav>
 		</div>
 	</Navbar>
