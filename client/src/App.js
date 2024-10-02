@@ -27,8 +27,8 @@ import { default as Imagine } from "./components/imagine23/Main";
 
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
-import Change from "./components/footer/footer";
-import Header from "./components/header/header";
+// import Change from "./components/footer/footer";
+// import Header from "./components/header/header";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -39,6 +39,7 @@ import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
 const parse = require("url-parse");
 import useMainStateContext from "./reducers/MainContext";
+import AboutUsPage from "./pages/about-us/page";
 
 const mapStateToProps = (state) => {
   return {
@@ -83,13 +84,14 @@ const App = () => {
   return (
     <>
       <div className="overflow-x-hidden">
-        <Header />
-        <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
+        {/*<Header />*/}
+        <div className={"mainBody-remove" + (lab !== 0 ? " container" : "")}>
           {lab !== 0 && (
             <BodyHeader body={Sections[lab][body].name} labID={lab} />
           )}
           <div className="appBody">
             <Router basepath={process.env.PUBLIC_URL} className="app">
+              <AboutUsPage path={"/about-us"} />
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
@@ -149,12 +151,12 @@ const App = () => {
             </Router>
           </div>
         </div>
-        <Change
-          context={context}
-          quizCompleted={quizCompleted}
-          setQuizCompleted={setQuizCompleted}
-          isImagine={isImagine}
-        />
+        {/*<Change*/}
+        {/*  context={context}*/}
+        {/*  quizCompleted={quizCompleted}*/}
+        {/*  setQuizCompleted={setQuizCompleted}*/}
+        {/*  isImagine={isImagine}*/}
+        {/*/>*/}
       </div>
     </>
   );
