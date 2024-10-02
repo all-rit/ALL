@@ -4,7 +4,8 @@
 /* eslint-disable camelcase */
 import React, {  } from "react";
 import Logo from "../../assets/images/logos/FinalALLLogo.png";
-import "../../assets/stylesheets/components/Header.scss";
+import useMainStateContext from "src/reducers/MainContext";
+
 import {
   Navbar,
   Nav,
@@ -12,7 +13,10 @@ import {
   NavLink,
 } from "reactstrap";
 
-function Header() {
+const Header = (props) => {
+	const { loggedIn } = props
+
+	const { state } = useMainStateContext()
 
 	return (
 	<Navbar
@@ -29,9 +33,9 @@ function Header() {
 				}
 			>
 				<img
-				className="logo tw-cursor-pointer"
-				src={Logo}
-				alt="Computing Accessibility"
+					className="tw-cursor-pointer tw-h-16"
+					src={Logo}
+					alt="Computing Accessibility"
 				/>
 			</a>
 
@@ -40,9 +44,11 @@ function Header() {
 					- Add new logo + styling
 					- hamburger menu for mobile devices
 					- possibly update colors from labBlue to the new ones (idk if those are the new ones or not)
+					- Welcome Menu
+					- Site Accessibility Settings
 			*/}
 
-			<Nav className='tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-md tw-border-l-labYellow tw-border-b-labYellow' navbar>
+			<Nav className='tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow' navbar>
 				<NavItem className="px-4">
 					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#">
 						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Home</p>
@@ -63,11 +69,23 @@ function Header() {
 						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Educator Resources</p>
 					</NavLink>
 				</NavItem>
-				<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
-					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#sign-in">
-						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Sign In</p>
-					</NavLink>
-				</NavItem>
+				{ /* CONDITIONALLY RENDER IF USER IS LOGGED IN */
+					state.main.user !== null ? (
+						<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
+							<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#sign-in">
+								{/* OPEN LOG IN MODAL HERE */}
+								<p className='tw-text-base tw-text-labBlue tw-font-bold'>Sign In</p>
+							</NavLink>
+						</NavItem>
+					) : (
+						<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
+							<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#sign-in">
+								{/* OPEN LOG IN MODAL HERE */}
+								<p className='tw-text-base tw-text-labYellow tw-font-bold'>Sign In</p>
+							</NavLink>
+						</NavItem>
+					)
+				}
 			</Nav>
 		</div>
 	</Navbar>
