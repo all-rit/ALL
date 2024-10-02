@@ -1,84 +1,114 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
+import useMainStateContext from "../../../reducers/MainContext";
+import handleRedirect from "../../../helpers/Redirect";
+import getExerciseState from "../../../helpers/GetReducer";
 
-const lab_number = "Lab 101";
-
-const lab_name = "Sample Lab Name Here This Long";
-const table_of_contents = [
+const sections = [
+  {
+    title: "About",
+    subTitle: "Learn about the lab",
+    section: 0,
+  },
   {
     title: "Reading",
-    subTitle: "Learn About Branding",
-    selected: false,
+    subTitle: "Understand key concepts",
+    section: 1,
   },
   {
     title: "Exercise",
-    subTitle: "Lorem ipsum dolor",
-    selected: false,
-  },
-  {
-    title: "Lab Takeaways",
-    subTitle: "Lorem ipsum dolor",
-    selected: true,
+    subTitle: "Try a hands-on exercise",
+    section: 2,
   },
   {
     title: "Reinforcement",
     subTitle: "Keep practicing",
-    selected: false,
+    section: 3,
   },
   {
     title: "Quiz",
     subTitle: "Test your knowledge",
-    selected: false,
+    section: 4,
   },
 ];
 
-const NavigationPane = () => {
+/**
+ * NavigationPane component for in-lab navigation.
+ * @param props defined props passed into the component
+ */
+const NavigationPane = (props) => {
+  // TODO: Verify redirect in a lab
+
+  const { state, actions } = useMainStateContext();
+  const currentSection = state.main.body;
+
+  const handleOnClick = (section) => {
+    if (
+      getExerciseState(state, props.state) !== "EXERCISE_IDLE" &&
+      currentSection === 2
+    ) {
+      alert("The exercise is still in progress! Please complete the exercise.");
+    } else {
+      handleRedirect(actions, state.main.lab, section);
+    }
+  };
+
   return (
     <div
       className={
         "tw-flex tw-flex-col tw-gap-y-24 tw-max-w-[16rem] tw-text-left"
       }
     >
-      <h1
-        className={
-          "tw-title-styling-name tw-text-2xl tw-p-6 tw-border-12 tw-border-l-0 tw-border-b-0 tw-border-solid tw-border-primary-blue tw-rounded-tr-lg"
-        }
-      >
-        {lab_number}: {lab_name}
-      </h1>
       <div
         className={
-          "tw-flex tw-flex-col tw-gap-y-6 tw-py-9 tw-px-0 tw-border-12 tw-border-l-0 tw-border-b-0 tw-border-solid tw-border-primary-yellow tw-rounded-tr-lg"
+          "tw-py-6 tw-px-4 tw-border-solid tw-border-primary-blue tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg"
         }
       >
-        <h2 className={"tw-sub-title-styling-name tw-font-bold tw-pl-6"}>
-          Table of Contents
-        </h2>
-        <div className={"tw-flex tw-flex-col tw-gap-y-9"}>
-          {table_of_contents.map(({ title, subTitle, selected }) => {
-            return (
-              <div
-                key={title}
-                className={
-                  "tw-flex tw-flex-col tw-items-start tw-leading-tight"
-                }
-              >
-                <div
-                  className={twMerge(
-                    "tw-font-semibold tw-px-6 tw-transition-all tw-ease-in-out",
-                    selected ? "tw-bg-primary-yellow" : "",
-                  )}
+        <h1 className={"tw-title-styling-name tw-text-2xl"}>{props.title}</h1>
+      </div>
+      <div
+        className={
+          "tw-py-9 tw-border-solid tw-border-primary-yellow tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg"
+        }
+      >
+        <div className={"tw-flex tw-flex-col tw-gap-y-6"}>
+          <h2 className={"tw-sub-title-styling-name tw-font-bold tw-pl-4"}>
+            Table of Contents
+          </h2>
+          <div className={"tw-flex tw-flex-col tw-gap-y-9"}>
+            {sections.map(({ title, subTitle, section }) => {
+              return (
+                <a
+                  key={title}
+                  href={"#"}
+                  onClick={() => handleOnClick(section)}
+                  className={
+                    "tw-flex tw-flex-col tw-items-start tw-leading-none tw-no-underline tw-text-black hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
+                  }
                 >
-                  {title}
-                </div>
-                <div className={"tw-pl-6"}>{subTitle}</div>
-              </div>
-            );
-          })}
+                  <div
+                    className={twMerge(
+                      "tw-font-semibold tw-px-4 tw-transition-all tw-ease-in-out",
+                      currentSection === section ? "tw-bg-primary-yellow" : "",
+                    )}
+                  >
+                    {title}
+                  </div>
+                  <div className={"tw-pl-4 tw-font-light"}>{subTitle}</div>
+                </a>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
   );
+};
+
+NavigationPane.propTypes = {
+  title: PropTypes.string.isRequired,
+  state: PropTypes.object,
 };
 
 export default NavigationPane;
