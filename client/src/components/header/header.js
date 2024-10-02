@@ -34,6 +34,14 @@ function Header() {
 				alt="Computing Accessibility"
 				/>
 			</a>
+
+			{/* TODO:
+					- Replace temporary href anchor names (i.e. #about)
+					- Add new logo + styling
+					- hamburger menu for mobile devices
+					- possibly update colors from labBlue to the new ones (idk if those are the new ones or not)
+			*/}
+
 			<Nav className='tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-md tw-border-l-labYellow tw-border-b-labYellow' navbar>
 				<NavItem className="px-4">
 					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#">
@@ -52,7 +60,7 @@ function Header() {
 				</NavItem>
 				<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
 					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#resources">
-						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Resources</p>
+						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Educator Resources</p>
 					</NavLink>
 				</NavItem>
 				<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
