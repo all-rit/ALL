@@ -33,12 +33,12 @@ function Header() {
 				alt="Computing Accessibility"
 				/>
 			</a>
-			<Nav className='tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-gap-10 tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-md tw-border-l-labYellow tw-border-b-labYellow' navbar>
-				<NavItem className="tw-text-labBlue tw-font-bold" href="#">Home</NavItem>
-				<NavItem className="tw-text-labBlue tw-font-bold" href="#labs">Labs</NavItem>
-				<NavItem className="tw-text-labBlue tw-font-bold" href="#">About Us</NavItem>
-				<NavItem className="tw-text-labBlue tw-font-bold" href="#">Resources</NavItem>
-				<NavItem className="tw-text-labBlue tw-font-bold" href="#">Sign In</NavItem>
+			<Nav className='tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-md tw-border-l-labYellow tw-border-b-labYellow' navbar>
+				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold" href="#">Home</NavItem>
+				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2" href="#labs">Labs</NavItem>
+				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2" href="#">About Us</NavItem>
+				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2" href="#">Resources</NavItem>
+				<NavItem className="px-4 tw-text-base tw-text-labBlue tw-font-bold tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2" href="#">Sign In</NavItem>
 			</Nav>
 		</div>
 	</Navbar>
