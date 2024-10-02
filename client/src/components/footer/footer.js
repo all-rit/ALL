@@ -186,7 +186,7 @@ class Footer extends Component {
           >
             <button
               //className="btn tw-bg-labLightGray btn-xl text-uppercase back "
-              className="back btn tw-w-32 tw-font-medium tw-bg-labLightGray text-uppercase  tw-border-b-labYellow tw-border-l-labYellow tw-border-8"
+              className="back btn tw-w-32 tw-font-medium tw-bg-bgwhite text-uppercase  tw-border-b-labYellow tw-border-l-labYellow tw-border-8 tw-shadow-none"
               onClick={() => handleRedirect(actions, lab, body - 1)}
               style={{
                 display:
@@ -220,7 +220,7 @@ class Footer extends Component {
                   //className="btn tw-bg-labLightGray btn-xl text-uppercase next"
                   // className="btn tw-bg-labLightGray btn-xl text-uppercase next tw-border-t-labBlue tw-border-r-labBlue tw-border-8"
 
-                  className="next btn tw-w-32 tw-font-medium tw-bg-labLightGray text-uppercase tw-border-t-labBlue tw-border-r-labBlue tw-border-8"
+                  className="next btn tw-w-32 tw-font-medium tw-bg-bgwhite text-uppercase tw-border-t-labBlue tw-border-r-labBlue tw-border-8 tw-shadow-none"
                   onClick={() => handleRedirect(actions, lab, body + 1)}
                   style={{
                     display:
