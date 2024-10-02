@@ -14,7 +14,7 @@ import {
   onNextPageChangeTSize,
 } from "./edit/editPage";
 import { Panel as ColorPickerPanel } from "rc-color-picker";
-import { Sections } from "../../constants/index";
+//import { Sections } from "../../constants/index";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
 import { navigate } from "@reach/router";
@@ -185,17 +185,19 @@ class Footer extends Component {
             style={{ display: display ? "block" : "none" }}
           >
             <button
-              className="btn tw-bg-labLightGray btn-xl text-uppercase back "
+              //className="btn tw-bg-labLightGray btn-xl text-uppercase back "
+              className="back btn tw-w-32 tw-font-medium tw-bg-labLightGray text-uppercase  tw-border-b-labYellow tw-border-l-labYellow tw-border-8"
               onClick={() => handleRedirect(actions, lab, body - 1)}
               style={{
                 display:
                   this.disappearBack(body) || hideOnLanding ? "none" : "block",
               }}
             >
-              Previous -{" "}
+              Back
+              {/* Previous -{" "}
               {body > 0 && typeof Sections[lab][body - 1] !== "undefined"
                 ? Sections[lab][body - 1].name
-                : ""}
+                : ""} */}
             </button>
 
             {body === 4 && quizCompleted ? (
@@ -215,7 +217,10 @@ class Footer extends Component {
             ) : (
               <div>
                 <button
-                  className="btn tw-bg-labLightGray btn-xl text-uppercase next"
+                  //className="btn tw-bg-labLightGray btn-xl text-uppercase next"
+                  // className="btn tw-bg-labLightGray btn-xl text-uppercase next tw-border-t-labBlue tw-border-r-labBlue tw-border-8"
+
+                  className="next btn tw-w-32 tw-font-medium tw-bg-labLightGray text-uppercase tw-border-t-labBlue tw-border-r-labBlue tw-border-8"
                   onClick={() => handleRedirect(actions, lab, body + 1)}
                   style={{
                     display:
@@ -224,10 +229,11 @@ class Footer extends Component {
                         : "block",
                   }}
                 >
-                  Next -{" "}
+                  Next
+                  {/* Next -{" "}
                   {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
                     ? Sections[lab][body + 1].name
-                    : ""}
+                    : ""} */}
                 </button>
               </div>
             )}
