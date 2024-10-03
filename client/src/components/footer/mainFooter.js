@@ -44,7 +44,24 @@ class MainFooter extends Component {
       displayColorPalette: false,
       backgroundColor: null,
       color: null,
+      name: "",
+      email: "",
+      message: "",
     };
+  }
+
+  onNameChange(event) {
+    this.setState({ name: event.target.value });
+  }
+  onEmailChange(event) {
+    this.setState({ email: event.target.value });
+  }
+  onMessageChange(event) {
+    this.setState({ message: event.target.value });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
   }
 
   componentDidMount() {
@@ -190,6 +207,9 @@ class MainFooter extends Component {
                   placeholder={"Name"}
                   required={true}
                   title={"Must enter name"}
+                  id="Name"
+                  value={this.state.name}
+                  onChange={this.onNameChange.bind(this)}
                 />
                 <input
                   className=" tw-flex tw-w-full tw-rounded tw-bg-labGray tw-border-white tw-border tw-text-white tw-p-1"
@@ -197,6 +217,9 @@ class MainFooter extends Component {
                   placeholder={"Email"}
                   required={true}
                   title={"Must enter email"}
+                  id="Email"
+                  value={this.state.email}
+                  onChange={this.onEmailChange.bind(this)}
                 />
                 <input
                   className=" tw-flex tw-w-full tw-rounded tw-bg-labGray tw-border-white tw-border tw-text-white tw-p-1 tw-pb-32"
@@ -204,12 +227,16 @@ class MainFooter extends Component {
                   placeholder={"Message"}
                   required={true}
                   title={"Must enter message"}
+                  id="Message"
+                  value={this.state.message}
+                  onChange={this.onMessageChange.bind(this)}
                 />
                 <button
                   className=" tw-flex tw-w-full tw-rounded tw-bg-white tw-border-white
                     tw-border tw-text-black tw-p-1 tw-justify-center tw-font-semibold"
                   type="button"
                   title={"Send message"}
+                  onClick={this.handleSubmit.bind(this)}
                 >
                   Send
                 </button>
