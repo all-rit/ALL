@@ -13,6 +13,7 @@
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
     "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
     "mathjs": "^12.3.2",
     "nanoid": "^5.0.7",
     "node-sass": "^9.0.0",
