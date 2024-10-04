@@ -2,21 +2,44 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
-import React, {  } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../assets/images/logos/FinalALLLogo.png";
-import useMainStateContext from "src/reducers/MainContext";
-
+import { connect } from "react-redux";
 import {
+  Collapse,
   Navbar,
+  NavbarToggler,
   Nav,
   NavItem,
   NavLink,
 } from "reactstrap";
+import { EXERCISE_IDLE } from "../../constants/lab1";
+import { bindActionCreators } from "redux";
+import { actions as mainActions } from "../../reducers/MainReducer";
+import getExerciseState from "../../helpers/GetReducer";
+
+import useMainStateContext from "src/reducers/MainContext";
+import API from "src/services/API";
+
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(mainActions, dispatch),
+  };
+};
 
 const Header = (props) => {
-	const { loggedIn } = props
-
 	const { state } = useMainStateContext()
+	
+	const loginEnabled =
+		state.main.lab === 0 ||
+		getExerciseState(state, props.state) === EXERCISE_IDLE ||
+		state.main.body !== 2;
 
 	return (
 	<Navbar
@@ -43,12 +66,12 @@ const Header = (props) => {
 					- Replace temporary href anchor names (i.e. #about)
 					- Add new logo + styling
 					- hamburger menu for mobile devices
-					- possibly update colors from labBlue to the new ones (idk if those are the new ones or not)
 					- Welcome Menu
 					- Site Accessibility Settings
+					- Log in changes pfp
 			*/}
 
-			<Nav className='tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow' navbar>
+			<Nav className='tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow' navbar>				
 				<NavItem className="px-4">
 					<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#">
 						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Home</p>
@@ -69,18 +92,40 @@ const Header = (props) => {
 						<p className='tw-text-base tw-text-labBlue tw-font-bold'>Educator Resources</p>
 					</NavLink>
 				</NavItem>
-				{ /* CONDITIONALLY RENDER IF USER IS LOGGED IN */
+				{ console.log(state.main.user) }
+
+				{ 
+					// USER NOT LOGGED IN
+
 					state.main.user !== null ? (
 						<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
-							<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#sign-in">
+							<div className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#sign-in">
 								{/* OPEN LOG IN MODAL HERE */}
-								<p className='tw-text-base tw-text-labBlue tw-font-bold'>Sign In</p>
-							</NavLink>
+
+								{/* TODO -- TRANSFER THIS INTO SIGN IN MODAL */}
+								<a
+									href="# "
+									className='tw-no-underline'
+									onClick={() =>
+										API.postWithBody(process.env.REACT_APP_SERVER_URL + "/url", {
+											url: window.location,
+										}).then(() => {
+											window.location.href =
+											process.env.REACT_APP_SERVER_URL + "/auth/google";
+										})
+									}
+								>
+									<div className="google__button" />
+									<p className='tw-text-base tw-text-labBlue tw-font-bold'>Sign In</p>
+								</a>
+							</div>
+
+							
 						</NavItem>
 					) : (
+						// USER LOGGED IN
 						<NavItem className="px-4 tw-border-solid tw-border-labBlue tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
 							<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#sign-in">
-								{/* OPEN LOG IN MODAL HERE */}
 								<p className='tw-text-base tw-text-labYellow tw-font-bold'>Sign In</p>
 							</NavLink>
 						</NavItem>
@@ -92,5 +137,4 @@ const Header = (props) => {
 	);
 }
 
-
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
