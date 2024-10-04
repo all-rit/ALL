@@ -14,7 +14,7 @@ import {
   onNextPageChangeTSize,
 } from "./edit/editPage";
 import { Nav, NavItem, NavLink } from "reactstrap";
-
+import logo from "../../assets/images/logos/ALL_White_Logo.svg";
 // import Logo from "../../assets/images/logos/ALL_White_Logo.svg";
 // import { Panel as ColorPickerPanel } from "rc-color-picker";
 // import { Sections } from "../../constants/index";
@@ -132,17 +132,21 @@ class MainFooter extends Component {
         <section className="tw-px-12 tw-bg-labGray tw-text-white tw-pb-1">
           <div className="tw-flex tw-justify-between tw-flex-wrap">
             <div className="tw-object-left tw-max-w-80">
-              <text className="tw-flex tw-justify-left"> ALL Logo</text>
-              {/*<img*/}
-              {/*  className="logo"*/}
-              {/*  src={Logo}*/}
-              {/*  alt="ALL Logo"*/}
-              {/*  />*/}
+              <a href="#">
+                <div className="tw-flex">
+                  <img
+                    className="logo tw-flex tw-h-auto"
+                    src={logo}
+                    alt="ALL Logo"
+                  />
+                </div>
+              </a>
+
               <br />
               <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
                 About Us
               </h2>
-              <div className="tw-text-justify">
+              <div className="tw-text-left">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
@@ -157,8 +161,15 @@ class MainFooter extends Component {
                 Rochester, NY 14623
               </div>
               <br />
-              <text className="tw-flex tw-justify-left ">email@email.com</text>
               {/*make mail:to link*/}
+              <a
+                href="mailto:Daniel.Krutz@rit.edu"
+                className="tw-text-white tw-no-underline"
+              >
+                <text className="tw-flex tw-justify-left ">
+                  Daniel.Krutz@rit.edu
+                </text>
+              </a>
               <text className="tw-flex tw-justify-left ">585-123-4567</text>
               <div className="tw-flex tw-justify-left tw-pt-4 tw-space-x-4">
                 <svg
@@ -197,7 +208,7 @@ class MainFooter extends Component {
               <h1 className="tw-flex tw-justify-right tw-text-3xl tw-font-bold">
                 Reach out to us:
               </h1>
-              <text className=" tw-flex tw-text-justify tw-pb-6">
+              <text className=" tw-flex tw-text-left tw-pb-6">
                 Aenean a venenatis metus, ut varius quam. Venenatis metus.
               </text>
               <div className="tw-space-y-6">
