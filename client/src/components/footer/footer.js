@@ -14,7 +14,6 @@ import {
   onNextPageChangeTSize,
 } from "./edit/editPage";
 import { Panel as ColorPickerPanel } from "rc-color-picker";
-//import { Sections } from "../../constants/index";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
 import { navigate } from "@reach/router";
@@ -181,24 +180,29 @@ class Footer extends Component {
             </div>
           )}
           <div
-            className="tw-relative container"
+            className="tw-relative container "
             style={{ display: display ? "block" : "none" }}
           >
-            <button
-              //className="btn tw-bg-labLightGray btn-xl text-uppercase back "
-              className="back btn tw-w-32 tw-font-medium tw-bg-bgwhite text-uppercase  tw-border-b-labYellow tw-border-l-labYellow tw-border-8 tw-shadow-none"
-              onClick={() => handleRedirect(actions, lab, body - 1)}
+            <div
+              className="tw-float-left tw-h-16 tw-w-38 tw-bg-labYellow tw-rounded-bl-lg tw-pb-2 tw-pl-2"
               style={{
                 display:
                   this.disappearBack(body) || hideOnLanding ? "none" : "block",
               }}
             >
-              Back
-              {/* Previous -{" "}
-              {body > 0 && typeof Sections[lab][body - 1] !== "undefined"
-                ? Sections[lab][body - 1].name
-                : ""} */}
-            </button>
+              <button
+                className="back btn tw-w-32 tw-font-medium tw-rounded-none tw-bg-white text-uppercase tw-shadow-none"
+                onClick={() => handleRedirect(actions, lab, body - 1)}
+                style={{
+                  display:
+                    this.disappearBack(body) || hideOnLanding
+                      ? "none"
+                      : "block",
+                }}
+              >
+                Back
+              </button>
+            </div>
 
             {body === 4 && quizCompleted ? (
               <button
@@ -215,12 +219,17 @@ class Footer extends Component {
                 Return to Home
               </button>
             ) : (
-              <div>
+              <div
+                className="tw-float-right tw-h-16 tw-w-38 tw-bg-labBlue tw-rounded-tr-lg tw-pt-2 tw-pr-2"
+                style={{
+                  display:
+                    this.disappearNext(body) || hideOnLanding
+                      ? "none"
+                      : "block",
+                }}
+              >
                 <button
-                  //className="btn tw-bg-labLightGray btn-xl text-uppercase next"
-                  // className="btn tw-bg-labLightGray btn-xl text-uppercase next tw-border-t-labBlue tw-border-r-labBlue tw-border-8"
-
-                  className="next btn tw-w-32 tw-font-medium tw-bg-bgwhite text-uppercase tw-border-t-labBlue tw-border-r-labBlue tw-border-8 tw-shadow-none"
+                  className="next btn tw-w-32 tw-font-medium tw-rounded-none tw-bg-white text-uppercase  tw-shadow-none"
                   onClick={() => handleRedirect(actions, lab, body + 1)}
                   style={{
                     display:
@@ -230,10 +239,6 @@ class Footer extends Component {
                   }}
                 >
                   Next
-                  {/* Next -{" "}
-                  {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
-                    ? Sections[lab][body + 1].name
-                    : ""} */}
                 </button>
               </div>
             )}
