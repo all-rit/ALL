@@ -73,12 +73,15 @@ const Lab = (props) => {
                 {displayProgress()}
               </div>
               {progressState === "COMPLETED" ? (
-                <div>
+                <div className={"tw-ps-2"}>
                   <a
-                    className={"tw-flex tw-flex-row tw-justify-start tw-ps-3"}
+                    className={
+                      "tw-flex tw-flex-row tw-justify-start tw-text-labBlue"
+                    }
                     href={"/"}
-                  />{" "}
-                  View Certificate
+                  >
+                    View Certificate
+                  </a>
                 </div>
               ) : (
                 ""

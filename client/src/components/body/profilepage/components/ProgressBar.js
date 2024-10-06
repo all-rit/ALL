@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import ProgressBarBar from "./ProgressBarBar";
+import PropTypes from "prop-types";
 class ProgressBar extends Component {
   render() {
     const { barData, labID } = this.props;
@@ -10,7 +9,6 @@ class ProgressBar extends Component {
     function renderBars() {
       return barData.map((data, index) => {
         try {
-          console.log(data);
           return (
             <ProgressBarBar
               key={index}
@@ -20,7 +18,7 @@ class ProgressBar extends Component {
             />
           );
         } catch (error) {
-          console.log(error);
+          return null;
         }
       });
     }
@@ -43,4 +41,8 @@ class ProgressBar extends Component {
   }
 }
 
+ProgressBar.propTypes = {
+  barData: PropTypes.array,
+  labID: PropTypes.number,
+};
 export default ProgressBar;
