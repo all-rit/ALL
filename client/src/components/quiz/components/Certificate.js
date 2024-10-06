@@ -97,7 +97,7 @@ class Certificate extends Component {
             style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
           >
             with a score of{" "}
-            <b style={{ color: this.getColor() }}>{this.props.quizResult}</b>
+            <b style={{ color: this.getColor() }}>{this.props.quizResult}</b>%
           </span>{" "}
           <br />
           <br />
