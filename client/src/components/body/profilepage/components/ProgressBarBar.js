@@ -13,7 +13,7 @@ const ProgressBarBar = (props) => {
           tabIndex="0"
           id={"PopoverCompleted" + index + labID}
           type="button"
-          className="progressBar__bar progressBar__completed"
+          className="progressBar__bar progressBar__completed tw-border-0 tw-m-1"
         />
         <Popover
           trigger="legacy"
@@ -36,7 +36,7 @@ const ProgressBarBar = (props) => {
           tabIndex="0"
           id={"PopoverNotCompleted" + index + labID}
           type="button"
-          className="progressBar__bar progressBar__notCompleted"
+          className="progressBar__bar progressBar__notCompleted tw-border-0 tw-h-0.5"
         />
         <Popover
           trigger="legacy"

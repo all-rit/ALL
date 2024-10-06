@@ -3,7 +3,7 @@
 import React from "react";
 import handleRedirect from "../../../helpers/Redirect";
 import ProgressBar from "../profilepage/components/ProgressBar";
-import InfoModal from "./InfoModal";
+import LabFooter from "./LabFooter";
 
 const Lab = (props) => {
   const {
@@ -11,7 +11,6 @@ const Lab = (props) => {
     alt,
     lab,
     name,
-    bio,
     image,
     fullDescription,
     learningObjectives,
@@ -20,20 +19,22 @@ const Lab = (props) => {
     labProgress,
     difficulty,
   } = props;
-  function getColor(labProgress) {
-    if (labProgress !== null && labProgress !== undefined) {
-      let score = labProgress.quizscore;
-      score = parseFloat(score);
-      switch (true) {
-        case score <= 40:
-          return "crimson";
-        case score <= 70:
-          return "orange";
-        default:
-          return "chartreuse";
-      }
+
+  const displayProgress = () => {
+    let currentProgress;
+    switch (progressState) {
+      case "NOT_STARTED":
+        currentProgress = "Not Started";
+        break;
+      case "IN_PROGRESS":
+        currentProgress = "Partially Completed";
+        break;
+      case "COMPLETED":
+        currentProgress = "Completed";
+        break;
     }
-  }
+    return currentProgress;
+  };
 
   const displayDifficulty = () => {
     const totalCircles = 3;
@@ -51,134 +52,82 @@ const Lab = (props) => {
 
   switch (progressState) {
     case "IN_PROGRESS":
-      return (
-        <ul className="module__col module__lab_col tw-relative">
-          <li>
-            <a
-              className="portfolio-link "
-              onClick={() => handleRedirect(actions, lab)}
-              href="# "
-            >
-              <div
-                alt={alt}
-                className="img-fluid module__image module__lab_image"
-                style={{
-                  backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
-                }}
-              />
-            </a>
-          </li>
-          <ul className="module__caption">
-            <li className="module__title module__lab_title">
-              <a onClick={() => handleRedirect(actions, lab)} href="# ">
-                {name}
-              </a>
-            </li>
-            {labProgress === null || labProgress === undefined ? (
-              <p>No Lab Data Available..!</p>
-            ) : (
-              <ul>
-                <li>
-                  <ProgressBar
-                    labID={lab}
-                    barData={[
-                      ["About", labProgress.aboutcompletedtime],
-                      ["Reading", labProgress.readingcompletedtime],
-                      ["Exercise", labProgress.exercisecompletedtime],
-                      ["Reinforcement", labProgress.reinforcementcompletedtime],
-                      ["Quiz", labProgress.quizcompletedtime],
-                    ]}
-                    percentage={true}
-                  />
-                </li>
-                <li className="module__bio">
-                  Started on {labProgress.labstarttime.split("T")[0]}
-                </li>
-              </ul>
-            )}
-          </ul>
-        </ul>
-      );
+    case "NOT_STARTED":
     case "COMPLETED":
       return (
-        <ul className="module__col module__lab_col">
-          <li>
+        <ul className="module__col module__lab_col tw-w-full xs:tw-flex-col poppins">
+          <ul className={"tw-flex tw-flex-row tw-w-full tw-justify-between"}>
+            <li className={"tw-flex tw-flex-col tw-justify-start tw-mt-3"}>
+              <div
+                className={
+                  "tw-flex tw-flex-row tw-justify-start tw-align-super tw-ml-2 tw-text-lg tw-font-bold"
+                }
+              >
+                Assigned
+              </div>
+              <div
+                className={
+                  "tw-flex tw-flex-row tw-justify-start tw-ml-2 tw-text-sm tw-font-semibold"
+                }
+              >
+                {displayProgress()}
+              </div>
+              {progressState === "COMPLETED" ? (
+                <div>
+                  <a
+                    className={"tw-flex tw-flex-row tw-justify-start tw-ps-3"}
+                    href={"/"}
+                  />{" "}
+                  View Certificate
+                </div>
+              ) : (
+                ""
+              )}
+            </li>
+            <li className={"tw-p-5"}>
+              <ProgressBar
+                labID={lab}
+                barData={[
+                  ["About", labProgress?.aboutcompletedtime],
+                  ["Reading", labProgress?.readingcompletedtime],
+                  ["Exercise", labProgress?.exercisecompletedtime],
+                  ["Reinforcement", labProgress?.reinforcementcompletedtime],
+                  ["Quiz", labProgress?.quizcompletedtime],
+                ]}
+              />
+            </li>
+          </ul>
+          <li className={"tw-w-full"}>
             <a
-              className="portfolio-link "
+              className="portfolio-link tw-w-full"
               onClick={() => handleRedirect(actions, lab)}
               href="# "
             >
               <div
                 alt={alt}
-                className="img-fluid module__image module__lab_image"
+                className="img-fluid module__image module__lab_image tw-border-0 tw-w-full"
                 style={{
                   backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
+                  borderRadius: "0px",
                 }}
               />
             </a>
           </li>
-          <ul className="module__caption">
-            <li className="module__title module__lab_title">
-              <a onClick={() => handleRedirect(actions, lab)} href="# ">
-                {name}
-              </a>
-            </li>
-            <ul className="module__bio">
-              <li>
-                <b style={{ color: getColor(labProgress) }}>
-                  {labProgress === null || labProgress === undefined
-                    ? 0
-                    : labProgress.quizscore}
-                  % Quiz Score
-                </b>
-              </li>
-              <li>
-                {" "}
-                Completed on {labProgress.labcompletiontime.split("T")[0]}
-              </li>
-              <li className="module__bio">
-                <InfoModal
-                  buttonLabel={"View Certificate"}
-                  labName={name}
-                  labNum={lab}
-                  labProgress={labProgress}
-                />
-              </li>
-            </ul>
-          </ul>
-        </ul>
-      );
-    case "NOT_STARTED":
-      return (
-        <ul className="module__col module__lab_col">
-          <li>
-            <a
-              className="portfolio-link "
-              onClick={() => handleRedirect(actions, lab)}
-              href="# "
-            >
-              <div
-                alt={alt}
-                className="img-fluid module__image module__lab_image"
-                style={{
-                  backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
-                }}
-              />
-            </a>
-          </li>
-          <ul className="module__caption">
-            <li className="module__title module__lab_title">
-              <a onClick={() => handleRedirect(actions, lab)} href="# ">
-                {name}
-              </a>
-            </li>
-            <li className="module__bio">{bio}</li>
-          </ul>
+          <LabFooter
+            useCase={"profile"}
+            displayDifficulty={displayDifficulty}
+            actions={actions}
+            lab={lab}
+            name={name}
+            fullDescription={fullDescription}
+            authors={authors}
+            learningObjectives={learningObjectives}
+          />
         </ul>
       );
     default:
       return (
-        <ul className="module__col module__lab_col xs:tw-flex-col">
+        <ul className="module__col module__lab_col tw-w-full xs:tw-flex-col xs:tw-h-50">
           <li className={"xs:tw-w-full"}>
             <a
               className="portfolio-link"
@@ -194,43 +143,15 @@ const Lab = (props) => {
               />
             </a>
           </li>
-          <div className={"tw-flex tw-flex-row tw-justify-start tw-w-full"}>
-            <div
-              className={
-                "tw-flex tw-flex-row poppins tw-font-medium tw-text-sm tw-p-3 tw-w-full xs:tw-justify-start"
-              }
-            >
-              Difficulty: {displayDifficulty()}
-            </div>
-            <div className="module__bio module__lab_buttons">
-              <button
-                className="tw-bg-labYellow poppins tw-border-0 tw-ps-3 tw-text-xl tw-absolute tw-right-0 md:lg:tw-top-48 md:lg:tw-m-0 xs:tw-mt-3"
-                onClick={() => handleRedirect(actions, lab)}
-              >
-                Launch Lab
-              </button>
-              <div
-                className={
-                  "tw-absolute tw-right-0 md:lg:tw-top-36 xs:tw-top-64 md:lg:tw-m-0 xs:tw-mt-3 "
-                }
-              >
-                <InfoModal
-                  buttonLabel={"More Info"}
-                  labName={name}
-                  fullDescription={fullDescription}
-                  learningObjectives={learningObjectives}
-                  authors={authors}
-                  redirect={() => handleRedirect(actions, lab)}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="module__title module__lab_title tw-mt-0 tw-mb-3 xs:tw-w-full xs:tw-justify-start xs:tw-ps-3">
-            <div className={"tw-font-medium tw-text-sm"}> Lab {lab}</div>
-            <a onClick={() => handleRedirect(actions, lab)} href="# ">
-              {name}
-            </a>
-          </div>
+          <LabFooter
+            displayDifficulty={displayDifficulty}
+            actions={actions}
+            lab={lab}
+            name={name}
+            fullDescription={fullDescription}
+            authors={authors}
+            learningObjectives={learningObjectives}
+          />
         </ul>
       );
   }

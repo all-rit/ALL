@@ -458,6 +458,13 @@ li {
   &__pagesection {
     padding: 50px 0 !important;
   }
+  &__team {
+    display: flex;
+    //flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+  }
   &__row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -467,6 +474,17 @@ li {
     justify-items: center;
     text-align: center;
     flex-wrap: wrap;
+  }
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 300px));
+    grid-gap: 1rem;
+    justify-items: center;
+  }
+
+  &__row > div {
+    max-width: 90%;
+    padding: 0.5rem;
   }
   p {
     font-size: 16px;
@@ -874,7 +892,9 @@ a.icon:hover {
   li {
     display: table-cell;
   }
+
   &__completed {
+    border-radius: 0;
     &:hover {
       background-color: #85e085;
     }
@@ -887,6 +907,7 @@ a.icon:hover {
     background-color: #33cc33;
   }
   &__notCompleted {
+    border-radius: 0;
     &:hover {
       background-color: #d9d9d9;
     }
@@ -916,7 +937,7 @@ a.icon:hover {
   }
 
   &__lab_col {
-    min-width: 20.6rem;
+    min-width: 10.6rem;
     max-width: 20.6rem;
   }
   &__row {
@@ -975,6 +996,23 @@ a.icon:hover {
       width: 20.6rem;
     }
   }
+  @media (max-width: 576px) {
+    &__col {
+      min-width: 150px;
+      max-width: 320px;
+      min-height: 200px;
+    }
+    &__profile_image {
+      height: 125px;
+      width: 125px;
+      background-size: 150px;
+    }
+    &__lab_image {
+      height: 10rem;
+      width: 3rem;
+    }
+  }
+
   &__lab_image {
     background-position: center;
     background-size: 400px;

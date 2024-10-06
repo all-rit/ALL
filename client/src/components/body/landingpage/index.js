@@ -86,7 +86,7 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          <div className="landingpage__row">
+          <div className="landingpage__row md:lg:tw-flex md:lg:tw-grid-cols-3 md:lg:tw-justify-center sm:tw-grid-cols-2">
             <LabGeneration actions={actions} />
           </div>
         </div>

@@ -4,25 +4,24 @@ import React, { Component } from "react";
 import ProgressBarBar from "./ProgressBarBar";
 class ProgressBar extends Component {
   render() {
-    const { barData, percentage, labID } = this.props;
+    const { barData, labID } = this.props;
     const total = barData.length;
-
-    function totalCompleted(barData) {
-      let totalCompleted = 0;
-      barData.forEach((data) => {
-        if (data[1] !== null) {
-          totalCompleted++;
-        }
-      });
-      return totalCompleted;
-    }
-    const completed = totalCompleted(barData);
 
     function renderBars() {
       return barData.map((data, index) => {
-        return (
-          <ProgressBarBar key={index} data={data} index={index} labID={labID} />
-        );
+        try {
+          console.log(data);
+          return (
+            <ProgressBarBar
+              key={index}
+              data={data}
+              index={index}
+              labID={labID}
+            />
+          );
+        } catch (error) {
+          console.log(error);
+        }
       });
     }
 
@@ -38,16 +37,6 @@ class ProgressBar extends Component {
       return (
         <ul className="progressBarContainer">
           <ul className="progressBar">{renderBars()}</ul>
-          {percentage === true ? (
-            <li className="progressBar__info">
-              {((completed / total) * 100).toFixed(0)}% completed.
-            </li>
-          ) : (
-            <li className="progressBar__info">
-              {" "}
-              {completed} out of {total} modules completed.
-            </li>
-          )}
         </ul>
       );
     }
