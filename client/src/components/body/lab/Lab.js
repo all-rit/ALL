@@ -1,9 +1,8 @@
-/* eslint-disable require-jsdoc */
-/* eslint-disable react/prop-types */
 import React from "react";
 import handleRedirect from "../../../helpers/Redirect";
 import ProgressBar from "../profilepage/components/ProgressBar";
 import LabFooter from "./LabFooter";
+import PropTypes from "prop-types";
 
 const Lab = (props) => {
   const {
@@ -117,7 +116,7 @@ const Lab = (props) => {
             </a>
           </li>
           <LabFooter
-            useCase={"profile"}
+            useCase={progressState}
             displayDifficulty={displayDifficulty}
             actions={actions}
             lab={lab}
@@ -158,6 +157,28 @@ const Lab = (props) => {
         </ul>
       );
   }
+};
+
+Lab.propTypes = {
+  displayDifficulty: PropTypes.func,
+  progressState: PropTypes.string,
+  alt: PropTypes.string,
+  labProgress: PropTypes.shape({
+    aboutcompletedtime: PropTypes.string,
+    readingcompletedtime: PropTypes.string,
+    exercisecompletedtime: PropTypes.string,
+    reinforcementcompletedtime: PropTypes.string,
+    quizcompletedtime: PropTypes.string,
+  }),
+  actions: PropTypes.shape({}),
+  lab: PropTypes.number,
+  image: PropTypes.string,
+  name: PropTypes.string,
+  fullDescription: PropTypes.string,
+  authors: PropTypes.string,
+  learningObjectives: PropTypes.array,
+  useCase: PropTypes.string,
+  difficulty: PropTypes.number,
 };
 
 export default Lab;

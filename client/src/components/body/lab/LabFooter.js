@@ -15,29 +15,79 @@ const LabFooter = (props) => {
     useCase,
   } = props;
 
+  const buttonStyles = {
+    notCompleted: {
+      button: `tw-mt-20 tw-bg-labYellow poppins tw-border-0 tw-text-xl tw-absolute
+              xs:tw-top-72 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
+              sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl sm:tw-top-96
+              md:tw-left-auto
+              lg:tw-left-auto lg:tw-top-64`,
+      infoModal: `tw-absolute tw-right-0
+              xs:tw-top-72 xs:tw-text-sm
+              sm:tw-top-80 sm:tw-mt-3
+              md:lg:tw-top-52 md:lg:tw-m-0`,
+    },
+    completed: {
+      button: `tw-mt-20 tw-bg-labYellow poppins tw-border-0 tw-text-xl tw-absolute
+              xs:tw-top-72 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
+              sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl sm:tw-top-96
+              md:tw-left-auto
+              lg:tw-left-auto lg:tw-top-64 lg:tw-mt-3`,
+      infoModal: `tw-absolute tw-right-0
+              xs:tw-top-72 xs:tw-text-sm
+              sm:tw-top-80 sm:tw-mt-3
+              md:lg:tw-top-56 md:lg:tw-m-0`,
+    },
+    default: {
+      button: `tw-bg-labYellow poppins tw-border-0 tw-text-xl tw-absolute
+              xs:tw-top-52 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
+              sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl
+              md:tw-left-auto md:tw-top-80
+              lg:tw-left-auto lg:tw-top-48`,
+      infoModal: `tw-absolute tw-right-0
+              xs:tw-top-52 xs:tw-text-sm
+              sm:tw-top-64 sm:tw-mt-3
+              md:lg:tw-top-36 md:lg:tw-m-0`,
+    },
+  };
+
   const labButtons = () => {
     let currentUseCase;
 
     switch (useCase) {
-      case "profile":
+      case "NOT_STARTED":
+      case "IN_PROGRESS":
         currentUseCase = (
           <div className={"tw-mt-20"}>
             <button
-              className="tw-bg-labYellow poppins tw-border-0 tw-text-xl tw-absolute
-                              xs:tw-top-72 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
-                              sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl sm:tw-top-96
-                              md:tw-left-auto
-                              lg:tw-left-auto lg:tw-top-64"
+              className={`${buttonStyles.notCompleted.button}`}
               onClick={() => handleRedirect(actions, lab)}
             >
               Launch Lab
             </button>
-            <div
-              className="tw-absolute tw-right-0
-                                xs:tw-top-72 xs:tw-text-sm
-                                sm:tw-top-80 sm:tw-mt-3
-                                md:lg:tw-top-52 md:lg:tw-m-0"
+            <div className={`${buttonStyles.notCompleted.infoModal}`}>
+              <InfoModal
+                buttonLabel={"More Info"}
+                labName={name}
+                fullDescription={fullDescription}
+                learningObjectives={learningObjectives}
+                authors={authors}
+                redirect={() => handleRedirect(actions, lab)}
+              />
+            </div>
+          </div>
+        );
+        break;
+      case "COMPLETED":
+        currentUseCase = (
+          <div className={"tw-mt-20"}>
+            <button
+              className={`${buttonStyles.completed.button}`}
+              onClick={() => handleRedirect(actions, lab)}
             >
+              Launch Lab
+            </button>
+            <div className={`${buttonStyles.completed.infoModal}`}>
               <InfoModal
                 buttonLabel={"More Info"}
                 labName={name}
@@ -54,21 +104,12 @@ const LabFooter = (props) => {
         currentUseCase = (
           <div>
             <button
-              className="tw-bg-labYellow poppins tw-border-0 tw-text-xl tw-absolute
-                              xs:tw-top-52 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
-                              sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl
-                              md:tw-left-auto md:tw-top-80
-                              lg:tw-left-auto lg:tw-top-48"
+              className={`${buttonStyles.default.button}`}
               onClick={() => handleRedirect(actions, lab)}
             >
               Launch Lab
             </button>
-            <div
-              className="tw-absolute tw-right-0
-                            xs:tw-top-52 xs:tw-text-sm
-                            sm:tw-top-64 sm:tw-mt-3
-                            md:lg:tw-top-36 md:lg:tw-m-0"
-            >
+            <div className={`${buttonStyles.default.infoModal}`}>
               <InfoModal
                 buttonLabel={"More Info"}
                 labName={name}
