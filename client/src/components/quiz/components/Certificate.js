@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -6,6 +5,7 @@ import { actions as appActions } from "../../../reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
 import logo from "../../../assets/images/logos/FinalALLLogo.png";
 import { Sections } from "../../../constants/index";
+import PropTypes from "prop-types";
 
 const mapStateToProps = (state) => {
   return {
@@ -129,5 +129,16 @@ class Certificate extends Component {
     );
   }
 }
+
+Certificate.propTypes = {
+  quizResult: PropTypes.string,
+  state: PropTypes.shape({
+    main: PropTypes.shape({
+      user: PropTypes.number,
+    }),
+  }),
+  isImagine: PropTypes.bool,
+  lab: PropTypes.number,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Certificate);

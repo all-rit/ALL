@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import handleRedirect from "../../../helpers/Redirect";
 import ProgressBar from "../profilepage/components/ProgressBar";
 import LabFooter from "./LabFooter";
 import PropTypes from "prop-types";
+import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+import Certificate from "../../quiz/components/Certificate";
 
 const Lab = (props) => {
   const {
@@ -18,6 +20,12 @@ const Lab = (props) => {
     labProgress,
     difficulty,
   } = props;
+
+  const [openCertificate, setOpenCertificate] = useState(false);
+
+  const openCertificateModal = () => {
+    setOpenCertificate(!openCertificate);
+  };
 
   const displayProgress = () => {
     let currentProgress;
@@ -75,12 +83,23 @@ const Lab = (props) => {
                 <div className={"tw-ps-2"}>
                   <a
                     className={
-                      "tw-flex tw-flex-row tw-justify-start tw-text-labBlue"
+                      "tw-flex tw-flex-row tw-justify-start tw-text-labBlue tw-cursor-pointer"
                     }
-                    href={"/"}
+                    onClick={openCertificateModal}
                   >
                     View Certificate
                   </a>
+                  <Modal isOpen={openCertificate}>
+                    <ModalBody>
+                      <Certificate
+                        quizResult={labProgress.quizscore}
+                        lab={lab}
+                      />
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button onClick={openCertificateModal}>Close</Button>
+                    </ModalFooter>
+                  </Modal>
                 </div>
               ) : (
                 ""
@@ -169,6 +188,7 @@ Lab.propTypes = {
     exercisecompletedtime: PropTypes.string,
     reinforcementcompletedtime: PropTypes.string,
     quizcompletedtime: PropTypes.string,
+    quizscore: PropTypes.number,
   }),
   actions: PropTypes.shape({}),
   lab: PropTypes.number,

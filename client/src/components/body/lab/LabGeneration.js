@@ -45,7 +45,6 @@ const LabGeneration = (props) => {
         return LabService.getAllLabs();
       }
       fetchGroups().then((data) => {
-        console.log(data);
         let arr = [];
         data.map((lab) => {
           arr[lab.id - 1] = lab;
