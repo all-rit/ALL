@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from "react";
-import Logo from "../../assets/images/logos/FinalALLLogo.png";
+import Logo from "../../assets/images/logos/ALL_Logo.svg"; 
 import { connect } from "react-redux";
 import {
   Collapse,
