@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
             msg: 'Email is not unique!',
           },
         },
+        userpfp: { type: DataTypes.TEXT }
       },
       {tableName: 'users'},
   );
