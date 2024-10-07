@@ -121,12 +121,12 @@ module.exports = {
           fontSize: "2rem",
           fontWeight: theme("fontWeight.bold"),
         },
-        "sub-title-styling-name": {
+        ".sub-title-styling-name": {
           fontFamily: theme("fontFamily.calibri"),
           fontSize: "1.5rem",
           fontWeight: theme("fontWeight.normal"),
         },
-        "body-styling-name": {
+        ".body-styling-name": {
           font: theme("fontFamily.calibri"),
           fontSize: "1.125rem",
           fontWeight: theme("fontWeight.light"),
