@@ -679,7 +679,7 @@ a.icon:hover {
   background-color: #fed136 !important;
 }
 
-/* .landingpage h1,
+.landingpage h1,
 .landingpage h2,
 .landingpage h3,
 .landingpage h4,
@@ -701,10 +701,6 @@ a.icon:hover {
     "Segoe UI Emoji",
     "Segoe UI Symbol",
     "Noto Color Emoji";
-} */
-
-.dev-info h2 {
-  justify-content: left;
 }
 
 .text-primary {
