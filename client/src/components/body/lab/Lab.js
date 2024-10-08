@@ -62,8 +62,12 @@ const Lab = (props) => {
     case "NOT_STARTED":
     case "COMPLETED":
       return (
-        <ul className="module__col module__lab_col tw-w-full xs:tw-flex-col poppins">
-          <ul className={"tw-flex tw-flex-row tw-w-full tw-justify-between"}>
+        <ul className="module__col module__lab_col xs:tw-w-full xs:tw-flex-col tw-font-poppins">
+          <ul
+            className={
+              "tw-flex tw-flex-row tw-w-full tw-justify-between tw-m-2 tw-relative"
+            }
+          >
             <li className={"tw-flex tw-flex-col tw-justify-start tw-mt-3"}>
               <div
                 className={
@@ -74,7 +78,7 @@ const Lab = (props) => {
               </div>
               <div
                 className={
-                  "tw-flex tw-flex-row tw-justify-start tw-ml-2 tw-text-sm tw-font-semibold"
+                  "tw-flex tw-flex-row tw-justify-start tw-ml-2 tw-text-xs tw-font-medium tw-whitespace-nowrap"
                 }
               >
                 {displayProgress()}
@@ -83,7 +87,7 @@ const Lab = (props) => {
                 <div className={"tw-ps-2"}>
                   <a
                     className={
-                      "tw-flex tw-flex-row tw-justify-start tw-text-labBlue tw-cursor-pointer"
+                      "tw-flex tw-flex-row tw-justify-start tw-text-labBlue tw-cursor-pointer tw-whitespace-nowrap tw-text-xs tw-font-medium"
                     }
                     onClick={openCertificateModal}
                   >

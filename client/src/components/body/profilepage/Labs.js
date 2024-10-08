@@ -9,40 +9,40 @@ const Labs = (props) => {
     <>
       {state.main.user && props.labRecords && (
         <>
-          <div className="module__row">
-            <div>
+          <ul className="tw-flex tw-flex-col">
+            <li>
               <h4>In Progress Labs</h4>
-              <div className="module__row">
+              <ul className="tw-flex tw-grid-cols-2 xs:tw-flex-wrap">
                 <LabGeneration
                   actions={actions}
                   progressState="IN_PROGRESS"
                   labRecords={props.inProgressLabs}
                 />
-              </div>
-            </div>
+              </ul>
+            </li>
 
-            <div>
+            <li>
               <h4>Assigned Labs</h4>
-              <div className="module__row">
+              <div className="tw-flex tw-grid-cols-2">
                 <LabGeneration
                   actions={actions}
                   progressState="NOT_STARTED"
                   labids={props.toDoLabs}
                 />
               </div>
-            </div>
+            </li>
 
-            <div>
+            <li>
               <h4>Completed Labs</h4>
-              <div className="module__row">
+              <div className="tw-grid">
                 <LabGeneration
                   actions={actions}
                   progressState="COMPLETED"
                   labRecords={props.completedLabs}
                 />
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </>
       )}
     </>

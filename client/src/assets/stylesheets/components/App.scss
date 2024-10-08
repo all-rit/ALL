@@ -884,13 +884,16 @@ a.icon:hover {
 .progressBar {
   //max-width: 450px;
   //min-width: 450px;
-  display: table;
-  width: 100%;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  li {
+  display: inline-grid;
+  grid-template-columns: repeat(5, 1fr); /* for 5 equal columns */
+  width: 50%;
+  height: 10%;
+
+  li,
+  button {
     display: table-cell;
+    width: 20%;
+    height: 20%;
   }
 
   &__completed {
@@ -904,7 +907,8 @@ a.icon:hover {
     &:active {
       background-color: #85e085;
     }
-    background-color: #33cc33;
+    border: solid 1px #14ff00;
+    background-color: #14ff00;
   }
   &__notCompleted {
     border-radius: 0;
@@ -917,13 +921,10 @@ a.icon:hover {
     &:active {
       background-color: #d9d9d9;
     }
-    background-color: #dee2e6;
+    background-color: transparent;
   }
   &__bar {
-    padding: 10px;
-    width: 96%;
-    border: 1px solid darkgreen;
-    margin-right: 5px;
+    width: 20%;
   }
   &__info {
     display: table;
@@ -1069,7 +1070,7 @@ a.icon:hover {
     height: 1rem;
     width: 1rem;
     &_filled {
-      background: blue;
+      background: #0144d5;
       border: solid black 0.01rem;
       border-radius: 50%;
       height: 1rem;

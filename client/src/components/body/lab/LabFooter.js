@@ -17,7 +17,7 @@ const LabFooter = (props) => {
 
   const buttonStyles = {
     notCompleted: {
-      button: `tw-mt-20 tw-bg-labYellow poppins tw-border-0 tw-text-xl tw-absolute
+      button: `tw-mt-20 tw-bg-primary-yellow tw-font-poppins tw-border-0 tw-text-xl tw-absolute
               xs:tw-top-72 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
               sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl sm:tw-top-96
               md:tw-left-auto
@@ -28,7 +28,7 @@ const LabFooter = (props) => {
               md:lg:tw-top-52 md:lg:tw-m-0`,
     },
     completed: {
-      button: `tw-mt-20 tw-bg-labYellow poppins tw-border-0 tw-text-xl tw-absolute
+      button: `tw-mt-20 tw-bg-primary-yellow poppins tw-border-0 tw-text-xl tw-absolute
               xs:tw-top-72 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
               sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl sm:tw-top-96
               md:tw-left-auto
@@ -39,7 +39,7 @@ const LabFooter = (props) => {
               md:lg:tw-top-56 md:lg:tw-m-0`,
     },
     default: {
-      button: `tw-bg-labYellow poppins tw-border-0 tw-text-xl tw-absolute
+      button: `tw-bg-primary-yellow poppins tw-border-0 tw-text-xl tw-absolute
               xs:tw-top-52 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
               sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl
               md:tw-left-auto md:tw-top-80
@@ -60,10 +60,10 @@ const LabFooter = (props) => {
         currentUseCase = (
           <div className={"tw-mt-20"}>
             <button
-              className={`${buttonStyles.notCompleted.button}`}
+              className={`tw-font-medium ${buttonStyles.notCompleted.button}`}
               onClick={() => handleRedirect(actions, lab)}
             >
-              Launch Lab
+              Launch
             </button>
             <div className={`${buttonStyles.notCompleted.infoModal}`}>
               <InfoModal
@@ -82,10 +82,10 @@ const LabFooter = (props) => {
         currentUseCase = (
           <div className={"tw-mt-20"}>
             <button
-              className={`${buttonStyles.completed.button}`}
+              className={`tw-font-medium ${buttonStyles.completed.button}`}
               onClick={() => handleRedirect(actions, lab)}
             >
-              Launch Lab
+              Launch
             </button>
             <div className={`${buttonStyles.completed.infoModal}`}>
               <InfoModal
@@ -107,7 +107,7 @@ const LabFooter = (props) => {
               className={`${buttonStyles.default.button}`}
               onClick={() => handleRedirect(actions, lab)}
             >
-              Launch Lab
+              Launch
             </button>
             <div className={`${buttonStyles.default.infoModal}`}>
               <InfoModal
@@ -127,18 +127,18 @@ const LabFooter = (props) => {
   };
 
   return (
-    <div className={"tw-w-full"}>
+    <div className={"tw-w-full tw-pb-3"}>
       <div className={"tw-flex tw-flex-row tw-justify-start tw-w-full"}>
         <div
           className={
-            "tw-flex tw-flex-row poppins tw-font-medium tw-text-sm tw-p-3 tw-w-full xs:tw-justify-start"
+            "tw-flex tw-flex-row tw-font-poppins tw-text-sm tw-p-3 tw-w-full xs:tw-justify-start"
           }
         >
           Difficulty: {displayDifficulty()}
         </div>
         <div className="module__bio module__lab_buttons">{labButtons()}</div>
       </div>
-      <div className="module__title module__lab_title tw-mt-0 tw-mb-3 xs:tw-w-full xs:tw-justify-start xs:tw-ps-3">
+      <div className="module__title module__lab_title tw-mt-0 tw-pd-3 xs:tw-w-full xs:tw-justify-start xs:tw-ps-3">
         <div className={"tw-font-medium tw-text-sm"}> Lab {lab}</div>
         <a
           className={"xs:tw-text-sm xs:tw-line-clamp-2 sm:tw-text-xl"}
