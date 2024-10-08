@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1057 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="Artboard1" transform="matrix(0.979301,0,0,0.703476,-1.36647,-141.35)">
+        <rect x="1.395" y="200.93" width="1078.61" height="682.326" style="fill:none;"/>
+        <clipPath id="_clip1">
+            <rect x="1.395" y="200.93" width="1078.61" height="682.326"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g transform="matrix(1.29762,0,0,1.80639,-206.282,-205.055)">
+                <g transform="matrix(344.484,0,0,344.484,917.449,539.886)">
+                </g>
+                <text x="148.561px" y="539.886px" style="font-family:'Poppins-Bold', 'Poppins';font-weight:700;font-size:344.484px;fill:white;">&gt;ALL</text>
+            </g>
+            <g transform="matrix(1.29762,0,0,1.80639,417.651,867.716)">
+                <g transform="matrix(40,0,0,40,504.88,7.10543e-15)">
+                </g>
+                <text x="0px" y="0px" style="font-family:'Poppins-Medium', 'Poppins';font-weight:500;font-size:40px;fill:white;">Accessible Learning Labs</text>
+            </g>
+            <g transform="matrix(1.27497,0,0,1.82502,-165.773,-211.18)">
+                <path d="M154.884,253.953L953.023,252.558L954.419,523.256" style="fill:none;stroke:white;stroke-width:36.15px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
