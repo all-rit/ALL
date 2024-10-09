@@ -57,6 +57,7 @@ const AIAnalysisQuestions = () => {
       <h2 className="playthrough__title">AI Analysis Survey</h2>
 
       <QuestionsHandler
+        isFinalQuiz={true}
         questions={aiAnalysisData}
         handleContinue={handleContinue}
       />
