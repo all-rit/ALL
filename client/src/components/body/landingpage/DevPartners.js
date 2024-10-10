@@ -3,9 +3,9 @@ import React from "react";
 
 const DevPartners = () => {
   return (
-    <div className="tw-bg-labBlue tw-py-28 tw-pl-36 ">
-      <div className="tw-bg-labYellow tw-rounded-bl-md  tw-pb-3 tw-pl-3">
-        <div className="tw-bg-bgwhite tw-text-left tw-px-16 tw-py-6">
+    <div className="tw-bg-labBlue tw-py-28 tw-pl-36">
+      <div className="tw-bg-labYellow tw-rounded-bl-md tw-pb-3 tw-pl-3">
+        <div className="tw-bg-bgwhite tw-text-left tw-px-16 tw-py-6 tw">
           <h2 className="tw-text-black tw-text-3xl tw-font-bold tw-py-6 tw-text-left">
             Development Partners
           </h2>
@@ -21,8 +21,8 @@ const DevPartners = () => {
           </div>
         </div>
       </div>
+      <div className="tw-grid"></div>
     </div>
   );
 };
-
 export default DevPartners;
