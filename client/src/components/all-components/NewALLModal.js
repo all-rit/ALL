@@ -91,7 +91,14 @@ const NewALLModal = (props) => {
             </div>
           </div>
         </div>
-        <div id="col-body">{body}</div>
+        <div
+          id="col-body"
+          className={
+            "tw-w-full tw-h-full tw-flex tw-flex-row tw-justify-center tw-align-middle"
+          }
+        >
+          <div>{body}</div>
+        </div>
       </div>
     </Modal>
   );
