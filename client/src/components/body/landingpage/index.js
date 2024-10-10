@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const Home = (props) => {
   const { actions } = props;
+
   return (
     <div className="landingpage">
       {/* Header */}
