@@ -1,97 +1,98 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Modal } from "reactstrap";
 import PropTypes from "prop-types";
-import logo from "../../assets/images/logos/ALL_White_Logo.svg";
+import logo from "../../assets/images/logos/ALL_White.png";
 
 const NewALLModal = (props) => {
   const { isOpen, toggle, direction, body } = props;
 
-  useEffect(() => {
-    console.log(direction);
-  });
-
-  return (
-    <Modal toggle={toggle} isOpen={isOpen} className={"tw-w-[32rem] tw-pr-5"}>
-      {direction === "row" ? (
+  return direction === "row" && window.innerWidth >= 640 ? (
+    <Modal
+      toggle={toggle}
+      isOpen={isOpen}
+      className={"xs:tw-w-full sm:tw-h-[32rem] sm:md:lg:tw-w-[40rem] tw-pr-5"}
+    >
+      <div
+        className={`tw-flex tw-flex-row xs:tw-h-[10rem] sm:tw-h-[20rem] md:lg:tw-min-h-[28rem] sm:tw-min-w-[30rem] md:tw-min-w-[40rem] lg:tw-min-w-[64rem]`}
+      >
         <div
-          className={`tw-flex tw-flex-row lg:tw-h-[28rem] sm:tw-min-w-[30rem] md:tw-min-w-[40rem] lg:tw-min-w-[64rem]`}
+          id="row-header"
+          className={"tw-bg-primary-blue tw-w-1/2 tw-rounded-l-md"}
         >
           <div
-            id="row-header"
             className={
-              "tw-bg-primary-blue tw-relative tw-w-1/2 tw-rounded-l-md"
+              "tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full"
             }
           >
-            <button
-              className="tw-absolute tw-text-5xl
-                                        tw-font-poppins line-height-0 tw-top-5
-                                        tw-text-white tw-bg-primary-blue
-                                        tw-rounded-4xl tw-border-0"
-              onClick={toggle}
-              aria-hidden="true"
-            >
-              {" "}
-              &times;{" "}
-            </button>
             <div
               className={
-                "tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full"
+                "tw-w-2/3 tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle"
               }
             >
-              <div
-                className={
-                  "tw-w-1/2 tw-flex tw-flex-row tw-justify-center tw-align-middle "
-                }
-              >
-                <img className={"tw-font-poppins"} src={logo} srcSet={logo} />
-              </div>
+              <img className={"tw-w-full tw-h-1/2"} src={logo} />
             </div>
           </div>
-          <div
-            id={"row-body"}
-            className={
-              "tw-w-1/2 tw-flex tw-flex-col tw-align-middle tw-justify-center"
-            }
-          >
-            {body}
-          </div>
         </div>
-      ) : (
         <div
-          className={`tw-flex tw-flex-col tw-min-h-[40rem] sm:tw-min-w-[20rem] md:tw-min-w-[30rem] lg:tw-min-w-[40rem]`}
+          id={"row-body"}
+          className={
+            "tw-w-1/2 tw-flex tw-flex-col tw-align-middle tw-justify-center tw-relative"
+          }
         >
-          <div
-            id="col-header"
-            className={"tw-bg-primary-blue tw-relative tw-h-52 tw-rounded-t-md"}
+          <button
+            className="tw-absolute sm:md:lg:tw-text-5xl
+                                            tw-font-poppins line-height-0 tw-top-5 tw-right-0
+                                            tw-text-primary-blue tw-bg-white
+                                            tw-rounded-4xl tw-border-0 xs:tw-text-xl "
+            onClick={toggle}
+            aria-hidden="true"
           >
-            <button
-              className="tw-absolute tw-text-5xl
-                                        tw-top-5 tw-right-0 tw-font-poppins
-                                        tw-text-white tw-bg-primary-blue
-                                        tw-rounded-4xl tw-border-0 line-height-0"
-              onClick={toggle}
-              aria-hidden="true"
-            >
-              {" "}
-              &times;{" "}
-            </button>
+            &times;{" "}
+          </button>
+          {body}
+        </div>
+      </div>
+    </Modal>
+  ) : (
+    <Modal
+      toggle={toggle}
+      isOpen={isOpen}
+      className={"xs:tw-w-full sm:md:lg:tw-w-[40rem] tw-pr-5"}
+    >
+      <div
+        className={`tw-flex tw-flex-col tw-min-h-[30rem] xs:tw-w-full md:tw-min-w-[20rem] md:tw-max-w-[30rem] lg:tw-min-w-[30rem] tg:tw-max-w-[40rem]`}
+      >
+        <div
+          id="col-header"
+          className={"tw-bg-primary-blue tw-relative tw-h-52 tw-rounded-t-md"}
+        >
+          <button
+            className="tw-absolute tw-text-5xl
+                                            tw-top-5 tw-right-0 tw-font-poppins
+                                            tw-text-white tw-bg-primary-blue
+                                            tw-rounded-4xl tw-border-0 line-height-0"
+            onClick={toggle}
+            aria-hidden="true"
+          >
+            {" "}
+            &times;{" "}
+          </button>
+          <div
+            className={
+              "tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full"
+            }
+          >
             <div
               className={
-                "tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full"
+                "tw-w-1/2 tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle "
               }
             >
-              <div
-                className={
-                  "tw-w-1/2 tw-flex tw-flex-row tw-justify-center tw-align-middle "
-                }
-              >
-                <img className={"tw-font-poppins"} src={logo} srcSet={logo} />
-              </div>
+              <img className={"tw-w-full"} src={logo} srcSet={logo} />
             </div>
           </div>
-          <div id="col-body">{body}</div>
         </div>
-      )}
+        <div id="col-body">{body}</div>
+      </div>
     </Modal>
   );
 };
