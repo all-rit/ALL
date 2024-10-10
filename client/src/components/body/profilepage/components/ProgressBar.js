@@ -1,28 +1,25 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import ProgressBarBar from "./ProgressBarBar";
+import PropTypes from "prop-types";
 class ProgressBar extends Component {
   render() {
-    const { barData, percentage, labID } = this.props;
+    const { barData, labID } = this.props;
     const total = barData.length;
-
-    function totalCompleted(barData) {
-      let totalCompleted = 0;
-      barData.forEach((data) => {
-        if (data[1] !== null) {
-          totalCompleted++;
-        }
-      });
-      return totalCompleted;
-    }
-    const completed = totalCompleted(barData);
 
     function renderBars() {
       return barData.map((data, index) => {
-        return (
-          <ProgressBarBar key={index} data={data} index={index} labID={labID} />
-        );
+        try {
+          return (
+            <ProgressBarBar
+              key={index}
+              data={data}
+              index={index}
+              labID={labID}
+            />
+          );
+        } catch (error) {
+          return null;
+        }
       });
     }
 
@@ -36,22 +33,16 @@ class ProgressBar extends Component {
       );
     } else {
       return (
-        <ul className="progressBarContainer">
+        <ul className="progressBarContainer tw-absolute tw-left-16 tw-top-9">
           <ul className="progressBar">{renderBars()}</ul>
-          {percentage === true ? (
-            <li className="progressBar__info">
-              {((completed / total) * 100).toFixed(0)}% completed.
-            </li>
-          ) : (
-            <li className="progressBar__info">
-              {" "}
-              {completed} out of {total} modules completed.
-            </li>
-          )}
         </ul>
       );
     }
   }
 }
 
+ProgressBar.propTypes = {
+  barData: PropTypes.array,
+  labID: PropTypes.number,
+};
 export default ProgressBar;
