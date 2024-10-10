@@ -3,7 +3,7 @@ import { Modal } from "reactstrap";
 import PropTypes from "prop-types";
 import logo from "../../assets/images/logos/ALL_White.png";
 
-const NewALLModal = (props) => {
+const BrandedALLModal = (props) => {
   const { isOpen, toggle, direction, body } = props;
 
   return direction === "row" && window.innerWidth >= 640 ? (
@@ -104,10 +104,10 @@ const NewALLModal = (props) => {
   );
 };
 
-NewALLModal.propTypes = {
+BrandedALLModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.bool.isRequired,
   body: PropTypes.any,
   direction: PropTypes.oneOf(["row", "column"]).isRequired,
 };
-export default NewALLModal;
+export default BrandedALLModal;

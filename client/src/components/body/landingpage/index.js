@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React from "react";
 import nsf from "../../../assets/images/logos/nsf.png";
 import rit from "../../../assets/images/logos/RIT.png";
 import handleRedirect from "../../../helpers/Redirect";
@@ -9,9 +9,6 @@ import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
 import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
-import { Button } from "reactstrap";
-import NewALLModal from "../../all-components/NewALLModal";
-import LoginBody from "../login/LoginBody";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -21,15 +18,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const Home = (props) => {
   const { actions } = props;
-  const [openRowModal, setOpenRowModal] = useState(false);
-  const [openColModal, setOpenColModal] = useState(false);
-  const toggleRowModal = () => {
-    setOpenRowModal(!openRowModal);
-  };
-
-  const toggleColModal = () => {
-    setOpenColModal(!openColModal);
-  };
 
   return (
     <div className="landingpage">
@@ -49,20 +37,6 @@ const Home = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
-              <Button onClick={toggleRowModal}> Open Row Modal </Button>
-              <Button onClick={toggleColModal}> Open Column Modal </Button>
-              <NewALLModal
-                isOpen={openRowModal}
-                toggle={toggleRowModal}
-                body={<LoginBody />}
-                direction={"row"}
-              />
-              <NewALLModal
-                isOpen={openColModal}
-                toggle={toggleColModal}
-                body={"hello vertical world"}
-                direction={"column"}
-              />
               <h2 className="section-heading text-uppercase">Lab Goals</h2>
               <h3 className="section-subheading lab-section-subheading">
                 Accessible Learning Labs is an NSF funded initiative aimed at
