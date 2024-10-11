@@ -62,7 +62,7 @@ const Lab = (props) => {
     case "NOT_STARTED":
     case "COMPLETED":
       return (
-        <ul className="module__col module__lab_col xs:tw-w-full xs:tw-flex-col tw-font-poppins">
+        <ul className="module__col module__lab_col tw-h-full tw-w-full xs:tw-w-full xs:tw-flex-col tw-font-poppins">
           <ul
             className={
               "tw-flex tw-flex-row tw-w-full tw-justify-between tw-m-2 tw-relative"
