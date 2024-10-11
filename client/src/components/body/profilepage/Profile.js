@@ -49,11 +49,11 @@ const Profile = () => {
   }
 
   return (
-    <React.Fragment>
+    <React.Fragment className={"tw-mt-0"}>
       {state.main.user?.firstname === null ? (
         <h3>You are currently not logged in.</h3>
       ) : (
-        <div className="profile container">
+        <div className="tw-mt-0 tw-w-full">
           <ProfileHeader
             user={state.main.user}
             labRecords={labRecords}
