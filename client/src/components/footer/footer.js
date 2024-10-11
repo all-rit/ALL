@@ -191,7 +191,7 @@ class Footer extends Component {
               }}
             >
               <button
-                className="back btn tw-w-32 tw-font-medium tw-rounded-none tw-bg-white text-uppercase tw-shadow-none"
+                className="back btn tw-w-32 tw-font-medium tw-rounded-none tw-bg-white text-uppercase tw-shadow-none focus:tw-border-0"
                 onClick={() => handleRedirect(actions, lab, body - 1)}
                 style={{
                   display:
@@ -229,7 +229,7 @@ class Footer extends Component {
                 }}
               >
                 <button
-                  className="next btn tw-w-32 tw-font-medium tw-rounded-none tw-bg-white text-uppercase  tw-shadow-none"
+                  className="next btn tw-w-32 tw-font-medium tw-rounded-none tw-bg-white text-uppercase tw-shadow-none focus:tw-border-0"
                   onClick={() => handleRedirect(actions, lab, body + 1)}
                   style={{
                     display:
