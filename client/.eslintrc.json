@@ -4,7 +4,12 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "prettier", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
+  ],
   "overrides": [
     {
       "files": ["**/*.spec.js", "**/*.spec.jsx"],
@@ -17,7 +22,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "jest"],
   "settings": {
     "react": {
       "createClass": "createReactClass",

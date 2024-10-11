@@ -390,6 +390,32 @@ create table lab9_repair
     primary key ("repairId")
 );
 
+create type enum_lab12_repair_section as enum ('FormRepair', 'DatabaseRepair');
+
+create table lab12_repair (
+                              "repairId"    serial,
+                              userid        bigint,
+                              section       enum_lab12_repair_section,
+                              repair        json,
+                              "isComplete"  boolean,
+                              "attemptTime" timestamp with time zone,
+                              "repairCount" bigint,
+                              primary key ("repairId")
+);
+
+create table lab12_exercise
+(
+    "repairId"                         serial,
+    userid                             bigint,
+    "isFormRepairComplete"             boolean,
+    "isDatabaseRepairComplete"         boolean,
+    "attemptTime"                      timestamp with time zone,
+    "isExerciseComplete"               boolean,
+    "hasViewed"                        boolean,
+    "attemptCount"                     integer,
+    primary key ("repairId")
+);
+
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
@@ -885,7 +911,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
   }
 ]
 ', true),
-(3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
+                                                                                                                                                                                                                                                      (3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
                 that is accessible to users who utilize screenreaders.
                 You will learn about using alt tags,
                 increase your understanding through an interactive module about
@@ -1076,7 +1102,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": true
   }
 ]', true),
-(4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
+                                                                                                                                                                                                                                                      (4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
                 that is accessible to users with dexterity impairments.
                 You will learn about issues related to dexterity,
                 increase your understanding through an interactive module about
@@ -1260,7 +1286,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": true
   }
 ]', true),
- (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
+                                                                                                                                                                                                                                                      (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
                that is accessible to users who face cognitive impairments.
                You will learn about using clear descriptive headings, handling time driven notifications, and
                creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz
@@ -3057,7 +3083,227 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
-', true);
+', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement inclusive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not inclusive, and learn how and why to implement an interface that is accessible to gender and identity.',
+e'[
+   "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
+   "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
+   "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
+   "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
+]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than Male or Female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
+“next
+” to start!', e'{
+ "piechart": {
+       "header":"Inclusive Forms",
+      "caption":["59% of Gen Z believes forms should have options outside of male and female"],
+      "data": {
+         "labels": [
+            "Gen Zers who believe forms should have options outside of male / female",
+            "Gen Zers who DO NOT believe forms should have options outside of male / female"
+           ],
+           "datasets": [
+            {
+              "label": "Color Visions Deficiencies in a Population of 10,000 People",
+              "borderColor": "black",
+              "backgroundColor": ["#ACADBC","#473BF0"],
+              "data": [59, 41],
+              "borderWidth": "2"
+            }
+           ]
+        }
+   },
+   "description":"",
+   "body":[
+      {
+         "header":"Gender Identity",
+         "type":"",
+         "content":["Gender Identity is the concept of self; male, female, both, neither and more. It\'s an individual\'s unique perception of who they are. Gender identity may match assigned sex at birth but many don\'t fit in these assigned categories. 69.5% of youth between 13-18 years old within the LGBTQ+ community identify as at least one non-cisgender (male/female) identity according to a 2023 survey conducted by the Human Rights Campaign (HRC). These gender identities are expressed by people\'s characteristics, clothing, behavior and notably through preferred names and pronouns. The same survey shows a clear link between the usage of preferred names and pronouns by those around an individual and a reduction in anxiety and depression."]
+      },
+       {
+           "header": "",
+           "type": "links",
+           "content": [
+               {
+                   "name": "2023 LGBTQ+ Youth Report Survey",
+                   "link": "https://reports.hrc.org/2023-lgbtq-youth-report?_ga=2.167609654.968366084.1711659164-297823230.1711659164#gender-identity"
+               }
+           ]
+       },
+      {
+         "header":"",
+         "type":"",
+         "content":["As the LGBTQ+ community continues to expand, as it has within the past two decades, it\'s important to stay open. Laws continue to be passed nationwide to keep up with this growth, serving to protect members of these communities from harassment and discrimination. Those who identify outside of the traditional male or female gender identities have been perpetual targets for hate speech and violence. Adapting to new practices when it comes to gender identity is crucial to creating a safe and positive environment, whether that be within the workplace, classrooms, or at home."]
+      },
+       {
+           "header": "",
+           "type": "image",
+           "content" : {
+               "image":"/pronoun_guide.png",
+               "alt":"Pronouns- A How To Guide",
+               "sub_caption":"Figure 1",
+               "caption":"A Guide to Effective use of Pronouns"
+           }
+       },
+       {
+           "header": "Gender Inclusivity in the Workplace",
+           "type": "",
+           "content": ["One company that has strived for acceptance and inclusion is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an inclusive environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
+       },
+       {
+           "header": "",
+           "type": "links",
+           "content": [
+               {
+                   "name": "Fostering Inclusive Environments in the Workplace",
+                   "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx#:~:text=A%20model%20inclusion%20policy%20created,a%20court%2Dordered%20name%20change."
+               },
+               {
+                   "name": "Using Preferred Names at Work",
+                   "link": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
+               }
+           ]
+       },
+       {
+           "header": "",
+           "type": "",
+           "content": ["These practices should be reflected throughout any institutions, including gender inclusive terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, the inclusion of preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
+       }
+   ],
+   "footer":{
+      "links":[
+         {
+            "name":"Approaching Gender in Software Products",
+            "link":"https://blog.carbonfive.com/approaching-gender-in-software-products/"
+         }
+      ]
+   }
+}',
+'[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use inclusive language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Inclusivity","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[
+ {
+   "question": "What does gender refer to?",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "A person’s assigned sex at birth"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "A person’s unique perception of who they are"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "The sex other people perceive a person as"
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "Why is it important to respect someone’s chosen pronouns/name?",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "To show respect to others"
+     },
+     {
+       "val": 0,
+       "type": "1",
+       "content": "It can lead to a decrease in anxiety"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "To foster an inclusive environment"
+     },
+     {
+       "val": 1,
+       "type": "3",
+       "content": "All of the above"
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "Which of the following could be used to add gender-inclusive features to software?",
+   "answers": [
+     {
+       "val": 0,
+       "type": "0",
+       "content": "Making everything rainbow colored"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "Adding an ‘other’ text field when asking for gender"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "Mandating/requiring users to input their gender"
+     },
+     {
+       "val": 0,
+       "type": "3",
+       "content": "Adjust font size, font color, and text alignment"
+     }
+   ],
+   "multiChoice": false
+ },
+ {
+   "question": "ADP, an HR and Payroll consulting company, has recently strived for inclusiveness in which of the following ways?",
+   "answers": [
+     {
+       "val": 1,
+       "type": "0",
+       "content": "Advocates for the importance of using preferred names"
+     },
+     {
+       "val": 1,
+       "type": "1",
+       "content": "Outline the best practices for using preferred names at work"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "Harshly reprimanding anyone who doesn’t follow these social standards"
+     },
+     {
+       "val": 1,
+       "type": "3",
+       "content": "Become familiar with and consistent with someone’s preferred pronouns"
+     }
+   ],
+   "multiChoice": true
+ },
+ {
+   "question": "What percentage of youth surveyed want to be open about their gender identity at their future job?",
+   "answers": [
+     {
+       "val": 1,
+       "type": "0",
+       "content": "76%"
+     },
+     {
+       "val": 0,
+       "type": "1",
+       "content": "31%"
+     },
+     {
+       "val": 0,
+       "type": "2",
+       "content": "12%"
+     },
+     {
+       "val": 0,
+       "type": "3",
+       "content": "This hasn’t been surveyed before."
+     }
+   ],
+   "multiChoice": false
+ }
+]', true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
 (2, 'Samuel', 'Malachowsky', 'PI', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]

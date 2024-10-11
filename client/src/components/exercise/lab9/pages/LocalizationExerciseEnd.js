@@ -8,13 +8,16 @@ import { EXERCISE_IDLE } from "src/constants/index";
 const Conclusion = () => {
   const { actions, state } = useMainStateContext();
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     // navigate to the reinforcement section
     actions.updateUserState(EXERCISE_IDLE);
-    navigate("/Lab9/Reinforcement");
-    UserLabService.complete_exercise(LAB_ID);
+    await navigate("/Lab9/Reinforcement");
+    await UserLabService.complete_exercise(LAB_ID);
     if (state.main.user?.firstname !== null && state.main.user !== null) {
-      UserLabService.user_complete_exercise(state.main.user.userid, LAB_ID);
+      await UserLabService.user_complete_exercise(
+        state.main.user.userid,
+        LAB_ID,
+      );
     }
   };
 

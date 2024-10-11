@@ -5,25 +5,12 @@
 }
 
 .popup__content {
-  max-width: 600px;
   margin: 0 auto;
   color: rgba(0, 0, 0, 0.7);
   padding: 0.75rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   position: relative;
   background-color: #99f580;
-}
-
-.popup__close {
-  position: absolute;
-  right: 0.75rem;
-  font-size: 2rem;
-  top: 0;
-  cursor: pointer;
-}
-
-.popup__close:hover {
-  color: black;
 }
 
 .popup__error {
