@@ -1,14 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import AddModal from "./components/AddModal";
-import ProgressModal from "./components/ProgressModal";
+// import ProgressModal from "./components/ProgressModal";
 import DeleteModal from "./components/DeleteModal";
+import Lab from "../lab/Lab";
 
 const GroupAssignedLabs = (props) => {
   const {
     assignedLabs,
     instructing,
-    enrolledStudents,
+    // enrolledStudents,
     user,
     groupID,
     groupName,
@@ -28,11 +29,18 @@ const GroupAssignedLabs = (props) => {
       ) : (
         <td className="groups__labs">
           {assignedLabs.map((lab, index) => (
-            <ProgressModal
-              lab={lab}
+            <Lab
+              progressState={lab.progressState}
               key={index}
-              enrolledStudents={enrolledStudents}
-              instructing={instructing}
+              alt={lab.labName + " Thumbnail"}
+              lab={lab.id}
+              name={lab.labName}
+              bio={lab.shortDescription}
+              image={lab.thumbnailImageURL}
+              learningObjectives={lab.learningObjectives}
+              authors={lab.authors}
+              actions={lab.actions}
+              difficulty={lab.difficulty}
             />
           ))}
           {instructing ? (

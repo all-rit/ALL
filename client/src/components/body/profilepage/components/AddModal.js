@@ -13,6 +13,7 @@ import {
 } from "reactstrap";
 import GroupForm from "./GroupForm.js";
 import GroupService from "../../../../services/GroupService";
+import ALLButton from "../../../all-components/ALLButton";
 
 const AddModal = (props) => {
   const {
@@ -56,13 +57,14 @@ const AddModal = (props) => {
     case "add_instr_grp":
       return (
         <>
-          <button
-            className="btn btn-second groups__create_btn"
+          <ALLButton
+            className="tw-bg-white tw-bordergroups__create_btn"
             aria-label="add"
+            label={"Start a New Group"}
             onClick={toggleModal}
           >
             Create Group
-          </button>
+          </ALLButton>
           <Modal
             isOpen={modal}
             toggle={toggleModal}
@@ -111,13 +113,14 @@ const AddModal = (props) => {
     default: // this is the case for enrolling in a group
       return (
         <>
-          <button
+          <ALLButton
             className="btn btn-second groups__create_btn"
             aria-label="add"
             onClick={toggleModal}
+            label={"Join a New Group"}
           >
             Enroll in Group
-          </button>
+          </ALLButton>
           <Modal
             isOpen={modal}
             toggle={toggleModal}

@@ -1,52 +1,9 @@
 import React from "react";
-import ProgressBar from "./components/ProgressBar";
 import PropTypes from "prop-types";
 import Headshot from "../../../assets/images/team/Headshot.jpeg";
 
 const ProfileHeader = (props) => {
-  const { user, labRecords, toDoLabs } = props;
-  const parsedRecords = [];
-
-  // Parse labRecords and toDoLabs
-  if (labRecords) {
-    labRecords.forEach((lab) => {
-      parsedRecords.push([lab.labName, lab.labcompletiontime]);
-    });
-  }
-  if (toDoLabs) {
-    toDoLabs.forEach((lab) => {
-      parsedRecords.push([lab.labName, null]);
-    });
-  }
-
-  // Sort parsedRecords
-  parsedRecords.sort((labRecord1, labRecord2) => {
-    if (labRecord1[0] < labRecord2[0]) {
-      if (labRecord1[1] !== null) {
-        return -1;
-      } else {
-        return 1;
-      }
-    } else {
-      if (labRecord1[1] !== null) {
-        return -1;
-      } else {
-        return 1;
-      }
-    }
-  });
-
-  // Render the ProgressBar if there are labRecords or toDoLabs
-  const displayLabRecords = () => {
-    if (parsedRecords.length > 0) {
-      return (
-        <li>
-          <ProgressBar barData={parsedRecords} percentage={false} />
-        </li>
-      );
-    }
-    return null;
-  };
+  const { user } = props;
 
   return (
     <div className="tw-w-screen tw-bg-primary-blue xs:tw-h-[15rem] lg:tw-h-[30rem] tw-flex tw-flex-row tw-align-middle tw-relative">
@@ -86,7 +43,6 @@ const ProfileHeader = (props) => {
           </div>
         </div>
       )}
-      <ul>{displayLabRecords()}</ul>
     </div>
   );
 };
@@ -96,8 +52,6 @@ ProfileHeader.propTypes = {
     firstname: PropTypes.string,
     lastinitial: PropTypes.string,
   }),
-  labRecords: PropTypes.array,
-  toDoLabs: PropTypes.array,
 };
 
 export default ProfileHeader;

@@ -56,15 +56,14 @@ const Labs = (props) => {
           <ul className="tw-flex tw-flex-col">
             <div
               className={
-                " tw-border-solid tw-border-r-[1rem] tw-border-t-[1rem] tw-border-primary-yellow tw-border-l-0 tw-border-b-0"
+                " tw-border-solid tw-border-r-[1rem] tw-border-t-[1rem] tw-border-primary-yellow tw-bg-primary-yellow tw-border-l-0 tw-border-b-0"
               }
             >
               <div
                 className={
-                  "tw-h-full tw-bddorder-solid tw-border-r-[0.5rem] tw-border-t-[0.5rem] tw-border-primary-blue tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
+                  "tw-h-full tw-border-solid tw-border-r-[0.5rem] tw-border-t-[0.5rem] tw-border-primary-blue tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
                 }
               >
-                <Input>dsad</Input>
                 <div
                   className={
                     "tw-text-5xl tw-font-poppins tw-title-styling-name"
@@ -72,6 +71,17 @@ const Labs = (props) => {
                 >
                   My Labs
                 </div>
+                <div
+                  className={
+                    "tw-w-full tw-flex tw-flex-row tw-justify-center tw-m-5"
+                  }
+                >
+                  <Input
+                    className={"tw-w-1/2 tw-font-poppins"}
+                    placeholder={"Search"}
+                  />
+                </div>
+
                 <div className={"tw-flex tw-flex-row tw-justify-center"}>
                   <button
                     className={"btn btn-primary tw-m-3"}

@@ -58,7 +58,7 @@ const LabGeneration = (props) => {
     if (progressState === "NOT_STARTED") {
       if (labids !== null && labids.length > 0) {
         return (
-          <div className={"tw-flex tw-grid-cols-2 tw-h-full w-w-full"}>
+          <div className={"tw-grid tw-grid-cols-2 tw-m-0"}>
             {labids.map((lab, index) => {
               const idx = lab.labID - 1;
               return (
