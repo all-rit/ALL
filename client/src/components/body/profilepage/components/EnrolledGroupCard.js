@@ -8,10 +8,13 @@ import GroupDetails from "../GroupDetails";
 const EnrolledGroupCard = (props) => {
   const {
     instructorID,
-    // labs,
     group,
     groupName,
     color,
+    inProgressLabs,
+    toDoLabs,
+    completedLabs,
+    setGroupsUpdated,
   } = props;
 
   const InstructorName = (props) => {
@@ -20,7 +23,9 @@ const EnrolledGroupCard = (props) => {
     useEffect(() => {
       if (instructorID) {
         UserService.getUser(instructorID).then((data) => {
-          setInstructorName(data.firstname + " " + data.lastinitial);
+          setInstructorName(
+            "Instructor  " + data.firstname + " " + data.lastinitial,
+          );
         });
       }
     });
@@ -35,6 +40,10 @@ const EnrolledGroupCard = (props) => {
   const toggleGroupDetailsModal = () => {
     setOpenGroupDetails(!openGroupDetails);
   };
+
+  useEffect(() => {
+    console.log(instructorID);
+  }, [instructorID]);
 
   return (
     <Card
@@ -64,18 +73,33 @@ const EnrolledGroupCard = (props) => {
         isOpen={openGroupDetails}
         toggle={toggleGroupDetailsModal}
         direction={"column"}
-        body={<GroupDetails group={group} instructing={false} />}
+        width={"lg:tw-min-w-[80rem] lg:tw-min-h-[60rem]"}
+        body={
+          <GroupDetails
+            group={group}
+            instructing={false}
+            inProgressLabs={inProgressLabs}
+            toDoLabs={toDoLabs}
+            completedLabs={completedLabs}
+            setGroupsUpdated={setGroupsUpdated}
+            instructor={<InstructorName instructorID={instructorID} />}
+          />
+        }
       />
     </Card>
   );
 };
 
 EnrolledGroupCard.propTypes = {
-  instructorID: PropTypes.string,
+  instructorID: PropTypes.number,
   labs: PropTypes.array,
   groupName: PropTypes.string,
   color: PropTypes.string,
   group: PropTypes.shape({}),
+  inProgressLabs: PropTypes.array,
+  toDoLabs: PropTypes.array,
+  completedLabs: PropTypes.array,
+  setGroupsUpdated: PropTypes.func,
 };
 
 export default EnrolledGroupCard;

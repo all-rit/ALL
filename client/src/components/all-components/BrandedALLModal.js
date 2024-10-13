@@ -1,10 +1,10 @@
 import React from "react";
 import { Modal } from "reactstrap";
 import PropTypes from "prop-types";
-import logo from "../../assets/images/logos/ALL_White.png";
+import logo from "../../assets/images/logos/ALL_White.svg";
 
 const BrandedALLModal = (props) => {
-  const { isOpen, toggle, direction, body } = props;
+  const { isOpen, toggle, direction, body, width } = props;
 
   return direction === "row" && window.innerWidth >= 640 ? (
     <Modal
@@ -26,10 +26,10 @@ const BrandedALLModal = (props) => {
           >
             <div
               className={
-                "tw-w-2/3 tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle"
+                "tw-w-full tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle"
               }
             >
-              <img className={"tw-w-full tw-h-1/2"} src={logo} />
+              <img className={"tw-bg-cover"} src={logo} />
             </div>
           </div>
         </div>
@@ -60,11 +60,13 @@ const BrandedALLModal = (props) => {
       className={"xs:tw-w-full sm:md:lg:tw-w-[40rem] tw-pr-5"}
     >
       <div
-        className={`tw-flex tw-flex-col tw-min-h-[30rem] xs:tw-w-full md:tw-min-w-[20rem] md:tw-max-w-[30rem] lg:tw-min-w-[30rem] tg:tw-max-w-[40rem]`}
+        className={`tw-flex tw-flex-col tw-min-h-[30rem] xs:tw-w-full md:tw-min-w-[20rem] md:tw-max-w-[30rem] lg:tw-min-w-[50rem] ${width}`}
       >
         <div
           id="col-header"
-          className={"tw-bg-primary-blue tw-relative tw-h-52 tw-rounded-t-md"}
+          className={
+            "tw-bg-primary-blue tw-relative tw-h-52 tw-rounded-t-md tw-bg-cover"
+          }
         >
           <button
             className="tw-absolute tw-text-5xl
@@ -84,10 +86,14 @@ const BrandedALLModal = (props) => {
           >
             <div
               className={
-                "tw-w-1/2 tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle "
+                "tw-w-1/2 tw-h-full tw-flex tw-flex-row tw-justify-center tw-align-middle "
               }
             >
-              <img className={"tw-w-full"} src={logo} srcSet={logo} />
+              <img
+                className={"xs:tw-w-full lg:tw-w-1/2"}
+                src={logo}
+                srcSet={logo}
+              />
             </div>
           </div>
         </div>
@@ -108,6 +114,7 @@ BrandedALLModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.bool.isRequired,
   body: PropTypes.any,
+  width: PropTypes.string,
   direction: PropTypes.oneOf(["row", "column"]).isRequired,
 };
 export default BrandedALLModal;

@@ -7,7 +7,7 @@ import { Input } from "reactstrap";
 const Labs = (props) => {
   const { actions, state } = useMainStateContext();
 
-  const displayAssignedToMeLabs = () => {
+  const displayNotStartedLabs = () => {
     return (
       <div className="tw-flex tw-grid-cols-2 xs:tw-flex-wrap tw-w-full">
         <LabGeneration
@@ -19,7 +19,7 @@ const Labs = (props) => {
     );
   };
 
-  const [displayedLabs, setDisplayedLabs] = useState(displayAssignedToMeLabs); // Now this will work because displayAssignedToMeLabs is defined
+  const [displayedLabs, setDisplayedLabs] = useState(displayNotStartedLabs); // Now this will work because displayAssignedToMeLabs is defined
 
   const displayInProgressLabs = () => {
     return (
@@ -85,7 +85,7 @@ const Labs = (props) => {
                 <div className={"tw-flex tw-flex-row tw-justify-center"}>
                   <button
                     className={"btn btn-primary tw-m-3"}
-                    onClick={() => selectLabs(displayAssignedToMeLabs)}
+                    onClick={() => selectLabs(displayNotStartedLabs)}
                   >
                     Assigned to Me
                   </button>

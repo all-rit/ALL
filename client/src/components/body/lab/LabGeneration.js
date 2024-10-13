@@ -40,6 +40,7 @@ const LabGeneration = (props) => {
   const [labInformation, setLabInformation] = useState([]);
 
   useEffect(() => {
+    console.log(labRecords);
     if (labInformation.length === 0) {
       async function fetchGroups() {
         return LabService.getAllLabs();

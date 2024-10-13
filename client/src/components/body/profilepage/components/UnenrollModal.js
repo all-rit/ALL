@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import GroupService from "../../../../services/GroupService";
+import ALLButton from "../../../all-components/ALLButton";
 
 const UnenrollModal = (props) => {
-  const { buttonLabel, className, userid, groupid, groupsUpdated } = props;
+  const { className, userid, groupid, groupsUpdated } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
@@ -22,9 +23,7 @@ const UnenrollModal = (props) => {
 
   return (
     <ul>
-      <button className="btn btn-second" onClick={toggle}>
-        {buttonLabel}
-      </button>
+      <ALLButton label={"Leave Group"} onClick={toggle} />
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader>Unenroll from group</ModalHeader>
         <ModalBody>

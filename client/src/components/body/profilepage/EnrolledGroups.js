@@ -1,13 +1,13 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import UserService from "../../../services/UserService";
 // import UnenrollModal from "./components/UnenrollModal";
 // import GroupDetails from "./GroupDetails";
 import AddModal from "./components/AddModal";
 import EnrolledGroupCard from "./components/EnrolledGroupCard";
+import PropTypes from "prop-types";
 
 const EnrolledGroups = (props) => {
-  const { user } = props;
+  const { user, inProgressLabs, toDoLabs, completedLabs } = props;
   const [enrolledGroups, setEnrolledGroups] = useState([]);
   const [groupsUpdated, setGroupsUpdated] = useState(false);
 
@@ -28,6 +28,10 @@ const EnrolledGroups = (props) => {
         groupName={group.groupName}
         group={group}
         color={"primary-blue"}
+        inProgressLabs={inProgressLabs}
+        toDoLabs={toDoLabs}
+        completedLabs={completedLabs}
+        setGroupsUpdated={setGroupsUpdated}
       />
     ));
   };
@@ -69,37 +73,7 @@ const EnrolledGroups = (props) => {
               </h4>
             </div>
             <div className={"tw-flex tw-flex-row tw-justify-between tw-h-3/4"}>
-              <div className={"tw-m-3"}>
-                {displayEnrolledGroups()}
-                {/*{enrolledGroups.map((group, index) => (*/}
-                {/*    <ul key={index}>*/}
-                {/*      {index > 0 ? <hr className="groups__horiz"/> : <></>}*/}
-                {/*      <ul className="groups" key={index}>*/}
-                {/*        <ul className="groups__group">*/}
-                {/*          <li className="groups__instructorName">*/}
-                {/*          </li>*/}
-                {/*          <li className="groups__groupName">{group.groupName}</li>*/}
-                {/*        </ul>*/}
-                {/*        <ul className="groups__group">*/}
-                {/*          <GroupDetails group={group} instructing={false}/>*/}
-                {/*        </ul>*/}
-                {/*        <ul className="groups__group">*/}
-                {/*          <li className="groups__date">*/}
-                {/*            Enrolled on {group.enrolledDate.split("T")[0]}*/}
-                {/*          </li>*/}
-                {/*          <li>*/}
-                {/*            <UnenrollModal*/}
-                {/*                userid={user.userid}*/}
-                {/*                groupid={group.groupID}*/}
-                {/*                buttonLabel={"Unenroll"}*/}
-                {/*                groupsUpdated={setGroupsUpdated}*/}
-                {/*            />*/}
-                {/*          </li>*/}
-                {/*        </ul>*/}
-                {/*      </ul>*/}
-                {/*    </ul>*/}
-                {/*))}*/}
-              </div>
+              <div className={"tw-m-3"}>{displayEnrolledGroups()}</div>
               <div className={"tw-flex tw-flex-col"}>
                 <p
                   className={"tw-text-lg tw-title-styling-name tw-font-poppins"}
@@ -123,6 +97,15 @@ const EnrolledGroups = (props) => {
       )}
     </div>
   );
+};
+
+EnrolledGroups.propTypes = {
+  user: PropTypes.shape({
+    userid: PropTypes.string,
+  }),
+  toDoLabs: PropTypes.array,
+  completedLabs: PropTypes.array,
+  inProgressLabs: PropTypes.array,
 };
 
 export default EnrolledGroups;

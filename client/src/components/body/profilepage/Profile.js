@@ -69,12 +69,14 @@ const Profile = () => {
           />
           <br />
           <br />
-          <EnrolledGroups user={state.main.user} />
+          <EnrolledGroups
+            user={state.main.user}
+            labRecords={labRecords}
+            inProgressLabs={inProgressLabs}
+            toDoLabs={toDoLabs}
+            completedLabs={completedLabs}
+          />
           <br />
-          {/* <div className="header_with_button">
-                    <h4>My Instructing Groups</h4>
-                    <AddModal addMode={"add_instr_grp"} user={props.user}/>
-                </div> */}
           <InstructingGroups user={state.main.user} />
         </div>
       )}

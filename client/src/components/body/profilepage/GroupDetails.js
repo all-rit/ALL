@@ -1,13 +1,24 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import GroupService from "../../../services/GroupService";
 import GroupAssignedLabs from "./GroupAssignedLabs";
 import EnrolledStudentsTable from "./EnrolledStudentsTable";
 import AddModal from "./components/AddModal";
 import DeleteModal from "./components/DeleteModal";
+import PropTypes from "prop-types";
 
 const GroupDetails = (props) => {
-  const { group, instructing, user, setInstrGroupsUpdated } = props;
+  const {
+    group,
+    instructing,
+    user,
+    setInstrGroupsUpdated,
+    inProgressLabs,
+    toDoLabs,
+    completedLabs,
+    instructor,
+    setGroupsUpdated,
+  } = props;
+
   const [assignedLabs, setAssignedLabs] = useState([]);
   const [enrolledStudents, setEnrolledStudents] = useState([]);
   const [toggle, setToggle] = useState(false);
@@ -28,6 +39,7 @@ const GroupDetails = (props) => {
       }
     }
   }, [group, instructing]);
+
   return (
     <>
       {assignedLabs.length === 0 ? (
@@ -62,6 +74,11 @@ const GroupDetails = (props) => {
             user={user}
             groupID={group.id}
             groupName={group.groupName}
+            inProgressLabs={inProgressLabs}
+            toDoLabs={toDoLabs}
+            completedLabs={completedLabs}
+            instructor={instructor}
+            setGroupsUpdated={setGroupsUpdated}
           />
           {instructing ? (
             <EnrolledStudentsTable
@@ -76,6 +93,21 @@ const GroupDetails = (props) => {
       )}
     </>
   );
+};
+
+GroupDetails.propTypes = {
+  group: PropTypes.shape({
+    id: PropTypes.string,
+    groupName: PropTypes.string,
+  }),
+  instructing: PropTypes.bool,
+  setInstrGroupsUpdated: PropTypes.func,
+  user: PropTypes.shape({}),
+  inProgressLabs: PropTypes.array,
+  toDoLabs: PropTypes.array,
+  completedLabs: PropTypes.array,
+  instructor: PropTypes.any,
+  setGroupsUpdated: PropTypes.func,
 };
 
 export default GroupDetails;
