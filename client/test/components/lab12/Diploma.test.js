@@ -1,84 +1,126 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import Diploma from "../../../src/components/exercise/lab12/components/Diploma";
 import ExerciseStateContext from "src/components/exercise/lab12/Lab12Context";
+import useMainStateContext from "../../../src/reducers/MainContext";
+import { ExerciseService } from "../../../src/services/lab12/ExerciseService";
 
 import "@testing-library/jest-dom";
 
+// Mock the router navigation
+jest.mock("@reach/router", () => ({
+  navigate: jest.fn(),
+}));
+
+// Mock the MainContext hook
+jest.mock("../../../src/reducers/MainContext", () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
+
+// Mock the ExerciseService
+jest.mock("../../../src/services/lab12/ExerciseService", () => ({
+  ExerciseService: {
+    fetchExercise: jest.fn(),
+  },
+}));
+
 describe("Diploma Tests", () => {
-  test("collegeName Test", async () => {
-    const firstName = "Owen";
-    const lastName = "Luts";
-    const preferredName = "Jay";
-    const college = "RIT";
-    const major = "CS";
-    const gradTerm = "Spring 2024";
+  const defaultProps = {
+    firstName: "Owen",
+    lastName: "Luts",
+    preferredName: "Jay",
+    college: "RIT",
+    major: "CS",
+    gradTerm: "Spring 2024",
+  };
 
-    render(
-      <ExerciseStateContext.Provider
-        value={{ firstName, lastName, preferredName, college, major, gradTerm }}
-      >
-        <Diploma />
-      </ExerciseStateContext.Provider>,
-    );
+  beforeEach(() => {
+    // Clear all mocks before each test
+    jest.clearAllMocks();
 
-    // ACT
-    const component = await screen.findByTestId("collegeName");
+    // Mock the MainContext hook return value
+    useMainStateContext.mockReturnValue({
+      state: {
+        main: {
+          user: {
+            userid: 1,
+          },
+        },
+      },
+    });
 
-    // ASSERT
-    expect(component).toHaveTextContent(
-      "Upon the recommendation of the President and Faculty of the " +
-        college +
-        " and by the Board of Trustees has conferred upon",
-    );
+    // Mock the ExerciseService.fetchExercise to resolve immediately
+    ExerciseService.fetchExercise.mockResolvedValue({
+      isFormRepairComplete: true,
+      isDatabaseRepairComplete: true,
+    });
   });
 
-  test("First and Last Name Test", async () => {
-    const firstName = "Owen";
-    const lastName = "Luts";
-
-    render(
-      <ExerciseStateContext.Provider value={{ firstName, lastName }}>
+  const renderDiploma = (props = {}) => {
+    const allProps = { ...defaultProps, ...props };
+    return render(
+      <ExerciseStateContext.Provider value={allProps}>
         <Diploma />
       </ExerciseStateContext.Provider>,
     );
+  };
 
-    // ACT
-    const component = await screen.findByTestId("names");
+  test("displays college name correctly", async () => {
+    renderDiploma();
 
-    // ASSERT
-    expect(component).toHaveTextContent(firstName + " " + lastName);
+    await waitFor(() => {
+      const collegeElement = screen.getByTestId("collegeName");
+      expect(collegeElement).toHaveTextContent(
+        `Upon the recommendation of the President and Faculty of the ${defaultProps.college} and by the Board of Trustees has conferred upon`,
+      );
+    });
   });
 
-  test("Degree Test", async () => {
-    const major = "Software Engineering";
+  test("displays preferred name when repair is complete", async () => {
+    renderDiploma();
 
-    render(
-      <ExerciseStateContext.Provider value={{ major }}>
-        <Diploma />
-      </ExerciseStateContext.Provider>,
-    );
-
-    // ACT
-    const component = await screen.findByTestId("degree");
-
-    // ASSERT
-    expect(component).toHaveTextContent(major);
+    await waitFor(() => {
+      const namesElement = screen.getByTestId("names");
+      expect(namesElement).toHaveTextContent(
+        `${defaultProps.preferredName} ${defaultProps.lastName}`,
+      );
+    });
   });
 
-  test("Date Test", async () => {
-    const gradTerm = "September 21st";
+  test("displays first name when repair is not complete", async () => {
+    ExerciseService.fetchExercise.mockResolvedValue({
+      isFormRepairComplete: false,
+      isDatabaseRepairComplete: false,
+    });
 
-    render(
-      <ExerciseStateContext.Provider value={{ gradTerm }}>
-        <Diploma />
-      </ExerciseStateContext.Provider>,
-    );
+    renderDiploma();
 
-    // ACT
-    const component = await screen.findByTestId("date");
+    await waitFor(() => {
+      const namesElement = screen.getByTestId("names");
+      expect(namesElement).toHaveTextContent(
+        `${defaultProps.firstName} ${defaultProps.lastName}`,
+      );
+    });
+  });
 
-    // ASSERT
-    expect(component).toHaveTextContent("Earned on this " + gradTerm);
+  test("displays correct degree", async () => {
+    renderDiploma();
+
+    await waitFor(() => {
+      const degreeElement = screen.getByTestId("degree");
+      expect(degreeElement).toHaveTextContent(defaultProps.major);
+    });
+  });
+
+  test("displays correct graduation date", async () => {
+    renderDiploma();
+
+    await waitFor(() => {
+      const dateElement = screen.getByTestId("date");
+      expect(dateElement).toHaveTextContent(
+        `Earned on this ${defaultProps.gradTerm}`,
+      );
+    });
   });
 });
