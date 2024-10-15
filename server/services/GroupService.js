@@ -105,7 +105,6 @@ const createGroup = async (userID, groupName, color) => {
       isActive: true,
       code: crypto.randomUUID().toUpperCase().slice(1, 7),
     });
-    console.warn('Server Create Color: ', color);
     return data;
   } catch (error) {
     console.error('Error while creating group', error);

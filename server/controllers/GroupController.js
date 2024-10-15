@@ -68,7 +68,6 @@ const createGroup = async (req, res) => {
         req.body.groupName,
         req.body.color,
     );
-    console.warn('Group Controller Color:', req.body.color);
     res.status(200).json(data);
   } catch (error) {
     console.error('Error while creating group', error);
