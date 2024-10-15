@@ -1,14 +1,19 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import GroupService from "../../../../services/GroupService";
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import PropTypes from "prop-types";
+
 const DeleteModal = (props) => {
   const { mainToggle, groupID, setInstrGroupsUpdated } = props;
 
   const [modal, setModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  const toggle = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setModal(!modal);
+  };
 
   const deleteGroup = async () => {
     const deletionCompleted = await GroupService.deleteGroup(groupID);
@@ -21,9 +26,18 @@ const DeleteModal = (props) => {
 
   return (
     <>
-      <Button color="danger" aria-label="delete" onClick={toggle}>
-        Delete Group
-      </Button>
+      <button
+        className="tw-absolute tw-text-5xl
+                       tw-top-5 tw-right-0 tw-font-poppins
+                       tw-text-brightRed tw-rounded-4xl tw-border-0 line-height-0"
+        onClick={(e) => {
+          toggle(e);
+        }}
+        aria-hidden="true"
+      >
+        {" "}
+        &times;{" "}
+      </button>
       <Modal isOpen={modal} toggle={toggle} className="add_instr_grp_modal">
         <ModalHeader>Delete an instructing group</ModalHeader>
         <ModalBody>
@@ -42,6 +56,12 @@ const DeleteModal = (props) => {
       </Modal>
     </>
   );
+};
+
+DeleteModal.propTypes = {
+  mainToggle: PropTypes.func,
+  groupID: PropTypes.number,
+  setInstrGroupsUpdated: PropTypes.func,
 };
 
 export default DeleteModal;

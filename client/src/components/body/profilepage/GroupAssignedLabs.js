@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AddModal from "./components/AddModal";
-import DeleteModal from "./components/DeleteModal";
 import Lab from "../lab/Lab";
 import PropTypes from "prop-types";
 import useMainStateContext from "../../../reducers/MainContext";
@@ -11,14 +9,11 @@ import UnenrollModal from "./components/UnenrollModal";
 const GroupAssignedLabs = (props) => {
   const {
     assignedLabs,
-    instructing,
     // enrolledStudents,
-    user,
     groupID,
     groupName,
     setInstrGroupsUpdated,
     instructor,
-    setGroupsUpdated,
   } = props;
 
   const { state } = useMainStateContext();
@@ -59,17 +54,11 @@ const GroupAssignedLabs = (props) => {
     });
   }
 
-  const [toggle, setToggle] = useState(false);
-
   const getLabProgressState = (labId) => {
     if (toDoLabs.some((lab) => lab.labID === labId)) return "NOT_STARTED";
     if (inProgressLabs.some((lab) => lab.labid === labId)) return "IN_PROGRESS";
     if (completedLabs.some((lab) => lab.labid === labId)) return "COMPLETED";
     return "NOT_STARTED"; // Default state if not found in any array
-  };
-
-  const toggleModal = () => {
-    setToggle(!toggle);
   };
 
   return (
@@ -125,27 +114,6 @@ const GroupAssignedLabs = (props) => {
                 }
               />
             ))}
-            {instructing ? (
-              <>
-                <AddModal
-                  addMode={"update_grp_lab"}
-                  user={user}
-                  groupID={groupID}
-                  groupName={groupName}
-                  assignedLabs={assignedLabs}
-                  setInstrGroupsUpdated={setInstrGroupsUpdated}
-                />
-                <div className="pt-3">
-                  <DeleteModal
-                    mainToggle={toggleModal}
-                    groupID={groupID}
-                    groupsUpdated={setGroupsUpdated}
-                  />
-                </div>
-              </>
-            ) : (
-              <></>
-            )}
           </div>
         </div>
       )}

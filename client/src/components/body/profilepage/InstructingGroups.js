@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
-import { Table } from "reactstrap";
 import UserService from "../../../services/UserService";
-import GroupDetails from "./GroupDetails";
 import AddModal from "./components/AddModal";
+import EnrolledGroupCard from "./components/EnrolledGroupCard";
+import PropTypes from "prop-types";
 
 const InstructingGroups = (props) => {
   const { user } = props;
@@ -20,50 +19,58 @@ const InstructingGroups = (props) => {
   }, [user, instrGroupsUpdated]);
 
   return (
-    <>
-      <div className="header_with_button">
-        <h4>My Instructing Groups</h4>
-        <AddModal
-          addMode={"add_instr_grp"}
-          user={props.user}
-          setInstrGroupsUpdated={setInstrGroupsUpdated}
-        />
+    <div
+      className={
+        " tw-border-solid tw-border-r-[1rem] tw-border-t-[1rem] tw-border-primary-yellow tw-bg-primary-yellow tw-border-l-0 tw-border-b-0"
+      }
+    >
+      <div
+        className={
+          "tw-h-full tw-border-solid tw-border-r-[0.5rem] tw-border-t-[0.5rem] tw-border-primary-blue tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
+        }
+      >
+        <div className="header_with_button">
+          <h4 className={"tw-title-styling-name tw-poppins"}>
+            View Your Instructor Groups
+          </h4>
+          <AddModal
+            addMode={"add_instr_grp"}
+            user={props.user}
+            setInstrGroupsUpdated={setInstrGroupsUpdated}
+          />
+        </div>
+        <div className="tw-flex tw-w-full">
+          {instructingGroups.length === 0 ? (
+            <p> You currently do not have any groups you are instructing.</p>
+          ) : (
+            <div
+              className={
+                "tw-p-5 tw-w-3/4 tw-grid tw-grid-cols-3 lg:tw-min-h-[20rem]"
+              }
+            >
+              {instructingGroups.map((group, index) => {
+                return (
+                  <EnrolledGroupCard
+                    key={index}
+                    instructing={true}
+                    group={group}
+                    instructorID={user.userid}
+                    setInstrGroupsUpdated={setInstrGroupsUpdated}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
-      <div className="instructing-groups">
-        {instructingGroups.length === 0 ? (
-          <p> You currently do not have any groups you are instructing.</p>
-        ) : (
-          <>
-            <Table>
-              <thead>
-                <tr>
-                  <th>Groups</th>
-                  <th>Assigned Labs</th>
-                </tr>
-              </thead>
-              <tbody>
-                {instructingGroups.map((group, index) => (
-                  <tr key={index}>
-                    <td className="bold">
-                      <p className="bold">{group.groupName}</p>
-                      <p className="bold">Invite Code: {group.code}</p>
-                    </td>
-                    <GroupDetails
-                      group={group}
-                      instructing={true}
-                      user={user}
-                      setInstrGroupsUpdated={setInstrGroupsUpdated}
-                    />
-                    <></>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </>
-        )}
-      </div>
-    </>
+    </div>
   );
+};
+
+InstructingGroups.propTypes = {
+  user: PropTypes.shape({
+    userid: PropTypes.number,
+  }),
 };
 
 export default InstructingGroups;

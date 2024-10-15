@@ -97,7 +97,7 @@ const GroupDetails = (props) => {
 
 GroupDetails.propTypes = {
   group: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     groupName: PropTypes.string,
   }),
   instructing: PropTypes.bool,

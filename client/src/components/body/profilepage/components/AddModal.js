@@ -49,7 +49,9 @@ const AddModal = (props) => {
     }
   };
 
-  const toggleModal = () => {
+  const toggleModal = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     setModal(!modal);
   };
 
@@ -84,14 +86,15 @@ const AddModal = (props) => {
     case "update_grp_lab":
       return (
         <>
-          <Button
-            color="secondary"
-            className="m-3"
-            aria-label="add"
-            onClick={toggleModal}
+          <a
+            className="tw-font-poppins tw-bg-darkGray tw-text-white"
+            aria-label="Update Group"
+            onClick={(e) => {
+              toggleModal(e);
+            }}
           >
-            Update Group
-          </Button>
+            Edit/View Group
+          </a>
           <Modal
             isOpen={modal}
             toggle={toggleModal}
