@@ -14,6 +14,10 @@ import {
   FormGroup,
   Label,
   Input,
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
 
 const GroupForm = (props) => {
@@ -28,6 +32,9 @@ const GroupForm = (props) => {
   } = props;
   const [labs, setLabs] = useState([]);
   const [checkedLabs, setCheckedLabs] = useState({});
+  const [color, setColor] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownLabel, setDropdownLabel] = useState("Select Group Color");
 
   useEffect(() => {
     LabService.getAllLabs().then((data) => {
@@ -40,7 +47,7 @@ const GroupForm = (props) => {
       }
       setCheckedLabs(initialCheckedState);
     });
-  }, [assignedLabs]);
+  }, [assignedLabs, color]);
 
   const toggleCheck = (labID) => {
     setCheckedLabs((prevCheckedLabs) => ({
@@ -49,19 +56,38 @@ const GroupForm = (props) => {
     }));
   };
 
+  const toggleDropdown = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleColorSelect = (selectedColor, label) => (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setColor(selectedColor);
+    setDropdownLabel(label);
+    setDropdownOpen(false);
+  };
+
   const onFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const formData = new FormData(e.target);
       const groupName = formData.get("groupName") || "Default Group Name";
+      const groupColor = color;
 
       let selectedLabs = Object.keys(checkedLabs)
         .filter((labID) => checkedLabs[labID])
         .map((labID) => parseInt(labID));
 
       if (addMode === "add_instr_grp") {
-        const newGroup = await GroupService.createGroup(user.userid, groupName);
+        const newGroup = await GroupService.createGroup(
+          user.userid,
+          groupName,
+          groupColor,
+        );
 
         const addLabPromises = selectedLabs.map((labID) => {
           GroupService.addGroupLab(newGroup.id, labID);
@@ -114,8 +140,11 @@ const GroupForm = (props) => {
             placeholder="Enter Group Name"
           />
         </FormGroup>
+        <hr />
         <FormGroup check>
-          <Label for="assign-lab">Choose labs to assign</Label>
+          <Label for="assign-lab" className={"tw-ml-[-1.5rem]"}>
+            Choose labs to assign
+          </Label>
           {labs.map((lab) => (
             <div key={lab.id}>
               <Input
@@ -128,6 +157,68 @@ const GroupForm = (props) => {
               <Label for={"lab" + lab.id}>{lab.labShortName}</Label>
             </div>
           ))}
+        </FormGroup>
+        <hr />
+        <FormGroup className={"tw-flex tw-flex-col"}>
+          <div className={"tw-w-1/2 tw-flex tw-flex-row tw-justify-between"}>
+            <Label for="groupColor">Group Color</Label>
+            <div className={`${color} tw-rounded-full tw-w-5 tw-h-5`}></div>
+          </div>
+          <ButtonDropdown
+            className={`tw-w-1/2 tw-flex tw-flex-row tw-justify-start`}
+            align
+            isOpen={dropdownOpen}
+            toggle={toggleDropdown}
+          >
+            <DropdownToggle
+              className={
+                "tw-bg-white tw-text-darkGray focus:tw-bg-secondary-gray"
+              }
+              caret
+            >
+              {dropdownLabel}
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem onClick={handleColorSelect("group_red", "Red")}>
+                Red
+              </DropdownItem>
+              <DropdownItem onClick={handleColorSelect("group_blue", "Blue")}>
+                Blue
+              </DropdownItem>
+              <DropdownItem
+                onClick={handleColorSelect("group_purple", "Purple")}
+              >
+                Purple
+              </DropdownItem>
+              <DropdownItem onClick={handleColorSelect("group_green", "Green")}>
+                Green
+              </DropdownItem>
+              <DropdownItem
+                onClick={handleColorSelect("group_orange", "Orange")}
+              >
+                Orange
+              </DropdownItem>
+              <DropdownItem
+                onClick={handleColorSelect("group_yellow", "Yellow")}
+              >
+                Yellow
+              </DropdownItem>
+              <DropdownItem onClick={handleColorSelect("group_pink", "Pink")}>
+                Pink
+              </DropdownItem>
+              <DropdownItem onClick={handleColorSelect("group_teal", "Teal")}>
+                Teal
+              </DropdownItem>
+              <DropdownItem
+                onClick={handleColorSelect("group_neonGreen", "Neon Green")}
+              >
+                Neon Green
+              </DropdownItem>
+              <DropdownItem onClick={handleColorSelect("group_grey", "Grey")}>
+                Grey
+              </DropdownItem>
+            </DropdownMenu>
+          </ButtonDropdown>
         </FormGroup>
       </ModalBody>
       <ModalFooter>

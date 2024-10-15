@@ -54,7 +54,7 @@ module.exports = {
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
       darkGray: "#3d3d3d",
-      successGreen: "14FF00",
+      successGreen: "#14FF00",
     },
     extend: {
       fontFamily: {

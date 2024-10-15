@@ -38,15 +38,17 @@ const GroupService = {
       },
     );
   },
-  createGroup: async (userID, groupName) => {
+  createGroup: async (userID, groupName, color) => {
     try {
       const response = await API.postWithBody(
         `${process.env.REACT_APP_SERVER_URL}/group/create`,
         {
           userID,
           groupName,
+          color,
         },
       );
+      console.warn("Selected Color: ", color);
 
       if (!response.ok) {
         const errorText = await response.text();

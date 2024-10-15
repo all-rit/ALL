@@ -66,7 +66,9 @@ const createGroup = async (req, res) => {
     const data = await GroupService.createGroup(
         req.body.userID,
         req.body.groupName,
+        req.body.color,
     );
+    console.warn('Group Controller Color:', req.body.color);
     res.status(200).json(data);
   } catch (error) {
     console.error('Error while creating group', error);

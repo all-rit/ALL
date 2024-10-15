@@ -12,6 +12,7 @@ const InstructingGroups = (props) => {
   useEffect(() => {
     if (user) {
       UserService.getUserInstructingGroups(user.userid).then((data) => {
+        console.warn(data);
         setInstructingGroups(data);
         setInstrGroupsUpdated(false);
       });

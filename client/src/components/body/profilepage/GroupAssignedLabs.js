@@ -158,7 +158,7 @@ GroupAssignedLabs.propTypes = {
   groupID: PropTypes.number,
   groupName: PropTypes.string,
   instructing: PropTypes.bool,
-  setInstrGroupsUpdated: PropTypes.func,
+  setInstrGroupsUpdated: PropTypes.bool,
   user: PropTypes.shape({}),
   inProgressLabs: PropTypes.array,
   toDoLabs: PropTypes.array,
