@@ -1,10 +1,11 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import { Table } from "reactstrap";
-import ResultLimiter from "./components/ResultLimiter";
+import StudentProgress from "./components/StudentProgress";
+import PropTypes from "prop-types";
+// import ResultLimiter from "./components/ResultLimiter";
 
 const EnrolledStudentsTable = (props) => {
-  const { assignedLabs, enrolledStudents, groupid } = props;
+  const { lab, enrolledStudents } = props;
 
   return (
     <div className="enrolled_students_table">
@@ -14,20 +15,35 @@ const EnrolledStudentsTable = (props) => {
         <Table>
           <thead>
             <tr>
-              <th>Student</th>
-              <th>Completion</th>
+              <th className={"tw-border-none"}>Student Name</th>
+              <th className={"tw-border-none"}>Lab Progress</th>
+              <th className={"tw-border-none"}>Quiz Grade</th>
+              <th className={"tw-border-none"}>Date Completed</th>
             </tr>
           </thead>
-          <ResultLimiter
-            assignedLabs={assignedLabs}
-            data={enrolledStudents}
-            resultType={"studentLabs"}
-            groupid={groupid}
-          />
+          <tbody>
+            {enrolledStudents.map((student, key) => {
+              return (
+                <tr key={key}>
+                  <td>
+                    {student.firstname} {student.lastinitial}
+                  </td>
+                  <td>
+                    <StudentProgress student={student} lab={lab} />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </Table>
       )}
     </div>
   );
+};
+
+EnrolledStudentsTable.propTypes = {
+  lab: PropTypes.shape({}),
+  enrolledStudents: PropTypes.array,
 };
 
 export default EnrolledStudentsTable;

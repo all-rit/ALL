@@ -17,7 +17,8 @@ const Labs = (props) => {
     );
   };
 
-  const [displayedLabs, setDisplayedLabs] = useState(displayNotStartedLabs); // Now this will work because displayAssignedToMeLabs is defined
+  const [search, setSearch] = useState("");
+  const [displayedLabs, setDisplayedLabs] = useState(displayNotStartedLabs);
 
   const displayInProgressLabs = () => {
     return (
@@ -39,6 +40,48 @@ const Labs = (props) => {
     );
   };
 
+  const searchLabs = (e) => {
+    e.preventDefault();
+    let searchResults = [];
+    console.log(search);
+    props.toDoLabs.find((lab) => {
+      if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
+        searchResults.push(lab);
+      }
+    });
+    props.inProgressLabs.find((lab) => {
+      if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
+        searchResults.push(lab);
+      }
+    });
+    props.completedLabs.find((lab) => {
+      if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
+        searchResults.push(lab);
+      }
+    });
+    console.log(searchResults);
+    const displaySearchResults = (
+      <div>
+        <LabGeneration
+          actions={actions}
+          progressState={"NOT_STARTED"}
+          labRecords={searchResults}
+        />
+        <LabGeneration
+          actions={actions}
+          progressState={"IN_PROGRESS"}
+          labRecords={searchResults}
+        />
+        <LabGeneration
+          actions={actions}
+          progressState={"COMPLETED"}
+          labRecords={searchResults}
+        />
+      </div>
+    );
+    setDisplayedLabs(displaySearchResults);
+  };
+
   const selectLabs = (labs) => {
     setDisplayedLabs(labs);
   };
@@ -49,13 +92,13 @@ const Labs = (props) => {
         <>
           <ul className="tw-flex tw-flex-col">
             <div
-              className={
-                " tw-border-solid tw-border-r-[1rem] tw-border-t-[1rem] tw-border-primary-yellow tw-bg-primary-yellow tw-border-l-0 tw-border-b-0"
-              }
+              className=" tw-border-solid tw-border-r-[1rem] tw-border-t-[1rem] tw-border-primary-yellow
+                  tw-bg-primary-yellow tw-border-l-0 tw-border-b-0"
             >
               <div
                 className={
-                  "tw-h-full tw-border-solid tw-border-r-[0.5rem] tw-border-t-[0.5rem] tw-border-primary-blue tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
+                  "tw-h-full tw-border-solid tw-border-r-[0.5rem] tw-border-t-[0.5rem] tw-border-primary-blue " +
+                  "tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
                 }
               >
                 <div
@@ -73,7 +116,19 @@ const Labs = (props) => {
                   <Input
                     className={"tw-w-1/2 tw-font-poppins"}
                     placeholder={"Search"}
-                  />
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
+                  ></Input>
+                  <button
+                    className={"tw-w-[3rem] tw-border-0"}
+                    onClick={(e) => searchLabs(e)}
+                    style={{
+                      backgroundImage:
+                        "url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png)",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  ></button>
                 </div>
 
                 <div

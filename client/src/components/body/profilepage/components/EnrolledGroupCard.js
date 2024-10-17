@@ -8,6 +8,7 @@ import AddModal from "./AddModal";
 import DeleteModal from "./DeleteModal";
 import useMainStateContext from "../../../../reducers/MainContext";
 import GroupService from "../../../../services/GroupService";
+import NewStudentProgress from "../../../all-components/NewStudentProgress";
 
 const EnrolledGroupCard = (props) => {
   const {
@@ -47,6 +48,7 @@ const EnrolledGroupCard = (props) => {
   const [height, setHeight] = useState("tw-h-3/4");
   const [assignedLabs, setAssignedLabs] = useState([]);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [enrolledStudents, setEnrolledStudents] = useState([]);
 
   const toggleDeleteModal = (e) => {
     e.preventDefault();
@@ -58,6 +60,11 @@ const EnrolledGroupCard = (props) => {
       GroupService.getGroupAssignedLabs(group.id).then((data) => {
         setAssignedLabs(data);
       });
+      if (instructing) {
+        GroupService.getGroupEnrolledStudents(group.id).then((data) => {
+          setEnrolledStudents(data);
+        });
+      }
     }
     if (instructing) {
       setHeight("tw-min-h-[20rem]");
@@ -100,15 +107,22 @@ const EnrolledGroupCard = (props) => {
         }
       >
         {instructing ? (
-          <AddModal
-            addMode={"update_grp_lab"}
-            user={user}
-            groupID={group.id}
-            groupName={group.groupName}
-            groupColor={group.color}
-            assignedLabs={assignedLabs}
-            setInstrGroupsUpdated={setInstrGroupsUpdated}
-          />
+          <div>
+            <NewStudentProgress
+              group={group}
+              assignedLabs={assignedLabs}
+              enrolledStudents={enrolledStudents}
+            />
+            <AddModal
+              addMode={"update_grp_lab"}
+              user={user}
+              groupID={group.id}
+              groupName={group.groupName}
+              groupColor={group.color}
+              assignedLabs={assignedLabs}
+              setInstrGroupsUpdated={setInstrGroupsUpdated}
+            />
+          </div>
         ) : (
           <></>
         )}

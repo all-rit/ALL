@@ -8,12 +8,18 @@ const StudentProgress = (props) => {
   const [progress, setProgress] = useState();
 
   useEffect(() => {
+    console.warn(student.userID, lab.labID);
     if (student && lab) {
-      UserLabService.getUserLabCompletion(student.userID, lab.labID).then(
-        (data) => {
-          setProgress(data);
-        },
-      );
+      try {
+        const data = UserLabService.getUserLabCompletion(
+          student.userID,
+          lab.labID,
+        );
+        console.warn(data);
+        setProgress(data);
+      } catch (error) {
+        console.error("Error Setting Student Progress", error);
+      }
     }
   }, [student, lab]);
 
@@ -27,16 +33,16 @@ const StudentProgress = (props) => {
       </td>
       {progress ? (
         <>
-          <td>{progress.quizscore}</td>
+          <td>{progress?.quizscore}</td>
           <td>
             <ProgressBar
               labID={lab.labID}
               barData={[
-                ["About", progress.aboutcompletedtime],
-                ["Reading", progress.readingcompletedtime],
-                ["Exercise", progress.exercisecompletedtime],
-                ["Reinforcement", progress.reinforcementcompletedtime],
-                ["Quiz", progress.quizcompletedtime],
+                ["About", progress?.aboutcompletedtime],
+                ["Reading", progress?.readingcompletedtime],
+                ["Exercise", progress?.exercisecompletedtime],
+                ["Reinforcement", progress?.reinforcementcompletedtime],
+                ["Quiz", progress?.quizcompletedtime],
               ]}
               percentage={true}
             />
@@ -47,7 +53,7 @@ const StudentProgress = (props) => {
           <td>0</td>
           <td>
             <ProgressBar
-              labID={lab.labID}
+              labID={lab.id}
               barData={[
                 ["About", null],
                 ["Reading", null],

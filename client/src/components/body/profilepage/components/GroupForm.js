@@ -14,8 +14,8 @@ import {
   FormGroup,
   Label,
   Input,
-  Tooltip,
 } from "reactstrap";
+import LabRow from "./LabRow";
 
 const GroupForm = (props) => {
   const {
@@ -65,20 +65,6 @@ const GroupForm = (props) => {
       setColor(groupColor);
     }
   }, [assignedLabs, tooltipOpen, groupColor]);
-
-  const displayDifficulty = (difficulty) => {
-    const totalCircles = 3;
-    const rating = [];
-    for (let i = 1; i <= totalCircles; i++) {
-      rating.push(
-        <div
-          className={`tw-m-0.5 
-          ${i <= difficulty ? "module__lab_difficulty_filled" : "module__lab_difficulty"}`}
-        ></div>,
-      );
-    }
-    return <div className={"tw-flex tw-flex-row tw-ms-1"}>{rating}</div>;
-  };
 
   const toggleCheck = (labID) => {
     setCheckedLabs((prevCheckedLabs) => ({
@@ -233,51 +219,9 @@ const GroupForm = (props) => {
                 checked={!!checkedLabs[lab.id]}
                 onChange={() => toggleCheck(lab.id)}
               />
-              <div
-                className={
-                  "tw-shadow-lg tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-m-3 tw-rounded-lg tw-relative"
-                }
-              >
-                <div
-                  alt={lab.thumbnailUrl}
-                  className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
-                  style={{
-                    backgroundImage:
-                      "url(/img/lab_thumbnails/" + lab.thumbnailImageURL + ")",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                />
-                <Tooltip
-                  placement={"left"}
-                  isOpen={tooltipOpen === lab.id}
-                  target={`fullDescription-${lab.id}`}
-                >
-                  {" "}
-                  {lab.fullDescription}{" "}
-                </Tooltip>
 
-                <div id={"lab" + lab.id} className={"tw-p-5"}>
-                  <div className={"tw-flex tw-flex-row tw-items-center"}>
-                    <p className={"tw-font-calibri"}> Difficulty: </p>
-                    {displayDifficulty(lab.difficulty)}
-                  </div>
-                  <p className={"tw-font-poppins tw-font-bold tw-text-md"}>
-                    {" "}
-                    {lab.labName}
-                  </p>
-                </div>
-                <div
-                  id={`fullDescription-${lab.id}`}
-                  onClick={() => setTooltipOpen(lab.id)}
-                  className={
-                    "tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-absolute tw-right-0 tw-px-3 tw-top-[25%]"
-                  }
-                >
-                  <div> More Information</div>
-                </div>
-              </div>
+              {/* Enter Lab Row here*/}
+              <LabRow lab={lab} />
             </div>
           ))}
         </FormGroup>

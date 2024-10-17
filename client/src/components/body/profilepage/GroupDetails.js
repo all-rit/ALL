@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GroupService from "../../../services/GroupService";
 import GroupAssignedLabs from "./GroupAssignedLabs";
-import EnrolledStudentsTable from "./EnrolledStudentsTable";
 import PropTypes from "prop-types";
 
 const GroupDetails = (props) => {
@@ -53,15 +52,6 @@ const GroupDetails = (props) => {
             instructor={instructor}
             setGroupsUpdated={setGroupsUpdated}
           />
-          {instructing ? (
-            <EnrolledStudentsTable
-              groupid={group.id}
-              enrolledStudents={enrolledStudents}
-              assignedLabs={assignedLabs}
-            />
-          ) : (
-            <></>
-          )}
         </>
       )}
     </>

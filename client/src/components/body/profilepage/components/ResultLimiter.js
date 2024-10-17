@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable guard-for-in */
 /* eslint-disable camelcase */
 /* eslint-disable require-jsdoc */
 import React, { useState, useEffect } from "react";
 import { Button } from "reactstrap";
-import LabCompletionBubbles from "./LabCompletionBubbles";
 import StudentProgress from "./StudentProgress";
+import PropTypes from "prop-types";
+import LabCompletionBubbles from "./LabCompletionBubbles";
 
 const ResultLimiter = (props) => {
   const { resultType, data, lab, groupid } = props;
@@ -13,6 +13,7 @@ const ResultLimiter = (props) => {
   const [groupedData, setGroupedData] = useState([]);
 
   useEffect(() => {
+    console.log(data);
     setGroupedData(dataParser(data));
   }, [index, data]);
 
@@ -190,6 +191,13 @@ const ResultLimiter = (props) => {
     default:
       return <div>Type Error Occurred: Contact Administrator.</div>;
   }
+};
+
+ResultLimiter.propTypes = {
+  resultType: PropTypes.string,
+  data: PropTypes.array,
+  lab: PropTypes.shape({}),
+  groupid: PropTypes.number,
 };
 
 export default ResultLimiter;
