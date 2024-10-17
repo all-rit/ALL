@@ -25,13 +25,12 @@ const DeleteModal = (props) => {
   return (
     <div>
       <a
-        className="tw-absolute tw-text-5xl
-                       tw-right-0 tw-top-[-1rem] tw-font-poppins
-                       tw-text-brightRed tw-rounded-4xl tw-border-0 tw-bg-clear"
+        className="tw-text-4xl tw-cursor-pointer tw-font-poppins
+                       tw-text-darkGray tw-rounded-4xl tw-border-0 tw-bg-clear"
         onClick={(e) => {
           toggle(e);
         }}
-        aria-hidden="true"
+        aria-label="Exit Modal"
       >
         {" "}
         &times;{" "}

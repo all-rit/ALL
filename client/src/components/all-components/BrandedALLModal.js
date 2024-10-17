@@ -87,7 +87,7 @@ const BrandedALLModal = (props, { children }) => {
           >
             <div
               className={
-                "tw-w-1/2 tw-h-full tw-flex tw-flex-row tw-items-center"
+                "tw-w-5/12 tw-h-full tw-flex tw-flex-row tw-items-center"
               }
             >
               <img className={"tw-object-cover"} src={logo} />
@@ -109,7 +109,7 @@ const BrandedALLModal = (props, { children }) => {
 
 BrandedALLModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  toggle: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
   body: PropTypes.any,
   width: PropTypes.string,
   direction: PropTypes.oneOf(["row", "column"]).isRequired,

@@ -54,10 +54,8 @@ const EnrolledGroupCard = (props) => {
   };
 
   useEffect(() => {
-    console.log(group);
     if (group) {
       GroupService.getGroupAssignedLabs(group.id).then((data) => {
-        console.log(data);
         setAssignedLabs(data);
       });
     }
@@ -75,7 +73,7 @@ const EnrolledGroupCard = (props) => {
       {instructing ? (
         <CardHeader
           className={
-            "tw-flex tw-flex-row tw-justify-between tw-relative tw-bg-white"
+            "tw-flex tw-flex-row tw-justify-between tw-items-center tw-relative tw-bg-white tw-h-[3rem]"
           }
         >
           <div className={"tw-font-poppins tw-font-medium"}>
@@ -106,7 +104,8 @@ const EnrolledGroupCard = (props) => {
             addMode={"update_grp_lab"}
             user={user}
             groupID={group.id}
-            groupName={groupName}
+            groupName={group.groupName}
+            groupColor={group.color}
             assignedLabs={assignedLabs}
             setInstrGroupsUpdated={setInstrGroupsUpdated}
           />
@@ -122,7 +121,7 @@ const EnrolledGroupCard = (props) => {
         </div>
         <a
           className={
-            "tw-cursor-pointer tw-text-2xl tw-title-styling-name tw-font-poppins tw-flex tw-flex-row tw-justify-start tw-text-left"
+            "tw-cursor-pointer tw-text-lg tw-title-styling-name tw-font-poppins tw-flex tw-flex-row tw-justify-start tw-text-left"
           }
           onClick={toggleGroupDetailsModal}
         >

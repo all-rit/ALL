@@ -117,6 +117,7 @@ const updateGroup = async (req, res) => {
     await GroupService.updateGroup(
         req.body.groupID,
         req.body.groupName,
+        req.body.groupColor,
     );
     res.status(200).send('Group name successfully updated!');
   } catch (error) {

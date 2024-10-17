@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import {
   Modal,
@@ -15,6 +14,7 @@ import GroupForm from "./GroupForm.js";
 import GroupService from "../../../../services/GroupService";
 import ALLButton from "../../../all-components/ALLButton";
 import BrandedALLModal from "../../../all-components/BrandedALLModal";
+import PropTypes from "prop-types";
 
 const AddModal = (props) => {
   const {
@@ -25,6 +25,7 @@ const AddModal = (props) => {
     groupName,
     assignedLabs,
     groupsUpdated,
+    groupColor,
   } = props;
   const [modal, setModal] = useState(false);
   const [inviteCode, setInviteCode] = useState("");
@@ -105,6 +106,7 @@ const AddModal = (props) => {
                 toggle={toggleModal}
                 setInstrGroupsUpdated={setInstrGroupsUpdated}
                 user={user}
+                groupColor={groupColor}
                 groupID={groupID}
                 groupName={groupName}
                 addMode={addMode}
@@ -157,6 +159,19 @@ const AddModal = (props) => {
         </>
       );
   }
+};
+
+AddModal.propTypes = {
+  addMode: PropTypes.bool,
+  user: PropTypes.shape({
+    userid: PropTypes.number,
+  }),
+  setInstrGroupsUpdated: PropTypes.func,
+  groupID: PropTypes.number,
+  groupName: PropTypes.string,
+  assignedLabs: PropTypes.array,
+  groupsUpdated: PropTypes.func,
+  groupColor: PropTypes.string,
 };
 
 export default AddModal;

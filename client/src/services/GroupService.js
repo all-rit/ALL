@@ -48,7 +48,6 @@ const GroupService = {
           color,
         },
       );
-      console.warn("Selected Color: ", color);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -88,12 +87,13 @@ const GroupService = {
       },
     );
   },
-  updateGroup: (groupID, groupName) => {
+  updateGroup: (groupID, groupName, groupColor) => {
     return API.putWithBody(
       process.env.REACT_APP_SERVER_URL + `/group/${groupID}/update`,
       {
         groupID,
         groupName,
+        groupColor,
       },
     );
   },

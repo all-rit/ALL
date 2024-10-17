@@ -25,11 +25,12 @@ const GroupForm = (props) => {
     addMode,
     groupID,
     groupName,
+    groupColor,
     assignedLabs,
   } = props;
   const [labs, setLabs] = useState([]);
   const [checkedLabs, setCheckedLabs] = useState({});
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState(groupColor || "");
   const [tooltipOpen, setTooltipOpen] = useState(null);
 
   const cardColors = [
@@ -60,7 +61,10 @@ const GroupForm = (props) => {
       }
       setCheckedLabs(initialCheckedState);
     });
-  }, [assignedLabs, tooltipOpen]);
+    if (groupColor) {
+      setColor(groupColor);
+    }
+  }, [assignedLabs, tooltipOpen, groupColor]);
 
   const displayDifficulty = (difficulty) => {
     const totalCircles = 3;
@@ -109,7 +113,11 @@ const GroupForm = (props) => {
         await Promise.all(addLabPromises);
       } else if (addMode === "update_grp_lab" && groupID) {
         if (formData.get("groupName") !== props.groupName) {
-          await GroupService.updateGroup(groupID, formData.get("groupName"));
+          await GroupService.updateGroup(
+            groupID,
+            formData.get("groupName"),
+            groupColor,
+          );
         }
 
         for (const lab in checkedLabs) {
@@ -190,6 +198,9 @@ const GroupForm = (props) => {
                     type="radio"
                     name="groupColor"
                     className={"tw-m-3 tw-rounded-sm"}
+                    defaultChecked={
+                      groupColor ? groupColor.includes(color) : false
+                    }
                     onChange={() => setColor(`group_${color}`)}
                   />
                   <div

@@ -158,10 +158,10 @@ const deleteGroup = (groupID) => {
 };
 
 
-const updateGroup = async (groupID, groupName) => {
+const updateGroup = async (groupID, groupName, groupColor) => {
   try {
     return await db.Groups.update(
-        {groupName: groupName},
+        {groupName: groupName, color: groupColor},
         {
           where: {
             id: groupID,
