@@ -40,7 +40,6 @@ const LabGeneration = (props) => {
   const [labInformation, setLabInformation] = useState([]);
 
   useEffect(() => {
-    console.log(labRecords);
     if (labInformation.length === 0) {
       async function fetchGroups() {
         return LabService.getAllLabs();
@@ -59,11 +58,11 @@ const LabGeneration = (props) => {
     if (progressState === "NOT_STARTED") {
       if (labids !== null && labids.length > 0) {
         return (
-          <div className={"tw-grid tw-grid-cols-2 tw-m-0"}>
+          <div className={"tw-grid tw-grid-cols-3 tw-gap-5"}>
             {labids.map((lab, index) => {
               const idx = lab.labID - 1;
               return (
-                <div key={idx} className="tw-m-1 tw-h-full">
+                <div key={idx} className="tw-h-full">
                   {renderLabData(
                     actions,
                     labInformation[idx],

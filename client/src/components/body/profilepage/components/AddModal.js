@@ -14,6 +14,7 @@ import {
 import GroupForm from "./GroupForm.js";
 import GroupService from "../../../../services/GroupService";
 import ALLButton from "../../../all-components/ALLButton";
+import BrandedALLModal from "../../../all-components/BrandedALLModal";
 
 const AddModal = (props) => {
   const {
@@ -49,9 +50,7 @@ const AddModal = (props) => {
     }
   };
 
-  const toggleModal = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
+  const toggleModal = () => {
     setModal(!modal);
   };
 
@@ -67,50 +66,52 @@ const AddModal = (props) => {
           >
             Create Group
           </ALLButton>
-          <Modal
+          <BrandedALLModal
             isOpen={modal}
             toggle={toggleModal}
             className="add_instr_grp_modal"
-          >
-            <ModalHeader>Create an Instructing Group</ModalHeader>
-            <GroupForm
-              toggle={toggleModal}
-              setInstrGroupsUpdated={setInstrGroupsUpdated}
-              user={user}
-              groupID={groupID}
-              addMode={addMode}
-            />
-          </Modal>
+            direction={"column"}
+            body={
+              <GroupForm
+                toggle={toggleModal}
+                setInstrGroupsUpdated={setInstrGroupsUpdated}
+                user={user}
+                groupID={groupID}
+                addMode={addMode}
+              />
+            }
+          ></BrandedALLModal>
         </>
       );
     case "update_grp_lab":
       return (
         <>
           <a
-            className="tw-font-poppins tw-bg-darkGray tw-text-white"
+            className="tw-absolute tw-right-0 tw-top-[60%] tw-cursor-pointer tw-font-poppins tw-bg-primary-yellow tw-p-2 tw-font-medium"
             aria-label="Update Group"
-            onClick={(e) => {
-              toggleModal(e);
+            onClick={() => {
+              toggleModal();
             }}
           >
             Edit/View Group
           </a>
-          <Modal
+          <BrandedALLModal
             isOpen={modal}
             toggle={toggleModal}
             className="add_instr_grp_modal"
-          >
-            <ModalHeader>Update an Instructing Group</ModalHeader>
-            <GroupForm
-              toggle={toggleModal}
-              setInstrGroupsUpdated={setInstrGroupsUpdated}
-              user={user}
-              groupID={groupID}
-              groupName={groupName}
-              addMode={addMode}
-              assignedLabs={assignedLabs}
-            />
-          </Modal>
+            direction={"column"}
+            body={
+              <GroupForm
+                toggle={toggleModal}
+                setInstrGroupsUpdated={setInstrGroupsUpdated}
+                user={user}
+                groupID={groupID}
+                groupName={groupName}
+                addMode={addMode}
+                assignedLabs={assignedLabs}
+              />
+            }
+          ></BrandedALLModal>
         </>
       );
     default: // this is the case for enrolling in a group

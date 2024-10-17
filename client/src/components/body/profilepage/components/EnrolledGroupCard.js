@@ -44,53 +44,61 @@ const EnrolledGroupCard = (props) => {
   const user = state.main.user;
 
   const [openGroupDetails, setOpenGroupDetails] = useState(false);
-
+  const [height, setHeight] = useState("tw-h-3/4");
   const [assignedLabs, setAssignedLabs] = useState([]);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const toggleDeleteModal = (e) => {
     e.preventDefault();
-    e.stopPropagation();
     setOpenDeleteModal(!openDeleteModal);
   };
 
   useEffect(() => {
+    console.log(group);
     if (group) {
       GroupService.getGroupAssignedLabs(group.id).then((data) => {
+        console.log(data);
         setAssignedLabs(data);
       });
     }
-  }, [group, instructing]);
+    if (instructing) {
+      setHeight("tw-min-h-[20rem]");
+    }
+  }, [group, instructing, height]);
 
   const toggleGroupDetailsModal = () => {
     setOpenGroupDetails(!openGroupDetails);
   };
 
   return (
-    <Card
-      className={
-        "tw-h-full hover:tw-drop-shadow-2xl tw-cursor-pointer lg:tw-max-w-[15rem] lg:tw-min-h-[15rem]"
-      }
-      onClick={toggleGroupDetailsModal}
-    >
+    <Card className={`hover:tw-drop-shadow-2xl lg:tw-max-w-[15rem] ${height}`}>
       {instructing ? (
-        <CardHeader className={"tw-flex tw-flex-row tw-justify-between"}>
-          <div>Code: {group.code}</div>
+        <CardHeader
+          className={
+            "tw-flex tw-flex-row tw-justify-between tw-relative tw-bg-white"
+          }
+        >
+          <div className={"tw-font-poppins tw-font-medium"}>
+            Code: {group.code}
+          </div>
           <a onClick={(e) => toggleDeleteModal(e)} />
           <DeleteModal
             mainToggle={setOpenDeleteModal}
             groupID={group.id}
             groupsUpdated={setGroupsUpdated}
-            setInstrGroupsUpdated={setInstrGroupsUpdated()}
+            setInstrGroupsUpdated={setInstrGroupsUpdated}
           />
         </CardHeader>
       ) : (
         <></>
       )}
-      <CardBody className={`${group.color} tw-rounded-t-md`} />
+      <CardBody
+        className={`${group.color} ${instructing ? "" : "tw-rounded-t-md"} tw-cursor-pointer`}
+        onClick={toggleGroupDetailsModal}
+      />
       <CardFooter
         className={
-          "tw-flex tw-flex-col tw-justify-start tw-bg-white tw-h-1/2 tw-relative"
+          "tw-flex tw-flex-col tw-justify-end tw-text-left tw-bg-white tw-h-1/2"
         }
       >
         {instructing ? (
@@ -112,28 +120,31 @@ const EnrolledGroupCard = (props) => {
         >
           <InstructorName instructorID={instructorID} />
         </div>
-        <div
+        <a
           className={
-            "tw-text-2xl tw-title-styling-name tw-font-poppins tw-flex tw-flex-row tw-justify-start tw-text-left"
+            "tw-cursor-pointer tw-text-2xl tw-title-styling-name tw-font-poppins tw-flex tw-flex-row tw-justify-start tw-text-left"
           }
+          onClick={toggleGroupDetailsModal}
         >
           {groupName || group.groupName}
-        </div>
+        </a>
       </CardFooter>
       <BrandedALLModal
         isOpen={openGroupDetails}
         toggle={toggleGroupDetailsModal}
         direction={"column"}
-        width={"lg:tw-min-w-[80rem] lg:tw-min-h-[60rem]"}
+        width={"lg:tw-min-w-[70rem] lg:tw-min-h-[50rem]"}
         body={
           <GroupDetails
             group={group}
-            instructing={false}
+            instructing={instructing}
             inProgressLabs={inProgressLabs}
             toDoLabs={toDoLabs}
             completedLabs={completedLabs}
             setGroupsUpdated={setGroupsUpdated}
             instructor={<InstructorName instructorID={instructorID} />}
+            setInstrGroupsUpdated={setInstrGroupsUpdated}
+            assignedLabs={assignedLabs}
           />
         }
       />

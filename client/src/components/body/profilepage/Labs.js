@@ -9,13 +9,11 @@ const Labs = (props) => {
 
   const displayNotStartedLabs = () => {
     return (
-      <div className="tw-flex tw-grid-cols-2 xs:tw-flex-wrap tw-w-full">
-        <LabGeneration
-          actions={actions}
-          progressState="NOT_STARTED"
-          labids={props.toDoLabs}
-        />
-      </div>
+      <LabGeneration
+        actions={actions}
+        progressState="NOT_STARTED"
+        labids={props.toDoLabs}
+      />
     );
   };
 
@@ -23,25 +21,21 @@ const Labs = (props) => {
 
   const displayInProgressLabs = () => {
     return (
-      <ul className="tw-flex tw-w-full">
-        <LabGeneration
-          actions={actions}
-          progressState="IN_PROGRESS"
-          labRecords={props.inProgressLabs}
-        />
-      </ul>
+      <LabGeneration
+        actions={actions}
+        progressState="IN_PROGRESS"
+        labRecords={props.inProgressLabs}
+      />
     );
   };
 
   const displayCompletedLabs = () => {
     return (
-      <div className="tw-grid">
-        <LabGeneration
-          actions={actions}
-          progressState="COMPLETED"
-          labRecords={props.completedLabs}
-        />
-      </div>
+      <LabGeneration
+        actions={actions}
+        progressState="COMPLETED"
+        labRecords={props.completedLabs}
+      />
     );
   };
 
@@ -82,7 +76,9 @@ const Labs = (props) => {
                   />
                 </div>
 
-                <div className={"tw-flex tw-flex-row tw-justify-center"}>
+                <div
+                  className={"tw-flex tw-flex-row tw-justify-center tw-w-full"}
+                >
                   <button
                     className={"btn btn-primary tw-m-3"}
                     onClick={() => selectLabs(displayNotStartedLabs)}
@@ -102,7 +98,7 @@ const Labs = (props) => {
                     Completed
                   </button>
                 </div>
-                <div className={"tw-p-6"}>{displayedLabs}</div>
+                <div className={"tw-p-6 tw-w-full"}>{displayedLabs}</div>
               </div>
             </div>
           </ul>

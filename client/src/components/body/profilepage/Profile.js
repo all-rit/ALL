@@ -49,7 +49,7 @@ const Profile = () => {
   }
 
   return (
-    <React.Fragment className={"tw-mt-0"}>
+    <div className={"tw-mt-0"}>
       {state.main.user?.firstname === null ? (
         <h3>You are currently not logged in.</h3>
       ) : (
@@ -80,7 +80,7 @@ const Profile = () => {
           <InstructingGroups user={state.main.user} />
         </div>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

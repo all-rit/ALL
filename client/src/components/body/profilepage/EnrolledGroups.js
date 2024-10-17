@@ -42,59 +42,47 @@ const EnrolledGroups = (props) => {
         "tw-bg-primary-blue tw-h-[30rem] tw-flex tw-flex-row tw-align-middle tw-justify-end"
       }
     >
-      {enrolledGroups.length === 0 ? (
-        <div className={"tw-bg-white"}>
-          <div className="header_with_button">
-            <h4>My Enrolled Groups</h4>
-            <AddModal
-              addMode={"enroll_grp"}
-              user={props.user}
-              groupsUpdated={setGroupsUpdated}
-            />
-          </div>
-          <div className="enrolled-groups">
-            <p> You are currently not enrolled in any groups</p>
-          </div>
-        </div>
-      ) : (
+      <div
+        className={"tw-h-full tw-flex tw-flex-col tw-justify-center tw-w-3/4"}
+      >
         <div
-          className={"tw-h-full tw-flex tw-flex-col tw-justify-center tw-w-3/4"}
-        >
-          <div
-            className="tw-h-3/4 tw-bg-white tw-border-solid tw-rounded-bl-xl tw-border-primary-yellow
+          className="tw-h-3/4 tw-bg-white tw-border-solid tw-rounded-bl-xl tw-border-primary-yellow
                           tw-border-t-0 tw-border-r-0 tw-border-b-[1rem] tw-border-l-[1rem]"
+        >
+          <div className="header_with_button">
+            <h4 className={"tw-title-styling-name tw-font-poppins tw-text-2xl"}>
+              {" "}
+              View Your Enrolled Groups{" "}
+            </h4>
+          </div>
+          <div
+            className={"tw-flex tw-flex-row tw-justify-between tw-h-3/4 tw-m-5"}
           >
-            <div className="header_with_button">
-              <h4
-                className={"tw-title-styling-name tw-font-poppins tw-text-2xl"}
-              >
-                {" "}
-                View Your Enrolled Groups{" "}
-              </h4>
-            </div>
-            <div className={"tw-flex tw-flex-row tw-justify-between tw-h-3/4"}>
-              <div className={"tw-m-3"}>{displayEnrolledGroups()}</div>
-              <div className={"tw-flex tw-flex-col"}>
-                <p
-                  className={"tw-text-lg tw-title-styling-name tw-font-poppins"}
-                >
-                  {" "}
-                  Have a group code?{" "}
-                </p>
-                <p className={"tw-text-sm tw-font-calibri"}>
-                  {" "}
-                  Click below to get started.{" "}
-                </p>
-                <AddModal
-                  addMode={"enroll_grp"}
-                  user={props.user}
-                  groupsUpdated={setGroupsUpdated}
-                />
+            {enrolledGroups.length === 0 ? (
+              <div>
+                <p> You are currently not enrolled in any groups</p>
               </div>
+            ) : (
+              <div>{displayEnrolledGroups()}</div>
+            )}
+            <div className={"tw-flex tw-flex-col tw-text-left"}>
+              <p className={"tw-text-lg tw-title-styling-name tw-font-poppins"}>
+                {" "}
+                Have a group code?{" "}
+              </p>
+              <p className={"tw-text-sm tw-font-calibri"}>
+                {" "}
+                Click below to get started.{" "}
+              </p>
+              <AddModal
+                addMode={"enroll_grp"}
+                user={props.user}
+                groupsUpdated={setGroupsUpdated}
+              />
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

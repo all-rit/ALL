@@ -14,10 +14,7 @@ import {
   FormGroup,
   Label,
   Input,
-  ButtonDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
+  Tooltip,
 } from "reactstrap";
 
 const GroupForm = (props) => {
@@ -33,12 +30,28 @@ const GroupForm = (props) => {
   const [labs, setLabs] = useState([]);
   const [checkedLabs, setCheckedLabs] = useState({});
   const [color, setColor] = useState("");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dropdownLabel, setDropdownLabel] = useState("Select Group Color");
+  const [tooltipOpen, setTooltipOpen] = useState(null);
+
+  const cardColors = [
+    "blue",
+    "green",
+    "red",
+    "teal",
+    "grey",
+    "yellow",
+    "pink",
+    "purple",
+  ];
 
   useEffect(() => {
     LabService.getAllLabs().then((data) => {
       setLabs(data);
+      if (tooltipOpen !== null) {
+        const timer = setTimeout(() => {
+          setTooltipOpen(null);
+        }, 20000);
+        return () => clearTimeout(timer);
+      }
       const initialCheckedState = {};
       if (assignedLabs) {
         assignedLabs.map((lab) => {
@@ -47,27 +60,27 @@ const GroupForm = (props) => {
       }
       setCheckedLabs(initialCheckedState);
     });
-  }, [assignedLabs, color]);
+  }, [assignedLabs, tooltipOpen]);
+
+  const displayDifficulty = (difficulty) => {
+    const totalCircles = 3;
+    const rating = [];
+    for (let i = 1; i <= totalCircles; i++) {
+      rating.push(
+        <div
+          className={`tw-m-0.5 
+          ${i <= difficulty ? "module__lab_difficulty_filled" : "module__lab_difficulty"}`}
+        ></div>,
+      );
+    }
+    return <div className={"tw-flex tw-flex-row tw-ms-1"}>{rating}</div>;
+  };
 
   const toggleCheck = (labID) => {
     setCheckedLabs((prevCheckedLabs) => ({
       ...prevCheckedLabs,
       [labID]: !prevCheckedLabs[labID],
     }));
-  };
-
-  const toggleDropdown = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const handleColorSelect = (selectedColor, label) => (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setColor(selectedColor);
-    setDropdownLabel(label);
-    setDropdownOpen(false);
   };
 
   const onFormSubmit = async (e) => {
@@ -128,97 +141,134 @@ const GroupForm = (props) => {
   };
 
   return (
-    <Form onSubmit={onFormSubmit}>
-      <ModalBody>
-        <FormGroup>
-          <Label for="groupName">Group Name</Label>
+    <Form className={"tw-w-full"} onSubmit={onFormSubmit}>
+      <ModalBody className={"tw-w-full"}>
+        <h4
+          className={
+            "tw-font-poppins tw-title-styling-name tw-text-2xl tw-mb-0"
+          }
+        >
+          {" "}
+          Create a Group as the Instructor{" "}
+        </h4>
+        <FormGroup className={"tw-px-5"}>
+          <Label for="groupName"></Label>
           <Input
+            className={"tw-font-poppins"}
             type="text"
             name="groupName"
             id="groupName"
             defaultValue={groupName}
-            placeholder="Enter Group Name"
+            placeholder="Enter Group Name Here"
           />
         </FormGroup>
         <hr />
-        <FormGroup check>
-          <Label for="assign-lab" className={"tw-ml-[-1.5rem]"}>
-            Choose labs to assign
-          </Label>
+        <FormGroup check className={"tw-flex tw-flex-col tw-w-full"}>
+          <div
+            className={
+              "tw-w-full tw-flex tw-flex-col tw-justify-between tw-text-left"
+            }
+          >
+            <p className={"tw-title-styling-name tw-font-poppins tw-text-lg"}>
+              Assign Color for Group:
+            </p>
+            <p className={"tw-font-calibri tw-font-medium"}>
+              {" "}
+              Select a color for this group to distinguish it from the others!{" "}
+            </p>
+          </div>
+          <div className={"tw-grid tw-grid-cols-2 tw-gap-5 tw-w-1/2 tw-py-5"}>
+            {cardColors.map((color, key) => {
+              return (
+                <div
+                  key={key}
+                  className={
+                    "tw-flex tw-flex-row tw-h-[5rem] tw-w-[10rem] tw-items-center"
+                  }
+                >
+                  <Input
+                    type="radio"
+                    name="groupColor"
+                    className={"tw-m-3 tw-rounded-sm"}
+                    onChange={() => setColor(`group_${color}`)}
+                  />
+                  <div
+                    className={`group_${color} tw-h-full tw-w-full tw-rounded-t-lg tw-p-3`}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </FormGroup>
+        <hr />
+        <h4 className={"tw-font-poppins tw-title-styling-name tw-text-lg"}>
+          {" "}
+          Assign Labs:{" "}
+        </h4>
+        <FormGroup check className={"tw-px-5"}>
+          <p>Select all labs you wish to assign to this group.</p>
           {labs.map((lab) => (
-            <div key={lab.id}>
+            <div
+              key={lab.id}
+              className={
+                "tw-flex tw-flex-row tw-items-center tw-gap-3 tw-pl-[5%]"
+              }
+            >
               <Input
+                className={"tw-rounded-sm tw-box-content"}
                 type="checkbox"
                 name={lab.id}
                 id={"lab" + lab.id}
                 checked={!!checkedLabs[lab.id]}
                 onChange={() => toggleCheck(lab.id)}
               />
-              <Label for={"lab" + lab.id}>{lab.labShortName}</Label>
+              <div
+                className={
+                  "tw-shadow-lg tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-m-3 tw-rounded-lg tw-relative"
+                }
+              >
+                <div
+                  alt={lab.thumbnailUrl}
+                  className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
+                  style={{
+                    backgroundImage:
+                      "url(/img/lab_thumbnails/" + lab.thumbnailImageURL + ")",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                />
+                <Tooltip
+                  placement={"left"}
+                  isOpen={tooltipOpen === lab.id}
+                  target={`fullDescription-${lab.id}`}
+                >
+                  {" "}
+                  {lab.fullDescription}{" "}
+                </Tooltip>
+
+                <div id={"lab" + lab.id} className={"tw-p-5"}>
+                  <div className={"tw-flex tw-flex-row tw-items-center"}>
+                    <p className={"tw-font-calibri"}> Difficulty: </p>
+                    {displayDifficulty(lab.difficulty)}
+                  </div>
+                  <p className={"tw-font-poppins tw-font-bold tw-text-md"}>
+                    {" "}
+                    {lab.labName}
+                  </p>
+                </div>
+                <div
+                  id={`fullDescription-${lab.id}`}
+                  onClick={() => setTooltipOpen(lab.id)}
+                  className={
+                    "tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-absolute tw-right-0 tw-px-3 tw-top-[25%]"
+                  }
+                >
+                  <div> More Information</div>
+                </div>
+              </div>
             </div>
           ))}
-        </FormGroup>
-        <hr />
-        <FormGroup className={"tw-flex tw-flex-col"}>
-          <div className={"tw-w-1/2 tw-flex tw-flex-row tw-justify-between"}>
-            <Label for="groupColor">Group Color</Label>
-            <div className={`${color} tw-rounded-full tw-w-5 tw-h-5`}></div>
-          </div>
-          <ButtonDropdown
-            className={`tw-w-1/2 tw-flex tw-flex-row tw-justify-start`}
-            align
-            isOpen={dropdownOpen}
-            toggle={toggleDropdown}
-          >
-            <DropdownToggle
-              className={
-                "tw-bg-white tw-text-darkGray focus:tw-bg-secondary-gray"
-              }
-              caret
-            >
-              {dropdownLabel}
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem onClick={handleColorSelect("group_red", "Red")}>
-                Red
-              </DropdownItem>
-              <DropdownItem onClick={handleColorSelect("group_blue", "Blue")}>
-                Blue
-              </DropdownItem>
-              <DropdownItem
-                onClick={handleColorSelect("group_purple", "Purple")}
-              >
-                Purple
-              </DropdownItem>
-              <DropdownItem onClick={handleColorSelect("group_green", "Green")}>
-                Green
-              </DropdownItem>
-              <DropdownItem
-                onClick={handleColorSelect("group_orange", "Orange")}
-              >
-                Orange
-              </DropdownItem>
-              <DropdownItem
-                onClick={handleColorSelect("group_yellow", "Yellow")}
-              >
-                Yellow
-              </DropdownItem>
-              <DropdownItem onClick={handleColorSelect("group_pink", "Pink")}>
-                Pink
-              </DropdownItem>
-              <DropdownItem onClick={handleColorSelect("group_teal", "Teal")}>
-                Teal
-              </DropdownItem>
-              <DropdownItem
-                onClick={handleColorSelect("group_neonGreen", "Neon Green")}
-              >
-                Neon Green
-              </DropdownItem>
-              <DropdownItem onClick={handleColorSelect("group_grey", "Grey")}>
-                Grey
-              </DropdownItem>
-            </DropdownMenu>
-          </ButtonDropdown>
         </FormGroup>
       </ModalBody>
       <ModalFooter>

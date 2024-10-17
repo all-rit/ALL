@@ -77,33 +77,27 @@ a.skip-main:active {
 // Group Color Palette
 .group {
   &_purple {
-    background: #9c00ce;
+    background: #7300ff;
   }
   &_green {
-    background: #007d17;
-  }
-  &_orange {
-    background: #c05a00;
-  }
-  &_red {
-    background: #c00000;
-  }
-  &_yellow {
-    background: #caa700;
-  }
-  &_blue {
-    background: #003cff;
-  }
-  &_pink {
-    background: #f692ec;
-  }
-  &_teal {
-    background: #0095c1;
-  }
-  &_neonGreen {
-    background: #00b921;
+    background: #008716;
   }
   &_grey {
-    background: #484848;
+    background: #3d3d3d;
+  }
+  &_red {
+    background: #ff0000;
+  }
+  &_yellow {
+    background: #face35;
+  }
+  &_blue {
+    background: #0144d5;
+  }
+  &_pink {
+    background: #de35fa;
+  }
+  &_teal {
+    background: #00f0ff;
   }
 }
