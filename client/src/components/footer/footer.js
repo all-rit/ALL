@@ -184,7 +184,7 @@ class Footer extends Component {
             style={{ display: display ? "block" : "none" }}
           >
             <div
-              className="tw-float-left tw-h-16 tw-w-38 tw-bg-labYellow tw-rounded-bl-lg tw-pb-2 tw-pl-2"
+              className="tw-float-left tw-h-16 tw-w-38 tw-bg-labYellow tw-rounded-bl-lg tw-pb-2 tw-pl-2 tw-m-2"
               style={{
                 display:
                   this.disappearBack(body) || hideOnLanding ? "none" : "block",
@@ -220,7 +220,7 @@ class Footer extends Component {
               </button>
             ) : (
               <div
-                className="tw-float-right tw-h-16 tw-w-38 tw-bg-labBlue tw-rounded-tr-lg tw-pt-2 tw-pr-2"
+                className="tw-float-right tw-h-16 tw-w-38 tw-bg-labBlue tw-rounded-tr-lg tw-pt-2 tw-pr-2 tw-m-2"
                 style={{
                   display:
                     this.disappearNext(body) || hideOnLanding
