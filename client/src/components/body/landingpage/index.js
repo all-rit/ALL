@@ -73,7 +73,10 @@ const Home = (props) => {
       <div />
       <HorizontalLine />
 
-      <section className="page-section landingpage__pagesection" id="labs">
+      <section
+        className="tw-p-3 page-section landingpage__pagesection"
+        id="labs"
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">
@@ -84,7 +87,7 @@ const Home = (props) => {
               </h3>
             </div>
           </div>
-          <div className="landingpage__row">
+          <div className="landingpage__row md:lg:tw-flex md:lg:tw-grid-cols-3 md:lg:tw-justify-center sm:tw-grid-cols-2">
             <LabGeneration actions={actions} />
           </div>
         </div>
