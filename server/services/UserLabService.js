@@ -395,14 +395,14 @@ userCompleteQuiz = (data)=>{
 };
 
 
-getUserLabCompletion = (userid, labid) => {
-  if (userid) {
+getUserLabCompletion = (data) => {
+  if (data.userid) {
     return db.UserLabCompletion
         .findOne({
           where:
 					{
-					  userid: userid,
-					  labid: labid,
+					  userid: data.userid,
+					  labid: data.labid,
 					},
         }).then((userlabcompletion) => {
           return userlabcompletion;
@@ -411,7 +411,7 @@ getUserLabCompletion = (userid, labid) => {
           console.log(err);
         });
   }
-  return Promise.resolve;
+  return Promise.resolve();
 };
 
 getUserLabRecords = async (userid) => {

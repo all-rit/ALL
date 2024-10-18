@@ -67,11 +67,15 @@ const LabRow = (props) => {
             "tw-cursor-pointer tw-bg-primary-yellow tw-text-darkGray tw-font-poppins tw-absolute tw-right-0 tw-px-3 tw-top-[25%]"
           }
         >
-          <EnrolledStudentsTable
-            groupid={group.id}
-            enrolledStudents={enrolledStudents}
-            lab={lab}
-          />
+          {listOpen ? (
+            <EnrolledStudentsTable
+              groupid={group.id}
+              enrolledStudents={enrolledStudents}
+              lab={lab}
+            />
+          ) : (
+            <></>
+          )}
           <div> {listLabel}</div>
         </div>
       ) : (

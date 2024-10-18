@@ -106,8 +106,8 @@ userCompleteQuiz = (req, res) => {
 
 getUserLabCompletion = (req, res) => {
   UserLabService.getUserLabCompletion({
-    userID: req.params.userID,
-    labID: req.params.labID,
+    userid: req.params.userID,
+    labid: req.params.labID,
   }).then((records) => {
     res.json(records);
   });
