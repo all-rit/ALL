@@ -90,29 +90,6 @@ const Header = (props) => {
 
 				>
 					<Nav className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow"}`}>				
-						{/* TODO -- REMOVE THIS NAVITEM (logs out user, only here for testing) */}
-						{/* <NavItem>
-							<a href={`${process.env.REACT_APP_SERVER_URL}/logout`}> LOG OUT </a>
-						</NavItem> */}
-
-						{/* TODO -- REMOVE THIS */}
-						{/* <NavItem>
-							<a
-								href="# "
-								className='tw-no-underline'
-								onClick={() =>
-									API.postWithBody(process.env.REACT_APP_SERVER_URL + "/url", {
-										url: window.location,
-									}).then(() => {
-										window.location.href =
-										process.env.REACT_APP_SERVER_URL + "/auth/google";
-									})
-								}
-							>
-								LOG IN
-								
-							</a>
-						</NavItem> */}
 						<NavItem className={`${"px-4"} ${!isSmallWindow && "tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}>
 							<NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0" href="#">
 								<p className='tw-text-base tw-text-labBlue tw-font-bold'>Home</p>
@@ -147,13 +124,24 @@ const Header = (props) => {
 									</NavLink>
 								)
 							}
-						</NavItem>		
+						</NavItem>
+						<NavItem className="tw-flex tw-justify-center tw-items-center">
+							{
+								isSmallWindow && <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer">
+														<p className="tw-text-xs">Site Accessibility Settings</p>
+													</a>
+							}
+						</NavItem>
+						
 					</Nav>
 				</Collapse>
 			</div>
-			<a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer">
-				<p>Site Accessibility Settings</p>
-			</a>
+			{
+				!isSmallWindow && <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer">
+									<p className="tw-text-xs">Site Accessibility Settings</p>
+								</a>
+			}
+			
 		</div>
 		
 	</Navbar>
