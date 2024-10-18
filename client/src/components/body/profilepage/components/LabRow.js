@@ -11,12 +11,8 @@ const LabRow = (props) => {
   const [listLabel, setListLabel] = useState("Open List");
 
   const toggle = (labId) => {
-    setListOpen(labId);
-    if (listOpen) {
-      setListLabel("Close List");
-    } else {
-      setListLabel("Open List");
-    }
+    setListOpen(listOpen === labId ? null : labId);
+    setListLabel(listOpen === labId ? "Open List" : "Close List");
   };
 
   const displayDifficulty = (difficulty) => {
@@ -34,79 +30,79 @@ const LabRow = (props) => {
   };
 
   return (
-    <div
-      className={
-        "tw-shadow-lg tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-m-3 tw-rounded-lg tw-relative"
-      }
-    >
+    <div className="tw-flex tw-flex-col tw-w-full ">
       <div
-        className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
-        style={{
-          backgroundImage:
-            "url(/img/lab_thumbnails/" + lab.thumbnailImageURL + ")",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      <div id={"lab" + lab.id} className={"tw-p-5"}>
-        <div className={"tw-flex tw-flex-row tw-items-center"}>
-          <p className={"tw-font-calibri"}> Difficulty: </p>
-          {displayDifficulty(lab.difficulty)}
-        </div>
-        <p className={"tw-font-poppins tw-font-bold tw-text-md"}>
-          {" "}
-          {lab.labName}
-        </p>
-      </div>
-      {studentProgress ? (
+        className={`${listOpen === lab.labID && studentProgress ? "" : "tw-shadow-lg"} tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-m-3 tw-rounded-lg tw-relative`}
+      >
         <div
-          id={`fullDescription-${lab.id}`}
-          onClick={() => toggle(lab.id)}
-          className={
-            "tw-cursor-pointer tw-bg-primary-yellow tw-text-darkGray tw-font-poppins tw-absolute tw-right-0 tw-px-3 tw-top-[25%]"
-          }
-        >
-          {listOpen ? (
-            <EnrolledStudentsTable
-              groupid={group.id}
-              enrolledStudents={enrolledStudents}
-              lab={lab}
-            />
-          ) : (
-            <></>
-          )}
-          <div> {listLabel}</div>
-        </div>
-      ) : (
-        <div>
-          <Tooltip
-            placement={"left"}
-            isOpen={tooltipOpen === lab.id}
-            target={`fullDescription-${lab.id}`}
-          >
+          className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
+          style={{
+            backgroundImage:
+              "url(/img/lab_thumbnails/" + lab.thumbnailImageURL + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+        <div id={"lab" + lab.labID} className={"tw-p-5"}>
+          <div className={"tw-flex tw-flex-row tw-items-center"}>
+            <p className={"tw-font-calibri"}> Difficulty: </p>
+            {displayDifficulty(lab.difficulty)}
+          </div>
+          <p className={"tw-font-poppins tw-font-bold tw-text-md"}>
             {" "}
-            {lab.fullDescription}{" "}
-          </Tooltip>
+            {lab.labName}
+          </p>
+        </div>
+        {studentProgress ? (
           <div
-            id={`fullDescription-${lab.id}`}
-            onClick={() => setTooltipOpen(lab.id)}
+            id={`fullDescription-${lab.labID}`}
+            onClick={() => toggle(lab.labID)}
             className={
-              "tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-absolute tw-right-0 tw-px-3 tw-top-[25%]"
+              "tw-absolute tw-right-0 tw-top-[20%] tw-cursor-pointer tw-bg-primary-yellow tw-text-darkGray tw-font-poppins tw-px-3"
             }
           >
-            <div> More Information</div>
+            <div> {listLabel}</div>
           </div>
+        ) : (
+          <div>
+            <Tooltip
+              placement={"left"}
+              isOpen={tooltipOpen === lab.labID}
+              target={`fullDescription-${lab.labID}`}
+            >
+              {" "}
+              {lab.fullDescription}{" "}
+            </Tooltip>
+            <div
+              id={`fullDescription-${lab.labID}`}
+              onClick={() => setTooltipOpen(lab.labID)}
+              className={
+                "tw-absolute tw-right-0 tw-top-[20%] tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-px-3"
+              }
+            >
+              <div> More Information</div>
+            </div>
+          </div>
+        )}
+      </div>
+      {/* Table container outside the main row */}
+      {listOpen === lab.labID && studentProgress && (
+        <div className="tw-w-full tw-ml-3 tw-p-4 tw-bg-white tw-shadow-lg tw-shadow-t-none tw-overflow-hidden">
+          <EnrolledStudentsTable
+            groupid={group.id}
+            enrolledStudents={enrolledStudents}
+            lab={lab}
+          />
         </div>
       )}
-      ;
     </div>
   );
 };
 
 LabRow.propTypes = {
   lab: PropTypes.shape({
-    id: PropTypes.number,
+    labID: PropTypes.number,
     thumbnailImageURL: PropTypes.string,
     labName: PropTypes.string,
     difficulty: PropTypes.number,

@@ -96,10 +96,10 @@ const GroupAssignedLabs = (props) => {
           <div className="tw-flex xs:tw-flex-col sm:md:lg:tw-flex-row">
             {assignedLabs.map((lab, index) => (
               <Lab
-                progressState={getLabProgressState(lab.id)}
+                progressState={getLabProgressState(lab.labID)}
                 key={index}
                 alt={lab.labName + " Thumbnail"}
-                lab={lab.id}
+                lab={lab.labID}
                 name={lab.labName}
                 bio={lab.shortDescription}
                 image={lab.thumbnailImageURL}

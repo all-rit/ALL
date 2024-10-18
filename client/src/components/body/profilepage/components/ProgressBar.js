@@ -3,7 +3,7 @@ import ProgressBarBar from "./ProgressBarBar";
 import PropTypes from "prop-types";
 class ProgressBar extends Component {
   render() {
-    const { barData, labID } = this.props;
+    const { barData, labID, inTable } = this.props;
     const total = barData.length;
 
     function renderBars() {
@@ -33,7 +33,9 @@ class ProgressBar extends Component {
       );
     } else {
       return (
-        <ul className="progressBarContainer tw-absolute tw-left-[-4.5rem] tw-top-9">
+        <ul
+          className={`progressBarContainer tw-absolute tw-left-[-4.5rem] ${inTable ? "tw-top-[25%]" : "tw-top-9"}`}
+        >
           <ul className="progressBar">{renderBars()}</ul>
         </ul>
       );
@@ -44,5 +46,6 @@ class ProgressBar extends Component {
 ProgressBar.propTypes = {
   barData: PropTypes.array,
   labID: PropTypes.number,
+  inTable: PropTypes.bool,
 };
 export default ProgressBar;

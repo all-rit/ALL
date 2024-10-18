@@ -1,7 +1,7 @@
 import React from "react";
-import { Table } from "reactstrap";
 import StudentProgress from "./components/StudentProgress";
 import PropTypes from "prop-types";
+import { Table } from "reactstrap";
 // import ResultLimiter from "./components/ResultLimiter";
 
 const EnrolledStudentsTable = (props) => {
@@ -12,29 +12,26 @@ const EnrolledStudentsTable = (props) => {
       {enrolledStudents.length === 0 ? (
         <p>There are currently no students enrolled in this group.</p>
       ) : (
-        <Table>
-          <thead>
-            <tr>
-              <th className={"tw-border-none"}>Student Name</th>
-              <th className={"tw-border-none"}>Lab Progress</th>
-              <th className={"tw-border-none"}>Quiz Grade</th>
-              <th className={"tw-border-none"}>Date Completed</th>
+        <Table className={"tw-bg-white tw-w-full"}>
+          <thead className={"tw-bg-white"}>
+            <tr className={"tw-bg-white"}>
+              <th className={"tw-border-none tw-bg-white tw-text-center"}>
+                Student Name
+              </th>
+              <th className={"tw-border-none tw-bg-white tw-text-center"}>
+                Lab Progress
+              </th>
+              <th className={"tw-border-none tw-bg-white tw-text-center"}>
+                Quiz Grade
+              </th>
+              <th className={"tw-border-none tw-bg-white tw-text-center"}>
+                Date Completed
+              </th>
             </tr>
-          </thead>
-          <tbody>
             {enrolledStudents.map((student, key) => {
-              return (
-                <tr key={key}>
-                  <td>
-                    {student.firstname} {student.lastinitial}
-                  </td>
-                  <td>
-                    <StudentProgress student={student} lab={lab} />
-                  </td>
-                </tr>
-              );
+              return <StudentProgress key={key} student={student} lab={lab} />;
             })}
-          </tbody>
+          </thead>
         </Table>
       )}
     </div>
