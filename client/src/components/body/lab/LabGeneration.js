@@ -58,7 +58,7 @@ const LabGeneration = (props) => {
     if (progressState === "NOT_STARTED") {
       if (labids !== null && labids.length > 0) {
         return (
-          <div className={"tw-grid tw-grid-cols-3 tw-gap-5"}>
+          <div className={"tw-grid tw-grid-cols-3 tw-gap-5 tw-w-full"}>
             {labids.map((lab, index) => {
               const idx = lab.labID - 1;
               return (
@@ -82,18 +82,26 @@ const LabGeneration = (props) => {
       }
     } else {
       if (labRecords !== null && labRecords.length > 0) {
-        return labRecords.map((rec, index) => {
-          const idx = rec.labid - 1;
-          if (labInformation[idx]) {
-            return renderLabData(
-              actions,
-              labInformation[idx],
-              progressState,
-              index,
-              rec,
-            );
-          }
-        });
+        return (
+          <div className={"tw-grid tw-grid-cols-3 tw-gap-5 tw-w-full"}>
+            {labRecords.map((rec, index) => {
+              const idx = rec.labid - 1;
+              if (labInformation[idx]) {
+                return (
+                  <div key={idx} className={"tw-w-full"}>
+                    {renderLabData(
+                      actions,
+                      labInformation[idx],
+                      progressState,
+                      index,
+                      rec,
+                    )}
+                  </div>
+                );
+              }
+            })}
+          </div>
+        );
       } else {
         return (
           <p className="module__no_labs">You have no labs for this section.</p>
