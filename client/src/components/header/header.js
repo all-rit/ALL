@@ -58,8 +58,6 @@ const Header = (props) => {
 		setisSmallWindow(false)
 	}
 
-
-
 	// user is logged in if their profile image isn't null, kinda scuffed but lmk if there's a simpler way
 	// (state.main.user is never null)
 	const loggedIn = state.main.user?.userpfp !== null
@@ -132,7 +130,6 @@ const Header = (props) => {
 													</a>
 							}
 						</NavItem>
-						
 					</Nav>
 				</Collapse>
 			</div>
@@ -141,11 +138,8 @@ const Header = (props) => {
 									<p className="tw-text-xs">Site Accessibility Settings</p>
 								</a>
 			}
-			
 		</div>
-		
 	</Navbar>
-	
 	);
 }
 
