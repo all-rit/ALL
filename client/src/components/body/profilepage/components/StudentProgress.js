@@ -37,16 +37,17 @@ const StudentProgress = (props) => {
   }, [student, lab]);
 
   return (
-    <tr className={"tw-border-darkLine"}>
+    <tr className={"tw-border-darkLine tw-h-[5rem]"}>
       <td className={"tw-border-labLightGray"}>
         <p className="bold">
           {student.firstname} {student.lastinitial}.
         </p>
         <p className="grey-text">{student.email1}</p>
       </td>
-      <td className={"tw-border-labLightGray tw-relative"}>
+      <td className={"tw-border-labLightGray tw-relative tw-w-1/2"}>
         {progress ? (
           <ProgressBar
+            studentProgress
             labID={lab.labID}
             barData={[
               ["About", progress?.aboutcompletedtime],

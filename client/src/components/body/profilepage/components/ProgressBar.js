@@ -3,13 +3,25 @@ import ProgressBarBar from "./ProgressBarBar";
 import PropTypes from "prop-types";
 class ProgressBar extends Component {
   render() {
-    const { barData, labID, inTable } = this.props;
+    const { barData, labID, inTable, studentProgress } = this.props;
     const total = barData.length;
+
+    console.log(barData);
 
     function renderBars() {
       return barData.map((data, index) => {
         try {
-          return (
+          return studentProgress ? (
+            <div className={"tw-m-3"}>
+              <p className={"tw-text-xs"}>{data[0]}</p>
+              <ProgressBarBar
+                key={index}
+                data={data}
+                index={index}
+                labID={labID}
+              />
+            </div>
+          ) : (
             <ProgressBarBar
               key={index}
               data={data}
@@ -18,7 +30,14 @@ class ProgressBar extends Component {
             />
           );
         } catch (error) {
-          return null;
+          return studentProgress ? (
+            <div className={"tw-m-3"}>
+              <p className={"tw-text-xs"}>{data[0]}</p>
+              {null}
+            </div>
+          ) : (
+            <>{null}</>
+          );
         }
       });
     }
@@ -47,5 +66,6 @@ ProgressBar.propTypes = {
   barData: PropTypes.array,
   labID: PropTypes.number,
   inTable: PropTypes.bool,
+  studentProgress: PropTypes.bool,
 };
 export default ProgressBar;
