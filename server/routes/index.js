@@ -190,6 +190,7 @@ router.get('/lab:labID/quiz', async function(req, res) {
 router.get('/teammember', TeamMemberController.getAllTeamMembers);
 router.get('/professors', TeamMemberController.getAllProfessors);
 router.get('/alumni', TeamMemberController.getAllAlumni);
+router.get('/devPartners', TeamMemberController.getAllDevPartners);
 
 // Imagine
 router.post('/imagine/postStudy', async function(req, res) {

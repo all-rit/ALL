@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import PartnerGeneration from "./citation/PartnerGeneration";
 
 const DevPartners = () => {
   return (
@@ -21,10 +22,7 @@ const DevPartners = () => {
           </div>
         </div>
       </div>
-      <div
-        className="tw-grid tw-gap-4 tw-p-6"
-        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))" }}
-      ></div>
+      <PartnerGeneration />
     </div>
   );
 };

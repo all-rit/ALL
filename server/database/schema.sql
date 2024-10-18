@@ -278,10 +278,10 @@ create table dev_partners
 (
     id            serial,
     "partnerName"   text,
-    "imageURL"    text,
-    websiteURL       text,
-    primary key (id)                    
-)
+    "imageURL"      text,
+    "websiteURL"    text,
+    primary key   (id)                    
+);
 
 create table userlab
 (
@@ -3100,7 +3100,7 @@ INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL",
 ,(26, 'Owen', 'Luts', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true)
 ,(27, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[]', null,'2024-Present', true);
 
-INSERT INTO public.dev_partners (id, "partnerName", "imageURL", websiteURL) VALUES (1, "Rochester Institute of Technology", null, "https://www.rit.edu/"), 
-(2, "Daytona State College", null, "https://www.daytonastate.edu/index.html"), (3, "Embry-Riddle Aeronautical University", null, "https://daytonabeach.erau.edu/"),
-(4, "Syracuse University", null, "https://www.syracuse.edu/"), (5, "Fayetteville State University", null, "https://www.uncfsu.edu/"),
-(6, "Philander Smith University", null, "https://www.philander.edu/");
+INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VALUES (1, 'Rochester Institute of Technology', '/RIT.png', 'https://www.rit.edu/'), 
+(2, 'Daytona State College', '/Daytona.png', 'https://www.daytonastate.edu/index.html'), (3, 'Embry-Riddle Aeronautical University', '/ERAU.png', 'https://daytonabeach.erau.edu/'),
+(4, 'Syracuse University', '/Syracuse.png', 'https://www.syracuse.edu/'), (5, 'Fayetteville State University', '/UNCFSU.png', 'https://www.uncfsu.edu/'),
+(6, 'Philander Smith University', '/Philander.png', 'https://www.philander.edu/');
