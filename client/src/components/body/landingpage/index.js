@@ -130,51 +130,6 @@ const Home = (props) => {
           </div>
         </div>
       </section>
-
-      {/* Contact */}
-
-      {/*<section className="page-section landingpage__pagesection" id="contact">*/}
-      {/*  <div className="container">*/}
-      {/*    <div className="row contact">*/}
-      {/*      <div className="col-lg-12 text-center">*/}
-      {/*        <h2 className="section-heading text-uppercase">Contact Us</h2>*/}
-      {/*        <h3 className="section-subheading" id={"connect-text"}>*/}
-      {/*          Connect with us if you have questions. <br />*/}
-      {/*          <br />*/}
-      {/*          Contact Dr. Daniel Krutz at*/}
-      {/*          <a*/}
-      {/*            className="landingpage__contact"*/}
-      {/*            href="mailto:Daniel.Krutz@rit.edu"*/}
-      {/*          >*/}
-      {/*            {" "}*/}
-      {/*            Daniel.Krutz@rit.edu*/}
-      {/*          </a>*/}
-      {/*        </h3>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</section>*/}
-
-      {/* Footer */}
-      {/*<footer className="footer">*/}
-      {/*  <ul className="list-inline quicklinks">*/}
-      {/*    <li className="list-inline-item">*/}
-      {/*      <a*/}
-      {/*        href="https://www.nsf.gov/pubs/2016/nsf16009/nsf16009.jsp#q37"*/}
-      {/*        target="_blank"*/}
-      {/*        rel="noopener noreferrer"*/}
-      {/*      >*/}
-      {/*        Available under the Federal Government License*/}
-      {/*      </a>*/}
-      {/*    </li>*/}
-      {/*    <li>*/}
-      {/*      <a onClick={() => handleRedirect(actions, 0, 1)} href="# ">*/}
-      {/*        Site Map*/}
-      {/*      </a>*/}
-      {/*    </li>*/}
-      {/*  </ul>*/}
-      {/*</footer>*/}
-
       <MainFooter />
     </div>
   );

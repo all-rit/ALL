@@ -18,7 +18,7 @@ import logo from "../../assets/images/logos/ALL_White_Logo.svg";
 // import Logo from "../../assets/images/logos/ALL_White_Logo.svg";
 // import { Panel as ColorPickerPanel } from "rc-color-picker";
 // import { Sections } from "../../constants/index";
-// import handleRedirect from "../../helpers/Redirect";
+import handleRedirect from "../../helpers/Redirect";
 // import getExerciseState from "../../helpers/GetReducer";
 // import { navigate } from "@reach/router";
 
@@ -132,17 +132,16 @@ class MainFooter extends Component {
         <section className="tw-px-12 tw-bg-labGray tw-text-white tw-pb-1">
           <div className="tw-flex tw-justify-between tw-flex-wrap">
             <div className="tw-object-left tw-max-w-80">
-              <a href="#">
-                <div className="tw-flex">
+              <div className="tw-flex">
+                <a href="#">
                   <img
                     className="logo tw-flex tw-h-auto"
                     src={logo}
                     alt="ALL Logo"
                   />
-                </div>
-              </a>
+                </a>
+              </div>
 
-              <br />
               <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
                 About Us
               </h2>
@@ -293,6 +292,17 @@ class MainFooter extends Component {
                 >
                   <p className="tw-text-base tw-text-white tw-font-bold">
                     Educator Resources
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem className="px-4 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  href="#"
+                  onClick={() => handleRedirect(mainActions, 0, 1)}
+                >
+                  <p className="tw-text-base tw-text-white tw-font-bold">
+                    Site Map
                   </p>
                 </NavLink>
               </NavItem>
