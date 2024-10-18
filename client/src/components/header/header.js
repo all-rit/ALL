@@ -68,7 +68,6 @@ const Header = (props) => {
 	return (
 	<Navbar
 		id="navHeader"
-		dark
 		expand="lg"
 		className="tw-pt-3 poppins tw-font-bold mb-0"
 	>
@@ -93,9 +92,13 @@ const Header = (props) => {
 				<Collapse 
 					className="tw-flex tw-flex-grow tw-justify-end"
 					isOpen = {navbarOpen}
+					
 				>
-					<NavbarToggler className={`${isSmallWindow ? "tw-hidden" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow"}`} onClick={toggleNavbar} />
-					<Nav className={`${!isSmallWindow ? "tw-hidden" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow"}`} navbar>				
+					<NavbarToggler 
+						className={`${isSmallWindow ? "tw-hidden" : "tw-flex flex-col tw-flex-grow tw-justify-end tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow"}`} 
+						onClick={toggleNavbar}
+					/>
+					<Nav className={`${!isSmallWindow ? "tw-inline" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow"}`}>				
 						{/* TODO -- REMOVE THIS NAVITEM (logs out user, only here for testing) */}
 						{/* <NavItem>
 							<a href={`${process.env.REACT_APP_SERVER_URL}/logout`}> LOG OUT </a>
