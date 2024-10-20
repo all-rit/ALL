@@ -3,42 +3,20 @@ import ProgressBarBar from "./ProgressBarBar";
 import PropTypes from "prop-types";
 class ProgressBar extends Component {
   render() {
-    const { barData, labID, inTable, studentProgress } = this.props;
+    const { barData, labID, inTable, hasLabel } = this.props;
     const total = barData.length;
-
-    console.log(barData);
 
     function renderBars() {
       return barData.map((data, index) => {
-        try {
-          return studentProgress ? (
-            <div className={"tw-m-3"}>
-              <p className={"tw-text-xs"}>{data[0]}</p>
-              <ProgressBarBar
-                key={index}
-                data={data}
-                index={index}
-                labID={labID}
-              />
-            </div>
-          ) : (
-            <ProgressBarBar
-              key={index}
-              data={data}
-              index={index}
-              labID={labID}
-            />
-          );
-        } catch (error) {
-          return studentProgress ? (
-            <div className={"tw-m-3"}>
-              <p className={"tw-text-xs"}>{data[0]}</p>
-              {null}
-            </div>
-          ) : (
-            <>{null}</>
-          );
-        }
+        return (
+          <ProgressBarBar
+            key={index}
+            data={data}
+            index={index}
+            labID={labID}
+            hasLabel={hasLabel}
+          />
+        );
       });
     }
 
@@ -53,9 +31,11 @@ class ProgressBar extends Component {
     } else {
       return (
         <ul
-          className={`progressBarContainer tw-absolute tw-left-[-4.5rem] ${inTable ? "tw-top-[25%]" : "tw-top-9"}`}
+          className={`progressBarContainer ${inTable ? "tw-flex-row tw-justify-center tw-ml-[7%]" : "tw-top-9"}`}
         >
-          <ul className="progressBar">{renderBars()}</ul>
+          <div className={`progressBar ${inTable ? "tw-w-full" : ""}`}>
+            {renderBars()}
+          </div>
         </ul>
       );
     }
@@ -66,6 +46,6 @@ ProgressBar.propTypes = {
   barData: PropTypes.array,
   labID: PropTypes.number,
   inTable: PropTypes.bool,
-  studentProgress: PropTypes.bool,
+  hasLabel: PropTypes.bool,
 };
 export default ProgressBar;

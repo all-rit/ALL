@@ -13,8 +13,8 @@ const EnrolledStudentsTable = (props) => {
         <p>There are currently no students enrolled in this group.</p>
       ) : (
         <Table className={"tw-bg-white tw-w-full"}>
-          <thead className={"tw-bg-white"}>
-            <tr className={"tw-bg-white"}>
+          <thead className={"tw-bg-white tw-align-middle"}>
+            <tr className={"tw-bg-white "}>
               <th className={"tw-border-none tw-bg-white tw-text-center"}>
                 Student Name
               </th>
@@ -29,7 +29,14 @@ const EnrolledStudentsTable = (props) => {
               </th>
             </tr>
             {enrolledStudents.map((student, key) => {
-              return <StudentProgress key={key} student={student} lab={lab} />;
+              return (
+                <StudentProgress
+                  key={key}
+                  student={student}
+                  lab={lab}
+                  hasLabel={true}
+                />
+              );
             })}
           </thead>
         </Table>

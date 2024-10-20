@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import UserLabService from "../../../../services/UserLabService";
 import ProgressBar from "./ProgressBar";
+import PropTypes from "prop-types";
 
 const StudentProgress = (props) => {
-  const { student, lab } = props;
+  const { student, lab, hasLabel } = props;
   const [progress, setProgress] = useState();
 
   const getProgress = async () => {
@@ -38,7 +38,7 @@ const StudentProgress = (props) => {
 
   return (
     <tr className={"tw-border-darkLine tw-h-[5rem]"}>
-      <td className={"tw-border-labLightGray"}>
+      <td className={"tw-border-labLightGray "}>
         <p className="bold">
           {student.firstname} {student.lastinitial}.
         </p>
@@ -47,7 +47,7 @@ const StudentProgress = (props) => {
       <td className={"tw-border-labLightGray tw-relative tw-w-1/2"}>
         {progress ? (
           <ProgressBar
-            studentProgress
+            hasLabel={hasLabel}
             labID={lab.labID}
             barData={[
               ["About", progress?.aboutcompletedtime],
@@ -61,7 +61,8 @@ const StudentProgress = (props) => {
           />
         ) : (
           <ProgressBar
-            labID={lab.id}
+            hasLabel={hasLabel}
+            labID={lab.labID}
             barData={[
               ["About", null],
               ["Reading", null],
@@ -87,6 +88,19 @@ const StudentProgress = (props) => {
       </td>
     </tr>
   );
+};
+
+StudentProgress.propTypes = {
+  hasLabel: PropTypes.bool,
+  student: PropTypes.shape({
+    userID: PropTypes.number,
+    firstname: PropTypes.string,
+    lastinitial: PropTypes.string,
+    email1: PropTypes.string,
+  }),
+  lab: PropTypes.shape({
+    labID: PropTypes.number,
+  }),
 };
 
 export default StudentProgress;
