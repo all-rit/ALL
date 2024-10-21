@@ -63,7 +63,13 @@ const EnrolledGroups = (props) => {
                 <p> You are currently not enrolled in any groups</p>
               </div>
             ) : (
-              <div>{displayEnrolledGroups()}</div>
+              <div
+                className={
+                  "xs:tw-flex sxs:tw-flex-col md:tw-grid md:tw-grid-cols-3"
+                }
+              >
+                {displayEnrolledGroups()}
+              </div>
             )}
             <div className={"tw-flex tw-flex-col tw-text-left"}>
               <p className={"tw-text-lg tw-title-styling-name tw-font-poppins"}>
