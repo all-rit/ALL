@@ -45,7 +45,7 @@ const BrandedALLModal = (props, { children }) => {
                                             tw-text-primary-blue tw-bg-white
                                             tw-rounded-4xl tw-border-0 xs:tw-text-xl "
             onClick={toggle}
-            aria-hidden="true"
+            aria-label="Escape Button"
           >
             &times;{" "}
           </button>
@@ -75,7 +75,7 @@ const BrandedALLModal = (props, { children }) => {
                                             tw-text-white tw-bg-primary-blue
                                             tw-rounded-4xl tw-border-0 line-height-0"
             onClick={toggle}
-            aria-hidden="true"
+            aria-label="Escape Button"
           >
             {" "}
             &times;{" "}

@@ -40,7 +40,6 @@ const GroupAssignedLabs = (props) => {
   };
 
   useEffect(() => {
-    console.log(instructor);
     getUserLabs();
   }, [state.main.user, instructor]);
 
@@ -108,7 +107,7 @@ const GroupAssignedLabs = (props) => {
                 actions={lab.actions}
                 difficulty={lab.difficulty}
                 labProgress={
-                  getLabProgressState(lab.id) === "NOT_STARTED"
+                  getLabProgressState(lab.labID) === "NOT_STARTED"
                     ? null
                     : labRecords[index]
                 }
@@ -131,7 +130,7 @@ GroupAssignedLabs.propTypes = {
   inProgressLabs: PropTypes.array,
   toDoLabs: PropTypes.array,
   completedLabs: PropTypes.array,
-  instructor: PropTypes.string,
+  instructor: PropTypes.shape({}),
   setGroupsUpdated: PropTypes.func,
 };
 

@@ -14,7 +14,6 @@ const StudentProgress = (props) => {
           student.userID,
           lab.labID,
         );
-        console.log("Data: ", data);
         setProgress(data);
       } catch (error) {
         console.error("Error Setting Student Progress", error);
