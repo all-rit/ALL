@@ -96,13 +96,12 @@ const NewStudentProgress = (props) => {
         direction={"column"}
         isOpen={modalOpen}
         toggle={toggleModal}
-        body={
-          <div className={"tw-px-[2rem] tw-py-[1rem]"}>
-            {progressHeader()}
-            {groupLabs()}
-          </div>
-        }
-      />
+      >
+        <div className={"tw-px-[2rem] tw-py-[1rem]"}>
+          {progressHeader()}
+          {groupLabs()}
+        </div>
+      </BrandedALLModal>
     </>
   );
 };

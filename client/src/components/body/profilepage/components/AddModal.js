@@ -63,16 +63,15 @@ const AddModal = (props) => {
             toggle={toggleModal}
             className="add_instr_grp_modal"
             direction={"column"}
-            body={
-              <GroupForm
-                toggle={toggleModal}
-                setInstrGroupsUpdated={setInstrGroupsUpdated}
-                user={user}
-                groupID={groupID}
-                addMode={addMode}
-              />
-            }
-          ></BrandedALLModal>
+          >
+            <GroupForm
+              toggle={toggleModal}
+              setInstrGroupsUpdated={setInstrGroupsUpdated}
+              user={user}
+              groupID={groupID}
+              addMode={addMode}
+            />
+          </BrandedALLModal>
         </>
       );
     case "update_grp_lab":
@@ -92,19 +91,18 @@ const AddModal = (props) => {
             toggle={toggleModal}
             className="add_instr_grp_modal"
             direction={"column"}
-            body={
-              <GroupForm
-                toggle={toggleModal}
-                setInstrGroupsUpdated={setInstrGroupsUpdated}
-                user={user}
-                groupColor={groupColor}
-                groupID={groupID}
-                groupName={groupName}
-                addMode={addMode}
-                assignedLabs={assignedLabs}
-              />
-            }
-          ></BrandedALLModal>
+          >
+            <GroupForm
+              toggle={toggleModal}
+              setInstrGroupsUpdated={setInstrGroupsUpdated}
+              user={user}
+              groupColor={groupColor}
+              groupID={groupID}
+              groupName={groupName}
+              addMode={addMode}
+              assignedLabs={assignedLabs}
+            />
+          </BrandedALLModal>
         </>
       );
     default: // this is the case for enrolling in a group
@@ -121,44 +119,43 @@ const AddModal = (props) => {
             toggle={toggleModal}
             className="add_instr_grp_modal"
             direction={"column"}
-            body={
-              <>
-                <Form onSubmit={handleInviteCodeSubmit}>
-                  <ModalBody className={"tw-mt-10 tw-px-[5rem]"}>
-                    <p className={"tw-font-poppins tw-font-medium tw-text-sm"}>
-                      Looking to join a class?
-                    </p>
-                    <Label
-                      className={"tw-title-styling-name tw-text-xl"}
-                      for="groupInviteCode"
-                    >
-                      Enter your group code here:
-                    </Label>
-                    <div
-                      className={
-                        "tw-flex tw-flex-row tw-h-[3rem] tw-items-center"
-                      }
-                    >
-                      <Input
-                        className={"tw-w-3/4 tw-h-full tw-mr-3 "}
-                        placeholder={"Group Code"}
-                        type="text"
-                        name="inviteCode"
-                        id="inviteCode"
-                        onChange={(e) => {
-                          setInviteCode(e.target.value);
-                        }}
-                      />
-                      <ALLButton
-                        onClick={handleInviteCodeSubmit}
-                        label={"Join a Group"}
-                      />
-                    </div>
-                  </ModalBody>
-                </Form>
-              </>
-            }
-          ></BrandedALLModal>
+          >
+            <>
+              <Form onSubmit={handleInviteCodeSubmit}>
+                <ModalBody className={"tw-mt-10 tw-px-[5rem]"}>
+                  <p className={"tw-font-poppins tw-font-medium tw-text-sm"}>
+                    Looking to join a class?
+                  </p>
+                  <Label
+                    className={"tw-title-styling-name tw-text-xl"}
+                    for="groupInviteCode"
+                  >
+                    Enter your group code here:
+                  </Label>
+                  <div
+                    className={
+                      "tw-flex tw-flex-row tw-h-[3rem] tw-items-center"
+                    }
+                  >
+                    <Input
+                      className={"tw-w-3/4 tw-h-full tw-mr-3 "}
+                      placeholder={"Group Code"}
+                      type="text"
+                      name="inviteCode"
+                      id="inviteCode"
+                      onChange={(e) => {
+                        setInviteCode(e.target.value);
+                      }}
+                    />
+                    <ALLButton
+                      onClick={handleInviteCodeSubmit}
+                      label={"Join a Group"}
+                    />
+                  </div>
+                </ModalBody>
+              </Form>
+            </>
+          </BrandedALLModal>
         </>
       );
   }

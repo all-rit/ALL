@@ -147,20 +147,19 @@ const EnrolledGroupCard = (props) => {
         toggle={toggleGroupDetailsModal}
         direction={"column"}
         width={"lg:tw-min-w-[70rem] lg:tw-min-h-[50rem]"}
-        body={
-          <GroupDetails
-            group={group}
-            instructing={instructing}
-            inProgressLabs={inProgressLabs}
-            toDoLabs={toDoLabs}
-            completedLabs={completedLabs}
-            setGroupsUpdated={setGroupsUpdated}
-            instructor={<InstructorName instructorID={instructorID} />}
-            setInstrGroupsUpdated={setInstrGroupsUpdated}
-            assignedLabs={assignedLabs}
-          />
-        }
-      />
+      >
+        <GroupDetails
+          group={group}
+          instructing={instructing}
+          inProgressLabs={inProgressLabs}
+          toDoLabs={toDoLabs}
+          completedLabs={completedLabs}
+          setGroupsUpdated={setGroupsUpdated}
+          instructor={<InstructorName instructorID={instructorID} />}
+          setInstrGroupsUpdated={setInstrGroupsUpdated}
+          assignedLabs={assignedLabs}
+        />
+      </BrandedALLModal>
     </Card>
   );
 };

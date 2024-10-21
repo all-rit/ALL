@@ -3,8 +3,8 @@ import { Modal } from "reactstrap";
 import PropTypes from "prop-types";
 import logo from "../../assets/images/logos/ALL_White.svg";
 
-const BrandedALLModal = (props, { children }) => {
-  const { isOpen, toggle, direction, body, width } = props;
+const BrandedALLModal = (props) => {
+  const { isOpen, toggle, direction, width, children } = props;
 
   return direction === "row" && window.innerWidth >= 640 ? (
     <Modal
@@ -49,7 +49,6 @@ const BrandedALLModal = (props, { children }) => {
           >
             &times;{" "}
           </button>
-          {body}
           {children}
         </div>
       </div>
@@ -100,7 +99,7 @@ const BrandedALLModal = (props, { children }) => {
             "tw-w-full tw-h-full tw-flex tw-flex-row tw-justify-center tw-align-middle"
           }
         >
-          <div className={"tw-w-full"}>{body}</div>
+          <div className={"tw-w-full"}>{children}</div>
         </div>
       </div>
     </Modal>
@@ -110,7 +109,7 @@ const BrandedALLModal = (props, { children }) => {
 BrandedALLModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
-  body: PropTypes.any,
+  children: PropTypes.any,
   width: PropTypes.string,
   direction: PropTypes.oneOf(["row", "column"]).isRequired,
 };
