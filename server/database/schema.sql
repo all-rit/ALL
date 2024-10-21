@@ -226,6 +226,7 @@ create table labs
     reading               json,
     reinforcement         json,
     quiz                  json,
+    difficulty             integer,
     "isActive"            boolean default false,
     primary key (id)
 );
@@ -391,7 +392,7 @@ create table lab9_repair
     primary key ("repairId")
 );
 
-INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
+INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
             fought for easier access for hearing impaired individuals,
@@ -663,7 +664,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": false
   }
 ]
-', true),
+', 1, true),
  (2, 'Accessibility to Color Blindness', 'Color Blindness', 'Accessibility', '/colorblindness.jpg', 'Learn more about designing the web for color blind individuals.', 'This lab explores accessibility issues involving color blindness. This will be introduced to the user through a simulated color blind lens. The user will then be asked to navigate through the exercise with the lens activated and once without. The user will then be asked to implement accessible colors that will allow every user to have the same experience.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is colorblind, the types of colorblindness that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for those who are colorblind (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to colorblindness (Comprehension)"]', 'Scott Frauenknecht', 'https://all.rit.edu/Lab2/', null, e'In this lab, you will learn about why it is important to create
             software that is accessible to users with visual impairments.
             You will learn about different color vision deficiencies,
@@ -885,7 +886,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": false
   }
 ]
-', true),
+', 1, true),
 (3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
                 that is accessible to users who utilize screenreaders.
                 You will learn about using alt tags,
@@ -1076,7 +1077,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     ],
     "multiChoice": true
   }
-]', true),
+]', 2, true),
 (4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
                 that is accessible to users with dexterity impairments.
                 You will learn about issues related to dexterity,
@@ -1260,7 +1261,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     ],
     "multiChoice": true
   }
-]', true),
+]', 3, true),
  (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
                that is accessible to users who face cognitive impairments.
                You will learn about using clear descriptive headings, handling time driven notifications, and
@@ -1525,7 +1526,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": true
   }
 ]
-', true), (6, 'Ethics of AI', 'Ethics of AI', 'AI', '/ethicsai.jpg', 'Learn more about the ethics behind AI.', 'This lab introduces the ethics behind AI. The user will be introduced to what goes into the development of an AI and what needs to be done to make it ethical. The exercise portion will bring the user through multiple scenarios where the AI has a bias against certain groups. The user will then be asked about the issues bias brings and asks the user to make changes to the AI.', '["LO1: Recognize different ethical challenges in AI (Comprehension)","LO2: Practice consideration of ethics in a AI-related scenario (Application)","LO3: Diagnose ethical implications of choices made by AI (Synthesis)","SLO1 Supplemental: Assess impact and determine appropriate response to ethical scenarios (Synthesis)"]', 'Mark Sternefeld, Jaden Wedner, Kyle Messerle', 'https://all.rit.edu/Lab6/', null, 'In this lab, you will learn about the importance of ethical implications of using Artificial Intelligence (AI). You will learn about issues related to a lack of diversity and human biases in data, increase your understanding through an interactive module about bias in software, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
+', 3, true), (6, 'Ethics of AI', 'Ethics of AI', 'AI', '/ethicsai.jpg', 'Learn more about the ethics behind AI.', 'This lab introduces the ethics behind AI. The user will be introduced to what goes into the development of an AI and what needs to be done to make it ethical. The exercise portion will bring the user through multiple scenarios where the AI has a bias against certain groups. The user will then be asked about the issues bias brings and asks the user to make changes to the AI.', '["LO1: Recognize different ethical challenges in AI (Comprehension)","LO2: Practice consideration of ethics in a AI-related scenario (Application)","LO3: Diagnose ethical implications of choices made by AI (Synthesis)","SLO1 Supplemental: Assess impact and determine appropriate response to ethical scenarios (Synthesis)"]', 'Mark Sternefeld, Jaden Wedner, Kyle Messerle', 'https://all.rit.edu/Lab6/', null, 'In this lab, you will learn about the importance of ethical implications of using Artificial Intelligence (AI). You will learn about issues related to a lack of diversity and human biases in data, increase your understanding through an interactive module about bias in software, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
     "piechart":
        {"header":"AI use cases in manufacturing industry percentages worldwide as of 2020",
        "caption":[""],
@@ -1717,7 +1718,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": false
   }
 ]
-', true), (7, 'AI Cybersecurity', 'AI Cybersecurity', 'AI', '/aicybersecurity.jpg', 'Learn more about the basics of AI in cybersecurity.', 'This lab will provide participants with a fundamental understanding of the core aspects of autonomous systems through a cybersecurity lens, which is a significant area of application for AI and Machine Learning. To strengthen this understanding, the participant will progress through a simulation of an autonomous system that will modify the access of sensitive files when security threats are present in the system.', '["LO1: Recognize foundational components of a cybersecurity-focused autonomous system (Comprehension)", "LO2: Use provided elements to demonstrate basic cyber security-focused autonomous systems in action (Application)", "LO3: Compose a minor alteration to an existing cyber security-focused autonomous system and assess its impacts (Evaluation)", "LO4: Recognize and identify the ethical impact of cyber security-focused autonomous systems and decision-making", "SLO1 Supplemental: Construct a basic cyber security-focused autonomous system (Synthesis)"]', 'Kelley Lam, Jonathan Cruz, Domenic Mangano, Janae Moring', 'https://all.rit.edu/Lab7/', null, e'In this lab, you will learn about the basics of AI and Machine Learning
+', 2, true), (7, 'AI Cybersecurity', 'AI Cybersecurity', 'AI', '/aicybersecurity.jpg', 'Learn more about the basics of AI in cybersecurity.', 'This lab will provide participants with a fundamental understanding of the core aspects of autonomous systems through a cybersecurity lens, which is a significant area of application for AI and Machine Learning. To strengthen this understanding, the participant will progress through a simulation of an autonomous system that will modify the access of sensitive files when security threats are present in the system.', '["LO1: Recognize foundational components of a cybersecurity-focused autonomous system (Comprehension)", "LO2: Use provided elements to demonstrate basic cyber security-focused autonomous systems in action (Application)", "LO3: Compose a minor alteration to an existing cyber security-focused autonomous system and assess its impacts (Evaluation)", "LO4: Recognize and identify the ethical impact of cyber security-focused autonomous systems and decision-making", "SLO1 Supplemental: Construct a basic cyber security-focused autonomous system (Synthesis)"]', 'Kelley Lam, Jonathan Cruz, Domenic Mangano, Janae Moring', 'https://all.rit.edu/Lab7/', null, e'In this lab, you will learn about the basics of AI and Machine Learning
 through a cybersecurity lens. You will learn the fundamental components
 and impact of AI and Machine Learning in a cybersecurity-focused environment.
 Afterwards, you will view related media to reinforce the topic and take a quiz
@@ -2034,7 +2035,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
 ]
-', true),
+', 3, true),
  (8, 'Algorithmic Bias', 'Algorithmic Bias', 'AI', '/aibias.png', 'Learn more about bias in machine learning.', 'This lab explores machine learning bias and associated guiding principles to mitigate this bias. The user will learn about examples of real-world biased AI models and their impacts. Additionally, the lab demonstrates that an inequitable dataset can result in inappropriate bias in a sentiment analysis scenario.', e'["LO1: Identify how human prejudice infiltrates datasets resulting in biased machine learning systems (Knowledge).",
 "LO2: Classify different types of inequitable bias in machine learning systems (Comprehension).",
 "LO3: Apply standard guiding principles when developing machine learning systems (Application).",
@@ -2376,7 +2377,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
-', true),
+', 3, true),
 (9, 'Accessibility to Localization', 'Localization', 'Accessibility', '/localization.jpg', 'Learn more about localization.', 'This lab explores localization and guiding principles to adapt software to meet the needs of various languages, cultures, and locales. The user will practice localizing a webpage by following the steps of the localization process.', e'["LO1: Recognize the significance of the non-English population and their needs for accessible software (Knowledge).",
 "LO2: Examine a software application that doesn’t properly accommodate accessibility to localization in various (Analysis).",
 "LO3: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application).",
@@ -2608,7 +2609,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
 ]
-', true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab introduces machine learning', e'[
+', 2, true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab introduces machine learning', e'[
     "LO1: Construct a basic neural network using provided components (Synthesis)",
     "LO2: Simulate neural network training (Comprehension).",
     "LO3: Demonstrate bias present in a neural network (Application)."
@@ -2828,7 +2829,7 @@ to test your knowledge. Click "Next" to start!', e'{
     ],
     "multiChoice": false
   }
-]', true), (11, 'Accessibility to Literacy', 'Literacy', 'Accessibility', '/literacy.jpg', 'Learn more about designing the web for varying literacy levels.', 'This lab explores considerations related to literacy levels. The user will be introduced to the Fog Index formula and learn how it can be used to understand the literacy level of text. Finally, the user will be introduced to key principles related to improving content readability.', e'["LO1: Recognize the significance of the range of literacy in the population and their needs for accessible software (Knowledge).",
+]', 2, true), (11, 'Accessibility to Literacy', 'Literacy', 'Accessibility', '/literacy.jpg', 'Learn more about designing the web for varying literacy levels.', 'This lab explores considerations related to literacy levels. The user will be introduced to the Fog Index formula and learn how it can be used to understand the literacy level of text. Finally, the user will be introduced to key principles related to improving content readability.', e'["LO1: Recognize the significance of the range of literacy in the population and their needs for accessible software (Knowledge).",
 "LO2: Examine a scenario that doesn’t properly accommodate accessibility to literacy in a relatable context (Analysis).",
 "LO3: Use knowledge of accessibility design solutions to construct corrective measures to allow a previously inaccessible scenario to become accessible to appropriate parties (Application).",
 "LO4: Relate to individuals who experience difficulties with accessibility to literacy (Comprehension)."
@@ -3058,7 +3059,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
-', true);
+', 2, true);
 
 INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
 (2, 'Samuel', 'Malachowsky', 'PI', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]
