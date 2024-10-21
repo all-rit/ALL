@@ -13,7 +13,6 @@ import {
   setBackgroundColor,
   onNextPageChangeTSize,
 } from "./edit/editPage";
-import { Panel as ColorPickerPanel } from "rc-color-picker";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
 import { navigate } from "@reach/router";
@@ -180,29 +179,21 @@ class Footer extends Component {
             </div>
           )}
           <div
-            className="tw-relative container "
+            className="tw-flex tw-justify-between tw-mx-8"
             style={{ display: display ? "block" : "none" }}
           >
-            <div
-              className="tw-float-left tw-h-16 tw-w-38 tw-bg-labYellow tw-rounded-bl-lg tw-pb-2 tw-pl-2 tw-m-2"
-              style={{
-                display:
-                  this.disappearBack(body) || hideOnLanding ? "none" : "block",
-              }}
+			<button
+				className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
+				onClick={() => handleRedirect(actions, lab, body - 1)}
+				style={{
+					display:
+					  this.disappearBack(body) || hideOnLanding
+						? "none"
+						: "block",
+				  }}
             >
-              <button
-                className="back btn tw-w-32 tw-font-medium tw-rounded-none tw-bg-white text-uppercase tw-shadow-none focus:tw-border-0"
-                onClick={() => handleRedirect(actions, lab, body - 1)}
-                style={{
-                  display:
-                    this.disappearBack(body) || hideOnLanding
-                      ? "none"
-                      : "block",
-                }}
-              >
-                Back
-              </button>
-            </div>
+              BACK
+            </button>
 
             {body === 4 && quizCompleted ? (
               <button
@@ -219,89 +210,19 @@ class Footer extends Component {
                 Return to Home
               </button>
             ) : (
-              <div
-                className="tw-float-right tw-h-16 tw-w-38 tw-bg-labBlue tw-rounded-tr-lg tw-pt-2 tw-pr-2 tw-m-2"
-                style={{
-                  display:
-                    this.disappearNext(body) || hideOnLanding
-                      ? "none"
-                      : "block",
-                }}
-              >
-                <button
-                  className="next btn tw-w-32 tw-font-medium tw-rounded-none tw-bg-white text-uppercase tw-shadow-none focus:tw-border-0"
-                  onClick={() => handleRedirect(actions, lab, body + 1)}
-                  style={{
-                    display:
-                      this.disappearNext(body) || hideOnLanding
-                        ? "none"
-                        : "block",
-                  }}
-                >
-                  Next
-                </button>
-              </div>
+				<button
+					className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue"
+					onClick={() => handleRedirect(actions, lab, body + 1)}
+					style={{
+						display:
+						this.disappearBack(body) || hideOnLanding
+							? "none"
+							: "block",
+					}}
+				>
+					NEXT
+				</button>
             )}
-
-            <div className="btn-change">
-              <button
-                className="btn-text btn btn-bottom-buttons text-uppercase"
-                alt="Increase text size"
-                title="Larger text"
-                onClick={() => this.changeSize(1)}
-              >
-                Text+
-              </button>
-              <button
-                className="btn-text btn btn-bottom-buttons text-uppercase"
-                alt="Decrease text size"
-                title="Smaller text"
-                onClick={() => this.changeSize(-1)}
-              >
-                Text-
-              </button>
-              <button
-                id="changeTextColor"
-                className="btn btn-text btn-bottom-buttons text-uppercase"
-                onClick={this.renderTextColorPalette}
-              >
-                Change Text Color
-              </button>
-
-              <button
-                id="changeBackgroundColor"
-                className="btn btn-text btn-bottom-buttons text-uppercase"
-                onClick={this.renderBgColorPalette}
-              >
-                Change Background Color
-              </button>
-              {this.state.textColor && (
-                <div
-                  id="text-panel"
-                  className="div-style-text"
-                  style={{
-                    display: this.state.textColor === true ? "block" : "none",
-                  }}
-                >
-                  <ColorPickerPanel
-                    enableAlpha={false}
-                    defaultColor={"#345679"}
-                    color={this.state.color}
-                    onChange={this.OnTextColorChange.bind(this)}
-                  />
-                </div>
-              )}
-              {this.state.bgColor && (
-                <div id="bg-panel" className="div-style-bgColor">
-                  <ColorPickerPanel
-                    enableAlpha={false}
-                    defaultColor={"#345679"}
-                    color={this.state.backgroundColor}
-                    onChange={this.OnBgColorChange.bind(this)}
-                  />
-                </div>
-              )}
-            </div>
           </div>
           <div
             className="container"
