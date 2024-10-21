@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-/* eslint-disable camelcase */
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Logo from "../../assets/images/logos/ALL_Logo.svg";
 import { connect } from "react-redux";
 import {
@@ -15,8 +13,13 @@ import {
 } from "reactstrap";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
-
+import { navigate as reachNav } from "@reach/router";
 import useMainStateContext from "src/reducers/MainContext";
+import BrandedALLModal from "../all-components/BrandedALLModal";
+import LoginBody from "../body/login/LoginBody";
+import PropTypes from "prop-types";
+import handleRedirect from "../../helpers/Redirect";
+import getExerciseState from "../../helpers/GetReducer";
 
 const mapStateToProps = (state) => {
   return {
@@ -44,9 +47,44 @@ function useWindowSize() {
 }
 
 const Header = (props) => {
-  const { state } = useMainStateContext();
+  const { state, actions } = useMainStateContext();
+  const user = state.main.user;
   const [isSmallWindow, setisSmallWindow] = useState(false);
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const [signInModalOpen, setSignInModalOpen] = useState(false);
+
+  const toggleSignIn = () => {
+    setSignInModalOpen(!signInModalOpen);
+  };
+
+  const signInModal = () => {
+    return (
+      <BrandedALLModal
+        direction={"row"}
+        isOpen={signInModalOpen}
+        toggle={toggleSignIn}
+        body={<LoginBody />}
+      />
+    );
+  };
+
+  const alert_check = (state, reduxState) => {
+    if (
+      getExerciseState(state, reduxState) !== "EXERCISE_IDLE" &&
+      state.main.body === 2
+    ) {
+      alert("The exercise is still in progress! Please complete the exercise");
+      return true;
+    }
+    return false;
+  };
+
+  const navigate = (state, reduxState, actions, body, lab = state.main.lab) => {
+    if (!alert_check(state, reduxState)) {
+      handleRedirect(actions, lab, body);
+    }
+  };
 
   const toggleNavbar = () => setNavbarOpen(!navbarOpen);
   const windowSize = useWindowSize();
@@ -65,17 +103,17 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className="tw-pt-3 poppins tw-font-bold mb-0"
+      className="tw-font-poppins tw-font-bold tw-my-0"
     >
       <div
-        className={`tw-flex tw-flex-col tw-gap-2 tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 p-2 tw-left-0 tw-right-0 d-flex xxs:tw-h-[15%] lg:tw-h-36`}
+        className={`tw-flex tw-flex-col tw-gap-2 tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 d-flex xxs:tw-h-[15%] lg:tw-h-36`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
         >
-          <a href="# ">
+          <a onClick={() => reachNav("/#")}>
             <img
-              className="tw-cursor-pointer tw-h-[6rem]"
+              className="tw-cursor-pointer xs:tw-max-h-[6rem] sm:tw-max-h-[10rem]"
               src={Logo}
               alt="Computing Accessibility"
             />
@@ -90,14 +128,14 @@ const Header = (props) => {
             isOpen={navbarOpen}
           >
             <Nav
-              className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem]"}`}
+              className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
             >
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                  href="#"
+                  onClick={() => reachNav("/#")}
                 >
                   <p className="tw-text-base tw-text-labBlue tw-font-bold">
                     Home
@@ -105,7 +143,7 @@ const Header = (props) => {
                 </NavLink>
               </NavItem>
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
@@ -140,25 +178,32 @@ const Header = (props) => {
                   </p>
                 </NavLink>
               </NavItem>
-              <NavItem className="tw-px-4 tw-py-2 tw-flex tw-justify-center tw-items-center">
-                {loggedIn ? (
+              <NavItem className="tw-px-4 tw-py-2 tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+                {loggedIn && user ? (
                   // TO-DO: PROFILE LINK HERE
-                  <NavLink className="tw-aspect-square tw-p-0 tw-border-solid tw-border-4 tw-border-labBlue tw-rounded-full tw-overflow-hidden">
-                    <img
-                      src={state.main.user?.userpfp}
-                      alt="Google Profile Photo"
-                      className="tw-h-12"
-                    ></img>
+                  <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-border-labBlue tw-rounded-full tw-overflow-hidden">
+                    <div
+                      onClick={() =>
+                        navigate(state, props.state, actions, 2, 0)
+                      }
+                      aria-label="Google Profile Photo"
+                      className="tw-h-12 tw-object-cover"
+                      style={{
+                        backgroundImage: `url(${user?.userpfp}`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                      }}
+                    ></div>
                   </NavLink>
                 ) : (
-                  // TO-DO: SIGN-IN MODAL HERE
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                    href="#sign-in"
-                  >
-                    <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
+                    <a
+                      className="tw-text-base tw-text-labBlue tw-font-bold"
+                      onClick={toggleSignIn}
+                    >
                       Sign In
-                    </p>
+                    </a>
+                    {signInModal()}
                   </NavLink>
                 )}
               </NavItem>
@@ -173,13 +218,17 @@ const Header = (props) => {
           </Collapse>
         </div>
         {!isSmallWindow && (
-          <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer">
+          <a className="tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer tw-absolute tw-bottom-0 tw-right-3">
             <p className="tw-text-xs">Site Accessibility Settings</p>
           </a>
         )}
       </div>
     </Navbar>
   );
+};
+
+Header.propTypes = {
+  state: PropTypes.shape({}),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../../services/API";
 import PropTypes from "prop-types";
+import GoogleLogin from "../../../assets/images/google_buttons/Google_Sign_In.svg";
 
 const LoginButton = (props) => {
   const { enabled } = props;
@@ -18,7 +19,7 @@ const LoginButton = (props) => {
           })
         }
       >
-        <div className="google__button" />
+        <img src={GoogleLogin} />
       </a>
     );
   }
