@@ -186,11 +186,11 @@ class Footer extends Component {
 				className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
 				onClick={() => handleRedirect(actions, lab, body - 1)}
 				style={{
-					display:
-					  this.disappearBack(body) || hideOnLanding
-						? "none"
-						: "block",
-				  }}
+					opacity:
+						this.disappearBack(body) || hideOnLanding ? "0" : "1",
+					pointerEvents:
+					this.disappearBack(body) || hideOnLanding ? "none" : "auto",
+				}}
             >
               BACK
             </button>
@@ -215,7 +215,7 @@ class Footer extends Component {
 					onClick={() => handleRedirect(actions, lab, body + 1)}
 					style={{
 						display:
-						this.disappearBack(body) || hideOnLanding
+						this.disappearNext(body) || hideOnLanding
 							? "none"
 							: "block",
 					}}
