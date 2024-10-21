@@ -68,7 +68,7 @@ const Header = (props) => {
       className="tw-pt-3 poppins tw-font-bold mb-0"
     >
       <div
-        className={`tw-flex tw-flex-col tw-gap-2 tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 p-2 tw-left-0 tw-right-0 d-flex xxs:tw-h-[15%] sm:tw-h-[20%]`}
+        className={`tw-flex tw-flex-col tw-gap-2 tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 p-2 tw-left-0 tw-right-0 d-flex xxs:tw-h-[15%] lg:tw-h-36`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
