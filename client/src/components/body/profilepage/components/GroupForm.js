@@ -219,8 +219,6 @@ const GroupForm = (props) => {
                 checked={!!checkedLabs[lab.id]}
                 onChange={() => toggleCheck(lab.id)}
               />
-
-              {/* Enter Lab Row here*/}
               <LabRow lab={lab} />
             </div>
           ))}

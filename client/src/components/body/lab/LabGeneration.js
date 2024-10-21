@@ -36,7 +36,7 @@ function renderLabData(actions, labInfo, progressState, index, labRecord) {
   );
 }
 const LabGeneration = (props) => {
-  const { actions, progressState, labids, labRecords } = props;
+  const { actions, progressState, labids, labRecords, search } = props;
   const [labInformation, setLabInformation] = useState([]);
 
   useEffect(() => {
@@ -77,13 +77,21 @@ const LabGeneration = (props) => {
         );
       } else {
         return (
-          <p className="module__no_labs">You have no labs for this section.</p>
+          <>
+            {search ? (
+              <></>
+            ) : (
+              <p className="module__no_labs">
+                You have no labs for this section.
+              </p>
+            )}
+          </>
         );
       }
     } else {
       if (labRecords !== null && labRecords.length > 0) {
         return (
-          <div className={"tw-grid tw-grid-cols-3 tw-gap-5 tw-w-full"}>
+          <div className={"tw-grid tw-grid-cols-3 tw-gap-5 tw-w-full tw-my-4"}>
             {labRecords.map((rec, index) => {
               const idx = rec.labid - 1;
               if (labInformation[idx]) {
@@ -104,7 +112,15 @@ const LabGeneration = (props) => {
         );
       } else {
         return (
-          <p className="module__no_labs">You have no labs for this section.</p>
+          <>
+            {search ? (
+              <></>
+            ) : (
+              <p className="module__no_labs">
+                You have no labs for this section.
+              </p>
+            )}
+          </>
         );
       }
     }

@@ -4,7 +4,7 @@ import ProgressBar from "./ProgressBar";
 import PropTypes from "prop-types";
 
 const StudentProgress = (props) => {
-  const { student, lab, hasLabel } = props;
+  const { student, lab, hasLabel, inTable } = props;
   const [progress, setProgress] = useState();
 
   const getProgress = async () => {
@@ -25,11 +25,21 @@ const StudentProgress = (props) => {
   const formatDate = (date) => {
     if (!date) return "";
     const formattedDate = new Date(date).toLocaleDateString("en-US", {
-      month: "short",
+      month: "numeric",
       day: "numeric",
       year: "numeric",
     });
     return formattedDate;
+  };
+
+  const formatTime = (date) => {
+    if (!date) return "";
+    const formattedTime = new Date(date).toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+    return formattedTime;
   };
 
   useEffect(() => {
@@ -57,7 +67,7 @@ const StudentProgress = (props) => {
               ["Quiz", progress?.quizcompletedtime],
             ]}
             percentage={true}
-            inTable={true}
+            inTable={inTable}
           />
         ) : (
           <ProgressBar
@@ -71,7 +81,7 @@ const StudentProgress = (props) => {
               ["Quiz", null],
             ]}
             percentage={true}
-            inTable={true}
+            inTable={inTable}
           />
         )}
       </td>
@@ -82,9 +92,14 @@ const StudentProgress = (props) => {
       </td>
       <td className={"tw-border-labLightGray"}>
         {progress?.labcompletiontime !== null &&
-        progress?.quizscore !== undefined
-          ? formatDate(progress?.labcompletiontime)
-          : "N/A"}
+        progress?.quizscore !== undefined ? (
+          <div className={"tw-flex tw-flex-col"}>
+            <p>{formatDate(progress?.labcompletiontime)}</p>
+            <p>{formatTime(progress?.labcompletiontime)}</p>
+          </div>
+        ) : (
+          "N/A"
+        )}
       </td>
     </tr>
   );
@@ -92,6 +107,7 @@ const StudentProgress = (props) => {
 
 StudentProgress.propTypes = {
   hasLabel: PropTypes.bool,
+  inTable: PropTypes.bool,
   student: PropTypes.shape({
     userID: PropTypes.number,
     firstname: PropTypes.string,

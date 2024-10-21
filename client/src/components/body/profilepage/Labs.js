@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LabGeneration from "../lab/LabGeneration";
 import useMainStateContext from "src/reducers/MainContext";
 import PropTypes from "prop-types";
@@ -7,7 +7,10 @@ import { Input } from "reactstrap";
 const Labs = (props) => {
   const { actions, state } = useMainStateContext();
 
+  const [currentHeader, setCurrentHeader] = useState("");
+
   const displayNotStartedLabs = () => {
+    setCurrentHeader("Not Started");
     return (
       <LabGeneration
         actions={actions}
@@ -20,7 +23,12 @@ const Labs = (props) => {
   const [search, setSearch] = useState("");
   const [displayedLabs, setDisplayedLabs] = useState(displayNotStartedLabs);
 
+  useEffect(() => {
+    setDisplayedLabs(displayNotStartedLabs());
+  }, [props.toDoLabs]);
+
   const displayInProgressLabs = () => {
+    setCurrentHeader("In Progress");
     return (
       <LabGeneration
         actions={actions}
@@ -31,6 +39,7 @@ const Labs = (props) => {
   };
 
   const displayCompletedLabs = () => {
+    setCurrentHeader("Completed");
     return (
       <LabGeneration
         actions={actions}
@@ -42,43 +51,53 @@ const Labs = (props) => {
 
   const searchLabs = (e) => {
     e.preventDefault();
-    let searchResults = [];
-    console.log(search);
-    props.toDoLabs.find((lab) => {
+    let searchResults = {
+      notStarted: [],
+      inProgress: [],
+      completed: [],
+    };
+
+    props.toDoLabs?.forEach((lab) => {
       if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
-        searchResults.push(lab);
+        searchResults.notStarted.push(lab);
       }
     });
-    props.inProgressLabs.find((lab) => {
+
+    props.inProgressLabs?.forEach((lab) => {
       if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
-        searchResults.push(lab);
+        searchResults.inProgress.push(lab);
       }
     });
-    props.completedLabs.find((lab) => {
+
+    props.completedLabs?.forEach((lab) => {
       if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
-        searchResults.push(lab);
+        searchResults.completed.push(lab);
       }
     });
-    console.log(searchResults);
+
     const displaySearchResults = (
       <div>
         <LabGeneration
           actions={actions}
-          progressState={"NOT_STARTED"}
-          labRecords={searchResults}
+          progressState="NOT_STARTED"
+          labids={searchResults.notStarted}
+          search={true}
         />
         <LabGeneration
           actions={actions}
-          progressState={"IN_PROGRESS"}
-          labRecords={searchResults}
+          progressState="IN_PROGRESS"
+          labRecords={searchResults.inProgress}
+          search={true}
         />
         <LabGeneration
           actions={actions}
-          progressState={"COMPLETED"}
-          labRecords={searchResults}
+          progressState="COMPLETED"
+          labRecords={searchResults.completed}
+          search={true}
         />
       </div>
     );
+    setCurrentHeader("Search Results");
     setDisplayedLabs(displaySearchResults);
   };
 
@@ -110,7 +129,7 @@ const Labs = (props) => {
                 </div>
                 <div
                   className={
-                    "tw-w-full tw-flex tw-flex-row tw-justify-center tw-m-5"
+                    "tw-w-full tw-h-[3rem] tw-flex tw-flex-row tw-justify-center tw-m-5 tw-items-center"
                   }
                 >
                   <Input
@@ -121,12 +140,17 @@ const Labs = (props) => {
                     }}
                   ></Input>
                   <button
-                    className={"tw-w-[3rem] tw-border-0"}
+                    className={
+                      "tw-w-[1.5rem] tw-h-[1.5rem] tw-border-0 tw-mx-2"
+                    }
                     onClick={(e) => searchLabs(e)}
                     style={{
                       backgroundImage:
-                        "url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png)",
+                        "url(https://www.svgrepo.com/show/127033/magnifying-glass.svg)",
                       backgroundRepeat: "no-repeat",
+                      backgroundColor: "transparent",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
                     }}
                   ></button>
                 </div>
@@ -138,7 +162,7 @@ const Labs = (props) => {
                     className={"btn btn-primary tw-m-3"}
                     onClick={() => selectLabs(displayNotStartedLabs)}
                   >
-                    Assigned to Me
+                    Not Started
                   </button>
                   <button
                     className={"btn btn-primary tw-m-3"}
@@ -153,6 +177,9 @@ const Labs = (props) => {
                     Completed
                   </button>
                 </div>
+                <h1 className={"tw-title-styling-name tw-mt-5"}>
+                  {currentHeader}
+                </h1>
                 <div className={"tw-p-6 tw-w-full"}>{displayedLabs}</div>
               </div>
             </div>

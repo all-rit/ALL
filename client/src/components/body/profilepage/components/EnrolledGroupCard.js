@@ -76,7 +76,7 @@ const EnrolledGroupCard = (props) => {
   };
 
   return (
-    <Card className={`hover:tw-drop-shadow-2xl lg:tw-max-w-[15rem] ${height}`}>
+    <Card className={`tw-shadow-md lg:tw-max-w-[15rem] ${height}`}>
       {instructing ? (
         <CardHeader
           className={

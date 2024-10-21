@@ -1,15 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from "react";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Form,
-  Label,
-  Input,
-  Button,
-} from "reactstrap";
+import { ModalBody, Form, Label, Input } from "reactstrap";
 import GroupForm from "./GroupForm.js";
 import GroupService from "../../../../services/GroupService";
 import ALLButton from "../../../all-components/ALLButton";
@@ -88,7 +79,7 @@ const AddModal = (props) => {
       return (
         <>
           <a
-            className="tw-absolute tw-right-0 tw-top-[60%] tw-cursor-pointer tw-font-poppins tw-bg-primary-yellow tw-p-2 tw-font-medium"
+            className="hover:tw-shadow-lg tw-absolute tw-right-0 tw-top-[60%] tw-cursor-pointer tw-font-poppins tw-bg-primary-yellow tw-p-2 tw-font-medium"
             aria-label="Update Group"
             onClick={() => {
               toggleModal();
@@ -120,42 +111,54 @@ const AddModal = (props) => {
       return (
         <>
           <ALLButton
-            className="btn btn-second groups__create_btn"
+            className="btn groups__create_btn hover:tw-shadow-lg"
             aria-label="add"
             onClick={toggleModal}
             label={"Join a New Group"}
-          >
-            Enroll in Group
-          </ALLButton>
-          <Modal
+          />
+          <BrandedALLModal
             isOpen={modal}
             toggle={toggleModal}
             className="add_instr_grp_modal"
-          >
-            <ModalHeader>Enroll in an Existing Group</ModalHeader>
-
-            <Form onSubmit={handleInviteCodeSubmit}>
-              <ModalBody>
-                <Label for="groupInviteCode">Group invite code</Label>
-                <Input
-                  type="text"
-                  name="inviteCode"
-                  id="inviteCode"
-                  onChange={(e) => {
-                    setInviteCode(e.target.value);
-                  }}
-                />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onClick={handleInviteCodeSubmit}>
-                  Enroll in Group
-                </Button>
-                <Button color="secondary" onClick={toggleModal}>
-                  Cancel
-                </Button>
-              </ModalFooter>
-            </Form>
-          </Modal>
+            direction={"column"}
+            body={
+              <>
+                <Form onSubmit={handleInviteCodeSubmit}>
+                  <ModalBody className={"tw-mt-10 tw-px-[5rem]"}>
+                    <p className={"tw-font-poppins tw-font-medium tw-text-sm"}>
+                      Looking to join a class?
+                    </p>
+                    <Label
+                      className={"tw-title-styling-name tw-text-xl"}
+                      for="groupInviteCode"
+                    >
+                      Enter your group code here:
+                    </Label>
+                    <div
+                      className={
+                        "tw-flex tw-flex-row tw-h-[3rem] tw-items-center"
+                      }
+                    >
+                      <Input
+                        className={"tw-w-3/4 tw-h-full tw-mr-3 "}
+                        placeholder={"Group Code"}
+                        type="text"
+                        name="inviteCode"
+                        id="inviteCode"
+                        onChange={(e) => {
+                          setInviteCode(e.target.value);
+                        }}
+                      />
+                      <ALLButton
+                        onClick={handleInviteCodeSubmit}
+                        label={"Join a Group"}
+                      />
+                    </div>
+                  </ModalBody>
+                </Form>
+              </>
+            }
+          ></BrandedALLModal>
         </>
       );
   }
