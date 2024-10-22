@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Lab from "./Lab";
 import LabService from "../../../services/LabService";
 import Spinner from "../../../common/Spinner/Spinner";
+import { Card, CardFooter, CardHeader } from "reactstrap";
 
 function renderLabData(actions, labInfo, progressState, index, labRecord) {
   const {
@@ -111,6 +112,14 @@ const LabGeneration = (props) => {
                       rec,
                     )}
                   </div>
+                );
+              } else {
+                return (
+                  // If no labs are found, return a blank card
+                  <Card key={idx} className="landingpage__row">
+                    <CardHeader />
+                    <CardFooter />
+                  </Card>
                 );
               }
             })}
