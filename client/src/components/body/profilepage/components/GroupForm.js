@@ -31,6 +31,7 @@ const GroupForm = (props) => {
   const [checkedLabs, setCheckedLabs] = useState({});
   const [color, setColor] = useState(groupColor || "");
   const [tooltipOpen, setTooltipOpen] = useState(null);
+  // const [labSelected, setLabSelected] = useState(false);
 
   const cardColors = [
     "blue",
@@ -63,8 +64,6 @@ const GroupForm = (props) => {
     if (groupColor) {
       setColor(groupColor);
     }
-
-    console.log("Color: ", color, "props.groupColor: ", groupColor);
   }, [assignedLabs, tooltipOpen, groupColor, setInstrGroupsUpdated]);
 
   const toggleCheck = (labID) => {
@@ -225,7 +224,11 @@ const GroupForm = (props) => {
                 checked={!!checkedLabs[lab.id]}
                 onChange={() => toggleCheck(lab.id)}
               />
-              <LabRow lab={lab} />
+              <div
+                className={`tw-w-full tw-my-3 ${checkedLabs[lab.id] && "tw-border-solid tw-border-primary-blue tw-rounded-xl"}`}
+              >
+                <LabRow lab={lab} />
+              </div>
             </div>
           ))}
         </FormGroup>

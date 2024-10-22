@@ -91,7 +91,7 @@ const GroupAssignedLabs = (props) => {
           <div className={"tw-text-2xl tw-ml-5 tw-title-styling-name"}>
             Assigned Labs:
           </div>
-          <div className="tw-flex xs:tw-flex-col sm:md:lg:tw-flex-row">
+          <div className="tw-w-[90%] md:lg:tw-grid xxs:tw-flex xxs:tw-flex-col xxs:tw-justify-center md:lg:tw-grid-cols-3 tw-gap-3">
             {assignedLabs.map((lab, index) => (
               <Lab
                 progressState={getLabProgressState(lab.labID)}

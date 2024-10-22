@@ -32,7 +32,7 @@ const LabRow = (props) => {
   return (
     <div className="tw-flex tw-flex-col tw-w-full ">
       <div
-        className={`${listOpen === lab.labID && studentProgress ? "" : "tw-shadow-lg"} tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-m-3 tw-rounded-lg tw-relative`}
+        className={`${listOpen === lab.labID && studentProgress ? "" : "tw-shadow-lg"} tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-rounded-lg tw-relative`}
       >
         <div
           className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
@@ -78,7 +78,7 @@ const LabRow = (props) => {
               id={`fullDescription-${lab.labID}`}
               onClick={() => setTooltipOpen(lab.labID)}
               className={
-                "tw-absolute tw-right-3 tw-top-[20%] tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-px-3"
+                "tw-absolute tw-right-0 tw-top-[20%] tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-px-3"
               }
             >
               <div> More Information</div>
