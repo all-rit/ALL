@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import StudentProgress from "./components/StudentProgress";
 import PropTypes from "prop-types";
 import { Input, Table } from "reactstrap";
-// import ResultLimiter from "./components/ResultLimiter";
 
 const EnrolledStudentsTable = (props) => {
   const { lab, enrolledStudents } = props;
@@ -109,7 +108,9 @@ const EnrolledStudentsTable = (props) => {
 };
 
 EnrolledStudentsTable.propTypes = {
-  lab: PropTypes.shape({}),
+  lab: PropTypes.shape({
+    labID: PropTypes.number,
+  }),
   enrolledStudents: PropTypes.array,
 };
 

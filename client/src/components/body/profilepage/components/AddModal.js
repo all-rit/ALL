@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState } from "react";
 import { ModalBody, Form, Label, Input } from "reactstrap";
 import GroupForm from "./GroupForm.js";
@@ -78,7 +77,8 @@ const AddModal = (props) => {
       return (
         <>
           <a
-            className="hover:tw-shadow-lg tw-absolute tw-right-0 tw-top-[60%] tw-cursor-pointer tw-font-poppins tw-bg-primary-yellow tw-p-2 tw-font-medium"
+            className="hover:tw-shadow-lg tw-absolute tw-right-0 tw-top-[60%] tw-cursor-pointer tw-font-poppins
+                        tw-bg-primary-yellow tw-p-2 tw-font-medium"
             aria-label="Update Group"
             onClick={() => {
               toggleModal();

@@ -9,7 +9,6 @@ import UnenrollModal from "./components/UnenrollModal";
 const GroupAssignedLabs = (props) => {
   const {
     assignedLabs,
-    // enrolledStudents,
     groupID,
     groupName,
     setInstrGroupsUpdated,

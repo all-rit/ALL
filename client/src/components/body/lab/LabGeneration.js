@@ -82,9 +82,7 @@ const LabGeneration = (props) => {
       } else {
         return (
           <>
-            {search ? (
-              <></>
-            ) : (
+            {!search && (
               <p className="module__no_labs">
                 You have no labs for this section.
               </p>
@@ -121,9 +119,7 @@ const LabGeneration = (props) => {
       } else {
         return (
           <>
-            {search ? (
-              <></>
-            ) : (
+            {!search && (
               <p className="module__no_labs">
                 You have no labs for this section.
               </p>
