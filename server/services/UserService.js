@@ -21,13 +21,15 @@ const authenticate = async (data) => {
     const firstName = data.name.givenName;
     const lastInitial = data.name.familyName.slice(0, 1);
     const email = data.emails[0].value;
+    const userpfp = data.photos[0].value;
 
     let session = await db.Session.findByPk(userSessionID);
     if (!session) {
       const newAccount = {
         firstName: firstName,
         lastInitial: lastInitial,
-        email: email,
+        email1: email,
+        userpfp: userpfp,
       };
       session = await createNewAccountAndSession(userSessionID, newAccount);
     }
@@ -44,6 +46,7 @@ const createNewAccountAndSession = async (userSessionID, newAccount) => {
       firstname: newAccount.firstName,
       lastinitial: newAccount.lastInitial,
       email1: newAccount.email1,
+      userpfp: newAccount.userpfp,
     });
     const newSession = await db.Session.create({
       usersessionid: userSessionID,

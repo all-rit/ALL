@@ -28,7 +28,7 @@ the correct env for client and server. after thats complete then you can follow 
 ### Developing Locally
 
 To develop on the full architecture developers can now utilize the ability to run the full system without
-needing to ssh into another server. To do this users are required to install [Docker](https://www.docker.com/) to perform this task.
+needing to ssh into another server. To do this users are required to install the **latest version** of [Docker](https://www.docker.com/) to perform this task.
 in doing so they are able to run.
 
 To start the database container
