@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /* eslint-disable no-undef */
 /* eslint-disable max-len */
 module.exports = {
@@ -51,8 +53,25 @@ module.exports = {
       darkGreen: "#0c3515",
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
+      darkGray: "#3d3d3d",
+      successGreen: "14FF00",
     },
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        calibri: ["Calibri", "sans-serif"],
+      },
+      colors: {
+        primary: {
+          yellow: "#FACE35",
+          blue: "#0144D5",
+        },
+        secondary: {
+          black: "#000000",
+          gray: "#CECECE",
+          white: "#FFFFFF",
+        },
+      },
       spacing: {
         128: "32rem",
         144: "36rem",
@@ -96,5 +115,25 @@ module.exports = {
       bg: ["group", "responsive", "hover", "focus"],
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addComponents, theme }) => {
+      addComponents({
+        ".title-styling-name": {
+          fontFamily: theme("fontFamily.poppins"),
+          fontSize: "2rem",
+          fontWeight: theme("fontWeight.bold"),
+        },
+        ".sub-title-styling-name": {
+          fontFamily: theme("fontFamily.calibri"),
+          fontSize: "1.5rem",
+          fontWeight: theme("fontWeight.normal"),
+        },
+        ".body-styling-name": {
+          font: theme("fontFamily.calibri"),
+          fontSize: "1.125rem",
+          fontWeight: theme("fontWeight.light"),
+        },
+      });
+    }),
+  ],
 };

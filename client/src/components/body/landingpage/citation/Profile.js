@@ -34,7 +34,7 @@ const Profile = (props) => {
       </li>
 
       <li id="social_media">
-        <ul className="landingpage__row citation__social_row">
+        <ul className="landingpage__team citation__social_row">
           {socials.map((social, index) => {
             return (
               <li key={index} className="citation__social_media">

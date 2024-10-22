@@ -11,8 +11,10 @@
     "scriptname": "cmd"
   },
   "dependencies": {
+    "@fontsource/poppins": "^5.1.0",
     "@redux-devtools/extension": "^3.2.5",
     "crypto": "^1.0.1",
+    "font-face": "^2.3.4",
     "mathjs": "^12.3.2",
     "nanoid": "^5.0.7",
     "node-sass": "^9.0.0",
