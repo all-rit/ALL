@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ALLButton = (props) => {
-  const { label, onClick, className } = props;
+  const { label, onClick, className, type } = props;
 
   return (
     <div className={`${className} tw-h-100 tw-m-3`}>
@@ -11,6 +11,7 @@ const ALLButton = (props) => {
           "tw-border-0 tw-relative tw-py-1 tw-px-2 tw-bg-white tw-font-calibri"
         }
         onClick={onClick}
+        type={type}
       >
         {label}
         <div
@@ -34,6 +35,7 @@ ALLButton.propTypes = {
   label: PropTypes.string,
   onClick: PropTypes.func,
   className: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default ALLButton;

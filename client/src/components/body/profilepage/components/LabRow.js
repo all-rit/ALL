@@ -78,7 +78,7 @@ const LabRow = (props) => {
               id={`fullDescription-${lab.labID}`}
               onClick={() => setTooltipOpen(lab.labID)}
               className={
-                "tw-absolute tw-right-0 tw-top-[20%] tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-px-3"
+                "tw-absolute tw-right-3 tw-top-[20%] tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-px-3"
               }
             >
               <div> More Information</div>

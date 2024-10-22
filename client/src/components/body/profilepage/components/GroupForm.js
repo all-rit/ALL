@@ -7,7 +7,6 @@ import LabService from "../../../../services/LabService";
 import GroupService from "../../../../services/GroupService";
 
 import {
-  Button,
   ModalBody,
   ModalFooter,
   Form,
@@ -16,11 +15,11 @@ import {
   Input,
 } from "reactstrap";
 import LabRow from "./LabRow";
+import ALLButton from "../../../all-components/ALLButton";
 
 const GroupForm = (props) => {
   const {
     setInstrGroupsUpdated,
-    toggle,
     user,
     addMode,
     groupID,
@@ -64,7 +63,9 @@ const GroupForm = (props) => {
     if (groupColor) {
       setColor(groupColor);
     }
-  }, [assignedLabs, tooltipOpen, groupColor]);
+
+    console.log("Color: ", color, "props.groupColor: ", groupColor);
+  }, [assignedLabs, tooltipOpen, groupColor, setInstrGroupsUpdated]);
 
   const toggleCheck = (labID) => {
     setCheckedLabs((prevCheckedLabs) => ({
@@ -79,7 +80,6 @@ const GroupForm = (props) => {
     try {
       const formData = new FormData(e.target);
       const groupName = formData.get("groupName") || "Default Group Name";
-      const groupColor = color;
 
       let selectedLabs = Object.keys(checkedLabs)
         .filter((labID) => checkedLabs[labID])
@@ -89,7 +89,7 @@ const GroupForm = (props) => {
         const newGroup = await GroupService.createGroup(
           user.userid,
           groupName,
-          groupColor,
+          color,
         );
 
         const addLabPromises = selectedLabs.map((labID) => {
@@ -98,11 +98,14 @@ const GroupForm = (props) => {
 
         await Promise.all(addLabPromises);
       } else if (addMode === "update_grp_lab" && groupID) {
-        if (formData.get("groupName") !== props.groupName) {
+        if (
+          formData.get("groupName") !== props.groupName ||
+          color !== groupColor
+        ) {
           await GroupService.updateGroup(
             groupID,
             formData.get("groupName"),
-            groupColor,
+            color,
           );
         }
 
@@ -127,8 +130,8 @@ const GroupForm = (props) => {
           });
         }
       }
-      setInstrGroupsUpdated(true);
       props.toggle();
+      setInstrGroupsUpdated(true);
     } catch (error) {
       console.error("Error in form submission:", error);
     }
@@ -187,7 +190,10 @@ const GroupForm = (props) => {
                     defaultChecked={
                       groupColor ? groupColor.includes(color) : false
                     }
-                    onChange={() => setColor(`group_${color}`)}
+                    onChange={() => {
+                      setColor(`group_${color}`);
+                      console.warn("Group color changed");
+                    }}
                   />
                   <div
                     className={`group_${color} tw-h-full tw-w-full tw-rounded-t-lg tw-p-3`}
@@ -225,12 +231,10 @@ const GroupForm = (props) => {
         </FormGroup>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" type="submit">
-          {addMode === "add_instr_grp" ? "Create Group" : "Update Group"}
-        </Button>
-        <Button color="secondary" onClick={toggle}>
-          Cancel
-        </Button>
+        <ALLButton
+          label={addMode === "add_instr_grp" ? "Create Group" : "Update Group"}
+          type="submit"
+        />
       </ModalFooter>
     </Form>
   );

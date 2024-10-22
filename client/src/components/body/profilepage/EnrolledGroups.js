@@ -93,7 +93,7 @@ const EnrolledGroups = (props) => {
 
 EnrolledGroups.propTypes = {
   user: PropTypes.shape({
-    userid: PropTypes.string,
+    userid: PropTypes.number,
   }),
   toDoLabs: PropTypes.array,
   completedLabs: PropTypes.array,
