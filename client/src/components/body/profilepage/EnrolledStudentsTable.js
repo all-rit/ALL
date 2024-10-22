@@ -7,8 +7,8 @@ const EnrolledStudentsTable = (props) => {
   const { lab, enrolledStudents } = props;
   const [search, setSearch] = useState("");
 
-  const displayAllStudents = () => {
-    return enrolledStudents.map((student, key) => {
+  const renderStudents = () => {
+    return displayedStudents.map((student, key) => {
       return (
         <StudentProgress
           key={key}
@@ -21,10 +21,11 @@ const EnrolledStudentsTable = (props) => {
     });
   };
 
-  const [displayedStudents, setDisplayedStudents] = useState(null);
+  const [displayedStudents, setDisplayedStudents] = useState([]);
+  const [studentNotFound, setStudentNotFound] = useState(false);
 
   useEffect(() => {
-    setDisplayedStudents(displayAllStudents);
+    setDisplayedStudents(enrolledStudents);
   }, []);
 
   const searchStudents = (e) => {
@@ -35,19 +36,11 @@ const EnrolledStudentsTable = (props) => {
         searchResults.push(student);
       }
     });
-    const displaySearchResults = searchResults.map((student, key) => {
-      return (
-        <StudentProgress
-          key={key}
-          student={student}
-          lab={lab}
-          hasLabel={true}
-          inTable={true}
-        />
-      );
-    });
-    if (searchResults.length > 0 && Array.isArray(searchResults)) {
-      setDisplayedStudents(displaySearchResults);
+    if (searchResults.length > 0) {
+      setDisplayedStudents(searchResults);
+      setStudentNotFound(false);
+    } else {
+      setStudentNotFound(true);
     }
   };
 
@@ -57,13 +50,16 @@ const EnrolledStudentsTable = (props) => {
         <p>There are currently no students enrolled in this group.</p>
       ) : (
         <>
+          {studentNotFound && (
+            <p className={"tw-text-brightRed tw-text-sm"}>Student not found.</p>
+          )}
           <div
             className={
               "tw-w-full tw-flex tw-flex-row tw-h-[3rem] tw-items-center"
             }
           >
             <Input
-              className={"tw-w-1/2 tw-font-poppins"}
+              className={`tw-w-1/2 tw-font-poppins ${studentNotFound && "tw-border-solid tw-border-brightRed"}`}
               placeholder={"Search for a student"}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -98,7 +94,7 @@ const EnrolledStudentsTable = (props) => {
                   Date Completed
                 </th>
               </tr>
-              {displayedStudents}
+              {renderStudents()}
             </thead>
           </Table>
         </>
