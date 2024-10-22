@@ -7,13 +7,9 @@ const BrandedALLModal = (props) => {
   const { isOpen, toggle, direction, width, children } = props;
 
   return direction === "row" && window.innerWidth >= 640 ? (
-    <Modal
-      toggle={toggle}
-      isOpen={isOpen}
-      className={"sm:tw-h-[32rem] tw-w-[10rem] tw-pr-5"}
-    >
+    <Modal toggle={toggle} isOpen={isOpen}>
       <div
-        className={`tw-flex tw-flex-row xs:tw-h-[10rem] sm:tw-h-[20rem] md:lg:tw-min-h-[28rem] sm:tw-min-w-[30rem] md:tw-min-w-[40rem] lg:tw-min-w-[64rem]`}
+        className={`tw-flex tw-flex-row xs:tw-h-[10rem] sm:tw-h-[20rem] md:lg:tw-min-h-[28rem] sm:tw-min-w-[30rem] md:tw-min-w-[40rem] lg:tw-min-w-[64rem] lg:tw-max-w-[64rem]`}
       >
         <div
           id="row-header"
