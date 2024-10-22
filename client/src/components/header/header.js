@@ -20,6 +20,7 @@ import LoginBody from "../body/login/LoginBody";
 import PropTypes from "prop-types";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
+import Snackbar from "@mui/material/Snackbar";
 
 const mapStateToProps = (state) => {
   return {
@@ -69,6 +70,30 @@ const Header = (props) => {
     );
   };
 
+  useEffect(() => {
+    const storedSnackbar = localStorage.getItem("logoutSnackbar");
+    if (storedSnackbar) {
+      const { message } = JSON.parse(storedSnackbar);
+      actions.showSnackbar(message);
+      localStorage.removeItem("logoutSnackbar"); // Clear the stored state
+    }
+  }, []);
+
+  const logout = async () => {
+    try {
+      localStorage.setItem(
+        "logoutSnackbar",
+        JSON.stringify({
+          open: true,
+          message: "You have successfully logged out!",
+        }),
+      );
+      window.location.href = `${process.env.REACT_APP_SERVER_URL}/logout`;
+    } catch (e) {
+      console.error(e, "Could not log out.");
+    }
+  };
+
   const alert_check = (state, reduxState) => {
     if (
       getExerciseState(state, reduxState) !== "EXERCISE_IDLE" &&
@@ -106,12 +131,12 @@ const Header = (props) => {
       className="tw-font-poppins tw-font-bold tw-my-0"
     >
       <div
-        className={`tw-flex tw-flex-col tw-gap-2 tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 d-flex xxs:tw-h-[15%] lg:tw-h-36 tw-shadow-md`}
+        className={`tw-flex tw-flex-col tw-gap-2 tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] lg:tw-h-40 tw-shadow-md tw-px-5 md:tw-mt-[-2rem]`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
         >
-          <a onClick={() => reachNav("/#")}>
+          <a className={"tw-mt-[1rem]"} onClick={() => reachNav("/#")}>
             <img
               className="tw-cursor-pointer xs:tw-max-h-[6rem] sm:tw-max-h-[10rem]"
               src={Logo}
@@ -207,6 +232,18 @@ const Header = (props) => {
                   </NavLink>
                 )}
               </NavItem>
+              <NavItem>
+                {isSmallWindow && loggedIn ? (
+                  <NavLink>
+                    <button className={"log_out-google-btn"} onClick={logout}>
+                      {" "}
+                      Logout{" "}
+                    </button>
+                  </NavLink>
+                ) : (
+                  <></>
+                )}
+              </NavItem>
               <NavItem className="tw-flex tw-justify-center tw-items-center">
                 {isSmallWindow && (
                   <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer">
@@ -218,11 +255,25 @@ const Header = (props) => {
           </Collapse>
         </div>
         {!isSmallWindow && (
-          <a className="tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer tw-absolute tw-bottom-0 tw-right-3">
+          <a className="tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer tw-absolute tw-bottom-1 tw-right-3">
             <p className="tw-text-xs">Site Accessibility Settings</p>
           </a>
         )}
       </div>
+      <Snackbar
+        open={state.main?.snackbar?.open}
+        autoHideDuration={5000}
+        message={state.main?.snackbar?.message}
+        onClose={actions.hideSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        className={"tw-font-poppins"}
+        sx={{
+          "& .MuiSnackbarContent-root": {
+            backgroundColor: "#369d2a",
+            color: "white",
+          },
+        }}
+      />
     </Navbar>
   );
 };
