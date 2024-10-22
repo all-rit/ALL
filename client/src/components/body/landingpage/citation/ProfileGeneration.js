@@ -67,8 +67,8 @@ const ProfileGeneration = (props) => {
             <h3 className="section-subheading ">Meet our team.</h3>
           </div>
         </div>
-        <div className="landingpage__row">
-          <div alt="professors" className="landingpage__row">
+        <div className="landingpage__team">
+          <div alt="professors" className="landingpage__team">
             {!professorInformation ? (
               <Spinner />
             ) : (
@@ -82,7 +82,7 @@ const ProfileGeneration = (props) => {
             )}
           </div>
         </div>
-        <div className="landingpage__row">
+        <div className="landingpage__team">
           {!teamInformation ? (
             <Spinner />
           ) : (
@@ -106,7 +106,7 @@ const ProfileGeneration = (props) => {
             </h3>
           </div>
         </div>
-        <div className="landingpage__row">
+        <div className="landingpage__team">
           {!alumniInformation ? (
             <Spinner />
           ) : (
