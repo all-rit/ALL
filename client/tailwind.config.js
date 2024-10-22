@@ -57,6 +57,9 @@ module.exports = {
       successGreen: "14FF00",
     },
     extend: {
+      borderWidth: {
+        12: "12px",
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         calibri: ["Calibri", "sans-serif"],
@@ -125,7 +128,7 @@ module.exports = {
         },
         ".sub-title-styling-name": {
           fontFamily: theme("fontFamily.calibri"),
-          fontSize: "1.5rem",
+          fontSize: "1.25rem",
           fontWeight: theme("fontWeight.normal"),
         },
         ".body-styling-name": {
