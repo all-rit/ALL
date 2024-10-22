@@ -10,7 +10,7 @@ const BrandedALLModal = (props) => {
     <Modal
       toggle={toggle}
       isOpen={isOpen}
-      className={"xs:tw-w-full sm:tw-h-[32rem] sm:md:lg:tw-w-[40rem] tw-pr-5"}
+      className={"sm:tw-h-[32rem] tw-w-[10rem] tw-pr-5"}
     >
       <div
         className={`tw-flex tw-flex-row xs:tw-h-[10rem] sm:tw-h-[20rem] md:lg:tw-min-h-[28rem] sm:tw-min-w-[30rem] md:tw-min-w-[40rem] lg:tw-min-w-[64rem]`}
@@ -26,7 +26,7 @@ const BrandedALLModal = (props) => {
           >
             <div
               className={
-                "tw-w-full tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle"
+                "tw-w-1/2 tw-h-full tw-flex tw-flex-col tw-justify-center tw-align-middle"
               }
             >
               <img className={"tw-object-cover"} src={logo} />

@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Headshot from "../../../assets/images/team/Headshot.jpeg";
 
 const ProfileHeader = (props) => {
   const { user } = props;
+
+  console.log(user?.userpfp);
 
   return (
     <div className="tw-w-screen tw-bg-primary-blue xs:tw-h-[15rem] lg:tw-h-[30rem] tw-flex tw-flex-row tw-align-middle tw-relative">
@@ -25,7 +26,6 @@ const ProfileHeader = (props) => {
             </div>
           </div>
           <div className="tw-absolute tw-rounded-full tw-left-0 xs:tw-top-[20%] md:tw-top-[12%] lg:tw-top-12">
-            {/* TODO: Pull in the user's Google Profile Picture */}
             <div
               className="
                 xs:tw-h-[10rem] xs:tw-w-[10rem] xs:tw-border-[0.5rem]
@@ -35,9 +35,16 @@ const ProfileHeader = (props) => {
                         tw-border-primary-blue tw-z-[1rem] tw-flex tw-flex-row tw-align-middle tw-overflow-hidden"
             >
               <img
-                src={Headshot}
-                alt="User Profile"
-                className="tw-h-full tw-w-full tw-object-cover tw-rounded-full"
+                src={user?.userpfp}
+                alt={`${user.firstname}'s profile`}
+                className="tw-w-full tw-h-full tw-object-cover"
+                loading="eager"
+                style={{
+                  imageRendering: "auto",
+                  WebkitBackfaceVisibility: "hidden",
+                  MozBackfaceVisibility: "hidden",
+                  backfaceVisibility: "hidden",
+                }}
               />
             </div>
           </div>
@@ -51,6 +58,7 @@ ProfileHeader.propTypes = {
   user: PropTypes.shape({
     firstname: PropTypes.string,
     lastinitial: PropTypes.string,
+    userpfp: PropTypes.string,
   }),
 };
 

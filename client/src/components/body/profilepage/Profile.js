@@ -16,15 +16,13 @@ const Profile = () => {
 
   const inProgressLabs = [];
   const completedLabs = [];
-
+  const user = state.main.user;
   const getUserLabs = async () => {
-    if (state.main.user) {
+    if (user) {
       try {
-        const toDo = await UserService.getUserToDoLabs(state.main.user.userid);
+        const toDo = await UserService.getUserToDoLabs(user.userid);
         setToDoLabs(toDo);
-        const records = await UserLabService.getUserLabRecords(
-          state.main.user.userid,
-        );
+        const records = await UserLabService.getUserLabRecords(user.userid);
         setLabRecords(records);
       } catch (error) {
         console.error("Could not get labs", error);
@@ -34,7 +32,8 @@ const Profile = () => {
 
   useEffect(() => {
     getUserLabs();
-  }, [state.main.user]);
+    console.log(user);
+  }, [user]);
 
   // go through the lab records fetched from the database and categorize if
   // the lab has been completed by the user or still in progress
@@ -49,13 +48,13 @@ const Profile = () => {
   }
 
   return (
-    <div className={"tw-mt-0"}>
+    <div className={"tw-mt-[3rem]"}>
       {state.main.user?.firstname === null ? (
         <h3>You are currently not logged in.</h3>
       ) : (
         <div className="tw-mt-0 tw-w-full">
           <ProfileHeader
-            user={state.main.user}
+            user={user}
             labRecords={labRecords}
             toDoLabs={toDoLabs}
           />
