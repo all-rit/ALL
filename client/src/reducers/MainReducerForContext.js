@@ -9,6 +9,8 @@ import { EXERCISE_IDLE } from "src/constants/index";
  * @property {string} SET_BODY - The action type for setting body.
  * @property {string} UPDATE_USER_STATE - The action type for updating user state.
  * @property {bool} SET_IS_IMAGINE - The action type for setting up special actions for Imagine based content.
+ * @property {string} SHOW_SNACKBAR - Action type for opening and populating the snackbar content
+ * @property {string} HIDE_SNACKBAR - Action type for hiding snackbar after opening
  */
 
 /**
@@ -22,6 +24,8 @@ export const types = {
   SET_BODY: "@accessibility-lab/context/app/set_body",
   UPDATE_USER_STATE: "@accessibility-lab/context/update_user_state",
   SET_IS_IMAGINE: "@accessibility-lab/context/set_is_imagine",
+  SHOW_SNACKBAR: "@accessibility-lab/context/show_snackbar",
+  HIDE_SNACKBAR: "@accessibility-lab/context/hide_snackbar",
 };
 
 /**
@@ -46,6 +50,10 @@ export const initialState = {
     lab: 0,
     body: 0,
     isImagine: false,
+    snackbar: {
+      open: false,
+      message: "",
+    },
   },
 };
 
@@ -93,6 +101,28 @@ export const MainReducerForContext = (state = initialState, action) => {
         main: {
           ...state.main,
           isImagine: payload.isImagine,
+        },
+      };
+    case types.SHOW_SNACKBAR:
+      return {
+        ...state,
+        main: {
+          ...state.main,
+          snackbar: {
+            open: true,
+            message: payload.message,
+          },
+        },
+      };
+    case types.HIDE_SNACKBAR:
+      return {
+        ...state,
+        main: {
+          ...state.main,
+          snackbar: {
+            open: false,
+            message: "",
+          },
         },
       };
     default:

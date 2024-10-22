@@ -313,6 +313,7 @@ create table users
     lastinitial char,
     email1      text,
     email2      text,
+    userpfp     text,
     PRIMARY KEY (userid),
     UNIQUE (email1),
     UNIQUE (email2)
