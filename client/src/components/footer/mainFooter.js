@@ -14,13 +14,8 @@ import {
   onNextPageChangeTSize,
 } from "./edit/editPage";
 import { Nav, NavItem, NavLink } from "reactstrap";
-import logo from "../../assets/images/logos/ALL_White_Logo.svg";
-// import Logo from "../../assets/images/logos/ALL_White_Logo.svg";
-// import { Panel as ColorPickerPanel } from "rc-color-picker";
-// import { Sections } from "../../constants/index";
+import logo from "../../assets/images/logos/ALL_White.svg";
 import handleRedirect from "../../helpers/Redirect";
-// import getExerciseState from "../../helpers/GetReducer";
-// import { navigate } from "@reach/router";
 
 const mapStateToProps = (state) => {
   return {

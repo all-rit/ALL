@@ -73,3 +73,31 @@ a.skip-main:active {
   font-size: 1.2em;
   z-index: 999;
 }
+
+// Group Color Palette
+.group {
+  &_purple {
+    background: #7300ff;
+  }
+  &_green {
+    background: #008716;
+  }
+  &_grey {
+    background: #3d3d3d;
+  }
+  &_red {
+    background: #ff0000;
+  }
+  &_yellow {
+    background: #face35;
+  }
+  &_blue {
+    background: #0144d5;
+  }
+  &_pink {
+    background: #de35fa;
+  }
+  &_teal {
+    background: #00f0ff;
+  }
+}

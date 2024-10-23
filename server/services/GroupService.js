@@ -95,12 +95,13 @@ const unenrollUserFromGroup = (data) => {
   return Promise.resolve();
 };
 
-const createGroup = async (userID, groupName) => {
+const createGroup = async (userID, groupName, color) => {
   try {
     const data = await db.Groups.create({
       instructorUserID: userID,
       groupName: groupName,
       createdDate: Date.now(),
+      color: color,
       isActive: true,
       code: crypto.randomUUID().toUpperCase().slice(1, 7),
     });
@@ -157,10 +158,10 @@ const deleteGroup = (groupID) => {
 };
 
 
-const updateGroup = async (groupID, groupName) => {
+const updateGroup = async (groupID, groupName, groupColor) => {
   try {
     return await db.Groups.update(
-        {groupName: groupName},
+        {groupName: groupName, color: groupColor},
         {
           where: {
             id: groupID,

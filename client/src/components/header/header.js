@@ -65,8 +65,9 @@ const Header = (props) => {
         direction={"row"}
         isOpen={signInModalOpen}
         toggle={toggleSignIn}
-        body={<LoginBody />}
-      />
+      >
+        <LoginBody />
+      </BrandedALLModal>
     );
   };
 

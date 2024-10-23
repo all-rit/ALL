@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Lab from "./Lab";
 import LabService from "../../../services/LabService";
 import Spinner from "../../../common/Spinner/Spinner";
+import { Card, CardFooter, CardHeader } from "reactstrap";
 
 function renderLabData(actions, labInfo, progressState, index, labRecord) {
   const {
@@ -36,7 +37,7 @@ function renderLabData(actions, labInfo, progressState, index, labRecord) {
   );
 }
 const LabGeneration = (props) => {
-  const { actions, progressState, labids, labRecords } = props;
+  const { actions, progressState, labids, labRecords, search } = props;
   const [labInformation, setLabInformation] = useState([]);
 
   useEffect(() => {
@@ -60,13 +61,13 @@ const LabGeneration = (props) => {
         return (
           <div
             className={
-              "tw-flex tw-flex-col tw-align-middle xs:sm:tw-w-1/2 md:lg:tw-w-full"
+              "tw-grid sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-5 tw-w-full"
             }
           >
             {labids.map((lab, index) => {
               const idx = lab.labID - 1;
               return (
-                <div key={idx} className="tw-m-1">
+                <div key={idx} className="tw-h-full">
                   {renderLabData(
                     actions,
                     labInformation[idx],
@@ -81,26 +82,58 @@ const LabGeneration = (props) => {
         );
       } else {
         return (
-          <p className="module__no_labs">You have no labs for this section.</p>
+          <>
+            {!search && (
+              <p className="module__no_labs">
+                You have no labs for this section.
+              </p>
+            )}
+          </>
         );
       }
     } else {
       if (labRecords !== null && labRecords.length > 0) {
-        return labRecords.map((rec, index) => {
-          const idx = rec.labid - 1;
-          if (labInformation[idx]) {
-            return renderLabData(
-              actions,
-              labInformation[idx],
-              progressState,
-              index,
-              rec,
-            );
-          }
-        });
+        return (
+          <div
+            className={
+              "tw-grid sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-5 tw-w-full tw-my-4"
+            }
+          >
+            {labRecords.map((rec, index) => {
+              const idx = rec.labid - 1;
+              if (labInformation[idx]) {
+                return (
+                  <div key={idx} className={"tw-w-full"}>
+                    {renderLabData(
+                      actions,
+                      labInformation[idx],
+                      progressState,
+                      index,
+                      rec,
+                    )}
+                  </div>
+                );
+              } else {
+                return (
+                  // If no labs are found, return a blank card
+                  <Card key={idx} className="landingpage__row">
+                    <CardHeader />
+                    <CardFooter />
+                  </Card>
+                );
+              }
+            })}
+          </div>
+        );
       } else {
         return (
-          <p className="module__no_labs">You have no labs for this section.</p>
+          <>
+            {!search && (
+              <p className="module__no_labs">
+                You have no labs for this section.
+              </p>
+            )}
+          </>
         );
       }
     }

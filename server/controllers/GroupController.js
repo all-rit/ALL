@@ -66,6 +66,7 @@ const createGroup = async (req, res) => {
     const data = await GroupService.createGroup(
         req.body.userID,
         req.body.groupName,
+        req.body.color,
     );
     res.status(200).json(data);
   } catch (error) {
@@ -116,6 +117,7 @@ const updateGroup = async (req, res) => {
     await GroupService.updateGroup(
         req.body.groupID,
         req.body.groupName,
+        req.body.groupColor,
     );
     res.status(200).send('Group name successfully updated!');
   } catch (error) {

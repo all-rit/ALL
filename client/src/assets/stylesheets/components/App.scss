@@ -798,6 +798,9 @@ a.icon:hover {
 .progressBarContainer {
   //min-width: 450px;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }
 
 .groups {
@@ -886,7 +889,7 @@ a.icon:hover {
   //min-width: 450px;
   display: inline-grid;
   grid-template-columns: repeat(5, 1fr); /* for 5 equal columns */
-  width: 50%;
+  width: 80%;
   height: 10%;
 
   li,
@@ -925,6 +928,7 @@ a.icon:hover {
   }
   &__bar {
     width: 20%;
+    margin-right: 3px;
   }
   &__info {
     display: table;
@@ -1171,7 +1175,14 @@ a.icon:hover {
   }
 }
 .mainBody {
-  padding-top: 120px;
+  padding-top: 4rem;
+}
+.hoverShadow {
+  :hover {
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);
+  }
 }
 .changeFooter {
   margin-top: 50px;
