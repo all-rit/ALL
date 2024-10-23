@@ -63,7 +63,7 @@ const EnrolledGroups = (props) => {
             ) : (
               <div
                 className={
-                  "xs:tw-flex sxs:tw-flex-col md:tw-grid md:tw-grid-cols-3"
+                  "xs:tw-flex xs:tw-flex-col md:lg:tw-grid md:lg:tw-grid-cols-3 tw-gap-3"
                 }
               >
                 {displayEnrolledGroups()}
