@@ -58,7 +58,7 @@ const AboutUs = () => {
             </div>
             <div
               className={
-                "tw-h-full tw-w-1/2 tw-flex tw-flex-row tw-justify-end tw-items-baseline"
+                "tw-h-full tw-w-1/2 tw-flex tw-flex-col tw-justify-end tw-items-end tw-py-5"
               }
             >
               <ALLButton label={"Learn More"} onClick={handleNav}></ALLButton>
