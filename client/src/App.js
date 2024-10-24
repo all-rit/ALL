@@ -39,6 +39,7 @@ import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
 const parse = require("url-parse");
 import useMainStateContext from "./reducers/MainContext";
+import EducatorsPage from "./components/body/EducatorResources/EducatorsPage";
 
 const mapStateToProps = (state) => {
   return {
@@ -94,6 +95,7 @@ const App = () => {
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
               <Error actions={actions} default />
+              <EducatorsPage path={"/Educators"} user={state.main.user} />
 
               <Imagine
                 path={"/Imagine/*"}
