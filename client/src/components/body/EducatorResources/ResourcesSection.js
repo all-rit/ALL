@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { LabOverview } from "../../../constants/educatorResources/LabOverview";
+import LabSection from "./components/LabSection";
 
 const ResourcesSection = () => {
   const [displayedResource, setDisplayedResource] = useState("");
@@ -61,11 +63,17 @@ const ResourcesSection = () => {
           <div className={"tw-w-full tw-py-6"}>
             {displayedResource === "Overview" && (
               <ul>
-                <li>
-                  <div className={"tw-flex tw-flex-row"}>
-                    <div>Overview of a Lab</div>
-                  </div>
-                </li>
+                {LabOverview.map((lab) => {
+                  return (
+                    <LabSection
+                      key={lab.id}
+                      id={lab.id}
+                      title={lab.title}
+                      description={lab.description}
+                      image={lab.image}
+                    />
+                  );
+                })}
               </ul>
             )}
             {displayedResource === "Walkthrough" && <div>Walkthrough</div>}
