@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { LabOverview } from "../../../constants/educatorResources/LabOverview";
 import LabSection from "./components/LabSection";
+import LabService from "../../../services/LabService";
 
 const ResourcesSection = () => {
   const [displayedResource, setDisplayedResource] = useState("");
+  const [labs, setLabs] = useState([]);
+  const getLabs = async () => {
+    const labData = await LabService.getAllLabs();
+    setLabs(labData);
+  };
 
   useEffect(() => {
     setDisplayedResource("Overview");
+    getLabs();
   }, []);
 
   const displayOverview = () => {
@@ -92,7 +99,22 @@ const ResourcesSection = () => {
                 })}
               </ul>
             )}
-            {displayedResource === "Walkthrough" && <ul></ul>}
+            {displayedResource === "Walkthrough" && (
+              <ul>
+                {labs.map((lab) => {
+                  return (
+                    <LabSection
+                      key={lab.id}
+                      title={lab.labName}
+                      subTitle={lab.labShortName}
+                      description={lab.shortDescription}
+                      slides={lab.slideshow}
+                      videoLink={lab.walkthroughVideo}
+                    />
+                  );
+                })}
+              </ul>
+            )}
             {displayedResource === "Slides" && <div>Slides</div>}
             {displayedResource === "Groups" && <div>Lead a Group</div>}
           </div>

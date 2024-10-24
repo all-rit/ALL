@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
         reinforcement: {type: DataTypes.JSON},
         quiz: {type: DataTypes.JSON},
         difficulty: {type: DataTypes.INTEGER},
+        slideshow: {type: DataTypes.TEXT},
+        walkthroughVideo: {type: DataTypes.TEXT},
         isActive: {
           type: DataTypes.BOOLEAN,
           defaultValue: true,
