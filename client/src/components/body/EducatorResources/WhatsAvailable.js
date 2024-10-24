@@ -23,18 +23,22 @@ const WhatsAvailable = () => {
           >
             <div
               className={
-                "tw-flex tw-flex-col tw-w-full tw-h-full tw-justify-center"
+                "tw-flex tw-flex-col tw-w-full tw-h-full tw-justify-center tw-p-6"
               }
             >
               <p
                 className={
-                  "tw-title-styling-name xxs:tw-text-sm md:lg:tw-text-2xl tw-my-3 tw-font-poppins md:lg:tw-w-1/2"
+                  "tw-title-styling-name xs:tw-text-[1.5rem]  md:tw-text-3xl tw-my-3 tw-font-poppins md:lg:tw-w-1/2"
                 }
               >
                 {" "}
                 What is Available to Educators?
               </p>
-              <div className={"tw-flex tw-flex-row tw-items-center"}>
+              <div
+                className={
+                  "tw-flex xs:tw-flex-col md:tw-flex-row tw-items-center"
+                }
+              >
                 <p
                   className={
                     "tw-font-calibri tw-font-medium sm:tw-text-sm xs:tw-text-xs"

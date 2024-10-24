@@ -24,7 +24,7 @@ const ResourcesHeader = () => {
         >
           <p
             className={
-              "tw-font-poppins tw-font-bold xxs:tw-text-md md:tw-text-3xl "
+              "tw-font-poppins tw-font-bold xs:tw-text-[1.5rem] md:tw-text-3xl "
             }
           >
             {" "}

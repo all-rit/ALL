@@ -46,21 +46,37 @@ const ResourcesSection = () => {
             {" "}
             Educator Resources{" "}
           </p>
-          <div className={"tw-flex tw-flex-row tw-gap-3"}>
-            <button className={"btn btn-primary"} onClick={displayOverview}>
+          <div
+            className={
+              "md:tw-flex xs:tw-grid xs:tw-grid-cols-2 md:tw-flex-row tw-gap-3 tw-my-3"
+            }
+          >
+            <button
+              className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
+              onClick={displayOverview}
+            >
               Overview
             </button>
-            <button className={"btn btn-primary"} onClick={displayWalkthrough}>
+            <button
+              className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
+              onClick={displayWalkthrough}
+            >
               Walkthrough Videos
             </button>
-            <button className={"btn btn-primary"} onClick={displaySlides}>
+            <button
+              className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
+              onClick={displaySlides}
+            >
               Lab Lecture Slides
             </button>
-            <button className={"btn btn-primary"} onClick={displayGroups}>
+            <button
+              className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
+              onClick={displayGroups}
+            >
               Leading a Group
             </button>
           </div>
-          <div className={"tw-w-full tw-py-6"}>
+          <div className={"tw-w-full"}>
             {displayedResource === "Overview" && (
               <ul>
                 {LabOverview.map((lab) => {
@@ -76,7 +92,7 @@ const ResourcesSection = () => {
                 })}
               </ul>
             )}
-            {displayedResource === "Walkthrough" && <div>Walkthrough</div>}
+            {displayedResource === "Walkthrough" && <ul></ul>}
             {displayedResource === "Slides" && <div>Slides</div>}
             {displayedResource === "Groups" && <div>Lead a Group</div>}
           </div>
