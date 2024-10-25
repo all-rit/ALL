@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
 // import ProfileGeneration from "./citation/ProfileGeneration";
 import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
+import ProfileGeneration from "./citation/ProfileGeneration";
 import DevPartners from "./DevPartners";
 
 const mapDispatchToProps = (dispatch) => {
@@ -94,7 +95,7 @@ const Home = (props) => {
 
       <HorizontalLine />
 
-      {/* <ProfileGeneration /> */}
+      <ProfileGeneration />
       <HorizontalLine />
 
       {/* Clients */}
