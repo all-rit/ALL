@@ -109,7 +109,7 @@ const ResourcesSection = () => {
                       subTitle={lab.labShortName}
                       description={lab.shortDescription}
                       slides={lab.slideshow}
-                      videoLink={lab.walkthroughVideo}
+                      walkthroughVideo={lab.walkthroughVideo}
                     />
                   );
                 })}

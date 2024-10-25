@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ALLButton from "../../../all-components/ALLButton";
+import ComingSoon from "../../../../assets/images/ComingSoon.svg";
 
 const LabSection = (props) => {
-  const { id, title, subTitle, description, image, videoLink, slides } = props;
+  const { id, title, subTitle, description, image, walkthroughVideo, slides } =
+    props;
   return (
     <li key={id} className={"tw-my-5"}>
       <div className={"tw-flex xs:tw-flex-col md:tw-flex-row"}>
@@ -30,8 +32,12 @@ const LabSection = (props) => {
                 lg:tw-h-[300px] lg:tw-w-[300px]"
             />
           ) : (
-            <video
-              src={videoLink}
+            <img
+              src={
+                walkthroughVideo.includes("Not yet")
+                  ? ComingSoon
+                  : walkthroughVideo
+              }
               className="tw-object-cover tw-rounded-lg tw-border-solid tw-border-primary-blue tw-border-[0.5rem]
                 {/*xs:tw-h-[150px] xs:tw-w-[150px]*/}
                 xs:tw-h-[200px] xs:tw-w-[200px]
@@ -51,7 +57,7 @@ LabSection.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   slides: PropTypes.string,
-  videoLink: PropTypes.string,
+  walkthroughVideo: PropTypes.string,
 };
 
 export default LabSection;
