@@ -22,16 +22,16 @@ const Home = (props) => {
   return (
     <div className="landingpage">
       {/* Header */}
-      <header className="masthead">
-        <div className="container">
-          <div className="intro-text">
-            <div className="intro-heading text-uppercase">
-              Welcome to the <br /> Accessible Learning Labs (ALL)
+        <div className="tw-flex tw-flex-col">
+          <section className="tw-flex tw-bg-labBlue tw-justify-end">
+            <div className="tw-bg-white tw-rounded-tl-lg tw-rounded-bl-lg tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
+              <h1 className="tw-mt-10 tw-ml-10">Welcome to Accessible Learning Labs</h1>
+              <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left">Lorem Ipsum Dolor sit amet blah blah blah blah blab lhaihfio wheg </p>
             </div>
-            <div />
-          </div>
+          </section>
         </div>
-      </header>
+        <div className="tw-bg-white tw-h-16"></div>
+        
       {/* Goals */}
       <section className="page-section landingpage__pagesection" id="goals">
         <div className="container">

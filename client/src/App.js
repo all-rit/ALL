@@ -85,7 +85,7 @@ const App = () => {
     <>
       <div className="overflow-x-hidden">
         <Header />
-        <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
+        <div className={"mainBody" + (lab !== 0 ? "container" : "")}>
           {lab !== 0 && (
             <BodyHeader body={Sections[lab][body].name} labID={lab} />
           )}
