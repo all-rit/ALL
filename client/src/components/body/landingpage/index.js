@@ -10,6 +10,7 @@ import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
 import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
 import MainFooter from "../../footer/mainFooter";
+import TEMPIMG from "../../../assets/images/landingpage/TEMP.png"
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -30,7 +31,9 @@ const Home = (props) => {
             </div>
           </section>
         </div>
-        <div className="tw-bg-white tw-h-16"></div>
+        <div className="tw-bg-white tw-h-16">
+          <img src={TEMPIMG} className="tw-absolute tw-bottom-0"></img>
+        </div>
         
       {/* Goals */}
       <section className="page-section landingpage__pagesection" id="goals">
