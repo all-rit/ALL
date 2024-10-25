@@ -1,8 +1,6 @@
-/* eslint-disable camelcase */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import "../../assets/stylesheets/components/css/colorPicker.css";
+import { Panel as ColorPickerPanel } from "rc-color-picker";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
@@ -13,11 +11,10 @@ import {
   setBackgroundColor,
   onNextPageChangeTSize,
 } from "./edit/editPage";
-import { Panel as ColorPickerPanel } from "rc-color-picker";
-import { Sections } from "../../constants/index";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
 import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 
 const mapStateToProps = (state) => {
   return {
@@ -181,21 +178,19 @@ class Footer extends Component {
             </div>
           )}
           <div
-            className="tw-relative container"
+            className="tw-flex tw-justify-between tw-mx-8"
             style={{ display: display ? "block" : "none" }}
           >
             <button
-              className="btn tw-bg-labLightGray btn-xl text-uppercase back "
+              className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
               onClick={() => handleRedirect(actions, lab, body - 1)}
               style={{
-                display:
-                  this.disappearBack(body) || hideOnLanding ? "none" : "block",
+                opacity: this.disappearBack(body) || hideOnLanding ? "0" : "1",
+                pointerEvents:
+                  this.disappearBack(body) || hideOnLanding ? "none" : "auto",
               }}
             >
-              Previous -{" "}
-              {body > 0 && typeof Sections[lab][body - 1] !== "undefined"
-                ? Sections[lab][body - 1].name
-                : ""}
+              BACK
             </button>
 
             {body === 4 && quizCompleted ? (
@@ -213,84 +208,19 @@ class Footer extends Component {
                 Return to Home
               </button>
             ) : (
-              <div>
-                <button
-                  className="btn tw-bg-labLightGray btn-xl text-uppercase next"
-                  onClick={() => handleRedirect(actions, lab, body + 1)}
-                  style={{
-                    display:
-                      this.disappearNext(body) || hideOnLanding
-                        ? "none"
-                        : "block",
-                  }}
-                >
-                  Next -{" "}
-                  {body < 4 && typeof Sections[lab][body + 1] !== "undefined"
-                    ? Sections[lab][body + 1].name
-                    : ""}
-                </button>
-              </div>
+              <button
+                className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue"
+                onClick={() => handleRedirect(actions, lab, body + 1)}
+                style={{
+                  display:
+                    this.disappearNext(body) || hideOnLanding
+                      ? "none"
+                      : "block",
+                }}
+              >
+                NEXT
+              </button>
             )}
-
-            <div className="btn-change">
-              <button
-                className="btn-text btn btn-bottom-buttons text-uppercase"
-                alt="Increase text size"
-                title="Larger text"
-                onClick={() => this.changeSize(1)}
-              >
-                Text+
-              </button>
-              <button
-                className="btn-text btn btn-bottom-buttons text-uppercase"
-                alt="Decrease text size"
-                title="Smaller text"
-                onClick={() => this.changeSize(-1)}
-              >
-                Text-
-              </button>
-              <button
-                id="changeTextColor"
-                className="btn btn-text btn-bottom-buttons text-uppercase"
-                onClick={this.renderTextColorPalette}
-              >
-                Change Text Color
-              </button>
-
-              <button
-                id="changeBackgroundColor"
-                className="btn btn-text btn-bottom-buttons text-uppercase"
-                onClick={this.renderBgColorPalette}
-              >
-                Change Background Color
-              </button>
-              {this.state.textColor && (
-                <div
-                  id="text-panel"
-                  className="div-style-text"
-                  style={{
-                    display: this.state.textColor === true ? "block" : "none",
-                  }}
-                >
-                  <ColorPickerPanel
-                    enableAlpha={false}
-                    defaultColor={"#345679"}
-                    color={this.state.color}
-                    onChange={this.OnTextColorChange.bind(this)}
-                  />
-                </div>
-              )}
-              {this.state.bgColor && (
-                <div id="bg-panel" className="div-style-bgColor">
-                  <ColorPickerPanel
-                    enableAlpha={false}
-                    defaultColor={"#345679"}
-                    color={this.state.backgroundColor}
-                    onChange={this.OnBgColorChange.bind(this)}
-                  />
-                </div>
-              )}
-            </div>
           </div>
           <div
             className="container"
@@ -301,11 +231,85 @@ class Footer extends Component {
               disabled until the exercise is complete.
             </div>
           </div>
+          <div className="btn-change">
+            <button
+              className="btn-text btn btn-bottom-buttons text-uppercase"
+              alt="Increase text size"
+              title="Larger text"
+              onClick={() => this.changeSize(1)}
+            >
+              Text+
+            </button>
+            <button
+              className="btn-text btn btn-bottom-buttons text-uppercase"
+              alt="Decrease text size"
+              title="Smaller text"
+              onClick={() => this.changeSize(-1)}
+            >
+              Text-
+            </button>
+            <button
+              id="changeTextColor"
+              className="btn btn-text btn-bottom-buttons text-uppercase"
+              onClick={this.renderTextColorPalette}
+            >
+              Change Text Color
+            </button>
+
+            <button
+              id="changeBackgroundColor"
+              className="btn btn-text btn-bottom-buttons text-uppercase"
+              onClick={this.renderBgColorPalette}
+            >
+              Change Background Color
+            </button>
+            {this.state.textColor && (
+              <div
+                id="text-panel"
+                className="div-style-text"
+                style={{
+                  display: this.state.textColor === true ? "block" : "none",
+                }}
+              >
+                <ColorPickerPanel
+                  enableAlpha={false}
+                  defaultColor={"#345679"}
+                  color={this.state.color}
+                  onChange={this.OnTextColorChange.bind(this)}
+                />
+              </div>
+            )}
+            {this.state.bgColor && (
+              <div id="bg-panel" className="div-style-bgColor">
+                <ColorPickerPanel
+                  enableAlpha={false}
+                  defaultColor={"#345679"}
+                  color={this.state.backgroundColor}
+                  onChange={this.OnBgColorChange.bind(this)}
+                />
+              </div>
+            )}
+          </div>
         </div>
         <div className="footer" />
       </>
     );
   }
 }
+
+Footer.propTypes = {
+  state: PropTypes.string,
+  context: PropTypes.shape({
+    state: PropTypes.shape({
+      main: PropTypes.shape({
+        body: PropTypes.number,
+        lab: PropTypes.number,
+      }),
+    }),
+    actions: PropTypes.shape({}),
+  }),
+  quizCompleted: PropTypes.bool,
+  setQuizCompleted: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer);

@@ -15,6 +15,7 @@ function renderLabData(actions, labInfo, progressState, index, labRecord) {
     fullDescription,
     learningObjectives,
     authors,
+    difficulty,
   } = labInfo; // destructuring
   return (
     <Lab
@@ -30,6 +31,7 @@ function renderLabData(actions, labInfo, progressState, index, labRecord) {
       authors={authors}
       actions={actions}
       labProgress={labRecord}
+      difficulty={difficulty}
     />
   );
 }
@@ -55,16 +57,28 @@ const LabGeneration = (props) => {
   if (labInformation !== null && labInformation.length > 0 && progressState) {
     if (progressState === "NOT_STARTED") {
       if (labids !== null && labids.length > 0) {
-        return labids.map((lab, index) => {
-          const idx = lab.labID - 1;
-          return renderLabData(
-            actions,
-            labInformation[idx],
-            progressState,
-            index,
-            null,
-          );
-        });
+        return (
+          <div
+            className={
+              "tw-flex tw-flex-col tw-align-middle xs:sm:tw-w-1/2 md:lg:tw-w-full"
+            }
+          >
+            {labids.map((lab, index) => {
+              const idx = lab.labID - 1;
+              return (
+                <div key={idx} className="tw-m-1">
+                  {renderLabData(
+                    actions,
+                    labInformation[idx],
+                    progressState,
+                    index,
+                    null,
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        );
       } else {
         return (
           <p className="module__no_labs">You have no labs for this section.</p>
