@@ -15,7 +15,7 @@ const PartnerGeneration = () => {
 
   return (
     <div className="tw-container tw-py-10 tw-ml-2">
-      <div className="tw-grid tw-grid-cols-4 tw-gap-6">
+      <div className="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6">
         {partnerInformation.map((devInfo, index) => (
           <div
             key={index}

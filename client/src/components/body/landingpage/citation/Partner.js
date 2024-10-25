@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Partner = (props) => {
   const { partnerName, imageURL, websiteURL } = props;
   return (
-    <div className="tw-p-4 tw-bg-white tw-rounded-lg tw-flex tw-items-center tw-justify-center tw-h-full tw-w-full">
+    <div className="tw-p-3 tw-bg-white tw-rounded-lg tw-flex tw-items-center tw-justify-center tw-h-full tw-w-full">
       <a href={websiteURL} target="_blank" rel="noopener noreferrer">
         <img
           src={`/img/dev_partners${imageURL}`}
