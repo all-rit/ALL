@@ -7,9 +7,8 @@ import { actions as mainActions } from "../../../reducers/MainReducer";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
-// import ProfileGeneration from "./citation/ProfileGeneration";
-import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
 import ProfileGeneration from "./citation/ProfileGeneration";
+import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
 import DevPartners from "./DevPartners";
 
 const mapDispatchToProps = (dispatch) => {
