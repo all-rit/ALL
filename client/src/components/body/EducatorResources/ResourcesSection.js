@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LabOverview } from "../../../constants/educatorResources/LabOverview";
-import LabSection from "./components/LabSection";
 import LabService from "../../../services/LabService";
+import ResourceRow from "./components/ResourceRow";
 
 const ResourcesSection = () => {
   const [displayedResource, setDisplayedResource] = useState("");
@@ -21,11 +21,7 @@ const ResourcesSection = () => {
   };
 
   const displayWalkthrough = () => {
-    setDisplayedResource("Walkthrough");
-  };
-
-  const displaySlides = () => {
-    setDisplayedResource("Slides");
+    setDisplayedResource("Materials");
   };
 
   const displayGroups = () => {
@@ -62,19 +58,13 @@ const ResourcesSection = () => {
               className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
               onClick={displayOverview}
             >
-              Overview
+              Lab Overview
             </button>
             <button
               className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
               onClick={displayWalkthrough}
             >
-              Walkthrough Videos
-            </button>
-            <button
-              className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
-              onClick={displaySlides}
-            >
-              Lab Lecture Slides
+              Learning Materials
             </button>
             <button
               className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
@@ -88,9 +78,8 @@ const ResourcesSection = () => {
               <ul>
                 {LabOverview.map((lab) => {
                   return (
-                    <LabSection
+                    <ResourceRow
                       key={lab.id}
-                      id={lab.id}
                       title={lab.title}
                       description={lab.description}
                       image={lab.image}
@@ -99,23 +88,23 @@ const ResourcesSection = () => {
                 })}
               </ul>
             )}
-            {displayedResource === "Walkthrough" && (
+            {displayedResource === "Materials" && (
               <ul>
                 {labs.map((lab) => {
                   return (
-                    <LabSection
+                    <ResourceRow
                       key={lab.id}
+                      id={lab.id}
                       title={lab.labName}
                       subTitle={lab.labShortName}
                       description={lab.shortDescription}
-                      slides={lab.slideshow}
+                      slides={`/powerpoints/${lab.slideshow}`}
                       walkthroughVideo={lab.walkthroughVideo}
                     />
                   );
                 })}
               </ul>
             )}
-            {displayedResource === "Slides" && <div>Slides</div>}
             {displayedResource === "Groups" && <div>Lead a Group</div>}
           </div>
         </div>

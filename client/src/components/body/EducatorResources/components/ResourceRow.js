@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ALLButton from "../../../all-components/ALLButton";
-import ComingSoon from "../../../../assets/images/ComingSoon.svg";
+import ComingSoon from "../../../../assets/images/ComingSoonVideo.svg";
 
-const LabSection = (props) => {
+const ResourceRow = (props) => {
   const { id, title, subTitle, description, image, walkthroughVideo, slides } =
     props;
   return (
@@ -13,13 +13,12 @@ const LabSection = (props) => {
           className={"tw-flex tw-flex-col xs:tw-w-full md:tw-w-1/2 tw-gap-3"}
         >
           <p className={"tw-font-calibri tw-font-extrabold tw-text-lg"}>
-            {title}
+            {id ? `Lab ${id}:` : ""} {title}
           </p>
-          <p> {subTitle ? subTitle : ""}</p>
           <p className="xs:tw-text-xs md:tw-text-sm">{description}</p>
-          {slides && slides !== "Not yet available!" && (
-            <a href={slides}>
-              <ALLButton label={"Go to Slideshow"} />
+          {slides && !slides.includes("Not yet") && (
+            <a href={slides} download>
+              <ALLButton label={`Download ${subTitle} Slideshow`} />
             </a>
           )}
         </div>
@@ -50,7 +49,7 @@ const LabSection = (props) => {
   );
 };
 
-LabSection.propTypes = {
+ResourceRow.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
   subTitle: PropTypes.string,
@@ -60,4 +59,4 @@ LabSection.propTypes = {
   walkthroughVideo: PropTypes.string,
 };
 
-export default LabSection;
+export default ResourceRow;
