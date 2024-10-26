@@ -30,7 +30,7 @@ const ResourcesHeader = () => {
             {" "}
             Educator Resources{" "}
           </p>
-          <p className={"xs:tw-text-xs md:tw-text-sm"}>
+          <p className={"xs:tw-text-xs md:tw-text-sm tw-text-justify"}>
             {" "}
             Welcome to Accessible Learning labs Educators Resources! Below, you
             will find everything you need to begin using our interactive,

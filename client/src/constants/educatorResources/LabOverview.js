@@ -43,3 +43,5 @@ export const LabOverview = [
     image: Placeholder,
   },
 ];
+
+export const COMING_SOON = "coming soon";

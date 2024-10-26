@@ -41,7 +41,7 @@ const WhatsAvailable = () => {
               >
                 <p
                   className={
-                    "tw-font-calibri tw-font-medium sm:tw-text-sm xs:tw-text-xs"
+                    "tw-font-calibri tw-font-medium sm:tw-text-sm xs:tw-text-xs tw-text-justify"
                   }
                 >
                   {" "}

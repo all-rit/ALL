@@ -2,21 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import ALLButton from "../../../all-components/ALLButton";
 import ComingSoon from "../../../../assets/images/ComingSoonVideo.svg";
+import { COMING_SOON } from "../../../../constants/educatorResources/LabOverview";
 
 const ResourceRow = (props) => {
   const { id, title, subTitle, description, image, walkthroughVideo, slides } =
     props;
+
   return (
     <li key={id} className={"tw-my-5"}>
       <div className={"tw-flex xs:tw-flex-col md:tw-flex-row"}>
         <div
           className={"tw-flex tw-flex-col xs:tw-w-full md:tw-w-1/2 tw-gap-3"}
         >
-          <p className={"tw-font-calibri tw-font-extrabold tw-text-lg"}>
+          <p className={"tw-font-calibri tw-font-extrabold tw-text-xl"}>
             {id ? `Lab ${id}:` : ""} {title}
           </p>
-          <p className="xs:tw-text-xs md:tw-text-sm">{description}</p>
-          {slides && !slides.includes("Not yet") && (
+          <p className="xs:tw-text-xs md:tw-text-sm tw-text-justify">
+            <hr />
+            {description}
+          </p>
+          {slides && !slides.includes(COMING_SOON) && (
             <a href={slides} download>
               <ALLButton label={`Download ${subTitle} Slideshow`} />
             </a>
@@ -31,17 +36,23 @@ const ResourceRow = (props) => {
                 lg:tw-h-[300px] lg:tw-w-[300px]"
             />
           ) : (
-            <img
-              src={
-                walkthroughVideo.includes("Not yet")
-                  ? ComingSoon
-                  : walkthroughVideo
-              }
-              className="tw-object-cover tw-rounded-lg tw-border-solid tw-border-primary-blue tw-border-[0.5rem]
-                {/*xs:tw-h-[150px] xs:tw-w-[150px]*/}
-                xs:tw-h-[200px] xs:tw-w-[200px]
-                lg:tw-h-[300px] lg:tw-w-[300px]"
-            />
+            <div>
+              <img
+                src={
+                  walkthroughVideo.includes(COMING_SOON)
+                    ? ComingSoon
+                    : walkthroughVideo
+                }
+                className="tw-object-cover tw-rounded-lg tw-border-solid tw-border-primary-blue tw-border-[0.5rem]
+                    {/*xs:tw-h-[150px] xs:tw-w-[150px]*/}
+                    xs:tw-h-[200px] xs:tw-w-[200px]
+                    lg:tw-h-[300px] lg:tw-w-[300px]"
+              />
+              <p className={"tw-text-sm tw-text-center tw-font-medium"}>
+                {" "}
+                Lab {id} Walkthrough Video
+              </p>
+            </div>
           )}
         </div>
       </div>

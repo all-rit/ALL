@@ -97,7 +97,7 @@ const ResourcesSection = () => {
                       id={lab.id}
                       title={lab.labName}
                       subTitle={lab.labShortName}
-                      description={lab.shortDescription}
+                      description={lab.fullDescription}
                       slides={`/powerpoints/${lab.slideshow}`}
                       walkthroughVideo={lab.walkthroughVideo}
                     />
