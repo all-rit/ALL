@@ -19,7 +19,7 @@ const GettingInvolved = () => {
           }
         >
           <div
-            className={`tw-flex tw-flex-row tw-text-left sm:tw-w-full lg:tw-w-1/2`}
+            className={`tw-flex tw-flex-row tw-text-left sm:tw-w-full md:tw-w-3/4 lg:tw-w-1/2`}
           >
             <div
               className={
@@ -28,16 +28,20 @@ const GettingInvolved = () => {
             >
               <p
                 className={
-                  "tw-title-styling-name xxs:tw-text-sm md:lg:tw-text-2xl tw-my-3 tw-font-poppins md:lg:tw-w-1/2"
+                  "tw-title-styling-name xxs:tw-text-sm md:tw-text-[1.5rem] tw-my-3 tw-font-poppins xs:tw-w-full md:tw-w-3/4"
                 }
               >
                 {" "}
                 Interested in Getting Involved?
               </p>
-              <div className={"tw-flex tw-flex-row  tw-items-center"}>
+              <div
+                className={
+                  "tw-flex xs:tw-flex-col md:tw-flex-row tw-items-center"
+                }
+              >
                 <p
                   className={
-                    "tw-font-calibri tw-font-medium sm:tw-text-sm xs:tw-text-xs"
+                    "tw-font-calibri tw-font-medium sm:tw-text-[1.125rem] xs:tw-text-xs"
                   }
                 >
                   {" "}
