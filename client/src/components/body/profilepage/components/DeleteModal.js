@@ -49,14 +49,18 @@ const DeleteModal = (props) => {
         >
           <div className={"tw-flex tw-flex-col tw-w-3/4 tw-h-full"}>
             <div className={"tw-my-6"}>
-              <p className={"tw-title-styling-name"}>
+              <p
+                className={
+                  "tw-font-poppins tw-font-bold xs:tw-text-lg md:tw-text-3xl"
+                }
+              >
                 {" "}
                 Delete an Instructing Group
               </p>
             </div>
             <div
               className={
-                "tw-flex tw-flex-row tw-items-center tw-justify-between tw-w-full"
+                "tw-flex xs:tw-flex-col md:tw-flex-row tw-items-center tw-justify-between tw-w-full"
               }
             >
               <p className={"tw-font-medium"}>
