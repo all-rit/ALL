@@ -95,7 +95,9 @@ const BrandedALLModal = (props) => {
             "tw-w-full tw-h-full tw-flex tw-flex-row tw-justify-center tw-align-middle"
           }
         >
-          <div className={"tw-w-full"}>{children}</div>
+          <div className={"tw-w-full md:tw-min-h-[15rem] tw-p-6"}>
+            {children}
+          </div>
         </div>
       </div>
     </Modal>
