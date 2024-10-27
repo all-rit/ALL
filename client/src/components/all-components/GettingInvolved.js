@@ -19,7 +19,7 @@ const GettingInvolved = () => {
           }
         >
           <div
-            className={`tw-flex tw-flex-row tw-text-left sm:tw-w-full md:tw-w-3/4 lg:tw-w-3/5`}
+            className={`tw-flex tw-flex-row tw-text-left sm:tw-w-full md:tw-w-3/4 lg:tw-w-3/5 tw-p-6 tw-min-h-[10rem]`}
           >
             <div
               className={
