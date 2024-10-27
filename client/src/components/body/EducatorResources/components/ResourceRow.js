@@ -46,7 +46,7 @@ const ResourceRow = (props) => {
                 }
                 className="tw-object-cover tw-rounded-lg tw-border-solid tw-border-primary-blue tw-border-[0.5rem]
                     xs:tw-h-[200px] xs:tw-w-[200px]
-                    lg:tw-h-[400px] lg:tw-w-[400px]"
+                    lg:tw-h-[350px] lg:tw-w-[350px]"
               />
               <p className={"tw-text-sm tw-text-center tw-font-medium"}>
                 {" "}
