@@ -19,7 +19,7 @@ const GettingInvolved = () => {
           }
         >
           <div
-            className={`tw-flex tw-flex-row tw-text-left sm:tw-w-full md:tw-w-3/4 lg:tw-w-1/2`}
+            className={`tw-flex tw-flex-row tw-text-left sm:tw-w-full md:tw-w-3/4 lg:tw-w-3/5`}
           >
             <div
               className={
@@ -36,12 +36,12 @@ const GettingInvolved = () => {
               </p>
               <div
                 className={
-                  "tw-flex xs:tw-flex-col md:tw-flex-row tw-items-center"
+                  "tw-flex xs:tw-flex-col lg:tw-flex-row tw-items-center"
                 }
               >
                 <p
                   className={
-                    "tw-font-calibri tw-font-medium sm:tw-text-[1.125rem] xs:tw-text-xs"
+                    "tw-font-calibri tw-font-medium sm:tw-text-sm md:tw-text-[1.125rem] xs:tw-text-xs tw-text-justify"
                   }
                 >
                   {" "}
