@@ -38,7 +38,7 @@ const ResourcesSection = () => {
       }
     >
       <div
-        className={"tw-bg-white tw-w-[85%] tw-rounded-tl-lg tw-rounded-bl-lg"}
+        className={"tw-bg-white tw-w-[85%] tw-rounded-tl-lg tw-rounded-bl-3xl"}
       >
         <div
           className="tw-flex tw-flex-col tw-text-left xs:tw-w-full tw-p-10 tw-rounded-bl-2xl
