@@ -111,9 +111,13 @@ const Reading = (props) => {
   };
 
   return (
-    <div>
-      <div className="tw-relative tw-bg-labYellow p-3 tw-rounded-3xl shadow">
-        <div className="study tw-bg-white p-5 tw-rounded-2xl shadow">
+    <div
+      className={
+        "tw-w-full tw-flex tw-flex-row tw-align-top tw-justify-center tw-overflow-scroll tw-max-h-[40rem] tw-rounded-lg"
+      }
+    >
+      <div className="tw-w-full">
+        <div className="study tw-h-full tw-bg-white p-5 tw-rounded-lg">
           {readingData?.description !== "" ? (
             <>
               <h3>{readingData?.description.header}</h3>

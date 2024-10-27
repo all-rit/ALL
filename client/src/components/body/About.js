@@ -30,9 +30,27 @@ const About = (props) => {
   }
 
   return (
-    <div className="study tw-position-relative tw-bg-labYellow tw-rounded-3xl shadow">
-      <div className="study tw-position-absolute questionContainer tw-bg-labLightGray p-4 tw-rounded-3xl shadow">
-        <p>{aboutText?.about}</p>
+    <div
+      className={
+        "xs:tw-w-full tw-flex tw-flex-row tw-bg-white tw-rounded-lg xs:tw-top-36 lg:tw-top-0 tw-right-0"
+      }
+    >
+      <div className=" tw-p-[3rem] xs:tw-w-full ">
+        <div className="tw-text-left tw-text-justify">
+          <p
+            className={"tw-font-bold tw-font-poppins tw-text-[1.5rem] tw-pb-6"}
+          >
+            {" "}
+            About This Lab
+          </p>
+          <p
+            className={
+              "tw-font-calibri tw-font-medium xs:tw-text-sm md:tw-text-[1.125rem]"
+            }
+          >
+            {aboutText?.about}
+          </p>
+        </div>
       </div>
     </div>
   );

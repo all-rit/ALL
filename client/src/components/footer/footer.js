@@ -167,16 +167,6 @@ class Footer extends Component {
     return (
       <>
         <div className="footer">
-          {hideOnLanding ? (
-            <></>
-          ) : (
-            <div>
-              <span className="tw-absolute bottom leftBlueFooterLine tw-bg-labBlue"></span>
-              <span className="tw-absolute bottom rightBlueFooterLine tw-bg-labBlue"></span>
-              <span className="tw-absolute leftYellowFooterLine tw-bg-labYellow"></span>
-              <span className="tw-absolute rightYellowFooterLine tw-bg-labYellow"></span>
-            </div>
-          )}
           <div
             className="tw-flex tw-justify-between tw-mx-8"
             style={{ display: display ? "block" : "none" }}
@@ -231,7 +221,7 @@ class Footer extends Component {
               disabled until the exercise is complete.
             </div>
           </div>
-          <div className="btn-change">
+          <div className="btn-change tw-mt-6">
             <button
               className="btn-text btn btn-bottom-buttons text-uppercase"
               alt="Increase text size"

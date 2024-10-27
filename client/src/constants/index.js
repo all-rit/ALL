@@ -15,7 +15,7 @@ export const Sections = {
     },
   },
   1: {
-    fullname: "Accessibility Learning Lab 1: Accessibility to Sound and Speech",
+    fullname: "Lab 1: Accessibility to Sound and Speech",
     name: "Lab1",
     0: {
       name: "About",
@@ -34,7 +34,7 @@ export const Sections = {
     },
   },
   2: {
-    fullname: "Accessibility Learning Lab 2: Accessibility to Color Blindness",
+    fullname: "Lab 2: Accessibility to Color Blindness",
     name: "Lab2",
     0: {
       name: "About",
@@ -53,7 +53,7 @@ export const Sections = {
     },
   },
   3: {
-    fullname: "Accessibility Learning Lab 3: Accessibility with Screen Readers",
+    fullname: "Lab 3: Accessibility with Screen Readers",
     name: "Lab3",
     0: {
       name: "About",
@@ -72,7 +72,7 @@ export const Sections = {
     },
   },
   4: {
-    fullname: "Accessibility Learning Lab 4: Accessibility to Dexterity",
+    fullname: "Lab 4: Accessibility to Dexterity",
     name: "Lab4",
     0: {
       name: "About",
@@ -91,8 +91,7 @@ export const Sections = {
     },
   },
   5: {
-    fullname:
-      "Accessibility Learning Lab 5: Accessibility with Cognitive Impairments",
+    fullname: "Lab 5: Accessibility with Cognitive Impairments",
     name: "Lab5",
     0: {
       name: "About",
@@ -111,7 +110,7 @@ export const Sections = {
     },
   },
   6: {
-    fullname: "Ethics of AI",
+    fullname: "Lab 6: Ethics of AI",
     name: "Lab6",
     0: {
       name: "About",
@@ -130,7 +129,7 @@ export const Sections = {
     },
   },
   7: {
-    fullname: "AI Cybersecurity",
+    fullname: "Lab 7: AI Cybersecurity",
     name: "Lab7",
     0: {
       name: "About",
@@ -149,7 +148,7 @@ export const Sections = {
     },
   },
   8: {
-    fullname: "Algorithmic Bias",
+    fullname: "Lab 8: Algorithmic Bias",
     // TODO: edit this once we have an official title
     name: "Lab8",
     0: {
@@ -169,7 +168,7 @@ export const Sections = {
     },
   },
   9: {
-    fullname: "Localization",
+    fullname: "Lab 9: Accessibility to Localization",
     name: "Lab9",
     0: {
       name: "About",
@@ -188,7 +187,7 @@ export const Sections = {
     },
   },
   10: {
-    fullname: "Machine Learning",
+    fullname: "Lab 10: Neural Networks In Machine Learning",
     name: "Lab10",
     0: {
       name: "About",
@@ -207,7 +206,7 @@ export const Sections = {
     },
   },
   11: {
-    fullname: "Literacy",
+    fullname: "Lab 11: Accessibility to Literacy",
     name: "Lab11",
     0: {
       name: "About",
