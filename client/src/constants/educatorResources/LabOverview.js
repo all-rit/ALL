@@ -1,4 +1,12 @@
 import Placeholder from "../../assets/images/Placeholder.png";
+import CreateAGroup from "../../assets/images/educator_resources/CreateAGroup.png";
+import DeleteModal from "../../assets/images/educator_resources/DeleteModal.png";
+import SignIn from "../../assets/images/educator_resources/SignInExample.png";
+import StudentSearch from "../../assets/images/educator_resources/SearchForStudent.png";
+import UpdateGroup from "../../assets/images/educator_resources/UpdateGroupModal.png";
+import JoinGroup from "../../assets/images/educator_resources/JoinGroupModal.png";
+import StudentProgress from "../../assets/images/educator_resources/MonitorStudentProgress.png";
+import AssignedLabs from "../../assets/images/educator_resources/MyLabs.png";
 export const LAB_OVERVIEW = [
   {
     id: 0,
@@ -52,62 +60,62 @@ export const GROUP_OVERVIEW = [
     title: "Signing into User Profile",
     description:
       "In order to create and use our group feature, you must log in using our Google login functionality in the navigation bar at the top of the screen. Once you click the Sign In button, you will be presented a modal that will allow you to log in using your Google account. Don't worry, we only need first name, the first initial of the last name, your email and your profile picture. Once you complete the login process, you will be redirected back to the page you were originally on.",
-    image: Placeholder,
+    image: SignIn,
   },
   {
     id: 1,
     title: "Creating a Group",
     description:
       "To create an instructing group, scroll to the bottom of the profile page, and you will find your current instructing groups, along with a button labeled 'Start a New Group'. Once you click this button, you will be presented a form to select group name, color of the group, and finally a list of labs to be assigned to the group. Once you're satisfied with your group, click the 'Create Group' button at the bottom of the modal, and you will see the newly created group in the 'View Your Instructing Groups' section.",
-    image: Placeholder,
+    image: CreateAGroup,
   },
   {
     id: 2,
     title: "Updating a Group",
     description:
       "To update a group, if you've already created instructing groups, scroll to the 'View Your Instructing Groups' section of your profile page. You will find an 'Edit/View Group' button on the lab card. By clicking this button, you'll be presented a modal similar to when you created the group before. Once you are satisfied with your changes, click the 'Update Group' button at the bottom of the modal, and the group will automatically update.",
-    image: Placeholder,
+    image: UpdateGroup,
   },
   {
     id: 3,
     title: "Joining a Group",
     description:
       "To join a group, you must have a unique group code that is automatically produced when a group is created. This code is found on the top of every group card in your 'View Your Instructing Groups' section. Simply copy this code, and have your students click the 'Join a New Group' button in the middle of the profile page. This will open a modal that allows the student to input the given group code, and join the group.",
-    image: Placeholder,
+    image: JoinGroup,
   },
   {
     id: 4,
     title: "Monitor Student Progress",
     description:
       "To monitor student progress, navigate to the 'View Your Instructor Groups' section, click the 'Student Progress' button on a group. This will bring up a list of the labs assigned to the group. When you click a lab, you will see a list of the students assigned to this group, along with lab progress, quiz score, and the date of section completion.",
-    image: Placeholder,
+    image: StudentProgress,
   },
   {
     id: 5,
     title: "View Assigned labs",
     description:
       "As a student, to view your assigned labs, you have multiple options. You may investigate the labs in the 'My Labs' section, that are split up into Not Started, In Progress, and Completed tabs. The other option is to scroll to 'View Your Enrolled Student Groups' section and click the card of the group you have been assigned to. This will bring up a modal that includes all of the labs you have been assigned.",
-    image: Placeholder,
+    image: AssignedLabs,
   },
   {
     id: 6,
     title: "Searching for Labs",
     description:
       "To search for a specific lab in your assigned labs, you can simply use the search bar in the 'My Labs' section. Enter your query and click the magnifying glass icon to the right of the input and you will see your search results!",
-    image: Placeholder,
+    image: AssignedLabs,
   },
   {
     id: 7,
     title: "Search for Students",
     description:
       "As an instructor, so search for a specific student in a group, scroll to the 'View Your Instructor Groups' section, and click the desired groups 'Student Progress' button. Once you select the lab you wish to see student progress of, a list of students and a search bar will appear where you can search for a particular student.",
-    image: Placeholder,
+    image: StudentSearch,
   },
   {
     id: 8,
     title: "Deleting a Group",
     description:
       "To delete a group, simply scroll to the 'View Your Instructor Groups' section and locate the X icon at the top right of the group card. On clicking this icon, you will be presented a modal that confirms if you wish to complete the deletion. On completion, the group will disappear from your instructing groups.",
-    image: Placeholder,
+    image: DeleteModal,
   },
 ];
