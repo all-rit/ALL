@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { LabOverview } from "../../../constants/educatorResources/LabOverview";
+import {
+  GROUP_OVERVIEW,
+  LAB_OVERVIEW,
+} from "../../../constants/educatorResources/LabOverview";
 import LabService from "../../../services/LabService";
 import ResourceRow from "./components/ResourceRow";
 
@@ -76,7 +79,7 @@ const ResourcesSection = () => {
           <div className={"tw-w-full"}>
             {displayedResource === "Overview" && (
               <ul>
-                {LabOverview.map((lab) => {
+                {LAB_OVERVIEW.map((lab) => {
                   return (
                     <ResourceRow
                       key={lab.id}
@@ -105,7 +108,32 @@ const ResourcesSection = () => {
                 })}
               </ul>
             )}
-            {displayedResource === "Groups" && <div>Lead a Group</div>}
+            {displayedResource === "Groups" && (
+              <div className={"tw-text-justify"}>
+                <p
+                  className={
+                    "tw-text-sm tw-font-medium xs:tw-w-full md:tw-w-1/2 tw-my-3"
+                  }
+                >
+                  Below, you will find a guide on creating, updating, and
+                  managing instructing groups in our profile section! In
+                  addition, you will also be find information on tracking
+                  student progress and how to join a group!
+                </p>
+                <ul>
+                  {GROUP_OVERVIEW.map((lab) => {
+                    return (
+                      <ResourceRow
+                        key={lab.id}
+                        title={lab.title}
+                        description={lab.description}
+                        image={lab.image}
+                      />
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
