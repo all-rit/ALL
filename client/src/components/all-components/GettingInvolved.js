@@ -28,7 +28,7 @@ const GettingInvolved = () => {
             >
               <p
                 className={
-                  "tw-title-styling-name xxs:tw-text-sm md:tw-text-[1.25rem] lg:tw-text-[1.5rem] tw-my-6 tw-font-poppins xs:tw-w-full md:tw-w-3/4 "
+                  "tw-title-styling-name xxs:tw-text-sm md:tw-text-[1.25rem] lg:tw-text-[1.5rem] tw-my-6 tw-font-poppins xs:tw-w-full md:tw-w-3/4 tw-text-nowrap"
                 }
               >
                 {" "}

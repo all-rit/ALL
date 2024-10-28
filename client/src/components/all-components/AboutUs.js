@@ -17,20 +17,20 @@ const AboutUs = () => {
       >
         <div
           className={
-            "tw-h-full tw-flex tw-flex-row tw-justify-center tw-border-t-[.75rem] tw-border-r-[.75rem] tw-rounded-tr-lg tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-blue tw-bg-white tw-p-3"
+            "tw-h-full tw-flex tw-flex-row tw-justify-center tw-border-t-[.75rem] tw-border-r-[.75rem] tw-rounded-tr-lg tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-blue tw-bg-white"
           }
         >
           <div
-            className={`tw-ml-[2.25rem] tw-flex xs:tw-flex-col md:tw-flex-row tw-text-left xs:tw-w-full md:tw-w-1/2`}
+            className={`tw-flex xs:tw-flex-col md:tw-flex-row tw-text-left xs:tw-w-full md:tw-w-1/2 tw-p-3`}
           >
             <div
               className={
-                "tw-flex tw-flex-col tw-w-3/4 tw-h-full tw-justify-center"
+                "tw-flex tw-flex-col xs:tw-w-full lg:tw-w-3/4 tw-h-full tw-justify-center"
               }
             >
               <p
                 className={
-                  "tw-title-styling-name xs:tw-text-sm md:tw-text-[1.5rem] tw-my-3 tw-font-poppins"
+                  "tw-title-styling-name xs:tw-text-sm md:tw-text-[1.5rem] tw-my-6 tw-font-poppins"
                 }
               >
                 {" "}
