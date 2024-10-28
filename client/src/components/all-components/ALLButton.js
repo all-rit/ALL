@@ -8,7 +8,7 @@ const ALLButton = (props) => {
     <div className={`${className} tw-h-100 tw-m-3`}>
       <button
         className={
-          "tw-border-0 tw-relative tw-py-1 tw-bg-white tw-font-calibri tw-px-6 xs:tw-text-xs lg:tw-text-[1.125rem]"
+          "tw-border-0 tw-relative tw-py-1 tw-bg-white tw-font-calibri tw-px-6 xs:tw-text-xs lg:tw-text-[1.125rem] tw-text-nowrap"
         }
         onClick={onClick}
         type={type}
