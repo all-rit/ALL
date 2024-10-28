@@ -4,11 +4,15 @@ import ExerciseStateContext from "../Lab12Context";
 import { navigate } from "@reach/router";
 import { ExerciseService } from "../../../../services/lab12/ExerciseService";
 import {
+  Button,
   ButtonDropdown,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
+  Form,
+  FormGroup,
   Input,
+  Label,
 } from "reactstrap";
 
 const GradApplication = () => {
@@ -39,7 +43,6 @@ const GradApplication = () => {
     fetchExercise();
   }, []);
 
-  // will need to update
   const {
     firstName,
     setFirstName,
@@ -57,134 +60,41 @@ const GradApplication = () => {
     setGradTerm,
   } = useContext(ExerciseStateContext);
 
-  const [isFormError, setIsFormError] = useState(false);
+  const [formErrors, setFormErrors] = useState([]);
 
-  const [fNameErr, setFirstNameErr] = useState(false);
-  const [lNameErr, setLastNameErr] = useState(false);
-  const [preferredNameErr, setPreferredNameErr] = useState(false);
-  const [pronounsErr, setPronounsErr] = useState(false);
-  const [collegeErr, setCollegeErr] = useState(false);
-  const [majorErr, setMajorErr] = useState(false);
-  const [gradTermErr, setGradTermErr] = useState(false);
-
-  const [fNameEmptyErr, setFirstNameEmptyErr] = useState(false);
-  const [lNameEmptyErr, setLastNameEmptyErr] = useState(false);
-  const [preferredNameEmptyErr, setPreferredNameEmptyErr] = useState(false);
-  const [pronounsEmptyErr, setPronounsEmptyErr] = useState(false);
-  const [collegeEmptyErr, setCollegeEmptyErr] = useState(false);
-  const [majorEmptyErr, setMajorEmptyErr] = useState(false);
-  const [gradTermEmptyErr, setGradTermEmptyErr] = useState(false);
-
-  const validateInput = () => {
-    // reset errors
-    setFirstNameEmptyErr(false);
-    setFirstNameErr(false);
-    setLastNameEmptyErr(false);
-    setLastNameErr(false);
-    setPreferredNameEmptyErr(false);
-    setPreferredNameErr(false);
-    setPronounsEmptyErr(false);
-    setPronounsErr(false);
-    setCollegeEmptyErr(false);
-    setCollegeErr(false);
-    setMajorEmptyErr(false);
-    setMajorErr(false);
-    setGradTermEmptyErr(false);
-    setGradTermErr(false);
-    setIsFormError(false);
-
-    // RegExp catches on anything but white space
-    const hasCharacter = new RegExp("[\\S]");
-    const hasLetter = new RegExp("[A-Za-z]");
-
-    // RegExp for special characters (anything except letters and whitespace));
-    const fnSpecialChar = new RegExp("[^A-Za-z\\s+]", "g");
-    if (fnSpecialChar.test(firstName)) {
-      setFirstNameErr(true);
-    }
-    if (!hasCharacter.test(firstName)) {
-      setFirstNameEmptyErr(true);
-    }
-
-    // RegExp for special characters (anything except letters and whitespace));
-    const lnSpecialChar = new RegExp("[^A-Za-z\\s+]", "g");
-    if (lnSpecialChar.test(lastName)) {
-      setLastNameErr(true);
-    }
-    if (!hasCharacter.test(lastName)) {
-      setLastNameEmptyErr(true);
-    }
-
-    // RegExp for special characters (anything except letters and whitespace));
-    const preferredNameSpecialChar = new RegExp("[^A-Za-z\\s+]", "g");
-    if (preferredNameSpecialChar.test(preferredName)) {
-      setPreferredNameErr(true);
-    }
-    if (!hasCharacter.test(preferredName)) {
-      setPreferredNameEmptyErr(true);
-    }
-
-    const pReg = new RegExp("[^A-Za-z\\s+/]", "g");
-    if (pReg.test(pronouns)) {
-      setPronounsErr(true);
-    }
-    if (!hasCharacter.test(pronouns)) {
-      setPronounsEmptyErr(true);
-    }
-
-    const cReg = new RegExp("[^A-Za-z\\s+.]", "g");
-    if (cReg.test(college)) {
-      setCollegeErr(true);
-    }
-    if (!hasCharacter.test(college) || !hasLetter.test(college)) {
-      setCollegeEmptyErr(true);
-    }
-
-    const mReg = new RegExp("[^A-Za-z\\s+.]", "g");
-    if (mReg.test(major)) {
-      setMajorErr(true);
-    }
-    if (!hasCharacter.test(major) || !hasLetter.test(major)) {
-      setMajorEmptyErr(true);
-    }
-
-    const gtReg = new RegExp("[^A-Za-z0-9\\s+]", "g");
-    if (gtReg.test(gradTerm)) {
-      setGradTermErr(true);
-    }
-    if (!hasCharacter.test(gradTerm)) {
-      setGradTermEmptyErr(true);
-    }
-
-    if (
-      fNameErr ||
-      lNameErr ||
-      preferredNameErr ||
-      pronounsErr ||
-      collegeErr ||
-      majorErr ||
-      gradTermErr ||
-      fNameEmptyErr ||
-      lNameEmptyErr ||
-      preferredNameEmptyErr ||
-      pronounsEmptyErr ||
-      collegeEmptyErr ||
-      majorEmptyErr ||
-      gradTermEmptyErr
-    ) {
-      setIsFormError(true);
-    }
+  const validateInput = (formData) => {
+    const errors = formData.map((input) => input === "");
+    const hasError = errors.some((error) => error);
+    setFormErrors(errors);
+    return hasError;
   };
 
-  const handleSubmit = () => {
-    validateInput();
-    if (!isFormError) {
-      navigate(`/Lab12/Exercise/PreWrongDiploma`);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = !isRepairComplete
+      ? [firstName, lastName, college, major, gradTerm]
+      : [
+          firstName,
+          lastName,
+          preferredName,
+          pronouns,
+          college,
+          major,
+          gradTerm,
+        ];
+
+    const error = validateInput(formData); // Validate the form
+
+    if (!error) {
+      navigate(`/Lab12/Exercise/PreWrongDiploma`); // If no errors, submit
+    } else {
+      console.log("Form contains errors.");
     }
   };
 
   return (
-    <div>
+    <Form onSubmit={handleSubmit}>
       <div className="tw-flex tw-justify-center">
         <div className="tw-mt-10 tw-shadow-2xl-top-bottom tw-rounded-3xl tw-min-w-72 tw-w-9/12 lg:tw-w-7/12 tw-h-full tw-p-10">
           <h1 className="tw-text-3xl tw-font-bold tw-mb-8">
@@ -194,107 +104,87 @@ const GradApplication = () => {
             <h2 className="tw-text-xl tw-font-semibold tw-mb-1.5">
               Personal Information:{" "}
             </h2>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label htmlFor="firstName" className="tw-pr-8">
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label htmlFor="firstName" className="tw-pr-8 tw-mb-0">
                 <span className="tw-text-error-red">*</span>
                 Legal First Name:
-              </label>
+              </Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="firstName"
                   label="Legal First Name"
                   placeholder="Ex: Jane"
+                  value={firstName}
                   onChange={(e) => {
                     setFirstName(e.target.value);
                   }}
                 />
-                {fNameErr && (
-                  <label
+                {formErrors[0] && (
+                  <Label
                     htmlFor="firstName"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     data-testid="invalid-char"
                   >
                     Error: Invalid character.
-                  </label>
-                )}
-                {fNameEmptyErr && (
-                  <label
-                    htmlFor="firstName"
-                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                  >
-                    Error: Input required.
-                  </label>
+                  </Label>
                 )}
               </div>
-            </div>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label htmlFor="lastName" className="tw-pr-8">
+            </FormGroup>
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label htmlFor="lastName" className="tw-pr-8 tw-mb-0">
                 <span className="tw-text-error-red">*</span>
                 Legal Last Name:
-              </label>
+              </Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="lastName"
                   placeholder="Ex: Smith"
+                  value={lastName}
                   onChange={(e) => {
                     setLastName(e.target.value);
                   }}
                 />
-                {lNameErr && (
-                  <label
-                    htmlFor="lastName"
-                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                    data-testid="invalid-char"
-                  >
-                    Error: Invalid character.
-                  </label>
-                )}
-                {lNameEmptyErr && (
-                  <label
+                {formErrors[1] && (
+                  <Label
                     htmlFor="lastName"
                     className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                   >
                     Error: Input required.
-                  </label>
+                  </Label>
                 )}
               </div>
-            </div>
+            </FormGroup>
             {isRepairComplete && (
-              <div className="sm:tw-flex tw-items-center tw-mb-6">
-                <label className="tw-pr-8">Preferred Name:</label>
+              <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+                <Label className="tw-pr-8 tw-mb-0">Preferred Name:</Label>
                 <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                   <Input
+                    type="text"
                     id="preferredName"
                     placeholder="Ex: Jay"
+                    value={preferredName}
                     onChange={(e) => {
                       setPreferredName(e.target.value);
                     }}
                   />
-                  {preferredNameErr && (
-                    <label
-                      htmlFor="preferredName"
-                      className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                      data-testid="invalid-char"
-                    >
-                      Error: Invalid character.
-                    </label>
-                  )}
-                  {preferredNameEmptyErr && (
-                    <label
+                  {formErrors[2] && (
+                    <Label
                       htmlFor="preferredName"
                       className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     >
                       Error: Input required.
-                    </label>
+                    </Label>
                   )}
                 </div>
-              </div>
+              </FormGroup>
             )}
             {isRepairComplete && (
-              <div className="sm:tw-flex tw-items-center tw-mb-6">
-                <label className="tw-pr-8">
+              <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+                <Label className="tw-pr-8 tw-mb-0">
                   <span className="tw-text-error-red">*</span>Pronouns:
-                </label>
+                </Label>
                 <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                   <ButtonDropdown
                     toggle={() => setDropdownOpen(!dropdownOpen)}
@@ -324,128 +214,105 @@ const GradApplication = () => {
                       </DropdownItem>
                     </DropdownMenu>
                   </ButtonDropdown>
-                  {pronounsErr && (
-                    <label
-                      htmlFor="pronouns"
-                      className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                      data-testid="invalid-char"
-                    >
-                      Error: Must make a selection.
-                    </label>
-                  )}
-                  {pronounsEmptyErr && (
-                    <label
+                  {formErrors[3] && (
+                    <Label
                       htmlFor="pronouns"
                       className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
                     >
-                      Error: Input required.
-                    </label>
+                      Error: Please make a selection.
+                    </Label>
                   )}
                 </div>
-              </div>
+              </FormGroup>
             )}
             <h3 className="tw-mt-14 tw-text-xl tw-font-semibold tw-mb-1.5">
               Academic Information:{" "}
             </h3>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label className="tw-pr-8">College:</label>
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label className="tw-pr-8 tw-mb-0">College:</Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="college"
                   placeholder="Ex: RIT"
+                  value={college}
                   onChange={(e) => {
                     setCollege(e.target.value);
                   }}
                 />
-                {collegeErr && (
-                  <label
-                    htmlFor="college"
-                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                    data-testid="invalid-char"
-                  >
-                    Error: Invalid character.
-                  </label>
-                )}
-                {collegeEmptyErr && (
-                  <label
-                    htmlFor="college"
-                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                  >
-                    Error: Input required.
-                  </label>
-                )}
+                {isRepairComplete
+                  ? formErrors[4]
+                  : formErrors[2] && (
+                      <Label
+                        htmlFor="college"
+                        className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                      >
+                        Error: Input required.
+                      </Label>
+                    )}
               </div>
-            </div>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label className="tw-pr-8">Major:</label>
+            </FormGroup>
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label className="tw-pr-8 tw-mb-0">Major:</Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="major"
                   placeholder="Ex: CS"
+                  value={major}
                   onChange={(e) => {
                     setMajor(e.target.value);
                   }}
                 />
-                {majorErr && (
-                  <label
-                    htmlFor="major"
-                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                    data-testid="invalid-char"
-                  >
-                    Error: Invalid character.
-                  </label>
-                )}
-                {majorEmptyErr && (
-                  <label
-                    htmlFor="major"
-                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                  >
-                    Error: Input required.
-                  </label>
-                )}
+                {isRepairComplete
+                  ? formErrors[6]
+                  : formErrors[3] && (
+                      <Label
+                        htmlFor="major"
+                        className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                      >
+                        Error: Input required.
+                      </Label>
+                    )}
               </div>
-            </div>
-            <div className="sm:tw-flex tw-items-center tw-mb-6">
-              <label className="tw-pr-8">Graduation Term:</label>
+            </FormGroup>
+            <FormGroup className="sm:tw-flex tw-items-center tw-mb-6">
+              <Label className="tw-pr-8 tw-mb-0">Graduation Term:</Label>
               <div className="tw-flex tw-flex-col tw-max-w-72 tw-w-full sm:tw-w-8/12 md:tw-w-6/12">
                 <Input
+                  type="text"
                   id="gradTerm"
                   placeholder="Ex: Spring 2024"
+                  value={gradTerm}
                   onChange={(e) => {
                     setGradTerm(e.target.value);
                   }}
                 />
-                {gradTermErr && (
-                  <label
-                    htmlFor="gradTerm"
-                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                    data-testid="invalid-char"
-                  >
-                    Error: Invalid character.
-                  </label>
-                )}
-                {gradTermEmptyErr && (
-                  <label
-                    htmlFor="gradTerm"
-                    className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
-                  >
-                    Error: Input required.
-                  </label>
-                )}
+                {isRepairComplete
+                  ? formErrors[7]
+                  : formErrors[4] && (
+                      <Label
+                        htmlFor="gradTerm"
+                        className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                      >
+                        Error: Input required.
+                      </Label>
+                    )}
               </div>
-            </div>
+            </FormGroup>
           </div>
-          <button
+          <Button
+            type="submit"
             className="tw-text-error-red tw-mt-8 btn-primary btn btn-md"
-            onClick={() => {
-              handleSubmit();
+            onClick={(e) => {
+              handleSubmit(e);
             }}
           >
             Submit Application
-          </button>{" "}
+          </Button>
         </div>
       </div>
-    </div>
+    </Form>
   );
 };
 

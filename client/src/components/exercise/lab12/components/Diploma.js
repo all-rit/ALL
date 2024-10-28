@@ -15,27 +15,21 @@ const Diploma = () => {
   );
   const [isRepairComplete, setIsRepairComplete] = useState(false);
 
-  const user = state.main.user;
-
   const fetchExercise = async () => {
-    try {
-      const currentExercise = await ExerciseService.fetchExercise({
-        userid: user.userid,
-      });
-      if (
-        currentExercise.isFormRepairComplete &&
-        !currentExercise.isDatabaseRepairComplete
-      ) {
-        setButtonLabel("Continue");
-        setNextPage("/Lab12/Exercise/PreDbRepair");
-      }
-      setIsRepairComplete(
-        currentExercise.isFormRepairComplete &&
-          currentExercise.isDatabaseRepairComplete,
-      );
-    } catch (error) {
-      console.error("Error fetching exercise: ", error);
+    const currentExercise = await ExerciseService.fetchExercise({
+      userid: state.main.user.userid,
+    });
+    if (
+      currentExercise.isFormRepairComplete &&
+      !currentExercise.isDatabaseRepairComplete
+    ) {
+      setButtonLabel("Continue");
+      setNextPage("/Lab12/Exercise/PreDbRepair");
     }
+    setIsRepairComplete(
+      currentExercise.isFormRepairComplete &&
+        currentExercise.isDatabaseRepairComplete,
+    );
   };
 
   useEffect(() => {

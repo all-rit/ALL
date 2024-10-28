@@ -3089,9 +3089,8 @@ e'[
    "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
    "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
    "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
-]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than Male or Female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
-“next
-” to start!', e'{
+]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than male or female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
+“next” to start!', e'{
  "piechart": {
        "header":"Inclusive Forms",
       "caption":["59% of Gen Z believes forms should have options outside of male and female"],
@@ -3104,7 +3103,7 @@ e'[
             {
               "label": "Color Visions Deficiencies in a Population of 10,000 People",
               "borderColor": "black",
-              "backgroundColor": ["#ACADBC","#473BF0"],
+              "backgroundColor": ["#FFC107","#004D40"],
               "data": [59, 41],
               "borderWidth": "2"
             }
@@ -3154,7 +3153,7 @@ e'[
            "content": [
                {
                    "name": "Fostering Inclusive Environments in the Workplace",
-                   "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx#:~:text=A%20model%20inclusion%20policy%20created,a%20court%2Dordered%20name%20change."
+                   "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
                },
                {
                    "name": "Using Preferred Names at Work",
@@ -3171,8 +3170,8 @@ e'[
    "footer":{
       "links":[
          {
-            "name":"Approaching Gender in Software Products",
-            "link":"https://blog.carbonfive.com/approaching-gender-in-software-products/"
+            "name":"Inclusive Design Best Practices",
+            "link":"https://vorecol.com/blogs/blog-best-practices-for-designing-inclusive-software-interfaces-for-gender-diversity-177983"
          }
       ]
    }
