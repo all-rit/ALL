@@ -7,9 +7,11 @@ const title = "Sample Lab Name Here This Long";
 
 const Main = () => {
   return (
-    <div className={"tw-flex tw-mx-12"}>
-      <NavigationPane title={title} />
-      <LabScreen />
+    <div>
+      <div className={"tw-flex tw-mx-12"}>
+        <NavigationPane title={title} />
+        <LabScreen />
+      </div>
       <Carousel />
     </div>
   );

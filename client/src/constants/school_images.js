@@ -9,4 +9,14 @@ export const images = [
     alt: "RIT",
     img: "participating_schools/RIT",
   },
+  {
+    id: 3,
+    alt: "Ohio State University",
+    img: "participating_schools/OhioState",
+  },
+  {
+    id: 4,
+    alt: "Daytona State College",
+    img: "participating_schools/DaytonaState",
+  },
 ];
