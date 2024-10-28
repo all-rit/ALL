@@ -95,7 +95,11 @@ const App = () => {
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
-              <LabsPage path={"/Labs"} user={state.main.user} />
+              <LabsPage
+                path={"/Labs"}
+                user={state.main.user}
+                actions={actions}
+              />
               <Error actions={actions} default />
 
               <Imagine
