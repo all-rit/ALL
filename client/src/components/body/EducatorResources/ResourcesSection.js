@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   GROUP_OVERVIEW,
   LAB_OVERVIEW,
@@ -7,17 +7,28 @@ import LabService from "../../../services/LabService";
 import ResourceRow from "./components/ResourceRow";
 
 const ResourcesSection = () => {
-  const [displayedResource, setDisplayedResource] = useState("");
+  const [displayedResource, setDisplayedResource] = useState("Overview");
   const [labs, setLabs] = useState([]);
+
+  const resourceBody = useRef(null);
+  const [width, setWidth] = useState(0);
+
   const getLabs = async () => {
     const labData = await LabService.getAllLabs();
     setLabs(labData);
   };
 
   useEffect(() => {
-    setDisplayedResource("Overview");
     getLabs();
-  }, []);
+    const changeWidth = () => {
+      if (resourceBody.current) {
+        setWidth(resourceBody.current.offsetWidth + 24);
+      }
+    };
+    changeWidth();
+    console.warn(width);
+    window.addEventListener("resize", changeWidth);
+  }, [width]);
 
   const displayOverview = () => {
     setDisplayedResource("Overview");
@@ -34,21 +45,22 @@ const ResourcesSection = () => {
   return (
     <div
       className={
-        "tw-w-full tw-min-h-[40rem] tw-bg-primary-blue tw-flex tw-flex-row tw-justify-end tw-items-center tw-py-6"
+        "tw-w-full tw-min-h-[40rem] tw-bg-primary-blue tw-flex tw-flex-row tw-justify-end tw-items-center tw-py-6 "
       }
     >
       <div
         className={
-          "tw-bg-white tw-w-[85%] tw-rounded-tl-lg tw-rounded-bl-3xl tw-my-16"
+          "tw-bg-white tw-w-[85%] tw-rounded-tl-lg tw-rounded-bl-3xl tw-my-16 tw-relative tw-z-10"
         }
+        ref={resourceBody}
       >
         <div
-          className="tw-flex tw-flex-col tw-text-left xs:tw-w-full tw-p-10 tw-rounded-bl-2xl
-                    tw-justify-center tw-border-solid tw-border-[1rem] tw-border-primary-yellow tw-border-t-0 tw-border-r-0"
+          className="tw-flex tw-flex-col tw-text-left xs:tw-w-full tw-p-10 tw-rounded-l-2xl
+                    tw-justify-center tw-z-10 tw-bg-white "
         >
           <p
             className={
-              "tw-font-poppins tw-font-bold xxs:tw-text-md md:tw-text-3xl"
+              "tw-font-poppins tw-font-bold xxs:tw-text-md md:tw-text-3xl tw-z-10 "
             }
           >
             {" "}
@@ -56,12 +68,12 @@ const ResourcesSection = () => {
           </p>
           <div
             className={
-              "md:tw-flex xs:tw-grid xs:tw-grid-cols-2 md:tw-flex-row tw-gap-3 tw-my-3"
+              "md:tw-flex xs:tw-grid xs:tw-grid-cols-2 md:tw-flex-row tw-gap-3 tw-my-3 tw-z-10 "
             }
           >
             <button
               className={
-                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white hover:tw-bg-primary-yellow focus:tw-bg-primary-yellow tw-z-10"
               }
               onClick={displayOverview}
             >
@@ -69,7 +81,7 @@ const ResourcesSection = () => {
             </button>
             <button
               className={
-                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white hover:tw-bg-primary-yellow focus:tw-bg-primary-yellow tw-z-10"
               }
               onClick={displayWalkthrough}
             >
@@ -77,14 +89,14 @@ const ResourcesSection = () => {
             </button>
             <button
               className={
-                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white hover:tw-bg-primary-yellow focus:tw-bg-primary-yellow"
               }
               onClick={displayGroups}
             >
               Leading a Group
             </button>
           </div>
-          <div className={"tw-w-full"}>
+          <div className={"tw-w-full tw-z-10 tw-bg-white"}>
             {displayedResource === "Overview" && (
               <ul>
                 {LAB_OVERVIEW.map((lab) => {
@@ -144,6 +156,14 @@ const ResourcesSection = () => {
             )}
           </div>
         </div>
+        <div
+          className={`tw-absolute tw-h-[95%] tw-border-solid tw-border-[1.5rem] tw-bg-white
+              tw-border-primary-yellow tw-border-t-0 tw-border-r-0 tw-left-[-1rem] tw-bottom-[-1rem] tw-rounded-bl-lg tw--z-10`}
+          style={{
+            width: `${width}px`,
+            paddingLeft: "1rem",
+          }}
+        />
       </div>
     </div>
   );

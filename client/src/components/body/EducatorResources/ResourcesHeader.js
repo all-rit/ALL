@@ -4,17 +4,17 @@ const ResourcesHeader = () => {
   return (
     <div
       className={
-        "tw-w-full xs:tw-h-[30rem] md:tw-h-[30rem] lg:tw-h-[30rem] tw-bg-primary-blue tw-relative tw-mb-[5rem]"
+        "tw-w-full tw-h-[40rem] tw-bg-primary-blue tw-relative tw-mb-[5rem]"
       }
     >
       <div
         className={
-          "tw-bg-primary-yellow tw-h-1/2 tw-w-[86.5%] tw-absolute tw-right-0 tw-top-[35%] tw-rounded-bl-2xl"
+          "tw-bg-primary-yellow tw-h-1/2 tw-w-[86.5%] tw-absolute tw-right-0 tw-top-[35%] tw-rounded-bl-lg"
         }
       ></div>
       <div
         className={
-          "tw-bg-white tw-h-3/5 tw-w-[85%] tw-absolute tw-right-0 tw-top-[20%] tw-rounded-tl-lg tw-rounded-bl-lg"
+          "tw-bg-white tw-h-3/5 tw-w-[85%] tw-absolute tw-right-0 tw-top-[20%] tw-rounded-l-lg"
         }
       >
         <div

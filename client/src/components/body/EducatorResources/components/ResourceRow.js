@@ -11,17 +11,19 @@ const ResourceRow = (props) => {
     <li key={id} className={"tw-my-5"}>
       <div className={"tw-flex xs:tw-flex-col md:tw-flex-row"}>
         <div
-          className={"tw-flex tw-flex-col xs:tw-w-full md:tw-w-1/2 tw-gap-3"}
+          className={
+            "tw-flex tw-flex-col xs:tw-w-full md:tw-w-1/2 tw-gap-3 xs:tw-items-center md:tw-items-start"
+          }
         >
           <p className={"tw-font-calibri tw-font-extrabold tw-text-xl"}>
             {id ? `Lab ${id}:` : ""} {title}
           </p>
-          <p className="xs:tw-text-xs md:tw-text-sm tw-text-justify tw-leading-normal">
+          <p className="xs:tw-text-xs md:tw-text-[1.125rem] tw-text-justify tw-leading-normal">
             <hr />
             {description}
           </p>
           {slides && !slides.includes(COMING_SOON) && (
-            <a href={slides} download>
+            <a href={slides} download className={"tw-py-6"}>
               <ALLButton label={`Download Slideshow`} />
             </a>
           )}
@@ -31,9 +33,9 @@ const ResourceRow = (props) => {
             <img
               src={image}
               className="tw-object-cover tw-rounded-lg tw-border-solid tw-border-primary-blue tw-border-[0.5rem]
-                xs:tw-h-[200px] xs:tw-w-[200px]
-                md:tw-h-[250px] md:tw-w-[250px]
-                lg:tw-h-[350px] lg:tw-w-[350px]"
+                xs:tw-h-[12.5rem] xs:tw-w-[12.5rem]
+                md:tw-h-[15.625rem] md:tw-w-[15.625rem]
+                lg:tw-h-[21.875rem] lg:tw-w-[21.875rem]"
             />
           ) : (
             <div>
@@ -44,8 +46,8 @@ const ResourceRow = (props) => {
                     : walkthroughVideo
                 }
                 className="tw-object-cover tw-rounded-lg tw-border-solid tw-border-primary-blue tw-border-[0.5rem]
-                    xs:tw-h-[200px] xs:tw-w-[200px]
-                    lg:tw-h-[350px] lg:tw-w-[350px]"
+                    xs:tw-h-[12.5rem] xs:tw-w-[12.5rem]
+                    lg:tw-h-[21.875rem] lg:tw-w-[21.875rem]"
               />
               <p className={"tw-text-sm tw-text-center tw-font-medium"}>
                 {" "}
