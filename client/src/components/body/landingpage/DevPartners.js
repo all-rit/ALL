@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import PartnerGeneration from "./citation/PartnerGeneration";
+import ALLButton from "src/components/all-components/ALLButton";
+import { navigate } from "@reach/router";
 
 const DevPartners = () => {
+  const handleNav = () => {
+    navigate("/#");
+  };
+
   return (
     <div className="tw-bg-labBlue tw-py-16 sm:tw-py-24 lg:tw-py-28 tw-pl-4 lg:tw-pl-36">
       <div className="tw-bg-labYellow lg:tw-h-60 tw-rounded-bl-md tw-pl-3 lg:tw-relative lg:tw-pb-20">
@@ -16,9 +22,7 @@ const DevPartners = () => {
               libero, quis blandit nibh feugiat malesuada. Interdum et malesuada
               fames ac ante ipsum primis in faucibus.
             </p>
-            <button className="btn lg:tw-ml-10 tw-w-36 tw-border-b-labYellow tw-border-l-labYellow tw-border-t-labBlue tw-border-r-labBlue tw-border-4">
-              Learn More
-            </button>
+            <ALLButton label={"Learn More"} onClick={handleNav}></ALLButton>
           </div>
         </div>
       </div>

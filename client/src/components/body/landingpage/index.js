@@ -11,6 +11,8 @@ import ProfileGeneration from "./citation/ProfileGeneration";
 import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
 import DevPartners from "./DevPartners";
 import MainFooter from "../../footer/mainFooter";
+import GettingInvolved from "../../all-components/GettingInvolved";
+import AboutUs from "../../all-components/AboutUs";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -95,7 +97,8 @@ const Home = (props) => {
       </section>
       {/* Team Citation */}
       <div id="citation" />
-
+      <GettingInvolved />
+      <AboutUs />
       <HorizontalLine />
 
       <ProfileGeneration />
@@ -179,6 +182,7 @@ const Home = (props) => {
           </li>
         </ul>
       </footer>
+
       <MainFooter />
     </div>
   );
