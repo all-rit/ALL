@@ -113,7 +113,7 @@ const Reading = (props) => {
   return (
     <div
       className={
-        "tw-w-full tw-flex tw-flex-row tw-align-top tw-justify-center tw-overflow-scroll tw-max-h-[40rem] tw-rounded-lg"
+        "tw-w-full tw-flex tw-flex-row tw-align-top tw-justify-center tw-overflow-y-scroll tw-h-[42rem] tw-rounded-4xl"
       }
     >
       <div className="tw-w-full">

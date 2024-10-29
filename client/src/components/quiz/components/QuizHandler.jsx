@@ -60,7 +60,7 @@ const QuizHandler = (props) => {
   /**
    * HandleNext() is a function that is responsible for allowing the user to
    * iterate to the next question. this will then update the disabling for the
-   * selection on on the next question as it iterates to the next option
+   * selection on the next question as it iterates to the next option
    */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
@@ -70,6 +70,20 @@ const QuizHandler = (props) => {
       setDisableNext(true);
     }
   }
+
+  /**
+   * handleBack() is a function that allows the user to
+   * return to the previous question
+   */
+  const handleBack = () => {
+    if (currentQuestionCursor < questions.length) {
+      let updateCursor = currentQuestionCursor - 1;
+      setCurrentQuestionCursor(updateCursor);
+      setAnswerOption(questions[updateCursor].answers);
+      setDisableNext(true);
+    }
+  };
+
   /**
    * onComplete is a function that is responsible for preparing and running the
    * calculations to grade a users responses to the quiz. This will then prepare the data
@@ -242,7 +256,7 @@ const QuizHandler = (props) => {
   }
 
   return (
-    <>
+    <div className={"tw-h-[43rem] tw-rounded-lg"}>
       {!props.quizCompleted ? (
         <Quiz
           answer={""}
@@ -251,6 +265,7 @@ const QuizHandler = (props) => {
           multiChoice={questions[currentQuestionCursor].multiChoice}
           multiSelectedEntry={selectMulti}
           nextQuestion={handleNext}
+          lastQuestion={handleBack}
           onAnswerSelected={selectAnswer}
           onComplete={onComplete}
           questionId={currentQuestionCursor + 1}
@@ -268,7 +283,7 @@ const QuizHandler = (props) => {
           lab={currentLabId}
         ></Result>
       )}
-    </>
+    </div>
   );
 };
 QuizHandler.propTypes = {

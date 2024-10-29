@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 function QuestionCount(props) {
   return (
-    <div className="quiz questionCount">
-      Question <span>{props.counter}</span> of <span>{props.total}</span>
+    <div className="tw-font-calibri tw-font-bold tw-text-[1.125rem]">
+      Question <span>{props.counter}</span>:
     </div>
   );
 }

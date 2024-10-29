@@ -86,7 +86,7 @@ const App = () => {
     <>
       <div className="overflow-x-hidden tw-h-lvh">
         <Header />
-        <div className="appBody tw-min-h-[50rem]">
+        <div className="appBody tw-min-h-[50rem] tw-relative">
           <div
             className={
               "" +
@@ -112,7 +112,7 @@ const App = () => {
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? "tw-absolute tw-top-[0rem] tw-right-[0rem] xs:tw-w-full lg:tw-w-[70%] tw-relative tw-mx-6" : "tw-w-full"}`}
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? "tw-absolute tw-right-[0rem] xs:tw-w-full lg:tw-w-[70%] tw-mx-6 tw-top-0" : "tw-w-full"}`}
             >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
