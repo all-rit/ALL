@@ -23,7 +23,7 @@ const WhatsAvailable = () => {
             >
               <p
                 className={
-                  "tw-title-styling-name xs:tw-text-[1.5rem]  md:tw-text-3xl tw-my-3 tw-font-poppins md:lg:tw-w-1/2 tw-leading-tight"
+                  "tw-title-styling-name xs:tw-text-[1.5rem] md:tw-text-[1.5rem] tw-my-3 tw-font-poppins md:lg:tw-w-1/2 tw-leading-tight"
                 }
               >
                 {" "}
@@ -36,7 +36,7 @@ const WhatsAvailable = () => {
               >
                 <p
                   className={
-                    "tw-font-calibri tw-font-medium sm:tw-text-sm xs:tw-text-xs tw-text-justify"
+                    "tw-font-calibri tw-font-medium md:tw-text-[1.125rem] xs:tw-text-xs tw-text-justify tw-leading-normal"
                   }
                 >
                   {" "}

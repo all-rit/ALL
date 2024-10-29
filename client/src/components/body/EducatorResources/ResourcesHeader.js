@@ -19,7 +19,7 @@ const ResourcesHeader = () => {
       >
         <div
           className={
-            "tw-flex tw-flex-col tw-text-left xs:tw-w-full md:tw-w-3/4 lg:tw-w-1/2 tw-h-full tw-p-10  tw-justify-center"
+            "tw-flex tw-flex-col tw-text-left xs:tw-w-full md:tw-w-3/4 lg:tw-w-1/2 tw-h-full tw-p-10 tw-justify-center"
           }
         >
           <p

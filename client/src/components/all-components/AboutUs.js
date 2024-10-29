@@ -21,7 +21,7 @@ const AboutUs = () => {
           }
         >
           <div
-            className={`tw-flex xs:tw-flex-col md:tw-flex-row tw-text-left xs:tw-w-full md:tw-w-1/2 tw-p-3`}
+            className={`tw-flex xs:tw-flex-col md:tw-flex-row tw-text-left xs:tw-w-full md:tw-w-1/2 tw-p-3 tw-min-h-[15rem]`}
           >
             <div
               className={
@@ -64,7 +64,7 @@ const AboutUs = () => {
         <div
           ref={yellowBlock}
           className={
-            "tw-bg-primary-yellow tw-w-1/2 xs:tw-h-1/2 md:tw-h-3/4 tw-my-10"
+            "tw-bg-primary-yellow tw-w-1/2 xs:tw-h-1/2 md:tw-h-3/4 tw-my-[5rem]"
           }
         >
           {/*TODO: Placeholder for Stock Image*/}
