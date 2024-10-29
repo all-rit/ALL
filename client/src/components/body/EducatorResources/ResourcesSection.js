@@ -58,19 +58,25 @@ const ResourcesSection = () => {
             }
           >
             <button
-              className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
+              className={
+                "btn btn-primary xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+              }
               onClick={displayOverview}
             >
               Lab Overview
             </button>
             <button
-              className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
+              className={
+                "btn btn-primary xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+              }
               onClick={displayWalkthrough}
             >
               Learning Materials
             </button>
             <button
-              className={"btn btn-primary xs:tw-text-xs md:tw-text-[1rem]"}
+              className={
+                "btn btn-primary xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+              }
               onClick={displayGroups}
             >
               Leading a Group

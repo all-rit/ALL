@@ -1,15 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import nsf from "../../../assets/images/logos/nsf.png";
-import rit from "../../../assets/images/logos/RIT.png";
-// import handleRedirect from "../../../helpers/Redirect";
 import { actions as mainActions } from "../../../reducers/MainReducer";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
 import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
-import MainFooter from "../../footer/mainFooter";
 import GettingInvolved from "../../all-components/GettingInvolved";
 import AboutUs from "../../all-components/AboutUs";
 
@@ -101,43 +97,6 @@ const Home = (props) => {
       <HorizontalLine />
 
       <ProfileGeneration />
-      <HorizontalLine />
-
-      {/* Clients */}
-      <section className="py-5">
-        <div className="container">
-          <div className="row landingpage__logos">
-            <div className="col-sm-4">
-              <a
-                href="https://www.nsf.gov"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className="d-block mx-auto landingpage__logo"
-                  src={nsf}
-                  alt="National Science Foundation"
-                />
-              </a>
-            </div>
-            <div className="col-sm-4">
-              <a
-                href="https://www.rit.edu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className=" d-block mx-auto landingpage__logo"
-                  src={rit}
-                  alt="Rochester Institute Of Technology"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <MainFooter />
     </div>
   );
 };

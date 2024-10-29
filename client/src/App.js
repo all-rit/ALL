@@ -41,6 +41,7 @@ import { globalHistory } from "@reach/router";
 const parse = require("url-parse");
 import useMainStateContext from "./reducers/MainContext";
 import EducatorResources from "./components/body/EducatorResources/EducatorResources";
+import MainFooter from "./components/footer/mainFooter";
 
 const mapStateToProps = (state) => {
   return {
@@ -156,6 +157,7 @@ const App = () => {
             </Router>
           </div>
         </div>
+        <MainFooter />
         <Change
           context={context}
           quizCompleted={quizCompleted}
