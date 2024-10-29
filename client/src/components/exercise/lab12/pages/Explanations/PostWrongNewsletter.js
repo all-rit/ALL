@@ -13,10 +13,10 @@ const PostWrongDiploma = () => {
       <div className="guidance margin-bottom-2">
         <p className="playthrough__sentence">
           As with before, the alumni newsletter used your non-preferred name.
-          Since we as a community should be as inclusive as possible to those
-          around us, even if their beliefs contradict your own, this makes you
-          unrecognized by your college, a place where you spent some much time
-          and made so many friends.
+          This makes you unrecognized by your college, a place where you spent
+          some much time and made so many friends. As a community, we should be
+          as inclusive as possible to those around us, even if their beliefs
+          contradict your own
         </p>
         <p className="playthrough__sentence">
           Think about the difference a single input box would have made in this

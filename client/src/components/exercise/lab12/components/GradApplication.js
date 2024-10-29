@@ -241,7 +241,14 @@ const GradApplication = () => {
                   }}
                 />
                 {isRepairComplete
-                  ? formErrors[4]
+                  ? formErrors[4] && (
+                      <Label
+                        htmlFor="college"
+                        className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                      >
+                        Error: Input required.
+                      </Label>
+                    )
                   : formErrors[2] && (
                       <Label
                         htmlFor="college"
@@ -265,7 +272,14 @@ const GradApplication = () => {
                   }}
                 />
                 {isRepairComplete
-                  ? formErrors[6]
+                  ? formErrors[6] && (
+                      <Label
+                        htmlFor="college"
+                        className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                      >
+                        Error: Input required.
+                      </Label>
+                    )
                   : formErrors[3] && (
                       <Label
                         htmlFor="major"
@@ -289,7 +303,14 @@ const GradApplication = () => {
                   }}
                 />
                 {isRepairComplete
-                  ? formErrors[7]
+                  ? formErrors[7] && (
+                      <Label
+                        htmlFor="gradTerm"
+                        className="tw-text-error-red tw-text-sm tw-pl-4 tw-italic"
+                      >
+                        Error: Input required.
+                      </Label>
+                    )
                   : formErrors[4] && (
                       <Label
                         htmlFor="gradTerm"

@@ -46,7 +46,7 @@ const KeyTakeaways = () => {
         </ul>
       </div>
       <div className="playthrough__sentence">
-        Click the &quot;Next&quot; button to move on the the Reinforcement
+        Click the &quot;Continue&quot; button to move on the the Reinforcement
         Section!
       </div>
       <button

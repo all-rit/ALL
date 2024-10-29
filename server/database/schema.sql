@@ -3090,10 +3090,10 @@ e'[
    "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
    "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
 ]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than male or female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
-“next” to start!', e'{
+“Next” to start!', e'{
  "piechart": {
        "header":"Inclusive Forms",
-      "caption":["59% of Gen Z believes forms should have options outside of male and female"],
+      "caption":["59% of Gen Z believes forms should have options outside of male and female."],
       "data": {
          "labels": [
             "Gen Zers who believe forms should have options outside of male / female",
@@ -3101,7 +3101,7 @@ e'[
            ],
            "datasets": [
             {
-              "label": "Color Visions Deficiencies in a Population of 10,000 People",
+              "label": "Inclusive Forms",
               "borderColor": "black",
               "backgroundColor": ["#FFC107","#004D40"],
               "data": [59, 41],
@@ -3123,7 +3123,7 @@ e'[
            "content": [
                {
                    "name": "2023 LGBTQ+ Youth Report Survey",
-                   "link": "https://reports.hrc.org/2023-lgbtq-youth-report?_ga=2.167609654.968366084.1711659164-297823230.1711659164#gender-identity"
+                   "link": "https://reports.hrc.org/2023-lgbtq-youth-report"
                }
            ]
        },

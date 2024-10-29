@@ -41,7 +41,7 @@ const DatabaseRepair = () => {
       fetchRepair={fetchRepair}
       submitRepair={postRepair}
       repairText={[
-        "In this section you will be making changes to the sql database file that  creates the table for our user's data.",
+        "In this section you will be making changes to the SQL database file that creates the table for our user's data.",
       ]}
       CodeImplementation={
         <DatabaseRepairImplementation

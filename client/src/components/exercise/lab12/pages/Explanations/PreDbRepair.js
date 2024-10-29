@@ -16,7 +16,7 @@ const PreDbRepair = () => {
           updated the form.
         </p>
         <p className="playthrough__sentence">
-          Thats because we need to update the database table as well to take in
+          That’s because we need to update the database table as well to take in
           the newly available preferredName and pronouns values.
         </p>
       </div>

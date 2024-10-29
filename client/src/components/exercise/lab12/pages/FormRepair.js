@@ -41,8 +41,7 @@ const FormRepair = () => {
       fetchRepair={fetchRepair}
       submitRepair={postRepair}
       repairText={[
-        "In this section you will be making changes to the IdentityForm.js file that handles inputs in the previous form." +
-          "Once completed, click the next button to fill out the updated form!",
+        'In this section you will be making changes to the IdentityForm.js file that handles inputs in the previous form. Once completed, click the "Next" button to fill out the updated form!',
       ]}
       CodeImplementation={
         <FormRepairImplementation
