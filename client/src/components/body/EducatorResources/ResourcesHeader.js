@@ -4,7 +4,7 @@ const ResourcesHeader = () => {
   return (
     <div
       className={
-        "tw-w-full xs:tw-h-[30rem] md:tw-h-[30rem] lg:tw-h-[30rem] tw-bg-primary-blue tw-relative"
+        "tw-w-full xs:tw-h-[30rem] md:tw-h-[30rem] lg:tw-h-[30rem] tw-bg-primary-blue tw-relative tw-mb-[5rem]"
       }
     >
       <div
@@ -19,7 +19,7 @@ const ResourcesHeader = () => {
       >
         <div
           className={
-            "tw-flex tw-flex-col tw-text-left xs:tw-w-full md:lg:tw-w-7/12 tw-h-full tw-p-10  tw-justify-center"
+            "tw-flex tw-flex-col tw-text-left xs:tw-w-full md:tw-w-3/4 lg:tw-w-1/2 tw-h-full tw-p-10  tw-justify-center"
           }
         >
           <p
@@ -30,9 +30,13 @@ const ResourcesHeader = () => {
             {" "}
             Educator Resources{" "}
           </p>
-          <p className={"xs:tw-text-xs md:tw-text-sm tw-text-justify"}>
+          <p
+            className={
+              "xs:tw-text-xs md:tw-text-[1.125rem] tw-text-justify tw-leading-normal"
+            }
+          >
             {" "}
-            Welcome to Accessible Learning labs Educators Resources! Below, you
+            Welcome to Accessible Learning Labs Educators Resources! Below, you
             will find everything you need to begin using our interactive,
             intuitive learning labs, including lab structure, walkthrough
             videos, lecture slides, and how to create learning groups!

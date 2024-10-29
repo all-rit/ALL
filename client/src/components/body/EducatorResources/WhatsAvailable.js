@@ -1,13 +1,8 @@
 import React from "react";
 import ALLButton from "../../all-components/ALLButton";
-// import { navigate } from "@reach/router";
 const WhatsAvailable = () => {
-  // const downloadPDF = () => {
-  //
-  // }
-
   return (
-    <div className={"tw-h-[30rem] tw-w-full"}>
+    <div className={"tw-h-[30rem] tw-w-full tw-mb-[5rem]"}>
       <div
         className={
           "tw-h-full tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"
@@ -28,7 +23,7 @@ const WhatsAvailable = () => {
             >
               <p
                 className={
-                  "tw-title-styling-name xs:tw-text-[1.5rem]  md:tw-text-3xl tw-my-3 tw-font-poppins md:lg:tw-w-1/2"
+                  "tw-title-styling-name xs:tw-text-[1.5rem]  md:tw-text-3xl tw-my-3 tw-font-poppins md:lg:tw-w-1/2 tw-leading-tight"
                 }
               >
                 {" "}
@@ -55,10 +50,7 @@ const WhatsAvailable = () => {
                     "tw-h-full tw-w-full tw-flex tw-flex-row tw-justify-end tw-py-5"
                   }
                 >
-                  <ALLButton
-                    label={"Learn More"}
-                    // onClick={handleNav}
-                  ></ALLButton>
+                  <ALLButton label={"Learn More"}></ALLButton>
                 </div>
               </div>
             </div>

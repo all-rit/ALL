@@ -5,8 +5,7 @@ import ComingSoon from "../../../../assets/images/ComingSoonVideo.svg";
 import { COMING_SOON } from "../../../../constants/educatorResources/LabOverview";
 
 const ResourceRow = (props) => {
-  const { id, title, subTitle, description, image, walkthroughVideo, slides } =
-    props;
+  const { id, title, description, image, walkthroughVideo, slides } = props;
 
   return (
     <li key={id} className={"tw-my-5"}>
@@ -17,13 +16,13 @@ const ResourceRow = (props) => {
           <p className={"tw-font-calibri tw-font-extrabold tw-text-xl"}>
             {id ? `Lab ${id}:` : ""} {title}
           </p>
-          <p className="xs:tw-text-xs md:tw-text-sm tw-text-justify">
+          <p className="xs:tw-text-xs md:tw-text-sm tw-text-justify tw-leading-normal">
             <hr />
             {description}
           </p>
           {slides && !slides.includes(COMING_SOON) && (
             <a href={slides} download>
-              <ALLButton label={`Download ${subTitle} Slideshow`} />
+              <ALLButton label={`Download Slideshow`} />
             </a>
           )}
         </div>
@@ -63,7 +62,6 @@ const ResourceRow = (props) => {
 ResourceRow.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
-  subTitle: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
   slides: PropTypes.string,

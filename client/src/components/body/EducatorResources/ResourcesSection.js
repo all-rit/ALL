@@ -38,7 +38,9 @@ const ResourcesSection = () => {
       }
     >
       <div
-        className={"tw-bg-white tw-w-[85%] tw-rounded-tl-lg tw-rounded-bl-3xl"}
+        className={
+          "tw-bg-white tw-w-[85%] tw-rounded-tl-lg tw-rounded-bl-3xl tw-my-16"
+        }
       >
         <div
           className="tw-flex tw-flex-col tw-text-left xs:tw-w-full tw-p-10 tw-rounded-bl-2xl
@@ -59,7 +61,7 @@ const ResourcesSection = () => {
           >
             <button
               className={
-                "btn btn-primary xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
               }
               onClick={displayOverview}
             >
@@ -67,7 +69,7 @@ const ResourcesSection = () => {
             </button>
             <button
               className={
-                "btn btn-primary xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
               }
               onClick={displayWalkthrough}
             >
@@ -75,7 +77,7 @@ const ResourcesSection = () => {
             </button>
             <button
               className={
-                "btn btn-primary xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
+                "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white focus:tw-bg-primary-yellow"
               }
               onClick={displayGroups}
             >

@@ -9,7 +9,7 @@ const AboutUs = () => {
   };
 
   return (
-    <div className={"tw-h-[20rem] tw-w-full"}>
+    <div className={"tw-h-[20rem] tw-w-full tw-mt-[5rem] tw-mb-[15rem]"}>
       <div
         className={
           "tw-h-3/4 tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"
@@ -30,7 +30,7 @@ const AboutUs = () => {
             >
               <p
                 className={
-                  "tw-title-styling-name xs:tw-text-sm md:tw-text-[1.5rem] tw-my-6 tw-font-poppins"
+                  "tw-title-styling-name xs:tw-text-sm md:tw-text-[1.5rem] tw-my-6 tw-font-poppins tw-leading-3"
                 }
               >
                 {" "}
@@ -38,7 +38,7 @@ const AboutUs = () => {
               </p>
               <p
                 className={
-                  "tw-font-calibri tw-font-medium xs:tw-text-sm lg:tw-text-[1.125rem]"
+                  "tw-font-calibri tw-font-medium xs:tw-text-sm lg:tw-text-[1.125rem] tw-leading-normal"
                 }
               >
                 {" "}
@@ -64,7 +64,7 @@ const AboutUs = () => {
         <div
           ref={yellowBlock}
           className={
-            "tw-bg-primary-yellow tw-w-1/2 xs:tw-h-1/2 md:tw-h-3/4 tw-mt-10"
+            "tw-bg-primary-yellow tw-w-1/2 xs:tw-h-1/2 md:tw-h-3/4 tw-my-10"
           }
         >
           {/*TODO: Placeholder for Stock Image*/}
