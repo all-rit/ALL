@@ -100,19 +100,19 @@ const App = () => {
                 <NavigationPane labID={lab} title={Sections[lab].fullname} />
                 <div
                   className={
-                    "tw-h-[25%] tw-w-[96%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg"
+                    "tw-h-[25%] tw-w-[96%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
                   }
                 />
                 <div
                   className={
-                    "tw-h-[70%] tw-w-[96%] tw-bg-primary-blue tw-absolute tw-top-[17rem] tw-right-0 tw-z-0 tw-rounded-bl-lg"
+                    "tw-h-[70%] tw-w-[96%] tw-bg-primary-blue tw-absolute tw-top-[17rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
                   }
                 />
               </div>
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? "tw-absolute tw-right-[0rem] xs:tw-w-full lg:tw-w-[70%] tw-mx-6 tw-top-0" : "tw-w-full"}`}
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? "tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-1/2 lg:tw-w-[60%] tw-mx-6 tw-top-0" : "tw-w-full"}`}
             >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />

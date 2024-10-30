@@ -68,19 +68,15 @@ function Result(props) {
             "tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer"
           }
         >
-          <div
-            className={"tw-text-left tw-px-6 tw-font-bold tw-text-[1.25rem]"}
-          >
+          <div className={"tw-text-left tw-px-6 tw-font-bold tw-text-sm"}>
             Question {index + 1}
           </div>
           <div
-            className={
-              "tw-flex tw-flex-row tw-justify-between tw-items-center tw-pb-3"
-            }
+            className={"tw-flex tw-flex-row tw-justify-between tw-items-center"}
           >
             <div
               className={
-                "tw-px-6 tw-text-center tw-w-full tw-font-medium tw-text-[1.125rem]"
+                "tw-px-6 tw-text-center tw-w-full tw-font-medium tw-text-sm tw-font-calibri"
               }
             >
               {renderTableSelectedAnswersData(
@@ -96,32 +92,44 @@ function Result(props) {
               )}
             </div>
           </div>
-          {detailsOpen === index + 1 && <div>Hello world</div>}
+          {detailsOpen === index + 1 && (
+            <div className={"tw-px-3 tw-pb-3"}>
+              {renderTableAnswersData(answers)}
+            </div>
+          )}
         </a>
       );
     });
   }
 
-  // function renderTableAnswersData(answers) {
-  //   let counter = 0;
-  //   return (
-  //     <ul className="tw-rounded-3xl">
-  //       {answers.map(function (answer, index) {
-  //         counter += 1;
-  //         if (answer["val"] === 1) {
-  //           return (
-  //             <li key={index}>
-  //               {counter}. {answer["content"]}
-  //               <hr />
-  //             </li>
-  //           );
-  //         } else {
-  //           return <div key={index} />;
-  //         }
-  //       })}
-  //     </ul>
-  //   );
-  // }
+  function renderTableAnswersData(answers) {
+    return (
+      <ul className="tw-rounded-3xl">
+        {answers.map(function (answer, index) {
+          if (answer["val"] === 1) {
+            return (
+              <div key={index}>
+                <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
+                  <p className={"tw-font-bold tw-text-nowrap tw-text-sm"}>
+                    Correct Answer:&nbsp;
+                  </p>
+                  <p className={"tw-text-sm"}>{answer["content"]}</p>
+                </div>
+                <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
+                  <p className={"tw-font-bold tw-text-sm"}>
+                    Explanation:&nbsp;
+                  </p>
+                  <p className={"tw-text-sm"}></p>
+                </div>
+              </div>
+            );
+          } else {
+            return <div key={index} />;
+          }
+        })}
+      </ul>
+    );
+  }
 
   function renderTableSelectedAnswersData(selectedAnswers, answers) {
     if (selectedAnswers instanceof Set) {
@@ -157,7 +165,7 @@ function Result(props) {
         </div>
         <div
           className={
-            "tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center"
+            "tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5"
           }
         >
           {renderTableData()}
