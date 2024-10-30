@@ -940,7 +940,7 @@ a.icon:hover {
 }
 
 .module__lab_col {
-  min-width: 20.6rem;
+  min-width: 12.6rem;
   max-width: 20.6rem;
 }
 
@@ -997,7 +997,7 @@ a.icon:hover {
 
   .module__lab_image {
     height: 18rem;
-    width: 175px;
+    /*width: 175px;*/
   }
 }
 
@@ -1014,13 +1014,13 @@ a.icon:hover {
 
   .module__lab_image {
     height: 10rem;
-    width: 20.6rem;
+    /*width: 20.6rem;*/
   }
 }
 
 .module__lab_image {
   background-position: center;
-  background-size: 350px;
+  background-size: 100%;
 }
 
 .module__profile_image {
