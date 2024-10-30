@@ -85,19 +85,23 @@ const App = () => {
   return (
     <>
       <div className="overflow-x-hidden tw-h-lvh">
-        <Header />
-        <div className="appBody tw-min-h-[50rem] tw-relative">
+        <Header state={state} />
+        <div className="appBody tw-min-h-[50rem] tw-relative tw-gap-x-5">
           <div
             className={
               "" +
               (lab !== 0
-                ? "tw-flex tw-flex-row tw-w-full tw-items-center tw-justify-between tw-mt-[10rem] tw-px-[6rem] tw-relative"
+                ? "tw-flex tw-flex-row tw-w-full tw-items-center tw-justify-between tw-mt-[10rem] tw-px-[4rem] tw-relative"
                 : "")
             }
           >
             {lab !== 0 && (
-              <div>
-                <NavigationPane labID={lab} title={Sections[lab].fullname} />
+              <div className={"tw-flex"}>
+                <NavigationPane
+                  labID={lab}
+                  title={Sections[lab].fullname}
+                  state={state}
+                />
                 <div
                   className={
                     "tw-h-[25%] tw-w-[96%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"

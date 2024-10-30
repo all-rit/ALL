@@ -71,6 +71,7 @@ const Header = (props) => {
   };
 
   useEffect(() => {
+    console.warn(props.state);
     const storedSnackbar = localStorage.getItem("logoutSnackbar");
     if (storedSnackbar) {
       const { message } = JSON.parse(storedSnackbar);

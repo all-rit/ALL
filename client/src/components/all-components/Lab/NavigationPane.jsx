@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
 import useMainStateContext from "../../../reducers/MainContext";
 import handleRedirect from "../../../helpers/Redirect";
 import getExerciseState from "../../../helpers/GetReducer";
+import { actions as lab1actions } from "../../../reducers/lab1/ExerciseReducer";
 
 const sections = [
   {
@@ -39,9 +40,13 @@ const sections = [
  */
 const NavigationPane = (props) => {
   // TODO: Verify redirect in a lab
-
   const { state, actions } = useMainStateContext();
   const currentSection = state.main.body;
+
+  useEffect(() => {
+    console.warn("Current Lab: ", state.main.lab);
+    console.warn("Current Lab Section: ", state.main.body);
+  }, []);
 
   const handleOnClick = (section) => {
     if (
@@ -50,7 +55,25 @@ const NavigationPane = (props) => {
     ) {
       alert("The exercise is still in progress! Please complete the exercise.");
     } else {
-      handleRedirect(actions, state.main.lab, section);
+      switch (state.main.lab) {
+        case 1:
+          handleRedirect(lab1actions, state.main.lab, section);
+          break;
+        // case 3:
+        //   handleRedirect(lab3actions, state.main.lab, section);
+        //   break;
+        // case 5:
+        //   handleRedirect(lab5actions, state.main.lab, section);
+        //   break;
+        // case 10:
+        //   handleRedirect(lab10actions, state.main.lab, section);
+        //   break;
+        // default:
+        //   handleRedirect(actions, state.main.lab, section);
+        //   break;
+        default:
+          handleRedirect(actions, state.main.lab, section);
+      }
     }
   };
 

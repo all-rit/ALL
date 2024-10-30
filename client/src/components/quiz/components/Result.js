@@ -76,7 +76,7 @@ function Result(props) {
           >
             <div
               className={
-                "tw-px-6 tw-text-center tw-w-full tw-font-medium tw-text-sm tw-font-calibri"
+                "tw-px-6 tw-text-center tw-w-full tw-font-medium tw-text-sm tw-font-calibri tw-leading-snug"
               }
             >
               {renderTableSelectedAnswersData(
@@ -109,11 +109,17 @@ function Result(props) {
           if (answer["val"] === 1) {
             return (
               <div key={index}>
-                <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
+                <div
+                  className={
+                    "tw-flex tw-flex-row tw-px-3 tw-text-left tw-align-top"
+                  }
+                >
                   <p className={"tw-font-bold tw-text-nowrap tw-text-sm"}>
                     Correct Answer:&nbsp;
                   </p>
-                  <p className={"tw-text-sm"}>{answer["content"]}</p>
+                  <p className={"tw-text-sm tw-leading-snug tw-pt-1"}>
+                    {answer["content"]}
+                  </p>
                 </div>
                 <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
                   <p className={"tw-font-bold tw-text-sm"}>

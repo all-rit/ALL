@@ -4,7 +4,7 @@
 import { Sections } from "../constants/index";
 import { navigate } from "@reach/router";
 
-export const handleRedirect = (actions, lab, body = 0) => {
+const handleRedirect = (actions = {}, lab, body = 0) => {
   if (!(lab in Sections)) {
     // check if lab exists
     alert("Page does not exist");
@@ -12,6 +12,7 @@ export const handleRedirect = (actions, lab, body = 0) => {
   }
   const labname = Sections[lab].name;
   const bodyname = Sections[lab][body].name;
+  console.warn(labname, bodyname, actions, lab, body);
   navigate(
     process.env.PUBLIC_URL + "/" + (lab !== 0 ? labname + "/" : "") + bodyname,
   );
