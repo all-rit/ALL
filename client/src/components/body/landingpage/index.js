@@ -1,14 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import nsf from "../../../assets/images/logos/nsf.png";
-import rit from "../../../assets/images/logos/RIT.png";
 // import handleRedirect from "../../../helpers/Redirect";
 import { actions as mainActions } from "../../../reducers/MainReducer";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
-import ProfileGeneration from "./citation/ProfileGeneration";
-import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
 import MainFooter from "../../footer/mainFooter";
 import TEMPIMG from "../../../assets/images/landingpage/TEMP.png"
 
@@ -23,119 +19,55 @@ const Home = (props) => {
   return (
     <div className="landingpage">
       {/* Header */}
-        <div className="tw-flex tw-flex-col">
-          <section className="tw-flex tw-bg-labBlue tw-justify-end">
-            <div className="tw-bg-white tw-rounded-tl-lg tw-rounded-bl-lg tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
-              <h1 className="tw-mt-10 tw-ml-10">Welcome to Accessible Learning Labs</h1>
-              <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left">Lorem Ipsum Dolor sit amet blah blah blah blah blab lhaihfio wheg </p>
-            </div>
-          </section>
-        </div>
-        <div className="tw-bg-white tw-h-16">
-          <img src={TEMPIMG} className="tw-absolute tw-bottom-0"></img>
-        </div>
+      <div className="tw-relative tw-flex tw-flex-col">
+        <section className="tw-flex tw-bg-labBlue tw-justify-end">
+          <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
+            <h1 className="tw-mt-10 tw-ml-10">Welcome to Accessible Learning Labs</h1>
+            <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left">Lorem Ipsum Dolor sit amet blah blah blah blah blab lhaihfio wheg </p>
+          </div>
+        </section>
+        <div className="tw-bg-white tw-h-32"></div>
+        <img src={TEMPIMG} className="tw-absolute tw-h-[100%] tw-right-0 tw-object-left-bottom tw-object-scale-down"></img>
+      </div>
         
-      {/* Goals */}
-      <section className="page-section landingpage__pagesection" id="goals">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <h2 className="section-heading text-uppercase">Lab Goals</h2>
-              <h3 className="section-subheading lab-section-subheading">
-                Accessible Learning Labs is an NSF funded initiative aimed at
-                empowering inclusive software education and fostering STEM
-                proficiency. We are dedicated to equipping users with the skills
-                and knowledge to create accessible software solutions. Through
-                our interactive and intuitive labs, we aim to make the internet
-                a more equitable place for everyone.
-              </h3>
+      {/* Are you a Student? */}
+      <section className="tw-bg-labYellow tw-flex tw-justify-start tw-pb-0 tw-pt-16">
+        <div className="tw-bg-white tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-mr-10 tw-py-8 tw-border-solid tw-border-b-0 tw-border-l-0 tw-border-t-12 tw-border-r-12 tw-rounded-tr-lg tw-border-labBlue">
+          <div className="tw-flex tw-flex-col tw-items-start tw-gap-4">
+            <h1>Are You a Student?</h1>
+            <div className="tw-flex tw-flex-row tw-max-w-96">
+              <p className="tw-text-wrap tw-text-left">
+                Lorem impsum blah blah blah blah blah blah blahab lkhak halksjfn iowuebfoiqbgrgwe
+              </p>
+              {/* TODO: Add that silly button here */}
             </div>
           </div>
-          <div className="row text-center">
-            <div className="col-md-4">
-              <h5 className="service-heading landingpage__leftalign">
-                Create easily adoptable labs (only a browser is needed)
-              </h5>
-            </div>
-
-            <div className="vertical-line col-md-4 ">
-              <h5 className="service-heading landingpage__leftalign">
-                Inform students how to create accessible software
-              </h5>
-            </div>
-
-            <div className="vertical-line col-md-4 ">
-              <h5 className="service-heading landingpage__leftalign">
-                Demonstrate the importance of creating accessible software
-              </h5>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Labs */}
-      <div />
-      <HorizontalLine />
-
-      <section
-        className="tw-p-3 page-section landingpage__pagesection"
-        id="labs"
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <h2 className="section-heading text-uppercase"> Labs</h2>
-
-              <h3 className="section-subheading ">
-                Explore the available labs below.
-              </h3>
-            </div>
-          </div>
+          {/* TODO: make these only the labs assigned to students */}
           <div className="landingpage__row md:lg:tw-flex md:lg:tw-grid-cols-3 md:lg:tw-justify-center sm:tw-grid-cols-2">
             <LabGeneration actions={actions} />
           </div>
         </div>
       </section>
-      {/* Team Citation */}
-      <div id="citation" />
-
-      <HorizontalLine />
-
-      <ProfileGeneration />
-      <HorizontalLine />
-
-      {/* Clients */}
-      <section className="py-5">
-        <div className="container">
-          <div className="row landingpage__logos">
-            <div className="col-sm-4">
-              <a
-                href="https://www.nsf.gov"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className="d-block mx-auto landingpage__logo"
-                  src={nsf}
-                  alt="National Science Foundation"
-                />
-              </a>
-            </div>
-            <div className="col-sm-4">
-              <a
-                href="https://www.rit.edu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className=" d-block mx-auto landingpage__logo"
-                  src={rit}
-                  alt="Rochester Institute Of Technology"
-                />
-              </a>
+      <div className="tw-bg-white tw-h-32"></div>
+        
+      {/* Are you an Educator? */}
+      <section className="tw-flex tw-bg-labBlue tw-justify-end">
+          <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
+            <h1 className="tw-mt-10 tw-ml-10">Are You an Educator?</h1>
+            <div className="tw-flex tw-flex-row">
+              <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left">Lorem Ipsum Dolor sit amet blah blah blah blah blab lhaihfio wheg </p>
+              {/* TODO: Insert that funny little button here */}
             </div>
           </div>
-        </div>
       </section>
+      <div className="tw-bg-white tw-h-32"></div>
+
+{/* TODO: below */}
+      {/* About Us */}
+      {/* Development Partners */}
+      {/* Participating Schools */}
+      {/* Getting Involved */}
+      
       <MainFooter />
     </div>
   );
