@@ -26,7 +26,6 @@ const ResourcesSection = () => {
       }
     };
     changeWidth();
-    console.warn(width);
     window.addEventListener("resize", changeWidth);
   }, [width]);
 
@@ -132,7 +131,7 @@ const ResourcesSection = () => {
               <div className={"tw-text-justify"}>
                 <p
                   className={
-                    "tw-text-sm tw-font-medium xs:tw-w-full md:tw-w-1/2 tw-my-3"
+                    "xs:tw-text-sm md:tw-text-[1.125rem] tw-font-medium xs:tw-w-full md:tw-w-1/2 tw-my-3"
                   }
                 >
                   Below, you will find a guide on creating, updating, and
