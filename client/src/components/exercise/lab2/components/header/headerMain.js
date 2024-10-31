@@ -45,16 +45,16 @@ class Header extends Component {
     if (exerciseState) {
       return (
         <div
-          className="headerStyle tw-rounded-t-4xl tw-p-3 tw-shadow-2xl"
+          className="tw-rounded-t-lg tw-p-4 tw-mb-3 tw-shadow-lg"
           style={{ background: "black" }}
         >
-          <div className="oneline center">
+          <div className="tw-flex tw-flex-row tw-h-full tw-align-middle tw-items-center tw-justify-between">
             <Home
               exerciseEnded={goBackFromExercise}
               colors={colors}
               changeExerciseColors={changeExerciseColors}
             />
-            <p className="deficiencyCheck">
+            <p className="tw-body-styling-name tw-font-medium tw-text-white">
               Vision Deficiency Simulation:
               <span style={{ fontWeight: "bold", marginLeft: "3px" }}>
                 {exerciseMode === "Main" ? " Off" : " On"}
@@ -66,7 +66,7 @@ class Header extends Component {
     }
 
     return (
-      <div className="headerStyle tw-rounded-t-4xl">
+      <div className="headerStyle tw-rounded-t-lg tw-items-center">
         <div>
           {aboutState ? (
             <Button

@@ -37,27 +37,23 @@ const ThirdInstructions = ({
   return (
     <>
       {!isImagine && (
-        <div className="instructionsContainer">
-          <p className="secondInstructionTitle">Wow that was tough!</p>
-          <ul>
-            <li className="instructionsItem">
+        <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
+          <p className="tw-title-styling-name">Wow that was tough!</p>
+          <ul className={"tw-font-calibri tw-font-normal tw-body-styling-name"}>
+            <li className="tw-pt-3">
               As you can see, this exercise can be very difficult for users who
               are colorblind. The exercise was not created in an accessible
               manner for these users. This is due to the colors being in
               contrast with both the background and the other circles.
             </li>
-            <br />
-            <br />
-
-            <li className="instructionsItem">
+            <li className="tw-pt-3">
               You can change the colors with the
               <strong style={{ marginLeft: "3px", marginRight: "3px" }}>
                 Update Colors
               </strong>
               button in the upper left corner of the next screen.
             </li>
-            <br />
-            <li className="instructionsItem">
+            <li className="tw-pt-3">
               You can use any online calculator or a calculator you've created
               for your lab! In order to fix the problem, the contrast must be
               above a ratio of <strong>7:1</strong>.{" "}
@@ -67,10 +63,8 @@ const ThirdInstructions = ({
                 the background and text).
               </em>
             </li>
-            <br />
-            <h2>Did you know?</h2>
-            <br />
-            <li className="instructionsItem">
+            <h2 className={"tw-title-styling-name tw-py-6"}>Did you know?</h2>
+            <li className="tw-body-styling-name tw-font-medium">
               Color contrast is a measurement of how much two colors differ from
               one another. This measurement makes a huge difference to people
               color vision deficiencies.

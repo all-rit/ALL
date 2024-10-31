@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import React from "react";
-import Button from "../components/header/buttons/button";
 import "./secondaryInstructions.css";
 import { navigate } from "@reach/router";
+import Button from "../components/header/buttons/button";
 
 /*
 Page containing the instructions for the second popup the user sees
@@ -34,28 +34,33 @@ const SecondInstructions = ({
   };
 
   return (
-    <div className="instructionsContainer">
-      <p className="secondInstructionTitle">Good job so far!</p>
-      <ul>
-        <li className="instructionsItem">
+    <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
+      <p className="tw-title-styling-name tw-p-0">Good job so far!</p>
+      <ul className={"tw-font-calibri tw-font-normal tw-body-styling-name"}>
+        <li className={"tw-py-3"}>
           As you can see, this exercise isn't too difficult. However, to a user
           with a <em>color vision deficiency</em>, it is.
         </li>
-        <li className="instructionsItem">
+        <li className={"tw-py-3"}>
           A color vision deficiency (also sometimes referred to as color
           blindness) is when an individual is unable to see a portion of the
           color spectrum. These are quite common, especially in men, across the
           world.
         </li>
-        <li className="instructionsItem">
+        <li className={"tw-py-3"}>
           An app, like this one, would be impossible for someone with a color
           vision deficiency to use properly. To simulate this, we have added the
           ability to simulate what an individual with this deficiency would see.
         </li>
         <br />
-        <h2>Did you know?</h2>
+        <h2 className={"tw-title-styling-name"}>Did you know?</h2>
         <br />
-        <li className="instructionsItem" style={{ listStyleType: "none" }}>
+        <li
+          className={
+            "tw-font-calibri tw-font-normal tw-body-styling-name tw-text-justify"
+          }
+          style={{ listStyleType: "none" }}
+        >
           There are three main color vision deficiencies: Protanopia (Red
           blindness), Deuteranopia (Green blindness), and Tritanopia (Blue
           blindness). These are all options for simulation for in the exercise.

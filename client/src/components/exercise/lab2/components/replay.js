@@ -56,17 +56,21 @@ class Replay extends Component {
         <div className={"tw-m-5 tw-p-5"}>
           <div>
             {this.props.score > 0 ? (
-              <p className="timeEnd">Good job! Here are your results:</p>
+              <p className="tw-body-styling-name tw-font-medium">
+                Good job! Here are your results:
+              </p>
             ) : (
-              <p className="timeEnd tw-text-2xl">
+              <p className={"tw-body-styling-name tw-font-medium"}>
                 Better luck next time! Here are your results:
               </p>
             )}
             <div>
-              <table className="center centerExercise tw-m-5">
+              <table className="center centerExercise tw-m-5 tw-body-styling-name tw-font-medium">
                 <tbody style={{ border: "2px solid black" }}>
                   <tr>
-                    <td className="replayBreakdown">Final Score</td>
+                    <td className="replayBreakdown tw-text-left">
+                      Final Score
+                    </td>
                     {this.props.score > 0 ? (
                       <td className="replayBreakdown positiveData">
                         {this.props.score}
@@ -78,7 +82,7 @@ class Replay extends Component {
                     )}
                   </tr>
                   <tr>
-                    <td className="replayBreakdown">
+                    <td className="replayBreakdown tw-text-left">
                       Correctly clicked circles
                     </td>
                     {this.props.rightClick - this.props.wrongNoClick > 0 ? (
@@ -92,7 +96,7 @@ class Replay extends Component {
                     )}
                   </tr>
                   <tr>
-                    <td className="replayBreakdown">
+                    <td className="replayBreakdown tw-text-left">
                       Correctly not clicked circles
                     </td>
                     {this.props.rightNoClick > 0 ? (
@@ -106,7 +110,7 @@ class Replay extends Component {
                     )}
                   </tr>
                   <tr>
-                    <td className="replayBreakdown">
+                    <td className="replayBreakdown tw-text-left">
                       Incorrectly clicked circles
                     </td>
                     {this.props.wrongClick === 0 ? (
@@ -120,7 +124,9 @@ class Replay extends Component {
                     )}
                   </tr>
                   <tr>
-                    <td className="replayBreakdown">Missed clicks</td>
+                    <td className="replayBreakdown tw-text-left">
+                      Missed clicks
+                    </td>
                     {this.props.wrongNoClick === 0 ? (
                       <td className="replayBreakdown positiveData">
                         {this.props.wrongNoClick}
