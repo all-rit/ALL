@@ -1,50 +1,50 @@
 import React from "react";
 import { images } from "src/constants/school_images.js";
 
+function display_images() {
+  return (
+    <>
+      {images.map((item, id) => (
+        <img
+          className="tw-max-w-40 lg:tw-max-w-sm tw-max-h-sm tw-m-5"
+          key={id}
+          src={require("../../assets/images/" + item.img + ".png")}
+          alt={item.alt}
+        />
+      ))}
+    </>
+  );
+}
+
+function display_images_reverse() {
+  return (
+    <>
+      {images.map((item, id) => (
+        <img
+          className="tw-max-w-40 lg:tw-max-w-sm tw-max-h-sm tw-m-5 tw-self-center"
+          key={id}
+          src={require("../../assets/images/" + item.img + ".png")}
+          alt={item.alt}
+        />
+      ))}
+    </>
+  );
+}
+
 const Carousel = () => {
   return (
     <>
-      <div className="tw-m-auto tw-relative tw-items-center tw-h-80 tw-w-3/4 tw-border-black tw-border-solid tw-overflow-hidden">
-        <div className="tw-w-full tw-h-full tw-scroll-smooth tw-animate-infinte-scroll tw-whitespace-nowrap">
-          {images.map((item, id) => (
-            <img
-              className="tw-max-w-sm tw-max-h-sm tw-m-5"
-              key={id}
-              src={require("../../assets/images/" + item.img + ".png")}
-              alt={item.alt}
-            />
-          ))}
-
-          {images.map((item, id) => (
-            <img
-              className="tw-max-w-sm tw-max-h-sm tw-m-5"
-              key={id}
-              src={require("../../assets/images/" + item.img + ".png")}
-              alt={item.alt}
-            />
-          ))}
+      <div className="tw-m-auto tw-relative tw-items-center tw-h-1/6 lg:tw-h-1/4 tw-w-full lg:tw-w-3/4 tw-overflow-hidden">
+        <div className="tw-w-full tw-h-full tw-scroll-smooth tw-animate-infinite-scroll tw-whitespace-nowrap">
+          {display_images()}
+          {display_images()}
         </div>
       </div>
 
-      <div className="tw-flex tw-m-auto tw-relative tw-items-center tw-h-80 tw-w-3/4 tw-border-black tw-border-solid tw-overflow-hidden">
-        <div className="tw-flex tw-justify-end tw-w-full tw-h-full tw-scroll-smooth tw-animate-infinte-scroll-right tw-whitespace-nowrap tw-float-right tw-border-black tw-border-solid">
-          {images.map((item, id) => (
-            <img
-              className="tw-max-w-sm tw-max-h-sm tw-m-5"
-              key={id}
-              src={require("../../assets/images/" + item.img + ".png")}
-              alt={item.alt}
-            />
-          ))}
-
-          {images.map((item, id) => (
-            <img
-              className="tw-max-w-sm tw-max-h-sm tw-m-5"
-              key={id}
-              src={require("../../assets/images/" + item.img + ".png")}
-              alt={item.alt}
-            />
-          ))}
+      <div className="tw-m-auto tw-relative tw-items-center tw-h-1/6 lg:tw-h-1/4 tw-w-full lg:tw-w-3/4 tw-overflow-hidden">
+        <div className="tw-w-full tw-h-full tw-flex tw-justify-end tw-scroll-smooth tw-animate-infinite-scroll-right tw-whitespace-nowrap ">
+          {display_images_reverse()}
+          {display_images_reverse()}
         </div>
       </div>
     </>
