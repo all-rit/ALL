@@ -40,12 +40,12 @@ class Certificate extends Component {
     return (
       <div
         className={
-          "tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center tw-gap-y-4 tw-max-h-[35rem]"
+          "tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center tw-gap-y-4 tw-max-h-[40rem]"
         }
       >
         <div
           className={
-            "tw-w-3/4 tw-flex tw-flex-row tw-align-middle tw-justify-center tw-items-center"
+            "tw-w-3/5 tw-flex tw-flex-row tw-align-middle tw-justify-center tw-items-center"
           }
         >
           <div className="tw-rounded-xl tw-w-full tw-border-solid tw-border-[0.75rem] tw-border-primary-blue">
@@ -106,7 +106,7 @@ class Certificate extends Component {
             <br />
             <br />
             <div className=" tw-bg-primary-blue">
-              <img src={logo} alt="logo" className={"tw-w-1/2"} />
+              <img src={logo} alt="logo" className={"tw-w-[40%]"} />
             </div>
           </div>
         </div>

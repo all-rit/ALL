@@ -1,8 +1,6 @@
 /* eslint-disable react/jsx-key */
-/* eslint-disable require-jsdoc */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-// import Certificate from "./Certificate";
 import GreenCheck from "../../../assets/images/GreenCheck.webp";
 import RedX from "../../../assets/images/RedX.png";
 import { navigate } from "@reach/router";
@@ -65,16 +63,16 @@ function Result(props) {
         <a
           key={index}
           onClick={() => openDetails(index + 1)}
-          className={
-            "tw-max-h-[5rem] tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer"
-          }
+          className={`tw-max-h-[5rem] tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white tw-rounded-b-none"}`}
         >
-          <div className={"tw-text-left tw-px-6 tw-font-bold tw-text-sm"}>
+          <div
+            className={"tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-text-sm"}
+          >
             Question {index + 1}
           </div>
           <div
             className={
-              "tw-flex tw-flex-row tw-justify-between tw-p-3 tw-items-center"
+              "tw-flex tw-flex-row tw-justify-between tw-pb-3 tw-px-3 tw-items-center"
             }
           >
             <div
@@ -98,7 +96,7 @@ function Result(props) {
           {detailsOpen === index + 1 && (
             <div
               className={
-                "tw-px-3 tw-pb-3 tw-bg-white tw-z-10 tw-shadow-lg tw-rounded-b-lg"
+                "tw-px-3 tw-pb-3 tw-bg-primary-blue tw-text-white tw-z-10 tw-shadow-lg tw-rounded-b-lg"
               }
             >
               {renderTableAnswersData(answers)}
@@ -169,17 +167,15 @@ function Result(props) {
   };
 
   return (
-    <div className="tw-flex tw-flex-col tw-align-middle tw-my-5">
+    <div className="tw-flex tw-flex-col tw-align-middle">
       <div>
-        <div className="tw-font-bold tw-text-[2rem] tw-font-calibri tw-py-6">
+        <div className="tw-font-bold tw-text-[2rem] tw-font-calibri">
           <strong className={"tw-shadow-lg tw-rounded-lg tw-p-6"}>
             Score: {props.quizResult}
           </strong>
         </div>
         <div
-          className={
-            "tw-w-full tw-max-h-[30rem] tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5"
-          }
+          className={`tw-w-full tw-max-h-[30rem] tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5`}
         >
           {renderTableData()}
         </div>
@@ -208,7 +204,6 @@ Result.propTypes = {
   selectedAnswers: PropTypes.array.isRequired,
   isImagine: PropTypes.bool,
   lab: PropTypes.number,
-  hideCertificate: PropTypes.bool,
   quizQuestions: PropTypes.array,
   setViewCertificate: PropTypes.func,
 };

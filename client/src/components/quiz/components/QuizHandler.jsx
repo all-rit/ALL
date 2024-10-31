@@ -260,7 +260,7 @@ const QuizHandler = (props) => {
   }
 
   return (
-    <div className={"tw-h-[43rem] tw-rounded-lg"}>
+    <div className={"tw-h-[43rem] tw-pt-10 tw-rounded-lg"}>
       {!props.quizCompleted ? (
         <Quiz
           answer={""}
@@ -279,7 +279,6 @@ const QuizHandler = (props) => {
         />
       ) : !viewCertificate ? (
         <Result
-          hideCertificate={props.hideCertificate}
           quizResult={Math.round(result * 100) + "%"}
           quizScore={100}
           selectedAnswers={selectedAnswers}
