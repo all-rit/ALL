@@ -29,7 +29,7 @@ function Quiz(props) {
   }
 
   return (
-    <div className="">
+    <div className="tw-pt-[3rem]">
       <div className="tw-rounded-lg tw-text-left tw-px-6 tw-shadow-lg tw-py-6 tw-mx-6">
         <QuestionCount counter={props.questionId} total={props.questionTotal} />
         {props.isFinalQuiz ? (
@@ -41,7 +41,7 @@ function Quiz(props) {
           />
         )}
       </div>
-      <div className="quiz bg-white tw-pt-1 tw-mt-6" key={props.questionId}>
+      <div className="quiz bg-white tw-mt-6" key={props.questionId}>
         <ul className="answerOptions">
           {props.answerOptions.map(renderAnswerOptions)}
         </ul>

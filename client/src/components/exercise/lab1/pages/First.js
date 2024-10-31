@@ -5,7 +5,7 @@ import React, { Component } from "react";
 class First extends Component {
   render() {
     return (
-      <div className="playthrough">
+      <div className="">
         <div className="playthrough__content">
           <p className="playthrough__sentence">
             Well done! You’ve completed the reading section. Now, we’re going to

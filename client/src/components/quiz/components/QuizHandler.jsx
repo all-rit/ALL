@@ -4,6 +4,8 @@ import Quiz from "./Quiz";
 import Result from "./Result";
 import UserLabService from "../../../services/UserLabService";
 import labService from "src/services/LabService";
+import Certificate from "./Certificate";
+import useMainStateContext from "../../../reducers/MainContext";
 
 /**
  * QuizHandler is react component responsible for tracking users responses
@@ -12,7 +14,9 @@ import labService from "src/services/LabService";
  * component with information.
  */
 const QuizHandler = (props) => {
+  const { state } = useMainStateContext();
   const [currentLabId, setCurrentLab] = useState(props.labId);
+  const [viewCertificate, setViewCertificate] = useState(false);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions, setQuestions] = useState([
     {
@@ -272,8 +276,8 @@ const QuizHandler = (props) => {
           question={questions[currentQuestionCursor].question}
           questionTotal={questions.length}
           isFinalQuiz={props.isFinalQuiz}
-        ></Quiz>
-      ) : (
+        />
+      ) : !viewCertificate ? (
         <Result
           hideCertificate={props.hideCertificate}
           quizResult={Math.round(result * 100) + "%"}
@@ -281,7 +285,15 @@ const QuizHandler = (props) => {
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
           lab={currentLabId}
-        ></Result>
+          setViewCertificate={setViewCertificate}
+        />
+      ) : (
+        <Certificate
+          state={state}
+          quizResult={Math.round(result * 100) + "%"}
+          lab={state.main.lab}
+          setViewCertificate={setViewCertificate}
+        />
       )}
     </div>
   );

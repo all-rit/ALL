@@ -16,7 +16,7 @@ class SoundOption extends Component {
       : "Sound is disabled (to emulate experience for Deaf/HoH users).";
 
     return (
-      <div className="sound_icon-container">
+      <div className="sound_icon-container tw-pt-6">
         <svg
           className={classes}
           onClick={!blocked ? toggleSoundHandler : null}

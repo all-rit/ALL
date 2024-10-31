@@ -33,7 +33,6 @@ import Header from "./components/header/header";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "./reducers/MainReducer";
-// import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
@@ -85,7 +84,7 @@ const App = () => {
   return (
     <>
       <div className="overflow-x-hidden tw-h-lvh">
-        <Header state={state} />
+        <Header />
         <div className="appBody tw-min-h-[50rem] tw-relative tw-gap-x-5">
           <div
             className={
@@ -97,11 +96,7 @@ const App = () => {
           >
             {lab !== 0 && (
               <div className={"tw-flex"}>
-                <NavigationPane
-                  labID={lab}
-                  title={Sections[lab].fullname}
-                  state={state}
-                />
+                <NavigationPane labID={lab} title={Sections[lab].fullname} />
                 <div
                   className={
                     "tw-h-[25%] tw-w-[96%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
@@ -116,7 +111,7 @@ const App = () => {
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? "tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-1/2 lg:tw-w-[60%] tw-mx-6 tw-top-0" : "tw-w-full"}`}
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? `tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-[60%] lg:tw-w-[70%] tw-mx-6 ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-full"} tw-top-0 tw-justify-center tw-flex tw-flex-col` : "tw-w-full"}`}
             >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />

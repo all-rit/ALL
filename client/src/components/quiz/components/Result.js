@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import GreenCheck from "../../../assets/images/GreenCheck.webp";
 import RedX from "../../../assets/images/RedX.png";
 import { navigate } from "@reach/router";
+import ALLButton from "../../all-components/ALLButton";
 
 function Result(props) {
   const [detailsOpen, setDetailsOpen] = useState({});
@@ -65,18 +66,20 @@ function Result(props) {
           key={index}
           onClick={() => openDetails(index + 1)}
           className={
-            "tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer"
+            "tw-max-h-[5rem] tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer"
           }
         >
           <div className={"tw-text-left tw-px-6 tw-font-bold tw-text-sm"}>
             Question {index + 1}
           </div>
           <div
-            className={"tw-flex tw-flex-row tw-justify-between tw-items-center"}
+            className={
+              "tw-flex tw-flex-row tw-justify-between tw-p-3 tw-items-center"
+            }
           >
             <div
               className={
-                "tw-px-6 tw-text-center tw-w-full tw-font-medium tw-text-sm tw-font-calibri tw-leading-snug"
+                "tw-text-center tw-w-full tw-font-medium tw-text-sm tw-font-calibri tw-leading-snug tw-flex tw-flex-col"
               }
             >
               {renderTableSelectedAnswersData(
@@ -84,7 +87,7 @@ function Result(props) {
                 answers,
               )}
             </div>
-            <div className={"tw-w-1/12 tw-p-3"}>
+            <div className={"tw-min-w-[1rem] tw-max-w-[2rem]"}>
               {isCorrect ? (
                 <img src={GreenCheck} alt={"Correct"} />
               ) : (
@@ -93,7 +96,11 @@ function Result(props) {
             </div>
           </div>
           {detailsOpen === index + 1 && (
-            <div className={"tw-px-3 tw-pb-3"}>
+            <div
+              className={
+                "tw-px-3 tw-pb-3 tw-bg-white tw-z-10 tw-shadow-lg tw-rounded-b-lg"
+              }
+            >
               {renderTableAnswersData(answers)}
             </div>
           )}
@@ -162,7 +169,7 @@ function Result(props) {
   };
 
   return (
-    <div className="tw-flex tw-flex-row tw-align-middle tw-my-5">
+    <div className="tw-flex tw-flex-col tw-align-middle tw-my-5">
       <div>
         <div className="tw-font-bold tw-text-[2rem] tw-font-calibri tw-py-6">
           <strong className={"tw-shadow-lg tw-rounded-lg tw-p-6"}>
@@ -171,13 +178,13 @@ function Result(props) {
         </div>
         <div
           className={
-            "tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5"
+            "tw-w-full tw-max-h-[30rem] tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5"
           }
         >
           {renderTableData()}
         </div>
       </div>
-      <div className=" d-flex flex-column justify-content-center mt-3">
+      <div className=" d-flex flex-column justify-content-center">
         {props.isImagine ? (
           <button
             className="btn btn-primary btn-xl text-uppercase  next"
@@ -186,7 +193,10 @@ function Result(props) {
             Continue to Post-Survey
           </button>
         ) : (
-          <></>
+          <ALLButton
+            label={"View Certificate"}
+            onClick={() => props.setViewCertificate(true)}
+          />
         )}
       </div>
     </div>
@@ -197,9 +207,10 @@ Result.propTypes = {
   quizResult: PropTypes.string.isRequired,
   selectedAnswers: PropTypes.array.isRequired,
   isImagine: PropTypes.bool,
-  lab: PropTypes.string,
+  lab: PropTypes.number,
   hideCertificate: PropTypes.bool,
   quizQuestions: PropTypes.array,
+  setViewCertificate: PropTypes.func,
 };
 
 export default Result;

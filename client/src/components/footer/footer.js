@@ -152,7 +152,6 @@ class Footer extends Component {
   }
 
   render() {
-    // const { state, actions } = this.props;
     const { state, actions } = this.props.context;
     const { quizCompleted } = this.props;
     const lab = state.main.lab;
@@ -168,7 +167,7 @@ class Footer extends Component {
       <>
         <div className="footer">
           <div
-            className="tw-flex tw-justify-between tw-mx-8"
+            className="tw-flex tw-justify-between tw-mx-10"
             style={{ display: display ? "block" : "none" }}
           >
             <button
@@ -186,7 +185,7 @@ class Footer extends Component {
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
-                className="btn tw-bg-labLightGray btn-xl text-uppercase next"
+                className="btn tw-px-6 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue tw-text-nowrap"
                 onClick={this.navigateHome}
                 style={{
                   display:

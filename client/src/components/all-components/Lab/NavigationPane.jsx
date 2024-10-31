@@ -4,7 +4,9 @@ import { twMerge } from "tailwind-merge";
 import useMainStateContext from "../../../reducers/MainContext";
 import handleRedirect from "../../../helpers/Redirect";
 import getExerciseState from "../../../helpers/GetReducer";
-import { actions as lab1actions } from "../../../reducers/lab1/ExerciseReducer";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actions as mainActions } from "../../../reducers/MainReducer";
 
 const sections = [
   {
@@ -34,18 +36,29 @@ const sections = [
   },
 ];
 
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(mainActions, dispatch),
+  };
+};
+
 /**
  * NavigationPane component for in-lab navigation.
  * @param props defined props passed into the component
  */
 const NavigationPane = (props) => {
-  // TODO: Verify redirect in a lab
   const { state, actions } = useMainStateContext();
   const currentSection = state.main.body;
 
   useEffect(() => {
-    console.warn("Current Lab: ", state.main.lab);
-    console.warn("Current Lab Section: ", state.main.body);
+    console.warn(state);
+    console.warn(props.state);
   }, []);
 
   const handleOnClick = (section) => {
@@ -55,25 +68,7 @@ const NavigationPane = (props) => {
     ) {
       alert("The exercise is still in progress! Please complete the exercise.");
     } else {
-      switch (state.main.lab) {
-        case 1:
-          handleRedirect(lab1actions, state.main.lab, section);
-          break;
-        // case 3:
-        //   handleRedirect(lab3actions, state.main.lab, section);
-        //   break;
-        // case 5:
-        //   handleRedirect(lab5actions, state.main.lab, section);
-        //   break;
-        // case 10:
-        //   handleRedirect(lab10actions, state.main.lab, section);
-        //   break;
-        // default:
-        //   handleRedirect(actions, state.main.lab, section);
-        //   break;
-        default:
-          handleRedirect(actions, state.main.lab, section);
-      }
+      handleRedirect(actions, state.main.lab, section);
     }
   };
 
@@ -134,4 +129,4 @@ NavigationPane.propTypes = {
   state: PropTypes.object,
 };
 
-export default NavigationPane;
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationPane);

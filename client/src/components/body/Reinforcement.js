@@ -31,12 +31,12 @@ const Reinforcement = (props) => {
   return (
     <div className={"tw-min-h-[40rem]"}>
       <div className="">
-        <h4 className="tw-font-bold tw-text-center pb-3">
+        <h4 className="tw-font-bold tw-text-center p-3">
           Here is some supplemental material to reinforce the topic.
         </h4>
       </div>
       <div
-        className={"tw-overflow-y-scroll tw-overflow-x-hidden tw-max-h-[35rem]"}
+        className={"tw-overflow-y-scroll tw-overflow-x-hidden tw-max-h-[30rem]"}
       >
         {reinforcement.map((data) => {
           return (
@@ -51,7 +51,6 @@ const Reinforcement = (props) => {
                     "xs:tw-h-full md:tw-h-[30rem] xs:tw-w-3/4 md:tw-w-full tw-px-[5rem] tw-rounded-4xl"
                   }
                   src={data.link}
-                  frameBorder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
