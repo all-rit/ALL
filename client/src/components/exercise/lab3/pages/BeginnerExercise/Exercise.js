@@ -15,9 +15,7 @@ import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.sv
 // license: https://pixabay.com/service/license/
 import cowImage from "../../../../../assets/images/lab3/exercise/cow.svg";
 import CatClickFirstNavigate from "../../helpers/CatClickFirstNavigate";
-import { Typography } from "@mui/material";
 import { PageService } from "../../../../../services/PageService";
-import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 import { actions as exerciseActions } from "../../../../../reducers/lab3/ExerciseReducer";
 import { bindActionCreators } from "redux";
@@ -41,15 +39,12 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Exercise extends Component {
-  handleSubmit() {
-    navigate("/Lab3/Exercise/ExerciseInstructions");
-  }
   constructor(props) {
     super(props);
     this.state = { render: "", secondsElapsed: 0 };
   }
 
-  _renderSubComp(path) {
+  renderNextButton(path) {
     if (this.state.render === "CatClickNavigate") {
       return <CatClickFirstNavigate path={path} />;
     }
@@ -83,52 +78,74 @@ class Exercise extends Component {
     const cowClick = () => {
       console.log("Cow image clicked!");
     };
-    const imgStyle = {
-      width: "128px",
-      height: "128px",
-      border: "1px solid black",
-    };
     const tableStyle = {
-      border: "1px solid black",
       marginLeft: "auto",
       marginRight: "auto",
       textAlign: "center",
     };
     return (
-      <div>
-        <Typography className={"center"}>
+      <div className={"tw-bg-none"}>
+        <p className={"center tw-body-styling-name tw-font-medium"}>
           Click on the image of a cat.
-        </Typography>
+        </p>
         <br />
-        <table style={tableStyle} className={"center"}>
+        <table style={tableStyle}>
           <tbody>
             <tr>
               <td>
-                <button style={imgStyle} onClick={() => catClick()}>
-                  <img src={catImage} alt={"image1"} />
+                <button
+                  className={"tw-w-full hover:tw-shadow-2xl"}
+                  onClick={() => catClick()}
+                >
+                  <img
+                    className={"tw-w-[14rem] tw-h-[14rem]"}
+                    src={catImage}
+                    alt={"image1"}
+                  />
                 </button>
               </td>
               <td>
-                <button style={imgStyle} onClick={() => carClick()}>
-                  <img src={carImage} alt={"image2"} />
+                <button
+                  className={"tw-w-full hover:tw-shadow-2xl"}
+                  onClick={() => carClick()}
+                >
+                  <img
+                    className={"tw-w-[14rem] tw-h-[14rem]"}
+                    src={carImage}
+                    alt={"image2"}
+                  />
                 </button>
               </td>
             </tr>
             <tr>
               <td>
-                <button style={imgStyle} onClick={() => burgerClick()}>
-                  <img src={burgerImage} alt={"image3"} />
+                <button
+                  className={"tw-w-full hover:tw-shadow-2xl"}
+                  onClick={() => burgerClick()}
+                >
+                  <img
+                    className={"tw-w-[14rem] tw-h-[14rem]"}
+                    src={burgerImage}
+                    alt={"image3"}
+                  />
                 </button>
               </td>
               <td>
-                <button style={imgStyle} onClick={() => cowClick()}>
-                  <img src={cowImage} alt={"image4"} />
+                <button
+                  className={"tw-w-full hover:tw-shadow-2xl"}
+                  onClick={() => cowClick()}
+                >
+                  <img
+                    className={"tw-w-[14rem] tw-h-[14rem]"}
+                    src={cowImage}
+                    alt={"image4"}
+                  />
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-        {this._renderSubComp("/Lab3/Exercise/ExerciseInstructions")}
+        {this.renderNextButton("/Lab3/Exercise/ExerciseInstructions")}
       </div>
     );
   }

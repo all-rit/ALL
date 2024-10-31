@@ -111,7 +111,7 @@ const App = () => {
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? `tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-[60%] lg:tw-w-[70%] tw-mx-6 ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-full"} tw-top-0 tw-justify-center tw-flex tw-flex-col` : "tw-w-full"}`}
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? `tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-[60%] lg:tw-w-[70%] tw-mx-6 ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-[105%]"} tw-top-0 tw-justify-center tw-flex tw-flex-col` : "tw-w-full"}`}
             >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />

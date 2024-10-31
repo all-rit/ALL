@@ -3,7 +3,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import CodeUpdateHeader from "../../components/CodeUpdateHeader";
 import "../../../../../assets/stylesheets/prism.scss";
 import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
 import { amber, green, red, yellow } from "@mui/material/colors";
@@ -114,28 +113,23 @@ class CodeChange extends Component {
   render() {
     const { data, actions } = this.props;
     return (
-      <div>
-        <CodeUpdateHeader
-          heading={"Make Code Changes"}
-          justifyAlignment={"space-between"}
-        />
+      <div className={"tw-p-10 tw-text-left"}>
+        <h2 className={"tw-title-styling-name"}> Exercise Complete </h2>
+        <br />
         <div style={{ display: "block", marginBottom: "10px" }}>
-          <Typography
-            variant={"subtitle"}
-            aria-label={
-              "First make changes to the code, if not satisfied try again.\n" +
-              "                    Then click the 'End Activity' button which will appear when you have made changes " +
-              "at least once."
-            }
-            color={"inherit"}
-            tabIndex={"0"}
+          <p
+            className={"tw-body-styling-name tw-font-medium"}
+            aria-label="First make changes to the code, if not satisfied try again. Then
+              click the 'End Activity' button which will appear when you have made
+              changes at least once."
           >
             First make changes to the code, if not satisfied try again. Then
             click the 'End Activity' button, which will appear when you have
             made changes at least once.
-          </Typography>
+          </p>
         </div>
-        <div style={{ textAlign: "center" }}>
+        <br />
+        <div className={"tw-flex tw-flex-row-reverse tw-justify-around"}>
           <Repair
             visible={data.repair3.repairVisible}
             data={data.repair3}
