@@ -84,7 +84,34 @@ const LabGeneration = (props) => {
           <p className="module__no_labs">You have no labs for this section.</p>
         );
       }
-    } else {
+    }
+    else if (progressState === "FEATURED_LABS") {
+      return (
+        <div
+            className={
+              "tw-flex tw-flex-row"
+            }
+        >
+          {labids.map((lab, index) => {
+            const idx = lab.id - 1;
+            console.warn(lab)
+            return (
+              <div key={idx} className="tw-m-1">
+                {renderLabData(
+                  actions,
+                  labInformation[idx],
+                  progressState,
+                  index,
+                  null,
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )
+    }
+    
+    else {
       if (labRecords !== null && labRecords.length > 0) {
         return labRecords.map((rec, index) => {
           const idx = rec.labid - 1;
