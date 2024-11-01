@@ -207,7 +207,7 @@ const getSection = async (sectionName) => {
       const userResponse = survey.map((question, index) => {
       // leaves in maintainability for adding in demo field
         if (index === 0 || index === 1 || index === 5) {
-          return question.answer.index;
+          return question.answer;
         }
       });
       const userResponses = userResponse.flat().toString().replace(/,/g, '');
@@ -228,7 +228,7 @@ const determineGroup = async (data) => {
   // repeats the same flattening for the user.
   const userResponse = data.map((question, index) => {
     if (index === 0 || index === 1 || index === 5) {
-      return question.answer.index;
+      return question.answer;
     }
   }).toString().replace(/,/g, '');
 
@@ -255,7 +255,6 @@ const determineGroup = async (data) => {
       lowestPool = pool;
     }
   }
-  console.log(lowestPool);
   // get users answers
   return lowestPool;
 };

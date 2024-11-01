@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { PageService } from "../../../../services/PageService";
 import { navigate } from "@reach/router";
 import { LAB_ID } from "../../../../constants/lab4";
+import TooltipWithTab from "../helpers/tooltip";
 
 const FormComp = (props) => {
   const [state, setState] = useState({
@@ -91,22 +92,30 @@ const FormComp = (props) => {
   };
 
   return (
-    <main className="tw-z-50 tw-min-h-144">
-      <div className="overlap h-100 " onClick={(e) => focusElem(e)}>
+    <main className="tw-min-h-96 tw-mb-16">
+      <div className="overlap" onClick={(e) => focusElem(e)}>
         <Form>
           <FormGroup>
             <Label for="animal">Favorite Animal</Label>
             <Input
               type="text"
               name="animal"
-              id="animal"
+              id="main"
               placeholder="Type Favorite Animal Here"
               onChange={(e) => change(e)}
               value={state.animal}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="color">Favorite Color</Label>
+            <Label for="color">
+              Favorite Color{" "}
+              {props.showTooltip && (
+                <TooltipWithTab
+                  tab={props.tooltipTab}
+                  disabled={props.tooltipDisabled}
+                />
+              )}
+            </Label>
             <Input
               type="text"
               name="color"
@@ -144,7 +153,7 @@ const FormComp = (props) => {
             onClick={(e) => form_sub(e)}
             className="formButtonSubmit"
           />
-          {props.rule && state.submitted && (
+          {state.show && (
             <Input
               type="submit"
               value="Give Up"
@@ -164,6 +173,9 @@ FormComp.propTypes = {
   url: PropTypes.string,
   rule: PropTypes.bool,
   parentCallback: PropTypes.func,
+  tooltipTab: PropTypes.string,
+  showTooltip: PropTypes.bool,
+  tooltipDisabled: PropTypes.bool,
 };
 
 export default FormComp;
