@@ -4,6 +4,8 @@ import ResourcesHeader from "./ResourcesHeader";
 import ResourcesSection from "./ResourcesSection";
 import GettingInvolved from "../../all-components/GettingInvolved";
 import AboutUs from "../../all-components/AboutUs";
+import DevPartners from "../landingpage/DevPartners";
+import Carousel from "../../all-components/carousel";
 
 const EducatorResources = () => {
   return (
@@ -12,6 +14,12 @@ const EducatorResources = () => {
       <WhatsAvailable />
       <ResourcesSection />
       <AboutUs />
+      <DevPartners />
+      <h2 className={"tw-py-6 tw-title-styling-name"}>
+        {" "}
+        Participating Schools{" "}
+      </h2>
+      <Carousel />
       <GettingInvolved />
     </div>
   );

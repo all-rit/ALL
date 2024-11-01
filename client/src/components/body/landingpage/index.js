@@ -6,8 +6,10 @@ import { connect } from "react-redux";
 import LabGeneration from "../lab/LabGeneration";
 import ProfileGeneration from "./citation/ProfileGeneration";
 import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
+import DevPartners from "./DevPartners";
 import GettingInvolved from "../../all-components/GettingInvolved";
 import AboutUs from "../../all-components/AboutUs";
+import Carousel from "../../all-components/carousel";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -95,8 +97,10 @@ const Home = (props) => {
       <GettingInvolved />
       <AboutUs />
       <HorizontalLine />
-
       <ProfileGeneration />
+      <HorizontalLine />
+      <DevPartners />
+      <Carousel />
     </div>
   );
 };
