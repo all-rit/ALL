@@ -2,6 +2,20 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import GradApplication from "../../../src/components/exercise/lab12/components/GradApplication";
 import ExerciseStateContext from "src/components/exercise/lab12/Lab12Context";
+import useMainStateContext from "../../../src/reducers/MainContext";
+import { ExerciseService } from "../../../src/services/lab12/ExerciseService";
+
+jest.mock("../../../src/reducers/MainContext", () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
+
+// Mock the ExerciseService
+jest.mock("../../../src/services/lab12/ExerciseService", () => ({
+  ExerciseService: {
+    fetchExercise: jest.fn(),
+  },
+}));
 
 /*
  * Test that the component has 5 input fileds for
@@ -9,6 +23,28 @@ import ExerciseStateContext from "src/components/exercise/lab12/Lab12Context";
  * And one "Submit Application" button field
  */
 describe("Test GradApplication Component Input Fields Before Repair", () => {
+  beforeEach(() => {
+    // Clear all mocks before each test
+    jest.clearAllMocks();
+
+    // Mock the MainContext hook return value
+    useMainStateContext.mockReturnValue({
+      state: {
+        main: {
+          user: {
+            userid: 1,
+          },
+        },
+      },
+    });
+
+    // Mock the ExerciseService.fetchExercise to resolve immediately
+    ExerciseService.fetchExercise.mockResolvedValue({
+      isFormRepairComplete: true,
+      isDatabaseRepairComplete: true,
+    });
+  });
+
   test("has 5 input fields", async () => {
     render(<GradApplication />);
     // Verify header:
