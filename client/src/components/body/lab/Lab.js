@@ -150,9 +150,10 @@ const Lab = (props) => {
           />
         </ul>
       );
+    case "FEATURED_LABS":
     default:
       return (
-        <ul className="module__col module__lab_col tw-w-full xs:tw-flex-col xs:tw-h-50">
+        <ul className="module__col module__lab_col tw-w-full xs:tw-flex-col xs:tw-h-50 xs:tw-w-[15rem] md:tw-w-[20rem]">
           <li className={"xs:tw-w-full"}>
             <a
               className="portfolio-link"

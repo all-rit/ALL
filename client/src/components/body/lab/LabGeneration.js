@@ -89,7 +89,7 @@ const LabGeneration = (props) => {
       return (
         <div
             className={
-              "tw-flex tw-flex-row"
+              "tw-grid xs:tw-grid-cols-1 md:tw-grid-cols-2 tw-grid-h-full tw-w-full"
             }
         >
           {labids.map((lab, index) => {
