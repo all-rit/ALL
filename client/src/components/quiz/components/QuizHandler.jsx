@@ -1,11 +1,11 @@
-import { React, useEffect, useState } from "react";
-import { PropTypes } from "prop-types";
-import Quiz from "./Quiz";
-import Result from "./Result";
 import UserLabService from "../../../services/UserLabService";
 import labService from "src/services/LabService";
 import Certificate from "./Certificate";
 import useMainStateContext from "../../../reducers/MainContext";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import Quiz from "./Quiz";
+import Result from "./Result";
 
 /**
  * QuizHandler is react component responsible for tracking users responses

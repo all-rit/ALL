@@ -92,6 +92,9 @@ export const stateChange = (actions, pathname) => {
     case "Lab11":
       actions.setLab(11);
       break;
+    case "Lab12":
+      actions.setLab(12);
+      break;
     case "":
       actions.setLab(0);
       break;

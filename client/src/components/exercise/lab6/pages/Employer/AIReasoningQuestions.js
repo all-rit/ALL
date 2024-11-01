@@ -56,6 +56,7 @@ const AIReasoningQuestions = () => {
       <h2 className="playthrough__title">AI Reasoning Survey</h2>
 
       <QuestionsHandler
+        isFinalQuiz={true}
         questions={aiReasoningData}
         handleContinue={handleContinue}
       />
