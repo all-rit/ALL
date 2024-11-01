@@ -18,8 +18,8 @@ import ExerciseStart from "./pages/ExerciseStart";
 
 const Main = () => {
   return (
-    <div className="container bottomSpace">
-      <Router className="app">
+    <div className="container tw-h-[40rem]">
+      <Router className="app tw-h-full">
         <ExerciseStart path="/" />
         <SmallTarget path="/SmallTarget" />
         <TargetGuideline path="/TargetGuideline" />
