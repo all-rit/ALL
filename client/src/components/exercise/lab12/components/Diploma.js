@@ -9,13 +9,10 @@ import { ExerciseService } from "../../../../services/lab12/ExerciseService";
 
 const Diploma = () => {
   const { state } = useMainStateContext();
-
   const [nextPage, setNextPage] = useState(`/Lab12/Exercise/AlumniNewsletter`);
-
   const [buttonLabel, setButtonLabel] = useState(
     "Continue to Alumni Newsletter",
   );
-
   const [isRepairComplete, setIsRepairComplete] = useState(false);
 
   const fetchExercise = async () => {
