@@ -1,16 +1,13 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Tooltip } from "reactstrap";
 
-const Toolitip = (tab) => {
+const TooltipWithTab = ({ tab, disabled }) => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggle = () => setTooltipOpen(!tooltipOpen);
   return (
-    <div
-      style={{ display: "inline-block" }}
-      tabIndex={tab.tab}
-      onFocus={toggle}
-    >
+    <div style={{ display: "inline-block" }} tabIndex={tab} onFocus={toggle}>
       <span
         style={{ textDecoration: "underline", color: "blue" }}
         href="#"
@@ -25,6 +22,7 @@ const Toolitip = (tab) => {
         autohide={true}
         target="DisabledAutoHideExample"
         toggle={toggle}
+        disabled={disabled}
       >
         Color must be &quot;violet&quot;
       </Tooltip>
@@ -32,4 +30,9 @@ const Toolitip = (tab) => {
   );
 };
 
-export default Toolitip;
+TooltipWithTab.propTypes = {
+  tab: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+export default TooltipWithTab;
