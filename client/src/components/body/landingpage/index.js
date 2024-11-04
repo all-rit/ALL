@@ -26,12 +26,16 @@ const Home = () => {
 
   const [featuredLabs, setFeaturedLabs] = useState([]);
 
-  useEffect(async () => {
+  const getFeaturedLabs = async() => {
     const allLabs = await labService.getAllLabs();
     const lab10 = allLabs[9];
     const lab11 = allLabs[10];
 
     setFeaturedLabs([lab10, lab11]);
+  }
+
+  useEffect(() => {
+    getFeaturedLabs();
   }, []);
 
 
@@ -41,9 +45,9 @@ const Home = () => {
       <div className="tw-relative tw-flex tw-flex-col">
         <section className="tw-flex tw-bg-primary-blue tw-justify-end">
           <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
-            <h1 className="tw-mt-10 tw-ml-8">
+            <h1 className="tw-mt-10 tw-ml-8 ">
               Welcome to Accessible Learning Labs
-              </h1>
+            </h1>
             <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left tw-leading-5">
               Accessible Learning Labs is an NSF funded initiative aimed at empowering 
               inclusive software and fostering STEM proficiency. We are dedicated to 
