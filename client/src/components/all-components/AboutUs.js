@@ -28,20 +28,18 @@ const AboutUs = () => {
                 "tw-flex tw-flex-col xs:tw-w-full lg:tw-w-3/4 tw-h-full tw-justify-center"
               }
             >
-              <p
+              <h1
                 className={
-                  "tw-title-styling-name xs:tw-text-sm md:tw-text-[1.5rem] tw-my-6 tw-font-poppins tw-leading-3"
+                  "tw-title-styling-name tw-my-6 tw-font-poppins tw-leading-3 tw-text-left"
                 }
               >
-                {" "}
                 About Us
-              </p>
+              </h1>
               <p
                 className={
-                  "tw-font-calibri tw-font-medium xs:tw-text-sm lg:tw-text-[1.125rem] tw-leading-normal"
+                  "tw-font-calibri tw-font-medium xs:tw-text-sm lg:tw-text-[1.125rem] tw-body-styling-name"
                 }
               >
-                {" "}
                 Learn more about the team at Accessible Learning Labs and the
                 amazing things we have in the works!
               </p>

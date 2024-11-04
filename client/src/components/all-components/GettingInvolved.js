@@ -26,16 +26,16 @@ const GettingInvolved = () => {
                 "tw-flex tw-flex-col tw-w-1/2 tw-h-full tw-justify-center"
               }
             >
-              <p
+              <h1
                 className={
-                  "tw-title-styling-name xs:tw-text-sm md:tw-text-[1.5rem] tw-my-6 tw-font-poppins xs:tw-w-full md:tw-w-1/2 tw-text-nowrap tw-leading-tight "
+                  "tw-title-styling-name tw-my-6 tw-font-poppins xs:tw-w-full md:tw-w-1/2 tw-text-nowrap tw-leading-tight "
                 }
               >
                 Interested in Getting Involved?
-              </p>
+              </h1>
               <p
                 className={
-                  "tw-font-calibri tw-font-medium lg:tw-text-[1.125rem] xs:tw-text-sm tw-leading-normal"
+                  "tw-body-styling-name"
                 }
               >
                 Whether you want to implement our labs in your course

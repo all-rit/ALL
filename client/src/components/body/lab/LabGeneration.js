@@ -94,7 +94,6 @@ const LabGeneration = (props) => {
         >
           {labids.map((lab, index) => {
             const idx = lab.id - 1;
-            console.warn(lab)
             return (
               <div key={idx} className="tw-m-1">
                 {renderLabData(

@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
-import nsf from "../../../assets/images/logos/nsf.png";
-import rit from "../../../assets/images/logos/RIT.png";
 import LabGeneration from "../lab/LabGeneration";
 import MainFooter from "../../footer/mainFooter";
 import GettingInvolved from "../../all-components/GettingInvolved";
@@ -46,17 +44,19 @@ const Home = () => {
       {/* Header */}
       <div className="tw-relative tw-flex tw-flex-col">
         <section className="tw-flex tw-bg-primary-blue tw-justify-end">
-          <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
-            <h1 className="tw-mt-10 tw-ml-8 tw-title-styling-name">
-              Welcome to Accessible Learning Labs
-            </h1>
-            <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left tw-body-styling-name">
-              Accessible Learning Labs is an NSF funded initiative aimed at empowering 
-              inclusive software and fostering STEM proficiency. We are dedicated to 
-              equipping users with the skills and knowledge to create accessible software 
-              solutions. Through our interactive and intuitive labs, we aim to make the 
-              internet a more equitable place for everyone.
-            </p>
+          <div className="tw-bg-primary-yellow tw-w-5/6 tw-rounded-lg tw-pb-4 tw-pl-4 tw-flex tw-justify-end">
+            <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-flex tw-items-start tw-flex-col tw-gap-8 tw-translate-y-4">
+              <h1 className="tw-mt-10 tw-ml-8 tw-title-styling-name">
+                Welcome to Accessible Learning Labs
+              </h1>
+              <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left tw-body-styling-name">
+                Accessible Learning Labs is an NSF funded initiative aimed at empowering 
+                inclusive software and fostering STEM proficiency. We are dedicated to 
+                equipping users with the skills and knowledge to create accessible software 
+                solutions. Through our interactive and intuitive labs, we aim to make the 
+                internet a more equitable place for everyone.
+              </p>
+            </div>
           </div>
         </section>
         <div className="tw-bg-white tw-h-32"></div>
@@ -69,7 +69,7 @@ const Home = () => {
         <div className="tw-bg-white tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-mr-10 tw-py-8 tw-border-solid tw-border-b-0 tw-border-l-0 tw-border-t-12 tw-border-r-12 tw-rounded-tr-lg tw-border-primary-blue">
           <div className="tw-flex tw-flex-row tw-items-start tw-gap-16 tw-mt-4">
             <div className="tw-flex tw-flex-col">
-              <h1 className="tw-text-left tw-mb-4">
+              <h1 className="tw-text-left tw-mb-4 tw-title-styling-name">
                 Are You a Student?
               </h1>
               <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-body-styling-name">
@@ -77,7 +77,7 @@ const Home = () => {
                 If not, please explore all of the labs that are available for everyone, 
                 including our featured labs.
               </p>
-              <h1 className="tw-text-left tw-mt-16 tw-mb-4">Featured Labs</h1>
+              <h1 className="tw-text-left tw-mt-16 tw-mb-4 tw-title-styling-name">Featured Labs</h1>
             </div>
             <div className="tw-flex tw-flex-col tw-gap-4">
               <ALLButton
@@ -101,7 +101,7 @@ const Home = () => {
       {/* Are you an Educator? */}
       <section className="tw-flex tw-bg-primary-blue tw-justify-end">
         <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
-          <h1 className="tw-mt-10 tw-ml-10">
+          <h1 className="tw-mt-10 tw-ml-10 tw-title-styling-name">
             Are You an Educator?
           </h1>
           <div className="tw-flex tw-flex-row tw-gap-16">
@@ -129,34 +129,6 @@ const Home = () => {
 
       {/* Getting Involved */}
       <GettingInvolved />
-      <div className="tw-bg-white tw-h-32 tw-mb-8 tw-gap-4 tw-flex tw-justify-center tw-items-center tw-flex-col">
-        <div className="tw-flex tw-flex-row tw-gap-8">
-          <a
-            href="https://www.nsf.gov"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="d-block mx-auto landingpage__logo"
-              src={nsf}
-              alt="National Science Foundation"
-            />
-          </a>
-          <a
-            href="https://www.rit.edu"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className=" d-block mx-auto landingpage__logo"
-              src={rit}
-              alt="Rochester Institute Of Technology"
-            />
-          </a>
-        </div>
-        <p>Available under the Federal Government License</p>
-      </div>
-
 
       <MainFooter />
     </div>

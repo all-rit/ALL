@@ -141,7 +141,7 @@ module.exports = {
           fontSize: "1.5rem",
           fontWeight: theme("fontWeight.normal"),
         },
-        ".": {
+        ".body-styling-name": {
           font: theme("fontFamily.calibri"),
           fontSize: "1.125rem",
           fontWeight: theme("fontWeight.normal"), 
