@@ -6,6 +6,8 @@ import rit from "../../../assets/images/logos/RIT.png";
 import LabGeneration from "../lab/LabGeneration";
 import MainFooter from "../../footer/mainFooter";
 import GettingInvolved from "../../all-components/GettingInvolved";
+import DevPartners from "./DevPartners";
+import Carousel from "src/components/all-components/carousel";
 import AboutUs from "../../all-components/AboutUs";
 import TEMPIMG from "../../../assets/images/landingpage/TEMP.png"
 import ALLButton from "../../all-components/ALLButton";
@@ -45,10 +47,10 @@ const Home = () => {
       <div className="tw-relative tw-flex tw-flex-col">
         <section className="tw-flex tw-bg-primary-blue tw-justify-end">
           <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
-            <h1 className="tw-mt-10 tw-ml-8 ">
+            <h1 className="tw-mt-10 tw-ml-8 tw-title-styling-name">
               Welcome to Accessible Learning Labs
             </h1>
-            <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left tw-leading-5">
+            <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left tw-body-styling-name">
               Accessible Learning Labs is an NSF funded initiative aimed at empowering 
               inclusive software and fostering STEM proficiency. We are dedicated to 
               equipping users with the skills and knowledge to create accessible software 
@@ -70,7 +72,7 @@ const Home = () => {
               <h1 className="tw-text-left tw-mb-4">
                 Are You a Student?
               </h1>
-              <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-leading-6">
+              <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-body-styling-name">
                 Use the code that your instructor has provided to join a group! 
                 If not, please explore all of the labs that are available for everyone, 
                 including our featured labs.
@@ -103,7 +105,7 @@ const Home = () => {
             Are You an Educator?
           </h1>
           <div className="tw-flex tw-flex-row tw-gap-16">
-            <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left">
+            <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left tw-body-styling-name">
               Access the ability to create groups for your students, track their lab progress, date of completion, and quiz grade. Find more indormation and resources under our Eductator Resources.
             </p>
             <ALLButton
@@ -119,10 +121,10 @@ const Home = () => {
       <div className="tw-bg-white tw-h-32"></div>
 
       {/* Development Partners */}
-      {/* TODO: Add the development partners component */}
+      <DevPartners />
 
       {/* Participating Schools */}
-      {/* TODO: Add the participating schools component */}
+      <Carousel />
       <div className="tw-bg-white tw-h-32"></div>
 
       {/* Getting Involved */}
