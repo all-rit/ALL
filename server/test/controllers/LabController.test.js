@@ -2,8 +2,7 @@ const LabController = require('../../controllers/LabController');
 const ControllerTestUtil = require('../controllers/ControllerTestUtil');
 const LabService = require('../../services/LabService');
 
-const labCount = 11;
-
+const labCount = 12;
 
 describe( 'Test LabController for successful Payloads', () => {
   test('Test get all labs', async () => {

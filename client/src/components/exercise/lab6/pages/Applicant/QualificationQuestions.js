@@ -150,6 +150,7 @@ function QualificationQuestions() {
       <h2 className="playthrough__title">Qualification Questions</h2>
 
       <QuestionsHandler
+        isFinalQuiz={true}
         questions={qualQuestionsData}
         handleContinue={handleContinue}
       />
