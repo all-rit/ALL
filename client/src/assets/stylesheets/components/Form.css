@@ -1,6 +1,5 @@
 .overlap {
   width: 50%;
-  height: 370px;
   z-index: 1;
   position: absolute;
   left: 25%;
@@ -44,6 +43,7 @@ a.skip-main {
   height: 1px;
   overflow: hidden;
   z-index: -999;
+  scroll-margin-top: 50rem;
 }
 
 .formCompDexterity {

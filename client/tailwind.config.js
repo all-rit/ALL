@@ -103,9 +103,19 @@ module.exports = {
             animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",
           },
         },
+        infiniteScroll: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-101.5%)" },
+        },
+        infiniteScrollRight: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(101.5%)" },
+        },
       },
       animation: {
         "reduced-bounce": `reducedBounce 2s linear infinite`,
+        "infinite-scroll": `infiniteScroll 25s linear infinite`,
+        "infinite-scroll-right": `infiniteScrollRight 25s linear infinite`,
       },
       zIndex: {
         1: "1",
