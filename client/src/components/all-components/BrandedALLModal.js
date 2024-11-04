@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "reactstrap";
 import PropTypes from "prop-types";
-import logo from "../../assets/images/logos/ALL_White.png";
+import logo from "../../assets/images/logos/ALL_White_Logo.svg";
 
 const BrandedALLModal = (props) => {
   const { isOpen, toggle, direction, body } = props;

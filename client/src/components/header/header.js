@@ -131,7 +131,7 @@ const Header = (props) => {
       className="tw-font-poppins tw-font-bold tw-my-0"
     >
       <div
-        className={`tw-flex tw-flex-col tw-gap-2 tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] lg:tw-h-40 tw-shadow-md tw-px-5 md:tw-mt-[-2rem]`}
+        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] lg:tw-h-40 tw-shadow-md tw-px-5`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
@@ -196,7 +196,7 @@ const Header = (props) => {
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                  href="#resources"
+                  href="/EducatorResources"
                 >
                   <p className="tw-text-base tw-text-labBlue tw-font-bold">
                     Educator Resources
