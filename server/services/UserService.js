@@ -27,7 +27,7 @@ const authenticate = async (data) => {
       const newAccount = {
         firstName: firstName,
         lastInitial: lastInitial,
-        email: email,
+        email1: email,
       };
       session = await createNewAccountAndSession(userSessionID, newAccount);
     }
