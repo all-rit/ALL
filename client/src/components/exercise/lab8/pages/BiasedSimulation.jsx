@@ -6,6 +6,7 @@ import { getMessages } from "../../../../constants/lab8/messages";
 import { useLocation } from "@reach/router";
 import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
+import LabButton from "../../../all-components/LabButton";
 
 const BiasedSimulation = () => {
   const { actions } = useMainStateContext();
@@ -31,7 +32,7 @@ const BiasedSimulation = () => {
   };
 
   return (
-    <div className="">
+    <div className="tw-py-6">
       <div className="exercise-frame tw-w-full tw-aspect-video">
         {repairState ? (
           // Render updatedMessages if repairState is true
@@ -57,13 +58,11 @@ const BiasedSimulation = () => {
           </b>
         </div>
       )}
-      <button
-        className="btn btn-primary text-uppercase tw-mt-4"
+      <LabButton
         onClick={handleContinue}
         disabled={!canContinue}
-      >
-        Continue
-      </button>
+        label={"Continue"}
+      />
     </div>
   );
 };

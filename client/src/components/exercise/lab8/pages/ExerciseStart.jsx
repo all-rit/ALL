@@ -5,6 +5,7 @@ import { NAV_BIASED_SIMULATION } from "../../../../constants/lab8";
 
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
+import LabButton from "../../../all-components/LabButton";
 
 const ExerciseStart = () => {
   const { actions } = useMainStateContext();
@@ -20,8 +21,9 @@ const ExerciseStart = () => {
   return (
     <>
       <div className="center-div">
-        <div className="guidance margin-bottom-2">
-          <p className="playthrough__sentence">
+        <h1 className={"tw-title-styling-name tw-text-left"}>Exercise Start</h1>
+        <div className="tw-my-6">
+          <p className="tw-body-styling-name">
             In this exercise, you are taking the role of a chat moderator for a
             live stream, the streamer for which has recently taken a break and
             is away from their computer. You are testing a new moderation tool
@@ -34,23 +36,17 @@ const ExerciseStart = () => {
             </strong>
           </p>
 
-          <p className="playthrough__sentence">
+          <p className="tw-body-styling-name tw-my-6">
             Beside each chat message, you will see a recommendation from the AI,
             followed by buttons to either remove the message or keep it.
           </p>
         </div>
 
-        <p className="playthrough__sentence">
+        <p className="tw-body-styling-name tw-my-6">
           Click the &apos;<span className={"tw-font-bold"}>Start</span>&apos;
           button to move on to the simulation!
         </p>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={handleStart}
-          key="start"
-        >
-          Start
-        </button>
+        <LabButton onClick={handleStart} key="start" label={"Start"} />
       </div>
     </>
   );

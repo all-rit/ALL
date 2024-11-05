@@ -10,7 +10,7 @@ import Conclusion from "./pages/Conclusion";
 
 const Main = () => {
   return (
-    <div className="bottomSpace">
+    <div className="bottomSpace tw-h-[40rem] tw-overflow-y-scroll">
       <Router className="app">
         {/* Phase 1: experience biased sentiment analysis in action */}
         <ExerciseStart path="/*" />

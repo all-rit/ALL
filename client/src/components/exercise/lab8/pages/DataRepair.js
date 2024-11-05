@@ -1,6 +1,5 @@
 import { navigate } from "@reach/router";
 import React, { useState, useEffect } from "react";
-import CodeUpdateHeader from "../../lab3/components/CodeUpdateHeader";
 import Popup from "../../../all-components/Popup";
 import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 import ExerciseService from "../../../../services/lab8/ExerciseService";
@@ -189,13 +188,9 @@ const DataRepair = () => {
   };
 
   return (
-    <div>
-      <CodeUpdateHeader
-        heading={"Repair the Dataset"}
-        justifyAlignment={"space-between"}
-      />
-
-      <div className="cognitive_instructions margin-bottom-2">
+    <div className={"tw-p-6"}>
+      <h1 className={"tw-title-styling-name tw-text-left tw-my-6"}> Repair </h1>
+      <div className="tw-body-styling-name margin-bottom-2">
         {/* instructions for the user */}
         Repair the dataset by assigning the correct polarity to each message.
         <br />

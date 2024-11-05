@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const LabButton = (props) => {
-  const { onClick, type, label, key } = props;
+  const { onClick, type, label, key, disabled } = props;
 
   return (
     <button
@@ -10,6 +10,7 @@ const LabButton = (props) => {
       type={type}
       key={key}
       className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg btn-xl text-uppercase"
+      disabled={disabled}
     >
       {label}
     </button>
@@ -21,6 +22,7 @@ LabButton.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   key: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default LabButton;
