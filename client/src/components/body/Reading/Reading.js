@@ -113,10 +113,18 @@ const Reading = (props) => {
   return (
     <div
       className={
-        "tw-w-full tw-flex tw-flex-row tw-align-top tw-justify-center tw-overflow-y-scroll tw-h-[42rem] tw-rounded-4xl"
+        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[42rem] tw-rounded-4xl"
       }
     >
-      <div className="tw-w-full">
+      <h2
+        className={
+          "tw-title-styling-name tw-text-left tw-bg-white tw-w-[100%] tw-px-10"
+        }
+      >
+        {" "}
+        Reading{" "}
+      </h2>
+      <div className="tw-w-full  tw-overflow-y-scroll">
         <div className="study tw-h-full tw-bg-white p-5 tw-rounded-lg">
           {readingData?.description !== "" ? (
             <>

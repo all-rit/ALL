@@ -59,18 +59,19 @@ const AICodeRepair = () => {
 
   return (
     <div>
+      <h1 className={"tw-title-styling-name tw-text-left"}> Repair </h1>
       <div className="center-div">
         <div className="guidance margin-bottom-2">
-          <p className="playthrough__sentence">
+          <p className="tw-body-styling-name tw-my-6">
             We have identified the component of the AI that is impacting its
             decision-making, let&lsquo;s take a look into the AI and see how it
             can be improved.
           </p>
-          <p className="playthrough__sentence">
+          <p className="tw-body-styling-name tw-my-6">
             In this part of the exercise, you will have the opportunity to
             improve the accuracy of the autonomous file access system.
           </p>
-          <p className={"playthrough__sentence"}>
+          <p className="tw-body-styling-name tw-my-6">
             Your goal should be to implement a utility equation into the
             autonomous system. The utility equation is calculated by weighing
             the reward of a decision and the cost of making said decision.
@@ -79,7 +80,7 @@ const AICodeRepair = () => {
             tex={String.raw`Utility=\frac{Reward\;Value}{Cost\;Value}`}
           />
         </div>
-        <p className="playthrough__sentence">
+        <p className="tw-body-styling-name tw-my-6">
           Click the &lsquo;<span className={"tw-font-bold"}>Repair</span>
           &lsquo; button to view and edit the code of the autonomous system.
         </p>
