@@ -30,6 +30,9 @@ const Reinforcement = (props) => {
 
   return (
     <div className={"tw-min-h-[40rem]"}>
+      <h1 className={"tw-px-10 tw-title-styling-name tw-text-left"}>
+        Reinforcement
+      </h1>
       <div className="">
         <h4 className="tw-font-bold tw-text-center p-3">
           Here is some supplemental material to reinforce the topic.
