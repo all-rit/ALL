@@ -231,6 +231,10 @@ li {
   align-items: center;
 }
 
+.RepairHeader {
+  background: linear-gradient(to right, #414141, #d3d3d3, #fff);
+}
+
 .link {
   text-decoration: underline;
   padding-right: 10px;
@@ -306,13 +310,13 @@ li {
       border-radius: 1em;
     }
     &:checked + .primary {
-      background-color: #a1ffb7;
-      color: #0c3515;
+      background-color: #a4efb6;
+      color: #000000;
       z-index: 1;
     }
     &:checked + .secondary {
-      background-color: #a05c62;
-      color: #fff562;
+      background-color: #fb4757;
+      color: #ffffff;
       z-index: 1;
     }
     &:checked + label {
@@ -363,9 +367,15 @@ li {
     margin-left: 10px;
     font-size: 1.6rem;
     font-weight: 750;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
-    background: linear-gradient(#9198e5, #712020);
+    background: linear-gradient(
+      to bottom left,
+      #ffffff,
+      #999999,
+      #5a5a5a,
+      #000000
+    );
   }
   &__textBox {
     width: calc(100% - 190px);
@@ -388,17 +398,19 @@ li {
     font-weight: bold;
   }
   &__title_reject {
-    color: #fff562;
+    color: #ffffff;
     margin-left: -5px;
   }
   &__title_hire {
     color: #0c3515;
   }
   &__reject {
-    background-color: #a05c62;
+    background-color: #fb4757;
+    border-radius: 10px;
   }
   &__hire {
-    background-color: #a1ffb7;
+    background-color: #a4efb6;
+    border-radius: 10px;
   }
   &__desc {
     font-size: 12px;
