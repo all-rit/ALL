@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppInstructions from "../components/AppInstructions";
 import ExtraNav from "../components/ExtraNav";
 import FormComp from "../components/FormComp";
@@ -24,9 +24,16 @@ const FormHintAccessible = () => {
   const tooltipTab = "0";
   const name = "FormHintAccessible";
 
+  const jumpToMain = () => {
+    const mainElement = document.getElementById("main");
+    if (mainElement) {
+      mainElement.focus({ preventScroll: true });
+    }
+  };
+
   return (
-    <Fragment>
-      <a className="skip-main" href="#main">
+    <div className={"tw-p-6"}>
+      <a className="skip-main" href="#" onClick={jumpToMain}>
         Skip to main content
       </a>
       <ExtraNav />
@@ -45,7 +52,7 @@ const FormHintAccessible = () => {
         parentCallback={callbackFunction}
         name={name}
       />
-    </Fragment>
+    </div>
   );
 };
 
