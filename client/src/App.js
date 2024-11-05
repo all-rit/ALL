@@ -181,7 +181,7 @@ const App = () => {
             </Router>
           </div>
         </div>
-        <MainFooter />
+        {lab === 0 && <MainFooter />}
         <Change
           context={context}
           quizCompleted={quizCompleted}
