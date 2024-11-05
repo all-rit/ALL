@@ -287,7 +287,12 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-  state: PropTypes.string,
+  state: PropTypes.shape({
+    main: PropTypes.shape({
+      body: PropTypes.number,
+      lab: PropTypes.number,
+    }),
+  }),
   context: PropTypes.shape({
     state: PropTypes.shape({
       main: PropTypes.shape({
