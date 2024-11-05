@@ -35,7 +35,7 @@ class DementiaAccessible extends Component {
         <div className="cognitive_instructions" style={style}>
           Read the following information about Dementia from w3.org
         </div>
-        <div className="cognitive_information" style={style}>
+        <div className="cognitive_information tw-rounded-lg" style={style}>
           {!this.state.timerDone ? (
             <div>
               <div className="heading">1.0 Dementia</div>
