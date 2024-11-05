@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-inner-declarations */
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -13,6 +11,7 @@ import { navigate } from "@reach/router";
 import BrandedALLModal from "../../all-components/BrandedALLModal";
 import LoginBody from "../login/LoginBody";
 import GettingInvolved from "../../all-components/GettingInvolved";
+import PropTypes from "prop-types";
 
 const mapStateToProps = (state) => {
   return {
@@ -63,24 +62,27 @@ const LabsPage = (props) => {
   const [labInformation, setLabInformation] = useState(new Map());
 
   useEffect(() => {
-    if (labInformation.size === 0) {
-      async function fetchGroups() {
-        return LabService.getAllLabs();
-      }
-      fetchGroups().then((data) => {
-        // hashmap... :D
-        let hashmap = new Map();
-        data.forEach((lab) => {
-          const category = lab.category;
-          if (hashmap.has(category)) {
-            hashmap.get(category).push(lab);
-          } else {
-            hashmap.set(category, [lab]);
-          }
-        });
-        setLabInformation(hashmap);
-      });
+    if (labInformation.size !== 0) {
+      return;
     }
+
+    async function fetchGroups() {
+      return LabService.getAllLabs();
+    }
+
+    fetchGroups().then((data) => {
+      // hashmap... :D
+      let hashmap = new Map();
+      data.forEach((lab) => {
+        const category = lab.category;
+        if (hashmap.has(category)) {
+          hashmap.get(category).push(lab);
+        } else {
+          hashmap.set(category, [lab]);
+        }
+      });
+      setLabInformation(hashmap);
+    });
   });
 
   const labsByDifficulty = (labMap, difficulty) => {
@@ -315,7 +317,7 @@ const LabsPage = (props) => {
                         key={category}
                         className="tw-flex tw-flex-col tw-mb-4"
                       >
-                        <text className="tw-font-bold tw-font-calibri tw-text-xl tw-w-full tw-text-left">
+                        <text className="tw-font-bold tw-font-calibri tw-text-xl tw-w-full tw-text-left tw-my-4">
                           {category}
                         </text>
                         <div className="tw-flex tw-flex-wrap">
@@ -381,6 +383,10 @@ const LabsPage = (props) => {
       <GettingInvolved />
     </>
   );
+};
+
+LabsPage.propTypes = {
+  actions: PropTypes.shape({}),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LabsPage);
