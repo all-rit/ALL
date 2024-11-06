@@ -28,34 +28,40 @@ const Home = () => {
 
   const getFeaturedLabs = async() => {
     const allLabs = await labService.getAllLabs();
-    const lab10 = allLabs[9];
+    const lab12 = allLabs[11];
     const lab11 = allLabs[10];
 
-    setFeaturedLabs([lab10, lab11]);
+    setFeaturedLabs([lab12, lab11]);
   }
 
   useEffect(() => {
     getFeaturedLabs();
   }, []);
 
+  // TODO: Site Accessibility Settings does nothing atm (header + footer)
+  // TODO: All the images
+  // TODO: Get the correct anchors
+  // TODO: Mobile Compatibility
 
   return (
     <div className="landingpage">
       {/* Header */}
       <div className="tw-relative tw-flex tw-flex-col">
-        <section className="tw-flex tw-bg-primary-blue tw-justify-end">
-          <div className="tw-bg-primary-yellow tw-w-5/6 tw-rounded-lg tw-pb-4 tw-pl-4 tw-flex tw-justify-end">
-            <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-flex tw-items-start tw-flex-col tw-gap-8 tw-translate-y-4">
-              <h1 className="tw-mt-10 tw-ml-8 tw-title-styling-name">
-                Welcome to Accessible Learning Labs
-              </h1>
-              <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left tw-body-styling-name">
-                Accessible Learning Labs is an NSF funded initiative aimed at empowering 
-                inclusive software and fostering STEM proficiency. We are dedicated to 
-                equipping users with the skills and knowledge to create accessible software 
-                solutions. Through our interactive and intuitive labs, we aim to make the 
-                internet a more equitable place for everyone.
-              </p>
+        <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center">
+          <div className="tw-grid tw-w-full tw-h-1/2">
+            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end tw-rounded-bl-lg tw-relative tw-rounded-lg">
+              <div className="tw-bg-white tw-w-full tw-h-[120%] tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
+                <h1 className="tw-mt-10 tw-ml-16 tw-title-styling-name">
+                  Welcome to Accessible Learning Labs
+                </h1>
+                <p className="tw-mb-10 tw-ml-16 tw-max-w-[35%] tw-text-wrap tw-text-left tw-body-styling-name">
+                  Accessible Learning Labs is an NSF funded initiative aimed at empowering 
+                  inclusive software and fostering STEM proficiency. We are dedicated to 
+                  equipping users with the skills and knowledge to create accessible software 
+                  solutions. Through our interactive and intuitive labs, we aim to make the 
+                  internet a more equitable place for everyone.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -64,7 +70,6 @@ const Home = () => {
       </div>
         
       {/* Are you a Student? */}
-      {/* TODO: Add conditional join a group */}
       <section className="tw-bg-primary-yellow tw-flex tw-justify-start tw-pb-0 tw-pt-16">
         <div className="tw-bg-white tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-mr-10 tw-py-8 tw-border-solid tw-border-b-0 tw-border-l-0 tw-border-t-12 tw-border-r-12 tw-rounded-tr-lg tw-border-primary-blue">
           <div className="tw-flex tw-flex-row tw-items-start tw-gap-16 tw-mt-4">
@@ -90,7 +95,6 @@ const Home = () => {
               ></ALLButton>
             </div>             
           </div> 
-          {/* TODO: make these only the labs assigned to students */}
           <div className="tw-grid">
             <LabGeneration actions={actions} labids={featuredLabs} progressState={"FEATURED_LABS"} />
           </div>
@@ -99,19 +103,23 @@ const Home = () => {
       <div className="tw-bg-white tw-h-32"></div>
         
       {/* Are you an Educator? */}
-      <section className="tw-flex tw-bg-primary-blue tw-justify-end">
-        <div className="tw-bg-white tw-rounded-tl-md tw-rounded-bl-md tw-w-5/6 tw-flex tw-items-start tw-flex-col tw-gap-8">
-          <h1 className="tw-mt-10 tw-ml-10 tw-title-styling-name">
-            Are You an Educator?
-          </h1>
-          <div className="tw-flex tw-flex-row tw-gap-16">
-            <p className="tw-mb-10 tw-ml-10 tw-max-w-[35%] tw-text-wrap tw-text-left tw-body-styling-name">
-              Access the ability to create groups for your students, track their lab progress, date of completion, and quiz grade. Find more indormation and resources under our Eductator Resources.
-            </p>
-            <ALLButton
-              label={"Educator Resources"}
-              onClick={handleNavEducators}
-            ></ALLButton>
+      <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center">
+        <div className="tw-grid tw-w-full tw-h-1/2">
+          <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end tw-rounded-bl-lg tw-relative tw-rounded-lg">
+            <div className="tw-bg-white tw-w-full tw-h-[120%] tw-p-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
+              <h1 className="tw-title-styling-name">
+                Are You an Educator?
+              </h1>
+              <div className="tw-flex tw-flex-row tw-gap-16">
+                <p className="tw-max-w-[35%] tw-text-wrap tw-text-left tw-body-styling-name">
+                  Access the ability to create groups for your students, track their lab progress, date of completion, and quiz grade. Find more indormation and resources under our Eductator Resources.
+                </p>
+                <ALLButton
+                  label={"Educator Resources"}
+                  onClick={handleNavEducators}
+                ></ALLButton>
+              </div>
+            </div>
           </div>
         </div>
       </section>

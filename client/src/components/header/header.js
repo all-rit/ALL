@@ -114,9 +114,9 @@ const Header = (props) => {
   const toggleNavbar = () => setNavbarOpen(!navbarOpen);
   const windowSize = useWindowSize();
 
-  if (isSmallWindow == false && windowSize[0] < 840) {
+  if (isSmallWindow == false && windowSize[0] < 1000) {
     setisSmallWindow(true);
-  } else if (isSmallWindow == true && windowSize[0] >= 840) {
+  } else if (isSmallWindow == true && windowSize[0] >= 1000) {
     setisSmallWindow(false);
   }
 
