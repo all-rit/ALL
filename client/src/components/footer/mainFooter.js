@@ -301,7 +301,7 @@ class MainFooter extends Component {
               <NavItem className="px-4 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                  href="#labs"
+                  href="/Labs"
                 >
                   <p className="tw-text-base tw-text-white tw-font-bold">
                     Labs
