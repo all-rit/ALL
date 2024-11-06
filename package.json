@@ -1,20 +1,22 @@
 {
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prettier-eslint": "^16.3.0",
-    "pretty-quick": "^4.0.0"
+    "pretty-quick": "^4.0.0",
+    "react-test-renderer": "^18.2.0"
   },
   "scripts": {
     "prepare": "husky install",
     "scriptname": "cmd"
   },
   "dependencies": {
-    "@fontsource/poppins": "^5.1.0",
     "@redux-devtools/extension": "^3.2.5",
+    "dotenv": "^16.4.5",
+    "jest-environment-jsdom": "^29.7.0",
     "crypto": "^1.0.1",
-    "font-face": "^2.3.4",
     "mathjs": "^12.3.2",
     "nanoid": "^5.0.7",
     "node-sass": "^9.0.0",

@@ -16,6 +16,8 @@ import {
 import { Nav, NavItem, NavLink } from "reactstrap";
 import logo from "../../assets/images/logos/ALL_White.svg";
 import handleRedirect from "../../helpers/Redirect";
+import nsf from "../../assets/images/logos/nsf.png";
+import rit from "../../assets/images/logos/RIT.png";
 
 const mapStateToProps = (state) => {
   return {
@@ -124,7 +126,44 @@ class MainFooter extends Component {
   render() {
     return (
       <>
-        <section className="tw-px-12 tw-bg-labGray tw-text-white tw-pb-1">
+        {/* Affiliates */}
+        <div className="">
+          <div className="container">
+            <div className="row tw-items-center">
+              <div className="tw-w-[13%]">
+                <a
+                  href="https://www.nsf.gov"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="tw-object-cover tw-w-full"
+                    src={nsf}
+                    alt="National Science Foundation"
+                  />
+                </a>
+              </div>
+              <div className="col-sm-3">
+                <a
+                  href="https://www.rit.edu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="tw-object-cover tw-w-full"
+                    src={rit}
+                    alt="Rochester Institute Of Technology"
+                  />
+                </a>
+              </div>
+              <p className={"tw-pt-6 tw-font-calibri tw-font-medium "}>
+                Available under the Federal Government License
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* Gray Footer */}
+        <div className="tw-px-12 tw-py-12 tw-bg-labGray tw-text-white">
           <div className="tw-flex tw-justify-between tw-flex-wrap">
             <div className="tw-object-left tw-max-w-80">
               <div className="tw-flex">
@@ -136,7 +175,6 @@ class MainFooter extends Component {
                   />
                 </a>
               </div>
-
               <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
                 About Us
               </h2>
@@ -198,7 +236,7 @@ class MainFooter extends Component {
                 </svg>
               </div>
             </div>
-            <div className="tw-object-right tw-max-w-80 tw-justify-end">
+            <div className="tw-object-right tw-max-w-80 tw-justify-end tw-py-10">
               <h1 className="tw-flex tw-justify-right tw-text-3xl tw-font-bold">
                 Reach out to us:
               </h1>
@@ -304,13 +342,13 @@ class MainFooter extends Component {
             </Nav>
           </div>
           <div className=" tw-w-full tw-bg-white tw-h-px" />
-          <div className="tw-flex tw-justify-between tw-flex-wrap tw-py-16">
+          <div className="tw-flex tw-justify-between tw-flex-wrap tw-mt-12">
             <div className="tw-flex">Versioning Information Goes Here</div>
             <a href="#" className="tw-text-white tw-no-underline">
               <div className="tw-flex">Site Accessibility Settings</div>
             </a>
           </div>
-        </section>
+        </div>
       </>
     );
   }

@@ -92,6 +92,7 @@ const QuestionsHandler = (props) => {
   }
   return (
     <Quiz
+      isFinalQuiz={props.isFinalQuiz}
       answer={""}
       answerOptions={answerOption}
       disable={disableNext}
@@ -110,6 +111,7 @@ const QuestionsHandler = (props) => {
 QuestionsHandler.propTypes = {
   questions: PropTypes.array.isRequired,
   handleContinue: PropTypes.func.isRequired,
+  isFinalQuiz: PropTypes.bool,
 };
 
 export default QuestionsHandler;
