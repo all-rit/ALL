@@ -32,7 +32,6 @@ const Profile = () => {
 
   useEffect(() => {
     getUserLabs();
-    console.log(user);
   }, [user]);
 
   // go through the lab records fetched from the database and categorize if

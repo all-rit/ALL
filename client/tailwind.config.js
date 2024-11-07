@@ -144,7 +144,7 @@ module.exports = {
         ".body-styling-name": {
           font: theme("fontFamily.calibri"),
           fontSize: "1.125rem",
-          fontWeight: theme("fontWeight.light"),
+          fontWeight: theme("fontWeight.medium"),
         },
       });
     }),

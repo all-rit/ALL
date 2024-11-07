@@ -1,12 +1,14 @@
-import { Tooltip } from "reactstrap";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import EnrolledStudentsTable from "../EnrolledStudentsTable";
+import handleRedirect from "../../../../helpers/Redirect";
+import InfoModal from "../../lab/InfoModal";
+import useMainStateContext from "../../../../reducers/MainContext";
 
 const LabRow = (props) => {
+  const { actions } = useMainStateContext();
   const { group, enrolledStudents, lab, studentProgress } = props;
 
-  const [tooltipOpen, setTooltipOpen] = useState(null);
   const [listOpen, setListOpen] = useState(null);
   const [listLabel, setListLabel] = useState("Open List");
 
@@ -65,30 +67,21 @@ const LabRow = (props) => {
             <div> {listLabel}</div>
           </div>
         ) : (
-          <div>
-            <Tooltip
-              placement={"left"}
-              isOpen={tooltipOpen === lab.labID}
-              target={`fullDescription-${lab.labID}`}
-            >
-              {" "}
-              {lab.fullDescription}{" "}
-            </Tooltip>
-            <div
-              id={`fullDescription-${lab.labID}`}
-              onClick={() => setTooltipOpen(lab.labID)}
-              className={
-                "tw-absolute tw-right-0 tw-top-[20%] tw-cursor-pointer tw-bg-darkGray tw-text-white tw-font-poppins tw-px-3"
-              }
-            >
-              <div> More Information</div>
-            </div>
+          <div className={"tw-absolute tw-right-0 tw-top-5"}>
+            <InfoModal
+              buttonLabel={"More Information"}
+              labName={lab.labName}
+              fullDescription={lab.fullDescription}
+              learningObjectives={lab.learningObjectives}
+              authors={lab.authors}
+              redirect={() => handleRedirect(actions, lab)}
+            />
           </div>
         )}
       </div>
       {/* Table container outside the main row */}
       {listOpen === lab.labID && studentProgress && (
-        <div className="tw-w-full tw-ml-3 tw-p-4 tw-bg-white tw-shadow-lg tw-shadow-t-none tw-overflow-hidden">
+        <div className="tw-w-full tw-p-4 tw-bg-white tw-shadow-lg tw-shadow-t-none tw-overflow-hidden">
           <EnrolledStudentsTable
             groupid={group.id}
             enrolledStudents={enrolledStudents}
@@ -107,6 +100,8 @@ LabRow.propTypes = {
     labName: PropTypes.string,
     difficulty: PropTypes.number,
     fullDescription: PropTypes.string,
+    learningObjectives: PropTypes.array,
+    authors: PropTypes.array,
   }),
   studentProgress: PropTypes.bool,
   enrolledStudents: PropTypes.array,

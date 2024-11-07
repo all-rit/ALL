@@ -48,14 +48,14 @@ const NewStudentProgress = (props) => {
             <p className={"tw-title-styling-name tw-text-2xl"}>
               {group.groupName}
             </p>
-            <div className={"tw-flex tw-flex-row tw-items-center tw-mb-3"}>
+            <div className={"tw-flex tw-flex-row tw-items-center tw-my-3"}>
               <p className={"tw-text-sm"}> Group Code: </p>
               <p id={"groupCode"} className={"tw-mx-3 tw-font-bold tw-text-md"}>
                 {" "}
                 {group.code}
               </p>
               <ALLButton
-                className={"tw-h-[3rem] tw-mb-0"}
+                className={"tw-h-[3rem] tw-mb-0 tw-ml-5"}
                 label={"Copy Code"}
                 onClick={copyToClipboard}
               />
@@ -90,7 +90,6 @@ const NewStudentProgress = (props) => {
               />
             );
           })}
-          ;
         </div>
       </BrandedALLModal>
     </>

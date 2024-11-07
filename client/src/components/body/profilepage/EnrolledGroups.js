@@ -18,22 +18,6 @@ const EnrolledGroups = (props) => {
     }
   }, [user, groupsUpdated]);
 
-  const displayEnrolledGroups = () => {
-    return enrolledGroups.map((group, index) => (
-      <EnrolledGroupCard
-        key={index}
-        instructorID={group.instructorUserID}
-        groupName={group.groupName}
-        group={group}
-        color={"primary-blue"}
-        inProgressLabs={inProgressLabs}
-        toDoLabs={toDoLabs}
-        completedLabs={completedLabs}
-        setGroupsUpdated={setGroupsUpdated}
-      />
-    ));
-  };
-
   return (
     <div
       className={
@@ -58,7 +42,10 @@ const EnrolledGroups = (props) => {
           >
             {enrolledGroups.length === 0 ? (
               <div>
-                <p> You are currently not enrolled in any groups</p>
+                <p className={"tw-body-styling-name"}>
+                  {" "}
+                  You are currently not enrolled in any groups
+                </p>
               </div>
             ) : (
               <div
@@ -66,22 +53,38 @@ const EnrolledGroups = (props) => {
                   "xs:tw-flex xs:tw-flex-col md:lg:tw-grid md:lg:tw-grid-cols-3 tw-gap-3"
                 }
               >
-                {displayEnrolledGroups()}
+                {enrolledGroups.map((group, index) => (
+                  <EnrolledGroupCard
+                    key={index}
+                    instructorID={group.instructorUserID}
+                    groupName={group.groupName}
+                    group={group}
+                    color={"primary-blue"}
+                    inProgressLabs={inProgressLabs}
+                    toDoLabs={toDoLabs}
+                    completedLabs={completedLabs}
+                    setGroupsUpdated={setGroupsUpdated}
+                  />
+                ))}
               </div>
             )}
-            <div className={"tw-flex tw-flex-col tw-text-left"}>
+            <div
+              className={
+                "tw-flex tw-flex-col tw-text-left tw-px-[1rem] tw-gap-y-2"
+              }
+            >
               <p className={"tw-text-lg tw-title-styling-name tw-font-poppins"}>
                 {" "}
                 Have a group code?{" "}
               </p>
-              <p className={"tw-text-sm tw-font-calibri"}>
+              <p className={"tw-body-styling-name tw-text-sm"}>
                 {" "}
                 Click below to get started.{" "}
               </p>
               <AddModal
                 addMode={"enroll_grp"}
                 user={props.user}
-                groupsUpdated={setGroupsUpdated}
+                setGroupsUpdated={setGroupsUpdated}
               />
             </div>
           </div>

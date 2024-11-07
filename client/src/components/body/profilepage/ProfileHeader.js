@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 const ProfileHeader = (props) => {
   const { user } = props;
 
-  console.log(user?.userpfp);
-
   return (
     <div className="tw-w-screen tw-bg-primary-blue xs:tw-h-[15rem] lg:tw-h-[30rem] tw-flex tw-flex-row tw-align-middle tw-relative">
       {user && (
@@ -41,9 +39,6 @@ const ProfileHeader = (props) => {
                 loading="eager"
                 style={{
                   imageRendering: "auto",
-                  WebkitBackfaceVisibility: "hidden",
-                  MozBackfaceVisibility: "hidden",
-                  backfaceVisibility: "hidden",
                 }}
               />
             </div>

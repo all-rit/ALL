@@ -1,7 +1,3 @@
-/* eslint-disable no-case-declarations */
-/* eslint-disable react/jsx-key */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import LabService from "../../../../services/LabService";
 import GroupService from "../../../../services/GroupService";
@@ -16,6 +12,7 @@ import {
 } from "reactstrap";
 import LabRow from "./LabRow";
 import ALLButton from "../../../all-components/ALLButton";
+import PropTypes from "prop-types";
 
 const GroupForm = (props) => {
   const {
@@ -31,7 +28,6 @@ const GroupForm = (props) => {
   const [checkedLabs, setCheckedLabs] = useState({});
   const [color, setColor] = useState(groupColor || "");
   const [tooltipOpen, setTooltipOpen] = useState(null);
-  // const [labSelected, setLabSelected] = useState(false);
 
   const cardColors = [
     "blue",
@@ -241,6 +237,19 @@ const GroupForm = (props) => {
       </ModalFooter>
     </Form>
   );
+};
+
+GroupForm.propTypes = {
+  setInstrGroupsUpdated: PropTypes.func,
+  user: PropTypes.shape({
+    userid: PropTypes.number,
+  }),
+  addMode: PropTypes.string,
+  groupID: PropTypes.number,
+  groupName: PropTypes.string,
+  groupColor: PropTypes.string,
+  assignedLabs: PropTypes.array,
+  toggle: PropTypes.func,
 };
 
 export default GroupForm;

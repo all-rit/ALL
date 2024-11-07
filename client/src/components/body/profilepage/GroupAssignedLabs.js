@@ -7,18 +7,13 @@ import UserLabService from "../../../services/UserLabService";
 import UnenrollModal from "./components/UnenrollModal";
 
 const GroupAssignedLabs = (props) => {
-  const {
-    assignedLabs,
-    groupID,
-    groupName,
-    setInstrGroupsUpdated,
-    instructor,
-  } = props;
+  const { assignedLabs, groupID, groupName, setGroupsUpdated, instructor } =
+    props;
 
   const { state } = useMainStateContext();
   const currentUser = state.main.user;
   const [toDoLabs, setToDoLabs] = useState([]);
-  const [labRecords, setLabRecords] = useState(null);
+  const [labRecords, setLabRecords] = useState([]);
 
   const inProgressLabs = [];
   const completedLabs = [];
@@ -60,7 +55,7 @@ const GroupAssignedLabs = (props) => {
   };
 
   return (
-    <>
+    <div className={"tw-mb-6"}>
       {assignedLabs.length === 0 ? (
         <td>No labs have been assigned for this group.</td>
       ) : (
@@ -81,17 +76,15 @@ const GroupAssignedLabs = (props) => {
                 userid={currentUser.userid}
                 groupid={groupID}
                 buttonLabel={"Leave Group"}
-                groupsUpdated={setInstrGroupsUpdated}
+                groupsUpdated={setGroupsUpdated}
               />
             </div>
           </div>
           <br />
-          <br />
-          <br />
           <div className={"tw-text-2xl tw-ml-5 tw-title-styling-name"}>
             Assigned Labs:
           </div>
-          <div className="tw-w-[90%] md:lg:tw-grid xxs:tw-flex xxs:tw-flex-col xxs:tw-justify-center md:lg:tw-grid-cols-3 tw-gap-3">
+          <div className="md:tw-grid xxs:tw-flex xxs:tw-flex-col xxs:tw-justify-center md:lg:tw-grid-cols-3 tw-gap-3">
             {assignedLabs.map((lab, index) => (
               <Lab
                 progressState={getLabProgressState(lab.labID)}
@@ -108,14 +101,14 @@ const GroupAssignedLabs = (props) => {
                 labProgress={
                   getLabProgressState(lab.labID) === "NOT_STARTED"
                     ? null
-                    : labRecords[index]
+                    : labRecords[lab.labID]
                 }
               />
             ))}
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
@@ -124,7 +117,6 @@ GroupAssignedLabs.propTypes = {
   groupID: PropTypes.number,
   groupName: PropTypes.string,
   instructing: PropTypes.bool,
-  setInstrGroupsUpdated: PropTypes.bool,
   user: PropTypes.shape({}),
   inProgressLabs: PropTypes.array,
   toDoLabs: PropTypes.array,

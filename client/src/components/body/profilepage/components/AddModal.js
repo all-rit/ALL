@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ModalBody, Form, Label, Input } from "reactstrap";
 import GroupForm from "./GroupForm.js";
 import GroupService from "../../../../services/GroupService";
 import ALLButton from "../../../all-components/ALLButton";
 import BrandedALLModal from "../../../all-components/BrandedALLModal";
 import PropTypes from "prop-types";
+import Snackbar from "@mui/material/Snackbar";
+import useMainStateContext from "../../../../reducers/MainContext";
 
 const AddModal = (props) => {
   const {
@@ -14,24 +16,36 @@ const AddModal = (props) => {
     groupID,
     groupName,
     assignedLabs,
-    groupsUpdated,
+    setGroupsUpdated,
     groupColor,
   } = props;
   const [modal, setModal] = useState(false);
   const [inviteCode, setInviteCode] = useState("");
+  const { state, actions } = useMainStateContext();
+
+  useEffect(() => {
+    const storedSnackbar = localStorage.getItem("enrolledSnackbar");
+    if (storedSnackbar) {
+      const { message } = JSON.parse(storedSnackbar);
+      actions.showSnackbar(message);
+      localStorage.removeItem("enrolledSnackbar"); // Clear the stored state
+    }
+  }, []);
 
   const handleInviteCodeSubmit = (e) => {
     e.preventDefault();
-    setInviteCode(inviteCode.trim()); // trim trailing white spaces in the invite code
+    setInviteCode(inviteCode.trim());
     if (!inviteCode || inviteCode.indexOf(" ") >= 0) {
-      // check if the code is empty or has white space in between
       alert("Invite code cannot be empty or have spaces.");
     } else {
       GroupService.enrollUser(user.userid, inviteCode.toUpperCase()).then(
         (response) => {
           if (response.status === 200) {
-            alert("Successfully enrolled in group!");
-            groupsUpdated(true);
+            // Show snackbar directly instead of using localStorage
+            actions.showSnackbar(
+              "You have successfully enrolled in the group!",
+            );
+            setGroupsUpdated(true);
             toggleModal();
           } else {
             alert(response.error);
@@ -80,9 +94,7 @@ const AddModal = (props) => {
             className="hover:tw-shadow-lg tw-absolute tw-right-0 tw-top-[60%] tw-cursor-pointer tw-font-poppins
                         tw-bg-primary-yellow tw-p-2 tw-font-medium"
             aria-label="Update Group"
-            onClick={() => {
-              toggleModal();
-            }}
+            onClick={toggleModal}
           >
             Edit/View Group
           </a>
@@ -109,7 +121,7 @@ const AddModal = (props) => {
       return (
         <>
           <ALLButton
-            className="btn groups__create_btn hover:tw-shadow-lg"
+            className="btn groups__create_btn hover:tw-shadow-lg "
             aria-label="add"
             onClick={toggleModal}
             label={"Join a New Group"}
@@ -134,7 +146,7 @@ const AddModal = (props) => {
                   </Label>
                   <div
                     className={
-                      "tw-flex tw-flex-row tw-h-[3rem] tw-items-center"
+                      "tw-flex tw-flex-row tw-h-[3rem] tw-items-center tw-gap-x-5"
                     }
                   >
                     <Input
@@ -156,6 +168,20 @@ const AddModal = (props) => {
               </Form>
             </>
           </BrandedALLModal>
+          <Snackbar
+            open={state.main?.snackbar?.open}
+            autoHideDuration={5000}
+            message={state.main?.snackbar?.message}
+            onClose={actions.hideSnackbar}
+            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+            className={"tw-font-poppins"}
+            sx={{
+              "& .MuiSnackbarContent-root": {
+                backgroundColor: "#369d2a",
+                color: "white",
+              },
+            }}
+          />
         </>
       );
   }
@@ -170,7 +196,7 @@ AddModal.propTypes = {
   groupID: PropTypes.number,
   groupName: PropTypes.string,
   assignedLabs: PropTypes.array,
-  groupsUpdated: PropTypes.func,
+  setGroupsUpdated: PropTypes.func,
   groupColor: PropTypes.string,
 };
 

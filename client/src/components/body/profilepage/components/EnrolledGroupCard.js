@@ -148,7 +148,7 @@ const EnrolledGroupCard = (props) => {
         isOpen={openGroupDetails}
         toggle={toggleGroupDetailsModal}
         direction={"column"}
-        width={"lg:tw-min-w-[70rem] lg:tw-min-h-[50rem]"}
+        width={"lg:tw-min-w-[60rem] lg:tw-min-h-[50rem]"}
       >
         <GroupDetails
           group={group}

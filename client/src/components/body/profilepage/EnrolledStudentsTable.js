@@ -6,21 +6,6 @@ import { Input, Table } from "reactstrap";
 const EnrolledStudentsTable = (props) => {
   const { lab, enrolledStudents } = props;
   const [search, setSearch] = useState("");
-
-  const renderStudents = () => {
-    return displayedStudents.map((student, key) => {
-      return (
-        <StudentProgress
-          key={key}
-          student={student}
-          lab={lab}
-          hasLabel={true}
-          inTable={true}
-        />
-      );
-    });
-  };
-
   const [displayedStudents, setDisplayedStudents] = useState([]);
   const [studentNotFound, setStudentNotFound] = useState(false);
 
@@ -94,7 +79,17 @@ const EnrolledStudentsTable = (props) => {
                   Date Completed
                 </th>
               </tr>
-              {renderStudents()}
+              {displayedStudents.map((student, key) => {
+                return (
+                  <StudentProgress
+                    key={key}
+                    student={student}
+                    lab={lab}
+                    hasLabel={true}
+                    inTable={true}
+                  />
+                );
+              })}
             </thead>
           </Table>
         </>

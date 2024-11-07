@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import LabGeneration from "../lab/LabGeneration";
 import useMainStateContext from "src/reducers/MainContext";
 import PropTypes from "prop-types";
@@ -7,47 +7,37 @@ import { Input } from "reactstrap";
 const Labs = (props) => {
   const { actions, state } = useMainStateContext();
 
-  const [currentHeader, setCurrentHeader] = useState("");
+  const [currentHeader, setCurrentHeader] = useState("Not Started");
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState({});
+  const [searchSubmitted, setSearchSubmitted] = useState(false);
+  const [labProgress, setLabProgress] = useState("NOT_STARTED");
+  const [displayedLabs, setDisplayedLabs] = useState(props.toDoLabs);
 
   const displayNotStartedLabs = () => {
     setCurrentHeader("Not Started");
-    return (
-      <LabGeneration
-        actions={actions}
-        progressState="NOT_STARTED"
-        labids={props.toDoLabs}
-      />
-    );
+    setLabProgress("NOT_STARTED");
+    setSearchSubmitted(false);
+    setDisplayedLabs(props.toDoLabs || []);
   };
-
-  const [search, setSearch] = useState("");
-  const [displayedLabs, setDisplayedLabs] = useState(displayNotStartedLabs);
-
-  useEffect(() => {
-    setDisplayedLabs(displayNotStartedLabs());
-  }, [props.toDoLabs]);
 
   const displayInProgressLabs = () => {
     setCurrentHeader("In Progress");
-    return (
-      <LabGeneration
-        actions={actions}
-        progressState="IN_PROGRESS"
-        labRecords={props.inProgressLabs}
-      />
-    );
+    setLabProgress("IN_PROGRESS");
+    setSearchSubmitted(false);
+    setDisplayedLabs(props.inProgressLabs || []);
   };
 
   const displayCompletedLabs = () => {
     setCurrentHeader("Completed");
-    return (
-      <LabGeneration
-        actions={actions}
-        progressState="COMPLETED"
-        labRecords={props.completedLabs}
-      />
-    );
+    setLabProgress("COMPLETED");
+    setSearchSubmitted(false);
+    setDisplayedLabs(props.completedLabs || []);
   };
+  //
+  // useEffect(() => {
+  //   displayNotStartedLabs();
+  // }, [])
 
   const searchLabs = (e) => {
     e.preventDefault();
@@ -57,52 +47,26 @@ const Labs = (props) => {
       completed: [],
     };
 
-    props.toDoLabs?.forEach((lab) => {
+    (props.toDoLabs || []).forEach((lab) => {
       if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
         searchResults.notStarted.push(lab);
       }
     });
 
-    props.inProgressLabs?.forEach((lab) => {
+    (props.inProgressLabs || []).forEach((lab) => {
       if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
         searchResults.inProgress.push(lab);
       }
     });
 
-    props.completedLabs?.forEach((lab) => {
+    (props.completedLabs || []).forEach((lab) => {
       if (lab.labName.toLowerCase().includes(search.toLowerCase())) {
         searchResults.completed.push(lab);
       }
     });
-
-    const displaySearchResults = (
-      <div>
-        <LabGeneration
-          actions={actions}
-          progressState="NOT_STARTED"
-          labids={searchResults.notStarted}
-          search={true}
-        />
-        <LabGeneration
-          actions={actions}
-          progressState="IN_PROGRESS"
-          labRecords={searchResults.inProgress}
-          search={true}
-        />
-        <LabGeneration
-          actions={actions}
-          progressState="COMPLETED"
-          labRecords={searchResults.completed}
-          search={true}
-        />
-      </div>
-    );
+    setSearchResults(searchResults);
+    setSearchSubmitted(true);
     setCurrentHeader("Search Results");
-    setDisplayedLabs(displaySearchResults);
-  };
-
-  const selectLabs = (labs) => {
-    setDisplayedLabs(labs);
   };
 
   return (
@@ -159,20 +123,26 @@ const Labs = (props) => {
                   className={"tw-flex tw-flex-row tw-justify-center tw-w-full"}
                 >
                   <button
-                    className={"btn btn-primary tw-m-3"}
-                    onClick={() => selectLabs(displayNotStartedLabs)}
+                    className={
+                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                    }
+                    onClick={displayNotStartedLabs}
                   >
                     Not Started
                   </button>
                   <button
-                    className={"btn btn-primary tw-m-3"}
-                    onClick={() => selectLabs(displayInProgressLabs)}
+                    className={
+                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                    }
+                    onClick={displayInProgressLabs}
                   >
                     In Progress
                   </button>
                   <button
-                    className={"btn btn-primary tw-m-3"}
-                    onClick={() => selectLabs(displayCompletedLabs)}
+                    className={
+                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                    }
+                    onClick={displayCompletedLabs}
                   >
                     Completed
                   </button>
@@ -180,7 +150,39 @@ const Labs = (props) => {
                 <h1 className={"tw-title-styling-name tw-mt-5"}>
                   {currentHeader}
                 </h1>
-                <div className={"tw-p-6 tw-w-full"}>{displayedLabs}</div>
+                <div className={"tw-p-6 tw-w-full"}>
+                  {searchSubmitted ? (
+                    <div>
+                      <LabGeneration
+                        actions={actions}
+                        progressState="NOT_STARTED"
+                        labids={searchResults.notStarted}
+                        search={true}
+                      />
+                      <LabGeneration
+                        actions={actions}
+                        progressState="IN_PROGRESS"
+                        labRecords={searchResults.inProgress}
+                        search={true}
+                      />
+                      <LabGeneration
+                        actions={actions}
+                        progressState="COMPLETED"
+                        labRecords={searchResults.completed}
+                        search={true}
+                      />
+                    </div>
+                  ) : (
+                    <LabGeneration
+                      actions={actions}
+                      progressState={labProgress}
+                      labids={labProgress === "NOT_STARTED" && displayedLabs}
+                      labRecords={
+                        labProgress !== "NOT_STARTED" && displayedLabs
+                      }
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </ul>

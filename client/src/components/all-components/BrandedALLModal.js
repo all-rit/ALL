@@ -37,7 +37,7 @@ const BrandedALLModal = (props) => {
         >
           <button
             className="tw-absolute sm:md:lg:tw-text-5xl
-                                            tw-font-poppins line-height-0 tw-top-5 tw-right-0
+                                            tw-font-poppins line-height-0 tw-top-0 tw-right-3
                                             tw-text-primary-blue tw-bg-white
                                             tw-rounded-4xl tw-border-0 xs:tw-text-xl "
             onClick={toggle}
@@ -66,7 +66,7 @@ const BrandedALLModal = (props) => {
         >
           <button
             className="tw-absolute tw-text-5xl
-                                            tw-top-5 tw-right-0 tw-font-poppins
+                                            tw-right-3 tw-font-poppins
                                             tw-text-white tw-bg-primary-blue
                                             tw-rounded-4xl tw-border-0 line-height-0"
             onClick={toggle}

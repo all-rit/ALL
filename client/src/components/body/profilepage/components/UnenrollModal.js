@@ -3,16 +3,22 @@ import React, { useState } from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import GroupService from "../../../../services/GroupService";
 import ALLButton from "../../../all-components/ALLButton";
+import Snackbar from "@mui/material/Snackbar";
+import useMainStateContext from "../../../../reducers/MainContext";
 
 const UnenrollModal = (props) => {
+  const { state, actions } = useMainStateContext();
   const { className, userid, groupid, groupsUpdated } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
-  const unenroll = (userid, groupid) => {
+  const unenroll = (userid, groupid, e) => {
     GroupService.unenrollUserFromGroup(userid, groupid).then((response) => {
       if (response.status === 200) {
-        alert("Successfully unenrolled from group.");
+        e.preventDefault();
+        actions.showSnackbar(
+          "You have successfully unenrolled from the group!",
+        );
         groupsUpdated(true);
       } else {
         alert("Failed to unenroll from group.");
@@ -36,7 +42,7 @@ const UnenrollModal = (props) => {
         <ModalFooter>
           <Button
             className="btn-primary"
-            onClick={() => unenroll(userid, groupid)}
+            onClick={(e) => unenroll(userid, groupid, e)}
           >
             Unenroll
           </Button>{" "}
@@ -45,6 +51,20 @@ const UnenrollModal = (props) => {
           </Button>
         </ModalFooter>
       </Modal>
+      <Snackbar
+        open={state.main?.snackbar?.open}
+        autoHideDuration={5000}
+        message={state.main?.snackbar?.message}
+        onClose={actions.hideSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        className={"tw-font-poppins"}
+        sx={{
+          "& .MuiSnackbarContent-root": {
+            backgroundColor: "#369d2a",
+            color: "white",
+          },
+        }}
+      />
     </ul>
   );
 };
