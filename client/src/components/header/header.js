@@ -173,7 +173,7 @@ const Header = (props) => {
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                  href="#labs"
+                  href="/Labs"
                 >
                   <p className="tw-text-base tw-text-labBlue tw-font-bold">
                     Labs
