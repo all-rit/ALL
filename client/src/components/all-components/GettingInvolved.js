@@ -19,23 +19,23 @@ const GettingInvolved = () => {
           }
         >
           <div
-            className={`tw-flex tw-flex-col md:tw-flex-row md:tw-gap-8 tw-text-left xs:tw-w-full md:tw-w-1/2 tw-p-6`}
+            className={`tw-flex tw-flex-col lg:tw-flex-row lg:tw-gap-8 tw-justify-center tw-text-left xs:tw-w-full lg:tw-w-1/2 tw-p-6`}
           >
             <div
               className={
-                "tw-flex tw-flex-col tw-w-full md:tw-w-1/2 tw-h-full tw-justify-center"
+                "tw-flex tw-flex-col tw-items-center tw-w-full tw-justify-center"
               }
             >
               <h1
                 className={
-                  "tw-title-styling-name tw-flex tw-w-full tw-my-6 tw-font-poppins tw-leading-tight tw-flex-wrap"
+                  "tw-title-styling-name tw-text-center lg:tw-text-left tw-w-full tw-my-6 tw-font-poppins tw-leading-tight tw-flex-wrap"
                 }
               >
                 Interested in Getting Involved?
               </h1>
               <p
                 className={
-                  "tw-body-styling-name"
+                  "tw-body-styling-name tw-w-full sm:tw-w-2/3 lg:tw-w-full"
                 }
               >
                 Whether you want to implement our labs in your course
@@ -46,7 +46,7 @@ const GettingInvolved = () => {
             </div>
             <div
               className={
-                "tw-h-full tw-w-full md:tw-w-4/5 tw-flex tw-flex-col tw-justify-end tw-items-center md:tw-items-end tw-py-5"
+                "tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center lg:tw-items-end tw-py-5"
               }
             >
               <ALLButton label={"Learn More"} onClick={handleNav}></ALLButton>

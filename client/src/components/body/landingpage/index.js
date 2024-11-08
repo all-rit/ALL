@@ -72,9 +72,9 @@ const Home = () => {
       {/* Are you a Student? */}
       <section className="tw-bg-primary-yellow tw-flex tw-justify-start tw-pb-0 tw-pt-16">
         <div className="tw-bg-white tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-mr-10 tw-p-4 sm:tw-p-8 tw-border-solid tw-border-b-0 tw-border-l-0 tw-border-t-12 tw-border-r-12 tw-rounded-tr-lg tw-border-primary-blue">
-          <div className="tw-flex tw-flex-row tw-items-start tw-gap-4 sm:tw-gap-16 tw-mt-4">
+          <div className="tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-4 md:tw-gap-16 tw-mt-4">
             <div className="tw-flex tw-flex-col">
-              <h1 className="tw-text-left tw-mb-4 tw-title-styling-name">
+              <h1 className="tw-text-center sm:tw-text-left tw-mb-4 tw-title-styling-name">
                 Are You a Student?
               </h1>
               <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-body-styling-name">
@@ -82,9 +82,9 @@ const Home = () => {
                 If not, please explore all of the labs that are available for everyone, 
                 including our featured labs.
               </p>
-              <h1 className="tw-text-left tw-mt-16 tw-mb-4 tw-title-styling-name">Featured Labs</h1>
+              <h1 className="tw-text-center sm:tw-text-left tw-mt-16 tw-mb-4 tw-title-styling-name tw-hidden md:tw-block">Featured Labs</h1>
             </div>
-            <div className="tw-flex tw-flex-col tw-gap-4">
+            <div className="tw-flex tw-flex-row md:tw-flex-col tw-gap-4">
               <ALLButton
                 label={"Join a Group"}
                 onClick={handleNavGroups}
@@ -93,7 +93,8 @@ const Home = () => {
                 label={"Explore Labs"}
                 onClick={handleNavLabs}
               ></ALLButton>
-            </div>             
+            </div>
+            <h1 className="tw-text-center sm:tw-text-left tw-mt-16 tw-mb-4 tw-title-styling-name tw-block md:tw-hidden">Featured Labs</h1>
           </div> 
           <div className="tw-grid">
             <LabGeneration actions={actions} labids={featuredLabs} progressState={"FEATURED_LABS"} />
