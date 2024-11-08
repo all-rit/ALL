@@ -156,49 +156,49 @@ const Header = (props) => {
               className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
             >
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   onClick={() => reachNav("/#")}
                 >
-                  <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
                     Home
                   </p>
                 </NavLink>
               </NavItem>
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/Labs"
                 >
-                  <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
                     Labs
                   </p>
                 </NavLink>
               </NavItem>
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="#about"
                 >
-                  <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
                     About Us
                   </p>
                 </NavLink>
               </NavItem>
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/EducatorResources"
                 >
-                  <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
                     Educator Resources
                   </p>
                 </NavLink>
@@ -206,7 +206,7 @@ const Header = (props) => {
               <NavItem className="tw-px-4 tw-py-2 tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
                 {loggedIn && user ? (
                   // TO-DO: PROFILE LINK HERE
-                  <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-border-labBlue tw-rounded-full tw-overflow-hidden">
+                  <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
                     <div
                       onClick={() =>
                         navigate(state, props.state, actions, 2, 0)
@@ -223,7 +223,7 @@ const Header = (props) => {
                 ) : (
                   <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
                     <a
-                      className="tw-text-base tw-text-labBlue tw-font-bold"
+                      className="tw-text-base tw-text-primary-blue tw-font-bold"
                       onClick={toggleSignIn}
                     >
                       Sign In
@@ -246,7 +246,7 @@ const Header = (props) => {
               </NavItem>
               <NavItem className="tw-flex tw-justify-center tw-items-center">
                 {isSmallWindow && (
-                  <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer">
+                  <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-primary-blue tw-cursor-pointer">
                     <p className="tw-text-xs">Site Accessibility Settings</p>
                   </a>
                 )}
@@ -255,7 +255,7 @@ const Header = (props) => {
           </Collapse>
         </div>
         {!isSmallWindow && (
-          <a className="tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer tw-absolute tw-bottom-1 tw-right-3">
+          <a className="tw-no-underline tw-items-center tw-text-primary-blue tw-cursor-pointer tw-absolute tw-bottom-1 tw-right-3">
             <p className="tw-text-xs">Site Accessibility Settings</p>
           </a>
         )}
