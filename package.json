@@ -14,9 +14,10 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
+    "@testing-library/react": "^16.0.1",
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "jest-environment-jsdom": "^29.7.0",
-    "crypto": "^1.0.1",
     "mathjs": "^12.3.2",
     "nanoid": "^5.0.7",
     "node-sass": "^9.0.0",

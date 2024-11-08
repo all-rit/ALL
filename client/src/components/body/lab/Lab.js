@@ -153,7 +153,7 @@ const Lab = (props) => {
     case "FEATURED_LABS":
     default:
       return (
-        <ul className="module__col module__lab_col tw-w-full xs:tw-flex-col xs:tw-h-50 xs:tw-w-[15rem] md:tw-w-[20rem]">
+        <ul className="tw-w-full xs:tw-flex-col xs:tw-h-50 tw-max-w-[20rem] tw-relative tw-shadow-lg tw-rounded-3xl">
           <li className={"xs:tw-w-full"}>
             <a
               className="portfolio-link"
@@ -162,7 +162,7 @@ const Lab = (props) => {
             >
               <div
                 alt={alt}
-                className="img-fluid module__image module__lab_image xs:tw-w-full"
+                className="module__image module__lab_image xs:tw-w-full tw-bg-no-repeat "
                 style={{
                   backgroundImage: "url(/img/lab_thumbnails/" + image + ")",
                 }}

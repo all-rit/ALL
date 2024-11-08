@@ -41,6 +41,7 @@ import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
 const parse = require("url-parse");
 import useMainStateContext from "./reducers/MainContext";
+import LabsPage from "./components/body/labspage/LabsPage";
 import EducatorResources from "./components/body/EducatorResources/EducatorResources";
 import MainFooter from "./components/footer/mainFooter";
 
@@ -97,6 +98,11 @@ const App = () => {
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
+              <LabsPage
+                path={"/Labs"}
+                user={state.main.user}
+                actions={actions}
+              />
               <EducatorResources
                 path={"/EducatorResources"}
                 user={state.main.user}
