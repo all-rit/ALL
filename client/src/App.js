@@ -42,6 +42,7 @@ const parse = require("url-parse");
 import useMainStateContext from "./reducers/MainContext";
 import LabsPage from "./components/body/labspage/LabsPage";
 import EducatorResources from "./components/body/EducatorResources/EducatorResources";
+import MainFooter from "./components/footer/mainFooter";
 
 const mapStateToProps = (state) => {
   return {
@@ -161,6 +162,7 @@ const App = () => {
                 setQuizCompleted={setQuizCompleted}
               />
             </Router>
+            <MainFooter />
           </div>
         </div>
       </div>

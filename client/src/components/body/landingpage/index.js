@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import LabGeneration from "../lab/LabGeneration";
-import MainFooter from "../../footer/mainFooter";
 import GettingInvolved from "../../all-components/GettingInvolved";
 import DevPartners from "./DevPartners";
 import Carousel from "src/components/all-components/carousel";
@@ -145,8 +144,6 @@ const Home = () => {
 
       {/* Getting Involved */}
       <GettingInvolved />
-
-      <MainFooter />
     </div>
   );
 };
