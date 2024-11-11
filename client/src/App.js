@@ -44,6 +44,7 @@ import useMainStateContext from "./reducers/MainContext";
 import LabsPage from "./components/body/labspage/LabsPage";
 import EducatorResources from "./components/body/EducatorResources/EducatorResources";
 import MainFooter from "./components/footer/mainFooter";
+import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
 
 const mapStateToProps = (state) => {
   return {
@@ -172,6 +173,7 @@ const App = () => {
           setQuizCompleted={setQuizCompleted}
           isImagine={isImagine}
         />
+        <SiteAccessibilityButton />
       </div>
     </>
   );
