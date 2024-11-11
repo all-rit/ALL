@@ -14,13 +14,13 @@ import useMainStateContext from "src/reducers/MainContext";
 const Home = () => {
   const { actions } = useMainStateContext();
   const handleNavEducators = () => {
-    navigate("/#educators");
+    navigate("/EducatorResources");
   };
   const handleNavGroups = () => {
-    navigate("/#groups");
+    navigate("/Profile");
   };
   const handleNavLabs = () => {
-    navigate("/#labs");
+    navigate("/Labs");
   };
 
   const [featuredLabs, setFeaturedLabs] = useState([]);

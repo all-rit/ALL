@@ -129,34 +129,34 @@ class MainFooter extends Component {
         {/* Affiliates */}
         <div className="">
           <div className="container">
-            <div className="row tw-items-center">
-              <div className="tw-w-[13%]">
+            <div className="row tw-items-center tw-gap-4">
+              <div className="col-sm-3 tw-p-0">
                 <a
                   href="https://www.nsf.gov"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
-                    className="tw-object-cover tw-w-full"
+                    className="tw-object-cover tw-w-full tw-max-w-[10rem]"
                     src={nsf}
                     alt="National Science Foundation"
                   />
                 </a>
               </div>
-              <div className="col-sm-3">
+              <div className="col-sm-3 tw-p-0">
                 <a
                   href="https://www.rit.edu"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
-                    className="tw-object-cover tw-w-full"
+                    className="tw-object-cover tw-w-full tw-max-w-[16rem]"
                     src={rit}
                     alt="Rochester Institute Of Technology"
                   />
                 </a>
               </div>
-              <p className={"tw-pt-6 tw-font-calibri tw-font-medium "}>
+              <p className={"tw-pt-2 tw-font-calibri tw-font-medium "}>
                 Available under the Federal Government License
               </p>
             </div>

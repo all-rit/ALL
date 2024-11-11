@@ -15,10 +15,6 @@ const EducatorResources = () => {
       <ResourcesSection />
       <AboutUs />
       <DevPartners />
-      <h2 className={"tw-py-6 tw-title-styling-name"}>
-        {" "}
-        Participating Schools{" "}
-      </h2>
       <Carousel />
       <GettingInvolved />
     </div>

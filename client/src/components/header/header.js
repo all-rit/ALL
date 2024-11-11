@@ -138,7 +138,7 @@ const Header = (props) => {
         >
           <a className={"tw-mt-[1rem]"} onClick={() => reachNav("/#")}>
             <img
-              className="tw-cursor-pointer xs:tw-max-h-[6rem] sm:tw-max-h-[10rem]"
+              className="tw-cursor-pointer xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"
               src={Logo}
               alt="Computing Accessibility"
             />
