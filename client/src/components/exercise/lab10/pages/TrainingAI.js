@@ -62,13 +62,12 @@ const TrainingAI = (props) => {
 
   return (
     <div>
+      <h1 className={"tw-title-styling-name tw-text-left tw-mb-6"}>
+        {" "}
+        Building the AI
+      </h1>
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
-          <h1 className={"tw-title-styling-name tw-text-left tw-mb-6"}>
-            {" "}
-            Building the AI
-          </h1>
-
           {limitReached ? (
             <Fragment>
               <p className={"tw-body-styling-name"}>

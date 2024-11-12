@@ -108,7 +108,7 @@ const App = () => {
                 />
                 <div
                   className={
-                    "tw-h-[70%] tw-w-[98%] tw-bg-primary-blue tw-absolute tw-top-[15rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
+                    "tw-h-[75%] tw-w-[98%] tw-bg-primary-blue tw-absolute tw-top-[15rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
                   }
                 />
               </div>
