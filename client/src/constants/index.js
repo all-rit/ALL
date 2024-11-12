@@ -225,7 +225,7 @@ export const Sections = {
     },
   },
   12: {
-    fullname: "Identity",
+    fullname: "Lab 12: Accessibility to Identity",
     name: "Lab12",
     0: {
       name: "About",
