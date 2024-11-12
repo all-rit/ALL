@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import ALLButton from "./ALLButton";
 import { navigate } from "@reach/router";
+
 const AboutUs = () => {
   const yellowBlock = useRef(null);
 
