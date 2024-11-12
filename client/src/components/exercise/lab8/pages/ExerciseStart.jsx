@@ -20,7 +20,7 @@ const ExerciseStart = () => {
 
   return (
     <>
-      <div className="center-div">
+      <div className="center-div tw-p-6">
         <h1 className={"tw-title-styling-name tw-text-left"}>Exercise Start</h1>
         <div className="tw-my-6">
           <p className="tw-body-styling-name">

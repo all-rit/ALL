@@ -103,12 +103,12 @@ const App = () => {
                 <NavigationPane labID={lab} title={Sections[lab].fullname} />
                 <div
                   className={
-                    "tw-h-[25%] tw-w-[96%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
+                    "tw-h-[20%] tw-w-[98%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
                   }
                 />
                 <div
                   className={
-                    "tw-h-[70%] tw-w-[96%] tw-bg-primary-blue tw-absolute tw-top-[17rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
+                    "tw-h-[70%] tw-w-[98%] tw-bg-primary-blue tw-absolute tw-top-[15rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
                   }
                 />
               </div>

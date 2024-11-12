@@ -77,7 +77,7 @@ function Result(props) {
           >
             <div
               className={
-                "tw-text-center tw-w-full tw-font-medium tw-text-sm tw-font-calibri tw-leading-snug tw-flex tw-flex-col"
+                "tw-text-center tw-w-full tw-font-medium tw-text-sm tw-font-calibri tw-leading-snug tw-flex tw-flex-col tw-px-5"
               }
             >
               {renderTableSelectedAnswersData(
@@ -116,13 +116,17 @@ function Result(props) {
               <div key={index}>
                 <div
                   className={
-                    "tw-flex tw-flex-row tw-px-3 tw-text-left tw-align-top"
+                    "tw-flex tw-flex-row tw-px-3 tw-text-left tw-align-top tw-items-center"
                   }
                 >
                   <p className={"tw-font-bold tw-text-nowrap tw-text-sm"}>
                     Correct Answer:&nbsp;
                   </p>
-                  <p className={"tw-text-sm tw-leading-snug tw-pt-1"}>
+                  <p
+                    className={
+                      "tw-text-sm tw-leading-snug tw-body-styling-name"
+                    }
+                  >
                     {answer["content"]}
                   </p>
                 </div>
@@ -167,33 +171,33 @@ function Result(props) {
   };
 
   return (
-    <div className="tw-flex tw-flex-col tw-align-middle">
-      <div>
-        <div className="tw-font-bold tw-text-[2rem] tw-font-calibri">
+    <div className="tw-flex tw-flex-col tw-align-middle tw-h-[35rem]">
+      <div className={"tw-overflow-y-scroll "}>
+        <div className="tw-font-bold tw-text-[2rem] tw-mb-[5rem]">
           <strong className={"tw-shadow-lg tw-rounded-lg tw-p-6"}>
             Score: {props.quizResult}
           </strong>
         </div>
         <div
-          className={`tw-w-full tw-max-h-[30rem] tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5`}
+          className={`tw-w-full tw-max-h-[30rem] tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5 tw-my-5`}
         >
           {renderTableData()}
         </div>
-      </div>
-      <div className=" d-flex flex-column justify-content-center">
-        {props.isImagine ? (
-          <button
-            className="btn btn-primary btn-xl text-uppercase  next"
-            onClick={handleImagineSurvey}
-          >
-            Continue to Post-Survey
-          </button>
-        ) : (
-          <ALLButton
-            label={"View Certificate"}
-            onClick={() => props.setViewCertificate(true)}
-          />
-        )}
+        <div className=" d-flex flex-column justify-content-center tw-pt-12">
+          {props.isImagine ? (
+            <button
+              className="btn btn-primary btn-xl text-uppercase  next"
+              onClick={handleImagineSurvey}
+            >
+              Continue to Post-Survey
+            </button>
+          ) : (
+            <ALLButton
+              label={"View Certificate"}
+              onClick={() => props.setViewCertificate(true)}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

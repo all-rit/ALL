@@ -51,7 +51,7 @@ const BiasedSimulation = () => {
       </div>
 
       {canContinue && (
-        <div className="tw-text-[#408a28] tw-text-[18px]">
+        <div className="tw-text-[#408a28] tw-text-[18px] tw-py-4">
           <b>
             All messages have been moderated! Please click the
             &quot;Continue&quot; button.
