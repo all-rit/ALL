@@ -13,6 +13,8 @@ const Profile = () => {
   const [toDoLabs, setToDoLabs] = useState(null);
   // labRecords is fetching all the records for the labs that the user has made progress in
   const [labRecords, setLabRecords] = useState(null);
+  const [groupsUpdated, setGroupsUpdated] = useState(false);
+  const [instrGroupsUpdated, setInstrGroupsUpdated] = useState(false);
 
   const inProgressLabs = [];
   const completedLabs = [];
@@ -73,9 +75,16 @@ const Profile = () => {
             inProgressLabs={inProgressLabs}
             toDoLabs={toDoLabs}
             completedLabs={completedLabs}
+            groupsUpdated={groupsUpdated}
+            setGroupsUpdated={setGroupsUpdated}
           />
           <br />
-          <InstructingGroups user={state.main.user} />
+          <InstructingGroups
+            user={state.main.user}
+            setGroupsUpdated={setGroupsUpdated}
+            instrGroupsUpdated={instrGroupsUpdated}
+            setInstrGroupsUpdated={setInstrGroupsUpdated}
+          />
         </div>
       )}
     </div>

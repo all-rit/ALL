@@ -5,7 +5,7 @@ const ProfileHeader = (props) => {
   const { user } = props;
 
   return (
-    <div className="tw-w-screen tw-bg-primary-blue xs:tw-h-[15rem] lg:tw-h-[20rem] tw-flex tw-flex-row tw-align-middle tw-relative">
+    <div className="tw-w-screen tw-bg-primary-blue xs:tw-h-[15rem] md:tw-h-[20rem] tw-flex tw-flex-row tw-align-middle tw-relative">
       {user && (
         <div className="tw-h-full tw-w-full tw-flex tw-flex-col tw-justify-center">
           <div

@@ -5,9 +5,15 @@ import EnrolledGroupCard from "./components/EnrolledGroupCard";
 import PropTypes from "prop-types";
 
 const EnrolledGroups = (props) => {
-  const { user, inProgressLabs, toDoLabs, completedLabs } = props;
+  const {
+    user,
+    inProgressLabs,
+    toDoLabs,
+    completedLabs,
+    groupsUpdated,
+    setGroupsUpdated,
+  } = props;
   const [enrolledGroups, setEnrolledGroups] = useState([]);
-  const [groupsUpdated, setGroupsUpdated] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -101,6 +107,8 @@ EnrolledGroups.propTypes = {
   toDoLabs: PropTypes.array,
   completedLabs: PropTypes.array,
   inProgressLabs: PropTypes.array,
+  groupsUpdated: PropTypes.bool,
+  setGroupsUpdated: PropTypes.func,
 };
 
 export default EnrolledGroups;

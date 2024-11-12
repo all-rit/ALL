@@ -5,11 +5,11 @@ import EnrolledGroupCard from "./components/EnrolledGroupCard";
 import PropTypes from "prop-types";
 import useMainStateContext from "../../../reducers/MainContext";
 
-const InstructingGroups = () => {
+const InstructingGroups = (props) => {
   const { state } = useMainStateContext();
+  const { setGroupsUpdated, instrGroupsUpdated, setInstrGroupsUpdated } = props;
   const user = state.main.user;
   const [instructingGroups, setInstructingGroups] = useState([]);
-  const [instrGroupsUpdated, setInstrGroupsUpdated] = useState(false);
   useEffect(() => {
     if (user) {
       UserService.getUserInstructingGroups(user.userid).then((data) => {
@@ -54,6 +54,7 @@ const InstructingGroups = () => {
                     instructing={true}
                     group={group}
                     instructorID={user.userid}
+                    setGroupsUpdated={setGroupsUpdated}
                     setInstrGroupsUpdated={setInstrGroupsUpdated}
                   />
                 );
@@ -91,6 +92,9 @@ InstructingGroups.propTypes = {
   user: PropTypes.shape({
     userid: PropTypes.number,
   }),
+  setGroupsUpdated: PropTypes.func,
+  instrGroupsUpdated: PropTypes.bool,
+  setInstrGroupsUpdated: PropTypes.func,
 };
 
 export default InstructingGroups;

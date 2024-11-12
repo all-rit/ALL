@@ -34,7 +34,7 @@ const Lab = (props) => {
         currentProgress = "Not Started";
         break;
       case "IN_PROGRESS":
-        currentProgress = "Partially Completed";
+        currentProgress = "In Progress";
         break;
       case "COMPLETED":
         currentProgress = "Completed";
