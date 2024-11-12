@@ -3,17 +3,14 @@ import BrandedALLModal from "./BrandedALLModal";
 import PropTypes from "prop-types";
 import LabRow from "../body/profilepage/components/LabRow";
 import ALLButton from "./ALLButton";
-import Snackbar from "@mui/material/Snackbar";
+import { SUCCESS } from "../../constants/notifications";
+import useMainStateContext from "../../reducers/MainContext";
 
 const NewStudentProgress = (props) => {
   const { group, enrolledStudents, assignedLabs } = props;
+  const { actions } = useMainStateContext();
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-
-  const openSnackbar = () => {
-    setSnackbarOpen(true);
-  };
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
@@ -23,7 +20,7 @@ const NewStudentProgress = (props) => {
     navigator.clipboard.writeText(
       document.getElementById("groupCode").innerHTML.trim(),
     );
-    openSnackbar();
+    actions.showSnackbar("Successfully copied code!", SUCCESS);
   };
 
   return (
@@ -64,20 +61,6 @@ const NewStudentProgress = (props) => {
               Share this group code with your students to get them enrolled into
               the class. All they have to do to get started is enter the code!
             </p>
-            <Snackbar
-              open={snackbarOpen}
-              autoHideDuration={5000}
-              message="Code successfully copied to clipboard!"
-              onClose={() => setSnackbarOpen(false)}
-              anchorOrigin={{ vertical: "top", horizontal: "left" }}
-              className={"tw-font-poppins"}
-              sx={{
-                "& .MuiSnackbarContent-root": {
-                  backgroundColor: "#76b352", // your desired color
-                  color: "white",
-                },
-              }}
-            />
           </div>
           {assignedLabs.map((lab, key) => {
             return (

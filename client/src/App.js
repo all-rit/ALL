@@ -44,6 +44,7 @@ import useMainStateContext from "./reducers/MainContext";
 import LabsPage from "./components/body/labspage/LabsPage";
 import EducatorResources from "./components/body/EducatorResources/EducatorResources";
 import MainFooter from "./components/footer/mainFooter";
+import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 const mapStateToProps = (state) => {
   return {
@@ -166,6 +167,7 @@ const App = () => {
           </div>
         </div>
         <MainFooter />
+        <ALLSnackbar />
         <Change
           context={context}
           quizCompleted={quizCompleted}

@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ModalBody, Form, Label, Input } from "reactstrap";
 import GroupForm from "./GroupForm.js";
 import GroupService from "../../../../services/GroupService";
 import ALLButton from "../../../all-components/ALLButton";
 import BrandedALLModal from "../../../all-components/BrandedALLModal";
 import PropTypes from "prop-types";
-import Snackbar from "@mui/material/Snackbar";
 import useMainStateContext from "../../../../reducers/MainContext";
+import {
+  ENROLL_ERROR,
+  ENROLL_SUCCESS,
+  ERROR,
+  SUCCESS,
+} from "../../../../constants/notifications";
 
 const AddModal = (props) => {
   const {
@@ -21,16 +26,7 @@ const AddModal = (props) => {
   } = props;
   const [modal, setModal] = useState(false);
   const [inviteCode, setInviteCode] = useState("");
-  const { state, actions } = useMainStateContext();
-
-  useEffect(() => {
-    const storedSnackbar = localStorage.getItem("enrolledSnackbar");
-    if (storedSnackbar) {
-      const { message } = JSON.parse(storedSnackbar);
-      actions.showSnackbar(message);
-      localStorage.removeItem("enrolledSnackbar"); // Clear the stored state
-    }
-  }, []);
+  const { actions } = useMainStateContext();
 
   const handleInviteCodeSubmit = (e) => {
     e.preventDefault();
@@ -42,13 +38,11 @@ const AddModal = (props) => {
         (response) => {
           if (response.status === 200) {
             // Show snackbar directly instead of using localStorage
-            actions.showSnackbar(
-              "You have successfully enrolled in the group!",
-            );
+            actions.showSnackbar(ENROLL_SUCCESS, SUCCESS);
             setGroupsUpdated(true);
             toggleModal();
           } else {
-            alert(response.error);
+            actions.showSnackbar(ENROLL_ERROR, ERROR);
           }
         },
       );
@@ -168,20 +162,6 @@ const AddModal = (props) => {
               </Form>
             </>
           </BrandedALLModal>
-          <Snackbar
-            open={state.main?.snackbar?.open}
-            autoHideDuration={5000}
-            message={state.main?.snackbar?.message}
-            onClose={actions.hideSnackbar}
-            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-            className={"tw-font-poppins"}
-            sx={{
-              "& .MuiSnackbarContent-root": {
-                backgroundColor: "#369d2a",
-                color: "white",
-              },
-            }}
-          />
         </>
       );
   }
