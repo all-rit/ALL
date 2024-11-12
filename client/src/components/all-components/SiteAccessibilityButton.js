@@ -61,16 +61,19 @@ const SiteAccessibilityButton = () => {
 
   return (
     <button
-      className="tw-flex tw-fixed tw-right-0 tw-bottom-0 tw-m-8 tw-bg-primary-yellow tw-border-none tw-rounded-full tw-p-4 tw-z-50 tw-shadow-md tw-shadow-labGray"
+      className="tw-flex tw-fixed tw-right-0 tw-bottom-0 tw-m-4 tw-bg-primary-yellow tw-border-none tw-rounded-full tw-p-4 tw-z-50 tw-shadow-md tw-shadow-labGray"
       onClick={(e) => toggleCollapse(e)}
     >
       <img
         className="tw-aspect-square tw-w-12 tw-h-12 tw-pointer-events-none"
         src={AccessibilityImage}
       />
-      <Collapse isOpen={open}>
+      <Collapse
+        className="tw-absolute tw-bottom-[0%] tw-right-[150%]"
+        isOpen={open}
+      >
         <Card
-          className="tw-absolute tw-bottom-[100%] tw-right-[100%] tw-bg-white tw-flex tw-flex-col tw-shadow-lg tw-shadow-labGray"
+          className="tw-bg-white tw-flex tw-flex-col tw-shadow-lg tw-shadow-labGray"
           outline
           color="light"
         >
@@ -83,13 +86,13 @@ const SiteAccessibilityButton = () => {
             <p className="tw-text-left tw-underline">Text Size Adjuster</p>
             <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-mt-2 tw-mb-4">
               <button
-                className="tw-bg-primary-blue tw-aspect-square tw-border-none tw-px-4 tw-py-2 tw-rounded-full tw-text-white tw-title-styling-name tw-leading-4"
+                className="tw-bg-primary-blue tw-aspect-square tw-border-none tw-px-4 tw-py-2 tw-rounded-full tw-text-white tw-font-normal tw-title-styling-name tw-leading-4"
                 onClick={() => changeSize(1)}
               >
                 +
               </button>
               <button
-                className="tw-bg-primary-blue tw-aspect-square tw-border-none tw-px-4 tw-py-2 tw-rounded-full tw-text-white tw-title-styling-name tw-leading-4"
+                className="tw-bg-primary-blue tw-aspect-square tw-border-none tw-px-4 tw-py-2 tw-rounded-full tw-text-white tw-font-normal tw-title-styling-name tw-leading-4"
                 onClick={() => changeSize(-1)}
               >
                 -
