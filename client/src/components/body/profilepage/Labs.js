@@ -34,10 +34,6 @@ const Labs = (props) => {
     setSearchSubmitted(false);
     setDisplayedLabs(props.completedLabs || []);
   };
-  //
-  // useEffect(() => {
-  //   displayNotStartedLabs();
-  // }, [])
 
   const searchLabs = (e) => {
     e.preventDefault();
@@ -75,18 +71,18 @@ const Labs = (props) => {
         <>
           <ul className="tw-flex tw-flex-col">
             <div
-              className=" tw-border-solid tw-border-r-[1rem] tw-border-t-[1rem] tw-border-primary-yellow
+              className=" tw-border-solid tw-border-r-[1rem] tw-border-t-[4rem] tw-border-primary-yellow
                   tw-bg-primary-yellow tw-border-l-0 tw-border-b-0"
             >
               <div
                 className={
-                  "tw-h-full tw-border-solid tw-border-r-[0.5rem] tw-border-t-[0.5rem] tw-border-primary-blue " +
+                  "tw-h-full tw-border-solid tw-border-r-[0.75rem] tw-border-t-[0.75rem] tw-border-primary-blue " +
                   "tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
                 }
               >
                 <div
                   className={
-                    "tw-text-5xl tw-font-poppins tw-title-styling-name"
+                    "tw-text-5xl tw-font-poppins tw-title-styling-name tw-my-[1rem]"
                   }
                 >
                   My Labs

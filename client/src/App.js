@@ -166,7 +166,7 @@ const App = () => {
             </Router>
           </div>
         </div>
-        <MainFooter />
+        {lab === 0 && <MainFooter />}
         <ALLSnackbar />
         <Change
           context={context}

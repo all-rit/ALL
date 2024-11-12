@@ -8,6 +8,11 @@ const LOGOUT_SUCCESS = "Logout successful!";
 const LOGOUT_ERROR = "User could not be logged out.";
 const EXERCISE_IN_PROGRESS =
   "The exercise is still in progress! Please complete the exercise";
+const DELETE_GROUP_SUCCESS = "Group successfully deleted!";
+const UPDATE_GROUP_SUCCESS = "Group successfully updated!";
+const CREATE_GROUP_SUCCESS = "Group successfully created!";
+const GROUP_ERROR =
+  "An unexpected error occurred when creating/updating this group.";
 const SUCCESS = "success";
 const ERROR = "error";
 
@@ -19,6 +24,10 @@ module.exports = {
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
   EXERCISE_IN_PROGRESS,
+  CREATE_GROUP_SUCCESS,
+  UPDATE_GROUP_SUCCESS,
+  DELETE_GROUP_SUCCESS,
+  GROUP_ERROR,
   SUCCESS,
   ERROR,
 };

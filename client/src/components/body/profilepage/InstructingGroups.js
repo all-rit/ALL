@@ -21,12 +21,12 @@ const InstructingGroups = () => {
   return (
     <div
       className={
-        " tw-border-solid tw-border-r-[1rem] tw-border-t-[1rem] tw-border-primary-yellow tw-bg-primary-yellow tw-border-l-0 tw-border-b-0 tw-mb-[2rem]"
+        " tw-border-solid tw-border-r-[1rem] tw-border-t-[4rem] tw-border-primary-yellow tw-bg-primary-yellow tw-border-l-0 tw-border-b-0 tw-mb-[2rem]"
       }
     >
       <div
         className={
-          "tw-h-full tw-border-solid tw-border-r-[0.5rem] tw-border-t-[0.5rem] tw-border-primary-blue tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
+          "tw-h-full tw-border-solid tw-border-r-[0.75rem] tw-border-t-[0.75rem] tw-border-primary-blue tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
         }
       >
         <div className="">

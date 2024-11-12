@@ -13,6 +13,14 @@ import {
 import LabRow from "./LabRow";
 import ALLButton from "../../../all-components/ALLButton";
 import PropTypes from "prop-types";
+import {
+  CREATE_GROUP_SUCCESS,
+  ERROR,
+  GROUP_ERROR,
+  SUCCESS,
+  UPDATE_GROUP_SUCCESS,
+} from "../../../../constants/notifications";
+import useMainStateContext from "../../../../reducers/MainContext";
 
 const GroupForm = (props) => {
   const {
@@ -24,6 +32,7 @@ const GroupForm = (props) => {
     groupColor,
     assignedLabs,
   } = props;
+  const { actions } = useMainStateContext();
   const [labs, setLabs] = useState([]);
   const [checkedLabs, setCheckedLabs] = useState({});
   const [color, setColor] = useState(groupColor || "");
@@ -92,6 +101,7 @@ const GroupForm = (props) => {
         });
 
         await Promise.all(addLabPromises);
+        actions.showSnackbar(CREATE_GROUP_SUCCESS, SUCCESS);
       } else if (addMode === "update_grp_lab" && groupID) {
         if (
           formData.get("groupName") !== props.groupName ||
@@ -127,7 +137,9 @@ const GroupForm = (props) => {
       }
       props.toggle();
       setInstrGroupsUpdated(true);
+      actions.showSnackbar(UPDATE_GROUP_SUCCESS, SUCCESS);
     } catch (error) {
+      actions.showSnackbar(GROUP_ERROR, ERROR);
       console.error("Error in form submission:", error);
     }
   };

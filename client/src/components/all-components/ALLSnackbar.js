@@ -7,7 +7,6 @@ import SnackbarContent from "@mui/material/SnackbarContent";
 const ALLSnackbar = () => {
   const { state, actions } = useMainStateContext();
 
-  console.warn(state.main.snackbar);
   const snackbarColor = () => {
     switch (state.main.snackbar.notificationType) {
       case SUCCESS:

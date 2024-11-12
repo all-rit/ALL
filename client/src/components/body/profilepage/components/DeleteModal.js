@@ -4,9 +4,15 @@ import GroupService from "../../../../services/GroupService";
 import PropTypes from "prop-types";
 import BrandedALLModal from "../../../all-components/BrandedALLModal";
 import ALLButton from "../../../all-components/ALLButton";
+import {
+  DELETE_GROUP_SUCCESS,
+  SUCCESS,
+} from "../../../../constants/notifications";
+import useMainStateContext from "../../../../reducers/MainContext";
 
 const DeleteModal = (props) => {
   const { mainToggle, groupID, setInstrGroupsUpdated } = props;
+  const { actions } = useMainStateContext();
 
   const [modal, setModal] = useState(false);
 
@@ -18,6 +24,7 @@ const DeleteModal = (props) => {
     const deletionCompleted = await GroupService.deleteGroup(groupID);
     if (deletionCompleted) {
       setInstrGroupsUpdated(true);
+      actions.showSnackbar(DELETE_GROUP_SUCCESS, SUCCESS);
     }
     toggle();
     mainToggle();
@@ -66,7 +73,7 @@ const DeleteModal = (props) => {
               </p>
               <ALLButton
                 label={"Delete Group"}
-                onClick={() => deleteGroup()}
+                onClick={deleteGroup}
                 type="submit"
               />
             </div>
