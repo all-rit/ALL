@@ -29,6 +29,7 @@ import { default as Imagine } from "./components/imagine23/Main";
 
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
+import LabFooter from "./components/footer/footer";
 import Header from "./components/header/header";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
@@ -163,6 +164,12 @@ const App = () => {
             </Router>
           </div>
         </div>
+        <LabFooter
+          context={context}
+          quizCompleted={quizCompleted}
+          setQuizCompleted={setQuizCompleted}
+          isImagine={isImagine}
+        />
       </div>
     </>
   );
