@@ -24,7 +24,7 @@ class Box extends Component {
 
     return (
       <button
-        className={classes}
+        className={`${classes} tw-rounded-2xl tw-border-0 tw-bg-primary-blue tw-text-white tw-mt-6 tw-mb-16`}
         onClick={
           state === BOX_UNOPENED || state === BOX_REVEALED ? clickHandler : null
         }
