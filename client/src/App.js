@@ -29,7 +29,6 @@ import { default as Imagine } from "./components/imagine23/Main";
 
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
-import Change from "./components/footer/footer";
 import Header from "./components/header/header";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
@@ -43,7 +42,6 @@ const parse = require("url-parse");
 import useMainStateContext from "./reducers/MainContext";
 import LabsPage from "./components/body/labspage/LabsPage";
 import EducatorResources from "./components/body/EducatorResources/EducatorResources";
-import MainFooter from "./components/footer/mainFooter";
 
 const mapStateToProps = (state) => {
   return {
@@ -165,13 +163,6 @@ const App = () => {
             </Router>
           </div>
         </div>
-        <MainFooter />
-        <Change
-          context={context}
-          quizCompleted={quizCompleted}
-          setQuizCompleted={setQuizCompleted}
-          isImagine={isImagine}
-        />
       </div>
     </>
   );

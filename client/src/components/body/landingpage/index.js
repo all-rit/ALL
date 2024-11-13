@@ -10,6 +10,7 @@ import DevPartners from "./DevPartners";
 import GettingInvolved from "../../all-components/GettingInvolved";
 import AboutUs from "../../all-components/AboutUs";
 import Carousel from "../../all-components/carousel";
+import MainFooter from "../../footer/mainFooter";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -101,6 +102,7 @@ const Home = (props) => {
       <HorizontalLine />
       <DevPartners />
       <Carousel />
+      <MainFooter />
     </div>
   );
 };
