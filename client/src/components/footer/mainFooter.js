@@ -342,11 +342,8 @@ class MainFooter extends Component {
             </Nav>
           </div>
           <div className=" tw-w-full tw-bg-white tw-h-px" />
-          <div className="tw-flex tw-justify-between tw-flex-wrap tw-mt-12">
+          <div className="tw-flex tw-justify-left tw-mt-12">
             <div className="tw-flex">Versioning Information Goes Here</div>
-            <a href="#" className="tw-text-white tw-no-underline">
-              <div className="tw-flex">Site Accessibility Settings</div>
-            </a>
           </div>
         </div>
       </>

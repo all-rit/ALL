@@ -244,21 +244,9 @@ const Header = (props) => {
                   <></>
                 )}
               </NavItem>
-              <NavItem className="tw-flex tw-justify-center tw-items-center">
-                {isSmallWindow && (
-                  <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer">
-                    <p className="tw-text-xs">Site Accessibility Settings</p>
-                  </a>
-                )}
-              </NavItem>
             </Nav>
           </Collapse>
         </div>
-        {!isSmallWindow && (
-          <a className="tw-no-underline tw-items-center tw-text-labBlue tw-cursor-pointer tw-absolute tw-bottom-1 tw-right-3">
-            <p className="tw-text-xs">Site Accessibility Settings</p>
-          </a>
-        )}
       </div>
       <Snackbar
         open={state.main?.snackbar?.open}
