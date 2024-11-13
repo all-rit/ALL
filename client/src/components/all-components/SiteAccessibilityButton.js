@@ -82,23 +82,27 @@ const SiteAccessibilityButton = () => {
               Accessibility Tools
             </h3>
           </CardHeader>
-          <CardBody>
+          <CardBody className="tw-p-2">
             <p className="tw-text-left tw-underline">Text Size Adjuster</p>
-            <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-mt-2 tw-mb-4">
+            <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-my-2">
               <button
-                className="tw-bg-primary-blue tw-aspect-square tw-border-none tw-px-4 tw-py-2 tw-rounded-full tw-text-white tw-font-normal tw-title-styling-name tw-leading-4"
+                className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
                 onClick={() => changeSize(1)}
               >
-                +
+                <p className="tw-text-white tw-title-styling-name tw-leading-4 tw-text-center">
+                  +
+                </p>
               </button>
               <button
-                className="tw-bg-primary-blue tw-aspect-square tw-border-none tw-px-4 tw-py-2 tw-rounded-full tw-text-white tw-font-normal tw-title-styling-name tw-leading-4"
+                className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
                 onClick={() => changeSize(-1)}
               >
-                -
+                <p className="tw-text-white tw-title-styling-name tw-leading-4 tw-text-center">
+                  -
+                </p>
               </button>
             </div>
-            <p className="tw-text-left tw-underline tw-my-4">
+            <p className="tw-text-left tw-underline tw-my-2">
               Text Color Adjuster
             </p>
             <ColorPickerPanel
@@ -107,7 +111,7 @@ const SiteAccessibilityButton = () => {
               color={state.color}
               onChange={onTextColorChange.bind(this)}
             />
-            <p className="tw-text-left tw-underline tw-my-4">
+            <p className="tw-text-left tw-underline tw-my-2">
               Background Color Adjuster
             </p>
             <ColorPickerPanel
