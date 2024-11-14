@@ -3,8 +3,8 @@
 /* eslint-disable react/prop-types */
 import { navigate } from "@reach/router";
 import React from "react";
-import Button from "../components/header/buttons/button";
 import "./secondaryInstructions.css";
+import LabButton from "../../../all-components/LabButton";
 
 /*
 Page containing the instructions for the second popup the user sees
@@ -38,13 +38,14 @@ const ThirdInstructions = ({
     <>
       {!isImagine && (
         <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
-          <p className="tw-title-styling-name">Wow that was tough!</p>
+          <p className="tw-title-styling-name">Round 2 Complete</p>
           <ul className={"tw-font-calibri tw-font-normal tw-body-styling-name"}>
             <li className="tw-pt-3">
-              As you can see, this exercise can be very difficult for users who
-              are colorblind. The exercise was not created in an accessible
-              manner for these users. This is due to the colors being in
-              contrast with both the background and the other circles.
+              Wow, that was tough! As you can see, this exercise can be very
+              difficult for users who are colorblind. The exercise was not
+              created in an accessible manner for these users. This is due to
+              the colors being in contrast with both the background and the
+              other circles.
             </li>
             <li className="tw-pt-3">
               You can change the colors with the
@@ -72,11 +73,7 @@ const ThirdInstructions = ({
           </ul>
           <br></br>
           <div className="center">
-            <Button
-              clickMethod={changeColors}
-              message={"I'm ready!"}
-              fontSizing={"25px"}
-            />
+            <LabButton onClick={changeColors} label={"I'm ready!"} />
           </div>
         </div>
       )}

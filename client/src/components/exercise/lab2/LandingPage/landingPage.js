@@ -2,8 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import useScroll from "../../../../use-hooks/useScroll";
-import Button from "../components/header/buttons/button";
 import MainInstructions from "./mainInstructions";
+import LabButton from "../../../all-components/LabButton";
 
 const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
   useScroll();
@@ -18,8 +18,8 @@ const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
 
   return (
     <div>
-      <div id="Header" className={""}>
-        <p className="tw-title-styling-name">Exercise Overview</p>
+      <div id="Header" className={"tw-px-6"}>
+        <p className="tw-title-styling-name tw-text-left">Exercise Start</p>
       </div>
       <div id="Body">
         <MainInstructions />
@@ -30,16 +30,12 @@ const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
             sign in with Google.
           </p>
         </div>
-        <p className="tw-body-styling-name tw-font-medium">
+        <p className="tw-body-styling-name tw-text-center">
           When you are ready, click the <strong>'Let's Get Started'</strong>{" "}
           button to begin the exercise
         </p>
         <div className="center tw-my-3">
-          <Button
-            clickMethod={closePage}
-            message={"Lets Get Started!"}
-            fontSizing={"25px"}
-          />
+          <LabButton onClick={closePage} label={"Lets Get Started!"} />
         </div>
       </div>
     </div>

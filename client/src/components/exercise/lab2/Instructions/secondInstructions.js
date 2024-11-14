@@ -3,7 +3,7 @@
 import React from "react";
 import "./secondaryInstructions.css";
 import { navigate } from "@reach/router";
-import Button from "../components/header/buttons/button";
+import LabButton from "../../../all-components/LabButton";
 
 /*
 Page containing the instructions for the second popup the user sees
@@ -35,13 +35,13 @@ const SecondInstructions = ({
 
   return (
     <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
-      <p className="tw-title-styling-name tw-p-0">Good job so far!</p>
+      <p className="tw-title-styling-name tw-p-0">Round 1 Complete</p>
       <ul className={"tw-font-calibri tw-font-normal tw-body-styling-name"}>
         <li className={"tw-py-3"}>
           As you can see, this exercise isn't too difficult. However, to a user
           with a <em>color vision deficiency</em>, it is.
         </li>
-        <li className={"tw-py-3"}>
+        <li>
           A color vision deficiency (also sometimes referred to as color
           blindness) is when an individual is unable to see a portion of the
           color spectrum. These are quite common, especially in men, across the
@@ -52,7 +52,6 @@ const SecondInstructions = ({
           vision deficiency to use properly. To simulate this, we have added the
           ability to simulate what an individual with this deficiency would see.
         </li>
-        <br />
         <h2 className={"tw-title-styling-name"}>Did you know?</h2>
         <br />
         <li
@@ -66,12 +65,8 @@ const SecondInstructions = ({
           blindness). These are all options for simulation for in the exercise.
         </li>
       </ul>
-      <div className="center">
-        <Button
-          clickMethod={closeInstructions}
-          message={"I'm ready!"}
-          fontSizing={"25px"}
-        />
+      <div className="center tw-py-6">
+        <LabButton onClick={closeInstructions} label={"I'm ready!"} />
       </div>
     </div>
   );
