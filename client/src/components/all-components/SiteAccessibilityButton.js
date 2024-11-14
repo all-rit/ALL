@@ -61,7 +61,10 @@ const SiteAccessibilityButton = () => {
 
   return (
     <button
-      className="tw-flex tw-fixed tw-right-0 tw-bottom-0 tw-m-4 tw-bg-primary-yellow tw-border-none tw-rounded-full tw-p-4 tw-z-50 tw-shadow-md tw-shadow-labGray"
+      className="tw-flex tw-fixed tw-right-0 tw-bottom-0 tw-m-4
+      tw-bg-primary-yellow tw-border-none tw-rounded-full
+      tw-p-4 tw-z-50 tw-shadow-md
+      hover:tw-bg-[#f6c832] hover:tw-shadow-lg"
       onClick={(e) => toggleCollapse(e)}
     >
       <img
@@ -73,17 +76,19 @@ const SiteAccessibilityButton = () => {
         isOpen={open}
       >
         <Card
-          className="tw-bg-white tw-flex tw-flex-col tw-shadow-lg tw-shadow-labGray"
+          className="tw-bg-white tw-flex tw-flex-col tw-shadow-lg tw-shadow-labGray tw-w-[20rem]"
           outline
           color="light"
         >
-          <CardHeader className="tw-bg-darkGray">
-            <h3 className="tw-sub-title-styling-name tw-font-bold tw-text-white tw-p-4">
+          <CardHeader className="tw-bg-primary-blue">
+            <h3 className="tw-title-styling-name tw-text-xl tw-font-bold tw-text-white tw-p-6">
               Accessibility Tools
             </h3>
           </CardHeader>
           <CardBody className="tw-p-2">
-            <p className="tw-text-left tw-underline">Text Size Adjuster</p>
+            <p className="tw-text-left tw-body-styling-name tw-px-3">
+              Text Size Adjuster
+            </p>
             <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-my-2">
               <button
                 className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
@@ -102,24 +107,28 @@ const SiteAccessibilityButton = () => {
                 </p>
               </button>
             </div>
-            <p className="tw-text-left tw-underline tw-my-2">
+            <p className="tw-text-left tw-body-styling-name tw-my-2 tw-px-3">
               Text Color Adjuster
             </p>
-            <ColorPickerPanel
-              enableAlpha={false}
-              defaultColor={"#345679"}
-              color={state.color}
-              onChange={onTextColorChange.bind(this)}
-            />
-            <p className="tw-text-left tw-underline tw-my-2">
+            <div className={"tw-w-full tw-flex tw-justify-center"}>
+              <ColorPickerPanel
+                enableAlpha={false}
+                defaultColor={"#345679"}
+                color={state.color}
+                onChange={onTextColorChange.bind(this)}
+              />
+            </div>
+            <p className="tw-text-left tw-body-styling-name tw-my-2 tw-text-nowrap tw-px-3">
               Background Color Adjuster
             </p>
-            <ColorPickerPanel
-              enableAlpha={false}
-              defaultColor={"#345679"}
-              color={state.backgroundColor}
-              onChange={onBgColorChange.bind(this)}
-            />
+            <div className={"tw-w-full tw-flex tw-justify-center"}>
+              <ColorPickerPanel
+                enableAlpha={false}
+                defaultColor={"#345679"}
+                color={state.backgroundColor}
+                onChange={onBgColorChange.bind(this)}
+              />
+            </div>
           </CardBody>
         </Card>
       </Collapse>
