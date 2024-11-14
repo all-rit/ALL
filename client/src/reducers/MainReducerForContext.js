@@ -53,6 +53,7 @@ export const initialState = {
     snackbar: {
       open: false,
       message: "",
+      notificationType: "",
     },
   },
 };
@@ -111,6 +112,7 @@ export const MainReducerForContext = (state = initialState, action) => {
           snackbar: {
             open: true,
             message: payload.message,
+            notificationType: payload.notificationType,
           },
         },
       };

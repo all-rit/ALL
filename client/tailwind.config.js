@@ -54,7 +54,7 @@ module.exports = {
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
       darkGray: "#3d3d3d",
-      successGreen: "14FF00",
+      successGreen: "#14FF00",
     },
     extend: {
       borderWidth: {
@@ -144,7 +144,7 @@ module.exports = {
         ".body-styling-name": {
           font: theme("fontFamily.calibri"),
           fontSize: "1.125rem",
-          fontWeight: theme("fontWeight.light"),
+          fontWeight: theme("fontWeight.medium"),
         },
       });
     }),

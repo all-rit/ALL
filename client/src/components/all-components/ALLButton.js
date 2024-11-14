@@ -5,10 +5,10 @@ const ALLButton = (props) => {
   const { label, onClick, className, type } = props;
 
   return (
-    <div className={`${className} tw-h-100 tw-m-3`}>
+    <div className={`${className} tw-h-100`}>
       <button
         className={
-          "tw-border-0 tw-relative tw-py-1 tw-bg-white tw-font-calibri tw-px-6 xs:tw-text-xs lg:tw-text-[1.125rem] tw-text-nowrap"
+          "tw-border-0 tw-relative tw-py-1 tw-bg-white tw-font-calibri tw-px-6 tx-text-sm tw-font-medium tw-text-nowrap"
         }
         onClick={onClick}
         type={type}
