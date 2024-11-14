@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../../assets/stylesheets/components/css/colorPicker.css";
-import { Panel as ColorPickerPanel } from "rc-color-picker";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
@@ -164,30 +163,27 @@ class Footer extends Component {
     const hideOnLanding = lab === 0;
 
     // for buttons that should not be displayed on the landing page
+
+    if (hideOnLanding) {
+      return;
+    }
     return (
       <>
         <div className="footer">
-          {hideOnLanding ? (
-            <></>
-          ) : (
-            <div>
-              <span className="tw-absolute bottom leftBlueFooterLine tw-bg-labBlue"></span>
-              <span className="tw-absolute bottom rightBlueFooterLine tw-bg-labBlue"></span>
-              <span className="tw-absolute leftYellowFooterLine tw-bg-labYellow"></span>
-              <span className="tw-absolute rightYellowFooterLine tw-bg-labYellow"></span>
-            </div>
-          )}
-          <div
-            className="tw-flex tw-justify-between tw-mx-8"
-            style={{ display: display ? "block" : "none" }}
-          >
+          <div>
+            <span className="tw-absolute bottom leftBlueFooterLine tw-bg-labBlue"></span>
+            <span className="tw-absolute bottom rightBlueFooterLine tw-bg-labBlue"></span>
+            <span className="tw-absolute leftYellowFooterLine tw-bg-labYellow"></span>
+            <span className="tw-absolute rightYellowFooterLine tw-bg-labYellow"></span>
+          </div>
+
+          <div className="tw-flex tw-justify-between tw-mx-8">
             <button
               className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
               onClick={() => handleRedirect(actions, lab, body - 1)}
               style={{
-                opacity: this.disappearBack(body) || hideOnLanding ? "0" : "1",
-                pointerEvents:
-                  this.disappearBack(body) || hideOnLanding ? "none" : "auto",
+                opacity: display ? "1" : "0",
+                pointerEvents: display ? "auto" : "none",
               }}
             >
               BACK
@@ -199,10 +195,7 @@ class Footer extends Component {
                 className="btn tw-bg-labLightGray btn-xl text-uppercase next"
                 onClick={this.navigateHome}
                 style={{
-                  display:
-                    this.disappearBack(body) || hideOnLanding
-                      ? "none"
-                      : "block",
+                  display: display ? "block" : "none",
                 }}
               >
                 Return to Home
@@ -212,10 +205,8 @@ class Footer extends Component {
                 className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue"
                 onClick={() => handleRedirect(actions, lab, body + 1)}
                 style={{
-                  display:
-                    this.disappearNext(body) || hideOnLanding
-                      ? "none"
-                      : "block",
+                  opacity: display ? "1" : "0",
+                  pointerEvents: display ? "auto" : "none",
                 }}
               >
                 NEXT
@@ -224,71 +215,12 @@ class Footer extends Component {
           </div>
           <div
             className="container"
-            style={{ display: display || hideOnLanding ? "none" : "block" }}
+            style={{ display: display ? "none" : "block" }}
           >
-            <div className="btn-information tw-mt-24">
-              The previously available navigation and accessibility buttons are
-              disabled until the exercise is complete.
+            <div className="tw-mt-24">
+              The previously available navigation is disabled until the exercise
+              is complete.
             </div>
-          </div>
-          <div className="btn-change">
-            <button
-              className="btn-text btn btn-bottom-buttons text-uppercase"
-              alt="Increase text size"
-              title="Larger text"
-              onClick={() => this.changeSize(1)}
-            >
-              Text+
-            </button>
-            <button
-              className="btn-text btn btn-bottom-buttons text-uppercase"
-              alt="Decrease text size"
-              title="Smaller text"
-              onClick={() => this.changeSize(-1)}
-            >
-              Text-
-            </button>
-            <button
-              id="changeTextColor"
-              className="btn btn-text btn-bottom-buttons text-uppercase"
-              onClick={this.renderTextColorPalette}
-            >
-              Change Text Color
-            </button>
-
-            <button
-              id="changeBackgroundColor"
-              className="btn btn-text btn-bottom-buttons text-uppercase"
-              onClick={this.renderBgColorPalette}
-            >
-              Change Background Color
-            </button>
-            {this.state.textColor && (
-              <div
-                id="text-panel"
-                className="div-style-text"
-                style={{
-                  display: this.state.textColor === true ? "block" : "none",
-                }}
-              >
-                <ColorPickerPanel
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={this.state.color}
-                  onChange={this.OnTextColorChange.bind(this)}
-                />
-              </div>
-            )}
-            {this.state.bgColor && (
-              <div id="bg-panel" className="div-style-bgColor">
-                <ColorPickerPanel
-                  enableAlpha={false}
-                  defaultColor={"#345679"}
-                  color={this.state.backgroundColor}
-                  onChange={this.OnBgColorChange.bind(this)}
-                />
-              </div>
-            )}
           </div>
         </div>
         <div className="footer" />
