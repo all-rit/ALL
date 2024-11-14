@@ -46,7 +46,7 @@ class Results extends Component {
         </div>
 
         <button
-          className="btn btn-second btn-xl text-uppercase "
+          className="btn btn-second btn-xl text-uppercase tw-my-6"
           onClick={clickHandler}
         >
           Continue

@@ -9,7 +9,7 @@ const LabButton = (props) => {
       onClick={onClick}
       type={type}
       key={key}
-      className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg btn-xl text-uppercase"
+      className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg btn-xl text-uppercase tw-min-w-[4rem] tw-max-w-[15rem]"
       disabled={disabled}
     >
       {label}
