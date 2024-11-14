@@ -121,7 +121,7 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className="tw-font-poppins tw-font-bold tw-my-0"
+      className="tw-font-poppins tw-font-bold tw-my-0 tw-mb-[5rem]"
     >
       <div
         className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] lg:tw-h-40 tw-shadow-md tw-px-5`}
