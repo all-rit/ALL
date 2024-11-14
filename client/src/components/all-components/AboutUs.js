@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import ALLButton from "./ALLButton";
 import { navigate } from "@reach/router";
+import LookingAtComputer from "../../assets/images/stockImages/WomanOnComputer.png";
+
 const AboutUs = () => {
   const yellowBlock = useRef(null);
 
@@ -64,10 +66,14 @@ const AboutUs = () => {
         <div
           ref={yellowBlock}
           className={
-            "tw-bg-primary-yellow tw-w-1/2 xs:tw-h-1/2 md:tw-h-3/4 tw-my-[5rem]"
+            "tw-bg-primary-yellow tw-w-1/2 xs:tw-h-1/2 md:tw-h-3/4 tw-my-[5rem] tw-relative"
           }
         >
-          {/*TODO: Placeholder for Stock Image*/}
+          <img
+            src={LookingAtComputer}
+            aria-label={"Looking at Computer"}
+            className={"tw-w-[15rem] tw-absolute tw-left-0 tw-top-0"}
+          />
         </div>
       </div>
     </div>

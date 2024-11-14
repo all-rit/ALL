@@ -12,6 +12,8 @@ import BrandedALLModal from "../../all-components/BrandedALLModal";
 import LoginBody from "../login/LoginBody";
 import GettingInvolved from "../../all-components/GettingInvolved";
 import PropTypes from "prop-types";
+import Student from "../../../assets/images/stockImages/LookingAtComputer.png";
+import Girl from "../../../assets/images/stockImages/Girl1.png";
 
 const mapStateToProps = (state) => {
   return {
@@ -186,7 +188,7 @@ const LabsPage = (props) => {
 
   return (
     <>
-      <div className="tw-h-128 tw-bg-primary-blue tw-flex tw-justify-center tw-items-center">
+      <div className="tw-h-128 tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-relative">
         <div className="tw-grid tw-w-full tw-h-1/2">
           <div
             className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end
@@ -210,6 +212,12 @@ const LabsPage = (props) => {
             </div>
           </div>
         </div>
+        <img
+          src={Student}
+          className={
+            "tw-absolute tw-bg-none xs:tw-w-[20rem] md:tw-w-[35rem] tw-bottom-0 tw-right-0"
+          }
+        />
       </div>
       <div className="tw-bg-white tw-h-28 tw-w-full" />
 
@@ -377,6 +385,10 @@ const LabsPage = (props) => {
               </div>
             </div>
           </div>
+          <img
+            src={Girl}
+            className={"tw-absolute tw-w-[20rem] tw-bottom-0 tw-right-10"}
+          />
         </div>
       </div>
       <div className="tw-bg-white tw-h-28 tw-w-full" />
