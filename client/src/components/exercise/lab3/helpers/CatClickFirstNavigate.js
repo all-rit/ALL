@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
+import LabButton from "../../../all-components/LabButton";
 
 class CatClickFirstNavigate extends Component {
   constructor(props) {
@@ -28,12 +29,9 @@ class CatClickFirstNavigate extends Component {
           Cat clicked! Please click the 'next' button to continue.
         </p>
         <br />
-        <button
-          onClick={CatClickFirstNavigate.handleOnclick}
-          className="btn btn-primary tw-w-1/4 tw-h-[4rem] text-uppercase"
-        >
+        <LabButton onClick={CatClickFirstNavigate.handleOnclick} label={"Next"}>
           Next
-        </button>
+        </LabButton>
       </div>
     );
   }

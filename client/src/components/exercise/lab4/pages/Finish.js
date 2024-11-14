@@ -26,11 +26,11 @@ const Finish = () => {
         {" "}
         Exercise Complete
       </h2>
-      <p className="tw-sub-title-styling-name tw-text-left">
+      <p className="tw-body-styling-name tw-text-left">
         Congratulations! You have successfully completed the Dexterity Exercise!
       </p>
       <br />
-      <p className="tw-sub-title-styling-name tw-text-left">
+      <p className="tw-body-styling-name tw-text-left">
         If you would like to start the exercise from the beginning, click the{" "}
         <strong>Return to Exercise Start</strong> button below. To move on to
         the reinforcement section scroll down and click the{" "}

@@ -4,6 +4,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
+import LabButton from "../../../../all-components/LabButton";
 
 class ExerciseInstructions extends Component {
   handleSubmit() {
@@ -63,21 +64,17 @@ class ExerciseInstructions extends Component {
           </p>
           <br />
           <div className={"tw-flex tw-gap-4 tw-w-full tw-justify-center"}>
-            <button
-              className="btn btn-second tw-w-1/6 tw-h-[4rem] text-uppercase"
+            <LabButton
               key="repair"
               aria-label={"Test"}
               onClick={(e) => textToSpeech(e, "Test")}
-            >
-              Test
-            </button>
-            <button
+              label={"Test"}
+            />
+            <LabButton
               onClick={this.handleSubmit}
-              className="btn btn-primary tw-w-1/6 tw-h-[4rem] text-uppercase"
               aria-label={"Next"}
-            >
-              Next
-            </button>
+              label={"next"}
+            />
           </div>
         </div>
       </div>

@@ -94,7 +94,7 @@ const App = () => {
             className={
               "" +
               (lab !== 0
-                ? "tw-flex tw-flex-row tw-w-full tw-items-center tw-justify-between tw-mt-[10rem] tw-px-[4rem] tw-relative"
+                ? "tw-flex tw-flex-row tw-w-full tw-h-[40rem] tw-items-center tw-justify-between tw-mt-[10rem] tw-px-[4rem] tw-relative"
                 : "")
             }
           >

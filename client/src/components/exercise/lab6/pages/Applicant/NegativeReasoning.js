@@ -16,8 +16,16 @@ const NegativeReasoning = () => {
 
   return (
     <div className="center-div">
-      <h2 className="tw-title-styling-name tw-text-left tw-my-6">
-        Why you were not chosen:
+      <div className={"tw-flex"}>
+        <h2 className="tw-title-styling-name tw-text-left tw-my-6">
+          Decision:
+        </h2>
+        <h2 className="tw-title-styling-name tw-text-left tw-my-6 tw-px-2 tw-text-brightRed">
+          Not Chosen
+        </h2>
+      </div>
+      <h2 className="tw-title-styling-name tw-text-left tw-mb-6">
+        Explanation
       </h2>
       <div className="tw-body-styling-name tw-text-left tw-my-6">
         The reason you were not selected was because there were an overwhelming

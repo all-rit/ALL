@@ -12,7 +12,6 @@ class UserUpdatedExercise extends Component {
   constructor(props) {
     super(props);
     this.state = { render: "", secondsElapsed: 0, renderedButtons: [] };
-    document.body.style = "background: black";
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
@@ -44,22 +43,6 @@ class UserUpdatedExercise extends Component {
     if (event.keyCode === 27) {
       console.log("Enter key pressed!");
       navigate("/Lab3/Exercise/AccessibleInstructions");
-    }
-  }
-
-  onFocusGain(event, className) {
-    console.log("focus gained");
-    const element = document.getElementsByClassName(className);
-    for (let i = 0; i < element.length; i++) {
-      element[i].style = { borderColor: "red" };
-    }
-  }
-
-  onFocusLoss(event, className) {
-    console.log("focus lost");
-    const element = document.getElementsByClassName(className);
-    for (let i = 0; i < element.length; i++) {
-      element[i].style = { borderColor: "black" };
     }
   }
 
@@ -226,7 +209,7 @@ class UserUpdatedExercise extends Component {
           Click on the image of a cat. You can use the keyboard to navigate by
           tabbing across the page. Press the enter key to select.
         </p>
-        <table style={tableStyle}>
+        <table style={tableStyle} className={"tw-relative"}>
           <tbody>
             <tr>
               {this.state.renderedButtons[0]}

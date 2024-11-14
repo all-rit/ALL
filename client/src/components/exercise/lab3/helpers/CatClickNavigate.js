@@ -3,6 +3,7 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
+import LabButton from "../../../all-components/LabButton";
 
 class CatClickNavigate extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class CatClickNavigate extends Component {
     return (
       <div id={"catClickMessage"}>
         <p
-          className={"tw-body-styling-name tw-text-white tw-font-medium"}
+          className={"tw-body-styling-name tw-text-white tw-text-center"}
           aria-label={
             "Cat clicked! Please click the 'next' button to continue."
           }
@@ -43,13 +44,11 @@ class CatClickNavigate extends Component {
           Cat clicked! Please click the 'next' button to continue.
         </p>
         <br />
-        <button
+        <LabButton
           onClick={CatClickNavigate.handleOnclick}
-          className="btn btn-primary tw-w-1/6 tw-h-[4rem] text-uppercase"
           onFocus={(e) => textToSpeech(e, "Next")}
-        >
-          Next
-        </button>
+          label={"Next"}
+        />
       </div>
     );
   }

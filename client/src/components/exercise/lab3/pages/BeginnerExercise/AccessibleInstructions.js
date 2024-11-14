@@ -4,6 +4,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
+import LabButton from "../../../../all-components/LabButton";
 
 class AccessibleInstructions extends Component {
   constructor(props) {
@@ -64,12 +65,7 @@ class AccessibleInstructions extends Component {
           </p>
         </div>
         <br />
-        <button
-          onClick={this.handleSubmit}
-          className="btn btn-primary tw-w-1/4 tw-h-[4rem] text-uppercase  leftButton"
-        >
-          Next
-        </button>
+        <LabButton onClick={this.handleSubmit} label={"Next"} />
       </div>
     );
   }

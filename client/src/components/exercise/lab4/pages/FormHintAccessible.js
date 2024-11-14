@@ -34,7 +34,7 @@ const FormHintAccessible = () => {
   return (
     <div className={"tw-p-6"}>
       <a className="skip-main" href="#" onClick={jumpToMain}>
-        Skip to main content
+        Skip to Main Content
       </a>
       <ExtraNav />
 
