@@ -18,7 +18,7 @@ class ClosedHintBox extends Component {
 
     return (
       <div
-        className="hint_box__background tw-rounded-2xl tw-border-none tw-body-styling-name tw-h-[6rem] tw-my-6"
+        className="hint_box__background hover:tw-shadow-md tw-rounded-2xl tw-border-none tw-body-styling-name tw-h-[6rem] tw-my-6"
         style={{ backgroundColor: backgroundColor }}
       >
         <span className="hint_box__warning tw-title-styling-name tw-text-2xl">

@@ -48,9 +48,7 @@ class First extends Component {
               <b>until the timer runs out.</b>
             </li>
           </ul>
-          <hr />
-
-          <p className="tw-body-styling-name tw-text-center">
+          <p className="tw-body-styling-name tw-text-center tw-pb-3">
             When you are ready, click the <b>Start</b> button to begin the
             exercise.
           </p>

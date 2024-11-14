@@ -16,6 +16,7 @@
     align-items: center;
     flex-direction: column;
     position: absolute;
+    background-color: #ddd !important;
     top: 0;
     left: 0;
     right: 0;
@@ -24,7 +25,7 @@
 
     &:hover {
       cursor: pointer;
-      background-color: #ddd !important;
+      background-color: #d0d0d0 !important;
     }
   }
 
