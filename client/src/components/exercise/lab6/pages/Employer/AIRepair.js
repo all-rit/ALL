@@ -1,7 +1,6 @@
 import { navigate } from "@reach/router";
 import React, { useEffect, useState } from "react";
 import RepairService from "../../../../../services/lab6/RepairService";
-import CodeUpdateHeader from "../../../lab3/components/CodeUpdateHeader";
 import Popup from "../../../../all-components/Popup";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
@@ -96,13 +95,18 @@ const AIRepair = () => {
 
   return (
     <div>
-      <CodeUpdateHeader
-        heading={"Make Config Changes"}
-        justifyAlignment={"space-between"}
-      />
-      <div className="cognitive_instructions margin-bottom-2">
+      <h2
+        className={
+          "tw-title-styling-name tw-font-bold tw-text-[2.5rem] tw-text-left tw-my-6"
+        }
+      >
+        {" "}
+        Repair{" "}
+      </h2>
+      <div className="tw-body-styling-name tw-text-left tw-my-6">
         Let&apos;s adjust the AI&apos;s configuration to allow for a more
         equitable hiring process.
+        <br />
         <br />
         Click &rsquo;Repair&rsquo; to make the appropriate changes.
       </div>

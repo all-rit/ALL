@@ -32,15 +32,19 @@ const PreWrongDiploma = () => {
 
   return (
     <div className="center-div">
+      <h1 className={"tw-title-styling-name tw-text-left"}>
+        {" "}
+        Congratulations!{" "}
+      </h1>
       <div className="guidance margin-bottom-2">
         {isRepairComplete ? (
-          <p className="playthrough__sentence">
+          <p className="tw-body-styling-name tw-py-6">
             Great job! Now that you&apos;ve updated the graduation application,
             you&apos;re excited to receive your newly minted diploma that shows
             respect for your preferred name and pronouns.
           </p>
         ) : (
-          <p className="playthrough__sentence">
+          <p className="tw-body-styling-name tw-pt-6">
             Congratulations, you’ve graduated from ALL University! You attend
             graduation to walk the stage. However, without being prompted for
             your pronouns, the Dean uses your wrong pronouns at graduation!
@@ -50,8 +54,8 @@ const PreWrongDiploma = () => {
           </p>
         )}
       </div>
-      <div className="playthrough__sentence">
-        Click the &quot;Continue to Diploma&quot; button.
+      <div className="tw-body-styling-name tw-text-center tw-pb-6">
+        Click the <strong>Continue to Diploma</strong> button.
       </div>
       <div className="tw-flex tw-justify-evenly">
         <button

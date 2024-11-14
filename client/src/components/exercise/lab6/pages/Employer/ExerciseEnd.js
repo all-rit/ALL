@@ -21,15 +21,19 @@ const ExerciseEnd = () => {
 
   return (
     <div className="center-div">
-      <div className="playthrough__sentence">
+      <h2 className={"tw-title-styling-name tw-text-left tw-my-6"}>
+        {" "}
+        Exercise Complete{" "}
+      </h2>
+      <div className="tw-body-styling-name tw-text-left tw-my-6">
         You have completed the exercise! Hopefully you have a better
         understanding of the ethics behind AI!
       </div>
-      <div className="playthrough__sentence">
+      <div className="tw-body-styling-name tw-text-left tw-my-6">
         Want to try out different weighted values and hire more candidates?
         Click the &quot;Update Repair&quot; button.
       </div>
-      <div className="playthrough__sentence">
+      <div className="tw-body-styling-name tw-text-left tw-my-6">
         Otherwise click the &quot;Finish Exercise&quot; button to complete this
         exercise!
       </div>

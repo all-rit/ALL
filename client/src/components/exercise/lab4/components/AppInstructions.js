@@ -3,9 +3,15 @@ import PropTypes from "prop-types";
 
 const AppInstructions = (props) => {
   return (
-    <div>
-      <p className="app__instructions">{props.instructions}</p>
-      <p className={props.class}>{props.instructions2}</p>
+    <div className={"tw-p-3"}>
+      <p className="tw-body-styling-name tw-font-medium tw-text-left">
+        {props.instructions}
+      </p>
+      <p
+        className={`${props.class} tw-body-styling-name tw-font-medium tw-text-left`}
+      >
+        {props.instructions2}
+      </p>
     </div>
   );
 };

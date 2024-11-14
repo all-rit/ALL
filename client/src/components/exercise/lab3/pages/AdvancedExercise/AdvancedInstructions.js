@@ -2,13 +2,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import AppBar from "@mui/material/AppBar";
-import Link from "@mui/material/Link";
-import Toolbar from "@mui/material/Toolbar";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 
@@ -28,32 +21,16 @@ class AdvancedInstructions extends Component {
       synth.speak(utterThis);
     };
 
-    const paperStyle = {
-      marginLeft: "10px",
-      marginRight: "10px",
-      marginTop: "20px",
-      marginBottom: "20px",
-    };
-
     return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid justifyContent="center" container spacing={10}>
-              <Grid item>
-                <Typography
-                  aria-label={"Advanced Instructions"}
-                  variant={"h4"}
-                  gutterBottom
-                >
-                  Instructions for Advanced Activity
-                </Typography>
-              </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
-        <Paper style={paperStyle}>
-          <Typography
+      <div className={"tw-p-10"}>
+        <h2 className={"tw-title-styling-name tw-text-left"}>
+          {" "}
+          Instructions for Advanced Activity{" "}
+        </h2>
+        <br />
+        <div>
+          <p
+            className={"tw-body-styling-name tw-font-medium tw-text-left"}
             aria-label={
               "Instructions for Advanced Activity" +
               "You will have to learn about accessibility by performing a task which will involve finding the accessibility issues in a page." +
@@ -61,50 +38,45 @@ class AdvancedInstructions extends Component {
               "For the following activity, please ensure that you have volume enabled on your device." +
               "Click on the button below to test the functionality of the screen reader."
             }
-            variant={"h6"}
-            gutterBottom
-            tabIndex={"0"}
           >
             You will have to learn about accessibility by performing a task
             which will involve finding the accessibility issues in a page.
             Please make sure you are using
-            <Link
-              component={Link}
+            <a
+              className={"tw-text-primary-blue"}
               target="_blank"
               href={"https://www.google.com/chrome/"}
+              rel="noreferrer"
             >
               {" "}
               Google Chrome.{" "}
-            </Link>
+            </a>
             For the following activity, please ensure that you have volume
             enabled on your device.
             <br />
             <br />
             Click on the button below to test the functionality of the screen
             reader.
-            <br />
-            <br />
-            <div className="container text-center">
-              <button
-                className="btn btn-second btn-xl text-uppercase  mx-auto"
-                key="repair"
-                aria-label={"Test"}
-                onClick={(e) => textToSpeech(e, "Test")}
-              >
-                Test
-              </button>
-            </div>
-          </Typography>
+          </p>
           <br />
-        </Paper>
-        <Button
-          href="#"
-          onClick={this.handleSubmit}
-          variant={"contained"}
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-        >
-          Next
-        </Button>
+          <div className={"tw-flex tw-gap-4 tw-w-full tw-justify-center"}>
+            <button
+              className="btn tw-shadow-md tw-bg-[#d3d3d3] tw-w-1/6 tw-h-[4rem] text-uppercase hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+              key="repair"
+              aria-label={"Test"}
+              onClick={(e) => textToSpeech(e, "Test")}
+            >
+              Test
+            </button>
+            <button
+              onClick={this.handleSubmit}
+              className="btn tw-shadow-md tw-bg-[#d3d3d3] tw-w-1/6 tw-h-[4rem] text-uppercase hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+              aria-label={"Next"}
+            >
+              Next
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

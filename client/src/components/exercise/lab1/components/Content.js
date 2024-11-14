@@ -20,7 +20,7 @@ class Content extends Component {
       repairVisible,
     } = data;
     return (
-      <main className="content">
+      <main className="tw-h-full tw-p-6 tw-overflow-y-scroll">
         <Playthrough
           plays={data.plays}
           results={data.results}

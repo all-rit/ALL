@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppInstructions from "../components/AppInstructions";
 import ExtraNav from "../components/ExtraNav";
 import FormComp from "../components/FormComp";
@@ -24,9 +24,15 @@ const FormHintInaccessible = () => {
   const url = "/Lab4/Exercise/AccessibleGuideline";
   const tooltipTab = null;
   const name = "FormHintInaccessible";
+  const jumpToMain = () => {
+    const mainElement = document.getElementById("main");
+    if (mainElement) {
+      mainElement.focus({ preventScroll: true });
+    }
+  };
   return (
-    <Fragment>
-      <a className="skip-main" href="#main">
+    <div className={"tw-p-6"}>
+      <a className="skip-main" href={"#"} onClick={jumpToMain}>
         Skip to main content
       </a>
       <ExtraNav />
@@ -44,7 +50,7 @@ const FormHintInaccessible = () => {
         parentCallback={callbackFunction}
         name={name}
       />
-    </Fragment>
+    </div>
   );
 };
 

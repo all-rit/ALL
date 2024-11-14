@@ -12,15 +12,13 @@ const HomeReset = ({ exerciseEnded, changeExerciseColors, colors }) => {
   };
 
   return (
-    <div>
-      <button
-        type="submit"
-        className="backButton btn btn-second btn-xl text-uppercase "
-        onClick={handleClick}
-      >
-        Back
-      </button>
-    </div>
+    <button
+      type="submit"
+      className="btn btn-second btn-lg text-uppercase "
+      onClick={handleClick}
+    >
+      Back
+    </button>
   );
 };
 

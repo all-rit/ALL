@@ -231,6 +231,10 @@ li {
   align-items: center;
 }
 
+.RepairHeader {
+  background: linear-gradient(to right, #414141, #d3d3d3, #fff);
+}
+
 .link {
   text-decoration: underline;
   padding-right: 10px;
@@ -306,13 +310,13 @@ li {
       border-radius: 1em;
     }
     &:checked + .primary {
-      background-color: #a1ffb7;
-      color: #0c3515;
+      background-color: #a4efb6;
+      color: #000000;
       z-index: 1;
     }
     &:checked + .secondary {
-      background-color: #a05c62;
-      color: #fff562;
+      background-color: #fb4757;
+      color: #ffffff;
       z-index: 1;
     }
     &:checked + label {
@@ -363,15 +367,21 @@ li {
     margin-left: 10px;
     font-size: 1.6rem;
     font-weight: 750;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
-    background: linear-gradient(#9198e5, #712020);
+    background: linear-gradient(
+      to bottom left,
+      #ffffff,
+      #999999,
+      #5a5a5a,
+      #000000
+    );
   }
   &__textBox {
     width: calc(100% - 190px);
     margin-left: 10px;
     color: white;
-    font-family: "Poppins" sans-serif;
+    font-family: "Poppins", sans-serif;
   }
   &__textContent {
     display: flex;
@@ -388,17 +398,19 @@ li {
     font-weight: bold;
   }
   &__title_reject {
-    color: #fff562;
+    color: #ffffff;
     margin-left: -5px;
   }
   &__title_hire {
     color: #0c3515;
   }
   &__reject {
-    background-color: #a05c62;
+    background-color: #fb4757;
+    border-radius: 10px;
   }
   &__hire {
-    background-color: #a1ffb7;
+    background-color: #a4efb6;
+    border-radius: 10px;
   }
   &__desc {
     font-size: 12px;
@@ -932,6 +944,70 @@ a.icon:hover {
   }
   &__info {
     display: table;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.checkmark {
+  min-width: 5rem;
+  min-height: 5rem;
+  max-width: 10rem;
+  max-height: 10rem;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation:
+    fill 0.4s ease-in-out 0.4s forwards,
+    scale 0.3s ease-in-out 0.9s both;
+}
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+    background-color: #7ac142;
   }
 }
 
@@ -1759,7 +1835,6 @@ section#contact {
   }
 }
 .footer {
-  padding-top: 3rem;
   text-align: center;
   span.copyright {
     font-size: 90%;

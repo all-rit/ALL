@@ -138,13 +138,15 @@ module.exports = {
         },
         ".sub-title-styling-name": {
           fontFamily: theme("fontFamily.calibri"),
-          fontSize: "1.25rem",
-          fontWeight: theme("fontWeight.normal"),
+          fontSize: "1.5rem",
+          fontWeight: theme("fontWeight.medium"),
         },
         ".body-styling-name": {
           font: theme("fontFamily.calibri"),
           fontSize: "1.125rem",
           fontWeight: theme("fontWeight.medium"),
+          lineHeight: "2rem",
+          textAlign: "left",
         },
       });
     }),

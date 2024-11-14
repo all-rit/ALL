@@ -34,7 +34,7 @@ class Stats extends Component {
     if (!visible) return null;
 
     return (
-      <div className="stats">
+      <div className="stats tw-absolute tw-bottom-0 tw-rounded-b-xl tw-bg-[#ddd] tw-sub-title-styling-name">
         <div className="stats__timer">
           <div className="stats__countdown" style={countdown_style} />
         </div>

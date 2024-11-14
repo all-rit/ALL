@@ -151,7 +151,6 @@ class Footer extends Component {
   }
 
   render() {
-    // const { state, actions } = this.props;
     const { state, actions } = this.props.context;
     const { quizCompleted } = this.props;
     const lab = state.main.lab;
@@ -170,14 +169,10 @@ class Footer extends Component {
     return (
       <>
         <div className="footer">
-          <div>
-            <span className="tw-absolute bottom leftBlueFooterLine tw-bg-labBlue"></span>
-            <span className="tw-absolute bottom rightBlueFooterLine tw-bg-labBlue"></span>
-            <span className="tw-absolute leftYellowFooterLine tw-bg-labYellow"></span>
-            <span className="tw-absolute rightYellowFooterLine tw-bg-labYellow"></span>
-          </div>
-
-          <div className="tw-flex tw-justify-between tw-mx-8">
+          <div
+            className="tw-flex tw-justify-between tw-mx-10"
+            style={{ display: display ? "block" : "none" }}
+          >
             <button
               className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
               onClick={() => handleRedirect(actions, lab, body - 1)}
@@ -192,7 +187,7 @@ class Footer extends Component {
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
-                className="btn tw-bg-labLightGray btn-xl text-uppercase next"
+                className="btn tw-px-6 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue tw-text-nowrap"
                 onClick={this.navigateHome}
                 style={{
                   display: display ? "block" : "none",
