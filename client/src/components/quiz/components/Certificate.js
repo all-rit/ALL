@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../../reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
-import logo from "../../../assets/images/logos/ALL_White_Logo.svg";
+import logo from "../../../assets/images/logos/ALL_White.svg";
 import { Sections } from "../../../constants/index";
 import PropTypes from "prop-types";
 import ALLButton from "../../all-components/ALLButton";
