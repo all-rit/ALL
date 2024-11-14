@@ -17,10 +17,14 @@ const InfoModal = (props) => {
     authors,
   } = props;
   const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+  const toggle = (e) => {
+    e.preventDefault();
+    setModal(!modal);
+  };
 
   switch (buttonLabel) {
     case "More Info":
+    case "More Information":
       return (
         <ul className={"tw-mt-0"}>
           <button
@@ -30,18 +34,20 @@ const InfoModal = (props) => {
             {buttonLabel}
           </button>
           <Modal isOpen={modal} toggle={toggle} className={className}>
-            <div className="modal-content__header">
-              <h1>{labName}</h1>
+            <div className="modal-content__header tw-bg-primary-blue tw-text-white">
+              <h1 className={"tw-title-styling-name tw-py-5"}>{labName}</h1>
             </div>
             <ModalBody>
               <ul className="module__more_info">
-                <li className="p-text-modal">{fullDescription}</li>
-                <li className="p-text-modal">
+                <li className="tw-body-styling-name tw-py-5 tw-text-sm ">
+                  {fullDescription}
+                </li>
+                <li className="tw-body-styling-name tw-text-sm ">
                   Participants will take part in an exercise that will bring the
                   user through simulated problematic scenarios, then ask the
                   user to make changes.
                 </li>
-                <li className="p-text-modal">
+                <li className="tw-body-styling-name tw-text-sm tw-py-5">
                   Upon completion of the lab, participants will have achieved
                   the following learning objectives:
                 </li>
@@ -49,14 +55,16 @@ const InfoModal = (props) => {
                   {learningObjectives.map((learningObjective) => (
                     <li
                       key={learningObjective}
-                      className="ml-8 list-style-disc"
+                      className="ml-8 tw-body-styling-name tw-text-sm list-style-disc"
                     >
                       {learningObjective}
                     </li>
                   ))}
                 </ul>
-                <li className="p-text-modal">Authors:</li>
-                <li className="p-text-modal">{authors}</li>
+                <li className="tw-body-styling-name tw-text-sm tw-py-5">
+                  Authors:
+                </li>
+                <li className="tw-body-styling-name tw-text-sm ">{authors}</li>
               </ul>
             </ModalBody>
             <ModalFooter>

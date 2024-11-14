@@ -381,7 +381,7 @@ li {
     width: calc(100% - 190px);
     margin-left: 10px;
     color: white;
-    font-family: "Poppins" sans-serif;
+    font-family: "Poppins", sans-serif;
   }
   &__textContent {
     display: flex;
@@ -810,6 +810,9 @@ a.icon:hover {
 .progressBarContainer {
   //min-width: 450px;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }
 
 .groups {
@@ -898,7 +901,7 @@ a.icon:hover {
   //min-width: 450px;
   display: inline-grid;
   grid-template-columns: repeat(5, 1fr); /* for 5 equal columns */
-  width: 50%;
+  width: 80%;
   height: 10%;
 
   li,
@@ -936,7 +939,8 @@ a.icon:hover {
     background-color: transparent;
   }
   &__bar {
-    width: 20%;
+    width: 15%;
+    margin-right: 3px;
   }
   &__info {
     display: table;
@@ -1247,7 +1251,14 @@ a.icon:hover {
   }
 }
 .mainBody {
-  padding-top: 120px;
+  padding-top: 4rem;
+}
+.hoverShadow {
+  :hover {
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);
+  }
 }
 .changeFooter {
   margin-top: 50px;
@@ -1472,12 +1483,10 @@ a.icon {
 }
 .modal-content__header {
   padding: 0.5rem;
-  background-color: #fed136;
   text-align: center;
   list-style: none;
   border-top-right-radius: 0.3rem;
   border-top-left-radius: 0.3rem;
-  color: #404040 !important;
 }
 
 .log_out-google-btn {

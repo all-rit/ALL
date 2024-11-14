@@ -29,7 +29,7 @@ import { default as Imagine } from "./components/imagine23/Main";
 
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
-import Change from "./components/footer/footer";
+import LabFooter from "./components/footer/footer";
 import Header from "./components/header/header";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
@@ -44,6 +44,7 @@ import NavigationPane from "./components/all-components/Lab/NavigationPane";
 import LabsPage from "./components/body/labspage/LabsPage";
 import EducatorResources from "./components/body/EducatorResources/EducatorResources";
 import MainFooter from "./components/footer/mainFooter";
+import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 const mapStateToProps = (state) => {
   return {
@@ -188,7 +189,8 @@ const App = () => {
           </div>
         </div>
         {lab === 0 && <MainFooter />}
-        <Change
+        <ALLSnackbar />
+        <LabFooter
           context={context}
           quizCompleted={quizCompleted}
           setQuizCompleted={setQuizCompleted}
