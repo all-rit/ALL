@@ -12,7 +12,6 @@ import BrandedALLModal from "../../all-components/BrandedALLModal";
 import LoginBody from "../login/LoginBody";
 import GettingInvolved from "../../all-components/GettingInvolved";
 import PropTypes from "prop-types";
-import MainFooter from "../../footer/mainFooter";
 
 const mapStateToProps = (state) => {
   return {
@@ -382,7 +381,6 @@ const LabsPage = (props) => {
       </div>
       <div className="tw-bg-white tw-h-28 tw-w-full" />
       <GettingInvolved />
-      <MainFooter />
     </>
   );
 };

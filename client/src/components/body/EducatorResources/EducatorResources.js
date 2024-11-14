@@ -6,7 +6,6 @@ import GettingInvolved from "../../all-components/GettingInvolved";
 import AboutUs from "../../all-components/AboutUs";
 import DevPartners from "../landingpage/DevPartners";
 import Carousel from "../../all-components/carousel";
-import MainFooter from "../../footer/mainFooter";
 
 const EducatorResources = () => {
   return (
@@ -22,7 +21,6 @@ const EducatorResources = () => {
       </h2>
       <Carousel />
       <GettingInvolved />
-      <MainFooter />
     </div>
   );
 };
