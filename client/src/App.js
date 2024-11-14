@@ -29,22 +29,23 @@ import { default as Imagine } from "./components/imagine23/Main";
 
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
-import Change from "./components/footer/footer";
+import LabFooter from "./components/footer/footer";
 import Header from "./components/header/header";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "./reducers/MainReducer";
-import BodyHeader from "./components/header/BodyHeader";
 import "./assets/stylesheets/main.scss";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
 import { globalHistory } from "@reach/router";
 const parse = require("url-parse");
 import useMainStateContext from "./reducers/MainContext";
+import NavigationPane from "./components/all-components/Lab/NavigationPane";
 import LabsPage from "./components/body/labspage/LabsPage";
 import EducatorResources from "./components/body/EducatorResources/EducatorResources";
 import MainFooter from "./components/footer/mainFooter";
 import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
+import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
 const mapStateToProps = (state) => {
   return {
@@ -79,7 +80,7 @@ const App = () => {
     });
   }, []);
   const lab = state.main.lab;
-  const body = state.main.body;
+  // const body = state.main.body;
   const isImagine = state.main.isImagine;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -88,14 +89,36 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div className="overflow-x-hidden">
+      <div className="overflow-x-hidden tw-h-lvh">
         <Header />
-        <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
-          {lab !== 0 && (
-            <BodyHeader body={Sections[lab][body].name} labID={lab} />
-          )}
-          <div className="appBody">
-            <Router basepath={process.env.PUBLIC_URL} className="app">
+        <div className="appBody tw-min-h-[50rem] tw-relative tw-gap-x-5">
+          <div
+            className={
+              "" +
+              (lab !== 0
+                ? "tw-flex tw-flex-row tw-w-full tw-h-[40rem] tw-items-center tw-justify-between tw-mt-[10rem] tw-px-[4rem] tw-relative"
+                : "")
+            }
+          >
+            {lab !== 0 && (
+              <div className={"tw-flex"}>
+                <NavigationPane labID={lab} title={Sections[lab].fullname} />
+                <div
+                  className={
+                    "tw-h-[20%] tw-w-[98%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
+                  }
+                />
+                <div
+                  className={
+                    "tw-h-[75%] tw-w-[98%] tw-bg-primary-blue tw-absolute tw-top-[15rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
+                  }
+                />
+              </div>
+            )}
+            <Router
+              basepath={process.env.PUBLIC_URL}
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? `tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-[60%] lg:tw-w-[70%] tw-mx-6 ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-[105%]"} tw-top-0 tw-justify-center tw-flex tw-flex-col` : "tw-w-full"}`}
+            >
               <LandingPageBody path="/" />
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
@@ -166,8 +189,9 @@ const App = () => {
             </Router>
           </div>
         </div>
-        <MainFooter />
-        <Change
+        {lab === 0 && <MainFooter />}
+        <ALLSnackbar />
+        <LabFooter
           context={context}
           quizCompleted={quizCompleted}
           setQuizCompleted={setQuizCompleted}

@@ -20,8 +20,12 @@ const FogIndexFormulaComplexWords = () => {
 
   return (
     <div className="center-div">
+      <h1 className={"tw-title-styling-name tw-text-left"}>
+        {" "}
+        Fog Index in Complex Words{" "}
+      </h1>
       <div className="guidance margin-bottom-2">
-        <p className="playthrough__sentence">
+        <p className="tw-body-styling-name tw-text-left tw-py-6">
           Great work, the Fog Index widget now displays the correct number of
           sentences! You may have noticed that the Fog Index widget indicated
           that the email had a Fog Index of 8.51. This is because the sentence
@@ -30,7 +34,7 @@ const FogIndexFormulaComplexWords = () => {
           Fog Index formula.
         </p>
       </div>
-      <div className="playthrough__sentence">
+      <div className="tw-body-styling-name tw-pb-6">
         Click the &quot;Continue to Repair&quot; button.
       </div>
       <div className="tw-flex tw-justify-evenly">

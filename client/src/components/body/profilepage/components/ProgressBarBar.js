@@ -5,21 +5,32 @@ import PropTypes from "prop-types";
 const ProgressBarBar = (props) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const toggle = () => setPopoverOpen(!popoverOpen);
-  const { data, index, labID } = props;
-
-  if (!data || !Array.isArray(data)) {
-    return null;
-  }
+  const { data, index, labID, hasLabel } = props;
+  const formatDate = (date) => {
+    if (!date) return "";
+    const formattedDate = new Date(date).toLocaleDateString("en-US", {
+      month: "numeric",
+      day: "numeric",
+      year: "numeric",
+    });
+    return formattedDate;
+  };
 
   if (data[1]) {
     return (
-      <li key={index}>
+      <li key={index} className={"tw-flex tw-flex-col tw-items-center"}>
+        {hasLabel ? <p className={"tw-text-xs"}>{data[0]}</p> : <></>}
         <Button
           tabIndex="0"
           id={`PopoverCompleted${index}${labID}`}
           type="button"
-          className="progressBar__bar progressBar__completed"
+          className={`progressBar__bar progressBar__completed ${hasLabel ? "tw-w-[3rem] tw-h-[1rem] tw-m-2" : ""}`}
         />
+        {hasLabel ? (
+          <p className={"tw-text-xs"}>{formatDate(data[1]).split("T")[0]}</p>
+        ) : (
+          <></>
+        )}
         <Popover
           trigger="legacy"
           placement="top"
@@ -36,12 +47,13 @@ const ProgressBarBar = (props) => {
     );
   } else {
     return (
-      <li>
+      <li className={"tw-flex tw-flex-col tw-items-center"}>
+        {hasLabel ? <p className={"tw-text-xs"}>{data[0]}</p> : <></>}
         <Button
           tabIndex="0"
           id={`PopoverNotCompleted${index}${labID}`}
           type="button"
-          className="progressBar__bar progressBar__notCompleted tw-border-1 tw-border-darkGray"
+          className={`progressBar__bar progressBar__notCompleted tw-border-1 tw-border-darkGray ${hasLabel ? "tw-w-[3rem] tw-h-[1rem] tw-m-2" : ""}`}
         />
         <Popover
           trigger="legacy"
@@ -62,6 +74,7 @@ ProgressBarBar.propTypes = {
   data: PropTypes.array,
   index: PropTypes.number,
   labID: PropTypes.number,
+  hasLabel: PropTypes.bool,
 };
 
 export default ProgressBarBar;

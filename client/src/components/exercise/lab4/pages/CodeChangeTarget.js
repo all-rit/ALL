@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import Prism from "prismjs";
-import { Paper, Button, Snackbar } from "@mui/material";
+import { Paper, Snackbar } from "@mui/material";
 import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
 import { amber, green, red, yellow } from "@mui/material/colors";
 import SnackbarContent from "@mui/material/SnackbarContent";
@@ -219,13 +219,16 @@ const CodeChangeTarget = () => {
   console.log("in codechangetarget");
   return (
     <div>
-      <h2 className="playthrough__title">Repair</h2>
-      <p className="app__instructions">
-        The intent of this code repair is to ensure that target sizes are large
-        enough for users to easily activate them, especially those with limited
-        dexterity. Mice and similar pointing devices can be hard to use for
-        these users, and a larger target will help them activate the target.
-      </p>
+      <div className={"tw-p-4"}>
+        <h2 className="tw-title-styling-name tw-text-left">Repair</h2>
+        <p className="tw-body-styling-name tw-font-medium tw-text-left">
+          The intent of this code repair is to ensure that target sizes are
+          large enough for users to easily activate them, especially those with
+          limited dexterity. Mice and similar pointing devices can be hard to
+          use for these users, and a larger target will help them activate the
+          target.
+        </p>
+      </div>
       <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
         <Paper style={paperStyle}>
           <pre>
@@ -243,6 +246,7 @@ const CodeChangeTarget = () => {
               placeholder="20"
               onChange={handleChange}
               aria-label={"Please set min width to 40px"}
+              className={"tw-bg-[#333] tw-rounded-md tw-text-primary-yellow"}
             />
             <code className="language-css">{` px; /*Set to at least 44px*/
   min-height:`}</code>{" "}
@@ -253,6 +257,7 @@ const CodeChangeTarget = () => {
               placeholder="17"
               onChange={handleChange1}
               aria-label={"Please set min height to 40px"}
+              className={"tw-bg-[#333] tw-rounded-md tw-text-primary-yellow"}
             />
             <code className="language-css">
               {` px; /*Set to at least 44px*/
@@ -264,14 +269,13 @@ const CodeChangeTarget = () => {
         </Paper>
         <br />
         <br />
-        <Button
+        <button
           type={"submit"}
           aria-label={"Update Code"}
-          variant={"contained"}
-          color={"primary"}
+          className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         >
           Update Code
-        </Button>
+        </button>
       </form>
       <Snackbar
         anchorOrigin={{

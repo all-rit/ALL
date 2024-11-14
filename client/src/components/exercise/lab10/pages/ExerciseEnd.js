@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { navigate } from "@reach/router";
-import { AppBar } from "@mui/material";
 
 const ExerciseEnd = () => {
   /**
@@ -13,17 +12,15 @@ const ExerciseEnd = () => {
   return (
     <Fragment>
       <div className="center-div">
-        <div className="cognitive_instructions">
-          <div>
-            <AppBar position="static" className="appBar">
-              <h4 className="flex-boxes ">
-                Congratulations! You have successfully completed the Machine
-                Learning Exercise!
-              </h4>
-            </AppBar>
-          </div>
-        </div>
-        <h4 className="flex-boxes">
+        <h1 className={"tw-title-styling-name tw-text-left tw-pb-6"}>
+          {" "}
+          Exercise Complete{" "}
+        </h1>
+        <h4 className="tw-body-styling-name tw-text-left ">
+          Congratulations! You have successfully completed the Machine Learning
+          Exercise!
+        </h4>
+        <h4 className="tw-body-styling-name tw-text-left">
           Click the button below to restart the exercise.
         </h4>
         <button

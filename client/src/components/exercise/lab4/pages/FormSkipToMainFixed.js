@@ -23,9 +23,16 @@ const FormSkipToMainFixed = () => {
   const url = "/Lab4/Exercise/FormHintInaccessible";
   const name = "FormSkipToMainFixed";
 
+  const jumpToMain = () => {
+    const mainElement = document.getElementById("main");
+    if (mainElement) {
+      mainElement.focus({ preventScroll: true });
+    }
+  };
+
   return (
     <Fragment>
-      <a className="skip-main" href="#main">
+      <a className="skip-main" href="#main" onClick={jumpToMain}>
         Skip to main content
       </a>
       <ExtraNav />

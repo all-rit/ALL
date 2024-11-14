@@ -14,7 +14,7 @@ import {
   onNextPageChangeTSize,
 } from "./edit/editPage";
 import { Nav, NavItem, NavLink } from "reactstrap";
-import logo from "../../assets/images/logos/ALL_White_Logo.svg";
+import logo from "../../assets/images/logos/ALL_White.svg";
 import handleRedirect from "../../helpers/Redirect";
 import nsf from "../../assets/images/logos/nsf.png";
 import rit from "../../assets/images/logos/RIT.png";

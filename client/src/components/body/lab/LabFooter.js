@@ -60,7 +60,7 @@ const LabFooter = (props) => {
         currentUseCase = (
           <div className={"tw-mt-20"}>
             <button
-              className={`tw-font-medium ${buttonStyles.notCompleted.button}`}
+              className={`tw-font-medium tw-px-3 ${buttonStyles.notCompleted.button}`}
               onClick={() => handleRedirect(actions, lab)}
             >
               Launch
@@ -82,7 +82,7 @@ const LabFooter = (props) => {
         currentUseCase = (
           <div className={"tw-mt-20"}>
             <button
-              className={`tw-font-medium ${buttonStyles.completed.button}`}
+              className={`tw-font-medium tw-px-3 ${buttonStyles.completed.button}`}
               onClick={() => handleRedirect(actions, lab)}
             >
               Launch
@@ -104,7 +104,7 @@ const LabFooter = (props) => {
         currentUseCase = (
           <div>
             <button
-              className={`${buttonStyles.default.button}`}
+              className={`tw-px-3 tw-font-medium ${buttonStyles.default.button}`}
               onClick={() => handleRedirect(actions, lab)}
             >
               Launch

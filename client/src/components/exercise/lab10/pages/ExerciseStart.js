@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
+import LabButton from "../../../all-components/LabButton";
 
 const ExerciseStart = (props) => {
   /**
@@ -25,7 +26,10 @@ const ExerciseStart = (props) => {
     <Fragment>
       <div className="center-div">
         <div className="guidance margin-bottom-2">
-          <p className="playthrough__sentence">
+          <h1 className={"tw-title-styling-name tw-text-left"}>
+            Exercise Start
+          </h1>
+          <p className="tw-body-styling-name tw-my-6">
             In this exercise, the user will experience how a neural network
             based AI is trained and implemented. Through a simple game where the
             user must avoid different colored falling shapes, the user will
@@ -34,13 +38,7 @@ const ExerciseStart = (props) => {
             AI to eliminate bias.
           </p>
         </div>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={handleStart}
-          key="start"
-        >
-          Start
-        </button>
+        <LabButton onClick={handleStart} key="start" label={"Start"} />
       </div>
     </Fragment>
   );

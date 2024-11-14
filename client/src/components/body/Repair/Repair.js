@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Proptypes from "prop-types";
-import CodeUpdateHeader from "../../exercise/lab3/components/CodeUpdateHeader";
 import React from "react";
 import Button from "../../all-components/Navigation/Button";
 import CodeBlock from "../../all-components/CodeBlock/Components/Codeblock";
@@ -80,13 +79,10 @@ const Repair = (props) => {
   };
   return (
     <div>
-      <CodeUpdateHeader
-        heading={headingText}
-        justifyAlignment={"space-between"}
-      />
+      <h1 className={"tw-title-styling-name tw-text-left"}> {headingText} </h1>
       <div className="tw-pb-10 tw-text-xl ">
         {repairText.map((text) => (
-          <p className="tw-indent-2" key={text}>
+          <p className="tw-body-styling-name tw-text-left tw-pt-6" key={text}>
             {text}
           </p>
         ))}

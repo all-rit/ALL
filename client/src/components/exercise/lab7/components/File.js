@@ -20,13 +20,13 @@ const File = ({ data }) => {
     data.report === AI_CORRECT ? "tw-text-[#2e8540]" : "tw-text-[#e31c3d]";
 
   return (
-    <div className={"tw-flex tw-flex-col tw-items-center"}>
+    <div className={"tw-flex tw-flex-col tw-items-center tw-p-1"}>
       <div
         className={"tw-space-y-3 tw-flex tw-flex-col tw-justify-center file"}
       >
         {data.report !== undefined && (
           <div>
-            <img className={"tw-h-14 tw-w-14"} src={image} alt={alt} />
+            <img className={"tw-h-10 tw-w-6"} src={image} alt={alt} />
             <p className={"tw-mt-1.5 tw-font-bold"}>{data.decision} FILE</p>
           </div>
         )}
@@ -41,8 +41,8 @@ const File = ({ data }) => {
         </div>
       </div>
       {data.report !== undefined && (
-        <div className={"tw-bg-[#DCDCDC] tw-mt-6 tw-px-10 tw-py-1.5"}>
-          <span className={`tw-font-bold ${reportClassName}`}>
+        <div className={"tw-bg-[#DCDCDC] tw-mt-6 tw-px-6 tw-py-2"}>
+          <span className={`tw-font-bold tw-flex-wrap ${reportClassName}`}>
             {data.report}
           </span>
         </div>

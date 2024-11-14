@@ -1,14 +1,10 @@
-import React, { useEffect, Fragment } from "react";
-import Button from "@mui/material/Button";
+import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
 
 const TargetGuideline = () => {
   const { actions } = useMainStateContext();
-
-  const buttonStyle = { marginRight: "10px", marginLeft: "10px" };
-
   const handleSubmit = () => {
     navigate("/Lab4/Exercise/CodeChangeTarget");
   };
@@ -18,35 +14,33 @@ const TargetGuideline = () => {
   }, []);
 
   return (
-    <Fragment>
-      <div>
-        <h2 className="playthrough__title">Was That Difficult?</h2>
-        <p className="playthrough__sentence">
-          People with mobile dexterity disabilities have a hard time clicking
-          small buttons. To make sure your software is accessible by everyone,
-          ensure that buttons follow the{" "}
-          <a
-            href="https://www.w3.org/WAI/WCAG21/Understanding/target-size.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WGAC 2.55 Target Guideline
-          </a>
-          . Buttons must be a minimum of 44 x 44 px. Go ahead and make the
-          changes to the code by clicking “continue”.
-        </p>
-
-        <Button
-          href="#"
-          onClick={handleSubmit}
-          variant={"contained"}
-          color={"primary"}
-          style={buttonStyle}
+    <div className={"tw-p-10"}>
+      <h2 className="tw-title-styling-name tw-text-left">
+        Was That Difficult?
+      </h2>
+      <br />
+      <p className="tw-body-styling-name tw-font-medium tw-text-left">
+        People with mobile dexterity disabilities have a hard time clicking
+        small buttons. To make sure your software is accessible by everyone,
+        ensure that buttons follow the{" "}
+        <a
+          href="https://www.w3.org/WAI/WCAG21/Understanding/target-size.html"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Continue
-        </Button>
-      </div>
-    </Fragment>
+          WGAC 2.55 Target Guideline
+        </a>
+        . Buttons must be a minimum of <strong> 44 x 44 px</strong>. Go ahead
+        and make the changes to the code by clicking “continue”.
+      </p>
+      <br />
+      <button
+        onClick={handleSubmit}
+        className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+      >
+        Continue
+      </button>
+    </div>
   );
 };
 

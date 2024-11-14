@@ -20,7 +20,13 @@ import LoginBody from "../body/login/LoginBody";
 import PropTypes from "prop-types";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
-import Snackbar from "@mui/material/Snackbar";
+import {
+  ERROR,
+  EXERCISE_IN_PROGRESS,
+  LOGOUT_ERROR,
+  LOGOUT_SUCCESS,
+  SUCCESS,
+} from "../../constants/notifications";
 
 const mapStateToProps = (state) => {
   return {
@@ -65,31 +71,18 @@ const Header = (props) => {
         direction={"row"}
         isOpen={signInModalOpen}
         toggle={toggleSignIn}
-        body={<LoginBody />}
-      />
+      >
+        <LoginBody />
+      </BrandedALLModal>
     );
   };
 
-  useEffect(() => {
-    const storedSnackbar = localStorage.getItem("logoutSnackbar");
-    if (storedSnackbar) {
-      const { message } = JSON.parse(storedSnackbar);
-      actions.showSnackbar(message);
-      localStorage.removeItem("logoutSnackbar"); // Clear the stored state
-    }
-  }, []);
-
   const logout = async () => {
     try {
-      localStorage.setItem(
-        "logoutSnackbar",
-        JSON.stringify({
-          open: true,
-          message: "You have successfully logged out!",
-        }),
-      );
+      actions.showSnackbar(LOGOUT_SUCCESS, SUCCESS);
       window.location.href = `${process.env.REACT_APP_SERVER_URL}/logout`;
     } catch (e) {
+      actions.showSnackbar(LOGOUT_ERROR, ERROR);
       console.error(e, "Could not log out.");
     }
   };
@@ -99,7 +92,7 @@ const Header = (props) => {
       getExerciseState(state, reduxState) !== "EXERCISE_IDLE" &&
       state.main.body === 2
     ) {
-      alert("The exercise is still in progress! Please complete the exercise");
+      actions.showSnackbar(EXERCISE_IN_PROGRESS, ERROR);
       return true;
     }
     return false;
@@ -128,7 +121,7 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className="tw-font-poppins tw-font-bold tw-my-0"
+      className="tw-font-poppins tw-font-bold tw-my-0 tw-mb-[5rem]"
     >
       <div
         className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] lg:tw-h-40 tw-shadow-md tw-px-5`}
@@ -248,20 +241,6 @@ const Header = (props) => {
           </Collapse>
         </div>
       </div>
-      <Snackbar
-        open={state.main?.snackbar?.open}
-        autoHideDuration={5000}
-        message={state.main?.snackbar?.message}
-        onClose={actions.hideSnackbar}
-        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-        className={"tw-font-poppins"}
-        sx={{
-          "& .MuiSnackbarContent-root": {
-            backgroundColor: "#369d2a",
-            color: "white",
-          },
-        }}
-      />
     </Navbar>
   );
 };

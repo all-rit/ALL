@@ -15,15 +15,14 @@ import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.sv
 // license: https://pixabay.com/service/license/
 import cowImage from "../../../../../assets/images/lab3/exercise/cow.svg";
 import CatClickFirstNavigate from "../../helpers/CatClickFirstNavigate";
-import { Typography } from "@mui/material";
 import { PageService } from "../../../../../services/PageService";
-import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 import { actions as exerciseActions } from "../../../../../reducers/lab3/ExerciseReducer";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../../../../reducers/MainReducer";
 import { actions as repairActions } from "../../../../../reducers/lab3/RepairReducer";
 import { connect } from "react-redux";
+import SuccessCheck from "../../../../all-components/SuccessCheck";
 
 const mapStateToProps = (state) => {
   return {
@@ -41,15 +40,16 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Exercise extends Component {
-  handleSubmit() {
-    navigate("/Lab3/Exercise/ExerciseInstructions");
-  }
   constructor(props) {
     super(props);
-    this.state = { render: "", secondsElapsed: 0 };
+    this.state = {
+      render: "",
+      secondsElapsed: 0,
+      catClicked: false,
+    };
   }
 
-  _renderSubComp(path) {
+  renderNextButton(path) {
     if (this.state.render === "CatClickNavigate") {
       return <CatClickFirstNavigate path={path} />;
     }
@@ -72,7 +72,7 @@ class Exercise extends Component {
       console.log("Cat image clicked!");
       const name = "NonSimulatedExercise";
       PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
-      this.setState({ render: "CatClickNavigate" });
+      this.setState({ render: "CatClickNavigate", catClicked: true });
     };
     const burgerClick = () => {
       console.log("Burger image clicked!");
@@ -83,52 +83,67 @@ class Exercise extends Component {
     const cowClick = () => {
       console.log("Cow image clicked!");
     };
-    const imgStyle = {
-      width: "128px",
-      height: "128px",
-      border: "1px solid black",
-    };
-    const tableStyle = {
-      border: "1px solid black",
-      marginLeft: "auto",
-      marginRight: "auto",
-      textAlign: "center",
-    };
+
     return (
-      <div>
-        <Typography className={"center"}>
+      <div className={`tw-bg-none`}>
+        <p className={"center tw-body-styling-name"}>
           Click on the image of a cat.
-        </Typography>
+        </p>
         <br />
-        <table style={tableStyle} className={"center"}>
-          <tbody>
-            <tr>
-              <td>
-                <button style={imgStyle} onClick={() => catClick()}>
-                  <img src={catImage} alt={"image1"} />
-                </button>
-              </td>
-              <td>
-                <button style={imgStyle} onClick={() => carClick()}>
-                  <img src={carImage} alt={"image2"} />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button style={imgStyle} onClick={() => burgerClick()}>
-                  <img src={burgerImage} alt={"image3"} />
-                </button>
-              </td>
-              <td>
-                <button style={imgStyle} onClick={() => cowClick()}>
-                  <img src={cowImage} alt={"image4"} />
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        {this._renderSubComp("/Lab3/Exercise/ExerciseInstructions")}
+        <div className={"tw-grid tw-grid-cols-2 tw-gap-3"}>
+          <button
+            className={
+              "tw-relative tw-w-full hover:tw-shadow-lg hover:tw-shadow-[#bbb] hover:tw-bg-[#ccc] tw-border-none tw-bg-[#ddd] tw-rounded-lg"
+            }
+            onClick={() => catClick()}
+          >
+            <img
+              className={"tw-w-[14rem] tw-h-[14rem]"}
+              src={catImage}
+              alt={"image1"}
+            />
+            <div className={"tw-absolute tw-top-[-15%] tw-left-[-5%]"}>
+              {this.state.catClicked && <SuccessCheck />}
+            </div>
+          </button>
+          <button
+            className={
+              "tw-w-full hover:tw-shadow-lg hover:tw-shadow-[#bbb] hover:tw-bg-[#ccc] tw-border-none tw-bg-[#ddd] tw-rounded-lg"
+            }
+            onClick={() => carClick()}
+          >
+            <img
+              className={"tw-w-[14rem] tw-h-[14rem]"}
+              src={carImage}
+              alt={"image2"}
+            />
+          </button>
+          <button
+            className={
+              "tw-w-full hover:tw-shadow-lg hover:tw-shadow-[#bbb] hover:tw-bg-[#ccc] tw-border-none tw-bg-[#ddd] tw-rounded-lg"
+            }
+            onClick={() => burgerClick()}
+          >
+            <img
+              className={"tw-w-[14rem] tw-h-[14rem]"}
+              src={burgerImage}
+              alt={"image3"}
+            />
+          </button>
+          <button
+            className={
+              "tw-w-full hover:tw-shadow-lg hover:tw-shadow-[#bbb] hover:tw-bg-[#ccc] tw-border-none tw-bg-[#ddd] tw-rounded-lg"
+            }
+            onClick={() => cowClick()}
+          >
+            <img
+              className={"tw-w-[14rem] tw-h-[14rem]"}
+              src={cowImage}
+              alt={"image4"}
+            />
+          </button>
+        </div>
+        {this.renderNextButton("/Lab3/Exercise/ExerciseInstructions")}
       </div>
     );
   }
