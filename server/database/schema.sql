@@ -592,7 +592,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "A playing sound that conveys key information"
+        "content": "A playing sound that conveys key information",
+        "explanation": "An audio cue is strictly a sound that doesn’t involve a physical or visual component."
       },
       {
         "val": 0,
@@ -618,7 +619,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "30-40 million people"
+        "content": "30-40 million people",
+        "explanation": "According to the National Institute on Deafness and Other Communication Disorders, approximately 37.5 million American adults have trouble hearing."
       },
       {
         "val": 0,
@@ -644,7 +646,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "From the beginning"
+        "content": "From the beginning",
+        "explanation": "Accessibility should always be considered at the start of development to ensure the best usability."
       },
       {
         "val": 0,
@@ -670,7 +673,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "Information and user interface components must be presentable to users in ways they can perceive."
+        "content": "Information and user interface components must be presentable to users in ways they can perceive.",
+        "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception."
       },
       {
         "val": 0,
@@ -691,7 +695,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Yes"
+        "content": "Yes",
+        "explanation": "Users with hearing loss may not perceive audio cues which results in a disadvantage."
       },
       {
         "val": 0,
@@ -809,7 +814,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "A measurement of the difference between two colors when they are layered on top of each other"
+        "content": "A measurement of the difference between two colors when they are layered on top of each other",
+        "explanation": "Color contrast refers to the distinction between two colors."
       },
       {
         "val": 0,
@@ -840,7 +846,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "Dichrompia"
+        "content": "Dichrompia",
+        "explanation": "Protanopia, Deuteranopia, and Tritonopia are all types of color vision deficiencies, not Dichrompia."
       }
     ],
     "multiChoice": false
@@ -856,7 +863,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "7"
+        "content": "7",
+        "explanation": "According to the WCAG, a contrast ratio of 7:1 is required for normal text."
       },
       {
         "val": 0,
@@ -887,7 +895,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Use a color contrast calculator"
+        "content": "Use a color contrast calculator",
+        "explanation": "A color contrast calculator can calculate the contrast ratio and identify improper color contrast ratios."
       },
       {
         "val": 0,
@@ -913,7 +922,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Light pink placed on black"
+        "content": "Light pink placed on black",
+        "explanation": "Light pink text on a black background results in a contrast ratio of at least 7."
       },
       {
         "val": 0,
@@ -997,7 +1007,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "285 million"
+        "content": "285 million",
+        "explanation": "According to the World Health Organization, approximately 285 million people have visual impairments."
       },
       {
         "val": 0,
@@ -1028,7 +1039,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "JAWS"
+        "content": "JAWS",
+        "explanation": "JAWS is one of the most popular screen readers available."
       },
       {
         "val": 0,
@@ -1044,7 +1056,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Use many headings and subheadings"
+        "content": "Use many headings and subheadings",
+        "explanation": "Screen readers can recognize and voice headings and subheadings, making navigation easier."
       },
       {
         "val": 0,
@@ -1080,7 +1093,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "82%"
+        "content": "82%",
+        "explanation": "According to the World Health Organization, approximately 82% of all blind individuals are 50 years of age or older."
       },
       {
         "val": 0,
@@ -1101,12 +1115,14 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "Use an alt attribute to communicate the function of the image"
+        "content": "Use an alt attribute to communicate the function of the image",
+        "explanation": "Configuring an alt tag enables screen readers to voice the alt tag aloud."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Provide a brief description of the image"
+        "content": "Provide a brief description of the image",
+        "explanation": "Describing images provides another way for users to perceive information if they are unable to see the image."
       },
       {
         "val": 0,
@@ -1192,7 +1208,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "Loss of fine control of movement"
+        "content": "Loss of fine control of movement",
+        "explanation": "A dexterity/mobility impairment impacts motion and movement only."
       },
       {
         "val": 0,
@@ -1228,7 +1245,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "All of the above"
+        "content": "All of the above",
+        "explanation": "Assistive technology includes altered keyboards, voice/speech recognition systems, and on-screen keyboard programs."
       }
     ],
     "multiChoice": false
@@ -1254,7 +1272,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "Ensure all functions can be accessed with the keyboard"
+        "content": "Ensure all functions can be accessed with the keyboard",
+        "explanation": "Keyboard navigation is essential for people with dexterity/mobility impairments."
       }
     ],
     "multiChoice": false
@@ -1265,7 +1284,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "True"
+        "content": "True",
+        "explanation": "Many elderly people experience worsening motor capabilities and face difficulties using the web."
       },
       {
         "val": 0,
@@ -1281,7 +1301,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Users may become fatigued when using the assistive technologies"
+        "content": "Users may become fatigued when using the assistive technologies",
+        "explanation": "Assistive technology may be demanding to use and result in fatigue."
       },
       {
         "val": 0,
@@ -1296,7 +1317,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "Users may not be able to use the mouse or peripherals"
+        "content": "Users may not be able to use the mouse or peripherals",
+        "explanation": "Users may be unable to use a mouse and may use assistive technologies instead."
       }
     ],
     "multiChoice": true
@@ -1446,7 +1468,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "16 million"
+        "content": "16 million",
+        "explanation": "According to the CDC, at least 16 million adults have cognitive impairments."
       },
       {
         "val": 0,
@@ -1482,7 +1505,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "Working under time constraints"
+        "content": "Working under time constraints",
+        "explanation": "People with cognitive impairments need ample time to complete tasks."
       }
     ],
     "multiChoice": false
@@ -1493,17 +1517,20 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Use proper headings and subheadings"
+        "content": "Use proper headings and subheadings",
+        "explanation": "Proper headings and subheadings allow users to easily navigate websites and find information quickly."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "Clearly define any errors and suggestions to fix them"
+        "content": "Clearly define any errors and suggestions to fix them",
+        "explanation": "According to the WCAG, enabling users to understand their mistake and correct the mistake improves accessibility."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Provide them enough time to read the content"
+        "content": "Provide them enough time to read the content",
+        "explanation": "People with cognitive impairments may need more time to read content."
       },
       {
         "val": 0,
@@ -1519,7 +1546,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Alzheimer\'s"
+        "content": "Alzheimer\'s",
+        "explanation": "Alzheimer’s is an age-related condition that affects thinking."
       },
       {
         "val": 0,
@@ -1529,12 +1557,14 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Dementia"
+        "content": "Dementia",
+        "explanation": "Dementia is another age-related condition that affects thinking and remembering, though dementia can occur in young people as well."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Dyslexia"
+        "content": "Dyslexia",
+        "explanation": "Dyslexia is a language-based learning disability that impacts thinking."
       }
     ],
     "multiChoice": true
@@ -1545,7 +1575,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Trouble matching letters with the sounds of those letters"
+        "content": "Trouble matching letters with the sounds of those letters",
+        "explanation": "Dyslexic users often struggle with matching letters to their sounds due to difficulty with phonological processing."
       },
       {
         "val": 0,
@@ -1555,7 +1586,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Spelling"
+        "content": "Spelling",
+        "explanation": "Dyslexic users often struggle with spelling due to difficulty with phonological processing and memory."
       },
       {
         "val": 0,
@@ -1648,7 +1680,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "All of the Above"
+        "content": "All of the Above",
+        "explanation": "AI is used in self-driving cars, chatbots, surveillance, and more."
       }
     ],
     "multiChoice": false
@@ -1664,7 +1697,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "No, AI is measured differently than human intelligence."
+        "content": "No, AI is measured differently than human intelligence.",
+        "explanation": "IQ is only used to measure human intelligence, not AI intelligence."
       },
       {
         "val": 0,
@@ -1695,7 +1729,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Quality Control"
+        "content": "Quality Control",
+        "explanation": "AI is often used in quality control to recognize defects in large amounts of data."
       },
       {
         "val": 0,
@@ -1711,7 +1746,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "3 Billion"
+        "content": "3 Billion",
+        "explanation": "According to the ACLU, Clearview AI illegally captured and stored 3 billion facial images."
       },
       {
         "val": 0,
@@ -1752,7 +1788,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "All of the above"
+        "content": "All of the above",
+        "explanation": "Corporations, government, and society are all responsible for the management of AI."
       }
     ],
     "multiChoice": false
@@ -1945,7 +1982,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Supervised learning uses labeled input and output data, while an unsupervised learning does not"
+        "content": "Supervised learning uses labeled input and output data, while an unsupervised learning does not",
+        "explanation": "Machines learn under supervision when they train on structured, labeled data. Machines learn without supervision when they find patterns in unstructured data."
       },
       {
         "val": 0,
@@ -1981,7 +2019,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "3",
-        "content": "Supervised learning"
+        "content": "Supervised learning",
+        "explanation": "Since the data provided was structured and labeled, the machine learning used was supervised learning."
       }
     ],
     "multiChoice": false
@@ -1992,17 +2031,20 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Sensing"
+        "content": "Sensing",
+        "explanation": "All autonomous systems have four components, of which sensing is one of them."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "Perceiving and Understanding"
+        "content": "Perceiving and Understanding",
+        "explanation": "All autonomous systems have four components, of which perceiving and understanding is one of them."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Taking Action"
+        "content": "Taking Action",
+        "explanation": "All autonomous systems have four components, of which taking action is one of them."
       },
       {
         "val": 0,
@@ -2012,7 +2054,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "4",
-        "content": "Making Decisons"
+        "content": "Making Decisons",
+        "explanation": "All autonomous systems have four components, of which making decisions is one of them."
       }
     ],
     "multiChoice": true
@@ -2043,7 +2086,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "4",
-        "content": "All of the above"
+        "content": "All of the above",
+        "explanation": "Since all of the above are personally identifiable information, the autonomous system identified them as sensitive information."
       }
     ],
     "multiChoice": false
@@ -2064,7 +2108,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Machine learning decisions have significant impact on people’s lives"
+        "content": "Machine learning decisions have significant impact on people’s lives",
+        "explanation": "Machine learning can affect people in many different ways, and it’s important to consider the impact."
       },
       {
         "val": 0,
@@ -2271,12 +2316,14 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Biased training data sets"
+        "content": "Biased training data sets",
+        "explanation": "AI learns from training data, so biased training data causes the AI to learn and amplify any bias."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Biased developers"
+        "content": "Biased developers",
+        "explanation": "Developers may be unintentionally biased, but their bias will still impact the AI."
       },
       {
         "val": 0,
@@ -2307,7 +2354,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "3",
-        "content": "All of the above"
+        "content": "All of the above",
+        "explanation": "Due to biased datasets, AI/ML can unfairly treat certain groups. This bias can be minimized by considering ethics when using AI/ML."
       }
     ],
     "multiChoice": false
@@ -2328,7 +2376,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "A plagiarism-checking tool that identifies plagiarized sections of a paper"
+        "content": "A plagiarism-checking tool that identifies plagiarized sections of a paper",
+        "explanation": "A plagiarism-checking tool simply identifies existing text; it likely is not biased."
       },
       {
         "val": 0,
@@ -2354,7 +2403,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Human Rights"
+        "content": "Human Rights",
+        "explanation": "According to the IEEE, human rights is one of the eight principles to follow when developing AI."
       },
       {
         "val": 0,
@@ -2370,22 +2420,26 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Protect the interests and rights of all human demographics (i.e. race, gender, age, etc.)"
+        "content": "Protect the interests and rights of all human demographics (i.e. race, gender, age, etc.)",
+        "explanation": "AI should aim to serve everyone, regardless of their background."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "Increase productivity and economic wellbeing for society (i.e. increasing the GDP)"
+        "content": "Increase productivity and economic wellbeing for society (i.e. increasing the GDP)",
+        "explanation": "AI should aim to better society by increasing productivity and economic growth."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Have more transparent terms and conditions so customers are fully aware of the consent they are giving"
+        "content": "Have more transparent terms and conditions so customers are fully aware of the consent they are giving",
+        "explanation": "Users should fully understand the implications of AI so they can make informed decisions about their usage."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Hold accountable to address potential legal issues with the product"
+        "content": "Hold accountable to address potential legal issues with the product",
+        "explanation": "Although developers may not intentionally conceive legal issues with AI, they should be responsible and accountable for potential legal issues."
       }
     ],
     "multiChoice": true
@@ -2396,7 +2450,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Ensure that the developers creating AI software come from diverse backgrounds"
+        "content": "Ensure that the developers creating AI software come from diverse backgrounds",
+        "explanation": "A group of diverse developers can offer diverse viewpoints, mitigating bias such as implicit confirmation bias."
       },
       {
         "val": 0,
@@ -2406,7 +2461,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Ensure the AI is trained on data that equally represents all members of society"
+        "content": "Ensure the AI is trained on data that equally represents all members of society",
+        "explanation": "Training data should be representative of the real world, which includes all members of society, not just certain demographics."
       },
       {
         "val": 0,
@@ -2524,7 +2580,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Translation is a part of the localization process, which includes cultural adaptation beyond language."
+        "content": "Translation is a part of the localization process, which includes cultural adaptation beyond language.",
+        "explanation": "Translation is only one part of localization. Localization also includes adapting images, colors, language direction, and more."
       },
       {
         "val": 0,
@@ -2545,22 +2602,26 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Date and time format"
+        "content": "Date and time format",
+        "explanation": "Different countries have different date and time formats."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "Language direction"
+        "content": "Language direction",
+        "explanation": "While some languages are read left to right, such as English, other languages are read right to left."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Images and icons"
+        "content": "Images and icons",
+        "explanation": "Images and icons can have different meanings in different cultures."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Currency format"
+        "content": "Currency format",
+        "explanation": "Different countries have different currency formats."
       },
       {
         "val": 0,
@@ -2586,7 +2647,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "For accurate data interpretation and financial transactions"
+        "content": "For accurate data interpretation and financial transactions",
+        "explanation": "Inaccurate number formats can lead to costly errors in data interpretation and financial transactions."
       },
       {
         "val": 0,
@@ -2607,7 +2669,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Changing the software’s core functionality"
+        "content": "Changing the software’s core functionality",
+        "explanation": "Localization does not involve changing the software’s core functionality."
       },
       {
         "val": 0,
@@ -2628,7 +2691,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Ensuring the software architecture supports localization."
+        "content": "Ensuring the software architecture supports localization.",
+        "explanation": "Software engineers ensure that localization can happen, whereas designers, marketing specialists, translators, and others typically are responsible for localizing specific content."
       },
       {
         "val": 0,
@@ -2755,7 +2819,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Human Brain"
+        "content": "Human Brain",
+        "explanation": "Neural networks mimic the human brain in order to simulate how humans think."
       },
       {
         "val": 0,
@@ -2771,7 +2836,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Social Media"
+        "content": "Social Media",
+        "explanation": "Neural networks have been used to analyze user behavior and personalize content recommendations."
       },
       {
         "val": 0,
@@ -2781,7 +2847,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Targeted Marketing"
+        "content": "Targeted Marketing",
+        "explanation": "Neural networks have been used to analyze customer data and predict customer behavior."
       },
       {
         "val": 0,
@@ -2797,7 +2864,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Input, Output, Hidden"
+        "content": "Input, Output, Hidden",
+        "explanation": "Similar to the human brain, neural networks consist of the input layer, the output layer, and the hidden layer."
       },
       {
         "val": 0,
@@ -2838,7 +2906,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "3",
-        "content": "Extensive training sets"
+        "content": "Extensive training sets",
+        "explanation": "Since bias is often introduced in training data sets, researchers aim to reduce bias by using extensive training sets."
       }
     ],
     "multiChoice": false
@@ -2849,7 +2918,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "To promote fairness, equity, and unbiased decision-making in AI systems"
+        "content": "To promote fairness, equity, and unbiased decision-making in AI systems",
+        "explanation": "Ethics should always be considered in AI systems, not profit or efficiency."
       },
       {
         "val": 0,
@@ -2974,7 +3044,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Ease of understanding web content"
+        "content": "Ease of understanding web content",
+        "explanation": "Readability refers to how legible or decipherable something is."
       },
       {
         "val": 0,
@@ -3000,7 +3071,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Legibility, readability, and comprehension"
+        "content": "Legibility, readability, and comprehension",
+        "explanation": "Although design is important, legibility, readability, and comprehension are the most important when creating web content."
       },
       {
         "val": 0,
@@ -3031,17 +3103,20 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Use straight forward language"
+        "content": "Use straight forward language",
+        "explanation": "Limiting the use of complex words and sentence structures can improve readability."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Use concise and brief text content"
+        "content": "Use concise and brief text content",
+        "explanation": "Concise and brief text support comprehension among a large audience."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Target 8th grade reading level"
+        "content": "Target 8th grade reading level",
+        "explanation": "To reach a broader audience, an 8th grade reading level is recommended."
       }
     ],
     "multiChoice": true
@@ -3057,7 +3132,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "8th grade"
+        "content": "8th grade",
+        "explanation": "To reach a broader audience, an 8th grade reading level is recommended."
       },
       {
         "val": 0,
@@ -3078,7 +3154,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Number of sentences"
+        "content": "Number of sentences",
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the number of sentences."
       },
       {
         "val": 0,
@@ -3088,12 +3165,14 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Number of complex words"
+        "content": "Number of complex words",
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the number of complex words."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Number of words"
+        "content": "Number of words",
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the total number of words."
       }
     ],
     "multiChoice": true
@@ -3204,7 +3283,8 @@ e'[
      {
        "val": 1,
        "type": "1",
-       "content": "A person’s unique perception of who they are"
+       "content": "A person’s unique perception of who they are",
+       "explanation": "While sex is a biological characteristic, gender is a self-identified concept."
      },
      {
        "val": 0,
@@ -3235,7 +3315,8 @@ e'[
      {
        "val": 1,
        "type": "3",
-       "content": "All of the above"
+       "content": "All of the above",
+       "explanation": "Using a person’s preferred name and pronouns creates an inclusive and respectful environment and can decrease anxiety regarding gender expression."
      }
    ],
    "multiChoice": false
@@ -3251,7 +3332,8 @@ e'[
      {
        "val": 1,
        "type": "1",
-       "content": "Adding an ‘other’ text field when asking for gender"
+       "content": "Adding an ‘other’ text field when asking for gender",
+       "explanation": "When asking for a person’s gender in web forms, it’s important to include options in addition to just “male” and “female”."
      },
      {
        "val": 0,
@@ -3272,12 +3354,14 @@ e'[
      {
        "val": 1,
        "type": "0",
-       "content": "Advocates for the importance of using preferred names"
+       "content": "Advocates for the importance of using preferred names",
+       "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate."
      },
      {
        "val": 1,
        "type": "1",
-       "content": "Outline the best practices for using preferred names at work"
+       "content": "Outline the best practices for using preferred names at work",
+       "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example. "
      },
      {
        "val": 0,
@@ -3287,7 +3371,8 @@ e'[
      {
        "val": 1,
        "type": "3",
-       "content": "Become familiar with and consistent with someone’s preferred pronouns"
+       "content": "Become familiar with and consistent with someone’s preferred pronouns",
+       "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns."
      }
    ],
    "multiChoice": true
@@ -3298,7 +3383,8 @@ e'[
      {
        "val": 1,
        "type": "0",
-       "content": "76%"
+       "content": "76%",
+       "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job."
      },
      {
        "val": 0,
