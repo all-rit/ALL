@@ -2,7 +2,7 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import logo from "../../../../assets/images/logos/ALL_Logo_Header.svg";
+import logo from "../../../../assets/images/logos/ALL_Logo.svg";
 
 const mapStateToProps = (state) => {
   return {

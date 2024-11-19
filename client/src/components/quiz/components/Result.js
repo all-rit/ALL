@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React from "react";
 import PropTypes from "prop-types";
@@ -185,6 +184,9 @@ Result.propTypes = {
   quizResult: PropTypes.string.isRequired,
   selectedAnswers: PropTypes.array.isRequired,
   isImagine: PropTypes.bool,
+  lab: PropTypes.string,
+  hideCertificate: PropTypes.bool,
+  quizQuestions: PropTypes.array,
 };
 
 export default Result;

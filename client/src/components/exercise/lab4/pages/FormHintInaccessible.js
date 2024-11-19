@@ -22,7 +22,7 @@ const FormHintInaccessible = () => {
           Use tab to go next, and shift+tab to go back.`;
   const instructions2 = "Do not use the mouse!";
   const url = "/Lab4/Exercise/AccessibleGuideline";
-  const tab = null;
+  const tooltipTab = null;
   const name = "FormHintInaccessible";
   return (
     <Fragment>
@@ -38,7 +38,9 @@ const FormHintInaccessible = () => {
       <FormComp
         url={url}
         rule={true}
-        tab={tab}
+        showTooltip={true}
+        tooltipDisabled={true}
+        tooltipTab={tooltipTab}
         parentCallback={callbackFunction}
         name={name}
       />

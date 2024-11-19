@@ -22,6 +22,8 @@ const MainStateContext = createContext({
     updateUser: () => {},
     updateUserState: () => {},
     setIsImagine: () => {},
+    showSnackbar: () => {},
+    hideSnackbar: () => {},
   },
 });
 
@@ -89,6 +91,15 @@ export const MainContextProvider = ({ children }) => {
       dispatch({
         type: types.SET_IS_IMAGINE,
         payload: { isImagine: isImagine },
+      }),
+    showSnackbar: (message) =>
+      dispatch({
+        type: types.SHOW_SNACKBAR,
+        payload: { message: message },
+      }),
+    hideSnackbar: () =>
+      dispatch({
+        type: types.HIDE_SNACKBAR,
       }),
   };
 

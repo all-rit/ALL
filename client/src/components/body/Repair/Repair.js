@@ -94,18 +94,12 @@ const Repair = (props) => {
 
       <div className="tw-flex tw-justify-center tw-pb-5">
         <div className="tw-pr-10">
-          <Button
-            buttonText={"Repair"}
-            isPrimary={false}
-            onClick={handleRepair}
-          />
+          <Button onClick={handleRepair}>Repair</Button>
         </div>
         <div className="tw-pl-10">
-          <Button
-            buttonText={"Next"}
-            disabled={!enableNext}
-            onClick={handleNext}
-          />
+          <Button onClick={handleNext} disabled={!enableNext}>
+            Next
+          </Button>
         </div>
       </div>
       <Popup

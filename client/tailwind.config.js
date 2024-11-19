@@ -53,8 +53,13 @@ module.exports = {
       darkGreen: "#0c3515",
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
+      darkGray: "#3d3d3d",
+      successGreen: "14FF00",
     },
     extend: {
+      borderWidth: {
+        12: "12px",
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         calibri: ["Calibri", "sans-serif"],
@@ -98,9 +103,19 @@ module.exports = {
             animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",
           },
         },
+        infiniteScroll: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-101.5%)" },
+        },
+        infiniteScrollRight: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(101.5%)" },
+        },
       },
       animation: {
         "reduced-bounce": `reducedBounce 2s linear infinite`,
+        "infinite-scroll": `infiniteScroll 25s linear infinite`,
+        "infinite-scroll-right": `infiniteScrollRight 25s linear infinite`,
       },
       zIndex: {
         1: "1",
@@ -123,7 +138,7 @@ module.exports = {
         },
         ".sub-title-styling-name": {
           fontFamily: theme("fontFamily.calibri"),
-          fontSize: "1.5rem",
+          fontSize: "1.25rem",
           fontWeight: theme("fontWeight.normal"),
         },
         ".body-styling-name": {

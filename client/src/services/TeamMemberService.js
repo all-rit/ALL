@@ -17,6 +17,11 @@ const teamMemberService = {
       .then((response) => response.json())
       .then((json) => json);
   },
+  getAllDevPartners: () => {
+    return API.get(process.env.REACT_APP_SERVER_URL + `/devPartners`)
+      .then((response) => response.json())
+      .then((json) => json);
+  },
 };
 
 export default teamMemberService;
