@@ -3,9 +3,6 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
 import React, { Component } from "react";
-import AppBar from "@mui/material/AppBar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 // link to image: https://pixabay.com/vectors/cat-pet-animal-kitty-kitten-cute-6484941/
 // license: https://pixabay.com/service/license/
 import catImage from "../../../../../assets/images/lab3/exercise/cat.svg";
@@ -15,8 +12,6 @@ import carImage from "../../../../../assets/images/lab3/exercise/car.svg";
 // link to image: https://pixabay.com/vectors/hamburger-cheeseburger-fast-food-31775/
 // license: https://pixabay.com/service/license/
 import burgerImage from "../../../../../assets/images/lab3/exercise/hamburger.svg";
-import Toolbar from "@mui/material/Toolbar";
-import Grid from "@mui/material/Grid";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 import { PageService } from "../../../../../services/PageService";
@@ -52,50 +47,30 @@ class ProblemDiscoveryFixedExperience extends Component {
     };
 
     const imgStyle = {
-      width: "128px",
-      height: "128px",
-      border: "1px solid black",
+      width: "13rem",
+      height: "13rem",
       tabIndex: "0",
       backgroundColor: "#EFEFEF",
       verticalAlign: "middle",
       padding: "5px",
-    };
-
-    const tableStyle = {
-      border: "1px solid black",
-      marginLeft: "auto",
-      marginRight: "auto",
-      textAlign: "center",
-      marginBottom: "1rem",
+      borderRadius: "10px",
     };
 
     return (
       <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid justifyContent="center" container spacing={10}>
-              <Grid item>
-                <Typography
-                  variant={"h4"}
-                  aria-label={"Discover the problem"}
-                  tabIndex={"0"}
-                  gutterBottom
-                  onFocus={(e) =>
-                    textToSpeech(e, "Repaired version of previous page.")
-                  }
-                >
-                  Repaired Version of Previous Page
-                </Typography>
-              </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
+        <h2
+          className={"tw-title-styling-name tw-text-left"}
+          aria-label={"Discover the problem"}
+          tabIndex={"0"}
+          onFocus={(e) => textToSpeech(e, "Repaired version of previous page.")}
+        >
+          Repaired Version of Previous Page
+        </h2>
+
         <br />
-        <Typography
-          variant={"subtitle1"}
+        <p
+          className={"tw-body-styling-name tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
-          gutterBottom
-          tabindex={"0"}
           onFocus={(e) =>
             textToSpeech(
               e,
@@ -107,72 +82,66 @@ class ProblemDiscoveryFixedExperience extends Component {
           their contents are as such like 'cat', 'burger' and 'car' etc. and not
           'image of cat', 'image of burger', 'image of car' etc. . Try using
           your screenreader now.
-        </Typography>
+        </p>
         <br />
-        <table style={tableStyle} className={"center"}>
-          <tbody>
-            <tr>
-              <td>
-                <input
-                  style={imgStyle}
-                  type={"image"}
-                  src={catImage}
-                  alt={"cat"}
-                  tabIndex={"0"}
-                  onFocus={(e) => textToSpeech(e, "cat")}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  style={imgStyle}
-                  type={"image"}
-                  src={carImage}
-                  alt={"car"}
-                  tabIndex={"0"}
-                  onFocus={(e) => textToSpeech(e, "car")}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  style={imgStyle}
-                  type={"image"}
-                  src={burgerImage}
-                  alt={"burger"}
-                  tabIndex={"0"}
-                  onFocus={(e) => textToSpeech(e, "burger")}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <Button
-          variant={"text"}
-          aria-label={"Ok"}
-          onFocus={(e) => textToSpeech(e, "ok")}
+        <div
+          className={
+            "tw-flex tw-flex-row tw-gap-x-6 tw-w-full tw-justify-center tw-py-10"
+          }
         >
-          Ok
-        </Button>
-        <Button
-          variant={"text"}
-          aria-label={"Cancel"}
-          onFocus={(e) => textToSpeech(e, "cancel")}
-        >
-          Cancel
-        </Button>
+          <input
+            style={imgStyle}
+            type={"image"}
+            src={catImage}
+            alt={"cat"}
+            tabIndex={"0"}
+            onFocus={(e) => textToSpeech(e, "cat")}
+          />
+          <input
+            style={imgStyle}
+            type={"image"}
+            src={carImage}
+            alt={"car"}
+            tabIndex={"0"}
+            onFocus={(e) => textToSpeech(e, "car")}
+          />
+          <input
+            style={imgStyle}
+            type={"image"}
+            src={burgerImage}
+            alt={"burger"}
+            tabIndex={"0"}
+            onFocus={(e) => textToSpeech(e, "burger")}
+          />
+        </div>
+        <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
+          <button
+            className={
+              "btn btn-md tw-w-[12%] tw-shadow-md tw-bg-primary-blue tw-text-white"
+            }
+            onFocus={(e) => textToSpeech(e, "ok button")}
+          >
+            Ok
+          </button>
+          <button
+            className={
+              "btn btn-md tw-w-[12%] tw-shadow-md tw-bg-primary-blue tw-text-white"
+            }
+            onFocus={(e) => textToSpeech(e, "cancel button")}
+          >
+            Cancel
+          </button>
+        </div>
         <br />
-        <Button
-          href="#"
+        <button
           onClick={this.handleSubmit.bind(this)}
-          variant={"contained"}
-          className="btn btn-second btn-xl text-uppercase  leftButton"
+          className={
+            "btn btn-xl tw-shadow-md tw-bg-[#D3D3D3] tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+          }
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next
-        </Button>
+        </button>
       </div>
     );
   }

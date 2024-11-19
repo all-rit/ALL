@@ -51,13 +51,10 @@ const StudentTeamSection = () => {
         >
           <h2 className={"tw-title-styling-name"}>Meet Our Student Team</h2>
           <p className={"tw-col-span-6 tw-body-styling-name"}>
-            Quisque justo tortor, tincidunt sed auctor et, semper at risus.
-            Praesent et molestie lorem. Aliquam ultricies, orci ut aliquam
-            rhoncus, est leo ultrices risus, quis placerat arcu eros sed dolor.
-            Curabitur bibendum ipsum odio, vehicula hendrerit ante porttitor
-            rutrum. Donec blandit nisi sed ex laoreet venenatis. Praesent
-            fermentum volutpat finibus. Donec suscipit porta tellus a
-            ullamcorper. Proin sed est mauris.
+            Our labs were made possible by the amazing efforts of our team of
+            student developers! We invite you to get to know each team member
+            through their individualized cards, and don’t forget to explore our
+            Alumni as well!
           </p>
         </div>
         <MemberDisplay

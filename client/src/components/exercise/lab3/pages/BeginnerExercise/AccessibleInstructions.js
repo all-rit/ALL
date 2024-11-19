@@ -2,9 +2,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Button, Typography, Paper, AppBar, Toolbar } from "@mui/material";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
+import LabButton from "../../../../all-components/LabButton";
 
 class AccessibleInstructions extends Component {
   constructor(props) {
@@ -33,62 +33,39 @@ class AccessibleInstructions extends Component {
     actions.updateState(EXERCISE_PLAYING);
   }
   render() {
-    console.log(this.props);
-    const paperStyle = {
-      marginLeft: "10px",
-      marginRight: "10px",
-      marginTop: "20px",
-    };
     return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Typography
-              variant={"h4"}
-              aria-label={"Instructions"}
-              tabIndex={"0"}
-              color={"inherit"}
-            >
-              Instructions
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Paper style={paperStyle}>
-          <Typography
-            variant={"h6"}
+      <div className={"tw-p-6"}>
+        <h2
+          className={"tw-title-styling-name tw-text-left"}
+          aria-label={"Instructions"}
+        >
+          Accessibility Instructions
+        </h2>
+        <br />
+        <div className={"tw-text-left"}>
+          <p
             aria-label={"Exercise Instructions"}
             tabIndex={"0"}
-            paragraph={true}
-            display={"block"}
+            className={"tw-body-styling-name tw-font-medium"}
           >
             {this.state.text}
             <br />
-          </Typography>
-        </Paper>
-        <Paper style={paperStyle}>
-          <Typography display={"inline"} variant={"h5"}>
-            Note:
-          </Typography>
-          <Typography
-            variant={"h6"}
+          </p>
+        </div>
+        <br />
+        <div className={"tw-text-left"}>
+          <p className={"tw-body-styling-name tw-font-bold"}>Note:</p>
+          <p
+            className={"tw-body-styling-name tw-font-medium"}
             aria-label={"Note:"}
-            tabIndex={"0"}
-            paragraph={true}
-            display={"block"}
           >
             In the actual project we will show instructions on how to make the
             page more accessible to users. Participants will also be lead
             through the activity of repairing the code.
-          </Typography>
-        </Paper>
-        <Button
-          href="#"
-          onClick={this.handleSubmit}
-          variant={"contained"}
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-        >
-          Next
-        </Button>
+          </p>
+        </div>
+        <br />
+        <LabButton onClick={this.handleSubmit} label={"Next"} />
       </div>
     );
   }

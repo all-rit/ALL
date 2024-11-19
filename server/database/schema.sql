@@ -34,6 +34,7 @@ create table groups
     "instructorUserID" integer,
     "groupName"        text,
     "createdDate"      timestamp with time zone,
+    "color"            text,
     "isActive"         boolean,
     code               text,
     primary key (id),
@@ -249,6 +250,7 @@ create table professors
     "firstName"   text,
     "lastName"    text,
     title         text,
+    affiliation    text,
     "imageURL"    text,
     socials       json,
     work          text,
@@ -3319,9 +3321,13 @@ e'[
  }
 ]', 2, 'coming soon', 'coming soon', true);
 
-INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
-(2, 'Samuel', 'Malachowsky', 'PI', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]
-', null, null), (3, 'Hector', 'Torres', 'PI', '/Torres.jpg', '[{"link":"https://www.linkedin.com/in/dr-hector-n-torres-41844539/","network": "sharethis"}]', null, null);
+INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, work, "datesActive")
+VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
+(2, 'Samuel', 'Malachowsky', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]', null, null),
+(3, 'Hector', 'Torres', 'Principal Investigator', 'Bethune-Cookman University','/Torres.jpg', '[{"link":"https://www.linkedin.com/in/dr-hector-n-torres-41844539/","network": "sharethis"}]', null, null),
+(4, 'Brian', 'Gouker', 'Advisor', 'National Security Agency','/Gouker.jpg', '[{"link":"https://www.afcea.org/event/sites/default/files/files/Gouker%20(Bio).pdf","network": "sharethis"}]', null, null),
+(5, 'Juan', 'Zheng', 'Advisor', 'Lehigh University','/Zheng.jpg', '[{"link":"https://ed.lehigh.edu/faculty/jzheng","network": "sharethis"}]', null, null),
+(6, 'Saikat', 'Dutta', 'Advisor', 'Cornell University','/Dutta.jpg', '[{"link":"https://www.cs.cornell.edu/~saikatd/","network": "sharethis"}]', null, null);
 
 INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive", "isActive") VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://www.linkedin.com/in/saad-khan23/","network":"linkedin"}]', null, '2019-2021', false)
 ,(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-Present', true)

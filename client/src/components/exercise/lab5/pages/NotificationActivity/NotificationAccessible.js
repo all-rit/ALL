@@ -17,13 +17,15 @@ class NotificationAccessible extends Component {
   render() {
     const { actions } = this.props;
     return (
-      <div className="mb-5">
-        <div className="cognitive_instructions">
+      <div className="mb-5 tw-h-full">
+        <p className="tw-sub-title-styling-name tw-mt-6 tw-text-left">
           There is a notification that has appeared. Click on it to view it!
-          Note: it can only be viewed once.
-        </div>
+        </p>
+        <p className={"tw-sub-title-styling-name tw-mb-6 tw-text-left"}>
+          Note: It can only be viewed once.
+        </p>
         <Notification message={AccessibleMessage} />
-        <div className="flex float-right">
+        <div className="flex float-right tw-mt-10">
           <button
             className="btn btn-primary text-black btn-xl text-uppercase "
             onClick={this.handleNav}

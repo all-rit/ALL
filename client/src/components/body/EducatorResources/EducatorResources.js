@@ -3,7 +3,7 @@ import WhatsAvailable from "./WhatsAvailable";
 import ResourcesHeader from "./ResourcesHeader";
 import ResourcesSection from "./ResourcesSection";
 import GettingInvolved from "../../all-components/GettingInvolved";
-import AboutUs from "../../all-components/AboutUs";
+import YellowBlockSection from "../../all-components/YellowBlockSection";
 import DevPartners from "../landingpage/DevPartners";
 import Carousel from "../../all-components/carousel";
 
@@ -13,7 +13,12 @@ const EducatorResources = () => {
       <ResourcesHeader />
       <WhatsAvailable />
       <ResourcesSection />
-      <AboutUs />
+      <YellowBlockSection
+        title={"About Us"}
+        body={
+          "Learn more about the team at Accessible Learning Labs and the amazing things we have in the works!"
+        }
+      />
       <DevPartners />
       <h2 className={"tw-py-6 tw-title-styling-name"}>
         {" "}

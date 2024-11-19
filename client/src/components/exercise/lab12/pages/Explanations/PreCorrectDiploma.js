@@ -10,16 +10,17 @@ const PreCorrectDiploma = () => {
 
   return (
     <div className="center-div">
+      <h1 className={"tw-title-styling-name tw-text-left"}> Explanation </h1>
       <div className="guidance margin-bottom-2">
-        <p className="playthrough__sentence">
+        <p className="tw-body-styling-name tw-text-left tw-pt-6">
           This time, after being prompted for your preferred name and pronouns,
           and the database being updated to reflect these changes, your official
           ALL University diploma reflects your correct pronouns AND preferred
           name!
         </p>
       </div>
-      <div className="playthrough__sentence">
-        Click the &quot;Next&quot; button!
+      <div className="tw-body-styling-name tw-pb-6 tw-text-left">
+        Click the <strong>Next</strong> button!
       </div>
       <div className="tw-flex tw-justify-evenly">
         <button

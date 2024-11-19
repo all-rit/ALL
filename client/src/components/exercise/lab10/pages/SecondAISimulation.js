@@ -53,6 +53,10 @@ const SecondAISimulation = (props) => {
 
   return (
     <div>
+      <h1 className={"tw-title-styling-name tw-text-left"}>
+        {" "}
+        AI Simulation Part 2{" "}
+      </h1>
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
           <p className={"playthrough__sentence"}>

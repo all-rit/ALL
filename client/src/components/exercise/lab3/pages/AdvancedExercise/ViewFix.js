@@ -2,11 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { AppBar, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
 import { navigate } from "@reach/router";
-import Toolbar from "@mui/material/Toolbar";
-import Grid from "@mui/material/Grid";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 import { PageService } from "../../../../../services/PageService";
 class ViewFix extends Component {
@@ -54,40 +50,26 @@ class ViewFix extends Component {
     };
 
     return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid justifyContent="center" container spacing={10}>
-              <Grid item>
-                <Typography
-                  variant={"h4"}
-                  aria-label={"Title"}
-                  gutterBottom
-                  tabindex={"0"}
-                  onFocus={(e) => textToSpeech(e, "Test Fix")}
-                >
-                  Test Repair
-                </Typography>
-              </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
+      <div className={"tw-p-10"}>
+        <h2
+          className={"tw-title-styling-name tw-text-left"}
+          aria-label={"Title"}
+          onFocus={(e) => textToSpeech(e, "Test Fix")}
+        >
+          Test Repair
+        </h2>
         <br />
-        <Typography
-          variant={"h6"}
+        <p
+          className={"tw-body-styling-name tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
-          gutterBottom
-          tabindex={"0"}
           onFocus={(e) => textToSpeech(e, "Is your page now more accessible?")}
         >
           Is your page now more accessible?
-        </Typography>
+        </p>
         <br />
-        <Typography
-          variant={"body1"}
+        <p
+          className={"tw-body-styling-name tw-font-medium tw-text-left"}
           aria-label={"Body Instructions"}
-          gutterBottom
-          tabindex={"0"}
           onFocus={(e) =>
             textToSpeech(
               e,
@@ -99,32 +81,43 @@ class ViewFix extends Component {
           If you have updated the buttons with the appropriate aria-labels then
           you have succeeded. They can now be effectively described by
           screenreaders.
-        </Typography>
+        </p>
         <br />
-        <Button
-          variant={"text"}
-          aria-label={this.state.aria1}
-          onFocus={(e) => textToSpeech(e, this.state.aria1)}
+        <div
+          className={
+            "tw-flex tw-flex-row tw-gap-x-4 tw-w-full tw-justify-center"
+          }
         >
-          Ok
-        </Button>
-        <Button
-          variant={"text"}
-          aria-label={this.state.aria2}
-          onFocus={(e) => textToSpeech(e, this.state.aria2)}
-        >
-          Cancel
-        </Button>
+          <button
+            className={
+              "btn btn-md tw-w-[15%] tw-shadow-md tw-bg-primary-blue tw-text-white hover:tw-shadow-lg"
+            }
+            aria-label={this.state.aria1}
+            onFocus={(e) => textToSpeech(e, this.state.aria1)}
+          >
+            Ok
+          </button>
+          <button
+            className={
+              "btn btn-md tw-w-[15%] tw-shadow-md tw-bg-primary-blue tw-text-white hover:tw-shadow-lg"
+            }
+            aria-label={this.state.aria2}
+            onFocus={(e) => textToSpeech(e, this.state.aria2)}
+          >
+            Cancel
+          </button>
+        </div>
         <br />
         <br />
-        <Button
-          variant={"contained"}
-          className="btn btn-second btn-xl text-uppercase  leftButton"
+        <button
+          className={
+            "btn btn-xl tw-shadow-md tw-bg-[#D3D3D3] tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+          }
           onClick={ViewFix.navOnClick}
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next
-        </Button>
+        </button>
       </div>
     );
   }

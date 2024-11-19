@@ -41,15 +41,14 @@ const InvestigatorsSection = () => {
             "tw-flex tw-flex-col tw-gap-y-6 tw-text-left tw-w-[48rem] tw-py-24 tw-px-12"
           }
         >
-          <h2 className={"tw-title-styling-name"}>Meet Our Student Team</h2>
+          <h2 className={"tw-title-styling-name"}>
+            Meet Our Principal Investigators and Advisors
+          </h2>
           <p className={"tw-col-span-6 tw-body-styling-name"}>
-            Quisque justo tortor, tincidunt sed auctor et, semper at risus.
-            Praesent et molestie lorem. Aliquam ultricies, orci ut aliquam
-            rhoncus, est leo ultrices risus, quis placerat arcu eros sed dolor.
-            Curabitur bibendum ipsum odio, vehicula hendrerit ante porttitor
-            rutrum. Donec blandit nisi sed ex laoreet venenatis. Praesent
-            fermentum volutpat finibus. Donec suscipit porta tellus a
-            ullamcorper. Proin sed est mauris.
+            These are the principal investigators and advisors behind the
+            Accessible Learning Labs team. They provide guidance and leadership
+            for our student team! We invite you to get to know each of them
+            through their individualized cards.
           </p>
         </div>
         <MemberDisplay

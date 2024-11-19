@@ -59,18 +59,6 @@ const Home = ({
         incorrectColorOne={incorrectColorOne}
         incorrectColorTwo={incorrectColorTwo}
       />
-      <br />
-      <p className="fourthTitle tw-p-5 tw-m-3">
-        For educational purposes, we record all scores and actions taken in the
-        exercise, along with any information you choose to give us from our
-        forum.
-        <br />
-        For further information and to see the other labs currently in
-        development for this project, visit
-        <a href="http://all.rit.edu" className="allLink">
-          http://all.rit.edu
-        </a>
-      </p>
     </div>
   );
 };

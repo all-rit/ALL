@@ -28,14 +28,14 @@
       right: 0;
       content: "\274c";
       font-size: 80px;
-      color: #fff;
+      color: #0144d5;
       line-height: 100px;
       text-align: center;
     }
   }
 
   &--glow {
-    box-shadow: 0px 0px 15px 1px rgba(255, 0, 0, 1);
+    box-shadow: 0px 0px 15px 1px rgb(0, 72, 255);
 
     &:after {
       animation: MoveUpDown 1s ease-in-out infinite;
@@ -45,6 +45,7 @@
       bottom: -60px;
       left: 0;
       right: 0;
+      color: #0144d5;
     }
   }
 

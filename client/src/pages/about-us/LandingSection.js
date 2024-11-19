@@ -4,17 +4,13 @@ const LandingSection = () => {
   return (
     <section
       id={"about-us"}
-      className={"tw-min-h-screen tw-py-52 tw-flex tw-flex-col"}
+      className={"tw-flex tw-flex-col tw-bg-primary-blue tw-h-[30rem] tw-mb-20"}
     >
-      <div
-        className={
-          "tw-relative tw-bg-primary-blue tw-flex-1 tw-flex tw-flex-col tw-justify-center"
-        }
-      >
+      <div className={"tw-flex-1 tw-flex tw-flex-col tw-justify-center"}>
         <div className={"tw-relative tw-ml-64"}>
           <div
             className={
-              "tw-z-1 tw-relative tw-grid tw-grid-cols-12 tw-min-w-full tw-bg-white tw-rounded-l-md"
+              "tw-z-1 tw-relative tw-grid tw-grid-cols-6 tw-min-w-full tw-bg-white tw-rounded-l-md"
             }
           >
             <div

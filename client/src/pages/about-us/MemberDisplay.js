@@ -65,7 +65,9 @@ const MemberDisplay = (props) => {
                   {currentMember.datesActive}
                 </p>
                 <p className="tw-text-md tw-font-light tw-leading-snug">
-                  Rochester Institute of Technology
+                  {currentMember.affiliation
+                    ? currentMember.affiliation
+                    : "Rochester Institute of Technology"}
                 </p>
                 <p className="tw-mt-6 tw-text-md tw-font-light tw-leading-snug">
                   Something inspirational here...
@@ -190,6 +192,7 @@ MemberDisplay.propTypes = {
     lastName: PropTypes.string,
     title: PropTypes.string,
     datesActive: PropTypes.string,
+    affiliation: PropTypes.string,
     socials: PropTypes.arrayOf(PropTypes.shape({})),
   }),
   groupedMembers: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),

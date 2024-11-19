@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { navigate } from "@reach/router";
 import TrainingAICodeBlock from "../components/code/TrainingAICodeBlock";
 import Popup from "src/components/all-components/Popup";
@@ -31,24 +31,26 @@ const TrainingAIRepair = (props) => {
 
   return (
     <div>
-      <Fragment>
-        <div className={"center-div"}>
-          <div className={"guidance margin-bottom-2"}>
-            <p className={"playthrough__sentence tw-text-center"}>
-              That was very quick! The duration of the simulation needs to be
-              increased to allow the neural network to collect more data to
-              improve its decision-making. Let&apos;s increase the duration of
-              the simulation to collect more data points.
-            </p>
-            <p className={"playthrough__sentence tw-text-center"}>
-              Click the &lsquo;
-              <span className={"tw-font-bold"}>Repair</span>
-              &lsquo; button to view and edit the code. Update the simulation to
-              run between 60 - 120 seconds.
-            </p>
-          </div>
+      <div className={"center-div"}>
+        <h1 className={"tw-title-styling-name tw-text-left tw-pb-6"}>
+          {" "}
+          Repair{" "}
+        </h1>
+        <div className={"guidance margin-bottom-2"}>
+          <p className={"tw-body-styling-name tw-text-left"}>
+            That was very quick! The duration of the simulation needs to be
+            increased to allow the neural network to collect more data to
+            improve its decision-making. Let&apos;s increase the duration of the
+            simulation to collect more data points.
+          </p>
+          <p className={"tw-body-styling-name tw-text-leftt tw-py-6"}>
+            Click the &lsquo;
+            <span className={"tw-font-bold"}>Repair</span>
+            &lsquo; button to view and edit the code. Update the simulation to
+            run between 60 - 120 seconds.
+          </p>
         </div>
-      </Fragment>
+      </div>
       <Popup
         message={popupMessage}
         handler={actions.updatePopup}

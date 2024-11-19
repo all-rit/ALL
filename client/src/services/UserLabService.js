@@ -108,9 +108,9 @@ const UserLabService = {
       },
     );
   },
-  getUserLabCompletion: (userID, labID) => {
+  getUserLabCompletion: (userid, labid) => {
     return API.get(
-      process.env.REACT_APP_SERVER_URL + `/user/${userID}/${labID}`,
+      process.env.REACT_APP_SERVER_URL + `/user/${userid}/${labid}`,
     )
       .then((response) => response.json())
       .then((json) => json);

@@ -8,7 +8,7 @@ import ProfileGeneration from "./citation/ProfileGeneration";
 import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
 import DevPartners from "./DevPartners";
 import GettingInvolved from "../../all-components/GettingInvolved";
-import AboutUs from "../../all-components/AboutUs";
+import YellowBlockSection from "../../all-components/YellowBlockSection";
 import Carousel from "../../all-components/carousel";
 
 const mapDispatchToProps = (dispatch) => {
@@ -95,7 +95,12 @@ const Home = (props) => {
       {/* Team Citation */}
       <div id="citation" />
       <GettingInvolved />
-      <AboutUs />
+      <YellowBlockSection
+        title={"About Us"}
+        body={
+          "Learn more about the team at Accessible Learning Labs and the amazing things we have in the works!"
+        }
+      />
       <HorizontalLine />
       <ProfileGeneration />
       <HorizontalLine />
