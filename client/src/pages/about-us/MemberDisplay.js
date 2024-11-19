@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
   Carousel,
@@ -9,6 +8,7 @@ import {
   CarouselIndicators,
 } from "reactstrap";
 import { SocialIcon } from "react-social-icons";
+import LabService from "../../services/LabService";
 
 // shared member display component/logic
 const MemberDisplay = (props) => {
@@ -17,11 +17,53 @@ const MemberDisplay = (props) => {
   // carousel states
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [labs, setLabs] = useState(null);
+  const [labCredits, setLabCredits] = useState([]);
+  const [currentFavorite, setFavoriteLab] = useState("");
+
+  const getAllLabs = async () => {
+    const allLabs = await LabService.getAllLabs();
+    setLabs(allLabs);
+  };
+
+  const handleMemberChange = (member) => {
+    setCurrentMember(member);
+    fetchLabsAndSetCredits(member);
+    favoriteLab(member);
+  };
 
   useEffect(() => {
+    getAllLabs();
+    // Reset active index and set the initial member
     setActiveIndex(0);
     if (groupedMembers.length > 0) setCurrentMember(groupedMembers[0][0]);
   }, [groupedMembers]);
+
+  const fetchLabsAndSetCredits = async (member) => {
+    try {
+      setLabCredits([]);
+
+      if (member && labs) {
+        const memberLabs = labs
+          .filter((lab) => member.labcredits.includes(lab.id))
+          .map((lab) => `Lab ${lab.id}: ${lab.labName}`);
+
+        setLabCredits(memberLabs);
+      }
+    } catch (error) {
+      setLabCredits(["No lab credits at this time."]);
+    }
+  };
+
+  const favoriteLab = async (member) => {
+    if (!labs || labs.length === 0 || !member) return;
+    const favorite = labs.find((lab) => lab.id === member.favoritelab);
+    setFavoriteLab(favorite?.labName);
+  };
+
+  useEffect(() => {
+    fetchLabsAndSetCredits(currentMember);
+  }, [currentMember]);
 
   const next = () => {
     if (animating) return;
@@ -50,7 +92,7 @@ const MemberDisplay = (props) => {
               src={`/img/profileImages${currentMember.imageURL}`}
             />
           </div>
-          <div className="tw-mt-12 tw-text-left tw-flex tw-flex-col tw-gap-y-12 tw-col-span-3">
+          <div className="tw-mt-12 tw-text-left tw-flex tw-flex-col tw-gap-y-6 tw-col-span-3">
             <div id="member">
               <div id="member-name">
                 <h3 className="tw-font-bold tw-text-3xl">
@@ -69,8 +111,11 @@ const MemberDisplay = (props) => {
                     ? currentMember.affiliation
                     : "Rochester Institute of Technology"}
                 </p>
-                <p className="tw-mt-6 tw-text-md tw-font-light tw-leading-snug">
-                  Something inspirational here...
+                <h4 className="tw-mx-0 tw-mt-3 tw-mb-0 tw-font-bold tw-text-xl">
+                  About Me
+                </h4>
+                <p className="tw-text-md tw-font-light tw-leading-snug">
+                  {currentMember.aboutme}
                 </p>
               </div>
               <div id="member-socials" className="tw-mt-6">
@@ -87,18 +132,24 @@ const MemberDisplay = (props) => {
                 })}
               </div>
             </div>
-            <div id="member-favorite-lab">
-              <h4 className="tw-m-0 tw-font-bold tw-text-xl">Favorite Lab</h4>
-              <p className="tw-text-md tw-font-light tw-leading-snug">
-                Something inspirational here...
-              </p>
-            </div>
-            <div id="member-lab-credits">
-              <h4 className="tw-m-0 tw-font-bold tw-text-xl">Lab Credits</h4>
-              <p className="tw-text-md tw-font-light tw-leading-snug">
-                Something inspirational here...
-              </p>
-            </div>
+            {currentMember.favoritelab && (
+              <div id="member-favorite-lab">
+                <h4 className="tw-m-0 tw-font-bold tw-text-xl">Favorite Lab</h4>
+                <p className="tw-text-md tw-font-light tw-leading-snug">
+                  {"Lab " + currentMember.favoritelab + ": " + currentFavorite}
+                </p>
+              </div>
+            )}
+            {currentMember.labcredits && (
+              <div id="member-lab-credits">
+                <h4 className="tw-m-0 tw-font-bold tw-text-xl">Lab Credits</h4>
+                <p className="tw-text-md tw-font-light tw-leading-snug">
+                  {labCredits.map((lab) => {
+                    return <p key={lab.id}>{lab}</p>;
+                  })}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -135,7 +186,7 @@ const MemberDisplay = (props) => {
                         return (
                           <button
                             key={member.firstName + member.lastName}
-                            onClick={() => setCurrentMember(member)}
+                            onClick={() => handleMemberChange(member)}
                             className="tw-p-0 tw-flex tw-flex-col tw-bg-white tw-rounded-xl tw-max-w-lg tw-shadow-xl tw-drop-shadow-xl"
                           >
                             <img
@@ -194,6 +245,9 @@ MemberDisplay.propTypes = {
     datesActive: PropTypes.string,
     affiliation: PropTypes.string,
     socials: PropTypes.arrayOf(PropTypes.shape({})),
+    aboutme: PropTypes.string,
+    favoritelab: PropTypes.number,
+    labcredits: PropTypes.arrayOf(PropTypes.number),
   }),
   groupedMembers: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))),
   setCurrentMember: PropTypes.func,

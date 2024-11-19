@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         affiliation: {type: DataTypes.TEXT},
         imageURL: {type: DataTypes.TEXT},
         socials: {type: DataTypes.JSON},
+        aboutme: {type: DataTypes.TEXT},
         // websiteURL: { type: DataTypes.TEXT },
         // network: { type: DataTypes.TEXT },
         work: {type: DataTypes.TEXT},
