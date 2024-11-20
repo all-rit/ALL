@@ -157,6 +157,7 @@ const Lab = (props) => {
           />
         </ul>
       );
+    case "FEATURED_LABS":
     default:
       return (
         <ul className="tw-w-full xs:tw-flex-col xs:tw-h-50 tw-max-w-[20rem] tw-relative tw-shadow-lg tw-rounded-3xl">

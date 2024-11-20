@@ -9,7 +9,7 @@ const YellowBlockSection = (props) => {
   const { title, body } = props;
 
   const handleNav = () => {
-    navigate("/aboutus");
+    navigate("/about-us");
   };
 
   return (
