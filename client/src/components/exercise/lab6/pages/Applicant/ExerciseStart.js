@@ -17,13 +17,15 @@ const ExerciseStart = () => {
 
   return (
     <div className="center-div">
-      <h2 className="playthrough__title">Part 1: Applicant</h2>
-      <div className="playthrough__sentence">
+      <h2 className="tw-title-styling-name tw-text-left tw-my-6">
+        Exercise Part 1: Applicant
+      </h2>
+      <div className="tw-body-styling-name tw-text-left">
         In this exercise you will be applying to the company “MegaCorp.” During
         the process you will experience AI-based bias, and be asked to make
         changes to the AI.
       </div>
-      <div className="playthrough__sentence">
+      <div className="tw-body-styling-name tw-text-left tw-my-6">
         Click the “Start” button to begin this exercise!
       </div>
       <button

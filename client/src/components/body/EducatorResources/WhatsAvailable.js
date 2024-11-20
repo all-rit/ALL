@@ -1,8 +1,16 @@
 import React from "react";
 import ALLButton from "../../all-components/ALLButton";
+import Educator from "../../../assets/images/stockImages/Girl3.png";
 const WhatsAvailable = () => {
   return (
-    <div className={"tw-h-[30rem] tw-w-full tw-mb-[5rem]"}>
+    <div className={"tw-h-[30rem] tw-w-full tw-mb-[5rem] tw-relative"}>
+      <img
+        src={Educator}
+        className={
+          "tw-absolute tw-top-[-27rem] tw-right-[10rem] xs:tw-w-0 md:tw-w-[18rem]"
+        }
+      />
+
       <div
         className={
           "tw-h-full tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"

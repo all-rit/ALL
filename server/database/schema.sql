@@ -34,6 +34,7 @@ create table groups
     "instructorUserID" integer,
     "groupName"        text,
     "createdDate"      timestamp with time zone,
+    "color"            text,
     "isActive"         boolean,
     code               text,
     primary key (id),

@@ -126,12 +126,15 @@ class FormRepair extends Component {
   render() {
     const { visible, handlers, state, data, actions } = this.props;
     return (
-      <div>
-        <div className="cognitive_instructions margin-bottom-2">
+      <div className={"tw-my-6"}>
+        <p className="tw-body-styling-name tw-text-left">
           Let's improve the form feedback. We will be adding an error
           notification under the 'Today's Date' question along with a success
-          message. Click 'Repair' to make the appropriate changes.
-        </div>
+          message.
+        </p>
+        <p className="tw-body-styling-name tw-text-left tw-mt-3 tw-mb-6">
+          Click 'Repair' to make the appropriate changes.
+        </p>
         <Popup
           message={state.app5.popupMessage}
           handler={actions.updatePopup}

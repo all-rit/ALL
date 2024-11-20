@@ -21,7 +21,7 @@ const FogIndexOverlay = ({
   totalComplexWords,
 }) => {
   let className =
-    "tw-w-16 tw-h-16 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4";
+    "tw-w-12 tw-h-12 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-6 tw--mt-4";
   if (fogIndex > 12) {
     className = twMerge(className, "tw-bg-[#FF0000]");
   } else if (fogIndex > 9) {
@@ -31,7 +31,7 @@ const FogIndexOverlay = ({
   }
 
   return (
-    <div className="tw-bg-white tw--mb-8 tw--mr-10 tw-w-full max-md:tw-left-0 md:tw-right-0 md:tw-w-[45%] lg:tw-w-[32%] tw-h-auto tw-bg-gray-200 tw-flex tw-items-center tw-justify-center tw-absolute tw-bottom-0  tw-shadow-2xl tw-rounded-3xl">
+    <div className="tw-bg-white tw-bottom-[-2rem] tw-w-full max-md:tw-left-0 md:tw-right-0 md:tw-w-[45%] lg:tw-w-[25%] tw-border-solid tw-border-labLightGray tw-border-[.05rem] tw-h-auto tw-bg-gray-200 tw-flex tw-items-center tw-justify-center tw-absolute tw-shadow-xl tw-rounded-xl">
       <div className="tw-relative">
         {fogIndex > 12 ? (
           <div className={className} />
@@ -43,28 +43,32 @@ const FogIndexOverlay = ({
         {fogIndex > 9 ? (
           <img
             alt="exclamation mark"
-            className="tw-w-14 tw-h-14 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-[20px] tw--mt-[12px]"
+            className="tw-w-10 tw-h-10 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-[20px] tw--mt-[12px]"
             src={exclamation_mark}
           />
         ) : (
           <img
             alt="check mark"
-            className="tw-w-14 tw-h-14 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-[20px] tw--mt-[12px]"
+            className="tw-w-10 tw-h-10 tw-rounded-full tw-shadow-xl tw-absolute tw-top-0 tw-right-0 tw--mr-[20px] tw--mt-[12px]"
             src={check_mark}
           />
         )}
         <div className="tw-flex tw-flex-col tw-w-full tw-py-4 tw-text-2xl tw-px-6">
-          <div className={`tw-text-3xl tw-font-bold tw-py-2`}>Total:</div>
-          <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
+          <div className={`tw-body-styling-name tw-font-bold tw-py-2`}>
+            Total:
+          </div>
+          <div className={`tw-body-styling-name tw-font-medium tw-self-start`}>
             Words: {totalWords}
           </div>
-          <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
+          <div className={`tw-body-styling-name tw-font-medium tw-self-start`}>
             Sentences: {totalSentences}
           </div>
-          <div className={`tw-text-2xl tw-font-medium tw-self-start`}>
+          <div className={`tw-body-styling-name tw-font-medium tw-self-start`}>
             Complex Words: {totalComplexWords}
           </div>
-          <div className={`tw-text-3xl tw-font-bold tw-self-start tw-py-2`}>
+          <div
+            className={`tw-body-styling-name tw-font-bold tw-self-start tw-py-2`}
+          >
             Fog Index: {fogIndex}
           </div>
         </div>

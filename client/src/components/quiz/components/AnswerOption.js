@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 function AnswerOption(props) {
   if (props.multiChoice === true) {
     return (
-      <li className="answerOption">
+      <li className="answerOption tw-rounded-lg tw-shadow-lg">
         <input
           type="checkbox"
           className="checkboxCustomButton"
@@ -21,7 +21,7 @@ function AnswerOption(props) {
     );
   } else {
     return (
-      <li className="answerOption">
+      <li className="answerOption tw-rounded-lg tw-shadow-lg">
         <input
           type="radio"
           className="radioCustomButton"
@@ -31,7 +31,7 @@ function AnswerOption(props) {
           value={props.answerType}
           onChange={props.onAnswerSelected}
         />
-        <label className="radioCustomLabel" htmlFor={props.answerType}>
+        <label className="radioCustomLabel " htmlFor={props.answerType}>
           {props.answerContent}
         </label>
       </li>

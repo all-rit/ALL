@@ -92,10 +92,10 @@ export const MainContextProvider = ({ children }) => {
         type: types.SET_IS_IMAGINE,
         payload: { isImagine: isImagine },
       }),
-    showSnackbar: (message) =>
+    showSnackbar: (message, notificationType) =>
       dispatch({
         type: types.SHOW_SNACKBAR,
-        payload: { message: message },
+        payload: { message: message, notificationType: notificationType },
       }),
     hideSnackbar: () =>
       dispatch({

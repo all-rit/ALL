@@ -108,11 +108,9 @@ class exercise extends Component {
       }
       // Instruction display during inital countdown
       return (
-        <div>
+        <div className={"tw-h-full"}>
           <Title exerciseState={true} replay={false} />
-          <div className="startExerciseTimer tw-relative tw-m-12">
-            {props.seconds}
-          </div>
+          <div className="startExerciseTimer tw-relative">{props.seconds}</div>
           <div className="center prescreen tw-m-12 tw-p-5">
             <div className={"tw-absolute tw-m-12"}>
               <Circle color={correctColor} />

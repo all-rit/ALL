@@ -7,7 +7,6 @@ import {
   Snackbar,
   SnackbarContent,
   IconButton,
-  Button,
   Typography,
 } from "@mui/material";
 import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
@@ -163,17 +162,23 @@ const CodeChangeAccessible = () => {
   };
   return (
     <div>
-      <h2 className="playthrough__title">Repair</h2>
-      <p className="app__instructions">
-        The intent of this code repair is to ensure that, wherever possible,
-        content can be operated through a keyboard or keyboard interface.
-        <br />
-        Tabindex=&quot;-1&quot; prevents access through keyboard navigation.
-        Tabindex=&quot;2&quot; (positive non-zero) means focusable in sequential
-        keyboard navigation, with its order defined by the value of the number.
-        Tabindex=&quot;0&quot; means that the element should be focusable in
-        sequential keyboard navigation.
-      </p>
+      <div className={"tw-p-4"}>
+        <h2 className="tw-title-styling-name tw-text-left tw-my-6">Repair</h2>
+        <p className="tw-body-styling-name tw-text-left">
+          The intent of this code repair is to ensure that, wherever possible,
+          content can be operated through a keyboard or keyboard interface.
+        </p>
+        <p className="tw-body-styling-name tw-text-left tw-my-3">
+          <strong>Tabindex=&quot;-1&quot;</strong> prevents access through
+          keyboard navigation.
+        </p>
+        <p className="tw-body-styling-name tw-text-left tw-my-3">
+          <strong>Tabindex=&quot;2&quot;</strong> (positive non-zero) means
+          focusable in sequential keyboard navigation, with its order defined by
+          the value of the number. Tabindex=&quot;0&quot; means that the element
+          should be focusable in sequential keyboard navigation.
+        </p>
+      </div>
       <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
         <Paper style={paperStyle}>
           <pre>
@@ -186,6 +191,7 @@ const CodeChangeAccessible = () => {
   <div>
       <label>Favorite Color</label>
       <div>
+          // set tab-index to 0 so tooltip can be keyboard accessible
           <span tabindex= `}
             </code>
             <input
@@ -199,9 +205,8 @@ const CodeChangeAccessible = () => {
               }
             />
             <code className="language-html">
-              {`>hint</span> /* set tab-index to 0 so tooltip can be keyboard accessible*/
+              {`>hint</span>
       </div>
-
       <input>
   </div>
   <div>
@@ -212,20 +217,20 @@ const CodeChangeAccessible = () => {
       <label>Favorite City</label>
       <input>
   </div>
+</form>
 `}
             </code>
           </pre>
         </Paper>
         <br />
         <br />
-        <Button
+        <button
           type={"submit"}
           aria-label={"Update Code"}
-          variant={"contained"}
-          color={"primary"}
+          className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         >
           Update Code
-        </Button>
+        </button>
       </form>
       <Snackbar
         anchorOrigin={{

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE } from "../../../../constants/lab5";
 
@@ -18,24 +18,25 @@ class ExerciseStart extends Component {
   render() {
     // const { user, state, plays } = this.props;
     return (
-      <Fragment>
-        <div className="center-div">
-          <div className="guidance margin-bottom-2">
-            We will explore a series of cognitive antipatterns that especially
-            challenge cognitively impaired individuals. After each antipattern
-            we will learn and correct our code to make it more accessible.
-            Finally, we will view the updated experience. Click "Start" to
-            begin!
-          </div>
-          <button
-            className="btn btn-primary text-black btn-xl text-uppercase "
-            onClick={this.handleStart}
-            key="start"
-          >
-            Start
-          </button>
+      <div className="tw-p-6">
+        <h2 className={"tw-title-styling-name tw-text-left tw-my-6"}>
+          {" "}
+          Exercise Start{" "}
+        </h2>
+        <div className="tw-body-styling-name tw-text-left tw-my-6">
+          We will explore a series of cognitive antipatterns that especially
+          challenge cognitively impaired individuals. After each antipattern we
+          will learn and correct our code to make it more accessible. Finally,
+          we will view the updated experience. Click "Start" to begin!
         </div>
-      </Fragment>
+        <button
+          className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+          onClick={this.handleStart}
+          key="start"
+        >
+          Start
+        </button>
+      </div>
     );
   }
 }

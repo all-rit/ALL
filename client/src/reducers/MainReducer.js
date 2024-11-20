@@ -16,6 +16,7 @@ export const initialState = {
   snackbar: {
     open: false,
     message: "",
+    notificationType: "",
   },
 };
 
@@ -46,7 +47,8 @@ export const MainReducer = (state = initialState, action) => {
         ...state,
         snackbar: {
           open: true,
-          message: action.payload,
+          message: action.payload.message,
+          notificationType: action.payload.notificationType,
         },
       };
     case types.HIDE_SNACKBAR:
@@ -68,7 +70,11 @@ export const actions = {
   setLab: (lab) => ({ type: types.SET_LAB, lab }),
   updateUser: (user) => ({ type: types.UPDATE_USER, user }),
   setIsImagine: (isImagine) => ({ type: types.SET_IS_IMAGINE, isImagine }),
-  showSnackbar: (message) => ({ type: types.SHOW_SNACKBAR, message }),
+  showSnackbar: (message, notificationType) => ({
+    type: types.SHOW_SNACKBAR,
+    message,
+    notificationType,
+  }),
   hideSnackbar: () => ({ types: types.HIDE_SNACKBAR }),
 };
 
