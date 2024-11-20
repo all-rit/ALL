@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ALLButton from "../../../all-components/ALLButton";
-import ComingSoon from "../../../../assets/images/ComingSoonVideo.svg";
-import { COMING_SOON } from "../../../../constants/educatorResources/LabOverview";
+import ALLButton from "../../../components/all-components/ALLButton";
+import ComingSoon from "../../../assets/images/ComingSoonVideo.svg";
+import { COMING_SOON } from "../../../constants/educatorResources/LabOverview";
 
 const ResourceRow = (props) => {
   const { id, title, description, image, walkthroughVideo, slides } = props;

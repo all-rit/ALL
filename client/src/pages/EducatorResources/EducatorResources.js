@@ -2,10 +2,10 @@ import React from "react";
 import WhatsAvailable from "./WhatsAvailable";
 import ResourcesHeader from "./ResourcesHeader";
 import ResourcesSection from "./ResourcesSection";
-import GettingInvolved from "../../all-components/GettingInvolved";
-import YellowBlockSection from "../../all-components/YellowBlockSection";
+import GettingInvolved from "../../components/all-components/GettingInvolved";
+import YellowBlockSection from "../../components/all-components/YellowBlockSection";
 import DevPartners from "../landingpage/DevPartners";
-import Carousel from "../../all-components/carousel";
+import Carousel from "../../components/all-components/carousel";
 
 const EducatorResources = () => {
   return (

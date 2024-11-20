@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actions as appActions } from "../../../reducers/lab1/AppReducer";
-import { actions as mainActions } from "../../../reducers/MainReducer";
-import LabService from "../../../services/LabService";
-import Lab from "../lab/Lab";
-import useMainStateContext from "../../../reducers/MainContext";
-import ALLButton from "../../all-components/ALLButton";
+import { actions as appActions } from "../../reducers/lab1/AppReducer";
+import { actions as mainActions } from "../../reducers/MainReducer";
+import LabService from "../../services/LabService";
+import Lab from "../../components/body/lab/Lab";
+import useMainStateContext from "../../reducers/MainContext";
+import ALLButton from "../../components/all-components/ALLButton";
 import { navigate } from "@reach/router";
-import BrandedALLModal from "../../all-components/BrandedALLModal";
-import LoginBody from "../login/LoginBody";
-import GettingInvolved from "../../all-components/GettingInvolved";
+import BrandedALLModal from "../../components/all-components/BrandedALLModal";
+import LoginBody from "../../components/body/login/LoginBody";
+import GettingInvolved from "../../components/all-components/GettingInvolved";
 import PropTypes from "prop-types";
-import Student from "../../../assets/images/stockImages/LookingAtComputer.png";
-import Girl from "../../../assets/images/stockImages/Girl1.png";
+import Student from "../../assets/images/stockImages/LookingAtComputer.png";
+import Girl from "../../assets/images/stockImages/Girl1.png";
 
 const mapStateToProps = (state) => {
   return {

@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
-import LabGeneration from "../lab/LabGeneration";
-import GettingInvolved from "../../all-components/GettingInvolved";
+import LabGeneration from "../../components/body/lab/LabGeneration";
+import GettingInvolved from "../../components/all-components/GettingInvolved";
 import DevPartners from "./DevPartners";
 import Carousel from "src/components/all-components/carousel";
-import Girl3 from "../../../assets/images/stockImages/Girl3.png";
-import Girl2 from "../../../assets/images/stockImages/Girl2.png";
-import ALLButton from "../../all-components/ALLButton";
+import Girl3 from "../../assets/images/stockImages/Girl3.png";
+import Girl2 from "../../assets/images/stockImages/Girl2.png";
+import ALLButton from "../../components/all-components/ALLButton";
 import labService from "src/services/LabService";
 import useMainStateContext from "src/reducers/MainContext";
-import YellowBlockSection from "../../all-components/YellowBlockSection";
+import YellowBlockSection from "../../components/all-components/YellowBlockSection";
 
 const Home = () => {
   const { actions } = useMainStateContext();

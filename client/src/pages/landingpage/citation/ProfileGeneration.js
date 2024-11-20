@@ -2,8 +2,8 @@
 /* eslint-disable require-jsdoc */
 import React, { useEffect, useState } from "react";
 import Profile from "./Profile";
-import TeamMemberService from "../../../../services/TeamMemberService";
-import Spinner from "../../../../common/Spinner/Spinner";
+import TeamMemberService from "../../../services/TeamMemberService";
+import Spinner from "../../../common/Spinner/Spinner";
 import SlideSet from "./SlideSet";
 
 function renderProfileData(profileInformation) {

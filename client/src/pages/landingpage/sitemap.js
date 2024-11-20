@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
-import "../../../assets/stylesheets/components/App.scss";
+import "../../assets/stylesheets/components/App.scss";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../../reducers/MainReducer";
-import handleRedirect from "../../../helpers/Redirect";
+import { actions as mainActions } from "../../reducers/MainReducer";
+import handleRedirect from "../../helpers/Redirect";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -25,15 +25,15 @@ const Routes = (props) => {
       <ul>
         <li>
           {" "}
-          <a href="/#goals">Goals</a>
+          <a href="/client/public#goals">Goals</a>
         </li>
         <li>
           {" "}
-          <a href="/#labs">Labs</a>
+          <a href="/client/public#labs">Labs</a>
         </li>
         <li>
           {" "}
-          <a href="/#contact">Contact</a>
+          <a href="/client/public#contact">Contact</a>
         </li>
       </ul>
     </div>,

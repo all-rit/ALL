@@ -21,9 +21,9 @@ import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
 import { default as TestComponents } from "./components/exercise/test-components/Main";
 import { Sections } from "./constants/index";
 
-import { default as Error } from "./components/body/landingpage/error";
-import { default as LandingPageBody } from "./components/body/landingpage/index";
-import { default as SiteMap } from "./components/body/landingpage/sitemap";
+import { default as Error } from "./pages/landingpage/error";
+import { default as LandingPageBody } from "./pages/landingpage/index";
+import { default as SiteMap } from "./pages/landingpage/sitemap";
 import { default as Profile } from "./components/body/profilepage/Profile";
 import { default as Imagine } from "./components/imagine23/Main";
 
@@ -32,8 +32,8 @@ import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
 import { bindActionCreators } from "redux";
 import "./assets/stylesheets/main.scss";
-import EducatorResources from "./components/body/EducatorResources/EducatorResources";
-import LabsPage from "./components/body/labspage/LabsPage";
+import EducatorResources from "./pages/EducatorResources/EducatorResources";
+import LabsPage from "./pages/labspage/LabsPage";
 import MainFooter from "./components/footer/mainFooter";
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";

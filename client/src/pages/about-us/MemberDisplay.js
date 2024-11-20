@@ -111,12 +111,16 @@ const MemberDisplay = (props) => {
                     ? currentMember.affiliation
                     : "Rochester Institute of Technology"}
                 </p>
-                <h4 className="tw-mx-0 tw-mt-3 tw-mb-0 tw-font-bold tw-text-xl">
-                  About Me
-                </h4>
-                <p className="tw-text-md tw-font-light tw-leading-snug">
-                  {currentMember.aboutme}
-                </p>
+                {currentMember.aboutme && (
+                  <div>
+                    <h4 className="tw-mx-0 tw-mt-3 tw-mb-0 tw-font-bold tw-text-xl">
+                      About Me
+                    </h4>
+                    <p className="tw-text-md tw-font-light tw-leading-snug">
+                      {currentMember.aboutme}
+                    </p>
+                  </div>
+                )}
               </div>
               <div id="member-socials" className="tw-mt-6">
                 {currentMember.socials.map((social) => {
