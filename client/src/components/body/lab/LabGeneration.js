@@ -92,6 +92,29 @@ const LabGeneration = (props) => {
           </>
         );
       }
+    } else if (progressState === "FEATURED_LABS") {
+      return (
+        <div
+          className={
+            "tw-grid xs:tw-grid-cols-1 md:tw-grid-cols-2 tw-grid-h-full tw-w-full tw-gap-8"
+          }
+        >
+          {labids.map((lab, index) => {
+            const idx = lab.id - 1;
+            return (
+              <div key={idx} className="tw-m-1">
+                {renderLabData(
+                  actions,
+                  labInformation[idx],
+                  progressState,
+                  index,
+                  null,
+                )}
+              </div>
+            );
+          })}
+        </div>
+      );
     } else {
       if (labRecords !== null && labRecords.length > 0) {
         return (
