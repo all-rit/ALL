@@ -127,7 +127,7 @@ class MainFooter extends Component {
     return (
       <>
         {/* Affiliates */}
-        <div className="">
+        <div id="mainfooter">
           <div className="container">
             <div className="row tw-items-center tw-gap-4">
               <div className="col-sm-3 tw-p-0">

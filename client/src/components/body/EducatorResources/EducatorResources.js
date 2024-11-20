@@ -3,7 +3,7 @@ import WhatsAvailable from "./WhatsAvailable";
 import ResourcesHeader from "./ResourcesHeader";
 import ResourcesSection from "./ResourcesSection";
 import GettingInvolved from "../../all-components/GettingInvolved";
-import AboutUs from "../../all-components/AboutUs";
+import AboutUs from "../../all-components/YellowBlockSection";
 import DevPartners from "../landingpage/DevPartners";
 import Carousel from "../../all-components/carousel";
 

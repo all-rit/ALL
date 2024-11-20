@@ -186,7 +186,6 @@ const App = () => {
                 setQuizCompleted={setQuizCompleted}
               />
             </Router>
-            <MainFooter />
           </div>
         </div>
         {lab === 0 && <MainFooter />}

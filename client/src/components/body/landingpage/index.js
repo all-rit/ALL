@@ -5,11 +5,12 @@ import LabGeneration from "../lab/LabGeneration";
 import GettingInvolved from "../../all-components/GettingInvolved";
 import DevPartners from "./DevPartners";
 import Carousel from "src/components/all-components/carousel";
-import AboutUs from "../../all-components/AboutUs";
-import TEMPIMG from "../../../assets/images/landingpage/TEMP.png";
+import Girl3 from "../../../assets/images/stockImages/Girl3.png";
+import Girl2 from "../../../assets/images/stockImages/Girl2.png";
 import ALLButton from "../../all-components/ALLButton";
 import labService from "src/services/LabService";
 import useMainStateContext from "src/reducers/MainContext";
+import YellowBlockSection from "../../all-components/YellowBlockSection";
 
 const Home = () => {
   const { actions } = useMainStateContext();
@@ -48,8 +49,8 @@ const Home = () => {
       <div className="tw-relative tw-flex tw-flex-col">
         <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center tw-py-[75px] sm:tw-py-[150px]">
           <div className="tw-grid tw-w-full tw-h-1/2">
-            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end tw-rounded-bl-lg tw-relative tw-rounded-lg">
-              <div className="tw-bg-white tw-w-full tw-h-[120%] tw-px-8 tw-py-10 md:tw-px-16 md:tw-py-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-rounded-tl-lg tw-relative tw-bottom-14 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
+            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-full tw-justify-self-end tw-self-end tw-relative tw-rounded-bl-lg tw-rounded-r-none">
+              <div className="tw-bg-white tw-w-full tw-h-full tw-px-8 tw-py-10 md:tw-px-16 md:tw-py-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-rounded-tl-lg tw-relative tw-bottom-5 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
                 <h1 className="tw-title-styling-name">
                   Welcome to Accessible Learning Labs
                 </h1>
@@ -67,8 +68,8 @@ const Home = () => {
         </section>
         <div className="tw-bg-white tw-h-32"></div>
         <img
-          src={TEMPIMG}
-          className="tw-absolute tw-h-[100%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xl:tw-visible"
+          src={Girl2}
+          className="tw-absolute tw-h-[70%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xl:tw-visible tw-bottom-0"
         ></img>
       </div>
 
@@ -93,6 +94,7 @@ const Home = () => {
               <ALLButton
                 label={"Join a Group"}
                 onClick={handleNavGroups}
+                className="tw-mb-6"
               ></ALLButton>
               <ALLButton
                 label={"Explore Labs"}
@@ -118,7 +120,7 @@ const Home = () => {
       <div className="tw-relative tw-flex tw-flex-col">
         <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center tw-py-[75px] sm:tw-py-[150px]">
           <div className="tw-grid tw-w-full tw-h-1/2">
-            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end tw-rounded-bl-lg tw-relative tw-rounded-lg">
+            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end tw-rounded-bl-lg tw-relative">
               <div className="tw-bg-white tw-w-full tw-h-[120%] tw-p-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
                 <h1 className="tw-title-styling-name">Are You an Educator?</h1>
                 <div className="tw-flex tw-flex-col sm:tw-flex-row tw-gap-4 sm:tw-gap-16">
@@ -137,20 +139,18 @@ const Home = () => {
           </div>
         </section>
         <img
-          src={TEMPIMG}
+          src={Girl3}
           className="tw-absolute tw-h-[100%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xxl:tw-visible"
         ></img>
       </div>
 
       {/* About Us */}
-      <div className="tw-relative tw-flex tw-flex-col">
-        <AboutUs />
-        <div className="tw-bg-white tw-h-32"></div>
-        <img
-          src={TEMPIMG}
-          className="tw-absolute tw-h-[60%] tw-left-[10rem] tw-bottom-0 tw-object-cover tw-invisible xl:tw-visible"
-        ></img>
-      </div>
+      <YellowBlockSection
+        title="About Us"
+        body={
+          "Learn more about the team at Accessible Learning Labs and the amazing things we have in the works!"
+        }
+      />
 
       {/* Development Partners */}
       <DevPartners />

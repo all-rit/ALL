@@ -1,11 +1,6 @@
 import React from "react";
-import ALLButton from "./ALLButton";
-import { navigate } from "@reach/router";
-const GettingInvolved = () => {
-  const handleNav = () => {
-    navigate("/#contact");
-  };
 
+const GettingInvolved = () => {
   return (
     <div className={"tw-h-[25rem] tw-w-full tw-my-[5rem]"}>
       <div
@@ -40,17 +35,15 @@ const GettingInvolved = () => {
               >
                 Whether you want to implement our labs in your course
                 curriculum, join the Accessible Learning Labs development
-                partners or anything in between, you can click here to learn
-                more!
+                partners or anything in between, contact us using the
+                information below!
               </p>
             </div>
             <div
               className={
                 "tw-h-full tw-flex tw-flex-col tw-justify-end tw-items-center lg:tw-items-end tw-py-5"
               }
-            >
-              <ALLButton label={"Learn More"} onClick={handleNav}></ALLButton>
-            </div>
+            ></div>
           </div>
         </div>
       </div>
