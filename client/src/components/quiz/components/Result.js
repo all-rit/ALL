@@ -142,6 +142,20 @@ function Result(props) {
                     {answer["explanation"]}
                   </p>
                 </div>
+                {answer["source"] && (
+                  <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
+                    <p className={"tw-font-bold tw-leading-snug tw-text-sm"}>
+                      Source:&nbsp;
+                    </p>
+                    <p
+                      className={
+                        "tw-text-sm tw-leading-snug tw-body-styling-name"
+                      }
+                    >
+                      {answer["source"]}
+                    </p>
+                  </div>
+                )}
               </div>
             );
           } else {

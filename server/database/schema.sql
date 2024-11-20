@@ -620,7 +620,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
         "val": 1,
         "type": "1",
         "content": "30-40 million people",
-        "explanation": "According to the National Institute on Deafness and Other Communication Disorders, approximately 37.5 million American adults have trouble hearing (https://www.nidcd.nih.gov/health/age-related-hearing-loss)."
+        "explanation": "According to the National Institute on Deafness and Other Communication Disorders, approximately 37.5 million American adults have trouble hearing.",
+        "source": "https://www.nidcd.nih.gov/health/age-related-hearing-loss"
       },
       {
         "val": 0,
@@ -674,7 +675,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
         "val": 1,
         "type": "1",
         "content": "Information and user interface components must be presentable to users in ways they can perceive.",
-        "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception (https://www.w3.org/TR/WCAG21/#perceivable)."
+        "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception.",
+        "source": "https://www.w3.org/TR/WCAG21/#perceivable"
       },
       {
         "val": 0,
@@ -864,7 +866,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
         "val": 1,
         "type": "1",
         "content": "7",
-        "explanation": "According to the WCAG, a contrast ratio of 7:1 is required for normal text (https://webaim.org/resources/contrastchecker/)."
+        "explanation": "According to the WCAG, a contrast ratio of 7:1 is required for normal text.",
+        "source": "https://webaim.org/resources/contrastchecker/"
       },
       {
         "val": 0,
@@ -1008,7 +1011,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
         "val": 1,
         "type": "1",
         "content": "285 million",
-        "explanation": "According to the World Health Organization, approximately 285 million people have visual impairments (https://www.emro.who.int/control-and-preventions-of-blindness-and-deafness/announcements/global-estimates-on-visual-impairment.html)."
+        "explanation": "According to the World Health Organization, approximately 285 million people have visual impairments.",
+        "source": "https://www.emro.who.int/control-and-preventions-of-blindness-and-deafness/announcements/global-estimates-on-visual-impairment.html"
       },
       {
         "val": 0,
@@ -1094,7 +1098,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
         "val": 1,
         "type": "2",
         "content": "82%",
-        "explanation": "According to the World Health Organization, approximately 82% of all blind individuals are 50 years of age or older (https://www.emro.who.int/control-and-preventions-of-blindness-and-deafness/announcements/global-estimates-on-visual-impairment.html)."
+        "explanation": "According to the World Health Organization, approximately 82% of all blind individuals are 50 years of age or older.",
+        "source": "https://www.emro.who.int/control-and-preventions-of-blindness-and-deafness/announcements/global-estimates-on-visual-impairment.html"
       },
       {
         "val": 0,
@@ -1469,7 +1474,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
         "val": 1,
         "type": "1",
         "content": "16 million",
-        "explanation": "According to the CDC, at least 16 million adults have cognitive impairments (https://www.cdc.gov/pcd/issues/2023/23_0182.htm)."
+        "explanation": "According to the CDC, at least 16 million adults have cognitive impairments.",
+        "source": "https://www.cdc.gov/pcd/issues/2023/23_0182.htm"
       },
       {
         "val": 0,
@@ -1747,7 +1753,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
         "val": 1,
         "type": "0",
         "content": "3 Billion",
-        "explanation": "According to the ACLU, Clearview AI illegally captured and stored 3 billion facial images (https://www.aclu.org/cases/aclu-v-clearview-ai)."
+        "explanation": "According to the ACLU, Clearview AI illegally captured and stored 3 billion facial images.",
+        "source": "https://www.aclu.org/cases/aclu-v-clearview-ai"
       },
       {
         "val": 0,
@@ -2404,7 +2411,8 @@ to test your knowledge. Click "Next" to start!', e'{
         "val": 1,
         "type": "2",
         "content": "Human Rights",
-        "explanation": "According to the IEEE, human rights is one of the eight principles to follow when developing AI (https://standards.ieee.org/wp-content/uploads/import/documents/other/ead1e_general_principles.pdf)."
+        "explanation": "According to the IEEE, human rights is one of the eight principles to follow when developing AI.",
+        "source": "https://standards.ieee.org/wp-content/uploads/import/documents/other/ead1e_general_principles.pdf"
       },
       {
         "val": 0,
@@ -3116,7 +3124,8 @@ to test your knowledge. Click "Next" to start!', e'{
         "val": 1,
         "type": "3",
         "content": "Target 8th grade reading level",
-        "explanation": "To reach a broader audience, an 8th grade reading level is recommended (https://pmc.ncbi.nlm.nih.gov/articles/PMC8328867/)."
+        "explanation": "To reach a broader audience, an 8th grade reading level is recommended.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8328867/"
       }
     ],
     "multiChoice": true
@@ -3133,7 +3142,8 @@ to test your knowledge. Click "Next" to start!', e'{
         "val": 1,
         "type": "1",
         "content": "8th grade",
-        "explanation": "To reach a broader audience, an 8th grade reading level is recommended (https://pmc.ncbi.nlm.nih.gov/articles/PMC8328867/)."
+        "explanation": "To reach a broader audience, an 8th grade reading level is recommended.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8328867/"
       },
       {
         "val": 0,
@@ -3155,7 +3165,8 @@ to test your knowledge. Click "Next" to start!', e'{
         "val": 1,
         "type": "0",
         "content": "Number of sentences",
-        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the number of sentences (https://readable.com/readability/gunning-fog-index/)."
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the number of sentences.",
+        "source": "https://readable.com/readability/gunning-fog-index/"
       },
       {
         "val": 0,
@@ -3166,13 +3177,15 @@ to test your knowledge. Click "Next" to start!', e'{
         "val": 1,
         "type": "2",
         "content": "Number of complex words",
-        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the number of complex words (https://readable.com/readability/gunning-fog-index/)."
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the number of complex words.",
+        "source": "https://readable.com/readability/gunning-fog-index/"
       },
       {
         "val": 1,
         "type": "3",
         "content": "Number of words",
-        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the total number of words (https://readable.com/readability/gunning-fog-index/)."
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the total number of words.",
+        "source": "https://readable.com/readability/gunning-fog-index/"
       }
     ],
     "multiChoice": true
@@ -3355,13 +3368,15 @@ e'[
        "val": 1,
        "type": "0",
        "content": "Advocates for the importance of using preferred names",
-       "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate (https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx)."
+       "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate.",
+       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
      },
      {
        "val": 1,
        "type": "1",
        "content": "Outline the best practices for using preferred names at work",
-       "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example (https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx)."
+       "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example.",
+       "source": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
      },
      {
        "val": 0,
@@ -3372,7 +3387,8 @@ e'[
        "val": 1,
        "type": "3",
        "content": "Become familiar with and consistent with someone’s preferred pronouns",
-       "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns (https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx)."
+       "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns.",
+       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
      }
    ],
    "multiChoice": true
@@ -3384,7 +3400,8 @@ e'[
        "val": 1,
        "type": "0",
        "content": "76%",
-       "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job (https://reports.hrc.org/2023-lgbtq-youth-report)."
+       "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job.",
+       "source": "https://reports.hrc.org/2023-lgbtq-youth-report"
      },
      {
        "val": 0,
