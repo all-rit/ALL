@@ -1,6 +1,6 @@
 import React from "react";
-import ALLButton from "../../all-components/ALLButton";
-import Educator from "../../../assets/images/stockImages/Girl3.png";
+import ALLButton from "../../components/all-components/ALLButton";
+import Educator from "../../assets/images/stockImages/Girl3.png";
 const WhatsAvailable = () => {
   return (
     <div className={"tw-h-[30rem] tw-w-full tw-mb-[5rem] tw-relative"}>

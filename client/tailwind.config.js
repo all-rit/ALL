@@ -37,6 +37,7 @@ module.exports = {
         "system-ui",
         "-apple-system",
         "BlinkMacSystemFont",
+        "Calibri",
       ],
     },
     colors: {

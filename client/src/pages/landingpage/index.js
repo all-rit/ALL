@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
-import LabGeneration from "../lab/LabGeneration";
-import GettingInvolved from "../../all-components/GettingInvolved";
+import LabGeneration from "../../components/body/lab/LabGeneration";
+import GettingInvolved from "../../components/all-components/GettingInvolved";
 import DevPartners from "./DevPartners";
 import Carousel from "src/components/all-components/carousel";
-import Girl3 from "../../../assets/images/stockImages/Girl3.png";
-import Girl2 from "../../../assets/images/stockImages/Girl2.png";
-import ALLButton from "../../all-components/ALLButton";
+import Girl3 from "../../assets/images/stockImages/Girl3.png";
+import Girl2 from "../../assets/images/stockImages/Girl2.png";
+import ALLButton from "../../components/all-components/ALLButton";
 import labService from "src/services/LabService";
 import useMainStateContext from "src/reducers/MainContext";
-import YellowBlockSection from "../../all-components/YellowBlockSection";
+import YellowBlockSection from "../../components/all-components/YellowBlockSection";
 
 const Home = () => {
   const { actions } = useMainStateContext();
@@ -54,7 +54,7 @@ const Home = () => {
                 <h1 className="tw-title">
                   Welcome to Accessible Learning Labs
                 </h1>
-                <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-copy">
+                <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-copy xs:tw-text-[1rem] md:tw-text-[1.125rem]">
                   Accessible Learning Labs is an NSF funded initiative aimed at
                   empowering inclusive software and fostering STEM proficiency.
                   We are dedicated to equipping users with the skills and
@@ -69,7 +69,7 @@ const Home = () => {
         <div className="tw-bg-white tw-h-32"></div>
         <img
           src={Girl2}
-          className="tw-absolute tw-h-[75%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xl:tw-visible tw-bottom-0"
+          className="tw-absolute tw-h-[70%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xl:tw-visible tw-bottom-0"
         ></img>
       </div>
 
@@ -90,11 +90,11 @@ const Home = () => {
                 Featured Labs
               </h1>
             </div>
-            <div className="tw-flex tw-flex-row md:tw-flex-col tw-gap-12">
+            <div className="tw-flex tw-flex-row md:tw-flex-col tw-gap-4">
               <ALLButton
                 label={"Join a Group"}
                 onClick={handleNavGroups}
-                className="tw-item"
+                className="tw-mb-6"
               ></ALLButton>
               <ALLButton
                 label={"Explore Labs"}
@@ -151,8 +151,6 @@ const Home = () => {
           "Learn more about the team at Accessible Learning Labs and the amazing things we have in the works!"
         }
       />
-
-      {/* Development Partners */}
       <DevPartners />
 
       {/* Participating Schools */}

@@ -39,15 +39,13 @@ const InfoModal = (props) => {
             </div>
             <ModalBody>
               <ul className="module__more_info">
-                <li className="tw-body-copy tw-py-5 tw-text-sm ">
-                  {fullDescription}
-                </li>
-                <li className="tw-body-copy tw-text-sm ">
+                <li className="tw-body-copy tw-py-5">{fullDescription}</li>
+                <li className="tw-body-copy">
                   Participants will take part in an exercise that will bring the
                   user through simulated problematic scenarios, then ask the
                   user to make changes.
                 </li>
-                <li className="tw-body-copy tw-text-sm tw-py-5">
+                <li className="tw-body-copy tw-py-5">
                   Upon completion of the lab, participants will have achieved
                   the following learning objectives:
                 </li>
@@ -55,14 +53,14 @@ const InfoModal = (props) => {
                   {learningObjectives.map((learningObjective) => (
                     <li
                       key={learningObjective}
-                      className="ml-8 tw-body-copy tw-text-sm list-style-disc"
+                      className="ml-8 tw-body-copy list-style-disc"
                     >
                       {learningObjective}
                     </li>
                   ))}
                 </ul>
-                <li className="tw-body-copy tw-text-sm tw-py-5">Authors:</li>
-                <li className="tw-body-copy tw-text-sm ">{authors}</li>
+                <li className="tw-body-copy tw-py-5">Authors:</li>
+                <li className="tw-body-copy">{authors}</li>
               </ul>
             </ModalBody>
             <ModalFooter>
