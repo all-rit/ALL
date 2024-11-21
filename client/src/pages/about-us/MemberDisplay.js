@@ -85,14 +85,14 @@ const MemberDisplay = (props) => {
   return (
     <>
       {currentMember && (
-        <div className="tw-grid tw-grid-cols-8 tw-gap-x-6">
-          <div className="tw-relative tw-top-3 -tw-left-3 tw-col-start-1 tw-col-span-3 tw-bg-primary-yellow tw-rounded-t-xl tw-p-3">
+        <div className="tw-grid xs:tw-grid-cols-1 md:tw-grid-cols-8 tw-gap-x-6">
+          <div className="tw-relative tw-top-3 -tw-left-3 tw-col-start-1 tw-col-span-3 tw-bg-primary-yellow tw-rounded-t-xl tw-p-3 xs:tw-hidden md:tw-flex">
             <img
               className="tw-object-cover tw-rounded-t-lg tw-min-h-[40rem] tw-max-h-[40rem] tw-w-full tw-pointer-events-none"
               src={`/img/profileImages${currentMember.imageURL}`}
             />
           </div>
-          <div className="tw-mt-12 tw-text-left tw-flex tw-flex-col tw-gap-y-6 tw-col-span-3">
+          <div className="tw-mt-12 tw-text-left tw-flex tw-flex-col tw-gap-y-6 tw-col-span-4 tw-px-6">
             <div id="member">
               <div id="member-name">
                 <h3 className="tw-font-bold tw-text-3xl">
@@ -100,23 +100,23 @@ const MemberDisplay = (props) => {
                 </h3>
               </div>
               <div id="member-details" className="tw-mt-1.5">
-                <p className="tw-text-md tw-font-light tw-leading-snug">
+                <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
                   {currentMember.title}
                 </p>
-                <p className="tw-text-md tw-font-light tw-leading-snug">
+                <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
                   {currentMember.datesActive}
                 </p>
-                <p className="tw-text-md tw-font-light tw-leading-snug">
+                <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
                   {currentMember.affiliation
                     ? currentMember.affiliation
                     : "Rochester Institute of Technology"}
                 </p>
                 {currentMember.aboutme && (
                   <div>
-                    <h4 className="tw-mx-0 tw-mt-3 tw-mb-0 tw-font-bold tw-text-xl">
+                    <h4 className="tw-mx-0 tw-mt-3 tw-mb-3 tw-font-bold tw-text-xl">
                       About Me
                     </h4>
-                    <p className="tw-text-md tw-font-light tw-leading-snug">
+                    <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
                       {currentMember.aboutme}
                     </p>
                   </div>
@@ -138,18 +138,29 @@ const MemberDisplay = (props) => {
             </div>
             {currentMember.favoritelab && (
               <div id="member-favorite-lab">
-                <h4 className="tw-m-0 tw-font-bold tw-text-xl">Favorite Lab</h4>
-                <p className="tw-text-md tw-font-light tw-leading-snug">
+                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-text-xl">
+                  Favorite Lab
+                </h4>
+                <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
                   {"Lab " + currentMember.favoritelab + ": " + currentFavorite}
                 </p>
               </div>
             )}
             {currentMember.labcredits && (
               <div id="member-lab-credits">
-                <h4 className="tw-m-0 tw-font-bold tw-text-xl">Lab Credits</h4>
-                <p className="tw-text-md tw-font-light tw-leading-snug">
+                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-text-xl">
+                  Lab Credits
+                </h4>
+                <p className="tw-pb-3">
                   {labCredits.map((lab) => {
-                    return <p key={lab.id}>{lab}</p>;
+                    return (
+                      <p
+                        className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug"
+                        key={lab.id}
+                      >
+                        {lab}
+                      </p>
+                    );
                   })}
                 </p>
               </div>
@@ -185,29 +196,29 @@ const MemberDisplay = (props) => {
                     onExiting={() => setAnimating(true)}
                     onExited={() => setAnimating(false)}
                   >
-                    <div className="tw-grid tw-grid-cols-5 tw-gap-x-9 tw-py-12 tw-px-24">
+                    <div className="tw-grid xs:tw-grid-cols-1 md:tw-grid-cols-4 tw-grid-rows-0 tw-gap-x-9 tw-py-12 tw-mx-16">
                       {group.map((member) => {
                         return (
                           <button
                             key={member.firstName + member.lastName}
                             onClick={() => handleMemberChange(member)}
-                            className="tw-p-0 tw-flex tw-flex-col tw-bg-white tw-rounded-xl tw-max-w-lg tw-shadow-xl tw-drop-shadow-xl"
+                            className="tw-p-0 tw-flex tw-flex-col tw-bg-white tw-rounded-xl tw-min-w-40 tw-w-full tw-border-0 tw-shadow-lg tw-shadow-labGray tw-my-3"
                           >
                             <img
-                              className="tw-object-cover tw-rounded-t-lg tw-min-h-80 tw-max-h-80 tw-w-full tw-pointer-events-none"
+                              className="tw-object-cover tw-rounded-t-lg tw-min-h-60 tw-max-h-40 tw-w-full tw-pointer-events-none"
                               src={`/img/profileImages${member.imageURL}`}
                             />
-                            <div className="tw-flex tw-flex-col tw-gap-y-3 tw-text-left tw-p-4">
+                            <div className="tw-flex tw-flex-col tw-gap-y-3 tw-text-left tw-p-4 tw-font-poppins">
                               <div>
                                 <h5 className="tw-font-bold tw-text-xl">
                                   {member.firstName} {member.lastName}
                                 </h5>
                               </div>
                               <div>
-                                <p className="tw-text-md tw-font-light tw-leading-snug">
+                                <p className="tw-text-sm tw-font-poppins tw-font-light tw-leading-snug">
                                   {member.title}
                                 </p>
-                                <p className="tw-text-md tw-font-light tw-leading-snug">
+                                <p className="tw-text-sm tw-font-light tw-leading-snug">
                                   {member.datesActive}
                                 </p>
                               </div>

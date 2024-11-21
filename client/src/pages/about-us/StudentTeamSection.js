@@ -19,8 +19,14 @@ const StudentTeamSection = () => {
     // group members into groups of 5
     const groupMembers = (members, setMembers) => {
       const groupedMembers = [];
-      for (let i = 0; i < members.length; i += 5) {
-        groupedMembers.push(members.slice(i, i + 5));
+      if (window.innerWidth > 640) {
+        for (let i = 0; i < members.length; i += 4) {
+          groupedMembers.push(members.slice(i, i + 4));
+        }
+      } else {
+        for (let i = 0; i < members.length; i += 1) {
+          groupedMembers.push(members.slice(i, i + 1));
+        }
       }
       setMembers(groupedMembers);
       members.length > 0 && setCurrentMember(members[0]);
@@ -41,16 +47,26 @@ const StudentTeamSection = () => {
   return (
     <section
       id={"student-team"}
-      className={"tw-min-h-screen tw-flex tw-flex-col tw-bg-primary-blue"}
+      className={
+        "tw-min-h-screen tw-flex tw-flex-col tw-bg-primary-blue tw-pb-10"
+      }
     >
       <div className={"tw-flex tw-flex-col tw-bg-white tw-ml-16"}>
         <div
           className={
-            "tw-flex tw-flex-col tw-gap-y-6 tw-text-left tw-w-[48rem] tw-py-24 tw-px-12"
+            "tw-flex tw-flex-col tw-gap-y-6 tw-text-left xs:tw-w-full md:tw-w-3/4 tw-px-6 tw-pt-10 tw-pb-6"
           }
         >
-          <h2 className={"tw-title-styling-name"}>Meet Our Student Team</h2>
-          <p className={"tw-col-span-6 tw-body-styling-name"}>
+          <h2
+            className={"tw-title-styling-name xs:tw-text-xl md:tw-text-[2rem]"}
+          >
+            Meet Our Student Team
+          </h2>
+          <p
+            className={
+              "tw-col-span-6 tw-body-styling-name xs:tw-text-sm md:tw-text-[1.125rem] tw-leading-snug"
+            }
+          >
             Our labs were made possible by the amazing efforts of our team of
             student developers! We invite you to get to know each team member
             through their individualized cards, and don’t forget to explore our
