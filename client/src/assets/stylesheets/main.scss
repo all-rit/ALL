@@ -35,3 +35,14 @@
 @import "pages/quiz";
 @import "pages/CognitiveInformation";
 @import "pages/Guidance";
+
+@font-face {
+  font-family: "Calibri";
+  src:
+    url("../fonts/calibri.ttf") format("woff2"),
+    url("../fonts/calibri.ttf") format("woff"),
+    url("../fonts/calibri.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5rem;
+}

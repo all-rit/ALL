@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   GROUP_OVERVIEW,
   LAB_OVERVIEW,
-} from "../../../constants/educatorResources/LabOverview";
-import LabService from "../../../services/LabService";
+} from "../../constants/educatorResources/LabOverview";
+import LabService from "../../services/LabService";
 import ResourceRow from "./components/ResourceRow";
 
 const ResourcesSection = () => {

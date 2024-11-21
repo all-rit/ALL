@@ -138,7 +138,7 @@ const Webpage = () => {
           </div>
         </div>
       </div>
-      {isComplete && <Button onClick={handleComplete} buttonText="Continue" />}
+      {isComplete && <Button onClick={handleComplete}>Continue</Button>}
     </div>
   );
 };

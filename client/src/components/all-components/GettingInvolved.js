@@ -5,12 +5,12 @@ const GettingInvolved = () => {
     <div className={"tw-h-[25rem] tw-w-full tw-my-[5rem]"}>
       <div
         className={
-          "tw-h-1/2 tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"
+          "tw-h-full tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"
         }
       >
         <div
           className={
-            "tw-flex tw-flex-row tw-justify-center tw-align-middle tw-border-t-[.75rem] tw-border-r-[.75rem] tw-rounded-tr-lg tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-blue tw-bg-white"
+            "tw-flex tw-flex-row tw-justify-center tw-align-middle tw-h-full tw-border-t-[.75rem] tw-border-r-[.75rem] tw-rounded-tr-lg tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-blue tw-bg-white"
           }
         >
           <div
@@ -23,14 +23,14 @@ const GettingInvolved = () => {
             >
               <h1
                 className={
-                  "tw-title-styling-name tw-text-center lg:tw-text-left tw-w-full tw-my-6 tw-font-poppins tw-leading-tight tw-flex-wrap"
+                  "tw-title-styling-name xs:tw-text-xl md:tw-text-[2rem] tw-text-left lg:tw-text-left tw-w-full tw-my-6 tw-font-poppins tw-leading-tight tw-flex-wrap"
                 }
               >
                 Interested in Getting Involved?
               </h1>
               <p
                 className={
-                  "tw-body-styling-name tw-w-full sm:tw-w-2/3 lg:tw-w-full"
+                  "tw-body-styling-name xs:tw-text-sm md:tw-text-[1.125rem] tw-leading-normal tw-w-full sm:tw-w-2/3 lg:tw-w-full"
                 }
               >
                 Whether you want to implement our labs in your course

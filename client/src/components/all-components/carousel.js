@@ -34,7 +34,9 @@ function display_images_reverse() {
 const Carousel = () => {
   return (
     <>
-      <h1 className="tw-title-styling-name tw-mt-32 tw-mb-20">Participating Schools</h1>
+      <h1 className="tw-title-styling-name tw-mt-32 tw-mb-20">
+        Participating Schools
+      </h1>
       <div className="tw-m-auto tw-relative tw-items-center tw-h-1/6 lg:tw-h-1/4 tw-w-full lg:tw-w-3/4 tw-overflow-hidden">
         <div className="tw-w-full tw-h-full tw-scroll-smooth tw-animate-infinite-scroll tw-whitespace-nowrap">
           {display_images()}
