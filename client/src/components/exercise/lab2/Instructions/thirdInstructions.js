@@ -38,8 +38,8 @@ const ThirdInstructions = ({
     <>
       {!isImagine && (
         <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
-          <p className="tw-title-styling-name">Round 2 Complete</p>
-          <ul className={"tw-font-calibri tw-font-normal tw-body-styling-name"}>
+          <p className="tw-title">Round 2 Complete</p>
+          <ul className={"tw-font-calibri tw-font-normal tw-body-copy"}>
             <li className="tw-pt-3">
               Wow, that was tough! As you can see, this exercise can be very
               difficult for users who are colorblind. The exercise was not
@@ -64,8 +64,8 @@ const ThirdInstructions = ({
                 the background and text).
               </em>
             </li>
-            <h2 className={"tw-title-styling-name tw-py-6"}>Did you know?</h2>
-            <li className="tw-body-styling-name tw-font-medium">
+            <h2 className={"tw-title tw-py-6"}>Did you know?</h2>
+            <li className="tw-body-copy tw-font-medium">
               Color contrast is a measurement of how much two colors differ from
               one another. This measurement makes a huge difference to people
               color vision deficiencies.

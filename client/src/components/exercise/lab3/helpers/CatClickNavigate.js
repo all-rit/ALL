@@ -30,7 +30,7 @@ class CatClickNavigate extends Component {
     return (
       <div id={"catClickMessage"}>
         <p
-          className={"tw-body-styling-name tw-text-white tw-text-center"}
+          className={"tw-body-copy tw-text-white tw-text-center"}
           aria-label={
             "Cat clicked! Please click the 'next' button to continue."
           }

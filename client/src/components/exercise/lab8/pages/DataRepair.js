@@ -189,8 +189,8 @@ const DataRepair = () => {
 
   return (
     <div className={"tw-p-6"}>
-      <h1 className={"tw-title-styling-name tw-text-left tw-my-6"}> Repair </h1>
-      <div className="tw-body-styling-name margin-bottom-2">
+      <h1 className={"tw-title tw-text-left tw-my-6"}> Repair </h1>
+      <div className="tw-body-copy margin-bottom-2">
         {/* instructions for the user */}
         Repair the dataset by assigning the correct polarity to each message.
         <br />

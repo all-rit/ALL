@@ -52,7 +52,7 @@ class ViewFix extends Component {
     return (
       <div className={"tw-p-10"}>
         <h2
-          className={"tw-title-styling-name tw-text-left"}
+          className={"tw-title tw-text-left"}
           aria-label={"Title"}
           onFocus={(e) => textToSpeech(e, "Test Fix")}
         >
@@ -60,7 +60,7 @@ class ViewFix extends Component {
         </h2>
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-copy tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
           onFocus={(e) => textToSpeech(e, "Is your page now more accessible?")}
         >
@@ -68,7 +68,7 @@ class ViewFix extends Component {
         </p>
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-copy tw-font-medium tw-text-left"}
           aria-label={"Body Instructions"}
           onFocus={(e) =>
             textToSpeech(

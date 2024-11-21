@@ -26,10 +26,8 @@ const ExerciseStart = (props) => {
     <Fragment>
       <div className="center-div">
         <div className="guidance margin-bottom-2">
-          <h1 className={"tw-title-styling-name tw-text-left"}>
-            Exercise Start
-          </h1>
-          <p className="tw-body-styling-name tw-my-6">
+          <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
+          <p className="tw-body-copy tw-my-6">
             In this exercise, the user will experience how a neural network
             based AI is trained and implemented. Through a simple game where the
             user must avoid different colored falling shapes, the user will

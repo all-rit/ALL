@@ -23,14 +23,14 @@ class AdvancedInstructions extends Component {
 
     return (
       <div className={"tw-p-10"}>
-        <h2 className={"tw-title-styling-name tw-text-left"}>
+        <h2 className={"tw-title tw-text-left"}>
           {" "}
           Instructions for Advanced Activity{" "}
         </h2>
         <br />
         <div>
           <p
-            className={"tw-body-styling-name tw-font-medium tw-text-left"}
+            className={"tw-body-copy tw-font-medium tw-text-left"}
             aria-label={
               "Instructions for Advanced Activity" +
               "You will have to learn about accessibility by performing a task which will involve finding the accessibility issues in a page." +

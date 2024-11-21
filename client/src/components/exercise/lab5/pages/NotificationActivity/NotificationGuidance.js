@@ -17,7 +17,7 @@ class NotificationGuidance extends Component {
   render() {
     const { actions } = this.props;
     return (
-      <div className="tw-my-6 tw-body-styling-name">
+      <div className="tw-my-6 tw-body-copy">
         <div className="center-div">
           <div className="guidance">
             The activity you completed was meant to stimulate what an individual

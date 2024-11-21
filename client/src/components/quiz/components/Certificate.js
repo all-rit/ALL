@@ -50,9 +50,7 @@ class Certificate extends Component {
         >
           <div className="tw-rounded-xl tw-w-full tw-border-solid tw-border-[0.75rem] tw-border-primary-blue">
             <div className={"tw-py-6"}>
-              <span className={"tw-title-styling-name"}>
-                Certificate of Completion
-              </span>
+              <span className={"tw-title"}>Certificate of Completion</span>
             </div>
             <span
               className={
@@ -69,7 +67,7 @@ class Certificate extends Component {
               )}
             </span>
             <br />
-            <span className={"tw-title-styling-name tw-text-[1.5rem]"}>
+            <span className={"tw-title tw-text-[1.5rem]"}>
               {isImagine ? (
                 <p style={{ fontSize: "50px", textAlign: "center" }}>
                   Empathy Immersion

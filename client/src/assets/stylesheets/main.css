@@ -431,10 +431,6 @@ li {
   flex-wrap: wrap;
 }
 
-.landingpage p {
-  font-size: 16px;
-}
-
 @-webkit-keyframes autoplay {
   0% {
     opacity: 0;

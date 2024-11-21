@@ -54,7 +54,7 @@ class Header extends Component {
               colors={colors}
               changeExerciseColors={changeExerciseColors}
             />
-            <p className="tw-body-styling-name tw-font-medium tw-text-white">
+            <p className="tw-body-copy tw-font-medium tw-text-white">
               Vision Deficiency Simulation:
               <span style={{ fontWeight: "bold", marginLeft: "3px" }}>
                 {exerciseMode === "Main" ? " Off" : " On"}
@@ -81,7 +81,7 @@ class Header extends Component {
                       {colorChange ? (
                         <div className="inlineForm tw-flex tw-items-center tw-justify-between tw-w-full">
                           <LabButton onClick={backButton} label={"Back"} />
-                          <p className={"tw-body-styling-name"}>
+                          <p className={"tw-body-copy"}>
                             Adjust the colors below to be in better color
                             contrast
                           </p>

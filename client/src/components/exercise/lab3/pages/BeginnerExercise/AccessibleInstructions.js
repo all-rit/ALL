@@ -35,10 +35,7 @@ class AccessibleInstructions extends Component {
   render() {
     return (
       <div className={"tw-p-6"}>
-        <h2
-          className={"tw-title-styling-name tw-text-left"}
-          aria-label={"Instructions"}
-        >
+        <h2 className={"tw-title tw-text-left"} aria-label={"Instructions"}>
           Accessibility Instructions
         </h2>
         <br />
@@ -46,7 +43,7 @@ class AccessibleInstructions extends Component {
           <p
             aria-label={"Exercise Instructions"}
             tabIndex={"0"}
-            className={"tw-body-styling-name tw-font-medium"}
+            className={"tw-body-copy tw-font-medium"}
           >
             {this.state.text}
             <br />
@@ -54,11 +51,8 @@ class AccessibleInstructions extends Component {
         </div>
         <br />
         <div className={"tw-text-left"}>
-          <p className={"tw-body-styling-name tw-font-bold"}>Note:</p>
-          <p
-            className={"tw-body-styling-name tw-font-medium"}
-            aria-label={"Note:"}
-          >
+          <p className={"tw-body-copy tw-font-bold"}>Note:</p>
+          <p className={"tw-body-copy tw-font-medium"} aria-label={"Note:"}>
             In the actual project we will show instructions on how to make the
             page more accessible to users. Participants will also be lead
             through the activity of repairing the code.

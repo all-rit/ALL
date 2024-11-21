@@ -147,11 +147,7 @@ const GroupForm = (props) => {
   return (
     <Form className={"tw-w-full"} onSubmit={onFormSubmit}>
       <ModalBody className={"tw-w-full"}>
-        <h4
-          className={
-            "tw-font-poppins tw-title-styling-name tw-text-2xl tw-mb-0"
-          }
-        >
+        <h4 className={"tw-font-poppins tw-title tw-text-2xl tw-mb-0"}>
           {" "}
           Create a Group as the Instructor{" "}
         </h4>
@@ -173,7 +169,7 @@ const GroupForm = (props) => {
               "tw-w-full tw-flex tw-flex-col tw-justify-between tw-text-left"
             }
           >
-            <p className={"tw-title-styling-name tw-font-poppins tw-text-lg"}>
+            <p className={"tw-title tw-font-poppins tw-text-lg"}>
               Assign Color for Group:
             </p>
             <p className={"tw-font-calibri tw-font-medium"}>
@@ -211,7 +207,7 @@ const GroupForm = (props) => {
           </div>
         </FormGroup>
         <hr />
-        <h4 className={"tw-font-poppins tw-title-styling-name tw-text-lg"}>
+        <h4 className={"tw-font-poppins tw-title tw-text-lg"}>
           {" "}
           Assign Labs:{" "}
         </h4>

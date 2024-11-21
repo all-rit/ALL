@@ -28,11 +28,11 @@ const FacadeWebpage = () => {
 
   return (
     <div>
-      <div className="tw-body-styling-name">
+      <div className="tw-body-copy">
         This is ALL University&apos;s current website, built for the US. Can you
         spot the un-localized parts of this website?
       </div>
-      <div className="tw-body-styling-name tw-my-6">
+      <div className="tw-body-copy tw-my-6">
         Click the &apos;Next&apos; button when you&apos;re ready to continue!
       </div>
       <div className="tw-bg-white tw-flex tw-flex-col pb-5">

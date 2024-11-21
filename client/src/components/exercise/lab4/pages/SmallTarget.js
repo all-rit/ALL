@@ -76,7 +76,7 @@ const SmallTarget = () => {
   const instructions = "Click the start button.";
   return (
     <div className={"tw-p-10"}>
-      <h2 className={"tw-title-styling-name tw-text-left"}> Exercise </h2>
+      <h2 className={"tw-title tw-text-left"}> Exercise </h2>
       <AppInstructions instructions={instructions} />
       <div
         style={{

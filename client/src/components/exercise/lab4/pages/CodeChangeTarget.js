@@ -220,8 +220,8 @@ const CodeChangeTarget = () => {
   return (
     <div>
       <div className={"tw-p-4"}>
-        <h2 className="tw-title-styling-name tw-text-left">Repair</h2>
-        <p className="tw-body-styling-name tw-font-medium tw-text-left">
+        <h2 className="tw-title tw-text-left">Repair</h2>
+        <p className="tw-body-copy tw-font-medium tw-text-left">
           The intent of this code repair is to ensure that target sizes are
           large enough for users to easily activate them, especially those with
           limited dexterity. Mice and similar pointing devices can be hard to

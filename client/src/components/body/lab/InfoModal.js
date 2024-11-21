@@ -35,19 +35,19 @@ const InfoModal = (props) => {
           </button>
           <Modal isOpen={modal} toggle={toggle} className={className}>
             <div className="modal-content__header tw-bg-primary-blue tw-text-white">
-              <h1 className={"tw-title-styling-name tw-py-5"}>{labName}</h1>
+              <h1 className={"tw-title tw-py-5"}>{labName}</h1>
             </div>
             <ModalBody>
               <ul className="module__more_info">
-                <li className="tw-body-styling-name tw-py-5 tw-text-sm ">
+                <li className="tw-body-copy tw-py-5 tw-text-sm ">
                   {fullDescription}
                 </li>
-                <li className="tw-body-styling-name tw-text-sm ">
+                <li className="tw-body-copy tw-text-sm ">
                   Participants will take part in an exercise that will bring the
                   user through simulated problematic scenarios, then ask the
                   user to make changes.
                 </li>
-                <li className="tw-body-styling-name tw-text-sm tw-py-5">
+                <li className="tw-body-copy tw-text-sm tw-py-5">
                   Upon completion of the lab, participants will have achieved
                   the following learning objectives:
                 </li>
@@ -55,16 +55,14 @@ const InfoModal = (props) => {
                   {learningObjectives.map((learningObjective) => (
                     <li
                       key={learningObjective}
-                      className="ml-8 tw-body-styling-name tw-text-sm list-style-disc"
+                      className="ml-8 tw-body-copy tw-text-sm list-style-disc"
                     >
                       {learningObjective}
                     </li>
                   ))}
                 </ul>
-                <li className="tw-body-styling-name tw-text-sm tw-py-5">
-                  Authors:
-                </li>
-                <li className="tw-body-styling-name tw-text-sm ">{authors}</li>
+                <li className="tw-body-copy tw-text-sm tw-py-5">Authors:</li>
+                <li className="tw-body-copy tw-text-sm ">{authors}</li>
               </ul>
             </ModalBody>
             <ModalFooter>

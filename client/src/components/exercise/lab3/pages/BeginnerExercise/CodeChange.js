@@ -114,11 +114,11 @@ class CodeChange extends Component {
     const { data, actions } = this.props;
     return (
       <div className={"tw-p-10 tw-text-left tw-flex tw-flex-col"}>
-        <h2 className={"tw-title-styling-name"}> Repair </h2>
+        <h2 className={"tw-title"}> Repair </h2>
         <br />
         <div>
           <p
-            className={"tw-body-styling-name tw-font-medium"}
+            className={"tw-body-copy tw-font-medium"}
             aria-label="First make changes to the code, if not satisfied try again. Then
               click the 'End Activity' button which will appear when you have made
               changes at least once."

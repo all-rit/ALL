@@ -131,21 +131,21 @@ module.exports = {
   plugins: [
     plugin(({ addComponents, theme }) => {
       addComponents({
-        ".title-styling-name": {
+        ".title": {
           fontFamily: theme("fontFamily.poppins"),
           fontSize: "2rem",
           fontWeight: theme("fontWeight.bold"),
         },
-        ".sub-title-styling-name": {
+        ".sub-title": {
           fontFamily: theme("fontFamily.calibri"),
           fontSize: "1.5rem",
           fontWeight: theme("fontWeight.medium"),
         },
-        ".body-styling-name": {
-          font: theme("fontFamily.calibri"),
+        ".body-copy": {
+          fontFamily: theme("fontFamily.calibri"),
           fontSize: "1.125rem",
           fontWeight: theme("fontWeight.medium"),
-          lineHeight: "2rem",
+          lineHeight: "1.6rem",
           textAlign: "left",
         },
       });

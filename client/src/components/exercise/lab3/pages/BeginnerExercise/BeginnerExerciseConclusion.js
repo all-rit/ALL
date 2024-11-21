@@ -19,9 +19,9 @@ class BeginnerExerciseConclusion extends Component {
   render() {
     return (
       <div className={"tw-p-10 tw-text-left"}>
-        <h2 className={"tw-title-styling-name"}>Conclusion</h2>
+        <h2 className={"tw-title"}>Conclusion</h2>
         <br />
-        <p className={"tw-body-styling-name tw-font-medium"}>
+        <p className={"tw-body-copy tw-font-medium"}>
           You have successfully completed the activity!
           <br />
           Click <strong>Return to Start</strong> return to the start of the lab,

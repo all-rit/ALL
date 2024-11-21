@@ -22,10 +22,8 @@ const ExerciseStart = () => {
     <>
       <div className="center-div">
         <div className="guidance margin-bottom-2">
-          <h1 className={"tw-title-styling-name tw-text-left"}>
-            Exercise Start
-          </h1>
-          <p className="tw-body-styling-name tw-my-6">
+          <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
+          <p className="tw-body-copy tw-my-6">
             Welcome to ALL University! ALL University’s primary campus is
             located in the US, but there are also several satellite campuses
             around the world, including the United Kingdom, Japan, and Dubai.
@@ -33,19 +31,19 @@ const ExerciseStart = () => {
             want to expand their website to be accessible to their satellite
             campuses as well.
           </p>
-          <p className="tw-body-styling-name">
+          <p className="tw-body-copy">
             In this exercise, you will assist ALL University in localizing their
             website to be accessible to various locales. As you proceed through
             the localization process, you will see your changes reflected on the
             website for the Dubai campus.
           </p>
-          <p className="tw-body-styling-name tw-my-6">
+          <p className="tw-body-copy tw-my-6">
             On the next page, you will see ALL University’s current website. See
             if you can spot the un-localized parts of the website.
           </p>
         </div>
       </div>
-      <p className="tw-body-styling-name tw-mb-6">
+      <p className="tw-body-copy tw-mb-6">
         Click the &apos;<span className={"tw-font-bold"}>Start</span>&apos;
         button to begin!
       </p>

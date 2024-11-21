@@ -13,7 +13,7 @@ const Links = ({ data }) => {
         {data.map((data, index) => {
           return (
             <a
-              className="link tw-text-primary-blue tw-body-styling-name"
+              className="link tw-text-primary-blue tw-body-copy"
               key={index}
               href={data.link}
               target="_blank"

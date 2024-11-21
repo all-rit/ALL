@@ -18,10 +18,10 @@ class NotificationAccessible extends Component {
     const { actions } = this.props;
     return (
       <div className="mb-5 tw-h-full">
-        <p className="tw-sub-title-styling-name tw-mt-6 tw-text-left">
+        <p className="tw-sub-title tw-mt-6 tw-text-left">
           There is a notification that has appeared. Click on it to view it!
         </p>
-        <p className={"tw-sub-title-styling-name tw-mb-6 tw-text-left"}>
+        <p className={"tw-sub-title tw-mb-6 tw-text-left"}>
           Note: It can only be viewed once.
         </p>
         <Notification message={AccessibleMessage} />

@@ -15,12 +15,10 @@ class AdvancedExercise extends Component {
   render() {
     return (
       <div className={"tw-p-10"}>
-        <h2 className={"tw-title-styling-name tw-text-left"}>
-          Advanced Exercise
-        </h2>
+        <h2 className={"tw-title tw-text-left"}>Advanced Exercise</h2>
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-copy tw-font-medium tw-text-left"}
           aria-label={"instructions"}
         >
           The learning objective of this lab is for students to learn and apply

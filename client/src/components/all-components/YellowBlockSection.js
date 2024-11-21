@@ -32,22 +32,8 @@ const YellowBlockSection = (props) => {
                 "tw-flex tw-flex-col xs:tw-w-full lg:tw-w-3/4 tw-h-full tw-justify-center"
               }
             >
-              <p
-                className={
-                  "tw-title-styling-name xs:tw-text-sm md:tw-text-[1.5rem] tw-my-6 tw-font-poppins tw-leading-3"
-                }
-              >
-                {" "}
-                {title}
-              </p>
-              <p
-                className={
-                  "tw-font-calibri tw-font-medium xs:tw-text-sm lg:tw-text-[1.125rem] tw-leading-normal"
-                }
-              >
-                {" "}
-                {body}
-              </p>
+              <p className={"tw-title tw-my-6 tw-leading-3"}> {title}</p>
+              <p className={"tw-body-copy tw-leading-normal"}> {body}</p>
             </div>
             <div
               className={

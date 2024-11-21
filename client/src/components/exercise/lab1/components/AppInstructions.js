@@ -9,9 +9,9 @@ class AppInstructions extends Component {
     if (!visible) return null;
 
     return (
-      <p className="tw-body-styling-name">
+      <p className="tw-body-copy">
         <b>Goal:</b> Find the box with the treasure.
-        <ul className="tw-body-styling-name">
+        <ul className="tw-body-copy">
           <li className={"tw-py-6 "}>Opening the hint box costs 25 points.</li>
           <li>
             The quicker you find the box with the treasure, the more points you

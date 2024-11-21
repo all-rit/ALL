@@ -34,10 +34,7 @@ class ExerciseStart extends Component {
     return (
       <Fragment>
         <div className="center-div">
-          <h2 className={"tw-title-styling-name"}>
-            {" "}
-            Select Exercise Difficulty
-          </h2>
+          <h2 className={"tw-title"}> Select Exercise Difficulty</h2>
           <AppInstructions />
           <button
             onClick={this.handleSubmit}

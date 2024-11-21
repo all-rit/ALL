@@ -22,7 +22,7 @@ const ExtraNav = () => {
         expand="md"
       >
         <NavbarBrand
-          className={"tw-title-styling-name tw-text-[1.25rem]"}
+          className={"tw-title tw-text-[1.25rem]"}
           href="javascript:void(0);"
         >
           Accessibility

@@ -108,7 +108,7 @@ class ProblemExplanation extends Component {
     return (
       <div>
         <h2
-          className={"tw-title-styling-name tw-text-left"}
+          className={"tw-title tw-text-left"}
           aria-label={"Problem Explanation"}
           onFocus={(e) => textToSpeech(e, "Problem Explanation")}
         >
@@ -117,7 +117,7 @@ class ProblemExplanation extends Component {
 
         <br></br>
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-copy tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
           onFocus={(e) =>
             textToSpeech(e, "How do we make the page more accessible?")
@@ -127,7 +127,7 @@ class ProblemExplanation extends Component {
         </p>
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-copy tw-font-medium tw-text-left"}
           aria-label={"Body Instructions"}
           onFocus={(e) =>
             textToSpeech(
@@ -144,7 +144,7 @@ class ProblemExplanation extends Component {
         </p>
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-copy tw-font-medium tw-text-left"}
           aria-label={"Aria Label definition"}
           onFocus={(e) =>
             textToSpeech(
@@ -161,7 +161,7 @@ class ProblemExplanation extends Component {
           <a
             target="_blank"
             className={
-              "tw-body-styling-name tw-font-medium tw-text-left tw-text-primary-blue"
+              "tw-body-copy tw-font-medium tw-text-left tw-text-primary-blue"
             }
             href={
               "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/" +

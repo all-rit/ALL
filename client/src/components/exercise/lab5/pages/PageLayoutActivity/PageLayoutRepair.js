@@ -147,7 +147,7 @@ class PageLayoutRepair extends Component {
     const { visible, handlers, state, data, actions } = this.props;
     return (
       <div>
-        <div className="tw-body-styling-name tw-my-6 tw-text-left">
+        <div className="tw-body-copy tw-my-6 tw-text-left">
           Let's optimize the page layout and font to allow for easier reading.
           Click <strong>'Repair'</strong> to make the appropriate changes.
         </div>

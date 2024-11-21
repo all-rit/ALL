@@ -51,19 +51,16 @@ const SecondTrainingAI = (props) => {
 
   return (
     <div>
-      <h1 className={"tw-title-styling-name tw-text-left tw-pb-6"}>
-        {" "}
-        AI Training Part 2
-      </h1>
+      <h1 className={"tw-title tw-text-left tw-pb-6"}> AI Training Part 2</h1>
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
-          <p className={"tw-body-styling-name tw-text-left"}>
+          <p className={"tw-body-copy tw-text-left"}>
             Clearly, the AI had a bias towards a specific color. While the
             context of the bias is within a simulation game, unwanted bias can
             be problematic because it can lead to unfair discrimination in a
             system, resulting in the reduction of trust towards AI.
           </p>
-          <p className={"tw-body-styling-name tw-text-left tw-py-6"}>
+          <p className={"tw-body-copy tw-text-left tw-py-6"}>
             Attempt to eliminate this bias by establishing an equal distribution
             of weights among the colored shapes. In other words, ensure all
             colored shapes are hit an equal number of times. This will

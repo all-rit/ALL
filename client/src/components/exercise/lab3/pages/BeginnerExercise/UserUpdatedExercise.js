@@ -176,7 +176,7 @@ class UserUpdatedExercise extends Component {
     return (
       <div className={"tw-bg-black tw-rounded-lg tw-h-full"}>
         <h2
-          className={"tw-title-styling-name tw-text-white tw-p-6"}
+          className={"tw-title tw-text-white tw-p-6"}
           aria-label={
             data.repair3.changesApplied
               ? "Accessible Exercise"
@@ -196,9 +196,7 @@ class UserUpdatedExercise extends Component {
             : "Inaccessible Exercise"}
         </h2>
         <p
-          className={
-            "tw-px-[3rem] tw-text-white tw-body-styling-name tw-font-medium"
-          }
+          className={"tw-px-[3rem] tw-text-white tw-body-copy tw-font-medium"}
           onFocus={(e) =>
             this.textToSpeech(
               e,

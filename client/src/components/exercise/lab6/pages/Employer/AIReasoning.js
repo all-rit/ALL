@@ -16,17 +16,15 @@ const AIReasoning = () => {
 
   return (
     <div className="center-div">
-      <h2 className="tw-title-styling-name tw-text-left tw-my-6">
-        AI Candidate Reasoning:
-      </h2>
-      <div className="tw-body-styling-name tw-text-left tw-my-6">
+      <h2 className="tw-title tw-text-left tw-my-6">AI Candidate Reasoning:</h2>
+      <div className="tw-body-copy tw-text-left tw-my-6">
         The reason that the AI was not recommending certain people it should
         have been was because the AI was taking into account whether the
         interviewee was wearing glasses or a hat in the image. It had nothing to
         do with the applicants work qualities, the AI was prejudice against what
         the people were wearing in the pictures.
       </div>
-      <div className="tw-body-styling-name tw-text-left tw-my-6">
+      <div className="tw-body-copy tw-text-left tw-my-6">
         {" "}
         Click the &quot;Continue&quot; button to proceed to the repair section
         to repair the AI!

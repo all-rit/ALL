@@ -82,7 +82,7 @@ const Labs = (props) => {
               >
                 <div
                   className={
-                    "tw-text-5xl tw-font-poppins tw-title-styling-name tw-my-[1rem]"
+                    "tw-text-5xl tw-font-poppins tw-title tw-my-[1rem]"
                   }
                 >
                   My Labs
@@ -143,9 +143,7 @@ const Labs = (props) => {
                     Completed
                   </button>
                 </div>
-                <h1 className={"tw-title-styling-name tw-mt-5"}>
-                  {currentHeader}
-                </h1>
+                <h1 className={"tw-title tw-mt-5"}>{currentHeader}</h1>
                 <div className={"tw-p-6 tw-w-full"}>
                   {searchSubmitted ? (
                     <div>

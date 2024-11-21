@@ -4,12 +4,10 @@ import PropTypes from "prop-types";
 const AppInstructions = (props) => {
   return (
     <div className={"tw-p-3"}>
-      <p className="tw-body-styling-name tw-font-medium tw-text-left">
+      <p className="tw-body-copy tw-font-medium tw-text-left">
         {props.instructions}
       </p>
-      <p
-        className={`${props.class} tw-body-styling-name tw-font-medium tw-text-left`}
-      >
+      <p className={`${props.class} tw-body-copy tw-font-medium tw-text-left`}>
         {props.instructions2}
       </p>
     </div>

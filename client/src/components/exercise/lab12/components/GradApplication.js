@@ -97,7 +97,7 @@ const GradApplication = () => {
     <Form onSubmit={handleSubmit}>
       <div className="tw-flex tw-justify-center">
         <div className="tw-mt-10 tw-shadow-2xl-top-bottom tw-rounded-3xl tw-min-w-72 tw-w-9/12 lg:tw-w-7/12 tw-h-full tw-p-10">
-          <h1 className="tw-title-styling-name tw-font-bold tw-mb-8">
+          <h1 className="tw-title tw-font-bold tw-mb-8">
             Apply for Graduation at ALL University
           </h1>
           <div className="tw-text-left tw-p-6">

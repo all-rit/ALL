@@ -19,11 +19,8 @@ class ExerciseStart extends Component {
     // const { user, state, plays } = this.props;
     return (
       <div className="tw-p-6">
-        <h2 className={"tw-title-styling-name tw-text-left tw-my-6"}>
-          {" "}
-          Exercise Start{" "}
-        </h2>
-        <div className="tw-body-styling-name tw-text-left tw-my-6">
+        <h2 className={"tw-title tw-text-left tw-my-6"}> Exercise Start </h2>
+        <div className="tw-body-copy tw-text-left tw-my-6">
           We will explore a series of cognitive antipatterns that especially
           challenge cognitively impaired individuals. After each antipattern we
           will learn and correct our code to make it more accessible. Finally,

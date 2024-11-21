@@ -16,11 +16,9 @@ const BypassBlocksGuideline = () => {
 
   return (
     <div className={"tw-p-10"}>
-      <h2 className="tw-title-styling-name tw-text-left">
-        Was That Difficult?
-      </h2>
+      <h2 className="tw-title tw-text-left">Was That Difficult?</h2>
       <br />
-      <p className="tw-body-styling-name tw-font-medium tw-text-left">
+      <p className="tw-body-copy tw-font-medium tw-text-left">
         People with mobile dexterity disabilities sometimes use a keyboard to
         navigate the page. This can be cumbersome if there is no way to skip to
         the main section. Software should follow the{" "}

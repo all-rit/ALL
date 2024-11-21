@@ -67,11 +67,9 @@ const InformationLetterEmail = (props) => {
   return (
     <div className="center-div">
       {sectionTitle && (
-        <h1 className="tw-title-styling-name tw-text-left">{sectionTitle}</h1>
+        <h1 className="tw-title tw-text-left">{sectionTitle}</h1>
       )}
-      <div className="tw-body-styling-name tw-text-left tw-py-6">
-        {descriptionText}
-      </div>
+      <div className="tw-body-copy tw-text-left tw-py-6">{descriptionText}</div>
 
       <div className="tw-flex flex-col tw-justify-center tw-relative tw-rounded-2xl tw-shadow-2xl">
         <div className="tw-w-full tw-h-auto tw-bg-[#E8EBED] tw-rounded-2xl tw-py-5 tw-flex tw-flex-col">

@@ -31,7 +31,7 @@ const WhatsAvailable = () => {
             >
               <p
                 className={
-                  "tw-title-styling-name xs:tw-text-[1.5rem] md:tw-text-[1.5rem] tw-my-3 tw-font-poppins md:lg:tw-w-1/2 tw-leading-tight"
+                  "tw-title xs:tw-text-[1.5rem] md:tw-text-[1.5rem] tw-my-3 tw-font-poppins md:lg:tw-w-1/2 tw-leading-tight"
                 }
               >
                 {" "}

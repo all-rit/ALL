@@ -17,9 +17,9 @@ class Results extends Component {
 
     return (
       <div className="results">
-        <div className="tw-sub-title-styling-name">Exercise Over</div>
+        <div className="tw-sub-title">Exercise Over</div>
 
-        <div className="results__content tw-sub-title-styling-name">
+        <div className="results__content tw-sub-title">
           <p className="results__sentence">
             Great job! Here are your statistics:
           </p>

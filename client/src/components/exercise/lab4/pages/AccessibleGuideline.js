@@ -15,10 +15,8 @@ const AccessibleGuideline = () => {
   };
   return (
     <div className={"tw-p-6"}>
-      <h2 className="tw-title-styling-name tw-text-left tw-my-6">
-        Was That Difficult?
-      </h2>
-      <p className="tw-body-styling-name tw-text-left">
+      <h2 className="tw-title tw-text-left tw-my-6">Was That Difficult?</h2>
+      <p className="tw-body-copy tw-text-left">
         People with mobile dexterity disabilities sometimes use a keyboard to
         navigate the page. It is imperative that elements that are accessible
         through mouse are also navigable by keyboard. Software should follow the{" "}
@@ -33,7 +31,7 @@ const AccessibleGuideline = () => {
         </a>
         : Make all functionality available from a keyboard.
       </p>
-      <p className={"tw-my-6 tw-body-styling-name tw-text-left"}>
+      <p className={"tw-my-6 tw-body-copy tw-text-left"}>
         Go ahead and make the changes to the code by clicking “continue”.
       </p>
 

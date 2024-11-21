@@ -79,10 +79,10 @@ const Repair = (props) => {
   };
   return (
     <div>
-      <h1 className={"tw-title-styling-name tw-text-left"}> {headingText} </h1>
+      <h1 className={"tw-title tw-text-left"}> {headingText} </h1>
       <div className="tw-pb-10 tw-text-xl ">
         {repairText.map((text) => (
-          <p className="tw-body-styling-name tw-text-left tw-pt-6" key={text}>
+          <p className="tw-body-copy tw-text-left tw-pt-6" key={text}>
             {text}
           </p>
         ))}

@@ -107,7 +107,7 @@ const Webpage = () => {
 
   return (
     <div>
-      <div className="tw-sub-title-styling-name tw-my-6">
+      <div className="tw-sub-title tw-my-6">
         Click on all 3 sections of the website that need to be localized. The
         changes you make will be reflected for the Dubai campus.
       </div>

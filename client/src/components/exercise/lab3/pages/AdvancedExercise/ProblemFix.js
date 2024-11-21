@@ -220,13 +220,11 @@ class ProblemFix extends Component {
   render() {
     return (
       <div>
-        <h2 className={"tw-title-styling-name tw-text-left"}>
-          Advanced Exercise Repair
-        </h2>
+        <h2 className={"tw-title tw-text-left"}>Advanced Exercise Repair</h2>
         <br />
         <div>
           <p
-            className={"tw-body-styling-name tw-font-medium tw-text-left"}
+            className={"tw-body-copy tw-font-medium tw-text-left"}
             aria-label={
               "First make changes to the code, if not satisfied try again.\n" +
               "                    Then click the 'End Activity' button which will appear when you have made changes " +
@@ -241,17 +239,13 @@ class ProblemFix extends Component {
         <br />
         <ul className={"tw-px-10"}>
           <li
-            className={
-              "tw-body-styling-name tw-font-medium tw-text-left tw-list-disc"
-            }
+            className={"tw-body-copy tw-font-medium tw-text-left tw-list-disc"}
             aria-label={"Subtitle Instructions"}
           >
             Update the aria-tags to repair the accessibility issues.
           </li>
           <li
-            className={
-              "tw-body-styling-name tw-font-medium tw-text-left tw-list-disc"
-            }
+            className={"tw-body-copy tw-font-medium tw-text-left tw-list-disc"}
             aria-label={"Body Instructions"}
           >
             Make changes and then press update code.

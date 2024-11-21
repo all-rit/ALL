@@ -19,16 +19,14 @@ class AdvancedExerciseConclusion extends Component {
   render() {
     return (
       <div className={"tw-p-6"}>
-        <h2 className="tw-title-styling-name tw-text-left">
-          Advanced Exercise Complete
-        </h2>
+        <h2 className="tw-title tw-text-left">Advanced Exercise Complete</h2>
         <br />
-        <p className={"tw-body-styling-name tw-font-medium tw-text-left"}>
+        <p className={"tw-body-copy tw-font-medium tw-text-left"}>
           Congratulations! You have successfully completed the Screen Readers
           Exercise!
         </p>
         <br />
-        <p className={"tw-body-styling-name tw-font-medium tw-text-left"}>
+        <p className={"tw-body-copy tw-font-medium tw-text-left"}>
           Click the <strong> Return to Exercise Start </strong> button below to
           restart the exercise, or click the <strong> Next</strong> button in
           the bottom right.

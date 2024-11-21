@@ -19,7 +19,7 @@ class PageLayoutGuidance extends Component {
     return (
       <Fragment>
         <div className="center-div mb-5">
-          <div className="tw-body-styling-name tw-my-6 tw-text-left">
+          <div className="tw-body-copy tw-my-6 tw-text-left">
             The text you read was meant to stimulate what an individual with
             cognitive disability experiences. As read earlier, these individuals
             have a hard time reading under time constraint and interpreting the

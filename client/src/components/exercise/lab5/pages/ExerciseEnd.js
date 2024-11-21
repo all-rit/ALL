@@ -23,20 +23,16 @@ class ExerciseEnd extends Component {
     // const { user, state, plays } = this.props;
     return (
       <div>
-        <h2 className={"tw-title-styling-name tw-text-left tw-px-5"}>
-          Exercise Complete
-        </h2>
+        <h2 className={"tw-title tw-text-left tw-px-5"}>Exercise Complete</h2>
         <div className="center-div">
-          <div className="cognitive_instructions tw-body-styling-name">
+          <div className="cognitive_instructions tw-body-copy">
             <div>
-              <h4 className="tw-sub-title-styling-name tw-text-left">
+              <h4 className="tw-sub-title tw-text-left">
                 Congratulations! You have successfully completed the Cognitive
                 Impairment Exercise!
               </h4>
             </div>
-            <h4 className="tw-sub-title-styling-name">
-              Here are some key takeaways:
-            </h4>
+            <h4 className="tw-sub-title">Here are some key takeaways:</h4>
             <div className="flex-boxes">
               <div>
                 <div className="icon">
@@ -58,7 +54,7 @@ class ExerciseEnd extends Component {
               </div>
             </div>
           </div>
-          <h4 className="tw-sub-title-styling-name">
+          <h4 className="tw-sub-title">
             To start the exercise again, clicked the{" "}
             <strong>Return to Exercise Start</strong> button below. To move on
             to the reinforcement section, scroll to down and click the{" "}

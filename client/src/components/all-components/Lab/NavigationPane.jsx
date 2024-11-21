@@ -83,7 +83,7 @@ const NavigationPane = (props) => {
           "tw-py-6 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[8rem]"
         }
       >
-        <h1 className={"tw-title-styling-name tw-text-xl"}>{props.title} </h1>
+        <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
       </div>
       <div
         className={
@@ -91,7 +91,7 @@ const NavigationPane = (props) => {
         }
       >
         <div className={"tw-flex tw-flex-col tw-gap-y-6"}>
-          <h2 className={"tw-sub-title-styling-name tw-font-bold tw-pl-4"}>
+          <h2 className={"tw-sub-title tw-font-bold tw-pl-4"}>
             Table of Contents
           </h2>
           <div className={"tw-flex tw-flex-col tw-gap-y-9"}>

@@ -26,14 +26,14 @@ const FavorableHiringCandidate = () => {
   return (
     <>
       <div className="center-shift">
-        <h2 className="tw-title-styling-name">What MegaCorp is looking for:</h2>
-        <div className="tw-body-styling-name">
+        <h2 className="tw-title">What MegaCorp is looking for:</h2>
+        <div className="tw-body-copy">
           MegaCorp uses an AI assistant in its hiring process to help evaluate a
           large number of canidates
         </div>
         <div className="tw-container tw-justify-center">
           <ul className="tw-inline-flex tw-justify-evenly">
-            <ul className="tw-w-1/3 tw-body-styling-name">
+            <ul className="tw-w-1/3 tw-body-copy">
               <li className="recommendation__center">
                 <Recomendation aiRecommendation />
               </li>

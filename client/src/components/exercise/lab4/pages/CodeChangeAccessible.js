@@ -163,16 +163,16 @@ const CodeChangeAccessible = () => {
   return (
     <div>
       <div className={"tw-p-4"}>
-        <h2 className="tw-title-styling-name tw-text-left tw-my-6">Repair</h2>
-        <p className="tw-body-styling-name tw-text-left">
+        <h2 className="tw-title tw-text-left tw-my-6">Repair</h2>
+        <p className="tw-body-copy tw-text-left">
           The intent of this code repair is to ensure that, wherever possible,
           content can be operated through a keyboard or keyboard interface.
         </p>
-        <p className="tw-body-styling-name tw-text-left tw-my-3">
+        <p className="tw-body-copy tw-text-left tw-my-3">
           <strong>Tabindex=&quot;-1&quot;</strong> prevents access through
           keyboard navigation.
         </p>
-        <p className="tw-body-styling-name tw-text-left tw-my-3">
+        <p className="tw-body-copy tw-text-left tw-my-3">
           <strong>Tabindex=&quot;2&quot;</strong> (positive non-zero) means
           focusable in sequential keyboard navigation, with its order defined by
           the value of the number. Tabindex=&quot;0&quot; means that the element

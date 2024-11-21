@@ -118,7 +118,7 @@ const Reading = (props) => {
     >
       <h2
         className={
-          "tw-title-styling-name tw-text-left tw-bg-white tw-w-[100%] tw-px-10 tw-text-[2.5rem]"
+          "tw-title tw-text-left tw-bg-white tw-w-[100%] tw-px-10 tw-text-[2.5rem]"
         }
       >
         {" "}
@@ -128,10 +128,8 @@ const Reading = (props) => {
         <div className="study tw-h-full tw-bg-white p-5 tw-rounded-lg">
           {readingData?.description !== "" ? (
             <>
-              <h3 className={"tw-title-styling-name"}>
-                {readingData?.description.header}
-              </h3>
-              <p className={"tw-body-styling-name"}>
+              <h3 className={"tw-title"}>{readingData?.description.header}</h3>
+              <p className={"tw-body-copy"}>
                 {readingData?.description.content}
               </p>
             </>
@@ -142,14 +140,12 @@ const Reading = (props) => {
             <>
               <h3
                 className={
-                  isImagine
-                    ? "tw-text-[4vw] lg:tw-text-[3.5vh]"
-                    : "tw-title-styling-name"
+                  isImagine ? "tw-text-[4vw] lg:tw-text-[3.5vh]" : "tw-title"
                 }
               >
                 {readingData?.piechart.header}
               </h3>
-              <div className="flex tw-body-styling-name">
+              <div className="flex tw-body-copy">
                 <Pie
                   data={readingData?.piechart.data}
                   height={!isImagine && 100}
@@ -167,7 +163,7 @@ const Reading = (props) => {
                   className={
                     isImagine
                       ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                      : " tw-body-styling-name tw-text-[#a3a3a3]"
+                      : " tw-body-copy tw-text-[#a3a3a3]"
                   }
                 >
                   {data}
@@ -187,7 +183,7 @@ const Reading = (props) => {
                       className={
                         isImagine
                           ? "tw-text-[4vw] lg:tw-text-[3.5vh]"
-                          : "tw-title-styling-name tw-text-left"
+                          : "tw-title tw-text-left"
                       }
                     >
                       {data.header}
@@ -202,7 +198,7 @@ const Reading = (props) => {
                             className={
                               isImagine
                                 ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                                : "tw-body-styling-name"
+                                : "tw-body-copy"
                             }
                           >
                             {content}

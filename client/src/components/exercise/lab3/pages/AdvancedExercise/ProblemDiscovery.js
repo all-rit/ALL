@@ -60,7 +60,7 @@ class ProblemDiscovery extends Component {
     return (
       <div>
         <h2
-          className={"tw-title-styling-name tw-text-left"}
+          className={"tw-title tw-text-left"}
           aria-label={"Discover the problem"}
           onFocus={(e) => textToSpeech(e, "Discover the problem")}
         >
@@ -69,7 +69,7 @@ class ProblemDiscovery extends Component {
 
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-copy tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
           onFocus={(e) =>
             textToSpeech(
@@ -83,7 +83,7 @@ class ProblemDiscovery extends Component {
         </p>
         <br />
         <p
-          className={"tw-body-styling-name tw-text-left tw-font-medium"}
+          className={"tw-body-copy tw-text-left tw-font-medium"}
           aria-label={"Body Instructions"}
           onFocus={(e) =>
             textToSpeech(

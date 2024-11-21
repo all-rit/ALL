@@ -18,7 +18,7 @@ const LoginBody = (props) => {
         "tw-flex tw-flex-col tw-align-middle tw-h-full tw-justify-center"
       }
     >
-      <div className="xs:tw-text-md tw-font-poppins sm:tw-text-3xl md:lg:tw-text-5xl tw-title-styling-name tw-text-primary-blue tw-flex tw-flex-row tw-justify-center tw-align-middle">
+      <div className="xs:tw-text-md tw-font-poppins sm:tw-text-3xl md:lg:tw-text-5xl tw-title tw-text-primary-blue tw-flex tw-flex-row tw-justify-center tw-align-middle">
         Welcome
       </div>
       <div

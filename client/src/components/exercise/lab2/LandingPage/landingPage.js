@@ -19,18 +19,18 @@ const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
   return (
     <div>
       <div id="Header" className={"tw-px-6"}>
-        <p className="tw-title-styling-name tw-text-left">Exercise Start</p>
+        <p className="tw-title tw-text-left">Exercise Start</p>
       </div>
       <div id="Body">
         <MainInstructions />
         <div className="mainInstructionsContainer tw-py-4 tw-text-left">
-          <p className="tw-body-styling-name tw-font-medium">
+          <p className="tw-body-copy tw-font-medium">
             To help track your exercise history and to help ensure we are
             providing you with the best possible learning experience, please
             sign in with Google.
           </p>
         </div>
-        <p className="tw-body-styling-name tw-text-center">
+        <p className="tw-body-copy tw-text-center">
           When you are ready, click the <strong>'Let's Get Started'</strong>{" "}
           button to begin the exercise
         </p>

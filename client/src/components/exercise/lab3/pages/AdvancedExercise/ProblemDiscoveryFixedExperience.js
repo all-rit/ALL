@@ -59,7 +59,7 @@ class ProblemDiscoveryFixedExperience extends Component {
     return (
       <div>
         <h2
-          className={"tw-title-styling-name tw-text-left"}
+          className={"tw-title tw-text-left"}
           aria-label={"Discover the problem"}
           tabIndex={"0"}
           onFocus={(e) => textToSpeech(e, "Repaired version of previous page.")}
@@ -69,7 +69,7 @@ class ProblemDiscoveryFixedExperience extends Component {
 
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-copy tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
           onFocus={(e) =>
             textToSpeech(
