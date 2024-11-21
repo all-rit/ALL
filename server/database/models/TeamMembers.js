@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.BOOLEAN,
           defaultValue: true,
         },
+        aboutMe: {type: DataTypes.TEXT},
+        favoriteLab: {type: DataTypes.INTEGER},
+        labCredits: {type: DataTypes.JSON},
       },
       {tableName: 'team_members'},
   );

@@ -37,6 +37,7 @@ module.exports = {
         "system-ui",
         "-apple-system",
         "BlinkMacSystemFont",
+        "Calibri",
       ],
     },
     colors: {
@@ -142,7 +143,7 @@ module.exports = {
           fontWeight: theme("fontWeight.medium"),
         },
         ".body-styling-name": {
-          font: theme("fontFamily.calibri"),
+          fontFamily: theme("fontFamily.calibri"),
           fontSize: "1.125rem",
           fontWeight: theme("fontWeight.medium"),
           lineHeight: "2rem",

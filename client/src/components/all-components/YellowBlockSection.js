@@ -34,7 +34,7 @@ const YellowBlockSection = (props) => {
             >
               <p
                 className={
-                  "tw-title-styling-name xs:tw-text-sm md:tw-text-[1.5rem] tw-my-6 tw-font-poppins tw-leading-3"
+                  "tw-title-styling-name xs:tw-text-xl md:tw-text-[2rem] tw-my-6 tw-font-poppins tw-leading-3"
                 }
               >
                 {" "}

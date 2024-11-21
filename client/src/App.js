@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
+{
+  /* Body Components */
+}
 import { default as About } from "./components/body/About";
 import { default as Reading } from "./components/body/Reading/Reading";
-
 import { default as Reinforcement } from "./components/body/Reinforcement";
+import { default as Quiz } from "./components/quiz/components/QuizHandler";
 
-import { Sections } from "./constants/index";
+{
+  /* Exercise Components */
+}
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
@@ -18,34 +23,43 @@ import { default as ExerciseLab8 } from "./components/exercise/lab8/Main";
 import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
 import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
-import { default as TestComponents } from "./components/exercise/test-components/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
+import { Sections } from "./constants/index";
 
-import { default as LandingPageBody } from "./components/body/landingpage/index";
-import { default as SiteMap } from "./components/body/landingpage/sitemap";
-import { default as Error } from "./components/body/landingpage/error";
-import { default as Profile } from "./components/body/profilepage/Profile";
-import { default as Imagine } from "./components/imagine23/Main";
-
-import { default as Quiz } from "./components/quiz/components/QuizHandler";
-import { stateChange } from "./helpers/Redirect";
-import LabFooter from "./components/footer/footer";
+{
+  /* Persistent Components */
+}
 import Header from "./components/header/header";
-import { actions as appActions } from "./reducers/lab1/AppReducer";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "./reducers/MainReducer";
-import "./assets/stylesheets/main.scss";
-import { Router } from "@reach/router";
-import { connect } from "react-redux";
-import { globalHistory } from "@reach/router";
-const parse = require("url-parse");
-import useMainStateContext from "./reducers/MainContext";
-import NavigationPane from "./components/all-components/Lab/NavigationPane";
-import LabsPage from "./components/body/labspage/LabsPage";
-import EducatorResources from "./components/body/EducatorResources/EducatorResources";
+import LabFooter from "./components/footer/footer";
 import MainFooter from "./components/footer/mainFooter";
+import NavigationPane from "./components/all-components/Lab/NavigationPane";
 import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
+
+{
+  /* Individual Page Components */
+}
+import LandingPage from "./pages/landingpage/index";
+import LabsPage from "./pages/labspage/LabsPage";
+import AboutUsPage from "./pages/about-us/AboutUsPage";
+import EducatorResources from "./pages/EducatorResources/EducatorResources";
+import Profile from "./components/body/profilepage/Profile";
+
+{
+  /* Miscellaneous Components and Redux */
+}
+import { default as Error } from "./pages/landingpage/error";
+import { default as SiteMap } from "./pages/landingpage/sitemap";
+import { default as Imagine } from "./components/imagine23/Main";
+import { globalHistory, Router } from "@reach/router";
+import { connect } from "react-redux";
+import { actions as mainActions } from "./reducers/MainReducer";
+import { bindActionCreators } from "redux";
+import "./assets/stylesheets/main.scss";
+import { stateChange } from "./helpers/Redirect";
+import { actions as appActions } from "./reducers/lab1/AppReducer";
+import useMainStateContext from "./reducers/MainContext";
+const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
   return {
@@ -117,9 +131,17 @@ const App = () => {
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg ${lab !== 0 ? `tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-[60%] lg:tw-w-[70%] tw-mx-6 ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-[105%]"} tw-top-0 tw-justify-center tw-flex tw-flex-col` : "tw-w-full"}`}
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg 
+                ${
+                  lab !== 0
+                    ? `tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-[60%] lg:tw-w-[70%] tw-mx-6 
+                ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-[105%]"} 
+                tw-top-0 tw-justify-center tw-flex tw-flex-col`
+                    : "tw-w-full"
+                }`}
             >
-              <LandingPageBody path="/" />
+              <AboutUsPage path={"/about-us"} />
+              <LandingPage path="/" />
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
               <LabsPage
@@ -169,7 +191,6 @@ const App = () => {
               <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
               <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
               <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
-              <TestComponents path="/test-components" user={state.main.user} />
               <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
 
               <Reinforcement
