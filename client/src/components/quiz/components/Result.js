@@ -63,7 +63,7 @@ function Result(props) {
         <a
           key={index}
           onClick={() => openDetails(index + 1)}
-          className={`tw-max-h-[5rem] tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white tw-rounded-b-none"}`}
+          className={`tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white tw-rounded-b-none"}`}
         >
           <div
             className={"tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-text-sm"}
@@ -131,11 +131,31 @@ function Result(props) {
                   </p>
                 </div>
                 <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
-                  <p className={"tw-font-bold tw-text-sm"}>
+                  <p className={"tw-font-bold tw-leading-snug tw-text-sm"}>
                     Explanation:&nbsp;
                   </p>
-                  <p className={"tw-text-sm"}></p>
+                  <p
+                    className={
+                      "tw-text-sm tw-leading-snug tw-body-styling-name"
+                    }
+                  >
+                    {answer["explanation"]}
+                  </p>
                 </div>
+                {answer["source"] && (
+                  <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
+                    <p className={"tw-font-bold tw-leading-snug tw-text-sm"}>
+                      Source:&nbsp;
+                    </p>
+                    <p
+                      className={
+                        "tw-text-sm tw-leading-snug tw-body-styling-name"
+                      }
+                    >
+                      {answer["source"]}
+                    </p>
+                  </div>
+                )}
               </div>
             );
           } else {
@@ -179,7 +199,7 @@ function Result(props) {
           </strong>
         </div>
         <div
-          className={`tw-w-full tw-max-h-[30rem] tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5 tw-my-5`}
+          className={`tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5 tw-my-5`}
         >
           {renderTableData()}
         </div>
