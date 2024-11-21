@@ -2,12 +2,14 @@ import React, { useRef } from "react";
 import ALLButton from "./ALLButton";
 import { navigate } from "@reach/router";
 import LookingAtComputer from "../../assets/images/stockImages/WomanOnComputer.png";
+import PropTypes from "prop-types";
 
-const AboutUs = () => {
+const YellowBlockSection = (props) => {
   const yellowBlock = useRef(null);
+  const { title, body } = props;
 
   const handleNav = () => {
-    navigate("/aboutus");
+    navigate("/about-us");
   };
 
   return (
@@ -36,7 +38,7 @@ const AboutUs = () => {
                 }
               >
                 {" "}
-                About Us
+                {title}
               </p>
               <p
                 className={
@@ -44,8 +46,7 @@ const AboutUs = () => {
                 }
               >
                 {" "}
-                Learn more about the team at Accessible Learning Labs and the
-                amazing things we have in the works!
+                {body}
               </p>
             </div>
             <div
@@ -80,4 +81,9 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+YellowBlockSection.propTypes = {
+  title: PropTypes.string,
+  body: PropTypes.string,
+};
+
+export default YellowBlockSection;

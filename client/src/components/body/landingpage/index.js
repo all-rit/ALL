@@ -1,108 +1,168 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { actions as mainActions } from "../../../reducers/MainReducer";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { navigate } from "@reach/router";
 import LabGeneration from "../lab/LabGeneration";
-import ProfileGeneration from "./citation/ProfileGeneration";
-import HorizontalLine from "../../../common/HorizontalLine/HorizontalLine";
-import DevPartners from "./DevPartners";
 import GettingInvolved from "../../all-components/GettingInvolved";
-import AboutUs from "../../all-components/AboutUs";
-import Carousel from "../../all-components/carousel";
+import DevPartners from "./DevPartners";
+import Carousel from "src/components/all-components/carousel";
+import Girl3 from "../../../assets/images/stockImages/Girl3.png";
+import Girl2 from "../../../assets/images/stockImages/Girl2.png";
+import ALLButton from "../../all-components/ALLButton";
+import labService from "src/services/LabService";
+import useMainStateContext from "src/reducers/MainContext";
+import YellowBlockSection from "../../all-components/YellowBlockSection";
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(mainActions, dispatch),
+const Home = () => {
+  const { actions } = useMainStateContext();
+  const handleNavEducators = () => {
+    navigate("/EducatorResources");
   };
-};
+  const handleNavGroups = () => {
+    navigate("/Profile");
+  };
+  const handleNavLabs = () => {
+    navigate("/Labs");
+  };
 
-const Home = (props) => {
-  const { actions } = props;
+  const [featuredLabs, setFeaturedLabs] = useState([]);
+
+  const getFeaturedLabs = async () => {
+    const allLabs = await labService.getAllLabs();
+    const lab12 = allLabs[11];
+    const lab11 = allLabs[10];
+
+    setFeaturedLabs([lab12, lab11]);
+  };
+
+  useEffect(() => {
+    getFeaturedLabs();
+  }, []);
+
+  // TODO: Site Accessibility Settings does nothing atm (header + footer)
+  // TODO: Get the real images
+  // TODO: Get the correct anchors
+  // TODO: Footer text is still lorem ipsum
+
   return (
     <div className="landingpage">
       {/* Header */}
-      <header className="masthead">
-        <div className="container">
-          <div className="intro-text">
-            <div className="intro-heading text-uppercase">
-              Welcome to the <br /> Accessible Learning Labs (ALL)
-            </div>
-            <div />
-          </div>
-        </div>
-      </header>
-      {/* Goals */}
-      <section className="page-section landingpage__pagesection" id="goals">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <h2 className="section-heading text-uppercase">Lab Goals</h2>
-              <h3 className="section-subheading lab-section-subheading">
-                Accessible Learning Labs is an NSF funded initiative aimed at
-                empowering inclusive software education and fostering STEM
-                proficiency. We are dedicated to equipping users with the skills
-                and knowledge to create accessible software solutions. Through
-                our interactive and intuitive labs, we aim to make the internet
-                a more equitable place for everyone.
-              </h3>
+      <div className="tw-relative tw-flex tw-flex-col">
+        <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center tw-py-[75px] sm:tw-py-[150px]">
+          <div className="tw-grid tw-w-full tw-h-1/2">
+            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-full tw-justify-self-end tw-self-end tw-relative tw-rounded-bl-lg tw-rounded-r-none">
+              <div className="tw-bg-white tw-w-full tw-h-full tw-px-8 tw-py-10 md:tw-px-16 md:tw-py-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-rounded-tl-lg tw-relative tw-bottom-5 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
+                <h1 className="tw-title-styling-name">
+                  Welcome to Accessible Learning Labs
+                </h1>
+                <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-styling-name">
+                  Accessible Learning Labs is an NSF funded initiative aimed at
+                  empowering inclusive software and fostering STEM proficiency.
+                  We are dedicated to equipping users with the skills and
+                  knowledge to create accessible software solutions. Through our
+                  interactive and intuitive labs, we aim to make the internet a
+                  more equitable place for everyone.
+                </p>
+              </div>
             </div>
           </div>
-          <div className="row text-center">
-            <div className="col-md-4">
-              <h5 className="service-heading landingpage__leftalign">
-                Create easily adoptable labs (only a browser is needed)
-              </h5>
-            </div>
+        </section>
+        <div className="tw-bg-white tw-h-32"></div>
+        <img
+          src={Girl2}
+          className="tw-absolute tw-h-[70%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xl:tw-visible tw-bottom-0"
+        ></img>
+      </div>
 
-            <div className="vertical-line col-md-4 ">
-              <h5 className="service-heading landingpage__leftalign">
-                Inform students how to create accessible software
-              </h5>
+      {/* Are you a Student? */}
+      <section className="tw-bg-primary-yellow tw-flex tw-justify-start tw-pb-0 tw-pt-16">
+        <div className="tw-bg-white tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-mr-10 tw-p-4 sm:tw-p-8 tw-border-solid tw-border-b-0 tw-border-l-0 tw-border-t-12 tw-border-r-12 tw-rounded-tr-lg tw-border-primary-blue">
+          <div className="tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-4 md:tw-gap-16 tw-mt-4">
+            <div className="tw-flex tw-flex-col">
+              <h1 className="tw-text-center sm:tw-text-left tw-mb-4 tw-title-styling-name">
+                Are You a Student?
+              </h1>
+              <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-body-styling-name">
+                Use the code that your instructor has provided to join a group!
+                If not, please explore all of the labs that are available for
+                everyone, including our featured labs.
+              </p>
+              <h1 className="tw-text-center sm:tw-text-left tw-mt-16 tw-mb-4 tw-title-styling-name tw-hidden md:tw-block">
+                Featured Labs
+              </h1>
             </div>
-
-            <div className="vertical-line col-md-4 ">
-              <h5 className="service-heading landingpage__leftalign">
-                Demonstrate the importance of creating accessible software
-              </h5>
+            <div className="tw-flex tw-flex-row md:tw-flex-col tw-gap-4">
+              <ALLButton
+                label={"Join a Group"}
+                onClick={handleNavGroups}
+                className="tw-mb-6"
+              ></ALLButton>
+              <ALLButton
+                label={"Explore Labs"}
+                onClick={handleNavLabs}
+              ></ALLButton>
             </div>
+            <h1 className="tw-text-center sm:tw-text-left tw-mt-16 tw-mb-4 tw-title-styling-name tw-block md:tw-hidden">
+              Featured Labs
+            </h1>
           </div>
-        </div>
-      </section>
-      {/* Labs */}
-      <div />
-      <HorizontalLine />
-
-      <section
-        className="tw-p-3 page-section landingpage__pagesection"
-        id="labs"
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <h2 className="section-heading text-uppercase"> Labs</h2>
-
-              <h3 className="section-subheading ">
-                Explore the available labs below.
-              </h3>
-            </div>
-          </div>
-          <div className="landingpage__row md:lg:tw-flex md:lg:tw-grid-cols-3 md:lg:tw-justify-center sm:tw-grid-cols-2">
-            <LabGeneration actions={actions} />
+          <div className="tw-grid">
+            <LabGeneration
+              actions={actions}
+              labids={featuredLabs}
+              progressState={"FEATURED_LABS"}
+            />
           </div>
         </div>
       </section>
-      {/* Team Citation */}
-      <div id="citation" />
-      <GettingInvolved />
-      <AboutUs />
-      <HorizontalLine />
-      <ProfileGeneration />
-      <HorizontalLine />
+      <div className="tw-bg-white tw-h-32"></div>
+
+      {/* Are you an Educator? */}
+      <div className="tw-relative tw-flex tw-flex-col">
+        <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center tw-py-[75px] sm:tw-py-[150px]">
+          <div className="tw-grid tw-w-full tw-h-1/2">
+            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end tw-rounded-bl-lg tw-relative">
+              <div className="tw-bg-white tw-w-full tw-h-[120%] tw-p-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
+                <h1 className="tw-title-styling-name">Are You an Educator?</h1>
+                <div className="tw-flex tw-flex-col sm:tw-flex-row tw-gap-4 sm:tw-gap-16">
+                  <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-styling-name">
+                    Access the ability to create groups for your students, track
+                    their lab progress, date of completion, and quiz grade. Find
+                    more information and resources under our Educator Resources.
+                  </p>
+                  <ALLButton
+                    label={"Educator Resources"}
+                    onClick={handleNavEducators}
+                  ></ALLButton>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <img
+          src={Girl3}
+          className="tw-absolute tw-h-[100%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xxl:tw-visible"
+        ></img>
+      </div>
+
+      {/* About Us */}
+      <YellowBlockSection
+        title="About Us"
+        body={
+          "Learn more about the team at Accessible Learning Labs and the amazing things we have in the works!"
+        }
+      />
+
+      {/* Development Partners */}
       <DevPartners />
+
+      {/* Participating Schools */}
       <Carousel />
+      <div className="tw-bg-white tw-h-32"></div>
+
+      {/* Getting Involved */}
+      <GettingInvolved />
     </div>
   );
 };
 
-export default connect(null, mapDispatchToProps)(Home);
+export default Home;

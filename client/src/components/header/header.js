@@ -107,9 +107,9 @@ const Header = (props) => {
   const toggleNavbar = () => setNavbarOpen(!navbarOpen);
   const windowSize = useWindowSize();
 
-  if (isSmallWindow == false && windowSize[0] < 840) {
+  if (isSmallWindow == false && windowSize[0] < 1000) {
     setisSmallWindow(true);
-  } else if (isSmallWindow == true && windowSize[0] >= 840) {
+  } else if (isSmallWindow == true && windowSize[0] >= 1000) {
     setisSmallWindow(false);
   }
 
@@ -124,14 +124,14 @@ const Header = (props) => {
       className="tw-font-poppins tw-font-bold tw-my-0 tw-mb-[5rem]"
     >
       <div
-        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] lg:tw-h-40 tw-shadow-md tw-px-5`}
+        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
         >
           <a className={"tw-mt-[1rem]"} onClick={() => reachNav("/#")}>
             <img
-              className="tw-cursor-pointer xs:tw-max-h-[6rem] sm:tw-max-h-[10rem]"
+              className="tw-cursor-pointer xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"
               src={Logo}
               alt="Computing Accessibility"
             />
@@ -149,49 +149,49 @@ const Header = (props) => {
               className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
             >
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   onClick={() => reachNav("/#")}
                 >
-                  <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
                     Home
                   </p>
                 </NavLink>
               </NavItem>
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/Labs"
                 >
-                  <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
                     Labs
                   </p>
                 </NavLink>
               </NavItem>
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="#about"
                 >
-                  <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
                     About Us
                   </p>
                 </NavLink>
               </NavItem>
               <NavItem
-                className={`${"px-4"} ${!isSmallWindow && "tw-border-labBlue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
               >
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/EducatorResources"
                 >
-                  <p className="tw-text-base tw-text-labBlue tw-font-bold">
+                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
                     Educator Resources
                   </p>
                 </NavLink>
@@ -199,7 +199,7 @@ const Header = (props) => {
               <NavItem className="tw-px-4 tw-py-2 tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
                 {loggedIn && user ? (
                   // TO-DO: PROFILE LINK HERE
-                  <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-border-labBlue tw-rounded-full tw-overflow-hidden">
+                  <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
                     <div
                       onClick={() =>
                         navigate(state, props.state, actions, 2, 0)
@@ -216,7 +216,7 @@ const Header = (props) => {
                 ) : (
                   <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
                     <a
-                      className="tw-text-base tw-text-labBlue tw-font-bold"
+                      className="tw-text-base tw-text-primary-blue tw-font-bold"
                       onClick={toggleSignIn}
                     >
                       Sign In

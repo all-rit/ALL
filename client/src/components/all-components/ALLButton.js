@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ALLButton = (props) => {
-  const { label, onClick, className, type, large = false } = props;
+  const { label, onClick, className, type, href, large = false } = props;
 
   return (
     <div className={`${className} tw-h-100`}>
@@ -10,6 +10,7 @@ const ALLButton = (props) => {
         className={`tw-border-0 tw-relative tw-py-1 tw-bg-white tw-font-calibri tw-px-6 xs:tw-text-xs lg:tw-text-[1.125rem] tw-text-nowrap ${large && "tw-py-[1.5rem] tw-px-[3rem]"}`}
         onClick={onClick}
         type={type}
+        href={href}
       >
         {label}
         <div
@@ -33,6 +34,7 @@ ALLButton.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
   large: PropTypes.bool,
+  href: PropTypes.string,
 };
 
 export default ALLButton;
