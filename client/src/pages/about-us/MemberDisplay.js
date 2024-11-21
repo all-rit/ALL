@@ -122,7 +122,7 @@ const MemberDisplay = (props) => {
                   </div>
                 )}
               </div>
-              <div id="member-socials" className="tw-mt-6">
+              <div id="member-socials" className="tw-my-6">
                 {currentMember.socials.map((social) => {
                   return (
                     <SocialIcon
