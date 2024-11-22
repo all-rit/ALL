@@ -39,7 +39,7 @@ const LoginBody = (props) => {
 
       <div
         className={
-          "tw-font-calibri tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle"
+          "tw-font-calibri tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-pb-2"
         }
       >
         <p

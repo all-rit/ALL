@@ -83,10 +83,7 @@ const EnrolledGroups = (props) => {
                 {" "}
                 Have a group code?{" "}
               </p>
-              <p className={"tw-body-copy tw-text-sm"}>
-                {" "}
-                Click below to get started.{" "}
-              </p>
+              <p className={"tw-body-copy"}> Click below to get started. </p>
               <AddModal
                 addMode={"enroll_grp"}
                 user={props.user}
