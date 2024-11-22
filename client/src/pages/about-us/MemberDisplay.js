@@ -95,18 +95,18 @@ const MemberDisplay = (props) => {
           <div className="tw-mt-12 tw-text-left tw-flex tw-flex-col tw-gap-y-6 tw-col-span-4 tw-px-6">
             <div id="member">
               <div id="member-name">
-                <h3 className="tw-font-bold tw-text-3xl">
+                <h3 className="tw-font-bold">
                   {currentMember.firstName} {currentMember.lastName}
                 </h3>
               </div>
               <div id="member-details" className="tw-mt-1.5">
-                <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
+                <p className="tw-body-styling-name tw-leading-snug">
                   {currentMember.title}
                 </p>
-                <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
+                <p className="tw-body-styling-name tw-leading-snug">
                   {currentMember.datesActive}
                 </p>
-                <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
+                <p className="tw-body-styling-name tw-leading-snug">
                   {currentMember.affiliation
                     ? currentMember.affiliation
                     : "Rochester Institute of Technology"}
@@ -116,7 +116,7 @@ const MemberDisplay = (props) => {
                     <h4 className="tw-mx-0 tw-mt-3 tw-mb-3 tw-font-bold tw-text-xl">
                       About Me
                     </h4>
-                    <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
+                    <p className="tw-body-styling-name tw-leading-snug">
                       {currentMember.aboutme}
                     </p>
                   </div>
@@ -141,7 +141,7 @@ const MemberDisplay = (props) => {
                 <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-text-xl">
                   Favorite Lab
                 </h4>
-                <p className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug">
+                <p className="tw-body-styling-name tw-leading-snug">
                   {"Lab " + currentMember.favoritelab + ": " + currentFavorite}
                 </p>
               </div>
@@ -155,7 +155,7 @@ const MemberDisplay = (props) => {
                   {labCredits.map((lab) => {
                     return (
                       <p
-                        className="xs:tw-text-sm md:tw-text-[1.125rem] tw-body-styling-name tw-leading-snug"
+                        className="tw-body-styling-name tw-leading-snug"
                         key={lab.id}
                       >
                         {lab}

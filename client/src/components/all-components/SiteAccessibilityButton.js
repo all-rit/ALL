@@ -65,6 +65,7 @@ const SiteAccessibilityButton = () => {
       tw-bg-primary-yellow tw-border-none tw-rounded-full
       tw-p-4 tw-z-50 tw-shadow-md
       hover:tw-bg-[#f6c832] hover:tw-shadow-lg"
+      tabIndex={0}
       onClick={(e) => toggleCollapse(e)}
     >
       <img

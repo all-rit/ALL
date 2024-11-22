@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
-{
-  /* Body Components */
-}
+/** Body Components **/
 import { default as About } from "./components/body/About";
 import { default as Reading } from "./components/body/Reading/Reading";
 import { default as Reinforcement } from "./components/body/Reinforcement";
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 
-{
-  /* Exercise Components */
-}
+/** Exercise Components **/
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
@@ -26,9 +22,7 @@ import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
 import { Sections } from "./constants/index";
 
-{
-  /* Persistent Components */
-}
+/** Persistent Components **/
 import Header from "./components/header/header";
 import LabFooter from "./components/footer/footer";
 import MainFooter from "./components/footer/mainFooter";
@@ -36,18 +30,14 @@ import NavigationPane from "./components/all-components/Lab/NavigationPane";
 import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
 import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
-{
-  /* Individual Page Components */
-}
+/** Individual Page Components **/
 import LandingPage from "./pages/landingpage/index";
 import LabsPage from "./pages/labspage/LabsPage";
 import AboutUsPage from "./pages/about-us/AboutUsPage";
 import EducatorResources from "./pages/EducatorResources/EducatorResources";
 import Profile from "./components/body/profilepage/Profile";
 
-{
-  /* Miscellaneous Components and Redux */
-}
+/** Miscellaneous Components and Redux **/
 import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
 import { default as Imagine } from "./components/imagine23/Main";

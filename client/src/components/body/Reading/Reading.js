@@ -167,7 +167,7 @@ const Reading = (props) => {
                   className={
                     isImagine
                       ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                      : " tw-body-styling-name tw-text-[#a3a3a3]"
+                      : " tw-body-styling-name tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
                   }
                 >
                   {data}

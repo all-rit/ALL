@@ -54,7 +54,7 @@ const InvestigatorsSection = () => {
           </h2>
           <p
             className={
-              "tw-col-span-6 tw-flex tw-body-styling-name xs:tw-text-sm md:tw-text-[1.125rem] tw-leading-snug"
+              "tw-col-span-6 tw-flex tw-body-styling-name tw-leading-snug"
             }
           >
             These are the principal investigators and advisors behind the

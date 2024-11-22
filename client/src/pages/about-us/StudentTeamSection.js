@@ -62,11 +62,7 @@ const StudentTeamSection = () => {
           >
             Meet Our Student Team
           </h2>
-          <p
-            className={
-              "tw-col-span-6 tw-body-styling-name xs:tw-text-sm md:tw-text-[1.125rem] tw-leading-snug"
-            }
-          >
+          <p className={"tw-col-span-6 tw-body-styling-name tw-leading-snug"}>
             Our labs were made possible by the amazing efforts of our team of
             student developers! We invite you to get to know each team member
             through their individualized cards, and don’t forget to explore our

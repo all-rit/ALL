@@ -3,7 +3,7 @@
 // New Implementation to increment and decrement size of UI.
 export function changeTSize(num, className = null) {
   let elems = document.querySelectorAll(
-    ".mainBody *, .nav-link, button, .navbar-brand, .labnav",
+    ".mainBody *, .nav-link, p, h3, button, .navbar-brand, .labnav, .base",
   );
   let fontSizeString;
   let index = 0;

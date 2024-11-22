@@ -51,7 +51,7 @@ function Quiz(props) {
           <div className="align-right">
             {props.questionId !== 1 && (
               <button
-                className="tw-font-calibri tw-font-medium tw-text-[1.125rem] tw-border-[.5rem] tw-p-5 tw-rounded-bl-lg tw-border-t-0 tw-border-r-0
+                className="tw-body-styling-name tw-border-[.5rem] tw-p-5 tw-rounded-bl-lg tw-border-t-0 tw-border-r-0
                           tw-border-solid tw-border-primary-yellow tw-bg-white"
                 onClick={props.lastQuestion}
               >
@@ -59,17 +59,13 @@ function Quiz(props) {
               </button>
             )}
           </div>
-          <div
-            className={
-              "tw-font-bold tw-font-calibri tw-text-[1.125rem] tw-my-6"
-            }
-          >
+          <div className={"tw-font-bold tw-body-styling-name tw-my-6"}>
             {props.questionId}/{props.questionTotal}
           </div>
           <div className="align-right">
             {props.questionId !== props.questionTotal ? (
               <button
-                className="tw-font-calibri tw-font-medium tw-text-[1.125rem] tw-border-solid tw-border-primary-blue
+                className="tw-body-styling-name tw-border-solid tw-border-primary-blue
                                         tw-bg-white tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
                 onClick={props.nextQuestion}
                 disabled={props.disable}
@@ -78,7 +74,7 @@ function Quiz(props) {
               </button>
             ) : (
               <button
-                className="tw-font-calibri tw-font-medium tw-text-[1.125rem] tw-border-solid tw-border-primary-blue
+                className="tw-body-styling-name tw-border-solid tw-border-primary-blue
                                         tw-bg-white tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
                 onClick={props.onComplete}
                 disabled={props.disable}
