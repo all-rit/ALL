@@ -60,7 +60,7 @@ const SiteAccessibilityButton = () => {
   }
 
   return (
-    <div className="tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-m-4 tw-right-0 tw-z-50">
+    <div className="tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-mb-2 tw-mr-6 tw-right-0 tw-z-50">
       <button
         className="
         tw-bg-primary-yellow tw-border-none tw-rounded-full
