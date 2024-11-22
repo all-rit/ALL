@@ -13,7 +13,7 @@ const YellowBlockSection = (props) => {
   };
 
   return (
-    <div className={"tw-h-[20rem] tw-w-full tw-mt-[5rem] tw-mb-[15rem]"}>
+    <div className={"tw-h-[20rem] tw-w-full tw-mt-[5rem] tw-mb-[20rem]"}>
       <div
         className={
           "tw-h-3/4 tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"
@@ -51,7 +51,7 @@ const YellowBlockSection = (props) => {
             </div>
             <div
               className={
-                "tw-h-full tw-w-4/5 tw-flex tw-flex-col tw-justify-end tw-items-end tw-py-5"
+                "tw-h-full tw-w-4/5 tw-flex tw-flex-col tw-items-end tw-justify-center tw-py-5"
               }
             >
               <ALLButton label={"Learn More"} onClick={handleNav}></ALLButton>
@@ -73,7 +73,7 @@ const YellowBlockSection = (props) => {
           <img
             src={LookingAtComputer}
             aria-label={"Looking at Computer"}
-            className={"tw-w-[15rem] tw-absolute tw-left-0 tw-top-0"}
+            className={"tw-w-[20rem] tw-absolute tw-left-0 tw-top-0"}
           />
         </div>
       </div>

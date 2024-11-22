@@ -127,7 +127,8 @@ const Home = () => {
                   <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-copy">
                     Access the ability to create groups for your students, track
                     their lab progress, date of completion, and quiz grade. Find
-                    more information and resources under our Educator Resources.
+                    more information and resources under our Educator Resources
+                    page.
                   </p>
                   <ALLButton
                     label={"Educator Resources"}

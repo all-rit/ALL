@@ -156,7 +156,11 @@ class MainFooter extends Component {
                   />
                 </a>
               </div>
-              <p className={"tw-pt-2 tw-font-calibri tw-font-medium "}>
+              <p
+                className={
+                  "tw-pt-2 tw-body-copy tw-text-center tw-font-medium "
+                }
+              >
                 Available under the Federal Government License
               </p>
             </div>
