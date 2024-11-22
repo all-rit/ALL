@@ -18,7 +18,7 @@ const ResourceRow = (props) => {
           <p className={"tw-font-calibri tw-font-extrabold tw-text-xl"}>
             {id ? `Lab ${id}:` : ""} {title}
           </p>
-          <p className="xs:tw-text-xs md:tw-text-[1.125rem] tw-text-justify tw-leading-normal">
+          <p className="tw-body-styling-name tw-text-justify tw-leading-normal">
             <hr />
             {description}
           </p>
@@ -49,7 +49,7 @@ const ResourceRow = (props) => {
                     xs:tw-h-[12.5rem] xs:tw-w-[12.5rem]
                     lg:tw-h-[21.875rem] lg:tw-w-[21.875rem]"
               />
-              <p className={"tw-text-sm tw-text-center tw-font-medium"}>
+              <p className={"tw-text-sm tw-body-styling-name tw-text-center"}>
                 {" "}
                 Lab {id} Walkthrough Video
               </p>
