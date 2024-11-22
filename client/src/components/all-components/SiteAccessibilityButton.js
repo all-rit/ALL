@@ -60,28 +60,27 @@ const SiteAccessibilityButton = () => {
   }
 
   return (
-    <button
-      className="tw-flex tw-fixed tw-right-0 tw-bottom-0 tw-m-4
-      tw-bg-primary-yellow tw-border-none tw-rounded-full
-      tw-p-4 tw-z-50 tw-shadow-md
-      hover:tw-bg-[#f6c832] hover:tw-shadow-lg"
-      onClick={(e) => toggleCollapse(e)}
-    >
-      <img
-        className="tw-aspect-square tw-w-12 tw-h-12 tw-pointer-events-none"
-        src={AccessibilityImage}
-      />
-      <Collapse
-        className="tw-absolute tw-bottom-[0%] tw-right-[150%]"
-        isOpen={open}
+    <div className="tw-flex tw-flex-row-reverse tw-items-end tw-gap-4 tw-fixed tw-bottom-0 tw-m-4 tw-right-0 tw-z-50">
+      <button
+        className="
+        tw-bg-primary-yellow tw-border-none tw-rounded-full
+        tw-p-4 tw-shadow-lg tw-shadow-labGray
+        hover:tw-bg-[#f6c832]"
+        onClick={(e) => toggleCollapse(e)}
       >
+        <img
+          className="tw-aspect-square tw-w-12 tw-h-12 tw-pointer-events-none"
+          src={AccessibilityImage}
+        />
+      </button>
+      <Collapse className="" isOpen={open}>
         <Card
           className="tw-bg-white tw-flex tw-flex-col tw-shadow-lg tw-shadow-labGray tw-w-[20rem]"
           outline
           color="light"
         >
           <CardHeader className="tw-bg-primary-blue">
-            <h3 className="tw-title-styling-name tw-text-xl tw-font-bold tw-text-white tw-p-6">
+            <h3 className="tw-title-styling-name tw-text-xl tw-font-bold tw-text-white tw-text-center">
               Accessibility Tools
             </h3>
           </CardHeader>
@@ -132,7 +131,7 @@ const SiteAccessibilityButton = () => {
           </CardBody>
         </Card>
       </Collapse>
-    </button>
+    </div>
   );
 };
 
