@@ -70,8 +70,14 @@ export function setTextColor(picker) {
 }
 
 export function setBackgroundColor(picker) {
-  const elems = document.querySelectorAll("body, .quiz, .result");
+  const elems = document.querySelectorAll(
+    "body, .quiz, .result, .tw-bg-white, .tw-bg-primary-blue",
+  );
   for (let i = 0; i < elems.length; i++) {
     elems[i].style.backgroundColor = picker.toString();
+    elems[i].setAttribute(
+      "style",
+      `background-color:${picker.toString()} !important`,
+    );
   }
 }
