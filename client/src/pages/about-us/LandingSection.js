@@ -27,11 +27,7 @@ const LandingSection = () => {
               >
                 About Us
               </h2>
-              <p
-                className={
-                  "md:tw-body-styling-name xs:tw-w-full xs:tw-text-sm md:tw-text-[1.125rem] md:tw-w-3/5"
-                }
-              >
+              <p className={"tw-body-styling-name md:tw-w-3/5"}>
                 Find out more about the team that makes Accessible Learning Labs
                 possible. We&apos;re proud of our diverse group of principal
                 investigators and advisors, as well as our fully undergraduate

@@ -40,11 +40,7 @@ const YellowBlockSection = (props) => {
                 {" "}
                 {title}
               </p>
-              <p
-                className={
-                  "tw-font-calibri tw-font-medium xs:tw-text-sm lg:tw-text-[1.125rem] tw-leading-normal"
-                }
-              >
+              <p className={"tw-body-styling-name tw-leading-normal"}>
                 {" "}
                 {body}
               </p>

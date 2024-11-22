@@ -31,9 +31,7 @@ const ResourcesHeader = () => {
             Educator Resources{" "}
           </p>
           <p
-            className={
-              "xs:tw-text-xs md:tw-text-[1.125rem] tw-text-justify tw-leading-normal"
-            }
+            className={"tw-body-styling-name tw-text-justify tw-leading-normal"}
           >
             {" "}
             Welcome to Accessible Learning Labs Educators Resources! Below, you

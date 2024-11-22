@@ -198,16 +198,16 @@ const LabsPage = (props) => {
               className="tw-bg-white tw-w-full tw-h-[120%] tw-justify-self-end tw-self-center
                                     tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4"
             >
-              <div className="tw-flex tw-h-full tw-flex-col tw-max-w-96">
-                <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-px-12 tw-py-8">
+              <div className="tw-flex tw-h-full tw-flex-col tw-w-1/2">
+                <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-pt-6 tw-pb-3 tw-px-12">
                   Explore Our Labs
                 </h2>
-                <text className="tw-flex tw-justify-left tw-text-left tw-font-poppins tw-pl-12">
+                <p className="tw-flex tw-body-styling-name tw-pl-12">
                   Ready to start learning? Access any of the labs below to learn
                   more about a range of topics from accessibility to sound and
                   speech, color blindness and even labs about algorithmic bias
                   and more.
-                </text>
+                </p>
               </div>
             </div>
           </div>
@@ -364,14 +364,14 @@ const LabsPage = (props) => {
             >
               <div className="tw-flex xl:lg:md:tw-flex-row sm:tw-flex-col tw-h-full">
                 <div className="tw-flex tw-h-full tw-flex-col tw-max-w-128">
-                  <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-px-12 tw-py-8">
+                  <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-px-12 tw-pt-8 tw-pb-3">
                     View Your Progress
                   </h2>
-                  <text className="tw-flex tw-justify-left tw-text-left tw-font-poppins tw-pl-12">
+                  <p className="tw-flex tw-body-styling-name tw-pl-12">
                     Didn’t finish a lab? Come back and continue where you left
                     off through your account profile. All of your progress will
                     be saved as you complete each lab.
-                  </text>
+                  </p>
                 </div>
                 <div className="tw-flex xl:lg:md:tw-self-center tw-pl-4 sm:tw-pl-12">
                   <ALLButton

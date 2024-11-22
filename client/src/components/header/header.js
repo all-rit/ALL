@@ -155,9 +155,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   onClick={() => reachNav("/#")}
                 >
-                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
-                    Home
-                  </p>
+                  <p className="tw-text-primary-blue tw-font-bold">Home</p>
                 </NavLink>
               </NavItem>
               <NavItem
@@ -167,9 +165,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/Labs"
                 >
-                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
-                    Labs
-                  </p>
+                  <p className="tw-text-primary-blue tw-font-bold">Labs</p>
                 </NavLink>
               </NavItem>
               <NavItem
@@ -179,9 +175,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/about-us"
                 >
-                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
-                    About Us
-                  </p>
+                  <p className="tw-text-primary-blue tw-font-bold">About Us</p>
                 </NavLink>
               </NavItem>
               <NavItem
@@ -191,7 +185,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/EducatorResources"
                 >
-                  <p className="tw-text-base tw-text-primary-blue tw-font-bold">
+                  <p className="tw-text-primary-blue tw-font-bold">
                     Educator Resources
                   </p>
                 </NavLink>
@@ -215,12 +209,12 @@ const Header = (props) => {
                   </NavLink>
                 ) : (
                   <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
-                    <a
-                      className="tw-text-base tw-text-primary-blue tw-font-bold"
+                    <p
+                      className="tw-text-primary-blue tw-font-bold tw-cursor-pointer"
                       onClick={toggleSignIn}
                     >
                       Sign In
-                    </a>
+                    </p>
                     {signInModal()}
                   </NavLink>
                 )}
@@ -237,21 +231,9 @@ const Header = (props) => {
                   <></>
                 )}
               </NavItem>
-              <NavItem className="tw-flex tw-justify-center tw-items-center">
-                {isSmallWindow && (
-                  <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-primary-blue tw-cursor-pointer">
-                    <p className="tw-text-xs">Site Accessibility Settings</p>
-                  </a>
-                )}
-              </NavItem>
             </Nav>
           </Collapse>
         </div>
-        {!isSmallWindow && (
-          <a className="tw-no-underline tw-items-center tw-text-primary-blue tw-cursor-pointer tw-absolute tw-bottom-1 tw-right-3">
-            <p className="tw-text-xs">Site Accessibility Settings</p>
-          </a>
-        )}
       </div>
     </Navbar>
   );

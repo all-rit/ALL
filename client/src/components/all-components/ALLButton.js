@@ -7,7 +7,7 @@ const ALLButton = (props) => {
   return (
     <div className={`${className} tw-h-100`}>
       <button
-        className={`tw-border-0 tw-relative tw-py-1 tw-bg-white tw-font-calibri tw-px-6 xs:tw-text-xs lg:tw-text-[1.125rem] tw-text-nowrap ${large && "tw-py-[1.5rem] tw-px-[3rem]"}`}
+        className={`tw-border-0 tw-relative tw-py-1 tw-bg-white tw-body-styling-name tw-px-6 tw-text-nowrap ${large && "tw-py-[1.5rem] tw-px-[3rem]"}`}
         onClick={onClick}
         type={type}
         href={href}

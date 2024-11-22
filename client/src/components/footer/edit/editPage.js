@@ -3,7 +3,7 @@
 // New Implementation to increment and decrement size of UI.
 export function changeTSize(num, className = null) {
   let elems = document.querySelectorAll(
-    ".mainBody *, .nav-link, button, .navbar-brand, .labnav",
+    ".mainBody *, .nav-link, p, h3, button, .navbar-brand, .labnav, .base",
   );
   let fontSizeString;
   let index = 0;
@@ -53,7 +53,7 @@ export function onNextPageChangeTSize(size) {
 }
 
 export function setTextColor(picker) {
-  const elems = document.querySelectorAll("body *, a");
+  const elems = document.querySelectorAll("body *, a, button, p");
   for (let i = 0; i < elems.length; i++) {
     elems[i].style.color = picker.toString();
   }
@@ -70,8 +70,14 @@ export function setTextColor(picker) {
 }
 
 export function setBackgroundColor(picker) {
-  const elems = document.querySelectorAll("body, .quiz, .result");
+  const elems = document.querySelectorAll(
+    "body, .quiz, .result, .tw-bg-white, .tw-bg-primary-blue",
+  );
   for (let i = 0; i < elems.length; i++) {
     elems[i].style.backgroundColor = picker.toString();
+    elems[i].setAttribute(
+      "style",
+      `background-color:${picker.toString()} !important`,
+    );
   }
 }

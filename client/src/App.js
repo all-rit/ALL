@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
+/** Body Components **/
 import { default as About } from "./components/body/About";
 import { default as Reading } from "./components/body/Reading/Reading";
-
 import { default as Reinforcement } from "./components/body/Reinforcement";
+import { default as Quiz } from "./components/quiz/components/QuizHandler";
 
+/** Exercise Components **/
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
-import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
-import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
-import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
 import { default as ExerciseLab4 } from "./components/exercise/lab4/Main";
@@ -18,33 +17,39 @@ import { default as ExerciseLab6 } from "./components/exercise/lab6/Main";
 import { default as ExerciseLab7 } from "./components/exercise/lab7/Main";
 import { default as ExerciseLab8 } from "./components/exercise/lab8/Main";
 import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
-import { default as TestComponents } from "./components/exercise/test-components/Main";
+import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
+import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
+import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
 import { Sections } from "./constants/index";
 
-import { default as Error } from "./pages/landingpage/error";
-import { default as LandingPageBody } from "./pages/landingpage/index";
-import { default as SiteMap } from "./pages/landingpage/sitemap";
-import { default as Profile } from "./components/body/profilepage/Profile";
-import { default as Imagine } from "./components/imagine23/Main";
+/** Persistent Components **/
+import Header from "./components/header/header";
+import LabFooter from "./components/footer/footer";
+import MainFooter from "./components/footer/mainFooter";
+import NavigationPane from "./components/all-components/Lab/NavigationPane";
+import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
+import ALLSnackbar from "./components/all-components/ALLSnackbar";
 
+/** Individual Page Components **/
+import LandingPage from "./pages/landingpage/index";
+import LabsPage from "./pages/labspage/LabsPage";
+import AboutUsPage from "./pages/about-us/AboutUsPage";
+import EducatorResources from "./pages/EducatorResources/EducatorResources";
+import Profile from "./components/body/profilepage/Profile";
+
+/** Miscellaneous Components and Redux **/
+import { default as Error } from "./pages/landingpage/error";
+import { default as SiteMap } from "./pages/landingpage/sitemap";
+import { default as Imagine } from "./components/imagine23/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
 import { bindActionCreators } from "redux";
 import "./assets/stylesheets/main.scss";
-import EducatorResources from "./pages/EducatorResources/EducatorResources";
-import LabsPage from "./pages/labspage/LabsPage";
-import MainFooter from "./components/footer/mainFooter";
-import { default as Quiz } from "./components/quiz/components/QuizHandler";
 import { stateChange } from "./helpers/Redirect";
-import LabFooter from "./components/footer/footer";
-import Header from "./components/header/header";
 import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
 const parse = require("url-parse");
-import NavigationPane from "./components/all-components/Lab/NavigationPane";
-import ALLSnackbar from "./components/all-components/ALLSnackbar";
-import AboutUsPage from "./pages/about-us/AboutUsPage";
 
 const mapStateToProps = (state) => {
   return {
@@ -126,7 +131,7 @@ const App = () => {
                 }`}
             >
               <AboutUsPage path={"/about-us"} />
-              <LandingPageBody path="/" />
+              <LandingPage path="/" />
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
               <LabsPage
@@ -176,7 +181,6 @@ const App = () => {
               <ExerciseLab9 path="/Lab9/Exercise/*" user={state.main.user} />
               <ExerciseLab10 path="/Lab10/Exercise/*" user={state.main.user} />
               <ExerciseLab11 path="/Lab11/Exercise/*" user={state.main.user} />
-              <TestComponents path="/test-components" user={state.main.user} />
               <ExerciseLab12 path="/Lab12/Exercise/*" user={state.main.user} />
 
               <Reinforcement
@@ -204,6 +208,7 @@ const App = () => {
           setQuizCompleted={setQuizCompleted}
           isImagine={isImagine}
         />
+        <SiteAccessibilityButton />
       </div>
     </>
   );
