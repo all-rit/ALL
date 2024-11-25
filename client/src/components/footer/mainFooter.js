@@ -18,6 +18,7 @@ import logo from "../../assets/images/logos/ALL_White.svg";
 import handleRedirect from "../../helpers/Redirect";
 import nsf from "../../assets/images/logos/nsf.png";
 import rit from "../../assets/images/logos/RIT.png";
+// import ContactUs from "./contactUs";
 
 const mapStateToProps = (state) => {
   return {
@@ -41,25 +42,22 @@ class MainFooter extends Component {
       displayColorPalette: false,
       backgroundColor: null,
       color: null,
-      name: "",
-      email: "",
-      message: "",
     };
   }
 
-  onNameChange(event) {
-    this.setState({ name: event.target.value });
-  }
-  onEmailChange(event) {
-    this.setState({ email: event.target.value });
-  }
-  onMessageChange(event) {
-    this.setState({ message: event.target.value });
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(this.state);
-  }
+  // onNameChange(event) {
+  //   this.setState({ name: event.target.value });
+  // }
+  // onEmailChange(event) {
+  //   this.setState({ email: event.target.value });
+  // }
+  // onMessageChange(event) {
+  //   this.setState({ message: event.target.value });
+  // }
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   console.log(this.state);
+  // }
 
   componentDidMount() {
     document.addEventListener("click", this.handleClick);
@@ -240,55 +238,7 @@ class MainFooter extends Component {
                 </svg>
               </div>
             </div>
-            <div className="tw-object-right tw-max-w-80 tw-justify-end tw-py-10">
-              <h1 className="tw-flex tw-justify-right tw-text-3xl tw-font-bold">
-                Reach out to us:
-              </h1>
-              <text className=" tw-flex tw-text-left tw-pb-6">
-                Aenean a venenatis metus, ut varius quam. Venenatis metus.
-              </text>
-              <div className="tw-space-y-6">
-                <input
-                  className=" tw-flex tw-w-full tw-rounded tw-bg-labGray tw-border-white tw-border tw-text-white tw-p-1"
-                  type="text"
-                  placeholder={"Name"}
-                  required={true}
-                  title={"Must enter name"}
-                  id="Name"
-                  value={this.state.name}
-                  onChange={this.onNameChange.bind(this)}
-                />
-                <input
-                  className=" tw-flex tw-w-full tw-rounded tw-bg-labGray tw-border-white tw-border tw-text-white tw-p-1"
-                  type="email"
-                  placeholder={"Email"}
-                  required={true}
-                  title={"Must enter email"}
-                  id="Email"
-                  value={this.state.email}
-                  onChange={this.onEmailChange.bind(this)}
-                />
-                <input
-                  className=" tw-flex tw-w-full tw-rounded tw-bg-labGray tw-border-white tw-border tw-text-white tw-p-1 tw-pb-32"
-                  type="text"
-                  placeholder={"Message"}
-                  required={true}
-                  title={"Must enter message"}
-                  id="Message"
-                  value={this.state.message}
-                  onChange={this.onMessageChange.bind(this)}
-                />
-                <button
-                  className=" tw-flex tw-w-full tw-rounded tw-bg-white tw-border-white
-                    tw-border tw-text-black tw-p-1 tw-justify-center tw-font-semibold"
-                  type="button"
-                  title={"Send message"}
-                  onClick={this.handleSubmit.bind(this)}
-                >
-                  Send
-                </button>
-              </div>
-            </div>
+            <div>{/*<ContactUs/>*/}</div>
           </div>
           <div className="tw-pt-6 tw-pb-16">
             <Nav>
