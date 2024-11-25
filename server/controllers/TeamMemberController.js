@@ -23,3 +23,9 @@ exports.getAllDevPartners = (req, res) => {
     res.json(records);
   });
 };
+
+exports.getAllSchools = (req, res) => {
+  TeamMemberService.getAllSchools().then((records) => {
+    res.json(records);
+  });
+};

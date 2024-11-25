@@ -292,6 +292,15 @@ create table dev_partners
     primary key   (id)                    
 );
 
+create table participating_schools
+(
+    id            serial,
+    "schoolName"   text,
+    "imageURL"      text,
+    "websiteURL"    text,
+    primary key   (id)                    
+);
+
 create table userlab
 (
     userlabid                  serial,
@@ -3468,3 +3477,9 @@ INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VA
 (2, 'Daytona State College', '/Daytona.png', 'https://www.daytonastate.edu/index.html'), (3, 'Embry-Riddle Aeronautical University', '/ERAU.png', 'https://daytonabeach.erau.edu/'),
 (4, 'Syracuse University', '/Syracuse.png', 'https://www.syracuse.edu/'), (5, 'Fayetteville State University', '/UNCFSU.png', 'https://www.uncfsu.edu/'),
 (6, 'Philander Smith University', '/Philander.png', 'https://www.philander.edu/');
+
+INSERT INTO public.participating_schools (id, "schoolName", "imageURL", "websiteURL") VALUES (1, 'University of Florida', '/University_of_Florida.png', 'https://www.ufl.edu/'), 
+(2, 'Siena College', '/Siena.png', 'https://www.siena.edu/'), (3, 'LaGuardia Community College', '/LaGuardia.png', 'https://www.laguardia.edu/'),
+(4, 'Rutgers University', '/Rutgers.png', 'https://www.rutgers.edu/'), (5, 'SUNY Sullivan', '/Sullivan.png', 'https://sunysullivan.edu/'),
+(6, 'Rockland Community College', '/Rockland.png', 'https://sunyrockland.edu/'), (7, 'SUNY Schenectady', '/Schenectady.png', 'https://sunysccc.edu/index.html'),
+(8, 'Binghamton University', '/Binghamton.png', 'https://www.binghamton.edu/');

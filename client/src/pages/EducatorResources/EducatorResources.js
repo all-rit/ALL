@@ -5,7 +5,7 @@ import ResourcesSection from "./ResourcesSection";
 import GettingInvolved from "../../components/all-components/GettingInvolved";
 import YellowBlockSection from "../../components/all-components/YellowBlockSection";
 import DevPartners from "../landingpage/DevPartners";
-import Carousel from "../../components/all-components/carousel";
+import Carousel from "../../components/all-components/ParticipatingSchools";
 
 const EducatorResources = () => {
   return (

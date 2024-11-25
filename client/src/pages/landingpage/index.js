@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 import LabGeneration from "../../components/body/lab/LabGeneration";
 import GettingInvolved from "../../components/all-components/GettingInvolved";
 import DevPartners from "./DevPartners";
-import Carousel from "src/components/all-components/carousel";
+import Carousel from "src/components/all-components/ParticipatingSchools";
 import Girl3 from "../../assets/images/stockImages/Girl3.png";
 import Girl2 from "../../assets/images/stockImages/Girl2.png";
 import ALLButton from "../../components/all-components/ALLButton";

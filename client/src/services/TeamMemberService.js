@@ -22,6 +22,11 @@ const teamMemberService = {
       .then((response) => response.json())
       .then((json) => json);
   },
+  getAllSchools: () => {
+    return API.get(process.env.REACT_APP_SERVER_URL + `/schools`)
+      .then((response) => response.json())
+      .then((json) => json);
+  },
 };
 
 export default teamMemberService;
