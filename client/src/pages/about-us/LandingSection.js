@@ -23,11 +23,7 @@ const LandingSection = () => {
               <h2 className={"tw-title xs:tw-text-xl md:tw-text-[2rem]"}>
                 About Us
               </h2>
-              <p
-                className={
-                  "md:tw-body-copy xs:tw-w-full xs:tw-text-sm md:tw-text-[1.125rem] md:tw-w-3/5"
-                }
-              >
+              <p className={"tw-body-copy md:tw-w-3/5"}>
                 Find out more about the team that makes Accessible Learning Labs
                 possible. We&apos;re proud of our diverse group of principal
                 investigators and advisors, as well as our fully undergraduate

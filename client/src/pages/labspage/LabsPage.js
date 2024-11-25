@@ -188,32 +188,36 @@ const LabsPage = (props) => {
 
   return (
     <>
-      <div className="tw-relative tw-flex tw-flex-col">
-        <div className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center tw-py-[75px] sm:tw-py-[150px]">
-          <div className="tw-grid tw-w-full tw-h-1/2">
-            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-full tw-justify-self-end tw-self-end tw-relative tw-rounded-bl-lg tw-rounded-r-none">
-              <div className="tw-bg-white tw-w-full tw-h-full tw-px-8 tw-py-10 md:tw-px-16 md:tw-py-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-relative tw-bottom-5 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
-                <div className="tw-flex tw-h-full tw-flex-col tw-w-1/3">
-                  <h2 className="tw-flex tw-justify-left tw-font-bold tw-title tw-px-12 tw-py-8">
-                    Explore Our Labs
-                  </h2>
-                  <text className="tw-flex tw-justify-left tw-text-left tw-body-copy tw-pl-12">
-                    Ready to start learning? Access any of the labs below to
-                    learn more about a range of topics from accessibility to
-                    sound and speech, color blindness and even labs about
-                    algorithmic bias and more.
-                  </text>
-                </div>
+      <div className="tw-h-128 tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-relative">
+        <div className="tw-grid tw-w-full tw-h-1/2">
+          <div
+            className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end
+                                    tw-rounded-bl-lg tw-relative"
+          >
+            <div
+              className="tw-bg-white tw-w-full tw-h-[120%] tw-justify-self-end tw-self-center
+                                    tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4"
+            >
+              <div className="tw-flex tw-h-full tw-flex-col tw-w-1/2">
+                <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-pt-6 tw-pb-3 tw-px-12">
+                  Explore Our Labs
+                </h2>
+                <p className="tw-flex tw-body-styling-name tw-pl-12">
+                  Ready to start learning? Access any of the labs below to learn
+                  more about a range of topics from accessibility to sound and
+                  speech, color blindness and even labs about algorithmic bias
+                  and more.
+                </p>
               </div>
             </div>
           </div>
-          <img
-            src={Student}
-            className={
-              "tw-absolute tw-bg-none xs:tw-w-[20rem] md:tw-w-[35rem] tw-bottom-0 tw-right-0"
-            }
-          />
         </div>
+        <img
+          src={Student}
+          className={
+            "tw-absolute tw-bg-none xs:tw-w-[20rem] md:tw-w-[35rem] tw-bottom-0 tw-right-0"
+          }
+        />
       </div>
       <div className="tw-bg-white tw-h-28 tw-w-full" />
 
@@ -228,12 +232,12 @@ const LabsPage = (props) => {
                 className="tw-flex tw-flex-col tw-pt-16 tw-relative tw-left-12 tw-items-center
                               tw-flex-wrap tw-px-12"
               >
-                <h1 className="tw-title tw-font-bold tw-pb-4 tw-w-full">
+                <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                   Labs
                 </h1>
                 <div className="tw-max-w-144 sm:tw-w-2/3 tw-flex tw-rounded-md">
                   <input
-                    className="tw-px-4 tw-py-2 tw-body-copy tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-l-md
+                    className="tw-px-4 tw-py-2 tw-font-poppins tw-font-semibold tw-bg-white tw-flex-grow tw-rounded-l-md
                                   tw-border-r-0 tw-border-darkGray tw-border-2 focus:tw-outline-0"
                     placeholder="Search"
                     type="text"
@@ -243,7 +247,7 @@ const LabsPage = (props) => {
                     }}
                   />
                   <button
-                    className="tw-pr-4 tw-bg-white tw-rounded-r-md tw-border-l-0 tw-border-darkGray tw-border-2 tw-flex tw-items-center"
+                    className="tw-pr-4 tw-bg-white tw-rounded-r-md tw-border-l-0 tw-border-darkGray tw-border-2"
                     onClick={(e) => {
                       handleSearch(e);
                     }}
@@ -259,7 +263,7 @@ const LabsPage = (props) => {
                 </div>
                 <div className="tw-flex tw-flex-wrap tw-flex-row tw-space-x-4 tw-pt-12 tw-pb-16">
                   <button
-                    className="tw-bg-white tw-body-copy tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
+                    className="tw-bg-white tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
                       handleSearchChange("ALL_LABS");
@@ -268,7 +272,7 @@ const LabsPage = (props) => {
                     All Labs
                   </button>
                   <button
-                    className=" tw-bg-white tw-body-copy tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
                       handleSearchChange("AI_MACHINE_LEARNING");
@@ -277,7 +281,7 @@ const LabsPage = (props) => {
                     AI/Machine Learning
                   </button>
                   <button
-                    className=" tw-bg-white tw-body-copy tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
                       handleSearchChange("ACCESSIBILITY");
@@ -286,7 +290,7 @@ const LabsPage = (props) => {
                     Accessibility
                   </button>
                   <button
-                    className=" tw-bg-white tw-body-copy tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
                       handleSearchChange("DIFF1");
@@ -295,7 +299,7 @@ const LabsPage = (props) => {
                     Difficulty 1
                   </button>
                   <button
-                    className=" tw-bg-white tw-body-copy tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
                       handleSearchChange("DIFF2");
@@ -304,7 +308,7 @@ const LabsPage = (props) => {
                     Difficulty 2
                   </button>
                   <button
-                    className=" tw-bg-white tw-body-copy tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
+                    className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
                       handleSearchChange("DIFF3");
@@ -360,14 +364,14 @@ const LabsPage = (props) => {
             >
               <div className="tw-flex xl:lg:md:tw-flex-row sm:tw-flex-col tw-h-full">
                 <div className="tw-flex tw-h-full tw-flex-col tw-max-w-128">
-                  <h2 className="tw-flex tw-justify-left tw-font-bold tw-title tw-px-12 tw-py-8">
+                  <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-px-12 tw-pt-8 tw-pb-3">
                     View Your Progress
                   </h2>
-                  <text className="tw-flex tw-justify-left tw-text-left tw-body-copy tw-pl-12">
+                  <p className="tw-flex tw-body-styling-name tw-pl-12">
                     Didn’t finish a lab? Come back and continue where you left
                     off through your account profile. All of your progress will
                     be saved as you complete each lab.
-                  </text>
+                  </p>
                 </div>
                 <div className="tw-flex xl:lg:md:tw-self-center tw-pl-4 sm:tw-pl-12">
                   <ALLButton

@@ -83,18 +83,18 @@ const NavigationPane = (props) => {
           "tw-py-6 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[8rem]"
         }
       >
-        <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
+        <h1 className={"tw-title-styling-name tw-text-xl"}>{props.title} </h1>
       </div>
       <div
         className={
           "tw-py-9 tw-border-solid tw-border-primary-yellow tw-bg-white tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg"
         }
       >
-        <div className={"tw-flex tw-flex-col tw-gap-y-6"}>
-          <h2 className={"tw-sub-title tw-font-bold tw-pl-4"}>
+        <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
+          <h4 className={"tw-font-poppins tw-font-bold tw-m-0 tw-pl-4"}>
             Table of Contents
-          </h2>
-          <div className={"tw-flex tw-flex-col tw-gap-y-9"}>
+          </h4>
+          <div className={"tw-flex tw-flex-col tw-gap-y-3"}>
             {sections.map(({ title, subTitle, section }) => {
               return (
                 <a
@@ -102,18 +102,18 @@ const NavigationPane = (props) => {
                   href={"#"}
                   onClick={() => handleOnClick(section)}
                   className={
-                    "tw-flex tw-flex-col tw-items-start tw-leading-none tw-no-underline tw-text-black hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
+                    "tw-flex tw-flex-col tw-items-start tw-leading-none tw-no-underline tw-body-styling-name hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
                   }
                 >
-                  <div
+                  <p
                     className={twMerge(
-                      "tw-font-semibold tw-px-4 tw-transition-all tw-ease-in-out",
+                      "tw-font-semibold tw-body-styling-name tw-px-4 ",
                       currentSection === section ? "tw-bg-primary-yellow" : "",
                     )}
                   >
                     {title}
-                  </div>
-                  <div className={"tw-pl-4 tw-font-light"}>{subTitle}</div>
+                  </p>
+                  <p className={"tw-pl-4 tw-body-styling-name"}>{subTitle}</p>
                 </a>
               );
             })}

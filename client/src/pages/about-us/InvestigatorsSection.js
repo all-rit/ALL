@@ -50,11 +50,7 @@ const InvestigatorsSection = () => {
           <h2 className={"tw-title xs:tw-text-xl md:tw-text-[2rem]"}>
             Meet Our Principal Investigators and Advisors
           </h2>
-          <p
-            className={
-              "tw-col-span-6 tw-flex tw-body-copy xs:tw-text-sm md:tw-text-[1.125rem] tw-leading-snug"
-            }
-          >
+          <p className={"tw-col-span-6 tw-flex tw-body-copy tw-leading-snug"}>
             These are the principal investigators and advisors behind the
             Accessible Learning Labs team. They provide guidance and leadership
             for our student team! We invite you to get to know each of them

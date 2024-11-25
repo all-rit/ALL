@@ -43,9 +43,7 @@ const WhatsAvailable = () => {
                 }
               >
                 <p
-                  className={
-                    "tw-font-calibri tw-font-medium md:tw-text-[1.125rem] xs:tw-text-xs tw-leading-normal tw-w-5/6"
-                  }
+                  className={"tw-body-styling-name tw-leading-normal tw-w-5/6"}
                 >
                   {" "}
                   Whether you want to implement our labs in your course

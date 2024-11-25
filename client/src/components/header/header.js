@@ -215,12 +215,12 @@ const Header = (props) => {
                   </NavLink>
                 ) : (
                   <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
-                    <a
-                      className="tw-text-primary-blue tw-font-bold tw-body-copy"
+                    <p
+                      className="tw-text-primary-blue tw-font-bold tw-cursor-pointer tw-body-copy"
                       onClick={toggleSignIn}
                     >
                       Sign In
-                    </a>
+                    </p>
                     {signInModal()}
                   </NavLink>
                 )}
@@ -237,21 +237,9 @@ const Header = (props) => {
                   <></>
                 )}
               </NavItem>
-              <NavItem className="tw-flex tw-justify-center tw-items-center">
-                {isSmallWindow && (
-                  <a className="tw-flex tw-justify-end tw-no-underline tw-items-center tw-text-primary-blue tw-cursor-pointer">
-                    <p className="tw-text-xs">Site Accessibility Settings</p>
-                  </a>
-                )}
-              </NavItem>
             </Nav>
           </Collapse>
         </div>
-        {!isSmallWindow && (
-          <a className="tw-no-underline tw-items-center tw-text-primary-blue tw-cursor-pointer tw-absolute tw-bottom-1 tw-right-3">
-            <p className="tw-text-xs">Site Accessibility Settings</p>
-          </a>
-        )}
       </div>
     </Navbar>
   );

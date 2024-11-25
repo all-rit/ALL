@@ -144,7 +144,6 @@ module.exports = {
         },
         ".body-copy": {
           fontFamily: theme("fontFamily.calibri"),
-          fontSize: "1.125rem",
           fontWeight: theme("fontWeight.medium"),
           lineHeight: "1.6rem",
           textAlign: "left",

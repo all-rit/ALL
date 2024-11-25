@@ -54,7 +54,7 @@ const Home = () => {
                 <h1 className="tw-title">
                   Welcome to Accessible Learning Labs
                 </h1>
-                <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-copy xs:tw-text-[1rem] md:tw-text-[1.125rem]">
+                <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-copy">
                   Accessible Learning Labs is an NSF funded initiative aimed at
                   empowering inclusive software and fostering STEM proficiency.
                   We are dedicated to equipping users with the skills and
