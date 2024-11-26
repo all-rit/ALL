@@ -202,12 +202,14 @@ const App = () => {
         </div>
         {lab === 0 && <MainFooter />}
         <ALLSnackbar />
-        <LabFooter
-          context={context}
-          quizCompleted={quizCompleted}
-          setQuizCompleted={setQuizCompleted}
-          isImagine={isImagine}
-        />
+        {lab !== 0 && (
+          <LabFooter
+            context={context}
+            quizCompleted={quizCompleted}
+            setQuizCompleted={setQuizCompleted}
+            isImagine={isImagine}
+          />
+        )}
         <SiteAccessibilityButton />
       </div>
     </>

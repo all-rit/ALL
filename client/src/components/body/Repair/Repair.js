@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Proptypes from "prop-types";
 import React from "react";
-import Button from "../../all-components/Navigation/Button";
 import CodeBlock from "../../all-components/CodeBlock/Components/Codeblock";
 import Popup from "src/components/all-components/Popup";
-const REPAIR_MESSAGE = "The repairs have been made.";
-const ERROR_MESSAGE = "Error in Repair. Please fix";
+import LabButton from "../../all-components/LabButton";
+const REPAIR_MESSAGE = "Repair Successful!";
+const ERROR_MESSAGE = "Error in Repair. Please fix.";
 /**
  * Repair: is a reusable component that is responsible for
  * allowing for the ability to render and handle new repair pages
@@ -90,12 +90,14 @@ const Repair = (props) => {
 
       <div className="tw-flex tw-justify-center tw-pb-5">
         <div className="tw-pr-10">
-          <Button onClick={handleRepair}>Repair</Button>
+          <LabButton onClick={handleRepair} label={"Repair"} />
         </div>
         <div className="tw-pl-10">
-          <Button onClick={handleNext} disabled={!enableNext}>
-            Next
-          </Button>
+          <LabButton
+            onClick={handleNext}
+            label={"Next"}
+            disabled={!enableNext}
+          />
         </div>
       </div>
       <Popup
@@ -110,7 +112,7 @@ const Repair = (props) => {
             <button
               onClick={handleUpdate}
               type="submit"
-              className="button button--green button--block"
+              className="btn btn-xl tw-bg-success tw-text-white tw-my-6 tw-w-1/2 tw-shadow-lg"
             >
               Update
             </button>

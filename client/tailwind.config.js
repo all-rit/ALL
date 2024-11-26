@@ -55,7 +55,8 @@ module.exports = {
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
       darkGray: "#3d3d3d",
-      successGreen: "#14FF00",
+      success: "#369d2a",
+      error: "#d03c3c",
     },
     extend: {
       borderWidth: {

@@ -302,7 +302,7 @@ QuizHandler.propTypes = {
   quizQuestions: PropTypes.array,
   isFinalQuiz: PropTypes.bool.isRequired,
   hideCertificate: PropTypes.bool.isRequired,
-  submitData: PropTypes.func.isRequired,
+  submitData: PropTypes.func,
   user: PropTypes.shape({
     firstname: PropTypes.string,
     userid: PropTypes.number,

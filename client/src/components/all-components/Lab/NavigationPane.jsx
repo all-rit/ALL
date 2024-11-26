@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
 import useMainStateContext from "../../../reducers/MainContext";
@@ -7,6 +7,7 @@ import getExerciseState from "../../../helpers/GetReducer";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../../reducers/MainReducer";
+import { EXERCISE_IN_PROGRESS } from "../../../constants/notifications";
 
 const sections = [
   {
@@ -56,17 +57,12 @@ const NavigationPane = (props) => {
   const { state, actions } = useMainStateContext();
   const currentSection = state.main.body;
 
-  useEffect(() => {
-    console.warn(state);
-    console.warn(props.state);
-  }, []);
-
   const handleOnClick = (section) => {
     if (
       getExerciseState(state, props.state) !== "EXERCISE_IDLE" &&
       currentSection === 2
     ) {
-      alert("The exercise is still in progress! Please complete the exercise.");
+      actions.showSnackbar(EXERCISE_IN_PROGRESS);
     } else {
       handleRedirect(actions, state.main.lab, section);
     }

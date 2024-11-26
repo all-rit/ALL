@@ -152,11 +152,11 @@ class MainFooter extends Component {
                   href="mailto:Daniel.Krutz@rit.edu"
                   className="tw-text-white tw-no-underline"
                 >
-                  <text className="tw-flex tw-justify-left ">
+                  <p className="tw-flex tw-justify-left ">
                     Daniel.Krutz@rit.edu
-                  </text>
+                  </p>
                 </a>
-                <text className="tw-flex tw-justify-left ">585-123-4567</text>
+                <p className="tw-flex tw-justify-left ">585-123-4567</p>
                 <div className="tw-flex tw-justify-left tw-pt-4 tw-space-x-4">
                   <svg
                     className="tw-fill-white tw-w-9"

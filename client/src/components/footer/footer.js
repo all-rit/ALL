@@ -1,209 +1,116 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import "../../assets/stylesheets/components/css/colorPicker.css";
 import { connect } from "react-redux";
-import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import { bindActionCreators } from "redux";
-import {
-  setTextColor,
-  setBackgroundColor,
-  onNextPageChangeTSize,
-} from "./edit/editPage";
 import handleRedirect from "../../helpers/Redirect";
 import getExerciseState from "../../helpers/GetReducer";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
+import useMainStateContext from "../../reducers/MainContext";
+import { EXERCISE_IN_PROGRESS } from "../../constants/notifications";
 
 const mapStateToProps = (state) => {
   return {
-    // General
     state: state,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({ ...appActions, ...mainActions }, dispatch),
+    actions: bindActionCreators(mainActions, dispatch),
   };
 };
-class Footer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fontSize: 0,
-      textColor: false,
-      bgColor: false,
-      displayColorPalette: false,
-      backgroundColor: null,
-      color: null,
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
 
-  componentDidMount() {
-    document.addEventListener("click", this.handleClick);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.state.main.body !== this.props.state.main.body ||
-      prevProps.state.main.lab !== this.props.state.main.lab
-    ) {
-      this.adjustSizeColor(this.state.fontSize);
-    }
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("click", this.handleClick);
-  }
-
-  adjustSizeColor = (fontSize) => {
-    for (let x = 0; x < Math.abs(fontSize); x++) {
-      if (fontSize < 0) {
-        onNextPageChangeTSize(-1);
-      } else {
-        onNextPageChangeTSize(1);
-      }
-    }
-    if (this.state.color) {
-      setTextColor(this.state.color);
-    }
-    if (this.state.backgroundColor) {
-      setBackgroundColor(this.state.backgroundColor);
-    }
-  };
-
-  navigateHome = () => {
-    this.props.setQuizCompleted(false);
+const LabFooter = (props) => {
+  const { quizCompleted, setQuizCompleted } = props;
+  const navigateHome = () => {
+    setQuizCompleted(false);
     navigate("/# ");
   };
 
-  handleClick(e) {
-    if (this.state.textColor) {
-      if (e.target.tagName === "HTML") {
-        this.setState({
-          textColor: false,
-        });
-      } else if (e.target.parentNode.className) {
-        if (
-          !e.target.parentNode.className.includes("rc-color-picker") &&
-          e.target.id !== "changeTextColor"
-        ) {
-          this.setState({
-            textColor: false,
-          });
-        }
-      }
-    }
-    if (this.state.bgColor) {
-      if (e.target.tagName === "HTML") {
-        this.setState({
-          bgColor: false,
-        });
-      } else if (e.target.parentNode.className) {
-        if (
-          !e.target.parentNode.className.includes("rc-color-picker") &&
-          e.target.id !== "changeBackgroundColor"
-        ) {
-          this.setState({
-            bgColor: false,
-          });
-        }
-      }
-    }
-  }
+  const { state, actions } = useMainStateContext();
+  const lab = state.main.lab;
+  const body = state.main.body;
 
-  render() {
-    const { state, actions } = this.props.context;
-    const { quizCompleted } = this.props;
-    const lab = state.main.lab;
-    const body = state.main.body;
-    const display =
-      (getExerciseState(state, this.props.state) === "EXERCISE_IDLE" ||
-        body !== 2) &&
-      (lab === 0 ? body !== 3 : true);
-    const hideOnLanding = lab === 0;
-
-    // for buttons that should not be displayed on the landing page
-
-    if (hideOnLanding) {
-      return;
+  const handleOnClick = (section) => {
+    if (
+      getExerciseState(state, props.state) !== "EXERCISE_IDLE" &&
+      body === 2
+    ) {
+      actions.showSnackbar(EXERCISE_IN_PROGRESS);
+    } else {
+      handleRedirect(actions, state.main.lab, section);
     }
-    return (
-      <div className={"tw-mb-6"}>
-        <div className="">
+  };
+  const display =
+    (getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2) &&
+    (lab === 0 ? body !== 3 : true);
+
+  useEffect(() => {
+    console.log(display);
+  }, []);
+
+  return (
+    <div className={"tw-mb-6 tw-mt-[-3rem] tw-z-10"}>
+      {body !== 2 && (
+        <div className={`tw-w-full tw-flex tw-justify-center`}>
           <div
-            className="tw-flex tw-justify-between tw-mx-10"
-            style={{ display: display ? "block" : "none" }}
+            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-3/4`}
+            style={{ display: display ? "flex" : "none" }}
           >
-            <button
-              className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
-              onClick={() => handleRedirect(actions, lab, body - 1)}
-              style={{
-                opacity: display ? "1" : "0",
-                pointerEvents: display ? "auto" : "none",
-              }}
-            >
-              BACK
-            </button>
+            {body !== 0 && (
+              <button
+                className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
+                onClick={() => handleOnClick(body - 1)}
+                style={{
+                  opacity: display ? "1" : "0",
+                }}
+              >
+                BACK
+              </button>
+            )}
 
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
                 className="btn tw-px-6 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue tw-text-nowrap"
-                onClick={this.navigateHome}
+                onClick={navigateHome}
                 style={{
-                  display: display ? "block" : "none",
+                  display: display ? "flex" : "none",
                 }}
               >
                 Return to Home
               </button>
             ) : (
               <button
-                className="btn tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue"
-                onClick={() => handleRedirect(actions, lab, body + 1)}
+                className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue"
+                onClick={() => handleOnClick(body + 1)}
                 style={{
                   opacity: display ? "1" : "0",
-                  pointerEvents: display ? "auto" : "none",
                 }}
               >
                 NEXT
               </button>
             )}
           </div>
-          <div
-            className="container"
-            style={{ display: display ? "none" : "block" }}
-          >
-            <div className="tw-mt-24">
-              The previously available navigation is disabled until the exercise
-              is complete.
-            </div>
-          </div>
         </div>
-      </div>
-    );
-  }
-}
+      )}
+      {body === 2 && (
+        <p className="tw-mb-[2rem] tw-mt-[-2rem] tw-body-text tw-font-bold tw-text-center">
+          The previously available navigation is disabled until the exercise is
+          complete.
+        </p>
+      )}
+    </div>
+  );
+};
 
-Footer.propTypes = {
-  state: PropTypes.shape({
-    main: PropTypes.shape({
-      body: PropTypes.number,
-      lab: PropTypes.number,
-    }),
-  }),
-  context: PropTypes.shape({
-    state: PropTypes.shape({
-      main: PropTypes.shape({
-        body: PropTypes.number,
-        lab: PropTypes.number,
-      }),
-    }),
-    actions: PropTypes.shape({}),
-  }),
+LabFooter.propTypes = {
+  context: PropTypes.shape({}),
+  state: PropTypes.shape({}),
   quizCompleted: PropTypes.bool,
   setQuizCompleted: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default connect(mapStateToProps, mapDispatchToProps)(LabFooter);
