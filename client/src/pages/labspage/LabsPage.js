@@ -302,7 +302,7 @@ const LabsPage = (props) => {
                         key={category}
                         className="tw-flex tw-flex-col tw-mb-4"
                       >
-                        <text className="tw-font-bold tw-font-calibri tw-text-xl tw-w-full tw-text-left tw-my-4">
+                        <text className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
                           {category}
                         </text>
                         <div className="tw-flex tw-flex-wrap">

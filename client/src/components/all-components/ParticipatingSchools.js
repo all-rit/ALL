@@ -38,12 +38,12 @@ const ParticipatingSchools = () => {
   }, []);
 
   return (
-    <>
+    <div className="tw-mb-20">
       <h1 className="tw-title tw-mt-20 tw-mb-10">Participating Schools</h1>
       <div className={"tw-grid tw-w-full tw-grid-cols-4 tw-px-6"}>
         {display_schools(schoolInformation)}
       </div>
-    </>
+    </div>
   );
 };
 

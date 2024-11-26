@@ -136,7 +136,6 @@ const Home = () => {
 
       {/* Participating Schools */}
       <Carousel />
-      <div className="tw-bg-white tw-h-32"></div>
 
       {/* Getting Involved */}
       <GettingInvolved />
