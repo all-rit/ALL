@@ -64,8 +64,8 @@ const SiteAccessibilityButton = () => {
       <button
         className="
         tw-bg-primary-yellow tw-border-none tw-rounded-full
-        tw-p-4 tw-shadow-lg tw-shadow-labGray
-        hover:tw-bg-[#f6c832]"
+        tw-p-4 tw-shadow-md
+        hover:tw-bg-[#f6c832] hover:tw-shawdow-lg"
         onClick={(e) => toggleCollapse(e)}
       >
         <img
