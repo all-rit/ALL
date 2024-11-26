@@ -42,7 +42,9 @@ const ParticipatingSchools = () => {
       <h1 className="tw-title-styling-name tw-mt-20 tw-mb-10">
         Participating Schools
       </h1>
-      <div className={"tw-grid tw-w-full tw-grid-cols-4 tw-px-6"}>
+      <div
+        className={"tw-grid tw-w-full lg:tw-grid-cols-4 tw-grid-cols-2 tw-px-6"}
+      >
         {display_schools(schoolInformation)}
       </div>
     </>

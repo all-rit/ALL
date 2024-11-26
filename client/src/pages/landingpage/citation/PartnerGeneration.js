@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import TeamMemberService from "src/services/TeamMemberService";
-import Partner from "./Partner";
 
 const PartnerGeneration = () => {
   const [partnerInformation, setPartnerInformation] = useState([]);
@@ -14,27 +13,25 @@ const PartnerGeneration = () => {
   }, []);
 
   return (
-    <div className="tw-container tw-py-10 tw-ml-2">
-      <div className="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6">
-        {partnerInformation.map((devInfo, index) => (
-          <div
+    <div className="tw-grid tw-grid-cols-2 lg:tw-grid-cols-3 tw-my-10 tw-px-5 lg:tw-px-20">
+      {partnerInformation.map((devInfo, index) => (
+        <a
+          href={devInfo.websiteURL}
+          key={index}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={
+            "tw-bg-white tw-m-5 tw-shadow-lg tw-rounded-lg tw-flex tw-items-center tw-p-2 lg:tw-p-10"
+          }
+        >
+          <img
+            className="tw-w-full"
             key={index}
-            className={
-              index === 0
-                ? "tw-col-span-2"
-                : index === 5
-                  ? "tw-col-span-2"
-                  : "tw-col-span-1"
-            }
-          >
-            <Partner
-              partnerName={devInfo.partnerName}
-              imageURL={devInfo.imageURL}
-              websiteURL={devInfo.websiteURL}
-            />
-          </div>
-        ))}
-      </div>
+            src={`/img/dev_partners${devInfo.imageURL}`}
+            alt={devInfo.partnerName}
+          />
+        </a>
+      ))}
     </div>
   );
 };

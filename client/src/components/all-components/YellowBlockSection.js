@@ -13,7 +13,11 @@ const YellowBlockSection = (props) => {
   };
 
   return (
-    <div className={"tw-h-[20rem] tw-w-full tw-mt-[5rem] tw-mb-[20rem]"}>
+    <div
+      className={
+        "tw-h-[20rem] tw-w-full tw-mt-[5rem] tw-mb-[2rem] lg:tw-mb-[20rem]"
+      }
+    >
       <div
         className={
           "tw-h-3/4 tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"
