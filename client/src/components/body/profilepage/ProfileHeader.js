@@ -33,7 +33,10 @@ const ProfileHeader = (props) => {
                       className="tw-w-full tw-h-full tw-object-cover"
                     />
                   ) : (
-                    <div>Dom</div>
+                    <div>
+                      {/* get user's first and last initials */}
+                      {user?.firstname[0] + user?.lastinitial}
+                    </div>
                   )}
                 </div>
               </div>
