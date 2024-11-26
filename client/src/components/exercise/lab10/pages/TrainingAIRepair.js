@@ -34,13 +34,13 @@ const TrainingAIRepair = (props) => {
       <div className={"center-div"}>
         <h1 className={"tw-title tw-text-left tw-pb-6"}> Repair </h1>
         <div className={"guidance margin-bottom-2"}>
-          <p className={"tw-body-copy tw-text-left"}>
+          <p className={"tw-body-text tw-text-left"}>
             That was very quick! The duration of the simulation needs to be
             increased to allow the neural network to collect more data to
             improve its decision-making. Let&apos;s increase the duration of the
             simulation to collect more data points.
           </p>
-          <p className={"tw-body-copy tw-text-leftt tw-py-6"}>
+          <p className={"tw-body-text tw-text-leftt tw-py-6"}>
             Click the &lsquo;
             <span className={"tw-font-bold"}>Repair</span>
             &lsquo; button to view and edit the code. Update the simulation to

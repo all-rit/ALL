@@ -17,7 +17,7 @@ const TargetGuideline = () => {
     <div className={"tw-p-10"}>
       <h2 className="tw-title tw-text-left">Was That Difficult?</h2>
       <br />
-      <p className="tw-body-copy tw-font-medium tw-text-left">
+      <p className="tw-body-text tw-font-medium tw-text-left">
         People with mobile dexterity disabilities have a hard time clicking
         small buttons. To make sure your software is accessible by everyone,
         ensure that buttons follow the{" "}
@@ -34,7 +34,7 @@ const TargetGuideline = () => {
       <br />
       <button
         onClick={handleSubmit}
-        className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
       >
         Continue
       </button>

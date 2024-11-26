@@ -9,7 +9,7 @@ class ExerciseButtons extends Component {
     const startMessage = "Play";
     const repairButton = (
       <button
-        className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         onClick={openRepairHandler}
         key="repair"
       >
@@ -18,7 +18,7 @@ class ExerciseButtons extends Component {
     );
     const startButton = (
       <button
-        className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         onClick={() => navigate("/Lab3/Exercise/UserUpdatedExercise")}
         key="start"
         disabled={this.props.disabled}
@@ -28,7 +28,7 @@ class ExerciseButtons extends Component {
     );
     const endButton = (
       <button
-        className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         onClick={() => navigate("/Lab3/Exercise/BeginnerExerciseConclusion")}
         key="start"
         disabled={this.props.disabled}

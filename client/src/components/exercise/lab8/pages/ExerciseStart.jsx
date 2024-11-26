@@ -23,7 +23,7 @@ const ExerciseStart = () => {
       <div className="center-div tw-p-6">
         <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
         <div className="tw-my-6">
-          <p className="tw-body-copy">
+          <p className="tw-body-text">
             In this exercise, you are taking the role of a chat moderator for a
             live stream, the streamer for which has recently taken a break and
             is away from their computer. You are testing a new moderation tool
@@ -36,13 +36,13 @@ const ExerciseStart = () => {
             </strong>
           </p>
 
-          <p className="tw-body-copy tw-my-6">
+          <p className="tw-body-text tw-my-6">
             Beside each chat message, you will see a recommendation from the AI,
             followed by buttons to either remove the message or keep it.
           </p>
         </div>
 
-        <p className="tw-body-copy tw-my-6">
+        <p className="tw-body-text tw-my-6">
           Click the &apos;<span className={"tw-font-bold"}>Start</span>&apos;
           button to move on to the simulation!
         </p>

@@ -221,7 +221,7 @@ const CodeChangeTarget = () => {
     <div>
       <div className={"tw-p-4"}>
         <h2 className="tw-title tw-text-left">Repair</h2>
-        <p className="tw-body-copy tw-font-medium tw-text-left">
+        <p className="tw-body-text tw-font-medium tw-text-left">
           The intent of this code repair is to ensure that target sizes are
           large enough for users to easily activate them, especially those with
           limited dexterity. Mice and similar pointing devices can be hard to
@@ -246,7 +246,9 @@ const CodeChangeTarget = () => {
               placeholder="20"
               onChange={handleChange}
               aria-label={"Please set min width to 40px"}
-              className={"tw-bg-[#333] tw-rounded-md tw-text-primary-yellow"}
+              className={
+                "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+              }
             />
             <code className="language-css">{` px; /*Set to at least 44px*/
   min-height:`}</code>{" "}
@@ -257,7 +259,9 @@ const CodeChangeTarget = () => {
               placeholder="17"
               onChange={handleChange1}
               aria-label={"Please set min height to 40px"}
-              className={"tw-bg-[#333] tw-rounded-md tw-text-primary-yellow"}
+              className={
+                "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+              }
             />
             <code className="language-css">
               {` px; /*Set to at least 44px*/
@@ -272,7 +276,7 @@ const CodeChangeTarget = () => {
         <button
           type={"submit"}
           aria-label={"Update Code"}
-          className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+          className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         >
           Update Code
         </button>

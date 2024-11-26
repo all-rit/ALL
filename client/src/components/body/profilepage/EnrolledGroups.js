@@ -48,7 +48,7 @@ const EnrolledGroups = (props) => {
           >
             {enrolledGroups.length === 0 ? (
               <div>
-                <p className={"tw-body-copy"}>
+                <p className={"tw-body-text"}>
                   {" "}
                   You are currently not enrolled in any groups
                 </p>
@@ -83,7 +83,7 @@ const EnrolledGroups = (props) => {
                 {" "}
                 Have a group code?{" "}
               </p>
-              <p className={"tw-body-copy"}> Click below to get started. </p>
+              <p className={"tw-body-text"}> Click below to get started. </p>
               <AddModal
                 addMode={"enroll_grp"}
                 user={props.user}

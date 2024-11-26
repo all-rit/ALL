@@ -17,7 +17,7 @@ class FormGuidance extends Component {
   render() {
     const { actions } = this.props;
     return (
-      <div className="tw-my-6 tw-body-copy">
+      <div className="tw-my-6 tw-body-text">
         <div className="center-div">
           <div className="guidance">
             The activity you completed was meant to stimulate poor cognitive

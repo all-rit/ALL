@@ -84,7 +84,7 @@ const LabGeneration = (props) => {
         return (
           <>
             {!search && (
-              <p className="module__no_labs tw-w-full tw-body-copy">
+              <p className="module__no_labs tw-w-full tw-body-text">
                 You have no labs to display. Join a group below to get labs
                 assigned to you by an instructor.
               </p>
@@ -153,7 +153,7 @@ const LabGeneration = (props) => {
         return (
           <>
             {!search && (
-              <p className="module__no_labs tw-w-full tw-body-copy">
+              <p className="module__no_labs tw-w-full tw-body-text">
                 You have no labs to display. Join a group below to get labs
                 assigned to you by an instructor.
               </p>

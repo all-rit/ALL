@@ -33,18 +33,18 @@ const ExerciseIntro = () => {
     <div className="center-div">
       <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
       <div className="guidance margin-bottom-2">
-        <p className="tw-body-copy tw-text-left tw-py-6">
+        <p className="tw-body-text tw-text-left tw-py-6">
           You just graduated from ALL University! Congratulations on completing
           your degree! Now that you have finished, you will apply for graduation
           and transition from being a student to an alum.
         </p>
-        <p className="tw-body-copy tw-text-left">
+        <p className="tw-body-text tw-text-left">
           In this exercise, you will enter your personal information in a short
           form. This information will appear on your diploma as well as an
           alumni newsletter. Then, we will see how to improve the form.
         </p>
       </div>
-      <div className="tw-body-copy tw-text-center tw-pb-6">
+      <div className="tw-body-text tw-text-center tw-pb-6">
         Click the <strong>Start</strong> button to begin the exercise!
       </div>
       <div className="tw-flex tw-justify-evenly">

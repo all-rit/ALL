@@ -12,7 +12,7 @@ const OrderedList = ({ data }) => {
         <ol className={"ordered__list"}>
           {data.map((text) => {
             return (
-              <li className={"tw-body-copy"} key={text.id}>
+              <li className={"tw-body-text"} key={text.id}>
                 {text}
               </li>
             );

@@ -81,11 +81,11 @@ class MainFooter extends Component {
     return (
       <>
         {/* Gray Footer */}
-        <div className="tw-px-12 tw-py-12 tw-bg-labGray tw-text-white">
+        <div className="tw-px-12 tw-py-12 tw-bg-labGray tw-text-white tw-mt-[5rem]">
           <div className="tw-flex tw-justify-between tw-w-full">
             <div className="tw-flex xs:tw-flex-col md:tw-flex-row tw-justify-between">
               {/*Left Side*/}
-              <div className="tw-flex tw-flex-col xs:tw-w-full md:tw-w-1/6 tw-items-start">
+              <div className="tw-flex tw-flex-col xs:tw-w-full md:tw-w-1/4 tw-items-start">
                 <a href="#">
                   <img
                     className="logo tw-flex tw-h-auto"
@@ -124,7 +124,7 @@ class MainFooter extends Component {
                   </div>
                   <p
                     className={
-                      "tw-pt-2 tw-body-copy tw-text-center tw-font-medium "
+                      "tw-pt-2 tw-body-text tw-text-center tw-font-medium "
                     }
                   >
                     Available under the Federal Government License
@@ -133,23 +133,19 @@ class MainFooter extends Component {
               </div>
               {/*Right side*/}
               <div className={"xs:tw-w-full md:tw-w-1/4 tw-px-6 tw-mt-6"}>
-                <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
-                  About Us
-                </h2>
-                <div className="tw-text-left">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </div>
+                <p className="tw-font-poppins tw-font-bold">About Us</p>
+                <p className="tw-body-text">
+                  Accessible Learning Labs is an NSF funded initiative aimed at
+                  empowering inclusive software education and fostering STEM
+                  proficiency.
+                </p>
                 <br />
-                <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
-                  {" "}
-                  Contact Us
-                </h2>
-                <div className="tw-flex tw-justify-left tw-whitespace-pre">
+                <p className="tw-font-poppins tw-font-bold"> Contact Us</p>
+                <p className="tw-body-text">
                   1 Lomb Memorial Dr
                   <br />
                   Rochester, NY 14623
-                </div>
+                </p>
                 <br />
                 {/*make mail:to link*/}
                 <a

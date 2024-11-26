@@ -14,6 +14,7 @@ import GettingInvolved from "../../components/all-components/GettingInvolved";
 import PropTypes from "prop-types";
 import Student from "../../assets/images/stockImages/LookingAtComputer.png";
 import Girl from "../../assets/images/stockImages/Girl1.png";
+import LandingSection from "../../components/all-components/LandingSection";
 
 const mapStateToProps = (state) => {
   return {
@@ -187,40 +188,16 @@ const LabsPage = (props) => {
   };
 
   return (
-    <>
-      <div className="tw-h-128 tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-relative">
-        <div className="tw-grid tw-w-full tw-h-1/2">
-          <div
-            className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end
-                                    tw-rounded-bl-lg tw-relative"
-          >
-            <div
-              className="tw-bg-white tw-w-full tw-h-[120%] tw-justify-self-end tw-self-center
-                                    tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4"
-            >
-              <div className="tw-flex tw-h-full tw-flex-col tw-w-1/2">
-                <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-pt-6 tw-pb-3 tw-px-12">
-                  Explore Our Labs
-                </h2>
-                <p className="tw-flex tw-body-styling-name tw-pl-12">
-                  Ready to start learning? Access any of the labs below to learn
-                  more about a range of topics from accessibility to sound and
-                  speech, color blindness and even labs about algorithmic bias
-                  and more.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <img
-          src={Student}
-          className={
-            "tw-absolute tw-bg-none xs:tw-w-[20rem] md:tw-w-[35rem] tw-bottom-0 tw-right-0"
-          }
-        />
-      </div>
+    <div className={"md:tw-pt-[2rem]"}>
+      <LandingSection
+        title={"Explore Our Labs"}
+        body={`Ready to start learning? Access any of the labs below to learn
+                    more about a range of topics from accessibility to sound and
+                    speech, color blindness and even labs about algorithmic bias
+                    and more.`}
+        img={Student}
+      />
       <div className="tw-bg-white tw-h-28 tw-w-full" />
-
       <div className="tw-relative tw-h-auto tw-w-full">
         <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-w-full tw-relative tw-pb-16">
           <div
@@ -261,7 +238,7 @@ const LabsPage = (props) => {
                     </svg>
                   </button>
                 </div>
-                <div className="tw-flex tw-flex-wrap tw-flex-row tw-space-x-4 tw-pt-12 tw-pb-16">
+                <div className="tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
                   <button
                     className="tw-bg-white tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
@@ -367,7 +344,7 @@ const LabsPage = (props) => {
                   <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-px-12 tw-pt-8 tw-pb-3">
                     View Your Progress
                   </h2>
-                  <p className="tw-flex tw-body-styling-name tw-pl-12">
+                  <p className="tw-flex tw-body-text tw-pl-12">
                     Didn’t finish a lab? Come back and continue where you left
                     off through your account profile. All of your progress will
                     be saved as you complete each lab.
@@ -393,7 +370,7 @@ const LabsPage = (props) => {
       </div>
       <div className="tw-bg-white tw-h-28 tw-w-full" />
       <GettingInvolved />
-    </>
+    </div>
   );
 };
 

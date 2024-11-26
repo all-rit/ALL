@@ -40,11 +40,12 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    getUserLabs();
-    if (state.main.user === null) {
+    if (!user) {
       setTimeout(function () {
         toggleLoginModal();
-      }, 3000);
+      }, 2000);
+    } else {
+      getUserLabs();
     }
   }, [user]);
 
@@ -77,7 +78,7 @@ const Profile = () => {
               <p className={"tw-text-white tw-title"}>
                 You are currently not logged in.
               </p>
-              <p className={"tw-body-copy tw-text-white tw-py-3"}>
+              <p className={"tw-body-text tw-text-white tw-py-3"}>
                 Please sign in to experience the user profile.
               </p>
             </div>
@@ -91,7 +92,7 @@ const Profile = () => {
           </BrandedALLModal>
         </div>
       ) : (
-        <div className="tw-mt-0 tw-w-full">
+        <div className="md:tw-pt-[3rem] tw-w-full">
           <ProfileHeader
             user={user}
             labRecords={labRecords}

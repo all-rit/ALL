@@ -30,7 +30,7 @@ class AdvancedInstructions extends Component {
         <br />
         <div>
           <p
-            className={"tw-body-copy tw-font-medium tw-text-left"}
+            className={"tw-body-text tw-font-medium tw-text-left"}
             aria-label={
               "Instructions for Advanced Activity" +
               "You will have to learn about accessibility by performing a task which will involve finding the accessibility issues in a page." +
@@ -61,7 +61,7 @@ class AdvancedInstructions extends Component {
           <br />
           <div className={"tw-flex tw-gap-4 tw-w-full tw-justify-center"}>
             <button
-              className="btn tw-shadow-md tw-bg-[#d3d3d3] tw-w-1/6 tw-h-[4rem] text-uppercase hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+              className="btn tw-shadow-md tw-bg-secondary-gray tw-w-1/6 tw-h-[4rem] text-uppercase hover:tw-bg-primary-yellow hover:tw-shadow-lg"
               key="repair"
               aria-label={"Test"}
               onClick={(e) => textToSpeech(e, "Test")}
@@ -70,7 +70,7 @@ class AdvancedInstructions extends Component {
             </button>
             <button
               onClick={this.handleSubmit}
-              className="btn tw-shadow-md tw-bg-[#d3d3d3] tw-w-1/6 tw-h-[4rem] text-uppercase hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+              className="btn tw-shadow-md tw-bg-secondary-gray tw-w-1/6 tw-h-[4rem] text-uppercase hover:tw-bg-primary-yellow hover:tw-shadow-lg"
               aria-label={"Next"}
             >
               Next

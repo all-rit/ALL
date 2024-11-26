@@ -23,7 +23,7 @@ const SentimentAnalysisInfo = () => {
           Sentiment Analysis Background
         </h2>
 
-        <div className="tw-body-copy">
+        <div className="tw-body-text">
           Sentiment analysis, also referred to as opinion mining, is a natural
           language processing technique that uses machine learning to determine
           the polarity of a given word or sentence. In order to train the
@@ -31,7 +31,7 @@ const SentimentAnalysisInfo = () => {
           collected. Then, the text must be manually processed to assign each
           text sample with a sentiment score.
         </div>
-        <div className="tw-body-copy tw-my-6">
+        <div className="tw-body-text tw-my-6">
           This data can then be used to train the machine learning model. Next,
           the data needs to be preprocessed, which involves tokenization,
           lemmatization, and stop-word removal. Tokenization is the process of
@@ -44,7 +44,7 @@ const SentimentAnalysisInfo = () => {
           of the data and adjusts how the model scales polarity from the
           dataset.
         </div>
-        <div className="tw-body-copy">
+        <div className="tw-body-text">
           Once the model is trained, it is important to evaluate the accuracy of
           the polarity. The scale used in this exercise is a fine-grained,
           three-point scale where “0” indicates negative sentiment, “1”

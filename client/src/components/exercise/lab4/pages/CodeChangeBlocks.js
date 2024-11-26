@@ -152,7 +152,7 @@ const CodeChangeBlocks = () => {
     <div>
       <div className={"tw-p-3"}>
         <h2 className="tw-title tw-text-left tw-pb-3">Repair</h2>
-        <p className="tw-body-copy tw-text-left">
+        <p className="tw-body-text tw-text-left">
           The intent of this code repair is to allow people who navigate
           sequentially through content more direct access to the primary content
           of the Web page and skip over repeated blocks. These include but are

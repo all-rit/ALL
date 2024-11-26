@@ -41,7 +41,7 @@ const About = (props) => {
             {" "}
             About This Lab
           </p>
-          <p className={"tw-font-medium tw-body-copy"}>{aboutText?.about}</p>
+          <p className={"tw-font-medium tw-body-text"}>{aboutText?.about}</p>
         </div>
       </div>
     </div>

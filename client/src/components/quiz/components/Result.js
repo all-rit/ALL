@@ -122,7 +122,7 @@ function Result(props) {
                   <p className={"tw-font-bold tw-text-nowrap tw-text-sm"}>
                     Correct Answer:&nbsp;
                   </p>
-                  <p className={"tw-text-sm tw-leading-snug tw-body-copy"}>
+                  <p className={"tw-text-sm tw-leading-snug tw-body-text"}>
                     {answer["content"]}
                   </p>
                 </div>
@@ -130,7 +130,7 @@ function Result(props) {
                   <p className={"tw-font-bold tw-leading-snug tw-text-sm"}>
                     Explanation:&nbsp;
                   </p>
-                  <p className={"tw-text-sm tw-leading-snug tw-body-copy"}>
+                  <p className={"tw-text-sm tw-leading-snug tw-body-text"}>
                     {answer["explanation"]}
                   </p>
                 </div>
@@ -139,7 +139,7 @@ function Result(props) {
                     <p className={"tw-font-bold tw-leading-snug tw-text-sm"}>
                       Source:&nbsp;
                     </p>
-                    <p className={"tw-text-sm tw-leading-snug tw-body-copy"}>
+                    <p className={"tw-text-sm tw-leading-snug tw-body-text"}>
                       {answer["source"]}
                     </p>
                   </div>

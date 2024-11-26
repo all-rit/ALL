@@ -22,15 +22,15 @@ const ExerciseEnd = () => {
   return (
     <div className="center-div">
       <h2 className={"tw-title tw-text-left tw-my-6"}> Exercise Complete </h2>
-      <div className="tw-body-copy tw-text-left tw-my-6">
+      <div className="tw-body-text tw-text-left tw-my-6">
         You have completed the exercise! Hopefully you have a better
         understanding of the ethics behind AI!
       </div>
-      <div className="tw-body-copy tw-text-left tw-my-6">
+      <div className="tw-body-text tw-text-left tw-my-6">
         Want to try out different weighted values and hire more candidates?
         Click the &quot;Update Repair&quot; button.
       </div>
-      <div className="tw-body-copy tw-text-left tw-my-6">
+      <div className="tw-body-text tw-text-left tw-my-6">
         Otherwise click the &quot;Finish Exercise&quot; button to complete this
         exercise!
       </div>

@@ -44,10 +44,7 @@ const YellowBlockSection = (props) => {
                 {" "}
                 {title}
               </p>
-              <p className={"tw-body-styling-name tw-leading-normal"}>
-                {" "}
-                {body}
-              </p>
+              <p className={"tw-body-text tw-leading-normal"}> {body}</p>
             </div>
             <div
               className={

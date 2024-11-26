@@ -44,7 +44,7 @@ const Notification = (props) => {
       <button
         id="Popover1"
         type="button"
-        className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
       >
         Notification
       </button>

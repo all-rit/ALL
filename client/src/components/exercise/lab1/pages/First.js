@@ -8,7 +8,7 @@ class First extends Component {
       <div className="tw-p-3">
         <h1 className={"tw-title tw-text-left"}> Exercise Start </h1>
         <div className="playthrough__content">
-          <ul className="tw-body-copy tw-text-left">
+          <ul className="tw-body-text tw-text-left">
             <li className={"tw-py-6"}>
               <b>Four small boxes</b> will be presented on your screen. One of
               the four boxes contains a treasure, and it's your job to{" "}
@@ -30,7 +30,7 @@ class First extends Component {
               box with the treasure, the more points you will get.
             </li>
 
-            <ul className="tw-body-copy tw-list-disc tw-px-6">
+            <ul className="tw-body-text tw-list-disc tw-px-6">
               <li>Less than 1 second = 150 points</li>
               <li>Less than 2 seconds = 125 points</li>
               <li>Less than 3 seconds = 100 points</li>
@@ -45,7 +45,7 @@ class First extends Component {
               <b>until the timer runs out.</b>
             </li>
           </ul>
-          <p className="tw-body-copy tw-text-center tw-pb-3">
+          <p className="tw-body-text tw-text-center tw-pb-3">
             When you are ready, click the <b>Start</b> button to begin the
             exercise.
           </p>

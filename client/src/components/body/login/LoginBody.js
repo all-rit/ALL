@@ -28,7 +28,7 @@ const LoginBody = (props) => {
       >
         <p
           className={
-            "sm:md:lg:tw-w-1/2 xs:tw-w-full sm:md:lg:tw-text-xs xs:tw-text-[0.75rem] tw-m-5"
+            "sm:tw-w-1/2 xs:tw-w-full xs:tw-text-xs md:tw-body-text md:tw-text-[1.125rem] tw-leading-snug tw-text-center tw-m-5"
           }
         >
           {" "}

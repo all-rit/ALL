@@ -29,10 +29,10 @@ const ExerciseEnd = () => {
     <>
       <div className="center-div">
         <h1 className={"tw-title tw-text-left"}> Exercise Complete </h1>
-        <p className="tw-body-copy tw-my-6">
+        <p className="tw-body-text tw-my-6">
           Congratulations! You&lsquo;ve finished the AI Cybersecurity Module.
         </p>
-        <p className="tw-body-copy tw-my-6">
+        <p className="tw-body-text tw-my-6">
           Click the <strong>&lsquo;Return to Exercise Start&lsquo;</strong>{" "}
           button to return to the Exercise start page or click the
           &lsquo;Next&lsquo; button to continue onto the Reinforcement section.

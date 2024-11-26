@@ -117,7 +117,7 @@ class ProblemExplanation extends Component {
 
         <br></br>
         <p
-          className={"tw-body-copy tw-font-medium tw-text-left"}
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
           onFocus={(e) =>
             textToSpeech(e, "How do we make the page more accessible?")
@@ -127,7 +127,7 @@ class ProblemExplanation extends Component {
         </p>
         <br />
         <p
-          className={"tw-body-copy tw-font-medium tw-text-left"}
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Body Instructions"}
           onFocus={(e) =>
             textToSpeech(
@@ -144,7 +144,7 @@ class ProblemExplanation extends Component {
         </p>
         <br />
         <p
-          className={"tw-body-copy tw-font-medium tw-text-left"}
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Aria Label definition"}
           onFocus={(e) =>
             textToSpeech(
@@ -161,7 +161,7 @@ class ProblemExplanation extends Component {
           <a
             target="_blank"
             className={
-              "tw-body-copy tw-font-medium tw-text-left tw-text-primary-blue"
+              "tw-body-text tw-font-medium tw-text-left tw-text-primary-blue"
             }
             href={
               "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/" +
@@ -185,7 +185,7 @@ class ProblemExplanation extends Component {
         <button
           onClick={this.handleSubmit}
           className={
-            "btn btn-xl tw-shadow-md tw-bg-[#D3D3D3] tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
           }
           onFocus={(e) => textToSpeech(e, "Next")}
         >

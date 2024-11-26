@@ -164,15 +164,15 @@ const CodeChangeAccessible = () => {
     <div>
       <div className={"tw-p-4"}>
         <h2 className="tw-title tw-text-left tw-my-6">Repair</h2>
-        <p className="tw-body-copy tw-text-left">
+        <p className="tw-body-text tw-text-left">
           The intent of this code repair is to ensure that, wherever possible,
           content can be operated through a keyboard or keyboard interface.
         </p>
-        <p className="tw-body-copy tw-text-left tw-my-3">
+        <p className="tw-body-text tw-text-left tw-my-3">
           <strong>Tabindex=&quot;-1&quot;</strong> prevents access through
           keyboard navigation.
         </p>
-        <p className="tw-body-copy tw-text-left tw-my-3">
+        <p className="tw-body-text tw-text-left tw-my-3">
           <strong>Tabindex=&quot;2&quot;</strong> (positive non-zero) means
           focusable in sequential keyboard navigation, with its order defined by
           the value of the number. Tabindex=&quot;0&quot; means that the element
@@ -227,7 +227,7 @@ const CodeChangeAccessible = () => {
         <button
           type={"submit"}
           aria-label={"Update Code"}
-          className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+          className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
         >
           Update Code
         </button>

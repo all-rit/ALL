@@ -118,7 +118,7 @@ class CodeChange extends Component {
         <br />
         <div>
           <p
-            className={"tw-body-copy tw-font-medium"}
+            className={"tw-body-text tw-font-medium"}
             aria-label="First make changes to the code, if not satisfied try again. Then
               click the 'End Activity' button which will appear when you have made
               changes at least once."

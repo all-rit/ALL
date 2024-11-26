@@ -52,7 +52,7 @@ const BiasedSimulation = () => {
       <div
         className={`tw-rounded-lg tw-absolute tw-top-[20%] tw-right-[5%] tw-bg-white tw-w-[50%] tw-py-6 tw-flex tw-flex-col tw-justify-center tw-items-center ${!canContinue && "tw-hidden"}`}
       >
-        <div className="tw-sub-title-styling-name tw-p-4 tw-rounded-lg">
+        <div className="tw-sub-title tw-p-4 tw-rounded-lg">
           <b>
             All messages have been moderated! Please click the{" "}
             <strong>Continue</strong> button.

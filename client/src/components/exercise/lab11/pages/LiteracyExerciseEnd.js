@@ -29,16 +29,16 @@ const LiteracyExerciseEnd = () => {
   return (
     <div className="center-div">
       <h3 className={"tw-title tw-text-left"}>Exercise Complete</h3>
-      <p className="tw-body-copy tw-py-6">
+      <p className="tw-body-text tw-py-6">
         In conclusion, the Fog Index is a useful tool to determine the
         readability of text. Remember to consider your audience and the best
         reading level for your audience when writing text.
       </p>
-      <p className="tw-body-copy">
+      <p className="tw-body-text">
         Click the <strong>Try Again</strong> button to experiment with your Fog
         Index Calulator.
       </p>
-      <p className="tw-body-copy tw-pb-6">
+      <p className="tw-body-text tw-pb-6">
         Otherwise click the <strong>Finish Exercise</strong> button to complete
         this exercise!
       </p>

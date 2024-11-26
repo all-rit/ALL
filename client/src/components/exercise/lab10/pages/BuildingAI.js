@@ -47,7 +47,7 @@ const BuildingAI = (props) => {
       <div>
         {limitReached ? (
           <Fragment>
-            <p className={"tw-body-copy tw-my-6"}>
+            <p className={"tw-body-text tw-my-6"}>
               Notice how nothing happened? The object did not move at all.
               <br />
               Fix this by adding some code that will allow you to move the
@@ -61,7 +61,7 @@ const BuildingAI = (props) => {
           </Fragment>
         ) : (
           <Fragment>
-            <p className={"tw-body-copy tw-my-6"}>
+            <p className={"tw-body-text tw-my-6"}>
               Below is the neural network you will be constructing and training
               throughout this exercise. The moving object will need to be
               trained to avoid falling shapes, but before we can reach this

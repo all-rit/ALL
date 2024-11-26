@@ -21,7 +21,7 @@ const Title = ({ exerciseState, replay }) => {
           {replay ? (
             <div>
               <p className="tw-title">Exercise Over!</p>
-              <p className="tw-body-copy tw-font-medium">
+              <p className="tw-body-text tw-font-medium">
                 Check out your score and click the button when ready to move on!
               </p>
             </div>

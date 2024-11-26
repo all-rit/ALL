@@ -11,6 +11,7 @@ import ALLButton from "../../components/all-components/ALLButton";
 import labService from "src/services/LabService";
 import useMainStateContext from "src/reducers/MainContext";
 import YellowBlockSection from "../../components/all-components/YellowBlockSection";
+import LandingSection from "../../components/all-components/LandingSection";
 
 const Home = () => {
   const { actions } = useMainStateContext();
@@ -38,40 +39,19 @@ const Home = () => {
     getFeaturedLabs();
   }, []);
 
-  // TODO: Site Accessibility Settings does nothing atm (header + footer)
-  // TODO: Get the real images
-  // TODO: Get the correct anchors
-  // TODO: Footer text is still lorem ipsum
-
   return (
-    <div className="landingpage">
+    <div className={"md:tw-pt-[2rem]"}>
       {/* Header */}
-      <div className="tw-relative tw-flex tw-flex-col">
-        <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center tw-py-[75px] sm:tw-py-[150px]">
-          <div className="tw-grid tw-w-full tw-h-1/2">
-            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-full tw-justify-self-end tw-self-end tw-relative tw-rounded-bl-lg tw-rounded-r-none">
-              <div className="tw-bg-white tw-w-full tw-h-full tw-px-8 tw-py-10 md:tw-px-16 md:tw-py-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-relative tw-bottom-5 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
-                <h1 className="tw-title">
-                  Welcome to Accessible Learning Labs
-                </h1>
-                <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-copy">
-                  Accessible Learning Labs is an NSF funded initiative aimed at
+      <LandingSection
+        title={"Welcome to Accessible Learning labs"}
+        body={`Accessible Learning Labs is an NSF funded initiative aimed at
                   empowering inclusive software and fostering STEM proficiency.
                   We are dedicated to equipping users with the skills and
                   knowledge to create accessible software solutions. Through our
                   interactive and intuitive labs, we aim to make the internet a
-                  more equitable place for everyone.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div className="tw-bg-white tw-h-32"></div>
-        <img
-          src={Girl2}
-          className="tw-absolute tw-h-[70%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xl:tw-visible tw-bottom-0"
-        ></img>
-      </div>
+                  more equitable place for everyone.`}
+        img={Girl2}
+      />
 
       {/* Are you a Student? */}
       <section className="tw-bg-primary-yellow tw-flex tw-justify-start tw-pb-0 tw-pt-16">
@@ -81,7 +61,7 @@ const Home = () => {
               <h1 className="tw-text-center sm:tw-text-left tw-mb-4 tw-title">
                 Are You a Student?
               </h1>
-              <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-body-copy">
+              <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-body-text">
                 Use the code that your instructor has provided to join a group!
                 If not, please explore all of the labs that are available for
                 everyone, including our featured labs.
@@ -124,7 +104,7 @@ const Home = () => {
               <div className="tw-bg-white tw-w-full tw-h-[120%] tw-p-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
                 <h1 className="tw-title">Are You an Educator?</h1>
                 <div className="tw-flex tw-flex-col sm:tw-flex-row tw-gap-4 sm:tw-gap-16">
-                  <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-copy">
+                  <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-text">
                     Access the ability to create groups for your students, track
                     their lab progress, date of completion, and quiz grade. Find
                     more information and resources under our Educator Resources

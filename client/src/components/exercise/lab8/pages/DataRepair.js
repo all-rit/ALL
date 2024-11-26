@@ -189,13 +189,13 @@ const DataRepair = () => {
 
   return (
     <div className={"tw-p-6"}>
-      <h1 className={"tw-title-styling-name tw-text-left tw-my-6"}> Repair </h1>
-      <p className="tw-body-styling-name">
+      <h1 className={"tw-title tw-text-left tw-my-6"}> Repair </h1>
+      <p className="tw-body-text">
         {/* instructions for the user */}
         Repair the dataset by assigning the correct polarity to each message.
         Each message should be assigned a sentiment score of either 0, 1, or 2.
       </p>
-      <p className={"tw-body-styling-name tw-mb-3"}>
+      <p className={"tw-body-text tw-mb-3"}>
         Click &lsquo;Repair&rsquo; to make the appropriate changes.
       </p>
       <Popup message={popUpMessage} handler={popUpHandler} error={userError} />
