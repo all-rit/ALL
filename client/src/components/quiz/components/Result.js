@@ -66,7 +66,7 @@ function Result(props) {
           className={`tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white tw-rounded-b-none"}`}
         >
           <div
-            className={"tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-text-sm"}
+            className={"tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-body-text"}
           >
             Question {index + 1}
           </div>
@@ -77,7 +77,7 @@ function Result(props) {
           >
             <div
               className={
-                "tw-text-center tw-w-full tw-font-medium tw-text-sm tw-font-calibri tw-leading-snug tw-flex tw-flex-col tw-px-5"
+                "tw-text-center tw-w-full tw-body-text tw-leading-snug tw-flex tw-flex-col tw-px-5"
               }
             >
               {renderTableSelectedAnswersData(
@@ -119,27 +119,27 @@ function Result(props) {
                     "tw-flex tw-flex-row tw-px-3 tw-text-left tw-align-top tw-items-center"
                   }
                 >
-                  <p className={"tw-font-bold tw-text-nowrap tw-text-sm"}>
+                  <p className={"tw-font-bold tw-text-nowrap tw-body-text"}>
                     Correct Answer:&nbsp;
                   </p>
-                  <p className={"tw-text-sm tw-leading-snug tw-body-text"}>
+                  <p className={"tw-leading-snug tw-body-text"}>
                     {answer["content"]}
                   </p>
                 </div>
                 <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
-                  <p className={"tw-font-bold tw-leading-snug tw-text-sm"}>
+                  <p className={"tw-font-bold tw-leading-snug tw-body-text"}>
                     Explanation:&nbsp;
                   </p>
-                  <p className={"tw-text-sm tw-leading-snug tw-body-text"}>
+                  <p className={"tw-leading-snug tw-body-text"}>
                     {answer["explanation"]}
                   </p>
                 </div>
                 {answer["source"] && (
                   <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
-                    <p className={"tw-font-bold tw-leading-snug tw-text-sm"}>
+                    <p className={"tw-font-bold tw-leading-snug tw-body-text"}>
                       Source:&nbsp;
                     </p>
-                    <p className={"tw-text-sm tw-leading-snug tw-body-text"}>
+                    <p className={"tw-leading-snug tw-body-text"}>
                       {answer["source"]}
                     </p>
                   </div>
