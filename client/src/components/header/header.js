@@ -155,7 +155,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   onClick={() => reachNav("/#")}
                 >
-                  <p className="tw-text-primary-blue tw-font-bold tw-body-copy">
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-copy">
                     Home
                   </p>
                 </NavLink>
@@ -167,7 +167,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/Labs"
                 >
-                  <p className="tw-text-primary-blue tw-font-bold tw-body-copy">
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-copy">
                     Labs
                   </p>
                 </NavLink>
@@ -179,7 +179,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/about-us"
                 >
-                  <p className="tw-text-primary-blue tw-font-bold tw-body-copy">
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-copy">
                     About Us
                   </p>
                 </NavLink>
@@ -191,7 +191,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/EducatorResources"
                 >
-                  <p className="tw-text-primary-blue tw-font-bold tw-body-copy">
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-copy">
                     Educator Resources
                   </p>
                 </NavLink>

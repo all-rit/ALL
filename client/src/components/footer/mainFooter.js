@@ -8,7 +8,6 @@ import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import { bindActionCreators } from "redux";
 import {
-  changeTSize,
   setTextColor,
   setBackgroundColor,
   onNextPageChangeTSize,
@@ -45,20 +44,6 @@ class MainFooter extends Component {
     };
   }
 
-  // onNameChange(event) {
-  //   this.setState({ name: event.target.value });
-  // }
-  // onEmailChange(event) {
-  //   this.setState({ email: event.target.value });
-  // }
-  // onMessageChange(event) {
-  //   this.setState({ message: event.target.value });
-  // }
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   console.log(this.state);
-  // }
-
   componentDidMount() {
     document.addEventListener("click", this.handleClick);
   }
@@ -76,11 +61,6 @@ class MainFooter extends Component {
     document.removeEventListener("click", this.handleClick);
   }
 
-  changeSize = (size) => {
-    const state_size = this.state.fontSize;
-    changeTSize(size);
-    this.setState({ fontSize: state_size + size });
-  };
   adjustSizeColor = (fontSize) => {
     for (let x = 0; x < Math.abs(fontSize); x++) {
       if (fontSize < 0) {
@@ -97,78 +77,15 @@ class MainFooter extends Component {
     }
   };
 
-  renderTextColorPalette = () => {
-    this.setState({
-      // displayColorPalette: !this.state.displayColorPalette,
-      textColor: !this.state.textColor,
-      bgColor: false,
-    });
-  };
-  renderBgColorPalette = () => {
-    this.setState({
-      bgColor: !this.state.bgColor,
-      textColor: false,
-    });
-  };
-
-  OnTextColorChange(obj) {
-    setTextColor(obj.color);
-    this.setState({ color: obj.color });
-  }
-
-  OnBgColorChange(obj) {
-    setBackgroundColor(obj.color);
-    this.setState({ backgroundColor: obj.color });
-  }
-
   render() {
     return (
       <>
-        {/* Affiliates */}
-        <div id="mainfooter">
-          <div className="container">
-            <div className="row tw-items-center tw-gap-4">
-              <div className="col-sm-3 tw-p-0">
-                <a
-                  href="https://www.nsf.gov"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    className="tw-object-cover tw-w-full tw-max-w-[10rem]"
-                    src={nsf}
-                    alt="National Science Foundation"
-                  />
-                </a>
-              </div>
-              <div className="col-sm-3 tw-p-0">
-                <a
-                  href="https://www.rit.edu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    className="tw-object-cover tw-w-full tw-max-w-[16rem]"
-                    src={rit}
-                    alt="Rochester Institute Of Technology"
-                  />
-                </a>
-              </div>
-              <p
-                className={
-                  "tw-pt-2 tw-body-copy tw-text-center tw-font-medium "
-                }
-              >
-                Available under the Federal Government License
-              </p>
-            </div>
-          </div>
-        </div>
         {/* Gray Footer */}
         <div className="tw-px-12 tw-py-12 tw-bg-labGray tw-text-white">
-          <div className="tw-flex tw-justify-between tw-flex-wrap">
-            <div className="tw-object-left tw-max-w-80">
-              <div className="tw-flex">
+          <div className="tw-flex tw-justify-between tw-w-full">
+            <div className="tw-flex xs:tw-flex-col md:tw-flex-row tw-justify-between">
+              {/*Left Side*/}
+              <div className="tw-flex tw-flex-col xs:tw-w-full md:tw-w-1/6 tw-items-start">
                 <a href="#">
                   <img
                     className="logo tw-flex tw-h-auto"
@@ -176,66 +93,106 @@ class MainFooter extends Component {
                     alt="ALL Logo"
                   />
                 </a>
+                <div className="container">
+                  <div className="tw-flex tw-flex-row tw-items-center tw-gap-4">
+                    <div className="col-lg-4 tw-p-0">
+                      <a
+                        href="https://www.nsf.gov"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          className="tw-object-cover tw-w-full tw-max-w-[10rem]"
+                          src={nsf}
+                          alt="National Science Foundation"
+                        />
+                      </a>
+                    </div>
+                    <div className="col-lg-7 tw-p-0">
+                      <a
+                        href="https://www.rit.edu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          className="tw-object-cover tw-w-full tw-max-w-[16rem]"
+                          src={rit}
+                          alt="Rochester Institute Of Technology"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <p
+                    className={
+                      "tw-pt-2 tw-body-copy tw-text-center tw-font-medium "
+                    }
+                  >
+                    Available under the Federal Government License
+                  </p>
+                </div>
               </div>
-              <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
-                About Us
-              </h2>
-              <div className="tw-text-left">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </div>
-              <br />
-              <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
-                {" "}
-                Contact Us
-              </h2>
-              <div className="tw-flex tw-justify-left tw-whitespace-pre">
-                1 Lomb Memorial Dr
+              {/*Right side*/}
+              <div className={"xs:tw-w-full md:tw-w-1/4 tw-px-6 tw-mt-6"}>
+                <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
+                  About Us
+                </h2>
+                <div className="tw-text-left">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
                 <br />
-                Rochester, NY 14623
-              </div>
-              <br />
-              {/*make mail:to link*/}
-              <a
-                href="mailto:Daniel.Krutz@rit.edu"
-                className="tw-text-white tw-no-underline"
-              >
-                <text className="tw-flex tw-justify-left ">
-                  Daniel.Krutz@rit.edu
-                </text>
-              </a>
-              <text className="tw-flex tw-justify-left ">585-123-4567</text>
-              <div className="tw-flex tw-justify-left tw-pt-4 tw-space-x-4">
-                <svg
-                  className="tw-fill-white tw-w-9"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
+                <h2 className="tw-flex tw-justify-left tw-text-lg tw-font-bold">
+                  {" "}
+                  Contact Us
+                </h2>
+                <div className="tw-flex tw-justify-left tw-whitespace-pre">
+                  1 Lomb Memorial Dr
+                  <br />
+                  Rochester, NY 14623
+                </div>
+                <br />
+                {/*make mail:to link*/}
+                <a
+                  href="mailto:Daniel.Krutz@rit.edu"
+                  className="tw-text-white tw-no-underline"
                 >
-                  {/*Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.*/}
-                  <a
-                    className="tw-fill-white"
-                    href="https://www.linkedin.com/company/accessible-learning-labs-rit"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <text className="tw-flex tw-justify-left ">
+                    Daniel.Krutz@rit.edu
+                  </text>
+                </a>
+                <text className="tw-flex tw-justify-left ">585-123-4567</text>
+                <div className="tw-flex tw-justify-left tw-pt-4 tw-space-x-4">
+                  <svg
+                    className="tw-fill-white tw-w-9"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
                   >
-                    <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
-                  </a>
-                </svg>
-                <svg
-                  className="tw-fill-white tw-w-11"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512"
-                >
-                  {/*Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.*/}
-                  <a
-                    className="tw-fill-white"
-                    href="https://www.youtube.com/@accessibilitylearninglabs5949"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {/*Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.*/}
+                    <a
+                      className="tw-fill-white"
+                      href="https://www.linkedin.com/company/accessible-learning-labs-rit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                    </a>
+                  </svg>
+                  <svg
+                    className="tw-fill-white tw-w-11"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512"
                   >
-                    <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
-                  </a>
-                </svg>
+                    {/*Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.*/}
+                    <a
+                      className="tw-fill-white"
+                      href="https://www.youtube.com/@accessibilitylearninglabs5949"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
+                    </a>
+                  </svg>
+                </div>
               </div>
             </div>
             <div>{/*<ContactUs/>*/}</div>

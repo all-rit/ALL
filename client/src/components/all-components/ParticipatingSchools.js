@@ -10,9 +10,12 @@ function display_schools(schools) {
           key={id}
           target="_blank"
           rel="noopener noreferrer"
+          className={
+            "tw-m-5 tw-shadow-lg tw-rounded-lg tw-flex tw-items-center tw-p-10"
+          }
         >
           <img
-            className="tw-max-w-40 lg:tw-max-w-sm tw-max-h-sm tw-m-5"
+            className="tw-object-cover tw-bg-cover"
             key={id}
             src={`/img/participating_schools${schoolInfo.imageURL}`}
             alt={schoolInfo.schoolName}
@@ -36,19 +39,11 @@ const ParticipatingSchools = () => {
 
   return (
     <>
-      <h1 className="tw-title tw-mt-32 tw-mb-20">Participating Schools</h1>
-      <div className="tw-m-auto tw-relative tw-items-center tw-h-1/6 lg:tw-h-1/4 tw-w-full lg:tw-w-3/4 tw-overflow-hidden">
-        <div className="tw-w-full tw-h-full tw-scroll-smooth tw-animate-infinite-scroll tw-whitespace-nowrap">
-          {display_schools(schoolInformation)}
-          {display_schools(schoolInformation)}
-        </div>
-      </div>
-
-      <div className="tw-m-auto tw-relative tw-items-center tw-h-1/6 lg:tw-h-1/4 tw-w-full lg:tw-w-3/4 tw-overflow-hidden">
-        <div className="tw-w-full tw-h-full tw-flex tw-justify-end tw-scroll-smooth tw-animate-infinite-scroll-right tw-whitespace-nowrap ">
-          {display_schools(schoolInformation)}
-          {display_schools(schoolInformation)}
-        </div>
+      <h1 className="tw-title-styling-name tw-mt-20 tw-mb-10">
+        Participating Schools
+      </h1>
+      <div className={"tw-grid tw-w-full tw-grid-cols-4 tw-px-6"}>
+        {display_schools(schoolInformation)}
       </div>
     </>
   );
