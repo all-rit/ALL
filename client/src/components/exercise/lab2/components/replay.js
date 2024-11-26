@@ -56,16 +56,16 @@ class Replay extends Component {
         <div className={"tw-m-5 tw-p-5"}>
           <div>
             {this.props.score > 0 ? (
-              <p className="tw-body-copy tw-font-medium">
+              <p className="tw-body-text tw-font-medium">
                 Good job! Here are your results:
               </p>
             ) : (
-              <p className={"tw-body-copy tw-font-medium"}>
+              <p className={"tw-body-text tw-font-medium"}>
                 Better luck next time! Here are your results:
               </p>
             )}
             <div>
-              <table className="center centerExercise tw-m-5 tw-body-copy tw-font-medium">
+              <table className="center centerExercise tw-m-5 tw-body-text tw-font-medium">
                 <tbody style={{ border: "2px solid black" }}>
                   <tr>
                     <td className="replayBreakdown tw-text-left">

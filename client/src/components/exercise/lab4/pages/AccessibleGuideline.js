@@ -16,7 +16,7 @@ const AccessibleGuideline = () => {
   return (
     <div className={"tw-p-6"}>
       <h2 className="tw-title tw-text-left tw-my-6">Was That Difficult?</h2>
-      <p className="tw-body-copy tw-text-left">
+      <p className="tw-body-text tw-text-left">
         People with mobile dexterity disabilities sometimes use a keyboard to
         navigate the page. It is imperative that elements that are accessible
         through mouse are also navigable by keyboard. Software should follow the{" "}
@@ -31,14 +31,14 @@ const AccessibleGuideline = () => {
         </a>
         : Make all functionality available from a keyboard.
       </p>
-      <p className={"tw-my-6 tw-body-copy tw-text-left"}>
+      <p className={"tw-my-6 tw-body-text tw-text-left"}>
         Go ahead and make the changes to the code by clicking “continue”.
       </p>
 
       <button
         href="#"
         onClick={handleSubmit}
-        className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
       >
         Continue
       </button>

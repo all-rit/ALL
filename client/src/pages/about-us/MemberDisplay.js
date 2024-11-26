@@ -100,13 +100,13 @@ const MemberDisplay = (props) => {
                 </h3>
               </div>
               <div id="member-details" className="tw-mt-1.5">
-                <p className="tw-body-copy tw-leading-snug">
+                <p className="tw-body-text tw-leading-snug">
                   {currentMember.title}
                 </p>
-                <p className="tw-body-copy tw-leading-snug">
+                <p className="tw-body-text tw-leading-snug">
                   {currentMember.datesActive}
                 </p>
-                <p className="tw-body-copy tw-leading-snug">
+                <p className="tw-body-text tw-leading-snug">
                   {currentMember.affiliation
                     ? currentMember.affiliation
                     : "Rochester Institute of Technology"}
@@ -116,7 +116,7 @@ const MemberDisplay = (props) => {
                     <h4 className="tw-mx-0 tw-mt-3 tw-mb-3 tw-font-bold tw-text-xl">
                       About Me
                     </h4>
-                    <p className="tw-body-copy tw-leading-snug">
+                    <p className="tw-body-text tw-leading-snug">
                       {currentMember.aboutme}
                     </p>
                   </div>
@@ -141,7 +141,7 @@ const MemberDisplay = (props) => {
                 <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-text-xl">
                   Favorite Lab
                 </h4>
-                <p className="tw-body-copy tw-leading-snug">
+                <p className="tw-body-text tw-leading-snug">
                   {"Lab " + currentMember.favoritelab + ": " + currentFavorite}
                 </p>
               </div>
@@ -154,7 +154,7 @@ const MemberDisplay = (props) => {
                 <p className="tw-pb-3">
                   {labCredits.map((lab) => {
                     return (
-                      <p className="tw-body-copy tw-leading-snug" key={lab.id}>
+                      <p className="tw-body-text tw-leading-snug" key={lab.id}>
                         {lab}
                       </p>
                     );

@@ -103,7 +103,7 @@ const AIRepair = () => {
         {" "}
         Repair{" "}
       </h2>
-      <div className="tw-body-copy tw-text-left tw-my-6">
+      <div className="tw-body-text tw-text-left tw-my-6">
         Let&apos;s adjust the AI&apos;s configuration to allow for a more
         equitable hiring process.
         <br />

@@ -30,7 +30,7 @@ const GettingInvolved = () => {
               </h1>
               <p
                 className={
-                  "tw-body-copy xs:tw-text-sm md:tw-text-[1.125rem] tw-leading-normal tw-w-full sm:tw-w-2/3 lg:tw-w-full"
+                  "tw-body-text xs:tw-text-sm md:tw-text-[1.125rem] tw-leading-normal tw-w-full sm:tw-w-2/3 lg:tw-w-full"
                 }
               >
                 Whether you want to implement our labs in your course

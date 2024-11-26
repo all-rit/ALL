@@ -39,7 +39,7 @@ class ExerciseStart extends Component {
           <button
             onClick={this.handleSubmit}
             className={
-              "btn btn-xl tw-shadow-lg tw-bg-[#D3D3D3] tw-mx-2 hover:tw-bg-primary-yellow"
+              "btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow"
             }
           >
             Beginner Exercise
@@ -47,7 +47,7 @@ class ExerciseStart extends Component {
           <button
             onClick={this.handleSubmitAdv}
             className={
-              "btn btn-xl tw-shadow-lg tw-bg-[#D3D3D3] tw-mx-2 hover:tw-bg-primary-yellow"
+              "btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow"
             }
           >
             Advanced Exercise

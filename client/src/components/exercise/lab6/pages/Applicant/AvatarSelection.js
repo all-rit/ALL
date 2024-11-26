@@ -24,7 +24,7 @@ const AvatarSelection = () => {
   return (
     <div className="center-div">
       <h2 className="tw-title">Welcome to MegaCorp’s hiring process!</h2>
-      <p className="tw-body-copy tw-text-[1.5rem] tw-my-6">
+      <p className="tw-body-text tw-text-[1.5rem] tw-my-6">
         To get you started with the hiring process, please pick an avatar you
         most identify with.
       </p>

@@ -23,7 +23,7 @@ const NegativeReasoning = () => {
         </h2>
       </div>
       <h2 className="tw-title tw-text-left tw-mb-6">Explanation</h2>
-      <div className="tw-body-copy tw-text-left tw-my-6">
+      <div className="tw-body-text tw-text-left tw-my-6">
         The reason you were not selected was because there were an overwhelming
         number of applicants and an AI was used to pare down the number of
         applications. Under normal circumstances a human would have made the

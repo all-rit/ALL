@@ -116,7 +116,7 @@ const Labs = (props) => {
                 >
                   <button
                     className={
-                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                      "btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
                     }
                     onClick={displayNotStartedLabs}
                   >
@@ -124,7 +124,7 @@ const Labs = (props) => {
                   </button>
                   <button
                     className={
-                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                      "btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
                     }
                     onClick={displayInProgressLabs}
                   >
@@ -132,7 +132,7 @@ const Labs = (props) => {
                   </button>
                   <button
                     className={
-                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                      "btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
                     }
                     onClick={displayCompletedLabs}
                   >

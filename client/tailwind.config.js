@@ -72,7 +72,7 @@ module.exports = {
         },
         secondary: {
           black: "#000000",
-          gray: "#CECECE",
+          gray: "#d3d3d3",
           white: "#FFFFFF",
         },
       },
@@ -142,7 +142,7 @@ module.exports = {
           fontSize: "1.5rem",
           fontWeight: theme("fontWeight.medium"),
         },
-        ".body-copy": {
+        ".body-text": {
           fontFamily: theme("fontFamily.calibri"),
           fontWeight: theme("fontWeight.medium"),
           fontSize: "1.125rem",

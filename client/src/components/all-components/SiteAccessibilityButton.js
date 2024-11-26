@@ -80,12 +80,12 @@ const SiteAccessibilityButton = () => {
           color="light"
         >
           <CardHeader className="tw-bg-primary-blue">
-            <h3 className="tw-title-styling-name tw-text-xl tw-font-bold tw-text-white tw-text-center">
+            <h3 className="tw-title tw-text-xl tw-font-bold tw-text-white tw-text-center">
               Accessibility Tools
             </h3>
           </CardHeader>
           <CardBody className="tw-p-2">
-            <p className="tw-text-left tw-body-styling-name tw-px-3">
+            <p className="tw-text-left tw-body-text tw-px-3">
               Text Size Adjuster
             </p>
             <div className="tw-flex tw-flex-row tw-justify-evenly tw-gap-2 tw-my-2">
@@ -93,7 +93,7 @@ const SiteAccessibilityButton = () => {
                 className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
                 onClick={() => changeSize(1)}
               >
-                <p className="tw-text-white tw-title-styling-name tw-leading-4 tw-text-center">
+                <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
                   +
                 </p>
               </button>
@@ -101,12 +101,12 @@ const SiteAccessibilityButton = () => {
                 className="tw-bg-primary-blue tw-flex tw-justify-center tw-items-center tw-w-10 tw-aspect-square tw-border-none tw-rounded-full"
                 onClick={() => changeSize(-1)}
               >
-                <p className="tw-text-white tw-title-styling-name tw-leading-4 tw-text-center">
+                <p className="tw-text-white tw-title tw-leading-4 tw-text-center">
                   -
                 </p>
               </button>
             </div>
-            <p className="tw-text-left tw-body-styling-name tw-my-2 tw-px-3">
+            <p className="tw-text-left tw-body-text tw-my-2 tw-px-3">
               Text Color Adjuster
             </p>
             <div className={"tw-w-full tw-flex tw-justify-center"}>
@@ -117,7 +117,7 @@ const SiteAccessibilityButton = () => {
                 onChange={onTextColorChange.bind(this)}
               />
             </div>
-            <p className="tw-text-left tw-body-styling-name tw-my-2 tw-text-nowrap tw-px-3">
+            <p className="tw-text-left tw-body-text tw-my-2 tw-text-nowrap tw-px-3">
               Background Color Adjuster
             </p>
             <div className={"tw-w-full tw-flex tw-justify-center"}>

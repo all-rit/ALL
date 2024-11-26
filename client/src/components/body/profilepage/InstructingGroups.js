@@ -70,7 +70,7 @@ const InstructingGroups = (props) => {
               {" "}
               Want to start a new group?{" "}
             </p>
-            <p className={"tw-body-copy tw-pb-2"}>
+            <p className={"tw-body-text tw-pb-2"}>
               {" "}
               Click below to get started.{" "}
             </p>

@@ -18,7 +18,7 @@ const BypassBlocksGuideline = () => {
     <div className={"tw-p-10"}>
       <h2 className="tw-title tw-text-left">Was That Difficult?</h2>
       <br />
-      <p className="tw-body-copy tw-font-medium tw-text-left">
+      <p className="tw-body-text tw-font-medium tw-text-left">
         People with mobile dexterity disabilities sometimes use a keyboard to
         navigate the page. This can be cumbersome if there is no way to skip to
         the main section. Software should follow the{" "}
@@ -34,7 +34,7 @@ const BypassBlocksGuideline = () => {
       <br />
       <button
         onClick={handleSubmit}
-        className="btn tw-bg-[#d3d3d3] tw-cursor-pointer tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+        className="btn tw-bg-secondary-gray tw-cursor-pointer tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
       >
         Continue
       </button>

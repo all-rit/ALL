@@ -9,14 +9,14 @@ import React from "react";
 const LinkFooter = ({ data }) => {
   return (
     <>
-      <h4 className="footerlink tw-body-copy tw-text-[1.5rem]">
+      <h4 className="footerlink tw-body-text tw-text-[1.5rem]">
         For more information, please visit the following websites:
       </h4>
       <div className="link-footer">
         {data.map((data, index) => {
           return (
             <a
-              className="link tw-text-primary-blue tw-body-copy"
+              className="link tw-text-primary-blue tw-body-text"
               key={index}
               href={data.link}
               target="_blank"

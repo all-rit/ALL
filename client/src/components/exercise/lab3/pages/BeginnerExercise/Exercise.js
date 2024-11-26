@@ -86,7 +86,7 @@ class Exercise extends Component {
 
     return (
       <div className={`tw-bg-none`}>
-        <p className={"center tw-body-copy"}>Click on the image of a cat.</p>
+        <p className={"center tw-body-text"}>Click on the image of a cat.</p>
         <br />
         <div className={"tw-grid tw-grid-cols-2 tw-gap-3"}>
           <button

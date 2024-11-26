@@ -21,7 +21,7 @@ class BeginnerExerciseConclusion extends Component {
       <div className={"tw-p-10 tw-text-left"}>
         <h2 className={"tw-title"}>Conclusion</h2>
         <br />
-        <p className={"tw-body-copy tw-font-medium"}>
+        <p className={"tw-body-text tw-font-medium"}>
           You have successfully completed the activity!
           <br />
           Click <strong>Return to Start</strong> return to the start of the lab,
@@ -32,7 +32,7 @@ class BeginnerExerciseConclusion extends Component {
         <div style={{ textAlign: "center" }}>
           <button
             onClick={this.handleSubmit}
-            className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+            className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
           >
             Return to Start
           </button>

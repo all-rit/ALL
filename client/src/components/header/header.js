@@ -121,7 +121,7 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className="tw-body-copy tw-font-bold tw-my-0 tw-mb-[5rem]"
+      className="tw-body-text tw-font-bold tw-my-0 tw-mb-[5rem]"
     >
       <div
         className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
@@ -155,7 +155,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   onClick={() => reachNav("/#")}
                 >
-                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-copy">
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
                     Home
                   </p>
                 </NavLink>
@@ -167,7 +167,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/Labs"
                 >
-                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-copy">
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
                     Labs
                   </p>
                 </NavLink>
@@ -179,7 +179,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/about-us"
                 >
-                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-copy">
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
                     About Us
                   </p>
                 </NavLink>
@@ -191,7 +191,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/EducatorResources"
                 >
-                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-copy">
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
                     Educator Resources
                   </p>
                 </NavLink>
@@ -216,7 +216,7 @@ const Header = (props) => {
                 ) : (
                   <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
                     <p
-                      className="tw-text-primary-blue tw-font-bold tw-cursor-pointer tw-body-copy"
+                      className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-cursor-pointer tw-body-text"
                       onClick={toggleSignIn}
                     >
                       Sign In

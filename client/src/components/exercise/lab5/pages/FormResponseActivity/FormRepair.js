@@ -127,12 +127,12 @@ class FormRepair extends Component {
     const { visible, handlers, state, data, actions } = this.props;
     return (
       <div className={"tw-my-6"}>
-        <p className="tw-body-copy tw-text-left">
+        <p className="tw-body-text tw-text-left">
           Let's improve the form feedback. We will be adding an error
           notification under the 'Today's Date' question along with a success
           message.
         </p>
-        <p className="tw-body-copy tw-text-left tw-mt-3 tw-mb-6">
+        <p className="tw-body-text tw-text-left tw-mt-3 tw-mb-6">
           Click 'Repair' to make the appropriate changes.
         </p>
         <Popup

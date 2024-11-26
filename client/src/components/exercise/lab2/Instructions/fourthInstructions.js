@@ -38,14 +38,14 @@ const FourthInstructions = ({
     <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
       <p className="tw-title">Nice work!</p>
       <div>
-        <p className="tw-body-copy tw-font-medium">
+        <p className="tw-body-text tw-font-medium">
           Now that you've made some adjustments and played the exercise again,
           it's time to make one last decision:
         </p>
         <ul>
           <li>
             <br />
-            <p className="tw-body-copy tw-font-medium">
+            <p className="tw-body-text tw-font-medium">
               Option #1: You can click the "Continue Playing!" button to try and
               get a higher score with your current color configuration. You will
               also be able to try out other color vision deficiencies with your
@@ -54,7 +54,7 @@ const FourthInstructions = ({
           </li>
           <li>
             <br />
-            <p className="tw-body-copy tw-font-medium">
+            <p className="tw-body-text tw-font-medium">
               Option #2: You can click the "I'm Finished!" button to finalize
               the application and see the conclusion (you can play more but all
               of your work will be reset to the beginning).
@@ -62,7 +62,7 @@ const FourthInstructions = ({
             <br />
           </li>
           <li>
-            <p className="tw-body-copy tw-font-medium">
+            <p className="tw-body-text tw-font-medium">
               Option #3: You can click the "Make Adjustments!" button to change
               the colors you are using in the system to attempt to get a higher
               score or to improve the contrast in the colors you are using.

@@ -25,7 +25,7 @@ class ExerciseEnd extends Component {
       <div>
         <h2 className={"tw-title tw-text-left tw-px-5"}>Exercise Complete</h2>
         <div className="center-div">
-          <div className="cognitive_instructions tw-body-copy">
+          <div className="cognitive_instructions tw-body-text">
             <div>
               <h4 className="tw-sub-title tw-text-left">
                 Congratulations! You have successfully completed the Cognitive
@@ -61,7 +61,7 @@ class ExerciseEnd extends Component {
             <strong>Next</strong> button.
           </h4>
           <button
-            className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
+            className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
             onClick={this.handleHome}
             key="start"
           >

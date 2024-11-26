@@ -196,7 +196,7 @@ class UserUpdatedExercise extends Component {
             : "Inaccessible Exercise"}
         </h2>
         <p
-          className={"tw-px-[3rem] tw-text-white tw-body-copy tw-font-medium"}
+          className={"tw-px-[3rem] tw-text-white tw-body-text tw-font-medium"}
           onFocus={(e) =>
             this.textToSpeech(
               e,

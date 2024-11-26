@@ -56,12 +56,12 @@ class BuildingAIRepair extends Component {
         <Fragment>
           <div className={"center-div"}>
             <div className={"guidance margin-bottom-2"}>
-              <p className={"tw-body-copy tw-my-6"}>
+              <p className={"tw-body-text tw-my-6"}>
                 Let&lsquo;s create our own AI using a simple exercise where you
                 will move a person left and right across your screen and attempt
                 to avoid different colored falling shapes.
               </p>
-              <p className={"tw-body-copy tw-my-6"}>
+              <p className={"tw-body-text tw-my-6"}>
                 We need to generate and collect data, but first, we need to
                 write code to make our object move. Click the &lsquo;
                 <span className={"tw-font-bold"}>Repair</span>

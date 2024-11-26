@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function Question(props) {
   return (
-    <p className="tw-body-styling-name tw-py-6">
+    <p className="tw-body-text tw-py-6">
       {props.content} {props.multi && " Select all that apply."}
     </p>
   );

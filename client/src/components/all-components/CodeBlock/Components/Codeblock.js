@@ -22,7 +22,7 @@ const CodeBlock = ({ fileName, children }) => {
         <div className="tw-grow"></div>
       </div>
 
-      <div className="tw-bg-[#333] tw-m-3 tw-mt-0 tw-ease-in  tw-shadow-2xl tw-rounded-r-sm code_editor__code">
+      <div className="tw-bg-secondary-gray tw-m-3 tw-mt-0 tw-ease-in  tw-shadow-2xl tw-rounded-r-sm code_editor__code">
         <div className={"tw-m-5"}>{children}</div>
       </div>
     </div>

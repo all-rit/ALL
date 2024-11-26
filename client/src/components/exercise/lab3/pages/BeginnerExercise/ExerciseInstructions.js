@@ -38,7 +38,7 @@ class ExerciseInstructions extends Component {
             sure you are using. For the following activity, please ensure that you have volume
             enabled on your device. Click on the button below to test the functionality of the screen
             reader."
-            className={"tw-body-copy tw-font-medium tw-text-left tw-w-11/12"}
+            className={"tw-body-text tw-font-medium tw-text-left tw-w-11/12"}
           >
             You clicked on an image. However, without the ability to see, it may
             be difficult to decipher what these images represent. Please make

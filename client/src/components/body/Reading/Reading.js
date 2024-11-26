@@ -129,7 +129,7 @@ const Reading = (props) => {
           {readingData?.description !== "" ? (
             <>
               <h3 className={"tw-title"}>{readingData?.description.header}</h3>
-              <p className={"tw-body-copy"}>
+              <p className={"tw-body-text"}>
                 {readingData?.description.content}
               </p>
             </>
@@ -145,7 +145,7 @@ const Reading = (props) => {
               >
                 {readingData?.piechart.header}
               </h3>
-              <div className="flex tw-body-copy">
+              <div className="flex tw-body-text">
                 <Pie
                   data={readingData?.piechart.data}
                   height={!isImagine && 100}
@@ -163,7 +163,7 @@ const Reading = (props) => {
                   className={
                     isImagine
                       ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                      : " tw-body-copy tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                      : " tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
                   }
                 >
                   {data}
@@ -198,7 +198,7 @@ const Reading = (props) => {
                             className={
                               isImagine
                                 ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                                : "tw-body-copy"
+                                : "tw-body-text"
                             }
                           >
                             {content}
