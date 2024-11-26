@@ -13,7 +13,7 @@ const PartnerGeneration = () => {
   }, []);
 
   return (
-    <div className="tw-grid tw-grid-cols-2 lg:tw-grid-cols-3 tw-my-10 tw-px-5 lg:tw-px-20">
+    <div className="tw-grid tw-col-items-start tw-grid-cols-2 lg:tw-grid-cols-3 tw-my-10 tw-px-5 lg:tw-px-20">
       {partnerInformation.map((devInfo, index) => (
         <a
           href={devInfo.websiteURL}
@@ -21,7 +21,7 @@ const PartnerGeneration = () => {
           target="_blank"
           rel="noopener noreferrer"
           className={
-            "tw-bg-white tw-m-5 tw-shadow-lg tw-rounded-lg tw-flex tw-items-center tw-p-2 lg:tw-p-10"
+            "tw-bg-white tw-m-5 tw-shadow-lg tw-rounded-lg tw-flex tw-items-center tw-p-2 lg:tw-p-5"
           }
         >
           <img

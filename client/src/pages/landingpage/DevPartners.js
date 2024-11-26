@@ -18,7 +18,9 @@ const DevPartners = () => {
           </div>
         </div>
       </div>
-      <PartnerGeneration />
+      <div className="tw-w-3/4">
+        <PartnerGeneration />
+      </div>
     </div>
   );
 };
