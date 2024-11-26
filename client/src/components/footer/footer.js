@@ -5,7 +5,6 @@ import { actions as appActions } from "../../reducers/lab1/AppReducer";
 import { actions as mainActions } from "../../reducers/MainReducer";
 import { bindActionCreators } from "redux";
 import {
-  changeTSize,
   setTextColor,
   setBackgroundColor,
   onNextPageChangeTSize,
@@ -58,11 +57,6 @@ class Footer extends Component {
     document.removeEventListener("click", this.handleClick);
   }
 
-  changeSize = (size) => {
-    const state_size = this.state.fontSize;
-    changeTSize(size);
-    this.setState({ fontSize: state_size + size });
-  };
   adjustSizeColor = (fontSize) => {
     for (let x = 0; x < Math.abs(fontSize); x++) {
       if (fontSize < 0) {
@@ -83,37 +77,6 @@ class Footer extends Component {
     this.props.setQuizCompleted(false);
     navigate("/# ");
   };
-
-  disappearNext = (count) => {
-    return count >= 4;
-  };
-  disappearBack = (count) => {
-    return count <= 0;
-  };
-
-  renderTextColorPalette = () => {
-    this.setState({
-      // displayColorPalette: !this.state.displayColorPalette,
-      textColor: !this.state.textColor,
-      bgColor: false,
-    });
-  };
-  renderBgColorPalette = () => {
-    this.setState({
-      bgColor: !this.state.bgColor,
-      textColor: false,
-    });
-  };
-
-  OnTextColorChange(obj) {
-    setTextColor(obj.color);
-    this.setState({ color: obj.color });
-  }
-
-  OnBgColorChange(obj) {
-    setBackgroundColor(obj.color);
-    this.setState({ backgroundColor: obj.color });
-  }
 
   handleClick(e) {
     if (this.state.textColor) {
@@ -167,8 +130,8 @@ class Footer extends Component {
       return;
     }
     return (
-      <>
-        <div className="footer">
+      <div className={"tw-mb-6"}>
+        <div className="">
           <div
             className="tw-flex tw-justify-between tw-mx-10"
             style={{ display: display ? "block" : "none" }}
@@ -218,8 +181,7 @@ class Footer extends Component {
             </div>
           </div>
         </div>
-        <div className="footer" />
-      </>
+      </div>
     );
   }
 }

@@ -95,7 +95,7 @@ const App = () => {
     <>
       <div className="overflow-x-hidden tw-h-lvh">
         <Header />
-        <div className="appBody tw-min-h-[50rem] tw-relative tw-gap-x-5">
+        <div className="appBody tw-min-h-[50rem] tw-relative tw-gap-x-5 tw-mb-[-3rem]">
           <div
             className={
               "" +

@@ -13,6 +13,8 @@ const UPDATE_GROUP_SUCCESS = "Group successfully updated!";
 const CREATE_GROUP_SUCCESS = "Group successfully created!";
 const GROUP_ERROR =
   "An unexpected error occurred when creating/updating this group.";
+const REPAIR_ERROR = "Errors in Repair. Please fix.";
+const REPAIR_SUCCESS = "Repair complete!";
 const SUCCESS = "success";
 const ERROR = "error";
 
@@ -30,4 +32,6 @@ module.exports = {
   GROUP_ERROR,
   SUCCESS,
   ERROR,
+  REPAIR_SUCCESS,
+  REPAIR_ERROR,
 };
