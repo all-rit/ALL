@@ -24,7 +24,7 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-import LabFooter from "./components/footer/footer";
+import LabFooter from "./components/footer/LabFooter";
 import MainFooter from "./components/footer/mainFooter";
 import NavigationPane from "./components/all-components/Lab/NavigationPane";
 import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
@@ -95,7 +95,7 @@ const App = () => {
     <>
       <div className="overflow-x-hidden tw-h-lvh">
         <Header />
-        <div className="appBody tw-min-h-[50rem] tw-relative tw-gap-x-5 tw-mb-[-3rem]">
+        <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5">
           <div
             className={
               "" +
@@ -125,7 +125,7 @@ const App = () => {
                 ${
                   lab !== 0
                     ? `tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-[60%] lg:tw-w-[70%] tw-mx-6 
-                ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-[105%]"} 
+                ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-[100%]"} 
                 tw-top-0 tw-justify-center tw-flex tw-flex-col`
                     : "tw-w-full"
                 }`}

@@ -75,7 +75,7 @@ class exercise extends Component {
     const renderer = (props) => {
       if (props.total === 0) {
         return (
-          <div>
+          <div className={"tw-h-full"}>
             <Countdown
               date={this.state.startTime + 18000}
               intervalDelay={0}
@@ -145,7 +145,7 @@ class exercise extends Component {
 
     // Controls the main countdown clock for the center of the screen
     return (
-      <div>
+      <div className={"tw-h-full"}>
         {this.state.startTime === 0 ? null : (
           <Countdown
             date={this.state.startTime + 3000}

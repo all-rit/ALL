@@ -14,7 +14,6 @@ const Instructions = ({
 }) => {
   return (
     <div>
-      <p className="thirdTitle center lowMargin">Instructions:</p>
       <div className="instruction tw-flex tw-flex-row tw-w-100 tw-mx-3 tw-justify-between">
         <div
           className={

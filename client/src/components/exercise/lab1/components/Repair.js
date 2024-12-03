@@ -427,7 +427,12 @@ class Repair extends Component {
                 <button
                   id={"changeAvailableColor"}
                   onClick={this.toggleAvailableBackgroundColorPopup.bind(this)}
-                  style={{ backgroundColor: availableBackgroundColor }}
+                  style={{
+                    backgroundColor: availableBackgroundColor,
+                    width: "25px",
+                    height: "25px",
+                    borderRadius: "25px",
+                  }}
                 />
                 {availableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">
@@ -465,7 +470,12 @@ class Repair extends Component {
                   onClick={this.toggleUnavailableBackgroundColorPopup.bind(
                     this,
                   )}
-                  style={{ backgroundColor: unavailableBackgroundColor }}
+                  style={{
+                    backgroundColor: unavailableBackgroundColor,
+                    width: "25px",
+                    height: "25px",
+                    borderRadius: "25px",
+                  }}
                 />
                 {unavailableBackgroundColorPopup ? (
                   <div className="code_editor__color_selector">

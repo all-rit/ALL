@@ -20,6 +20,7 @@ import PropTypes from "prop-types";
 import RepairService from "../../../../services/lab4/RepairService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -161,7 +162,7 @@ const CodeChangeAccessible = () => {
     marginTop: "20px",
   };
   return (
-    <div>
+    <div className={"code_editor"}>
       <div className={"tw-p-4"}>
         <h2 className="tw-title tw-text-left tw-my-6">Repair</h2>
         <p className="tw-body-text tw-text-left">
@@ -224,13 +225,7 @@ const CodeChangeAccessible = () => {
         </Paper>
         <br />
         <br />
-        <button
-          type={"submit"}
-          aria-label={"Update Code"}
-          className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
-        >
-          Update Code
-        </button>
+        <RepairUpdateButton disabled={!textValue} />
       </form>
       <Snackbar
         anchorOrigin={{

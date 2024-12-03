@@ -14,20 +14,14 @@ const Score = ({
   isHex,
   background,
   currentColor,
-  exerciseMode,
 }) => {
   return (
-    <div className="scoreLine tw-rounded-b-4xl tw-p-5 tw-mt-5">
-      <p className="scoreElement">Score: {score}</p>
-      <p className="scoreElement">Number Correct From Click: {rightClick}</p>
-      <p className="scoreElement">Number Incorrect From Click: {wrongClick}</p>
-      <p className="scoreElement">
-        Number Correct From Not Clicking: {rightNoClick}
-      </p>
-      <p className="scoreElement">
-        Number Incorrect From Not Clicking: {wrongNoClick}
-      </p>
-      <p className="scoreElement">Exercise Mode: {exerciseMode}</p>
+    <div className="scoreLine tw-rounded-b-lg tw-p-5 tw-mt-5 tw-py-10 tw-text-white">
+      <p className="tw-body-text">Current Score: {score}</p>
+      <p className="tw-body-text">Correct Clicks: {rightClick}</p>
+      <p className="tw-body-text">Incorrect Clicks: {wrongClick}</p>
+      <p className="tw-body-text">Correct Non-Clicks: {rightNoClick}</p>
+      <p className="tw-body-text">Incorrect Non-Clicks: {wrongNoClick}</p>
       {isHex ? (
         <div className="oneline">
           <p className="scoreElement spaceRight">Background: {background}</p>

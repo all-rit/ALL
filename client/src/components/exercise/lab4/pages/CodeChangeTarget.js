@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import Prism from "prismjs";
-import { Paper, Snackbar } from "@mui/material";
+import { Snackbar } from "@mui/material";
 import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
 import { amber, green, red, yellow } from "@mui/material/colors";
 import SnackbarContent from "@mui/material/SnackbarContent";
@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import RepairService from "../../../../services/lab4/RepairService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -211,12 +212,6 @@ const CodeChangeTarget = () => {
     return obj ? obj.dispatchEvent(eventInit) : false;
   };
 
-  const paperStyle = {
-    marginLeft: "10px",
-    marginRight: "10px",
-    marginTop: "20px",
-  };
-  console.log("in codechangetarget");
   return (
     <div>
       <div className={"tw-p-4"}>
@@ -230,7 +225,7 @@ const CodeChangeTarget = () => {
         </p>
       </div>
       <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
-        <Paper style={paperStyle}>
+        <div className={"code_editor__content"}>
           <pre>
             <code className="language-css">
               {`
@@ -270,16 +265,10 @@ const CodeChangeTarget = () => {
 `}
             </code>
           </pre>
-        </Paper>
+        </div>
         <br />
         <br />
-        <button
-          type={"submit"}
-          aria-label={"Update Code"}
-          className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
-        >
-          Update Code
-        </button>
+        <RepairUpdateButton disabled={!state.textValue || !state.textValue1} />
       </form>
       <Snackbar
         anchorOrigin={{

@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Button } from "reactstrap";
 import UserLabService from "../../../../services/UserLabService";
 import "./secondaryInstructions.css";
 import { LAB_ID } from "../../../../constants/lab2";
+import LabButton from "../../../all-components/LabButton";
 
 /*
-Responible for displaying the fourth and final page of instructions to the users
+Responsible for displaying the fourth and final page of instructions to the users
 */
 const FourthInstructions = ({
   closePage,
@@ -36,9 +36,9 @@ const FourthInstructions = ({
 
   return (
     <div className=" tw-flex tw-flex-col tw-h-[35rem] tw-p-6 tw-text-justify tw-justify-between">
-      <p className="tw-title">Nice work!</p>
+      <p className="tw-title">Exercise Complete</p>
       <div>
-        <p className="tw-body-text tw-font-medium">
+        <p className="tw-body-text">
           Now that you've made some adjustments and played the exercise again,
           it's time to make one last decision:
         </p>
@@ -72,24 +72,9 @@ const FourthInstructions = ({
         </ul>
       </div>
       <div className="center tw-gap-x-3">
-        <Button
-          className="btn btn-primary tw-text-nowrap tw-text-[1.25rem]"
-          onClick={closeInstructions}
-        >
-          Continue Playing
-        </Button>
-        <Button
-          className="btn btn-primary tw-text-nowrap tw-text-[1.25rem]"
-          onClick={endExercise}
-        >
-          I'm Finished
-        </Button>
-        <Button
-          className="btn btn-primary tw-text-nowrap tw-text-[1.25rem]"
-          onClick={activatePopup}
-        >
-          Make Changes
-        </Button>
+        <LabButton onClick={closeInstructions} label={"Continue Playing"} />
+        <LabButton onClick={endExercise} label={"End Exercise"} />
+        <LabButton onClick={activatePopup} label={"Make Changes"} />
       </div>
     </div>
   );

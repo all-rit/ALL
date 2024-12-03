@@ -30,7 +30,6 @@ const LabFooter = (props) => {
   };
 
   const { state, actions } = useMainStateContext();
-  const lab = state.main.lab;
   const body = state.main.body;
 
   const handleOnClick = (section) => {
@@ -44,22 +43,21 @@ const LabFooter = (props) => {
     }
   };
   const display =
-    (getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2) &&
-    (lab === 0 ? body !== 3 : true);
+    getExerciseState(state, props.state) === "EXERCISE_IDLE" || body !== 2;
 
   useEffect(() => {
     console.log(display);
   }, []);
 
   return (
-    <div className={"tw-mb-6 tw-mt-[-3rem] tw-z-10"}>
-      {body !== 2 && (
+    <div className={"tw-mt-24 tw-mb-6 tw-z-10"}>
+      {display && (
         <div className={`tw-w-full tw-flex tw-justify-center`}>
           <div
-            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-3/4`}
+            className={`tw-flex ${body !== 0 ? "tw-justify-between" : "tw-justify-end"} tw-w-full tw-ml-6 tw-mr-[10%]`}
             style={{ display: display ? "flex" : "none" }}
           >
-            {body !== 0 && (
+            {body > 0 && (
               <button
                 className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-bl-md tw-border-solid tw-border-l-8 tw-border-b-8 tw-border-r-0 tw-border-t-0 tw-border-labYellow"
                 onClick={() => handleOnClick(body - 1)}
@@ -74,13 +72,13 @@ const LabFooter = (props) => {
             {body === 4 && quizCompleted ? (
               <button
                 href="# "
-                className="btn tw-px-6 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue tw-text-nowrap"
+                className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue tw-items-center tw-justify-center"
                 onClick={navigateHome}
                 style={{
-                  display: display ? "flex" : "none",
+                  display: display ? "1" : "0",
                 }}
               >
-                Return to Home
+                Home
               </button>
             ) : (
               <button
@@ -96,8 +94,8 @@ const LabFooter = (props) => {
           </div>
         </div>
       )}
-      {body === 2 && (
-        <p className="tw-mb-[2rem] tw-mt-[-2rem] tw-body-text tw-font-bold tw-text-center">
+      {!display && (
+        <p className="tw-mb-[2rem] tw-mt-5 tw-body-text tw-font-bold tw-text-center">
           The previously available navigation is disabled until the exercise is
           complete.
         </p>

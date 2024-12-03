@@ -56,6 +56,7 @@ module.exports = {
       brightRed: "#dc2626",
       darkGray: "#3d3d3d",
       success: "#369d2a",
+      hoverSuccess: "#238418",
       error: "#d03c3c",
     },
     extend: {

@@ -226,7 +226,7 @@ td {
 }
 
 .negativeData {
-  background-color: red;
+  background-color: #e15858;
 }
 
 @media (min-width: 1200px) and (max-width: 1600px) {

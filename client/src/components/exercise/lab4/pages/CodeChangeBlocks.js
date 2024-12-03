@@ -17,7 +17,7 @@ import Typography from "@mui/material/Typography";
 import RepairService from "../../../../services/lab4/RepairService";
 import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
-import LabButton from "../../../all-components/LabButton";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -193,11 +193,7 @@ const CodeChangeBlocks = () => {
             </code>
           </pre>
         </div>
-        <LabButton
-          type={"submit"}
-          ariaLabel={"Update Code"}
-          label={"Update Code"}
-        />
+        <RepairUpdateButton disabled={!textValue} />
       </form>
       <Snackbar
         anchorOrigin={{
