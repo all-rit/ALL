@@ -371,11 +371,16 @@ li {
     backdrop-filter: blur(10px);
   }
   &__img {
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-family: "Poppins", "Calibri", sans-serif;
     width: 40px;
     height: 40px;
     margin-left: 10px;
     font-size: 1.6rem;
-    font-weight: 750;
+    font-weight: 450;
     border-radius: 5px;
     color: white;
     background: linear-gradient(

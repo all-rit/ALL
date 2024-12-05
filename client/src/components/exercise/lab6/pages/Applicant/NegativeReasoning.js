@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import LabButton from "../../../../all-components/LabButton";
 
 const NegativeReasoning = () => {
   const { actions } = useMainStateContext();
@@ -30,13 +31,7 @@ const NegativeReasoning = () => {
         decisions.
       </div>
 
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleContinue}
-        key="confirm"
-      >
-        Continue
-      </button>
+      <LabButton label={"Continue"} onClick={handleContinue} key="confirm" />
     </div>
   );
 };
