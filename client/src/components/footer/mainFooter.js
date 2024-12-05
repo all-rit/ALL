@@ -249,7 +249,7 @@ class MainFooter extends Component {
           </div>
           <div className=" tw-w-full tw-bg-white tw-h-px" />
           <div className="tw-flex tw-justify-left tw-mt-12">
-            <div className="tw-flex">Versioning Information Goes Here</div>
+            <div className="tw-flex">Version 2.0</div>
           </div>
         </div>
       </>
