@@ -62,6 +62,9 @@ const NavigationPane = (props) => {
       getExerciseState(state, props.state) !== "EXERCISE_IDLE" &&
       currentSection === 2
     ) {
+      document.querySelector("a").addEventListener("click", function (e) {
+        e.preventDefault();
+      });
       actions.showSnackbar(EXERCISE_IN_PROGRESS);
     } else {
       handleRedirect(actions, state.main.lab, section);

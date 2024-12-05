@@ -18,10 +18,10 @@ const Conclusion = () => {
   return (
     <div className="center-div tw-p-6">
       <h1 className={"tw-title tw-text-left tw-my-6"}>Exercise Complete</h1>
-      <p className={"tw-sub-title tw-text-left"}>
+      <p className={"tw-body tw-text-left"}>
         Congratulations - you have completed the Algorithmic Bias exercise!
       </p>
-      <div className="tw-sub-title tw-text-left tw-my-6">
+      <div className="tw-body-text tw-my-6">
         Click the <strong>&#39;Return to Exercise Start&#39;</strong> button to
         return to the Exercise start page, or scroll down and click the{" "}
         <strong>&#39;Next&#39;</strong> button to continue to the Reinforcement

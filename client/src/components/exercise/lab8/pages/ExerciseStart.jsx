@@ -1,16 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { navigate } from "@reach/router";
 
-import { NAV_BIASED_SIMULATION } from "../../../../constants/lab8";
+import {
+  CHAT_MESSAGES,
+  NAV_BIASED_SIMULATION,
+} from "../../../../constants/lab8";
 
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
 import LabButton from "../../../all-components/LabButton";
+import ExerciseStateContext from "../Lab8Context";
 
 const ExerciseStart = () => {
   const { actions } = useMainStateContext();
+  const { setRepairState, setPolaritiesCorrect, setCurrentMessages } =
+    useContext(ExerciseStateContext);
+
+  const resetContext = () => {
+    setRepairState(false);
+    setPolaritiesCorrect(false);
+    setCurrentMessages(CHAT_MESSAGES.messages);
+  };
+
   useEffect(() => {
     actions.updateUserState(EXERCISE_IDLE);
+    resetContext();
   }, []);
 
   const handleStart = () => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Router } from "@reach/router";
 
 import ExerciseStart from "./pages/ExerciseStart";
@@ -7,22 +7,42 @@ import BiasedSimulation from "./pages/BiasedSimulation";
 import SentimentAnalysisInfo from "./pages/SentimentAnalysisInfo";
 import DataRepair from "./pages/DataRepair";
 import Conclusion from "./pages/Conclusion";
+import ExerciseStateContext from "./Lab8Context";
+import { CHAT_MESSAGES } from "../../../constants/lab8";
+import SuccessfulAnalysis from "./pages/SuccessfulAnalysis";
 
 const Main = () => {
+  const [repairState, setRepairState] = useState(false);
+  const [polaritiesCorrect, setPolaritiesCorrect] = useState(false);
+  const [currentMessages, setCurrentMessages] = useState(
+    CHAT_MESSAGES.messages,
+  );
+
   return (
     <div className="bottomSpace tw-h-[40rem] tw-overflow-y-scroll">
-      <Router className="app">
-        {/* Phase 1: experience biased sentiment analysis in action */}
-        <ExerciseStart path="/*" />
-        <BiasedSimulation path="/BiasedSimulation" />
-        <BiasDiscovery path="/BiasDiscovery" />
+      <ExerciseStateContext.Provider
+        value={{
+          repairState,
+          setRepairState,
+          polaritiesCorrect,
+          setPolaritiesCorrect,
+          currentMessages,
+          setCurrentMessages,
+        }}
+      >
+        <Router className="app">
+          {/* Phase 1: experience biased sentiment analysis in action */}
+          <ExerciseStart path="/*" />
+          <BiasedSimulation path="/BiasedSimulation" />
+          <BiasDiscovery path="/BiasDiscovery" />
 
-        {/* Phase 2: repair the biased dataset */}
-        <DataRepair path="/DataRepair" />
-        <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
-
-        <Conclusion path="/Conclusion" />
-      </Router>
+          {/* Phase 2: repair the biased dataset */}
+          <DataRepair path="/DataRepair" />
+          <SentimentAnalysisInfo path="/SentimentAnalysisInfo" />
+          <SuccessfulAnalysis path={"/SuccessfulAnalysis"} />
+          <Conclusion path="/Conclusion" />
+        </Router>
+      </ExerciseStateContext.Provider>
     </div>
   );
 };

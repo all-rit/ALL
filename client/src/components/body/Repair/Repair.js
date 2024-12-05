@@ -4,6 +4,7 @@ import React from "react";
 import CodeBlock from "../../all-components/CodeBlock/Components/Codeblock";
 import Popup from "src/components/all-components/Popup";
 import LabButton from "../../all-components/LabButton";
+import RepairUpdateButton from "../../all-components/RepairUpdateButton";
 const REPAIR_MESSAGE = "Repair Successful!";
 const ERROR_MESSAGE = "Error in Repair. Please fix.";
 /**
@@ -109,13 +110,7 @@ const Repair = (props) => {
         <>
           <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
           <div>
-            <button
-              onClick={handleUpdate}
-              type="submit"
-              className="btn btn-xl tw-bg-success tw-text-white tw-my-6 tw-w-1/2 tw-shadow-lg"
-            >
-              Update
-            </button>
+            <RepairUpdateButton onClick={handleUpdate} />
           </div>
         </>
       )}

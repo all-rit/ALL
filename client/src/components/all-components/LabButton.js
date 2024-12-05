@@ -9,7 +9,7 @@ const LabButton = (props) => {
       onClick={onClick}
       type={type}
       key={key}
-      className="btn tw-text-black tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg btn-xl text-uppercase tw-max-h-[5rem] tw-min-w-[4rem] tw-max-w-[20rem]"
+      className="btn tw-text-black tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg btn-xl text-uppercase tw-max-h-[5rem] tw-min-w-[4rem] tw-max-w-[20rem] tw-text-nowrap"
       disabled={disabled}
       aria-label={ariaLabel}
     >

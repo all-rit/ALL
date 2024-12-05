@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { navigate } from "@reach/router";
 import "../../../../assets/stylesheets/components/Witch.css";
 import ChatRoom from "../components/ChatRoom";
 import { getMessages } from "../../../../constants/lab8/messages";
-import { useLocation } from "@reach/router";
 import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
 import LabButton from "../../../all-components/LabButton";
+import ExerciseStateContext from "../Lab8Context";
 
 const BiasedSimulation = () => {
   const { actions } = useMainStateContext();
+  const { repairState, polaritiesCorrect, currentMessages } =
+    useContext(ExerciseStateContext);
 
   const [canContinue, setCanContinue] = useState(false);
 
-  const messageLocation = useLocation();
-
-  const { updatedMessages, repairState } = messageLocation.state;
-
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
+    console.warn(repairState, polaritiesCorrect, currentMessages);
   }, []);
 
   const handleModerationComplete = () => {
@@ -28,7 +27,10 @@ const BiasedSimulation = () => {
   const handleContinue = () => {
     // submit user's choice to keep or remove each message to backend via exercise service
     // ExerciseService. ...
-    navigate("/Lab8/Exercise/BiasDiscovery");
+    const next = polaritiesCorrect
+      ? "/Lab8/Exercise/SuccessfulAnalysis"
+      : "/Lab8/Exercise/BiasDiscovery";
+    navigate(next);
   };
 
   return (
@@ -39,7 +41,7 @@ const BiasedSimulation = () => {
           <ChatRoom
             moderationCompleteCallback={handleModerationComplete}
             selectMessages={getMessages}
-            messages={updatedMessages} // Pass updatedMessages
+            messages={currentMessages} // Pass updatedMessages
           />
         ) : (
           // Render the old messages if repairState is false
