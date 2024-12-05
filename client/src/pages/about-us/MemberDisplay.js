@@ -95,7 +95,7 @@ const MemberDisplay = (props) => {
           <div className="tw-mt-12 tw-text-left tw-flex tw-flex-col tw-gap-y-6 tw-col-span-4 tw-px-6">
             <div id="member">
               <div id="member-name">
-                <h3 className="tw-font-bold">
+                <h3 className="tw-font-bold tw-title">
                   {currentMember.firstName} {currentMember.lastName}
                 </h3>
               </div>
@@ -113,7 +113,7 @@ const MemberDisplay = (props) => {
                 </p>
                 {currentMember.aboutme && (
                   <div>
-                    <h4 className="tw-mx-0 tw-mt-3 tw-mb-3 tw-font-bold tw-text-xl">
+                    <h4 className="tw-mx-0 tw-mt-3 tw-mb-3 tw-font-bold tw-sub-title">
                       About Me
                     </h4>
                     <p className="tw-body-text tw-leading-snug">
@@ -138,7 +138,7 @@ const MemberDisplay = (props) => {
             </div>
             {currentMember.favoritelab && (
               <div id="member-favorite-lab">
-                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-text-xl">
+                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-sub-title">
                   Favorite Lab
                 </h4>
                 <p className="tw-body-text tw-leading-snug">
@@ -148,7 +148,7 @@ const MemberDisplay = (props) => {
             )}
             {currentMember.labcredits && (
               <div id="member-lab-credits">
-                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-text-xl">
+                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-sub-title">
                   Lab Credits
                 </h4>
                 <p className="tw-pb-3">
