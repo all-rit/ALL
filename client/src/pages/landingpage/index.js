@@ -43,7 +43,7 @@ const Home = () => {
     <div className={"md:tw-pt-[2rem]"}>
       {/* Header */}
       <LandingSection
-        title={"Welcome to Accessible Learning labs"}
+        title={"Welcome to Accessible Learning Labs"}
         body={`Accessible Learning Labs is an NSF funded initiative aimed at
                   empowering inclusive software and fostering STEM proficiency.
                   We are dedicated to equipping users with the skills and
