@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import LabButton from "../../../../all-components/LabButton";
 
 const EmployerStart = () => {
   const { actions } = useMainStateContext();
@@ -27,13 +28,7 @@ const EmployerStart = () => {
       <div className="tw-body-text tw-text-left tw-my-6">
         Click the “Continue” button to begin the second half of this exercise!
       </div>
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleStart}
-        key="start"
-      >
-        Continue
-      </button>
+      <LabButton label={"Continue"} onClick={handleStart} />
     </div>
   );
 };

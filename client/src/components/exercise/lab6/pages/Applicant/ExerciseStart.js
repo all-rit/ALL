@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
+import LabButton from "../../../../all-components/LabButton";
 
 const ExerciseStart = () => {
   const { actions } = useMainStateContext();
@@ -28,13 +29,7 @@ const ExerciseStart = () => {
       <div className="tw-body-text tw-text-left tw-my-6">
         Click the “Start” button to begin this exercise!
       </div>
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleStart}
-        key="start"
-      >
-        Start
-      </button>
+      <LabButton label={"Start"} onClick={handleStart} />
     </div>
   );
 };

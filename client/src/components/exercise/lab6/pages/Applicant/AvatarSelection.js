@@ -4,6 +4,7 @@ import GridImages from "../../../../all-components/GridImages";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import LabButton from "../../../../all-components/LabButton";
 
 const AvatarSelection = () => {
   const { actions } = useMainStateContext();
@@ -31,13 +32,11 @@ const AvatarSelection = () => {
 
       <GridImages multi={1} setSelection={setAvatar} />
       {avatar.length != 0 && (
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
+        <LabButton
+          label={"Confirm Selection"}
           onClick={confirmSelection}
           key="confirm"
-        >
-          Confirm Selection
-        </button>
+        />
       )}
     </div>
   );

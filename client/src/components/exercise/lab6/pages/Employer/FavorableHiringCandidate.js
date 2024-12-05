@@ -27,9 +27,9 @@ const FavorableHiringCandidate = () => {
     <>
       <div className="center-shift">
         <h2 className="tw-title">What MegaCorp is looking for:</h2>
-        <div className="tw-body-text">
+        <div className="tw-body-text tw-p-6">
           MegaCorp uses an AI assistant in its hiring process to help evaluate a
-          large number of canidates
+          large number of candidates
         </div>
         <div className="tw-container tw-justify-center">
           <ul className="tw-inline-flex tw-justify-evenly">
