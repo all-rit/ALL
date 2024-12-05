@@ -17,7 +17,6 @@ const BiasedSimulation = () => {
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
-    console.warn(repairState, polaritiesCorrect, currentMessages);
   }, []);
 
   const handleModerationComplete = () => {

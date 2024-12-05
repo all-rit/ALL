@@ -137,7 +137,6 @@ const DataRepair = () => {
     if (!repairOpen) {
       setRepairOpen(true);
     }
-    console.warn(currentMessages);
     const dataRepair = await fetchDataRepair();
     if (dataRepair?.userid) {
       const { numRepair, isComplete } = dataRepair;
@@ -188,7 +187,6 @@ const DataRepair = () => {
     } else {
       setPolaritiesCorrect(false);
     }
-    console.warn(body.numRepair);
     await postExerciseChange(body);
     navigate("/Lab8/Exercise/BiasedSimulation");
   };
