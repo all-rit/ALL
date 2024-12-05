@@ -34,8 +34,8 @@ const GettingInvolved = () => {
                 }
               >
                 Whether you want to implement our labs in your course
-                curriculum, join the Accessible Learning Labs development
-                partners or anything in between, contact us using the
+                curriculum, join the Accessible Learning Labs as a development
+                partner, or anything in between, contact us using the
                 information below!
               </p>
             </div>

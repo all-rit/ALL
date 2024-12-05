@@ -156,7 +156,6 @@ class MainFooter extends Component {
                     Daniel.Krutz@rit.edu
                   </p>
                 </a>
-                <p className="tw-flex tw-justify-left ">585-123-4567</p>
                 <div className="tw-flex tw-justify-left tw-pt-4 tw-space-x-4">
                   <svg
                     className="tw-fill-white tw-w-9"
