@@ -54,7 +54,10 @@ const Home = () => {
       />
 
       {/* Are you a Student? */}
-      <section className="tw-bg-primary-yellow tw-flex tw-justify-start tw-pb-0 tw-pt-16">
+      <section
+        className="tw-bg-primary-yellow tw-flex tw-justify-start tw-pb-0 tw-pt-16"
+        id="student"
+      >
         <div className="tw-bg-white tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-mr-10 tw-p-4 sm:tw-p-8 tw-border-solid tw-border-b-0 tw-border-l-0 tw-border-t-12 tw-border-r-12 tw-rounded-tr-lg tw-border-primary-blue">
           <div className="tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-4 md:tw-gap-16 tw-mt-4">
             <div className="tw-flex tw-flex-col">
@@ -97,7 +100,7 @@ const Home = () => {
       <div className="tw-bg-white tw-h-32"></div>
 
       {/* Are you an Educator? */}
-      <div className="tw-relative tw-flex tw-flex-col">
+      <div className="tw-relative tw-flex tw-flex-col" id="educator">
         <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center tw-py-[75px] sm:tw-py-[150px]">
           <div className="tw-grid tw-w-full tw-h-1/2">
             <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end tw-rounded-bl-lg tw-relative">
@@ -131,14 +134,15 @@ const Home = () => {
         body={
           "Learn more about the team at Accessible Learning Labs and the amazing things we have in the works!"
         }
+        id="about-us"
       />
-      <DevPartners />
+      <DevPartners id="dev-partners" />
 
       {/* Participating Schools */}
-      <Carousel />
+      <Carousel id="participating-schools" />
 
       {/* Getting Involved */}
-      <GettingInvolved />
+      <GettingInvolved id="get-involved" />
     </div>
   );
 };
