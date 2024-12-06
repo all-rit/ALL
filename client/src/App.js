@@ -126,7 +126,7 @@ const App = () => {
               className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
                 ${
                   lab !== 0
-                    ? `tw-col-span-5 tw-ml-6
+                    ? `xs:tw-col-span-8 md:tw-col-span-5 tw-ml-6
                 ${state.main.body === 0 && "tw-mt-[5rem] tw-h-[50%]"}`
                     : "tw-w-full"
                 }`}

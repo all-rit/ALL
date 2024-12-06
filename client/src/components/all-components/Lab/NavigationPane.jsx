@@ -74,12 +74,12 @@ const NavigationPane = (props) => {
   return (
     <div
       className={
-        "tw-flex tw-flex-col tw-gap-y-16 tw-col-span-4 tw-text-left xs:tw-hidden md:tw-flex"
+        "tw-flex tw-flex-col tw-gap-y-16 tw-col-span-4 tw-min-w-[12rem] tw-text-left xs:tw-hidden md:tw-flex"
       }
     >
       <div
         className={
-          "tw-py-6 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[8rem]"
+          "tw-py-6 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[9rem]"
         }
       >
         <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>

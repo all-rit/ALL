@@ -82,11 +82,12 @@ const LabFooter = (props) => {
               </button>
             ) : (
               <button
-                className="btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue"
+                className={`${body === 4 && !quizCompleted ? "tw-hidden" : "tw-flex"} btn tw-cursor-pointer tw-w-32 tw-h-16 tw-bg-white tw-font-medium tw-rounded-none tw-rounded-tr-md tw-border-solid tw-border-l-0 tw-border-b-0 tw-border-r-8 tw-border-t-8 tw-border-labBlue`}
                 onClick={() => handleOnClick(body + 1)}
                 style={{
                   opacity: display ? "1" : "0",
                 }}
+                disabled={body === 4}
               >
                 NEXT
               </button>
