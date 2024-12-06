@@ -25,20 +25,38 @@ const Routes = (props) => {
       <ul>
         <li>
           {" "}
-          <a className="tw-body-text" href="/client/public#goals">
-            Goals
+          <a className="tw-body-text" href="/#student">
+            Are You a Student?
           </a>
         </li>
         <li>
           {" "}
-          <a className="tw-body-text" href="/client/public#labs">
-            Labs
+          <a className="tw-body-text" href="/#educator">
+            Are You an Educator?
           </a>
         </li>
         <li>
           {" "}
-          <a className="tw-body-text" href="/client/public#contact">
-            Contact
+          <a className="tw-body-text" href="/#about-us">
+            About Us
+          </a>
+        </li>
+        <li>
+          {" "}
+          <a className="tw-body-text" href="/#dev-partners">
+            Development Partners
+          </a>
+        </li>
+        <li>
+          {" "}
+          <a className="tw-body-text" href="/#participating-schools">
+            Participating Schools
+          </a>
+        </li>
+        <li>
+          {" "}
+          <a className="tw-body-text" href="/#get-involved">
+            Interested in Getting Involved?
           </a>
         </li>
       </ul>

@@ -174,8 +174,9 @@ const LabsPage = (props) => {
         direction={"row"}
         isOpen={signInModalOpen}
         toggle={toggleSignIn}
-        body={<LoginBody />}
-      />
+      >
+        <LoginBody />
+      </BrandedALLModal>
     );
   };
 
