@@ -264,7 +264,7 @@ class Exercise extends Component {
       <div className="exercise tw-flex tw-flex-col tw-gap-y-3">
         <div
           className={
-            "tw-flex tw-flex-row tw-gap-x-3 tw-w-full tw-justify-center"
+            "tw-flex tw-flex-row tw-gap-x-3 tw-h-full tw-w-full tw-mb-10 tw-justify-center"
           }
         >
           <ExerciseButtons

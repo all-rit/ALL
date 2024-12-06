@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import Popup from "src/components/all-components/Popup";
 import BuildingAICodeBlock from "../components/code/BuildingAICodeBlock";
 import { navigate } from "@reach/router";
+import LabButton from "../../../all-components/LabButton";
 
 class BuildingAIRepair extends Component {
   constructor(props) {
@@ -76,20 +77,18 @@ class BuildingAIRepair extends Component {
           handler={actions.updatePopup}
           error={repairError}
         />
-        <button
-          className={"btn btn-second btn-xl text-uppercase leftButton"}
-          onClick={actions.openRepair}
-          key="repair"
-        >
-          Repair
-        </button>
-        <button
-          className={"btn btn-primary btn-xl text-uppercase rightButton"}
-          onClick={this.handleNav.bind(this)}
-          disabled={!changesApplied}
-        >
-          Next
-        </button>
+        <div className={"tw-flex tw-justify-center tw-gap-x-3"}>
+          <LabButton
+            label={"Repair"}
+            onClick={actions.openRepair}
+            key="repair"
+          />
+          <LabButton
+            label={"Next"}
+            onClick={this.handleNav.bind(this)}
+            disabled={!changesApplied}
+          />
+        </div>
         {repairVisible && <BuildingAICodeBlock />}
       </div>
     );

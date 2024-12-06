@@ -10,6 +10,7 @@ import {
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import LabButton from "../../../all-components/LabButton";
 
 const TrainingAIRepair = (props) => {
   const { actions, repairError, timeValue, popupMessage, repairVisible } =
@@ -32,7 +33,10 @@ const TrainingAIRepair = (props) => {
   return (
     <div>
       <div className={"center-div"}>
-        <h1 className={"tw-title tw-text-left tw-pb-6"}> Repair </h1>
+        <h1 className={"tw-title tw-text-left tw-pb-6"}>
+          {" "}
+          Training AI Repair{" "}
+        </h1>
         <div className={"guidance margin-bottom-2"}>
           <p className={"tw-body-text tw-text-left"}>
             That was very quick! The duration of the simulation needs to be
@@ -53,23 +57,16 @@ const TrainingAIRepair = (props) => {
         handler={actions.updatePopup}
         error={repairError}
       />
-      <button
-        className="btn btn-second btn-xl text-uppercase leftButton"
-        onClick={actions.openRepair}
-        key="repair"
-      >
-        Repair
-      </button>
+      <div className={"tw-flex tw-justify-center tw-gap-x-3"}>
+        <LabButton label={"Repair"} onClick={actions.openRepair} key="repair" />
 
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase  "
-        key="Next"
-        onClick={handleNav}
-        disabled={handleNext()}
-      >
-        Next
-      </button>
-
+        <LabButton
+          label={"Next"}
+          key="Next"
+          onClick={handleNav}
+          disabled={handleNext()}
+        />
+      </div>
       {repairVisible && <TrainingAICodeBlock />}
     </div>
   );

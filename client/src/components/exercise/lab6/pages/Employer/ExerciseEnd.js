@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
+import LabButton from "../../../../all-components/LabButton";
 
 const ExerciseEnd = () => {
   const { actions } = useMainStateContext();
@@ -34,21 +35,17 @@ const ExerciseEnd = () => {
         Otherwise click the &quot;Finish Exercise&quot; button to complete this
         exercise!
       </div>
-      <div className="tw-flex tw-justify-evenly">
-        <button
-          className="btn btn-second btn-xl text-uppercase  leftButton"
+      <div className="tw-flex tw-justify-center tw-gap-x-3">
+        <LabButton
+          label={"Update Repair"}
           onClick={handleRepair}
           key="repair"
-        >
-          Update Repair
-        </button>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
+        />
+        <LabButton
+          label={"Finish Exercise"}
           onClick={handleFinish}
           key="start"
-        >
-          Finish Exercise
-        </button>
+        />
       </div>
     </div>
   );

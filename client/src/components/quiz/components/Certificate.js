@@ -40,7 +40,7 @@ class Certificate extends Component {
     return (
       <div
         className={
-          "tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center tw-gap-y-4 tw-max-h-[37rem] tw-overflow-y-scroll"
+          "tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center tw-gap-y-4 tw-max-h-[37rem]"
         }
       >
         <div

@@ -20,6 +20,7 @@ class DementiaInaccessible extends Component {
     const { actions } = this.props;
     return (
       <div>
+        <h2> More on Dementia</h2>
         <div className="tw-sub-title tw-my-3">
           Read the following information about Dementia from w3.org
         </div>

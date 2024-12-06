@@ -18,10 +18,14 @@ class NotificationGuidance extends Component {
     const { actions } = this.props;
     return (
       <div className="tw-my-6 tw-body-text">
+        <h2 className={"tw-title tw-text-left tw-mb-6"}>
+          {" "}
+          Inaccessible Notification{" "}
+        </h2>
         <div className="center-div">
           <div className="guidance">
             The activity you completed was meant to stimulate what an individual
-            with dyslexia experiences
+            with dyslexia experiences.
             <div className="lowercontent">Common challenges include:</div>
             <ul>
               <li>

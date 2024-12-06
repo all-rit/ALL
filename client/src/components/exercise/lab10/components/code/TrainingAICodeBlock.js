@@ -5,6 +5,7 @@ import { actions as exerciseActions } from "../../../../../reducers/lab10/Exerci
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
 
 const TrainingAICodeBlock = (props) => {
   const { actions, timeValue, repairError } = props;
@@ -323,13 +324,13 @@ const TrainingAICodeBlock = (props) => {
           </div>
         </div>
       </div>
-      <button
+      <RepairUpdateButton
         type="submit"
         onClick={handleSubmit}
-        className="button button--green button--block"
+        disabled={timeValue < 60}
       >
         Update
-      </button>
+      </RepairUpdateButton>
     </div>
   );
 };

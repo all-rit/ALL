@@ -180,7 +180,7 @@ function Result(props) {
 
   return (
     <div className="tw-flex tw-flex-col tw-align-middle tw-h-[35rem]">
-      <div className={"tw-overflow-y-scroll "}>
+      <div>
         <div className="tw-font-bold tw-text-[2rem] tw-mb-[5rem]">
           <strong className={"tw-shadow-lg tw-rounded-lg tw-p-6"}>
             Score: {props.quizResult}
@@ -191,7 +191,7 @@ function Result(props) {
         >
           {renderTableData()}
         </div>
-        <div className=" d-flex flex-column justify-content-center tw-pt-12">
+        <div className=" d-flex flex-column justify-content-center tw-pt-12 tw-mb-10">
           {props.isImagine ? (
             <button
               className="btn btn-primary btn-xl text-uppercase  next"

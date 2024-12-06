@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import classNames from "classnames/bind";
 import { Panel as ColorPickerPanel } from "rc-color-picker";
 import RepairService from "../../../../services/lab1/RepairService";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 class Repair extends Component {
   constructor(props) {
@@ -495,13 +496,13 @@ class Repair extends Component {
             <p className="code_editor__class">&#125;</p>
           </div>
         </div>
-        <button
+        <RepairUpdateButton
           onClick={this.handleSubmit.bind(this)}
           type="submit"
-          className="button button--green button--block code_editor_button"
-        >
-          Update
-        </button>
+          disabled={
+            !this.state.availableMessage || !this.state.unavailableMessage
+          }
+        />
       </div>
     );
   }

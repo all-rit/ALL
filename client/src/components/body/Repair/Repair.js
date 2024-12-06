@@ -27,9 +27,20 @@ const Repair = (props) => {
     submitRepair,
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
+  const [repairVisible, setRepairVisible] = useState(false);
   const [enableNext, setEnableNext] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
   const [userError, setUserError] = useState(true);
+
+  const handleOpenRepair = () => {
+    setIsRepairActive(true);
+    setTimeout(() => setRepairVisible(true), 0); // Allow animation to trigger
+  };
+
+  const handleCloseRepair = () => {
+    setRepairVisible(false);
+    setTimeout(() => setIsRepairActive(false), 500); // Match animation duration
+  };
 
   /**
    * handleRepair(): is a function that is responsible
@@ -38,7 +49,7 @@ const Repair = (props) => {
    * and populates the code block with the code implementation view.
    */
   const handleRepair = async () => {
-    setIsRepairActive(true);
+    handleOpenRepair();
     await fetchRepair();
   };
 
@@ -52,7 +63,7 @@ const Repair = (props) => {
   const handleUpdate = async () => {
     const localValidateRepair = validateRepair();
     if (localValidateRepair) {
-      setIsRepairActive(false);
+      handleCloseRepair();
       setUserError(true);
       popUpHandler(REPAIR_MESSAGE);
       setEnableNext(true);
@@ -107,12 +118,14 @@ const Repair = (props) => {
         error={!userError}
       />
       {isRepairActive && (
-        <>
+        <div
+          className={`${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
+        >
           <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
           <div>
             <RepairUpdateButton onClick={handleUpdate} />
           </div>
-        </>
+        </div>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Popup from "../../../../all-components/Popup";
 import { navigate } from "@reach/router";
 import Code from "../../components/Code";
@@ -20,11 +20,22 @@ import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
 const AICodeRepair = () => {
   const { actions: mainActions } = useMainStateContext();
   const { actions, state } = useLab7StateContext();
+  const [repairVisible, setRepairVisible] = useState(false);
 
   useEffect(() => {
     mainActions.updateUserState(EXERCISE_PLAYING);
     reset();
   }, []);
+
+  const handleOpenRepair = () => {
+    actions.openRepair();
+    setTimeout(() => setRepairVisible(true), 0); // Allow animation to trigger
+  };
+
+  const handleCloseRepair = () => {
+    setRepairVisible(false);
+    setTimeout(() => actions.closeRepair(), 500); // Match animation duration
+  };
 
   /**
    * Resets the repair state and updates the popup message.
@@ -92,7 +103,7 @@ const AICodeRepair = () => {
       />
       <button
         className="btn btn-second btn-xl text-uppercase leftButton"
-        onClick={actions.openRepair}
+        onClick={handleOpenRepair}
         key="repair"
       >
         Repair
@@ -105,7 +116,13 @@ const AICodeRepair = () => {
       >
         Next
       </button>
-      {state.repairVisible && <Code />}
+      {state.repairVisible && (
+        <div
+          className={`${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
+        >
+          <Code handleCloseRepair={handleCloseRepair} />
+        </div>
+      )}
     </div>
   );
 };

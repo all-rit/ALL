@@ -34,7 +34,7 @@ const LandingPage = ({ endFirstExercise, toWhiteBackground, background }) => {
           When you are ready, click the <strong>'Let's Get Started'</strong>{" "}
           button to begin the exercise
         </p>
-        <div className="center tw-my-3">
+        <div className="center tw-my-6">
           <LabButton onClick={closePage} label={"Lets Get Started!"} />
         </div>
       </div>

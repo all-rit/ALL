@@ -46,8 +46,10 @@ class Replay extends Component {
       <div className={""}>
         <div className={"tw-m-5"}>
           <div>
-            <p className="tw-sub-title tw-text-center tw-py-6">Results</p>
-            <div className={"tw-rounded-lg tw-p-5"}>
+            <p className=" tw-text-center tw-py-6">Results</p>
+            <div
+              className={"tw-rounded-lg tw-p-5 tw-body-text tw-text-[1.25rem]"}
+            >
               <div
                 className={
                   "tw-flex tw-flex-col tw-gap-y-3 tw-text-white tw-bg-secondary-gray tw-p-6 tw-rounded-lg"
@@ -62,7 +64,7 @@ class Replay extends Component {
                 <div
                   className={`tw-p-3 tw-rounded-xl tw-flex tw-justify-between ${this.props.rightClick > 0 ? "tw-bg-success" : "tw-bg-brightRed"}`}
                 >
-                  <p className=" tw-text-left">Correctly clicked circles</p>
+                  <p className="tw-text-left">Correctly clicked circles</p>
                   <p>{this.props.rightClick}</p>
                 </div>
                 <div

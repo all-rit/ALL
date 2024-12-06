@@ -9,6 +9,8 @@ import {
   REPAIR_SUCCESS,
   SUCCESS,
 } from "../../../../../constants/notifications";
+import LabButton from "../../../../all-components/LabButton";
+import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
 
 const AIRepair = () => {
   const { actions, state } = useMainStateContext();
@@ -30,6 +32,17 @@ const AIRepair = () => {
   const [availabilityValueError, setAvailabilityValueError] = useState(false);
   const [payValueError, setPayValueError] = useState(false);
   const [weightedValueError, setWeightedValueError] = useState(false);
+  const [repairVisible, setRepairVisible] = useState(false);
+
+  const handleOpenRepair = () => {
+    setRepairOpen(true);
+    setTimeout(() => setRepairVisible(true), 0); // Allow animation to trigger
+  };
+
+  const handleCloseRepair = () => {
+    setRepairVisible(false);
+    setTimeout(() => setRepairOpen(false), 500); // Match animation duration
+  };
 
   const validateRepair = () => {
     let error = false;
@@ -82,7 +95,7 @@ const AIRepair = () => {
         availabilityValue,
         payValue,
       );
-      setRepairOpen(false);
+      handleCloseRepair();
     } else {
       setUserError(true);
       actions.showSnackbar(REPAIR_ERROR, ERROR);
@@ -110,25 +123,20 @@ const AIRepair = () => {
         <br />
         Click &rsquo;Repair&rsquo; to make the appropriate changes.
       </div>
-      <button
-        className="btn btn-second btn-xl text-uppercase  leftButton"
-        onClick={() => {
-          !repairOpen ? setRepairOpen(true) : "";
-        }}
-        key="repair"
-      >
-        Repair
-      </button>
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleContine}
-        key="Next"
-        disabled={userError}
-      >
-        Next
-      </button>
+      <div className={"tw-flex tw-gap-x-3 tw-justify-center"}>
+        <LabButton onClick={handleOpenRepair} key="repair" label={"Repair"} />
+        <LabButton
+          onClick={handleContine}
+          key="Next"
+          disabled={userError}
+          label={"Next"}
+        />
+      </div>
+
       {repairOpen && (
-        <div className="code_editor">
+        <div
+          className={`code_editor ${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
+        >
           <div className="code_editor__content">
             <div className="code_editor__files">
               <div className="code_editor__file code_editor__file--active">
@@ -352,13 +360,7 @@ const AIRepair = () => {
               </div>
             </div>
           </div>
-          <button
-            onClick={validateRepair}
-            type="submit"
-            className="button button--green button--block"
-          >
-            Update
-          </button>
+          <RepairUpdateButton onClick={validateRepair} type="submit" />
         </div>
       )}
     </div>

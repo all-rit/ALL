@@ -8,6 +8,8 @@ import RepairService from "../../../../../services/lab5/RepairService";
 import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import Popup from "../../../../all-components/Popup";
 import { navigate } from "@reach/router";
+import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
+import LabButton from "../../../../all-components/LabButton";
 
 class FormRepair extends Component {
   constructor(props) {
@@ -127,6 +129,7 @@ class FormRepair extends Component {
     const { visible, handlers, state, data, actions } = this.props;
     return (
       <div className={"tw-my-6"}>
+        <h2 className={"tw-title tw-text-left tw-mb-6"}> Form Repair </h2>
         <p className="tw-body-text tw-text-left">
           Let's improve the form feedback. We will be adding an error
           notification under the 'Today's Date' question along with a success
@@ -141,21 +144,19 @@ class FormRepair extends Component {
           error={this.state.repairerror}
         />
 
-        <button
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-          onClick={handlers.openRepair}
-          key="repair"
-        >
-          Repair
-        </button>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={this.handleNav}
-          key="Next"
-          disabled={this.state.repairerror}
-        >
-          Next
-        </button>
+        <div className={"tw-flex tw-justify-center tw-gap-x-3"}>
+          <LabButton
+            label={"Repair"}
+            onClick={handlers.openRepair}
+            key="repair"
+          />
+          <LabButton
+            label={"Next"}
+            onClick={this.handleNav}
+            key="Next"
+            disabled={this.state.repairerror}
+          />
+        </div>
         {visible && (
           <div className="code_editor">
             <div className="code_editor__content">
@@ -680,13 +681,15 @@ class FormRepair extends Component {
                 <p className="code_editor__class">&#125;</p>
               </div>
             </div>
-            <button
+            <RepairUpdateButton
               onClick={this.validateRepair.bind(this)}
               type="submit"
-              className="button button--green button--block"
-            >
-              Update
-            </button>
+              disabled={
+                !this.state.errorNotification ||
+                !this.state.successNotification ||
+                !this.state.borderColor
+              }
+            />
           </div>
         )}
         <PageServiceTimer actions={handlers} name={this.state.componentName} />

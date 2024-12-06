@@ -19,6 +19,7 @@ class PageLayoutGuidance extends Component {
     return (
       <Fragment>
         <div className="center-div mb-5">
+          <h2 className={"tw-title tw-text-left"}> Page Layout Explanation </h2>
           <div className="tw-body-text tw-my-6 tw-text-left">
             The text you read was meant to stimulate what an individual with
             cognitive disability experiences. As read earlier, these individuals

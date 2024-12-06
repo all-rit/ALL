@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import LabButton from "../../../../all-components/LabButton";
 
 const AIReasoning = () => {
   const { actions } = useMainStateContext();
@@ -29,13 +30,7 @@ const AIReasoning = () => {
         Click the &quot;Continue&quot; button to proceed to the repair section
         to repair the AI!
       </div>
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleContinue}
-        key="confirm"
-      >
-        Continue To Repair
-      </button>
+      <LabButton onClick={handleContinue} label={"Continue to Repair"} />
     </div>
   );
 };
