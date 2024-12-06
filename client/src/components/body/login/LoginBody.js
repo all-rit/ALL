@@ -18,7 +18,7 @@ const LoginBody = (props) => {
         "tw-flex tw-flex-col tw-align-middle tw-h-full tw-justify-center"
       }
     >
-      <div className="xs:tw-text-md tw-font-poppins sm:tw-text-3xl md:lg:tw-text-5xl tw-title-styling-name tw-text-primary-blue tw-flex tw-flex-row tw-justify-center tw-align-middle">
+      <div className="xs:tw-text-md tw-font-poppins sm:tw-text-3xl md:lg:tw-text-5xl tw-title tw-text-primary-blue tw-flex tw-flex-row tw-justify-center tw-align-middle">
         Welcome
       </div>
       <div
@@ -28,7 +28,7 @@ const LoginBody = (props) => {
       >
         <p
           className={
-            "sm:md:lg:tw-w-1/2 xs:tw-w-full sm:md:lg:tw-text-xs xs:tw-text-[0.75rem] tw-m-5"
+            "sm:tw-w-1/2 xs:tw-w-full xs:tw-text-xs md:tw-body-text md:tw-text-[1.125rem] tw-leading-snug tw-text-center tw-m-5"
           }
         >
           {" "}
@@ -39,7 +39,7 @@ const LoginBody = (props) => {
 
       <div
         className={
-          "tw-font-calibri tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle"
+          "tw-font-calibri tw-w-full tw-flex tw-flex-row tw-justify-center tw-align-middle tw-pb-2"
         }
       >
         <p

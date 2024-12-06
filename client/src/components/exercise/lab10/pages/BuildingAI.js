@@ -43,29 +43,25 @@ const BuildingAI = (props) => {
 
   return (
     <div>
-      <h1 className={"tw-title-styling-name tw-text-left"}> Building the AI</h1>
+      <h1 className={"tw-title tw-text-left"}> Building the AI</h1>
       <div>
         {limitReached ? (
           <Fragment>
-            <p className={"tw-body-styling-name tw-my-6"}>
+            <p className={"tw-body-text tw-my-6"}>
               Notice how nothing happened? The object did not move at all.
               <br />
               Fix this by adding some code that will allow you to move the
               object.
             </p>
             <div>
-              <p
-                className={
-                  "tw-sub-title-styling-name tw-text-[1.35rem] tw-font-bold"
-                }
-              >
+              <p className={"tw-sub-title tw-text-[1.35rem] tw-font-bold"}>
                 Objective: Proceed to the next part of this exercise.
               </p>
             </div>
           </Fragment>
         ) : (
           <Fragment>
-            <p className={"tw-body-styling-name tw-my-6"}>
+            <p className={"tw-body-text tw-my-6"}>
               Below is the neural network you will be constructing and training
               throughout this exercise. The moving object will need to be
               trained to avoid falling shapes, but before we can reach this
@@ -74,11 +70,7 @@ const BuildingAI = (props) => {
               falling shapes.
             </p>
             <div>
-              <p
-                className={
-                  "tw-sub-title-styling-name tw-text-[1.35rem] tw-font-bold"
-                }
-              >
+              <p className={"tw-sub-title tw-text-[1.35rem] tw-font-bold"}>
                 Objective: Start by moving the object using the on-screen
                 buttons or your keyboard. Notice something wrong?
               </p>

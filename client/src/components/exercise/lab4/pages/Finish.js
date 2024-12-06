@@ -22,22 +22,19 @@ const Finish = () => {
 
   return (
     <div className={"tw-p-6"}>
-      <h2 className={"tw-title-styling-name tw-text-left tw-my-6"}>
-        {" "}
-        Exercise Complete
-      </h2>
-      <p className="tw-body-styling-name tw-text-left">
+      <h2 className={"tw-title tw-text-left tw-my-6"}> Exercise Complete</h2>
+      <p className="tw-body-text tw-text-left">
         Congratulations! You have successfully completed the Dexterity Exercise!
       </p>
       <br />
-      <p className="tw-body-styling-name tw-text-left">
+      <p className="tw-body-text tw-text-left">
         If you would like to start the exercise from the beginning, click the{" "}
         <strong>Return to Exercise Start</strong> button below. To move on to
         the reinforcement section scroll down and click the{" "}
         <strong>Next</strong> button.
       </p>
       <button
-        className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase tw-my-6"
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase tw-my-6"
         onClick={handleSubmit}
         key="start"
       >

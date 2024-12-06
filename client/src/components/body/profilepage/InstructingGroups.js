@@ -32,7 +32,7 @@ const InstructingGroups = (props) => {
         <div className="">
           <h4
             className={
-              "tw-title-styling-name tw-text-left tw-poppins tw-text-2xl tw-px-[2rem] tw-py-[1rem]"
+              "tw-title tw-text-left tw-poppins tw-text-2xl tw-px-[2rem] tw-py-[1rem]"
             }
           >
             View Your Instructor Groups
@@ -66,11 +66,11 @@ const InstructingGroups = (props) => {
               "tw-flex tw-flex-col tw-my-5 tw-text-left xs:tw-w-3/4 md:tw-w-1/4 tw-gap-y-2"
             }
           >
-            <p className={"tw-font-poppins tw-title-styling-name tw-text-xl"}>
+            <p className={"tw-font-poppins tw-title tw-text-xl"}>
               {" "}
               Want to start a new group?{" "}
             </p>
-            <p className={"tw-body-styling-name tw-text-sm tw-pb-2"}>
+            <p className={"tw-body-text tw-pb-2"}>
               {" "}
               Click below to get started.{" "}
             </p>

@@ -137,7 +137,7 @@ const EnrolledGroupCard = (props) => {
         </div>
         <a
           className={
-            "tw-cursor-pointer tw-text-lg tw-title-styling-name tw-font-poppins tw-flex tw-flex-row tw-justify-start tw-text-left"
+            "tw-cursor-pointer tw-text-lg tw-title tw-font-poppins tw-flex tw-flex-row tw-justify-start tw-text-left"
           }
           onClick={toggleGroupDetailsModal}
         >

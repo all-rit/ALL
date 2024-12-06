@@ -30,3 +30,9 @@ exports.getAllDevPartners = () => {
     raw: true,
   });
 };
+
+exports.getAllSchools = () => {
+  return db.Schools.findAll({
+    raw: true,
+  });
+};

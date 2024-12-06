@@ -17,7 +17,7 @@ import Typography from "@mui/material/Typography";
 import RepairService from "../../../../services/lab4/RepairService";
 import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
-import LabButton from "../../../all-components/LabButton";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -151,8 +151,8 @@ const CodeChangeBlocks = () => {
   return (
     <div>
       <div className={"tw-p-3"}>
-        <h2 className="tw-title-styling-name tw-text-left tw-pb-3">Repair</h2>
-        <p className="tw-body-styling-name tw-text-left">
+        <h2 className="tw-title tw-text-left tw-pb-3">Repair</h2>
+        <p className="tw-body-text tw-text-left">
           The intent of this code repair is to allow people who navigate
           sequentially through content more direct access to the primary content
           of the Web page and skip over repeated blocks. These include but are
@@ -193,11 +193,7 @@ const CodeChangeBlocks = () => {
             </code>
           </pre>
         </div>
-        <LabButton
-          type={"submit"}
-          ariaLabel={"Update Code"}
-          label={"Update Code"}
-        />
+        <RepairUpdateButton disabled={!textValue} />
       </form>
       <Snackbar
         anchorOrigin={{

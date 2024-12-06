@@ -56,7 +56,7 @@ const LabController = require('../controllers/LabController');
 // Team Members Controller
 const TeamMemberController = require('../controllers/TeamMemberController');
 
-// Imagien Controller
+// Imagine Controller
 const ImagineController = require('../controllers/ImagineController');
 
 // User Routes
@@ -209,6 +209,7 @@ router.get('/teammember', TeamMemberController.getAllTeamMembers);
 router.get('/professors', TeamMemberController.getAllProfessors);
 router.get('/alumni', TeamMemberController.getAllAlumni);
 router.get('/devPartners', TeamMemberController.getAllDevPartners);
+router.get('/schools', TeamMemberController.getAllSchools);
 
 // Imagine
 router.post('/imagine/postStudy', async function(req, res) {

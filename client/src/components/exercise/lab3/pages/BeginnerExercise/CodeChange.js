@@ -114,11 +114,11 @@ class CodeChange extends Component {
     const { data, actions } = this.props;
     return (
       <div className={"tw-p-10 tw-text-left tw-flex tw-flex-col"}>
-        <h2 className={"tw-title-styling-name"}> Repair </h2>
+        <h2 className={"tw-title"}> Repair </h2>
         <br />
         <div>
           <p
-            className={"tw-body-styling-name tw-font-medium"}
+            className={"tw-body-text tw-font-medium"}
             aria-label="First make changes to the code, if not satisfied try again. Then
               click the 'End Activity' button which will appear when you have made
               changes at least once."
@@ -129,27 +129,26 @@ class CodeChange extends Component {
           </p>
         </div>
         <br />
+        <Popup
+          message={data.app3.popupMessage}
+          handler={actions.updatePopup}
+          error={data.repair3.repairError}
+        />
+
+        <div className={"tw-flex tw-flex-row tw-justify-center tw-gap-x-4"}>
+          <ExerciseButtons
+            repairApplied={data.repair3.changesApplied}
+            openRepairHandler={actions.openRepair}
+            endEnabled={data.exercise3.end}
+            disabled={this.props.data.repair3.repairError}
+          />
+        </div>
         <div className={"tw-flex tw-flex-col tw-justify-around"}>
           <Repair
             visible={data.repair3.repairVisible}
             data={data.repair3}
             handlers={actions}
           />
-
-          <Popup
-            message={data.app3.popupMessage}
-            handler={actions.updatePopup}
-            error={data.repair3.repairError}
-          />
-
-          <div className={"tw-flex tw-flex-row tw-justify-center tw-gap-x-4"}>
-            <ExerciseButtons
-              repairApplied={data.repair3.changesApplied}
-              openRepairHandler={actions.openRepair}
-              endEnabled={data.exercise3.end}
-              disabled={this.props.data.repair3.repairError}
-            />
-          </div>
         </div>
       </div>
     );

@@ -20,12 +20,9 @@ const FogIndexFormulaSentences = () => {
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title-styling-name tw-text-left"}>
-        {" "}
-        Fog Index in Sentences{" "}
-      </h1>
+      <h1 className={"tw-title tw-text-left"}> Fog Index in Sentences </h1>
       <div className="guidance margin-bottom-2">
-        <p className="tw-body-styling-name tw-text-left tw-pt-6">
+        <p className="tw-body-text tw-text-left tw-pt-6">
           Great work, the Fog Index widget now displays the correct number of
           words! You may have noticed that the Fog Index widget indicated that
           the email had a Fog Index of 57.88. This is because the word count is
@@ -34,7 +31,7 @@ const FogIndexFormulaSentences = () => {
           formula.
         </p>
       </div>
-      <div className="tw-body-styling-name tw-text-left tw-pb-6">
+      <div className="tw-body-text tw-text-left tw-pb-6">
         Click the &quot;Continue to Repair&quot; button.
       </div>
       <div className="tw-flex tw-justify-evenly">

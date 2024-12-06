@@ -10,6 +10,8 @@ import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import Popup from "../../../../all-components/Popup";
 import { navigate } from "@reach/router";
 import { minFontNotif, maxFontNotif } from "../../../../../constants/lab5";
+import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
+import LabButton from "../../../../all-components/LabButton";
 
 class NotificationRepair extends Component {
   constructor(props) {
@@ -110,6 +112,7 @@ class NotificationRepair extends Component {
     const { visible, handlers, state, data, actions } = this.props;
     return (
       <div>
+        <h2 className={"tw-title tw-text-left tw-mb-6"}>Notification Repair</h2>
         <div className="cognitive_instructions margin-bottom-2">
           Let's increase the notification time and font-size to improve
         </div>
@@ -118,22 +121,19 @@ class NotificationRepair extends Component {
           handler={actions.updatePopup}
           error={this.state.repairerror}
         />
-
-        <button
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-          onClick={handlers.openRepair}
-          key="repair"
-        >
-          Repair
-        </button>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={this.handleNav}
-          key="Next"
-          disabled={this.state.repairerror}
-        >
-          Next
-        </button>
+        <div className={"tw-flex tw-gap-x-3 tw-justify-center"}>
+          <LabButton
+            label={"Repair"}
+            onClick={handlers.openRepair}
+            key="repair"
+          />
+          <LabButton
+            label={"Next"}
+            onClick={this.handleNav}
+            key="Next"
+            disabled={this.state.repairerror}
+          />
+        </div>
         {visible && (
           <div className="code_editor">
             <div className="code_editor__content">
@@ -421,13 +421,11 @@ class NotificationRepair extends Component {
                 <p className="code_editor__class">&#125;</p>
               </div>
             </div>
-            <button
+            <RepairUpdateButton
               onClick={this.validateRepair.bind(this)}
               type="submit"
-              className="button button--green button--block"
-            >
-              Update
-            </button>
+              disabled={!this.state.fontsizevalue || !this.state.timeout}
+            />
           </div>
         )}
         <PageServiceTimer actions={handlers} name={this.state.componentName} />

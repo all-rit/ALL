@@ -24,14 +24,17 @@ function AnswerOption(props) {
       <li className="answerOption tw-rounded-lg tw-shadow-lg">
         <input
           type="radio"
-          className="radioCustomButton"
+          className="radioCustomButton tw-body-text"
           name="checkboxGroup"
           // checked={props.answerType === props.answer}
           id={props.answerType}
           value={props.answerType}
           onChange={props.onAnswerSelected}
         />
-        <label className="radioCustomLabel " htmlFor={props.answerType}>
+        <label
+          className="radioCustomLabel tw-body-text"
+          htmlFor={props.answerType}
+        >
           {props.answerContent}
         </label>
       </li>

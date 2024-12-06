@@ -144,13 +144,6 @@ class SecondTimer extends Component {
         Mode: [exerciseOption.toUpperCase()],
       };
 
-      // fetch(process.env.API_URL + "/exerciseStats", {
-      //   method: "POST",
-      //   headers: new Headers({ "content-type": "application/json" }),
-      //   credentials: "include",
-      //   body: JSON.stringify(data),
-      // }).catch((err) => console.log(err));
-
       if (isImagine) {
         const section = "experiential";
         const user = await ImagineService.getUserByID(userID);
@@ -209,8 +202,8 @@ class SecondTimer extends Component {
               enterThirdInfoState={enterThirdInfoState}
             />
           ) : (
-            <div>
-              <div className="circleClicked">
+            <div className={"tw-my-6"}>
+              <div>
                 <div
                   id="notifyUser"
                   aria-live="polite"
@@ -237,7 +230,6 @@ class SecondTimer extends Component {
                 isHex={isHex}
                 background={background}
                 currentColor={this.currentColor}
-                exerciseMode={exerciseOption}
               />
             </div>
           )}

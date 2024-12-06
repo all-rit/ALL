@@ -71,7 +71,7 @@ const ChatMessage = ({
           )}
           <p className="tw-ml-3 tw-font-semibold">{username}</p>
         </div>
-        <p className="tw-body-styling-name tw-leading-snug tw-px-2 tw-py-2 tw-text-left tw-max-w-[75%]">
+        <p className="tw-body-text tw-leading-snug tw-px-2 tw-py-2 tw-text-left tw-max-w-[75%]">
           {message}
         </p>
       </div>

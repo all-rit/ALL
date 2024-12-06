@@ -4,12 +4,15 @@ import { POPUP_DELAY, POPUP_MESSAGES } from "../../../../constants/lab7";
 import { useLab7StateContext } from "src/reducers/lab7/Lab7Context";
 import { evaluate } from "mathjs";
 import { FILE_FORMAT_VALIDATION } from "src/constants/lab7/index";
+import { PropTypes } from "prop-types";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 /**
  * Represents a Code component.
  * @component
  */
-const Code = () => {
+const Code = (props) => {
+  const { handleCloseRepair } = props;
   const [timeout, setTimeout] = useState(null);
   const { actions, state } = useLab7StateContext();
   const { componentName } = useState("AICodeRepair");
@@ -161,7 +164,7 @@ const Code = () => {
       actions.updateRewardError(null);
       actions.updateCostError(null);
       actions.updateRepairEquation(rewardValue, costValue);
-      actions.closeRepair();
+      handleCloseRepair();
       setPopupMessage(POPUP_MESSAGES.SUCCESS);
     }
   };
@@ -333,14 +336,13 @@ const Code = () => {
           </div>
         </div>
       </div>
-      <button
-        onClick={validateRepair}
-        type="submit"
-        className="button button--green button--block"
-      >
-        Update
-      </button>
+      <RepairUpdateButton onClick={validateRepair} type="submit" />
     </div>
   );
 };
+
+Code.propTypes = {
+  handleCloseRepair: PropTypes.func,
+};
+
 export default Code;

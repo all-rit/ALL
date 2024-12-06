@@ -95,28 +95,28 @@ const MemberDisplay = (props) => {
           <div className="tw-mt-12 tw-text-left tw-flex tw-flex-col tw-gap-y-6 tw-col-span-4 tw-px-6">
             <div id="member">
               <div id="member-name">
-                <h3 className="tw-font-bold">
+                <h3 className="tw-font-bold tw-title">
                   {currentMember.firstName} {currentMember.lastName}
                 </h3>
               </div>
               <div id="member-details" className="tw-mt-1.5">
-                <p className="tw-body-styling-name tw-leading-snug">
+                <p className="tw-body-text tw-leading-snug">
                   {currentMember.title}
                 </p>
-                <p className="tw-body-styling-name tw-leading-snug">
+                <p className="tw-body-text tw-leading-snug">
                   {currentMember.datesActive}
                 </p>
-                <p className="tw-body-styling-name tw-leading-snug">
+                <p className="tw-body-text tw-leading-snug">
                   {currentMember.affiliation
                     ? currentMember.affiliation
                     : "Rochester Institute of Technology"}
                 </p>
                 {currentMember.aboutme && (
                   <div>
-                    <h4 className="tw-mx-0 tw-mt-3 tw-mb-3 tw-font-bold tw-text-xl">
+                    <h4 className="tw-mx-0 tw-mt-3 tw-mb-3 tw-font-bold tw-sub-title">
                       About Me
                     </h4>
-                    <p className="tw-body-styling-name tw-leading-snug">
+                    <p className="tw-body-text tw-leading-snug">
                       {currentMember.aboutme}
                     </p>
                   </div>
@@ -138,26 +138,23 @@ const MemberDisplay = (props) => {
             </div>
             {currentMember.favoritelab && (
               <div id="member-favorite-lab">
-                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-text-xl">
+                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-sub-title">
                   Favorite Lab
                 </h4>
-                <p className="tw-body-styling-name tw-leading-snug">
+                <p className="tw-body-text tw-leading-snug">
                   {"Lab " + currentMember.favoritelab + ": " + currentFavorite}
                 </p>
               </div>
             )}
             {currentMember.labcredits && (
               <div id="member-lab-credits">
-                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-text-xl">
+                <h4 className="tw-m-0 tw-mb-3 tw-font-bold tw-sub-title">
                   Lab Credits
                 </h4>
                 <p className="tw-pb-3">
                   {labCredits.map((lab) => {
                     return (
-                      <p
-                        className="tw-body-styling-name tw-leading-snug"
-                        key={lab.id}
-                      >
+                      <p className="tw-body-text tw-leading-snug" key={lab.id}>
                         {lab}
                       </p>
                     );
@@ -205,7 +202,7 @@ const MemberDisplay = (props) => {
                             className="tw-p-0 tw-flex tw-flex-col tw-bg-white tw-rounded-xl tw-min-w-40 tw-w-full tw-border-0 tw-shadow-lg tw-shadow-labGray tw-my-3"
                           >
                             <img
-                              className="tw-object-cover tw-rounded-t-lg tw-min-h-60 tw-max-h-40 tw-w-full tw-pointer-events-none"
+                              className="tw-object-top tw-object-cover tw-rounded-t-lg tw-min-h-60 tw-max-h-40 tw-w-full tw-pointer-events-none"
                               src={`/img/profileImages${member.imageURL}`}
                             />
                             <div className="tw-flex tw-flex-col tw-gap-y-3 tw-text-left tw-p-4 tw-font-poppins">

@@ -208,7 +208,7 @@ class ProblemFix extends Component {
           onClick={() => navigate("/Lab3/Exercise/AdvancedExerciseConclusion")}
           aria-label={"End Activity"}
           className={
-            "btn btn-xl tw-shadow-md tw-bg-[#D3D3D3] tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
           }
         >
           Complete Activity
@@ -220,13 +220,11 @@ class ProblemFix extends Component {
   render() {
     return (
       <div>
-        <h2 className={"tw-title-styling-name tw-text-left"}>
-          Advanced Exercise Repair
-        </h2>
+        <h2 className={"tw-title tw-text-left"}>Advanced Exercise Repair</h2>
         <br />
         <div>
           <p
-            className={"tw-body-styling-name tw-font-medium tw-text-left"}
+            className={"tw-body-text tw-font-medium tw-text-left"}
             aria-label={
               "First make changes to the code, if not satisfied try again.\n" +
               "                    Then click the 'End Activity' button which will appear when you have made changes " +
@@ -241,17 +239,13 @@ class ProblemFix extends Component {
         <br />
         <ul className={"tw-px-10"}>
           <li
-            className={
-              "tw-body-styling-name tw-font-medium tw-text-left tw-list-disc"
-            }
+            className={"tw-body-text tw-font-medium tw-text-left tw-list-disc"}
             aria-label={"Subtitle Instructions"}
           >
             Update the aria-tags to repair the accessibility issues.
           </li>
           <li
-            className={
-              "tw-body-styling-name tw-font-medium tw-text-left tw-list-disc"
-            }
+            className={"tw-body-text tw-font-medium tw-text-left tw-list-disc"}
             aria-label={"Body Instructions"}
           >
             Make changes and then press update code.
@@ -259,7 +253,11 @@ class ProblemFix extends Component {
         </ul>
         <br />
         <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
-          <div className={"tw-bg-[#333] tw-rounded-lg tw-min-h-[10rem] tw-p-6"}>
+          <div
+            className={
+              "tw-bg-secondary-gray tw-rounded-lg tw-min-h-[10rem] tw-p-6"
+            }
+          >
             <CodeLine>
               <CommentText>&#47;&#47; Aria Label for the Ok Button</CommentText>
             </CodeLine>
@@ -267,7 +265,7 @@ class ProblemFix extends Component {
               <HTMLTag>&#60;button aria-label="</HTMLTag>
               <input
                 className={
-                  "tw-bg-[#333] tw-rounded-md tw-text-primary-yellow code_editor code_editor__input"
+                  "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow code_editor code_editor__input"
                 }
                 type={"text"}
                 value={this.state.textValue}
@@ -286,7 +284,9 @@ class ProblemFix extends Component {
             <CodeLine>
               <HTMLTag>&#60;button aria-label="</HTMLTag>
               <input
-                className={"tw-bg-[#333] tw-rounded-md tw-text-primary-yellow"}
+                className={
+                  "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+                }
                 type={"text"}
                 value={this.state.textValue1}
                 onChange={this.handleChange1}
@@ -301,7 +301,7 @@ class ProblemFix extends Component {
             type={"submit"}
             aria-label={"Update Code"}
             className={
-              "btn btn-xl tw-shadow-md tw-bg-[#D3D3D3] tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+              "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
             }
           >
             Update Code

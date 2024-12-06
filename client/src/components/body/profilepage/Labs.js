@@ -80,11 +80,7 @@ const Labs = (props) => {
                   "tw-bg-white tw-border-l-0 tw-border-b-0 tw-rounded-tr-xl"
                 }
               >
-                <div
-                  className={
-                    "tw-text-5xl tw-font-poppins tw-title-styling-name tw-my-[1rem]"
-                  }
-                >
+                <div className={"tw-font-poppins tw-title tw-my-[1rem]"}>
                   My Labs
                 </div>
                 <div
@@ -120,7 +116,7 @@ const Labs = (props) => {
                 >
                   <button
                     className={
-                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                      "btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
                     }
                     onClick={displayNotStartedLabs}
                   >
@@ -128,7 +124,7 @@ const Labs = (props) => {
                   </button>
                   <button
                     className={
-                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                      "btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
                     }
                     onClick={displayInProgressLabs}
                   >
@@ -136,16 +132,14 @@ const Labs = (props) => {
                   </button>
                   <button
                     className={
-                      "btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
+                      "btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-lg tw-m-3"
                     }
                     onClick={displayCompletedLabs}
                   >
                     Completed
                   </button>
                 </div>
-                <h1 className={"tw-title-styling-name tw-mt-5"}>
-                  {currentHeader}
-                </h1>
+                <h1 className={"tw-title tw-mt-5"}>{currentHeader}</h1>
                 <div className={"tw-p-6 tw-w-full"}>
                   {searchSubmitted ? (
                     <div>

@@ -34,15 +34,12 @@ class ExerciseStart extends Component {
     return (
       <Fragment>
         <div className="center-div">
-          <h2 className={"tw-title-styling-name"}>
-            {" "}
-            Select Exercise Difficulty
-          </h2>
+          <h2 className={"tw-title"}> Select Exercise Difficulty</h2>
           <AppInstructions />
           <button
             onClick={this.handleSubmit}
             className={
-              "btn btn-xl tw-shadow-lg tw-bg-[#D3D3D3] tw-mx-2 hover:tw-bg-primary-yellow"
+              "btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow"
             }
           >
             Beginner Exercise
@@ -50,7 +47,7 @@ class ExerciseStart extends Component {
           <button
             onClick={this.handleSubmitAdv}
             className={
-              "btn btn-xl tw-shadow-lg tw-bg-[#D3D3D3] tw-mx-2 hover:tw-bg-primary-yellow"
+              "btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow"
             }
           >
             Advanced Exercise

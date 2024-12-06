@@ -1,10 +1,13 @@
 import { navigate } from "@reach/router";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Popup from "../../../all-components/Popup";
 import { CHAT_MESSAGES } from "../../../../constants/lab8/messages";
 import ExerciseService from "../../../../services/lab8/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
+import LabButton from "../../../all-components/LabButton";
+import ExerciseStateContext from "../Lab8Context";
 
 // the only acceptable values that a user can enter
 // for their repairs
@@ -12,10 +15,14 @@ const repairAllowList = [0, 1, 2];
 
 const DataRepair = () => {
   const { actions, state } = useMainStateContext();
-  const [messages, setMessages] = useState(CHAT_MESSAGES.messages);
-  const [repairState, setRepairState] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [repairCount, setRepairCount] = useState(0);
+  const {
+    setRepairState,
+    currentMessages,
+    setCurrentMessages,
+    setPolaritiesCorrect,
+  } = useContext(ExerciseStateContext);
 
   /*
     state variables to contain the user's inputted repair values
@@ -37,7 +44,7 @@ const DataRepair = () => {
   const [popUpMessage, setPopUpMessage] = useState("");
 
   const handleAiPolarityChange = (messageId, newValue) => {
-    setMessages((prevState) =>
+    setCurrentMessages((prevState) =>
       prevState.map((message) =>
         message.id === messageId
           ? { ...message, ai_polarity: newValue }
@@ -71,7 +78,7 @@ const DataRepair = () => {
     let error = false;
     const localMessageError = [...messageError];
 
-    messages.forEach((message, index) => {
+    currentMessages.forEach((message, index) => {
       if (!(message.ai_polarity in repairAllowList)) {
         // we need to display an error message
         error = true;
@@ -84,7 +91,7 @@ const DataRepair = () => {
     if (!error) {
       setRepairOpen(false);
       setUserError(false);
-      popUpHandler("The repairs have been made.");
+      popUpHandler("Repair successful!");
       setRepairState(true);
       setIsCorrect(validateCorrectAI());
     } else {
@@ -132,8 +139,8 @@ const DataRepair = () => {
     }
     const dataRepair = await fetchDataRepair();
     if (dataRepair?.userid) {
-      const { repair, numRepair, isComplete } = dataRepair;
-      setMessages(isComplete ? CHAT_MESSAGES.messages : repair.messages);
+      const { numRepair, isComplete } = dataRepair;
+      setCurrentMessages(isComplete ? CHAT_MESSAGES.messages : currentMessages);
       setRepairCount(numRepair);
     }
   };
@@ -144,7 +151,7 @@ const DataRepair = () => {
    * intended polarity value.
    */
   const validateCorrectAI = () => {
-    const localMessages = messages;
+    const localMessages = currentMessages;
     let isCorrectLocal = true;
     const validateEnteredVsPolarity = (message) => {
       return message?.ai_polarity === message?.intended_polarity;
@@ -171,54 +178,44 @@ const DataRepair = () => {
     const { userid } = state.main.user;
     const body = {
       userId: userid,
-      repair: { messages },
+      repair: { currentMessages },
       isComplete: isCorrect,
       numRepair: repairCount,
     };
-    console.warn(body.numRepair);
+    if (isCorrect) {
+      setPolaritiesCorrect(true);
+    } else {
+      setPolaritiesCorrect(false);
+    }
     await postExerciseChange(body);
-    navigate(
-      !isCorrect
-        ? "/Lab8/Exercise/BiasedSimulation"
-        : "/Lab8/Exercise/Conclusion",
-      {
-        state: { messages, repairState },
-      },
-    );
+    navigate("/Lab8/Exercise/BiasedSimulation");
   };
 
   return (
     <div className={"tw-p-6"}>
-      <h1 className={"tw-title-styling-name tw-text-left tw-my-6"}> Repair </h1>
-      <p className="tw-body-styling-name">
+      <h1 className={"tw-title tw-text-left tw-my-6"}> Repair </h1>
+      <p className="tw-body-text">
         {/* instructions for the user */}
         Repair the dataset by assigning the correct polarity to each message.
         Each message should be assigned a sentiment score of either 0, 1, or 2.
       </p>
-      <p className={"tw-body-styling-name tw-mb-3"}>
+      <p className={"tw-body-text tw-mb-3"}>
         Click &lsquo;Repair&rsquo; to make the appropriate changes.
       </p>
       <Popup message={popUpMessage} handler={popUpHandler} error={userError} />
-
-      {/* user must click this button to populate the fake IDE */}
-      <button
-        className="btn btn-second btn-xl text-uppercase  leftButton"
-        onClick={() => {
-          handleRepair();
-        }}
-        key="repair"
-      >
-        Repair
-      </button>
-      {/* disable this button until the user successfully enters repairs */}
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleContinue}
-        key="Next"
-        disabled={userError}
-      >
-        Next
-      </button>
+      <div className={"tw-flex tw-gap-x-3 tw-justify-center tw-w-full"}>
+        <LabButton
+          onClick={() => handleRepair()}
+          key={"repair"}
+          label={"Repair"}
+        />
+        <LabButton
+          onClick={handleContinue}
+          key={"Next"}
+          disabled={userError}
+          label={"Next"}
+        />
+      </div>
       {/* only display the repair section if it should be open */}
       {repairOpen && (
         <div className="code_editor">
@@ -269,7 +266,7 @@ const DataRepair = () => {
 
               {/* 6 messages total to repair */}
               {/* Going to map all of the messages instead of one by one */}
-              {messages.map((message, index) => (
+              {currentMessages.map((message, index) => (
                 <div className="code_editor__form" key={message.id}>
                   <div className="code_editor__line">
                     {/* one tab indent */}
@@ -355,13 +352,7 @@ const DataRepair = () => {
               </div>
             </div>
           </div>
-          <button
-            onClick={validateRepair}
-            type="submit"
-            className="button button--green button--block"
-          >
-            Update
-          </button>
+          <RepairUpdateButton onClick={validateRepair} />
         </div>
       )}
     </div>

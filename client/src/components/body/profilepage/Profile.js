@@ -6,6 +6,8 @@ import UserService from "../../../services/UserService";
 import UserLabService from "../../../services/UserLabService";
 import EnrolledGroups from "./EnrolledGroups";
 import useMainStateContext from "src/reducers/MainContext";
+import BrandedALLModal from "../../all-components/BrandedALLModal";
+import LoginBody from "../login/LoginBody";
 
 const Profile = () => {
   const { state } = useMainStateContext();
@@ -15,6 +17,7 @@ const Profile = () => {
   const [labRecords, setLabRecords] = useState(null);
   const [groupsUpdated, setGroupsUpdated] = useState(false);
   const [instrGroupsUpdated, setInstrGroupsUpdated] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const inProgressLabs = [];
   const completedLabs = [];
@@ -32,8 +35,18 @@ const Profile = () => {
     }
   };
 
+  const toggleLoginModal = () => {
+    setLoginModalOpen(!loginModalOpen);
+  };
+
   useEffect(() => {
-    getUserLabs();
+    if (!user) {
+      setTimeout(function () {
+        toggleLoginModal();
+      }, 2000);
+    } else {
+      getUserLabs();
+    }
   }, [user]);
 
   // go through the lab records fetched from the database and categorize if
@@ -51,9 +64,35 @@ const Profile = () => {
   return (
     <div className={"tw-mt-[3rem]"}>
       {state.main.user?.firstname === null ? (
-        <h3>You are currently not logged in.</h3>
+        <div
+          className={
+            "tw-pt-36 tw-flex tw-items-center tw-justify-center tw-h-[30rem]"
+          }
+        >
+          <div
+            className={
+              "tw-bg-primary-blue tw-shadow-lg tw-rounded-lg tw-p-6 tw-m-6"
+            }
+          >
+            <div>
+              <p className={"tw-text-white tw-title"}>
+                You are currently not logged in.
+              </p>
+              <p className={"tw-body-text tw-text-white tw-py-3"}>
+                Please sign in to experience the user profile.
+              </p>
+            </div>
+          </div>
+          <BrandedALLModal
+            isOpen={loginModalOpen}
+            toggle={toggleLoginModal}
+            direction={"row"}
+          >
+            <LoginBody />
+          </BrandedALLModal>
+        </div>
       ) : (
-        <div className="tw-mt-0 tw-w-full">
+        <div className="md:tw-pt-[3rem] tw-w-full">
           <ProfileHeader
             user={user}
             labRecords={labRecords}

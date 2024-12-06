@@ -29,9 +29,9 @@ const PostCorrectNewsletter = () => {
 
   return (
     <div className="center-div">
-      <h1 className={"tw-title-styling-name tw-text-left"}> Explanation </h1>
+      <h1 className={"tw-title tw-text-left"}> Explanation </h1>
       <div className="guidance margin-bottom-2">
-        <p className="tw-body-styling-name tw-text-left tw-py-6">
+        <p className="tw-body-text tw-text-left tw-py-6">
           This time the alumni newsletter uses your preferred name, even years
           after you graduated. This not only affirms your beliefs in who you
           are, it also makes you proud of your school and hopeful for the next

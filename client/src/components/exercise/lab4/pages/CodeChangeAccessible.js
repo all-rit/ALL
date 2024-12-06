@@ -20,6 +20,7 @@ import PropTypes from "prop-types";
 import RepairService from "../../../../services/lab4/RepairService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -161,18 +162,18 @@ const CodeChangeAccessible = () => {
     marginTop: "20px",
   };
   return (
-    <div>
+    <div className={"code_editor"}>
       <div className={"tw-p-4"}>
-        <h2 className="tw-title-styling-name tw-text-left tw-my-6">Repair</h2>
-        <p className="tw-body-styling-name tw-text-left">
+        <h2 className="tw-title tw-text-left tw-my-6">Repair</h2>
+        <p className="tw-body-text tw-text-left">
           The intent of this code repair is to ensure that, wherever possible,
           content can be operated through a keyboard or keyboard interface.
         </p>
-        <p className="tw-body-styling-name tw-text-left tw-my-3">
+        <p className="tw-body-text tw-text-left tw-my-3">
           <strong>Tabindex=&quot;-1&quot;</strong> prevents access through
           keyboard navigation.
         </p>
-        <p className="tw-body-styling-name tw-text-left tw-my-3">
+        <p className="tw-body-text tw-text-left tw-my-3">
           <strong>Tabindex=&quot;2&quot;</strong> (positive non-zero) means
           focusable in sequential keyboard navigation, with its order defined by
           the value of the number. Tabindex=&quot;0&quot; means that the element
@@ -224,13 +225,7 @@ const CodeChangeAccessible = () => {
         </Paper>
         <br />
         <br />
-        <button
-          type={"submit"}
-          aria-label={"Update Code"}
-          className="btn tw-bg-[#d3d3d3] tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
-        >
-          Update Code
-        </button>
+        <RepairUpdateButton disabled={!textValue} />
       </form>
       <Snackbar
         anchorOrigin={{

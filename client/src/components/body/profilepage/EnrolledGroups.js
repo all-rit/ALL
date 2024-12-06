@@ -38,7 +38,7 @@ const EnrolledGroups = (props) => {
                           tw-border-t-0 tw-border-r-0 tw-border-b-[1rem] tw-border-l-[1rem]"
         >
           <div className="header_with_button">
-            <h4 className={"tw-title-styling-name tw-font-poppins tw-text-2xl"}>
+            <h4 className={"tw-title tw-font-poppins tw-text-2xl"}>
               {" "}
               View Your Enrolled Groups{" "}
             </h4>
@@ -48,7 +48,7 @@ const EnrolledGroups = (props) => {
           >
             {enrolledGroups.length === 0 ? (
               <div>
-                <p className={"tw-body-styling-name"}>
+                <p className={"tw-body-text"}>
                   {" "}
                   You are currently not enrolled in any groups
                 </p>
@@ -79,14 +79,11 @@ const EnrolledGroups = (props) => {
                 "tw-flex tw-flex-col tw-text-left tw-px-[1rem] tw-gap-y-2"
               }
             >
-              <p className={"tw-text-lg tw-title-styling-name tw-font-poppins"}>
+              <p className={"tw-text-lg tw-title tw-font-poppins"}>
                 {" "}
                 Have a group code?{" "}
               </p>
-              <p className={"tw-body-styling-name tw-text-sm"}>
-                {" "}
-                Click below to get started.{" "}
-              </p>
+              <p className={"tw-body-text"}> Click below to get started. </p>
               <AddModal
                 addMode={"enroll_grp"}
                 user={props.user}

@@ -55,7 +55,9 @@ module.exports = {
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
       darkGray: "#3d3d3d",
-      successGreen: "#14FF00",
+      success: "#369d2a",
+      hoverSuccess: "#238418",
+      error: "#d03c3c",
     },
     extend: {
       borderWidth: {
@@ -72,7 +74,7 @@ module.exports = {
         },
         secondary: {
           black: "#000000",
-          gray: "#CECECE",
+          gray: "#d3d3d3",
           white: "#FFFFFF",
         },
       },
@@ -132,20 +134,21 @@ module.exports = {
   plugins: [
     plugin(({ addComponents, theme }) => {
       addComponents({
-        ".title-styling-name": {
+        ".title": {
           fontFamily: theme("fontFamily.poppins"),
           fontSize: "2rem",
           fontWeight: theme("fontWeight.bold"),
         },
-        ".sub-title-styling-name": {
+        ".sub-title": {
           fontFamily: theme("fontFamily.calibri"),
           fontSize: "1.5rem",
           fontWeight: theme("fontWeight.medium"),
         },
-        ".body-styling-name": {
+        ".body-text": {
           fontFamily: theme("fontFamily.calibri"),
           fontWeight: theme("fontWeight.medium"),
-          lineHeight: "2rem",
+          fontSize: "1.125rem",
+          lineHeight: "1.6rem",
           textAlign: "left",
         },
       });

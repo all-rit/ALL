@@ -52,7 +52,7 @@ class ViewFix extends Component {
     return (
       <div className={"tw-p-10"}>
         <h2
-          className={"tw-title-styling-name tw-text-left"}
+          className={"tw-title tw-text-left"}
           aria-label={"Title"}
           onFocus={(e) => textToSpeech(e, "Test Fix")}
         >
@@ -60,7 +60,7 @@ class ViewFix extends Component {
         </h2>
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
           onFocus={(e) => textToSpeech(e, "Is your page now more accessible?")}
         >
@@ -68,7 +68,7 @@ class ViewFix extends Component {
         </p>
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Body Instructions"}
           onFocus={(e) =>
             textToSpeech(
@@ -111,7 +111,7 @@ class ViewFix extends Component {
         <br />
         <button
           className={
-            "btn btn-xl tw-shadow-md tw-bg-[#D3D3D3] tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
           }
           onClick={ViewFix.navOnClick}
           onFocus={(e) => textToSpeech(e, "Next")}

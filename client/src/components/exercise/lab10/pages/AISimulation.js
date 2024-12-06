@@ -52,10 +52,10 @@ const AISimulation = (props) => {
 
   return (
     <div>
-      <h1 className={"tw-title-styling-name tw-text-left"}> AI Simulation </h1>
+      <h1 className={"tw-title tw-text-left"}> AI Simulation </h1>
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
-          <p className={"tw-body-styling-name tw-text-left tw-py-6"}>
+          <p className={"tw-body-text tw-text-left tw-py-6"}>
             Now that you have generated data for the neural network, view how it
             performs! Compared to humans, computers are very quick at
             calculating and solving complex problems. You will notice the

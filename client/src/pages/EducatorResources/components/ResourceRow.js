@@ -18,13 +18,13 @@ const ResourceRow = (props) => {
           <p className={"tw-font-calibri tw-font-extrabold tw-text-xl"}>
             {id ? `Lab ${id}:` : ""} {title}
           </p>
-          <p className="tw-body-styling-name tw-text-justify tw-leading-normal">
+          <p className="tw-body-text tw-text-justify tw-leading-normal">
             <hr />
             {description}
           </p>
           {slides && !slides.includes(COMING_SOON) && (
             <a href={slides} download className={"tw-py-6"}>
-              <ALLButton label={`Download Slideshow`} />
+              <ALLButton label={`Download Powerpoint`} />
             </a>
           )}
         </div>
@@ -49,7 +49,7 @@ const ResourceRow = (props) => {
                     xs:tw-h-[12.5rem] xs:tw-w-[12.5rem]
                     lg:tw-h-[21.875rem] lg:tw-w-[21.875rem]"
               />
-              <p className={"tw-text-sm tw-body-styling-name tw-text-center"}>
+              <p className={"tw-text-sm tw-body-text tw-text-center"}>
                 {" "}
                 Lab {id} Walkthrough Video
               </p>

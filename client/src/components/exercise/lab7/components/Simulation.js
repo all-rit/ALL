@@ -283,7 +283,7 @@ const Simulation = () => {
       <MessageModal />
       <div className="">
         {/* Header */}
-        <div className={"tw-flex tw-justify-between tw-title-styling-name"}>
+        <div className={"tw-flex tw-justify-between tw-title"}>
           {/* Round Tracker */}
           <div>
             <h4 className="tw-font-bold">

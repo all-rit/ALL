@@ -34,30 +34,30 @@ class Stats extends Component {
     if (!visible) return null;
 
     return (
-      <div className="stats tw-absolute tw-bottom-0 tw-rounded-b-xl tw-bg-[#ddd] tw-sub-title-styling-name">
+      <div className="tw-w-full tw-p-0 tw-absolute tw-left-0 tw-bottom-0 tw-rounded-b-xl tw-bg-[#ddd] tw-body-text">
         <div className="stats__timer">
           <div className="stats__countdown" style={countdown_style} />
         </div>
 
-        <div className="stats__container">
-          <div className="stats__column">
-            <p className="stats__category">Score</p>
-            <p className="stats__result">{score}</p>
+        <div className="stats__container tw-h-[3rem] tw-items-center tw-sub-title tw-font-bold">
+          <div className="tw-flex">
+            <p>Score:&nbsp;</p>
+            <p>{score}</p>
           </div>
 
-          <div className="stats__column">
-            <p className="stats__category">Correct Answers</p>
-            <p className="stats__result">{correctAnswers}</p>
+          <div className="tw-flex">
+            <p>Correct:&nbsp;</p>
+            <p>{correctAnswers}</p>
           </div>
 
-          <div className="stats__column">
-            <p className="stats__category">Incorrect Answers</p>
-            <p className="stats__result">{incorrectAnswers}</p>
+          <div className="tw-flex">
+            <p>Incorrect:&nbsp;</p>
+            <p>{incorrectAnswers}</p>
           </div>
 
-          <div className="stats__column">
-            <p className="stats__category">Round</p>
-            <p className="stats__result">{roundNumber}</p>
+          <div className="tw-flex">
+            <p>Round:&nbsp;</p>
+            <p>{roundNumber}</p>
           </div>
         </div>
       </div>

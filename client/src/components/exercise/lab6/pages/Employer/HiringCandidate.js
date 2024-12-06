@@ -6,6 +6,7 @@ import { Modal, ModalBody, ModalFooter, Button } from "reactstrap";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import LabButton from "../../../../all-components/LabButton";
 
 const HiringCandidate = () => {
   const { actions } = useMainStateContext();
@@ -74,14 +75,12 @@ const HiringCandidate = () => {
 
   return (
     <div className="center-div">
-      <h2 className="tw-title-styling-name tw-text-left tw-my-6">
-        Choose Your Candidates
-      </h2>
-      <h2 className="tw-body-styling-name tw-text-left tw-my-6">
+      <h2 className="tw-title tw-text-left tw-my-6">Choose Your Candidates</h2>
+      <h2 className="tw-body-text tw-text-left tw-my-6">
         Select the <b>HIRE</b> or <b>REJECT</b> toggle to make a decision for
         each candidate and &quot;Continue&quot; the process.
       </h2>
-      <h2 className="tw-body-styling-name tw-text-left tw-my-6">
+      <h2 className="tw-body-text tw-text-left tw-my-6">
         Hiring for the job of “EMPLOYEE” at “MegaCorp Inc.”
       </h2>
       <Modal
@@ -93,7 +92,7 @@ const HiringCandidate = () => {
         }}
       >
         <ModalBody>
-          <p className="tw-w-full tw-body-styling-name tw-text-center">
+          <p className="tw-w-full tw-body-text tw-text-center">
             Are you sure you wish to select these candidates? The AI advises
             against one or more of them.
           </p>
@@ -149,13 +148,10 @@ const HiringCandidate = () => {
         />
       )}
       {numInput === 4 && (
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
+        <LabButton
           onClick={handleContinue}
-          key="confirm"
-        >
-          {roundOfApplicants < 3 ? "Confirm" : "Confirm - Continue"}
-        </button>
+          label={roundOfApplicants < 3 ? "Confirm" : "Confirm Selections"}
+        />
       )}
     </div>
   );

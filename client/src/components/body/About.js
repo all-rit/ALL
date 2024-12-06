@@ -37,17 +37,11 @@ const About = (props) => {
     >
       <div className=" tw-p-[3rem] xs:tw-w-full ">
         <div className="tw-text-left tw-text-justify">
-          <p
-            className={
-              "tw-font-bold tw-font-poppins md:tw-title-styling-name tw-pb-6"
-            }
-          >
+          <p className={"tw-font-bold tw-font-poppins md:tw-title tw-pb-6"}>
             {" "}
             About This Lab
           </p>
-          <p className={"tw-font-medium tw-body-styling-name"}>
-            {aboutText?.about}
-          </p>
+          <p className={"tw-font-medium tw-body-text"}>{aboutText?.about}</p>
         </div>
       </div>
     </div>

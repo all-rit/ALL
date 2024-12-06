@@ -24,19 +24,16 @@ const BadAIExplanation = () => {
 
   return (
     <div>
-      <h2 className={"tw-title-styling-name tw-text-left"}>
-        {" "}
-        Simulation Explanation
-      </h2>
-      <p className="tw-body-styling-name tw-text-left tw-my-6">
+      <h2 className={"tw-title tw-text-left"}> Simulation Explanation</h2>
+      <p className="tw-body-text tw-text-left tw-my-6">
         As you can see, the AI made many mistakes when it came to managing file
         access when threats were detected in the system.
       </p>
-      <p className="tw-body-styling-name tw-text-left tw-my-6">
+      <p className="tw-body-text tw-text-left tw-my-6">
         This is due to the factors of the files that the AI is using to
         determine if a file&lsquo;s access should be restricted or not.
       </p>
-      <p className="tw-body-styling-name tw-text-left tw-my-6">
+      <p className="tw-body-text tw-text-left tw-my-6">
         The AI is currently only using one piece of sensitive information within
         the file to determine the sensitivity of the entire file.
       </p>

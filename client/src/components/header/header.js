@@ -121,10 +121,10 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className="tw-font-poppins tw-font-bold tw-my-0 tw-mb-[5rem]"
+      className="tw-body-text tw-font-bold tw-my-0 tw-mb-[5rem]"
     >
       <div
-        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-text-2xl tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5`}
+        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
       >
         <div
           className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
@@ -138,7 +138,7 @@ const Header = (props) => {
           </a>
 
           <NavbarToggler
-            className={`${isSmallWindow ? "tw-m-4 tw-z-20 tw-h-1/2" : "tw-hidden"}`}
+            className={`${isSmallWindow ? "tw-z-20 tw-h-1/2" : "tw-hidden"}`}
             onClick={toggleNavbar}
           />
           <Collapse
@@ -155,7 +155,9 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   onClick={() => reachNav("/#")}
                 >
-                  <p className="tw-text-primary-blue tw-font-bold">Home</p>
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
+                    Home
+                  </p>
                 </NavLink>
               </NavItem>
               <NavItem
@@ -165,7 +167,9 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/Labs"
                 >
-                  <p className="tw-text-primary-blue tw-font-bold">Labs</p>
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
+                    Labs
+                  </p>
                 </NavLink>
               </NavItem>
               <NavItem
@@ -175,7 +179,9 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/about-us"
                 >
-                  <p className="tw-text-primary-blue tw-font-bold">About Us</p>
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
+                    About Us
+                  </p>
                 </NavLink>
               </NavItem>
               <NavItem
@@ -185,7 +191,7 @@ const Header = (props) => {
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
                   href="/EducatorResources"
                 >
-                  <p className="tw-text-primary-blue tw-font-bold">
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
                     Educator Resources
                   </p>
                 </NavLink>
@@ -210,7 +216,7 @@ const Header = (props) => {
                 ) : (
                   <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
                     <p
-                      className="tw-text-primary-blue tw-font-bold tw-cursor-pointer"
+                      className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-cursor-pointer tw-body-text"
                       onClick={toggleSignIn}
                     >
                       Sign In

@@ -9,6 +9,7 @@
 import React, { Component } from "react";
 import classNames from "classnames/bind";
 import RepairService from "../../../../services/lab3/RepairService";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 class Repair extends Component {
   constructor(props) {
@@ -101,11 +102,6 @@ class Repair extends Component {
   }
 
   render() {
-    // const paperStyle = {
-    // 	marginLeft: "10px",
-    // 	marginRight: "10px",
-    // 	marginTop: "20px"
-    // };
     const { visible, data, handlers } = this.props;
     const jsFileClasses = classNames({
       code_editor__file: true,
@@ -412,14 +408,7 @@ class Repair extends Component {
               <span className="code_editor__line--white">&#62;</span>
             </div>
           </div>
-
-          <button
-            onClick={this.handleSubmit.bind(this)}
-            type="submit"
-            className="button button--green button--block"
-          >
-            Update
-          </button>
+          <RepairUpdateButton onClick={this.handleSubmit.bind(this)} />
         </div>
       </div>
     );

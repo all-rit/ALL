@@ -10,6 +10,8 @@ import PageServiceTimer from "../../../../all-components/PageServiceTimer";
 import Popup from "../../../../all-components/Popup";
 import { navigate } from "@reach/router";
 import { minFont, maxFont } from "../../../../../constants/lab5";
+import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
+import LabButton from "../../../../all-components/LabButton";
 
 class PageLayoutRepair extends Component {
   constructor(props) {
@@ -147,7 +149,8 @@ class PageLayoutRepair extends Component {
     const { visible, handlers, state, data, actions } = this.props;
     return (
       <div>
-        <div className="tw-body-styling-name tw-my-6 tw-text-left">
+        <h2 className={"tw-title tw-text-left"}> Page Layout Repair </h2>
+        <div className="tw-body-text tw-my-6 tw-text-left">
           Let's optimize the page layout and font to allow for easier reading.
           Click <strong>'Repair'</strong> to make the appropriate changes.
         </div>
@@ -156,22 +159,19 @@ class PageLayoutRepair extends Component {
           handler={actions.updatePopup}
           error={this.state.repairerror}
         />
-
-        <button
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-          onClick={handlers.openRepair}
-          key="repair"
-        >
-          Repair
-        </button>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={this.handleNav}
-          key="Next"
-          disabled={this.state.repairerror}
-        >
-          Next
-        </button>
+        <div className={"tw-flex tw-justify-center tw-gap-x-3"}>
+          <LabButton
+            onClick={handlers.openRepair}
+            key={"repair"}
+            label={"Repair"}
+          />
+          <LabButton
+            onClick={this.handleNav}
+            key={"Next"}
+            disabled={this.state.repairerror}
+            label={"Next"}
+          />
+        </div>
         {visible && (
           <div className="code_editor">
             <div className="code_editor__content">
@@ -557,13 +557,17 @@ class PageLayoutRepair extends Component {
                 <p className="code_editor__class">&#125;</p>
               </div>
             </div>
-            <button
+            <RepairUpdateButton
               onClick={this.validateRepair.bind(this)}
               type="submit"
-              className="button button--green button--block"
-            >
-              Update
-            </button>
+              disabled={
+                !this.state.h1value ||
+                !this.state.ulvalue ||
+                !this.state.classvalue ||
+                !this.state.fontvalue ||
+                !this.state.fontfamilyvalue
+              }
+            />
           </div>
         )}
         <PageServiceTimer actions={handlers} name={this.state.componentName} />

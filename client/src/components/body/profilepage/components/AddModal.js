@@ -133,7 +133,7 @@ const AddModal = (props) => {
                     Looking to join a class?
                   </p>
                   <Label
-                    className={"tw-title-styling-name tw-text-xl"}
+                    className={"tw-title tw-text-xl"}
                     for="groupInviteCode"
                   >
                     Enter your group code here:

@@ -59,7 +59,7 @@ class ProblemDiscoveryFixedExperience extends Component {
     return (
       <div>
         <h2
-          className={"tw-title-styling-name tw-text-left"}
+          className={"tw-title tw-text-left"}
           aria-label={"Discover the problem"}
           tabIndex={"0"}
           onFocus={(e) => textToSpeech(e, "Repaired version of previous page.")}
@@ -69,7 +69,7 @@ class ProblemDiscoveryFixedExperience extends Component {
 
         <br />
         <p
-          className={"tw-body-styling-name tw-font-medium tw-text-left"}
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
           onFocus={(e) =>
             textToSpeech(
@@ -136,7 +136,7 @@ class ProblemDiscoveryFixedExperience extends Component {
         <button
           onClick={this.handleSubmit.bind(this)}
           className={
-            "btn btn-xl tw-shadow-md tw-bg-[#D3D3D3] tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
           }
           onFocus={(e) => textToSpeech(e, "Next")}
         >

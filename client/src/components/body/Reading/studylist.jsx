@@ -11,7 +11,7 @@ const StudyList = ({ data }) => {
       <ul className="study__list">
         {data.map((text, index) => {
           return (
-            <li className={"tw-body-styling-name"} key={index}>
+            <li className={"tw-body-text"} key={index}>
               {text}
             </li>
           );

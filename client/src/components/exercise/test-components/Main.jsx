@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationPane from "../../all-components/Lab/NavigationPane";
 import LabScreen from "../../all-components/Lab/LabScreen";
-import Carousel from "../../all-components/carousel.js";
+import Carousel from "../../all-components/ParticipatingSchools.js";
 
 const title = "Sample Lab Name Here This Long";
 

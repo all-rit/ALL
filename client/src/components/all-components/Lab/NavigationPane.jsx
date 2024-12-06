@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
 import useMainStateContext from "../../../reducers/MainContext";
@@ -7,6 +7,7 @@ import getExerciseState from "../../../helpers/GetReducer";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../../reducers/MainReducer";
+import { EXERCISE_IN_PROGRESS } from "../../../constants/notifications";
 
 const sections = [
   {
@@ -56,17 +57,15 @@ const NavigationPane = (props) => {
   const { state, actions } = useMainStateContext();
   const currentSection = state.main.body;
 
-  useEffect(() => {
-    console.warn(state);
-    console.warn(props.state);
-  }, []);
-
   const handleOnClick = (section) => {
     if (
       getExerciseState(state, props.state) !== "EXERCISE_IDLE" &&
       currentSection === 2
     ) {
-      alert("The exercise is still in progress! Please complete the exercise.");
+      document.querySelector("a").addEventListener("click", function (e) {
+        e.preventDefault();
+      });
+      actions.showSnackbar(EXERCISE_IN_PROGRESS);
     } else {
       handleRedirect(actions, state.main.lab, section);
     }
@@ -75,15 +74,15 @@ const NavigationPane = (props) => {
   return (
     <div
       className={
-        "tw-flex tw-flex-col tw-gap-y-16 tw-min-w-[12rem] tw-max-w-[16rem] tw-text-left xs:tw-hidden md:tw-flex"
+        "tw-flex tw-flex-col tw-gap-y-16 tw-col-span-4 tw-min-w-[12rem] tw-text-left xs:tw-hidden md:tw-flex"
       }
     >
       <div
         className={
-          "tw-py-6 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[8rem]"
+          "tw-py-6 tw-px-4 tw-border-solid tw-bg-white tw-border-primary-blue tw-border-12 tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg tw-z-10 tw-rounded-bl-lg tw-h-[9rem]"
         }
       >
-        <h1 className={"tw-title-styling-name tw-text-xl"}>{props.title} </h1>
+        <h1 className={"tw-title tw-text-xl"}>{props.title} </h1>
       </div>
       <div
         className={
@@ -102,18 +101,18 @@ const NavigationPane = (props) => {
                   href={"#"}
                   onClick={() => handleOnClick(section)}
                   className={
-                    "tw-flex tw-flex-col tw-items-start tw-leading-none tw-no-underline tw-body-styling-name hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
+                    "tw-flex tw-flex-col tw-items-start tw-leading-none tw-no-underline tw-body-text hover:tw-underline hover:tw-decoration-primary-blue hover:tw-decoration-2"
                   }
                 >
                   <p
                     className={twMerge(
-                      "tw-font-semibold tw-body-styling-name tw-px-4 ",
+                      "tw-font-semibold tw-body-text tw-px-4 ",
                       currentSection === section ? "tw-bg-primary-yellow" : "",
                     )}
                   >
                     {title}
                   </p>
-                  <p className={"tw-pl-4 tw-body-styling-name"}>{subTitle}</p>
+                  <p className={"tw-pl-4 tw-body-text"}>{subTitle}</p>
                 </a>
               );
             })}

@@ -129,11 +129,7 @@ const ResourcesSection = () => {
             )}
             {displayedResource === "Groups" && (
               <div className={"tw-text-justify"}>
-                <p
-                  className={
-                    "tw-body-styling-name xs:tw-w-full md:tw-w-1/2 tw-my-3"
-                  }
-                >
+                <p className={"tw-body-text xs:tw-w-full md:tw-w-1/2 tw-my-3"}>
                   Below, you will find a guide on creating, updating, and
                   managing instructing groups in our profile section! In
                   addition, you will also be find information on tracking

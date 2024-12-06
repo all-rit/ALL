@@ -39,12 +39,8 @@ const NewStudentProgress = (props) => {
       >
         <div className={"tw-px-[2rem] tw-py-[1rem]"}>
           <div className={"tw-font-poppins"}>
-            <p className={"tw-title-styling-name tw-mb-3"}>
-              View Group as the Instructor
-            </p>
-            <p className={"tw-title-styling-name tw-text-2xl"}>
-              {group.groupName}
-            </p>
+            <p className={"tw-title tw-mb-3"}>View Group as the Instructor</p>
+            <p className={"tw-title tw-text-2xl"}>{group.groupName}</p>
             <div className={"tw-flex tw-flex-row tw-items-center tw-my-3"}>
               <p className={"tw-text-sm"}> Group Code: </p>
               <p id={"groupCode"} className={"tw-mx-3 tw-font-bold tw-text-md"}>

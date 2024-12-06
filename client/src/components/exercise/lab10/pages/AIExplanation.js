@@ -61,16 +61,13 @@ const AIExplanation = (props) => {
     <div>
       <Fragment>
         <div className={"center-div"}>
-          <h1 className={"tw-title-styling-name tw-text-left tw-pb-6"}>
-            {" "}
-            AI Explanation
-          </h1>
+          <h1 className={"tw-title tw-text-left tw-pb-6"}> AI Explanation</h1>
           <div className={"guidance margin-bottom-2"}>
-            <p className={"tw-body-styling-name tw-text-left"}>
+            <p className={"tw-body-text tw-text-left"}>
               Did you notice something different about how the AI responded
               during the simulation?
             </p>
-            <p className={"tw-body-styling-name tw-text-left tw-py-6"}>
+            <p className={"tw-body-text tw-text-left tw-py-6"}>
               Whenever there was an empty hole, the AI knew to move towards it
               to make sure it does not get hit by any of the falling shapes. On
               the other hand, when the AI was unable to find an empty hole, it
@@ -79,7 +76,7 @@ const AIExplanation = (props) => {
               game, the AI avoided the color that <strong>you</strong> most
               frequently hit.
             </p>
-            <p className={"tw-body-styling-name tw-text-left"}>
+            <p className={"tw-body-text tw-text-left"}>
               Below is <strong>your</strong> generated data that the AI utilized
               for the simulation.
             </p>

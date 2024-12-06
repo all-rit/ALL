@@ -24,7 +24,7 @@ import { Sections } from "./constants/index";
 
 /** Persistent Components **/
 import Header from "./components/header/header";
-import LabFooter from "./components/footer/footer";
+import LabFooter from "./components/footer/LabFooter";
 import MainFooter from "./components/footer/mainFooter";
 import NavigationPane from "./components/all-components/Lab/NavigationPane";
 import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
@@ -95,18 +95,20 @@ const App = () => {
     <>
       <div className="overflow-x-hidden tw-h-lvh">
         <Header />
-        <div className="appBody tw-min-h-[50rem] tw-relative tw-gap-x-5 tw-mb-[-3rem]">
+        <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5">
           <div
             className={
               "" +
               (lab !== 0
-                ? "tw-flex tw-flex-row tw-w-full tw-h-[40rem] tw-items-center tw-justify-between tw-mt-[10rem] tw-px-[4rem] tw-relative"
+                ? "tw-grid tw-grid-cols-6 tw-flex-row tw-w-full tw-h-[40rem] tw-justify-between tw-mt-[10rem] tw-px-[4rem]"
                 : "")
             }
           >
             {lab !== 0 && (
               <div className={"tw-flex"}>
-                <NavigationPane labID={lab} title={Sections[lab].fullname} />
+                <div>
+                  <NavigationPane labID={lab} title={Sections[lab].fullname} />
+                </div>
                 <div
                   className={
                     "tw-h-[20%] tw-w-[98%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
@@ -121,12 +123,11 @@ const App = () => {
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg 
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
                 ${
                   lab !== 0
-                    ? `tw-absolute tw-right-[0rem] xs:tw-w-full md:tw-w-[60%] lg:tw-w-[70%] tw-mx-6 
-                ${state.main.body === 0 ? "tw-mt-[5rem] tw-h-[90%]" : "tw-h-[105%]"} 
-                tw-top-0 tw-justify-center tw-flex tw-flex-col`
+                    ? `xs:tw-col-span-8 md:tw-col-span-5 tw-ml-6
+                ${state.main.body === 0 && "tw-mt-[5rem] tw-h-[50%]"}`
                     : "tw-w-full"
                 }`}
             >
@@ -202,12 +203,14 @@ const App = () => {
         </div>
         {lab === 0 && <MainFooter />}
         <ALLSnackbar />
-        <LabFooter
-          context={context}
-          quizCompleted={quizCompleted}
-          setQuizCompleted={setQuizCompleted}
-          isImagine={isImagine}
-        />
+        {lab !== 0 && (
+          <LabFooter
+            context={context}
+            quizCompleted={quizCompleted}
+            setQuizCompleted={setQuizCompleted}
+            isImagine={isImagine}
+          />
+        )}
         <SiteAccessibilityButton />
       </div>
     </>

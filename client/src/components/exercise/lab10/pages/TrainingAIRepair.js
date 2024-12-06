@@ -10,6 +10,7 @@ import {
 import { actions as exerciseActions } from "../../../../reducers/lab10/ExerciseReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import LabButton from "../../../all-components/LabButton";
 
 const TrainingAIRepair = (props) => {
   const { actions, repairError, timeValue, popupMessage, repairVisible } =
@@ -32,18 +33,18 @@ const TrainingAIRepair = (props) => {
   return (
     <div>
       <div className={"center-div"}>
-        <h1 className={"tw-title-styling-name tw-text-left tw-pb-6"}>
+        <h1 className={"tw-title tw-text-left tw-pb-6"}>
           {" "}
-          Repair{" "}
+          Training AI Repair{" "}
         </h1>
         <div className={"guidance margin-bottom-2"}>
-          <p className={"tw-body-styling-name tw-text-left"}>
+          <p className={"tw-body-text tw-text-left"}>
             That was very quick! The duration of the simulation needs to be
             increased to allow the neural network to collect more data to
             improve its decision-making. Let&apos;s increase the duration of the
             simulation to collect more data points.
           </p>
-          <p className={"tw-body-styling-name tw-text-leftt tw-py-6"}>
+          <p className={"tw-body-text tw-text-leftt tw-py-6"}>
             Click the &lsquo;
             <span className={"tw-font-bold"}>Repair</span>
             &lsquo; button to view and edit the code. Update the simulation to
@@ -56,23 +57,16 @@ const TrainingAIRepair = (props) => {
         handler={actions.updatePopup}
         error={repairError}
       />
-      <button
-        className="btn btn-second btn-xl text-uppercase leftButton"
-        onClick={actions.openRepair}
-        key="repair"
-      >
-        Repair
-      </button>
+      <div className={"tw-flex tw-justify-center tw-gap-x-3"}>
+        <LabButton label={"Repair"} onClick={actions.openRepair} key="repair" />
 
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase  "
-        key="Next"
-        onClick={handleNav}
-        disabled={handleNext()}
-      >
-        Next
-      </button>
-
+        <LabButton
+          label={"Next"}
+          key="Next"
+          onClick={handleNav}
+          disabled={handleNext()}
+        />
+      </div>
       {repairVisible && <TrainingAICodeBlock />}
     </div>
   );

@@ -54,21 +54,17 @@ const FogIndexOverlay = ({
           />
         )}
         <div className="tw-flex tw-flex-col tw-w-full tw-py-4 tw-text-2xl tw-px-6">
-          <div className={`tw-body-styling-name tw-font-bold tw-py-2`}>
-            Total:
-          </div>
-          <div className={`tw-body-styling-name tw-font-medium tw-self-start`}>
+          <div className={`tw-body-text tw-font-bold tw-py-2`}>Total:</div>
+          <div className={`tw-body-text tw-font-medium tw-self-start`}>
             Words: {totalWords}
           </div>
-          <div className={`tw-body-styling-name tw-font-medium tw-self-start`}>
+          <div className={`tw-body-text tw-font-medium tw-self-start`}>
             Sentences: {totalSentences}
           </div>
-          <div className={`tw-body-styling-name tw-font-medium tw-self-start`}>
+          <div className={`tw-body-text tw-font-medium tw-self-start`}>
             Complex Words: {totalComplexWords}
           </div>
-          <div
-            className={`tw-body-styling-name tw-font-bold tw-self-start tw-py-2`}
-          >
+          <div className={`tw-body-text tw-font-bold tw-self-start tw-py-2`}>
             Fog Index: {fogIndex}
           </div>
         </div>

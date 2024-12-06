@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Proptypes from "prop-types";
 import React from "react";
-import Button from "../../all-components/Navigation/Button";
 import CodeBlock from "../../all-components/CodeBlock/Components/Codeblock";
 import Popup from "src/components/all-components/Popup";
-const REPAIR_MESSAGE = "The repairs have been made.";
-const ERROR_MESSAGE = "Error in Repair. Please fix";
+import LabButton from "../../all-components/LabButton";
+import RepairUpdateButton from "../../all-components/RepairUpdateButton";
+const REPAIR_MESSAGE = "Repair Successful!";
+const ERROR_MESSAGE = "Error in Repair. Please fix.";
 /**
  * Repair: is a reusable component that is responsible for
  * allowing for the ability to render and handle new repair pages
@@ -26,9 +27,20 @@ const Repair = (props) => {
     submitRepair,
   } = props;
   const [isRepairActive, setIsRepairActive] = useState(false);
+  const [repairVisible, setRepairVisible] = useState(false);
   const [enableNext, setEnableNext] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
   const [userError, setUserError] = useState(true);
+
+  const handleOpenRepair = () => {
+    setIsRepairActive(true);
+    setTimeout(() => setRepairVisible(true), 0); // Allow animation to trigger
+  };
+
+  const handleCloseRepair = () => {
+    setRepairVisible(false);
+    setTimeout(() => setIsRepairActive(false), 500); // Match animation duration
+  };
 
   /**
    * handleRepair(): is a function that is responsible
@@ -37,7 +49,7 @@ const Repair = (props) => {
    * and populates the code block with the code implementation view.
    */
   const handleRepair = async () => {
-    setIsRepairActive(true);
+    handleOpenRepair();
     await fetchRepair();
   };
 
@@ -51,7 +63,7 @@ const Repair = (props) => {
   const handleUpdate = async () => {
     const localValidateRepair = validateRepair();
     if (localValidateRepair) {
-      setIsRepairActive(false);
+      handleCloseRepair();
       setUserError(true);
       popUpHandler(REPAIR_MESSAGE);
       setEnableNext(true);
@@ -79,10 +91,10 @@ const Repair = (props) => {
   };
   return (
     <div>
-      <h1 className={"tw-title-styling-name tw-text-left"}> {headingText} </h1>
+      <h1 className={"tw-title tw-text-left"}> {headingText} </h1>
       <div className="tw-pb-10 tw-text-xl ">
         {repairText.map((text) => (
-          <p className="tw-body-styling-name tw-text-left tw-pt-6" key={text}>
+          <p className="tw-body-text tw-text-left tw-pt-6" key={text}>
             {text}
           </p>
         ))}
@@ -90,12 +102,14 @@ const Repair = (props) => {
 
       <div className="tw-flex tw-justify-center tw-pb-5">
         <div className="tw-pr-10">
-          <Button onClick={handleRepair}>Repair</Button>
+          <LabButton onClick={handleRepair} label={"Repair"} />
         </div>
         <div className="tw-pl-10">
-          <Button onClick={handleNext} disabled={!enableNext}>
-            Next
-          </Button>
+          <LabButton
+            onClick={handleNext}
+            label={"Next"}
+            disabled={!enableNext}
+          />
         </div>
       </div>
       <Popup
@@ -104,18 +118,14 @@ const Repair = (props) => {
         error={!userError}
       />
       {isRepairActive && (
-        <>
+        <div
+          className={`${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
+        >
           <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
           <div>
-            <button
-              onClick={handleUpdate}
-              type="submit"
-              className="button button--green button--block"
-            >
-              Update
-            </button>
+            <RepairUpdateButton onClick={handleUpdate} />
           </div>
-        </>
+        </div>
       )}
     </div>
   );

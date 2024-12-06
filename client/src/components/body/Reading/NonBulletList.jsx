@@ -10,21 +10,17 @@ const NonBulletList = ({ data, isImagine }) => {
     <ul className="non-bullet-list">
       {data.map((text, index) => {
         return (
-          <li key={index} className={"tw-body-styling-name"}>
+          <li key={index} className={"tw-body-text"}>
             <h5
               className={
-                isImagine
-                  ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                  : "tw-body-styling-name"
+                isImagine ? "tw-text-[3vw] lg:tw-text-[2.25vh]" : "tw-body-text"
               }
             >
               {text.header}
             </h5>
             <p
               className={
-                isImagine
-                  ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                  : "tw-body-styling-name"
+                isImagine ? "tw-text-[3vw] lg:tw-text-[2.25vh]" : "tw-body-text"
               }
             >
               {text.content}

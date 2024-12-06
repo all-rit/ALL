@@ -67,7 +67,7 @@ const GroupAssignedLabs = (props) => {
               }
             >
               <p className={"tw-p-0 tw-m-0"}>{instructor}</p>
-              <p className={"tw-title-styling-name tw-text-2xl tw-p-0 tw-m-0"}>
+              <p className={"tw-title tw-text-2xl tw-p-0 tw-m-0"}>
                 {groupName}
               </p>
             </div>
@@ -81,9 +81,7 @@ const GroupAssignedLabs = (props) => {
             </div>
           </div>
           <br />
-          <div className={"tw-text-2xl tw-ml-5 tw-title-styling-name"}>
-            Assigned Labs:
-          </div>
+          <div className={"tw-text-2xl tw-ml-5 tw-title"}>Assigned Labs:</div>
           <div className="md:tw-grid xxs:tw-flex xxs:tw-flex-col xxs:tw-justify-center md:lg:tw-grid-cols-3 tw-gap-3">
             {assignedLabs.map((lab, index) => (
               <Lab

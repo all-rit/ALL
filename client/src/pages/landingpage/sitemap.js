@@ -17,58 +17,102 @@ const Routes = (props) => {
   const routeItems = [];
   routeItems.push(
     <div className="col-md-4">
-      <h4 className="service-heading">
+      <h1 className="tw-title">
         <a href=" " id="# " onClick={() => handleRedirect(actions, 0)}>
           Home
         </a>
-      </h4>
+      </h1>
       <ul>
         <li>
           {" "}
-          <a href="/client/public#goals">Goals</a>
+          <a className="tw-body-text" href="/#student">
+            Are You a Student?
+          </a>
         </li>
         <li>
           {" "}
-          <a href="/client/public#labs">Labs</a>
+          <a className="tw-body-text" href="/#educator">
+            Are You an Educator?
+          </a>
         </li>
         <li>
           {" "}
-          <a href="/client/public#contact">Contact</a>
+          <a className="tw-body-text" href="/#about-us">
+            About Us
+          </a>
+        </li>
+        <li>
+          {" "}
+          <a className="tw-body-text" href="/#dev-partners">
+            Development Partners
+          </a>
+        </li>
+        <li>
+          {" "}
+          <a className="tw-body-text" href="/#participating-schools">
+            Participating Schools
+          </a>
+        </li>
+        <li>
+          {" "}
+          <a className="tw-body-text" href="/#get-involved">
+            Interested in Getting Involved?
+          </a>
         </li>
       </ul>
     </div>,
   );
-  for (let i = 1; i < 12; i++) {
+  for (let i = 1; i < 13; i++) {
     routeItems.push(
       <div className="col-md-4">
-        <h4 className=" ">
+        <h1 className="tw-title">
           <a href=" " onClick={() => handleRedirect(actions, i, 0)}>
             Lab {i}
           </a>
-        </h4>
+        </h1>
         <ul>
           <li>
-            <a href="# " onClick={() => handleRedirect(actions, i, 0)}>
+            <a
+              className="tw-body-text"
+              href="# "
+              onClick={() => handleRedirect(actions, i, 0)}
+            >
               About
             </a>
           </li>
           <li>
-            <a href="# " onClick={() => handleRedirect(actions, i, 1)}>
+            <a
+              className="tw-body-text"
+              href="# "
+              onClick={() => handleRedirect(actions, i, 1)}
+            >
               Reading
             </a>
           </li>
           <li>
-            <a href="# " onClick={() => handleRedirect(actions, i, 2)}>
+            <a
+              className="tw-body-text"
+              href="# "
+              onClick={() => handleRedirect(actions, i, 2)}
+            >
               Exercise
             </a>
           </li>
           <li>
-            <a href="# " onClick={() => handleRedirect(actions, i, 3)}>
+            <a
+              className="tw-body-text"
+              href="# "
+              onClick={() => handleRedirect(actions, i, 3)}
+            >
               Reinforcement
             </a>
           </li>
           <li>
-            <a href="# " onClick={() => handleRedirect(actions, i, 4)}>
+            <a
+              className="tw-body-text"
+              href="# "
+              onClick={() => handleRedirect(actions, i, 4)}
+            >
               Quiz
             </a>
           </li>
@@ -85,13 +129,15 @@ const SiteMap = (props) => {
   }, []);
   const { actions } = props;
   return (
-    <div className="landingpage">
+    <div className="landingpage lg:tw-pt-20 tw-pt-10">
       <div className="container">
         <section className="page-section">
           <div className="container margin-top">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <h2 className="section-heading text-uppercase">Site Map</h2>
+                <h2 className="section-heading text-uppercase tw-mb-5">
+                  Site Map
+                </h2>
               </div>
               <div className="grid-container">
                 <div className="col-md-auto">
