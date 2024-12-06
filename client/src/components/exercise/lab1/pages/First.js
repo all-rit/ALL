@@ -5,15 +5,11 @@ import React, { Component } from "react";
 class First extends Component {
   render() {
     return (
-      <div className="playthrough">
+      <div className="tw-p-3">
+        <h1 className={"tw-title tw-text-left"}> Exercise Start </h1>
         <div className="playthrough__content">
-          <p className="playthrough__sentence">
-            Well done! You’ve completed the reading section. Now, we’re going to
-            apply what you’ve learned in a fun exercise. Here are the rules:
-          </p>
-
-          <ul className="playthrough__list">
-            <li>
+          <ul className="tw-body-text tw-text-left">
+            <li className={"tw-py-6"}>
               <b>Four small boxes</b> will be presented on your screen. One of
               the four boxes contains a treasure, and it's your job to{" "}
               <b>guess which box.</b>
@@ -29,12 +25,12 @@ class First extends Component {
               before you can select again. Beware,{" "}
               <b>opening the hint box costs 25 points!</b>
             </li>
-            <li>
+            <li className={"tw-py-6"}>
               <b>Time is limited</b> for each round. The quicker you find the
               box with the treasure, the more points you will get.
             </li>
 
-            <ul className="playthrough__list">
+            <ul className="tw-body-text tw-list-disc tw-px-6">
               <li>Less than 1 second = 150 points</li>
               <li>Less than 2 seconds = 125 points</li>
               <li>Less than 3 seconds = 100 points</li>
@@ -43,21 +39,15 @@ class First extends Component {
               <li>More than 5 seconds = 25 points</li>
             </ul>
 
-            <li>
+            <li className={"tw-py-6"}>
               Every time you find the box with the treasure, a countdown will be
               displayed and a new round will ensue,{" "}
               <b>until the timer runs out.</b>
             </li>
           </ul>
-
-          <p className="playthrough__sentence">
-            Click the 'How to Play?' button before beginning.
-          </p>
-
-          <hr />
-
-          <p className="playthrough__sentence">
-            When you are ready, click the 'Start' button to begin the exercise.
+          <p className="tw-body-text tw-text-center tw-pb-3">
+            When you are ready, click the <b>Start</b> button to begin the
+            exercise.
           </p>
         </div>
       </div>

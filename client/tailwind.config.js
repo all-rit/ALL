@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /* eslint-disable no-undef */
 /* eslint-disable max-len */
 module.exports = {
@@ -9,7 +11,6 @@ module.exports = {
       xs: "320px",
       sm: "640px",
       md: "768px",
-      md2: "920px",
       lg: "1024px",
       xl: "1280px",
       xxl: "1600px",
@@ -36,11 +37,8 @@ module.exports = {
         "system-ui",
         "-apple-system",
         "BlinkMacSystemFont",
+        "Calibri",
       ],
-      diploma: ["Diploma", "serif"],
-    },
-    textColor: {
-      "error-red": "#dc2626",
     },
     colors: {
       black: "#000000",
@@ -51,20 +49,40 @@ module.exports = {
       labGray: "#616161",
       labLightGray: "#E5E2E2",
       labYellow: "#ffc334",
-      submitYellow: "#fed136",
       labGreen: "#7B7B7B",
       labBlue: "#0d28bc",
       darkGreen: "#0c3515",
       lightGreen: "#47ff72",
       brightRed: "#dc2626",
+      darkGray: "#3d3d3d",
+      success: "#369d2a",
+      hoverSuccess: "#238418",
+      error: "#d03c3c",
     },
     extend: {
+      borderWidth: {
+        12: "12px",
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        calibri: ["Calibri", "sans-serif"],
+      },
+      colors: {
+        primary: {
+          yellow: "#FACE35",
+          blue: "#0144D5",
+        },
+        secondary: {
+          black: "#000000",
+          gray: "#d3d3d3",
+          white: "#FFFFFF",
+        },
+      },
       spacing: {
         128: "32rem",
         144: "36rem",
       },
       borderRadius: {
-        "2.5xl": "20px",
         "4xl": "2rem",
       },
       backgroundImage: {
@@ -72,8 +90,6 @@ module.exports = {
           "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
         "hero-dark":
           "linear-gradient(280.39deg, rgba(72, 0, 194, 0.9) 0%, rgba(72, 0, 194, 1) 100%);",
-        "diploma-background":
-          "url('/src/assets/images/lab12/diploma_background.png')",
       },
       height: {
         128: "31rem",
@@ -90,13 +106,19 @@ module.exports = {
             animationTimingFunction: "cubic-bezier(0.5, 0.05, 1, 0.5)",
           },
         },
-      },
-      boxShadow: {
-        "2xl-top-bottom":
-          "0 -6px 12px -6px rgba(0, 0, 0, 0.25), 0 6px 12px -6px rgba(0, 0, 0, 0.25)",
+        infiniteScroll: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-101.5%)" },
+        },
+        infiniteScrollRight: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(101.5%)" },
+        },
       },
       animation: {
         "reduced-bounce": `reducedBounce 2s linear infinite`,
+        "infinite-scroll": `infiniteScroll 25s linear infinite`,
+        "infinite-scroll-right": `infiniteScrollRight 25s linear infinite`,
       },
       zIndex: {
         1: "1",
@@ -109,5 +131,27 @@ module.exports = {
       bg: ["group", "responsive", "hover", "focus"],
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addComponents, theme }) => {
+      addComponents({
+        ".title": {
+          fontFamily: theme("fontFamily.poppins"),
+          fontSize: "2rem",
+          fontWeight: theme("fontWeight.bold"),
+        },
+        ".sub-title": {
+          fontFamily: theme("fontFamily.calibri"),
+          fontSize: "1.5rem",
+          fontWeight: theme("fontWeight.medium"),
+        },
+        ".body-text": {
+          fontFamily: theme("fontFamily.calibri"),
+          fontWeight: theme("fontWeight.medium"),
+          fontSize: "1.125rem",
+          lineHeight: "1.6rem",
+          textAlign: "left",
+        },
+      });
+    }),
+  ],
 };

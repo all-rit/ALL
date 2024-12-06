@@ -1,5 +1,7 @@
 import UserLabService from "../../../services/UserLabService";
 import labService from "src/services/LabService";
+import Certificate from "./Certificate";
+import useMainStateContext from "../../../reducers/MainContext";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz";
@@ -12,7 +14,9 @@ import Result from "./Result";
  * component with information.
  */
 const QuizHandler = (props) => {
+  const { state } = useMainStateContext();
   const [currentLabId, setCurrentLab] = useState(props.labId);
+  const [viewCertificate, setViewCertificate] = useState(false);
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions, setQuestions] = useState([
     {
@@ -60,7 +64,7 @@ const QuizHandler = (props) => {
   /**
    * HandleNext() is a function that is responsible for allowing the user to
    * iterate to the next question. this will then update the disabling for the
-   * selection on on the next question as it iterates to the next option
+   * selection on the next question as it iterates to the next option
    */
   function handleNext() {
     if (currentQuestionCursor < questions.length) {
@@ -70,6 +74,20 @@ const QuizHandler = (props) => {
       setDisableNext(true);
     }
   }
+
+  /**
+   * handleBack() is a function that allows the user to
+   * return to the previous question
+   */
+  const handleBack = () => {
+    if (currentQuestionCursor < questions.length) {
+      let updateCursor = currentQuestionCursor - 1;
+      setCurrentQuestionCursor(updateCursor);
+      setAnswerOption(questions[updateCursor].answers);
+      setDisableNext(true);
+    }
+  };
+
   /**
    * onComplete is a function that is responsible for preparing and running the
    * calculations to grade a users responses to the quiz. This will then prepare the data
@@ -242,7 +260,7 @@ const QuizHandler = (props) => {
   }
 
   return (
-    <>
+    <div className={"tw-h-[43rem] tw-pt-10 tw-rounded-lg"}>
       {!props.quizCompleted ? (
         <Quiz
           answer={""}
@@ -251,24 +269,32 @@ const QuizHandler = (props) => {
           multiChoice={questions[currentQuestionCursor].multiChoice}
           multiSelectedEntry={selectMulti}
           nextQuestion={handleNext}
+          lastQuestion={handleBack}
           onAnswerSelected={selectAnswer}
           onComplete={onComplete}
           questionId={currentQuestionCursor + 1}
           question={questions[currentQuestionCursor].question}
           questionTotal={questions.length}
           isFinalQuiz={props.isFinalQuiz}
-        ></Quiz>
-      ) : (
+        />
+      ) : !viewCertificate ? (
         <Result
-          hideCertificate={props.hideCertificate}
           quizResult={Math.round(result * 100) + "%"}
           quizScore={100}
           selectedAnswers={selectedAnswers}
           quizQuestions={questions}
           lab={currentLabId}
-        ></Result>
+          setViewCertificate={setViewCertificate}
+        />
+      ) : (
+        <Certificate
+          state={state}
+          quizResult={Math.round(result * 100) + "%"}
+          lab={state.main.lab}
+          setViewCertificate={setViewCertificate}
+        />
       )}
-    </>
+    </div>
   );
 };
 QuizHandler.propTypes = {
@@ -276,7 +302,7 @@ QuizHandler.propTypes = {
   quizQuestions: PropTypes.array,
   isFinalQuiz: PropTypes.bool.isRequired,
   hideCertificate: PropTypes.bool.isRequired,
-  submitData: PropTypes.func.isRequired,
+  submitData: PropTypes.func,
   user: PropTypes.shape({
     firstname: PropTypes.string,
     userid: PropTypes.number,

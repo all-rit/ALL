@@ -20,7 +20,7 @@ class Boxes extends Component {
 
     if (!visible) return null;
 
-    return <div className="exercise__boxes">{boxElements}</div>;
+    return <div className="exercise__boxes ">{boxElements}</div>;
   }
 }
 

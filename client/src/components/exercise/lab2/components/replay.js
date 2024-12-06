@@ -2,8 +2,8 @@
 /* eslint-disable max-len */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Button from "./header/buttons/button";
 import "./exerciseStyle.css";
+import LabButton from "../../../all-components/LabButton";
 
 /*
   Class for replay screen and to allow the user to replay the exercise
@@ -43,120 +43,63 @@ class Replay extends Component {
     };
 
     return (
-      <div>
-        {/*
-         <div className='replay_screen'>
-           <div className='left'>
-             <ScoreBreakdown />
-             <PreviousExercises score={this.props.score} mode={this.props.exerciseMode}/>
-             <ScoreComparison score={this.props.score} mode={this.props.exerciseMode}/>
-           </div>
-         </div>
-        */}
-        <div className={"tw-m-5 tw-p-5"}>
+      <div className={""}>
+        <div className={"tw-m-5"}>
           <div>
-            {this.props.score > 0 ? (
-              <p className="timeEnd">Good job! Here are your results:</p>
-            ) : (
-              <p className="timeEnd tw-text-2xl">
-                Better luck next time! Here are your results:
-              </p>
-            )}
-            <div>
-              <table className="center centerExercise tw-m-5">
-                <tbody style={{ border: "2px solid black" }}>
-                  <tr>
-                    <td className="replayBreakdown">Final Score</td>
-                    {this.props.score > 0 ? (
-                      <td className="replayBreakdown positiveData">
-                        {this.props.score}
-                      </td>
-                    ) : (
-                      <td className="replayBreakdown negativeData">
-                        {this.props.score}
-                      </td>
-                    )}
-                  </tr>
-                  <tr>
-                    <td className="replayBreakdown">
-                      Correctly clicked circles
-                    </td>
-                    {this.props.rightClick - this.props.wrongNoClick > 0 ? (
-                      <td className="replayBreakdown positiveData">
-                        {this.props.rightClick}
-                      </td>
-                    ) : (
-                      <td className="replayBreakdown negativeData">
-                        {this.props.rightClick}
-                      </td>
-                    )}
-                  </tr>
-                  <tr>
-                    <td className="replayBreakdown">
-                      Correctly not clicked circles
-                    </td>
-                    {this.props.rightNoClick > 0 ? (
-                      <td className="replayBreakdown positiveData">
-                        {this.props.rightNoClick}
-                      </td>
-                    ) : (
-                      <td className="replayBreakdown negativeData">
-                        {this.props.rightNoClick}
-                      </td>
-                    )}
-                  </tr>
-                  <tr>
-                    <td className="replayBreakdown">
-                      Incorrectly clicked circles
-                    </td>
-                    {this.props.wrongClick === 0 ? (
-                      <td className="replayBreakdown positiveData">
-                        {this.props.wrongClick}
-                      </td>
-                    ) : (
-                      <td className="replayBreakdown negativeData">
-                        {this.props.wrongClick}
-                      </td>
-                    )}
-                  </tr>
-                  <tr>
-                    <td className="replayBreakdown">Missed clicks</td>
-                    {this.props.wrongNoClick === 0 ? (
-                      <td className="replayBreakdown positiveData">
-                        {this.props.wrongNoClick}
-                      </td>
-                    ) : (
-                      <td className="replayBreakdown negativeData">
-                        {this.props.wrongNoClick}
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
-              </table>
+            <p className=" tw-text-center tw-py-6">Results</p>
+            <div
+              className={"tw-rounded-lg tw-p-5 tw-body-text tw-text-[1.25rem]"}
+            >
+              <div
+                className={
+                  "tw-flex tw-flex-col tw-gap-y-3 tw-text-white tw-bg-secondary-gray tw-p-6 tw-rounded-lg"
+                }
+              >
+                <div
+                  className={`tw-p-3 tw-rounded-xl tw-flex tw-justify-between ${this.props.score > 0 ? "tw-bg-success" : "tw-bg-brightRed"}`}
+                >
+                  <p className=" tw-text-left">Final Score</p>
+                  <p>{this.props.score}</p>
+                </div>
+                <div
+                  className={`tw-p-3 tw-rounded-xl tw-flex tw-justify-between ${this.props.rightClick > 0 ? "tw-bg-success" : "tw-bg-brightRed"}`}
+                >
+                  <p className="tw-text-left">Correctly clicked circles</p>
+                  <p>{this.props.rightClick}</p>
+                </div>
+                <div
+                  className={`tw-p-3 tw-rounded-xl tw-flex tw-justify-between ${this.props.rightNoClick > 0 ? "tw-bg-success" : "tw-bg-brightRed"}`}
+                >
+                  <p className=" tw-text-left">Correctly not clicked circles</p>
+                  <p>{this.props.rightNoClick}</p>
+                </div>
+                <div
+                  className={`tw-p-3 tw-rounded-xl tw-flex tw-justify-between ${this.props.wrongClick === 0 ? "tw-bg-success" : "tw-bg-brightRed"}`}
+                >
+                  <p className=" tw-text-left">Incorrectly clicked circles</p>
+                  <p>{this.props.wrongClick}</p>
+                </div>
+                <div
+                  className={`tw-p-3 tw-rounded-xl tw-flex tw-justify-between ${this.props.wrongNoClick === 0 ? "tw-bg-success" : "tw-bg-brightRed"}`}
+                >
+                  <p className=" tw-text-left">Missed clicks</p>
+                  <p>{this.props.wrongNoClick}</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="center tw-m-5" style={{ marginLeft: "-25px" }}>
             {this.props.exercisesPlayed === 0 ? (
-              <Button
-                clickMethod={clickFirst}
-                message={"Continue"}
-                fontSizing={"25px"}
-              />
+              <div className={"tw-mb-6"}>
+                <LabButton onClick={clickFirst} label={"Continue"} />
+              </div>
             ) : (
-              <div>
+              <div className={"tw-mb-6"}>
                 {this.props.exercisesPlayed === 1 ? (
-                  <Button
-                    clickMethod={clickSecond}
-                    message={"Continue"}
-                    fontSizing={"25px"}
-                  />
+                  <LabButton onClick={clickSecond} label={"Continue"} />
                 ) : (
                   <div>
-                    <Button
-                      clickMethod={clickThird}
-                      message={"Continue"}
-                      fontSizing={"25px"}
-                    />
+                    <LabButton onClick={clickThird} label={"Continue"} />
                   </div>
                 )}
               </div>

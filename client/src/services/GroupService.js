@@ -38,13 +38,14 @@ const GroupService = {
       },
     );
   },
-  createGroup: async (userID, groupName) => {
+  createGroup: async (userID, groupName, color) => {
     try {
       const response = await API.postWithBody(
         `${process.env.REACT_APP_SERVER_URL}/group/create`,
         {
           userID,
           groupName,
+          color,
         },
       );
 
@@ -86,12 +87,13 @@ const GroupService = {
       },
     );
   },
-  updateGroup: (groupID, groupName) => {
+  updateGroup: (groupID, groupName, groupColor) => {
     return API.putWithBody(
       process.env.REACT_APP_SERVER_URL + `/group/${groupID}/update`,
       {
         groupID,
         groupName,
+        groupColor,
       },
     );
   },

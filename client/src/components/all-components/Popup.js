@@ -14,9 +14,11 @@ class Popup extends Component {
     if (message === "") return null;
 
     return (
-      <div className="popup">
-        <div className={`popup__content ${error ? "popup__error" : ""}`}>
-          <span className="popup__message">{message}</span>
+      <div className="tw-w-full tw-flex tw-justify-center tw-py-3">
+        <div
+          className={`tw-bg-success tw-w-1/2 tw-rounded-lg tw-shadow-lg ${error ? "tw-bg-error" : ""}`}
+        >
+          <p className="tw-text-white tw-font-poppins tw-p-6">{message}</p>
         </div>
       </div>
     );

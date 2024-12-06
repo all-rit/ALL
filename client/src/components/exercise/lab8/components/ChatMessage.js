@@ -49,7 +49,7 @@ const ChatMessage = ({
   }, []);
 
   return enableMessageDisplay ? (
-    <div className="tw-border-solid tw-p-3 tw-grid tw-grid-cols-[auto,1fr] tw-bg-[#ffffff] tw-items-start tw-w-full">
+    <div className="tw-p-3 tw-grid tw-grid-cols-[auto,1fr] tw-bg-[#ffffff] tw-items-start tw-w-full tw-rounded-lg">
       <div className="tw-flex tw-flex-col">
         <div className="tw-flex tw-items-center tw-p-2">
           {userAvatar && (
@@ -71,7 +71,7 @@ const ChatMessage = ({
           )}
           <p className="tw-ml-3 tw-font-semibold">{username}</p>
         </div>
-        <p className="tw-text-[#343434] tw-px-2 tw-pb-2 tw-text-left">
+        <p className="tw-body-text tw-leading-snug tw-px-2 tw-py-2 tw-text-left tw-max-w-[75%]">
           {message}
         </p>
       </div>
@@ -85,7 +85,7 @@ const ChatMessage = ({
           </p>
           <div className="tw-flex tw-mt-2 tw-flex-col">
             <button
-              className={`${keepButtonColor} tw-text-white tw-px-4 tw-py-2 tw-w-[100%] tw-rounded-lg tw-mb-1`}
+              className={`${keepButtonColor} tw-text-white tw-border-0 tw-px-4 tw-py-2 tw-w-[100%] tw-rounded-lg tw-mb-1`}
               onClick={handleKeep}
               key="keep"
               disabled={disabled}
@@ -93,7 +93,7 @@ const ChatMessage = ({
               Keep
             </button>
             <button
-              className={`${removeButtonColor} tw-text-white tw-w-[100%] tw-px-4 tw-py-2 tw-rounded-lg`}
+              className={`${removeButtonColor} tw-text-white tw-w-[100%] tw-border-0 tw-px-4 tw-py-2 tw-rounded-lg`}
               onClick={handleRemove}
               key="remove"
               disabled={disabled}

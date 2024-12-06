@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import AppBar from "@mui/material/AppBar";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../../constants/lab3/index";
 import UserLabService from "../../../../../services/UserLabService";
@@ -19,19 +18,22 @@ class AdvancedExerciseConclusion extends Component {
   }
   render() {
     return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <h4 className="flex-boxes ">
-            Congratulations! You have succesfully completed the Screen Readers
-            Exercise!
-          </h4>
-        </AppBar>
+      <div className={"tw-p-6"}>
+        <h2 className="tw-title tw-text-left">Advanced Exercise Complete</h2>
         <br />
-        <h4 className="flex-boxes">
-          Click the button below to restart the exercise.
-        </h4>
+        <p className={"tw-body-text tw-font-medium tw-text-left"}>
+          Congratulations! You have successfully completed the Screen Readers
+          Exercise!
+        </p>
+        <br />
+        <p className={"tw-body-text tw-font-medium tw-text-left"}>
+          Click the <strong> Return to Exercise Start </strong> button below to
+          restart the exercise, or click the <strong> Next</strong> button in
+          the bottom right.
+        </p>
+        <br />
         <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
+          className="btn tw-shadow-md tw-bg-secondary-gray tw-h-[4rem] text-uppercase hover:tw-bg-primary-yellow hover:tw-shadow-lg"
           onClick={this.handleSubmit}
           key="start"
         >

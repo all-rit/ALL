@@ -17,3 +17,15 @@ exports.getAllAlumni = (req, res) => {
     res.json(records);
   });
 };
+
+exports.getAllDevPartners = (req, res) => {
+  TeamMemberService.getAllDevPartners().then((records) => {
+    res.json(records);
+  });
+};
+
+exports.getAllSchools = (req, res) => {
+  TeamMemberService.getAllSchools().then((records) => {
+    res.json(records);
+  });
+};

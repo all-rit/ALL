@@ -68,7 +68,6 @@ async function postExercise(data) {
         attemptCount: newVal,
         hasViewed: hasViewed,
       };
-        // reset state
       await db.ExerciseLab12.create(updatedExercise).id;
       return updatedExercise;
     }

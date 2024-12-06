@@ -29,30 +29,29 @@ const Reinforcement = (props) => {
   }
 
   return (
-    <div>
-      <div className="row">
-        <h4 className="tw-font-bold tw-text-center pb-3">
+    <div className={"tw-min-h-[40rem]"}>
+      <h1 className={"tw-px-10 tw-title tw-text-left"}>Reinforcement</h1>
+      <div className="">
+        <h4 className="tw-font-bold tw-text-center p-3">
           Here is some supplemental material to reinforce the topic.
         </h4>
       </div>
-      <div className="tw-position-relative tw-bg-labYellow tw-rounded-3xl shadow">
+      <div
+        className={"tw-overflow-y-scroll tw-overflow-x-hidden tw-max-h-[30rem]"}
+      >
         {reinforcement.map((data) => {
           return (
-            <div
-              className="tw-position-absolute tw-rounded-3xl shadow p-3 m-3 tw-bg-labLightGray questionContainer"
-              key={data.key}
-            >
-              <div className="row">
+            <div key={data.key}>
+              <div className="row tw-w-full">
                 <h5 className="tw-font-bold poppins">{data.title}</h5>
               </div>
-              <div className="row">
+              <div className="row tw-rounded-4xl">
                 <iframe
-                  className="tw-rounded-4xl"
                   title={data.title}
-                  width="75%"
-                  height="400"
+                  className={
+                    "xs:tw-h-full md:tw-h-[30rem] xs:tw-w-3/4 md:tw-w-full tw-px-[5rem] tw-rounded-4xl"
+                  }
                   src={data.link}
-                  frameBorder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />

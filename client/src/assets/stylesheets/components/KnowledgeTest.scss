@@ -10,12 +10,12 @@
 
   .option {
     border-radius: 0.25rem;
-    border: 1px solid;
+    border: none;
     padding: 0.25rem;
     width: 60%;
     margin: auto;
     margin-top: 0.5rem;
-    background-color: white;
+    background-color: #ddd;
   }
   .option:hover {
     background-color: #e1e2e5;
@@ -32,9 +32,10 @@
     margin-bottom: 20px;
   }
   .result {
-    background-color: #484848 !important;
-    padding: 20px;
-    color: white;
+    background-color: #d3d3d3 !important;
+    border-radius: 10px;
+    padding: 3rem;
+    color: black;
     width: 60%;
     margin: auto;
     margin-top: 10px;

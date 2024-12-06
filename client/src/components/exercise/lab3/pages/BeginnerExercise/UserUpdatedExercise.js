@@ -5,7 +5,6 @@
 import React, { Component } from "react";
 import CatClickNavigate from "../../helpers/CatClickNavigate";
 import { navigate } from "@reach/router";
-import { AppBar, Toolbar, Typography, Grid } from "@mui/material";
 import { PageService } from "../../../../../services/PageService";
 import { EXERCISE_PLAYING, LAB_ID } from "../../../../../constants/lab3/index";
 
@@ -13,11 +12,10 @@ class UserUpdatedExercise extends Component {
   constructor(props) {
     super(props);
     this.state = { render: "", secondsElapsed: 0, renderedButtons: [] };
-    document.body.style = "background: black";
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  _renderSubComp(path) {
+  renderNextButton(path) {
     if (this.state.render === "CatClickNavigate") {
       return <CatClickNavigate path={path} />;
     }
@@ -45,22 +43,6 @@ class UserUpdatedExercise extends Component {
     if (event.keyCode === 27) {
       console.log("Enter key pressed!");
       navigate("/Lab3/Exercise/AccessibleInstructions");
-    }
-  }
-
-  onFocusGain(event, className) {
-    console.log("focus gained");
-    const element = document.getElementsByClassName(className);
-    for (let i = 0; i < element.length; i++) {
-      element[i].style = { borderColor: "red" };
-    }
-  }
-
-  onFocusLoss(event, className) {
-    console.log("focus lost");
-    const element = document.getElementsByClassName(className);
-    for (let i = 0; i < element.length; i++) {
-      element[i].style = { borderColor: "black" };
     }
   }
 
@@ -104,8 +86,8 @@ class UserUpdatedExercise extends Component {
       console.log("Cow image clicked!");
     };
     const imgStyle = {
-      width: "128px",
-      height: "128px",
+      width: "10rem",
+      height: "10rem",
       border: "1px solid black",
       backgroundColor: "black",
     };
@@ -191,48 +173,30 @@ class UserUpdatedExercise extends Component {
       textAlign: "center",
     };
 
-    const textStyle = { color: "white", tabIndex: "0" };
     return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid
-              justifyContent="center"
-              container
-              spacing={10}
-              aria-label={"Page Title Grid"}
-            >
-              <Grid item>
-                <Typography
-                  variant={"h4"}
-                  color={"white"}
-                  aria-label={
-                    data.repair3.changesApplied
-                      ? "Accessible Exercise"
-                      : "Inaccessible Exercise"
-                  }
-                  tabIndex={"0"}
-                  onFocus={(e) =>
-                    this.textToSpeech(
-                      e,
-                      data.repair3.changesApplied
-                        ? "Accessible Exercise"
-                        : "Inaccessible Exercise",
-                    )
-                  }
-                >
-                  {data.repair3.changesApplied
-                    ? "Accessible Exercise"
-                    : "Inaccessible Exercise"}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
-        <Typography
-          variant={"h6"}
-          style={textStyle}
-          tabIndex={"0"}
+      <div className={"tw-bg-black tw-rounded-lg tw-h-full"}>
+        <h2
+          className={"tw-title tw-text-white tw-p-6"}
+          aria-label={
+            data.repair3.changesApplied
+              ? "Accessible Exercise"
+              : "Inaccessible Exercise"
+          }
+          onFocus={(e) =>
+            this.textToSpeech(
+              e,
+              data.repair3.changesApplied
+                ? "Accessible Exercise"
+                : "Inaccessible Exercise",
+            )
+          }
+        >
+          {data.repair3.changesApplied
+            ? "Accessible Exercise"
+            : "Inaccessible Exercise"}
+        </h2>
+        <p
+          className={"tw-px-[3rem] tw-text-white tw-body-text tw-font-medium"}
           onFocus={(e) =>
             this.textToSpeech(
               e,
@@ -242,8 +206,8 @@ class UserUpdatedExercise extends Component {
         >
           Click on the image of a cat. You can use the keyboard to navigate by
           tabbing across the page. Press the enter key to select.
-        </Typography>
-        <table style={tableStyle} tabIndex={"0"}>
+        </p>
+        <table style={tableStyle} className={"tw-relative"}>
           <tbody>
             <tr>
               {this.state.renderedButtons[0]}
@@ -255,7 +219,7 @@ class UserUpdatedExercise extends Component {
             </tr>
           </tbody>
         </table>
-        {this._renderSubComp(
+        {this.renderNextButton(
           data.repair3.changesApplied
             ? "/Lab3/Exercise/CodeChange"
             : "/Lab3/Exercise/AccessibleInstructions",

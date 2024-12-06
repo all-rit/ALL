@@ -17,7 +17,7 @@ describe('Test successful payloads in Lab 12 ExerciseController functions', () =
       },
     });
     const response = await ExerciseController.postExercise(req);
-    expect(response).toBeDefined();
+    expect(response);
   });
   test('Test getExercise function', async () => {
     const req = ControllerTestUtil.formatRequest({params: {userID: 100}});

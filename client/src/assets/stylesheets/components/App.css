@@ -297,10 +297,6 @@ li {
   flex-wrap: wrap;
 }
 
-.landingpage p {
-  font-size: 16px;
-}
-
 @-webkit-keyframes autoplay {
   0% {
     opacity: 0;
@@ -801,7 +797,7 @@ a.icon:hover {
 }
 
 .module__lab_col {
-  min-width: 20.6rem;
+  min-width: 12.6rem;
   max-width: 20.6rem;
 }
 
@@ -829,15 +825,15 @@ a.icon:hover {
 .module__col {
   margin: 20px;
   position: relative;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: left;
-  -ms-flex-pack: left;
-  justify-content: left;
-  border-radius: 20px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  /*-webkit-box-align: center;*/
+  /*-ms-flex-align: center;*/
+  /*align-items: center;*/
+  /*-webkit-box-pack: left;*/
+  /*-ms-flex-pack: left;*/
+  /*justify-content: left;*/
+  /*border-radius: 20px;*/
+  /*-webkit-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;*/
+  /*box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;*/
 }
 
 @media (max-width: 990px) {
@@ -858,7 +854,7 @@ a.icon:hover {
   }
   .module__lab_image {
     height: 18rem;
-    width: 175px;
+    /*width: 175px;*/
   }
 }
 

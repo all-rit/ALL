@@ -1,10 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Button from "@mui/material/Button";
 import { navigate } from "@reach/router";
-import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import LabButton from "../../../all-components/LabButton";
 
 class CatClickFirstNavigate extends Component {
   constructor(props) {
@@ -20,30 +19,26 @@ class CatClickFirstNavigate extends Component {
   }
 
   render() {
-    const typographyStyle = { color: "white" };
     return (
       <div id={"catClickMessage"}>
-        <Typography
-          variant={"h6"}
+        <p
           aria-label={
             "Cat clicked! Please click the 'next' button to continue."
           }
-          tabIndex={"0"}
-          style={typographyStyle}
         >
           Cat clicked! Please click the 'next' button to continue.
-        </Typography>
+        </p>
         <br />
-        <Button
-          onClick={CatClickFirstNavigate.handleOnclick}
-          variant="contained"
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-        >
+        <LabButton onClick={CatClickFirstNavigate.handleOnclick} label={"Next"}>
           Next
-        </Button>
+        </LabButton>
       </div>
     );
   }
 }
+
+CatClickFirstNavigate.propTypes = {
+  path: PropTypes.string,
+};
 
 export default CatClickFirstNavigate;

@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React from "react";
 import PropTypes from "prop-types";
 import Question from "./Question";
@@ -31,8 +29,8 @@ function Quiz(props) {
   }
 
   return (
-    <div className="tw-position-relative shadow tw-rounded-3xl tw-bg-labYellow">
-      <div className="tw-position-absolute p-3 shadow bg-white tw-rounded-3xl questionContainer tw-bg-labLightGray">
+    <div className="tw-pt-[3rem]">
+      <div className="tw-rounded-lg tw-text-left tw-px-6 tw-shadow-lg tw-py-6 tw-mx-6">
         <QuestionCount counter={props.questionId} total={props.questionTotal} />
         {props.isFinalQuiz ? (
           <Question content={props.question} multi={props.multiChoice} />
@@ -43,31 +41,48 @@ function Quiz(props) {
           />
         )}
       </div>
-      <div
-        className="quiz container tw-position-absolute bg-white tw-rounded-3xl shadow questionContainer pt-1 mt-3  tw-bg-labLightGray"
-        key={props.questionId}
-      >
+      <div className="quiz bg-white tw-mt-6" key={props.questionId}>
         <ul className="answerOptions">
           {props.answerOptions.map(renderAnswerOptions)}
         </ul>
-        <div className="align-right">
-          {props.questionId !== props.questionTotal ? (
-            <button
-              className="btn tw-bg-labBlue text-white text-uppercase mt-0 nextButton"
-              onClick={props.nextQuestion}
-              disabled={props.disable}
-            >
-              Next Question
-            </button>
-          ) : (
-            <button
-              className="btn btn-second text-uppercase mt-0 nextButton"
-              onClick={props.onComplete}
-              disabled={props.disable}
-            >
-              Complete
-            </button>
-          )}
+        <div
+          className={"tw-w-full tw-flex tw-flex-row tw-justify-between tw-p-6"}
+        >
+          <div className="align-right">
+            {props.questionId !== 1 && (
+              <button
+                className="tw-body-text tw-border-[.5rem] tw-p-5 tw-rounded-bl-lg tw-border-t-0 tw-border-r-0
+                          tw-border-solid tw-border-primary-yellow tw-bg-white"
+                onClick={props.lastQuestion}
+              >
+                Last Question
+              </button>
+            )}
+          </div>
+          <div className={"tw-font-bold tw-body-text tw-my-6"}>
+            {props.questionId}/{props.questionTotal}
+          </div>
+          <div className="align-right">
+            {props.questionId !== props.questionTotal ? (
+              <button
+                className="tw-body-text tw-border-solid tw-border-primary-blue
+                                        tw-bg-white tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
+                onClick={props.nextQuestion}
+                disabled={props.disable}
+              >
+                Next Question
+              </button>
+            ) : (
+              <button
+                className="tw-body-text tw-border-solid tw-border-primary-blue
+                                        tw-bg-white tw-border-l-0 tw-border-b-0 tw-border-[.5rem] tw-p-5 tw-rounded-tr-lg"
+                onClick={props.onComplete}
+                disabled={props.disable}
+              >
+                Complete
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -82,6 +97,12 @@ Quiz.propTypes = {
   questionTotal: PropTypes.number.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
   multiChoice: PropTypes.bool.isRequired,
+  onComplete: PropTypes.func.isRequired,
+  disable: PropTypes.bool.isRequired,
+  nextQuestion: PropTypes.func.isRequired,
+  lastQuestion: PropTypes.func.isRequired,
+  multiSelectedEntry: PropTypes.func,
+  isFinalQuiz: PropTypes.bool.isRequired,
 };
 
 export default Quiz;

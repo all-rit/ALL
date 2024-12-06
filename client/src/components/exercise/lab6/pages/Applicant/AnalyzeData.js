@@ -1,16 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import Spinner from "../../../../../common/Spinner/Spinner";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import SuccessCheck from "../../../../all-components/SuccessCheck";
 
 const AnalyzeData = () => {
   const { actions } = useMainStateContext();
+  const [success, setSuccess] = useState(false);
+
+  const displaySuccess = () => {
+    setSuccess(!success);
+  };
 
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
     setTimeout(function () {
-      handleContinue();
+      displaySuccess();
+      setTimeout(function () {
+        handleContinue();
+      }, 3000);
     }, 5000);
   }, []);
 
@@ -19,12 +28,17 @@ const AnalyzeData = () => {
   };
 
   return (
-    <div className="center-div">
+    <div className="center-div tw-w-full">
       <h2 className="playthrough__title">
         Reviewing your application, please be patient...
       </h2>
-      <div className="landingpage__row">
-        <Spinner />
+      <div className="tw-w-full tw-flex tw-justify-center">
+        {!success && <Spinner />}
+        {success && (
+          <div className={"tw-m-[10rem]"}>
+            <SuccessCheck />
+          </div>
+        )}
       </div>
     </div>
   );

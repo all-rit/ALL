@@ -20,10 +20,10 @@ class DyslexiaAccessible extends Component {
     const { actions } = this.props;
     return (
       <div>
-        <div className="cognitive_instructions">
+        <div className="tw-sub-title tw-my-3">
           Read the following information about Dyslexia from w3.org
         </div>
-        <div className="cognitive_information">
+        <div className="cognitive_information tw-rounded-lg">
           {!this.state.timerDone ? (
             <div>
               <div className="heading">1.0 Dyslexia</div>

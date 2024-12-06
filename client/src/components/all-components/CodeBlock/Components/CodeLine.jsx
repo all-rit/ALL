@@ -16,7 +16,9 @@ import PropTypes from "prop-types";
  */
 
 const CodeLine = ({ children }) => {
-  return <div className={"tw-flex tw-row-auto"}>{children}</div>;
+  return (
+    <div className={"tw-flex tw-row-auto tw-items-center"}>{children}</div>
+  );
 };
 
 CodeLine.propTypes = {

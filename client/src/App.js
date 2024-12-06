@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga";
 
+/** Body Components **/
 import { default as About } from "./components/body/About";
 import { default as Reading } from "./components/body/Reading/Reading";
-
 import { default as Reinforcement } from "./components/body/Reinforcement";
+import { default as Quiz } from "./components/quiz/components/QuizHandler";
 
-import { Sections } from "./constants/index";
+/** Exercise Components **/
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
@@ -19,27 +20,36 @@ import { default as ExerciseLab9 } from "./components/exercise/lab9/Main";
 import { default as ExerciseLab10 } from "./components/exercise/lab10/Main";
 import { default as ExerciseLab11 } from "./components/exercise/lab11/Main";
 import { default as ExerciseLab12 } from "./components/exercise/lab12/Main";
+import { Sections } from "./constants/index";
 
-import { default as LandingPageBody } from "./components/body/landingpage/index";
-import { default as SiteMap } from "./components/body/landingpage/sitemap";
-import { default as Error } from "./components/body/landingpage/error";
-import { default as Profile } from "./components/body/profilepage/Profile";
-import { default as Imagine } from "./components/imagine23/Main";
-
-import { default as Quiz } from "./components/quiz/components/QuizHandler";
-import { stateChange } from "./helpers/Redirect";
-import Change from "./components/footer/footer";
+/** Persistent Components **/
 import Header from "./components/header/header";
-import { actions as appActions } from "./reducers/lab1/AppReducer";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "./reducers/MainReducer";
-import BodyHeader from "./components/header/BodyHeader";
-import "./assets/stylesheets/main.scss";
-import { Router } from "@reach/router";
+import LabFooter from "./components/footer/LabFooter";
+import MainFooter from "./components/footer/mainFooter";
+import NavigationPane from "./components/all-components/Lab/NavigationPane";
+import SiteAccessibilityButton from "./components/all-components/SiteAccessibilityButton";
+import ALLSnackbar from "./components/all-components/ALLSnackbar";
+
+/** Individual Page Components **/
+import LandingPage from "./pages/landingpage/index";
+import LabsPage from "./pages/labspage/LabsPage";
+import AboutUsPage from "./pages/about-us/AboutUsPage";
+import EducatorResources from "./pages/EducatorResources/EducatorResources";
+import Profile from "./components/body/profilepage/Profile";
+
+/** Miscellaneous Components and Redux **/
+import { default as Error } from "./pages/landingpage/error";
+import { default as SiteMap } from "./pages/landingpage/sitemap";
+import { default as Imagine } from "./components/imagine23/Main";
+import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
-import { globalHistory } from "@reach/router";
-const parse = require("url-parse");
+import { actions as mainActions } from "./reducers/MainReducer";
+import { bindActionCreators } from "redux";
+import "./assets/stylesheets/main.scss";
+import { stateChange } from "./helpers/Redirect";
+import { actions as appActions } from "./reducers/lab1/AppReducer";
 import useMainStateContext from "./reducers/MainContext";
+const parse = require("url-parse");
 
 const mapStateToProps = (state) => {
   return {
@@ -74,7 +84,7 @@ const App = () => {
     });
   }, []);
   const lab = state.main.lab;
-  const body = state.main.body;
+  // const body = state.main.body;
   const isImagine = state.main.isImagine;
 
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -83,17 +93,57 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div className="overflow-x-hidden">
+      <div className="overflow-x-hidden tw-h-lvh">
         <Header />
-        <div className={"mainBody" + (lab !== 0 ? " container" : "")}>
-          {lab !== 0 && (
-            <BodyHeader body={Sections[lab][body].name} labID={lab} />
-          )}
-          <div className="appBody">
-            <Router basepath={process.env.PUBLIC_URL} className="app">
-              <LandingPageBody path="/" />
+        <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5">
+          <div
+            className={
+              "" +
+              (lab !== 0
+                ? "tw-grid tw-grid-cols-6 tw-flex-row tw-w-full tw-h-[40rem] tw-justify-between tw-mt-[10rem] tw-px-[4rem]"
+                : "")
+            }
+          >
+            {lab !== 0 && (
+              <div className={"tw-flex"}>
+                <div>
+                  <NavigationPane labID={lab} title={Sections[lab].fullname} />
+                </div>
+                <div
+                  className={
+                    "tw-h-[20%] tw-w-[98%] tw-bg-primary-yellow tw-absolute tw-top-[2rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
+                  }
+                />
+                <div
+                  className={
+                    "tw-h-[75%] tw-w-[98%] tw-bg-primary-blue tw-absolute tw-top-[15rem] tw-right-0 tw-z-0 tw-rounded-bl-lg tw-flex"
+                  }
+                />
+              </div>
+            )}
+            <Router
+              basepath={process.env.PUBLIC_URL}
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
+                ${
+                  lab !== 0
+                    ? `xs:tw-col-span-8 md:tw-col-span-5 tw-ml-6
+                ${state.main.body === 0 && "tw-mt-[5rem] tw-h-[50%]"}`
+                    : "tw-w-full"
+                }`}
+            >
+              <AboutUsPage path={"/about-us"} />
+              <LandingPage path="/" />
               <SiteMap path="/SiteMap" />
               <Profile path="/Profile" user={state.main.user} />
+              <LabsPage
+                path={"/Labs"}
+                user={state.main.user}
+                actions={actions}
+              />
+              <EducatorResources
+                path={"/EducatorResources"}
+                user={state.main.user}
+              />
               <Error actions={actions} default />
 
               <Imagine
@@ -151,12 +201,17 @@ const App = () => {
             </Router>
           </div>
         </div>
-        <Change
-          context={context}
-          quizCompleted={quizCompleted}
-          setQuizCompleted={setQuizCompleted}
-          isImagine={isImagine}
-        />
+        {lab === 0 && <MainFooter />}
+        <ALLSnackbar />
+        {lab !== 0 && (
+          <LabFooter
+            context={context}
+            quizCompleted={quizCompleted}
+            setQuizCompleted={setQuizCompleted}
+            isImagine={isImagine}
+          />
+        )}
+        <SiteAccessibilityButton />
       </div>
     </>
   );

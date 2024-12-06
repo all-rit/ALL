@@ -34,6 +34,7 @@ create table groups
     "instructorUserID" integer,
     "groupName"        text,
     "createdDate"      timestamp with time zone,
+    "color"            text,
     "isActive"         boolean,
     code               text,
     primary key (id),
@@ -226,6 +227,9 @@ create table labs
     reading               json,
     reinforcement         json,
     quiz                  json,
+    difficulty             integer,
+    "slideshow"             text,
+    "walkthroughVideo"      text,
     "isActive"            boolean default false,
     primary key (id)
 );
@@ -246,8 +250,10 @@ create table professors
     "firstName"   text,
     "lastName"    text,
     title         text,
+    affiliation    text,
     "imageURL"    text,
     socials       json,
+    aboutme       text,
     work          text,
     "datesActive" text,
     primary key (id)
@@ -263,7 +269,7 @@ create table session
 create table team_members
 (
     id            serial,
-    "firstName"   text,
+    "firstName"    text,
     "lastName"    text,
     title         text,
     "imageURL"    text,
@@ -271,7 +277,28 @@ create table team_members
     work          text,
     "datesActive" text,
     "isActive"    boolean default true,
+    aboutMe       text,
+    favoriteLab   integer,
+    labCredits    integer[],
     primary key (id)
+);
+
+create table dev_partners
+(
+    id            serial,
+    "partnerName"   text,
+    "imageURL"      text,
+    "websiteURL"    text,
+    primary key   (id)                    
+);
+
+create table participating_schools
+(
+    id            serial,
+    "schoolName"   text,
+    "imageURL"      text,
+    "websiteURL"    text,
+    primary key   (id)                    
 );
 
 create table userlab
@@ -312,6 +339,7 @@ create table users
     lastinitial char,
     email1      text,
     email2      text,
+    userpfp     text,
     PRIMARY KEY (userid),
     UNIQUE (email1),
     UNIQUE (email2)
@@ -416,7 +444,7 @@ create table lab12_exercise
     primary key ("repairId")
 );
 
-INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
+INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
             fought for easier access for hearing impaired individuals,
@@ -578,7 +606,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "A playing sound that conveys key information"
+        "content": "A playing sound that conveys key information",
+        "explanation": "An audio cue is strictly a sound that doesn’t involve a physical or visual component."
       },
       {
         "val": 0,
@@ -604,7 +633,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "30-40 million people"
+        "content": "30-40 million people",
+        "explanation": "According to the National Institute on Deafness and Other Communication Disorders, approximately 37.5 million American adults have trouble hearing.",
+        "source": "https://www.nidcd.nih.gov/health/age-related-hearing-loss"
       },
       {
         "val": 0,
@@ -630,7 +661,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "From the beginning"
+        "content": "From the beginning",
+        "explanation": "Accessibility should always be considered at the start of development to ensure the best usability."
       },
       {
         "val": 0,
@@ -656,7 +688,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "Information and user interface components must be presentable to users in ways they can perceive."
+        "content": "Information and user interface components must be presentable to users in ways they can perceive.",
+        "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception.",
+        "source": "https://www.w3.org/TR/WCAG21/#perceivable"
       },
       {
         "val": 0,
@@ -677,7 +711,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Yes"
+        "content": "Yes",
+        "explanation": "Users with hearing loss may not perceive audio cues which results in a disadvantage."
       },
       {
         "val": 0,
@@ -688,7 +723,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": false
   }
 ]
-', true),
+', 1, 'ALL_Lab_1_Lecture_Slides.pptx', 'coming soon', true),
  (2, 'Accessibility to Color Blindness', 'Color Blindness', 'Accessibility', '/colorblindness.jpg', 'Learn more about designing the web for color blind individuals.', 'This lab explores accessibility issues involving color blindness. This will be introduced to the user through a simulated color blind lens. The user will then be asked to navigate through the exercise with the lens activated and once without. The user will then be asked to implement accessible colors that will allow every user to have the same experience.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is colorblind, the types of colorblindness that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for those who are colorblind (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to colorblindness (Comprehension)"]', 'Scott Frauenknecht', 'https://all.rit.edu/Lab2/', null, e'In this lab, you will learn about why it is important to create
             software that is accessible to users with visual impairments.
             You will learn about different color vision deficiencies,
@@ -795,7 +830,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "A measurement of the difference between two colors when they are layered on top of each other"
+        "content": "A measurement of the difference between two colors when they are layered on top of each other",
+        "explanation": "Color contrast refers to the distinction between two colors."
       },
       {
         "val": 0,
@@ -826,7 +862,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "Dichrompia"
+        "content": "Dichrompia",
+        "explanation": "Protanopia, Deuteranopia, and Tritonopia are all types of color vision deficiencies, not Dichrompia."
       }
     ],
     "multiChoice": false
@@ -842,7 +879,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "7"
+        "content": "7",
+        "explanation": "According to the WCAG, a contrast ratio of 7:1 is required for normal text.",
+        "source": "https://webaim.org/resources/contrastchecker/"
       },
       {
         "val": 0,
@@ -873,7 +912,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Use a color contrast calculator"
+        "content": "Use a color contrast calculator",
+        "explanation": "A color contrast calculator can calculate the contrast ratio and identify improper color contrast ratios."
       },
       {
         "val": 0,
@@ -899,7 +939,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Light pink placed on black"
+        "content": "Light pink placed on black",
+        "explanation": "Light pink text on a black background results in a contrast ratio of at least 7."
       },
       {
         "val": 0,
@@ -910,8 +951,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": false
   }
 ]
-', true),
-                                                                                                                                                                                                                                                      (3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
+', 1, 'ALL_Lab_2_Lecture_Slides.pptx', 'coming soon', true),
+(3, 'Accessibility with Screen Readers', 'Screen Readers', 'Accessibility', '/screen_reader.jpg', 'Learn more about screen readers.', 'This lab will introduce the different types of vision impairments and the importance of creating software that is accessible to these users utilizing screen readers. Participants will learn how to design a screen reader-friendly interface. In the exercise portion of the lab, they will encounter an interface that is not screen-reader friendly, and learn how to implement an interface that is navigable by screen readers.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has vision impairments, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with vision impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility with screen readers (Comprehension)"]', 'Parth Sane, Saad Khan, Heather Moses, Mark Sternefeld, Christopher Savan', 'https://all.rit.edu/Lab3/', null, e'In this lab, you will learn about why it is important to create software
+
                 that is accessible to users who utilize screenreaders.
                 You will learn about using alt tags,
                 increase your understanding through an interactive module about
@@ -982,7 +1024,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "285 million"
+        "content": "285 million",
+        "explanation": "According to the World Health Organization, approximately 285 million people have visual impairments.",
+        "source": "https://www.emro.who.int/control-and-preventions-of-blindness-and-deafness/announcements/global-estimates-on-visual-impairment.html"
       },
       {
         "val": 0,
@@ -1013,7 +1057,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "JAWS"
+        "content": "JAWS",
+        "explanation": "JAWS is one of the most popular screen readers available."
       },
       {
         "val": 0,
@@ -1029,7 +1074,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Use many headings and subheadings"
+        "content": "Use many headings and subheadings",
+        "explanation": "Screen readers can recognize and voice headings and subheadings, making navigation easier."
       },
       {
         "val": 0,
@@ -1065,7 +1111,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "82%"
+        "content": "82%",
+        "explanation": "According to the World Health Organization, approximately 82% of all blind individuals are 50 years of age or older.",
+        "source": "https://www.emro.who.int/control-and-preventions-of-blindness-and-deafness/announcements/global-estimates-on-visual-impairment.html"
       },
       {
         "val": 0,
@@ -1086,12 +1134,14 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "Use an alt attribute to communicate the function of the image"
+        "content": "Use an alt attribute to communicate the function of the image",
+        "explanation": "Configuring an alt tag enables screen readers to voice the alt tag aloud."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Provide a brief description of the image"
+        "content": "Provide a brief description of the image",
+        "explanation": "Describing images provides another way for users to perceive information if they are unable to see the image."
       },
       {
         "val": 0,
@@ -1101,8 +1151,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     ],
     "multiChoice": true
   }
-]', true),
-                                                                                                                                                                                                                                                      (4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
+]', 2, 'ALL_Lab_3_Lecture_Slides.pptx', 'coming soon', true),
+(4, 'Accessibility to Dexterity', 'Dexterity', 'Accessibility', '/hand.jpg', 'Learn more about designing the web for individuals with motor and dexterity impairments.', 'This lab gives an overview of dexterity impairments and the effects they can have on a person’s ability to use software. In addition, the lab gives several examples of web standards related to dexterity accessibility. Users are immersed in an environment that simulates the experience of a user with a dexterity impairment by having to click a small, moving button. The user then updates the code to make the button large enough to follow accessibility guidelines. Additionally, users also experience filling out a form using only their keyboard. The user then makes updates to the code to make the form accessible to those with dexterity impairments.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has dexterity impairments , the types of dexterity impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with dexterity impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to dexterity (Comprehension)"]', 'Saad Khan, Heather Moses', 'https://all.rit.edu/Lab4/', null, e'In this lab, you will learn about why it is important to create software
+
                 that is accessible to users with dexterity impairments.
                 You will learn about issues related to dexterity,
                 increase your understanding through an interactive module about
@@ -1176,7 +1227,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "Loss of fine control of movement"
+        "content": "Loss of fine control of movement",
+        "explanation": "A dexterity/mobility impairment impacts motion and movement only."
       },
       {
         "val": 0,
@@ -1212,7 +1264,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "All of the above"
+        "content": "All of the above",
+        "explanation": "Assistive technology includes altered keyboards, voice/speech recognition systems, and on-screen keyboard programs."
       }
     ],
     "multiChoice": false
@@ -1238,7 +1291,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "Ensure all functions can be accessed with the keyboard"
+        "content": "Ensure all functions can be accessed with the keyboard",
+        "explanation": "Keyboard navigation is essential for people with dexterity/mobility impairments."
       }
     ],
     "multiChoice": false
@@ -1249,7 +1303,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "True"
+        "content": "True",
+        "explanation": "Many elderly people experience worsening motor capabilities and face difficulties using the web."
       },
       {
         "val": 0,
@@ -1265,7 +1320,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Users may become fatigued when using the assistive technologies"
+        "content": "Users may become fatigued when using the assistive technologies",
+        "explanation": "Assistive technology may be demanding to use and result in fatigue."
       },
       {
         "val": 0,
@@ -1280,13 +1336,14 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "Users may not be able to use the mouse or peripherals"
+        "content": "Users may not be able to use the mouse or peripherals",
+        "explanation": "Users may be unable to use a mouse and may use assistive technologies instead."
       }
     ],
     "multiChoice": true
   }
-]', true),
-                                                                                                                                                                                                                                                      (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
+]', 3, 'ALL_Lab_4_Lecture_Slides.pptx', 'coming soon', true),
+ (5, 'Accessibility to Cognitive Impairments', 'Cognitive Impairments', 'Accessibility', '/cognitiveimpairment.jpg', 'Learn more about designing the web for users with cognitive impairments.', 'This lab introduces cognitive accessibility challenges. The user will be introduced to common cognitive impairments and what difficulties a person with said impairment would experience. During the exercise portion the user will be brought through certain scenarios that are inaccessible to those with said impairments. The user will then make changes to improve accessibility for said scenario.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that has cognitive impairments, the types of cognitive impairments that they have, and their needs for accessible use of software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with cognitive impairments (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to cognitive impairments (Comprehension)"]', 'Saad Khan', 'https://all.rit.edu/Lab5/', null, e'In this lab, you will learn about why it is important to create software
                that is accessible to users who face cognitive impairments.
                You will learn about using clear descriptive headings, handling time driven notifications, and
                creating informative form responses. Afterwards, you will view related media to reinforce the topic and take a quiz
@@ -1430,7 +1487,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "16 million"
+        "content": "16 million",
+        "explanation": "According to the CDC, at least 16 million adults have cognitive impairments.",
+        "source": "https://www.cdc.gov/pcd/issues/2023/23_0182.htm"
       },
       {
         "val": 0,
@@ -1466,7 +1525,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "Working under time constraints"
+        "content": "Working under time constraints",
+        "explanation": "People with cognitive impairments need ample time to complete tasks."
       }
     ],
     "multiChoice": false
@@ -1477,17 +1537,20 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Use proper headings and subheadings"
+        "content": "Use proper headings and subheadings",
+        "explanation": "Proper headings and subheadings allow users to easily navigate websites and find information quickly."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "Clearly define any errors and suggestions to fix them"
+        "content": "Clearly define any errors and suggestions to fix them",
+        "explanation": "According to the WCAG, enabling users to understand their mistake and correct the mistake improves accessibility."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Provide them enough time to read the content"
+        "content": "Provide them enough time to read the content",
+        "explanation": "People with cognitive impairments may need more time to read content."
       },
       {
         "val": 0,
@@ -1503,7 +1566,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Alzheimer\'s"
+        "content": "Alzheimer\'s",
+        "explanation": "Alzheimer’s is an age-related condition that affects thinking."
       },
       {
         "val": 0,
@@ -1513,12 +1577,14 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Dementia"
+        "content": "Dementia",
+        "explanation": "Dementia is another age-related condition that affects thinking and remembering, though dementia can occur in young people as well."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Dyslexia"
+        "content": "Dyslexia",
+        "explanation": "Dyslexia is a language-based learning disability that impacts thinking."
       }
     ],
     "multiChoice": true
@@ -1529,7 +1595,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "Trouble matching letters with the sounds of those letters"
+        "content": "Trouble matching letters with the sounds of those letters",
+        "explanation": "Dyslexic users often struggle with matching letters to their sounds due to difficulty with phonological processing."
       },
       {
         "val": 0,
@@ -1539,7 +1606,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Spelling"
+        "content": "Spelling",
+        "explanation": "Dyslexic users often struggle with spelling due to difficulty with phonological processing and memory."
       },
       {
         "val": 0,
@@ -1550,7 +1618,7 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
     "multiChoice": true
   }
 ]
-', true), (6, 'Ethics of AI', 'Ethics of AI', 'AI', '/ethicsai.jpg', 'Learn more about the ethics behind AI.', 'This lab introduces the ethics behind AI. The user will be introduced to what goes into the development of an AI and what needs to be done to make it ethical. The exercise portion will bring the user through multiple scenarios where the AI has a bias against certain groups. The user will then be asked about the issues bias brings and asks the user to make changes to the AI.', '["LO1: Recognize different ethical challenges in AI (Comprehension)","LO2: Practice consideration of ethics in a AI-related scenario (Application)","LO3: Diagnose ethical implications of choices made by AI (Synthesis)","SLO1 Supplemental: Assess impact and determine appropriate response to ethical scenarios (Synthesis)"]', 'Mark Sternefeld, Jaden Wedner, Kyle Messerle', 'https://all.rit.edu/Lab6/', null, 'In this lab, you will learn about the importance of ethical implications of using Artificial Intelligence (AI). You will learn about issues related to a lack of diversity and human biases in data, increase your understanding through an interactive module about bias in software, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
+', 3, 'ALL_Lab_5_Lecture_Slides.pptx', 'coming soon', true), (6, 'Ethics of AI', 'Ethics of AI', 'AI', '/ethicsai.jpg', 'Learn more about the ethics behind AI.', 'This lab introduces the ethics behind AI. The user will be introduced to what goes into the development of an AI and what needs to be done to make it ethical. The exercise portion will bring the user through multiple scenarios where the AI has a bias against certain groups. The user will then be asked about the issues bias brings and asks the user to make changes to the AI.', '["LO1: Recognize different ethical challenges in AI (Comprehension)","LO2: Practice consideration of ethics in a AI-related scenario (Application)","LO3: Diagnose ethical implications of choices made by AI (Synthesis)","SLO1 Supplemental: Assess impact and determine appropriate response to ethical scenarios (Synthesis)"]', 'Mark Sternefeld, Jaden Wedner, Kyle Messerle', 'https://all.rit.edu/Lab6/', null, 'In this lab, you will learn about the importance of ethical implications of using Artificial Intelligence (AI). You will learn about issues related to a lack of diversity and human biases in data, increase your understanding through an interactive module about bias in software, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
     "piechart":
        {"header":"AI use cases in manufacturing industry percentages worldwide as of 2020",
        "caption":[""],
@@ -1632,7 +1700,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "All of the Above"
+        "content": "All of the Above",
+        "explanation": "AI is used in self-driving cars, chatbots, surveillance, and more."
       }
     ],
     "multiChoice": false
@@ -1648,7 +1717,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "1",
-        "content": "No, AI is measured differently than human intelligence."
+        "content": "No, AI is measured differently than human intelligence.",
+        "explanation": "IQ is only used to measure human intelligence, not AI intelligence."
       },
       {
         "val": 0,
@@ -1679,7 +1749,8 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "2",
-        "content": "Quality Control"
+        "content": "Quality Control",
+        "explanation": "AI is often used in quality control to recognize defects in large amounts of data."
       },
       {
         "val": 0,
@@ -1695,7 +1766,9 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "0",
-        "content": "3 Billion"
+        "content": "3 Billion",
+        "explanation": "According to the ACLU, Clearview AI illegally captured and stored 3 billion facial images.",
+        "source": "https://www.aclu.org/cases/aclu-v-clearview-ai"
       },
       {
         "val": 0,
@@ -1736,13 +1809,14 @@ INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImag
       {
         "val": 1,
         "type": "3",
-        "content": "All of the above"
+        "content": "All of the above",
+        "explanation": "Corporations, government, and society are all responsible for the management of AI."
       }
     ],
     "multiChoice": false
   }
 ]
-', true), (7, 'AI Cybersecurity', 'AI Cybersecurity', 'AI', '/aicybersecurity.jpg', 'Learn more about the basics of AI in cybersecurity.', 'This lab will provide participants with a fundamental understanding of the core aspects of autonomous systems through a cybersecurity lens, which is a significant area of application for AI and Machine Learning. To strengthen this understanding, the participant will progress through a simulation of an autonomous system that will modify the access of sensitive files when security threats are present in the system.', '["LO1: Recognize foundational components of a cybersecurity-focused autonomous system (Comprehension)", "LO2: Use provided elements to demonstrate basic cyber security-focused autonomous systems in action (Application)", "LO3: Compose a minor alteration to an existing cyber security-focused autonomous system and assess its impacts (Evaluation)", "LO4: Recognize and identify the ethical impact of cyber security-focused autonomous systems and decision-making", "SLO1 Supplemental: Construct a basic cyber security-focused autonomous system (Synthesis)"]', 'Kelley Lam, Jonathan Cruz, Domenic Mangano, Janae Moring', 'https://all.rit.edu/Lab7/', null, e'In this lab, you will learn about the basics of AI and Machine Learning
+', 2, 'ALL_Lab_6_Lecture_Slides.pptx', 'coming soon', true), (7, 'AI Cybersecurity', 'AI Cybersecurity', 'AI', '/aicybersecurity.jpg', 'Learn more about the basics of AI in cybersecurity.', 'This lab will provide participants with a fundamental understanding of the core aspects of autonomous systems through a cybersecurity lens, which is a significant area of application for AI and Machine Learning. To strengthen this understanding, the participant will progress through a simulation of an autonomous system that will modify the access of sensitive files when security threats are present in the system.', '["LO1: Recognize foundational components of a cybersecurity-focused autonomous system (Comprehension)", "LO2: Use provided elements to demonstrate basic cyber security-focused autonomous systems in action (Application)", "LO3: Compose a minor alteration to an existing cyber security-focused autonomous system and assess its impacts (Evaluation)", "LO4: Recognize and identify the ethical impact of cyber security-focused autonomous systems and decision-making", "SLO1 Supplemental: Construct a basic cyber security-focused autonomous system (Synthesis)"]', 'Kelley Lam, Jonathan Cruz, Domenic Mangano, Janae Moring', 'https://all.rit.edu/Lab7/', null, e'In this lab, you will learn about the basics of AI and Machine Learning
 through a cybersecurity lens. You will learn the fundamental components
 and impact of AI and Machine Learning in a cybersecurity-focused environment.
 Afterwards, you will view related media to reinforce the topic and take a quiz
@@ -1929,7 +2003,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Supervised learning uses labeled input and output data, while an unsupervised learning does not"
+        "content": "Supervised learning uses labeled input and output data, while an unsupervised learning does not",
+        "explanation": "Machines learn under supervision when they train on structured, labeled data. Machines learn without supervision when they find patterns in unstructured data."
       },
       {
         "val": 0,
@@ -1965,7 +2040,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "3",
-        "content": "Supervised learning"
+        "content": "Supervised learning",
+        "explanation": "Since the data provided was structured and labeled, the machine learning used was supervised learning."
       }
     ],
     "multiChoice": false
@@ -1976,17 +2052,20 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Sensing"
+        "content": "Sensing",
+        "explanation": "All autonomous systems have four components, of which sensing is one of them."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "Perceiving and Understanding"
+        "content": "Perceiving and Understanding",
+        "explanation": "All autonomous systems have four components, of which perceiving and understanding is one of them."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Taking Action"
+        "content": "Taking Action",
+        "explanation": "All autonomous systems have four components, of which taking action is one of them."
       },
       {
         "val": 0,
@@ -1996,7 +2075,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "4",
-        "content": "Making Decisons"
+        "content": "Making Decisons",
+        "explanation": "All autonomous systems have four components, of which making decisions is one of them."
       }
     ],
     "multiChoice": true
@@ -2027,7 +2107,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "4",
-        "content": "All of the above"
+        "content": "All of the above",
+        "explanation": "Since all of the above are personally identifiable information, the autonomous system identified them as sensitive information."
       }
     ],
     "multiChoice": false
@@ -2048,7 +2129,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Machine learning decisions have significant impact on people’s lives"
+        "content": "Machine learning decisions have significant impact on people’s lives",
+        "explanation": "Machine learning can affect people in many different ways, and it’s important to consider the impact."
       },
       {
         "val": 0,
@@ -2059,7 +2141,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
 ]
-', true),
+', 3, 'ALL_Lab_7_Lecture_Slides.pptx', 'coming soon', true),
  (8, 'Algorithmic Bias', 'Algorithmic Bias', 'AI', '/aibias.png', 'Learn more about bias in machine learning.', 'This lab explores machine learning bias and associated guiding principles to mitigate this bias. The user will learn about examples of real-world biased AI models and their impacts. Additionally, the lab demonstrates that an inequitable dataset can result in inappropriate bias in a sentiment analysis scenario.', e'["LO1: Identify how human prejudice infiltrates datasets resulting in biased machine learning systems (Knowledge).",
 "LO2: Classify different types of inequitable bias in machine learning systems (Comprehension).",
 "LO3: Apply standard guiding principles when developing machine learning systems (Application).",
@@ -2255,12 +2337,14 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Biased training data sets"
+        "content": "Biased training data sets",
+        "explanation": "AI learns from training data, so biased training data causes the AI to learn and amplify any bias."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Biased developers"
+        "content": "Biased developers",
+        "explanation": "Developers may be unintentionally biased, but their bias will still impact the AI."
       },
       {
         "val": 0,
@@ -2291,7 +2375,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "3",
-        "content": "All of the above"
+        "content": "All of the above",
+        "explanation": "Due to biased datasets, AI/ML can unfairly treat certain groups. This bias can be minimized by considering ethics when using AI/ML."
       }
     ],
     "multiChoice": false
@@ -2312,7 +2397,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "A plagiarism-checking tool that identifies plagiarized sections of a paper"
+        "content": "A plagiarism-checking tool that identifies plagiarized sections of a paper",
+        "explanation": "A plagiarism-checking tool simply identifies existing text; it likely is not biased."
       },
       {
         "val": 0,
@@ -2338,7 +2424,9 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Human Rights"
+        "content": "Human Rights",
+        "explanation": "According to the IEEE, human rights is one of the eight principles to follow when developing AI.",
+        "source": "https://standards.ieee.org/wp-content/uploads/import/documents/other/ead1e_general_principles.pdf"
       },
       {
         "val": 0,
@@ -2354,22 +2442,26 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Protect the interests and rights of all human demographics (i.e. race, gender, age, etc.)"
+        "content": "Protect the interests and rights of all human demographics (i.e. race, gender, age, etc.)",
+        "explanation": "AI should aim to serve everyone, regardless of their background."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "Increase productivity and economic wellbeing for society (i.e. increasing the GDP)"
+        "content": "Increase productivity and economic wellbeing for society (i.e. increasing the GDP)",
+        "explanation": "AI should aim to better society by increasing productivity and economic growth."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Have more transparent terms and conditions so customers are fully aware of the consent they are giving"
+        "content": "Have more transparent terms and conditions so customers are fully aware of the consent they are giving",
+        "explanation": "Users should fully understand the implications of AI so they can make informed decisions about their usage."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Hold accountable to address potential legal issues with the product"
+        "content": "Hold accountable to address potential legal issues with the product",
+        "explanation": "Although developers may not intentionally conceive legal issues with AI, they should be responsible and accountable for potential legal issues."
       }
     ],
     "multiChoice": true
@@ -2380,7 +2472,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Ensure that the developers creating AI software come from diverse backgrounds"
+        "content": "Ensure that the developers creating AI software come from diverse backgrounds",
+        "explanation": "A group of diverse developers can offer diverse viewpoints, mitigating bias such as implicit confirmation bias."
       },
       {
         "val": 0,
@@ -2390,7 +2483,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Ensure the AI is trained on data that equally represents all members of society"
+        "content": "Ensure the AI is trained on data that equally represents all members of society",
+        "explanation": "Training data should be representative of the real world, which includes all members of society, not just certain demographics."
       },
       {
         "val": 0,
@@ -2401,7 +2495,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
-', true),
+', 3, 'coming soon', 'coming soon', true),
 (9, 'Accessibility to Localization', 'Localization', 'Accessibility', '/localization.jpg', 'Learn more about localization.', 'This lab explores localization and guiding principles to adapt software to meet the needs of various languages, cultures, and locales. The user will practice localizing a webpage by following the steps of the localization process.', e'["LO1: Recognize the significance of the non-English population and their needs for accessible software (Knowledge).",
 "LO2: Examine a software application that doesn’t properly accommodate accessibility to localization in various (Analysis).",
 "LO3: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application).",
@@ -2508,7 +2602,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Translation is a part of the localization process, which includes cultural adaptation beyond language."
+        "content": "Translation is a part of the localization process, which includes cultural adaptation beyond language.",
+        "explanation": "Translation is only one part of localization. Localization also includes adapting images, colors, language direction, and more."
       },
       {
         "val": 0,
@@ -2529,22 +2624,26 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Date and time format"
+        "content": "Date and time format",
+        "explanation": "Different countries have different date and time formats."
       },
       {
         "val": 1,
         "type": "1",
-        "content": "Language direction"
+        "content": "Language direction",
+        "explanation": "While some languages are read left to right, such as English, other languages are read right to left."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Images and icons"
+        "content": "Images and icons",
+        "explanation": "Images and icons can have different meanings in different cultures."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Currency format"
+        "content": "Currency format",
+        "explanation": "Different countries have different currency formats."
       },
       {
         "val": 0,
@@ -2570,7 +2669,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "For accurate data interpretation and financial transactions"
+        "content": "For accurate data interpretation and financial transactions",
+        "explanation": "Inaccurate number formats can lead to costly errors in data interpretation and financial transactions."
       },
       {
         "val": 0,
@@ -2591,7 +2691,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Changing the software’s core functionality"
+        "content": "Changing the software’s core functionality",
+        "explanation": "Localization does not involve changing the software’s core functionality."
       },
       {
         "val": 0,
@@ -2612,7 +2713,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Ensuring the software architecture supports localization."
+        "content": "Ensuring the software architecture supports localization.",
+        "explanation": "Software engineers ensure that localization can happen, whereas designers, marketing specialists, translators, and others typically are responsible for localizing specific content."
       },
       {
         "val": 0,
@@ -2633,7 +2735,7 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": false
   }
 ]
-', true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab introduces machine learning', e'[
+', 2, 'coming soon', 'coming soon', true), (10, 'Neural Networks with Machine Learning', 'Machine Learning', 'AI', '/machinelearning.jpg', 'Learn more about machine learning.', 'This lab introduces machine learning', e'[
     "LO1: Construct a basic neural network using provided components (Synthesis)",
     "LO2: Simulate neural network training (Comprehension).",
     "LO3: Demonstrate bias present in a neural network (Application)."
@@ -2739,7 +2841,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Human Brain"
+        "content": "Human Brain",
+        "explanation": "Neural networks mimic the human brain in order to simulate how humans think."
       },
       {
         "val": 0,
@@ -2755,7 +2858,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Social Media"
+        "content": "Social Media",
+        "explanation": "Neural networks have been used to analyze user behavior and personalize content recommendations."
       },
       {
         "val": 0,
@@ -2765,7 +2869,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Targeted Marketing"
+        "content": "Targeted Marketing",
+        "explanation": "Neural networks have been used to analyze customer data and predict customer behavior."
       },
       {
         "val": 0,
@@ -2781,7 +2886,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Input, Output, Hidden"
+        "content": "Input, Output, Hidden",
+        "explanation": "Similar to the human brain, neural networks consist of the input layer, the output layer, and the hidden layer."
       },
       {
         "val": 0,
@@ -2822,7 +2928,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "3",
-        "content": "Extensive training sets"
+        "content": "Extensive training sets",
+        "explanation": "Since bias is often introduced in training data sets, researchers aim to reduce bias by using extensive training sets."
       }
     ],
     "multiChoice": false
@@ -2833,7 +2940,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "To promote fairness, equity, and unbiased decision-making in AI systems"
+        "content": "To promote fairness, equity, and unbiased decision-making in AI systems",
+        "explanation": "Ethics should always be considered in AI systems, not profit or efficiency."
       },
       {
         "val": 0,
@@ -2853,7 +2961,7 @@ to test your knowledge. Click "Next" to start!', e'{
     ],
     "multiChoice": false
   }
-]', true), (11, 'Accessibility to Literacy', 'Literacy', 'Accessibility', '/literacy.jpg', 'Learn more about designing the web for varying literacy levels.', 'This lab explores considerations related to literacy levels. The user will be introduced to the Fog Index formula and learn how it can be used to understand the literacy level of text. Finally, the user will be introduced to key principles related to improving content readability.', e'["LO1: Recognize the significance of the range of literacy in the population and their needs for accessible software (Knowledge).",
+]', 2, 'coming soon', 'coming soon', true), (11, 'Accessibility to Literacy', 'Literacy', 'Accessibility', '/literacy.jpg', 'Learn more about designing the web for varying literacy levels.', 'This lab explores considerations related to literacy levels. The user will be introduced to the Fog Index formula and learn how it can be used to understand the literacy level of text. Finally, the user will be introduced to key principles related to improving content readability.', e'["LO1: Recognize the significance of the range of literacy in the population and their needs for accessible software (Knowledge).",
 "LO2: Examine a scenario that doesn’t properly accommodate accessibility to literacy in a relatable context (Analysis).",
 "LO3: Use knowledge of accessibility design solutions to construct corrective measures to allow a previously inaccessible scenario to become accessible to appropriate parties (Application).",
 "LO4: Relate to individuals who experience difficulties with accessibility to literacy (Comprehension)."
@@ -2958,7 +3066,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Ease of understanding web content"
+        "content": "Ease of understanding web content",
+        "explanation": "Readability refers to how legible or decipherable something is."
       },
       {
         "val": 0,
@@ -2984,7 +3093,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Legibility, readability, and comprehension"
+        "content": "Legibility, readability, and comprehension",
+        "explanation": "Although design is important, legibility, readability, and comprehension are the most important when creating web content."
       },
       {
         "val": 0,
@@ -3015,17 +3125,21 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "Use straight forward language"
+        "content": "Use straight forward language",
+        "explanation": "Limiting the use of complex words and sentence structures can improve readability."
       },
       {
         "val": 1,
         "type": "2",
-        "content": "Use concise and brief text content"
+        "content": "Use concise and brief text content",
+        "explanation": "Concise and brief text support comprehension among a large audience."
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Target 8th grade reading level"
+        "content": "Target 8th grade reading level",
+        "explanation": "To reach a broader audience, an 8th grade reading level is recommended.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8328867/"
       }
     ],
     "multiChoice": true
@@ -3041,7 +3155,9 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "1",
-        "content": "8th grade"
+        "content": "8th grade",
+        "explanation": "To reach a broader audience, an 8th grade reading level is recommended.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8328867/"
       },
       {
         "val": 0,
@@ -3062,7 +3178,9 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Number of sentences"
+        "content": "Number of sentences",
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the number of sentences.",
+        "source": "https://readable.com/readability/gunning-fog-index/"
       },
       {
         "val": 0,
@@ -3072,18 +3190,22 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "2",
-        "content": "Number of complex words"
+        "content": "Number of complex words",
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the number of complex words.",
+        "source": "https://readable.com/readability/gunning-fog-index/"
       },
       {
         "val": 1,
         "type": "3",
-        "content": "Number of words"
+        "content": "Number of words",
+        "explanation": "Defined by Robert Gunning, the Fog Index formula includes the total number of words.",
+        "source": "https://readable.com/readability/gunning-fog-index/"
       }
     ],
     "multiChoice": true
   }
 ]
-', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement inclusive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not inclusive, and learn how and why to implement an interface that is accessible to gender and identity.',
+', 2, 'coming soon', 'coming soon', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement inclusive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not inclusive, and learn how and why to implement an interface that is accessible to gender and identity.',
 e'[
    "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
    "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
@@ -3188,7 +3310,8 @@ e'[
      {
        "val": 1,
        "type": "1",
-       "content": "A person’s unique perception of who they are"
+       "content": "A person’s unique perception of who they are",
+       "explanation": "While sex is a biological characteristic, gender is a self-identified concept."
      },
      {
        "val": 0,
@@ -3219,7 +3342,8 @@ e'[
      {
        "val": 1,
        "type": "3",
-       "content": "All of the above"
+       "content": "All of the above",
+       "explanation": "Using a person’s preferred name and pronouns creates an inclusive and respectful environment and can decrease anxiety regarding gender expression."
      }
    ],
    "multiChoice": false
@@ -3235,7 +3359,8 @@ e'[
      {
        "val": 1,
        "type": "1",
-       "content": "Adding an ‘other’ text field when asking for gender"
+       "content": "Adding an ‘other’ text field when asking for gender",
+       "explanation": "When asking for a person’s gender in web forms, it’s important to include options in addition to just “male” and “female”."
      },
      {
        "val": 0,
@@ -3256,12 +3381,16 @@ e'[
      {
        "val": 1,
        "type": "0",
-       "content": "Advocates for the importance of using preferred names"
+       "content": "Advocates for the importance of using preferred names",
+       "explanation": "ADP had created HR policies regarding preferred names, making ADP a leading advocate.",
+       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
      },
      {
        "val": 1,
        "type": "1",
-       "content": "Outline the best practices for using preferred names at work"
+       "content": "Outline the best practices for using preferred names at work",
+       "explanation": "ADP has created a list of 10 best practices for using preferred names, including asking if you’re unsure and leading by example.",
+       "source": "https://www.adp.com/spark/articles/2022/06/10-best-practices-for-using-preferred-or-chosen-names-at-work.aspx"
      },
      {
        "val": 0,
@@ -3271,7 +3400,9 @@ e'[
      {
        "val": 1,
        "type": "3",
-       "content": "Become familiar with and consistent with someone’s preferred pronouns"
+       "content": "Become familiar with and consistent with someone’s preferred pronouns",
+       "explanation": "ADP’s HR policies include using everyone’s preferred name and pronouns.",
+       "source": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
      }
    ],
    "multiChoice": true
@@ -3282,7 +3413,9 @@ e'[
      {
        "val": 1,
        "type": "0",
-       "content": "76%"
+       "content": "76%",
+       "explanation": "According to the Human Rights Campaign 2023 LGBTQ+ Youth Report, 76% of youth surveyed want to be open about their gender identity at their future job.",
+       "source": "https://reports.hrc.org/2023-lgbtq-youth-report"
      },
      {
        "val": 0,
@@ -3302,36 +3435,51 @@ e'[
    ],
    "multiChoice": false
  }
-]', true);
+]', 2, 'coming soon', 'coming soon', true);
 
-INSERT INTO public.professors (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive") VALUES (1, 'Daniel', 'Krutz', 'PI', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', null, null),
-(2, 'Samuel', 'Malachowsky', 'PI', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]
-', null, null), (3, 'Hector', 'Torres', 'PI', '/Torres.jpg', '[{"link":"https://www.linkedin.com/in/dr-hector-n-torres-41844539/","network": "sharethis"}]', null, null);
+INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
+VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
+(2, 'Samuel', 'Malachowsky', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]', 'Samuel A. Malachowsky is a certified career Project Manager (PMP) who currently teaches in the Software Engineering Department at the Rochester Institute of Technology. His passion lies in connecting the abstract and technical with the practical-by teaching project values, leadership, and personal professional development.', null, null),
+(3, 'Brian', 'Gouker', 'Advisor', 'NSA Division Chief (Ret), National Security Agency','/Gouker.jpg', '[{"link":"https://www.afcea.org/event/sites/default/files/files/Gouker%20(Bio).pdf","network": "sharethis"}]', 'Brian is the past NSA Visiting Professor and the first-ever Chair for Cyber Studies at the U.S. Army War College. He has held numerous operational, leadership and liaison positions inside NSA and across the federal government. Brian holds technical and advanced degrees from The University of Texas at Austin, Houston Baptist University and the U.S. Army War College. ', null, null),
+(4, 'Juan', 'Zheng', 'Advisor', 'Assistant Professor, Lehigh University','/Zheng.jpg', '[{"link":"https://ed.lehigh.edu/faculty/jzheng","network": "sharethis"}]', 'Dr. Zheng is an assistant professor of the Teaching, Learning, and Technology program. She has a background in both educational technology and educational psychology. Her research focuses on integrating artificial intelligence (AI) and computer simulations into science, technology, engineering, and mathematics education (STEM).', null, null),
+(5, 'Saikat', 'Dutta', 'Advisor', 'Assistant Professor, Cornell University','/Dutta.jpg', '[{"link":"https://www.cs.cornell.edu/~saikatd/","network": "sharethis"}]', 'I am an Assistant Professor in the Department of Computer Science at Cornell University. My research interests are at the intersection of Software Engineering and Machine Learning. I am a member of the growing Software Engineering Group at Cornell. I received my PhD in Computer Science from the University of Illinois Urbana-Champaign in Summer 2023.', null, null);
 
-INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive", "isActive") VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://www.linkedin.com/in/saad-khan23/","network":"linkedin"}]', null, '2019-2021', false)
-,(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-Present', true)
-,(3, 'Christopher', 'Savan', 'Engineer', '/Christopher_Savan.jpg', '[{"link":"https://www.linkedin.com/in/christophersavan/","network":"linkedin"}]', null, '2020-2021', false)
-,(15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-Present', true)
-,(17, 'Garsha', 'Thomas', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-Present', true)
-,(16, 'Destiny', 'Francois', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-Present', true)
-,(5, 'Mark', 'Sternefeld', 'PM, Engineer', '/Mark_Sternefeld.jpg', '[{"link":"https://www.linkedin.com/in/mark-ferenc-sternefeld/","network":"linkedin"}]', null, '2020-Present', true)
-,(6, 'Shantanav', 'Saurav', 'Engineer', '/Shantanav_Saurav.jpg', '[{"link":"https://www.linkedin.com/in/shantanav/","network":"linkedin"}]', null, '2021-2022', false)
-,(7, 'Bashir', 'Jaji', 'Engineer', '/Bashir_Jaji.jpg', '[{"link":"https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/","network":"linkedin"}]', null, '2021-2022', false)
-,(8, 'Andreas', 'Leonard-Calcano', 'Architect, Tech Lead, Engineer', '/Andreas_Leonard_Calcano.jpg', '[{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}]', null, '2021-Present', true)
-,(10, 'Kyle', 'Messerle', 'Outreach', '/Kyle.jpg', '[{"link":"https://www.linkedin.com/in/kyle-messerle/","network":"linkedin"}]', null, '2022-Present', true)
-,(4, 'Su Thit', 'Thazin', 'PM, Engineer, Director of Outreach', '/Su_Thit_Thazin.jpg', '[{"link":"https://www.linkedin.com/in/suthitthazin/","network":"linkedin"}]', null, '2020-2023', false)
-,(9, 'Saige', 'Moon', 'Design', '/default_profile_image.jpg', '[]', null, '2023-Present', true)
-,(18, 'Fabi', 'Marrufo', 'Engineer', '/Fabi.jpg', '[{"link":"https://www.linkedin.com/in/fabi-marrufo/","network":"linkedin"}]', null, '2022-2022', false)
-,(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notcruz/"}]', null, '2023-Present', true)
-,(19, 'Santosh', 'Lamichhane', 'Engineer', '/Santosh.jpg', '[{"link": "https://www.linkedin.com/in/santosh-lamichhane-1b2737195/","network": "linkedin"}]', null, '2022-Present', true)
-,(20, 'Jaden', 'Wedner', 'Engineer', '/Jaden.jpg', '[{"link": "https://www.linkedin.com/in/jaden-w-3a9326190/","network": "linkedin"}]', null, '2022-2023', false)
-,(21, 'Kelley', 'Lam', 'Engineer', '/Kelley.jpg', '[{"link":"https://www.linkedin.com/in/kelley-lam/","network":"linkedin"}]', null, '2022-2022', false)
-,(14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-Present', true)
-,(22, 'Dynasty', 'Chappel', 'Education', '/Dynasti.jpg', '[{"link": "https://www.linkedin.com/in/dynasti-chappell-2085a51b7/","network": "linkedin"}]', null, '2022-Present', true)
-,(23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-Present', false)
-,(24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false)
-,(12, 'Carla', 'Lopez', 'Outreach', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true)
-,(11, 'Domenic', 'Mangano', 'PM, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true)
-,(25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-Present', true)
-,(26, 'Owen', 'Luts', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true)
-,(27, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[]', null,'2024-Present', true);
+INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive", "isActive", aboutMe, favoriteLab, labCredits) VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://www.linkedin.com/in/saad-khan23/","network":"linkedin"}]', null, '2019-2021', false, null, null, '{1, 3, 4, 5}')
+,(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-Present', true, 'I’m a recent graduate of the Software Engineering program at RIT, and I’m currently pursuing an MBA, also at RIT. I’m passionate about inclusion in technology!', 8, '{1, 3, 4, 8, 9, 12}')
+,(3, 'Christopher', 'Savan', 'Engineer', '/Christopher_Savan.jpg', '[{"link":"https://www.linkedin.com/in/christophersavan/","network":"linkedin"}]', null, '2020-2021', false, null, null, '{3}')
+,(15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
+,(17, 'Garsha', 'Thomas', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null)
+,(16, 'Destiny', 'Francois', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null)
+,(5, 'Mark', 'Sternefeld', 'PM, Engineer', '/Mark_Sternefeld.jpg', '[{"link":"https://www.linkedin.com/in/mark-ferenc-sternefeld/","network":"linkedin"}]', null, '2020-2024', false, null, null, '{3, 6, 11}')
+,(6, 'Shantanav', 'Saurav', 'Engineer', '/Shantanav_Saurav.jpg', '[{"link":"https://www.linkedin.com/in/shantanav/","network":"linkedin"}]', null, '2021-2022', false, null, null, null)
+,(7, 'Bashir', 'Jaji', 'Engineer', '/Bashir_Jaji.jpg', '[{"link":"https://www.linkedin.com/in/jaji-bashir-oluwatobiloba-768a52108/","network":"linkedin"}]', null, '2021-2022', false, null, null, null)
+,(8, 'Andreas', 'Leonard-Calcano', 'Architect, Tech Lead, Engineer', '/Andreas_Leonard_Calcano.jpg', '[{"link":"https://www.linkedin.com/in/andres-leonard-calcano/","network":"linkedin"}]', null, '2021-2024', false, null, null, '{8, 9, 11, 12}')
+,(10, 'Kyle', 'Messerle', 'Outreach', '/Kyle.jpg', '[{"link":"https://www.linkedin.com/in/kyle-messerle/","network":"linkedin"}]', null, '2022-2024', false, null, null, '{6}')
+,(4, 'Su Thit', 'Thazin', 'PM, Engineer, Director of Outreach', '/Su_Thit_Thazin.jpg', '[{"link":"https://www.linkedin.com/in/suthitthazin/","network":"linkedin"}]', null, '2020-2023', false, null, null, null)
+,(9, 'Saige', 'Moon', 'Design', '/default_profile_image.jpg', '[]', null, '2023-2024', false, null, null, '{9, 11, 12}')
+,(18, 'Fabi', 'Marrufo', 'Engineer', '/Fabi.jpg', '[{"link":"https://www.linkedin.com/in/fabi-marrufo/","network":"linkedin"}]', null, '2022-2022', false, null, null, null)
+,(13, 'Jonathan', 'Cruz', 'PM, Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/notcruz/"}]', null, '2023-Present', true, '5th year BS/MS student in Software Engineering and Computer Science. Conducting research in Quantum Simulations and Routing Algorithms.', 10, '{7, 10}')
+,(19, 'Santosh', 'Lamichhane', 'Engineer', '/Santosh.jpg', '[{"link": "https://www.linkedin.com/in/santosh-lamichhane-1b2737195/","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
+,(20, 'Jaden', 'Wedner', 'Engineer', '/Jaden.jpg', '[{"link": "https://www.linkedin.com/in/jaden-w-3a9326190/","network": "linkedin"}]', null, '2022-2023', false, null, null, '{6, 8}')
+,(21, 'Kelley', 'Lam', 'Engineer', '/Kelley.jpg', '[{"link":"https://www.linkedin.com/in/kelley-lam/","network":"linkedin"}]', null, '2022-2022', false, null, null, '{7}')
+,(14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-Present', true, 'Upcoming graduate of the Web and Mobile Computing program at RIT, and founding member of the Computing Organization for Multicultural Students at RIT!', 2, null)
+,(22, 'Dynasty', 'Chappel', 'Education', '/Dynasti.jpg', '[{"link": "https://www.linkedin.com/in/dynasti-chappell-2085a51b7/","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
+,(23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-Present', false, null, null, '{8}')
+,(24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false, null, null, null)
+,(12, 'Carla', 'Lopez', 'Outreach', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true, null, null, null)
+,(11, 'Domenic', 'Mangano', 'PM, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true, 'Student. Father. Engineer. Graduating from RIT in Fall 2025, I love building software and improving UI/UX across any platform, and teaching others about the importance of accessibility!', 6, '{7, 8, 9, 10, 11, 12}')
+,(25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-2024', false, null, null, '{12}')
+,(26, 'Owen', 'Luts', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true, 'Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 6, '{12}'),
+ (27, 'Melissa', 'Burisky', 'Engineer', '/Melissa_Burisky.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true, 'Upcoming Computer Science graduate at RIT, and member of the Computing Organization for Multicultural Students.', null, null)
+,(28, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[]', null,'2024-Present', true, 'Junior developer at Accessible Learning Labs, Software Project Management TA, pickleball club member, and Taco Bell lover.', 6, '{12}');
+
+INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VALUES (1, 'Rochester Institute of Technology', '/RIT.png', 'https://www.rit.edu/'), 
+(2, 'Daytona State College', '/Daytona.png', 'https://www.daytonastate.edu/index.html'), (3, 'Embry-Riddle Aeronautical University', '/ERAU.png', 'https://daytonabeach.erau.edu/'),
+(4, 'Syracuse University', '/Syracuse.png', 'https://www.syracuse.edu/'), (5, 'Fayetteville State University', '/UNCFSU.png', 'https://www.uncfsu.edu/'),
+(6, 'Philander Smith University', '/Philander.png', 'https://www.philander.edu/');
+
+INSERT INTO public.participating_schools (id, "schoolName", "imageURL", "websiteURL") VALUES (1, 'University of Florida', '/University_of_Florida.png', 'https://www.ufl.edu/'), 
+(2, 'Siena College', '/Siena.png', 'https://www.siena.edu/'), (3, 'LaGuardia Community College', '/LaGuardia.png', 'https://www.laguardia.edu/'),
+(4, 'Rutgers University', '/Rutgers.png', 'https://www.rutgers.edu/'), (5, 'SUNY Sullivan', '/Sullivan.png', 'https://sunysullivan.edu/'),
+(6, 'Rockland Community College', '/Rockland.png', 'https://sunyrockland.edu/'), (7, 'SUNY Schenectady', '/Schenectady.png', 'https://sunysccc.edu/index.html'),
+(8, 'Binghamton University', '/Binghamton.png', 'https://www.binghamton.edu/');

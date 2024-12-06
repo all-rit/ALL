@@ -15,8 +15,18 @@ const ExtraNav = () => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="javascript:void(0);">Accessibility</NavbarBrand>
+      <Navbar
+        className={"tw-flex tw-flex-row tw-justify-between"}
+        color="light"
+        light
+        expand="md"
+      >
+        <NavbarBrand
+          className={"tw-title tw-text-[1.25rem]"}
+          href="javascript:void(0);"
+        >
+          Accessibility
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>

@@ -6,6 +6,8 @@ import UserService from "../../../services/UserService";
 import UserLabService from "../../../services/UserLabService";
 import EnrolledGroups from "./EnrolledGroups";
 import useMainStateContext from "src/reducers/MainContext";
+import BrandedALLModal from "../../all-components/BrandedALLModal";
+import LoginBody from "../login/LoginBody";
 
 const Profile = () => {
   const { state } = useMainStateContext();
@@ -13,18 +15,19 @@ const Profile = () => {
   const [toDoLabs, setToDoLabs] = useState(null);
   // labRecords is fetching all the records for the labs that the user has made progress in
   const [labRecords, setLabRecords] = useState(null);
+  const [groupsUpdated, setGroupsUpdated] = useState(false);
+  const [instrGroupsUpdated, setInstrGroupsUpdated] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const inProgressLabs = [];
   const completedLabs = [];
-
+  const user = state.main.user;
   const getUserLabs = async () => {
-    if (state.main.user) {
+    if (user) {
       try {
-        const toDo = await UserService.getUserToDoLabs(state.main.user.userid);
+        const toDo = await UserService.getUserToDoLabs(user.userid);
         setToDoLabs(toDo);
-        const records = await UserLabService.getUserLabRecords(
-          state.main.user.userid,
-        );
+        const records = await UserLabService.getUserLabRecords(user.userid);
         setLabRecords(records);
       } catch (error) {
         console.error("Could not get labs", error);
@@ -32,9 +35,19 @@ const Profile = () => {
     }
   };
 
+  const toggleLoginModal = () => {
+    setLoginModalOpen(!loginModalOpen);
+  };
+
   useEffect(() => {
-    getUserLabs();
-  }, [state.main.user]);
+    if (!user) {
+      setTimeout(function () {
+        toggleLoginModal();
+      }, 2000);
+    } else {
+      getUserLabs();
+    }
+  }, [user]);
 
   // go through the lab records fetched from the database and categorize if
   // the lab has been completed by the user or still in progress
@@ -49,18 +62,43 @@ const Profile = () => {
   }
 
   return (
-    <React.Fragment>
+    <div className={"tw-mt-[3rem]"}>
       {state.main.user?.firstname === null ? (
-        <h3>You are currently not logged in.</h3>
+        <div
+          className={
+            "tw-pt-36 tw-flex tw-items-center tw-justify-center tw-h-[30rem]"
+          }
+        >
+          <div
+            className={
+              "tw-bg-primary-blue tw-shadow-lg tw-rounded-lg tw-p-6 tw-m-6"
+            }
+          >
+            <div>
+              <p className={"tw-text-white tw-title"}>
+                You are currently not logged in.
+              </p>
+              <p className={"tw-body-text tw-text-white tw-py-3"}>
+                Please sign in to experience the user profile.
+              </p>
+            </div>
+          </div>
+          <BrandedALLModal
+            isOpen={loginModalOpen}
+            toggle={toggleLoginModal}
+            direction={"row"}
+          >
+            <LoginBody />
+          </BrandedALLModal>
+        </div>
       ) : (
-        <div className="profile container">
+        <div className="md:tw-pt-[3rem] tw-w-full">
           <ProfileHeader
-            user={state.main.user}
+            user={user}
             labRecords={labRecords}
             toDoLabs={toDoLabs}
           />
           <br />
-          <EnrolledGroups user={state.main.user} />
           <br />
           <Labs
             labRecords={labRecords}
@@ -68,15 +106,27 @@ const Profile = () => {
             toDoLabs={toDoLabs}
             completedLabs={completedLabs}
           />
-
-          {/* <div className="header_with_button">
-                    <h4>My Instructing Groups</h4>
-                    <AddModal addMode={"add_instr_grp"} user={props.user}/>
-                </div> */}
-          <InstructingGroups user={state.main.user} />
+          <br />
+          <br />
+          <EnrolledGroups
+            user={state.main.user}
+            labRecords={labRecords}
+            inProgressLabs={inProgressLabs}
+            toDoLabs={toDoLabs}
+            completedLabs={completedLabs}
+            groupsUpdated={groupsUpdated}
+            setGroupsUpdated={setGroupsUpdated}
+          />
+          <br />
+          <InstructingGroups
+            user={state.main.user}
+            setGroupsUpdated={setGroupsUpdated}
+            instrGroupsUpdated={instrGroupsUpdated}
+            setInstrGroupsUpdated={setInstrGroupsUpdated}
+          />
         </div>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

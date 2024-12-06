@@ -3,7 +3,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Button from "@mui/material/Button";
 import { actions as mainActions } from "../../../../reducers/MainReducer";
 import { actions as exerciseActions } from "../../../../reducers/lab5/ExerciseReducer";
 import AppInstructions from "../components/AppInstructions";
@@ -32,38 +31,27 @@ class ExerciseStart extends Component {
     navigate("/Lab3/Exercise/AdvancedExercise");
   }
   render() {
-    // const { user, state, plays } = this.props;
-    const buttonStyleLeft = {
-      marginTop: 10,
-      marginRight: 2,
-    };
-    const buttonStyleRight = {
-      marginTop: 10,
-      marginLeft: 2,
-    };
     return (
       <Fragment>
         <div className="center-div">
+          <h2 className={"tw-title"}> Select Exercise Difficulty</h2>
           <AppInstructions />
-
-          <Button
-            href="#"
+          <button
             onClick={this.handleSubmit}
-            variant={"contained"}
-            color={"primary"}
-            style={buttonStyleLeft}
+            className={
+              "btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow"
+            }
           >
             Beginner Exercise
-          </Button>
-          <Button
-            href="#"
+          </button>
+          <button
             onClick={this.handleSubmitAdv}
-            variant={"contained"}
-            color={"secondary"}
-            style={buttonStyleRight}
+            className={
+              "btn btn-xl tw-shadow-lg tw-bg-secondary-gray tw-mx-2 hover:tw-bg-primary-yellow"
+            }
           >
             Advanced Exercise
-          </Button>
+          </button>
         </div>
       </Fragment>
     );

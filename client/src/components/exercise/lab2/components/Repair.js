@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import classNames from "classnames/bind";
 import RepairService from "../../../../services/lab2/RepairService";
 import { PhotoshopPicker } from "react-color";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 // import "../../lab2/home/popup.css";
 
 class Repair extends Component {
@@ -334,7 +335,12 @@ class Repair extends Component {
                   ) : (
                     <button
                       onClick={changeBackground}
-                      style={{ backgroundColor: this.state.background }}
+                      style={{
+                        backgroundColor: this.state.background,
+                        width: "25px",
+                        height: "25px",
+                        borderRadius: "25px",
+                      }}
                       className={`form ${
                         this.state.errorEqual || this.state.errorDarkBackground
                           ? "form-error-input"
@@ -390,7 +396,12 @@ class Repair extends Component {
                   ) : (
                     <button
                       onClick={changeCorrectColor}
-                      style={{ backgroundColor: this.state.correctColor }}
+                      style={{
+                        backgroundColor: this.state.correctColor,
+                        width: "25px",
+                        height: "25px",
+                        borderRadius: "25px",
+                      }}
                       className={`form ${
                         this.state.errorEqual || this.state.errorDarkBackground
                           ? "form-error-input"
@@ -448,6 +459,9 @@ class Repair extends Component {
                       onClick={changeIncorrectColorOne}
                       style={{
                         backgroundColor: this.state.incorrectColorOne,
+                        width: "25px",
+                        height: "25px",
+                        borderRadius: "25px",
                       }}
                       className={`form ${
                         this.state.errorEqual || this.state.errorDarkBackground
@@ -487,7 +501,7 @@ class Repair extends Component {
                     incorrect option
                   </span>
                 </div>
-                <div className="code_editor__property code_editor__line-background--light">
+                <div className="code_editor__property">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span>color:&nbsp;</span>
                 </div>
@@ -506,6 +520,9 @@ class Repair extends Component {
                       onClick={changeIncorrectColorTwo}
                       style={{
                         backgroundColor: this.state.incorrectColorTwo,
+                        width: "25px",
+                        height: "25px",
+                        borderRadius: "25px",
                       }}
                       className={`form ${
                         this.state.errorEqual || this.state.errorDarkBackground
@@ -542,23 +559,15 @@ class Repair extends Component {
               <p className="code_editor__class">.center &#123;</p>
             </div>
             <div className="code_editor__line">
-              <span className="code_editor__property code_editor__line-background--light">
-                &nbsp;&nbsp;&nbsp;
-              </span>
-              <span className="code_editor__property code_editor__line-background--light">
-                display:{" "}
-              </span>
+              <span className="code_editor__property ">&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__property ">display: </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; flex;
               </span>
             </div>
             <div className="code_editor__line">
-              <span className="code_editor__property code_editor__line-background--light">
-                &nbsp;&nbsp;&nbsp;
-              </span>
-              <span className="code_editor__property code_editor__line-background--light">
-                justify-content:{" "}
-              </span>
+              <span className="code_editor__property ">&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__property ">justify-content: </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; center;
               </span>
@@ -571,34 +580,22 @@ class Repair extends Component {
               <p className="code_editor__class">.header &#123;</p>
             </div>
             <div className="code_editor__line">
-              <span className="code_editor__property code_editor__line-background--light">
-                &nbsp;&nbsp;&nbsp;
-              </span>
-              <span className="code_editor__property code_editor__line-background--light">
-                font-size:{" "}
-              </span>
+              <span className="code_editor__property ">&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__property ">font-size: </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; 30px;
               </span>
             </div>
             <div className="code_editor__line">
-              <span className="code_editor__property code_editor__line-background--light">
-                &nbsp;&nbsp;&nbsp;
-              </span>
-              <span className="code_editor__property code_editor__line-background--light">
-                display:{" "}
-              </span>
+              <span className="code_editor__property ">&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__property ">display: </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; flex;
               </span>
             </div>
             <div className="code_editor__line">
-              <span className="code_editor__property code_editor__line-background--light">
-                &nbsp;&nbsp;&nbsp;
-              </span>
-              <span className="code_editor__property code_editor__line-background--light">
-                justify-content:{" "}
-              </span>
+              <span className="code_editor__property ">&nbsp;&nbsp;&nbsp;</span>
+              <span className="code_editor__property ">justify-content: </span>
               <span className="code_editor__line--white">
                 &nbsp;&nbsp; center;
               </span>
@@ -608,33 +605,20 @@ class Repair extends Component {
             </div>
             {this.state.confirmPopup && (
               <div className="code_editor__line--pink">
-                <span>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                <span className="form-error">
+                <span className="form-error tw-text-center">
                   You've changed {this.state.numberChanged} out of the 4 colors.
                   Press Update to continue or make your changes.
                 </span>
               </div>
             )}
           </div>
-          {this.state.confirmPopup ? (
-            <button
-              onClick={() => this.onFinalSubmit()}
-              type="submit"
-              className="button button--green button--block"
-            >
-              Update
-            </button>
-          ) : (
-            <button
-              onClick={this.onButtonSubmit}
-              type="submit"
-              className="button button--green button--block"
-            >
-              Update
-            </button>
-          )}
+          <div className={"tw-w-full tw-flex tw-justify-center"}>
+            {this.state.confirmPopup ? (
+              <RepairUpdateButton onClick={() => this.onFinalSubmit()} />
+            ) : (
+              <RepairUpdateButton onClick={() => this.onButtonSubmit()} />
+            )}
+          </div>
         </div>
       </div>
     );

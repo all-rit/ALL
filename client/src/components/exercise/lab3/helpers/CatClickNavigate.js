@@ -2,10 +2,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import Button from "@mui/material/Button";
-import { Link } from "@mui/material";
 import { navigate } from "@reach/router";
-import Typography from "@mui/material/Typography";
+import LabButton from "../../../all-components/LabButton";
 
 class CatClickNavigate extends Component {
   constructor(props) {
@@ -29,17 +27,13 @@ class CatClickNavigate extends Component {
       synth.speak(utterThis);
     };
 
-    const typographyStyle = { color: "white" };
-
     return (
       <div id={"catClickMessage"}>
-        <Typography
-          variant={"h6"}
+        <p
+          className={"tw-body-text tw-text-white tw-text-center"}
           aria-label={
             "Cat clicked! Please click the 'next' button to continue."
           }
-          tabIndex={"0"}
-          style={typographyStyle}
           onFocus={(e) =>
             textToSpeech(
               e,
@@ -48,17 +42,13 @@ class CatClickNavigate extends Component {
           }
         >
           Cat clicked! Please click the 'next' button to continue.
-        </Typography>
+        </p>
         <br />
-        <Button
-          component={Link}
+        <LabButton
           onClick={CatClickNavigate.handleOnclick}
-          variant="contained"
-          className="btn btn-second btn-xl text-uppercase  leftButton"
           onFocus={(e) => textToSpeech(e, "Next")}
-        >
-          Next
-        </Button>
+          label={"Next"}
+        />
       </div>
     );
   }
