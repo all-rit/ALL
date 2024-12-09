@@ -246,6 +246,7 @@ const LabsPage = (props) => {
                     onClick={() => {
                       handleSearchChange("ALL_LABS");
                     }}
+                    autoFocus
                   >
                     All Labs
                   </button>

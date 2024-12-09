@@ -202,7 +202,7 @@ const MemberDisplay = (props) => {
                             className="tw-p-0 tw-flex tw-flex-col tw-bg-white tw-rounded-xl tw-min-w-40 tw-w-full tw-border-0 tw-shadow-lg tw-shadow-labGray tw-my-3"
                           >
                             <img
-                              className="tw-object-top tw-object-cover tw-rounded-t-lg tw-min-h-60 tw-max-h-40 tw-w-full tw-pointer-events-none"
+                              className="tw-object-contain tw-rounded-t-lg tw-min-h-60 tw-max-h-40 tw-w-full tw-pointer-events-none"
                               src={`/img/profileImages${member.imageURL}`}
                             />
                             <div className="tw-flex tw-flex-col tw-gap-y-3 tw-text-left tw-p-4 tw-font-poppins">
