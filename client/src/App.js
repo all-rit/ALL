@@ -83,6 +83,7 @@ const App = () => {
     globalHistory.listen((location) => {
       stateChange(actions, location.location.pathname);
     });
+    console.warn(state.main.lab);
   }, []);
   const lab = state.main.lab;
   // const body = state.main.body;
@@ -100,12 +101,12 @@ const App = () => {
           <div
             className={
               "" +
-              (lab !== 0
+              (lab !== 99
                 ? "tw-grid tw-grid-cols-6 tw-flex-row tw-w-full tw-h-[40rem] tw-justify-between tw-mt-[10rem] tw-px-[4rem]"
                 : "")
             }
           >
-            {lab !== 0 && (
+            {lab !== 99 && (
               <div className={"tw-flex"}>
                 <div>
                   <NavigationPane labID={lab} title={Sections[lab].fullname} />
@@ -126,7 +127,7 @@ const App = () => {
               basepath={process.env.PUBLIC_URL}
               className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
                 ${
-                  lab !== 0
+                  lab !== 99
                     ? `xs:tw-col-span-8 md:tw-col-span-5 tw-ml-6
                 ${state.main.body === 0 && "tw-mt-[5rem] tw-h-[50%]"}`
                     : "tw-w-full"
@@ -203,9 +204,9 @@ const App = () => {
             </Router>
           </div>
         </div>
-        {lab === 0 && <MainFooter />}
+        {lab === 99 && <MainFooter />}
         <ALLSnackbar />
-        {lab !== 0 && (
+        {lab !== 99 && (
           <LabFooter
             context={context}
             quizCompleted={quizCompleted}

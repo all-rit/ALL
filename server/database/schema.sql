@@ -445,10 +445,162 @@ create table lab12_exercise
 );
 
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
-VALUES (0, 'Getting Started with Accessible Learning Labs', 'How to Build a Lab', 'Accessibility', '/wrench.png',
-        'Learn about developing a lab for Accessible learning Labs.',
-        'This lab explores the ins-and-outs of inception, to modeling, to development, to completion of a lab at Accessible Learning Labs, along with imperative skills and tools required and other development must-haves.',
-        "learningObjectives", 'Jonathon Cruz, Domenic Mangano, Heather Moses, Melissa Burisky, Jack Barter', 'https://all.rit.edu/Lab0/', null, e'This is the Lab 0 About section.', 'This is the Lab 0 Reading section, and should include tools, ideas and other items required for development', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
+VALUES (0, 'Building Labs with ALL',
+        'Building Labs with ALL', 'Accessibility', '/wrench.jpg',
+        'Learn how do build a lab with Accessible Learning Labs with this interactive tutorial.',
+        'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat',
+        'https://all.rit.edu/Lab1/', null,
+        e'In this lab, you will learn why it is important to create software
+            that is accessible to users with hearing impairments.
+            You will learn how organizations like the National Association of the Deaf (NAD)
+            fought for easier access for hearing impaired individuals,
+            increase your understanding through an interactive module about hearing impairments,
+            view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!',
+        e'{
+    "piechart":
+       {"header":"Welcome to Accessible Learning Labs",
+       "caption":[""],
+       "data":{
+          "labels": [
+                "Deaf (ASL is primary language) [millions]",
+                "Oral Deaf [millions]",
+                "Profound hearing loss [millions]",
+                "Severe hearing loss [millions]",
+                "Moderate hearing loss [millions]",
+                "Mild hearing loss [millions]"
+             ],
+          "datasets": [
+                   {
+                   "label": "Approxiate Deaf and Hard of Hearing Population in the United States",
+                   "borderColor": "black",
+                   "backgroundColor": ["#d73027", "#fc8d59", "#fee090", "#e0f3f8", "#91bfdb", "#4575b4"],
+                   "data": [1.08, 1.08, 3.6, 8.64, 10.8, 10.8],
+                   "borderWidth": "1"
+                   }
+             ]
+          }
+    },
+	"description":{
+		"header":"",
+		"content":""
+	},
+	"body":[
+		{
+			"header":"Accessibility Standards",
+			"type":"",
+			"content":["In order to establish accessibility standards throughout government-run technology applications, allowing for anyone with or without a disability to interact with fundamental government websites, kiosks, and mobile applications, Section 508 of the Rehabilitation Act was established in 1998. This section outlines all of the necessary components of web infrastructure to keep its promise to ensure applications are accessible to all. Section 508.C & D is fundamental to this project, as it outlines the necessity for applications to use alternative approaches to make audio cues more accessible to meet the WCAG AAA standards. This relates directly to this web application, as its main focus is to outline and teach the necessity of creating accessible software to ensure individuals with hearing loss can properly identify prominent information in student’s web applications moving forward."]
+		},
+		{
+			"header":"",
+			"type":"links",
+			"content":[
+				{
+					"name":"Section 508 of the Rehabilitation Act",
+					"link":"https://www.section508.gov/"
+				},
+				{
+					"name":"Section 508.C & D",
+					"link":"https://www.access-board.gov/ict/app-d.html#subpart_c"
+				},
+				{
+					"name":"WCAG AAA standards",
+					"link":"https://www.w3.org/WAI/standards-guidelines/wcag/#versions"
+				}
+			]
+		},
+		{
+			"header":"Validators",
+			"type":"",
+			"content":["Existing validators, such as AChecker, can help to ensure this standard is met. Validators analyze a webpage by inputting a URL and ensure that the page follows the WCAG\'s Perceivable accessibility principle. If software is not accessible to people with hearing loss, this can be in violation of the American with Disabilities Act (ADA) and the individual could sue the company for their inaccessible software."]
+		},
+		{
+			"header":"",
+			"type":"links",
+			"content":[
+				{
+					"name":"AChecker",
+					"link":"https://achecker.achecks.ca/checker/index.php"
+				},
+				{
+					"name":"WCAG\'s Perceivable accessibility principle",
+					"link":"https://www.w3.org/TR/WCAG21/#perceivable"
+				},
+				{
+					"name":"ADA",
+					"link":"https://www.ada.gov/ada_intro.htm"
+				}
+			]
+		},
+		{
+			"header":"NAD vs Netflix Lawsuit",
+			"type":"",
+			"content":["In 2011, the National Association of the Deaf (NAD) filed a lawsuit against Netflix due to the lack of closed captioning in their streaming videos, which is considered as a violation of the ADA. More than half of all Americans use Netflix. Thus it must be made accessible to Deaf and Hard of Hearing viewers. Netflix argues that the ADA only specified that \\"places of public accommodation\\" must be accessible to people with disabilities and its business cannot be considered a \\"place of public accommodation\\" since it is not a physical place. Hence, Netflix is not subject to the ADA. NAD argued that the Internet is not exempt from the ADA, and Netflix is considered a shared or public activity, which makes the ADA applicable. The judge ruled in favor of the NAD\'s argument. Thus, Netflix had to add subtitles for their streaming videos (shown in Figure 1) to make their website accessible for Deaf and Hard of Hearing users."]
+		},
+		{
+			"header":"",
+			"type":"image",
+			"content":{
+				"image":"/netflix_subtitles.jpg",
+				"alt":"Netflix\'s implemented subtitles settings",
+				"sub_caption":"Figure 1",
+				"caption":"Netflix\'s Implemented Captions"
+			}
+		},
+		{
+			"header":"",
+			"type":"links",
+			"content":[
+				{
+					"name":"Netflix Lawsuit",
+					"link":"https://www.3playmedia.com/2015/07/23/nad-v-netflix-ada-lawsuit-requires-closed-captioning-on-streaming-video/"
+				}
+			]
+		},
+        {
+			"header":"Professional Responsibility",
+			"type":"",
+			"content":["As software developers, we have a professional responsibility to uphold the Association for Computing Machinery (ACM) code of ethics, the Convention on the Rights of Persons with Disabilities (CRPD), and our own personal morals. We as individuals must ensure that we contribute to society and to human well-being, acknowledging that all people are stakeholders in computing (ACM 1.1) and that we are fair and take action not to discriminate (ACM 1.4). On top of this, we must take into account the protection and promotion of the human rights of persons with disabilities in all policies and programmes, including our web development (CRPD Article 4.C). In order to ensure we are compliant with all of these professional responsibilities, as well as ensure we as individuals are upholding our own morals, alternative approaches to audio cues must be considered in everything we create for the web, as without it, we are not treating individuals with a hearing loss as a stakeholder in computing, we are discriminating against their use of our applications, and we are not protecting the rights of these individuals to be able to access the internet the same as everyone else. Section 508.C is vital to the continued success of web applications on the internet."]
+		},
+		{
+			"header":"",
+			"type":"links",
+			"content":[
+				{
+					"name":"ACM Code of Ethics",
+					"link":"https://achecker.achecks.ca/checker/index.php"
+				},
+				{
+					"name":"CRPD",
+					"link":"https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities.html"
+				},
+				{
+					"name":"ACM 1.1",
+					"link":"https://www.acm.org/code-of-ethics#h-1.1-contribute-to-society-and-to-human-well-being,-acknowledging-that-all-people-are-stakeholders-in-computing."
+				},
+				{
+					"name":"ACM 1.4",
+					"link":"https://www.acm.org/code-of-ethics#h-1.4-be-fair-and-take-action-not-to-discriminate."
+				},
+				{
+					"name":"CRPD Article 4.C",
+					"link":"https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities/article-4-general-obligations.html"
+				},
+				{
+					"name":"Section 508.C",
+					"link":"https://www.access-board.gov/ict/app-d.html#subpart_c"
+				}
+			]
+		}
+	],
+	"footer":{
+		"links":[
+			{
+				"name":"Hearing Loss Association of America",
+				"link":"https://www.nchearingloss.org"
+			}
+		]
+	}
+}', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
 ', e'[
   {
     "question": "What is an audio cue?",
@@ -477,7 +629,108 @@ VALUES (0, 'Getting Started with Accessible Learning Labs', 'How to Build a Lab'
     ],
     "multiChoice": false
   },
-]', 0, 'ALL_Lab_0_Lecture_Slides.pptx', 'coming soon', true),
+  {
+    "question": "How many people (aged 18 and over) with hearing loss are there in the United States?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "20-30 million people"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "30-40 million people",
+        "explanation": "According to the National Institute on Deafness and Other Communication Disorders, approximately 37.5 million American adults have trouble hearing.",
+        "source": "https://www.nidcd.nih.gov/health/age-related-hearing-loss"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "40-50 million people"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "50-60 million people"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "When should accessibility be considered in the development process?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "At the end"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "From the beginning",
+        "explanation": "Accessibility should always be considered at the start of development to ensure the best usability."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Whenever the developer feels it\'s necessary"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Only if it\'s needed for the project"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What does the \'Perceivable\' accessibility principle mean?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "User interface components and navigation must be operable."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Information and user interface components must be presentable to users in ways they can perceive.",
+        "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception.",
+        "source": "https://www.w3.org/TR/WCAG21/#perceivable"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Information and the operation of user interface must be understandable."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Do users with hearing loss have a disadvantage when they use applications that utilize audio cues?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Yes",
+        "explanation": "Users with hearing loss may not perceive audio cues which results in a disadvantage."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "No"
+      }
+    ],
+    "multiChoice": false
+  }
+]
+', 1, 'ALL_Lab_1_Lecture_Slides.pptx', 'coming soon', true),
        (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
