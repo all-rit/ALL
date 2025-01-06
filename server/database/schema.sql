@@ -444,7 +444,41 @@ create table lab12_exercise
     primary key ("repairId")
 );
 
-INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
+INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
+VALUES (0, 'Getting Started with Accessible Learning Labs', 'How to Build a Lab', 'Accessibility', '/wrench.png',
+        'Learn about developing a lab for Accessible learning Labs.',
+        'This lab explores the ins-and-outs of inception, to modeling, to development, to completion of a lab at Accessible Learning Labs, along with imperative skills and tools required and other development must-haves.',
+        "learningObjectives", 'Jonathon Cruz, Domenic Mangano, Heather Moses, Melissa Burisky, Jack Barter', 'https://all.rit.edu/Lab0/', null, e'This is the Lab 0 About section.', 'This is the Lab 0 Reading section, and should include tools, ideas and other items required for development', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
+', e'[
+  {
+    "question": "What is an audio cue?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "A vibration that conveys key information"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "A playing sound that conveys key information",
+        "explanation": "An audio cue is strictly a sound that doesn’t involve a physical or visual component."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "A visual indicator that conveys key information"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+]', 0, 'ALL_Lab_0_Lecture_Slides.pptx', 'coming soon', true),
+       (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
             fought for easier access for hearing impaired individuals,

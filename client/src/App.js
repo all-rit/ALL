@@ -8,6 +8,7 @@ import { default as Reinforcement } from "./components/body/Reinforcement";
 import { default as Quiz } from "./components/quiz/components/QuizHandler";
 
 /** Exercise Components **/
+import { default as ExerciseLab0 } from "./components/exercise/lab0/Main";
 import { default as ExerciseLab1 } from "./components/exercise/lab1/Main";
 import { default as ExerciseLab2 } from "./components/exercise/lab2/Main";
 import { default as ExerciseLab3 } from "./components/exercise/lab3/Main";
@@ -167,6 +168,7 @@ const App = () => {
                 isImagine={isImagine}
               />
 
+              <ExerciseLab0 path="/Lab0/Exercise" user={state.main.user} />
               <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
               <ExerciseLab2
                 path="/Lab2/Exercise"
