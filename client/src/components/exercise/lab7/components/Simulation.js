@@ -49,7 +49,6 @@ const Simulation = () => {
 
   useEffect(() => {
     if (counter >= 0) {
-      console.log(state);
       if (counter < files.length) {
         switch (files[counter].result) {
           case FILE_PROTECTED:
@@ -280,11 +279,11 @@ const Simulation = () => {
   };
 
   return (
-    <>
+    <div className={"tw-w-full"}>
       <MessageModal />
       <div className="">
         {/* Header */}
-        <div className={"tw-flex tw-justify-between"}>
+        <div className={"tw-flex tw-justify-between tw-title"}>
           {/* Round Tracker */}
           <div>
             <h4 className="tw-font-bold">
@@ -308,7 +307,7 @@ const Simulation = () => {
           </div>
         </div>
         {/* Body */}
-        <div>
+        <div className={"tw-w-1/2"}>
           {/* Threat Message */}
           <div
             className={"tw-flex tw-items-center tw-justify-center tw-w-full"}
@@ -325,7 +324,7 @@ const Simulation = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

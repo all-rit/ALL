@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import API from "./API";
 
-const groupService = {
+const GroupService = {
   getGroupAssignedLabs: (groupID) => {
     return API.get(
       process.env.REACT_APP_SERVER_URL + `/group/${groupID}/labs`,
@@ -38,14 +38,28 @@ const groupService = {
       },
     );
   },
-  createGroup: (userID, groupName) => {
-    return API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/group/create`,
-      {
-        userID,
-        groupName,
-      },
-    ).then((response) => response.json());
+  createGroup: async (userID, groupName, color) => {
+    try {
+      const response = await API.postWithBody(
+        `${process.env.REACT_APP_SERVER_URL}/group/create`,
+        {
+          userID,
+          groupName,
+          color,
+        },
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Request failed: ${response.status} - ${errorText}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error, "Could not create group.");
+      throw error;
+    }
   },
   addGroupLab: (groupID, labID) => {
     return API.postWithBody(
@@ -73,15 +87,16 @@ const groupService = {
       },
     );
   },
-  updateGroup: (groupID, groupName) => {
+  updateGroup: (groupID, groupName, groupColor) => {
     return API.putWithBody(
       process.env.REACT_APP_SERVER_URL + `/group/${groupID}/update`,
       {
         groupID,
         groupName,
+        groupColor,
       },
     );
   },
 };
 
-export default groupService;
+export default GroupService;

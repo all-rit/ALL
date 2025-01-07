@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Prism from "prismjs";
 import { navigate } from "@reach/router";
-import Button from "@mui/material/Button";
-import { Paper } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
 import { amber, green, red, yellow } from "@mui/material/colors";
@@ -19,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import RepairService from "../../../../services/lab4/RepairService";
 import { EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -149,23 +148,20 @@ const CodeChangeBlocks = () => {
     }
   }, []);
 
-  const paperStyle = {
-    marginLeft: "10px",
-    marginRight: "10px",
-    marginTop: "20px",
-  };
-
   return (
     <div>
-      <h2 className="playthrough__title">Repair</h2>
-      <p className="app__instructions">
-        The intent of this code repair is to allow people who navigate
-        sequentially through content more direct access to the primary content
-        of the Web page and skip over repeated blocks. These include but are not
-        limited to navigation links, heading graphics, and advertising frames.
-      </p>
+      <div className={"tw-p-3"}>
+        <h2 className="tw-title tw-text-left tw-pb-3">Repair</h2>
+        <p className="tw-body-text tw-text-left">
+          The intent of this code repair is to allow people who navigate
+          sequentially through content more direct access to the primary content
+          of the Web page and skip over repeated blocks. These include but are
+          not limited to navigation links, heading graphics, and advertising
+          frames.
+        </p>
+      </div>
       <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
-        <Paper style={paperStyle}>
+        <div className={"tw-rounded-lg"}>
           <pre>
             <code className="language-html">
               {`/* add the following in the input: <a className="skip-main" href="#main">Skip to main content</a> */
@@ -196,17 +192,8 @@ const CodeChangeBlocks = () => {
                       `}
             </code>
           </pre>
-        </Paper>
-        <br />
-        <br />
-        <Button
-          type={"submit"}
-          aria-label={"Update Code"}
-          variant={"contained"}
-          color={"primary"}
-        >
-          Update Code
-        </Button>
+        </div>
+        <RepairUpdateButton disabled={!textValue} />
       </form>
       <Snackbar
         anchorOrigin={{

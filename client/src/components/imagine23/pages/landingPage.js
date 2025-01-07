@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
 import { navigate } from "@reach/router";
 import React from "react";
 import useScroll from "../../../use-hooks/useScroll";

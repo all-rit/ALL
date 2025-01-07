@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import LabButton from "../../../../../all-components/LabButton";
 
 /*
 Component for the home reset button
@@ -11,17 +12,7 @@ const HomeReset = ({ exerciseEnded, changeExerciseColors, colors }) => {
     exerciseEnded();
   };
 
-  return (
-    <div>
-      <button
-        type="submit"
-        className="backButton btn btn-second btn-xl text-uppercase "
-        onClick={handleClick}
-      >
-        Back
-      </button>
-    </div>
-  );
+  return <LabButton type="submit" onClick={handleClick} label={"Back"} />;
 };
 
 export default HomeReset;

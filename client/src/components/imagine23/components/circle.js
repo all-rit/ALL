@@ -1,8 +1,7 @@
-/* eslint-disable brace-style */
-/* eslint-disable react/prop-types */
 import React from "react";
 import Countdown from "react-countdown";
 import "./exerciseStyle.css";
+import PropTypes from "prop-types";
 
 // Object for holding the current background color of the Circle
 // Used to fade to black on each circle
@@ -51,6 +50,12 @@ const Circle = ({ color, clickable, onClick }) => {
       <span className="circle" style={{ backgroundColor: `${color}` }}></span>
     );
   }
+};
+
+Circle.propTypes = {
+  color: PropTypes.string,
+  clickable: PropTypes.boolean,
+  onClick: PropTypes.func,
 };
 
 export default Circle;

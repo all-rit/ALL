@@ -24,3 +24,15 @@ exports.getAllAlumni = () => {
     raw: true,
   });
 };
+
+exports.getAllDevPartners = () => {
+  return db.DevPartners.findAll({
+    raw: true,
+  });
+};
+
+exports.getAllSchools = () => {
+  return db.Schools.findAll({
+    raw: true,
+  });
+};

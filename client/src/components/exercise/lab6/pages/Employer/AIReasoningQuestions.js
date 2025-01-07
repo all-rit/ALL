@@ -53,9 +53,10 @@ const AIReasoningQuestions = () => {
 
   return (
     <div className="center-div">
-      <h2 className="playthrough__title">AI Reasoning Survey</h2>
+      <h2 className="tw-title tw-text-left">AI Reasoning Survey</h2>
 
       <QuestionsHandler
+        isFinalQuiz={true}
         questions={aiReasoningData}
         handleContinue={handleContinue}
       />

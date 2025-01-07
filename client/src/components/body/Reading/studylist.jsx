@@ -10,7 +10,11 @@ const StudyList = ({ data }) => {
     <>
       <ul className="study__list">
         {data.map((text, index) => {
-          return <li key={index}>{text}</li>;
+          return (
+            <li className={"tw-body-text"} key={index}>
+              {text}
+            </li>
+          );
         })}
       </ul>
     </>

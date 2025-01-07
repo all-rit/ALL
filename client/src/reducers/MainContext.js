@@ -21,6 +21,9 @@ const MainStateContext = createContext({
     setLab: () => {},
     updateUser: () => {},
     updateUserState: () => {},
+    setIsImagine: () => {},
+    showSnackbar: () => {},
+    hideSnackbar: () => {},
   },
 });
 
@@ -58,6 +61,7 @@ export const MainContextProvider = ({ children }) => {
    * @property {Function} setLab - Sets the lab value in the state.
    * @property {Function} updateUser - Updates the user value in the state.
    * @property {Function} updateUserState - Updates the user state value in the state.
+   * @property {Function} setIsImagine - Set the value of imagine to true or false, allowing special actions.
    */
   const actions = {
     setBody: (newBody) =>
@@ -82,6 +86,20 @@ export const MainContextProvider = ({ children }) => {
       dispatch({
         type: types.UPDATE_USER_STATE,
         payload: { userState: newUserState },
+      }),
+    setIsImagine: (isImagine) =>
+      dispatch({
+        type: types.SET_IS_IMAGINE,
+        payload: { isImagine: isImagine },
+      }),
+    showSnackbar: (message, notificationType) =>
+      dispatch({
+        type: types.SHOW_SNACKBAR,
+        payload: { message: message, notificationType: notificationType },
+      }),
+    hideSnackbar: () =>
+      dispatch({
+        type: types.HIDE_SNACKBAR,
       }),
   };
 

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { navigate } from "@reach/router";
 import Prism from "prismjs";
-import { Paper, Button, Snackbar } from "@mui/material";
+import { Snackbar } from "@mui/material";
 import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
 import { amber, green, red, yellow } from "@mui/material/colors";
 import SnackbarContent from "@mui/material/SnackbarContent";
@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import RepairService from "../../../../services/lab4/RepairService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import RepairUpdateButton from "../../../all-components/RepairUpdateButton";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -211,23 +212,20 @@ const CodeChangeTarget = () => {
     return obj ? obj.dispatchEvent(eventInit) : false;
   };
 
-  const paperStyle = {
-    marginLeft: "10px",
-    marginRight: "10px",
-    marginTop: "20px",
-  };
-  console.log("in codechangetarget");
   return (
     <div>
-      <h2 className="playthrough__title">Repair</h2>
-      <p className="app__instructions">
-        The intent of this code repair is to ensure that target sizes are large
-        enough for users to easily activate them, especially those with limited
-        dexterity. Mice and similar pointing devices can be hard to use for
-        these users, and a larger target will help them activate the target.
-      </p>
+      <div className={"tw-p-4"}>
+        <h2 className="tw-title tw-text-left">Repair</h2>
+        <p className="tw-body-text tw-font-medium tw-text-left">
+          The intent of this code repair is to ensure that target sizes are
+          large enough for users to easily activate them, especially those with
+          limited dexterity. Mice and similar pointing devices can be hard to
+          use for these users, and a larger target will help them activate the
+          target.
+        </p>
+      </div>
       <form onSubmit={handleSubmit} noValidate autoComplete={"off"}>
-        <Paper style={paperStyle}>
+        <div className={"code_editor__content"}>
           <pre>
             <code className="language-css">
               {`
@@ -243,6 +241,9 @@ const CodeChangeTarget = () => {
               placeholder="20"
               onChange={handleChange}
               aria-label={"Please set min width to 40px"}
+              className={
+                "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+              }
             />
             <code className="language-css">{` px; /*Set to at least 44px*/
   min-height:`}</code>{" "}
@@ -253,6 +254,9 @@ const CodeChangeTarget = () => {
               placeholder="17"
               onChange={handleChange1}
               aria-label={"Please set min height to 40px"}
+              className={
+                "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+              }
             />
             <code className="language-css">
               {` px; /*Set to at least 44px*/
@@ -261,17 +265,10 @@ const CodeChangeTarget = () => {
 `}
             </code>
           </pre>
-        </Paper>
+        </div>
         <br />
         <br />
-        <Button
-          type={"submit"}
-          aria-label={"Update Code"}
-          variant={"contained"}
-          color={"primary"}
-        >
-          Update Code
-        </Button>
+        <RepairUpdateButton disabled={!state.textValue || !state.textValue1} />
       </form>
       <Snackbar
         anchorOrigin={{

@@ -143,7 +143,7 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "jest-environment-node",
+  testEnvironment: "jest-environment-jsdom",
 
   // Options that will be passed to the testEnvironmentFt
   // testEnvironmentOptions: {},
@@ -175,7 +175,9 @@ const config = {
     "src/components/exercise/lab1/components/Exercise.js",
   ],
   moduleNameMapper: {
-    "\\.(mp3|wav)$": "test/__mocks__/fileMock.js",
+    "\\.(mp3|wav|jpg|jpeg|png|gif|webp|svg|css)$":
+      "<rootDir>/test/__mocks__/fileMock.js",
+    "^src/(.*)$": "<rootDir>/src/$1",
   },
 
   // A map from regular expressions to paths to transformers

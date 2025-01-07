@@ -2,16 +2,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import {
-  Button,
-  Link,
-  AppBar,
-  Toolbar,
-  Paper,
-  Typography,
-} from "@mui/material";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
+import LabButton from "../../../../all-components/LabButton";
 
 class ExerciseInstructions extends Component {
   handleSubmit() {
@@ -30,78 +23,58 @@ class ExerciseInstructions extends Component {
       synth.speak(utterThis);
     };
 
-    const paperStyle = {
-      marginLeft: "10px",
-      marginRight: "10px",
-      marginTop: "20px",
-    };
     return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Typography variant={"h4"} aria-label={"Instructions"}>
-              Instructions{" "}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Paper style={paperStyle} tabIndex={"0"}>
-          <Typography
-            variant={"h6"}
-            color={"inherit"}
-            paragraph={true}
-            aria-label={
-              "You clicked on an image." +
-              " However, without the ability to see, it may be\n" +
-              " difficult to decipher what these images represent.\n" +
-              " Please make sure you are using Google Chrome." +
-              "Please click the " +
-              "'next' button to experience what a similar, simple activity might look like to someone who is " +
-              "blind." +
-              "For the following activity, please ensure that you have volume enabled on your device." +
-              "Click on the button below to test the functionality of the screen reader."
-            }
-            tabIndex={"0"}
+      <div className={"tw-p-10"}>
+        <h2
+          className={"tw-title tw-text-left tw-mb-10"}
+          aria-label={"Instructions"}
+        >
+          Instructions{" "}
+        </h2>
+        <div>
+          <p
+            aria-label="You clicked on an image. However, without the ability to see, it may
+            be difficult to decipher what these images represent. Please make
+            sure you are using. For the following activity, please ensure that you have volume
+            enabled on your device. Click on the button below to test the functionality of the screen
+            reader."
+            className={"tw-body-text tw-font-medium tw-text-left tw-w-11/12"}
           >
             You clicked on an image. However, without the ability to see, it may
             be difficult to decipher what these images represent. Please make
             sure you are using
-            <Link
-              component={Link}
+            <a
               target="_blank"
               href={"https://www.google.com/chrome/"}
+              rel="noreferrer"
+              className={"tw-text-primary-blue"}
             >
               {" "}
               Google Chrome.{" "}
-            </Link>
+            </a>
             For the following activity, please ensure that you have volume
             enabled on your device.
             <br />
             <br />
-            Click on the button below to test the functionality of the screen
-            reader.
-          </Typography>
+            Click on the <strong> Test </strong> button below to test the
+            functionality of the screen reader, or the <strong> Next </strong>{" "}
+            button to move on.
+          </p>
           <br />
-          <div className="container text-center">
-            <button
-              className="btn btn-second btn-xl text-uppercase  mx-auto"
+          <div className={"tw-flex tw-gap-4 tw-w-full tw-justify-center"}>
+            <LabButton
               key="repair"
               aria-label={"Test"}
               onClick={(e) => textToSpeech(e, "Test")}
-            >
-              Test
-            </button>
+              label={"Test"}
+            />
+            <LabButton
+              onClick={this.handleSubmit}
+              aria-label={"Next"}
+              label={"next"}
+            />
           </div>
-          <br />
-        </Paper>
-        <br />
-        <Button
-          onClick={this.handleSubmit}
-          variant={"contained"}
-          className="btn btn-second btn-xl text-uppercase  leftButton"
-          aria-label={"Next"}
-        >
-          Next
-        </Button>
+        </div>
       </div>
     );
   }

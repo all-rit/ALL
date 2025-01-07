@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 
 const ExpressionStart = ({ setCount }) => {
   const handleNext = () => {
@@ -32,6 +32,10 @@ const ExpressionStart = ({ setCount }) => {
       </button>
     </div>
   );
+};
+
+ExpressionStart.propTypes = {
+  setCount: PropTypes.func,
 };
 
 export default ExpressionStart;

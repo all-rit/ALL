@@ -11,6 +11,7 @@ import {
 import "highlight.js/styles/atom-one-dark-reasonable.css";
 import "../../../../../assets/stylesheets/components/CodeBlock.css";
 import PropTypes from "prop-types";
+import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
 
 class BuildingAICodeBlock extends Component {
   constructor(props) {
@@ -406,13 +407,11 @@ class BuildingAICodeBlock extends Component {
             </div>
           </div>
         </div>
-        <button
+        <RepairUpdateButton
           onClick={this.validateRepair.bind(this)}
           type="submit"
-          className="button button--green button--block"
-        >
-          Update
-        </button>
+          disabled={!leftValue || !rightValue}
+        />
       </div>
     );
   }

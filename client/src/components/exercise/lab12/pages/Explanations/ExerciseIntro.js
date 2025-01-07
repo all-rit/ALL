@@ -1,0 +1,63 @@
+// Exercise Instructions (Page #1)
+
+import React from "react";
+import useMainStateContext from "src/reducers/MainContext";
+import { navigate } from "@reach/router";
+import { useEffect } from "react";
+import { EXERCISE_PLAYING } from "src/constants/index";
+import { ExerciseService } from "../../../../../services/lab12/ExerciseService";
+
+const ExerciseIntro = () => {
+  const { actions, state } = useMainStateContext();
+
+  useEffect(() => {
+    actions.updateUserState(EXERCISE_PLAYING);
+  }, []);
+
+  const startExercise = async () => {
+    const body = {
+      userid: state.main.user.userid,
+      isFormRepairComplete: false,
+      isDatabaseRepairComplete: false,
+      isExerciseComplete: false,
+      hasViewed: true,
+    };
+    await ExerciseService.submitExercise(body);
+  };
+  const handleContinue = () => {
+    startExercise();
+    navigate("/Lab12/Exercise/GraduationApplication");
+  };
+
+  return (
+    <div className="center-div">
+      <h1 className={"tw-title tw-text-left"}>Exercise Start</h1>
+      <div className="guidance margin-bottom-2">
+        <p className="tw-body-text tw-text-left tw-py-6">
+          You just graduated from ALL University! Congratulations on completing
+          your degree! Now that you have finished, you will apply for graduation
+          and transition from being a student to an alum.
+        </p>
+        <p className="tw-body-text tw-text-left">
+          In this exercise, you will enter your personal information in a short
+          form. This information will appear on your diploma as well as an
+          alumni newsletter. Then, we will see how to improve the form.
+        </p>
+      </div>
+      <div className="tw-body-text tw-text-center tw-pb-6">
+        Click the <strong>Start</strong> button to begin the exercise!
+      </div>
+      <div className="tw-flex tw-justify-evenly">
+        <button
+          className="btn btn-primary text-black btn-xl text-uppercase"
+          onClick={handleContinue}
+          key="start"
+        >
+          Start
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ExerciseIntro;

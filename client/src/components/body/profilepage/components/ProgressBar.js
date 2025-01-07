@@ -1,30 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import ProgressBarBar from "./ProgressBarBar";
+import PropTypes from "prop-types";
 class ProgressBar extends Component {
   render() {
-    const { barData, percentage, labID } = this.props;
+    const { barData, labID, inTable, hasLabel } = this.props;
     const total = barData.length;
-
-    function totalCompleted(barData) {
-      let totalCompleted = 0;
-      barData.forEach((data) => {
-        if (data[1] !== null) {
-          totalCompleted++;
-        }
-      });
-      return totalCompleted;
-    }
-    const completed = totalCompleted(barData);
-
-    function renderBars() {
-      return barData.map((data, index) => {
-        return (
-          <ProgressBarBar key={index} data={data} index={index} labID={labID} />
-        );
-      });
-    }
 
     if (total === 0) {
       return (
@@ -36,22 +16,32 @@ class ProgressBar extends Component {
       );
     } else {
       return (
-        <ul className="progressBarContainer">
-          <ul className="progressBar">{renderBars()}</ul>
-          {percentage === true ? (
-            <li className="progressBar__info">
-              {((completed / total) * 100).toFixed(0)}% completed.
-            </li>
-          ) : (
-            <li className="progressBar__info">
-              {" "}
-              {completed} out of {total} modules completed.
-            </li>
-          )}
+        <ul
+          className={`progressBarContainer ${inTable ? "tw-flex-row tw-justify-center tw-ml-[7%]" : "tw-absolute tw-top-9"}`}
+        >
+          <div className={`progressBar ${inTable ? "tw-w-full" : ""}`}>
+            {barData.map((data, index) => {
+              return (
+                <ProgressBarBar
+                  key={index}
+                  data={data}
+                  index={index}
+                  labID={labID}
+                  hasLabel={hasLabel}
+                />
+              );
+            })}
+          </div>
         </ul>
       );
     }
   }
 }
 
+ProgressBar.propTypes = {
+  barData: PropTypes.array,
+  labID: PropTypes.number,
+  inTable: PropTypes.bool,
+  hasLabel: PropTypes.bool,
+};
 export default ProgressBar;

@@ -10,18 +10,31 @@ module.exports = (sequelize, DataTypes) => {
         userid: {
           type: DataTypes.TEXT,
         },
-        experientialMain: {
+        section: {
+          type: DataTypes.ENUM,
+          values: ['experiential',
+            'discomfortCountPOC',
+            'discomfortCountNonPOC',
+            'control'],
+        },
+        study: {
           type: DataTypes.JSON,
         },
-        experientialProtanopia: {
+        preSurvey: {
           type: DataTypes.JSON,
         },
-        discomfortCount: {
+        postSurvey: {
           type: DataTypes.JSON,
         },
-        // avatar: {type: DataTypes.JSON},
-        // squad: {type: DataTypes.JSON},
-        // lobbyMessages: {type: DataTypes.JSON},
+        readMoreCount: {
+          type: DataTypes.INTEGER,
+        },
+        readMoreTimeElapsed: {
+          type: DataTypes.JSON,
+        },
+        readingSectionPagePosition: {
+          type: DataTypes.JSON,
+        },
       }, {tableName: 'imagine23'},
   );
 

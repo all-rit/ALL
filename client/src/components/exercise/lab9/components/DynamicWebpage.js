@@ -107,7 +107,7 @@ const Webpage = () => {
 
   return (
     <div>
-      <div className="playthrough__sentence">
+      <div className="tw-sub-title tw-my-6">
         Click on all 3 sections of the website that need to be localized. The
         changes you make will be reflected for the Dubai campus.
       </div>
@@ -138,7 +138,7 @@ const Webpage = () => {
           </div>
         </div>
       </div>
-      {isComplete && <Button onClick={handleComplete} buttonText="Continue" />}
+      {isComplete && <Button onClick={handleComplete}>Continue</Button>}
     </div>
   );
 };

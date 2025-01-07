@@ -1,13 +1,19 @@
 /* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Certificate from "./Certificate";
-import RedX from "../../../assets/images/RedX.png";
 import GreenCheck from "../../../assets/images/GreenCheck.webp";
+import RedX from "../../../assets/images/RedX.png";
+import { navigate } from "@reach/router";
+import ALLButton from "../../all-components/ALLButton";
 
 function Result(props) {
+  const [detailsOpen, setDetailsOpen] = useState({});
+
+  const openDetails = (questionId) => {
+    setDetailsOpen(detailsOpen === questionId ? null : questionId);
+    console.warn(questionId);
+  };
+
   function checkIfCorrect(answerIndex, questionIndex) {
     let isCorrect;
     props.quizQuestions[questionIndex].answers[answerIndex].val === 1
@@ -30,7 +36,7 @@ function Result(props) {
     let counter = 0;
     let isCorrect = false;
     return props.quizQuestions.map((quizQuestion, index) => {
-      const { question, answers } = quizQuestion; // destructuring
+      const { answers } = quizQuestion; // destructuring
       counter += 1;
       if (props.quizQuestions[counter - 1].multiChoice) {
         const isMultiCorrect = Array.from(
@@ -54,43 +60,91 @@ function Result(props) {
         );
       }
       return (
-        <tr
+        <a
           key={index}
-          className={isCorrect ? "answer-correct" : "answer-wrong"}
+          onClick={() => openDetails(index + 1)}
+          className={`tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white tw-rounded-b-none"}`}
         >
-          <td className={"column-width p-3"}>{question}</td>
-          <td className={"column-width p-3"}>
-            {renderTableAnswersData(answers)}
-          </td>
-          <td className={"column-width p-3"}>
-            {renderTableSelectedAnswersData(
-              props.selectedAnswers[counter - 1],
-              answers,
-            )}
-          </td>
-          <td className={"column-width p-3"}>
-            {isCorrect ? (
-              <img src={GreenCheck} alt={"Correct"} />
-            ) : (
-              <img src={RedX} alt="Incorrect" />
-            )}
-          </td>
-        </tr>
+          <div
+            className={"tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-body-text"}
+          >
+            Question {index + 1}
+          </div>
+          <div
+            className={
+              "tw-flex tw-flex-row tw-justify-between tw-pb-3 tw-px-3 tw-items-center"
+            }
+          >
+            <div
+              className={
+                "tw-text-center tw-w-full tw-body-text tw-leading-snug tw-flex tw-flex-col tw-px-5"
+              }
+            >
+              {renderTableSelectedAnswersData(
+                props.selectedAnswers[counter - 1],
+                answers,
+              )}
+            </div>
+            <div className={"tw-min-w-[1rem] tw-max-w-[2rem]"}>
+              {isCorrect ? (
+                <img src={GreenCheck} alt={"Correct"} />
+              ) : (
+                <img src={RedX} alt="Incorrect" />
+              )}
+            </div>
+          </div>
+          {detailsOpen === index + 1 && (
+            <div
+              className={
+                "tw-px-3 tw-pb-3 tw-bg-primary-blue tw-text-white tw-z-10 tw-shadow-lg tw-rounded-b-lg"
+              }
+            >
+              {renderTableAnswersData(answers)}
+            </div>
+          )}
+        </a>
       );
     });
   }
 
   function renderTableAnswersData(answers) {
-    let counter = 0;
     return (
       <ul className="tw-rounded-3xl">
         {answers.map(function (answer, index) {
-          counter += 1;
           if (answer["val"] === 1) {
             return (
-              <li key={index}>
-                {counter}. {answer["content"]}
-              </li>
+              <div key={index}>
+                <div
+                  className={
+                    "tw-flex tw-flex-row tw-px-3 tw-text-left tw-align-top tw-items-center"
+                  }
+                >
+                  <p className={"tw-font-bold tw-text-nowrap tw-body-text"}>
+                    Correct Answer:&nbsp;
+                  </p>
+                  <p className={"tw-leading-snug tw-body-text"}>
+                    {answer["content"]}
+                  </p>
+                </div>
+                <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
+                  <p className={"tw-font-bold tw-leading-snug tw-body-text"}>
+                    Explanation:&nbsp;
+                  </p>
+                  <p className={"tw-leading-snug tw-body-text"}>
+                    {answer["explanation"]}
+                  </p>
+                </div>
+                {answer["source"] && (
+                  <div className={"tw-flex tw-flex-row tw-px-3 tw-text-left"}>
+                    <p className={"tw-font-bold tw-leading-snug tw-body-text"}>
+                      Source:&nbsp;
+                    </p>
+                    <p className={"tw-leading-snug tw-body-text"}>
+                      {answer["source"]}
+                    </p>
+                  </div>
+                )}
+              </div>
             );
           } else {
             return <div key={index} />;
@@ -106,9 +160,7 @@ function Result(props) {
         const questionNumber = parseInt(answer) + 1;
         return (
           <ul>
-            <li key={questionNumber}>
-              {questionNumber}. {answers[answer]["content"]}
-            </li>
+            <a key={questionNumber}>{answers[answer]["content"]}</a>
           </ul>
         );
       });
@@ -116,43 +168,43 @@ function Result(props) {
       const questionNumber = parseInt(selectedAnswers.type) + 1;
       return (
         <ul>
-          <li key={questionNumber}>
-            {questionNumber}. {answers[selectedAnswers.type]["content"]}
-          </li>
+          <a key={questionNumber}>{answers[selectedAnswers.type]["content"]}</a>
         </ul>
       );
     }
   }
 
+  const handleImagineSurvey = () => {
+    navigate("/Imagine/PostSurvey");
+  };
+
   return (
-    <div className="tw-relative">
-      <div className="quiz container shadow p-3 tw-bg-labYellow tw-rounded-3xl shadow">
-        <div className=" w-100 result tw-bg-labLightGray tw-rounded-2xl poppins mb-3 shadow">
-          <h1>
-            <strong>RESULTS</strong>
-          </h1>
-          <strong>Score: {props.quizResult}</strong>
+    <div className="tw-flex tw-flex-col tw-align-middle tw-h-[35rem]">
+      <div>
+        <div className="tw-font-bold tw-text-[2rem] tw-mb-[5rem]">
+          <strong className={"tw-shadow-lg tw-rounded-lg tw-p-6"}>
+            Score: {props.quizResult}
+          </strong>
         </div>
-        <div className="result tw-bg-labLightGray p-3 tw-rounded-2xl poppins shadow">
-          <div>
-            <table id="quizResults" className="tw-bg-white tw-rounded-3xl">
-              <tbody>
-                <tr>
-                  {/* {renderTableHeader()}*/}
-                  <th className="resultTopLeft">QUESTION</th>
-                  <th>CORRECT ANSWERS</th>
-                  <th>SELECTED ANSWERS</th>
-                  <th className="resultTopRight p-3">RESULTS</th>
-                </tr>
-                {renderTableData()}
-              </tbody>
-            </table>
-            {props.hideCertificate === false && (
-              <div style={{ marginTop: "50px" }}>
-                <Certificate quizResult={props.quizResult} lab={props.lab} />
-              </div>
-            )}
-          </div>
+        <div
+          className={`tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5 tw-my-5`}
+        >
+          {renderTableData()}
+        </div>
+        <div className=" d-flex flex-column justify-content-center tw-pt-12 tw-mb-10">
+          {props.isImagine ? (
+            <button
+              className="btn btn-primary btn-xl text-uppercase  next"
+              onClick={handleImagineSurvey}
+            >
+              Continue to Post-Survey
+            </button>
+          ) : (
+            <ALLButton
+              label={"View Certificate"}
+              onClick={() => props.setViewCertificate(true)}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -162,6 +214,10 @@ function Result(props) {
 Result.propTypes = {
   quizResult: PropTypes.string.isRequired,
   selectedAnswers: PropTypes.array.isRequired,
+  isImagine: PropTypes.bool,
+  lab: PropTypes.number,
+  quizQuestions: PropTypes.array,
+  setViewCertificate: PropTypes.func,
 };
 
 export default Result;

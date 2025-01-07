@@ -3,7 +3,7 @@ import ExerciseStateContext from "./Lab11Context";
 import { Router, navigate } from "@reach/router";
 import LiteracyExerciseStart from "./pages/LiteracyExerciseStart";
 import LiteracyExerciseEnd from "./pages/LiteracyExerciseEnd";
-import InformationLetterEmail from "./pages/InformationLetterEmail";
+import InformationLetterEmail from "../../all-components/InformationLetterEmail";
 import {
   LETTER_TEXT_ARRAY,
   LETTER_TEXT_FOG_INDEX_10,
@@ -44,7 +44,7 @@ const Main = () => {
   useScroll();
 
   return (
-    <div className="bottomSpace">
+    <div className="bottomSpace tw-p-6 tw-overflow-y-scroll tw-h-[40rem]">
       <ExerciseStateContext.Provider
         value={{
           exerciseState,

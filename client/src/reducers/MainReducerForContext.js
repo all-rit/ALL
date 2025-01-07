@@ -8,6 +8,9 @@ import { EXERCISE_IDLE } from "src/constants/index";
  * @property {string} SET_LAB - The action type for setting lab.
  * @property {string} SET_BODY - The action type for setting body.
  * @property {string} UPDATE_USER_STATE - The action type for updating user state.
+ * @property {bool} SET_IS_IMAGINE - The action type for setting up special actions for Imagine based content.
+ * @property {string} SHOW_SNACKBAR - Action type for opening and populating the snackbar content
+ * @property {string} HIDE_SNACKBAR - Action type for hiding snackbar after opening
  */
 
 /**
@@ -20,6 +23,9 @@ export const types = {
   SET_LAB: "@accessibility-lab/context/lab",
   SET_BODY: "@accessibility-lab/context/app/set_body",
   UPDATE_USER_STATE: "@accessibility-lab/context/update_user_state",
+  SET_IS_IMAGINE: "@accessibility-lab/context/set_is_imagine",
+  SHOW_SNACKBAR: "@accessibility-lab/context/show_snackbar",
+  HIDE_SNACKBAR: "@accessibility-lab/context/hide_snackbar",
 };
 
 /**
@@ -30,6 +36,7 @@ export const types = {
  * @property {Object} main.user - The user object.
  * @property {number} main.lab - The lab number.
  * @property {number} main.body - The body number.
+ * @property {bool} main.isImagine - The current state of isImagine.
  */
 
 /**
@@ -42,6 +49,12 @@ export const initialState = {
     user: null,
     lab: 0,
     body: 0,
+    isImagine: false,
+    snackbar: {
+      open: false,
+      message: "",
+      notificationType: "",
+    },
   },
 };
 
@@ -53,7 +66,6 @@ export const initialState = {
  */
 export const MainReducerForContext = (state = initialState, action) => {
   const { type, payload } = action;
-  console.log(action);
   switch (type) {
     case types.SET_BODY:
       return {
@@ -83,6 +95,37 @@ export const MainReducerForContext = (state = initialState, action) => {
       return {
         ...state,
         userState: payload.userState,
+      };
+    case types.SET_IS_IMAGINE:
+      return {
+        ...state,
+        main: {
+          ...state.main,
+          isImagine: payload.isImagine,
+        },
+      };
+    case types.SHOW_SNACKBAR:
+      return {
+        ...state,
+        main: {
+          ...state.main,
+          snackbar: {
+            open: true,
+            message: payload.message,
+            notificationType: payload.notificationType,
+          },
+        },
+      };
+    case types.HIDE_SNACKBAR:
+      return {
+        ...state,
+        main: {
+          ...state.main,
+          snackbar: {
+            open: false,
+            message: "",
+          },
+        },
       };
     default:
       return state;

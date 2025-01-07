@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
+import LabButton from "../../../all-components/LabButton";
 
 class Results extends Component {
   render() {
@@ -17,9 +18,9 @@ class Results extends Component {
 
     return (
       <div className="results">
-        <div className="results__title">Exercise Over</div>
+        <div className="tw-title tw-mb-6">Exercise Over</div>
 
-        <div className="results__content">
+        <div className="results__content tw-sub-title">
           <p className="results__sentence">
             Great job! Here are your statistics:
           </p>
@@ -39,18 +40,13 @@ class Results extends Component {
             <span className="result__value">{incorrectAnswers}</span>
           </div>
 
-          <div className="result">
+          <div className="result tw-mb-6">
             <span className="result__category">Rounds:</span>
             <span className="result__value">{roundNumber}</span>
           </div>
         </div>
 
-        <button
-          className="btn btn-second btn-xl text-uppercase "
-          onClick={clickHandler}
-        >
-          Continue
-        </button>
+        <LabButton label={"Continue"} onClick={clickHandler} />
       </div>
     );
   }

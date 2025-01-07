@@ -28,19 +28,19 @@ const LiteracyExerciseEnd = () => {
 
   return (
     <div className="center-div">
-      <h3>Congratulations - you have completed the Literacy exercise!</h3>
-      <p className="playthrough__sentence">
+      <h3 className={"tw-title tw-text-left"}>Exercise Complete</h3>
+      <p className="tw-body-text tw-py-6">
         In conclusion, the Fog Index is a useful tool to determine the
         readability of text. Remember to consider your audience and the best
         reading level for your audience when writing text.
       </p>
-      <p className="playthrough__sentence">
-        Click the &quot;Try Again&quot; button to experiment with your Fog Index
-        Calulator.
+      <p className="tw-body-text">
+        Click the <strong>Try Again</strong> button to experiment with your Fog
+        Index Calulator.
       </p>
-      <p className="playthrough__sentence">
-        Otherwise click the &quot;Finish Exercise&quot; button to complete this
-        exercise!
+      <p className="tw-body-text tw-pb-6">
+        Otherwise click the <strong>Finish Exercise</strong> button to complete
+        this exercise!
       </p>
       <div className="tw-flex tw-justify-evenly">
         <button

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Typography, Button, AppBar, Toolbar, Grid } from "@mui/material";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, LAB_ID } from "../../../../../constants/lab3";
 import UserLabService from "../../../../../services/UserLabService";
@@ -18,36 +17,25 @@ class BeginnerExerciseConclusion extends Component {
     }
   }
   render() {
-    const conclusionTypographyStyle = { marginTop: "20px" };
     return (
-      <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid justifyContent="center" container spacing={10}>
-              <Grid item>
-                <Typography variant={"h4"}>Conclusion</Typography>
-              </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
-
-        <Typography
-          variant={"h6"}
-          paragraph={true}
-          style={conclusionTypographyStyle}
-        >
-          You have successfully completed the activity! Click on the home button
-          to return to the main page
-        </Typography>
+      <div className={"tw-p-10 tw-text-left"}>
+        <h2 className={"tw-title"}>Conclusion</h2>
+        <br />
+        <p className={"tw-body-text tw-font-medium"}>
+          You have successfully completed the activity!
+          <br />
+          Click <strong>Return to Start</strong> return to the start of the lab,
+          or scroll down and click the <strong> Next </strong> button to move on
+          to the Reinforcement section.
+        </p>
+        <br />
         <div style={{ textAlign: "center" }}>
-          <Button
-            href="#"
+          <button
             onClick={this.handleSubmit}
-            variant={"contained"}
-            className="btn btn-second btn-xl text-uppercase  leftButton"
+            className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
           >
-            Home
-          </Button>
+            Return to Start
+          </button>
         </div>
       </div>
     );

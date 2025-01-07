@@ -47,7 +47,8 @@ const ExerciseControllerLab11 = require('../controllers/lab11/ExerciseController
 const RepairControllerLab11 = require('../controllers/lab11/RepairController');
 // LAB10 Controller
 const ExerciseControllerLab10 = require('../controllers/lab10/ExerciseController');
-
+const ExerciseControllerLab12 = require('../controllers/lab12/ExerciseController');
+const RepairControllerLab12 = require('../controllers/lab12/RepairController');
 // Lab Controller
 const LabController = require('../controllers/LabController');
 
@@ -55,7 +56,7 @@ const LabController = require('../controllers/LabController');
 // Team Members Controller
 const TeamMemberController = require('../controllers/TeamMemberController');
 
-// Imagien Controller
+// Imagine Controller
 const ImagineController = require('../controllers/ImagineController');
 
 // User Routes
@@ -163,6 +164,23 @@ router.post('/lab11/repair/submit', async function(req, res) {
   const id = await RepairControllerLab11.submitChange(req);
   res.send(id);
 });
+
+{/* Lab 12 Exercise and Repair Controller Calls */}
+router.get('/lab12/exercise/:userID', async function(req, res) {
+  res.json(await ExerciseControllerLab12.getExercise(req));
+});
+router.post('/lab12/exercise/submit', async function(req, res) {
+  const id = await ExerciseControllerLab12.postExercise(req);
+  res.send(id);
+});
+router.get('/lab12/repair/:userID/:section', async function(req, res ) {
+  res.json(await RepairControllerLab12.getRepair(req));
+});
+router.post('/lab12/repair/submit', async function(req, res) {
+  const id = await RepairControllerLab12.submitChange(req);
+  res.send(id);
+});
+
 // Create a Page Entry
 router.post('/page/complete', PageController.createPage);
 
@@ -190,10 +208,40 @@ router.get('/lab:labID/quiz', async function(req, res) {
 router.get('/teammember', TeamMemberController.getAllTeamMembers);
 router.get('/professors', TeamMemberController.getAllProfessors);
 router.get('/alumni', TeamMemberController.getAllAlumni);
+router.get('/devPartners', TeamMemberController.getAllDevPartners);
+router.get('/schools', TeamMemberController.getAllSchools);
 
 // Imagine
-router.post('/imagine/discomfortCount', ImagineController.discomfortCount);
-router.post('/imagine/experientialMain', ImagineController.experientialMain);
-router.post('/imagine/experientialProtanopia', ImagineController.experientialProtanopia);
-
+router.post('/imagine/postStudy', async function(req, res) {
+  const resp = await ImagineController.submitStudy(req);
+  res.send(resp);
+});
+router.post('/imagine/preSurvey', async function(req, res) {
+  const resp = await ImagineController.preSurvey(req, res);
+  res.send(JSON.stringify(resp));
+});
+router.post('/imagine/postSurvey', async function(req, res) {
+  const resp = await ImagineController.postSurvey(req);
+  res.send(resp);
+});
+router.get('/imagine/users', async function(req, res) {
+  const imagineUsers = await ImagineController.getUsers();
+  res.json(imagineUsers);
+});
+router.get('/imagine/user/:userID', async function(req, res) {
+  const imagineUser = await ImagineController.getUserByID(req);
+  res.json(imagineUser);
+});
+router.post('/imagine/readMoreCount', async function(req, res) {
+  const resp = await ImagineController.readMoreCount(req);
+  res.send(resp);
+});
+router.post('/imagine/readMoreTimeElapsed', async function(req, res) {
+  const resp = await ImagineController.readMoreTimeElapsed(req);
+  res.send(resp);
+});
+router.post('/imagine/readingSectionPagePosition', async function(req, res) {
+  const resp = await ImagineController.readingSectionPagePosition(req);
+  res.send(resp);
+});
 module.exports = router;

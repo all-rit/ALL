@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppInstructions from "../components/AppInstructions";
 import ExtraNav from "../components/ExtraNav";
 import FormComp from "../components/FormComp";
@@ -22,11 +22,17 @@ const FormHintInaccessible = () => {
           Use tab to go next, and shift+tab to go back.`;
   const instructions2 = "Do not use the mouse!";
   const url = "/Lab4/Exercise/AccessibleGuideline";
-  const tab = null;
+  const tooltipTab = null;
   const name = "FormHintInaccessible";
+  const jumpToMain = () => {
+    const mainElement = document.getElementById("main");
+    if (mainElement) {
+      mainElement.focus({ preventScroll: true });
+    }
+  };
   return (
-    <Fragment>
-      <a className="skip-main" href="#main">
+    <div className={"tw-p-6"}>
+      <a className="skip-main" href={"#"} onClick={jumpToMain}>
         Skip to main content
       </a>
       <ExtraNav />
@@ -38,11 +44,13 @@ const FormHintInaccessible = () => {
       <FormComp
         url={url}
         rule={true}
-        tab={tab}
+        showTooltip={true}
+        tooltipDisabled={true}
+        tooltipTab={tooltipTab}
         parentCallback={callbackFunction}
         name={name}
       />
-    </Fragment>
+    </div>
   );
 };
 

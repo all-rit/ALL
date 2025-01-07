@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 
 function Question(props) {
   return (
-    <h2 className="quiz question">
+    <p className="tw-body-text tw-py-6">
       {props.content} {props.multi && " Select all that apply."}
-    </h2>
+    </p>
   );
 }
 

@@ -3,7 +3,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import CodeUpdateHeader from "../../components/CodeUpdateHeader";
 import "../../../../../assets/stylesheets/prism.scss";
 import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
 import { amber, green, red, yellow } from "@mui/material/colors";
@@ -114,45 +113,41 @@ class CodeChange extends Component {
   render() {
     const { data, actions } = this.props;
     return (
-      <div>
-        <CodeUpdateHeader
-          heading={"Make Code Changes"}
-          justifyAlignment={"space-between"}
-        />
-        <div style={{ display: "block", marginBottom: "10px" }}>
-          <Typography
-            variant={"subtitle"}
-            aria-label={
-              "First make changes to the code, if not satisfied try again.\n" +
-              "                    Then click the 'End Activity' button which will appear when you have made changes " +
-              "at least once."
-            }
-            color={"inherit"}
-            tabIndex={"0"}
+      <div className={"tw-p-10 tw-text-left tw-flex tw-flex-col"}>
+        <h2 className={"tw-title"}> Repair </h2>
+        <br />
+        <div>
+          <p
+            className={"tw-body-text tw-font-medium"}
+            aria-label="First make changes to the code, if not satisfied try again. Then
+              click the 'End Activity' button which will appear when you have made
+              changes at least once."
           >
             First make changes to the code, if not satisfied try again. Then
             click the 'End Activity' button, which will appear when you have
             made changes at least once.
-          </Typography>
+          </p>
         </div>
-        <div style={{ textAlign: "center" }}>
-          <Repair
-            visible={data.repair3.repairVisible}
-            data={data.repair3}
-            handlers={actions}
-          />
+        <br />
+        <Popup
+          message={data.app3.popupMessage}
+          handler={actions.updatePopup}
+          error={data.repair3.repairError}
+        />
 
-          <Popup
-            message={data.app3.popupMessage}
-            handler={actions.updatePopup}
-            error={data.repair3.repairError}
-          />
-
+        <div className={"tw-flex tw-flex-row tw-justify-center tw-gap-x-4"}>
           <ExerciseButtons
             repairApplied={data.repair3.changesApplied}
             openRepairHandler={actions.openRepair}
             endEnabled={data.exercise3.end}
             disabled={this.props.data.repair3.repairError}
+          />
+        </div>
+        <div className={"tw-flex tw-flex-col tw-justify-around"}>
+          <Repair
+            visible={data.repair3.repairVisible}
+            data={data.repair3}
+            handlers={actions}
           />
         </div>
       </div>

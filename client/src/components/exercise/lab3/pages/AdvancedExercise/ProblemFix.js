@@ -3,7 +3,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import { Typography, Button } from "@mui/material";
+import { Typography } from "@mui/material";
 import "../../../../../assets/stylesheets/prism.scss";
 import Prism from "prismjs";
 import { navigate } from "@reach/router";
@@ -18,9 +18,10 @@ import CheckCircleIcon from "@mui/material/SvgIcon/SvgIcon";
 import clsx from "clsx";
 import Snackbar from "@mui/material/Snackbar";
 import { amber, green, red, yellow } from "@mui/material/colors";
-import CodeUpdateHeader from "../../components/CodeUpdateHeader";
-import Paper from "@mui/material/Paper";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
+import HTMLTag from "../../../../all-components/CodeBlock/StyleComponents/HTMLTag";
+import CodeLine from "../../../../all-components/CodeBlock/Components/CodeLine";
+import CommentText from "../../../../all-components/CodeBlock/StyleComponents/CommentText";
 
 const variantIcon = {
   success: CheckCircleIcon,
@@ -201,105 +202,110 @@ class ProblemFix extends Component {
   static renderButton() {
     const buttonEnabled =
       window.location.state.endAdvancedActivityButtonEnabled;
-    const buttonStyle = { marginLeft: "10px" };
     if (buttonEnabled) {
       return (
-        <Button
-          href="#"
-          onClick={this.handleEnd}
+        <button
+          onClick={() => navigate("/Lab3/Exercise/AdvancedExerciseConclusion")}
           aria-label={"End Activity"}
-          variant={"contained"}
-          color={"secondary"}
-          style={buttonStyle}
+          className={
+            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+          }
         >
-          End Activity
-        </Button>
+          Complete Activity
+        </button>
       );
     }
   }
 
   render() {
-    const paperStyle = {
-      marginLeft: "10px",
-      marginRight: "10px",
-      marginTop: "20px",
-    };
-
     return (
       <div>
-        <CodeUpdateHeader
-          heading={"Problem Repair"}
-          justifyAlignment={"space-between"}
-          helpMessage={"#Placeholder"}
-        />
-        <Paper style={paperStyle}>
-          <Typography
-            variant={"subtitle"}
+        <h2 className={"tw-title tw-text-left"}>Advanced Exercise Repair</h2>
+        <br />
+        <div>
+          <p
+            className={"tw-body-text tw-font-medium tw-text-left"}
             aria-label={
               "First make changes to the code, if not satisfied try again.\n" +
               "                    Then click the 'End Activity' button which will appear when you have made changes " +
               "at least once."
             }
-            color={"inherit"}
-            tabIndex={"0"}
           >
             First make changes to the code, if not satisfied try again. Then
             click the 'End Activity' button, which will appear when you have
             made changes at least once.
-          </Typography>
-        </Paper>
-        <Paper style={paperStyle}>
-          <Typography
-            variant={"subtitle1"}
+          </p>
+        </div>
+        <br />
+        <ul className={"tw-px-10"}>
+          <li
+            className={"tw-body-text tw-font-medium tw-text-left tw-list-disc"}
             aria-label={"Subtitle Instructions"}
-            gutterBottom
           >
             Update the aria-tags to repair the accessibility issues.
-          </Typography>
-          <Typography
-            variant={"body1"}
+          </li>
+          <li
+            className={"tw-body-text tw-font-medium tw-text-left tw-list-disc"}
             aria-label={"Body Instructions"}
-            gutterBottom
           >
             Make changes and then press update code.
-          </Typography>
-        </Paper>
+          </li>
+        </ul>
+        <br />
         <form onSubmit={this.handleSubmit} noValidate autoComplete={"off"}>
-          <pre>
-            <code className="language-html">
-              {`
-<button aria-label="`}
-            </code>
-            <input
-              type={"text"}
-              value={this.state.textValue}
-              onChange={this.handleChange}
-              aria-label={"Please type in alt tag contents for text field"}
-              id={"first"}
-            />
-            <code>{`">Ok</button>
-<button aria-label="`}</code>
-            <input
-              type={"text"}
-              value={this.state.textValue1}
-              onChange={this.handleChange1}
-              aria-label={"Please type in alt tag contents for text field"}
-              id={"second"}
-            />
-            <code>
-              {`">Cancel</button>
-`}
-            </code>
-          </pre>
+          <div
+            className={
+              "tw-bg-secondary-gray tw-rounded-lg tw-min-h-[10rem] tw-p-6"
+            }
+          >
+            <CodeLine>
+              <CommentText>&#47;&#47; Aria Label for the Ok Button</CommentText>
+            </CodeLine>
+            <CodeLine>
+              <HTMLTag>&#60;button aria-label="</HTMLTag>
+              <input
+                className={
+                  "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow code_editor code_editor__input"
+                }
+                type={"text"}
+                value={this.state.textValue}
+                onChange={this.handleChange}
+                aria-label={"Please type in alt tag contents for text field"}
+                id={"first"}
+              />
+              <HTMLTag>"&#62;Ok&#60;/button&#62;</HTMLTag>
+            </CodeLine>
+            <br />
+            <CodeLine>
+              <CommentText>
+                &#47;&#47; Aria Label for the Cancel Button
+              </CommentText>
+            </CodeLine>
+            <CodeLine>
+              <HTMLTag>&#60;button aria-label="</HTMLTag>
+              <input
+                className={
+                  "tw-bg-secondary-gray tw-rounded-md tw-text-primary-yellow"
+                }
+                type={"text"}
+                value={this.state.textValue1}
+                onChange={this.handleChange1}
+                aria-label={"Please type in alt tag contents for text field"}
+                id={"second"}
+              />
+              <HTMLTag>"&#62;Cancel&#60;/button&#62;</HTMLTag>
+            </CodeLine>
+          </div>
           <br />
-          <Button
+          <button
             type={"submit"}
             aria-label={"Update Code"}
-            variant={"contained"}
-            className="btn btn-second btn-xl text-uppercase  leftButton"
+            className={
+              "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+            }
           >
             Update Code
-          </Button>
+          </button>
           {ProblemFix.renderButton()}
         </form>
         <Snackbar

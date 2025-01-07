@@ -1,24 +1,25 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
-
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Router } from "@reach/router";
+import { navigate, Router } from "@reach/router";
 import { bindActionCreators } from "redux";
 import LandingPage from "./pages/landingPage";
 import MainInstructions from "./pages/mainInstructions";
-
+import Reading from "../body/Reading/Reading";
 import { default as ExerciseLab2 } from "../exercise/lab2/Main";
 import ExpressionStart from "./pages/ExpressionStart";
 import ExpressionExercise from "./pages/ExpressionExercise";
+import ExpressionExercise2 from "./pages/ExpressionExercise2";
 import ExpressionScore from "./pages/ExpressionScore";
 import ExerciseEnd from "./pages/ExerciseEnd";
 import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
+import Survey from "./pages/SurveyHandler";
+import { resetSystem } from "../../reducers/lab2/actions";
 const { nanoid } = require("nanoid");
+
+import { PropTypes } from "prop-types";
+import useMainStateContext from "../../reducers/MainContext";
 
 const mapStateToProps = (state) => ({
   state: state,
@@ -31,14 +32,29 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Main = (props) => {
-  const { actions, state, user } = props;
+  const { state, user, isImagine } = props;
   const [count, setCount] = useState(0);
   const [userID, setUserID] = useState(null);
+
+  const labId = 2;
+  const [isExperiential, setIsExperiential] = useState(false);
+
+  const context = useMainStateContext();
+  const { actions } = context;
+
+  function handleGroupAssignment(isExperiential) {
+    setIsExperiential(isExperiential);
+
+    if (isExperiential) {
+      navigate("/Imagine/ExperientialStart");
+    } else {
+      navigate("/Imagine/ExpressionStart");
+    }
+  }
 
   useEffect(() => {
     if (user?.userid) {
       let userSession = sessionStorage.getItem(user?.userid);
-      console.log(userSession);
       if (!userSession) {
         let newID = nanoid(6).toUpperCase();
         sessionStorage.setItem(user?.userid, newID);
@@ -49,29 +65,32 @@ const Main = (props) => {
     }
   }, [user]);
 
-  // sessionStorage.removeItem("key");
-  // sessionStorage.clear();
-
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12 text-center">
-            <h2 className="section-heading text-uppercase tw-text-right">
-              {"ID#" + userID}
-            </h2>
-          </div>
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-12 text-center">
+          {/* change font size */}
+          <h2 className="section-heading text-uppercase tw-text-right tw-text-[5vw] md:tw-text-[4vw] lg:tw-text-[3.5vh]">
+            {"ID#" + userID}
+          </h2>
         </div>
       </div>
       <div className="bottomSpace">
         <Router className="app">
           <UpdateID
             default
-            path="/UpdateID"
+            path="/"
             actions={actions}
-            state={state}
             setUserID={setUserID}
+            isImagine={isImagine}
             user={user}
+          />
+          <Survey
+            path={`/PreSurvey`}
+            userID={userID}
+            type="pre"
+            isImagine={isImagine}
+            handleGroupAssignment={handleGroupAssignment}
           />
           <LandingPage
             path="/ExperientialStart"
@@ -127,6 +146,14 @@ const Main = (props) => {
             count={count}
             userID={userID}
           />
+          <ExpressionExercise2
+            path="/ExpressionPOCExercise"
+            actions={actions}
+            state={state}
+            setCount={setCount}
+            count={count}
+            userID={userID}
+          />
           <ExpressionScore
             path="/ExpressionScore"
             actions={actions}
@@ -134,24 +161,33 @@ const Main = (props) => {
             count={count}
             userID={userID}
           />
-          <ExerciseEnd
-            path="/ExperientialExerciseEnd"
-            actions={actions}
-            state={state}
-            isExperiential
+          <Reading
+            path={`/Reading`}
+            user={state.main.user}
             userID={userID}
+            labID={labId}
+            isImagine={isImagine}
           />
+          <Survey path={`/PostSurvey`} userID={userID} type="post" />
           <ExerciseEnd
-            path="/ExpressionExerciseEnd"
+            path="/ExerciseEnd"
             actions={actions}
             state={state}
-            isExperiential={false}
+            isExperiential={isExperiential}
             userID={userID}
+            resetSystem={resetSystem}
           />
         </Router>
       </div>
-    </>
+    </div>
   );
+};
+
+Main.propTypes = {
+  actions: PropTypes.object,
+  state: PropTypes.object,
+  user: PropTypes.object,
+  isImagine: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

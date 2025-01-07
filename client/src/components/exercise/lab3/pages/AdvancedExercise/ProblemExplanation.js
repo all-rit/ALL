@@ -2,11 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
-import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Toolbar from "@mui/material/Toolbar";
-import Grid from "@mui/material/Grid";
 import CheckCircleIcon from "@mui/material/SvgIcon/";
 import { amber, green, red, yellow } from "@mui/material/colors";
 import SnackbarContent from "@mui/material/SnackbarContent";
@@ -17,7 +13,6 @@ import WarningIcon from "@mui/icons-material/Warning";
 import ErrorIcon from "@mui/icons-material/Error";
 import InfoIcon from "@mui/icons-material/Info";
 import CloseIcon from "@mui/icons-material/Close";
-import Link from "@mui/material/Link";
 import { navigate } from "@reach/router";
 import { EXERCISE_PLAYING } from "../../../../../constants/lab3/index";
 const variantIcon = {
@@ -112,42 +107,28 @@ class ProblemExplanation extends Component {
 
     return (
       <div>
-        <AppBar position="static" className="appBar">
-          <Toolbar>
-            <Grid justifyContent="center" container spacing={10}>
-              <Grid item>
-                <Typography
-                  variant={"h4"}
-                  aria-label={"Problem Explanation"}
-                  gutterBottom
-                  tabindex={"0"}
-                  onFocus={(e) => textToSpeech(e, "Problem Explanation")}
-                >
-                  Problem Explanation
-                </Typography>
-              </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
+        <h2
+          className={"tw-title tw-text-left"}
+          aria-label={"Problem Explanation"}
+          onFocus={(e) => textToSpeech(e, "Problem Explanation")}
+        >
+          Problem Explanation
+        </h2>
+
         <br></br>
-        <Typography
-          variant={"subtitle1"}
+        <p
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Subtitle Instructions"}
-          gutterBottom
-          tabindex={"0"}
           onFocus={(e) =>
             textToSpeech(e, "How do we make the page more accessible?")
           }
         >
           How do we make the page more accessible?
-        </Typography>
+        </p>
         <br />
-        <Typography
-          variant={"body1"}
+        <p
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Body Instructions"}
-          paragraph={true}
-          gutterBottom
-          tabindex={"0"}
           onFocus={(e) =>
             textToSpeech(
               e,
@@ -160,14 +141,11 @@ class ProblemExplanation extends Component {
           effectively described by the screenreaders. Specifically, we do not
           have the aria-label attribute that screenreaders can make use of to
           read text effectively.
-        </Typography>
+        </p>
         <br />
-        <Typography
-          variant={"body1"}
+        <p
+          className={"tw-body-text tw-font-medium tw-text-left"}
           aria-label={"Aria Label definition"}
-          paragraph={true}
-          gutterBottom
-          tabindex={"0"}
           onFocus={(e) =>
             textToSpeech(
               e,
@@ -180,17 +158,21 @@ class ProblemExplanation extends Component {
           }
         >
           As per{" "}
-          <Link
+          <a
             target="_blank"
+            className={
+              "tw-body-text tw-font-medium tw-text-left tw-text-primary-blue"
+            }
             href={
               "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/" +
               "ARIA_Techniques/Using_the_aria-label_attribute"
             }
-            tabindex={"1"}
+            rel="noreferrer"
           >
             developer.mozilla.org
-          </Link>
+          </a>
           :
+          <br />
           <br />
           The aria-label attribute is used to define a string that labels the
           current element. Use it in cases where a text label is not visible on
@@ -198,27 +180,17 @@ class ProblemExplanation extends Component {
           aria-labelledby instead. This attribute can be used with any typical
           HTML element; it is not limited to elements that have an ARIA role
           assigned.
-        </Typography>
+        </p>
         <br />
-        <Button variant={"text"} onFocus={(e) => textToSpeech(e, "Ok button")}>
-          Ok
-        </Button>
-        <Button
-          variant={"text"}
-          onFocus={(e) => textToSpeech(e, "Cancel button")}
-        >
-          Cancel
-        </Button>
-        <br />
-        <Button
-          href="#"
+        <button
           onClick={this.handleSubmit}
-          variant={"contained"}
-          className="btn btn-second btn-xl text-uppercase  leftButton"
+          className={
+            "btn btn-xl tw-shadow-md tw-bg-secondary-gray tw-m-3 hover:tw-bg-primary-yellow hover:tw-shadow-lg"
+          }
           onFocus={(e) => textToSpeech(e, "Next")}
         >
           Next
-        </Button>
+        </button>
       </div>
     );
   }

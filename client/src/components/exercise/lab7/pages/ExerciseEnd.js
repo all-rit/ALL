@@ -4,6 +4,7 @@ import UserLabService from "../../../../services/UserLabService";
 import { LAB_ID } from "../../../../constants/lab7";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE } from "src/constants/index";
+import LabButton from "../../../all-components/LabButton";
 
 /**
  * Represents the component for the exercise end page.
@@ -27,21 +28,22 @@ const ExerciseEnd = () => {
   return (
     <>
       <div className="center-div">
-        <p className="playthrough__sentence">
+        <h1 className={"tw-title tw-text-left"}> Exercise Complete </h1>
+        <p className="tw-body-text tw-my-6">
           Congratulations! You&lsquo;ve finished the AI Cybersecurity Module.
         </p>
-        <p className="playthrough__sentence">
-          Click the &lsquo;Home&lsquo; button to return to the Exercise start
-          page or click the &lsquo;Next&lsquo; button to continue onto the
-          Reinforcement part of the lab.
+        <p className="tw-body-text tw-my-6">
+          Click the <strong>&lsquo;Return to Exercise Start&lsquo;</strong>{" "}
+          button to return to the Exercise start page or click the
+          &lsquo;Next&lsquo; button to continue onto the Reinforcement section.
         </p>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
+        <LabButton
           onClick={handleHome}
           key="start"
+          label={"Return to Exercise Start"}
         >
-          Exercise Home
-        </button>
+          Return to Exercise Start
+        </LabButton>
       </div>
     </>
   );

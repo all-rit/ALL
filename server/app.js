@@ -15,7 +15,7 @@ const http = require('http');
 const app = express();
 const port = process.env.PORT || 5005;
 
-const allowedOrigins = [process.env.CLIENT_URL, 'https://localhost:5005', 'https://localhost:3000', 'https://all.rit.edu'];
+const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:3000', 'http://localhost:5005', 'https://localhost:5005', 'https://localhost:3000', 'https://all.rit.edu'];
 
 app.use(express.urlencoded({
   extended: false,

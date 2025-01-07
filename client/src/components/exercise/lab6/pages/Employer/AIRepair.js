@@ -1,10 +1,16 @@
 import { navigate } from "@reach/router";
 import React, { useEffect, useState } from "react";
 import RepairService from "../../../../../services/lab6/RepairService";
-import CodeUpdateHeader from "../../../lab3/components/CodeUpdateHeader";
-import Popup from "../../../../all-components/Popup";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import {
+  ERROR,
+  REPAIR_ERROR,
+  REPAIR_SUCCESS,
+  SUCCESS,
+} from "../../../../../constants/notifications";
+import LabButton from "../../../../all-components/LabButton";
+import RepairUpdateButton from "../../../../all-components/RepairUpdateButton";
 
 const AIRepair = () => {
   const { actions, state } = useMainStateContext();
@@ -14,7 +20,6 @@ const AIRepair = () => {
   }, []);
 
   const [repairOpen, setRepairOpen] = useState(false);
-  const [popUpMessage, setPopUpMessage] = useState("");
   const [appearanceValue, setAppearanceValue] = useState(8);
   const [experienceValue, setExperienceValue] = useState(5);
   const [availabilityValue, setAvailabilityValue] = useState(4);
@@ -27,9 +32,16 @@ const AIRepair = () => {
   const [availabilityValueError, setAvailabilityValueError] = useState(false);
   const [payValueError, setPayValueError] = useState(false);
   const [weightedValueError, setWeightedValueError] = useState(false);
+  const [repairVisible, setRepairVisible] = useState(false);
 
-  const popUpHandler = (message) => {
-    setPopUpMessage(message);
+  const handleOpenRepair = () => {
+    setRepairOpen(true);
+    setTimeout(() => setRepairVisible(true), 0); // Allow animation to trigger
+  };
+
+  const handleCloseRepair = () => {
+    setRepairVisible(false);
+    setTimeout(() => setRepairOpen(false), 500); // Match animation duration
   };
 
   const validateRepair = () => {
@@ -75,6 +87,7 @@ const AIRepair = () => {
     }
     if (!error) {
       setUserError(false);
+      actions.showSnackbar(REPAIR_SUCCESS, SUCCESS);
       RepairService.submitRepair(
         state.main.user?.userid,
         appearanceValue,
@@ -82,11 +95,10 @@ const AIRepair = () => {
         availabilityValue,
         payValue,
       );
-      setRepairOpen(false);
-      popUpHandler("The repairs have been made.");
+      handleCloseRepair();
     } else {
       setUserError(true);
-      popUpHandler("Errors in Repair. Please fix");
+      actions.showSnackbar(REPAIR_ERROR, ERROR);
     }
   };
 
@@ -96,37 +108,35 @@ const AIRepair = () => {
 
   return (
     <div>
-      <CodeUpdateHeader
-        heading={"Make Config Changes"}
-        justifyAlignment={"space-between"}
-      />
-      <div className="cognitive_instructions margin-bottom-2">
+      <h2
+        className={
+          "tw-title tw-font-bold tw-text-[2.5rem] tw-text-left tw-my-6"
+        }
+      >
+        {" "}
+        Repair{" "}
+      </h2>
+      <div className="tw-body-text tw-text-left tw-my-6">
         Let&apos;s adjust the AI&apos;s configuration to allow for a more
         equitable hiring process.
         <br />
+        <br />
         Click &rsquo;Repair&rsquo; to make the appropriate changes.
       </div>
-      <Popup message={popUpMessage} handler={popUpHandler} error={userError} />
+      <div className={"tw-flex tw-gap-x-3 tw-justify-center"}>
+        <LabButton onClick={handleOpenRepair} key="repair" label={"Repair"} />
+        <LabButton
+          onClick={handleContine}
+          key="Next"
+          disabled={userError}
+          label={"Next"}
+        />
+      </div>
 
-      <button
-        className="btn btn-second btn-xl text-uppercase  leftButton"
-        onClick={() => {
-          !repairOpen ? setRepairOpen(true) : "";
-        }}
-        key="repair"
-      >
-        Repair
-      </button>
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleContine}
-        key="Next"
-        disabled={userError}
-      >
-        Next
-      </button>
       {repairOpen && (
-        <div className="code_editor">
+        <div
+          className={`code_editor ${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
+        >
           <div className="code_editor__content">
             <div className="code_editor__files">
               <div className="code_editor__file code_editor__file--active">
@@ -350,13 +360,7 @@ const AIRepair = () => {
               </div>
             </div>
           </div>
-          <button
-            onClick={validateRepair}
-            type="submit"
-            className="button button--green button--block"
-          >
-            Update
-          </button>
+          <RepairUpdateButton onClick={validateRepair} type="submit" />
         </div>
       )}
     </div>

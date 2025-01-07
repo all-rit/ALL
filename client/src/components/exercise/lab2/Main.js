@@ -274,11 +274,14 @@ class Main extends Component {
     };
 
     return (
-      <div className="container">
+      <div className="container tw-h-full tw-overflow-y-scroll tw-items-center">
         {infoPopup ? (
           <Form closeInfoPopup={onCloseInfoPopup} />
         ) : (
-          <div style={{ background: `${exerciseBackground}` }} className="main">
+          <div
+            className={"tw-rounded-lg main"}
+            style={{ background: exerciseBackground }}
+          >
             {changed ? (
               <Countdown
                 date={Date.now() + 5000}

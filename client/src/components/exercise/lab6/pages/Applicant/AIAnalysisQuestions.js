@@ -54,9 +54,10 @@ const AIAnalysisQuestions = () => {
 
   return (
     <div className="center-div">
-      <h2 className="playthrough__title">AI Analysis Survey</h2>
+      <h2 className="tw-title">AI Analysis Survey</h2>
 
       <QuestionsHandler
+        isFinalQuiz={true}
         questions={aiAnalysisData}
         handleContinue={handleContinue}
       />

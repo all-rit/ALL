@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 /* eslint-disable max-len */
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -97,7 +97,7 @@ class Main extends Component {
     } = this.props;
 
     return (
-      <Fragment>
+      <div className={"tw-h-full"}>
         <SoundHeader
           state={state}
           plays={plays}
@@ -141,7 +141,7 @@ class Main extends Component {
         />
 
         <Popup message={popupMessage} handler={actions.updatePopup} />
-      </Fragment>
+      </div>
     );
   }
 }
