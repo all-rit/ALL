@@ -83,7 +83,6 @@ const App = () => {
     globalHistory.listen((location) => {
       stateChange(actions, location.location.pathname);
     });
-    console.warn(state.main.lab);
   }, []);
   const lab = state.main.lab;
   // const body = state.main.body;
