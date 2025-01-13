@@ -16,7 +16,7 @@ export const Sections = {
   },
   0: {
     fullname: "Lab 0: Building Labs with ALL",
-    name: "Lab0", // represents Landing Page
+    name: "Lab0",
     0: {
       name: "About",
     },
@@ -168,7 +168,6 @@ export const Sections = {
   },
   8: {
     fullname: "Lab 8: Algorithmic Bias",
-    // TODO: edit this once we have an official title
     name: "Lab8",
     0: {
       name: "About",
