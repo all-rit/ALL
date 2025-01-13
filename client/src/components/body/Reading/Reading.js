@@ -136,42 +136,48 @@ const Reading = (props) => {
           ) : (
             <></>
           )}
-          {readingData?.piechart?.header && (
+          {readingData?.piechart && (
             <>
-              <h3
-                className={
-                  isImagine ? "tw-text-[4vw] lg:tw-text-[3.5vh]" : "tw-title"
-                }
-              >
-                {readingData?.piechart.header}
-              </h3>
-              <div className="flex tw-body-text">
-                <Pie
-                  data={readingData?.piechart.data}
-                  height={!isImagine && 100}
-                  options={isImagine && { maintainAspectRatio: false }}
-                />
-              </div>
+              {readingData?.piechart?.header && (
+                <>
+                  <h3
+                    className={
+                      isImagine
+                        ? "tw-text-[4vw] lg:tw-text-[3.5vh]"
+                        : "tw-title"
+                    }
+                  >
+                    {readingData?.piechart.header}
+                  </h3>
+                  <div className="flex tw-body-text">
+                    <Pie
+                      data={readingData?.piechart.data}
+                      height={!isImagine && 100}
+                      options={isImagine && { maintainAspectRatio: false }}
+                    />
+                  </div>
+                </>
+              )}
+              {readingData?.piechart.caption !== "" ? (
+                readingData?.piechart.caption.map((data, index) => {
+                  return (
+                    <div
+                      key={index}
+                      id={"caption"}
+                      className={
+                        isImagine
+                          ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
+                          : " tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                      }
+                    >
+                      {data}
+                    </div>
+                  );
+                })
+              ) : (
+                <></>
+              )}
             </>
-          )}
-          {readingData?.piechart.caption !== "" ? (
-            readingData?.piechart.caption.map((data, index) => {
-              return (
-                <div
-                  key={index}
-                  id={"caption"}
-                  className={
-                    isImagine
-                      ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                      : " tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
-                  }
-                >
-                  {data}
-                </div>
-              );
-            })
-          ) : (
-            <></>
           )}
 
           {readingData?.body !== "" ? (

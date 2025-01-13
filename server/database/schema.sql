@@ -444,7 +444,210 @@ create table lab12_exercise
     primary key ("repairId")
 );
 
-INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive") VALUES (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
+INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
+VALUES (0, 'Building Labs with ALL',
+        'Building Labs with ALL', 'Accessibility', '/wrench.jpg',
+        'Learn how do build a lab with Accessible Learning Labs with this interactive tutorial.',
+        'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat',
+        'https://all.rit.edu/Lab1/', null,
+        e'In this lab, you will learn why it is important to create software
+            that is accessible to users with hearing impairments.
+            You will learn how organizations like the National Association of the Deaf (NAD)
+            fought for easier access for hearing impaired individuals,
+            increase your understanding through an interactive module about hearing impairments,
+            view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!',
+        e'{
+	"description":{
+		"header":"",
+		"content":""
+	},
+	"body":[
+		{
+			"header":"Why Do We Build Labs?",
+			"type":"",
+			"content":["Lab 0 Reading Content about the importance of accessibility in software eduction."]
+		},
+		{
+			"header":"",
+			"type":"links",
+			"content":[]
+		},
+		{
+			"header":"What Goes into Building a Lab?",
+			"type":"",
+			"content":["Lab 0 reading on building labs"]
+		},
+		{
+			"header":"",
+			"type":"links",
+			"content":[]
+		},
+		{
+			"header":"Our Tech Stack",
+			"type":"",
+			"content":["Information about tech stack and other important development info"]
+		},
+		{
+			"header":"",
+			"type":"image",
+			"content":{
+				"image":"",
+				"alt":"",
+				"sub_caption":"",
+				"caption":""
+			}
+		},
+		{
+			"header":"",
+			"type":"",
+			"content":[]
+		},
+        {
+			"header":"",
+			"type":"links",
+			"content":["Maybe embed links to documentation for each section of the tech stack, i.e. React, Express, Sequelize, etc"]
+		},
+		{
+			"header":"",
+			"type":"links",
+			"content":[]
+		}
+	],
+	"footer":{
+		"links":[]
+	}
+}', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
+', e'[
+  {
+    "question": "What is an audio cue?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "A vibration that conveys key information"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "A playing sound that conveys key information",
+        "explanation": "An audio cue is strictly a sound that doesn’t involve a physical or visual component."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "A visual indicator that conveys key information"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "How many people (aged 18 and over) with hearing loss are there in the United States?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "20-30 million people"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "30-40 million people",
+        "explanation": "According to the National Institute on Deafness and Other Communication Disorders, approximately 37.5 million American adults have trouble hearing.",
+        "source": "https://www.nidcd.nih.gov/health/age-related-hearing-loss"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "40-50 million people"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "50-60 million people"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "When should accessibility be considered in the development process?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "At the end"
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "From the beginning",
+        "explanation": "Accessibility should always be considered at the start of development to ensure the best usability."
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Whenever the developer feels it\'s necessary"
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "Only if it\'s needed for the project"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "What does the \'Perceivable\' accessibility principle mean?",
+    "answers": [
+      {
+        "val": 0,
+        "type": "0",
+        "content": "User interface components and navigation must be operable."
+      },
+      {
+        "val": 1,
+        "type": "1",
+        "content": "Information and user interface components must be presentable to users in ways they can perceive.",
+        "explanation": "According to the WCAG standards, the perceivable principle is one of the four principles of accessibility and relates to the importance of accessible perception.",
+        "source": "https://www.w3.org/TR/WCAG21/#perceivable"
+      },
+      {
+        "val": 0,
+        "type": "2",
+        "content": "Information and the operation of user interface must be understandable."
+      },
+      {
+        "val": 0,
+        "type": "3",
+        "content": "None of the above"
+      }
+    ],
+    "multiChoice": false
+  },
+  {
+    "question": "Do users with hearing loss have a disadvantage when they use applications that utilize audio cues?",
+    "answers": [
+      {
+        "val": 1,
+        "type": "0",
+        "content": "Yes",
+        "explanation": "Users with hearing loss may not perceive audio cues which results in a disadvantage."
+      },
+      {
+        "val": 0,
+        "type": "1",
+        "content": "No"
+      }
+    ],
+    "multiChoice": false
+  }
+]
+', 1, 'ALL_Lab_1_Lecture_Slides.pptx', 'coming soon', true),
+       (1, 'Accessibility to Sound and Speech', 'Sound & Speech', 'Accessibility', '/ear.jpg', 'Learn about designing the web for the Deaf and Hard-of-Hearing community.', 'This lab explores the Perceivable accessibility principle in regards to sound and speech. This principle states that information and elements of the interface must be presented to users in ways they can perceive without loss of information. The lab demonstrates how having only audio cues for a certain objective makes the software inaccessible for users who are deaf or hard of hearing.', '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]', 'Jan Guillermo, Saad Khan, Heather Moses, Manali Chakraborty, Komal Sorte, Sakshi Karnawat', 'https://all.rit.edu/Lab1/', null, e'In this lab, you will learn why it is important to create software
             that is accessible to users with hearing impairments.
             You will learn how organizations like the National Association of the Deaf (NAD)
             fought for easier access for hearing impaired individuals,
