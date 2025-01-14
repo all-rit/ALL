@@ -2,15 +2,17 @@
 /* eslint-disable no-tabs */
 const db = require('../database');
 
-const updateGuestUserId = (userid, usersessionid) =>{
+const updateGuestUserId = (userid, usersessionid) => {
   return db.Session
       .findByPk(usersessionid)
       .then((session) => {
-        session.userid = userid;
-        session.save();
+        if (session) {
+          session.userid = userid;
+          return session.save();
+        }
         return true;
-      }).catch(()=> {
-        console.log('unable to update guest userid');
+      }).catch((error) => {
+        console.log('unable to update guest userid:', error);
         return true;
       });
 };
@@ -23,13 +25,26 @@ const authenticate = async (data) => {
     const email = data.emails[0].value;
     const userpfp = data.photos[0].value;
 
+    // First check if user exists with this email
+    const existingUser = await db.Users.findOne({where: {email1: email}});
+
+    if (existingUser) {
+      // If user exists, create or update session
+      const session = await db.Session.findOrCreate({
+        where: {usersessionid: userSessionID},
+        defaults: {userid: existingUser.userid},
+      });
+      return session[0]; // findOrCreate returns [instance, created]
+    }
+
+    // If no existing user, proceed with new account creation
     let session = await db.Session.findByPk(userSessionID);
     if (!session) {
       const newAccount = {
-        firstName: firstName,
-        lastInitial: lastInitial,
+        firstName,
+        lastInitial,
         email1: email,
-        userpfp: userpfp,
+        userpfp,
       };
       session = await createNewAccountAndSession(userSessionID, newAccount);
     }
@@ -48,10 +63,12 @@ const createNewAccountAndSession = async (userSessionID, newAccount) => {
       email1: newAccount.email1,
       userpfp: newAccount.userpfp,
     });
+
     const newSession = await db.Session.create({
       usersessionid: userSessionID,
       userid: user.userid,
     });
+
     return newSession;
   } catch (error) {
     console.error('Error creating new account and session', error);
@@ -74,17 +91,18 @@ const getSession = async (token) => {
     if (!session) {
       throw new Error('Invalid session token');
     }
+
     const user = await db.Users.findByPk(session.userid);
     if (!user) {
       throw new Error('User not found');
     }
+
     return {user, token};
   } catch (error) {
     console.error('Error getting session:', error);
     throw error;
   }
 };
-
 const getUserEnrolledGroups = (userid) => {
   return db.sequelize.query(
       `SELECT * FROM "enrollment" 
