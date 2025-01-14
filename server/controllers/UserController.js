@@ -52,8 +52,8 @@ const authenticateRedirect = passport.authenticate('google', {
 const authenticateCallback = async (req, res) => {
   try {
     const data = await UserService.authenticate(req.user.profile);
-    req.session.token = data.usersessionid;
     await UserService.updateGuestUserId(data.userid, req.session.token);
+    req.session.token = data.usersessionid;
     res.status(301);
     res.redirect(req.session.url);
   } catch (error) {
