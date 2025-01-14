@@ -29,8 +29,16 @@ const Home = () => {
 
   const getFeaturedLabs = async () => {
     const allLabs = await labService.getAllLabs();
-    const lab12 = allLabs[11];
-    const lab11 = allLabs[10];
+    let lab11;
+    let lab12;
+
+    allLabs.map((lab) => {
+      if (lab.labShortName == "Identity") {
+        lab12 = lab;
+      } else if (lab.labShortName == "Literacy") {
+        lab11 = lab;
+      }
+    });
 
     setFeaturedLabs([lab12, lab11]);
   };
