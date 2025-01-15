@@ -40,7 +40,8 @@ import Profile from "./components/body/profilepage/Profile";
 /** Miscellaneous Components and Redux **/
 import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
-import { default as Imagine } from "./components/imagine23/Main";
+import { default as Imagine23 } from "./components/imagine23/Main";
+import { default as Imagine2025 } from "./components/imagine25/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -123,7 +124,7 @@ const App = () => {
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
+              className={`app tw-z-1 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
                 ${
                   lab !== 0
                     ? `xs:tw-col-span-8 md:tw-col-span-5 tw-ml-6
@@ -146,11 +147,17 @@ const App = () => {
               />
               <Error actions={actions} default />
 
-              <Imagine
+              <Imagine23
                 path={"/Imagine/*"}
                 user={state.main.user}
                 isImagine={isImagine}
                 actions={actions}
+              />
+
+              <Imagine2025
+                path={"/Imagine2025/*"}
+                user={state.main.user}
+                isImagine={isImagine}
               />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
