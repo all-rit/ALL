@@ -59,10 +59,10 @@ const NewStudentProgress = (props) => {
             </p>
           </div>
           {assignedLabs ? (
-            assignedLabs?.map((lab, key) => {
+            assignedLabs.map((lab, labid) => {
               return (
                 <LabRow
-                  key={key}
+                  key={labid}
                   lab={lab}
                   studentProgress={true}
                   group={group}
@@ -71,7 +71,7 @@ const NewStudentProgress = (props) => {
               );
             })
           ) : (
-            <h2 className={"tw-title"}> No Labs to Display. </h2>
+            <p className={"tw-sub-title"}> No Labs to Display. </p>
           )}
         </div>
       </BrandedALLModal>
