@@ -93,7 +93,7 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div className="overflow-x-hidden tw-h-lvh">
+      <div className="tw-overflow-x-hidden tw-h-lvh">
         <Header />
         <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5">
           <div
@@ -123,7 +123,7 @@ const App = () => {
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
+              className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-overflow-x-hidden tw-relative
                 ${
                   lab !== 0
                     ? `xs:tw-col-span-8 md:tw-col-span-5 tw-ml-6

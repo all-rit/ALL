@@ -29,6 +29,12 @@ const authenticate = async (data) => {
     const existingUser = await db.Users.findOne({where: {email1: email}});
 
     if (existingUser) {
+      if (!existingUser.userpfp) {
+        existingUser.set({
+          userpfp: userpfp,
+        });
+        await existingUser.save();
+      }
       // If user exists, create or update session
       const session = await db.Session.findOrCreate({
         where: {usersessionid: userSessionID},
