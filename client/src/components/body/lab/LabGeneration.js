@@ -96,7 +96,7 @@ const LabGeneration = (props) => {
       return (
         <div
           className={
-            "tw-grid xs:tw-grid-cols-1 md:tw-grid-cols-2 tw-grid-h-full tw-w-full tw-gap-8"
+            "tw-grid xs:tw-grid-cols-1 md:tw-grid-cols-2 tw-w-full tw-gap-3"
           }
         >
           {labids.map((lab, index) => {

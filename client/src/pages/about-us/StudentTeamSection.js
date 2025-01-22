@@ -48,7 +48,7 @@ const StudentTeamSection = () => {
     <section
       id={"student-team"}
       className={
-        "tw-min-h-screen tw-flex tw-flex-col tw-bg-primary-blue tw-pb-10"
+        "tw-min-h-screen tw-flex tw-flex-col tw-bg-primary-blue tw-pb-10 tw-mb-10"
       }
     >
       <div className={"tw-flex tw-flex-col tw-bg-white tw-ml-16"}>
