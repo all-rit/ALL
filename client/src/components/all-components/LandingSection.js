@@ -1,8 +1,9 @@
 import React from "react";
 import { PropTypes } from "prop-types";
+import ALLButton from "./ALLButton";
 
 const LandingSection = (props) => {
-  const { title, body, img } = props;
+  const { title, body, img, hasButton, onClick, buttonLabel } = props;
   return (
     <section
       className={
@@ -33,6 +34,13 @@ const LandingSection = (props) => {
                 {title}
               </h2>
               <p className={"tw-body-text md:tw-w-1/2"}>{body}</p>
+              <div
+                className={"xs:tw-w-full md:tw-w-1/2 tw-flex tw-justify-end"}
+              >
+                {hasButton && (
+                  <ALLButton label={buttonLabel} onClick={onClick} />
+                )}
+              </div>
             </div>
           </div>
           <div
@@ -50,6 +58,9 @@ LandingSection.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   img: PropTypes.string,
+  hasButton: PropTypes.bool,
+  onClick: PropTypes.func,
+  buttonLabel: PropTypes.string,
 };
 
 export default LandingSection;

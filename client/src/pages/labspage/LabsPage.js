@@ -6,7 +6,6 @@ import { actions as mainActions } from "../../reducers/MainReducer";
 import LabService from "../../services/LabService";
 import Lab from "../../components/body/lab/Lab";
 import useMainStateContext from "../../reducers/MainContext";
-import ALLButton from "../../components/all-components/ALLButton";
 import { navigate } from "@reach/router";
 import BrandedALLModal from "../../components/all-components/BrandedALLModal";
 import LoginBody from "../../components/body/login/LoginBody";
@@ -198,7 +197,7 @@ const LabsPage = (props) => {
                     and more.`}
         img={Student}
       />
-      <div className="tw-relative tw-h-auto tw-w-full">
+      <div className="tw-relative tw-h-auto tw-w-full tw-mb-20">
         <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-w-full tw-relative tw-pb-16">
           <div
             className="tw-flex tw-bg-primary-blue tw-w-full -tw-left-8 tw-top-16
@@ -245,6 +244,7 @@ const LabsPage = (props) => {
                     onClick={() => {
                       handleSearchChange("ALL_LABS");
                     }}
+                    autoFocus
                   >
                     All Labs
                   </button>
@@ -329,48 +329,19 @@ const LabsPage = (props) => {
           </div>
         </div>
       </div>
-      <div className="tw-bg-primary-blue tw-h-128 tw-top-4 tw-relative tw-flex tw-justify-center tw-items-center">
-        <div className="tw-grid tw-w-full tw-h-1/2">
-          <div
-            className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end
-                                    tw-rounded-bl-lg tw-relative"
-          >
-            <div
-              className="tw-bg-white tw-w-full tw-h-[120%] tw-justify-self-end tw-self-center
-                                    tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4"
-            >
-              <div className="tw-flex tw-flex-col tw-h-full tw-px-6 tw-pb-6">
-                <div className="tw-flex tw-h-full tw-flex-col tw-max-w-128">
-                  <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-pt-8 tw-pb-3">
-                    View Your Progress
-                  </h2>
-                  <p className="tw-flex tw-body-text">
-                    Didn’t finish a lab? Come back and continue where you left
-                    off through your account profile. All of your progress will
-                    be saved as you complete each lab.
-                  </p>
-                </div>
-                <div className="tw-flex xs:tw-w-full md:tw-w-1/2 tw-flex-row tw-justify-end tw-py-6">
-                  <ALLButton
-                    label={"Your Account"}
-                    onClick={() => {
-                      handleNav();
-                    }}
-                  />
-                  {signInModalOpen && signInModal()}
-                </div>
-              </div>
-            </div>
-          </div>
-          <img
-            src={Girl}
-            className={
-              "tw-absolute tw-w-[20rem] tw-bottom-0 tw-right-10 xs:tw-invisible md:tw-visible"
-            }
-          />
-        </div>
-      </div>
-      <div className="tw-bg-white tw-h-28 tw-w-full" />
+      <LandingSection
+        title={"View Your Progress"}
+        body={
+          " Didn’t finish a lab? Come back and continue where you left " +
+          "off through your account profile. All of your progress will" +
+          " be saved as you complete each lab."
+        }
+        img={Girl}
+        hasButton={true}
+        buttonLabel={"Your Account"}
+        onClick={handleNav}
+      />
+      {signInModalOpen && signInModal()}
       <GettingInvolved />
     </div>
   );
