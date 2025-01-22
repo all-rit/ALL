@@ -198,7 +198,6 @@ const LabsPage = (props) => {
                     and more.`}
         img={Student}
       />
-      <div className="tw-bg-white tw-h-28 tw-w-full" />
       <div className="tw-relative tw-h-auto tw-w-full">
         <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-w-full tw-relative tw-pb-16">
           <div
@@ -340,18 +339,18 @@ const LabsPage = (props) => {
               className="tw-bg-white tw-w-full tw-h-[120%] tw-justify-self-end tw-self-center
                                     tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4"
             >
-              <div className="tw-flex xl:lg:md:tw-flex-row sm:tw-flex-col tw-h-full">
+              <div className="tw-flex tw-flex-col tw-h-full tw-px-6 tw-pb-6">
                 <div className="tw-flex tw-h-full tw-flex-col tw-max-w-128">
-                  <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-px-12 tw-pt-8 tw-pb-3">
+                  <h2 className="tw-flex tw-justify-left tw-font-bold tw-font-poppins tw-pt-8 tw-pb-3">
                     View Your Progress
                   </h2>
-                  <p className="tw-flex tw-body-text tw-pl-12">
+                  <p className="tw-flex tw-body-text">
                     Didn’t finish a lab? Come back and continue where you left
                     off through your account profile. All of your progress will
                     be saved as you complete each lab.
                   </p>
                 </div>
-                <div className="tw-flex xl:lg:md:tw-self-center tw-pl-4 sm:tw-pl-12">
+                <div className="tw-flex xs:tw-w-full md:tw-w-1/2 tw-flex-row tw-justify-end tw-py-6">
                   <ALLButton
                     label={"Your Account"}
                     onClick={() => {
@@ -365,7 +364,9 @@ const LabsPage = (props) => {
           </div>
           <img
             src={Girl}
-            className={"tw-absolute tw-w-[20rem] tw-bottom-0 tw-right-10"}
+            className={
+              "tw-absolute tw-w-[20rem] tw-bottom-0 tw-right-10 xs:tw-invisible md:tw-visible"
+            }
           />
         </div>
       </div>

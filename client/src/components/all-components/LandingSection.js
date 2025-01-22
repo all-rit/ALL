@@ -32,7 +32,7 @@ const LandingSection = (props) => {
               <h2 className={"tw-title xs:tw-text-xl md:tw-text-[2rem]"}>
                 {title}
               </h2>
-              <p className={"tw-body-text md:tw-w-1/2 lg:tw-w-3/5"}>{body}</p>
+              <p className={"tw-body-text md:tw-w-1/2"}>{body}</p>
             </div>
           </div>
           <div
