@@ -132,7 +132,7 @@ const Home = () => {
         </section>
         <img
           src={Girl3}
-          className="tw-absolute tw-h-[100%] tw-right-[5rem] tw-object-left-bottom tw-object-cover tw-invisible xxl:tw-visible"
+          className="tw-absolute tw-h-[100%] tw-right-[5rem] tw-object-left-bottom tw-object-cover xs:tw-invisible md:tw-visible"
         ></img>
       </div>
 
