@@ -32,6 +32,7 @@ const GroupForm = (props) => {
     groupColor,
     assignedLabs,
   } = props;
+
   const { actions } = useMainStateContext();
   const [labs, setLabs] = useState([]);
   const [checkedLabs, setCheckedLabs] = useState({});
@@ -80,10 +81,13 @@ const GroupForm = (props) => {
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const formData = new FormData(e.target);
       const groupName = formData.get("groupName") || "Default Group Name";
+
+      if (!groupName) {
+        throw new Error();
+      }
 
       let selectedLabs = Object.keys(checkedLabs)
         .filter((labID) => checkedLabs[labID])
@@ -160,6 +164,7 @@ const GroupForm = (props) => {
             id="groupName"
             defaultValue={groupName}
             placeholder="Enter Group Name Here"
+            required={true}
           />
         </FormGroup>
         <hr />
