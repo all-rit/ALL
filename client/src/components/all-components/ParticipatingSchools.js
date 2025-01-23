@@ -11,7 +11,7 @@ function display_schools(schools) {
           target="_blank"
           rel="noopener noreferrer"
           className={
-            "tw-m-5 tw-shadow-lg tw-rounded-lg tw-flex tw-items-center tw-p-10"
+            "tw-m-3 tw-shadow-lg tw-rounded-lg tw-flex tw-items-center xs:tw-p-3 md:tw-p-10"
           }
         >
           <img
@@ -40,7 +40,11 @@ const ParticipatingSchools = () => {
   return (
     <div className="tw-mb-20">
       <h1 className="tw-title tw-mt-20 tw-mb-10">Participating Schools</h1>
-      <div className={"tw-grid tw-w-full tw-grid-cols-4 tw-px-6"}>
+      <div
+        className={
+          "tw-grid tw-w-full xs:tw-grid-cols-2 md:tw-grid-cols-4 tw-px-6"
+        }
+      >
         {display_schools(schoolInformation)}
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const GettingInvolved = () => {
   return (
-    <div className={"tw-h-[20rem] tw-w-full tw-mb-[10rem]"}>
+    <div className={"tw-h-[20rem] tw-w-full"}>
       <div
         className={
           "tw-h-full tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"

@@ -67,36 +67,36 @@ const Home = () => {
         id="student"
       >
         <div className="tw-bg-white tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-mr-10 tw-p-4 sm:tw-p-8 tw-border-solid tw-border-b-0 tw-border-l-0 tw-border-t-12 tw-border-r-12 tw-rounded-tr-lg tw-border-primary-blue">
-          <div className="tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-4 md:tw-gap-16 tw-mt-4">
-            <div className="tw-flex tw-flex-col">
-              <h1 className="tw-text-center sm:tw-text-left tw-mb-4 tw-title">
-                Are You a Student?
-              </h1>
-              <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-body-text">
-                Use the code that your instructor has provided to join a group!
-                If not, please explore all of the labs that are available for
-                everyone, including our featured labs.
-              </p>
-              <h1 className="tw-text-center sm:tw-text-left tw-mt-16 tw-mb-4 tw-title tw-hidden md:tw-block">
+          <div className="tw-w-3/4 tw-flex tw-flex-col tw-justify-center">
+            <div className="tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-4 md:tw-gap-16 tw-mt-4">
+              <div className="tw-flex tw-flex-col">
+                <h1 className="tw-text-center sm:tw-text-left tw-mb-4 tw-title">
+                  Are You a Student?
+                </h1>
+                <p className="tw-text-wrap tw-text-left tw-max-w-80 tw-body-text">
+                  Use the code that your instructor has provided to join a
+                  group! If not, please explore all of the labs that are
+                  available for everyone, including our featured labs.
+                </p>
+                <h1 className="tw-text-center sm:tw-text-left tw-mt-16 tw-mb-4 tw-title tw-hidden md:tw-block">
+                  Featured Labs
+                </h1>
+              </div>
+              <div className="tw-flex tw-flex-row md:tw-flex-col tw-gap-4 tw-mt-6">
+                <ALLButton
+                  label={"Join a Group"}
+                  onClick={handleNavGroups}
+                  className="tw-mb-6"
+                ></ALLButton>
+                <ALLButton
+                  label={"Explore Labs"}
+                  onClick={handleNavLabs}
+                ></ALLButton>
+              </div>
+              <h1 className="tw-text-left tw-mt-16 tw-mb-4 tw-title tw-block md:tw-hidden">
                 Featured Labs
               </h1>
             </div>
-            <div className="tw-flex tw-flex-row md:tw-flex-col tw-gap-4">
-              <ALLButton
-                label={"Join a Group"}
-                onClick={handleNavGroups}
-                className="tw-mb-6"
-              ></ALLButton>
-              <ALLButton
-                label={"Explore Labs"}
-                onClick={handleNavLabs}
-              ></ALLButton>
-            </div>
-            <h1 className="tw-text-center sm:tw-text-left tw-mt-16 tw-mb-4 tw-title tw-block md:tw-hidden">
-              Featured Labs
-            </h1>
-          </div>
-          <div className="tw-grid">
             <LabGeneration
               actions={actions}
               labids={featuredLabs}
@@ -108,33 +108,19 @@ const Home = () => {
       <div className="tw-bg-white tw-h-32"></div>
 
       {/* Are you an Educator? */}
-      <div className="tw-relative tw-flex tw-flex-col" id="educator">
-        <section className="tw-flex tw-bg-primary-blue tw-justify-center tw-items-center tw-py-[75px] sm:tw-py-[150px]">
-          <div className="tw-grid tw-w-full tw-h-1/2">
-            <div className="tw-bg-primary-yellow tw-w-11/12 tw-h-4/5 tw-justify-self-end tw-self-end tw-rounded-bl-lg tw-relative">
-              <div className="tw-bg-white tw-w-full tw-h-[120%] tw-p-10 tw-justify-self-end tw-self-center tw-rounded-bl-lg tw-relative tw-bottom-14 tw-left-4 tw-flex tw-items-start tw-flex-col tw-gap-8">
-                <h1 className="tw-title">Are You an Educator?</h1>
-                <div className="tw-flex tw-flex-col sm:tw-flex-row tw-gap-4 sm:tw-gap-16">
-                  <p className="sm:tw-max-w-[90%] md:tw-max-w-128 tw-text-wrap tw-text-left tw-body-text">
-                    Access the ability to create groups for your students, track
-                    their lab progress, date of completion, and quiz grade. Find
-                    more information and resources under our Educator Resources
-                    page.
-                  </p>
-                  <ALLButton
-                    label={"Educator Resources"}
-                    onClick={handleNavEducators}
-                  ></ALLButton>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <img
-          src={Girl3}
-          className="tw-absolute tw-h-[100%] tw-right-[5rem] tw-object-left-bottom tw-object-cover xs:tw-invisible md:tw-visible"
-        ></img>
-      </div>
+      <LandingSection
+        title={"Are You an Educator?"}
+        body={
+          "Access the ability to create groups for your students, track\n" +
+          "                    their lab progress, date of completion, and quiz grade. Find\n" +
+          "                    more information and resources under our Educator Resources\n" +
+          "                    page."
+        }
+        img={Girl3}
+        hasButton={true}
+        buttonLabel={"Educator Resources"}
+        onClick={handleNavEducators}
+      />
 
       {/* About Us */}
       <YellowBlockSection
