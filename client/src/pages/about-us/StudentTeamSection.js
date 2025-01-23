@@ -20,8 +20,8 @@ const StudentTeamSection = () => {
     const groupMembers = (members, setMembers) => {
       const groupedMembers = [];
       if (window.innerWidth > 640) {
-        for (let i = 0; i < members.length; i += 4) {
-          groupedMembers.push(members.slice(i, i + 4));
+        for (let i = 0; i < members.length; i += 5) {
+          groupedMembers.push(members.slice(i, i + 5));
         }
       } else {
         for (let i = 0; i < members.length; i += 1) {
