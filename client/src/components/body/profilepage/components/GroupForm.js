@@ -177,13 +177,13 @@ const GroupForm = (props) => {
               Select a color for this group to distinguish it from the others!{" "}
             </p>
           </div>
-          <div className={"tw-grid tw-grid-cols-2 tw-gap-5 tw-w-1/2 tw-py-5"}>
+          <div className={"tw-grid tw-grid-cols-2 tw-gap-8 tw-w-1/2 tw-py-5"}>
             {cardColors.map((color, key) => {
               return (
                 <div
                   key={key}
                   className={
-                    "tw-flex tw-flex-row tw-h-[5rem] tw-w-[10rem] tw-items-center"
+                    "tw-flex tw-flex-row lg:tw-h-[5rem] lg:tw-w-[10rem] tw-h-[2rem] tw-w-[5rem] tw-items-center"
                   }
                 >
                   <Input
