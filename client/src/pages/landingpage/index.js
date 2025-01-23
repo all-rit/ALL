@@ -120,6 +120,7 @@ const Home = () => {
         hasButton={true}
         buttonLabel={"Educator Resources"}
         onClick={handleNavEducators}
+        shrinkImg={true}
       />
 
       {/* About Us */}

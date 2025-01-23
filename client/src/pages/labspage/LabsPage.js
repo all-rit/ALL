@@ -340,6 +340,7 @@ const LabsPage = (props) => {
         hasButton={true}
         buttonLabel={"Your Account"}
         onClick={handleNav}
+        shrinkImg={true}
       />
       {signInModalOpen && signInModal()}
       <GettingInvolved />

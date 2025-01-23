@@ -3,7 +3,8 @@ import { PropTypes } from "prop-types";
 import ALLButton from "./ALLButton";
 
 const LandingSection = (props) => {
-  const { title, body, img, hasButton, onClick, buttonLabel } = props;
+  const { title, body, img, hasButton, onClick, buttonLabel, shrinkImg } =
+    props;
   return (
     <section
       className={
@@ -13,9 +14,7 @@ const LandingSection = (props) => {
       {img && (
         <img
           src={img}
-          className={
-            "tw-absolute tw-bg-none xs:tw-hidden md:tw-flex md:tw-max-w-[17rem] tw-bottom-0 tw-right-[10%] tw-z-10"
-          }
+          className={`tw-absolute tw-bg-none xs:tw-hidden md:tw-flex ${shrinkImg ? "md:tw-w-[15rem]" : "md:tw-w-[25rem]"} tw-bottom-0 tw-right-[10%] tw-z-10`}
         />
       )}
       <div className={"tw-flex tw-flex-col tw-justify-center"}>
@@ -61,6 +60,7 @@ LandingSection.propTypes = {
   hasButton: PropTypes.bool,
   onClick: PropTypes.func,
   buttonLabel: PropTypes.string,
+  shrinkImg: PropTypes.bool,
 };
 
 export default LandingSection;

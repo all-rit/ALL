@@ -63,6 +63,7 @@ const MemberDisplay = (props) => {
 
   useEffect(() => {
     fetchLabsAndSetCredits(currentMember);
+    favoriteLab(currentMember);
   }, [currentMember]);
 
   const next = () => {
