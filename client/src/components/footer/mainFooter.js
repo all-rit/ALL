@@ -197,7 +197,7 @@ class MainFooter extends Component {
               <NavItem className="tw-pr-6">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                  href="#"
+                  href="/#"
                 >
                   <p className="tw-text-base tw-text-white tw-font-bold">
                     Home
@@ -217,7 +217,7 @@ class MainFooter extends Component {
               <NavItem className="px-4 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                  href="#about"
+                  href="/about-us"
                 >
                   <p className="tw-text-base tw-text-white tw-font-bold">
                     About Us
@@ -227,7 +227,7 @@ class MainFooter extends Component {
               <NavItem className="px-4 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
                 <NavLink
                   className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                  href="#resources"
+                  href="/EducatorResources"
                 >
                   <p className="tw-text-base tw-text-white tw-font-bold">
                     Educator Resources
