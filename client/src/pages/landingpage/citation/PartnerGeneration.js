@@ -13,7 +13,7 @@ const PartnerGeneration = () => {
   }, []);
 
   return (
-    <div className="tw-grid tw-col-items-start tw-grid-cols-2 lg:tw-grid-cols-3 tw-my-10 tw-px-5 lg:tw-px-20">
+    <div className="tw-grid tw-col-items-start tw-grid-cols-2 lg:tw-grid-cols-3 tw-my-10 tw-px-5">
       {partnerInformation.map((devInfo, index) => (
         <a
           href={devInfo.websiteURL}

@@ -13,11 +13,7 @@ const YellowBlockSection = (props) => {
   };
 
   return (
-    <div
-      className={
-        "tw-h-[20rem] tw-w-full tw-mt-[5rem] tw-mb-[2rem] lg:tw-mb-[20rem]"
-      }
-    >
+    <div className={"tw-h-[20rem] tw-w-full xs:tw-mb-[5rem] md:tw-mb-[20rem]"}>
       <div
         className={
           "tw-h-3/4 tw-border-t-[4rem] tw-border-r-[1.5rem] tw-border-b-0 tw-border-l-0 tw-border-solid tw-border-primary-yellow tw-bg-primary-yellow"
@@ -29,7 +25,7 @@ const YellowBlockSection = (props) => {
           }
         >
           <div
-            className={`tw-flex xs:tw-flex-col md:tw-flex-row tw-text-left xs:tw-w-full md:tw-w-1/2 tw-p-3 tw-min-h-[15rem]`}
+            className={`tw-flex xs:tw-flex-col md:tw-flex-row tw-text-left xs:tw-w-full md:tw-w-1/2 md:tw-p-3 xs:tw-p-10 tw-min-h-[15rem]`}
           >
             <div
               className={
@@ -44,7 +40,7 @@ const YellowBlockSection = (props) => {
                 {" "}
                 {title}
               </p>
-              <p className={"tw-body-text tw-leading-normal"}> {body}</p>
+              <p className={"tw-body-text tw-leading-snug"}> {body}</p>
             </div>
             <div
               className={
@@ -58,7 +54,7 @@ const YellowBlockSection = (props) => {
       </div>
       <div
         className={
-          "tw-w-full tw-h-1/2 tw-flex tw-flex-row tw-justify-center xs:tw-collapse md:tw-visible"
+          "tw-w-full tw-h-1/2 tw-flex-row tw-justify-center xs:tw-hidden md:tw-flex"
         }
       >
         <div

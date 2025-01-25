@@ -97,14 +97,7 @@ const App = () => {
         <Header />
         <Suspense fallback={<div className={"tw-body-text"}> Loading... </div>}>
           <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5">
-            <div
-              className={
-                "" +
-                (lab !== 0
-                  ? "tw-grid tw-grid-cols-6 tw-flex-row tw-w-full tw-h-[40rem] tw-justify-between tw-mt-[10rem] tw-px-[4rem]"
-                  : "")
-              }
-            >
+            <div className={""}>
               {lab !== 0 && (
                 <div className={"tw-flex"}>
                   <div>
