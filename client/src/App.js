@@ -40,7 +40,7 @@ import Profile from "./components/body/profilepage/Profile";
 /** Miscellaneous Components and Redux **/
 import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
-import { default as Imagine23 } from "./components/imagine23/Main";
+import { default as Imagine2023 } from "./components/imagine23/Main";
 import { default as Imagine2025 } from "./components/imagine25/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
@@ -147,7 +147,7 @@ const App = () => {
               />
               <Error actions={actions} default />
 
-              <Imagine23
+              <Imagine2023
                 path={"/Imagine/*"}
                 user={state.main.user}
                 isImagine={isImagine}
