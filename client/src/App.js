@@ -95,7 +95,7 @@ const App = () => {
   return (
     <>
       <div className="overflow-x-hidden tw-h-lvh">
-        <Header />
+        <Header isImagine={isImagine} />
         <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5">
           <div
             className={
@@ -208,7 +208,7 @@ const App = () => {
             </Router>
           </div>
         </div>
-        {lab === 0 && <MainFooter />}
+        {lab === 0 && <MainFooter isImagine={isImagine} />}
         <ALLSnackbar />
         {lab !== 0 && (
           <LabFooter

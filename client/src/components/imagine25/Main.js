@@ -8,17 +8,17 @@ const Main = () => {
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
         <div
           className={
-            "tw-grid tw-grid-cols-8 tw-grid-rows-6 tw-w-full tw-h-[40rem] tw-gap-y-6 tw-pl-6"
+            "tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[40rem] tw-gap-y-6 tw-pl-6"
           }
         >
           <div
             className={
-              "tw-row-span-2 tw-col-span-8 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
+              "tw-row-span-3 tw-col-span-8 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
             }
           />
           <div
             className={
-              "tw-row-span-4 tw-col-span-8 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
+              "tw-row-span-5 tw-col-span-8 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
             }
           />
         </div>
