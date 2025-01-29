@@ -175,7 +175,7 @@ function Result(props) {
   }
 
   const handleImagineSurvey = () => {
-    navigate("/Imagine/PostSurvey");
+    navigate("/Imagine2023/PostSurvey");
   };
 
   return (

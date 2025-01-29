@@ -20,7 +20,7 @@ function Survey(props) {
   }
 
   return (
-    <div className="quiz container shadow" key={props.questionId}>
+    <div className="quiz container" key={props.questionId}>
       <QuestionCount counter={props.questionId} total={props.questionTotal} />
       <h2 className="quiz question">
         {props.question} {props.multiChoice && " Select all that apply."}

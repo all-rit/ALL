@@ -29,7 +29,7 @@ const SecondInstructions = ({
     if (!isImagineExpression) {
       closePage();
     } else {
-      navigate("/Imagine/ExpressionExerciseStart");
+      navigate("/Imagine2023/ExpressionExerciseStart");
     }
   };
 

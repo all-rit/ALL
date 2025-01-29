@@ -4,7 +4,7 @@ import useScroll from "../../../use-hooks/useScroll";
 
 const ExpressionInstructions = () => {
   const handleNext = () => {
-    navigate("/Imagine/ExpressionInstructions");
+    navigate("/Imagine2023/ExpressionInstructions");
   };
   useScroll();
   return (

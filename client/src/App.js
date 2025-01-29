@@ -148,7 +148,7 @@ const App = () => {
               <Error actions={actions} default />
 
               <Imagine2023
-                path={"/Imagine/*"}
+                path={"/Imagine2023/*"}
                 user={state.main.user}
                 isImagine={isImagine}
                 actions={actions}
