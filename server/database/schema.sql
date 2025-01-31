@@ -3,9 +3,8 @@ create table imagine25
 (
     id                           serial,
     userid                       text,
-    age                          integer,
-    gender                       text,
-    race                         text,
+    "preSurvey"                  json,
+    "postSurvey"                 json,
     groupType                    enum_imagine25,
     "avatar"                     json,
     "TeammateAvatar"             json,
