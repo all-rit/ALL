@@ -1,3 +1,22 @@
+create type enum_imagine25 as enum ('experiential','expression','control');
+create table imagine25
+(
+    id                           serial,
+    userid                       text,
+    age                          integer,
+    gender                       text,
+    race                         text,
+    groupType                    enum_imagine25,
+    "avatar"                     json,
+    "TeammateAvatar"             json,
+    "OpponentAvatar"             json,
+    readingSpeed               integer,
+    quizScore                  integer,
+    gameOutcome               integer,
+    primary key (id)
+);
+
+
 create table imagine22
 (
     id              serial,
