@@ -2359,3 +2359,11 @@ body {
 .social-svg {
   border-radius: 25% !important;
 }
+
+.blue-drop-shadow:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 5px -5px 5px 0px;
+}
+
+.yellow-drop-shadow:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) -5px 5px 5px 0px;
+}

@@ -37,6 +37,7 @@ const Main = (props) => {
   const [userID, setUserID] = useState(null);
 
   const labId = 2;
+  const year = 23;
   const [isExperiential, setIsExperiential] = useState(false);
 
   const context = useMainStateContext();
@@ -46,9 +47,9 @@ const Main = (props) => {
     setIsExperiential(isExperiential);
 
     if (isExperiential) {
-      navigate("/Imagine/ExperientialStart");
+      navigate("/Imagine2023/ExperientialStart");
     } else {
-      navigate("/Imagine/ExpressionStart");
+      navigate("/Imagine2023/ExpressionStart");
     }
   }
 
@@ -66,118 +67,149 @@ const Main = (props) => {
   }, [user]);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-12 text-center">
+    <div className=" tw-min-h-[40rem] tw-mt-[10%]">
+      <div className={"tw-relative"}>
+        <div className="tw-bg-primary-blue tw-absolute tw-right-14  tw-top-[-2rem] tw-z-1 tw-border-0 tw-rounded-xl tw-shadow-lg">
           {/* change font size */}
-          <h2 className="section-heading text-uppercase tw-text-right tw-text-[5vw] md:tw-text-[4vw] lg:tw-text-[3.5vh]">
-            {"ID#" + userID}
+          <h2 className=" text-uppercase tw-title tw-p-6 tw-text-white">
+            {"ID: " + userID}
           </h2>
         </div>
       </div>
-      <div className="bottomSpace">
-        <Router className="app">
-          <UpdateID
-            default
-            path="/"
-            actions={actions}
-            setUserID={setUserID}
-            isImagine={isImagine}
-            user={user}
+      <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
+        <div
+          className={
+            "tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[40rem] tw-gap-y-6 tw-pl-6"
+          }
+        >
+          <div
+            className={
+              "tw-row-span-3 tw-col-span-8 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
+            }
           />
-          <Survey
-            path={`/PreSurvey`}
-            userID={userID}
-            type="pre"
-            isImagine={isImagine}
-            handleGroupAssignment={handleGroupAssignment}
+          <div
+            className={
+              "tw-row-span-5 tw-col-span-8 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
+            }
           />
-          <LandingPage
-            path="/ExperientialStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExpressionInstructions
-            path="/ExpressionStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <MainInstructions
-            path="/ExperientialInstructions"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExpressionMainInstructions
-            path="/ExpressionInstructions"
-            actions={actions}
-            state={state}
-            userID={userID}
-          />
-          <ExerciseLab2
-            path="/ExperientialExercise"
-            actions={actions}
-            state={state}
-            isImagine
-            userID={userID}
-          />
-          <ExerciseLab2
-            path="/ExpressionActivity"
-            actions={actions}
-            state={state}
-            isImagine
-            isImagineExpression
-            userID={userID}
-          />
-          <ExpressionStart
-            path="/ExpressionExerciseStart"
-            actions={actions}
-            state={state}
-            userID={userID}
-            setCount={setCount}
-          />
-          <ExpressionExercise
-            path="/ExpressionExercise"
-            actions={actions}
-            state={state}
-            setCount={setCount}
-            count={count}
-            userID={userID}
-          />
-          <ExpressionExercise2
-            path="/ExpressionPOCExercise"
-            actions={actions}
-            state={state}
-            setCount={setCount}
-            count={count}
-            userID={userID}
-          />
-          <ExpressionScore
-            path="/ExpressionScore"
-            actions={actions}
-            state={state}
-            count={count}
-            userID={userID}
-          />
-          <Reading
-            path={`/Reading`}
-            user={state.main.user}
-            userID={userID}
-            labID={labId}
-            isImagine={isImagine}
-          />
-          <Survey path={`/PostSurvey`} userID={userID} type="post" />
-          <ExerciseEnd
-            path="/ExerciseEnd"
-            actions={actions}
-            state={state}
-            isExperiential={isExperiential}
-            userID={userID}
-            resetSystem={resetSystem}
-          />
-        </Router>
+        </div>
+        <div
+          className={
+            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-[80%] shadow tw-rounded-xl tw-p-6"
+          }
+        >
+          <Router className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center">
+            <UpdateID
+              default
+              path="/"
+              actions={actions}
+              setUserID={setUserID}
+              isImagine={isImagine}
+              user={user}
+            />
+            <Survey
+              path={`/PreSurvey`}
+              userID={userID}
+              type="pre"
+              year={year}
+              isImagine={isImagine}
+              handleGroupAssignment={handleGroupAssignment}
+            />
+            <LandingPage
+              path="/ExperientialStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExpressionInstructions
+              path="/ExpressionStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <MainInstructions
+              path="/ExperientialInstructions"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExpressionMainInstructions
+              path="/ExpressionInstructions"
+              actions={actions}
+              state={state}
+              userID={userID}
+            />
+            <ExerciseLab2
+              path="/ExperientialExercise"
+              actions={actions}
+              state={state}
+              isImagine
+              userID={userID}
+            />
+            <ExerciseLab2
+              path="/ExpressionActivity"
+              actions={actions}
+              state={state}
+              isImagine
+              isImagineExpression
+              userID={userID}
+            />
+            <ExpressionStart
+              path="/ExpressionExerciseStart"
+              actions={actions}
+              state={state}
+              userID={userID}
+              setCount={setCount}
+            />
+            <ExpressionExercise
+              path="/ExpressionExercise"
+              actions={actions}
+              state={state}
+              setCount={setCount}
+              count={count}
+              userID={userID}
+              year={year}
+            />
+            <ExpressionExercise2
+              path="/ExpressionPOCExercise"
+              actions={actions}
+              state={state}
+              setCount={setCount}
+              count={count}
+              userID={userID}
+              year={year}
+            />
+            <ExpressionScore
+              path="/ExpressionScore"
+              actions={actions}
+              state={state}
+              count={count}
+              userID={userID}
+            />
+            <Reading
+              path={`/Reading`}
+              user={state.main.user}
+              userID={userID}
+              labID={labId}
+              isImagine={isImagine}
+              year={year}
+            />
+            <Survey
+              path={`/PostSurvey`}
+              userID={userID}
+              type="post"
+              year={year}
+            />
+            <ExerciseEnd
+              path="/ExerciseEnd"
+              actions={actions}
+              state={state}
+              isExperiential={isExperiential}
+              userID={userID}
+              resetSystem={resetSystem}
+            />
+          </Router>
+        </div>
       </div>
     </div>
   );

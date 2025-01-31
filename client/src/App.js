@@ -40,7 +40,8 @@ import Profile from "./components/body/profilepage/Profile";
 /** Miscellaneous Components and Redux **/
 import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
-import { default as Imagine } from "./components/imagine23/Main";
+import { default as Imagine2023 } from "./components/imagine23/Main";
+import { default as Imagine2025 } from "./components/imagine25/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -94,8 +95,8 @@ const App = () => {
   return (
     <>
       <div className="overflow-x-hidden tw-h-lvh">
-        <Header />
-        <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5">
+        <Header isImagine={isImagine} />
+        <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5">
           <div
             className={
               "" +
@@ -123,7 +124,7 @@ const App = () => {
             )}
             <Router
               basepath={process.env.PUBLIC_URL}
-              className={`app tw-z-10 tw-bg-white tw-rounded-lg tw-overflow-y-scroll tw-relative
+              className={`app tw-z-1 tw-bg-white tw-rounded-lg tw-overflow-auto tw-relative
                 ${
                   lab !== 0
                     ? `xs:tw-col-span-8 md:tw-col-span-5 tw-ml-6
@@ -146,11 +147,17 @@ const App = () => {
               />
               <Error actions={actions} default />
 
-              <Imagine
-                path={"/Imagine/*"}
+              <Imagine2023
+                path={"/Imagine2023/*"}
                 user={state.main.user}
                 isImagine={isImagine}
                 actions={actions}
+              />
+
+              <Imagine2025
+                path={"/Imagine2025/*"}
+                user={state.main.user}
+                isImagine={isImagine}
               />
 
               <About path={`/Lab${lab}/`} user={state.main.user} labID={lab} />
@@ -201,7 +208,7 @@ const App = () => {
             </Router>
           </div>
         </div>
-        {lab === 0 && <MainFooter />}
+        {lab === 0 && <MainFooter isImagine={isImagine} />}
         <ALLSnackbar />
         {lab !== 0 && (
           <LabFooter

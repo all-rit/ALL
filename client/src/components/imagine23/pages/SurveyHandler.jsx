@@ -42,6 +42,7 @@ function assignQuizQuestions(surveyType) {
  * component with information.
  */
 const SurveyHandler = (props) => {
+  const { userID, type, year } = props;
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions] = useState(assignQuizQuestions(props.type));
   const [answerOption, setAnswerOption] = useState(
@@ -71,15 +72,19 @@ const SurveyHandler = (props) => {
    * to display to the user for the result portion of the quiz.
    */
   async function onComplete(surveyType) {
-    setSurveyComplete(true);
-    if (surveyType === "pre") {
-      // will need to be changed with next logic story
-      const response = await activitySelector();
-      return response;
-      // This will handle navigation
-    } else if (surveyType === "post") {
-      ImagineService.postSurvey(props.userID, selectedAnswers);
-      navigate("/Imagine/ExerciseEnd");
+    try {
+      setSurveyComplete(true);
+      if (surveyType === "pre") {
+        // will need to be changed with next logic story
+        const response = await activitySelector();
+        return response;
+        // This will handle navigation
+      } else if (surveyType === "post") {
+        await ImagineService.postSurvey(userID, selectedAnswers, year);
+        navigate("/Imagine2023/ExerciseEnd");
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
   /**
@@ -91,18 +96,21 @@ const SurveyHandler = (props) => {
     const response = await ImagineService.preSurvey(
       props.userID,
       selectedAnswers,
+      year,
     );
-    const section = (await response.text()).replace(/['"]+/g, "");
 
-    if (section == "experiential" || section === "control") {
-      navigate("/Imagine/ExperientialStart");
-    } else if (
-      section === "discomfortCountNonPOC" ||
-      section === "discomfortCountPOC"
-    ) {
-      navigate("/Imagine/ExpressionStart");
-    } else {
-      console.log("Navigating to None");
+    const section = (await response.text()).replace(/['"]+/g, "");
+    if (year === 23) {
+      if (section === "experiential" || section === "control") {
+        navigate("/Imagine2023/ExperientialStart");
+      } else if (
+        section === "discomfortCountNonPOC" ||
+        section === "discomfortCountPOC"
+      ) {
+        navigate("/Imagine2023/ExpressionStart");
+      } else {
+        console.error("Navigating to None");
+      }
     }
   }
 
@@ -178,7 +186,7 @@ const SurveyHandler = (props) => {
           onAnswerSelected={selectAnswer}
           onMultiSelected={selectMulti}
           nextQuestion={handleNext}
-          onComplete={() => onComplete(props.type)}
+          onComplete={() => onComplete(type)}
         ></Survey>
       ) : (
         <div className="flex !tw-justify-center items-center">
@@ -193,5 +201,6 @@ SurveyHandler.propTypes = {
   userID: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   handleGroupAssignment: PropTypes.func, // optional
+  year: PropTypes.number.isRequired,
 };
 export default SurveyHandler;

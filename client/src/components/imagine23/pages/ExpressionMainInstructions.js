@@ -5,7 +5,7 @@ import "./landingpage.css";
 
 const ExpressionMainInstructions = () => {
   const handleNext = () => {
-    navigate("/Imagine/ExpressionActivity");
+    navigate("/Imagine2023/ExpressionActivity");
   };
   return (
     <div className="mainInstructionsContainer">
