@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import LabButton from "../../all-components/LabButton";
-import { navigate } from "@reach/router";
+import { ROUTES } from "../../../constants/lab0";
+import Lab0Context from "./Lab0Context";
 
 const SelectExercise = () => {
-  const handleNav = (route) => {
-    navigate(`/Lab0/Exercise/${route}`);
-  };
+  const { WRITE_LAB_INTRO, DEVELOP_LAB_INTRO } = ROUTES;
+
+  const { handleNav } = useContext(Lab0Context);
 
   return (
     <div className={"tw-p-3"}>
@@ -32,11 +33,11 @@ const SelectExercise = () => {
       >
         <LabButton
           label={"How to Write a Lab"}
-          onClick={() => handleNav("WriteLabIntro")}
+          onClick={() => handleNav(WRITE_LAB_INTRO)}
         />
         <LabButton
           label={"How to Develop a Lab"}
-          onClick={() => handleNav("DevelopLabIntro")}
+          onClick={() => handleNav(DEVELOP_LAB_INTRO)}
         />
       </div>
     </div>

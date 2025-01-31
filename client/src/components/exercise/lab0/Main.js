@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Router } from "@reach/router";
+import { navigate, Router } from "@reach/router";
 import SelectExercise from "./SelectExercise";
-import GameStateContext from "./Lab0Context";
+import Lab0Context from "./Lab0Context";
 import { EXERCISE_STATES } from "../../../constants/lab0";
 
 const Main = () => {
@@ -9,13 +9,19 @@ const Main = () => {
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
 
+  const handleNav = (route) => {
+    navigate(`/Lab0/Exercise/${route}`);
+  };
+
   return (
     <>
-      <GameStateContext.Provider value={{ exerciseState, setExerciseState }}>
-        <Router className={"tw-p-3"}>
+      <Lab0Context.Provider
+        value={{ exerciseState, setExerciseState, handleNav }}
+      >
+        <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
           <SelectExercise default path={"/*"} />
         </Router>
-      </GameStateContext.Provider>
+      </Lab0Context.Provider>
     </>
   );
 };
