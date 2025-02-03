@@ -5,13 +5,13 @@ create table imagine25
     userid                       text,
     "preSurvey"                  json,
     "postSurvey"                 json,
-    groupType                    enum_imagine25,
+    "groupType"                    enum_imagine25,
     "avatar"                     json,
-    "TeammateAvatar"             json,
-    "OpponentAvatar"             json,
-    readingSpeed               integer,
-    quizScore                  integer,
-    gameOutcome               integer,
+    "teammateAvatar"             json,
+    "opponentAvatar"             json,
+    "readingSpeed"               integer,
+    "quizScore"                  integer,
+    "gameOutcome"               integer,
     primary key (id)
 );
 
