@@ -5,7 +5,7 @@ create table imagine25
     userid                       text,
     "preSurvey"                  json,
     "postSurvey"                 json,
-    "groupType"                    enum_imagine25,
+    "section"                    enum_imagine25,
     "avatar"                     json,
     "teammateAvatar"             json,
     "opponentAvatar"             json,
