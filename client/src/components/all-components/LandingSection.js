@@ -14,7 +14,7 @@ const LandingSection = (props) => {
         <img
           src={img}
           className={
-            "tw-absolute tw-bg-none xs:tw-hidden md:tw-flex md:tw-w-[25rem] tw-bottom-0 tw-right-0 tw-z-10"
+            "tw-absolute tw-bg-none xs:tw-hidden md:tw-flex md:tw-h-[90%] tw-bottom-0 tw-right-0 tw-z-10 tw-right-[10rem]"
           }
         />
       )}
