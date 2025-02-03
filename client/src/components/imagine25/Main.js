@@ -1,5 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
+import AvatarCreation from "./AvatarCreation";
 import UpdateId from "./UpdateId";
 
 const Main = () => {
@@ -29,6 +30,7 @@ const Main = () => {
         >
           <Router>
             <UpdateId default path={"/"} />
+            <AvatarCreation path={"/avatarCreation"} />
           </Router>
         </div>
       </div>
