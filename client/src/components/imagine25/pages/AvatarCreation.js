@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Avatar from "avataaars";
-import useMainStateContext from "../../reducers/MainContext";
+import useMainStateContext from "../../../reducers/MainContext";
 import {
   Dropdown,
   DropdownToggle,
@@ -49,6 +49,9 @@ const AvatarCreation = () => {
   //removes lame buttons from top of screen
   const { actions } = useMainStateContext();
   const startImagine = () => actions.setIsImagine(true);
+  useEffect(() => {
+    startImagine();
+  }, []);
 
   //keep track of current avatar state
   const [hairStyle, setHairStyle] = useState("LongHairStraight");
@@ -56,9 +59,6 @@ const AvatarCreation = () => {
   const [shirtColor, setShirtColor] = useState("Blue");
   const [skinColor, setSkinColor] = useState("Light");
 
-  useEffect(() => {
-    startImagine();
-  }, []);
   return (
     <>
       <p>Design your avatar!</p>

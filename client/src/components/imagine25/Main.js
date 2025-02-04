@@ -1,6 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
-import AvatarCreation from "./AvatarCreation";
+import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
 
 const Main = () => {
