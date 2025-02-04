@@ -165,7 +165,6 @@ const SurveyHandler = (props) => {
       // assigns it to the array
       tempAnswers[currentQuestionCursor] = storageSet;
     }
-
     tempAnswers[currentQuestionCursor] = {
       question: questions[currentQuestionCursor].question,
       answer: Array.from(storageSet),

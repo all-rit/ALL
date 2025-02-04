@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import QuestionCount from "../../quiz/components/AnswerOption";
+import { React, useState } from "react";
+import { PropTypes } from "prop-types";
+import QuestionCount from "../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 
 function Survey(props) {
@@ -28,7 +28,7 @@ function Survey(props) {
         {props.answerOptions.map(renderAnswerOptions)}
       </ul>
       <div className="align-right">
-        {props.questionId !== props.questionTotal ? (
+        {props.questionId !== props.questionTotal && !props.isUnderAge ? (
           <button
             className="btn btn-second text-uppercase  nextButton"
             onClick={props.nextQuestion}
@@ -63,5 +63,7 @@ Survey.propTypes = {
   nextQuestion: PropTypes.string,
   disable: PropTypes.boolean,
   onComplete: PropTypes.func,
+  isUnderAge: PropTypes.boolean,
 };
+
 export default Survey;

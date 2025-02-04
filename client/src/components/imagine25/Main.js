@@ -1,6 +1,7 @@
 import React from "react";
 import { Router } from "@reach/router";
 import UpdateId from "./UpdateId";
+import Survey from "./Survey";
 
 const Main = () => {
   return (
@@ -29,6 +30,10 @@ const Main = () => {
         >
           <Router>
             <UpdateId default path={"/"} />
+            <Survey path={`/PreSurvey`} />
+          
+          
+            
           </Router>
         </div>
       </div>
