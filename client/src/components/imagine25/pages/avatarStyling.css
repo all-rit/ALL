@@ -1,0 +1,38 @@
+.avatar {
+  height: 25vh;
+  width: 25vh;
+}
+
+.avatarButton {
+  width: 8vw;
+  height: 5vh;
+  text-align: center;
+  color: #22252a;
+  background-color: white;
+  border: none;
+  box-shadow: 2px 2px 5px #22252a;
+}
+
+.decorativeLineBlueHorizontal {
+  width: 35vw;
+  height: 5px;
+  background-color: #0045d5;
+  margin: 15px auto;
+}
+
+.decorativeLineYellowVertical {
+  height: 55vh;
+  width: 5px;
+  background-color: #ffc335;
+  margin: 15px auto;
+}
+
+.dropDownToggle {
+  height: 35px;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #22252a;
+  border: 2px solid #22252a;
+}
