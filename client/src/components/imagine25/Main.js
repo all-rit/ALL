@@ -1,9 +1,13 @@
 import React from "react";
 import { Router } from "@reach/router";
 import UpdateId from "./UpdateId";
-import Survey from "./Survey";
+import Survey from "./SurveyHandler";
 
 const Main = () => {
+
+  const year = 25;
+
+
   return (
     <>
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
@@ -30,7 +34,11 @@ const Main = () => {
         >
           <Router>
             <UpdateId default path={"/"} />
-            <Survey path={`/PreSurvey`} />
+            <Survey 
+            path={`/PreSurvey`}
+            type={"pre"}
+            year={year}
+            />
           
           
             

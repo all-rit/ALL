@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import PreSurveyQuestions from "./preSurveyQuestions"
 import { navigate } from "@reach/router";
+import Survey from "./Survey"
+// import Spinner from "../../../common/Spinner/Spinner";
 
 
 function assignSurveyQuestions(surveyType) {
@@ -28,9 +30,10 @@ function assignSurveyQuestions(surveyType) {
   }
 
 const SurveyHandler = (props) => {
-    const { userID, type, year } = props;
-    const questions = useState(assignSurveyQuestions(props.type))
-    const [isUnderage,setIsUnderAge] = useState(false)
+    const { type, year } = props;
+  const [questions] = useState(assignSurveyQuestions(props.type));
+    let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
+    // const [isUnderage,setIsUnderAge] = useState(false)
     const [answerOption, setAnswerOption] = useState(
         questions[currentQuestionCursor].answers,
     );
@@ -57,8 +60,7 @@ const SurveyHandler = (props) => {
       const answerValue = e.target.value;
       const answer = questions[currentQuestionCursor].answers[answerValue].content
       if(answer == "Under 18 years old"){
-        setIsUnderAge(true)
-        setSurveyComplete(true)
+        navigate("/Imagine2025")
       }
       setSelectedAnswers([
         ...selectedAnswers,
@@ -77,17 +79,13 @@ const SurveyHandler = (props) => {
    */
   async function onComplete(surveyType) {
     try {
-      if(surveyType == "pre" && year == "25"){
-        if(isUnderage){
-          navigate("Imagine2025/ControlGame")
-        }
-        else{
-          setSurveyComplete(true);
-          const response = await activitySelector();
-          return response;
-        }
-      
-      }else if (surveyType === "post" && year == "25") {
+      setSurveyComplete(true);
+      if (surveyType === "pre") {
+        // will need to be changed with next logic story
+        const response = await activitySelector();
+        return response;
+        // This will handle navigation
+      } else if (surveyType === "post") {
         await ImagineService.postSurvey(userID, selectedAnswers, year);
         navigate("/Imagine2023/ExerciseEnd");
       }
@@ -161,11 +159,11 @@ const SurveyHandler = (props) => {
           onMultiSelected={selectMulti}
           nextQuestion={handleNext}
           onComplete={() => onComplete(type)}
-          isUnderAge= {isUnderage}
         ></Survey>
       ) : (
         <div className="flex !tw-justify-center items-center">
-          <Spinner className="m-auto" />
+          {/* <Spinner className="m-auto" /> */}
+         <h1>Hello</h1>
         </div>
       )}
     </>
@@ -173,9 +171,9 @@ const SurveyHandler = (props) => {
 };
 SurveyHandler.propTypes = {
   path: PropTypes.string.isRequired,
-  userID: PropTypes.string.isRequired,
+  // userID: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  handleGroupAssignment: PropTypes.func, // optional
+  // handleGroupAssignment: PropTypes.func, // optional
   year: PropTypes.number.isRequired,
 };
 export default SurveyHandler;
