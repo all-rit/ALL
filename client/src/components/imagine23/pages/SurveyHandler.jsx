@@ -48,6 +48,7 @@ const SurveyHandler = (props) => {
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers,
   );
+
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
   let [disableNext, setDisableNext] = useState(true);
@@ -77,6 +78,8 @@ const SurveyHandler = (props) => {
       if (surveyType === "pre") {
         // will need to be changed with next logic story
         const response = await activitySelector();
+        
+
         return response;
         // This will handle navigation
       } else if (surveyType === "post") {

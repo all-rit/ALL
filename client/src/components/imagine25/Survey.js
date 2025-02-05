@@ -28,7 +28,7 @@ function Survey(props) {
         {props.answerOptions.map(renderAnswerOptions)}
       </ul>
       <div className="align-right">
-        {props.questionId !== props.questionTotal && !props.isUnderAge ? (
+        {props.questionId !== props.questionTotal || !props.isUnderAge ? (
           <button
             className="btn btn-second text-uppercase  nextButton"
             onClick={props.nextQuestion}
