@@ -33,7 +33,7 @@ const SurveyHandler = (props) => {
     const { type, year } = props;
   const [questions] = useState(assignSurveyQuestions(props.type));
     let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-    // const [isUnderage,setIsUnderAge] = useState(false)
+    let [isUnderage, setIsUnderAge] = useState(false);
     const [answerOption, setAnswerOption] = useState(
         questions[currentQuestionCursor].answers,
     );
@@ -59,9 +59,11 @@ const SurveyHandler = (props) => {
     function selectAnswer(e) {
       const answerValue = e.target.value;
       const answer = questions[currentQuestionCursor].answers[answerValue].content
+
       if(answer == "Under 18 years old"){
-        navigate("/Imagine2025")
+        setIsUnderAge(true)
       }
+
       setSelectedAnswers([
         ...selectedAnswers,
         {
@@ -70,6 +72,39 @@ const SurveyHandler = (props) => {
         },
       ]);
       setDisableNext(false);
+    }
+
+    function selectMulti(e) {
+      const answerValue =
+      questions[currentQuestionCursor].answers[e.target.value].content;
+      let tempAnswers = selectedAnswers;
+      let storageSet;
+      // ensures that there is a value stored there
+      if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
+        // copies over the set
+        storageSet = new Set(tempAnswers[currentQuestionCursor].answer);
+        // checks to see if the set has the value in it
+        !storageSet.has(answerValue)
+          ? storageSet.add(answerValue)
+          : storageSet.delete(answerValue);
+        // disable next if the set is empty
+        setDisableNext(storageSet.size === 0 ? true : false);
+        // assigns the updated set to the array
+        tempAnswers[currentQuestionCursor] = storageSet;
+      } else {
+        // creates an empty set because does not exist in that spot
+        setDisableNext(false);
+        storageSet = new Set();
+        // adds the value
+        storageSet.add(answerValue);
+        // assigns it to the array
+        tempAnswers[currentQuestionCursor] = storageSet;
+      }
+      tempAnswers[currentQuestionCursor] = {
+        question: questions[currentQuestionCursor].question,
+        answer: Array.from(storageSet),
+      };
+      setSelectedAnswers(tempAnswers);
     }
 
 
@@ -99,6 +134,11 @@ const SurveyHandler = (props) => {
    * in the pre-survey.
    */
   async function activitySelector() {
+    if (isUnderage){
+      navigate("/Imagine2025")
+      console.log("working")
+    }
+
     const response = await ImagineService.preSurvey(
       props.userID,
       selectedAnswers,
@@ -107,43 +147,9 @@ const SurveyHandler = (props) => {
     const section = (await response.text()).replace(/['"]+/g, "");
     if (year === 25) {
       console.log("send users to game")
-
     }
   }
 
-
-  function selectMulti(e) {
-    const answerValue =
-    questions[currentQuestionCursor].answers[e.target.value].content;
-    let tempAnswers = selectedAnswers;
-    let storageSet;
-    // ensures that there is a value stored there
-    if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
-      // copies over the set
-      storageSet = new Set(tempAnswers[currentQuestionCursor].answer);
-      // checks to see if the set has the value in it
-      !storageSet.has(answerValue)
-        ? storageSet.add(answerValue)
-        : storageSet.delete(answerValue);
-      // disable next if the set is empty
-      setDisableNext(storageSet.size === 0 ? true : false);
-      // assigns the updated set to the array
-      tempAnswers[currentQuestionCursor] = storageSet;
-    } else {
-      // creates an empty set because does not exist in that spot
-      setDisableNext(false);
-      storageSet = new Set();
-      // adds the value
-      storageSet.add(answerValue);
-      // assigns it to the array
-      tempAnswers[currentQuestionCursor] = storageSet;
-    }
-    tempAnswers[currentQuestionCursor] = {
-      question: questions[currentQuestionCursor].question,
-      answer: Array.from(storageSet),
-    };
-    setSelectedAnswers(tempAnswers);
-  }
   return (
     <>
       {!surveyComplete ? (
@@ -159,6 +165,7 @@ const SurveyHandler = (props) => {
           onMultiSelected={selectMulti}
           nextQuestion={handleNext}
           onComplete={() => onComplete(type)}
+          isUnderAge={isUnderage}
         ></Survey>
       ) : (
         <div className="flex !tw-justify-center items-center">

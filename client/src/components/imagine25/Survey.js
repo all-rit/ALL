@@ -28,7 +28,7 @@ function Survey(props) {
         {props.answerOptions.map(renderAnswerOptions)}
       </ul>
       <div className="align-right">
-        {props.questionId !== props.questionTotal ? (
+        {props.questionId !== props.questionTotal && !props.isUnderAge ? (
           <button
             className="btn btn-second text-uppercase  nextButton"
             onClick={props.nextQuestion}
@@ -63,6 +63,7 @@ Survey.propTypes = {
   nextQuestion: PropTypes.string,
   disable: PropTypes.boolean,
   onComplete: PropTypes.func,
+  isUnderAge: PropTypes.bool.isRequired
 };
 
 export default Survey;
