@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 import PreSurveyQuestions from "./preSurveyQuestions"
 import { navigate } from "@reach/router";
 import Survey from "./Survey"
-// import Spinner from "../../../common/Spinner/Spinner";
+import Spinner from "../../common/Spinner/Spinner";
 
 
 function assignSurveyQuestions(surveyType) {
@@ -134,10 +134,10 @@ const SurveyHandler = (props) => {
    * in the pre-survey.
    */
   async function activitySelector() {
-    if (isUnderage){
-      navigate("/Imagine2025")
-      console.log("working")
-    }
+    // if (isUnderage){
+    //   navigate("/Imagine2025")
+    //   console.log("working")
+    // }
 
     const response = await ImagineService.preSurvey(
       props.userID,
@@ -169,8 +169,7 @@ const SurveyHandler = (props) => {
         ></Survey>
       ) : (
         <div className="flex !tw-justify-center items-center">
-          {/* <Spinner className="m-auto" /> */}
-         <h1>Hello</h1>
+          <Spinner className="m-auto" /> 
         </div>
       )}
     </>
