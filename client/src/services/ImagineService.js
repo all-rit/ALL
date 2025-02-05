@@ -82,7 +82,7 @@ const ImagineService = {
   },
   userAvatar: async (userID, avatarData, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${year}/preSurvey`,
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/userAvatar`,
       {
         userID,
         avatarData,
