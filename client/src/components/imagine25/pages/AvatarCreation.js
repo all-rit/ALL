@@ -65,73 +65,72 @@ const AvatarCreation = () => {
   const [shirtColor, setShirtColor] = useState("Gray");
   const [skinColor, setSkinColor] = useState("Light");
 
-  const content = (
-    <div className="d-flex justify-content-center">
-      <div>
-        <Avatar
-          clotheType="ShirtCrewNeck"
-          topType={hairStyle}
-          hairColor={hairColor}
-          clotheColor={shirtColor}
-          skinColor={skinColor}
-          className="tw-max-h-[25vh] tw-max-w-[25vw]"
-        />
-        {/*Each AvatarStyling() function takes in their respective setState, and a map of options.
-                  The Key will represent the code-side implementation and the value is what the user will see
-                  as a selection choice. Labels must be added mannually prior to Avatar styling.*/}
-        <Form className="tw-my-[1vw]">
-          <FormGroup row>
-            <Col>
-              <Label className="mx-2 fw-bold">Hair Style</Label>
-              {AvatarStyling("Long Straight", setHairStyle, {
-                ShortHairShortCurly: "Short Curly",
-                LongHairCurly: "Long Curly",
-                ShortHairShortFlat: "Short Straight",
-                LongHairStraight: "Long Straight",
-              })}
-            </Col>
-          </FormGroup>
-          <FormGroup row>
-            <Col>
-              <Label className="mx-2 fw-bold">Hair Color</Label>
-              {AvatarStyling("Black", setHairColor, {
-                Black: "Black",
-                Blonde: "Blonde",
-                Blue: "Blue",
-                Red: "Red",
-              })}
-            </Col>
-          </FormGroup>
-          <FormGroup row>
-            <Col>
-              <Label className="mx-2 fw-bold">Shirt Color</Label>
-              {AvatarStyling("Gray", setShirtColor, {
-                Gray01: "Gray",
-                Black: "Black",
-                PastelYellow: "Yellow",
-                Pink: "Pink",
-              })}
-            </Col>
-          </FormGroup>
-          <FormGroup row>
-            <Col>
-              <Label className="mx-2 fw-bold">Skin Color</Label>
-              {AvatarStyling("Light", setSkinColor, {
-                Light: "White",
-                Brown: "Brown",
-                DarkBrown: "Dark Brown",
-                Black: "Black",
-              })}
-            </Col>
-          </FormGroup>
-        </Form>
-      </div>
-    </div>
-  );
   return (
     <>
       <h3>Design your avatar!</h3>
-      {Frame(content)}
+      {Frame(
+        <div className="d-flex justify-content-center">
+          <div>
+            <Avatar
+              clotheType="ShirtCrewNeck"
+              topType={hairStyle}
+              hairColor={hairColor}
+              clotheColor={shirtColor}
+              skinColor={skinColor}
+              className="tw-max-h-[25vh] tw-max-w-[25vw]"
+            />
+            {/*Each AvatarStyling() function takes in their respective setState, and a map of options.
+                  The Key will represent the code-side implementation and the value is what the user will see
+                  as a selection choice. Labels must be added mannually prior to Avatar styling.*/}
+            <Form className="tw-my-[1vw]">
+              <FormGroup row>
+                <Col>
+                  <Label className="mx-2 fw-bold">Hair Style</Label>
+                  {AvatarStyling("Long Straight", setHairStyle, {
+                    ShortHairShortCurly: "Short Curly",
+                    LongHairCurly: "Long Curly",
+                    ShortHairShortFlat: "Short Straight",
+                    LongHairStraight: "Long Straight",
+                  })}
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col>
+                  <Label className="mx-2 fw-bold">Hair Color</Label>
+                  {AvatarStyling("Black", setHairColor, {
+                    Black: "Black",
+                    Blonde: "Blonde",
+                    Blue: "Blue",
+                    Red: "Red",
+                  })}
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col>
+                  <Label className="mx-2 fw-bold">Shirt Color</Label>
+                  {AvatarStyling("Gray", setShirtColor, {
+                    Gray01: "Gray",
+                    Black: "Black",
+                    PastelYellow: "Yellow",
+                    Pink: "Pink",
+                  })}
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col>
+                  <Label className="mx-2 fw-bold">Skin Color</Label>
+                  {AvatarStyling("Light", setSkinColor, {
+                    Light: "White",
+                    Brown: "Brown",
+                    DarkBrown: "Dark Brown",
+                    Black: "Black",
+                  })}
+                </Col>
+              </FormGroup>
+            </Form>
+          </div>
+        </div>,
+      )}
     </>
   );
 };
