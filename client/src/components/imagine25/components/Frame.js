@@ -1,7 +1,7 @@
 import { Button } from "reactstrap";
 import React from "react";
 
-export function Frame(content) {
+export const Frame = (content, nextOnClick) => {
   //Constant syling methods
   const avatarButton =
     "tw-w-[125px] tw-height-[50px] tw-text-center tw-text-[#22252a] tw-bg-white tw-border-0 tw-shadow-[2px_2px_5px_#22252a] tw-mb-[100px]";
@@ -20,8 +20,10 @@ export function Frame(content) {
       <div className="d-flex">
         <Button className={avatarButton}>Previous</Button>
         <div className={blueLine}></div>
-        <Button className={avatarButton}>Next</Button>
+        <Button className={avatarButton} onClick={nextOnClick}>
+          Next
+        </Button>
       </div>
     </>
   );
-}
+};
