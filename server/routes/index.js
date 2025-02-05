@@ -173,7 +173,7 @@ router.post('/lab12/exercise/submit', async function(req, res) {
   const id = await ExerciseControllerLab12.postExercise(req);
   res.send(id);
 });
-router.get('/lab12/repair/:userID/:section', async function(req, res ) {
+router.get('/lab12/repair/:userID/:section', async function(req, res) {
   res.json(await RepairControllerLab12.getRepair(req));
 });
 router.post('/lab12/repair/submit', async function(req, res) {
@@ -242,6 +242,10 @@ router.post('/imagine23/readMoreTimeElapsed', async function(req, res) {
 });
 router.post('/imagine23/readingSectionPagePosition', async function(req, res) {
   const resp = await ImagineController.readingSectionPagePosition(req);
+  res.send(resp);
+});
+router.post('/imagine25/avatarCreation', async function(req, res) {
+  const resp = await ImagineController.userAvatar(req);
   res.send(resp);
 });
 module.exports = router;

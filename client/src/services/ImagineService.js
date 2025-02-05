@@ -80,6 +80,16 @@ const ImagineService = {
       },
     );
   },
+  userAvatar: async (userID, avatarData, year) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/preSurvey`,
+      {
+        userID,
+        avatarData,
+        year,
+      },
+    );
+  },
 };
 
 export default ImagineService;

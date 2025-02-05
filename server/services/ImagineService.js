@@ -215,7 +215,7 @@ const getSection = async (sectionName, year) => {
     responses.forEach((response) => {
       const survey = response.preSurvey;
       const userResponse = survey.map((question, index) => {
-      // leaves in maintainability for adding in demo field
+        // leaves in maintainability for adding in demo field
         if (index === 0 || index === 1 || index === 5) {
           return question.answer;
         }
@@ -269,6 +269,34 @@ const determineGroup = async (preSurvey, year) => {
   return lowestPool;
 };
 
+const userAvatar = async (data) => {
+  const {userID, avatar, year} = data;
+  const imagine = `Imagine${year}`;
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.avatar = avatar;
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          avatar: avatar,
+        });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   submitStudy,
   preSurvey,
@@ -278,4 +306,5 @@ module.exports = {
   readMoreCount,
   readingSectionPagePosition,
   readMoreTimeElapsed,
+  userAvatar,
 };
