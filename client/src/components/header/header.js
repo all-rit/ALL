@@ -120,7 +120,7 @@ const Header = (props) => {
     <Navbar
       id="navHeader"
       expand="lg"
-      className="tw-body-text tw-font-bold tw-my-0 tw-mb-[5rem]"
+      className={`${props.isImagine ? "tw-body-text tw-font-bold tw-my-0 tw-mb-[0.5rem]" : "tw-body-text tw-font-bold tw-my-0 tw-mb-[5rem]"}`}
     >
       <div
         className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
@@ -135,7 +135,7 @@ const Header = (props) => {
             }}
           >
             <img
-              className={`${!props.isImagine && "tw-cursor-pointer"} xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]`}
+              className={`${!props.isImagine && "tw-cursor-pointer"} ${props.isImagine ? "xs:tw-max-h-[6rem] sm:tw-max-h-[7.5rem]" : "xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"}`}
               src={Logo}
               alt="Computing Accessibility"
             />
