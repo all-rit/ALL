@@ -1,6 +1,7 @@
 import React from "react";
 import { Router } from "@reach/router";
 import UpdateId from "./UpdateId";
+import TeammateSelection from "./TeammateSelection";
 
 const Main = () => {
   return (
@@ -29,6 +30,7 @@ const Main = () => {
         >
           <Router>
             <UpdateId default path={"/"} />
+            <TeammateSelection default path={"/teammateSelection"} />
           </Router>
         </div>
       </div>

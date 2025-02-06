@@ -80,6 +80,17 @@ const ImagineService = {
       },
     );
   },
+  postTeammateSelection: async (userID, teammateAvatar, year) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL +
+        `/imagine${year}/teammateAvatarSelection`,
+      {
+        userID,
+        teammateAvatar,
+        year,
+      },
+    );
+  },
 };
 
 export default ImagineService;
