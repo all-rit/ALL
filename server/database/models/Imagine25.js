@@ -17,22 +17,19 @@ module.exports = (sequelize, DataTypes) => {
             'discomfortCountNonPOC',
             'control'],
         },
-        study: {
-          type: DataTypes.JSON,
-        },
         preSurvey: {
           type: DataTypes.JSON,
         },
         postSurvey: {
           type: DataTypes.JSON,
         },
-        readMoreCount: {
-          type: DataTypes.INTEGER,
-        },
-        readMoreTimeElapsed: {
+        avatar: {
           type: DataTypes.JSON,
         },
-        readingSectionPagePosition: {
+        teammateAvatar: {
+          type: DataTypes.JSON,
+        },
+        opponentAvatar: {
           type: DataTypes.JSON,
         },
       }, {tableName: 'imagine25'},

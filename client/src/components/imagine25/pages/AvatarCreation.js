@@ -69,7 +69,7 @@ const AvatarCreation = () => {
   const nextOnClick = async () => {
     //default userID set to 1 for now
     await ImagineService.postUserAvatar(
-      1,
+      "1",
       {
         hairStyle: hairStyle,
         hairColor: hairColor,

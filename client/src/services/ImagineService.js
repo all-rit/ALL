@@ -80,12 +80,12 @@ const ImagineService = {
       },
     );
   },
-  postUserAvatar: async (userID, avatarData, year) => {
+  postUserAvatar: async (userID, avatar, year) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + `/imagine${year}/userAvatarCreation`,
       {
         userID,
-        avatarData,
+        avatar,
         year,
       },
     );
