@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Imagine = sequelize.define(
+  const Imagine23 = sequelize.define(
       'Imagine23', {
         id: {
           type: DataTypes.INTEGER,
@@ -38,6 +38,6 @@ module.exports = (sequelize, DataTypes) => {
       }, {tableName: 'imagine23'},
   );
 
-  Imagine.sync();
-  return Imagine;
+  Imagine23.sync();
+  return Imagine23;
 };

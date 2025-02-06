@@ -76,7 +76,7 @@ const AvatarCreation = () => {
         shirtColor: shirtColor,
         skinColor: skinColor,
       },
-      2025,
+      25,
     );
   };
 
