@@ -12,6 +12,7 @@ import {
   Col,
 } from "reactstrap";
 import { Frame } from "../components/Frame";
+import ImagineService from "src/services/ImagineService";
 
 //Function for each respective row in the avatarcreation page to stylize them
 function AvatarStyling(defaultValue, setAvatarState, options) {
@@ -64,6 +65,20 @@ const AvatarCreation = () => {
   const [hairColor, setHairColor] = useState("Black");
   const [shirtColor, setShirtColor] = useState("Gray");
   const [skinColor, setSkinColor] = useState("Light");
+
+  const nextOnClick = async () => {
+    //default userID set to 1 for now
+    await ImagineService.postUserAvatar(
+      1,
+      {
+        hairStyle: hairStyle,
+        hairColor: hairColor,
+        shirtColor: shirtColor,
+        skinColor: skinColor,
+      },
+      2025,
+    );
+  };
 
   return (
     <>
@@ -130,6 +145,7 @@ const AvatarCreation = () => {
             </Form>
           </div>
         </div>,
+        nextOnClick,
       )}
     </>
   );

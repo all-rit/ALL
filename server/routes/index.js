@@ -244,8 +244,8 @@ router.post('/imagine23/readingSectionPagePosition', async function(req, res) {
   const resp = await ImagineController.readingSectionPagePosition(req);
   res.send(resp);
 });
-router.post('/imagine25/userAvatar', async function(req, res) {
-  const resp = await ImagineController.userAvatar(req);
+router.post('/imagine25/userAvatarCreation', async function(req, res) {
+  const resp = await ImagineController.postUserAvatar(req);
   res.send(resp);
 });
 module.exports = router;

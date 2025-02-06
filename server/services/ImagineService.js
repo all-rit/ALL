@@ -269,7 +269,7 @@ const determineGroup = async (preSurvey, year) => {
   return lowestPool;
 };
 
-const userAvatar = async (data) => {
+const postUserAvatar = async (data) => {
   const {userID, avatar, year} = data;
   const imagine = `Imagine${year}`;
   try {
@@ -306,5 +306,5 @@ module.exports = {
   readMoreCount,
   readingSectionPagePosition,
   readMoreTimeElapsed,
-  userAvatar,
+  postUserAvatar,
 };

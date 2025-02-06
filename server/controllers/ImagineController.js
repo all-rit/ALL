@@ -114,15 +114,15 @@ const readingSectionPagePosition = async (req, res) => {
   };
 };
 
-const userAvatar = async (req, res) => {
+const postUserAvatar = async (req, res) => {
   const {userID, avatar, year} = req.body;
   try {
-    const respostSurvey = await ImagineService.userAvatar({
+    const avatarCreated = await ImagineService.postUserAvatar({
       userID,
       avatar,
       year,
     });
-    if (!respostSurvey) {
+    if (!avatarCreated) {
       throw new Error('Post survey was not recorded');
     }
   } catch (error) {
@@ -139,5 +139,5 @@ module.exports = {
   postSurvey,
   preSurvey,
   submitStudy,
-  userAvatar,
+  postUserAvatar,
 };
