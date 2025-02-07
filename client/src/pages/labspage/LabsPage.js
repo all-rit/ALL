@@ -14,6 +14,7 @@ import PropTypes from "prop-types";
 import Student from "../../assets/images/stockImages/LookingAtComputer.png";
 import Girl from "../../assets/images/stockImages/Girl1.png";
 import LandingSection from "../../components/all-components/LandingSection";
+import UserService from "../../services/UserService";
 
 const mapStateToProps = (state) => {
   return {
@@ -62,6 +63,7 @@ const LabsPage = (props) => {
   const { state } = useMainStateContext();
   const { actions } = props;
   const [labInformation, setLabInformation] = useState(new Map());
+  const [myLabs, setMyLabs] = useState([]);
 
   useEffect(() => {
     if (labInformation.size !== 0) {
@@ -114,13 +116,13 @@ const LabsPage = (props) => {
         filteredMap.set(key, filteredArr);
       }
     }
-    console.log(filteredMap);
     return filteredMap;
   };
 
   const [displayedLabs, setDisplayedLabs] = useState(new Map());
   const [selectedSearch, setSelectedSearch] = useState("ALL_LABS");
   const [textSearch, setTextSearch] = useState("");
+
   useEffect(() => {
     const tempMap = new Map();
 
@@ -145,6 +147,14 @@ const LabsPage = (props) => {
     } else {
       setDisplayedLabs(labInformation);
     }
+    const getMyLabs = async () => {
+      const initiatedLabs = await UserService.getUserToDoLabs(
+        props.user.userid,
+      );
+      console.warn(initiatedLabs);
+      setMyLabs(initiatedLabs);
+    };
+    getMyLabs();
   }, [labInformation, selectedSearch]);
 
   const handleSearchChange = (search) => {
@@ -188,7 +198,7 @@ const LabsPage = (props) => {
   };
 
   return (
-    <div className={"md:tw-pt-[2rem]"}>
+    <div className={"tw-w-lvw"}>
       <LandingSection
         title={"Explore Our Labs"}
         body={`Ready to start learning? Access any of the labs below to learn
@@ -197,17 +207,34 @@ const LabsPage = (props) => {
                     and more.`}
         img={Student}
       />
-      <div className="tw-relative tw-h-auto tw-w-full tw-mb-20">
-        <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-w-full tw-relative tw-pb-16">
+      <div className="tw-relative tw-h-auto  tw-mb-20">
+        <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-relative tw-pb-16">
           <div
             className="tw-flex tw-bg-primary-blue tw-w-full -tw-left-8 tw-top-16
-                            tw-h-auto tw-justify-left tw-relative tw-rounded-tr-lg"
+                            tw-h-auto tw-relative tw-rounded-tr-lg"
           >
             <div className="tw-bg-white tw-auto tw-w-full -tw-left-4 tw-top-4 tw-rounded-tr-lg tw-justify-left tw-relative">
               <div
                 className="tw-flex tw-flex-col tw-pt-16 tw-relative tw-left-12 tw-items-center
                               tw-flex-wrap tw-px-12"
               >
+                {props.user && (
+                  <div>
+                    <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
+                      My Labs
+                    </h1>
+                    <div className={"tw-my-6 tw-p-4 tw-grid tw-grid-cols-3"}>
+                      {myLabs.length > 0 ? (
+                        myLabs.map((lab) => {
+                          renderLabData(actions, lab, "", lab.labID);
+                        })
+                      ) : (
+                        <p> No labs assigned yet!</p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                   Labs
                 </h1>
@@ -350,6 +377,9 @@ const LabsPage = (props) => {
 
 LabsPage.propTypes = {
   actions: PropTypes.shape({}),
+  user: PropTypes.shape({
+    userid: PropTypes.number,
+  }),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LabsPage);

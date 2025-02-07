@@ -17,6 +17,7 @@ const Labs = (props) => {
   useEffect(() => {
     setDisplayedLabs(props.toDoLabs);
   }, [props.toDoLabs]);
+
   const displayNotStartedLabs = () => {
     setCurrentHeader("Not Started");
     setLabProgress("NOT_STARTED");

@@ -169,7 +169,7 @@ const App = () => {
             <div className={"tw-body-text tw-max-h-[40rem]"}> Loading... </div>
           }
         >
-          <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5 tw-mt-[10rem]">
+          <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5 xs:tw-mt-[6rem] md:tw-mt-[8rem]">
             <div className={"tw-relative"}>
               {lab !== 0 && (
                 <div
@@ -207,7 +207,7 @@ const App = () => {
                     </div>
                     <div
                       className={
-                        "tw-flex-row tw-col-start-4 tw-col-span-8  tw-bg-white shadow tw-rounded-xl tw-mx-6 tw-p-6 tw-text-center tw-max-h-[40rem] tw-overflow-y-scroll"
+                        "tw-flex-row tw-col-start-4 tw-col-span-8 tw-bg-white shadow tw-rounded-xl tw-mx-6 tw-p-6 tw-text-center tw-max-h-[40rem] tw-overflow-y-scroll"
                       }
                     >
                       {renderLabs()}
@@ -215,11 +215,7 @@ const App = () => {
                   </div>
                 </div>
               ) : (
-                <div
-                  className={
-                    "tw-flex tw-col-span-8 tw-row-span-10 tw-text-center "
-                  }
-                >
+                <div className={"tw-flex tw-row-span-10 tw-text-center"}>
                   {renderPages()}
                 </div>
               )}

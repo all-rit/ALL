@@ -48,7 +48,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={"md:tw-pt-[2rem]"}>
+    <div>
       {/* Header */}
       <LandingSection
         title={"Welcome to Accessible Learning Labs"}

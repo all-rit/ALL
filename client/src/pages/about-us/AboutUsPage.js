@@ -7,7 +7,7 @@ import YellowBlockSection from "../../components/all-components/YellowBlockSecti
 
 const AboutUsPage = () => {
   return (
-    <div className={"md:tw-pt-[2rem]"}>
+    <div>
       <LandingSection
         title={"About Us"}
         body="Find out more about the team that makes Accessible Learning Labs
