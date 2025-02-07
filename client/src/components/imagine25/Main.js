@@ -2,6 +2,7 @@ import React from "react";
 import { Router } from "@reach/router";
 import UpdateId from "./UpdateId";
 import Survey from "./SurveyHandler";
+import ImagineGame from "./ImagineGame";
 
 const Main = () => {
 
@@ -33,13 +34,19 @@ const Main = () => {
           }
         >
           <Router>
-            <UpdateId default path={"/"} />
+            <UpdateId 
+            default path={"/"} 
+            />
             <Survey 
             path={`/PreSurvey`}
             type={"pre"}
             year={year}
+            userID={"1039"}
             />
-          
+            <ImagineGame
+            path = {"/Game"}
+            />
+              
           
             
           </Router>

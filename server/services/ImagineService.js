@@ -29,12 +29,18 @@ const submitStudy = async (data) => {
   }
 };
 
+const determineGroupSimple = async () => {
+  const options = ['experiential', 'expression', 'control'];
+  const randIndex = Math.floor(Math.random() * options.length);
+  return options[randIndex];
+}
+
 const preSurvey = async (data) => {
   const {userID, preSurvey, year} = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const section = await determineGroup(preSurvey, year);
+      const section = await determineGroupSimple();
       const user = await getUserByID(userID, year);
       console.warn(section, user);
       if (user) {
@@ -84,7 +90,6 @@ const postSurvey = async (data) => {
 };
 
 const getUsers = async () => {
-  // const imagine = `Imagine${year}`;
   const users = await db.Imagine23.findAll({
     attributes: ['id', 'userid', 'preSurvey'],
     where: {
@@ -229,6 +234,8 @@ const getSection = async (sectionName, year) => {
   }
 };
 
+
+
 const determineGroup = async (preSurvey, year) => {
   // retrieve all existing groupings
   const experiential = await getSection('experiential', year);
@@ -267,6 +274,8 @@ const determineGroup = async (preSurvey, year) => {
   }
   // get users answers
   return lowestPool;
+
+
 };
 
 module.exports = {

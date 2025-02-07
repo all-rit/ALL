@@ -4,6 +4,7 @@ import PreSurveyQuestions from "./preSurveyQuestions"
 import { navigate } from "@reach/router";
 import Survey from "./Survey"
 import Spinner from "../../common/Spinner/Spinner";
+import ImagineService from "../../services/ImagineService";
 
 
 function assignSurveyQuestions(surveyType) {
@@ -30,7 +31,7 @@ function assignSurveyQuestions(surveyType) {
   }
 
 const SurveyHandler = (props) => {
-    const { type, year } = props;
+    const { userID, type, year } = props;
   const [questions] = useState(assignSurveyQuestions(props.type));
     let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
     let [isUnderage, setIsUnderAge] = useState(false);
@@ -116,10 +117,11 @@ const SurveyHandler = (props) => {
     try {
       setSurveyComplete(true);
       if (surveyType === "pre") {
-        // will need to be changed with next logic story
         const response = await activitySelector();
+        // console.log(response.text)
         return response;
         // This will handle navigation
+      
       } else if (surveyType === "post") {
         await ImagineService.postSurvey(userID, selectedAnswers, year);
         navigate("/Imagine2023/ExerciseEnd");
@@ -131,22 +133,22 @@ const SurveyHandler = (props) => {
   /**
    * activitySelector(): is a function that is responsible for determining
    * what activity the user will be directed to based on the responses given
-   * in the pre-survey.
+   * in the pre-survey. In progress of implementation
    */
   async function activitySelector() {
-    // if (isUnderage){
-    //   navigate("/Imagine2025")
-    //   console.log("working")
-    // }
+    if (year == 25){
+      if (isUnderage){
+        navigate("/Game")
+      }
+      else{
 
-    const response = await ImagineService.preSurvey(
-      props.userID,
-      selectedAnswers,
-      year,
-    );
-    const section = (await response.text()).replace(/['"]+/g, "");
-    if (year === 25) {
-      console.log("send users to game")
+        await ImagineService.preSurvey(
+          props.userID,
+          selectedAnswers,
+          year,
+        );
+        navigate("/Game")
+      }
     }
   }
 
@@ -177,9 +179,8 @@ const SurveyHandler = (props) => {
 };
 SurveyHandler.propTypes = {
   path: PropTypes.string.isRequired,
-  // userID: PropTypes.string.isRequired,
+  userID: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  // handleGroupAssignment: PropTypes.func, // optional
   year: PropTypes.number.isRequired,
 };
 export default SurveyHandler;

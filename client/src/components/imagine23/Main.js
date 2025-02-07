@@ -214,7 +214,6 @@ const Main = (props) => {
     </div>
   );
 };
-
 Main.propTypes = {
   actions: PropTypes.object,
   state: PropTypes.object,

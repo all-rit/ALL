@@ -116,7 +116,6 @@ const SurveyHandler = (props) => {
       }
     }
   }
-
   /**
    * selectAnswer() is a function responsible for recording the
    * behavior in which a user enters in their answer. This function once
