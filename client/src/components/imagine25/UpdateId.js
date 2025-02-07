@@ -5,6 +5,7 @@ const { nanoid } = require("nanoid");
 import { navigate } from "@reach/router";
 import ImagineService from "../../services/ImagineService";
 
+// This component is the start component that updates the user ID
 const UpdateId = () => {
   const { actions } = useMainStateContext();
 
