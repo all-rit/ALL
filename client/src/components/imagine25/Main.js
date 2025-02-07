@@ -30,7 +30,7 @@ const Main = () => {
         >
           <Router>
             <UpdateId default path={"/"} />
-            <TeammateSelection default path={"/teammateSelection"} />
+            <TeammateSelection path={"/teammateSelection"} />
           </Router>
         </div>
       </div>

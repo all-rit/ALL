@@ -1,7 +1,7 @@
 import React from "react";
 import Avatar from "avataaars";
 
-import { Container } from "reactstrap";
+import "./style.css";
 
 //array that will dicate avatars displayed
 const avatars = [
@@ -35,7 +35,7 @@ const TeammateSelection = () => {
   return (
     <>
       <h3>Select Your Teammate!</h3>
-      <Container className>
+      <div className="tw-grid tw-grid-rows-2 tw-grid-flow-col tw-gap-10 justify-content-center my-4">
         {avatars.map((avatar, index) => (
           <Avatar
             key={index}
@@ -44,10 +44,10 @@ const TeammateSelection = () => {
             clotheColor={avatar.shirtColor}
             skinColor={avatar.skinColor}
             clotheType="ShirtCrewNeck"
-            className="col-6 tw-h-[25vh] tw-w-[10vw]"
+            className="tw-transition-all tw-duration-500 tw-ease-in-out tw-transform hover:tw-w-[375px] hover:tw-h-[375px]"
           />
         ))}
-      </Container>
+      </div>
     </>
   );
 };
