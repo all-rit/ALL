@@ -8,7 +8,7 @@ export const Frame = (content, nextOnClick) => {
   const blueLine =
     "tw-w-[35vw] tw-h-[5px] tw-bg-[#0045d5] tw-my-[15px] tw-mx-auto";
   const yellowLine =
-    "tw-w-[5px] tw-h-[55vh] tw-bg-[#ffc335] tw-my-[15px] tw-mx-auto";
+    "tw-w-[5px] xs:tw-h-[375px] md:tw-h-[400px] xl:tw-h-[425px] 2xl:tw-h-[450px] tw-bg-[#ffc335] tw-my-[15px] tw-mx-auto";
   return (
     <>
       <div className={blueLine}></div>

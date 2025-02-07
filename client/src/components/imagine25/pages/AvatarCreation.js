@@ -25,7 +25,7 @@ function AvatarStyling(defaultValue, setAvatarState, options) {
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
       <DropdownToggle
         color={"light"}
-        className="tw-w-[200px] tw-h-[4vh] tw-flex tw-justify-between tw-items-center tw-color-[#22252a] tw-border-2 tw-boarder-solid tw-border-[#22252a]"
+        className="xs:tw-w-[150px] sm:tw-w-[150px] md:tw-w-[200px] tw-h-[30px] tw-flex tw-justify-between tw-items-center tw-color-[#22252a] tw-border-2 tw-boarder-solid tw-border-[#22252a]"
         caret
       >
         {displayedValue}
@@ -92,7 +92,7 @@ const AvatarCreation = () => {
               hairColor={hairColor}
               clotheColor={shirtColor}
               skinColor={skinColor}
-              className="tw-max-h-[25vh] tw-max-w-[25vw]"
+              className="xs:tw-h-[150px] xs:tw-w-[150px] md:tw-h-[175px] md:tw-w-[175px] lg:tw-h-[200px] lg:tw-w-[200px]"
             />
             {/*Each AvatarStyling() function takes in their respective setState, and a map of options.
                   The Key will represent the code-side implementation and the value is what the user will see
