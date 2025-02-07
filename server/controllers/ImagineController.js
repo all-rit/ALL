@@ -116,7 +116,6 @@ const readingSectionPagePosition = async (req, res) => {
 
 const postUserAvatar = async (req, res) => {
   const {userID, avatar, year} = req.body;
-  console.log(userID, avatar, year);
   try {
     const avatarCreated = await ImagineService.postUserAvatar({
       userID,

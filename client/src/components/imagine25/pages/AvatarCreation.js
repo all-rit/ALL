@@ -15,7 +15,7 @@ import { Frame } from "../components/Frame";
 import ImagineService from "src/services/ImagineService";
 
 //Function for each respective row in the avatarcreation page to stylize them
-function AvatarStyling(defaultValue, setAvatarState, options) {
+const AvatarStyling = (defaultValue, setAvatarState, options) => {
   //basic toggling and changing functionality for dropdown
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
@@ -50,7 +50,7 @@ function AvatarStyling(defaultValue, setAvatarState, options) {
       </DropdownMenu>
     </Dropdown>
   );
-}
+};
 
 const AvatarCreation = () => {
   //removes lame buttons from top of screen
@@ -92,7 +92,7 @@ const AvatarCreation = () => {
               hairColor={hairColor}
               clotheColor={shirtColor}
               skinColor={skinColor}
-              className="xs:tw-h-[150px] xs:tw-w-[150px] md:tw-h-[175px] md:tw-w-[175px] lg:tw-h-[200px] lg:tw-w-[200px]"
+              className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
             />
             {/*Each AvatarStyling() function takes in their respective setState, and a map of options.
                   The Key will represent the code-side implementation and the value is what the user will see
@@ -134,7 +134,7 @@ const AvatarCreation = () => {
               <FormGroup row>
                 <Col>
                   <Label className="mx-2 fw-bold">Skin Color</Label>
-                  {AvatarStyling("Light", setSkinColor, {
+                  {AvatarStyling("White", setSkinColor, {
                     Light: "White",
                     Brown: "Brown",
                     DarkBrown: "Dark Brown",

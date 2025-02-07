@@ -13,8 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         section: {
           type: DataTypes.ENUM,
           values: ['experiential',
-            'discomfortCountPOC',
-            'discomfortCountNonPOC',
+            'expression',
             'control'],
         },
         preSurvey: {
