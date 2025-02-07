@@ -4,23 +4,18 @@ import InvestigatorsSection from "./InvestigatorsSection";
 import StudentTeamSection from "./StudentTeamSection";
 import GettingInvolved from "src/components/all-components/GettingInvolved";
 import YellowBlockSection from "../../components/all-components/YellowBlockSection";
+import {
+  ABOUT_US_BODY,
+  ABOUT_US_TITLE,
+  OUR_MISSION_BODY,
+  OUR_MISSION_TITLE,
+} from "../../constants/sections";
 
 const AboutUsPage = () => {
   return (
     <div>
-      <LandingSection
-        title={"About Us"}
-        body="Find out more about the team that makes Accessible Learning Labs
-                possible. We're proud of our diverse group of principal
-                investigators and advisors, as well as our fully undergraduate
-                development team!"
-      />
-      <YellowBlockSection
-        title={"Our Mission"}
-        body={
-          "Accessible Learning Labs is an NSF funded initiative aimed at empowering inclusive software education and fostering STEM proficiency."
-        }
-      />
+      <LandingSection title={ABOUT_US_TITLE} body={ABOUT_US_BODY} />
+      <YellowBlockSection title={OUR_MISSION_TITLE} body={OUR_MISSION_BODY} />
       <InvestigatorsSection />
       <StudentTeamSection />
       <GettingInvolved />

@@ -15,6 +15,20 @@ import Student from "../../assets/images/stockImages/LookingAtComputer.png";
 import Girl from "../../assets/images/stockImages/Girl1.png";
 import LandingSection from "../../components/all-components/LandingSection";
 import UserService from "../../services/UserService";
+import {
+  ACCESSIBILITY,
+  AI_MACHINE_LEARNING,
+  ALL_LABS,
+  DIFFICULTY_1,
+  DIFFICULTY_2,
+  DIFFICULTY_3,
+} from "../../constants/labs";
+import {
+  EXPLORE_LABS_BODY,
+  EXPLORE_LABS_TITLE,
+  VIEW_PROGRESS_BODY,
+  VIEW_PROGRESS_TITLE,
+} from "../../constants/sections";
 
 const mapStateToProps = (state) => {
   return {
@@ -126,23 +140,23 @@ const LabsPage = (props) => {
   useEffect(() => {
     const tempMap = new Map();
 
-    if (selectedSearch === "ALL_LABS") {
+    if (selectedSearch === ALL_LABS) {
       setDisplayedLabs(new Map(labInformation));
-    } else if (selectedSearch === "AI_MACHINE_LEARNING") {
+    } else if (selectedSearch === AI_MACHINE_LEARNING) {
       if (labInformation.has("AI")) {
         tempMap.set("AI", labInformation.get("AI"));
         setDisplayedLabs(tempMap);
       }
-    } else if (selectedSearch === "ACCESSIBILITY") {
+    } else if (selectedSearch === ACCESSIBILITY) {
       if (labInformation.has("Accessibility")) {
         tempMap.set("Accessibility", labInformation.get("Accessibility"));
         setDisplayedLabs(tempMap);
       }
-    } else if (selectedSearch === "DIFF1") {
+    } else if (selectedSearch === DIFFICULTY_1) {
       setDisplayedLabs(labsByDifficulty(labInformation, 1));
-    } else if (selectedSearch === "DIFF2") {
+    } else if (selectedSearch === DIFFICULTY_2) {
       setDisplayedLabs(labsByDifficulty(labInformation, 2));
-    } else if (selectedSearch === "DIFF3") {
+    } else if (selectedSearch === DIFFICULTY_3) {
       setDisplayedLabs(labsByDifficulty(labInformation, 3));
     } else {
       setDisplayedLabs(labInformation);
@@ -200,11 +214,8 @@ const LabsPage = (props) => {
   return (
     <div className={"tw-w-lvw"}>
       <LandingSection
-        title={"Explore Our Labs"}
-        body={`Ready to start learning? Access any of the labs below to learn
-                    more about a range of topics from accessibility to sound and
-                    speech, color blindness and even labs about algorithmic bias
-                    and more.`}
+        title={EXPLORE_LABS_TITLE}
+        body={EXPLORE_LABS_BODY}
         img={Student}
       />
       <div className="tw-relative tw-h-auto  tw-mb-20">
@@ -264,12 +275,12 @@ const LabsPage = (props) => {
                     </svg>
                   </button>
                 </div>
-                <div className="tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
+                <div className="xs:tw-hidden md:tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
                   <button
                     className="tw-bg-white tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("ALL_LABS");
+                      handleSearchChange(ALL_LABS);
                     }}
                     autoFocus
                   >
@@ -279,7 +290,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("AI_MACHINE_LEARNING");
+                      handleSearchChange(AI_MACHINE_LEARNING);
                     }}
                   >
                     AI/Machine Learning
@@ -288,7 +299,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("ACCESSIBILITY");
+                      handleSearchChange(ACCESSIBILITY);
                     }}
                   >
                     Accessibility
@@ -297,7 +308,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("DIFF1");
+                      handleSearchChange(DIFFICULTY_1);
                     }}
                   >
                     Difficulty 1
@@ -306,7 +317,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("DIFF2");
+                      handleSearchChange(DIFFICULTY_2);
                     }}
                   >
                     Difficulty 2
@@ -315,7 +326,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("DIFF3");
+                      handleSearchChange(DIFFICULTY_3);
                     }}
                   >
                     Difficulty 3
@@ -357,12 +368,8 @@ const LabsPage = (props) => {
         </div>
       </div>
       <LandingSection
-        title={"View Your Progress"}
-        body={
-          " Didn’t finish a lab? Come back and continue where you left " +
-          "off through your account profile. All of your progress will" +
-          " be saved as you complete each lab."
-        }
+        title={VIEW_PROGRESS_TITLE}
+        body={VIEW_PROGRESS_BODY}
         img={Girl}
         hasButton={true}
         buttonLabel={"Your Account"}
