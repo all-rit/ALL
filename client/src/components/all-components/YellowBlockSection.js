@@ -44,7 +44,7 @@ const YellowBlockSection = (props) => {
             </div>
             <div
               className={
-                "tw-h-full tw-w-4/5 tw-flex tw-flex-col tw-items-end tw-justify-center tw-py-5"
+                "tw-h-full xs:tw-w-full md:tw-w-4/5 tw-flex tw-flex-col tw-items-end tw-justify-center tw-py-5 xs:tw-mt-5 md:tw-mt-0"
               }
             >
               <ALLButton label={"Learn More"} onClick={handleNav}></ALLButton>

@@ -174,7 +174,7 @@ const App = () => {
               {lab !== 0 && (
                 <div
                   className={
-                    "tw-absolute tw-grid tw-ml-5 tw-grid-cols-12 tw-w-lvw tw-h-[40rem] tw-gap-y-4"
+                    "tw-absolute tw-grid tw-ml-5 tw-grid-cols-12 tw-w-lvw xs:tw-h-[30rem] md:tw-h-[40rem] tw-gap-y-4"
                   }
                 >
                   <div
@@ -207,7 +207,7 @@ const App = () => {
                     </div>
                     <div
                       className={
-                        "tw-flex-row tw-col-start-4 tw-col-span-8 tw-bg-white shadow tw-rounded-xl tw-mx-6 tw-p-6 tw-text-center tw-max-h-[40rem] tw-overflow-y-scroll"
+                        "tw-flex-row xs:tw-col-start-1 md:tw-col-start-4 xs:tw-col-span-12 md:tw-col-span-8 tw-bg-white shadow tw-rounded-xl tw-mx-6 tw-p-6 tw-text-center xs:tw-max-h-[30rem] md:tw-max-h-[40rem] tw-overflow-y-scroll"
                       }
                     >
                       {renderLabs()}
