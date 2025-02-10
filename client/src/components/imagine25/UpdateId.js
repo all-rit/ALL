@@ -24,7 +24,6 @@ const UpdateId = () => {
     sessionStorage.setItem("userID", userID);
     await ImagineService.newID(userID, 25);
 
-    actions.setIsImagine(true);
     handleNext();
   };
 
