@@ -48,7 +48,7 @@ const Home = () => {
       }
     });
 
-    setFeaturedLabs([lab12, lab11]);
+    setFeaturedLabs([lab11, lab12]);
   };
 
   useEffect(() => {
