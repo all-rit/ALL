@@ -29,6 +29,20 @@ const submitStudy = async (data) => {
   }
 };
 
+const newID = async (data) => {
+  const {userID, year} = data;
+  const imagine = `Imagine${year}`;
+
+  try {
+    await db[imagine].create({
+      userid: userID,
+    });
+    return true;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const preSurvey = async (data) => {
   const {userID, preSurvey, year} = data;
   const imagine = `Imagine${year}`;
@@ -215,7 +229,7 @@ const getSection = async (sectionName, year) => {
     responses.forEach((response) => {
       const survey = response.preSurvey;
       const userResponse = survey.map((question, index) => {
-      // leaves in maintainability for adding in demo field
+        // leaves in maintainability for adding in demo field
         if (index === 0 || index === 1 || index === 5) {
           return question.answer;
         }
@@ -271,6 +285,7 @@ const determineGroup = async (preSurvey, year) => {
 
 module.exports = {
   submitStudy,
+  newID,
   preSurvey,
   postSurvey,
   getUsers,

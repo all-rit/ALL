@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Imagine = sequelize.define(
-      'Imagine23', {
+  const Imagine25 = sequelize.define(
+      'Imagine25', {
         id: {
           type: DataTypes.INTEGER,
           unique: true,
@@ -13,12 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         section: {
           type: DataTypes.ENUM,
           values: ['experiential',
-            'discomfortCountPOC',
-            'discomfortCountNonPOC',
+            'expression',
             'control'],
-        },
-        study: {
-          type: DataTypes.JSON,
         },
         preSurvey: {
           type: DataTypes.JSON,
@@ -26,18 +22,27 @@ module.exports = (sequelize, DataTypes) => {
         postSurvey: {
           type: DataTypes.JSON,
         },
-        readMoreCount: {
+        avatar: {
+          type: DataTypes.JSON,
+        },
+        teammateAvatar: {
+          type: DataTypes.JSON,
+        },
+        opponentAvatar: {
+          type: DataTypes.JSON,
+        },
+        readingSpeed: {
           type: DataTypes.INTEGER,
         },
-        readMoreTimeElapsed: {
-          type: DataTypes.JSON,
+        quizScore: {
+          type: DataTypes.INTEGER,
         },
-        readingSectionPagePosition: {
-          type: DataTypes.JSON,
+        gameOutcome: {
+          type: DataTypes.TEXT,
         },
-      }, {tableName: 'imagine23'},
+      }, {tableName: 'imagine25'},
   );
 
-  Imagine.sync();
-  return Imagine;
+  Imagine25.sync();
+  return Imagine25;
 };

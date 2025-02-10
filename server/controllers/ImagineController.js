@@ -16,6 +16,21 @@ const submitStudy = async (req, res) => {
   }
 };
 
+const newID = async (req, res) => {
+  try {
+    const {userID, year} = req.body;
+    const result = await ImagineService.newID({
+      userID,
+      year,
+    });
+    if (!result) {
+      throw new Error('ID was not recorded');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const preSurvey = async (req, res) => {
   const {userID, preSurvey, year} = req.body;
 
@@ -70,7 +85,7 @@ const getUserByID = async (req, res) => {
 };
 
 
-const readMoreCount = async (req, res) =>{
+const readMoreCount = async (req, res) => {
   const {userID, readMoreCount, year} = req.body;
   try {
     const result = await ImagineService.readMoreCount({
@@ -85,7 +100,7 @@ const readMoreCount = async (req, res) =>{
 };
 
 
-const readMoreTimeElapsed = async (req, res) =>{
+const readMoreTimeElapsed = async (req, res) => {
   const {userID, readMoreTimeElapsed, year} = req.body;
   try {
     const result = await ImagineService.readMoreTimeElapsed({
@@ -99,7 +114,7 @@ const readMoreTimeElapsed = async (req, res) =>{
   };
 };
 
-const readingSectionPagePosition = async (req, res) =>{
+const readingSectionPagePosition = async (req, res) => {
   const {userID, readingSectionPagePosition, year} = req.body;
   try {
     const result = await
@@ -123,4 +138,5 @@ module.exports = {
   postSurvey,
   preSurvey,
   submitStudy,
+  newID,
 };
