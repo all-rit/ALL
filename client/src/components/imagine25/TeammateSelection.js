@@ -1,7 +1,6 @@
 import React from "react";
 import Avatar from "avataaars";
-
-import "./style.css";
+import "./teammateSelection.css";
 
 //array that will dicate avatars displayed
 const avatars = [
@@ -37,15 +36,17 @@ const TeammateSelection = () => {
       <h3>Select Your Teammate!</h3>
       <div className="tw-grid tw-grid-rows-2 tw-grid-flow-col tw-gap-10 justify-content-center my-4">
         {avatars.map((avatar, index) => (
-          <Avatar
-            key={index}
-            topType={avatar.hairStyle}
-            hairColor={avatar.hairColor}
-            clotheColor={avatar.shirtColor}
-            skinColor={avatar.skinColor}
-            clotheType="ShirtCrewNeck"
-            className="tw-transition-all tw-duration-500 tw-ease-in-out tw-transform hover:tw-w-[375px] hover:tw-h-[375px]"
-          />
+          //div class wrapper needed for clicking functionality
+          <div key={index} onClick={() => alert("asd")}>
+            <Avatar
+              topType={avatar.hairStyle}
+              hairColor={avatar.hairColor}
+              clotheColor={avatar.shirtColor}
+              skinColor={avatar.skinColor}
+              clotheType="ShirtCrewNeck"
+              className="xs:tw-h-[125px] xs:tw-w-[125px] sm:tw-h-[150px] sm:tw-w-[150px] md:tw-h-[175px] md:tw-w-[175px] lg:tw-h-[200px] lg:tw-w-[200px] transformAvatar"
+            />
+          </div>
         ))}
       </div>
     </>
