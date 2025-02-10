@@ -21,9 +21,12 @@ const Main = () => {
       >
         <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
           <SelectExercise default path={"/*"} />
-          <DragDropGame default path={"/test"} />
+          {/*<DragDropGame default path={"/test"} />*/}
         </Router>
       </Lab0Context.Provider>
+      <div className="tw-bg-gray-200 tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-screen">
+        <DragDropGame />
+      </div>
     </>
   );
 };

@@ -62,10 +62,8 @@ const DragDropGame = () => {
         }
       }
 
-      // Check if the card exists, avoid duplication before adding to destination
       if (movedCard) {
         if (destinationId === "bank") {
-          // Only add if it's not already in the bank
           setBank((prevBank) => {
             if (!prevBank.some((card) => card.id === movedCard.id)) {
               return [...prevBank, movedCard];
@@ -73,7 +71,6 @@ const DragDropGame = () => {
             return prevBank;
           });
         } else {
-          // Add to destination column, avoid duplication
           newColumns[destinationId].cards = [
             ...newColumns[destinationId].cards.filter(
               (card) => card.id !== movedCard.id,
@@ -100,7 +97,7 @@ const DragDropGame = () => {
 
   return (
     <DndContext onDragEnd={onDragEnd}>
-      <div className="container">
+      <div className="tw-flex tw-gap-5 tw-p-5">
         {Object.keys(columns).map((colId) => (
           <DroppableColumn
             key={colId}
