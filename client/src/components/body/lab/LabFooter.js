@@ -40,7 +40,7 @@ const LabFooter = (props) => {
     },
     default: {
       button: `tw-bg-primary-yellow poppins tw-border-0 tw-text-xl tw-absolute
-              xs:tw-top-52 xs:tw-left-0 xs:tw-text-xs xs:tw-mt-0
+              xs:tw-top-44 xs:tw-right-0 xs:tw-text-xs xs:tw-mt-0
               sm:tw-right-0 sm:tw-left-auto sm:tw-text-xl
               md:tw-left-auto md:tw-top-80
               lg:tw-left-auto lg:tw-top-48`,
@@ -131,7 +131,7 @@ const LabFooter = (props) => {
       <div className={"tw-flex tw-flex-row tw-justify-start tw-w-full"}>
         <div
           className={
-            "tw-flex tw-flex-row tw-font-poppins tw-text-sm tw-p-3 tw-w-full xs:tw-justify-start"
+            "xs:tw-hidden md:tw-flex tw-flex-row tw-font-poppins tw-text-sm tw-p-3 tw-w-full xs:tw-justify-start"
           }
         >
           Difficulty: {displayDifficulty()}

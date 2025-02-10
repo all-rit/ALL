@@ -29,6 +29,7 @@ import {
   VIEW_PROGRESS_BODY,
   VIEW_PROGRESS_TITLE,
 } from "../../constants/sections";
+import LabGeneration from "../../components/body/lab/LabGeneration";
 
 const mapStateToProps = (state) => {
   return {
@@ -137,37 +138,57 @@ const LabsPage = (props) => {
   const [selectedSearch, setSelectedSearch] = useState("ALL_LABS");
   const [textSearch, setTextSearch] = useState("");
 
+  const getMyLabs = async () => {
+    if (loggedIn) {
+      const allLabs = await LabService.getAllLabs();
+
+      const assignedLabs = await UserService.getUserAssignedLabs(
+        props.user?.userid,
+      );
+
+      const userLabs = [];
+      allLabs.filter((lab) => {
+        assignedLabs.some((assignedLab) => {
+          if (assignedLab.labID === lab.id) {
+            userLabs.push(lab);
+          }
+        });
+      });
+      setMyLabs(userLabs);
+    }
+  };
+
   useEffect(() => {
     const tempMap = new Map();
 
-    if (selectedSearch === ALL_LABS) {
-      setDisplayedLabs(new Map(labInformation));
-    } else if (selectedSearch === AI_MACHINE_LEARNING) {
-      if (labInformation.has("AI")) {
-        tempMap.set("AI", labInformation.get("AI"));
-        setDisplayedLabs(tempMap);
-      }
-    } else if (selectedSearch === ACCESSIBILITY) {
-      if (labInformation.has("Accessibility")) {
-        tempMap.set("Accessibility", labInformation.get("Accessibility"));
-        setDisplayedLabs(tempMap);
-      }
-    } else if (selectedSearch === DIFFICULTY_1) {
-      setDisplayedLabs(labsByDifficulty(labInformation, 1));
-    } else if (selectedSearch === DIFFICULTY_2) {
-      setDisplayedLabs(labsByDifficulty(labInformation, 2));
-    } else if (selectedSearch === DIFFICULTY_3) {
-      setDisplayedLabs(labsByDifficulty(labInformation, 3));
-    } else {
-      setDisplayedLabs(labInformation);
+    switch (selectedSearch) {
+      case ALL_LABS:
+        setDisplayedLabs(new Map(labInformation));
+        break;
+      case AI_MACHINE_LEARNING:
+        if (labInformation.has("AI")) {
+          tempMap.set("AI", labInformation.get("AI"));
+          setDisplayedLabs(tempMap);
+        }
+        break;
+      case ACCESSIBILITY:
+        if (labInformation.has("Accessibility")) {
+          tempMap.set("Accessibility", labInformation.get("Accessibility"));
+          setDisplayedLabs(tempMap);
+        }
+        break;
+      case DIFFICULTY_1:
+        setDisplayedLabs(labsByDifficulty(labInformation, 1));
+        break;
+      case DIFFICULTY_2:
+        setDisplayedLabs(labsByDifficulty(labInformation, 2));
+        break;
+      case DIFFICULTY_3:
+        setDisplayedLabs(labsByDifficulty(labInformation, 3));
+        break;
+      default:
+        setDisplayedLabs(labInformation);
     }
-    const getMyLabs = async () => {
-      const initiatedLabs = await UserService.getUserToDoLabs(
-        props.user.userid,
-      );
-      console.warn(initiatedLabs);
-      setMyLabs(initiatedLabs);
-    };
     getMyLabs();
   }, [labInformation, selectedSearch]);
 
@@ -229,18 +250,23 @@ const LabsPage = (props) => {
                 className="tw-flex tw-flex-col tw-pt-16 tw-relative tw-left-12 tw-items-center
                               tw-flex-wrap tw-px-12"
               >
-                {props.user && (
-                  <div>
+                {loggedIn && (
+                  <div className={"tw-w-full"}>
                     <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                       My Labs
                     </h1>
-                    <div className={"tw-my-6 tw-p-4 tw-grid tw-grid-cols-3"}>
+                    <div className={"tw-my-6 tw-p-4 tw-min-h-[20rem]"}>
                       {myLabs.length > 0 ? (
-                        myLabs.map((lab) => {
-                          renderLabData(actions, lab, "", lab.labID);
-                        })
+                        <LabGeneration
+                          actions={actions}
+                          labids={myLabs}
+                          progressState={"MY_LABS"}
+                        />
                       ) : (
-                        <p> No labs assigned yet!</p>
+                        <p className={"xs:tw-col-span-3"}>
+                          {" "}
+                          No labs assigned yet!
+                        </p>
                       )}
                     </div>
                   </div>
@@ -340,9 +366,9 @@ const LabsPage = (props) => {
                         key={category}
                         className="tw-flex tw-flex-col tw-mb-4"
                       >
-                        <text className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
+                        <p className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
                           {category}
-                        </text>
+                        </p>
                         <div className="tw-flex tw-flex-wrap">
                           <div
                             className="tw-grid xs:tw-grid-cols-2 lg:tw-grid-cols-3
