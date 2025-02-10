@@ -3,6 +3,7 @@ import { navigate, Router } from "@reach/router";
 import SelectExercise from "./SelectExercise";
 import Lab0Context from "./Lab0Context";
 import { EXERCISE_STATES } from "../../../constants/lab0";
+import { default as DragDropGame } from "../../all-components/DragAndDrop/DragAndDrop";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -20,6 +21,7 @@ const Main = () => {
       >
         <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
           <SelectExercise default path={"/*"} />
+          <DragDropGame default path={"/test"} />
         </Router>
       </Lab0Context.Provider>
     </>
