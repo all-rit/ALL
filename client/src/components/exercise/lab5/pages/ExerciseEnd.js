@@ -1,12 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import UserLabService from "../../../../services/UserLabService";
 import { LAB_ID } from "../../../../constants/lab5";
 import { Forum, EmojiObjects, Timer } from "@mui/icons-material";
-import { AppBar } from "@mui/material";
 
 class ExerciseEnd extends Component {
   handleHome() {
@@ -23,18 +22,17 @@ class ExerciseEnd extends Component {
   render() {
     // const { user, state, plays } = this.props;
     return (
-      <Fragment>
+      <div>
+        <h2 className={"tw-title tw-text-left tw-px-5"}>Exercise Complete</h2>
         <div className="center-div">
-          <div className="cognitive_instructions">
+          <div className="cognitive_instructions tw-body-text">
             <div>
-              <AppBar position="static" className="appBar">
-                <h4 className="flex-boxes ">
-                  Congratulations! You have succesfully completed the Cognitive
-                  Impairment Exercise!
-                </h4>
-              </AppBar>
+              <h4 className="tw-sub-title tw-text-left">
+                Congratulations! You have successfully completed the Cognitive
+                Impairment Exercise!
+              </h4>
             </div>
-            <h4 className="margin-bottom">Here are some key takeaways:</h4>
+            <h4 className="tw-sub-title">Here are some key takeaways:</h4>
             <div className="flex-boxes">
               <div>
                 <div className="icon">
@@ -56,18 +54,21 @@ class ExerciseEnd extends Component {
               </div>
             </div>
           </div>
-          <h4 className="flex-boxes">
-            Click the button below to restart the exercise.
+          <h4 className="tw-sub-title">
+            To start the exercise again, clicked the{" "}
+            <strong>Return to Exercise Start</strong> button below. To move on
+            to the reinforcement section, scroll to down and click the{" "}
+            <strong>Next</strong> button.
           </h4>
           <button
-            className="btn btn-primary text-black btn-xl text-uppercase "
+            className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
             onClick={this.handleHome}
             key="start"
           >
             Return to Exercise Start
           </button>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

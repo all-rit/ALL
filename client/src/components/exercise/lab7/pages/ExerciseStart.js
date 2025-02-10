@@ -21,6 +21,7 @@ const ExerciseStart = () => {
   return (
     <Fragment>
       <div className="center-div">
+        <h2 className={"tw-title tw-text-left"}> Exercise Start</h2>
         <div className="guidance margin-bottom-2">
           <p className="playthrough__sentence">
             In this exercise, you will be watching simulation of an autonomous

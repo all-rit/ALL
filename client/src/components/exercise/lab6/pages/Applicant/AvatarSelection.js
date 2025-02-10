@@ -4,6 +4,7 @@ import GridImages from "../../../../all-components/GridImages";
 import ExerciseService from "../../../../../services/lab6/ExerciseService";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_PLAYING } from "src/constants/index";
+import LabButton from "../../../../all-components/LabButton";
 
 const AvatarSelection = () => {
   const { actions } = useMainStateContext();
@@ -23,23 +24,19 @@ const AvatarSelection = () => {
 
   return (
     <div className="center-div">
-      <h2 className="playthrough__title">
-        Welcome to “MegaCorp’s” hiring process!
-      </h2>
-      <p className="playthrough__sentence">
+      <h2 className="tw-title">Welcome to MegaCorp’s hiring process!</h2>
+      <p className="tw-body-text tw-text-[1.5rem] tw-my-6">
         To get you started with the hiring process, please pick an avatar you
         most identify with.
       </p>
 
       <GridImages multi={1} setSelection={setAvatar} />
       {avatar.length != 0 && (
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
+        <LabButton
+          label={"Confirm Selection"}
           onClick={confirmSelection}
           key="confirm"
-        >
-          Confirm Selection
-        </button>
+        />
       )}
     </div>
   );

@@ -20,26 +20,30 @@ const FogIndexFormulaIntroduction = () => {
 
   return (
     <div className="center-div">
-      <h2 className="playthrough__title">Did You Notice?</h2>
+      <h2 className="tw-title tw-text-left">Did You Notice?</h2>
 
-      <div className="guidance margin-bottom-2">
-        <p className="playthrough__sentence">
+      <div className="guidance">
+        <p className="tw-body-text tw-text-left tw-py-6">
           You may have noticed that the family weekend invitation email was
           difficult to read and comprehend due to the amount of complex words.
           In addition, you may have noticed that the Fog Index widget indicated
           that the email had a Fog Index of 0.
         </p>
-        <p className="playthrough__sentence">
+        <p className="tw-body-text tw-text-left">
           The Gunning Fog Index is a tool used to quantifiably measure the
           readability of English text. The formula below indicates how to
           calculate the Fog Index.
         </p>
       </div>
 
-      <img src={fog_index_formula} alt="Fog Index formula" />
+      <img
+        src={fog_index_formula}
+        alt="Fog Index formula"
+        className={"tw-w-3/4"}
+      />
 
-      <div className="guidance margin-bottom-2">
-        <p className="playthrough__sentence">
+      <div className="guidance tw-mb-2">
+        <p className="tw-body-text tw-text-left tw-py-4">
           “Total words” represents the total number of words, “Total sentences”
           represents the total number of sentences, and “Complex words”
           represents the total number of words with 3 or more syllables. The
@@ -52,6 +56,7 @@ const FogIndexFormulaIntroduction = () => {
       <img
         src={fog_index_reading_levels}
         alt="Fog indices and corresponding reading levels"
+        className={"tw-w-1/2 tw-pb-2"}
       />
 
       <div>
@@ -65,7 +70,7 @@ const FogIndexFormulaIntroduction = () => {
       </div>
 
       <div className="guidance margin-bottom-2">
-        <p className="playthrough__sentence">
+        <p className="tw-body-text tw-text-left tw-pt-6">
           Since the email contained a high number of complex words, the Fog
           Index should not be 0. In the next 3 sections of the exercise, you
           will repair the Fog Index widget by implementing all 3 parts of the
@@ -74,8 +79,8 @@ const FogIndexFormulaIntroduction = () => {
         </p>
       </div>
 
-      <p className="playthrough__sentence">
-        Click the &quot;Continue to Repair&quot; button.
+      <p className="tw-body-text tw-text-center tw-pb-6">
+        Click the <strong>Continue to Repair</strong> button.
       </p>
       <div className="tw-flex tw-justify-evenly">
         <button

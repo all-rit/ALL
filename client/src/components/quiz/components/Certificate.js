@@ -1,11 +1,12 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actions as appActions } from "../../../reducers/lab1/AppReducer";
 import { bindActionCreators } from "redux";
-import logo from "../../../assets/images/logos/FinalALLLogo.png";
+import logo from "../../../assets/images/logos/ALL_White.svg";
 import { Sections } from "../../../constants/index";
+import PropTypes from "prop-types";
+import ALLButton from "../../all-components/ALLButton";
 
 const mapStateToProps = (state) => {
   return {
@@ -32,102 +33,100 @@ class Certificate extends Component {
   };
 
   render() {
-    // console.log(this.props);
-    const { state, isImagine } = this.props;
+    const { state, isImagine, lab, setViewCertificate } = this.props;
     const today = new Date();
-    // console.log(state.exercise.results);
     const date =
       today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
     return (
       <div
-        style={{
-          width: "100%",
-          height: "auto",
-          padding: "20px",
-          border: "10px solid #787878",
-          borderRadius: "28px",
-          backgroundColor: "white",
-        }}
+        className={
+          "tw-flex tw-flex-col tw-align-middle tw-justify-center tw-items-center tw-gap-y-4 tw-max-h-[37rem]"
+        }
       >
         <div
-          className="tw-rounded-3xl"
-          style={{ width: "100%", height: "auto", border: "5px solid #787878" }}
+          className={
+            "tw-w-3/5 tw-flex tw-flex-row tw-align-middle tw-justify-center tw-items-center tw-mt-[3rem]"
+          }
         >
-          <div style={{ width: "50%", margin: "auto" }}>
+          <div className="tw-rounded-xl tw-w-full tw-border-solid tw-border-[0.75rem] tw-border-primary-blue">
+            <div className={"tw-py-6"}>
+              <span className={"tw-title"}>Certificate of Completion</span>
+            </div>
             <span
-              style={{
-                fontSize: "50px",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
+              className={
+                "tw-text-[1.25rem] tw-text-center tw-pb-[2rem] tw-font-calibri tw-font-normal"
+              }
             >
-              Certificate of Completion
+              {state.main.user !== null && state.main.user.firstname ? (
+                <p>
+                  This is to certify that <b>{state.main.user.firstname}</b> has
+                  completed the course:
+                </p>
+              ) : (
+                <p>This is to certify that you have completed the course:</p>
+              )}
             </span>
-          </div>
-          <br />
-          <br />
-          <span
-            style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
-          >
-            {state.main.user !== null && state.main.user.firstname ? (
-              <i>
-                This is to certify that <b>{state.main.user.firstname}</b> has
-                completed the course:
-              </i>
-            ) : (
-              <i>This is to certify that you have completed the course:</i>
-            )}
-          </span>
-          <br />
-          <br />
-          <span
-            style={{ fontSize: "30px", textAlign: "center", padding: "20px" }}
-          >
-            {isImagine ? (
-              <p style={{ fontSize: "50px", textAlign: "center" }}>
-                Empathy Immersion
-              </p>
-            ) : (
-              Sections[this.props.lab].fullname
-            )}
-          </span>{" "}
-          <br />
-          <br />
-          <span
-            style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
-          >
-            with a score of{" "}
-            <b style={{ color: this.getColor() }}>{this.props.quizResult}</b>
-          </span>{" "}
-          <br />
-          <br />
-          <span
-            style={{ fontSize: "25px", textAlign: "center", padding: "20px" }}
-          >
-            <i>Completed on:</i>
-          </span>
-          <br />
-          <span
-            style={{ fontSize: "30px", textAlign: "center", padding: "20px" }}
-          >
-            {date}
-          </span>
-          <br />
-          <br />
-          <div className="p-3 tw-bg-labGray tw-rounded-b-2xl">
-            <img
-              src={logo}
-              alt="logo"
-              style={{
-                height: "140px",
-                width: "500px",
-              }}
-            />
+            <br />
+            <span className={"tw-title tw-text-[1.5rem]"}>
+              {isImagine ? (
+                <p style={{ fontSize: "50px", textAlign: "center" }}>
+                  Empathy Immersion
+                </p>
+              ) : (
+                Sections[lab].fullname
+              )}
+            </span>{" "}
+            <br />
+            <br />
+            <p
+              className={
+                "tw-text-[1.25rem] tw-text-center tw-pb-[1rem] tw-font-calibri tw-font-normal"
+              }
+            >
+              with a score of{" "}
+              <b style={{ color: this.getColor() }}>{this.props.quizResult}</b>
+            </p>{" "}
+            <span
+              className={
+                "tw-text-[1.25rem] tw-text-center tw-pb-[2rem] tw-font-calibri tw-font-normal"
+              }
+            >
+              <i>Completed on:</i>
+            </span>
+            <br />
+            <span
+              className={
+                "tw-text-[1.50rem] tw-text-center tw-pb-[2rem] tw-font-calibri tw-font-normal"
+              }
+            >
+              {date}
+            </span>
+            <br />
+            <br />
+            <div className=" tw-bg-primary-blue">
+              <img src={logo} alt="logo" className={"tw-w-[40%]"} />
+            </div>
           </div>
         </div>
+        <ALLButton
+          label={"View Results"}
+          onClick={() => setViewCertificate(false)}
+        />
       </div>
     );
   }
 }
+
+Certificate.propTypes = {
+  quizResult: PropTypes.string,
+  state: PropTypes.shape({
+    main: PropTypes.shape({
+      user: PropTypes.number,
+    }),
+  }),
+  isImagine: PropTypes.bool,
+  lab: PropTypes.number,
+  setViewCertificate: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Certificate);

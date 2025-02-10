@@ -75,7 +75,7 @@ class exercise extends Component {
     const renderer = (props) => {
       if (props.total === 0) {
         return (
-          <div>
+          <div className={"tw-h-full"}>
             <Countdown
               date={this.state.startTime + 18000}
               intervalDelay={0}
@@ -108,12 +108,10 @@ class exercise extends Component {
       }
       // Instruction display during inital countdown
       return (
-        <div>
+        <div className={"tw-h-full"}>
           <Title exerciseState={true} replay={false} />
-          <div className="startExerciseTimer tw-relative tw-m-12">
-            {props.seconds}
-          </div>
-          <div className="center prescreen tw-m-12 tw-p-5">
+          <div className="startExerciseTimer tw-relative">{props.seconds}</div>
+          <div className="center prescreen tw-m-12 tw-p-5 tw-relative">
             <div className={"tw-absolute tw-m-12"}>
               <Circle color={correctColor} />
             </div>
@@ -125,7 +123,7 @@ class exercise extends Component {
               <div className="line tw-w-100" />
             </div>
             <div
-              className={"tw-absolute"}
+              className={"tw-absolute tw-right-[20%]"}
               style={{ transform: "translate(50%, -150%)" }}
             >
               <p className="prescreenText ">
@@ -147,7 +145,7 @@ class exercise extends Component {
 
     // Controls the main countdown clock for the center of the screen
     return (
-      <div>
+      <div className={"tw-h-full"}>
         {this.state.startTime === 0 ? null : (
           <Countdown
             date={this.state.startTime + 3000}

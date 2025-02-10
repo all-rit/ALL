@@ -2,19 +2,29 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import GroupService from "../../../../services/GroupService";
+import ALLButton from "../../../all-components/ALLButton";
+import useMainStateContext from "../../../../reducers/MainContext";
+import {
+  ERROR,
+  SUCCESS,
+  UNENROLL_ERROR,
+  UNENROLL_SUCCESS,
+} from "../../../../constants/notifications";
 
 const UnenrollModal = (props) => {
-  const { buttonLabel, className, userid, groupid, groupsUpdated } = props;
+  const { actions } = useMainStateContext();
+  const { className, userid, groupid, groupsUpdated } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
-  const unenroll = (userid, groupid) => {
+  const unenroll = (userid, groupid, e) => {
     GroupService.unenrollUserFromGroup(userid, groupid).then((response) => {
       if (response.status === 200) {
-        alert("Successfully unenrolled from group.");
+        e.preventDefault();
+        actions.showSnackbar(UNENROLL_SUCCESS, SUCCESS);
         groupsUpdated(true);
       } else {
-        alert("Failed to unenroll from group.");
+        actions.showSnackbar(UNENROLL_ERROR, ERROR);
       }
     });
     toggle();
@@ -22,9 +32,7 @@ const UnenrollModal = (props) => {
 
   return (
     <ul>
-      <button className="btn btn-second" onClick={toggle}>
-        {buttonLabel}
-      </button>
+      <ALLButton label={"Leave Group"} onClick={toggle} />
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader>Unenroll from group</ModalHeader>
         <ModalBody>
@@ -37,7 +45,7 @@ const UnenrollModal = (props) => {
         <ModalFooter>
           <Button
             className="btn-primary"
-            onClick={() => unenroll(userid, groupid)}
+            onClick={(e) => unenroll(userid, groupid, e)}
           >
             Unenroll
           </Button>{" "}

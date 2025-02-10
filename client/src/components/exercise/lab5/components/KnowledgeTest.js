@@ -77,10 +77,10 @@ class KnowledgeTest extends Component {
                 : "Incorrect! Correct Response was: '" +
                   this.getCorrectChoice() +
                   "'. "}{" "}
-              Select 'Next'
+              Select 'Next' To Move On
             </div>
             <button
-              className="btn btn-primary text-black btn-xl text-uppercase  next"
+              className="btn btn-primary text-black btn-xl next tw-px-6 text-uppercase"
               onClick={this.handleNav.bind(this)}
               key="next"
             >

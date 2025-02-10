@@ -4,6 +4,8 @@ export const types = {
   SET_LAB: "@accessibility-lab/lab",
   SET_BODY: "@accessibility-lab/app/set_body",
   SET_IS_IMAGINE: "@accessibility-lab/isImagine",
+  SHOW_SNACKBAR: "@accessibility-lab/showSnackbar",
+  HIDE_SNACKBAR: "@accessibility-lab/hideSnackbar",
 };
 
 export const initialState = {
@@ -11,6 +13,11 @@ export const initialState = {
   lab: 0,
   body: 0,
   isImagine: false,
+  snackbar: {
+    open: false,
+    message: "",
+    notificationType: "",
+  },
 };
 
 export const MainReducer = (state = initialState, action) => {
@@ -35,6 +42,23 @@ export const MainReducer = (state = initialState, action) => {
         ...state,
         isImagine: action.isImagine,
       };
+    case types.SHOW_SNACKBAR:
+      return {
+        ...state,
+        snackbar: {
+          open: true,
+          message: action.payload.message,
+          notificationType: action.payload.notificationType,
+        },
+      };
+    case types.HIDE_SNACKBAR:
+      return {
+        ...state,
+        snackbar: {
+          open: false,
+          message: "",
+        },
+      };
     default:
       return state;
   }
@@ -46,6 +70,12 @@ export const actions = {
   setLab: (lab) => ({ type: types.SET_LAB, lab }),
   updateUser: (user) => ({ type: types.UPDATE_USER, user }),
   setIsImagine: (isImagine) => ({ type: types.SET_IS_IMAGINE, isImagine }),
+  showSnackbar: (message, notificationType) => ({
+    type: types.SHOW_SNACKBAR,
+    message,
+    notificationType,
+  }),
+  hideSnackbar: () => ({ types: types.HIDE_SNACKBAR }),
 };
 
 export default MainReducer;

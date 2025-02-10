@@ -85,31 +85,28 @@ const GeneratedData = (props) => {
     <div>
       <Fragment>
         <div className={"center-div"}>
+          <h1 className={"tw-title tw-text-left tw-pb-6"}> Generated Data </h1>
           <div className={"guidance margin-bottom-2"}>
-            <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
+            <p className={"tw-body-text tw-text-left tw-mb-0"}>
               Below is the data you have generated for your AI. As noted
               earlier, your goal is to hit each colored shape an equal number of
               times. In doing so, you eliminate the bias that the AI has towards
               a specific shape.
             </p>
-            <p
-              className={
-                "playthrough__sentence tw-text-center tw-mb-0 tw-font-bold"
-              }
-            >
+            <p className="tw-body-text tw-text-left tw-py-6 tw-font-bold">
               Note: While complete elimination of bias is nearly impossible, it
               is crucial to minimize unwanted bias in AI to ensure fair,
               equitable outcomes and maintain trust in decision-making.
             </p>
-            <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
+            <p className={"tw-body-text tw-text-left"}>
               If you would like to continue with the lab, click on the{" "}
               <b>Continue</b> button.
             </p>
-            <p className={"playthrough__sentence tw-text-center tw-my-0"}>
+            <p className={"tw-body-text tw-text-left"}>
               If you would like to generate more data for the AI, click on the{" "}
               <b>Train AI</b> button.
             </p>
-            <p className={"playthrough__sentence tw-text-center tw-my-0"}>
+            <p className={"tw-body-text tw-text-left"}>
               If you would like to experience the AI simulation, click on the{" "}
               <b>Experience AI</b> button.
             </p>

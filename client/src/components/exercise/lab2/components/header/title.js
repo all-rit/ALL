@@ -11,8 +11,8 @@ const Title = ({ exerciseState, replay }) => {
     <div>
       {exerciseState ? (
         <div>
-          <p className="mainTitle">Let the Exercise Begin!</p>
-          <p className="secondTitle">
+          <p className="tw-title">Let the Exercise Begin!</p>
+          <p className="tw-body-text tw-text-center">
             Click as fast as you can the correct colored circle!
           </p>
         </div>
@@ -20,15 +20,15 @@ const Title = ({ exerciseState, replay }) => {
         <div>
           {replay ? (
             <div>
-              <p className="mainTitle">Exercise Over!</p>
-              <p className="secondTitle">
+              <p className="tw-title tw-text-center">Exercise Over!</p>
+              <p className="tw-body-text tw-text-center">
                 Check out your score and click the button when ready to move on!
               </p>
             </div>
           ) : (
             <div>
-              <p className="mainTitle">Color Clicker</p>
-              <p className="secondTitle">
+              <p className="tw-title tw-text-center tw-py-3">Color Clicker</p>
+              <p className="tw-body-text tw-text-center">
                 How fast can you click the correct colored circle?
               </p>
             </div>

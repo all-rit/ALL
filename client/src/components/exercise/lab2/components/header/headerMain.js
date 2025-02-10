@@ -4,8 +4,8 @@
 import React, { Component } from "react";
 import ColorUpdate from "./buttons/colorUpdate";
 import Home from "./buttons/homeReset.js";
-import Button from "./buttons/button";
 import "../../Instructions/secondaryInstructions.css";
+import LabButton from "../../../../all-components/LabButton";
 
 /*
 Component for the header of the pages. Controls the buttons and options
@@ -45,16 +45,16 @@ class Header extends Component {
     if (exerciseState) {
       return (
         <div
-          className="headerStyle tw-rounded-t-4xl tw-p-3 tw-shadow-2xl"
+          className="tw-rounded-t-lg tw-p-4 tw-mb-3 tw-shadow-lg"
           style={{ background: "black" }}
         >
-          <div className="oneline center">
+          <div className="tw-flex tw-flex-row tw-h-full tw-align-middle tw-items-center tw-justify-between">
             <Home
               exerciseEnded={goBackFromExercise}
               colors={colors}
               changeExerciseColors={changeExerciseColors}
             />
-            <p className="deficiencyCheck">
+            <p className="tw-body-text tw-font-medium tw-text-white">
               Vision Deficiency Simulation:
               <span style={{ fontWeight: "bold", marginLeft: "3px" }}>
                 {exerciseMode === "Main" ? " Off" : " On"}
@@ -66,43 +66,22 @@ class Header extends Component {
     }
 
     return (
-      <div className="headerStyle tw-rounded-t-4xl">
-        <div>
+      <div className="tw-rounded-t-lg tw-items-center tw-h-[5rem]">
+        <div className={"tw-w-full"}>
           {aboutState ? (
-            <Button
-              clickMethod={closeAboutPage}
-              message={"Back"}
-              className="backButton btn btn-second btn-xl text-uppercase "
-              fontSizing={"25px"}
-            />
+            <LabButton onClick={closeAboutPage} label={"Back"} />
           ) : (
             <div>
               {statState ? (
-                <Button
-                  clickMethod={closeStatPage}
-                  message={"Home"}
-                  fontSizing={"25px"}
-                />
+                <LabButton onClick={closeStatPage} label={"Home"} />
               ) : (
                 <div>
                   {firstExercise ? null : (
-                    <div>
+                    <div className={"tw-p-6 tw-w-full"}>
                       {colorChange ? (
-                        <div className="inlineForm">
-                          <Button
-                            clickMethod={backButton}
-                            message={"Back"}
-                            className="backButton btn btn-second btn-xl text-uppercase"
-                            fontSizing={"25px"}
-                          />
-                          <p
-                            className="mainColor secondTitle"
-                            style={{
-                              marginTop: "15px",
-                              marginLeft: "25px",
-                              background: "rgba(38,38,38,1)",
-                            }}
-                          >
+                        <div className="inlineForm tw-flex tw-items-center tw-justify-between tw-w-full">
+                          <LabButton onClick={backButton} label={"Back"} />
+                          <p className={"tw-body-text"}>
                             Adjust the colors below to be in better color
                             contrast
                           </p>

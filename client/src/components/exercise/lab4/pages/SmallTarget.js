@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import { navigate } from "@reach/router";
 import { PageService } from "../../../../services/PageService";
@@ -75,32 +75,31 @@ const SmallTarget = () => {
 
   const instructions = "Click the start button.";
   return (
-    <Fragment>
-      <div>
-        <AppInstructions instructions={instructions} />
-        <div
-          style={{
-            width: "300px",
-            height: "300px",
-            margin: "auto",
-            paddingTop: "50px",
-            position: "relative",
-          }}
-          onMouseMove={(e) => wiggle(e)}
+    <div className={"tw-p-10"}>
+      <h2 className={"tw-title tw-text-left"}> Exercise </h2>
+      <AppInstructions instructions={instructions} />
+      <div
+        style={{
+          width: "300px",
+          height: "300px",
+          margin: "auto",
+          paddingTop: "50px",
+          position: "relative",
+        }}
+        onMouseMove={(e) => wiggle(e)}
+      >
+        <Button
+          ref={myDiv}
+          href="#"
+          onClick={handleSubmit}
+          variant={"contained"}
+          color={"primary"}
+          style={state}
         >
-          <Button
-            ref={myDiv}
-            href="#"
-            onClick={handleSubmit}
-            variant={"contained"}
-            color={"primary"}
-            style={state}
-          >
-            Start
-          </Button>
-        </div>
+          Start
+        </Button>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

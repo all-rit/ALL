@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
-import { Button, Popover, PopoverBody } from "reactstrap";
+import { Popover, PopoverBody } from "reactstrap";
 import {
   timePerWord,
   minFontNotif,
@@ -41,13 +41,13 @@ const Notification = (props) => {
 
   return (
     <div>
-      <Button
+      <button
         id="Popover1"
         type="button"
-        className="btn btn-second text-black btn-xl text-uppercase "
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase"
       >
         Notification
-      </Button>
+      </button>
       <Popover
         placement="bottom"
         isOpen={popoverOpen}

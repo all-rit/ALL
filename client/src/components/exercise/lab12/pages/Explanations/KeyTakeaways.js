@@ -24,30 +24,31 @@ const KeyTakeaways = () => {
 
   return (
     <div className="center-div">
+      <h1 className={"tw-title tw-text-left"}> Exercise Complete </h1>
       <div className="guidance margin-bottom-2">
-        <p className="playthrough__sentence">
+        <p className="tw-body-text tw-text-left tw-py-3">
           You have completed the exercise for Accessibility to Expression. Some
           of your key takeaways from this lab should include:
         </p>
         <ul>
-          <li>
+          <li className={"tw-body-text"}>
             Gender is not a social construct, but one’s own feelings as to who
             they are as a person.
           </li>
-          <li>
+          <li className={"tw-body-text"}>
             Companies and workplaces should strive for inclusivity for all to
             increase collaboration, decrease stress, and promote bonding between
             coworkers.
           </li>
-          <li>
+          <li className={"tw-body-text"}>
             Applications and forms should ask the user for their preferred name,
             pronouns, etc. and use them in all further communications.
           </li>
         </ul>
       </div>
-      <div className="playthrough__sentence">
-        Click the &quot;Continue&quot; button to move on the the Reinforcement
-        Section!
+      <div className="tw-body-text tw-text-center tw-pb-6">
+        Click the <strong>Continue</strong> button to move on the the
+        Reinforcement Section!
       </div>
       <button
         className="btn btn-primary text-black btn-xl text-uppercase "

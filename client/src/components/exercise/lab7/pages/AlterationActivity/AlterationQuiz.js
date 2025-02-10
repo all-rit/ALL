@@ -36,7 +36,7 @@ const AlterationQuiz = () => {
 
   return (
     <div className="center-div">
-      <p className="playthrough__sentence">Alteration Quiz</p>
+      <p className="tw-title tw-text-left tw-p-3">Alteration Quiz</p>
       <p className={"playthrough__sentence"}>
         How does the <b>new utility equation</b> impact the autonomous system
         compared to the <b>original utility equation</b>?

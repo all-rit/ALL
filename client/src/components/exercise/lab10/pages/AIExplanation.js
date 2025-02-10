@@ -61,25 +61,22 @@ const AIExplanation = (props) => {
     <div>
       <Fragment>
         <div className={"center-div"}>
+          <h1 className={"tw-title tw-text-left tw-pb-6"}> AI Explanation</h1>
           <div className={"guidance margin-bottom-2"}>
-            <p className={"playthrough__sentence tw-text-center"}>
+            <p className={"tw-body-text tw-text-left"}>
               Did you notice something different about how the AI responded
               during the simulation?
             </p>
-            <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
+            <p className={"tw-body-text tw-text-left tw-py-6"}>
               Whenever there was an empty hole, the AI knew to move towards it
-              to make sure it does not get hit by any of the falling shapes.
-            </p>
-            <p className={"playthrough__sentence tw-text-center tw-mt-0"}>
-              On the other hand, when the AI was unable to find an empty hole,
-              it would move to ensure it does not get hit by a specific color.
-            </p>
-            <p className={"playthrough__sentence tw-text-center tw-mb-0"}>
+              to make sure it does not get hit by any of the falling shapes. On
+              the other hand, when the AI was unable to find an empty hole, it
+              would move to ensure it does not get hit by a specific color.
               Based on the data <strong>you</strong> generated from playing the
               game, the AI avoided the color that <strong>you</strong> most
               frequently hit.
             </p>
-            <p className={"playthrough__sentence tw-text-center tw-mt-0"}>
+            <p className={"tw-body-text tw-text-left"}>
               Below is <strong>your</strong> generated data that the AI utilized
               for the simulation.
             </p>

@@ -52,13 +52,19 @@ const authenticateRedirect = passport.authenticate('google', {
 const authenticateCallback = async (req, res) => {
   try {
     const data = await UserService.authenticate(req.user.profile);
-    req.session.token = data.usersessionid;
-    await UserService.updateGuestUserId(data.userid, req.session.token);
-    res.status(301);
-    res.redirect(req.session.url);
+
+    if (data) {
+      await UserService.updateGuestUserId(data.userid, req.session.token);
+      req.session.token = data.usersessionid;
+      res.redirect(req.session.url || '/');
+    } else {
+      // Handle case where authentication failed
+      res.redirect('/login?error=auth_failed');
+    }
   } catch (error) {
     console.error('Error while executing authenticateCallback', error);
-    res.status(500).json({error: error.message});
+    // Send user to error page with more specific error message
+    res.redirect(`/login?error=${encodeURIComponent(error.message)}`);
   }
 };
 

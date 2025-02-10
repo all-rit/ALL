@@ -20,7 +20,7 @@ class Content extends Component {
       repairVisible,
     } = data;
     return (
-      <main className="content">
+      <main className="tw-px-6">
         <Playthrough
           plays={data.plays}
           results={data.results}
@@ -32,6 +32,8 @@ class Content extends Component {
             data.state !== EXERCISE_ENDED && data.state !== EXERCISE_IDLE
           }
         />
+        <Exercise data={data} handlers={handlers} user={user} />
+
         <Repair
           visible={repairVisible && data.state === EXERCISE_IDLE}
           data={{
@@ -43,7 +45,6 @@ class Content extends Component {
           }}
           handlers={handlers}
         />
-        <Exercise data={data} handlers={handlers} user={user} />
       </main>
     );
   }

@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { LAB_ID } from "../../../../constants/lab4";
 import UserLabService from "../../../../services/UserLabService";
-import { AppBar, Toolbar } from "@mui/material";
 import useMainStateContext from "src/reducers/MainContext";
 import { EXERCISE_IDLE } from "src/constants/index";
 
@@ -22,29 +21,26 @@ const Finish = () => {
   }, []);
 
   return (
-    <Fragment>
-      <div>
-        <AppBar position="static" className="appBar tw-items-center">
-          <Toolbar>
-            <h4 className="flex-boxes tw-flex ">
-              Congratulations! You have successfully completed the Dexterity
-              Exercise!
-            </h4>
-          </Toolbar>
-        </AppBar>
-        <br />
-        <h4 className="flex-boxes">
-          Click the button below to restart the exercise.
-        </h4>
-        <button
-          className="btn btn-primary text-black btn-xl text-uppercase "
-          onClick={handleSubmit}
-          key="start"
-        >
-          Return to Exercise Start
-        </button>
-      </div>
-    </Fragment>
+    <div className={"tw-p-6"}>
+      <h2 className={"tw-title tw-text-left tw-my-6"}> Exercise Complete</h2>
+      <p className="tw-body-text tw-text-left">
+        Congratulations! You have successfully completed the Dexterity Exercise!
+      </p>
+      <br />
+      <p className="tw-body-text tw-text-left">
+        If you would like to start the exercise from the beginning, click the{" "}
+        <strong>Return to Exercise Start</strong> button below. To move on to
+        the reinforcement section scroll down and click the{" "}
+        <strong>Next</strong> button.
+      </p>
+      <button
+        className="btn tw-bg-secondary-gray tw-shadow-md hover:tw-bg-primary-yellow hover:tw-shadow-xl btn-xl text-uppercase tw-my-6"
+        onClick={handleSubmit}
+        key="start"
+      >
+        Return to Exercise Start
+      </button>
+    </div>
   );
 };
 

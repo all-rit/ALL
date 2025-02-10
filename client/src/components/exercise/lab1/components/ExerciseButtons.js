@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable require-jsdoc */
 import React, { Component, Fragment } from "react";
+import LabButton from "../../../all-components/LabButton";
 
 class ExerciseButtons extends Component {
   render() {
@@ -20,31 +21,21 @@ class ExerciseButtons extends Component {
       startMessage = "Next Play";
     }
     const repairButton = (
-      <button
-        className="btn btn-second btn-xl text-uppercase  leftButton"
-        onClick={openRepairHandler}
-        key="repair"
-      >
-        Repair
-      </button>
+      <LabButton onClick={openRepairHandler} key="repair" label={"Repair"} />
     );
     const instructionsButton = (
-      <button
-        className="btn btn-second btn-xl text-uppercase  leftButton"
+      <LabButton
         onClick={openInstructionsHandler}
         key="instructions"
-      >
-        How to Play?
-      </button>
+        label={"How to Play?"}
+      />
     );
     const startButton = (
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase  rightButton"
+      <LabButton
         onClick={startExerciseHandler}
         key="start"
-      >
-        {startMessage}
-      </button>
+        label={startMessage}
+      />
     );
     const buttons = [];
 

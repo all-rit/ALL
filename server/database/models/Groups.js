@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         instructorUserID: {type: DataTypes.INTEGER},
         groupName: {type: DataTypes.TEXT},
         createdDate: {type: DataTypes.DATE},
+        color: {
+          type: DataTypes.TEXT,
+          defaultValue: 'group_blue',
+        },
         isActive: {type: DataTypes.BOOLEAN},
         code: {
           type: DataTypes.TEXT,

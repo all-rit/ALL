@@ -49,9 +49,10 @@ const UpdatedTrainingAI = (props) => {
 
   return (
     <div>
+      <h1 className={"tw-title tw-text-left tw-pb-6"}> AI Training </h1>
       {props.simulationStatus === SIMULATION_IDLE && (
         <div>
-          <p className={"playthrough__sentence"}>
+          <p className={"tw-body-text tw-pb-6"}>
             With the updated duration time, re-run the simulation and collect
             more data for the neural network.
           </p>

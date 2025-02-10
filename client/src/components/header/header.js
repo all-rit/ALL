@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-/* eslint-disable camelcase */
-import React, { useEffect, useState } from "react";
-import Logo from "../../assets/images/logos/FinalALLLogo.png";
-import "../../assets/stylesheets/components/Header.scss";
-import WelcomeMessage from "./helpers/WelcomeMessage";
+import React, { useEffect, useLayoutEffect, useState } from "react";
+import Logo from "../../assets/images/logos/ALL_Logo.svg";
 import { connect } from "react-redux";
 import {
   Collapse,
@@ -15,18 +11,25 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { EXERCISE_IDLE } from "../../constants/lab1";
-import handleRedirect from "../../helpers/Redirect";
 import { bindActionCreators } from "redux";
 import { actions as mainActions } from "../../reducers/MainReducer";
-import getExerciseState from "../../helpers/GetReducer";
-
-import { navigate as reachNavigate } from "@reach/router";
+import { navigate as reachNav } from "@reach/router";
 import useMainStateContext from "src/reducers/MainContext";
+import BrandedALLModal from "../all-components/BrandedALLModal";
+import LoginBody from "../body/login/LoginBody";
+import PropTypes from "prop-types";
+import handleRedirect from "../../helpers/Redirect";
+import getExerciseState from "../../helpers/GetReducer";
+import {
+  ERROR,
+  EXERCISE_IN_PROGRESS,
+  LOGOUT_ERROR,
+  LOGOUT_SUCCESS,
+  SUCCESS,
+} from "../../constants/notifications";
 
 const mapStateToProps = (state) => {
   return {
-    // General
     state: state,
   };
 };
@@ -37,327 +40,213 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const navigate = (state, reduxState, actions, body, lab = state.main.lab) => {
-  if (!alert_check(state, reduxState)) {
-    handleRedirect(actions, lab, body);
-  }
-};
-
-const alert_check = (state, reduxState) => {
-  if (
-    getExerciseState(state, reduxState) !== "EXERCISE_IDLE" &&
-    state.main.body === 2
-  ) {
-    alert("The exercise is still in progress! Please complete the exercise");
-    return true;
-  }
-  return false;
-};
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+}
 
 const Header = (props) => {
-  const context = useMainStateContext();
-  const [isOpen, setIsOpen] = useState(false);
-  const activeStyle = { color: "#fed136" };
-  const toggle = () => setIsOpen(!isOpen);
-  const closeNav = () => setIsOpen(false);
-  const { state, actions } = context;
-  const [link, setLink] = useState(0);
-  const listenScrollEvent = (event) => {
-    if (state.main.lab === 0 && state.main.body === 0) {
-      if (window.scrollY < 800) {
-        return setLink(0);
-      } else if (window.scrollY < 2100) {
-        return setLink(1);
-      } else if (window.scrollY < 3500) {
-        return setLink(2);
-      } else {
-        return setLink(3);
-      }
+  const { state, actions } = useMainStateContext();
+  const user = state.main.user;
+  const [isSmallWindow, setisSmallWindow] = useState(false);
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const [signInModalOpen, setSignInModalOpen] = useState(false);
+
+  const toggleSignIn = () => {
+    setSignInModalOpen(!signInModalOpen);
+  };
+
+  const signInModal = () => {
+    return (
+      <BrandedALLModal
+        direction={"row"}
+        isOpen={signInModalOpen}
+        toggle={toggleSignIn}
+      >
+        <LoginBody />
+      </BrandedALLModal>
+    );
+  };
+
+  const logout = async () => {
+    try {
+      actions.showSnackbar(LOGOUT_SUCCESS, SUCCESS);
+      window.location.href = `${process.env.REACT_APP_SERVER_URL}/logout`;
+    } catch (e) {
+      actions.showSnackbar(LOGOUT_ERROR, ERROR);
+      console.error(e, "Could not log out.");
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
-    return () => window.removeEventListener("scroll", listenScrollEvent);
-  }, [state]);
+  const alert_check = (state, reduxState) => {
+    if (
+      getExerciseState(state, reduxState) !== "EXERCISE_IDLE" &&
+      state.main.body === 2
+    ) {
+      actions.showSnackbar(EXERCISE_IN_PROGRESS, ERROR);
+      return true;
+    }
+    return false;
+  };
 
-  const count = state.main.body;
-  const loginEnabled =
-    state.main.lab === 0 ||
-    getExerciseState(state, props.state) === EXERCISE_IDLE ||
-    state.main.body !== 2;
+  const navigate = (state, reduxState, actions, body, lab = state.main.lab) => {
+    if (!alert_check(state, reduxState)) {
+      handleRedirect(actions, lab, body);
+    }
+  };
+
+  const toggleNavbar = () => setNavbarOpen(!navbarOpen);
+  const windowSize = useWindowSize();
+
+  if (isSmallWindow == false && windowSize[0] < 1000) {
+    setisSmallWindow(true);
+  } else if (isSmallWindow == true && windowSize[0] >= 1000) {
+    setisSmallWindow(false);
+  }
+
+  // user is logged in if their profile image isn't null, kinda scuffed but lmk if there's a simpler way
+  // (state.main.user is never null)
+  const loggedIn = state.main.user?.userpfp !== null;
 
   return (
     <Navbar
       id="navHeader"
-      dark
       expand="lg"
-      className="tw-pt-3 poppins tw-font-bold mb-0"
+      className="tw-body-text tw-font-bold tw-my-0 tw-mb-[5rem]"
     >
-      <div className=" tw-z-30 tw-text-2xl shadow tw-bg-labGray tw-fixed tw-top-0 p-3 tw-left-0 tw-right-0 w-100 d-flex flex-row justify-content-between align-items-between">
-        <a
-          href="# "
-          onClick={() =>
-            (state.main.lab === 0 ? state.main.body === 3 : false)
-              ? reachNavigate("/Imagine/UserID")
-              : navigate(state, props.state, actions, 0, 0)
-          }
+      <div
+        className={`tw-mt-[-1.75rem] tw-flex tw-flex-col tw-z-30 tw-bg-white tw-fixed tw-top-0 tw-left-0 tw-right-0 xxs:tw-h-[15%] tw-shadow-md tw-px-5 lg:tw-px-12`}
+      >
+        <div
+          className={`${isSmallWindow ? "tw-flex tw-flex-row tw-justify-between tw-items-center" : "tw-flex tw-flex-row tw-gap-4 tw-items-center"}`}
         >
-          <img
-            className="logo tw-cursor-pointer"
-            src={Logo}
-            alt="Computing Accessibility"
+          <a className={"tw-mt-[1rem]"} onClick={() => reachNav("/#")}>
+            <img
+              className="tw-cursor-pointer xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"
+              src={Logo}
+              alt="Computing Accessibility"
+            />
+          </a>
+
+          <NavbarToggler
+            className={`${isSmallWindow ? "tw-z-20 tw-h-1/2" : "tw-hidden"}`}
+            onClick={toggleNavbar}
           />
-        </a>
-        {/* TODO figure out a way to consolidate repeated code*/}
-        {/* Landing Page NavBar */}
-        <div>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            {state.main.lab === 0 ? (
-              <Nav className="ml-auto tw-items-end tw-flex-wrap" navbar>
-                {state.main.body === 0 ? (
-                  <Nav
-                    className="ml-auto tw-items-end dropdown-menu-wrap"
-                    navbar
-                  >
-                    <NavItem onClick={closeNav} className="navbar-collapse">
-                      <NavLink
-                        className="nav-link "
-                        href="#goals"
-                        style={link === 0 ? activeStyle : { color: "#fff" }}
-                      >
-                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                          <li className="nav-item">Goals</li>
-                        </ul>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem onClick={closeNav} className="navbar-collapse ">
-                      <NavLink
-                        className="nav-link "
-                        href="#labs "
-                        style={link === 1 ? activeStyle : { color: "#fff" }}
-                      >
-                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                          <li className="nav-item">Labs</li>
-                        </ul>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem onClick={closeNav} className="navbar-collapse">
-                      <NavLink
-                        className="nav-link "
-                        href="#citation"
-                        style={link === 2 ? activeStyle : { color: "#fff" }}
-                      >
-                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                          <li className="nav-item">Team</li>
-                        </ul>
-                      </NavLink>
-                    </NavItem>
-                    <NavItem onClick={closeNav} className="navbar-collapse">
-                      <NavLink
-                        className="nav-link "
-                        href="#contact"
-                        style={link === 3 ? activeStyle : { color: "#fff" }}
-                      >
-                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                          <li className="nav-item">Contact</li>
-                        </ul>
-                      </NavLink>
-                    </NavItem>
-                  </Nav>
-                ) : (
-                  /** Mobile NavBar */
-                  <Nav className="tw-items-end tw-flex-wrap ml-auto" navbar>
-                    {state.main.body === 1 && (
-                      <>
-                        <NavItem onClick={closeNav} className="navbar-collapse">
-                          <NavLink
-                            className="nav-link "
-                            href="# "
-                            style={{ color: "#fff" }}
-                            onClick={() =>
-                              navigate(state, props.state, actions, 0, 0)
-                            }
-                          >
-                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                              <li className="nav-item">Home</li>
-                            </ul>
-                          </NavLink>
-                        </NavItem>
-
-                        <NavItem
-                          onClick={closeNav}
-                          className="collapse navbar-collapse"
-                        >
-                          <NavLink
-                            className="nav-link "
-                            href="# "
-                            style={
-                              state.main.body === 1
-                                ? activeStyle
-                                : { color: "#fff" }
-                            }
-                            onClick={() =>
-                              navigate(state, props.state, actions, 1, 0)
-                            }
-                          >
-                            <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                              <li className="nav-item">Site Map</li>
-                            </ul>
-                          </NavLink>
-                        </NavItem>
-                      </>
-                    )}
-                  </Nav>
-                )}
-                {state.main.user !== null &&
-                  state.main.user.firstname !== null && (
-                    <NavItem className="collapse navbar-collapse">
-                      <NavLink
-                        className="nav-link "
-                        href="# "
-                        style={
-                          state.main.body === 2
-                            ? activeStyle
-                            : { color: "#fff" }
-                        }
-                        onClick={() =>
-                          navigate(state, props.state, actions, 2, 0)
-                        }
-                      >
-                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                          <li className="nav-item nav-last">Profile</li>
-                        </ul>
-                      </NavLink>
-                    </NavItem>
-                  )}
-                {(state.main.lab === 0 ? state.main.body !== 3 : true) && (
-                  <WelcomeMessage
-                    user={state.main.user}
-                    loginEnabled={loginEnabled}
-                  />
-                )}
-              </Nav>
-            ) : (
-              ({
-                /** In-Lab NavBar */
-              },
-              (
-                <Nav className="tw-items-end tw-flex-wrap ml-auto" navbar>
-                  <NavItem onClick={closeNav} className="navbar-collapse">
-                    <NavLink
-                      className="nav-link "
+          <Collapse
+            className={`${isSmallWindow ? "tw-absolute tw-bg-white tw-right-0 tw-top-[100%] tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow" : "tw-flex tw-flex-grow tw-justify-end"}`}
+            isOpen={navbarOpen}
+          >
+            <Nav
+              className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
+            >
+              <NavItem
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+              >
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  onClick={() => reachNav("/#")}
+                >
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
+                    Home
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
+              >
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  href="/Labs"
+                >
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
+                    Labs
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+              >
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  href="/about-us"
+                >
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
+                    About Us
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+              >
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  href="/EducatorResources"
+                >
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
+                    Educator Resources
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem className="tw-px-4 tw-py-2 tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+                {loggedIn && user ? (
+                  // TO-DO: PROFILE LINK HERE
+                  <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
+                    <div
                       onClick={() =>
-                        navigate(state, props.state, actions, 0, 0)
+                        navigate(state, props.state, actions, 2, 0)
                       }
-                      href="# "
-                      style={{ color: "#fff" }}
+                      aria-label="Google Profile Photo"
+                      className="tw-h-12 tw-object-cover"
+                      style={{
+                        backgroundImage: `url(${user?.userpfp}`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                      }}
+                    ></div>
+                  </NavLink>
+                ) : (
+                  <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
+                    <p
+                      className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-cursor-pointer tw-body-text"
+                      onClick={toggleSignIn}
                     >
-                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                        <li className="nav-item">Home</li>
-                      </ul>
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem onClick={closeNav} className="navbar-collapse">
-                    <NavLink
-                      className="nav-link "
-                      onClick={() => navigate(state, props.state, actions, 0)}
-                      href="# "
-                      style={count === 0 ? activeStyle : { color: "#fff" }}
-                    >
-                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                        <li className="nav-item">About</li>
-                      </ul>
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem onClick={closeNav} className="navbar-collapse">
-                    <NavLink
-                      className="nav-link "
-                      onClick={() => navigate(state, props.state, actions, 1)}
-                      href="# "
-                      style={count === 1 ? activeStyle : { color: "#fff" }}
-                    >
-                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                        <li className="nav-item">Reading</li>
-                      </ul>
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem onClick={closeNav} className="navbar-collapse">
-                    <NavLink
-                      className="nav-link "
-                      onClick={() => navigate(state, props.state, actions, 2)}
-                      href="# "
-                      style={count === 2 ? activeStyle : { color: "#fff" }}
-                    >
-                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                        <li className="nav-item">Exercise</li>
-                      </ul>
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem onClick={closeNav} className="navbar-collapse">
-                    <NavLink
-                      className="nav-link "
-                      onClick={() => navigate(state, props.state, actions, 3)}
-                      href="# "
-                      style={count === 3 ? activeStyle : { color: "#fff" }}
-                    >
-                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                        <li className="nav-item">Reinforcement</li>
-                      </ul>
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem onClick={closeNav} className="navbar-collapse">
-                    <NavLink
-                      className="nav-link "
-                      onClick={() => navigate(state, props.state, actions, 4)}
-                      href="# "
-                      style={count === 4 ? activeStyle : { color: "#fff" }}
-                    >
-                      <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                        <li className="nav-item">Quiz</li>
-                      </ul>
-                    </NavLink>
-                  </NavItem>
-
-                  {state.main.user !== null && (
-                    <NavItem
-                      onClick={closeNav}
-                      className="collapse navbar-collapse"
-                    >
-                      <NavLink
-                        className="nav-link "
-                        href="# "
-                        style={{ color: "#fff" }}
-                        onClick={() =>
-                          navigate(state, props.state, actions, 2, 0)
-                        }
-                      >
-                        <ul className="navbar-nav nav-font text-uppercase ml-auto">
-                          <li className="nav-item nav-last">Profile</li>
-                        </ul>
-                      </NavLink>
-                    </NavItem>
-                  )}
-
-                  <WelcomeMessage
-                    user={state.main.user}
-                    loginEnabled={loginEnabled}
-                    renderLink={true}
-                  />
-                </Nav>
-              ))
-            )}
+                      Sign In
+                    </p>
+                    {signInModal()}
+                  </NavLink>
+                )}
+              </NavItem>
+              <NavItem>
+                {isSmallWindow && loggedIn ? (
+                  <NavLink>
+                    <button className={"log_out-google-btn"} onClick={logout}>
+                      {" "}
+                      Logout{" "}
+                    </button>
+                  </NavLink>
+                ) : (
+                  <></>
+                )}
+              </NavItem>
+            </Nav>
           </Collapse>
         </div>
       </div>
     </Navbar>
   );
+};
+
+Header.propTypes = {
+  state: PropTypes.shape({}),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

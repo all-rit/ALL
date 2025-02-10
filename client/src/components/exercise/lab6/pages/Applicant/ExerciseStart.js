@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { navigate } from "@reach/router";
 import { EXERCISE_IDLE, EXERCISE_PLAYING } from "src/constants/index";
 import useMainStateContext from "src/reducers/MainContext";
+import LabButton from "../../../../all-components/LabButton";
 
 const ExerciseStart = () => {
   const { actions } = useMainStateContext();
@@ -17,22 +18,18 @@ const ExerciseStart = () => {
 
   return (
     <div className="center-div">
-      <h2 className="playthrough__title">Part 1: Applicant</h2>
-      <div className="playthrough__sentence">
+      <h2 className="tw-title tw-text-left tw-my-6">
+        Exercise Part 1: Applicant
+      </h2>
+      <div className="tw-body-text tw-text-left">
         In this exercise you will be applying to the company “MegaCorp.” During
         the process you will experience AI-based bias, and be asked to make
         changes to the AI.
       </div>
-      <div className="playthrough__sentence">
+      <div className="tw-body-text tw-text-left tw-my-6">
         Click the “Start” button to begin this exercise!
       </div>
-      <button
-        className="btn btn-primary text-black btn-xl text-uppercase "
-        onClick={handleStart}
-        key="start"
-      >
-        Start
-      </button>
+      <LabButton label={"Start"} onClick={handleStart} />
     </div>
   );
 };
