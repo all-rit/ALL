@@ -6,6 +6,7 @@ import YellowBlockSection from "../../components/all-components/YellowBlockSecti
 import DevPartners from "../landingpage/DevPartners";
 import Carousel from "../../components/all-components/ParticipatingSchools";
 import LandingSection from "../../components/all-components/LandingSection";
+import { ABOUT_US_BODY, ABOUT_US_TITLE } from "../../constants/sections";
 
 const EducatorResources = () => {
   return (
@@ -19,12 +20,7 @@ const EducatorResources = () => {
       />
       <WhatsAvailable />
       <ResourcesSection />
-      <YellowBlockSection
-        title={"About Us"}
-        body={
-          "Learn more about the team at Accessible Learning Labs and the amazing things we have in the works!"
-        }
-      />
+      <YellowBlockSection title={ABOUT_US_TITLE} body={ABOUT_US_BODY} />
       <DevPartners />
       <Carousel />
       <GettingInvolved />

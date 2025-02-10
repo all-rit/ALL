@@ -23,16 +23,12 @@ const GettingInvolved = () => {
             >
               <h1
                 className={
-                  "tw-title xs:tw-text-xl md:tw-text-[2rem] tw-text-left lg:tw-text-left tw-w-full tw-my-6 tw-font-poppins tw-leading-tight tw-flex-wrap"
+                  "tw-title xs:tw-text-xl md:tw-text-[2rem] tw-text-left tw-w-full tw-my-6 tw-font-poppins tw-leading-tight tw-flex-wrap"
                 }
               >
                 Interested in Getting Involved?
               </h1>
-              <p
-                className={
-                  "tw-body-text xs:tw-text-sm md:tw-text-[1.125rem] tw-leading-normal tw-w-full sm:tw-w-2/3 lg:tw-w-full"
-                }
-              >
+              <p className={"tw-body-text tw-leading-snug tw-w-full"}>
                 Whether you want to implement our labs in your course
                 curriculum, join the Accessible Learning Labs as a development
                 partner, or anything in between, contact us using the

@@ -14,6 +14,22 @@ import PropTypes from "prop-types";
 import Student from "../../assets/images/stockImages/LookingAtComputer.png";
 import Girl from "../../assets/images/stockImages/Girl1.png";
 import LandingSection from "../../components/all-components/LandingSection";
+import UserService from "../../services/UserService";
+import {
+  ACCESSIBILITY,
+  AI_MACHINE_LEARNING,
+  ALL_LABS,
+  DIFFICULTY_1,
+  DIFFICULTY_2,
+  DIFFICULTY_3,
+} from "../../constants/labs";
+import {
+  EXPLORE_LABS_BODY,
+  EXPLORE_LABS_TITLE,
+  VIEW_PROGRESS_BODY,
+  VIEW_PROGRESS_TITLE,
+} from "../../constants/sections";
+import LabGeneration from "../../components/body/lab/LabGeneration";
 
 const mapStateToProps = (state) => {
   return {
@@ -62,6 +78,7 @@ const LabsPage = (props) => {
   const { state } = useMainStateContext();
   const { actions } = props;
   const [labInformation, setLabInformation] = useState(new Map());
+  const [myLabs, setMyLabs] = useState([]);
 
   useEffect(() => {
     if (labInformation.size !== 0) {
@@ -114,37 +131,65 @@ const LabsPage = (props) => {
         filteredMap.set(key, filteredArr);
       }
     }
-    console.log(filteredMap);
     return filteredMap;
   };
 
   const [displayedLabs, setDisplayedLabs] = useState(new Map());
   const [selectedSearch, setSelectedSearch] = useState("ALL_LABS");
   const [textSearch, setTextSearch] = useState("");
+
+  const getMyLabs = async () => {
+    if (loggedIn) {
+      const allLabs = await LabService.getAllLabs();
+
+      const assignedLabs = await UserService.getUserAssignedLabs(
+        props.user?.userid,
+      );
+
+      const userLabs = [];
+      allLabs.filter((lab) => {
+        assignedLabs.some((assignedLab) => {
+          if (assignedLab.labID === lab.id) {
+            userLabs.push(lab);
+          }
+        });
+      });
+      setMyLabs(userLabs);
+    }
+  };
+
   useEffect(() => {
     const tempMap = new Map();
 
-    if (selectedSearch === "ALL_LABS") {
-      setDisplayedLabs(new Map(labInformation));
-    } else if (selectedSearch === "AI_MACHINE_LEARNING") {
-      if (labInformation.has("AI")) {
-        tempMap.set("AI", labInformation.get("AI"));
-        setDisplayedLabs(tempMap);
-      }
-    } else if (selectedSearch === "ACCESSIBILITY") {
-      if (labInformation.has("Accessibility")) {
-        tempMap.set("Accessibility", labInformation.get("Accessibility"));
-        setDisplayedLabs(tempMap);
-      }
-    } else if (selectedSearch === "DIFF1") {
-      setDisplayedLabs(labsByDifficulty(labInformation, 1));
-    } else if (selectedSearch === "DIFF2") {
-      setDisplayedLabs(labsByDifficulty(labInformation, 2));
-    } else if (selectedSearch === "DIFF3") {
-      setDisplayedLabs(labsByDifficulty(labInformation, 3));
-    } else {
-      setDisplayedLabs(labInformation);
+    switch (selectedSearch) {
+      case ALL_LABS:
+        setDisplayedLabs(new Map(labInformation));
+        break;
+      case AI_MACHINE_LEARNING:
+        if (labInformation.has("AI")) {
+          tempMap.set("AI", labInformation.get("AI"));
+          setDisplayedLabs(tempMap);
+        }
+        break;
+      case ACCESSIBILITY:
+        if (labInformation.has("Accessibility")) {
+          tempMap.set("Accessibility", labInformation.get("Accessibility"));
+          setDisplayedLabs(tempMap);
+        }
+        break;
+      case DIFFICULTY_1:
+        setDisplayedLabs(labsByDifficulty(labInformation, 1));
+        break;
+      case DIFFICULTY_2:
+        setDisplayedLabs(labsByDifficulty(labInformation, 2));
+        break;
+      case DIFFICULTY_3:
+        setDisplayedLabs(labsByDifficulty(labInformation, 3));
+        break;
+      default:
+        setDisplayedLabs(labInformation);
     }
+    getMyLabs();
   }, [labInformation, selectedSearch]);
 
   const handleSearchChange = (search) => {
@@ -188,26 +233,45 @@ const LabsPage = (props) => {
   };
 
   return (
-    <div className={"md:tw-pt-[2rem]"}>
+    <div className={"tw-w-lvw"}>
       <LandingSection
-        title={"Explore Our Labs"}
-        body={`Ready to start learning? Access any of the labs below to learn
-                    more about a range of topics from accessibility to sound and
-                    speech, color blindness and even labs about algorithmic bias
-                    and more.`}
+        title={EXPLORE_LABS_TITLE}
+        body={EXPLORE_LABS_BODY}
         img={Student}
       />
-      <div className="tw-relative tw-h-auto tw-w-full tw-mb-20">
-        <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-w-full tw-relative tw-pb-16">
+      <div className="tw-relative tw-h-auto  tw-mb-20">
+        <div className="tw-flex tw-bg-primary-yellow tw-h-auto tw-relative tw-pb-16">
           <div
             className="tw-flex tw-bg-primary-blue tw-w-full -tw-left-8 tw-top-16
-                            tw-h-auto tw-justify-left tw-relative tw-rounded-tr-lg"
+                            tw-h-auto tw-relative tw-rounded-tr-lg"
           >
             <div className="tw-bg-white tw-auto tw-w-full -tw-left-4 tw-top-4 tw-rounded-tr-lg tw-justify-left tw-relative">
               <div
                 className="tw-flex tw-flex-col tw-pt-16 tw-relative tw-left-12 tw-items-center
                               tw-flex-wrap tw-px-12"
               >
+                {loggedIn && (
+                  <div className={"tw-w-full"}>
+                    <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
+                      My Labs
+                    </h1>
+                    <div className={"tw-my-6 tw-p-4 tw-min-h-[20rem]"}>
+                      {myLabs.length > 0 ? (
+                        <LabGeneration
+                          actions={actions}
+                          labids={myLabs}
+                          progressState={"MY_LABS"}
+                        />
+                      ) : (
+                        <p className={"xs:tw-col-span-3"}>
+                          {" "}
+                          No labs assigned yet!
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 <h1 className="tw-font-poppins tw-font-bold tw-pb-4 tw-w-full">
                   Labs
                 </h1>
@@ -237,12 +301,12 @@ const LabsPage = (props) => {
                     </svg>
                   </button>
                 </div>
-                <div className="tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
+                <div className="xs:tw-hidden md:tw-grid tw-grid-cols-3 tw-px-6 tw-pt-12 tw-pb-16 tw-gap-3">
                   <button
                     className="tw-bg-white tw-font-poppins tw-px-6 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("ALL_LABS");
+                      handleSearchChange(ALL_LABS);
                     }}
                     autoFocus
                   >
@@ -252,7 +316,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("AI_MACHINE_LEARNING");
+                      handleSearchChange(AI_MACHINE_LEARNING);
                     }}
                   >
                     AI/Machine Learning
@@ -261,7 +325,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("ACCESSIBILITY");
+                      handleSearchChange(ACCESSIBILITY);
                     }}
                   >
                     Accessibility
@@ -270,7 +334,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("DIFF1");
+                      handleSearchChange(DIFFICULTY_1);
                     }}
                   >
                     Difficulty 1
@@ -279,7 +343,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("DIFF2");
+                      handleSearchChange(DIFFICULTY_2);
                     }}
                   >
                     Difficulty 2
@@ -288,7 +352,7 @@ const LabsPage = (props) => {
                     className=" tw-bg-white tw-font-poppins tw-px-3 tw-py-3 tw-font-semibold tw-rounded-md
                       tw-border-0 tw-shadow-md focus:tw-bg-primary-yellow focus:tw-shadow-xl hover:tw-bg-primary-yellow"
                     onClick={() => {
-                      handleSearchChange("DIFF3");
+                      handleSearchChange(DIFFICULTY_3);
                     }}
                   >
                     Difficulty 3
@@ -302,9 +366,9 @@ const LabsPage = (props) => {
                         key={category}
                         className="tw-flex tw-flex-col tw-mb-4"
                       >
-                        <text className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
+                        <p className="tw-font-bold tw-sub-title tw-w-full tw-text-left tw-my-4">
                           {category}
-                        </text>
+                        </p>
                         <div className="tw-flex tw-flex-wrap">
                           <div
                             className="tw-grid xs:tw-grid-cols-2 lg:tw-grid-cols-3
@@ -330,16 +394,13 @@ const LabsPage = (props) => {
         </div>
       </div>
       <LandingSection
-        title={"View Your Progress"}
-        body={
-          " Didn’t finish a lab? Come back and continue where you left " +
-          "off through your account profile. All of your progress will" +
-          " be saved as you complete each lab."
-        }
+        title={VIEW_PROGRESS_TITLE}
+        body={VIEW_PROGRESS_BODY}
         img={Girl}
         hasButton={true}
         buttonLabel={"Your Account"}
         onClick={handleNav}
+        shrinkImg={true}
       />
       {signInModalOpen && signInModal()}
       <GettingInvolved />
@@ -349,6 +410,9 @@ const LabsPage = (props) => {
 
 LabsPage.propTypes = {
   actions: PropTypes.shape({}),
+  user: PropTypes.shape({
+    userid: PropTypes.number,
+  }),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LabsPage);

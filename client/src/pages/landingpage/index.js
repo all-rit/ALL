@@ -12,6 +12,14 @@ import labService from "src/services/LabService";
 import useMainStateContext from "src/reducers/MainContext";
 import YellowBlockSection from "../../components/all-components/YellowBlockSection";
 import LandingSection from "../../components/all-components/LandingSection";
+import {
+  ABOUT_US_BODY,
+  ABOUT_US_TITLE,
+  ARE_YOU_AN_EDUCATOR_BODY,
+  ARE_YOU_AN_EDUCATOR_TITLE,
+  WELCOME_TO_ALL_BODY,
+  WELCOME_TO_ALL_TITLE,
+} from "../../constants/sections";
 
 const Home = () => {
   const { actions } = useMainStateContext();
@@ -48,16 +56,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={"md:tw-pt-[2rem]"}>
+    <div>
       {/* Header */}
       <LandingSection
-        title={"Welcome to Accessible Learning Labs"}
-        body={`Accessible Learning Labs is an NSF funded initiative aimed at
-                  empowering inclusive software and fostering STEM proficiency.
-                  We are dedicated to equipping users with the skills and
-                  knowledge to create accessible software solutions. Through our
-                  interactive and intuitive labs, we aim to make the internet a
-                  more equitable place for everyone.`}
+        title={WELCOME_TO_ALL_TITLE}
+        body={WELCOME_TO_ALL_BODY}
         img={Girl2}
       />
 
@@ -109,25 +112,19 @@ const Home = () => {
 
       {/* Are you an Educator? */}
       <LandingSection
-        title={"Are You an Educator?"}
-        body={
-          "Access the ability to create groups for your students, track\n" +
-          "                    their lab progress, date of completion, and quiz grade. Find\n" +
-          "                    more information and resources under our Educator Resources\n" +
-          "                    page."
-        }
+        title={ARE_YOU_AN_EDUCATOR_TITLE}
+        body={ARE_YOU_AN_EDUCATOR_BODY}
         img={Girl3}
         hasButton={true}
         buttonLabel={"Educator Resources"}
         onClick={handleNavEducators}
+        shrinkImg={true}
       />
 
       {/* About Us */}
       <YellowBlockSection
-        title="About Us"
-        body={
-          "Learn more about the team at Accessible Learning Labs and the amazing things we have in the works!"
-        }
+        title={ABOUT_US_TITLE}
+        body={ABOUT_US_BODY}
         id="about-us"
       />
       <DevPartners id="dev-partners" />

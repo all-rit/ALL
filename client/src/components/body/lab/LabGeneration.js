@@ -92,12 +92,13 @@ const LabGeneration = (props) => {
           </>
         );
       }
-    } else if (progressState === "FEATURED_LABS") {
+    } else if (
+      progressState === "FEATURED_LABS" ||
+      progressState === "MY_LABS"
+    ) {
       return (
         <div
-          className={
-            "tw-grid xs:tw-grid-cols-1 md:tw-grid-cols-2 tw-w-full tw-gap-3"
-          }
+          className={`tw-grid xs:tw-grid-cols-1 ${progressState === "MY_LABS" ? "md:tw-grid-cols-3" : "md:tw-grid-cols-2"} tw-w-full tw-gap-3`}
         >
           {labids.map((lab, index) => {
             const idx = lab.id - 1;
