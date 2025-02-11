@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { navigate, Router } from "@reach/router";
 import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
@@ -68,6 +68,13 @@ const Main = () => {
     startImagine();
   }, []);
 
+  const [userAvatar, setUserAvatar] = useState({
+    hairStyle: "LongHairStraight",
+    hairColor: "Black",
+    shirtColor: "Gray",
+    skinColor: "Light",
+  });
+
   return (
     <>
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
@@ -94,7 +101,11 @@ const Main = () => {
         >
           <Router>
             <UpdateId default path={"/"} />
-            <AvatarCreation path={"/AvatarCreation"} />
+            <AvatarCreation
+              path={"/AvatarCreation"}
+              userAvatar={userAvatar}
+              setUserAvatar={setUserAvatar}
+            />
             <AvatarSelection
               avatars={teammateAvatars}
               imagineService={ImagineService.postTeammateSelection}
