@@ -3,37 +3,9 @@ import Avatar from "avataaars";
 import "./avatarSelection.css";
 import { Frame } from "../components/Frame";
 import useMainStateContext from "src/reducers/MainContext";
-import ImagineService from "src/services/ImagineService";
+import PropTypes from "prop-types";
 
-//array that will dicate avatars displayed
-const avatars = [
-  {
-    hairStyle: "ShortHairShortCurly",
-    hairColor: "Black",
-    shirtColor: "Pink",
-    skinColor: "DarkBrown",
-  },
-  {
-    hairStyle: "ShortHairShortFlat",
-    hairColor: "Blonde",
-    shirtColor: "PastelYellow",
-    skinColor: "Brown",
-  },
-  {
-    hairStyle: "LongHairCurly",
-    hairColor: "Red",
-    shirtColor: "Blue",
-    skinColor: "Light",
-  },
-  {
-    hairStyle: "LongHairStraight",
-    hairColor: "Blue",
-    shirtColor: "Gray01",
-    skinColor: "Black",
-  },
-];
-
-const OpponentSelection = () => {
+function AvatarSelection(props) {
   const { actions } = useMainStateContext();
   const startImagine = () => actions.setIsImagine(true);
   useEffect(() => {
@@ -43,19 +15,15 @@ const OpponentSelection = () => {
   const [avatarSelected, setAvatarSelected] = useState();
 
   const nextOnClick = async () => {
-    await ImagineService.postOpponenetSelection(
-      "3",
-      avatars[avatarSelected],
-      25,
-    );
+    await props.nextOnClick("1", props.avatars[avatarSelected], 25);
   };
 
   return (
     <>
-      <h3>Select Your Opponent!</h3>
+      <h3>Select Your {props.title}!</h3>
       {Frame(
         <div className="tw-grid tw-grid-rows-2 tw-grid-flow-col tw-gap-10 justify-content-center my-4">
-          {avatars.map((avatar, index) => {
+          {props.avatars.map((avatar, index) => {
             //div class wrapper needed for clicking functionality
             const avatarStyle =
               index == avatarSelected ? "Circle" : "Transparent";
@@ -78,6 +46,12 @@ const OpponentSelection = () => {
       )}
     </>
   );
+}
+
+AvatarSelection.propTypes = {
+  avatars: PropTypes.arrayOf(PropTypes.object).isRequired,
+  title: PropTypes.string.isRequired,
+  nextOnClick: PropTypes.func.isRequired,
 };
 
-export default OpponentSelection;
+export default AvatarSelection;
