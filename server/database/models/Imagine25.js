@@ -40,7 +40,8 @@ module.exports = (sequelize, DataTypes) => {
         gameOutcome: {
           type: DataTypes.TEXT,
         },
-      }, {tableName: 'imagine25'},
+      },
+      {tableName: 'imagine25'},
   );
 
   Imagine25.sync();

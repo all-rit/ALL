@@ -283,6 +283,34 @@ const determineGroup = async (preSurvey, year) => {
   return lowestPool;
 };
 
+const postUserAvatar = async (data) => {
+  const {userID, avatar, year} = data;
+  const imagine = `Imagine${year}`;
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.avatar = avatar;
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          avatar: avatar,
+        });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   submitStudy,
   newID,
@@ -293,4 +321,5 @@ module.exports = {
   readMoreCount,
   readingSectionPagePosition,
   readMoreTimeElapsed,
+  postUserAvatar,
 };

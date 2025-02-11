@@ -129,6 +129,22 @@ const readingSectionPagePosition = async (req, res) => {
   };
 };
 
+const postUserAvatar = async (req, res) => {
+  const {userID, avatar, year} = req.body;
+  try {
+    const avatarCreated = await ImagineService.postUserAvatar({
+      userID,
+      avatar,
+      year,
+    });
+    if (!avatarCreated) {
+      throw new Error('Post avatar was not recorded');
+    }
+  } catch (error) {
+    console.error(error);
+  };
+};
+
 module.exports = {
   readMoreCount,
   readMoreTimeElapsed,
@@ -138,5 +154,6 @@ module.exports = {
   postSurvey,
   preSurvey,
   submitStudy,
+  postUserAvatar,
   newID,
 };
