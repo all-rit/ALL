@@ -16,6 +16,21 @@ const submitStudy = async (req, res) => {
   }
 };
 
+const newID = async (req, res) => {
+  try {
+    const {userID, year} = req.body;
+    const result = await ImagineService.newID({
+      userID,
+      year,
+    });
+    if (!result) {
+      throw new Error('ID was not recorded');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const preSurvey = async (req, res) => {
   const {userID, preSurvey, year} = req.body;
 
@@ -114,22 +129,6 @@ const readingSectionPagePosition = async (req, res) => {
   };
 };
 
-const postTeammateAvatar = async (req, res) => {
-  const {userID, teammateAvatar, year} = req.body;
-  try {
-    const respostSurvey = await ImagineService.postTeammateAvatar({
-      userID,
-      teammateAvatar,
-      year,
-    });
-    if (!respostSurvey) {
-      throw new Error('Post teammateAvatar was not recorded');
-    }
-  } catch (error) {
-    console.error(error);
-  };
-};
-
 module.exports = {
   readMoreCount,
   readMoreTimeElapsed,
@@ -140,4 +139,5 @@ module.exports = {
   preSurvey,
   submitStudy,
   postTeammateAvatar,
+  newID,
 };

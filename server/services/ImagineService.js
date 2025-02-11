@@ -29,6 +29,20 @@ const submitStudy = async (data) => {
   }
 };
 
+const newID = async (data) => {
+  const {userID, year} = data;
+  const imagine = `Imagine${year}`;
+
+  try {
+    await db[imagine].create({
+      userid: userID,
+    });
+    return true;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const preSurvey = async (data) => {
   const {userID, preSurvey, year} = data;
   const imagine = `Imagine${year}`;
@@ -299,6 +313,7 @@ const postTeammateAvatar = async (data) => {
 
 module.exports = {
   submitStudy,
+  newID,
   preSurvey,
   postSurvey,
   getUsers,
