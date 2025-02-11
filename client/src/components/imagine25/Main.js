@@ -1,5 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
+import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
 import TeammateSelection from "./TeammateSelection";
 
@@ -31,6 +32,7 @@ const Main = () => {
           <Router>
             <UpdateId default path={"/"} />
             <TeammateSelection path={"/teammateSelection"} />
+            <AvatarCreation path={"/AvatarCreation"} />
           </Router>
         </div>
       </div>

@@ -248,6 +248,10 @@ router.post('/imagine25/teammateAvatarSelection', async function(req, res) {
   const resp = await ImagineController.postTeammateAvatar(req);
   res.send(resp);
 });
+router.post('/imagine25/userAvatarCreation', async function(req, res) {
+  const resp = await ImagineController.postUserAvatar(req);
+  res.send(resp);
+});
 
 router.post('/imagine25/newID', async function(req, res) {
   const resp = await ImagineController.newID(req);
