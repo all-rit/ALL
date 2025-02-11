@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Avatar from "avataaars";
 import "./avatarSelection.css";
 import { Frame } from "../components/Frame";
-import useMainStateContext from "src/reducers/MainContext";
 import PropTypes from "prop-types";
 
 function AvatarSelection(props) {
-  const { actions } = useMainStateContext();
-  const startImagine = () => actions.setIsImagine(true);
-  useEffect(() => {
-    startImagine();
-  }, []);
-
   const [avatarSelected, setAvatarSelected] = useState();
 
   const nextOnClick = async () => {
-    await props.nextOnClick("1", props.avatars[avatarSelected], 25);
+    props.nextNavigation();
+    await props.imagineService("1", props.avatars[avatarSelected], 25);
   };
 
   return (
@@ -43,15 +37,18 @@ function AvatarSelection(props) {
           })}
         </div>,
         nextOnClick,
+        props.prevNavigation,
       )}
     </>
   );
 }
 
 AvatarSelection.propTypes = {
-  avatars: PropTypes.arrayOf(PropTypes.object).isRequired,
   title: PropTypes.string.isRequired,
-  nextOnClick: PropTypes.func.isRequired,
+  avatars: PropTypes.arrayOf(PropTypes.object).isRequired,
+  imagineService: PropTypes.func.isRequired,
+  nextNavigation: PropTypes.func,
+  prevNavigation: PropTypes.func,
 };
 
 export default AvatarSelection;

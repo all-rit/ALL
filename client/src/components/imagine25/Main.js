@@ -1,9 +1,10 @@
-import React from "react";
-import { Router } from "@reach/router";
+import React, { useEffect } from "react";
+import { navigate, Router } from "@reach/router";
 import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
 import AvatarSelection from "./components/AvatarSelection";
 import ImagineService from "src/services/ImagineService";
+import useMainStateContext from "src/reducers/MainContext";
 
 const teammateAvatars = [
   {
@@ -60,6 +61,13 @@ const opponentAvatars = [
 ];
 
 const Main = () => {
+  //Removes header
+  const { actions } = useMainStateContext();
+  const startImagine = () => actions.setIsImagine(true);
+  useEffect(() => {
+    startImagine();
+  }, []);
+
   return (
     <>
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
@@ -89,14 +97,18 @@ const Main = () => {
             <AvatarCreation path={"/AvatarCreation"} />
             <AvatarSelection
               avatars={teammateAvatars}
-              nextOnClick={ImagineService.postTeammateSelection}
+              imagineService={ImagineService.postTeammateSelection}
               title={"Teammate"}
+              nextNavigation={() => navigate("/Imagine2025/OpponentSelection")}
+              prevNavigation={() => navigate("/Imagine2025/AvatarCreation")}
               path={"/TeammateSelection"}
             />
             <AvatarSelection
               avatars={opponentAvatars}
-              nextOnClick={ImagineService.postOpponenetSelection}
+              imagineService={ImagineService.postOpponenetSelection}
               title={"Opponent"}
+              nextNavigation={() => alert("no navigation implemented ;)")}
+              prevNavigation={() => navigate("/Imagine2025/TeammateSelection")}
               path={"/OpponentSelection"}
             />
           </Router>

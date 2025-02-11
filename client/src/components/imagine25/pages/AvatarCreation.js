@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Avatar from "avataaars";
-import useMainStateContext from "../../../reducers/MainContext";
 import {
   Dropdown,
   DropdownToggle,
@@ -13,6 +12,7 @@ import {
 } from "reactstrap";
 import { Frame } from "../components/Frame";
 import ImagineService from "src/services/ImagineService";
+import { navigate } from "@reach/router";
 
 //Function for each respective row in the avatarcreation page to stylize them
 const AvatarStyling = (defaultValue, setAvatarState, options) => {
@@ -53,13 +53,6 @@ const AvatarStyling = (defaultValue, setAvatarState, options) => {
 };
 
 const AvatarCreation = () => {
-  //removes lame buttons from top of screen
-  const { actions } = useMainStateContext();
-  const startImagine = () => actions.setIsImagine(true);
-  useEffect(() => {
-    startImagine();
-  }, []);
-
   //keep track of current avatar state
   const [hairStyle, setHairStyle] = useState("LongHairStraight");
   const [hairColor, setHairColor] = useState("Black");
@@ -68,6 +61,7 @@ const AvatarCreation = () => {
 
   const nextOnClick = async () => {
     //default userID set to 1 for now
+    navigate("/Imagine2025/TeammateSelection");
     await ImagineService.postUserAvatar(
       "1",
       {
