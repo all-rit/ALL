@@ -31,7 +31,17 @@ module.exports = (sequelize, DataTypes) => {
         opponentAvatar: {
           type: DataTypes.JSON,
         },
-      }, {tableName: 'imagine25'},
+        readingSpeed: {
+          type: DataTypes.INTEGER,
+        },
+        quizScore: {
+          type: DataTypes.INTEGER,
+        },
+        gameOutcome: {
+          type: DataTypes.TEXT,
+        },
+      },
+      {tableName: 'imagine25'},
   );
 
   Imagine25.sync();

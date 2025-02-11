@@ -16,6 +16,21 @@ const submitStudy = async (req, res) => {
   }
 };
 
+const newID = async (req, res) => {
+  try {
+    const {userID, year} = req.body;
+    const result = await ImagineService.newID({
+      userID,
+      year,
+    });
+    if (!result) {
+      throw new Error('ID was not recorded');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const preSurvey = async (req, res) => {
   const {userID, preSurvey, year} = req.body;
 
@@ -140,4 +155,5 @@ module.exports = {
   preSurvey,
   submitStudy,
   postUserAvatar,
+  newID,
 };

@@ -18,6 +18,17 @@ const ImagineService = {
       },
     );
   },
+
+  newID: async (userID, year) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/newID`,
+      {
+        userID,
+        year,
+      },
+    );
+  },
+
   postSurvey: async (userID, postSurvey, year) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + `/imagine${year}/postSurvey`,

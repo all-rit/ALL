@@ -174,78 +174,86 @@ router.post('/lab12/exercise/submit', async function(req, res) {
   res.send(id);
 });
 router.get('/lab12/repair/:userID/:section', async function(req, res) {
-  res.json(await RepairControllerLab12.getRepair(req));
-});
-router.post('/lab12/repair/submit', async function(req, res) {
-  const id = await RepairControllerLab12.submitChange(req);
-  res.send(id);
-});
+  router.get('/lab12/repair/:userID/:section', async function(req, res) {
+    res.json(await RepairControllerLab12.getRepair(req));
+  });
+  router.post('/lab12/repair/submit', async function(req, res) {
+    const id = await RepairControllerLab12.submitChange(req);
+    res.send(id);
+  });
 
-// Create a Page Entry
-router.post('/page/complete', PageController.createPage);
+  // Create a Page Entry
+  router.post('/page/complete', PageController.createPage);
 
-// Labs
-router.get('/lab', async function(req, res) {
-  await LabController.getAllLabsController(req, res);
-});
-router.get('/lab:labID/shortname', async function(req, res) {
-  await LabController.getLabShortNameController(req, res);
-});
-router.get('/lab:labID/about', async function(req, res) {
-  await LabController.getLabAboutController(req, res);
-});
-router.get('/lab:labID/reading', async function(req, res) {
-  await LabController.getLabReadingController(req, res);
-});
-router.get('/lab:labID/reinforcement', async function(req, res) {
-  await LabController.getLabReinforcementController(req, res);
-});
-router.get('/lab:labID/quiz', async function(req, res) {
-  await LabController.getLabQuizController(req, res);
-});
+  // Labs
+  router.get('/lab', async function(req, res) {
+    await LabController.getAllLabsController(req, res);
+  });
+  router.get('/lab:labID/shortname', async function(req, res) {
+    await LabController.getLabShortNameController(req, res);
+  });
+  router.get('/lab:labID/about', async function(req, res) {
+    await LabController.getLabAboutController(req, res);
+  });
+  router.get('/lab:labID/reading', async function(req, res) {
+    await LabController.getLabReadingController(req, res);
+  });
+  router.get('/lab:labID/reinforcement', async function(req, res) {
+    await LabController.getLabReinforcementController(req, res);
+  });
+  router.get('/lab:labID/quiz', async function(req, res) {
+    await LabController.getLabQuizController(req, res);
+  });
 
-// Team
-router.get('/teammember', TeamMemberController.getAllTeamMembers);
-router.get('/professors', TeamMemberController.getAllProfessors);
-router.get('/alumni', TeamMemberController.getAllAlumni);
-router.get('/devPartners', TeamMemberController.getAllDevPartners);
-router.get('/schools', TeamMemberController.getAllSchools);
+  // Team
+  router.get('/teammember', TeamMemberController.getAllTeamMembers);
+  router.get('/professors', TeamMemberController.getAllProfessors);
+  router.get('/alumni', TeamMemberController.getAllAlumni);
+  router.get('/devPartners', TeamMemberController.getAllDevPartners);
+  router.get('/schools', TeamMemberController.getAllSchools);
 
-// Imagine
-router.post('/imagine23/postStudy', async function(req, res) {
-  const resp = await ImagineController.submitStudy(req);
-  res.send(resp);
+  // Imagine
+  router.post('/imagine23/postStudy', async function(req, res) {
+    const resp = await ImagineController.submitStudy(req);
+    res.send(resp);
+  });
+  router.post('/imagine23/preSurvey', async function(req, res) {
+    const resp = await ImagineController.preSurvey(req, res);
+    res.send(JSON.stringify(resp));
+  });
+  router.post('/imagine23/postSurvey', async function(req, res) {
+    const resp = await ImagineController.postSurvey(req);
+    res.send(resp);
+  });
+  router.get('/imagine23/users', async function(req, res) {
+    const imagineUsers = await ImagineController.getUsers();
+    res.json(imagineUsers);
+  });
+  router.get('/imagine23/user/:userID', async function(req, res) {
+    const imagineUser = await ImagineController.getUserByID(req);
+    res.json(imagineUser);
+  });
+  router.post('/imagine23/readMoreCount', async function(req, res) {
+    const resp = await ImagineController.readMoreCount(req);
+    res.send(resp);
+  });
+  router.post('/imagine23/readMoreTimeElapsed', async function(req, res) {
+    const resp = await ImagineController.readMoreTimeElapsed(req);
+    res.send(resp);
+  });
+  router.post('/imagine23/readingSectionPagePosition', async function(req, res) {
+    const resp = await ImagineController.readingSectionPagePosition(req);
+    res.send(resp);
+  });
+  router.post('/imagine25/userAvatarCreation', async function(req, res) {
+    const resp = await ImagineController.postUserAvatar(req);
+    res.send(resp);
+  });
+
+  router.post('/imagine25/newID', async function(req, res) {
+    const resp = await ImagineController.newID(req);
+    res.send(resp);
+  });
+
+  module.exports = router;
 });
-router.post('/imagine23/preSurvey', async function(req, res) {
-  const resp = await ImagineController.preSurvey(req, res);
-  res.send(JSON.stringify(resp));
-});
-router.post('/imagine23/postSurvey', async function(req, res) {
-  const resp = await ImagineController.postSurvey(req);
-  res.send(resp);
-});
-router.get('/imagine23/users', async function(req, res) {
-  const imagineUsers = await ImagineController.getUsers();
-  res.json(imagineUsers);
-});
-router.get('/imagine23/user/:userID', async function(req, res) {
-  const imagineUser = await ImagineController.getUserByID(req);
-  res.json(imagineUser);
-});
-router.post('/imagine23/readMoreCount', async function(req, res) {
-  const resp = await ImagineController.readMoreCount(req);
-  res.send(resp);
-});
-router.post('/imagine23/readMoreTimeElapsed', async function(req, res) {
-  const resp = await ImagineController.readMoreTimeElapsed(req);
-  res.send(resp);
-});
-router.post('/imagine23/readingSectionPagePosition', async function(req, res) {
-  const resp = await ImagineController.readingSectionPagePosition(req);
-  res.send(resp);
-});
-router.post('/imagine25/userAvatarCreation', async function(req, res) {
-  const resp = await ImagineController.postUserAvatar(req);
-  res.send(resp);
-});
-module.exports = router;
