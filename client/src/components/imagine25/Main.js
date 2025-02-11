@@ -30,7 +30,7 @@ const Main = () => {
         >
           <Router>
             <UpdateId default path={"/"} />
-            <AvatarCreation path={"/avatarCreation"} />
+            <AvatarCreation path={"/AvatarCreation"} />
           </Router>
         </div>
       </div>

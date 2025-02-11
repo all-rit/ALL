@@ -16,7 +16,7 @@ export const Frame = (content, nextOnClick) => {
         <div className={yellowLine}></div>
       </div>
       <div className={blueLine}></div>
-      <div className="tw-flex tw-justify-center tw-space-x-[35vw] my-4">
+      <div className="tw-flex tw-justify-center tw-space-x-[35vw] md:tw-pt-4 xl:tw-pt-3">
         <ALLButton label="Previous" />
         <ALLButton onClick={nextOnClick} label="Next" />
       </div>
