@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Avatar from "avataaars";
 import "./avatarSelection.css";
 import { Frame } from "../components/Frame";
 import PropTypes from "prop-types";
 
 function AvatarSelection(props) {
-  const [avatarSelected, setAvatarSelected] = useState();
-
   const nextOnClick = async () => {
     props.nextNavigation();
-    await props.imagineService("1", props.avatars[avatarSelected], 25);
+    await props.imagineService("1", props.avatars[props.avatarSelected], 25);
   };
 
   return (
@@ -20,9 +18,9 @@ function AvatarSelection(props) {
           {props.avatars.map((avatar, index) => {
             //div class wrapper needed for clicking functionality
             const avatarStyle =
-              index == avatarSelected ? "Circle" : "Transparent";
+              index == props.avatarSelected ? "Circle" : "Transparent";
             return (
-              <div key={index} onClick={() => setAvatarSelected(index)}>
+              <div key={index} onClick={() => props.setAvatarSelected(index)}>
                 <Avatar
                   topType={avatar.hairStyle}
                   hairColor={avatar.hairColor}
@@ -49,6 +47,8 @@ AvatarSelection.propTypes = {
   imagineService: PropTypes.func.isRequired,
   nextNavigation: PropTypes.func,
   prevNavigation: PropTypes.func,
+  avatarSelected: PropTypes.number.isRequired,
+  setAvatarSelected: PropTypes.func.isRequired,
 };
 
 export default AvatarSelection;

@@ -75,6 +75,10 @@ const Main = () => {
     skinColor: "Light",
   });
 
+  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();
+
+  const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
+
   return (
     <>
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
@@ -112,6 +116,8 @@ const Main = () => {
               title={"Teammate"}
               nextNavigation={() => navigate("/Imagine2025/OpponentSelection")}
               prevNavigation={() => navigate("/Imagine2025/AvatarCreation")}
+              avatarSelected={teammteAvatarSelected}
+              setAvatarSelected={setTeammateAvatarSelected}
               path={"/TeammateSelection"}
             />
             <AvatarSelection
@@ -120,6 +126,8 @@ const Main = () => {
               title={"Opponent"}
               nextNavigation={() => alert("no navigation implemented ;)")}
               prevNavigation={() => navigate("/Imagine2025/TeammateSelection")}
+              avatarSelected={opponentAvatarSelected}
+              setAvatarSelected={setOpponentAvatarSelected}
               path={"/OpponentSelection"}
             />
           </Router>
