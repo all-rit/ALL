@@ -132,13 +132,29 @@ const readingSectionPagePosition = async (req, res) => {
 const postTeammateAvatar = async (req, res) => {
   const {userID, teammateAvatar, year} = req.body;
   try {
-    const respostSurvey = await ImagineService.postTeammateAvatar({
+    const avatarCreated = await ImagineService.postTeammateAvatar({
       userID,
       teammateAvatar,
       year,
     });
-    if (!respostSurvey) {
+    if (!avatarCreated) {
       throw new Error('Post teammateAvatar was not recorded');
+    }
+  } catch (error) {
+    console.error(error);
+  };
+};
+
+const postOpponentAvatar = async (req, res) => {
+  const {userID, opponentAvatar, year} = req.body;
+  try {
+    const avatarCreated = await ImagineService.postOpponentAvatar({
+      userID,
+      opponentAvatar,
+      year,
+    });
+    if (!avatarCreated) {
+      throw new Error('Post opponentAvatar was not recorded');
     }
   } catch (error) {
     console.error(error);
@@ -174,4 +190,5 @@ module.exports = {
   newID,
   submitStudy,
   postTeammateAvatar,
+  postOpponentAvatar,
 };
