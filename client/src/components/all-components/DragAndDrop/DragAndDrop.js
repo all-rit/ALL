@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DndContext } from "@dnd-kit/core";
 import DroppableColumn from "./DroppableColumn";
 import DroppableBank from "./DroppableBank";
+import PropTypes from "prop-types";
 
 const initialColumns = {
   column1: { id: "column1", title: "Column 1", cards: [] },
@@ -19,7 +20,13 @@ const correctAssignments = {
   column2: ["card2", "card3"],
 };
 
-const DragDropGame = () => {
+const DragDropGame = ({
+  containerStyle,
+  colStyle,
+  bankStyle,
+  cardStyle,
+  msgStyle,
+}) => {
   const [columns, setColumns] = useState(initialColumns);
   const [bank, setBank] = useState(initialBank);
   const [message, setMessage] = useState("");
@@ -97,22 +104,32 @@ const DragDropGame = () => {
 
   return (
     <DndContext onDragEnd={onDragEnd}>
-      <div className="tw-flex tw-gap-5 tw-p-5">
+      <div className={containerStyle}>
         {Object.keys(columns).map((colId) => (
           <DroppableColumn
             key={colId}
             column={columns[colId]}
             cards={columns[colId].cards}
+            colStyle={colStyle}
+            cardStyle={cardStyle}
           />
         ))}
       </div>
-      <DroppableBank bank={bank} />
+      <DroppableBank bank={bank} bankStyle={bankStyle} cardStyle={cardStyle} />
       <button onClick={verifyPlacement} className="submit-button">
         Submit
       </button>
-      {message && <p className="message">{message}</p>}
+      {message && <p className={msgStyle}>{message}</p>}
     </DndContext>
   );
+};
+
+DragDropGame.propTypes = {
+  containerStyle: PropTypes.string.isRequired,
+  colStyle: PropTypes.string.isRequired,
+  bankStyle: PropTypes.string.isRequired,
+  cardStyle: PropTypes.string.isRequired,
+  msgStyle: PropTypes.string.isRequired,
 };
 
 export default DragDropGame;

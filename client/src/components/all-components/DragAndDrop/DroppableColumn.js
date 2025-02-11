@@ -3,17 +3,14 @@ import { useDroppable } from "@dnd-kit/core";
 import DraggableCard from "./DraggableCard";
 import PropTypes from "prop-types";
 
-const DroppableColumn = ({ column, cards }) => {
+const DroppableColumn = ({ column, cards, colStyle, cardStyle }) => {
   const { setNodeRef } = useDroppable({ id: column.id });
 
   return (
-    <div
-      ref={setNodeRef}
-      className="tw-bg-gray-300 tw-p-4 tw-min-w-[200px] tw-min-h-[300px] tw-rounded-lg tw-shadow-md"
-    >
+    <div ref={setNodeRef} className={colStyle}>
       <h2 className="column-title">{column.title}</h2>
       {cards.map((card) => (
-        <DraggableCard key={card.id} card={card} />
+        <DraggableCard key={card.id} card={card} cardStyle={cardStyle} />
       ))}
     </div>
   );
@@ -30,6 +27,8 @@ DroppableColumn.propTypes = {
       content: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  colStyle: PropTypes.string.isRequired,
+  cardStyle: PropTypes.string.isRequired,
 };
 
 export default DroppableColumn;

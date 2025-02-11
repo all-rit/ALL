@@ -2,7 +2,7 @@ import { useDraggable } from "@dnd-kit/core";
 import React from "react";
 import PropTypes from "prop-types";
 
-const DraggableCard = ({ card }) => {
+const DraggableCard = ({ card, cardStyle }) => {
   // const { id, content } = card;
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -19,7 +19,7 @@ const DraggableCard = ({ card }) => {
       {...listeners}
       {...attributes}
       style={style}
-      className="tw-bg-labYellow tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-10 tw-w-40 tw-text-black"
+      className={cardStyle}
     >
       {card.content}
     </div>
@@ -31,6 +31,7 @@ DraggableCard.propTypes = {
     id: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
   }).isRequired,
+  cardStyle: PropTypes.string.isRequired,
 };
 
 export default DraggableCard;

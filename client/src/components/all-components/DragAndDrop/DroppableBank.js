@@ -3,16 +3,13 @@ import React from "react";
 import DraggableCard from "./DraggableCard";
 import PropTypes from "prop-types";
 
-const DroppableBank = ({ bank }) => {
+const DroppableBank = ({ bank, bankStyle, cardStyle }) => {
   const { setNodeRef } = useDroppable({ id: "bank" });
 
   return (
-    <div
-      ref={setNodeRef}
-      className="tw-flex tw-gap-2 tw-p-4 tw-bg-blue tw-rounded-lg tw-mt-5"
-    >
+    <div ref={setNodeRef} className={bankStyle}>
       {bank.map((card) => (
-        <DraggableCard key={card.id} card={card} />
+        <DraggableCard key={card.id} card={card} cardStyle={cardStyle} />
       ))}
     </div>
   );
@@ -25,6 +22,8 @@ DroppableBank.propTypes = {
       content: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  bankStyle: PropTypes.string.isRequired,
+  cardStyle: PropTypes.string.isRequired,
 };
 
 export default DroppableBank;
