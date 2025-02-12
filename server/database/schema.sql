@@ -68,6 +68,29 @@ create table imagine23
     primary key (id)
 );
 
+create type enum_lab0_repair_section as enum (
+    -- TODO: Add Writing a Lab sections here too
+    'LabDataRepair', 
+    'SchemaRepair', 
+    'ServiceControllerRepair', 
+    'RoutingRepair', 
+    'BackendTipsTricks', 
+    'BoilerplateRepair', 
+    'CoreLabPagesRepair',
+    'ComponentLibraryRepair',
+    'FrontendTipsTricks'
+);
+
+create type enum_lab0_repair_section_status as enum ('IN_PROGRESS', 'COMPLETED');
+
+create table lab0_repair (
+    id              serial,
+    userid          bigint,
+    section         enum_lab0_repair_section,
+    "sectionStatus" enum_lab0_repair_section_status,
+    primary key (id) 
+);
+
 create table lab1_choice
 (
     choiceid  serial,
