@@ -14,20 +14,21 @@ const ScrumBoardActivity = () => {
   };
 
   return (
-    <div className="tw-bg-gray-200 tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-screen">
+    <div className="tw-flex tw-flex-col tw-items-center">
+      <h2 className={"tw-title tw-text-left"}> Sprint Planning Activity</h2>
       <DragDropGame
-        containerStyle={"tw-flex tw-gap-5 tw-p-5"}
+        containerStyle={"tw-flex tw-p-5"}
         colStyle={
-          "tw-bg-labGray tw-p-4 tw-w-full tw-min-h-[300px] tw-shadow-md"
+          "tw-p-4 tw-w-48 tw-border-dashed tw-border-[#c3c3c3] tw-border-[.5px] tw-w-full tw-min-h-[20rem] tw-shadow-md"
         }
-        colHeaderStyle={"tw-bg-primary-yellow tw-rounded-lg tw-p-3 tw-m-3"}
+        colHeaderStyle={"tw-m-1 tw-text-center tw-sub-title"}
         bankStyle={
-          "tw-flex tw-gap-2 tw-mb-3 tw-w-full tw-p-4 tw-border-black tw-rounded-lg tw-mt-5"
+          "tw-flex tw-gap-2 tw-mb-3 tw-w-full tw-p-4 tw-border-black tw-rounded-lg"
         }
         cardStyle={
-          "tw-bg-labYellow tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-10 tw-w-40 tw-text-black"
+          "tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-[17rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black"
         }
-        msgStyle={""}
+        msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-3 tw-my-3 tw-text-white tw-rounded-md`}
         cols={initialColumns}
         initial_bank={initialBank}
         correct_assignments={correctAssignments}

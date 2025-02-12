@@ -19,7 +19,7 @@ const DraggableCard = ({ card, cardStyle }) => {
       {...listeners}
       {...attributes}
       style={style}
-      className={cardStyle}
+      className={`${card.color} ${cardStyle}`}
     >
       {card.content}
     </div>
@@ -30,6 +30,7 @@ DraggableCard.propTypes = {
   card: PropTypes.shape({
     id: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    color: PropTypes.string,
   }).isRequired,
   cardStyle: PropTypes.string.isRequired,
 };

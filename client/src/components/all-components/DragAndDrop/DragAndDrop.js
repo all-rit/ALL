@@ -140,9 +140,15 @@ const DragDropGame = ({
           />
         ))}
       </div>
-      <DroppableBank bank={bank} bankStyle={bankStyle} cardStyle={cardStyle} />
-      <LabButton onClick={verifyPlacement} label={"Submit"} />
+      <div className={"tw-flex tw-items-center"}>
+        <DroppableBank
+          bank={bank}
+          bankStyle={bankStyle}
+          cardStyle={cardStyle}
+        />
+      </div>
       {message && <p className={msgStyle}>{message}</p>}
+      <LabButton onClick={verifyPlacement} label={"Submit"} />
     </DndContext>
   );
 };
