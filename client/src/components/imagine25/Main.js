@@ -5,9 +5,7 @@ import Survey from "./SurveyHandler";
 import ImagineGame from "./ImagineGame";
 
 const Main = () => {
-
   const year = 25;
-
 
   return (
     <>
@@ -30,25 +28,18 @@ const Main = () => {
         </div>
         <div
           className={
-            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-[80%] shadow tw-rounded-xl tw-p-6"
+            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-[90%] shadow tw-rounded-xl tw-p-6"
           }
         >
-          <Router>
-            <UpdateId 
-            default path={"/"} 
+          <Router className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center">
+            <UpdateId default path={"/"} />
+            <Survey
+              path={`/PreSurvey`}
+              type={"pre"}
+              year={year}
+              userID={"1039"}
             />
-            <Survey 
-            path={`/PreSurvey`}
-            type={"pre"}
-            year={year}
-            userID={"1039"}
-            />
-            <ImagineGame
-            path = {"/Game"}
-            />
-              
-          
-            
+            <ImagineGame path={"/Game"} />
           </Router>
         </div>
       </div>

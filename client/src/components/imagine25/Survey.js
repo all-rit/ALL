@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import { PropTypes } from "prop-types";
 import QuestionCount from "../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
@@ -63,7 +63,7 @@ Survey.propTypes = {
   nextQuestion: PropTypes.string,
   disable: PropTypes.boolean,
   onComplete: PropTypes.func,
-  isUnderAge: PropTypes.bool.isRequired
+  isUnderAge: PropTypes.bool.isRequired,
 };
 
 export default Survey;
