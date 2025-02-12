@@ -45,6 +45,7 @@ const DragDropGame = ({
   initial_bank,
   correct_assignments,
   setSuccess,
+  colHeaderStyle,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initial_bank);
@@ -135,6 +136,7 @@ const DragDropGame = ({
             cards={columns[colId].cards}
             colStyle={colStyle}
             cardStyle={cardStyle}
+            colHeaderStyle={colHeaderStyle}
           />
         ))}
       </div>
@@ -171,6 +173,7 @@ DragDropGame.propTypes = {
     }),
   ),
   setSuccess: PropTypes.func,
+  colHeaderStyle: PropTypes.string,
 };
 
 export default DragDropGame;
