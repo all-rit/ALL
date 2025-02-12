@@ -3,9 +3,10 @@ import { navigate, Router } from "@reach/router";
 import SelectExercise from "./SelectExercise";
 import Lab0Context from "./Lab0Context";
 import { EXERCISE_STATES } from "../../../constants/lab0";
-import ScrumIntroduction from "./DesignLabSection/ScrumIntroduction";
+import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
 import DesignLabIntroduction from "./DesignLabSection/DesignLabIntroduction";
-import ScrumBoardActivity from "./DesignLabSection/ScrumBoardActivity";
+import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
+import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -26,6 +27,7 @@ const Main = () => {
           <DesignLabIntroduction path={"/DesignLabIntro"} />
           <ScrumIntroduction path={"/ScrumIntro"} />
           <ScrumBoardActivity path={"/ScrumBoardActivity"} />
+          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
         </Router>
       </Lab0Context.Provider>
     </div>

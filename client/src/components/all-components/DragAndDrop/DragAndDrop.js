@@ -44,13 +44,17 @@ const DragDropGame = ({
   cols,
   initial_bank,
   correct_assignments,
+  success,
   setSuccess,
   colHeaderStyle,
+  handleNav,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initial_bank);
   const [message, setMessage] = useState("");
   const correctAssignments = arrayToObject(correct_assignments, "id");
+
+  const [correct, setCorrect] = useState(success);
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -124,6 +128,7 @@ const DragDropGame = ({
     }
     setMessage("Correct placement! Well done!");
     setSuccess(true);
+    setCorrect(true);
   };
 
   return (
@@ -148,7 +153,10 @@ const DragDropGame = ({
         />
       </div>
       {message && <p className={msgStyle}>{message}</p>}
-      <LabButton onClick={verifyPlacement} label={"Submit"} />
+      <LabButton
+        onClick={correct ? handleNav : verifyPlacement}
+        label={correct ? "Next" : "Submit"}
+      />
     </DndContext>
   );
 };
@@ -178,8 +186,10 @@ DragDropGame.propTypes = {
       cards: PropTypes.array.isRequired,
     }),
   ),
+  success: PropTypes.bool,
   setSuccess: PropTypes.func,
   colHeaderStyle: PropTypes.string,
+  handleNav: PropTypes.func.isRequired,
 };
 
 export default DragDropGame;
