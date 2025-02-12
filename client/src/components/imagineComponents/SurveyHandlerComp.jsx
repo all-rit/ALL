@@ -1,21 +1,29 @@
 import { React, useState } from "react";
 import { PropTypes } from "prop-types";
-import Survey from "../components/Survey";
+import Survey from "./Survey";
 import { navigate } from "@reach/router";
-import PreSurveyQuestions from "../data/preSurveyQuestions";
-import PostSurveyQuestions from "../data/postSurveyQuestions";
-import ImagineService from "../../../services/ImagineService";
-import Spinner from "../../../common/Spinner/Spinner";
+import PreSurveyQuestions from "../imagine23/data/preSurveyQuestions";
+import PostSurveyQuestions from "../imagine23/data/postSurveyQuestions";
+import ImagineService from "../../services/ImagineService";
+import Spinner from "../../common/Spinner/Spinner";
+import PreSurveyQuestions25 from "../imagine25/data/preSurveyQuestions"
 /**
  * assignQuizQuestions is a function that returns a given set
  * of quiz questions dependent on the labId passed
  * @param {integer} labId is passed to the function to determine
  * what questions to grab
  */
-function assignQuizQuestions(surveyType) {
+function assignQuizQuestions(surveyType,year) {
   switch (surveyType) {
     case "pre":
-      return PreSurveyQuestions;
+      if(year == 23){
+        return PreSurveyQuestions;
+      }else if(year == 25){
+        return PreSurveyQuestions25
+      }else{
+        return
+      }
+
     case "post":
       return PostSurveyQuestions;
     default:
@@ -44,10 +52,11 @@ function assignQuizQuestions(surveyType) {
 const SurveyHandler = (props) => {
   const { userID, type, year } = props;
   let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
-  const [questions] = useState(assignQuizQuestions(props.type));
+  const [questions] = useState(assignQuizQuestions(props.type,props.year));
   const [answerOption, setAnswerOption] = useState(
     questions[currentQuestionCursor].answers,
   );
+  let [isUnderAge,setIsUnderAge] = useState(false)
 
   // initialized to a empty array to house recorded answers
   let [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -96,24 +105,46 @@ const SurveyHandler = (props) => {
    * in the pre-survey.
    */
   async function activitySelector() {
-    const response = await ImagineService.preSurvey(
-      props.userID,
-      selectedAnswers,
-      year,
-    );
-
-    const section = (await response.text()).replace(/['"]+/g, "");
     if (year === 23) {
+      
+      const response = await ImagineService.preSurvey(
+        props.userID,
+        selectedAnswers,
+        year,
+      );
+      const section = (await response.text()).replace(/['"]+/g, "");
+
       if (section === "experiential" || section === "control") {
         navigate("/Imagine2023/ExperientialStart");
+
       } else if (
         section === "discomfortCountNonPOC" ||
         section === "discomfortCountPOC"
       ) {
         navigate("/Imagine2023/ExpressionStart");
       } else {
+        console.log(section)
         console.error("Navigating to None");
       }
+    }
+
+    else if (year == 25){
+        
+      if (isUnderAge){
+          navigate("/Imagine2025/Game")
+        } 
+
+        else
+        {
+          await ImagineService.preSurvey(
+            props.userID,
+            selectedAnswers,
+            year,
+          );
+          navigate("/Imagine2025/Game")
+        }
+    }else{
+      console.log("invalid year")
     }
   }
   /**
@@ -125,6 +156,10 @@ const SurveyHandler = (props) => {
    */
   function selectAnswer(e) {
     const answerValue = e.target.value;
+    const answer = questions[currentQuestionCursor].answers[answerValue].content
+    if (answer == "Under 18 years old" && props.year == 25){
+      setIsUnderAge(true)
+    }
     setSelectedAnswers([
       ...selectedAnswers,
       {
@@ -188,6 +223,7 @@ const SurveyHandler = (props) => {
           onMultiSelected={selectMulti}
           nextQuestion={handleNext}
           onComplete={() => onComplete(type)}
+          isUnderAge={isUnderAge}
         ></Survey>
       ) : (
         <div className="flex !tw-justify-center items-center">
