@@ -1,8 +1,6 @@
 import React from "react";
 
 const ImagineGame = () => {
-  // const {userId,year} = props
-
   //getSection from userID
 
   return (
