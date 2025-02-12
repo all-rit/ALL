@@ -6,12 +6,14 @@ const SELECTION_ROUTE = "/";
 const DESIGN_LAB_INTRO = "DesignLabIntro";
 const SCRUM_INTRO = "ScrumIntroduction";
 const DEVELOP_LAB_INTRO = "DevelopLabIntro";
+const SCRUM_BOARD_ACTIVITY = "ScrumBoardActivity";
 
 const ROUTES = {
   SELECTION_ROUTE,
   DESIGN_LAB_INTRO,
   DEVELOP_LAB_INTRO,
   SCRUM_INTRO,
+  SCRUM_BOARD_ACTIVITY,
 };
 
 const EXERCISE_STATES = {
