@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-import ImagineService from "../../services/ImagineService";
+import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
 
 const LearnMoreButton = (props) => {

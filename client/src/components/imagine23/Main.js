@@ -14,7 +14,7 @@ import ExerciseEnd from "./pages/ExerciseEnd";
 import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
-import Survey from "../imagineComponents/SurveyHandlerComp";
+import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import { resetSystem } from "../../reducers/lab2/actions";
 const { nanoid } = require("nanoid");
 

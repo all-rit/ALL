@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import QuestionCount from "../quiz/components/QuestionCount";
+import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 
 function Survey(props) {

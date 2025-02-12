@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Router } from "@reach/router";
 import UpdateId from "./UpdateId";
-import Survey from "../imagineComponents/SurveyHandlerComp";
+import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import ImagineGame from "./ImagineGame";
 import useMainStateContext from "../../reducers/MainContext";
 
@@ -39,12 +39,6 @@ const Main = () => {
         >
           <Router className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center">
             <UpdateId default path={"/"} />
-            <Survey
-              path={`/PreSurvey`}
-              type={"pre"}
-              year={year}
-              userID={"1039"}
-            />
             <Survey
               path={`/PreSurvey`}
               type={"pre"}

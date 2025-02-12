@@ -34,9 +34,4 @@ const ImagineGame = () => {
   );
 };
 
-// ImagineGame.propTypes = {
-//   userId: PropTypes.string,
-//   year: PropTypes.number
-// };
-
 export default ImagineGame;

@@ -1,5 +1,5 @@
 import React from "react";
-import Circle from "../../imagineComponents/circle";
+import Circle from "../../all-components/imagine-components/circle";
 import { navigate } from "@reach/router";
 import "./landingpage.css";
 

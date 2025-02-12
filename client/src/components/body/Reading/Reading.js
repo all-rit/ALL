@@ -10,7 +10,7 @@ import Spinner from "../../../common/Spinner/Spinner";
 import LinkFooter from "./LinkFooter";
 import Links from "./Links";
 import OrderedList from "./OrderedList";
-import ReadMoreButton from "../../imagineComponents/LearnMoreButton";
+import ReadMoreButton from "../../all-components/imagine-components/LearnMoreButton";
 import ImagineService from "src/services/ImagineService";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { navigate } from "@reach/router";
