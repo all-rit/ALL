@@ -8,8 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       'RoutingRepair',
       'BackendTipsTricks',
       'BoilerplateRepair',
+      'IntegrationRepair',
       'CoreLabPagesRepair',
-      'ComponentLibraryRepair',
+      'ComponentLibrary',
       'FrontendTipsTricks',
   );
 

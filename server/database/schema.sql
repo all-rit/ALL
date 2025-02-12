@@ -76,8 +76,9 @@ create type enum_lab0_repair_section as enum (
     'RoutingRepair', 
     'BackendTipsTricks', 
     'BoilerplateRepair', 
+    'IntegrationRepair',
     'CoreLabPagesRepair',
-    'ComponentLibraryRepair',
+    'ComponentLibrary',
     'FrontendTipsTricks'
 );
 
