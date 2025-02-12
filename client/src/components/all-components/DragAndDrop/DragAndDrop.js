@@ -4,20 +4,34 @@ import DroppableColumn from "./DroppableColumn";
 import DroppableBank from "./DroppableBank";
 import PropTypes from "prop-types";
 
-const initialColumns = {
-  column1: { id: "column1", title: "Column 1", cards: [] },
-  column2: { id: "column2", title: "Column 2", cards: [] },
-};
+/**
+ * Use this format to pass in columns, bank and correct assignments
+ * Note: Keep ids the same across objects
+ *
+ * const initialColumns = {
+ *   column1: { id: "column1", title: "Column 1", cards: [] },
+ *   column2: { id: "column2", title: "Column 2", cards: [] },
+ * };
+ *
+ * const initialBank = [
+ *   { id: "card1", content: "Card 1" },
+ *   { id: "card2", content: "Card 2" },
+ *   { id: "card3", content: "Card 3" },
+ * ];
+ *
+ * const correctAssignments = {
+ *   column1: ["card1"],
+ *   column2: ["card2", "card3"],
+ * };
+ */
 
-const initialBank = [
-  { id: "card1", content: "Card 1" },
-  { id: "card2", content: "Card 2" },
-  { id: "card3", content: "Card 3" },
-];
-
-const correctAssignments = {
-  column1: ["card1"],
-  column2: ["card2", "card3"],
+const arrayToObject = (array, key) => {
+  return array.reduce((obj, item) => {
+    return {
+      ...obj,
+      [item[key]]: item,
+    };
+  }, {});
 };
 
 const DragDropGame = ({
@@ -26,10 +40,14 @@ const DragDropGame = ({
   bankStyle,
   cardStyle,
   msgStyle,
+  cols,
+  initial_bank,
+  correct_assignments,
 }) => {
-  const [columns, setColumns] = useState(initialColumns);
-  const [bank, setBank] = useState(initialBank);
+  const [columns, setColumns] = useState(arrayToObject(cols, "id"));
+  const [bank, setBank] = useState(initial_bank);
   const [message, setMessage] = useState("");
+  const correctAssignments = arrayToObject(correct_assignments, "id");
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -92,9 +110,11 @@ const DragDropGame = ({
   };
 
   const verifyPlacement = () => {
-    for (const [columnId, correctCards] of Object.entries(correctAssignments)) {
+    for (const [columnId, currentCol] of Object.entries(correctAssignments)) {
       const placedCards = columns[columnId].cards.map((card) => card.id);
-      if (placedCards.sort().toString() !== correctCards.sort().toString()) {
+      if (
+        placedCards.sort().toString() !== currentCol.cards.sort().toString()
+      ) {
         setMessage("Incorrect placement. Try again!");
         return;
       }
@@ -130,6 +150,25 @@ DragDropGame.propTypes = {
   bankStyle: PropTypes.string.isRequired,
   cardStyle: PropTypes.string.isRequired,
   msgStyle: PropTypes.string.isRequired,
+  cols: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      cards: PropTypes.array.isRequired,
+    }),
+  ),
+  initial_bank: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    }),
+  ),
+  correct_assignments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      cards: PropTypes.array.isRequired,
+    }),
+  ),
 };
 
 export default DragDropGame;

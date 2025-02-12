@@ -14,6 +14,22 @@ const Main = () => {
     navigate(`/Lab0/Exercise/${route}`);
   };
 
+  const initialColumns = [
+    { id: "column1", title: "Column 1", cards: [] },
+    { id: "column2", title: "Column 2", cards: [] },
+  ];
+
+  const initialBank = [
+    { id: "card1", content: "Card 1" },
+    { id: "card2", content: "Card 2" },
+    { id: "card3", content: "Card 3" },
+  ];
+
+  const correctAssignments = [
+    { id: "column1", cards: ["card1"] },
+    { id: "column2", cards: ["card2", "card3"] },
+  ];
+
   return (
     <>
       <Lab0Context.Provider
@@ -37,6 +53,9 @@ const Main = () => {
             "tw-bg-labYellow tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-10 tw-w-40 tw-text-black"
           }
           msgStyle={""}
+          cols={initialColumns}
+          initial_bank={initialBank}
+          correct_assignments={correctAssignments}
         />
       </div>
     </>
