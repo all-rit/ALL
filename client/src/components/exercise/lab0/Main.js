@@ -17,18 +17,18 @@ const Main = () => {
   };
 
   return (
-    <>
+    <div>
       <Lab0Context.Provider
         value={{ exerciseState, setExerciseState, handleNav }}
       >
-        <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
-          <SelectExercise default path={"/"} />
+        <Router className={"tw-p-3 tw-h-[40rem]"}>
+          <SelectExercise default path={"/*"} />
           <DesignLabIntroduction path={"/DesignLabIntro"} />
           <ScrumIntroduction path={"/ScrumIntro"} />
           <ScrumBoardActivity path={"/ScrumBoardActivity"} />
         </Router>
       </Lab0Context.Provider>
-    </>
+    </div>
   );
 };
 
