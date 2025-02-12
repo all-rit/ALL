@@ -3,6 +3,7 @@ import { DndContext } from "@dnd-kit/core";
 import DroppableColumn from "./DroppableColumn";
 import DroppableBank from "./DroppableBank";
 import PropTypes from "prop-types";
+import LabButton from "../LabButton";
 
 /**
  * Use this format to pass in columns, bank and correct assignments
@@ -43,6 +44,7 @@ const DragDropGame = ({
   cols,
   initial_bank,
   correct_assignments,
+  setSuccess,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initial_bank);
@@ -120,6 +122,7 @@ const DragDropGame = ({
       }
     }
     setMessage("Correct placement! Well done!");
+    setSuccess(true);
   };
 
   return (
@@ -136,9 +139,7 @@ const DragDropGame = ({
         ))}
       </div>
       <DroppableBank bank={bank} bankStyle={bankStyle} cardStyle={cardStyle} />
-      <button onClick={verifyPlacement} className="submit-button">
-        Submit
-      </button>
+      <LabButton onClick={verifyPlacement} label={"Submit"} />
       {message && <p className={msgStyle}>{message}</p>}
     </DndContext>
   );
@@ -169,6 +170,7 @@ DragDropGame.propTypes = {
       cards: PropTypes.array.isRequired,
     }),
   ),
+  setSuccess: PropTypes.func,
 };
 
 export default DragDropGame;

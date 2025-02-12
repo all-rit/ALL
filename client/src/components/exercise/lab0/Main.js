@@ -4,6 +4,7 @@ import SelectExercise from "./SelectExercise";
 import Lab0Context from "./Lab0Context";
 import { EXERCISE_STATES } from "../../../constants/lab0";
 import { default as DragDropGame } from "../../all-components/DragAndDrop/DragAndDrop";
+import LabButton from "../../all-components/LabButton";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -17,18 +18,27 @@ const Main = () => {
   const initialColumns = [
     { id: "column1", title: "Column 1", cards: [] },
     { id: "column2", title: "Column 2", cards: [] },
+    { id: "column3", title: "Column 3", cards: [] },
+    { id: "column4", title: "Column 4", cards: [] },
   ];
 
   const initialBank = [
     { id: "card1", content: "Card 1" },
     { id: "card2", content: "Card 2" },
     { id: "card3", content: "Card 3" },
+    { id: "card4", content: "Card 4" },
+    { id: "card5", content: "Card 5" },
+    { id: "card6", content: "Card 6" },
   ];
 
   const correctAssignments = [
     { id: "column1", cards: ["card1"] },
     { id: "column2", cards: ["card2", "card3"] },
+    { id: "column4", cards: ["card4", "card5"] },
+    { id: "column3", cards: ["card6"] },
   ];
+
+  const [success, setSuccess] = useState(false);
 
   return (
     <>
@@ -56,8 +66,10 @@ const Main = () => {
           cols={initialColumns}
           initial_bank={initialBank}
           correct_assignments={correctAssignments}
+          setSuccess={setSuccess}
         />
       </div>
+      <LabButton label="Test" disabled={!success} />
     </>
   );
 };
