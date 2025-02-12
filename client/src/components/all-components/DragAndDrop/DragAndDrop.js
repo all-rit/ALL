@@ -8,10 +8,10 @@ import PropTypes from "prop-types";
  * Use this format to pass in columns, bank and correct assignments
  * Note: Keep ids the same across objects
  *
- * const initialColumns = {
- *   column1: { id: "column1", title: "Column 1", cards: [] },
- *   column2: { id: "column2", title: "Column 2", cards: [] },
- * };
+ * const initialColumns = [
+ *   { id: "column1", title: "Column 1", cards: [] },
+ *   { id: "column2", title: "Column 2", cards: [] },
+ * ];
  *
  * const initialBank = [
  *   { id: "card1", content: "Card 1" },
@@ -19,10 +19,10 @@ import PropTypes from "prop-types";
  *   { id: "card3", content: "Card 3" },
  * ];
  *
- * const correctAssignments = {
- *   column1: ["card1"],
- *   column2: ["card2", "card3"],
- * };
+ * const correctAssignments = [
+ *   { id: "column1", cards: ["card1"] },
+ *   { id: "column2", cards: ["card2", "card3"] },
+ * ];
  */
 
 const arrayToObject = (array, key) => {
