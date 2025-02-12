@@ -3,13 +3,15 @@ const EXERCISE_SELECTION_WRITE = "write-lab";
 const EXERCISE_SELECTION_DEVELOP = "develop-lab";
 
 const SELECTION_ROUTE = "/";
-const WRITE_LAB_INTRO = "WriteLabIntro";
+const DESIGN_LAB_INTRO = "DesignLabIntro";
+const SCRUM_INTRO = "ScrumIntroduction";
 const DEVELOP_LAB_INTRO = "DevelopLabIntro";
 
 const ROUTES = {
   SELECTION_ROUTE,
-  WRITE_LAB_INTRO,
+  DESIGN_LAB_INTRO,
   DEVELOP_LAB_INTRO,
+  SCRUM_INTRO,
 };
 
 const EXERCISE_STATES = {
