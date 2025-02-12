@@ -29,7 +29,7 @@ function Quiz(props) {
   }
 
   return (
-    <div className="tw-pt-[3rem]">
+    <div>
       <div className="tw-rounded-lg tw-text-left tw-px-6 tw-shadow-lg tw-py-6 tw-mx-6">
         <QuestionCount counter={props.questionId} total={props.questionTotal} />
         {props.isFinalQuiz ? (
