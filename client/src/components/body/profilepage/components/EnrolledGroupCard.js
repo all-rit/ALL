@@ -141,7 +141,7 @@ const EnrolledGroupCard = (props) => {
           }
           onClick={toggleGroupDetailsModal}
         >
-          {groupName || group.groupName}
+          {groupName || group.groupName.slice(0, 20) + "..."}
         </a>
       </CardFooter>
       <BrandedALLModal

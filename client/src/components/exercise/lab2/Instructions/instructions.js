@@ -20,7 +20,7 @@ const Instructions = ({
             "tw-flex tw-flex-row tw-gap-x-6 tw-align-middle tw-justify-start tw-items-center"
           }
         >
-          <p className="tw-body-text tw-pl-6 tw-leading-snug tw-text-justify tw-w-3/4">
+          <p className="tw-body-text tw-pl-6 tw-leading-snug tw-text-right tw-w-3/4">
             When this colored circle pops up, click it!
           </p>
           <div className="">
@@ -32,7 +32,7 @@ const Instructions = ({
             "tw-flex tw-flex-row tw-align-middle tw-justify-end tw-items-center"
           }
         >
-          <p className="tw-w-1/2 tw-body-text tw-leading-snug tw-text-justify ">
+          <p className="tw-w-1/2 tw-body-text tw-leading-snug tw-text-right ">
             When either of these colored circles pop up, don't click them!
           </p>
           <div className="circles tw-p-6 tw-gap-x-4">
