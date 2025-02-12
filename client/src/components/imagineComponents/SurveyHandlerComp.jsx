@@ -158,7 +158,11 @@ const SurveyHandler = (props) => {
     const answerValue = e.target.value;
     const answer = questions[currentQuestionCursor].answers[answerValue].content
     if (answer == "Under 18 years old" && props.year == 25){
+      //set to true when user is underage
       setIsUnderAge(true)
+    }else{
+      //set it to is false when another option is chosen
+      setIsUnderAge(false)
     }
     setSelectedAnswers([
       ...selectedAnswers,
