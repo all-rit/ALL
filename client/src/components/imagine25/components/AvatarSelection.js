@@ -4,7 +4,7 @@ import "./avatarSelection.css";
 import { Frame } from "../components/Frame";
 import PropTypes from "prop-types";
 
-function AvatarSelection(props) {
+const AvatarSelection = (props) => {
   const nextOnClick = async () => {
     props.nextNavigation();
     await props.imagineService("1", props.avatars[props.avatarSelected], 25);
@@ -39,7 +39,7 @@ function AvatarSelection(props) {
       )}
     </>
   );
-}
+};
 
 AvatarSelection.propTypes = {
   title: PropTypes.string.isRequired,
