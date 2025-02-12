@@ -1,5 +1,5 @@
-import { React } from "react";
-import { PropTypes } from "prop-types";
+import React from "react";
+import PropTypes from "prop-types";
 import QuestionCount from "../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 
@@ -18,6 +18,7 @@ function Survey(props) {
       />
     );
   }
+
   return (
     <div className="quiz container" key={props.questionId}>
       <QuestionCount counter={props.questionId} total={props.questionTotal} />

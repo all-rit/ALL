@@ -29,18 +29,19 @@ const submitStudy = async (data) => {
   }
 };
 
-const determineGroupSimple = async () => {
-  const options = ['experiential', 'expression', 'control'];
-  const randIndex = Math.floor(Math.random() * options.length);
-  return options[randIndex];
-}
-
 const preSurvey = async (data) => {
   const {userID, preSurvey, year} = data;
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const section = await determineGroupSimple();
+      let section = null;
+      if (year == 23) {
+        section = await determineGroup(preSurvey, year);
+      } else if (year ==25) {
+        section = await determineSection2025();
+      } else {
+        console.log('invalid year');
+      }
       const user = await getUserByID(userID, year);
       console.warn(section, user);
       if (user) {
@@ -220,7 +221,7 @@ const getSection = async (sectionName, year) => {
     responses.forEach((response) => {
       const survey = response.preSurvey;
       const userResponse = survey.map((question, index) => {
-      // leaves in maintainability for adding in demo field
+        // leaves in maintainability for adding in demo field
         if (index === 0 || index === 1 || index === 5) {
           return question.answer;
         }
@@ -233,7 +234,6 @@ const getSection = async (sectionName, year) => {
     console.error(error);
   }
 };
-
 
 
 const determineGroup = async (preSurvey, year) => {
@@ -274,8 +274,13 @@ const determineGroup = async (preSurvey, year) => {
   }
   // get users answers
   return lowestPool;
+};
 
 
+const determineSection2025 = async () => {
+  const options = ['experiential', 'expression', 'control'];
+  const randIndex = Math.floor(Math.random() * options.length);
+  return options[randIndex];
 };
 
 module.exports = {

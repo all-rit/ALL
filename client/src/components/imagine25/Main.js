@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Router } from "@reach/router";
 import UpdateId from "./UpdateId";
-import Survey from "./SurveyHandler";
+import Survey from "../imagineComponents/SurveyHandlerComp";
 import ImagineGame from "./ImagineGame";
+import useMainStateContext from "../../reducers/MainContext";
 
 const Main = () => {
-  const year = 25;
+  const { actions } = useMainStateContext();
+  const startImagine = () => actions.setIsImagine(true);
+  useEffect(() => {
+    startImagine();
+  }, []);
 
+  const year = 25;
   return (
     <>
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
@@ -38,6 +44,12 @@ const Main = () => {
               type={"pre"}
               year={year}
               userID={"1039"}
+            />
+            <Survey
+              path={`/PreSurvey`}
+              type={"pre"}
+              year={year}
+              userID={"1038"} //placeholder
             />
             <ImagineGame path={"/Game"} />
           </Router>
