@@ -2,11 +2,11 @@ import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Survey from "./Survey";
 import { navigate } from "@reach/router";
-import PreSurveyQuestions from "../imagine23/data/preSurveyQuestions";
-import PostSurveyQuestions from "../imagine23/data/postSurveyQuestions";
-import ImagineService from "../../services/ImagineService";
-import Spinner from "../../common/Spinner/Spinner";
-import PreSurveyQuestions25 from "../imagine25/data/preSurveyQuestions";
+import PreSurveyQuestions from "../../imagine23/data/preSurveyQuestions";
+import PostSurveyQuestions from "../../imagine23/data/postSurveyQuestions";
+import ImagineService from "../../../services/ImagineService";
+import Spinner from "../../../common/Spinner/Spinner";
+import PreSurveyQuestions25 from "../../imagine25/data/preSurveyQuestions";
 /**
  * assignQuizQuestions is a function that returns a given set
  * of quiz questions dependent on the labId passed
@@ -141,26 +141,28 @@ const SurveyHandler = (props) => {
    * component.
    * @param {*} e event containing the index of the selected answer response.
    */
+
   function selectAnswer(e) {
     const answerValue = e.target.value;
     const answer =
       questions[currentQuestionCursor].answers[answerValue].content;
-    if (answer == "Under 18 years old" && props.year == 25) {
-      //set to true when user is underage
-      setIsUnderAge(true);
-    } else {
-      //set it to is false when another option is chosen
-      setIsUnderAge(false);
-    }
-    setSelectedAnswers([
-      ...selectedAnswers,
-      {
-        question: questions[currentQuestionCursor].question,
-        answer: questions[currentQuestionCursor].answers[answerValue].content,
-      },
-    ]);
+    setIsUnderAge(answer == "Under 18 years old" && props.year == 25);
+
+    setSelectedAnswers((prevAnswers) => {
+      let updatedAnswers = prevAnswers.filter(
+        (a) => a.answer !== "Under 18 years old",
+      );
+      return [
+        ...updatedAnswers,
+        {
+          question: questions[currentQuestionCursor].question,
+          answer: answer,
+        },
+      ];
+    });
     setDisableNext(false);
   }
+
   /**
    * selectMulti is a function that is responsible for handling
    * behavior of a multi-answer question by recording the given input to
