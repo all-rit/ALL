@@ -49,8 +49,9 @@ const Lab = (props) => {
     for (let i = 1; i <= totalCircles; i++) {
       rating.push(
         <div
+          key={i}
           className={`tw-m-0.5 
-          ${i <= difficulty ? "module__lab_difficulty_filled" : "module__lab_difficulty"}`}
+            ${i <= difficulty ? "module__lab_difficulty_filled" : "module__lab_difficulty"}`}
         ></div>,
       );
     }

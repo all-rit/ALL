@@ -62,11 +62,11 @@ const Profile = () => {
   }
 
   return (
-    <div className={"tw-mt-[3rem]"}>
+    <div className={"tw-overflow-x-hidden"}>
       {state.main.user?.firstname === null ? (
         <div
           className={
-            "tw-pt-36 tw-flex tw-items-center tw-justify-center tw-h-[30rem]"
+            "tw-pt-24 tw-flex tw-items-center tw-justify-center tw-h-[30rem]"
           }
         >
           <div
