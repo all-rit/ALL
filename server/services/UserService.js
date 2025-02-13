@@ -84,24 +84,28 @@ const createNewAccountAndSession = async (userSessionID, newAccount) => {
 
 
 const getSession = async (token) => {
+  const createUserRecord = async () => {
+    // Creates a brand new user and session
+    const user = await db.Users.create({});
+    const session = await db.Session.create({userid: user.userid});
+    return {user, token: session.usersessionid};
+  };
+
   try {
+    if (!token) {
+      return createUserRecord();
+    }
+
     const session = await db.Session.findByPk(token);
-    const user = await db.Users.findByPk(session.userid);
-
-    if (!user || !token) {
-      // Creates a brand new user and session
-      const user = await db.Users.create({});
-      const session = await db.Session.create({userid: user.userid});
-      return {user, token: session.usersessionid};
-    }
-
-    // If a token exists, check for an existing session and user
     if (!session) {
-      throw new Error('Invalid session token');
+      return createUserRecord();
     }
+
+    const user = await db.Users.findByPk(session.userid);
+    // if there is a session but no user, create a new user record and session
 
     if (!user) {
-      throw new Error('User not found');
+      return createUserRecord();
     }
 
     return {user, token};
