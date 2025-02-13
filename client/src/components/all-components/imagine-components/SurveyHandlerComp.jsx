@@ -125,9 +125,11 @@ const SurveyHandler = (props) => {
       }
     } else if (year == 25) {
       if (isUnderAge) {
+        //will be changed to point to avatarCreation when merged
         navigate("/Imagine2025/Game");
       } else {
         await ImagineService.preSurvey(props.userID, selectedAnswers, year);
+        //will be changed to point to avatarCreation when merged
         navigate("/Imagine2025/Game");
       }
     } else {
@@ -149,6 +151,9 @@ const SurveyHandler = (props) => {
     setIsUnderAge(answer == "Under 18 years old" && props.year == 25);
 
     setSelectedAnswers((prevAnswers) => {
+      // Removes the "Under 18 years old" option from the selected answers
+      // if another option is chosen after selecting it first.
+
       let updatedAnswers = prevAnswers.filter(
         (a) => a.answer !== "Under 18 years old",
       );
