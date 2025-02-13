@@ -10,6 +10,19 @@ import {
   teammateAvatars,
 } from "src/constants/imagine25/Avatar";
 
+//generating random arrays using Fisher-Yates algorithim
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+};
+//shuffle arrays for each instance
+shuffleArray(teammateAvatars);
+shuffleArray(opponentAvatars);
+
 const Main = () => {
   //Removes header
   const { actions } = useMainStateContext();
@@ -18,6 +31,9 @@ const Main = () => {
     startImagine();
   }, []);
 
+  /*All avatars states are held in main so
+  changes are held persitently throughout
+  page navigation*/
   const [userAvatar, setUserAvatar] = useState({
     hairStyle: "LongHairStraight",
     hairColor: "Black",
