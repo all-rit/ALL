@@ -10,7 +10,7 @@ import {
   teammateAvatars,
 } from "src/constants/imagine25/Avatar";
 
-//generating random arrays using Fisher-Yates algorithim
+//Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -19,7 +19,9 @@ const shuffleArray = (array) => {
     array[j] = temp;
   }
 };
-//shuffle arrays for each instance
+/*Note this is not in the main fuction as
+we do not want the user to have a radnom array
+each time they go back and forth between pages.*/
 shuffleArray(teammateAvatars);
 shuffleArray(opponentAvatars);
 
