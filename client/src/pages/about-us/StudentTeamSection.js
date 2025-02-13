@@ -20,8 +20,8 @@ const StudentTeamSection = () => {
     const groupMembers = (members, setMembers) => {
       const groupedMembers = [];
       if (window.innerWidth > 640) {
-        for (let i = 0; i < members.length; i += 4) {
-          groupedMembers.push(members.slice(i, i + 4));
+        for (let i = 0; i < members.length; i += 5) {
+          groupedMembers.push(members.slice(i, i + 5));
         }
       } else {
         for (let i = 0; i < members.length; i += 1) {
@@ -48,7 +48,7 @@ const StudentTeamSection = () => {
     <section
       id={"student-team"}
       className={
-        "tw-min-h-screen tw-flex tw-flex-col tw-bg-primary-blue tw-pb-10"
+        "tw-min-h-screen tw-flex tw-flex-col tw-bg-primary-blue tw-pb-10 tw-mb-10"
       }
     >
       <div className={"tw-flex tw-flex-col tw-bg-white tw-ml-16"}>

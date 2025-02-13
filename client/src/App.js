@@ -85,7 +85,6 @@ const App = () => {
     });
   }, []);
   const lab = state.main.lab;
-  // const body = state.main.body;
   const isImagine = state.main.isImagine;
 
   const [quizCompleted, setQuizCompleted] = useState(false);

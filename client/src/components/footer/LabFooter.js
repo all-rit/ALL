@@ -50,7 +50,7 @@ const LabFooter = (props) => {
   }, []);
 
   return (
-    <div className={"tw-mt-24 tw-mb-6 tw-z-10"}>
+    <div className={"xs:tw-mt-0 md:tw-mt-24 tw-mb-6 tw-z-10"}>
       {display && (
         <div className={`tw-w-full tw-flex tw-justify-center`}>
           <div

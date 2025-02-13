@@ -261,7 +261,7 @@ class Exercise extends Component {
     const { data, handlers } = this.props;
 
     return (
-      <div className="exercise tw-flex tw-flex-col tw-gap-y-3">
+      <div className="exercise tw-flex tw-flex-col tw-gap-y-3 tw-w-full">
         <div
           className={
             "tw-flex tw-flex-row tw-gap-x-3 tw-h-full tw-w-full tw-mb-10 tw-justify-center"
