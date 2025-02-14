@@ -45,15 +45,13 @@ const authenticate = async (data) => {
 
     // If no existing user, proceed with new account creation
     let session = await db.Session.findByPk(userSessionID);
-    if (!session) {
-      const newAccount = {
-        firstName,
-        lastInitial,
-        email1: email,
-        userpfp,
-      };
-      session = await createNewAccountAndSession(userSessionID, newAccount);
-    }
+    const newAccount = {
+      firstName,
+      lastInitial,
+      email1: email,
+      userpfp,
+    };
+    session = await createNewAccountAndSession(userSessionID, newAccount);
     return session;
   } catch (error) {
     console.error('Error while authenticating: ', error);
@@ -71,7 +69,6 @@ const createNewAccountAndSession = async (userSessionID, newAccount) => {
     });
 
     const newSession = await db.Session.create({
-      usersessionid: userSessionID,
       userid: user.userid,
     });
 
@@ -84,23 +81,32 @@ const createNewAccountAndSession = async (userSessionID, newAccount) => {
 
 
 const getSession = async (token) => {
+  const createUserAndSession = async () => {
+    // Creates a brand new user and session
+    const user = await db.Users.create({});
+    const session = await db.Session.create({userid: user.userid});
+    return {user, token: session.usersessionid};
+  };
+
   try {
+    // if the request doesn't have a token, create a new user and session
     if (!token) {
-      // Creates a brand new user and session
-      const user = await db.Users.create({});
-      const session = await db.Session.create({userid: user.userid});
-      return {user, token: session.usersessionid};
+      return createUserAndSession();
     }
 
-    // If a token exists, check for an existing session and user
+    // if the request token doesn't map to a session,
+    // create a new user and session
     const session = await db.Session.findByPk(token);
     if (!session) {
-      throw new Error('Invalid session token');
+      return createUserAndSession();
     }
 
+    // if the session maps to a null user, create a new user and session
+    // we create a new session because a session should depend on a user
+    // and not the other way around
     const user = await db.Users.findByPk(session.userid);
     if (!user) {
-      throw new Error('User not found');
+      return createUserAndSession();
     }
 
     return {user, token};
