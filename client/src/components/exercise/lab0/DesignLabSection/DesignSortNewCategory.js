@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import DragDropGame from "../../../all-components/DragAndDrop/DragAndDrop";
 import Lab0Context from "../Lab0Context";
+import DragDropGame from "../../../all-components/DragAndDrop/DragAndDrop";
 
-const DesignLabIntroduction = () => {
+const DesignSortNewCategory = () => {
+  const { newCategoryName, newLabTopics, handleNav } = useContext(Lab0Context);
+
   const [success, setSuccess] = useState(false);
 
-  const { handleNav } = useContext(Lab0Context);
   const navigateNext = () => {
     handleNav("DesignNewCategory");
   };
@@ -13,21 +14,27 @@ const DesignLabIntroduction = () => {
   const Columns = [
     { id: "column1", title: "Accessibility", cards: [] },
     { id: "column2", title: "AI / ML", cards: [] },
-    { id: "column3", title: "New Category", cards: [] },
+    { id: "column3", title: newCategoryName, cards: [] },
   ];
 
-  const Bank = [
+  const previous_Bank = [
     { id: "card8", content: "Computer Vision" },
     { id: "card4", content: "Focus Order" },
     { id: "card1", content: "Dyspraxia" },
     { id: "card6", content: "Natural Language Processing" },
     { id: "card7", content: "Neural Networks" },
     { id: "card3", content: "Alt Text" },
-    { id: "card10", content: "Digital Privacy" },
     { id: "card5", content: "Federated Learning" },
-    { id: "card9", content: "Cryptography" },
     { id: "card2", content: "Photosensitivity" },
   ];
+  const newBank = () => {
+    newLabTopics.forEach((topic) => {
+      const newId = previous_Bank.length;
+      previous_Bank.push({ id: "card" + newId, content: topic.value });
+    });
+    console.log(previous_Bank);
+    return previous_Bank;
+  };
 
   const correctAssignments = [
     { id: "column1", cards: ["card1", "card2", "card3", "card4"] },
@@ -80,7 +87,7 @@ const DesignLabIntroduction = () => {
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"
           }
           cols={Columns}
-          initial_bank={Bank}
+          initial_bank={newBank}
           correct_assignments={correctAssignments}
           setSuccess={setSuccess}
           sucess={success}
@@ -91,4 +98,4 @@ const DesignLabIntroduction = () => {
   );
 };
 
-export default DesignLabIntroduction;
+export default DesignSortNewCategory;
