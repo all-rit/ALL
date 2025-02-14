@@ -10,6 +10,7 @@ import {
   teammateAvatars,
 } from "src/constants/imagine25/Avatar";
 import GalagaInstructions from "./pages/GalagaInstruction";
+import Galaga from "./pages/Galaga";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -100,6 +101,7 @@ const Main = () => {
               path={"/OpponentSelection"}
             />
             <GalagaInstructions path={"/GalagaInstructions"} />
+            <Galaga path={"/Galaga"} />
           </Router>
         </div>
       </div>

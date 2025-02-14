@@ -22,7 +22,7 @@ const GalagaInstructions = () => {
             enemy space ships! Don&apos;t get hit by one or it&apos;s game over!
           </p>
         </div>,
-        () => alert("No next Funcionality"),
+        () => navigate("/Imagine2025/Galaga"),
         () => navigate("/Imagine2025/OpponentSelection"),
       )}
     </>

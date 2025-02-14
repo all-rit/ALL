@@ -1,0 +1,95 @@
+{
+  "owner": "Constantine_RetroGamer",
+  "title": "Galaga",
+  "slug": "galaga",
+  "tags": ["game", "arcade", "lua"],
+  "orientation": "any",
+  "aspect": "free",
+  "platforms": ["computer", "phone", "tablet"],
+  "controls": ["touch", "mouse"],
+  "type": "app",
+  "language": "lua",
+  "graphics": "M1",
+  "libs": [],
+  "tabs": { "sounds": false, "music": false, "doc": false },
+  "date_created": 1656971455163,
+  "last_modified": 1658229294380,
+  "first_published": 1658228971172,
+  "files": {
+    "ms/main.ms": { "version": 1659, "size": 2506 },
+    "sprites/icon.png": {
+      "version": 59,
+      "size": 409,
+      "properties": { "frames": 1, "fps": 5 }
+    },
+    "maps/map.json": { "version": 24, "size": 2604, "properties": {} },
+    "sprites/star1.png": {
+      "properties": { "frames": 2, "fps": 2 },
+      "version": 16,
+      "size": 107
+    },
+    "sprites/star2.png": {
+      "properties": { "frames": 2, "fps": 3 },
+      "version": 14,
+      "size": 103
+    },
+    "sprites/star3.png": {
+      "properties": { "frames": 1, "fps": 5 },
+      "version": 2,
+      "size": 102
+    },
+    "sprites/life.png": {
+      "properties": { "frames": 3, "fps": 5 },
+      "version": 18,
+      "size": 249
+    },
+    "sprites/rocket.png": {
+      "properties": { "frames": 1, "fps": 5 },
+      "version": 20,
+      "size": 86
+    },
+    "sprites/player.png": {
+      "properties": { "frames": 2, "fps": 5 },
+      "version": 286,
+      "size": 293
+    },
+    "sprites/enemy1.png": {
+      "properties": { "frames": 2, "fps": 5 },
+      "version": 89,
+      "size": 280
+    },
+    "ms/function.ms": { "properties": {}, "version": 530, "size": 1893 },
+    "ms/classes_and_objects.ms": {
+      "properties": {},
+      "version": 289,
+      "size": 3172
+    },
+    "sprites/enemy2.png": {
+      "properties": { "frames": 2, "fps": 5 },
+      "version": 154,
+      "size": 257
+    },
+    "doc/doc.md": { "version": 5, "size": 0 },
+    "sprites/explosion.png": {
+      "properties": { "frames": 4, "fps": 5 },
+      "version": 14,
+      "size": 259
+    },
+    "sprites/player_explosion.png": {
+      "properties": { "frames": 5, "fps": 5 },
+      "version": 109,
+      "size": 366
+    },
+    "sprites/enemy3.png": {
+      "properties": { "frames": 2, "fps": 5 },
+      "version": 56,
+      "size": 291
+    },
+    "sprites/poster.png": {
+      "version": 1,
+      "size": 11696,
+      "properties": { "frames": 1, "fps": 5 }
+    }
+  },
+  "description": "A kind of clone, vaguely similar to the games \"Galaga\" and \"Galaxian\" (NES). It would be nice to improve this game by adding new enemies and bonuses :)"
+}
