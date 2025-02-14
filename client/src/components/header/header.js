@@ -114,7 +114,6 @@ const Header = (props) => {
   }
 
   const loggedIn = state.main?.user?.email1 !== null;
-  console.log("user", state.main.user);
 
   return (
     <Navbar
