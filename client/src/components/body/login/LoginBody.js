@@ -4,29 +4,13 @@ import getExerciseState from "../../../helpers/GetReducer";
 import { EXERCISE_IDLE } from "../../../constants/lab1";
 import useMainStateContext from "../../../reducers/MainContext";
 import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
-import { actions as mainActions } from "../../../reducers/MainReducer";
-import { connect } from "react-redux";
-
-const mapStateToProps = (state) => {
-  return {
-    state: state,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(mainActions, dispatch),
-  };
-};
 
 const LoginBody = (props) => {
   const { state } = useMainStateContext();
   const loginEnabled =
     state.main.lab === 0 ||
     getExerciseState(state, props.state) === EXERCISE_IDLE ||
-    state.main.body !== 2 ||
-    props.state.main.body !== 2;
+    state.main.body !== 2;
 
   return (
     <div
@@ -75,11 +59,7 @@ const LoginBody = (props) => {
 };
 
 LoginBody.propTypes = {
-  state: PropTypes.shape({
-    main: PropTypes.shape({
-      body: PropTypes.number,
-    }),
-  }),
+  state: PropTypes.shape({}),
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginBody);
+export default LoginBody;

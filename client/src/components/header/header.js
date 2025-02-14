@@ -27,7 +27,6 @@ import {
   LOGOUT_SUCCESS,
   SUCCESS,
 } from "../../constants/notifications";
-import { EXERCISE_IDLE } from "../../constants/lab1";
 
 const mapStateToProps = (state) => {
   return {
@@ -65,8 +64,6 @@ const Header = (props) => {
   const toggleSignIn = () => {
     setSignInModalOpen(!signInModalOpen);
   };
-
-  const loginEnabled = state.main.lab === 0;
 
   const signInModal = () => {
     return (
@@ -148,110 +145,99 @@ const Header = (props) => {
             className={`${isSmallWindow ? "tw-absolute tw-bg-white tw-right-0 tw-top-[100%] tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow" : "tw-flex tw-flex-grow tw-justify-end"}`}
             isOpen={navbarOpen}
           >
-            {loginEnabled ? (
-              <Nav
-                className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
+            <Nav
+              className={`${isSmallWindow ? "tw-relative tw-flex-col" : "tw-flex tw-flex-grow tw-justify-end tw-flex-row tw-items-center tw-border-solid tw-border-t-0 tw-border-r-0 tw-border-8 tw-rounded-bl-md tw-border-l-labYellow tw-border-b-labYellow tw-h-[5rem] tw-pb-2"}`}
+            >
+              <NavItem
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
               >
-                <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  onClick={() => reachNav("/#")}
                 >
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                    onClick={() => reachNav("/#")}
-                  >
-                    <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
-                      Home
-                    </p>
-                  </NavLink>
-                </NavItem>
-                <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
-                >
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                    href="/Labs"
-                  >
-                    <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
-                      Labs
-                    </p>
-                  </NavLink>
-                </NavItem>
-                <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
-                >
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                    href="/about-us"
-                  >
-                    <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
-                      About Us
-                    </p>
-                  </NavLink>
-                </NavItem>
-                <NavItem
-                  className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
-                >
-                  <NavLink
-                    className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                    href="/EducatorResources"
-                  >
-                    <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
-                      Educator Resources
-                    </p>
-                  </NavLink>
-                </NavItem>
-                <NavItem className="tw-px-4 tw-py-2 tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
-                  {loggedIn && user ? (
-                    // TO-DO: PROFILE LINK HERE
-                    <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
-                      <div
-                        onClick={() =>
-                          navigate(state, props.state, actions, 2, 0)
-                        }
-                        aria-label="Google Profile Photo"
-                        className="tw-h-12 tw-object-cover"
-                        style={{
-                          backgroundImage: `url(${user?.userpfp}`,
-                          backgroundRepeat: "no-repeat",
-                          backgroundSize: "cover",
-                        }}
-                      ></div>
-                    </NavLink>
-                  ) : (
-                    <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
-                      <p
-                        className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-cursor-pointer tw-body-text"
-                        onClick={toggleSignIn}
-                      >
-                        Sign In
-                      </p>
-                      {signInModal()}
-                    </NavLink>
-                  )}
-                </NavItem>
-                <NavItem>
-                  {isSmallWindow && loggedIn ? (
-                    <NavLink>
-                      <button className={"log_out-google-btn"} onClick={logout}>
-                        {" "}
-                        Logout{" "}
-                      </button>
-                    </NavLink>
-                  ) : (
-                    <></>
-                  )}
-                </NavItem>
-              </Nav>
-            ) : (
-              <p
-                className={
-                  "tw-text-darkLine tw-text-center tw-flex tw-items-center tw-font-bold"
-                }
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
+                    Home
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                className={`${"px-4"} ${!isSmallWindow && "tw-cursor-pointer tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid "}`}
               >
-                {" "}
-                Navigation and Login are Disabled During Lab Experience{" "}
-              </p>
-            )}
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  href="/Labs"
+                >
+                  <p className="tw-text-primary-blue tw-font-poppins tw-font-bold tw-body-text">
+                    Labs
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+              >
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  href="/about-us"
+                >
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
+                    About Us
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem
+                className={`${"px-4"} ${!isSmallWindow && "tw-text-primary-blue tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-r-2 tw-border-solid"}`}
+              >
+                <NavLink
+                  className="tw-flex tw-items-center tw-justify-center tw-p-0"
+                  href="/EducatorResources"
+                >
+                  <p className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-body-text">
+                    Educator Resources
+                  </p>
+                </NavLink>
+              </NavItem>
+              <NavItem className="tw-px-4 tw-py-2 tw-flex tw-justify-center tw-items-center tw-cursor-pointer">
+                {loggedIn && user ? (
+                  // TO-DO: PROFILE LINK HERE
+                  <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
+                    <div
+                      onClick={() =>
+                        navigate(state, props.state, actions, 2, 0)
+                      }
+                      aria-label="Google Profile Photo"
+                      className="tw-h-12 tw-object-cover"
+                      style={{
+                        backgroundImage: `url(${user?.userpfp}`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                      }}
+                    ></div>
+                  </NavLink>
+                ) : (
+                  <NavLink className="tw-flex tw-items-center tw-justify-center tw-p-0 tw-cursor-pointer">
+                    <p
+                      className="tw-text-primary-blue tw-font-bold tw-font-poppins tw-cursor-pointer tw-body-text"
+                      onClick={toggleSignIn}
+                    >
+                      Sign In
+                    </p>
+                    {signInModal()}
+                  </NavLink>
+                )}
+              </NavItem>
+              <NavItem>
+                {isSmallWindow && loggedIn ? (
+                  <NavLink>
+                    <button className={"log_out-google-btn"} onClick={logout}>
+                      {" "}
+                      Logout{" "}
+                    </button>
+                  </NavLink>
+                ) : (
+                  <></>
+                )}
+              </NavItem>
+            </Nav>
           </Collapse>
         </div>
       </div>
@@ -260,11 +246,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  state: PropTypes.shape({
-    main: PropTypes.shape({
-      body: PropTypes.number,
-    }),
-  }),
+  state: PropTypes.shape({}),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
