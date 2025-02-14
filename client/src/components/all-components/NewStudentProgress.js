@@ -58,17 +58,21 @@ const NewStudentProgress = (props) => {
               the class. All they have to do to get started is enter the code!
             </p>
           </div>
-          {assignedLabs.map((lab, key) => {
-            return (
-              <LabRow
-                key={key}
-                lab={lab}
-                studentProgress={true}
-                group={group}
-                enrolledStudents={enrolledStudents}
-              />
-            );
-          })}
+          {assignedLabs ? (
+            assignedLabs.map((lab, labid) => {
+              return (
+                <LabRow
+                  key={labid}
+                  lab={lab}
+                  studentProgress={true}
+                  group={group}
+                  enrolledStudents={enrolledStudents}
+                />
+              );
+            })
+          ) : (
+            <p className={"tw-sub-title"}> No Labs to Display. </p>
+          )}
         </div>
       </BrandedALLModal>
     </>

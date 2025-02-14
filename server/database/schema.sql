@@ -11,7 +11,7 @@ create table imagine25
     "opponentAvatar"             json,
     "readingSpeed"               integer,
     "quizScore"                  integer,
-    "gameOutcome"               integer,
+    "gameOutcome"                text,
     primary key (id)
 );
 
@@ -3480,16 +3480,20 @@ INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL",
 ,(19, 'Santosh', 'Lamichhane', 'Engineer', '/Santosh.jpg', '[{"link": "https://www.linkedin.com/in/santosh-lamichhane-1b2737195/","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
 ,(20, 'Jaden', 'Wedner', 'Engineer', '/Jaden.jpg', '[{"link": "https://www.linkedin.com/in/jaden-w-3a9326190/","network": "linkedin"}]', null, '2022-2023', false, null, null, '{6, 8}')
 ,(21, 'Kelley', 'Lam', 'Engineer', '/Kelley.jpg', '[{"link":"https://www.linkedin.com/in/kelley-lam/","network":"linkedin"}]', null, '2022-2022', false, null, null, '{7}')
-,(14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-Present', true, 'Upcoming graduate of the Web and Mobile Computing program at RIT, and founding member of the Computing Organization for Multicultural Students at RIT!', 2, null)
+,(14, 'Kasim', 'O''Meally', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/kasimomeally"}]', null, '2023-Present', false, 'Upcoming graduate of the Web and Mobile Computing program at RIT, and founding member of the Computing Organization for Multicultural Students at RIT!', 2, null)
 ,(22, 'Dynasty', 'Chappel', 'Education', '/Dynasti.jpg', '[{"link": "https://www.linkedin.com/in/dynasti-chappell-2085a51b7/","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
 ,(23, 'Ryan', 'Webb', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/rfhwebb/"}]', null, '2023-Present', false, null, null, '{8}')
 ,(24, 'Jonathan', 'Bateman', 'Outreach', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/jonathan-b-356439264/"}]', null, '2023-2023', false, null, null, null)
 ,(12, 'Carla', 'Lopez', 'Outreach', '/Carla.jpeg', '[{"link" : "https://www.linkedin.com/in/carla-lopez-6b8aa7239/"}]', null, '2023-Present', true, null, null, null)
 ,(11, 'Domenic', 'Mangano', 'PM, Engineer', '/Domenic.jpeg', '[{"link" : "https://www.linkedin.com/in/domenicmangano/"}]', null, '2022-Present', true, 'Student. Father. Engineer. Graduating from RIT in Fall 2025, I love building software and improving UI/UX across any platform, and teaching others about the importance of accessibility!', 6, '{7, 8, 9, 10, 11, 12}')
 ,(25, 'Ainsley', 'Ross', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/ainsley-ross/"}]', null, '2024-2024', false, null, null, '{12}')
-,(26, 'Owen', 'Luts', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true, 'Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 6, '{12}'),
- (27, 'Melissa', 'Burisky', 'Engineer', '/Melissa_Burisky.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true, 'Upcoming Computer Science graduate at RIT, and member of the Computing Organization for Multicultural Students.', null, null)
-,(28, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[]', null,'2024-Present', true, 'Junior developer at Accessible Learning Labs, Software Project Management TA, pickleball club member, and Taco Bell lover.', 6, '{12}');
+,(26, 'Owen', 'Luts', 'Engineer', '/default_profile_image.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true, 'Software Developer at the Accessible Learning Labs, current full-time student at the Rochester Institute of Technology, and President/Founder of the RIT Pickleball Club!', 6, '{12}')
+,(27, 'Melissa', 'Burisky', 'Engineer', '/Melissa_Burisky.jpg', '[{"link" : "https://www.linkedin.com/in/owen-luts/"}]', null,'2024-Present', true, 'Upcoming Computer Science graduate at RIT, and member of the Computing Organization for Multicultural Students.', null, null)
+,(28, 'Michael', 'DiBiase', 'Engineer', '/default_profile_image.jpg', '[]', null,'2024-Present', true, 'Junior developer at Accessible Learning Labs, Software Project Management TA, pickleball club member, and Taco Bell lover.', 6, '{12}')
+,(29, 'Jack', 'DeFeo', 'Engineer', '/default_profile_image.jpg', '[]', null, '2024-Present', true, null, null, null)
+,(30, 'Jack', 'Barter', 'Engineer', '/default_profile_image.jpg', '[]', null, '2024-Present', true, null, null, null)
+,(31, 'Ursula', 'Parker', 'Project Manager', '/default_profile_image.jpg', '[]', null, '2024-Present', true, null, null, null)
+,(32, 'Emma', 'Schmidt', 'Director of Outreach', '/default_profile_image.jpg', '[]', null, '2024-Present', true, null, null, null);
 
 INSERT INTO public.dev_partners (id, "partnerName", "imageURL", "websiteURL") VALUES (1, 'Rochester Institute of Technology', '/RIT.png', 'https://www.rit.edu/'), 
 (2, 'Daytona State College', '/Daytona.png', 'https://www.daytonastate.edu/index.html'), (3, 'Embry-Riddle Aeronautical University', '/ERAU.png', 'https://daytonabeach.erau.edu/'),

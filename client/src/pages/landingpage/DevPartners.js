@@ -18,7 +18,7 @@ const DevPartners = () => {
           </div>
         </div>
       </div>
-      <div className="tw-w-3/4">
+      <div className="xs:tw-w-full md:tw-w-3/4">
         <PartnerGeneration />
       </div>
     </div>

@@ -29,6 +29,20 @@ const submitStudy = async (data) => {
   }
 };
 
+const newID = async (data) => {
+  const {userID, year} = data;
+  const imagine = `Imagine${year}`;
+
+  try {
+    await db[imagine].create({
+      userid: userID,
+    });
+    return true;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const preSurvey = async (data) => {
   const {userID, preSurvey, year} = data;
   const imagine = `Imagine${year}`;
@@ -276,6 +290,90 @@ const determineGroup = async (preSurvey, year) => {
   return lowestPool;
 };
 
+const postUserAvatar = async (data) => {
+  const {userID, avatar, year} = data;
+  const imagine = `Imagine${year}`;
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.avatar = avatar;
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          avatar: avatar,
+        });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const postTeammateAvatar = async (data) => {
+  const {userID, teammateAvatar, year} = data;
+  const imagine = `Imagine${year}`;
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.teammateAvatar = teammateAvatar;
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          teammateAvatar: teammateAvatar,
+        });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const postOpponentAvatar = async (data) => {
+  const {userID, opponentAvatar, year} = data;
+  const imagine = `Imagine${year}`;
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.opponentAvatar = opponentAvatar;
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          opponentAvatar: opponentAvatar,
+        });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 
 const determineSection2025 = async () => {
   const options = ['experiential', 'expression', 'control'];
@@ -285,6 +383,7 @@ const determineSection2025 = async () => {
 
 module.exports = {
   submitStudy,
+  newID,
   preSurvey,
   postSurvey,
   getUsers,
@@ -292,4 +391,7 @@ module.exports = {
   readMoreCount,
   readingSectionPagePosition,
   readMoreTimeElapsed,
+  postUserAvatar,
+  postTeammateAvatar,
+  postOpponentAvatar,
 };

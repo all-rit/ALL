@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LabGeneration from "../lab/LabGeneration";
 import useMainStateContext from "src/reducers/MainContext";
 import PropTypes from "prop-types";
@@ -13,6 +13,10 @@ const Labs = (props) => {
   const [searchSubmitted, setSearchSubmitted] = useState(false);
   const [labProgress, setLabProgress] = useState("NOT_STARTED");
   const [displayedLabs, setDisplayedLabs] = useState(props.toDoLabs);
+
+  useEffect(() => {
+    setDisplayedLabs(props.toDoLabs);
+  }, [props.toDoLabs]);
 
   const displayNotStartedLabs = () => {
     setCurrentHeader("Not Started");

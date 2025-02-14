@@ -44,7 +44,7 @@ const InstructingGroups = (props) => {
           ) : (
             <div
               className={
-                "tw-w-3/4 tw-grid tw-grid-cols-3 tw-gap-3 lg:tw-min-h-[20rem]"
+                "tw-w-3/4 xs:tw-flex xs:tw-flex-col md:tw-grid md:tw-grid-cols-3 tw-gap-3 lg:tw-min-h-[20rem]"
               }
             >
               {instructingGroups.map((group, index) => {

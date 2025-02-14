@@ -173,7 +173,7 @@ router.post('/lab12/exercise/submit', async function(req, res) {
   const id = await ExerciseControllerLab12.postExercise(req);
   res.send(id);
 });
-router.get('/lab12/repair/:userID/:section', async function(req, res ) {
+router.get('/lab12/repair/:userID/:section', async function(req, res) {
   res.json(await RepairControllerLab12.getRepair(req));
 });
 router.post('/lab12/repair/submit', async function(req, res) {
@@ -244,6 +244,23 @@ router.post('/imagine23/readingSectionPagePosition', async function(req, res) {
   const resp = await ImagineController.readingSectionPagePosition(req);
   res.send(resp);
 });
+router.post('/imagine25/teammateAvatarSelection', async function(req, res) {
+  const resp = await ImagineController.postTeammateAvatar(req);
+  res.send(resp);
+});
+router.post('/imagine25/opponentAvatarSelection', async function(req, res) {
+  const resp = await ImagineController.postOpponentAvatar(req);
+  res.send(resp);
+});
+router.post('/imagine25/userAvatarCreation', async function(req, res) {
+  const resp = await ImagineController.postUserAvatar(req);
+  res.send(resp);
+});
+router.post('/imagine25/newID', async function(req, res) {
+  const resp = await ImagineController.newID(req);
+  res.send(resp);
+});
+
 
 // Imagine 2025
 router.post('/imagine25/preSurvey', async function(req, res) {

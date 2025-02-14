@@ -2,8 +2,8 @@ import { React, useState } from "react";
 import { PropTypes } from "prop-types";
 import Survey from "./Survey";
 import { navigate } from "@reach/router";
-import PreSurveyQuestions from "../../imagine23/data/preSurveyQuestions";
-import PostSurveyQuestions from "../../imagine23/data/postSurveyQuestions";
+import PreSurveyQuestions23 from "../../imagine23/data/preSurveyQuestions";
+import PostSurveyQuestions23 from "../../imagine23/data/postSurveyQuestions";
 import ImagineService from "../../../services/ImagineService";
 import Spinner from "../../../common/Spinner/Spinner";
 import PreSurveyQuestions25 from "../../imagine25/data/preSurveyQuestions";
@@ -17,7 +17,7 @@ function assignQuizQuestions(surveyType, year) {
   switch (surveyType) {
     case "pre":
       if (year == 23) {
-        return PreSurveyQuestions;
+        return PreSurveyQuestions23;
       } else if (year == 25) {
         return PreSurveyQuestions25;
       } else {
@@ -25,7 +25,7 @@ function assignQuizQuestions(surveyType, year) {
       }
 
     case "post":
-      return PostSurveyQuestions;
+      return PostSurveyQuestions23;
     default:
       return [
         {
@@ -126,14 +126,14 @@ const SurveyHandler = (props) => {
     } else if (year == 25) {
       if (isUnderAge) {
         //will be changed to point to avatarCreation when merged
-        navigate("/Imagine2025/Game");
+        navigate("/Imagine2025/AvatarCreation");
       } else {
         await ImagineService.preSurvey(props.userID, selectedAnswers, year);
         //will be changed to point to avatarCreation when merged
-        navigate("/Imagine2025/Game");
+        navigate("/Imagine2025/AvatarCreation");
       }
     } else {
-      console.log("invalid year");
+      console.error("invalid year");
     }
   }
   /**
