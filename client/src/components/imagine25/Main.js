@@ -9,6 +9,7 @@ import {
   opponentAvatars,
   teammateAvatars,
 } from "src/constants/imagine25/Avatar";
+import GalagaInstructions from "./pages/GalagaInstruction";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -92,12 +93,13 @@ const Main = () => {
               avatars={opponentAvatars}
               imagineService={ImagineService.postOpponenetSelection}
               title={"Opponent"}
-              nextNavigation={() => alert("no navigation implemented ;)")}
+              nextNavigation={() => navigate("/Imagine2025/GalagaInstructions")}
               prevNavigation={() => navigate("/Imagine2025/TeammateSelection")}
               avatarSelected={opponentAvatarSelected}
               setAvatarSelected={setOpponentAvatarSelected}
               path={"/OpponentSelection"}
             />
+            <GalagaInstructions path={"/GalagaInstructions"} />
           </Router>
         </div>
       </div>
