@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       'FrontendTipsTricks',
   );
 
+  const lab0RepairSectionStatus = DataTypes.ENUM(
+      'IN_PROGRESS',
+      'COMPLETED',
+  );
+
   const Repair = sequelize.define('RepairLab0', {
     id: {
       type: DataTypes.INTEGER,
@@ -28,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       type: lab0RepairSection,
     },
     sectionStatus: {
-      type: DataTypes.ENUM('IN_PROGRESS', 'COMPLETED'),
+      type: lab0RepairSectionStatus,
     },
   }, {
     tableName: 'lab0_repair',
