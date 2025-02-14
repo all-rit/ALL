@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Avatar from "avataaars";
-import useMainStateContext from "../../../reducers/MainContext";
 import {
   Dropdown,
   DropdownToggle,
@@ -13,9 +12,16 @@ import {
 } from "reactstrap";
 import { Frame } from "../components/Frame";
 import ImagineService from "src/services/ImagineService";
+import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 
 //Function for each respective row in the avatarcreation page to stylize them
-const AvatarStyling = (defaultValue, setAvatarState, options) => {
+const AvatarStyling = (
+  defaultValue,
+  userAvatarType,
+  setAvatarState,
+  options,
+) => {
   //basic toggling and changing functionality for dropdown
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
@@ -39,7 +45,10 @@ const AvatarStyling = (defaultValue, setAvatarState, options) => {
               key={key}
               onClick={() => {
                 //Value that was set
-                setAvatarState(key);
+                setAvatarState((prevState) => ({
+                  ...prevState,
+                  [userAvatarType]: key,
+                }));
                 setDisplayedValue(value);
               }}
             >
@@ -52,32 +61,11 @@ const AvatarStyling = (defaultValue, setAvatarState, options) => {
   );
 };
 
-const AvatarCreation = () => {
-  //removes lame buttons from top of screen
-  const { actions } = useMainStateContext();
-  const startImagine = () => actions.setIsImagine(true);
-  useEffect(() => {
-    startImagine();
-  }, []);
-
-  //keep track of current avatar state
-  const [hairStyle, setHairStyle] = useState("LongHairStraight");
-  const [hairColor, setHairColor] = useState("Black");
-  const [shirtColor, setShirtColor] = useState("Gray");
-  const [skinColor, setSkinColor] = useState("Light");
-
+const AvatarCreation = (props) => {
   const nextOnClick = async () => {
     //default userID set to 1 for now
-    await ImagineService.postUserAvatar(
-      "1",
-      {
-        hairStyle: hairStyle,
-        hairColor: hairColor,
-        shirtColor: shirtColor,
-        skinColor: skinColor,
-      },
-      25,
-    );
+    navigate("/Imagine2025/TeammateSelection");
+    await ImagineService.postUserAvatar("1", props.userAvatar, 25);
   };
 
   return (
@@ -88,57 +76,62 @@ const AvatarCreation = () => {
           <div>
             <Avatar
               clotheType="ShirtCrewNeck"
-              topType={hairStyle}
-              hairColor={hairColor}
-              clotheColor={shirtColor}
-              skinColor={skinColor}
+              topType={props.userAvatar.hairStyle}
+              hairColor={props.userAvatar.hairColor}
+              clotheColor={props.userAvatar.clotheColor}
+              skinColor={props.userAvatar.skinColor}
               className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
             />
-            {/*Each AvatarStyling() function takes in their respective setState, and a map of options.
-                  The Key will represent the code-side implementation and the value is what the user will see
-                  as a selection choice. Labels must be added mannually prior to Avatar styling.*/}
+            {/*The Key represents code-side implementation and value is the displayed selection choice*/}
             <Form className="tw-my-[1vw]">
               <FormGroup row>
                 <Col>
-                  <Label className="mx-2 fw-bold">Hair Style</Label>
-                  {AvatarStyling("Long Straight", setHairStyle, {
-                    ShortHairShortCurly: "Short Curly",
-                    LongHairCurly: "Long Curly",
-                    ShortHairShortFlat: "Short Straight",
-                    LongHairStraight: "Long Straight",
+                  <Label className="mx-2 fw-bold">Skin Color</Label>
+                  {AvatarStyling("Light", "skinColor", props.setUserAvatar, {
+                    Light: "Light",
+                    Brown: "Medium Light",
+                    DarkBrown: "Medium Dark",
+                    Black: "Dark",
                   })}
                 </Col>
               </FormGroup>
               <FormGroup row>
                 <Col>
+                  <Label className="mx-2 fw-bold">Hair Style</Label>
+                  {AvatarStyling(
+                    "Long Straight",
+                    "hairStyle",
+                    props.setUserAvatar,
+                    {
+                      LongHairStraight: "Long Straight",
+                      ShortHairShortFlat: "Short Straight",
+                      LongHairCurly: "Long Curly",
+                      ShortHairShortCurly: "Short Curly",
+                      NoHair: "Bald",
+                    },
+                  )}
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col>
                   <Label className="mx-2 fw-bold">Hair Color</Label>
-                  {AvatarStyling("Black", setHairColor, {
+                  {AvatarStyling("Black", "hairColor", props.setUserAvatar, {
                     Black: "Black",
+                    Brown: "Brown",
                     Blonde: "Blonde",
-                    Blue: "Blue",
-                    Red: "Red",
+                    SilverGray: "Gray",
                   })}
                 </Col>
               </FormGroup>
               <FormGroup row>
                 <Col>
                   <Label className="mx-2 fw-bold">Shirt Color</Label>
-                  {AvatarStyling("Gray", setShirtColor, {
+                  {AvatarStyling("Gray", "clotheColor", props.setUserAvatar, {
                     Gray01: "Gray",
                     Black: "Black",
+                    PastelBlue: "Blue",
                     PastelYellow: "Yellow",
                     Pink: "Pink",
-                  })}
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Col>
-                  <Label className="mx-2 fw-bold">Skin Color</Label>
-                  {AvatarStyling("White", setSkinColor, {
-                    Light: "White",
-                    Brown: "Brown",
-                    DarkBrown: "Dark Brown",
-                    Black: "Black",
                   })}
                 </Col>
               </FormGroup>
@@ -146,9 +139,17 @@ const AvatarCreation = () => {
           </div>
         </div>,
         nextOnClick,
+        () => {
+          alert("No previous page implemented yet, HE-HE-HE-HA");
+        },
       )}
     </>
   );
+};
+
+AvatarCreation.propTypes = {
+  userAvatar: PropTypes.object.isRequired,
+  setUserAvatar: PropTypes.func.isRequired,
 };
 
 export default AvatarCreation;

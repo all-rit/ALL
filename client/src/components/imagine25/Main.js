@@ -1,9 +1,52 @@
-import React from "react";
-import { Router } from "@reach/router";
+import React, { useEffect, useState } from "react";
+import { navigate, Router } from "@reach/router";
 import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
+import AvatarSelection from "./components/AvatarSelection";
+import ImagineService from "src/services/ImagineService";
+import useMainStateContext from "src/reducers/MainContext";
+import {
+  opponentAvatars,
+  teammateAvatars,
+} from "src/constants/imagine25/Avatar";
+
+//Generates random arrays using Fisher-Yates algorithim
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+};
+/*Note this is not in the main fuction as
+we do not want the user to have a radnom array
+each time they go back and forth between pages.*/
+shuffleArray(teammateAvatars);
+shuffleArray(opponentAvatars);
 
 const Main = () => {
+  //Removes header
+  const { actions } = useMainStateContext();
+  const startImagine = () => actions.setIsImagine(true);
+  useEffect(() => {
+    startImagine();
+  }, []);
+
+  /*All avatars states are held in main so
+  changes are held persitently throughout
+  page navigation*/
+  const [userAvatar, setUserAvatar] = useState({
+    hairStyle: "LongHairStraight",
+    hairColor: "Black",
+    shirtColor: "Gray",
+    skinColor: "Light",
+  });
+
+  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();
+
+  const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
+
   return (
     <>
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
@@ -30,7 +73,31 @@ const Main = () => {
         >
           <Router>
             <UpdateId default path={"/"} />
-            <AvatarCreation path={"/AvatarCreation"} />
+            <AvatarCreation
+              path={"/AvatarCreation"}
+              userAvatar={userAvatar}
+              setUserAvatar={setUserAvatar}
+            />
+            <AvatarSelection
+              avatars={teammateAvatars}
+              imagineService={ImagineService.postTeammateSelection}
+              title={"Teammate"}
+              nextNavigation={() => navigate("/Imagine2025/OpponentSelection")}
+              prevNavigation={() => navigate("/Imagine2025/AvatarCreation")}
+              avatarSelected={teammteAvatarSelected}
+              setAvatarSelected={setTeammateAvatarSelected}
+              path={"/TeammateSelection"}
+            />
+            <AvatarSelection
+              avatars={opponentAvatars}
+              imagineService={ImagineService.postOpponenetSelection}
+              title={"Opponent"}
+              nextNavigation={() => alert("no navigation implemented ;)")}
+              prevNavigation={() => navigate("/Imagine2025/TeammateSelection")}
+              avatarSelected={opponentAvatarSelected}
+              setAvatarSelected={setOpponentAvatarSelected}
+              path={"/OpponentSelection"}
+            />
           </Router>
         </div>
       </div>

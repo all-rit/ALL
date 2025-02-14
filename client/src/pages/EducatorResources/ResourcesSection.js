@@ -75,6 +75,7 @@ const ResourcesSection = () => {
                 "btn tw-border-solid tw-shadow-md tw-border-1 xs:tw-text-xs md:tw-text-[1rem] tw-bg-white hover:tw-bg-primary-yellow focus:tw-bg-primary-yellow tw-z-10"
               }
               onClick={displayOverview}
+              autoFocus
             >
               Lab Overview
             </button>

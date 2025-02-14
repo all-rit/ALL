@@ -1,7 +1,7 @@
 import React from "react";
 import ALLButton from "src/components/all-components/ALLButton";
 
-export const Frame = (content, nextOnClick) => {
+export const Frame = (content, nextOnClick, prevOnClick) => {
   //Constant syling methods
   const blueLine =
     "tw-w-[35vw] tw-h-[5px] tw-bg-[#0045d5] tw-my-[15px] tw-mx-auto";
@@ -17,7 +17,7 @@ export const Frame = (content, nextOnClick) => {
       </div>
       <div className={blueLine}></div>
       <div className="tw-flex tw-justify-center tw-space-x-[35vw] md:tw-pt-4 xl:tw-pt-3">
-        <ALLButton label="Previous" />
+        <ALLButton onClick={prevOnClick} label="Previous" />
         <ALLButton onClick={nextOnClick} label="Next" />
       </div>
     </>

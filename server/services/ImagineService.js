@@ -311,6 +311,62 @@ const postUserAvatar = async (data) => {
   }
 };
 
+const postTeammateAvatar = async (data) => {
+  const {userID, teammateAvatar, year} = data;
+  const imagine = `Imagine${year}`;
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.teammateAvatar = teammateAvatar;
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          teammateAvatar: teammateAvatar,
+        });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const postOpponentAvatar = async (data) => {
+  const {userID, opponentAvatar, year} = data;
+  const imagine = `Imagine${year}`;
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.opponentAvatar = opponentAvatar;
+        user.save();
+      } else {
+        await db[imagine].create({
+          userid: userID,
+          opponentAvatar: opponentAvatar,
+        });
+      }
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
   submitStudy,
   newID,
@@ -322,4 +378,6 @@ module.exports = {
   readingSectionPagePosition,
   readMoreTimeElapsed,
   postUserAvatar,
+  postTeammateAvatar,
+  postOpponentAvatar,
 };

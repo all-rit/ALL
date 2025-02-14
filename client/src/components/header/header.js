@@ -27,6 +27,7 @@ import {
   LOGOUT_SUCCESS,
   SUCCESS,
 } from "../../constants/notifications";
+import { EXERCISE_IDLE } from "../../constants/lab1";
 
 const mapStateToProps = (state) => {
   return {
@@ -63,6 +64,8 @@ const Header = (props) => {
   const toggleSignIn = () => {
     setSignInModalOpen(!signInModalOpen);
   };
+
+  const loginEnabled = state.main.lab === 0;
 
   const signInModal = () => {
     return (
