@@ -14,7 +14,7 @@ import ExerciseEnd from "./pages/ExerciseEnd";
 import UpdateID from "./pages/UpdateID";
 import ExpressionMainInstructions from "./pages/ExpressionMainInstructions";
 import ExpressionInstructions from "./pages/ExpressionInstructions";
-import Survey from "./pages/SurveyHandler";
+import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import { resetSystem } from "../../reducers/lab2/actions";
 const { nanoid } = require("nanoid");
 
@@ -214,7 +214,6 @@ const Main = (props) => {
     </div>
   );
 };
-
 Main.propTypes = {
   actions: PropTypes.object,
   state: PropTypes.object,

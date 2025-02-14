@@ -24,6 +24,7 @@ we do not want the user to have a radnom array
 each time they go back and forth between pages.*/
 shuffleArray(teammateAvatars);
 shuffleArray(opponentAvatars);
+import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 
 const Main = () => {
   //Removes header
@@ -46,7 +47,7 @@ const Main = () => {
   const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();
 
   const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
-
+  const year = 25;
   return (
     <>
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
@@ -68,7 +69,7 @@ const Main = () => {
         </div>
         <div
           className={
-            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-[80%] shadow tw-rounded-xl tw-p-6"
+            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-[100%] shadow tw-rounded-xl tw-p-6"
           }
         >
           <Router>
@@ -97,6 +98,13 @@ const Main = () => {
               avatarSelected={opponentAvatarSelected}
               setAvatarSelected={setOpponentAvatarSelected}
               path={"/OpponentSelection"}
+            />
+            <Survey
+              className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
+              path={`/PreSurvey`}
+              type={"pre"}
+              year={year}
+              userID={"1038"} //placeholder
             />
           </Router>
         </div>

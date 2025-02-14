@@ -18,6 +18,7 @@
     "avataaars": "^2.0.0",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
+    "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "mathjs": "^12.3.2",
     "nanoid": "^5.0.7",
