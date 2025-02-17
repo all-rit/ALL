@@ -7,6 +7,7 @@ import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroductio
 import DesignLabIntroduction from "./DesignLabSection/DesignLabIntroduction";
 import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
 import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
+import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -28,6 +29,7 @@ const Main = () => {
           <ScrumIntroduction path={"/ScrumIntro"} />
           <ScrumBoardActivity path={"/ScrumBoardActivity"} />
           <ScrumVelocityReading path={"/ScrumVelocityReading"} />
+          <ScrumVelocityActivity path={"/ScrumVeloActivity"} />
         </Router>
       </Lab0Context.Provider>
     </div>
