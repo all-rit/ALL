@@ -1,8 +1,9 @@
 /* eslint-disable new-cap */
 module.exports = (sequelize, DataTypes) => {
-  const lab0RepairSplit = DataTypes.ENUM(
+  const lab0RepairCategory = DataTypes.ENUM(
       'DESIGNING',
-      'IMPLEMENTING',
+      'BACKEND',
+      'FRONTEND',
   );
 
   // TODO: Add Writing a Lab sections here too
@@ -34,8 +35,8 @@ module.exports = (sequelize, DataTypes) => {
     userid: {
       type: DataTypes.BIGINT,
     },
-    split: {
-      type: lab0RepairSplit,
+    category: {
+      type: lab0RepairCategory,
     },
     section: {
       type: lab0RepairSection,
