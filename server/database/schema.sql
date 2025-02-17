@@ -68,6 +68,8 @@ create table imagine23
     primary key (id)
 );
 
+create type enum_lab0_repair_split as enum ('DESIGNING', 'IMPLEMENTING');
+
 create type enum_lab0_repair_section as enum (
     -- TODO: Add Writing a Lab sections here too
     'LabDataRepair', 
@@ -87,6 +89,7 @@ create type enum_lab0_repair_section_status as enum ('IN_PROGRESS', 'COMPLETED')
 create table lab0_repair (
     id              serial,
     userid          bigint,
+    split           enum_lab0_repair_split,
     section         enum_lab0_repair_section,
     "sectionStatus" enum_lab0_repair_section_status,
     primary key (id) 

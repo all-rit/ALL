@@ -1,5 +1,10 @@
 /* eslint-disable new-cap */
 module.exports = (sequelize, DataTypes) => {
+  const lab0RepairSplit = DataTypes.ENUM(
+      'DESIGNING',
+      'IMPLEMENTING',
+  );
+
   // TODO: Add Writing a Lab sections here too
   const lab0RepairSection = DataTypes.ENUM(
       'LabDataRepair',
@@ -28,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     userid: {
       type: DataTypes.BIGINT,
+    },
+    split: {
+      type: lab0RepairSplit,
     },
     section: {
       type: lab0RepairSection,
