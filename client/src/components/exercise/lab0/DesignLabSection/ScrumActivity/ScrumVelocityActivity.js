@@ -15,12 +15,11 @@ const ScrumVelocityActivity = () => {
     handleNav("ScrumVelocityReading");
   };
   return (
-    <div className="tw-flex tw-flex-col tw-text-left tw-p-5">
-      <h2 className={"tw-title tw-text-left"}> Sprint Planning Activity</h2>
+    <div className="tw-flex tw-flex-col tw-text-left">
+      <h2 className={"tw-title tw-text-left"}> Sprint Velocity Activity</h2>
       <p className={"tw-py-3 tw-body-text"}>
-        In this exercise you will be given the opportunity to plan your
-        development schedule of the lab using the knowledge you’ve learned about
-        SCRUM and Agile development.
+        Now that you&apos;ve split your sprints into more manageable chunks, set
+        up your sprint schedule to reflect the changes you&apos;ve made.
       </p>
       <p className={"tw-body-text"}>
         Using the blocks below, drag and drop the blocks in the correct
