@@ -64,15 +64,16 @@ const DesignLabIntroduction = () => {
         <DragDropGame
           containerStyle={"tw-flex tw-gap-5 tw-p-5 tw-w-full tw-justify-center"}
           colStyle={
-            "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-w-[20rem] tw-h-[20rem] tw-flex-col"
+            "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-flex-1 tw-h-[20rem] tw-flex-col tw-w-full"
           }
           bankStyle={
             "tw-grid tw-grid-cols-3 sm:tw-grid-cols-4 lg:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-4 " +
-            "tw-border-dashed tw-border-black tw-rounded-lg tw-my-5 tw-justify-center tw-min-w-[64rem]"
+            "tw-border-dashed tw-border-black tw-rounded-lg tw-my-5 tw-justify-center tw-w-full tw-m-1"
           }
           cardStyle={
             "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-2 tw-my-1 tw-shadow-sm tw-cursor-grab tw-h-10 tw-w-40 " +
-            "tw-text-black tw-w-full tw-h-[4rem]  tw-flex tw-items-center tw-justify-center"
+            "tw-text-black tw-w-full tw-h-[4rem] tw-flex tw-items-center tw-justify-center "
+            // "sm:tw-text-xs md:tw-text-sm lg:tw-text-md"
           }
           msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-3 tw-my-3 tw-text-white tw-rounded-md`}
           colHeaderStyle={
@@ -85,6 +86,7 @@ const DesignLabIntroduction = () => {
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}
+          colContainerStyle={"tw-w-1/3"}
         />
       </div>
     </div>
