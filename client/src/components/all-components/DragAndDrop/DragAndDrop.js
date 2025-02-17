@@ -39,7 +39,8 @@ const DragDropGame = ({
   containerStyle,
   colStyle,
   bankStyle,
-  cardStyle,
+  colCardStyle,
+  bankCardStyle,
   msgStyle,
   cols,
   initial_bank,
@@ -141,17 +142,17 @@ const DragDropGame = ({
             column={columns[colId]}
             cards={columns[colId].cards}
             colStyle={colStyle}
-            cardStyle={cardStyle}
+            cardStyle={colCardStyle}
             colHeaderStyle={colHeaderStyle}
             colContainerStyle={colContainerStyle}
           />
         ))}
       </div>
-      <div className={"tw-flex tw-items-center"}>
+      <div className={""}>
         <DroppableBank
           bank={bank}
           bankStyle={bankStyle}
-          cardStyle={cardStyle}
+          cardStyle={bankCardStyle}
         />
       </div>
       {message && <p className={msgStyle}>{message}</p>}
@@ -167,7 +168,8 @@ DragDropGame.propTypes = {
   containerStyle: PropTypes.string.isRequired,
   colStyle: PropTypes.string.isRequired,
   bankStyle: PropTypes.string.isRequired,
-  cardStyle: PropTypes.string.isRequired,
+  colCardStyle: PropTypes.string.isRequired,
+  bankCardStyle: PropTypes.string.isRequired,
   msgStyle: PropTypes.string.isRequired,
   cols: PropTypes.arrayOf(
     PropTypes.shape({

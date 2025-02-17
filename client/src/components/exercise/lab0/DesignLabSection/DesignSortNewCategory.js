@@ -17,6 +17,15 @@ const DesignSortNewCategory = () => {
     { id: "column3", title: newCategoryName, cards: [] },
   ];
 
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   const previous_Bank = [
     { id: "card8", content: "Computer Vision" },
     { id: "card4", content: "Focus Order" },
@@ -29,7 +38,7 @@ const DesignSortNewCategory = () => {
   ];
   const newBank = () => {
     newLabTopics.forEach((topic) => {
-      const newId = previous_Bank.length;
+      const newId = previous_Bank.length + 1;
       previous_Bank.push({ id: "card" + newId, content: topic.value });
     });
     return previous_Bank;
@@ -46,11 +55,9 @@ const DesignSortNewCategory = () => {
 
     if (column3) {
       for (let i = 0; i < newLabTopics.length; i++) {
-        column3.cards.push("card" + previous_Bank.length);
+        column3.cards.push("card" + (8 + 1 + i));
       }
     }
-
-    console.log(correctAssignments); // Check after modification
     return correctAssignments;
   };
 
@@ -79,30 +86,35 @@ const DesignSortNewCategory = () => {
         </ol>
       </div>
       <br />
-      <div className=" tw-flex tw-flex-col tw-items-center tw-justify-center">
+      <div className="tw-p-3 tw-h-[40rem]">
         <DragDropGame
           containerStyle={"tw-flex tw-gap-5 tw-p-5 tw-w-full tw-justify-center"}
           colStyle={
             "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-flex-1 tw-h-[20rem] tw-flex-col tw-w-full"
           }
           bankStyle={
-            "tw-grid tw-grid-cols-3 sm:tw-grid-cols-4 lg:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-4 " +
-            "tw-border-dashed tw-border-black tw-rounded-lg tw-my-5 tw-justify-center tw-min-w-full"
+            "tw-grid tw-grid-cols-3 sm:tw-grid-cols-4 lg:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-t-4 " +
+            "tw-border-dashed tw-border-black tw-border-r-0 tw-border-l-0 tw-border-b-0 tw-my-5 tw-justify-center " +
+            "tw-w-full tw-min-w-full tw-max-w-full tw-flex-shrink-0 tw-h-auto tw-min-h-[10rem] " +
+            "after:tw-content-[''] after:tw-block after:tw-w-[12rem] after:tw-h-[6rem] after:tw-opacity-0 after:tw-col-span-1"
           }
-          cardStyle={
-            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-2 tw-my-1 tw-shadow-sm tw-cursor-grab tw-h-10 tw-w-40 " +
-            "tw-text-black tw-w-full tw-h-[4rem] tw-flex tw-items-center tw-justify-center " +
-            "sm:tw-text-xs md:tw-text-sm lg:tw-text-md"
+          colCardStyle={
+            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-py-4 tw-my-1 tw-shadow-sm tw-cursor-grab" +
+            "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto  "
           }
-          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-3 tw-my-3 tw-text-white tw-rounded-md`}
+          bankCardStyle={
+            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-4 tw-m-2 tw-shadow-sm tw-cursor-grab " +
+            "tw-text-black 2xl:tw-w-[16rem] xl:tw-w-[12rem] lg:tw-w-[12rem] tw-h-[4rem] tw-flex tw-items-center tw-justify-center"
+          }
+          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-py-4 tw-my-1 tw-text-white tw-rounded-md`}
           colHeaderStyle={
             "tw-flex tw-items-center tw-justify-center tw-h-[6rem] tw-text-center tw-px-4 tw-py-4 " +
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"
           }
           colContainerStyle={"tw-w-1/3"}
           cols={Columns}
-          initial_bank={Array.from(newBank)}
-          correct_assignments={Array.from(newCorrectAssignments)}
+          initial_bank={shuffleArray(newBank())}
+          correct_assignments={newCorrectAssignments()}
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}
