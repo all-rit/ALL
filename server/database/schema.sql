@@ -68,9 +68,9 @@ create table imagine23
     primary key (id)
 );
 
-create type enum_lab0_repair_category as enum ('DESIGNING', 'BACKEND', 'FRONTEND');
+create type enum_lab0_progress_category as enum ('DESIGNING', 'BACKEND', 'FRONTEND');
 
-create type enum_lab0_repair_section as enum (
+create type enum_lab0_progress_section as enum (
     -- TODO: Add Writing a Lab sections here too
     'LabDataRepair', 
     'SchemaRepair', 
@@ -84,9 +84,9 @@ create type enum_lab0_repair_section as enum (
     'FrontendTipsTricks'
 );
 
-create type enum_lab0_repair_section_status as enum ('IN_PROGRESS', 'COMPLETED');
+create type enum_lab0_progress_section_status as enum ('IN_PROGRESS', 'COMPLETED');
 
-create table lab0_repair (
+create table lab0_progress (
     id              serial,
     userid          bigint,
     category        enum_lab0_repair_category,
