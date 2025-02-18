@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 const LoginBody = (props) => {
   const { state } = useMainStateContext();
   const loginEnabled =
-    state.main.lab === 0 ||
+    state.main.lab === 99 ||
     getExerciseState(state, props.state) === EXERCISE_IDLE ||
     state.main.body !== 2;
 
