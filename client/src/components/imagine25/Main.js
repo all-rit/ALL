@@ -104,7 +104,7 @@ const Main = () => {
               path={`/PreSurvey`}
               type={"pre"}
               year={year}
-              userID={"1038"} //placeholder
+              userID={sessionStorage.getItem("userID")} //placeholder
             />
           </Router>
         </div>
