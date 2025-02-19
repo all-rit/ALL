@@ -115,8 +115,6 @@ const DesignNewCategory = () => {
                     value={item.value}
                   />
                   {i !== 0 && (
-                    // <button onClick={() => deleteInput(i)}
-                    //         className="tw-ml-2 tw-text-red-500">✖</button>
                     <div
                       onClick={() => deleteInput(i)}
                       className={"tw-w-10 tw-cursor-pointer"}
