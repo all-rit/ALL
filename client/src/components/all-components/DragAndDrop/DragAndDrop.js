@@ -41,6 +41,7 @@ const DragDropGame = ({
   bankStyle,
   cardStyle,
   msgStyle,
+  gameStyle,
   cols,
   initial_bank,
   correct_assignments,
@@ -127,20 +128,28 @@ const DragDropGame = ({
 
   return (
     <DndContext onDragEnd={onDragEnd}>
-      <div className={containerStyle}>
-        {Object.keys(columns).map((colId) => (
-          <DroppableColumn
-            key={colId}
-            column={columns[colId]}
-            cards={columns[colId].cards}
-            colStyle={colStyle}
-            cardStyle={cardStyle}
-          />
-        ))}
+      <div className={gameStyle}>
+        <div className={containerStyle}>
+          {Object.keys(columns).map((colId) => (
+            <DroppableColumn
+              key={colId}
+              column={columns[colId]}
+              cards={columns[colId].cards}
+              colStyle={colStyle}
+              cardStyle={cardStyle}
+            />
+          ))}
+        </div>
+        <DroppableBank
+          bank={bank}
+          bankStyle={bankStyle}
+          cardStyle={cardStyle}
+        />
       </div>
-      <DroppableBank bank={bank} bankStyle={bankStyle} cardStyle={cardStyle} />
-      <LabButton onClick={verifyPlacement} label={"Submit"} />
-      {message && <p className={msgStyle}>{message}</p>}
+      <div className={"tw-w-full tw-flex tw-flex-col tw-items-center"}>
+        {message && <p className={msgStyle}>{message}</p>}
+        <LabButton onClick={verifyPlacement} label={"Submit"} />
+      </div>
     </DndContext>
   );
 };
@@ -151,6 +160,7 @@ DragDropGame.propTypes = {
   bankStyle: PropTypes.string.isRequired,
   cardStyle: PropTypes.string.isRequired,
   msgStyle: PropTypes.string.isRequired,
+  gameStyle: PropTypes.string,
   cols: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,

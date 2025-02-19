@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Lab2Color from "../../../../assets/images/lab0/Lab2Color.png";
 import Lab2Colorblind from "../../../../assets/images/lab0/Lab2ColorBlind.png";
 import Lab2Codeblock from "../../../../assets/images/lab0/Lab2Codeblock.png";
+import LabButton from "../../../all-components/LabButton";
+import Lab0Context from "../Lab0Context";
 
 const ExperientialIntroduction = () => {
+  const { handleNav } = useContext(Lab0Context);
+
+  const navToExercise = () => {
+    handleNav("ExperientialExercise");
+  };
+
   return (
-    <div className={"tw-flex tw-flex-col tw-text-left"}>
+    <div className={"tw-flex tw-flex-col tw-text-left tw-body-text"}>
       <h2 className={"tw-title"}>Experiential Exercises Introduction</h2>
       <p className={"tw-py-6"}>
         The backbone of the Accessible Learning Labs experience and learning
@@ -50,6 +58,14 @@ const ExperientialIntroduction = () => {
           {" "}
           Lab 2 Code Block{" "}
         </p>
+      </div>
+      <p>
+        Now its your turn to brainstorm and design an experiential exercise for
+        the lab idea that you came up with in the previous exercise. Click the
+        next button to continue.
+      </p>
+      <div className={"tw-flex tw-justify-center tw-py-6"}>
+        <LabButton label={"Next"} onClick={navToExercise} />
       </div>
     </div>
   );

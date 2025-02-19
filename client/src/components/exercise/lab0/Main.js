@@ -4,6 +4,8 @@ import SelectExercise from "./SelectExercise";
 import Lab0Context from "./Lab0Context";
 import { EXERCISE_STATES } from "../../../constants/lab0";
 import ExperientialIntroduction from "./DesignALab/ExperientialIntroduction";
+import CreateExperientialExercise from "./DesignALab/CreateExperientialExercise";
+import DesignLabDecision from "./DesignALab/DesignLabDecision";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -21,7 +23,9 @@ const Main = () => {
       >
         <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
           <SelectExercise default path={"/*"} />
+          <DesignLabDecision path={"/LabDecision"} />
           <ExperientialIntroduction path={"/ExperientialIntro"} />
+          <CreateExperientialExercise path={"/ExperientialExercise"} />
         </Router>
       </Lab0Context.Provider>
     </>

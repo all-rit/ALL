@@ -8,7 +8,7 @@ const DroppableColumn = ({ column, cards, colStyle, cardStyle }) => {
 
   return (
     <div ref={setNodeRef} className={colStyle}>
-      <h2 className="column-title">{column.title}</h2>
+      <h2 className="tw-body-text">{column.title}</h2>
       {cards.map((card) => (
         <DraggableCard key={card.id} card={card} cardStyle={cardStyle} />
       ))}
