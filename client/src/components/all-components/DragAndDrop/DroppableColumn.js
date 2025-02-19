@@ -34,6 +34,7 @@ DroppableColumn.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
+      isCorrect: PropTypes.bool,
     }),
   ).isRequired,
   colStyle: PropTypes.string.isRequired,

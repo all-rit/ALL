@@ -1,9 +1,9 @@
 import { useDraggable } from "@dnd-kit/core";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const DraggableCard = ({ card, cardStyle }) => {
-  // const { id, content } = card;
+  const [borderColor, setBorderColor] = useState("");
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: card.id,
@@ -13,13 +13,21 @@ const DraggableCard = ({ card, cardStyle }) => {
     ? { transform: `translate(${transform.x}px, ${transform.y}px)` }
     : {};
 
+  useEffect(() => {
+    if (!card.isCorrect) {
+      setBorderColor("tw-border-error tw-shadow-2xl tw-shadow-error");
+    } else {
+      setBorderColor("");
+    }
+  }, [card.isCorrect]);
+
   return (
     <div
       ref={setNodeRef}
       {...listeners}
       {...attributes}
       style={style}
-      className={`${card.color} ${cardStyle}`}
+      className={`${card.color} ${cardStyle} ${borderColor} `}
     >
       {card.content}
     </div>
@@ -31,6 +39,7 @@ DraggableCard.propTypes = {
     id: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     color: PropTypes.string,
+    isCorrect: PropTypes.bool,
   }).isRequired,
   cardStyle: PropTypes.string.isRequired,
 };

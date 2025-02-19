@@ -27,19 +27,23 @@ const DesignSortNewCategory = () => {
   };
 
   const previous_Bank = [
-    { id: "card8", content: "Computer Vision" },
-    { id: "card4", content: "Focus Order" },
-    { id: "card1", content: "Dyspraxia" },
-    { id: "card6", content: "Natural Language Processing" },
-    { id: "card7", content: "Neural Networks" },
-    { id: "card3", content: "Alt Text" },
-    { id: "card5", content: "Federated Learning" },
-    { id: "card2", content: "Photosensitivity" },
+    { id: "card8", content: "Computer Vision", isCorrect: true },
+    { id: "card4", content: "Focus Order", isCorrect: true },
+    { id: "card1", content: "Dyspraxia", isCorrect: true },
+    { id: "card6", content: "Natural Language Processing", isCorrect: true },
+    { id: "card7", content: "Neural Networks", isCorrect: true },
+    { id: "card3", content: "Alt Text", isCorrect: true },
+    { id: "card5", content: "Federated Learning", isCorrect: true },
+    { id: "card2", content: "Photosensitivity", isCorrect: true },
   ];
   const newBank = () => {
     newLabTopics.forEach((topic) => {
       const newId = previous_Bank.length + 1;
-      previous_Bank.push({ id: "card" + newId, content: topic.value });
+      previous_Bank.push({
+        id: "card" + newId,
+        content: topic.value,
+        isCorrect: true,
+      });
     });
     return previous_Bank;
   };
@@ -90,7 +94,7 @@ const DesignSortNewCategory = () => {
         <DragDropGame
           containerStyle={"tw-flex tw-gap-5 tw-p-5 tw-w-full tw-justify-center"}
           colStyle={
-            "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-flex-1 tw-h-[20rem] tw-flex-col tw-w-full"
+            "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-flex-1 tw-min-h-[20rem] tw-pb-4 tw-flex tw-flex-col tw-w-full"
           }
           bankStyle={
             "tw-grid tw-grid-cols-3 sm:tw-grid-cols-4 lg:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-t-4 " +

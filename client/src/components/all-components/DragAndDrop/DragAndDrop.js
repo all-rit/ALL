@@ -15,9 +15,9 @@ import LabButton from "../LabButton";
  * ];
  *
  * const initialBank = [
- *   { id: "card1", content: "Card 1" },
- *   { id: "card2", content: "Card 2" },
- *   { id: "card3", content: "Card 3" },
+ *   { id: "card1", content: "Card 1", isCorrect: true },
+ *   { id: "card2", content: "Card 2", isCorrect: true },
+ *   { id: "card3", content: "Card 3", isCorrect: true },
  * ];
  *
  * const correctAssignments = [
@@ -119,18 +119,56 @@ const DragDropGame = ({
   };
 
   const verifyPlacement = () => {
+    let incorrectCards = [];
+    let updatedColumns = { ...columns };
+
+    // Don't let them submit without placing all the cards
+    if (bank.length !== 0) {
+      setMessage("Please place all cards before submitting.");
+      return;
+    }
+
     for (const [columnId, currentCol] of Object.entries(correctAssignments)) {
-      const placedCards = columns[columnId].cards.map((card) => card.id);
-      if (
-        placedCards.sort().toString() !== currentCol.cards.sort().toString()
-      ) {
-        setMessage("Incorrect placement. Try again!");
-        return;
+      const placedCards = updatedColumns[columnId].cards;
+      const correctCards = currentCol.cards;
+
+      // Find misplaced card objects
+      const misplaced = placedCards.filter(
+        (card) => !correctCards.includes(card.id),
+      );
+
+      placedCards.forEach((card) => {
+        if (correctCards.includes(card.id)) {
+          card.isCorrect = true;
+        }
+      });
+
+      if (misplaced.length > 0) {
+        incorrectCards = incorrectCards.concat(misplaced);
       }
     }
+    if (incorrectCards.length > 0) {
+      setMessage("Incorrect placement. Try again!");
+
+      incorrectCards.forEach((card) => {
+        card.isCorrect = false;
+      });
+
+      setColumns(updatedColumns);
+      console.log(updatedColumns);
+      return;
+    }
+
+    for (const columnId in updatedColumns) {
+      updatedColumns[columnId].cards.forEach((card) => {
+        card.isCorrect = true; // Revert all cards to correct state
+      });
+    }
+
     setMessage("Correct placement! Well done!");
     setSuccess(true);
     setCorrect(true);
+    setColumns(updatedColumns);
   };
 
   return (
