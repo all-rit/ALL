@@ -1,9 +1,9 @@
 const db = require('../../database');
 
 /**
- * TBD
- * @param {number} userID TBD
- * @return {Object} TBD
+ * Retrieves a user's progress from the database grouped by category.
+ * @param {number} userID The user id to filter by
+ * @return {Object} Contains information about their completion of the lab.
  */
 async function getProgress(userID) {
   try {
@@ -29,11 +29,14 @@ async function getProgress(userID) {
 }
 
 /**
- * TBD
- * @param {number} userID TBD
- * @param {string} category TBD
- * @param {string} section TBD
- * @param {string} sectionStatus TBD
+ * Submits a progress update for a user's section of the lab.
+ * If the section has already been attempted by the user,
+ * then the sectionStatus is replaced with this request.
+ * @param {number} userID The user id
+ * @param {string} category The category of the section
+ * @param {string} section The section identifier
+ * @param {string} sectionStatus The status of the section,
+ * either IN_PROGRESS or COMPLETED
  */
 async function submitProgress(userID, category, section, sectionStatus) {
   try {
@@ -47,9 +50,14 @@ async function submitProgress(userID, category, section, sectionStatus) {
         sectionStatus: sectionStatus,
       },
     }).then((result) => {
-      if (result[1]) return;
-      result[0].sectionStatus = sectionStatus;
-      result[0].save();
+      if (result[1]) {
+        // A new record was just created, no update necessary
+        return;
+      } else if (result[0].sectionStatus !== sectionStatus) {
+        // Record found but not created and sectionStatus differs
+        result[0].sectionStatus = sectionStatus;
+        result[0].save();
+      }
     });
   } catch (error) {
     console.log(error);

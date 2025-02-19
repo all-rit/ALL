@@ -1,9 +1,10 @@
 const ProgressService = require('../../services/lab0/ProgressService');
 
 /**
- * TBD
- * @param {Object} req TBD
- * @return {Object} The user's progress grouped by the section categories
+ * Parses the request's query parameters,
+ * and passes the userID to the ProgressService.
+ * @param {Object} req The HTTP request
+ * @return {Object} The user's progress grouped by section category
  */
 async function getProgress(req) {
   try {
@@ -15,8 +16,9 @@ async function getProgress(req) {
 }
 
 /**
- * TBD
- * @param {Object} req TBD
+ * Parses the request's body, and passes the
+ * data to the ProgressService.
+ * @param {Object} req The HTTP request
  */
 async function submitProgress(req) {
   try {
