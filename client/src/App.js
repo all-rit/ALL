@@ -102,7 +102,7 @@ const App = () => {
           labID={lab}
           isImagine={isImagine}
         />
-        <ExerciseLab0 path={"/Lab0/Exercise"} user={state.main.user} />
+        <ExerciseLab0 path={"/Lab0/Exercise/*"} user={state.main.user} />
         <ExerciseLab1 path="/Lab1/Exercise" user={state.main.user} />
         <ExerciseLab2
           path="/Lab2/Exercise"
