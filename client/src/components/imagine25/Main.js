@@ -10,7 +10,7 @@ import {
   teammateAvatars,
 } from "src/constants/imagine25/Avatar";
 import GalagaInstructions from "./pages/GalagaInstruction";
-import Galaga from "./pages/Galaga";
+import Galaga from "./pages/Game";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -45,9 +45,9 @@ const Main = () => {
     skinColor: "Light",
   });
 
-  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();
+  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState(-1);
 
-  const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
+  const [opponentAvatarSelected, setOpponentAvatarSelected] = useState(-1);
 
   return (
     <>
