@@ -7,6 +7,20 @@ export const Frame = (content, nextOnClick, prevOnClick) => {
     "tw-w-[35vw] tw-h-[5px] tw-bg-[#0045d5] tw-my-[15px] tw-mx-auto border";
   const yellowLine =
     "tw-w-[5px] xs:tw-h-[325px] sm:tw-h-[350px] xl:tw-h-[400px] 2xl:tw-h-[425px] tw-bg-[#ffc335] tw-my-[15px] tw-mx-auto";
+
+  const nextButton =
+    nextOnClick !== null ? (
+      <ALLButton onClick={nextOnClick} label="Next" />
+    ) : (
+      <></>
+    );
+  const prevButton =
+    prevOnClick !== null ? (
+      <ALLButton onClick={prevOnClick} label="Previous" />
+    ) : (
+      <></>
+    );
+
   return (
     <>
       <div className={blueLine}></div>
@@ -19,8 +33,8 @@ export const Frame = (content, nextOnClick, prevOnClick) => {
       </div>
       <div className={blueLine}></div>
       <div className="tw-flex tw-justify-center tw-space-x-[35vw] md:tw-pt-4 xl:tw-pt-3">
-        <ALLButton onClick={prevOnClick} label="Previous" />
-        <ALLButton onClick={nextOnClick} label="Next" />
+        {prevButton}
+        {nextButton}
       </div>
     </>
   );
