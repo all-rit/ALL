@@ -9,6 +9,9 @@ const UserLabController = require('../controllers/UserLabController');
 const PageController = require('../controllers/PageController');
 const GroupController = require('../controllers/GroupController');
 
+// LAB0 Controllers
+const ProgressControllerLab0 = require('../controllers/lab0/ProgressController');
+
 // LAB1 Controllers
 const ExerciseControllerLab1 = require('../controllers/lab1/ExerciseController');
 const RepairControllerLab1 = require('../controllers/lab1/RepairController');
@@ -97,6 +100,15 @@ router.post('/:userID/completeReading', UserLabController.userCompleteReading);
 router.post('/:userID/completeExercise', UserLabController.userCompleteExercise);
 router.post('/:userID/completeReinforcement', UserLabController.userCompleteReinforcement);
 router.post('/:userID/completeQuiz', UserLabController.userCompleteQuiz);
+
+// Progress Routes
+router.get('/lab0/progress/:userID', async function(req, res) {
+  res.json(await ProgressControllerLab0.getProgress(req));
+});
+router.post('/lab0/progress/submit', async function(req, res) {
+  await ProgressControllerLab0.submitProgress(req);
+  res.sendStatus(200);
+});
 
 // Exercise Routes
 router.post('/lab1/exercise/start', ExerciseControllerLab1.createExercise);
