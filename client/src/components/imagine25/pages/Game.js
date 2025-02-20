@@ -5,11 +5,16 @@ const Game = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds - 1);
+      setSeconds((prevSeconds) => {
+        if (prevSeconds === 1) {
+          clearInterval(timer);
+        }
+        return prevSeconds - 1;
+      });
     }, 1000);
 
     return () => clearInterval(timer);
-  });
+  }, []);
 
   const sizeStyling = " tw-w-[800px] tw-h-[600px]";
   return (
