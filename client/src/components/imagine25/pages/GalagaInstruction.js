@@ -16,7 +16,7 @@ const GalagaInstructions = () => {
             team with the highest combined scores wins!
           </p>
           <br />
-          {/*&apos; is just a apostrophe */}
+          {/*&apos; is just a apostrophe --> " ' "*/}
           <p className={fontSize}>
             Move left and right using the arrows and press space to shoot down
             enemy space ships! Don&apos;t get hit by one or it&apos;s game over!

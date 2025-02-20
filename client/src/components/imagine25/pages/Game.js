@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 const Game = () => {
   const [seconds, setSeconds] = useState(60);
 
+  //When page load timer starts that counts down from 60->0
   useEffect(() => {
     const timer = setInterval(() => {
       setSeconds((prevSeconds) => {
@@ -16,9 +17,10 @@ const Game = () => {
     return () => clearInterval(timer);
   }, []);
 
+  //This is the sizing of both the div container and game
   const sizeStyling = " tw-w-[800px] tw-h-[600px]";
   return (
-    //onClick keeps tract of which part of frame user has clicked on
+    //flex container used to venter game vertically
     <div
       className={
         "tw-flex tw-justify-left tw-items-center tw-relative" + sizeStyling
