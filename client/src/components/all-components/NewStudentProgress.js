@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import BrandedALLModal from "./BrandedALLModal";
 import PropTypes from "prop-types";
-import LabRow from "../body/profilepage/components/LabRow";
+import ALLCardRow from "../all-components/ALLCardRow";
 import ALLButton from "./ALLButton";
+import EnrolledStudentsTable from "../body/profilepage/EnrolledStudentsTable";
 import { SUCCESS } from "../../constants/notifications";
 import useMainStateContext from "../../reducers/MainContext";
 
@@ -61,13 +62,23 @@ const NewStudentProgress = (props) => {
           {assignedLabs ? (
             assignedLabs.map((lab, labid) => {
               return (
-                <LabRow
+                <ALLCardRow
                   key={labid}
-                  lab={lab}
-                  studentProgress={true}
-                  group={group}
-                  enrolledStudents={enrolledStudents}
-                />
+                  title={lab.labName}
+                  imageURL={`/img/lab_thumbnails/${lab.thumbnailImageURL}`}
+                  circlesLabel="Difficulty"
+                  circles={3}
+                  circlesFilled={lab.difficulty}
+                  mode="open"
+                  buttonLabels={["Open List", "Close List"]}
+                  buttonStyle="tw-cursor-pointer tw-bg-primary-yellow tw-text-darkGray tw-font-poppins tw-px-3"
+                >
+                  <EnrolledStudentsTable
+                    groupid={group.id}
+                    enrolledStudents={enrolledStudents}
+                    lab={lab}
+                  />
+                </ALLCardRow>
               );
             })
           ) : (

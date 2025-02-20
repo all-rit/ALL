@@ -8,24 +8,20 @@ const ALLCardRow = (props) => {
     circlesLabel,
     circles,
     circlesFilled,
-    buttonLabel,
     mode,
+    buttonLabels,
+    buttonStyle,
     onClick,
   } = props;
 
-  const [expanded, setExpanded] = useState(false);
-  const toggleExpanded = () => {
-    setExpanded(!expanded);
+  const [open, setOpen] = useState(false);
+  const toggleOpen = () => {
+    setOpen(!open);
   };
 
   return (
     <div className="tw-flex tw-flex-col tw-w-full tw-my-3">
       <div className="tw-shadow-lg tw-w-full tw-h-[5rem] tw-flex tw-flex-row tw-rounded-lg tw-relative">
-        <p>
-          {buttonLabel}
-          {mode}
-          {onClick}
-        </p>
         {/* Left */}
         <div
           className="tw-w-1/12 tw-object-cover tw-rounded-l-lg tw-align-middle"
@@ -55,26 +51,41 @@ const ALLCardRow = (props) => {
           <p className={"tw-font-poppins tw-font-bold tw-text-md"}> {title}</p>
         </div>
         {/* Right */}
-        {mode === "expand" && (
-          <div
-            className="tw-absolute tw-right-0 tw-top-[20%] tw-cursor-pointer tw-bg-primary-yellow tw-text-darkGray tw-font-poppins tw-px-3"
-            onClick={() => toggleExpanded()}
-          >
-            <div>{expanded ? "Close List" : "Open List"}</div>
-          </div>
-        )}
+        <div className="tw-absolute tw-right-0 tw-top-5">
+          {mode === "open" && (
+            <div className={buttonStyle} onClick={() => toggleOpen()}>
+              <div>{open ? buttonLabels[1] : buttonLabels[0]}</div>
+            </div>
+          )}
+          {mode === "custom" && (
+            <button className={buttonStyle} onClick={onClick}>
+              {buttonLabels[0]}
+            </button>
+          )}
+        </div>
       </div>
+      {/* Opened Component */}
+      {mode === "open" && open && (
+        <div className="tw-w-full tw-bg-white tw-shadow-lg tw-shadow-t-none tw-overflow-hidden">
+          {React.cloneElement(props.children, {
+            open: open,
+            toggleOpen: toggleOpen,
+          })}
+        </div>
+      )}
     </div>
   );
 };
 
 ALLCardRow.propTypes = {
+  children: PropTypes.any,
   title: PropTypes.string,
   imageURL: PropTypes.string,
   circlesLabel: PropTypes.string,
   circles: PropTypes.number,
   circlesFilled: PropTypes.number,
-  buttonLabel: PropTypes.string,
+  buttonLabels: PropTypes.array,
+  buttonStyle: PropTypes.string,
   mode: PropTypes.string,
   onClick: PropTypes.func,
 };

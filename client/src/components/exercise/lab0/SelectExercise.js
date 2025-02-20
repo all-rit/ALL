@@ -29,14 +29,20 @@ const SelectExercise = () => {
           <strong>How to Develop a Lab</strong> button.
         </p>
       </div>
+
+      {/* TEMPORARY FOR TESTING */}
       <ALLCardRow
         title="Testing 123"
         imageURL={"/img/lab_thumbnails/wrench.jpg"}
         circlesLabel="Completed"
         circles={1}
         circlesFilled={1}
-        mode="expand"
+        mode="custom"
+        buttonLabels={["Jump To", "Jump To"]}
+        buttonStyle="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+        onClick={() => alert("Clicked!")}
       />
+
       <div
         className={"tw-flex tw-flex-row tw-gap-x-3 tw-justify-center tw-py-6"}
       >
