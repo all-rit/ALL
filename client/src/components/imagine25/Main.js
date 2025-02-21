@@ -91,7 +91,7 @@ const Main = () => {
             />
             <AvatarSelection
               avatars={opponentAvatars}
-              imagineService={ImagineService.postOpponenetSelection}
+              imagineService={ImagineService.postOpponentSelection}
               title={"Opponent"}
               nextNavigation={() => alert("no navigation implemented ;)")}
               prevNavigation={() => navigate("/Imagine2025/TeammateSelection")}
