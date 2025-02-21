@@ -1,6 +1,7 @@
 import { useDraggable } from "@dnd-kit/core";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { twMerge } from "tailwind-merge";
 
 const DraggableCard = ({ card, cardStyle }) => {
   const [borderColor, setBorderColor] = useState("");
@@ -15,10 +16,7 @@ const DraggableCard = ({ card, cardStyle }) => {
 
   useEffect(() => {
     if (!card.isCorrect) {
-      console.log(card);
-      setBorderColor(
-        "tw-border-r-error tw-border-l-error tw-border-b-error tw-border-t-error tw-shadow-2xl tw-shadow-error",
-      );
+      setBorderColor("tw-border-[#d03c3c] tw-shadow-2xl tw-shadow-error");
     } else {
       setBorderColor("");
     }
@@ -30,7 +28,7 @@ const DraggableCard = ({ card, cardStyle }) => {
       {...listeners}
       {...attributes}
       style={style}
-      className={`${card.color} ${cardStyle} ${borderColor}`}
+      className={twMerge(`${card.color} ${cardStyle}`, borderColor)}
     >
       {card.content}
     </div>
