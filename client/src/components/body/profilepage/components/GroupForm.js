@@ -40,6 +40,7 @@ const GroupForm = (props) => {
   const [checkedLabs, setCheckedLabs] = useState({});
   const [color, setColor] = useState(groupColor || "");
   const [tooltipOpen, setTooltipOpen] = useState(null);
+  const [openLabModal, setOpenLabModal] = useState(null);
 
   const cardColors = [
     "blue",
@@ -244,11 +245,13 @@ const GroupForm = (props) => {
                   circlesLabel="Difficulty"
                   circles={3}
                   circlesFilled={lab.difficulty}
-                  mode="open"
-                  buttonLabels={["More Information", "More Information"]}
+                  buttonLabel="More Information"
                   buttonStyle="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                  onClick={() => setOpenLabModal(lab.id)}
                 >
                   <InfoModal
+                    open={openLabModal === lab.id}
+                    toggleOpen={() => setOpenLabModal(null)}
                     labName={lab.labName}
                     fullDescription={lab.fullDescription}
                     learningObjectives={lab.learningObjectives}

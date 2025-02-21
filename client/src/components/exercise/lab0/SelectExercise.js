@@ -30,7 +30,7 @@ const SelectExercise = () => {
         </p>
       </div>
 
-      {/* TEMPORARY FOR TESTING */}
+      {/* TEMPORARY FOR TESTING THIS PR */}
       <ALLCardRow
         title="Testing 123"
         imageURL={"/img/lab_thumbnails/wrench.jpg"}
@@ -38,7 +38,7 @@ const SelectExercise = () => {
         circles={1}
         circlesFilled={1}
         mode="custom"
-        buttonLabels={["Jump To", "Jump To"]}
+        buttonLabel="Jump To"
         buttonStyle="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
         onClick={() => alert("Clicked!")}
       />

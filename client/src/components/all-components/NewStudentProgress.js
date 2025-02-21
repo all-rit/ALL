@@ -12,9 +12,16 @@ const NewStudentProgress = (props) => {
   const { actions } = useMainStateContext();
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [labsOpen, setLabsOpen] = useState(assignedLabs.map(() => false));
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
+  };
+
+  const toggleLabOpen = (index) => {
+    let newLabsOpen = labsOpen.slice();
+    newLabsOpen[index] = !newLabsOpen[index];
+    setLabsOpen(newLabsOpen);
   };
 
   const copyToClipboard = () => {
@@ -69,15 +76,17 @@ const NewStudentProgress = (props) => {
                   circlesLabel="Difficulty"
                   circles={3}
                   circlesFilled={lab.difficulty}
-                  mode="open"
-                  buttonLabels={["Open List", "Close List"]}
-                  buttonStyle="tw-cursor-pointer tw-bg-primary-yellow tw-text-darkGray tw-font-poppins tw-px-3"
+                  buttonLabel={labsOpen[labid] ? "Close List" : "Open List"}
+                  buttonStyle="tw-cursor-pointer tw-border-none tw-bg-primary-yellow tw-text-darkGray tw-font-poppins tw-px-3"
+                  onClick={() => toggleLabOpen(labid)}
                 >
-                  <EnrolledStudentsTable
-                    groupid={group.id}
-                    enrolledStudents={enrolledStudents}
-                    lab={lab}
-                  />
+                  {labsOpen[labid] && (
+                    <EnrolledStudentsTable
+                      groupid={group.id}
+                      enrolledStudents={enrolledStudents}
+                      lab={lab}
+                    />
+                  )}
                 </ALLCardRow>
               );
             })
