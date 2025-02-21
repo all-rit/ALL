@@ -104,13 +104,13 @@ const DesignSortNewCategory = () => {
           }
           colCardStyle={
             "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-py-4 tw-my-1 tw-shadow-sm tw-cursor-grab" +
-            "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto  "
+            "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto "
           }
           bankCardStyle={
             "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-4 tw-m-2 tw-shadow-sm tw-cursor-grab " +
             "tw-text-black 2xl:tw-w-[16rem] xl:tw-w-[12rem] lg:tw-w-[12rem] tw-h-[4rem] tw-flex tw-items-center tw-justify-center"
           }
-          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-py-4 tw-my-1 tw-text-white tw-rounded-md`}
+          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-py-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-8`}
           colHeaderStyle={
             "tw-flex tw-items-center tw-justify-center tw-h-[6rem] tw-text-center tw-px-4 tw-py-4 " +
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"

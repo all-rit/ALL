@@ -150,7 +150,7 @@ const DesignNewCategory = () => {
         <div className={"tw-w-full tw-justify-center tw-items-center tw-pt-10"}>
           {message && (
             <p
-              className={`tw-text-2xl ${submitted ? "tw-bg-success" : "tw-bg-error"} tw-py-4 tw-my-1 tw-text-white tw-rounded-md tw-whitespace-pre-line`}
+              className={`tw-text-2xl ${submitted ? "tw-bg-success" : "tw-bg-error"} tw-py-4 tw-my-1 tw-text-white tw-rounded-md tw-whitespace-pre-line tw-mb-8`}
             >
               {message}
             </p>
