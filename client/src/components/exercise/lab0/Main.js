@@ -11,6 +11,10 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
+  const [labIdeasComplete, setLabIdeasComplete] = useState(false);
+  const [experientialExerciseComplete, setExperientialExerciseComplete] =
+    useState(false);
+  const [sprintPlanningComplete, setSprintPlanningComplete] = useState(false);
 
   const handleNav = (route) => {
     navigate(`/Lab0/Exercise/${route}`);
@@ -19,7 +23,17 @@ const Main = () => {
   return (
     <>
       <Lab0Context.Provider
-        value={{ exerciseState, setExerciseState, handleNav }}
+        value={{
+          exerciseState,
+          setExerciseState,
+          handleNav,
+          labIdeasComplete,
+          setLabIdeasComplete,
+          experientialExerciseComplete,
+          setExperientialExerciseComplete,
+          sprintPlanningComplete,
+          setSprintPlanningComplete,
+        }}
       >
         <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
           <SelectExercise default path={"/*"} />

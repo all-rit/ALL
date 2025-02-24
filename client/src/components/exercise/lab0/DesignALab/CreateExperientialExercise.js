@@ -10,10 +10,15 @@ import Lab0Context from "../Lab0Context";
 const CreateExperientialExercise = () => {
   const [success, setSuccess] = useState(false);
 
-  const { handleNav } = useContext(Lab0Context);
+  const { handleNav, setExperientialExerciseComplete } =
+    useContext(Lab0Context);
 
   const navigateNext = () => {
     handleNav("ScrumIntro");
+  };
+
+  const updateExerciseComplete = () => {
+    setExperientialExerciseComplete(true);
   };
 
   return (
@@ -48,6 +53,7 @@ const CreateExperientialExercise = () => {
         setSuccess={setSuccess}
         success={success}
         handleNav={navigateNext}
+        updateExerciseState={updateExerciseComplete}
       />
     </div>
   );

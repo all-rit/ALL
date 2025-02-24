@@ -48,6 +48,7 @@ const DragDropGame = ({
   handleNav,
   success,
   setSuccess,
+  updateExerciseState,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initial_bank);
@@ -128,6 +129,7 @@ const DragDropGame = ({
     }
     setMessage("Correct placement! Well done!");
     setButtonLabel("Next");
+    updateExerciseState();
     setSuccess(true);
   };
 
@@ -194,6 +196,7 @@ DragDropGame.propTypes = {
       cards: PropTypes.array.isRequired,
     }),
   ),
+  updateExerciseState: PropTypes.func,
   handleNav: PropTypes.func.isRequired,
   success: PropTypes.bool.isRequired,
   setSuccess: PropTypes.func.isRequired,
