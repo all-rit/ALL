@@ -91,7 +91,7 @@ const Main = () => {
             />
             <AvatarSelection
               avatars={opponentAvatars}
-              imagineService={ImagineService.postOpponenetSelection}
+              imagineService={ImagineService.postOpponentSelection}
               title={"Opponent"}
               nextNavigation={() => alert("no navigation implemented ;)")}
               prevNavigation={() => navigate("/Imagine2025/TeammateSelection")}
@@ -104,7 +104,7 @@ const Main = () => {
               path={`/PreSurvey`}
               type={"pre"}
               year={year}
-              userID={"1038"} //placeholder
+              userID={sessionStorage.getItem("userID")}
             />
           </Router>
         </div>

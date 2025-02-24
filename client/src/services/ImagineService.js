@@ -112,7 +112,7 @@ const ImagineService = {
       },
     );
   },
-  postOpponenetSelection: async (userID, opponentAvatar, year) => {
+  postOpponentSelection: async (userID, opponentAvatar, year) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL +
         `/imagine${year}/opponentAvatarSelection`,
