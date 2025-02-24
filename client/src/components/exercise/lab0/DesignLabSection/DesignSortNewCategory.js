@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Lab0Context from "../Lab0Context";
 import DragDropGame from "../../../all-components/DragAndDrop/DragAndDrop";
+import _ from "lodash";
 
 const DesignSortNewCategory = () => {
   const { newCategoryName, newLabTopics, handleNav } = useContext(Lab0Context);
@@ -17,14 +18,14 @@ const DesignSortNewCategory = () => {
     { id: "column3", title: newCategoryName, cards: [] },
   ];
 
-  const shuffleArray = (array) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
+  // const shuffleArray = (array) => {
+  //   const shuffled = [...array];
+  //   for (let i = shuffled.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  //   }
+  //   return shuffled;
+  // };
 
   const previous_Bank = [
     { id: "card8", content: "Computer Vision", isCorrect: true },
@@ -117,7 +118,7 @@ const DesignSortNewCategory = () => {
           }
           colContainerStyle={"tw-w-1/3"}
           cols={Columns}
-          initial_bank={shuffleArray(newBank())}
+          initial_bank={_.shuffle(newBank())}
           correct_assignments={newCorrectAssignments()}
           setSuccess={setSuccess}
           sucess={success}

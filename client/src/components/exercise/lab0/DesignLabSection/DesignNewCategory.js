@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import LabButton from "../../../all-components/LabButton";
 import Lab0Context from "../Lab0Context";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 
 const DesignNewCategory = () => {
   const { handleNav } = useContext(Lab0Context);
@@ -51,14 +53,17 @@ const DesignNewCategory = () => {
   const { setNewCategoryName } = useContext(Lab0Context);
   const onNameChange = (event) => {
     setName(event.target.value);
-    setNewCategoryName(event.target.value);
+    setNewCategoryName(event.target.value.trim());
   };
 
   const { setNewLabTopics } = useContext(Lab0Context);
   const handleSubmit = () => {
-    if (name === "" || arr[0].value === "") {
+    if (
+      name.trim() === "" ||
+      arr.some((element) => element.value.trim() === "")
+    ) {
       setMessage(
-        "You must enter new category name \nand at least one lab topic!",
+        "You must enter new category name \nand leave no blank lab topics!",
       );
       setSubmitted(false);
     } else {
@@ -66,7 +71,10 @@ const DesignNewCategory = () => {
         "Great job planning a new Category! \n Click the next button to move on.",
       );
       setSubmitted(true);
-      setNewLabTopics(arr);
+      let s = arr.map((item) => {
+        return { ...item, value: item.value.trim() };
+      });
+      setNewLabTopics(s);
     }
   };
 
@@ -97,7 +105,7 @@ const DesignNewCategory = () => {
             title={"Must enter category name"}
             id="Name"
             value={name}
-            onChange={onNameChange.bind(this)}
+            onChange={(e) => onNameChange(e)}
           />
         </div>
         <div>
@@ -115,34 +123,22 @@ const DesignNewCategory = () => {
                     value={item.value}
                   />
                   {i !== 0 && (
-                    <div
+                    <IndeterminateCheckBoxIcon
                       onClick={() => deleteInput(i)}
-                      className={"tw-w-10 tw-cursor-pointer"}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512"
-                      >
-                        {/*// <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->*/}
-                        <a className="tw-fill-brightRed tw-w-10 tw-h-10">
-                          <path d="M64 80c-8.8 0-16 7.2-16 16l0 320c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-320c0-8.8-7.2-16-16-16L64 80zM0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM152 232l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z" />
-                        </a>
-                      </svg>
-                    </div>
+                      className="tw-fill-brightRed tw-h-12 tw-w-12 tw-cursor-pointer"
+                    />
                   )}
                 </div>
               ))}
             </div>
             <div className={"tw-mb-4 tw-ml-2"}>
               {arr.length < 3 && (
-                <div onClick={addInput} className={"tw-w-10 tw-cursor-pointer"}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    {/* --!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--*/}
-                    <a className="tw-fill-lightGreen tw-w-10 tw-h-10">
-                      <path d="M64 80c-8.8 0-16 7.2-16 16l0 320c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-320c0-8.8-7.2-16-16-16L64 80zM0 96C0 60.7 28.7 32 64 32l320 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM200 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
-                    </a>
-                  </svg>
-                </div>
+                <AddBoxIcon
+                  onClick={addInput}
+                  className={
+                    "tw-fill-success tw-h-12 tw-w-12 tw-cursor-pointer"
+                  }
+                />
               )}
             </div>
           </div>

@@ -155,7 +155,6 @@ const DragDropGame = ({
       });
 
       setColumns(updatedColumns);
-      console.log(updatedColumns);
       return;
     }
 
