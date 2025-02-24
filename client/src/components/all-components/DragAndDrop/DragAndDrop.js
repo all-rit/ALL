@@ -45,12 +45,15 @@ const DragDropGame = ({
   cols,
   initial_bank,
   correct_assignments,
+  handleNav,
+  success,
   setSuccess,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initial_bank);
   const [message, setMessage] = useState("");
   const correctAssignments = arrayToObject(correct_assignments, "id");
+  const [buttonLabel, setButtonLabel] = useState("Submit");
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -118,11 +121,13 @@ const DragDropGame = ({
       if (
         placedCards.sort().toString() !== currentCol.cards.sort().toString()
       ) {
+        setButtonLabel("Submit");
         setMessage("Incorrect placement. Try again!");
         return;
       }
     }
     setMessage("Correct placement! Well done!");
+    setButtonLabel("Next");
     setSuccess(true);
   };
 
@@ -147,8 +152,17 @@ const DragDropGame = ({
         />
       </div>
       <div className={"tw-w-full tw-flex tw-flex-col tw-items-center"}>
-        {message && <p className={msgStyle}>{message}</p>}
-        <LabButton onClick={verifyPlacement} label={"Submit"} />
+        {message && (
+          <p
+            className={`${msgStyle} ${success ? "tw-bg-success" : "tw-bg-error"}`}
+          >
+            {message}
+          </p>
+        )}
+        <LabButton
+          onClick={success ? handleNav : verifyPlacement}
+          label={buttonLabel}
+        />
       </div>
     </DndContext>
   );
@@ -180,7 +194,9 @@ DragDropGame.propTypes = {
       cards: PropTypes.array.isRequired,
     }),
   ),
-  setSuccess: PropTypes.func,
+  handleNav: PropTypes.func.isRequired,
+  success: PropTypes.bool.isRequired,
+  setSuccess: PropTypes.func.isRequired,
 };
 
 export default DragDropGame;

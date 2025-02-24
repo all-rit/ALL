@@ -16,7 +16,7 @@ const DesignLabDecision = () => {
         After meetings with the Accessible Learning Labs principle investigators
         and the team of accessibility specialists, they have chosen to move
         forward with your idea of the{" "}
-        <strong>Accessibility to Photosensitivity</strong> lab!
+        <strong>Accessibility to Focus Order</strong> lab!
       </p>
       <p>
         Click the <strong>Next</strong> button below to move on to the next

@@ -22,6 +22,8 @@ const DraggableCard = ({ card, cardStyle }) => {
       className={cardStyle}
     >
       {card.content}
+      <p className={"tw-font-bold"}>{card.title}</p>
+      <p className={"tw-text-sm tw-leading-snug"}>{card.body}</p>
     </div>
   );
 };
@@ -29,7 +31,9 @@ const DraggableCard = ({ card, cardStyle }) => {
 DraggableCard.propTypes = {
   card: PropTypes.shape({
     id: PropTypes.string.isRequired,
+    title: PropTypes.string,
     content: PropTypes.string.isRequired,
+    body: PropTypes.string,
   }).isRequired,
   cardStyle: PropTypes.string.isRequired,
 };
