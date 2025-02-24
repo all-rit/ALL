@@ -10,8 +10,9 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import LabRow from "./LabRow";
+import ALLCardRow from "../../../all-components/ALLCardRow";
 import ALLButton from "../../../all-components/ALLButton";
+import InfoModal from "../../../body/lab/InfoModal";
 import PropTypes from "prop-types";
 import {
   CREATE_GROUP_SUCCESS,
@@ -21,6 +22,7 @@ import {
   UPDATE_GROUP_SUCCESS,
 } from "../../../../constants/notifications";
 import useMainStateContext from "../../../../reducers/MainContext";
+import handleRedirect from "../../../../helpers/Redirect";
 
 const GroupForm = (props) => {
   const {
@@ -38,6 +40,7 @@ const GroupForm = (props) => {
   const [checkedLabs, setCheckedLabs] = useState({});
   const [color, setColor] = useState(groupColor || "");
   const [tooltipOpen, setTooltipOpen] = useState(null);
+  const [openLabModal, setOpenLabModal] = useState(null);
 
   const cardColors = [
     "blue",
@@ -236,7 +239,26 @@ const GroupForm = (props) => {
               <div
                 className={`tw-w-full tw-my-3 ${checkedLabs[lab.id] && "tw-border-solid tw-border-primary-blue tw-rounded-xl"}`}
               >
-                <LabRow lab={lab} />
+                <ALLCardRow
+                  title={lab.labName}
+                  imageURL={`/img/lab_thumbnails/${lab.thumbnailImageURL}`}
+                  circlesLabel="Difficulty"
+                  circles={3}
+                  circlesFilled={lab.difficulty}
+                  buttonLabel="More Information"
+                  buttonStyle="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                  onClick={() => setOpenLabModal(lab.id)}
+                >
+                  <InfoModal
+                    open={openLabModal === lab.id}
+                    toggleOpen={() => setOpenLabModal(null)}
+                    labName={lab.labName}
+                    fullDescription={lab.fullDescription}
+                    learningObjectives={lab.learningObjectives}
+                    authors={lab.authors}
+                    redirect={() => handleRedirect(actions, lab)}
+                  />
+                </ALLCardRow>
               </div>
             </div>
           ))}

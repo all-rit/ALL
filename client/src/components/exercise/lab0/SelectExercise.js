@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import LabButton from "../../all-components/LabButton";
 import { ROUTES } from "../../../constants/lab0";
 import Lab0Context from "./Lab0Context";
+import ALLCardRow from "../../all-components/ALLCardRow";
 
 const SelectExercise = () => {
   const { WRITE_LAB_INTRO, DEVELOP_LAB_INTRO } = ROUTES;
@@ -28,6 +29,20 @@ const SelectExercise = () => {
           <strong>How to Develop a Lab</strong> button.
         </p>
       </div>
+
+      {/* TEMPORARY FOR TESTING THIS PR */}
+      <ALLCardRow
+        title="Testing 123"
+        imageURL={"/img/lab_thumbnails/wrench.jpg"}
+        circlesLabel="Completed"
+        circles={1}
+        circlesFilled={1}
+        mode="custom"
+        buttonLabel="Jump To"
+        buttonStyle="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+        onClick={() => alert("Clicked!")}
+      />
+
       <div
         className={"tw-flex tw-flex-row tw-gap-x-3 tw-justify-center tw-py-6"}
       >
