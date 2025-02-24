@@ -136,8 +136,7 @@ class MainFooter extends Component {
                 <p className="tw-font-poppins tw-font-bold">About Us</p>
                 <p className="tw-body-text">
                   Accessible Learning Labs is an NSF funded initiative aimed at
-                  empowering inclusive software education and fostering STEM
-                  proficiency.
+                  fostering STEM proficiency.
                 </p>
                 <br />
                 <p className="tw-font-poppins tw-font-bold"> Contact Us</p>

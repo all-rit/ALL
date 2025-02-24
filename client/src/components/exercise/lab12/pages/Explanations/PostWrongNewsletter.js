@@ -15,9 +15,9 @@ const PostWrongDiploma = () => {
         <p className="tw-body-text tw-py-6">
           As with before, the alumni newsletter used your non-preferred name.
           This makes you unrecognized by your college, a place where you spent
-          some much time and made so many friends. As a community, we should be
-          as inclusive as possible to those around us, even if their beliefs
-          contradict your own
+          so much time and made so many friends. As a community, we should be as
+          considerate as possible to those around us, even if their beliefs
+          contradict your own.
         </p>
         <p className="tw-body-text">
           Think about the difference a single input box would have made in this
