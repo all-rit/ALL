@@ -68,10 +68,12 @@ create table imagine23
     primary key (id)
 );
 
-create type enum_lab0_progress_category as enum ('DESIGNING', 'BACKEND', 'FRONTEND');
+create type enum_lab0_progress_category as enum ('DESIGN', 'BACKEND', 'FRONTEND');
 
 create type enum_lab0_progress_section as enum (
-    -- TODO: Add Writing a Lab sections here too
+    'LabIdea',
+    'ExperientialExercise',
+    'SprintPlanning',
     'LabDataRepair', 
     'SchemaRepair', 
     'ServiceControllerRepair', 
