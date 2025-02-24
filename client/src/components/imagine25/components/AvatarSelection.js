@@ -6,11 +6,15 @@ import PropTypes from "prop-types";
 
 const AvatarSelection = (props) => {
   const nextOnClick = async () => {
-    props.nextNavigation();
-    await props.imagineService(
-      sessionStorage.getItem("userID"),
-      props.avatars[props.avatarSelected],
-      25,
+    if (props.avatarSelected != -1) {
+      props.nextNavigation();
+      await props.imagineService("1", props.avatars[props.avatarSelected], 25);
+      return;
+    }
+    alert(
+      "Have you ever hear the of the tradgedy of darth plagus the wise? (select " +
+        props.title +
+        " please (✧ω✧) )",
     );
   };
 

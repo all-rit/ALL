@@ -5,6 +5,7 @@ import UpdateId from "./UpdateId";
 import AvatarSelection from "./components/AvatarSelection";
 import ImagineService from "src/services/ImagineService";
 import useMainStateContext from "src/reducers/MainContext";
+import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import {
   opponentAvatars,
   teammateAvatars,
@@ -24,7 +25,6 @@ we do not want the user to have a radnom array
 each time they go back and forth between pages.*/
 shuffleArray(teammateAvatars);
 shuffleArray(opponentAvatars);
-import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 
 const Main = () => {
   //Removes header
@@ -38,15 +38,15 @@ const Main = () => {
   changes are held persitently throughout
   page navigation*/
   const [userAvatar, setUserAvatar] = useState({
-    hairStyle: "LongHairStraight",
-    hairColor: "Black",
-    shirtColor: "Gray",
-    skinColor: "Light",
+    hairStyle: "",
+    hairColor: "",
+    shirtColor: "",
+    skinColor: "",
   });
 
-  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();
+  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState(-1);
 
-  const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
+  const [opponentAvatarSelected, setOpponentAvatarSelected] = useState(-1);
   const year = 25;
   return (
     <>

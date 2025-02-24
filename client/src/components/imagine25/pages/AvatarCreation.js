@@ -17,7 +17,7 @@ import PropTypes from "prop-types";
 
 //Function for each respective row in the avatarcreation page to stylize them
 const AvatarStyling = (
-  defaultValue,
+  currentAvatarStyle,
   userAvatarType,
   setAvatarState,
   options,
@@ -25,7 +25,14 @@ const AvatarStyling = (
   //basic toggling and changing functionality for dropdown
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
-  const [displayedValue, setDisplayedValue] = useState(defaultValue);
+  /*this grabs the repsecitve display value from the options for user readability.
+  "\u00A0" is a invisible character used to push the caret (little tirangle on the right of the dropdown" to the right.
+  if no value is detected, this will apear as a blank feild, else it will show the users current sellection.*/
+  const [displayedValue, setDisplayedValue] = useState(
+    options[currentAvatarStyle] == null
+      ? "\u00A0"
+      : options[currentAvatarStyle],
+  );
 
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -63,18 +70,23 @@ const AvatarStyling = (
 
 const AvatarCreation = (props) => {
   const nextOnClick = async () => {
-    //default userID set to 1 for now
-    navigate("/Imagine2025/TeammateSelection");
-    await ImagineService.postUserAvatar(
-      sessionStorage.getItem("userID"),
-      props.userAvatar,
-      25,
-    );
+    //Check to see if all feilds have been selected
+    if (
+      props.userAvatar.hairColor != "" &&
+      props.userAvatar.hairStyle != "" &&
+      props.userAvatar.clotheColor != "" &&
+      props.userAvatar.skinColor != ""
+    ) {
+      navigate("/Imagine2025/TeammateSelection");
+      await ImagineService.postUserAvatar("1", props.userAvatar, 25);
+      return;
+    }
+    alert("FILL OUT THE GOD DAMN AVATAR YOU GOOFY GOOBER");
   };
 
   return (
     <>
-      <h3>Design your avatar!</h3>
+      <h3>Create an Avatar That Most Resembles You!</h3>
       {Frame(
         <div className="d-flex justify-content-center">
           <div>
@@ -91,19 +103,24 @@ const AvatarCreation = (props) => {
               <FormGroup row>
                 <Col>
                   <Label className="mx-2 fw-bold">Skin Color</Label>
-                  {AvatarStyling("Light", "skinColor", props.setUserAvatar, {
-                    Light: "Light",
-                    Brown: "Medium Light",
-                    DarkBrown: "Medium Dark",
-                    Black: "Dark",
-                  })}
+                  {AvatarStyling(
+                    props.userAvatar.skinColor,
+                    "skinColor",
+                    props.setUserAvatar,
+                    {
+                      Light: "Light",
+                      Brown: "Medium Light",
+                      DarkBrown: "Medium Dark",
+                      Black: "Dark",
+                    },
+                  )}
                 </Col>
               </FormGroup>
               <FormGroup row>
                 <Col>
                   <Label className="mx-2 fw-bold">Hair Style</Label>
                   {AvatarStyling(
-                    "Long Straight",
+                    props.userAvatar.hairStyle,
                     "hairStyle",
                     props.setUserAvatar,
                     {
@@ -119,24 +136,34 @@ const AvatarCreation = (props) => {
               <FormGroup row>
                 <Col>
                   <Label className="mx-2 fw-bold">Hair Color</Label>
-                  {AvatarStyling("Black", "hairColor", props.setUserAvatar, {
-                    Black: "Black",
-                    Brown: "Brown",
-                    Blonde: "Blonde",
-                    SilverGray: "Gray",
-                  })}
+                  {AvatarStyling(
+                    props.userAvatar.hairColor,
+                    "hairColor",
+                    props.setUserAvatar,
+                    {
+                      Black: "Black",
+                      Brown: "Brown",
+                      Blonde: "Blonde",
+                      SilverGray: "Gray",
+                    },
+                  )}
                 </Col>
               </FormGroup>
               <FormGroup row>
                 <Col>
                   <Label className="mx-2 fw-bold">Shirt Color</Label>
-                  {AvatarStyling("Gray", "clotheColor", props.setUserAvatar, {
-                    Gray01: "Gray",
-                    Black: "Black",
-                    PastelBlue: "Blue",
-                    PastelYellow: "Yellow",
-                    Pink: "Pink",
-                  })}
+                  {AvatarStyling(
+                    props.userAvatar.clotheColor,
+                    "clotheColor",
+                    props.setUserAvatar,
+                    {
+                      Gray01: "Gray",
+                      Black: "Black",
+                      PastelBlue: "Blue",
+                      PastelYellow: "Yellow",
+                      Pink: "Pink",
+                    },
+                  )}
                 </Col>
               </FormGroup>
             </Form>
