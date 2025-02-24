@@ -148,12 +148,10 @@ class MainFooter extends Component {
                 <br />
                 {/*make mail:to link*/}
                 <a
-                  href="mailto:Daniel.Krutz@rit.edu"
+                  href="mailto:dxkvse@rit.edu"
                   className="tw-text-white tw-no-underline"
                 >
-                  <p className="tw-flex tw-justify-left ">
-                    Daniel.Krutz@rit.edu
-                  </p>
+                  <p className="tw-flex tw-justify-left ">dxkvse@rit.edu</p>
                 </a>
                 <div className="tw-flex tw-justify-left tw-pt-4 tw-space-x-4">
                   <svg
