@@ -3,6 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Frame } from "../components/Frame";
 import ALLButton from "src/components/all-components/ALLButton";
 
+//Random score that will be generated for both teams
+const userScore = Math.floor(Math.random() * 1000 + 500);
+/*opponent score will always be less than user score, but never less than 475
+This is done so that the game seems realistically close*/
+const opponentScore = Math.floor((userScore - 500) * Math.random() + 475);
+
 const Game = () => {
   const [seconds, setSeconds] = useState(60);
   const [modal, setModal] = useState(false);
@@ -44,9 +50,9 @@ const Game = () => {
         <ModalBody className="tw-w-[60vw]">
           {Frame(
             <>
-              <div className="xs:tw-text-md xl:tw-text-xl tw-text-center">
-                <p>Your team&apos;s score: 540</p>
-                <p>Your opponent team&apos;s score: 345</p>
+              <div className="xs:tw-text-md xl:tw-text-xl tw-text-center tw-p-auto tw-mt-[100px]">
+                <p>Your team&apos;s score: {userScore}</p>
+                <p>Your opponent team&apos;s score: {opponentScore}</p>
                 <p>
                   <strong>You Win!</strong>
                 </p>
@@ -54,6 +60,7 @@ const Game = () => {
               <ALLButton
                 onClick={() => alert("No next page implemented")}
                 label="Analyze Game"
+                className="tw-flex tw-justify-center tw-mt-[100px]"
               />
             </>,
             null,
