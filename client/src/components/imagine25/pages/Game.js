@@ -14,7 +14,7 @@ const Game = () => {
   const [seconds, setSeconds] = useState(60);
   const [modal, setModal] = useState(false);
 
-  //When page load timer starts that counts down from 60->0
+  //When page loads timer starts that counts down from 60->0
   useEffect(() => {
     const timer = setInterval(() => {
       setSeconds((prevSeconds) => {
@@ -51,17 +51,19 @@ const Game = () => {
         <ModalBody className="tw-w-[60vw]">
           {Frame(
             <>
-              <div className="xs:tw-text-md xl:tw-text-xl tw-text-center tw-p-auto tw-mt-[100px]">
-                <p>Your team&apos;s score: {userScore}</p>
-                <p>Your opponent team&apos;s score: {opponentScore}</p>
-                <p>
-                  <strong>You Win!</strong>
+              <h3 className="tw-text-center tw-my-[50px]">
+                <strong>You Win!</strong>
+              </h3>
+              <div className="xs:tw-text-md xl:tw-text-xl tw-text-left">
+                <p>Team&apos;s score: {userScore}</p>
+                <p className="tw-mt-[50px]">
+                  Opponent team&apos;s score: {opponentScore}
                 </p>
               </div>
               <ALLButton
                 onClick={() => alert("No next page implemented")}
                 label="Analyze Game"
-                className="tw-flex tw-justify-center tw-mt-[100px]"
+                className="tw-flex tw-justify-center tw-mt-[75px]"
               />
             </>,
             null,
