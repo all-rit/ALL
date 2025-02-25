@@ -2,6 +2,7 @@ import { Modal, ModalBody } from "reactstrap";
 import React, { useEffect, useState } from "react";
 import { Frame } from "../components/Frame";
 import ALLButton from "src/components/all-components/ALLButton";
+import "./Game.css";
 
 //Random score that will be generated for both teams
 const userScore = Math.floor(Math.random() * 1000 + 500);
@@ -43,7 +44,7 @@ const Game = () => {
         src="https://microstudio.io/Nerozz/galaga/3E7A6TBT/"
         className={"tw-rounded-xl" + sizeStyling}
       />
-      <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white ">
+      <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
         <div>{seconds}</div>
       </div>
       <Modal isOpen={modal} className="tw-flex">
