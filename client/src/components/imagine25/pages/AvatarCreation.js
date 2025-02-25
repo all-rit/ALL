@@ -14,6 +14,8 @@ import { Frame } from "../components/Frame";
 import ImagineService from "src/services/ImagineService";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
+import { ERROR } from "src/constants/notifications";
+import useMainStateContext from "src/reducers/MainContext";
 
 //Function for each respective row in the avatarcreation page to stylize them
 const AvatarStyling = (
@@ -69,6 +71,7 @@ const AvatarStyling = (
 };
 
 const AvatarCreation = (props) => {
+  const { actions } = useMainStateContext();
   const nextOnClick = async () => {
     //Check to see if all feilds have been selected
     if (
@@ -81,7 +84,7 @@ const AvatarCreation = (props) => {
       await ImagineService.postUserAvatar("1", props.userAvatar, 25);
       return;
     }
-    alert("FILL OUT THE GOD DAMN AVATAR YOU GOOFY GOOBER");
+    actions.showSnackbar("Please finish creating your avatar", ERROR);
   };
 
   return (

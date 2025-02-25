@@ -3,19 +3,18 @@ import Avatar from "avataaars";
 import "./avatarSelection.css";
 import { Frame } from "../components/Frame";
 import PropTypes from "prop-types";
+import useMainStateContext from "src/reducers/MainContext";
+import { ERROR } from "src/constants/notifications";
 
 const AvatarSelection = (props) => {
+  const { actions } = useMainStateContext();
   const nextOnClick = async () => {
     if (props.avatarSelected != null) {
       props.nextNavigation();
       await props.imagineService("1", props.avatars[props.avatarSelected], 25);
       return;
     }
-    alert(
-      "Have you ever hear the of the tradgedy of darth plagus the wise? (select " +
-        props.title +
-        " please (✧ω✧) )",
-    );
+    actions.showSnackbar("Please select your " + props.title, ERROR);
   };
 
   return (
