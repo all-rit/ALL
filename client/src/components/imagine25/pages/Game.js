@@ -24,25 +24,23 @@ const Game = () => {
         }
         return prevSeconds - 1;
       });
-    }, 1000);
+    }, 1000000);
 
     return () => clearInterval(timer);
   }, []);
 
   const toggle = () => setModal(!modal);
 
-  //This is the sizing of both the div container and game
-  const sizeStyling = " tw-w-[800px] tw-h-[600px]";
   return (
     //flex container used to venter game vertically
     <div
       className={
-        "tw-flex tw-justify-left tw-items-center tw-relative" + sizeStyling
+        "tw-flex tw-justify-left tw-items-center tw-relative tw-w-[52vw] xs:tw-h-[500px] md:tw-h-[525px] lg:tw-h-[550px] xl:tw-h-[600px] tw-bg-[Black] tw-rounded-xl"
       }
     >
       <iframe
         src="https://microstudio.io/Nerozz/galaga/3E7A6TBT/"
-        className={"tw-rounded-xl" + sizeStyling}
+        className={"tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xl:tw-h-[600px]"}
       />
       <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
         <div>{seconds}</div>
