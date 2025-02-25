@@ -7,7 +7,7 @@ export const Frame = (content, nextOnClick, prevOnClick) => {
       <div className="d-flex justify-content-center tw-py-6">
         <div>{content}</div>
       </div>
-      <div className="tw-flex tw-justify-between tw-w-1/2">
+      <div className="tw-flex tw-justify-between tw-w-1/2 tw-absolute">
         <ALLButton onClick={prevOnClick} label="Previous" />
         <ALLButton onClick={nextOnClick} label="Next" />
       </div>
