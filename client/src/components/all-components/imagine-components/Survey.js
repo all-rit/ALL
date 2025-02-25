@@ -28,7 +28,7 @@ function Survey(props) {
       <div className={"tw-flex tw-justify-center"}>
         <hr className={"tw-w-3/4"} />
       </div>
-      <ul className="answerOptions tw-grid tw-grid-cols-2">
+      <ul className="answerOptions tw-grid tw-grid-cols-2 tw-body-text">
         {props.answerOptions.map(renderAnswerOptions)}
       </ul>
       <div className="align-right">
