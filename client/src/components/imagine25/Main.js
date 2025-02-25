@@ -44,9 +44,9 @@ const Main = () => {
     skinColor: "",
   });
 
-  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState(-1);
+  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();
 
-  const [opponentAvatarSelected, setOpponentAvatarSelected] = useState(-1);
+  const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
   const year = 25;
   return (
     <>

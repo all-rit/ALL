@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const AvatarSelection = (props) => {
   const nextOnClick = async () => {
-    if (props.avatarSelected != -1) {
+    if (props.avatarSelected != null) {
       props.nextNavigation();
       await props.imagineService("1", props.avatars[props.avatarSelected], 25);
       return;
