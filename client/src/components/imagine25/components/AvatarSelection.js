@@ -24,18 +24,24 @@ const AvatarSelection = (props) => {
         <div className="tw-grid tw-grid-rows-2 tw-grid-flow-col tw-gap-10 justify-content-center my-4">
           {props.avatars.map((avatar, index) => {
             //div class wrapper needed for clicking functionality
-            const avatarStyle =
-              index == props.avatarSelected ? "Circle" : "Transparent";
+            const avatarSelected =
+              index == props.avatarSelected ? " tw-bg-[lightBlue]" : "";
             return (
-              <div key={index} onClick={() => props.setAvatarSelected(index)}>
+              <div
+                key={index}
+                onClick={() => props.setAvatarSelected(index)}
+                className={
+                  "tw-rounded-full transformAvatar xs:tw-h-[125px] xs:tw-w-[125px] sm:tw-h-[125px] sm:tw-w-[125px] md:tw-h-[150px] md:tw-w-[150px] lg:tw-h-[175px] lg:tw-w-[175px]" +
+                  avatarSelected
+                }
+              >
                 <Avatar
                   topType={avatar.hairStyle}
                   hairColor={avatar.hairColor}
                   clotheColor={avatar.shirtColor}
                   skinColor={avatar.skinColor}
-                  avatarStyle={avatarStyle}
                   clotheType="ShirtCrewNeck"
-                  className="xs:tw-h-[100px] xs:tw-w-[100px] sm:tw-h-[100px] sm:tw-w-[100px] md:tw-h-[125px] md:tw-w-[125px] lg:tw-h-[150px] lg:tw-w-[150px] transformAvatar"
+                  className="xs:tw-h-[100px] xs:tw-w-[100px] sm:tw-h-[100px] sm:tw-w-[100px] md:tw-h-[125px] md:tw-w-[125px] lg:tw-h-[150px] lg:tw-w-[150px]"
                 />
               </div>
             );
