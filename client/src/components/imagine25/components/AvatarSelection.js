@@ -25,7 +25,7 @@ const AvatarSelection = (props) => {
           {props.avatars.map((avatar, index) => {
             //div class wrapper needed for clicking functionality
             const avatarSelected =
-              index == props.avatarSelected ? " tw-bg-[lightBlue]" : "";
+              index == props.avatarSelected ? " tw-bg-[#68D7FF]" : "";
             return (
               <div
                 key={index}
