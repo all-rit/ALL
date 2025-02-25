@@ -20,12 +20,15 @@ function Survey(props) {
   }
 
   return (
-    <div className="quiz container" key={props.questionId}>
+    <div className="quiz container tw-p-6" key={props.questionId}>
       <QuestionCount counter={props.questionId} total={props.questionTotal} />
-      <h2 className="quiz question">
+      <h2 className="quiz tw-sub-title tw-text-[2rem]">
         {props.question} {props.multiChoice && " Select all that apply."}
       </h2>
-      <ul className="answerOptions">
+      <div className={"tw-flex tw-justify-center"}>
+        <hr className={"tw-w-3/4"} />
+      </div>
+      <ul className="answerOptions tw-grid tw-grid-cols-2 tw-body-text">
         {props.answerOptions.map(renderAnswerOptions)}
       </ul>
       <div className="align-right">

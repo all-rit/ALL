@@ -19,7 +19,10 @@ const AvatarSelection = (props) => {
 
   return (
     <>
-      <h3>Select Your {props.title}!</h3>
+      <h3 className={"tw-title tw-py-3"}>Select Your {props.title}</h3>
+      <div className={"tw-flex tw-justify-center"}>
+        <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
+      </div>
       {Frame(
         <div className="tw-grid tw-grid-rows-2 tw-grid-flow-col tw-gap-10 justify-content-center my-4">
           {props.avatars.map((avatar, index) => {
@@ -31,7 +34,7 @@ const AvatarSelection = (props) => {
                 key={index}
                 onClick={() => props.setAvatarSelected(index)}
                 className={
-                  "tw-rounded-full transformAvatar xs:tw-h-[125px] xs:tw-w-[125px] sm:tw-h-[125px] sm:tw-w-[125px] md:tw-h-[150px] md:tw-w-[150px] lg:tw-h-[175px] lg:tw-w-[175px]" +
+                  "hover:tw-cursor-pointer tw-rounded-full transformAvatar xs:tw-h-[125px] xs:tw-w-[125px] sm:tw-h-[125px] sm:tw-w-[125px] md:tw-h-[150px] md:tw-w-[150px] lg:tw-h-[175px] lg:tw-w-[175px]" +
                   avatarSelected
                 }
               >

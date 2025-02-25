@@ -53,7 +53,7 @@ const Main = () => {
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
         <div
           className={
-            "tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[40rem] tw-gap-y-6 tw-pl-6"
+            "tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[45rem] tw-gap-y-6 tw-pl-6"
           }
         >
           <div
@@ -69,10 +69,14 @@ const Main = () => {
         </div>
         <div
           className={
-            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-[100%] shadow tw-rounded-xl tw-p-6"
+            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6"
           }
         >
-          <Router>
+          <Router
+            className={
+              "tw-flex tw-h-full tw-w-full tw-overflow-y-scroll tw-flex-col tw-justify-center"
+            }
+          >
             <UpdateId default path={"/"} />
             <AvatarCreation
               path={"/AvatarCreation"}
