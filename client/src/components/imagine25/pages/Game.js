@@ -24,7 +24,7 @@ const Game = () => {
         }
         return prevSeconds - 1;
       });
-    }, 1000000);
+    }, 1000);
 
     return () => clearInterval(timer);
   }, []);
