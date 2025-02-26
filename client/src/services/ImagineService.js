@@ -54,6 +54,14 @@ const ImagineService = {
       ).then((response) => response.json()),
     );
   },
+  getGroup: (userID, year) => {
+    return Promise.resolve(
+      API.get(
+        process.env.REACT_APP_SERVER_URL + `/imagine${year}/getGroup/${userID}`,
+        {},
+      ).then((response) => response.json()),
+    );
+  },
   readMoreCount: async (userID, readMoreCount, year) => {
     return await API.postWithBody(
       process.env.REACT_APP_SERVER_URL + `/imagine${year}/readMoreCount`,
