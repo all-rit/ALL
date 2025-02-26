@@ -7,9 +7,8 @@ const db = require('../../database');
  */
 async function getProgress(userID) {
   try {
-    return await db.ProgressLab0.findAll({
+    return await db.ProgressLab0.findOne({
       attributes: [
-        'category',
         [
           db.sequelize.fn(
               'json_object_agg',
@@ -21,7 +20,6 @@ async function getProgress(userID) {
       where: {
         userid: userID,
       },
-      group: 'category',
     });
   } catch (error) {
     console.error(error);

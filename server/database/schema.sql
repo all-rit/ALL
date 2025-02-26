@@ -91,9 +91,9 @@ create type enum_lab0_progress_section_status as enum ('IN_PROGRESS', 'COMPLETED
 create table lab0_progress (
     id              serial,
     userid          bigint,
-    category        enum_lab0_repair_category,
-    section         enum_lab0_repair_section,
-    "sectionStatus" enum_lab0_repair_section_status,
+    category        enum_lab0_progress_category,
+    section         enum_lab0_progress_section,
+    "sectionStatus" enum_lab0_progress_section_status,
     primary key (id) 
 );
 

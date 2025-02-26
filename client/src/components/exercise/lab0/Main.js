@@ -11,6 +11,10 @@ const Main = (props) => {
   const [section, setSectionState] = useState({});
 
   const handleNav = (route) => {
+    if (route in SECTIONS) {
+      setSection(route);
+    }
+
     navigate(`/Lab0/Exercise/${route}`);
   };
 
