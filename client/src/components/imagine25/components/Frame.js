@@ -8,12 +8,15 @@ export const Frame = (content, nextOnClick, prevOnClick) => {
   const yellowLine =
     "tw-w-[5px] xs:tw-h-[325px] sm:tw-h-[350px] xl:tw-h-[400px] 2xl:tw-h-[425px] tw-bg-[#ffc335] tw-my-[15px] tw-mx-auto";
 
+  //If the nextOnClick Function is null, no "Next" button will apear
   const nextButton =
     nextOnClick !== null ? (
       <ALLButton onClick={nextOnClick} label="Next" />
     ) : (
       <></>
     );
+
+  //If the prevOnClick Function is null, no "Prev" button will apear
   const prevButton =
     prevOnClick !== null ? (
       <ALLButton onClick={prevOnClick} label="Previous" />

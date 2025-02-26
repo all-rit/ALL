@@ -21,6 +21,7 @@ const shuffleArray = (array) => {
     array[j] = temp;
   }
 };
+
 /*Note this is not in the main fuction as
 we do not want the user to have a radnom array
 each time they go back and forth between pages.*/

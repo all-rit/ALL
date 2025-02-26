@@ -6,6 +6,7 @@ import "./Game.css";
 
 //Random score that will be generated for both teams
 const userScore = Math.floor(Math.random() * 1000 + 500);
+
 /*opponent score will always be less than user score, but never less than 475
 This is done so that the game seems realistically close*/
 const opponentScore = Math.floor((userScore - 500) * Math.random() + 475);
@@ -42,6 +43,7 @@ const Game = () => {
         src="https://microstudio.io/Nerozz/galaga/3E7A6TBT/"
         className={"tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xl:tw-h-[600px]"}
       />
+      {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
       <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
         <div>{seconds}</div>
       </div>
