@@ -129,6 +129,14 @@ class MainFooter extends Component {
                   >
                     Available under the Federal Government License
                   </p>
+                  <p
+                    className={
+                      "tw-pt-2 tw-body-text tw-text-center tw-font-medium "
+                    }
+                  >
+                    This work is supported by the US National Science Foundation
+                    Under Grants: #1825023, #2111152, #2336941
+                  </p>
                 </div>
               </div>
               {/*Right side*/}
