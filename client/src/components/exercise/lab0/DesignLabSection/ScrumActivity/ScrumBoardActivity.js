@@ -38,7 +38,7 @@ const ScrumBoardActivity = () => {
           }
           colHeaderStyle={"tw-m-1 tw-text-center tw-sub-title"}
           bankStyle={
-            "tw-flex tw-gap-2 tw-min-h-[5rem] tw-min-w-[10rem] tw-mb-3 tw-w-full tw-p-4 tw-border-dashed tw-border-[#c3c3c3] tw-border-[.5px] tw-rounded-lg"
+            "tw-flex tw-gap-2 tw-min-h-[5rem] tw-min-w-[20rem] tw-mb-3 tw-w-full tw-p-4 tw-border-dashed tw-border-[#c3c3c3] tw-border-[.5px] tw-rounded-lg"
           }
           cardStyle={
             "tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-[17rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black"

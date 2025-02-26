@@ -32,11 +32,24 @@ const ScrumVelocityReading = () => {
         cards below. What do you see that’s different?
       </p>
       <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
-        <Card color={"#6D67E6"} velocity={"6"}>
-          This is a card
+        <Card color={"#6D67E6"} velocity={"7"}>
+          <ul className={"tw-px-4"}>
+            <li className={"tw-list-decimal"}>
+              Create Skeleton for Exercise Structure
+            </li>
+            <li className={"tw-list-decimal"}>Create Component for</li>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+          </ul>
         </Card>
         <Card color={"#37AA67"} velocity={"3"}>
-          This is a card
+          <ul className={"tw-px-4"}>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+          </ul>
         </Card>
       </div>
       <p className={"tw-body-text tw-py-6"}>
@@ -48,19 +61,31 @@ const ScrumVelocityReading = () => {
       </p>
       <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
         <Card color={"#6D67E6"} velocity={"3"}>
-          This is a card
+          <ul className={"tw-px-4"}>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+          </ul>
         </Card>
-        <Card color={"#000000"} velocity={"3"}>
-          This is a card
+        <Card color={"#FC7AAC"} velocity={"3"}>
+          <ul className={"tw-px-4"}>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+          </ul>
         </Card>
         <Card color={"#37AA67"} velocity={"3"}>
-          This is a card
+          <ul className={"tw-px-4"}>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>item</li>
+          </ul>
         </Card>
       </div>
       <p className={"tw-py-3 tw-body-text"}>
-        That looks much better. Lets update our sprint board from the previous
-        activity to accommodate this added sprint. Click the Next button to move
-        on.
+        That looks much better. Lets update Sprint 1 and Sprint 2 from the
+        previous activity to ensure that user stories are properly allocated.
+        Click the Next button to move on.
       </p>
       <div className={"tw-w-full tw-flex tw-justify-center tw-py-6"}>
         <LabButton label={"Next"} onClick={navigateToScrumVeloActivity} />
