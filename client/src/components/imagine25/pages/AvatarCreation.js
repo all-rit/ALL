@@ -65,7 +65,11 @@ const AvatarCreation = (props) => {
   const nextOnClick = async () => {
     //default userID set to 1 for now
     navigate("/Imagine2025/TeammateSelection");
-    await ImagineService.postUserAvatar("1", props.userAvatar, 25);
+    await ImagineService.postUserAvatar(
+      sessionStorage.getItem("userID"),
+      props.userAvatar,
+      25,
+    );
   };
 
   return (

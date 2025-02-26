@@ -48,8 +48,15 @@ const preSurvey = async (data) => {
   const imagine = `Imagine${year}`;
   try {
     if (userID) {
-      const section = await determineGroup(preSurvey, year);
-      const user = await getUserByID(userID, year);
+      let section = null;
+      if (year == 23) {
+        section = await determineGroup(preSurvey, year);
+      } else if (year == 25) {
+        section = await determineSection2025();
+      } else {
+        console.log('invalid year');
+      }
+      const user = await getUserByID({userID, year});
       console.warn(section, user);
       if (user) {
         user.preSurvey = preSurvey;
@@ -98,7 +105,6 @@ const postSurvey = async (data) => {
 };
 
 const getUsers = async () => {
-  // const imagine = `Imagine${year}`;
   const users = await db.Imagine23.findAll({
     attributes: ['id', 'userid', 'preSurvey'],
     where: {
@@ -243,6 +249,7 @@ const getSection = async (sectionName, year) => {
   }
 };
 
+
 const determineGroup = async (preSurvey, year) => {
   // retrieve all existing groupings
   const experiential = await getSection('experiential', year);
@@ -365,6 +372,13 @@ const postOpponentAvatar = async (data) => {
   } catch (error) {
     console.error(error);
   }
+};
+
+
+const determineSection2025 = async () => {
+  const options = ['experiential', 'expression', 'control'];
+  const randIndex = Math.floor(Math.random() * options.length);
+  return options[randIndex];
 };
 
 module.exports = {

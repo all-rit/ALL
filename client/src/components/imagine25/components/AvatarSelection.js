@@ -7,7 +7,11 @@ import PropTypes from "prop-types";
 const AvatarSelection = (props) => {
   const nextOnClick = async () => {
     props.nextNavigation();
-    await props.imagineService("1", props.avatars[props.avatarSelected], 25);
+    await props.imagineService(
+      sessionStorage.getItem("userID"),
+      props.avatars[props.avatarSelected],
+      25,
+    );
   };
 
   return (
