@@ -16,7 +16,10 @@ const AvatarSelection = (props) => {
 
   return (
     <>
-      <h3>Select Your {props.title}!</h3>
+      <h3 className={"tw-title tw-py-3"}>Select Your {props.title}</h3>
+      <div className={"tw-flex tw-justify-center"}>
+        <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
+      </div>
       {Frame(
         <div className="tw-grid tw-grid-rows-2 tw-grid-flow-col tw-gap-10 justify-content-center my-4">
           {props.avatars.map((avatar, index) => {
@@ -24,7 +27,11 @@ const AvatarSelection = (props) => {
             const avatarStyle =
               index == props.avatarSelected ? "Circle" : "Transparent";
             return (
-              <div key={index} onClick={() => props.setAvatarSelected(index)}>
+              <div
+                key={index}
+                className={"hover:tw-cursor-pointer"}
+                onClick={() => props.setAvatarSelected(index)}
+              >
                 <Avatar
                   topType={avatar.hairStyle}
                   hairColor={avatar.hairColor}

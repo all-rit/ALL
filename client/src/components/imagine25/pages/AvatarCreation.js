@@ -28,15 +28,15 @@ const AvatarStyling = (
   const [displayedValue, setDisplayedValue] = useState(defaultValue);
 
   return (
-    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+    <Dropdown isOpen={dropdownOpen} toggle={toggle} className="tw-body-text">
       <DropdownToggle
         color={"light"}
-        className="xs:tw-w-[150px] sm:tw-w-[150px] md:tw-w-[200px] tw-h-[30px] tw-flex tw-justify-between tw-items-center tw-color-[#22252a] tw-border-2 tw-boarder-solid tw-border-[#22252a]"
+        className="xs:tw-w-[150px] sm:tw-w-[150px] md:tw-w-[200px] tw-h-[30px] tw-flex tw-justify-between tw-items-center tw-color-[#22252a] tw-border-darkLine hover:tw-border-black tw-border-1 tw-border-solid tw-body-text"
         caret
       >
         {displayedValue}
       </DropdownToggle>
-      <DropdownMenu>
+      <DropdownMenu className="tw-body-text">
         {/*Itterate thought the options sent through, value is what is displayed.
                 The key controlls the avatar state */}
         {Object.entries(options).map(([key, value]) => {
@@ -74,7 +74,10 @@ const AvatarCreation = (props) => {
 
   return (
     <>
-      <h3>Design your avatar!</h3>
+      <h3 className={"tw-title tw-pb-3"}>Design Your Avatar</h3>
+      <div className={"tw-flex tw-justify-center"}>
+        <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
+      </div>
       {Frame(
         <div className="d-flex justify-content-center">
           <div>
@@ -90,7 +93,9 @@ const AvatarCreation = (props) => {
             <Form className="tw-my-[1vw]">
               <FormGroup row>
                 <Col>
-                  <Label className="mx-2 fw-bold">Skin Color</Label>
+                  <Label className="mx-2 fw-bold tw-body-text">
+                    Skin Color
+                  </Label>
                   {AvatarStyling("Light", "skinColor", props.setUserAvatar, {
                     Light: "Light",
                     Brown: "Medium Light",
@@ -101,7 +106,9 @@ const AvatarCreation = (props) => {
               </FormGroup>
               <FormGroup row>
                 <Col>
-                  <Label className="mx-2 fw-bold">Hair Style</Label>
+                  <Label className="mx-2 fw-bold tw-body-text">
+                    Hair Style
+                  </Label>
                   {AvatarStyling(
                     "Long Straight",
                     "hairStyle",
@@ -118,7 +125,9 @@ const AvatarCreation = (props) => {
               </FormGroup>
               <FormGroup row>
                 <Col>
-                  <Label className="mx-2 fw-bold">Hair Color</Label>
+                  <Label className="mx-2 fw-bold tw-body-text">
+                    Hair Color
+                  </Label>
                   {AvatarStyling("Black", "hairColor", props.setUserAvatar, {
                     Black: "Black",
                     Brown: "Brown",
@@ -129,7 +138,9 @@ const AvatarCreation = (props) => {
               </FormGroup>
               <FormGroup row>
                 <Col>
-                  <Label className="mx-2 fw-bold">Shirt Color</Label>
+                  <Label className="mx-2 fw-bold tw-body-text">
+                    Shirt Color
+                  </Label>
                   {AvatarStyling("Gray", "clotheColor", props.setUserAvatar, {
                     Gray01: "Gray",
                     Black: "Black",
