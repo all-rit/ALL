@@ -474,7 +474,7 @@ create table lab12_exercise
 );
 
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
-VALUES (0, 'How to Design a Lab', 'How to Design a Lab', 'Tutorials', '/wrench.jpg',
+VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg',
         'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial.',
         'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial. Start by participating in lab brainstorming, ideation, and sprint planning for your lab, then move on to implementation using our PERN tech stack covering backend and frontend. By the end of Lab 0, you will have successfully implemented a newly synthesized lab from beginning to end.', 
         '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]',

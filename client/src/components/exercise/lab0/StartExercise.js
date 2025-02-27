@@ -40,7 +40,7 @@ const StartExercise = () => {
       <ALLCardRow
         key={section.name}
         title={section.displayName}
-        imageURL="/img/lab_thumbnails/wrench.jpg"
+        imageURL={section.imageURL}
         circlesLabel="Completed"
         circles={1}
         circlesFilled={
@@ -72,7 +72,7 @@ const StartExercise = () => {
           You will now have the opportunity to learn how to build the lab from
           inception, ideation, and planning, all the way to development and
           becoming deeply familiar with our internal component library, best
-          practices, and tech stack.
+          practices, and tech stack. Click “Start” to begin with lab design!
         </p>
       </div>
 
