@@ -31,16 +31,16 @@ const ScorePage = () => {
       <h3 className="tw-title text-center">Game Outcome</h3>
 
       <div className="tw-grid tw-grid-cols-2 tw-pt-8 tw-justify-center">
-        <div className="w-full tw-border tw-border-t-black tw-rounded-md tw-my-20">
-          <div className="tw-font-bold text-l">
+        <div className="tw-my-20 tw-body-text tw-mx-auto">
+          <div className="tw-font-bold">
             Overall User Team Score: {userScore + teammateScore}
           </div>
           <div>Your Score: {userScore}</div>
           <div>Your Teammate Score: {teammateScore}</div>
         </div>
 
-        <div className="tw-w-full tw-border tw-border-gray-300 tw-rounded-lg tw-my-20">
-          <div className="tw-font-bold text-lg">
+        <div className="tw-my-20 tw-body-text tw-mx-auto">
+          <div className="tw-font-bold ">
             Overall Opponent Score: {totalOpponentScore}
           </div>
           <div>Opponent 1 Score: {opponentScore1}</div>
