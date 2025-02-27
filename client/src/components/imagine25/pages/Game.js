@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Game.css";
+import ScorePage from "../components/ScorePage";
 
 const Game = () => {
   const contentSizing = "tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xl:tw-h-[600px]";
 
-  const [bgColor, setBgcolor] = useState(" tw-bg-[black]");
+  const [containerFormating, setContainerFormating] = useState(
+    "tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]",
+  );
 
   //Content that is embeded on the left side
   const [content, setContent] = useState(
@@ -22,8 +25,8 @@ const Game = () => {
       setSeconds((prevSeconds) => {
         if (prevSeconds <= 1) {
           clearInterval(timer);
-          setContent(<div className={contentSizing}>Hello World</div>);
-          setBgcolor("");
+          setContent(<ScorePage className={contentSizing} />);
+          setContainerFormating("tw-mt-[7rem]");
           return;
         }
 
@@ -38,8 +41,8 @@ const Game = () => {
     <div
       //make backgorund black if game is running
       className={
-        "tw-flex tw-justify-left tw-items-center tw-relative tw-w-[52vw] xs:tw-h-[500px] md:tw-h-[525px] lg:tw-h-[550px] xl:tw-h-[600px] tw-rounded-xl" +
-        bgColor
+        "tw-w-[52vw] xs:tw-h-[500px] md:tw-h-[525px] lg:tw-h-[550px] xl:tw-h-[600px] tw-rounded-xl " +
+        containerFormating
       }
     >
       {content}
