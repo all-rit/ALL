@@ -1,17 +1,15 @@
 import React from "react";
 import { Frame } from "../components/Frame";
 import { navigate } from "@reach/router";
+import ImagineHeader from "../components/ImagineHeader";
 
 const GalagaInstructions = () => {
   // const fontSize = "xs:tw-text-md xl:tw-text-xl";
   return (
     <>
-      <h3>Instructions</h3>
-      <div className={"tw-flex tw-justify-center"}>
-        <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
-      </div>
+      <ImagineHeader title="Instructions" />
       {Frame(
-        <div className="xs:tw-pt-14 md:tw-pt-16 lg:tw-pt-18">
+        <div className="tw-grid tw-w-[20vw]">
           <p className="tw-body-text">
             You will be playing against your selected opponent to see who can
             score the most points in 1 minute. Your teammate will be playing
