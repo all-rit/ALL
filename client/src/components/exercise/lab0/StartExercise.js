@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 import ALLCardRow from "../../all-components/ALLCardRow";
 import LabButton from "../../all-components/LabButton";
 import Lab0Context from "./Lab0Context";
-import {
-  ROUTES,
-  SECTIONS,
-  SECTION_STATUSES,
-} from "../../../constants/lab0/index";
+import { SECTIONS, SECTION_STATUSES } from "../../../constants/lab0/index";
 import ProgressService from "../../../services/lab0/ProgressService";
 import useMainStateContext from "../../../reducers/MainContext";
 
@@ -15,6 +11,7 @@ const StartExercise = (props) => {
   const { state } = useMainStateContext();
   const { handleNav } = useContext(Lab0Context);
   const [categories, setCategories] = useState(null);
+  const [nextSection, setNextSection] = useState(null);
   const verb = props.verb || "Start";
 
   useEffect(() => {
@@ -24,15 +21,24 @@ const StartExercise = (props) => {
       const progress = result.progress === null ? {} : result.progress;
 
       let map = {};
+      let next = null;
       Object.values(SECTIONS).forEach((section) => {
         if (!(section.category in map)) {
           map[section.category] = [];
+        }
+
+        if (
+          progress[section.name] !== SECTION_STATUSES.SECTION_COMPLETED &&
+          next === null
+        ) {
+          next = section.name;
         }
 
         map[section.category].push(getCardRow(progress, section));
       });
 
       setCategories(map);
+      setNextSection(next);
     }
     getProgress();
   });
@@ -71,10 +77,14 @@ const StartExercise = (props) => {
       <div className={"tw-flex tw-flex-col"}>
         <h2 className={"tw-title tw-text-left"}>{verb} Exercise</h2>
         <p className={"tw-py-6 tw-body-text"}>
-          You will now have the opportunity to learn how to build the lab from
-          inception, ideation, and planning, all the way to development and
-          becoming deeply familiar with our internal component library, best
-          practices, and tech stack. Click “{verb}” to begin with lab design!
+          {verb === "Start"
+            ? "You will now have the opportunity to learn how to build the lab from \
+            inception, ideation, and planning, all the way to development and \
+            becoming deeply familiar with our internal component library, best \
+            practices, and tech stack. Click “Start” to begin with lab design!"
+            : "Welcome back! Here, you have the opportunity to jump to any section to \
+            learn more about each one. If you are onboarding a team, it is recommended \
+            to proceed in order. Click “Continue” to start the next section!"}
         </p>
       </div>
 
@@ -90,7 +100,8 @@ const StartExercise = (props) => {
 
       <LabButton
         label={verb.toUpperCase()}
-        onClick={() => handleNav(ROUTES.SECTION_LAB_IDEA)}
+        onClick={() => handleNav(nextSection)}
+        disabled={nextSection === null}
       />
     </div>
   );
