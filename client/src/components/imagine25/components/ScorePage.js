@@ -1,48 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "reactstrap";
 
 const ScorePage = () => {
-  let [userScore, setUserScore] = useState(0);
-  let [opponentScore, setOpponentScore] = useState(0);
-  let [teammateScore, setTeammateScore] = useState(0);
-  let [teammateScore2, setTeammateScore2] = useState(0);
-
   const navigation = () => {
     console.log("move to next page");
   };
 
-  const calculateScore = () => {
-    //Random score that will be generated for both teams
-    const totalUserScore = Math.floor(Math.random() * 1000 + 500);
-    const userScore = Math.floor(Math.random() * totalUserScore);
-    const teammateScore = totalUserScore - userScore;
+  //Random score that will be generated for both teams
+  const totalUserScore = Math.floor(Math.random() * 1000 + 500);
 
-    setUserScore(userScore);
-    setTeammateScore(teammateScore);
+  const userScore = Math.floor(Math.random() * totalUserScore);
+  const teammateScore = totalUserScore - userScore;
 
-    //Calcute User and Teammate Score
-
-    //get two random number that add up to totalScore every time
-
-    /*opponent score will always be less than user score, but never less than 475
-        This is done so that the game seems realistically close*/
-    const totalOpponentScore = Math.floor(
-      (userScore - 500) * Math.random() + 475,
-    );
-
-    //Calcute Opponent and Opponent Score
-
-    //get two random number that add up to totalScore every time
-    const opponent1Score = Math.floor(Math.random() * totalOpponentScore);
-    const teammateScore2 = totalOpponentScore - opponent1Score;
-
-    setOpponentScore(opponent1Score);
-    setTeammateScore2(teammateScore2);
-  };
-
-  useEffect(() => {
-    calculateScore();
-  }, []);
+  /*opponent score will always be less than user score, but never less than 475
+      This is done so that the game seems realistically close*/
+  const totalOpponentScore = Math.floor(
+    (userScore - 500) * Math.random() + 475,
+  );
+  //Calcute Opponent and Opponent Score
+  //get two random number that add up to totalScore every time
+  const opponentScore1 = Math.floor(Math.random() * totalOpponentScore);
+  const opponentScore2 = totalOpponentScore - opponentScore1;
 
   return (
     <>
@@ -59,10 +37,10 @@ const ScorePage = () => {
 
         <div className="tw-w-full tw-border tw-border-gray-300 tw-rounded-lg tw-my-20">
           <div className="tw-font-bold text-lg">
-            Overall Opponent Score: {opponentScore + teammateScore2}
+            Overall Opponent Score: {totalOpponentScore}
           </div>
-          <div>Opponent 1 Score: {opponentScore}</div>
-          <div>Opponent 2 Score: {teammateScore2}</div>
+          <div>Opponent 1 Score: {opponentScore1}</div>
+          <div>Opponent 2 Score: {opponentScore2}</div>
         </div>
       </div>
 
