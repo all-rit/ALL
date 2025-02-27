@@ -40,13 +40,13 @@ const Main = () => {
   const [userAvatar, setUserAvatar] = useState({
     hairStyle: "Default",
     hairColor: "Default",
-    shirtColor: "Default",
+    clotheColor: "Default",
     skinColor: "Default",
   });
 
   const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();
-
   const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
+
   const year = 25;
   return (
     <>
