@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import ALLCardRow from "../../all-components/ALLCardRow";
 import LabButton from "../../all-components/LabButton";
 import Lab0Context from "./Lab0Context";
@@ -10,10 +11,11 @@ import {
 import ProgressService from "../../../services/lab0/ProgressService";
 import useMainStateContext from "../../../reducers/MainContext";
 
-const StartExercise = () => {
+const StartExercise = (props) => {
   const { state } = useMainStateContext();
   const { handleNav } = useContext(Lab0Context);
   const [categories, setCategories] = useState(null);
+  const verb = props.verb || "Start";
 
   useEffect(() => {
     async function getProgress() {
@@ -67,12 +69,12 @@ const StartExercise = () => {
   return (
     <div className={"tw-p-3"}>
       <div className={"tw-flex tw-flex-col"}>
-        <h2 className={"tw-title tw-text-left"}>Start Exercise</h2>
+        <h2 className={"tw-title tw-text-left"}>{verb} Exercise</h2>
         <p className={"tw-py-6 tw-body-text"}>
           You will now have the opportunity to learn how to build the lab from
           inception, ideation, and planning, all the way to development and
           becoming deeply familiar with our internal component library, best
-          practices, and tech stack. Click “Start” to begin with lab design!
+          practices, and tech stack. Click “{verb}” to begin with lab design!
         </p>
       </div>
 
@@ -87,11 +89,15 @@ const StartExercise = () => {
         })}
 
       <LabButton
-        label="START"
+        label={verb.toUpperCase()}
         onClick={() => handleNav(ROUTES.SECTION_LAB_IDEA)}
       />
     </div>
   );
+};
+
+StartExercise.propTypes = {
+  verb: PropTypes.string,
 };
 
 export default StartExercise;

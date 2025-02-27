@@ -36,8 +36,9 @@ const Main = (props) => {
       <Lab0Context.Provider
         value={{ section, setSection, updateSectionStatus, handleNav }}
       >
-        <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
+        <Router className={"tw-p-3"}>
           <StartExercise default path={"/*"} />
+          <StartExercise path={"/Continue"} verb="Continue" />
         </Router>
       </Lab0Context.Provider>
     </>
