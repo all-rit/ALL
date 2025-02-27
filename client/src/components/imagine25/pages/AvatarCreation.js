@@ -89,7 +89,9 @@ const AvatarCreation = (props) => {
 
   return (
     <>
-      <h3 className={"tw-title tw-pb-3"}>Create Your Most Lookalike Avatar!</h3>
+      <h3 className={"tw-title tw-pb-3"}>
+        Create an Avatar That Resembles You!
+      </h3>
       <div className={"tw-flex tw-justify-center"}>
         <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
       </div>
@@ -116,6 +118,7 @@ const AvatarCreation = (props) => {
                     "skinColor",
                     props.setUserAvatar,
                     {
+                      Pale: "Pale",
                       Light: "Light",
                       Brown: "Medium Light",
                       DarkBrown: "Medium Dark",
