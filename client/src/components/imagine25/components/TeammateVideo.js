@@ -37,8 +37,6 @@ const TeammateVideo = (props) => {
   let teammateId = teammateIdJSON.teammateId;
   let messageShown = teammateIdJSON.messageShown;
 
-  console.log(teammateId);
-
   const [videoSrc, setVideoSrc] = useState(
     videoPaths[teammateId] || videoPaths[0],
   );
@@ -59,7 +57,6 @@ const TeammateVideo = (props) => {
     };
 
     updateVideoSource();
-    console.log("SRC==" + videoSrc);
   }, [location, teammateId]);
 
   return (
