@@ -38,10 +38,10 @@ const Main = () => {
   changes are held persitently throughout
   page navigation*/
   const [userAvatar, setUserAvatar] = useState({
-    hairStyle: "NoHair",
-    hairColor: "",
-    shirtColor: "White",
-    skinColor: "Pale",
+    hairStyle: "Default",
+    hairColor: "Default",
+    shirtColor: "Default",
+    skinColor: "Default",
   });
 
   const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();

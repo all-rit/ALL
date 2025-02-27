@@ -75,10 +75,10 @@ const AvatarCreation = (props) => {
   const nextOnClick = async () => {
     //Check to see if all feilds have been selected
     if (
-      props.userAvatar.hairColor != "" &&
-      props.userAvatar.hairStyle != "" &&
-      props.userAvatar.clotheColor != "" &&
-      props.userAvatar.skinColor != ""
+      props.userAvatar.hairColor != "Default" &&
+      props.userAvatar.hairStyle != "Default" &&
+      props.userAvatar.clotheColor != "Default" &&
+      props.userAvatar.skinColor != "Default"
     ) {
       navigate("/Imagine2025/TeammateSelection");
       await ImagineService.postUserAvatar("1", props.userAvatar, 25);
@@ -141,6 +141,7 @@ const AvatarCreation = (props) => {
                       ShortHairShortFlat: "Short Straight",
                       LongHairCurly: "Long Curly",
                       ShortHairShortCurly: "Short Curly",
+                      ShortHairTheCaesar: "Buzz",
                       NoHair: "Bald",
                     },
                   )}
@@ -174,7 +175,7 @@ const AvatarCreation = (props) => {
                     "clotheColor",
                     props.setUserAvatar,
                     {
-                      Gray01: "Gray",
+                      Red: "Red",
                       Black: "Black",
                       PastelBlue: "Blue",
                       PastelYellow: "Yellow",
