@@ -9,17 +9,21 @@ const ScorePage = () => {
   //Random score that will be generated for both teams
   const totalUserScore = Math.floor(Math.random() * 1000 + 500);
 
-  const userScore = Math.floor(Math.random() * totalUserScore);
+  const userScore = Math.floor(
+    Math.random() * (totalUserScore * 0.6) + totalUserScore * 0.2,
+  );
   const teammateScore = totalUserScore - userScore;
 
   /*opponent score will always be less than user score, but never less than 475
       This is done so that the game seems realistically close*/
   const totalOpponentScore = Math.floor(
-    (userScore - 500) * Math.random() + 475,
+    Math.random() * (totalUserScore * 0.8) + totalUserScore * 0.2,
   );
-  //Calcute Opponent and Opponent Score
-  //get two random number that add up to totalScore every time
-  const opponentScore1 = Math.floor(Math.random() * totalOpponentScore);
+
+  // Ensure a fair distribution between opponents
+  const opponentScore1 = Math.floor(
+    Math.random() * (totalOpponentScore * 0.6) + totalOpponentScore * 0.2,
+  );
   const opponentScore2 = totalOpponentScore - opponentScore1;
 
   return (
