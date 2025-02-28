@@ -1,39 +1,32 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DragDropGame from "../../../all-components/DragAndDrop/DragAndDrop";
 import Lab0Context from "../Lab0Context";
+import {
+  columns,
+  initial_Bank,
+  correctAssignments,
+} from "../../../../constants/lab0/DesignALab/LabCategoryDND";
 
 const DesignLabIntroduction = () => {
   const [success, setSuccess] = useState(false);
+  const [cols, setCols] = useState(() => structuredClone(columns));
+  const [bank, setBank] = useState(() => structuredClone(initial_Bank));
+  const [correct, setCorrect] = useState(() =>
+    structuredClone(correctAssignments),
+  );
+
+  // Handles if user goes to another page, reset objects
+  useEffect(() => {
+    setCols(structuredClone(columns));
+    setBank(structuredClone(initial_Bank));
+    setCorrect(structuredClone(correctAssignments));
+  }, []);
 
   const { handleNav } = useContext(Lab0Context);
   const navigateNext = () => {
+    console.log(columns);
     handleNav("DesignNewCategory");
   };
-
-  const Columns = [
-    { id: "column1", title: "Accessibility", cards: [] },
-    { id: "column2", title: "AI / ML", cards: [] },
-    { id: "column3", title: "New Category", cards: [] },
-  ];
-
-  const initial_Bank = [
-    { id: "card8", content: "Computer Vision", isCorrect: true },
-    { id: "card4", content: "Focus Order", isCorrect: true },
-    { id: "card1", content: "Dyspraxia", isCorrect: true },
-    { id: "card6", content: "Natural Language Processing", isCorrect: true },
-    { id: "card7", content: "Neural Networks", isCorrect: true },
-    { id: "card3", content: "Alt Text", isCorrect: true },
-    { id: "card10", content: "Digital Privacy", isCorrect: true },
-    { id: "card5", content: "Federated Learning", isCorrect: true },
-    { id: "card9", content: "Cryptography", isCorrect: true },
-    { id: "card2", content: "Photosensitivity", isCorrect: true },
-  ];
-
-  const correctAssignments = [
-    { id: "column1", cards: ["card1", "card2", "card3", "card4"] },
-    { id: "column2", cards: ["card5", "card6", "card7", "card8"] },
-    { id: "column3", cards: ["card9", "card10"] },
-  ];
 
   return (
     <div>
@@ -85,9 +78,9 @@ const DesignLabIntroduction = () => {
             "tw-flex tw-items-center tw-justify-center tw-h-[6rem] tw-text-center tw-px-4 tw-py-4 " +
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"
           }
-          cols={Columns}
-          initial_bank={initial_Bank}
-          correct_assignments={correctAssignments}
+          cols={cols}
+          initial_bank={bank}
+          correct_assignments={correct}
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}

@@ -1,69 +1,63 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Lab0Context from "../Lab0Context";
 import DragDropGame from "../../../all-components/DragAndDrop/DragAndDrop";
 import _ from "lodash";
+import {
+  columns_new_category,
+  previous_Bank,
+  correctAssignmentsNewCategory,
+} from "../../../../constants/lab0/DesignALab/LabCategoryDND";
 
 const DesignSortNewCategory = () => {
   const { newCategoryName, newLabTopics, handleNav } = useContext(Lab0Context);
 
   const [success, setSuccess] = useState(false);
+  const [cols, setCols] = useState(() => structuredClone(columns_new_category));
+  const [bank, setBank] = useState(() => structuredClone(previous_Bank));
+  const [correct, setCorrect] = useState(() =>
+    structuredClone(correctAssignmentsNewCategory),
+  );
+
+  // Handles if user goes to another page, reset objects
+  useEffect(() => {
+    setCols(structuredClone(columns_new_category));
+    setBank(structuredClone(previous_Bank));
+    setCorrect(structuredClone(correctAssignmentsNewCategory));
+  }, []);
 
   const navigateNext = () => {
     handleNav("DesignNewCategory");
   };
 
-  const Columns = [
-    { id: "column1", title: "Accessibility", cards: [] },
-    { id: "column2", title: "AI / ML", cards: [] },
-    { id: "column3", title: newCategoryName, cards: [] },
-  ];
+  const Columns = cols.map((col) =>
+    col.id === "column3" ? { ...col, title: newCategoryName } : col,
+  );
 
-  // const shuffleArray = (array) => {
-  //   const shuffled = [...array];
-  //   for (let i = shuffled.length - 1; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  //   }
-  //   return shuffled;
-  // };
-
-  const previous_Bank = [
-    { id: "card8", content: "Computer Vision", isCorrect: true },
-    { id: "card4", content: "Focus Order", isCorrect: true },
-    { id: "card1", content: "Dyspraxia", isCorrect: true },
-    { id: "card6", content: "Natural Language Processing", isCorrect: true },
-    { id: "card7", content: "Neural Networks", isCorrect: true },
-    { id: "card3", content: "Alt Text", isCorrect: true },
-    { id: "card5", content: "Federated Learning", isCorrect: true },
-    { id: "card2", content: "Photosensitivity", isCorrect: true },
-  ];
   const newBank = () => {
     newLabTopics.forEach((topic) => {
-      const newId = previous_Bank.length + 1;
-      previous_Bank.push({
+      const newId = bank.length + 1;
+      bank.push({
         id: "card" + newId,
         content: topic.value,
         isCorrect: true,
       });
     });
-    return previous_Bank;
+    return bank;
   };
 
-  const correctAssignments = [
-    { id: "column1", cards: ["card1", "card2", "card3", "card4"] },
-    { id: "column2", cards: ["card5", "card6", "card7", "card8"] },
-    { id: "column3", cards: [] },
-  ];
-
   const newCorrectAssignments = () => {
-    const column3 = correctAssignments.find((col) => col.id === "column3");
-
-    if (column3) {
-      for (let i = 0; i < newLabTopics.length; i++) {
-        column3.cards.push("card" + (8 + 1 + i));
+    return correct.map((col) => {
+      if (col.id === "column3") {
+        return {
+          ...col,
+          cards: [
+            ...col.cards,
+            ...newLabTopics.map((_, i) => "card" + (8 + 1 + i)),
+          ],
+        };
       }
-    }
-    return correctAssignments;
+      return col;
+    });
   };
 
   return (
