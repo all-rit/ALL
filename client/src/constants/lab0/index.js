@@ -37,79 +37,79 @@ const ROUTES = {
 
 // All section objects (image URLs not final)
 const SECTIONS = {
-  SECTION_LAB_IDEA: {
+  [SECTION_LAB_IDEA]: {
     category: SECTION_CATEGORY_DESIGN,
     name: SECTION_LAB_IDEA,
     displayName: "Lab Idea",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_EXPERIENTIAL_EXERCISE: {
+  [SECTION_EXPERIENTIAL_EXERCISE]: {
     category: SECTION_CATEGORY_DESIGN,
     name: SECTION_EXPERIENTIAL_EXERCISE,
     displayName: "Experiential Exercise",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_SPRINT_PLANNING: {
+  [SECTION_SPRINT_PLANNING]: {
     category: SECTION_CATEGORY_DESIGN,
     name: SECTION_SPRINT_PLANNING,
     displayName: "Sprint Planning",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_LAB_DATA_REPAIR: {
+  [SECTION_LAB_DATA_REPAIR]: {
     category: SECTION_CATEGORY_BACKEND,
     name: SECTION_LAB_DATA_REPAIR,
     displayName: "Basic Lab Data",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_SCHEMA_REPAIR: {
+  [SECTION_SCHEMA_REPAIR]: {
     category: SECTION_CATEGORY_BACKEND,
     name: SECTION_SCHEMA_REPAIR,
     displayName: "Database Design & Schema Models",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_SERVICE_CONTROLLER_REPAIR: {
+  [SECTION_SERVICE_CONTROLLER_REPAIR]: {
     category: SECTION_CATEGORY_BACKEND,
     name: SECTION_SERVICE_CONTROLLER_REPAIR,
     displayName: "Service Layer & Controllers",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_ROUTING_REPAIR: {
+  [SECTION_ROUTING_REPAIR]: {
     category: SECTION_CATEGORY_BACKEND,
     name: SECTION_ROUTING_REPAIR,
     displayName: "API Endpoints & Routing",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_BACKEND_TIPS_TRICKS: {
+  [SECTION_BACKEND_TIPS_TRICKS]: {
     category: SECTION_CATEGORY_BACKEND,
     name: SECTION_BACKEND_TIPS_TRICKS,
     displayName: "Backend Tips & Tricks",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_BOILERPLATE_REPAIR: {
+  [SECTION_BOILERPLATE_REPAIR]: {
     category: SECTION_CATEGORY_FRONTEND,
     name: SECTION_BOILERPLATE_REPAIR,
     displayName: "Lab Boilerplate Setup",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_INTEGRATION_REPAIR: {
+  [SECTION_INTEGRATION_REPAIR]: {
     category: SECTION_CATEGORY_FRONTEND,
     name: SECTION_INTEGRATION_REPAIR,
     displayName: "Backend Integration",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_CORE_LAB_PAGES_REPAIR: {
+  [SECTION_CORE_LAB_PAGES_REPAIR]: {
     category: SECTION_CATEGORY_FRONTEND,
     name: SECTION_CORE_LAB_PAGES_REPAIR,
     displayName: "Core Lab Pages",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_COMPONENT_LIBRARY: {
+  [SECTION_COMPONENT_LIBRARY]: {
     category: SECTION_CATEGORY_FRONTEND,
     name: SECTION_COMPONENT_LIBRARY,
     displayName: "Component Library",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  SECTION_FRONTEND_TIPS_TRICKS: {
+  [SECTION_FRONTEND_TIPS_TRICKS]: {
     category: SECTION_CATEGORY_FRONTEND,
     name: SECTION_FRONTEND_TIPS_TRICKS,
     displayName: "Frontend Tips & Tricks",
