@@ -20,7 +20,7 @@ const ProgressService = {
         section: section,
         sectionStatus: sectionStatus,
       },
-    ).then((res) => res.json());
+    );
   },
 };
 
