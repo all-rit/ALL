@@ -4,6 +4,7 @@ import useMainStateContext from "../../reducers/MainContext";
 const { nanoid } = require("nanoid");
 import { navigate } from "@reach/router";
 import ImagineService from "../../services/ImagineService";
+import TeammateVideo from "./components/TeammateVideo";
 
 // This component is the start component that updates the user ID
 const UpdateId = () => {
@@ -35,6 +36,7 @@ const UpdateId = () => {
         Click the <strong> Get Started </strong> below to begin the exercise!{" "}
       </h2>
       <ALLButton label={"Get Started"} large={true} onClick={handleUpdateID} />
+      <TeammateVideo teammateId={0} messageShown={true} />
     </div>
   );
 };

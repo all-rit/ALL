@@ -1,48 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "@reach/router";
 import ImagineService from "src/services/ImagineService";
-
-const videoPaths = {
-  0: "/videos/video0.mp4",
-  1: "../videos/video1.mp4",
-  2: "../videos/video2.mp4",
-  3: "../videos/video2.mp4",
-};
-
-const groupVideoPaths = {
-  0: {
-    experiential: "../videos/0experiential.mp4",
-    expression: "../videos/0expression.mp4",
-    control: "../videos/0control.mp4",
-  },
-  1: {
-    experiential: "../videos/1experiential.mp4",
-    expression: "../videos/1expression.mp4",
-    control: "../videos/1control.mp4",
-  },
-  2: {
-    experiential: "../videos/2experiential.mp4",
-    expression: "../videos/2expression.mp4",
-    control: "../videos/2control.mp4",
-  },
-  3: {
-    experiential: "../videos/3experiential.mp4",
-    expression: "../videos/3expression.mp4",
-    control: "../videos/3control.mp4",
-  },
-};
+import { videoPaths, groupVideoPaths } from "src/constants/imagine25/Videos";
 
 const TeammateVideo = (props) => {
   let teammateIdJSON = props;
   let teammateId = teammateIdJSON.teammateId;
   let messageShown = teammateIdJSON.messageShown;
 
-  console.log(teammateId);
-
   const [videoSrc, setVideoSrc] = useState(
     videoPaths[teammateId] || videoPaths[0],
   );
-  const location = useLocation();
 
   useEffect(() => {
     const updateVideoSource = async () => {
@@ -59,8 +26,7 @@ const TeammateVideo = (props) => {
     };
 
     updateVideoSource();
-    console.log("SRC==" + videoSrc);
-  }, [location, teammateId]);
+  });
 
   return (
     <div className="tw-fixed tw-top-[110px] tw-right-1 tw-p-4 tw-pointer-events-none bg-white border tw-rounded-lg tw-max-w-[300px]">
