@@ -12,6 +12,7 @@ import {
 } from "src/constants/imagine25/Avatar";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
+import AnalysisPage from "./pages/AnalysisPage";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -82,6 +83,13 @@ const Main = () => {
             }
           >
             <UpdateId default path={"/"} />
+            <Survey
+              className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
+              path={`/PreSurvey`}
+              type={"pre"}
+              year={year}
+              userID={sessionStorage.getItem("userID")}
+            />
             <AvatarCreation
               path={"/AvatarCreation"}
               userAvatar={userAvatar}
@@ -109,13 +117,7 @@ const Main = () => {
             />
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
-            <Survey
-              className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
-              path={`/PreSurvey`}
-              type={"pre"}
-              year={year}
-              userID={sessionStorage.getItem("userID")}
-            />
+            <AnalysisPage path={"/Analysis"} />
           </Router>
         </div>
       </div>

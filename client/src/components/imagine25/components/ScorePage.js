@@ -1,9 +1,10 @@
+import { navigate } from "@reach/router";
 import React from "react";
 import { Button } from "reactstrap";
 
 const ScorePage = () => {
   const navigation = () => {
-    console.log("move to next page");
+    navigate("/Imagine2025/Analysis");
   };
 
   //Random score that will be generated for both teams
@@ -33,7 +34,7 @@ const ScorePage = () => {
       <div className="tw-grid tw-grid-cols-2 tw-pt-8 tw-justify-center">
         <div className="tw-my-20 tw-body-text tw-mx-auto">
           <div className="tw-font-bold">
-            Overall User Team Score: {userScore + teammateScore}
+            Overall Team Score: {userScore + teammateScore}
           </div>
           <div>Your Score: {userScore}</div>
           <div>Your Teammate Score: {teammateScore}</div>
