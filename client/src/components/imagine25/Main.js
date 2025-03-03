@@ -10,6 +10,8 @@ import {
   opponentAvatars,
   teammateAvatars,
 } from "src/constants/imagine25/Avatar";
+import GalagaInstructions from "./pages/GalagaInstruction";
+import Galaga from "./pages/Game";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -20,6 +22,7 @@ const shuffleArray = (array) => {
     array[j] = temp;
   }
 };
+
 /*Note this is not in the main fuction as
 we do not want the user to have a radnom array
 each time they go back and forth between pages.*/
@@ -61,6 +64,7 @@ const Main = () => {
               "tw-row-span-3 tw-col-span-8 tw-bg-primary-yellow tw-rounded-bl-lg tw-flex shadow"
             }
           />
+
           <div
             className={
               "tw-row-span-5 tw-col-span-8 tw-bg-primary-blue tw-rounded-bl-lg tw-flex shadow"
@@ -97,12 +101,14 @@ const Main = () => {
               avatars={opponentAvatars}
               imagineService={ImagineService.postOpponentSelection}
               title={"Opponent"}
-              nextNavigation={() => alert("no navigation implemented ;)")}
+              nextNavigation={() => navigate("/Imagine2025/GalagaInstructions")}
               prevNavigation={() => navigate("/Imagine2025/TeammateSelection")}
               avatarSelected={opponentAvatarSelected}
               setAvatarSelected={setOpponentAvatarSelected}
               path={"/OpponentSelection"}
             />
+            <GalagaInstructions path={"/GalagaInstructions"} />
+            <Galaga path={"/Galaga"} />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PreSurvey`}

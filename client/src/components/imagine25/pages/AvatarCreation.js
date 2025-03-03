@@ -16,6 +16,7 @@ import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import { ERROR } from "src/constants/notifications";
 import useMainStateContext from "src/reducers/MainContext";
+import ImagineHeader from "../components/ImagineHeader";
 
 //Function for each respective row in the avatarcreation page to stylize them
 const AvatarStyling = (
@@ -89,12 +90,7 @@ const AvatarCreation = (props) => {
 
   return (
     <>
-      <h3 className={"tw-title tw-pb-3"}>
-        Create an Avatar That Resembles You!
-      </h3>
-      <div className={"tw-flex tw-justify-center"}>
-        <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
-      </div>
+      <ImagineHeader title="Design Your Avatar" />
       {Frame(
         <div className="d-flex justify-content-center">
           <div>
