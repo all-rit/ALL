@@ -3,7 +3,7 @@ import "./Game.css";
 import ScorePage from "../components/ScorePage";
 
 const Game = () => {
-  const contentSizing = "tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xl:tw-h-[600px]";
+  const contentSizing = "tw-rounded-xl tw-w-[52vw] tw-h-[39vw]";
 
   const [containerFormating, setContainerFormating] = useState(
     "tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]",
@@ -41,7 +41,7 @@ const Game = () => {
     <div
       //make backgorund black if game is running
       className={
-        "tw-w-[52vw] xs:tw-h-[500px] md:tw-h-[525px] lg:tw-h-[550px] xl:tw-h-[600px] tw-rounded-xl " +
+        "tw-rounded-xl tw-w-[52vw] xs:tw-h-[500px] md:tw-h-[525px] lg:tw-h-[550px] xl:tw-h-[600px] " +
         containerFormating
       }
     >
