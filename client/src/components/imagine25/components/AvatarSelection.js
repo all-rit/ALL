@@ -3,6 +3,7 @@ import Avatar from "avataaars";
 import "./avatarSelection.css";
 import { Frame } from "../components/Frame";
 import PropTypes from "prop-types";
+import ImagineHeader from "./ImagineHeader";
 
 const AvatarSelection = (props) => {
   const nextOnClick = async () => {
@@ -16,10 +17,7 @@ const AvatarSelection = (props) => {
 
   return (
     <>
-      <h3 className={"tw-title tw-py-3"}>Select Your {props.title}</h3>
-      <div className={"tw-flex tw-justify-center"}>
-        <hr className={"tw-w-3/5 tw-bg-labLightGray"} />
-      </div>
+      <ImagineHeader title={"Select Your " + props.title} />
       {Frame(
         <div className="tw-grid tw-grid-rows-2 tw-grid-flow-col tw-gap-10 justify-content-center my-4">
           {props.avatars.map((avatar, index) => {
