@@ -244,6 +244,7 @@ router.post('/imagine23/readingSectionPagePosition', async function(req, res) {
   const resp = await ImagineController.readingSectionPagePosition(req);
   res.send(resp);
 });
+
 router.post('/imagine25/teammateAvatarSelection', async function(req, res) {
   const resp = await ImagineController.postTeammateAvatar(req);
   res.send(resp);
@@ -261,6 +262,10 @@ router.post('/imagine25/newID', async function(req, res) {
   res.send(resp);
 });
 
+router.get('/imagine25/getGroup/:userID', async function(req, res) {
+  const group = await ImagineController.getGroup(req);
+  res.json(group);
+});
 
 // Imagine 2025
 router.post('/imagine25/preSurvey', async function(req, res) {
