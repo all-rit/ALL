@@ -4,7 +4,7 @@ import { ROUTES } from "../../../constants/lab0";
 import Lab0Context from "./Lab0Context";
 
 const SelectExercise = () => {
-  const { WRITE_LAB_INTRO, DEVELOP_LAB_INTRO } = ROUTES;
+  const { DESIGN_LAB_INTRO, DEVELOP_LAB_INTRO } = ROUTES;
 
   const { handleNav } = useContext(Lab0Context);
 
@@ -33,7 +33,7 @@ const SelectExercise = () => {
       >
         <LabButton
           label={"How to Write a Lab"}
-          onClick={() => handleNav(WRITE_LAB_INTRO)}
+          onClick={() => handleNav(DESIGN_LAB_INTRO)}
         />
         <LabButton
           label={"How to Develop a Lab"}
