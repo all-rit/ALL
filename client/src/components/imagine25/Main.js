@@ -12,7 +12,6 @@ import {
 } from "src/constants/imagine25/Avatar";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
-import AnalysisPage from "./pages/AnalysisPage";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -117,7 +116,6 @@ const Main = () => {
             />
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
-            <AnalysisPage path={"/Analysis"} />
           </Router>
         </div>
       </div>

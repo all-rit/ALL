@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Game.css";
 import { Button } from "reactstrap";
+import PropTypes from "prop-types";
+import ImagineService from "src/services/ImagineService";
 
-const ScorePage = () => {
+const ScorePage = ({ nextPage }) => {
   //Random score that will be generated for both teams
   const totalUserScore = Math.floor(Math.random() * 1000 + 500);
 
@@ -47,11 +49,65 @@ const ScorePage = () => {
 
       <Button
         className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-        onClick={() => alert("/Imagine2025/Analysis")}
+        onClick={nextPage}
       >
         Analyze Game
       </Button>
     </>
+  );
+};
+
+ScorePage.propTypes = {
+  nextPage: PropTypes.func,
+};
+
+const Analysis = () => {
+  const [content, setContent] = useState(null);
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      const user = await ImagineService.getUserByID(
+        sessionStorage.getItem("userID"),
+        25,
+      );
+
+      let text;
+      switch (user.section) {
+        case "experiential":
+          text =
+            "Sorry, your shirt is " +
+            user.avatar.clotheColor +
+            ", we simply cannot tolerate such awful choices and you and your teammte are both are disqualified.";
+          break;
+        case "expression":
+          text =
+            "Sorry, your teammate's shirt is " +
+            user.teammateAvatar.clotheColor +
+            ", we simply cannot tolerate such awful choices. You and your teammte are both are disqualified.";
+          break;
+        case "control":
+          text = "Congrats on winning!";
+          break;
+        default:
+          text = "";
+          break;
+      }
+      setContent(<p className="tw-body-text tw-my-24">{text}</p>);
+    };
+    fetchContent();
+  }, []);
+
+  return (
+    <div className="tw-text-center tw-w-[50%] tw-mx-auto tw-h-[100%] tw-items-center">
+      <h3 className="tw-title text-center">Analysis</h3>
+      {content}
+      <Button
+        className="btn btn-primary text-black btn-xl text-uppercase"
+        onClick={() => alert("no next yet")}
+      >
+        Next
+      </Button>
+    </div>
   );
 };
 
@@ -78,7 +134,14 @@ const Game = () => {
       setSeconds((prevSeconds) => {
         if (prevSeconds <= 1) {
           clearInterval(timer);
-          setContent(<ScorePage className={contentSizing} />);
+          setContent(
+            <ScorePage
+              className={contentSizing}
+              nextPage={() =>
+                setContent(<Analysis className={contentSizing} />)
+              }
+            />,
+          );
           setContainerFormating("tw-mt-[7rem]");
           return;
         }
