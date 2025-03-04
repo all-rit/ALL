@@ -86,7 +86,8 @@ const Analysis = () => {
             ", we simply cannot tolerate such awful choices. You and your teammte are both are disqualified.";
           break;
         case "control":
-          text = "Congrats on winning!";
+          text =
+            "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.";
           break;
         default:
           text = "";
@@ -148,7 +149,7 @@ const Game = () => {
 
         return prevSeconds - 1;
       });
-    }, 10);
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
 
