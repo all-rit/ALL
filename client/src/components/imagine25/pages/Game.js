@@ -56,7 +56,7 @@ const ScorePage = ({ nextPage }) => {
     </>
   );
 };
-
+//I hate that this validation is required
 ScorePage.propTypes = {
   nextPage: PropTypes.func,
 };
@@ -64,41 +64,35 @@ ScorePage.propTypes = {
 const Analysis = () => {
   const [content, setContent] = useState(null);
 
+  //until the userID is grabbed, the page will techincally be blank until the useeffect activates
   useEffect(() => {
     const fetchContent = async () => {
+      //yoink that user data
       const user = await ImagineService.getUserByID(
         sessionStorage.getItem("userID"),
         25,
       );
 
-      let text;
-      switch (user.section) {
-        case "experiential":
-          text =
-            "Sorry, your shirt is " +
-            user.avatar.clotheColor +
-            ", we simply cannot tolerate such awful choices and you and your teammte are both are disqualified.";
-          break;
-        case "expression":
-          text =
-            "Sorry, your teammate's shirt is " +
-            user.teammateAvatar.clotheColor +
-            ", we simply cannot tolerate such awful choices. You and your teammte are both are disqualified.";
-          break;
-        case "control":
-          text =
-            "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.";
-          break;
-        default:
-          text = "";
-          break;
-      }
-      setContent(<p className="tw-body-text tw-my-24">{text}</p>);
+      //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
+      const text = {
+        experiential:
+          "Sorry, your shirt is " +
+          user.avatar.clotheColor +
+          ", we simply cannot tolerate such awful choices and you and your teammte are both are disqualified.",
+        expression:
+          "Sorry, your teammate's shirt is " +
+          user.teammateAvatar.clotheColor +
+          ", we simply cannot tolerate such awful choices. You and your teammte are both are disqualified.",
+        control:
+          "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
+      };
+      setContent(<p className="tw-body-text tw-my-24">{text[user.section]}</p>);
     };
     fetchContent();
   }, []);
 
   return (
+    //container aligns everything horizontally
     <div className="tw-text-center tw-w-[50%] tw-mx-auto tw-h-[100%] tw-items-center">
       <h3 className="tw-title text-center">Analysis</h3>
       {content}
@@ -115,6 +109,7 @@ const Analysis = () => {
 const Game = () => {
   const contentSizing = "tw-rounded-xl tw-w-[52vw] tw-h-[39vw]";
 
+  //format for the differnt diplayed content types
   const [containerFormating, setContainerFormating] = useState(
     "tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]",
   );
