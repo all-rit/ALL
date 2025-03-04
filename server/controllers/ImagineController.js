@@ -75,9 +75,13 @@ const getUsers = async (req, res) => {
 };
 
 const getUserByID = async (req, res) => {
+  // const { userID, avatar, year } = req.body;
   try {
-    const {year, userID} = req.params;
-    const user = await ImagineService.getUserByID(userID, year);
+    const {userID, year} = req.params;
+    const user = await ImagineService.getUserByID({
+      userID,
+      year,
+    });
     return user;
   } catch (error) {
     console.log('Error retrieving user by ID: ', error);

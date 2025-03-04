@@ -5,7 +5,7 @@ import { Frame } from "../components/Frame";
 import PropTypes from "prop-types";
 import useMainStateContext from "src/reducers/MainContext";
 import { ERROR } from "src/constants/notifications";
-import ImagineHeader from "./ImagineHeader";
+import ImagineHeader from "../components/ImagineHeader";
 
 const AvatarSelection = (props) => {
   //snackbar
@@ -15,7 +15,11 @@ const AvatarSelection = (props) => {
   const nextOnClick = async () => {
     if (props.avatarSelected != null) {
       props.nextNavigation();
-      await props.imagineService("1", props.avatars[props.avatarSelected], 25);
+      await props.imagineService(
+        sessionStorage.getItem("userID"),
+        props.avatars[props.avatarSelected],
+        25,
+      );
       return;
     }
     actions.showSnackbar("Please select your " + props.title, ERROR);
@@ -44,7 +48,7 @@ const AvatarSelection = (props) => {
                 <Avatar
                   topType={avatar.hairStyle}
                   hairColor={avatar.hairColor}
-                  clotheColor={avatar.shirtColor}
+                  clotheColor={avatar.clotheColor}
                   skinColor={avatar.skinColor}
                   clotheType="ShirtCrewNeck"
                   className="xs:tw-h-[100px] xs:tw-w-[100px] sm:tw-h-[100px] sm:tw-w-[100px] md:tw-h-[125px] md:tw-w-[125px] lg:tw-h-[150px] lg:tw-w-[150px]"
@@ -66,7 +70,7 @@ AvatarSelection.propTypes = {
   imagineService: PropTypes.func.isRequired,
   nextNavigation: PropTypes.func,
   prevNavigation: PropTypes.func,
-  avatarSelected: PropTypes.number.isRequired,
+  avatarSelected: PropTypes.number,
   setAvatarSelected: PropTypes.func.isRequired,
 };
 

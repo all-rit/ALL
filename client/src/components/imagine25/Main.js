@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { navigate, Router } from "@reach/router";
 import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
-import AvatarSelection from "./components/AvatarSelection";
+import AvatarSelection from "./pages/AvatarSelection";
 import ImagineService from "src/services/ImagineService";
 import useMainStateContext from "src/reducers/MainContext";
 import Survey from "../all-components/imagine-components/SurveyHandlerComp";
