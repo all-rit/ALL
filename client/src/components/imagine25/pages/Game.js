@@ -117,7 +117,7 @@ const Game = () => {
   //Content that is embeded on the left side
   const [content, setContent] = useState(
     <iframe
-      src="https://microstudio.io/Nerozz/galaga/3E7A6TBT/"
+      src="https://microstudio.io/Imagine2025/galaga/6GZNBHTD/"
       className={contentSizing}
     />,
   );
