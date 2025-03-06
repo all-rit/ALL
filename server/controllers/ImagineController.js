@@ -74,6 +74,16 @@ const getUsers = async (req, res) => {
   }
 };
 
+const getGroup = async (req, res) => {
+  try {
+    const {year, userID} = req.params;
+    const group = await ImagineService.getGroup(userID, year);
+    return group;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getUserByID = async (req, res) => {
   // const { userID, avatar, year } = req.body;
   try {
@@ -195,4 +205,5 @@ module.exports = {
   submitStudy,
   postTeammateAvatar,
   postOpponentAvatar,
+  getGroup,
 };
