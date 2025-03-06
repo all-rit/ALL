@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import Lab2Color from "../../../../assets/images/lab0/Lab2Color.png";
-import Lab2Colorblind from "../../../../assets/images/lab0/Lab2ColorBlind.png";
-import Lab2Codeblock from "../../../../assets/images/lab0/Lab2Codeblock.png";
-import LabButton from "../../../all-components/LabButton";
-import Lab0Context from "../Lab0Context";
+import Lab2Color from "../../../../../assets/images/lab0/Lab2Color.png";
+import Lab2Colorblind from "../../../../../assets/images/lab0/Lab2ColorBlind.png";
+import Lab2Codeblock from "../../../../../assets/images/lab0/Lab2Codeblock.png";
+import LabButton from "../../../../all-components/LabButton";
+import Lab0Context from "../../Lab0Context";
 
 const ExperientialIntroduction = () => {
   const { handleNav } = useContext(Lab0Context);

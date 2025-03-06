@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import LabButton from "../../../all-components/LabButton";
-import Lab0Context from "../Lab0Context";
+import LabButton from "../../../../all-components/LabButton";
+import Lab0Context from "../../Lab0Context";
 
 const DesignLabDecision = () => {
   const { handleNav } = useContext(Lab0Context);

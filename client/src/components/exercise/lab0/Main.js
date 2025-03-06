@@ -3,9 +3,15 @@ import { navigate, Router } from "@reach/router";
 import SelectExercise from "./SelectExercise";
 import Lab0Context from "./Lab0Context";
 import { EXERCISE_STATES } from "../../../constants/lab0";
-import ExperientialIntroduction from "./DesignALab/ExperientialIntroduction";
-import CreateExperientialExercise from "./DesignALab/CreateExperientialExercise";
-import DesignLabDecision from "./DesignALab/DesignLabDecision";
+import ExperientialIntroduction from "./DesignLabSection/ExperientialActivity/ExperientialIntroduction";
+import CreateExperientialExercise from "./DesignLabSection/ExperientialActivity/CreateExperientialExercise";
+import DesignLabDecision from "./DesignLabSection/ExperientialActivity/DesignLabDecision";
+import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
+import DesignLabIntroduction from "./DesignLabSection/DesignLabIntroduction";
+import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
+import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
+import DesignNewCategory from "./DesignLabSection/DesignNewCategory";
+import DesignSortNewCategory from "./DesignLabSection/DesignSortNewCategory";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -20,8 +26,11 @@ const Main = () => {
     navigate(`/Lab0/Exercise/${route}`);
   };
 
+  const [newCategoryName, setNewCategoryName] = useState("");
+  const [newLabTopics, setNewLabTopics] = useState([]);
+
   return (
-    <>
+    <div>
       <Lab0Context.Provider
         value={{
           exerciseState,
@@ -33,16 +42,26 @@ const Main = () => {
           setExperientialExerciseComplete,
           sprintPlanningComplete,
           setSprintPlanningComplete,
+          newCategoryName,
+          setNewCategoryName,
+          newLabTopics,
+          setNewLabTopics,
         }}
       >
-        <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
+        <Router className={"tw-p-3 tw-h-[40rem]"}>
           <SelectExercise default path={"/*"} />
           <DesignLabDecision path={"/LabDecision"} />
           <ExperientialIntroduction path={"/ExperientialIntro"} />
           <CreateExperientialExercise path={"/ExperientialExercise"} />
+          <DesignLabIntroduction path={"/DesignLabIntro"} />
+          <DesignNewCategory path={"/DesignNewCategory"} />
+          <DesignSortNewCategory path={"/DesignSortNewCategory"} />
+          <ScrumIntroduction path={"/ScrumIntro"} />
+          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
+          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
         </Router>
       </Lab0Context.Provider>
-    </>
+    </div>
   );
 };
 

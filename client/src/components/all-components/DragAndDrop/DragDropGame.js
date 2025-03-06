@@ -15,9 +15,9 @@ import LabButton from "../LabButton";
  * ];
  *
  * const initialBank = [
- *   { id: "card1", content: "Card 1" },
- *   { id: "card2", content: "Card 2" },
- *   { id: "card3", content: "Card 3" },
+ *   { id: "card1", content: "Card 1", isCorrect: true },
+ *   { id: "card2", content: "Card 2", isCorrect: true },
+ *   { id: "card3", content: "Card 3", isCorrect: true },
  * ];
  *
  * const correctAssignments = [
@@ -39,22 +39,25 @@ const DragDropGame = ({
   containerStyle,
   colStyle,
   bankStyle,
-  cardStyle,
+  colCardStyle,
+  bankCardStyle,
   msgStyle,
-  gameStyle,
   cols,
   initial_bank,
   correct_assignments,
-  handleNav,
   success,
   setSuccess,
-  updateExerciseState,
+  colHeaderStyle,
+  handleNav,
+  colContainerStyle,
+  gameStyle,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initial_bank);
   const [message, setMessage] = useState("");
   const correctAssignments = arrayToObject(correct_assignments, "id");
-  const [buttonLabel, setButtonLabel] = useState("Submit");
+
+  const [correct, setCorrect] = useState(success);
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -117,20 +120,55 @@ const DragDropGame = ({
   };
 
   const verifyPlacement = () => {
+    let incorrectCards = [];
+    let updatedColumns = { ...columns };
+
+    // Don't let them submit without placing all the cards
+    if (bank.length !== 0) {
+      setMessage("Please place all cards before submitting.");
+      return;
+    }
+
     for (const [columnId, currentCol] of Object.entries(correctAssignments)) {
-      const placedCards = columns[columnId].cards.map((card) => card.id);
-      if (
-        placedCards.sort().toString() !== currentCol.cards.sort().toString()
-      ) {
-        setButtonLabel("Submit");
-        setMessage("Incorrect placement. Try again!");
-        return;
+      const placedCards = updatedColumns[columnId].cards;
+      const correctCards = currentCol.cards;
+
+      // Find misplaced card objects
+      const misplaced = placedCards.filter(
+        (card) => !correctCards.includes(card.id),
+      );
+
+      placedCards.forEach((card) => {
+        if (correctCards.includes(card.id)) {
+          card.isCorrect = true;
+        }
+      });
+
+      if (misplaced.length > 0) {
+        incorrectCards = incorrectCards.concat(misplaced);
       }
     }
+    if (incorrectCards.length > 0) {
+      setMessage("Incorrect placement. Try again!");
+
+      incorrectCards.forEach((card) => {
+        card.isCorrect = false;
+      });
+
+      setColumns(updatedColumns);
+      return;
+    }
+
+    for (const columnId in updatedColumns) {
+      updatedColumns[columnId].cards.forEach((card) => {
+        card.isCorrect = true; // Revert all cards to correct state
+      });
+    }
+
     setMessage("Correct placement! Well done!");
-    setButtonLabel("Next");
-    updateExerciseState();
     setSuccess(true);
+    setCorrect(true);
+    setColumns(updatedColumns);
   };
 
   return (
@@ -143,27 +181,25 @@ const DragDropGame = ({
               column={columns[colId]}
               cards={columns[colId].cards}
               colStyle={colStyle}
-              cardStyle={cardStyle}
+              cardStyle={colCardStyle}
+              colHeaderStyle={colHeaderStyle}
+              colContainerStyle={colContainerStyle}
             />
           ))}
         </div>
-        <DroppableBank
-          bank={bank}
-          bankStyle={bankStyle}
-          cardStyle={cardStyle}
-        />
+        <div className={"tw-flex tw-justify-center tw-items-center tw-h-full"}>
+          <DroppableBank
+            bank={bank}
+            bankStyle={bankStyle}
+            cardStyle={bankCardStyle}
+          />
+        </div>
       </div>
-      <div className={"tw-w-full tw-flex tw-flex-col tw-items-center"}>
-        {message && (
-          <p
-            className={`${msgStyle} ${success ? "tw-bg-success" : "tw-bg-error"}`}
-          >
-            {message}
-          </p>
-        )}
+      <div className={"tw-w-full tw-flex tw-items-center"}>
+        {message && <p className={msgStyle}>{message}</p>}
         <LabButton
-          onClick={success ? handleNav : verifyPlacement}
-          label={buttonLabel}
+          onClick={correct ? handleNav : verifyPlacement}
+          label={correct ? "Next" : "Submit"}
         />
       </div>
     </DndContext>
@@ -174,9 +210,9 @@ DragDropGame.propTypes = {
   containerStyle: PropTypes.string.isRequired,
   colStyle: PropTypes.string.isRequired,
   bankStyle: PropTypes.string.isRequired,
-  cardStyle: PropTypes.string.isRequired,
+  colCardStyle: PropTypes.string.isRequired,
+  bankCardStyle: PropTypes.string.isRequired,
   msgStyle: PropTypes.string.isRequired,
-  gameStyle: PropTypes.string,
   cols: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -196,10 +232,12 @@ DragDropGame.propTypes = {
       cards: PropTypes.array.isRequired,
     }),
   ),
-  updateExerciseState: PropTypes.func,
+  success: PropTypes.bool,
+  setSuccess: PropTypes.func,
+  colHeaderStyle: PropTypes.string,
   handleNav: PropTypes.func.isRequired,
-  success: PropTypes.bool.isRequired,
-  setSuccess: PropTypes.func.isRequired,
+  colContainerStyle: PropTypes.string,
+  gameStyle: PropTypes.string,
 };
 
 export default DragDropGame;

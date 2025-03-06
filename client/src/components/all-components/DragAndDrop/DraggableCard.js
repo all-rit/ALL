@@ -1,9 +1,10 @@
 import { useDraggable } from "@dnd-kit/core";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { twMerge } from "tailwind-merge";
 
 const DraggableCard = ({ card, cardStyle }) => {
-  // const { id, content } = card;
+  const [borderColor, setBorderColor] = useState("");
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: card.id,
@@ -13,13 +14,23 @@ const DraggableCard = ({ card, cardStyle }) => {
     ? { transform: `translate(${transform.x}px, ${transform.y}px)` }
     : {};
 
+  useEffect(() => {
+    if (!card.isCorrect) {
+      setBorderColor(
+        "tw-border-[#d03c3c] tw-border-error tw-shadow-2xl tw-shadow-error tw-font-bold tw-text-error",
+      );
+    } else {
+      setBorderColor("");
+    }
+  }, [card.isCorrect]);
+
   return (
     <div
       ref={setNodeRef}
       {...listeners}
       {...attributes}
       style={style}
-      className={cardStyle}
+      className={twMerge(`${card.color} ${cardStyle}`, borderColor)}
     >
       {card.content}
       <p className={"tw-font-bold"}>{card.title}</p>
@@ -34,6 +45,8 @@ DraggableCard.propTypes = {
     title: PropTypes.string,
     content: PropTypes.string.isRequired,
     body: PropTypes.string,
+    color: PropTypes.string,
+    isCorrect: PropTypes.bool,
   }).isRequired,
   cardStyle: PropTypes.string.isRequired,
 };

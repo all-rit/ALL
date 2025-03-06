@@ -4,12 +4,15 @@ const Lab0Context = createContext({
   exerciseState: "",
   setExerciseState: () => {},
   handleNav: () => {},
-  labIdeasComplete: false,
   setLabIdeasComplete: () => {},
   experientialExerciseComplete: false,
   setExperientialExerciseComplete: () => {},
   sprintPlanningComplete: false,
   setSprintPlanningComplete: () => {},
+  newCategoryName: "",
+  setNewCategoryName: () => {},
+  newLabTopics: [],
+  setNewLabTopics: () => {},
 });
 
 export default Lab0Context;
