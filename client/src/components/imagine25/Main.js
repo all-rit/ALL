@@ -39,6 +39,8 @@ const Main = () => {
     startImagine();
   }, []);
 
+  // const [isUnderAge,setIsUnderAge] = useState(false);
+
   /*All avatars states are held in main so
   changes are held persitently throughout
   page navigation*/
@@ -120,6 +122,20 @@ const Main = () => {
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
             <RetentionReading path={"/RetentionReading"} />
+            <Survey
+              className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
+              path={`/PreSurvey`}
+              type={"pre"}
+              year={year}
+              userID={sessionStorage.getItem("userID")}
+            />
+            <Survey
+              className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
+              path={`/PostSurvey`}
+              type={"post"}
+              year={year}
+              userID={sessionStorage.getItem("userID")}
+            />
           </Router>
         </div>
       </div>
