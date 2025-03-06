@@ -273,5 +273,9 @@ router.post('/imagine25/preSurvey', async function(req, res) {
   res.send(JSON.stringify(resp));
 });
 
+router.post('/imagine25/postSurvey', async function(req, res) {
+  const resp = await ImagineController.postSurvey(req, res);
+  res.send(JSON.stringify(resp));
+});
 
 module.exports = router;
