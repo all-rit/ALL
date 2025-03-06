@@ -188,9 +188,7 @@ const AvatarCreation = (props) => {
           </div>
         </div>,
         nextOnClick,
-        () => {
-          alert("No previous page implemented yet, HE-HE-HE-HA");
-        },
+        null,
       )}
     </>
   );
