@@ -51,7 +51,7 @@ const CreateExperientialExercise = () => {
         colCardStyle={
           "tw-p-2 tw-my-1 tw-w-full tw-rounded tw-shadow-sm tw-cursor-grab tw-min-h-[9rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black tw-bg-primary-blue"
         }
-        msgStyle={"tw-p-3 tw-my-3 tw-text-white tw-rounded-md"}
+        msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
         cols={initialColumns}
         initial_bank={initialBank}
         correct_assignments={correctAssignments}

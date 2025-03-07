@@ -195,7 +195,11 @@ const DragDropGame = ({
           />
         </div>
       </div>
-      <div className={"tw-w-full tw-flex tw-items-center"}>
+      <div
+        className={
+          "tw-w-full tw-flex tw-justify-center tw-flex-col tw-items-center tw-p-6"
+        }
+      >
         {message && <p className={msgStyle}>{message}</p>}
         <LabButton
           onClick={correct ? handleNav : verifyPlacement}
