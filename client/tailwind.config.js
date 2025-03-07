@@ -78,6 +78,7 @@ module.exports = {
           gray: "#d3d3d3",
           white: "#FFFFFF",
         },
+        transparent: "transparent",
       },
       spacing: {
         128: "32rem",
