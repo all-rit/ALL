@@ -34,7 +34,10 @@ const StartExercise = (props) => {
           next = section.name;
         }
 
-        map[section.category].push(getCardRow(progress, section));
+        map[section.category].push({
+          ...section,
+          sectionStatus: progress[section.name],
+        });
       });
 
       setCategories(map);
@@ -43,26 +46,8 @@ const StartExercise = (props) => {
     getProgress();
   });
 
-  const getCardRow = (progress, section) => {
-    return (
-      <ALLCardRow
-        key={section.name}
-        title={section.displayName}
-        imageURL={section.imageURL}
-        circlesLabel="Completed"
-        circles={1}
-        circlesFilled={
-          progress[section.name] === SECTION_STATUSES.SECTION_COMPLETED ? 1 : 0
-        }
-        buttonLabel={getCardRowButtonLabel(progress, section)}
-        buttonStyle="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
-        onClick={() => handleNav(section.name)}
-      />
-    );
-  };
-
-  const getCardRowButtonLabel = (progress, section) => {
-    switch (progress[section.name]) {
+  const getCardRowButtonLabel = (section) => {
+    switch (section.sectionStatus) {
       case SECTION_STATUSES.SECTION_COMPLETED:
         return "Redo";
       case SECTION_STATUSES.SECTION_IN_PROGRESS:
@@ -93,7 +78,26 @@ const StartExercise = (props) => {
           return (
             <div key={category}>
               <p className="tw-text-left tw-text-lg tw-font-bold">{category}</p>
-              {categories[category]}
+              {categories[category].map((section) => {
+                return (
+                  <ALLCardRow
+                    key={section.name}
+                    title={section.displayName}
+                    imageURL={section.imageURL}
+                    circlesLabel="Completed"
+                    circles={1}
+                    circlesFilled={
+                      section.sectionStatus ===
+                      SECTION_STATUSES.SECTION_COMPLETED
+                        ? 1
+                        : 0
+                    }
+                    buttonLabel={getCardRowButtonLabel(section)}
+                    buttonStyle="tw-cursor-pointer tw-bg-darkGray poppins tw-text-white tw-font-medium tw-border-0 tw-px-3 tw-m-0 tw-text-xs md:tw-text-xl"
+                    onClick={() => handleNav(section.name)}
+                  />
+                );
+              })}
             </div>
           );
         })}
