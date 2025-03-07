@@ -44,7 +44,7 @@ const StartExercise = (props) => {
       setNextSection(next);
     }
     getProgress();
-  });
+  }, [state.main.user]);
 
   const getCardRowButtonLabel = (section) => {
     switch (section.sectionStatus) {
