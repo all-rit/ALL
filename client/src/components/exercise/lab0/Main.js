@@ -3,6 +3,9 @@ import { navigate, Router } from "@reach/router";
 import SelectExercise from "./SelectExercise";
 import Lab0Context from "./Lab0Context";
 import { EXERCISE_STATES } from "../../../constants/lab0";
+import ExperientialIntroduction from "./DesignLabSection/ExperientialActivity/ExperientialIntroduction";
+import CreateExperientialExercise from "./DesignLabSection/ExperientialActivity/CreateExperientialExercise";
+import DesignLabDecision from "./DesignLabSection/ExperientialActivity/DesignLabDecision";
 import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
 import DesignLabIntroduction from "./DesignLabSection/DesignLabIntroduction";
 import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
@@ -15,6 +18,10 @@ const Main = () => {
   const [exerciseState, setExerciseState] = useState(
     EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
   );
+  const [labIdeasComplete, setLabIdeasComplete] = useState(false);
+  const [experientialExerciseComplete, setExperientialExerciseComplete] =
+    useState(false);
+  const [sprintPlanningComplete, setSprintPlanningComplete] = useState(false);
 
   const handleNav = (route) => {
     navigate(`/Lab0/Exercise/${route}`);
@@ -30,6 +37,12 @@ const Main = () => {
           exerciseState,
           setExerciseState,
           handleNav,
+          labIdeasComplete,
+          setLabIdeasComplete,
+          experientialExerciseComplete,
+          setExperientialExerciseComplete,
+          sprintPlanningComplete,
+          setSprintPlanningComplete,
           newCategoryName,
           setNewCategoryName,
           newLabTopics,
@@ -38,6 +51,9 @@ const Main = () => {
       >
         <Router className={"tw-p-3 tw-h-[40rem]"}>
           <SelectExercise default path={"/*"} />
+          <DesignLabDecision path={"/LabDecision"} />
+          <ExperientialIntroduction path={"/ExperientialIntro"} />
+          <CreateExperientialExercise path={"/ExperientialExercise"} />
           <DesignLabIntroduction path={"/DesignLabIntro"} />
           <DesignNewCategory path={"/DesignNewCategory"} />
           <DesignSortNewCategory path={"/DesignSortNewCategory"} />

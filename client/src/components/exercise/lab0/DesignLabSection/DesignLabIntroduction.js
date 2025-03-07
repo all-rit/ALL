@@ -53,27 +53,28 @@ const DesignLabIntroduction = () => {
         </ol>
       </div>
       <br />
-      <div className="tw-p-3 tw-h-[40rem]">
+      <div className="tw-p-3 tw-h-[60rem]">
         <DragDropGame
+          gameStyle={"tw-flex tw-flex-col tw-w-full"}
           containerStyle={"tw-flex tw-gap-5 tw-p-5 tw-w-full tw-justify-center"}
           colStyle={
             "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-flex-1 tw-min-h-[20rem] tw-pb-4 tw-flex tw-flex-col tw-w-full"
           }
           bankStyle={
-            "tw-grid tw-grid-cols-3 sm:tw-grid-cols-4 lg:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-t-4 " +
+            "tw-grid tw-grid-cols-3 xs:tw-grid-cols-3 md:tw-grid-cols-4 xl:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-t-4 " +
             "tw-border-dashed tw-border-black tw-border-r-0 tw-border-l-0 tw-border-b-0 tw-my-5 tw-justify-center " +
             "tw-w-full tw-min-w-full tw-max-w-full tw-flex-shrink-0 tw-h-auto tw-min-h-[10rem] " +
             "after:tw-content-[''] after:tw-block after:tw-w-[12rem] after:tw-h-[6rem] after:tw-opacity-0 after:tw-col-span-1"
           }
           colCardStyle={
-            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-py-4 tw-my-1 tw-shadow-sm tw-cursor-grab" +
-            "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto  "
+            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-py-4 tw-my-1 tw-shadow-sm focus:tw-shadow-xl tw-cursor-grab" +
+            "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto "
           }
           bankCardStyle={
-            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-4 tw-m-2 tw-shadow-sm tw-cursor-grab " +
-            "tw-text-black 2xl:tw-w-[16rem] xl:tw-w-[12rem] lg:tw-w-[12rem] tw-h-[4rem] tw-flex tw-items-center tw-justify-center"
+            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-2 tw-m-2 tw-shadow-sm tw-cursor-grab focus:tw-shadow-xl " +
+            "tw-text-black tw-h-[4rem] tw-flex tw-items-center tw-body-text tw-leading-snug xs:tw-text-sm md:tw-text-[1rem] tw-justify-center tw-min-w-[7rem]"
           }
-          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-py-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-8`}
+          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
           colHeaderStyle={
             "tw-flex tw-items-center tw-justify-center tw-h-[6rem] tw-text-center tw-px-4 tw-py-4 " +
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"
