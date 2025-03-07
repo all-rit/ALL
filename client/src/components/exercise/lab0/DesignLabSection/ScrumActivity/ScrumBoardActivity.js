@@ -20,15 +20,15 @@ const ScrumBoardActivity = () => {
       <h2 className={"tw-title tw-text-left"}> Sprint Planning Activity</h2>
       <p className={"tw-py-3 tw-body-text"}>
         In this exercise you will be given the opportunity to plan your
-        development schedule of the lab using the knowledge you’ve learned about
-        SCRUM and Agile development.
+        development schedule of the Accessibility to Focus Order exercise that
+        you just created in the previous activity.
       </p>
       <p className={"tw-body-text"}>
-        Using the blocks below, drag and drop the blocks in the correct
-        sequence.
+        Using the blocks below, drag and drop them into the correct sprint
+        sequence based on the stories that are present in each block.
       </p>
       <p className={"tw-py-3 tw-body-text"}>
-        To see if your sequence is correct, click the Submit Sprint Plan button.
+        To see if your sequence is correct, click the Submit button.
       </p>
       <div className={"tw-flex tw-flex-col tw-items-center"}>
         <DragDropGame
@@ -40,9 +40,6 @@ const ScrumBoardActivity = () => {
           bankStyle={
             "tw-flex tw-gap-2 tw-min-h-[5rem] tw-min-w-[20rem] tw-mb-3 tw-w-full tw-p-4 tw-border-dashed tw-border-[#c3c3c3] tw-border-[.5px] tw-rounded-lg"
           }
-          cardStyle={
-            "tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-[17rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black"
-          }
           msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-3 tw-my-3 tw-text-white tw-rounded-md`}
           cols={initialColumns}
           initial_bank={initialBank}
@@ -50,6 +47,12 @@ const ScrumBoardActivity = () => {
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}
+          bankCardStyle={
+            "tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-[17rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black"
+          }
+          colCardStyle={
+            "tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-[17rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black"
+          }
         />
       </div>
     </div>

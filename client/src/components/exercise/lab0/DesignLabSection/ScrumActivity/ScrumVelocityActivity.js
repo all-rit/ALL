@@ -1,4 +1,4 @@
-import DragDropGame from "../../../../all-components/DragAndDrop/DragAndDrop";
+import DragDropGame from "../../../../all-components/DragAndDrop/DragDropGame";
 import {
   correctAssignments,
   initialBank,
@@ -38,7 +38,10 @@ const ScrumVelocityActivity = () => {
           bankStyle={
             "tw-flex tw-gap-2 tw-min-h-[5rem] tw-min-w-[10rem] tw-mb-3 tw-w-full tw-p-4 tw-border-dashed tw-border-[#c3c3c3] tw-border-[.5px] tw-rounded-lg"
           }
-          cardStyle={
+          bankCardStyle={
+            "tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-[17rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black"
+          }
+          colCardStyle={
             "tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-[17rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black"
           }
           msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-3 tw-my-3 tw-text-white tw-rounded-md`}
