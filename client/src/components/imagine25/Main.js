@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { navigate, Router } from "@reach/router";
 import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
+import Done from "./Done";
 import AvatarSelection from "./components/AvatarSelection";
 import ImagineService from "src/services/ImagineService";
 import useMainStateContext from "src/reducers/MainContext";
@@ -82,6 +83,7 @@ const Main = () => {
             }
           >
             <UpdateId default path={"/"} />
+            <Done path={"/Done"} />
             <AvatarCreation
               path={"/AvatarCreation"}
               userAvatar={userAvatar}
