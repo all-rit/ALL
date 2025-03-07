@@ -2,28 +2,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import useMainStateContext from "../../../reducers/MainContext";
 import { navigate, Router } from "@reach/router";
+// import SelectExercise from "./SelectExercise";
 import Lab0Context from "./Lab0Context";
-import { SECTION_STATUSES, SECTIONS } from "../../../constants/lab0/index";
-import { EXERCISE_PLAYING } from "../../../constants/index";
-import ProgressService from "src/services/lab0/ProgressService";
-import StartExercise from "./StartExercise";
-import ALLCardFlip from "src/components/all-components/ALLCardFlip";
-import LabButton from "../../all-components/LabButton";
+import { EXERCISE_STATES } from "../../../constants/lab0";
+import Testing from "./Testing";
 
-const Main = (props) => {
-  const { user } = props;
-  const { actions } = useMainStateContext();
-  const [section, setSectionState] = useState({});
-  const [temp, setTemp] = useState(false);
-
-  const updateSectionStatus = (section, sectionStatus) => {
-    ProgressService.submitProgress(
-      user.userid,
-      section.category,
-      section.name,
-      sectionStatus,
-    );
-  };
+const Main = () => {
+  const [exerciseState, setExerciseState] = useState(
+    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
+  );
 
   const handleNav = (route) => {
     if (route in SECTIONS) {
@@ -40,10 +27,12 @@ const Main = (props) => {
 
   return (
     <>
-      <Lab0Context.Provider value={{ section, updateSectionStatus, handleNav }}>
-        <Router className={"tw-p-3"}>
-          <StartExercise default path={"/*"} />
-          <StartExercise path={"/Continue"} verb="Continue" />
+      <Lab0Context.Provider
+        value={{ exerciseState, setExerciseState, handleNav }}
+      >
+        <Router className={"tw-p-3"} path={"/Lab0/Exercise/"}>
+          <Testing default path={"/*"} />
+          {/* <SelectExercise default path={"/*"} /> */}
         </Router>
         <ALLCardFlip
           width={3}
