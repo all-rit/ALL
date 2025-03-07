@@ -9,11 +9,12 @@ const DroppableColumn = ({
   colStyle,
   cardStyle,
   colHeaderStyle,
+  colContainerStyle,
 }) => {
   const { setNodeRef } = useDroppable({ id: column.id });
 
   return (
-    <div>
+    <div className={colContainerStyle}>
       <h4 className={colHeaderStyle}>{column.title}</h4>
       <div ref={setNodeRef} className={colStyle}>
         {cards.map((card) => (
@@ -33,11 +34,13 @@ DroppableColumn.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
+      isCorrect: PropTypes.bool,
     }),
   ).isRequired,
   colStyle: PropTypes.string.isRequired,
   cardStyle: PropTypes.string.isRequired,
   colHeaderStyle: PropTypes.string.isRequired,
+  colContainerStyle: PropTypes.string,
 };
 
 export default DroppableColumn;

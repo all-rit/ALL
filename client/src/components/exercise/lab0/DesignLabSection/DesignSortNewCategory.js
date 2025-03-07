@@ -1,31 +1,63 @@
 import React, { useContext, useEffect, useState } from "react";
-import DragDropGame from "../../../all-components/DragAndDrop/DragDropGame";
 import Lab0Context from "../Lab0Context";
+import DragDropGame from "../../../all-components/DragAndDrop/DragDropGame";
+import _ from "lodash";
 import {
-  columns,
-  initial_Bank,
-  correctAssignments,
+  columns_new_category,
+  previous_Bank,
+  correctAssignmentsNewCategory,
 } from "../../../../constants/lab0/DesignALab/LabCategoryDND";
 
-const DesignLabIntroduction = () => {
+const DesignSortNewCategory = () => {
+  const { newCategoryName, newLabTopics, handleNav } = useContext(Lab0Context);
+
   const [success, setSuccess] = useState(false);
-  const [cols, setCols] = useState(() => structuredClone(columns));
-  const [bank, setBank] = useState(() => structuredClone(initial_Bank));
+  const [cols, setCols] = useState(() => structuredClone(columns_new_category));
+  const [bank, setBank] = useState(() => structuredClone(previous_Bank));
   const [correct, setCorrect] = useState(() =>
-    structuredClone(correctAssignments),
+    structuredClone(correctAssignmentsNewCategory),
   );
 
   // Handles if user goes to another page, reset objects
   useEffect(() => {
-    setCols(structuredClone(columns));
-    setBank(structuredClone(initial_Bank));
-    setCorrect(structuredClone(correctAssignments));
+    setCols(structuredClone(columns_new_category));
+    setBank(structuredClone(previous_Bank));
+    setCorrect(structuredClone(correctAssignmentsNewCategory));
   }, []);
 
-  const { handleNav } = useContext(Lab0Context);
   const navigateNext = () => {
-    console.log(columns);
     handleNav("DesignNewCategory");
+  };
+
+  const Columns = cols.map((col) =>
+    col.id === "column3" ? { ...col, title: newCategoryName } : col,
+  );
+
+  const newBank = () => {
+    newLabTopics.forEach((topic) => {
+      const newId = bank.length + 1;
+      bank.push({
+        id: "card" + newId,
+        content: topic.value,
+        isCorrect: true,
+      });
+    });
+    return bank;
+  };
+
+  const newCorrectAssignments = () => {
+    return correct.map((col) => {
+      if (col.id === "column3") {
+        return {
+          ...col,
+          cards: [
+            ...col.cards,
+            ...newLabTopics.map((_, i) => "card" + (8 + 1 + i)),
+          ],
+        };
+      }
+      return col;
+    });
   };
 
   return (
@@ -67,7 +99,7 @@ const DesignLabIntroduction = () => {
           }
           colCardStyle={
             "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-py-4 tw-my-1 tw-shadow-sm tw-cursor-grab" +
-            "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto  "
+            "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto "
           }
           bankCardStyle={
             "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-4 tw-m-2 tw-shadow-sm tw-cursor-grab " +
@@ -78,17 +110,17 @@ const DesignLabIntroduction = () => {
             "tw-flex tw-items-center tw-justify-center tw-h-[6rem] tw-text-center tw-px-4 tw-py-4 " +
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"
           }
-          cols={cols}
-          initial_bank={bank}
-          correct_assignments={correct}
+          colContainerStyle={"tw-w-1/3"}
+          cols={Columns}
+          initial_bank={_.shuffle(newBank())}
+          correct_assignments={newCorrectAssignments()}
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}
-          colContainerStyle={"tw-w-1/3"}
         />
       </div>
     </div>
   );
 };
 
-export default DesignLabIntroduction;
+export default DesignSortNewCategory;
