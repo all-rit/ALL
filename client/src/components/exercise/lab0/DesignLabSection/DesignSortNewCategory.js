@@ -85,7 +85,7 @@ const DesignSortNewCategory = () => {
         </ol>
       </div>
       <br />
-      <div className="tw-p-3 tw-h-[40rem]">
+      <div className="tw-p-3 tw-h-[60rem]">
         <DragDropGame
           containerStyle={"tw-flex tw-gap-5 tw-p-5 tw-w-full tw-justify-center"}
           colStyle={
@@ -98,14 +98,14 @@ const DesignSortNewCategory = () => {
             "after:tw-content-[''] after:tw-block after:tw-w-[12rem] after:tw-h-[6rem] after:tw-opacity-0 after:tw-col-span-1"
           }
           colCardStyle={
-            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-py-4 tw-my-1 tw-shadow-sm tw-cursor-grab" +
+            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-py-4 tw-my-1 tw-shadow-sm focus:tw-shadow-xl tw-cursor-grab" +
             "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto "
           }
           bankCardStyle={
-            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-4 tw-m-2 tw-shadow-sm tw-cursor-grab " +
-            "tw-text-black 2xl:tw-w-[16rem] xl:tw-w-[12rem] lg:tw-w-[12rem] tw-h-[4rem] tw-flex tw-items-center tw-justify-center"
+            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-4 tw-m-2 tw-shadow-sm tw-cursor-grab focus:tw-shadow-xl " +
+            "tw-text-black tw-h-[4rem] tw-flex tw-items-center tw-body-text tw-leading-snug xs:tw-text-sm md:tw-text-[1rem] tw-justify-center tw-min-w-[6rem]"
           }
-          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-py-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-8`}
+          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-8`}
           colHeaderStyle={
             "tw-flex tw-items-center tw-justify-center tw-h-[6rem] tw-text-center tw-px-4 tw-py-4 " +
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"

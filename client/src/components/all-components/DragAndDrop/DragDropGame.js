@@ -50,6 +50,7 @@ const DragDropGame = ({
   colHeaderStyle,
   handleNav,
   colContainerStyle,
+  gameStyle,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
   const [bank, setBank] = useState(initial_bank);
@@ -172,31 +173,39 @@ const DragDropGame = ({
 
   return (
     <DndContext onDragEnd={onDragEnd}>
-      <div className={containerStyle}>
-        {Object.keys(columns).map((colId) => (
-          <DroppableColumn
-            key={colId}
-            column={columns[colId]}
-            cards={columns[colId].cards}
-            colStyle={colStyle}
-            cardStyle={colCardStyle}
-            colHeaderStyle={colHeaderStyle}
-            colContainerStyle={colContainerStyle}
+      <div className={gameStyle}>
+        <div className={containerStyle}>
+          {Object.keys(columns).map((colId) => (
+            <DroppableColumn
+              key={colId}
+              column={columns[colId]}
+              cards={columns[colId].cards}
+              colStyle={colStyle}
+              cardStyle={colCardStyle}
+              colHeaderStyle={colHeaderStyle}
+              colContainerStyle={colContainerStyle}
+            />
+          ))}
+        </div>
+        <div className={"tw-flex tw-justify-center tw-items-center tw-h-full"}>
+          <DroppableBank
+            bank={bank}
+            bankStyle={bankStyle}
+            cardStyle={bankCardStyle}
           />
-        ))}
+        </div>
       </div>
-      <div className={""}>
-        <DroppableBank
-          bank={bank}
-          bankStyle={bankStyle}
-          cardStyle={bankCardStyle}
+      <div
+        className={
+          "tw-w-full tw-flex tw-justify-center tw-flex-col tw-items-center tw-p-6"
+        }
+      >
+        {message && <p className={msgStyle}>{message}</p>}
+        <LabButton
+          onClick={correct ? handleNav : verifyPlacement}
+          label={correct ? "Next" : "Submit"}
         />
       </div>
-      {message && <p className={msgStyle}>{message}</p>}
-      <LabButton
-        onClick={correct ? handleNav : verifyPlacement}
-        label={correct ? "Next" : "Submit"}
-      />
     </DndContext>
   );
 };
@@ -232,6 +241,7 @@ DragDropGame.propTypes = {
   colHeaderStyle: PropTypes.string,
   handleNav: PropTypes.func.isRequired,
   colContainerStyle: PropTypes.string,
+  gameStyle: PropTypes.string,
 };
 
 export default DragDropGame;
