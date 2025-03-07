@@ -3,15 +3,50 @@ const initialColumns = [
   { id: "column2", title: "Sprint 2", cards: [] },
   { id: "column3", title: "Sprint 3", cards: [] },
   { id: "column4", title: "Sprint 4", cards: [] },
-  { id: "column5", title: "Sprint 5", cards: [] },
 ];
 
 const initialBank = [
-  { id: "card1", content: "Card 1", body: "", color: "tw-bg-[#F83F3F]" },
-  { id: "card2", content: "Card 2", body: "", color: "tw-bg-[#6D67E6]" },
-  { id: "card3", content: "Card 3", body: "", color: "tw-bg-[#FF860D]" },
-  { id: "card4", content: "Card 4", body: "", color: "tw-bg-[#37AA67]" },
-  { id: "card5", content: "Card 5", body: "", color: "tw-bg-[#FC7AAC]" },
+  {
+    id: "card1",
+    content: "Card 1",
+    body: `
+1. Explanation of Disordered Focus
+2. Hearing Mismatched Labels
+3. Explanation of the Inaccessibility
+    `,
+    color: "tw-bg-[#F83F3F]",
+  },
+  {
+    id: "card2",
+    content: "Card 2",
+    body: `
+1. Create Skeleton for Exercise Structure
+2. Create Exercise Introduction
+3. Display Blurred Webpage
+    `,
+    color: "tw-bg-[#6D67E6]",
+  },
+  {
+    id: "card3",
+    content: "Card 3",
+    body: `
+1. Create Code block for Improving Focus Order
+2. Create Data Service for Exercise
+3. Create Newly Accessible Webpage
+4. Create Key Takeaways
+    `,
+    color: "tw-bg-[#FF860D]",
+  },
+  {
+    id: "card4",
+    content: "Card 4",
+    body: `
+1. Create Screen Reader
+2. Create Tab through Nav
+3. Create Out of Order Tab Nav
+    `,
+    color: "tw-bg-[#37AA67]",
+  },
 ];
 
 const correctAssignments = [
@@ -19,7 +54,6 @@ const correctAssignments = [
   { id: "column2", cards: ["card4"] },
   { id: "column3", cards: ["card1"] },
   { id: "column4", cards: ["card3"] },
-  { id: "column5", cards: ["card5"] },
 ];
 
 module.exports = {

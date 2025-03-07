@@ -32,23 +32,27 @@ const ScrumVelocityReading = () => {
         cards below. What do you see that’s different?
       </p>
       <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
-        <Card color={"#6D67E6"} velocity={"7"}>
-          <ul className={"tw-px-4"}>
+        <Card color={"#6D67E6"} velocity={"6"}>
+          <ul className={"tw-px-4 tw-text-xs"}>
             <li className={"tw-list-decimal"}>
               Create Skeleton for Exercise Structure
             </li>
-            <li className={"tw-list-decimal"}>Create Component for</li>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
+            <li className={"tw-list-decimal"}>Create Exercise Introduction</li>
+            <li className={"tw-list-decimal"}>Display Blurred Webpage</li>
+            <li className={"tw-list-decimal"}>Create Screen Reader</li>
+            <li className={"tw-list-decimal"}> Create Tab through Nav</li>
+            <li className={"tw-list-decimal"}>Create Out of Order Tab Nav</li>
           </ul>
         </Card>
         <Card color={"#37AA67"} velocity={"3"}>
-          <ul className={"tw-px-4"}>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
+          <ul className={"tw-px-4  tw-text-sm"}>
+            <li className={"tw-list-decimal"}>
+              Explanation of Disordered Focus
+            </li>
+            <li className={"tw-list-decimal"}>Hearing Mismatched Labels</li>
+            <li className={"tw-list-decimal"}>
+              Explanation of the Inaccessibility
+            </li>
           </ul>
         </Card>
       </div>
@@ -61,24 +65,31 @@ const ScrumVelocityReading = () => {
       </p>
       <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
         <Card color={"#6D67E6"} velocity={"3"}>
-          <ul className={"tw-px-4"}>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
+          <ul className={"tw-px-4 tw-text-sm"}>
+            <li className={"tw-list-decimal"}>
+              Create Skeleton for Exercise Structure
+            </li>
+            <li className={"tw-list-decimal"}>Create Exercise Introduction</li>
+            <li className={"tw-list-decimal"}>Display Blurred Webpage</li>
           </ul>
         </Card>
         <Card color={"#FC7AAC"} velocity={"3"}>
-          <ul className={"tw-px-4"}>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
+          <ul className={"tw-px-4 tw-text-sm"}>
+            <li className={"tw-list-decimal"}>Create Screen Reader</li>
+            <li className={"tw-list-decimal"}> Create Tab through Nav</li>
+            <li className={"tw-list-decimal"}>Create Out of Order Tab Nav</li>
           </ul>
         </Card>
         <Card color={"#37AA67"} velocity={"3"}>
-          <ul className={"tw-px-4"}>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
-            <li className={"tw-list-decimal"}>item</li>
+          <ul className={"tw-px-4 tw-text-sm"}>
+            <li className={"tw-list-decimal"}>
+              {" "}
+              Explanation of Disordered Focus
+            </li>
+            <li className={"tw-list-decimal"}>Hearing Mismatched Labels</li>
+            <li className={"tw-list-decimal"}>
+              Explanation of the Inaccessibility
+            </li>
           </ul>
         </Card>
       </div>

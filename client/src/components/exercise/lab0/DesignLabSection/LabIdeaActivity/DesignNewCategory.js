@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import LabButton from "../../../all-components/LabButton";
-import Lab0Context from "../Lab0Context";
+import LabButton from "../../../../all-components/LabButton";
+import Lab0Context from "../../Lab0Context";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 
