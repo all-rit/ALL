@@ -7,11 +7,13 @@ import ExperientialIntroduction from "./DesignLabSection/ExperientialActivity/Ex
 import CreateExperientialExercise from "./DesignLabSection/ExperientialActivity/CreateExperientialExercise";
 import DesignLabDecision from "./DesignLabSection/ExperientialActivity/DesignLabDecision";
 import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
-import DesignLabIntroduction from "./DesignLabSection/DesignLabIntroduction";
+import DesignLabIntroduction from "./DesignLabSection/LabIdeaActivity/DesignLabIntroduction";
 import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
 import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
-import DesignNewCategory from "./DesignLabSection/DesignNewCategory";
-import DesignSortNewCategory from "./DesignLabSection/DesignSortNewCategory";
+import DesignNewCategory from "./DesignLabSection/LabIdeaActivity/DesignNewCategory";
+import DesignSortNewCategory from "./DesignLabSection/LabIdeaActivity/DesignSortNewCategory";
+import WireframeIntro from "./DesignLabSection/WireframingActivity/WireframeIntro";
+import WireframeFirstGlance from "./DesignLabSection/WireframingActivity/WireframeFirstGlance";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -59,6 +61,8 @@ const Main = () => {
           <ScrumIntroduction path={"/ScrumIntro"} />
           <ScrumBoardActivity path={"/ScrumBoardActivity"} />
           <ScrumVelocityReading path={"/ScrumVelocityReading"} />
+          <WireframeIntro path={"/WireframeIntro"} />
+          <WireframeFirstGlance path={"/WireframeFirstGlance"} />
         </Router>
       </Lab0Context.Provider>
     </div>
