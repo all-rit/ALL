@@ -40,14 +40,12 @@ const TeammateVideo = (props) => {
       <p>
         Teammate live from: <b>Buffalo, NY</b>
       </p>
-      <div className="tw-pt-[100px] tw-pb-[200px]">
-        <h1>Instructions:</h1>
-        <br></br>
-        <p>Use ← → arrow keys to move</p>
-        <p>Space bar to shoot</p>
-        <p>Don&#39;t touch enemies</p>
-        <br></br>
-        <p>Get a higher score than your opponents to win!</p>
+      <div className="tw-pt-8 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-6">
+        <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
+        <div>Image 1</div>
+        <div>Image 2</div>
+        <h4 className="tw-col-span-2 tw-text-center">Fire Weapon:</h4>
+        <div className="tw-col-span-2">Image 3</div>
       </div>
     </div>
   );
