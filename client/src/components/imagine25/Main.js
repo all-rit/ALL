@@ -3,7 +3,7 @@ import { navigate, Router } from "@reach/router";
 import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
 import Done from "./Done";
-import AvatarSelection from "./components/AvatarSelection";
+import AvatarSelection from "./pages/AvatarSelection";
 import ImagineService from "src/services/ImagineService";
 import useMainStateContext from "src/reducers/MainContext";
 import Survey from "../all-components/imagine-components/SurveyHandlerComp";
@@ -13,6 +13,7 @@ import {
 } from "src/constants/imagine25/Avatar";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
+import RetentionReading from "./pages/RetentionReading";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -84,6 +85,13 @@ const Main = () => {
           >
             <UpdateId default path={"/"} />
             <Done path={"/Done"} />
+            <Survey
+              className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
+              path={`/PreSurvey`}
+              type={"pre"}
+              year={year}
+              userID={sessionStorage.getItem("userID")}
+            />
             <AvatarCreation
               path={"/AvatarCreation"}
               userAvatar={userAvatar}
@@ -111,13 +119,7 @@ const Main = () => {
             />
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
-            <Survey
-              className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
-              path={`/PreSurvey`}
-              type={"pre"}
-              year={year}
-              userID={sessionStorage.getItem("userID")}
-            />
+            <RetentionReading path={"/RetentionReading"} />
           </Router>
         </div>
       </div>

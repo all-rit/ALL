@@ -262,11 +262,11 @@ router.post('/imagine25/newID', async function(req, res) {
   res.send(resp);
 });
 
-router.get('/imagine25/getGroup/:userID', async function(req, res) {
-  const group = await ImagineController.getGroup(req);
-  res.json(group);
+router.get('/imagine25/user/:userID', async function(req, res) {
+  req.params.year = 25;
+  const imagineUser = await ImagineController.getUserByID(req);
+  res.json(imagineUser);
 });
-
 // Imagine 2025
 router.post('/imagine25/preSurvey', async function(req, res) {
   const resp = await ImagineController.preSurvey(req, res);
