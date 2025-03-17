@@ -107,7 +107,8 @@ const Analysis = () => {
   );
 };
 const Game = () => {
-  const contentSizing = "tw-rounded-xl tw-w-[52vw] tw-h-[39vw]";
+  const contentSizing =
+    "tw-border tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
 
   //format for the differnt diplayed content types
   const [containerFormating, setContainerFormating] = useState(
@@ -138,13 +139,13 @@ const Game = () => {
               }
             />,
           );
-          setContainerFormating("tw-mt-[7rem]");
+          setContainerFormating("tw-pt-[7rem]");
           return;
         }
 
         return prevSeconds - 1;
       });
-    }, 1000);
+    }, 10);
     return () => clearInterval(timer);
   }, []);
 
@@ -153,10 +154,7 @@ const Game = () => {
     <div>
       <div
         //make backgorund black if game is running
-        className={
-          "tw-rounded-xl tw-w-[52vw] xs:tw-h-[500px] md:tw-h-[525px] lg:tw-h-[550px] xl:tw-h-[600px] " +
-          containerFormating
-        }
+        className={contentSizing + "  " + containerFormating}
       >
         {content}
         {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
