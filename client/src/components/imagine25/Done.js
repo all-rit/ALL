@@ -7,12 +7,6 @@ import { navigate } from "@reach/router";
 const Done = () => {
   const { actions } = useMainStateContext();
 
-  const startImagine = () => actions.setIsImagine(true);
-
-  useEffect(() => {
-    startImagine();
-  }, []);
-
   const handleNext = () => {
     navigate("/Imagine2025/");
   };
