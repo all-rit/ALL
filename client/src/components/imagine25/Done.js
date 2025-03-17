@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ALLButton from "../all-components/ALLButton";
-import useMainStateContext from "../../reducers/MainContext";
 import { navigate } from "@reach/router";
 
 // This component is the start component that updates the user ID
 const Done = () => {
-  const { actions } = useMainStateContext();
-
   const handleNext = () => {
     navigate("/Imagine2025/");
   };
