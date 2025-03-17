@@ -29,7 +29,7 @@ const TeammateVideo = (props) => {
   });
 
   return (
-    <div className="tw-fixed tw-top-[110px] tw-right-1 tw-p-4 tw-pointer-events-none bg-white border tw-rounded-lg tw-max-w-[300px]">
+    <div className="tw-absolute tw-top-[47px] tw-right-1 tw-p-4 tw-pointer-events-none bg-white border tw-rounded-lg tw-max-w-[300px] tw-max-h-[600px]">
       <video
         src={videoSrc}
         autoPlay

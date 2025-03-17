@@ -3,6 +3,7 @@ import "./Game.css";
 import { Button } from "reactstrap";
 import PropTypes from "prop-types";
 import ImagineService from "src/services/ImagineService";
+import TeammateVideo from "../components/TeammateVideo";
 
 const ScorePage = ({ nextPage }) => {
   //Random score that will be generated for both teams
@@ -105,7 +106,6 @@ const Analysis = () => {
     </div>
   );
 };
-
 const Game = () => {
   const contentSizing = "tw-rounded-xl tw-w-[52vw] tw-h-[39vw]";
 
@@ -150,18 +150,21 @@ const Game = () => {
 
   return (
     //flex container used to center game vertically, dimensinos are slightly different than content sizing for scaling purposes
-    <div
-      //make backgorund black if game is running
-      className={
-        "tw-rounded-xl tw-w-[52vw] xs:tw-h-[500px] md:tw-h-[525px] lg:tw-h-[550px] xl:tw-h-[600px] " +
-        containerFormating
-      }
-    >
-      {content}
-      {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
-      <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
-        <div>{seconds}</div>
+    <div>
+      <div
+        //make backgorund black if game is running
+        className={
+          "tw-rounded-xl tw-w-[52vw] xs:tw-h-[500px] md:tw-h-[525px] lg:tw-h-[550px] xl:tw-h-[600px] " +
+          containerFormating
+        }
+      >
+        {content}
+        {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
+        <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
+          <div>{seconds}</div>
+        </div>
       </div>
+      <TeammateVideo teammateId={0} messageShown={false} />
     </div>
   );
 };
