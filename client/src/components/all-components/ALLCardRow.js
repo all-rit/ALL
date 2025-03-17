@@ -55,7 +55,9 @@ const ALLCardRow = (props) => {
               );
             })}
           </div>
-          <p className={"tw-font-poppins tw-font-bold tw-text-md"}> {title}</p>
+          <p className={"tw-font-poppins tw-font-bold tw-text-md tw-text-left"}>
+            {title}
+          </p>
         </div>
         {/* Right */}
         <div className="tw-absolute tw-right-0 tw-top-5">

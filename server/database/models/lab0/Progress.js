@@ -1,13 +1,16 @@
 /* eslint-disable new-cap */
 module.exports = (sequelize, DataTypes) => {
   const lab0ProgressCategory = DataTypes.ENUM(
-      'DESIGNING',
+      'DESIGN',
       'BACKEND',
       'FRONTEND',
   );
 
   // TODO: Add Writing a Lab sections here too
   const lab0ProgressSection = DataTypes.ENUM(
+      'LabIdea',
+      'ExperientialExercise',
+      'SprintPlanning',
       'LabDataRepair',
       'SchemaRepair',
       'ServiceControllerRepair',
