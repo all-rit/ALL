@@ -82,7 +82,11 @@ const AvatarCreation = (props) => {
       props.userAvatar.skinColor != "Default"
     ) {
       navigate("/Imagine2025/TeammateSelection");
-      await ImagineService.postUserAvatar("1", props.userAvatar, 25);
+      await ImagineService.postUserAvatar(
+        sessionStorage.getItem("userID"),
+        props.userAvatar,
+        25,
+      );
       return;
     }
     actions.showSnackbar("Please finish creating your avatar", ERROR);
@@ -90,7 +94,7 @@ const AvatarCreation = (props) => {
 
   return (
     <>
-      <ImagineHeader title="Design Your Avatar" />
+      <ImagineHeader title="Make your Avatar Resemble You!" />
       {Frame(
         <div className="d-flex justify-content-center">
           <div>
@@ -184,9 +188,7 @@ const AvatarCreation = (props) => {
           </div>
         </div>,
         nextOnClick,
-        () => {
-          alert("No previous page implemented yet, HE-HE-HE-HA");
-        },
+        null,
       )}
     </>
   );
