@@ -99,9 +99,7 @@ const SurveyHandler = (props) => {
         // This will handle navigation
       } else if (surveyType === "post") {
         await ImagineService.postSurvey(userID, selectedAnswers, year);
-        {
-          /* //TODO Navigate to Retention Reading */
-        }
+        
         navigate("/Imagine2025/RetentionReading");
       }
     } catch (error) {

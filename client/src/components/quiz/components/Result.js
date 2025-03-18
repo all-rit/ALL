@@ -47,6 +47,7 @@ function Result(props) {
         isMultiCorrect.every((value) => value === true)
           ? (isCorrect = true)
           : (isCorrect = false);
+
         if (isCorrect) {
           isCorrect =
             getMultiCorrectNumCount(counter - 1) === isMultiCorrect.length
@@ -174,8 +175,42 @@ function Result(props) {
     }
   }
 
-  const handleImagineSurvey = () => {
+  const handleImagine23Survey = () => {
     navigate("/Imagine2023/PostSurvey");
+  };
+
+  const handleImagine25 = () => {
+    /**
+     * Navigate Function should direct to the Finish Imagine Activity Screen,
+     * Now it just goes to the main page.
+     */
+    navigate("/Imagine2025/Done");
+  };
+
+  const endButton = (Imagine, lab) => {
+    if (lab === 25) {
+      return <ALLButton label={"End Study"} onClick={handleImagine25} />;
+    } else if (lab == 23 && Imagine) {
+      return (
+        <>
+          <button
+            className="btn btn-primary btn-xl text-uppercase next"
+            onClick={handleImagine23Survey}
+          >
+            Continue to Post-Survey
+          </button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <ALLButton
+            label={"View Certificate"}
+            onClick={() => props.setViewCertificate(true)}
+          />
+        </>
+      );
+    }
   };
 
   return (
@@ -192,19 +227,7 @@ function Result(props) {
           {renderTableData()}
         </div>
         <div className=" d-flex flex-column justify-content-center tw-pt-12 tw-mb-10">
-          {props.isImagine ? (
-            <button
-              className="btn btn-primary btn-xl text-uppercase  next"
-              onClick={handleImagineSurvey}
-            >
-              Continue to Post-Survey
-            </button>
-          ) : (
-            <ALLButton
-              label={"View Certificate"}
-              onClick={() => props.setViewCertificate(true)}
-            />
-          )}
+          {endButton(props.isImagine, props.lab)}
         </div>
       </div>
     </div>

@@ -396,6 +396,35 @@ const determineSection2025 = async () => {
   return options[randIndex];
 };
 
+// user quiz score
+
+const quizScore = async (data) => {
+  const {userID, quizScore, year} = data;
+  const imagine = `Imagine${year}`;
+  try {
+    if (userID) {
+      const user = await db[imagine]
+          .findOne({
+            where:
+          {
+            userid: userID,
+          },
+          });
+      if (user !== null) {
+        user.quizScore = quizScore;
+        user.save();
+      } else {
+        db[imagine].create({
+          userid: userID,
+          quizScore: quizScore,
+        });
+      }
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 
 module.exports = {
   submitStudy,
@@ -411,4 +440,5 @@ module.exports = {
   postTeammateAvatar,
   postOpponentAvatar,
   getGroup,
+  quizScore,
 };

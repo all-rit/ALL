@@ -1,6 +1,7 @@
 import React from "react";
 import { Frame } from "../components/Frame";
 import ImagineHeader from "../components/ImagineHeader";
+import { navigate } from "@reach/router";
 
 const RetentionReading = () => {
   return (
@@ -12,7 +13,7 @@ const RetentionReading = () => {
           for bueno world :)
         </p>,
         () =>
-          alert("sorry, next is on break, he'll be back someitme next week"),
+          navigate("/Imagine2025/Quiz"),
         () => alert("Domain expansinon - no previous implemented"),
       )}
     </>
