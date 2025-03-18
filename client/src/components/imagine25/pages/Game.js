@@ -150,7 +150,7 @@ const Game = () => {
 
         return prevSeconds - 1;
       });
-    }, 10);
+    }, 100);
     return () => clearInterval(timer);
   }, []);
 
