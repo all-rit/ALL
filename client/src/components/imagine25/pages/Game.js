@@ -69,15 +69,22 @@ const Analysis = () => {
         25,
       );
 
+      const colorMap = {
+        PastelYellow: "yellow",
+        PastelBlue: "blue",
+      };
+
       //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
       const text = {
         experiential:
           "Sorry, your shirt is " +
-          user.avatar.clotheColor +
+          (colorMap[user.avatar.clotheColor] ||
+            user.avatar.clotheColor.toLowerCase()) +
           ", we simply cannot tolerate such awful choices and you and your teammte are both are disqualified.",
         expression:
           "Sorry, your teammate's shirt is " +
-          user.teammateAvatar.clotheColor +
+          (colorMap[user.teammateAvatar.clotheColor] ||
+            user.teammateAvatar.clotheColor.toLowerCase()) +
           ", we simply cannot tolerate such awful choices. You and your teammte are both are disqualified.",
         control:
           "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
@@ -141,7 +148,7 @@ const Game = () => {
 
         return prevSeconds - 1;
       });
-    }, 1000);
+    }, 10);
     return () => clearInterval(timer);
   }, []);
 
