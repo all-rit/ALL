@@ -3,62 +3,6 @@ import { Button } from "reactstrap";
 import ImagineService from "src/services/ImagineService";
 import TeammateVideo from "../components/TeammateVideo";
 
-const ScorePage = () => {
-  const [analysisPage, setAnalysisPage] = useState(false);
-  //Random score that will be generated for both teams
-  const totalUserScore = Math.floor(Math.random() * 1000 + 500);
-
-  const userScore = Math.floor(
-    Math.random() * (totalUserScore * 0.6) + totalUserScore * 0.2,
-  );
-  const teammateScore = totalUserScore - userScore;
-
-  /*opponent score will always be less than user score, but never less than 475
-      This is done so that the game seems realistically close*/
-  const totalOpponentScore = Math.floor(
-    Math.random() * (totalUserScore * 0.8) + totalUserScore * 0.2,
-  );
-
-  // Ensure a fair distribution between opponents
-  const opponentScore1 = Math.floor(
-    Math.random() * (totalOpponentScore * 0.6) + totalOpponentScore * 0.2,
-  );
-  const opponentScore2 = totalOpponentScore - opponentScore1;
-
-  return analysisPage ? (
-    <Analysis />
-  ) : (
-    <>
-      <h3 className="tw-title text-center">Game Outcome</h3>
-
-      <div className="tw-grid tw-grid-cols-2 tw-pt-8 tw-justify-center">
-        <div className="tw-my-20 tw-body-text tw-mx-auto">
-          <div className="tw-font-bold">
-            Overall Team Score: {userScore + teammateScore}
-          </div>
-          <div>Your Score: {userScore}</div>
-          <div>Your Teammate Score: {teammateScore}</div>
-        </div>
-
-        <div className="tw-my-20 tw-body-text tw-mx-auto">
-          <div className="tw-font-bold ">
-            Overall Opponent Score: {totalOpponentScore}
-          </div>
-          <div>Opponent 1 Score: {opponentScore1}</div>
-          <div>Opponent 2 Score: {opponentScore2}</div>
-        </div>
-      </div>
-
-      <Button
-        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-        onClick={() => setAnalysisPage(true)}
-      >
-        Analyze Game
-      </Button>
-    </>
-  );
-};
-
 const Analysis = () => {
   const [content, setContent] = useState(null);
 
@@ -113,9 +57,70 @@ const Analysis = () => {
   );
 };
 
+const ScorePage = () => {
+  //Random score that will be generated for both teams
+  const totalUserScore = Math.floor(Math.random() * 1000 + 500);
+
+  const userScore = Math.floor(
+    Math.random() * (totalUserScore * 0.6) + totalUserScore * 0.2,
+  );
+  const teammateScore = totalUserScore - userScore;
+
+  /*opponent score will always be less than user score, but never less than 475
+      This is done so that the game seems realistically close*/
+  const totalOpponentScore = Math.floor(
+    Math.random() * (totalUserScore * 0.8) + totalUserScore * 0.2,
+  );
+
+  // Ensure a fair distribution between opponents
+  const opponentScore1 = Math.floor(
+    Math.random() * (totalOpponentScore * 0.6) + totalOpponentScore * 0.2,
+  );
+  const opponentScore2 = totalOpponentScore - opponentScore1;
+
+  const [content, setContent] = useState(
+    <>
+      <h3 className="tw-title text-center">Game Outcome</h3>
+
+      <div className="tw-grid tw-grid-cols-2 tw-pt-8 tw-justify-center">
+        <div className="tw-my-20 tw-body-text tw-mx-auto">
+          <div className="tw-font-bold">
+            Overall Team Score: {userScore + teammateScore}
+          </div>
+          <div>Your Score: {userScore}</div>
+          <div>Your Teammate Score: {teammateScore}</div>
+        </div>
+
+        <div className="tw-my-20 tw-body-text tw-mx-auto">
+          <div className="tw-font-bold ">
+            Overall Opponent Score: {totalOpponentScore}
+          </div>
+          <div>Opponent 1 Score: {opponentScore1}</div>
+          <div>Opponent 2 Score: {opponentScore2}</div>
+        </div>
+      </div>
+
+      <Button
+        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+        onClick={() => setContent(<Analysis />)}
+      >
+        Analyze Game
+      </Button>
+    </>,
+  );
+
+  return content;
+};
+
 const Game = () => {
-  //Make game window immediately focused on so no clicking is needed on the embeded game
+  const contentSizing =
+    "tw-border tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
+
   const iframeRef = useRef(null);
+
+  const [gameActive, setGameActive] = useState(true);
+
+  const [seconds, setSeconds] = useState(60);
 
   //Checks the iframe ref to see if anything exists, when the iframe fully loads, immediately focus it
   useEffect(() => {
@@ -131,18 +136,6 @@ const Game = () => {
     }
   }, []);
 
-  const contentSizing =
-    "tw-border tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
-
-  //format for the differnt diplayed content types
-  const [containerFormating, setContainerFormating] = useState(
-    "tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]",
-  );
-
-  const [gameActive, setGameActive] = useState(true);
-
-  const [seconds, setSeconds] = useState(60);
-
   //When page loads timer starts that counts down from 60->0
   useEffect(() => {
     if (iframeRef.current) {
@@ -151,13 +144,12 @@ const Game = () => {
           if (prevSeconds <= 1) {
             clearInterval(timer);
             setGameActive(false);
-            setContainerFormating("tw-pt-[7rem]");
             return 0;
           }
 
           return prevSeconds - 1;
         });
-      }, 10);
+      }, 1000);
       return () => clearInterval(timer);
     }
   }, [iframeRef]);
@@ -165,7 +157,14 @@ const Game = () => {
   return (
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
     <div>
-      <div className={contentSizing + "  " + containerFormating}>
+      <div
+        className={
+          contentSizing +
+          (gameActive
+            ? " tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]"
+            : " tw-pt-[7rem]")
+        }
+      >
         {gameActive ? (
           <iframe
             ref={iframeRef}
