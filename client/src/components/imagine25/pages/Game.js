@@ -145,20 +145,22 @@ const Game = () => {
 
   //When page loads timer starts that counts down from 60->0
   useEffect(() => {
-    const timer = setInterval(() => {
-      setSeconds((prevSeconds) => {
-        if (prevSeconds <= 1) {
-          clearInterval(timer);
-          setGameActive(false);
-          setContainerFormating("tw-pt-[7rem]");
-          return 0;
-        }
+    if (iframeRef.current) {
+      const timer = setInterval(() => {
+        setSeconds((prevSeconds) => {
+          if (prevSeconds <= 1) {
+            clearInterval(timer);
+            setGameActive(false);
+            setContainerFormating("tw-pt-[7rem]");
+            return 0;
+          }
 
-        return prevSeconds - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+          return prevSeconds - 1;
+        });
+      }, 10);
+      return () => clearInterval(timer);
+    }
+  }, [iframeRef]);
 
   return (
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
