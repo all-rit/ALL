@@ -17,7 +17,7 @@ const DraggableCard = ({ card, cardStyle }) => {
   useEffect(() => {
     if (!card.isCorrect) {
       setBorderColor(
-        "tw-border-[#d03c3c] tw-border-error tw-shadow-2xl tw-shadow-error tw-font-bold tw-text-error",
+        "!tw-border-error tw-shadow-2xl tw-shadow-error tw-font-bold tw-text-error",
       );
     } else {
       setBorderColor("");

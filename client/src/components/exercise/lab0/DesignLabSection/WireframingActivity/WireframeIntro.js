@@ -36,8 +36,7 @@ const WireframeIntro = () => {
         experience for the user throughout the lab, from the{" "}
         <strong>About</strong> and <strong>Reading</strong> sections, to the
         experiential <strong>Exercise</strong>, and wrapping up with the{" "}
-        <strong>Reinforcement</strong> and
-        <strong>Quiz</strong> sections.
+        <strong>Reinforcement</strong> and <strong>Quiz</strong> sections.
       </p>
       <p className={"tw-body-text"}>
         To get started on designing the UI of the{" "}

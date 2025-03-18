@@ -14,6 +14,7 @@ import DesignNewCategory from "./DesignLabSection/LabIdeaActivity/DesignNewCateg
 import DesignSortNewCategory from "./DesignLabSection/LabIdeaActivity/DesignSortNewCategory";
 import WireframeIntro from "./DesignLabSection/WireframingActivity/WireframeIntro";
 import WireframeFirstGlance from "./DesignLabSection/WireframingActivity/WireframeFirstGlance";
+import WireframeReinforceQuiz from "./DesignLabSection/WireframingActivity/WireframeReinforceQuiz";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -63,6 +64,7 @@ const Main = () => {
           <ScrumVelocityReading path={"/ScrumVelocityReading"} />
           <WireframeIntro path={"/WireframeIntro"} />
           <WireframeFirstGlance path={"/WireframeFirstGlance"} />
+          <WireframeReinforceQuiz path={"/WireframeReinforceQuiz"} />
         </Router>
       </Lab0Context.Provider>
     </div>
