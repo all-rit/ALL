@@ -56,10 +56,6 @@ const ScorePage = ({ nextPage }) => {
     </>
   );
 };
-//I hate that this validation is required
-ScorePage.propTypes = {
-  nextPage: PropTypes.func,
-};
 
 const Analysis = () => {
   const [content, setContent] = useState(null);
@@ -130,6 +126,7 @@ const Game = () => {
       setSeconds((prevSeconds) => {
         if (prevSeconds <= 1) {
           clearInterval(timer);
+          //Scorepage is set with the button changing the content again
           setContent(
             <ScorePage
               className={contentSizing}
@@ -149,12 +146,9 @@ const Game = () => {
   }, []);
 
   return (
-    //flex container used to center game vertically, dimensinos are slightly different than content sizing for scaling purposes
+    //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
     <div>
-      <div
-        //make backgorund black if game is running
-        className={contentSizing + "  " + containerFormating}
-      >
+      <div className={contentSizing + "  " + containerFormating}>
         {content}
         {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
         <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
@@ -164,6 +158,11 @@ const Game = () => {
       <TeammateVideo teammateId={0} messageShown={false} />
     </div>
   );
+};
+
+//I hate that this validation is required
+ScorePage.propTypes = {
+  nextPage: PropTypes.func,
 };
 
 export default Game;
