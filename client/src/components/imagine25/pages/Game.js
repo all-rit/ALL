@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "reactstrap";
-import PropTypes from "prop-types";
 import ImagineService from "src/services/ImagineService";
 import TeammateVideo from "../components/TeammateVideo";
 
-const ScorePage = ({ nextPage }) => {
+const ScorePage = () => {
+  const [analysisPage, setAnalysisPage] = useState(false);
   //Random score that will be generated for both teams
   const totalUserScore = Math.floor(Math.random() * 1000 + 500);
 
@@ -25,7 +25,9 @@ const ScorePage = ({ nextPage }) => {
   );
   const opponentScore2 = totalOpponentScore - opponentScore1;
 
-  return (
+  return analysisPage ? (
+    <Analysis />
+  ) : (
     <>
       <h3 className="tw-title text-center">Game Outcome</h3>
 
@@ -49,7 +51,7 @@ const ScorePage = ({ nextPage }) => {
 
       <Button
         className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
-        onClick={nextPage}
+        onClick={() => setAnalysisPage(true)}
       >
         Analyze Game
       </Button>
@@ -110,7 +112,25 @@ const Analysis = () => {
     </div>
   );
 };
+
 const Game = () => {
+  //Make game window immediately focused on so no clicking is needed on the embeded game
+  const iframeRef = useRef(null);
+
+  //Checks the iframe ref to see if anything exists, when the iframe fully loads, immediately focus it
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      const focusIframe = () => {
+        iframe.focus();
+      };
+
+      iframe.addEventListener("load", focusIframe);
+
+      return () => iframe.removeEventListener("load", focusIframe);
+    }
+  }, []);
+
   const contentSizing =
     "tw-border tw-rounded-xl tw-w-[52vw] tw-h-[39vw] xxl:tw-h-[600px] xxl:tw-w-[800px]";
 
@@ -119,13 +139,7 @@ const Game = () => {
     "tw-justify-left tw-flex tw-items-center tw-relative tw-bg-[black]",
   );
 
-  //Content that is embeded on the left side
-  const [content, setContent] = useState(
-    <iframe
-      src="https://microstudio.io/Imagine2025/galaga/6GZNBHTD/"
-      className={contentSizing}
-    />,
-  );
+  const [gameActive, setGameActive] = useState(true);
 
   const [seconds, setSeconds] = useState(60);
 
@@ -135,17 +149,9 @@ const Game = () => {
       setSeconds((prevSeconds) => {
         if (prevSeconds <= 1) {
           clearInterval(timer);
-          //Scorepage is set with the button changing the content again
-          setContent(
-            <ScorePage
-              className={contentSizing}
-              nextPage={() =>
-                setContent(<Analysis className={contentSizing} />)
-              }
-            />,
-          );
+          setGameActive(false);
           setContainerFormating("tw-pt-[7rem]");
-          return;
+          return 0;
         }
 
         return prevSeconds - 1;
@@ -158,7 +164,15 @@ const Game = () => {
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
     <div>
       <div className={contentSizing + "  " + containerFormating}>
-        {content}
+        {gameActive ? (
+          <iframe
+            ref={iframeRef}
+            src="https://microstudio.io/Imagine2025/galaga/6GZNBHTD/"
+            className={contentSizing}
+          />
+        ) : (
+          <ScorePage className={contentSizing} />
+        )}
         {/*Not sure if tailwind can support custom styling so "timerFont" is in a css file */}
         <div className="tw-flex tw-justify-center tw-w-[100%] tw-absolute tw-top-5 tw-text-white timerFont">
           <div>{seconds}</div>
@@ -167,11 +181,6 @@ const Game = () => {
       <TeammateVideo teammateId={0} messageShown={false} />
     </div>
   );
-};
-
-//I hate that this validation is required
-ScorePage.propTypes = {
-  nextPage: PropTypes.func,
 };
 
 export default Game;
