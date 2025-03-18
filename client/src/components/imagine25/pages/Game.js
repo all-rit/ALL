@@ -69,22 +69,24 @@ const Analysis = () => {
         25,
       );
 
+      //pastel yellow and blue annoyingly are stored in their key forms and need to be re-converted to a readable form
       const colorMap = {
-        PastelYellow: "yellow",
-        PastelBlue: "blue",
+        Red: "Red",
+        Black: "Black",
+        PastelBlue: "Blue",
+        PastelYellow: "Yellow",
+        Pink: "Pink",
       };
 
       //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
       const text = {
         experiential:
           "Sorry, your shirt is " +
-          (colorMap[user.avatar.clotheColor] ||
-            user.avatar.clotheColor.toLowerCase()) +
+          colorMap[user.avatar.clotheColor].toLowerCase() +
           ", we simply cannot tolerate such awful choices and you and your teammte are both are disqualified.",
         expression:
           "Sorry, your teammate's shirt is " +
-          (colorMap[user.teammateAvatar.clotheColor] ||
-            user.teammateAvatar.clotheColor.toLowerCase()) +
+          colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
           ", we simply cannot tolerate such awful choices. You and your teammte are both are disqualified.",
         control:
           "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
