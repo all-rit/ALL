@@ -1,3 +1,8 @@
+.transformAvatar:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
 .timerFont {
   font-family: "Press Start 2P", serif;
   font-weight: 400;

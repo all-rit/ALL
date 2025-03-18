@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Game.css";
 import { Button } from "reactstrap";
 import PropTypes from "prop-types";
 import ImagineService from "src/services/ImagineService";

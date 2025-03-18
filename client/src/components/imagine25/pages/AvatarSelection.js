@@ -1,6 +1,5 @@
 import React from "react";
 import Avatar from "avataaars";
-import "./avatarSelection.css";
 import { Frame } from "../components/Frame";
 import PropTypes from "prop-types";
 import useMainStateContext from "src/reducers/MainContext";
