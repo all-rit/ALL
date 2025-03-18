@@ -28,6 +28,8 @@ const TeammateVideo = (props) => {
     updateVideoSource();
   });
 
+  const buttonSize = "tw-w-16 tw-mx-auto";
+
   return (
     <div className="tw-absolute tw-top-[47px] tw-right-1 tw-p-4 tw-pointer-events-none bg-white border tw-rounded-lg tw-max-w-[300px] tw-max-h-[600px]">
       <video
@@ -42,10 +44,19 @@ const TeammateVideo = (props) => {
       </p>
       <div className="tw-pt-8 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-6">
         <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
-        <div>Image 1</div>
-        <div>Image 2</div>
+        <img
+          className={"tw-rotate-180 " + buttonSize}
+          src="/img/imagine_game_controls/ArrowKey.png"
+        />
+        <img
+          className={buttonSize}
+          src="/img/imagine_game_controls/ArrowKey.png"
+        />
         <h4 className="tw-col-span-2 tw-text-center">Fire Weapon:</h4>
-        <div className="tw-col-span-2">Image 3</div>
+        <img
+          className="tw-col-span-2 tw-w-32 tw-mx-auto"
+          src="/img/imagine_game_controls/SpaceBar.png"
+        />
       </div>
     </div>
   );
