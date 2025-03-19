@@ -68,10 +68,11 @@ const Analysis = () => {
 
   const handleNavigation = async () => {
     const isUnderAge = sessionStorage.getItem("isUnderAge");
+    console.log(isUnderAge);
     if (isUnderAge === "true") {
       // UnderAge User will be sent to quiz section which is not implemented yet. For now it just consolo logs
       console.log("go to end of game");
-      navigate("/Imagine2025/Done")
+      navigate("/Imagine2025/Done");
     } else {
       // Plusr 18 Users will be sent to post survey
       navigate("/Imagine2025/PostSurvey");
@@ -100,6 +101,7 @@ const Analysis = () => {
         control:
           "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
       };
+
       setContent(<p className="tw-body-text tw-my-24">{text[user.section]}</p>);
     };
     fetchContent();

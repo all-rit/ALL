@@ -39,8 +39,6 @@ const Main = () => {
     startImagine();
   }, []);
 
-  // const [isUnderAge,setIsUnderAge] = useState(false);
-
   /*All avatars states are held in main so
   changes are held persitently throughout
   page navigation*/

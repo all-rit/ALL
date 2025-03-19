@@ -99,7 +99,10 @@ const SurveyHandler = (props) => {
         // This will handle navigation
       } else if (surveyType === "post") {
         await ImagineService.postSurvey(userID, selectedAnswers, year);
-        navigate("navigate to quiz section");
+        {
+          /* //TODO Navigate to Retention Reading */
+        }
+        navigate("/Imagine2025/RetentionReading");
       }
     } catch (error) {
       console.error(error);
@@ -131,8 +134,9 @@ const SurveyHandler = (props) => {
         console.error("Navigating to None");
       }
     } else if (year == 25) {
+      sessionStorage.setItem("isUnderAge", isUnderAge);
+
       if (isUnderAge) {
-        sessionStorage.setItem("isUnderAge", isUnderAge);
         //will be changed to point to avatarCreation when merged
         navigate("/Imagine2025/AvatarCreation");
       } else {
