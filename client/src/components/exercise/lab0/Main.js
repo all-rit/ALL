@@ -49,7 +49,7 @@ const Main = (props) => {
           width={3}
           height={3}
           onAllFlipped={() => setTemp(true)}
-          frontImgURL="/img/profileImages/Professor_Malachowsky.jpg"
+          /* frontImgURL="/img/profileImages/Professor_Malachowsky.jpg" */
           cards={[
             {
               text: "Test 1",

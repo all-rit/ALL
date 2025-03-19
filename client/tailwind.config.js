@@ -58,6 +58,7 @@ module.exports = {
       success: "#369d2a",
       hoverSuccess: "#238418",
       error: "#d03c3c",
+      transparent: "transparent",
     },
     extend: {
       borderWidth: {
