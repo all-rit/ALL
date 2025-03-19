@@ -4,6 +4,7 @@ import { Button } from "reactstrap";
 import PropTypes from "prop-types";
 import ImagineService from "src/services/ImagineService";
 import TeammateVideo from "../components/TeammateVideo";
+import { navigate } from "@reach/router";
 
 const ScorePage = ({ nextPage }) => {
   //Random score that will be generated for both teams
@@ -65,6 +66,19 @@ ScorePage.propTypes = {
 const Analysis = () => {
   const [content, setContent] = useState(null);
 
+  const handleNavigation = async () => {
+    const isUnderAge = sessionStorage.getItem("isUnderAge");
+    console.log(isUnderAge);
+    if (isUnderAge === "true") {
+      // UnderAge User will be sent to quiz section which is not implemented yet. For now it just consolo logs
+      console.log("go to end of game");
+      navigate("/Imagine2025/Done");
+    } else {
+      // Plusr 18 Users will be sent to post survey
+      navigate("/Imagine2025/PostSurvey");
+    }
+  };
+
   //until the userID is grabbed, the page will techincally be blank until the useeffect activates
   useEffect(() => {
     const fetchContent = async () => {
@@ -87,6 +101,7 @@ const Analysis = () => {
         control:
           "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
       };
+
       setContent(<p className="tw-body-text tw-my-24">{text[user.section]}</p>);
     };
     fetchContent();
@@ -99,7 +114,7 @@ const Analysis = () => {
       {content}
       <Button
         className="btn btn-primary text-black btn-xl text-uppercase"
-        onClick={() => alert("no next yet")}
+        onClick={handleNavigation}
       >
         Next
       </Button>
