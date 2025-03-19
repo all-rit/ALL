@@ -30,13 +30,13 @@ const opponentAvatars = [
     hairStyle: "ShortHairTheCaesar",
     hairColor: "Black",
     clotheColor: "PastelYellow",
-    skinColor: "DarkBrown",
+    skinColor: "Black",
   },
   {
     hairStyle: "ShortHairShortFlat",
     hairColor: "Blonde",
     clotheColor: "Black",
-    skinColor: "Brown",
+    skinColor: "Light",
   },
   {
     hairStyle: "LongHairStraight",
