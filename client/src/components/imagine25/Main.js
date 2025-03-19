@@ -14,6 +14,7 @@ import {
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
 import RetentionReading from "./pages/RetentionReading";
+import Quiz from "../quiz/components/QuizHandler";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -32,6 +33,10 @@ shuffleArray(teammateAvatars);
 shuffleArray(opponentAvatars);
 
 const Main = () => {
+  const [quizCompleted, setQuizCompleted] = useState(false);
+
+  const userID = sessionStorage.getItem("userID");
+
   //Removes header
   const { actions } = useMainStateContext();
   const startImagine = () => actions.setIsImagine(true);
@@ -125,14 +130,23 @@ const Main = () => {
               path={`/PreSurvey`}
               type={"pre"}
               year={year}
-              userID={sessionStorage.getItem("userID")}
+              userID={userID}
             />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PostSurvey`}
               type={"post"}
               year={year}
-              userID={sessionStorage.getItem("userID")}
+              userID={userID}
+            />
+            <Quiz
+              path={`/Quiz`}
+              labId={year}
+              userID={userID}
+              isFinalQuiz={true}
+              hideCertificate={false}
+              quizCompleted={quizCompleted}
+              setQuizCompleted={setQuizCompleted}
             />
           </Router>
         </div>

@@ -3455,6 +3455,8 @@ e'[
  }
 ]', 2, 'coming soon', 'coming soon', true);
 
+
+
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
 (2, 'Samuel', 'Malachowsky', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]', 'Samuel A. Malachowsky is a certified career Project Manager (PMP) who currently teaches in the Software Engineering Department at the Rochester Institute of Technology. His passion lies in connecting the abstract and technical with the practical-by teaching project values, leadership, and personal professional development.', null, null),
@@ -3505,3 +3507,4 @@ INSERT INTO public.participating_schools (id, "schoolName", "imageURL", "website
 (4, 'Rutgers University', '/Rutgers.png', 'https://www.rutgers.edu/'), (5, 'SUNY Sullivan', '/Sullivan.png', 'https://sunysullivan.edu/'),
 (6, 'Rockland Community College', '/Rockland.png', 'https://sunyrockland.edu/'), (7, 'SUNY Schenectady', '/Schenectady.png', 'https://sunysccc.edu/index.html'),
 (8, 'Binghamton University', '/Binghamton.png', 'https://www.binghamton.edu/');
+
