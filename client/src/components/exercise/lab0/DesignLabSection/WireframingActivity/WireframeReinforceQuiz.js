@@ -9,7 +9,7 @@ const WireframeReinforceQuiz = () => {
   const { handleNav } = useContext(lab0Context);
 
   const navigateNext = () => {
-    handleNav("WireframeFirstGlance");
+    handleNav("WireframeComponents");
   };
 
   return (
@@ -33,12 +33,12 @@ const WireframeReinforceQuiz = () => {
           <img
             className={"tw-flex"}
             src={ReinforcementFigma}
-            alt={"About Lab Figma Design"}
+            alt={"Reinforcement Figma Design"}
           />
           <img
             className={"tw-flex"}
             src={QuizFigma}
-            alt={"Lab Reading Figma Design"}
+            alt={"Quiz Figma Design"}
           />
         </div>
       </FauxFigma>

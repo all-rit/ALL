@@ -9,7 +9,7 @@ const WireframeFirstGlance = () => {
   const { handleNav } = useContext(lab0Context);
 
   const navigateNext = () => {
-    handleNav("WireframeReinforceQuiz"); // for now until exercise page is made
+    handleNav("WireframeExercise");
   };
 
   return (

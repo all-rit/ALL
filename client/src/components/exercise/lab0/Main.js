@@ -15,6 +15,8 @@ import DesignSortNewCategory from "./DesignLabSection/LabIdeaActivity/DesignSort
 import WireframeIntro from "./DesignLabSection/WireframingActivity/WireframeIntro";
 import WireframeFirstGlance from "./DesignLabSection/WireframingActivity/WireframeFirstGlance";
 import WireframeReinforceQuiz from "./DesignLabSection/WireframingActivity/WireframeReinforceQuiz";
+import WireframeExercise from "./DesignLabSection/WireframingActivity/WireframeExercise";
+import WireframeComponents from "./DesignLabSection/WireframingActivity/WireframeComponents";
 
 const Main = () => {
   const [exerciseState, setExerciseState] = useState(
@@ -65,6 +67,8 @@ const Main = () => {
           <WireframeIntro path={"/WireframeIntro"} />
           <WireframeFirstGlance path={"/WireframeFirstGlance"} />
           <WireframeReinforceQuiz path={"/WireframeReinforceQuiz"} />
+          <WireframeExercise path={"/WireframeExercise"} />
+          <WireframeComponents path={"/WireframeComponents"} />
         </Router>
       </Lab0Context.Provider>
     </div>
