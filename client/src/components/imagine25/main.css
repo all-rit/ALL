@@ -4,8 +4,3 @@
   font-style: normal;
   font-size: x-large;
 }
-
-.transformAvatar:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease-in-out;
-}

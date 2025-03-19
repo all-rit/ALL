@@ -32,15 +32,15 @@ const AvatarSelection = (props) => {
           {props.avatars.map((avatar, index) => {
             const avatarSelected =
               index == props.avatarSelected
-                ? " tw-border-t-[#FFC335] tw-border-l-[#FFC335] tw-border-b-[#0045D5] tw-border-r-[#0045D5]"
-                : "";
+                ? "tw-border-t-[#FFC335] tw-border-l-[#FFC335] tw-border-b-[#0045D5] tw-border-r-[#0045D5]"
+                : "hover:tw-brightness-75 tw-transition tw-duration-300";
             //div class wrapper needed for clicking functionality
             return (
               <div
                 key={index}
                 onClick={() => props.setAvatarSelected(index)}
                 className={
-                  "hover:tw-cursor-pointer tw-rounded-full transformAvatar xs:tw-h-[135px] xs:tw-w-[135px] sm:tw-h-[135px] sm:tw-w-[135px] md:tw-h-[160px] md:tw-w-[160px] lg:tw-h-[185px] lg:tw-w-[185px] border border-4 border-white" +
+                  "hover:tw-cursor-pointer tw-rounded-full xs:tw-h-[135px] xs:tw-w-[135px] sm:tw-h-[135px] sm:tw-w-[135px] md:tw-h-[160px] md:tw-w-[160px] lg:tw-h-[185px] lg:tw-w-[185px] border border-4 border-white " +
                   avatarSelected
                 }
               >
