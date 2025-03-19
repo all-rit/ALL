@@ -1,11 +1,15 @@
 import React from "react";
 import ALLButton from "../all-components/ALLButton";
 import { navigate } from "@reach/router";
+import PropTypes from "prop-types";
 
 // This component is the start component that updates the user ID
-const Done = () => {
+const Done = (props) => {
   const handleNext = () => {
     navigate("/Imagine2025/");
+    if (props.resetInstance !== null) {
+      props.resetInstance();
+    }
   };
 
   const handleUpdateID = async () => {
@@ -28,6 +32,10 @@ const Done = () => {
       <ALLButton label={"Return Home"} large={true} onClick={handleUpdateID} />
     </div>
   );
+};
+
+Done.propTypes = {
+  resetInstance: PropTypes.func,
 };
 
 export default Done;

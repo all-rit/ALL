@@ -168,7 +168,7 @@ const Game = () => {
 
           return prevSeconds - 1;
         });
-      }, 1000);
+      }, 10);
       return () => clearInterval(timer);
     }
   }, [iframeRef]);

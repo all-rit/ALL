@@ -55,8 +55,20 @@ const Main = () => {
     skinColor: "Default",
   });
 
-  const [teammteAvatarSelected, setTeammateAvatarSelected] = useState();
+  const [teammateAvatarSelected, setTeammateAvatarSelected] = useState();
   const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
+
+  //After each iteration, clear the use-states
+  const clearInstance = () => {
+    setUserAvatar({
+      hairStyle: "Default",
+      hairColor: "Default",
+      clotheColor: "Default",
+      skinColor: "Default",
+    });
+    setTeammateAvatarSelected(null);
+    setOpponentAvatarSelected(null);
+  };
 
   const year = 25;
   return (
@@ -90,7 +102,6 @@ const Main = () => {
             }
           >
             <UpdateId default path={"/"} />
-            <Done path={"/Done"} />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PreSurvey`}
@@ -109,7 +120,7 @@ const Main = () => {
               title={"Teammate"}
               nextNavigation={() => navigate("/Imagine2025/OpponentSelection")}
               prevNavigation={() => navigate("/Imagine2025/AvatarCreation")}
-              avatarSelected={teammteAvatarSelected}
+              avatarSelected={teammateAvatarSelected}
               setAvatarSelected={setTeammateAvatarSelected}
               path={"/TeammateSelection"}
             />
@@ -149,6 +160,7 @@ const Main = () => {
               quizCompleted={quizCompleted}
               setQuizCompleted={setQuizCompleted}
             />
+            <Done path={"/Done"} resetInstance={clearInstance} />
           </Router>
         </div>
       </div>
