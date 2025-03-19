@@ -68,6 +68,7 @@ const Main = () => {
     });
     setTeammateAvatarSelected(null);
     setOpponentAvatarSelected(null);
+    setQuizCompleted(false);
   };
 
   const year = 25;
