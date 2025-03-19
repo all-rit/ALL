@@ -8,11 +8,13 @@ import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
 import ALLCardFlip from "src/components/all-components/ALLCardFlip";
+import LabButton from "../../all-components/LabButton";
 
 const Main = (props) => {
   const { user } = props;
   const { actions } = useMainStateContext();
   const [section, setSectionState] = useState({});
+  const [temp, setTemp] = useState(false);
 
   const updateSectionStatus = (section, sectionStatus) => {
     ProgressService.submitProgress(
@@ -46,23 +48,21 @@ const Main = (props) => {
         <ALLCardFlip
           width={3}
           height={3}
+          onAllFlipped={() => setTemp(true)}
+          frontImgURL="/img/profileImages/Professor_Malachowsky.jpg"
           cards={[
             {
-              topText: "Test 1",
-              imageURL: "/img/lab_thumbnails/wrench.jpg",
-              bottomText: "Bottom Text",
+              text: "Test 1",
               width: 1,
             },
             {
               topText: "Test 2",
               imageURL: "/img/lab_thumbnails/wrench.jpg",
-              bottomText: "Bottom Text",
               width: 2,
             },
             {
-              topText: "Test 3",
               imageURL: "/img/lab_thumbnails/wrench.jpg",
-              bottomText: "Bottom Text",
+              bottomText: "Test 3",
               width: 2,
             },
             {
@@ -84,6 +84,11 @@ const Main = (props) => {
               width: 2,
             },
           ]}
+        />
+        <LabButton
+          label="Finished"
+          disabled={!temp}
+          onClick={() => alert("You flipped all of them, nice!")}
         />
       </Lab0Context.Provider>
     </>

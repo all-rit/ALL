@@ -151,6 +151,18 @@ module.exports = {
           lineHeight: "1.6rem",
           textAlign: "left",
         },
+        ".perspective-distant": {
+          perspective: "1200px",
+        },
+        ".backface-hidden": {
+          backfaceVisibility: "hidden",
+        },
+        ".transform-3d": {
+          transformStyle: "preserve-3d",
+        },
+        ".rotate-y-180": {
+          transform: "rotateY(180deg)",
+        },
       });
     }),
   ],
