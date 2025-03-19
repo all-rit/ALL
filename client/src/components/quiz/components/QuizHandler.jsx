@@ -6,6 +6,8 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
+import ImagineService from "src/services/ImagineService";
+import QuizQuestions from "../../../constants/imagine25/quizQuestions";
 
 /**
  * QuizHandler is react component responsible for tracking users responses
@@ -51,11 +53,21 @@ const QuizHandler = (props) => {
 
   async function getQuiz() {
     try {
-      const response = await labService.getLabQuiz(props.labId);
-      const { quiz } = response[0];
-      const quizAnswers = quiz[currentQuestionCursor].answers;
-      setQuestions(quiz);
-      setAnswerOption(quizAnswers);
+      if (props.labId !== 25) {
+        const response = await labService.getLabQuiz(props.labId);
+        const { quiz } = response[0];
+        const quizAnswers = quiz[currentQuestionCursor].answers;
+        setQuestions(quiz);
+        setAnswerOption(quizAnswers);
+      } else {
+        /**
+         * Get quiz questions from the constants diretory
+         */
+        const quiz = QuizQuestions;
+        setQuestions(quiz);
+        const quizAnswers = quiz[currentQuestionCursor].answers;
+        setAnswerOption(quizAnswers);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -182,17 +194,25 @@ const QuizHandler = (props) => {
     console.log(output);
     setResult(countCorrect / questionsTotal);
     if (props.isFinalQuiz) {
-      UserLabService.complete_quiz(
-        props.labId,
-        (countCorrect / questionsTotal) * 100,
-        JSON.stringify(output),
-      );
-      if (props.user.firstname !== null) {
-        UserLabService.user_complete_quiz(
-          props.user.userid,
+      if (currentLabId !== 25) {
+        UserLabService.complete_quiz(
           props.labId,
-          Math.ceil((countCorrect / questionsTotal) * 100),
+          (countCorrect / questionsTotal) * 100,
+          JSON.stringify(output),
         );
+        if (props.user.firstname !== null) {
+          UserLabService.user_complete_quiz(
+            props.user.userid,
+            props.labId,
+            Math.ceil((countCorrect / questionsTotal) * 100),
+          );
+        }
+      } else {
+        /**
+         * Record Quiz Score out of 100
+         */
+        let quizResult = Math.ceil((countCorrect / questionsTotal) * 100);
+        ImagineService.quizScore(props.userID, quizResult, 25);
       }
     } else {
       props.submitData(
@@ -307,6 +327,7 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
+  userID: PropTypes.string,
   quizCompleted: PropTypes.bool,
   setQuizCompleted: PropTypes.func,
 };

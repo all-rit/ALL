@@ -191,6 +191,20 @@ const postUserAvatar = async (req, res) => {
   };
 };
 
+const quizScore = async (req, res) => {
+  const {userID, quizScore, year} = req.body;
+  try {
+    const result = await ImagineService.quizScore({
+      userID,
+      quizScore,
+      year,
+    });
+    return result;
+  } catch (error) {
+    console.error(error);
+  };
+};
+
 module.exports = {
   readMoreCount,
   readMoreTimeElapsed,
@@ -206,4 +220,5 @@ module.exports = {
   postTeammateAvatar,
   postOpponentAvatar,
   getGroup,
+  quizScore,
 };

@@ -68,7 +68,7 @@ class Certificate extends Component {
             </span>
             <br />
             <span className={"tw-title tw-text-[1.5rem]"}>
-              {isImagine ? (
+              {isImagine && lab !== 25 ? (
                 <p style={{ fontSize: "50px", textAlign: "center" }}>
                   Empathy Immersion
                 </p>
