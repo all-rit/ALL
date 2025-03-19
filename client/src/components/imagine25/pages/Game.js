@@ -52,7 +52,11 @@ const Analysis = () => {
           "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
       };
 
-      setContent(<p className="tw-body-text tw-my-24">{text[user.section]}</p>);
+      setContent(
+        <p className="tw-body-text tw-my-24">
+          {text[user.section] || text["control"]}
+        </p>,
+      );
     };
     fetchContent();
   }, []);
@@ -164,7 +168,7 @@ const Game = () => {
 
           return prevSeconds - 1;
         });
-      }, 1000);
+      }, 10);
       return () => clearInterval(timer);
     }
   }, [iframeRef]);
