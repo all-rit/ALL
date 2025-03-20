@@ -30,10 +30,11 @@ const AvatarSelection = (props) => {
       {Frame(
         <div className="tw-grid tw-grid-rows-2 tw-grid-flow-col tw-gap-10 justify-content-center tw-my-10">
           {props.avatars.map((avatar, index) => {
+            // keeping this here in case - hover:tw-brightness-75 tw-transition tw-duration-300
             const avatarSelected =
               index == props.avatarSelected
                 ? "tw-border-t-[#FFC335] tw-border-l-[#FFC335] tw-border-b-[#0045D5] tw-border-r-[#0045D5]"
-                : "hover:tw-brightness-75 tw-transition tw-duration-300";
+                : "avatarSelection";
             //div class wrapper needed for clicking functionality
             return (
               <div

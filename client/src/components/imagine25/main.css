@@ -4,3 +4,11 @@
   font-style: normal;
   font-size: x-large;
 }
+
+.avatarSelection {
+  transition: all 150ms ease-in-out;
+}
+
+.avatarSelection:hover {
+  filter: brightness(75%);
+}

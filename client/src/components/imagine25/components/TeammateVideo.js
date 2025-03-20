@@ -45,7 +45,8 @@ const TeammateVideo = (props) => {
       <div className="tw-pt-8 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-6">
         <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
         <img
-          className={"tw-rotate-180 " + buttonSize}
+          className={buttonSize}
+          style={{ transform: "rotate(180deg)" }}
           src="/img/imagine_game_controls/ArrowKey.png"
         />
         <img
