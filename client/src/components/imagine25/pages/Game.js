@@ -41,13 +41,13 @@ const Analysis = () => {
       //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
       const text = {
         experiential:
-          "Sorry, your shirt is " +
+          'ERROR: cannot process users "' +
           colorMap[user.avatar.clotheColor].toLowerCase() +
-          ", we simply cannot tolerate such awful choices and you and your teammte are both are disqualified.",
+          '" shirt, you and your teammate have been disqualified.',
         expression:
-          "Sorry, your teammate's shirt is " +
+          'ERROR: cannot process teammates "' +
           colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
-          ", we simply cannot tolerate such awful choices. You and your teammte are both are disqualified.",
+          '" shirt, you and your teammate have been disqualified.',
         control:
           "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
       };
