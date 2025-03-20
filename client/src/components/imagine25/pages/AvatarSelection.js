@@ -21,7 +21,12 @@ const AvatarSelection = (props) => {
       );
       return;
     }
-    actions.showSnackbar("Please select your " + props.title, ERROR);
+    actions.showSnackbar(
+      "Please select your " + props.title,
+      ERROR,
+      "center",
+      "top",
+    );
   };
 
   return (
