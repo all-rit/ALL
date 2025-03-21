@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint react/prop-types: 0 */
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -33,34 +34,45 @@ const SQLQueryMock = (props) => {
   const [filters, setFilters] = useState([]);
   const [sortColumn, setSortColumn] = useState(null);
   const [sortDirection, setSortDirection] = useState(null);
-  const [activeRecords, setActiveRecords] = useState([]);
+
+  /* Records that are in the db */
   const [allRecords, setAllRecords] = useState([...records]);
 
-  const tempRecords = [...activeRecords, ...allRecords].sort((a, b) => {
-    if (sortColumn) {
-      const aValue = a[sortColumn];
-      const bValue = b[sortColumn];
+  /* Records that are being created */
+  const [activeRecords, setActiveRecords] = useState([]);
 
-      if (typeof aValue === "string" && typeof bValue === "string") {
-        return sortDirection === "asc"
-          ? aValue.localeCompare(bValue)
-          : bValue.localeCompare(aValue);
-      }
+  /* Combined records */
+  const [tempRecords, setTempRecords] = useState([]);
 
-      if (typeof aValue === "number" && typeof bValue === "number") {
-        return sortDirection === "asc" ? aValue - bValue : bValue - aValue;
-      }
+  useEffect(() => {
+    setTempRecords(
+      [...activeRecords, ...allRecords].sort((a, b) => {
+        if (sortColumn) {
+          const aValue = a[sortColumn];
+          const bValue = b[sortColumn];
 
-      if (typeof aValue === "boolean" && typeof bValue === "boolean") {
-        return sortDirection === "asc" ? aValue - bValue : bValue - aValue;
-      }
+          if (typeof aValue === "string" && typeof bValue === "string") {
+            return sortDirection === "asc"
+              ? aValue.localeCompare(bValue)
+              : bValue.localeCompare(aValue);
+          }
 
-      return sortDirection === "asc"
-        ? String(aValue).localeCompare(String(bValue))
-        : String(bValue).localeCompare(String(aValue));
-    }
-    return 0;
-  });
+          if (typeof aValue === "number" && typeof bValue === "number") {
+            return sortDirection === "asc" ? aValue - bValue : bValue - aValue;
+          }
+
+          if (typeof aValue === "boolean" && typeof bValue === "boolean") {
+            return sortDirection === "asc" ? aValue - bValue : bValue - aValue;
+          }
+
+          return sortDirection === "asc"
+            ? String(aValue).localeCompare(String(bValue))
+            : String(bValue).localeCompare(String(aValue));
+        }
+        return 0;
+      }),
+    );
+  }, [activeRecords, allRecords, sortColumn, sortDirection]);
 
   useEffect(() => {
     const calculateColumnWidths = () => {
@@ -88,14 +100,20 @@ const SQLQueryMock = (props) => {
     calculateColumnWidths();
   }, [columns, records]);
 
-  const handleExecuteQuery = () => {
+  const handleExecuteQuery = (deleting) => {
     if (initialLoad) {
       setInitialLoad(false);
     }
 
     setIsExecuting(true);
+
+    let newTempRecords = [...tempRecords];
+    if (deleting) {
+      newTempRecords = newTempRecords.filter((record) => !record.selected);
+    }
+
     setAllRecords(
-      tempRecords.map((record) => ({
+      newTempRecords.map((record) => ({
         ...record,
         active: false,
       })),
@@ -114,24 +132,44 @@ const SQLQueryMock = (props) => {
   };
 
   const handleAddRecord = () => {
-    const lastId = tempRecords.sort((a, b) => b.id - a.id)[0].id;
+    const lastId =
+      tempRecords.length === 0
+        ? -1
+        : tempRecords.sort((a, b) => b.id - a.id)[0].id;
     setActiveRecords([
-      ...activeRecords,
       {
         ...Object.fromEntries(columns.map((column) => [column, ""])),
         id: lastId + 1,
         active: true,
       },
+      ...activeRecords,
     ]);
   };
 
+  const handleAddFilter = () => {
+    setFilters([...filters, { column: "", value: "", operator: "equals" }]);
+  };
+
   const handleRecordChange = (id, column, value) => {
-    setActiveRecords(
-      activeRecords.map((record) =>
+    setActiveRecords((prev) =>
+      prev.map((record) =>
         record.id === id ? { ...record, [column]: value } : record,
       ),
     );
   };
+
+  const handleCheckboxChange = (id, selected) => {
+    setTempRecords((prev) =>
+      prev.map((record) =>
+        record.id === id ? { ...record, selected: selected } : record,
+      ),
+    );
+  };
+
+  const selectedRecordsCount = tempRecords.filter(
+    (record) => record.selected,
+  ).length;
+  const showDeleteButton = selectedRecordsCount > 0;
 
   return (
     <div className="tw-border tw-rounded-lg tw-overflow-hidden tw-shadow-xl tw-drop-shadow-xl tw-min-w-[56rem] tw-max-w-[56rem]">
@@ -143,6 +181,17 @@ const SQLQueryMock = (props) => {
           </div>
           <div className="tw-flex-1 tw-flex tw-bg-white tw-rounded-r-md tw-px-4 tw-py-2 tw-gap-x-3">
             <button
+              className="tw-inline-flex tw-items-center tw-justify-center tw-border-0 tw-bg-[#718096] tw-rounded-md tw-rounded-r-xl tw-drop-shadow tw-shadow"
+              onClick={handleAddFilter}
+            >
+              <span className="tw-px-3 tw-py-1.5 tw-font-bold tw-text-xs tw-text-white">
+                Filters
+              </span>
+              <span className="tw-px-3 tw-py-1.5 tw-font-bold tw-text-xs tw-text-[#718096] tw-bg-[#cbd5e0] tw-rounded-md tw-rounded-l-none">
+                {filters.length}
+              </span>
+            </button>
+            <button
               className="tw-inline-flex tw-items-center tw-justify-center tw-border-0 tw-bg-[#4a5568] tw-rounded-md tw-px-3 tw-py-1.5 tw-drop-shadow tw-shadow"
               onClick={handleAddRecord}
             >
@@ -151,12 +200,17 @@ const SQLQueryMock = (props) => {
               </span>
             </button>
             <button
-              disabled={!activeRecords.length}
-              onClick={handleExecuteQuery}
-              className="tw-inline-flex tw-items-center tw-justify-center tw-border-0 tw-bg-[#31965e] tw-rounded-md tw-px-3 tw-py-1.5 tw-drop-shadow tw-shadow disabled:tw-bg-opacity-50"
+              disabled={!activeRecords.length && !showDeleteButton}
+              onClick={() => handleExecuteQuery(showDeleteButton)}
+              className={twMerge(
+                "tw-inline-flex tw-items-center tw-justify-center tw-border-0 tw-rounded-md tw-px-3 tw-py-1.5 tw-drop-shadow tw-shadow disabled:tw-bg-opacity-50",
+                showDeleteButton ? "tw-bg-[#f35a5a]" : "tw-bg-[#31965e]",
+              )}
             >
               <span className="tw-font-bold tw-text-xs tw-text-white">
-                Execute
+                {showDeleteButton
+                  ? `Delete ${selectedRecordsCount} ${selectedRecordsCount === 1 ? "record" : "records"}`
+                  : "Execute"}
               </span>
             </button>
           </div>
@@ -186,7 +240,7 @@ const SQLQueryMock = (props) => {
                 className="tw-table-auto tw-border-0"
                 style={{ borderCollapse: "separate", borderSpacing: "0px" }}
               >
-                <thead className="tw-sticky tw-top-0 tw-bg-white tw-shadow-lg">
+                <thead className="tw-sticky tw-top-0 tw-bg-white tw-shadow-md">
                   <tr>
                     {columns.map((column) => (
                       <th
@@ -223,17 +277,31 @@ const SQLQueryMock = (props) => {
                   {tempRecords.map((record) => (
                     <tr
                       key={record.id}
-                      className={
-                        record.active
-                          ? "tw-bg-primary-yellow tw-bg-opacity-25"
-                          : ""
-                      }
+                      className={twMerge(
+                        record.selected &&
+                          "tw-bg-primary-blue tw-bg-opacity-25",
+                        record.active &&
+                          !record.selected &&
+                          "tw-bg-primary-yellow tw-bg-opacity-25",
+                      )}
                     >
+                      <td className="tw-p-4 tw-border-0 tw-border-[#e2e8f0] tw-border-x tw-border-b">
+                        <div className="tw-flex tw-items-center tw-justify-center tw-w-full tw-h-full">
+                          <input
+                            type="checkbox"
+                            className="tw-w-4 tw-h-4 tw-accent-primary-blue"
+                            checked={record.selected || false}
+                            onChange={(e) =>
+                              handleCheckboxChange(record.id, e.target.checked)
+                            }
+                          />
+                        </div>
+                      </td>
                       {columns.map((column) => (
                         <td
                           key={column}
                           className={twMerge(
-                            "hover:tw-cursor-default tw-border-[#e2e8f0] tw-border-0 first:tw-border-l tw-border-r tw-border-b tw-text-left tw-text-sm tw-leading-tight tw-truncate",
+                            "hover:tw-cursor-default tw-border-0 tw-border-[#e2e8f0] tw-border-r tw-border-b tw-text-left tw-text-sm tw-leading-tight tw-truncate",
                             record.active ? "tw-p-0" : "tw-p-4",
                           )}
                           style={{
@@ -269,13 +337,6 @@ const SQLQueryMock = (props) => {
       </div>
     </div>
   );
-};
-
-SQLQueryMock.propTypes = {
-  name: PropTypes.string.isRequired,
-  query: PropTypes.string.isRequired,
-  columns: PropTypes.array.isRequired,
-  records: PropTypes.array.isRequired,
 };
 
 export default SQLQueryMock;
