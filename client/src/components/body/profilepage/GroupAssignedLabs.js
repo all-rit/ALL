@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import Lab from "../lab/Lab";
 import PropTypes from "prop-types";
 import useMainStateContext from "../../../reducers/MainContext";
 import UserService from "../../../services/UserService";
@@ -51,13 +50,6 @@ const GroupAssignedLabs = (props) => {
     });
   }
 
-  // const getLabProgressState = (labId) => {
-  //   if (toDoLabs.some((lab) => lab.labID === labId)) return "NOT_STARTED";
-  //   if (inProgressLabs.some((lab) => lab.labid === labId)) return "IN_PROGRESS";
-  //   if (completedLabs.some((lab) => lab.labid === labId)) return "COMPLETED";
-  //   return "NOT_STARTED"; // Default state if not found in any array
-  // };
-
   return (
     <div className={"tw-mb-6"}>
       {assignedLabs.length === 0 ? (
@@ -87,26 +79,6 @@ const GroupAssignedLabs = (props) => {
           <br />
           <div className={"tw-text-2xl tw-ml-5 tw-title"}>Assigned Labs:</div>
           <div className="md:tw-grid xxs:tw-flex xxs:tw-flex-col xxs:tw-justify-center md:lg:tw-grid-cols-3 tw-gap-3">
-            {/*{assignedLabs.map((lab, index) => (*/}
-            {/*  <Lab*/}
-            {/*    progressState={getLabProgressState(lab.labID)}*/}
-            {/*    key={index}*/}
-            {/*    alt={lab.labName + " Thumbnail"}*/}
-            {/*    lab={lab.labID}*/}
-            {/*    name={lab.labName}*/}
-            {/*    bio={lab.shortDescription}*/}
-            {/*    image={lab.thumbnailImageURL}*/}
-            {/*    learningObjectives={lab.learningObjectives}*/}
-            {/*    authors={lab.authors}*/}
-            {/*    actions={lab.actions}*/}
-            {/*    difficulty={lab.difficulty}*/}
-            {/*    // labProgress={*/}
-            {/*    //   getLabProgressState(lab.labID) === "NOT_STARTED"*/}
-            {/*    //     ? null*/}
-            {/*    //     : labRecords[lab.labID]*/}
-            {/*    // }*/}
-            {/*  />*/}
-            {/*))}*/}
             {toDoLabs.length > 0 && (
               <LabGeneration
                 actions={actions}
