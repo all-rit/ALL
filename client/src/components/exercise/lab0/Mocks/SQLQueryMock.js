@@ -211,7 +211,7 @@ const SQLQueryMock = (props) => {
    * @returns {number} The last id of the array
    */
   const getLastId = (array) => {
-    return array.length === 0 ? -1 : array.sort((a, b) => b.id - a.id)[0].id;
+    return array.length === 0 ? -1 : +array.sort((a, b) => b.id - a.id)[0].id;
   };
 
   /**
