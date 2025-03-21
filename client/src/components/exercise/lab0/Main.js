@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import useMainStateContext from "../../../reducers/MainContext";
 import { navigate, Router } from "@reach/router";
-import SelectExercise from "./SelectExercise";
 import Lab0Context from "./Lab0Context";
-import { EXERCISE_STATES } from "../../../constants/lab0";
 import ExperientialIntroduction from "./DesignLabSection/ExperientialActivity/ExperientialIntroduction";
 import CreateExperientialExercise from "./DesignLabSection/ExperientialActivity/CreateExperientialExercise";
 import DesignLabDecision from "./DesignLabSection/ExperientialActivity/DesignLabDecision";
@@ -17,17 +17,37 @@ import WireframeFirstGlance from "./DesignLabSection/WireframingActivity/Wirefra
 import WireframeReinforceQuiz from "./DesignLabSection/WireframingActivity/WireframeReinforceQuiz";
 import WireframeExercise from "./DesignLabSection/WireframingActivity/WireframeExercise";
 import WireframeComponents from "./DesignLabSection/WireframingActivity/WireframeComponents";
+import { SECTION_STATUSES, SECTIONS } from "../../../constants/lab0/index";
+import { EXERCISE_PLAYING } from "../../../constants/index";
+import ProgressService from "src/services/lab0/ProgressService";
+import StartExercise from "./StartExercise";
+// import ALLCardFlip from "src/components/all-components/ALLCardFlip";
+// import LabButton from "../../all-components/LabButton";
 
-const Main = () => {
-  const [exerciseState, setExerciseState] = useState(
-    EXERCISE_STATES.EXERCISE_SELECTION_DEFAULT,
-  );
-  const [labIdeasComplete, setLabIdeasComplete] = useState(false);
-  const [experientialExerciseComplete, setExperientialExerciseComplete] =
-    useState(false);
-  const [sprintPlanningComplete, setSprintPlanningComplete] = useState(false);
+const Main = (props) => {
+  const { user } = props;
+  const { actions } = useMainStateContext();
+  const [section, setSectionState] = useState({});
+
+  const updateSectionStatus = (section, sectionStatus) => {
+    ProgressService.submitProgress(
+      user.userid,
+      section.category,
+      section.name,
+      sectionStatus,
+    );
+  };
 
   const handleNav = (route) => {
+    if (route in SECTIONS) {
+      actions.updateUserState(EXERCISE_PLAYING);
+      setSectionState(SECTIONS[route]);
+      updateSectionStatus(
+        SECTIONS[route],
+        SECTION_STATUSES.SECTION_IN_PROGRESS,
+      );
+    }
+
     navigate(`/Lab0/Exercise/${route}`);
   };
 
@@ -38,15 +58,9 @@ const Main = () => {
     <div>
       <Lab0Context.Provider
         value={{
-          exerciseState,
-          setExerciseState,
           handleNav,
-          labIdeasComplete,
-          setLabIdeasComplete,
-          experientialExerciseComplete,
-          setExperientialExerciseComplete,
-          sprintPlanningComplete,
-          setSprintPlanningComplete,
+          section,
+          updateSectionStatus,
           newCategoryName,
           setNewCategoryName,
           newLabTopics,
@@ -54,7 +68,8 @@ const Main = () => {
         }}
       >
         <Router className={"tw-p-3 tw-h-[40rem]"}>
-          <SelectExercise default path={"/*"} />
+          <StartExercise default path={"/*"} />
+          <StartExercise path={"/Continue"} verb="Continue" />
           <DesignLabDecision path={"/LabDecision"} />
           <ExperientialIntroduction path={"/ExperientialIntro"} />
           <CreateExperientialExercise path={"/ExperientialExercise"} />
@@ -73,6 +88,12 @@ const Main = () => {
       </Lab0Context.Provider>
     </div>
   );
+};
+
+Main.propTypes = {
+  user: PropTypes.shape({
+    userid: PropTypes.number,
+  }),
 };
 
 export default Main;

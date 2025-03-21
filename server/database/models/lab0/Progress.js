@@ -1,13 +1,16 @@
 /* eslint-disable new-cap */
 module.exports = (sequelize, DataTypes) => {
-  const lab0RepairCategory = DataTypes.ENUM(
-      'DESIGNING',
+  const lab0ProgressCategory = DataTypes.ENUM(
+      'DESIGN',
       'BACKEND',
       'FRONTEND',
   );
 
   // TODO: Add Writing a Lab sections here too
-  const lab0RepairSection = DataTypes.ENUM(
+  const lab0ProgressSection = DataTypes.ENUM(
+      'LabIdea',
+      'ExperientialExercise',
+      'SprintPlanning',
       'LabDataRepair',
       'SchemaRepair',
       'ServiceControllerRepair',
@@ -20,34 +23,34 @@ module.exports = (sequelize, DataTypes) => {
       'FrontendTipsTricks',
   );
 
-  const lab0RepairSectionStatus = DataTypes.ENUM(
+  const lab0ProgressSectionStatus = DataTypes.ENUM(
       'IN_PROGRESS',
       'COMPLETED',
   );
 
-  const Repair = sequelize.define('RepairLab0', {
+  const Progress = sequelize.define('ProgressLab0', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       unique: true,
-      autoincrement: true,
+      autoIncrement: true,
     },
     userid: {
       type: DataTypes.BIGINT,
     },
     category: {
-      type: lab0RepairCategory,
+      type: lab0ProgressCategory,
     },
     section: {
-      type: lab0RepairSection,
+      type: lab0ProgressSection,
     },
     sectionStatus: {
-      type: lab0RepairSectionStatus,
+      type: lab0ProgressSectionStatus,
     },
   }, {
-    tableName: 'lab0_repair',
+    tableName: 'lab0_progress',
   });
 
-  Repair.sync();
-  return Repair;
+  Progress.sync();
+  return Progress;
 };
