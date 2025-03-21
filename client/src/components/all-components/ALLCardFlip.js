@@ -2,6 +2,27 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import FlipIcon from "@mui/icons-material/Flip";
 
+/**
+ * A standard ALL component that displays a tile of flippable cards.
+ * The width and height of the entire bento box and each card's width
+ * can be fine-tuned. Each card can have its backface customized with
+ * varying content like top text, text, bottom text, or an image. When
+ * all cards have been flipped, the {@link props.onAllFlipped} function is called.
+ * @param {number} props.width The width of the entire bento box (in units).
+ * @param {number} props.height The height of the entire bento box (in units).
+ * @param {boolean} props.flipBack Whether each card can be flipped back after being turned over.
+ * @param {function} props.onAllFlipped The function called when all cards are flipped.
+ * @param {string} props.frontImgURL A custom image shown on the front of every card. If omitted, default styling is applied.
+ * @param {string} props.gridStyle Custom styling to apply to the bento box container in addition to the default styling.
+ * @param {string} props.cardStyle Custom styling to apply to each card's container in addition to the default styling.
+ * @param {Array.<Object>} props.cards An array of objects where each object represents a card, in row-insertion order.
+ * @param {number} props.cards[i].id Required field which uniquely identifies the card. Should be in ascending order starting at 0.
+ * @param {number} props.cards[i].width Required field indicating the width of a card on a row (in units). Either 1 or 2.
+ * @param {string} props.cards[i].topText Optional text to be shown at the top of the backface of a card.
+ * @param {string} props.cards[i].imageURL Optional image to be shown between the top and bottom text on the backface of a card.
+ * @param {string} props.cards[i].text Optional text to be shown between top text and bottom text but below the image, if present.
+ * @param {string} props.cards[i].bottomText Optional text to be shown at the bottom of the backface of a card.
+ */
 const ALLCardFlip = (props) => {
   const {
     width,
@@ -9,6 +30,8 @@ const ALLCardFlip = (props) => {
     flipBack = false,
     onAllFlipped,
     frontImgURL,
+    gridStyle,
+    cardStyle,
     cards,
   } = props;
   const [flipped, setFlipped] = useState(Array(cards.length).fill(false));
@@ -29,19 +52,27 @@ const ALLCardFlip = (props) => {
     }
   };
 
+  const colSpans = {
+    1: "tw-col-span-1",
+    2: "tw-col-span-2",
+    3: "tw-col-span-3",
+    4: "tw-col-span-4",
+    5: "tw-col-span-5",
+  };
+
   return (
     <div
-      className={`tw-w-full tw-grid tw-grid-cols-${width} tw-grid-rows-${height} tw-gap-4`}
+      className={`tw-w-full tw-grid tw-grid-cols-${width} tw-grid-rows-${height} tw-gap-4 ${gridStyle}`}
     >
-      {cards.map((card, i) => {
+      {cards.map((card) => {
         return (
           <div
-            className={`${card.width == 2 ? "tw-col-span-2" : "tw-col-span-1"} tw-row-span-1 tw-perspective-distant`}
-            key={i}
-            onClick={() => flipCard(i)}
+            className={`${colSpans[card.width]} tw-row-span-1 tw-perspective-distant ${flipBack || !flipped[card.id] ? "tw-cursor-pointer" : ""}`}
+            key={card.id}
+            onClick={() => flipCard(card.id)}
           >
             <div
-              className={`tw-relative tw-w-full tw-h-[15rem] tw-p-[0.2rem] tw-rounded-[1.2rem] tw-bg-gradient-to-r tw-from-labYellow tw-from-0% tw-to-labBlue tw-to-100% tw-duration-[0.5s] tw-transform-3d ${flipped[i] ? "tw-rotate-y-180" : ""}`}
+              className={`tw-relative tw-w-full tw-h-[15rem] tw-p-[0.2rem] tw-rounded-[1.2rem] tw-bg-gradient-to-r tw-from-labYellow tw-from-0% tw-to-labBlue tw-to-100% tw-duration-[0.5s] tw-transform-3d ${flipped[card.id] ? "tw-rotate-y-180" : ""} ${cardStyle}`}
             >
               {/* Front */}
               <div className="tw-absolute tw-w-[calc(100%-0.4rem)] tw-h-[calc(100%-0.4rem)] tw-rounded-[1rem] tw-bg-white tw-backface-hidden tw-flex tw-justify-center tw-items-center">
@@ -95,6 +126,8 @@ ALLCardFlip.propTypes = {
   flipBack: PropTypes.bool,
   onAllFlipped: PropTypes.func,
   frontImgURL: PropTypes.string,
+  gridStyle: PropTypes.string,
+  cardStyle: PropTypes.string,
   cards: PropTypes.array,
 };
 

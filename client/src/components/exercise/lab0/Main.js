@@ -49,39 +49,46 @@ const Main = (props) => {
           width={3}
           height={3}
           onAllFlipped={() => setTemp(true)}
-          /* frontImgURL="/img/profileImages/Professor_Malachowsky.jpg" */
+          gridStyle={"tw-gap-3"}
+          cardStyle={"tw-rounded-[1.2rem]"}
           cards={[
             {
-              text: "Test 1",
+              id: 0,
               width: 1,
+              text: "Test 1",
             },
             {
+              id: 1,
+              width: 2,
               topText: "Test 2",
               imageURL: "/img/lab_thumbnails/wrench.jpg",
-              width: 2,
             },
             {
+              id: 2,
+              width: 2,
               imageURL: "/img/lab_thumbnails/wrench.jpg",
               bottomText: "Test 3",
-              width: 2,
             },
             {
+              id: 3,
+              width: 1,
               topText: "Test 4",
               imageURL: "/img/lab_thumbnails/wrench.jpg",
               bottomText: "Bottom Text",
-              width: 1,
             },
             {
+              id: 4,
+              width: 1,
               topText: "Test 5",
               imageURL: "/img/lab_thumbnails/wrench.jpg",
               bottomText: "Bottom Text",
-              width: 1,
             },
             {
+              id: 5,
+              width: 2,
               topText: "Test 6",
               imageURL: "/img/lab_thumbnails/wrench.jpg",
               bottomText: "Bottom Text",
-              width: 2,
             },
           ]}
         />
