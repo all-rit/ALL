@@ -9,11 +9,12 @@ const RetentionReading = () => {
       <ImagineHeader title="Retention Reading" />
       {Frame(
         <p className="tw-body-text tw-w-[20vw]">
-          Thank you for participating! Bias is no bueno, and we&apos;re looking
-          for bueno world :)
+          Some text that will be so intriguing, so utterly inspirnig that ALL
+          (get it) bias will be eliminated at the first glimpse. We can only
+          IMAGINE (get it) the world that shall come forth from such syntactical
+          genius.
         </p>,
-        () =>
-          navigate("/Imagine2025/Quiz"),
+        () => navigate("/Imagine2025/Quiz"),
         () => alert("Domain expansinon - no previous implemented"),
       )}
     </>

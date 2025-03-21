@@ -14,6 +14,7 @@ import {
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
 import RetentionReading from "./pages/RetentionReading";
+import "./main.css";
 import Quiz from "../quiz/components/QuizHandler";
 
 //Generates random arrays using Fisher-Yates algorithim
