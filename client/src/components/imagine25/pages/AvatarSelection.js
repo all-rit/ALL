@@ -34,7 +34,7 @@ const AvatarSelection = (props) => {
             const avatarSelected =
               index == props.avatarSelected
                 ? "tw-border-t-[#FFC335] tw-border-l-[#FFC335] tw-border-b-[#0045D5] tw-border-r-[#0045D5]"
-                : "avatarSelection";
+                : "hover:tw-brightness-75 tw-transition-all tw-duration-300 tw-blur-0 tw-contrast-100 tw-grayscale-0 tw-hue-rotate-0 tw-invert-0 tw-saturate-100 tw-sepia-0 tw-drop-shadow-none";
             //div class wrapper needed for clicking functionality
             return (
               <div
