@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import FlipIcon from "@mui/icons-material/Flip";
@@ -42,7 +41,7 @@ const ALLCardFlip = (props) => {
             onClick={() => flipCard(i)}
           >
             <div
-              className={`tw-relative tw-w-full tw-h-[15rem] tw-p-[0.2rem] tw-rounded-[1.2rem] tw-bg-gradient-to-r tw-from-labYellow tw-to-labBlue tw-duration-[0.5s] tw-transform-3d ${flipped[i] ? "tw-rotate-y-180" : ""}`}
+              className={`tw-relative tw-w-full tw-h-[15rem] tw-p-[0.2rem] tw-rounded-[1.2rem] tw-bg-gradient-to-r tw-from-labYellow tw-from-0% tw-to-labBlue tw-to-100% tw-duration-[0.5s] tw-transform-3d ${flipped[i] ? "tw-rotate-y-180" : ""}`}
             >
               {/* Front */}
               <div className="tw-absolute tw-w-[calc(100%-0.4rem)] tw-h-[calc(100%-0.4rem)] tw-rounded-[1rem] tw-bg-white tw-backface-hidden tw-flex tw-justify-center tw-items-center">
