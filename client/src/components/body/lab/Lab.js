@@ -100,7 +100,7 @@ const Lab = (props) => {
                   <Modal isOpen={openCertificate}>
                     <ModalBody>
                       <Certificate
-                        quizResult={labProgress.quizscore}
+                        quizResult={labProgress?.quizscore}
                         lab={lab}
                       />
                     </ModalBody>
