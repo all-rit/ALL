@@ -5,7 +5,7 @@ import ALLButton from "src/components/all-components/ALLButton";
 export const Frame = (content, nextOnClick, prevOnClick) => {
   const prev =
     prevOnClick != null ? (
-      <ALLButton onClick={prevOnClick} label="Previous" />
+      <ALLButton onClick={prevOnClick} label="Previous" inverted={true} />
     ) : (
       <div></div>
     );
