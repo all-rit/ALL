@@ -2,25 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ALLButton = (props) => {
-  const {
-    label,
-    onClick,
-    className,
-    type,
-    href,
-    large = false,
-    inverted = false,
-  } = props;
-
-  const buttonStyling = `tw-absolute tw-border-solid tw-border-[0.4rem] ${large && "tw-border-[0.5rem]"} tw-h-full tw-w-full tw-z-1`;
-
-  const blueDirection = inverted
-    ? ` tw-border-primary-blue tw-left-[-0.5rem] tw-top-[-0.5rem] tw-border-r-0 tw-border-b-0 tw-rounded-tl-lg blue-drop-shadow-inverted`
-    : ` tw-border-primary-blue tw-right-[-0.5rem] tw-top-[-0.5rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow`;
-
-  const yellowDirection = inverted
-    ? ` tw-border-primary-yellow tw-right-[-0.5rem] tw-bottom-[-0.5rem] tw-border-t-0 tw-border-l-0 tw-rounded-br-lg yellow-drop-shadow-inverted`
-    : ` tw-border-primary-yellow tw-left-[-0.5rem] tw-bottom-[-0.5rem] tw-border-t-0 tw-border-r-0 tw-rounded-bl-lg yellow-drop-shadow`;
+  const { label, onClick, className, type, href, large = false } = props;
 
   return (
     <div className={`${className} tw-h-100`}>
@@ -31,8 +13,14 @@ const ALLButton = (props) => {
         href={href}
       >
         {label}
-        <div className={buttonStyling + blueDirection} />
-        <div className={buttonStyling + yellowDirection} />
+        <div
+          className={`tw-absolute tw-border-solid tw-border-[0.4rem] ${large && "tw-border-[0.5rem]"} tw-h-full tw-w-full tw-z-1 
+        tw-border-primary-blue tw-right-[-0.5rem] tw-top-[-0.5rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow`}
+        />
+        <div
+          className={`tw-absolute tw-border-solid tw-border-[0.4rem] ${large && "tw-border-[0.5rem]"} tw-h-full tw-w-full tw-z-1 
+         tw-border-primary-yellow tw-left-[-0.5rem] tw-bottom-[-0.5rem] tw-border-t-0 tw-border-r-0 tw-rounded-bl-lg yellow-drop-shadow`}
+        />
       </button>
     </div>
   );
@@ -45,7 +33,6 @@ ALLButton.propTypes = {
   type: PropTypes.string,
   large: PropTypes.bool,
   href: PropTypes.string,
-  inverted: PropTypes.bool,
 };
 
 export default ALLButton;
