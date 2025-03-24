@@ -21,7 +21,12 @@ const AvatarSelection = (props) => {
       );
       return;
     }
-    actions.showSnackbar("Please select your " + props.title, ERROR);
+    actions.showSnackbar(
+      "Please select your " + props.title,
+      ERROR,
+      "center",
+      "top",
+    );
   };
 
   return (
@@ -34,7 +39,7 @@ const AvatarSelection = (props) => {
             const avatarSelected =
               index == props.avatarSelected
                 ? "tw-border-t-[#FFC335] tw-border-l-[#FFC335] tw-border-b-[#0045D5] tw-border-r-[#0045D5]"
-                : "hover:tw-brightness-75 tw-transition-all tw-duration-300 tw-blur-0 tw-contrast-100 tw-grayscale-0 tw-hue-rotate-0 tw-invert-0 tw-saturate-100 tw-sepia-0 tw-drop-shadow-none";
+                : "tw-transition-all tw-duration-200 hover:tw-brightness-75 hover:tw-blur-0 hover:tw-contrast-100 hover:tw-grayscale-0 hover:tw-hue-rotate-0 hover:tw-invert-0 hover:tw-saturate-100 hover:tw-sepia-0 hover:tw-drop-shadow-none";
             //div class wrapper needed for clicking functionality
             return (
               <div

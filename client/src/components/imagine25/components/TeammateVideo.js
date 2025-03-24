@@ -42,7 +42,11 @@ const TeammateVideo = (props) => {
       <p>
         Teammate live from: <b>Buffalo, NY</b>
       </p>
-      <div className="tw-pt-8 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-6">
+      <p className="tw-col-span-2 tw-text-center tw-font-bold">
+        <br />
+        (Keyboard)
+      </p>
+      <div className="tw-pt-2 tw-pb-[200px] tw-grid tw-grid-cols-2 tw-grid-rows-4 tw-gap-y-4">
         <h4 className="tw-col-span-2 tw-text-center">Movement:</h4>
         <img
           className={

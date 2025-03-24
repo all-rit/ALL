@@ -89,7 +89,12 @@ const AvatarCreation = (props) => {
       );
       return;
     }
-    actions.showSnackbar("Please finish creating your avatar", ERROR);
+    actions.showSnackbar(
+      "Please finish creating your avatar",
+      ERROR,
+      "center",
+      "top",
+    );
   };
 
   return (
