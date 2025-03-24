@@ -19,7 +19,7 @@ const WireframeComponents = () => {
   const handleSubmit = () => {
     if (selectedComponent === "CodeBlock") {
       setIsCorrect(true);
-      setMessage("Correct placement! Well done!");
+      setMessage("Correct! Well done!");
     } else {
       setMessage("Try again!");
     }
