@@ -4,6 +4,8 @@ import LabButton from "../../../../all-components/LabButton";
 import CodeBlock from "../../../../../assets/images/lab0/Lab0-CodeBlockComponent.PNG";
 import HTTPRequest from "../../../../../assets/images/lab0/Lab0-HTTPRequestComponent.PNG";
 import DragAndDrop from "../../../../../assets/images/lab0/Lab0-DragAndDropComponent.PNG";
+import labButton from "../../../../../assets/images/lab0/Lab0-LabButtonComponent.PNG";
+import fauxFigma from "../../../../../assets/images/lab0/Lab0-FigmaComponent.PNG";
 
 const WireframeComponents = () => {
   const { handleNav } = useContext(lab0Context);
@@ -15,14 +17,122 @@ const WireframeComponents = () => {
   const [selectedComponent, setSelectedComponent] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
   const [message, setMessage] = useState("");
+  const [scenario, setScenario] = useState(1);
 
   const handleSubmit = () => {
-    if (selectedComponent === "CodeBlock") {
-      setIsCorrect(true);
-      setMessage("Correct! Well done!");
-    } else {
-      setMessage("Try again!");
+    switch (scenario) {
+      case 1:
+        if (selectedComponent === "Code Block") {
+          setScenario(2);
+          setMessage("");
+        } else {
+          setMessage("Try again!");
+        }
+        break;
+      case 2:
+        if (selectedComponent === "Lab Button") {
+          setScenario(3);
+          setMessage("");
+        } else {
+          setMessage("Try again!");
+        }
+        break;
+      case 3:
+        if (selectedComponent === "Drag and Drop") {
+          setIsCorrect(true);
+          setMessage("Good Job!");
+        } else {
+          setMessage("Try again!");
+        }
+        break;
     }
+  };
+
+  // id is scenario number
+  const answerOne = [
+    {
+      id: 1,
+      componentName: "HTTP Request",
+      altText: "HTTP Request Component Figma Design",
+      src: HTTPRequest,
+    },
+    {
+      id: 2,
+      componentName: "Code Block",
+      altText: "Code Block Component Figma Design",
+      src: CodeBlock,
+    },
+    {
+      id: 3,
+      componentName: "Drag and Drop",
+      altText: "Drag and Drop Component Figma Design",
+      src: DragAndDrop,
+    }, // answer for scenario 3
+  ];
+
+  const answerTwo = [
+    {
+      id: 1,
+      componentName: "Code Block",
+      altText: "Code Block Component Figma Design",
+      src: CodeBlock,
+    }, // answer for scenario 1
+    {
+      id: 2,
+      componentName: "Drag and Drop",
+      altText: "Drag and Drop Component Figma Design",
+      src: DragAndDrop,
+    },
+    {
+      id: 3,
+      componentName: "Faux Figma",
+      altText: "Faux Figma Component Figma Design",
+      src: fauxFigma,
+    },
+  ];
+
+  const answerThree = [
+    {
+      id: 1,
+      componentName: "Drag and Drop",
+      altText: "Drag and Drop Component Figma Design",
+      src: DragAndDrop,
+    },
+    {
+      id: 2,
+      componentName: "Lab Button",
+      altText: "Lab Button Component Figma Design",
+      src: labButton,
+    }, // answer for scenario 2
+    {
+      id: 3,
+      componentName: "HTTP Request",
+      altText: "HTTP Request Component Figma Design",
+      src: HTTPRequest,
+    },
+  ];
+
+  const getButton = (component) => {
+    return (
+      <button
+        className={
+          "tw-flex tw-flex-col tw-justify-start tw-bg-white tw-w-1/3 tw-border-0 tw-rounded-2xl " +
+          "focus:tw-border-4 focus:tw-border-solid focus:tw-border-labBlue"
+        }
+        onClick={() => {
+          setSelectedComponent(component.componentName);
+        }}
+      >
+        <div className={"tw-font-bold tw-font-calibri tw-py-1"}>
+          {component.componentName}
+        </div>
+        <img
+          className={"tw-flex tw-p-2 tw-object-contain"}
+          src={component.src}
+          alt={component.altText}
+        />
+      </button>
+    );
   };
 
   return (
@@ -37,81 +147,72 @@ const WireframeComponents = () => {
       <p className={"tw-body-text tw-pt-2"}>
         You have already learned about various components that already exist
         within ALL. Given the possible scenario for the{" "}
-        <strong>Accessibility to Focus Order</strong> lab, pick which component
-        would be best suited for the activity.
+        <strong>Accessibility to Focus Order</strong> lab, pick which components
+        would be best suited for the activities.
       </p>
-      <blockquote className="tw-p-4 tw-m-2 tw-font-semibold">
-        A website form has two columns: one for Person 1 and another for Person
-        2. When navigating with the Tab key, the focus jumps between fields in
-        each column (e.g., &quot;First Name&quot; of Person 1 to &quot;First
-        Name&quot; of Person 2) instead of moving sequentially down the fields
-        for one person. This zigzag focus order is not accessible and disrupts
-        logical navigation.
-      </blockquote>
       <p className={"tw-body-text tw-pt-2"}>
-        Which component would be most suited for an activity where a user must
-        rectify the <code>tabindex</code> in the form to reorder the focus
-        order?
+        <strong>Scenario {scenario}:</strong>
       </p>
+      {scenario === 1 && (
+        <div>
+          <blockquote className="tw-p-4 tw-m-2 tw-font-semibold">
+            A website form has two columns: one for Person 1 and another for
+            Person 2. When navigating with the Tab key, the focus jumps between
+            fields in each column (e.g., &quot;First Name&quot; of Person 1 to
+            &quot;First Name&quot; of Person 2) instead of moving sequentially
+            down the fields for one person. This zigzag focus order is not
+            accessible and disrupts logical navigation.
+          </blockquote>
+          <p className={"tw-body-text tw-pt-2"}>
+            Which component would be most suited for an activity where a user
+            must rectify the <code>tabindex</code> in the form to reorder the
+            focus order?
+          </p>
+        </div>
+      )}
+      {scenario === 2 && (
+        <div>
+          <blockquote className="tw-p-4 tw-m-2 tw-font-semibold">
+            On a form, there are several buttons with different functions.
+            However, only one button is labeled correctly with an accessible
+            name and fulfills a specific task: &quot;Submit Feedback&quot; A
+            user with accessibility needs must locate this button using
+            keyboard-only navigation, ensuring they rely on proper focusable
+            elements and screen reader hints.
+          </blockquote>
+          <p className={"tw-body-text tw-pt-2"}>
+            Which component would be most suited for an activity where a user
+            must search through the form, locate the &quot;Submit Feedback&quot;
+            button, and submit the form, using only the keyboard?
+          </p>
+        </div>
+      )}
+      {scenario === 3 && (
+        <div>
+          <blockquote className="tw-p-4 tw-m-2 tw-font-semibold">
+            The header of a webpage contains several interactive elements,
+            including a Home link, a search bar, navigation links such as About,
+            Services, and Contact Us, a Login button, and a Language Selector
+            dropdown. However, these elements are currently arranged in an
+            illogical focus order, making it difficult for keyboard-only users
+            to navigate efficiently.
+          </blockquote>
+          <p className={"tw-body-text tw-pt-2"}>
+            Which component would be most suited for an activity where a user
+            must reorder the header elements to follow logical navigation?
+          </p>
+        </div>
+      )}
 
       <div className={"tw-w-full tw-flex tw-flex-col tw-justify-center tw-p-4"}>
         <div
           className={"tw-flex tw-flex-row tw-gap-4 tw-justify-center tw-my-2"}
         >
-          <button
-            className={
-              "tw-flex tw-flex-col tw-justify-start tw-bg-white tw-w-1/3 tw-border-0 tw-rounded-2xl " +
-              "focus:tw-border-4 focus:tw-border-solid focus:tw-border-labBlue"
-            }
-            onClick={() => {
-              setSelectedComponent("HTTP");
-            }}
-          >
-            <div className={"tw-font-bold tw-font-calibri tw-py-1"}>
-              HTTP Request
-            </div>
-            <img
-              className={"tw-flex tw-p-2 tw-object-contain"}
-              src={HTTPRequest}
-              alt={"HTTP Request Component Figma Design"}
-            />
-          </button>
-          <button
-            className={
-              "tw-flex tw-flex-col tw-justify-start tw-bg-white tw-w-1/3 tw-border-0 tw-rounded-2xl " +
-              "focus:tw-border-4 focus:tw-border-solid focus:tw-border-labBlue"
-            }
-            onClick={() => {
-              setSelectedComponent("CodeBlock");
-            }}
-          >
-            <div className={"tw-font-bold tw-font-calibri tw-py-1"}>
-              Code Block
-            </div>
-            <img
-              className={"tw-flex tw-p-2 tw-object-contain"}
-              src={CodeBlock}
-              alt={"Code Block Component Figma Design"}
-            />
-          </button>
-          <button
-            className={
-              "tw-flex tw-flex-col tw-justify-start tw-bg-white tw-w-1/3 tw-border-0 tw-rounded-2xl " +
-              "focus:tw-border-4 focus:tw-border-solid focus:tw-border-labBlue"
-            }
-            onClick={() => {
-              setSelectedComponent("DragAndDrop");
-            }}
-          >
-            <div className={"tw-font-bold tw-font-calibri tw-py-1"}>
-              Drag and Drop
-            </div>
-            <img
-              className={"tw-flex tw-p-2 tw-object-contain"}
-              src={DragAndDrop}
-              alt={"Drag and Drop Component Figma Design"}
-            />
-          </button>
+          {getButton(answerOne.find((element) => element.id === scenario))}
+
+          {getButton(answerTwo.find((element) => element.id === scenario))}
+
+          {getButton(answerThree.find((element) => element.id === scenario))}
         </div>
       </div>
       {message && (
@@ -124,6 +225,7 @@ const WireframeComponents = () => {
       )}
       <div className={"tw-flex tw-justify-center tw-py-6"}>
         <LabButton
+          key={"Enter"}
           onClick={isCorrect ? navigateNext : handleSubmit}
           label={isCorrect ? "Next" : "Submit"}
         />
