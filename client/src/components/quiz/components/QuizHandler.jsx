@@ -258,32 +258,28 @@ const QuizHandler = (props) => {
    */
   function selectMulti(e) {
     const answerValue = e.target.value;
-    let tempAnswers = selectedAnswers;
-    let storageSet;
-    // ensures that there is a value stored there
-    if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
-      // copies over the set
-      storageSet = new Set(tempAnswers[currentQuestionCursor]);
-      // checks to see if the set has the value in it
-      !storageSet.has(answerValue)
-        ? // adds it if it doesn't
-          storageSet.add(answerValue)
-        : // removes it if it does
-          storageSet.delete(answerValue);
-      // assigns the updated set to the array
-      tempAnswers[currentQuestionCursor] = storageSet;
-    } else {
-      // creates an empty set because does not exist in that spot
-      setDisableNext(false);
-      storageSet = new Set();
-      // adds the value
-      storageSet.add(answerValue);
-      // assigns it to the array
-      tempAnswers[currentQuestionCursor] = storageSet;
-    }
-    setSelectedAnswers(tempAnswers);
+    setSelectedAnswers((prevSelectedAnswers) => {
+      const newSelectedAnswers = [...prevSelectedAnswers];
+
+      let storageSet = new Set(newSelectedAnswers[currentQuestionCursor] || []);
+
+      if (storageSet.has(answerValue)) {
+        storageSet.delete(answerValue);
+        if (storageSet.size === 0) {
+          setDisableNext(true);
+        }
+      } else {
+        storageSet.add(answerValue);
+        setDisableNext(false);
+      }
+
+      newSelectedAnswers[currentQuestionCursor] = storageSet;
+
+      return newSelectedAnswers;
+    });
   }
 
+  console.log(selectedAnswers);
   return (
     <div className={"tw-h-[43rem] tw-pt-10 tw-rounded-lg"}>
       {!props.quizCompleted ? (

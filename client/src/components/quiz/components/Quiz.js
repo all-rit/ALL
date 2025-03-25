@@ -91,9 +91,10 @@ function Quiz(props) {
 }
 
 Quiz.propTypes = {
-  selectedAnswer: PropTypes.shape({
-    content: PropTypes.string,
-  }),
+  selectedAnswer: PropTypes.oneOfType([
+    PropTypes.instanceOf(Set),
+    PropTypes.object,
+  ]).isRequired,
   answerOptions: PropTypes.array.isRequired,
   question: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,

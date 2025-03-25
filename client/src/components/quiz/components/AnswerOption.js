@@ -10,6 +10,10 @@ function AnswerOption(props) {
           type="checkbox"
           className="checkboxCustomButton"
           name="checkboxGroup"
+          checked={
+            props.selectedAnswer instanceof Set &&
+            props.selectedAnswer.has(props.answerType)
+          }
           id={props.answerType}
           value={props.answerType}
           onChange={props.multiSelected}
@@ -48,9 +52,10 @@ AnswerOption.propTypes = {
   onAnswerSelected: PropTypes.func.isRequired,
   multiSelected: PropTypes.func.isRequired,
   multiChoice: PropTypes.bool.isRequired,
-  selectedAnswer: PropTypes.shape({
-    content: PropTypes.string,
-  }),
+  selectedAnswer: PropTypes.oneOfType([
+    PropTypes.instanceOf(Set),
+    PropTypes.object,
+  ]).isRequired,
 };
 
 export default AnswerOption;
