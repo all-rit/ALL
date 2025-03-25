@@ -193,7 +193,7 @@ const AvatarCreation = (props) => {
           </div>
         </div>,
         nextOnClick,
-        () => navigate("/Imagine2025/PreSurvey"),
+        null,
       )}
     </>
   );
