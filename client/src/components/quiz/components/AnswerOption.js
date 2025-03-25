@@ -26,7 +26,7 @@ function AnswerOption(props) {
           type="radio"
           className="radioCustomButton tw-body-text"
           name="checkboxGroup"
-          // checked={props.answerType === props.answer}
+          checked={props.answerContent === props.selectedAnswer.content}
           id={props.answerType}
           value={props.answerType}
           onChange={props.onAnswerSelected}
@@ -48,6 +48,9 @@ AnswerOption.propTypes = {
   onAnswerSelected: PropTypes.func.isRequired,
   multiSelected: PropTypes.func.isRequired,
   multiChoice: PropTypes.bool.isRequired,
+  selectedAnswer: PropTypes.shape({
+    content: PropTypes.string,
+  }),
 };
 
 export default AnswerOption;

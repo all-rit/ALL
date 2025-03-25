@@ -19,7 +19,7 @@ const QuizHandler = (props) => {
   const { state } = useMainStateContext();
   const [currentLabId, setCurrentLab] = useState(props.labId);
   const [viewCertificate, setViewCertificate] = useState(false);
-  let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
+  const [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions, setQuestions] = useState([
     {
       question: "Default",
@@ -35,9 +35,9 @@ const QuizHandler = (props) => {
   ]);
   const [answerOption, setAnswerOption] = useState([]);
   // initialized to a empty array to house recorded answers
-  let [selectedAnswers, setSelectedAnswers] = useState([]);
-  let [disableNext, setDisableNext] = useState(true);
-  let [result, setResult] = useState({});
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [disableNext, setDisableNext] = useState(true);
+  const [result, setResult] = useState({});
 
   useEffect(() => {
     setCurrentLab(props.labId);
@@ -63,10 +63,8 @@ const QuizHandler = (props) => {
         /**
          * Get quiz questions from the constants diretory
          */
-        const quiz = QuizQuestions;
-        setQuestions(quiz);
-        const quizAnswers = quiz[currentQuestionCursor].answers;
-        setAnswerOption(quizAnswers);
+        setQuestions(QuizQuestions);
+        setAnswerOption(QuizQuestions[currentQuestionCursor].answers);
       }
     } catch (error) {
       console.error(error);
@@ -83,7 +81,11 @@ const QuizHandler = (props) => {
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
-      setDisableNext(true);
+      if (selectedAnswers[updateCursor] == null) {
+        setDisableNext(true);
+      } else {
+        setDisableNext(false);
+      }
     }
   }
 
@@ -96,7 +98,11 @@ const QuizHandler = (props) => {
       let updateCursor = currentQuestionCursor - 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
-      setDisableNext(true);
+      if (selectedAnswers[updateCursor] == null) {
+        setDisableNext(true);
+      } else {
+        setDisableNext(false);
+      }
     }
   };
 
@@ -240,7 +246,6 @@ const QuizHandler = (props) => {
       val: 1,
       type: answerValue,
     };
-    console.log("Recorded answers: " + tempSelectedAnswers);
     setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
   }
@@ -283,7 +288,11 @@ const QuizHandler = (props) => {
     <div className={"tw-h-[43rem] tw-pt-10 tw-rounded-lg"}>
       {!props.quizCompleted ? (
         <Quiz
-          answer={""}
+          selectedAnswer={
+            selectedAnswers[currentQuestionCursor] == null
+              ? {}
+              : selectedAnswers[currentQuestionCursor]
+          }
           answerOptions={answerOption}
           disable={disableNext}
           multiChoice={questions[currentQuestionCursor].multiChoice}

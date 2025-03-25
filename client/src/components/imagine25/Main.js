@@ -57,6 +57,7 @@ const Main = () => {
 
   const [teammateAvatarSelected, setTeammateAvatarSelected] = useState();
   const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
+  // const [quizAnswers, setQuizAnswers] = useState();
 
   //After each iteration, clear the use-states
   const clearInstance = () => {

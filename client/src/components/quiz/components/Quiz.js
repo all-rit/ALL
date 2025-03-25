@@ -19,6 +19,7 @@ function Quiz(props) {
       <AnswerOption
         key={key.type}
         answerContent={key.content}
+        selectedAnswer={props.selectedAnswer}
         answerType={key.type}
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
@@ -90,7 +91,9 @@ function Quiz(props) {
 }
 
 Quiz.propTypes = {
-  answer: PropTypes.string.isRequired,
+  selectedAnswer: PropTypes.shape({
+    content: PropTypes.string,
+  }),
   answerOptions: PropTypes.array.isRequired,
   question: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,
