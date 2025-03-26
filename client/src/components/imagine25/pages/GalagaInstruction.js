@@ -11,17 +11,15 @@ const GalagaInstructions = () => {
       {Frame(
         <div className="tw-grid tw-w-[20vw]">
           <p className="tw-body-text">
-            You will be playing against your selected opponent to see who can
-            score the most points in 1 minute. Your teammate will be playing
-            against their selected opponent in the same manner. The team with
-            the highest combined scores wins!
+            You and your teammate will each compete against your chosen
+            opponents for 1 minute. The team with the highest combined score
+            wins!
           </p>
           <br />
           {/*&apos; is just a apostrophe --> " ' "*/}
           <p className="tw-body-text">
-            Move left and right using the arrows and press space to shoot down
-            enemy space ships! Don&apos;t get hit by one or you&apos;ll lose
-            points!
+            You will be playing galaga! Use arrow keys to move and space to
+            shoot! Avoid enemy ships or lose points!
           </p>
         </div>,
         () => navigate("/Imagine2025/Galaga"),

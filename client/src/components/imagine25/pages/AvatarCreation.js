@@ -123,10 +123,8 @@ const AvatarCreation = (props) => {
                     "skinColor",
                     props.setUserAvatar,
                     {
-                      Pale: "Pale",
-                      Light: "Light",
+                      Pale: "Light",
                       Brown: "Medium Light",
-                      DarkBrown: "Medium Dark",
                       Black: "Dark",
                     },
                   )}
@@ -142,11 +140,9 @@ const AvatarCreation = (props) => {
                     "hairStyle",
                     props.setUserAvatar,
                     {
-                      LongHairStraight: "Long Straight",
-                      ShortHairShortFlat: "Short Straight",
-                      LongHairCurly: "Long Curly",
-                      ShortHairShortCurly: "Short Curly",
-                      ShortHairTheCaesar: "Buzz",
+                      LongHairStraight: "Long",
+                      LongHairCurly: "Curly",
+                      ShortHairShortCurly: "Short",
                       NoHair: "Bald",
                     },
                   )}
@@ -183,8 +179,6 @@ const AvatarCreation = (props) => {
                       Red: "Red",
                       Black: "Black",
                       PastelBlue: "Blue",
-                      PastelYellow: "Yellow",
-                      Pink: "Pink",
                     },
                   )}
                 </Col>

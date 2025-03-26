@@ -1,33 +1,33 @@
 const teammateAvatars = [
   {
-    hairStyle: "ShortHairShortCurly",
+    hairStyle: "ShortHairShortFlat",
     hairColor: "Blonde",
     clotheColor: "Red",
-    skinColor: "Light",
+    skinColor: "Pale",
   },
   {
     hairStyle: "LongHairCurly",
     hairColor: "SilverGray",
-    clotheColor: "PastelYellow",
+    clotheColor: "Red",
     skinColor: "Brown",
   },
   {
     hairStyle: "Bald",
     hairColor: "",
     clotheColor: "Black",
-    skinColor: "DarkBrown",
+    skinColor: "Black",
   },
   {
     hairStyle: "LongHairStraight",
     hairColor: "Black",
-    clotheColor: "Pink",
+    clotheColor: "PastelBlue",
     skinColor: "Black",
   },
 ];
 
 const opponentAvatars = [
   {
-    hairStyle: "ShortHairTheCaesar",
+    hairStyle: "ShortHairShortFlat",
     hairColor: "Black",
     clotheColor: "PastelYellow",
     skinColor: "Black",
@@ -36,13 +36,13 @@ const opponentAvatars = [
     hairStyle: "ShortHairShortFlat",
     hairColor: "Blonde",
     clotheColor: "Black",
-    skinColor: "Light",
+    skinColor: "Pale",
   },
   {
     hairStyle: "LongHairStraight",
     hairColor: "Brown",
     clotheColor: "PastelBlue",
-    skinColor: "Light",
+    skinColor: "Pale",
   },
   {
     hairStyle: "LongHairCurly",

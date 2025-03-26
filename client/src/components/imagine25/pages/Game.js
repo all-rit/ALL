@@ -34,20 +34,18 @@ const Analysis = () => {
         Red: "Red",
         Black: "Black",
         PastelBlue: "Blue",
-        PastelYellow: "Yellow",
-        Pink: "Pink",
       };
 
       //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
       const text = {
         experiential:
-          'ERROR: cannot process users "' +
+          "Parsing error #343: Cannot Process User's \"" +
           colorMap[user.avatar.clotheColor].toLowerCase() +
-          '" shirt, you and your teammate have been disqualified.',
+          '" shirt. Your points cannot be added due to error.',
         expression:
-          'ERROR: cannot process teammates "' +
+          "Parsing error #343: Cannot Process Teammate'  \"" +
           colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
-          '" shirt, you and your teammate have been disqualified.',
+          "\" shirt. Your teammate's points cannot be added due to error.",
         control:
           "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
       };
