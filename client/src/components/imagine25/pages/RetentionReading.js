@@ -15,7 +15,7 @@ const RetentionReading = () => {
           genius.
         </p>,
         () => navigate("/Imagine2025/Quiz"),
-        () => alert("Domain expansinon - no previous implemented"),
+        null,
       )}
     </>
   );
