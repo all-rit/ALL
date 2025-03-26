@@ -11,10 +11,10 @@ const WireframeComponents = () => {
   const { handleNav } = useContext(lab0Context);
 
   const navigateNext = () => {
-    handleNav("WireframeFirstGlance");
+    handleNav("ScrumIntro");
   };
 
-  const [selectedComponent, setSelectedComponent] = useState("");
+  const [selectedComponent, setSelectedComponent] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
   const [message, setMessage] = useState("");
   const [scenario, setScenario] = useState(1);
@@ -22,27 +22,27 @@ const WireframeComponents = () => {
   const handleSubmit = () => {
     switch (scenario) {
       case 1:
-        if (selectedComponent === "Code Block") {
+        if (selectedComponent.componentName === "Code Block") {
           setScenario(2);
           setMessage("");
         } else {
-          setMessage("Try again!");
+          setMessage("Try again! " + selectedComponent.errorText);
         }
         break;
       case 2:
-        if (selectedComponent === "Lab Button") {
+        if (selectedComponent.componentName === "Lab Button") {
           setScenario(3);
           setMessage("");
         } else {
-          setMessage("Try again!");
+          setMessage("Try again! " + selectedComponent.errorText);
         }
         break;
       case 3:
-        if (selectedComponent === "Drag and Drop") {
+        if (selectedComponent.componentName === "Drag and Drop") {
           setIsCorrect(true);
           setMessage("Good Job!");
         } else {
-          setMessage("Try again!");
+          setMessage("Try again! " + selectedComponent.errorText);
         }
         break;
     }
@@ -55,19 +55,22 @@ const WireframeComponents = () => {
       componentName: "HTTP Request",
       altText: "HTTP Request Component Figma Design",
       src: HTTPRequest,
+      errorText: "There is not an HTTP request being made in this scenario.",
     },
     {
       id: 2,
       componentName: "Code Block",
       altText: "Code Block Component Figma Design",
       src: CodeBlock,
+      errorText: 'There is not any code being "edited" in this activity.',
     },
     {
       id: 3,
       componentName: "Drag and Drop",
       altText: "Drag and Drop Component Figma Design",
       src: DragAndDrop,
-    }, // answer for scenario 3
+      errorText: "", // answer for scenario 3
+    },
   ];
 
   const answerTwo = [
@@ -76,18 +79,22 @@ const WireframeComponents = () => {
       componentName: "Code Block",
       altText: "Code Block Component Figma Design",
       src: CodeBlock,
-    }, // answer for scenario 1
+      errorText: "", // answer for scenario 1
+    },
     {
       id: 2,
       componentName: "Drag and Drop",
       altText: "Drag and Drop Component Figma Design",
       src: DragAndDrop,
+      errorText:
+        "This component would not be suitable for locating and submitting a form.",
     },
     {
       id: 3,
       componentName: "Faux Figma",
       altText: "Faux Figma Component Figma Design",
       src: fauxFigma,
+      errorText: "The Faux Figma component does not support dynamic elements.",
     },
   ];
 
@@ -97,18 +104,22 @@ const WireframeComponents = () => {
       componentName: "Drag and Drop",
       altText: "Drag and Drop Component Figma Design",
       src: DragAndDrop,
+      errorText:
+        "Drag and Drop could be used but the scenario activity involves editing an HTML attribute.",
     },
     {
       id: 2,
       componentName: "Lab Button",
       altText: "Lab Button Component Figma Design",
       src: labButton,
-    }, // answer for scenario 2
+      errorText: "", // answer for scenario 2
+    },
     {
       id: 3,
       componentName: "HTTP Request",
       altText: "HTTP Request Component Figma Design",
       src: HTTPRequest,
+      errorText: "There is no HTTP request being made in this scenario.",
     },
   ];
 
@@ -120,7 +131,7 @@ const WireframeComponents = () => {
           "focus:tw-border-4 focus:tw-border-solid focus:tw-border-labBlue"
         }
         onClick={() => {
-          setSelectedComponent(component.componentName);
+          setSelectedComponent(component);
         }}
       >
         <div className={"tw-font-bold tw-font-calibri tw-py-1"}>
@@ -225,7 +236,6 @@ const WireframeComponents = () => {
       )}
       <div className={"tw-flex tw-justify-center tw-py-6"}>
         <LabButton
-          key={"Enter"}
           onClick={isCorrect ? navigateNext : handleSubmit}
           label={isCorrect ? "Next" : "Submit"}
         />

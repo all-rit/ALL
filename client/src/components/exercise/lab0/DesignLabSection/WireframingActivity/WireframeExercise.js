@@ -309,7 +309,7 @@ const WireframeExercise = () => {
         />
       </div>
       {complete && (
-        <p className="tw-body-text tw-justify-center">
+        <p className="tw-body-text tw-justify-self-center tw-pt-4">
           Click the <strong> Next</strong> button to continue.
         </p>
       )}

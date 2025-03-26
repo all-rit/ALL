@@ -42,7 +42,7 @@ const WireframeReinforceQuiz = () => {
           />
         </div>
       </FauxFigma>
-      <p className="tw-body-text tw-justify-center">
+      <p className="tw-body-text tw-justify-self-center">
         Click the <strong> Next</strong> button to continue.
       </p>
       <div className={"tw-flex tw-justify-center tw-py-6"}>
