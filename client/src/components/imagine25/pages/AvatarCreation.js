@@ -99,7 +99,7 @@ const AvatarCreation = (props) => {
 
   return (
     <>
-      <ImagineHeader title="Make your Avatar Resemble You!" />
+      <ImagineHeader title="Make an Avatar That Resembles You!" />
       {Frame(
         <div className="d-flex justify-content-center">
           <div>
