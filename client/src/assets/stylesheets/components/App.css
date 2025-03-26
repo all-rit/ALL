@@ -782,7 +782,7 @@ a.icon:hover {
 
 .progressBar__bar {
   padding: 10px;
-  width: 96%;
+  width: 95%;
   border: 1px solid darkgreen;
   margin-right: 5px;
 }

@@ -58,9 +58,7 @@ const GroupAssignedLabs = (props) => {
         <div className={"tw-p-5"}>
           <div className={"tw-w-full tw-flex tw-flex-row tw-justify-between"}>
             <div
-              className={
-                "tw-flex tw-flex-col tw-ml-5 tw-font-poppins tw-line-clamp-0"
-              }
+              className={"tw-flex tw-flex-col  tw-font-poppins tw-line-clamp-0"}
             >
               <p className={"tw-p-0 tw-m-0"}>{instructor}</p>
               <p className={"tw-title tw-text-2xl tw-p-0 tw-m-0"}>
@@ -77,30 +75,39 @@ const GroupAssignedLabs = (props) => {
             </div>
           </div>
           <br />
-          <div className={"tw-text-2xl tw-ml-5 tw-title"}>Assigned Labs:</div>
-          <div className="md:tw-grid xxs:tw-flex xxs:tw-flex-col xxs:tw-justify-center md:lg:tw-grid-cols-3 tw-gap-3">
+          <div className={"tw-text-2xl tw-title"}>Assigned Labs:</div>
+          <div className="tw-flex tw-flex-col tw-gap-y-16 tw-w-full">
             {toDoLabs.length > 0 && (
-              <LabGeneration
-                actions={actions}
-                labids={toDoLabs}
-                progressState={"NOT_STARTED"}
-              />
+              <div>
+                <p className={"tw-title tw-text-sm"}> Not Started </p>
+                <LabGeneration
+                  actions={actions}
+                  labids={toDoLabs}
+                  progressState={"NOT_STARTED"}
+                />
+              </div>
             )}
             {inProgressLabs.length > 0 && (
-              <LabGeneration
-                actions={actions}
-                labids={inProgressLabs}
-                progressState={"IN_PROGRESS"}
-                labRecords={inProgressLabs}
-              />
+              <div>
+                <p className={"tw-title tw-text-sm"}> In Progress </p>
+                <LabGeneration
+                  actions={actions}
+                  labids={inProgressLabs}
+                  progressState={"IN_PROGRESS"}
+                  labRecords={inProgressLabs}
+                />
+              </div>
             )}
             {completedLabs.length > 0 && (
-              <LabGeneration
-                actions={actions}
-                labids={completedLabs}
-                progressState={"COMPLETED"}
-                labRecords={completedLabs}
-              />
+              <div>
+                <p className={"tw-title tw-text-sm"}> Complete </p>
+                <LabGeneration
+                  actions={actions}
+                  labids={completedLabs}
+                  progressState={"COMPLETED"}
+                  labRecords={completedLabs}
+                />
+              </div>
             )}
           </div>
         </div>
