@@ -124,7 +124,7 @@ const AvatarCreation = (props) => {
                     props.setUserAvatar,
                     {
                       Pale: "Light",
-                      Brown: "Medium Light",
+                      Brown: "Medium",
                       Black: "Dark",
                     },
                   )}

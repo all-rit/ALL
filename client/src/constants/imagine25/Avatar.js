@@ -8,14 +8,14 @@ const teammateAvatars = [
   {
     hairStyle: "LongHairCurly",
     hairColor: "SilverGray",
-    clotheColor: "Red",
-    skinColor: "Brown",
+    clotheColor: "PastelBlue",
+    skinColor: "Pale",
   },
   {
-    hairStyle: "Bald",
-    hairColor: "",
+    hairStyle: "ShortHairShortFlat",
+    hairColor: "Black",
     clotheColor: "Black",
-    skinColor: "Black",
+    skinColor: "Brown",
   },
   {
     hairStyle: "LongHairStraight",
@@ -27,9 +27,9 @@ const teammateAvatars = [
 
 const opponentAvatars = [
   {
-    hairStyle: "ShortHairShortFlat",
+    hairStyle: "Bald",
     hairColor: "Black",
-    clotheColor: "PastelYellow",
+    clotheColor: "PastelBlue",
     skinColor: "Black",
   },
   {
