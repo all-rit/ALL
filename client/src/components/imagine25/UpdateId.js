@@ -33,10 +33,10 @@ const UpdateId = () => {
         "tw-flex tw-gap-y-6 tw-flex-col tw-p-6 tw-justify-center tw-h-full tw-w-full"
       }
     >
-      <h2 className={"tw-title"}> Welcome to Accessible Learning Labs! </h2>
+      <h2 className={"tw-title"}> Welcome! </h2>
       <h2 className={"tw-sub-title"}>
         {" "}
-        Click the <strong> Get Started </strong> below to begin the exercise!{" "}
+        Click <strong> Get Started </strong> to start the game!{" "}
       </h2>
       <ALLButton label={"Get Started"} large={true} onClick={handleUpdateID} />
     </div>
