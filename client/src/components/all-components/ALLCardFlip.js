@@ -107,19 +107,21 @@ const ALLCardFlip = (props) => {
               {/* Back */}
               <div className="tw-absolute tw-w-[calc(100%-0.4rem)] tw-h-[calc(100%-0.4rem)] tw-rounded-[1rem] tw-bg-white tw-backface-hidden tw-rotate-y-180 tw-flex tw-flex-col tw-justify-center tw-gap-3">
                 {card.topText && (
-                  <p className="tw-text-xl tw-font-bold tw-italic">
+                  <p className="tw-grow tw-text-xs xl:tw-text-lg tw-font-bold tw-italic">
                     {card.topText}
                   </p>
                 )}
                 {card.imageURL && (
                   <img
                     src={card.imageURL}
-                    className="tw-object-contain tw-max-h-[10rem]"
+                    className="tw-shrink tw-object-contain tw-max-h-[5rem] md:tw-max-h-[10rem]"
                   />
                 )}
-                {card.text && <p>{card.text}</p>}
+                {card.text && (
+                  <p className="tw-text-xs lg:tw-text-sm">{card.text}</p>
+                )}
                 {card.bottomText && (
-                  <p className="tw-text-xl tw-font-bold tw-italic tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-labYellow tw-from-40% tw-to-60% tw-to-labBlue">
+                  <p className="tw-grow tw-text-xs xl:tw-text-lg tw-font-bold tw-italic tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-labYellow tw-from-40% tw-to-60% tw-to-labBlue">
                     {card.bottomText}
                   </p>
                 )}

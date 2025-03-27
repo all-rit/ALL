@@ -55,19 +55,21 @@ const Main = (props) => {
             {
               id: 0,
               width: 1,
-              text: "Test 1",
+              text: "Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text",
             },
             {
               id: 1,
               width: 2,
-              topText: "Test 2",
+              topText:
+                "Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text",
               imageURL: "/img/lab_thumbnails/wrench.jpg",
             },
             {
               id: 2,
               width: 2,
               imageURL: "/img/lab_thumbnails/wrench.jpg",
-              bottomText: "Test 3",
+              bottomText:
+                "Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text",
             },
             {
               id: 3,
