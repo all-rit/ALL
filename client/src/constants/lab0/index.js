@@ -9,9 +9,10 @@ const SCRUM_INTRO = "ScrumIntroduction";
 const DEVELOP_LAB_INTRO = "DevelopLabIntro";
 const SCRUM_BOARD_ACTIVITY = "ScrumBoardActivity";
 // All sections, which double as routes too
-const SECTION_LAB_IDEA = "LabIdea";
-const SECTION_EXPERIENTIAL_EXERCISE = "ExperientialExercise";
-const SECTION_SPRINT_PLANNING = "SprintPlanning";
+const SECTION_LAB_IDEA = "DesignLabIntro";
+const SECTION_EXPERIENTIAL_EXERCISE = "ExperientialIntro";
+const SECTION_WIREFRAMING_OVERVIEW = "WireframeIntro";
+const SECTION_SPRINT_PLANNING = "ScrumIntro";
 const SECTION_LAB_DATA_REPAIR = "LabDataRepair";
 const SECTION_SCHEMA_REPAIR = "SchemaRepair";
 const SECTION_SERVICE_CONTROLLER_REPAIR = "ServiceControllerRepair";
@@ -32,6 +33,7 @@ const ROUTES = {
   SCRUM_BOARD_ACTIVITY,
   SECTION_LAB_IDEA,
   SECTION_EXPERIENTIAL_EXERCISE,
+  SECTION_WIREFRAMING_OVERVIEW,
   SECTION_SPRINT_PLANNING,
   SECTION_LAB_DATA_REPAIR,
   SECTION_SCHEMA_REPAIR,
@@ -50,13 +52,19 @@ const SECTIONS = {
   [SECTION_LAB_IDEA]: {
     category: SECTION_CATEGORY_DESIGN,
     name: SECTION_LAB_IDEA,
-    displayName: "Lab Idea",
+    displayName: "Lab Ideation",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
   [SECTION_EXPERIENTIAL_EXERCISE]: {
     category: SECTION_CATEGORY_DESIGN,
     name: SECTION_EXPERIENTIAL_EXERCISE,
     displayName: "Experiential Exercise",
+    imageURL: "/img/lab_thumbnails/wrench.jpg",
+  },
+  [SECTION_WIREFRAMING_OVERVIEW]: {
+    category: SECTION_CATEGORY_DESIGN,
+    name: SECTION_WIREFRAMING_OVERVIEW,
+    displayName: "Wireframing Overview",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
   [SECTION_SPRINT_PLANNING]: {

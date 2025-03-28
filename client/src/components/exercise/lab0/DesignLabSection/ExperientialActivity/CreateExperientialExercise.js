@@ -14,7 +14,7 @@ const CreateExperientialExercise = () => {
     useContext(Lab0Context);
 
   const navigateNext = () => {
-    handleNav("ScrumIntro");
+    handleNav("WireframeIntro");
   };
 
   const updateExerciseComplete = () => {

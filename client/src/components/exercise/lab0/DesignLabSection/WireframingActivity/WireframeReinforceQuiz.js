@@ -23,10 +23,10 @@ const WireframeReinforceQuiz = () => {
       <h3 className="tw-text-2xl tw-font-bold tw-pt-4">Quiz</h3>
       <p className={"tw-body-text tw-pt-2"}>
         The <strong>Quiz</strong> section is a chance to test the user on the
-        topic of the lab. It involves 5 multiple answer questions related to the
-        topic, which the user must choose one or multiple answers. Once the user
-        has submitted their answers, they will receive their results and a
-        certificate of completion for the lab.
+        topic of the lab. It typically involves 4-7 multiple answer questions
+        related to the topic, which the user must choose one or multiple
+        answers. Once the user has submitted their answers, they will receive
+        their results and a certificate of completion for the lab.
       </p>
       <FauxFigma>
         <div className={"tw-w-full tw-grid tw-grid-cols-2 tw-gap-3"}>

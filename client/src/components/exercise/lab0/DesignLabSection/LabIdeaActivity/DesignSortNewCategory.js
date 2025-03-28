@@ -26,7 +26,7 @@ const DesignSortNewCategory = () => {
   }, []);
 
   const navigateNext = () => {
-    handleNav("WireframeIntro");
+    handleNav("ExperientialIntro");
   };
 
   const Columns = cols.map((col) =>

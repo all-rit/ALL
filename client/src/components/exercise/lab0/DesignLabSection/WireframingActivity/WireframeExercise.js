@@ -27,6 +27,16 @@ const WireframeExercise = () => {
         through text boxes, carry out an action, or interact with one of the
         multiple components that ALL provides.
       </p>
+      <p className={"tw-body-text tw-pt-2"}>
+        A key aspect of these exercises is their emphasis on empathy-based
+        learning, which helps users understand the perspectives and experiences
+        of others as they carry out tasks. By fostering a deeper sense of
+        connection and awareness, these activities not only strengthen
+        users&apos; technical or conceptual knowledge but also cultivate their
+        ability to approach problems with compassion and insight. This approach
+        enriches the learning experience, making it more impactful and
+        meaningful beyond the immediate scope of the lab.
+      </p>
 
       <p className={"tw-body-text tw-pt-2"}>
         Take a look at the component library that ALL has to offer for various
