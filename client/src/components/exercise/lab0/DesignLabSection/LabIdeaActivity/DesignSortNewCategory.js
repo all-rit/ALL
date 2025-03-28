@@ -26,7 +26,7 @@ const DesignSortNewCategory = () => {
   }, []);
 
   const navigateNext = () => {
-    handleNav("ExperientialIntro");
+    handleNav("LabDecision");
   };
 
   const Columns = cols.map((col) =>

@@ -10,7 +10,7 @@ const DEVELOP_LAB_INTRO = "DevelopLabIntro";
 const SCRUM_BOARD_ACTIVITY = "ScrumBoardActivity";
 // All sections, which double as routes too
 const SECTION_LAB_IDEA = "DesignLabIntro";
-const SECTION_EXPERIENTIAL_EXERCISE = "ExperientialIntro";
+const SECTION_EXPERIENTIAL_EXERCISE = "LabDecision";
 const SECTION_WIREFRAMING_OVERVIEW = "WireframeIntro";
 const SECTION_SPRINT_PLANNING = "ScrumIntro";
 const SECTION_LAB_DATA_REPAIR = "LabDataRepair";
