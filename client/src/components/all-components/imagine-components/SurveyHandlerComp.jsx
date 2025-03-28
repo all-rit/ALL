@@ -156,6 +156,7 @@ const SurveyHandler = (props) => {
 
   function selectAnswer(e) {
     const answerValue = e.target.value;
+    //If answer is likert, then the answer will be from 1-10, and we do not care about the questions content
     const answer =
       questions[currentQuestionCursor].type == "likert"
         ? answerValue

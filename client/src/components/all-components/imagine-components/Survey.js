@@ -4,6 +4,7 @@ import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 
 function Survey(props) {
+  //Gereate a 1-10 response choice in radio button format. questionContent is not needed for this function
   const likertResponse = () => {
     return (
       <div className="tw-my-4">
