@@ -22,6 +22,7 @@ import FlipIcon from "@mui/icons-material/Flip";
  * @param {string} props.cards[i].imageURL Optional image to be shown between the top and bottom text on the backface of a card.
  * @param {string} props.cards[i].text Optional text to be shown between top text and bottom text but below the image, if present.
  * @param {string} props.cards[i].bottomText Optional text to be shown at the bottom of the backface of a card.
+ * @param {string} props.cards[i].content Optional component that completely overrides the backface of the card for extra control.
  */
 const ALLCardFlip = (props) => {
   const {
@@ -125,6 +126,7 @@ const ALLCardFlip = (props) => {
                     {card.bottomText}
                   </p>
                 )}
+                {card.content && <>{card.content}</>}
               </div>
             </div>
           </div>
