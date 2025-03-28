@@ -46,10 +46,10 @@ const CreateExperientialExercise = () => {
           "tw-flex tw-flex-col tw-gap-3 tw-min-h-[5rem] tw-mb-3 tw-w-full tw-p-4 tw-border-dashed tw-border-[#c3c3c3] tw-border-[.5px] tw-rounded-lg tw-my-5 "
         }
         bankCardStyle={
-          "tw-p-2 tw-my-1 tw-w-full tw-rounded tw-shadow-sm tw-cursor-grab tw-min-h-[9rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black tw-bg-primary-blue"
+          "tw-p-2 tw-my-1 tw-w-full tw-rounded tw-shadow-sm tw-shadow-black tw-cursor-grab tw-min-h-[9rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black tw-bg-primary-blue"
         }
         colCardStyle={
-          "tw-p-2 tw-my-1 tw-w-full tw-rounded tw-shadow-sm tw-cursor-grab tw-min-h-[9rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black tw-bg-primary-blue"
+          "tw-p-2 tw-my-1 tw-w-full tw-rounded tw-shadow-sm tw-shadow-black tw-cursor-grab tw-min-h-[9rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black tw-bg-primary-blue"
         }
         msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
         cols={initialColumns}

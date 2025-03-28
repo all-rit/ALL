@@ -70,15 +70,19 @@ const Main = (props) => {
         <Router className={"tw-p-3 tw-h-[40rem]"}>
           <StartExercise default path={"/*"} />
           <StartExercise path={"/Continue"} verb="Continue" />
+          {/*// Experiential Excercise*/}
           <DesignLabDecision path={"/LabDecision"} />
           <ExperientialIntroduction path={"/ExperientialIntro"} />
           <CreateExperientialExercise path={"/ExperientialExercise"} />
+          {/*// Lab Ideation*/}
           <DesignLabIntroduction path={"/DesignLabIntro"} />
           <DesignNewCategory path={"/DesignNewCategory"} />
           <DesignSortNewCategory path={"/DesignSortNewCategory"} />
+          {/*// Scrum Activity*/}
           <ScrumIntroduction path={"/ScrumIntro"} />
           <ScrumBoardActivity path={"/ScrumBoardActivity"} />
           <ScrumVelocityReading path={"/ScrumVelocityReading"} />
+          {/*// Wireframing Overview*/}
           <WireframeIntro path={"/WireframeIntro"} />
           <WireframeFirstGlance path={"/WireframeFirstGlance"} />
           <WireframeReinforceQuiz path={"/WireframeReinforceQuiz"} />
