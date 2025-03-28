@@ -157,7 +157,9 @@ const SurveyHandler = (props) => {
   function selectAnswer(e) {
     const answerValue = e.target.value;
     const answer =
-      questions[currentQuestionCursor].answers[answerValue].content;
+      questions[currentQuestionCursor].type == "likert"
+        ? answerValue
+        : questions[currentQuestionCursor].answers[answerValue].content;
     setIsUnderAge(answer == "Under 18 years old" && props.year == 25);
 
     setSelectedAnswers((prevAnswers) => {

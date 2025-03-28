@@ -35,8 +35,6 @@ function AnswerOption(props) {
           </label>
         </li>
       );
-    case "likert":
-      return <></>;
   }
 }
 
