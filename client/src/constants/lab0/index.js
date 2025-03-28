@@ -8,6 +8,7 @@ const DESIGN_LAB_INTRO = "LabIdeation";
 const SCRUM_INTRO = "ScrumIntroduction";
 const DEVELOP_LAB_INTRO = "DevelopLabIntro";
 const SCRUM_BOARD_ACTIVITY = "ScrumBoardActivity";
+
 // All sections, which double as routes too
 const SECTION_LAB_IDEATION = "LabIdeation";
 const SECTION_EXPERIENTIAL_EXERCISE = "LabDecision";
@@ -18,6 +19,8 @@ const SECTION_SCHEMA_REPAIR = "SchemaRepair";
 const SECTION_SERVICE_CONTROLLER_REPAIR = "ServiceControllerRepair";
 const SECTION_ROUTING_REPAIR = "RoutingRepair";
 const SECTION_BACKEND_TIPS_TRICKS = "BackendTipsTricks";
+
+// Frontend
 const SECTION_BOILERPLATE_REPAIR = "BoilerplateRepair";
 const SECTION_INTEGRATION_REPAIR = "IntegrationRepair";
 const SECTION_CORE_LAB_PAGES_REPAIR = "CoreLabPagesRepair";
