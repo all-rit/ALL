@@ -153,7 +153,7 @@ const AvatarCreation = (props) => {
 AvatarCreation.propTypes = {
   userAvatar: PropTypes.object.isRequired,
   setUserAvatar: PropTypes.func.isRequired,
-  AvatarSelections: PropTypes.obj.isRequired,
+  AvatarSelections: PropTypes.object.isRequired,
 };
 
 export default AvatarCreation;
