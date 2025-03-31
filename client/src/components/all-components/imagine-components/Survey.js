@@ -4,6 +4,41 @@ import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 
 function Survey(props) {
+  //Gereate a 1-10 response choice in radio button format. questionContent is not needed for this function
+  const likertResponse = () => {
+    return (
+      <div className="tw-my-4">
+        <div className="tw-flex tw-w-[80%] tw-mx-auto tw-justify-center tw-justify-between">
+          <p className="tw-body-text tw-text-center">
+            Strongly
+            <br /> Disagree
+          </p>
+          <p className="tw-body-text tw-text-center">
+            Strongly
+            <br /> Agree
+          </p>
+        </div>
+        <div className="tw-grid tw-grid-cols-2 md:tw-grid-cols-5 lg:tw-grid-cols-10 tw-mx-auto tw-w-[80%] ">
+          {Array.from({ length: 10 }, (_, index) => (
+            <div key={index} className="tw-flex tw-flex-col tw-items-center">
+              <input
+                type="radio"
+                className="radioCustomButton"
+                id={index}
+                value={index + 1}
+                name="likert"
+                onChange={props.onAnswerSelected}
+              />
+              <label className="radioCustomLabel" htmlFor={index}>
+                {index + 1}
+              </label>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
@@ -25,16 +60,20 @@ function Survey(props) {
       <h2 className="quiz tw-sub-title tw-text-[2rem]">
         {props.question} {props.multiChoice && " Select all that apply."}
       </h2>
-      <div className={"tw-flex tw-justify-center"}>
+      <div className={"tw-flex tw-justify-center tw-mt-0"}>
         <hr className={"tw-w-3/4"} />
       </div>
-      <ul className="answerOptions tw-grid tw-grid-cols-2 tw-body-text">
-        {props.answerOptions.map(renderAnswerOptions)}
-      </ul>
+      {props.questionType == "likert" ? (
+        likertResponse()
+      ) : (
+        <ul className="answerOptions tw-grid tw-grid-cols-2 tw-body-text">
+          {props.answerOptions.map(renderAnswerOptions)}
+        </ul>
+      )}
       <div className="align-right">
         {props.questionId !== props.questionTotal && !props.isUnderAge ? (
           <button
-            className="btn btn-second text-uppercase  nextButton"
+            className="btn btn-second text-uppercase  nextButton  "
             onClick={props.nextQuestion}
             disabled={props.disable}
           >
@@ -56,7 +95,7 @@ function Survey(props) {
 
 Survey.propTypes = {
   answer: PropTypes.string.isRequired,
-  answerOptions: PropTypes.array.isRequired,
+  answerOptions: PropTypes.array,
   question: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,
   questionTotal: PropTypes.number.isRequired,
@@ -64,8 +103,8 @@ Survey.propTypes = {
   onAnswerSelected: PropTypes.func.isRequired,
   onMultiSelected: PropTypes.func.isRequired,
   multiChoice: PropTypes.string,
-  nextQuestion: PropTypes.string,
-  disable: PropTypes.boolean,
+  nextQuestion: PropTypes.func,
+  disable: PropTypes.bool,
   onComplete: PropTypes.func,
   isUnderAge: PropTypes.bool.isRequired,
 };

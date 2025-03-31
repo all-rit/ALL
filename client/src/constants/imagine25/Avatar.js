@@ -1,48 +1,88 @@
+const avatarSelections = {
+  skinColor: {
+    options: {
+      Pale: "Light",
+      Brown: "Medium",
+      Black: "Dark",
+    },
+    label: "Skin Color",
+  },
+
+  hairStyle: {
+    options: {
+      LongHairStraight: "Long",
+      LongHairCurly: "Curly",
+      ShortHairShortCurly: "Short",
+      NoHair: "Bald",
+    },
+    label: "Hair Style",
+  },
+
+  hairColor: {
+    options: {
+      Black: "Black",
+      Brown: "Brown",
+      Blonde: "Blonde",
+      SilverGray: "Gray",
+    },
+    label: "Hair Color",
+  },
+
+  clotheColor: {
+    options: {
+      Red: "Red",
+      Black: "Black",
+      PastelBlue: "Blue",
+    },
+    label: "Shirt Color",
+  },
+};
+
 const teammateAvatars = [
   {
-    hairStyle: "ShortHairShortCurly",
+    hairStyle: "ShortHairShortFlat",
     hairColor: "Blonde",
     clotheColor: "Red",
-    skinColor: "Light",
+    skinColor: "Pale",
   },
   {
     hairStyle: "LongHairCurly",
     hairColor: "SilverGray",
-    clotheColor: "PastelYellow",
-    skinColor: "Brown",
+    clotheColor: "PastelBlue",
+    skinColor: "Pale",
   },
   {
-    hairStyle: "Bald",
-    hairColor: "",
+    hairStyle: "ShortHairShortFlat",
+    hairColor: "Black",
     clotheColor: "Black",
-    skinColor: "DarkBrown",
+    skinColor: "Brown",
   },
   {
     hairStyle: "LongHairStraight",
     hairColor: "Black",
-    clotheColor: "Pink",
+    clotheColor: "PastelBlue",
     skinColor: "Black",
   },
 ];
 
 const opponentAvatars = [
   {
-    hairStyle: "ShortHairTheCaesar",
+    hairStyle: "Bald",
     hairColor: "Black",
-    clotheColor: "PastelYellow",
+    clotheColor: "PastelBlue",
     skinColor: "Black",
   },
   {
     hairStyle: "ShortHairShortFlat",
     hairColor: "Blonde",
     clotheColor: "Black",
-    skinColor: "Light",
+    skinColor: "Pale",
   },
   {
     hairStyle: "LongHairStraight",
     hairColor: "Brown",
     clotheColor: "PastelBlue",
-    skinColor: "Light",
+    skinColor: "Pale",
   },
   {
     hairStyle: "LongHairCurly",
@@ -52,4 +92,4 @@ const opponentAvatars = [
   },
 ];
 
-export { teammateAvatars, opponentAvatars };
+export { avatarSelections, teammateAvatars, opponentAvatars };

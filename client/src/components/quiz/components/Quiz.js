@@ -19,6 +19,7 @@ function Quiz(props) {
       <AnswerOption
         key={key.type}
         answerContent={key.content}
+        selectedAnswer={props.selectedAnswer}
         answerType={key.type}
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
@@ -90,7 +91,10 @@ function Quiz(props) {
 }
 
 Quiz.propTypes = {
-  answer: PropTypes.string.isRequired,
+  selectedAnswer: PropTypes.oneOfType([
+    PropTypes.instanceOf(Set),
+    PropTypes.object,
+  ]).isRequired,
   answerOptions: PropTypes.array.isRequired,
   question: PropTypes.string.isRequired,
   questionId: PropTypes.number.isRequired,

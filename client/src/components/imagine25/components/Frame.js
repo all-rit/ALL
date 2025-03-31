@@ -5,8 +5,8 @@ export const Frame = (content, nextOnClick, prevOnClick) => {
   const prev =
     prevOnClick != null ? (
       <button
-        className="tw-border-solid tw-border-primary-yellow tw-pb-[0.3rem] tw-pl-[0.5rem] tw-w-[7rem] tw-h-[3rem]
-        tw-border-[0.4rem] tw-border-r-0 tw-border-t-0 tw-rounded-bl-lg yellow-drop-shadow tw-bg-[white] tw-text-xl"
+        className="tw-body-text tw-text-center tw-border-solid tw-border-primary-yellow tw-pb-[0.3rem] tw-pl-[0.5rem] tw-w-[7rem] tw-h-[3rem]
+        tw-border-[0.4rem] tw-border-r-0 tw-border-t-0 tw-rounded-bl-lg yellow-drop-shadow tw-bg-[white] tw-text-xl "
         onClick={prevOnClick}
       >
         Previous
@@ -18,7 +18,7 @@ export const Frame = (content, nextOnClick, prevOnClick) => {
   const next =
     nextOnClick != null ? (
       <button
-        className="tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[7rem] tw-h-[3rem]
+        className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[7rem] tw-h-[3rem]
         tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl"
         onClick={nextOnClick}
       >

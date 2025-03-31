@@ -19,6 +19,14 @@ import useMainStateContext from "src/reducers/MainContext";
 import ImagineHeader from "../components/ImagineHeader";
 
 //Function for each respective row in the avatarcreation page to stylize them
+/**
+ *
+ * @param {*} currentAvatarStyle current avatar being displayed
+ * @param {*} userAvatarType the type of attribute that is being changed, such as clothe color or hair color
+ * @param {*} setAvatarState function passed down by parent component, allows for the setting of the avatar state
+ * @param {*} options All the different options that can be chosen for the afroementioned attribute
+ * @returns
+ */
 const AvatarStyling = (
   currentAvatarStyle,
   userAvatarType,
@@ -73,8 +81,9 @@ const AvatarStyling = (
 
 const AvatarCreation = (props) => {
   const { actions } = useMainStateContext();
+
   const nextOnClick = async () => {
-    //Check to see if all feilds have been selected
+    //Check to see if all fields have been selected
     if (
       props.userAvatar.hairColor != "Default" &&
       props.userAvatar.hairStyle != "Default" &&
@@ -99,7 +108,7 @@ const AvatarCreation = (props) => {
 
   return (
     <>
-      <ImagineHeader title="Make your Avatar Resemble You!" />
+      <ImagineHeader title="Make an Avatar That Resembles You!" />
       {Frame(
         <div className="d-flex justify-content-center">
           <div>
@@ -111,84 +120,26 @@ const AvatarCreation = (props) => {
               skinColor={props.userAvatar.skinColor}
               className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
             />
-            {/*The Key represents code-side implementation and value is the displayed selection choice*/}
+            {/*Iterate over nested data structure. Note this needs to be a specific data structure, check out Contants/imagine25/Avatar.js for an example.
+            Key also needs to be one of the possible Avataaaars keys. Check out their documentation for the different atriubutes that can be applied.*/}
             <Form className="tw-my-[1vw]">
-              <FormGroup row>
-                <Col>
-                  <Label className="mx-2 fw-bold tw-body-text">
-                    Skin Color
-                  </Label>
-                  {AvatarStyling(
-                    props.userAvatar.skinColor,
-                    "skinColor",
-                    props.setUserAvatar,
-                    {
-                      Pale: "Pale",
-                      Light: "Light",
-                      Brown: "Medium Light",
-                      DarkBrown: "Medium Dark",
-                      Black: "Dark",
-                    },
-                  )}
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Col>
-                  <Label className="mx-2 fw-bold tw-body-text">
-                    Hair Style
-                  </Label>
-                  {AvatarStyling(
-                    props.userAvatar.hairStyle,
-                    "hairStyle",
-                    props.setUserAvatar,
-                    {
-                      LongHairStraight: "Long Straight",
-                      ShortHairShortFlat: "Short Straight",
-                      LongHairCurly: "Long Curly",
-                      ShortHairShortCurly: "Short Curly",
-                      ShortHairTheCaesar: "Buzz",
-                      NoHair: "Bald",
-                    },
-                  )}
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Col>
-                  <Label className="mx-2 fw-bold tw-body-text">
-                    Hair Color
-                  </Label>
-                  {AvatarStyling(
-                    props.userAvatar.hairColor,
-                    "hairColor",
-                    props.setUserAvatar,
-                    {
-                      Black: "Black",
-                      Brown: "Brown",
-                      Blonde: "Blonde",
-                      SilverGray: "Gray",
-                    },
-                  )}
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Col>
-                  <Label className="mx-2 fw-bold tw-body-text">
-                    Shirt Color
-                  </Label>
-                  {AvatarStyling(
-                    props.userAvatar.clotheColor,
-                    "clotheColor",
-                    props.setUserAvatar,
-                    {
-                      Red: "Red",
-                      Black: "Black",
-                      PastelBlue: "Blue",
-                      PastelYellow: "Yellow",
-                      Pink: "Pink",
-                    },
-                  )}
-                </Col>
-              </FormGroup>
+              {Object.entries(props.AvatarSelections).map(
+                ([key, { options, label }]) => (
+                  <FormGroup key={key} row>
+                    <Col>
+                      <Label className="mx-2 fw-bold tw-body-text">
+                        {label}
+                      </Label>
+                      {AvatarStyling(
+                        props.userAvatar[key],
+                        key,
+                        props.setUserAvatar,
+                        options,
+                      )}
+                    </Col>
+                  </FormGroup>
+                ),
+              )}
             </Form>
           </div>
         </div>,
@@ -202,6 +153,7 @@ const AvatarCreation = (props) => {
 AvatarCreation.propTypes = {
   userAvatar: PropTypes.object.isRequired,
   setUserAvatar: PropTypes.func.isRequired,
+  AvatarSelections: PropTypes.object.isRequired,
 };
 
 export default AvatarCreation;

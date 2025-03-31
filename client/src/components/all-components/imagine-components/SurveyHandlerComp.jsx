@@ -156,8 +156,11 @@ const SurveyHandler = (props) => {
 
   function selectAnswer(e) {
     const answerValue = e.target.value;
+    //If answer is likert, then the answer will be from 1-10, and we do not care about the questions content
     const answer =
-      questions[currentQuestionCursor].answers[answerValue].content;
+      questions[currentQuestionCursor].type == "likert"
+        ? answerValue
+        : questions[currentQuestionCursor].answers[answerValue].content;
     setIsUnderAge(answer == "Under 18 years old" && props.year == 25);
 
     setSelectedAnswers((prevAnswers) => {
