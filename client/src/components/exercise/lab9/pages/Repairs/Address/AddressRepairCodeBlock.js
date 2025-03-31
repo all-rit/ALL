@@ -10,12 +10,12 @@ import React from "react";
 import ErrorText from "../../../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const AddressRepairCodeBlock = (props = {}) => {
-  const { addressForms, userInput, isInputValid, isFirst } = props;
+  const { inputs, userInput, validInputs, isFirst } = props;
 
   return (
     <>
       <ReactText>const AddressFormats = (props) =&#62; &#123;</ReactText>
-      {addressForms.map((country, index) => (
+      {inputs.map((country, index) => (
         <CodeLine key={index}>
           <Tab />{" "}
           <ReactText>
@@ -32,7 +32,7 @@ const AddressRepairCodeBlock = (props = {}) => {
         <Tab /> <ReactText> const addressFormats = &#123; </ReactText>
       </CodeLine>
 
-      {addressForms.map((country, index) => (
+      {inputs.map((country, index) => (
         <div key={index}>
           {/* line 1 */}
           <CodeLine>
@@ -83,7 +83,7 @@ const AddressRepairCodeBlock = (props = {}) => {
             )}
             <JSONText>&rdquo;</JSONText>
           </CodeLine>
-          {!isInputValid[index] && !isFirst && (
+          {!validInputs[index] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
@@ -111,9 +111,9 @@ const AddressRepairCodeBlock = (props = {}) => {
 };
 
 AddressRepairCodeBlock.propTypes = {
-  addressForms: PropTypes.array,
-  isInputValid: PropTypes.array,
+  inputs: PropTypes.array,
   userInput: PropTypes.func,
+  validInputs: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 
