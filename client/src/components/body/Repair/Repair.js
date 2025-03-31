@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Proptypes from "prop-types";
 import React from "react";
-import CodeBlock from "../../all-components/CodeBlock/Components/Codeblock";
 import Popup from "src/components/all-components/Popup";
 import LabButton from "../../all-components/LabButton";
 import RepairUpdateButton from "../../all-components/RepairUpdateButton";
@@ -121,7 +120,18 @@ const Repair = (props) => {
         <div
           className={`${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
         >
-          <CodeBlock fileName={fileName}>{CodeImplementation}</CodeBlock>
+          <div className="tw-flex tw-flex-col tw-m-2 tw-bg-[[#ffffffe8]] tw-rounded-lg tw-text-left tw tw-border-solid tw-border-0 tw-shadow-[0px_0px_10px_0px_rgba(0,0,0,.4)]">
+            <div className="tw-flex-row tw-pt-3 tw-pl-3">
+              <div className="tw-font-normal tw-text-sm tw-bg-[#fff] tw-border-solid tw-inline-block tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg hover:tw-font-extrabold ">
+                {fileName}
+              </div>
+              <div className="tw-grow"></div>
+            </div>
+
+            <div className="tw-bg-[#333] tw-m-3 tw-mt-0 tw-ease-in tw-shadow-2xl tw-rounded-r-sm code_editor__code">
+              <div className={"tw-m-5"}>{CodeImplementation}</div>
+            </div>
+          </div>
           <div>
             <RepairUpdateButton onClick={handleUpdate} />
           </div>
