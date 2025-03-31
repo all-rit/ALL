@@ -53,7 +53,7 @@ const WireframeExercise = () => {
             {
               id: 0,
               width: 1,
-              text: (
+              content: (
                 <div
                   className={
                     "tw-w-full tw-h-full tw-p-1 tw-flex tw-flex-col tw-items-center"
@@ -97,7 +97,7 @@ const WireframeExercise = () => {
             {
               id: 1,
               width: 2,
-              text: (
+              content: (
                 <div
                   className={
                     "tw-w-full tw-h-full tw-p-1 tw-flex xl:lg:md:tw-flex-row sm:xs:tw-flex-col tw-items-center"
@@ -142,7 +142,7 @@ const WireframeExercise = () => {
             {
               id: 2,
               width: 2,
-              text: (
+              content: (
                 <div
                   className={
                     "tw-p-1 tw-flex xl:lg:md:tw-flex-row sm:xs:tw-flex-col tw-items-center"
@@ -187,7 +187,7 @@ const WireframeExercise = () => {
             {
               id: 3,
               width: 1,
-              text: (
+              content: (
                 <div
                   className={
                     "tw-w-full tw-h-full tw-p-1 tw-flex tw-flex-col tw-items-center"
@@ -230,7 +230,7 @@ const WireframeExercise = () => {
             {
               id: 4,
               width: 1,
-              text: (
+              content: (
                 <div
                   className={
                     "tw-w-full tw-h-full tw-p-1 tw-flex tw-flex-col tw-items-center"
@@ -272,7 +272,7 @@ const WireframeExercise = () => {
             {
               id: 5,
               width: 2,
-              text: (
+              content: (
                 <div
                   className={
                     "tw-p-1 tw-flex xl:lg:md:tw-flex-row sm:xs:tw-flex-col tw-items-center"
@@ -292,7 +292,7 @@ const WireframeExercise = () => {
                     </h3>
                     <div
                       className={
-                        "tw-body-text xl:lg:md:tw-text-lg sm:tw-text-sm/6 tw-pt-2 tw-px-2"
+                        "tw-body-text xl:lg:md:tw-text-lg sm:tw-text-sm/5 tw-pt-2 tw-px-2"
                       }
                     >
                       This component is a generic Drag and Drop activity. It
