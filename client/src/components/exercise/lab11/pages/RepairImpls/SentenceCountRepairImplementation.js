@@ -9,7 +9,7 @@ import MultiTab from "src/components/all-components/CodeBlock/Components/MultiTa
 import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
 
 const SentenceCountRepairImplementation = (props) => {
-  const { fogIndexCalculationData, userInput, isInputValid, isFirst } = props;
+  const { inputs, userInput, validInputs, isFirst } = props;
 
   return (
     <>
@@ -29,7 +29,7 @@ const SentenceCountRepairImplementation = (props) => {
           let wordCount = letterContent.split(&#39; &#39;).length;
         </ReactText>
       </CodeLine>
-      {fogIndexCalculationData.map((input) => (
+      {inputs.map((input) => (
         <Fragment key={input.key}>
           <CodeLine>
             <Tab />
@@ -63,7 +63,7 @@ const SentenceCountRepairImplementation = (props) => {
             )}
             <ReactText>;</ReactText>
           </CodeLine>
-          {!isInputValid[input.id] && !isFirst && (
+          {!validInputs[input.id] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
@@ -91,9 +91,9 @@ const SentenceCountRepairImplementation = (props) => {
 };
 
 SentenceCountRepairImplementation.propTypes = {
+  inputs: PropTypes.array,
   userInput: PropTypes.func,
-  fogIndexCalculationData: PropTypes.array,
-  isInputValid: PropTypes.array,
+  validInputs: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 
