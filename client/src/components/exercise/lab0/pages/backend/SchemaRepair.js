@@ -3,24 +3,35 @@
 import { Background, ReactFlow } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useState } from "react";
+import {
+  createNode,
+  createEdge,
+  COLORS,
+} from "../../../../all-components/Diagrams";
+
 const initialNodes = [
-  {
-    id: "1",
-    type: "input",
-    position: { x: 0, y: -150 },
-    data: { label: "server" },
-  },
-  { id: "2", position: { x: -300, y: 0 }, data: { label: "database" } },
-  { id: "3", position: { x: -100, y: 0 }, data: { label: "services" } },
-  { id: "4", position: { x: 100, y: 0 }, data: { label: "controllers" } },
-  { id: "5", position: { x: 300, y: 0 }, data: { label: "routes" } },
+  createNode("1", { x: 0, y: -150 }, "server", COLORS.YELLOW, "input"),
+  createNode("2", { x: -300, y: 0 }, "database", COLORS.PURPLE),
+  createNode("3", { x: -100, y: 0 }, "services", COLORS.PURPLE, "output"),
+  createNode("4", { x: 100, y: 0 }, "controllers", COLORS.PURPLE, "output"),
+  createNode("5", { x: 300, y: 0 }, "routes", COLORS.PURPLE, "output"),
+  createNode("6", { x: -300, y: 150 }, "schema.sql", COLORS.WHITE, "output"),
+  createNode("7", { x: -100, y: 150 }, "models", COLORS.RED),
+  createNode("8", { x: -100, y: 300 }, "lab0", COLORS.BLUE),
+  createNode("9", { x: -200, y: 450 }, "Exercise.js", COLORS.WHITE, "output"),
+  createNode("10", { x: 0, y: 450 }, "Repair.js", COLORS.WHITE, "output"),
 ];
 
 const initialEdges = [
-  { id: "1->2", source: "1", target: "2", animated: true },
-  { id: "1->3", source: "1", target: "3", animated: true },
-  { id: "1->4", source: "1", target: "4", animated: true },
-  { id: "1->5", source: "1", target: "5", animated: true },
+  createEdge("1", "2", false, "step"),
+  createEdge("1", "3", false, "step"),
+  createEdge("1", "4", false, "step"),
+  createEdge("1", "5", false, "step"),
+  createEdge("2", "6", false, "step"),
+  createEdge("2", "7", false, "step"),
+  createEdge("7", "8", false, "step"),
+  createEdge("8", "9", false, "step"),
+  createEdge("8", "10", false, "step"),
 ];
 
 export const SchemaRepair = () => {
@@ -33,14 +44,11 @@ export const SchemaRepair = () => {
         <ReactFlow
           nodes={nodes}
           edges={edges}
-          // edgeTypes={edgeTypes}
           fitView
           panOnDrag={false}
           preventScrolling={true}
           zoomOnScroll={false}
           selectNodesOnDrag={false}
-          style={{ backgroundColor: "transparent" }}
-          grid={false}
         >
           <Background />
         </ReactFlow>

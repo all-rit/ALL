@@ -15,9 +15,16 @@ const SECTION_EXPERIENTIAL_EXERCISE = "LabDecision";
 const SECTION_WIREFRAMING_OVERVIEW = "WireframeIntro";
 const SECTION_SPRINT_PLANNING = "ScrumIntro";
 const SECTION_LAB_DATA_REPAIR = "LabDataRepair";
+
+const SECTION_SCHEMA_DESIGN = "SchemaDesign";
 const SECTION_SCHEMA_REPAIR = "SchemaRepair";
+
+const SECTION_SERVICE_CONTROLLER = "ServiceController";
 const SECTION_SERVICE_CONTROLLER_REPAIR = "ServiceControllerRepair";
+
+const SECTION_ROUTING = "Routing";
 const SECTION_ROUTING_REPAIR = "RoutingRepair";
+
 const SECTION_BACKEND_TIPS_TRICKS = "BackendTipsTricks";
 
 // Frontend
@@ -38,9 +45,14 @@ const ROUTES = {
   SECTION_EXPERIENTIAL_EXERCISE,
   SECTION_WIREFRAMING_OVERVIEW,
   SECTION_SPRINT_PLANNING,
+  SECTION_BACKEND_INTRODUCTION,
+  SECTION_LAB_DATA,
   SECTION_LAB_DATA_REPAIR,
+  SECTION_SCHEMA_DESIGN,
   SECTION_SCHEMA_REPAIR,
+  SECTION_SERVICE_CONTROLLER,
   SECTION_SERVICE_CONTROLLER_REPAIR,
+  SECTION_ROUTING,
   SECTION_ROUTING_REPAIR,
   SECTION_BACKEND_TIPS_TRICKS,
   SECTION_BOILERPLATE_REPAIR,
@@ -76,27 +88,33 @@ const SECTIONS = {
     displayName: "Sprint Planning",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_LAB_DATA_REPAIR]: {
+  [SECTION_BACKEND_INTRODUCTION]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_LAB_DATA_REPAIR,
+    name: SECTION_BACKEND_INTRODUCTION,
+    displayName: "Backend Development",
+    imageURL: "/img/lab_thumbnails/wrench.jpg",
+  },
+  [SECTION_LAB_DATA]: {
+    category: SECTION_CATEGORY_BACKEND,
+    name: SECTION_LAB_DATA,
     displayName: "Basic Lab Data",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_SCHEMA_REPAIR]: {
+  [SECTION_SCHEMA_DESIGN]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_SCHEMA_REPAIR,
+    name: SECTION_SCHEMA_DESIGN,
     displayName: "Database Design & Schema Models",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_SERVICE_CONTROLLER_REPAIR]: {
+  [SECTION_SERVICE_CONTROLLER]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_SERVICE_CONTROLLER_REPAIR,
+    name: SECTION_SERVICE_CONTROLLER,
     displayName: "Service Layer & Controllers",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_ROUTING_REPAIR]: {
+  [SECTION_ROUTING]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_ROUTING_REPAIR,
+    name: SECTION_ROUTING,
     displayName: "API Endpoints & Routing",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
