@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { navigate, Router } from "@reach/router";
 import UpdateId from "./UpdateId";
 import Done from "./Done";
-import AvatarSelection from "./pages/AvatarSelection";
+import AvatarSelectionPage from "./pages/AvatarSelectionPage";
 import ImagineService from "src/services/ImagineService";
 import useMainStateContext from "src/reducers/MainContext";
 import Survey from "../all-components/imagine-components/SurveyHandlerComp";
@@ -118,7 +118,7 @@ const Main = () => {
               setUserAvatar={setUserAvatar}
               AvatarSelections={avatarSelections}
             />
-            <AvatarSelection
+            <AvatarSelectionPage
               avatars={teammateAvatars}
               imagineService={ImagineService.postTeammateSelection}
               title={"Teammate"}
@@ -128,7 +128,7 @@ const Main = () => {
               setAvatarSelected={setTeammateAvatarSelected}
               path={"/TeammateSelection"}
             />
-            <AvatarSelection
+            <AvatarSelectionPage
               avatars={opponentAvatars}
               imagineService={ImagineService.postOpponentSelection}
               title={"Opponent"}
