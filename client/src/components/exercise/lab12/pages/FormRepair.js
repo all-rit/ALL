@@ -28,7 +28,7 @@ const FormRepair = () => {
     EXERCISE_STATES.FORM_REPAIR,
     IdentityFormData.inputData,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
+  const { exercisePromptsState, validInputs, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
 
@@ -47,7 +47,7 @@ const FormRepair = () => {
         <FormRepairImplementation
           handleUserInputChange={handleUserInputChange}
           identityData={exercisePromptsState}
-          isInputValid={isInputValid}
+          validInputs={validInputs}
           isFirst={isFirst}
         />
       }

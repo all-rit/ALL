@@ -25,7 +25,7 @@ const WordCountRepair = (props) => {
     EXERCISE_STATES.REPAIR_WORD_COUNT,
     FogIndexCalculationData.words,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
+  const { exercisePromptsState, validInputs, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
   return (
@@ -43,7 +43,7 @@ const WordCountRepair = (props) => {
         <WordCountRepairImplementation
           userInput={handleUserInputChange}
           fogIndexCalculationData={exercisePromptsState}
-          isInputValid={isInputValid}
+          validInputs={validInputs}
           isFirst={isFirst}
         />
       }

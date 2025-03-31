@@ -25,7 +25,7 @@ const SentenceCountRepair = (props) => {
     EXERCISE_STATES.REPAIR_SENTENCE_COUNT,
     FogIndexCalculationData.sentences,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
+  const { exercisePromptsState, validInputs, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
   return (
@@ -43,7 +43,7 @@ const SentenceCountRepair = (props) => {
         <SentenceCountRepairImplementation
           userInput={handleUserInputChange}
           fogIndexCalculationData={exercisePromptsState}
-          isInputValid={isInputValid}
+          validInputs={validInputs}
           isFirst={isFirst}
         />
       }

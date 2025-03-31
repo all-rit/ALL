@@ -28,7 +28,7 @@ const AddressRepair = ({ user }) => {
     EXERCISE_STATES.REPAIR_ADDRESS_FORM,
     AddressRepairData.countries,
   );
-  const { exercisePromptsState, isInputValid, isFirst } = data;
+  const { exercisePromptsState, validInputs, isFirst } = data;
   const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
     functions;
 
@@ -51,7 +51,7 @@ const AddressRepair = ({ user }) => {
         <AddressRepairCodeBlock
           addressForms={exercisePromptsState}
           userInput={handleUserInputChange}
-          isInputValid={isInputValid}
+          validInputs={validInputs}
           isFirst={isFirst}
         />
       }

@@ -1,11 +1,12 @@
+/* eslint-disable no-unused-vars */
+
 import { useState } from "react";
-import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 import React from "react";
 import Popup from "src/components/all-components/Popup";
 import LabButton from "../../all-components/LabButton";
 import RepairUpdateButton from "../../all-components/RepairUpdateButton";
-const REPAIR_MESSAGE = "Repair Successful!";
-const ERROR_MESSAGE = "Error in Repair. Please fix.";
+
 /**
  * Repair: is a reusable component that is responsible for
  * allowing for the ability to render and handle new repair pages
@@ -16,20 +17,28 @@ const ERROR_MESSAGE = "Error in Repair. Please fix.";
  */
 const Repair = (props) => {
   const {
+    data: { exercisePromptsState, validInputs, isFirst },
+    functions: {
+      handleUserInputChange,
+      checkInputValid,
+      fetchRepair,
+      postRepair,
+    },
     headingText,
     repairText,
-    fileName,
+    files,
     navigateNext,
-    CodeImplementation,
-    validateRepair,
-    fetchRepair,
-    submitRepair,
   } = props;
+
   const [isRepairActive, setIsRepairActive] = useState(false);
   const [repairVisible, setRepairVisible] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(0);
   const [enableNext, setEnableNext] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
   const [userError, setUserError] = useState(true);
+
+  const REPAIR_MESSAGE = "Repair Successful!";
+  const ERROR_MESSAGE = "Error in Repair. Please fix.";
 
   const handleOpenRepair = () => {
     setIsRepairActive(true);
@@ -52,6 +61,10 @@ const Repair = (props) => {
     await fetchRepair();
   };
 
+  const handleFileChange = (fileId) => {
+    setSelectedFile(fileId);
+  };
+
   /**
    * handleUpdate(): is an async function that is responsible for
    * handling the behavior for validating and posting the results
@@ -60,14 +73,14 @@ const Repair = (props) => {
    * state so the user can see errors update in realtime.
    */
   const handleUpdate = async () => {
-    const localValidateRepair = validateRepair();
+    const localValidateRepair = checkInputValid();
     if (localValidateRepair) {
       handleCloseRepair();
       setUserError(true);
       popUpHandler(REPAIR_MESSAGE);
       setEnableNext(true);
     }
-    await submitRepair();
+    await postRepair();
     if (!localValidateRepair) {
       await fetchRepair();
       setUserError(false);
@@ -122,14 +135,33 @@ const Repair = (props) => {
         >
           <div className="tw-flex tw-flex-col tw-m-2 tw-bg-[[#ffffffe8]] tw-rounded-lg tw-text-left tw tw-border-solid tw-border-0 tw-shadow-[0px_0px_10px_0px_rgba(0,0,0,.4)]">
             <div className="tw-flex-row tw-pt-3 tw-pl-3">
-              <div className="tw-font-normal tw-text-sm tw-bg-[#fff] tw-border-solid tw-inline-block tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg hover:tw-font-extrabold ">
-                {fileName}
-              </div>
+              {files.map((file) => (
+                <div
+                  key={file.fileId}
+                  className={`tw-font-normal tw-text-sm tw-bg-[#fff] tw-border-solid tw-inline-block tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg ${selectedFile !== file.fileId ? "tw-opacity-50" : ""}`}
+                  onClick={() => handleFileChange(file.fileId)}
+                >
+                  {file.fileName}
+                </div>
+              ))}
               <div className="tw-grow"></div>
             </div>
 
             <div className="tw-bg-[#333] tw-m-3 tw-mt-0 tw-ease-in tw-shadow-2xl tw-rounded-r-sm code_editor__code">
-              <div className={"tw-m-5"}>{CodeImplementation}</div>
+              <div className={"tw-m-5"}>
+                {React.cloneElement(
+                  files.find((file) => file.fileId === selectedFile)
+                    .implementation,
+                  {
+                    inputs: exercisePromptsState.filter(
+                      (input) => input.fileId === selectedFile,
+                    ),
+                    userInput: handleUserInputChange,
+                    validInputs: validInputs,
+                    isFirst: isFirst,
+                  },
+                )}
+              </div>
             </div>
           </div>
           <div>
@@ -142,15 +174,11 @@ const Repair = (props) => {
 };
 
 Repair.propTypes = {
-  CodeImplementation: Proptypes.object.isRequired,
-  fileName: Proptypes.string,
-  headingText: Proptypes.string,
-  navigateNext: Proptypes.func.isRequired,
-  repairText: Proptypes.array,
-  user: Proptypes.object,
-  validateRepair: Proptypes.func.isRequired,
-  repairComplete: Proptypes.bool.isRequired,
-  fetchRepair: Proptypes.func.isRequired,
-  submitRepair: Proptypes.func.isRequired,
+  data: PropTypes.object,
+  functions: PropTypes.object,
+  headingText: PropTypes.string,
+  repairText: PropTypes.array,
+  files: PropTypes.array,
+  navigateNext: PropTypes.func.isRequired,
 };
 export default Repair;
