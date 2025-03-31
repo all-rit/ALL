@@ -96,7 +96,7 @@ const Main = () => {
         </div>
         <div
           className={
-            "tw-absolute tw-top-[15%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6"
+            "tw-absolute tw-top-[11%] tw-left-[15%] tw-bg-white tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6"
           }
         >
           <Router
