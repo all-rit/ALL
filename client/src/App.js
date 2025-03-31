@@ -93,7 +93,9 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div className="overflow-x-hidden tw-h-lvh">
+      <div
+        className={`overflow-x-hidden tw-h-lvh ${isImagine ? "overflow-y-hidden" : "overflow-y-auto"}`}
+      >
         <Header isImagine={isImagine} />
         <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5">
           <div

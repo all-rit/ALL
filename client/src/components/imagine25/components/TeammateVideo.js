@@ -31,7 +31,7 @@ const TeammateVideo = (props) => {
   const buttonSize = "tw-w-16 tw-mx-auto";
 
   return (
-    <div className="tw-absolute tw-top-[47px] tw-right-1 tw-p-4 tw-pointer-events-none bg-white border tw-rounded-lg tw-max-w-[300px] tw-max-h-[600px]">
+    <div className="tw-absolute tw-top-[47px] tw-right-1 tw-p-4 tw-pointer-events-none bg-white border tw-rounded-lg tw-max-w-[300px] tw-max-h-[600px] tw-overflow-hidden">
       <video
         src={videoSrc}
         autoPlay
