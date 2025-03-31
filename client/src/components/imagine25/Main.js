@@ -8,6 +8,7 @@ import ImagineService from "src/services/ImagineService";
 import useMainStateContext from "src/reducers/MainContext";
 import Survey from "../all-components/imagine-components/SurveyHandlerComp";
 import {
+  avatarSelections,
   opponentAvatars,
   teammateAvatars,
 } from "src/constants/imagine25/Avatar";
@@ -115,6 +116,7 @@ const Main = () => {
               path={"/AvatarCreation"}
               userAvatar={userAvatar}
               setUserAvatar={setUserAvatar}
+              AvatarSelections={avatarSelections}
             />
             <AvatarSelection
               avatars={teammateAvatars}
