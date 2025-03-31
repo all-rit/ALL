@@ -12,7 +12,7 @@ import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/E
 import ImportText from "src/components/all-components/CodeBlock/StyleComponents/ImportText";
 
 const NavBarRepair = (props = {}) => {
-  const { navItems, userInput, isInputValid, isFirst } = props;
+  const { inputs, userInput, validInputs, isFirst } = props;
 
   return (
     <>
@@ -47,7 +47,7 @@ const NavBarRepair = (props = {}) => {
       <CodeLine>
         <MultiTab numberOfTabs={2} /> <HTMLTag> &#60;span&#62;</HTMLTag>
       </CodeLine>
-      {navItems.map((element, index) => (
+      {inputs.map((element, index) => (
         <div key={index}>
           <CodeLine>
             <MultiTab numberOfTabs={3} />{" "}
@@ -84,7 +84,7 @@ const NavBarRepair = (props = {}) => {
             />
             <HTMLTag>{"}"}/&#62; </HTMLTag>
           </CodeLine>
-          {!isInputValid[index] && !isFirst && (
+          {!validInputs[index] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={4} />
               <ErrorText>
@@ -113,9 +113,9 @@ const NavBarRepair = (props = {}) => {
 };
 
 NavBarRepair.propTypes = {
+  inputs: PropTypes.array,
   userInput: PropTypes.func,
-  navItems: PropTypes.array,
-  isInputValid: PropTypes.array,
+  validInputs: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 
