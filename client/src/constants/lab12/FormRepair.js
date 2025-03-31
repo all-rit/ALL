@@ -29,6 +29,7 @@ let IdentityFormData = {
   inputData: [
     {
       id: 0,
+      fileId: 0,
       listName: "Preferred Name",
       variableName: "preferredName",
       formDataName: "formData.preferredName",
@@ -38,6 +39,7 @@ let IdentityFormData = {
     },
     {
       id: 1,
+      fileId: 0,
       listName: "Pronouns",
       variableName: "pronouns",
       formDataName: "formData.pronouns",
@@ -47,6 +49,7 @@ let IdentityFormData = {
     },
     {
       id: 2,
+      fileId: 0,
       listName: "Preferred Name",
       variableName: "preferredName",
       formDataName: "formData.preferredName",
@@ -56,6 +59,7 @@ let IdentityFormData = {
     },
     {
       id: 3,
+      fileId: 0,
       listName: "Pronouns",
       variableName: "pronouns",
       formDataName: "formData.pronouns",
