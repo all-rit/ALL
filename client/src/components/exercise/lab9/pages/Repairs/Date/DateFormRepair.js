@@ -10,11 +10,11 @@ import PropTypes from "prop-types";
 import ErrorText from "../../../../../all-components/CodeBlock/StyleComponents/ErrorText";
 
 const DateFormRepair = (props = {}) => {
-  const { dateForms, userInput, isInputValid, isFirst } = props;
+  const { inputs, userInput, validInputs, isFirst } = props;
   return (
     <>
       <ReactText>const DateForm = (props) =&#62; &#123;</ReactText>
-      {dateForms.map((country, index) => (
+      {inputs.map((country, index) => (
         <CodeLine key={index}>
           <Tab />{" "}
           <ReactText>
@@ -31,7 +31,7 @@ const DateFormRepair = (props = {}) => {
         <Tab /> <ReactText> const dates = &#123; </ReactText>
       </CodeLine>
 
-      {dateForms.map((country, index) => (
+      {inputs.map((country, index) => (
         <div key={index}>
           <CodeLine>
             <MultiTab numberOfTabs={2} />
@@ -74,7 +74,7 @@ const DateFormRepair = (props = {}) => {
             )}
             <JSONText>&rdquo;</JSONText>
           </CodeLine>
-          {!isInputValid[index] && !isFirst && (
+          {!validInputs[index] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
@@ -99,9 +99,9 @@ const DateFormRepair = (props = {}) => {
   );
 };
 DateFormRepair.propTypes = {
+  inputs: PropTypes.array,
   userInput: PropTypes.func,
-  dateForms: PropTypes.array,
-  isInputValid: PropTypes.array,
+  validInputs: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 
