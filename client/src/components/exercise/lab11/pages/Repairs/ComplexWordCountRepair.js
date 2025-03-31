@@ -34,12 +34,12 @@ const ComplexWordCountRepair = (props) => {
         {
           fileId: 0,
           fileName: "FogIndexCalculation.js",
-          implementation: <ComplexWordCountRepairImplementation />,
+          implementation: ComplexWordCountRepairImplementation,
         },
         {
           fileId: 1,
           fileName: "AnotherTab.js",
-          implementation: <ComplexWordCountRepairImplementation />,
+          implementation: ComplexWordCountRepairImplementation,
         },
       ]}
       navigateNext={() => {

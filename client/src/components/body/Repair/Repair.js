@@ -149,7 +149,7 @@ const Repair = (props) => {
 
             <div className="tw-bg-[#333] tw-m-3 tw-mt-0 tw-ease-in tw-shadow-2xl tw-rounded-r-sm code_editor__code">
               <div className={"tw-m-5"}>
-                {React.cloneElement(
+                {React.createElement(
                   files.find((file) => file.fileId === selectedFile)
                     .implementation,
                   {
