@@ -95,7 +95,7 @@ const ScrumVelocityReading = () => {
       <p className={"tw-py-3 tw-body-text"}>
         That looks much better. Lets update Sprint 1 and Sprint 2 from the
         previous activity to ensure that user stories are properly allocated.
-        Click the Next button to move on.
+        Click the <strong>Next</strong> button to move on.
       </p>
       <div className={"tw-w-full tw-flex tw-justify-center tw-py-6"}>
         <LabButton label={"Next"} onClick={navigateToScrumVeloActivity} />
