@@ -20,7 +20,7 @@ const ScrumVelocityReading = () => {
   const { handleNav } = useContext(Lab0Context);
 
   const navigateToScrumVeloActivity = () => {
-    handleNav("ScrumVeloActivity");
+    handleNav("ScrumVelocityActivity");
   };
 
   return (

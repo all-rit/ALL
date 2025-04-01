@@ -12,7 +12,7 @@ const ScrumVelocityActivity = () => {
 
   const { handleNav } = useContext(Lab0Context);
   const navigateNext = () => {
-    handleNav("ScrumVelocityReading");
+    handleNav("DesignLabEnd");
   };
   return (
     <div className="tw-flex tw-flex-col tw-text-left">
