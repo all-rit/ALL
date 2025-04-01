@@ -44,7 +44,8 @@ const ScrumIntroduction = () => {
         they are working on today, and if they have any blockers.
       </p>
       <p className={"tw-body-text tw-py-6"}>
-        Click the next button below to move on to the Sprint Planning exercise.
+        Click the <strong> Next</strong> button below to move on to the Sprint
+        Planning exercise.
       </p>
       <div className={"tw-w-full tw-flex tw-justify-center"}>
         <LabButton label={"Next"} onClick={navigateToScrumExercise} />
