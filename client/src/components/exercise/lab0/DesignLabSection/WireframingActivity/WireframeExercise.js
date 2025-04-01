@@ -21,7 +21,7 @@ const WireframeExercise = () => {
     <div className={"tw-text-left"}>
       <h3 className="tw-text-2xl tw-font-bold tw-pt-4">Exercise</h3>
       <p className={"tw-body-text tw-pt-2"}>
-        The <strong>Exercise</strong> section is a interactive activity that
+        The <strong>Exercise</strong> section is an interactive activity that
         invites the user to apply the concepts they have learned throughout the
         lab. This can involve the user being prompted to enter information
         through text boxes, carry out an action, or interact with one of the

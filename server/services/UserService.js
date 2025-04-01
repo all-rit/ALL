@@ -3,15 +3,15 @@
 const db = require('../database');
 
 const updateGuestUserId = (userid, usersessionid) => {
-  return db.Session
-      .findByPk(usersessionid)
+  return db.Session.findByPk(usersessionid)
       .then((session) => {
         if (session) {
           session.userid = userid;
           return session.save();
         }
         return true;
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log('unable to update guest userid:', error);
         return true;
       });
@@ -19,7 +19,6 @@ const updateGuestUserId = (userid, usersessionid) => {
 
 const authenticate = async (data) => {
   try {
-    const userSessionID = data.id.slice(0, 8);
     const firstName = data.name.givenName;
     const lastInitial = data.name.familyName.slice(0, 1);
     const email = data.emails[0].value;
@@ -35,33 +34,26 @@ const authenticate = async (data) => {
         });
         await existingUser.save();
       }
-      // If user exists, create or update session
-      const session = await db.Session.findOrCreate({
-        where: {usersessionid: userSessionID},
-        defaults: {userid: existingUser.userid},
-      });
-      return session[0]; // findOrCreate returns [instance, created]
+      // If user exists, create a new session
+      const session = await db.Session.create({userid: existingUser.userid});
+      return session;
     }
 
     // If no existing user, proceed with new account creation
-    let session = await db.Session.findByPk(userSessionID);
-    if (!session) {
-      const newAccount = {
-        firstName,
-        lastInitial,
-        email1: email,
-        userpfp,
-      };
-      session = await createNewAccountAndSession(userSessionID, newAccount);
-    }
-    return session;
+    const newAccount = {
+      firstName,
+      lastInitial,
+      email1: email,
+      userpfp,
+    };
+    return await createNewAccountAndSession(newAccount);
   } catch (error) {
     console.error('Error while authenticating: ', error);
     throw error;
   }
 };
 
-const createNewAccountAndSession = async (userSessionID, newAccount) => {
+const createNewAccountAndSession = async (newAccount) => {
   try {
     const user = await db.Users.create({
       firstname: newAccount.firstName,
@@ -71,7 +63,6 @@ const createNewAccountAndSession = async (userSessionID, newAccount) => {
     });
 
     const newSession = await db.Session.create({
-      usersessionid: userSessionID,
       userid: user.userid,
     });
 
@@ -82,25 +73,33 @@ const createNewAccountAndSession = async (userSessionID, newAccount) => {
   }
 };
 
-
 const getSession = async (token) => {
+  const createUserAndSession = async () => {
+    // Creates a brand new user and session
+    const user = await db.Users.create({});
+    const session = await db.Session.create({userid: user.userid});
+    return {user, token: session.usersessionid};
+  };
+
   try {
+    // if the request doesn't have a token, create a new user and session
     if (!token) {
-      // Creates a brand new user and session
-      const user = await db.Users.create({});
-      const session = await db.Session.create({userid: user.userid});
-      return {user, token: session.usersessionid};
+      return createUserAndSession();
     }
 
-    // If a token exists, check for an existing session and user
+    // if the request token doesn't map to a session,
+    // create a new user and session
     const session = await db.Session.findByPk(token);
     if (!session) {
-      throw new Error('Invalid session token');
+      return createUserAndSession();
     }
 
+    // if the session maps to a null user, create a new user and session
+    // we create a new session because a session should depend on a user
+    // and not the other way around
     const user = await db.Users.findByPk(session.userid);
     if (!user) {
-      throw new Error('User not found');
+      return createUserAndSession();
     }
 
     return {user, token};
@@ -114,22 +113,23 @@ const getUserEnrolledGroups = (userid) => {
       `SELECT * FROM "enrollment" 
 			JOIN "groups" ON  "enrollment"."groupID"="groups"."id" 
 			WHERE "enrollment"."userID"=(:userID) AND "enrollment"."isActive"=true
-		`, {
+		`,
+      {
         replacements: {userID: userid},
         type: db.sequelize.QueryTypes.SELECT,
         raw: true,
-      });
+      },
+  );
 };
 
 const getUserInstructingGroups = (userid) => {
-  return db.Groups
-      .findAll({
-        where: {
-          instructorUserID: userid,
-          isActive: true,
-        },
-        raw: true,
-      });
+  return db.Groups.findAll({
+    where: {
+      instructorUserID: userid,
+      isActive: true,
+    },
+    raw: true,
+  });
 };
 
 // fetches only the labs that the user has been assigned (across all groups)
@@ -144,10 +144,12 @@ const getUserToDoLabs = (userid) => {
       		(SELECT "labid" FROM "userlabcompletion"
           		WHERE "userid"=(:userID))
         ORDER BY "labID" ASC
-		`, {
+		`,
+      {
         replacements: {userID: userid},
         type: db.sequelize.QueryTypes.SELECT,
-      });
+      },
+  );
 };
 
 const getUserAssignedLabs = (userid) => {
@@ -156,20 +158,21 @@ const getUserAssignedLabs = (userid) => {
 			JOIN "enrollment" ON  "group_labs"."groupID"="enrollment"."groupID" 
 			WHERE "enrollment"."userID"=(:userID) 
 			ORDER BY "labID" ASC
-		`, {
+		`,
+      {
         replacements: {userID: userid},
         type: db.sequelize.QueryTypes.SELECT,
-      });
+      },
+  );
 };
 
 const getUser = (userid) => {
-  return db.Users
-      .findOne({
-        where:
-				{
-				  userid: userid,
-				},
-      }).then((user) => {
+  return db.Users.findOne({
+    where: {
+      userid: userid,
+    },
+  })
+      .then((user) => {
         return user;
       })
       .catch((err) => {
@@ -187,4 +190,3 @@ module.exports = {
   authenticate,
   updateGuestUserId,
 };
-

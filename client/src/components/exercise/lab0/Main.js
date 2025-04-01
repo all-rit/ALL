@@ -10,6 +10,7 @@ import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroductio
 import DesignLabIntroduction from "./DesignLabSection/LabIdeaActivity/DesignLabIntroduction";
 import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
 import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
+import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
 import DesignNewCategory from "./DesignLabSection/LabIdeaActivity/DesignNewCategory";
 import DesignSortNewCategory from "./DesignLabSection/LabIdeaActivity/DesignSortNewCategory";
 import WireframeIntro from "./DesignLabSection/WireframingActivity/WireframeIntro";
@@ -21,6 +22,7 @@ import { SECTION_STATUSES, SECTIONS } from "../../../constants/lab0/index";
 import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
+import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
 // import ALLCardFlip from "src/components/all-components/ALLCardFlip";
 // import LabButton from "../../all-components/LabButton";
 
@@ -70,24 +72,31 @@ const Main = (props) => {
         <Router className={"tw-p-3 tw-h-[40rem]"}>
           <StartExercise default path={"/*"} />
           <StartExercise path={"/Continue"} verb="Continue" />
-          {/*// Experiential Excercise*/}
-          <DesignLabDecision path={"/LabDecision"} />
-          <ExperientialIntroduction path={"/ExperientialIntro"} />
-          <CreateExperientialExercise path={"/ExperientialExercise"} />
+
           {/*// Lab Ideation*/}
           <DesignLabIntroduction path={"/DesignLabIntro"} />
           <DesignNewCategory path={"/DesignNewCategory"} />
           <DesignSortNewCategory path={"/DesignSortNewCategory"} />
-          {/*// Scrum Activity*/}
-          <ScrumIntroduction path={"/ScrumIntro"} />
-          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
-          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
+
+          {/*// Experiential Exercise*/}
+          <DesignLabDecision path={"/LabDecision"} />
+          <ExperientialIntroduction path={"/ExperientialIntro"} />
+          <CreateExperientialExercise path={"/ExperientialExercise"} />
+
           {/*// Wireframing Overview*/}
           <WireframeIntro path={"/WireframeIntro"} />
           <WireframeFirstGlance path={"/WireframeFirstGlance"} />
           <WireframeReinforceQuiz path={"/WireframeReinforceQuiz"} />
           <WireframeExercise path={"/WireframeExercise"} />
           <WireframeComponents path={"/WireframeComponents"} />
+
+          {/*// Scrum Activity*/}
+          <ScrumIntroduction path={"/ScrumIntro"} />
+          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
+          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
+          <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
+
+          <DesignLabEnd path={"/DesignLabEnd"} />
         </Router>
       </Lab0Context.Provider>
     </div>

@@ -39,7 +39,9 @@ const DraggableCard = ({ card, cardStyle }) => {
     >
       {card.content}
       <p className={"tw-font-bold"}>{card.title}</p>
-      <p className={"tw-text-sm tw-leading-snug"}>{card.body}</p>
+      <pre className="tw-body-text tw-text-sm tw-leading-snug tw-p-0 tw-m-0 tw-whitespace-pre-wrap tw-tab-0">
+        {card.body}
+      </pre>
     </div>
   );
 };

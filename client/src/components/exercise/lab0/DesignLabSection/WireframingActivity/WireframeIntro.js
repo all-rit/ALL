@@ -23,6 +23,8 @@ const WireframeIntro = () => {
         <a
           className={"tw-font-bold tw-text-primary-blue"}
           href={"https://www.figma.com/"}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Figma
         </a>
