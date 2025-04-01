@@ -60,8 +60,7 @@ const ScrumVelocityReading = () => {
         The story velocity in the purple story card on the left has double the
         number of stories (or velocity) of the green sprint card. When
         scheduling a sprint, its imperative to not overload developers or make
-        unrealistic expectations. Below, you’ll see much a much more attainable
-        goal.
+        unrealistic expectations. Below, you’ll see a much more attainable goal.
       </p>
       <div className={"tw-flex tw-flex-row tw-gap-x-6 tw-justify-center"}>
         <Card color={"#6D67E6"} velocity={"3"}>
