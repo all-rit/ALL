@@ -62,7 +62,8 @@ const ExperientialIntroduction = () => {
       <p>
         Now its your turn to brainstorm and design an experiential exercise for
         the Accessibility to Focus Order lab that was selected for development
-        in the previous exercise. Click the next button to continue.
+        in the previous exercise. Click the <strong> Next</strong> button to
+        continue.
       </p>
       <div className={"tw-flex tw-justify-center tw-py-6"}>
         <LabButton label={"Next"} onClick={navToExercise} />
