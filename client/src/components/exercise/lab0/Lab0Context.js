@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 const Lab0Context = createContext({
-  exerciseState: "",
-  setExerciseState: () => {},
+  section: {},
+  updateSectionStatus: () => {},
   handleNav: () => {},
   setLabIdeasComplete: () => {},
   experientialExerciseComplete: false,

@@ -17,7 +17,7 @@ const DraggableCard = ({ card, cardStyle }) => {
   useEffect(() => {
     if (!card.isCorrect) {
       setBorderColor(
-        "tw-border-[#d03c3c] tw-border-error tw-shadow-2xl tw-shadow-error tw-font-bold tw-text-error",
+        "tw-border-solid !tw-shadow-lg !tw-border-brightRed tw-shadow-brightRed tw-font-bold tw-text-brightRed",
       );
     } else {
       setBorderColor("");
@@ -30,7 +30,12 @@ const DraggableCard = ({ card, cardStyle }) => {
       {...listeners}
       {...attributes}
       style={style}
-      className={twMerge(`${card.color} ${cardStyle}`, borderColor)}
+      className={twMerge(
+        `${card.color}`,
+        !card.isCorrect
+          ? `${cardStyle.replaceAll(/tw-border-\w*/g, "")} ${borderColor}`
+          : cardStyle,
+      )}
     >
       {card.content}
       <p className={"tw-font-bold"}>{card.title}</p>

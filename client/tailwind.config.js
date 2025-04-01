@@ -58,6 +58,7 @@ module.exports = {
       success: "#369d2a",
       hoverSuccess: "#238418",
       error: "#d03c3c",
+      transparent: "transparent",
     },
     extend: {
       borderWidth: {
@@ -150,6 +151,18 @@ module.exports = {
           fontSize: "1.125rem",
           lineHeight: "1.6rem",
           textAlign: "left",
+        },
+        ".perspective-distant": {
+          perspective: "1200px",
+        },
+        ".backface-hidden": {
+          backfaceVisibility: "hidden",
+        },
+        ".transform-3d": {
+          transformStyle: "preserve-3d",
+        },
+        ".rotate-y-180": {
+          transform: "rotateY(180deg)",
         },
       });
     }),
