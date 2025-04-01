@@ -30,7 +30,16 @@ const DesignLabIntroduction = () => {
 
   return (
     <div>
-      <h2 className={"tw-title tw-text-left"}>Lab Sorting Activity</h2>
+      <h2 className={"tw-title tw-text-left tw-pt-2"}>Lab Ideation</h2>
+      <p className={"tw-body-text tw-text-left tw-py-4"}>
+        Accessible Learning Labs fosters STEM proficiency through two main
+        categories: AI/ML and Accessibility. These categories are central to
+        developing impactful lab ideas and ensuring inclusive software
+        education. As the initiative grows, it aims to expand into additional
+        areas, highlighting the importance of thoughtful categorization in
+        driving innovation and inclusivity.
+      </p>
+      <h3 className={"tw-font-semibold tw-text-left"}>Lab Sorting Activity</h3>
       <br />
       <div className={"tw-body-text"}>
         In this interactive exercise, you will categorize a set of cards by
@@ -72,7 +81,7 @@ const DesignLabIntroduction = () => {
           }
           bankCardStyle={
             "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-2 tw-m-2 tw-shadow-sm tw-cursor-grab focus:tw-shadow-xl " +
-            "tw-text-black tw-h-[4rem] tw-flex tw-items-center tw-body-text tw-leading-snug xs:tw-text-sm md:tw-text-[1rem] tw-justify-center tw-min-w-[7rem]"
+            "tw-text-black tw-h-[4rem] tw-flex tw-items-center tw-body-text tw-leading-snug xs:tw-text-sm md:tw-text-[1rem] tw-justify-center tw-min-w-[7rem] tw-text-center"
           }
           msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
           colHeaderStyle={

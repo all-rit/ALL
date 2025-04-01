@@ -200,7 +200,7 @@ const Header = (props) => {
                   <NavLink className="tw-object-cover tw-w-[3rem] tw-h-[3rem] tw-p-0 tw-border-solid tw-border-4 tw-text-primary-blue tw-rounded-full tw-overflow-hidden">
                     <div
                       onClick={() =>
-                        navigate(state, props.state, actions, 2, 0)
+                        navigate(state, props.state, actions, 2, 99)
                       }
                       aria-label="Google Profile Photo"
                       className="tw-h-12 tw-object-cover"

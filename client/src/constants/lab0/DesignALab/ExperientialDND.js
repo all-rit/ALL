@@ -11,6 +11,7 @@ const initialBank = [
     body:
       "The participant is given a series of code blocks of links, buttons, and other elements on a webpage in HTML " +
       "and Javascript, and are tasked with recognizing why the code is or isn't focus order accessible.",
+    isCorrect: true,
   },
   {
     id: "card2",
@@ -21,6 +22,7 @@ const initialBank = [
       "and are tasked with selecting the proper link while not being able to see the selection they are on, and must rely on " +
       "intuitive focus order and their screen reader to find the link. However, the focus order is incorrect and they will " +
       "experience difficulty in finding the proper link.",
+    isCorrect: true,
   },
   {
     id: "card3",
@@ -29,6 +31,7 @@ const initialBank = [
       "In this experiential exercise, users will be given a webpage to browse through, but are not allowed to use " +
       "the mouse, and must tab through each link and button. However, the focus order of these links is out of order, " +
       "and send the user all over the webpage, making it difficult to reach the link they are tasked with selecting.",
+    isCorrect: true,
   },
 ];
 
