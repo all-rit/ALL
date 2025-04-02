@@ -11,8 +11,7 @@ const Analysis = () => {
     const isUnderAge = sessionStorage.getItem("isUnderAge");
     console.log(isUnderAge);
     if (isUnderAge === "true") {
-      // UnderAge User will be sent to quiz section which is not implemented yet. For now it just consolo logs
-      console.log("go to end of game");
+      // UnderAge User will be sent to quiz section which is not implemented yet
       navigate("/Imagine2025/Done");
     } else {
       // Plusr 18 Users will be sent to post survey

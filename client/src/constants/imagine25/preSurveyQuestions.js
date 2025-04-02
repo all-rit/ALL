@@ -12,11 +12,15 @@ const preSurveyQuestions = [
       },
       {
         index: "2",
-        content: "30-50 years old",
+        content: "30-44 years old",
       },
       {
         index: "3",
-        content: "50+ years old",
+        content: "45-65 years old",
+      },
+      {
+        index: "3",
+        content: "65+ years old",
       },
     ],
     type: "singleChoice",
@@ -26,7 +30,7 @@ const preSurveyQuestions = [
     answers: [
       {
         index: "0",
-        content: "Woman",
+        content: "Female",
       },
       {
         index: "1",
@@ -34,7 +38,7 @@ const preSurveyQuestions = [
       },
       {
         index: "2",
-        content: "Man",
+        content: "Male",
       },
       {
         index: "3",
@@ -49,15 +53,15 @@ const preSurveyQuestions = [
     answers: [
       {
         index: "0",
-        content: "Hispanic or Latino",
+        content: "Hispanic / Latino /Latinx",
       },
       {
         index: "1",
-        content: "White",
+        content: "White / European descent",
       },
       {
         index: "2",
-        content: "Black or African American",
+        content: "Black / African descent",
       },
       {
         index: "3",
@@ -65,11 +69,15 @@ const preSurveyQuestions = [
       },
       {
         index: "4",
-        content: "Native Hawaiian or Other Pacific Islander",
+        content: "Middle Eastern / North African",
       },
       {
         index: "5",
-        content: "American Indian or Alaska Native",
+        content: "Indigenous",
+      },
+      {
+        index: "5",
+        content: "Prefer not to answer",
       },
     ],
     type: "multiChoice",
