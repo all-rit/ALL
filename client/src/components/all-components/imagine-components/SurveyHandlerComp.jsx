@@ -236,6 +236,7 @@ const SurveyHandler = (props) => {
           nextQuestion={handleNext}
           onComplete={() => onComplete(type)}
           isUnderAge={isUnderAge}
+          avatar={questions[currentQuestionCursor].avatar}
         ></Survey>
       ) : (
         <div className="flex !tw-justify-center items-center">

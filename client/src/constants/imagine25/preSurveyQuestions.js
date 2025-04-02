@@ -19,7 +19,7 @@ const preSurveyQuestions = [
         content: "45-65 years old",
       },
       {
-        index: "3",
+        index: "4",
         content: "65+ years old",
       },
     ],
@@ -76,11 +76,22 @@ const preSurveyQuestions = [
         content: "Indigenous",
       },
       {
-        index: "5",
+        index: "6",
         content: "Prefer not to answer",
       },
     ],
     type: "multiChoice",
+  },
+  {
+    question:
+      "Rank the following items in order of how important you view them in a software application",
+    answers: [
+      {
+        index: "0",
+        content: "Waiting on ranking component ...",
+      },
+    ],
+    type: "singleChoice",
   },
 ];
 

@@ -3,8 +3,31 @@ import PropTypes from "prop-types";
 import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 import Likert from "./Likert";
+import Avatar from "avataaars";
 
 function Survey(props) {
+  console.log(props.avatar);
+  console.log(sessionStorage.getItem("TeammateAvatar"));
+  console.log(sessionStorage.getItem("OpponentAvatar"));
+  const avatar =
+    props.avatar == null ? (
+      <></>
+    ) : (
+      () => {
+        const avatarData = sessionStorage.getItem(props.avatar + "Avatar");
+        return (
+          <Avatar
+            clotheType="ShirtCrewNeck"
+            topType={avatarData.userAvatar?.hairStyle || "Default"}
+            hairColor={avatarData.userAvatar?.hairColor || "Default"}
+            clotheColor={avatarData.userAvatar?.clotheColor || "Default"}
+            skinColor={avatarData.userAvatar?.skinColor || "Default"}
+            className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
+          />
+        );
+      }
+    );
+
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
@@ -36,6 +59,7 @@ function Survey(props) {
           {props.answerOptions.map(renderAnswerOptions)}
         </ul>
       )}
+      {avatar}
       <div className="align-right">
         {props.questionId !== props.questionTotal && !props.isUnderAge ? (
           <button
@@ -73,6 +97,7 @@ Survey.propTypes = {
   disable: PropTypes.bool,
   onComplete: PropTypes.func,
   isUnderAge: PropTypes.bool.isRequired,
+  avatar: PropTypes.string,
 };
 
 export default Survey;
