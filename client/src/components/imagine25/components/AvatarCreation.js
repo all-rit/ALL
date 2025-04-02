@@ -10,13 +10,7 @@ import {
   Form,
   Col,
 } from "reactstrap";
-import { Frame } from "../components/Frame";
-import ImagineService from "src/services/ImagineService";
-import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
-import { ERROR } from "src/constants/notifications";
-import useMainStateContext from "src/reducers/MainContext";
-import ImagineHeader from "../components/ImagineHeader";
 
 //Function for each respective row in the avatarcreation page to stylize them
 /**
@@ -80,73 +74,38 @@ const AvatarStyling = (
 };
 
 const AvatarCreation = (props) => {
-  const { actions } = useMainStateContext();
-
-  const nextOnClick = async () => {
-    //Check to see if all fields have been selected
-    if (
-      props.userAvatar.hairColor != "Default" &&
-      props.userAvatar.hairStyle != "Default" &&
-      props.userAvatar.clotheColor != "Default" &&
-      props.userAvatar.skinColor != "Default"
-    ) {
-      navigate("/Imagine2025/TeammateSelection");
-      await ImagineService.postUserAvatar(
-        sessionStorage.getItem("userID"),
-        props.userAvatar,
-        25,
-      );
-      return;
-    }
-    actions.showSnackbar(
-      "Please finish creating your avatar",
-      ERROR,
-      "center",
-      "top",
-    );
-  };
-
   return (
-    <>
-      <ImagineHeader title="Make an Avatar That Resembles You!" />
-      {Frame(
-        <div className="d-flex justify-content-center">
-          <div>
-            <Avatar
-              clotheType="ShirtCrewNeck"
-              topType={props.userAvatar.hairStyle}
-              hairColor={props.userAvatar.hairColor}
-              clotheColor={props.userAvatar.clotheColor}
-              skinColor={props.userAvatar.skinColor}
-              className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
-            />
-            {/*Iterate over nested data structure. Note this needs to be a specific data structure, check out Contants/imagine25/Avatar.js for an example.
-            Key also needs to be one of the possible Avataaaars keys. Check out their documentation for the different atriubutes that can be applied.*/}
-            <Form className="tw-my-[1vw]">
-              {Object.entries(props.AvatarSelections).map(
-                ([key, { options, label }]) => (
-                  <FormGroup key={key} row>
-                    <Col>
-                      <Label className="mx-2 fw-bold tw-body-text">
-                        {label}
-                      </Label>
-                      {AvatarStyling(
-                        props.userAvatar[key],
-                        key,
-                        props.setUserAvatar,
-                        options,
-                      )}
-                    </Col>
-                  </FormGroup>
-                ),
-              )}
-            </Form>
-          </div>
-        </div>,
-        nextOnClick,
-        null,
-      )}
-    </>
+    <div className="d-flex justify-content-center">
+      <div>
+        <Avatar
+          clotheType="ShirtCrewNeck"
+          topType={props.userAvatar.hairStyle || "Default"}
+          hairColor={props.userAvatar.hairColor || "Default"}
+          clotheColor={props.userAvatar.clotheColor || "Default"}
+          skinColor={props.userAvatar.skinColor || "Default"}
+          className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
+        />
+        {/*Iterate over nested data structure. Note this needs to be a specific data structure, check out Contants/imagine25/Avatar.js for an example.
+    Key also needs to be one of the possible Avataaaars keys. Check out their documentation for the different atriubutes that can be applied.*/}
+        <Form className="tw-my-[1vw]">
+          {Object.entries(props.AvatarSelections).map(
+            ([key, { options, label }]) => (
+              <FormGroup key={key} row>
+                <Col>
+                  <Label className="mx-2 fw-bold tw-body-text">{label}</Label>
+                  {AvatarStyling(
+                    props.userAvatar[key],
+                    key,
+                    props.setUserAvatar,
+                    options,
+                  )}
+                </Col>
+              </FormGroup>
+            ),
+          )}
+        </Form>
+      </div>
+    </div>
   );
 };
 

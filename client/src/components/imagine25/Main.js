@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { navigate, Router } from "@reach/router";
-import AvatarCreation from "./pages/AvatarCreation";
 import UpdateId from "./UpdateId";
 import Done from "./Done";
-import AvatarSelection from "./pages/AvatarSelection";
+import AvatarSelectionPage from "./pages/AvatarSelectionPage";
 import ImagineService from "src/services/ImagineService";
 import useMainStateContext from "src/reducers/MainContext";
 import Survey from "../all-components/imagine-components/SurveyHandlerComp";
@@ -17,6 +16,7 @@ import Galaga from "./pages/Game";
 import RetentionReading from "./pages/RetentionReading";
 import "./main.css";
 import Quiz from "../quiz/components/QuizHandler";
+import AvatarCreationPage from "./pages/AvatarCreationPage";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -112,13 +112,13 @@ const Main = () => {
               year={year}
               userID={sessionStorage.getItem("userID")}
             />
-            <AvatarCreation
+            <AvatarCreationPage
               path={"/AvatarCreation"}
               userAvatar={userAvatar}
               setUserAvatar={setUserAvatar}
               AvatarSelections={avatarSelections}
             />
-            <AvatarSelection
+            <AvatarSelectionPage
               avatars={teammateAvatars}
               imagineService={ImagineService.postTeammateSelection}
               title={"Teammate"}
@@ -128,7 +128,7 @@ const Main = () => {
               setAvatarSelected={setTeammateAvatarSelected}
               path={"/TeammateSelection"}
             />
-            <AvatarSelection
+            <AvatarSelectionPage
               avatars={opponentAvatars}
               imagineService={ImagineService.postOpponentSelection}
               title={"Opponent"}
