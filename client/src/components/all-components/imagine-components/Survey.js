@@ -1,32 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 import Likert from "./Likert";
 import Avatar from "avataaars";
+import ImagineService from "src/services/ImagineService";
 
 function Survey(props) {
-  console.log(props.avatar);
-  console.log(sessionStorage.getItem("TeammateAvatar"));
-  console.log(sessionStorage.getItem("OpponentAvatar"));
-  const avatar =
-    props.avatar == null ? (
-      <></>
-    ) : (
-      () => {
-        const avatarData = sessionStorage.getItem(props.avatar + "Avatar");
-        return (
-          <Avatar
-            clotheType="ShirtCrewNeck"
-            topType={avatarData.userAvatar?.hairStyle || "Default"}
-            hairColor={avatarData.userAvatar?.hairColor || "Default"}
-            clotheColor={avatarData.userAvatar?.clotheColor || "Default"}
-            skinColor={avatarData.userAvatar?.skinColor || "Default"}
-            className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
-          />
-        );
-      }
-    );
+  const [displayedAvatar, setDisplayedAvatar] = useState(<></>);
+
+  useEffect(() => {
+    if (props.avatar === null) return;
+    const getUser = async () => {
+      const user = await ImagineService.getUserByID(
+        sessionStorage.getItem("userID"),
+        25,
+      );
+      const avatar = user[props.avatar + "Avatar"];
+
+      setDisplayedAvatar(
+        <Avatar
+          topType={avatar.hairStyle || "Default"}
+          hairColor={avatar.hairColor || "Default"}
+          clotheColor={avatar.clotheColor || "Default"}
+          skinColor={avatar.skinColor || "Default"}
+          clotheType="ShirtCrewNeck"
+          className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
+        />,
+      );
+    };
+    getUser();
+  }, []);
 
   function renderAnswerOptions(key) {
     return (
@@ -59,7 +63,7 @@ function Survey(props) {
           {props.answerOptions.map(renderAnswerOptions)}
         </ul>
       )}
-      {avatar}
+      {displayedAvatar}
       <div className="align-right">
         {props.questionId !== props.questionTotal && !props.isUnderAge ? (
           <button

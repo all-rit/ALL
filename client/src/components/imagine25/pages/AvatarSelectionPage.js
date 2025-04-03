@@ -27,10 +27,6 @@ const AvatarSelectionPage = (props) => {
               props.avatars[props.avatarSelected],
               25,
             );
-            sessionStorage.setItem(
-              props.title + "Avatar",
-              props.avatarSelected[props.avatarSelected],
-            );
             return;
           }
           actions.showSnackbar(

@@ -220,6 +220,7 @@ const SurveyHandler = (props) => {
     };
     setSelectedAnswers(tempAnswers);
   }
+
   return (
     <>
       {!surveyComplete ? (
