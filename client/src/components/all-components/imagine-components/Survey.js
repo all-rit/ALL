@@ -7,9 +7,12 @@ import Avatar from "avataaars";
 import ImagineService from "src/services/ImagineService";
 
 function Survey(props) {
+  //If you need to display an avatar check below ;)
   const [displayedAvatar, setDisplayedAvatar] = useState(<></>);
 
+  //checks the avatar prop set through
   useEffect(() => {
+    //if no avatar prop, skip and wait until one does exist
     if (!props.avatar) return;
     const getUser = async () => {
       const user = await ImagineService.getUserByID(
