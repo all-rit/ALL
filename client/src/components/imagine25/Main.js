@@ -17,6 +17,7 @@ import RetentionReading from "./pages/RetentionReading";
 import "./main.css";
 import Quiz from "../quiz/components/QuizHandler";
 import AvatarCreationPage from "./pages/AvatarCreationPage";
+import RankingQuestion from "../all-components/imagine-components/Ranking";
 
 //Generates random arrays using Fisher-Yates algorithim
 const shuffleArray = (array) => {
@@ -165,6 +166,7 @@ const Main = () => {
               setQuizCompleted={setQuizCompleted}
             />
             <Done path={"/Done"} resetInstance={clearInstance} />
+            <RankingQuestion path={"/RankingQuestionSandbox"} />
           </Router>
         </div>
       </div>
