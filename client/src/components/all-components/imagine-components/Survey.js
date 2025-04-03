@@ -10,7 +10,7 @@ function Survey(props) {
   const [displayedAvatar, setDisplayedAvatar] = useState(<></>);
 
   useEffect(() => {
-    if (props.avatar === null) return;
+    if (!props.avatar) return;
     const getUser = async () => {
       const user = await ImagineService.getUserByID(
         sessionStorage.getItem("userID"),
@@ -30,7 +30,7 @@ function Survey(props) {
       );
     };
     getUser();
-  }, []);
+  }, [props.avatar]);
 
   function renderAnswerOptions(key) {
     return (
