@@ -33,12 +33,16 @@ const ExperientialIntroduction = () => {
         <img src={Lab2Color} alt={"Lab 2 Color"} />
         <img src={Lab2Colorblind} alt={"Lab 2 Colorblind"} />
         <p className={"tw-text-center tw-text-sm tw-italic"}>
-          {" "}
-          Initial Colors in Lab 2{" "}
+          In the initial activity of Lab 2, there is circle in the middle of a
+          green screen, along with 3 circles on the bottom, colored red, tan,
+          and green, that are meant to display the colors of which you should
+          click and should not click. The goal is to click the center circle
+          when it is red, and not when it is tan or green.
         </p>
         <p className={"tw-text-center tw-text-sm tw-italic"}>
-          {" "}
-          Colorblind Experience in Lab 2{" "}
+          In the second activity of Lab 2, you are faced with the game, however
+          the circles now appear to be the exact same shade of grey green,
+          driving home the point of the importance of color contrasting.
         </p>
       </div>
       <p>

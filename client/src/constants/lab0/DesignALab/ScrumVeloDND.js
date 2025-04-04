@@ -15,6 +15,7 @@ const initialBank = [
 3. Explanation of the Inaccessibility
     `,
     color: "tw-bg-[#F83F3F]",
+    isCorrect: true,
   },
   {
     id: "card2",
@@ -25,6 +26,7 @@ const initialBank = [
 3. Display Blurred Webpage
     `,
     color: "tw-bg-[#6D67E6]",
+    isCorrect: true,
   },
   {
     id: "card3",
@@ -36,6 +38,7 @@ const initialBank = [
 4. Create Key Takeaways
     `,
     color: "tw-bg-[#FF860D]",
+    isCorrect: true,
   },
   {
     id: "card4",
@@ -46,6 +49,7 @@ const initialBank = [
 3. Create Out of Order Tab Nav
     `,
     color: "tw-bg-[#37AA67]",
+    isCorrect: true,
   },
 ];
 

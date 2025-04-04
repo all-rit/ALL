@@ -9,7 +9,7 @@ const initialBank = [
     id: "card1",
     title: "Code Review",
     body:
-      "The participant is given a series of code blocks of links, buttons, and other elements on a webpage in HTML " +
+      "In this exercise, the participant is given a series of code blocks of links, buttons, and other elements on a webpage in HTML " +
       "and Javascript, and are tasked with recognizing why the code is or isn't focus order accessible.",
     isCorrect: true,
   },
@@ -28,7 +28,7 @@ const initialBank = [
     id: "card3",
     title: "Out of Order",
     body:
-      "In this experiential exercise, users will be given a webpage to browse through, but are not allowed to use " +
+      "In this exercise, users will be given a webpage to browse through, but are not allowed to use " +
       "the mouse, and must tab through each link and button. However, the focus order of these links is out of order, " +
       "and send the user all over the webpage, making it difficult to reach the link they are tasked with selecting.",
     isCorrect: true,

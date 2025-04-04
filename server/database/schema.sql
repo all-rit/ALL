@@ -476,72 +476,83 @@ create table lab12_exercise
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
 VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg',
         'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial.',
-        'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial. Start by participating in lab brainstorming, ideation, and sprint planning for your lab, then move on to implementation using our PERN tech stack covering backend and frontend. By the end of Lab 0, you will have successfully implemented a newly synthesized lab from beginning to end.', 
-        '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]',
+        'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial. Start by participating in lab brainstorming, ideation, and sprint planning for your lab, then move on to implementation using our PERN tech stack covering backend and frontend. By the end of Lab 0, you will have successfully implemented a newly synthesized lab from beginning to end.',
+        '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)",
+          "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)",
+          "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
+          "LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]',
         'Heather Moses, Domenic Mangano, Jonathan Cruz, Melissa Burisky, Jack Barter',
-        'https://all.rit.edu/Lab0/', null,
+        'https://all.rit.edu/Lab0/', NULL,
         'In this lab, you will learn how to develop a lab for ALL from beginning to end. Starting with writing a lab, you will explore concepts like ideation, gathering sources, and finally designing the lab’s structure. Afterward, you will be able to implement a lab on both the frontend and backend while upholding best practices and standards. Click “Next” to start!',
         e'{
-	"description":{
-		"header":"",
-		"content":""
-	},
-	"body":[
-		{
-			"header":"Why Do We Build Labs?",
-			"type":"",
-			"content":["Lab 0 Reading Content about the importance of accessibility in software eduction."]
-		},
-		{
-			"header":"",
-			"type":"links",
-			"content":[]
-		},
-		{
-			"header":"What Goes into Building a Lab?",
-			"type":"",
-			"content":["Lab 0 reading on building labs"]
-		},
-		{
-			"header":"",
-			"type":"links",
-			"content":[]
-		},
-		{
-			"header":"Our Tech Stack",
-			"type":"",
-			"content":["Information about tech stack and other important development info"]
-		},
-		{
-			"header":"",
-			"type":"image",
-			"content":{
-				"image":"",
-				"alt":"",
-				"sub_caption":"",
-				"caption":""
-			}
-		},
-		{
-			"header":"",
-			"type":"",
-			"content":[]
-		},
-        {
-			"header":"",
-			"type":"links",
-			"content":["Maybe embed links to documentation for each section of the tech stack, i.e. React, Express, Sequelize, etc"]
-		},
-		{
-			"header":"",
-			"type":"links",
-			"content":[]
-		}
-	],
-	"footer":{
-		"links":[]
-	}
-}', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
+        "description": {
+            "header": "",
+            "content": ""
+        },
+        "body": [
+            {
+                "header": "History of Accessible Learning Labs",
+                "type": "",
+                "content": [
+                    "Accessible Learning Labs, in conjunction with Rochester Institute of Technology and the National Science Foundation, was created in 2019 by principal investors Daniel Krutz and Samuel Malachowsky with the purpose of spreading awareness of the importance of accessible software on the web, as well as the crucial role that software developers play in designing and creating a more accessible, usable internet that anyone can use. Comprised of a fully undergraduate development team, Accessible Learning Labs plays a crucial part in not only creating a better future for the web, but creating more conscientious software engineers that know the importance of accessibility. Since Lab 1 - Accessibility to Sound and Speech released in 2019, Accessible Learning Labs has released 11 more labs, with topics ranging from Accessibility Cognitive Disabilities to AI in Cybersecurity, with more in the works with each passing semester."
+                ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": []
+            },
+            {
+                "header": "What Goes into Building a Lab?",
+                "type": "",
+                "content": [
+                    "Our labs follow a standardized 5 step process: About, Reading, Experiential Exercise, Reinforcement, and Quiz sections. By standardizing our process, we guarantee that each of our labs touches on the most important talking points of the lab topic, as well as providing a lasting experience that enforces the importance of accessible software or any other subject they may be learning about in the Accessible Learning Labs plethora of learning content."
+                ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": []
+            },
+            {
+                "header": "Our Tech Stack",
+                "type": "",
+                "content": [
+                    "Accessible Learning Labs is a JavaScript-focused application. As a result, the frontend of the project is developed using ReactJS, an industry-standard technology for developing dynamic and highly functional user interfaces. The backend of the project is developed using ExpressJS, an easy-to-understand JavaScript library that provides server functionality using the JavaScript language. Finally, to store data, Accessible Learning Labs employs a PostgreSQL-based database structure."
+                ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": [
+                    {
+                        "name": "React Documentation",
+                        "link": "https://react.dev/"
+                    },
+                    {
+                        "name": "ExpressJS Documentation",
+                        "link": "https://expressjs.com/"
+                    },
+                    {
+                        "name": "PostgreSQL Documentation",
+                        "link": "https://www.postgresql.org/docs/"
+                    }
+                ]
+            }
+        ],
+        "footer": {
+            "links": [
+                {
+                    "name": "National Science Foundation",
+                    "link": "https://www.nsf.gov/"
+                },
+                {
+                    "name": "Rochester Institute of Technology",
+                    "link": "https://www.rit.edu/"
+                }
+            ]
+        }
+    }', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
 ', e'[
   {
     "question": "What is an audio cue?",
