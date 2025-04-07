@@ -59,7 +59,8 @@ const RankingQuestion = (props) => {
 
   const handleSelection = (rankingNumber, option) => {
     console.log(rankingNumber + " | " + option);
-    selectedAnswers[option] = rankingNumber;
+    // const prevSelectedAnswer = selectedAnswers[option];
+    // const prevAvailableAnswer = availableAnswers[rankingNumber];
     availableAnswers[rankingNumber] = option;
   };
 
