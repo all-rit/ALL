@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   Form,
@@ -10,63 +10,71 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-const RankingEntry = (availableAnswers, setAvailableAnswers) => {
-  const [displayedValue, setDisplayedValue] = useState();
-
+const RankingEntry = (option, length, handleOption, currrentValue) => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
 
   return (
     <>
+      <Label className="mx-2 fw-bold tw-body-text">{option}</Label>
       <Dropdown
         isOpen={dropDownOpen}
         toggle={() => setDropDownOpen((prevState) => !prevState)}
         className="tw-body-text"
       >
         <DropdownToggle color={"light"} caret>
-          {displayedValue}
+          {currrentValue}
         </DropdownToggle>
         <DropdownMenu>
-          {Object.entries(availableAnswers).map(([number, isDisabled]) => {
+          {Array.from({ length: length }, (_, i) => i + 1).map((number) => (
             <DropdownItem
               key={number}
-              disabled={isDisabled}
-              onClick={() => {
-                setAvailableAnswers((prevState) => ({
-                  ...prevState,
-                  [number]: false,
-                }));
-                setDisplayedValue(number);
-              }}
+              onClick={() => handleOption(number, option)}
             >
               {number}
-            </DropdownItem>;
-          })}
+            </DropdownItem>
+          ))}
         </DropdownMenu>
-        <DropdownMenu></DropdownMenu>
       </Dropdown>
     </>
   );
 };
 
 const RankingQuestion = (props) => {
+  const [selectedAnswers, setSelectedAnswers] = useState({});
   const [availableAnswers, setAvailableAnswers] = useState({});
 
   useEffect(() => {
-    const options = {};
-    for (let i = 0; i < props.options.length; i++) {
-      options[i] = false;
+    const selectedOptions = {};
+    const availableOptions = {};
+    for (let i = 1; i <= props.options.length; i++) {
+      availableOptions[i] = "";
+      selectedOptions[props.options[i]] = 0;
     }
-    setAvailableAnswers(options);
+    setSelectedAnswers(selectedOptions);
+    setAvailableAnswers(availableOptions);
   }, [props.options.length]);
 
+  console.log(selectedAnswers);
+  console.log(availableAnswers);
+
+  const handleSelection = (rankingNumber, option) => {
+    console.log(rankingNumber + " | " + option);
+    selectedAnswers[option] = rankingNumber;
+    availableAnswers[rankingNumber] = option;
+  };
+
   return (
-    <Form className="border border-black">
+    <Form>
       <div>Testing page</div>
       <FormGroup className="tw-grid tw-grid-cols-3">
         {props.options.map((option) => (
           <div key={option}>
-            <Label className="mx-2 fw-bold tw-body-text">{option}</Label>
-            {RankingEntry(availableAnswers, setAvailableAnswers)}
+            {RankingEntry(
+              option,
+              props.options.length,
+              handleSelection,
+              selectedAnswers[option],
+            )}
           </div>
         ))}
       </FormGroup>
