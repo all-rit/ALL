@@ -86,6 +86,7 @@ const Repair = (props) => {
       setUserError(false);
       popUpHandler(ERROR_MESSAGE);
     }
+    window.scrollTo(0, 0);
   };
   /**
    * handleNext(): is a helper function responsible
@@ -134,14 +135,17 @@ const Repair = (props) => {
           className={`${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
         >
           <div className="tw-flex tw-flex-col tw-m-2 tw-bg-[[#ffffffe8]] tw-rounded-lg tw-text-left tw tw-border-solid tw-border-0 tw-shadow-[0px_0px_10px_0px_rgba(0,0,0,.4)]">
-            <div className="tw-flex-row tw-pt-3 tw-pl-3">
+            <div className="tw-flex tw-flex-wrap tw-pt-3 tw-pl-3">
               {files.map((file) => (
                 <div
                   key={file.fileId}
-                  className={`tw-font-normal tw-text-sm tw-bg-[#fff] tw-border-solid tw-inline-block tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg ${selectedFile !== file.fileId ? "tw-opacity-50" : ""}`}
+                  className={`tw-border-solid tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg ${selectedFile !== file.fileId ? "tw-opacity-50" : ""}`}
                   onClick={() => handleFileChange(file.fileId)}
                 >
-                  {file.fileName}
+                  <div className="tw-flex tw-items-center tw-gap-3">
+                    <div className="tw-w-[0.75rem] tw-h-[0.75rem] tw-aspect-square tw-rounded-full tw-bg-darkGray"></div>
+                    <p className="tw-font-normal tw-text-sm">{file.fileName}</p>
+                  </div>
                 </div>
               ))}
               <div className="tw-grow"></div>
