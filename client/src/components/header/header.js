@@ -27,7 +27,6 @@ import {
   LOGOUT_SUCCESS,
   SUCCESS,
 } from "../../constants/notifications";
-import { EXERCISE_IDLE } from "../../constants/lab1";
 
 const mapStateToProps = (state) => {
   return {
@@ -64,8 +63,6 @@ const Header = (props) => {
   const toggleSignIn = () => {
     setSignInModalOpen(!signInModalOpen);
   };
-
-  const loginEnabled = state.main.lab === 0;
 
   const signInModal = () => {
     return (
@@ -115,9 +112,7 @@ const Header = (props) => {
     setisSmallWindow(false);
   }
 
-  // user is logged in if their profile image isn't null, kinda scuffed but lmk if there's a simpler way
-  // (state.main.user is never null)
-  const loggedIn = state.main.user?.userpfp !== null;
+  const loggedIn = state.main?.user?.email1 !== null;
 
   return (
     <Navbar

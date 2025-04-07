@@ -95,8 +95,8 @@ const GeneratedData = (props) => {
             </p>
             <p className="tw-body-text tw-text-left tw-py-6 tw-font-bold">
               Note: While complete elimination of bias is nearly impossible, it
-              is crucial to minimize unwanted bias in AI to ensure fair,
-              equitable outcomes and maintain trust in decision-making.
+              is crucial to minimize unwanted bias in AI to ensure fair outcomes
+              and maintain trust in decision-making.
             </p>
             <p className={"tw-body-text tw-text-left"}>
               If you would like to continue with the lab, click on the{" "}

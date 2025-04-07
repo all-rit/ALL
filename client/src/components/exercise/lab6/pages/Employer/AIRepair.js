@@ -117,8 +117,8 @@ const AIRepair = () => {
         Repair{" "}
       </h2>
       <div className="tw-body-text tw-text-left tw-my-6">
-        Let&apos;s adjust the AI&apos;s configuration to allow for a more
-        equitable hiring process.
+        Let&apos;s adjust the AI&apos;s configuration to allow for a fair hiring
+        process.
         <br />
         <br />
         Click &rsquo;Repair&rsquo; to make the appropriate changes.
@@ -191,8 +191,8 @@ const AIRepair = () => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; genderWeight should always be 0 otherwise its
-                    unequitable
+                    &#47;&#47; genderWeight should always be 0 otherwise it is
+                    unfair
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
@@ -214,7 +214,7 @@ const AIRepair = () => {
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"genderWeight must be 0 to be equitable"}
+                        {"genderWeight must be 0 to be fair"}
                       </span>
                     </div>
                   )}
@@ -224,8 +224,8 @@ const AIRepair = () => {
                 <div className="code_editor__line">
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   <span className="code_editor__line--darkgreen">
-                    &#47;&#47; Make changes to appearanceWeight it is
-                    unequitable unless its 0
+                    &#47;&#47; Make changes to appearanceWeight, it is unfair
+                    unless it is 0
                   </span>
                 </div>
                 <div className="code_editor__json_value code_editor__line-background--light">
@@ -247,7 +247,7 @@ const AIRepair = () => {
                     <div className="code_editor__line">
                       <span className="form-error">
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        {"appearanceWeight must be 0 to be equitable"}
+                        {"appearanceWeight must be 0 to be fair"}
                       </span>
                     </div>
                   )}
