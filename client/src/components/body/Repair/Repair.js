@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import React from "react";
 import Popup from "src/components/all-components/Popup";
@@ -36,6 +36,7 @@ const Repair = (props) => {
   const [enableNext, setEnableNext] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
   const [userError, setUserError] = useState(true);
+  const headingRef = useRef(null);
 
   const REPAIR_MESSAGE = "Repair Successful!";
   const ERROR_MESSAGE = "Error in Repair. Please fix.";
@@ -65,6 +66,26 @@ const Repair = (props) => {
     setSelectedFile(fileId);
   };
 
+  const getFileStatusColor = (fileId) => {
+    let statusColor = "";
+    if (popUpMessage === "") {
+      statusColor = "tw-bg-labGray";
+    } else if (
+      exercisePromptsState
+        .filter((input) => input.fileId === fileId)
+        .some((input) => !validInputs[input.id])
+    ) {
+      statusColor = "tw-bg-error";
+    } else if (
+      exercisePromptsState
+        .filter((input) => input.fileId === fileId)
+        .every((input) => validInputs[input.id] === true)
+    ) {
+      statusColor = "tw-bg-success";
+    }
+    return statusColor;
+  };
+
   /**
    * handleUpdate(): is an async function that is responsible for
    * handling the behavior for validating and posting the results
@@ -86,7 +107,7 @@ const Repair = (props) => {
       setUserError(false);
       popUpHandler(ERROR_MESSAGE);
     }
-    window.scrollTo(0, 0);
+    headingRef.current.scrollIntoView();
   };
   /**
    * handleNext(): is a helper function responsible
@@ -104,7 +125,9 @@ const Repair = (props) => {
   };
   return (
     <div>
-      <h1 className={"tw-title tw-text-left"}> {headingText} </h1>
+      <h1 className={"tw-title tw-text-left"} ref={headingRef}>
+        {headingText}
+      </h1>
       <div className="tw-pb-10 tw-text-xl ">
         {repairText.map((text) => (
           <p className="tw-body-text tw-text-left tw-pt-6" key={text}>
@@ -142,8 +165,10 @@ const Repair = (props) => {
                   className={`tw-border-solid tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg ${selectedFile !== file.fileId ? "tw-opacity-50" : ""}`}
                   onClick={() => handleFileChange(file.fileId)}
                 >
-                  <div className="tw-flex tw-items-center tw-gap-3">
-                    <div className="tw-w-[0.75rem] tw-h-[0.75rem] tw-aspect-square tw-rounded-full tw-bg-darkGray"></div>
+                  <div className="tw-flex tw-items-center tw-gap-2">
+                    <div
+                      className={`tw-w-[0.75rem] tw-h-[0.75rem] tw-aspect-square tw-rounded-full ${getFileStatusColor(file.fileId)}`}
+                    ></div>
                     <p className="tw-font-normal tw-text-sm">{file.fileName}</p>
                   </div>
                 </div>
