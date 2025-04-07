@@ -19,7 +19,7 @@ const preSurveyQuestions = [
         content: "45-65 years old",
       },
       {
-        index: "3",
+        index: "4",
         content: "65+ years old",
       },
     ],
@@ -76,7 +76,7 @@ const preSurveyQuestions = [
         content: "Indigenous",
       },
       {
-        index: "5",
+        index: "6",
         content: "Prefer not to answer",
       },
     ],
