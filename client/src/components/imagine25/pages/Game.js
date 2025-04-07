@@ -11,10 +11,8 @@ const Analysis = () => {
     const isUnderAge = sessionStorage.getItem("isUnderAge");
     console.log(isUnderAge);
     if (isUnderAge === "true") {
-      // UnderAge User will be sent to quiz section which is not implemented yet
       navigate("/Imagine2025/Done");
     } else {
-      // Plusr 18 Users will be sent to post survey
       navigate("/Imagine2025/PostSurvey");
     }
   };
@@ -64,7 +62,8 @@ const Analysis = () => {
       <h3 className="tw-title text-center">Analysis</h3>
       {content}
       <Button
-        className="btn btn-primary text-black btn-xl text-uppercase"
+        className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[8rem] tw-h-[3rem]
+        tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
         onClick={handleNavigation}
       >
         Next
@@ -117,7 +116,8 @@ const ScorePage = () => {
       </div>
 
       <Button
-        className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
+        className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[8rem] tw-h-[3rem]
+       tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl tw-text-black"
         onClick={() => setContent(<Analysis />)}
       >
         Analyze Game

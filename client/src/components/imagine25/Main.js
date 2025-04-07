@@ -13,9 +13,7 @@ import {
 } from "src/constants/imagine25/Avatar";
 import GalagaInstructions from "./pages/GalagaInstruction";
 import Galaga from "./pages/Game";
-import RetentionReading from "./pages/RetentionReading";
 import "./main.css";
-import Quiz from "../quiz/components/QuizHandler";
 import AvatarCreationPage from "./pages/AvatarCreationPage";
 
 //Generates random arrays using Fisher-Yates algorithim
@@ -35,8 +33,6 @@ shuffleArray(teammateAvatars);
 shuffleArray(opponentAvatars);
 
 const Main = () => {
-  const [quizCompleted, setQuizCompleted] = useState(false);
-
   const userID = sessionStorage.getItem("userID");
 
   //Removes header
@@ -58,7 +54,6 @@ const Main = () => {
 
   const [teammateAvatarSelected, setTeammateAvatarSelected] = useState();
   const [opponentAvatarSelected, setOpponentAvatarSelected] = useState();
-  // const [quizAnswers, setQuizAnswers] = useState();
 
   //After each iteration, clear the use-states
   const clearInstance = () => {
@@ -70,7 +65,6 @@ const Main = () => {
     });
     setTeammateAvatarSelected(null);
     setOpponentAvatarSelected(null);
-    setQuizCompleted(false);
   };
 
   const year = 25;
@@ -140,7 +134,6 @@ const Main = () => {
             />
             <GalagaInstructions path={"/GalagaInstructions"} />
             <Galaga path={"/Galaga"} />
-            <RetentionReading path={"/RetentionReading"} />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PreSurvey`}
@@ -154,15 +147,6 @@ const Main = () => {
               type={"post"}
               year={year}
               userID={userID}
-            />
-            <Quiz
-              path={`/Quiz`}
-              labId={year}
-              userID={userID}
-              isFinalQuiz={true}
-              hideCertificate={false}
-              quizCompleted={quizCompleted}
-              setQuizCompleted={setQuizCompleted}
             />
             <Done path={"/Done"} resetInstance={clearInstance} />
           </Router>
