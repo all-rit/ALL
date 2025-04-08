@@ -69,7 +69,8 @@ const DesignSortNewCategory = () => {
         dragging and dropping them into their correct groups.
         <br />
         Each card contains a term or concept related to one of the existing
-        categories our labs fall into. Good luck!
+        categories our labs fall into or the category you just created. Good
+        luck!
         <br />
         <br />
         <h3>How It Works:</h3>
@@ -87,13 +88,14 @@ const DesignSortNewCategory = () => {
       <br />
       <div className="tw-p-3 tw-h-[60rem]">
         <DragDropGame
+          gameStyle={"tw-flex tw-flex-col tw-w-full"}
           containerStyle={"tw-flex tw-gap-5 tw-p-5 tw-w-full tw-justify-center"}
           colStyle={
             "tw-px-4 tw-rounded-lg tw-shadow-md tw-flex tw-flex-1 tw-min-h-[20rem] tw-pb-4 tw-flex tw-flex-col tw-w-full"
           }
           bankStyle={
-            "tw-grid tw-grid-cols-3 sm:tw-grid-cols-4 lg:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-t-4 " +
-            "tw-border-dashed tw-border-black tw-border-r-0 tw-border-l-0 tw-border-b-0 tw-my-5 tw-justify-center " +
+            "tw-grid tw-grid-cols-3 xs:tw-grid-cols-3 md:tw-grid-cols-4 xl:tw-grid-cols-5 tw-gap-4 tw-p-4 tw-border-t-[0.5px] " +
+            "tw-border-dashed tw-border-[#c3c3c3] tw-border-r-0 tw-border-l-0 tw-border-b-0 tw-my-5 tw-justify-center " +
             "tw-w-full tw-min-w-full tw-max-w-full tw-flex-shrink-0 tw-h-auto tw-min-h-[10rem] " +
             "after:tw-content-[''] after:tw-block after:tw-w-[12rem] after:tw-h-[6rem] after:tw-opacity-0 after:tw-col-span-1"
           }
@@ -102,18 +104,18 @@ const DesignSortNewCategory = () => {
             "tw-text-black tw-w-full tw-flex tw-items-center tw-justify-center tw-h-auto "
           }
           bankCardStyle={
-            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-4 tw-m-2 tw-shadow-sm tw-cursor-grab focus:tw-shadow-xl " +
-            "tw-text-black tw-h-[4rem] tw-flex tw-items-center tw-body-text tw-leading-snug xs:tw-text-sm md:tw-text-[1rem] tw-justify-center tw-min-w-[6rem] tw-text-center"
+            "tw-bg-white tw-border-solid tw-border-labBlue tw-rounded-md tw-p-2 tw-m-2 tw-shadow-sm tw-cursor-grab focus:tw-shadow-xl " +
+            "tw-text-black tw-h-[4rem] tw-flex tw-items-center tw-body-text tw-leading-snug xs:tw-text-sm md:tw-text-[1rem] tw-justify-center tw-min-w-[7rem] tw-text-center"
           }
-          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-8`}
+          msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
           colHeaderStyle={
             "tw-flex tw-items-center tw-justify-center tw-h-[6rem] tw-text-center tw-px-4 tw-py-4 " +
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"
           }
           colContainerStyle={"tw-w-1/3"}
           cols={Columns}
-          initial_bank={_.shuffle(newBank())}
-          correct_assignments={newCorrectAssignments()}
+          initialBank={_.shuffle(newBank())}
+          correctAssignments={newCorrectAssignments()}
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}

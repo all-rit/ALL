@@ -23,8 +23,6 @@ import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
-// import ALLCardFlip from "src/components/all-components/ALLCardFlip";
-// import LabButton from "../../all-components/LabButton";
 
 const Main = (props) => {
   const { user } = props;

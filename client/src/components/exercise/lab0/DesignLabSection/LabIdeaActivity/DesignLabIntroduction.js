@@ -24,7 +24,6 @@ const DesignLabIntroduction = () => {
 
   const { handleNav } = useContext(Lab0Context);
   const navigateNext = () => {
-    console.log(columns);
     handleNav("DesignNewCategory");
   };
 
@@ -89,8 +88,8 @@ const DesignLabIntroduction = () => {
             "tw-mx-2 tw-my-2 tw-bg-labYellow tw-rounded-md tw-font-bold"
           }
           cols={cols}
-          initial_bank={bank}
-          correct_assignments={correct}
+          initialBank={bank}
+          correctAssignments={correct}
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}

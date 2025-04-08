@@ -46,8 +46,8 @@ const ScrumVelocityActivity = () => {
           }
           msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-3 tw-my-3 tw-text-white tw-rounded-md`}
           cols={initialColumns}
-          initial_bank={initialBank}
-          correct_assignments={correctAssignments}
+          initialBank={initialBank}
+          correctAssignments={correctAssignments}
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}

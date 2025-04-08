@@ -53,8 +53,8 @@ const CreateExperientialExercise = () => {
         }
         msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
         cols={initialColumns}
-        initial_bank={initialBank}
-        correct_assignments={correctAssignments}
+        initialBank={initialBank}
+        correctAssignments={correctAssignments}
         setSuccess={setSuccess}
         success={success}
         handleNav={navigateNext}

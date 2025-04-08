@@ -43,8 +43,8 @@ const DragDropGame = ({
   bankCardStyle,
   msgStyle,
   cols,
-  initial_bank,
-  correct_assignments,
+  initialBank,
+  correctAssignments,
   success,
   setSuccess,
   colHeaderStyle,
@@ -53,9 +53,9 @@ const DragDropGame = ({
   gameStyle,
 }) => {
   const [columns, setColumns] = useState(arrayToObject(cols, "id"));
-  const [bank, setBank] = useState(initial_bank);
+  const [bank, setBank] = useState(initialBank);
   const [message, setMessage] = useState("");
-  const correctAssignments = arrayToObject(correct_assignments, "id");
+  const correct_assignments = arrayToObject(correctAssignments, "id");
 
   const [correct, setCorrect] = useState(success);
 
@@ -129,7 +129,7 @@ const DragDropGame = ({
       return;
     }
 
-    for (const [columnId, currentCol] of Object.entries(correctAssignments)) {
+    for (const [columnId, currentCol] of Object.entries(correct_assignments)) {
       const placedCards = updatedColumns[columnId].cards;
       const correctCards = currentCol.cards;
 
@@ -224,13 +224,13 @@ DragDropGame.propTypes = {
       cards: PropTypes.array.isRequired,
     }),
   ),
-  initial_bank: PropTypes.arrayOf(
+  initialBank: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
     }),
   ),
-  correct_assignments: PropTypes.arrayOf(
+  correctAssignments: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       cards: PropTypes.array.isRequired,
