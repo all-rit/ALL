@@ -22,7 +22,7 @@ const RankingEntry = (option, length, handleOption, currrentValue) => {
         className="tw-body-text"
       >
         <DropdownToggle color={"light"} caret>
-          {currrentValue}
+          {currrentValue == 0 ? "" : currrentValue}
         </DropdownToggle>
         <DropdownMenu>
           {Array.from({ length: length }, (_, i) => i + 1).map((number) => (
@@ -46,8 +46,8 @@ const RankingQuestion = (props) => {
   useEffect(() => {
     const selectedOptions = {};
     const availableOptions = {};
-    for (let i = 1; i <= props.options.length; i++) {
-      availableOptions[i] = "";
+    for (let i = 0; i < props.options.length; i++) {
+      availableOptions[i + 1] = "";
       selectedOptions[props.options[i]] = 0;
     }
     setSelectedAnswers(selectedOptions);
@@ -59,9 +59,30 @@ const RankingQuestion = (props) => {
 
   const handleSelection = (rankingNumber, option) => {
     console.log(rankingNumber + " | " + option);
-    // const prevSelectedAnswer = selectedAnswers[option];
-    // const prevAvailableAnswer = availableAnswers[rankingNumber];
-    availableAnswers[rankingNumber] = option;
+    const prevSelectedAnswer = selectedAnswers[option];
+    console.log("\nPrevSelectedAnswer: " + prevSelectedAnswer);
+    const prevAvailableAnswer = availableAnswers[rankingNumber];
+    console.log("\nPrevAvailableAnswer: " + prevAvailableAnswer);
+    if (prevAvailableAnswer != 0) {
+      setSelectedAnswers((prevState) => ({
+        ...prevState,
+        [prevAvailableAnswer]: 0,
+      }));
+    }
+    if (prevSelectedAnswer != "") {
+      setAvailableAnswers((prevState) => ({
+        ...prevState,
+        [prevSelectedAnswer]: "",
+      }));
+    }
+    setSelectedAnswers((prevState) => ({
+      ...prevState,
+      [option]: rankingNumber,
+    }));
+    setAvailableAnswers((prevState) => ({
+      ...prevState,
+      [rankingNumber]: option,
+    }));
   };
 
   return (

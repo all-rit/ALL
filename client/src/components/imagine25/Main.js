@@ -168,7 +168,7 @@ const Main = () => {
             <Done path={"/Done"} resetInstance={clearInstance} />
             <RankingQuestion
               path={"/RankingQuestionSandbox"}
-              options={["Test1", "test2", "test3"]}
+              options={["A", "B", "C"]}
             />
           </Router>
         </div>
