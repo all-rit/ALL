@@ -8,6 +8,17 @@ import ImagineService from "src/services/ImagineService";
 import RankingQuestion from "./Ranking";
 
 function Survey(props) {
+  //any niche questions can be placed here, match the key with the question type in whatever data file you are using
+  const questionTypes = {
+    likert: <Likert onAnswerSelected={props.onAnswerSelected} />,
+    ranking: (
+      <RankingQuestion
+        options={props.answerOptions}
+        updatedSelectedAnswers={props.rankingUpdate}
+      />
+    ),
+  };
+
   //If you need to display an avatar check below ;)
   const [displayedAvatar, setDisplayedAvatar] = useState(<></>);
 
@@ -60,14 +71,7 @@ function Survey(props) {
       <div className={"tw-flex tw-justify-center tw-mt-0"}>
         <hr className={"tw-w-3/4"} />
       </div>
-      {props.questionType == "likert" ? (
-        <Likert onAnswerSelected={props.onAnswerSelected} />
-      ) : props.questionType == "ranking" ? (
-        <RankingQuestion
-          options={props.answerOptions}
-          updatedSelectedAnswers={props.rankingUpdate}
-        />
-      ) : (
+      {questionTypes[props.questionType] || (
         <ul className="answerOptions tw-grid tw-grid-cols-2 tw-body-text">
           {props.answerOptions.map(renderAnswerOptions)}
         </ul>

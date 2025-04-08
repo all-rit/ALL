@@ -223,12 +223,15 @@ const SurveyHandler = (props) => {
 
   function rankingUpdate(updatedRankingAnswers) {
     setSelectedAnswers((prevState) => {
+      console.log(updatedRankingAnswers);
       const updatedState = [...prevState];
       updatedState[currentQuestionCursor] = updatedRankingAnswers;
-      console.log(updatedState);
+
+      //don't allow next if there is a unused ranking
+      setDisableNext(Object.values(updatedRankingAnswers).includes(0));
+
       return updatedState;
     });
-    setDisableNext(false);
   }
 
   return (

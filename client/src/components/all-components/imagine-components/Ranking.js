@@ -10,6 +10,14 @@ import {
   DropdownItem,
 } from "reactstrap";
 
+/**
+ *
+ * @param {*} option - One of the ranking options
+ * @param {*} length - total number of options for the user to pick from
+ * @param {*} handleOption - when user selects an option, call respective handle options method in Ranking main component
+ * @param {*} currrentValue - current number the user has this option ranked at
+ * @returns dropdown and label for the given option
+ */
 const RankingEntry = (option, length, handleOption, currrentValue) => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
 
@@ -26,9 +34,11 @@ const RankingEntry = (option, length, handleOption, currrentValue) => {
           className="tw-w-[6rem] tw-flex tw-justify-between tw-items-center"
           caret
         >
+          {/*\u00A0 is a blank character to push the drop down caret to the right*/}
           {currrentValue == 0 ? "\u00A0" : currrentValue}
         </DropdownToggle>
         <DropdownMenu>
+          {/*Create a x number of options for user to rank in the dropdown */}
           {Array.from({ length: length }, (_, i) => i + 1).map((number) => (
             <DropdownItem
               key={number}
@@ -44,9 +54,13 @@ const RankingEntry = (option, length, handleOption, currrentValue) => {
 };
 
 const RankingQuestion = (props) => {
+  //Both are used in order to ensure mutual exculivity between a value and it's key
+  //These are answers in {option: ranking} eg: {"Option11": 2}
   const [selectedAnswers, setSelectedAnswers] = useState({});
+  //These are the answers in the inverted order {ranking: option} eg {2: "Option1"}
   const [availableAnswers, setAvailableAnswers] = useState({});
 
+  //sets the base value of each hashmap. for selcted answers 0 is the defalut value, and for available answers "" is the default
   useEffect(() => {
     const selectedOptions = {};
     const availableOptions = {};
@@ -58,19 +72,24 @@ const RankingQuestion = (props) => {
     setAvailableAnswers(availableOptions);
   }, [props.options.length]);
 
+  //anytime selected answers are updated, notify the registered observer
   useEffect(() => {
     props.updatedSelectedAnswers?.(selectedAnswers);
   }, [selectedAnswers]);
 
+  //handles selection to ensure mutal exclusivity
   const handleSelection = (rankingNumber, option) => {
     const prevSelectedAnswer = selectedAnswers[option];
     const prevAvailableAnswer = availableAnswers[rankingNumber];
+
+    //if current ranking is already taken, remove is
     if (prevAvailableAnswer != 0) {
       setSelectedAnswers((prevState) => ({
         ...prevState,
         [prevAvailableAnswer]: 0,
       }));
     }
+    //if current option is already taken, remove it
     if (prevSelectedAnswer != "") {
       setAvailableAnswers((prevState) => ({
         ...prevState,
