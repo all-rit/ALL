@@ -14,14 +14,18 @@ const RankingEntry = (option, length, handleOption, currrentValue) => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
 
   return (
-    <>
+    <div className="tw-flex tw-justify-between">
       <Label className="mx-2 fw-bold tw-body-text">{option}</Label>
       <Dropdown
         isOpen={dropDownOpen}
         toggle={() => setDropDownOpen((prevState) => !prevState)}
         className="tw-body-text"
       >
-        <DropdownToggle color={"light"} className="tw-w-[5rem] " caret>
+        <DropdownToggle
+          color={"light"}
+          className="tw-w-[6rem] tw-flex tw-justify-between tw-items-center"
+          caret
+        >
           {currrentValue == 0 ? "\u00A0" : currrentValue}
         </DropdownToggle>
         <DropdownMenu>
@@ -35,7 +39,7 @@ const RankingEntry = (option, length, handleOption, currrentValue) => {
           ))}
         </DropdownMenu>
       </Dropdown>
-    </>
+    </div>
   );
 };
 
@@ -85,7 +89,7 @@ const RankingQuestion = (props) => {
 
   return (
     <Form>
-      <FormGroup className="tw-grid tw-grid-cols-3">
+      <FormGroup className="tw-grid tw-grid-cols-1 tw-gap-10 tw-max-w-[25%] tw-mx-auto tw-text-left">
         {props.options.map((option) => (
           <div key={option}>
             {RankingEntry(
