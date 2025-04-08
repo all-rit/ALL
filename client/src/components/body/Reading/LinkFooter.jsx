@@ -9,7 +9,7 @@ import React from "react";
 const LinkFooter = ({ data }) => {
   return (
     <>
-      <h4 className="footerlink tw-body-text tw-text-[1.5rem]">
+      <h4 className="footerlink tw-body-text xs:tw-text-xs md:tw-text-[1.125rem] tw-leading-snug">
         For more information, please visit the following websites:
       </h4>
       <div className="link-footer">

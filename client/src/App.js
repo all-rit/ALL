@@ -169,7 +169,7 @@ const App = () => {
             <div className={"tw-body-text tw-max-h-[40rem]"}> Loading... </div>
           }
         >
-          <div className="appBody tw-min-h-[40rem] tw-relative tw-gap-x-5 tw-mb-5 xs:tw-mt-[6rem] md:tw-mt-[8rem]">
+          <div className="appBody tw-min-h-[40rem] tw-relative tw-mb-5 xs:tw-mt-[6rem] md:tw-mt-[8rem]">
             <div className={"tw-relative"}>
               {lab !== 0 && (
                 <div
@@ -191,13 +191,15 @@ const App = () => {
               )}
 
               {lab !== 0 ? (
-                <div className={"tw-flex tw-p-6"}>
+                <div className={"tw-flex tw-py-6"}>
                   <div
-                    className={"tw-grid tw-grid-cols-12 tw-z-10 tw-absolute"}
+                    className={
+                      "tw-grid tw-z-10 tw-absolute tw-w-full tw-px-6 tw-gap-x-3"
+                    }
                   >
                     <div
                       className={
-                        "tw-mx-6 tw-flex tw-col-start-1 tw-col-span-3  tw-max-h-[40rem]"
+                        "tw-flex tw-col-start-1 tw-col-span-1 tw-max-h-[40rem]"
                       }
                     >
                       <NavigationPane
@@ -207,7 +209,7 @@ const App = () => {
                     </div>
                     <div
                       className={
-                        "tw-flex-row xs:tw-col-start-1 md:tw-col-start-4 xs:tw-col-span-12 md:tw-col-span-8 tw-bg-white shadow tw-rounded-xl tw-mx-6 tw-p-6 tw-text-center xs:tw-max-h-[30rem] md:tw-max-h-[40rem] tw-overflow-y-scroll"
+                        "tw-flex-row xs:tw-col-start-1 md:tw-col-start-2 xs:tw-col-span-12 tw-p-4 md:tw-col-span-9 tw-bg-white shadow tw-border-solid tw-border-b-0 tw-border-l-0 tw-rounded-tr-xl tw-rounded-bl-xl tw-border-t-primary-blue tw-border-r-primary-blue tw-border-[.5rem] tw-text-center tw-max-h-[40rem] tw-overflow-y-hidden"
                       }
                     >
                       {renderLabs()}
