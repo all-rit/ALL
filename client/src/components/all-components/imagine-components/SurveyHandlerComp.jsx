@@ -221,6 +221,16 @@ const SurveyHandler = (props) => {
     setSelectedAnswers(tempAnswers);
   }
 
+  function rankingUpdate(updatedRankingAnswers) {
+    setSelectedAnswers((prevState) => {
+      const updatedState = [...prevState];
+      updatedState[currentQuestionCursor] = updatedRankingAnswers;
+      console.log(updatedState);
+      return updatedState;
+    });
+    setDisableNext(false);
+  }
+
   return (
     <>
       {!surveyComplete ? (
@@ -238,6 +248,7 @@ const SurveyHandler = (props) => {
           onComplete={() => onComplete(type)}
           isUnderAge={isUnderAge}
           avatar={questions[currentQuestionCursor].avatar}
+          rankingUpdate={rankingUpdate}
         ></Survey>
       ) : (
         <div className="flex !tw-justify-center items-center">

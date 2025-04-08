@@ -5,6 +5,7 @@ import AnswerOption from "./AnswerOption";
 import Likert from "./Likert";
 import Avatar from "avataaars";
 import ImagineService from "src/services/ImagineService";
+import RankingQuestion from "./Ranking";
 
 function Survey(props) {
   //If you need to display an avatar check below ;)
@@ -61,6 +62,11 @@ function Survey(props) {
       </div>
       {props.questionType == "likert" ? (
         <Likert onAnswerSelected={props.onAnswerSelected} />
+      ) : props.questionType == "ranking" ? (
+        <RankingQuestion
+          options={props.answerOptions}
+          updatedSelectedAnswers={props.rankingUpdate}
+        />
       ) : (
         <ul className="answerOptions tw-grid tw-grid-cols-2 tw-body-text">
           {props.answerOptions.map(renderAnswerOptions)}
@@ -105,6 +111,7 @@ Survey.propTypes = {
   onComplete: PropTypes.func,
   isUnderAge: PropTypes.bool.isRequired,
   avatar: PropTypes.string,
+  rankingUpdate: PropTypes.func.isRequired,
 };
 
 export default Survey;

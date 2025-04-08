@@ -1,5 +1,11 @@
 const preSurveyQuestions = [
   {
+    question:
+      "Rank the following items in order of how important you view them in a software application",
+    answers: ["Security", "Software fairness", "Affordability", "Efficiency"],
+    type: "ranking",
+  },
+  {
     question: "What is your age range?",
     answers: [
       {
@@ -81,17 +87,6 @@ const preSurveyQuestions = [
       },
     ],
     type: "multiChoice",
-  },
-  {
-    question:
-      "Rank the following items in order of how important you view them in a software application",
-    answers: [
-      {
-        index: "0",
-        content: "Waiting on ranking component ...",
-      },
-    ],
-    type: "singleChoice",
   },
 ];
 

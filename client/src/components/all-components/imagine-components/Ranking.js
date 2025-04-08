@@ -21,8 +21,8 @@ const RankingEntry = (option, length, handleOption, currrentValue) => {
         toggle={() => setDropDownOpen((prevState) => !prevState)}
         className="tw-body-text"
       >
-        <DropdownToggle color={"light"} caret>
-          {currrentValue == 0 ? "" : currrentValue}
+        <DropdownToggle color={"light"} className="tw-w-[5rem] " caret>
+          {currrentValue == 0 ? "\u00A0" : currrentValue}
         </DropdownToggle>
         <DropdownMenu>
           {Array.from({ length: length }, (_, i) => i + 1).map((number) => (
@@ -54,15 +54,13 @@ const RankingQuestion = (props) => {
     setAvailableAnswers(availableOptions);
   }, [props.options.length]);
 
-  console.log(selectedAnswers);
-  console.log(availableAnswers);
+  useEffect(() => {
+    props.updatedSelectedAnswers?.(selectedAnswers);
+  }, [selectedAnswers]);
 
   const handleSelection = (rankingNumber, option) => {
-    console.log(rankingNumber + " | " + option);
     const prevSelectedAnswer = selectedAnswers[option];
-    console.log("\nPrevSelectedAnswer: " + prevSelectedAnswer);
     const prevAvailableAnswer = availableAnswers[rankingNumber];
-    console.log("\nPrevAvailableAnswer: " + prevAvailableAnswer);
     if (prevAvailableAnswer != 0) {
       setSelectedAnswers((prevState) => ({
         ...prevState,
@@ -87,7 +85,6 @@ const RankingQuestion = (props) => {
 
   return (
     <Form>
-      <div>Testing page</div>
       <FormGroup className="tw-grid tw-grid-cols-3">
         {props.options.map((option) => (
           <div key={option}>
@@ -106,6 +103,7 @@ const RankingQuestion = (props) => {
 
 RankingQuestion.propTypes = {
   options: PropTypes.array.isRequired,
+  updatedSelectedAnswers: PropTypes.func,
 };
 
 export default RankingQuestion;
