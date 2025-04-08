@@ -106,6 +106,16 @@ const RankingQuestion = (props) => {
     }));
   };
 
+  useEffect(() => {
+    for (let i = props.options.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = props.options[i];
+      props.options[i] = props.options[j];
+      props.options[j] = temp;
+    }
+    return;
+  }, []);
+
   return (
     <Form>
       <FormGroup className="tw-grid tw-grid-cols-1 tw-gap-10 tw-max-w-[25%] tw-mx-auto tw-text-left">

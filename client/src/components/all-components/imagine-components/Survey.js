@@ -25,7 +25,10 @@ function Survey(props) {
   //checks the avatar prop set through
   useEffect(() => {
     //if no avatar prop, skip and wait until one does exist
-    if (!props.avatar) return;
+    if (!props.avatar) {
+      setDisplayedAvatar(<></>);
+      return;
+    }
     const getUser = async () => {
       const user = await ImagineService.getUserByID(
         sessionStorage.getItem("userID"),

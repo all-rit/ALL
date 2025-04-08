@@ -43,6 +43,12 @@ const PostSurveyQuestions25 = [
     type: "singleChoice",
     avatar: "opponent",
   },
+  {
+    question:
+      "Rank the following items in order of how important you view them in a software application",
+    answers: ["Security", "Software fairness", "Affordability", "Efficiency"],
+    type: "ranking",
+  },
 ];
 
 export default PostSurveyQuestions25;
