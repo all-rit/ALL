@@ -6,8 +6,6 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz";
 import Result from "./Result";
-import ImagineService from "src/services/ImagineService";
-import QuizQuestions from "../../../constants/imagine25/quizQuestions";
 
 /**
  * QuizHandler is react component responsible for tracking users responses
@@ -19,7 +17,7 @@ const QuizHandler = (props) => {
   const { state } = useMainStateContext();
   const [currentLabId, setCurrentLab] = useState(props.labId);
   const [viewCertificate, setViewCertificate] = useState(false);
-  const [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
+  let [currentQuestionCursor, setCurrentQuestionCursor] = useState(0);
   const [questions, setQuestions] = useState([
     {
       question: "Default",
@@ -35,9 +33,9 @@ const QuizHandler = (props) => {
   ]);
   const [answerOption, setAnswerOption] = useState([]);
   // initialized to a empty array to house recorded answers
-  const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [disableNext, setDisableNext] = useState(true);
-  const [result, setResult] = useState({});
+  let [selectedAnswers, setSelectedAnswers] = useState([]);
+  let [disableNext, setDisableNext] = useState(true);
+  let [result, setResult] = useState({});
 
   useEffect(() => {
     setCurrentLab(props.labId);
@@ -53,19 +51,11 @@ const QuizHandler = (props) => {
 
   async function getQuiz() {
     try {
-      if (props.labId !== 25) {
-        const response = await labService.getLabQuiz(props.labId);
-        const { quiz } = response[0];
-        const quizAnswers = quiz[currentQuestionCursor].answers;
-        setQuestions(quiz);
-        setAnswerOption(quizAnswers);
-      } else {
-        /**
-         * Get quiz questions from the constants diretory
-         */
-        setQuestions(QuizQuestions);
-        setAnswerOption(QuizQuestions[currentQuestionCursor].answers);
-      }
+      const response = await labService.getLabQuiz(props.labId);
+      const { quiz } = response[0];
+      const quizAnswers = quiz[currentQuestionCursor].answers;
+      setQuestions(quiz);
+      setAnswerOption(quizAnswers);
     } catch (error) {
       console.error(error);
     }
@@ -81,11 +71,7 @@ const QuizHandler = (props) => {
       let updateCursor = currentQuestionCursor + 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
-      if (selectedAnswers[updateCursor] == null) {
-        setDisableNext(true);
-      } else {
-        setDisableNext(false);
-      }
+      setDisableNext(true);
     }
   }
 
@@ -98,11 +84,7 @@ const QuizHandler = (props) => {
       let updateCursor = currentQuestionCursor - 1;
       setCurrentQuestionCursor(updateCursor);
       setAnswerOption(questions[updateCursor].answers);
-      if (selectedAnswers[updateCursor] == null) {
-        setDisableNext(true);
-      } else {
-        setDisableNext(false);
-      }
+      setDisableNext(true);
     }
   };
 
@@ -200,25 +182,17 @@ const QuizHandler = (props) => {
     console.log(output);
     setResult(countCorrect / questionsTotal);
     if (props.isFinalQuiz) {
-      if (currentLabId !== 25) {
-        UserLabService.complete_quiz(
+      UserLabService.complete_quiz(
+        props.labId,
+        (countCorrect / questionsTotal) * 100,
+        JSON.stringify(output),
+      );
+      if (props.user.firstname !== null) {
+        UserLabService.user_complete_quiz(
+          props.user.userid,
           props.labId,
-          (countCorrect / questionsTotal) * 100,
-          JSON.stringify(output),
+          Math.ceil((countCorrect / questionsTotal) * 100),
         );
-        if (props.user.firstname !== null) {
-          UserLabService.user_complete_quiz(
-            props.user.userid,
-            props.labId,
-            Math.ceil((countCorrect / questionsTotal) * 100),
-          );
-        }
-      } else {
-        /**
-         * Record Quiz Score out of 100
-         */
-        let quizResult = Math.ceil((countCorrect / questionsTotal) * 100);
-        ImagineService.quizScore(props.userID, quizResult, 25);
       }
     } else {
       props.submitData(
@@ -246,6 +220,7 @@ const QuizHandler = (props) => {
       val: 1,
       type: answerValue,
     };
+    console.log("Recorded answers: " + tempSelectedAnswers);
     setSelectedAnswers(tempSelectedAnswers);
     setDisableNext(false);
   }
@@ -258,37 +233,37 @@ const QuizHandler = (props) => {
    */
   function selectMulti(e) {
     const answerValue = e.target.value;
-    setSelectedAnswers((prevSelectedAnswers) => {
-      const newSelectedAnswers = [...prevSelectedAnswers];
-
-      let storageSet = new Set(newSelectedAnswers[currentQuestionCursor] || []);
-
-      if (storageSet.has(answerValue)) {
-        storageSet.delete(answerValue);
-        if (storageSet.size === 0) {
-          setDisableNext(true);
-        }
-      } else {
-        storageSet.add(answerValue);
-        setDisableNext(false);
-      }
-
-      newSelectedAnswers[currentQuestionCursor] = storageSet;
-
-      return newSelectedAnswers;
-    });
+    let tempAnswers = selectedAnswers;
+    let storageSet;
+    // ensures that there is a value stored there
+    if (typeof tempAnswers[currentQuestionCursor] !== "undefined") {
+      // copies over the set
+      storageSet = new Set(tempAnswers[currentQuestionCursor]);
+      // checks to see if the set has the value in it
+      !storageSet.has(answerValue)
+        ? // adds it if it doesn't
+          storageSet.add(answerValue)
+        : // removes it if it does
+          storageSet.delete(answerValue);
+      // assigns the updated set to the array
+      tempAnswers[currentQuestionCursor] = storageSet;
+    } else {
+      // creates an empty set because does not exist in that spot
+      setDisableNext(false);
+      storageSet = new Set();
+      // adds the value
+      storageSet.add(answerValue);
+      // assigns it to the array
+      tempAnswers[currentQuestionCursor] = storageSet;
+    }
+    setSelectedAnswers(tempAnswers);
   }
 
-  console.log(selectedAnswers);
   return (
     <div className={"tw-h-[43rem] tw-pt-10 tw-rounded-lg"}>
       {!props.quizCompleted ? (
         <Quiz
-          selectedAnswer={
-            selectedAnswers[currentQuestionCursor] == null
-              ? {}
-              : selectedAnswers[currentQuestionCursor]
-          }
+          answer={""}
           answerOptions={answerOption}
           disable={disableNext}
           multiChoice={questions[currentQuestionCursor].multiChoice}
@@ -332,7 +307,6 @@ QuizHandler.propTypes = {
     firstname: PropTypes.string,
     userid: PropTypes.number,
   }),
-  userID: PropTypes.string,
   quizCompleted: PropTypes.bool,
   setQuizCompleted: PropTypes.func,
 };
