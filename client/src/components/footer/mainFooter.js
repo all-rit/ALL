@@ -131,6 +131,14 @@ class MainFooter extends Component {
                       >
                         Available under the Federal Government License
                       </p>
+                      <p
+                        className={
+                          "tw-pt-2 tw-body-text tw-text-center tw-font-medium "
+                        }
+                      >
+                        This work is supported by the US National Science
+                        Foundation Under Grants: #1825023, #2111152, #2336941
+                      </p>
                     </div>
                   </div>
                   {/*Right side*/}
@@ -138,8 +146,7 @@ class MainFooter extends Component {
                     <p className="tw-font-poppins tw-font-bold">About Us</p>
                     <p className="tw-body-text">
                       Accessible Learning Labs is an NSF funded initiative aimed
-                      at empowering inclusive software education and fostering
-                      STEM proficiency.
+                      at fostering STEM proficiency.
                     </p>
                     <br />
                     <p className="tw-font-poppins tw-font-bold"> Contact Us</p>
@@ -151,12 +158,10 @@ class MainFooter extends Component {
                     <br />
                     {/*make mail:to link*/}
                     <a
-                      href="mailto:Daniel.Krutz@rit.edu"
+                      href="mailto:dxkvse@rit.edu"
                       className="tw-text-white tw-no-underline"
                     >
-                      <p className="tw-flex tw-justify-left ">
-                        Daniel.Krutz@rit.edu
-                      </p>
+                      <p className="tw-flex tw-justify-left ">dxkvse@rit.edu</p>
                     </a>
                     <div className="tw-flex tw-justify-left tw-pt-4 tw-space-x-4">
                       <svg
@@ -199,7 +204,7 @@ class MainFooter extends Component {
                   <NavItem className="tw-pr-6">
                     <NavLink
                       className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                      href="#"
+                      href="/#"
                     >
                       <p className="tw-text-base tw-text-white tw-font-bold">
                         Home
@@ -219,7 +224,7 @@ class MainFooter extends Component {
                   <NavItem className="px-4 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
                     <NavLink
                       className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                      href="#about"
+                      href="/about-us"
                     >
                       <p className="tw-text-base tw-text-white tw-font-bold">
                         About Us
@@ -229,7 +234,7 @@ class MainFooter extends Component {
                   <NavItem className="px-4 tw-border-solid tw-border-white tw-border-t-0 tw-border-r-0 tw-border-b-0 tw-border-l-2">
                     <NavLink
                       className="tw-flex tw-items-center tw-justify-center tw-p-0"
-                      href="#resources"
+                      href="/EducatorResources"
                     >
                       <p className="tw-text-base tw-text-white tw-font-bold">
                         Educator Resources

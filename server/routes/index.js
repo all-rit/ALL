@@ -284,5 +284,4 @@ router.post('/imagine25/quizScore', async function(req, res) {
   res.send(resp);
 });
 
-
 module.exports = router;

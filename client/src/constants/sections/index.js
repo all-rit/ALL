@@ -5,14 +5,14 @@ const EXPLORE_LABS_BODY =
   "Ready to start learning? Access any of the labs below to learn more about a range of topics from accessibility to sound and speech, color blindness and even labs about algorithmic bias and more.";
 const EXPLORE_LABS_TITLE = "Explore Our Labs";
 const OUR_MISSION_BODY =
-  "Accessible Learning Labs is an NSF funded initiative aimed at empowering inclusive software education and fostering STEM proficiency.";
+  "Accessible Learning Labs is an NSF funded initiative aimed at fostering STEM proficiency.";
 const OUR_MISSION_TITLE = "Our Mission";
 const ABOUT_US_BODY =
-  "Find out more about the team that makes Accessible Learning Labs possible. We're proud of our diverse group of principal investigators and advisors, as well as our fully undergraduate development team!";
+  "Find out more about the team that makes Accessible Learning Labs possible. We're proud of our group of principal investigators and advisors, as well as our undergraduate development team!";
 const ABOUT_US_TITLE = "About Us";
 const WELCOME_TO_ALL_TITLE = "Welcome to Accessible Learning Labs";
 const WELCOME_TO_ALL_BODY =
-  "Accessible Learning Labs is an NSF funded initiative aimed at empowering inclusive software and fostering STEM proficiency. We are dedicated to equipping users with the skills and knowledge to create accessible software solutions. Through our interactive and intuitive labs, we aim to make the internet a more equitable place for everyone.";
+  "Accessible Learning Labs is an NSF funded initiative aimed at fostering STEM proficiency. We are dedicated to equipping users with the skills and knowledge to create software solutions. ";
 const ARE_YOU_AN_EDUCATOR_TITLE = "Are You an Educator?";
 const ARE_YOU_AN_EDUCATOR_BODY =
   "Access the ability to create groups for your students, track their lab progress, date of completion, and quiz grade. Find more information and resources under our Educator Resources page.";

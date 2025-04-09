@@ -83,15 +83,17 @@ function Survey(props) {
       <div className="align-right">
         {props.questionId !== props.questionTotal && !props.isUnderAge ? (
           <button
-            className="btn btn-second text-uppercase  nextButton  "
+            className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[7rem] tw-h-[3rem]
+                      tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl"
             onClick={props.nextQuestion}
             disabled={props.disable}
           >
-            Next Question
+            Next
           </button>
         ) : (
           <button
-            className="btn btn-second text-uppercase  nextButton"
+            className="tw-body-text tw-text-center tw-border-solid tw-border-primary-blue tw-pt-[0.3rem] tw-pr-[0.5rem] tw-w-[7rem] tw-h-[3rem]
+                      tw-border-[0.4rem] tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow tw-bg-[white] tw-text-xl"
             onClick={props.onComplete}
             disabled={props.disable}
           >

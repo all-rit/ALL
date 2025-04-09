@@ -31,8 +31,14 @@ const GettingInvolved = () => {
               <p className={"tw-body-text tw-leading-snug tw-w-full"}>
                 Whether you want to implement our labs in your course
                 curriculum, join the Accessible Learning Labs as a development
-                partner, or anything in between, contact us using the
-                information below!
+                partner, or anything in between, contact us by emailing
+                <a
+                  href="mailto:dxkvse@rit.edu"
+                  className="tw-body-text tw-no-underline"
+                >
+                  {" "}
+                  dxkvse@rit.edu
+                </a>
               </p>
             </div>
             <div

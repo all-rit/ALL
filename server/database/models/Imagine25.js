@@ -31,12 +31,6 @@ module.exports = (sequelize, DataTypes) => {
         opponentAvatar: {
           type: DataTypes.JSON,
         },
-        readingSpeed: {
-          type: DataTypes.INTEGER,
-        },
-        quizScore: {
-          type: DataTypes.INTEGER,
-        },
         gameOutcome: {
           type: DataTypes.TEXT,
         },
