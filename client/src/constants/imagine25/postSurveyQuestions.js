@@ -33,11 +33,11 @@ const PostSurveyQuestions25 = [
     answers: [
       {
         index: "0",
-        content: "The opponent's game AI was harder than mine",
+        content: "The opponent's game version was harder than mine.",
       },
       {
         index: "1",
-        content: "The game was too challenging for the opponent",
+        content: "The game was too challenging for the opponent.",
       },
     ],
     type: "singleChoice",
@@ -45,7 +45,7 @@ const PostSurveyQuestions25 = [
   },
   {
     question:
-      "Rank the following items in order of how important you view them in a software application",
+      "Rank the following items in order of how important you view them in a software application.",
     answers: ["Security", "Software fairness", "Affordability", "Efficiency"],
     type: "ranking",
   },

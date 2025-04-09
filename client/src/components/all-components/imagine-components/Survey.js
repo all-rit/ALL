@@ -37,14 +37,17 @@ function Survey(props) {
       const avatar = user[props.avatar + "Avatar"];
 
       setDisplayedAvatar(
-        <Avatar
-          topType={avatar.hairStyle || "Default"}
-          hairColor={avatar.hairColor || "Default"}
-          clotheColor={avatar.clotheColor || "Default"}
-          skinColor={avatar.skinColor || "Default"}
-          clotheType="ShirtCrewNeck"
-          className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
-        />,
+        <>
+          <Avatar
+            topType={avatar?.hairStyle || "Default"}
+            hairColor={avatar?.hairColor || "Default"}
+            clotheColor={avatar?.clotheColor || "Default"}
+            skinColor={avatar?.skinColor || "Default"}
+            clotheType="ShirtCrewNeck"
+            className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
+          />
+          <div className="tw-pt-3">{props.avatar}</div>
+        </>,
       );
     };
     getUser();

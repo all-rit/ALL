@@ -12,7 +12,7 @@ const Likert = (props) => {
 
   return (
     <div className="tw-my-4">
-      <div className="tw-flex tw-w-[80%] tw-mx-auto tw-justify-center tw-justify-between">
+      <div className="tw-flex tw-w-[80%] tw-mx-auto tw-justify-center tw-justify-between tw-pb-3">
         {options.map((value) => (
           <div key={value}>
             <p className="tw-text-center tw-pr-5">{value}</p>
