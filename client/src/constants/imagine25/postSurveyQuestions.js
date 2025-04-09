@@ -1,28 +1,53 @@
 const PostSurveyQuestions25 = [
   {
     question:
-      "How strongly do you agree with the statement: “It is difficult to create accessible software”?",
+      "I feel frustrated when I come across software that negatively affects certain groups, such as being inaccessible to Deaf users or showing bias toward one gender over another.",
+    type: "likert",
+  },
+  {
+    question: "Witnessing unfairness in a team setting affects me emotionally.",
     type: "likert",
   },
   {
     question:
-      "How strongly do you agree with the statement: “I find planning for accessible software difficult”?",
+      "I find it challenging to relate to experiences of individuals who face difficulties due to unfair practices.",
     type: "likert",
   },
   {
     question:
-      "How strongly do you agree with the statement: “I frequently think about accessibility when designing software”?",
+      "I feel obligated to confront unfair treatment whenever I notice it happening within my group.",
     type: "likert",
   },
   {
     question:
-      "How strongly do you agree with the statement: “I look for accessibility features when I get a new app”?",
+      "The activity increased my interest in issues related to fairness.",
+    type: "likert",
+  },
+  {
+    question: "The activity increased my curiosity related to fairness.",
     type: "likert",
   },
   {
     question:
-      "How strongly do you agree with the statement: “I consider accessibility as a top priority when designing software”?",
-    type: "likert",
+      "Why do you believe that your opponent lost? Select the response that best represents your feelings.",
+    answers: [
+      {
+        index: "0",
+        content: "The opponent's game version was harder than mine.",
+      },
+      {
+        index: "1",
+        content: "The game was too challenging for the opponent.",
+      },
+    ],
+    type: "singleChoice",
+    avatar: "Opponent",
+  },
+  {
+    question:
+      "Rank the following items in order of how important you view them in a software application.",
+    answers: ["Security", "Software fairness", "Affordability", "Efficiency"],
+    type: "ranking",
   },
 ];
 

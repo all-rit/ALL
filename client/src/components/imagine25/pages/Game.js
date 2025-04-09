@@ -38,11 +38,11 @@ const Analysis = () => {
         experiential:
           "Parsing error #343: Cannot Process User's \"" +
           colorMap[user.avatar.clotheColor].toLowerCase() +
-          '" shirt. Your points cannot be added due to error.',
+          '" shirt. Your points cannot be added due to error. Your team has been disqualified.',
         expression:
           "Parsing error #343: Cannot Process Teammate'  \"" +
           colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
-          "\" shirt. Your teammate's points cannot be added due to error.",
+          "\" shirt. Your teammate's points cannot be added due to error. Your team has been disqualified.",
         control:
           "Congrats on winning! You may collect a prize after completeting the post survery for being so awesome sauce.",
       };

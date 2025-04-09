@@ -49,7 +49,7 @@ const preSurveyQuestions = [
   },
   {
     question:
-      "What demographic do you most closely identify with? (Check all that apply)",
+      "What demographic do you most closely identify with? (Check all that apply).",
     answers: [
       {
         index: "0",
@@ -81,6 +81,12 @@ const preSurveyQuestions = [
       },
     ],
     type: "multiChoice",
+  },
+  {
+    question:
+      "Rank the following items in order of how important you view them in a software application.(1 being the most important and 4 being the least important).",
+    answers: ["Security", "Software fairness", "Affordability", "Efficiency"],
+    type: "ranking",
   },
 ];
 

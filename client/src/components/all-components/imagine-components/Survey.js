@@ -1,10 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import QuestionCount from "../../quiz/components/QuestionCount";
 import AnswerOption from "./AnswerOption";
 import Likert from "./Likert";
+import Avatar from "avataaars";
+import ImagineService from "src/services/ImagineService";
+import RankingQuestion from "./Ranking";
 
 function Survey(props) {
+  //any niche questions can be placed here, match the key with the question type in whatever data file you are using
+  const questionTypes = {
+    likert: <Likert onAnswerSelected={props.onAnswerSelected} />,
+    ranking: (
+      <RankingQuestion
+        options={props.answerOptions}
+        updatedSelectedAnswers={props.rankingUpdate}
+      />
+    ),
+  };
+
+  //If you need to display an avatar check below ;)
+  const [displayedAvatar, setDisplayedAvatar] = useState(<></>);
+
+  //checks the avatar prop set through
+  useEffect(() => {
+    //if no avatar prop, skip and wait until one does exist
+    if (!props.avatar) {
+      setDisplayedAvatar(<></>);
+      return;
+    }
+    const getUser = async () => {
+      const user = await ImagineService.getUserByID(
+        sessionStorage.getItem("userID"),
+        25,
+      );
+      const avatar = user[props.avatar.toLowerCase() + "Avatar"];
+
+      setDisplayedAvatar(
+        <>
+          <Avatar
+            topType={avatar?.hairStyle || "Default"}
+            hairColor={avatar?.hairColor || "Default"}
+            clotheColor={avatar?.clotheColor || "Default"}
+            skinColor={avatar?.skinColor || "Default"}
+            clotheType="ShirtCrewNeck"
+            className="xs:tw-h-[125px] xs:tw-w-[125px] md:tw-h-[125px] md:tw-w-[125px] xl:tw-h-[175px] xl:tw-w-[175px]"
+          />
+          <div className="tw-pt-3">{props.avatar}</div>
+        </>,
+      );
+    };
+    getUser();
+  }, [props.avatar]);
+
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
@@ -29,13 +77,12 @@ function Survey(props) {
       <div className={"tw-flex tw-justify-center tw-mt-0"}>
         <hr className={"tw-w-3/4"} />
       </div>
-      {props.questionType == "likert" ? (
-        <Likert onAnswerSelected={props.onAnswerSelected} />
-      ) : (
+      {questionTypes[props.questionType] || (
         <ul className="answerOptions tw-grid tw-grid-cols-2 tw-body-text">
           {props.answerOptions.map(renderAnswerOptions)}
         </ul>
       )}
+      {displayedAvatar}
       <div className="align-right">
         {props.questionId !== props.questionTotal && !props.isUnderAge ? (
           <button
@@ -75,6 +122,8 @@ Survey.propTypes = {
   disable: PropTypes.bool,
   onComplete: PropTypes.func,
   isUnderAge: PropTypes.bool.isRequired,
+  avatar: PropTypes.string,
+  rankingUpdate: PropTypes.func.isRequired,
 };
 
 export default Survey;
