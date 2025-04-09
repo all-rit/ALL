@@ -131,16 +131,5 @@ const ImagineService = {
       },
     );
   },
-
-  quizScore: async (userID, quizScore, year) => {
-    return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + `/imagine${year}/quizScore`,
-      {
-        userID,
-        quizScore,
-        year,
-      },
-    );
-  },
 };
 export default ImagineService;

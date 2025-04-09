@@ -9,8 +9,6 @@ create table imagine25
     "avatar"                     json,
     "teammateAvatar"             json,
     "opponentAvatar"             json,
-    "readingSpeed"               integer,
-    "quizScore"                  integer,
     "gameOutcome"                text,
     primary key (id)
 );
