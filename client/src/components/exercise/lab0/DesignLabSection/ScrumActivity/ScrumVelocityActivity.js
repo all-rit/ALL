@@ -6,12 +6,15 @@ import {
 } from "../../../../../constants/lab0/DesignALab/ScrumVeloDND";
 import React, { useContext, useState } from "react";
 import Lab0Context from "../../Lab0Context";
+import { SECTION_STATUSES } from "../../../../../constants/lab0";
 
 const ScrumVelocityActivity = () => {
   const [success, setSuccess] = useState(false);
 
   const { handleNav } = useContext(Lab0Context);
+  const { section, updateSectionStatus } = useContext(Lab0Context);
   const navigateNext = () => {
+    updateSectionStatus(section, SECTION_STATUSES.SECTION_COMPLETED);
     handleNav("DesignLabEnd");
   };
   return (

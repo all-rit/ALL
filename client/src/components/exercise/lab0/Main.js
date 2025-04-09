@@ -72,7 +72,7 @@ const Main = (props) => {
           <StartExercise path={"/Continue"} verb="Continue" />
 
           {/*// Lab Ideation*/}
-          <DesignLabIntroduction path={"/DesignLabIntro"} />
+          <DesignLabIntroduction path={"/LabIdeation"} />
           <DesignNewCategory path={"/DesignNewCategory"} />
           <DesignSortNewCategory path={"/DesignSortNewCategory"} />
 

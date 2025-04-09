@@ -6,14 +6,17 @@ import {
 } from "../../../../../constants/lab0/DesignALab/ExperientialDND";
 import DragDropGame from "../../../../all-components/DragAndDrop/DragDropGame";
 import Lab0Context from "../../Lab0Context";
+import { SECTION_STATUSES } from "../../../../../constants/lab0";
 
 const CreateExperientialExercise = () => {
   const [success, setSuccess] = useState(false);
+  const { section, updateSectionStatus } = useContext(Lab0Context);
 
   const { handleNav, setExperientialExerciseComplete } =
     useContext(Lab0Context);
 
   const navigateNext = () => {
+    updateSectionStatus(section, SECTION_STATUSES.SECTION_COMPLETED);
     handleNav("WireframeIntro");
   };
 

@@ -6,11 +6,14 @@ import HTTPRequest from "../../../../../assets/images/lab0/Lab0-HTTPRequestCompo
 import DragAndDrop from "../../../../../assets/images/lab0/Lab0-DragAndDropComponent.PNG";
 import labButton from "../../../../../assets/images/lab0/Lab0-LabButtonComponent.PNG";
 import fauxFigma from "../../../../../assets/images/lab0/Lab0-FigmaComponent.PNG";
+import { SECTION_STATUSES } from "../../../../../constants/lab0";
 
 const WireframeComponents = () => {
   const { handleNav } = useContext(lab0Context);
+  const { section, updateSectionStatus } = useContext(lab0Context);
 
   const navigateNext = () => {
+    updateSectionStatus(section, SECTION_STATUSES.SECTION_COMPLETED);
     handleNav("ScrumIntro");
   };
 

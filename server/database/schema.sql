@@ -71,9 +71,10 @@ create table imagine23
 create type enum_lab0_progress_category as enum ('DESIGN', 'BACKEND', 'FRONTEND');
 
 create type enum_lab0_progress_section as enum (
-    'LabIdea',
-    'ExperientialExercise',
-    'SprintPlanning',
+    'LabIdeation',
+    'LabDecision',
+    'WireframeIntro',
+    'ScrumIntro',
     'LabDataRepair', 
     'SchemaRepair', 
     'ServiceControllerRepair', 
@@ -494,7 +495,7 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
                 "header": "History of Accessible Learning Labs",
                 "type": "",
                 "content": [
-                    "Accessible Learning Labs, in conjunction with Rochester Institute of Technology and the National Science Foundation, was created in 2019 by principal investors Daniel Krutz and Samuel Malachowsky with the purpose of spreading awareness of the importance of accessible software on the web, as well as the crucial role that software developers play in designing and creating a more accessible, usable internet that anyone can use. Comprised of a fully undergraduate development team, Accessible Learning Labs plays a crucial part in not only creating a better future for the web, but creating more conscientious software engineers that know the importance of accessibility. Since Lab 1 - Accessibility to Sound and Speech released in 2019, Accessible Learning Labs has released 11 more labs, with topics ranging from Accessibility Cognitive Disabilities to AI in Cybersecurity, with more in the works with each passing semester."
+                    "Accessible Learning Labs, in conjunction with Rochester Institute of Technology and the National Science Foundation, was created in 2019 by principal investigators Daniel Krutz and Samuel Malachowsky with the purpose of spreading awareness of the importance of accessible software on the web, as well as the crucial role that software developers play in designing and creating a more accessible, usable internet that anyone can use. Comprised of a fully undergraduate development team, Accessible Learning Labs plays a crucial part in not only creating a better future for the web, but creating more conscientious software engineers that know the importance of accessibility. Since Lab 1 - Accessibility to Sound and Speech released in 2019, Accessible Learning Labs has released 11 more labs, with topics ranging from Accessibility to Cognitive Disabilities to AI in Cybersecurity, with more in the works with each passing semester."
                 ]
             },
             {
@@ -518,7 +519,7 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
                 "header": "Our Tech Stack",
                 "type": "",
                 "content": [
-                    "Accessible Learning Labs is a JavaScript-focused application. As a result, the frontend of the project is developed using ReactJS, an industry-standard technology for developing dynamic and highly functional user interfaces. The backend of the project is developed using ExpressJS, an easy-to-understand JavaScript library that provides server functionality using the JavaScript language. Finally, to store data, Accessible Learning Labs employs a PostgreSQL-based database structure."
+                    "Accessible Learning Labs is a Express and Node.js focused application. As a result, the frontend of the project is developed using ReactJS, an industry-standard technology for developing dynamic and highly functional user interfaces. The backend of the project is developed using ExpressJS, an easy-to-understand JavaScript library that provides server functionality using the JavaScript language. Finally, to store data, Accessible Learning Labs employs a PostgreSQL-based database structure."
                 ]
             },
             {

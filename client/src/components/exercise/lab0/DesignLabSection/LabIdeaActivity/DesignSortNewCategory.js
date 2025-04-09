@@ -7,9 +7,11 @@ import {
   previous_Bank,
   correctAssignmentsNewCategory,
 } from "../../../../../constants/lab0/DesignALab/LabCategoryDND";
+import { SECTION_STATUSES } from "../../../../../constants/lab0";
 
 const DesignSortNewCategory = () => {
   const { newCategoryName, newLabTopics, handleNav } = useContext(Lab0Context);
+  const { section, updateSectionStatus } = useContext(Lab0Context);
 
   const [success, setSuccess] = useState(false);
   const [cols, setCols] = useState(() => structuredClone(columns_new_category));
@@ -26,6 +28,7 @@ const DesignSortNewCategory = () => {
   }, []);
 
   const navigateNext = () => {
+    updateSectionStatus(section, SECTION_STATUSES.SECTION_COMPLETED);
     handleNav("LabDecision");
   };
 
