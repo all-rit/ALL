@@ -4,6 +4,7 @@
   background-image: url("../../images/lab8/Stream_Background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  max-height: 35rem;
 }
 
 .chat-room {

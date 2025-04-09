@@ -56,7 +56,7 @@ const ChatRoom = (props) => {
   }, [moderationStatus]);
 
   return (
-    <div className="chat-room tw-space-y-6 tw-bg-white tw-bg-opacity-80 tw-h-full tw-min-h-[30rem] tw-w-2/5 tw-min-w-[17rem] tw-p-4 tw-overflow-y-auto tw-z-10">
+    <div className="chat-room tw-space-y-6 tw-bg-white tw-bg-opacity-80 tw-h-full tw-min-h-[35rem] tw-max-h-[40rem] tw-w-2/5 tw-min-w-[17rem] tw-p-4 tw-overflow-y-auto tw-z-10">
       {currentMessages.slice(0, currentIndex).map((message) => {
         return (
           <ChatMessage

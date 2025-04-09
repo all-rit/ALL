@@ -4,11 +4,13 @@ import PropTypes from "prop-types";
 import GreenCheck from "../../../assets/images/GreenCheck.webp";
 import RedX from "../../../assets/images/RedX.png";
 import { navigate } from "@reach/router";
-import ALLButton from "../../all-components/ALLButton";
+import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+import Certificate from "./Certificate";
+import ViewCertificateButton from "../../exercise/lab1/components/ViewCertificateButton";
 
 function Result(props) {
   const [detailsOpen, setDetailsOpen] = useState({});
-
+  const [viewCertificate, setViewCertificate] = useState(false);
   const openDetails = (questionId) => {
     setDetailsOpen(detailsOpen === questionId ? null : questionId);
     console.warn(questionId);
@@ -63,7 +65,7 @@ function Result(props) {
         <a
           key={index}
           onClick={() => openDetails(index + 1)}
-          className={`tw-rounded-lg tw-shadow-md tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-font-calibri tw-cursor-pointer ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white tw-rounded-b-none"}`}
+          className={`tw-rounded-lg tw-shadow-md tw-body-text tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-cursor-pointer ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white"}`}
         >
           <div
             className={"tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-body-text"}
@@ -179,33 +181,43 @@ function Result(props) {
   };
 
   return (
-    <div className="tw-flex tw-flex-col tw-align-middle tw-h-[35rem]">
+    <div className="tw-flex tw-flex-col tw-align-middle tw-h-[35rem] tw-overflow-y-scroll tw-py-6">
       <div>
-        <div className="tw-font-bold tw-text-[2rem] tw-mb-[5rem]">
-          <strong className={"tw-shadow-lg tw-rounded-lg tw-p-6"}>
+        <div className="tw-justify-center tw-items-center tw-relative tw-flex tw-py-6">
+          <p className={"tw-rounded-lg tw-text-center tw-title"}>
             Score: {props.quizResult}
-          </strong>
+          </p>
+          <ViewCertificateButton
+            openCertificate={() => setViewCertificate(true)}
+          />
         </div>
         <div
           className={`tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5 tw-my-5`}
         >
           {renderTableData()}
         </div>
-        <div className=" d-flex flex-column justify-content-center tw-pt-12 tw-mb-10">
-          {props.isImagine ? (
+        <div className=" d-flex flex-column justify-content-center">
+          {props.isImagine && (
             <button
               className="btn btn-primary btn-xl text-uppercase  next"
               onClick={handleImagineSurvey}
             >
               Continue to Post-Survey
             </button>
-          ) : (
-            <ALLButton
-              label={"View Certificate"}
-              onClick={() => props.setViewCertificate(true)}
-            />
           )}
         </div>
+        <Modal isOpen={viewCertificate} className={"tw-mx-[10%]"}>
+          <ModalBody>
+            <Certificate
+              quizResult={props.quizResult}
+              lab={props.lab}
+              state={props.state}
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={() => setViewCertificate(false)}>Close</Button>
+          </ModalFooter>
+        </Modal>
       </div>
     </div>
   );
@@ -217,7 +229,11 @@ Result.propTypes = {
   isImagine: PropTypes.bool,
   lab: PropTypes.number,
   quizQuestions: PropTypes.array,
-  setViewCertificate: PropTypes.func,
+  state: PropTypes.shape({
+    main: PropTypes.shape({
+      user: PropTypes.number,
+    }),
+  }),
 };
 
 export default Result;
