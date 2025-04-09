@@ -41,7 +41,7 @@ const PostSurveyQuestions25 = [
       },
     ],
     type: "singleChoice",
-    avatar: "opponent",
+    avatar: "Opponent",
   },
   {
     question:

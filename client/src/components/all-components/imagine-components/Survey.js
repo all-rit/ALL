@@ -34,7 +34,7 @@ function Survey(props) {
         sessionStorage.getItem("userID"),
         25,
       );
-      const avatar = user[props.avatar + "Avatar"];
+      const avatar = user[props.avatar.toLowerCase() + "Avatar"];
 
       setDisplayedAvatar(
         <>
