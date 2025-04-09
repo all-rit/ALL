@@ -4,12 +4,24 @@ import {
   initialBank,
   initialColumns,
 } from "../../../../../constants/lab0/DesignALab/ScrumVeloDND";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Lab0Context from "../../Lab0Context";
 import { SECTION_STATUSES } from "../../../../../constants/lab0";
 
 const ScrumVelocityActivity = () => {
   const [success, setSuccess] = useState(false);
+
+  const [cols, setCols] = useState(() => structuredClone(initialColumns));
+  const [bank, setBank] = useState(() => structuredClone(initialBank));
+  const [correct, setCorrect] = useState(() =>
+    structuredClone(correctAssignments),
+  );
+
+  useEffect(() => {
+    setCols(structuredClone(initialColumns));
+    setBank(structuredClone(initialBank));
+    setCorrect(structuredClone(correctAssignments));
+  }, []);
 
   const { handleNav } = useContext(Lab0Context);
   const { section, updateSectionStatus } = useContext(Lab0Context);
@@ -48,9 +60,9 @@ const ScrumVelocityActivity = () => {
             "tw-p-2 tw-my-1 tw-rounded tw-shadow-sm tw-cursor-grab tw-h-[17rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black"
           }
           msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-3 tw-my-3 tw-text-white tw-rounded-md`}
-          cols={initialColumns}
-          initialBank={initialBank}
-          correctAssignments={correctAssignments}
+          cols={cols}
+          initialBank={bank}
+          correctAssignments={correct}
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}

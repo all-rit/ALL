@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import DragDropGame from "../../../../all-components/DragAndDrop/DragDropGame";
 import {
   initialColumns,
@@ -9,6 +9,19 @@ import Lab0Context from "../../Lab0Context";
 
 const ScrumBoardActivity = () => {
   const [success, setSuccess] = useState(false);
+
+  const [cols, setCols] = useState(() => structuredClone(initialColumns));
+  const [bank, setBank] = useState(() => structuredClone(initialBank));
+  const [correct, setCorrect] = useState(() =>
+    structuredClone(correctAssignments),
+  );
+
+  // Handles if user goes to another page, reset objects
+  useEffect(() => {
+    setCols(structuredClone(initialColumns));
+    setBank(structuredClone(initialBank));
+    setCorrect(structuredClone(correctAssignments));
+  }, []);
 
   const { handleNav } = useContext(Lab0Context);
   const navigateNext = () => {
@@ -41,9 +54,9 @@ const ScrumBoardActivity = () => {
             "tw-flex tw-gap-2 tw-min-h-[5rem] tw-min-w-[20rem] tw-mb-3 tw-w-full tw-p-4 tw-border-dashed tw-border-[#c3c3c3] tw-border-[.5px] tw-rounded-lg"
           }
           msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-3 tw-my-3 tw-text-white tw-rounded-md`}
-          cols={initialColumns}
-          initialBank={initialBank}
-          correctAssignments={correctAssignments}
+          cols={cols}
+          initialBank={bank}
+          correctAssignments={correct}
           setSuccess={setSuccess}
           sucess={success}
           handleNav={navigateNext}

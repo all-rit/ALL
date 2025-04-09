@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   initialBank,
   initialColumns,
@@ -11,6 +11,19 @@ import { SECTION_STATUSES } from "../../../../../constants/lab0";
 const CreateExperientialExercise = () => {
   const [success, setSuccess] = useState(false);
   const { section, updateSectionStatus } = useContext(Lab0Context);
+
+  const [cols, setCols] = useState(() => structuredClone(initialColumns));
+  const [bank, setBank] = useState(() => structuredClone(initialBank));
+  const [correct, setCorrect] = useState(() =>
+    structuredClone(correctAssignments),
+  );
+
+  // Handles if user goes to another page, reset objects
+  useEffect(() => {
+    setCols(structuredClone(initialColumns));
+    setBank(structuredClone(initialBank));
+    setCorrect(structuredClone(correctAssignments));
+  }, []);
 
   const { handleNav, setExperientialExerciseComplete } =
     useContext(Lab0Context);
@@ -55,9 +68,9 @@ const CreateExperientialExercise = () => {
           "tw-p-2 tw-my-1 tw-w-full tw-rounded tw-shadow-sm tw-shadow-black tw-cursor-grab tw-min-h-[9rem] tw-text-left tw-text-white tw-body-text tw-w-40 tw-text-black tw-bg-primary-blue"
         }
         msgStyle={`${!success ? "tw-bg-error" : "tw-bg-success"} tw-p-4 tw-my-1 tw-text-white tw-rounded-md tw-mb-3`}
-        cols={initialColumns}
-        initialBank={initialBank}
-        correctAssignments={correctAssignments}
+        cols={cols}
+        initialBank={bank}
+        correctAssignments={correct}
         setSuccess={setSuccess}
         success={success}
         handleNav={navigateNext}
