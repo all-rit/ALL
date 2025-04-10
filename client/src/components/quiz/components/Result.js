@@ -65,7 +65,7 @@ function Result(props) {
         <a
           key={index}
           onClick={() => openDetails(index + 1)}
-          className={`tw-rounded-lg tw-shadow-md tw-body-text tw-my-2 tw-flex tw-flex-col tw-w-3/4 tw-cursor-pointer ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white"}`}
+          className={`tw-rounded-lg tw-shadow-md tw-body-text tw-my-2 tw-w-10/12 tw-flex tw-flex-col tw-cursor-pointer tw-border-solid tw-border-[0.5px] tw-border-[#eee] ${detailsOpen === index + 1 && "tw-bg-primary-blue tw-text-white"}`}
         >
           <div
             className={"tw-text-left tw-px-6 tw-pt-3 tw-font-bold tw-body-text"}
@@ -181,9 +181,9 @@ function Result(props) {
   };
 
   return (
-    <div className="tw-flex tw-flex-col tw-align-middle tw-h-[35rem] tw-overflow-y-scroll tw-py-6">
-      <div>
-        <div className="tw-justify-center tw-items-center tw-relative tw-flex tw-py-6">
+    <div className="tw-flex tw-flex-col tw-align-middle tw-h-[35rem] tw-py-6">
+      <div className={"tw-flex tw-justify-center tw-flex-col tw-items-center"}>
+        <div className="tw-justify-between tw-items-center tw-flex tw-py-6 tw-w-3/4">
           <p className={"tw-rounded-lg tw-text-center tw-title"}>
             Score: {props.quizResult}
           </p>
@@ -192,7 +192,7 @@ function Result(props) {
           />
         </div>
         <div
-          className={`tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-white tw-rounded-xl tw-py-5 tw-my-5`}
+          className={`tw-w-full tw-flex tw-flex-col tw-items-center  tw-bg-white tw-rounded-xl tw-py-5 tw-my-5 tw-overflow-y-scroll tw-h-[25rem]`}
         >
           {renderTableData()}
         </div>
