@@ -23,23 +23,23 @@ class Results extends Component {
         <div className="">
           <p className="">Stats</p>
           <div className={"tw-grid tw-grid-cols-2 tw-gap-3 tw-w-full tw-my-6"}>
-            <div className="result tw-bg-secondary-gray tw-py-3 tw-px-6 tw-rounded-lg">
+            <div className="result tw-bg-primary-blue tw-text-white tw-p-6 tw-rounded-lg">
               <span className="tw-font-bold">Final Score: {score}</span>
             </div>
 
-            <div className="result tw-bg-secondary-gray tw-py-3 tw-px-6 tw-rounded-lg">
+            <div className="result tw-bg-primary-blue tw-text-white tw-p-6 tw-rounded-lg">
               <span className="result__category">
                 Correct Answers: {correctAnswers}
               </span>
             </div>
 
-            <div className="result tw-bg-secondary-gray tw-py-3 tw-px-6 tw-rounded-lg">
+            <div className="result tw-bg-primary-blue tw-text-white tw-p-6 tw-rounded-lg">
               <span className="result__category">
                 Incorrect Answers: {incorrectAnswers}
               </span>
             </div>
 
-            <div className="result tw-bg-secondary-gray tw-py-3 tw-px-6 tw-rounded-lg">
+            <div className="result tw-bg-primary-blue tw-text-white tw-p-6 tw-rounded-lg">
               <span className="result__category">Rounds: {roundNumber}</span>
             </div>
           </div>
