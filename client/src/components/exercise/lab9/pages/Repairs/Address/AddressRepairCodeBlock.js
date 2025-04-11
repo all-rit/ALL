@@ -32,21 +32,21 @@ const AddressRepairCodeBlock = (props = {}) => {
         <Tab /> <ReactText> const addressFormats = &#123; </ReactText>
       </CodeLine>
 
-      {inputs.map((country, index) => (
-        <div key={index}>
+      {inputs.map((input) => (
+        <div key={input.id}>
           {/* line 1 */}
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
               {" "}
-              &ldquo;{country.countryVariable}&rdquo; = &#123;
+              &ldquo;{input.countryVariable}&rdquo; = &#123;
             </ReactText>
           </CodeLine>
 
           {/* line 2 */}
           <CodeLine>
             <MultiTab numberOfTabs={3} />
-            <CommentText>{country.comment}</CommentText>
+            <CommentText>{input.comment}</CommentText>
           </CodeLine>
 
           {/* line 3 */}
@@ -54,14 +54,14 @@ const AddressRepairCodeBlock = (props = {}) => {
             <MultiTab numberOfTabs={3} />
             <JSONText>&ldquo;addressFormat&rdquo; :</JSONText>
             <JSONText>&ldquo;</JSONText>
-            {country.userInput ? (
+            {input.userInput ? (
               <CodeBlockInput
-                value={country.userInput}
+                value={input.userInput}
                 attributes={{
                   onChange: (event) => {
-                    userInput(country.id, event.target.value);
+                    userInput(input.id, event.target.value);
                   },
-                  name: country.countryName,
+                  name: input.countryName,
                   type: "text",
                   placeholder: "Enter Address Format Here",
                   // overwrite styling to make input wider
@@ -72,9 +72,9 @@ const AddressRepairCodeBlock = (props = {}) => {
               <CodeBlockInput
                 attributes={{
                   onChange: (event) => {
-                    userInput(country.id, event.target.value);
+                    userInput(input.id, event.target.value);
                   },
-                  name: country.countryName,
+                  name: input.countryName,
                   type: "text",
                   placeholder: "Enter Address Format Here",
                   className: "p-1 tw-w-[34rem] code_editor__input",
@@ -83,12 +83,12 @@ const AddressRepairCodeBlock = (props = {}) => {
             )}
             <JSONText>&rdquo;</JSONText>
           </CodeLine>
-          {!validInputs[index] && !isFirst && (
+          {!validInputs[input.id] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
                 Error in form submission. Please type &quot;
-                {country.correct_expression}&quot; and resubmit.
+                {input.correct_expression}&quot; and resubmit.
               </ErrorText>
             </CodeLine>
           )}
