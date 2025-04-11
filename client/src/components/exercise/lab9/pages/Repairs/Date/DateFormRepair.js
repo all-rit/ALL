@@ -31,31 +31,31 @@ const DateFormRepair = (props = {}) => {
         <Tab /> <ReactText> const dates = &#123; </ReactText>
       </CodeLine>
 
-      {inputs.map((country, index) => (
+      {inputs.map((input, index) => (
         <div key={index}>
           <CodeLine>
             <MultiTab numberOfTabs={2} />
             <ReactText>
               {" "}
-              &ldquo;{country.countryVariable}&rdquo; = &#123;
+              &ldquo;{input.countryVariable}&rdquo; = &#123;
             </ReactText>
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={3} />
-            <CommentText>{country.comment}</CommentText>
+            <CommentText>{input.comment}</CommentText>
           </CodeLine>
           <CodeLine>
             <MultiTab numberOfTabs={3} />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
             <JSONText>&ldquo;</JSONText>
-            {country.userInput ? (
+            {input.userInput ? (
               <CodeBlockInput
-                value={country.userInput}
+                value={input.userInput}
                 attributes={{
                   onChange: (event) => {
-                    userInput(country.id, event.target.value);
+                    userInput(input.id, event.target.value);
                   },
-                  name: country.name,
+                  name: input.name,
                   type: "text",
                   placeholder: "Enter Dateform Here",
                 }}
@@ -64,9 +64,9 @@ const DateFormRepair = (props = {}) => {
               <CodeBlockInput
                 attributes={{
                   onChange: (event) => {
-                    userInput(country.id, event.target.value);
+                    userInput(input.id, event.target.value);
                   },
-                  name: country.name,
+                  name: input.name,
                   type: "text",
                   placeholder: "Enter Dateform Here",
                 }}
@@ -74,12 +74,12 @@ const DateFormRepair = (props = {}) => {
             )}
             <JSONText>&rdquo;</JSONText>
           </CodeLine>
-          {!validInputs[index] && !isFirst && (
+          {!validInputs[input.id] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
                 Error in form submission. Please enter &quot;
-                {country.correct_expression}&quot; and resubmit.
+                {input.correct_expression}&quot; and resubmit.
               </ErrorText>
             </CodeLine>
           )}
