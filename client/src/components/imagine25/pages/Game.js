@@ -138,6 +138,8 @@ const Game = () => {
 
   const [seconds, setSeconds] = useState(60);
 
+  const [teammateId, setTeammateId] = useState(null);
+
   //Checks the iframe ref to see if anything exists, when the iframe fully loads, immediately focus it
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -170,6 +172,17 @@ const Game = () => {
     }
   }, [iframeRef]);
 
+  useEffect(() => {
+    const fetchTeammateID = async () => {
+      const id = await ImagineService.getTeammate(
+        sessionStorage.getItem("userID"),
+        25,
+      );
+      setTeammateId(id);
+    };
+    fetchTeammateID();
+  }, []);
+
   return (
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
     <div>
@@ -195,7 +208,11 @@ const Game = () => {
           <div>{seconds}</div>
         </div>
       </div>
-      <TeammateVideo teammateId={0} messageShown={false} />
+      {gameActive ? (
+        <TeammateVideo teammateId={teammateId} messageShown={false} />
+      ) : (
+        <TeammateVideo teammateId={teammateId} messageShown={true} />
+      )}
     </div>
   );
 };

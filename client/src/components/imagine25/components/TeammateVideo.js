@@ -12,6 +12,8 @@ const TeammateVideo = (props) => {
   );
 
   useEffect(() => {
+    if (teammateId === null) return;
+
     const updateVideoSource = async () => {
       if (messageShown) {
         const group = await ImagineService.getGroup(
@@ -26,7 +28,7 @@ const TeammateVideo = (props) => {
     };
 
     updateVideoSource();
-  });
+  }, [teammateId, messageShown]);
 
   const buttonSize = "tw-w-16 tw-mx-auto";
 

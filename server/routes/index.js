@@ -267,6 +267,19 @@ router.get('/imagine25/user/:userID', async function(req, res) {
   const imagineUser = await ImagineController.getUserByID(req);
   res.json(imagineUser);
 });
+
+router.get('/imagine25/getGroup/:userID', async function(req, res) {
+  req.params.year = 25;
+  const imagineUser = await ImagineController.getGroup(req);
+  res.json(imagineUser);
+});
+
+router.get('/imagine25/getTeammate/:userID', async function(req, res) {
+  req.params.year = 25;
+  const imagineUser = await ImagineController.getTeammate(req);
+  res.json(imagineUser);
+});
+
 // Imagine 2025
 router.post('/imagine25/preSurvey', async function(req, res) {
   const resp = await ImagineController.preSurvey(req, res);

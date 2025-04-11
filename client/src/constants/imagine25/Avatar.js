@@ -40,28 +40,32 @@ const avatarSelections = {
 
 const teammateAvatars = [
   {
-    hairStyle: "ShortHairShortFlat",
+    hairStyle: "LongHairStraight",
     hairColor: "Blonde",
     clotheColor: "Red",
     skinColor: "Pale",
+    id: 3,
   },
   {
-    hairStyle: "LongHairCurly",
-    hairColor: "SilverGray",
-    clotheColor: "PastelBlue",
-    skinColor: "Pale",
+    hairStyle: "LongHairStraight",
+    hairColor: "Black",
+    clotheColor: "Black",
+    skinColor: "Black",
+    id: 0,
   },
   {
     hairStyle: "ShortHairShortFlat",
     hairColor: "Black",
     clotheColor: "Black",
-    skinColor: "Brown",
+    skinColor: "Black",
+    id: 1,
   },
   {
-    hairStyle: "LongHairStraight",
-    hairColor: "Black",
-    clotheColor: "PastelBlue",
-    skinColor: "Black",
+    hairStyle: "ShortHairShortFlat",
+    hairColor: "Brown",
+    clotheColor: "Black",
+    skinColor: "Pale",
+    id: 2,
   },
 ];
 

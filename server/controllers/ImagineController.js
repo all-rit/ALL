@@ -84,6 +84,16 @@ const getGroup = async (req, res) => {
   }
 };
 
+const getTeammate = async (req, res) => {
+  try {
+    const {year, userID} = req.params;
+    const teammate = await ImagineService.getTeammate(userID, year);
+    return teammate;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getUserByID = async (req, res) => {
   // const { userID, avatar, year } = req.body;
   try {
@@ -206,4 +216,5 @@ module.exports = {
   postTeammateAvatar,
   postOpponentAvatar,
   getGroup,
+  getTeammate,
 };
