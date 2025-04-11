@@ -34,17 +34,6 @@ const FogIndexCalculationData = {
       validate_expression: `countSyllables\\(word\\) > 3`,
       correct_expression: `countSyllables(word) > 3`,
     },
-    {
-      // TODO: REMOVE THIS ENTRY (TESTING)
-      id: "1",
-      fileId: 1,
-      key: "complexWordInput1",
-      variableName: "complexWordCount",
-      comment: `// Wow! This comment exists in another file... that's pretty cool and awesome.`,
-      userInput: "",
-      validate_expression: `countSyllables\\(word\\) > 3`,
-      correct_expression: `countSyllables(word) > 3`,
-    },
   ],
 };
 export default FogIndexCalculationData;

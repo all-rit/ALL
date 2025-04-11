@@ -36,11 +36,6 @@ const ComplexWordCountRepair = (props) => {
           fileName: "FogIndexCalculation.js",
           implementation: ComplexWordCountRepairImplementation,
         },
-        {
-          fileId: 1,
-          fileName: "AnotherTab.js",
-          implementation: ComplexWordCountRepairImplementation,
-        },
       ]}
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/InformationLetterComplexWordCount`);
