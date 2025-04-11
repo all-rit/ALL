@@ -20,6 +20,7 @@ const DatabaseRepairImplementation = (props = {}) => {
    */
 
   const { inputs, userInput, validInputs, isFirst } = props;
+  console.log(validInputs[0], validInputs[1]);
   return (
     <>
       <CodeLine>
@@ -79,7 +80,7 @@ const DatabaseRepairImplementation = (props = {}) => {
               )}
               <SQLText>)</SQLText>
             </CodeLine>
-            {!validInputs[index] && !isFirst && (
+            {!validInputs[item.id] && !isFirst && (
               <CodeLine>
                 <MultiTab numberOfTabs={11} />
                 <ErrorText>
@@ -131,7 +132,7 @@ const DatabaseRepairImplementation = (props = {}) => {
                 />
               )}
             </CodeLine>
-            {!validInputs[index] && !isFirst && (
+            {!validInputs[item.id] && !isFirst && (
               <CodeLine>
                 <MultiTab numberOfTabs={11} />
                 <ErrorText>

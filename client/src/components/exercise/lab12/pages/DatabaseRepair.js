@@ -4,7 +4,6 @@ import {
   DATABASE_REPAIR_HEADING,
   EXERCISE_PATH,
   EXERCISE_STATES,
-  REPAIR,
 } from "../../../../constants/lab12";
 import React from "react";
 import Repair from "../../../body/Repair/Repair";
@@ -28,29 +27,22 @@ const DatabaseRepair = () => {
     EXERCISE_STATES.DATABASE_REPAIR,
     IdentityDatabaseData.inputData,
   );
-  const { exercisePromptsState, validInputs, isFirst } = data;
-  const { handleUserInputChange, checkInputValid, fetchRepair, postRepair } =
-    functions;
 
   return (
     <Repair
-      fileName={"schema.sql"}
-      path={`${REPAIR}/${EXERCISE_STATES.DATABASE_REPAIR}`}
+      data={data}
+      functions={functions}
       headingText={DATABASE_REPAIR_HEADING}
-      validateRepair={checkInputValid}
-      fetchRepair={fetchRepair}
-      submitRepair={postRepair}
       repairText={[
         "In this section you will be making changes to the SQL database file that creates the table for our user's data.",
       ]}
-      CodeImplementation={
-        <DatabaseRepairImplementation
-          userInput={handleUserInputChange}
-          identityData={exercisePromptsState}
-          validInputs={validInputs}
-          isFirst={isFirst}
-        />
-      }
+      files={[
+        {
+          fileId: 0,
+          fileName: "schema.sql",
+          implementation: DatabaseRepairImplementation,
+        },
+      ]}
       navigateNext={() => {
         navigate(`${EXERCISE_PATH}/PreCorrectDiploma`);
       }}
