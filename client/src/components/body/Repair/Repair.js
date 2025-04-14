@@ -11,9 +11,20 @@ import CheckIcon from "@mui/icons-material/Check";
  * Repair: is a reusable component that is responsible for
  * allowing for the ability to render and handle new repair pages
  * moving forward. This is a logic and display component that will use props
- * to render and display information to the page
- * @param {Object} props
- * @returns rendered repair page.s
+ * to render and display information to the page.
+ * @param {Object} props.data The data required for this Repair component to work.
+ *                            Exported from hooks like {#link useLabRepair}.
+ *                            Required fields: exercisePromptsState, validInputs, isFirst
+ * @param {Object} props.functions Functions required for this Repair component to work.
+ *                                 Exported from hooks like {#link useLabRepair}.
+ *                                 Required fields: handleUserInputChange, checkInputValid, fetchRepair, postRepair
+ * @param {string} props.headingText The text to be displayed at the top of the repair component in bold.
+ * @param {string} props.repairText The descriptive and instructional text to be displaced under the heading.
+ * @param {Array.<Object>} props.files An array of objects listing the valid file ids, file names, and code blocks
+ *                                     associated with each file.
+ * @param {number} props.files[i].fileId The file id that corresponds with the file id in the constants file for this repair.
+ * @param {number} props.files[i].fileName The display name for this file to be shown when navigating the repair.
+ * @param {JSX.Element} props.files[i].implementation The code block component to use for this specific file.
  */
 const Repair = (props) => {
   const {
@@ -62,10 +73,22 @@ const Repair = (props) => {
     await fetchRepair();
   };
 
+  /**
+   * Performs a visual file change which causes a new file to be
+   * highlighted and switches the code block out beneath it.
+   * @param {number} fileId The new file id to switch to.
+   */
   const handleFileChange = (fileId) => {
+    if (selectedFile === fileId) return;
     setSelectedFile(fileId);
   };
 
+  /**
+   * Retrieves the proper status color for a file given whether
+   * or not it still has invalid inputs within the file by the user.
+   * @param {number} fileId The file id to retrieve.
+   * @returns The status of the file as either "gray", "red", or "green".
+   */
   const getFileStatusColor = (fileId) => {
     let statusColor = "";
     if (popUpMessage === "") {
@@ -109,6 +132,7 @@ const Repair = (props) => {
     }
     headingRef.current.scrollIntoView();
   };
+
   /**
    * handleNext(): is a helper function responsible
    * for navigating the user to the next page in the exercise.
@@ -117,12 +141,13 @@ const Repair = (props) => {
     navigateNext();
   };
 
-  /*
-    set the message to be displayed in the popup
+  /**
+    Set the message to be displayed in the popup
   */
   const popUpHandler = (message) => {
     setPopUpMessage(message);
   };
+
   return (
     <div>
       <h1 className={"tw-title tw-text-left"} ref={headingRef}>
