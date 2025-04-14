@@ -72,30 +72,17 @@ const NavBarRepair = (props = {}) => {
           <CodeLine>
             <MultiTab numberOfTabs={4} />{" "}
             <HTMLTag> &#60;img href = {"{"}</HTMLTag>
-            {input.userInput ? (
-              <CodeBlockInput
-                value={input.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.name,
-                  type: "text",
-                  placeholder: "Enter icon image file here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.name,
-                  type: "text",
-                  placeholder: "Enter icon image file here",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                name: input.name,
+                type: "text",
+                placeholder: "Enter icon image file here",
+              }}
+            />
             <HTMLTag>{"}"}/&#62; </HTMLTag>
           </CodeLine>
           {!validInputs[input.id] && !isFirst && (

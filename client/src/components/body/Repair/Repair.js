@@ -244,7 +244,13 @@ Repair.propTypes = {
   functions: PropTypes.object,
   headingText: PropTypes.string,
   repairText: PropTypes.array,
-  files: PropTypes.array,
+  files: PropTypes.arrayOf(
+    PropTypes.shape({
+      fileId: PropTypes.number,
+      fileName: PropTypes.string,
+      implementation: PropTypes.elementType,
+    }),
+  ),
   navigateNext: PropTypes.func.isRequired,
 };
 export default Repair;

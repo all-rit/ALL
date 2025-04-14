@@ -135,30 +135,17 @@ const ComplexWordCountRepairImplementation = (props) => {
               let {input.variableName} = letterContent.split(&#39;
               &#39;).filter((word) =&#62;
             </ReactText>
-            {input.userInput ? (
-              <CodeBlockInput
-                value={input.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                name: input.variableName,
+                type: "text",
+                placeholder: "Enter Answer Here",
+              }}
+            />
             <ReactText>).length;</ReactText>
           </CodeLine>
           {!validInputs[input.id] && !isFirst && (

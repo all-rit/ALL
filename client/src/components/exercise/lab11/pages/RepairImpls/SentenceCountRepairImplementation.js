@@ -37,30 +37,17 @@ const SentenceCountRepairImplementation = (props) => {
           </CodeLine>
           <CodeLine>
             <Tab /> <ReactText> let {input.variableName} = </ReactText>
-            {input.userInput ? (
-              <CodeBlockInput
-                value={input.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                name: input.variableName,
+                type: "text",
+                placeholder: "Enter Answer Here",
+              }}
+            />
             <ReactText>;</ReactText>
           </CodeLine>
           {!validInputs[input.id] && !isFirst && (

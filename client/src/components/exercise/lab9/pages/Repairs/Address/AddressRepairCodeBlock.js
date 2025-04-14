@@ -54,33 +54,19 @@ const AddressRepairCodeBlock = (props = {}) => {
             <MultiTab numberOfTabs={3} />
             <JSONText>&ldquo;addressFormat&rdquo; :</JSONText>
             <JSONText>&ldquo;</JSONText>
-            {input.userInput ? (
-              <CodeBlockInput
-                value={input.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.countryName,
-                  type: "text",
-                  placeholder: "Enter Address Format Here",
-                  // overwrite styling to make input wider
-                  className: "p-1 tw-w-[34rem] code_editor__input",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.countryName,
-                  type: "text",
-                  placeholder: "Enter Address Format Here",
-                  className: "p-1 tw-w-[34rem] code_editor__input",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                name: input.countryName,
+                type: "text",
+                placeholder: "Enter Address Format Here",
+                // overwrite styling to make input wider
+                className: "p-1 tw-w-[34rem] code_editor__input",
+              }}
+            />
             <JSONText>&rdquo;</JSONText>
           </CodeLine>
           {!validInputs[input.id] && !isFirst && (

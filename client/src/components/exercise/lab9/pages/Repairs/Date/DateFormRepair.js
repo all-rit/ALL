@@ -48,30 +48,17 @@ const DateFormRepair = (props = {}) => {
             <MultiTab numberOfTabs={3} />
             <JSONText> &ldquo;dateform&rdquo; : </JSONText>
             <JSONText>&ldquo;</JSONText>
-            {input.userInput ? (
-              <CodeBlockInput
-                value={input.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.name,
-                  type: "text",
-                  placeholder: "Enter Dateform Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.name,
-                  type: "text",
-                  placeholder: "Enter Dateform Here",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                name: input.name,
+                type: "text",
+                placeholder: "Enter Dateform Here",
+              }}
+            />
             <JSONText>&rdquo;</JSONText>
           </CodeLine>
           {!validInputs[input.id] && !isFirst && (

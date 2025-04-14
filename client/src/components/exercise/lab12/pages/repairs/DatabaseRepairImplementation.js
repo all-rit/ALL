@@ -20,7 +20,7 @@ const DatabaseRepairImplementation = (props = {}) => {
    */
 
   const { inputs, userInput, validInputs, isFirst } = props;
-  console.log(validInputs[0], validInputs[1]);
+
   return (
     <>
       <CodeLine>
@@ -54,30 +54,17 @@ const DatabaseRepairImplementation = (props = {}) => {
               <SQLText>{item.variable}</SQLText>
               <MultiTab numberOfTabs={6} />
               <SQLText> enum (</SQLText>
-              {item.userInput ? (
-                <CodeBlockInput
-                  value={item.userInput}
-                  attributes={{
-                    onChange: (event) => {
-                      userInput(item.id, event.target.value);
-                    },
-                    name: item.variable,
-                    type: "text",
-                    placeholder: "Enter Answer Here",
-                  }}
-                />
-              ) : (
-                <CodeBlockInput
-                  attributes={{
-                    onChange: (event) => {
-                      userInput(item.id, event.target.value);
-                    },
-                    name: item.variable,
-                    type: "text",
-                    placeholder: "Enter Answer Here",
-                  }}
-                />
-              )}
+              <CodeBlockInput
+                value={item.userInput}
+                attributes={{
+                  onChange: (event) => {
+                    userInput(item.id, event.target.value);
+                  },
+                  name: item.variable,
+                  type: "text",
+                  placeholder: "Enter Answer Here",
+                }}
+              />
               <SQLText>)</SQLText>
             </CodeLine>
             {!validInputs[item.id] && !isFirst && (

@@ -22,7 +22,7 @@ const HTMLText = ({ children }) => {
 };
 
 HTMLText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default HTMLText;

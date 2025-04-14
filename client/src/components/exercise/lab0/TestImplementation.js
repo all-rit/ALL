@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import CodeBlockInput from "src/components/all-components/CodeBlock/Components/CodeBlockInput";
 import CodeLine from "src/components/all-components/CodeBlock/Components/CodeLine";
 import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
@@ -16,28 +15,16 @@ const TestImplementation = (props) => {
         <Fragment key={input.id}>
           <CodeLine>
             <ReactText>Here is some input: </ReactText>
-            {input.userInput ? (
-              <CodeBlockInput
-                value={input.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                type: "text",
+                placeholder: "Enter Answer Here",
+              }}
+            />
           </CodeLine>
           {!validInputs[input.id] && !isFirst && (
             <CodeLine>
@@ -51,6 +38,13 @@ const TestImplementation = (props) => {
       ))}
     </>
   );
+};
+
+TestImplementation.propTypes = {
+  inputs: PropTypes.array,
+  userInput: PropTypes.func,
+  validInputs: PropTypes.array,
+  isFirst: PropTypes.bool,
 };
 
 export default TestImplementation;

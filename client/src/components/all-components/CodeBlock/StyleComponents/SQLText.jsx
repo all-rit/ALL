@@ -64,7 +64,7 @@ const SQLText = ({ children }) => {
 };
 
 SQLText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 
 export default SQLText;

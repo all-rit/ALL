@@ -125,30 +125,17 @@ const FormRepairImplementation = (props = {}) => {
             <CodeLine key={item.id}>
               <MultiTab numberOfTabs={3} />{" "}
               <JSONText>{item.variableName}:</JSONText>
-              {item.userInput ? (
-                <CodeBlockInput
-                  defaultValue={item.userInput}
-                  attributes={{
-                    onChange: (event) => {
-                      userInput(item.id, event.target.value);
-                    },
-                    name: item.variableName,
-                    type: "text",
-                    placeholder: "Enter Answer Here",
-                  }}
-                />
-              ) : (
-                <CodeBlockInput
-                  attributes={{
-                    onChange: (event) => {
-                      userInput(item.id, event.target.value);
-                    },
-                    name: item.variableName,
-                    type: "text",
-                    placeholder: "Enter Answer Here",
-                  }}
-                />
-              )}
+              <CodeBlockInput
+                defaultValue={item.userInput}
+                attributes={{
+                  onChange: (event) => {
+                    userInput(item.id, event.target.value);
+                  },
+                  name: item.variableName,
+                  type: "text",
+                  placeholder: "Enter Answer Here",
+                }}
+              />
             </CodeLine>
             {!validInputs[item.id] && !isFirst && (
               <CodeLine>
