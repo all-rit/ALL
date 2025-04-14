@@ -1,11 +1,11 @@
-/* eslint-disable no-unused-vars */
-
 import { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import React from "react";
 import Popup from "src/components/all-components/Popup";
 import LabButton from "../../all-components/LabButton";
 import RepairUpdateButton from "../../all-components/RepairUpdateButton";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import CheckIcon from "@mui/icons-material/Check";
 
 /**
  * Repair: is a reusable component that is responsible for
@@ -69,19 +69,19 @@ const Repair = (props) => {
   const getFileStatusColor = (fileId) => {
     let statusColor = "";
     if (popUpMessage === "") {
-      statusColor = "tw-bg-labGray";
+      statusColor = "gray";
     } else if (
       exercisePromptsState
         .filter((input) => input.fileId === fileId)
         .some((input) => !validInputs[input.id])
     ) {
-      statusColor = "tw-bg-error";
+      statusColor = "red";
     } else if (
       exercisePromptsState
         .filter((input) => input.fileId === fileId)
         .every((input) => validInputs[input.id] === true)
     ) {
-      statusColor = "tw-bg-success";
+      statusColor = "green";
     }
     return statusColor;
   };
@@ -170,9 +170,17 @@ const Repair = (props) => {
                   onClick={() => handleFileChange(file.fileId)}
                 >
                   <div className="tw-flex tw-items-center tw-gap-2">
-                    <div
-                      className={`tw-w-[0.75rem] tw-h-[0.75rem] tw-aspect-square tw-rounded-full ${getFileStatusColor(file.fileId)}`}
-                    ></div>
+                    {getFileStatusColor(file.fileId) === "gray" ? (
+                      <div className="tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-labGray"></div>
+                    ) : getFileStatusColor(file.fileId) === "red" ? (
+                      <div className="tw-relative tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-error">
+                        <PriorityHighIcon className="tw-absolute tw-text-[1.25rem]" />
+                      </div>
+                    ) : (
+                      <div className="tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-success">
+                        <CheckIcon className="tw-absolute tw-text-[1.25rem]" />
+                      </div>
+                    )}
                     <p className="tw-font-normal tw-text-sm">{file.fileName}</p>
                   </div>
                 </div>
