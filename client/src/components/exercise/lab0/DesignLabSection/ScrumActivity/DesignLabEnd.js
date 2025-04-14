@@ -20,7 +20,7 @@ const DesignLabEnd = () => {
         </p>
         <p className={"tw-body-text"}>
           {" "}
-          To return the to Lab 0&apos;s table of contents, click the{" "}
+          To return to the Lab 0 table of contents, click the{" "}
           <strong> Return to Lab Contents</strong> button. To move on to the
           next portion of the lab, <strong>Developing a Lab</strong>, click the{" "}
           <strong> Next Section </strong> button.
