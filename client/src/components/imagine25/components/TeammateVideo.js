@@ -10,6 +10,7 @@ const TeammateVideo = (props) => {
   const [videoSrc, setVideoSrc] = useState(
     videoPaths[teammateId] || videoPaths[0],
   );
+  const [videoEnded, setVideoEnded] = useState(false);
 
   useEffect(() => {
     if (teammateId === null) return;
@@ -25,6 +26,7 @@ const TeammateVideo = (props) => {
       } else {
         setVideoSrc(videoPaths[teammateId] || videoPaths[0]);
       }
+      setVideoEnded(false); // reset in case a new video is loaded
     };
 
     updateVideoSource();
@@ -33,14 +35,23 @@ const TeammateVideo = (props) => {
   const buttonSize = "tw-w-16 tw-mx-auto";
 
   return (
-    <div className="tw-absolute tw-top-[47px] tw-right-1 tw-p-4 tw-pointer-events-none bg-white border tw-rounded-lg tw-max-w-[300px] tw-max-h-[600px] tw-overflow-hidden">
-      <video
-        src={videoSrc}
-        autoPlay
-        loop
-        muted
-        className="tw-w-64 tw-h-36 tw-shadow-lg tw-rounded-lg"
-      />
+    <div className="tw-absolute tw-top-[47px] tw-right-1 tw-p-4 tw-pointer-events-none tw-bg-white tw-border-solid tw-border-[1px] tw-rounded-lg tw-max-w-[300px] tw-max-h-[600px] tw-overflow-hidden">
+      {!videoEnded ? (
+        <video
+          src={videoSrc}
+          autoPlay
+          muted
+          onEnded={() => setVideoEnded(true)}
+          className={
+            "tw-w-64 tw-h-36 tw-shadow-lg tw-rounded-lg " +
+            (messageShown
+              ? "tw-border-solid tw-border-[#FF0000] tw-border-[3px]"
+              : "")
+          }
+        />
+      ) : (
+        <div className="tw-w-64 tw-h-36 tw-bg-black tw-rounded-lg tw-shadow-lg"></div>
+      )}
       <p>
         Teammate live from: <b>Buffalo, NY</b>
       </p>
