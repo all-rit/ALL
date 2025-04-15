@@ -14,7 +14,6 @@ const TeammateVideo = (props) => {
 
   const [delayedMessageShown, setDelayedMessageShown] = useState(false);
 
-  // ⏳ Delay switching to messageShown for 4 seconds
   useEffect(() => {
     let timeout;
 
@@ -30,7 +29,7 @@ const TeammateVideo = (props) => {
     return () => clearTimeout(timeout);
   }, [messageShown]);
 
-  // 🔁 Update video source based on teammate + delayed message state
+
   useEffect(() => {
     if (teammateId === null) return;
 
@@ -45,7 +44,7 @@ const TeammateVideo = (props) => {
       } else {
         setVideoSrc(videoPaths[teammateId] || videoPaths[0]);
       }
-      setVideoEnded(false); // reset for new video
+      setVideoEnded(false);
     };
 
     updateVideoSource();
