@@ -29,7 +29,7 @@ const AnalyzeData = () => {
 
   return (
     <div className="center-div tw-w-full">
-      <h2 className="playthrough__title">
+      <h2 className="tw-title tw-pt-210">
         Reviewing your application, please be patient...
       </h2>
       <div className="tw-w-full tw-flex tw-justify-center">

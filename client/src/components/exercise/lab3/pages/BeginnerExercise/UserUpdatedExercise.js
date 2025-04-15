@@ -76,15 +76,6 @@ class UserUpdatedExercise extends Component {
       PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
       this.setState({ render: "CatClickNavigate" });
     };
-    const burgerClick = () => {
-      console.log("Burger image clicked!");
-    };
-    const carClick = () => {
-      console.log("Car image clicked!");
-    };
-    const cowClick = () => {
-      console.log("Cow image clicked!");
-    };
     const imgStyle = {
       width: "10rem",
       height: "10rem",
@@ -102,19 +93,16 @@ class UserUpdatedExercise extends Component {
         />,
         <button
           style={imgStyle}
-          onClick={() => burgerClick()}
           tabIndex={"0"}
           onFocus={(e) => this.textToSpeech(e, data.repair3.burgerAltValue)}
         />,
         <button
           style={imgStyle}
-          onClick={() => carClick()}
           tabIndex={"0"}
           onFocus={(e) => this.textToSpeech(e, data.repair3.carAltValue)}
         />,
         <button
           style={imgStyle}
-          onClick={() => cowClick()}
           tabIndex={"0"}
           onFocus={(e) => this.textToSpeech(e, data.repair3.cowAltValue)}
         />,
@@ -129,19 +117,16 @@ class UserUpdatedExercise extends Component {
         />,
         <button
           style={imgStyle}
-          onClick={() => burgerClick()}
           tabIndex={"0"}
           onFocus={(e) => this.textToSpeech(e, "Image 2")}
         />,
         <button
           style={imgStyle}
-          onClick={() => carClick()}
           tabIndex={"0"}
           onFocus={(e) => this.textToSpeech(e, "Image 3")}
         />,
         <button
           style={imgStyle}
-          onClick={() => cowClick()}
           tabIndex={"0"}
           onFocus={(e) => this.textToSpeech(e, "Image 4")}
         />,
@@ -174,7 +159,7 @@ class UserUpdatedExercise extends Component {
     };
 
     return (
-      <div className={"tw-bg-black tw-rounded-lg tw-h-full"}>
+      <div className={"tw-bg-black tw-rounded-lg tw-h-full tw-p-6"}>
         <h2
           className={"tw-title tw-text-white tw-p-6"}
           aria-label={
@@ -196,7 +181,9 @@ class UserUpdatedExercise extends Component {
             : "Inaccessible Exercise"}
         </h2>
         <p
-          className={"tw-px-[3rem] tw-text-white tw-body-text tw-font-medium"}
+          className={
+            "tw-px-[3rem] tw-text-white tw-body-text tw-font-medium tw-text-center"
+          }
           onFocus={(e) =>
             this.textToSpeech(
               e,

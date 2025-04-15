@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Lab from "../lab/Lab";
 import PropTypes from "prop-types";
 import useMainStateContext from "../../../reducers/MainContext";
 import UserService from "../../../services/UserService";
 import UserLabService from "../../../services/UserLabService";
 import UnenrollModal from "./components/UnenrollModal";
+import LabGeneration from "../lab/LabGeneration";
 
 const GroupAssignedLabs = (props) => {
   const { assignedLabs, groupID, groupName, setGroupsUpdated, instructor } =
     props;
 
+  const { actions } = useMainStateContext();
   const { state } = useMainStateContext();
   const currentUser = state.main.user;
   const [toDoLabs, setToDoLabs] = useState([]);
@@ -17,6 +18,8 @@ const GroupAssignedLabs = (props) => {
 
   const inProgressLabs = [];
   const completedLabs = [];
+
+  console.log(toDoLabs);
 
   const getUserLabs = async () => {
     if (state.main.user) {
@@ -47,13 +50,6 @@ const GroupAssignedLabs = (props) => {
     });
   }
 
-  const getLabProgressState = (labId) => {
-    if (toDoLabs.some((lab) => lab.labID === labId)) return "NOT_STARTED";
-    if (inProgressLabs.some((lab) => lab.labid === labId)) return "IN_PROGRESS";
-    if (completedLabs.some((lab) => lab.labid === labId)) return "COMPLETED";
-    return "NOT_STARTED"; // Default state if not found in any array
-  };
-
   return (
     <div className={"tw-mb-6"}>
       {assignedLabs.length === 0 ? (
@@ -62,9 +58,7 @@ const GroupAssignedLabs = (props) => {
         <div className={"tw-p-5"}>
           <div className={"tw-w-full tw-flex tw-flex-row tw-justify-between"}>
             <div
-              className={
-                "tw-flex tw-flex-col tw-ml-5 tw-font-poppins tw-line-clamp-0"
-              }
+              className={"tw-flex tw-flex-col  tw-font-poppins tw-line-clamp-0"}
             >
               <p className={"tw-p-0 tw-m-0"}>{instructor}</p>
               <p className={"tw-title tw-text-2xl tw-p-0 tw-m-0"}>
@@ -81,28 +75,40 @@ const GroupAssignedLabs = (props) => {
             </div>
           </div>
           <br />
-          <div className={"tw-text-2xl tw-ml-5 tw-title"}>Assigned Labs:</div>
-          <div className="md:tw-grid xxs:tw-flex xxs:tw-flex-col xxs:tw-justify-center md:lg:tw-grid-cols-3 tw-gap-3">
-            {assignedLabs.map((lab, index) => (
-              <Lab
-                progressState={getLabProgressState(lab.labID)}
-                key={index}
-                alt={lab.labName + " Thumbnail"}
-                lab={lab.labID}
-                name={lab.labName}
-                bio={lab.shortDescription}
-                image={lab.thumbnailImageURL}
-                learningObjectives={lab.learningObjectives}
-                authors={lab.authors}
-                actions={lab.actions}
-                difficulty={lab.difficulty}
-                labProgress={
-                  getLabProgressState(lab.labID) === "NOT_STARTED"
-                    ? null
-                    : labRecords[lab.labID]
-                }
-              />
-            ))}
+          <div className={"tw-text-2xl tw-title"}>Assigned Labs:</div>
+          <div className="tw-flex tw-flex-col tw-gap-y-16 tw-w-full">
+            {toDoLabs.length > 0 && (
+              <div>
+                <p className={"tw-title tw-text-sm"}> Not Started </p>
+                <LabGeneration
+                  actions={actions}
+                  labids={toDoLabs}
+                  progressState={"NOT_STARTED"}
+                />
+              </div>
+            )}
+            {inProgressLabs.length > 0 && (
+              <div>
+                <p className={"tw-title tw-text-sm"}> In Progress </p>
+                <LabGeneration
+                  actions={actions}
+                  labids={inProgressLabs}
+                  progressState={"IN_PROGRESS"}
+                  labRecords={inProgressLabs}
+                />
+              </div>
+            )}
+            {completedLabs.length > 0 && (
+              <div>
+                <p className={"tw-title tw-text-sm"}> Complete </p>
+                <LabGeneration
+                  actions={actions}
+                  labids={completedLabs}
+                  progressState={"COMPLETED"}
+                  labRecords={completedLabs}
+                />
+              </div>
+            )}
           </div>
         </div>
       )}

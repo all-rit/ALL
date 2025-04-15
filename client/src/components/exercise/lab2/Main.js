@@ -274,12 +274,12 @@ class Main extends Component {
     };
 
     return (
-      <div className="container tw-h-full tw-overflow-y-scroll tw-items-center">
+      <div className="tw-items-center">
         {infoPopup ? (
           <Form closeInfoPopup={onCloseInfoPopup} />
         ) : (
           <div
-            className={"tw-rounded-lg main"}
+            className={"tw-rounded-lg main "}
             style={{ background: exerciseBackground }}
           >
             {changed ? (

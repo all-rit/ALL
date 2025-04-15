@@ -113,7 +113,7 @@ const Reading = (props) => {
   return (
     <div
       className={
-        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[40rem] tw-rounded-4xl"
+        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[35rem] tw-rounded-4xl"
       }
     >
       <h2
@@ -138,13 +138,7 @@ const Reading = (props) => {
           )}
           {readingData?.piechart?.header && (
             <>
-              <h3
-                className={
-                  isImagine ? "tw-text-[4vw] lg:tw-text-[3.5vh]" : "tw-title"
-                }
-              >
-                {readingData?.piechart.header}
-              </h3>
+              <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
               <div className="flex tw-body-text">
                 <Pie
                   data={readingData?.piechart.data}
@@ -161,9 +155,7 @@ const Reading = (props) => {
                   key={index}
                   id={"caption"}
                   className={
-                    isImagine
-                      ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                      : " tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                    "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
                   }
                 >
                   {data}
@@ -179,13 +171,7 @@ const Reading = (props) => {
               return (
                 <Fragment key={index}>
                   {data.header !== "" && (
-                    <h3
-                      className={
-                        isImagine
-                          ? "tw-text-[4vw] lg:tw-text-[3.5vh]"
-                          : "tw-title tw-text-left"
-                      }
-                    >
+                    <h3 className={"tw-title tw-text-left tw-leading-snug"}>
                       {data.header}
                     </h3>
                   )}
@@ -195,11 +181,7 @@ const Reading = (props) => {
                         return (
                           <p
                             key={index}
-                            className={
-                              isImagine
-                                ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                                : "tw-body-text"
-                            }
+                            className={"tw-body-text tw-leading-snug"}
                           >
                             {content}
                           </p>

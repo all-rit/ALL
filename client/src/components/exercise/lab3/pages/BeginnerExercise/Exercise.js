@@ -69,25 +69,16 @@ class Exercise extends Component {
 
   render() {
     const catClick = () => {
-      console.log("Cat image clicked!");
       const name = "NonSimulatedExercise";
       PageService.createPage(name, this.state.secondsElapsed, LAB_ID);
       this.setState({ render: "CatClickNavigate", catClicked: true });
     };
-    const burgerClick = () => {
-      console.log("Burger image clicked!");
-    };
-    const carClick = () => {
-      console.log("Car image clicked!");
-    };
-    const cowClick = () => {
-      console.log("Cow image clicked!");
-    };
 
     return (
       <div className={`tw-bg-none`}>
-        <p className={"center tw-body-text"}>Click on the image of a cat.</p>
-        <br />
+        <p className={"center tw-body-text tw-text-2xl tw-p-6"}>
+          Click on the image of a cat.
+        </p>
         <div className={"tw-grid tw-grid-cols-2 tw-gap-3"}>
           <button
             className={
@@ -100,7 +91,7 @@ class Exercise extends Component {
               src={catImage}
               alt={"image1"}
             />
-            <div className={"tw-absolute tw-top-[-15%] tw-left-[-5%]"}>
+            <div className={"tw-absolute tw-top-[40%] tw-right-[40%]"}>
               {this.state.catClicked && <SuccessCheck />}
             </div>
           </button>
@@ -108,7 +99,6 @@ class Exercise extends Component {
             className={
               "tw-w-full hover:tw-shadow-lg hover:tw-shadow-[#bbb] hover:tw-bg-[#ccc] tw-border-none tw-bg-[#ddd] tw-rounded-lg"
             }
-            onClick={() => carClick()}
           >
             <img
               className={"tw-w-[14rem] tw-h-[14rem]"}
@@ -120,7 +110,6 @@ class Exercise extends Component {
             className={
               "tw-w-full hover:tw-shadow-lg hover:tw-shadow-[#bbb] hover:tw-bg-[#ccc] tw-border-none tw-bg-[#ddd] tw-rounded-lg"
             }
-            onClick={() => burgerClick()}
           >
             <img
               className={"tw-w-[14rem] tw-h-[14rem]"}
@@ -132,7 +121,6 @@ class Exercise extends Component {
             className={
               "tw-w-full hover:tw-shadow-lg hover:tw-shadow-[#bbb] hover:tw-bg-[#ccc] tw-border-none tw-bg-[#ddd] tw-rounded-lg"
             }
-            onClick={() => cowClick()}
           >
             <img
               className={"tw-w-[14rem] tw-h-[14rem]"}
