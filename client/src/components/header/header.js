@@ -113,9 +113,7 @@ const Header = (props) => {
     setisSmallWindow(false);
   }
 
-  // user is logged in if their profile image isn't null, kinda scuffed but lmk if there's a simpler way
-  // (state.main.user is never null)
-  const loggedIn = state.main.user?.userpfp !== null;
+  const loggedIn = state.main?.user?.email1 !== null;
 
   return (
     <Navbar

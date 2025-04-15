@@ -8,9 +8,10 @@ module.exports = (sequelize, DataTypes) => {
 
   // TODO: Add Writing a Lab sections here too
   const lab0ProgressSection = DataTypes.ENUM(
-      'LabIdea',
-      'ExperientialExercise',
-      'SprintPlanning',
+      'LabIdeation',
+      'LabDecision',
+      'WireframeIntro',
+      'ScrumIntro',
       'LabDataRepair',
       'SchemaRepair',
       'ServiceControllerRepair',

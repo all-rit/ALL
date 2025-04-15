@@ -3,18 +3,31 @@ import PropTypes from "prop-types";
 import useMainStateContext from "../../../reducers/MainContext";
 import { navigate, Router } from "@reach/router";
 import Lab0Context from "./Lab0Context";
+import ExperientialIntroduction from "./DesignLabSection/ExperientialActivity/ExperientialIntroduction";
+import CreateExperientialExercise from "./DesignLabSection/ExperientialActivity/CreateExperientialExercise";
+import DesignLabDecision from "./DesignLabSection/ExperientialActivity/DesignLabDecision";
+import ScrumIntroduction from "./DesignLabSection/ScrumActivity/ScrumIntroduction";
+import DesignLabIntroduction from "./DesignLabSection/LabIdeaActivity/DesignLabIntroduction";
+import ScrumBoardActivity from "./DesignLabSection/ScrumActivity/ScrumBoardActivity";
+import ScrumVelocityReading from "./DesignLabSection/ScrumActivity/ScrumVelocityReading";
+import ScrumVelocityActivity from "./DesignLabSection/ScrumActivity/ScrumVelocityActivity";
+import DesignNewCategory from "./DesignLabSection/LabIdeaActivity/DesignNewCategory";
+import DesignSortNewCategory from "./DesignLabSection/LabIdeaActivity/DesignSortNewCategory";
+import WireframeIntro from "./DesignLabSection/WireframingActivity/WireframeIntro";
+import WireframeFirstGlance from "./DesignLabSection/WireframingActivity/WireframeFirstGlance";
+import WireframeReinforceQuiz from "./DesignLabSection/WireframingActivity/WireframeReinforceQuiz";
+import WireframeExercise from "./DesignLabSection/WireframingActivity/WireframeExercise";
+import WireframeComponents from "./DesignLabSection/WireframingActivity/WireframeComponents";
 import { SECTION_STATUSES, SECTIONS } from "../../../constants/lab0/index";
 import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
-import ALLCardFlip from "src/components/all-components/ALLCardFlip";
-import LabButton from "../../all-components/LabButton";
+import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
 
 const Main = (props) => {
   const { user } = props;
   const { actions } = useMainStateContext();
   const [section, setSectionState] = useState({});
-  const [temp, setTemp] = useState(false);
 
   const updateSectionStatus = (section, sectionStatus) => {
     ProgressService.submitProgress(
@@ -38,69 +51,53 @@ const Main = (props) => {
     navigate(`/Lab0/Exercise/${route}`);
   };
 
+  const [newCategoryName, setNewCategoryName] = useState("");
+  const [newLabTopics, setNewLabTopics] = useState([]);
+
   return (
-    <>
-      <Lab0Context.Provider value={{ section, updateSectionStatus, handleNav }}>
-        <Router className={"tw-p-3"}>
+    <div>
+      <Lab0Context.Provider
+        value={{
+          handleNav,
+          section,
+          updateSectionStatus,
+          newCategoryName,
+          setNewCategoryName,
+          newLabTopics,
+          setNewLabTopics,
+        }}
+      >
+        <Router className={"tw-p-3 tw-h-[40rem]"}>
           <StartExercise default path={"/*"} />
           <StartExercise path={"/Continue"} verb="Continue" />
+
+          {/*// Lab Ideation*/}
+          <DesignLabIntroduction path={"/LabIdeation"} />
+          <DesignNewCategory path={"/DesignNewCategory"} />
+          <DesignSortNewCategory path={"/DesignSortNewCategory"} />
+
+          {/*// Experiential Exercise*/}
+          <DesignLabDecision path={"/LabDecision"} />
+          <ExperientialIntroduction path={"/ExperientialIntro"} />
+          <CreateExperientialExercise path={"/ExperientialExercise"} />
+
+          {/*// Wireframing Overview*/}
+          <WireframeIntro path={"/WireframeIntro"} />
+          <WireframeFirstGlance path={"/WireframeFirstGlance"} />
+          <WireframeReinforceQuiz path={"/WireframeReinforceQuiz"} />
+          <WireframeExercise path={"/WireframeExercise"} />
+          <WireframeComponents path={"/WireframeComponents"} />
+
+          {/*// Scrum Activity*/}
+          <ScrumIntroduction path={"/ScrumIntro"} />
+          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
+          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
+          <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
+
+          <DesignLabEnd path={"/DesignLabEnd"} />
         </Router>
-        <ALLCardFlip
-          width={3}
-          height={3}
-          onAllFlipped={() => setTemp(true)}
-          gridStyle={"tw-gap-3"}
-          cardStyle={"tw-rounded-[1.2rem]"}
-          cards={[
-            {
-              id: 0,
-              width: 1,
-              text: "Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text",
-            },
-            {
-              id: 1,
-              width: 2,
-              topText:
-                "Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text",
-              imageURL: "/img/lab_thumbnails/wrench.jpg",
-            },
-            {
-              id: 2,
-              width: 2,
-              imageURL: "/img/lab_thumbnails/wrench.jpg",
-              bottomText:
-                "Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text",
-            },
-            {
-              id: 3,
-              width: 1,
-              topText: "Test 4",
-              imageURL: "/img/lab_thumbnails/wrench.jpg",
-              bottomText: "Bottom Text",
-            },
-            {
-              id: 4,
-              width: 1,
-              topText: "Test 5",
-              imageURL: "/img/lab_thumbnails/wrench.jpg",
-              bottomText: "Bottom Text",
-            },
-            {
-              id: 5,
-              width: 2,
-              topText: "Test 6",
-              imageURL: "/img/lab_thumbnails/wrench.jpg",
-              bottomText: "Bottom Text",
-            },
-          ]}
-        />
-        <LabButton
-          label="Finished"
-          disabled={!temp}
-          onClick={() => alert("You flipped all of them, nice!")}
-        />
       </Lab0Context.Provider>
-    </>
+    </div>
   );
 };
 

@@ -134,6 +134,7 @@ const App = () => {
           quizCompleted={quizCompleted}
           setQuizCompleted={setQuizCompleted}
         />
+        <Error actions={actions} default />
       </Router>
     );
   };

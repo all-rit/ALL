@@ -3,10 +3,16 @@ const SECTION_CATEGORY_DESIGN = "DESIGN";
 const SECTION_CATEGORY_BACKEND = "BACKEND";
 const SECTION_CATEGORY_FRONTEND = "FRONTEND";
 
+const SELECTION_ROUTE = "/";
+const DESIGN_LAB_INTRO = "LabIdeation";
+const SCRUM_INTRO = "ScrumIntroduction";
+const DEVELOP_LAB_INTRO = "DevelopLabIntro";
+const SCRUM_BOARD_ACTIVITY = "ScrumBoardActivity";
 // All sections, which double as routes too
-const SECTION_LAB_IDEA = "LabIdea";
-const SECTION_EXPERIENTIAL_EXERCISE = "ExperientialExercise";
-const SECTION_SPRINT_PLANNING = "SprintPlanning";
+const SECTION_LAB_IDEATION = "LabIdeation";
+const SECTION_EXPERIENTIAL_EXERCISE = "LabDecision";
+const SECTION_WIREFRAMING_OVERVIEW = "WireframeIntro";
+const SECTION_SPRINT_PLANNING = "ScrumIntro";
 const SECTION_LAB_DATA_REPAIR = "LabDataRepair";
 const SECTION_SCHEMA_REPAIR = "SchemaRepair";
 const SECTION_SERVICE_CONTROLLER_REPAIR = "ServiceControllerRepair";
@@ -20,8 +26,14 @@ const SECTION_FRONTEND_TIPS_TRICKS = "FrontendTipsTricks";
 
 // All routes
 const ROUTES = {
-  SECTION_LAB_IDEA,
+  SELECTION_ROUTE,
+  DESIGN_LAB_INTRO,
+  DEVELOP_LAB_INTRO,
+  SCRUM_INTRO,
+  SCRUM_BOARD_ACTIVITY,
+  SECTION_LAB_IDEATION,
   SECTION_EXPERIENTIAL_EXERCISE,
+  SECTION_WIREFRAMING_OVERVIEW,
   SECTION_SPRINT_PLANNING,
   SECTION_LAB_DATA_REPAIR,
   SECTION_SCHEMA_REPAIR,
@@ -37,16 +49,22 @@ const ROUTES = {
 
 // All section objects (image URLs not final)
 const SECTIONS = {
-  [SECTION_LAB_IDEA]: {
+  [SECTION_LAB_IDEATION]: {
     category: SECTION_CATEGORY_DESIGN,
-    name: SECTION_LAB_IDEA,
-    displayName: "Lab Idea",
+    name: SECTION_LAB_IDEATION,
+    displayName: "Lab Ideation",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
   [SECTION_EXPERIENTIAL_EXERCISE]: {
     category: SECTION_CATEGORY_DESIGN,
     name: SECTION_EXPERIENTIAL_EXERCISE,
     displayName: "Experiential Exercise",
+    imageURL: "/img/lab_thumbnails/wrench.jpg",
+  },
+  [SECTION_WIREFRAMING_OVERVIEW]: {
+    category: SECTION_CATEGORY_DESIGN,
+    name: SECTION_WIREFRAMING_OVERVIEW,
+    displayName: "Wireframing Overview",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
   [SECTION_SPRINT_PLANNING]: {
