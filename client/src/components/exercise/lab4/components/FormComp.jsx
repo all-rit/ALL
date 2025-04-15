@@ -92,11 +92,13 @@ const FormComp = (props) => {
   };
 
   return (
-    <main className="tw-min-h-96 tw-mb-16">
-      <div className="overlap" onClick={(e) => focusElem(e)}>
+    <main className="">
+      <div onClick={(e) => focusElem(e)}>
         <Form>
           <FormGroup>
-            <Label for="animal">Favorite Animal</Label>
+            <Label className={"tw-flex tw-justify-start"} for="animal">
+              Favorite Animal
+            </Label>
             <Input
               type="text"
               name="animal"
@@ -107,8 +109,8 @@ const FormComp = (props) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="color">
-              Favorite Color{" "}
+            <Label className={"tw-flex tw-justify-start"} for="color">
+              Favorite Color&nbsp;
               {props.showTooltip && (
                 <TooltipWithTab
                   tab={props.tooltipTab}
@@ -126,7 +128,9 @@ const FormComp = (props) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="candy">Favorite Candy</Label>
+            <Label className={"tw-flex tw-justify-start"} for="candy">
+              Favorite Candy
+            </Label>
             <Input
               type="text"
               name="candy"
@@ -137,7 +141,9 @@ const FormComp = (props) => {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city">Favorite City</Label>
+            <Label className={"tw-flex tw-justify-start"} for="city">
+              Favorite City
+            </Label>
             <Input
               type="text"
               name="city"

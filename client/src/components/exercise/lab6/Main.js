@@ -25,8 +25,8 @@ import ExerciseEnd from "./pages/Employer/ExerciseEnd";
 
 const Main = () => {
   return (
-    <div className="container bottomSpace tw-h-[40rem] tw-p-6 tw-overflow-y-scroll">
-      <Router className="app">
+    <div className="container bottomSpace tw-h-[35rem] tw-p-6 tw-overflow-y-scroll">
+      <Router>
         {/* Part 1: Applicant */}
         <ExerciseStart path="/" />
         <AvatarSelection path="/AvatarSelection" />

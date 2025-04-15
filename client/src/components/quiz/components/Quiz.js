@@ -43,9 +43,9 @@ function Quiz(props) {
         )}
       </div>
       <div className="quiz bg-white tw-mt-6" key={props.questionId}>
-        <ul className="answerOptions">
+        <ol className="tw-grid tw-grid-cols-2">
           {props.answerOptions.map(renderAnswerOptions)}
-        </ul>
+        </ol>
         <div
           className={"tw-w-full tw-flex tw-flex-row tw-justify-between tw-p-6"}
         >
