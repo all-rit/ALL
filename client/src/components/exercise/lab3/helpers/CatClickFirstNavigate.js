@@ -22,6 +22,7 @@ class CatClickFirstNavigate extends Component {
     return (
       <div id={"catClickMessage"}>
         <p
+          className={"tw-body-text tw-text-2xl tw-text-center tw-py-6"}
           aria-label={
             "Cat clicked! Please click the 'next' button to continue."
           }

@@ -146,9 +146,8 @@ function QualificationQuestions() {
   ];
 
   return (
-    <div className="center-div">
-      <h2 className="playthrough__title">Qualification Questions</h2>
-
+    <div className="tw-flex tw-justify-center tw-flex-col">
+      <h2 className="tw-title tw-py-6">Qualification Questions</h2>
       <QuestionsHandler
         isFinalQuiz={true}
         questions={qualQuestionsData}
