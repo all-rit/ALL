@@ -37,9 +37,6 @@ module.exports = (sequelize, DataTypes) => {
         quizScore: {
           type: DataTypes.INTEGER,
         },
-        gameOutcome: {
-          type: DataTypes.TEXT,
-        },
       },
       {tableName: 'imagine25'},
   );
