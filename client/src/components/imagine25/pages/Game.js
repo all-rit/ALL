@@ -28,19 +28,19 @@ const Analysis = () => {
 
       //pastel yellow and blue annoyingly are stored in their key forms and need to be re-converted to a readable form
       const colorMap = {
-        Red: "Red",
+        Gray02: "Gray",
         Black: "Black",
-        PastelBlue: "Blue",
+        Blue03: "Blue",
       };
 
       //using map instead of "code smell" switch statment ft - Professor Bobby (st.Jaques or something like that)
       const text = {
         experiential:
-          "Parsing error #343: Cannot Process User's \"" +
+          "Parsing error #343: Cannot Process Player User's \"" +
           colorMap[user.avatar.clotheColor].toLowerCase() +
           '" shirt. Your points cannot be added due to error. Your team has been disqualified.',
         expression:
-          "Parsing error #343: Cannot Process Teammate'  \"" +
+          "Parsing error #343: Cannot Process Teammate User's  \"" +
           colorMap[user.teammateAvatar.clotheColor].toLowerCase() +
           "\" shirt. Your teammate's points cannot be added due to error. Your team has been disqualified.",
         control:
@@ -138,6 +138,8 @@ const Game = () => {
 
   const [seconds, setSeconds] = useState(60);
 
+  const [teammateId, setTeammateId] = useState(null);
+
   //Checks the iframe ref to see if anything exists, when the iframe fully loads, immediately focus it
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -170,6 +172,17 @@ const Game = () => {
     }
   }, [iframeRef]);
 
+  useEffect(() => {
+    const fetchTeammateID = async () => {
+      const id = await ImagineService.getTeammate(
+        sessionStorage.getItem("userID"),
+        25,
+      );
+      setTeammateId(id);
+    };
+    fetchTeammateID();
+  }, []);
+
   return (
     //flex container used to center game vertically, dimensions are slightly different than content sizing for scaling purposes
     <div>
@@ -195,7 +208,11 @@ const Game = () => {
           <div>{seconds}</div>
         </div>
       </div>
-      <TeammateVideo teammateId={0} messageShown={false} />
+      {gameActive ? (
+        <TeammateVideo teammateId={teammateId} messageShown={false} />
+      ) : (
+        <TeammateVideo teammateId={teammateId} messageShown={true} />
+      )}
     </div>
   );
 };

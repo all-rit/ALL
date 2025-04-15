@@ -30,9 +30,9 @@ const avatarSelections = {
 
   clotheColor: {
     options: {
-      Red: "Red",
+      Gray02: "Gray",
       Black: "Black",
-      PastelBlue: "Blue",
+      Blue03: "Blue",
     },
     label: "Shirt Color",
   },
@@ -40,28 +40,32 @@ const avatarSelections = {
 
 const teammateAvatars = [
   {
-    hairStyle: "ShortHairShortFlat",
+    hairStyle: "LongHairStraight",
     hairColor: "Blonde",
-    clotheColor: "Red",
+    clotheColor: "Gray02",
     skinColor: "Pale",
+    id: 3,
   },
   {
-    hairStyle: "LongHairCurly",
-    hairColor: "SilverGray",
-    clotheColor: "PastelBlue",
-    skinColor: "Pale",
+    hairStyle: "LongHairStraight",
+    hairColor: "Black",
+    clotheColor: "Blue03",
+    skinColor: "Black",
+    id: 0,
   },
   {
     hairStyle: "ShortHairShortFlat",
     hairColor: "Black",
     clotheColor: "Black",
-    skinColor: "Brown",
+    skinColor: "DarkBrown",
+    id: 1,
   },
   {
-    hairStyle: "LongHairStraight",
-    hairColor: "Black",
-    clotheColor: "PastelBlue",
-    skinColor: "Black",
+    hairStyle: "ShortHairShortFlat",
+    hairColor: "Brown",
+    clotheColor: "Black",
+    skinColor: "Pale",
+    id: 2,
   },
 ];
 
@@ -69,25 +73,25 @@ const opponentAvatars = [
   {
     hairStyle: "Bald",
     hairColor: "Black",
-    clotheColor: "PastelBlue",
+    clotheColor: "Blue03",
     skinColor: "Black",
   },
   {
     hairStyle: "ShortHairShortFlat",
     hairColor: "Blonde",
-    clotheColor: "Black",
+    clotheColor: "Gray02",
     skinColor: "Pale",
   },
   {
     hairStyle: "LongHairStraight",
     hairColor: "Brown",
-    clotheColor: "PastelBlue",
+    clotheColor: "Black",
     skinColor: "Pale",
   },
   {
     hairStyle: "LongHairCurly",
     hairColor: "Black",
-    clotheColor: "Red",
+    clotheColor: "Black",
     skinColor: "Black",
   },
 ];

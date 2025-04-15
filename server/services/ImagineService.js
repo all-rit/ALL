@@ -146,6 +146,23 @@ const getGroup = async (data) => {
   }
 };
 
+const getTeammate = async (data) => {
+  const userID = data;
+  const imagine = `Imagine25`;
+  try {
+    const user = await db[imagine].findOne({
+      where: {
+        userid: userID,
+      },
+    });
+    avatar = user.teammateAvatar;
+    console.log('avatar======' + avatar);
+    return avatar.id;
+  } catch (error) {
+    console.error('Could not get group by user ID: ', error);
+  }
+};
+
 const readMoreCount = async (data) => {
   const {userID, readMoreCount, year} = data;
   const imagine = `Imagine${year}`;
@@ -410,4 +427,5 @@ module.exports = {
   postTeammateAvatar,
   postOpponentAvatar,
   getGroup,
+  getTeammate,
 };

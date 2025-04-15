@@ -2,7 +2,7 @@ const videoPaths = {
   0: "/videos/video0.mp4",
   1: "../videos/video1.mp4",
   2: "../videos/video2.mp4",
-  3: "../videos/video2.mp4",
+  3: "../videos/video3.mp4",
 };
 
 const groupVideoPaths = {
