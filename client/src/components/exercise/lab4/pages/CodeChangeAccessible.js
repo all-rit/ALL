@@ -108,9 +108,9 @@ const CodeChangeAccessible = () => {
   useEffect(() => {
     actions.updateUserState(EXERCISE_PLAYING);
     Prism.highlightAll();
-    if (window.location.state.hint !== undefined) {
+    if (window?.location?.state?.hint !== undefined) {
       const el0 = document.getElementById("first");
-      el0.value = window.location.state.hint;
+      el0.value = window?.location?.state?.hint;
       doEvent(el0, "input");
     }
   }, []);

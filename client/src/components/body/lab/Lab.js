@@ -97,10 +97,10 @@ const Lab = (props) => {
                   >
                     View Certificate
                   </a>
-                  <Modal isOpen={openCertificate}>
+                  <Modal isOpen={openCertificate} className={"tw-mx-[10%]"}>
                     <ModalBody>
                       <Certificate
-                        quizResult={labProgress.quizscore}
+                        quizResult={labProgress?.quizscore}
                         lab={lab}
                       />
                     </ModalBody>

@@ -33,7 +33,7 @@ const BiasedSimulation = () => {
   };
 
   return (
-    <div className="tw-py-6">
+    <div className="tw-py-6 tw-relative tw-h-[35rem]">
       <div className="exercise-frame tw-w-full tw-aspect-video">
         {repairState ? (
           // Render updatedMessages if repairState is true

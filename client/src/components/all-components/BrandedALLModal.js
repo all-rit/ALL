@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import logo from "../../assets/images/logos/ALL_White.svg";
 
 const BrandedALLModal = (props) => {
-  const { isOpen, toggle, direction, width, children } = props;
+  const { isOpen, toggle, direction, children } = props;
 
   return direction === "row" && window.innerWidth >= 640 ? (
     <Modal toggle={toggle} isOpen={isOpen}>
@@ -50,14 +50,8 @@ const BrandedALLModal = (props) => {
       </div>
     </Modal>
   ) : (
-    <Modal
-      toggle={toggle}
-      isOpen={isOpen}
-      className={"xs:tw-w-full sm:md:lg:tw-w-[40rem] tw-pr-5"}
-    >
-      <div
-        className={`tw-flex tw-flex-col tw-min-h-[30rem] xs:tw-w-full md:tw-min-w-[20rem] md:tw-max-w-[40rem] lg:tw-min-w-[60rem] ${width}`}
-      >
+    <Modal toggle={toggle} isOpen={isOpen} className={"md:tw-mx-36"}>
+      <div className={`tw-flex tw-flex-col`}>
         <div
           id="col-header"
           className={
@@ -82,7 +76,7 @@ const BrandedALLModal = (props) => {
           >
             <div
               className={
-                "tw-w-5/12 tw-h-full tw-flex tw-flex-row tw-items-center"
+                "xs:tw-w-3/4 md:tw-w-1/4 tw-h-full tw-flex tw-flex-row tw-items-center"
               }
             >
               <img className={"tw-object-cover"} src={logo} />

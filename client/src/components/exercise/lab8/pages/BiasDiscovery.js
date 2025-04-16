@@ -28,9 +28,9 @@ const BiasDiscovery = () => {
           why did the AI make these mistakes?
         </div>
         <div className="tw-body-text tw-my-6">
-          When the data used to train AI is not equitable, selection bias can
-          occur. Selection bias is a result of datasets that are “not reflective
-          of their real-world distribution” and are not accurately
+          When the data used to train AI is not comprehensive, selection bias
+          can occur. Selection bias is a result of datasets that are “not
+          reflective of their real-world distribution” and are not accurately
           representative. (
           <a
             href="https://developers.google.com/machine-learning/crash-course/fairness/types-of-bias"

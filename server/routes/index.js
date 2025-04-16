@@ -185,7 +185,7 @@ router.post('/lab12/exercise/submit', async function(req, res) {
   const id = await ExerciseControllerLab12.postExercise(req);
   res.send(id);
 });
-router.get('/lab12/repair/:userID/:section', async function(req, res ) {
+router.get('/lab12/repair/:userID/:section', async function(req, res) {
   res.json(await RepairControllerLab12.getRepair(req));
 });
 router.post('/lab12/repair/submit', async function(req, res) {
@@ -224,36 +224,89 @@ router.get('/devPartners', TeamMemberController.getAllDevPartners);
 router.get('/schools', TeamMemberController.getAllSchools);
 
 // Imagine
-router.post('/imagine/postStudy', async function(req, res) {
+router.post('/imagine23/postStudy', async function(req, res) {
   const resp = await ImagineController.submitStudy(req);
   res.send(resp);
 });
-router.post('/imagine/preSurvey', async function(req, res) {
+router.post('/imagine23/preSurvey', async function(req, res) {
   const resp = await ImagineController.preSurvey(req, res);
   res.send(JSON.stringify(resp));
 });
-router.post('/imagine/postSurvey', async function(req, res) {
+router.post('/imagine23/postSurvey', async function(req, res) {
   const resp = await ImagineController.postSurvey(req);
   res.send(resp);
 });
-router.get('/imagine/users', async function(req, res) {
+router.get('/imagine23/users', async function(req, res) {
   const imagineUsers = await ImagineController.getUsers();
   res.json(imagineUsers);
 });
-router.get('/imagine/user/:userID', async function(req, res) {
+router.get('/imagine23/user/:userID', async function(req, res) {
   const imagineUser = await ImagineController.getUserByID(req);
   res.json(imagineUser);
 });
-router.post('/imagine/readMoreCount', async function(req, res) {
+router.post('/imagine23/readMoreCount', async function(req, res) {
   const resp = await ImagineController.readMoreCount(req);
   res.send(resp);
 });
-router.post('/imagine/readMoreTimeElapsed', async function(req, res) {
+router.post('/imagine23/readMoreTimeElapsed', async function(req, res) {
   const resp = await ImagineController.readMoreTimeElapsed(req);
   res.send(resp);
 });
-router.post('/imagine/readingSectionPagePosition', async function(req, res) {
+router.post('/imagine23/readingSectionPagePosition', async function(req, res) {
   const resp = await ImagineController.readingSectionPagePosition(req);
   res.send(resp);
 });
+
+router.post('/imagine25/teammateAvatarSelection', async function(req, res) {
+  const resp = await ImagineController.postTeammateAvatar(req);
+  res.send(resp);
+});
+router.post('/imagine25/opponentAvatarSelection', async function(req, res) {
+  const resp = await ImagineController.postOpponentAvatar(req);
+  res.send(resp);
+});
+router.post('/imagine25/userAvatarCreation', async function(req, res) {
+  const resp = await ImagineController.postUserAvatar(req);
+  res.send(resp);
+});
+router.post('/imagine25/newID', async function(req, res) {
+  const resp = await ImagineController.newID(req);
+  res.send(resp);
+});
+
+router.get('/imagine25/user/:userID', async function(req, res) {
+  req.params.year = 25;
+  const imagineUser = await ImagineController.getUserByID(req);
+  res.json(imagineUser);
+});
+
+router.get('/imagine25/getGroup/:userID', async function(req, res) {
+  req.params.year = 25;
+  const imagineUser = await ImagineController.getGroup(req);
+  res.json(imagineUser);
+});
+
+router.get('/imagine25/getTeammate/:userID', async function(req, res) {
+  req.params.year = 25;
+  const imagineUser = await ImagineController.getTeammate(req);
+  res.json(imagineUser);
+});
+
+// Imagine 2025
+router.post('/imagine25/preSurvey', async function(req, res) {
+  const resp = await ImagineController.preSurvey(req, res);
+  res.send(JSON.stringify(resp));
+});
+
+router.post('/imagine25/postSurvey', async function(req, res) {
+  const resp = await ImagineController.postSurvey(req, res);
+  res.send(JSON.stringify(resp));
+});
+
+// add quiz backend
+router.post('/imagine25/quizScore', async function(req, res) {
+  const resp = await ImagineController.quizScore(req);
+  res.send(resp);
+});
+
 module.exports = router;

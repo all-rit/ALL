@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from "react";
 import UserLabService from "../../../services/UserLabService";
 import LabService from "../../../services/LabService";
@@ -11,14 +10,14 @@ import Spinner from "../../../common/Spinner/Spinner";
 import LinkFooter from "./LinkFooter";
 import Links from "./Links";
 import OrderedList from "./OrderedList";
-import ReadMoreButton from "../../imagine23/components/LearnMoreButton";
+import ReadMoreButton from "../../all-components/imagine-components/LearnMoreButton";
 import ImagineService from "src/services/ImagineService";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 
 const Reading = (props) => {
-  const { user, labID, isImagine, userID } = props;
+  const { user, labID, isImagine, userID, year } = props;
   const [readingData, setReadingData] = useState("");
   const [modalOpen, setModalOpen] = useState(true);
   let [scrollPositionPercentage, setScrollPositionPercentage] = useState(0);
@@ -45,46 +44,53 @@ const Reading = (props) => {
   };
 
   useEffect(() => {
-    UserLabService.complete_reading(labID);
-    if (user?.firstname !== null && user !== null) {
-      UserLabService.user_complete_reading(user.userid, labID);
-    }
-    LabService.getLabReading(labID).then((data) => {
-      setReadingData(data[0].reading);
-    });
+    const readingAnalytics = async () => {
+      await UserLabService.complete_reading(labID);
+      if (user?.firstname !== null && user !== null) {
+        await UserLabService.user_complete_reading(user.userid, labID);
+      }
+      LabService.getLabReading(labID).then((data) => {
+        setReadingData(data[0].reading);
+      });
 
-    if (isImagine) {
-      const interval = setInterval(() => {
-        setSeconds((pre) => pre + 1);
-        const scrollPosition = document.documentElement.scrollTop;
-        screenPositionPercentage(scrollPosition);
+      if (isImagine) {
+        const interval = setInterval(() => {
+          setSeconds((pre) => pre + 1);
+          const scrollPosition = document.documentElement.scrollTop;
+          screenPositionPercentage(scrollPosition);
 
-        setPagePosition((prevPagePosition) => [
-          ...prevPagePosition,
-          {
-            second: seconds,
-            positionPercentage: scrollPositionPercentage,
-          },
-        ]);
-        console.log(
-          "Scroll position percentage: " +
-            JSON.stringify(pagePosition) +
-            "\n" +
-            "at " +
-            seconds +
-            " seconds",
+          setPagePosition((prevPagePosition) => [
+            ...prevPagePosition,
+            {
+              second: seconds,
+              positionPercentage: scrollPositionPercentage,
+            },
+          ]);
+          console.log(
+            "Scroll position percentage: " +
+              JSON.stringify(pagePosition) +
+              "\n" +
+              "at " +
+              seconds +
+              " seconds",
+          );
+        }, 1000);
+
+        return () => {
+          clearInterval(interval);
+        };
+      }
+
+      if (isImagine && saveData) {
+        await ImagineService.readingSectionPagePosition(
+          userID,
+          pagePosition,
+          year,
         );
-      }, 1000);
-
-      return () => {
-        clearInterval(interval);
-      };
-    }
-
-    if (isImagine && saveData) {
-      ImagineService.readingSectionPagePosition(userID, pagePosition);
-      setSaveData(false);
-    }
+        setSaveData(false);
+      }
+    };
+    readingAnalytics().catch(console.error);
   }, [
     user,
     labID,
@@ -107,13 +113,13 @@ const Reading = (props) => {
   const handleNext = () => {
     console.log("Scroll position percentage: " + JSON.stringify(pagePosition));
     setSaveData(true);
-    navigate("/Imagine/PostSurvey");
+    navigate("/Imagine2023/PostSurvey");
   };
 
   return (
     <div
       className={
-        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[40rem] tw-rounded-4xl"
+        "tw-w-full tw-flex tw-flex-col tw-align-top tw-justify-center tw-h-[35rem] tw-rounded-4xl"
       }
     >
       <h2
@@ -138,46 +144,32 @@ const Reading = (props) => {
           )}
           {readingData?.piechart && (
             <>
-              {readingData?.piechart?.header && (
-                <>
-                  <h3
-                    className={
-                      isImagine
-                        ? "tw-text-[4vw] lg:tw-text-[3.5vh]"
-                        : "tw-title"
-                    }
-                  >
-                    {readingData?.piechart.header}
-                  </h3>
-                  <div className="flex tw-body-text">
-                    <Pie
-                      data={readingData?.piechart.data}
-                      height={!isImagine && 100}
-                      options={isImagine && { maintainAspectRatio: false }}
-                    />
-                  </div>
-                </>
-              )}
-              {readingData?.piechart.caption !== "" ? (
-                readingData?.piechart.caption.map((data, index) => {
-                  return (
-                    <div
-                      key={index}
-                      id={"caption"}
-                      className={
-                        isImagine
-                          ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                          : " tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
-                      }
-                    >
-                      {data}
-                    </div>
-                  );
-                })
-              ) : (
-                <></>
-              )}
+              <h3 className={"tw-title"}>{readingData?.piechart.header}</h3>
+              <div className="flex tw-body-text">
+                <Pie
+                  data={readingData?.piechart.data}
+                  height={!isImagine && 100}
+                  options={isImagine && { maintainAspectRatio: false }}
+                />
+              </div>
             </>
+          )}
+          {readingData?.piechart?.caption !== "" ? (
+            readingData?.piechart?.caption.map((data, index) => {
+              return (
+                <div
+                  key={index}
+                  id={"caption"}
+                  className={
+                    "tw-body-text tw-text-[#666] tw-my-0 tw-text-sm tw-leading-snug tw-text-center"
+                  }
+                >
+                  {data}
+                </div>
+              );
+            })
+          ) : (
+            <></>
           )}
 
           {readingData?.body !== "" ? (
@@ -185,13 +177,7 @@ const Reading = (props) => {
               return (
                 <Fragment key={index}>
                   {data.header !== "" && (
-                    <h3
-                      className={
-                        isImagine
-                          ? "tw-text-[4vw] lg:tw-text-[3.5vh]"
-                          : "tw-title tw-text-left"
-                      }
-                    >
+                    <h3 className={"tw-title tw-text-left tw-leading-snug"}>
                       {data.header}
                     </h3>
                   )}
@@ -201,11 +187,7 @@ const Reading = (props) => {
                         return (
                           <p
                             key={index}
-                            className={
-                              isImagine
-                                ? "tw-text-[3vw] lg:tw-text-[2.25vh]"
-                                : "tw-body-text"
-                            }
+                            className={"tw-body-text tw-leading-snug"}
                           >
                             {content}
                           </p>
@@ -251,7 +233,11 @@ const Reading = (props) => {
       </div>
       {isImagine && readingData?.footer !== "" && (
         <div>
-          <ReadMoreButton userID={userID} data={readingData?.footer.links} />
+          <ReadMoreButton
+            userID={userID}
+            data={readingData?.footer.links}
+            year={year}
+          />
           <button
             className="btn btn-primary text-black btn-xl text-uppercase tw-m-3"
             onClick={handleNext}
@@ -270,6 +256,7 @@ Reading.propTypes = {
   labID: PropTypes.number,
   isImagine: PropTypes.bool,
   data: PropTypes.array,
+  year: PropTypes.number,
 };
 
 export default Reading;

@@ -23,7 +23,10 @@ const ALLSnackbar = () => {
       open={state.main.snackbar.open}
       autoHideDuration={5000}
       onClose={actions.hideSnackbar}
-      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+      anchorOrigin={{
+        vertical: state.main.snackbar.yPosition || "bottom",
+        horizontal: state.main.snackbar.xPosition || "left",
+      }}
     >
       <SnackbarContent
         sx={{
