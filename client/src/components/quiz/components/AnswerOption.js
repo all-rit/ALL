@@ -10,10 +10,6 @@ function AnswerOption(props) {
           type="checkbox"
           className="checkboxCustomButton"
           name="checkboxGroup"
-          checked={
-            props.selectedAnswer instanceof Set &&
-            props.selectedAnswer.has(props.answerType)
-          }
           id={props.answerType}
           value={props.answerType}
           onChange={props.multiSelected}
@@ -30,7 +26,7 @@ function AnswerOption(props) {
           type="radio"
           className="radioCustomButton tw-body-text"
           name="checkboxGroup"
-          checked={props.answerContent === props.selectedAnswer.content}
+          // checked={props.answerType === props.answer}
           id={props.answerType}
           value={props.answerType}
           onChange={props.onAnswerSelected}
@@ -52,10 +48,6 @@ AnswerOption.propTypes = {
   onAnswerSelected: PropTypes.func.isRequired,
   multiSelected: PropTypes.func.isRequired,
   multiChoice: PropTypes.bool.isRequired,
-  selectedAnswer: PropTypes.oneOfType([
-    PropTypes.instanceOf(Set),
-    PropTypes.object,
-  ]).isRequired,
 };
 
 export default AnswerOption;
