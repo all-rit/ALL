@@ -51,7 +51,10 @@ const Home = () => {
     setFeaturedLabs([lab11, lab12]);
   };
 
+  const endImagine = () => actions.setIsImagine(false);
+
   useEffect(() => {
+    endImagine();
     getFeaturedLabs();
   }, []);
 

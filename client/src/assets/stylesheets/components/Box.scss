@@ -1,7 +1,6 @@
 .box {
   border: 1px solid black;
   font-size: 3.5rem;
-  padding: 1rem 2rem;
   position: relative;
   user-select: none;
 
@@ -42,7 +41,7 @@
       position: absolute;
       content: "\25B2";
       font-size: 2rem;
-      bottom: -60px;
+      bottom: -40px;
       left: 0;
       right: 0;
       color: #0144d5;

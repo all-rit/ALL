@@ -44,7 +44,7 @@ AnswerOption.propTypes = {
   questionType: PropTypes.string.isRequired,
   onAnswerSelected: PropTypes.func.isRequired,
   onMultiSelected: PropTypes.func.isRequired,
-  onFreeTextInput: PropTypes.func.isRequired,
+  onFreeTextInput: PropTypes.func,
 };
 
 export default AnswerOption;

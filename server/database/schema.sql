@@ -1,3 +1,18 @@
+create type enum_imagine25 as enum ('experiential','expression','control');
+create table imagine25
+(
+    id                           serial,
+    userid                       text,
+    "preSurvey"                  json,
+    "postSurvey"                 json,
+    "section"                    enum_imagine25,
+    "avatar"                     json,
+    "teammateAvatar"             json,
+    "opponentAvatar"             json,
+    primary key (id)
+);
+
+
 create table imagine22
 (
     id              serial,
@@ -71,9 +86,10 @@ create table imagine23
 create type enum_lab0_progress_category as enum ('DESIGN', 'BACKEND', 'FRONTEND');
 
 create type enum_lab0_progress_section as enum (
-    'LabIdea',
-    'ExperientialExercise',
-    'SprintPlanning',
+    'LabIdeation',
+    'LabDecision',
+    'WireframeIntro',
+    'ScrumIntro',
     'LabDataRepair', 
     'SchemaRepair', 
     'ServiceControllerRepair', 
@@ -476,72 +492,83 @@ create table lab12_exercise
 INSERT INTO public.labs (id, "labName", "labShortName", category, "thumbnailImageURL", "shortDescription", "fullDescription", "learningObjectives", authors, "labURL", "copyrightAttributes", about, reading, reinforcement, quiz, difficulty, "slideshow", "walkthroughVideo", "isActive")
 VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg',
         'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial.',
-        'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial. Start by participating in lab brainstorming, ideation, and sprint planning for your lab, then move on to implementation using our PERN tech stack covering backend and frontend. By the end of Lab 0, you will have successfully implemented a newly synthesized lab from beginning to end.', 
-        '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)","LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)","LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)","LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]',
+        'Learn how to build a lab with Accessible Learning Labs with this interactive tutorial. Start by participating in lab brainstorming, ideation, and sprint planning for your lab, then move on to implementation using our PERN tech stack covering backend and frontend. By the end of Lab 0, you will have successfully implemented a newly synthesized lab from beginning to end.',
+        '["LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that is deaf and hard of hearing and their needs for accessible software (Knowledge)",
+          "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn’t properly accommodate accessibility for people with difficulties with sound and speech (Analysis)",
+          "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
+          "LO4: Develop further empathy: Relate to individuals who experience difficulties with accessibility to sound and speech (Comprehension)"]',
         'Heather Moses, Domenic Mangano, Jonathan Cruz, Melissa Burisky, Jack Barter',
-        'https://all.rit.edu/Lab0/', null,
+        'https://all.rit.edu/Lab0/', NULL,
         'In this lab, you will learn how to develop a lab for ALL from beginning to end. Starting with writing a lab, you will explore concepts like ideation, gathering sources, and finally designing the lab’s structure. Afterward, you will be able to implement a lab on both the frontend and backend while upholding best practices and standards. Click “Next” to start!',
         e'{
-	"description":{
-		"header":"",
-		"content":""
-	},
-	"body":[
-		{
-			"header":"Why Do We Build Labs?",
-			"type":"",
-			"content":["Lab 0 Reading Content about the importance of accessibility in software eduction."]
-		},
-		{
-			"header":"",
-			"type":"links",
-			"content":[]
-		},
-		{
-			"header":"What Goes into Building a Lab?",
-			"type":"",
-			"content":["Lab 0 reading on building labs"]
-		},
-		{
-			"header":"",
-			"type":"links",
-			"content":[]
-		},
-		{
-			"header":"Our Tech Stack",
-			"type":"",
-			"content":["Information about tech stack and other important development info"]
-		},
-		{
-			"header":"",
-			"type":"image",
-			"content":{
-				"image":"",
-				"alt":"",
-				"sub_caption":"",
-				"caption":""
-			}
-		},
-		{
-			"header":"",
-			"type":"",
-			"content":[]
-		},
-        {
-			"header":"",
-			"type":"links",
-			"content":["Maybe embed links to documentation for each section of the tech stack, i.e. React, Express, Sequelize, etc"]
-		},
-		{
-			"header":"",
-			"type":"links",
-			"content":[]
-		}
-	],
-	"footer":{
-		"links":[]
-	}
-}', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
+        "description": {
+            "header": "",
+            "content": ""
+        },
+        "body": [
+            {
+                "header": "History of Accessible Learning Labs",
+                "type": "",
+                "content": [
+                    "Accessible Learning Labs, in conjunction with Rochester Institute of Technology and the National Science Foundation, was created in 2018 by principal investigators Daniel Krutz and Samuel Malachowsky with the purpose of spreading awareness of the importance of accessible software on the web, as well as the crucial role that software developers play in designing and creating a more accessible, usable internet that anyone can use. Comprised of a fully undergraduate development team, Accessible Learning Labs plays a crucial part in not only creating a better future for the web, but creating more conscientious software engineers that know the importance of accessibility. Since Lab 1 - Accessibility to Sound and Speech released in 2018, Accessible Learning Labs has released 11 more labs, with topics ranging from Accessibility to Cognitive Disabilities to AI in Cybersecurity, with more in the works with each passing semester."
+                ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": []
+            },
+            {
+                "header": "What Goes into Building a Lab?",
+                "type": "",
+                "content": [
+                    "Our labs follow a standardized 5 step process: About, Reading, Experiential Exercise, Reinforcement, and Quiz sections. By standardizing our process, we guarantee that each of our labs touches on the most important talking points of the lab topic, as well as providing a lasting experience that enforces the importance of accessible software or any other subject they may be learning about in the Accessible Learning Labs plethora of learning content."
+                ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": []
+            },
+            {
+                "header": "Our Tech Stack",
+                "type": "",
+                "content": [
+                    "Accessible Learning Labs is a Express and Node.js focused application. As a result, the frontend of the project is developed using ReactJS, an industry-standard technology for developing dynamic and highly functional user interfaces. The backend of the project is developed using ExpressJS, an easy-to-understand JavaScript library that provides server functionality using the JavaScript language. Finally, to store data, Accessible Learning Labs employs a PostgreSQL-based database structure."
+                ]
+            },
+            {
+                "header": "",
+                "type": "links",
+                "content": [
+                    {
+                        "name": "React Documentation",
+                        "link": "https://react.dev/"
+                    },
+                    {
+                        "name": "ExpressJS Documentation",
+                        "link": "https://expressjs.com/"
+                    },
+                    {
+                        "name": "PostgreSQL Documentation",
+                        "link": "https://www.postgresql.org/docs/"
+                    }
+                ]
+            }
+        ],
+        "footer": {
+            "links": [
+                {
+                    "name": "National Science Foundation",
+                    "link": "https://www.nsf.gov/"
+                },
+                {
+                    "name": "Rochester Institute of Technology",
+                    "link": "https://www.rit.edu/"
+                }
+            ]
+        }
+    }', e'  [{"title":"Audio Cues","link":"https://www.youtube.com/embed/vU_Di8EtF3M"},{"title":"Audio Cues Lecture","link":"https://www.youtube.com/embed/Wlf8A0w66o0"}]
 ', e'[
   {
     "question": "What is an audio cue?",
@@ -1846,7 +1873,7 @@ VALUES (0, 'How to Build a Lab', 'How to Build a Lab', 'Tutorials', '/wrench.jpg
     "multiChoice": true
   }
 ]
-', 3, 'ALL_Lab_5_Lecture_Slides.pptx', 'coming soon', true), (6, 'Ethics of AI', 'Ethics of AI', 'AI', '/ethicsai.jpg', 'Learn more about the ethics behind AI.', 'This lab introduces the ethics behind AI. The user will be introduced to what goes into the development of an AI and what needs to be done to make it ethical. The exercise portion will bring the user through multiple scenarios where the AI has a bias against certain groups. The user will then be asked about the issues bias brings and asks the user to make changes to the AI.', '["LO1: Recognize different ethical challenges in AI (Comprehension)","LO2: Practice consideration of ethics in a AI-related scenario (Application)","LO3: Diagnose ethical implications of choices made by AI (Synthesis)","SLO1 Supplemental: Assess impact and determine appropriate response to ethical scenarios (Synthesis)"]', 'Mark Sternefeld, Jaden Wedner, Kyle Messerle', 'https://all.rit.edu/Lab6/', null, 'In this lab, you will learn about the importance of ethical implications of using Artificial Intelligence (AI). You will learn about issues related to a lack of diversity and human biases in data, increase your understanding through an interactive module about bias in software, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
+', 3, 'ALL_Lab_5_Lecture_Slides.pptx', 'coming soon', true), (6, 'Ethics of AI', 'Ethics of AI', 'AI', '/ethicsai.jpg', 'Learn more about the ethics behind AI.', 'This lab introduces the ethics behind AI. The user will be introduced to what goes into the development of an AI and what needs to be done to make it ethical. The exercise portion will bring the user through multiple scenarios where the AI has a bias against certain groups. The user will then be asked about the issues bias brings and asks the user to make changes to the AI.', '["LO1: Recognize different ethical challenges in AI (Comprehension)","LO2: Practice consideration of ethics in a AI-related scenario (Application)","LO3: Diagnose ethical implications of choices made by AI (Synthesis)","SLO1 Supplemental: Assess impact and determine appropriate response to ethical scenarios (Synthesis)"]', 'Mark Sternefeld, Jaden Wedner, Kyle Messerle', 'https://all.rit.edu/Lab6/', null, 'In this lab, you will learn about the importance of ethical implications of using Artificial Intelligence (AI). You will learn about issues related to human biases in data, increase your understanding through an interactive module about bias in software, view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
     "piechart":
        {"header":"AI use cases in manufacturing industry percentages worldwide as of 2020",
        "caption":[""],
@@ -2370,8 +2397,8 @@ to test your knowledge. Click "Next" to start!', e'{
   }
 ]
 ', 3, 'ALL_Lab_7_Lecture_Slides.pptx', 'coming soon', true),
- (8, 'Algorithmic Bias', 'Algorithmic Bias', 'AI', '/aibias.png', 'Learn more about bias in machine learning.', 'This lab explores machine learning bias and associated guiding principles to mitigate this bias. The user will learn about examples of real-world biased AI models and their impacts. Additionally, the lab demonstrates that an inequitable dataset can result in inappropriate bias in a sentiment analysis scenario.', e'["LO1: Identify how human prejudice infiltrates datasets resulting in biased machine learning systems (Knowledge).",
-"LO2: Classify different types of inequitable bias in machine learning systems (Comprehension).",
+ (8, 'Algorithmic Bias', 'Algorithmic Bias', 'AI', '/aibias.png', 'Learn more about bias in machine learning.', 'This lab explores machine learning bias and associated guiding principles to mitigate this bias. The user will learn about examples of real-world biased AI models and their impacts. Additionally, the lab demonstrates that an unbalanced dataset can result in inappropriate bias in a sentiment analysis scenario.', e'["LO1: Identify how human prejudice infiltrates datasets resulting in biased machine learning systems (Knowledge).",
+"LO2: Classify different types of bias in machine learning systems (Comprehension).",
 "LO3: Apply standard guiding principles when developing machine learning systems (Application).",
 "LO4: Analyze examples of real-world machine learning systems to diagnose the impact of harmful bias (Synthesis)."
 ]', 'Heather Moses, Jaden Wedner, Ryan Webb, Domenic Magano, Andreas Leonard-Calcano', 'https://all.rit.edu/Lab8/', null, 'In this lab, you will learn about the importance of mitigating machine learning bias as well as the ethical guidelines that developers should follow when building machine learning software. You will learn about the demographics of individuals that have consistently been biased against and increase your understanding through an interactive module about inherent bias of an AI based on an unfair dataset. You’ll then have the opportunity to view related media to reinforce the topic, and take a quiz to test your knowledge. Click "Next" to start!', e'{
@@ -2515,7 +2542,7 @@ to test your knowledge. Click "Next" to start!', e'{
 		{
 			"header":"",
 			"type":"",
-			"content":["Following these principles can help to avoid bias and create fair, equitable AI software."]
+			"content":["Following these principles can help to avoid bias and create fair AI software."]
 		},
     {
 			"header":"",
@@ -2700,8 +2727,8 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "Ensure that the developers creating AI software come from diverse backgrounds",
-        "explanation": "A group of diverse developers can offer diverse viewpoints, mitigating bias such as implicit confirmation bias."
+        "content": "Ensure that the developers creating AI software come from various backgrounds",
+        "explanation": "A group of various developers can offer different viewpoints, mitigating bias such as implicit confirmation bias."
       },
       {
         "val": 0,
@@ -2769,7 +2796,7 @@ to test your knowledge. Click "Next" to start!', e'{
 		{
 			"header":"What is Localization?",
 			"type":"",
-			"content":["Localization accessibility refers to the practice of designing software and digital content to be accessible and usable by people from different linguistic and cultural backgrounds. This encompasses not only translation of text but also considers cultural nuances, date and time formats, currency, keyboard usage, and other locale-specific elements. This practice is crucial in a world where digital products are used by a diverse global audience. The goal is to create an inclusive digital environment where users from any part of the world feel valued and understood. It\'s about building bridges across cultural and linguistic divides, enhancing user experience, and expanding the reach of digital products globally."]
+			"content":["Localization accessibility refers to the practice of designing software and digital content to be accessible and usable by people from different linguistic and cultural backgrounds. This encompasses not only translation of text but also considers cultural nuances, date and time formats, currency, keyboard usage, and other locale-specific elements. This practice is crucial in a world where digital products are used by a global audience. The goal is to create a comprehensive digital environment where users from any part of the world feel valued and understood. It\'s about building bridges across cultural and linguistic divides, enhancing user experience, and expanding the reach of digital products globally."]
 		},
         {
             "header":"",
@@ -2783,7 +2810,7 @@ to test your knowledge. Click "Next" to start!', e'{
 		{
 			"header":"Case Study: Facebook",
 			"type":"",
-			"content":["In 2007, Facebook was only available in English, limiting its global reach. With a mission to connect every person on the planet, Facebook introduced a crowd-sourced translation tool, empowering native speakers to translate the site through a voting system. This innovative approach has significantly expanded Facebook\'s linguistic accessibility. Today, the platform supports 111 languages, with an additional 40 languages in the process of being added. This expansion is significant considering that out of Facebook\'s 1.7 billion users, 1 billion speak a language other than English. Beyond mere functionality, this localization effort has had an emotional impact, fostering a sense of pride and aiding in the preservation of diverse cultures among its global user base."]
+			"content":["In 2007, Facebook was only available in English, limiting its global reach. With a mission to connect every person on the planet, Facebook introduced a crowd-sourced translation tool, empowering native speakers to translate the site through a voting system. This innovative approach has significantly expanded Facebook\'s linguistic accessibility. Today, the platform supports 111 languages, with an additional 40 languages in the process of being added. This expansion is significant considering that out of Facebook\'s 1.7 billion users, 1 billion speak a language other than English. Beyond mere functionality, this localization effort has had an emotional impact, fostering a sense of pride and aiding in the preservation of various cultures among its global user base."]
 		},
         {
 			"header":"Software Engineer Internationalization Responsibilities ",
@@ -3026,7 +3053,7 @@ to test your knowledge. Click "Next" to start!', e'{
        },{
           "header":"",
           "type":"",
-          "content":["Unwanted bias is a problem for many systems in industry, so creating diverse teams to challenge potential biases early in development is often employed as a tactic to try and gain a reduction in discrimination these systems may replicate. "]
+          "content":["Unwanted bias is a problem for many systems in industry, so creating teams with varying backgrounds to challenge potential biases early in development is often employed as a tactic to try and gain a reduction in discrimination these systems may replicate. "]
        }
     ],
 	"footer":{
@@ -3168,7 +3195,7 @@ to test your knowledge. Click "Next" to start!', e'{
       {
         "val": 1,
         "type": "0",
-        "content": "To promote fairness, equity, and unbiased decision-making in AI systems",
+        "content": "To promote fairness and unbiased decision-making in AI systems",
         "explanation": "Ethics should always be considered in AI systems, not profit or efficiency."
       },
       {
@@ -3259,7 +3286,7 @@ to test your knowledge. Click "Next" to start!', e'{
         {
             "header": "Measuring Readability with Fog Index",
             "type": "",
-            "content": ["The Fog Index, developed by Robert Gunning, is a tool used to assess the readability of reading content. It calculates the complexity of a text passage based on the number of words, number of complex words, and number of sentences. The score obtained indicates the educational level required to  comprehend that text. A higher score correlates with a higher educational level. Improving readability according to the Fog Index involves making sentences simpler and using easier words while keeping the content meaningful. Aim for a lower Fog Index to help more people understand the content. By applying Fog Index analysis, software developers can optimize their material to ensure they are more comprehensible and accessible to users with diverse literacy levels."]
+            "content": ["The Fog Index, developed by Robert Gunning, is a tool used to assess the readability of reading content. It calculates the complexity of a text passage based on the number of words, number of complex words, and number of sentences. The score obtained indicates the educational level required to  comprehend that text. A higher score correlates with a higher educational level. Improving readability according to the Fog Index involves making sentences simpler and using easier words while keeping the content meaningful. Aim for a lower Fog Index to help more people understand the content. By applying Fog Index analysis, software developers can optimize their material to ensure they are more comprehensible and accessible to users with varying literacy levels."]
         },
         {
             "header": "Improving Website Readability ",
@@ -3433,16 +3460,16 @@ to test your knowledge. Click "Next" to start!', e'{
     "multiChoice": true
   }
 ]
-', 2, 'coming soon', 'coming soon', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity inclusive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement inclusive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not inclusive, and learn how and why to implement an interface that is accessible to gender and identity.',
+', 2, 'coming soon', 'coming soon', true), (12, 'Accessibility to Identity', 'Identity', 'Accessibility', '/identity.jpg', 'Learn about developing identity sensitive software.', 'This lab will introduce the idea of gender and identity and the importance of creating software that is accessible to those who conform outside the social/gender norm. Participants will learn how to design and implement gender sensitive terminology in their software. In the exercise portion of the lab they will encounter an interface that is not accessible, and learn how and why to implement an interface that is accessible to gender and identity.',
 e'[
    "LO1: Knowledge of user significance, characteristics, and needs: Recognize the significance of the population that identifies outside the gender norm, and their needs for accessible use of software (Knowledge)",
    "LO2: Exposure to and analysis of poorly accessible design: Examine a software application that doesn\’t properly accommodate accessibility in regards to identity (Analysis)",
    "LO3: Apply solutions to solve access problems: Use knowledge of accessibility design solutions to construct corrective measures to allow previously inaccessible software to become accessible to appropriate parties (Application)",
    "LO4: Develop further empathy: Relate to individuals who experience difficulties with their gender (Comprehension)"
-]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of inclusivity and accessibility for users that identify as genders other than male or female. You will learn about the issues related to lack of inclusive software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
+]', 'Domenic Mangano, Heather Moses, Owen Luts', 'https://ball.rit.edu/Lab12/', null, 'In this lab, you will learn about the importance of accessibility for users that identify as genders other than male or female. You will learn about the issues related to lack of accessible software for this demographic, increase your understanding through an interactive module on identity accessibility, view related media to reinforce the topic, and take a quiz to test your knowledge! Click
 “Next” to start!', e'{
  "piechart": {
-       "header":"Inclusive Forms",
+       "header":"Unbiased Forms",
       "caption":["59% of Gen Z believes forms should have options outside of male and female."],
       "data": {
          "labels": [
@@ -3451,7 +3478,7 @@ e'[
            ],
            "datasets": [
             {
-              "label": "Inclusive Forms",
+              "label": "Unbiased Forms",
               "borderColor": "black",
               "backgroundColor": ["#FFC107","#004D40"],
               "data": [59, 41],
@@ -3493,16 +3520,16 @@ e'[
            }
        },
        {
-           "header": "Gender Inclusivity in the Workplace",
+           "header": "Gender Non-Discrimination in the Workplace",
            "type": "",
-           "content": ["One company that has strived for acceptance and inclusion is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an inclusive environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
+           "content": ["One company that has strived for acceptance is ADP, an HR and Payroll consulting company. ADP, which has been named in Fortune\'s \'World\'s Most Admired Companies\' list for 17 consecutive years, advocates for the importance of using preferred names and fostering an accessible environment. They also outline the best practices for using preferred names at work to create a safe workplace for everyone. These practices reinforce the use of preferred pronouns. Additionally, these practices highlight how to respectfully ask how someone identifies. Furthermore, ADP emphasizes how important it is to be respectful and think before making what could be an awkward joke, and allow for some mistakes initially as long as you stay respectful and acknowledge the mistakes. Lastly, the practices outlined by ADP point out that you may need to adjust and become familiar with someone\'s chosen pronouns by amplifying usage."]
        },
        {
            "header": "",
            "type": "links",
            "content": [
                {
-                   "name": "Fostering Inclusive Environments in the Workplace",
+                   "name": "Fostering Accessible Environments in the Workplace",
                    "link": "https://www.adp.com/spark/articles/2018/06/foster-an-inclusive-workplace-for-transgender-talent-by-creating-a-preferred-name-policy.aspx"
                },
                {
@@ -3514,19 +3541,19 @@ e'[
        {
            "header": "",
            "type": "",
-           "content": ["These practices should be reflected throughout any institutions, including gender inclusive terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, the inclusion of preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
+           "content": ["These practices should be reflected throughout any institutions, including gender non-discriminatory terminology and allowing for expression of these preferred names and pronouns. When filling out applications, surveys, or any other data form where gender would be recorded, preferred pronouns and names should be present. There is no definitive list of all the pronouns which are in use. However, the ability to express one\'s gender identity is something which advocates have been pushing for, and the opportunity to voice chosen names and pronouns would be a valuable addition to any organization. From the same HRC survey mentioned previously, 76.8% of youth surveyed want to be open about their gender identity at their future job. Giving people this opportunity would be a step in the right direction and a strong starting point for fostering a positive environment."]
        }
    ],
    "footer":{
       "links":[
          {
-            "name":"Inclusive Design Best Practices",
+            "name":"Accessible Design Best Practices",
             "link":"https://vorecol.com/blogs/blog-best-practices-for-designing-inclusive-software-interfaces-for-gender-diversity-177983"
          }
       ]
    }
 }',
-'[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use inclusive language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Inclusivity","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[
+'[{"title":"Range of Gender Identities","link": "https://www.youtube.com/embed/i83VQIaDlQw"},{"title":"Accessible writing tip | Use accessible language","link": "https://www.youtube.com/embed/VBTndNoIU0Y"},{"title":"Humantelligence Breaks Down Gender Non-Discrimination","link":"https://www.youtube.com/embed/-pgNLfXjfbw"}]', '[
  {
    "question": "What does gender refer to?",
    "answers": [
@@ -3565,19 +3592,19 @@ e'[
      {
        "val": 0,
        "type": "2",
-       "content": "To foster an inclusive environment"
+       "content": "To foster a bias-free environment"
      },
      {
        "val": 1,
        "type": "3",
        "content": "All of the above",
-       "explanation": "Using a person’s preferred name and pronouns creates an inclusive and respectful environment and can decrease anxiety regarding gender expression."
+       "explanation": "Using a person’s preferred name and pronouns creates a respectful environment and can decrease anxiety regarding gender expression."
      }
    ],
    "multiChoice": false
  },
  {
-   "question": "Which of the following could be used to add gender-inclusive features to software?",
+   "question": "Which of the following could be used to add gender non-discrimination features to software?",
    "answers": [
      {
        "val": 0,
@@ -3604,7 +3631,7 @@ e'[
    "multiChoice": false
  },
  {
-   "question": "ADP, an HR and Payroll consulting company, has recently strived for inclusiveness in which of the following ways?",
+   "question": "ADP, an HR and Payroll consulting company, has recently strived for accessibility in which of the following ways?",
    "answers": [
      {
        "val": 1,
@@ -3665,6 +3692,8 @@ e'[
  }
 ]', 2, 'coming soon', 'coming soon', true);
 
+
+
 INSERT INTO public.professors (id, "firstName", "lastName", title, affiliation, "imageURL", socials, aboutme, work, "datesActive")
 VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Krutz.jpg', '[{"link":"https://danielkrutz.github.io/","network":"sharethis"}]', 'Daniel Krutz is an Associate Professor at Rochester Institute of Technology, Department of Software Engineering and Center for Cybersecurity. Krutz is the Director of the Autonomy, WARfare, and Engineering (AWARE) Lab, which supports several externally funded projects for the NSF, NSA and the DOD. Krutz''s research interests include Self Adaptive Systems, Decision Support Systems and Computing Education. Krutz is the recipient of the NSF CAREER Award (2022).', null, null),
 (2, 'Samuel', 'Malachowsky', 'Principal Investigator', 'Rochester Institute of Technology', '/Professor_Malachowsky.jpg', e'[{"link":"https://www.se.rit.edu/~samvse/","network":"sharethis"}]', 'Samuel A. Malachowsky is a certified career Project Manager (PMP) who currently teaches in the Software Engineering Department at the Rochester Institute of Technology. His passion lies in connecting the abstract and technical with the practical-by teaching project values, leadership, and personal professional development.', null, null),
@@ -3673,7 +3702,7 @@ VALUES (1, 'Daniel', 'Krutz', 'Principal Investigator', 'Rochester Institute of 
 (5, 'Saikat', 'Dutta', 'Advisor', 'Assistant Professor, Cornell University','/Dutta.jpg', '[{"link":"https://www.cs.cornell.edu/~saikatd/","network": "sharethis"}]', 'I am an Assistant Professor in the Department of Computer Science at Cornell University. My research interests are at the intersection of Software Engineering and Machine Learning. I am a member of the growing Software Engineering Group at Cornell. I received my PhD in Computer Science from the University of Illinois Urbana-Champaign in Summer 2023.', null, null);
 
 INSERT INTO public.team_members (id, "firstName", "lastName", title, "imageURL", socials, work, "datesActive", "isActive", aboutMe, favoriteLab, labCredits) VALUES (1, 'Saad', 'Khan', 'PM, Engineer', '/Saad_Khan.jpg', '[{"link":"https://www.linkedin.com/in/saad-khan23/","network":"linkedin"}]', null, '2019-2021', false, null, null, '{1, 3, 4, 5}')
-,(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-Present', true, 'I’m a recent graduate of the Software Engineering program at RIT, and I’m currently pursuing an MBA, also at RIT. I’m passionate about inclusion in technology!', 8, '{1, 3, 4, 8, 9, 12}')
+,(2, 'Heather', 'Moses', 'PM, Engineer', '/Heather_Moses.jpg', '[{"link":"https://www.linkedin.com/in/heather-moses/","network":"linkedin"}]', null, '2020-Present', true, 'I’m a recent graduate of the Software Engineering program at RIT, and I’m currently pursuing an MBA, also at RIT. I’m passionate about technology!', 8, '{1, 3, 4, 8, 9, 12}')
 ,(3, 'Christopher', 'Savan', 'Engineer', '/Christopher_Savan.jpg', '[{"link":"https://www.linkedin.com/in/christophersavan/","network":"linkedin"}]', null, '2020-2021', false, null, null, '{3}')
 ,(15, 'Payton', 'Dinwiddie', 'Education', '/Payton.jpg', '[{"link": "https://www.linkedin.com/in/paytonsidneydinwiddie//","network": "linkedin"}]', null, '2022-2022', false, null, null, null)
 ,(17, 'Garsha', 'Thomas', 'Education', '/bcu_default_image.jpg', '[]', null, '2022-2022', false, null, null, null)
@@ -3715,3 +3744,4 @@ INSERT INTO public.participating_schools (id, "schoolName", "imageURL", "website
 (4, 'Rutgers University', '/Rutgers.png', 'https://www.rutgers.edu/'), (5, 'SUNY Sullivan', '/Sullivan.png', 'https://sunysullivan.edu/'),
 (6, 'Rockland Community College', '/Rockland.png', 'https://sunyrockland.edu/'), (7, 'SUNY Schenectady', '/Schenectady.png', 'https://sunysccc.edu/index.html'),
 (8, 'Binghamton University', '/Binghamton.png', 'https://www.binghamton.edu/');
+

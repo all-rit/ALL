@@ -17,32 +17,31 @@ class Results extends Component {
     if (!visible) return null;
 
     return (
-      <div className="results">
+      <div className="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
         <div className="tw-title tw-mb-6">Exercise Over</div>
 
-        <div className="results__content tw-sub-title">
-          <p className="results__sentence">
-            Great job! Here are your statistics:
-          </p>
+        <div className="">
+          <p className="">Stats</p>
+          <div className={"tw-grid tw-grid-cols-2 tw-gap-3 tw-w-full tw-my-6"}>
+            <div className="result tw-bg-primary-blue tw-text-white tw-p-6 tw-rounded-lg">
+              <span className="tw-font-bold">Final Score: {score}</span>
+            </div>
 
-          <div className="result">
-            <span className="result__category">Final Score:</span>
-            <span className="result__value">{score}</span>
-          </div>
+            <div className="result tw-bg-primary-blue tw-text-white tw-p-6 tw-rounded-lg">
+              <span className="result__category">
+                Correct Answers: {correctAnswers}
+              </span>
+            </div>
 
-          <div className="result">
-            <span className="result__category">Correct Answers:</span>
-            <span className="result__value">{correctAnswers}</span>
-          </div>
+            <div className="result tw-bg-primary-blue tw-text-white tw-p-6 tw-rounded-lg">
+              <span className="result__category">
+                Incorrect Answers: {incorrectAnswers}
+              </span>
+            </div>
 
-          <div className="result">
-            <span className="result__category">Incorrect Answers:</span>
-            <span className="result__value">{incorrectAnswers}</span>
-          </div>
-
-          <div className="result tw-mb-6">
-            <span className="result__category">Rounds:</span>
-            <span className="result__value">{roundNumber}</span>
+            <div className="result tw-bg-primary-blue tw-text-white tw-p-6 tw-rounded-lg">
+              <span className="result__category">Rounds: {roundNumber}</span>
+            </div>
           </div>
         </div>
 

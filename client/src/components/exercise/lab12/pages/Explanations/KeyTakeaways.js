@@ -36,7 +36,7 @@ const KeyTakeaways = () => {
             they are as a person.
           </li>
           <li className={"tw-body-text"}>
-            Companies and workplaces should strive for inclusivity for all to
+            Companies and workplaces should strive for bias-free environments to
             increase collaboration, decrease stress, and promote bonding between
             coworkers.
           </li>
