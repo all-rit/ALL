@@ -35,6 +35,19 @@ shuffleArray(opponentAvatars);
 const Main = () => {
   const userID = sessionStorage.getItem("userID");
 
+  const [canContinue, setCanContinue] = useState(true);
+
+  //user has to wait 10 seconds before allowing the next person to play
+  useEffect(() => {
+    if (!canContinue) {
+      const timer = setTimeout(() => {
+        setCanContinue(true);
+      }, 10000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [canContinue]);
+
   //Removes header
   const { actions } = useMainStateContext();
   const startImagine = () => actions.setIsImagine(true);
@@ -65,9 +78,25 @@ const Main = () => {
     });
     setTeammateAvatarSelected(null);
     setOpponentAvatarSelected(null);
+    setCanContinue(false);
   };
 
   const year = 25;
+
+  //current user number
+  const [userNumber, setUserNumber] = useState(-1);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (userID != null) {
+        const user = await ImagineService.getUserByID(userID, 25);
+        setUserNumber(user.id);
+      }
+    };
+
+    fetchUser();
+  }, [userID]);
+
   return (
     <>
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
@@ -98,7 +127,7 @@ const Main = () => {
               "tw-flex tw-h-full tw-w-full tw-overflow-y-scroll tw-flex-col tw-justify-center"
             }
           >
-            <UpdateId default path={"/"} />
+            <UpdateId default path={"/"} canContinue={canContinue} />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PreSurvey`}
@@ -150,6 +179,9 @@ const Main = () => {
             />
             <Done path={"/Done"} resetInstance={clearInstance} />
           </Router>
+          <div className="tw-body-text tw-text-[2rem] tw-absolute tw-right-[-10rem] tw-top-0">
+            User Id: {userNumber}
+          </div>
         </div>
       </div>
     </>
