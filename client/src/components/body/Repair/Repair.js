@@ -198,11 +198,11 @@ const Repair = (props) => {
                     {getFileStatusColor(file.fileId) === "gray" ? (
                       <div className="tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-labGray"></div>
                     ) : getFileStatusColor(file.fileId) === "red" ? (
-                      <div className="tw-relative tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-error">
+                      <div className="tw-relative tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-error tw-text-white">
                         <PriorityHighIcon className="tw-absolute tw-text-[1.25rem]" />
                       </div>
                     ) : (
-                      <div className="tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-success">
+                      <div className="tw-relative tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-success tw-text-white">
                         <CheckIcon className="tw-absolute tw-text-[1.25rem]" />
                       </div>
                     )}
