@@ -45,6 +45,7 @@ class SecondTimer extends Component {
       enterThirdInfoState,
       isImagine,
       userID,
+      year,
     } = this.props;
 
     const isHex = exerciseOption === "hex";
@@ -146,14 +147,14 @@ class SecondTimer extends Component {
 
       if (isImagine) {
         const section = "experiential";
-        const user = await ImagineService.getUserByID(userID);
+        const user = await ImagineService.getUserByID(userID, year);
         if (data.Mode[0] === "MAIN") {
           const study = { main: { ...data } };
-          ImagineService.postStudy({ userID, study, section });
+          await ImagineService.postStudy({ userID, study, section, year });
         } else {
           const study = { ...user.study };
           study.protonopia = { ...data };
-          ImagineService.postStudy({ userID, study, section });
+          await ImagineService.postStudy({ userID, study, section, year });
         }
       }
     };

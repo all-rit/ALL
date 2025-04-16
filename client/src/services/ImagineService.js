@@ -4,25 +4,38 @@ import API from "./API";
 const ImagineService = {
   postStudy: async (data) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/postStudy",
+      process.env.REACT_APP_SERVER_URL + `/imagine${data.year}/postStudy`,
       data,
     );
   },
-  preSurvey: async (userID, preSurvey) => {
+  preSurvey: async (userID, preSurvey, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/preSurvey",
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/preSurvey`,
       {
         userID,
         preSurvey,
+        year,
       },
     );
   },
-  postSurvey: async (userID, postSurvey) => {
+
+  newID: async (userID, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/postSurvey",
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/newID`,
+      {
+        userID,
+        year,
+      },
+    );
+  },
+
+  postSurvey: async (userID, postSurvey, year) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/postSurvey`,
       {
         userID,
         postSurvey,
+        year,
       },
     );
   },
@@ -33,43 +46,99 @@ const ImagineService = {
       ),
     );
   },
-  getUserByID: (userID) => {
+  getUserByID: (userID, year) => {
     return Promise.resolve(
       API.get(
-        process.env.REACT_APP_SERVER_URL + `/imagine/user/${userID}`,
+        process.env.REACT_APP_SERVER_URL + `/imagine${year}/user/${userID}`,
         {},
       ).then((response) => response.json()),
     );
   },
-  readMoreCount: async (userID, readMoreCount) => {
+  getGroup: (userID, year) => {
+    return Promise.resolve(
+      API.get(
+        process.env.REACT_APP_SERVER_URL + `/imagine${year}/getGroup/${userID}`,
+        {},
+      ).then((response) => response.json()),
+    );
+  },
+  getTeammate: (userID, year) => {
+    return Promise.resolve(
+      API.get(
+        process.env.REACT_APP_SERVER_URL +
+          `/imagine${year}/getTeammate/${userID}`,
+        {},
+      ).then((response) => response.json()),
+    );
+  },
+  readMoreCount: async (userID, readMoreCount, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/readMoreCount",
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/readMoreCount`,
       {
         userID,
         readMoreCount,
+        year,
       },
     );
   },
 
-  readMoreTimeElapsed: async (userID, readMoreTimeElapsed) => {
+  readMoreTimeElapsed: async (userID, readMoreTimeElapsed, year) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/readMoreTimeElapsed",
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/readMoreTimeElapsed`,
       {
         userID,
         readMoreTimeElapsed,
+        year,
       },
     );
   },
 
-  readingSectionPagePosition: async (userID, readingSectionPagePosition) => {
+  readingSectionPagePosition: async (
+    userID,
+    readingSectionPagePosition,
+    year,
+  ) => {
     return await API.postWithBody(
-      process.env.REACT_APP_SERVER_URL + "/imagine/readingSectionPagePosition",
+      process.env.REACT_APP_SERVER_URL +
+        `/imagine${year}/readingSectionPagePosition`,
       {
         userID,
         readingSectionPagePosition,
+        year,
+      },
+    );
+  },
+  postTeammateSelection: async (userID, teammateAvatar, year) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL +
+        `/imagine${year}/teammateAvatarSelection`,
+      {
+        userID,
+        teammateAvatar,
+        year,
+      },
+    );
+  },
+  postUserAvatar: async (userID, avatar, year) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL + `/imagine${year}/userAvatarCreation`,
+      {
+        userID,
+        avatar,
+        year,
+      },
+    );
+  },
+  postOpponentSelection: async (userID, opponentAvatar, year) => {
+    return await API.postWithBody(
+      process.env.REACT_APP_SERVER_URL +
+        `/imagine${year}/opponentAvatarSelection`,
+      {
+        userID,
+        opponentAvatar,
+        year,
       },
     );
   },
 };
-
 export default ImagineService;

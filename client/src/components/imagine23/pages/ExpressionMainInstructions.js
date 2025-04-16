@@ -1,11 +1,11 @@
 import React from "react";
-import Circle from "../components/circle";
+import Circle from "../../all-components/imagine-components/circle";
 import { navigate } from "@reach/router";
 import "./landingpage.css";
 
 const ExpressionMainInstructions = () => {
   const handleNext = () => {
-    navigate("/Imagine/ExpressionActivity");
+    navigate("/Imagine2023/ExpressionActivity");
   };
   return (
     <div className="mainInstructionsContainer">

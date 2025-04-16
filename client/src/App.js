@@ -40,7 +40,8 @@ import Profile from "./components/body/profilepage/Profile";
 /** Miscellaneous Components and Redux **/
 import { default as Error } from "./pages/landingpage/error";
 import { default as SiteMap } from "./pages/landingpage/sitemap";
-import { default as Imagine } from "./components/imagine23/Main";
+import { default as Imagine2023 } from "./components/imagine23/Main";
+import { default as Imagine2025 } from "./components/imagine25/Main";
 import { globalHistory, Router } from "@reach/router";
 import { connect } from "react-redux";
 import { actions as mainActions } from "./reducers/MainReducer";
@@ -148,11 +149,17 @@ const App = () => {
         <EducatorResources path={"/EducatorResources"} user={state.main.user} />
         <Error actions={actions} default />
 
-        <Imagine
-          path={"/Imagine/*"}
+        <Imagine2023
+          path={"/Imagine2023/*"}
           user={state.main.user}
           isImagine={isImagine}
           actions={actions}
+        />
+
+        <Imagine2025
+          path={"/Imagine2025/*"}
+          user={state.main.user}
+          isImagine={isImagine}
         />
       </Router>
     );
@@ -162,8 +169,10 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div className="tw-overflow-x-hidden tw-h-lvh">
-        <Header />
+      <div
+        className={`overflow-x-hidden tw-h-lvh ${isImagine ? "overflow-y-hidden" : "overflow-y-auto"}`}
+      >
+        <Header isImagine={isImagine} />
         <Suspense
           fallback={
             <div className={"tw-body-text tw-max-h-[40rem]"}> Loading... </div>
@@ -221,7 +230,7 @@ const App = () => {
               )}
             </div>
           </div>
-          {lab === 0 && <MainFooter />}
+          {lab === 0 && !isImagine && <MainFooter />}
           <ALLSnackbar />
           {lab !== 0 && (
             <LabFooter

@@ -4,7 +4,7 @@ import ImagineService from "../../../services/ImagineService";
 import PropTypes from "prop-types";
 
 const LearnMoreButton = (props) => {
-  const { data, userID } = props;
+  const { data, userID, year } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const [counter, setCounter] = useState(0);
@@ -40,7 +40,11 @@ const LearnMoreButton = (props) => {
   };
 
   useEffect(() => {
-    ImagineService.readMoreCount(userID, counter);
+    const getReadMoreCount = async () => {
+      await ImagineService.readMoreCount(userID, counter, year);
+    };
+
+    getReadMoreCount().catch(console.error);
   }, [counter, userID]);
 
   const formatTime = (time) => {
@@ -52,7 +56,10 @@ const LearnMoreButton = (props) => {
   };
 
   useEffect(() => {
-    ImagineService.readMoreTimeElapsed(userID, timeElapsed);
+    const getReadMoreTimeElapsed = async () => {
+      await ImagineService.readMoreTimeElapsed(userID, timeElapsed, year);
+    };
+    getReadMoreTimeElapsed().catch(console.error);
   }, [timeElapsed, userID]);
 
   return (
@@ -107,6 +114,7 @@ const LearnMoreButton = (props) => {
 LearnMoreButton.propTypes = {
   data: PropTypes.string,
   userID: PropTypes.string,
+  year: PropTypes.number,
 };
 
 export default LearnMoreButton;

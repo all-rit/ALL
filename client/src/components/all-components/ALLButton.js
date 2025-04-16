@@ -16,12 +16,12 @@ const ALLButton = (props) => {
         <div
           className={`tw-absolute tw-border-solid tw-border-primary-blue
                 tw-border-[0.4rem] ${large && "tw-border-[0.5rem]"} tw-right-[-0.5rem] tw-top-[-0.5rem] tw-h-full tw-w-full tw-z-1
-                tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg`}
+                tw-border-l-0 tw-border-b-0 tw-rounded-tr-lg blue-drop-shadow`}
         />
         <div
           className={`tw-absolute tw-border-solid tw-border-primary-yellow
             tw-border-[0.4rem] ${large && "tw-border-[0.5rem]"} tw-left-[-0.5rem] tw-bottom-[-0.5rem]
-            tw-w-full tw-h-full tw-z-1 tw-border-t-0 tw-border-r-0 tw-rounded-bl-lg`}
+            tw-w-full tw-h-full tw-z-1 tw-border-t-0 tw-border-r-0 tw-rounded-bl-lg yellow-drop-shadow`}
         />
       </button>
     </div>
