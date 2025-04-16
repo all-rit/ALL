@@ -90,7 +90,7 @@ const Main = () => {
         </div>
         <div
           className={
-            "tw-absolute tw-z-10 tw-bg-white tw-top-10 tw-left-[12.5%] tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6 tw-min-h-[40rem]"
+            "tw-absolute tw-z-10 tw-bg-white tw-top-[10%] tw-left-[12.5%] tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6 tw-min-h-[40rem]"
           }
         >
           <Router

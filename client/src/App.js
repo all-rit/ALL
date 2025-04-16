@@ -169,8 +169,10 @@ const App = () => {
   initializeReactGA();
   return (
     <>
-      <div className="tw-overflow-x-hidden tw-h-lvh">
-        <Header />
+      <div
+        className={`overflow-x-hidden tw-h-lvh ${isImagine ? "overflow-y-hidden" : "overflow-y-auto"}`}
+      >
+        <Header isImagine={isImagine} />
         <Suspense
           fallback={
             <div className={"tw-body-text tw-max-h-[40rem]"}> Loading... </div>
