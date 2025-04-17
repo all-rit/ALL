@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
+import { navigate } from "@reach/router";
+import Button from "../../../all-components/LabButton";
 
 const PageHeader = ({ children, className }) => {
   return (
@@ -87,7 +89,11 @@ PageFooter.propTypes = {
   className: PropTypes.string,
 };
 
-export const Page = ({ children, className }) => {
+export const Page = ({ children, className, nextPage = null }) => {
+  const handleNav = () => {
+    navigate(nextPage);
+  };
+
   return (
     <div
       id="page"
@@ -98,6 +104,11 @@ export const Page = ({ children, className }) => {
       )}
     >
       {children}
+      {nextPage && (
+        <Page.Footer className="tw-items-center">
+          <Button onClick={handleNav} label="Next" />
+        </Page.Footer>
+      )}
     </div>
   );
 };
@@ -105,6 +116,7 @@ export const Page = ({ children, className }) => {
 Page.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  nextPage: PropTypes.string,
 };
 
 PageHeader.Title = PageHeaderTitle;

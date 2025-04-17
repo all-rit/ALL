@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Page } from "../../components/Page";
 import { COLORS, createEdge } from "../../../../all-components/Diagrams";
 import { ReactFlow, Background } from "@xyflow/react";
+import { ROUTES } from "../../../../../constants/lab0/index";
 
 const initialNodes = [
   {
@@ -53,17 +54,17 @@ export const BackendIntroduction = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page>
+    <Page nextPage={ROUTES.SECTION_LAB_DATA}>
       <Page.Header>
         <Page.Header.Title>Backend Development</Page.Header.Title>
         <Page.Header.Description>
-          At ALL, our entire platform is powered by a robust backend built using{" "}
-          <code>Express.js</code> and a <code>PSQL</code> database. The backend
-          code is organized within the <code>server/</code> folder and follows a
-          clean, modular architecture designed around separation of concerns.
-          Each lab can have its own set of backend features, which follow a
-          consistent structure. This page introduces the four key parts of the
-          backend codebase:
+          Behind the scenes, our entire platform runs on a backend built with{" "}
+          <code>Express.js</code> and a<code>PSQL</code> database.
+          Everything&apos;s organized in the <code>server/</code> folder where
+          we&apos;ve set up a clean, modular system that keeps different
+          responsibilities separate. Each lab has its own dedicated backend
+          pieces that follow the same structure. Let&apos;s walk through the
+          four main parts of our backend:
         </Page.Header.Description>
       </Page.Header>
       <Page.Body className={"tw-gap-y-0"}>
@@ -92,49 +93,48 @@ export const BackendIntroduction = () => {
         <div>
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
-              <b>database</b> – This folder contains model definitions for all
-              entities using <code>Sequelize</code>. Every record stored in the
-              PSQL database—such as <code>labs</code>, <code>quizzes</code>,{" "}
-              <code>users</code>, or <code>groups</code>—has its schema defined
-              here. Lab-specific models are also placed in this folder. If
-              you&apos;re trying to locate how a particular entity is stored or
-              what fields it includes, this is your starting point.
+              <b>database</b> – This is where we define what our data looks like
+              using <code>Sequelize</code>. Every piece of information we store,
+              such as <code>labs</code> and <code>quizzes</code>,{" "}
+              <code>users</code>
+              and <code>groups</code>, has its structure defined here. If
+              you&apos;re trying to figure out how something is stored or what
+              fields it has, start here. It&apos;s like our data&apos;s
+              blueprint collection.
             </li>
             <li>
-              <b>services</b> – The service layer is where we perform queries
-              and business logic. A service receives parameters from the
-              controller, interacts with the database models, and applies any
-              necessary logic before returning a result. Each lab typically has
-              one or more services to handle specific tasks (e.g.,{" "}
-              <code>submitRepair()</code>, <code>getExerciseState()</code>).
-              Services should be domain-specific and follow best practices to
-              ensure modularity and reusability.
+              <b>services</b> – Services handle the heavy lifting of database
+              queries and business logic. When a controller needs information,
+              it asks a service, which knows exactly how to fetch what&apos;s
+              needed and process it. Each lab usually has dedicated services for
+              specific tasks (like <code>submitRepair()</code> or{" "}
+              <code>getExerciseState()</code>). We keep services focused on
+              specific domains to make them easier to maintain and reuse.
             </li>
             <li>
-              <b>controllers</b> – Controllers are invoked when an endpoint is
-              hit. Their job is to prepare data (e.g., extract values from the{" "}
-              <code>request body</code> or <code>session</code>), call the
-              appropriate service, and format the response to send back to the
-              frontend. Most of the time, each controller corresponds directly
-              to a service. Keep logic minimal. Most of the heavy lifting should
-              be done in services.
+              <b>controllers</b> – Controllers are the traffic directors of our
+              backend. Their job is simple: grab what&apos;s needed from the
+              request (like data from the <code>request body</code> or{" "}
+              <code>session</code>), call the right service, and package up the
+              response to send back. Controllers should be light on logic,
+              they&apos;re just the middlemen between the frontend requests and
+              our services.
             </li>
             <li>
-              <b>routes</b> – This folder contains all route declarations using{" "}
-              <code>Express</code>. Routes connect HTTP actions (e.g.,{" "}
-              <code>GET</code>, <code>POST</code>, <code>PUT</code>) and URL
-              paths (e.g., <code>/lab0/exercise</code>) to specific controller
-              functions. No logic belongs in these files—they simply act as a
-              map between frontend requests and backend functionality. If an
-              endpoint doesn&apos;t seem to be working:
+              <b>routes</b> – Routes connect HTTP methods (like <code>GET</code>{" "}
+              or <code>POST</code>) and URL paths (like{" "}
+              <code>/lab0/exercise</code>) to the right controller functions.
+              There&apos;s no logic here, routes just map incoming requests to
+              the right handlers. If something&apos;s not working with an
+              endpoint, check these three things:
               <ol className="tw-list-decimal tw-list-inside tw-pl-9">
                 <li>
-                  Double-check the method and path in the route definition
-                  (e.g., <code>GET /lab0/exercise</code>)
+                  Is the path and method correct? (e.g.,{" "}
+                  <code>GET /lab0/exercise</code>)
                 </li>
-                <li>Verify the correct controller is assigned to the route.</li>
+                <li>Is it pointing to the right controller?</li>
                 <li>
-                  Ensure you are hitting the correct port (<code>5005</code>).
+                  Are you hitting the right port? (should be <code>5005</code>)
                 </li>
               </ol>
             </li>

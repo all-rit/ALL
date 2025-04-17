@@ -28,10 +28,19 @@ const SECTION_ROUTING_REPAIR = "RoutingRepair";
 const SECTION_BACKEND_TIPS_TRICKS = "BackendTipsTricks";
 
 // Frontend
+const SECTION_FRONTEND_INTRODUCTION = "FrontendIntroduction";
+
+const SECTION_BOILERPLATE = "Boilerplate";
 const SECTION_BOILERPLATE_REPAIR = "BoilerplateRepair";
-const SECTION_INTEGRATION_REPAIR = "IntegrationRepair";
+
+const SECTION_CORE_LAB_PAGES = "CoreLabPages";
 const SECTION_CORE_LAB_PAGES_REPAIR = "CoreLabPagesRepair";
+
+const SECTION_INTEGRATION = "Integration";
+const SECTION_INTEGRATION_REPAIR = "IntegrationRepair";
+
 const SECTION_COMPONENT_LIBRARY = "ComponentLibrary";
+const SECTION_COMPONENT_LIBRARY_REPAIR = "ComponentLibraryRepair";
 const SECTION_FRONTEND_TIPS_TRICKS = "FrontendTipsTricks";
 
 // All routes
@@ -45,6 +54,8 @@ const ROUTES = {
   SECTION_EXPERIENTIAL_EXERCISE,
   SECTION_WIREFRAMING_OVERVIEW,
   SECTION_SPRINT_PLANNING,
+
+  // Backend
   SECTION_BACKEND_INTRODUCTION,
   SECTION_LAB_DATA,
   SECTION_LAB_DATA_REPAIR,
@@ -55,10 +66,17 @@ const ROUTES = {
   SECTION_ROUTING,
   SECTION_ROUTING_REPAIR,
   SECTION_BACKEND_TIPS_TRICKS,
+
+  // Frontend
+  SECTION_FRONTEND_INTRODUCTION,
+  SECTION_BOILERPLATE,
   SECTION_BOILERPLATE_REPAIR,
+  SECTION_INTEGRATION,
   SECTION_INTEGRATION_REPAIR,
+  SECTION_CORE_LAB_PAGES,
   SECTION_CORE_LAB_PAGES_REPAIR,
   SECTION_COMPONENT_LIBRARY,
+  SECTION_COMPONENT_LIBRARY_REPAIR,
   SECTION_FRONTEND_TIPS_TRICKS,
 };
 
@@ -124,22 +142,28 @@ const SECTIONS = {
     displayName: "Backend Tips & Tricks",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_BOILERPLATE_REPAIR]: {
+  [SECTION_FRONTEND_INTRODUCTION]: {
     category: SECTION_CATEGORY_FRONTEND,
-    name: SECTION_BOILERPLATE_REPAIR,
+    name: SECTION_FRONTEND_INTRODUCTION,
+    displayName: "Frontend Development",
+    imageURL: "/img/lab_thumbnails/wrench.jpg",
+  },
+  [SECTION_BOILERPLATE]: {
+    category: SECTION_CATEGORY_FRONTEND,
+    name: SECTION_BOILERPLATE,
     displayName: "Lab Boilerplate Setup",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_INTEGRATION_REPAIR]: {
+  [SECTION_CORE_LAB_PAGES]: {
     category: SECTION_CATEGORY_FRONTEND,
-    name: SECTION_INTEGRATION_REPAIR,
-    displayName: "Backend Integration",
+    name: SECTION_CORE_LAB_PAGES,
+    displayName: "Core Lab Pages",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
-  [SECTION_CORE_LAB_PAGES_REPAIR]: {
+  [SECTION_INTEGRATION]: {
     category: SECTION_CATEGORY_FRONTEND,
-    name: SECTION_CORE_LAB_PAGES_REPAIR,
-    displayName: "Core Lab Pages",
+    name: SECTION_INTEGRATION,
+    displayName: "Backend Integration",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },
   [SECTION_COMPONENT_LIBRARY]: {

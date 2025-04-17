@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Page } from "../../components/Page";
 import { COLORS, createEdge } from "../../../../all-components/Diagrams";
 import { ReactFlow, Background } from "@xyflow/react";
-
+import { ROUTES } from "../../../../../constants/lab0/index";
 const initialNodes = [
   {
     id: "1",
@@ -97,20 +97,22 @@ export const ServiceController = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page>
+    <Page nextPage={ROUTES.SECTION_SERVICE_CONTROLLER_REPAIR}>
       <Page.Header>
         <Page.Header.Title>Service Layer &amp; Controllers</Page.Header.Title>
         <Page.Header.Description>
-          The service layer and controller architecture separates backend logic
-          into two distinct concerns: services handle data processing and core
-          functionality, while controllers manage HTTP request handling. This
-          design keeps logic modular, and easy to maintain across labs.
+          We&apos;ve split our backend into two key parts that work
+          hand-in-hand: services and controllers. Think of services as the
+          brains that process data and handle complex operations, while
+          controllers are like traffic cops that direct incoming requests to the
+          right service. This division of labor keeps our code neat, focused,
+          and easier to maintain as labs grow more complex.
         </Page.Header.Description>
       </Page.Header>
       <Page.Body className={"tw-gap-y-0"}>
         <div
           className={
-            "tw-flex tw-flex-col tw-h-[30rem] tw-mb-9 tw-border-solid tw-border-2 tw-border-gray-200 tw-rounded-md"
+            "tw-flex tw-flex-col tw-h-[30rem] tw-mb-9 tw-border-solid tw-border-2 tw-rounded-md"
           }
         >
           <ReactFlow
@@ -133,48 +135,59 @@ export const ServiceController = () => {
         <div>
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
-              <code>services/labX</code> – Each lab has its own folder inside
-              the <code>services</code> directory to hold domain-specific logic.
-              These services interact with the database models and encapsulate
-              logic related to lab-specific features, such as exercise tracking
-              or repair submissions. Grouping services by lab ensures that logic
-              remains isolated and modular.
+              <code>services/labX</code> – Every lab gets its own folder inside
+              the <code>services</code> directory. This is where we store all
+              the specialized logic for that lab&apos;s features. These service
+              files talk directly to the database and handle all the complex
+              operations like saving exercise progress or processing repair
+              submissions. By keeping each lab&apos;s services isolated, we
+              avoid mixing up logic between different labs.
             </li>
             <li>
-              <code>ExerciseService.js</code> – Contains logic for managing
-              exercise state and completion. This service defines functions like{" "}
-              <code>getExercise()</code>, <code>postExercise()</code>, and{" "}
-              <code>submitChange()</code> to retrieve progress, store answer
-              attempts, and update user session data. It communicates directly
-              with the lab&apos;s <code>Exercise</code> model.
+              <code>ExerciseService.js</code> – This file handles everything
+              related to tracking and updating exercise progress. It provides
+              helpful functions like <code>getExercise()</code> to check where a
+              student left off,
+              <code>postExercise()</code> to save their work, and{" "}
+              <code>submitChange()</code> to update their session data.
+              It&apos;s directly wired to the lab&apos;s <code>Exercise</code>{" "}
+              database model so it knows exactly how to store and retrieve the
+              right information.
             </li>
             <li>
-              <code>RepairService.js</code> – Manages repair workflow data for a
-              lab. Functions like <code>submitRepair()</code>,{" "}
-              <code>getRepair()</code>, and <code>updateRepair()</code> allow us
-              to store, retrieve, and track repair-related activity. It
-              communicates directly with the lab&apos;s <code>Repair</code>{" "}
-              model.
+              <code>RepairService.js</code> – This service manages all the
+              repair activities for a lab. When students submit fixes to broken
+              code, this service processes that data with functions like{" "}
+              <code>submitRepair()</code>,<code>getRepair()</code>, and{" "}
+              <code>updateRepair()</code>. Like the exercise service, it talks
+              directly to its companion <code>Repair</code> database model.
             </li>
             <li>
-              <code>controllers/labX</code> – Controllers are the entry point
-              for each API route. They extract input values from{" "}
-              <code>req.body</code>, <code>req.params</code>, or{" "}
-              <code>req.session</code> and pass that data to the appropriate
-              service functions. Controllers should be thin and never contain
-              business logic.
+              <code>controllers/labX</code> – Controllers are like the front
+              desk of our API. Each lab has its own controller folder that
+              houses the code for handling incoming requests. Controllers
+              don&apos;t do any heavy lifting themselves; they just grab
+              what&apos;s needed from the request (from <code>req.body</code>,
+              <code>req.params</code>, or <code>req.session</code>), pass it to
+              the right service function, and return the results. They should be
+              simple and focused on request handling.
             </li>
             <li>
-              <code>ExerciseController.js</code> – Handles all HTTP actions
-              related to the lab’s exercise flow. For example, it might receive
-              a request to <code>GET /labX/exercise</code> or{" "}
-              <code>POST /labX/exercise/submit</code>, then call corresponding
-              service methods and return a structured response.
+              <code>ExerciseController.js</code> – This controller handles all
+              the HTTP requests related to exercises. For example, when someone
+              hits <code>GET /labX/exercise</code> or{" "}
+              <code>POST /labX/exercise/submit</code>, this controller springs
+              into action, calls the corresponding service method, and formats
+              the response to send back. Think of it as the exercise
+              service&apos;s personal assistant.
             </li>
             <li>
-              <code>RepairController.js</code> – Handles repair submission
-              requests. It parses the repair input from the client, then
-              delegates processing to <code>RepairService</code>.
+              <code>RepairController.js</code> – Similar to the exercise
+              controller, but focused on repair submissions. When a student
+              submits a repair, this controller unpacks the request data and
+              hands it off to the
+              <code>RepairService</code> for processing. It keeps our repair
+              workflow organized and predictable.
             </li>
           </ul>
         </div>

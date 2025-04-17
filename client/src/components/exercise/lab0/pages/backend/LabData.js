@@ -1,18 +1,20 @@
 import React from "react";
 import { Page } from "../../components/Page";
 import labData from "../../../../../assets/images/lab0/exercise/lab-data.png";
+import { ROUTES } from "../../../../../constants/lab0/index";
 
 export const LabData = () => {
   return (
-    <Page>
+    <Page nextPage={ROUTES.SECTION_LAB_DATA_REPAIR}>
       <Page.Header>
         <Page.Header.Title>Basic Lab Data</Page.Header.Title>
         <Page.Header.Description>
-          Each lab has its own record in the <code>labs</code>. These records
-          store metadata such as the lab&apos;s name, category, and description.
-          Because our system is fully database-driven, these records can be
-          updated at any time without needing to modify or commit code. Here are
-          key fields that require special attention.
+          Every lab has its own entry in the <code>labs</code> database table.
+          This is where we store all the important details like the lab&apos;s
+          name, what category it belongs to, and its description. The cool thing
+          is that since everything is database-driven, we can change these
+          details anytime without touching the code. Let&apos;s look at the key
+          fields that you&apos;ll need to pay attention to.
         </Page.Header.Description>
       </Page.Header>
       <Page.Body className={"tw-gap-y-0"}>
@@ -22,58 +24,65 @@ export const LabData = () => {
         <div>
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
-              <b>about</b> – A plain text field rendered on the landing page of
-              each lab (when visiting <code>/Lab/About</code>). It should
-              explain what the lab is about, what learners will explore, and why
-              the topic matters—all in a few clear and inviting sentences.
+              <b>about</b> – This is the plain text introduction that shows up
+              on each lab&apos;s landing page (when someone visits{" "}
+              <code>/Lab/About</code>). Think of it as your lab&apos;s elevator
+              pitch - it should explain what the lab covers, what students will
+              learn, and why they should care about the topic. Keep it clear,
+              inviting, and not too long.
             </li>
             <li>
-              <b>reading</b> – A structured JSON object that defines the main
-              instructional content of the lab. This includes:
+              <b>reading</b> – This is where the main educational content lives,
+              stored as a JSON object with several parts:
               <ul className="tw-list-disc tw-list-inside tw-pl-9">
                 <li>
-                  A <b>piechart</b> section with headers, captions, and data.
+                  A <b>piechart</b> section with headers, captions, and
+                  visualization data
                 </li>
                 <li>
-                  A <b>description</b> block for high-level exposition.
+                  A <b>description</b> section that gives a high-level overview
                 </li>
                 <li>
-                  A <b>body</b> section composed of structured items (like
-                  lists, case studies, or paragraphs).
+                  A <b>body</b> section with the meat of the content - could be
+                  lists, case studies, paragraphs, etc.
                 </li>
                 <li>
-                  A <b>footer</b> list of external resources and citations.
+                  A <b>footer</b> with links to external resources and citations
                 </li>
               </ul>
-              If you&apos;re unsure how to structure this field, examine the
-              JSON used in existing labs and follow the same schema conventions.
+              If you&apos;re not sure how to structure this, take a peek at
+              existing labs to see how they do it. Follow the same patterns to
+              keep things consistent.
             </li>
             <li>
-              <b>reinforcement</b> – A list of YouTube videos in JSON format,
-              where each entry includes a <code>title</code> and{" "}
-              <code>link</code>. These videos are embedded in the reinforcement
-              page and serve to reiterate important concepts, offer alternate
-              explanations, and enhance retention—especially for younger
-              learners.
+              <b>reinforcement</b> – This is our video playlist, stored as a
+              JSON list. Each entry has a <code>title</code>
+              and a <code>link</code> to a YouTube video. These videos show up
+              on the reinforcement page and help drive home important concepts
+              in different ways. They&apos;re especially helpful for younger
+              learners who might benefit from seeing the same idea explained
+              from multiple angles.
             </li>
             <li>
-              <b>quiz</b> – A list of quiz question objects stored as JSON. Each
-              object should include:
+              <b>quiz</b> – Our question bank, stored as a JSON list of question
+              objects. Each question needs:
               <ul className="tw-list-disc tw-list-inside tw-pl-9">
                 <li>
-                  The <code>question</code> string
+                  The actual <code>question</code> text
                 </li>
                 <li>
-                  A list of <code>answers</code>, with one or more marked as
-                  correct using <code>val: 1</code>
+                  A list of possible <code>answers</code>, with the correct ones
+                  marked by <code>val: 1</code>
                 </li>
                 <li>
-                  Optional <code>explanation</code> and <code>source</code>{" "}
-                  fields for feedback or citation
+                  Optional <code>explanation</code> text for when students
+                  answer, and <code>source</code> info if you&apos;re citing
+                  something
                 </li>
               </ul>
-              Questions should be aligned with the material covered and be
-              age-appropriate for K–12 (or early college) learners.
+              Make sure your questions match what&apos;s covered in the lab and
+              are appropriate for K-12 or early college students. A good mix of
+              difficulty helps keep everyone engaged.
             </li>
           </ul>
         </div>

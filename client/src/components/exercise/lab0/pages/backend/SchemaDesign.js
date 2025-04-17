@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Page } from "../../components/Page";
 import { COLORS, createEdge } from "../../../../all-components/Diagrams";
 import { ReactFlow, Background } from "@xyflow/react";
-
+import { ROUTES } from "../../../../../constants/lab0/index";
 const initialNodes = [
   {
     id: "1",
@@ -93,18 +93,20 @@ export const SchemaDesign = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page>
+    <Page nextPage={ROUTES.SECTION_SCHEMA_REPAIR}>
       <Page.Header>
         <Page.Header.Title>
           Database Design &amp; Schema Models
         </Page.Header.Title>
         <Page.Header.Description>
-          Each lab is backed by a well-defined schema using structured models in{" "}
-          <code>Sequelize</code>. This ensures that all data stored in our{" "}
-          <code>PSQL</code> database—such as labs, exercises, users, and quiz
-          records—is organized, validated, and easy to interact with across the
-          backend. This page walks through how schemas are defined and organized
-          inside the <code>server/database</code> folder.
+          Every lab needs a solid data foundation, and that&apos;s where our
+          schemas come in. We use <code>Sequelize</code> to create
+          well-structured models for all our data in the <code>PSQL</code>{" "}
+          database. This includes everything from labs and exercises to users
+          and quiz records. Having good schemas means our data stays organized,
+          validated, and easy to work with throughout the backend. Let&apos;s
+          explore how we set up these schemas in the
+          <code>server/database</code> folder.
         </Page.Header.Description>
       </Page.Header>
       <Page.Body className={"tw-gap-y-0"}>
@@ -133,53 +135,54 @@ export const SchemaDesign = () => {
         <div>
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
-              <code>schema.sql</code> – This file holds raw SQL definitions that
-              can be used to initialize a database. When onboarding a new schema
-              model, you must define the table both in the file and in the{" "}
-              <code>models/</code> folder. When adding a new lab, you must add
-              the lab record to the file to ensure new databases are initialized
-              with the most up-to-date data.
+              <code>schema.sql</code> – Think of this as our database&apos;s
+              birth certificate. It contains the raw SQL that creates all our
+              tables from scratch. Whenever you add a new data model,
+              you&apos;ll need to define it both here and in the{" "}
+              <code>models/</code> folder. If you&apos;re creating a new lab,
+              make sure to add its record here too, so new database setups will
+              include it automatically.
             </li>
             <li>
-              <code>models/</code> – This folder contains all{" "}
-              <code>Sequelize</code> model definitions. These models mirror the
-              structure of tables in the database and define the types,
-              constraints, and relationships between entities. Every backend
-              data entity in the platform originates from here.
+              <code>models/</code> – This is where the magic happens for our
+              data structures. Each file in this folder defines a{" "}
+              <code>Sequelize</code> model that mirrors a database table. These
+              models don&apos;t just describe the data&apos;s shape; they also
+              establish the rules, constraints, and relationships between
+              different pieces of information. Every bit of data in our platform
+              starts its life here.
             </li>
             <li>
-              <code>models/labX</code> – Each lab that requires custom data will
-              have its own subfolder inside <code>models/</code>. For example,
-              in almost all labs, there are specialized schema files like{" "}
-              <code>Exercise.js</code> and <code>Repair.js</code> that are only
-              relevant to that lab. This structure keeps lab-specific data clean
-              and isolated. When designing models, ensure you consider the use
-              cases of the lab and design the schema accordingly. Models are a
-              usually a one-way door, because once data is inserted into the
-              table, it can be very difficult to modify. For this reason,
-              it&apos;s important to design the schema to be as flexible as
-              possible.
+              <code>models/labX</code> – Each lab gets its own corner in the
+              models folder when it needs custom data. For instance, most labs
+              have their own versions of <code>Exercise.js</code> and{" "}
+              <code>Repair.js</code> tailored to that lab&apos;s specific needs.
+              This keeps things tidy and prevents labs from stepping on each
+              other&apos;s toes data-wise. When designing these models, think
+              carefully about what your lab will need to store. Setting schemas
+              are a one-way door decision, meaning once the schema is set,
+              it&apos;s hard to change. So aim for flexibility in your design
+              from the start.
             </li>
             <li>
-              <code>Exercise.js</code> – This file defines the schema used to
-              track user progress in a lab&apos;s exercises. For example, if a
-              lab&apos;s exercise requires a user to play a game, the{" "}
-              <code>Exercise.js</code> model may include fields like{" "}
-              <code>score</code>, <code>timePlayed</code>, and{" "}
-              <code>playthrough</code> to track the user&apos;s progress. Most
-              labs will have multiple exercises, so ensure you properly model
-              the schema to encapsulate all the data needed for each exercise.
+              <code>Exercise.js</code> – This is where we track how students are
+              doing in each lab exercise. For example, if your lab has a game
+              component, you might track things like <code>score</code>,{" "}
+              <code>timePlayed</code>, and which
+              <code>playthrough</code> attempt they&apos;re on. Most labs have
+              multiple exercises, so your schema should accommodate all the
+              different data points you need to track progress effectively.
             </li>
             <li>
-              <code>Repair.js</code> – This schema stores the details of
-              specific repairs submitted by users. Each lab will have its own
-              repair schema, which will include fields relevant to the
-              lab&apos;s repair section. For example, <code>lab9</code> has an
-              address repair section, so the repair schema will include fields
-              like <code>address</code>, <code>city</code>, <code>state</code>,
-              and <code>zip</code>. Similar to the <code>Exercise.js</code>{" "}
-              model, ensure you properly model the schema to encapsulate all the
-              data needed for each repair section.
+              <code>Repair.js</code> – This is our repository for all the repair
+              submissions students make. Each lab has its own repair
+              requirements, so these schemas vary quite a bit. For example,{" "}
+              <code>lab9</code> focuses on address validation, so its repair
+              schema includes fields like <code>address</code>,{" "}
+              <code>city</code>, <code>state</code>, and
+              <code>zip</code>. Like with the Exercise models, make sure you
+              capture all the data points you&apos;ll need to properly evaluate
+              and track repairs.
             </li>
           </ul>
         </div>

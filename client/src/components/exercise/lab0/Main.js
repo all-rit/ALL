@@ -24,6 +24,29 @@ import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
 import TestRepair from "./TestRepair";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
+import {
+  LabDataRepair,
+  SchemaRepair,
+  ServiceControllerRepair,
+  RoutingRepair,
+  BackendTipsTricks,
+  BackendIntroduction,
+  LabData,
+  SchemaDesign,
+  ServiceController,
+  Routing,
+} from "./pages/backend";
+import {
+  FrontendIntroduction,
+  Boilerplate,
+  BoilerplateRepair,
+  Integration,
+  IntegrationRepair,
+  CoreLabPages,
+  CoreLabPagesRepair,
+  ComponentLibrary,
+  FrontendTipsTricks,
+} from "./pages/frontend";
 
 const Main = (props) => {
   const { user } = props;
@@ -90,13 +113,25 @@ const Main = (props) => {
           <WireframeExercise path={"/WireframeExercise"} />
           <WireframeComponents path={"/WireframeComponents"} />
 
-          {/*// Scrum Activity*/}
-          <ScrumIntroduction path={"/ScrumIntro"} />
-          <ScrumBoardActivity path={"/ScrumBoardActivity"} />
-          <ScrumVelocityReading path={"/ScrumVelocityReading"} />
-          <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
+          {/* Frontend Pages */}
+          <FrontendIntroduction
+            path={`${ROUTES.SECTION_FRONTEND_INTRODUCTION}`}
+          />
 
-          <DesignLabEnd path={"/DesignLabEnd"} />
+          <Boilerplate path={`${ROUTES.SECTION_BOILERPLATE}`} />
+          <BoilerplateRepair path={`${ROUTES.SECTION_BOILERPLATE_REPAIR}`} />
+
+          <CoreLabPages path={`${ROUTES.SECTION_CORE_LAB_PAGES}`} />
+          <CoreLabPagesRepair
+            path={`${ROUTES.SECTION_CORE_LAB_PAGES_REPAIR}`}
+          />
+
+          <Integration path={`${ROUTES.SECTION_INTEGRATION}`} />
+          <IntegrationRepair path={`${ROUTES.SECTION_INTEGRATION_REPAIR}`} />
+
+          <ComponentLibrary path={`${ROUTES.SECTION_COMPONENT_LIBRARY}`} />
+
+          <FrontendTipsTricks path={`${ROUTES.SECTION_FRONTEND_TIPS_TRICKS}`} />
         </Router>
       </Lab0Context.Provider>
     </div>

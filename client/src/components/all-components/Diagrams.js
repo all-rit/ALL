@@ -64,6 +64,7 @@ export const createEdge = (
   type,
   style,
   markerEnd,
+  label,
 ) => {
   return {
     id: `${source}->${target}`,
@@ -76,6 +77,7 @@ export const createEdge = (
       strokeWidth: 2,
       ...style,
     },
+    data: { label },
     markerEnd,
   };
 };
