@@ -16,6 +16,7 @@ const SECTION_SPRINT_PLANNING = "ScrumIntro";
 const SECTION_LAB_DATA_REPAIR = "LabDataRepair";
 const SECTION_SCHEMA_REPAIR = "SchemaRepair";
 const SECTION_SERVICE_CONTROLLER_REPAIR = "ServiceControllerRepair";
+const SECTION_ROUTING_INTRO = "APIRequestReading";
 const SECTION_ROUTING_REPAIR = "RoutingRepair";
 const SECTION_BACKEND_TIPS_TRICKS = "BackendTipsTricks";
 const SECTION_BOILERPLATE_REPAIR = "BoilerplateRepair";
@@ -93,7 +94,7 @@ const SECTIONS = {
   },
   [SECTION_ROUTING_REPAIR]: {
     category: SECTION_CATEGORY_BACKEND,
-    name: SECTION_ROUTING_REPAIR,
+    name: SECTION_ROUTING_INTRO,
     displayName: "API Endpoints & Routing",
     imageURL: "/img/lab_thumbnails/wrench.jpg",
   },

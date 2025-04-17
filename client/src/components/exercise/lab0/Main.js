@@ -23,6 +23,8 @@ import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
+import APIRequestReading from "./DevelopLabSection/API-Endpoints/APIRequestReading";
+import APIRequestExercise from "./DevelopLabSection/API-Endpoints/APIRequestExercise";
 
 const Main = (props) => {
   const { user } = props;
@@ -95,6 +97,9 @@ const Main = (props) => {
           <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
 
           <DesignLabEnd path={"/DesignLabEnd"} />
+
+          <APIRequestReading path={"/APIRequestReading"} />
+          <APIRequestExercise path={"/APIRequestExercise"} />
         </Router>
       </Lab0Context.Provider>
     </div>
