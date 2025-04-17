@@ -133,7 +133,7 @@ const Main = () => {
               path={`/PreSurvey`}
               type={"pre"}
               year={year}
-              userID={userID}
+              userID={userID || ""}
             />
             <AvatarCreationPage
               path={"/AvatarCreation"}
@@ -168,14 +168,14 @@ const Main = () => {
               path={`/PreSurvey`}
               type={"pre"}
               year={year}
-              userID={userID}
+              userID={userID || ""}
             />
             <Survey
               className="app tw-h-full tw-overflow-x-hidden tw-flex tw-justify-center tw-items-center"
               path={`/PostSurvey`}
               type={"post"}
               year={year}
-              userID={userID}
+              userID={userID || ""}
             />
             <Done path={"/Done"} resetInstance={clearInstance} />
           </Router>
