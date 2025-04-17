@@ -223,7 +223,6 @@ const SurveyHandler = (props) => {
 
   function rankingUpdate(updatedRankingAnswers) {
     setSelectedAnswers((prevState) => {
-      console.log(updatedRankingAnswers);
       const updatedState = [...prevState];
       updatedState[currentQuestionCursor] = {
         question: questions[currentQuestionCursor].question,

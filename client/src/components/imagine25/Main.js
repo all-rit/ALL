@@ -90,7 +90,7 @@ const Main = () => {
     const fetchUser = async () => {
       if (userID != null) {
         const user = await ImagineService.getUserByID(userID, 25);
-        setUserNumber(user.id);
+        setUserNumber(user?.id);
       }
     };
 
@@ -133,7 +133,7 @@ const Main = () => {
               path={`/PreSurvey`}
               type={"pre"}
               year={year}
-              userID={sessionStorage.getItem("userID")}
+              userID={userID}
             />
             <AvatarCreationPage
               path={"/AvatarCreation"}

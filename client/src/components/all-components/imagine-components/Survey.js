@@ -13,7 +13,7 @@ function Survey(props) {
     likert: <Likert onAnswerSelected={props.onAnswerSelected} />,
     ranking: (
       <RankingQuestion
-        options={props.answerOptions}
+        options={props.answerOptions || []}
         updatedSelectedAnswers={props.rankingUpdate}
       />
     ),
