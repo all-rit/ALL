@@ -1,4 +1,8 @@
-import React from "react";
+// Create story where user create an ill-formed request and receives
+// an error response. The user is then prompted to update the call
+// and will receive a success response
+
+import React, { useState } from "react";
 import {
   Circle,
   KeyboardArrowDown,
@@ -8,7 +12,13 @@ import {
   MoreHoriz,
   SaveOutlined,
 } from "@mui/icons-material";
-import { Input } from "reactstrap";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Input,
+} from "reactstrap";
 
 const GET = () => {
   return (
@@ -59,6 +69,29 @@ const PUT = () => {
 };
 
 const FauxPostman = () => {
+  const [APICall, setAPIcall] = useState("");
+  const [key, setKey] = useState("");
+  const [value, setValue] = useState("");
+
+  const [response, setResponse] = useState("");
+  const [correctSubmission, setCorrectSubmission] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [label, setLabel] = useState(<GET />);
+
+  const toggleDropdownOpen = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const submitCall = (e) => {
+    e.preventDefault();
+    try {
+      setCorrectSubmission(true);
+      setResponse(`API URL: ${APICall}, Key: ${key}, Value: ${value}`);
+    } catch (error) {
+      console.error("Something went wrong.");
+    }
+  };
+
   return (
     <div
       className={
@@ -82,7 +115,7 @@ const FauxPostman = () => {
           <div className={"tw-flex tw-flex-row tw-gap-x-2 tw-text-sm"}>
             <p>Home</p>
             <p>
-              Workspaces{" "}
+              Workspaces
               <KeyboardArrowDown style={{ fill: "#fff" }} fontSize={"20px"} />
             </p>
             <p>Explore</p>
@@ -221,13 +254,43 @@ const FauxPostman = () => {
             </div>
           </div>
           <div className={"tw-flex tw-flex-row tw-gap-x-3 tw-px-3"}>
+            <Dropdown
+              isOpen={isDropdownOpen}
+              toggle={toggleDropdownOpen}
+              className={"tw-bg-[#222222]"}
+            >
+              <DropdownToggle
+                className={
+                  "tw-bg-[#222222] tw-flex tw-items-center tw-gap-x-3 tw-border tw-border-[#2c2c2c]"
+                }
+                caret
+              >
+                {label}
+              </DropdownToggle>
+              <DropdownMenu className={"tw-bg-[#222222]"}>
+                <DropdownItem onClick={() => setLabel(<GET />)}>
+                  <GET />
+                </DropdownItem>
+                <DropdownItem onClick={() => setLabel(<POST />)}>
+                  <POST />
+                </DropdownItem>
+                <DropdownItem onClick={() => setLabel(<PUT />)}>
+                  <PUT />
+                </DropdownItem>
+                <DropdownItem onClick={() => setLabel(<DELETE />)}>
+                  <DELETE />
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
             <Input
               className={
                 "tw-bg-[#222222] tw-border-[#2c2c2c] tw-text-[#9c9c9c] placeholder:tw-text-[#3c3c3c]"
               }
               placeholder={"Enter API Call Here"}
-            />
+              onChange={(e) => setAPIcall(e.target.value)}
+            ></Input>
             <button
+              onClick={submitCall}
               className={
                 "tw-bg-[#0d70ea] tw-gap-x-8 tw-px-3 tw-py-1 tw-border-0 tw-rounded-md tw-text-white tw-font-bold tw-flex tw-items-center tw-justify-between tw-w-1/6"
               }
@@ -315,6 +378,8 @@ const FauxPostman = () => {
                       }
                       placeholder={"Enter Key Input Here"}
                       style={{ color: "#fff" }}
+                      onChange={(e) => setKey(e.target.value)}
+                      value={key}
                     />
                   </td>
                   <td className={"tw-border-[#2c2c2c] tw-border-solid"}>
@@ -323,6 +388,8 @@ const FauxPostman = () => {
                         "tw-w-full tw-bg-[#1e1e1e] tw-border-0 tw-text-[#9c9c9c] placeholder:tw-text-[#3c3c3c]"
                       }
                       placeholder={"Enter Value Input Here"}
+                      onChange={(e) => setValue(e.target.value)}
+                      value={value}
                     />
                   </td>
                   <td className={"tw-border-[#2c2c2c] tw-border-solid"}></td>
@@ -332,7 +399,7 @@ const FauxPostman = () => {
           </div>
           <div
             className={
-              "tw-relative tw-h-full tw-w-full tw-border-solid tw-border-[1px] tw-mt-3 tw-border-[#2a2a2a] tw-border-x-0 tw-border-b-0"
+              "tw-relative tw-h-full tw-w-full tw-border-solid tw-border-[1px] tw-mt-3 tw-border-[#2a2a2a] tw-border-x-0 tw-border-b-0 tw-flex tw-flex-col"
             }
           >
             <p
@@ -342,6 +409,18 @@ const FauxPostman = () => {
             >
               Response
             </p>
+            <div className={"tw-text-left tw-py-6 tw-px-2"}>
+              <p className={"tw-font-courier"}> {response}</p>
+            </div>
+            <button
+              className={
+                "tw-absolute tw-bottom-1 tw-right-1 tw-rounded-md tw-border-0 tw-px-5 tw-py-1 tw-text-white tw-bg-success disabled:tw-bg-[#2c2c2c] disabled:tw-text-[#9c9c9c]"
+              }
+              disabled={!correctSubmission}
+            >
+              {" "}
+              NEXT{" "}
+            </button>
           </div>
         </div>
       </div>
