@@ -84,7 +84,7 @@ const Main = () => {
   const year = 25;
 
   //current user number
-  const [userNumber, setUserNumber] = useState(-1);
+  const [userNumber, setUserNumber] = useState(1);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -102,7 +102,7 @@ const Main = () => {
       <div className={"tw-flex tw-h-full tw-w-full tw-mt-[10%]"}>
         <div
           className={
-            "tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[45rem] tw-gap-y-6 tw-pl-6 tw-absolute tw-top-10"
+            "tw-grid tw-grid-cols-8 tw-grid-rows-9 tw-w-full tw-h-[45rem] tw-gap-y-6 tw-pl-6 tw-absolute tw-top-0"
           }
         >
           <div
@@ -119,7 +119,7 @@ const Main = () => {
         </div>
         <div
           className={
-            "tw-absolute tw-z-10 tw-bg-white tw-top-[10%] tw-left-[12.5%] tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6 tw-min-h-[40rem]"
+            "tw-absolute tw-z-10 tw-top-[-4rem] tw-bg-white tw-left-[12.5%] tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6 tw-min-h-[40rem]"
           }
         >
           <Router
@@ -179,7 +179,7 @@ const Main = () => {
             />
             <Done path={"/Done"} resetInstance={clearInstance} />
           </Router>
-          <div className="tw-body-text tw-text-[2rem] tw-absolute tw-right-[-10rem] tw-top-0">
+          <div className="tw-body-text tw-text-[2rem] tw-absolute tw-right-[-10rem] tw-top-5">
             User Id: {userNumber}
           </div>
         </div>

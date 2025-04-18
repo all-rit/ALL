@@ -133,7 +133,7 @@ const Header = (props) => {
             }}
           >
             <img
-              className={`${!props.isImagine && "tw-cursor-pointer"} ${props.isImagine ? "xs:tw-max-h-[6rem] sm:tw-max-h-[7.5rem]" : "xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"}`}
+              className={`${!props.isImagine && "tw-cursor-pointer"} ${props.isImagine ? "xs:tw-max-h-[6rem] sm:tw-max-h-[4rem] tw-mt-[0.75rem]" : "xs:tw-max-h-[8rem] sm:tw-max-h-[10rem]"}`}
               src={Logo}
               alt="Computing Accessibility"
             />
