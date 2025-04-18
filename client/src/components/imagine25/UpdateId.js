@@ -31,10 +31,11 @@ const UpdateId = (props) => {
   }, [props.canContinue]);
 
   const handleUpdateID = async () => {
-    let userID = nanoid(6).toUpperCase();
-    sessionStorage.setItem("userID", userID);
-    await ImagineService.newID(userID, 25);
-
+    if (props.canContinue) {
+      let userID = nanoid(6).toUpperCase();
+      sessionStorage.setItem("userID", userID);
+      await ImagineService.newID(userID, 25);
+    }
     handleNext();
   };
 
