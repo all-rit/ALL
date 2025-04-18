@@ -119,7 +119,7 @@ const Main = () => {
         </div>
         <div
           className={
-            "tw-absolute tw-z-10 tw-top-[-4rem] tw-bg-white tw-left-[12.5%] tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6 tw-min-h-[40rem]"
+            "tw-absolute tw-z-10 tw-top-[-4rem] tw-bg-white tw-left-[12.5%] tw-w-3/4 tw-h-4/5 shadow tw-rounded-xl tw-p-6 tw-min-h-[38rem]"
           }
         >
           <Router
@@ -179,7 +179,7 @@ const Main = () => {
             />
             <Done path={"/Done"} resetInstance={clearInstance} />
           </Router>
-          <div className="tw-body-text tw-text-[2rem] tw-absolute tw-right-[-10rem] tw-top-5">
+          <div className="tw-body-text tw-text-[2rem] tw-absolute tw-right-[-9rem] tw-top-5">
             User Id: {userNumber}
           </div>
         </div>
