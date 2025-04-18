@@ -134,7 +134,7 @@ export const stateChange = (actions, pathname) => {
       actions.setBody(3);
       break;
     default:
-      actions.setBody(99);
+      actions.setBody(0);
       if (redirectBody !== "") {
         noMatch = true;
       }

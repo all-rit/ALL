@@ -22,6 +22,7 @@ import { SECTION_STATUSES, SECTIONS } from "../../../constants/lab0/index";
 import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
+import TestRepair from "./TestRepair";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
 
 const Main = (props) => {
@@ -70,6 +71,7 @@ const Main = (props) => {
         <Router className={"tw-p-3 tw-h-[40rem]"}>
           <StartExercise default path={"/*"} />
           <StartExercise path={"/Continue"} verb="Continue" />
+          <TestRepair path={"/TestRepair"} />
 
           {/*// Lab Ideation*/}
           <DesignLabIntroduction path={"/LabIdeation"} />

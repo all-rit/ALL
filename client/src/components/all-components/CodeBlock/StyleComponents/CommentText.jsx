@@ -20,6 +20,6 @@ const CommentText = ({ children }) => {
 };
 
 CommentText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
 };
 export default CommentText;

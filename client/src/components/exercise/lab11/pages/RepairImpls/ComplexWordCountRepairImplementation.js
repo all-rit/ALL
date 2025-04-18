@@ -9,7 +9,7 @@ import MultiTab from "src/components/all-components/CodeBlock/Components/MultiTa
 import ErrorText from "src/components/all-components/CodeBlock/StyleComponents/ErrorText";
 
 const ComplexWordCountRepairImplementation = (props) => {
-  const { fogIndexCalculationData, userInput, isInputValid, isFirst } = props;
+  const { inputs, userInput, validInputs, isFirst } = props;
 
   return (
     <>
@@ -122,7 +122,7 @@ const ComplexWordCountRepairImplementation = (props) => {
           let sentenceCount = letterContent.split(/[.!?]/).length - 1;
         </ReactText>
       </CodeLine>
-      {fogIndexCalculationData.map((input) => (
+      {inputs.map((input) => (
         <Fragment key={input.key}>
           <CodeLine>
             <Tab />
@@ -135,33 +135,20 @@ const ComplexWordCountRepairImplementation = (props) => {
               let {input.variableName} = letterContent.split(&#39;
               &#39;).filter((word) =&#62;
             </ReactText>
-            {input.userInput ? (
-              <CodeBlockInput
-                value={input.userInput}
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            ) : (
-              <CodeBlockInput
-                attributes={{
-                  onChange: (event) => {
-                    userInput(input.id, event.target.value);
-                  },
-                  name: input.variableName,
-                  type: "text",
-                  placeholder: "Enter Answer Here",
-                }}
-              />
-            )}
+            <CodeBlockInput
+              value={input.userInput}
+              attributes={{
+                onChange: (event) => {
+                  userInput(input.id, event.target.value);
+                },
+                name: input.variableName,
+                type: "text",
+                placeholder: "Enter Answer Here",
+              }}
+            />
             <ReactText>).length;</ReactText>
           </CodeLine>
-          {!isInputValid[input.id] && !isFirst && (
+          {!validInputs[input.id] && !isFirst && (
             <CodeLine>
               <MultiTab numberOfTabs={3} />
               <ErrorText>
@@ -189,9 +176,9 @@ const ComplexWordCountRepairImplementation = (props) => {
 };
 
 ComplexWordCountRepairImplementation.propTypes = {
+  inputs: PropTypes.array,
   userInput: PropTypes.func,
-  fogIndexCalculationData: PropTypes.array,
-  isInputValid: PropTypes.array,
+  validInputs: PropTypes.array,
   isFirst: PropTypes.bool,
 };
 
