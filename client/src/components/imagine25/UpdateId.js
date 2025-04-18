@@ -18,14 +18,6 @@ const UpdateId = (props) => {
 
   const [warning, setWarning] = useState("tw-hidden");
 
-  const handleNext = () => {
-    if (props.canContinue) {
-      navigate("/Imagine2025/PreSurvey");
-    } else {
-      setWarning("");
-    }
-  };
-
   useEffect(() => {
     setWarning("tw-hidden");
   }, [props.canContinue]);
@@ -35,8 +27,10 @@ const UpdateId = (props) => {
       let userID = nanoid(6).toUpperCase();
       sessionStorage.setItem("userID", userID);
       await ImagineService.newID(userID, 25);
+      navigate("/Imagine2025/PreSurvey");
+    } else {
+      setWarning("");
     }
-    handleNext();
   };
 
   return (
