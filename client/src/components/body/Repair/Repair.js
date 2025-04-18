@@ -46,7 +46,7 @@ const Repair = (props) => {
   const [selectedFile, setSelectedFile] = useState(0);
   const [enableNext, setEnableNext] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
-  const [userError, setUserError] = useState(true);
+  const [userError, setUserError] = useState(false);
   const headingRef = useRef(null);
 
   const REPAIR_MESSAGE = "Repair Successful!";
@@ -120,14 +120,14 @@ const Repair = (props) => {
     const localValidateRepair = checkInputValid();
     if (localValidateRepair) {
       handleCloseRepair();
-      setUserError(true);
+      setUserError(false);
       popUpHandler(REPAIR_MESSAGE);
       setEnableNext(true);
     }
     await postRepair();
     if (!localValidateRepair) {
       await fetchRepair();
-      setUserError(false);
+      setUserError(true);
       popUpHandler(ERROR_MESSAGE);
     }
     headingRef.current.scrollIntoView();
@@ -177,11 +177,7 @@ const Repair = (props) => {
           />
         </div>
       </div>
-      <Popup
-        message={popUpMessage}
-        handler={() => popUpHandler}
-        error={!userError}
-      />
+      <Popup message={popUpMessage} handler={popUpHandler} error={userError} />
       {isRepairActive && (
         <div
           className={`${repairVisible ? "tw-opacity-100" : "tw-opacity-0"} tw-transition-opacity tw-duration-500 tw-ease-in`}
@@ -189,7 +185,7 @@ const Repair = (props) => {
           <div className="tw-flex tw-flex-col tw-m-2 tw-bg-[[#ffffffe8]] tw-rounded-lg tw-text-left tw tw-border-solid tw-border-0 tw-shadow-[0px_0px_10px_0px_rgba(0,0,0,.4)]">
             <div className="tw-flex tw-flex-wrap tw-pt-3 tw-pl-3">
               {files.map((file) => (
-                <div
+                <button
                   key={file.fileId}
                   className={`tw-border-solid tw-border-2 tw-border-b-0 tw-cursor-pointer tw-p-2 tw-rounded-t-lg ${selectedFile !== file.fileId ? "tw-opacity-50" : ""}`}
                   onClick={() => handleFileChange(file.fileId)}
@@ -199,16 +195,16 @@ const Repair = (props) => {
                       <div className="tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-labGray"></div>
                     ) : getFileStatusColor(file.fileId) === "red" ? (
                       <div className="tw-relative tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-error tw-text-white">
-                        <PriorityHighIcon className="tw-absolute tw-text-[1.25rem]" />
+                        <PriorityHighIcon className="tw-absolute tw-left-0 tw-text-[1.25rem]" />
                       </div>
                     ) : (
                       <div className="tw-relative tw-w-[1.25rem] tw-h-[1.25rem] tw-aspect-square tw-rounded-full tw-bg-success tw-text-white">
-                        <CheckIcon className="tw-absolute tw-text-[1.25rem]" />
+                        <CheckIcon className="tw-absolute tw-left-0 tw-text-[1.25rem]" />
                       </div>
                     )}
                     <p className="tw-font-normal tw-text-sm">{file.fileName}</p>
                   </div>
-                </div>
+                </button>
               ))}
               <div className="tw-grow"></div>
             </div>
