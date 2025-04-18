@@ -22,8 +22,8 @@ import { SECTION_STATUSES, SECTIONS } from "../../../constants/lab0/index";
 import { EXERCISE_PLAYING } from "../../../constants/index";
 import ProgressService from "src/services/lab0/ProgressService";
 import StartExercise from "./StartExercise";
-import TestRepair from "./TestRepair";
 import DesignLabEnd from "./DesignLabSection/ScrumActivity/DesignLabEnd";
+import MockBrowser from "src/components/all-components/MockBrowser";
 
 const Main = (props) => {
   const { user } = props;
@@ -71,7 +71,6 @@ const Main = (props) => {
         <Router className={"tw-p-3 tw-h-[40rem]"}>
           <StartExercise default path={"/*"} />
           <StartExercise path={"/Continue"} verb="Continue" />
-          <TestRepair path={"/TestRepair"} />
 
           {/*// Lab Ideation*/}
           <DesignLabIntroduction path={"/LabIdeation"} />
@@ -97,6 +96,12 @@ const Main = (props) => {
           <ScrumVelocityActivity path={"/ScrumVelocityActivity"} />
 
           <DesignLabEnd path={"/DesignLabEnd"} />
+
+          <MockBrowser
+            path={"/TestMockBrowser"}
+            defaultURL="https://all.rit.edu"
+            responseImgURL="/img/test_mock_browser.png"
+          />
         </Router>
       </Lab0Context.Provider>
     </div>
