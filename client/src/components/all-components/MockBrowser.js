@@ -85,7 +85,7 @@ const MockBrowser = (props) => {
             <img
               src={responseImgURL}
               alt={`Rendered webpage for ${correctURL}`}
-              className="tw-h-full tw-object-fit"
+              className="tw-h-full tw-object-contain"
             />
           ) : (
             <>
