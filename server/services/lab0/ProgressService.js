@@ -51,7 +51,7 @@ async function submitProgress(userID, category, section, sectionStatus) {
       if (result[1]) {
         // A new record was just created, no update necessary
         return;
-      } else if (result[0].sectionStatus !== sectionStatus) {
+      } else if (result[0].sectionStatus !== 'COMPLETED') {
         // Record found but not created and sectionStatus differs
         result[0].sectionStatus = sectionStatus;
         result[0].save();
