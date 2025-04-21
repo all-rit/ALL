@@ -99,8 +99,8 @@ const Main = (props) => {
 
           <MockBrowser
             path={"/TestMockBrowser"}
-            defaultURL="https://all.rit.edu"
-            responseImgURL="/img/test_mock_browser.png"
+            correctURL="https://all.rit.edu"
+            responseImgURL="/img/lab_images/test_mock_browser.png"
           />
         </Router>
       </Lab0Context.Provider>
