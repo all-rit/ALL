@@ -8,18 +8,25 @@ module.exports = (sequelize, DataTypes) => {
 
   // TODO: Add Writing a Lab sections here too
   const lab0ProgressSection = DataTypes.ENUM(
+      // Design
       'LabIdeation',
       'LabDecision',
       'WireframeIntro',
       'ScrumIntro',
-      'LabDataRepair',
-      'SchemaRepair',
-      'ServiceControllerRepair',
-      'RoutingRepair',
+
+      // Backend
+      'BackendIntroduction',
+      'LabData',
+      'SchemaDesign',
+      'ServiceController',
+      'Routing',
       'BackendTipsTricks',
-      'BoilerplateRepair',
-      'IntegrationRepair',
-      'CoreLabPagesRepair',
+
+      // Frontend
+      'FrontendIntroduction',
+      'Boilerplate',
+      'Integration',
+      'CoreLabPages',
       'ComponentLibrary',
       'FrontendTipsTricks',
   );

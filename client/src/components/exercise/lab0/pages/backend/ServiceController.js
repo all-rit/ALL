@@ -105,8 +105,8 @@ export const ServiceController = () => {
           hand-in-hand: services and controllers. Think of services as the
           brains that process data and handle complex operations, while
           controllers are like traffic cops that direct incoming requests to the
-          right service. This division of labor keeps our code neat, focused,
-          and easier to maintain as labs grow more complex.
+          right service. This separation of concerns keeps our code neat,
+          focused, and easier to maintain as our labs grow in complexity.
         </Page.Header.Description>
       </Page.Header>
       <Page.Body className={"tw-gap-y-0"}>
@@ -147,20 +147,19 @@ export const ServiceController = () => {
               <code>ExerciseService.js</code> – This file handles everything
               related to tracking and updating exercise progress. It provides
               helpful functions like <code>getExercise()</code> to check where a
-              student left off,
-              <code>postExercise()</code> to save their work, and{" "}
-              <code>submitChange()</code> to update their session data.
+              student left off, <code>postExercise()</code> to save their work,
+              and <code>submitChange()</code> to update their exercise data.
               It&apos;s directly wired to the lab&apos;s <code>Exercise</code>{" "}
-              database model so it knows exactly how to store and retrieve the
-              right information.
+              model so it knows exactly how to store and retrieve the right
+              information.
             </li>
             <li>
               <code>RepairService.js</code> – This service manages all the
               repair activities for a lab. When students submit fixes to broken
               code, this service processes that data with functions like{" "}
-              <code>submitRepair()</code>,<code>getRepair()</code>, and{" "}
+              <code>submitRepair()</code>, <code>getRepair()</code>, and{" "}
               <code>updateRepair()</code>. Like the exercise service, it talks
-              directly to its companion <code>Repair</code> database model.
+              directly to the <code>Repair</code> model.
             </li>
             <li>
               <code>controllers/labX</code> – Controllers are like the front
@@ -178,18 +177,22 @@ export const ServiceController = () => {
               hits <code>GET /labX/exercise</code> or{" "}
               <code>POST /labX/exercise/submit</code>, this controller springs
               into action, calls the corresponding service method, and formats
-              the response to send back. Think of it as the exercise
-              service&apos;s personal assistant.
+              the response to send back.
             </li>
             <li>
               <code>RepairController.js</code> – Similar to the exercise
               controller, but focused on repair submissions. When a student
               submits a repair, this controller unpacks the request data and
-              hands it off to the
-              <code>RepairService</code> for processing. It keeps our repair
-              workflow organized and predictable.
+              hands it off to the <code>RepairService</code> for processing. It
+              keeps our repair workflow organized and predictable.
             </li>
           </ul>
+          <br />
+          <br />
+          <b>Note:</b> These are the main controllers and services for a lab.
+          However, you may need to create additional controllers and services
+          for specific features or requirements. As a developer, it is your
+          responsibility to figure out if any additional ones are needed.
         </div>
       </Page.Body>
     </Page>

@@ -139,10 +139,9 @@ export const Routing = () => {
       <Page.Header>
         <Page.Header.Title>API Endpoints &amp; Routing</Page.Header.Title>
         <Page.Header.Description>
-          Think of our routing layer as the switchboard for our backend.
-          It&apos;s where we define all the doorways that the frontend can use
+          Routing is where we define all the doorways that the frontend can use
           to talk to our server. Each route connects an incoming request to the
-          right controller based on the URL path and HTTP method used. This
+          right controller, based on the URL path and HTTP method used. This
           organized approach keeps our code clean and makes it easy to find
           which piece handles which request. We follow RESTful conventions to
           make our API intuitive and predictable for anyone working with it.
@@ -174,9 +173,9 @@ export const Routing = () => {
         <div>
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
-              <code>routes/index.js</code> – This is Grand Central Station for
-              all our API routes. It&apos;s where we register every endpoint and
-              connect them to their matching controller functions. This file
+              <code>routes/index.js</code> – This is the central hub for all our
+              API routes. It&apos;s where we register every endpoint and connect
+              them to their matching controller functions. This file
               doesn&apos;t contain any business logic - it&apos;s purely a
               traffic director that tells incoming requests where they need to
               go.

@@ -93,19 +93,27 @@ export const SchemaDesign = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_SCHEMA_REPAIR}>
+    <Page nextPage={ROUTES.SECTION_SCHEMA_DESIGN_REPAIR}>
       <Page.Header>
         <Page.Header.Title>
           Database Design &amp; Schema Models
         </Page.Header.Title>
         <Page.Header.Description>
           Every lab needs a solid data foundation, and that&apos;s where our
-          schemas come in. We use <code>Sequelize</code> to create
-          well-structured models for all our data in the <code>PSQL</code>{" "}
-          database. This includes everything from labs and exercises to users
-          and quiz records. Having good schemas means our data stays organized,
-          validated, and easy to work with throughout the backend. Let&apos;s
-          explore how we set up these schemas in the
+          schemas come in. We use <code>Sequelize</code> (
+          <a
+            href="https://sequelize.org/docs/v6/core-concepts/model-basics/"
+            target="_blank"
+            rel="noreferrer"
+            className="tw-text-primary-blue"
+          >
+            link to docs
+          </a>
+          ) to create well-structured models for all our data in the{" "}
+          <code>PostgreSQL</code> database. This includes everything from labs
+          and exercises to users and quiz records. Having good schemas means our
+          data stays organized, validated, and easy to work with throughout the
+          backend. Let&apos;s explore how we set up these schemas in the{" "}
           <code>server/database</code> folder.
         </Page.Header.Description>
       </Page.Header>
@@ -136,8 +144,8 @@ export const SchemaDesign = () => {
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
               <code>schema.sql</code> – Think of this as our database&apos;s
-              birth certificate. It contains the raw SQL that creates all our
-              tables from scratch. Whenever you add a new data model,
+              initialization script. It contains the raw SQL that creates all
+              our tables from scratch. Whenever you add a new data model,
               you&apos;ll need to define it both here and in the{" "}
               <code>models/</code> folder. If you&apos;re creating a new lab,
               make sure to add its record here too, so new database setups will
@@ -148,9 +156,8 @@ export const SchemaDesign = () => {
               data structures. Each file in this folder defines a{" "}
               <code>Sequelize</code> model that mirrors a database table. These
               models don&apos;t just describe the data&apos;s shape; they also
-              establish the rules, constraints, and relationships between
-              different pieces of information. Every bit of data in our platform
-              starts its life here.
+              establish the rules, constraints, and relationships to other
+              models. Every piece of data in the project is defined here.
             </li>
             <li>
               <code>models/labX</code> – Each lab gets its own corner in the
@@ -158,20 +165,20 @@ export const SchemaDesign = () => {
               have their own versions of <code>Exercise.js</code> and{" "}
               <code>Repair.js</code> tailored to that lab&apos;s specific needs.
               This keeps things tidy and prevents labs from stepping on each
-              other&apos;s toes data-wise. When designing these models, think
-              carefully about what your lab will need to store. Setting schemas
-              are a one-way door decision, meaning once the schema is set,
-              it&apos;s hard to change. So aim for flexibility in your design
-              from the start.
+              other&apos;s toes. When designing these models, think carefully
+              about what your lab will need to store. Setting schemas are a
+              one-way door decision, meaning once the schema is set, it&apos;s
+              hard to change. So aim for flexibility in your design from the
+              start.
             </li>
             <li>
               <code>Exercise.js</code> – This is where we track how students are
               doing in each lab exercise. For example, if your lab has a game
               component, you might track things like <code>score</code>,{" "}
-              <code>timePlayed</code>, and which
-              <code>playthrough</code> attempt they&apos;re on. Most labs have
-              multiple exercises, so your schema should accommodate all the
-              different data points you need to track progress effectively.
+              <code>timePlayed</code>, and which <code>playthrough</code>{" "}
+              attempt they&apos;re on. Most labs have multiple exercises, so
+              your schema should accommodate for all the different data points
+              you need to track progress.
             </li>
             <li>
               <code>Repair.js</code> – This is our repository for all the repair
@@ -179,10 +186,9 @@ export const SchemaDesign = () => {
               requirements, so these schemas vary quite a bit. For example,{" "}
               <code>lab9</code> focuses on address validation, so its repair
               schema includes fields like <code>address</code>,{" "}
-              <code>city</code>, <code>state</code>, and
-              <code>zip</code>. Like with the Exercise models, make sure you
-              capture all the data points you&apos;ll need to properly evaluate
-              and track repairs.
+              <code>city</code>, <code>state</code>, and <code>zip</code>. Like
+              with the Exercise models, make sure you capture all the data
+              points you&apos;ll need to properly evaluate and track repairs.
             </li>
           </ul>
         </div>

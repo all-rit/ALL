@@ -68,7 +68,7 @@ export const FrontendIntroduction = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_BOILERPLATE}>
+    <Page nextPage={ROUTES.SECTION_BOILERPLATE} completed>
       <Page.Header>
         <Page.Header.Title>Frontend Development</Page.Header.Title>
         <Page.Header.Description>
@@ -77,9 +77,34 @@ export const FrontendIntroduction = () => {
           while staying independent. You&apos;ll find images, reusable
           components, configuration values, and communication helpers all neatly
           sorted in their own spaces. Everything lives inside the{" "}
-          <code>client/</code> folder and uses React for the UI, Context for
-          managing data, Tailwind for styling, and smart routing in{" "}
-          <code>App.js</code> to tie it all together.
+          <code>client/</code> folder and uses React for the UI (
+          <a
+            href="https://react.dev/"
+            target="_blank"
+            rel="noreferrer"
+            className="tw-text-primary-blue"
+          >
+            link to docs
+          </a>
+          ), Context for managing data (
+          <a
+            href="https://react.dev/reference/react/useContext"
+            target="_blank"
+            rel="noreferrer"
+            className="tw-text-primary-blue"
+          >
+            link to docs
+          </a>
+          ), Tailwind for styling (
+          <a
+            href="https://tailwindcss.com/docs"
+            target="_blank"
+            rel="noreferrer"
+            className="tw-text-primary-blue"
+          >
+            link to docs
+          </a>
+          ), and smart routing in <code>App.js</code> to tie it all together.
         </Page.Header.Description>
       </Page.Header>
       <Page.Body className={"tw-gap-y-0"}>
@@ -111,15 +136,20 @@ export const FrontendIntroduction = () => {
               <code>assets/</code> – This is our media library. It&apos;s where
               we store all the static files the site needs – images,
               stylesheets, fonts, and even sound files for exercises or
-              accessibility features. Think of it as the resource cabinet for
-              everything that isn&apos;t code.
+              accessibility features. Minimize the amount of items placed here
+              because the size of the repository grows as the number of assets
+              increases. We don&apos;t want our repository to get too big. If
+              you are adding SVGs or icons, check if any of the existing
+              libraries can fit your needs (<code>react-social-icons</code>,{" "}
+              <code>@fortawesome/free-solid-svg-icons</code> or{" "}
+              <code>@mui/icons-material</code>).
             </li>
             <li>
               <code>components/</code> – The heart of our frontend. Here
               you&apos;ll find all our UI building blocks – from shared pieces
               like buttons and modals (in <code>all-components/</code>) to
               common structural elements (like <code>header/</code> and{" "}
-              <code>footer/</code>). Lab-specific pages live in the
+              <code>footer/</code>). Lab-specific pages live in the{" "}
               <code>exercise/</code> folder, with each lab getting its own space
               (like <code>components/exercise/lab5/</code>). This keeps
               everything organized and makes it easy to find the pieces specific
@@ -127,12 +157,19 @@ export const FrontendIntroduction = () => {
             </li>
             <li>
               <code>App.js</code> – The conductor of our frontend orchestra.
-              This file sets up all the routes using
-              <code>@reach/router</code>, puts the header and footer in place,
-              and maps out paths to specific lab pages like{" "}
-              <code>/Lab5/Reading</code> or <code>/Lab5/Exercise</code>. If the
-              site were a house, this would be the blueprint showing how all the
-              rooms connect.
+              This file sets up all the routes using <code>@reach/router</code>{" "}
+              (
+              <a
+                href="https://reach.tech/router/api/Router"
+                target="_blank"
+                rel="noreferrer"
+                className="tw-text-primary-blue"
+              >
+                link to docs
+              </a>
+              ), puts the header and footer in place, and maps out paths to
+              specific lab pages like <code>/Lab5/Reading</code> or{" "}
+              <code>/Lab5/Exercise</code>.
             </li>
             <li>
               <code>constants/</code> – Our library of fixed values. Each lab

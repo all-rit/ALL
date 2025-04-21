@@ -4,7 +4,7 @@ import { ROUTES } from "../../../../../constants/lab0/index";
 
 export const FrontendTipsTricks = () => {
   return (
-    <Page nextPage={ROUTES.HOME}>
+    <Page nextPage={ROUTES.SELECTION_ROUTE} completed>
       <Page.Header>
         <Page.Header.Title>Frontend Tips &amp; Tricks</Page.Header.Title>
       </Page.Header>

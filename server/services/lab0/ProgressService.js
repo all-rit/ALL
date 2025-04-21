@@ -48,6 +48,7 @@ async function submitProgress(userID, category, section, sectionStatus) {
         sectionStatus: sectionStatus,
       },
     }).then((result) => {
+      console.log('result', result);
       if (result[1]) {
         // A new record was just created, no update necessary
         return;

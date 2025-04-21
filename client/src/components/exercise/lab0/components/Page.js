@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { twMerge } from "tailwind-merge";
-import { navigate } from "@reach/router";
 import Button from "../../../all-components/LabButton";
-
+import Lab0Context from "../Lab0Context";
+import { SECTION_STATUSES } from "../../../../constants/lab0";
 const PageHeader = ({ children, className }) => {
   return (
     <div
@@ -89,9 +89,20 @@ PageFooter.propTypes = {
   className: PropTypes.string,
 };
 
-export const Page = ({ children, className, nextPage = null }) => {
-  const handleNav = () => {
-    navigate(nextPage);
+export const Page = ({
+  children,
+  className,
+  completed = false,
+  nextPage = null,
+}) => {
+  const { handleNav, updateSectionStatus, section } = useContext(Lab0Context);
+
+  const handleNext = async () => {
+    if (completed) {
+      await updateSectionStatus(section, SECTION_STATUSES.SECTION_COMPLETED);
+    }
+
+    handleNav(nextPage);
   };
 
   return (
@@ -106,7 +117,7 @@ export const Page = ({ children, className, nextPage = null }) => {
       {children}
       {nextPage && (
         <Page.Footer className="tw-items-center">
-          <Button onClick={handleNav} label="Next" />
+          <Button onClick={handleNext} label="Next" />
         </Page.Footer>
       )}
     </div>
@@ -117,6 +128,7 @@ Page.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   nextPage: PropTypes.string,
+  completed: PropTypes.bool,
 };
 
 PageHeader.Title = PageHeaderTitle;

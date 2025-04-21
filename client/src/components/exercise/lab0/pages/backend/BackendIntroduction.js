@@ -54,12 +54,12 @@ export const BackendIntroduction = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_LAB_DATA}>
+    <Page nextPage={ROUTES.SECTION_LAB_DATA} completed>
       <Page.Header>
         <Page.Header.Title>Backend Development</Page.Header.Title>
         <Page.Header.Description>
           Behind the scenes, our entire platform runs on a backend built with{" "}
-          <code>Express.js</code> and a<code>PSQL</code> database.
+          <code>Express.js</code> and a <code>PostgreSQL</code> database.
           Everything&apos;s organized in the <code>server/</code> folder where
           we&apos;ve set up a clean, modular system that keeps different
           responsibilities separate. Each lab has its own dedicated backend
@@ -94,13 +94,20 @@ export const BackendIntroduction = () => {
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
               <b>database</b> – This is where we define what our data looks like
-              using <code>Sequelize</code>. Every piece of information we store,
-              such as <code>labs</code> and <code>quizzes</code>,{" "}
-              <code>users</code>
-              and <code>groups</code>, has its structure defined here. If
+              using <code>Sequelize</code> (
+              <a
+                href="https://sequelize.org/docs/v6/core-concepts/model-basics/"
+                target="_blank"
+                rel="noreferrer"
+                className="tw-text-primary-blue"
+              >
+                link to docs
+              </a>
+              ). Every piece of information we store, such as <code>labs</code>{" "}
+              and <code>quizzes</code>, <code>users</code> and{" "}
+              <code>groups</code>, has its structure defined here. If
               you&apos;re trying to figure out how something is stored or what
-              fields it has, start here. It&apos;s like our data&apos;s
-              blueprint collection.
+              fields it has, start here.
             </li>
             <li>
               <b>services</b> – Services handle the heavy lifting of database
@@ -113,7 +120,7 @@ export const BackendIntroduction = () => {
             </li>
             <li>
               <b>controllers</b> – Controllers are the traffic directors of our
-              backend. Their job is simple: grab what&apos;s needed from the
+              backend. Their job is simple; grab what&apos;s needed from the
               request (like data from the <code>request body</code> or{" "}
               <code>session</code>), call the right service, and package up the
               response to send back. Controllers should be light on logic,

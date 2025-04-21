@@ -4,7 +4,7 @@ import { ROUTES } from "../../../../../constants/lab0/index";
 
 export const ServiceControllerRepair = () => {
   return (
-    <Page nextPage={ROUTES.SECTION_ROUTING}>
+    <Page nextPage={ROUTES.SECTION_ROUTING} completed>
       <Page.Header>
         <Page.Header.Title>
           Service Layer &amp; Controllers Repair

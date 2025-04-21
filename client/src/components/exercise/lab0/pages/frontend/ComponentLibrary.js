@@ -66,7 +66,7 @@ export const ComponentLibrary = () => {
   const [edges] = useState(initialEdges);
 
   return (
-    <Page nextPage={ROUTES.SECTION_FRONTEND_TIPS_TRICKS}>
+    <Page nextPage={ROUTES.SECTION_FRONTEND_TIPS_TRICKS} completed>
       <Page.Header>
         <Page.Header.Title>Component Library</Page.Header.Title>
         <Page.Header.Description>
@@ -74,8 +74,8 @@ export const ComponentLibrary = () => {
           collection of ready-to-use interface elements we&apos;ve created to
           keep everything looking consistent and working smoothly across the
           site. Think of it like LEGO blocks for our website - snap them
-          together to build complex layouts without reinventing the wheel each
-          time.
+          together to build more complex layouts without reinventing the wheel
+          each time.
         </Page.Header.Description>
       </Page.Header>
 
@@ -168,8 +168,8 @@ export const ComponentLibrary = () => {
             thing really well. Don&apos;t try to make a button that&apos;s also
             a dropdown and a modal trigger. Components shouldn&apos;t mess with
             external state unless that&apos;s their explicit purpose. Document
-            what props they need with PropTypes (this helps the next developer
-            understand how to use them).
+            what props they need with <code>PropTypes</code> (this helps the
+            next developer understand how to use them).
           </li>
           <li>
             <strong>Think in building blocks</strong> – Great components work
@@ -192,11 +192,12 @@ export const ComponentLibrary = () => {
             or overriding styles from outside the component.
           </li>
           <li>
-            <strong>Make it accessible</strong> – Every interactive component
-            needs to work for everyone. Use proper HTML elements (real buttons
-            instead of styled divs), ensure keyboard navigation works, and
-            include appropriate ARIA labels. If a modal opens, make sure focus
-            is trapped inside it until it closes.
+            <strong>Make it accessible</strong> – Our name is <b>Accessible</b>{" "}
+            Learning Labs, so everything we produce should be accessible. Use
+            proper HTML elements (real <code>buttons</code> instead of styled{" "}
+            <code>div</code>s), ensure keyboard navigation works, and include
+            appropriate <code>ARIA</code> labels. If a modal opens, make sure
+            focus is trapped inside it until it closes.
           </li>
           <li>
             <strong>Know where things belong</strong> – If a component will be

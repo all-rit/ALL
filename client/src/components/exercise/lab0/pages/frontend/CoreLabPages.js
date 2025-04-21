@@ -90,14 +90,13 @@ export const CoreLabPages = () => {
       <Page.Header>
         <Page.Header.Title>Core Lab Pages</Page.Header.Title>
         <Page.Header.Description>
-          Every lab on our platform follows the same familiar pattern with five
-          key sections that students move through:
-          <code>Reading</code>, <code>Exercise</code> (made up of the game
-          exercise and repair parts), <code>Reinforcement</code>, and{" "}
-          <code>Quiz</code>. This consistent structure helps students know what
-          to expect as they navigate from one concept to the next, ensuring they
-          learn, practice, review, and test their understanding in a logical
-          sequence.
+          Every lab follows the same familiar pattern with four key sections
+          that students move through: <code>Reading</code>,{" "}
+          <code>Exercise</code> (made up of the game exercise and repair parts),{" "}
+          <code>Reinforcement</code>, and <code>Quiz</code>. This consistent
+          structure helps students know what to expect as they navigate from one
+          concept to the next, ensuring they learn, practice, review, and test
+          their understanding in a logical sequence.
         </Page.Header.Description>
       </Page.Header>
       <Page.Body className={"tw-gap-y-0"}>
@@ -125,10 +124,12 @@ export const CoreLabPages = () => {
         </div>
         <div>
           <p className="tw-mb-3">
-            Good news! These components already exist for each lab, so you
-            don&apos;t have to build them from scratch every time. But it&apos;s
-            still important to understand how they fit together to create a
-            complete learning experience:
+            Good news! Most of these components already exist for each lab, so
+            you don&apos;t have to build them from scratch every time. All you
+            need to do is insert the correct data into the database (we covered
+            this in a previous section). Nevertheless, it&apos;s still important
+            to understand how they fit together to create a complete learning
+            experience:
           </p>
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
@@ -137,21 +138,24 @@ export const CoreLabPages = () => {
               visualization, explanatory text, and sometimes links to dig
               deeper. All the content comes directly from the{" "}
               <code>reading</code> field in the lab&apos;s database entry,
-              formatted as JSON that our system knows how to display.
+              formatted as JSON that our components know how to display.
             </li>
             <li>
               <code>Exercise</code> – The hands-on part where students interact
               with the concepts they just learned. This usually involves two
               parts: first a guided exercise or game, then a repair section
-              where they fix broken examples to demonstrate understanding.
+              where they fix broken examples to demonstrate understanding. As a
+              developer, you need to implement the exercise for each lab. You
+              can reference existing exercises as a guide to help you understand
+              how to implement the exercise for your lab.
             </li>
             <li>
               <code>Reinforcement</code> – A collection of short YouTube videos
-              that help cement the key ideas. Sometimes seeing the same concept
+              that help cement the key ideas. Sometimes, seeing the same concept
               explained differently helps it stick. These videos come from the{" "}
               <code>reinforcement</code> field in the database, which stores a
-              JSON array with each video&apos;s
-              <code>title</code> and <code>link</code>.
+              JSON array with each video&apos;s <code>title</code> and{" "}
+              <code>link</code>.
             </li>
             <li>
               <code>Quiz</code> – The final check for understanding with

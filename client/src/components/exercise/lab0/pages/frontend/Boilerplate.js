@@ -16,7 +16,7 @@ const initialNodes = [
     id: "2",
     position: { x: -225, y: 100 },
     data: { label: "assets" },
-    style: COLORS.GREEN,
+    style: { ...COLORS.GREEN, opacity: 0.35 },
     type: "output",
   },
   {
@@ -29,7 +29,7 @@ const initialNodes = [
     id: "4",
     position: { x: 75, y: 100 },
     data: { label: "App.js" },
-    style: COLORS.GREEN,
+    style: { ...COLORS.GREEN, opacity: 0.35 },
     type: "output",
   },
   {
@@ -42,7 +42,7 @@ const initialNodes = [
     id: "6",
     position: { x: 375, y: 100 },
     data: { label: "services" },
-    style: COLORS.GREEN,
+    style: { ...COLORS.GREEN, opacity: 0.35 },
     type: "output",
   },
   {
@@ -159,11 +159,11 @@ export const Boilerplate = () => {
         <div>
           <ul className="tw-flex tw-flex-col tw-list-disc tw-list-inside tw-gap-y-3">
             <li>
-              <code>Main.js</code> – This is your lab&apos;s command center.
-              It&apos;s where everything begins – handling state, rendering the
-              right components, and coordinating user interactions. Each lab has
-              its own version that follows the same pattern, which means once
-              you understand one, you&apos;ll know how they all work.
+              <code>Main.js</code> – This is where everything begins, such as
+              handling state, rendering the right components, and coordinating
+              user interactions. Each lab has its own version that follows the
+              same pattern, which means once you understand one, you&apos;ll
+              know how they all work.
             </li>
             <li>
               <code>Context.js</code> – Think of this as your lab&apos;s memory
@@ -172,14 +172,18 @@ export const Boilerplate = () => {
               more passing data through five levels of components – just grab
               what you need directly from the Context. This is where you&apos;ll
               track things like exercise progress and user interactions.
+              <br />
+              <b>Note: </b> Older labs leverage <code>react-redux</code> for
+              state management. It is similar to our current state management,
+              but different. Make sure that new labs leverage{" "}
+              <code>react-context</code>.
             </li>
             <li>
               <code>components/</code> – Your lab&apos;s building blocks live
               here. These are the reusable UI elements specific to your lab,
               organized in a way that makes them easy to find and combine. The
-              main
-              <code>components/</code> folder at the project root has global
-              pieces like headers and footers, while your lab-specific
+              main <code>components/</code> folder at the project root has
+              global pieces like headers and footers, while your lab-specific
               components get their own space. This keeps everything tidy and
               encourages reuse.
             </li>

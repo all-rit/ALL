@@ -4,7 +4,7 @@ import { ROUTES } from "../../../../../constants/lab0/index";
 
 export const CoreLabPagesRepair = () => {
   return (
-    <Page nextPage={ROUTES.SECTION_INTEGRATION}>
+    <Page nextPage={ROUTES.SECTION_INTEGRATION} completed>
       <Page.Header>
         <Page.Header.Title>Core Lab Pages Repair</Page.Header.Title>
       </Page.Header>

@@ -16,27 +16,29 @@ const initialNodes = [
     id: "2",
     position: { x: -225, y: 100 },
     data: { label: "assets" },
-    style: COLORS.GREEN,
+    style: { ...COLORS.GREEN, opacity: 0.35 },
     type: "output",
   },
   {
     id: "3",
     position: { x: -75, y: 100 },
     data: { label: "components" },
-    style: COLORS.GREEN,
+    type: "output",
+    style: { ...COLORS.GREEN, opacity: 0.35 },
   },
   {
     id: "4",
     position: { x: 75, y: 100 },
     data: { label: "App.js" },
-    style: COLORS.GREEN,
+    style: { ...COLORS.GREEN, opacity: 0.35 },
     type: "output",
   },
   {
     id: "5",
     position: { x: 225, y: 100 },
     data: { label: "constants" },
-    style: COLORS.GREEN,
+    style: { ...COLORS.GREEN, opacity: 0.35 },
+    type: "output",
   },
   {
     id: "6",
@@ -130,7 +132,7 @@ export const Integration = () => {
               <code>ExerciseService.js</code> – Located in{" "}
               <code>src/services/labX/</code>, this is your lab&apos;s exercise
               command center. It provides friendly functions like{" "}
-              <code>fetchExercise()</code>,<code>submitExercise()</code>, and{" "}
+              <code>fetchExercise()</code>, <code>submitExercise()</code>, and{" "}
               <code>getProgress()</code> that your UI components can call.
               Behind the scenes, each function uses our shared <code>API</code>{" "}
               utility to make the actual backend calls. The beauty of this
@@ -141,7 +143,7 @@ export const Integration = () => {
             <li>
               <code>RepairService.js</code> – This service handles all the
               repair-related backend communication. Similar to the exercise
-              service, it offers functions like <code>submitRepair()</code> and
+              service, it offers functions like <code>submitRepair()</code> and{" "}
               <code>getRepair()</code> for submitting and retrieving repair
               data. Having this separate service keeps your repair code neatly
               organized and easy to maintain.
