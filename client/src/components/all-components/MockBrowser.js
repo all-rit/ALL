@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import FeedbackIcon from "@mui/icons-material/Feedback";
+import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
 
 const MockBrowser = (props) => {
   const { correctURL, responseImgURL } = props;
@@ -80,7 +81,10 @@ const MockBrowser = (props) => {
               </p>
             </>
           ) : loadingStage !== 0 ? (
-            <p>Loading...</p>
+            <>
+              <HourglassBottomIcon />
+              <p className="md:tw-text-md tw-italic">Loading...</p>
+            </>
           ) : isCorrectURL() ? (
             <img
               src={responseImgURL}
